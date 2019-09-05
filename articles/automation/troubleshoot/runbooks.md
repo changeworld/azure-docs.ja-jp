@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c6b526cdd317e8b075d28e0fb9018501148c731c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850319"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971294"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -31,11 +31,23 @@ Azure Automation で Runbook を実行しているときにエラーが発生し
    - **構文エラー**
    - **論理エラー**
 
-2. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** ご使用の Runbook でなんらかのモジュールをインポートする場合は、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に記載された手順に従い、それらのモジュールを Automation アカウントに取り込む必要があります。 詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
+2. Runbook の[エラー ストリーム](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output)に特定のメッセージがないか調査し、それらを以下のエラーと比較します。
+
+3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** ご使用の Runbook でなんらかのモジュールをインポートする場合は、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に記載された手順に従い、それらのモジュールを Automation アカウントに取り込む必要があります。 [Azure Automation の Azure モジュールを更新する方法](..//automation-update-azure-modules.md)に関するページの手順に従ってモジュールを最新バージョンに更新してください。 トラブルシューティングの詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
+
+### <a name="if-the-runbook-is-suspended-or-unexpectedly-failed"></a>Runbook が中断されたか、予期せず失敗した場合
+
+Runbook が中断または失敗することにはいくつかの理由があります。
+
+* [ジョブ状態](https://docs.microsoft.com/azure/automation/automation-runbook-execution#job-statuses)が Runbook の状態といくつかの考えられる原因を示している。
+* [新たな出力を Runbook に追加](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams)して、Runbook の中断前に何が発生したかを特定する。
+* ジョブによってスローされる[例外を処理する](https://docs.microsoft.com/azure/automation/automation-runbook-execution#handling-exceptions)。
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Azure Automation Runbook の使用時に発生する認証エラー
 
 ### <a name="login-azurerm"></a>シナリオ:Login-AzureRMAccount を実行してログインする
+
+このエラーは、RunAs アカウントを使用していないとき、または RunAs アカウントの有効期限が切れたときに発生することがあります。 「[Azure Automation の実行アカウントを管理する](https://docs.microsoft.com/azure/automation/manage-runas-account)」を参照してください。
 
 #### <a name="issue"></a>問題
 
@@ -574,6 +586,97 @@ Azure で実行された Runbook で PowerShell ジョブを開始すると、�
 * お使いの Runbook でこのエラー メッセージが表示された場合、それを Hybrid Runbook Worker で実行する
 
 この動作や、Azure Automation Runbook の他の動作の詳細については、「[Runbook の動作](../automation-runbook-execution.md#runbook-behavior)」を参照してください。
+
+## <a name="other"></a>:問題が上記の一覧にない
+
+以降の各セクションでは、その他の一般的なエラーと問題の解決に役立つ関連ドキュメントを掲載しています。
+
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Hybrid Runbook Worker がジョブを実行しないか、応答していない
+
+Azure Automation ではなく Hybrid Worker を使用してジョブを実行している場合は、[Hybrid Worker 自体のトラブルシューティング](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)が必要になることがあります。
+
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook が "アクセス許可なし"、または類似した問題によって失敗する
+
+RunAs アカウントの Azure リソースに対するアクセス許可が、お使いの現在のアカウントと同じでない可能性があります。 ご自身の RunAs アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認します。
+
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>以前は動作していた Runbook が突然停止した
+
+* 以前は動作していた Runbook が停止した場合は、[RunAs アカウントの有効期限が切れていないことを確認](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)します。
+* Webhook を使用して Runbook を開始する場合は、[Webhook の有効期限が切れていないことを確認](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)します。
+
+### <a name="issues-passing-parameters-into-webhooks"></a>パラメーターを Webhook に渡すときに問題が発生する
+
+パラメーターを Webhook に渡す場合のヘルプについては、「[Webhook から Runbook を開始する](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)」を参照してください。
+
+### <a name="issues-using-az-modules"></a>Az モジュールを使用するときに問題が発生する
+
+Az モジュールと AzureRM モジュールを同じ Automation アカウントで使用することはできません。 詳細については、[Runbook の Az モジュール](https://docs.microsoft.com/azure/automation/az-modules)に関するページを参照してください。
+
+### <a name="runbook-job-completed-but-with-unexpected-results-or-errors"></a>Runbook ジョブは完了するが、予期しない結果またはエラーが発生する
+
+特定の問題とその解決策を以下に示しますが、次の 2 つのトラブルシューティング手順をまず実行してみることを強くお勧めします。
+
+* Azure Automation で実行する前に[ローカル環境で Runbook](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#runbook-fails) を実行してみます。 これにより、問題が Runbook のバグであるか、Azure Automation の問題であるかが明確になります。
+* Runbook の[エラー ストリーム](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output)に特定のメッセージがないか調査し、それらを以下のエラーと比較します。
+* エラーの発生場所を識別するために Runbook に[新たな出力](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams)を追加します。
+
+### <a name="inconsistent-behavior-in-runbooks"></a>Runbook 内の一貫性のない動作
+
+[Runbook の実行](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior)に関するガイダンスに従って、Runbook での同時実行ジョブ、リソースの複数回の作成、またはその他のタイミングに依存するロジックに関する問題を回避してください。
+
+### <a name="switching-between-multiple-subscriptions-in-a-runbook"></a>Runbook での複数のサブスクリプション間の切り替え
+
+「[複数のサブスクリプションの操作](https://docs.microsoft.com/azure/automation/automation-runbook-execution#working-with-multiple-subscriptions)」のガイダンスに従ってください。
+
+### <a name="runbook-fails-with-error-the-subscription-cannot-be-found"></a>Runbook が、"サブスクリプションが見つからない" というエラーで失敗する
+
+この問題は、Azure リソースにアクセスするために Runbook が RunAs アカウントを使用していない場合に発生します。 解決するには、「[シナリオ:Azure サブスクリプションが見つからない](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#unable-to-find-subscription)」の手順に従ってください。
+
+### <a name="error-your-azure-credentials-have-not-been-set-up-or-have-expired-please-run-connect-azurermaccount-to-set-up-your-azure-credentials"></a>エラー:"Azure の資格情報が設定されていないか、有効期限が切れています。connect-azureRmAccount を実行して、Azure の資格情報を設定してください"
+
+このエラーは、RunAs アカウントを使用していないとき、または RunAs アカウントの有効期限が切れたときに発生することがあります。 「[Azure Automation の実行アカウントを管理する](https://docs.microsoft.com/azure/automation/manage-runas-account)」を参照してください。
+
+### <a name="error-run-login-azurermaccount-to-login"></a>エラー:Login-AzureRmAccount を実行してログインする
+
+このエラーは、RunAs アカウントを使用していないとき、または RunAs アカウントの有効期限が切れたときに発生することがあります。 「[Azure Automation の実行アカウントを管理する](https://docs.microsoft.com/azure/automation/manage-runas-account)」を参照してください。
+
+### <a name="runbook-fails-with-error-strong-authentication-enrollment-is-required"></a>Runbook が失敗し "強力な認証登録が必要" というエラーが発生する
+
+Runbook トラブルシューティング ガイドの「[多要素認証が有効になっているために Azure に対する認証が失敗した](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#auth-failed-mfa)」を参照してください。
+
+### <a name="runbook-fails-with-the-errors-no-permission-forbidden-403-or-some-variation"></a>Runbook が "アクセス許可なし"、"禁止"、403、または類似したエラーによって失敗する
+
+RunAs アカウントの Azure リソースに対するアクセス許可が、お使いの現在のアカウントと同じでない可能性があります。 ご自身の RunAs アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認します。
+
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>以前は動作していた Runbook が突然停止した
+
+* 以前は動作していた Runbook が停止した場合は、RunAs アカウントの[有効期限が切れていないこと](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)を確認します。
+* Webhook を使用して Runbook を開始している場合は、Webhook の[有効期限が切れていないこと](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)を確認してください。
+
+### <a name="passing-parameters-into-webhooks"></a>パラメーターをスクリプトに渡す
+
+パラメーターを Webhook に渡す場合のヘルプについては、「[Webhook から Runbook を開始する](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)」を参照してください。
+
+### <a name="error-the-term-is-not-recognized"></a>エラー:"用語が認識されません"
+
+Runbook トラブルシューティング ガイドで "[コマンドレットが認識されない](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#cmdlet-not-recognized)" 場合の手順に従います。
+
+### <a name="errors-about-typedata"></a>TypeData に関するエラー
+
+TypeData に関するエラーが発生した場合は、ワークフローをサポートしていないモジュールで PowerShell ワークフローを実行しようとしています。 Runbook の種類を PowerShell に変更する必要があります。 詳細については、[Runbook の種類](https://docs.microsoft.com/azure/automation/automation-runbook-types#powershell-runbooks)に関するページを参照してください。
+
+### <a name="using-az-modules"></a>Az モジュールの使用
+
+Az モジュールと AzureRM モジュールを同じ Automation アカウントで使用することはできません。 詳細については、[Runbook の Az モジュール](https://docs.microsoft.com/azure/automation/az-modules)に関するページを参照してください。
+
+### <a name="using-self-signed-certificates"></a>自己署名証明書の使用
+
+自己署名証明書を使用するには、「[新しい証明書の作成](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)」のガイドに従う必要があります。
+
+## <a name="recommended-documents"></a>推奨されるドキュメント
+
+* [Azure Automation での Runbook の開始](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Azure Automation での Runbook の実行](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872434"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011579"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する 
 
@@ -433,7 +433,9 @@ Azure Machine Learning service 用の [VS Code 拡張機能](how-to-vscode-tools
 * [CLI 拡張機能を使用](reference-azure-machine-learning-cli.md#experiments)して実験を送信します。
 * [VS Code 拡張機能](how-to-vscode-tools.md#train-and-tune-models)を介して実験を送信します。
 
-## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
+<a id="gitintegration"></a>
+
+## <a name="git-tracking-and-integration"></a>Git の追跡と統合
 
 ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。
 

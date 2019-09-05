@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786512"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114305"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -94,7 +94,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 ### <a name="isolate-cluster-job-errors"></a>クラスターのジョブ エラーの分離
 
-マルチノード クラスターで、複数の map および reduce コンポーネントの同時実行が原因でエラーが発生する場合があります。 この問題を分離するために、単一ノード クラスターで複数の同時実行ジョブを実行して分散テストをしてみます。その後、この手法を拡大して、複数のノードを含むクラスターで複数のジョブを同時に実行します。 Azure で単一ノードの HDInsight クラスターを作成するには、"*詳細*" オプションを使用します。
+マルチノード クラスターで、複数の map および reduce コンポーネントの同時実行が原因でエラーが発生する場合があります。 この問題を分離するために、単一ワーカー ノード クラスターで複数の同時実行ジョブを実行して分散テストを試してみます。その後、この手法を拡大して、複数のノードを含むクラスターで複数のジョブを同時に実行します。 Azure で単一ノードの HDInsight クラスターを作成するには、 *[カスタム (サイズ、設定、アプリ )]* オプションを使用して、ポータルで新しいクラスターをプロビジョニングするときに **[クラスター サイズ]** セクションの *[Number of Worker nodes]\(ワーカー ノードの数\)* に 1 の値を使用します。
 
 また、ローカル コンピューターに単一ノード開発環境をインストールし、そこでソリューションをテストすることもできます。 Hortonworks では、初期開発、概念実証、テストに役立つ、Hadoop ベースのソリューションの単一ノード ローカル開発環境を提供しています。 詳細については、[Hortonworks Sandbox](https://hortonworks.com/products/hortonworks-sandbox/) を参照してください。
 

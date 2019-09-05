@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: a1475188d2e1ab0db3dfd9775fc37d3fc0a17158
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d9f1afdff53ada2df7722fcfdd7014fb6c417e39
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567269"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135187"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -344,9 +344,12 @@ Azure SQL Analytics を使用すると、SQL Database フリートを監視で�
 
 エラスティック プールまたはマネージド インスタンスを使用している場合、ワークスペースに診断テレメトリをストリーミングできるようにするには、これらのリソースで診断設定を構成する必要もあります。
 
-### <a name="use-the-sql-analytics-solution"></a>Azure SQL Analytics ソリューションを使用する
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>監視とアラートに SQL Analytics ソリューションを使用する
 
-階層型のダッシュボードとして Azure SQL Analytics を使用して、SQL Database リソースを表示できます。 SQL Analytics ソリューションの使用方法については、「[Monitor SQL Database by using the SQL Analytics solution](../log-analytics/log-analytics-azure-sql.md)」(SQL Analytics ソリューションを使用して SQL データベースを監視する) を参照してください。
+階層型のダッシュボードとして Azure SQL Analytics を使用して、SQL Database リソースを表示できます。
+
+- SQL Analytics ソリューションの使用方法については、「[Monitor SQL Database by using the SQL Analytics solution](../log-analytics/log-analytics-azure-sql.md)」(SQL Analytics ソリューションを使用して SQL データベースを監視する) を参照してください。
+- SQL Database とマネージド インスタンスに SQL Analytics をベースにしたアラートを設定する方法については、[SQL Database とマネージド インスタンスに使用するアラートの作成](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)に関するページを参照してください。
 
 ## <a name="stream-into-event-hubs"></a>Event Hubs へのストリーム
 
@@ -552,7 +555,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
 |Type|常にAzureDiagnostics |
-|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQ |
+|ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にErrors |
 |OperationName|操作の名前。 常にErrorEvent |
 |Resource|リソースの名前 |
@@ -715,3 +718,7 @@ Event Hubs の詳細については、次の資料を参照してください。
 
 - [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+
+Log Analytics からのテレメトリに基づいてアラートを設定する方法については、次の資料を参照してください。
+
+- [SQL Database とマネージド インスタンスのアラートを作成する](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

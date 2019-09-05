@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036261"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019128"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -71,6 +71,12 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 - ファイル共有のより大きなサイズのサポート
     - 大容量の Azure ファイル共有のプレビューでは、File Sync のサポートの上限も引き上げられています。 この第 1 段階において、Azure File Sync では、1 つの同期名前空間で最大 25 TB、5,000 万ファイルがサポートされるようになりました。 大容量ファイル共有のプレビューに申し込むには、 https://aka.ms/azurefilesatscalesurvey のフォームに記入してください。 
+- ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定のサポート
+    - ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が Azure File Sync で新たにサポートされました。 ファイアウォールと仮想ネットワークの設定と連動するようにデプロイを構成する方法については、「[ファイアウォールと仮想ネットワークの設定を構成する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)」を参照してください。
+- Azure ファイル共有内の変更済みファイルを即座に同期する PowerShell コマンドレット
+    - Azure ファイル共有で変更されたファイルを直ちに同期したければ、Invoke-AzStorageSyncChangeDetection PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 このコマンドレットは、なんらかの自動プロセスによって Azure ファイル共有に変更が加えられたり、管理者によって (ファイルやディレクトリを共有に移動するなどの) 変更が実行されたりするシナリオを意図したものです。 エンド ユーザーの変更に関しては、Azure File Sync エージェントを IaaS VM にインストールし、エンド ユーザーに IaaS VM 経由でファイル共有にアクセスしてもらうことをお勧めします。 そのようにすることで、すべての変更がすぐに他のエージェントと同期され、Invoke-AzStorageSyncChangeDetection コマンドレットを使う必要はありません。 詳細については、[Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) のドキュメントを参照してください。
+- 同期されていないファイルに遭遇した場合のポータルのエクスペリエンスが向上
+    - 同期に失敗するファイルがあった場合、一時的なエラーと永続的なエラーとがポータルで区別されます。 一時的なエラーは通常、自動的に解決され、管理者による対処は必要ありません。 たとえば、使用中のファイルは、ファイル ハンドルがクローズされるまで同期されません。 永続的なエラーについては、影響を受けたファイルの数がエラーごとに表示されるようになりました。 永続的なエラーの数は、同期グループの全サーバー エンドポイントの [ファイルが同期していない] 列にも表示されます。
 - Azure Backup のファイル レベルの復元の強化
     - Azure Backup を使用して復元された個々のファイルが検出され、サーバー エンドポイントにより迅速に同期されるようになりました。
 - クラウドを使った階層化の呼び戻しコマンドレットの信頼性の向上 

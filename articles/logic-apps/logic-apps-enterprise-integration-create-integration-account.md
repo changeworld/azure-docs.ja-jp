@@ -11,12 +11,12 @@ manager: carmonm
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: cffcfe53cf30d8fc34fdb27e50ef74e71700125a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 55843f9acaafa0c5963cfac735fdb92eeeacdc02
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607006"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982931"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>Azure Logic Apps を使用した B2B ソリューションの統合アカウントの作成と管理
 
@@ -60,10 +60,10 @@ ms.locfileid: "68607006"
 
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
-   | **Name** | はい | <*integration-account-name*> | 統合アカウントの名前 (例: "Fabrikam-Integration") |
+   | **Name** | はい | <*integration-account-name*> | 統合アカウントの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"Fabrikam-Integration" を使用します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 関連するリソースを整理するために使用する [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 この例では、"FabrikamIntegration-RG" という名前の新しいリソース グループを作成します。 |
-   | **価格レベル** | はい | <*pricing-level*> | 統合アカウントの価格レベル。後で変更できます。 この例では **[Free]** を選択します。 詳細については、以下のトピックを参照してください。 <p>- [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Pricing Tier** | はい | <*pricing-level*> | 統合アカウントの価格レベル。後で変更できます。 この例では **[Free]** を選択します。 詳細については、以下のトピックを参照してください。 <p>- [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/) |
    | **Location** | はい | <*Azure-region*> | 統合アカウント メタデータの保存先となるリージョン。 ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 この例では、[米国西部] を使用します。 <p>**メモ**:[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。 |
    | **Log Analytics** | いいえ | Off、On | この例では、 **[Off]** の設定のままにします。 |
    |||||

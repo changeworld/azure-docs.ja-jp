@@ -6,19 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 7944f985f2317690f3a13add783192c49acbe22f
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ba0f3bd002b2675c33ea5106ce64c7957c9989d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907656"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309122"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 
 この記事では、Azure CLI を使用して Azure Database for MariaDB サービスのマスターと同じ Azure リージョン内に読み取りレプリカを作成し、管理する方法について説明します。
-
-> [!IMPORTANT]
-> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 読み取りレプリカ (同じリージョンおよび複数のリージョンにわたる) は、現在パブリック プレビュー段階にあります。
 
 ## <a name="prerequisites"></a>前提条件
 

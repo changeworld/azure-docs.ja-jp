@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848194"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278825"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "68848194"
 | [ローカル環境](#local) | 開発環境と依存関係を完全に制御できます。 任意のビルド ツール、環境、または IDE を使用できます。 | 始めるのに時間がかかります。 必要な SDK パッケージをインストールする必要があり、環境がまだない場合はそれもインストールする必要があります。 |
 | [Azure Databricks](#aml-databricks) | スケーラブルな Apache Spark プラットフォームで大規模な集中型機械学習ワークフローを実行する場合に適しています。 | 実験用機械学習、または小規模な実験とワークフローでは過剰です。 Azure Databricks の追加コストが発生します。 [価格の詳細](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。 |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | クラウドベースのノートブック VM に似ていますが (Python と SDK はプレインストールされています)、その他の一般的なデータ サイエンスおよび機械学習ツールがプレインストールされています。 簡単にスケーリングし、他のカスタム ツールやワークフローと組み合わせることができます。 | クラウドベースのクラウドベース VM と比較して、作業の開始に時間がかかります。 |
-| [Azure Notebooks](#aznotebooks) | Python と SDK がプレインストールされた、無料で軽量の使用開始エクスペリエンスです。 | クラウドベースのノートブック VM と比較して、使用可能な VM は非力です。 ワークスペースや他のリソースから分離されます。 |
+| [Azure Notebooks](#aznotebooks) | Python と SDK がプレインストールされた、無料かつ軽量の使用開始エクスペリエンスです。 | クラウドベースのノートブック VM と比較して、使用可能な VM のパフォーマンスは低くなります。 ワークスペースや他のリソースから分離されます。 |
 
 この記事では、次のツールに関する追加の使用ヒントについても説明します。
 
@@ -76,7 +76,7 @@ Azure Machine Learning ワークスペース。 ワークスペースを作成�
 
 + **カスタマイズ可能**。 セキュリティで保護されたマネージド VM オファリングであるにも関わらず、ハードウェアの機能へのフル アクセスが維持されており、望みどおりにカスタマイズできます。 たとえば、最新の NVidia V100 を使用する VM をすばやく作成し、新しいニューラル ネットワーク アーキテクチャをステップバイステップでデバッグできます。
 
-ノートブック VM の課金を停止するには、[ノートブック VM を停止します](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm)。 
+ノートブック VM の課金を停止するには、[ノートブック VM を停止します](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -187,14 +187,19 @@ DSVM を開発環境として使用するには、以下の手順を実行しま
 
     このコマンドで、ベース Azure Machine Learning SDK が、notebook extra および automl extra と一緒にインストールされます。 `automl` extra は大規模なインストールになるので、自動化された機械学習の実験を実行する予定がない場合はブラケットから削除できます。 `automl` extra には、既定で Azure Machine Learning Data Prep SDK も依存関係として含まれます。
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]
-   > PyYAML をアンインストールできないというメッセージが表示された場合は、代わりに次のコマンドを使用してください。
+   > * PyYAML をアンインストールできないというメッセージが表示された場合は、代わりに次のコマンドを使用してください。
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * macOS Catalina 以降では、zsh (Z シェル) が既定のログイン シェルおよび対話型シェルです。 zsh で次のコマンドを使用します。ここでは角かっこを "\\" (バックスラッシュ) でエスケープしています。
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
+
 
    SDK をインストールするには数分かかります。 インストール オプションの詳細については、[インストール ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を参照してください。
 
@@ -329,10 +334,10 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
    1. **[ライブラリ]** タブで **[再起動]** を選択します。
 
    次の点も考慮します。
-   + Automl 構成では、Azure Databricks を使用するときに次のパラメーターを追加してください。
+   + AutoML 構成では、Azure Databricks を使用するときに次のパラメーターを追加してください。
        1. ```max_concurrent_iterations``` は、ご利用のクラスター内のワーカー ノードの数に基づきます。
         2. ```spark_context=sc``` は、既定の Spark コンテキストに基づきます。
-   + または、古いバージョンの SDK がある場合は、クラスターのインストール済みライブラリでその SDK の選択を解除し、ごみ箱に移動します。 新しいバージョンの SDK をインストールし、クラスターを再起動します。 その後問題がある場合は、クラスターをデタッチし、再アタッチします。
+   + または、古いバージョンの SDK がある場合は、クラスターのインストール済みライブラリでその SDK の選択を解除し、ごみ箱に移動します。 新しいバージョンの SDK をインストールし、クラスターを再起動します。 再起動後に問題がある場合は、クラスターをデタッチし、再アタッチします。
 
 インストールが成功した場合、インポートされたライブラリは次のどちらかのような外観になります。
 
@@ -357,7 +362,7 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
 
 Azure Notebooks を使い始めるには、[Azure portal](https://portal.azure.com) を使用します。  ワークスペースを開き、 **[概要]** セクションの **[Azure Notebooks で開始する]** を選択します。
 
-既定では、Azure Notebooks は、4 GB のメモリと 1 GB のデータに制限されている無料のサービス層を使用します。 ただし、これらの制限は、Data Science Virtual Machine インスタンスを Azure Notebooks プロジェクトにアタッチすることで削除できます。 詳細については、[Azure Notebooks プロジェクトの管理と構成 - コンピューティング層](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
+既定では、Azure Notebooks は、4 GB のメモリと 1 GB のデータに制限されている無料のサービス レベルを使用します。 ただし、これらの制限は、Data Science Virtual Machine インスタンスを Azure Notebooks プロジェクトにアタッチすることで削除できます。 詳細については、[Azure Notebooks プロジェクトの管理と構成 - コンピューティング層](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
 
 ## <a id="workspace"></a>ワークスペース構成ファイルを作成する
 
@@ -406,5 +411,4 @@ Azure Notebooks を使い始めるには、[Azure portal](https://portal.azure.c
 ## <a name="next-steps"></a>次の手順
 
 - MNIST データセットを使用して Azure Machine Learning 上で[モデルをトレーニングする](tutorial-train-models-with-aml.md)
-- [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) リファレンスを表示する
-- [Azure Machine Learning 用のデータ準備パッケージ](https://aka.ms/data-prep-sdk)について学習する
+- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) リファレンスを表示する

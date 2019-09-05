@@ -1,7 +1,7 @@
 ---
-title: カスタム Docker イメージを使用してモデルをデプロイする
+title: カスタム Docker ベース イメージを使用してモデルをデプロイする
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service モデルをデプロイするときにカスタム Docker イメージを使用する方法について説明します。 トレーニング済みモデルをデプロイすると、Docker イメージが作成され、サービスを実行するために必要なイメージ、Web サーバー、およびその他のコンポーネントがホストされます。 Azure Machine Learning service には既定のイメージが用意されていますが、独自のイメージを使用することもできます。
+description: Azure Machine Learning service モデルをデプロイするときにカスタム Docker ベース イメージを使用する方法について説明します。 トレーニング済みのモデルをデプロイするとき、推論のモデルを実行するためのベース コンテナー イメージがデプロイされます。 Azure Machine Learning service には既定のベース イメージが用意されていますが、独自のベース イメージを使用することもできます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,23 +9,25 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/11/2019
-ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/22/2019
+ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990525"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971514"
 ---
-# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをデプロイする
+# <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 
-Azure Machine Learning service を使用してトレーニング済みモデルをデプロイするときにカスタム Docker イメージを使用する方法について説明します。
+Azure Machine Learning service を使用してトレーニング済みモデルをデプロイするときにカスタム Docker ベース イメージを使用する方法について説明します。
 
-トレーニング済みモデルを Web サービスまたは IoT Edge デバイスにデプロイすると、Docker イメージが作成されます。 このイメージには、モデル、conda 環境、およびモデルを使用するために必要な資産が含まれています。 また、Web サービスとしてデプロイされるときに受信要求を処理する Web サーバーと、Azure IoT Hub と連携するために必要なコンポーネントも含まれています。
+トレーニング済みのモデルを Web サービスまたは IoT Edge デバイスにデプロイするとき、受信要求を処理する Web サーバーを含んだパッケージが作成されます。
 
-Azure Machine Learning service には既定の Docker イメージが用意されているので、作成する必要はありません。 また、作成したカスタム イメージを "_ベース イメージ_" として使用することもできます。 ベース イメージは、デプロイ用にイメージを作成するときの出発点として使用されます。 基となるオペレーティング システムとコンポーネントが用意されています。 デプロイ プロセスでは、デプロイ前に、モデル、conda 環境、その他のアセットなどのコンポーネントがイメージに追加されます。
+Azure Machine Learning service には既定の Docker ベース イメージが用意されているので、自分で作成する必要はありません。 また、作成したカスタム ベース イメージを "_ベース イメージ_" として使用することもできます。 
 
-通常、コンポーネントのバージョンを制御する場合や、デプロイ時の時間を節約する場合は、カスタム イメージを作成します。 たとえば、特定のバージョンの Python、Conda、またはその他のコンポーネントに基づいて標準化する場合があります。 モデルに必要なソフトウェアをインストールする場合もあります。この場合、インストール プロセスには長い時間がかかります。 基本イメージを作成するときにソフトウェアをインストールするということは、デプロイごとにインストールする必要がないことを意味します。
+ベース イメージは、デプロイ用にイメージを作成するときの出発点として使用されます。 基となるオペレーティング システムとコンポーネントが用意されています。 デプロイ プロセスでは、デプロイ前に、モデル、conda 環境、その他のアセットなどのコンポーネントがイメージに追加されます。
+
+通常、カスタム ベース イメージは、Docker を使用して依存関係を管理したい場合や、コンポーネントのバージョンをより厳密に制御したい場合、デプロイの時間を節約したい場合などに作成します。 たとえば、特定のバージョンの Python、Conda、またはその他のコンポーネントに基づいて標準化する場合があります。 モデルに必要なソフトウェアをインストールする場合もあります。この場合、インストール プロセスには長い時間がかかります。 基本イメージを作成するときにソフトウェアをインストールするということは、デプロイごとにインストールする必要がないことを意味します。
 
 > [!IMPORTANT]
 > モデルをデプロイするときに、Web サーバーや IoT Edge コンポーネントなどのコア コンポーネントをオーバーライドすることはできません。 これらのコンポーネントは、Microsoft によってテストおよびサポートされている既知の作業環境を提供します。
@@ -35,8 +37,8 @@ Azure Machine Learning service には既定の Docker イメージが用意さ�
 
 このドキュメントは次の 2 つのセクションに分かれています。
 
-* カスタム イメージを作成する:Azure CLI および Machine Learning CLI を使用してカスタム イメージを作成し、Azure Container Registry への認証を構成する方法について、管理者および DevOps に情報を提供します。
-* カスタム イメージを使用する:Python SDK または ML CLI からトレーニング済みモデルをデプロイするときのカスタム イメージの使用に関する情報をデータ サイエンティストおよび DevOps/MLOps に提供します。
+* カスタム ベース イメージを作成する: Azure CLI および Machine Learning CLI を使用してカスタム イメージを作成し、Azure Container Registry への認証を構成する方法について、管理者および DevOps に情報を提供します。
+* カスタム ベース イメージを使用してモデルをデプロイする: Python SDK または ML CLI からトレーニング済みモデルをデプロイするときのカスタム イメージの使用に関する情報をデータ サイエンティストや DevOps エンジニア、ML エンジニアに提供します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +49,7 @@ Azure Machine Learning service には既定の Docker イメージが用意さ�
 * インターネット上でアクセスできる [Azure Container Registry](/azure/container-registry) またはその他の Docker レジストリ。
 * このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイ先と方法](how-to-deploy-and-where.md#prepare-to-deploy)に関するページの「デプロイを準備する」セクションを参照してください。
 
-## <a name="create-a-custom-image"></a>カスタム イメージを作成する
+## <a name="create-a-custom-base-image"></a>カスタム ベース イメージを作成する
 
 このセクションの情報は、Docker イメージを格納するために Azure Container Registry を使用していることを前提としています。 Azure Machine Learning service 用にカスタム イメージを作成する予定の場合は、次のチェックリストを使用します。
 
@@ -109,7 +111,7 @@ Azure Machine Learning service を使用してモデルのトレーニングま�
 
     `<registry_name>` 値は、ワークスペースの Azure Container Registry の名前です。
 
-### <a name="build-a-custom-image"></a>カスタム イメージをビルドする
+### <a name="build-a-custom-base-image"></a>カスタム ベース イメージを作成する
 
 このセクションの手順では、Azure Container Registry にカスタム Docker イメージを作成する方法について説明します。
 
@@ -162,7 +164,7 @@ Azure Container Registry を使用してイメージをビルドする方法の�
 
 Azure Container Registry に既存のイメージをアップロードする詳細については、[プライベート Docker コンテナー レジストリに最初のイメージをプッシュする](/azure/container-registry/container-registry-get-started-docker-cli)方法に関するページを参照してください。
 
-## <a name="use-a-custom-image"></a>カスタム イメージを使用する
+## <a name="use-a-custom-base-image"></a>カスタム ベース イメージを使用する
 
 カスタム イメージを使用するには、次の情報が必要です。
 
@@ -174,7 +176,7 @@ Azure Container Registry に既存のイメージをアップロードする詳�
 
     この情報がわからない場合は、イメージを含む Azure Container Registry の管理者に相談してください。
 
-### <a name="publicly-available-images"></a>一般公開されているイメージ
+### <a name="publicly-available-base-images"></a>一般公開されているベース イメージ
 
 Microsoft は、一般公開されているリポジトリにいくつかの docker イメージを提供しており、このセクションの手順で使用できます。
 

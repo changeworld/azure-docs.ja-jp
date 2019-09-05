@@ -10,13 +10,13 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 07/12/2019
-ms.openlocfilehash: 701c266705c16198f35cddc36cdf1d431331c2d2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 07/31/2019
+ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847934"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019111"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -220,9 +220,32 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > 子実行は、範囲外になると、自動的に完了とマークされます。
 
-子実行は 1 つずつ実行することも可能ですが、作成されるたびにネットワーク呼び出しが行われるので、実行をバッチ送信するよりも効率が下がります。
+多数の子実行を効率よく作成するには、[`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) メソッドを使用します。 実行を作成するたびにネットワーク呼び出しが行われるため、実行のバッチを作成した方が、1 つずつ作成するよりも効率的です。
 
-特定の親の子実行をクエリするには、[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) メソッドを使用します。
+### <a name="submit-child-runs"></a>子実行を送信する
+
+親実行から子実行を送信することもできます。 そうすることで、親実行と子実行の階層を作成することができます。子実行はそれぞれ異なるコンピューティング先で実行され、共通の親実行 ID で関連付けられます。
+
+親実行内から子実行を送信するには、["submit_child()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-) メソッドを使用します。 これを親実行スクリプト内で行うには、実行コンテキストを取得し、そのコンテキスト インスタンスの "submit_child" メソッドを使用して子実行を送信します。
+
+```python
+## In parent run script
+parent_run = Run.get_context()
+child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
+parent_run.submit_child(child_run_config)
+```
+
+次のようにすれば、子実行内から親実行 ID を確認できます。
+
+```python
+## In child run script
+child_run = Run.get_context()
+child_run.parent.id
+```
+
+### <a name="query-child-runs"></a>子実行を照会する
+
+特定の親の子実行をクエリするには、[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) メソッドを使用します。 "recursive = True" 引数を指定すると、入れ子になった子と孫のツリーを照会できます。
 
 ```python
 print(parent_run.get_children())

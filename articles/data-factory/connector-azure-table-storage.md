@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: bf28fb69d35256d65fdfd2c092ad48d0ad1281f9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985996"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061495"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -221,10 +221,8 @@ Azure Table をコピー先またはコピー元としてデータをコピー�
 
 Azure Table などのスキーマのないデータ ストアの場合、Data Factory は次のいずれかの方法でスキーマを推論します。
 
-* データセット定義で **structure** プロパティを使用してデータの構造を指定した場合、Data Factory はスキーマとしてこの構造を優先します。 この場合、行に列の値が含まれていないと、null 値が指定されます。
-* データセット定義で **structure** プロパティを使用してデータの構造を指定しなかった場合、Data Factory はデータの最初の行を使用してスキーマを推論します。 この場合、最初の行に完全なスキーマが含まれていないと、コピー操作の結果で一部の列が欠落します。
-
-スキーマのないデータ ソースでは、**structure** プロパティを使用してデータの構造を指定するのがベスト プラクティスです。
+* コピー アクティビティで列マッピングを指定した場合、Data Factory は、ソース側の列リストを使用してデータを取得します。 この場合、行に列の値が含まれていないと、null 値が指定されます。
+* コピー アクティビティで列マッピングを指定しない場合、Data Factory は、データの最初の行を使用してスキーマを推論します。 この場合、最初の行に完全なスキーマが含まれていない場合 (たとえば、一部の列に null 値がある場合)、コピー操作の結果で一部の列が欠落します。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 

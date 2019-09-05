@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0f2d3079de43767e61dfc1c8d77244da19f13a40
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898876"
+ms.locfileid: "69982710"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -30,7 +30,6 @@ Kubernetes は、標準の[セマンティック バージョニング](https://
 Example:
   1.12.14
   1.12.15
-  1.13.7
 ```
 
 バージョンのそれぞれの数字は、前のバージョンとの一般的な互換性を示します。
@@ -39,7 +38,7 @@ Example:
 * マイナー バージョンは、その他のマイナー リリースに対する下位互換性のある機能の変更が行われたときに変更されます。
 * 修正プログラムのバージョンは、下位互換性のあるバグ修正が行われたときに変更されます。
 
-通常、ユーザーは、実行中のマイナー バージョンの最新の修正プログラムのリリースを実行するよう努める必要があります。たとえば、運用環境クラスターが *1.13.6* 上にあり、*1.13.7* が *1.13* シリーズ用に使用できる最新の使用可能な修正プログラムのバージョンである場合は、クラスターに完全にパッチが適用されサポートされていることを確認できるようになったらすぐに、*1.13.7* にアップグレードする必要があります。
+通常、ユーザーは、実行中のマイナー バージョンの最新の修正プログラムのリリースを実行するよう努める必要があります。たとえば、運用環境クラスターが *1.12.14* 上にあり、*1.12.15* が *1.12* シリーズ用に使用できる最新の使用可能な修正プログラムのバージョンである場合は、クラスターに完全にパッチが適用されサポートされていることを確認できるようになったらすぐに、*1.12.15* にアップグレードする必要があります。
 
 ## <a name="kubernetes-version-support-policy"></a>Kubernetes バージョン サポート ポリシー
 

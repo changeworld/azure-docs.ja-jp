@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 14ced5ed45bcc91e6b6c812f2d1cbb61e139cc4f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897680"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278946"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -37,7 +37,7 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
 
 - モデル。 トレーニング済みのモデルがない場合、[こちらのチュートリアル](https://aka.ms/azml-deploy-cloud)で与えられたモデルと依存関係のファイルを使用できます。
 
-- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://aka.ms/aml-sdk)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-vscode-tools.md)。
+- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-vscode-tools.md)。
 
 ## <a name="connect-to-your-workspace"></a>ワークスペースに接続する
 
@@ -78,12 +78,29 @@ VS Code を使用するときは、グラフィカル インターフェイス�
 
 + **SDK を使用する**
 
-  ```python
-  model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
-  print(model.name, model.id, model.version, sep='\t')
-  ```
+  SDK を使用してモデルをトレーニングする場合、モデルのトレーニング方法に応じて、[Run](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) オブジェクトまたは [AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) オブジェクトを受け取ることができます。 各オブジェクトは、実験の実行によって作成されたモデルを登録するために使用できます。
 
-  `model_path` では、クラウドでのモデルの場所が示されています。 この例では、1 つのファイルへのパスが使用されます。 モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているディレクトリに設定します。
+  + `azureml.core.Run` オブジェクトからモデルを登録する
+ 
+    ```python
+    model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
+    print(model.name, model.id, model.version, sep='\t')
+    ```
+
+    `model_path` では、クラウドでのモデルの場所が示されています。 この例では、1 つのファイルへのパスが使用されます。 モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているディレクトリに設定します。 詳細については、[Run.register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) リファレンスを参照してください。
+
+  + `azureml.train.automl.run.AutoMLRun` オブジェクトからモデルを登録する
+
+    ```python
+        description = 'My AutoML Model'
+        model = run.register_model(description = description)
+
+        print(run.model_id)
+    ```
+
+    この例では、`metric` パラメーターと `iteration` パラメーターが指定されていません。これにより、最適なプライマリ メトリックを持つイテレーションが登録されます。 実行から返された `model_id` 値がモデル名の代わりに使用されます。
+
+    詳細については、[AutoMLRun.register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) リファレンスを参照してください。
 
 + **CLI を使用する**
 
@@ -154,9 +171,9 @@ Azure Machine Learning service 以外でトレーニングされたモデルの�
 * __エントリ スクリプト__。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
 
     > [!IMPORTANT]
-    > エントリ スクリプトは、モデルに固有のもので、受信要求データの形式、モデルで想定されるデータの形式、およびクライアントに返されるデータの形式を理解する必要があります。
+    > エントリ スクリプトはモデルに固有のものです。受信要求データの形式、モデルで想定されるデータの形式、およびクライアントに返されるデータの形式を理解しておく必要があります。
     >
-    > 要求データがモデルで使用できない形式になっている場合、スクリプトはそれを受け入れ可能な形式に変換できます。 また、応答をクライアントに返す前に変換することもできます。
+    > 要求データがモデルで使用できない形式になっている場合、スクリプトで受け入れ可能な形式に変換することができます。 また、応答をクライアントに返す前に変換することもできます。
 
     > [!IMPORTANT]
     > Azure Machine Learning SDK には、データストアまたはデータセットにアクセスするための Web サービスまたは IoT Edge のデプロイの手段は用意されていません。 デプロイの外部に格納されているデータにアクセスするためにデプロイされたモデルが必要な場合 (Azure Storage アカウントの場合など)、関連する SDK を使用してカスタム コード ソリューションを開発する必要があります。 たとえば、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) です。
@@ -184,6 +201,9 @@ Azure Machine Learning service 以外でトレーニングされたモデルの�
 モデルを登録するときに、レジストリ内のモデルを管理するために使用されるモデル名を指定します。 この名前は、ローカル ファイル システム上のモデル ファイルのパスを取得する [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) で使用します。 フォルダーまたはファイルのコレクションを登録した場合、この API では、これらのファイルを含むディレクトリのパスが返されます。
 
 モデルを登録する場合、ローカルに、またはサービスのデプロイ時に、モデルの配置場所に対応する名前を指定します。
+
+> [!IMPORTANT]
+> 自動機械学習を使用してモデルをトレーニングした場合、モデル名として `model_id` 値が使用されます。 自動化された ML でトレーニングされたモデルの登録とデプロイの例については、[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) を参照してください。
 
 下の例では (`sklearn_mnist` という名前で登録された) `sklearn_mnist_model.pkl` という名前の単一のファイルのパスが返されます。
 
@@ -416,7 +436,20 @@ def run(request):
 
 推論構成では、予測するモデルを構成する方法が説明されます。 この構成は、エントリ スクリプトの一部ではありません。これは、エントリ スクリプトを参照し、デプロイに必要なすべてのリソースを検索するために使用されます。 これは、後でモデルを実際にデプロイするときに使用します。
 
-次の例では、推論構成を作成する方法が示されています。 この構成では、ランタイム、エントリ スクリプト、および (必要に応じて) Conda 環境ファイルを指定します。
+推論構成は Azure Machine Learning 環境を使用して、デプロイに必要なソフトウェアの依存関係を定義できます。 環境では、トレーニングとデプロイに必要なソフトウェアの依存関係を作成、管理、再利用することができます。 次の例で、ワークスペースから環境を読み込み、推論構成でそれを使用する方法を示します。
+
+```python
+from azureml.core import Environment
+from azureml.core.model import InferenceConfig
+
+deploy_env = Environment.get(workspace=ws,name="myenv",version="1")
+inference_config = InferenceConfig(entry_script="x/y/score.py",
+                                   environment=deploy_env)
+```
+
+環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
+
+環境を使用せずに、依存関係を直接指定することもできます。 次の例では、conda ファイルからソフトウェアの依存関係を読み込む推論構成を作成する方法を示します。
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -468,10 +501,40 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-> [!TIP]
-> モデルをサービスとしてデプロイする前に、最適な CPU とメモリの要件を判断するためにプロファイリングを実行できます。 SDK または CLI を使用して、ご自分のモデルをプロファイリングできます。 詳細については、[profile()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) および [az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) のリファレンスを参照してください。
->
-> モデルのプロファイル結果は、`Run` オブジェクトとして出力されます。 詳細については、[ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) クラスのリファレンスを参照してください。
+#### <a name="profiling"></a>プロファイリング
+
+モデルをサービスとしてデプロイする前に、最適な CPU とメモリの要件を判断するためにプロファイリングを実行できます。 SDK または CLI を使用して、ご自分のモデルをプロファイリングできます。 次の例は、SDK からプロファイリングを使用する方法を示しています。
+
+> [!IMPORTANT]
+> プロファイリングを使用する場合、指定した推論構成で Azure Machine Learning 環境を参照することはできません。 代わりに、`InferenceConfig` オブジェクトの `conda_file` パラメーターを使用して、ソフトウェアの依存関係を定義します。
+
+```python
+import json
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10]
+]})
+
+profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
+profile.wait_for_profiling(true)
+profiling_results = profile.get_results()
+print(profiling_results)
+```
+
+このコードでは、次のテキストのような結果が表示されます。
+
+```python
+{'cpu': 1.0, 'memoryInGB': 0.5}
+```
+
+モデルのプロファイル結果は、`Run` オブジェクトとして出力されます。
+
+CLI からプロファイリングを使用する方法については、「[az ml モデル プロファイル](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)」を参照してください。
+
+詳細については、次のリファレンス ドキュメントを参照してください。
+
+* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
+* [profile()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
+* [推論構成ファイル スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>ターゲットにデプロイする
 
@@ -499,7 +562,7 @@ print(service.state)
 CLI を使用してデプロイするには、次のコマンドを使用します。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
@@ -742,7 +805,136 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 * [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
+## <a name="package-models"></a>モデルのパッケージ化
+
+場合によっては、モデルをデプロイせずに Docker イメージを作成することが必要になることがあります。 たとえば、[Azure App Service へのデプロイ](how-to-deploy-app-service.md)を計画しているとします。 または、イメージをダウンロードして、ローカルの Docker インストールで実行することが必要な場合もあります。 さらに、イメージのビルドに使用するファイルをダウンロードし、それらを検査および変更して、手動でビルドすることが必要な場合もあります。
+
+モデルのパッケージ化により、これらの両方を行うことができます。 モデルを Web サービスとしてホストするために必要なすべてのアセットをパッケージ化し、完全にビルドされた Docker イメージまたはビルドに必要なファイルをダウンロードすることができます。 モデルのパッケージ化を使用するには、次の 2 つの方法があります。
+
+* __パッケージ化されたモデルをダウンロードする__:モデルと、それを Web サービスとしてホストするために必要なその他のファイルを含む Docker イメージダウンロードします。
+* __dockerfile を生成する__:Docker イメージをビルドするために必要な dockerfile、モデル、エントリ スクリプト、およびその他のアセットをダウンロードします。 その後、イメージをローカルでビルドする前に、それらのファイルを検査するか、変更を加えることができます。
+
+どちらのパッケージも、ローカルの Docker イメージを取得するために使用できます。 
+
+> [!TIP]
+> パッケージの作成は、登録済みのモデルと推論構成を使用するため、モデルのデプロイに似ています。
+
+> [!IMPORTANT]
+> 完全にビルドされたイメージをダウンロードしたり、イメージをローカルでビルドしたりするなどの機能を使用するには、開発環境に [Docker](https://www.docker.com) が正しくインストールされている必要があります。
+
+### <a name="download-a-packaged-model"></a>パッケージ化されたモデルをダウンロードする
+
+次の例は、ワークスペースの Azure Container Registry に登録されているイメージをビルドする方法を示しています。
+
+```python
+package = Model.package(ws, [model], inference_config)
+package.wait_for_creation(show_output=True)
+```
+
+パッケージを作成した後、`package.pull()` を使用して、ローカルの Docker 環境にイメージをプルできます。 このコマンドの出力には、イメージの名前が表示されます。 たとえば、「 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338` 」のように入力します。 ダウンロードした後、`docker images` コマンドを使用してローカル イメージを一覧表示します。
+
+```text
+REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
+```
+
+このイメージを使用してローカル コンテナーを開始するには、次のコマンドを使用して、シェルまたはコマンド ラインから名前付きコンテナーを開始します。 `<imageid>` 値を、`docker images` コマンドから返されたイメージ ID に置き換えます。
+
+```bash
+docker run -p 6789:5001 --name mycontainer <imageid>
+```
+
+このコマンドは、`myimage` という名前のイメージの最新バージョンを起動します。 これはローカル ポート 6789 を、Web サービスがリッスンしているコンテナー内のポート (5001) にマップします。 また、コンテナーに `mycontainer` という名前を割り当てます。これにより、停止が簡単になります。 開始したら、`http://localhost:6789/score` に要求を送信できます。
+
+### <a name="generate-dockerfile-and-dependencies"></a>dockerfile および依存関係を生成する
+
+次の例では、イメージをローカルでビルドするために必要な dockerfile、モデル、およびその他のアセットをダウンロードする方法を示します。 `generate_dockerfile=True` パラメーターは、完全にビルドされたイメージではなく、それらのファイルが必要であることを示します。
+
+```python
+package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
+package.wait_for_creation(show_output=True)
+# Download the package
+package.save("./imagefiles")
+# Get the Azure Container Registry that the model/dockerfile uses
+acr=package.get_container_registry()
+print("Address:", acr.address)
+print("Username:", acr.username)
+print("Password:", acr.password)
+```
+
+このコードは、イメージをビルドするために必要なファイルを `imagefiles` ディレクトリにダウンロードします。 保存ファイルに含まれている dockerfile は、Azure Container Registry に格納されている基本イメージを参照します。 ローカルの Docker インストールでイメージをビルドする場合、アドレス、ユーザー名、およびパスワードを使用して、このレジストリに対して認証を行う必要があります。 ローカルの Docker インストールを使用してイメージをビルドするには、次の手順に従います。
+
+1. シェルまたはコマンド ライン セッションから、次のコマンドを使用して Azure Container Registry で Docker を認証します。 `<address>`、`<username>`、および `<password>` を、`package.get_container_registry()` を使用して取得した値に置き換えます。
+
+    ```bash
+    docker login <address> -u <username> -p <password>
+    ```
+
+2. イメージをビルドするには、次のコマンドを使用します。 `<imagefiles>` を、`package.save()` でファイルを保存したディレクトリへのパスに置き換えます。
+
+    ```bash
+    docker build --tag myimage <imagefiles>
+    ```
+
+    このコマンドは、イメージ名を `myimage` に設定します。
+
+イメージがビルドされたことを確認するには、`docker images` コマンドを使用します。 `myimage` イメージが一覧に表示されます。
+
+```text
+REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
+<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43GB
+myimage         latest              739f22498d64        3 minutes ago       1.43GB
+```
+
+このイメージに基づいて新しいコンテナーを開始するには、次のコマンドを使用します。
+
+```bash
+docker run -p 6789:5001 --name mycontainer myimage:latest
+```
+
+このコマンドは、`myimage` という名前のイメージの最新バージョンを起動します。 これはローカル ポート 6789 を、Web サービスがリッスンしているコンテナー内のポート (5001) にマップします。 また、コンテナーに `mycontainer` という名前を割り当てます。これにより、停止が簡単になります。 開始したら、`http://localhost:6789/score` に要求を送信できます。
+
+### <a name="example-client-to-test-the-local-container"></a>ローカル コンテナーをテストするクライアントの例
+
+次のコードは、コンテナーで使用できる Python クライアントの例です。
+
+```python
+import requests
+import json
+
+# URL for the web service
+scoring_uri = 'http://localhost:6789/score'
+
+# Two sets of data to score, so we get two results back
+data = {"data":
+        [
+            [ 1,2,3,4,5,6,7,8,9,10 ],
+            [ 10,9,8,7,6,5,4,3,2,1 ]
+        ]
+        }
+# Convert to JSON string
+input_data = json.dumps(data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.text)
+```
+
+他のプログラミング言語でのクライアントの例については、[Web サービスとしてデプロイされたモデルの使用](how-to-consume-web-service.md)に関する記事を参照してください。
+
+### <a name="stop-the-docker-container"></a>Docker コンテナーを停止する
+
+コンテナーを停止するには、別のシェルまたはコマンド ラインから次のコマンドを使用します。
+
+```bash
+docker kill mycontainer
+```
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
 デプロイされた Web サービスを削除するには、`service.delete()` を使用します。
 登録済みのモデルを削除するには、`model.delete()` を使用します。
 

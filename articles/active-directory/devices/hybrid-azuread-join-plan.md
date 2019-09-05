@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 6c6980d11fa5fe3733e351923d058d1ad0a1677e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562103"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084919"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -35,7 +35,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 この記事では、[Azure Active Directory でのデバイス ID 管理の概要](../device-management-introduction.md)を理解していることを前提とします
 
 > [!NOTE]
-> Windows 10 のハイブリッド Azure AD 参加に必要なドメイン機能とフォレスト機能の最小レベルは Windows Server 2008 R2 です。
+> Windows 10 の Hybrid Azure AD 参加に最低限必要なドメイン コントローラー バージョンは、Windows Server 2008 R2 です。
 
 ## <a name="plan-your-implementation"></a>実装の計画
 
@@ -64,7 +64,7 @@ Windows デスクトップ オペレーティング システムを実行して�
 ### <a name="windows-down-level-devices"></a>ダウンレベルの Windows デバイス
 
 - Windows 8.1
-- Windows 7。 Windows 7 のサポート情報については、この記事「[Windows 7 のサポート終了が近づいています](https://www.microsoft.com/windowsforbusiness/end-of-windows-7-support)」を参照してください
+- Windows 7。 Windows 7 のサポート情報については、この記事「[Windows 7 のサポート終了が近づいています](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)」を参照してください
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2
@@ -87,11 +87,13 @@ Hybrid Azure AD 参加は、FIPS に準拠している TPM ではサポートさ
 
 仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、そのスナップショットが、既にハイブリッド Azure AD 参加として Azure AD に登録されている VM からのものではないことを確認します。
 
-Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討することを強くお勧めします。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。
+Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
 
-- デバイスが Hybrid Azure AD 参加済みになった後、既存の Azure AD 登録済み状態は自動的に削除されます。
+- "<i>デバイスが Hybrid Azure AD 参加済みになった後</i>"、既存の Azure AD 登録済み状態は自動的に削除されます。
 - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます。
-- この変更は現在、KB4489894 が適用された Windows 10 1803 リリースでご利用いただけます。 ただし、Windows Hello for Business が構成されている場合、二重状態のクリーンアップ後に Windows Hello for Business を再設定する必要があります。
+- Windows 10 1803 では、Windows Hello for Business が構成されている場合、ユーザーは、二重状態のクリーンアップ後に Windows Hello for Business を再設定する必要があります。この問題は KB4512509 で解決されています
+
+
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の制御された検証を確認する
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11a4a17d7816d2302b6549cffb9517e10ad1258d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 270ebb6247e812d42ac84698d0073b41c639cb9a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442347"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011590"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps:Azure Machine Learning service でモデルを管理、デプロイ、および監視する
 
@@ -45,7 +45,7 @@ Azure Machine Learning の ML パイプラインを使用して、データの�
 モデルの登録によって、モデルを Azure クラウドに格納し、ワークスペースでバージョンを管理できます。 モデルのレジストリでは、トレーニングしたモデルの整理と追跡が容易に行えます。
 
 > [!TIP]
-> 登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、Microsoft Azure Machine Learning ワークスペースに単一モデルとしてそれらを登録できます。 登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
+> 登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、Azure Machine Learning ワークスペースに単一モデルとしてそれらを登録することができます。 登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
  
 登録されたモデルは、名前とバージョンによって識別されます。 モデルを登録するたびに、既存のモデルと同じ名前で登録され、レジストリによってバージョンがインクリメントされます。 モデルの検索時に使用できる追加のメタデータ タグを、登録中に指定することもできます。 Azure Machine Learning service は、Python 3.5.2 以上を使用して読み込むことができる任意のモデルをサポートしています。
 
@@ -139,9 +139,9 @@ Microsoft Power BI は、データ分析への機械学習モデルの使用を�
 
 Azure ML では、すべての ML 資産のエンド ツー エンドの監査証跡を追跡できます。 具体的には次の処理が行われます。
 
-- Azure ML が Git と統合し、コードがどのリポジトリ/ブランチ/コミットから発生しているのかについての情報が追跡されます。
-- Azure ML データセットにより、データの追跡とバージョン管理が容易になります。
-- Azure ML 実行履歴により、モデルをトレーニングするために使用されるコード、データ、コンピューティングが管理されます。
+- Azure ML が [Git と統合](how-to-set-up-training-targets.md#gitintegration)し、コードがどのリポジトリ、ブランチ、コミットから発生しているのかについての情報が追跡されます。
+- [Azure ML データセット](how-to-create-register-datasets.md)により、データの追跡とバージョン管理が容易になります。
+- Azure ML 実行履歴により、モデルをトレーニングするために使用されたコード、データ、コンピューティングのスナップショットが保存されます。
 - Azure ML モデル レジストリにより、モデルに関連するすべてのメタデータ (それをトレーニングした実験、それがデプロイされている場所、そのデプロイが正常かどうかなど) が取り込まれます。
 
 ## <a name="automate-the-end-to-end-ml-lifecycle"></a>エンド ツー エンドの ML ライフサイクルを自動化する 

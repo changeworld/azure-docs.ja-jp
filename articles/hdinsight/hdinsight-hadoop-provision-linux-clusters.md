@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 4159eed04ff1a4e81ea36a4d7f06f342a63fe367
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: c2aad97cea39221da56666dbeff72ce56fcb2a22
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442018"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113693"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -83,7 +83,7 @@ HDInsight クラスター名には次の制限があります。
 - 使用できる文字: a-z、0-9、A-Z 
 - 最大長:59
 - 予約済みの名前: apps
-- 一意である必要があります。
+- クラスターの名前付けのスコープは、すべてのサブスクリプションにわたる Azure 全体です。 そのため、クラスター名は世界全域で一意である必要があります。
 - 最初の 6 文字は VNET 内で一意である必要があります
 
 ## <a name="cluster-login-and-ssh-username"></a>クラスター ログインと SSH ユーザー名
@@ -256,6 +256,7 @@ Azure の仮想ネットワーク内で 2 つのクラスターの種類を使�
 
 ## <a name="next-steps"></a>次の手順
 
+- [Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 - [HDInsight、Apache Hadoop エコシステム、Hadoop クラスターの概要](hadoop/apache-hadoop-introduction.md)
 - [HDInsight で Apache Hadoop を使用する](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Windows PC から HDInsight の Apache Hadoop で作業する](hdinsight-hadoop-windows-tools.md)

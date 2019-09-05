@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 22a27ba19670344f351205b6a4865bf85daf0bab
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900267"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034579"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -33,7 +33,14 @@ ms.locfileid: "69900267"
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 |**問題の報告**|[問題を報告する](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
-## <a name="release-notes"></a>リリース ノート
+## <a name="release-notes-for-200-series"></a>2\.0.0 シリーズのリリース ノート
+2.0.0 シリーズは [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) に依存します。パフォーマンスが向上し、Cosmos DB エンドポイントに名前空間が統合されています。
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+* 2\.0.0 Table SDK の初期プレビューは [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) に依存します。パフォーマンスが向上し、Cosmos DB エンドポイントに名前空間が統合されています。 パブリック API は変わりません。
+
+## <a name="release-notes-for-100-series"></a>1\.0.0 シリーズのリリース ノート
+1.0.0 シリーズは [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) に依存します。
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
 * バグの修正
@@ -77,6 +84,12 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 このクロスプラットフォーム対応の .NET Standard ライブラリ [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) は、.NET Framework ライブラリ [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) を置き換えます。
 
+### <a name="200-series"></a>2.0.0 シリーズ
+| Version | リリース日 | 提供終了日 |
+| --- | --- | --- |
+| [2.0.0-preview](#2.0.0-preview) |2019 年 8 月 22 日 |--- |
+
+### <a name="100-series"></a>1.0.0 シリーズ
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
 | [1.0.5-preview](#1.0.5-preview) |2019 年 8 月 20 日 |--- |

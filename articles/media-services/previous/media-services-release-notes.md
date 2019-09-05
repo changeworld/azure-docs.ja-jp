@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991911"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019308"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -30,7 +30,7 @@ ms.locfileid: "65991911"
 お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム]に投稿してください。 
 
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>現在の既知の問題
-### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services の全般的な問題
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services の全般的な問題
 
 | 問題 | 説明 |
 | --- | --- |
@@ -42,8 +42,16 @@ ms.locfileid: "65991911"
 | 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。 |詳細については、[こちらのセクション](media-services-deliver-content-overview.md#known-issues)をご覧ください。 |
 | Media Services .NET SDK オブジェクトをシリアル化できないため、Azure Cache for Redis と連携しない。 |SDK AssetCollection オブジェクトをシリアル化して、Azure Cache for Redis に追加しようとすると、例外がスローされます。 |
 
-## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
+## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
+
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
+
+お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2019 年 11 月 30 日には廃止される予定です。
+
+詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -136,7 +144,7 @@ Media Services では、ストリーミング エンドポイントは、コン�
 
  Media Services を使用して、サービスのテレメトリ/メトリック データにアクセスできるようになりました。 現在のバージョンの Media Services を使用して、ライブ チャネル エンティティ、ストリーミング エンドポイント エンティ、およびアーカイブ エンティティのテレメトリ データを取得できます。 詳細については、[Media Services テレメトリ](media-services-telemetry-overview.md)に関するページをご覧ください。
 
-## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>2016 年 7 月のリリース
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>2016 年 7 月のリリース
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>エンコード タスクによって生成されたマニフェスト ファイル (* ISM) への更新
 エンコード タスクが Media Encoder Standard または Media Encoder Premium に送信されると、そのエンコード タスクによって、[ストリーミング マニフェスト ファイル](media-services-deliver-content-overview.md) (*.ism) が出力アセットに生成されます。 最新のサービス リリースでは、このストリーミング マニフェスト ファイルの構文が更新されました。
 

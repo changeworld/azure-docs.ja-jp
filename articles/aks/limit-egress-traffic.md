@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9476290669606f6eb6c56b51497f3026b9613698
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639778"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034963"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でクラスター ノードのエグレス トラフィックを制限し、必要なポートとサービスへのアクセスを制御する
 
@@ -85,15 +85,13 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 |----------------------------|-----------|----------|
 | *.hcp.\<location\>.azmk8s.io | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | *.tun.\<location\>.azmk8s.io | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
-| aksrepos.azurecr.io        | HTTPS: 443 | このアドレスは、Azure Container Registry (ACR) 内のイメージにアクセスするために必要です。 |
+| aksrepos.azurecr.io        | HTTPS: 443 | このアドレスは、Azure Container Registry (ACR) 内のイメージにアクセスするために必要です。 このレジストリには、クラスターのアップグレード時およびスケール時にクラスターの機能に必要なサードパーティのイメージ/グラフ (メトリックサーバー、コア DNS など) が含まれています。|
 | *.blob.core.windows.net    | HTTPS: 443 | このアドレスは ACR に保存されているイメージのバックエンド ストアです。 |
-| mcr.microsoft.com          | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 |
+| mcr.microsoft.com          | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、クラスターのアップグレード時およびスケール時にクラスターの機能に必要なファーストパーティのイメージ/グラフ (moby など) が含まれています。 |
 | *.cdn.mscr.io              | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | management.azure.com       | HTTPS: 443 | このアドレスは、Kubernetes の GET/PUT 操作に必要です。 |
 | login.microsoftonline.com  | HTTPS: 443 | このアドレスは Azure Active Directory 認証に必要です。 |
-| api.snapcraft.io           | HTTPS: 443、HTTP: 80 | このアドレスは、Linux ノードにスナップ パッケージをインストールするために必要です。 |
 | ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
-| *.docker.io                | HTTPS: 443 | このアドレスは、トンネル フロントに必要なコンテナー イメージをプルするために必要です。 |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>AKS クラスターの省略可能な推奨されるアドレスとポート
 
@@ -103,7 +101,7 @@ AKS クラスターが正常に機能するためには、以下の FQDN/アプ�
 
 | FQDN                                    | Port      | 用途      |
 |-----------------------------------------|-----------|----------|
-| *.ubuntu.com                            | HTTP: 80   | このアドレスを使用すると、Linux クラスター ノードから必要なセキュリティ パッチと更新プログラムをダウンロードできます。 |
+| security.ubuntu.com、azure.archive.ubuntu.com、changelogs.ubuntu.com                           | HTTP: 80   | このアドレスを使用すると、Linux クラスター ノードから必要なセキュリティ パッチと更新プログラムをダウンロードできます。 |
 | packages.microsoft.com                  | HTTPS: 443 | このアドレスは、キャッシュされた *apt-get* 操作に使用される Microsoft パッケージ リポジトリです。 |
 | dc.services.visualstudio.com            | HTTPS: 443 | Azure Monitor を使用した適切なメトリックと監視のために推奨されます。 |
 | *.opinsights.azure.com                  | HTTPS: 443 | Azure Monitor を使用した適切なメトリックと監視のために推奨されます。 |

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/29/2019
+ms.date: 08/25/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499656"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033318"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -80,6 +80,8 @@ Azure AD Privileged Identity Management (PIM) により、Azure AD、Azure、お
 また、エンタイトルメント管理やアクセス レビューの使用を開始したり、利用規約を確認したりするために、Azure portal の **Identity Governance**の [Getting started]\(作業の開始\) タブを確認することもできます。
 
 ![Identity Governance の作業の開始](./media/identity-governance-overview/getting-started.png)
+
+Identity Governance 機能についてフィードバックがありましたら、Azure portal から **[Got feedback?]\(フィードバックがありますか\)** をクリックしてお寄せください。 お客様からのフィードバックは、チームにて定期的に検討しております。
 
 ## <a name="next-steps"></a>次の手順
 

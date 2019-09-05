@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9073e00f5c3702e43665541bd8ff9e66c2bc505b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968398"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035142"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする
 
@@ -103,25 +103,27 @@ KCD を構成するには、コネクタ コンピューターごとに以下の
 
 アプリケーションの設定を完了するには、 **[ユーザーとグループ]**   セクションに移動し、このアプリケーションにアクセスするユーザーを割り当てます。
 
-## <a name="step-3-register-the-native-app-and-grant-access-to-the-api"></a>手順 3:ネイティブ アプリを登録して API へのアクセス権を付与する
+## <a name="step-3-modify-the-reply-uris-for-the-application"></a>手順 3:アプリケーションの応答 URI を変更する
 
-ネイティブ アプリは、プラットフォームまたはデバイスで使用するために開発されたプログラムです。 Power BI Mobile アプリが API に接続してアクセスできるようにするには、Azure AD に登録する必要があります。  
+Power BI モバイル アプリがレポート サービスに接続してアクセスできるようにするには、手順 2 で自動的に作成されたアプリケーションの登録を構成する必要があります。 
 
-1. 「[ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](application-proxy-configure-native-client-application.md#step-2-register-your-native-application)」の手順 2 に従って、Azure AD でアプリケーションを登録します。
+1. Azure Active Directory の **[概要]** ページで、 **[アプリの登録]** を選択します。
+2. **[すべてのアプリケーション]** タブで、手順 2 で作成したアプリケーションを検索します。
+3. そのアプリケーションを選択し、 **[認証]** を選択します。
+4. 使用しているプラットフォームに基づいて、次のリダイレクト URI を追加します。
 
-   Power BI Mobile **iOS** 用のアプリを登録するときは、次のリダイレクト URI を追加します。
+   Power BI Mobile **iOS** 向けのアプリを構成する場合は、パブリック クライアント (モバイルとデスクトップ) という種類の次のリダイレクト URI を追加します。
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Power BI Mobile **Android** 用のアプリを登録するときは、次のリダイレクト URI を追加します。
+   Power BI Mobile **Android** 向けのアプリを構成する場合は、パブリック クライアント (モバイルとデスクトップ) という種類の次のリダイレクト URI を追加します。
    - `urn:ietf:wg:oauth:2.0:oob`
+   - `mspbi-adal://com.microsoft.powerbimobile`
 
    > [!IMPORTANT]
-   > アプリケーションが正常に動作するには、リダイレクト URI を追加する必要があります。
-
-ネイティブ アプリケーションを登録したので、ディレクトリ内の他のアプリケーションに対するアクセス権を付与できます。この場合は、アプリケーション プロキシを介して公開された Reporting Services へのアクセス権です。 「[手順 3:プロキシ アプリケーションへのアクセスを許可する](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)」の手順を実行します。
+   > アプリケーションが正常に動作するには、リダイレクト URI を追加する必要があります。 Power BI Mobile iOS と Android 両方に対応したアプリを構成する場合は、iOS 用に構成されたリダイレクト URI の一覧に、パブリック クライアント (モバイルとデスクトップ) という種類のリダイレクト URI として `urn:ietf:wg:oauth:2.0:oob` を追加してください。
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>手順 4:Power BI Mobile アプリから接続する
 

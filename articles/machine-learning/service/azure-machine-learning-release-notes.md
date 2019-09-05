@@ -8,20 +8,99 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 07/25/2019
+ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828617"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971506"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
-この記事では、Azure Machine Learning service の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk) のリファレンス ページを参照してください。
+この記事では、Azure Machine Learning service の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk) のリファレンス ページを参照してください。 
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Azure Machine Learning SDK for Python v1.0.57
++ **新機能**
+  + `TabularDataset` を AutomatedML で使用できるようにしました。 `TabularDataset` の詳細については、 https://aka.ms/azureml/howto/createdatasets にアクセスしてください。
+  
++ **バグの修正と機能強化**
+  + **automl-client-core-nativeclient**
+    + トレーニングおよび検証ラベル (y と y_valid) が NumPy 配列ではなく、Pandas データフレームの形式で提供されるときに発生するエラーを修正しました。
+    + `RawDataContext` の作成にデータと `AutoMLBaseSettings` オブジェクトのみを必要とするようにインターフェイスを更新しました。
+    +  AutoML ユーザーが予測時に十分な長さではないトレーニング シリーズをドロップできるようにしました。 - AutoML ユーザーが予測時にトレーニング セットに存在しないテスト セットからグレインをドロップできるようにしました。
+  + **azure-cli-ml**
+    + Microsoft が生成した証明書と顧客証明書の両方について、AKS クラスターにデプロイされたスコアリング エンドポイントの SSL 証明書を更新できるようになりました。
+  + **azureml-automl-core**
+    + ラベルのない行が正常に削除されなかった AutoML の問題を修正しました。
+    + AutoML のエラー ログ記録を改良し、常にエラー メッセージ全文がログ ファイルに書き込まれるようになりました。
+    + AutoML のパッケージのピン留めを更新し、`azureml-defaults`、`azureml-explain-model`、および `azureml-dataprep` が追加されました。 AutoML で、パッケージの不一致に関する警告は表示されなくなりました (`azureml-train-automl` パッケージを除く)。
+    + cv の分割によるサイズの不一致が原因でビンの計算が失敗する、時系列の問題を修正しました。
+    + 種類がクロス検証のトレーニングに対してアンサンブル イテレーションを実行するときに、データセット全体でトレーニングされたモデルのダウンロードに問題が発生した場合、モデルの重みと投票アンサンブルに取り込まれていたモデルとの間に矛盾がありました。
+    + トレーニングおよび検証ラベル (y と y_valid) が NumPy 配列ではなく、Pandas データフレームの形式で提供されるときに発生するエラーを修正しました。
+    + 入力テーブルのブール値の列が None になったときの予測タスクの問題を修正しました。
+    + AutoML ユーザーが予測時に十分な長さではないトレーニング シリーズをドロップできるようにしました。 - AutoML ユーザーが予測時にトレーニング セットに存在しないテスト セットからグレインをドロップできるようにしました。
+  + **azureml-core**
+    + Blob_cache_timeout パラメーターの順序付けに関する問題を修正しました。
+    + 外部例外 fit 型 および transform 型をシステム エラーに追加しました。
+    + リモート実行のための Key Vault シークレットのサポートが追加されました。 ワークスペースに関連付けられている keyvault のシークレットを追加、取得、一覧表示するための azureml.core.keyvault.Keyvault クラスを追加しました。 サポートされている操作は次のとおりです。
+      + azureml.core.workspace.Workspace.get_default_keyvault()
+      + azureml.core.keyvault.Keyvault.set_secret(name, value)
+      + azureml.core.keyvault.Keyvault.set_secrets(secrets_dict)
+      + azureml.core.keyvault.Keyvault.get_secret(name)
+      + azureml.core.keyvault.Keyvault.get_secrets(secrets_list)
+      + azureml.core.keyvault.Keyvault.list_secrets()
+    + リモート実行中に既定のキー コンテナーやシークレットを取得する、次のメソッドを追加しました。
+      + azureml.core.workspace.Workspace.get_default_keyvault()
+      + azureml.core.run.Run.get_secret(name)
+      + azureml.core.run.Run.get_secrets(secrets_list)
+    + submit-hyperdrive CLI コマンドを送信するオーバーライド パラメーターをさらに追加しました。
+    + API 呼び出しの信頼性を向上させ、再試行を一般的な要求のライブラリ例外に拡大します。
+    + 送信済みの実行からの実行を送信するためのサポートを追加します。
+    + 最初のトークンの有効期限が切れた後にファイルがアップロードされない原因となった FileWatcher の期限が切れる SAS トークンの問題を修正しました。
+    + データセット Python SDK への HTTP csv/tsv ファイルのインポートがサポートされるようになりました。
+    + Workspace.setup() メソッドを非推奨にしました。 ユーザーに表示される警告メッセージとして、代わりに create() または get()/fromconfig() の使用が推奨されます。
+    + Environment.add_private_pip_wheel() を追加しました。これにより、カスタマイズしたプライベート Python パッケージ (.whl) をワークスペースにアップロードし、それらを安全に利用して環境をビルド/具体化できるようにしました。
+    + Microsoft が生成した証明書と顧客証明書の両方について、AKS クラスターにデプロイされたスコアリング エンドポイントの SSL 証明書を更新できるようになりました。
+  + **azureml-explain-model**
+    + アップロードの説明にモデル ID を追加するためのパラメーターを追加しました。
+    + メモリとアップロードの説明に `is_raw` のタグを追加しました。
+    + PyTorch のサポートと azureml-explain-model パッケージに対するテストを追加しました。
+  + **azureml-opendatasets**
+    + 自動テスト環境の検出とログ記録をサポートします。
+    + 米国の人口を郡および ZIP コード別に取得するクラスを追加しました。
+  + **azureml-pipeline-core**
+    + 入力ポートと出力ポートの定義にラベル プロパティが追加されました。
+  + **azureml-telemetry**
+    + 不適切なテレメトリ構成を修正しました。
+  + **azureml-train-automl**
+    + セットアップ失敗時に、セットアップ実行に対して [エラー] フィールドにログが記録されず、そのため親の実行の [エラー] に格納されなかったバグを修正しました。
+    + ラベルのない行が正常に削除されなかった AutoML の問題を修正しました。
+    + AutoML ユーザーが予測時に十分な長さではないトレーニング シリーズをドロップできるようにしました。
+    + AutoML ユーザーが予測時にトレーニング セットに存在しないテスト セットからグレインをドロップできるようにしました。
+    + AutoMLStep で、新しい構成パラメーターの変更や追加に関する問題を回避するために、AutoML の構成がバックエンドにパススルーされるようになりました。
+  + **azureml-train-core**
+    + PyTorch エスティメーターに torch 1.2 のサポートが追加されました。
+  + **azureml-widgets**
+    + 分類トレーニングのために混同行列グラフを改良しました。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure Machine Learning Data Prep SDK v1.1.12
++ **新機能**
+  + 文字列のリストを入力として `read_*` メソッドに渡すことができるようになりました。
+
++ **バグの修正と機能強化**
+  + `read_parquet` を Spark で 実行するときのパフォーマンスが大幅に向上しています。
+  + あいまいな日付形式の列が 1 つ存在することで `column_type_builder` が失敗する問題を修正しました。
+
+### <a name="azure-portal"></a>Azure Portal
++ **プレビュー機能**
+  + ログと出力ファイルのストリーミングが、[実行の詳細] ページで使用できるようになりました。 プレビューの切り替えが有効になっている場合、ファイルによってリアルタイムで更新がストリーミングされます。
+  + ワークスペース レベルでクォータを設定する機能がプレビューでリリースされます。 AmlCompute クォータはサブスクリプション レベルで割り当てられますが、ワークスペース間でそのクォータを配分し、公平な共有とガバナンスのために割り当てることができるようになりました。 ワークスペースの左側のナビゲーション バーにある **[Usages+Quotas]\(使用量 + クォータ\)** ブレードをクリックして、 **[Configure Quotas]\(クォータの構成\)** タブを選択します。これはワークスペースをまたぐ操作であるため、ワークスペース レベルでクォータを設定できるようにするには、サブスクリプション管理者である必要があることに注意してください。
 
 ## <a name="2019-08-05"></a>2019-08-05
 

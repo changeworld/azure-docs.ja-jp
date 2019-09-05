@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 684491b546a0456d936ae199cdfb93180aa05043
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ea95b91d57255db8f638e600d57a98db314cd80f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607029"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113524"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
@@ -99,11 +99,22 @@ Azure Monitor によって収集されるメトリックのソースには、基
 
 ## <a name="retention-of-metrics"></a>メトリックの保有期間
 Azure の多くのリソースでは、メトリックは 93 日間保存されます。 ただし、例外があります。
-  * **クラシック ゲストの OS メトリック**。 クラシック ゲストの OS メトリックは 14 日間保持されます。 保有期間が長い場合、[Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) を使用して収集した新規ゲスト OS メトリックを使用し、Linux 仮想マシンの場合は [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を使用することをお勧めします。
-  * **Application Insights ログベースのメトリック** バック グラウンドで[ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md)をログ クエリに変換します。 そのリテンション期間は、基になるログのイベントのリテンション期間と一致します。 Application Insights リソースの場合、ログは 90 日間保存されます。 
+
+**ゲスト OS メトリック**
+-   **クラシック ゲストの OS メトリック**。 これらは [Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) または [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) によって収集され、Azure ストレージ アカウントにルーティングされるパフォーマンス カウンターです。 これらのメトリックの保有期間は 14 日です。
+-   **Azure Monitor メトリックに送信されるゲスト OS メトリック**。 これらは Windows Diagnostic Extension (WAD) によって収集され、[Azure Monitor シンク](diagnostics-extension-overview.md#data-storage)に送信されるか、Linux マシン上の [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を介して収集されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 93 日です。
+-   **Log Analytics エージェントによって収集されるゲスト OS メトリック**。 これらは、Log Analytics エージェントによって収集され、Log Analytics ワークスペースに送信されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 31 日で、最大 2 年間まで延長できます。
+
+**Application Insights ログベースのメトリック** 
+- バック グラウンドで[ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md)をログ クエリに変換します。 そのリテンション期間は、基になるログのイベントのリテンション期間と一致します。 Application Insights リソースの場合、ログは 90 日間保存されます。
+
 
 > [!NOTE]
 > 長期的な傾向を見るために、[Azure Monitor リソースのプラットフォーム メトリックを Log Analytics ワークスペースに送信](diagnostic-logs-stream-log-store.md)できます。
+
+
+
+
 
 ## <a name="next-steps"></a>次の手順
 

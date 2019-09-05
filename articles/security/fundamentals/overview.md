@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8e8b4ed3e101a13d369fff7b47ecbb00f8c04a52
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 30ec36067b4a047478abc294361b015d12d21319
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899803"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129347"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -270,6 +270,7 @@ Web アプリケーション ファイアウォール (WAF) は [Azure Applicati
 
 
 Web 攻撃に対する保護を提供する Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、侵入の脅威からアプリケーションがより確実に保護されます。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールを備えたアプリケーション ゲートウェイに簡単に変換できます。
+
 ### <a name="traffic-manager"></a>Traffic Manager
 [Microsoft Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) では、さまざまなデータ センターのサービス エンドポイントへのユーザー トラフィックの分散を制御できます。 Traffic Manager でサポートされるサービス エンドポイントには、Azure VM、Web アプリケーション、およびクラウド サービスが含まれます。 Azure 以外の外部エンドポイントで Traffic Manager を使用することもできます。 Traffic Manager では、ドメイン ネーム システム (DNS) を使用して、[トラフィック ルーティング方法](../../traffic-manager/traffic-manager-routing-methods.md)とエンドポイントの正常性に基づいて最適なエンドポイントにクライアント要求を送信します。
 
@@ -295,18 +296,8 @@ NSG に対して、以下の診断ログ カテゴリを有効にできます。
 -   ルール カウンター:トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。 ネットワークに関する推奨事項は、ファイアウォール、ネットワーク セキュリティ グループ、受信トラフィック規則の構成などが中心です。
 
-ネットワークに関する利用可能な推奨事項は次のとおりです。
-
--   [次世代のファイアウォールの追加](../../security-center/security-center-add-next-generation-firewall.md)セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。
-
--   [NGFW 経由のみでトラフィックをルーティングする](../../security-center/security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)。 VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループ (NSG) の規則を構成することをお勧めします。
-
--   [サブネットまたは仮想マシンでのネットワーク セキュリティ グループの有効化](../../security-center/security-center-enable-network-security-groups.md)サブネットまたは VM で NSG を有効にすることをお勧めします。
-
--   [インターネットに接続するエンドポイント経由のアクセスを制限する](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md)。NSG の着信トラフィック規則を構成することをお勧めします。
-
+[Azure Security Center](../../security-center/security-center-intro.md) では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/security-center-recommendations.md)が作成されます。
 
 ## <a name="compute"></a>Compute
 
@@ -374,7 +365,7 @@ Microsoft では、複数のセキュリティ上の方法およびテクノロ�
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) は、Azure Active Directory のプレミアム機能で、組織の従業員が使用しているクラウド アプリケーションを特定することができます。
 
-- [Azure Active Directory ID Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) は、 Azure Active Directory の異常検出機能を使用して、リスク イベントと、組織の ID に影響を与える可能性のある潜在的な脆弱性に対して統合ビューを提供するセキュリティ サービスです。
+- [Azure Active Directory ID Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) は、Azure Active Directory の異常検出機能を使用して、リスク検出と、組織の ID に影響を与える可能性のある潜在的な脆弱性に対して統合ビューを提供するセキュリティ サービスです。
 
 - [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) によって、ドメイン コントローラーをデプロイせずに、Azure 仮想マシンをドメインに参加させることができます。 ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、各種リソースにシームレスにアクセスできます。
 
