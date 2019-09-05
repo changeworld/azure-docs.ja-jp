@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2ec3872b9e11830f7891e98f5fc0182b99e1586d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4bf2e057f4c5dad650834f9b42c75be3aedec46e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997340"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142855"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure リソースのロール定義の概要
 
@@ -165,7 +165,7 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者](buil
 | [Azure for .NET](/dotnet/azure/) | 2.8.0 プレビュー以降 |
 | [Azure SDK for Go](/azure/go/azure-sdk-go-install) | 15.0.0 以降 |
 | [Azure for Java](/java/azure/) | 1.9.0 以降 |
-| [Azure for Python](/python/azure) | 0.40.0 以降 |
+| [Azure for Python](/azure/python/) | 0.40.0 以降 |
 | [Azure SDK for Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 以降 |
 
 REST API でデータ操作を確認して使用するには、次のバージョン以降に **api-version** パラメーターを設定する必要があります。
