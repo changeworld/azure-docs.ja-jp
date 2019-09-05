@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/16/2019
-ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575778"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035771"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -279,6 +279,9 @@ ms.locfileid: "69575778"
    > NSG セキュリティ規則が正しく構成されていないと、データベースのコピー操作が停止します。
 
 7. セカンダリ インスタンスが正しい DNS ゾーン ID で設定されます。 DNS ゾーンはマネージド インスタンスのプロパティであり、ホスト名のアドレスにその ID が含まれます。 ゾーン ID は、各 VNet で最初のマネージド インスタンスが作成されたとき、ランダムな文字列として生成され、同じ ID が同じサブネットの他のすべてのインスタンスに割り当てられます。 一度割り当てられると、DNS ゾーンは変更できません。 同じフェールオーバー グループに属するマネージド インスタンスでは、DNS ゾーンが共有される必要があります。 これは、セカンダリ インスタンスの作成時、プライマリ インスタンスのゾーン ID を DnsZonePartner パラメーターの値として渡すことで実行します。 
+
+   > [!NOTE]
+   > マネージド インスタンスを使用したフェールオーバー グループの構成の詳細なチュートリアルについては、[フェールオーバー グループへのマネージド インスタンスの追加](sql-database-managed-instance-failover-group-tutorial.md)に関する記事を参照してください。
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>プライマリ データベースのアップグレードまたはダウングレード
 

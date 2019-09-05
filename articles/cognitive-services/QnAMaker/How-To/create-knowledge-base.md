@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2cacc8cc6d7c22a93f46007e8150a4e55dc7650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967710"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012824"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>クイック スタート:QnA Maker API サービス ポータルを使用してナレッジ ベースを作成する
 
@@ -45,24 +45,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![データ ソースの設定](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - サービスに**名前**を付けます。 重複した名前と特殊文字がサポートされています。
-    - 抽出するデータの URL を追加します。 サポートされているソースの種類については[こちら](../Concepts/data-sources-supported.md)をご覧ください。
-    - 抽出するデータのファイルをアップロードします。 追加できるドキュメントの数については、[価格情報](https://aka.ms/qnamaker-pricing)をご覧ください。
-    - QnA を手動で追加する場合、上の図に示した**手順 4** は省略できます。
+1. サービスには `my first kb` などの**名前**を付けます。 重複した名前と特殊文字がサポートされています。
 
-1. **おしゃべり**を KB に追加します。 いずれかのパーソナリティを選択して、おしゃべりのサポートをボットに追加します。 
+1. QnA Maker のトラブルシューティング ページを URL `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting` として追加し、`+ Add URL` を選択します。 サポートされているソースの種類については[こちら](../Concepts/data-sources-supported.md)をご覧ください。 このクイックスタートでは、抽出するデータの**ファイルをアップロードしないでください**。 追加できるドキュメントの数については、[価格情報](https://aka.ms/qnamaker-pricing)をご覧ください。
 
-    ![おしゃべりを KB に追加する](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. " **_プロ_" のおしゃべり**を KB に追加します。 
 
 1. **[Create your KB]\(KB の作成\)** を選択します。
 
     ![KB の作成](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. データが抽出されるまで数分かかります。
+1. データが抽出されるまでに数分かかることがあります。
 
     ![抽出](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-1. ナレッジ ベースが正常に作成されると、**ナレッジ ベース** ページにリダイレクトされます。
+1. ナレッジ ベースが正常に作成されると、 **[ナレッジ ベース]** ページにリダイレクトされます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

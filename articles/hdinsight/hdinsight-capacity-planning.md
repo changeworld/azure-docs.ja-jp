@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114305"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207164"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -60,7 +60,7 @@ Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#
 
 ## <a name="choose-a-cluster-type"></a>クラスターの種類の選択
 
-クラスターの種類によって、実行されるワークロード ([Apache Hadoop](https://hadoop.apache.org/)、[Apache Storm](https://storm.apache.org/)、[Apache Kafka](https://kafka.apache.org/)、[Apache Spark](https://spark.apache.org/) など) が決まります。HDInsight クラスターは、そのワークロードを実行するように構成されます。 使用できるクラスターの種類の詳細については、[Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight)に関するページを参照してください。 クラスターの種類ごとに、サイズとノード数の要件を含む特定のデプロイ トポロジがあります。
+クラスターの種類によって、実行されるワークロード ([Apache Hadoop](https://hadoop.apache.org/)、[Apache Storm](https://storm.apache.org/)、[Apache Kafka](https://kafka.apache.org/)、[Apache Spark](https://spark.apache.org/) など) が決まります。HDInsight クラスターは、そのワークロードを実行するように構成されます。 使用できるクラスターの種類の詳細については、[Azure HDInsight の概要](hdinsight-overview.md#cluster-types-in-hdinsight)に関するページを参照してください。 クラスターの種類ごとに、サイズとノード数の要件を含む特定のデプロイ トポロジがあります。
 
 ## <a name="choose-the-vm-size-and-type"></a>VM のサイズと種類の選択
 

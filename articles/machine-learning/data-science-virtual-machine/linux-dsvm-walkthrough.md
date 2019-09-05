@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8100108adc7115921948d3e8f10e415bc2705fbd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574967"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051654"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -36,7 +36,7 @@ Linux データ サイエンス仮想マシンを使用する前に、次を用�
 
 * **Azure サブスクリプション**。 Azure サブスクリプションがない場合は、「 [無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
 * [**Linux データ サイエンス VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 この VM のプロビジョニング方法については、「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md)」をご覧ください。
-* [X2Go](https://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。 **X2Go クライアント**のインストールと構成については、「[X2Go クライアントのインストールと構成](linux-dsvm-intro.md#installing-and-configuring-x2go-client)」をご覧ください。
+* [X2Go](https://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。 **X2Go クライアント**のインストールと構成については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#install-and-configure-the-x2go-client)」をご覧ください。
 * スクロールをスムーズにするために、VM の FireFox ブラウザーで about:config の gfx.xrender.enabled フラグを切り替えます。 詳細については、[こちら](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)を参照してください。 *mousewheel.enable_pixel_scrolling* を False に切り替えることも検討してください。 手順については、[こちら](https://support.mozilla.org/questions/981140)を参照してください。
 * **AzureML アカウント**。 AzureML アカウントがない場合は、 [AzureML ホームページ](https://studio.azureml.net/)で新しいアカウントにサインアップしてください。 開始する際に役立つ Free レベルがあります。
 

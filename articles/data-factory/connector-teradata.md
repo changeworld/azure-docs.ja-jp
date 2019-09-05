@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557871"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996582"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -189,7 +189,7 @@ Teradata からデータをコピーするために、次のプロパティが�
 ### <a name="teradata-as-source"></a>ソースとしての Teradata
 
 >[!TIP]
->データのパーティション分割を使用して Teradata からデータを効率的に読み込むには、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。
+>データのパーティション分割を使用して Teradata からデータを効率的に読み込む方法の詳細については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。
 
 Teradata からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
@@ -245,9 +245,9 @@ Data Factory の Teradata コネクタは、Teradata からデータを並列で
 
 ![パーティションのオプションのスクリーンショット](./media/connector-teradata/connector-teradata-partition-options.png)
 
-パーティション分割されたコピーを有効にすると、Data Factory によって Teradata ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。 各クエリは、Teradata データベースからデータの一部を取得します。
+パーティション分割されたコピーを有効にすると、Data Factory によって Teradata ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリは、Teradata データベースからデータの一部を取得します。
 
-特に、Teradata データベースから大量のデータを読み込む場合は、データ パーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。
+特に、Teradata データベースから大量のデータを読み込む場合は、データ パーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 | シナリオ                                                     | 推奨設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -290,7 +290,7 @@ Teradata からデータをコピーするときには、次のマッピング�
 | Teradata のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | BigInt |Int64 |
-| Blob |Byte[] |
+| BLOB |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
 | Char |string |

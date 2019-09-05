@@ -22,8 +22,8 @@ ms.locfileid: "70278703"
 Azure Machine Learning service を使って Azure Kubernetes Service (AKS) 上の Web サービスとしてモデルをデプロイする方法について説明します。 Azure Kubernetes Service は高スケールの運用デプロイに適してします。 次のいずれかの機能が必要な場合は、Azure Kubernetes Service を使用します。
 
 - __高速の応答時間__。
-- デプロイされたサービスの__自動スケール__。
-- GPU や Field Programmable Gate Array (FPGA) などの__ハードウェア アクセラレーション__ オプション。
+- デプロイされたサービスの __自動スケール__。
+- GPU や Field Programmable Gate Array (FPGA) などの __ハードウェア アクセラレーション__ オプション。
 
 > [!IMPORTANT]
 > クラスターのスケーリングは Azure Machine Learning SDK では提供されません。 AKS クラスターでのノードのスケーリングの詳細については、「[Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする](../../aks/scale-cluster.md)」をご覧ください。
@@ -63,7 +63,7 @@ AKS クラスターの作成またはアタッチは、お使いのワークス�
 > [!TIP]
 > Azure Virtual Network を使用して AKS クラスターをセキュリティで保護する場合は、まず仮想ネットワークを作成する必要があります。 詳細については、[Azure Virtual Network での実験と推論の安全な実行](how-to-enable-virtual-network.md#aksvnet)に関するページを参照してください。
 
-運用のためではなく__開発__、__検証__、__テスト__のための AKS クラスターを作成する場合は、__クラスターの目的__として__開発テスト__を指定できます。
+運用のためではなく __開発__、__検証__、__テスト__ のための AKS クラスターを作成する場合は、__クラスターの目的__ として __開発テスト__ を指定できます。
 
 > [!WARNING]
 > `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定した場合、作成されるクラスターは、運用レベルのトラフィックには適しておらず、推論時間が増えることがあります。 開発/テスト クラスターでは、フォールト トレランスも保証されません。 開発/テスト クラスターには、少なくとも 2 つの仮想 CPU を使用することをお勧めします。

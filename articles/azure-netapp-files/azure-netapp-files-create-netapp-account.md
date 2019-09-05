@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e60f5251f911ffe2b917dcc30e433e0a960823e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522827"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012585"
 ---
 # <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
 NetApp アカウントを作成することによって、容量プールを設定し、その後、ボリュームを作成することができます。 新しい NetApp アカウントの作成は、[Azure NetApp Files] ブレードを使用して行います。
@@ -48,7 +48,7 @@ NetApp アカウントを作成することによって、容量プールを設�
      既存のサブスクリプションからいずれかのサブスクリプションを選択します。
    * **リソース グループ**   
      既存のリソース グループを使用するか、新しいリソース グループを作成します。
-   * **場所**  
+   * **Location**  
      アカウントとその子リソースを置くリージョンを選択します。  
 
      ![新しい NetApp アカウント](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
@@ -64,5 +64,6 @@ NetApp アカウントを作成することによって、容量プールを設�
 
 ## <a name="next-steps"></a>次の手順  
 
-[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [Azure CLI を使用して Azure NetApp Files リソースを管理する](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)
 

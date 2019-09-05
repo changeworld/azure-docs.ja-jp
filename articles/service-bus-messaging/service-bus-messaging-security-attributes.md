@@ -4,17 +4,16 @@ description: Azure Service Bus Messaging を評価するためのセキュリテ
 services: service-bus-messaging
 ms.service: service-bus-messaging
 documentationcenter: ''
-author: msmbaldwin
-manager: barbkess
+author: axisc
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 0e1d6e041b47a261b549fb8b608cf09d0d6362dd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.author: aschhab
+ms.openlocfilehash: 875754282f9e7a2b8dd92b0eb2d7e277ac842696
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443893"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013107"
 ---
 # <a name="security-attributes-for-azure-service-bus-messaging"></a>Azure Service Bus Messaging のセキュリティ属性
 
@@ -52,7 +51,7 @@ ms.locfileid: "68443893"
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
 | Authentication| はい | [Azure Active Directory マネージド サービス ID](service-bus-managed-service-identity.md)を使用して管理されます (「[Service Bus の認証と承認](service-bus-authentication-and-authorization.md)」を参照)。|
-| Authorization| はい | [RBAC](service-bus-role-based-access-control.md) (プレビュー) と SAS トークンによる承認がサポートされます (「[Service Bus の認証と承認](service-bus-authentication-and-authorization.md)」を参照)。 |
+| Authorization| はい | [RBAC](authenticate-application.md) と SAS トークンによる承認がサポートされます (「[Service Bus の認証と承認](service-bus-authentication-and-authorization.md)」を参照)。 |
 
 
 

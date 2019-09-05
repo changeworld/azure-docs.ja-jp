@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 49780ec342ea168d27ab8a029c41a1c18a6ffcc4
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019049"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051824"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -1435,33 +1435,33 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |cpu_percent|CPU の割合|Percent|平均|CPU の割合|ディメンションなし|
 |physical_data_read_percent|データ IO の割合|Percent|平均|データ IO の割合|ディメンションなし|
-|log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合|ディメンションなし|
-|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合|ディメンションなし|
-|storage|使用済みのデータ領域|Bytes|最大値|合計データベース サイズ|ディメンションなし|
+|log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合。 データ ウェアハウスには適用されません。|ディメンションなし|
+|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合。 DTU ベースのデータベースに適用されます。|ディメンションなし|
+|storage|使用済みのデータ領域|Bytes|最大値|データベースの合計サイズ。 データ ウェアハウスには適用されません。|ディメンションなし|
 |connection_successful|成功した接続|Count|合計|成功した接続|ディメンションなし|
 |connection_failed|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |blocked_by_firewall|ファイアウォールによってブロックされる|Count|合計|ファイアウォールによってブロックされる|ディメンションなし|
-|deadlock|デッドロック|Count|合計|デッドロック|ディメンションなし|
-|storage_percent|使用済みのデータ領域の割合|Percent|最大値|データベース サイズの割合|ディメンションなし|
-|xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合|ディメンションなし|
-|workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合|ディメンションなし|
-|sessions_percent|セッションの割合|Percent|平均|セッションの割合|ディメンションなし|
-|dtu_limit|DTU の上限|Count|平均|DTU の上限|ディメンションなし|
-|dtu_used|使用された DTU|Count|平均|使用された DTU|ディメンションなし|
-|cpu_limit|CPU 制限|Count|平均|CPU 制限|ディメンションなし|
-|cpu_used|使用された CPU|Count|平均|使用された CPU|ディメンションなし|
-|dwu_limit|DWU 上限|Count|最大値|DWU 上限|ディメンションなし|
-|dwu_consumption_percent|DWU の割合|Percent|最大値|DWU の割合|ディメンションなし|
-|dwu_used|使用済み DWU|Count|最大値|使用済み DWU|ディメンションなし|
+|deadlock|デッドロック|Count|合計|デッドロック。 データ ウェアハウスには適用されません。|ディメンションなし|
+|storage_percent|使用済みのデータ領域の割合|Percent|最大値|データベース サイズの割合。 データ ウェアハウスまたはハイパースケール データベースには適用されません。|ディメンションなし|
+|xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合。 データ ウェアハウスには適用されません。|ディメンションなし|
+|workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合。 データ ウェアハウスには適用されません。|ディメンションなし|
+|sessions_percent|セッションの割合|Percent|平均|セッションの割合。 データ ウェアハウスには適用されません。|ディメンションなし|
+|dtu_limit|DTU の上限|Count|平均|DTU の上限。 DTU ベースのデータベースに適用されます。|ディメンションなし|
+|dtu_used|使用された DTU|Count|平均|使用された DTU。 DTU ベースのデータベースに適用されます。|ディメンションなし|
+|cpu_limit|CPU 制限|Count|平均|CPU 制限。 仮想コア ベースのデータベースに適用されます。|ディメンションなし|
+|cpu_used|使用された CPU|Count|平均|使用された CPU。 仮想コア ベースのデータベースに適用されます。|ディメンションなし|
+|dwu_limit|DWU 上限|Count|最大値|DWU 上限。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|dwu_consumption_percent|DWU の割合|Percent|最大値|DWU の割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|dwu_used|使用済み DWU|Count|最大値|使用された DWU。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
 |dw_cpu_percent|DW ノード レベルの CPU の割合|Percent|平均|DW ノード レベルの CPU の割合|DwLogicalNodeId|
 |dw_physical_data_read_percent|DW ノード レベルのデータ IO の割合|Percent|平均|DW ノード レベルのデータ IO の割合|DwLogicalNodeId|
-    |cache_hit_percent|キャッシュ ヒットの割合|Percent|最大値|キャッシュ ヒットの割合|ディメンションなし|
-|cache_used_percent|使用されたキャッシュの割合|Percent|最大値|使用されたキャッシュの割合|ディメンションなし|
-|local_tempdb_usage_percent|ローカル tempdb の割合|Percent|平均|ローカル tempdb の割合|ディメンションなし|
-|app_cpu_billed|課金されるアプリ CPU|Count|合計|課金されるアプリ CPU|ディメンションなし|
-|app_cpu_percent|アプリ CPU の割合|Percent|平均|アプリ CPU の割合|ディメンションなし|
-|app_memory_percent|アプリのメモリ使用率|Percent|平均|アプリのメモリ使用率|ディメンションなし|
-|allocated_data_storage|割り当て済みのデータ領域|Bytes|平均|割り当て済みのデータ領域|ディメンションなし|
+|cache_hit_percent|キャッシュ ヒットの割合|Percent|最大値|キャッシュ ヒットの割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|cache_used_percent|使用されたキャッシュの割合|Percent|最大値|使用されたキャッシュの割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|local_tempdb_usage_percent|ローカル tempdb の割合|Percent|平均|ローカル tempdb の割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|app_cpu_billed|課金されるアプリ CPU|Count|合計|課金されるアプリ CPU。 サーバーレス データベースに適用されます。|ディメンションなし|
+|app_cpu_percent|アプリ CPU の割合|Percent|平均|アプリ CPU の割合。 サーバーレス データベースに適用されます。|ディメンションなし|
+|app_memory_percent|アプリのメモリ使用率|Percent|平均|アプリのメモリ使用率。 サーバーレス データベースに適用されます。|ディメンションなし|
+|allocated_data_storage|割り当て済みのデータ領域|Bytes|平均|割り当て済みのデータ領域。 データ ウェアハウスには適用されません。|ディメンションなし|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -1470,17 +1470,17 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |cpu_percent|CPU の割合|Percent|平均|CPU の割合|ディメンションなし|
 |physical_data_read_percent|データ IO の割合|Percent|平均|データ IO の割合|ディメンションなし|
 |log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合|ディメンションなし|
-|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合|ディメンションなし|
+|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合。 DTU ベースのエラスティック プールに適用されます。|ディメンションなし|
 |storage_percent|使用済みのデータ領域の割合||Percent|平均|ストレージの割合|ディメンションなし|
 |workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合|ディメンションなし|
 |sessions_percent|セッションの割合|Percent|平均|セッションの割合|ディメンションなし|
-|eDTU_limit|eDTU 制限|Count|平均|eDTU 制限|ディメンションなし|
+|eDTU_limit|eDTU 制限|Count|平均|eDTU 制限。 DTU ベースのエラスティック プールに適用されます。|ディメンションなし|
 |storage_limit|データの最大サイズ|Bytes|平均|ストレージの制限|ディメンションなし|
-|eDTU_used|使用済み eDTU|Count|平均|使用済み eDTU|ディメンションなし|
+|eDTU_used|使用済み eDTU|Count|平均|使用された eDTU。 DTU ベースのエラスティック プールに適用されます。|ディメンションなし|
 |storage_used|使用済みのデータ領域|Bytes|平均|使用済みストレージ|ディメンションなし|
 |xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合|ディメンションなし|
-|cpu_limit|CPU 制限|Count|平均|CPU 制限|ディメンションなし|
-|cpu_used|使用された CPU|Count|平均|使用された CPU|ディメンションなし|
+|cpu_limit|CPU 制限|Count|平均|CPU 制限。 仮想コア ベースのエラスティック プールに適用されます。|ディメンションなし|
+|cpu_used|使用された CPU|Count|平均|使用された CPU。 仮想コア ベースのエラスティック プールに適用されます。|ディメンションなし|
 |allocated_data_storage|割り当て済みのデータ領域|Bytes|平均|割り当て済みのデータ領域|ディメンションなし|
 |allocated_data_storage_percent|割り当て済みのデータ領域の割合|Percent|最大値|割り当て済みのデータ領域の割合|ディメンションなし|
 
