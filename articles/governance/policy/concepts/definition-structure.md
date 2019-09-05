@@ -7,13 +7,12 @@ ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557938"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239183"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -67,8 +66,6 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 ```
 
 Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../samples/index.md)」にあります。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="mode"></a>Mode
 

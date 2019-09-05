@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/01/2019
-ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/27/2019
+ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897465"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114289"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 
@@ -38,6 +38,7 @@ Azure App Service によって提供される機能の詳細については、[A
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * ワークスペースに登録されているトレーニング済みの機械学習モデル。 モデルがない場合は、[イメージ分類のチュートリアル: モデルのトレーニング](tutorial-train-models-with-aml.md)を使用して、トレーニングと登録を行います。
 
     > [!IMPORTANT]
@@ -97,34 +98,151 @@ Azure App Service によって提供される機能の詳細については、[A
 
 Azure App Service にデプロイされる Docker イメージを作成するには、[Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-) を使用します。 次のコード スニペットで、モデルと推論構成から新しいイメージを作成する方法を示します。
 
+> [!NOTE]
+> このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+
 ```python
+from azureml.core import Model
+
 package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
+# Display the package location/ACR path
+print(package.location)
 ```
 
-`show_output=True` の場合、Docker ビルド プロセスの出力が表示されます。 プロセスが完了すると、ワークスペース用の Azure Container Registry 内にイメージが作成されます。
+`show_output=True` の場合、Docker ビルド プロセスの出力が表示されます。 プロセスが完了すると、ワークスペース用の Azure Container Registry 内にイメージが作成されます。 イメージがビルドされると、Azure Container Registry 内の場所が表示されます。 返される場所は、`<acrinstance>.azurecr.io/package:<imagename>` の形式です。 たとえば、「 `myml08024f78fd10.azurecr.io/package:20190827151241` 」のように入力します。
+
+> [!IMPORTANT]
+> イメージをデプロイするときに使用されるため、場所情報を保存します。
 
 ## <a name="deploy-image-as-a-web-app"></a>イメージを Web アプリとしてデプロイする
 
-1. [Azure portal](https://portal.azure.com) で、Azure Machine Learning ワークスペースを選択します。 __[概要]__ セクションで、 __[レジストリ]__ リンクを使用して、ワークスペースの Azure Container Registry にアクセスします。
+1. 次のコマンドを使用して、イメージを含む Azure Container Registry のログイン資格情報を取得します。 `<acrinstance>` を、以前 `package.location` から返された値に置き換えます。 
 
-    [![ワークスペースの概要のスクリーンショット](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
+    ```azurecli-interactive
+    az acr credential show --name <myacr>
+    ```
 
-2. Azure Container Registry で、 __[リポジトリ]__ を選択し、デプロイする__イメージ名__を選択します。 デプロイするバージョンについて、 __[...]__ エントリを選択し、 __[Web アプリにデプロイ]__ を選択します。
+    このコマンドの出力は、次の JSON ドキュメントのようになります。
 
-    [![ACR から Web アプリへのデプロイのスクリーンショット](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
+    ```json
+    {
+    "passwords": [
+        {
+        "name": "password",
+        "value": "Iv0lRZQ9762LUJrFiffo3P4sWgk4q+nW"
+        },
+        {
+        "name": "password2",
+        "value": "=pKCxHatX96jeoYBWZLsPR6opszr==mg"
+        }
+    ],
+    "username": "myml08024f78fd10"
+    }
+    ```
 
-3. Web アプリを作成するには、[サイト名]、[サブスクリプション]、[リソース グループ] を指定し、[App Service プラン/場所] を選択します。 最後に、 __[作成]__ を選択します。
+    __username__ の値と __passwords__ の 1 つを保存します。
 
-    ![新しい Web アプリ ダイアログのスクリーンショット](media/how-to-deploy-app-service/web-app-for-containers.png)
+1. サービスをデプロイするリソース グループまたは App Service プランがまだない場合は、次のコマンドで両方の作成方法を確認してください。
+
+    ```azurecli-interactive
+    az group create --name myresourcegroup --location "West Europe"
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
+    ```
+
+    この例では、__Basic__ 価格レベル (`--sku B1`) が使用されます。
+
+    > [!IMPORTANT]
+    > Azure Machine Learning service によって作成されたイメージでは Linux が使用されるため、`--is-linux` パラメーターを使用する必要があります。
+
+1. Web アプリを作成するには、次のコマンドを使用します。 `<app-name>` を使用する名前に置き換えます。 `<acrinstance>` と `<imagename>` を、前の手順で返された `package.location` の値に置き換えます。
+
+    ```azurecli-interactive
+    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
+    ```
+
+    このコマンドでは、次の JSON ドキュメントのような情報が返されます。
+
+    ```json
+    { 
+    "adminSiteName": null,
+    "appServicePlanName": "myplanname",
+    "geoRegion": "West Europe",
+    "hostingEnvironmentProfile": null,
+    "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myplanname",
+    "kind": "linux",
+    "location": "West Europe",
+    "maximumNumberOfWorkers": 1,
+    "name": "myplanname",
+    < JSON data removed for brevity. >
+    "targetWorkerSizeId": 0,
+    "type": "Microsoft.Web/serverfarms",
+    "workerTierName": null
+    }
+    ```
+
+    > [!IMPORTANT]
+    > この時点で、Web アプリが作成されています。 ただし、イメージを含む Azure Container Registry に資格情報が指定されていないため、Web アプリはアクティブになりません。 次の手順で、コンテナー レジストリの認証情報を指定します。
+
+1. コンテナー レジストリにアクセスするために必要な資格情報を Web アプリに指定するには、次のコマンドを使用します。 `<app-name>` を使用する名前に置き換えます。 `<acrinstance>` と `<imagename>` を、前の手順で返された `package.location` の値に置き換えます。 `<username>` と `<password>` を、前の手順で取得した ACR ログイン情報に置き換えます。
+
+    ```azurecli-interactive
+    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
+    ```
+
+    このコマンドでは、次の JSON ドキュメントのような情報が返されます。
+
+    ```json
+    [
+    {
+        "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+        "slotSetting": false,
+        "value": "false"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_URL",
+        "slotSetting": false,
+        "value": "https://myml08024f78fd10.azurecr.io"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+        "slotSetting": false,
+        "value": "myml08024f78fd10"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+        "slotSetting": false,
+        "value": null
+    },
+    {
+        "name": "DOCKER_CUSTOM_IMAGE_NAME",
+        "value": "DOCKER|myml08024f78fd10.azurecr.io/package:20190827195524"
+    }
+    ]
+    ```
+
+この時点で、Web アプリでイメージの読み込みが開始されます。
+
+> [!IMPORTANT]
+> イメージが読み込まれるまで数分かかる場合があります。 進行状況を監視するには、次のコマンドを使用します。
+>
+> ```azurecli-interactive
+> az webapp log tail --name <app-name> --resource-group myresourcegroup
+> ```
+>
+> イメージが読み込まれ、サイトがアクティブになると、ログに `Container <container name> for site <app-name> initialized successfully and is ready to serve requests` というメッセージが表示されます。
+
+イメージがデプロイされたら、次のコマンドを使用してホスト名を見つけることができます。
+
+```azurecli-interactive
+az webapp show --name <app-name> --resource-group myresourcegroup
+```
+
+このコマンドでは、`<app-name>.azurewebsites.net` というホスト名のような情報が返されます。 この値は、サービスの__ベース URL__ の一部として使用します。
 
 ## <a name="use-the-web-app"></a>Web アプリを使用する
 
-[Azure portal](https://portal.azure.com) で、前のステップで作成した Web アプリを選択します。 __[概要]__ セクションで、 __[URL]__ をコピーします。 この値は サービスの __ベース URL__ です。
-
-[![Web アプリの概要のスクリーンショット](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
-
-モデルに要求を渡す Web サービスは、`{baseurl}/score` にあります。 たとえば、「 `https://mywebapp.azurewebsites.net/score` 」のように入力します。 次の Python コードは、URL にデータを送信し、応答を表示する方法を示しています。
+モデルに要求を渡す Web サービスは、`{baseurl}/score` にあります。 たとえば、「 `https://<app-name>.azurewebsites.net/score` 」のように入力します。 次の Python コードは、URL にデータを送信し、応答を表示する方法を示しています。
 
 ```python
 import requests
@@ -134,8 +252,6 @@ scoring_uri = "https://mywebapp.azurewebsites.net/score"
 
 headers = {'Content-Type':'application/json'}
 
-print(headers)
-    
 test_sample = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]

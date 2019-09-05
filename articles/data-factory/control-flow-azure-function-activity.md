@@ -3,20 +3,20 @@ title: Azure Data Factory の Azure 関数アクティビティ | Microsoft Docs
 description: Azure 関数アクティビティを使用して、Data Factory パイプライン内で Azure 関数を実行する方法について説明します
 services: data-factory
 documentationcenter: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144131"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142506"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure 関数アクティビティ
 
@@ -41,7 +41,7 @@ Azure 関数の戻り値の型は、有効な `JObject` である必要があり
 
 | **プロパティ**  | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| name  | パイプラインのアクティビティの名前。  | string | はい |
+| 名前  | パイプラインのアクティビティの名前。  | string | はい |
 | type  | アクティビティの種類は 'AzureFunctionActivity' です | string | はい |
 | linked service | 対応する Azure 関数アプリの、Azure 関数のリンクされたサービス  | リンクされたサービスの参照 | はい |
 | function name  | このアクティビティによって呼び出される Azure 関数アプリ内の関数の名前 | string | はい |

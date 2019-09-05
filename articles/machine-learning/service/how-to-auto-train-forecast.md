@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 793474495f3ab3ef06a17b48d15c2f91d0677365
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848158"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278178"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -199,4 +199,4 @@ rmse
 ## <a name="next-steps"></a>次の手順
 
 * [チュートリアル](tutorial-auto-train-models.md)に従って、自動化された機械学習で実験を作成する方法について学習します。
-* [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) に関するリファレンス ドキュメントを確認します。
+* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関するリファレンス ドキュメントを確認します。

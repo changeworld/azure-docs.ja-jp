@@ -2,7 +2,7 @@
 title: コグニティブ検索のトラブルシューティングのヒント - Azure Search
 description: Azure Search でコグニティブ検索パイプラインをセットアップするためのヒントとトラブルシューティング。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
-ms.openlocfilehash: f006b018233d33ee4f8bf40f0de5ed0d9b4c4974
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: bc83a7c06c52ee26246329d6ca3177bce71c9de8
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639879"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186426"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>コグニティブ検索のトラブルシューティングのヒント
 

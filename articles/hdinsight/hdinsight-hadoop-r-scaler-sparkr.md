@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 75bbcfa831ba7ef0b3dd0da629cfa94768d6ae9d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b96779a0a37602b6d114c9baf517df2637f734a2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873329"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231128"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
@@ -193,7 +193,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Spark DataFrames への航空データと気象データのインポート
 
-今度は、SparkR の [read.df()](http://spark.apache.org/docs/latest/api/R/read.df.html) 関数を使って気象データと航空データを Spark DataFrames にインポートします。 この関数は、他の多くの Spark メソッドと同様、遅延実行されます。つまり実行キューに格納されるだけで、必要なタイミングが来るまでは実行されません。
+今度は、SparkR の [read.df()](https://spark.apache.org/docs/latest/api/R/read.df.html) 関数を使って気象データと航空データを Spark DataFrames にインポートします。 この関数は、他の多くの Spark メソッドと同様、遅延実行されます。つまり実行キューに格納されるだけで、必要なタイミングが来るまでは実行されません。
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -266,7 +266,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>気象データと航空データの結合
 
-今度は、SparkR の [join()](http://spark.apache.org/docs/latest/api/R/join.html) 関数を使い、出発空港 (AirportID) と出発時刻 (datetime) で航空データと気象データの左外部結合を実行します。 対応する気象データがなくても、外部結合を使用することですべての航空データ レコードを維持することができます。 結合後、不要な列を除去し、維持する列については名前を変更して、結合処理によって追加された受信 DataFrame プレフィックスを削除します。
+今度は、SparkR の [join()](https://spark.apache.org/docs/latest/api/R/join.html) 関数を使い、出発空港 (AirportID) と出発時刻 (datetime) で航空データと気象データの左外部結合を実行します。 対応する気象データがなくても、外部結合を使用することですべての航空データ レコードを維持することができます。 結合後、不要な列を除去し、維持する列については名前を変更して、結合処理によって追加された受信 DataFrame プレフィックスを削除します。
 
 ```
 logmsg('Join airline data with weather at Origin Airport')

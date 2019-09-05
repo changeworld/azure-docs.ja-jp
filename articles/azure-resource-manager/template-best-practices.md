@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 161539aaec4d3b7162405f437b7fb3dd1f6a00e6
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542989"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258842"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -175,7 +175,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 * 子リソースは、その親リソースに依存するように設定します。
 
-* [condition 要素](resource-group-authoring-templates.md#condition)が false に設定されているリソースは、依存関係の順序から自動的に削除されます。 依存関係は、リソースが常にデプロイされているかのように設定してください。
+* [condition 要素](conditional-resource-deployment.md)が false に設定されているリソースは、依存関係の順序から自動的に削除されます。 依存関係は、リソースが常にデプロイされているかのように設定してください。
 
 * 明示的に設定しなくても連鎖的な依存関係になるようにします。 たとえば、仮想マシンが仮想ネットワーク インターフェイスに依存し、その仮想ネットワーク インターフェイスは仮想ネットワークとパブリック IP アドレスに依存しているとします。 この場合、仮想マシンは、この 3 つのリソースすべての後にデプロイされますが、この仮想マシンを 3 つのリソースすべてに依存するものとして明示的に設定しないでください。 これにより依存関係の順序が明確になり、後でテンプレートを変更するのも簡単になります。
 

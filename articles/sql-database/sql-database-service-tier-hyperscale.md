@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566728"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981161"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>最大 100 TB の Hyperscale サービス レベル
 
@@ -110,7 +110,7 @@ Azure Storage ノードは、ページ サーバーからのデータの最終�
 
 ハイパースケール データベースは、[Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、[Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)、または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) を使用して作成できます。 ハイパースケール データベースは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみを使用して入手できます。
 
-次の T-SQL コマンドによって、ハイパースケール データベースが作成されます。 `CREATE DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。 有効なサービス目標の一覧については[リソースの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier)に関するページを参照してください。
+次の T-SQL コマンドによって、ハイパースケール データベースが作成されます。 `CREATE DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。 有効なサービス目標の一覧については[リソースの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute)に関するページを参照してください。
 
 ```sql
 -- Create a HyperScale Database
@@ -232,7 +232,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 | エラスティック プール |  エラスティック プールは、現在、SQL Database Hyperscale ではサポートされていません。|
 | ハイパースケールへの移行は現在一方向 | データベースがハイパースケールにいったん移行されると、ハイパースケール以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行するには、BACPAC ファイルを使用してエクスポート/インポートするしかありません。|
 | 永続メモリ内オブジェクトを含むデータベースの移行 | ハイパースケールでは、非永続メモリ内オブジェクト (テーブル型、ネイティブ SP、関数) のみがサポートされます。  データベースがハイパースケール サービス レベルに移行される前に、永続メモリ内テーブルとその他のオブジェクトは削除され、メモリ内ではないオブジェクトとして再作成されます。|
-| データ変更追跡 | Hyperscale データベースでは、データ変更追跡を使用できません。 |
+| 変更の追跡 | Hyperscale データベースでは、Change Tracking を使用できません。 |
 | geo レプリケーション  | Azure SQL Database Hyperscale の geo レプリケーションは、まだ構成できません。  geo リストア (DR や他の目的で、データベースを別の地理的な場所に復元すること) は実行できます |
 | TDE/AKV の統合 | Azure Key Vault を使用した透過的データベース暗号化 (通常、Bring Your Own Key (BYOK) と呼ばれます) は、Azure SQL Database Hyperscale ではまだサポートされていませんが、サービス マネージド キーを使用した TDE は完全にサポートされています。 |
 |インテリジェント データベース機能 | 1.Create Index、Drop Index アドバイザー モデルは、Hyperscale DB 向けにトレーニングされていません。 <br/>2.Schema Issue、DbParameterization - 最近追加されたアドバイザーは Hyperscale データベースではサポートされていません。|

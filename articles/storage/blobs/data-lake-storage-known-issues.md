@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950679"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991807"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -32,7 +32,7 @@ BLOB Storage API と Azure Data Lake Gen2 API 間の相互運用性がまだ不�
 
 これらのいずれかで BLOB API が使用されているときに、それらを使用してお使いのアカウントにアップロードされるすべてのコンテンツを操作する場合は、2 つのオプションがあります。
 
-* **オプション 1**:BLOB API が Azure Data Lake Gen2 API と相互運用できるようになるまで、お使いの BLOB ストレージ アカウントで階層型名前空間を有効にしません。 階層型名前空間なしでストレージ アカウントを使用すると、ディレクトリやファイル システムのアクセス制御リストなど、Data Lake Storage Gen2 固有の機能にアクセスできなくなります。
+* **オプション 1**:BLOB API が Azure Data Lake Gen2 API と相互運用できるようになるまで、お使いの BLOB ストレージ アカウントで階層型名前空間を有効にしません。 階層型名前空間なしでストレージ アカウントを使用すると、ディレクトリやコンテナーのアクセス制御リストなど、Data Lake Storage Gen2 固有の機能にアクセスできなくなります。
 
 * **オプション 2**:[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のパブリック プレビューに登録します。 診断ログなどの BLOB ストレージ 機能に加え、BLOB API を呼び出すツールとアプリケーションで、階層型名前空間があるアカウントを操作できます。
 

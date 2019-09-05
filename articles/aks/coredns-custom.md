@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 5a69882f6bb38ac8e005ce5552fe57383a58cc63
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 40c170575e0b6e6264eed8a464ac73012cbe8627
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542581"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276506"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service で CoreDNS をカスタマイズする
 
 Azure Kubernetes Service (AKS) は、すべての *1.12.x* 以降のクラスターでクラスター DNS の管理と解決に [CoreDNS][coredns] プロジェクトを使用します。 以前は、kube-dns プロジェクトが使用されました。 この kube-dns プロジェクトは非推奨となっています。 CoreDNS のカスタマイズおよび Kubernetes について詳しくは、[公式のアップ ストリーム ドキュメント][corednsk8s]を参照してください。
 
-AKS はマネージド サービスであるため、CoreDNS のメイン構成 (*CoreFile*) を変更することはできません。 代わりに、既定の設定をオーバーライドするには、Kubernetes *ConfigMap* を使用してください。 既定の AKS CoreDNS ConfigMaps を表示するには、`kubectl get configmaps -namespace=kube-system coredns -o yaml` コマンドを使用してください。
+AKS はマネージド サービスであるため、CoreDNS のメイン構成 (*CoreFile*) を変更することはできません。 代わりに、既定の設定をオーバーライドするには、Kubernetes *ConfigMap* を使用してください。 既定の AKS CoreDNS ConfigMaps を表示するには、`kubectl get configmaps --namespace=kube-system coredns -o yaml` コマンドを使用してください。
 
 この記事では、AKS の CoreDNS の基本的なカスタマイズ オプションに ConfigMaps を使用する方法を説明します。
 

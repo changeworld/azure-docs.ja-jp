@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/21/2019
-ms.openlocfilehash: 67dda1ab56c6a706a9fdbef45fabdae9167ffe2b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 08/22/2019
+ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616335"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992113"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning でデータ セット (プレビュー) を作成してアクセスする
 
@@ -26,7 +26,7 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
 * データセットから参照される**データの 1 つのコピーをストレージに保存する**。 
 
-* 接続文字列やデータ パスを気にせずに、**モデルのトレーニング中にデータに簡単にアクセスする**。
+* 接続文字列やデータ パスを気にすることなく、**モデルのトレーニング中にデータに簡単にアクセスする**。
 
 * 他のユーザーと**データ共有と共同作業を行う**。
 
@@ -44,7 +44,8 @@ Azure Machine Learning データセットを使用すると、次のことを実
 > 一部の Dataset クラス (プレビュー) は [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
 
 ## <a name="dataset-types"></a>データセットの種類
-データセットは、ユーザーがトレーニングでそれらを使用する方法に基づいて、さまざまな種類に分類されます。 現時点では、指定されたファイルまたはファイルのリストを解析して、データを表形式で表す TabularDataset がサポートされています。 これにより、データを pandas の DataFrame で具体化することができます。 TabularDataset は、csv ファイル、tsv ファイル、parquet ファイル、SQL クエリの結果などから作成できます。完全な一覧については、ドキュメントを参照してください。
+
+データセットは、ユーザーがトレーニングでそれらを使用する方法に基づいて、さまざまな種類に分類されます。 現時点では、指定されたファイルまたはファイルのリストを解析して、データを表形式で表す [TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) がサポートされています。 これにより、データを pandas の DataFrame で具体化することができます。 `TabularDataset` オブジェクトは、csv ファイル、tsv ファイル、parquet ファイル、SQL クエリの結果などから作成できます。完全な一覧については、ドキュメントを参照してください。
 
 今後の API の変更の詳細については、[Azure Machine Learning service の説明](https://aka.ms/tabular-dataset)に関するページを参照してください 
 
@@ -94,7 +95,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Survived|Pclass|Name|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+| |PassengerId|Survived|Pclass|名前|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|0|3|Braund, Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|1|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38.0|1|0|PC 17599|71.2833|C85|C
@@ -136,7 +137,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-your-data-during-training"></a>トレーニング中にデータにアクセスする
 
-登録されたデータセットは、ローカル、リモート、コンピューティング クラスター (Azure Machine Learning コンピューティングなど) でアクセスできます。 実験で登録済みデータセットにアクセスするには、次のコードを使用してワークスペースと登録済みデータセットを名前で取得します。 `Dataset` クラスの `get_by_name` メソッドからは、既定では、ワークスペースに登録されているデータセットの最新バージョンが返されます。
+登録されたデータセットは、ローカル、リモート、コンピューティング クラスター (Azure Machine Learning コンピューティングなど) でアクセスできます。 実験で登録済みデータセットにアクセスするには、次のコードを使用してワークスペースと登録済みデータセットを名前で取得します。 `Dataset` クラスの [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) メソッドからは、既定では、ワークスペースに登録されているデータセットの最新バージョンが返されます。
 
 ```Python
 %%writefile $script_folder/train.py

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905218"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142077"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -201,7 +201,7 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 1. プロジェクトに Log Analytics ワークスペースをアタッチするには、 **[概要]** の **[基本]** に移動し、 **[構成が必要]** をクリックします。
 2. 新しいワークスペースを作成することも、既存のワークスペースをアタッチすることもできます。
   - 新しいワークスペースを作成する場合は、名前を指定します。 移行プロジェクトと同じ [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内にあるリージョンにワークスペースが作成されます。
-  - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるワークスペースは、[サポートされている Service Map リージョン](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)内で作成されたもののみです。 ワークスペースをアタッチするには、ワークスペースへの "閲覧者" アクセスがあることを確認してください。
+  - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるワークスペースは、[サポートされている Service Map リージョン](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)内で作成されたもののみです。 ワークスペースをアタッチするには、ワークスペースへの "閲覧者" アクセスがあることを確認してください。
 
 > [!NOTE]
 > 移行プロジェクトに関連付けられているワークスペースは変更できません。

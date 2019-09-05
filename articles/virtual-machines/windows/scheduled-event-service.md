@@ -1,6 +1,6 @@
 ---
-title: Azure での Windows VM のメンテナンス通知の設定 | Microsoft Docs
-description: ご利用の Azure 仮想マシンに対して予定メンテナンスの通知を設定する方法について説明します。
+title: Azure で Windows VM 向けにスケジュールされたイベントを監視する | Microsoft Docs
+description: Azure 仮想マシンでスケジュールされているイベントを監視する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 18b46b848946bb2450604bdf0650a004e21778d9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656946"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051845"
 ---
-# <a name="set-up-notifications-about-maintenance-affecting-your-vm"></a>ご利用の VM に影響を与えるメンテナンスに関する通知を設定する
+# <a name="monitoring-scheduled-events"></a>スケジュールされたイベントの監視
 
 更新プログラムは Azure のさまざまな部分に毎日適用され、そこで実行されているサービスをセキュリティで保護された最新の状態に保ちます。 計画された更新に加えて、計画外のイベントが発生することもあります。 たとえば、ハードウェアの性能低下や障害が検出された場合、Azure サービスでは計画外メンテナンスの実行が必要になることがあります。 ライブ マイグレーションとメモリ保持更新を使用し、通常は更新の影響を厳密にチェックするため、ほとんどの場合、これらのイベントは顧客に対してほぼ透過的に行われ、影響を与えることはなく、仮想マシンがせいぜい数秒凍結するくらいです。 ただし、アプリケーションによっては、仮想マシンが数秒凍結しただけで影響を受ける可能性があります。 こうしたアプリケーションの最適なエクスペリエンスを確保するためにも、今後の Azure メンテナンスについて事前に把握しておくことが重要です。 [Scheduled Events サービス](scheduled-events.md)には、今後のメンテナンスに関する通知を受けるためのプログラマティック インターフェイスが用意されているため、メンテナンスに適切に対応できます。 
 

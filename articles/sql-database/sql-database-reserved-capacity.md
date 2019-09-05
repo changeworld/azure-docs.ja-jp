@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/02/2019
-ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781316"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972549"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い
 
@@ -53,7 +53,7 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 |------------|--------------|
 |Subscription|SQL Database の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、SQL Database の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|
 |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合: <br/><br/>**共有** - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている SQL Database インスタンスに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。<br/><br/>**単一サブスクリプション** - 仮想コアの予約割引はこのサブスクリプションの SQL Database インスタンスに適用されます。 <br/><br/>**[1 つのリソース グループ]** - 予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内の SQL Database インスタンスに適用されます。|
-|リージョン      |SQL Database 予約容量の予約で充当されない Azure リージョン。|
+|Region      |SQL Database 予約容量の予約で充当されない Azure リージョン。|
 |デプロイの種類|予約を購入する SQL リソースの種類。|
 |パフォーマンス レベル|SQL Database インスタンスのサービス レベル。
 |期間        |1 年間または 3 年間。|
@@ -65,11 +65,15 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限付きで、予約の取り消し、交換、返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
 
 ## <a name="vcore-size-flexibility"></a>仮想コアのサイズの柔軟性
 
 同じパフォーマンス レベルとリージョン内であれば、予約容量のベネフィットを失うことなく、仮想コアのサイズを柔軟にスケールアップまたはスケールダウンできます。 また、SQL Database の予約容量では、通常の操作 (同じリージョン内および同じパフォーマンス レベル内) の一部として、予約容量のベネフィットを失うことなく、プールと単一のデータベースの間で、ホット データベースを一時的に柔軟に移動できます。 予約内の未適用バッファーを維持することにより、予算を超えずに、パフォーマンスの急増を効果的に管理できます。
+
+## <a name="limitation"></a>制限事項
+
+DTU ベース (Basic、Standard、または Premium) の SQL データベースを予約することはできません。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 

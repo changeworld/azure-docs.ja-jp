@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 694ff490d7623b2dff26a61ccae8106a276b84af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f628be48039df63700f8e786821f29ba55cfd943
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447898"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164890"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -99,13 +99,13 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
    ![Azure Portal から展開済みのロジック アプリを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
    Logic Apps デザイナーでロジック アプリを開いた後、デザイナーの下端で **[コード ビュー]** を選んで、基になっているロジック アプリの定義構造を確認することができます。 
-   ロジック アプリの配置テンプレートを作成する場合は、そのロジック アプリの [Azure Resource Manager テンプレートをダウンロードする方法](#download-logic-app)を学習してください。 詳しくは、[Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)に関するページをご覧ください。
+   ロジック アプリの配置テンプレートを作成する場合は、そのロジック アプリの [Azure Resource Manager テンプレートをダウンロードする方法](#download-logic-app)を学習してください。 詳しくは、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に関するページをご覧ください。
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Azure からのダウンロード
 
-[Azure Portal](https://portal.azure.com) からロジック アプリをダウンロードし、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートとして保存することができます。 その後、Visual Studio でそのテンプレートをローカルに編集し、さまざまな展開環境用にロジック アプリをカスタマイズできます。 ロジック アプリをダウンロードすると、[Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)内のその定義は自動的に "*パラメーター化*" され、JavaScript Object Notation (JSON) も使用されます。
+[Azure Portal](https://portal.azure.com) からロジック アプリをダウンロードし、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートとして保存することができます。 その後、Visual Studio でそのテンプレートをローカルに編集し、さまざまな展開環境用にロジック アプリをカスタマイズできます。 ロジック アプリをダウンロードすると、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)内のその定義は自動的に "*パラメーター化*" され、JavaScript Object Notation (JSON) も使用されます。
 
 1. Visual Studio で Cloud Explorer を開き、Azure からダウンロードするロジック アプリを検索して選びます。
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 6991ebfa58099a42b09e482d11c0d3c3983decce
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535059"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279739"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商用マーケットプレース トランザクションの機能と考慮事項
 
@@ -75,7 +75,7 @@ SaaS アプリの場合、公開元は Azure インフラストラクチャの�
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>従量課金制とサブスクリプション (サイトベース) の価格
 
-従量課金制とサブスクリプションの価格 従量課金制またはサブスクリプションによるトランザクション オファーを公開する場合、Microsoft は、ソフトウェア ライセンスの購入、返却、およびチャージバックを処理するためのテクノロジとサービスを提供します。 このシナリオでは、公開元はこれらの目的のために Microsoft が代理として機能することを承認します。 公開元は Microsoft がソフトウェア ライセンス トランザクションを促進することを許可する一方、販売者、プロバイダー、ディストリビューター、ライセンサーとして指定された立場を維持します。
+従量課金制またはサブスクリプションによるトランザクション オファーを公開する場合、Microsoft によって、ソフトウェア ライセンスの購入、返却、チャージバックを処理するためのテクノロジとサービスが提供されます。 このシナリオでは、公開元はこれらの目的のために Microsoft が代理として機能することを承認します。 公開元は Microsoft がソフトウェア ライセンス トランザクションを促進することを許可する一方、販売者、プロバイダー、ディストリビューター、ライセンサーとして指定された立場を維持します。
 
 Microsoft は、顧客が公開元のソフトウェアを注文し、ライセンスを取得して使用できるようにします。ただし、その使用には Microsoft の Commercial Marketplace と公開元の使用許諾契約の両方の条件が適用されます。 公開元は、オファリングを作成するときに自身の使用許諾契約を用意するか、または[標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)を選択する必要があります。
 

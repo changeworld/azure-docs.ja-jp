@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/26/2019
+ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515283"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035720"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
 
@@ -136,7 +136,7 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 |データベースのコピー|コピーとしてのデータベースの作成。<br>BACPAC ファイルへのエクスポート。|
 |SQL データ同期|構成可能なスケジュールまたは手動で実行される、ハブとメンバー データベースの間の同期|
 |特定のデータベース メタデータの変更|新しいデータベース タグの追加。<br>最大仮想コア数、最小仮想コア数、または自動一時停止遅延の変更。|
-|SQL Server Management Studio (SSMS)|SSMS バージョン 18 を使用し、サーバーでデータベースの新しいクエリ ウィンドウを開くと、同じサーバーで自動一時停止されていたデータベースが再開します。 この動作は、IntelliSense をオフにした SSMS バージョン 17.9.1 を使用している場合は発生しません。|
+|SQL Server Management Studio (SSMS)|18.1 以前の SSMS バージョンを使用し、サーバーでデータベースの新しいクエリ ウィンドウを開くと、同じサーバーで自動一時停止されていたデータベースが再開します。 この動作は、18.1 以降の SSMS バージョンを使用している場合は発生しません。|
 
 データベースをオンラインにする必要がある一部のサービス更新プログラムのデプロイ中にも、自動再開がトリガーされます。
 
@@ -162,7 +162,7 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 2. 必要に応じて、最小仮想コア数と自動一時停止遅延を指定して、既定値を変更します。 これらのパラメーターに対して使用可能な値を次の表に示します。
 
-   |パラメーター|値の選択肢|Default value|
+   |パラメーター|値の選択肢|既定値|
    |---|---|---|---|
    |最小仮想コア|最大仮想コア数を超えない {0.5、1、2、4} のいずれか|0.5 仮想コア|
    |自動一時停止遅延|最小:60 分 (1 時間)<br>最大値:10080 分 (7 日)<br>増分: 約 60 分<br>自動一時停止の無効化: -1|約 60 分|

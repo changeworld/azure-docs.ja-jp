@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717669"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972520"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -24,6 +24,27 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 ## <a name="installing-updates"></a>更新プログラムのインストール
 
 Site Recovery の更新プログラムのサポートと手順については、[この記事を参照](service-updates-how-to.md)してください。
+
+## <a name="updates-august-2019"></a>更新プログラム (2019 年 8 月)
+
+### <a name="update-rollup-39"></a>更新プログラム ロールアップ 39
+
+[更新プログラム ロールアップ 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**Update** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+
+Azure VM ディザスター リカバリーの新機能をまとめて表に示します。
+
+**機能** | **詳細**
+--- | ---
+**Azure AD を使用しない暗号化** | Windows を実行しているマネージド ディスクへの Azure VM レプリケーションで、Azure AD アプリを使用しない暗号化がサポートされるようになりました。
+**フェールオーバー用のネットワーク リソース** | 別のリージョンにフェールオーバーするときに、ネットワーク リソースの設定 (NSG、負荷分散、パブリック IP アドレス) を VM に接続できるようになりました。 
 
 ## <a name="updates-july-2019"></a>更新 (2019 年 7 月)
 

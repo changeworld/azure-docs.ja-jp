@@ -8,12 +8,13 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 8/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 368439d6e15d6c94bbb96d67fcb48ab006234c95
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.localizationpriority: high
+ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098855"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241427"
 ---
 ::: zone target="docs"
 

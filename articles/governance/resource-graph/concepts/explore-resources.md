@@ -7,19 +7,16 @@ ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 7c6fdebad3cd84699e1ac7d06bb58a33d1522af1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972310"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241119"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する
 
-Azure Resource Graph では、Azure リソースを迅速かつ大規模に探索および確認する機能が提供されています。 迅速に応答するよう設計されており、ご利用の環境のほか、Azure リソースを構成するプロパティの詳細を確認する優れた手段となっています。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+Azure Resource Graph では、し、Azure リソースを迅速かつ大規模に探索および確認する機能が提供されています。 迅速に応答するよう設計されており、ご利用の環境のほか、Azure リソースを構成するプロパティの詳細を確認する優れた手段となっています。
 
 ## <a name="explore-virtual-machines"></a>仮想マシンの詳細を確認する
 

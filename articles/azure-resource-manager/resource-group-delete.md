@@ -1,24 +1,86 @@
 ---
 title: リソース グループとリソースを削除する - Azure Resource Manager
-description: リソース グループを削除するときに、Azure Resource Manager によってリソースの削除がどのように並べ替えられるかについて説明します。 応答コードと、削除が成功したかを判断するために Resource Manager によって応答コードが処理される方法について説明します。
+description: リソース グループとリソースを削除する方法について説明します。 ここでは、リソース グループを削除するときに、Azure Resource Manager によってリソースの削除がどのように並べ替えられるかについて説明します。 応答コードと、削除が成功したかを判断するために Resource Manager によって応答コードが処理される方法について説明します。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 08/22/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 18990b51b5ff2184197db48fd139d63750626663
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 75cdeb88a68dece59d6b037592f7212fa895e821
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204203"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991684"
 ---
-# <a name="azure-resource-manager-resource-group-deletion"></a>Azure Resource Manager によるリソース グループの削除
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager のリソース グループとリソースの削除
 
-この記事では、リソース グループを削除するときに、Azure Resource Manager によってリソースの削除がどのように並べ替えられるかについて説明します。
+この記事では、リソース グループとリソースを削除する方法について示します。 ここでは、リソース グループを削除するときに、Azure Resource Manager によってリソースの削除がどのように並べ替えられるかについて説明します。
 
-## <a name="determine-order-of-deletion"></a>削除の順序を決定する
+## <a name="delete-resource-group"></a>Delete resource group
+
+リソース グループを削除するには、次のいずれかのメソッドを使用します。
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name <resource-group-name>
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az group delete --name <resource-group-name>
+```
+
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+
+1. [ポータル](https://portal.azure.com)で、削除するリソース グループを選択します。
+
+1. **[リソース グループの削除]** を選択します。
+
+   ![Delete resource group](./media/resource-group-delete/delete-group.png)
+
+1. 削除を確認するには、リソース グループの名前を入力します。
+
+---
+
+## <a name="delete-resource"></a>Delete resource
+
+リソースを削除するには、次のいずれかのメソッドを使用します。
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResource `
+  -ResourceGroupName ExampleResourceGroup `
+  -ResourceName ExampleVM `
+  -ResourceType Microsoft.Compute/virtualMachines
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az resource delete \
+  --resource-group ExampleResourceGroup \
+  --name ExampleVM \
+  --resource-type "Microsoft.Compute/virtualMachines"
+```
+
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+
+1. [ポータル](https://portal.azure.com)で、削除するリソースを選択します。
+
+1. **[削除]** を選択します。 次のスクリーンショットには、仮想マシンの管理オプションが表示されています。
+
+   ![Delete resource](./media/resource-group-delete/delete-resource.png)
+
+1. メッセージが表示されたら、削除を確定します。
+
+---
+
+## <a name="how-order-of-deletion-is-determined"></a>削除の順序が決定される方法
 
 リソース グループを削除する際に、Resource Manager によってリソースを削除する順序が決定されます。 次の順序が使用されます。
 
@@ -27,8 +89,6 @@ ms.locfileid: "67204203"
 2. 次に、他のリソースを管理するリソースが削除されます。 リソースには、別のリソースによって管理されていることを示す `managedBy` プロパティが設定されている場合があります。 このプロパティが設定されている場合、他のリソースを管理しているリソースは、その管理対象リソースより前に削除されます。
 
 3. 残りのリソースは、前の 2 つのカテゴリより後に削除されます。
-
-## <a name="resource-deletion"></a>リソースの削除
 
 順序が決定された後、Resource Manager によって、各リソースに対して DELETE 操作が発行されます。 先に進む前に、すべての依存関係が完了するまで待ちます。
 

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 8678bacb48bdf63abb2ce517f1bead83d86a5827
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: d4376632b8f912cd76f3af5e9a8819b75f8144b6
+ms.sourcegitcommit: dcea3c1ab715a79ebecd913885fbf9bbee61606a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113739"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209488"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>クイック スタート:PowerShell を使用した Azure データ ファクトリの作成
 
@@ -314,7 +314,7 @@ ms.locfileid: "70113739"
 
 この手順では、パイプラインの実行を作成します。
 
-1. **Invoke-AzDataFactoryV2Pipeline** コマンドレットを実行して、パイプラインの実行を作成します。 コマンドレットは、将来の監視のために、パイプラインの実行 ID を返します。
+**Invoke-AzDataFactoryV2Pipeline** コマンドレットを実行して、パイプラインの実行を作成します。 コマンドレットは、将来の監視のために、パイプラインの実行 ID を返します。
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline `

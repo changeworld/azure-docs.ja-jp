@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: e1e9e998c2ac4695d955a546d0f02fbc2b517d5e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068842"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907491"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
 
@@ -47,7 +47,8 @@ Azure portal の PostgreSQL サーバーに関するページで、メニュー 
 ### <a name="drop-index-recommendations"></a>インデックスの削除に関する推奨事項
 足りないインデックスの検出だけでなく、Azure Database for PostgreSQL は既存のインデックスのパフォーマンスを継続的に分析します。 インデックスがほとんど使用されなかったり、冗長であったりした場合、アナライザーによりドロップが推奨されます。
 
-
+## <a name="considerations"></a>考慮事項
+* パフォーマンスの推奨事項は、[読み取りレプリカ](concepts-read-replicas.md)では使用できません。
 ## <a name="next-steps"></a>次の手順
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。
 

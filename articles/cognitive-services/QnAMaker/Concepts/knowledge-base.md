@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 8cd63913c0e96d496aa617369601c1dd121b4b46
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2b3e74f337cf8f57321c3a8d94f8191fc3ebb530
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542849"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093894"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースとは
 
@@ -81,9 +81,9 @@ QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペ�
 }
 ```
 
-[scoreThreshold](./confidence-score.md#choose-a-score-threshold)、[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)、[stringFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags) などのプロパティを設定することで応答を制御します。
+[scoreThreshold](./confidence-score.md#choose-a-score-threshold)、[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)、[strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags) などのプロパティを設定することで応答を制御します。
 
-[会話コンテンツ](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context)を[マルチターン機能](../how-to/multiturn-conversation.md)と共に使用し、正しい最終的な回答が見つかるよう、会話を続けて質問と回答を練り上げます。
+[会話コンテキスト](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context)を[マルチターン機能](../how-to/multiturn-conversation.md)と共に使用し、正しい最終的な回答が見つかるよう、会話を続けて質問と回答を練り上げます。
 
 ### <a name="the-response-from-a-call-to-generate-answer"></a>回答を生成する呼び出しからの応答
 

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93f78cf07cd4815e5b17ffd3953db121adb6535
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558807"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049062"
 ---
 <!-- put the ## header in the file that includes this file -->
 
-このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成します。 ハブに接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳しくは、[IoT Hub 開発者ガイド](../articles/iot-hub/iot-hub-devguide-identity-registry.md)の "ID レジストリ" に関するセクションをご覧ください
+このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成します。 ハブに接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド](../articles/iot-hub/iot-hub-devguide-identity-registry.md#identity-registry-operations)を参照してください。
 
 1. IoT ハブのナビゲーション メニューの **[IoT デバイス]** を開き、 **[新規]** を選択して IoT ハブにデバイスを追加します。
 

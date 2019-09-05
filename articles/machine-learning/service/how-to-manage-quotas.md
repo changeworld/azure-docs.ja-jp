@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8754eedc8284aab01006ea71bfd870064b91ea17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 110040592474ec432912e7f545abad19ca3ae1ff
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851119"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991972"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
 
@@ -74,6 +74,14 @@ Azure Machine Learning コンピューティングでは、サブスクリプシ
 
 <sup>1</sup> 最長有効期間とは、実行開始から終了までの時間のことです。 完了した実行は、無期限に保持されます。最長有効期間内に完了しなかった実行のデータにはアクセスできません。
 <sup>2</sup> 低優先度のノード上のジョブは、容量の制約があるときはいつでも横取りできます。 ジョブにチェックポイントを実装することをお勧めします。
+
+### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
+Azure Machine Learning パイプラインには、パイプラインのステップ数にクォータ制限と、サブスクリプション内のリージョンごとの発行済みのパイプラインのスケジュールに基づく実行数に制限があります。
+- パイプラインで許可されるステップの最大数は 30,000 です
+- 発行済みのパイプラインのスケジュールに基づく最大実行数は、サブスクリプションあたり 1 か月間で 100,000 です
+
+> [!NOTE]
+> この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 ### <a name="container-instances"></a>コンテナー インスタンス
 

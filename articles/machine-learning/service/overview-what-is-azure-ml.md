@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035856"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278126"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
@@ -35,9 +35,12 @@ Azure Machine Learning service には、機械学習モデルのデータの準�
 + [SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) を使用して、[これらのサンプル ノートブック](https://aka.ms/aml-notebooks)のような独自のコードを記述する [Jupyter ノートブック](https://jupyter.org)
 + [Visual Studio Code 拡張機能](how-to-vscode-tools.md)
 
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
+
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Azure Machine Learning サービスでできること
 
-<a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK</a> とオープンソースの Python パッケージを使用するか、[ビジュアル インターフェイス (プレビュー)](ui-tutorial-automobile-price-train-score.md) を使用すると、Azure Machine Learning service ワークスペースで、きわめて正確な機械学習およびディープ ラーニング モデルを自分で構築し、トレーニングすることができます。
+<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning Python SDK</a> とオープンソースの Python パッケージを使用するか、[ビジュアル インターフェイス (プレビュー)](ui-tutorial-automobile-price-train-score.md) を使用すると、Azure Machine Learning service ワークスペースで、きわめて正確な機械学習およびディープ ラーニング モデルを自分で構築し、トレーニングすることができます。
 
 オープンソースの Python パッケージで使用できる多くの機械学習コンポーネントの中から、いずれかを選択できます。たとえば、<a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>、<a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>、<a href="https://pytorch.org" target="_blank">PyTorch</a>、<a href="https://mxnet.io" target="_blank">MXNet</a> などがあります。
 
@@ -45,7 +48,7 @@ Azure Machine Learning service には、機械学習モデルのデータの準�
 
 ### <a name="code-first-experience"></a>コード第一のエクスペリエンス
 
-<a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK</a> を使用してローカル コンピューターでトレーニングを開始してから、クラウドにスケールアウトします。 クラウドのパワーと、Azure Machine Learning コンピューティングや [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) などの利用可能な多数の[コンピューティング先](how-to-set-up-training-targets.md)と[高度なハイパーパラメーター調整サービス](how-to-tune-hyperparameters.md)を活用することで、高品質のモデルを手早く構築できます。
+<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning Python SDK</a> を使用してローカル コンピューターでトレーニングを開始してから、クラウドにスケールアウトします。 クラウドのパワーと、Azure Machine Learning コンピューティングや [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) などの利用可能な多数の[コンピューティング先](how-to-set-up-training-targets.md)と[高度なハイパーパラメーター調整サービス](how-to-tune-hyperparameters.md)を活用することで、高品質のモデルを手早く構築できます。
 
 SDK を使用して、[モデルのトレーニングと調整を自動化](tutorial-auto-train-models.md)することもできます。
 
@@ -63,7 +66,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 適切なモデルがあれば、Web サービス、IoT デバイス、または Power BI で簡単に使用できます。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関する記事を参照してください。
 
-デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) または [Azure portal](https://portal.azure.com/) を使用して管理できます。
+デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) または [Azure portal](https://portal.azure.com/) を使用して管理できます。
 
 これらのモデルを使用して、[リアルタイム](how-to-consume-web-service.md)で予測を返したり、データが大量の場合は[非同期で](how-to-run-batch-predictions.md)予測を返したりすることができます。
 

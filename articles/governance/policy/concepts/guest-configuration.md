@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6f51d2907738f49ace559f1b127458eda71de287
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 18a85fae7d2d241bd8d582db73c71e1d1472f04d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624098"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036318"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
 
@@ -28,11 +28,16 @@ Azure のリソースを監査し、[修復](../how-to/remediate-resources.md)�
 
 仮想マシン内部の設定を監査するために、[仮想マシン拡張機能](../../../virtual-machines/extensions/overview.md)を有効にします。 拡張機能は、適用可能なポリシーの割り当てと、対応する構成定義をダウンロードします。
 
-### <a name="register-guest-configuration-resource-provider"></a>ゲスト構成リソース プロバイダーの登録
+### <a name="limits-set-on-the-exension"></a>拡張機能に設定されている制限
+
+コンピューター内で実行されているアプリケーションに対する拡張機能の影響を制限する目的で、ゲスト構成の CPU 使用率は 5% を超えることはできません。
+これは "組み込み" として Microsoft が提供する構成、および顧客が作成したカスタム構成の両方に当てはまります。
+
+## <a name="register-guest-configuration-resource-provider"></a>ゲスト構成リソース プロバイダーの登録
 
 ゲストの構成を使用するには、リソース プロバイダーを登録する必要があります。 ポータルまたは PowerShell を使用して登録できます。 ポータルを使用してゲスト構成ポリシーを割り当てる場合、リソース プロバイダーは自動的に登録されます。
 
-#### <a name="registration---portal"></a>登録ポータル
+### <a name="registration---portal"></a>登録ポータル
 
 Azure portal からゲストの構成用のリソース プロバイダを登録するには、次の手順を実行します。
 
@@ -44,7 +49,7 @@ Azure portal からゲストの構成用のリソース プロバイダを登録
 
 1. **Microsoft.GuestConfiguration** が見つかるまでフィルター処理するか、またはスクロールして、同じ行に**登録**をクリックします。
 
-#### <a name="registration---powershell"></a>登録 - PowerShell
+### <a name="registration---powershell"></a>登録 - PowerShell
 
 PowerShell を使ってゲスト構成用にリソース プロバイダーを登録するには、次のコマンドを実行します。
 
@@ -53,7 +58,7 @@ PowerShell を使ってゲスト構成用にリソース プロバイダーを�
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
-### <a name="validation-tools"></a>検証ツール
+## <a name="validation-tools"></a>検証ツール
 
 仮想マシン内で、ゲスト構成クライアントはローカル ツールを使用して監査を実行します。
 
@@ -68,11 +73,11 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ゲスト構成クライアントは、新しいコンテンツを 5 分ごとにチェックします。 ゲスト割り当てを受信すると、設定が 15 分間隔でチェックされます。 監査が完了するとすぐに、結果がゲスト構成リソース プロバイダーに送信されます。 ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。 これにより、Azure Policy が Azure Resource Manager のプロパティを評価します。 オンデマンドの Azure Policy 評価により、ゲスト構成リソース プロバイダーから最新の値が取得されます。 ただし、仮想マシン内の構成の新しい監査はトリガーされません。
 
-### <a name="supported-client-types"></a>サポートされているクライアントの種類
+## <a name="supported-client-types"></a>サポートされているクライアントの種類
 
 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
-|Publisher|Name|バージョン|
+|Publisher|名前|バージョン|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -89,7 +94,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 Windows Server Nano Server はどのバージョンでもサポートされていません。
 
-### <a name="guest-configuration-extension-network-requirements"></a>ゲスト構成拡張機能のネットワーク要件
+## <a name="guest-configuration-extension-network-requirements"></a>ゲスト構成拡張機能のネットワーク要件
 
 Azure のゲスト構成リソース プロバイダーと通信するには、仮想マシンはポート **443** を介して Azure データセンターに送信方向でアクセスできる必要があります。 Azure でプライベート仮想ネットワークを使用し、送信トラフィックを許可しない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則を使用して例外を構成する必要があります。 現時点では、Azure Policy ゲスト構成用のサービス タグはありません。
 
@@ -100,7 +105,7 @@ IP アドレス一覧では、[Microsoft Azure データセンターの IP 範�
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
-ゲスト構成によって実行される各監査には、**DeployIfNotExists** 定義と **Audit** 定義の 2 つのポリシー定義が必要です。 **DeployIfNotExists** 定義は、[検証ツール](#validation-tools)をサポートするためにゲスト構成エージェントおよびその他のコンポーネントを使用して仮想マシンを準備するために使用されます。
+ゲスト構成によって実行される各監査には、**DeployIfNotExists** 定義と **AuditIfNotExists** 定義の 2 つのポリシー定義が必要です。 **DeployIfNotExists** 定義は、[検証ツール](#validation-tools)をサポートするためにゲスト構成エージェントおよびその他のコンポーネントを使用して仮想マシンを準備するために使用されます。
 
 **DeployIfNotExists** ポリシー定義が検証し、次の項目を修正します。
 
@@ -111,18 +116,18 @@ IP アドレス一覧では、[Microsoft Azure データセンターの IP 範�
 
 **DeployIfNotExists** の割り当てが準拠していない場合は、[修復タスク](../how-to/remediate-resources.md#create-a-remediation-task)を使用できます。
 
-**DeployIfNotExists** の割り当てが準拠している場合は、**Audit** ポリシーの割り当てはローカル検証ツールを使用して、構成の割り当てが準拠しているかどうかを判断します。
+**DeployIfNotExists** の割り当てが準拠している場合は、**AuditIfNotExists** ポリシーの割り当てによってローカル検証ツールが使用され、構成の割り当てが準拠なのか非準拠なのかが判断されます。
 この検証ツールは、結果をゲスト構成クライアントに提供します。 クライアントは、その結果をゲストの拡張機能に転送します。それにより、その結果がゲスト構成のリソース プロバイダー全体で使用可能になります。
 
 Azure Policy は、ゲスト構成リソースプロバイダーの **complianceStatus** プロパティを使用して**コンプライアンス** ノードでコンプライアンスを報告します。 詳細については、[コンプライアンス データを取得する](../how-to/getting-compliance-data.md)を参照してください。
 
 > [!NOTE]
-> **Audit** ポリシーから結果を返すには、**DeployIfNotExists** ポリシーが必要です。
-> **DeployIfNotExists** がない場合、**Audit** ポリシーは状態として"0 of 0" のリソースを示します。
+> **AuditIfNotExists** ポリシーから結果を返すには、**DeployIfNotExists** ポリシーが必要です。
+> **DeployIfNotExists** がない場合、**AuditIfNotExists** ポリシーは状態として"0 of 0" のリソースを示します。
 
-割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows の仮想マシン内での監査のパスワード セキュリティ設定*という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows 用に **DeployIfNotExists** と **Audit** の 6 つのペアがあり、Linux 用に 3 つのペアがあります。 いずれの場合も、定義内のロジックは、[ポリシー規則](definition-structure.md#policy-rule)の定義に基づいてターゲット オペレーティング システムのみが評価されることを検証します。
+割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows の仮想マシン内での監査のパスワード セキュリティ設定*という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows のために **DeployIfNotExists** と **AuditIfNotExists** の 6  つのペアがあって、Linux 用に 3 つのペアがあります。 いずれの場合も、定義内のロジックは、[ポリシー規則](definition-structure.md#policy-rule)の定義に基づいてターゲット オペレーティング システムのみが評価されることを検証します。
 
-## <a name="multiple-assignments"></a>複数の割り当て
+### <a name="multiple-assignments"></a>複数の割り当て
 
 ポリシー割り当てが別のパラメーターを使用する場合でも、ゲスト構成ポリシーは現在、仮想マシンごとに 1 度、同じゲスト割り当てを割り当てることのみをサポートしています。
 

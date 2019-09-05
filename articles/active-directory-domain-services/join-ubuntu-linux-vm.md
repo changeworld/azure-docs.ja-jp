@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612282"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990591"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Azure 内の Ubuntu 仮想マシンをマネージド ドメインに参加させる
 この記事では、Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -88,7 +88,7 @@ hosts ファイルに、次の値を入力します。
 3. Kerberos のインストール中に、ピンク色の画面が表示されます。 "krb5-user" パッケージのインストールで、領域名 (すべて大文字) の入力を求めるメッセージが表示されます。 インストールによって、/etc/krb5.conf に [realm] セクションと [domain_realm] セクションが書き込まれます。
 
     > [!TIP]
-    > マネージド ドメインの名前が contoso.com の場合は、領域として「contoso.COM」を入力します。 領域名は大文字で指定する必要があることを忘れないでください。
+    > マネージド ドメインの名前が contoso.com の場合は、領域として「CONTOSO.COM」を入力します。 領域名は大文字で指定する必要があることを忘れないでください。
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Linux 仮想マシンで NTP (ネットワーク タイム プロトコル) 設定を構成する
@@ -121,7 +121,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 1. AAD ドメイン サービスのマネージド ドメインを探します。 SSH ターミナルで、次のコマンドを入力します。
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -138,7 +138,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     >
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. コンピューターをドメインに参加させます。 SSH ターミナルで、次のコマンドを入力します。
@@ -149,7 +149,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     > VM がドメインに参加できない場合は、VM のネットワーク セキュリティ グループで、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットに対して、TCP + UDP ポート 464 の送信 Kerberos トラフィックが許可されていることを確認します。
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
     ```
 
 コンピューターのマネージド ドメインへの参加が完了すると、「Successfully enrolled machine in realm (コンピューターは領域に正常に登録されました)」という旨のメッセージが表示されます。
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>ドメイン参加の確認
 マシンがマネージド ドメインに正常に参加したかどうかを確認してみましょう。 別の SSH 接続を使用して、ドメインに参加した Ubuntu VM に接続します。 ドメイン ユーザー アカウントを使用して、そのユーザー アカウントが正しく解決されているかどうかを確認します。
 
-1. SSH ターミナルで次のコマンドを入力し、SSH を使用して、ドメインに参加した Ubuntu 仮想マシンに接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@contoso.COM')。
+1. SSH ターミナルで次のコマンドを入力し、SSH を使用して、ドメインに参加した Ubuntu 仮想マシンに接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@CONTOSO.COM')。
     
     ```console
-    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
     ```
 
 2. SSH ターミナルで次のコマンドを入力し、ホーム ディレクトリが正しく初期化されているかどうかを確認します。

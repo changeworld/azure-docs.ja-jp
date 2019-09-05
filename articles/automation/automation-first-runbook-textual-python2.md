@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a030005d73df61c31c5aa1c2e1b56e52b03a56e3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6808ad101a828708ff4fe77bb4b8a55cf8c5fec7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478503"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135427"
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -99,7 +99,7 @@ Azure リソースを管理するには、スクリプトがご利用の Automat
 
 > [!NOTE]
 > この Automation アカウントは、実行証明書を作成するため、サービス プリンシパルの機能を使用して作成されている必要があります。
-> ご利用の Automation アカウントがサービス プリンシパルを使用せずに作成された場合は、「[Python 用 Azure 管理ライブラリを使用した認証](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate)」で説明されている方法で認証できます。
+> ご利用の Automation アカウントがサービス プリンシパルを使用せずに作成された場合は、「[Python 用 Azure 管理ライブラリを使用した認証](/azure/python/python-sdk-azure-authenticate)」で説明されている方法で認証できます。
 
 1. MyFirstRunbook-Python のウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。
 
@@ -212,5 +212,5 @@ Python Runbook を開始 ( **[テスト]** ページ上で、または発行済�
 - グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 - PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 - Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
-- Python を使用した Azure の開発については、「[Python 開発者向けの Azure](https://docs.microsoft.com/python/azure/?view=azure-python)」を参照してください。
+- Python を使用した Azure の開発については、「[Python 開発者向けの Azure](/azure/python/)」を参照してください。
 - サンプル Python 2 Runbook を表示するには、[Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) を参照してください。

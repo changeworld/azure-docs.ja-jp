@@ -11,18 +11,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 40a2f8716b438837cf3efe300286ab9053fc8b07
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 22f9ff8c493e850152e1fd74c8787e2cde507685
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035828"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308849"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
 Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、2018 年 9 月のリリースで非推奨とされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
 
-エクスペリエンスの向上のため、このリリースにはお客様からのフィードバックによって促進された、多くの重要な更新が含まれています。 モデル デプロイに対する実験の実行からのコア機能は変更されていません。 ただし、堅牢な <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> と [Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
+エクスペリエンスの向上のため、このリリースにはお客様からのフィードバックによって促進された、多くの重要な更新が含まれています。 モデル デプロイに対する実験の実行からのコア機能は変更されていません。 ただし、堅牢な <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> と [Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
 
 以前のバージョンの Azure Machine Learning service で作成された成果物のほとんどは、独自のローカル ストレージやクラウド ストレージに保管されています。 これらの成果物は消失することはありません。
 
@@ -37,7 +37,7 @@ Azure Machine Learning Workbench アプリケーションとその他のいく�
 Azure Machine Learning service の最終リリースには、次の機能が含まれています。
 + [簡略化された Azure リソースのモデル](concept-azure-machine-learning-architecture.md)。
 + 実験とコンピューティング先を管理するための[新しいポータル UI](how-to-track-experiments.md)。
-+ 新しい、より包括的な Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。
++ 新しい、より包括的な Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>。
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
 [アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal](how-to-manage-workspace.md) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやデプロイのコンピューティング先、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
@@ -50,7 +50,7 @@ Azure Machine Learning service の最終リリースには、次の機能が含�
 
 Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning モデル管理の各アカウントのサポート、およびそれらに関連する SDK と CLI のサポートは、2019 年 1 月 9 日に終了しました。
 
-最新の機能はすべて、この <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[ポータル](how-to-manage-workspace.md)を使用して利用可能です。
+最新の機能はすべて、この <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[ポータル](how-to-manage-workspace.md)を使用して利用可能です。
 
 ## <a name="what-about-run-histories"></a>実行履歴について教えてください。
 
@@ -100,9 +100,9 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-the-old-sdk-and-cli"></a>古い SDK と CLI はどうなりますか。
 
-1 月まで引き続き動作します。 前の[タイムライン](#timeline)をご覧ください。 最新の SDK や CLI を使用して、新しい実験とモデルの作成を開始することをお勧めします。
+前の[タイムライン](#timeline)をご覧ください。 最新の SDK や CLI を使用して、新しい実験とモデルの作成を開始することをお勧めします。
 
-最新のリリースで新しい Python SDK を使用することにより、Python 環境で Azure Machine Learning service を操作することができます。 最新の <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> のインストール方法を確認してください。 また、更新された [Azure Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)と充実した `az ml` コマンドのセットを使用して、Azure Cloud Shell などのコマンドライン環境でサービスを操作することもできます。
+最新のリリースで新しい Python SDK を使用することにより、Python 環境で Azure Machine Learning service を操作することができます。 最新の <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> のインストール方法を確認してください。 また、更新された [Azure Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)と充実した `az ml` コマンドのセットを使用して、Azure Cloud Shell などのコマンドライン環境でサービスを操作することもできます。
 
 ## <a name="what-about-visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI について
 
@@ -112,7 +112,7 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-domain-packages"></a>ドメイン パッケージについて教えてください。
 
-コンピューター ビジョン、テキスト分析、予測用のドメイン パッケージは、最新バージョンの Azure Machine Learning では使用できません。 ただし、コンピューター ビジョン、テキスト、および予測のモデルは、最新の Azure Machine Learning Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> を使用して引き続き構築およびトレーニングできます。 コンピューター ビジョン、テキスト分析、予測のパッケージを使用して構築された既存のモデルに移行する方法については、[AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com) までお問い合わせください。
+コンピューター ビジョン、テキスト分析、予測用のドメイン パッケージは、最新バージョンの Azure Machine Learning では使用できません。 ただし、コンピューター ビジョン、テキスト、および予測のモデルは、最新の Azure Machine Learning Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> を使用して引き続き構築およびトレーニングできます。 コンピューター ビジョン、テキスト分析、予測のパッケージを使用して構築された既存のモデルに移行する方法については、[AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com) までお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

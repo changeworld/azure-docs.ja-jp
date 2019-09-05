@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/21/2019
 ms.author: v-adgera
-ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873649"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904292"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Digital Twins 用に Postman を構成する方法
 
@@ -35,9 +35,9 @@ ms.locfileid: "69873649"
 
 OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Directory アプリを構成します。
 
-1. [こちらのクイック スタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順に従って、種類がネイティブの Azure AD アプリケーションを作成します。 または、既存のネイティブ アプリの登録を再利用することもできます。
+1. [クイックスタート](./quickstart-view-occupancy-dotnet.md)の手順に従って、Azure AD アプリケーションを作成します。 または、[従来の AAD ブレードを使用してネイティブ アプリ](./how-to-use-legacy-aad.md)を作成します。
 
-1. **[必要なアクセス許可]** で、 **[追加]** を選択し、 **[API アクセスの追加]** に「**Azure Digital Twins**」と入力します。 検索で API が見つからない場合は、代わりに **Azure Smart Spaces** を検索します。 次に、 **[アクセス許可の付与] > [委任されたアクセス許可]** を選択し、 **[完了]** を選択します。
+1. **[API のアクセス許可]** の下で **[アクセス許可の追加]** を選択します。 次に、 **[所属する組織で使用している API]** の下で **[Azure Digital Twins]** を選択します。 検索で API が見つからない場合は、代わりに **Azure Smart Spaces** を検索します。 次に、 **[委任されたアクセス許可]** > **[読み取り]**  >  **[Read.Write]** の順に選択して、 **[アクセス許可の追加]** を選択します。
 
     [![Azure Active Directory のアプリ登録追加 API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
@@ -75,7 +75,7 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
     | 付与タイプ | `Implicit` |
     | コールバック URL | `https://www.getpostman.com/oauth2/callback` |
     | 認証 URL | ステップ 2 の**承認 URL** を使用します |
-    | クライアント ID | 前のセクションで作成または別の用途のために作り変えた Azure Active Directory アプリの**アプリケーション ID** を使用します |
+    | クライアント ID | 前のセクションで作成または再利用した Azure Active Directory アプリの**アプリケーション ID** を使用します |
     | Scope (スコープ) | 空白 |
     | State | 空白 |
     | クライアント認証 | `Send as Basic Auth header` |

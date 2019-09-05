@@ -3,22 +3,20 @@ title: Azure Data Factory - JSON スクリプトのリファレンス | Microsof
 description: Data Factory のエンティティ用の JSON スキーマを紹介します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 279a016d60ecb1bc80baf92a7fa60365145e397d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f94d3cdbbd1683b20dbe1d370bcac43817458f44
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836259"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139379"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -284,7 +282,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 
 次の表では、上記の JSON のプロパティについて説明します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | 名前 | データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
 | type | データセットの型。 Azure Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 Data Factory でサポートされるデータ ストアとデータセットの種類の全一覧については、「[データ ストア](#data-stores)」セクションを参照してください。 |
@@ -316,7 +314,7 @@ structure:
 
 次の表では、**availability** セクションで使用できるプロパティについて説明します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
 | interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |NA |
@@ -336,7 +334,7 @@ structure:
 
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
 
-| ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
+| ポリシー名 | 説明 | 適用先 | 必須 | Default |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ |NA |
 | minimumRows |**Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ |NA |
@@ -3550,7 +3548,7 @@ auto-
 ### <a name="linked-service"></a>リンクされたサービス
 FTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **FtpServer** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | host |FTP サーバーの名前または IP アドレス |はい |&nbsp; |
 | authenticationType |認証の種類を指定します |はい |Basic、Anonymous |

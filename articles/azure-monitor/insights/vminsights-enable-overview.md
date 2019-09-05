@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688249"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905571"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
 
@@ -33,7 +33,10 @@ Azure Monitor for VMs を設定する方法は、次のとおりです。
 
 ## <a name="prerequisites"></a>前提条件
 
-始める前に、次のセクションの情報を理解しておいてださい。
+始める前に、次のセクションの情報を理解しておいてださい。 
+
+>[!NOTE]
+>このセクションで説明する次の情報は、[Service Map ソリューション](service-map.md)にも適用できます。  
 
 ### <a name="log-analytics"></a>Log Analytics
 
@@ -46,8 +49,8 @@ Azure Monitor for VMs は、次のリージョンで Log Analytics ワークス�
 - 英国南部
 - 西ヨーロッパ
 - 東南アジア
-- オーストラリア東部
-- オーストラリア南東部
+- オーストラリア東部<sup>1</sup>
+- オーストラリア南東部<sup>1</sup>
 
 <sup>1</sup> このリージョンでは、Azure Monitor for VMs の正常性の機能はサポートされていません。
 
@@ -153,6 +156,9 @@ Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent か�
 
 単一の Azure VM に対して Azure Monitor for VMs を有効にするか、または大規模なデプロイ方法を使用するかにかかわらず、Azure VM Dependency Agent 拡張機能を使用し、エクスペリエンスの一部としてエージェントをインストールします。
 
+>[!NOTE]
+>このセクションで説明する次の情報は、[Service Map ソリューション](service-map.md)にも適用できます。  
+
 ハイブリッド環境では、手動で Dependency Agent をダウンロードしてインストールできます。 VM が Azure の外部でホストされている場合は、自動化されたデプロイ方法を使用してください。
 
 次の表では、ハイブリッド環境でマップ機能がサポートしている接続先ソースについて説明します。
@@ -167,8 +173,8 @@ Dependency Agent は、以下の場所からダウンロードできます。
 
 | ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.1 | FCF9C1D9B20AD414051B49EE79144E595CCC411EB6D444D6D5B5A7B1874DCDEC |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 

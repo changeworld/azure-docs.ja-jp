@@ -2,7 +2,7 @@
 title: テキスト マージ コグニティブ検索スキル - Azure Search
 description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure Search のエンリッチメント パイプラインでこのコグニティブ スキル使用します。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 64246f28ac185e8816971e24a67682d6d2dd9be1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 3cf816a07b61fd5c398dba376276ef1e9f28e985
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635904"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186333"
 ---
 #    <a name="text-merge-cognitive-skill"></a>テキスト マージ コグニティブ スキル
 

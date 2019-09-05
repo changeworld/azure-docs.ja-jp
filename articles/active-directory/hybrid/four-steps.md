@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532449"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124919"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -141,7 +141,7 @@ Azure の[セルフサービスによるパスワードのリセット](https://
 
 Azure では、ユーザーが MFA および SSPR に登録していることをお客様およびその組織で確認するために使用できるレポートを提供しています。 登録していないユーザーには、そのプロセスについて教える必要がある場合があります。
 
-MFA の[サインイン レポート](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)には、MFA の使用状況に関する情報が含まれており、組織で MFA がどのように機能しているかに関する分析情報を得ることができます。 Azure AD のサインイン アクティビティ (および監査とリスク イベント) へのアクセス権を持つことは、トラブルシューティング、使用状況の分析、およびフォレンジクスの調査を行うために不可欠です。
+MFA の[サインイン レポート](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)には、MFA の使用状況に関する情報が含まれており、組織で MFA がどのように機能しているかに関する分析情報を得ることができます。 Azure AD のサインイン アクティビティ (および監査とリスク検出) へのアクセス権を持つことは、トラブルシューティング、使用状況の分析、およびフォレンジクスの調査を行うために不可欠です。
 
 同様に、[セルフサービスによるパスワード管理レポート](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)を使用して、誰が SSPR に登録しているか (またはしていないか) を特定できます。
 

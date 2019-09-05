@@ -1,21 +1,19 @@
 ---
 title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
 description: Azure Functions Tools for Visual Studio 2019 を使用して、Azure Functions を開発およびテストする方法を説明します。
-services: functions
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 6040552ccee5269e4a04d8b7a1ee072400a8506d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593272"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905677"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -212,6 +210,9 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
 **[ローカル]** は local.settings.json ファイル内の設定値を表し、 **[リモート]** は Azure での関数アプリにおける現在の設定です。  新しいアプリ設定を作成するには、 **[設定の追加]** を選択します。 **[ローカルから値を挿入する]** リンクを使用して、設定値を **[リモート]** フィールドにコピーします。 **[OK]** を選択すると、保留中の変更がローカル設定ファイルと関数アプリに書き込まれます。
+
+> [!NOTE]
+> 既定では、local.settings.json ファイルはソース管理にチェックインされません。 これは、ソース管理からローカル関数プロジェクトを複製するときに、プロジェクトに local.settings.json ファイルがないことを意味します。 この場合、 **[アプリケーション設定]** ダイアログが期待どおりに動作するように、プロジェクトのルートに local.settings.json ファイルを手動で作成する必要があります。 
 
 以下のいずれかの方法を使用して、アプリケーション設定を管理することもできます。
 

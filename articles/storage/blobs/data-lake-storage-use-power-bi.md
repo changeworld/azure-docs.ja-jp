@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: cb82d47be11570baf7865468c804162a20a7685f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855479"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991576"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Power BI を使用して Azure Data Lake Storage Gen2 のデータを分析する
 
@@ -39,7 +39,7 @@ ms.locfileid: "68855479"
 
     ![[データの取得] ページ](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. **[Azure Data Lake Storage Gen2]** ダイアログ ボックスで、ファイル システムのエンドポイント形式を使用して、お使いの Azure Data Lake Storage Gen2 アカウント、ファイル システム、またはサブフォルダーの URL を指定できます。 Data Lake Storage Gen2 の URL のパターンは `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` です。その後、 **[OK]** をクリックします。
+4. **[Azure Data Lake Storage Gen2]** ダイアログ ボックスで、コンテナーのエンドポイント形式を使用して、ご利用の Azure Data Lake Storage Gen2 アカウント、ファイル システム、またはサブフォルダーの URL を指定できます。 Data Lake Storage Gen2 の URL のパターンは `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` です。その後、 **[OK]** をクリックします。
 
     ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
 

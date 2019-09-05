@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 09/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558843"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904474"
 ---
 # <a name="get-started-with-device-management-net"></a>デバイス管理の開始 (.NET)
 
@@ -34,7 +34,9 @@ ms.locfileid: "69558843"
 
 * **TriggerReboot**。 このアプリでは、シミュレート対象デバイス アプリでダイレクト メソッドを呼び出し、応答を表示し、更新された報告されるプロパティを表示します。
 
-このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルを完了するには、次のものが必要です。
 
 * 見ることができます。
 
@@ -81,7 +83,7 @@ ms.locfileid: "69558843"
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT Hub 接続文字列に置き換えます。
+1. **Program** クラスに次のフィールドを追加します。 `{iot hub connection string}` プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーした IoT Hub 接続文字列に置き換えます。
 
    ```csharp
    static RegistryManager registryManager;
@@ -133,7 +135,7 @@ ms.locfileid: "69558843"
 
 ## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
 
-このセクションでは、次のアクションを実行します。
+このセクションでは、次の作業を行います。
 
 * クラウドによって呼び出されたダイレクト メソッドに応答する .NET コンソール アプリを作成します。
 
@@ -164,11 +166,10 @@ ms.locfileid: "69558843"
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで記したデバイス接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 `{device connection string}` プレースホルダーの値を、先ほど「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」でメモしたデバイス接続文字列に置き換えます。
 
     ```csharp
-    static string DeviceConnectionString = 
-      "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
@@ -233,7 +234,7 @@ ms.locfileid: "69558843"
    }
    ```
 
-1. ソリューション エクスプローラーで、ソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。 
+1. ソリューション エクスプローラーで、ソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
 
 1. **[共通プロパティ]**  >  **[スタートアップ プロジェクト]** で **[シングル スタートアップ プロジェクト]** を選択し、**SimulateManagedDevice** プロジェクトを選択します。 **[OK]** を選択して変更を保存します。
 

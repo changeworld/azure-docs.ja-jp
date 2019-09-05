@@ -3,21 +3,20 @@ title: Azure Data Factory のフィルター アクティビティ | Microsoft D
 description: フィルター アクティビティは、入力をフィルター処理します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: shlo
-ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7e2e735baa7e40b4170d3397327e90fc1a5d2d5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60554849"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141671"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
 パイプラインでフィルター アクティビティを使用して、入力配列にフィルター式を適用することができます。 
@@ -39,7 +38,7 @@ ms.locfileid: "60554849"
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | `Filter` アクティビティの名前。 | string | はい
+名前 | `Filter` アクティビティの名前。 | string | はい
 type | **filter** に設定する必要があります。 | String | はい
 condition | 入力のフィルター処理に使用する条件。 | 式 | はい
 items | フィルターを適用する必要がある入力配列。 | 式 | はい

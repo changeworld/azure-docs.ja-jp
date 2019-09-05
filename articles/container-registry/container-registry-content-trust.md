@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 manager: gwallace
 ms.service: container-registry
-ms.topic: quickstart
+ms.topic: article
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356538"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172306"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 

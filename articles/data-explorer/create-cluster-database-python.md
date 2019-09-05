@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: caac53aec08e234f320ee4278a5a58bbc62bff68
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: e3f58e596db26c04a8f3be4f87eb129fadf5e328
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494570"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141750"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -71,7 +71,7 @@ pip install azure-mgmt-kusto
 
     使用できる省略可能なパラメーターが他にも存在します (クラスターの容量など)。
     
-1. [*資格情報*](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)を設定します。
+1. [*資格情報*](/azure/python/python-sdk-azure-authenticate)を設定します。
 
 1. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
 

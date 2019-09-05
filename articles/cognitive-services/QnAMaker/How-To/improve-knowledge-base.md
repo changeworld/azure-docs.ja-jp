@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 577bf7f157eb89da360fa6cbdd4d22c1054f234f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ae186209395078ed56a046aafdbe01bb513fc3a0
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966720"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277423"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
 
@@ -56,7 +56,7 @@ QnA Maker の暗黙的フィードバックでは、スコアの近さを判定�
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>アクティブ ラーニングを使用するためにラインタイム バージョンをアップグレードする
 
-アクティブ ラーニングは、ランタイム バージョン 4.4.0 以上でサポートされています。 ナレッジ ベースが以前のバージョンで作成された場合は、この機能を使用するために[ランタイムをアップグレード](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates)します。 
+アクティブ ラーニングは、ランタイム バージョン 4.4.0 以上でサポートされています。 ナレッジ ベースが以前のバージョンで作成された場合は、この機能を使用するために[ランタイムをアップグレード](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)します。 
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>アクティブ ラーニングを有効にして提案を表示する
 

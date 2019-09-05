@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7838fd30869629298c5b44cc4b3e5c1e5daa7051
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ef5a605fb0190e67de8b2bb95bbccfd8fd3cf279
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519814"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906033"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Signagelive を構成する
 
@@ -56,8 +56,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 Azure AD での自動ユーザー プロビジョニング用に Signagelive を構成する前に、Signagelive 上で SCIM プロビジョニングを有効にする必要があります。
 
-1.  [Signagelive](mailto:development@signagelive.com) に連絡して、SCIM のプロビジョニングを構成するために必要なシークレット トークンを入手します。
-
+  [Signagelive](mailto:development@signagelive.com) に連絡して、SCIM のプロビジョニングを構成するために必要なシークレット トークンを入手します。
 
 ## <a name="add-signagelive-from-the-gallery"></a>ギャラリーからの Signagelive の追加
 
@@ -86,7 +85,7 @@ Azure AD での自動ユーザー プロビジョニングのために Signageli
 このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて Signagelive のユーザーやグループの作成、更新、無効化を行えるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
->  BitaBIZ では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Signagelive シングル サインオンのチュートリアル](Signagelive-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+>  Signagelive では、[Signagelive シングル サインオンのチュートリアル](Signagelive-tutorial.md)で説明されている手順に従って、SAML ベースのシングル サインオンを有効にすることもできます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>Azure AD で Signagelive の自動ユーザー プロビジョニングを構成するには:
 
@@ -106,7 +105,8 @@ Azure AD での自動ユーザー プロビジョニングのために Signageli
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** に「` https://samlapi.signagelive.com/scim/v2`」と入力します。 **[シークレット トークン]** フィールドに、エンジニアリング開発チームから提供された**ベアラー トークン**値を入力します。 **[接続テスト]** をクリックして、Azure AD から Signagelive に接続できることを確認します。 接続できない場合は、使用中の Signagelive アカウントに管理者アクセス許可があることを確認してから、もう一度試します。![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
+5. [管理者資格情報] セクションの **[テナント URL]** に「` https://samlapi.signagelive.com/scim/v2`」と入力します。 **[シークレット トークン]** フィールドに、エンジニアリング開発チームから提供された**ベアラー トークン**値を入力します。 **[接続テスト]** をクリックして、Azure AD から Signagelive に接続できることを確認します。 接続できない場合は、使用中の Signagelive アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+    ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
@@ -144,9 +144,9 @@ Azure AD での自動ユーザー プロビジョニングのために Signageli
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Signagelive に対して実行されたすべてのアクションが記載されています。
+これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は、後続の同期よりも実行に時間がかかります。 ユーザーやグループのプロビジョニングにかかる時間の詳細については、「[ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)」を参照してください。 
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+**[現在の状態]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Signagelive に対して実行されたすべてのアクションが記載されています。 詳細については、「[ユーザー プロビジョニングの状態を確認する](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)」を参照してください。 Azure AD プロビジョニング ログを読むには、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

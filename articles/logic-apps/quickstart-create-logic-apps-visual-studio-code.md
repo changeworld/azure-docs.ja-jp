@@ -12,12 +12,12 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: f0b568289a50b9883e6e0f1cba6b793c9e6e90e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b9f9a402ecde09dd00c2b070f784858a141e556b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051735"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308997"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>クイック スタート:自動化されたロジック アプリ ワークフローの作成と管理 - Visual Studio Code
 
@@ -41,7 +41,7 @@ ms.locfileid: "70051735"
 
 * まだお持ちでない場合は、以下のツールをダウンロードしてインストールしてください。 
 
-  * [Visual Studio Code バージョン 1.25.1 以降]("https://code.visualstudio.com/) (無料)
+  * [Visual Studio Code バージョン 1.25.1 以降](https://code.visualstudio.com/) (無料)
 
   * Azure Logic Apps 用 Visual Studio Code 拡張機能
 

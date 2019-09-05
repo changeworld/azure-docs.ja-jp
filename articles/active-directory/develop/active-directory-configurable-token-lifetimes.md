@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 08/22/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6aa209b6e99be406634e01be47c6dd9572d62a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95c337501c46dd9b30ff20d71a9363ab03fdb608
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853430"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980446"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (プレビュー)
 
@@ -81,15 +81,15 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 ### <a name="configurable-token-lifetime-properties"></a>構成可能なトークンの有効期間のプロパティ
 | プロパティ | ポリシーのプロパティ文字列 | 影響 | 既定値 | 最小値 | 最大値 |
 | --- | --- | --- | --- | --- | --- |
-| アクセス トークンの有効期間 |AccessTokenLifetime<sup>4</sup> |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
+| アクセス トークンの有効期間 |AccessTokenLifetime<sup>2</sup> |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
 | 更新トークンの最大非アクティブ時間 |MaxInactiveTime |更新トークン |90 日間 |10 分 |90 日間 |
 | 単一要素更新トークンの最長有効期間 |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 | 多要素更新トークンの最長有効期間 |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| 単一要素セッション トークンの最長有効期間 |MaxAgeSessionSingleFactor<sup>2</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor<sup>3</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| 単一要素セッション トークンの最長有効期間 |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>これらの属性に対して明示的に設定できる最大期間は 365 日です。
-* <sup>4</sup>Microsoft Teams Web クライアントを機能させるには、Microsoft Teams に対して AccessTokenLifetime を 15 分より大きい値に設定することをお勧めします。
+* <sup>2</sup>Microsoft Teams Web クライアントを機能させるには、Microsoft Teams に対して AccessTokenLifetime を 15 分より大きい値に設定することをお勧めします。
 
 ### <a name="exceptions"></a>例外
 | プロパティ | 影響 | 既定値 |

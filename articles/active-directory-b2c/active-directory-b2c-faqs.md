@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622269"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061375"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -43,11 +43,9 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 
-現在、Facebook、Google+、LinkedIn、Amazon、Twitter (プレビュー)、WeChat (プレビュー)、Weibo (プレビュー)、および QQ (プレビュー) をサポートしています。 お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
+現在のところ、Amazon、Facebook、GitHub (プレビュー)、Google、LinkedIn、Microsoft アカウント (MSA)、QQ (プレビュー)、Twitter、WeChat (プレビュー)、Weibo (プレビュー) など、いくつかのソーシャル ID プロバイダーをサポートしています。 お客様からご要望があれば、他の人気のあるソーシャル ID プロバイダーへのサポート追加を検討します。
 
-Azure AD B2C でも[カスタム ポリシー](active-directory-b2c-overview-custom.md)のサポートがを追加されています。 開発者は、これらのカスタム ポリシーを使用して、[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。
-
-[カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)を使ってカスタム ポリシーの作成をお試しください。
+Azure AD B2C も[カスタム ポリシー](active-directory-b2c-overview-custom.md)をサポートしています。 カスタム ポリシーを使用すると、[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーに対して独自のポリシーを作成できます。 [カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)を使ってカスタム ポリシーの作成をお試しください。
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>さまざまなソーシャル ID プロバイダーからお客様に関する情報をさらに収集するためにスコープを構成できますか。
 

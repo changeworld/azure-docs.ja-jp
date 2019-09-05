@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 088591d30d768193fe74150cc33727fe47081624
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f4235599d3156c35b50aea1815f3d62d925f326a
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876525"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231850"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルをデプロイする
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    - マネージド ID
 
-     既定の "_システム割り当て_" マネージド ID オプションまたは "_ユーザー割り当て_" ID オプションを選択します。
+     既定の_システム割り当て_マネージド ID オプションまたは_ユーザー割り当て_ ID オプションを選択します。
 
    - ブループリントのパラメーター
 
@@ -113,7 +113,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |Resource Types that you do not want to allow in your environment (自分の環境で許可しないリソースの種類)|ポリシー割り当て|Policy _Allowed-Resource-Types|自分の環境でどのリソースの種類を許可するか|
 |Deploy Key Vault (Key Vault のデプロイ)|Resource Manager テンプレート|KV-AccessPolicy|**ロック済み** - Key Vault でアクセス許可を付与する Azure AD グループまたはユーザー <Object ID>|
 |Deploy Log Analytics (Log Analytics のデプロイ)|Resource Manager テンプレート|LogAnalytics_DataRetention|**ロック済み** - 日数データは Log Analytics に保持されます|
-|Deploy Log Analytics (Log Analytics のデプロイ)|Resource Manager テンプレート|LogAnalytics_Location|**ロック済み** - ワークスペースの確立時に使用されるリージョン|
+|Log Analytics のデプロイ|Resource Manager テンプレート|LogAnalytics_Location|**ロック済み** - ワークスペースの確立時に使用されるリージョン|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: a9451b5dcd572eee27809cf66df889f06da960ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2a94f82e4830bd1e9c96039f5ef8fe6546b0d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571131"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982670"
 ---
 # <a name="role-based-access-control-rbac-and-privileged-identity-management-pim"></a>ロールベースのアクセス制御 (RBAC) と Privileged Identity Management (PIM)
 
@@ -27,7 +27,7 @@ RBAC の導入には、大きく次の 3 つの構成要素が必要となりま
 
 ![RBAC の概要](media/rbac-overview.png)
 
-* **セキュリティ プリンシパル**: セキュリティ プリンシパルは、ユーザー、グループ、サービス プリンシパル、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) のいずれかに該当します。 セキュリティ プリンシパルには、Azure Active Directory グループを使用して権限を割り当てる必要があります。
+* **セキュリティ プリンシパル**: セキュリティ プリンシパルは、ユーザー、グループ、[サービス プリンシパル](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)、または[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) のいずれかに該当します。 セキュリティ プリンシパルには、Azure Active Directory グループを使用して権限を割り当てる必要があります。
 
 * **ロールの定義**: ロールの定義はアクセス許可のコレクションであり、ロールとも呼ばれます。 それらのアクセス許可によって、ロールの定義に割り当てられたセキュリティ プリンシパルが実行できる操作が定義されます。 この機能は、Azure リソース ロールと Azure Active Directory 管理者ロールによって提供されます。 Azure には一連の組み込みロール (リンク) が備わっており、カスタム ロールでそれらのロールを拡張することができます。
 

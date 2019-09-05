@@ -11,12 +11,12 @@ ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 216f5413ce3dae1f2d040643a30a4d7db4a879b8
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: d8cc67b8e243fb2b97cd1522a850adc63c84428e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835409"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969627"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -44,7 +44,8 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 > ユーザー オブジェクトの CRUD アクティビティについては、**コア ディレクトリ** カテゴリを参照してください。
 
 ## <a name="example-activity"></a>アクティビティの例
-次の例は、外部 ID プロバイダーを使用してユーザーがサインインするときにキャプチャされたデータを示しています: ![Azure portal の監査ログのアクティビティの詳細ページの例](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+次の例は、外部 ID プロバイダーを使用してユーザーがサインインするときにキャプチャされたデータを示しています:  
+    ![Azure portal の監査ログにあるアクティビティの詳細ページの例](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
 アクティビティの詳細パネルには、次の関連情報が含まれています。
 

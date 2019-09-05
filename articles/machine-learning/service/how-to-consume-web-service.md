@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03579d75ad9cbaceca1a5d42913ff546088f6cfe
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982793"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279131"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
 Web サービスとして Azure Machine Learning モデルをデプロイすると、REST API が作成されます。 この API にデータを送信し、モデルによって返される予測を受信できます。 このドキュメントでは、C#、Go、Java、Python を使用して Web サービス用のクライアントを作成する方法について説明します。
 
-Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPGA (field-programmable gate array) にイメージをデプロイするときに作成されます。 イメージを登録済みのモデルとスコアリング ファイルから作成します。 [Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して、Web サービスにアクセスするために使用される URI を取得します。 認証が有効になっている場合は、SDK を使用して認証キーまたはトークンを取得することもできます。
+Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPGA (field-programmable gate array) にイメージをデプロイするときに作成されます。 イメージを登録済みのモデルとスコアリング ファイルから作成します。 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、Web サービスにアクセスするために使用される URI を取得します。 認証が有効になっている場合は、SDK を使用して認証キーまたはトークンを取得することもできます。
 
 機械学習 Web サービスを使用するクライアントを作成するための一般的なワークフローは、次のとおりです。
 

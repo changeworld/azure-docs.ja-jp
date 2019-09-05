@@ -1,5 +1,5 @@
 ---
-title: ディープ ラーニングと機械学習の比較の概要
+title: ディープ ラーニングと機械学習
 titleSuffix: Azure Machine Learning service
 description: ディープ ラーニングと機械学習の関係、およびそれらが人工知能のカテゴリにどのように適合するかについて説明します。 この記事では、ディープ ラーニングによって、不正行為の検出、音声と顔の認識、感情分析、時系列予測などのシナリオがどのように解決されるかについて説明します。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934293"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982804"
 ---
-# <a name="introduction-to-deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習の比較の概要
+# <a name="deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習
 
 この記事は、ディープ ラーニングと機械学習の関係を理解するのに役立ちます。 2 つの概念の比較、および人工知能のより広範なカテゴリにどのように適合するかについて学習します。 最後に、不正行為の検出、音声と顔の認識、感情分析、時系列予測など、実際のシナリオにディープ ラーニングをどのように適用できるかについて説明します。
 

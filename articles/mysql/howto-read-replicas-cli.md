@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: ba8af55f7467e361136e4b0c57c97b4fa187cec0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: 1a799823a71fcbc4aebf4b869a3fd0dd9fc66de1
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304954"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907851"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
@@ -41,7 +41,7 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 | Setting | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
-| name | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
+| 名前 | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 | source-server | mydemoserver | レプリケート元の既存のマスター サーバーの名前または ID。 |
 
 リージョンをまたがる読み取りレプリカを作成するには、`--location` パラメーターを使用します。 次の CLI の例では、米国西部にレプリカを作成します。
@@ -49,6 +49,9 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
+
+> [!NOTE]
+> レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
 
 > [!NOTE]
 > マスターと同じサーバー構成で、読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をマスターと同じかそれ以上の値にしておくようお勧めします。
@@ -69,7 +72,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 | Setting | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  レプリカ サーバーが存在するリソース グループ。  |
-| name | mydemoreplicaserver | レプリケーションを停止するレプリカ サーバーの名前。 |
+| 名前 | mydemoreplicaserver | レプリケーションを停止するレプリカ サーバーの名前。 |
 
 ## <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します
 

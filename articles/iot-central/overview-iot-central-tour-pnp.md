@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1b6b5aff52673443fe19da684e85663a5ca8fe19
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4a0c9d16474ddf032ff88382bc240713bc734ff8
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881871"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211890"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Azure IoT Central の UI のツアーを見る (プレビュー機能)
 
@@ -39,9 +39,31 @@ ms.locfileid: "69881871"
 
 アプリケーションのさまざまな領域には、左側のナビゲーション メニューを使用してアクセスします。 **<** または **>** を選択すると、ナビゲーション バーを展開したり、折りたたんだりできます。
 
-| メニュー | 説明 |
-| ---- | ----------- |
-| ![左側のナビゲーション メニュー](media/overview-iot-central-tour-pnp/navigationbar.png) | <ul><li>**[ダッシュボード]** ページには、アプリケーション ダッシュボードが表示されます。 このダッシュボードは、オペレーター向けにビルダーがカスタマイズできます。 また、ユーザーが自分でダッシュボードを作成することもできます。</li><li>**[デバイス]** ページには、アプリケーションの各デバイス テンプレートに関連付けられている、シミュレートされたデバイスと実際のデバイスの一覧が表示されます。 接続されているデバイスは、オペレーターが **[デバイス]** を使用して管理できます。</li><li>**[デバイス グループ]** ページでは、デバイス グループを表示および作成できます。 デバイス グループは、クエリによって指定されたデバイスの論理上のコレクションとしてオペレーターが作成できます。</li><li>**[ルール]** ページでは、デバイスのテレメトリに基づいて実行され、カスタマイズ可能なアクションのトリガーとなるルールを編集できます。</li><li>デバイスおよびデバイス グループのデバイス テレメトリから得られた分析結果は、 **[分析]** ページに表示されます。 オペレーターは、デバイス データに基づくカスタム ビューを作成することで、アプリケーションから分析情報を取得することができます。</li><li>**[ジョブ]** ページを使用すると、デバイスを大規模に更新するジョブを作成して実行することで、デバイスを一括管理できます。</li><li>**[デバイス テンプレート]** ページには、デバイス テンプレートの作成と管理にビルダーで使用されるツールが表示されます。</li><li>**[データのエクスポート]** ページを使用すると、管理者はストレージやキューなどの他の Azure サービスへの連続エクスポートを構成できます。</li><li>管理者がアプリケーションの設定やユーザー、役割を管理するためのアプリケーション管理ページは、 **[管理]** ページに表示されます。</li></ul> |
+:::row:::
+  :::column span="":::
+      ![Left navigation menu](media/overview-iot-central-tour-pnp/navigationbar.png)
+  :::column-end:::
+  :::column span="2":::
+
+      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
+    
+      **Devices** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
+    
+      **Device groups** lets you view and create device groups. As an operator, you can create device groups as a logical collections of devices specified by a query.
+
+      **Rules** lets you edit rules that fire based on device telemetry and trigger customizable actions.
+    
+      **Analytics** shows analytics derived from device telemetry for devices and device groups. As an operator, you can create custom views on top of device data to derive insights from your application.
+    
+      **Jobs** enables bulk device management by having you create and run jobs to update your devices at scale.
+    
+      **Device templates** shows the tools a builder uses to create and manage device templates.
+    
+      **Data export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
+    
+      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="search-help-and-support"></a>検索、ヘルプ、サポート
 

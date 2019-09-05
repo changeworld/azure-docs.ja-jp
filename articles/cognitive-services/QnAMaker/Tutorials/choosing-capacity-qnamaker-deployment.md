@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 2b2879a1ebcf01a0433873e8da77c4ce55a078cd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d8f0fce3cb8f1cd8fdb596cb4e238a79d6cee4c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647011"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193491"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>QnA Maker のデプロイに使用する容量の選択
 
@@ -45,9 +45,9 @@ QnA Maker サービスを作成する前に、前述したサービスに関し�
 | 開発/テスト環境   | Standard SKU         | 共有      | Basic        | 発行できる KB は 14 個まで (最大サイズ 2 GB)    |
 | 運用環境 | Standard SKU         | Basic       | Standard     | 発行できる KB は 49 個まで (最大サイズ 25 GB) |
 
-QnA Maker スタックのアップグレードについては、「[QnA Maker サービスのアップグレード](../How-To/upgrade-qnamaker-service.md)」を参照してください。
+QnA Maker スタックのアップグレードについては、「[QnA Maker サービスのアップグレード](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [QnA Maker サービスのアップグレード](../How-To/upgrade-qnamaker-service.md)
+> [QnA Maker サービスのアップグレード](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)

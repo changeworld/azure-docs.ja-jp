@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 57dc9c05778563bc0c5df1a8ac8895b51008b01f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656842"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242433"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Azure のサインアップのトラブルシューティング
 
@@ -106,7 +106,7 @@ Microsoft Azure portal または Azure アカウント センターで新しい�
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>新しい Azure イン オープン プラン サブスクリプションをアクティブ化できません
 
-Azure イン オープン プランのサブスクリプションを作成するには、少なくとも 1 つの Azure イン オープン プラン トークンが関連付けられている、有効なオンライン サービスのライセンス認証 (OSA) キーが必要です。 OSA キーを持っていない場合は、[Microsoft Pinpoint](http://pinpoint.microsoft.com/) に記載されている Microsoft パートナーにお問い合わせください。
+Azure イン オープン プランのサブスクリプションを作成するには、少なくとも 1 つの Azure イン オープン プラン トークンが関連付けられている、有効なオンライン サービスのライセンス認証 (OSA) キーが必要です。 OSA キーを持っていない場合は、[Microsoft Pinpoint](https://pinpoint.microsoft.com/) に記載されている Microsoft パートナーにお問い合わせください。
 
 ### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>エラー:"*Azure サブスクリプションの資格がありません*"
 

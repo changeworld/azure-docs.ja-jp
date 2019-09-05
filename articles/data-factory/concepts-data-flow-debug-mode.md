@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 945d123c0901722a527e7cc8181c91f09e4e95ec
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014519"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991935"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow のデバッグ モード
 
@@ -53,7 +53,14 @@ Azure Data Factory Mapping Data Flow のデバッグ モードは、デザイン
 
 ![データのプレビュー](media/data-flow/datapreview.png "データのプレビュー")
 
+> [!NOTE]
+> ファイル ソースでは、読み取られる行ではなく、表示される行のみを制限します。 データセットが非常に大規模な場合は、そのファイルのごく一部を取得して、ご自身のテストに使用することをお勧めします。 [Debug Settings]\(デバッグ設定\) では、ファイル データセットの種類のソースごとに一時ファイルを選択できます。
+
 デバッグ モードで Data Flow を実行している場合、データはシンク変換に書き込まれません。 デバッグ セッションは、変換のテスト ハーネスとして機能することを目的としています。 シンクはデバッグ中には必要ではなく、データ フローでは無視されます。 シンクへのデータの書き込みをテストする場合は、Azure Data Factory パイプラインから Data Flow を実行し、パイプラインからデバッグの実行を使用します。
+
+### <a name="testing-join-conditions"></a>結合条件のテスト
+
+Join、Exists、または Lookup の変換を単体テストする場合、ご自身のテストには必ず小規模な既知のデータを使用するようにしてください。 上述の [Debug Settings]\(デバッグ設定\) オプションを使用すると、ご自身のテストで使用する一時ファイルを設定できます。 これは、大規模なデータセットから行を制限したり、サンプリングしたりするときに、どの行およびどのキーがテストのフローに読み込まれるかを予測できないために必要です。 結果は非決定論的であり、ご自身の結合条件が失敗する可能性があります。
 
 ### <a name="quick-actions"></a>クイック アクション
 

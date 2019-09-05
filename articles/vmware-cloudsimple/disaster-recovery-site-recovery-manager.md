@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa208d8d9525ef1ec518c9a03d8d39ce0ca64254
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901303"
+ms.locfileid: "69972789"
 ---
-# <a name="configure-cloudsimple-private-cloud-as-a-disaster-recovery-target-using-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、CloudSimple プライベート クラウドをディザスター リカバリー ターゲットとして構成する
+# <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、プライベート クラウドをディザスター リカバリー ターゲットとして設定する
 
 CloudSimple プライベート クラウドをオンプレミスの VMware ワークロード用のディザスター リカバリー (DR) サイトとして使用できます。
 
@@ -109,9 +109,7 @@ VMware のドキュメントに従って、オンプレミス環境に vSphere R
 
 2. vmware.com の VR ISO の OVF を使用して、オンプレミス環境に vRA をデプロイします。 vRA 6.5 では、[この VMware ブログ](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices)に関連情報が記載されています。
 
-3. オンプレミスの vRA を、オンプレミス サイトの vCenter シングル サインオンに登録します。
-   
-vSphere Replication 6.5 での詳細な手順については、[VMware vSphere Replication 6.5 のインストールと構成](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)に関する VMware のドキュメントをご覧ください。
+3. オンプレミスの vRA を、オンプレミス サイトの vCenter シングル サインオンに登録します。 vSphere Replication 6.5 での詳細な手順については、[VMware vSphere Replication 6.5 のインストールと構成](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)に関する VMware のドキュメントをご覧ください。
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>プライベート クラウド環境に vSphere Replication アプライアンスをインストールする
 
