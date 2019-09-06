@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/12/2019
 ms.locfileid: "68779072"
 ---
-# <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center のよく寄せられる質問 (FAQ)
+# <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center によく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
 
 > [!NOTE]
@@ -257,12 +257,12 @@ Security & Audit ソリューションは、Azure VM で Security Center Standar
 ### <a name="what-is-a-security-policy"></a>セキュリティ ポリシーとは何ですか。
 セキュリティ ポリシーは、指定されたサブスクリプション内のリソースに対して推奨されるコントロールのセットを定義します。 Azure Security Center では、セキュリティに関する会社の要件、各サブスクリプションでのアプリケーションの種類やデータの機密度に合わせて Azure サブスクリプションのポリシーを定義します。
 
-Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、「 [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」を参照してください。
+Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、 [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) を参照してください。
 
 ### <a name="who-can-modify-a-security-policy"></a>セキュリティ ポリシーを変更できるのは誰ですか。
 セキュリティ ポリシーを変更するには、セキュリティ管理者であるか、そのサブスクリプションの所有者または共同作成者である必要があります。
 
-セキュリティ ポリシーを構成する方法については、「 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」を参照してください。
+セキュリティ ポリシーを構成する方法については、 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) を参照してください。
 
 ### <a name="what-is-a-security-recommendation"></a>セキュリティに関する推奨事項とは
 Azure Security Center は、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
