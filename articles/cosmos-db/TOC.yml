@@ -712,6 +712,8 @@
       items:
         - name: Power BI を使用する
           href: powerbi-visualize.md
+        - name: ライブ天気ダッシュボードを作成する
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Qlik Sense を使用する
           href: visualize-qlik-sense.md
     - name: 他の Azure サービスとの統合
