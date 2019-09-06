@@ -88,7 +88,7 @@ Microsoft Account にサインインすると、[個人用サブスクリプシ�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Cognitive Services の API は、Microsoft マネージド データ センターの拡大しているネットワーク上でホストされます。 [Azure リージョン一覧](https://azure.microsoft.com/regions)で API ごとのリージョン別の可用性がわかります。
+Cognitive Services の API は、Microsoft マネージド データ センターの拡大しているネットワーク上でホストされます。 [Azure リージョン一覧](https://azure.microsoft.com/regions)で API ごとのリージョン別の提供状況がわかります。
 
 まだサポートされていないリージョンを探しているのですか。 [UserVoice フォーラム](https://cognitive.uservoice.com/)に機能要求を記入してご連絡ください。
 
