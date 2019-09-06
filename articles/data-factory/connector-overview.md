@@ -28,4 +28,4 @@ Azure Data Factory は、コピー アクティビティ、データ フロー�
 - [マッピング データ フロー](concepts-data-flow-overview.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
-- [アクティビティを削除する](delete-activity.md)
+- [削除アクティビティ](delete-activity.md)
