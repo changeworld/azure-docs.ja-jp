@@ -1,5 +1,5 @@
-- name: Azure Storage のドキュメント
-  href: /azure/storage/
+- name: Azure Files のドキュメント
+  href: index.yml
 - name: 概要
   expanded: true
   items:

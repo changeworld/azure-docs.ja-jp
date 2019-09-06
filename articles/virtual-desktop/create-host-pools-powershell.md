@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 1c365790e1633a74be9f5baf41098e7511f99a7d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1fb377d482277a4776214d08b879d99f4234ca40
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563277"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163671"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>PowerShell を使用してホスト プールを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "69563277"
 次のコマンドレットを実行して Windows Virtual Desktop 環境にサインインします
 
 ```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
 次に、このコマンドレットを実行して、Windows Virtual Desktop テナントに新しいホスト プールを作成します。
@@ -82,7 +82,7 @@ Windows Virtual Desktop エージェントをインストールして仮想マ�
 5. ドメインに参加しているマシンに対する権限を持つドメイン アカウントで認証します。
 
     >[!NOTE]
-    > ご使用の VM を Azure AD Domain Services 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)のメンバーでもあることを確認します。
+    > ご使用の VM を Azure Active Directory Domain Services (Azure AD DS) 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)のメンバーでもあることを確認します。
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Windows Virtual Desktop プレビューのホスト プールに仮想マシンを登録する
 

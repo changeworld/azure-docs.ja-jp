@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4259c438fec448ba510e4c248de6f4acc184ab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c3d1d211f85c50a482e1dd9c482cb75477942de7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990503"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278198"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 
@@ -133,7 +133,7 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
 * 配置したモデルを使用する
 * 展開したサービスを削除する
 
-[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに自動的に圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
+[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに自動的に圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
 
 ### <a name="load-azure-ml-workspace"></a>Azure ML ワークスペースを読み込む
 

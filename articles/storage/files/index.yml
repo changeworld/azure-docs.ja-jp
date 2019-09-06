@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Files
+title: Azure Files のドキュメント
 summary: Azure Files はクラウドで、サーバー メッセージ ブロック (SMB) プロトコルを介してアクセスできるフル マネージドのクロスプラットフォーム ファイル共有を提供します。
 metadata:
   title: Azure Files
@@ -12,12 +12,12 @@ metadata:
   author: roygara
   ms.author: rogarana
   ms.date: 08/27/2019
-  ms.openlocfilehash: 06764b43d46dc4fee51ac58254e2d2578257f096
-  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.openlocfilehash: 21be0cb23dc5673d0a060636da148ee97463ec4b
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/29/2019
-  ms.locfileid: "70143052"
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70241718"
 landingContent:
 - title: Azure Files について
   linkLists:

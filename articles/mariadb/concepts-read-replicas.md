@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: db2457cc3e320ac413cb245f51810b654c63aa22
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992186"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308987"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ
 
 読み取りレプリカ機能を使用すると、Azure Database for MariaDB サーバーから、読み取り専用サーバーにデータをレプリケートできます。 マスター サーバーから最大 5 つのレプリカにレプリケートできます。 レプリカは、グローバル トランザクション ID (GTID) による MariaDB エンジンのバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[binlog レプリケーションの概要](https://mariadb.com/kb/en/library/replication-overview/)に関する記事を参照してください。
-
-> [!IMPORTANT]
-> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 読み取りレプリカ (同じリージョンおよび複数のリージョンにわたる) は、現在パブリック プレビュー段階にあります。
 
 レプリカは、通常の Azure Database for MariaDB サーバーと同様に管理する新しいサーバーです。 読み取りレプリカごとに、仮想コアおよびストレージのプロビジョニング済みコンピューティング (GB/月) に対して課金されます。
 
@@ -37,9 +34,6 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ## <a name="cross-region-replication"></a>リージョン間レプリケーション
 マスター サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
-
-> [!IMPORTANT]
-> リージョン間レプリケーションは、現在パブリック プレビュー段階です。
 
 任意の [Azure Database for MariaDB リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)にマスター サーバーを作成できます。  マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。
 

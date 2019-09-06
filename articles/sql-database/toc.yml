@@ -219,10 +219,16 @@
       items:
         - name: マネージド インスタンスのドキュメント
           href: sql-database-managed-instance-index.yml
-        - name: マネージド インスタンスの機能
+        - name: マネージド インスタンスの概要
           href: sql-database-managed-instance.md
         - name: マネージド インスタンスの FAQ
           href: sql-database-managed-instance-faq.md
+        - name: インスタンス プール
+          items:
+            - name: インスタンス プールの概要
+              href: sql-database-instance-pools.md
+            - name: インスタンス プールの攻略ガイド
+              href: sql-database-instance-pools-how-to.md
         - name: Management API リファレンス
           href: sql-database-managed-instance-create-manage.md
         - name: リソース制限

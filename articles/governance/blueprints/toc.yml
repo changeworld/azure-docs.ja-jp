@@ -153,6 +153,9 @@
     - name: PowerShell を使用した割り当ての管理
       displayName: 'create, update, remove'
       href: ./how-to/manage-assignments-ps.md
+    - name: PowerShell を使ってインポートとエクスポートを行う
+      displayName: 'import, export, folders'
+      href: ./how-to/import-export-ps.md
     - name: ポータルからの既存の割り当ての更新
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md

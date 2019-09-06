@@ -69,6 +69,7 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: (プレビュー) <a href="/azure/sql-database/sql-database-instance-pools"> インスタンス プール</a> - 比較的小規模な SQL インスタンスをクラウドに移行するための便利な方法の 1 つで、費用対効果にも優れています。
           - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> Gen5 ハードウェア世代上の 4 つの仮想コア</a>'
           - html: '<a href="https://aka.ms/sql-mi-visual-studio-subscribers" >Visual Studio サブスクライバー向けの Azure の月単位のクレジット</a>付きのサブスクリプションのサポート'
           - html: '<a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016、SharePoint 2019</a>、および <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a> のサポート'
