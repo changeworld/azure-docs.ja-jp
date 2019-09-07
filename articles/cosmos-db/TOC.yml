@@ -455,6 +455,10 @@
           items:
             - name: 1 - データのクエリ
               href: tutorial-query-graph.md
+        - name: リファレンス
+          items:
+            - name: レスポンス ヘッダー
+              href: gremlin-headers.md
         - name: ハウツー ガイド
           items:
             - name: グラフ データのモデリング
