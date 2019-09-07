@@ -4,6 +4,8 @@
   items:
     - name: Azure Resource Manager とは
       href: resource-group-overview.md
+    - name: テンプレートの概要
+      href: template-deployment-overview.md
 - name: クイック スタート
   expanded: true
   items:
@@ -58,8 +60,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: 概念
   items:
-    - name: テンプレートのデプロイ
-      href: template-deployment-overview.md
     - name: テンプレートのベスト プラクティス
       href: template-best-practices.md
     - name: クラウドの一貫性を実現するテンプレート
