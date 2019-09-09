@@ -11,47 +11,43 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: 774c63e1df815b509a88b9de25b8199b53bfafa1
-  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.date: 09/04/2019
+  ms.openlocfilehash: b6c9013d61df1a0076817af5baab0e0af6375083
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70278009"
+  ms.locfileid: "70309195"
 landingContent:
-- title: Machine Learning Studio について
+- title: Studio を使ってみる
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Studio とは
       url: what-is-ml-studio.md
-    - text: Microsoft の ML 製品の比較
-      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- title: Studio を使ってみる
-  linkLists:
-  - linkListType: tutorial
-    links:
     - text: 初めての ML 実験を作成する
       url: create-experiment.md
     - text: 予測ソリューションを作成する
       url: tutorial-part1-credit-risk.md
-- title: 参照
+- title: リファレンス コンテンツの確認
   linkLists:
   - linkListType: reference
     links:
-    - text: コマンドライン PowerShell モジュール
+    - text: PowerShell モジュール
       url: powershell-module.md
-    - text: アルゴリズムとモジュールのリファレンス
+    - text: アルゴリズムとモジュール
       url: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index
     - text: REST 管理 API
       url: https://docs.microsoft.com/rest/api/machinelearning/
     - text: Web サービスのエラー コード
       url: web-service-error-codes.md
-- title: その他の Azure Machine Learning テクノロジ
+- title: その他の Azure ML テクノロジ
   linkLists:
   - linkListType: reference
     links:
     - text: Azure Machine Learning サービス
       url: /azure/machine-learning/
-    - text: Azure Data Science Virtual Machine
+    - text: データ サイエンス仮想マシン
       url: /azure/machine-learning/data-science-virtual-machine
+    - text: Microsoft の ML 製品の比較
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

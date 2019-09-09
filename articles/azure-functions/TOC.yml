@@ -250,6 +250,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: HTTP 関数エンドポイントのカスタマイズ
           href: functions-create-serverless-api.md
+        - name: オンプレミスのリソースの管理
+          href: functions-hybrid-powershell.md
     - name: トラブルシューティング
       items:
         - name: ストレージのトラブルシューティング
