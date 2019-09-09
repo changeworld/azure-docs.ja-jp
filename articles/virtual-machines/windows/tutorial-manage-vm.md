@@ -293,7 +293,7 @@ Start-AzVM `
    -Name "myVM"
 ```
 
-### <a name="delete-resource-group"></a>Delete resource group
+### <a name="delete-resource-group"></a>リソース グループの削除
 
 リソース グループを削除すると、リソース グループ内のすべてのものが削除されます。
 
