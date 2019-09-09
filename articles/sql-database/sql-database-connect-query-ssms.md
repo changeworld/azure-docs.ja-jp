@@ -40,7 +40,7 @@ Azure SQL データベース。 以下のいずれかのクイック スター�
   > [!IMPORTANT]
   > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
-## <a name="install-the-latest-ssms"></a>最新の SSMS をインストールします。
+## <a name="install-the-latest-ssms"></a>最新の SSMS をインストールする
 
 開始する前に、最新の [SSMS][ssms-install-latest-84g] がインストールされていることを確認します。
 
@@ -66,7 +66,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 2. 次の情報を入力します。
 
-   | Setting      | 推奨値    | 説明 |
+   | 設定      | 推奨値    | 説明 |
    | ------------ | ------------------ | ----------- |
    | **サーバーの種類** | データベース エンジン | 必須値。 |
    | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
