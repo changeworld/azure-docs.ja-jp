@@ -239,7 +239,7 @@ RBAC などの機能を使用したデータ アクセス制御を適用しな�
 **ベスト プラクティス**: 緊急事態が発生した場合の "非常時" プロセスを用意します。
 **詳細**: 「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)」の手順に従います。
 
-**ベスト プラクティス**: すべての重要な管理者アカウントには、パスワードなし (推奨) または Multi-Factor Authentication を要求します。
+**ベスト プラクティス**: すべての重要な管理者アカウントには、パスワードレス (推奨) または Multi-Factor Authentication を要求します。
 **詳細**: [Microsoft Authenticator アプリ](/azure/active-directory/authentication/howto-authentication-phone-sign-in)を使用して、パスワードを使用せずに Azure AD アカウントにサインインします。 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) のように、Microsoft Authenticator は、キーベースの認証を使用して、デバイスに関連付けられていて生体認証または PIN を使用するユーザー資格情報を有効にします。
 
 次のような Azure AD 管理者ロールを永続的に割り当てられているすべての個人ユーザーには、サインイン時に Azure Multi-factor Authentication を要求します: グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者。 [管理者アカウントの Multi-Factor Authentication](/azure/active-directory/authentication/howto-mfa-userstates) を有効にし、管理者アカウントのユーザーが登録していることを確認します。
