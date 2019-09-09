@@ -22,7 +22,7 @@ ms.locfileid: "70308849"
 
 Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、2018 年 9 月のリリースで非推奨とされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
 
-エクスペリエンスの向上のため、このリリースにはお客様からのフィードバックによって促進された、多くの重要な更新が含まれています。 モデル デプロイに対する実験の実行からのコア機能は変更されていません。 ただし、堅牢な <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> と [Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
+エクスペリエンスの向上のため、このリリースにはお客様からのフィードバックによって促進された、多くの重要な更新が含まれています。 モデル デプロイに対する実験の実行からのコア機能は変更されていません。 ただし、安定した <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> と [Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
 
 以前のバージョンの Azure Machine Learning service で作成された成果物のほとんどは、独自のローカル ストレージやクラウド ストレージに保管されています。 これらの成果物は消失することはありません。
 
@@ -40,7 +40,7 @@ Azure Machine Learning service の最終リリースには、次の機能が含�
 + 新しい、より包括的な Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>。
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
-[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal](how-to-manage-workspace.md) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやデプロイのコンピューティング先、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
+[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal](how-to-manage-workspace.md) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやコンピューティングターゲットのデプロイ、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
 
 現在のリリースには新しい強化された CLI と SDK クライアントがありますが、デスクトップ ワークベンチ アプリケーション自体は廃止されました。 実験は、[Azure portal のワークスペース ダッシュボード](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)で管理できます。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
 
@@ -106,7 +106,7 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI について
 
-この最新リリースでは、拡張機能は Azure Machine Learning for Visual Studio Code に変更されました。また、上記の新しい機能と共に動作するよう拡張および強化されています。
+この最新リリースでは、拡張機能は Azure Machine Learning for Visual Studio Code に変更されました。また、上記の新しい機能と共に動作するよう拡張および改善されています。
 
 [![Azure Machine Learning for Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
