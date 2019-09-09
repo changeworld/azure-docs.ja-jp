@@ -9,18 +9,16 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 5fb6b17bcbc39b4e7531f79b832853a4f1ed1fd5
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 99acd43128bedcf3dba470f84c0a406861d77e2d
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558661"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147786"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
-
-## <a name="introduction"></a>はじめに
 
 Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するデバイス アプリをコード化する方法が示されています。
 
@@ -46,7 +44,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 > IoT Hub には、[Azure IoT device SDK](iot-hub-devguide-sdks.md) シリーズを介した多数のデバイス プラットフォームや言語 (C、Java、Python、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)を参照してください。
 >
 
-このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
+## <a name="prerequisites"></a>前提条件
 
 * Visual Studio
 
@@ -103,7 +101,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 次に、デバイスからクラウドへのメッセージを、デバイス アプリに送信する .NET コンソール アプリを作成します。
 
-1. 現在の Visual Studio ソリューションで、 **[ファイル]** 、 **[新規]** 、 **[プロジェクト]** の順に選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
+1. 現在の Visual Studio ソリューションで、**ファイル** > **新規** > 、**プロジェクト** の順に選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
 1. プロジェクトに *SendCloudToDevice*という名前を付けます。 **[ソリューション]** で **[ソリューションに追加]** を選択し、最新版の .NET Framework をそのまま使用します。 **[作成]** を選択してプロジェクトを作成します。
 
@@ -155,7 +153,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 1. ソリューション エクスプローラーで、ソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
 
-1. **[共通プロパティ]** の **[スタートアップ プロジェクト]** で、 **[マルチ スタートアップ プロジェクト]** を選択してから、**ReadDeviceToCloudMessages**、**SimulatedDevice**、**SendCloudToDevice** の **[開始]** アクションを選択します。 **[OK]** を選択して変更を保存します。
+1. **[共通プロパティ]**  >  の **[スタートアップ プロジェクト]** で、 **[マルチ スタートアップ プロジェクト]** を選択してから、**ReadDeviceToCloudMessages**、**SimulatedDevice**、**SendCloudToDevice** の **[開始]** アクションを選択します。 **[OK]** を選択して変更を保存します。
 
 1. **F5**キーを押します。 3 つのすべてのアプリケーションが開始されます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリによってメッセージが受信されていることがわかります。
 

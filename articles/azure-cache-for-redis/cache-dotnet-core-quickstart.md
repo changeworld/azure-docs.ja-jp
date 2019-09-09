@@ -29,7 +29,7 @@ ms.locfileid: "68326508"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- [.NET コア SDK](https://dotnet.microsoft.com/download)
+- [.NET Core SDK](https://dotnet.microsoft.com/download)
 - [.NET Framework 4 以降](https://www.microsoft.com/net/download/dotnet-framework-runtime)。これは StackExchange.Redis クライアントで必要です。
 
 ## <a name="create-a-cache"></a>キャッシュの作成
