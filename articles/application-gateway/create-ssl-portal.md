@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - SSL 終了でアプリケーション ゲートウェイを構成する - Azure portal
-description: このチュートリアルでは、Azure portal を使用して、アプリケーション ゲートウェイを構成し、SSL 終了の証明書を追加する方法について説明します。
+title: チュートリアル - SSL ターミネーションでアプリケーション ゲートウェイを構成する - Azure portal
+description: このチュートリhttps://github.com/ClosetheWorld/azure-docs.ja-jpアルでは、Azure portal を使用して、アプリケーション ゲートウェイを構成し、SSL ターミネーションの証明書を追加する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -14,9 +14,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/30/2019
 ms.locfileid: "70194565"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを構成する
+# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して SSL ターミネーションでアプリケーション ゲートウェイを構成する
 
-Azure Portal を使用して、バックエンド サーバーに仮想マシンを使用する SSL 終了の証明書で、[アプリケーション ゲートウェイ](overview.md)を構成することができます。
+Azure Portal を使用して、バックエンド サーバーに仮想マシンを使用する SSL ターミネーションの証明書で、[アプリケーション ゲートウェイ](overview.md) を構成することができます。
 
 このチュートリアルでは、以下の内容を学習します。
 
