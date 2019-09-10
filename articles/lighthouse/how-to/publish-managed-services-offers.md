@@ -4,19 +4,19 @@ description: Azure の委任されたリソース管理に顧客をオンボー�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011861"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165265"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
-この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)を使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行し、そのオファーを購入した顧客を Azure の委任されたリソース管理にオンボードできるようにする方法について説明します。
+この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)を使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行し、そのオファーを購入した顧客が Azure の委任されたリソース管理のリソースをオンボードできるようにする方法について説明します。
 
 > [!NOTE]
 > これらのオファーを作成して発行するには、[パートナー センターの有効なアカウント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)に従って、パートナー センターのアカウントを作成し、商業マーケットプレース プログラムに登録する手順を進めてください。 顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)。
@@ -127,6 +127,65 @@ ms.locfileid: "70011861"
 ## <a name="publish-your-offer"></a>実際のオファーを発行する
 
 指定したすべての情報に満足したら、次の手順では Azure Marketplace にオファーを発行します。 **[発行]** ボタンを選択して、お客様のオファーを一般公開するプロセスを始めます。 このプロセスの詳細については、「[Azure Marketplace および AppSource のオファーを発行する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer)」を参照してください。
+
+## <a name="the-customer-onboarding-process"></a>顧客オンボーディング プロセス
+
+顧客がオファーを追加すると、[1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになります。これらは、Azure の委任されたリソース管理のためにオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。
+
+サブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードできるようにするには、**Microsoft.ManagedServices** リソースプロバイダーを手動で登録することで、オンボードのためにサブスクリプションを承認する必要があります。 共同作成者または所有者のロールを持つ、顧客のテナントのユーザーは、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」で概説されている手順に従って、この操作を行うことができます。
+
+その後、顧客は次のいずれかの方法で、サブスクリプションをオンボードする準備が完了していることを確認できます。
+
+### <a name="azure-portal"></a>Azure ポータル
+
+1. Azure portal で、サブスクリプションを選択します。
+1. **[リソース プロバイダー]** を選択します。
+1. **Microsoft.ManagedServices** が **[登録済み]** と表示されることを確認します。
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+Set-AzContext -Subscription <subscriptionId>
+Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
+```
+
+これにより、次のような結果が返されます。
+
+```output
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationDefinitions}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationAssignments}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {operations}
+Locations         : {}
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+az account set –subscription <subscriptionId>
+az provider show --namespace "Microsoft.ManagedServices" --output table
+```
+
+これにより、次のような結果が返されます。
+
+```output
+Namespace                  RegistrationState
+-------------------------  -------------------
+Microsoft.ManagedServices  Registered
+```
 
 ## <a name="next-steps"></a>次の手順
 

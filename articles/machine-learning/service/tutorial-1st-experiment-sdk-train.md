@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/03/2019
+ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051638"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241289"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
@@ -35,14 +35,33 @@ ms.locfileid: "70051638"
 
 チュートリアルのこのパートでは、パート 1 の最後で開いたサンプル Jupyter ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` のコードを実行します。 この記事では、ノートブック内の同じコードについて説明します。
 
+## <a name="launch-jupyter-web-interface"></a>Jupyter の Web インターフェイスを起動する
+
+1. Azure portal のワークスペース ページで、左側の **[ノートブック VM]** を選択します。
+
+1. このチュートリアルのパート 1 で作成した VM の **[URI]** 列で **[Jupyter]** を選択します。
+
+    ![Jupyter ノートブック サーバーを開始する](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   リンクから、ノートブック サーバーが起動され、新しいブラウザー タブで Jupyter ノートブックの Web ページが開かれます。このリンクは、VM を作成するユーザーに対してのみ動作します。 ワークスペースの各ユーザーは、独自の VM を作成する必要があります。
+
+1. Jupyter ノートブックの Web ページで、最上位のフォルダー名を選択します。最上位のフォルダー名はユーザー名です。  
+
+   このフォルダーは、ノートブック VM 自体にではなく、ワークスペースの[ストレージ アカウント](concept-workspace.md#resources)に存在します。  ノートブック VM を削除しても、それまでの作業はすべて維持されます。  後で新しいノートブック VM を作成すると、この同じフォルダーが読み込まれます。 他のユーザーとワークスペースを共有すると、互いのフォルダーが表示されます。
+
+1. `samples-*` サブディレクトリを開き、同じ名前の `.yml` ファイル**ではなく**、Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` を開きます。 
+
 ## <a name="connect-workspace-and-create-experiment"></a>ワークスペースを接続し、実験を作成する
+
+> [!Important]
+> 以降この記事には、ノートブックと同じ内容が記載されています。  
+>
+> コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 
+> ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、トップ メニューから **[セル] > [すべて実行]** の順に選択してノートブック全体を実行します。
 
 `Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 クラウド ノートブック サーバーでは、ファイルは自動的にルート ディレクトリに配置されます。
 
 次のコードで追加の認証が求められる場合は、単にリンクをブラウザーに貼り付け、認証トークンを入力します。
-
-> [!TIP]
-> Jupyter ノートブックを初めて使用する場合、コード セルをクリックし、**Shift + Enter** キーを押すことで、セルを 1 つずつ実行してコードを実行します。 または、ノートブック全体を一度に実行するには、上部のメニュー バーの **[Cell]\(セル\)** をクリックしてから、 **[Run All]\(すべて実行\)** をクリックします。
 
 ```python
 from azureml.core import Workspace

@@ -1,29 +1,22 @@
 ---
-title: CentOS Linux Data Science Virtual Machine の作成
-titleSuffix: Azure
+title: クイック スタート:CentOS Linux の作成
+titleSuffix: Azure Data Science Virtual Machine
 description: 分析と機械学習を行うために、Azure で Linux Data Science Virtual Machine を作成して構成します。
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: c0464253c55aa5e51e8e86686405ea6b107c8382
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 1ab3a527643bc5a567644a937fdd1eb9e31bf567
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047715"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195339"
 ---
-# <a name="provision-a-linux-centos-data-science-virtual-machine-in-azure"></a>Azure での Linux CentOS Data Science Virtual Machine のプロビジョニング
+# <a name="quickstart-set-up-a-linux-centos-data-science-virtual-machine-in-azure"></a>クイック スタート:Azure での Linux CentOS Data Science Virtual Machine の設定
 
 Linux Data Science Virtual Machine (DSVM) は、CentOS ベースの Azure 仮想マシンです。 Linux DSVM には、データ分析と機械学習に使用できる一連のツールがプレインストールされています。 
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a527e8cd83d292d8af8af5acd0c903c63081f2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013847"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305939"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Harness の統合
 
@@ -131,17 +131,25 @@ Harness に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-harness-sso"></a>Harness SSO の構成
 
-1. 新しい Web ブラウザー ウィンドウを開き、Harness 企業サイトに管理者としてサインインします。
+1. Harness 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-1. ページの右上で、 **[Continuous Security]\(継続的なセキュリティ\)**  > **[Access Management]\(アクセス管理\)**  >  **[Authentication Settings]\(認証設定\)** の順にクリックします。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Setup Harness]\(Harness の設定)** をクリックすると、Harness アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Harness にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Harness を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者としてご自分の Harness 企業サイトにサインインして、次の手順のようにします。
+
+4. ページの右上で、 **[Continuous Security]\(継続的なセキュリティ\)**  > **[Access Management]\(アクセス管理\)**  >  **[Authentication Settings]\(認証設定\)** の順にクリックします。
 
     ![Harness の構成](./media/harness-tutorial/configure01.png)
 
-1. **[SSO Providers]\(SSO プロバイダー\)** セクションで、 **[+ Add SSO Providers]\(+ SSO プロバイダーの追加\)**  > **[SAML]** の順にクリックします。
+5. **[SSO Providers]\(SSO プロバイダー\)** セクションで、 **[+ Add SSO Providers]\(+ SSO プロバイダーの追加\)**  > **[SAML]** の順にクリックします。
 
     ![Harness の構成](./media/harness-tutorial/configure03.png)
 
-1. **[SAML Provider]\(SAML プロバイダー\)** ポップアップで、次の手順を実行します。
+6. **[SAML Provider]\(SAML プロバイダー\)** ポップアップで、次の手順を実行します。
 
     ![Harness の構成](./media/harness-tutorial/configure02.png)
 

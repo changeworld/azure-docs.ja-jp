@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 08/22/2019
+ms.date: 09/04/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e36f009422307b3b70091775d2288ee710839172
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: fc3145ee0b60402026389863b94d21da4b3e4123
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013997"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70307759"
 ---
 ::: zone target="docs"
 
@@ -70,6 +70,24 @@ Azure データセンター内のサーバーにディスクが接続される�
       ![マネージド ディスク用のリソース グループ](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
   - VHDX または動的/差分 VHD をコピーした場合、VHDX/VHD はブロック BLOB としてステージング ストレージ アカウントにアップロードされます。 ステージング環境の **[ストレージ アカウント] > [BLOB]** に移動し、適切なコンテナー (StandardSSD、StandardHDD、または PremiumSSD) を選択します。 VHDX/VHD は、ステージング ストレージ アカウントにブロック BLOB として表示されます。
+  
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+
+データが Azure にアップロードされた後、コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。 データは次の場所にあります。
+
+- お使いの Azure Storage アカウント。 データを Data Box にコピーする場合は、そのデータがタイプに応じて Azure Storage アカウントの次のいずれかのパスにアップロードされます。
+
+    - **ブロック BLOB とページ BLOB の場合**: https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
+
+    - **Azure Files の場合**: https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
+
+- マネージド ディスク リソース グループ。 マネージド ディスクを作成するとき、VHD はページ BLOB としてアップロードされた後、マネージド ディスクに変換されます。 マネージド ディスクは、注文の作成時に指定されたリソース グループに接続されています。
+
+::: zone-end
 
 Azure にデータがアップロードされたことを確認するには、次の手順を実行します。
 
@@ -77,13 +95,15 @@ Azure にデータがアップロードされたことを確認するには、�
 2. **[Blob service] > [BLOB の参照]** に移動します。 コンテナーの一覧が表示されます。 *BlockBlob* フォルダーと *PageBlob* フォルダーに作成したサブフォルダーに対応して、同じ名前のコンテナーがご利用のストレージ アカウントに作成されます。
     Azure の名前付け規則にフォルダー名が準拠していない場合、Azure へのデータのアップロードに失敗します。
 
-4. データセット全体が読み込み済みであることを確認するには、Microsoft Azure Storage Explorer を使用します。 ディスク レンタル注文に対応するストレージ アカウントをアタッチし、BLOB コンテナーの一覧に注目します。 いずれかのコンテナーを選択し、 **[その他]** をクリックして **[Folder statistics]\(フォルダーの統計情報\)** をクリックします。 **[アクティビティ]** ウィンドウに、そのフォルダーの統計情報 (BLOB 数、合計 BLOB サイズなど) が表示されます。 合計 BLOB サイズ (バイト単位) がデータセットのサイズと一致している必要があります。
+3. データセット全体が読み込み済みであることを確認するには、Microsoft Azure Storage Explorer を使用します。 Data Box Disk 注文に対応するストレージ アカウントをアタッチし、BLOB コンテナーの一覧に注目します。 いずれかのコンテナーを選択し、 **[その他]** をクリックして **[Folder statistics]\(フォルダーの統計情報\)** をクリックします。 **[アクティビティ]** ウィンドウに、そのフォルダーの統計情報 (BLOB 数、合計 BLOB サイズなど) が表示されます。 合計 BLOB サイズ (バイト単位) がデータセットのサイズと一致している必要があります。
 
     ![フォルダーの統計情報を Storage Explorer で表示](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Data Box Disk からデータを消去する
 
 コピーが完了し、Azure Storage アカウントにデータが存在することをお客様が確認した後、ディスクは NIST 標準に従って確実に消去されます。
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>次の手順
 
@@ -101,22 +121,6 @@ Azure にデータがアップロードされたことを確認するには、�
 
 ::: zone-end
 
-::: zone target="chromeless"
 
-# <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
-
-データが Azure にアップロードされた後、コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。 データは次の場所にあります。
-
-- お使いの Azure Storage アカウント。 データを Data Box にコピーする場合は、そのデータがタイプに応じて Azure Storage アカウントの次のいずれかのパスにアップロードされます。
-
-    - **ブロック BLOB とページ BLOB の場合**: https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
-
-    - **Azure Files の場合**: https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
-
-    あるいは、Azure Portal で Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
-
-- マネージド ディスク リソース グループ。 マネージド ディスクを作成するとき、VHD はページ BLOB としてアップロードされた後、マネージド ディスクに変換されます。 マネージド ディスクは、注文の作成時に指定されたリソース グループに接続されています。
-
-::: zone-end
 
 

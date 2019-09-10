@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/03/2019
+ms.localizationpriority: high
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1104c017541b8124366a6121763318f199f3aad5
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aab97257ff2e917dc264017043d3ca11a2ced1fc
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126083"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240203"
 ---
 ::: zone target="chromeless"
 
@@ -49,18 +50,7 @@ ms.locfileid: "70126083"
     - ディスクはエアー クッションでしっかりと包んで梱包することをお勧めします。
     - 箱内の物があまり動かないように、すき間が少なくなるようにしてください。
 
-次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、オーストラリア、アジア諸国で異なります。
-
-- [米国およびカナダでデバイスを返送する場合は、UPS での集荷をスケジュールします](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada)。
-- [ヨーロッパで DHL での集荷をスケジュールする](data-box-disk-deploy-picked-up.md#pick-up-in-europe)場合は、DHL の Web サイトにアクセスし、航空貨物運送状番号を指定します。
-- [オーストラリアで集荷をスケジュール](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up#pick-up-in-australia)します。
-- 日本、韓国、シンガポールなどの[アジア諸国で集荷をスケジュール](data-box-disk-deploy-picked-up.md#pick-up-in-asia)します。
-
-::: zone target="chromeless"
-
-運送業者によってディスクが集荷されると、ポータルの注文状態が更新され、追跡 ID が表示されます。
-
-::: zone-end
+次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、欧州連合 (EU)、オーストラリア、アジア諸国で異なります。
 
 ### <a name="pick-up-in-us-canada"></a>米国、カナダで集荷する
 
@@ -151,9 +141,6 @@ ms.locfileid: "70126083"
 
 1. 配送先住所ラベルを印刷し、箱に貼り付けます。 ラベルを破損または紛失した場合:
     - **[概要] > [出荷ラベルをダウンロード]** に移動し、返送ラベルを取得します。
-
-        ![配送先住所ラベルのダウンロード](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - デバイスにラベルを貼り付けます。 ラベルが見えることを確認します。
 
 2. 集荷を依頼するには:

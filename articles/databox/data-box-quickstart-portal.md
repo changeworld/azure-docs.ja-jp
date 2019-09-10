@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e9854bf46de40cc288a04ac67beb48e8a4fb959
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.localizationpriority: high
+ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098780"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70241364"
 ---
 ::: zone target="docs"
 
@@ -23,7 +24,7 @@ ms.locfileid: "70098780"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Azure portal を使用して Azure Data Box Disk の使用を開始する
+# <a name="get-started-with-azure-data-box"></a>Azure Data Box を使ってみる 
 
 ::: zone-end
 

@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019
-ms.openlocfilehash: a69590adc329361ac1c2191e7a984757af4f69af
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 39bb5191ff0c757fc672d18b4e8e406f91df0509
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977103"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173226"
 ---
-# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>クイック スタート:Service Fabric に Java Reliable Services アプリケーションをデプロイする
+# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>クイック スタート:Azure Service Fabric on Linux に Java アプリをデプロイする
 
 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
 

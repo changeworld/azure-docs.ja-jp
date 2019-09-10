@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125470"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211878"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -35,13 +35,10 @@ ms.locfileid: "70125470"
 > ## <a name="prerequisites"></a>前提条件
 > このサンプルを実行するには、次のものが必要になります。 
 > - Java Development Kit (JDK) 8 以降および Maven。
-> - Azure Active Directory (Azure AD) テナント。 Azure AD テナントの取得方法の詳細については、[Azure AD テナントの取得方法](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)に関するページを参照してください。
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
-> クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
-> * 簡易: [オプション 1:アプリを登録して自動構成を行った後、コード サンプルをダウンロードする。](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * 手動: [オプション 2:アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する。](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> クイックスタート アプリケーションを開始する方法としては、[簡易] (オプション 1) と [手動] (オプション 2) の 2 つの選択肢があります。
 > 
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1:アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
@@ -123,7 +120,7 @@ ms.locfileid: "70125470"
 ### <a name="getting-msal"></a>MSAL の取得
 MSAL4J は、ユーザーをサインインさせるために使用されたり、Microsoft ID プラットフォームによって保護されている API にアクセスするためのトークンを要求するために使用されたりするライブラリです。 Maven または Gradle を使用して、アプリケーションに MSAL4J を追加し、アプリケーションの pom.xml または build.gradle ファイルに対して以下の変更を行うことで、依存関係を管理できます。 
 
-```
+```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
@@ -139,7 +136,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ### <a name="msal-initialization"></a>Msal の初期化
 MSAL4J を使用するファイルの先頭に次のコードを追加すると、MSAL4J への参照を追加できます。 
 
-```
+```Java
 import com.microsoft.aad.msal4j.*;
 ```
 

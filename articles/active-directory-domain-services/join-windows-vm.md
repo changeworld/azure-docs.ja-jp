@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073886"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172041"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>チュートリアル:Windows Server 仮想マシンのマネージド ドメインへの参加
 
@@ -214,7 +214,7 @@ Azure AD DS マネージド ドメインから VM を削除するには、もう
 * 指定したユーザー アカウントが *AAD DC Administrators* グループに属していることを確認します。
 * UPN 形式を使用して資格情報を指定します (例: `contosoadmin@contoso.onmicrosoft.com`)。 たくさんのユーザーがテナントで同じ UPN プレフィックスを使用している場合、または UPN プレフィックスが最大文字数を超えている場合は、アカウントの *SAMAccountName* が自動生成される可能性があります。 そのような場合、アカウントの *SAMAccountName* 形式が、想定されている形式やオンプレミス ドメインで使用されている形式と異なる可能性があります。
 * マネージド ドメインとの[パスワード同期を有効にしている][password-sync]ことを確認します。 この構成手順を行わないと、サインインの試行を正しく認証するために必要なパスワード ハッシュが、Azure AD DS マネージド ドメインに存在しません。
-* パスワード同期が完了するまで待ちます。 ユーザー アカウントのパスワードを変更すると、ドメインへの参加にパスワードを使用できるようになるまでに 15 から 20 分かかることがあります。
+* パスワード同期が完了するまで待ちます。 ユーザー アカウントのパスワードが変更されると、Azure AD からの自動バックグラウンド同期によって、Azure AD DS 内のパスワードが更新されます。 ドメインへの参加にパスワードを使用できるようになるまでに、しばらく時間がかかります。
 
 ## <a name="next-steps"></a>次の手順
 

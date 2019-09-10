@@ -4,15 +4,15 @@ description: Azure の委任されたリソース管理に顧客をオンボー�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012056"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165040"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
 
@@ -61,63 +61,8 @@ az account set --subscription <subscriptionId/name>
 az account show
 ```
 
-
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>顧客のサブスクリプションがオンボード用に登録されていることを確認する
-
-各サブスクリプションには、**Microsoft.ManagedServices** リソースプロバイダーを手動で登録することで、オンボードを承認する必要があります。 顧客は、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」で説明されている手順に従って、サブスクリプションを登録できます。
-
-顧客は、次のいずれかの方法で、サブスクリプションをオンボードする準備が完了していることを確認できます。
-
-### <a name="azure-portal"></a>Azure ポータル
-
-1. Azure portal で、サブスクリプションを選択します。
-1. **[リソース プロバイダー]** を選択します。
-1. **Microsoft.ManagedServices** が **[登録済み]** と表示されることを確認します。
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-これにより、次のような結果が返されます。
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-これにより、次のような結果が返されます。
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> ここで説明するプロセスを使用してサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) をオンボードすると、そのサブスクリプションに対して **Microsoft.ManagedServices** リソースプロバイダーが登録されます。
 
 ## <a name="define-roles-and-permissions"></a>ロールとアクセス許可を定義する
 
@@ -129,8 +74,6 @@ Microsoft.ManagedServices  Registered
 > ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理でサポートされています。ただし、所有者と [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) アクセス許可を持つ組み込みロールは除きます。 ユーザーアクセス管理者の組み込みロールは、以下で説明するように、限定的な用途でサポートされています。 また、カスタムロールと[従来のサブスクリプション管理者ロール](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)はサポートされていません。
 
 承認を定義するために、アクセスを許可する各ユーザー、ユーザー グループ、またはサービス プリンシパルの ID 値を知っておく必要があります。 また、割り当てる各組み込みロールのロール定義 ID も必要になります。 それらがまだない場合は、次のいずれかの方法で取得できます。
-
-
 
 ### <a name="powershell"></a>PowerShell
 

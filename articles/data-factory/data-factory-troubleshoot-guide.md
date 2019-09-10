@@ -5,19 +5,23 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 6/26/2019
+ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 1995ce2a91bfbc115f80c99687cc84b52ef614ec
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f35a3567ae4ae7c3e2d59f776d3a3bc00ec2be3e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950106"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142395"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 
 この記事では、Azure Data Factory における外部の制御アクティビティの一般的なトラブルシューティング方法について説明します。
+
+## <a name="connector-and-copy-activity"></a>コネクタとコピー アクティビティ
+
+コピー アクティビティの使用時にエラーが発生したなど、コネクタに関する問題については、「[Azure Data Factory コネクタの問題を解決する](connector-troubleshoot-guide.md)」を参照してください。
 
 ## <a name="azure-databricks"></a>Azure Databricks
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/25/2019
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: bc5216fccd5beab0e655776c0ccda3c53332da6f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b558384fe6bc86cd7b0ebd640407557e23f68ddd
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478601"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194565"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを構成する
 
@@ -57,6 +57,9 @@ E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートします。
+
+> [!NOTE]
+> .pfx ファイルのパスワードに特殊文字は一切使用しないでください。 サポートされるのは英数字のみです。
 
 ```powershell
 $pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText

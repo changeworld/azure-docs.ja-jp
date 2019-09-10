@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 08/28/2019
+ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001993"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138334"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -175,12 +175,12 @@ terraform apply
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>インフラストラクチャを編集して仮想マシン スケール セットを追加する
 
 この手順では、以前にデプロイしたネットワーク上に次のリソースを作成します。
-- アプリケーションにサービスを提供する Azure ロード バランサー (手順 4 でデプロイしたパブリック IP アドレスに接続します)
+- アプリケーションにサービスを提供する Azure ロード バランサー (前にデプロイしたパブリック IP アドレスに接続します)。
 - 1 つの Azure ロード バランサーおよびアプリケーションにサービスを提供するルール (前述の手順で構成したパブリック IP アドレスに接続します)
-- Azure バックエンド アドレス プール (ロード バランサーに割り当てます) 
-- アプリケーションで使用する正常性プローブ ポート (ロード バランサー上に構成します) 
-- ロード バランサーの背後に構成される仮想マシン スケール セット (前述の手順でデプロイした VNET 上で実行されます)
-- カスタム イメージからインストールした仮想マシン スケールのノード上の [nginx](https://nginx.org/)
+- Azure バックエンド アドレス プール (ロード バランサーに割り当てます)。
+- アプリケーションで使用する正常性プローブ ポート (ロード バランサー上に構成します)。
+- ロード バランサーの背後に構成される仮想マシン スケール セット (前にデプロイした VNET 上で実行されます)。
+- カスタム イメージからインストールした仮想マシン スケールのノード上の [Nginx](https://nginx.org/)。
 
 
 `vmss.tf` ファイルの末尾に次のコードを追加します。
@@ -290,6 +290,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -355,7 +356,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 8c21878fc23f3880f6c6e66b1e304c7dd2e9177c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663666"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306959"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
@@ -65,4 +65,8 @@ Personalizer サービスには、次の 2 つの API があります。
 ## <a name="next-steps"></a>次の手順
 
 * [クイック スタート:C# でフィードバック ループを作成する](csharp-quickstart-commandline-feedback-loop.md)
+* [クイック スタート:Node.js でフィードバック ループを作成する](quickstart-command-line-feedback-loop-nodejs-sdk.md)
+* [クイック スタート:Python でフィードバック ループを作成する](python-quickstart-commandline-feedback-loop.md)
+* [Rank 要求の機能とアクションについて学習します](concepts-features.md)
+* [Reward 要求のスコアの特定について学習します](concept-rewards.md)
 * [対話型デモを使用する](https://personalizationdemo.azurewebsites.net/)
