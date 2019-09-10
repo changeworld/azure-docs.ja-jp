@@ -44,7 +44,7 @@ ms.locfileid: "68569159"
   
 - ご使用のオペレーティング システムに対応した Python とそれに関連するソフトウェア:
   
-  - **MacOS**:Homebrew と Python をインストールし、ODBC ドライバーと SQLCMD をインストールした後、SQL Server 用の Python ドライバーをインストールします。 [SQL Server を使用した Python アプリの作成](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)に関する記事の手順 1.2、1.3、および 2.1 を参照してください。 詳しくは、「[Linux および macOS に Microsoft ODBC Driver インストールする](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)」をご覧ください。
+  - **MacOS**:Homebrew と Python をインストールし、ODBC ドライバーと SQLCMD をインストールした後、SQL Server 用の Python ドライバーをインストールします。 [macOS で SQL Server を使用した Python アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)に関する記事の手順 1.2、1.3、および 2.1 を参照してください。 詳しくは、「[Linux および macOS に Microsoft ODBC Driver インストールする](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)」をご覧ください。
 
   - **Ubuntu**:`sudo apt-get install python python-pip gcc g++ build-essential` を使用して、Python とその他の必要なパッケージをインストールします。 ODBC ドライバー、SQLCMD、および SQL Server 用 Python ドライバーをダウンロードしてインストールします。 手順については、「[pyodbc Python 開発用に開発環境を構成する](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)」をご覧ください。
 
