@@ -228,10 +228,14 @@
               href: Customize-application-attributes.md
             - name: スコープ フィルター
               href: define-conditional-rules-for-provisioning-user-accounts.md
+            - name: スコープ外のユーザーの削除のスキップ
+              href: skip-out-of-scope-deletions.md
             - name: プロビジョニング状態の確認
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: 自動ユーザー プロビジョニングについてのレポート
               href: check-status-user-account-provisioning.md
+            - name: 構成のエクスポートとインポート
+              href: export-import-provisioning-configuration.md
         - name: ユーザー プロビジョニングのトラブルシューティング
           items:
             - name: ユーザー プロビジョニングのトラブルシューティング

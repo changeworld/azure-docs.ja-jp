@@ -469,6 +469,8 @@
               href: bulk-executor-graph-dotnet.md
             - name: Gremlin クエリの最適化
               href: graph-execution-profile.md
+            - name: リソース トークンの使用
+              href: how-to-use-resource-tokens-gremlin.md
             - name: グラフ データの視覚化
               href: graph-visualization.md
             - name: Spring Data の格納と管理

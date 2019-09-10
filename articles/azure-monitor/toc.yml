@@ -770,6 +770,8 @@
                   href: log-query/get-started-portal.md
                 - name: ログ クエリのチュートリアル
                   href: log-query/get-started-queries.md
+                - name: シンプルなログ エクスペリエンス
+                  href: log-query/simple-logs.md
             - name: ログ データ
               items:
                 - name: ログ データの構造
