@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 2ce64df5eeb8aa44ef714d6b465b7f2e1819635d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992113"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259287"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning でデータ セット (プレビュー) を作成してアクセスする
 
@@ -45,9 +45,11 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
 ## <a name="dataset-types"></a>データセットの種類
 
-データセットは、ユーザーがトレーニングでそれらを使用する方法に基づいて、さまざまな種類に分類されます。 現時点では、指定されたファイルまたはファイルのリストを解析して、データを表形式で表す [TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) がサポートされています。 これにより、データを pandas の DataFrame で具体化することができます。 `TabularDataset` オブジェクトは、csv ファイル、tsv ファイル、parquet ファイル、SQL クエリの結果などから作成できます。完全な一覧については、ドキュメントを参照してください。
+データセットは、ユーザーがトレーニングでそれらを使用する方法に基づいて、さまざまな種類に分類されます。 データセットの種類一覧:
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 これにより、データを pandas の DataFrame で具体化することができます。 `TabularDataset` オブジェクトは、csv ファイル、tsv ファイル、parquet ファイル、SQL クエリの結果などから作成できます。完全な一覧については、こちらの[ドキュメント](https://aka.ms/tabulardataset-api-reference)を参照してください。
+* [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 これにより、ファイルをダウンロードしたり、コンピューターにマウントしたりできます。 任意の形式のファイルを使用できます。これにより、ディープ ラーニングなどの幅広い機械学習シナリオに対応します。
 
-今後の API の変更の詳細については、[Azure Machine Learning service の説明](https://aka.ms/tabular-dataset)に関するページを参照してください 
+今後の API の変更点の詳細については、[こちら](https://aka.ms/tabular-dataset)を参照してください。
 
 ## <a name="create-datasets"></a>データセットを作成する 
 
@@ -101,6 +103,25 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38.0|1|0|PC 17599|71.2833|C85|C
 2|3|1|3|Heikkinen, Miss. Laina|female|26.0|0|0|STON/O2. 3101282|7.9250||S
 
+### <a name="create-filedatasets"></a>FileDataset を作成する
+任意の形式のファイルを読み取り、登録されていない FileDataset を作成するには、`FileDatasetFactory` クラスの `from_files()` メソッドを使います。
+
+```Python
+# create a FileDataset from multiple paths in datastore
+datastore_paths = [
+                  (datastore, 'animals/dog/1.jpg'),
+                  (datastore, 'animals/dog/2.jpg'),
+                  (datastore, 'animals/dog/*.jpg')
+                 ]
+animal_ds = Dataset.File.from_files(path=datastore_paths)
+
+# create a FileDataset from image and label files behind public web urls
+web_paths = [
+            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
+           ]          
+mnist_ds = Dataset.File.from_files(path=web_paths)
+```
 ## <a name="register-datasets"></a>データセットを登録する
 
 作成プロセスを完了するには、ワークスペースにデータセットを登録します。
