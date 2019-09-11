@@ -88,13 +88,13 @@ Visual Studio と Microsoft Partner Network のサブスクリプションでは
 
 エンタープライズ管理者は、加入契約に含まれるアカウント間でサブスクリプションの所有権を譲渡できます。 詳細については、EA ポータルで「[アカウントの所有権の譲渡](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription)」を参照してください。
 
-## <a name="next-steps-after-accepting-billing-ownership"></a>課金所有権を受け取った後の次の手順
+## <a name="next-steps-after-accepting-billing-ownership"></a>所有権を受け取った後の手順
 
 Azure サブスクリプションの課金所有権を受け取った場合は、以下の手順を確認することをお勧めします。
 
 1. サービス管理者、共同管理者、その他の RBAC ロールを見直して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](billing-add-change-azure-subscription-administrator.md)」と「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 1. このサブスクリプションのサービスに関連付けられている以下の資格情報を更新します。
-   1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Azure の管理証明書の作成とアップロード](../cloud-services/cloud-services-certs-create.md)
+   1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Azure の管理証明書の作成とアップロード](../cloud-services/cloud-services-certs-create.md) を参照してください。
    1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
    1. Azure Virtual Machines などのサービス用のリモート アクセス資格情報。
 1. パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。 パートナー ID は、[Azure Portal](https://portal.azure.com) で更新できます。 詳細については、「[Azure アカウントにパートナー ID をリンクする](billing-partner-admin-link-started.md)」を参照してください
