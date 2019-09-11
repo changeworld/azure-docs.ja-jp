@@ -10,14 +10,14 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: eca5e4cc96996c35e7c2181746cdb3de2e5a602c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3082c568b3ce3fa5199c7a7d0d082db36720d293
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61259519"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233018"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) との間でデータを双方向にコピーする
 
@@ -215,6 +215,7 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
 | writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**メモ**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
 | writeBatchSize | Data Factory では、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)を使用して Azure Cosmos DB にデータが書き込まれます。 **writeBatchSize** プロパティにより、ADF でライブラリに提供されるドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。以下のヒントをご覧ください。 |いいえ<br />(既定値は **10,000**) |
 | nestingSeparator |入れ子になった文書が必要であることを示す **source** 列名の特殊文字。 <br/><br/>たとえば、出力データセット構造内の `Name.First` は、**nestedSeparator** が **.** (ドット) の場合は、次の JSON 構造を Azure Cosmos DB ドキュメント内に生成します。`"Name": {"First": "[value maps to this column from source]"}`  |いいえ<br />(既定値は **.** (ドット) です) |
+| disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化と推奨のために、Cosmos DB RU などのメトリックが収集されます。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
 
 >[!TIP]
 >Cosmos DB では、1 つの要求のサイズは 2 MB に制限されます。 式は、"要求サイズ = 1 つのドキュメント サイズ * バッチ書き込みサイズ" です。 "**要求のサイズが大きすぎる**" というエラーが発生する場合は、コピー シンクの構成で **`writeBatchSize` の値を小さくします**。

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087450"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241056"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions でのチェックポイントと再生 - (Azure Functions)
 
@@ -145,6 +145,9 @@ Durable Task Framework は、`await` (C#) または `yield` (JavaScript) ステ�
   オーケストレーターに遅延が必要な場合は、[CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) または `createTimer` (JavaScript) API を使用できます。
 
 * オーケストレーター コードで**非同期操作を開始しないでください** ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API または `context.df` オブジェクトの APIを使用する場合を除く)。 たとえば、.NET では `Task.Run`、`Task.Delay`、または `HttpClient.SendAsync` を開始せず、JavaScript では `setTimeout()` および `setInterval()` を開始しません。 Durable Task Framework は、オーケストレーター コードを 1 つのスレッドで実行しており、他の非同期 API でスケジュールされている他のスレッドとは対話できません。 これが発生すると、`InvalidOperationException` 例外がスローされます。
+
+> [!NOTE]
+> [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API で実行される非同期 I/O は、オーケストレーター関数では許可されておらず、オーケストレーター以外の関数でのみ使用できます。
 
 * オーケストレーター コードでは**無限ループが発生しないようにしてください**。 Durable Task Framework では、オーケストレーション関数の進行状況に応じて実行履歴が保存されるため、無限ループが発生すると、オーケストレーター インスタンスによってメモリが不足する可能性があります。 無限ループ シナリオでは、[ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) または `continueAsNew` (JavaScript) などの API を使用して、関数の実行を再開して、前の実行履歴を破棄してください。
 

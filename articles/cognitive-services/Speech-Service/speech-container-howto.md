@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 7708133fcba0d594ecd420afd8da1b2881055aa7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741859"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241029"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
@@ -25,8 +25,8 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 |Function|機能|最新|
 |-|-|--|
-|音声テキスト変換| <li>連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。|1.1.3|
-|テキスト読み上げ| <li>テキストを自然な音声に変換します。 プレーンテキストの入力または音声合成マークアップ言語 (SSML) に対応しています。 |1.1.0|
+|音声テキスト変換| <li>連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。|1.2.0|
+|テキスト読み上げ| <li>テキストを自然な音声に変換します。 プレーンテキストの入力または音声合成マークアップ言語 (SSML) に対応しています。 |1.2.0|
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -101,10 +101,10 @@ Speech のコンテナー イメージを入手できます。
 次のタグは、この形式の例です。
 
 ```
-1.1.3-amd64-en-us-preview
+1.2.0-amd64-en-us-preview
 ```
 
-次の表に、1.1.3 バージョンのコンテナーの**音声テキスト変換**でサポートされているロケールを示します。
+次の表に、1.2.0 バージョンのコンテナーの**音声テキスト変換**でサポートされているロケールを示します。
 
 |言語ロケール|Tags|
 |--|--|
@@ -129,10 +129,10 @@ Speech のコンテナー イメージを入手できます。
 次のタグは、この形式の例です。
 
 ```
-1.1.0-amd64-en-us-jessarus-preview
+1.2.0-amd64-en-us-jessarus-preview
 ```
 
-次の表に、1.1.0 バージョンのコンテナーの "**テキスト読み上げ**" でサポートされているロケールを示します。
+次の表に、1.2.0 バージョンのコンテナーの "**テキスト読み上げ**" でサポートされているロケールを示します。
 
 |言語ロケール|Tags|サポートされている音声|
 |--|--|--|

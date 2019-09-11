@@ -8,18 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee359b76072da3caee9ae1f5fab3d0fc28d25c0e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972685"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240711"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute を使用してオンプレミスから CloudSimple に接続する
 
 外部の場所 (オンプレミスなど) から Azure への Azure ExpressRoute 接続が既にある場合は、CloudSimple 環境に接続できます。 これは、2 つの ExpressRoute 回線が相互に接続できる Azure の機能を介して行うことができます。 この方法によって、2 つの環境間に、セキュリティで保護された、非公開、高帯域幅、低待機時間の接続が確立します。
 
 [![オンプレミスの ExpressRoute 接続 - Global Reach](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
+
+## <a name="before-you-begin"></a>開始する前に
+
+オンプレミスから Global Reach 接続を確立するには、 **/29** ネットワーク アドレス ブロックが必要です。  /29 アドレス空間は、ExpressRoute 回線間のトランジット ネットワークに使用されます。  トランジット ネットワークは、Azure 仮想ネットワーク、オンプレミス ネットワーク、または CloudSimple プライベート クラウド ネットワークのいずれとも重複しないようにする必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,3 +69,8 @@ ExpressRoute 接続を確立するには、ExpressRoute 回線上で承認を作
     * 問題の種類:**サービス リクエスト**
     * 問題のサブタイプ:**オンプレミスへの ExpressRoute 接続を作成する**
     * コピーして [詳細] ウィンドウに保存したリソース ID と承認キーを指定します。
+    * トランジット ネットワーク用の /29 ネットワーク アドレス空間を指定します。
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure ネットワーク接続の詳細を確認します](cloudsimple-azure-network-connection.md)  

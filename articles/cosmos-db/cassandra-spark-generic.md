@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615639"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241238"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark から Azure Cosmos DB Cassandra API に接続する
 
@@ -29,7 +29,7 @@ ms.locfileid: "69615639"
 
 * **Cassandra API 用 Azure Cosmos DB ヘルパー ライブラリ:** Spark コネクタに加えて、Azure Cosmos DB の [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) という別のライブラリが必要です。 このライブラリには、カスタムの接続ファクトリと再試行ポリシー クラスが含まれています。
 
-  Azure Cosmos DB の再試行ポリシーは、HTTP 状態コード 429 ("Request Rate Large") 例外を処理するように構成されています。 Azure Cosmos DB Cassandra API は、このような例外を Cassandra ネイティブ プロトコルに関する過負荷エラーに変換するため、バックオフで再試行できます。 Azure Cosmos DB はプロビジョニングされたスループット モデルを使用するため、受信/送信レートが増加すると、要求レートの制限例外が発生します。 再試行ポリシーによって、収集に割り当てられたスループットを瞬間的に超えるデータの急増から Spark ジョブを保護します。
+  Azure Cosmos DB の再試行ポリシーは、HTTP 状態コード 429 ("Request Rate Large") 例外を処理するように構成されています。 Azure Cosmos DB Cassandra API は、このような例外を Cassandra ネイティブ プロトコルに関する過負荷エラーに変換するため、バックオフで再試行できます。 Azure Cosmos DB はプロビジョニングされたスループット モデルを使用するため、受信/送信レートが増加すると、要求レートの制限例外が発生します。 再試行ポリシーにより、コンテナーに割り当てられたスループットを瞬間的に超えるデータの急増から、Spark ジョブが保護されます。
 
   > [!NOTE] 
   > 再試行ポリシーで、瞬間的な急増に対してのみ Spark ジョブを保護することができます。 ワークロードを実行するために必要十分な RU を構成していない場合は、再試行ポリシーは適用されず、再試行ポリシー クラスによって例外が再スローされます。

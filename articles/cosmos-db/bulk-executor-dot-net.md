@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 0b74c7b178ee4512067de4b8decba0c3c565ccd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 26e4c4edbcfc282fffd0d43673d3585cfe973848
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616965"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241278"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -58,7 +58,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   一括インポーターにより、App.config ファイルで指定したデータベース名、コレクション名、およびスループット値を使用して、新しいデータベースとコレクションが作成されます。 
+   一括インポーターでは、App.config ファイルで指定されているデータベース名、コンテナー名、およびスループット値を使用して、新しいデータベースとコンテナーが作成されます。 
 
 3. 次に、DocumentClient オブジェクトが Direct TCP 接続モードで初期化されます。  
 

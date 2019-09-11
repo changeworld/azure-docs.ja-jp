@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 05289b8e3aa0e083dd948a2d43f3af92418bc5d2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051992"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233275"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 
@@ -218,7 +218,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 6. ホスト プールに属している任意の VM にリモート デスクトップを使用して直接接続し、**エクスプローラー**を開きます。 次に、**マウント パス** (次の例では、マウント パスは \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL) に移動します。
 
-   このフォルダー内に、次の例のようなプロファイル VHD があれば成功です。
+   このフォルダー内に、次の例のようなプロファイル VHD (または VHDX) があるはずです。
 
    ![マウント パスにあるフォルダーの内容のスクリーンショット。 内部には "Profile_ssbb" という名前の VHD ファイルが 1 つ存在しています。](media/mount-path-folder.png)
 

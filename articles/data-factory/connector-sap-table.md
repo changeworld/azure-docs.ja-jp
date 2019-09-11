@@ -10,18 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 8d98405cfbabdff25c40d41b209d79761e699396
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1d64a25fc60a1a1cbe1ed04f87a57556b7de0b88
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996590"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259018"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP テーブルからデータをコピーする方法について説明します。 詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
+
+>[!TIP]
+>SAP データ統合シナリオにおける ADF の全体的なサポートについては、[「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)の詳細手順、比較、およびガイダンスを参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -32,9 +35,9 @@ SAP テーブルから、サポートされている任意のシンク データ
 - 次の場所の SAP テーブルからのデータのコピー:
 
   - SAP ERP Central Component (SAP ECC) バージョン 7.01 以降 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタック)。
-  - SAP Business Warehouse (SAP BW) バージョン 7.01 以降。
+  - SAP Business Warehouse (SAP BW) バージョン 7.01 以降 (2015 年よりも後にリリースされた最新の SAP サポート パッケージ スタック)。
   - SAP S/4HANA。
-  - SAP Business Suite バージョン 7.01 以降に含まれているその他の製品。
+  - SAP Business Suite バージョン 7.01 以降のその他の製品 (2015 年よりも後にリリースされた最近の SAP サポート パッケージ スタック)。
 
 - SAP 透過テーブル、プールされたテーブル、クラスター化されたテーブル、およびビューの両方からのデータのコピー。
 - 基本認証、または Secure Network Communications (SNC) が構成されている場合は、SNC を使用したデータのコピー。

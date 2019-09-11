@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: bec1c0c3523e6d9cfb0b2fdbc7a093ffe0637743
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996582"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232502"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -197,9 +197,9 @@ Teradata からデータをコピーするために、コピー アクティビ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは `TeradataSource` に設定する必要があります。 | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。<br>パーティション分割された読み込みを有効にするときは、クエリ内で対応する組み込みのパーティション パラメーターをすべてフックする必要があります。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ (データセットのテーブルが指定されている場合) |
-| partitionOptions | Teradata からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>指定できる値は、**None** (既定値)、**Hash**、**DynamicRange** です。<br>パーティション オプションが有効になっている (`None` ではない) 場合は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) 設定も構成してください。 これにより、Teradata データベースからデータを同時に読み込むときの並列度が決定されます。 たとえば、これを 4 に設定することができます。 | いいえ |
+| partitionOptions | Teradata からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>指定できる値は、**None** (既定値)、**Hash**、**DynamicRange** です。<br>パーティション オプションが有効になっている場合 (つまり、`None` ではない場合)、Teradata データベースから同時にデータを読み込む並列処理の次数は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) の設定によって制御されます。 | いいえ |
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
-| partitionColumnName | 並列コピーの範囲パーティション分割で使用される**整数型**のソース列の名前を指定します。 指定されていない場合は、テーブルの主キーが自動検出され、パーティション列として使用されます。 <br>パーティション オプションが `Hash` または `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfHashPartitionCondition` または `?AdfRangePartitionColumnName` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
+| partitionColumnName | 並列コピーの範囲パーティションまたはハッシュ パーティションで使用されるソース列の名前を指定します。 指定されていない場合は、テーブルのプライマリ インデックスが自動検出され、パーティション列として使用されます。 <br>パーティション オプションが `Hash` または `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfHashPartitionCondition` または `?AdfRangePartitionColumnName` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
 | partitionUpperBound | データをコピーするパーティション列の最大値。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionUpbound` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
 | partitionLowerBound | データをコピーするパーティション列の最小値。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionLowbound` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
 
@@ -247,7 +247,7 @@ Data Factory の Teradata コネクタは、Teradata からデータを並列で
 
 パーティション分割されたコピーを有効にすると、Data Factory によって Teradata ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリは、Teradata データベースからデータの一部を取得します。
 
-特に、Teradata データベースから大量のデータを読み込む場合は、データ パーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
+特に、Teradata データベースから大量のデータを読み込む場合は、データのパーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 | シナリオ                                                     | 推奨設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

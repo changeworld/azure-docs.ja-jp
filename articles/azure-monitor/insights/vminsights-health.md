@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602056"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233175"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する
 
@@ -285,7 +285,7 @@ Azure Monitor for VMs の正常性に含まれているすべてのナレッジ�
 
 Azure Monitor for VMs の正常性は、[Azure アラート](../../azure-monitor/platform/alerts-overview.md)と統合されています。 定義済みの基準に達した場合や、正常な状態から異常な状態への変化が検出された場合にアラートを発生させます。 アラートは、重大度 0 から重大度 4 までの重大度で分類され、重大度 0 が最も高いレベルです。
 
-アラートは、トリガーされたらユーザーに通知するためのアクション グループには関連付けられていません。 サブスクリプション所有者は、「[アラートを構成する](#configure-alerts)」のセクションにある手順に従って通知を構成する必要があります。
+アラートは、トリガーされたらユーザーに通知するためのアクション グループには関連付けられていません。 サブスクリプションのスコープで所有者ロールを持つユーザーは、「[アラートを構成する](#configure-alerts)」のセクションにある手順に従って、通知を構成する必要があります。
 
 重大度で分類された VM 正常性アラートの総数は、 **[アラート]** セクションの **[正常性]** ダッシュボードで表示できます。 アラートの合計数、または重大度レベルに対応する数のいずれかを選択すると、 **[アラート]** ページが開き、選択に一致するすべてのアラートが一覧表示されます。
 

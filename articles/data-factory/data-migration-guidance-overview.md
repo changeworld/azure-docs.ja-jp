@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: a61ddf57d4f01fcaf4a949add29c677aa94060a9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 937a076b3e0e3c5170779d3449776f0aa1cf5b49
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827844"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259000"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する 
 
@@ -60,3 +60,5 @@ Azure Data Factory は、ネットワーク (インターネット、ER、また
 ## <a name="next-steps"></a>次の手順
 
 - [データを AWS S3 から Azure に移行する](data-migration-guidance-s3-azure-storage.md)
+- [オンプレミスの Hadoop クラスターから Azure へのデータの移行](data-migration-guidance-hdfs-azure-storage.md)
+- [オンプレミスの Netezza サーバーから Azure へのデータの移行](data-migration-guidance-netezza-azure-sqldw.md)
