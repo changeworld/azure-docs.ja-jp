@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/03/2019
-ms.localizationpriority: high
+ms.date: 09/05/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: aab97257ff2e917dc264017043d3ca11a2ced1fc
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240203"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390404"
 ---
 ::: zone target="chromeless"
 
@@ -85,12 +85,9 @@ ms.locfileid: "70240203"
 
 オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで集荷する場合は、次の手順を実行します。
 
-1. `adbops@microsoft.com` にメールを送信し、一意の国内配送用 ID、つまり TAU コードが記載された配送先住所ラベルを依頼します。 ラベルを目的の日付に入手するには、配送予定日の少なくとも 3 日前に依頼します。
-2. メールの件名は、「*Request for reverse shipping label with TAU code (TAU コードが記載された返送用の配送先住所ラベルの依頼)* 」にすることをお勧めします。 メールには、必ず次の詳細情報を含めてください。 
-
-    - 注文の名前
-    - Address
-    - 連絡先の名前
+1. 提供された返送ラベルを使用して、それに TAU コード (参照番号) が記載されていることを確認します。 提供された配送先住所ラベルが見つからない場合やその他の問題が発生している場合は、[Data Box アジア オペレーション](mailto:adbo@microsoft.com)までメールでお問い合わせください。 件名ヘッダーの注文名と直面している問題の詳細を記入します。
+3. 箱にラベルを貼り付けます。 
+4. リンク先 (https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ) からオンラインで集荷を予約します。 
 
 ### <a name="pick-up-in-asia"></a>アジアで集荷する
 
