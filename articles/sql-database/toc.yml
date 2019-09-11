@@ -333,7 +333,7 @@
             - name: Bring Your Own Key を使用した TDE
               href: transparent-data-encryption-byok-azure-sql.md
         - name: セキュリティ属性
-          href: sql-database-security-attributes.md
+          href: sql-database-security-controls.md
         - name: 機能の制限
           href: sql-database-feature-restrictions.md
     - name: スケーラビリティ
@@ -512,6 +512,8 @@
           href: sql-database-managed-instance-migrate.md
         - name: マネージド インスタンスへの TDE 証明書の移行
           href: sql-database-managed-instance-migrate-tde-certificate.md
+        - name: ポイントインタイム リストア
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: マネージド インスタンス サブネットのサイズの決定
           href: sql-database-managed-instance-determine-size-vnet-subnet.md
         - name: マネージド インスタンス用の新しい VNet とサブネットの作成
@@ -534,8 +536,6 @@
           href: sql-database-managed-instance-connect-app.md
     - name: データの読み込みと移動
       items:
-        - name: ポイントインタイム リストア
-          href: sql-database-managed-instance-point-in-time-restore.md
         - name: 新しいリージョンへのリソースの移動
           href: sql-database-move-resources-across-regions.md
         - name: Azure 内でのデータベースのコピー

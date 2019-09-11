@@ -8,18 +8,18 @@
     - name: BLOB、ファイル、またはディスクの選択
       href: ./common/storage-decide-blobs-files-disks.md
 - name: BLOB
-  href: ./blobs/storage-blobs-overview.md
+  href: ./blobs/index.yml
 - name: Data Lake Storage Gen2
-  href: ./blobs/data-lake-storage-introduction.md
+  href: ./blobs/index.yml
 - name: ファイル
-  href: ./files/storage-files-introduction.md
+  href: ./files/index.yml
 - name: キュー
-  href: ./queues/storage-queues-introduction.md
+  href: ./queues/index.yml
 - name: テーブル
   href: ./tables/table-storage-overview.md
 - name: ディスク
   items:
-    - name: ' Windows'
+    - name: Windows
       href: ../virtual-machines/windows/managed-disks-overview.md
     - name: Linux
       href: ../virtual-machines/linux/managed-disks-overview.md
