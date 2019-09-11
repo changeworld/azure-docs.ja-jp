@@ -32,7 +32,7 @@ Bing Web Search SDK を使用すると、C# アプリケーションに Bing Web
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [C# for Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
   * [NuGet パッケージ マネージャー](https://github.com/jmrog/vscode-nuget-package-manager)
-* [.NET コア SDK](https://www.microsoft.com/net/download)
+* [.NET Core SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>プロジェクトの作成と依存関係のインストール
 
