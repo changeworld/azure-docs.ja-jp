@@ -1,5 +1,5 @@
-- name: Azure Storage のドキュメント
-  href: /azure/storage/
+- name: Azure Blob Storage のドキュメント
+  href: /azure/storage/blobs/
 - name: 概要
   expanded: true
   items:

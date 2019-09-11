@@ -346,6 +346,10 @@
       items:
         - name: 属性マッピングの式の書き方
           href: functions-for-customizing-application-data.md
+    - name: Azure AD Connect プロビジョニング エージェント
+      items:
+        - name: プロビジョニング エージェントのバージョン履歴
+          href: provisioning-agent-release-version-history.md
     - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: アプリケーション プロキシのバージョン履歴

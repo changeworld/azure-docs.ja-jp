@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cebd6e5c120bdaa5e7dd5b681366e07087cd3498
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069191"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232365"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Azure App Service でアプリをスケールアップする
 
@@ -85,11 +85,8 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
 
 ## <a name="more-resources"></a>その他のリソース
 
-App Service アプリのスケーリングに関するビデオについては、以下のリソースを参照してください。
- 
-* [Azure Websites のスケールを設定するタイミング - Stefan Schackow 共演](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
-* [Azure Websites、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演](https://azure.microsoft.com/resources/videos/auto-scaling-azure-web-sites/)
-* [Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)
+[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)  
+[App Service の PremiumV2 レベルの構成](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/
