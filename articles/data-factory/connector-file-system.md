@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 6cd88a58df4334180174fae9f0e651b5281e320e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 677f3cbb6416086843ceb530abd07d412c8b38f0
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966547"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275421"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してファイル システムをコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -99,12 +99,12 @@ ms.locfileid: "68966547"
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-- **Parquet 形式、区切りテキスト形式およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
-- **ORC/Avro/JSON 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
+- **Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
+- **ORC/JSON 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
 
-### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット
+### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のデータセット
 
-コピー先またはコピー元との間で **Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 ファイル システムでは、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+コピー先またはコピー元との間で **Parquet 形式、区切りテキスト形式、Avro 形式、またはバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 ファイル システムでは、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -143,7 +143,7 @@ ms.locfileid: "68966547"
 
 ### <a name="other-format-dataset"></a>他の形式のデータセット
 
-ファイル システムをコピー先またはコピー元として **ORC/Avro/JSON 形式**のデータをコピーする場合、次のプロパティがサポートされます。
+ファイル システムをコピー先またはコピー元として **ORC/JSON 形式**のデータをコピーする場合、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -197,12 +197,12 @@ ms.locfileid: "68966547"
 
 ### <a name="file-system-as-source"></a>ソースとしてのファイル システム
 
-- コピー元から **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
-- コピー元から **ORC/Avro/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+- コピー元から **Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
+- コピー元から **ORC/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
 
-#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のソース
+#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のソース
 
-**Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 ファイル システムでは、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+**Parquet 形式、区切りテキスト形式、Avro 形式、またはバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 ファイル システムでは、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -260,7 +260,7 @@ ms.locfileid: "68966547"
 
 #### <a name="other-format-source"></a>他の形式のソース
 
-**ORC/Avro/JSON 形式**のデータをファイル システムからコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+**ORC/JSON 形式**のデータをファイル システムからコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -302,12 +302,12 @@ ms.locfileid: "68966547"
 
 ### <a name="file-system-as-sink"></a>シンクとしてのファイル システム
 
-- コピー先に **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のシンク](#format-based-sink)」セクションを参照してください。
-- コピー先に **ORC/Avro/JSON 形式**などの他の形式でコピーするには、「[他の形式のシンク](#other-format-sink)」セクションを参照してください。
+- コピー先に **Parquet 形式、区切りテキスト形式、Avro 形式、またはバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のシンク](#format-based-sink)」セクションを参照してください。
+- コピー先に **ORC/JSON 形式**などの他の形式でコピーするには、「[他の形式のシンク](#other-format-sink)」セクションを参照してください。
 
-#### <a name="format-based-sink"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のシンク
+#### <a name="format-based-sink"></a> Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のシンク
 
-**Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのシンクと、サポートされる設定について参照してください。 ファイル システムでは、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
+コピー先にデータを **Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式**でコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのシンクと、サポートされる設定について参照してください。 ファイル システムでは、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -355,7 +355,7 @@ ms.locfileid: "68966547"
 
 #### <a name="other-format-sink"></a>他の形式のシンク
 
-**ORC/Avro/JSON 形式**のデータをファイル システムにコピーする場合、**sink** セクションで次のプロパティがサポートされます。
+**ORC/JSON 形式**のデータをファイル システムにコピーする場合、**sink** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: e9b024fc3c07670201cf72cf80c0b69bf68f1cc8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 72019b3bf5c17525b9a0dd8afc126f1bfc248041
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725996"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274442"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -25,6 +25,9 @@ ms.locfileid: "68725996"
 > * [現在のバージョン](connector-sap-hana.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP HANA データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+
+>[!TIP]
+>SAP データ統合シナリオにおける ADF の全体的なサポートについては、[「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)の詳細手順、比較、およびガイダンスをご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -133,7 +136,7 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、SAP HANA データセット でサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、SAP HANA データセット でサポートされるプロパティの一覧を示します。
 
 SAP HANA からのデータ コピーについては、次のプロパティがサポートされています。
 
@@ -226,7 +229,7 @@ SAP HANA からデータをコピーするとき、次の SAP HANAのデータ�
 | BLOB               | Byte[]                         |
 | BOOL               | Byte                           |
 | CLOB               | string                         |
-| DATE               | Datetime                       |
+| DATE               | DateTime                       |
 | DECIMAL            | Decimal                        |
 | DOUBLE             | DOUBLE                         |
 | FLOAT              | Double                         |
@@ -234,7 +237,7 @@ SAP HANA からデータをコピーするとき、次の SAP HANAのデータ�
 | NCLOB              | string                         |
 | NVARCHAR           | string                         |
 | REAL               | Single                         |
-| SECONDDATE         | Datetime                       |
+| SECONDDATE         | DateTime                       |
 | SHORTTEXT          | string                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
@@ -244,7 +247,7 @@ SAP HANA からデータをコピーするとき、次の SAP HANAのデータ�
 | TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
 | VARCHAR            | string                         |
-| TIMESTAMP          | Datetime                       |
+| TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>次の手順

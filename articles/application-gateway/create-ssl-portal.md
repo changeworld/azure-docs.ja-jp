@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/30/2019
 ms.locfileid: "70194565"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを構成する
+# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL ターミネーションでアプリケーション ゲートウェイを構成する
 
 Azure Portal を使用して、バックエンド サーバーに仮想マシンを使用する SSL ターミネーションの証明書で、[アプリケーション ゲートウェイ](overview.md) を構成することができます。
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840255"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277091"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -413,7 +413,7 @@ SQL Database 内に次のテーブルが含まれているとします。
 ## <a name="parquet-format"></a>Parquet 形式
 
 >[!NOTE]
->Data Factory に新しい区切りテキスト形式のデータセットが導入されました。詳しくは、[区切りテキスト形式](format-parquet.md)に関する記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
+>Data Factory に新しい Parquet 形式のデータセットが導入されました。詳しくは、[Parquet 形式](format-parquet.md)に関する記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
 
 Parquet ファイルを解析するか、Parquet 形式でデータを書き込む場合は、`format` `type` プロパティを **ParquetFormat** に設定します。 typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。 例:
 
@@ -462,7 +462,7 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 | Double | Double | 該当なし | 該当なし |
 | Decimal | Binary | Decimal | Decimal |
 | string | Binary | Utf8 | Utf8 |
-| Datetime | Int96 | 該当なし | 該当なし |
+| DateTime | Int96 | 該当なし | 該当なし |
 | TimeSpan | Int96 | 該当なし | 該当なし |
 | DateTimeOffset | Int96 | 該当なし | 該当なし |
 | ByteArray | Binary | 該当なし | 該当なし |
@@ -512,7 +512,7 @@ ORC ファイルのシリアル化/逆シリアル化を使用してセルフホ
 | Double | Double |
 | Decimal | Decimal |
 | string | string |
-| Datetime | Timestamp |
+| DateTime | Timestamp |
 | DateTimeOffset | Timestamp |
 | TimeSpan | Timestamp |
 | ByteArray | Binary |
@@ -520,6 +520,9 @@ ORC ファイルのシリアル化/逆シリアル化を使用してセルフホ
 | Char | Char(1) |
 
 ## <a name="avro-format"></a>AVRO 形式
+
+>[!NOTE]
+>Data Factory に新しい Avro 形式のデータセットが導入されました。詳しくは、[Avri 形式](format-avro.md)に関する記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
 
 Avro ファイルを解析するか、Avro 形式でデータを書き込む場合は、`format` `type` プロパティを **AvroFormat** に設定します。 typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。 例:
 
