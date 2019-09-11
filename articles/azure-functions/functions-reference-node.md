@@ -453,7 +453,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>Kudu を使用する
-1. [https://aka.ms/MFASetup](`https://<function_app_name>.scm.azurewebsites.net`) にアクセスします。
+1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
 
 2. **[デバッグ コンソール]**  >  **[CMD]** をクリックします。
 
