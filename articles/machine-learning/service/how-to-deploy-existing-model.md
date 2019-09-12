@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847992"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182545"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Azure Machine Learning service で既存のモデルを使用する
 
@@ -76,23 +76,40 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 
 ## <a name="define-inference-configuration"></a>推論構成を定義する
 
-推論構成には、デプロイされたモデルの実行に使用される環境を定義します。 推論構成からは、デプロイ時にモデルの実行に使用される次のファイルが参照されます。
+推論構成には、デプロイされたモデルの実行に使用される環境を定義します。 推論構成からは、デプロイ時にモデルの実行に使用される次のエンティティが参照されます。
 
-* ランタイム。 ランタイムの現在有効な唯一の値は Python です。
 * エントリ スクリプト。 このファイル (`score.py` という名前) では、デプロイされたサービスの開始時にモデルが読み込まれます。 また、データを受信し、それをモデルに渡してから応答を返す処理も担当します。
-* Conda 環境ファイル。 このファイルには、モデルとエントリ スクリプトの実行に必要な Python パッケージが定義されます。 
+* Azure Machine Learning service [環境](how-to-use-environments.md)。 環境には、モデルとエントリ スクリプトの実行に必要なソフトウェアの依存関係を定義します。
 
-Python SDK を使用した基本的な推論構成の例を次に示します。
+次の例で、SDK を使用して環境を作成し、推論構成でそれを使用する方法を示します。
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-詳細については、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) のリファレンスを参照してください。
+詳細については、次の記事を参照してください。
+
++ [環境の使用方法](how-to-use-environments.md)。
++ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) のリファレンス。
+
 
 この CLI では YAML ファイルから推論構成が読み込まれます。
 
@@ -102,6 +119,20 @@ inference_config = InferenceConfig(runtime= "python",
    "runtime": "python",
    "condaFile": "myenv.yml"
 }
+```
+
+CLI では、conda 環境は、推論構成から参照される `myenv.yml` ファイルに定義されます。 次の YAML は、このファイルの内容です。
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
 ```
 
 推論構成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
@@ -190,24 +221,6 @@ def predict(text, include_neutral=True):
 ```
 
 エントリ スクリプトの詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
-
-### <a name="conda-environment"></a>Conda 環境
-
-次の YAML は、モデルとエントリ スクリプトの実行に必要な Conda 環境について説明するものです。
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="define-deployment"></a>デプロイを定義する
 

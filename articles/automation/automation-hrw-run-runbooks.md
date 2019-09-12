@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087572"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186754"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -61,7 +61,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 ### <a name="runas-account"></a>RunAs アカウント
 
-既定で、Hybrid Runbook Worker は Windows のローカル システムおよび Linux の特殊なユーザー アカウント `nxautomation` を使用して Runbook を実行します。 Runbook でローカル リソースへの独自の認証機能を用意するのではなく、ハイブリッド worker グループの **RunAs** アカウントを指定することができます。 ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を指定すると、グループ内の Hybrid Runbook Worker で Runbook を実行するときに、その資格情報ですべての Runbook が実行されます。
+既定で、Hybrid Runbook Worker は Windows のローカル システムおよび Linux の特殊なユーザー アカウント `nxautomation` を使用して Runbook を実行します。 Runbook でローカル リソースへの独自の認証機能を用意するのではなく、ハイブリッド worker グループの **RunAs** アカウントを指定することができます。 グループ内の Hybrid Runbook Worker で実行するとき、証明書ストアやこれらの資格情報で実行されるすべての Runbook を含む、ローカル リソースに対するアクセス権を持つ[資格情報資産](automation-credentials.md)を指定します。
 
 資格情報のユーザー名は、次の形式にする必要があります。
 

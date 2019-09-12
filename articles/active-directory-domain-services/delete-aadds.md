@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 2f9b7f5342753c27bd8159056c8f162a5a4b78d3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d5917ad94212c8b18d4362528bdfbafb02aec808
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473545"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171968"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を無効にする
 この記事では、Azure ポータルを使用して、Azure AD ディレクトリの Azure Active Directory Domain Services を無効にする方法を示します。
@@ -48,6 +48,6 @@ Azure AD Domain Services のマネージド ドメインを削除するには、
 
     ![ドメインの削除の確認](./media/getting-started/domain-services-delete-domain-confirm.png)
 
-マネージド ドメインは、約 15 ~ 20 分で削除されます。
+マネージド ドメインを削除するには、15 から 20 分以上かかることがあります。
 
 どの機能によってユーザーが将来 Azure AD Domain Services を選択するかを理解するために、 [フィードバックの共有](contact-us.md) を検討してください。 このフィードバックは、デプロイのニーズとユースケースに合わせたサービスの拡張に活用させていただきます。

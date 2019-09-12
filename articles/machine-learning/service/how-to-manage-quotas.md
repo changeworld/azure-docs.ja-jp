@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 110040592474ec432912e7f545abad19ca3ae1ff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991972"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278065"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
 
@@ -78,7 +78,7 @@ Azure Machine Learning コンピューティングでは、サブスクリプシ
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
 Azure Machine Learning パイプラインには、パイプラインのステップ数にクォータ制限と、サブスクリプション内のリージョンごとの発行済みのパイプラインのスケジュールに基づく実行数に制限があります。
 - パイプラインで許可されるステップの最大数は 30,000 です
-- 発行済みのパイプラインのスケジュールに基づく最大実行数は、サブスクリプションあたり 1 か月間で 100,000 です
+- 1 か月のサブスクリプションごとに発行されるパイプラインのブログでトリガされるスケジュールで、スケジュールに基づく実行と BLOB プルの合計の最大数は 100,000 です
 
 > [!NOTE]
 > この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。

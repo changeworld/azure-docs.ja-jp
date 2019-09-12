@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 387865ac229acc5d16f595b96c76e7c9a014e991
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062134"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192072"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
 
@@ -102,7 +102,7 @@ weighted_accuracy|重み付けされた精度は、それぞれの例に対し�
 
 混同行列は、分類モデルのパフォーマンスの記述に使用します。 各行には true クラスのインスタンスが表示され、各列は予測されたクラスのインスタンスを表します。 混同行列では、特定のモデルで正しく分類されたラベルと、間違って分類ラベルが示されます。
 
-分類問題の場合、Azure Machine Learning では作成された各モデルに対して混同行列が自動的に提供されます。 自動 ML では、混同行列ごとに、正しく分類されたラベルは緑で、間違って分類されたラベルは赤で示されます。 円のサイズは、そのビンのサンプルの数を表します。 さらに、各予測ラベルと各 true ラベルの頻度の数が、隣の棒グラフで提供されます。 
+分類問題の場合、Azure Machine Learning では作成された各モデルに対して混同行列が自動的に提供されます。 各混同行列では、自動 ML によって、それぞれの予測ラベルとそれぞれの正しいラベルが交差する場所の頻度が表示されます。 色が濃いほど、行列の特定の部分のカウント数が大きくなります。 最も濃い色が行列の対角線に沿った状態が理想的です。 
 
 例 1:精度の低い分類モデル![精度の低い分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 9c27b81717c32ccf4c78143a3d3d31de7181c5fe
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 28c7ca6470e15f4ff1f5e80df2ab63fa19da1544
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996625"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277792"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -170,7 +170,9 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは `OracleTable` に設定する必要があります。 | はい |
-| tableName |リンクされたサービスが参照する Oracle データベースのテーブルの名前です。 | はい |
+| schema | スキーマの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
+| table | テーブル/ビューの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
+| tableName | スキーマがあるテーブル/ビューの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | ソースの場合はいいえ、シンクの場合ははい |
 
 **例:**
 
@@ -180,12 +182,14 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
     "properties":
     {
         "type": "OracleTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "<schema_name>",
+            "table": "<table_name>"
+        },
         "linkedServiceName": {
             "referenceName": "<Oracle linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "MyTable"
         }
     }
 }
@@ -206,7 +210,7 @@ Oracle からデータをコピーするは、コピー アクティビティの
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは `OracleSource` に設定する必要があります。 | はい |
 | oracleReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。<br>パーティション分割された読み込みを有効にするときは、クエリ内で対応する組み込みのパーティション パラメーターをすべてフックする必要があります。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」セクションを参照してください。 | いいえ |
-| partitionOptions | Oracle からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>使用できる値は、以下のとおりです。**None** (既定値)、**PhysicalPartitionsOfTable**、**DynamicRange** です。<br>パーティション オプションが有効になっている (`None` ではない) 場合は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) 設定も構成してください。 これにより、Oracle データベースからデータを同時に読み込むときの並列度が決定されます。 たとえば、これを 4 に設定することができます。 | いいえ |
+| partitionOptions | Oracle からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>使用できる値は、以下のとおりです。**None** (既定値)、**PhysicalPartitionsOfTable**、**DynamicRange** です。<br>パーティション オプションが有効になっている場合 (つまり、`None` ではない場合)、Oracle データベースから同時にデータを読み込む並列処理の次数は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) の設定によって制御されます。 | いいえ |
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | partitionNames | コピーする必要がある物理パーティションのリスト。 <br>パーティション オプションが `PhysicalPartitionsOfTable` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfTabularPartitionName` をフックします。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」セクションを参照してください。 | いいえ |
 | partitionColumnName | 並列コピーの範囲パーティション分割で使用される**整数型**のソース列の名前を指定します。 指定されていない場合は、テーブルの主キーが自動検出され、パーティション列として使用されます。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionColumnName` をフックします。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」セクションを参照してください。 | いいえ |

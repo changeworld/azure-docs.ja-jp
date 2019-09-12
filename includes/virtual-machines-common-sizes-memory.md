@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c8ffa7b65e4f97fa537299bf542ba377da026064
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626363"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174637"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
@@ -147,7 +147,7 @@ Mv2 シリーズの VM は Intel® ハイパー スレッディング テクノ�
 
 <sup>1</sup> これらの大規模 VM には、サポートされている ゲスト OS (Windows Server 2016、Windows Server 2019、SLES 12 SP4、SLES 15 ) のいずれかが必要です。
 
-<sup>2</sup> Mv2-シリーズは第 2 世代のみです。 Linux を使用している場合は、次のセクションで、SUSE Linux イメージを見つけて選択する方法をご確認ください。
+<sup>2</sup> Mv2-シリーズの VM は[第 2 世代](/azure/virtual-machines/linux/generation-2)のみです。 Linux を使用している場合は、次のセクションで、SUSE Linux イメージを見つけて選択する方法をご確認ください。
 
 #### <a name="find-a-suse-image"></a>SUSE イメージを見つける
 

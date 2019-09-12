@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: e9cc5aaaf11a799b17cc87b40113e166fcd93afb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/29/2019
+ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569005"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173427"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL データベースのコピーを作成する
 
@@ -24,7 +24,7 @@ Azure SQL Database では、同じサーバーまたは別のサーバーのい�
 
 ## <a name="overview"></a>概要
 
-データベースのコピーとは、コピーが要求された時点でのソース データベースのスナップショットのことです。 同じサーバーまたは別のサーバーを選択できます。 また、そのサービス レベルとコンピューティング サイズを維持するか、同じサービス レベル (エディション) 内の別のコンピューティング サイズを使用することもできます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 この時点では、任意のエディションにアップグレードまたはダウン グレードできます。 ログイン、ユーザー、アクセス許可は非依存で管理できます。  
+データベースのコピーとは、コピーが要求された時点でのソース データベースのスナップショットのことです。 同じサーバーまたは別のサーバーを選択できます。 また、そのサービス レベルとコンピューティング サイズを維持するか、同じサービス レベル (エディション) 内の別のコンピューティング サイズを使用することもできます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 この時点では、任意のエディションにアップグレードまたはダウン グレードできます。 ログイン、ユーザー、アクセス許可は非依存で管理できます。 コピーは geo レプリケーション テクノロジを使用して作成され、シード処理が完了すると、geo レプリケーション リンクは自動的に終了します。 geo レプリケーションを使用するためのすべての要件が、データベースのコピー操作に適用されます。 詳細については、「[アクティブ geo レプリケーションの作成と使用](sql-database-active-geo-replication.md)」を参照してください。
 
 > [!NOTE]
 > データベースのコピーを作成するときは、[自動データベース バックアップ](sql-database-automated-backups.md)が使用されます。
@@ -61,6 +61,26 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 ```
 
 完全なサンプル スクリプトについては、「[新しいサーバーにデータベースをコピーする](scripts/sql-database-copy-database-to-new-server-powershell.md)」をご覧ください。
+
+データベースのコピーは非同期操作ですが、要求が受け入れられた直後にターゲット データベースが作成されます。 まだ進行中のコピー操作を取り消す必要がある場合は、[Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) コマンドレットを使用してターゲット データベースをドロップします。  
+
+## <a name="rbac-roles-to-manage-database-copy"></a>データベースのコピーを管理する RBAC ロール
+
+データベースのコピーを作成するには、次のロールが必要です
+
+- サブスクリプションの所有者または
+- SQL Server 共同作成者ロールまたは
+- 次のアクセス許可を持つ、ソース データベースとターゲット データベースのカスタム ロール:
+
+   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
+
+データベースのコピーを取り消すには、次のロールが必要です
+
+- サブスクリプションの所有者または
+- SQL Server 共同作成者ロールまたは
+- 次のアクセス許可を持つ、ソース データベースとターゲット データベースのカスタム ロール:
+
+   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Transact-SQL を使ってデータベースをコピーする
 
@@ -107,6 +127,10 @@ sys.databases ビューと sys.dm_database_copies ビューを照会して、コ
 
 > [!NOTE]
 > 進行中のコピー操作を取り消すには、新しいデータベースに対して [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) ステートメントを実行します。 また、コピー元のデータベースに対して DROP DATABASE ステートメントを実行することによっても、コピー操作を取り消すことができます。
+
+> [!IMPORTANT]
+> ソースよりも SLO が非常に小さいコピーを作成する必要がある場合、ターゲット データベースには、シード処理を完了するための十分なリソースがない可能性があります。これにより、コピー操作が失敗する可能性があります。 このシナリオでは、geo リストア要求を使用して、別のサーバーや別のリージョンにコピーを作成します。 詳細については、「[データベースのバックアップを使用した Azure SQL データベースの復旧](sql-database-recovery-using-backups.md#geo-restore)」を参照してください。
+
 
 ## <a name="resolve-logins"></a>ログインの解決
 

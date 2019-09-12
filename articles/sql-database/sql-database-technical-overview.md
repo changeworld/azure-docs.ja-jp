@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 1c4fae5c41f4f23c4a7fe3135b602133aa69aacd
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873716"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279901"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
@@ -84,8 +84,8 @@ Azure SQL Database には、ワークロードの特性についての完全な�
 
 Azure プラットフォームには、パフォーマンス評価と組み合わせた[組み込みのパフォーマンス監視](sql-database-performance.md)と[アラート](sql-database-insights-alerts-portal.md)のツールが用意されています。これにより、何千ものデータベースの状態を簡単に監視できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
-- **Azure Storage**:大量の利用統計情報を低価格でアーカイブします
-- **Azure Event Hub**:SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します
+- **Azure Storage**:大量の利用統計情報を低価格でアーカイブします。
+- **Azure Event Hub**:SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。
 - **Azure Monitor ログ**: レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。
 
     ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
@@ -111,7 +111,7 @@ Azure Availability Zones は、高可用性の問題で機能します。  1 つ
   すべての SQL Database デプロイ オプションは、あらゆる Azure SQL データベースについて、自動バックアップのリテンション期間内の任意の時点への復旧をサポートします。
 - **[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)** :
 
-  単一データベースおよびプールされたデータベースでは、同じ Azure データ センターまたは世界各地に分散された Azure データ センター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。  たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル スケールの読み取りを有効することで、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。 マネージド インスタンスについては、自動フェールオーバー グループを使用します。
+  単一データベースおよびプールされたデータベースでは、同じ Azure データ センターまたは世界各地に分散された Azure データ センター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。  たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル スケールの読み取りを有効にすることで、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。 マネージド インスタンスについては、自動フェールオーバー グループを使用します。
 - **[自動フェールオーバー グループ](sql-database-auto-failover-group.md)** :
 
   すべての SQL Database デプロイ オプションでは、フェールオーバー グループを使用して、高可用性と負荷分散をグローバル スケールで有効にすることができます。これには、データベース、エラスティック プール、マネージド インスタンスの大規模セットの透過的な geo レプリケーションおよびフェールオーバーが含まれます。 フェールオーバー グループを使用すると、グローバルに分散された SaaS アプリケーションを最小限の管理オーバーヘッドで作成することができ、複雑な監視、ルーティング、およびフェールオーバーのオーケストレーションは、すべて SQL Database にまかせることができます。
@@ -121,7 +121,7 @@ Azure Availability Zones は、高可用性の問題で機能します。  1 つ
 
 ## <a name="built-in-intelligence"></a>組み込みのインテリジェンス
 
-SQL Database には、インテリジェンスが組み込まれています。このインテリジェンスによって、データベースの運用コストと管理コストは大幅に削減され、アプリケーションのパフォーマンスとセキュリティの両方が最大化されます。 数百万の顧客のワークロードを 24 時間実行する SQL Database は、水面下で顧客のプライバシーを 100% 尊重しながら、膨大な量のテレメトリ データを収集して処理します。 アプリケーションの状況をサービスが学習し、状況に適応することができるように、さまざまなアルゴリズムによってテレメトリ データが継続的に評価されます。 この分析に基づいて、サービスは、特定のワークロードに合わせたパフォーマンスの向上に関する推奨事項を考え出すことができます。
+SQL Database には、インテリジェンスが組み込まれています。このインテリジェンスによって、データベースの運用コストと管理コストは大幅に削減され、アプリケーションのパフォーマンスとセキュリティの両方が最大化されます。 数百万の顧客のワークロードを 24 時間実行する SQL Database は、水面下で顧客のプライバシーを 100% 尊重しながら、膨大な量の利用統計情報を収集して処理します。 アプリケーションの状況をサービスが学習し、状況に適応することができるように、さまざまなアルゴリズムによって利用統計情報が継続的に評価されます。 この分析に基づいて、サービスは、特定のワークロードに合わせたパフォーマンスの向上に関する推奨事項を考え出すことができます。
 
 ### <a name="automatic-performance-monitoring-and-tuning"></a>自動パフォーマンス監視とチューニング
 
@@ -129,7 +129,7 @@ SQL Database は、監視する必要があるクエリの詳細な洞察を提�
 
 ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 [Intelligent Insights](sql-database-intelligent-insights.md) は、スケールで SQL Database のパフォーマンスを自動的に監視することによってこのジョブを行い、パフォーマンスの低下の問題を通知し、問題の根本原因を特定し、可能な場合にはパフォーマンスの向上の推奨事項を提供します。
 
-膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することを検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、パフォーマンスが確実に向上し続けるように、各チューニング アクションを検証します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
+膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することも検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、パフォーマンスが確実に向上し続けるように、各チューニング アクションを検証します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
 
 今日、SQL Database 上で [SaaS マルチテナント アプリ](sql-database-design-patterns-multi-tenancy-saas-applications.md)を実行している当社の多数のパートナーは、パフォーマンスの自動チューニングを信頼して、アプリケーションが常に安定した予測可能なパフォーマンスで実行されるようにしています。 パートナーにとって、この機能は、真夜中にパフォーマンス上の問題が発生するリスクを大幅に軽減するものです。 さらに、顧客ベースの一部では、SQL Server も使用しているため、SQL Database が提示するのと同じインデックスに関する推奨事項を使用して、SQL Server を使用している顧客を支援しています。
 
@@ -151,7 +151,7 @@ SQL Database は、アプリケーションがさまざまなセキュリティ�
 
 ### <a name="advance-threat-protection"></a>高度な脅威保護
 
-Advanced Data Security は、高度な SQL セキュリティ機能のための統合パッケージです。 その機能には、機密データの探索と分類、データベースの脆弱性の管理、データベースへの脅威を示す可能性がある異常なアクティビティの検出などが含まれます。 これらの機能を 1 つの場所で有効にして管理できます。
+Advanced Data Security は、高度な SQL セキュリティ機能のための統合パッケージです。 この機能には、機密データの探索と分類、データベースの脆弱性の管理、データベースへの脅威を示す可能性がある異常なアクティビティの検出などが含まれます。 これらの機能を 1 つの場所で有効にして管理できます。
 
 - [データの検出と分類](sql-database-data-discovery-and-classification.md):
 
@@ -206,7 +206,7 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 
 SQL Database の現在のバージョンは V12 です。 バージョン V11 は廃止されました。
 
-### <a name="can-i-control-when-patching-downtime-occurs"></a>いつ修正プログラムの適用によるダウンタイムを発生させるかを制御できますか。
+### <a name="can-i-control-when-patching-downtime-occurs"></a>修正プログラムの適用によるダウンタイム発生のタイミングを制御できますか。
 
 いいえ。 修正プログラムの適用の影響は、アプリに[再試行ロジックを採用](sql-database-develop-overview.md#resiliency)していれば、通常は顕著なものではありません。 Azure SQL データベースの計画メンテナンス イベントに備える方法の詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
 
@@ -230,8 +230,8 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 
 |ライセンス フットプリント|SQL Server 向け Azure ハイブリッド特典の内容|
 |---|---|
-|SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>General Purpose SKU または Business Critical SKU のいずれかで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
-|SA を含む SQL Server Standard Edition の中核的なお客様|<li>General Purpose SKU のみで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
+|SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>General Purpose SKU または Business Critical SKU のいずれかの支払いにおいて基本料金が適用されます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
+|SA を含む SQL Server Standard Edition の中核的なお客様|<li>General Purpose SKU の支払いのみにおいて基本料金が適用されます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
 |||
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>SQL Server エンジニアリング チームとの交流

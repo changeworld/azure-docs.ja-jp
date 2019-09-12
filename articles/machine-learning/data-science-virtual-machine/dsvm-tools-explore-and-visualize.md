@@ -1,28 +1,23 @@
 ---
-title: データの探索と視覚化のツール - Azure | Microsoft Docs
+title: データの探索と視覚化のツール
+titleSuffix: Azure Data Science Virtual Machine
 description: データ サイエンス仮想マシン用の、データの探索と視覚化のツール。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: d60acdf483d418e458f51ef6cf31b17c43b7379f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065902"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191966"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンの、データの探索と視覚化のツール。
+# <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine のデータの探索と視覚化のツール
 
 データ サイエンスで最も重要なことは、データを理解することです。 視覚化およびデータ探索ツールは、データ理解の加速に役立ちます。 Data Science Virtual Machine (DSVM) に用意されている次のツールを使用すると、この重要な手順を簡単に行うことができます。
 

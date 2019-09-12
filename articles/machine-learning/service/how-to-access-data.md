@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 545860a394c7eac953c1cbacc9dd05fc3737f6c1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856171"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191916"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure ストレージ サービスのデータにアクセスする
 
@@ -200,6 +200,7 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
 ```
+
 ### <a name="compute-and-datastore-matrix"></a>コンピューティングとデータストアのマトリックス
 
 現在、データストアは、次のマトリックスに示すストレージ サービスに対する接続情報の格納をサポートしています。 このマトリックスでは、コンピューティング先とデータストアの異なる組み合わせのシナリオで使用可能なデータ アクセス機能を示します。 詳細については、[Azure Machine Learning のコンピューティング先](how-to-set-up-training-targets.md#compute-targets-for-training)に関する記事を参照してください。
@@ -217,6 +218,17 @@ est = Estimator(source_directory='your code directory',
 
 > [!NOTE]
 > `as_mount()` ではなく `as_download()` を使用して、高度に反復的で大規模なデータ処理を高速で実行するシナリオがある場合があります。これは実験的に検証することができます。
+
+### <a name="accessing-source-code-during-training"></a>トレーニング中のソース コードへのアクセス
+
+Azure BLOB ストレージは、Azure ファイル共有よりも高いスループット速度を実現し、並列で開始される多数のジョブに対応します。 このため、ソース コード ファイルを転送するために BLOB ストレージを使用するように実行を構成することをお勧めします。
+
+次のコード例では、実行構成で、ソース コード転送に使用する BLOB データストアを指定します。
+
+```python 
+# workspaceblobstore is the default blob storage
+run_config.source_directory_data_store = "workspaceblobstore" 
+```
 
 ## <a name="access-data-during-scoring"></a>スコアリング中にデータにアクセスする
 

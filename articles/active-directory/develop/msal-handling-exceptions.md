@@ -3,7 +3,7 @@ title: エラーと例外 (MSAL) | Azure
 description: MSAL アプリケーションでエラーと例外、条件付きアクセス、クレーム チャレンジを処理する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: negoe
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
-ms.author: twhitney
+ms.date: 08/19/2019
+ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c37a52ee939e6144b98e6a1369f94beabc5fc1d9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: fe3ad29cfd113deba5824ce25721dc543c6267c0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532869"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305064"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>MSAL を使用して例外とエラーを処理する
 Microsoft Authentication Library (MSAL) での例外は、エンド ユーザーに表示するためのものではなく、アプリ開発者がトラブルシューティングに使うことが意図されています。 例外のメッセージはローカライズされていません。
@@ -40,16 +40,16 @@ Microsoft Authentication Library (MSAL) での例外は、エンド ユーザー
 
 | 例外 | エラー コード | 対応策|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: ユーザーまたは管理者は、ID が '{appId}' で名前が '{appName}' であるアプリケーションを使用することに同意していません。 このユーザーとリソースに、対話形式の承認要求を送信してください。| 先にユーザーの同意を得る必要があります。 .NET Core (Web UI はありません) を使用していない場合は、`AcquireTokeninteractive` を (1 回だけ) 呼び出します。 .NET Core を使用している場合、または `AcquireTokenInteractive` を行いたくない場合は、ユーザーは次の URL に移動して同意することができます: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read 。 `AcquireTokenInteractive` を呼び出すには: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: ユーザーまたは管理者は、ID が '{appId}' で名前が '{appName}' であるアプリケーションを使用することに同意していません。 このユーザーとリソースに、対話形式の承認要求を送信してください。| 先にユーザーの同意を得る必要があります。 .NET Core (Web UI はありません) を使用していない場合は、`AcquireTokeninteractive` を (1 回だけ) 呼び出します。 .NET Core を使用している場合、または `AcquireTokenInteractive` を行わない場合は、ユーザーは次の URL に移動して同意できます: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read 。 `AcquireTokenInteractive` を呼び出すには: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: ユーザーは、多要素認証の使用を要求されています。| 軽減策はありません。テナントに MFA が構成されていて、AAD がそれを適用することを決定した場合、`AcquireTokenInteractive` や `AcquireTokenByDeviceCode` などの対話型フローにフォールバックする必要があります。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: */common* または */consumers* エンドポイントではサポートされていない付与タイプです。 */organizations* またはテナント固有のエンドポイントを使用してください。 */common* を使用しました。| Azure AD からのメッセージで説明されているように、機関はテナントを持っている必要があり、それ以外の場合は */organizations* です。|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: 要求本文には、次のパラメーターが含まれる必要があります: 'client_secret または client_assertion'。| これは、アプリケーションが Azure AD でパブリック クライアント アプリケーションとして登録されていなかった場合に発生する可能性があります。 Azure portal でアプリケーションのマニフェストを編集し、`allowPublicClient` を `true` に設定します。 |
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: 要求本文には、次のパラメーターが含まれる必要があります: 'client_secret または client_assertion'。| この例外は、アプリケーションが Azure AD でパブリック クライアント アプリケーションとして登録されていなかった場合に発生する可能性があります。 Azure portal でアプリケーションのマニフェストを編集し、`allowPublicClient` を `true` に設定します。 |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| unknown_user メッセージ: ログインしているユーザーを識別できませんでした| ライブラリで現在 Windows にログインしているユーザーのクエリを実行できなかったか、またはこのユーザーは AD または AAD に参加していません (ワークプレース参加ユーザーはサポートされません)。 軽減策 1: UWP で、アプリケーションに次の機能があることを確認します: エンタープライズ認証、プライベート ネットワーク (クライアントとサーバー)、ユーザー アカウント情報。 軽減策 2: 独自のロジックを実装してユーザー名をフェッチし (たとえば、john@contoso.com)、ユーザー名を受け取る `AcquireTokenByIntegratedWindowsAuth` フォームを使用します。|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| このメソッドは、Active Directory (AD) で公開されているプロトコルに依存します。 ユーザーが AD サポートなしに Azure Active Directory で作成された場合 ("マネージド" ユーザー)、このメソッドは失敗します。 AD で作成されて AAD によってサポートされているユーザーは ("フェデレーション" ユーザー)、この非対話型メソッドの認証を利用できます。 軽減策: 対話型認証を使用します。|
 
 ## <a name="javascript-errors"></a>JavaScript のエラー
 
-MSAL.js で提供されている Error オブジェクトでは、さまざまな種類の一般的なエラーが抽象化および分類されており、エラーを適切に処理するためのエラーの具体的な詳細 (エラー メッセージなど) にアクセスするインターフェイスがあります。
+MSAL.js には、さまざまな種類の一般的エラーを抽象化して分類するエラー オブジェクトが用意されています。 エラーを適切に処理するため、エラー メッセージなど、エラーの特定の詳細にアクセスするためのインターフェイスも提供されています。
 
 **Error オブジェクト**
 
@@ -65,7 +65,7 @@ export class AuthError extends Error {
 }
 ```                
 エラー クラスを拡張することで、次のプロパティにアクセスできます。
-* **AuthError.message:** これは、errorMessage と同じです。
+* **AuthError.message:** errorMessage と同じです。
 * **AuthError.stack:** スローされたエラーのスタック トレースです。 エラーの発生ポイントまでトレースできます。
 
 **エラーの種類**
@@ -74,13 +74,13 @@ export class AuthError extends Error {
 
 * *AuthError:* MSAL.js ライブラリの基本エラー クラス、予期しないエラーにも使用されます。
 
-* *ClientAuthError:* クライアント認証の問題を示すエラー クラス。 ライブラリから発生するほとんどのエラーは ClientAuthError です。 ログインが進行中のログイン メソッドの呼び出しや、ユーザーによるログインのキャンセルなどのエラーがあります。
+* *ClientAuthError:* クライアント認証の問題を示すエラー クラス。 ライブラリから発生するほとんどのエラーは ClientAuthError です。 ログイン実行中にログイン メソッドを呼び出した、ユーザーがログインをキャンセルしたなどのエラーがあります。 
 
 * *ClientConfigurationError:* 特定のユーザー構成パラメーターが正しくないか見つからないときに、要求が行われる前にスローされる、ClientAuthError を拡張するエラー クラス。
 
 * *ServerError:* 認証サーバーによって送信されるエラー文字列を表すエラー クラス。 無効な要求形式やパラメーターなどのエラー、またはサーバーがユーザーを認証または承認できない他のエラーです。
 
-* *InteractionRequiredAuthError:* 対話型の呼び出しを必要とするサーバー エラーを表す、ServerError を拡張するエラー クラス。 これは、認証/承認に対する資格情報または同意を提供するためにユーザーがサーバーと対話する必要がある場合に、`acquireTokenSilent` によってスローされます。 エラー コードには、"interaction_required"、"login_required"、"consent_required" が含まれます。
+* *InteractionRequiredAuthError:* 対話型の呼び出しを必要とするサーバー エラーを表す、ServerError を拡張するエラー クラス。 このエラーは、認証/承認に対する資格情報または同意を提供するためにユーザーがサーバーと対話する必要がある場合に、`acquireTokenSilent` によってスローされます。 エラー コードには、"interaction_required"、"login_required"、"consent_required" が含まれます。
 
 リダイレクト メソッド (`loginRedirect`、`acquireTokenRedirect`) での認証フローにおけるエラー処理の場合、次のように、`handleRedirectCallback()` メソッドを使用するリダイレクトの後に成功または失敗で呼び出されるコールバックを登録する必要があります。
 
@@ -98,7 +98,7 @@ myMSALObj.handleRedirectCallback(authCallback);
 myMSALObj.acquireTokenRedirect(request);
 ```
 
-ポップアップ エクスペリエンスのメソッド (`loginPopup`、`acquireTokenPopup`) は promise を返すので、promise パターン (.then と .catch) を使用して、次のように処理できます。
+ポップアップ エクスペリエンスのメソッド (`loginPopup`、`acquireTokenPopup`) から Promise が返されるので、Promise パターン (.then と .catch) を使用して、次のように処理できます。
 
 ```javascript
 myMSALObj.acquireTokenPopup(request).then(
@@ -111,7 +111,9 @@ myMSALObj.acquireTokenPopup(request).then(
 
 ### <a name="interaction-required-errors"></a>対話が必要であるというエラー
 
-UI の対話が必要な場合、エラーが返されます。 つまり、トークンを取得する非対話型メソッドを使用しようとしましたが (たとえば、`acquireTokenSilent`)、MSAL はそれをサイレントで行うことができませんでした。 次のような原因が考えられます。
+トークンを取得する非対話型メソッドを使用しようとしましたが (たとえば、`acquireTokenSilent`)、MSAL ではそれをサイレントで行うことができないとき、エラーが返されます。 
+
+次のような原因が考えられます。
 
 * サインインする必要がある
 * 同意する必要がある
@@ -160,28 +162,24 @@ MSAL.js を使用してトークンをサイレントで取得するとき (`acq
 myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
     // call API
 }).catch( function (error) {
-    // call acquireTokenPopup in case of acquireTokenSilent failure
-    myMSALObj.acquireTokenPopup(accessTokenRequest).then(
-        function (accessTokenResponse) {
+    if (error instanceof InteractionRequiredAuthError) {
+        // Extract claims from error message
+        accessTokenRequest.claimsRequest = extractClaims(error.errorMessage);
+        // call acquireTokenPopup in case of InteractionRequiredAuthError failure
+        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function (accessTokenResponse) {
             // call API
         }).catch(function (error) {
             console.log(error);
         });
+    }
 });
 ```
 
 対話形式でトークンを取得すると、ユーザーにメッセージが表示され、ユーザーは必要な条件付きアクセス ポリシーを満たす機会を与えられます。
 
-条件付きアクセスを必要とする API を呼び出すと、API からのエラーでクレーム チャレンジを受け取ることがあります。 この場合、トークンを取得するための呼び出しの `extraQueryParameters` として、エラーで返されたクレームを渡すことにより、適切なポリシーを満たすようユーザーに求めることができます。
+条件付きアクセスを必要とする API を呼び出すと、API からのエラーでクレーム チャレンジを受け取ることがあります。 この場合、エラーで返されたクレームを `AuthenticationParameters.ts` クラスの `claimsRequest` フィールドに渡すと、該当するポリシーを満たすことができます。 
 
-```javascript
-var request = {
-    scopes: ["user.read"],
-    extraQueryParameters: {claims: claims}
-}
-
-myMSALObj.acquireTokenPopup(request);
-```
+詳細については、「[方法:Azure AD アプリに省略可能な要求を提供する](active-directory-optional-claims.md)」を参照してください。
 
 ## <a name="retrying-after-errors-and-exceptions"></a>エラーおよび例外の後の再試行
 
@@ -189,7 +187,7 @@ myMSALObj.acquireTokenPopup(request);
 MSAL.NET では、HTTP エラー コード 500 - 600 のエラーに対して、簡単な 1 回再試行のメカニズムが実装されています。
 
 ### <a name="http-429"></a>HTTP 429
-サービス トークン サーバー (STS) は、"要求が多すぎる" ためにビジー状態になると、HTTP エラー 429 と共に、再試行できるタイミングについてのヒント (Retry-After 応答フィールド) を遅延秒数または日付として返します。
+サービス トークン サーバー (STS) が過剰な要求で過負荷になると、HTTP エラー 429 が返され、再試行できるタイミングに関するヒントが示されます。 このエラーは `Retry-After` 応答フィールドから読み取ることができます。
 
 #### <a name="net"></a>.NET
 [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) 例外では、`namedHeaders` プロパティとして `System.Net.Http.Headers.HttpResponseHeaders` が示されます。 そのため、エラー コードからの追加情報を利用して、アプリケーションの信頼性を向上させることができます。 ここで説明したケースでは、`RetryAfterproperty` (`RetryConditionHeaderValue` 型) を使用して、再試行するタイミングを計算できます。

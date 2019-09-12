@@ -1,29 +1,23 @@
 ---
-title: データ サイエンス仮想マシンの開発ツール - Azure | Microsoft Docs
-description: Data Science Virtual Machine にプレインストールされているツールと統合開発環境について説明します。
+title: 開発ツール
+titleSuffix: Azure Data Science Virtual Machine
+description: Data Science Virtual Machine で使用できるツールと統合開発環境について説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: vijetaj
-ms.openlocfilehash: 8f9dad0fb007945b69b75daadfdb12f61dc4defb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6ff4d92cb3730716c532332bf426132fcbb8e122
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074298"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191955"
 ---
-# <a name="development-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシン上の開発ツール
+# <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine の開発ツール
 
 Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環境 (IDE) のいくつかの一般的なツールがバンドルされています。 DSVM で提供されるツールには、次のものがあります。
 

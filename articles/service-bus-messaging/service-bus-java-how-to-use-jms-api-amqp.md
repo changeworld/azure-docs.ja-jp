@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019
-ms.openlocfilehash: f816a5c84416b7f40e3062bf22dd70cbb356c6f1
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 3639eef1e95b354298b718af24217a8fbefb3a74
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662881"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173382"
 ---
-# <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
+# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus と AMQP 1.0 で Java Message Service (JMS) を使用する
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
 
 Service Bus での AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。 さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。

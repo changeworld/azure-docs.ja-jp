@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644893"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209637"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
 
@@ -338,6 +338,10 @@ Managed Instance　はファイル共有と Windows フォルダーにはアク�
 - `CREATE ASSEMBLY FROM FILE` はサポートされていません。 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。
 - `ALTER ASSEMBLY` ではファイルを参照できません。 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql) に関する記事をご覧ください。
 
+### <a name="database-mail-db_mail"></a>データベース メール (db_mail)
+ - `sp_send_dbmail` は @file_attachments パラメーターを使用して添付ファイルを送信できません。 この手順では、ローカル ファイル システムと外部共有または Azure Blob ストレージにはアクセスできません。
+ - `@query` パラメーターと認証に関連する既知の問題をご覧ください。
+ 
 ### <a name="dbcc"></a>DBCC
 
 SQL Server で有効になっている、ドキュメントに記載されていない DBCC ステートメントは、Managed Instance ではサポートされていません。
@@ -536,6 +540,14 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 マネージド インスタンスでは、エラー ログに詳細情報が書き込まれます。 エラー ログに記録される内部システム イベントが数多く存在します。 カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、[マネージド インスタンス - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) に関する記事を参照してください。
 
 ## <a name="Issues"></a> 既知の問題
+
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>セキュリティで保護された接続 (SSL) を使用して外部メール サーバーに対する認証ができない
+
+**日付:** 2019 年 8 月
+
+[セキュリティで保護された接続 (SSL) を使用して構成されている](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail)データベース メールは、Azure の外部にある一部のメール サーバーでは認証できません。 これはセキュリティ構成の問題であり、まもなく解決される予定です。
+
+**対処法:** この問題が解決されるまで、セキュリティで保護された接続 (SSL) をデータベース メールの構成から一時的に削除してください。 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要があります。
 

@@ -1,43 +1,39 @@
 ---
-title: 機械学習ツールとデータ サイエンス ツール - Azure | Microsoft Docs
+title: 機械学習ツールとデータ サイエンス ツール
+titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine にあらかじめインストールされている機械学習ツールとフレームワークについて説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565255"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278780"
 ---
-# <a name="machine-learning-and-data-science-tools"></a>機械学習ツールとデータ サイエンス ツール
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上の機械学習ツールとデータ サイエンス ツール
 Azure データ サイエンス仮想マシンには、Python、R、Julia などの一般的な言語で使用できる、機械学習 (ML) のための豊富な一連のツールおよびライブラリがあります。 
 
 データ サイエンス仮想マシン上の ML ツールおよびライブラリのいくつかを次に示します。 
 
-## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK
+## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python
+[Azure Machine Learning SDK for Python の詳細についてはこちら ](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) を参照してください。
+
 |    |           |
 | ------------- | ------------- |
-| 紹介   |   Azure Machine Learning は、ML モデルを開発およびデプロイするために使用できるクラウド サービスです。 Python SDK を使用して、モデルの構築、トレーニング、スケール調整、および管理を行うときにそれらのモデルを追跡できます。 モデルをコンテナーとしてデプロイし、それをクラウド、オンプレミス、または Azure IoT Edge で実行します。   |
-| サポートされているエディション     | Windows (Conda 環境:AzureML)、Linux (Conda 環境: py36)    |
-| 標準的な使用      | 一般的な ML プラットフォーム      |
-| 構成またはインストール方法      |  GPU サポートと共にインストールされます   |
-| 使用または実行方法      | Python SDK および Azure CLI として。 Windows エディションでは conda 環境 `AzureML` に、*または* Linux エディションでは `py36` にアクティブ化します。      |
-| サンプルへのリンク      | サンプルの Jupyter ノートブックは、`AzureML` ディレクトリの notebooks の下に含まれています。  |
-| 関連するツール      | Visual Studio Code、Jupyter   |
+| 紹介 |   Azure Machine Learning は、ML モデルを開発およびデプロイするために使用できるクラウド サービスです。 Python SDK を使用して、モデルの構築、トレーニング、スケール調整、および管理を行うときにそれらのモデルを追跡できます。 モデルをコンテナーとしてデプロイし、それをクラウド、オンプレミス、または Azure IoT Edge で実行します。 |
+| サポートされているエディション  | Windows (Conda 環境:AzureML)、Linux (Conda 環境: py36) |
+| 標準的な使用      | 一般的な ML プラットフォーム  |
+| 構成またはインストール方法 |  GPU サポートと共にインストールされます |
+| 使用または実行方法 | Python SDK および Azure CLI として。 Windows エディションでは conda 環境 `AzureML` に、*または* Linux エディションでは `py36` にアクティブ化します。  |
+| サンプルへのリンク | サンプルの Jupyter ノートブックは、`AzureML` ディレクトリの notebooks の下に含まれています。  |
+| 関連するツール  | Visual Studio Code、Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

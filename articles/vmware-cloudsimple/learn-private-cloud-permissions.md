@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ab74b37fa8adc58f8641893b4168f71c453b0fdd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0c617cbd17d9b9620c957eec45aadd962db34831
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972704"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194133"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル
 
@@ -24,7 +24,7 @@ CloudSimple は、プライベート クラウド環境への完全な管理ア�
 プライベート クラウドを作成すると、**CloudOwner** ユーザーが vCenter シングル サインオン ドメインに作成され、プライベート クラウド内のオブジェクトを管理するための **Cloud-Owner-Role** アクセスが付与されます。 このユーザーは、追加の [vCenter ID ソース](set-vcenter-identity.md)やその他のユーザーを、プライベート クラウドの vCenter にセットアップすることもできます。
 
 > [!NOTE]
-> オンプレミスの vCenter にリンクせずにプライベート クラウドを作成する場合、CloudSimple プライベート クラウドの既定のユーザーは `cloudowner@cloudsimple.local` です。
+> プライベート クラウドを作成する場合、CloudSimple プライベート クラウドの vCenter の既定のユーザーは cloudowner@cloudsimple.local です。
 
 ## <a name="user-groups"></a>ユーザー グループ
 

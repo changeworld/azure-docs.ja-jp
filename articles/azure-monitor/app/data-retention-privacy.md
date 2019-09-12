@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991175"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207296"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -100,7 +100,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 Microsoft は、お客様にサービスを提供する目的でのみデータを使用します。
 
 ## <a name="where-is-the-data-held"></a>データが保持されている場所はどこですか。
-* 米国、ヨーロッパ、または東南アジアです。 新しい Application Insights リソースを作成するときに場所を選択できます。 
+* 新しい Application Insights リソースを作成するときに場所を選択できます。 リージョンごとの Application Insights の可用性の詳細については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=all)を参照してください。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>それは、アプリを米国、ヨーロッパ、または東南アジアでホストする必要があるという意味ですか。
 * いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。

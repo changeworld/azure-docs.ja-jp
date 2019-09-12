@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b17b6d12dc60546a29d37cfa12fe1f11186579e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d76b51aa5117e662e9ff17bb91516c758de3071c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967470"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277703"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -25,6 +25,9 @@ ms.locfileid: "68967470"
 > * [現在のバージョン](connector-mysql.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、MySQL データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+
+>[!NOTE]
+>[Azure Database for MySQL](../mysql/overview.md) サービスとの間でデータをコピーするには、専用の [Azure Database for MySQL コネクタ](connector-azure-database-for-mysql.md)を使用します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -141,13 +144,13 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、MySQL データセット でサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、MySQL データセット でサポートされるプロパティの一覧を示します。
 
-MySQL からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
+MySQL からデータをコピーする場合、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**RelationalTable** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**MySqlTable** | はい |
 | tableName | MySQL データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -157,15 +160,18 @@ MySQL からデータをコピーするには、データセットの type プ�
     "name": "MySQLDataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "MySqlTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<MySQL linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+`RelationalTable` 型のデータセットを使用していた場合、現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
@@ -173,11 +179,11 @@ MySQL からデータをコピーするには、データセットの type プ�
 
 ### <a name="mysql-as-source"></a>ソースとしての MySQL
 
-MySQL からデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+MySQL からデータをコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MySqlSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -201,7 +207,7 @@ MySQL からデータをコピーするには、コピー アクティビティ�
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "MySqlSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -211,6 +217,8 @@ MySQL からデータをコピーするには、コピー アクティビティ�
     }
 ]
 ```
+
+`RelationalSource` 型のソースを使用していた場合は現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 ## <a name="data-type-mapping-for-mysql"></a>MySQL のデータ型マッピング
 

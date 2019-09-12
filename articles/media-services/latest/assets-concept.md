@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2f2dea922b7a3ba45ad6493ce94f0c52649dfa68
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670692"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230981"
 ---
 # <a name="assets"></a>アセット
 
@@ -26,6 +26,10 @@ Azure Media Services では、[アセット](https://docs.microsoft.com/rest/api
 アセットは [Azure Storage アカウント](storage-account-concept.md)内の BLOB コンテナーにマップされ、アセット内のファイルはブロック BLOB としてそのコンテナーに格納されます。 Media Services は、アカウントが汎用 v2 (GPv2) ストレージを使用している場合に、BLOB 層をサポートします。 GPv2 を使用して、[クール ストレージまたはアーカイブ ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)にファイルを移動できます。 **アーカイブ** ストレージは、(エンコード後などに) 不要になったソース ファイルをアーカイブするのに適しています。
 
 **アーカイブ** ストレージ層は、既にエンコードされ、エンコード ジョブの出力が出力 BLOB コンテナーに配置されている非常に大きなソース ファイルの場合のみ推奨されます。 アセットに関連付け、コンテンツのストリーム配信や分析に使用する出力コンテナー内の BLOB は、**ホット**または**クール** ストレージ層に存在する必要があります。
+
+### <a name="naming-blobs"></a>BLOB の名前付け
+
+アセット内のファイルまたは BLOB の名前は、[BLOB 名の要件](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)と[NTFS 名の要件](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)の両方に従っている必要があります。 これらの要件は、ファイルが BLOB ストレージからローカルの NTFS ディスクにコピーされて処理できるようにするためのものです。
 
 ## <a name="upload-digital-files-into-assets"></a>アセットへのデジタル ファイルのアップロード
 

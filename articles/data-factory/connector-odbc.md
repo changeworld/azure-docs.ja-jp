@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a20a901d5fde251fdc1a044795615acdc1d61c5b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966914"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277644"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -114,13 +114,13 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、ODBC データセット でサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、ODBC データセット でサポートされるプロパティの一覧を示します。
 
-ODBC 対応データ ストアをコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
+ODBC 互換データ ストアとの間でデータをコピーする場合、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**RelationalTable** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**OdbcTable** | はい |
 | tableName | ODBC データ ストア内のテーブルの名前。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、<br/>シンクの場合ははい |
 
 **例**
@@ -129,7 +129,8 @@ ODBC 対応データ ストアをコピー元またはコピー先としてデ�
 {
     "name": "ODBCDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "OdbcTable",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<ODBC linked service name>",
             "type": "LinkedServiceReference"
@@ -141,17 +142,19 @@ ODBC 対応データ ストアをコピー元またはコピー先としてデ�
 }
 ```
 
+`RelationalTable` 型のデータセットを使用していた場合、現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
+
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、ODBC ソースでサポートされるプロパティの一覧を示します。
 
 ### <a name="odbc-as-source"></a>ソースとしての ODBC
 
-ODBC 対応データ ストアからデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+ODBC 互換データ ストアからデータをコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**OdbcSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -175,7 +178,7 @@ ODBC 対応データ ストアからデータをコピーするには、コピ�
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "OdbcSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -185,6 +188,8 @@ ODBC 対応データ ストアからデータをコピーするには、コピ�
     }
 ]
 ```
+
+`RelationalSource` 型のソースを使用していた場合は現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 ### <a name="odbc-as-sink"></a>シンクとしての ODBC
 

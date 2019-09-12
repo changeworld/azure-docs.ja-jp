@@ -1,35 +1,29 @@
 ---
-title: データ サイエンス仮想マシンのサンプルとチュートリアル - Azure | Microsoft Docs
+title: サンプルとチュートリアル
+titleSuffix: Azure Data Science Virtual Machine
 description: これらのサンプルとチュートリアルを通じて、Data Science Virtual Machine を使用して一般的なタスクとシナリオを処理する方法を説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: vijetaj
-ms.openlocfilehash: 628c516553c2304739229c53d725645c799d06ce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047840"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195683"
 ---
-# <a name="samples-on-data-science-virtual-machines"></a>データ サイエンス仮想マシンに関するサンプル
+# <a name="samples-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上のサンプル
 
 Azure Data Science Virtual Machines (DSVM) には、サンプル コードの包括的なセットが含まれています。 これらのサンプルには、Python や R などの言語による Jupyter ノートブックおよびスクリプトが含まれています。
 > [!NOTE]
 > データ サイエンス仮想マシン上で Jupyter ノートブックを実行する方法の詳細については、「[Jupyter にアクセスする](#access-jupyter)」のセクションを参照してください。
 
-## <a name="quick-reference-of-samples"></a>サンプルのクイック リファレンス
+## <a name="available-samples"></a>使用可能なサンプル
 | サンプル カテゴリ | 説明 | Locations |
 | ------------- | ------------- | ------------- |
 | R 言語  | サンプルは、Azure ベースのクラウド データ ストアに接続する方法や、オープンソースの R と Microsoft Machine Learning Server を比較する方法などのシナリオを示しています。 また、Microsoft Machine Learning Server と SQL Server 上でモデルを運用化する方法についても説明しています。 <br/> [R 言語](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|

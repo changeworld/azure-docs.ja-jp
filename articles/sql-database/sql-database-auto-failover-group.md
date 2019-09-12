@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/16/2019
-ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/30/2019
+ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035771"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208351"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
-自動フェールオーバー グループは SQL Database 機能の 1 つです。これを使用して、SQL Database サーバー上のデータベースのグループや、マネージド インスタンス内のすべてのデータベースの別のリージョンへのレプリケーションとフェールオーバーを管理できます。 これは、既存の[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)機能に基づく宣言型の抽象化であり、geo レプリケーション対応データベースの大規模なデプロイと管理を簡素化するように設計されています。 フェールオーバーは、手動で開始することも、ユーザー定義ポリシーに基づいて SQL Database サービスにデリゲートすることもできます。 後者のオプションの場合、プライマリ リージョンで発生した致命的な障害やその他の計画外のイベントにより SQL データベース サービスの可用性がすべてまたは一部失われたときに、セカンダリ リージョンの複数の関連データベースを自動的に復元できます。 フェールオーバー グループには、通常同じアプリケーションによって使用される、1 つまたは複数のデータベースを含めることができます。 さらに、読み取り可能なセカンダリ データベースを使用して、読み取り専用クエリ ワークロードをオフロードできます。 自動フェールオーバー グループには複数のデータベースが関与するため、これらのデータベースをプライマリ サーバーに構成する必要があります。 フェールオーバー グループ内にあるデータベース用のプライマリ サーバーとセカンダリ サーバーは両方とも、同一のサブスクリプションである必要があります。 自動フェールオーバー グループでは、グループ内のすべてのデータベースを別のリージョンの 1 つのセカンダリ サーバーにのみレプリケートできます。
+自動フェールオーバー グループは SQL Database 機能の 1 つです。これを使用して、SQL Database サーバー上のデータベースのグループや、マネージド インスタンス内のすべてのデータベースの別のリージョンへのレプリケーションとフェールオーバーを管理できます。 これは、既存の[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)機能に基づく宣言型の抽象化であり、geo レプリケーション対応データベースの大規模なデプロイと管理を簡素化するように設計されています。 フェールオーバーは、手動で開始することも、ユーザー定義ポリシーに基づいて SQL Database サービスにデリゲートすることもできます。 後者のオプションの場合、プライマリ リージョンで発生した致命的な障害やその他の計画外のイベントにより SQL データベース サービスの可用性がすべてまたは一部失われたときに、セカンダリ リージョンの複数の関連データベースを自動的に復元できます。 フェールオーバー グループには、通常同じアプリケーションによって使用される、1 つまたは複数のデータベースを含めることができます。 さらに、読み取り可能なセカンダリ データベースを使用して、読み取り専用クエリ ワークロードをオフロードできます。 自動フェールオーバー グループには複数のデータベースが関与するため、これらのデータベースをプライマリ サーバーに構成する必要があります。 自動フェールオーバー グループでは、グループ内のすべてのデータベースを別のリージョンの 1 つのセカンダリ サーバーにのみレプリケートできます。
 
 > [!NOTE]
 > SQL Database サーバー上の単一またはプールされたデータベースの操作時に、同じまたは異なるリージョンで複数のセカンダリが必要な場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使用します。 
@@ -92,7 +92,7 @@ ms.locfileid: "70035771"
 
 - **読み取り専用フェールオーバー ポリシー**
 
-  既定では、読み取り専用リスナーのフェールオーバーは無効になっています。 セカンダリがオフラインのとき、プライマリのパフォーマンスに影響が出ないようにします。 ただし、セカンダリが回復するまで、読み取り専用セッションは接続できません。 読み取り専用セッションのダウンタイムを許容できず、プライマリのパフォーマンスが下がる可能性があっても、読み取り専用と読み取り/書き込みの両方のトラフィックに一時的にプライマリを使用しても良ければ、読み取り専用リスナーのフェールオーバーを有効にできます。 その場合、セカンダリが利用できないと、読み取り専用トラフィックがプライマリに自動的にリダイレクトされます。
+  既定では、読み取り専用リスナーのフェールオーバーは無効になっています。 セカンダリがオフラインのとき、プライマリのパフォーマンスに影響が出ないようにします。 ただし、セカンダリが回復するまで、読み取り専用セッションは接続できません。 読み取り専用セッションのダウンタイムを許容できず、プライマリのパフォーマンスが下がる可能性があっても、読み取り専用と読み取り/書き込みの両方のトラフィックに一時的にプライマリを使用しても良ければ、`AllowReadOnlyFailoverToPrimary` プロパティを構成することによって、読み取り専用リスナーのフェールオーバーを有効にできます。 その場合、セカンダリが利用できないと、読み取り専用トラフィックがプライマリに自動的にリダイレクトされます。
 
 - **計画されたフェールオーバー**
 
@@ -112,7 +112,7 @@ ms.locfileid: "70035771"
 
 - **データ消失の猶予期間**
 
-  プライマリ データベースとセカンダリ データベースは非同期レプリケーションを使用して同期されるため、フェールオーバーによりデータが消失する場合があります。 アプリケーションのデータ消失の許容範囲を反映するように、自動フェールオーバー ポリシーをカスタマイズできます。 **GracePeriodWithDataLossHours** を構成することで、データ消失につながる可能性があるフェールオーバーの開始までにシステムが待機する時間を制御できます。
+  プライマリ データベースとセカンダリ データベースは非同期レプリケーションを使用して同期されるため、フェールオーバーによりデータが消失する場合があります。 アプリケーションのデータ消失の許容範囲を反映するように、自動フェールオーバー ポリシーをカスタマイズできます。 `GracePeriodWithDataLossHours` を構成することで、データ消失につながる可能性があるフェールオーバーの開始までにシステムが待機する時間を制御できます。
 
 - **複数のフェールオーバー グループ**
 
@@ -155,7 +155,7 @@ ms.locfileid: "70035771"
 
 - **読み取り専用ワークロードには読み取り専用リスナーを使用する**
 
-  データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 接続文字列に **ApplicationIntent=ReadOnly** を使用して、読み取りの意図を示すこともお勧めします。
+  データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 接続文字列に `ApplicationIntent=ReadOnly` を使用して、読み取りの意図を示すこともお勧めします。 フェールオーバー後またはセカンダリ サーバーがオフラインになったときに読み取り専用ワークロードを再接続できるようにする場合、フェールオーバー ポリシーの `AllowReadOnlyFailoverToPrimary` プロパティを構成してください。 
 
 - **パフォーマンスの低下に備える**
 
@@ -166,7 +166,7 @@ ms.locfileid: "70035771"
 
 - **データの損失に備える**
 
-  機能停止が検出された場合は、**GracePeriodWithDataLossHours** で指定した期間、SQL が待機状態となります。 既定値は 1 時間です。 データの損失が許容できない場合は、**GracePeriodWithDataLossHours** に設定する値を十分大きく確保してください (24 時間など)。 セカンダリからプライマリにフェールバックするには、手動のグループ フェールオーバーを使用します。
+  機能停止が検出された場合は、`GracePeriodWithDataLossHours` で指定した期間、SQL が待機状態となります。 既定値は 1 時間です。 データの損失が許容できない場合は、必ず、`GracePeriodWithDataLossHours` を十分大きい数値 (24 時間など) に設定してください。 セカンダリからプライマリにフェールバックするには、手動のグループ フェールオーバーを使用します。
 
   > [!IMPORTANT]
   > 800 以下の DTU と 250 を超えるデータベースを持ち、geo レプリケーションを使用するエラスティック プールでは、計画されたフェールオーバーに時間がかかったりパフォーマンスが低下したりする問題が発生することがあります。  こうした問題は、geo レプリケーション エンドポイントが地理的に広く分散している場合や、各データベースで複数のセカンダリ エンドポイントが使用されている場合に、書き込みの負荷が高いワークロードで発生しやすくなります。  このような症状は、geo レプリケーションのラグが時間の経過と共に増加するときに見られます。  このラグは、[sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) を使用して監視できます。  この問題が発生する場合は、プール DTU の数を増やしたり、同じプール内で geo レプリケーションされるデータベースの数を減らしたりするなどの緩和策があります。
@@ -191,12 +191,20 @@ ms.locfileid: "70035771"
 
   フェールオーバー後にプライマリ インスタンスに中断することなく確実に接続するには、プライマリとセカンダリの両方のインスタンスが同じ DNS ゾーンにある必要があります。 それにより、フェールオーバー グループに属する 2 つのインスタンスのいずれかに対してクライアント接続を認証する目的で同じマルチドメイン (SAN) 証明書を利用できます。 アプリケーションを運用環境にデプロイする準備ができたら、別のリージョンでセカンダリ インスタンスを作成し、プライマリ インスタンスと DNS ゾーンを共有していることを確認します。 これは、Azure ポータル、PowerShell、または REST API を使用し、省略可能な `DNS Zone Partner` パラメーターを指定することで実行できます。 
 
-  プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ インスタンスの作成について詳しくは、[マネージド インスタンスでのフェールオーバー グループの管理 (プレビュー)](#powershell-managing-failover-groups-with-managed-instances-preview) に関するページを参照してください。
+  プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ インスタンスの作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)」を参照してください。
 
 - **2 つのインスタンス間のレプリケーション トラフィックを有効にする**
 
   各インスタンスは独自の VNet に分離されるため、これらの VNet 間の 2 方向トラフィックを許可する必要があります。 [Azure VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)に関するページを参照してください
 
+- **異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成する**
+
+  2 つの異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成できます。 PowerShell API を使用している場合、セカンダリ インスタンスの `PartnerSubscriptionId` パラメーターを指定することでこれを実行できます。 REST API を使用している場合、`properties.managedInstancePairs` パラメーターに含まれる各インスタンス ID は、独自のサブスクリプション ID を持つことができます。 
+  
+  > [!IMPORTANT]
+  > Azure Portal では、異なるサブスクリプション間でのフェールオーバー グループはサポートされません。
+
+  
 - **インスタンス全体のフェールオーバーを管理するようにフェールオーバー グループを構成する**
 
   フェールオーバー グループでは、インスタンス内のすべてのデータベースのフェールオーバーを管理します。 グループが作成されると、インスタンス内の各データベースはセカンダリ インスタンスに自動的に geo レプリケートされます。 フェールオーバー グループを使用して、データベース サブセットの部分的なフェールオーバーを開始することはできません。
@@ -297,10 +305,10 @@ ms.locfileid: "70035771"
 
 ## <a name="preventing-the-loss-of-critical-data"></a>重要なデータの損失の防止
 
-ワイド エリア ネットワークの遅延は大きいため、連続コピーでは非同期のレプリケーション メカニズムが使用されます。 非同期レプリケーションでは、障害が発生した場合に部分的なデータ損失が避けられません。 しかし、データ損失が許されないアプリケーションもあります。 重要な更新情報を保護するには、アプリケーション開発者は、トランザクションがコミットされた直後に [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) ステム プロシージャを呼び出すことができます。 **sp_wait_for_database_copy_sync** を呼び出すと、最後にコミットされたトランザクションがセカンダリ データベースに転送されるまで、呼び出しスレッドがブロックされます。 ただし、転送されたトランザクションがセカンダリで再生およびコミットされるのを待つことはありません。 **sp_wait_for_database_copy_sync** の対象は、特定の連続コピー リンクです。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
+ワイド エリア ネットワークの遅延は大きいため、連続コピーでは非同期のレプリケーション メカニズムが使用されます。 非同期レプリケーションでは、障害が発生した場合に部分的なデータ損失が避けられません。 しかし、データ損失が許されないアプリケーションもあります。 重要な更新情報を保護するには、アプリケーション開発者は、トランザクションがコミットされた直後に [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) ステム プロシージャを呼び出すことができます。 `sp_wait_for_database_copy_sync` を呼び出すと、最後にコミットされたトランザクションがセカンダリ データベースに転送されるまで、呼び出しスレッドがブロックされます。 ただし、転送されたトランザクションがセカンダリで再生およびコミットされるのを待つことはありません。 `sp_wait_for_database_copy_sync` は、特定の連続コピー リンクを対象としています。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** は、フェールオーバー後のデータの損失を防ぎますが、読み取りアクセスに対して完全な同期を保証することはありません。 **sp_wait_for_database_copy_sync** プロシージャ呼び出しによる遅延は、長くなる場合があり、呼び出し時のトランザクション ログのサイズによって異なります。
+> `sp_wait_for_database_copy_sync` は、フェールオーバー後のデータの損失を防ぎますが、読み取りアクセスに対して完全な同期を保証しません。 `sp_wait_for_database_copy_sync` プロシージャ呼び出しによる遅延は、長くなる場合があり、呼び出し時のトランザクション ログのサイズによって異なります。
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>フェールオーバー グループとポイントインタイム リストア
 
@@ -326,34 +334,16 @@ ms.locfileid: "70035771"
 > サンプル スクリプトについては、[単一データベース用のフェールオーバー グループの構成とフェールオーバー](scripts/sql-database-add-single-db-to-failover-group-powershell.md)に関するページを参照してください。
 >
 
-### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell:マネージド インスタンスでのフェールオーバー グループの管理 (プレビュー)
+### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>PowerShell:マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する 
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>最新のプレリリース バージョンの PowerShell をインストールする
-
-1. PowerShellGet モジュールを 1.6.5 (または最新のプレビュー バージョン) に更新します。 [PowerShell プレビューのサイト](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)を参照してください。
-
-   ```powershell
-      install-module PowerShellGet -MinimumVersion 1.6.5 -force
-   ```
-
-2. 新しい PowerShell ウィンドウで、次のコマンドを実行します。
-
-   ```powershell
-      import-module PowerShellGet
-      get-module PowerShellGet #verify version is 1.6.5 (or newer)
-      install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
-      import-module azurerm.sql
-   ```
-
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>インスタンスのフェールオーバー グループを作成する PowerShell コマンドレット
-
-| API | 説明 |
+| コマンドレット | 説明 |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループの構成を変更します。|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループ構成を取得します。|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | フェールオーバー グループを削除します|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |フェールオーバー グループの構成を変更します。|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |フェールオーバー グループ構成を取得します。|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | フェールオーバー グループを削除します|
+|  | |
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API:単一またはプールされたデータベースで SQL データベースのフェールオーバー グループを管理する
 

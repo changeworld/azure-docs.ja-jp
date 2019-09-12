@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061330"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186210"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -113,6 +113,24 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="updates-nodeployment"></a>シナリオ:デプロイなしの更新プログラムのインストール
+
+### <a name="issue"></a>問題
+
+Update Management に Windows コンピューターを登録すると、デプロイなしで更新プログラムがインストールされる場合があります。
+
+### <a name="cause"></a>原因
+
+Windows では、更新プログラムは、使用可能になるとすぐに自動的にインストールされます。 このため、更新プログラムをコンピューターにデプロイするスケジュールを設定しなかった場合、混乱が生じる可能性があります。
+
+### <a name="resolution"></a>解決策
+
+Windows レジストリキー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` の既定は "4" - **自動でダウンロードしてインストールする**に設定されています。
+
+Update Management クライアントの場合は、このキーを "3" - **自動でダウンロードするが、自動でインストールはしない**に設定することをお勧めします。
+
+詳細については、[自動更新の構成](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates)に関する記事を参照してください。
 
 ### <a name="nologs"></a>シナリオ:Update Management のポータルにマシンが表示されない
 

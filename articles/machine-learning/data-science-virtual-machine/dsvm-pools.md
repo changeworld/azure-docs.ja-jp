@@ -1,27 +1,21 @@
 ---
-title: Data Science Virtual Machine プール - Azure | Microsoft Docs
+title: 共有プール
+titleSuffix: Azure Data Science Virtual Machine
 description: DSVM のプールをチームの共有リソースとして展開します
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/10/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 76a715838fa5eb4f806fccc98675ea5acdbe1822
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: conceptual
+ms.date: 12/10/2018
+ms.openlocfilehash: 929040b5dc8650a757fb9c0da58cb82a76a72b5b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992030"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195616"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Data Science Virtual Machine の共有プールを作成する
 

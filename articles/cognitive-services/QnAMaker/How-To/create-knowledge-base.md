@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 322a1d25ed434d8be674288b1b13d6ecf961590b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012824"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193568"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>クイック スタート:QnA Maker API サービス ポータルを使用してナレッジ ベースを作成する
 
@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker)することができます。
+コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](set-up-qnamaker-service-azure.md#share-existing-services-with-qna-maker)することができます。
 
 > [!div class="nextstepaction"]
-> [Add chit-chat personal](./chit-chat-knowledge-base.md)\(おしゃべり個人の追加\)
+> [メタデータによる質問の追加](../quickstarts/add-question-metadata-portal.md)

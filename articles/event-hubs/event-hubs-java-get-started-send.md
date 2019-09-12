@@ -10,14 +10,14 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: c85d69b823956a5cf5e7f9d6dfa3c39b918cd465
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 8684e786de64f91acba0c61017083015288ca4eb
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034817"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172784"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する | Microsoft Docs
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する
 
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 

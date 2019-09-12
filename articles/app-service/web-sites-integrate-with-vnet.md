@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a96c02d1d7d2fae43e0a5915e9233bde842ce621
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066667"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210119"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
 このドキュメントでは、Azure App Service の仮想ネットワーク統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットでルーティングできないネットワークに配置できます。  
@@ -110,7 +110,7 @@ VNet からアプリを切断するには、 **[切断]** を選択します。 
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
 
-Linux 上の App Service を組み込みイメージで使用する場合、リージョンの VNet 統合機能は追加の変更なしで機能します。 Web App for Containers を使用している場合は、VNet 統合を使用するために docker イメージを変更する必要があります。 docker イメージで、ハードコーディングされたポート番号を使用するのではなく、メイン Web サーバーのリスニング ポートとして PORT 環境変数を使用します。 PORT 環境変数は、コンテナーの起動時に App Service プラットフォームによって自動的に設定されます。
+Linux 上の App Service を組み込みイメージで使用する場合、リージョンの VNet 統合機能は追加の変更なしで機能します。 Web App for Containers を使用している場合は、VNet 統合を使用するために docker イメージを変更する必要があります。 docker イメージで、ハードコーディングされたポート番号を使用するのではなく、メイン Web サーバーのリスニング ポートとして PORT 環境変数を使用します。 PORT 環境変数は、コンテナーの起動時に App Service プラットフォームによって自動的に設定されます。 SSH を使用している場合は、リージョン VNet 統合を使用するときに SSH_PORT 環境変数で指定されたポート番号でリッスンするように SSH デーモンを構成する必要があります。
 
 ### <a name="service-endpoints"></a>サービス エンドポイント
 

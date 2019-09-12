@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102867"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279500"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: よく寄せられる質問 (FAQ)
 
@@ -27,7 +27,7 @@ ms.locfileid: "70102867"
 
 Azure Migrate には、移行の開始、コンピューターとワークロードの検出と評価の実行と追跡、Azure へのマシンとワークロードの移行の実行と追跡を行う一元的なハブが用意されています。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) はディザスター リカバリー ソリューションです。 Azure Migrate Server Migration は、Azure Site Recovery をバックエンドで利用して、オンプレミス マシンのリフトアンドシフト方式による移行シナリオを実現します。
 
-## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Azure Migrate アプライアンス (VMware/物理サーバー)
+## <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
 ### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Azure Migrate アプライアンスはどのように Azure に接続しますか。
 
@@ -87,6 +87,9 @@ Hyper-V の場合、検出には Hyper-V ホストの資格情報が使用され
 ### <a name="how-many-vms-can-i-discover-with-a-single-migration-appliance"></a>1 つの移行アプライアンスで検出できる VM の数を教えてください。
 
 1 つの移行アプライアンスで最大 10,000 の VMware VM と最大 5,000 の Hyper-V VM を検出できます。 オンプレミス環境にさらに多くのマシンがある場合は、[Hyper-V](scale-hyper-v-assessment.md) と [VMware](scale-vmware-assessment.md) の評価のスケーリング方法を参照してください。
+
+### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>Azure Migrate アプライアンスをプロジェクトから削除できますか。
+現在、プロジェクトからアプライアンスを削除することはサポートされていません。 アプライアンスを削除する唯一の方法は、アプライアンスに関連付けられている Azure Migrate プロジェクトがあるリソース グループを削除することですが、他の登録アプライアンス、検出されたインベントリ、評価、リソース グループ内のプロジェクトに関連付けられているその他すべての Azure 成果物も削除されます。
 
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate Server Assessment
 
@@ -172,7 +175,7 @@ Azure Migrate では、オンプレミス マシンのパフォーマンス履�
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>Microsoft Monitoring Agent (MMA) と依存関係エージェントのインストールを自動化するには、どうすればよいですか。
 
-この[スクリプトを使用してエージェントをインストールします](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)。 コマンド ラインまたはオートメーションを使用して [MMA をインストールするには、こちらの手順](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)に従ってください。 MMA の場合は、[このスクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
+こちらの[依存関係エージェントをインストールするスクリプト](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)を使用してください。 コマンド ラインまたはオートメーションを使用して [MMA をインストールするには、こちらの手順](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)に従ってください。 MMA の場合は、[このスクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
 
 スクリプトのほか、デプロイ ツール (System Center Configuration Manager と [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
 
@@ -183,8 +186,7 @@ Azure Migrate では、オンプレミス マシンのパフォーマンス履�
 
 ### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>依存関係エージェントではどのオペレーティング システムがサポートされていますか。
 
-- [依存関係エージェントでサポートされる Windows オペレーティング システムの一覧はこちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)を参照してください。
-- [依存関係エージェントでサポートされる Linux オペレーティング システムの一覧はこちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)を参照してください。
+[Azure Monitor for VMs がサポートしている Windows および Linux オペレーティング システム](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)の一覧を参照してください。
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Azure Migrate で 1 時間より長く依存関係を視覚化することはできますか。
 いいえ。 依存関係を視覚化できるのは最大で 1 時間です。 履歴内で最大 1 か月前の特定の日付に戻ることができますが、視覚化の最大期間は 1 時間です。 たとえば、依存関係マップで期間を指定して昨日の依存関係を見ることはできますが、表示できる時間枠は 1 時間だけです。 ただし、Azure Monitor ログを使用すれば、それより長い期間について[依存関係データのクエリを実行](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)できます。

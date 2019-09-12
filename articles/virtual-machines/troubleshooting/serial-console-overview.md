@@ -1,25 +1,25 @@
 ---
-title: Linux 用 Azure シリアル コンソール | Microsoft Docs
-description: Azure Virtual Machines および仮想マシン スケール セット用の双方向シリアル コンソール。
+title: Azure シリアル コンソール | Microsoft Docs
+description: Azure シリアルコンソールを使用すると、SSH または RDP を利用できない場合に VM に接続できます。
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
 manager: borisb
 editor: ''
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/6/2019
+ms.date: 8/30/2019
 ms.author: alsin
-ms.openlocfilehash: cc964b1b11a68921c1d5d2b68a7413934565fdc8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2ae1f3769254575e33eaa5b4e3a24c47b9eb1aff
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129451"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194168"
 ---
 # <a name="azure-serial-console"></a>Azure シリアル コンソール
 

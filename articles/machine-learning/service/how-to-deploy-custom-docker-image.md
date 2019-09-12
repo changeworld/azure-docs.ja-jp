@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 753f0bece5b8b52ebb50ab2a6e93056ce209cfbc
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971514"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183568"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 
@@ -23,7 +23,7 @@ Azure Machine Learning service を使用してトレーニング済みモデル�
 
 トレーニング済みのモデルを Web サービスまたは IoT Edge デバイスにデプロイするとき、受信要求を処理する Web サーバーを含んだパッケージが作成されます。
 
-Azure Machine Learning service には既定の Docker ベース イメージが用意されているので、自分で作成する必要はありません。 また、作成したカスタム ベース イメージを "_ベース イメージ_" として使用することもできます。 
+Azure Machine Learning service には既定の Docker ベース イメージが用意されているので、自分で作成する必要はありません。 また、Azure Machine Learning service __環境__を使用して、特定のベース イメージを選択することも、独自に指定したものを使用することもできます。
 
 ベース イメージは、デプロイ用にイメージを作成するときの出発点として使用されます。 基となるオペレーティング システムとコンポーネントが用意されています。 デプロイ プロセスでは、デプロイ前に、モデル、conda 環境、その他のアセットなどのコンポーネントがイメージに追加されます。
 
@@ -193,6 +193,8 @@ Microsoft は、一般公開されているリポジトリにいくつかの doc
 > [!IMPORTANT]
 > CUDA または TensorRT を使用する Microsoft イメージを使用できるのは Microsoft Azure サービスのみです。
 
+詳細については、「[Azure Machine Learning service containers](https://github.com/Azure/AzureML-Containers)」(Azure Machine Learning service のコンテナー) をご覧ください。
+
 > [!TIP]
 >__モデルを Azure Machine Learning コンピューティングでトレーニングする場合__、__バージョン 1.0.22 以降__ の Azure Machine Learning SDK を使用して、トレーニング時にイメージが作成されます。 このイメージの名前を見つけるには、`run.properties["AzureML.DerivedImageName"]` を使用します。 次の例は、このイメージを使用する方法を示しています。
 >
@@ -203,29 +205,50 @@ Microsoft は、一般公開されているリポジトリにいくつかの doc
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK でイメージを使用する
 
-カスタム イメージを使用するには、[推論構成オブジェクト](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)の `base_image` プロパティをイメージのアドレスに設定します。
+**ご自分のワークスペースの Azure Container Registry**、または**パブリックにアクセスできるコンテナー レジストリ**に格納されたイメージを使用するには、次の[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)属性を設定します。
+
++ `docker.enabled=True`
++ `docker.base_image`:レジストリとイメージへのパスを設定します。
 
 ```python
-# use an image from a registry named 'myregistry'
-inference_config.base_image = "myregistry.azurecr.io/myimage:v1"
+from azureml.core import Environment
+# Create the environment
+myenv = Environment(name="myenv")
+# Enable Docker and reference an image
+myenv.docker.enabled = True
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-この形式は、ワークスペース用の Azure Container Registry に格納されているイメージと、一般公開されているコンテナー レジストリの両方に利用できます。 たとえば、次のコードでは Microsoft が提供する既定のイメージを使用しています。
+ご自分のワークスペース内にない__プライベート コンテナー レジストリ__のイメージを使用するには、`docker.base_image_registry` でリポジトリのアドレスとユーザー名とパスワードを指定する必要があります。
 
 ```python
-# use an image available in public Container Registry without authentication
-inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+# Set the container registry information
+myenv.docker.base_image_repository.address = "myregistry.azurecr.io"
+myenv.docker.base_image_repository.username = "username"
+myenv.docker.base_image_repository.password = "password"
 ```
 
-ワークスペース内にない __プライベート コンテナー レジストリ__ のイメージを使用するには、リポジトリのアドレスとユーザー名とパスワードを指定する必要があります。
+環境を定義したら、それを [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) オブジェクトと共に使用して、モデルと Web サービスを実行する推論環境を定義します。
 
 ```python
-# Use an image available in a private Container Registry
-inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-inference_config.base_image_registry.address = "myregistry.azurecr.io"
-inference_config.base_image_registry.username = "username"
-inference_config.base_image_registry.password = "password"
+from azureml.core.model import InferenceConfig
+# Use environment in InferenceConfig
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
+
+この時点で、デプロイを続行できます。 たとえば、次のコード スニペットでは、推論構成とカスタム イメージを使用して Web サービスがローカルにデプロイされます。
+
+```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
+
+デプロイの詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>Machine Learning CLI でイメージを使用する
 

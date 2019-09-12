@@ -1,18 +1,18 @@
 ---
 title: Azure Data Explorer クラスターに適した VM SKU を選択する
 description: この記事では、Azure Data Explorer クラスターに最適な SKU サイズを選択する方法について説明します。
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 2eb23a65196ac4f6456f50dbbbfd9e4b484ad171
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515730"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186741"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターに適した VM SKU を選択する 
 
@@ -83,7 +83,7 @@ Azure Data Explorer クラスター VM の技術仕様を次の表で説明し�
 |L16s_1| ストレージ最適化 | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
 
 * Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet) を使用して、リージョンごとの更新された VM SKU の一覧を表示できます。 
-* [さまざまなコンピューティング SKU](/azure/virtual-machines/windows/sizes-compute) の詳細について学習してください。 
+* [さまざまな SKU](/azure/virtual-machines/windows/sizes) の詳細について参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 

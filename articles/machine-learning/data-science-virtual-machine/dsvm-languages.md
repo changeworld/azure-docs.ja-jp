@@ -1,245 +1,230 @@
 ---
-title: Data Science Virtual Machine でサポートされている言語
-titleSuffix: Azure
-description: Data Science Virtual Machine にプレインストールされているプログラム言語および関連ツールについて説明します。
+title: サポートされている言語
+titleSuffix: Azure Data Science Virtual Machine
+description: Data Science Virtual Machine にプレインストールされているサポート対象のプログラム言語および関連ツール。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: vijetaj
-ms.openlocfilehash: 1df3c986132de2a3e7ec9547a996abef60ea04ac
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aedaa194a9667f1b89a3370c39c74424f2d01734
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558116"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208076"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでサポートされている言語 
 
-データ サイエンス仮想マシン (DSVM) には、AI アプリケーションを構築するための構築済み言語および開発ツールがいくつか付属します。 代表的なものは以下のとおりです。 
+Data Science Virtual Machine (DSVM) には、人工知能 (AI) アプリケーションを構築するための事前構築済み言語および開発ツールがいくつか付属します。 重要なものをいくつか紹介します。
 
 ## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 エディション)
 
 |    |           |
 | ------------- | ------------- |
-| サポートされている言語バージョン | 2.7 および 3.6 |
+| サポートされている言語バージョン | Python 2.7 および 3.6 |
 | サポートされている DSVM エディション      | Windows Server 2016     |
-| DSVM での構成/インストール方法  | 2 つのグローバル `conda` 環境が作成されます。 <br /> `/anaconda/` にある * `root` 環境は Python 3.6 です。 <br/> `/anaconda/envs/python2` にある * `python2` 環境は Python 2.7 です。       |
-| サンプルへのリンク      | Python 用のサンプル Jupyter ノートブックが含まれています     |
-| DSVM 上の関連ツール      | PySpark、R、Julia      |
+| DSVM での構成/インストール方法  | 次の 2 つのグローバル `conda` 環境が作成されます: <br /> * `/anaconda/` にある `root` 環境は、Python 3.6 です。 <br/> * `/anaconda/envs/python2` にある `python2` 環境は、Python 2.7 です。       |
+| サンプルへのリンク      | Python 用のサンプル Jupyter ノートブックが含まれています。     |
+| DSVM 上の関連ツール      | PySpark、R、Julia。      |
 
 > [!NOTE]
-> 2018 年 3 月より前に作成された Windows Server 2016 には、Python 3.5 および Python 2.7 が含まれています。 また、Python 2.7 は conda **root** 環境、**py35** は Python 3.5 環境です。 
+> 2018 年 3 月より前に作成された Windows Server 2016 のビルドには、Python 3.5 と Python 2.7 が含まれています。 Python 2.7 は conda **root** 環境であり、**py35** は Python 3.5 環境です。
 
-### <a name="how-to-use--run-it"></a>使用/実行方法    
+### <a name="how-to-use-and-run-it"></a>使用と実行方法    
 
-* コマンド プロンプトで実行
+* コマンド プロンプトでの実行:
 
-コマンド プロンプトを開き、実行する Python のバージョンに応じて次の手順を実行します。 
+  コマンド プロンプトを開き、実行する Python のバージョンに応じて次のいずれかの方法を使用します。
 
-```
-# To run Python 2.7
-activate python2
-python --version
+    ```
+    # To run Python 2.7
+    activate python2
+    python --version
+    
+    # To run Python 3.6
+    activate 
+    python --version 
+* Use in an IDE:
 
-# To run Python 3.6
-activate 
-python --version
+  Use Python Tools for Visual Studio (PTVS), installed in the Visual Studio Community edition. By default, the only environment that's set up automatically in PTVS is Python 3.6. 
 
-```
-* IDE での使用
+    > [!NOTE]
+    > To point PTVS at Python 2.7, you must create a  custom environment in PTVS. To set this environment path in the Visual Studio  Community Edition, go to **Tools** -> **Python Tools** -> **Python Environments** and select **+ Custom**. Then, set the location to **c:\anaconda\envs\python2** and select **Auto Detect**.
 
-Visual Studio Community エディションでインストールされる Python Tools for Visual Studio (PTVS) を使用します。 既定では、PTVS で自動的にセットアップされる環境は Python 3.6 のみです。 
+* Use in Jupyter:
 
-> [!NOTE]
-> Python 2.7 にある PTVS をポイントするには、PTVS でカスタム環境を作成する必要があります。 **[Tools] (ツール)**  ->  **[Python Tools]**  ->  **[Python Environments] (Python 環境)** の順に移動し、 **[+ Custom] (+ カスタム)** をクリックして、Visual Studio Community エディションにこの環境パスを設定します。 次に、場所を `c:\anaconda\envs\python2` に設定して _[Auto Detect]_ (自動検出) をクリックします。 
+  Open Jupyter and select **New** to create a new notebook. You can set the kernel type as _Python [Conda Root]_ for Python 3.6 and _Python [Conda env:python2]_ for Python 2.7.
 
-* Jupyter での使用
+* Install Python packages:
 
-Jupyter を開き、`New` ボタンをクリックして新しいノートブックを作成します。 現時点では、カーネル タイプとして Python 3.6 向けの _Python [Conda Root]_ と Python 2.7 環境向けの _Python [Conda env:python2]_ を選択できます。 
+  The default Python environments on the DSVM are global environments that are readable by all users. But only administrators can write and install global packages. To install packages to the global environment, activate to the root or python2 environment by using the `activate` command as an administrator. Then, you can use a package manager like `conda` or `pip` to install or update packages.
 
-* Python パッケージのインストール
-
-DSVM での既定の Python 環境は、すべてのユーザーが読み取り可能なグローバル環境です。 ただし、グローバル パッケージの書き込み/インストールは管理者のみが実行できます。 グローバル環境にパッケージをインストールするには、管理者として `activate` コマンドを使用して root または python2 環境にアクティブ化します。 その後、`conda` や `pip` などのパッケージ マネージャーを使用してパッケージをインストールまたは更新できます。 
-
-## <a name="python-linux-and-windows-server-2012-edition"></a>Python (Linux および Windows Server 2012 エディション)
+## Python (Linux and Windows Server 2012 edition)
 
 |    |           |
 | ------------- | ------------- |
-| サポートされている言語バージョン | 2.7 および 3.5 |
-| サポートされている DSVM エディション      | Linux、Windows Server 2012    |
-| DSVM での構成/インストール方法  | 2 つのグローバル `conda` 環境が作成されます。 <br /> `/anaconda/` にある * `root` 環境は Python 2.7 です。 <br/> `/anaconda/envs/py35` にある * `py35` 環境は Python 3.5 です。       |
-| サンプルへのリンク      | Python 用のサンプル Jupyter ノートブックが含まれています     |
-| DSVM 上の関連ツール      | PySpark、R、Julia      |
-### <a name="how-to-use--run-it"></a>使用/実行方法    
+| Language versions supported | Python 2.7 and 3.5 |
+| Supported DSVM editions      | Linux, Windows Server 2012    |
+| How is it configured / installed on the DSVM?  | Two global `conda` environments are created: <br /> * `root` environment located at `/anaconda/` is Python 2.7. <br/> * `py35` environment located at `/anaconda/envs/py35`is Python 3.5.       |
+| Links to samples      | Sample Jupyter notebooks for Python are included.     |
+| Related tools on the DSVM      | PySpark, R, Julia      |
+### How to use and run it    
 
 **Linux**
-* ターミナルで実行
+* Run in a terminal:
 
-ターミナルを開き、実行する Python のバージョンに応じて次の手順を実行します。 
+  Open the terminal and do one of the following, depending on the version of Python you want to run:
 
-```
-# To run Python 2.7
-source activate 
-python --version
+    ```
+    # <a name="to-run-python-27"></a>Python 2.7 を実行する場合
+    source activate   python --version
+    
+    # <a name="to-run-python-35"></a>Python 3.5 を実行する場合
+    source activate py35   python --version
+    
+    ```
+* Use in an IDE:
 
-# To run Python 3.5
-source activate py35
-python --version
+  Use PyCharm, installed in the Visual Studio Community edition. 
 
-```
-* IDE での使用
+* Use in Jupyter:
 
-Visual Studio Community エディションでインストールされる PyCharm を使用します。 
+  Open Jupyter and select **New** to create a new notebook. You can set the kernel type as **Python [Conda Root]** for Python 2.7 and **Python [Conda env:py35]** for the Python 3.5 environment. 
 
-* Jupyter での使用
+* Install Python packages:
 
-Jupyter を開き、`New` ボタンをクリックして新しいノートブックを作成します。 現時点では、カーネル タイプとして Python 2.7 向けの _Python [Conda Root]_ と Python 3.5 環境向けの _Python [Conda env:py35]_ を選択できます。 
-
-* Python パッケージのインストール
-
-DSVM での既定の Python 環境は、すべてのユーザーが読み取り可能なグローバル環境です。 ただし、グローバル パッケージの書き込み/インストールは管理者のみが実行できます。 グローバル環境にパッケージをインストールするには、管理者または sudo 権限のあるユーザーとして `source activate` コマンドを使用して root または py35 環境にアクティブ化します。 その後、`conda` や `pip` などのパッケージ マネージャーを使用してパッケージをインストールまたは更新できます。 
+  The default Python environments on the DSVM are global environments readable by all users. But only administrators can write and install global packages. To install packages to the global environment, activate to the root or py35 environment by using the `source activate` command as an administrator or as a user with sudo permissions. Then, you can use a package manager like `conda` or `pip` to install or update packages.
 
 **Windows 2012**
-* コマンド プロンプトで実行
+* Run at a command prompt:
 
-コマンド プロンプトを開き、実行する Python のバージョンに応じて次の手順を実行します。 
+  Open a command prompt and do one of the following, depending on the version of Python you want to run:
 
-```
-# To run Python 2.7
-activate 
-python --version
+     ```
+    # <a name="to-run-python-27"></a>Python 2.7 を実行する場合
+    activate   python --version
+    
+    # <a name="to-run-python-35"></a>Python 3.5 を実行する場合
+    activate py35   python --version
+    
+    ```
+* Use in an IDE:
 
-# To run Python 3.5
-activate py35
-python --version
+  Use Python Tools for Visual Studio (PTVS) installed in the Visual Studio Community edition. The only environment that's set up automatically in PTVS is Python 2.7.
+    > [!NOTE]
+    > To point PTVS at Python 3.5, you need to create a custom environment in PTVS. To set this environment path in the Visual Studio Community edition, go to **Tools** -> **Python Tools** -> **Python Environments** and select **+ Custom**. Then, set the location to `c:\anaconda\envs\py35` and select _Auto Detect_.
 
-```
-* IDE での使用
+* Use in Jupyter:
 
-Visual Studio Community エディションでインストールされる Python Tools for Visual Studio (PTVS) を使用します。 Python 2.7 では、PTVS で自動的にセットアップされる唯一の環境です。 
-> [!NOTE]
-> Python 3.5 にある PTVS をポイントするには、PTVS でカスタム環境を作成する必要があります。 **[Tools] (ツール)**  ->  **[Python Tools]**  ->  **[Python Environments] (Python 環境)** の順に移動し、 **[+ Custom] (+ カスタム)** をクリックして、Visual Studio Community エディションにこの環境パスを設定します。 次に、場所を `c:\anaconda\envs\py35` に設定して _[Auto Detect]_ (自動検出) をクリックします。 
+  Open Jupyter and select **New** to create a new notebook. You can set the kernel type as **Python [Conda Root]** for Python 2.7 and **Python [Conda env:py35]** for Python 3.5. 
 
-* Jupyter での使用
+* Install Python packages:
 
-Jupyter を開き、`New` ボタンをクリックして新しいノートブックを作成します。 現時点では、カーネル タイプとして Python 2.7 向けの _Python [Conda Root]_ と Python 3.5 環境向けの _Python [Conda env:py35]_ を選択できます。 
+  The default Python environments on the DSVM are global environments that are readable by all users. But only administrators can write and install global packages. To install packages to the global environment, activate to the root or py35 environment by using the `activate` command as an administrator. Then, you can use a package manager like `conda` or `pip` to install or update packages.
 
-* Python パッケージのインストール
-
-DSVM での既定の Python 環境は、すべてのユーザーが読み取り可能なグローバル環境です。 ただし、グローバル パッケージの書き込み/インストールは管理者のみが実行できます。 グローバル環境にパッケージをインストールするには、管理者として `activate` コマンドを使用して root または py35 環境にアクティブ化します。 その後、`conda` や `pip` などのパッケージ マネージャーを使用してパッケージをインストールまたは更新できます。 
-
-## <a name="r"></a>R
+## R
 
 |    |           |
 | ------------- | ------------- |
-| サポートされている言語バージョン | Microsoft R Open 3.x (CRAN-R と 100% 互換)<br /> Microsoft R Server 9.x Developer エディション (スケーラブルなエンタープライズ対応 R プラットフォーム)|
-| サポートされている DSVM エディション      | Linux、Windows     |
-| DSVM での構成/インストール方法  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
-| サンプルへのリンク      | R 用のサンプル Jupyter ノートブックが含まれています     |
-| DSVM 上の関連ツール      | SparkR、Python、Julia      |
-### <a name="how-to-use--run-it"></a>使用/実行方法    
+| Language versions supported | Microsoft R Open 3.x (100% compatible with CRAN-R)<br /> Microsoft R Server 9.x Developer edition (a scalable enterprise-ready R platform)|
+| Supported DSVM editions      | Linux, Windows     |
+| How is it configured / installed on the DSVM?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| Links to samples      | Sample Jupyter notebooks for R are included.     |
+| Related tools on the DSVM      | SparkR, Python, Julia      |
+### How to use and run it    
 
 **Windows**:
 
-* コマンド プロンプトで実行
+* Run at a command prompt:
 
-コマンド プロンプトを開いて `R` を入力します。
+  Open a command prompt and type `R`.
 
-* IDE での使用
+* Use in an IDE:
 
-Visual Studio Community エディションまたは RStudio でインストールされる RTools for Visual Studio (RTVS) を使用します。 これらは [スタート] メニューまたはデスクトップのアイコンから使用できます。 
+  Use RTools for Visual Studio (RTVS) installed in the Visual Studio Community edition or RStudio. These are available on the Start menu or as a desktop icon. 
 
-* Jupyter での使用
+* Use in Jupyter
 
-Jupyter を開き、`New` ボタンをクリックして新しいノートブックを作成します。 現時点では、Jupyter R カーネル (IRKernel) を使用するためにカーネル タイプを _R_ として選択できます。 
+  Open Jupyter and select **New** to create a new notebook. You can set the kernel type as **R** to use the Jupyter R kernel (IRKernel).
 
-* R パッケージのインストール
+* Install R packages:
 
-R は、すべてのユーザーが読み取り可能なグローバル環境で DSVM にインストールされます。 ただし、グローバル パッケージの書き込み/インストールは管理者のみが実行できます。 グローバル環境にパッケージをインストールするには、上記のいずれかの方法を使用して R を実行します。 その後、R パッケージマネージャー `install.packages()` を使用してパッケージをインストールまたは更新できます。 
+  R is installed on the DSVM in a global environment that's readable by all users. But only administrators can write and install global packages. To install packages to the global environment, run R by using one of the preceding methods. Then, you can run the R package manager `install.packages()` to install or update packages.
 
 **Linux**:
 
-* ターミナルで実行
+* Run in terminal:
 
-ターミナルを開いて `R` を実行します。  
+  Open a terminal and run `R`.  
 
-* IDE での使用
+* Use in an IDE:
 
-Linux DSVM にインストールされている RStudio を使用します。  
+  Use RStudio, installed on the Linux DSVM.  
 
-* Jupyter での使用
+* Use in Jupyter:
 
-Jupyter を開き、`New` ボタンをクリックして新しいノートブックを作成します。 現時点では、Jupyter R カーネル (IRKernel) を使用するためにカーネル タイプを _R_ として選択できます。 
+  Open Jupyter and select **New** to create a new notebook. You can set the kernel type as **R** to use the Jupyter R kernel (IRKernel). 
 
-* R パッケージのインストール
+* Install R packages:
 
-R は、すべてのユーザーが読み取り可能なグローバル環境で DSVM にインストールされます。 ただし、グローバル パッケージの書き込み/インストールは管理者のみが実行できます。 グローバル環境にパッケージをインストールするには、上記のいずれかの方法を使用して R を実行します。 その後、R パッケージマネージャー `install.packages()` を使用してパッケージをインストールまたは更新できます。 
+  R is installed on the DSVM in a global environment that's readable by all users. But only administrators can write and install global packages. To install packages to the global environment, run R by using one of the preceding methods. Then, you can run the R package manager `install.packages()` to install or update packages.
 
 
-## <a name="julia"></a>Julia
+## Julia
 
 |    |           |
 | ------------- | ------------- |
-| サポートされている言語バージョン | 0.6 |
-| サポートされている DSVM エディション      | Linux、Windows     |
-| DSVM での構成/インストール方法  | Windows:`C:\JuliaPro-VERSION` にインストール<br /> Linux:`/opt/JuliaPro-VERSION` にインストール    |
-| サンプルへのリンク      | Julia 用のサンプル Jupyter ノートブックが含まれています     |
-| DSVM 上の関連ツール      | Python、R      |
-### <a name="how-to-use--run-it"></a>使用/実行方法    
+| Language versions supported | 0.6 |
+| Supported DSVM editions      | Linux, Windows     |
+| How is it configured / installed on the DSVM?  | Windows: Installed at `C:\JuliaPro-VERSION`<br /> Linux: Installed at `/opt/JuliaPro-VERSION`    |
+| Links to samples      | Sample Jupyter notebooks for Julia are included.     |
+| Related tools on the DSVM      | Python, R      |
+### How to use and run it    
 
 **Windows**:
 
-* コマンド プロンプトで実行
+* Run at a command prompt
 
-コマンド プロンプトを開いて `julia` を実行します。 
-* IDE での使用
+  Open a command prompt and run `julia`.
+* Use in an IDE:
 
-DSVM にインストールされ、デスクトップのショートカットから実行できる `Juno` Julia IDE を使用します。
+  Use `Juno` with the Julia IDE installed on the DSVM and available as a desktop shortcut.
 
-* Jupyter での使用
+* Use in Jupyter:
 
-Jupyter を開き、`New` ボタンをクリックして新しいノートブックを作成します。 現時点では、カーネル タイプを `Julia VERSION` として選択できます 
+  Open Jupyter and select **New** to create a new notebook. You can set the kernel type as **Julia VERSION**.
 
-* Julia パッケージのインストール
+* Install Julia packages:
 
-既定の Julia の位置は、すべてのユーザーが読み取り可能なグローバル環境です。 ただし、グローバル パッケージの書き込み/インストールは管理者のみが実行できます。 グローバル環境にパッケージをインストールするには、上記のいずれかの方法を使用して Julia を実行します。 その後、`Pkg.add()` などの Julia パッケージ マネージャー コマンドを実行してパッケージをインストールまたは更新できます。 
+  The default Julia location is a global environment that's readable by all users. But only administrators can write and install global packages. To install packages to the global environment, run Julia by using one of the preceding methods. Then, you can run Julia package manager commands like `Pkg.add()` to install or update packages.
 
 
 **Linux**:
-* ターミナルで実行。
+* Run in a terminal:
 
-ターミナルを開いて `julia` を実行します。 
-* IDE での使用
+  Open a terminal and run `julia`.
+* Use in an IDE:
 
-DSVM にインストールされ、アプリケーション メニューのショートカットから実行できる `Juno` Julia IDE を使用します。
+  Use `Juno`, with the Julia IDE installed on the DSVM and available as an **Application** menu shortcut.
 
-* Jupyter での使用
+* Use in Jupyter:
 
-Jupyter を開き、`New` ボタンをクリックして新しいノートブックを作成します。 現時点では、カーネル タイプを `Julia VERSION` として選択できます 
+  Open Jupyter and select **New** to create a new notebook. You can set the kernel type as **Julia VERSION**.
 
-* Julia パッケージのインストール
+* Install Julia packages:
 
-既定の Julia の位置は、すべてのユーザーが読み取り可能なグローバル環境です。 ただし、グローバル パッケージの書き込み/インストールは管理者のみが実行できます。 グローバル環境にパッケージをインストールするには、上記のいずれかの方法を使用して Julia を実行します。 その後、`Pkg.add()` などの Julia パッケージ マネージャー コマンドを実行してパッケージをインストールまたは更新できます。 
+  The default Julia location is a global environment that's readable by all users. But only administrators can write and install global packages. To install packages to the global environment, run Julia by using one of the preceding methods. Then, you can run Julia package manager commands like `Pkg.add()` to install or update packages.
 
-## <a name="other-languages"></a>その他の言語
+## Other languages
 
-**C#** : Windows で使用可能であり、Visual Studio Community エディションから、または `Developer Command Prompt for Visual Studio` でアクセスできます (`csc` コマンドの実行のみ可能)。 
+**C#**: Available on Windows and accessible through the Visual Studio Community edition or at the `Developer Command Prompt for Visual Studio`, where you can run the `csc` command.
 
-**Java**: OpenJDK は DSVM の Linux エディションと Windows エディションの両方で使用可能であり、パスに設定されています。 Windows のコマンド プロンプトまたは Linux の bash シェルで `javac` または `java` コマンドを入力することにより、Java を使用できます。 
+**Java**: OpenJDK is available on both the Linux and Windows editions of the DSVM and is set on the path. To use Java, type the `javac` or `java` command at a command prompt in Windows or on the bash shell in Linux.
 
-**node.js**: node.js は DSVM の Linux エディションと Windows エディションの両方で使用可能であり、パスに設定されています。 Windows のコマンド プロンプトまたは Linux の bash シェルで `node` または `npm` コマンドを入力することにより、node.js にアクセスできます。 Windows では、node.js アプリケーション開発用のグラフィカル IDE を提供するために、Node.js Tools for Visual Studio 拡張機能がインストールされます。 
+**Node.js**: Node.js is available on both the Linux and Windows editions of the DSVM and is set on the path. To access Node.js, type the `node` or `npm` command at a command prompt in Windows or on the bash shell in Linux. On Windows, the Visual Studio extension for the Node.js tools is installed to provide a graphical IDE to develop your Node.js application.
 
-**F#** : Windows で使用可能であり、Visual Studio Community エディションから、または `Developer Command Prompt for Visual Studio` でアクセスできます (`fsc` コマンドの実行のみ可能)。 
-
-
+**F#**: Available on Windows and accessible through the Visual Studio Community edition or at a `Developer Command Prompt for Visual Studio`, where you can run the `fsc` command.

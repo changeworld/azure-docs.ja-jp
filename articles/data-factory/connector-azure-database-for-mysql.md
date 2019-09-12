@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して Azure Database for MySQL からデータをコピーする | Microsoft Docs
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Database for MySQL からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+title: Azure Data Factory を使用して Azure Database for MySQL との間でデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Database for MySQL との間で双方向にデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,22 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 08/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 4c388f012cd52f0adea93ae62cc31832488fca74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b6d96ef2d2cdd79bec35f2581876823990e4a971
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387912"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172615"
 ---
-# <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for MySQL からデータをコピーする
+# <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for MySQL との間でデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Database for MySQL からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
+このコネクタは、[Azure Database for MySQL サービス](../mysql/overview.md)に特化しています。 オンプレミスまたはクラウドにある汎用 MySQL データベースからデータをコピーするには、[MySQL コネクタ](connector-mysql.md)を使用します。
+
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure Database for MySQL のデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+Azure Database for MySQL のデータを、サポートされているシンク データ ストアにコピーできます。 または、サポートされているソース データ ストアのデータを Azure Database for MySQL にコピーすることができます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
@@ -133,11 +135,11 @@ Azure Database for MySQL からデータをコピーするには、データセ�
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Azure Database for MySQL ソースでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Azure Database for MySQL のソースとシンクでサポートされるプロパティの一覧を示します。
 
 ### <a name="azure-database-for-mysql-as-source"></a>ソースとしての Azure Database for MySQL
 
-Azure Database for MySQL からデータをコピーするには、コピー アクティビティのソースの種類を **AzureMySqlSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+Azure Database for MySQL からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -171,6 +173,51 @@ Azure Database for MySQL からデータをコピーするには、コピー ア
             },
             "sink": {
                 "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+### <a name="azure-database-for-mysql-as-sink"></a>シンクとしての Azure Database for MySQL
+
+データを Azure Database for MySQL にコピーするために、コピー アクティビティの **sink** セクションでは次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **AzureMySqlSink** | はい |
+| preCopyScript | コピー アクティビティの毎回の実行で、データを Azure Database for MySQL に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |
+| writeBatchSize | バッファー サイズが writeBatchSize に達したら、Azure Database for MySQL テーブルにデータを挿入します。<br>許可される値は行数を表す整数です。 | いいえ (既定値は 10,000) |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br> 
+使用可能な値: 期間。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ (既定値は 00:00:30) |
+
+**例:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToAzureDatabaseForMySQL",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Azure MySQL output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "AzureMySqlSink",
+                "preCopyScript": "<custom SQL script>",
+                "writeBatchSize": 100000
             }
         }
     }

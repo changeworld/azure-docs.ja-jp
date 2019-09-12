@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061375"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183192"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -143,7 +143,7 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 1. **[アプリケーションをすべて表示]** を選択します。
 1. **b2c-extensions-app** という名前のアプリケーションを選択し、 **[削除]** を選択した後、確認を求められたら **[はい]** を選択します。
 1. **[管理]** の下で **[ユーザー設定]** を選択します。
-1. **[LinkedIn アカウント接続]** の下で **[いいえ]** を選択した後、 **[保存]** を選択します。
+1. 表示される場合は、 **[LinkedIn アカウント接続]** の下で **[いいえ]** を選択した後、 **[保存]** を選択します。
 1. **[管理]** の下で、 **[プロパティ]** を選択します。
 1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。
 1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。

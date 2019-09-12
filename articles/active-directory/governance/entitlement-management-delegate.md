@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124908"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207145"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でのタスクの委任
 
@@ -117,6 +117,7 @@ ms.locfileid: "70124908"
 | [クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md) | カタログ所有者 |  |  | :heavy_check_mark: |  |
 | User | カタログ所有者 | グループ所有者の場合のみ | グループ所有者の場合のみ | アプリ所有者の場合のみ |  |
 
+タスクの最小限の特権ロールを決定するには、「[Azure Active Directory における管理タスク別の管理者ロール](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)」を参照することもできます。
 
 ## <a name="add-a-catalog-creator"></a>カタログ作成者を追加する
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011288"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171940"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
@@ -30,7 +30,7 @@ Azure Active Directory Domain Services (AD DS) のマネージド ドメイン�
 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Azure AD から Azure AD DS への同期
 
-ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュは、Azure AD から Azure AD DS に一方向で同期されます。 この同期プロセスは自動的に行われます。 この同期プロセスを構成、監視、または管理する必要はありません。 Azure AD ディレクトリ内のオブジェクトの数に応じて、初期同期には数時間から数日かかることがあります。 初期同期が完了した後、Azure AD 内で加えられた変更 (パスワードや属性の変更など) は、Azure AD DS 内で更新されるまで約 20 分から 30 分かかります。
+ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュは、Azure AD から Azure AD DS に一方向で同期されます。 この同期プロセスは自動的に行われます。 この同期プロセスを構成、監視、または管理する必要はありません。 Azure AD ディレクトリ内のオブジェクトの数に応じて、初期同期には数時間から数日かかることがあります。 初期同期が完了した後、Azure AD 内で加えられた変更 (パスワードや属性の変更など) は、Azure AD DS に自動的に同期されます。
 
 設計上、同期プロセスは一方向です。 Azure AD DS から Azure AD への変更の逆方向の同期は行われません。 Azure AD DS マネージド ドメインは、作成できるカスタムの組織単位 (OU) を除き、主に読み取り専用です。 Azure AD DS マネージド ドメイン内でユーザー属性、ユーザー パスワード、またはグループ メンバーシップを変更することはできません。
 

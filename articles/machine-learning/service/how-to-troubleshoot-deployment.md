@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24716a9b9fa5174d899cf0678b83b2da0c59957c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358675"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183543"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning service の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
 
@@ -204,6 +204,9 @@ print(prediction)
 
 ローカル テスト中に、ログ記録を追加したり、発見した問題の解決を試みるために、`score.py` ファイルを更新する必要がある場合があります。 変更を `score.py` ファイルに再度読み込むには、`reload()` を使用します。 たとえば、次のコードは、サービスのスクリプトを再度読み込み、サービスにデータを送信します。 データは、更新された `score.py` ファイルを使用してスコア付けされます。
 
+> [!IMPORTANT]
+> `reload` メソッドは、ローカル デプロイでのみ使用できます。 デプロイを別のコンピューティング先に更新する方法については、モデルのデプロイの「[Web サービスを更新する](how-to-deploy-and-where.md#update)」セクションを参照してください。
+
 ```python
 service.reload()
 print(service.run(input_data=test_sample))
@@ -240,7 +243,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 「[Docker ログの確認](#dockerlog)」セクションの情報を使用して、ログを確認します。
 
-## <a name="function-fails-getmodelpath"></a>get_model_path() 関数が失敗する
+## <a name="function-fails-get_model_path"></a>get_model_path() 関数が失敗する
 
 多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからない場合、この関数は失敗します。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
 
@@ -255,7 +258,7 @@ print(Model.get_model_path(model_name='my-best-model'))
 
 ログ レベルを DEBUG に設定すると、追加情報が記録される場合があり、エラーの特定に利用できる可能性があります。
 
-## <a name="function-fails-runinputdata"></a>run(input_data) 関数が失敗する
+## <a name="function-fails-runinput_data"></a>run(input_data) 関数が失敗する
 
 サービスが正常にデプロイされたが、スコアリング エンドポイントにデータを投稿するとクラッシュする場合、代わりに詳細なエラー メッセージが返されるように `run(input_data)` 関数にエラーをキャッチするステートメントを追加できます。 例:
 

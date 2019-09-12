@@ -10,19 +10,67 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971506"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278303"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
-この記事では、Azure Machine Learning service の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk) のリファレンス ページを参照してください。 
+この記事では、Azure Machine Learning service の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) のリファレンス ページを参照してください。 
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2019-09-03"></a>2019-09-03
+### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Azure Machine Learning SDK for Python v1.0.60
+
++ **新機能**
+  + データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照する FileDataset が導入されました。 ファイルの形式は任意です。 FileDataset では、ファイルをダウンロードしたり、コンピューターにマウントしたりできます。 FileDataset の詳細については、 https://aka.ms/file-dataset を参照してください。
+  + PythonScript Step、Adla Step、Databrick Step、DataTransferStep、AzureBatch Step にパイプライン YAML サポートを追加しました
+
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + AutoArima は、プレビュー専用のサジェスト可能パイプラインになりました。
+    + 予測のエラー報告を改善しました。
+    + 予測タスクの汎用ではなくカスタムの例外を使用してログ記録を改善しました。
+    + イテレーションの合計数よりも少なくなるように、max_concurrent_iterations のチェックを削除しました。
+    + AutoML モデルで AutoMLExceptions が返されるようになりました
+    + このリリースでは、自動化された機械学習のローカル実行の実行パフォーマンスが向上しています。
+  + **azureml-core**
+    + 登録名でキーが指定された `TabularDataset` と `FileDataset` のオブジェクトのディクショナリを返す `Dataset.get_all()` が導入されました。 
+    
+    ```py 
+    workspace = Workspace.from_config() 
+    all_datasets = Dataset.get_all(workspace) 
+    mydata = all_datasets['my-data'] 
+    ```
+    
+    + `Dataset.Tabular.from_delimited_files` と `Dataset.Tabular.from_parquet.files` の引数として `parition_format` が導入されました。 各データ パスのパーティション情報は、指定された形式に基づいて列に抽出されます。 '{column_name}' では文字列の列、'{column_name:yyyy/MM/dd/HH/mm/ss}' では datetime の列が作成されます。ここで、'yyyy'、'MM'、'dd'、'HH'、'mm'、'ss' は datetime 型の年、月、日、時間、分、秒の抽出に使用されます。 partition_format は、最初のパーティション キーの位置から始まり、ファイル パスの末尾までになります。 たとえば、パーティションが国と時間のパス '../USA/2019/01/01/data.csv' の場合、partition_format='/{Country}/{PartitionDate:yyyy/MM/dd}/data.csv' では値が 'USA' の文字列の列 'Country' と、値が '2019-01-01' の datetime 列 'PartitionDate' が作成されます。
+    + `to_csv_files` と `to_parquet_files` のメソッドが `TabularDataset` に追加されました。 これらのメソッドにより、指定された形式のファイルにデータが変換され、`TabularDataset` と `FileDataset` の間の変換が可能になります。
+    + Model.package() によって生成された Dockerfile を保存するときに、基本イメージ レジストリに自動的にログインします。
+    + 'gpu_support' は、不要になり、AzureML により、nvidia docker 拡張機能が利用可能になったときに自動的に検出して使用されるようになりました。 将来のリリースでは削除される予定です。
+    + PipelineDrafts を作成、更新、および使用するためのサポートが追加されました。
+    + このリリースでは、自動化された機械学習のローカル実行の実行パフォーマンスが向上しています。
+    + ユーザーは、実行履歴のメトリックを名前でクエリできます。
+    + 予測タスクの汎用ではなくカスタムの例外を使用してログ記録を改善しました。
+  + **azureml-explain-model**
+    + feature_maps パラメーターが新しい MimicWrapper に追加され、ユーザーが未加工の機能の説明を取得できるようになりました。
+    + 説明のアップロードでは、データセットのアップロードが既定でオフになり、upload_datasets=True を指定して再度有効にすることができます
+    + "Is_law" フィルター処理パラメーターが説明リストとダウンロード機能に追加されました。
+    + グローバルとローカルの両方の説明オブジェクトに `get_raw_explanation(feature_maps)` メソッドが追加されます。
+    + サポートされているバージョンを下回る場合に警告を出力するバージョン チェックが lightgbm に追加されました
+    + 説明をバッチ処理するときのメモリ使用量が最適化されました
+    + AutoML モデルで AutoMLExceptions が返されるようになりました
+  + **azureml-pipeline-core**
+    + PipelineDrafts を作成、更新、および使用するためのサポートが追加されました。変更可能なパイプライン定義を維持し、対話形式で実行するために使用できます
+  + **azureml-train-automl**
+    + GPU 対応 PyTorch v1.1.0、CUDA Toolkit 9.0、リモートの Python ランタイム環境で BERT/XLNet を有効にするために必要な pytorch-transformer の特定のバージョンをインストールするための機能が作成されました。
+  + **azureml-train-core**
+    + 一部のハイパーパラメーター空間定義エラーの初期エラーが、サーバー側ではなく SDK で直接発生します。
+
+  
 ## <a name="2019-08-19"></a>2019-08-19
 
 ### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Azure Machine Learning SDK for Python v1.0.57
@@ -84,6 +132,7 @@ ms.locfileid: "69971506"
     + AutoML ユーザーが予測時に十分な長さではないトレーニング シリーズをドロップできるようにしました。
     + AutoML ユーザーが予測時にトレーニング セットに存在しないテスト セットからグレインをドロップできるようにしました。
     + AutoMLStep で、新しい構成パラメーターの変更や追加に関する問題を回避するために、AutoML の構成がバックエンドにパススルーされるようになりました。
+    + AutoML データ ガードレールがパブリック プレビューになりました。 トレーニング後にデータ ガードレール レポート (分類/回帰タスク用) が表示され、ユーザーがそれに SDK API を使用してアクセスすることもできます。
   + **azureml-train-core**
     + PyTorch エスティメーターに torch 1.2 のサポートが追加されました。
   + **azureml-widgets**

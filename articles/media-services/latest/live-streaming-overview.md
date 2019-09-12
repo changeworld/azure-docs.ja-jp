@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 5883c1aa20af106dd39bffc95036ee90f312ffea
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051597"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231017"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -96,7 +96,7 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
     * ライブ イベントを停止します。 ライブ イベントが停止した後は、いかなる課金も発生しません。 もう一度開始する必要がある場合、取り込み URL は同一になるため、エンコーダーを再構成する必要はありません。
     * ライブ イベントのアーカイブをオンデマンド ストリームとして提供し続けるのでない限り、ストリーミング エンドポイントを停止できます。 ライブ イベントが停止状態の場合は、いかなる課金も発生しません。
 
-ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。 イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。
+ライブ出力がアーカイブされるアセットは、ライブ出力が削除されると、自動的にオンデマンド アセットになります。 ライブ イベントを停止するには、すべてのライブ出力を削除する必要があります。 省略可能なフラグ [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) を使用すると、停止時にライブ出力を自動的に削除できます。 
 
 > [!TIP]
 > [ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)に関するページを参照してください。この記事では、前述の手順を実装するコードについて説明します。

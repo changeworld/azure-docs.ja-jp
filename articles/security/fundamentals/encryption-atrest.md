@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 ms.author: barclayn
-ms.openlocfilehash: 910057e0e81219a68608441530d03ca1a2411b02
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9721f22eb73c68f729ced13480370f6593c58510
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875091"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182803"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -254,14 +254,16 @@ Azure SQL Database は現在、Microsoft が管理するサービス側とクラ
 
 Azure SQL Database データのクライアント側の暗号化は、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) 機能を通してサポートされています。 Always Encrypted では、クライアントによって作成、保存されたキーが使用されます。 ユーザーは、Windows 証明書ストア、Azure Key Vault、またはローカルのハードウェア セキュリティ モジュール (HSM) にマスター キーを格納できます。 SQL ユーザーは、SQL Server Management Studio を使用して、どの列を何を使用して暗号化するかを選択できます。
 
-#### <a name="encryption-model-and-key-management"></a>暗号化モデルとキー管理
+#### <a name="encryption-model-and-key-management-table"></a>暗号化モデルとキー管理テーブル
 
-| **サービス管理キーを使用したサーバー側** |**顧客管理キーを使用したサーバー側**| **クライアント管理を使用したクライアント側** | **AI と機械学習**   |
-|--------------------|-------------------|----------------------|--------------------|
+|                                  |                    | **暗号化モデルとキーの管理** |                    |
+|----------------------------------|--------------------|-----------------------------------------|--------------------|
+|                                  | **サービス管理キーを使用したサーバー側**     | **顧客管理キーを使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
+| **AI と機械学習**      |                    |                    |                    |
 | Azure Search                     | はい                | -                  | -                  |
 | Azure Machine Learning サービス   | はい                | -                  | -                  |
 | Azure Machine Learning Studio    | はい                | プレビュー、RSA 2048 ビット | -               |
-| Power BI                         | はい                | プレビュー、RSA 2048 ビット | -               |
+| Power BI                         | はい                | プレビュー、RSA 2048 ビット | -                  |
 | **Analytics**                    |                    |                    |                    |
 | Azure Stream Analytics           | はい                | -                  | -                  |
 | Event Hubs                       | はい                | -                  | -                  |
@@ -282,7 +284,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Azure SQL Database               | はい                | はい、RSA 2048 ビット  | はい                |
 | Azure SQL Database for MariaDB   | はい                | -                  | -                  |
 | Azure SQL Database for MySQL     | はい                | -                  | -                  |
-| Azure SQL Database for PostgreSQL | はい                | -                  | -                 |
+| Azure SQL Database for PostgreSQL | はい                | -                  | -                  |
 | Azure SQL Data Warehouse         | はい                | はい、RSA 2048 ビット  | はい                |
 | SQL Server Stretch Database      | はい                | はい、RSA 2048 ビット  | はい                |
 | Table Storage                    | はい                | -                  | はい                |
