@@ -21,7 +21,7 @@
       href: tutorial-configure-password-hash-sync.md
 - name: サンプル
   items:
-    - name: Azure PowerShell を使用して Azure AD DS インスタンスを作成する
+    - name: Azure PowerShell を使用したマネージド ドメインの作成
       href: powershell-create-instance.md
 - name: 概念
   items:

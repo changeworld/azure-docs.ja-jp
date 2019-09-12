@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae8f6854241240249cb3b7494872cbbd8fd41e6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823781"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240867"
 ---
 # <a name="what-is-passwordless"></a>パスワードなしとは
 
@@ -26,7 +26,7 @@ ms.locfileid: "68823781"
 | --- | --- | --- |
 | パスワードなし | 電話またはセキュリティ キー | 生体認証または PIN |
 
-認証については、組織ごとにさまざまなニーズがあります。 現在、Microsoft では Windows PC 用に Windows Hello を提供しています。 Microsoft Authenticator アプリと FIDO2 のセキュリティ キーをパスワードなしファミリに追加しています。
+認証については、組織ごとにさまざまなニーズがあります。 現在、Microsoft では Windows PC 用に Windows Hello が提供されています。 Microsoft Authenticator アプリと FIDO2 のセキュリティ キーをパスワードなしファミリに追加しています。
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator アプリ
 

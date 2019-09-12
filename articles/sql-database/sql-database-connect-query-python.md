@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/26/2019
 ms.locfileid: "68569159"
 ---
-# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>クイック スタート:Python を使用して Azure SQL データベースに照会する
+# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>クイック スタート:Python を使用して Azure SQL データベースのクエリを実行する
 
  このクイック スタートでは、[Python](https://python.org) を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。 SDK の詳細については、[リファレンス](https://docs.microsoft.com/python/api/overview/azure/sql) ドキュメント、[pyodbc GitHub リポジトリ](https://github.com/mkleehammer/pyodbc/wiki/)、[pyodbc サンプル](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)を確認してください。
 
@@ -30,7 +30,7 @@ ms.locfileid: "68569159"
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|
-  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  | 作成| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
@@ -44,7 +44,7 @@ ms.locfileid: "68569159"
   
 - ご使用のオペレーティング システムに対応した Python とそれに関連するソフトウェア:
   
-  - **MacOS**:Homebrew と Python をインストールし、ODBC ドライバーと SQLCMD をインストールした後、SQL Server 用の Python ドライバーをインストールします。 [SQL Server を使用した Python アプリの作成](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)に関する記事の手順 1.2、1.3、および 2.1 を参照してください。 詳しくは、「[Linux および macOS に Microsoft ODBC Driver インストールする](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)」をご覧ください。
+  - **MacOS**:Homebrew と Python をインストールし、ODBC ドライバーと SQLCMD をインストールした後、SQL Server 用の Python ドライバーをインストールします。 [macOS で SQL Server を使用した Python アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)に関する記事の手順 1.2、1.3、および 2.1 を参照してください。 詳しくは、「[Linux および macOS に Microsoft ODBC Driver インストールする](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)」をご覧ください。
 
   - **Ubuntu**:`sudo apt-get install python python-pip gcc g++ build-essential` を使用して、Python とその他の必要なパッケージをインストールします。 ODBC ドライバー、SQLCMD、および SQL Server 用 Python ドライバーをダウンロードしてインストールします。 手順については、「[pyodbc Python 開発用に開発環境を構成する](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)」をご覧ください。
 

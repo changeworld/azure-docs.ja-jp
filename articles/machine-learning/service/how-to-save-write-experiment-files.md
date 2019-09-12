@@ -1,6 +1,7 @@
 ---
-title: 入力ディレクトリと出力ディレクトリで、ストレージ制限を回避し、待機時間を実験する
-description: この記事では、ストレージ制限エラーを回避し、待機時間を実験するために、実験で入力ファイルをどこに保存し、出力ファイルをどこに書き込むかについて説明します。
+title: 実験ファイルを保存する場所と書き込む場所
+titleSuffix: Azure Machine Learning service
+description: ストレージ制限エラーを回避し、待機時間を実験するために、実験で入力ファイルをどこに保存し、出力ファイルをどこに書き込むかについて説明します。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ea820536d93ec095f6f2929a9dc3b38d92779a58
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856046"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114509"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
 
@@ -49,7 +50,7 @@ Your total snapshot size exceeds the limit of 300.0 MB
 
 このエラーを解決するには、実験ファイルをデータストアに格納します。 データストアを使用できない場合は、以下の表に可能な代替解決策を示します。
 
-実験の説明|ストレージ制限の解決策
+実験の説明&nbsp;|ストレージ制限の解決策
 ---|---
 ファイル数は 2000 未満で、データストアを使用できない場合| 次を使用してスナップショットのサイズ制限を上書きします。 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> ファイルの数とサイズによっては、これには数分間かかる場合があります。
 特定のスクリプト ディレクトリを使用する必要がある場合| `.amlignore` ファイルを作成して、ソース コードの一部でないファイルを実験スナップショットから除外します。 `.amlignore` ファイルにファイル名を追加し、それをトレーニング スクリプトと同じディレクトリに入れます。 `.amlignore` ファイルは、`.gitignore` ファイルと同じ[構文とパターン](https://git-scm.com/docs/gitignore)を使用します。

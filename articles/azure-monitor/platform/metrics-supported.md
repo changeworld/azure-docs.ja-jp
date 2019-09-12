@@ -336,6 +336,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|ディメンションなし|
 |Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|ディメンションなし|
 
+
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions|
@@ -347,6 +348,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Disk Write Bytes/Sec|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|RoleInstanceId|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|RoleInstanceId|
 |Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|RoleInstanceId|
+
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
@@ -421,7 +423,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Disk Read Bytes|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られたバイト数|VMName|
 |Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれたバイト数|VMName|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|VMName|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|VMName|
+|Disk Write Operations/Sec|Disk Write Operations/Sec|CountPerSecond|平均|ディスク書き込み IOPS|VMName|
 |未使用の CPU クレジット|未使用の CPU クレジット|Count|平均|バーストに使用できるクレジットの合計|ディメンションなし|
 |CPU Credits Consumed|使用済みの CPU クレジット|Count|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
 |Per Disk Read Bytes/sec|データ ディスク読み取りバイト数/秒 (非推奨)|CountPerSecond|平均|監視期間中に 1 つのディスクから読み取られたバイト数/秒|SlotId|
@@ -598,7 +600,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |connections_failed|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |seconds_behind_master|レプリケーションのラグ (秒単位)|Count|平均|レプリケーションのラグ (秒単位)|ディメンションなし|
 |backup_storage_used|使用されたバックアップ ストレージ|Bytes|平均|使用されたバックアップ ストレージ|ディメンションなし|
-|network_bytes_egress|ネットワーク送信|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_egress|Network Out|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
 |network_bytes_ingress|Network In|Bytes|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
@@ -618,7 +620,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |connections_failed|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |seconds_behind_master|レプリケーションのラグ (秒単位)|Count|平均|レプリケーションのラグ (秒単位)|ディメンションなし|
 |backup_storage_used|使用されたバックアップ ストレージ|Bytes|平均|使用されたバックアップ ストレージ|ディメンションなし|
-|network_bytes_egress|ネットワーク送信|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_egress|Network Out|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
 |network_bytes_ingress|Network In|Bytes|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
@@ -637,7 +639,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |active_connections|アクティブな接続|Count|平均|アクティブな接続|ディメンションなし|
 |connections_failed|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |backup_storage_used|使用されたバックアップ ストレージ|Bytes|平均|使用されたバックアップ ストレージ|ディメンションなし|
-|network_bytes_egress|ネットワーク送信|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_egress|Network Out|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
 |network_bytes_ingress|Network In|Bytes|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
 |pg_replica_log_delay_in_seconds|Replica Lag (レプリカ ラグ)|Seconds|最大値|レプリカのラグ (秒単位)|ディメンションなし|
 |pg_replica_log_delay_in_bytes|Max Lag Across Replicas (レプリカ間の最大ラグ)|Bytes|最大値|最も遅れているレプリカのラグ (バイト単位)|ディメンションなし|
@@ -652,7 +654,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |storage_percent|ストレージの割合|Percent|平均|ストレージの割合|ディメンションなし|
 |storage_used|使用済みストレージ|Bytes|平均|使用済みストレージ|ディメンションなし|
 |active_connections|アクティブな接続|Count|平均|アクティブな接続|ディメンションなし|
-|network_bytes_egress|ネットワーク送信|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_egress|Network Out|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
 |network_bytes_ingress|Network In|Bytes|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
@@ -1636,7 +1638,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |DiskReadOperations|ディスク読み取り操作数|Count|合計|以前のサンプル期間内の IO 読み取り操作数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
 |DiskWriteOperations|Disk Write Operations|Count|合計|以前のサンプル期間内の IO 書き込み操作数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|以前のサンプル期間内の IO 読み取り操作の平均数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|以前のサンプル期間内の IO 書き込み操作の平均数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
+|Disk Write Operations/Sec|Disk Write Operations/Sec|CountPerSecond|平均|以前のサンプル期間内の IO 書き込み操作の平均数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
 |DiskReadLatency|ディスク読み取り待機時間|ミリ秒|平均|合計読み取り待機時間。 デバイスとカーネルの読み取り待機時間の合計。|ディメンションなし|
 |DiskWriteLatency|ディスク書き込み待機時間|ミリ秒|平均|合計書き込み待機時間。 デバイスとカーネルの書き込み待機時間の合計。|ディメンションなし|
 |NetworkInBytesPerSecond|受信ネットワークのバイト数/秒|BytesPerSecond|平均|受信トラフィックの平均ネットワーク スループット。|ディメンションなし|

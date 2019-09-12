@@ -252,7 +252,7 @@ Azure Portal で作成した関数からのログをご覧ください。
 * **`id`** :イベント グリッド イベントの一意識別子。
 * **`subject`** :イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
 * **`data`** :Durable Functions 固有のパラメーター。
-  * **`hubName`** :TaskHub](durable-functions-task-hubs.md) の名前。
+  * **`hubName`** :[TaskHub](durable-functions-task-hubs.md) の名前。
   * **`functionName`** :オーケストレーター関数の名前。
   * **`instanceId`** :Durable Functions のインスタンス ID。
   * **`reason`** :追跡イベントに関連付けられている追加のデータ。 詳しくは、「[Durable Functions における診断 (Azure Functions)](durable-functions-diagnostics.md)」をご覧ください

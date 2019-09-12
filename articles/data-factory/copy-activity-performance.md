@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996457"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232353"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 > [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください:"]
@@ -181,6 +181,7 @@ Azure Data Factory には、次のパフォーマンス最適化機能があり�
 | コピー シナリオ | サービスによって決定される並列コピーの既定数 |
 | --- | --- |
 | ファイル ベースのストア間でのデータのコピー |ファイルのサイズと、2 つのクラウド データ ストア間でのデータのコピーで使用される DMU の数またはセルフホステッド統合ランタイム マシンの物理構成によって異なります。 |
+| パーティション オプションが有効のリレーショナル データ ストアからコピー ([Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SAP オープン ハブ](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)を含む)|4 |
 | 任意のコピー元ストアから Azure Table ストレージにデータをコピーする |4 |
 | 他のすべてのコピー シナリオ |1 |
 
@@ -192,7 +193,7 @@ Azure Data Factory には、次のパフォーマンス最適化機能があり�
 **注意する点:**
 
 - ファイル ベースのストア間でデータをコピーする場合は、**parallelCopies** によってファイル レベルでの並列処理が決まります。 単一ファイル内でのチャンク化は裏で自動的かつ透過的に行われます。 指定されたソース データ ストアの種類に最適なチャンク サイズを使用し、**parallelCopies** とは独立に並行してデータを読み込むよう設計されています。 実行時にコピー操作でデータ移動サービスに使用される並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile** の場合、コピー アクティビティはファイル レベルでの並列処理を活用できません。
-- ([Oracle](connector-oracle.md#oracle-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source)、および [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) コネクタをコピー元とし、データ パーティショニングを有効にする場合を除き) ファイル ベース以外のストアからファイル ベースのストアにデータをコピーする場合、データ移動サービスは **parallelCopies** プロパティを無視します。 並列処理が指定されても、この場合は適用されません。
+- ([Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SAP オープン ハブ](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) コネクタをコピー元とし、データ パーティショニングを有効にする場合を除き) ファイル ベース以外のストアからファイル ベースのストアにデータをコピーする場合、データ移動サービスでは **parallelCopies** プロパティは無視されます。 並列処理が指定されても、この場合は適用されません。
 - **parallelCopies** プロパティは **dataIntegrationUnits** と無関係です。 前者はすべてのデータ統合単位全体でカウントされます。
 - **parallelCopies** プロパティに値を指定するとき、コピー元データ ストアとシンク データ ストアの負荷増加を考慮してください。 また、ハイブリッド コピーなどで、セルフホステッド統合ランタイムによってコピー アクティビティが支援される場合、セルフホステッド統合ランタイムの負荷増加を考慮してください。 この負荷増加は、特に複数のアクティビティがある場合や、同じデータ ストアに対して実行される同じアクティビティの同時実行がある場合に発生します。 データ ストアまたはセルフホステッド統合ランタイムの負荷の上限に達したことがわかった場合は、**parallelCopies** の値を減らし、負荷を軽減してください。
 

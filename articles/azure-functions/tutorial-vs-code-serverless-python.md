@@ -3,21 +3,31 @@ title: Python と Visual Studio Code で Azure Functions を作成し、デプ�
 description: Azure Functions 用の Visual Studio Code 拡張機能を使用し、Python でサーバーレス関数を作成し、Azure にデプロイする方法。
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639092"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233109"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions に Python をデプロイする
 
 このチュートリアルでは、Visual Studio Code と Azure Functions 拡張を使用し、Python でサーバーレス HTTP エンドポイントを作成し、さらに接続 (または "バインド") をストレージに追加します。 Azure Functions では、サーバーレス環境でコードが実行されますが、仮想マシンをプロビジョニングしたり、Web アプリを公開したりする必要がありません。 Visual Studio Code 用の Azure Functions 拡張により、さまざまな構成問題が自動的に処理され、Functions の使用プロセスが大幅に簡素化されます。
+
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * Azure Functions 拡張機能をインストールする
+> * HTTP によってトリガーされる関数を作成する
+> * ローカル デバッグ
+> * アプリケーションの設定を同期する
+> * ストリーミング ログを表示する
+> * Azure Storage へ接続
 
 このチュートリアルのいずれかの手順で問題が発生した場合は、詳細をお知らせください。 詳しいフィードバックを送信するには、各セクションの終わりにある **[問題が発生しました]** ボタンを使用します。
 
@@ -46,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、30 日間の�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Functions 拡張機能がインストールされたら、Azure アカウントにサインインします。具体的には、 **[Azure:Functions]** エクスプローラーに進み、 **[Azure にサインイン]** を選択し、プロンプトに従います。
+Functions 拡張機能がインストールされたら、Azure アカウントにサインインします。そのためには、 **[Azure: Functions]** エクスプローラーに進み、 **[Azure にサインイン]** を選択し、プロンプトに従います。
 
 ![Visual Studio Code で Azure にサインインする](media/tutorial-vs-code-serverless-python/azure-sign-in.png)
 
@@ -100,29 +110,26 @@ Azure Functions ロゴで始まる出力は (出力を上方向にスクロー�
     | Select a language for your function app project (関数アプリ プロジェクトの言語を選択してください) | **Python** | 関数に使用する言語。これによりコードに使用するテンプレートが決定されます。 |
     | Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください) | **HTTP トリガー** | HTTP トリガーを使用する関数は、関数のエンドポイントに HTTP 要求が行われるたびに実行されます。 (Azure Functions には他にもさまざまなトリガーがあります。 詳細は、「[Functions でできること](functions-overview.md#what-can-i-do-with-functions)」を参照してください。) |
     | Provide a function name (関数名を指定してください) | HttpExample | この名前は、構成データと共に関数のコードが含まれるサブフォルダーに使用されます。また、HTTP エンドポイントの名前がこの名前で定義されます。 関数自体とトリガーを区別する目的で、既定の "HTTPTrigger" をそのまま使用せず、"HttpExample" を使用します。 |
-    | 承認レベル | **匿名** | 匿名認証の場合、関数は公開され、誰でもアクセスできます。 |
+    | 承認レベル | **Function** | 関数エンドポイントの呼び出しを行うには、[関数キー](functions-bindings-http-webhook.md#authorization-keys)が必要です。 |
     | Select how you would like to open your project (プロジェクトを開く方法を選択してください) | **現在のウィンドウで開く** | 現在の Visual Studio Code ウィンドウでプロジェクトを開きます。 |
 
-1. 短い時間の経過後、新しいプロジェクトが作成されたことを示すメッセージが表示されます。 **エクスプローラー**には、関数のために作成されたサブフォルダーがあります。Visual Studio Code によって *\_\_init\_\_.py* ファイルが開きますが、このファイルには既定の関数コードが含まれます。
+1. 短い時間の経過後、新しいプロジェクトが作成されたことを示すメッセージが表示されます。 **エクスプローラー**には、関数用に作成されたサブフォルダーがあります。 
+
+1. まだ開いていない場合は、関数の既定のコードが含まれる *\_\_init\_\_.py* ファイルを開きます。
 
     [![新しい Python 関数プロジェクトを作成した結果](media/tutorial-vs-code-serverless-python/project-create-results.png)](media/tutorial-vs-code-serverless-python/project-create-results.png)
 
     > [!NOTE]
-    > " *\_\_init\_\_.py*" を開いたとき、Python インタープリターが選択されていないと Visual Studio Code に表示されたら、コマンド パレット (F1) を開き、**Python:Select Interpreter** コマンドを選択します。次に、(プロジェクトの一部として作成された) ローカルの `.env` フォルダーで仮想環境を選択します。 「[前提条件](#prerequisites)」で述べたように、この環境は厳密に Python 3.6x をベースにする必要があります。
+    > *\_\_init\_\_.py* を開いたとき、Python インタープリターが選択されていないことが Visual Studio Code で示されたら、コマンド パレット (F1) を開き、**Python: Select Interpreter** コマンドを選択します。次に、(プロジェクトの一部として作成された) ローカルの `.env` フォルダーで仮想環境を選択します。 「[前提条件](#prerequisites)」で述べたように、この環境は厳密に Python 3.6x をベースにする必要があります。
     >
     > ![プロジェクトで作成された仮想環境を選択する](media/tutorial-vs-code-serverless-python/select-venv-interpreter.png)
-
-> [!TIP]
-> 同じプロジェクトで別の関数を作成するときは必ず、**Create Function** コマンドを **[Azure:Functions]** エクスプローラーで使用するか、コマンド パレット (F1) を開き、**Azure Functions:Create Function** コマンドを探して選択します。 いずれのコマンドでも、関数名 (エンドポイントの名前) が求められ、既定のファイルと共にサブフォルダーが作成されます。
->
-> ![[Azure:Functions] エクスプローラー内の新しい関数を作成するコマンド](media/tutorial-vs-code-serverless-python/function-create-new.png)
 
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=02-create-function)
 
 ## <a name="examine-the-code-files"></a>コード ファイルを調べる
 
-新しく作成された関数のサブフォルダーにファイルが 3 つあります。" *\_\_init\_\_.py*" には関数のコードが含まれます。"*function.json*" は、Azure Functions の関数を説明するものです。"*sample.dat*" はサンプル データ ファイルです。 "*sample.dat*" は、他のファイルをサブフォルダーに追加できることを示すためだけに存在します。必要に応じて削除できます。
+新しく作成された _HttpExample_ 関数サブフォルダーにはファイルが 3 つあります。 *\_\_init\_\_.py* には関数のコードが含まれ、*function.json* では Azure Functions 向けに関数が記述されており、*sample.dat* はサンプル データ ファイルです。 "*sample.dat*" は、他のファイルをサブフォルダーに追加できることを示すためだけに存在します。必要に応じて削除できます。
 
 まず、"*function.json*" を確認し、次に " *\_\_init\_\_.py*" のコードを確認しましょう。
 
@@ -135,7 +142,7 @@ function.json ファイルには、Azure Functions エンドポイントに必�
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
@@ -155,7 +162,7 @@ function.json ファイルには、Azure Functions エンドポイントに必�
 
 `scriptFile` プロパティで、コードのスタートアップ ファイルを特定します。そのコードには、`main` という名前の Python 関数が含まれている必要があります。 ここに指定されているファイルに `main` 関数が含まれている限り、コードを複数のファイルに分割できます。
 
-`bindings` 要素には、2 つのオブジェクトが含まれています。1 つは受信要求を説明するものであり、もう 1 つは HTTP 応答を説明するものです。 受信要求 (`"direction": "in"`) の場合、関数は HTTP GET または POST 要求に応答し、認証を必要としません。 応答 (`"direction": "out"`) は、`main` Python 関数から返される値が何であれ、それを返す HTTP 応答です。
+`bindings` 要素には、2 つのオブジェクトが含まれています。1 つは受信要求を説明するものであり、もう 1 つは HTTP 応答を説明するものです。 受信要求 (`"direction": "in"`) の場合、関数は HTTP GET または POST 要求に応答し、関数キーを指定する必要があります。 応答 (`"direction": "out"`) は、`main` Python 関数から返される値が何であれ、それを返す HTTP 応答です。
 
 ### <a name="__initpy__"></a>\_\_init.py\_\_
 
@@ -200,7 +207,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="debug-locally"></a>ローカル デバッグ
 
-1. Functions プロジェクトを作成すると、Visual Studio Code 拡張機能により、**Attach to Python Functions** という名前の構成が 1 つ含まれる起動構成も`.vscode/launch.json` に作成されます。 この構成では、F5 を押すか、デバッグ エクスプローラーを使用し、プロジェクトを開始できます。
+1. Functions プロジェクトを作成すると、Visual Studio Code 拡張機能により、**Attach to Python Functions** という名前の構成が 1 つ含まれる起動構成も`.vscode/launch.json` に作成されます。 この構成では、**F5** キーを押すか、デバッグ エクスプローラーを使用して、プロジェクトを開始できます。
 
     ![Functions 起動構成が表示されたデバッグ エクスプローラー](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -233,7 +240,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     あるいは、`{"name":"Visual Studio Code"}` を含む "*data.json*" のようなファイルを作成し、コマンド `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample` を使用します。
 
-1. 関数のデバッグをテストするには、`name = req.params.get('name')` と記されている行にブレークポイントを設定し、URL に再度要求を行います。 Visual Studio Code デバッガーはその行で停止するはずです。変数を調べ、コードをステップ実行できます (基本的なデバッグの簡単なチュートリアルは、[Visual Studio Code チュートリアルのデバッガーの構成と実行](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger)に関するセクションにあります)。
+1. 関数をデバッグするには、`name = req.params.get('name')` と記されている行にブレークポイントを設定し、URL に再度要求を行います。 Visual Studio Code デバッガーはその行で停止するはずです。変数を調べ、コードをステップ実行できます (基本的なデバッグの簡単なチュートリアルは、[Visual Studio Code チュートリアルのデバッガーの構成と実行](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger)に関するセクションにあります)。
 
 1. 関数をローカルで徹底的にテストできたら、デバッガーを停止します ( **[デバッグ]**  >  **[デバッグの停止]** メニュー コマンドを使用するか、デバッグ ツールバーで **Disconnect** コマンドを使用します)。
 
@@ -386,7 +393,7 @@ func azure functionapp logstream <app_name> --browser
     }
     ```
 
-1. F5 を押すか、 **[デバッグ]**  >  **[デバッグの開始]** メニュー コマンドを選択し、デバッガーを開始します。 **[出力]** ウィンドウには、プロジェクトの両方のエンドポイントが表示されるはずです。
+1. **F5** キーを押すか、 **[デバッグ]**  >  **[デバッグの開始]** メニュー コマンドを選択して、デバッガーを開始します。 **[出力]** ウィンドウには、プロジェクトの両方のエンドポイントが表示されるはずです。
 
     ```output
     Http Functions:
@@ -472,15 +479,15 @@ func azure functionapp logstream <app_name> --browser
             )
     ```
 
-1. このような変更をローカルでテストするには、F5 を押すか、 **[デバッグ]**  >  **[デバッグの開始]** メニュー コマンドを選択し、Visual Studio Code で再度、デバッガーを起動します。 前と同じように、 **[出力]** ウィンドウには、プロンプトのエンドポイントが表示されるはずです。
+1. これらの変更をローカル環境でテストするには、**F5** キーを押すか、 **[デバッグ]**  >  **[デバッグの開始]** メニュー コマンドを選択して、Visual Studio Code で再度デバッガーを開始します。 前と同じように、 **[出力]** ウィンドウには、プロンプトのエンドポイントが表示されるはずです。
 
 1. ブラウザーで、URL `http://localhost:7071/api/HttpExample?name=VS%20Code` にアクセスし、HttpExample エンドポイントへの要求を作成します。これにより、メッセージのキューへの書き込みも行われるはずです。
 
 1. メッセージが "outqueue" キュー (バインドで名前を設定) に書き込まれたことを確認するには、3 つのメソッドのいずれかを使用できます。
 
-    1. [Azure portal](https://portal.azure.com) にサインインし、関数プロジェクトが含まれるリソース グループに移動します。 そのリソース グループ内で、プロジェクトのストレージ アカウントを見つけて移動し、 **[キュー]** に進みます。 そのページで "outqueue" に進みます。ログに記録されているメッセージがすべて表示されるはずです。
+    1. [Azure portal](https://portal.azure.com) にサインインし、関数プロジェクトが含まれるリソース グループに移動します。 そのリソース グループ内で、プロジェクトのストレージ アカウントを見つけて開き、 **[キュー]** に移動します。 そのページで "outqueue" に移動します。ログに記録されているメッセージがすべて表示されるはずです。
 
-    1. Azure Storage Explorer でキューに移動し、キューを調べます。Azure Storage Explorer は Visual Studio と統合されますが、詳細は「[Visual Studio Code を使用して関数を Azure Storage に接続する](functions-add-output-binding-storage-queue-vs-code.md)」にあります。特に「[出力キューを確認する](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue)」セクションをご覧ください。
+    1. 「[Visual Studio Code を使用して関数を Azure Storage に接続する](functions-add-output-binding-storage-queue-vs-code.md)」の特に「[出力キューを確認する](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue)」セクションで説明されているように、Azure Storage Explorer でキューを開いて調べます。Azure Storage Explorer は Visual Studio と統合されています。
 
     1. Azure CLI を使用し、ストレージ キューにクエリを実行します。詳細は「[ストレージ キューに対するクエリを実行する](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue)」にあります。
     

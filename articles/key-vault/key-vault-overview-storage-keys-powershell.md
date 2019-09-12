@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562539"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136581"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault のマネージド ストレージ アカウント - PowerShell
 
@@ -21,6 +21,7 @@ ms.locfileid: "69562539"
 > - ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証する。 
 > - Azure 上で実行する場合に [Azure AD マネージド ID](/azure/active-directory/managed-identities-azure-resources/) を使用する。 マネージド ID を使用すると、クライアント認証を併用し、アプリケーションに資格情報を保存する必要がなくなります。
 > - 承認の管理にロール ベースのアクセス制御 (RBAC) を使用する (これも Key Vault でサポートされています)。
+> - 現時点では、テーブルにアクセスする場合、ストレージ アカウントへの AAD アクセスは機能しません。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -142,7 +143,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>キーの再生成を有効にする
 
-Key Vault でストレージ アカウント キーを定期的に再生成する場合は、再生成期間を設定できます。 次の例では、3 日間の再生成期間を設定します。 この日数の後、Key Vault は "key1" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます。
+Key Vault でストレージ アカウント キーを定期的に再生成する場合は、再生成期間を設定できます。 次の例では、3 日間の再生成期間を設定します。 この日数の後、Key Vault は "key2" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

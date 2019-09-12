@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/22/2019
+ms.date: 09/03/2019
 ms.author: jgao
-ms.openlocfilehash: b27caa3d91d67ad63bfbf5e7c549d690980cdd7b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 13ac8b9f6d82cc8b0060f87237ef3140cb245379
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934437"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259199"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用した Azure Key Vault からのシークレットの設定と取得
 
@@ -102,7 +102,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Key Vault のホーム ページ](https://azure.microsoft.com/services/key-vault/)
-* [Azure Key Vault のドキュメント](index.yml)
-* [Azure SDK For Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
-* [Azure REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)
+このクイックスタートでは、Azure Resource Manager テンプレートを使用してキー コンテナーとシークレットを作成し、デプロイを検証しました。 Key Vault と Azure Resource Manager の詳細については、引き続き以下の記事を参照してください。
+
+- [Azure Key Vault の概要](key-vault-overview.md)を確認する
+- [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の詳細を確認する
+- [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)についての詳しい情報を入手する
+- [Azure Key Vault のベスト プラクティス](key-vault-best-practices.md)を確認する

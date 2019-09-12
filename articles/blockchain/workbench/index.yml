@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Azure Blockchain Workbench のドキュメント
+title: Azure Blockchain Workbench プレビューのドキュメント
 summary: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントで、Azure Blockchain Workbench のデプロイ方法と、Azure でブロックチェーン アプリケーションを作成して管理する方法を紹介します。
 metadata:
-  title: Azure Blockchain Workbench のドキュメント - チュートリアル、API リファレンス
+  title: Azure Blockchain Workbench プレビューのドキュメント - チュートリアル、API リファレンス
   description: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントで、Azure Blockchain Workbench のデプロイ方法と、Azure でブロックチェーン アプリケーションを作成して管理する方法を紹介します。
   services: azure-blockchain
   ms.service: azure-blockchain
   ms.topic: landing-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 08/29/2019
-  ms.openlocfilehash: 515e269619f7efa5c00071794e41fff83b81ed60
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.date: 09/05/2019
+  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70240825"
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845020"
 landingContent:
 - title: Azure Blockchain Workbench について
   linkLists:

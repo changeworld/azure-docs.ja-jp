@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 011345cca1ed1c763a628c94401320862182c9cc
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f0bd4a49a35392c25b8985aa68ad4e4b66be026c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707351"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306516"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>クイック スタート:Python 用 Face クライアント ライブラリ
 
@@ -71,7 +71,7 @@ pip install --upgrade azure-cognitiveservices-Face
 
 以下のクラスとインターフェイスにより、Face Python SDK の主要な機能の一部が処理されます。
 
-|EnableAdfsAuthentication|説明|
+|名前|説明|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | このクラスは、Face サービスを使用するための承認を表し、すべての Face 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |
@@ -108,6 +108,14 @@ pip install --upgrade azure-cognitiveservices-Face
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 その他の検出シナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上のサンプル コードを参照してください。
+
+### <a name="display-and-frame-faces"></a>顔を表示してフレームに収める
+
+次のコードは、指定された画像をディスプレイに出力し、DetectedFace.faceRectangle プロパティを使用して顔の周りに四角形を描画します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
+
+![顔の周囲に赤い四角形が描画されている若い女性](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>似た顔の検索
 
@@ -161,7 +169,7 @@ pip install --upgrade azure-cognitiveservices-Face
 
 ## <a name="identify-a-face"></a>顔を識別する
 
-次のコードは、複数の顔が含まれている画像を取得し、画像内の各人物の ID を特定します。 検出された各顔は、**PersonGroup** と比較されます。これは、いくつかの顔が関連付けられているさまざまな **Person** オブジェクトのデータベースです。 
+次のコードは、複数の顔が含まれている画像を取得し、画像内の各人物の ID を特定します。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。
 
 > [!IMPORTANT]
 > この例を実行するには、まず、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」のコードを実行する必要があります。
@@ -188,7 +196,7 @@ pip install --upgrade azure-cognitiveservices-Face
 
 まず、Face リソースを含む 2 つ目の Azure サブスクリプションが必要です。そのためには、「[設定](#setting-up)」セクションの手順に従います。 
 
-次に、スクリプトの先頭付近で以下の変数を作成します。 また、自分の Azure アカウントのサブスクリプション ID と、新しい (ターゲット) アカウントのキーおよびサブスクリプション ID のための、新しい環境変数も作成する必要があります。 
+次に、スクリプトの先頭付近で以下の変数を作成します。 また、お使いの Azure アカウントのサブスクリプション ID と新しい (ターゲット) アカウントのキー、エンドポイント、サブスクリプション ID のための、新しい環境変数を作成する必要があります。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
 

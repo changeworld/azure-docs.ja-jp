@@ -9,20 +9,26 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: a7f64a07378b5ef0085fe77018d6b202984bc1a3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b29fdf4e5b3f2719865820695f659df7e75e19b5
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945822"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256438"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。  
 
 ## <a name="release-notes"></a>リリース ノート 
+
+### <a name="september-3-2019"></a>2019 年 9 月 3 日
+
+* Azure オーサリング リソース - [今すぐ移行](luis-migration-authoring.md)。
+* 事前に作成されたエンティティのトルコ語のサポート
+* datetimeV2 のイタリア語のサポート
 
 ### <a name="july-23-2019"></a>2019 年 7 月 23 日
 

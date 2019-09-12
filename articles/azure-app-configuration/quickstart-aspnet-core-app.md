@@ -28,7 +28,7 @@ ms.locfileid: "68326623"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- [.NET コア SDK](https://dotnet.microsoft.com/download)
+- [.NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
@@ -38,9 +38,9 @@ ms.locfileid: "68326623"
 
     | キー | 値 |
     |---|---|
-    | TestApp:Settings:BackgroundColor | 白 |
+    | TestApp:Settings:BackgroundColor | White |
     | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | 黒 |
+    | TestApp:Settings:FontColor | Black |
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。

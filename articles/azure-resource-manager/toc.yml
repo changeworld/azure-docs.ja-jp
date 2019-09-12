@@ -4,6 +4,8 @@
   items:
     - name: Azure Resource Manager とは
       href: resource-group-overview.md
+    - name: テンプレートの概要
+      href: template-deployment-overview.md
 - name: クイック スタート
   expanded: true
   items:
@@ -58,11 +60,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: 概念
   items:
-    - name: テンプレートのデプロイ
-      href: template-deployment-overview.md
-    - name: テンプレート ファイルの構造
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: テンプレートのベスト プラクティス
       href: template-best-practices.md
     - name: クラウドの一貫性を実現するテンプレート
@@ -89,6 +86,12 @@
           href: resource-manager-tools-vs-code.md
         - name: テンプレート式を記述する
           href: template-expressions.md
+        - name: parameters
+          href: template-parameters.md
+        - name: 変数
+          href: template-variables.md
+        - name: ユーザー定義関数
+          href: template-user-defined-functions.md
         - name: リソース
           items:
             - name: 子リソースの名前と種類
@@ -101,6 +104,8 @@
               href: resource-location.md
             - name: テンプレートの拡張機能を使用する
               href: resource-manager-use-extensions.md
+        - name: 出力
+          href: template-outputs.md
         - name: テンプレートをモジュール化する
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
@@ -248,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: リファレンス
   items:
+    - name: テンプレート ファイルの構造
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: テンプレート リファレンス
       href: /azure/templates/
     - name: テンプレート関数

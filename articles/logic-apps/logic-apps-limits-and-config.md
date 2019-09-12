@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099425"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242368"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -260,11 +260,9 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 同じリージョン内のすべてのロジック アプリは、同じ IP アドレス範囲を使用します。 ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在する場所に基づいて、Logic Apps サービスで使用される*すべて*の[着信](#inbound) IP アドレス*と*[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**受信**と**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。 
 
-[Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
+[Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。 統合サービス環境 (ISE) 内で実行されるロジック アプリの場合は、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)ことを確認してください。
 
-統合サービス環境 (ISE) 内で実行されるロジック アプリの場合は、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)ことを確認してください。
-
-[Azure Government](../azure-government/documentation-government-overview.md) と [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) の場合、コネクタに対する予約済み IP アドレスは現在使用できません。
+カスタム コネクタ、[Azure Government](../azure-government/documentation-government-overview.md)、[Azure China 21Vianet](https://docs.microsoft.com/azure/china/) の場合、固定 IP アドレスまたは予約済み IP アドレスは使用できません。
 
 > [!IMPORTANT]
 >

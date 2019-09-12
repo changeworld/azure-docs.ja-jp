@@ -36,8 +36,8 @@
       href: relay-authentication-and-authorization.md
     - name: ハイブリッド接続のプロトコル
       href: relay-hybrid-connections-protocol.md
-    - name: Azure の一般的なセキュリティ属性
-      href: service-bus-relay-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: service-bus-relay-security-controls.md
 - name: 方法
   items:
     - name: 計画と設計

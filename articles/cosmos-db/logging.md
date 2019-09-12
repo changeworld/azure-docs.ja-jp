@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a2702abd39ecdf506d58b6bd8884f12607e29e8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615293"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232386"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB での診断ログ 
 
@@ -436,7 +436,7 @@ Azure Monitor ログで診断データを表示するには、次の図のよう
 * 実行時間が 3 ミリ秒を超えている操作をクエリするには:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * 操作を実行しているエージェントをクエリするには:
@@ -448,7 +448,7 @@ Azure Monitor ログで診断データを表示するには、次の図のよう
 * 実行時間が長い操作が実行された時刻をクエリするには:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
     ```
 
 新しいログ検索言語の使い方について詳しくは、「[Azure Monitor ログでのログ検索について](../log-analytics/log-analytics-log-search-new.md)」をご覧ください。 
@@ -474,7 +474,7 @@ Azure Storage と Azure Monitor ログに格納されている診断データは
 | **clientIpAddress** | **clientIpAddress_s** | クライアントの IP アドレス。 |
 | **requestCharge** | **requestCharge_s** | 操作に使用された RU 数 |
 | **collectionRid** | **collectionId_s** | コレクションの一意の ID。|
-| **duration** | **duration_s** | 操作の期間 (ティック単位)。 |
+| **duration** | **duration_s** | 操作時間 (ミリ秒)。 |
 | **requestLength** | **requestLength_s** | 要求の長さ (バイト単位)。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | [リソース トークン](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)が認証に使われると、この値は空ではありません。 値は、ユーザーのリソース ID を示します。 |

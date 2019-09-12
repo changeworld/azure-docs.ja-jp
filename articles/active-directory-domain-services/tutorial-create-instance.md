@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125217"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172049"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンスを作成して構成する
 
@@ -202,7 +202,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 1. **[パスワードの変更]** ページで既存の (古い) パスワードを入力した後、新しいパスワードを入力して、それを確認します。
 1. **[Submit]\(送信\)** をクリックします。
 
-パスワードの変更後、Azure AD DS で新しいパスワードを使用できるようになるまでに数分かかります。 約 20 分後には、新しいパスワードを使用して、マネージド ドメインに参加しているコンピューターにサインインできるようになります。
+パスワードの変更後、Azure AD DS で新しいパスワードを使用したり、マネージド ドメインに参加しているコンピューターに正常にサインインしたりできるようになるまでには数分かかります。
 
 ## <a name="next-steps"></a>次の手順
 

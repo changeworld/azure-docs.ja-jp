@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/22/2019
+ms.date: 09/04/2019
 ms.author: dalek
-ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982614"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277009"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -120,6 +120,8 @@ systemEvents
 
 ![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-003.png)
 
+[日次上限を変更するために Azure Resource Manager で変更する](../../azure-monitor/app/powershell.md)プロパティは `dailyQuota` です。  Azure Resource Manager を使用して、`dailyQuotaResetTime` と日次上限の `warningThreshold` を設定することもできます。 
+
 ## <a name="sampling"></a>サンプリング
 [サンプリング](../../azure-monitor/app/sampling.md)は、テレメトリがアプリに送信される速度を低下させる一方で、診断検索中に関連イベントを見つける機能を保持する方法です。 適切なイベント カウントも保持されます。
 
@@ -147,6 +149,9 @@ systemEvents
 保持されている各レコードで、`itemCount` は、それが表す元のレコードの数を示します。 これは、1 + 以前に破棄されたレコードの数と同じです。 
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
+
+> [!NOTE]
+> 考えられる問題への対処が行われる間、この機能は一時的に削除されています。  2019 年 9 月中旬に再度利用できるようになる予定です。
 
 Application Insights リソースの既定の保持期間は 90 日です。 Application Insights リソースごとに異なる保持期間を選択できます。 使用可能な保持期間の完全なセットは、30 日、60 日、90 日、120 日、180 日、270 日、365 日、550 日、または 730 日です。 
 

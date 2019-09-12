@@ -205,7 +205,7 @@
           href: connector-azure-cosmos-db.md
         - name: Azure Cosmos DB の MongoDB 用 API
           href: connector-azure-cosmos-db-mongodb-api.md
-        - name: Azure データ エクスプローラー
+        - name: Azure Data Explorer
           href: connector-azure-data-explorer.md
         - name: Azure Data Lake Storage Gen1
           href: connector-azure-data-lake-store.md
@@ -279,6 +279,8 @@
           href: connector-informix.md
         - name: Jira
           href: connector-jira.md
+        - name: JSON 形式
+          href: format-json.md
         - name: Magento
           href: connector-magento.md
         - name: MariaDB
@@ -450,8 +452,6 @@
           href: control-flow-webhook-activity.md
     - name: データ フローの変換
       items:
-        - name: 固定幅ファイル
-          href: how-to-fixed-width.md
         - name: 集約
           href: data-flow-aggregate.md
         - name: 行の変更
@@ -610,6 +610,10 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
           href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: マッピング データ フローを使用した変換
+      items:
+        - name: 固定幅のテキスト ファイルを処理する
+          href: how-to-fixed-width.md
 - name: リファレンス
   items:
     - name: .NET

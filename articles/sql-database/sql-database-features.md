@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2a14140a395e8ccd2bf0092d5922d639914b01a7
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8640a283cf81ddafdb8402d9bdfc46f88b35fa45
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900422"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135287"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較:Azure SQL Database と SQL Server
 
@@ -160,6 +160,16 @@ Azure SQL データベースでは、データの管理に役立つさまざま�
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | はい | はい |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | × - [拡張イベント](sql-database-xevent-db-diff-from-svr.md)に関する記事を参照してください | はい |
 | [System Center Operations Manager - SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [はい](https://www.microsoft.com/download/details.aspx?id=38829) | いいえ |
+
+## <a name="migration-methods"></a>移行の方法
+
+さまざまな移行方法を利用し、SQL Server、Single Database、Managed Instance データベース間でデータを移動できます。 **オンライン**の手法の場合、移行中、ソースで行われた変更がすべて集められます。一方で**オフライン**の手法の場合、移行の進行中、ソースでデータを変更しているワークロードを停止する必要があります。
+
+| **ソース** | **単一データベースとエラスティック プール** | **Managed Instance** |
+| --- | --- | --- |
+| SQL Server (オンプレミス、AzureVM、Amazon RDS) | **オンライン:** [データ移行サービス (DMS)](https://docs.microsoft.com/sql/dma/dma-overview)、[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md) <br/> **オフライン:** [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **オンライン:** [データ移行サービス (DMS)](https://docs.microsoft.com/sql/dma/dma-overview)、[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md) <br/> **オフライン:** ネイティブ バックアップ/復元、[BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[スナップショット レプリケーション](sql-database-managed-instance-transactional-replication.md) |
+| 単一データベース | **オフライン:** [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **オフライン:** [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP |
+| マネージド インスタンス | **オンライン:** [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md) <br/> **オフライン:** [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[スナップショット レプリケーション](sql-database-managed-instance-transactional-replication.md) | **オンライン:** [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md) <br/> **オフライン:** クロス インスタンスのポイントインタイム リストア ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) または [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208))、[ネイティブ バックアップ/復元](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)、[BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[スナップショット レプリケーション](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>次の手順
 

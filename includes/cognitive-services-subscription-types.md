@@ -4,29 +4,31 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 674dd30ff3e493ec4c4036f032f82624a6ca5749
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3b808f4eb853cf05eb08cd1acf08dedccabf71a6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334227"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274636"
 ---
 ## <a name="azure-cognitive-service-resource-types"></a>Azure Cognitive Service のリソースの種類
 
-> [!NOTE]
-> サブスクリプションの所有者は、リソース グループとサブスクリプション用の Cognitive Services リソースの作成を無効にすることができます。これを行うには、[Azure ポリシー](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition)を適用し、[許可されていないリソースの種類] ポリシー定義を割り当て、ターゲットのリソースの種類として **Microsoft.CognitiveServices/accounts** を指定します。
-
-2 つの異なるリソースを使用して、Azure Cognitive Services にアクセスすることができます:マルチサービス リソース、または単一サービス リソース。 これらのサブスクリプションでは、一度に 1 つのサービスまたは複数のサービスに接続できます。
+<!-- > [!NOTE]
+> Subscription owners can disable the creation of Cognitive Services resources for resource groups and subscriptions by applying [Azure policy](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition), assigning a “Not allowed resource types” policy definition, and specifying **Microsoft.CognitiveServices/accounts** as the target resource type. -->
+2 つの異なるリソースを使用して、Azure Cognitive Services にアクセスすることができます:マルチサービス リソース、または単一サービス リソース。 これらのサブスクリプションでは、単一のコグニティブ サービスまたは一度に複数のコグニティブ サービスに接続できます。
 
 ### <a name="multi-service-resource"></a>マルチサービス リソース
+
+マルチサービスの Cognitive Services リソースのサブスクライブ:
+* 単一の Azure リソースをほとんどの Azure Cognitive Services に使用できます。
+* 複数の Azure Cognitive Services で使用できる単一のキーを取得します。
+* ご利用の複数のサービスの課金を統合します。 追加情報については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)」を参照してください。
 
 >[!WARNING]
 > 現在のところ、以下のサービスではマルチサービス キーがサポートされて**いません**。QnA Maker、Speech Services、Custom Vision、および Anomaly Detector。
 
-マルチサービスの Cognitive Services リソースのサブスクライブ:
-* 単一の Azure リソースをほとんどの Azure Cognitive Services に使用できます。
-* ご利用の複数のサービスの課金を統合します。 追加情報については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)」を参照してください。
-
 ### <a name="single-service-resource"></a>単一サービス リソース
 
-単一サービス リソース (Computer Vision や Speech Services など) は、指定されたサービスに限定されます。
+単一サービスの Cognitive Services リソースのサブスクライブ:
+* リソースを作成する特定のコグニティブ サービス (Computer Vision や Speech Services など) を使用できます。
+* リソースを作成するコグニティブ サービスに固有のキーを取得します。

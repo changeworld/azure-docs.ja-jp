@@ -80,8 +80,8 @@
       href: backup-azure-backup-server-import-export-.md
     - name: テープ ライブラリからの移行
       href: backup-azure-backup-cloud-as-tape.md
-    - name: Azure の一般的なセキュリティ属性
-      href: backup-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: backup-security-controls.md
 - name: 方法
   items:
     - name: Azure Backup Server

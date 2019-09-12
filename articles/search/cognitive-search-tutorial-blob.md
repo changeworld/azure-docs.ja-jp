@@ -1,7 +1,7 @@
 ---
 title: REST チュートリアル:コグニティブ検索を使用して AI エンリッチメント パイプラインを構築する - Azure Search
 description: Postman と Azure Search REST API を使用した、JSON BLOB のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: e647d3c66d339a60278fa7d0f078497157b3fff1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102788"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274126"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>チュートリアル:コグニティブ検索を使用して "非構造化コンテンツ" に構造を追加する
 
@@ -22,10 +22,10 @@ ms.locfileid: "70102788"
 
 > [!div class="checklist"]
 > * まずは、Azure Blob Storage で、PDF、MD、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。
-> * テキストの抽出、言語の検出、エンティティの認識、キー フレーズの検出を行うパイプラインを作成する。
+> * テキストの抽出、言語の検出、エンティティの認識、キー フレーズの検出を行うパイプラインを定義する。
 > * 出力 (生コンテンツと、パイプラインで生成された名前と値のペア) を格納するためのインデックスを定義する。
-> * パイプラインを実行して、インデックスを作成し、データを読み込む。
-> * フルテキスト検索と豊富なクエリ構文を使用して、コンテンツを探索する。
+> * 変換と分析を開始し、インデックスを作成して読み込むパイプラインを実行する。
+> * フルテキスト検索と豊富なクエリ構文を使用して結果を探索する。
 
 このチュートリアルを完了するには、いくつかのサービスに加えて、REST API 呼び出しを行うための [Postman デスクトップ アプリ](https://www.getpostman.com/)または別の Web テスト ツールが必要です。 
 

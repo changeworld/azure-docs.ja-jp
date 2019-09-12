@@ -73,9 +73,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
-    - name: ディープ ラーニング
-      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
-      href: concept-deep-learning-vs-machine-learning.md
     - name: ワークスペース
       href: concept-workspace.md
     - name: コンピューティング ターゲット
@@ -111,13 +108,18 @@
           href: how-to-secure-web-service.md
         - name: ストレージ アクセス キーの再生成
           href: how-to-change-storage-access-key.md
+    - name: ディープ ラーニング
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
 - name: ハウツー ガイド
   items:
-    - name: ワークスペースを管理する
+    - name: ワークスペースの作成と管理
       items:
-        - name: ワークスペースにポータルを使用する
+        - name: Azure Portal の使用
           href: how-to-manage-workspace.md
-        - name: Resource Manager テンプレートを使用する
+        - name: Azure CLI の使用
+          href: how-to-manage-workspace-cli.md
+        - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
     - name: "開発環境をセットアップする\_"

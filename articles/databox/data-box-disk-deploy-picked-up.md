@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/05/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1104c017541b8124366a6121763318f199f3aad5
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126083"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390404"
 ---
 ::: zone target="chromeless"
 
@@ -49,18 +50,7 @@ ms.locfileid: "70126083"
     - ディスクはエアー クッションでしっかりと包んで梱包することをお勧めします。
     - 箱内の物があまり動かないように、すき間が少なくなるようにしてください。
 
-次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、オーストラリア、アジア諸国で異なります。
-
-- [米国およびカナダでデバイスを返送する場合は、UPS での集荷をスケジュールします](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada)。
-- [ヨーロッパで DHL での集荷をスケジュールする](data-box-disk-deploy-picked-up.md#pick-up-in-europe)場合は、DHL の Web サイトにアクセスし、航空貨物運送状番号を指定します。
-- [オーストラリアで集荷をスケジュール](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up#pick-up-in-australia)します。
-- 日本、韓国、シンガポールなどの[アジア諸国で集荷をスケジュール](data-box-disk-deploy-picked-up.md#pick-up-in-asia)します。
-
-::: zone target="chromeless"
-
-運送業者によってディスクが集荷されると、ポータルの注文状態が更新され、追跡 ID が表示されます。
-
-::: zone-end
+次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、欧州連合 (EU)、オーストラリア、アジア諸国で異なります。
 
 ### <a name="pick-up-in-us-canada"></a>米国、カナダで集荷する
 
@@ -95,12 +85,9 @@ ms.locfileid: "70126083"
 
 オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで集荷する場合は、次の手順を実行します。
 
-1. `adbops@microsoft.com` にメールを送信し、一意の国内配送用 ID、つまり TAU コードが記載された配送先住所ラベルを依頼します。 ラベルを目的の日付に入手するには、配送予定日の少なくとも 3 日前に依頼します。
-2. メールの件名は、「*Request for reverse shipping label with TAU code (TAU コードが記載された返送用の配送先住所ラベルの依頼)* 」にすることをお勧めします。 メールには、必ず次の詳細情報を含めてください。 
-
-    - 注文の名前
-    - Address
-    - 連絡先の名前
+1. 提供された返送ラベルを使用して、それに TAU コード (参照番号) が記載されていることを確認します。 提供された配送先住所ラベルが見つからない場合やその他の問題が発生している場合は、[Data Box アジア オペレーション](mailto:adbo@microsoft.com)までメールでお問い合わせください。 件名ヘッダーの注文名と直面している問題の詳細を記入します。
+3. 箱にラベルを貼り付けます。 
+4. リンク先 (https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ) からオンラインで集荷を予約します。 
 
 ### <a name="pick-up-in-asia"></a>アジアで集荷する
 
@@ -151,9 +138,6 @@ ms.locfileid: "70126083"
 
 1. 配送先住所ラベルを印刷し、箱に貼り付けます。 ラベルを破損または紛失した場合:
     - **[概要] > [出荷ラベルをダウンロード]** に移動し、返送ラベルを取得します。
-
-        ![配送先住所ラベルのダウンロード](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - デバイスにラベルを貼り付けます。 ラベルが見えることを確認します。
 
 2. 集荷を依頼するには:

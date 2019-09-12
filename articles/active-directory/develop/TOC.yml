@@ -205,6 +205,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
+                    - name: Xamarin iOS および Android アプリケーションでのブローカーの使用
+                      href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: ユニバーサル Windows プラットフォーム
                       href: msal-net-uwp-considerations.md
                 - name: アプリのトークンの取得
@@ -225,6 +227,8 @@
                   href: msal-net-migration.md
                 - name: MSAL.js への移行
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: ブローカーを使用して Xamarin アプリを ADAL.NET から MSAL.NET に移行する
+                  href: msal-net-migration-ios-broker.md
             - name: サポートされている認証フロー
               href: msal-authentication-flows.md
             - name: トークンの取得およびキャッシュ
@@ -330,11 +334,11 @@
           items:
             - name: 概要
               href: authentication-national-cloud.md
-            - name: Authentication
+            - name: 認証
               href: msal-national-cloud.md
     - name: ハウツー ガイド
       items:
-        - name: Authentication
+        - name: 認証
           items:
             - name: ロール要求の構成
               href: active-directory-enterprise-app-role-management.md
@@ -494,7 +498,7 @@
               href: native-app.md
             - name: デーモンまたはサーバー アプリケーション
               href: service-to-service.md
-        - name: Authentication
+        - name: 認証
           items:
             - name: 認証の基本
               href: authentication-scenarios.md
@@ -557,7 +561,7 @@
           href: authentication-national-cloud.md
     - name: ハウツー ガイド
       items:
-        - name: Authentication
+        - name: 認証
           items:
             - name: Configure single sign-on
               displayName: SSO

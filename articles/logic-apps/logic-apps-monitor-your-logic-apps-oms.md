@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/16/2019
-ms.openlocfilehash: 2f82bd9c0bcacf2c552df84cdd4f8f2cd6a68c8a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.date: 08/29/2019
+ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543271"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138781"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>Azure Monitor ログを使用してロジック アプリの分析情報とデバッグデータを取得する
 
@@ -55,7 +55,7 @@ ms.locfileid: "69543271"
 
 ## <a name="install-logic-apps-management-solution"></a>Logic Apps 管理ソリューションをインストールする
 
-ロジック アプリの作成時にすでに Azure Monitor ログをオンにしている場合は、この手順をスキップします。 Logic Apps 管理ソリューションが既にインストールされています。
+ロジック アプリの作成時に既に Azure Monitor ログを設定している場合は、この手順をスキップします。 Logic Apps 管理ソリューションが既にインストールされています。
 
 1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics workspaces」と入力して検索し、 **[Log Analytics ワークスペース]** を選択します。
 
@@ -107,23 +107,21 @@ ms.locfileid: "69543271"
 
    特定のロジック アプリのすべての実行を表示する例は次の通りです。
 
-   ![あるロジック アプリまたは状態の実行を表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
+   ![ロジック アプリの実行と状態を表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   このページには、次のような高度なオプションがあります。
+   このページには、高度なオプションがあります。 
 
-   * **[追跡対象プロパティ]** :
+   * **[追跡対象プロパティ]** 列:追跡対象プロパティを設定し、アクションでグループ分けしたロジック アプリについては、この列からそのプロパティを表示できます。 追跡対象プロパティを表示するには、 **[表示]** を選択します。 追跡対象プロパティを検索するには、列フィルターを使用します。
 
-     この列には、ロジック アプリの追跡プロパティがアクション別にグループ化されて表示されます。 追跡対象のプロパティを表示するには、 **[表示]** を選択します。 追跡対象プロパティを検索するには、列フィルターを使用します。
+      ![ロジック アプリの追跡対象プロパティを表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
-     ![ロジック アプリの追跡対象プロパティを表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+      追跡対象プロパティを新たに追加した場合、最初に表示されるまでに 10 - 15 分かかる場合があります。 [ロジック アプリに追跡対象プロパティを追加する方法](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)をご覧ください。
 
-     追跡対象プロパティを新たに追加した場合、最初に表示されるまでに 10 - 15 分かかる場合があります。 [ロジック アプリに追跡対象プロパティを追加する方法](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)をご覧ください。
-
-   * **[再送信]:** 失敗、成功、または実行中の状態の、1 つ以上のロジック アプリの実行を再送信できます。 再送信する実行のチェック ボックスを選択し、 **[再送信]** を選択します。
+   * **[再送信]** :失敗、成功、または実行中の状態の、1 つ以上のロジック アプリの実行を再送信できます。 再送信する実行のチェック ボックスを選択し、 **[再送信]** を選択します。
 
      ![ロジック アプリの実行を再送信する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
-1. これらの結果をフィルター処理するには、クライアント側およびサーバー側の両方でフィルター処理を実行します。
+1. 結果をフィルター処理するには、クライアント側とサーバー側の両方でフィルター処理を実行します。
 
    * **クライアント側のフィルター**:列ごとに次のように必要なフィルターを選択します。
 
@@ -135,23 +133,19 @@ ms.locfileid: "69543271"
 
 1. 特定の実行のすべてのアクションとその詳細を表示するには、ロジック アプリの実行の行を選択します。
 
-   特定のロジック アプリの実行のすべてアクションを表示する例は次の通りです。
+   特定のロジック アプリの実行のすべてアクションとトリガーを表示する例は次のとおりです。
 
    ![ロジック アプリの実行のアクションを表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
 
-1. [結果] ページで結果の背後にあるクエリを表示したり、すべての結果を表示したりするには、 **[すべて表示]** を選択します。選択後、[ログ検索] ページが開きます。
+1. [結果] ページで結果の背後にあるクエリを表示したり、すべての結果を表示したりするには、 **[すべて表示]** を選択します。選択後、 **[ログ]** ページが開きます。
 
-   ![結果ページの [See All]\(すべて表示\)](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   ![すべての結果を見る](media/logic-apps-monitor-your-logic-apps-oms/logic-app-see-all.png)
 
-   [ログ検索] ページで、次のオプションを選択できます。
+   **[ログ]** ページで、次のオプションを選択できます。
 
    * テーブルのクエリ結果を表示するには、 **[テーブル]** を選択します。
 
-   * クエリを変更するには、検索バーでクエリ文字列を編集します。 エクスペリエンスを向上させるには、 **[高度な分析]** を選択します。
-
-     ![ロジック アプリの実行のアクションと詳細を表示する](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
-
-     ログ分析ページで、クエリを更新し、表から結果を確認できます。 このクエリは [Kusto クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)を使用します。他の結果を表示するには編集します。
+   * クエリには [Kusto クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)が使用されます。これを編集し、他の結果を表示できます。 クエリを変更するには、クエリ文字列を更新し、 **[実行]** を選択してテーブルに結果を表示します。 
 
      ![Log Analytics - クエリ ビュー](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 

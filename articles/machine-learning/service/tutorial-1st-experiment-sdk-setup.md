@@ -9,31 +9,29 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: 7ed81375912613995d573b110607e7913adfd10f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 08/28/2019
+ms.openlocfilehash: f1003324e9f4b3762b5d8eca703af4a1fbd4613a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051667"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308812"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>チュートリアル:初めての ML 実験の作成を開始する
+# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>チュートリアル:Python SDK で初めての ML 実験を作成する
 
 このチュートリアルでは、Jupyter ノートブックで実行されている Azure Machine Learning Python SDK の使用を開始するためのエンドツーエンドの手順を完了します。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1** です。Python 環境の設定と構成のほか、実験と機械学習モデルを管理するためのワークスペースの作成について説明します。 [**パート 2**](tutorial-1st-experiment-sdk-train.md) では、これを基に、複数の機械学習モデルをトレーニングし、Azure portal と SDK の両方を使用したモデル管理プロセスを紹介します。
 
 このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
-> * 次のチュートリアルで使用する機械学習ワークスペースを作成します。
+> * 次のチュートリアルで使用する [Azure Machine Learning ワークスペース](concept-workspace.md)を作成します。
 > * Azure Machine Learning Python SDK のインストールと事前構成が済んだクラウドベースの Jupyter Notebook VM を作成します。
 
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルの唯一の前提条件は、Azure サブスクリプションです。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
-ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、SDK 内の簡単に使用できるオブジェクトに結び付けます。 Azure Machine Learning service ワークスペースが既にある場合は、[次のセクション](#azure)に進みます。 ワークスペースがない場合は、ここで作成します。
+Azure Machine Learning ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、SDK 内の簡単に使用できるオブジェクトに結び付けます。 Azure Machine Learning service ワークスペースが既にある場合は、[次のセクション](#azure)に進みます。 ワークスペースがない場合は、ここで作成します。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -51,58 +49,21 @@ ms.locfileid: "70051667"
 
      ![新しい VM を選択する](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
-1. VM の名前を指定します。 **[作成]** を選択します。
+1. VM の名前を指定します。 
+   + Notebook VM 名は 2 文字から 16 文字にする必要があります。 英字、数字、- の文字が有効です。  
+   + 名前は、Azure サブスクリプション内で一意である必要もあります。
 
-    > [!NOTE]
-    > Notebook VM 名は 2 文字から 16 文字にする必要があります。 英字、数字、- の文字が有効です。  名前は、Azure サブスクリプション内で一意である必要もあります。
+1. **[作成]** を選択します。 VM の設定には少し時間がかかる場合があります。
 
 1. 状態が **[実行中]** に変わるまで待機します。
-
-### <a name="launch-jupyter-web-interface"></a>Jupyter の Web インターフェイスを起動する
-
-VM が実行中になった後、 **[ノートブック VM]** セクションを使用して、Jupyter の Web インターフェイスを起動します。
+   VM が実行中になった後、 **[ノートブック VM]** セクションを使用して、Jupyter の Web インターフェイスを起動します。
 
 1. VM の **[URI]** 列で、 **[Jupyter]** を選択します。
 
     ![Jupyter ノートブック サーバーを開始する](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-    リンクから、ノートブック サーバーが起動され、新しいブラウザー タブで Jupyter ノートブックの Web ページが開かれます。このリンクは、VM を作成するユーザーに対してのみ動作します。 ワークスペースの各ユーザーは、独自の VM を作成する必要があります。
+   リンクから、ノートブック サーバーが起動され、新しいブラウザー タブで Jupyter ノートブックの Web ページが開かれます。このリンクは、VM を作成するユーザーに対してのみ動作します。 ワークスペースの各ユーザーは、独自の VM を作成する必要があります。
 
-1. Jupyter ノートブックの Web ページで、最上位のフォルダー名はユーザー名です。  このフォルダーを選択します。
-
-    > [!TIP]
-    > このフォルダーは、ノートブック VM 自体ではなく、ワークスペース内の[ストレージ コンテナー](concept-workspace.md#resources)上にあります。  ノートブック VM を削除しても、すべての作業を続けることができます。  後で新しいノートブック VM を作成すると、この同じフォルダーが読み込まれます。 他のユーザーとワークスペースを共有すると、互いのフォルダーが表示されます。
-
-1. `samples-*` サブディレクトリを開き、次に `tutorials/tutorial-1st-experiment-sdk-train.ipynb` を開きます
-
-> [!Warning]
-> 開いているのが同じ名前の `.yml` ファイル**ではなく**、`tutorial-1st-experiment-sdk-train.ipynb` ファイルであることを確認してください。 
-
-チュートリアルの**パート 2** では、`tutorial-1st-experiment-sdk-train.ipynb` のコードを実行して機械学習モデルをトレーニングします。
-
-## <a name="end"></a>リソースのクリーンアップ
-
-続けてチュートリアルの**パート 2** を行う予定の場合は、このセクションの操作を行わないでください。
-
-### <a name="stop-the-notebook-vm"></a>ノートブック VM を停止する
-
-クラウド ノートブック サーバーを使用していた場合は、使用していない VM を停止してコストを削減します。
-
-1. ワークスペースで、 **[ノートブック VM]** を選択します。
-
-   ![VM サーバーを停止する](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. 一覧から VM を選択します。
-
-1. **[停止]** を選択します。
-
-1. サーバーを再び使用する準備が整ったら、 **[開始]** を選択します。
-
-### <a name="delete-everything"></a>すべてを削除する
-
-[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
-
-リソース グループは保持しつつ、いずれかのワークスペースを削除することもできます。 ワークスペースのプロパティを表示し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -111,7 +72,10 @@ VM が実行中になった後、 **[ノートブック VM]** セクションを
 * Azure Machine Learning service ワークスペースを作成しました。
 * お使いのワークスペース内にクラウド ノートブック サーバーを作成して構成しました。
 
-このチュートリアルの**パート 2** に進んで、単純な機械学習モデルをトレーニングします。
+チュートリアルの**パート 2** では、`tutorial-1st-experiment-sdk-train.ipynb` のコードを実行して機械学習モデルをトレーニングします。 
 
 > [!div class="nextstepaction"]
 > [チュートリアル:最初のモデルをトレーニングする](tutorial-1st-experiment-sdk-train.md)
+
+> [!IMPORTANT]
+> このチュートリアルのパート 2 や他のチュートリアルに取り組む予定がない場合は、不使用時のコストを抑えるために、[クラウド ノートブック サーバー VM を停止](tutorial-1st-experiment-sdk-train.md#clean-up-resources)してください。

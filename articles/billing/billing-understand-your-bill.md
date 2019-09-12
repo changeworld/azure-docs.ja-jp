@@ -42,11 +42,11 @@ Azure の請求書を理解するには、詳細な毎日の使用状況ファ�
  | 請求書 (PDF) | 使用状況の詳細 (CSV)|
  | --- | --- |
 |Billing cycle | 請求期間 |
- |Name |測定カテゴリ |
- |Type |測定サブカテゴリ |
- |Resource |測定名 |
- |Region |測定リージョン |
- |Consumed |Consumed |
+ |名前 |測定カテゴリ |
+ |種類 |測定サブカテゴリ |
+ |リソース |測定名 |
+ |リージョン |測定リージョン |
+ |使用量 |Consumed |
  |Included |含まれる量 |
  |Billable |超過量 |
 
