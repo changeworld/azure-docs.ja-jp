@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c775f5352461dce6c63f5cc4a1c910c7f8df80ec
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9d261acf80f51a09cc4daa9182a87b0354cf8a3d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563818"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845391"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>CloudSimple ポータル ユーザーの一覧を表示する
 
-ユーザーは、CloudSimple ポータルに初めてアクセスするときにユーザー一覧に追加されます。 Azure を使用して CloudSimple ポータルへのアクセス権を持つユーザーの一覧を表示するには、[CloudSimple ポータルにアクセス](monitor-activity.md)し、CloudSimple ポータルでサイド メニューの **[アカウント]** を選択し、 **[ユーザー]** を選択します。
+ユーザーは、CloudSimple ポータルに初めてアクセスするときにユーザー一覧に追加されます。 Azure を使用して CloudSimple ポータルへのアクセス権を持つユーザーの一覧を表示するには、[CloudSimple ポータルにアクセス](access-cloudsimple-portal.md)し、CloudSimple ポータルでサイド メニューの **[アカウント]** を選択し、 **[ユーザー]** を選択します。
 
 * Azure のサブスクリプション、テナント、ユーザー ID などのユーザーの詳細を表示するには、 **[ユーザー]** ページのエントリをクリックします。
 

@@ -9,13 +9,13 @@ ms.date: 7/16/2019
 ms.author: victorh
 ms.custom: include file
 ms.openlocfilehash: a42284765a46f4a000dc5b7fcf2867ef17d69570
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68229283"
 ---
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | データ スループット |30 Gbps<sup>1</sup> |
 |ルール|10,000 個。すべての規則の種類が結合されます。|

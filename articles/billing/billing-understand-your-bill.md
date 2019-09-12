@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/28/2019
 ms.author: banders
 ms.openlocfilehash: 51143644a62a77a61c4540d9f2ad3dce401c496b
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68610138"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Microsoft Azure の課金内容を確認する

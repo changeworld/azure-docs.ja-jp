@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 08/20/2019
+ms.topic: reference
+ms.date: 09/05/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fc15b08bb293864c22b7e26c1e408b99ac58d698
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: db04dc6369fa6f66467efa64e5787d3f5ddb0b3c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647073"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390888"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>Python で QnA Maker REST API を使用する方法
 <a name="HOLTop"></a>

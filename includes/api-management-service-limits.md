@@ -10,13 +10,13 @@ ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
 ms.openlocfilehash: fc945a7e9389c8aec48a6a1dba969fbf92002d3a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67181578"
 ---
-| Resource | 制限 |
+| リソース | 制限 |
 | --- | --- |
 | スケール ユニットの最大数 | リージョンあたり 10<sup>1</sup> |
 | キャッシュ サイズ | ユニットあたり 5 GB<sup>2</sup> |

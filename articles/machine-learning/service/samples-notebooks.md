@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035936"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860383"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning service を探索する
 
@@ -27,7 +27,6 @@ ms.locfileid: "70035936"
 - [Azure Machine Learning Notebook VM](#notebookvm)
 - [独自の Notebook サーバーを使用する](#byo)
 - [データ サイエンス仮想マシン](#dsvm)
-- [Azure Notebooks](#aznb)
 
 > [!NOTE]
 > リポジトリを複製すると、**tutorials** フォルダー内にチュートリアル ノートブック、**how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
@@ -53,13 +52,6 @@ ms.locfileid: "70035936"
 データ サイエンス仮想マシン (DSVM) とは、データ サイエンスの実行専用に構築されたカスタマイズ済み VM イメージです。 [DSVM を作成する](how-to-configure-environment.md#dsvm)と、SDK と Notebook サーバーがユーザーのためにインストールされて構成されます。 ただし、その場合も、ワークスペースの作成とサンプル リポジトリの複製は必要になります。
 
 [!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
-
-<a name="aznb"></a>
-## <a name="get-samples-on-azure-notebooks"></a>Azure Notebooks 上でサンプルを入手する
-
-[Azure Notebooks](https://notebooks.azure.com/) で、SDK と Notebook サーバーがユーザーのためにインストールされて構成されます。 Azure Notebooks は、ユーザーが探索できる、フル マネージド型で軽量の Notebook 環境を提供します。
-
-Azure Notebooks のサンプル リポジトリにアクセスするには、[Azure portal](https://portal.azure.com) から Azure Machine Learning ワークスペースに移動します。 **[概要]** セクションから、 **[Azure Notebooks で開始する]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

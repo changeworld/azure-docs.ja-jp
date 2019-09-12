@@ -9,22 +9,22 @@ ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
 ms.openlocfilehash: 2bf9f75442ccf57aa28e6a12f415fb6e4ede78ec
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67181569"
 ---
 Azure Maps S0 価格レベルの使用制限を次の表に示します。 使用制限は、価格レベルによって異なります。 
 
-| Resource                              | S0 価格レベルの上限 |
+| リソース                              | S0 価格レベルの上限 |
 |---------------------------------------|:---------------------:|
 | サブスクリプションあたりの最大要求率 |   1 秒あたり 50 要求  |
 
 
 Azure Maps のデータ サイズの制限を次の表に示します。 Azure Maps データ サービスは、S1 価格レベルでのみ使用できます。
 
-| Resource                              | 制限 |
+| リソース                              | 制限 |
 |---------------------------------------|:---------------------:|
 | データの最大サイズ |   50 MB  |
 

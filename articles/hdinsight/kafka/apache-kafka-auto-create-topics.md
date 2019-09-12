@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: af26bcee08ded8eb66d640f954113be3e7672e1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f40a625b10243ca13163e549a51a760cf105917
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709140"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900421"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
 
@@ -42,7 +42,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
 5. [フィルター] フィールドに値「`auto.create`」を入力します。 
 
-    ![フィルター フィールドの画像](./media/apache-kafka-auto-create-topics/filter.png)
+    ![フィルター フィールドの画像](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     プロパティの一覧にフィルターが適用されて `auto.create.topics.enable` 設定が表示されます。
 

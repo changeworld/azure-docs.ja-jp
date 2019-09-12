@@ -770,8 +770,6 @@
                   href: log-query/get-started-portal.md
                 - name: ログ クエリのチュートリアル
                   href: log-query/get-started-queries.md
-                - name: シンプルなログ エクスペリエンス
-                  href: log-query/simple-logs.md
             - name: ログ データ
               items:
                 - name: ログ データの構造
@@ -1037,8 +1035,6 @@
               href: insights/solutions-resources-views.md
             - name: ベスト プラクティス
               href: insights/solutions-best-practices.md
-            - name: Runbook から監視データを収集する
-              href: platform/runbook-datacollect.md
 - name: リファレンス
   items:
     - name: サービスの制限

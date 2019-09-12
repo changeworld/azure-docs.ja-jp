@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510336"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919705"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
 
@@ -66,7 +66,7 @@ $vmSize = "Standard_E64s_v3"
 
 **[ゾーン]** 値を保持します。これは可用性ゾーンを表し、後で Ultra ディスクをデプロイするために必要になります。
 
-|ResourceType  |Name  |Location  |ゾーン  |Restriction  |機能  |値  |
+|ResourceType  |名前  |Location  |ゾーン  |Restriction  |機能  |値  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -79,7 +79,7 @@ $vmSize = "Standard_E64s_v3"
 
 最初に、デプロイする VM のサイズを決定します。 現在のところ、DsV3 および EsV3 VM ファミリのみが Ultra ディスクをサポートしています。 VM サイズについて詳しくは、こちらの[ブログ](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)の 2 番目のテーブルをご覧ください。
 
-複数の Ultra ディスクを含む VM を作成する場合は、[複数の Ultra ディスクを含む VM の作成](https://aka.ms/UltraSSDTemplate)に関するページにあるサンプルを参照してください。
+複数の Ultra ディスクを含む VM を作成する場合は、[複数の Ultra ディスクを含む VM の作成](https://aka.ms/ultradiskArmTemplate)に関するページにあるサンプルを参照してください。
 
 独自のテンプレートを使用する場合は、`Microsoft.Compute/virtualMachines` と `Microsoft.Compute/Disks` の **apiVersion** が `2018-06-01` (またはそれ以降) に設定されていることを確認します。
 

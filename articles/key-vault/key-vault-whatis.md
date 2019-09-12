@@ -2,19 +2,19 @@
 title: Azure Key Vault とは | Microsoft Docs
 description: Azure Key Vault で、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをどのように保護するかについて学習します。
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/18/2019
-ms.author: barclayn
-ms.openlocfilehash: 2786ec387d528e1593e2687d906060f8a2673a8c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: mbaldwin
+ms.openlocfilehash: cf8101923f898c4ce190f3eaf2f3a9b2430cc723
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934472"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885130"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -53,7 +53,7 @@ Azure Key Vault は、シークレットを安全に保管し、それにアク�
 
     ![Azure リソースのマネージド ID の動作を表す図](./media/key-vault-whatis/msi.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 Key Vault で操作を行うには、まず、それを認証する必要があります。 次の 3 つの方法で Key Vault を認証します。
 
 - [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md):Azure の仮想マシンにアプリをデプロイするときに、Key Vault にアクセスできる仮想マシンに ID を割り当てることができます。 [他の Azure リソース](../active-directory/managed-identities-azure-resources/overview.md)にも ID を割り当てることができます。 この手法の利点は、最初のシークレットのローテーションがアプリやサービスで管理されないことにあります。 Azure では、ID が自動的にローテーションされます。 ベスト プラクティスとして、この手法をお勧めします。 

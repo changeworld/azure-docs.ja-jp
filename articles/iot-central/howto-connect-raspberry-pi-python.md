@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3f91e09e35eec0685cb4333802b860fb08412cb6
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 5c6e99c62d199c36081113011845a3bf2607bcb3
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019743"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842561"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python)
 
@@ -70,13 +70,13 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 1. 次のコマンドを実行して、IoT Central Python クライアントをインストールします。
 
-    ```sh
+    ```bash
     pip install iotc
     ```
 
 1. Python のサンプル コードをダウンロードします。
 
-    ```sh
+    ```bash
     curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
     ```
 
@@ -87,7 +87,7 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 1. 次のコマンドを使用して、サンプルを実行します。
 
-    ```sh
+    ```bash
     python app.py
     ```
 
@@ -138,7 +138,7 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 ### <a name="properties"></a>properties
 
-| Type            | Display name | フィールド名 | データ型 |
+| 種類            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |

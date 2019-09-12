@@ -76,8 +76,8 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: resource-manager-deployment-model.md
-    - name: Azure の一般的なセキュリティ属性
-      href: azure-resource-manager-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: azure-resource-manager-security-controls.md
 - name: 方法
   items:
     - name: テンプレートの作成

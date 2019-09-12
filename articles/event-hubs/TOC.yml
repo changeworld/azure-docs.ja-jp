@@ -101,8 +101,8 @@
                   href: authenticate-application.md
             - name: 共有アクセス署名を使用して認証する
               href: authenticate-shared-access-signature.md
-        - name: セキュリティ属性
-          href: event-hubs-security-attributes.md
+        - name: 組み込みのセキュリティ制御
+          href: event-hubs-security-controls.md
     - name: AMQP 1.0 プロトコル ガイド
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true

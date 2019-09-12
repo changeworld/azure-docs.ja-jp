@@ -9,13 +9,13 @@ ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 45d34297bf37a6e46bc57e95ff49def49051e32e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67622108"
 ---
-| Resource | 既定/上限 |
+| リソース | 既定/上限 |
 | --- | --- |
 | サブスクリプションあたりの ExpressRoute 回線数 |10 |
 | サブスクリプションあたりのリージョンごとの ExpressRoute 回線数 (Azure Resource Manager) |10 |

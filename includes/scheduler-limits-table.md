@@ -9,15 +9,15 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67181551"
 ---
 次の表に、Azure Scheduler の主要なクォータ、制限、既定値、および調整について説明します。
 
-| Resource | 制限についての説明 |
+| リソース | 制限についての説明 |
 | -------- | ----------------- |
 | **ジョブ サイズ** | ジョブの最大サイズは 16,000 です。 PUT または PATCH 操作の結果としてジョブのサイズがこの制限値を超える場合、"400 正しくない要求" 状態コードが返されます。 | 
 | **ジョブ コレクション数** | Azure サブスクリプションごとのジョブ コレクションの最大数は 200,000 です。 | 

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 06/20/2019
 ms.author: tamram
 ms.openlocfilehash: 5ab03b682dd0ed1dc7b198e89c86e7a74c6275cd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67457420"
 ---
-| Resource | ターゲット |
+| リソース | ターゲット |
 |----------|---------------|
 | 1 つのテーブルの最大サイズ | 500 TiB |
 | テーブル エンティティの最大サイズ | 1 MiB |

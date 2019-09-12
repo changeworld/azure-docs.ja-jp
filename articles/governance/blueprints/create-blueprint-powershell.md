@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: bfd2d1215e7673f7ff73a0c875973e45362ce6b0
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d2069819203e821b42ea2f70e38f27b49053639e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231896"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910050"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>クイック スタート:PowerShell で Azure Blueprint を定義して割り当てる
 
@@ -27,6 +27,10 @@ ms.locfileid: "70231896"
 > - サブスクリプションに割り当てられているブループリントを削除する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+
+## <a name="prerequisites"></a>前提条件
+
+まだインストールされていない場合は、「[Az.Blueprint モジュールを追加する](./how-to/manage-assignments-ps.md#add-the-azblueprint-module)」の手順に従って、PowerShell ギャラリーから **Az.Blueprint** モジュールをインストールして検証します。
 
 ## <a name="create-a-blueprint"></a>ブループリントを作成する
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 48b02a042b55af9ff65f57220f7a64c9cbde8848
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: df216c4d634ac20365cc5a1cc6e26fbd78be7ab9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445543"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917413"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
@@ -41,14 +41,14 @@ ms.locfileid: "67445543"
 
 1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/)にあります。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
 2. **[カスタム デプロイ]** ブレードで以下の値を入力します。
 
     |プロパティ |説明 |
     |---|---|
-    |サブスクリプション|クラスターの作成に使用する Azure サブスクリプションを選択します。|
-    |リソース グループ|Azure リソース管理グループを作成するか、または既存のグループを使用します。|
+    |Subscription|クラスターの作成に使用する Azure サブスクリプションを選択します。|
+    |Resource group|Azure リソース管理グループを作成するか、または既存のグループを使用します。|
     |Location|リソース グループの [場所] を指定します。 |
     |ClusterName|HBase クラスターの名前を入力します。|
     |クラスター ログイン名とパスワード|既定のログイン名は **admin** です。|

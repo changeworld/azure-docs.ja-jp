@@ -62,8 +62,8 @@
       items:
         - name: セキュリティの概要
           href: overview-security.md
-        - name: 一般的なセキュリティ属性
-          href: key-vault-security-attributes.md
+        - name: 組み込みのセキュリティ制御
+          href: key-vault-security-controls.md
         - name: セキュリティ ワールド
           href: key-vault-ovw-security-worlds.md
         - name: キー コンテナーのセキュリティ保護
@@ -90,8 +90,6 @@
           href: create-certificate.md
         - name: 証明書作成の監視と管理
           href: create-certificate-scenarios.md
-    - name: Azure の一般的なセキュリティ属性
-      href: key-vault-security-attributes.md
 - name: ハウツー ガイド
   items:
     - name: Azure Key Vault のログ記録

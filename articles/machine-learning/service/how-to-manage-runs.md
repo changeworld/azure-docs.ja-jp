@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019111"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376291"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -226,7 +226,7 @@ with exp.start_logging() as parent_run:
 
 親実行から子実行を送信することもできます。 そうすることで、親実行と子実行の階層を作成することができます。子実行はそれぞれ異なるコンピューティング先で実行され、共通の親実行 ID で関連付けられます。
 
-親実行内から子実行を送信するには、["submit_child()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-) メソッドを使用します。 これを親実行スクリプト内で行うには、実行コンテキストを取得し、そのコンテキスト インスタンスの "submit_child" メソッドを使用して子実行を送信します。
+親実行内から子実行を送信するには、["submit_child()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) メソッドを使用します。 これを親実行スクリプト内で行うには、実行コンテキストを取得し、そのコンテキスト インスタンスの "submit_child" メソッドを使用して子実行を送信します。
 
 ```python
 ## In parent run script

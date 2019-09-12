@@ -9,13 +9,13 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67333382"
 ---
-| Resource | 既定/上限 |
+| リソース | 既定/上限 |
 | --- | --- |
 | サブスクリプションあたりの Azure Front Door Service リソース数 | 100 |
 | リソースあたりのカスタム ドメインを含むフロントエンド ホスト数 | 100 |

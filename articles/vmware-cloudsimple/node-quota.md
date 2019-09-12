@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12fecfc3a20d91b9324e1662f3f937340b7ff5c4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972450"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913945"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple ノードのクォータ制限
 
@@ -32,9 +32,6 @@ CloudSimple サービスのサブスクリプションが有効になったと�
 
 サポート チケットの詳細で、必要なノード数とノードの SKU を指定します。
 
-[ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com) で Microsoft アカウントの担当者に連絡してサブスクリプションのノードのクォータを増やすこともできます。  次の項目を指定する必要があります。
-
-* サブスクリプション ID
 * ノードの SKU
 * クォータの増加を要求している追加ノードの数
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981161"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845652"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>最大 100 TB の Hyperscale サービス レベル
 
@@ -186,7 +186,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 2. [ **[新しいサポート リクエスト]** ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) をクリックします
 
-    ![Azure の [ヘルプとサポート] ブレード](media/sql-database-service-tier-hyperscale/whitelist-request-screen-1.png)
+    ![Azure の [ヘルプとサポート] ブレード](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
 3. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します
 
@@ -198,13 +198,13 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 1. **[詳細の指定]** をクリックします
 
-    ![問題の詳細](media/sql-database-service-tier-hyperscale/whitelist-request-screen-2.png)
+    ![問題の詳細](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
 8. **[SQL Database のクォータの種類]** で **[その他のクォータ要求]** を選択します
 
 9. 次のテンプレートを入力します。
 
-    ![クォータの詳細](media/sql-database-service-tier-hyperscale/whitelist-request-screen-3.png)
+    ![クォータの詳細](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     テンプレートで、以下の情報を指定します
 

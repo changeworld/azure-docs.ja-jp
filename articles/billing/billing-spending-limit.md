@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: banders
 ms.openlocfilehash: 1324b60de05805cd409975358ff78e5b2b27eef1
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70114443"
 ---
 # <a name="azure-spending-limit"></a>Azure の使用制限

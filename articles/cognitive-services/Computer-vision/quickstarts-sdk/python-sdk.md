@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/17/2019
+ms.date: 09/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bc42edc3e97aa68c5fe9d2b3162913e8925df4ee
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67786645"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375649"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Python 用の Azure Cognitive Services Computer Vision SDK
 
@@ -90,7 +90,7 @@ source cogsrv-vision-env/bin/activate
 pip install azure-cognitiveservices-vision-computervision
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Computer Vision リソースを作成した後は、クライアント オブジェクトをインスタンス化するために、その**エンドポイント**とその**アカウント キー**の 1 つが必要になります。
 

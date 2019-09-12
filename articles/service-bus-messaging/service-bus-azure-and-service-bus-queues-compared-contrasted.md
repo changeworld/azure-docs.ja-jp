@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/23/2019
+ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013219"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376332"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -85,7 +85,6 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 * Storage キューのメッセージは一般的に先入れ先出しですが、メッセージの表示タイムアウト期限を過ぎたとき (たとえば処理中にクライアント アプリケーションがクラッシュした場合) などに順番が変わることがあります。 表示タイムアウトが過ぎると、別の worker がデキューするために、メッセージがキューに再度表示されます。 そのとき、もともとエンキュー時に後ろにあったメッセージの後にメッセージが (再デキューのために) 配置されることがあります。
 * Service Bus キューで FIFO パターンを保証するには、メッセージング セッションを使用する必要があります。 **Peek & Lock** モードで受信したメッセージの処理中にアプリケーションがクラッシュした場合、キューの受信側は、次にメッセージング セッションを受け取ったときに、TTL (time-to-live) 期間が経過した後、失敗したメッセージから開始します。
 * Storage キューは、アプリケーション コンポーネントを分離してスケーラビリティや耐障害性を向上させ、負荷平準化やプロセス ワークフロー構築を容易にするなどの、標準的なキュー シナリオをサポートするように設計されています。
-* Service Bus キューは、*At-Least-Once* の配信保証をサポートしています。 
 * Service Bus セッションのコンテキストでのメッセージ処理に関する不整合は、セッション状態を使用してセッションのメッセージ シーケンスの処理の進捗に関連するアプリケーションの状態を格納することと、受け取ったメッセージの解決に関するトランザクションの使用とセッション状態の更新によって回避できます。 この種の整合性機能は、他のベンダーの製品では *1 回きりの処理*と呼ばれることもありますが、トランザクションの失敗によって明示的にメッセージが再配信されるので、その用語は厳密には適切でありません。
 * Storage キューでは、開発者とオペレーション チームの双方に対し、キュー、テーブル、BLOB で一貫性のあるプログラミング モデルを提供します。
 * Service Bus キューは、1 つのキューのコンテキストでローカル トランザクションをサポートします。
@@ -176,7 +175,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
-| Authentication |**対称キー** |**対称キー** |
+| 認証 |**対称キー** |**対称キー** |
 | セキュリティ モデル |SAS トークンを介した委任アクセス。 |SAS |
 | ID プロバイダー フェデレーション |**いいえ** |**はい** |
 

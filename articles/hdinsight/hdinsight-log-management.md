@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623892"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879481"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -93,7 +93,7 @@ HDInsight の[スクリプト アクション](hdinsight-hadoop-customize-cluste
 
 ここでは、さまざまなサービスのジョブ実行ログ ファイルを確認します。  Apache HBase や Apache Spark など、多くのサービスがあります。 Hadoop クラスターでは多数の詳細ログが生成されるので、役に立つ (役に立たない) ログを判断するには時間がかかることがあります。  ログ ファイル管理の対象を絞り込むには、ログ システムを理解することが重要です。  ログ ファイルの例を次に示します。
 
-![HDInsight のログ ファイルの例](./media/hdinsight-log-management/logs.png)
+![HDInsight のログ ファイルの例](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop のログ ファイルにアクセスする
 
@@ -148,7 +148,7 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure Portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure Portal で **[アクティビティ ログ]** リンクを選んで、ARM ログのアーカイブをセットアップします。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。 
 
-![ログ ファイルのエクスポート](./media/hdinsight-log-management/archive.png)
+![ログ ファイルのエクスポート](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 代わりに、PowerShell でログをアーカイブするスクリプトを作成できます。  PowerShell スクリプトの例は、「[Archive Azure Automation logs to Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8)」(Azure Automation のログを Azure Blob Storage にアーカイブする) をご覧ください。
 

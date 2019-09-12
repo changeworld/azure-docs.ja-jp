@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: d977d5a25db0cbe641179bce860e9f67c60f29ab
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340801"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899921"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
@@ -59,7 +59,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
 7. スクリプトのすべての行を実行すると、次のような出力が表示されます。
 
-    ![[データ サイエンスの設定...]](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
+    ![ワークスペース](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>HDInsight ML Services クラスターにジョブを送信する
 
@@ -119,7 +119,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
 
     3. ストレージ アカウントのウィンドウの左側のメニューで **[コンテナー]** を選択します。
 
-        ![Containers](./media/r-server-submit-jobs-r-tools-vs/containers.png)
+        ![Containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. クラスターのコンテナー名を選択し、 **[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、 *[RevoShare]* 、 **[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
 

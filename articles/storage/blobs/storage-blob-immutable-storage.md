@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941944"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910490"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -189,7 +189,7 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 いいえ。訴訟ホールドは、時間ベース以外の保持ポリシーに対して使用される一般的な用語にすぎません。 訴訟関連の手続き専用で使用する必要はありません。 訴訟ホールド ポリシーは、保持期間が不明の重要な企業の WORM データを保護するために上書きと削除を無効にする場合に役立ちます。 ミッション クリティカルな WORM ワークロードを保護するための企業のポリシーとして使用することも、カスタムのイベント トリガーで時間ベースのリテンション ポリシーの使用が必要になる前のステージング ポリシーとして使用することもできます。 
 
-***ロックされた*時間ベースのリテンション ポリシーまたは訴訟ホールドを削除できますか?**
+**_ロックされた_時間ベースのリテンション ポリシーまたは訴訟ホールドを削除できますか?**
 
 コンテナーから削除できるのは、ロックされていない時間ベースのリテンション ポリシーのみです。 時間ベースのリテンション ポリシーがロックされると、削除できず、リテンション有効期間の延長のみが許可されます。 訴訟ホールド タグを削除できます。 有効なすべてのタグが削除されると、訴訟ホールドが削除されます。
 

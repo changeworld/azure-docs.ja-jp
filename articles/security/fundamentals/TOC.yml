@@ -321,8 +321,8 @@
   href: best-practices-and-patterns.md
 - name: リソース
   items:
-    - name: 一般的なセキュリティ属性
-      href: common-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: security-controls.md
     - name: Azure セキュリティの MVP プログラム
       href: mvp.md
     - name: サイバーセキュリティに関する相談
