@@ -3,17 +3,17 @@ title: Raspberry Pi を Azure IoT Central アプリケーションに接続す�
 description: デバイス開発者として、C# を使用して Raspberry Pi を Azure IoT Central アプリケーションに接続する方法。
 author: viv-liu
 ms.author: viviali
-ms.date: 04/15/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 9395fa5ba5ae8dfa6ff03aabd1a27942ca4fa60a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7a66925dceee4bf90bc6a5cd155f99347bbd124e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195176"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886001"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
@@ -356,7 +356,7 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 ### <a name="properties"></a>properties
 
-| Type            | Display name | フィールド名 | データ型                              |
+| 種類            | Display name | フィールド名 | データ型                              |
 | --------------- | ------------ | ---------- | -------------------------------------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number                                 |
 | Location        | Location     | location   | {lat: float, long: float, alt?: float} |

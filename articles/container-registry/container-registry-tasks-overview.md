@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 2d7237c1d142e9f7bb5a47294d1375040be43ac3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114799"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308038"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -36,19 +36,9 @@ ms.locfileid: "70114799"
 
 ACR タスクの[クイック タスク](container-registry-tutorial-quick-task.md)機能は、コードの 1 行目をコミットする前でさえ、コンテナー イメージのビルドを Azure にオフロードすることで、統合された開発環境を提供できます。 クイック タスクを使用すると、コードをコミットする前に、自動化されたビルド定義を検証し、潜在的な問題を知ることができます。
 
-よく知られている `docker build` 形式を使用して、Azure CLI の [az acr build][az-acr-build] コマンドは*コンテキスト* (ビルド対象の一連のファイル) を取得して ACR タスクに送信し、既定では、完了時にビルド済みのイメージをそのレジストリにプッシュします。
+よく知られている `docker build` 形式を使用して、Azure CLI の [az acr build][az-acr-build] コマンドは[コンテキスト](#context-locations) (ビルド対象の一連のファイル) を取得して ACR タスクに送信し、既定では、完了時にビルド済みのイメージをそのレジストリにプッシュします。
 
 概要については、Azure Container Registry での[コンテナー イメージのビルドと実行](container-registry-quickstart-task-cli.md)のクイック スタートを参照してください。  
-
-次の表は、ACR タスクでサポートされているコンテキストの場所の例を示しています。
-
-| コンテキストの場所 | 説明 | 例 |
-| ---------------- | ----------- | ------- |
-| ローカル ファイルシステム | ローカル ファイル システム上のディレクトリ内のファイル。 | `/home/user/projects/myapp` |
-| GitHub master ブランチ | GitHub リポジトリの master (またはその他の既定の) ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub ブランチ | GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
 
 ACR タスクは、コンテナー ライフサイクル プリミティブとして設計されています。 たとえば、ACR タスクを CI/CD ソリューションに統合します。 [az login][az-login] を[サービス プリンシパル][az-login-service-principal]で実行することにより、CI/CD ソリューションは [az acr build][az-acr-build] コマンドを発行してイメージ ビルドを開始できます。
 
@@ -99,9 +89,30 @@ OS とフレームワークの修正プログラムの適用については、[A
 
 マルチ ステップ タスクについては、[ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する](container-registry-tasks-multi-step.md)ことに関するページを参照してください。
 
+## <a name="context-locations"></a>コンテキストの場所
+
+次の表は、ACR タスクでサポートされているコンテキストの場所の例を示しています。
+
+| コンテキストの場所 | 説明 | 例 |
+| ---------------- | ----------- | ------- |
+| ローカル ファイルシステム | ローカル ファイル システム上のディレクトリ内のファイル。 | `/home/user/projects/myapp` |
+| GitHub master ブランチ | GitHub リポジトリの master (またはその他の既定の) ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub ブランチ | GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
+
+## <a name="image-platforms"></a>イメージのプラットフォーム
+
+既定では、ACR タスクによって Linux OS と amd64 アーキテクチャ用のイメージが構築されます。 他のアーキテクチャ用の Windows イメージまたは Linux イメージを構築するための `--platform` タグを指定します。 OS と、必要に応じて OS/アーキテクチャ形式 (`--platform Linux/arm` など) でサポートされているアーキテクチャを指定します。 ARM アーキテクチャの場合は、必要に応じて、次のように OS/アーキテクチャ/バリアント形式でバリアントを指定します (例: `--platform Linux/arm64/v8`)。
+
+| OS | アーキテクチャ|
+| --- | ------- | 
+| Linux | amd64<br/>arm<br/>arm64<br/>386 |
+| Windows | amd64 |
+
 ## <a name="view-task-logs"></a>タスク ログを表示する
 
-それぞれのタスク実行で、タスク ステップが正常に実行されたかどうかを判別するために検査できるログ出力が生成されます。 [az acr build](/cli/azure/acr#az-acr-build)、[az acr run](/cli/azure/acr#az-acr-run)、または [az acr task run](/cli/azure/acr/task#az-acr-task-run) コマンドを実行してタスクをトリガーすると、そのタスク実行のログ出力がコンソールにストリーミングされ、さらに、後で取得するために格納されます。 タスク実行のログは Azure portal で表示するか、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用します。
+それぞれのタスク実行で、タスク ステップが正常に実行されたかどうかを判別するために検査できるログ出力が生成されます。 [az acr build](/cli/azure/acr#az-acr-build)、[az acr run](/cli/azure/acr#az-acr-run)、または [az acr task run](/cli/azure/acr/task#az-acr-task-run) コマンドを実行してタスクをトリガーすると、そのタスク実行のログ出力がコンソールにストリーミングされ、さらに、後で取得するために格納されます。 ソース コードのコミットや基本イメージの更新などによってタスクが自動的にトリガーされる場合、タスク ログは格納されるだけです。 タスク実行のログは Azure portal で表示するか、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用します。
 
 2019 の 7 月以降レジストリ内のタスク実行のデータとログは、既定で 30 日間保持された後、自動的に消去されます。 タスク実行のデータをアーカイブする場合は、[az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run) コマンドを使用してアーカイブを有効にしてください。 次の例は、レジストリ *myregistry* 内のタスク実行 *cf11* のアーカイブを有効にします。
 

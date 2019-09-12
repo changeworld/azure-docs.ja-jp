@@ -5,25 +5,36 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972520"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146896"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、継続的に更新され、改善されています。 最新情報を入手し続ける助けになるように、この記事では、最新のリリース、新機能、および新しいコンテンツに関する情報を提供します。 このページは定期的に更新されます。
 
-Site Recovery の機能について提案がおありの場合は、ぜひ[フィードバックをお聞かせください](https://feedback.azure.com/forums/256299-site-recovery)。
+[Azure 更新プログラム](https://azure.microsoft.com/updates/?product=site-recovery) チャネルで Site Recovery の更新通知をフォローし、サブスクライブすることができます。
 
+## <a name="supported-updates"></a>サポートされる更新プログラム
 
-## <a name="installing-updates"></a>更新プログラムのインストール
+Site Recovery コンポーネントでは、N-4 バージョン (N は最新リリース バージョン) がサポートされています。 これらの概要を次の表に示します。
 
-Site Recovery の更新プログラムのサポートと手順については、[この記事を参照](service-updates-how-to.md)してください。
+**Update** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント** 
+--- | --- | --- | --- | ---
+[ロールアップ 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
+[ロールアップ 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+[ロールアップ 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
+[ロールアップ 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
+[ロールアップ 35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
+        
+
+更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
+
 
 ## <a name="updates-august-2019"></a>更新プログラム (2019 年 8 月)
 

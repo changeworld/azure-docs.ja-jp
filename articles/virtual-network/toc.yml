@@ -255,6 +255,10 @@
           href: manage-public-ip-address-prefix.md
     - name: トラブルシューティング
       items:
+        - name: 仮想ネットワーク ピアリングの問題のトラブルシューティング
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: VNet または VPN 接続の構成および検証
+          href: virtual-network-configure-vnet-connections.md
         - name: ネットワーク セキュリティ グループ
           href: diagnose-network-traffic-filter-problem.md
         - name: Routes
