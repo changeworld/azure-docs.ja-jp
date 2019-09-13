@@ -305,8 +305,8 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     | executorCores | Executor ごとに使用するコアの数 | int |
     | numExecutors | このセッションに対して起動する Executor の数 | int |
     | archives | このセッションで使用されるアーカイブ | 文字列のリスト |
-    | キュー | 送信先の YARN キューの名前| string |
-    | 名前 | このセッションの名前 | string |
+    | queue | 送信先の YARN キューの名前| string |
+    | name | このセッションの名前 | string |
     | conf | Spark の構成のプロパティ | キーと値のマップ |
 
     応答本文   
