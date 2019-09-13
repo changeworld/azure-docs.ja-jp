@@ -290,7 +290,7 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     **POST/バッチ**   
     要求本文
 
-    | 名前 | description | type | 
+    | name | description | type | 
     | :- | :- | :- | 
     | file | 実行するアプリケーションを含むファイル | パス (必須) |
     | proxyUser | ジョブを実行するときに偽装するユーザー | string |
@@ -312,7 +312,7 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     応答本文   
     作成された Batch オブジェクト
 
-    | 名前 | description | type |
+    | name | description | type |
     | :- | :- | :- | 
     | id | セッション ID | int | 
     | appId | このセッションのアプリケーション ID | string |
