@@ -7,6 +7,14 @@
       href: Home.md
 - name: クイック スタート
   items:
+    - name: クライアント SDK の使用
+      items:
+        - name: .NET SDK
+          href: quickstarts-sdk/csharp-sdk.md
+        - name: Python SDK
+          href: quickstarts-sdk/python-sdk.md
+        - name: Java SDK
+          href: quickstarts-sdk/java-sdk.md
     - name: REST API の使用
       items:
         - name: リモート画像の分析
@@ -75,18 +83,6 @@
           items:
             - name: Python
               href: QuickStarts/python-domain.md
-    - name: .NET SDK の使用
-      items:
-        - name: イメージを分析する
-          href: quickstarts-sdk/csharp-analyze-sdk.md
-        - name: サムネイルの生成
-          href: quickstarts-sdk/csharp-thumb-sdk.md
-        - name: テキストを抽出します
-          href: quickstarts-sdk/csharp-hand-text-sdk.md
-    - name: Python SDK の使用
-      href: quickstarts-sdk/python-sdk.md
-    - name: Java SDK の使用
-      href: quickstarts-sdk/java-sdk.md
 - name: チュートリアル
   items:
     - name: 画像のメタデータを生成する

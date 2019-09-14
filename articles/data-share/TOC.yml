@@ -47,6 +47,10 @@
       href: /rest/api/datashare
 - name: リソース
   items:
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
     - name: Microsoft Tech Community
