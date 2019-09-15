@@ -555,7 +555,7 @@
             - name: Python
               href: table-sdk-python.md
             - name: Table Storage REST API
-              href: /rest/api/storageservices/Table-Service-Concepts
+              href: /rest/api/storageservices/table-service-rest-api
     - name: etcd API
       items:
         - name: はじめに
