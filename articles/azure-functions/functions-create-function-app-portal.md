@@ -17,7 +17,9 @@ ms.locfileid: "70170800"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から Function App を作成する
 
-このトピックでは、Azure Functions を使用して Azure portal で Function App を作成する方法について示します。 Function App は、個々の関数の実行をホストするコンテナーです。 
+
+このトピックでは、Azure Functions を使用して Azure portal で Function App を作成する方法について示します。Function App は、個々の関数の実行をホストするコンテナーです。 
+
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
@@ -31,7 +33,9 @@ Function App を作成したら、1 つ以上の言語で個々の関数を作�
 
 ## <a name="service-plans"></a>サービス プラン
 
-Azure Functions には、次の 3 つの異なるサービス プランが用意されています。従量課金プラン、Premium プラン、専用 (App Service) プランです。 Function App の作成時にサービス プランを選択する必要があり、後で変更することはできません。 詳細については、[Azure Functions のホスティング プランの選択](functions-scale.md) に関するページをご覧ください。
+
+Azure Functions には、次の 3 つの異なるサービス プランが用意されています。従量課金プラン、Premium プラン、専用 (App Service) プランです。Function App の作成時にサービス プランを選択する必要があり、後で変更することはできません。 詳細については、[Azure Functions のホスティング プランの選択](functions-scale.md) に関するページをご覧ください。
+
 
 専用 (App Service) プランで JavaScript 関数を実行する予定がある場合は、コアのより少ないプランを選択してください。 詳細については、「[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-vcpu-app-service-plans)」を参照してください。
 
