@@ -36,7 +36,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 | プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | destination | object | エンドポイントを定義するオブジェクト。 |
-| filter | オブジェクト | イベントの種類をフィルター処理するための省略可能なフィールド。 |
+| filter | object | イベントの種類をフィルター処理するための省略可能なフィールド。 |
 
 ### <a name="destination-object"></a>対象オブジェクト
 

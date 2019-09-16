@@ -273,7 +273,7 @@ getDebugInfo を **Always** に設定しているため、BLOB コンテナー�
 詳細なトラブルシューティングを行う場合は、次の手順を実行します。
 
 
-1. [https://aka.ms/MFASetup](`https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`) にアクセスします。
+1. `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster` にアクセスします。
 
     ![YARN UI アプリケーション](media/data-factory-spark/yarnui-application.png)
 

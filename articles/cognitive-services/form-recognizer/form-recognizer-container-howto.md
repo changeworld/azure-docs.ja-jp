@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/29/2019
 ms.author: dapine
-ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 25ea4c96a0e392db2af9c25a150696ca2b25b2dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051207"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164552"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Form Recognizer コンテナーのインストールと実行
 
@@ -58,28 +58,25 @@ Form Recognizer コンテナーを使用する前に、次の前提条件を満�
 
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2 コア、4 GB メモリ | 4 コア、8 GB メモリ |
+| Form Recognizer | 2 コア、4 GB メモリ | 4 コア、8 GB メモリ |
+| テキスト認識 | 1 コア、8 GB のメモリ | 2 コア、8 GB のメモリ |
 
 * 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
-* TPS - 1 秒あたりのトランザクション数
 * コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
 > [!Note]
 > 最小値と推奨値は、Docker の制限に基づくもので、ホスト マシンのリソースに基づくものでは*ありません*。
 
-## <a name="get-the-container-image-with-the-docker-pull-command"></a>docker pull コマンドでコンテナー イメージを入手する
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>docker pull コマンドでコンテナー イメージを入手する
 
-Form Recognizer のコンテナー イメージは、次のリポジトリで入手できます。
+**Form Recognizer** と**テキスト認識**の両オファリングのコンテナー イメージは、次のコンテナー レジストリにあります。
 
-| コンテナー | リポジトリ |
+| コンテナー | イメージの完全修飾名 |
 |-----------|------------|
-| cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| テキスト認識 | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Form Recognizer サービスではなく、`cognitive-services-recognize-text` [コンテナー](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)を使用する予定がある場合は、`docker pull` コマンドを正しいコンテナー名で使用してください。 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+両方のコンテナーが必要です。**テキスト認識**コンテナーの詳細については、[この記事以外で説明しています。](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -91,6 +88,15 @@ Form Recognizer コンテナーを入手するには、次のコマンドを使�
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>テキスト認識コンテナー用の Docker pull
+
+#### <a name="recognize-text"></a>テキスト認識
+
+テキスト認識コンテナーを入手するには、次のコマンドを使用します。
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法

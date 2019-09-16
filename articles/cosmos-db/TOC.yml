@@ -274,8 +274,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: 高度な脅威保護
-        - name: セキュリティ属性
-          href: cosmos-db-security-attributes.md
+        - name: 組み込みのセキュリティ制御
+          href: cosmos-db-security-controls.md
     - name: エンタープライズ対応
       items:
         - name: オンラインのバックアップとオンデマンドの復元
@@ -459,6 +459,10 @@
           items:
             - name: レスポンス ヘッダー
               href: gremlin-headers.md
+            - name: 制限
+              href: gremlin-limits.md
+            - name: 互換性
+              href: gremlin-compatibility.md
         - name: ハウツー ガイド
           items:
             - name: グラフ データのモデリング
@@ -471,6 +475,10 @@
               href: graph-execution-profile.md
             - name: リソース トークンの使用
               href: how-to-use-resource-tokens-gremlin.md
+            - name: リージョン エンドポイントの使用
+              href: how-to-use-regional-gremlin.md
+            - name: システム ドキュメント プロパティのアクセス
+              href: how-to-access-system-properties-gremlin.md
             - name: グラフ データの視覚化
               href: graph-visualization.md
             - name: Spring Data の格納と管理
@@ -547,7 +555,7 @@
             - name: Python
               href: table-sdk-python.md
             - name: Table Storage REST API
-              href: /rest/api/storageservices/Table-Service-Concepts
+              href: /rest/api/storageservices/table-service-rest-api
     - name: etcd API
       items:
         - name: はじめに

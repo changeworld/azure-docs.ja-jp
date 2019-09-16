@@ -20,7 +20,7 @@ sections:
         className: cardsM
         columns: 3
         items:
-          - href: /azure/key-vault/key-vault-whatis
+          - href: /azure/key-vault/key-vault-overview
             html: <p>Azure Key Vault に関連する基本概念について説明します。</p>
             image:
               src: 'https://docs.microsoft.com/media/common/i_article.svg'

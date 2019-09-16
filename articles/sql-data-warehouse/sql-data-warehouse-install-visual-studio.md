@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 02caa7154ef9cb8419b533f0cb2d0fd57e86bf9f
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: e08d0a52903fb488359356707ecedfd81d49084a
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563335"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165069"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>SQL Data Warehouse 用の Visual Studio 2019 を始める
 Visual Studio **2019** SQL Server Data Tools (SSDT) は次のことを可能にする単一ツールです。
@@ -32,8 +32,8 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) は次のことを可能に�
 > [!NOTE]
 > 現在、Visual Studio SSDT データベース プロジェクトはプレビュー段階にあります。 この機能の定期的な更新を受け取りたい場合、[UserVoice] で投票してください。
 
-## <a name="install-visual-studio-2019"></a>Visual Studio 2019 をインストールする
-Visual Studio をダウンロードし、インストールする方法については、[Visual Studio 2019 をダウンロードする][] ページをご覧ください。 インストール中、データ ストレージと処理ワークロードを選択します。 スタンドアロン SSDT インストールは Visual Studio 2019 では必須でなくなりました。
+## <a name="install-visual-studio-2019-preview"></a>Visual Studio 2019 Preview をインストールする
+Visual Studio をダウンロードしてインストールする場合は、[Visual Studio 2019 Preview をダウンロードする][]に関するページを参照してください。 インストール中、データ ストレージと処理ワークロードを選択します。 スタンドアロン SSDT インストールは Visual Studio 2019 では必須でなくなりました。
 
 ## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>SSDT Visual Studio 2019 の問題を報告する (プレビュー)
 
@@ -51,7 +51,7 @@ SQL Data Warehouse で SSDT を使用しているときに発生した問題を�
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
-[Visual Studio 2019 をダウンロードする]: https://visualstudio.microsoft.com/vs/preview/
+[Visual Studio 2019 Preview をダウンロードする]: https://visualstudio.microsoft.com/vs/preview/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

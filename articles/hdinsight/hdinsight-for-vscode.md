@@ -290,7 +290,7 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     **POST/バッチ**   
     要求本文
 
-    | 名前 | description | type | 
+    | name | description | type | 
     | :- | :- | :- | 
     | file | 実行するアプリケーションを含むファイル | パス (必須) |
     | proxyUser | ジョブを実行するときに偽装するユーザー | string |
@@ -305,14 +305,14 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     | executorCores | Executor ごとに使用するコアの数 | int |
     | numExecutors | このセッションに対して起動する Executor の数 | int |
     | archives | このセッションで使用されるアーカイブ | 文字列のリスト |
-    | キュー | 送信先の YARN キューの名前| string |
-    | 名前 | このセッションの名前 | string |
+    | queue | 送信先の YARN キューの名前| string |
+    | name | このセッションの名前 | string |
     | conf | Spark の構成のプロパティ | キーと値のマップ |
 
     応答本文   
     作成された Batch オブジェクト
 
-    | 名前 | description | type |
+    | name | description | type |
     | :- | :- | :- | 
     | id | セッション ID | int | 
     | appId | このセッションのアプリケーション ID | string |

@@ -1,5 +1,5 @@
 ---
-title: Azure 上の Terraform の概要。
+title: Azure 上の Terraform の概要
 description: Azure Cosmos DB と Azure Container Instances をデプロイして、Azure 上の Terraform の使用を開始します。
 services: terraform
 author: neilpeterson

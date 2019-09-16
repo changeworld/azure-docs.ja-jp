@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114289"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147908"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 
@@ -265,8 +265,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>次の手順
 
-* Web アプリの構成の詳細については、 [App Service on Linux](/azure/app-service/containers/) のドキュメントを参照してください。
-* スケーリングの詳細については、「[Azure での自動スケールの概要](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。
-* SSL サポートの詳細については、[Azure App Service の SSL 証明書を使用する](/azure/app-service/app-service-web-ssl-cert-load)ことに関する記事をご覧ください。
-* 認証の詳細については、「[Azure Active Directory サインインを使用するために App Service アプリを構成する](/azure/app-service/configure-authentication-provider-aad)」を参照してください。
+* [App Service on Linux](/azure/app-service/containers/) のドキュメントで Web アプリを構成する方法を確認します。
+* 「[Azure での自動スケールの使用](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)」でスケールの詳細を確認します。
+* [Azure App Service で SSL 証明書を使用します](/azure/app-service/app-service-web-ssl-cert-load)。
+* [Azure Active Directory サインインを使用するように App Service アプリを構成します](/azure/app-service/configure-authentication-provider-aad)。
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

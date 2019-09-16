@@ -59,7 +59,7 @@
           href: time-series-insights-update-storage-ingress.md
         - name: ユース ケース
           href: time-series-insights-update-use-cases.md
-        - name: データ モデリング
+        - name: タイム シリーズ モデル
           href: time-series-insights-update-tsm.md
         - name: データ照会
           href: time-series-insights-update-tsq.md

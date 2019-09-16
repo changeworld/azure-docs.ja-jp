@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981283"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305995"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 
@@ -45,7 +45,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - オンプレミスのファイアウォールで特定のゲートウェイに対して IP アドレスをハードコーディングしている
 - サービス エンドポイントとして Microsoft.SQL を使用しているサブネットがあるが、ゲートウェイ IP アドレスと通信できない
 
-次の場合、影響を受けません。 
+次の場合、影響を受けません。
 - 接続ポリシーとしてのリダイレクトがある
 - Azure の内部から SQL Database へのサービス タグを使用した接続がある
 - サポートされているバージョンの SQL Server 用 JDBC ドライバーを使用して行われる接続は影響を受けません。 サポートされている JDBC のバージョンについては、「[Microsoft SQL Server 用 JDBC Driver のダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)」を参照してください。

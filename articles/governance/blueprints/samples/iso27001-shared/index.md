@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b590eeb86972a8e769fc240b1935c6c8ed32530a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e723fab12c6ba88ec5698a697ba1ddd774eed7e2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231740"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000509"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルの概要
 
@@ -38,7 +38,7 @@ VDC は、Microsoft がその最大規模のエンタープライズのお客様
   - 管理目的で使用されるジャンプボックスまたは踏み台ホスト。イングレス スタック サブネットにデプロイされた [Azure Firewall](../../../../firewall/overview.md) 経由でのみアクセスできます。
   - ジャンプボックスからのみアクセスできる Active Directory Domain Services (ADDS) および DNS を実行する 2 つの仮想マシン。VPN または [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 接続 (ブループリントでデプロイされていない) 経由で AD をレプリケートするためだけに構成できます。
   - [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) と標準 DDoS 保護の使用
-- [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
+- [Azure Key Vault](../../../../key-vault/key-vault-overview.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
 
 これらの要素はすべて、「[Azure アーキテクチャ センター - 参照アーキテクチャ](/azure/architecture/reference-architectures/)」で公開されている実証済みのプラクティスに従っています。
 

@@ -16,12 +16,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3c6ad7e305958131c4f544dfa2022e7471e9adac
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667155"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147104"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 
@@ -62,7 +62,7 @@ Azure AD プロビジョニング サービスは、ソース システムとタ
 Azure portal で監査ログを確認する方法について詳しくは、[プロビジョニング レポートに関するガイド](check-status-user-account-provisioning.md)を参照してください。
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか。
-アプリケーションで自動ユーザー プロビジョニングを使用するとき、Azure AD は[ユーザーとグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)などに基づいて、定期的にスケジュールされた間隔 (通常は 10 分ごと) で自動的にユーザー アカウントをアプリ内でプロビジョニングし、更新します。
+アプリケーションで自動ユーザー プロビジョニングを使用するとき、Azure AD は[ユーザーとグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)などに基づいて、定期的にスケジュールされた間隔 (通常は 40 分ごと) で自動的にユーザー アカウントをアプリ内でプロビジョニングし、更新します。
 
 特定のユーザーがプロビジョニングされるのにかかる時間は主に、プロビジョニング ジョブで実行されているのが初回同期か増分同期かによって異なります。
 
