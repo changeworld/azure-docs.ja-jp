@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c56d469360814cb663b4c5c11689961225eebb2d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544038"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772342"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>プライベート クラウドのファイアウォールのテーブルとルールの設定
 
@@ -24,7 +24,7 @@ ms.locfileid: "69544038"
 
 ## <a name="add-a-new-firewall-table"></a>新しいファイアウォール テーブルを追加する
 
-1. [CloudSimple ポータルにアクセスし](monitor-activity.md)、サイド メニューの **[ネットワーク]** を選択します。
+1. [CloudSimple ポータルにアクセスし](access-cloudsimple-portal.md)、サイド メニューの **[ネットワーク]** を選択します。
 2. **[Firewall Tables]\(ファイアウォール テーブル\)** を選択します。
 3. **[Create firewall table]\(ファイアウォール テーブルの作成\)** を選択します。
 
