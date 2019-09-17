@@ -614,6 +614,12 @@
       items:
         - name: 固定幅のテキスト ファイルを処理する
           href: how-to-fixed-width.md
+    - name: オンプレミスからの SSIS の移行
+      items:
+        - name: SSIS の移行の概要
+          href: scenario-ssis-migration-overview.md
+        - name: Azure SQL Database マネージド インスタンスへの SSISDB の移行
+          href: scenario-ssis-migration-ssisdb-mi.md
 - name: リファレンス
   items:
     - name: .NET

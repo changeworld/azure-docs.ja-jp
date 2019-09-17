@@ -32,6 +32,10 @@
     - name: DRM を使用した動的な暗号化
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
+- name: サンプル
+  items:
+    - name: Media Services のサンプル
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
 - name: 概念
   items:
     - name: 概要

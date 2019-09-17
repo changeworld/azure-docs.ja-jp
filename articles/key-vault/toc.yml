@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: 概念
   items:
+    - name: 基本的な概念
+      href: basic-concepts.md
     - name: セキュリティ
       items:
         - name: セキュリティの概要
@@ -68,8 +70,6 @@
           href: key-vault-ovw-security-worlds.md
         - name: キー コンテナーのセキュリティ保護
           href: key-vault-secure-your-key-vault.md
-    - name: Key Vault とは
-      href: key-vault-whatis.md
     - name: 論理的な削除
       href: key-vault-ovw-soft-delete.md
     - name: Throttling
@@ -92,6 +92,8 @@
           href: create-certificate-scenarios.md
 - name: ハウツー ガイド
   items:
+    - name: App Service のマネージド ID を使用する
+      href: managed-identity.md
     - name: Azure Key Vault のログ記録
       href: key-vault-logging.md
     - name: ファイアウォールの内側にアクセスする

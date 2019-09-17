@@ -1,9 +1,9 @@
-- name: Azure Machine Learning service のドキュメント
+- name: Azure Machine Learning のドキュメント
   href: ../index.yml
 - name: 概要
   expanded: true
   items:
-    - name: Azure Machine Learning サービスの概要
+    - name: Azure Machine Learning とは
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: アーキテクチャと用語
@@ -31,6 +31,11 @@
             - name: ML モデルを自動トレーニングする
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: パイプラインを使用したバッチ スコアリング (詳細設定)
+          items:
+            - name: 分類モデルのバッチ スコアリング
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: ビジュアル インターフェイス
       items:
         - name: 1. 回帰モデルをトレーニングする
@@ -122,7 +127,7 @@
         - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "開発環境をセットアップする\_"
+    - name: 開発環境をセットアップする
       items:
         - name: 開発環境を構成する
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'

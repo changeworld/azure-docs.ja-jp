@@ -98,6 +98,10 @@
       href: functions-premium-plan.md
     - name: デプロイメント
       href: functions-deployment-technologies.md
+    - name: イベントとメッセージング
+      items:
+        - name: 同一入力のための設計
+          href: functions-idempotent.md
     - name: トリガーとバインド
       items:
         - name: トリガーとバインディングについて

@@ -89,7 +89,7 @@
       items:
         - name: Azure AD アプリケーション プロキシをデプロイする
           href: deploy-azure-app-proxy.md
-        - name: SharePoint Server のプロファイルの同期のサポートを構成する
+        - name: SharePoint Server のプロファイルの同期を有効にする
           href: deploy-sp-profile-sync.md
     - name: トラブルシューティング
       items:

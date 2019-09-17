@@ -253,6 +253,10 @@
           href: virtual-network-public-ip-address.md
         - name: パブリック IP プレフィックス
           href: manage-public-ip-address-prefix.md
+    - name: リージョン間で移動する
+      items:
+        - name: 仮想ネットワーク - ポータル
+          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
     - name: トラブルシューティング
       items:
         - name: 仮想ネットワーク ピアリングの問題のトラブルシューティング

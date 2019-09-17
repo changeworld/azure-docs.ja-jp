@@ -236,7 +236,7 @@
         - name: Getting Started (概要)
           href: automation-dsc-getting-started.md
           displayName: DSC
-        - name: Linux 構成の管理
+        - name: マシンの構成の管理
           href: automation-quickstart-dsc-configuration.md
           displayName: 'DSC, state configuration, config, node configuration, node'
     - name: オンボード

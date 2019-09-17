@@ -15,7 +15,7 @@
       href: quickstart-create-logic-apps-visual-studio-code.md
 - name: チュートリアル
   items:
-    - name: トラフィックの定期的なチェック
+    - name: スケジュールベースのワークフローの作成
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
     - name: メーリング リスト要求の管理
       href: tutorial-process-mailing-list-subscriptions-workflow.md

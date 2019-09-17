@@ -19,7 +19,7 @@
           href: tutorial-facilities-udf.md
         - name: Logic Apps を使用した通知
           href: tutorial-facilities-events.md
-        - name: TSI によるイベントの視覚化
+        - name: Time Series Insights を使用したイベントの視覚化
           href: tutorial-facilities-analyze.md
 - name: 概念
   items:

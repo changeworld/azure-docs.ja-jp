@@ -75,7 +75,7 @@
               href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
             - name: 仮想ネットワーク サービス エンドポイント
               href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Authentication
+        - name: 認証
           items:
             - name: 概要
               href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
@@ -129,10 +129,16 @@
               href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: 具体化されたビュー
           items:
-            - name: Create
+            - name: パフォーマンス チューニング ガイダンス
+              href: performance-tuning-materialized-views.md
+            - name: 作成
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
             - name: Alter
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: 順序指定クラスター化列ストア インデックス
+          items:
+            - name: パフォーマンス チューニング ガイダンス
+              href: performance-tuning-ordered-CCI.md
         - name: 結果セットのキャッシュ
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: テーブル
