@@ -32,7 +32,7 @@ ms.locfileid: "70234570"
 * [PaaS サービス](#paas-services)
 
 
-## <a name="vm-server-features">仮想マシン/サーバーでサポートされる機能</a>
+## <a name="vm-server-features"></a>仮想マシン/サーバーでサポートされる機能
 
 > [!div class="mx-tableFixed"]
 

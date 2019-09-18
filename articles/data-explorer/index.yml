@@ -24,7 +24,7 @@ sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: Azure データ エクスプローラーをプロビジョニングして使用する方法を学習します。
+        text: Azure Data Explorerをプロビジョニングして使用する方法を学習します。
       - type: list
         style: icon48
         items:
