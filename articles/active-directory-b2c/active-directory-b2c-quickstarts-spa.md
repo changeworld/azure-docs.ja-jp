@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定 | Microsoft Docs
+title: クイック スタート - Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 description: Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル シングルページ アプリケーションを実行します。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 10/24/2018
+ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 47df2cbdf0b083cf672353471d1ef51e03507475
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 353cbae59a26f6e1efd566b99a04318321740590
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835333"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914416"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 - **[ASP.NET および Web の開発]** ワークロードを含む [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 - [Node.js](https://nodejs.org/en/download/)
-- Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
+- Facebook、Google、Microsoft のいずれかのソーシャル アカウント。
 - [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 
     ```
@@ -58,9 +58,9 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
     ![ブラウザーに表示されたシングルページ アプリケーションのサンプル アプリ](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-    このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。
+    このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft のいずれかのソーシャル ID プロバイダー アカウントを使用します。
 
-2. このサンプル Web アプリでは、Wingtip Toys という架空のブランドのカスタム ログイン ページが Azure AD B2C により表示されます。 ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。
+2. Azure AD B2C では、サンプルの Web アプリケーションに対する Fabrikam と呼ばれる架空の会社のサインイン ページが提供されます。 ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。
 
     ![ID プロバイダー ボタンが表示されたサインインまたはサインアップ ページ](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
