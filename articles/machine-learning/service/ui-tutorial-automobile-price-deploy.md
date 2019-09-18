@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891613"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858638"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで機械学習モデルをデプロイする
 
@@ -118,6 +118,8 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 1. **[デプロイ]** を選択すると、モデルを使用するすべての Web サービスが一覧表示されます。 Web サービスの名前を選択すると、Web サービスの詳細ページに移動します。 このページでは、Web サービスのより詳細な情報を取得できます。
 
     [![詳細な実行レポートを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
+
+これらのモデルとデプロイは、[ワークスペース ランディング ページ (プレビュー)](https://ml.azure.com) の **[モデル]** および **[エンドポイント]** セクションでも見つけることができます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

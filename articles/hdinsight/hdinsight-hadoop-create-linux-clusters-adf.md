@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Data Factory を使用して Azure HDInsight でオンデマンドの Apache Hadoop クラスターを作成する '
+title: チュートリアル:Azure HDInsight でのオンデマンド Apache Hadoop クラスター - Data Factory
 description: チュートリアル - Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する方法について説明します。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854982"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736176"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -189,7 +189,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     |プロパティ  |値  |
     |---------|---------|
-    |EnableAdfsAuthentication | データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
+    |名前 | データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
     |Subscription | Azure サブスクリプションを選択します。 |
     |Resource group | **[既存のものを使用]** を選択し、PowerShell スクリプトを使用して作成したリソース グループを選択します。 |
     |Version | **V2**のままにします。 |
@@ -230,7 +230,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     |プロパティ |値 |
     |---|---|
-    |EnableAdfsAuthentication |「 `HDIStorageLinkedService` 」を入力します。|
+    |名前 |「 `HDIStorageLinkedService` 」を入力します。|
     |Azure サブスクリプション |ドロップダウン リストからサブスクリプションを選択します。|
     |ストレージ アカウント名 |PowerShell スクリプトの一部として作成した Azure Storage アカウントを選択します。|
 
@@ -252,8 +252,8 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     | プロパティ | 値 |
     | --- | --- |
-    | EnableAdfsAuthentication | 「 `HDInsightLinkedService` 」を入力します。|
-    | Type | **[On-demand HDInsight]\(オンデマンド HDInsight\)** を選択します。 |
+    | 名前 | 「 `HDInsightLinkedService` 」を入力します。|
+    | 種類 | **[On-demand HDInsight]\(オンデマンド HDInsight\)** を選択します。 |
     | Azure Storage のリンクされたサービス | [`HDIStorageLinkedService`] を選択します。 |
     | クラスターの種類 | **[hadoop]** を選択します。 |
     | Time to Live | HDInsight クラスターを使用できるようにしておく期間を指定します。この期間を過ぎると、クラスターは自動的に削除されます。|

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:IntelliJ を使用した Azure HDInsight での Spark の Scala Maven アプリケーションの作成
+title: チュートリアル:IntelliJ を使用した Spark の Scala Maven アプリケーション - Azure HDInsight
 description: チュートリアル - Scala で記述され、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA によって提供される Scala 用の既存の Maven アーキタイプを使用する Spark アプリケーションを作成します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 263eea88182a947eccc8a57450432fce8d2fcfc9
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3ffb28ba6c2e6170198a0a360315b7d71f059c34
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839729"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899917"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
@@ -177,27 +177,27 @@ Scala プラグインをインストールするには、次の手順を実行�
 
     2. **[Project Structure]\(プロジェクトの構造\)** ウィンドウで、 **[Artifacts]\(成果物\)**  > **プラス記号 (+)**  >  **[JAR]**  >  **[From modules with dependencies]\(依存関係を持つモジュールから\)** の順に移動します。
 
-        ![JAR の作成](./media/apache-spark-create-standalone-application/create-jar-1.png)
+        ![JAR1 を作成する](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
     3. **[Create JAR from Modules]\(モジュールから JAR を作成\)** ウィンドウで、 **[Main Class]\(メイン クラス\)** ボックスのフォルダー アイコンを選択します。
 
     4. **[Select Main Class]\(メイン クラスの選択\)** ウィンドウで、既定で表示されるクラスを選択し、 **[OK]** を選択します。
 
-        ![JAR の作成](./media/apache-spark-create-standalone-application/create-jar-2.png)
+        ![JAR2 を作成する](./media/apache-spark-create-standalone-application/create-jar-2.png)
 
     5. **[Create JAR from Modules]\(モジュールから JAR を作成\)** ウィンドウで、 **[extract to the target JAR]\(ターゲット JAR に抽出する\)** オプションが選択されていることを確認し、 **[OK]** を選択します。  これにより、すべての依存関係を持つ 1 つの JAR が作成されます。
 
-        ![JAR の作成](./media/apache-spark-create-standalone-application/create-jar-3.png)
+        ![JAR3 を作成する](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
     6. **[Output Layout (出力レイアウト)]** タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の 1 つ (**SparkSimpleApp compile output**) を除き、あとはすべて削除することができます。 削除する jar を選択し、マイナス記号 ( **-** ) を選択します。
 
-        ![JAR の作成](./media/apache-spark-create-standalone-application/delete-output-jars.png)
+        ![JAR4 を作成する](./media/apache-spark-create-standalone-application/delete-output-jars.png)
 
         **[Include in project build]\(プロジェクト ビルドに含める\)** ボックスがオンになっていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply]\(適用\)** 、 **[OK]** の順に選択します。
 
     7. jar を作成するには、 **[Build]\(ビルド\)**  >  **[Build Artifacts]\(ビルド成果物\)**  >  **[Build]\(ビルド\)** の順に移動します。 プロジェクトは 30 秒ほどでコンパイルされます。  出力 jar が **\out\artifacts** の下に作成されます。
 
-        ![JAR の作成](./media/apache-spark-create-standalone-application/output.png)
+        ![output](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>Apache Spark クラスターでアプリケーションを実行する
 

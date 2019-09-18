@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050138"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861196"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成する
 
@@ -28,12 +28,12 @@ ms.locfileid: "70050138"
 * [CMake](https://cmake.org/download/)。
 * [Visual Studio Code](https://code.visualstudio.com/)。
 
-### <a name="install-azure-iot-device-workbench"></a>Azure IoT Device Workbench をインストールする
+### <a name="install-azure-iot-tools"></a>Azure IoT Tools のインストール
 
-VS Code で Azure IoT Device Workbench 拡張機能をインストールするには、次の手順に従ってください。
+[VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張機能パックをインストールするには、次の手順に従います。
 
 1. VS Code で、 **[拡張機能]** タブを選択します。
-1. **Azure IoT Device Workbench** を検索します。
+1. **Azure IoT Tools** を検索します。
 1. **[インストール]** を選択します。
 
 ### <a name="install-the-azure-iot-explorer"></a>Azure IoT Explorer をインストールする
@@ -49,6 +49,9 @@ Microsoft の職場または学校アカウントを使用するか、Microsoft 
 ## <a name="prepare-an-iot-hub"></a>IoT ハブを準備する
 
 また、このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+> [!NOTE]
+> パブリック プレビュー中、IoT プラグ アンド プレイ機能は、**米国中部**、**北ヨーロッパ**、および**東日本**の各リージョンで作成された IoT ハブでのみご利用いただけます。
 
 Azure CLI 用の Microsoft Azure IoT 拡張機能を追加します。
 

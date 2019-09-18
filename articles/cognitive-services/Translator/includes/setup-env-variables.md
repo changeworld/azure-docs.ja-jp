@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 156486f4f4f0df3d4bb4ab76492709bbecfb8eb5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906497"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393838"
 ---
 ## <a name="set-up"></a>セットアップ
 
@@ -23,4 +23,4 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 試用版のサブスクリプションまたはリソースからキーを取得した後、[環境変数](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)を 2 つ作成します。
 
 * `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` - Translator Text リソースのサブスクリプション キー。
-* `TRANSLATOR_TEXT_ENDPOINT` - リソースのリージョン エンドポイントまたはカスタム サブドメイン名。
+* `TRANSLATOR_TEXT_ENDPOINT` - Translator Text のグローバル エンドポイント。 `https://api.cognitive.microsofttranslator.com/`を使用します。

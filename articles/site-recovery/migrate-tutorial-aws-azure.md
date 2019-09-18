@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663493"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873312"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -30,6 +30,10 @@ ms.locfileid: "68663493"
 > * Azure へのワンタイム フェールオーバーを実行する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
+
+
+> [!NOTE]
+    > これで、Azure Migrate サービスを使用して AWS インスタンスを Azure に移行できるようになりました。 [詳細情報](../migrate/tutorial-migrate-physical-virtual-machines.md)。
 
 ## <a name="prerequisites"></a>前提条件
 - 移行する VM で、サポートされている OS バージョンが実行されていることを確認します。 次のバージョンがサポートされています。 
@@ -91,11 +95,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [Azure portal](https://portal.azure.com) で、 **[リソースの作成]** > **[ネットワーク]** >
     **[仮想ネットワーク]** の順に選択します。
 3. **[名前]** に「**myMigrationNetwork**」と入力します。
-4. **[アドレス空間]** は既定値のままにします。
+4. **[アドレス空間]** は既定値のままにします (値を入力する必要があります)。
 5. **[サブスクリプション]** で、使用するサブスクリプションを選択します。
 6. **[リソース グループ]** で **[既存のものを使用]** を選択し、**migrationRG** を選択します。
 7. **[場所]** には **[西ヨーロッパ]** を選択します。
-8. **[サブネット]** の **[名前]** と **[IP 範囲]** は、既定値のままにします。
+8. **[サブネット]** の **[名前]** と **[IP 範囲]** は、既定値のままにします (値を入力する必要があります)。
 9. DDoS 保護設定の手順を追加します。
 10. **[サービス エンドポイント]** オプションは無効のままにします。
 11. ファイアウォール設定の手順を追加します。

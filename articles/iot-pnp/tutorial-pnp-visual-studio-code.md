@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: baf694fbc3176732d43094c8d20ee112af927f16
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186480"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858868"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>チュートリアル:Visual Studio Code を使用してデバイス機能モデルを作成し、テストする
 
@@ -35,10 +35,10 @@ ms.locfileid: "70186480"
 このチュートリアルでデバイス機能モデルを扱う作業を行うには、次のものが必要です。
 
 * [Visual Studio Code](https://code.visualstudio.com/download):VS Code は複数のプラットフォームに対応しています
-* VS Code の Azure IoT Device Workbench 拡張機能。 VS Code に Azure IoT Device Workbench 拡張機能をインストールするには、次の手順に従います。
+* [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張機能パック。 VS Code に拡張機能パックをインストールするには、次の手順に従います。
 
     1. VS Code で、 **[拡張機能]** タブを選択します。
-    1. **Azure IoT Device Workbench** を検索します。
+    1. **Azure IoT Tools** を検索します。
     1. **[インストール]** を選択します。
 
 このチュートリアルで生成した C コードを Windows 上でビルドするには、次のものが必要です。
@@ -61,7 +61,7 @@ ms.locfileid: "70186480"
 
 ## <a name="model-your-device"></a>デバイスのモデル化
 
-デバイス機能モデルを作成するには、"_デジタル ツイン定義言語_" を使用します。 一般的に、モデルは、複数の "_インターフェイス_" 定義ファイルと、1 つのモデル ファイルで構成されます。 **VS Code 向け Azure IoT Device Workbench 拡張機能**には、こうした JSON ファイルを作成および編集する際に役立つツールが揃っています。
+デバイス機能モデルを作成するには、"_デジタル ツイン定義言語_" を使用します。 一般的に、モデルは、複数の "_インターフェイス_" 定義ファイルと、1 つのモデル ファイルで構成されます。 **VS Code 用の Azure IoT Tools** には、こうした JSON ファイルを作成および編集する際に役立つツールが揃っています。
 
 ### <a name="create-the-interface-file"></a>インターフェイス ファイルの作成
 
@@ -71,7 +71,7 @@ IoT デバイスの機能を定義したインターフェイス ファイルを
 
 1. VS Code を起動し、**Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
 
-1. 「**Plug and Play**」と入力して、 **[IoT Plug & Play: Create Interface]\(IoT プラグ アンド プレイ: インターフェイスの作成\)** コマンドを選択します。
+1. 「**プラグ アンド プレイ**」と入力して、 **[IoT Plug and Play: Create Interface]\(IoT プラグ アンド プレイ: インターフェイスの作成\)** コマンドを選択します。
 
 1. 作成した **devicemodel** フォルダーを参照して、選択します。
 
@@ -219,7 +219,7 @@ IoT プラグ アンド プレイ デバイスで実装するインターフェ�
 
 1. **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
 
-1. 「**Plug and Play**」と入力して、 **[IoT Plug & Play: Create Capability Model]\(IoT プラグ アンド プレイ: 機能モデルの作成\)** コマンドを選択します。 次に、モデルの名前として「**SensorboxModel**」と入力します。 VS Code によって、**SensorboxModel.capabilitymodel.json** という名前のサンプル インターフェイス ファイルが作成されます。
+1. 「**プラグ アンド プレイ**」と入力して、 **[IoT Plug and Play: Create Capability Model]\(IoT プラグ アンド プレイ: 機能モデルの作成\)** コマンドを選択します。 次に、モデルの名前として「**SensorboxModel**」と入力します。 VS Code によって、**SensorboxModel.capabilitymodel.json** という名前のサンプル インターフェイス ファイルが作成されます。
 
 1. このファイルの内容を次の JSON で置き換えます。`@id` フィールドと `EnvironmentalSensor` インターフェイスの `{your name}` は、**EnvironmentalSensor.interface.json** ファイルで使用したのと同じ値に置き換えてください。 インターフェイスをリポジトリに保存するには、インターフェイス ID を一意のものにする必要があります。
 
@@ -290,7 +290,7 @@ VS Code で会社リポジトリを開くには:
 
 1. **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
 
-1. 「**Plug and Play**」と入力し、 **[IoT Plug & Play: Submit files to Model Repository]\(IoT プラグ アンド プレイ: モデル リポジトリにファイルを送信する\)** コマンドを選択します。
+1. 「**プラグ アンド プレイ**」と入力して、 **[IoT Plug and Play: Submit files to Model Repository]\(IoT プラグ アンド プレイ: モデル リポジトリにファイルを送信する\)** コマンドを選択します。
 
 1. **EnvironmentalSensor.interface.json** ファイルと **SensorboxModel.capabilitymodel.json** ファイルを選択して、 **[OK]** を選択します。
 
@@ -298,11 +298,11 @@ VS Code で会社リポジトリを開くには:
 
 ## <a name="generate-code"></a>コードを生成する
 
-**VS Code 向け Azure IoT Device Workbench 拡張機能**を使用して、モデルからスケルトン C コードを生成できます。 VS Code でスケルトン コードを生成するには:
+**VS Code 用の Azure IoT Tools** を使用して、モデルからスケルトン C コードを生成できます。 VS Code でスケルトン コードを生成するには:
 
 1. **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
 
-1. 「**Plug and Play**」と入力し、 **[IoT Plug and Play: Generate Device Code Stub]\(IoT プラグ アンド プレイ: デバイス コード スタブの生成\)** コマンドを選択します。
+1. 「**プラグ アンド プレイ**」と入力して、 **[IoT Plug and Play: Generate Device Code Stub]\(IoT プラグ アンド プレイ: デバイス コード スタブの生成\)** コマンドを選択します。
 
 1. **SensorboxModel.capabilitymodel.json** 機能モデル ファイルを選択します。
 

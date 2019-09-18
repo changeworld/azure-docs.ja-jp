@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: ca1478801ad704888266175a23b6f436d067dd10
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 404ee6fd51493735b8f96e98276f71d1d2f91158
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950893"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882878"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>クイック スタート:Python 用 Personalize クライアント ライブラリ
 
@@ -46,6 +46,9 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 
 * `PERSONALIZER_KEY` (リソース キー)。
 * `PERSONALIZER_ENDPOINT` (リソース エンドポイント)。
+
+Azure portal では、キーとエンドポイントのどちらの値も **[クイック スタート]** ページで取得できます。
+
 
 ### <a name="install-the-python-library-for-personalizer"></a>Personalizer 用 Python ライブラリをインストールする
 
@@ -108,6 +111,8 @@ Personalizer に報酬を送信するには、RewardRequest を作成し、そ�
 ## <a name="get-content-choices-represented-as-actions"></a>アクションとして表されるコンテンツの選択肢を取得する
 
 アクションとは、Personalizer にランク付けさせたいコンテンツの選択肢を表します。 Program クラスに次のメソッドを追加します。時間帯と現在の食べ物の好みに関するユーザーの入力をコマンド ラインから取得するものです。
+
+[!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTimeOfDay)]
 

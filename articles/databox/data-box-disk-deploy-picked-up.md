@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/11/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390404"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910112"
 ---
 ::: zone target="chromeless"
 
@@ -52,7 +52,7 @@ ms.locfileid: "70390404"
 
 次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、欧州連合 (EU)、オーストラリア、アジア諸国で異なります。
 
-### <a name="pick-up-in-us-canada"></a>米国、カナダで集荷する
+### <a name="in-us-or-canadatabin-us-or-canada"></a>[米国またはカナダ](#tab/in-us-or-canada)
 
 米国またはカナダでデバイスを返送するには、次の手順を実行します。
 
@@ -68,7 +68,7 @@ ms.locfileid: "70390404"
     - 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
     - 集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box Disk を持ち込むこともできます。
 
-### <a name="pick-up-in-europe"></a>ヨーロッパで集荷する
+### <a name="in-europetabin-europe"></a>[ヨーロッパ](#tab/in-europe)
 
 ヨーロッパでデバイスを返送するには、次の手順を実行します。
 
@@ -81,7 +81,7 @@ ms.locfileid: "70390404"
 4. 該当する国/地域の DHL Express の Web サイトにアクセスし、 **[Book a Courier Collection]\(宅配便の予約\) > [eReturn Shipment]\(電子返送\)** の順に選択します。    
 3. 貨物運送状番号を指定し、 **[Schedule Pickup]\(集荷のスケジュール\)** をクリックして集荷の手配を行います。
 
-### <a name="pick-up-in-australia"></a>オーストラリアで集荷する
+### <a name="in-australiatabin-australia"></a>[オーストラリア](#tab/in-australia)
 
 オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで集荷する場合は、次の手順を実行します。
 
@@ -89,9 +89,9 @@ ms.locfileid: "70390404"
 3. 箱にラベルを貼り付けます。 
 4. リンク先 (https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ) からオンラインで集荷を予約します。 
 
-### <a name="pick-up-in-asia"></a>アジアで集荷する
+### <a name="in-japan-koreatabin-japan-korea"></a>[日本、韓国](#tab/in-japan-korea)
 
-集荷手順は、日本、韓国、およびシンガポールで異なります。
+日本と韓国での集荷手順を以下に示します。
 
 #### <a name="pick-up-in-japan"></a>日本で集荷する
 
@@ -134,7 +134,8 @@ ms.locfileid: "70390404"
     3. 配送業者が集荷に来ない場合は、*Quantium Solutions International* ホットラインに別の手配を依頼します。 
     4. 電話でのリクエストの場合は、口頭で確認を受け取ります。
 
-#### <a name="pick-up-in-singapore"></a>シンガポールでの集荷
+
+### <a name="in-singaporetabin-singapore"></a>[シンガポール](#tab/in-singapore)
 
 1. 配送先住所ラベルを印刷し、箱に貼り付けます。 ラベルを破損または紛失した場合:
     - **[概要] > [出荷ラベルをダウンロード]** に移動し、返送ラベルを取得します。

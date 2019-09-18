@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Web アプリケーションで認証を有効にする - Azure Active Directory B2C | Microsoft Docs
+title: チュートリアル - Web アプリケーションで認証を有効にする - Azure Active Directory B2C
 description: ASP.NET Web アプリケーションで Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464756"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914217"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Web アプリケーションで認証を有効にする
 
@@ -32,8 +32,8 @@ ms.locfileid: "68464756"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。
-- **[ASP.NET および Web の開発]** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする。
+* [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。
+* **[ASP.NET および Web の開発]** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする。
 
 ## <a name="update-the-application"></a>アプリケーションの更新
 
@@ -58,15 +58,21 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 サンプル ソリューションには次の 2 つのプロジェクトが含まれています。
 
-- **TaskWebApp** - タスク一覧を作成および編集します。 このサンプルでは、**サインアップまたはサインイン**のユーザー フローを使用してユーザーのサインアップまたはサインインを実行します。
+- **TaskWebApp** - タスク一覧を作成および編集します。 このサンプルでは、**サインアップまたはサインイン**のユーザー フローを使用してユーザーのサインアップおよびサインインを実行します。
 - **TaskService** - タスク リストの作成、読み取り、更新、削除の機能をサポートします。 この API は Azure AD B2C によって保護されており、TaskWebApp によって呼び出されます。
 
-このサンプルは、ご利用のテナントに登録されているアプリケーションを使用するように変更します。これには、以前書き留めておいたアプリケーション ID とキーが含まれます。 また、作成したユーザー フローも構成します。 このサンプルでは、Web.config ファイルの設定として構成値を定義します。 設定を変更するには:
+このサンプルは、ご利用のテナントに登録されているアプリケーションを使用するように変更します。これには、以前書き留めておいたアプリケーション ID とキーが含まれます。 また、作成したユーザー フローも構成します。 このサンプルでは、*Web.config* ファイルの設定として構成値を定義します。
+
+次のように Web.config ファイル内の設定を更新してご利用のユーザー フローを操作します。
 
 1. Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
-2. **TaskWebApp** プロジェクトの **Web.config** ファイルを開きます。 `ida:Tenant` の値は、実際に作成したテナントの名前に置き換えます。 `ida:ClientId` の値は、実際に記録したアプリケーション ID に置き換えます。 `ida:ClientSecret` の値は、実際に記録したキーに置き換えます。 クライアント シークレットは、Web.config に追加する前に、XML エンコードする必要があります。
-3. **Web.config** ファイルで、`ida:SignUpSignInPolicyId` の値を `b2c_1_signupsignin1` に置き換えます。 `ida:EditProfilePolicyId` の値を `b2c_1_profileediting1` に置き換えます。 `ida:ResetPasswordPolicyId` の値を `b2c_1_passwordreset1` に置き換えます。
-
+1. **TaskWebApp** プロジェクトの **Web.config** ファイルを開きます。
+    1. `ida:Tenant` および `ida:AadInstance` の値は、作成したテナントの名前に置き換えます。
+    1. `ida:ClientId` の値は、あなたが記録したアプリケーション ID に置き換えます。
+    1. `ida:ClientSecret` の値は、実際に記録したキーに置き換えます。 クライアント シークレットは、Web.config に追加する前に、XML エンコードする必要があります。
+    1. `ida:SignUpSignInPolicyId` の値は `b2c_1_signupsignin1` に置き換えます。
+    1. `ida:EditProfilePolicyId` の値は `b2c_1_profileediting1` に置き換えます。
+    1. `ida:ResetPasswordPolicyId` の値は `b2c_1_passwordreset1` に置き換えます。
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 

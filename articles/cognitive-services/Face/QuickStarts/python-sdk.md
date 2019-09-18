@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: f0bd4a49a35392c25b8985aa68ad4e4b66be026c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306516"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376150"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>クイック スタート:Python 用 Face クライアント ライブラリ
 
@@ -26,6 +26,7 @@ Python 用 Face クライアント ライブラリを使用すると、次のこ
 * 似た顔の検索
 * 人物グループを作成してトレーニングする
 * 顔を識別する
+* 顔を確認する
 * データ移行のためのスナップショットを作成する
 
 [リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [サンプル](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
@@ -90,6 +91,7 @@ pip install --upgrade azure-cognitiveservices-Face
 * [似た顔を探す](#find-similar-faces)
 * [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
 * [顔を識別する](#identify-a-face)
+* [顔を確認する](#verify-faces)
 * [データ移行のためのスナップショットを作成する](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
@@ -185,6 +187,32 @@ pip install --upgrade azure-cognitiveservices-Face
 **identify** メソッドは、検出された顔の配列を受け取り、それらを **PersonGroup** と比較します。 検出された顔を **Person** と照合できる場合は、結果を保存します。 このコードは、詳細な一致結果をコンソールに出力します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
+
+## <a name="verify-faces"></a>顔を確認する
+
+確認操作では、顔 ID と、別の顔 ID または **Person** オブジェクトのいずれかを取得し、同じ人に属しているかどうかを判断します。
+
+次のコードでは、2 つのソース画像から顔を検出し、ターゲット画像から検出された顔と照らしてそれらを確認します。
+
+### <a name="get-test-images"></a>テスト イメージを取得する
+
+次のコード ブロックでは、確認操作のソース画像とターゲット画像を指す変数を宣言します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_baseurl)]
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_photos)]
+
+### <a name="detect-faces-for-verification"></a>確認対象の顔を検出する
+
+次のコードは、ソース画像とターゲット画像から顔を検出して、それらを変数に保存します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_detect)]
+
+### <a name="get-verification-results"></a>確認の結果を取得する
+
+次のコードでは、各ソース画像をターゲット画像と比較し、同じ人物のものであるかどうかを示すメッセージを出力します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
 ## <a name="take-a-snapshot-for-data-migration"></a>データ移行のためのスナップショットを作成する
 

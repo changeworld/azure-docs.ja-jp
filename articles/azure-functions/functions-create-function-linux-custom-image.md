@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210183"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773136"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
@@ -143,9 +143,8 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 
 ![Function App をローカルでテストします。](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-必要に応じて、もう一度関数をテストできます。今回は、次の URL を使用してローカルのコンテナーでテストします。
-
-`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+> [!NOTE]
+> この時点で、特定の HTTP 関数を呼び出そうとすると、HTTP 401 エラー応答が返されます。 関数が実行されているのはローカル コンテナー内ですが、Azure 内で実行される想定になっているためです。つまり、Azure 内で実行するのであれば関数キーが必要になります。 コンテナーはまだ関数アプリに公開されていないため、使用できる関数キーは存在しません。 後で Core Tools を使用してコンテナーを公開すると、関数キーが見えるようになります。 ローカル コンテナーで実行されている関数をテストしたい場合は、[承認キー](functions-bindings-http-webhook.md#authorization-keys)を `anonymous` に変更してください。 
 
 コンテナー内に Function App を確認した後で、実行を停止します。 これで、カスタム イメージを Docker Hub アカウントにプッシュできます。
 
@@ -159,7 +158,7 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 docker login --username <docker-id>
 ```
 
-「ログインに成功しました」のメッセージで、ログインしていることを確認します。 サインインしたら、[docker push](https://docs.docker.com/engine/reference/commandline/push/) コマンドを使用して Docker Hub にイメージをプッシュします。
+"ログインに成功しました" のメッセージで、ログインしていることを確認します。 サインインしたら、[docker push](https://docs.docker.com/engine/reference/commandline/push/) コマンドを使用して Docker Hub にイメージをプッシュします。
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0

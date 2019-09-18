@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047909"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858863"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築
 
@@ -33,7 +33,7 @@ ms.locfileid: "70047909"
 このチュートリアルを完了するには、次のものが必要です。
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
-- [VS Code 用 Azure IoT Workbench 拡張機能](https://github.com/Azure/Azure-IoT-PnP-Preview/blob/master/VSCode/README.md#installation)
+- [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張機能パック
 
 また、[デバイス機能モデルを使用してデバイスを作成する方法のクイックスタート](quickstart-create-pnp-device.md)で作成した IoT プラグ アンド プレイ デバイスも必要です。
 

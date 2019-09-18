@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 8/27/2019
+ms.date: 09/10/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241427"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898173"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ ms.locfileid: "70241427"
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>米国、カナダ、ヨーロッパでの発送
+## <a name="in-us-canada-europetabin-us-canada-europe"></a>[米国、カナダ、ヨーロッパ](#tab/in-us-canada-europe)
 
 米国、カナダ、またはヨーロッパでデバイスを返送する場合は、次の手順を行います。
 
@@ -94,7 +94,7 @@ ms.locfileid: "70241427"
 4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
 
 
-## <a name="ship-in-australia"></a>オーストラリアでの発送
+## <a name="in-australiatabin-australia"></a>[オーストラリア](#tab/in-australia)
 
 オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで発送するには、次の手順を行います。
 
@@ -126,7 +126,7 @@ ms.locfileid: "70241427"
 - 最初に集荷に関するメールを送信します。
 - 電話で注文の名前を伝えます。
 
-## <a name="ship-in-japan"></a>日本で発送する 
+## <a name="in-japantabin-japan"></a>[日本](#tab/in-japan) 
 
 1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。

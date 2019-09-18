@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0882be0419cbbbc7d94cb8d517e27bdb06a780
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013937"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861308"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Watch by Colors の統合
 
@@ -56,7 +56,6 @@ Azure AD への Watch by Colors の統合を構成するには、ギャラリー
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Watch by Colors**」と入力します。
 1. 結果パネルで **[Watch by Colors]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Watch by Colors の Azure AD シングル サインオンの構成とテスト
 
@@ -123,13 +122,21 @@ Watch by Colors に対する Azure AD SSO を構成してテストするには�
 
 ## <a name="configure-watch-by-colors-sso"></a>Watch by Colors SSO の構成
 
-1. 新しい Web ブラウザー ウィンドウを開き、Watch by Colors 企業サイトに管理者としてサインインして、次の手順を実行します。
+1. Watch by Colors 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-1. ページの右上隅で、 **[profile]\(プロファイル\)**  >  **[Account Settings]\(アカウント設定\)**  >  **[SSO (Single Sign On)]\(SSO (シングル サインオン)\)** の順にクリックします。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Watch by Colors のセットアップ]** をクリックすると、Watch by Colors アプリケーションに移動します。 そこから、管理者の資格情報を入力して Watch by Colors にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Watch by Colors を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Watch by Colors 企業サイトにサインインして、次の手順を実行します。
+
+4. ページの右上隅で、 **[profile]\(プロファイル\)**  >  **[Account Settings]\(アカウント設定\)**  >  **[SSO (Single Sign On)]\(SSO (シングル サインオン)\)** の順にクリックします。
 
     ![Watch by Colors の構成](./media/watch-by-colors-tutorial/config01.png)
 
-1. **[SSO (Single Sign On)]\(SSO (シングル サインオン)\)** ページで、次の手順を実行します。
+5. **[SSO (Single Sign On)]\(SSO (シングル サインオン)\)** ページで、次の手順を実行します。
 
     ![Watch by Colors の構成](./media/watch-by-colors-tutorial/config02.png)
 
@@ -183,5 +190,5 @@ Azure AD ユーザーが Watch by Colors にサインインできるようにす
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD で Slack を試す](https://aad.portal.azure.com/)
+- [Azure AD を使用して Watch by Colors を試す](https://aad.portal.azure.com/)
 

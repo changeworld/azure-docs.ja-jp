@@ -1,18 +1,18 @@
 ---
-title: チュートリアル - Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する - Azure
+title: チュートリアル - Enterprise セキュリティ パッケージを使用して Apache HBase を構成する - Azure
 description: チュートリアル - Enterprise セキュリティ パッケージを使用して Azure HDInsight に HBase 用の Apache Ranger ポリシーを構成する方法について説明します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/04/2019
+ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274405"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885163"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
 
@@ -100,7 +100,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 2. **[List of Policies]\(ポリシーの一覧\)** 画面に、このクラスター用に作成されたすべての Ranger ポリシーが表示されます。 構成済みポリシーが 1 つリストされる場合があります。 **[Add New Policy]\(新しいポリシーの追加\)** をクリックします。
 
-    ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache Ranger HBase ポリシーの一覧](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. **[Create Policy]\(ポリシーの作成\)** 画面で、次の値を入力します。
 
@@ -119,7 +119,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    * `*` は、文字が 0 回以上出現することを示します。
    * `?` は、1 文字を示します。
 
-   ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![sales 用の Apache Ranger ポリシーを作成する](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >**[ユーザーの選択]** にドメイン ユーザーが自動的に設定されない場合は、Ranger が Azure AD と同期されるまでしばらく待ってください。
@@ -138,7 +138,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    |ユーザーの選択  | marketing_user1 |
    |アクセス許可  | 読み取り |
 
-   ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![marketing 用の Apache Ranger ポリシーを作成する](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. **[Add]** をクリックしてポリシーを保存します。
 
@@ -146,7 +146,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 構成された Ranger ポリシーに基づいて、**sales_user1** は、`Name` と `Contact` の両方の列ファミリの列のすべてのデータを表示できます。 **marketing_user1** は、`Contact` 列ファミリのデータのみを表示できます。
 
-### <a name="access-data-as-salesuser1"></a>sales_user1 としてデータにアクセスする
+### <a name="access-data-as-sales_user1"></a>sales_user1 としてデータにアクセスする
 
 1. クラスターへの新しい SSH 接続を開きます。 次のコマンドを使用して、クラスターにサインインします。
 
@@ -188,7 +188,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>marketing_user1 としてデータにアクセスする
+### <a name="access-data-as-marketing_user1"></a>marketing_user1 としてデータにアクセスする
 
 1. クラスターへの新しい SSH 接続を開きます。 次のコマンドを使用して、**marketing_user1** としてサインインします。
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048010"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858994"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューとは
 
@@ -63,7 +63,7 @@ IoT プラグ アンド プレイ デバイスに接続すると、そのデバ�
 
 1. デバイスの機能モデルとインターフェイスで宣言された機能を実装するデバイス ソフトウェアまたはファームウェアを作成します。 Azure IoT SDK には、デバイス機能モデルを実装するための API が含まれています。
 
-[VS Code 用 IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) の拡張機能には、お客様の役に立つ多くの機能が含まれています。 たとえば、デバイス開発者は、この拡張機能を使用して、機能モデルからスケルトン C プロジェクトを作成できます。 ただし、デバイス機能モデルは、任意の IDE を使用して作成し実装することができます。
+[VS Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張パックには、お客様の役に立つ多くの機能が含まれています。 たとえば、デバイス開発者は、この拡張機能を使用して、機能モデルからスケルトン C プロジェクトを生成できます。 ただし、デバイス機能モデルは、任意の IDE を使用して作成し実装することができます。
 
 ## <a name="certify-an-iot-plug-and-play-device"></a>IoT プラグ アンド プレイ デバイスを認定する
 
@@ -76,6 +76,7 @@ IoT プラグ アンド プレイ デバイスに接続すると、そのデバ�
 - Certified for IoT デバイス カタログに発行します。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
+
 パブリック プレビューの期間中、IoT プラグ アンド プレイは、北ヨーロッパ、米国中部、東日本の各リージョンでご利用いただけます。 これらのリージョンのいずれかでハブを作成するようにしてください。
 
 ## <a name="message-quotas-in-iot-hub"></a>IoT Hub でのメッセージ クォータ

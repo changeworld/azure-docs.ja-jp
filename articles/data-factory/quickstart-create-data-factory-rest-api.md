@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 2856a52f8739b393139c437374be4846e9c67887
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6a2d67c38a6e61cb6610b861c03544fae42406b1
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276653"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910148"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>クイック スタート:REST API を使用して Azure データ ファクトリとパイプラインを作成する
 
@@ -190,7 +190,7 @@ $response | ConvertTo-Json
 ```
 ## <a name="create-datasets"></a>データセットを作成する
 
-ソースからシンクにコピーするデータを表すデータセットを定義します。 この例では、InputDataset と OutputDataset という 2 つのデータセットを作成します。 これらは、前のセクションで作成した Azure Storage のリンクされたサービスを参照します。 入力データセットは、入力フォルダーのソース データを表します。 入力データセットの定義では、ソース データを格納している BLOB コンテナー (adftutorial)、フォルダー (input)、およびファイル (emp.txt) を指定します。 出力データセットは、ターゲットにコピーされるデータを表します。 出力データセットの定義では、データのコピー先の BLOB コンテナー (adftutorial)、フォルダー (output)、およびファイルを指定します。
+ソースからシンクにコピーするデータを表すデータセットを定義します。 この例では、次の 2 つのデータセットを作成します: InputDataset と OutputDataset。 これらは、前のセクションで作成した Azure Storage のリンクされたサービスを参照します。 入力データセットは、入力フォルダーのソース データを表します。 入力データセットの定義では、ソース データを格納している BLOB コンテナー (adftutorial)、フォルダー (input)、およびファイル (emp.txt) を指定します。 出力データセットは、ターゲットにコピーされるデータを表します。 出力データセットの定義では、データのコピー先の BLOB コンテナー (adftutorial)、フォルダー (output)、およびファイルを指定します。
 
 **InputDataset を作成する**
 
@@ -451,7 +451,9 @@ $runId = $response.runId
         },
         "isLatest":true
     }
-2. Run the following script to retrieve copy activity run details, for example, size of the data read/written.
+    ```
+    
+2. 次のスクリプトを実行し、コピー アクティビティの実行の詳細 (たとえば、読み書きされたデータのサイズ) を取得します。
 
     ```powershell
     $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelineruns/${runId}/queryActivityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"

@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 08/30/2019
-  ms.openlocfilehash: 360e243c76472380bb85a858f73024fe89be2a76
-  ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+  ms.openlocfilehash: 51c9e1b662cd82811ee43afa34c20dfef8e2fb90
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70916431"
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70995709"
 landingContent:
 - title: HDInsight について
   linkLists:
@@ -168,10 +168,6 @@ landingContent:
     links:
     - text: HDInsight のセキュリティの概要
       url: ./domain-joined/hdinsight-security-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Azure portal で Apache Spark クラスターを作成する
-      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
   - linkListType: concept
     links:
     - text: 仮想ネットワークを計画する

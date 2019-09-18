@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure portal 内で AI を活用したインデックスを構築する - Azure Search
+title: クイック スタート:Azure portal でのコグニティブ検索の AI エンリッチメントについて - Azure Search
 description: Azure portal とサンプル データを使用した、Azure Search インデックス作成ポータルでのデータ抽出、自然言語および画像の処理スキル。
 manager: nitinme
 author: HeidiSteen
@@ -7,16 +7,16 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ff32be5410876d1ba61b3bce2fd5f57868745e50
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648918"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881098"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>クイック スタート:Azure Search 内でコグニティブ スキルを使用して AI インデックス作成パイプラインを作成する
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>クイック スタート:Azure Search 内でコグニティブ スキルを使用して AI エンリッチメント パイプラインを作成する
 
 Azure Search は [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) と統合され、コンテンツの抽出、自然言語処理 (NLP)、および画像処理のスキルを Azure Search インデックス作成パイプラインに追加して、検索できないコンテンツや非構造化コンテンツを検索可能にします。 
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) では、AI が提供されます。 このクイック スタートには、パイプラインを指定するときにこれらのリソースをインラインで追加するための手順が含まれています。 アカウントを事前に設定する必要はありません。
 
-インデックス作成パイプラインへの入力を提供するために、Azure サービスが必要です。 AI インデックス作成でサポートされていない Azure Table Storage を除き、[Azure Search インデクサー](search-indexer-overview.md)でサポートされている任意のデータ ソースを使用できます。 このクイック スタートでは、ソース データ ファイルのコンテナーとして、[Azure BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)を使用します。 
+インデックス作成パイプラインへの入力を提供するために、Azure サービスが必要です。 [Azure Search インデクサー](search-indexer-overview.md)でサポートされているあらゆるデータ ソースを使用できます。 このクイック スタートでは、ソース データ ファイルのコンテナーとして、[Azure BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)を使用します。 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Azure BLOB サービスを設定し、サンプル データを読み込む
 

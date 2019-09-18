@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 28169bfb8dead65c543a3752a709f33487854e60
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70170878"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844734"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure で HTTP によってトリガーされる関数を作成する
 
@@ -38,7 +38,13 @@ ms.locfileid: "70170878"
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>仮想環境を作成してアクティブにする (任意)
 
-Python 関数をローカルで開発し、テストするには、Python 3.6 環境を利用することが推奨されます。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
+Python 関数をローカルで開発し、テストするには、Python 3.6 環境を利用することが推奨されます。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。 
+
+> [!NOTE]
+> お使いの Linux ディストリビューションに Python をインストールする際、venv がインストールされなかった場合は、次のコマンドを使用してインストールできます。
+> ```command
+> sudo apt-get install python3-venv
+>
 
 ### <a name="bash"></a>Bash:
 
