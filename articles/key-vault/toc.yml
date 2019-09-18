@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: シークレットの設定と取得 - Node.js
       href: quick-create-node.md
-    - name: シークレットの設定と取得 - Resource Manager テンプレート
+    - name: シークレットの設定と取得 - テンプレート
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: チュートリアル

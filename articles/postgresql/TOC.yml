@@ -104,6 +104,8 @@
               href: concepts-monitoring.md
             - name: サーバー ログ
               href: concepts-server-logs.md
+            - name: 監査ログ
+              href: concepts-audit.md
             - name: クエリ ストア
               items:
                 - name: クエリ ストア
