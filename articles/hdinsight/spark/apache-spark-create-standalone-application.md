@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 3ffb28ba6c2e6170198a0a360315b7d71f059c34
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c4c6348c0af478ae3df160c4c50cb344456177b0
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899917"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984663"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
@@ -49,7 +49,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 2. ようこそ画面で **[構成]**  >  **[プラグイン]** の順に移動し、 **[プラグイン]** ウィンドウを開きます。
 
-    ![Scala プラグインの有効化](./media/apache-spark-create-standalone-application/enable-scala-plugin.png)
+    ![Scala プラグインの有効化](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
 
 3. 新しいウィンドウに表示される Scala プラグインの **[インストール]** を選択します。  
 
@@ -82,7 +82,7 @@ Scala プラグインをインストールするには、次の手順を実行�
   	|Project SDK (プロジェクト SDK)| IDEA を初めて使用するとき、これは空白になっています。  **[New]\(新規作成\)** を選択し、自分の JDK に移動します。|
   	|Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、**Spark 2.3.0 (Scala 2.11.8)** を使用します。|
 
-    ![Spark SDK の選択](./media/apache-spark-create-standalone-application/hdi-new-project.png)
+    ![Spark SDK の選択](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
 
 7. **[完了]** を選択します。
 
@@ -125,7 +125,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 16. **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。  元のプロジェクト ウィンドウが表示されます。
 
-    ![自動ダウンロードのための Maven の構成](./media/apache-spark-create-standalone-application/configure-maven.png)
+    ![自動ダウンロードのための Maven の構成](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
 
 17. 左側のウィンドウで、 **[src]\(ソース\)**  >  **[main]**  >  **[scala]**  >  **[com.microsoft.spark.example]** の順に移動し、 **[App]** をダブルクリックして App.scala を開きます。
@@ -177,21 +177,21 @@ Scala プラグインをインストールするには、次の手順を実行�
 
     2. **[Project Structure]\(プロジェクトの構造\)** ウィンドウで、 **[Artifacts]\(成果物\)**  > **プラス記号 (+)**  >  **[JAR]**  >  **[From modules with dependencies]\(依存関係を持つモジュールから\)** の順に移動します。
 
-        ![JAR1 を作成する](./media/apache-spark-create-standalone-application/create-jar-1.png)
+        ![JAR1 を作成する](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
 
     3. **[Create JAR from Modules]\(モジュールから JAR を作成\)** ウィンドウで、 **[Main Class]\(メイン クラス\)** ボックスのフォルダー アイコンを選択します。
 
     4. **[Select Main Class]\(メイン クラスの選択\)** ウィンドウで、既定で表示されるクラスを選択し、 **[OK]** を選択します。
 
-        ![JAR2 を作成する](./media/apache-spark-create-standalone-application/create-jar-2.png)
+        ![JAR2 を作成する](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
 
     5. **[Create JAR from Modules]\(モジュールから JAR を作成\)** ウィンドウで、 **[extract to the target JAR]\(ターゲット JAR に抽出する\)** オプションが選択されていることを確認し、 **[OK]** を選択します。  これにより、すべての依存関係を持つ 1 つの JAR が作成されます。
 
-        ![JAR3 を作成する](./media/apache-spark-create-standalone-application/create-jar-3.png)
+        ![JAR3 を作成する](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
 
     6. **[Output Layout (出力レイアウト)]** タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の 1 つ (**SparkSimpleApp compile output**) を除き、あとはすべて削除することができます。 削除する jar を選択し、マイナス記号 ( **-** ) を選択します。
 
-        ![JAR4 を作成する](./media/apache-spark-create-standalone-application/delete-output-jars.png)
+        ![JAR4 を作成する](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
 
         **[Include in project build]\(プロジェクト ビルドに含める\)** ボックスがオンになっていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply]\(適用\)** 、 **[OK]** の順に選択します。
 

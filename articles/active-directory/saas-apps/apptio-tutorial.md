@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967224"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104378"
 ---
 # <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>チュートリアル:Apptio と Azure Active Directory の統合
 
@@ -85,7 +85,7 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 
     **[識別子]** ボックスに、値として `urn:federation:apptio` を入力します。
 
-5. Apptio アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+5. Apptio アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -94,7 +94,7 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 
 6. その他に、Apptio アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 [ユーザー属性] ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。 
 
-    | EnableAdfsAuthentication |  ソース属性|
+    | 名前 |  ソース属性|
     | -------------- | -------------------- |
     | fullname       | user.displayname |
     | mail           | User.mail |
@@ -156,7 +156,7 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="create-apptio-test-user"></a>Apptio テスト ユーザーの作成
 
-このセクションでは、Apptio で B.Simon というユーザーを作成します。  [Apptio サポート チーム](https://www.apptio.com/about/contact)と協力して、Apptio プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Apptio で B.Simon というユーザーを作成します。 [Apptio サポート チーム](https://www.apptio.com/about/contact)と協力して、Apptio プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

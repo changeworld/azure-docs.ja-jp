@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2b68da881edd0406a85692d6e0586427a57b7806
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916434"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933065"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Azure Maps を使用してストア ロケーターを作成する
 
@@ -417,7 +417,7 @@ ms.locfileid: "70916434"
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'
