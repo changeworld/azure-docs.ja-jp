@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899953"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091950"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory でのパスワードレスの環境
 
@@ -107,7 +107,7 @@ Windows Hello for Business が関係する他のシナリオの認証プロセ�
 
 #### <a name="user-manages-their-windows-hello-for-business-credentials"></a>ユーザーが Windows Hello for Business の資格情報を管理する
 
-[Microsoft PIN リセット サービス](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset)は、必要に応じてユーザーが自分の PIN をリセットできる Azure AD の機能です。 管理者は、グループ ポリシー、Microsoft Intune、または互換性のある MDM を使用して、Microsoft PIN リセット サービスを安全に使用するように Windows 10 デバイスを構成できます。これにより、ユーザーは、忘れた PIN を再登録することなく、設定またはロック画面上でリセットできるようになります。
+[Microsoft PIN リセット サービス](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset)は、必要に応じてユーザーが自分の PIN をリセットできる Azure AD の機能です。 管理者は、グループ ポリシー、Microsoft Intune、または互換性のある MDM を使用して、Microsoft PIN リセット サービスを安全に使用するように Windows 10 デバイスを構成できます。これにより、ユーザーは、忘れた PIN を再登録することなく、設定またはロック画面上でリセットできるようになります。
 
 場合によっては、ユーザーはパスワードの使用にフォールバックする必要があります。 [パスワード リセットのセルフサービス](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) は、ユーザーが IT スタッフに連絡することなくパスワードをリセットできるようにする Azure AD のもう 1 つの機能です。 サービスを使用する前に、ユーザーはパスワード リセットのセルフサービスに登録するか、登録してもらう必要があります。 登録時に、ユーザーは組織で有効になっている 1 つまたは複数の認証方法を選択します。 SSPR を使用すると、ユーザーは場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分でブロックを解除できるようにすることで、組織としては、生産に寄与しない時間と、パスワード関連で最も一般的な問題の高いサポート コストを、削減できます。
 

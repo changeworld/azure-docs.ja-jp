@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910490"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036403"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -55,7 +55,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 > [!IMPORTANT]
 > SEC 17a-4(f) や他の規制を順守するために BLOB を準拠した不変 (書き込みおよび削除禁止) 状態にするには、時間ベースのリテンション ポリシーを*ロック*する必要があります。 適切な期間 (通常は 24 時間未満) ポリシーをロックすることをお勧めします。 適用された時間ベースのリテンション ポリシーの初期状態の*ロックが解除*され、機能をテストし、ポリシーに変更を加えてから、それをロックすることができます。 *ロック解除*状態では不変保護が提供されますが、短期間の機能評価以外の目的で、*ロック解除*状態を使用しないことをお勧めします。 
 
-時間ベースのリテンション ポリシーをコンテナーに適用すると、"*有効な*"リテンション期間中、コンテナー内のすべての BLOB が不変状態のままになります。 既存の BLOB の有効な保有期間は、BLOB の変更時刻とユーザーが指定した保有期間の差になります。
+時間ベースのリテンション ポリシーをコンテナーに適用すると、"*有効な*"リテンション期間中、コンテナー内のすべての BLOB が不変状態のままになります。 既存の BLOB の有効な保有期間は、BLOB の作成時刻とユーザーが指定した保有期間の差になります。
 
 新しい BLOB の場合、有効な保有期間はユーザーが指定した保有期間と同じです。 ユーザーは保持間隔を延長できるので、不変ストレージでは、ユーザー指定の保持間隔の最新の値が有効な保有期間の計算に使用されます。
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d49b8bf9c62813023c1a1e06e0f8fc0d7809f48d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232056"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983595"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Twitter ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "70232056"
 ## <a name="register"> </a>Twitter にアプリケーションを登録する
 1. [Azure Portal]にログオンし、アプリケーションに移動します。 **[URL]** をコピーします。 これは Twitter アプリの構成で使用します。
 2. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、 **[Create New App]** をクリックします。
-3. 新しいアプリの **[Name (名前)]** と **[Description (説明)]** を入力します。 **[Website (Web サイト)]** 値にアプリケーションの **URL** を貼り付けます。 **[コールバック URL]** で、App Service アプリの URL を入力し、パス `/.auth/login/aad/callback` を追加します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/twitter/callback` 」のように入力します。 HTTPS スキームを使用していることを確認します。
+3. 新しいアプリの **[Name (名前)]** と **[Description (説明)]** を入力します。 **[Website (Web サイト)]** 値にアプリケーションの **URL** を貼り付けます。 **[コールバック URL]** で、App Service アプリの URL を入力し、パス `/.auth/login/twitter/callback` を追加します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/twitter/callback` 」のように入力します。 HTTPS スキームを使用していることを確認します。
 4. ページの下部で、条項を読み、同意します。 **[Create your Twitter application]** をクリックします。 アプリケーションの詳細が表示されます。
 5. **[Settings (設定)]** タブをクリックし、 **[Allow this application to be used to sign in with Twitter (このアプリケーションが Twitter でのサインインに使用されることを許可する)]** チェック ボックスをオンにして、 **[Update Settings (設定の更新)]** をクリックします。
 6. **[Keys and Access Tokens]** タブをクリックします。 **[Consumer Key (API Key) (コンシューマー キー (API キー))]** と **[Consumer secret (API Secret) (コンシューマー シークレット (API シークレット))]** の値を書き留めます。

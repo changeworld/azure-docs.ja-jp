@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 6d87e46b522bb7c7e55c711194cc6456fcd89e92
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ecb173a31e6c61991eba1bb7525f6b978d9fff72
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736206"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960051"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>クイック スタート:RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
 
@@ -37,7 +37,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 接続後の画面は、次のスクリーンショットのようになります。
 
-![クラスターの基本情報](./media/ml-services-quickstart-job-rstudio/connect-to-r-studio.png)
+![クラスターの基本情報](./media/ml-services-quickstart-job-rstudio/connect-to-r-studio1.png)
 
 ## <a name="use-a-compute-context"></a>コンピューティング コンテキストを使用する
 

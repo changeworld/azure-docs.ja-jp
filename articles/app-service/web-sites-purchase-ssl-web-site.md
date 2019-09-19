@@ -15,16 +15,16 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074050"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001208"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
-このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に App Service 証明書を作成 (購入) し、それを App Service アプリにバインドすることによって、[App Service アプリ](https://docs.microsoft.com/azure/app-service/)または[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)をセキュリティで保護する方法を示します。
+このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) に App Service 証明書を作成 (購入) し、それを App Service アプリにバインドすることによって、[App Service アプリ](https://docs.microsoft.com/azure/app-service/)または[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)をセキュリティで保護する方法を示します。
 
 > [!TIP]
 > App Service 証明書はあらゆる Azure Service と Azure ではないサービスで利用できます。App Service に限定されません。 そのためには、任意の場所で利用できるように、App Service 証明書のローカル PFX コピーを作成する必要があります。 詳しくは、[App Service 証明書のローカル PFX コピーの作成](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/)に関する記事をご覧ください。
@@ -64,7 +64,7 @@ ms.locfileid: "70074050"
 
 ![KV に格納する準備完了のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットを保護するための Azure サービスです。 これは App Service 証明書に対して選択するストレージです。
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットを保護するための Azure サービスです。 これは App Service 証明書に対して選択するストレージです。
 
 **[Key Vault の状態]** ページで **[Key Vault リポジトリ]** をクリックして、新しいコンテナーを作成するか、既存のコンテナーを選択します。 新しいコンテナーの作成を選択する場合は、次の表を使用してコンテナーを構成し、[作成] をクリックします。 同じサブスクリプションおよびリソース グループ内に新しい Key Vault を作成します。
 

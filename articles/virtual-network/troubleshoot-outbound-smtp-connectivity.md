@@ -3,7 +3,7 @@ title: Azure でのアウトバウンド SMTP 接続のトラブルシューテ�
 description: Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング方法について説明します。
 services: virtual-network
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-network
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 64cf633d50fc81ae8d53f2b4ee2a9975a756f0c7
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b8acb50978c5932fe6e6838be86b65c12a0984ac
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972492"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058933"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング
 

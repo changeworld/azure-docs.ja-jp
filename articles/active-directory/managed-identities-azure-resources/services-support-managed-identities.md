@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9464b408f43f55cb75a57798b098be6335328e3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 37eba245933bc94e9fb631abd3b4ff495f8c6d67
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136522"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087597"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -33,7 +33,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | システム割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー | 
-| ユーザー割り当て済み | プレビュー | プレビュー | プレビュー | プレビュー |
+| ユーザー割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー |
 
 Azure Virtual Machines のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -48,7 +48,7 @@ Azure Virtual Machines のために (それが提供されているリージョ�
 |マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | システム割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー |
-| ユーザー割り当て済み | プレビュー | プレビュー | プレビュー | プレビュー |
+| ユーザー割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー |
 
 Azure Virtual Machine Scale Sets のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -210,7 +210,7 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 
 | クラウド | Resource ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://eventhubs.azure.net` | プレビュー |
+| Azure Global | `https://eventhubs.azure.net` | 使用可能 |
 | Azure Government |  | 利用不可 |
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
@@ -219,8 +219,8 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 
 | クラウド | Resource ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://servicebus.azure.net`  | プレビュー |
-| Azure Government |  | 利用不可 |
+| Azure Global | `https://servicebus.azure.net`  | 使用可能 |
+| Azure Government |  | 使用可能 |
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
 

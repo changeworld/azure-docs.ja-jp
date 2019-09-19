@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 340d728a45da4e392c85ab4ba7ce822f7762da3b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 4cda59448856630468076ef63c51b8a216a31bd0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147382"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001937"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Python)
 
@@ -54,93 +54,48 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 2. **SimulatedDevice.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
 
    ```python
-    import time
-    import sys
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
-    from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError
+    import threading
+    from azure.iot.device import IoTHubDeviceClient
 
-    RECEIVE_CONTEXT = 0
-    WAIT_COUNT = 10
-    RECEIVED_COUNT = 0
-    RECEIVE_CALLBACKS = 0
+    RECEIVED_MESSAGES = 0
     ```
 
 3. 次のコードを **SimulatedDevice.py** ファイルに追加します。 "{deviceConnectionString}" プレースホルダーの値を、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-python.md)に関するクイック スタートで作成したデバイスのデバイス接続文字列に置き換えます。
 
     ```python
-    # choose AMQP or AMQP_WS as transport protocol
-    PROTOCOL = IoTHubTransportProvider.AMQP
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
 4. 受信したメッセージをコンソールに出力するための次の関数を追加します。
 
     ```python
-    def receive_message_callback(message, counter):
-        global RECEIVE_CALLBACKS
-        message_buffer = message.get_bytearray()
-        size = len(message_buffer)
-        print ( "Received Message [%d]:" % counter )
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode('utf-8'), size) )
-        map_properties = message.properties()
-        key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
-        counter += 1
-        RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-        return IoTHubMessageDispositionResult.ACCEPTED
-
-    def iothub_client_init():
-        client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-        client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-
-        return client
-
-    def print_last_message_time(client):
-        try:
-            last_message = client.get_last_message_receive_time()
-            print ( "Last Message: %s" % time.asctime(time.localtime(last_message)) )
-            print ( "Actual time : %s" % time.asctime() )
-        except IoTHubClientError as iothub_client_error:
-            if iothub_client_error.args[0].result == IoTHubClientResult.INDEFINITE_TIME:
-                print ( "No message received" )
-            else:
-                print ( iothub_client_error )
+    def message_listener(client):
+        global RECEIVED_MESSAGES
+        while True:
+            message = client.receive_message()
+            RECEIVED_MESSAGES += 1
+            print("Message received")
+            print( "    Data: <<{}>>".format(message.data) )
+            print( "    Properties: {}".format(message.custom_properties))
+            print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
     ```
 
 5. クライアントを初期化してクラウドからデバイスへのメッセージの受信を待機する次のコードを追加します。
 
     ```python
-    def iothub_client_init():
-        client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-        client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-
-        return client
-
     def iothub_client_sample_run():
         try:
             client = iothub_client_init()
 
+            message_listener_thread = threading.Thread(target=message_listener, args=(client,))
+            message_listener_thread.daemon = True
+            message_listener_thread.start()
+
             while True:
-                print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+                time.sleep(1000)
 
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    status = client.get_send_status()
-                    print ( "Send status: %s" % status )
-                    time.sleep(10)
-                    status_counter += 1
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
-
-        print_last_message_time(client)
+            print ( "IoTHubDeviceClient sample stopped" )
     ```
 
 6. 次の main 関数を追加します。
@@ -148,8 +103,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
     ```python
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```

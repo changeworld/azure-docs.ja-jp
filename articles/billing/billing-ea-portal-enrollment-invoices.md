@@ -8,12 +8,12 @@ ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: dccc9462c6c20f3bce239e3b61cafa3d61e3d383
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5e3a6249f19df7d16c7051c43eec4275ec6f4131
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901187"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090715"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ登録の請求書
 
@@ -43,7 +43,7 @@ EA 管理者が PO 番号を更新しておらず、新しい PO 番号が必要
 
 ## <a name="credits-and-adjustments"></a>クレジットと精算
 
-登録に適用されるすべてのクレジットまたは精算は、[https://www.ea.azure.com](https://www.ea.azure.com) の **[レポート]** セクションに表示されます。 実際のクレジット額に関する具体的なご質問がある場合は、[Azure EA Portal のサポート](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)にお問い合わせください。
+登録に適用されるすべてのクレジットまたは精算は、[https://ea.azure.com](https://ea.azure.com) の **[レポート]** セクションに表示されます。 実際のクレジット額に関する具体的なご質問がある場合は、[Azure EA Portal のサポート](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)にお問い合わせください。
 
 ## <a name="request-an-invoice-copy"></a>請求書のコピーを要求する
 

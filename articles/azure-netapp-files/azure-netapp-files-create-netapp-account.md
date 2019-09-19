@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 8e60f5251f911ffe2b917dcc30e433e0a960823e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 09/12/2019
 ms.locfileid: "70012585"
 ---
 # <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
@@ -64,6 +64,5 @@ NetApp アカウントを作成することによって、容量プールを設�
 
 ## <a name="next-steps"></a>次の手順  
 
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
-* [Azure CLI を使用して Azure NetApp Files リソースを管理する](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)
+[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
 

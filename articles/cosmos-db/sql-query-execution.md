@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614447"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999908"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL クエリの実行
 
@@ -245,7 +245,7 @@ Cosmos DB は、HTTP を介したオープンな RESTful プログラミング �
 
 開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に `ResponseContinuationToken` の値を読み取り、これらを `RequestContinuationToken` として `FeedOptions` 内で渡します。 `EnableScanInQuery` を設定して、構成されたインデックス作成ポリシーでクエリがサポートされない場合に、スキャンを有効にすることができます。 パーティション分割コンテナーの場合は、`PartitionKey` を使用すると 1 つのパーティションに対してクエリを実行できますが、Azure Cosmos DB ではクエリ テキストからこれを自動的に抽出できます。 `EnableCrossPartitionQuery` を使用して、複数のパーティションに対してクエリを実行できます。
 
-クエリを含む他の .NET サンプルについては、GitHub の [Azure Cosmos DB .NET サンプル](https://github.com/Azure/azure-cosmosdb-dotnet)を参照してください。
+クエリを含む他の .NET サンプルについては、GitHub の [Azure Cosmos DB .NET サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)を参照してください。
 
 ## <a id="JavaScript-server-side-API"></a>JavaScript のサーバー側 API
 
@@ -288,5 +288,5 @@ Azure Cosmos DB が提供するプログラミング モデルでは、ストア
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Cosmos DB の概要](introduction.md)
-- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Azure Cosmos DB の一貫性レベル](consistency-levels.md)

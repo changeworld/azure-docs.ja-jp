@@ -1,6 +1,6 @@
 ---
 title: 'ビジュアル インターフェイスの例 #4: 信用リスクを予測するための分類 (費用重視)'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: この記事では、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 カスタムの Python スクリプトを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: ee4b67c82ef2bf5a1ef9c060687cc1c937328e66
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 977ff101b0f697a48b3e5595834c98fef0f1119a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990426"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997026"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>サンプル 4 - 分類:信用リスクを予測する (費用重視)
 

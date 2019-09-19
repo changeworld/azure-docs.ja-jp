@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: b298c87d802314bd865bd6f38c35e4361eb69f3f
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67181555"
 ---
 ストレージは、ディスク容量、またはインデックス、ドキュメント、その他の高水準リソースの "*最大数*" のハード制限のうち、先に達したものによって制約されます。 次の表では、ストレージの制限についてまとめています。 インデックス、ドキュメント、その他のオブジェクトの上限については、[リソースごとの制限](../articles/search/search-limits-quotas-capacity.md#index-limits)に関するページを参照してください。

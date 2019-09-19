@@ -7,15 +7,15 @@ author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/18/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 0c591bb72ba859be2c5b52d8d8cc5040deffda7d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: c69c757be482a7e95f31a9f31cac8d324c1e0216
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183374"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103292"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>キー フレーズ抽出コグニティブ スキル
 
@@ -59,7 +59,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
     "inputs": [
       {
         "name": "text",
-        "source": "/document/text"
+        "source": "/document/content"
       },
       {
         "name": "languageCode",

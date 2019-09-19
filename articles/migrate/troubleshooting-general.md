@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 16e0fe51137ce7e96cf98c0a8acf7c490e9087b3
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232408"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067806"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -78,7 +78,7 @@ Azure Migrate プロジェクトと Log Analytics ワークスペースを削除
 2. リソース グループ ページで **[非表示の型の表示]** を選択します。
 3. 削除する移行プロジェクトを選択します。 リソースの種類は Microsoft.Migrate/migrateprojects であり、それを削除します。
 
-古いバージョンの Azure Migrate でプロジェクトを削除するには: 
+古いバージョンの Azure Migrate でプロジェクトを削除するには:
 
 1. プロジェクトが作成された Azure リソース グループを開きます。
 2. 削除する移行プロジェクトを選択します。 リソースの種類は移行プロジェクトであり、それを削除します。
@@ -90,7 +90,7 @@ Azure Migrate プロジェクトと Log Analytics ワークスペースを削除
 * Azure Migrate プロジェクトを削除していない場合は、 **[Essentials]\(基礎\)**  >  **[Server Assessment]\(Server Assessment\)** でワークスペースへのリンクを見つけることができます。
        ![LA ワークスペース](./media/troubleshooting-general/loganalytics-workspace.png)
 
-     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it. 
+     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
 
 ## <a name="error-requests-must-contain-user-identity-headers"></a>エラー "要求にはユーザー ID ヘッダーが含まれていなければなりません"
@@ -153,7 +153,7 @@ Azure Migrate プロジェクトと Log Analytics ワークスペースを削除
 
 ## <a name="error-appliance-might-not-be-registered"></a>エラー:アプライアンスが登録されていない可能性がある
 
-- エラー 60052 "The appliance might not be registered successfully to the Azure Migrate project" (アプライアンスが Azure Migrate プロジェクトに正常に登録されていない可能性があります) は、アプライアンスの登録に使用された Azure アカウントに十分な権限がない場合に発生します。 
+- エラー 60052 "The appliance might not be registered successfully to the Azure Migrate project" (アプライアンスが Azure Migrate プロジェクトに正常に登録されていない可能性があります) は、アプライアンスの登録に使用された Azure アカウントに十分な権限がない場合に発生します。
     - アプライアンスの登録に使用する Azure ユーザー アカウントに、少なくともサブスクリプションの共同作成者アクセス許可があることを確認します。
     - 必要な Azure ロールとアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements)してください。
 - エラー 60039 "The appliance might not be registered successfully to the Azure Migrate project" (アプライアンスが Azure Migrate プロジェクトに正常に登録されていない可能性があります) は、アプライアンスの登録に使用された Azure Migrate プロジェクトが見つからない場合に発生する可能性があります。
@@ -162,7 +162,7 @@ Azure Migrate プロジェクトと Log Analytics ワークスペースを削除
 
 ## <a name="error-key-vault-management-operation-failed"></a>エラー:Key Vault の管理操作が失敗した
 
-"Azure Key Vault 管理操作に失敗しました" というエラー 60030 または 60031 を受け取る場合は、次のようにします。 
+"Azure Key Vault 管理操作に失敗しました" というエラー 60030 または 60031 を受け取る場合は、次のようにします。
 - アプライアンスの登録に使用する Azure ユーザー アカウントに、少なくともサブスクリプションの共同作成者アクセス許可があることを確認します。
 - エラー メッセージで指定されているキー コンテナーへのアクセス権がアカウントにあることを確認した後、操作を再試行します。
 - 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
@@ -187,7 +187,7 @@ Azure Migrate プロジェクトと Log Analytics ワークスペースを削除
 
 ## <a name="discovered-vms-not-in-portal"></a>ポータルで VM が検出されない
 
-検出を開始して、**Server Assessment** および **Server Migration** に **[検出中]** と表示されたにもかかわらず、ポータルに VM が表示されない場合は、次の点に注意してください。 
+検出を開始して、**Server Assessment** および **Server Migration** に **[検出中]** と表示されたにもかかわらず、ポータルに VM が表示されない場合は、次の点に注意してください。
 
 - アプライアンスから検出を開始した後、VMware VM の検出には約 15 分かかり、Hyper-V VM に追加された各ホストの検出には約 2 分かかります。
 - これらの待ち時間が経過した後も引き続き **[検出中]** と表示される場合は、 **[サーバー]** タブの **[最新の情報に更新]** を選択します。これで、**Server Assessment** および **Server Migration** に検出されたサーバーの数が表示されるはずです。
@@ -202,7 +202,7 @@ Azure Migrate プロジェクトと Log Analytics ワークスペースを削除
 
     1. **[サーバー]**  >  **[Azure Migrate Server Assessment]\(Azure Migrate Server Assessment\)** で、 **[概要]** を選択します。
     2. **[管理]** の下で、 **[Agent Health]\(エージェントの正常性\)** を選択します
-    3. **[エージェントを更新する]** を選択します。 
+    3. **[エージェントを更新する]** を選択します。
     1. 更新操作が完了するまで待ちます。 これで、最新の情報が表示されるはずです。
 
 ## <a name="vm-information-isnt-in-the-portal"></a>ポータルに VM の情報が表示されない
@@ -212,7 +212,7 @@ Azure Migrate プロジェクトと Log Analytics ワークスペースを削除
 
     1. **[サーバー]**  >  **[Azure Migrate Server Assessment]\(Azure Migrate Server Assessment\)** で、 **[概要]** を選択します。
     2. **[管理]** の下で、 **[Agent Health]\(エージェントの正常性\)** を選択します
-    3. **[エージェントを更新する]** を選択します。 
+    3. **[エージェントを更新する]** を選択します。
     1. 更新操作が完了するまで待ちます。 これで、最新の情報が表示されるはずです。
 
 
@@ -259,10 +259,6 @@ Microsoft Visual Studio のサブスクリプションが必要です | コン�
 内部エラーが原因で 1 つ以上のディスクの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。
 内部エラーが原因で 1 つ以上のネットワーク アダプターの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。
 
-## <a name="cant-add-enterprise-agreement-ea-in-an-assessment"></a>評価でマイクロソフト エンタープライズ契約 (EA) を追加できない
-
-Azure Migrate Server Assessment では現在、マイクロソフト エンタープライズ契約 (EA) の価格はサポートされていません。 この制限を回避するには、Azure オファーとして**従量課金制**を使用し、**割引**プロパティを使用して、受け取るカスタム割引を指定します。 評価のカスタマイズ方法を[確認](https://aka.ms/migrate/selfhelp/eapricing)します。
-
 ## <a name="linux-vms-are-conditionally-ready"></a>Linux VM が "条件付きで対応" である
 
 Server Assessment では、Server Assessment の既知のギャップのため、Linux VM が "条件付きで対応" とマークされます。
@@ -279,7 +275,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、現在
 
 
 - VM SKU の推奨は、評価のプロパティによって異なります。
-- これは、Server Assessment で実行する評価の種類によって影響を受けます: "*パフォーマンスベース*" または "*オンプレミス*"。 
+- これは、Server Assessment で実行する評価の種類によって影響を受けます: "*パフォーマンスベース*" または "*オンプレミス*"。
 - パフォーマンスベースの評価では、Server Assessment によりオンプレミスの VM の利用状況データ (CPU、メモリ、ディスク、ネットワークの利用状況) が考慮されて、オンプレミスの VM に対して適切なターゲット VM SKU が決定されます。 また、有効な使用率を決定するときに快適性係数が追加されます。
 - オンプレミスのサイズ設定では、パフォーマンス データは考慮されず、オンプレミスの割り当てに基づいてターゲット SKU が推奨されます。
 
@@ -288,14 +284,14 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、現在
 オンプレミスの VM は、4 つのコアと 8 GB のメモリを備え、CPU 使用率は 50%、メモリ使用率は 50%、指定された快適性係数は 1.3 です。
 
 -  評価が**オンプレミス**の場合は、4 コアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。
-- 評価がパフォーマンスベースの場合は、CPU およびメモリの有効な使用率 (4 コアの 50% * 1.3 = 2.6 コア、8 GB メモリの 50% * 1.3 = 5.3 GB メモリ) に基づき、4 コア (最も近いサポートされるコア数) と 8 GB メモリ (最も近いサポートされるメモリ サイズ) の最も安価な VM SKU が推奨されます。 
+- 評価がパフォーマンスベースの場合は、CPU およびメモリの有効な使用率 (4 コアの 50% * 1.3 = 2.6 コア、8 GB メモリの 50% * 1.3 = 5.3 GB メモリ) に基づき、4 コア (最も近いサポートされるコア数) と 8 GB メモリ (最も近いサポートされるメモリ サイズ) の最も安価な VM SKU が推奨されます。
 - 評価のサイズ決定に関する[詳細を参照](concepts-assessment-calculation.md#sizing)してください。
 
 ## <a name="azure-disk-skus-bigger-than-on-premises"></a>オンプレミスより大きい Azure ディスク SKU
 
 Azure Migrate Server Assessment では、評価の種類に基づいて、より大きいディスクが推奨される場合があります。
 - Server Assessment でのディスクのサイズ設定は、サイズ設定基準とストレージの種類という 2 つの評価プロパティに依存します。
-- サイズ設定基準が**パフォーマンスベース**で、ストレージの種類が**自動**である場合、ディスクの IOPS とスループットの値を考慮して、ターゲット ディスクの種類 (Standard HDD、Standard SSD、または Premium) が特定されます。 その後、そのディスクの種類からディスク SKU が推奨され、この推奨ではオンプレミスのディスクのサイズ要件が考慮されます。 
+- サイズ設定基準が**パフォーマンスベース**で、ストレージの種類が**自動**である場合、ディスクの IOPS とスループットの値を考慮して、ターゲット ディスクの種類 (Standard HDD、Standard SSD、または Premium) が特定されます。 その後、そのディスクの種類からディスク SKU が推奨され、この推奨ではオンプレミスのディスクのサイズ要件が考慮されます。
 - サイズ設定基準が**パフォーマンスベース**で、ストレージの種類が **Premium** である場合、オンプレミスのディスクの IOPS、スループット、サイズの要件に基づいて、Azure の Premium ディスク SKU が推奨されます。 サイズ設定基準が**オンプレミス**で、ストレージの種類が **Standard HDD**、**Standard SSD**、または **Premium** である場合は、同じロジックを使ってディスクのサイズ設定が行われます。
 
 たとえば、オンプレミスのディスクと 32 GB のメモリを使っていても、ディスクの読み取りと書き込みの集計 IOPS が 800 IOPS である場合、Server Assessment では Premium ディスク (高い IOPS 要件であるため) が推奨された後、必要な IOPS とサイズに対応できるディスク SKU が推奨されます。 この例では、適合する最も近いものは P15 (256 GB、1100 IOPS) になります。 オンプレミスのディスクで必要なサイズは 32 GB でしたが、オンプレミスのディスクの高い IOPS 要件により、Server Assessment ではさらに大きいディスクが推奨されます。

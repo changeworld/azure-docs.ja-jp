@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 5537133b31bb63c9fa6ac3a52b344f7f1d9c4c8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8de5140d0146ccbb18f41867e1c716aa2f3897b7
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614347"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001905"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL クエリの使用を開始する
 
@@ -171,5 +171,5 @@ Azure Cosmos DB の SQL クエリ言語の重要な側面について理解す�
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Cosmos DB の概要](introduction.md)
-- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT 句](sql-query-select.md)

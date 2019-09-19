@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ca640b058a1d91d15c5accb9367936368511a3ef
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881611"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000794"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -24,7 +24,7 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 - アプリケーションで署名と暗号化にキーを使用しながら、キー管理をアプリケーションの外部で行うことができます。これにより、ソリューションは地理的に分散したアプリを対象とすることができます。
 - Key Vault の 2016 年 9 月のリリース以降、アプリケーションで Key Vault の証明書を管理できるようになりました。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](/rest/api/keyvault/about-keys--secrets-and-certificates)」を参照してください。
 
-Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-whatis.md)」を参照してください。
+Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-overview.md)」を参照してください。
 
 ## <a name="public-previews"></a>パブリック プレビュー
 

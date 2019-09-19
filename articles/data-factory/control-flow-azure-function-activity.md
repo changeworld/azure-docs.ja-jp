@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a3499637fb5320afe80bf4eefa634173db31f1b6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142506"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931861"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure 関数アクティビティ
 
@@ -62,7 +62,7 @@ Azure 関数アクティビティでは、**ルーティング**がサポート�
 
 Azure Functions は、設定で構成した`functionTimeout`設定に関係無く 230 秒後にタイムアウトします。 詳細については、 [こちらの記事](../azure-functions/functions-versions.md#timeout)を参照してください。 この振る舞いを回避するには、非同期パターンに従うか Durable Functions を使用します。 Durable Functions の利点は独自の状態追跡メカニズムを提供する点にあり、独自に実装する必要はありません。
 
-[この記事](../azure-functions/durable/durable-functions-overview.md)で Durable Functions について詳しく説明します。 Azure 関数のアクティビティを設定して Durable 関数を呼び出すことができます。これにより、[この例](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery)など異なる URI で応答を返します。 `statusQueryGetUri`は関数の実行中に HTTP ステータス 202 を返すため、Web アクティビティを使用して、関数の状態をポーリングできます。 Web アクティビティの`url`フィールドを`@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`に設定するだけです。 Durable 関数が完了したら、関数の出力は、Web アクティビティの出力になります。
+[この記事](../azure-functions/durable/durable-functions-overview.md)で Durable Functions について詳しく説明します。 Azure 関数のアクティビティを設定して Durable 関数を呼び出すことができます。これにより、[この例](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery)など異なる URI で応答を返します。 `statusQueryGetUri`は関数の実行中に HTTP ステータス 202 を返すため、Web アクティビティを使用して、関数の状態をポーリングできます。 Web アクティビティの`url`フィールドを`@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`に設定するだけです。 Durable 関数が完了したら、関数の出力は、Web アクティビティの出力になります。
 
 
 ## <a name="sample"></a>サンプル

@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b7d09ebd9c6ef04aff4d750024216b51513c3cca
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576058"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037469"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Azure で CloudSimple プライベート クラウドの仮想マシンを管理する
 
-[CloudSimple プライベート クラウド用に作成した](azure-create-vm.md)仮想マシンを管理するには、[Azure portal](http://portal.azure.com) にサインインします。 仮想マシンを探して選択します (サイド メニューの **[すべてのサービス]** または **[仮想マシン]** から検索します)。
+[CloudSimple プライベート クラウド用に作成した](azure-create-vm.md)仮想マシンを管理するには、[Azure portal](https://portal.azure.com) にサインインします。 仮想マシンを探して選択します (サイド メニューの **[すべてのサービス]** または **[仮想マシン]** から検索します)。
 
 ## <a name="control-virtual-machine-operation"></a>仮想マシンの運用をコントロールする
 
@@ -53,7 +53,7 @@ VM ディスクを追加するには、選択した VM の **[ディスク]** �
 
    | Item | 説明 |
    | ------------ | ------------- |
-   | Name | ディスクを識別する名前を入力します。  |
+   | 名前 | ディスクを識別する名前を入力します。  |
    | Size | 使用可能なサイズのいずれかを選択します。  |
    | SCSI コントローラー | SCSI コントローラーを選択します。 使用可能なコントローラーは、サポートされているオペレーティング システムによって異なります。  |
    | Mode | ディスクがスナップショットに参加する方法を決定します。 次のいずれかのオプションを選択します。 <br> - Independent persistent\(独立永続\):ディスクに書き込まれたすべてのデータが永続的に書き込まれます。<br> - Independent, non-persistent (独立非永続):ディスクに書き込まれた変更は、仮想マシンの電源をオフにしたとき、またはリセットしたときに破棄されます。  このモードでは、常に同じ状態で VM を再起動できます。 詳細については、[VMware のドキュメント](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)を参照してください。 |
@@ -76,7 +76,7 @@ VM の容量を変更するには、選択した VM の **[サイズ]** ペー�
 
    | コントロール | 説明 |
    | ------------ | ------------- |
-   | Name | インターフェイスを識別する名前を入力します。  |
+   | 名前 | インターフェイスを識別する名前を入力します。  |
    | ネットワーク | プライベート クラウドの vSphere で構成されているネットワークのリストから選択します。  |
    | アダプター | VM 用に構成されている使用可能な種類のリストから vSphere アダプターを選択します。 詳細については、[仮想マシンのネットワーク アダプターの選択](https://kb.vmware.com/s/article/1001805)に関する VMware のサポート技術情報記事を参照してください。 |
    | Power on at Boot\(起動時の電源投入\) | VM が起動したときに NIC ハードウェアを有効にするかどうかを選択します。 既定値は **[有効化]** です。 |

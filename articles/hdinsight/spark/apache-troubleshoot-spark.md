@@ -4,15 +4,16 @@ description: Apache Spark と Azure HDInsight の操作についてよく寄せ�
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 143a941b8266734a8415c71daafc07681bc13b80
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8931f9b09836d30f95e25cee245932475c3cf64c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049572"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018386"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Spark のトラブルシューティング
 
@@ -26,49 +27,49 @@ Spark 構成値を調整して、Apache Spark アプリケーションの `Outof
 
 1. **Spark2** >  **[構成]** に移動します。
 
-    ![[Configs]\(構成\) タブの選択](./media/apache-troubleshoot-spark/update-config-2.png)
+    ![[Configs]\(構成\) タブの選択](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. 構成の一覧で **[Custom-spark2-defaults]** を選択して展開します。
 
 1. **[spark.executor.memory]** など、調整する必要のある値の設定を見つけます。 この場合、**9728m** という値は大きすぎます。
 
-    ![[Custom-spark-defaults] の選択](./media/apache-troubleshoot-spark/update-config-4.png)
+    ![[Custom-spark-defaults] の選択](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. この値を推奨される値に設定します。 この設定では **2048m** が推奨値です。
 
 1. 値を保存してから、構成を保存します。 **[保存]** を選択します。
 
-    ![2048m への値の変更](./media/apache-troubleshoot-spark/update-config-6a.png)
+    ![2048m への値の変更](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
     構成の変更内容に関するメモを入力して、 **[Save]\(保存\)** をクリックします。
 
-    ![変更内容のメモの入力](./media/apache-troubleshoot-spark/update-config-6c.png)
+    ![変更内容のメモの入力](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
     注意の必要な値がある場合は警告が表示されます。 各項目を確認したうえで **[Proceed Anyway]\(警告を無視して続行\)** をクリックします。
 
-    ![[Proceed Anyway]\(警告を無視して続行\) の選択](./media/apache-troubleshoot-spark/update-config-6b.png)
+    ![[Proceed Anyway]\(警告を無視して続行\) の選択](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
 1. 構成を保存すると、サービスを再起動するように求められます。 **[Restart]\(再起動\)** をクリックします。
 
-    ![[Restart]\(再起動\) をクリック](./media/apache-troubleshoot-spark/update-config-7a.png)
+    ![[Restart]\(再起動\) をクリック](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
     再起動を確定します。
 
-    ![[Confirm Restart All]\(すべて再起動\) をクリック](./media/apache-troubleshoot-spark/update-config-7b.png)
+    ![[Confirm Restart All]\(すべて再起動\) をクリック](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
 
     実行中のプロセスを確認できます。
 
-    ![実行中のプロセスの確認](./media/apache-troubleshoot-spark/update-config-7c.png)
+    ![実行中のプロセスの確認](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
 1. 構成を追加することもできます。 構成の一覧で **[Custom-spark2-defaults]** を選択し、 **[Add Property]\(プロパティの追加\)** をクリックします。
 
-    ![[Add Property]\(プロパティの追加\) をクリック](./media/apache-troubleshoot-spark/update-config-8.png)
+    ![[Add Property]\(プロパティの追加\) をクリック](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. 新しいプロパティを定義します。 データ型など特定の設定用のダイアログ ボックスを使用して 1 つのプロパティを定義することができます。 または、1 行につき 1 つの定義を使用して、複数のプロパティを定義することもできます。
 
     この例では、**spark.driver.memory** プロパティの値を **4g** に定義しています。
 
-    ![新しいプロパティの定義](./media/apache-troubleshoot-spark/update-config-9.png)
+    ![新しいプロパティの定義](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
 1. 構成を保存し、手順 6 と 7 の説明に従ってサービスを再起動します。
 

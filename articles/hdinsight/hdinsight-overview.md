@@ -4,16 +4,17 @@ description: HDInsight と、ビッグ データの分析用の Kafka、Hive、S
 keywords: Azure Hadoop, Hadoop Azure, Hadoop の紹介, Hadoop の概要, Hadoop テクノロジ スタック, Hadoop の概説, Hadoop 入門, Hadoop クラスターとは, Hadoop クラスターについて, Hadoop の使用目的
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 42de6277449b51eb51a13148504e7e9a5f6f5270
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f950d273e16dc7fc25f443fda58f9d6582085129
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208455"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076397"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight とは
 

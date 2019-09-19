@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 9543e67d0f98836f760ac840fa12ec5718da037e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39c40f29f4548f2e7379472427a2c97f1a0b762c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086039"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932974"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow、Logic Apps、Functions、および WebJobs の概要
 
@@ -52,7 +52,7 @@ Microsoft Flow を使用すると、オフィスの従業員がだれでも、�
 
 Functions と Logic Apps は、サーバーレス ワークロードを可能にする Azure サービスです。 Azure Functions がサーバーレスのコンピューティング サービスであるのに対し、Azure Logic Apps はサーバーレスのワークフローを提供します。 どちらでも複雑な "*オーケストレーション*" を作成することができます。 オーケストレーションは、Logic Apps において複雑なタスクを遂行するために実行される、"*アクション*" と呼ばれる関数またはステップの集まりです。 たとえば注文のバッチを処理するのであれば、多数の関数のインスタンスを並列に実行し、すべてのインスタンスの完了を待った後、その集計結果を計算する関数を実行することになるでしょう。
 
-Azure Functions では、コードを記述したり [Durable Functions 拡張機能](durable/durable-functions-concepts.md)を使用したりすることによって、オーケストレーションを開発します。 Logic Apps では、GUI を使用するか構成ファイルを編集することによってオーケストレーションを作成します。
+Azure Functions では、コードを記述したり [Durable Functions 拡張機能](durable/durable-functions-overview.md)を使用したりすることによって、オーケストレーションを開発します。 Logic Apps では、GUI を使用するか構成ファイルを編集することによってオーケストレーションを作成します。
 
 オーケストレーションを構築するときは、ロジック アプリから関数を呼び出したり、関数からロジック アプリを呼び出したりしながら、さまざまなサービスを組み合わせることができます。 どのように個々のオーケストレーションを構築するかは、サービスの機能や個人の好みに基づいて選択します。 これらのサービスの主な違いをいくつか次の表に示します。
  

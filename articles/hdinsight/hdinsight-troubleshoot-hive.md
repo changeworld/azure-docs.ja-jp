@@ -5,14 +5,15 @@ keywords: Azure HDInsight、Hive、よくある質問、トラブルシューテ
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: ca1e3e11ad5458e8e7f7072b7d3dd561853029fe
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 9169bd9a63666238e9d6b97d86bf1e9e10312c1b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575700"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076521"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hive のトラブルシューティング
 

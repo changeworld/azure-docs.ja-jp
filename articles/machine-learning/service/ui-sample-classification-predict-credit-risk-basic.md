@@ -1,6 +1,6 @@
 ---
 title: 'ビジュアル インターフェイスの例 #3: 信用リスクを予測するための分類'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、機械学習の分類器を構築する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 26e3f5f237cdd148d12f0a413eb97ed52cb84b49
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990066"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997052"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>サンプル 3 - 分類:信用リスクの予測
 
