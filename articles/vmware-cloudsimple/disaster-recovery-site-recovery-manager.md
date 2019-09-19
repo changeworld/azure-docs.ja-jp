@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972789"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846150"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、プライベート クラウドをディザスター リカバリー ターゲットとして設定する
 
@@ -33,6 +33,8 @@ CloudSimple ソリューションでは、次の操作を行う必要があり�
 * プライベート クラウドが保護されたサイトの場合は、独自のライセンスを SRM に提供します。 CloudSimple サイトが復旧サイトとして使用されている場合、追加の SRM ライセンスは必要ありません。
 
 このソリューションでは、vSphere Replication と SRM を完全に制御できます。 使い慣れた UI、API、CLI のインターフェイスにより、既存のスクリプトとツールを使用できるようになります。
+
+![Site Recovery Manager のデプロイ](media/srm-deployment.png)
 
 プライベート クラウドおよびオンプレミス環境と互換性のある任意のバージョンの vRA と SRM を使用できます。 このガイドの例では、vRA 6.5 と SRM 6.5 を使用します。 これらのバージョンは、CloudSimple でサポートされている vSphere 6.5 と互換性があります。
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: a7e2e735baa7e40b4170d3397327e90fc1a5d2d5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141671"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915510"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
 パイプラインでフィルター アクティビティを使用して、入力配列にフィルター式を適用することができます。 
@@ -45,7 +45,7 @@ items | フィルターを適用する必要がある入力配列。 | 式 | は
 
 ## <a name="example"></a>例
 
-この例では、パイプラインに 2 つのアクティビティ **Filter** および **ForEach** が含まれています。 フィルター アクティビティは、3 より大きい値を持つ項目の入力配列をフィルター処理するように構成されています。 ForEach アクティビティは、フィルター処理された値を反復処理し、現在の値によって指定された秒数だけ待機します。
+この例では、パイプラインに 2 つのアクティビティ **Filter** および **ForEach** が含まれています。 フィルター アクティビティは、3 より大きい値を持つ項目の入力配列をフィルター処理するように構成されています。 ForEach アクティビティは、フィルター処理された値を反復処理し、変数 **test** を現在の値に設定します。
 
 ```json
 {
@@ -60,32 +60,53 @@ items | フィルターを適用する必要がある入力配列。 | 式 | は
                 }
             },
             {
-                "name": "MyForEach",
-                "type": "ForEach",
-                "typeProperties": {
-                    "isSequential": "false",
-                    "batchCount": 1,
-                    "items": "@activity('MyFilterActivity').output.value",
-                    "activities": [{
-                        "type": "Wait",
-                        "typeProperties": {
-                            "waitTimeInSeconds": "@item()"
-                        },
-                        "name": "MyWaitActivity"
-                    }]
-                },
-                "dependsOn": [{
+            "name": "MyForEach",
+            "type": "ForEach",
+            "dependsOn": [
+                {
                     "activity": "MyFilterActivity",
-                    "dependencyConditions": ["Succeeded"]
-                }]
+                    "dependencyConditions": [
+                        "Succeeded"
+                    ]
+                }
+            ],
+            "userProperties": [],
+            "typeProperties": {
+                "items": {
+                    "value": "@activity('MyFilterActivity').output.value",
+                    "type": "Expression"
+                },
+                "isSequential": "false",
+                "batchCount": 1,
+                "activities": [
+                    {
+                        "name": "Set Variable1",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "test",
+                            "value": {
+                                "value": "@string(item())",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ]
             }
-        ],
+        }],
         "parameters": {
             "inputs": {
                 "type": "Array",
                 "defaultValue": [1, 2, 3, 4, 5, 6]
             }
-        }
+        },
+        "variables": {
+            "test": {
+                "type": "String"
+            }
+        },
+        "annotations": []
     }
 }
 ```

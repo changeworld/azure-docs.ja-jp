@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575498"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845501"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>クイックスタート - プライベート クラウドの環境を構成する
 
@@ -46,7 +46,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 9. **[次へ: 詳細オプション]** をクリックします。
 10. vSphere/vSAN サブネットの CIDR 範囲を入力します。 CIDR 範囲がオンプレミスのサブネット、他の Azure サブネット (仮想ネットワーク)、またはゲートウェイのサブネットのいずれとも重複していないことを確認します。
 
-    **CIDR 範囲オプション:** /24、/23、/22、または/21。 /24 CIDR 範囲は最大で 9 つのノードをサポートし、/23 CIDR 範囲は最大で 41 のノードをサポートし、/22 および /21 CIDR 範囲は最大で 64 のノード (プライベート クラウドのノードの最大数) をサポートします。
+    **CIDR 範囲オプション:** /24、/23、/22、または /21。 /24 CIDR 範囲は最大で 26 つのノードをサポートし、/23 CIDR 範囲は最大で 58 のノードをサポートし、/22 および /21 CIDR 範囲は 64 のノード (プライベート クラウドのノードの最大数) をサポートします。  VLAN とサブネットの詳細は、「[VLAN とサブネットの概要](cloudsimple-vlans-subnets.md)」を参照してください。
 
       > [!IMPORTANT]
       > vSphere/vSAN CIDR 範囲の IP アドレスは、プライベート クラウド インフラストラクチャで使用するために予約されています。  どの仮想マシンでもこの範囲の IP アドレスは使用しないでください。

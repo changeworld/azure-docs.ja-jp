@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208327"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743928"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -338,7 +338,7 @@ SQL Server の再起動は、SQL Server IaaS 拡張機能をインストール�
 
 いいえ。 SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 この管理モードは、完全モードから軽量またはエージェントなしモードにダウングレードできません。また、軽量モードからエージェントなしモードにダウングレードすることもできません。 
 
-管理モードを完全管理から変更するには、SQL Server IaaS 拡張機能を削除してください。 その後、Micorsoft.SqlVirtualMachine リソースを削除し、SQL Server VM を SQL VM リソースプロバイダーに再登録します。
+管理モードを完全管理から変更するには、SQL Server IaaS 拡張機能を削除してください。 その後、Microsoft.SqlVirtualMachine リソースをドロップし、SQL Server VM を SQL VM リソースプロバイダーに再登録します。
 
 **Azure portal から SQL VM リソースプロバイダーに登録できますか?**
 
@@ -346,7 +346,7 @@ SQL Server の再起動は、SQL Server IaaS 拡張機能をインストール�
 
 **SQL Server をインストールする前に、VM を SQL VM リソースプロバイダーに登録できますか?**
 
-いいえ。 SQL VM リソースプロバイダーへの登録を成功させるには、VM に少なくとも 1 つの SQL Server インスタンスが必要です。 VM 上に SQL Server インスタンスが存在しない場合、新しい Micosoft.SqlVirtualMachine リソースはエラー状態になります。
+いいえ。 SQL VM リソースプロバイダーへの登録を成功させるには、VM に少なくとも 1 つの SQL Server インスタンスが必要です。 VM 上に SQL Server インスタンスが存在しない場合、新しい Microsoft.SqlVirtualMachine リソースはエラー状態になります。
 
 **複数の SQL Server インスタンスがある場合、VM を SQL VM リソースプロバイダーに登録できますか?**
 

@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 0fe81926327bcccac56718cc0d06e336e1af17fe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165087"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383046"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Apache Spark 用の Azure Data Explorer コネクタ (プレビュー)
 
@@ -21,7 +21,7 @@ ms.locfileid: "70165087"
 Spark 用 Azure Data Explorer コネクタでは、Azure Data Explorer と Spark クラスターの両方の機能を使用する目的で両者の間でデータを移動するためのデータ ソースとデータ シンクが実装されます。 Azure Data Explorer と Apache Spark を使用して、機械学習 (ML)、Extract-Transform-Load (ETL)、および Log Analytics などのデータ駆動型シナリオをターゲットとする、高速でスケーラブルなアプリケーションを作成することができます。 Azure Data Explorer への書き込みは、バッチおよびストリーミング モードで実行できます。
 Azure Data Explorer からの読み取りでは、列の排除と述語のプッシュダウンがサポートされています。Azure Data Explorer でデータをフィルターして除外することで、転送するデータの量を減らします。
 
-Azure Data Explorer Spark コネクタは、あらゆる Spark クラスターで実行できる[オープン ソース プロジェクト](https://github.com/Azure/azure-kusto-spark)です。
+Azure Data Explorer Spark コネクタは、あらゆる Spark クラスターで実行できる[オープン ソース プロジェクト](https://github.com/Azure/azure-kusto-spark)です。 Azure Data Explorer Spark コネクタによって、Azure Data Explorer は、書き込み、読み取り、writeStream などの標準的な Spark のソースおよびシンク操作に有効なデータ ストアになります。 
 
 > [!NOTE]
 > 下の例のいくつかでは [Azure Databricks](https://docs.azuredatabricks.net/) Spark クラスターが登場しますが、Azure Data Explorer Spark コネクタは、Databricks やその他の Spark ディストリビューションに直接依存しません。
@@ -101,7 +101,7 @@ mvn clean install
 
     ![ライブラリがインストールされていることを確認します](media/spark-connector/db-libraries-view.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Azure Data Explorer Spark コネクタでは、[Azure AD アプリケーション](#azure-ad-application-authentication)、[Azure AD アクセス トークン](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token)、[デバイス認証](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (非運用シナリオ)、または [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault) を使用して Azure Active Directory (Azure AD) で認証できます。 ユーザーは azure-keyvault パッケージをインストールし、Key Vault リソースにアクセスするためのアプリケーション資格情報を指定する必要があります。
 

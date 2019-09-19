@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611704"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773248"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -110,13 +110,19 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 
 このリリースでは次の考慮事項にご注意ください。
 
-1. フェールオーバー計画では、時間的要因も考慮する必要があります。 たとえば、接続の喪失時間が 15 ～ 20 分を超えた場合にフェールオーバー開始の判断を下すことが考えられます。 
+1. 設計上、Event Hubs の geo ディザスター リカバリーではデータがレプリケートされないため、セカンダリ イベント ハブでプライマリ イベント ハブの古いオフセット値を再利用することはできません。 次のいずれかを使用して、イベント レシーバーを再起動することをお勧めします。
+
+- *EventPosition.FromStart()* - セカンダリ イベント ハブのすべてのデータを読み取る場合。
+- *EventPosition.FromEnd()* - セカンダリ イベント ハブに接続してからのすべての新しいデータを読み取る場合。
+- *EventPosition.FromEnqueuedTime(dateTime)* - 指定した日付と時刻以降にセカンダリ イベント ハブで受信したすべてのデータを読み取る場合。
+
+2. フェールオーバー計画では、時間的要因も考慮する必要があります。 たとえば、接続の喪失時間が 15 ～ 20 分を超えた場合にフェールオーバー開始の判断を下すことが考えられます。 
  
-2. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされたメッセージ、新しい重複については正しく機能します。 
+3. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされたメッセージ、新しい重複については正しく機能します。 
 
-3. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)を行うようお勧めします。 
+4. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)を行うようお勧めします。 
 
-4. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。
+5. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。
 
 ## <a name="availability-zones"></a>可用性ゾーン 
 

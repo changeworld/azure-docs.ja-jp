@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: f7efffd416cd6768cc8fdd18c224fd42dd97b53e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b7672ff83dac31968dff7ef7a66ff40b36b69d59
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072716"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845194"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -95,7 +95,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **Chief Telecom** |サポートされています |サポートされています |香港、台北 |
 | **China Telecom Global** |サポートされています |サポートされています |香港特別行政区 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |サポートされています |サポートされています |シカゴ、ダラス、モントリオール、トロント、ワシントン DC |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされています |アムステルダム、ダブリン、ロンドン、ニューポート、大阪、パリ、シンガポール 2、東京 |
+| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、ダブリン、ロンドン、ニューポート、大阪、パリ、シンガポール 2、東京 |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |サポートされています |サポートされています |シカゴ、デンバー、ロサンゼルス、ニューヨーク、シリコン バレー、シリコン バレー 2、ワシントン DC、ワシントン DC2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | サポートされています |サポートされています |アムステルダム 2、フランクフルト、マルセイユ|
@@ -137,6 +137,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |サポートされています |サポートされています |シカゴ、香港特別行政区、ロンドン |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |サポートされています |サポートされています |ソウル |
+| **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | サポートされています |サポートされています | ワシントン DC |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |サポートされています |サポートされています |チェンナイ、ムンバイ 2 |
 | **[SingTel](https://www.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |サポートされています |サポートされています |シンガポール、シンガポール 2 |
 | **[Softbank](https://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |サポートされています |サポートされています |大阪、東京 |
@@ -156,10 +157,11 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |サポートされています |サポートされています |ダラス、ロサンゼルス|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |サポートされています |サポートされています |サンパウロ |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、香港特別行政区、ロンドン、ムンバイ、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
+| **Viasat** | サポートされています | サポートされています | ワシントン DC 2 |
 | **[Vocus Group NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | サポートされています | サポートされています | オークランド、シドニー |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |サポートされています |サポートされています |アムステルダム 2、ロンドン、シンガポール |
 | **Vodafone Idea** | サポートされています | サポートされています | ムンバイ、ムンバイ 2 |
-| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、デンバー、ロンドン、ロサンゼルス、モントリオール、ニューヨーク、パリ、シアトル、シリコン バレー、トロント、ワシントン DC |
+| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、デンバー、ロンドン、ロサンゼルス、モントリオール、ニューヨーク、パリ、シアトル、シリコン バレー、トロント、ワシントン DC、ワシントン DC 2 |
 
  **+** は近日対応予定を表します
 
@@ -214,7 +216,14 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 * Microsoft に接続するために、接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
   * 「 [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md) 」の手順に従い、接続を構築します。
 
-## <a name="connectivity-through-additional-service-providers"></a>追加のサービス プロバイダー経由の接続
+## <a name="connectivity-through-satellite-operators"></a>衛星通信業者経由の接続
+遠隔地でファイバー接続がない場合、あるいはその他の接続方法を探してみる場合、次の衛星通信業者をお調べください。 
+
+* Intelsat
+* [SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
+* Viasat
+
+## <a name="connectivity-through-additional-service-providers"></a>その他のサービス プロバイダー経由の接続
 
 | **接続プロバイダー** | **Exchange** | **場所** |
 | --- | --- | --- |

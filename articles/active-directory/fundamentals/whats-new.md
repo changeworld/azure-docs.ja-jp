@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e679ab21127551a9d7004f4ec65045610879f42b
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e6bb926aeab4f88f2d41c578ae3962737df7b2f3
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305125"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872869"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -53,6 +53,23 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 
 ---
 
+### <a name="enhanced-search-filtering-and-sorting-for-groups-is-available-in-the-azure-ad-portal-public-preview"></a>グループの検索、フィルター処理、および並べ替えの機能強化は、Azure AD ポータル (パブリック プレビュー) で利用できます。
+
+**種類:** 新機能  
+**サービス カテゴリ:** グループ管理  
+**製品の機能:** コラボレーション
+
+グループに関連する強化されたエクスペリエンスのパブリック プレビューが、Azure AD ポータルでご利用いただけるようになったことを発表いたします。 次を提供することで、これらの拡張機能がグループとメンバー リストをより適切に管理するのに役立ちます。
+
+- グループ リストでの部分文字列検索などの高度な検索機能。
+- メンバーと所有者のリストに対する高度なフィルター処理と並べ替えのオプション。
+- メンバーと所有者のリストの新しい検索機能。
+- 大規模なグループのより正確なグループ数。
+
+詳細については、[Azure portal でのグループの管理](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)に関する記事をご覧ください。
+
+---
+
 ### <a name="new-custom-roles-are-available-for-app-registration-management-public-preview"></a>アプリ登録管理に新しいカスタム ロールが使用できる (パブリック プレビュー)
 
 **種類:** 新機能  
@@ -74,7 +91,7 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 新しいプロビジョニング ログは、ユーザーとグループのプロビジョニング デプロイの監視とトラブルシューティングに役立ちます。 これらの新しいログ ファイルには、次の情報が含まれます。
 
 - [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) で正常に作成されたグループ
-- [アマゾン ウェブ サービス (AWS)](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on) からインポートされたロール
+- [アマゾン ウェブ サービス (AWS)](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-and-test-azure-ad-single-sign-on) からインポートされたロール
 - [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial) からインポートされなかった従業員
 
 詳細については、[Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) に関する記事を参照してください。

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: fbd645ef9f5e687e71ce110fc84b8342e31defed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbee98d64d37b2cdfc515eb733324902e238a768
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087533"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383103"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -51,7 +51,7 @@ Azure Functions 用の Visual Studio ツールを使用する場合、オーケ�
 * **戻り値** - 戻り値は JSON にシリアル化され、Azure Table ストレージのオーケストレーション履歴テーブルに保存されます。 これらの戻り値は、オーケストレーション クライアントのバインドによるクエリを実行できます。これについては、後で説明します。
 
 > [!WARNING]
-> オーケストレーター関数は、オーケストレーション トリガーのバインドを除いて、入力または出力バインドを使用しないでください。 これらのバインドはシングル スレッド ルールと I/O ルールに従っていない可能性があるため、これらのバインドを実行すると、Durable Task 拡張機能で問題が発生する可能性があります。
+> オーケストレーター関数は、オーケストレーション トリガーのバインドを除いて、入力または出力バインドを使用しないでください。 これらのバインドはシングル スレッド ルールと I/O ルールに従っていない可能性があるため、これらのバインドを実行すると、Durable Task 拡張機能で問題が発生する可能性があります。 他のバインドを使用する場合は、Orchestrator 関数から呼び出されたアクティビティ関数にそれらを追加します。
 
 > [!WARNING]
 > JavaScript オーケストレーター関数は、`async` で宣言してはなりません。
@@ -240,6 +240,35 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
         }
     };
 }
+```
+
+### <a name="using-input-and-output-bindings"></a>入出力バインドを使用する
+
+アクティビティ トリガーのバインドに加えて、通常の入出力バインドを使用できます。 たとえば、アクティビティ バインドへの入力を取得し、EventHub 出力バインドを使用して EventHub にメッセージを送信できます。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "message",
+      "type": "activityTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "eventHub",
+      "name": "outputEventHubMessage",
+      "connection": "EventhubConnectionSetting",
+      "eventHubName": "eh_messages",
+      "direction": "out"
+  }
+  ]
+}
+```
+
+```javascript
+module.exports = async function (context) {
+    context.bindings.outputEventHubMessage = context.bindings.message;
+};
 ```
 
 ## <a name="orchestration-client"></a>オーケストレーション クライアント

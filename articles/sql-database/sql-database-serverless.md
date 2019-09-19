@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 08/26/2019
-ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/06/2019
+ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035720"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858504"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
 
@@ -115,7 +115,8 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 - geo レプリケーション (アクティブ geo レプリケーションと自動フェールオーバー グループ)
 - 長期的なバックアップ保有期間 (LTR)。
-- SQL データ同期で使用される同期データベース。
+- SQL データ同期で使用される同期データベース。同期データベースとは異なり、ハブ データベースとメンバー データベースでは自動一時停止がサポートされています。
+- エラスティック ジョブで使用されるジョブ データベース。
 
 データベースをオンラインにする必要がある一部のサービス更新プログラムのデプロイ中は、自動一時停止は一時的に回避されます。  このような場合、サービス更新プログラムが完了すると、自動一時停止は再び許可されます。
 
@@ -200,7 +201,7 @@ New-AzSqlDatabase `
 次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。 この例では、最小仮想コア数、最大仮想コア数、および自動一時停止遅延を明示的に指定します。
 
 ```powershell
-Set-AzSqlDatabase
+Set-AzSqlDatabase `
   -ResourceGroupName $resourceGroupName `
   -ServerName $serverName `
   -DatabaseName $databaseName `
@@ -291,7 +292,7 @@ Get-AzSqlDatabase `
 - **請求される金額**: 仮想コア単位価格 * (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値 
 - **請求頻度**: 1 秒あたり
 
-1 秒あたり、仮想コアあたりのコストの仮想コア単位価格。 特定のリージョンの特定の単位価格については、[Azure SQL Database の価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/single/)をご覧ください。
+仮想コア単位価格は、1 秒あたり、仮想コアあたりのコストです。 特定のリージョンの特定の単位価格については、[Azure SQL Database の価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/single/)をご覧ください。
 
 請求されるコンピューティングの金額は、次のメトリックで示されます。
 

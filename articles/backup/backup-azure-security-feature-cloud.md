@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 938c65371b05807c774c9f2d73d4c27efe706c47
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 173e261266bffd042e12b327e26fda3a4e55ea4b
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143242"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898985"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup を使用したクラウド ワークロードを保護するためのセキュリティ機能
 
@@ -26,7 +26,7 @@ ms.locfileid: "70143242"
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 
-現在、論理的な削除は米国中西部リージョンでサポートされています。
+現在、論理的な削除は米国中西部リージョンと東アジアでサポートされています。
 
 ### <a name="soft-delete-for-vms"></a>VM の論理的な削除
 
@@ -136,4 +136,4 @@ Recovery Services コンテナー内に論理的に削除された状態のバ�
 
 ## <a name="next-steps"></a>次の手順
 
-* 「[Azure Backup のセキュリティ属性](https://docs.microsoft.com/en-us/azure/backup/backup-security-attributes)」を確認する。
+* [Azure Backup のセキュリティ制御](backup-security-controls.md)を確認する。

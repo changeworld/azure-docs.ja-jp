@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8bd1bee82941953e96eed1defa04c9fddef3e293
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183192"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809209"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -124,9 +124,9 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 
 はい。  [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md) (パブリック プレビュー中) に関する記事を確認してください。 Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列をオーバーライドすることができます。
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を login.microsoftonline.com から login.contoso.com に変更できますか。
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を contoso.b2clogin.com から login.contoso.com に変更できますか。
 
-現時点では連携しません。 この機能は検討中です。 Azure Portal の **[ドメイン]** タブでドメインを確認しても、この目的は達成できません。
+現時点では連携しません。 この機能は検討中です。 Azure Portal の **[ドメイン]** タブでドメインを確認しても、この目的は達成できません。 ただし、b2clogin.com では[ニュートラルな最上位ドメイン](b2clogin.md)が提供されているため、マイクロソフトに言及することなく外部の表示を実装できます。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを削除する方法はありますか。
 

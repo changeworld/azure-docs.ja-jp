@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services を使用した Enterprise セキュリティ パッケージの構成 - Azure HDInsight
+title: HDInsight での Azure Active Directory を使用した Enterprise セキュリティ パッケージ
 description: Azure Active Directory Domain Services を使って HDInsight Enterprise セキュリティ パッケージのクラスターをセットアップして構成する方法について説明する。
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125584"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918335"
 ---
-# <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
+# <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight での Azure Active Directory Domain Services を使用した Enterprise セキュリティ パッケージの構成
 
 Enterprise セキュリティ パッケージ (ESP) のクラスターでは、Azure HDInsight クラスターに対するマルチ ユーザー アクセスが可能です。 ESP の HDInsight クラスターはドメインに接続されるので、ドメイン ユーザーは自分のドメイン資格情報を使用してクラスターの認証を受け、ビッグ データ ジョブを実行することができます。
 
@@ -74,7 +74,7 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 
 Azure AD-DS を有効にした後、ローカルのドメイン ネーム サービス (DNS) サーバーが AD Virtual Machines (VM) で実行されます。 Azure AD-DS 仮想ネットワーク (VNET) を、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、 **[マネージド]** カテゴリで **[プロパティ]** を選択し、 **[仮想ネットワーク上の IP アドレス]** の下に表示される IP アドレスを参照します。
 
-![ローカル DNS サーバーの IP アドレスを見つける](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns.png)
+![ローカル DNS サーバーの IP アドレスを見つける](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
 Azure AD-DS VNET の DNS サーバーの構成を変更し、 **[設定]** カテゴリの下の **[DNS サーバー]** を選択して、これらのカスタム IP を使用します。 次に、 **[カスタム]** の横のラジオ ボタンをクリックし、下のテキスト ボックスに最初の IP アドレスを入力して、 **[保存]** をクリックします。 同じ手順に従って、その他の IP アドレスを追加します。
 
@@ -118,7 +118,7 @@ ESP で HDInsight クラスターを作成するときは、次のパラメー�
 
 作成したマネージド ID は、新しいクラスターを作成するときに、ユーザー割り当てマネージド ID ドロップダウンから選択できます。
 
-![Azure HDInsight ESP Active Directory Domain Services の構成](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png)。
+![Azure HDInsight ESP Active Directory Domain Services のマネージド ID](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png)。
 
 ## <a name="next-steps"></a>次の手順
 

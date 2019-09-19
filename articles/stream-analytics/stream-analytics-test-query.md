@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b8670fc7958e66e7c25e27bb3a22429ab20b2514
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990959"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918980"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>サンプル データを利用した Azure Stream Analytics ジョブのテスト
 
-Azure Stream Analytics では、ジョブを開始または停止せずに、クエリをテストできます。 入力シンクからの受信データ、またはローカル ファイルからのアップロードされたサンプル データに対するクエリをテストできます。
+Azure Stream Analytics では、ジョブを開始または停止せずに、クエリをテストできます。 入力シンクから受信したデータ、または Azure portal でローカル ファイルからアップロードしたサンプル データに対するクエリをテストできます。 [Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) と [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run) でローカル サンプル データまたはライブ データからクエリをローカルでテストすることもできます。 
 
 ## <a name="sample-incoming-data-from-input"></a>入力からの受信データのサンプル
 

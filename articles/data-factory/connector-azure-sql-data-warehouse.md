@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275871"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813578"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
@@ -382,6 +382,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 | writeBatchSize    | SQL テーブルに挿入する**バッチあたりの**行数。 PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **integer** (行数) です。 既定では、Data Factory は、行のサイズに基づいて適切なバッチ サイズを動的に決定します。 | いいえ                                            |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ                                            |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Azure SQL Data Warehouse に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
+| tableOption | ソースのスキーマに基づいて、シンク テーブルが存在しない場合に自動的にシンク テーブルを作成するかどうかを指定します。 コピー アクティビティでステージング コピーが構成されている場合、テーブルの自動作成はサポートされません。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
 | disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションのために、SQL Data Warehouse DWU などのメトリックが収集されます。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse のシンクの例

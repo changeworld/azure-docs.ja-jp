@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 516d4f47cb971dee91bc678ff56eeca71a28183a
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241067"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915851"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>プレビュー: Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -35,7 +35,7 @@ Azure CLI バージョン 2.0.61 以降がインストールされて構成さ�
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-複数のノード プールを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+複数のノード プールを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.12 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -47,14 +47,13 @@ az extension update --name aks-preview
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>複数のノード プール機能のプロバイダーを登録する
 
-複数のノード プールを使用する AKS クラスターを作成するには、まずお使いのサブスクリプションで 2 つの機能フラグを有効にします。 複数のノード プール クラスターは、仮想マシン スケール セット (VMSS) を使用して、Kubernetes ノードのデプロイおよび構成を管理しています。 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、*MultiAgentpoolPreview* および *VMSSPreview* 機能フラグを登録します。
+複数のノード プールを使用する AKS クラスターを作成するには、まずお使いのサブスクリプションで機能フラグを有効にします。 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、*MultiAgentpoolPreview* 機能フラグを登録します。
 
 > [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
+> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
@@ -64,7 +63,6 @@ az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
@@ -77,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 複数のノード プールをサポートする AKS クラスターを作成および管理する場合には、次の制限があります。
 
-* 複数のノード プールは、お使いのサブスクリプションに *MultiAgentpoolPreview* と *VMSSPreview* 機能を正常に登録した後でのみ、クラスターで使用できます。 これらの機能が正常に登録される前に作成された既存の AKS クラスターでは、ノード プールを追加することも管理することもできません。
+* 複数のノード プールは、お使いのサブスクリプションに *MultiAgentpoolPreview* 機能を正常に登録した後でのみ、クラスターで使用できます。 この機能が正常に登録される前に作成された既存の AKS クラスターでは、ノード プールを追加することも管理することもできません。
 * 最初のノード プールは削除できません。
 * HTTP アプリケーションのルーティング アドオンは使用できません。
 * ほとんどの操作と同様に、既存の Resource Manager テンプレートを使用して、ノード プールを追加/更新/削除することはできません。 代わりに、[別の Resource Manager テンプレートを使用](#manage-node-pools-using-a-resource-manager-template)して、AKS クラスター内のノード プールに変更を加えます。
@@ -100,7 +98,7 @@ az group create --name myResourceGroup --location eastus
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
     --kubernetes-version 1.13.10
@@ -171,14 +169,14 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>ノード プールのアップグレード
  
 > [!NOTE]
-> クラスターまたはノード プールでのアップグレードおよびスケール操作は相互に排他的です。 クラスターまたはノード プールのアップグレードとスケーリングを同時に行うことはできません。 代わりに、同じターゲット リソースに対する次の要求を行う前に、各種の操作をそのリソースで完了する必要があります。 詳細については、[トラブルシューティング ガイド](https://aka.ms/aks-pending-upgrade)を参照してください。
+> クラスターまたはノード プールでアップグレードと拡大縮小は同時に実行できません。実行した場合、エラーが返されます。 代わりに、ターゲット リソースに対する次の要求を行う前に、各操作の種類をその同じリソースで完了する必要があります。 詳細については、[トラブルシューティング ガイド](https://aka.ms/aks-pending-upgrade)を参照してください。
 
-最初の手順で AKS クラスターを作成したときに、`--kubernetes-version` として *1.13.10* を指定しました。 これにより、コントロール プレーンと初期ノード プールの両方の Kubernetes バージョンが設定されます。 コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするためのさまざまなコマンドがあります。これらについては、[以下](#upgrade-a-cluster-control-plane-with-multiple-node-pools)で説明します。
+最初の手順で AKS クラスターを初回作成したとき、`--kubernetes-version` として *1.13.10* を指定しました。 これにより、コントロール プレーンと既定ノード プールの両方の Kubernetes バージョンが設定されます。 このセクションのコマンドからは、1 つの特定のノード プールをアップグレードする方法が説明されます。 コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするとき、両者の関係については、[下のセクション](#upgrade-a-cluster-control-plane-with-multiple-node-pools)で説明します。
 
 > [!NOTE]
 > ノード プールの OS イメージのバージョンは、クラスターの Kubernetes バージョンに関連付けられています。 OS イメージは、クラスターのアップグレードの後でのみアップグレードされます。
 
-*mynodepool* を Kubernetes *1.13.10* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
+この例には 2 つのノード プールがあるため、[az aks nodepool upgrade][az-aks-nodepool-upgrade] を使用してノード プールをアップグレードする必要があります。 *mynodepool* を Kubernetes *1.13.10* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -241,16 +239,14 @@ AKS クラスター内のノード プールは、すべて同じ Kubernetes の
 AKS クラスターには、2 つのクラスター リソース オブジェクトがあります。 1 つ目は、コントロール プレーンの Kubernetes バージョンです。 2 つ目は、Kubernetes バージョンのエージェント プールです。 コントロール プレーンは 1 つまたは複数のノード プールにマップされ、それぞれに独自の Kubernetes バージョンがあります。 アップグレード操作の動作は、対象となるリソースと、基になる API のどのバージョンが呼び出されるかによって異なります。
 
 1. コントロール プレーンをアップグレードするには、`az aks upgrade` を使用する必要があります
-   * クラスターのエージェント プールが 1 つの場合は、コントロール プレーンと単一のエージェント プールの両方が一緒にアップグレードされます。
-   * クラスターに複数のエージェント プールがある場合は、コントロール プレーンのみがアップグレードされます
+   * これにより、クラスター内のすべてのノード プールもアップグレードされます。
 1. `az aks nodepool upgrade` でのアップグレード
    * この場合は、指定された Kubernetes バージョンのターゲット ノード プールのみがアップグレードされます
 
 ノード プールによって保持されている Kubernetes バージョン間の関係も、一連のルールに従う必要があります。
 
-1. コントロール プレーンまたはノード プールの Kubernetes バージョンをダウングレードすることはできません。
-1. コントロール プレーンの Kubernetes バージョンが指定されていない場合、既定値は現在の既存のコントロール プレーンのバージョンになります。
-1. ノード プールの Kubernetes バージョンが指定されていない場合、既定値はコントロール プレーンのバージョンになります。
+1. コントロール プレーンでも、ノード プールでも、Kubernetes バージョンをダウングレードすることはできません。
+1. ノード プールの Kubernetes バージョンが指定されていない場合、使用される既定値はコントロール プレーンにフォールバックします。
 1. 特定の時点でコントロール プレーンまたはノード プールのアップグレードまたはスケーリングのどちらかを行うことはできますが、両方の操作を同時に送信することはできません。
 1. ノード プールの Kubernetes バージョンは、コントロール プレーンと同じメジャー バージョンである必要があります。
 1. ノード プールの Kubernetes バージョンは、コントロール プレーンより最大で 2 マイナー バージョンまで小さくてもかまいませんが、超えることはできません。

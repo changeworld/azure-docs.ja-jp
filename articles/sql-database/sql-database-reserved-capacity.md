@@ -1,5 +1,5 @@
 ---
-title: 前払いで Azure SQL Database 仮想コアのコストを削減する | Microsoft Docs
+title: Azure SQL Database 仮想コアのコストを削減する | Microsoft Docs
 description: Azure SQL Database の予約容量を購入して計算コストを節約する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -10,22 +10,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 08/02/2019
-ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.date: 08/29/2019
+ms.openlocfilehash: 5ab5481a89f7bb9c74133487b01879b00b7def32
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972549"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806579"
 ---
-# <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い
+# <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用して SQL Database コンピューティング リソースのコストを削減する
 
-計算リソースを前払いすることで、従量課金制より Azure SQL Database に関するコストを節約できます。 Azure SQL Database の予約容量を使用すると、SQL Database を 1 年間または 3 年間分を前払いすることで計算コストを大幅に引き下げることができます。 SQL Database の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。
+コンピューティング リソースの予約をコミットすることで、Azure SQL Database のコストを従量課金制より節約できます。 Azure SQL Database の予約容量では、SQL Database の 1 年間または 3 年間の使用をコミットすることで、コンピューティング コストを大幅に引き下げることができます。 SQL Database の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。
 
 
-特定の SQL Database インスタンス (単一データベース、エラスティック プール、またはマネージド インスタンス) に予約を割り当てる必要はありません。 既に実行している SQL Database インスタンスまたは新しくデプロイされた SQL Database インスタンスには、この特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間または 3 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する SQL Database のコンピューティング料金は従量課金制で課金されなくなります。 予約には、SQL データベース インスタンスに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が SQL データベースに適用されます。 予約は自動更新されません。 価格の詳細については、[SQL Database の予約容量オファー](https://azure.microsoft.com/pricing/details/sql-database/managed/)に関するページを参照してください。
+特定の SQL Database インスタンス (単一データベース、エラスティック プール、またはマネージド インスタンス) に予約を割り当てる必要はありません。 既に実行している SQL Database インスタンスまたは新しくデプロイされた SQL Database インスタンスには、この特典が自動的に適用されます。 予約を購入することで、1 年間または 3 年間のコンピューティング コストの使用をコミットしたことになります。 予約を購入するとすぐに、予約の属性に一致する SQL Database のコンピューティング料金は従量課金制で課金されなくなります。 予約には、SQL データベース インスタンスに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が SQL データベースに適用されます。 予約は自動更新されません。 価格の詳細については、[SQL Database の予約容量オファー](https://azure.microsoft.com/pricing/details/sql-database/managed/)に関するページを参照してください。
 
-Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com) で購入できます。 SQL Database の予約容量を購入するには:
+Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com) で購入できます。 予約の支払いは、[前払いまたは月払い](../billing/billing-monthly-payments-reservations.md)で行います。 SQL Database の予約容量を購入するには:
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
 - Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
@@ -53,7 +53,7 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 |------------|--------------|
 |Subscription|SQL Database の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、SQL Database の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|
 |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合: <br/><br/>**共有** - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている SQL Database インスタンスに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。<br/><br/>**単一サブスクリプション** - 仮想コアの予約割引はこのサブスクリプションの SQL Database インスタンスに適用されます。 <br/><br/>**[1 つのリソース グループ]** - 予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内の SQL Database インスタンスに適用されます。|
-|Region      |SQL Database 予約容量の予約で充当されない Azure リージョン。|
+|リージョン      |SQL Database 予約容量の予約で充当されない Azure リージョン。|
 |デプロイの種類|予約を購入する SQL リソースの種類。|
 |パフォーマンス レベル|SQL Database インスタンスのサービス レベル。
 |期間        |1 年間または 3 年間。|

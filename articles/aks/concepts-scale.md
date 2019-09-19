@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4fc34ed5cdd53977aa20bef84200ba2bf5386979
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561562"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899485"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -51,7 +51,7 @@ AKS でポッドの水平オートスケーラーを開始するには、「[ポ
 
 ## <a name="cluster-autoscaler"></a>クラスター オートスケーラー
 
-ポッドの需要の変化に対応するために、Kubernetes には、ノード プール内で要求されるコンピューティング リソースに基づいてノードの数を調整するクラスター オートスケーラー (現在 AKS でプレビューの段階です) があります。 既定では、クラスター オートスケーラーはノード数での必要な変更について 10 秒ごとに API サーバーをチェックします。 クラスター オートスケーラーが変更が必要だと判断した場合、それに応じて AKS クラスター内のノードの数が増減されます。 クラスターオートスケーラーは、Kubernetes 1.10.x 以降を実行する RBAC 対応 AKS クラスターで動作します。
+ポッドの需要の変化に対応するために、Kubernetes には、ノード プール内で要求されるコンピューティング リソースに基づいてノードの数を調整するクラスター オートスケーラー (現在 AKS でプレビューの段階です) があります。 既定では、クラスター オートスケーラーは、必要なノード数の変更についてメトリック API サーバーを 10 秒ごとに確認します。 クラスター オートスケーラーが変更が必要だと判断した場合、それに応じて AKS クラスター内のノードの数が増減されます。 クラスターオートスケーラーは、Kubernetes 1.10.x 以降を実行する RBAC 対応 AKS クラスターで動作します。
 
 ![Kubernetes クラスター オートスケーラー](media/concepts-scale/cluster-autoscaler.png)
 

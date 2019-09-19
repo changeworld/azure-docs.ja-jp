@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279568"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376094"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 
@@ -82,7 +82,7 @@ Azure Migrate では評価のために軽量アプライアンスを実行して
 
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
-| **アプライアンスのデプロイ**   |  アプライアンスを Hyper-V VM としてデプロイします。<br/> Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> ホストには、アプライアンス VM に 16 GB の RAM、8 つの vCPU、および 1 つの外部スイッチを割り当てることができる十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
+| **アプライアンスのデプロイ**   |  アプライアンスを Hyper-V VM としてデプロイします。<br/> Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> ホストには、アプライアンス VM に 16 GB の RAM、8 つの vCPU、約 80 GB のストレージ スペース、1 つの外部スイッチを割り当てることができる十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
 | **Azure Migrate プロジェクト**  |  単一のプロジェクトにアプライアンスを関連付けることができます。<br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> プロジェクト内で最大 35,000 個の VM を評価できます。
 | **Hyper-V ホスト**          | アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
 | **検出**              | 1 つのアプライアンスで最大 5,000 個の VM を検出できます。

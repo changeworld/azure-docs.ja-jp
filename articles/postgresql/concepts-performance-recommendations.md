@@ -6,16 +6,16 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: e1e9e998c2ac4695d955a546d0f02fbc2b517d5e
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907491"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764670"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
 
-**適用対象:** Azure Database for PostgreSQL 9.6 および 10 (単一サーバー)
+**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6、10、11
 
 パフォーマンスに関する推奨事項機能では、データベースを分析し、パフォーマンス向上に役立つカスタマイズされた提案が作成されます。 推奨事項を生成するために、分析ではスキーマなどのさまざまなデータベースの特性に注目します。 パフォーマンスに関する推奨事項機能をフル活用するには、サーバー上で[クエリ ストア](concepts-query-store.md)を有効にしてください。 パフォーマンスに関する推奨事項を実装した後は、パフォーマンスをテストし、変更の影響を評価する必要があります。 
 

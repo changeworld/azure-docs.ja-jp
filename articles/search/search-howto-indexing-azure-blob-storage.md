@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 902887c2a765fa50c7075cbdcb835f53e84f583f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 03f828be603720871672b9b5d90eb87dd283c002
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208286"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842536"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
@@ -337,7 +337,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 インデックスの複数のソースからドキュメントを「アセンブル」できます。 たとえば、Cosmos DB に格納された他のメタデータを使用して BLOB からテキストをマージすることもできます。 プッシュ インデックス作成 API を各種インデクサーとともに使用して、複数のパーツから検索ドキュメントを構築することもできます。 
 
-これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このソリューションのチュートリアルについて詳しくは、外部資料「[Combine documents with other data in Azure Search (ドキュメントを Azure Search の他のデータと組み合わせる)](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」をご覧ください。
+これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このトピックの詳細については、[複数の Azure データ ソースのインデックスを作成する](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)方法に関するページを参照してください。 このソリューションのチュートリアルについて詳しくは、外部資料「[Combine documents with other data in Azure Search (ドキュメントを Azure Search の他のデータと組み合わせる)](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」をご覧ください。
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>プレーンテキストのインデックス作成 

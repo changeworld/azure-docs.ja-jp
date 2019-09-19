@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 77ed643afaf5e69f41224af68f5e9f8a93fcace5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ea896697c8f6986c4c77f3ce86a62947d9a3327e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722096"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861400"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -54,7 +54,7 @@ ms.locfileid: "68722096"
 この記事では、ポータルと PowerShell の方法を使用してポリシーを管理する方法について説明します。  
 
 > [!NOTE]
-> ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 例外を指定することで、これらの要求のブロックを解除することができます。 必要なバイパスは `Logging,  Metrics,  AzureServices` です。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
+> ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 例外を指定することで、これらの要求のブロックを解除することができます。 必要なバイパスは `AzureServices` です。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
 
 ### <a name="azure-portal"></a>Azure ポータル
 

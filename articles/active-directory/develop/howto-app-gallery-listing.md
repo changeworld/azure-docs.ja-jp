@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/04/2019
+ms.date: 09/06/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477058"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898508"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>方法:アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -52,8 +52,8 @@ ms.locfileid: "68477058"
 
 - テストには、少なくとも 2 人のユーザーが登録されている永続的なアカウントが必要です。
 
->[!NOTE]
->SCIM コネクタに関する多数の要求に取り組んでいるため、ポータルでの新しい要求の受け取りを停止しました。 今後、通知があるまでは要求を控えてください。 この遅延により、ご不便をおかけして申し訳ありません。
+> [!NOTE]
+> SCIM コネクタに関する多数の要求に取り組んでいるため、ポータルでの新しい要求の受け取りを停止しました。 今後、通知があるまでは要求を控えてください。 この遅延により、ご不便をおかけして申し訳ありません。
 
 ## <a name="submit-the-request-in-the-portal"></a>ポータルで要求を送信する
 

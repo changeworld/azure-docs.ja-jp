@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194597"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909780"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -359,6 +359,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 
 グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 グループ メンバーとしてユーザーとデバイスの両方を含めることはできません。 **organizationalUnit** 属性は表示されなくなったため、使用できません。 この文字列は、特定の場合に Intune によって設定されますが、Azure AD では認識されないため、この属性に基づいてデバイスがグループに追加されることはありません。
 
+> [!NOTE]
+> systemlabels は、Intune では設定できない読み取り専用の属性です。
+>
+> Windows 10 の場合、deviceOSVersion 属性の正しい形式は次のとおりです: (device.deviceOSVersion -eq "10.0 (17763)")。 書式設定は、Get-MsolDevice PowerShell コマンドレットを使用して検証できます。
+
 次のデバイス属性を使用できます。
 
  デバイス属性  | 値 | 例
@@ -371,7 +376,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")
  deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
- enrollmentProfileName | Apple デバイス登録プロファイルまたは Windows Autopilot プロファイルの名前 | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Apple Device Enrollment Profile、デバイス登録 - 企業デバイス ID (Android - キオスク)、または Windows Autopilot プロファイル名 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

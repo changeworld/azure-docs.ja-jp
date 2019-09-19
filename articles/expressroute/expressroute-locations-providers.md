@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/03/2019
+ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5469bd835b189df66c22a3fc13e91c435b4be73f
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f3bae365692b2165e4944becbe5081bb69bef98b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257710"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846118"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -83,7 +83,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **Location** | **所有者と住所** | **ローカル Azure リージョン** | **サービス プロバイダー** |
 | --- | --- | --- | --- |
 | **アムステルダム** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 西ヨーロッパ | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Telia Carrier、Verizon、Zayo |
-| **アムステルダム 2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 西ヨーロッパ | CenturyLink Cloud Connect、DE-CIX、Interxion、Vodafone |
+| **アムステルダム 2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 西ヨーロッパ | CenturyLink Cloud Connect、DE-CIX、Colt、Interxion、Vodafone |
 | **アトランタ** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 該当なし | Equinix、Megaport |
 | **オークランド** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 該当なし | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
 | **釜山** | [LG CNS](https://datacenter.lgcns.com/Contents/En/Menu_1/Locations_1.aspx) | 韓国南部 | LG CNS |
@@ -132,8 +132,8 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **台北** | Chief Telecom | 該当なし | Chief Telecom、FarEasTone |
 | **東京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 東日本 | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Orange、Softbank、Verizon |
 | **トロント** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | カナダ中部 | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、IX Reach Megaport、Telus、Verizon、Zayo |
-| **ワシントン DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 米国東部、米国東部 2 | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Cologix、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、Neutrona Networks、NTT Communications、Orange、PacketFabric、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
-| **ワシントン DC2** | [Coresite Reston](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 米国東部、米国東部 2 |Coresite | 
+| **ワシントン DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 米国東部、米国東部 2 | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Cologix、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、Neutrona Networks、NTT Communications、Orange、PacketFabric、SES、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
+| **ワシントン DC2** | [Coresite Reston](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 米国東部、米国東部 2 |Coresite、Viasat、Zayo | 
 | **チューリッヒ** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 該当なし | Intercloud、Interxion |
 
  **+** は近日対応予定を表します
@@ -184,6 +184,13 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
   * 単一障害点がないように、接続プロバイダーが可用性の高い方法で接続を拡張していることを確認します。
 * Microsoft に接続するために、接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
   * 「 [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md) 」の手順に従い、接続を構築します。
+
+## <a name="connectivity-through-satellite-operators"></a>衛星通信業者経由の接続
+遠隔地でファイバー接続がない場合、あるいはその他の接続方法を探してみる場合、次の衛星通信業者をお調べください。 
+
+* Intelsat
+* [SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
+* Viasat
 
 ## <a name="c1partners"></a>その他のサービス プロバイダー経由の接続
 | **Location** | **Exchange** | **接続プロバイダー** |

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: a173272600bab71264ed3b85ce5141814c0a6aed
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 30587af098b5ced7962dc45d6a059184f8b5f319
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147206"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914889"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>プレビュー - Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -42,7 +42,7 @@ Windows Server コンテナーを実行できるクラスターを作成した�
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-Windows Server コンテナーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+Windows Server コンテナーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.12 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -79,8 +79,8 @@ az provider register --namespace Microsoft.ContainerService
 
 複数のノード プールをサポートする AKS クラスターを作成および管理する際は、次の制限が適用されます。
 
-* *WindowsPreview* が正常に登録された後に作成するクラスターには複数のノード プールを利用できます。 また、ご利用のサブスクリプションに対して *MultiAgentpoolPreview* 機能と *VMSSPreview* 機能を登録した場合も、複数ノード プールを使用できます。 これらの機能が正常に登録される前に作成された既存の AKS クラスターでは、ノード プールを追加することも管理することもできません。
-* 最初のノード プールを削除することはできません。
+* *WindowsPreview* が正常に登録された後に作成するクラスターには複数のノード プールを利用できます。 また、ご利用のサブスクリプションに対して *MultiAgentpoolPreview* 機能を登録した場合も、複数ノード プールを使用できます。 この機能が正常に登録される前に作成された既存の AKS クラスターでは、ノード プールを追加することも管理することもできません。
+* 最初のノード プールは削除できません。
 
 この機能がプレビュー段階にある間は、次の追加の制限事項が適用されます。
 
@@ -141,7 +141,7 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 

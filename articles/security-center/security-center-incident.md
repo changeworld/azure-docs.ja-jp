@@ -2,24 +2,19 @@
 title: Azure Security Center でのセキュリティ インシデントの管理 | Microsoft Docs
 description: このドキュメントは、Azure Security Center を使用してセキュリティ インシデントを処理するために役立ちます。
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
+author: memildin
+manager: rkarlin
 editor: ''
-ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/27/2019
-ms.author: rkarlin
-ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/09/2019
+ms.author: memildin
+ms.openlocfilehash: c492c4023df30eb51692aa4ae21fb938067c6ebb
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047621"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873373"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの管理
 
@@ -41,7 +36,7 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
     ![Azure Security Center でのセキュリティ インシデントへの対応](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-1. 各アラートの詳細を取得するには、アラートをクリックします。 Security Center から提案される修復方法は、セキュリティ アラートによって異なります。 Security Center から提案される修復方法は、セキュリティ アラートによって異なります。 
+1. 各アラートの詳細を取得するには、アラートをクリックします。 Security Center から提案される修復方法は、セキュリティ アラートによって異なります。
 
    > [!NOTE]
    > 同じアラートが 1 つのインシデントに含まれることもあれば、スタンドアロン アラートとして表示されることもあります。

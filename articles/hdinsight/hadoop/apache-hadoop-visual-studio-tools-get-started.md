@@ -1,5 +1,5 @@
 ---
-title: Data Lake Tools for Visual Studio を使用した Apache Hadoop への接続 - Azure HDInsight
+title: Apache Hadoop と Data Lake Tools for Visual Studio - Azure HDInsight
 description: Data Lake Tools for Visual Studio をインストールし、それを使用して Azure HDInsight 上の ApacheHadoop クラスターに接続し、Hive クエリを実行する方法について説明します。
 keywords: Hadoop ツール, Hive クエリ, Visual Studio, Visual Studio Hadoop
 services: hdinsight
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 485f3a4b6a5fde532229873fe1f3feaa30ece523
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450199"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884034"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -46,7 +46,7 @@ Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics �
 
   既存のインストールの場合は、メニュー バーから **[ツール]**  >  **[ツールと機能を取得...]** に移動し、Visual Studio インストーラーを開きます。  その後、少なくとも **Azure 開発**または**データの保存と処理**のワークロードを選択してください。
 
-  ![Visual Studio インストーラーのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![Visual Studio インストーラーのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
 * Visual Studio 2013 および 2015  
   [Data Lake Tools をダウンロードします](https://www.microsoft.com/download/details.aspx?id=49504)。 お使いの Visual Studio バージョンに対応する Data Lake Tools のバージョンを選択します。  
@@ -195,13 +195,13 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
 
       **[対話型]** が選択されていることを確認してから、 **[実行]** を選択します。
 
-      ![クエリと実行のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![クエリと実行のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
       **[バッチ]** が選択されていることを確認してから、 **[送信]** を選択します。  高度な送信オプションを選択した場合は、スクリプトの **[ジョブ名]** 、 **[引数]** 、 **[追加の構成]** 、 **[状態ディレクトリ]** を構成します。
 
-      ![クエリとバッチのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![クエリとバッチのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![HDInsight Hadoop の Hive クエリのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "クエリの送信")
 
@@ -224,7 +224,7 @@ Hive ソリューションを作成して実行するには:
 
 ジョブの概要は、**バッチ** モードと**対話**モードとで若干異なります。
 
-![ジョブの概要](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Hive ジョブの概要")
+![ジョブの概要](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive ジョブの概要")
 
 **[更新]** ボタンを使用して、ジョブのステータスが **[完了]** に変更されるまで、ステータスを更新します。  
 
@@ -232,7 +232,7 @@ Hive ソリューションを作成して実行するには:
 
 * **対話**モードのジョブ詳細については、 **[出力]** タブおよび **[HiveServer 2 出力]** タブを参照してください。
 
-  ![ジョブの詳細](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Hive ジョブの詳細")
+  ![ジョブの詳細](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive ジョブの詳細")
 
 ### <a name="view-job-graph"></a>ジョブ グラフの表示
 

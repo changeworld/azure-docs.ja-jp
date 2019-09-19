@@ -1,6 +1,6 @@
 ---
 title: パフォーマンスのための Spark ジョブの最適化 - Azure HDInsight
-description: Spark クラスターのパフォーマンスを最適にするための一般的な戦略を示します。
+description: Azure HDInsight で Apache Spark クラスターのパフォーマンスを最適にするための一般的な戦略を示します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 5701bb534d0fd0e25aab90f9d1035c96bb55c518
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476102"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885106"
 ---
-# <a name="optimize-apache-spark-jobs"></a>Apache Spark ジョブを最適化する
+# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight で Apache Spark ジョブを最適化する
 
 [Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法を説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
 

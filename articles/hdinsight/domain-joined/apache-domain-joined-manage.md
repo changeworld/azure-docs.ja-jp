@@ -1,19 +1,19 @@
 ---
 title: Enterprise セキュリティ パッケージで HDInsight クラスターを管理する - Azure
-description: Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する方法について説明します。
+description: Enterprise セキュリティ パッケージを使用して Azure HDInsight クラスターを管理する方法について説明します。
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 7fa215f843fd025d26ba0f583b96f3bb7e63c9ed
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488724"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918894"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザーとロール、および ESP クラスターを管理する方法について説明します。
@@ -34,20 +34,20 @@ Apache Ambari マネージド ユーザー名を使用して、通常のクラ�
    
 3. **List cluster** コマンドを使用すると、リンクされたクラスターを確認できます。 これでリンクされたクラスターにスクリプトを送信できるようになりました。
 
-   ![リンクされたクラスター](./media/apache-domain-joined-manage/linked-cluster.png)
+   ![リンクされたクラスター](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "リンクされたクラスター")
 
-4. コマンド パレットに「**HDInsight: Unlink a cluster**」と入力してクラスターのリンクを解除することもできます。
+4. コマンド パレットに「**HDInsight:Unlink a cluster**」と入力してクラスターのリンクを解除することもできます。
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>IntelliJ を使用してドメイン参加済みクラスターにリンクする
 
 Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (`user1@contoso.com` など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。 
 1. **Azure 用エクスプローラー**の **[Link a cluster]\(クラスターのリンク\)** をクリックします。
 
-   ![リンク クラスターのコンテキスト メニュー](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![リンク クラスターのコンテキスト メニュー intellij](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. **[クラスター名]** 、 **[ユーザー名]** 、 **[パスワード]** を入力します。 認証エラーが発生した場合、ユーザー名とパスワードを確認する必要があります。 任意で、[ストレージ アカウント] と [ストレージ キー] を追加し、[ストレージ コンテナー] からコンテナーを選択します。 ストレージ情報は、左のツリーのストレージ エクスプローラーに関するものです。
    
-   ![リンク クラスターのダイアログ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+   ![リンク クラスターのダイアログ intellij](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。
@@ -56,22 +56,22 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
    
 3. 入力した情報が正しい場合、 **[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
 
-   ![リンクされたクラスター](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![リンクされたクラスター intellij](./media/apache-domain-joined-manage/linked-cluster-intellij.png "リンクされたクラスター intellij]")
 
 4. また、**Azure 用エクスプローラー**からクラスターのリンクを解除することもできます。
    
-   ![リンク解除されたクラスター](./media/apache-domain-joined-manage/unlink.png)
+   ![リンク解除されたクラスター intellij](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Eclipse を使用してドメイン参加済みクラスターにリンクする
 
 Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (`user1@contoso.com` など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。
 1. **Azure 用エクスプローラー**の **[Link a cluster]\(クラスターのリンク\)** をクリックします。
 
-   ![リンク クラスターのコンテキスト メニュー](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![リンク クラスターのコンテキスト メニュー eclipse](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. **[クラスター名]** 、 **[ユーザー名]** 、 **[パスワード]** を入力し、[OK] ボタンをクリックしてクラスターをリンクします。 任意で、[ストレージ アカウント] と [ストレージ キー] を入力し、左のツリー ビューでストレージ エクスプローラーに [ストレージ コンテナー] を選択します。
    
-   ![リンク クラスターのダイアログ](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![リンク クラスターのダイアログ eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
    
    > [!NOTE]  
    > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。
@@ -79,11 +79,11 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
 3. 入力した情報が正しい場合、[OK] をクリックすると **[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
 
-   ![リンクされたクラスター](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![リンクされたクラスター eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. また、**Azure 用エクスプローラー**からクラスターのリンクを解除することもできます。
    
-   ![リンク解除されたクラスター](./media/apache-domain-joined-manage/unlink.png)
+   ![リンク解除されたクラスター eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージ付きのクラスターへのアクセス
 
@@ -97,7 +97,7 @@ Enterprise セキュリティ パッケージ (旧称 HDInsight Premium) は、�
 |Apache Spark|対話型ジョブ/クエリ、PySpark 対話型|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin + Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|バッチ シナリオ – spark-submit、PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |Interactive Query (LLAP)|Interactive|<ul><li>[Beeline](#beeline)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|任意|カスタム アプリケーションのインストール|<ul><li>[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
+|Any|カスタム アプリケーションのインストール|<ul><li>[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
    > [!NOTE]  
    > Jupyter は、Enterprise セキュリティ パッケージではインストールもサポートも行われません。

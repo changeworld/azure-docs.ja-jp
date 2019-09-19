@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207213"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844687"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -94,6 +94,7 @@ Python 関数プロジェクトのフォルダー構造は、次の例のよう�
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
+ | | - example.py
  | - MySecondFunction
  | | - __init__.py
  | | - function.json
@@ -110,6 +111,12 @@ Python 関数プロジェクトのフォルダー構造は、次の例のよう�
 
 ```
 from __app__.SharedCode import myFirstHelperFunction
+```
+
+関数に対してローカルになるモジュールを参照するには、次のような相対インポート構文を使用できます。
+
+```
+from . import example
 ```
 
 関数プロジェクトを Azure 内のご利用の関数アプリにデプロイする場合は、フォルダー自体ではなく、パッケージに *FunctionApp* フォルダーの内容全体を含める必要があります。
@@ -231,7 +238,7 @@ def main(req):
 
 他にもログ記録メソッドが用意されています。これにより、さまざまなトレース レベルでコンソールへの書き込みが可能になります。
 
-| Method                 | 説明                                |
+| 方法                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | ルート ロガー上に CRITICAL レベルのメッセージを書き込みます。  |
 | **`error(_message_)`**   | ルート ロガー上に ERROR レベルのメッセージを書き込みます。    |

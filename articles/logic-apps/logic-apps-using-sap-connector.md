@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 98e6b515d5e9d60f95873016ad1cb06a13799bb2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164985"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390125"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
 > [!IMPORTANT]
-> 以前の SAP アプリケーション サーバーおよび SAP メッセージ サーバー コネクタは、非推奨になる予定です。 最新の SAP コネクタでは、これらの以前の SAP コネクタが統合されます。そのため、接続の種類を変更する必要がなく、以前のコネクタと完全に互換性があり、多くの追加機能が提供され、SAP .Net コネクタ ライブラリ (SAP NCo) が引き続き使用されます。
+> 以前の SAP アプリケーション サーバーおよび SAP メッセージ サーバー コネクタは、2019 年 11 月 30 日で非推奨になる予定です。 最新の SAP コネクタでは、これらの以前の SAP コネクタが統合されます。そのため、接続の種類を変更する必要がなく、以前のコネクタと完全に互換性があり、多くの追加機能が提供され、SAP .Net コネクタ ライブラリ (SAP NCo) が引き続き使用されます。
 >
 > 古いコネクタを使用するロジック アプリの場合は、非推奨となる日より前に[最新のコネクタに移行](#migrate)してください。 そうしないと、これらのロジック アプリで実行エラーが発生し、SAP システムにメッセージを送信できなくなります。
 

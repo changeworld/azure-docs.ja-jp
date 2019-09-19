@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: c845c4bcc8dc57371304b5917ee09191b5256c51
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 8925ea9da06ff718f08b7be73944c75d388bc01f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276351"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814162"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -315,10 +315,10 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-- **Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式、およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
+- **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
 - **ORC/JSON 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
 
-### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のデータセット
+### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット
 
 Blob Storage をコピー先またはコピー元として Parquet 形式、区切りテキスト形式、Avro 形式、またはバイナリ形式のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Azure BLOB では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -413,12 +413,12 @@ Blob Storage をコピー先またはコピー元として ORC/JSON 形式のデ
 
 ### <a name="blob-storage-as-a-source-type"></a>ソースの種類として Blob Storage を設定する
 
-- コピー元から **Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
-- コピー元から **ORC/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+- コピー元から **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
+- コピー元から **ORC 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
 
-#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のソース
+#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース
 
-Blob Storage をコピー先またはコピー元として **Parquet 形式、区切りテキスト形式、Avro 形式、またはバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Azure BLOB では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+Blob Storage をコピー先またはコピー元として **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Azure BLOB では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -476,7 +476,7 @@ Blob Storage をコピー先またはコピー元として **Parquet 形式、�
 
 #### <a name="other-format-source"></a>他の形式のソース
 
-**ORC または JSON 形式**のデータを Blob Storage からコピーするには、コピー アクティビティのソースの種類を **BlobSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+**ORC 形式**のデータを Blob Storage からコピーするには、コピー アクティビティのソースの種類を **BlobSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -518,12 +518,12 @@ Blob Storage をコピー先またはコピー元として **Parquet 形式、�
 
 ### <a name="blob-storage-as-a-sink-type"></a>シンクの種類として Blob Storage を設定する
 
-- コピー元から **Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
-- コピー元から **ORC/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+- コピー元から **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
+- コピー元から **ORC 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
 
-#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、Avro 形式、およびバイナリ形式のソース
+#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース
 
-**Parquet 形式、区切りテキスト形式、Avro 形式、またはバイナリ形式**のデータを Blob Storage からコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および [バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 Azure BLOB では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
+**Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータを Blob Storage からコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および [バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 Azure BLOB では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -571,7 +571,7 @@ Blob Storage をコピー先またはコピー元として **Parquet 形式、�
 
 #### <a name="other-format-sink"></a>他の形式のシンク
 
-**ORC/JSON 形式**のデータを Blob Storage にコピーするには、コピー アクティビティのシンクの種類を **BlobSink** に設定します。 **sink** セクションでは、次のプロパティがサポートされます。
+**ORC 形式**のデータを Blob Storage にコピーするには、コピー アクティビティのシンクの種類を **BlobSink** に設定します。 **sink** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

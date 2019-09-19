@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 25751db785bf5d0b67195d1e1db660c0b9b5bf4e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d4d2a843248985c4fe17bf5401b261862d71fecf
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100949"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383043"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する
 
@@ -40,6 +40,9 @@ ms.locfileid: "70100949"
 ![管理ポータル: IoT Central リソース](media/howto-manage-iot-central-from-portal/image0c1.png)
 
 フォームのすべてのフィールドに入力します。 このフォームは、[Azure IoT Central のアプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上でアプリケーションを作成するために入力するフォームに似ています。 詳細については、クイックスタートの「[Azure IoT Central アプリケーションの作成](quick-deploy-iot-central.md)」をご覧ください。
+
+> [!NOTE]
+> 現在、**プレビュー アプリケーション** テンプレートは、**北ヨーロッパ**と**米国中部**のリージョンでのみ利用できます。
 
 ![管理ポータル: IoT Central リソースの作成](media/howto-manage-iot-central-from-portal/image1a.png)  
 

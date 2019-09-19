@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231090"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860548"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング先を設定して使用する 
 
 Azure Machine Learning service では、さまざまなリソースまたは環境でモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-targets)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
 
-Azure Machine Learning SDK、Azure portal、Azure CLI、または Azure Machine Learning VS Code 拡張機能を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング ターゲットがある場合、それらを Azure Machine Learning service ワークスペースに接続して使用できます。
+Azure Machine Learning SDK、Azure portal、ワークスペースのランディング ページ (プレビュー)、Azure CLI、または Azure Machine Learning VS Code 拡張機能を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング ターゲットがある場合、それらを Azure Machine Learning service ワークスペースに接続して使用できます。
  
 この記事では、モデル トレーニング用にさまざまなコンピューティング先を使用する方法について説明します。  すべてのコンピューティング先の手順が、同じワークフローに従います。
 1. まだない場合は、コンピューティング先を __作成__ します。
@@ -45,7 +45,7 @@ Azure Machine Learning service では、異なるコンピューティング先�
 
 ## <a name="whats-a-run-configuration"></a>実行構成とは
 
-トレーニングのときは、ローカル コンピューターで開始し、後で別のコンピューティング先でそのトレーニング スクリプトを実行するのが一般的です。 Azure Machine Learning service では、スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。 
+トレーニングのときは、ローカル コンピューターで開始し、後で別のコンピューティング先でそのトレーニング スクリプトを実行するのが一般的です。 Azure Machine Learning service では、スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。
 
 必要なのは、**実行構成**内で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。 環境を指定し、構成を実行するためにバインドする方法の詳細については、「[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)」を参照してください。
 
@@ -278,6 +278,7 @@ Azure portal でワークスペースに関連付けられたコンピューテ�
 * ワークスペースに[コンピューティング先を作成する](#portal-create)
 * ワークスペースの外部に作成された[コンピューティング ターゲットにアタッチする](#portal-reuse)
 
+
 コンピューティング先を作成してワークスペースにアタッチした後は、`ComputeTarget` オブジェクトを使用して実行構成でそれを使用します。 
 
 ```python
@@ -290,7 +291,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ワークスペースのコンピューティング先を表示するには、次の手順を使用します。
 
-1. [Azure portal](https://portal.azure.com) に移動し、ワークスペースを開きます。 
+1. [Azure portal](https://portal.azure.com) に移動し、ワークスペースを開きます。 次の画像は Azure portal ですが、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) でも同じ手順にアクセスできます。
+ 
 1. __[アプリケーション]__ で __[Compute]__ を選択します。
 
     [![[計算] タブを表示する](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
@@ -403,11 +405,20 @@ Azure Machine Learning service 用の [VS Code 拡張機能](how-to-vscode-tools
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
+> [!TIP]
+> この例では、トレーニング用にコンピューティング ターゲットの 1 つのノードのみを使用するように既定で設定されています。 複数のノードを使用するには、実行構成の `node_count` を必要な数のノードに設定します。 たとえば、次のコードでは、トレーニングに使用するノードの数を 4 に設定しています。
+>
+> ```python
+> src.run_config.node_count = 4
+> ```
+
 または、次のことができます。
 
 * [Estimator での ML モデルのトレーニング](how-to-train-ml-models.md)に関する記事で示されているように、`Estimator` オブジェクトを使用して実験を送信します。
 * [ハイパーパラメーターのチューニング](how-to-tune-hyperparameters.md)用の HyperDrive 実行を送信します。
 * [VS Code 拡張機能](how-to-vscode-tools.md#train-and-tune-models)を介して実験を送信します。
+
+詳細については、[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) および [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) のドキュメントを参照してください。
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Azure Machine Learning CLI を使用して実行構成の作成および実行の送信を行う
 

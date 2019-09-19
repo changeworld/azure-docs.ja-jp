@@ -1,19 +1,18 @@
 ---
-title: オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス | Microsoft Docs
+title: オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 description: Azure Site Recovery を使用して、Azure への Hyper-V VM のディザスター リカバリーを行う場合にサポートされるコンポーネントと要件の概要について説明します。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230972"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873345"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -134,6 +133,7 @@ geo 冗長ストレージ | はい | はい
 Premium Storage | はい | はい
 インポート/エクスポート サービス | いいえ | いいえ
 ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | いいえ | いいえ
+ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure ストレージ アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b716cbf3efb044da68d4dd1dcb724369855d1ed1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174434"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843858"
 ---
 # <a name="streaming-ingestion-preview"></a>ストリーミング インジェスト (プレビュー)
 
@@ -44,7 +44,7 @@ ms.locfileid: "70174434"
     > [!TIP]
     > ポリシーがデータベース レベルで定義されている場合、データベース内のすべてのテーブルでストリーミング インジェストが有効になります。
 
-## <a name="supported-streaming-ingestion-types"></a>サポートされているストリーミング インジェストの種類
+## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>ストリーミング インジェストを使用してクラスターにデータを取り込む
 
 2 種類のストリーミング インジェストがサポートされています。
 
@@ -72,7 +72,7 @@ ms.locfileid: "70174434"
 
 ## <a name="limitations"></a>制限事項
 
-* ストリーミング インジェストのパフォーマンスと容量は、VM とクラスターのサイズを増やして拡張されます。 1 つの D11 ノードの場合、推奨される負荷は 1 秒あたり最大 20 個の要求です。 1 つの D14 ノードの場合、推奨される負荷は 1 秒あたり最大 150 個の要求です。
+* ストリーミング インジェストのパフォーマンスと容量は、VM とクラスターのサイズを増やして拡張されます。 1 つの D14 ノードの場合、推奨される負荷は 1 秒あたり最大 150 個の要求です。
 * 現時点で、サポートは 8 および 16 コア SKU (D13、D14、L8、L16) に対してのみです。
 * インジェスト要求ごとのデータ サイズの制限は 4 MB です。
 * テーブルとインジェスト マッピングの作成や変更など、スキーマの更新には、ストリーミング インジェスト サービスに最大 5 分かかることがあります。

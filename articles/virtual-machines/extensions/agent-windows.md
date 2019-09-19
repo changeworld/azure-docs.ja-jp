@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: roiyz
-ms.openlocfilehash: ba82b026fe69bd22b3afa89ddb73373dfd194472
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6a845cad298e2aedbe68a11cd170120d1d229043
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092691"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382839"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -66,6 +66,9 @@ Windows インストーラー ファイルをダブルクリックすると、VM
 ```cmd
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
+
+### <a name="prerequisites"></a>前提条件
+Windows VM エージェントでは、.Net Framework 4.0 を使用して、少なくとも Windows Server 2008 R2 (64 ビット) を実行する必要があります。
 
 ## <a name="detect-the-vm-agent"></a>VM エージェントの検出
 

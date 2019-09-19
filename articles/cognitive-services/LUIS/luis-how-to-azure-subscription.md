@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256978"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844873"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>オーサリングおよびランタイム リソース キーの使用
 
@@ -73,6 +73,38 @@ LUIS ポータルにサインインすると、進む手順を選択できます
 
     両方のリソースが作成されたら、LUIS ポータルでリソースを割り当てます。
 
+## <a name="create-resources-in-azure-cli"></a>Azure CLI でのリソース作成
+
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用し、各リソースを個別に作成します。 
+
+リソース `kind`:
+
+* 作成: `LUIS.Authoring`
+* 予測: `LUIS` 
+
+1. Azure CLI にサインインします。
+
+    ```console
+    az login
+    ```
+
+    ブラウザー開いたら、正しいアカウントを選択し、認証できます。
+
+1. **LUIS オーサリング リソース**を作成します。種類に `LUIS.Authoring`、名前に `my-luis-authoring-resource`、_既存_リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. **LUIS 予測エンドポイント リソース**を作成します。種類に `LUIS`、名前に `my-luis-prediction-resource`、_既存_リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 無料レベル以上のスループットが必要であれば、`F0` を `S0` に変更します。 詳細は、[価格レベルとスループット](luis-boundaries.md#key-limits)に関するページをご覧ください。
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > LUIS ポータルで **[管理]、[Azure リソース]** の順に選択して割り当てるまで、LUIS ポータルでこのキーが使用されることは**ありません**。
+
 ## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>すべてのアプリに対して LUIS ポータルでオーサリング リソースを割り当てる
 
 LUIS の 1 つのアプリまたはすべてのアプリに対して、オーサリング リソースを割り当てることができます。 次の手順では、すべてのアプリを 1 つのオーサリング リソースに割り当てます。
@@ -116,7 +148,7 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
     この POST API には、次の設定が必要です。
 
-    |Type|Setting|値|
+    |種類|Setting|値|
     |--|--|--|
     |ヘッダー|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
     |ヘッダー|`Ocp-Apim-Subscription-Key`|実際のオーサリング キー。|
@@ -186,6 +218,6 @@ Azure で LUIS の使用に関する情報を表示できます。 **[概要]** 
 ## <a name="next-steps"></a>次の手順
 
 * [バージョンを使用](luis-how-to-manage-versions.md)してアプリのライフ サイクルを制御する方法を確認します。
-* [オーサリング リソース](/luis-concept-keys.md#authoring-key)やそのリソースの[共同作成者](luis-concept-keys.md#contributions-from-other-authors)などの概念を理解します。
+* [オーサリング リソース](luis-concept-keys.md#authoring-key)やそのリソースの[共同作成者](luis-concept-keys.md#contributions-from-other-authors)などの概念を理解します。
 * オーサリング リソースとランタイム リソースの[作成方法](luis-how-to-azure-subscription.md)を確認します
 * 新しい[オーサリング リソース](luis-migration-authoring.md)に移行します 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309589"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918813"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -155,7 +155,7 @@ Premium ファイル共有は、最大 3 倍の IOPS をバーストできます
 
 ## <a name="file-share-redundancy"></a>ファイル共有の冗長性
 
-Azure Files 標準の共有でサポートされているデータ冗長性オプションは、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、および geo 冗長ストレージ (GRS)、geo ゾーン冗長ストレージ (GZRS) (プレビュー) の 4 種類です。
+Azure Files 標準の共有でサポートされているデータ冗長性オプションは、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、geo ゾーン冗長ストレージ (GZRS) (プレビュー) の 4 種類です。
 
 Azure Files の Premium 共有でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。
 
@@ -206,14 +206,21 @@ GRS が有効なストレージ アカウントでは、すべてのデータが
 
 Standard ファイル共有は、すべてのリージョンで 5 TiB まで利用できます。 一部のリージョンでは、100 TiB の上限まで利用できます。これらのリージョンについては次の表を参照してください。
 
-|Region |サポートされる冗長性 |既存のストレージ アカウントをサポートする |ポータルのサポート*   |
+|リージョン |サポートされる冗長性 |既存のストレージ アカウントをサポートする |ポータルのサポート* |
 |-------|---------|---------|---------|
-|オーストラリア東部  |LRS     |いいえ    |はい|
-|フランス中部  |LRS     |いいえ    |まだ、いいえ|
-|フランス南部    |LRS     |いいえ    |まだ、いいえ|
-|東南アジア  |LRS、ZRS|いいえ    |はい|
-|西ヨーロッパ     |LRS、ZRS|いいえ    |はい|
-|米国西部 2       |LRS、ZRS|いいえ    |はい|
+|オーストラリア東部 |LRS     |いいえ    |はい|
+|オーストラリア南東部|LRS     |いいえ    |まだ、いいえ|
+|インド中部  |LRS     |いいえ    |まだ、いいえ|
+|East US        |LRS     |いいえ    |まだ、いいえ|
+|フランス中部 |LRS、ZRS|いいえ    |LRS - はい、ZRS - まだ、いいえ|
+|フランス南部   |LRS     |いいえ    |はい|
+|インド南部    |LRS     |いいえ    |まだ、いいえ|
+|東南アジア |LRS、ZRS|いいえ    |はい|
+|米国中西部|LRS     |いいえ    |まだ、いいえ|
+|西ヨーロッパ    |LRS、ZRS|いいえ    |はい|
+|米国西部        |LRS     |いいえ    |まだ、いいえ|
+|米国西部 2      |LRS、ZRS|いいえ    |はい|
+
 
 \* ポータルがサポートされていないリージョンでも、PowerShell または Azure コマンド ライン インターフェイス (CLI) を使用して、5 TiB を超える共有を作成できます。 代わりに、クォータを指定せずに、ポータルを使用して新しい共有を作成します。 これにより、既定のサイズ 100 TiB の共有が作成され、後で PowerShell または Azure CLI を使用して更新できます。
 

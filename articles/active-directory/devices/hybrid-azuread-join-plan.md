@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66dbfa40d5a19c7f15ed2772740b84652ae3e58c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 306382a7dede44a0f1db53373e14e81cb54098ca
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231276"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914732"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -77,7 +77,7 @@ ID データを複数の Azure AD テナントに同期する単一 AD フォレ
 
 仮想デスクトップ インフラストラクチャ (VDI) を使用している場合、ハイブリッド Azure AD 参加は現在サポートされていません。
 
-Hybrid Azure AD 参加は、FIPS に準拠している TPM ではサポートされていません。 FIPS に準拠している TPM がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。
+Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 WIndows 10 1903 リリース以降、TPM 1.2 はハイブリッド Azure AD 結合では使用されず、それらの TPM を含むデバイスは TPM を持っていないものと見なされます。
 
 ハイブリッド Azure AD 参加は、ドメイン コントローラー (DC) ロールを実行している Windows Server ではサポートされていません。
 
@@ -149,7 +149,7 @@ Hybrid Azure AD 参加は、UPN がルーティング可能かどうかに応じ
 | ----- | ----- | ----- | ----- |
 | ルーティング可能 | フェデレーション | 1703 リリースから | 一般公開 |
 | ルーティング不可能 | フェデレーション | 1803 リリースから | 一般公開 |
-| ルーティング可能 | マネージド | サポートされていません | |
+| ルーティング可能 | マネージド | 1803 リリースから | 一般公開されており、Windows ロック画面の Azure AD SSPR はサポートされていません。 |
 | ルーティング不可能 | マネージド | サポートされていません | |
 
 ## <a name="next-steps"></a>次の手順

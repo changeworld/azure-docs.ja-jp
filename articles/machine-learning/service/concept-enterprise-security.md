@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: 81e8601ac83d43bde0767e38eb387f489d76125b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165238"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873564"
 ---
 # <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Azure Machine Learning service のエンタープライズ セキュリティ
 
@@ -23,7 +23,7 @@ ms.locfileid: "70165238"
 
 クラウド サービスを使用する場合は、アクセスを必要とするユーザーのみに制限することをお勧めします。 まず、サービスによって使用される認証および認可モデルについて理解します。 ネットワーク アクセスを制限したり、オンプレミス ネットワークのリソースをクラウドと安全に結合したりすることも必要になる場合があります。 保存時とサービス間の移動時の両方でデータを暗号化することも不可欠です。 最後に、サービスを監視し、すべてのアクティビティの監査ログを生成できることも必要です。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 多要素認証がサポートされるのは、それを使用するように Azure Active Directory (Azure AD) が構成されている場合です。 以下に認証プロセスを示します。
 
@@ -121,7 +121,7 @@ print(token)
 
 マネージド ID の詳細については、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に関するページを参照してください。
 
-| Resource | アクセス許可 |
+| リソース | アクセス許可 |
 | ----- | ----- |
 | ワークスペース | Contributor |
 | ストレージ アカウント | ストレージ BLOB データ共同作成者 |
@@ -132,7 +132,7 @@ print(token)
 
 管理者が上記の表のリソースに対するマネージド ID のアクセスを取り消すことはお勧めできません。 キーの再同期操作を使用して、アクセスを復元できます。
 
-Azure Machine Learning service では、すべてのワークスペース リージョンのサブスクリプションに、共同作成者レベルのアクセス権を持つ追加のアプリケーション (名前が `aml-` で始まるもの) が作成されます。 たとえば、同じサブスクリプション内で、米国東部にあるワークスペースがあり、北ヨーロッパには別のワークスペースがある場合、これらのアプリケーションが 2 つ表示されます。 これらのアプリケーションでは、コンピューティング リソースの管理に役立つ Azure Machine Learning service を有効にします。
+Azure Machine Learning service では、すべてのワークスペース リージョンのサブスクリプションに、共同作成者レベルのアクセス権を持つ追加のアプリケーション (名前が `aml-` または `Microsoft-AzureML-Support-App-` で始まるもの) が作成されます。 たとえば、同じサブスクリプション内で、米国東部にあるワークスペースがあり、北ヨーロッパには別のワークスペースがある場合、これらのアプリケーションが 2 つ表示されます。 これらのアプリケーションでは、コンピューティング リソースの管理に役立つ Azure Machine Learning service を有効にします。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 

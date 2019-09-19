@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209637"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858546"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
 
@@ -201,7 +201,7 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
 
 ### <a name="compatibility-levels"></a>互換性レベル
 
-- サポートされている互換性レベルは、100、110、120、130、および 140 です。
+- サポートされている互換性レベルは、100、110、120、130、140、150 です。
 - 100 より低い互換性レベルはサポートされていません。
 - 新しいデータベースの既定の互換性レベルは 140 です。 互換性レベルが 100 以上のデータベースが復元された場合、互換性レベルは変更されません。
 
@@ -339,7 +339,7 @@ Managed Instance　はファイル共有と Windows フォルダーにはアク�
 - `ALTER ASSEMBLY` ではファイルを参照できません。 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql) に関する記事をご覧ください。
 
 ### <a name="database-mail-db_mail"></a>データベース メール (db_mail)
- - `sp_send_dbmail` は @file_attachments パラメーターを使用して添付ファイルを送信できません。 この手順では、ローカル ファイル システムと外部共有または Azure Blob ストレージにはアクセスできません。
+ - `sp_send_dbmail` では、@file_attachments パラメーターを使用して添付ファイルを送信できません。 この手順では、ローカル ファイル システムと外部共有または Azure Blob ストレージにはアクセスできません。
  - `@query` パラメーターと認証に関連する既知の問題をご覧ください。
  
 ### <a name="dbcc"></a>DBCC
@@ -541,6 +541,14 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 ## <a name="Issues"></a> 既知の問題
 
+### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある
+
+**日付:** 2019 年 9 月
+
+ユーザー ワークロードに割り当てられているリソースを制限することを可能にする [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) 機能では、フェールオーバー後またはサービス レベルの変更 (たとえば、仮想コアやインスタンスの最大ストレージ サイズを変更します) をユーザーが開始した後、一部のユーザー ワークロードが間違って分類されることがあります。
+
+**対処法**: [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL エージェント ジョブの一環として実行します。
+
 ### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>セキュリティで保護された接続 (SSL) を使用して外部メール サーバーに対する認証ができない
 
 **日付:** 2019 年 8 月
@@ -584,6 +592,12 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 SQL Server Management Studio および SQL Server Data Tools では、Azure Active Directory のログインとユーザーが完全にはサポートされません。
 - 現在のところ、SQL Server Data Tools で Azure AD サーバー プリンシパル (ログイン) とユーザー (パブリック プレビュー) を使用することはできません。
 - Azure AD サーバー プリンシパル (ログイン) とユーザー (パブリック プレビュー) のスクリプトは、SQL Server Management Studio ではサポートされていません。
+
+### <a name="temporary-database-is-used-during-restore-operation"></a>一時的なデータベースが RESTORE 操作中に使用される
+
+データベースがマネージド インスタンス上で復元されるとき、復元サービスではまず、所望の名前で空のデータベースが作成され、インスタンス上でその名前が割り当てられます。 しばらくすると、このデータベースは削除され、実際のデータベースの復元が開始されます。 *復元*状態のデータベースには、名前ではなくランダムな GUID 値が一時的に与えられます。 復元プロセスが完了すると、`RESTORE` ステートメントに指定されている所望の名前に一時的な名前が変更されます。 初期フェーズでは、ユーザーは空のデータベースにアクセスしたり、さらにはテーブルを作成したり、このデータベースにデータを読み込んだりできます。 この一時的なデータベースは、復元サービスで 2 つ目のフェーズが開始されると削除されます。
+
+**対処法**: 復元の完了を確認するまで、復元中のデータベースにはアクセスしないでください。
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB の構造と内容は再作成される
 

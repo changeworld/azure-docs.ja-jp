@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/30/2019
-ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/06/2019
+ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208351"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806596"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -191,6 +191,9 @@ ms.locfileid: "70208351"
 
   フェールオーバー後にプライマリ インスタンスに中断することなく確実に接続するには、プライマリとセカンダリの両方のインスタンスが同じ DNS ゾーンにある必要があります。 それにより、フェールオーバー グループに属する 2 つのインスタンスのいずれかに対してクライアント接続を認証する目的で同じマルチドメイン (SAN) 証明書を利用できます。 アプリケーションを運用環境にデプロイする準備ができたら、別のリージョンでセカンダリ インスタンスを作成し、プライマリ インスタンスと DNS ゾーンを共有していることを確認します。 これは、Azure ポータル、PowerShell、または REST API を使用し、省略可能な `DNS Zone Partner` パラメーターを指定することで実行できます。 
 
+> [!IMPORTANT]
+> サブネットに作成された最初のインスタンスにより、同じサブネット内のそれ以降のすべてのインスタンスに対する DNS ゾーンが決まります。 つまり、同じサブネットの 2 つのインスタンスが異なる DNS ゾーンに属することはできません。   
+
   プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ インスタンスの作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)」を参照してください。
 
 - **2 つのインスタンス間のレプリケーション トラフィックを有効にする**
@@ -237,6 +240,10 @@ ms.locfileid: "70208351"
 
   > [!IMPORTANT]
   > プライマリを元の場所に戻すには、手動のグループ フェールオーバーを使用します。 フェールオーバーの原因となった機能停止が軽減されたら、プライマリ データベースを元の場所に移動できます。 そのためには、グループの手動フェールオーバーを開始する必要があります。
+
+- **フェールオーバー グループの既知の制限事項を確認する**
+
+  データベース名の変更とインスタンスのサイズ変更は、フェールオーバー グループ内のインスタンスに対してはサポートされていません。 これらの操作を実行できるようにするには、フェールオーバー グループを一時的に削除する必要があります。
 
 ## <a name="failover-groups-and-network-security"></a>フェールオーバー グループとネットワーク セキュリティ
 

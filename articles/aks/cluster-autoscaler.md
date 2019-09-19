@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 6ed50380b47040793e9826b64297bacf6ab12c71
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533596"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914864"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリングする
 
@@ -32,7 +32,7 @@ Azure Kubernetes Service (AKS) のアプリケーションの需要に対応す�
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-クラスター オートスケーラーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.4 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+クラスター オートスケーラーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.12 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -40,29 +40,6 @@ az extension add --name aks-preview
 
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
-```
-
-### <a name="register-scale-set-feature-provider"></a>スケール セット機能プロバイダーを登録する
-
-スケール セットを使用する AKS を作成するには、サブスクリプションで機能フラグを有効にする必要もあります。 *VMSSPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
-
-> [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
-
-```azurecli-interactive
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
 ```
 
 ## <a name="limitations"></a>制限事項
@@ -113,7 +90,7 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  --enable-vmss \
+  --vm-set-type VirtualMachineScaleSets \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 921a14243bc50651358f0df42b88857ab227916d
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 33e21b54927280e2692a58c311e2de23e257f923
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060636"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845372"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
@@ -54,18 +54,20 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 | 仮想コアの数\* | Gen4: 8、16、24<br/>Gen5:4、8、16、24、32、40、64、80 | Gen4:8、16、24 <br/> Gen5:4、8、16、24、32、40、64、80 |
 | 最大メモリ | Gen4:56 GB - 168 GB (7 GB/仮想コア)<br/>Gen5:40.8 GB - 408 GB (5.1 GB/仮想コア)<br/>メモリ量を増やすには、仮想コアを追加します。 | Gen4:56 GB - 168 GB (7 GB/仮想コア)<br/>Gen5:40.8 GB - 408 GB (5.1 GB/仮想コア)<br/>メモリ量を増やすには、仮想コアを追加します。 |
 | インスタンスの予約済み最大ストレージ サイズ | - 4 仮想コアの場合は 2 TB (Gen5 のみ)<br/>- その他のサイズの場合は 8 TB | Gen4:1 TB (テラバイト) <br/> Gen5: <br/>- 4、8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
-| 最大データベース サイズ | インスタンスごとの最大ストレージ サイズによって決まります | インスタンスごとの最大ストレージ サイズによって決まります |
+| 最大データベース サイズ | 8 TB | 4 TB |
 | インスタンスごとの最大データベース数 | 100 | 100 |
 | インスタンスごとの最大データベース ファイル数 | 最大 280 | データベースあたり 32,767 ファイル |
 | 最大ファイル サイズ | 8 TB | 4 TB |
-| データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1,375/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
+| データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 K - 110 K (1375/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
 | ログ書き込みスループット制限 | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 22 MB/秒 | 仮想コアあたり 4 MB/秒<br/>インスタンスあたり最大 48 MB/秒|
 | データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 該当なし |
 | ストレージ IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
 | 最大 tempDB サイズ | 192 ～ 1,920 GB (仮想コアあたり 24 GB)<br/>tempdb 領域を増やすには、仮想コアを追加します。 | インスタンスの最大ストレージ サイズによって制限されます。 現在、termdb ログ ファイルのサイズは、仮想コアあたり 24 GB に制限されています。 |
 | インメモリ OLTP | サポートされていません | 使用可能 |
 | 最大セッション数 | 30000 | 30000 |
-| 読み取り可能なレプリカ | 0 | 1 |
+| [読み取り専用レプリカ](sql-database-read-scale-out.md) | 0 | 1 (価格に含まれます) |
+| 価格/課金 | [仮想コアと予約ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | [仮想コアと予約ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 
+| 割引モデル | [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション|
 
 > [!NOTE]
 > - ユーザー データベースとシステム データベースのデータ ファイルおよびログ ファイルのサイズはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、<a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
@@ -97,7 +99,7 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 > [!Note]
 > これらの制限は既定の設定であり、技術的な制限ではありません。 現在のリージョンでさらに多くのマネージド インスタンスが必要な場合、[Azure portal でサポート要求](#obtaining-a-larger-quota-for-sql-managed-instance)を特別に作成して、これらの制限をオンデマンドで引き上げることができます。 サポート要求を送信せずに、代わりに、別の Azure リージョンに新しいマネージド インスタンスを作成することも可能です。
 
-次の表は、サポートされているサブスクリプションの既定のリージョン制限を示しています。
+次の表は、サポートされている種類のサブスクリプションを対象に、**既定のリージョン別制限**についてまとめたものです (既定の制限は、下に説明がある、サポート リクエストを利用して拡張できます)。
 
 |サブスクリプションの種類| マネージド インスタンスのサブネットの最大数 | 最大仮想コア ユニット数* |
 | :---| :--- | :--- |

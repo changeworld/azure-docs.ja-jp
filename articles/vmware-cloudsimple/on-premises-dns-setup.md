@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ed20dd9068ccdea1fb9cd04801eb0096fed2c922
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972442"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845314"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションからのプライベート クラウドの vCenter にアクセスするための名前解決用に DNS を構成する
 
@@ -56,18 +56,24 @@ zone “cloudsimple.io”
 
 ### <a name="create-a-zone-on-a-microsoft-windows-dns-server"></a>Microsoft Windows DNS サーバー上にゾーンを作成する
 
-1. DNS サーバーを右クリックして **[新しいゾーン]** を選択します。  
-![新しいゾーン](media/DNS01.png)
+1. DNS サーバーを右クリックして **[新しいゾーン]** を選択します。 
+  
+    ![新しいゾーン](media/DNS01.png)
 2. **[スタブ ゾーン]** を選択して **[次へ]** をクリックします。
-![新しいゾーン](media/DNS02.png)
+
+    ![新しいゾーン](media/DNS02.png)
 3. 環境に応じて適切なオプションを選択し、 **[次へ]** をクリックします。
-![新しいゾーン](media/DNS03.png)
+
+    ![新しいゾーン](media/DNS03.png)
 4. **[前方参照ゾーン]**   を選択して **[次へ]** をクリックします。
-![新しいゾーン](media/DNS01.png)
+
+    ![新しいゾーン](media/DNS01.png)
 5. ゾーン名を入力して **[次へ]** をクリックします。
-![新しいゾーン](media/DNS05.png)
+
+    ![新しいゾーン](media/DNS05.png)
 6. CloudSimple ポータルから取得した、プライベート クラウドの DNS サーバーの IP アドレスを入力します。
-![新しいゾーン](media/DNS06.png)
+
+    ![新しいゾーン](media/DNS06.png)
 7. 必要に応じて **[次へ]** をクリックして、ウィザードのセットアップを完了します。
 
 ## <a name="create-a-conditional-forwarder"></a>条件付きフォワーダーの作成
@@ -91,5 +97,6 @@ zone “cloudsimple.io” {
 
 1. DNS サーバー上で DNS マネージャーを開きます。
 2. **[条件付きフォワーダー]** を右クリックし、新しい条件付きフォワーダーを追加するためのオプションを選択します。
-![条件付きフォワーダー 1 の Windows DNS](media/DNS08.png)
+
+    ![条件付きフォワーダー 1 の Windows DNS](media/DNS08.png)
 3. プライベート クラウド内の DNS サーバーの DNS ドメインと IP アドレスを入力して **[OK]** をクリックします。

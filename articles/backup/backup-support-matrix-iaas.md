@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617362"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872892"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -151,6 +151,7 @@ Azure に移行済みの VM をバックアップする  | サポートされて
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でデータとアプリケーションに整合性はありません。
 [[診断設定]](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
 ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、ゾーンが使用できない場合、復元は失敗します。
+Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) のバックアップと復元がサポートされます。 これらの VM は、復旧ポイントから復元されると、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) として復元されます。
 
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート

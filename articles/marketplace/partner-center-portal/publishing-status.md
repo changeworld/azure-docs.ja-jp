@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191782"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883407"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Commercial Marketplace のオファーの発行状態を確認する
 
@@ -98,6 +98,9 @@ ms.locfileid: "70191782"
 ## <a name="preview-creation"></a>プレビューの作成
 
 **プレビューの作成**手順では、オファーの「プレビュー」セクションで指定した対象ユーザーのみがアクセスできるオファーのバージョンを作成します。
+
+>[!Note]
+> 組織外のユーザーにオファーを表示する場合は、この手順を使用しないでください。 代わりに、**プライベート オファー**オプションを使用してください。 この時点では、オファリングは完全にテストおよび検証されておらず、外部での配布の準備が整っていません。
 
 ## <a name="publisher-approval"></a>パブリッシャーの承認
 

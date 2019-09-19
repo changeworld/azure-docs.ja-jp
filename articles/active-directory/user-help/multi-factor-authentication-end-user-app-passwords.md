@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088405"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914933"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 
@@ -28,11 +28,9 @@ ms.locfileid: "70088405"
 
 アプリ パスワードを使用する場合は、次の点に注意してください。
 
-- アプリ パスワードは自動生成され、アプリごとに 1 回しか入力されない。
+- アプリ パスワードは自動生成され、アプリごとに 1 回作成し、入力しなければならない。
 
 - ユーザー 1 人あたりのパスワード数の上限は 40 個である。 この上限を超えて作成を試行すると、新しいパスワードの作成が許可されるように、事前に既存のパスワードを削除するよう求められます。
-
-- アプリ パスワードは、アプリごとではなく、デバイスごとに 1 つ使用します。 たとえば、ラップトップ上のすべてのアプリに対して単一のパスワードを作成してから、デスクトップ上のすべてのアプリに対してもう 1 つの別のパスワードを作成します。
 
     >[!Note]
     >Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートしており、2 段階認証を使用できます。 このサポートは、2 段階認証が有効になれば、以降は Office 2013 クライアントに対するアプリ パスワードは必要なくなることを意味します。 詳細については、「[Office 2013 クライアント アプリと Office 2016 クライアント アプリでの先進認証のしくみ](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517)」記事を参照してください。

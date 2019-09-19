@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9d459f88cd252303384acb4a72d0af0cce6ee226
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e6f6ba131a4fb5dd31f113afd2b6de2d65aeaea0
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428468"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915155"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -566,7 +566,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[プロパティ]** を選びます。 プロジェクトのプロパティで、 **[出力の種類]** を **[コンソール アプリケーション]** に変更します。
 
-    ![プロジェクトのプロパティのスクリーンショット ([出力の種類] を強調表示)](./media/apache-storm-develop-csharp-visual-studio-topology/outputtype.png)
+    ![プロジェクトのプロパティのスクリーンショット ([出力の種類] を強調表示)](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > トポロジをクラスターにデプロイする前に、必ず **[出力の種類]** を **[クラス ライブラリ]** に戻すようにしてください。
@@ -712,7 +712,7 @@ Context.Logger.Info("Component started");
 
 2. **スパウト**と**ボルト**については、 **[最新のエラー]** の列に直近のエラーの情報が表示されます。
 
-3. エラーの一覧にあるコンポーネントの **[Spout Id]** または **[Bolt Id]** を選びます。 詳細ページが表示され、詳細なエラー情報がページ下部の **[エラー]** セクションに表示されます。
+3. エラーの一覧にあるコンポーネントの **[Spout ID]** または **[Bolt ID]** を選びます。 詳細ページが表示され、詳細なエラー情報がページ下部の **[エラー]** セクションに表示されます。
 
 4. さらに詳細な情報を取得するには、 **[Executors]** セクションから **[ポート]** を選ぶと、過去数分間の Storm ワーカー ログが表示されます。
 

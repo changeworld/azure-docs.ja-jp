@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c654da71a0c060a9344ef7d7d42b30263a7fb2db
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165206"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882024"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -47,7 +47,7 @@ ms.locfileid: "70165206"
 
 1. [ローカル コンピューター、Azure Machine Learning コンピューティング、リモート VM、Azure Databricks](how-to-set-up-training-targets.md) など、**モデル トレーニングのためのコンピューティング先を構成します**。  リモート リソースでの自動トレーニングに関する詳細は[こちら](how-to-auto-train-remote.md)にあります。
 
-1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する**自動化された機械学習のパラメーターを構成します**。  自動トレーニング実験の設定は [Azure portal](how-to-create-portal-experiments.md) または [SDK](how-to-configure-auto-train.md) で構成できます。
+1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する**自動化された機械学習のパラメーターを構成します**。  自動トレーニング実験の設定は [Azure portal](how-to-create-portal-experiments.md)、[ワークスペース ランディング ページ (プレビュー)](https://ml.azure.com) または [SDK](how-to-configure-auto-train.md) で構成できます。 
 
 1. **トレーニング実行を送信します。**
 
@@ -98,7 +98,12 @@ ms.locfileid: "70165206"
 
 自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるるという利点があります。 自動化された ML は、データセットおよび予測水平線のすべての項目について、単一であるがしばしば内部的に分岐するモデルを学習します。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
 
-[時系列予測の自動化された機械学習](how-to-auto-train-forecast.md)について理解を深め、例を確認してください。
+[時系列予測の自動化された機械学習](how-to-auto-train-forecast.md)について理解を深め、例を確認してください。 または、次などの、高度な予測の構成の詳細なコード例については、[エネルギー需要ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を参照してください。
+
+* 休日の検出と特性付け
+* ローリング オリジン クロス検証
+* 構成可能なラグ
+* ローリング ウィンドウの集計機能
 
 ## <a name="ensemble"></a> アンサンブル モデル
 
@@ -121,9 +126,9 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 
 |統合|説明|
 |------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|ML.NET 自動 ML とともに Visual Studio および Visual Studio Code を使用した .NET アプリでの自動モデル選択およびトレーニング (プレビュー)。|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio および Visual Studio Code と ML.NET 自動 ML を使用した .NET アプリでの自動モデル選択およびトレーニング (プレビュー)。|
 |[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|並列にしてある HDInsight クラスターの Spark で自動化された ML トレーニング ジョブをスケールアウトします。|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接 Power BI で機械学習モデルを呼び出します (プレビュー)。|
+|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Power BI での機械学習モデルの直接呼び出し (プレビュー)。|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 ビッグ データ クラスターのデータに対して新しい機械学習モデルを作成します。|
 
 ## <a name="next-steps"></a>次の手順
@@ -133,7 +138,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 + 次のチュートリアルを修了してください。[チュートリアル:Azure Automated Machine Learning で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)
 
 + 自動トレーニング実験の設定を構成してください。
-  + Azure portal インターフェイスで、[こちらの手順](how-to-create-portal-experiments.md)を利用します。
+  + Azure portal インターフェイスまたはワークスペースのランディング ページ (プレビュー) で、[次の手順](how-to-create-portal-experiments.md)を使用します。
   + Python SDK で、[こちらの手順](how-to-configure-auto-train.md)を使用します。
 
 + [こちらの手順](how-to-auto-train-forecast.md)を使用し、時系列データを使用して自動トレーニングする方法について学習してください。

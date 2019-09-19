@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/10/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 096f8b3aa6ae66e65bbbd9ea6e2204af619199dd
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66142556"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899423"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -34,7 +34,7 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 ||||
 
 <a name="tab1400a">1</a> - 1400 以上の表形式モデルのみ。   
-<a name="azsqlmanaged">2</a> - Azure SQL Database Managed Instance がサポートされています。 マネージ インスタンスはプライベート IP アドレスを持つ Azure VNet 内で実行されるため、オンプレミス データ ゲートウェイが必要です。 パブリック エンドポイントを持つ Azure SQL Database Managed Instance は現在サポートされていません。   
+<a name="azsqlmanaged">2</a> - Azure SQL Database Managed Instance がサポートされています。 マネージド インスタンスはプライベート IP アドレスを使用して Azure VNet 内で実行されるため、インスタンスでパブリックエンド ポイントを有効にする必要があります。 有効になっていない場合は、オンプレミス データ ゲートウェイが必要です。    
 <a name="databricks">3</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。   
 <a name="gen2">4</a> - ADLS Gen2 は現在サポートされていません。
 
@@ -76,7 +76,7 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 |OData フィード<sup>[1](#tab1400b)</sup>     |  
 |ODBC クエリ     | 
 |OLE DB     |   
-|Postgre SQL データベース<sup>[1](#tab1400b)</sup>    | 
+|PostgreSQL データベース<sup>[1](#tab1400b)</sup>    | 
 |Salesforce オブジェクト<sup>[1](#tab1400b)</sup> |  
 |Salesforce レポート<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  

@@ -1,6 +1,6 @@
 ---
 title: YARN で可用性の高い Spark Streaming ジョブを作成する - Azure HDInsight
-description: 高可用性シナリオ用に Spark Streaming を設定する方法。
+description: Azure HDInsight での高可用性シナリオ用に Apache Spark Streaming を設定する方法
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 79a36ad39284dc66467ba7c500a363668f78b893
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9424ebbd4ed2e1536a10d77a88257bad948628e2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720659"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915407"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN で高可用性 Apache Spark Streaming ジョブを作成する
 
@@ -29,7 +29,7 @@ Spark Streaming は、"*分離されたストリーム*" (DStream) を使って�
 
 Spark コアは *Resilient Distributed Dataset* (RDD) を使います。 RDD は、クラスター内の複数のノードにデータを分散します。ここでは通常、パフォーマンスを最大限高めるため、各ノードがデータを完全にメモリ内に保持します。 各 RDD は、バッチ間隔の間に収集されたイベントを表します。 バッチ間隔が経過すると、Spark Streaming はその間隔内のすべてのデータを含む新しい RDD を生成します。 この継続的な一連の RDD が DStream に収集されます。 Spark Streaming アプリケーションは、各バッチの RDD に格納されているデータを処理します。
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/DStream.png)
+![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
 
 ## <a name="spark-structured-streaming-jobs"></a>Spark Structured Streaming ジョブ
 

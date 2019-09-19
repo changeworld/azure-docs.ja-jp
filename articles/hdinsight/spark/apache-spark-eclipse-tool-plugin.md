@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 6e8f8e7d8324f23a81cd6ae3284bd6d7cff24117
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 4f07772dd8489737c9ab3530de0bf2303fba5fb1
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489852"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900226"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -61,7 +61,7 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
    ![[Select Subscriptions]\(サブスクリプションの選択\) ダイアログ ボックス](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 1. **[Azure Explorer]** タブで **[HDInsight]** を展開し、自分のサブスクリプションの下にある HDInsight Spark クラスターを表示します。
    
-   ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
+   ![Azure Explorer での HDInsight Spark クラスター 3](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
 1. クラスター名のノードをさらに展開すると、そのクラスターに関連付けられているリソース (ストレージ アカウントなど) を表示できます。
    
    ![クラスター名を展開してリソースを表示する](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
@@ -87,7 +87,7 @@ Ambari マネージド ユーザー名を使用して、通常のクラスター
 
 1. また、**Azure 用エクスプローラー**からクラスターのリンクを解除することもできます。
    
-   ![リンク解除されたクラスター](./media/apache-spark-intellij-tool-plugin/unlink.png)
+   ![リンク解除されたクラスター](./media/apache-spark-eclipse-tool-plugin/hdi-unlinked-cluster.png)
 
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスター用の Spark Scala プロジェクトを設定する
@@ -235,16 +235,16 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
        
 2. **Azure Explorer** で **[HDInsight]** を展開し、自分のサブスクリプションにある HDInsight クラスターを表示します。 **"Role:Reader"** とマークされているクラスターには、読み取り専用ロールのアクセス許可しかありません。
 
-    ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
+    ![Azure Explorer での HDInsight Spark クラスター Role Reader](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
 
 3. 読み取り専用ロールのアクセス許可があるクラスターを右クリックします。 コンテキスト メニューで **[Link this cluster]\(このクラスターをリンク\)** を選択して、クラスターをリンクします。 Ambari のユーザー名とパスワードを入力します。
 
-    ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
+    ![Azure Explorer での HDInsight Spark クラスター リンク](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
 
 4. クラスターが正常にリンクされると、HDInsight が更新されます。
    クラスターのステージはリンク状態になります。
   
-    ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
+    ![Azure Explorer での HDInsight Spark クラスター リンク済み](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
 
 
 
@@ -254,7 +254,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
    
 2. **[Link this cluster]\(このクラスターをリンク\)** をクリックして、クラスターをリンクします。
    
-    ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
+    ![Azure Explorer での HDInsight Spark クラスター 9](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-spark-submission-window"></a>[Spark Submission]\(Spark 送信\) ウィンドウからクラスターをリンクする
 
@@ -262,34 +262,34 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 2. パッケージを右クリックします。 次に、 **[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択します。
    
-   ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
+   ![Azure Explorer での HDInsight Spark クラスター 送信](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
 
 3. **[Cluster Name]\(クラスター名\)** に対して読み取り専用ロール アクセス許可があるクラスターを選択します。 警告メッセージが表示されます。 **[Link this cluster]\(このクラスターをリンク\)** をクリックして、クラスターをリンクできます。
    
-   ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
+   ![Azure Explorer での HDInsight Spark クラスター これをリンク](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
    
 ### <a name="view-storage-accounts"></a>ストレージ アカウントを表示する
 
 * 読み取り専用ロールのアクセス許可があるクラスターで、**Storage Accounts** ノードをクリックします。 **[Storage Access Denied]\(拒否されたストレージ アクセス\)** ウィンドウが表示されます。 
      
-   ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
+   ![Azure Explorer での HDInsight Spark クラスター ストレージ](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
 
-   ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
+   ![Azure Explorer での HDInsight Spark クラスター 拒否](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
 
 * リンクされたクラスターで、**Storage Accounts** ノードをクリックします。 **[Storage Access Denied]\(拒否されたストレージ アクセス\)** ウィンドウが表示されます。 
      
-   ![Azure Explorer での HDInsight Spark クラスター](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
+   ![Azure Explorer での HDInsight Spark クラスター 拒否 2](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
 
 ## <a name="known-problems"></a>既知の問題
 クラスターをリンクするときに、ストレージの資格情報を入力することをお勧めします。
 
 ![対話型のサインイン](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
-ジョブの送信には、2 つのモードがあります。 ストレージ資格情報が入力されると、バッチ モードが使用され、ジョブが送信されます。 入力されない場合、対話モードが使用されます。 クラスターがビジー状態の場合、下のエラーが表示されることがあります。
+ジョブの送信には、2 つのモードがあります。 ストレージ資格情報が入力されると、バッチ モードが使用され、ジョブが送信されます。 入力されない場合、対話モードが使用されます。 クラスターがビジー状態の場合、以下のエラーが表示されることがあります。
 
-![クラスターがビジー状態のときの Eclipse エラー](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+![クラスターがビジー状態のときの Eclipse エラー](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "クラスターがビジー状態のときの Eclipse エラー")
 
-![クラスターがビジー状態のときの Eclipse エラー](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
+![クラスターがビジー状態のときの Eclipse エラー YARN](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "クラスターがビジー状態のときの Eclipse エラー YARN")
 
 ## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)

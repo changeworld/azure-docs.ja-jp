@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905677"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773155"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -41,6 +41,8 @@ Azure Storage アカウントなど、他の必要なリソースは、発行プ
 
 > [!NOTE]
 > Visual Studio 2017 では、Azure 開発ワークロードによって Azure Functions Tools が別個の拡張機能としてインストールされます。 Visual Studio 2017 を更新する場合、Azure Functions ツールの[最新バージョン](#check-your-tools-version)を使用していることも確認してください。 以下のセクションでは、Visual Studio 2017 の Azure Functions Tools 拡張機能を確認し、必要に応じて更新する方法について説明します。 
+>
+> Visual Studio 2019 を使用しているときは、これらのセクションを省略してください。
 
 ### <a name="check-your-tools-version"></a>Visual Studio 2017 でツールのバージョンを確認する
 
@@ -84,7 +86,7 @@ Visual Studio 2019 以降では、Azure Functions ツールの拡張機能が Vi
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-プロジェクトを発行しても local.settings.json の設定は自動的にアップロードされません。 これらの設定が Azure の関数アプリにも確実に存在するようにするには、プロジェクトを発行した後にそれらをアップロードする必要があります。 詳細については、「[Function App の設定](#function-app-settings)」を参照してください。
+プロジェクトを発行するとき、local.settings.json の設定は自動的にアップロードされません。 これらの設定が Azure の関数アプリにも確実に存在するようにするには、プロジェクトを発行した後にそれらをアップロードする必要があります。 詳細については、「[Function App の設定](#function-app-settings)」を参照してください。
 
 **ConnectionStrings** 内の値は発行されません。
 
@@ -199,7 +201,7 @@ Visual Studio から発行するときは、2 つのデプロイ方法のいず�
 
 ## <a name="function-app-settings"></a>Function App の設定
 
-Local.settings.json で追加したすべての設定は、Azure の関数アプリにも追加する必要があります。 プロジェクトを発行するとき、これらの設定は自動的にアップロードされません。
+Local.settings.json で追加したすべての設定は、Azure の関数アプリにも追加する必要があります。 プロジェクトを発行するときに、これらの設定は自動的にアップロードされません。
 
 Azure の関数アプリに必要な設定をアップロードする最も簡単な方法として、プロジェクトが正常に発行された後に表示される **[アプリケーション設定の管理]** リンクを使用できます。
 

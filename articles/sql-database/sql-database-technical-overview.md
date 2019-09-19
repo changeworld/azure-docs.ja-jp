@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: d7cb473c54dc9cf735e43c65bc079fb4f21e4c97
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279901"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913985"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
@@ -26,6 +26,8 @@ Microsoft のクラウド優先戦略に基づく SQL Server の最新機能の�
 
 > [!NOTE]
 > Azure SQL Database の用語集については、「[SQL Database 用語集](sql-database-glossary-terms.md)」をご覧ください
+
+## <a name="deployment-models"></a>デプロイ モデル
 
 Azure SQL データベースには、そのデータベースのデプロイに関して次の選択肢があります。
 
@@ -51,11 +53,19 @@ SQL Database は、パフォーマンスを予測できる複数のリソース�
 
 動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、ダウンタイムなしで手動スケールすることができます。 単一データベースにより、手動の動的スケーラビリティはサポートされますが、自動スケールはサポートされていません。 *自動*操作を増やすには、エラスティック プールの使用を検討してください。エラスティック プールを使用すると、データベースが個々のデータベースのニーズに基づいてプール内のリソースを共有できます。 ただし、単一データベースのスケーラビリティを自動化できるスクリプトがあります。 例については、「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)」を参照してください。
 
-### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>購入モデル、サービス レベル、コンピューティング サイズ、ストレージ容量
+### <a name="purchasing-models"></a>モデルの購入
 
 SQL Database には、2 つの購入モデルが用意されています。
-- [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの容量と速度を選択できます。 また、仮想コアベースの購入モデルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、コストを削減することもできます。 Azure ハイブリッド特典の詳細については、[よく寄せられる質問](#sql-database-frequently-asked-questions-faq)を参照してください。
+- [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの容量と速度を選択できます。 また、仮想コアベースの購入モデルでは、 **[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)** を使用して、コストを削減することもできます。 Azure ハイブリッド特典の詳細については、[よく寄せられる質問](#sql-database-frequently-asked-questions-faq)を参照してください。
 - [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)では、軽量から重量までのデータベース ワークロードをサポートするために、コンピューティング、メモリ、IO の各リソースの組み合わせを 3 つのサービス レベルで提供します。 各レベルにおけるコンピューティング サイズでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
+- [サーバーレス モデル](sql-database-serverless.md)では、ワークロードの需要に基づいてコンピューティングを自動的にスケーリングし、1 秒あたりのコンピューティング使用量に対して請求を行います。 またサーバーレス コンピューティング レベルでは、アイドル期間にデータベースを自動的に一時停止します。このときはストレージのみに課金され、再びアクティブになると自動的にデータベースが再開されます。
+
+### <a name="service-tiers"></a>サービス階層
+
+Azure SQL Database には、さまざまな種類のアプリケーション向けに設計された 3 つのサービス レベルが用意されています。
+- 一般的なワークロード向けに設計された、[General Purpose/Standard](sql-database-service-tier-general-purpose.md) サービス レベル。 予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。
+- トランザクション レートが高く、待ち時間 IO が最低の OLTP アプリケーション向けに設計された、[Business Critical/Premium](sql-database-service-tier-business-critical.md) サービス レベル。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。
+- 非常に大規模な OLTP データベース、および柔軟性の高いストレージの自動スケーリングとコンピューティングのスケーリングの機能向けに設計された、[HyperScale](sql-database-service-tier-hyperscale.md) サービス レベル。 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
 
@@ -206,7 +216,7 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 
 SQL Database の現在のバージョンは V12 です。 バージョン V11 は廃止されました。
 
-### <a name="can-i-control-when-patching-downtime-occurs"></a>修正プログラムの適用によるダウンタイム発生のタイミングを制御できますか。
+### <a name="can-i-control-when-patching-downtime-occurs"></a>いつ修正プログラムの適用によるダウンタイムを発生させるかを制御できますか。
 
 いいえ。 修正プログラムの適用の影響は、アプリに[再試行ロジックを採用](sql-database-develop-overview.md#resiliency)していれば、通常は顕著なものではありません。 Azure SQL データベースの計画メンテナンス イベントに備える方法の詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
 
@@ -230,8 +240,8 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 
 |ライセンス フットプリント|SQL Server 向け Azure ハイブリッド特典の内容|
 |---|---|
-|SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>General Purpose SKU または Business Critical SKU のいずれかの支払いにおいて基本料金が適用されます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
-|SA を含む SQL Server Standard Edition の中核的なお客様|<li>General Purpose SKU の支払いのみにおいて基本料金が適用されます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
+|SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>General Purpose SKU または Business Critical SKU のいずれかで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
+|SA を含む SQL Server Standard Edition の中核的なお客様|<li>General Purpose SKU のみで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
 |||
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>SQL Server エンジニアリング チームとの交流

@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight の Apache Spark 上で自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する
+title: Azure HDInsight の Apache Spark 上で Azure Machine Learning ワークロードを実行する
 description: Azure HDInsight の Apache Spark 上で 自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141182"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814041"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark 上で自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight の Apache Spark 上で自動化された機械学習を使用して Azure Machine Learning ワークロードを実行する
 
 Azure Machine Learning では、機械学習モデルの構築、トレーニング、およびデプロイを簡略化して迅速化します。 Automated Machine Learning (AutoML) では、規定目標機能があるトレーニング データで開始し、アルゴリズムと機能選択の組み合わせを反復して、トレーニング スコアに基づきデータの最適なモデルを自動的に選択します。 HDInsight を使用することにより、お客様は多数のノードでクラスターをプロビジョニングできます。 HDInsight クラスターの Spark で実行されている AutoML では、ユーザーはこれらのノード間でコンピューティング能力を使用して、スケールアウト形式でトレーニング ジョブを実行したり、複数のトレーニング ジョブを並列で実行したりできます。 これによりユーザーは、他のビッグ データ ワークロードとコンピューティングを共有しながら AutoML 実験を実行できます。
  

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8c7680896507cd3738fa3bce0d30a516d08509c4
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208097"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383287"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへのアカウントの移行
 
@@ -43,17 +43,17 @@ CPP アカウントに Microsoft Partner Network ID がないか、あっても�
 移行は、特定のアカウントに対して 1 回だけ行う必要があります。 特定のパートナーでアカウントの移行が完了すると、[発行元プロファイル] ページですべての所有者がこの動作を確認できます。
 
 1. Microsoft Partner Network の [パートナーの設定] ページを表示して、アカウント設定を管理できます。 
-2. CPP の [発行元プロファイル] ページの黄色のバナーは所有者ロールを持つユーザーに表示され、パートナー センターでアカウント設定を管理するようにそのユーザーに依頼します。 
-3. CPP の [アカウントの設定] ページは読み取り専用モードに変換されます。 
+2. CPP の [発行元プロファイル] ページの黄色のバナーは所有者ロールを持つユーザーに表示され、パートナー センターでアカウント設定を管理するようにそのユーザーに依頼します。
+3. CPP の [アカウントの設定] ページは読み取り専用モードに変換されます。
 
 ## <a name="move-dynamics-365-based-solutions-to-partner-center"></a>Dynamics 365 ベースのソリューションをパートナー センターに移動する
 
 One Commercial Partner GTM ポータルで Dynamics 365 for Customer Engagement または Dynamics 365 for Finance and Operations ソリューションを作成した場合、**これらのソリューションはパートナー センターで管理する必要があります**。
 
-**2019 年 8 月 31 日までにソリューションを移動しなかった場合は**、できるだけ早く以下の手順を完了してください。 それまでは、以下の状態になります。 
+**2019 年 8 月 31 日までにソリューションを移動しなかった場合は**、できるだけ早く以下の手順を完了してください。 それまでは、以下の状態になります。
 - ISV はマーケティングの特典にアクセスできない
 - 共同販売優先のステータスを失う
-- Cloud Embed を必要とする場合、準拠性を失う
+- Cloud Embed を必要とする場合、2019 年 10 月 15 日以降、準拠性を失う
 
 > [!NOTE]
 > MPN メンバーシップ アカウントが最初にパートナー メンバーシップ センター (PMC) で作成された場合は、下の手順を完了する前に、[パートナー センター](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)にサインインしてそのアカウントが移行されていることを確認してください。 MPN ID を含むプロファイル画面が表示されている場合は、処理を続行する準備ができています。 そうでない場合は、[パートナー メンバーシップ センター](https://partners.microsoft.com/partnerprogram/Welcome.aspx)のプロンプトに従って、アカウントの移行を開始する必要があります。 これに関するサポートが必要な場合は、[サポート](https://partner.microsoft.com/support?issueid=100-0077)にアクセスしてください。

@@ -2,40 +2,34 @@
 title: Azure Security Center でのデータ収集 | Microsoft Docs
 description: " Azure Security Center のデータ収集を有効にする方法について説明します。 "
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/10/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 0cbb6f022dbeded2bbfb19769595be69ec62c311
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231337"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910627"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、Log Analytics エージェントはクラッシュ ダンプ ファイルもワークスペースにコピーします。
 
 不足している更新プログラム、OS のセキュリティ設定ミス、エンドポイント保護の有効性、正常性と脅威の検出を可視化するためには、データ収集が欠かせません。 
 
-この記事では、Log Analytics エージェントをインストールする方法と、収集されたデータの格納先となる Log Analytics ワークスペースを設定する方法についてのガイダンスを提供します。 データ収集を有効にするためには、両方の操作が必要となります。 
+この記事では、Log Analytics エージェントをインストールする方法と、収集されたデータの格納先となる Log Analytics ワークスペースを設定する方法について説明します。 データ収集を有効にするためには、両方の操作が必要となります。 
 
 > [!NOTE]
 > - データ収集を必要とするのは、コンピューティング リソース (VM、仮想マシン スケール セット、IaaS コンテナー、非 Azure コンピューター) だけです。 Azure Security Center の機能は、エージェントをプロビジョニングしなくても利用することができます。ただしセキュリティは限られており、前述の機能はサポートされません。  
 > - サポートされるプラットフォームの一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
-> - 新しいワークスペースと既存のワークスペースのどちらを使用する場合でも、Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。
+> - 新しいワークスペースと既存のワークスペースのどちらを使用する場合でも、Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 ## Log Analytics エージェントの自動プロビジョニングを有効にする<a name="auto-provision-mma"></a>
 
-マシンからデータを収集するには、Log Analytics エージェントがインストールされている必要があります。  エージェントのインストールは自動で実行できますが (推奨)、手動でインストールすることもできます。  
+マシンからデータを収集するには、Log Analytics エージェントがインストールされている必要があります。 エージェントのインストールは自動で実行できますが (推奨)、手動でインストールすることもできます。  
 
 >[!NOTE]
 > 自動プロビジョニングは、既定ではオフです。 既定でインストールするように Security Center を設定するには、自動プロビジョニングを**オン**に設定してください。
@@ -65,7 +59,7 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 >
 
 ## <a name="workspace-configuration"></a>ワークスペースの構成
-Security Center によって収集されたデータは、Log Analytics ワークスペースに保存されます。  Azure VM から収集したデータを、Security Center によって作成されたワークスペースと自分で作成した既存のワークスペースのどちらに保存するかを選択できます。 
+Security Center によって収集されたデータは、Log Analytics ワークスペースに保存されます。 Azure VM から収集したデータを、Security Center によって作成されたワークスペースと自分で作成した既存のワークスペースのどちらに保存するかを選択できます。 
 
 ワークスペースの構成はサブスクリプションごとに設定されますが、多数のサブスクリプションで同じワークスペースを使うこともできます。
 
@@ -87,7 +81,7 @@ Security Center によって作成されたワークスペースを選択する�
 
 > [!NOTE]
 > Security Center で作成されたワークスペースの Log Analytics 価格レベルは、Security Center の課金に影響しません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。 Free レベルの場合、既定のワークスペースで *SecurityCenterFree* ソリューションが有効化されます。 Standard レベルの場合、既定のワークスペースで *Security* ソリューションが有効化されます。
-> Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。
+> Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 既存の Log Analytics アカウントの詳細については、「[既存の Log Analytics ユーザー](security-center-faq.md#existingloganalyticscust)」を参照してください。
 
@@ -99,7 +93,7 @@ Security Center によって作成されたワークスペースを選択する�
 
 > [!NOTE]
 > 既存のワークスペースに接続した Azure VM には、そのワークスペースで有効になっているソリューションが適用されます。 そのため有料ソリューションの場合、追加料金が発生することがあります。 データのプライバシー上、選択したワークスペースが適切な地理的領域に存在することを確認してください。
-> Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。
+> Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 既存の Log Analytics ワークスペースを選択するには、次の手順に従います。
 
@@ -147,7 +141,7 @@ Security Center によって作成されたワークスペースを選択する�
 ## <a name="data-collection-tier"></a>データ収集レベル
 Azure Security Center 内でデータ収集レベルを選択した場合、その影響を受けるのは Log Analytics ワークスペース内のセキュリティ イベントのストレージのみです。 Log Analytics エージェントでは、ご利用の Log Analytics ワークスペース (存在する場合) に格納するように選択したセキュリティ イベントのレベルに関係なく、Azure Security Center での脅威検出に必要なセキュリティ イベントが引き続き収集され分析されます。 ご利用のワークスペースにセキュリティ イベントを格納するように選択すると、そのワークスペース内のセキュリティ イベントの調査、検索、および監査が有効にされます。 
 > [!NOTE]
-> Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。
+> Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 > 
 > ご利用のワークスペースに格納される 4 つのイベント セットの中から、サブスクリプションとワークスペースに最適なフィルタリング ポリシーを選択できます。 
 
@@ -196,7 +190,7 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 
    ![フィルタリング ポリシーを選択する][5]
 
-### 既にインストールされているエージェントが存在する場合の自動プロビジョニング<a name="preexisting"></a> 
+### 既にインストールされているエージェントが存在する場合の自動プロビジョニング <a name="preexisting"></a> 
 
 以下のユース ケースは、エージェントまたは拡張機能が既にインストールされていた場合の自動プロビジョニングの動作について記述したものです。 
 
@@ -217,7 +211,7 @@ Security Center によって、Log Analytics エージェント拡張機能は�
 - 既存の VM 拡張機能が存在する<br>
     - Monitoring Agent が拡張機能としてインストールされると、拡張機能の構成で 1 つのワークスペースのみにレポートできます。 Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center では、"security" または "securityFree" ソリューションがインストールされているという条件で、既に接続されているワークスペース内の VM からのセキュリティ データを保存します。 Security Center では、このプロセスで拡張機能のバージョンを最新バージョンにアップグレードする可能性があります。  
     - 既存の拡張機能がどのワークスペースにデータを送信しているのかを調べるには、[Azure Security Center との接続を確認](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)するテストを実行します。 または、Log Analytics ワークスペースを開いてワークスペースを選択し、対象の VM を選択して、Log Analytics エージェント接続を調べることもできます。 
-    - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。詳しくは、「[既存の Log Analytics ユーザー](security-center-faq.md#existingloganalyticscust)」をご覧ください。
+    - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。 詳しくは、「[既存の Log Analytics ユーザー](security-center-faq.md#existingloganalyticscust)」をご覧ください。
  
 ### 自動プロビジョニングを無効にする<a name="offprovisioning"></a>
 リソースの自動プロビジョニングは、セキュリティ ポリシーでこの設定をオフにすることで、いつでも無効にすることができます。 

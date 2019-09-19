@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 8524a315228601adbb30a5def383f7b54a8f1495
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076043"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773221"
 ---
 # <a name="co-sell-option-in-partner-center"></a>パートナー センターの [共同販売] オプション
 
@@ -47,10 +47,10 @@ ms.locfileid: "70076043"
 
 | **ドキュメント**    | **説明**  |
 | :------------------- | :-------------------|
-| *Customer one-pager (顧客 1 ページャー)* | オファリングのお客様対応の説明。 Microsoft のセールス チームはこの情報をお客様と共有し、オファリングが最適かどうかを判断したり、お客様の準備ができているかどうかを判断することができます。 <br> <br> 次のいずれかの関連テンプレートを使用します。 <br> <ul> <li> [Microsoft Azure one-pager template (Microsoft Azure 1 ページャー テンプレート)](https://aka.ms/Customer-One-Pager_MicrosoftAzure) </li> <li> [Microsoft Dynamics 365 one-pager template (Microsoft Dynamics 365 1 ページャー テンプレート)](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365) </li> <li> [Office 365 one-pager template (Office 365 1 ページャー テンプレート)](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li> <li> [Windows 10 one-pager template (Windows 10 1 ページャー テンプレート)](https://aka.ms/Customer-One-Pager_Windows) </li> </ul>
+| *Customer one-pager (顧客 1 ページャー)* | オファリングのお客様対応の説明。 Microsoft のセールス チームはこの情報をお客様と共有し、オファリングが最適かどうかを判断したり、お客様の準備ができているかどうかを判断することができます。 <br> <br> パートナー センターで利用可能な関連テンプレートのいずれかを使用します。 <br> <ul> <li> Microsoft Azure one-pager template (Microsoft Azure 1 ページャー テンプレート) </li> <li> Microsoft Dynamics 365 one-pager template (Microsoft Dynamics 365 1 ページャー テンプレート) </li> <li> Office 365 one-pager template (Office 365 1 ページャー テンプレート) </li> <li> Windows 10 one-pager template (Windows 10 1 ページャー テンプレート) </li> </ul>
  |
-| *Customer presentation (顧客向けプレゼンテーション)* | ソリューションとその価値提案を表示するスライド デッキ。 オファーがお客様に適していることを確認した後、Microsoft のセールス チームはプレゼンテーションをお客様と共有し、双方の会社が共同ソリューションを展開する場合にもたらされる価値を明確にすることができます。 プレゼンテーションでは、ソリューションの実行内容、お客様にどのように役立つか、どのような業界向けのソリューションか、競合しているソリューションと比較する方法を取り上げるようにします。 <br> <br> 詳細については、[顧客プレゼンテーションのテンプレート](https://aka.ms/GTMServices_CustomerPresentation)を参照してください。|
-| *Customer case study (お客様のケース スタディ)* | この情報は、お客様と Microsoft が以前のケースでこのソリューションを適切に展開した方法を潜在顧客に示します。 <br> <br> 詳細については、[ケース スタディ テンプレート](https://aka.ms/GTM_Case_Study_Template)を参照してください。 |
+| *Customer presentation (顧客向けプレゼンテーション)* | ソリューションとその価値提案を表示するスライド デッキ。 オファーがお客様に適していることを確認した後、Microsoft のセールス チームはプレゼンテーションをお客様と共有し、双方の会社が共同ソリューションを展開する場合にもたらされる価値を明確にすることができます。 プレゼンテーションでは、ソリューションの実行内容、お客様にどのように役立つか、どのような業界向けのソリューションか、競合しているソリューションと比較する方法を取り上げるようにします。 <br> <br> パートナー センターで利用可能なテンプレートを使用します。|
+| *Customer case study (お客様のケース スタディ)* | この情報は、お客様と Microsoft が以前のケースでこのソリューションを適切に展開した方法を潜在顧客に示します。 <br> <br> パートナー センターで利用可能なテンプレートを使用します。 |
 | *Verifiable customer wins (検証可能なお客様の成功事例) (省略可能)* | ソリューションが展開された後のお客様の具体的な例。 |
 | *Channel pitch deck (チャネル ピッチ デッキ) (省略可能)* | チャネル リセラーがソリューションの詳細を学習し、そのセールス チームがオファーを販売できるようにするための情報が表示されたスライド デッキ。 通常は、エレベーター ピッチ、対象顧客に関する情報、お客様に確認する質問、トークのポイント、および動画、ドキュメント、サポート情報のリンクが含まれています。 |
 | *Reference architecture diagrams (参照アーキテクチャ図)* | パートナーによって作成された IP を表すモデルと、Microsoft クラウド サービスとの関係、および IP 共同販売プログラムの技術的な要件を満たす方法を示すドキュメント。 |

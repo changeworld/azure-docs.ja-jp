@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a2cab9dff4a075545d919cb41e72cf6e446e9d2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897358"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772518"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -77,7 +77,7 @@ SSL が有効なサービスをデプロイ (または再デプロイ) するに
   > [!NOTE]
   > このセクションの情報は、ビジュアル インターフェイス用のセキュリティで保護された Web サービスをデプロイするときにも適用されます。 Python SDK に慣れていない場合は、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関するページを参照してください。
 
-AKS にデプロイする場合、新しい AKS クラスターを作成するか、既存のクラスターを接続することができます。
+AKS にデプロイする場合、新しい AKS クラスターを作成するか、既存のクラスターを接続することができます。 クラスターの作成または接続について詳しくは、「[Azure Kubernetes Service クラスターにモデルをデプロイする](how-to-deploy-azure-kubernetes-service.md)」をご覧ください。
   
 -  新しいクラスターを作成する場合、 **[AksCompute.provisionining_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** を使用します。
 - 既存のクラスターを接続する場合、 **[AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** を使用します。 どちらも **enable_ssl** メソッドを持つ構成オブジェクトが返されます。
