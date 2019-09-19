@@ -4,15 +4,16 @@ description: Azure HDInsight クラスターを新しいバージョンにアッ
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: f4458b33edb9d55c30de8c5168668743abb33161
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811631"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960694"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight クラスターを新しいバージョンにアップグレードする
 最新の HDInsight 機能を利用するために、HDInsight クラスターを最新バージョンにアップグレードすることをお勧めします。 HDInsight クラスターのバージョンをアップグレードするには、下のガイドラインに従います。
@@ -23,7 +24,7 @@ ms.locfileid: "70811631"
 ## <a name="upgrade-tasks"></a>アップグレード タスク
 HDInsight クラスターをアップグレードするワークフローは次のとおりです。
 
-![アップグレード ワークフロー図](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![アップグレード ワークフロー図](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. このドキュメントの各セクションを読んで、HDInsight クラスターに移行するときに必要になる場合がある変更について理解します。
 2. テスト/品質保証環境として、クラスターを作成します。 クラスターの作成の詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。

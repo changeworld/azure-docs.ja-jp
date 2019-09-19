@@ -93,7 +93,7 @@ sections:
           - href: /azure/sql-database/sql-database-instance-pools
             html: <p>マネージド インスタンス プールは、リソースを共有して迅速にスケーリングするマネージド インスタンスを複数デプロイするためのシンプルでコスト効率の高いソリューションとして使用します。</p>
             image:
-              src: media/index/i_instancepool.png
+              src: media/index/i-instancepools.svg
             title: インスタンス プール
   - title: 5 分間のクイック スタート
     items:

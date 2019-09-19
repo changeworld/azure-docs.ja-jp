@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fad2c83138f211e83e9462182d33f6169cbdb833
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736471"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968073"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>拡張された Apache Spark History Server を使用して Apache Spark アプリケーションのデバッグと診断を行う
 
@@ -47,23 +47,23 @@ Spark History Server Web UI は次のようになります。
 
 + **[入力]** 、 **[出力]** 、および **[テーブル操作]** の各タブを個別に選択することで、その内容をチェックできます。
 
-    ![[データ] タブ](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
+    ![[データ] タブ](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
 + **[コピー]** ボタンをクリックすることで、すべての行をコピーできます。
 
-    ![データのコピー](./media/apache-azure-spark-history-server/sparkui-data-copy.png)
+    ![データのコピー](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
 + **[csv]** ボタンをクリックすることで、すべてのデータを CSV ファイルとして保存できます。
 
-    ![データの保存](./media/apache-azure-spark-history-server/sparkui-data-save.png)
+    ![データの保存](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
 + **[検索]** フィールドにキーワードを入力することで検索できます。検索結果はすぐに表示されます。
 
-    ![データの検索](./media/apache-azure-spark-history-server/sparkui-data-search.png)
+    ![データの検索](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
 + テーブルを並べ替えるには、列ヘッダーをクリックします。行を展開して行の詳細を表示するには、プラス記号をクリックします。行を折りたたむには、マイナス記号をクリックします。
 
-    ![データ テーブル](./media/apache-azure-spark-history-server/sparkui-data-table.png)
+    ![データ テーブル](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
 + 右側に配置されている **[一部ダウンロード]** ボタンをクリックすることで、1 つのファイルをダウンロードできます。選択したファイルはローカルにダウンロードされます。ファイルがもう存在していない場合は、新しいタブが開いてエラー メッセージが表示されます。
 
@@ -75,7 +75,7 @@ Spark History Server Web UI は次のようになります。
 
 + 1 ページに表示できる行数を超える行がある場合は、テーブルの下に表示されている数値をクリックすると、該当するページに移動できます。 
 
-    ![[データ] ページ](./media/apache-azure-spark-history-server/sparkui-data-page.png)
+    ![[データ] ページ](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
 + [データ] の横の疑問符をポイントすると、ツールチップが表示されます。疑問符をクリックすると、詳細を取得できます。
 
@@ -93,7 +93,7 @@ Spark History Server Web UI は次のようになります。
 
 + 既定では、すべてのジョブが表示され、 **[ジョブ ID]** によってフィルター処理できます。
 
-    ![グラフのジョブ ID](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
+    ![グラフのジョブ ID](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
 + 既定では、 **[進行状況]** が選択され、ユーザーは、 **[表示]** ドロップダウン リストの **[読み取り済み] または [書き込み済み]** を選択することで、データ フローをチェックできます。
 
@@ -211,15 +211,15 @@ Executor 利用状況グラフでは、Spark ジョブの Executor の実際の�
 5. これで、プロパティが **false** に設定されます。
 6. **[保存]** をクリックして構成を保存します。
 
-    ![機能がオフになる](./media/apache-azure-spark-history-server/sparkui-turn-off.png)
+    ![機能がオフになる](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
 7. 左側のパネルで **[Spark2]** をクリックし、 **[Summary]\(概要\)** タブで **Spark2 History Server** をクリックします。
 
-    ![server1 の再起動](./media/apache-azure-spark-history-server/sparkui-restart-1.png) 
+    ![server1 の再起動](./media/apache-azure-spark-history-server/apache-spark-restart1.png) 
 
 8. **Spark2 History Server** の **[Restart]\(再起動\)** をクリックして、History Server を再起動します。
 
-    ![server2 の再起動](./media/apache-azure-spark-history-server/sparkui-restart-2.png)  
+    ![server2 の再起動](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
 9. Spark History Server Web UI 更新すると、コミュニティ バージョンに戻ります。
 
@@ -236,7 +236,7 @@ History Server エラーが発生した場合は、次の手順に従ってイ�
 
 3. エラーのタイトルと説明を入力し、zip ファイルを編集フィールドにドラッグした後、 **[Submit new issue]\(新しい問題を投稿\)** をクリックします。
 
-    ![ファイルの問題](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
+    ![ファイルの問題](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
 
 ### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>手順 3.修正プログラム用の jar ファイルをアップグレードするシナリオ
@@ -314,7 +314,7 @@ History Server エラーが発生した場合は、次の手順に従ってイ�
    + **[ヘッド]** と **[ワーカー]** をオンにします。
    + **パラメーター**: bash の使用法に従ってパラメーターを設定します。
 
-     ![ログまたは修正プログラムのアップグレード](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![ログまたは修正プログラムのアップグレード](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 
 ## <a name="known-issues"></a>既知の問題

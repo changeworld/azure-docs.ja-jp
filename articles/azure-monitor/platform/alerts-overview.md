@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: ae3e45ece1bd53846ab7728c29c0da1b709fe42c
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eab6e7e0fb834447a55b67dfc9a17c470e9e3361
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915957"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091774"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -202,9 +202,9 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
   }
 }
 ```
-照会は、アラートの[必須](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)フィールドに対して行うことができます。
+照会は、アラートの[必須](alerts-common-schema-definitions.md#essentials)フィールドに対して行うことができます。
 
-[Alert Management REST API](https://aka.ms/alert-management-api) を使用すると、[アラート コンテキスト](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) フィールドなど、特定のアラートに関する詳細情報を取得できます。
+[Alert Management REST API](https://aka.ms/alert-management-api) を使用すると、[アラート コンテキスト](alerts-common-schema-definitions.md#alert-context) フィールドなど、特定のアラートに関する詳細情報を取得できます。
 
 ## <a name="next-steps"></a>次の手順
 

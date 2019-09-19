@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811946"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018739"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>ファイアウォールを使用した Azure HDInsight クラスターの送信ネットワーク トラフィックの構成 (プレビュー)
 
@@ -63,7 +63,8 @@ Azure portal で新しいファイアウォール「**Test-FW01**」を選択し
    | **Name** | **ソース アドレス** | **プロトコル:ポート** | **ターゲット FQDN** | **メモ** |
    | --- | --- | --- | --- | --- |
    | Rule_2 | * | https:443 | login.windows.net | Windows ログイン アクティビティを許可する |
-   | Rule_3 | * | https:443、http:80 | <storage_account_name.blob.core.windows.net> | クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。 https 接続のみを使用するには、[[安全な転送が必須](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)] がストレージ アカウントで有効になっていることを確認します。 |
+   | Rule_3 | * | https:443 | login.microsoftonline.com | Windows ログイン アクティビティを許可する |
+   | Rule_4 | * | https:443、http:80 | <storage_account_name.blob.core.windows.net> | クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。 https 接続のみを使用するには、[[安全な転送が必須](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)] がストレージ アカウントで有効になっていることを確認します。 |
 
 1. **[追加]** をクリックします。
 

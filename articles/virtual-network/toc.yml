@@ -260,9 +260,9 @@
         - name: ネットワーク セキュリティ グループ - PowerShell
           href: move-across-regions-nsg-powershell.md
         - name: 仮想ネットワーク - ポータル
-          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
+          href: move-across-regions-vnet-portal.md
         - name: 仮想ネットワーク - PowerShell
-          href: virtual-network-azure-to-azure-migrate-vnet-powershell.md
+          href: move-across-regions-vnet-powershell.md
         - name: パブリック IP - ポータル
           href: move-across-regions-publicip-portal.md
         - name: パブリック IP - PowerShell

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390254"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984279"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -47,7 +47,6 @@ Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microso
 | Quantity      | Number        | "6", "six"     |
 | Quantity      | 割合    | "50%"､"fifty percent"|
 | Quantity      | Ordinal       | "2nd"､"second"     |
-| Quantity      | NumberRange   | "4 to 8"     |
 | Quantity      | Age           | "90 day old"､"30 years old"    |
 | Quantity      | Currency      | "$10.99"     |
 | Quantity      | Dimension     | "10 miles"､"40 cm"     |
@@ -59,7 +58,6 @@ Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microso
 | DateTime      | TimeRange     | "6pm to 7pm"     |
 | DateTime      | Duration      | "1 minute and 45 seconds"   |
 | DateTime      | Set           | "every Tuesday"     |
-| DateTime      | TimeZone      |    |
 | URL           | 該当なし\*         | "https:\//www.bing.com"    |
 | Email         | 該当なし\*         | "support@contoso.com" |
 

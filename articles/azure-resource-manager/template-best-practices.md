@@ -1,22 +1,17 @@
 ---
 title: Azure Resource Manager テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/16/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812903"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983822"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -47,7 +42,8 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 リスクを最小限に抑えるため、リソース グループとリソースは同じリージョンに配置するようにしてください。
 
 ## <a name="parameters"></a>parameters
-このセクションの情報は、[パラメーター](resource-group-authoring-templates.md#parameters)を使用するときに役に立ちます。
+
+このセクションの情報は、[パラメーター](template-parameters.md)を使用するときに役に立ちます。
 
 ### <a name="general-recommendations-for-parameters"></a>パラメーターに関する一般的な推奨事項
 
@@ -149,7 +145,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="variables"></a>変数
 
-[変数](resource-group-authoring-templates.md#variables)を使用する場合は、次の情報を活用してください。
+[変数](template-variables.md)を使用する場合は、次の情報を活用してください。
 
 * 変数名にはキャメル ケースを使用します。
 
@@ -286,7 +282,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="outputs"></a>出力
 
-テンプレートを使用してパブリック IP アドレスを作成する場合は、IP アドレスの詳細と完全修飾ドメイン名 (FQDN) を返す [outputs セクション](resource-group-authoring-templates.md#outputs)を組み込みます。 出力値を使用して、デプロイ後に簡単にパブリック IP アドレスと FQDN についての詳細を取得できます。
+テンプレートを使用してパブリック IP アドレスを作成する場合は、IP アドレスの詳細と完全修飾ドメイン名 (FQDN) を返す [outputs セクション](template-outputs.md)を組み込みます。 出力値を使用して、デプロイ後に簡単にパブリック IP アドレスと FQDN についての詳細を取得できます。
 
 ```json
 "outputs": {

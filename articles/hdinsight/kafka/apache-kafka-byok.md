@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811548"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000102"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む
 
@@ -58,7 +58,7 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
 
         b. **[オプション]** を **[生成]** に設定し、キーの名前を付けます。
 
-        ![キー名を生成する](./media/apache-kafka-byok/kafka-create-a-key.png "キー名を生成する")
+        ![キー名を生成する](./media/apache-kafka-byok/apache-kafka-create-key.png "キー名を生成する")
 
         c. キーの一覧から作成したキーを選択します。
 
@@ -103,7 +103,7 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
 
    キーを交換するには、新しいキーの完全な URL が必要です (「[Key Vault とキーを設定する](#setup-the-key-vault-and-keys)」の手順 3 を参照してください)。 これを入手したら、ポータルで Kafka クラスターのプロパティ セクションに移動し、 **[ディスクの暗号化キーの URL]** の **[キーの変更]** をクリックします。 新しいキーの URL を入力し、キーの交換を実行します。
 
-   ![Kafka のディスク暗号化キーの交換](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Kafka のディスク暗号化キーの交換](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>Apache Kafka の BYOK についてよくあるご質問
 
@@ -146,5 +146,5 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/key-vault-whatis.md)」をご覧ください。
+* Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」をご覧ください。
 * Azure Key Vault の概要については、「[Azure Key Vault の概要](../../key-vault/key-vault-overview.md)」を参照してください。
