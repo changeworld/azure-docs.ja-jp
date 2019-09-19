@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight のクラスターの容量計画
-description: 容量とパフォーマンスのニーズを満たす HDInsight クラスターを指定する方法。
+description: Azure HDInsight クラスターの容量とパフォーマンスの計画に関する重要な質問を特定します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207164"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916570"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -96,9 +96,6 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 マルチノード クラスターで、複数の map および reduce コンポーネントの同時実行が原因でエラーが発生する場合があります。 この問題を分離するために、単一ワーカー ノード クラスターで複数の同時実行ジョブを実行して分散テストを試してみます。その後、この手法を拡大して、複数のノードを含むクラスターで複数のジョブを同時に実行します。 Azure で単一ノードの HDInsight クラスターを作成するには、 *[カスタム (サイズ、設定、アプリ )]* オプションを使用して、ポータルで新しいクラスターをプロビジョニングするときに **[クラスター サイズ]** セクションの *[Number of Worker nodes]\(ワーカー ノードの数\)* に 1 の値を使用します。
 
-また、ローカル コンピューターに単一ノード開発環境をインストールし、そこでソリューションをテストすることもできます。 Hortonworks では、初期開発、概念実証、テストに役立つ、Hadoop ベースのソリューションの単一ノード ローカル開発環境を提供しています。 詳細については、[Hortonworks Sandbox](https://hortonworks.com/products/hortonworks-sandbox/) を参照してください。
-
-単一ノードのローカル クラスターで問題を特定するには、失敗したジョブを再実行し、入力データを調整するか、小規模のデータセットを使用します。 これらのジョブを実行する方法は、プラットフォームとアプリケーションの種類によって異なります。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 

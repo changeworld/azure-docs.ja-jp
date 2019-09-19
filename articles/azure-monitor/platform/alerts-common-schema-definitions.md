@@ -1,6 +1,6 @@
 ---
-title: Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義
-description: Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義について説明します
+title: Azure Monitor の共通アラート スキーマ定義
+description: Azure Monitor の共通アラート スキーマ定義について
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,22 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: 94938358bc4e4782e91401e24a01a3688c6a51ba
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 5f05b95085048515c5f8612f3029ffb2efa28091
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034800"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916028"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
-この記事では、Webhooks、Logic Apps、Azure Functions、Automation Runbooks の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
+この記事では、Azure Monitor や、Webhooks、Azure Logic Apps、Azure Functions、Azure Automation Runbook の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
 
-## <a name="overview"></a>概要
+すべてのアラート インスタンスでは、影響を受けたリソースおよびアラートの原因が記述されています。 これらのインスタンスは、共通スキーマの以下のセクションに記述されています。
+* **要点**: すべてのアラートの種類において共通の一連の標準化されたフィールド。これらのフィールドでは、アラート対象のリソースと、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 
+* **アラート コンテキスト**: アラートの原因が記述されているフィールドと、アラートの種類に基づいて異なるフィールドのセット。 たとえば、メトリック アラートの場合はメトリック名やメトリック値などのフィールドがアラート コンテキストにあり、アクティビティ ログ アラートの場合はそのアラートを生成したイベントに関する情報があります。 
 
-すべてのアラート インスタンスでは、**影響を受けたリソース**および**アラートの原因**が記述されており、これらのインスタンスは次のセクションの共通スキーマで記述されています。
-* **要点**: すべてのアラートの種類において共通の一連の**標準化されたフィールド**。これらのフィールドでは、アラート対象の**リソース**と、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 
-* **アラート コンテキスト**: **アラートの原因**が記述されているフィールドと、**アラートの種類に基づいて**異なるフィールドのセット。 たとえば、メトリック アラートの場合はメトリック名やメトリック値などのフィールドがアラート コンテキストにあり、アクティビティ ログ アラートの場合はそのアラートを生成したイベントに関する情報があります。 
-
-##### <a name="sample-alert-payload"></a>アラートのペイロードのサンプル
+**アラートのペイロードのサンプル**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,25 +72,25 @@ ms.locfileid: "70034800"
 }
 ```
 
-## <a name="essentials-fields"></a>"essentials" のフィールド
+## <a name="essentials"></a>要点
 
 | フィールド | 説明|
 |:---|:---|
 | alertId | アラート インスタンスを一意に識別する GUID。 |
 | alertRule | そのアラート インスタンスを生成したアラート ルールの名前。 |
-| Severity | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、Sev4 |
-| signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、Activity Log |
-| monitorCondition | アラートが発生すると、アラートの監視条件は "Fired" に設定されます。 アラート発生の原因になった状態が解消されると、監視条件は "Resolved" に設定されます。   |
+| 重大度 | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、または Sev4。 |
+| signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、または Activity Log。 |
+| monitorCondition | アラートが発生すると、アラートの監視条件は **Fired** に設定されます。 アラート発生の原因になった状態が解消されると、監視条件は **Resolved** に設定されます。   |
 | monitoringService | アラートを生成した監視サービスまたはソリューション。 アラート コンテキストのフィールドは、監視サービスによって決まります。 |
-| alertTargetIds | アラートの影響を受けたすべてのターゲットの ARM ID のリスト。 Log Analytics ワークスペースまたは Application Insights インスタンスで定義されているログ アラートの場合は、それぞれのワークスペース/アプリケーションになります。 |
-| originAlertId | 生成元の監視サービスによって生成された警告インスタンスの ID。 |
-| firedDateTime | 警告インスタンスが生成された日時 (UTC) |
-| resolvedDateTime | アラート インスタンスの監視状態が "Resolved" に設定された日時 (UTC)。 現在はメトリック アラートに対してのみ適用されます。|
-| description | アラート ルールで定義されている説明 |
+| alertTargetIds | アラートの影響を受けるターゲットである Azure Resource Manager ID の一覧。 Log Analytics ワークスペースまたは Application Insights インスタンスで定義されているログ アラートの場合は、それぞれのワークスペースまたはアプリケーションになります。 |
+| originAlertId | 生成元の監視サービスによって生成された、アラート インスタンスの ID。 |
+| firedDateTime | アラート インスタンスが発生した日時 (協定世界時 (UTC))。 |
+| resolvedDateTime | アラート インスタンスの監視状態が **Resolved** に設定された日時 (UTC)。 現在はメトリック アラートに対してのみ適用されます。|
+| description | アラート ルールで定義されている説明。 |
 |essentialsVersion| essentials セクションのバージョン番号。|
-|alertContextVersion | alertContext セクションのバージョン番号 |
+|alertContextVersion | `alertContext` セクションのバージョン番号。 |
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "essentials": {
@@ -114,13 +112,13 @@ ms.locfileid: "70034800"
 }
 ```
 
-## <a name="alert-context-fields"></a>"alertContext" のフィールド
+## <a name="alert-context"></a>アラート コンテキスト
 
 ### <a name="metric-alerts"></a>メトリック アラート
 
-#### <a name="monitoringservice--platform"></a>monitoringService = "Platform"
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -154,12 +152,11 @@ ms.locfileid: "70034800"
 ### <a name="log-alerts"></a>ログ アラート
 
 > [!NOTE]
-> + カスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、ペイロード スキーマが後述するものに戻ります。
-> + 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 **アラートのサイズがこのしきい値を超えると、検索結果はログ アラートのペイロードに埋め込まれません。** これは、フラグ "IncludedSearchResults" を確認して判断できます。 検索結果が含まれていないシナリオでは、[Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) と組み合わせて検索クエリを使用することをお勧めします。 
+> カスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、ペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludedSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれない場合は、[Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) と組み合わせて検索クエリを使用する必要があります。 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics"
+#### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -224,9 +221,9 @@ ms.locfileid: "70034800"
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = "Application Insights"
+#### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -289,9 +286,9 @@ ms.locfileid: "70034800"
 
 ### <a name="activity-log-alerts"></a>アクティビティ ログ アラート
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = "Activity Log - Administrative"
+#### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -316,9 +313,9 @@ ms.locfileid: "70034800"
 }
 ```
 
-#### <a name="monitoringservice--activity-log---policy"></a>monitoringService = 'Activity Log - Policy'
+#### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -349,9 +346,9 @@ ms.locfileid: "70034800"
 }
 ```
 
-#### <a name="monitoringservice--activity-log---autoscale"></a>monitoringService = 'Activity Log - Autoscale'
+#### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -379,9 +376,9 @@ ms.locfileid: "70034800"
 }
 ```
 
-#### <a name="monitoringservice--activity-log---security"></a>monitoringService = 'Activity Log - Security'
+#### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -412,9 +409,9 @@ ms.locfileid: "70034800"
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = 'ServiceHealth'
+#### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -456,9 +453,9 @@ ms.locfileid: "70034800"
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = 'Resource Health'
+#### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -487,6 +484,6 @@ ms.locfileid: "70034800"
 
 ## <a name="next-steps"></a>次の手順
 
-- [共通アラート スキーマの詳細を確認する](https://aka.ms/commonAlertSchemaDocs)
-- [共通アラートのスキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法について説明します。](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)について学習します。
+- [共通アラート スキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)について学習します。 
 

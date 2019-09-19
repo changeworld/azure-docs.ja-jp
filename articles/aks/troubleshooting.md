@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533525"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844265"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -132,3 +132,12 @@ AKS クラスターを別のサブスクリプションに移したり、サブ�
 * クラスターが、 *[成功]* または *[失敗]* 以外のプロビジョニング状態の場合は、操作 (*アップグレード / 更新 / 作成 / スケーリング / 削除 / 移行*) が終了するまで待ってください。 前の操作が完了したら、最新のクラスターの操作を再試行します。
 
 * クラスターでアップグレードが失敗している場合は、 「[クラスターがエラー状態であり、状態が修正されるまで、アップグレードもスケーリングも機能しないというエラーが表示されます](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)」で概説されている手順に従ってください。
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>既存のクラスターを渡さずに新しいクラスターを作成しようとすると、サービス プリンシパルが見つからなかったというエラーが発生します。
+
+AKS クラスターの作成時には、ユーザーに代わってリソースを作成するためのサービス プリンシパルが必要です。 AKS は、クラスターの作成時に新しいクラスターを作成する機能を提供しますが、クラスターの作成を成功させるには、Azure Active Directory で新しいサービス プリンシパルを適切な時間内に完全に伝達する必要があります。 この伝達に時間がかかりすぎると、クラスターは使用可能なサービス プリンシパルを見つけることができないため、作成の検証に失敗します。 
+
+これについては次の回避策を使用してください。
+1. リージョン間で既に伝達されていて、クラスターの作成時に AKS に渡すために存在する既存のサービス プリンシパルを使用します。
+2. 自動化スクリプトを使用する場合は、サービス プリンシパルの作成と AKS クラスターの作成の間に遅延時間を追加します。
+3. Azure portal を使用する場合は、作成中にクラスター設定に戻り、数分後に検証ページを再試行します。

@@ -1,6 +1,6 @@
 ---
 title: Apache Ambari を使用したクラスター構成の最適化 - Azure HDInsight
-description: Apache Ambari Web UI を使用して、HDInsight クラスターを構成および最適化します。
+description: Apache Ambari Web UI を使用して、Azure HDInsight クラスターを構成および最適化します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c533c3b0005528eae646744e8e720e2c54436e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60698824"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880273"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari を使用して HDInsight クラスター構成を最適化する
 
@@ -49,11 +49,11 @@ NameNode の Java ヒープ サイズを変更するには、次の手順を実�
 
 1. テキスト ボックスに新しい値を入力し、**Enter** キーを押して変更を保存します。
 
-    ![NameNode の Java ヒープ サイズの編集](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![NameNode の Java ヒープ サイズの編集 1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
 1. NameNode の Java ヒープ サイズが 2 GB から 1 GB に変更されます。
 
-    ![編集された NameNode の Java ヒープ サイズ](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
+    ![編集された NameNode の Java ヒープ サイズ 2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
 1. 構成画面の上部にある緑色の **[Save]\(保存\)** ボタンをクリックして変更を保存します。
 
@@ -146,7 +146,7 @@ Hive では行単位でデータを処理します。 ベクター化では、1 
 
 CBO を有効にするには、Hive の **[Configs]\(構成\)** タブに移動し、`parameter hive.cbo.enable` を検索して、トグル ボタンを **[On]\(オン\)** に切り替えます。
 
-![CBO の構成](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO の構成](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 CBO を有効にすると、次の追加の構成パラメーターによって Hive クエリのパフォーマンスが向上します。
 
@@ -365,7 +365,7 @@ Pig では、ジョブの実行中に一時ファイルが生成されます。 
 
 [Apache HBase](https://hbase.apache.org/) の構成は、 **[HBase Configs] (HBase の構成)** タブから変更されます。以下のセクションでは、HBase のパフォーマンスに影響する重要な構成設定について説明します。
 
-### <a name="set-hbaseheapsize"></a>HBASE_HEAPSIZE を設定する
+### <a name="set-hbase_heapsize"></a>HBASE_HEAPSIZE を設定する
 
 HBase のヒープ サイズは、"*リージョン*" サーバーと "*マスター*" サーバーが使用するヒープの最大量 (メガバイト単位) を示します。 既定値は 1,000 MB です。 クラスター ワークロードに合わせて、これを調整する必要があります。
 

@@ -1,7 +1,7 @@
 ---
 title: Python 開発環境をセットアップする
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で作業する場合の、開発環境を構成する方法について説明します。 この記事では、Conda 環境の使用方法、構成ファイルの作成方法、独自のクラウドベースのノートブック サーバー、Jupyter Notebook、Azure Databricks、Azure Notebooks、IDE、コード エディター、および Data Science Virtual Machine の構成方法を説明します。
+description: Azure Machine Learning service で作業する場合の、開発環境を構成する方法について説明します。 この記事では、Conda 環境の使用方法、構成ファイルの作成方法、独自のクラウドベースのノートブック サーバー、Jupyter Notebook、Azure Databricks、IDE、コード エディター、および Data Science Virtual Machine の構成方法を説明します。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278825"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860575"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "70278825"
 | [ローカル環境](#local) | 開発環境と依存関係を完全に制御できます。 任意のビルド ツール、環境、または IDE を使用できます。 | 始めるのに時間がかかります。 必要な SDK パッケージをインストールする必要があり、環境がまだない場合はそれもインストールする必要があります。 |
 | [Azure Databricks](#aml-databricks) | スケーラブルな Apache Spark プラットフォームで大規模な集中型機械学習ワークフローを実行する場合に適しています。 | 実験用機械学習、または小規模な実験とワークフローでは過剰です。 Azure Databricks の追加コストが発生します。 [価格の詳細](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。 |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | クラウドベースのノートブック VM に似ていますが (Python と SDK はプレインストールされています)、その他の一般的なデータ サイエンスおよび機械学習ツールがプレインストールされています。 簡単にスケーリングし、他のカスタム ツールやワークフローと組み合わせることができます。 | クラウドベースのクラウドベース VM と比較して、作業の開始に時間がかかります。 |
-| [Azure Notebooks](#aznotebooks) | Python と SDK がプレインストールされた、無料かつ軽量の使用開始エクスペリエンスです。 | クラウドベースのノートブック VM と比較して、使用可能な VM のパフォーマンスは低くなります。 ワークスペースや他のリソースから分離されます。 |
+
 
 この記事では、次のツールに関する追加の使用ヒントについても説明します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "70278825"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。 独自の[クラウドベースのノートブック サーバー](#notebookvm)、[DSVM](#dsvm)、[Azure Databricks](#aml-databricks)、または [Azure Notebooks](#aznotebooks) を使い始めるために必要なものは、ワークスペースだけです。
+Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。 独自の[クラウドベースのノートブック サーバー](#notebookvm)、[DSVM](#dsvm)、または [Azure Databricks](#aml-databricks) を使い始めるために必要なものは、ワークスペースだけです。
 
 [ローカル コンピューター](#local)、[Jupyter Notebook サーバー](#jupyter)、または [Visual Studio Code](#vscode) 用の SDK 環境をインストールするには、以下も必要です。
 
@@ -352,17 +352,6 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
   サンプル ノートブックがたくさんありますが、**Azure Databricks で動作するのは[これらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)のみです。**
 
 + [トレーニング コンピューティングとして Databricks を使用してパイプラインを作成](how-to-create-your-first-pipeline.md)する方法を確認します。
-
-## <a id="aznotebooks"></a>Azure Notebooks
-
-[Azure Notebooks](https://notebooks.azure.com) (プレビュー) は、Azure クラウドにおける対話型開発環境です。 これは、Azure Machine Learning の開発を開始するのに簡単な方法です。
-
-* Azure Machine Learning SDK は既にインストールされています。
-* Azure portal で Azure Machine Learning service ワークスペースを作成した後、ボタンをクリックすると、ワークスペースを操作する Azure Notebook 環境が自動的に構成されます。
-
-Azure Notebooks を使い始めるには、[Azure portal](https://portal.azure.com) を使用します。  ワークスペースを開き、 **[概要]** セクションの **[Azure Notebooks で開始する]** を選択します。
-
-既定では、Azure Notebooks は、4 GB のメモリと 1 GB のデータに制限されている無料のサービス レベルを使用します。 ただし、これらの制限は、Data Science Virtual Machine インスタンスを Azure Notebooks プロジェクトにアタッチすることで削除できます。 詳細については、[Azure Notebooks プロジェクトの管理と構成 - コンピューティング層](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
 
 ## <a id="workspace"></a>ワークスペース構成ファイルを作成する
 

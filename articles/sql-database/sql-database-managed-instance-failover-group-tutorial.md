@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 04802b8b25ca21cc0099874e5a9ea69748868f6e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103070"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103204"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>チュートリアル:SQL Database マネージド インスタンスをフェールオーバー グループに追加する
 
@@ -31,7 +31,7 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
   > [!NOTE]
   > - このチュートリアルを実行するときは、[マネージド インスタンスのフェールオーバー グループを設定するための前提条件](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)を使用して、リソースを構成するようにしてください。 
   > - マネージド インスタンスの作成にはかなりの時間がかかることがあります。 そのため、このチュートリアルの完了には数時間かかることがあります。 プロビジョニング時間の詳細については、「[マネージド インスタンスの管理操作](sql-database-managed-instance.md#managed-instance-management-operations)」を参照してください。 
-  > - マネージド インスタンスでのフェールオーバー グループの使用は、現在プレビュー段階です。 
+
 
 ## <a name="prerequisites"></a>前提条件
 

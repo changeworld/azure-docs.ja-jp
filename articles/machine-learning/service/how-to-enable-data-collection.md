@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227946"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860522"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
@@ -144,6 +144,8 @@ ms.locfileid: "68227946"
 
   1. **[更新]** をクリックして変更を適用します。
 
+  これらの設定には、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) でアクセスすることもできます。
+
 + オプション 2 - Python を使用してデータ収集を無効にする:
 
   ```python 
@@ -172,7 +174,7 @@ BLOB のデータにすばやくアクセスするには:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Power BI でのモデル データの分析
 
-1. [Power BI Desktop](https://www.powerbi.com) をダウンロードして開きます
+1. [Power BI Desktop](https://www.powerbi.com) をダウンロードして開きます。
 
 1. **[データを取得]** を選択し、[**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources) をクリックします。
 

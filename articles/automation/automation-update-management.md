@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f23a1f8e60567e1c2ed89b27f0eb2bab4ca5912
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061815"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743837"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -75,8 +75,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
-|Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2008 R2 (RTM および SP1 Standard)|.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします  ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2008 R2 (RTM および SP1 Standard)|**更新の評価**: サポートされています<br><br>**修正プログラムの適用**: Hybrid Runbook Worker が必要です。 「[Hybrid Runbook Worker の要件](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)」を参照してください|
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux での分類の更新](#linux-2)に関するページを参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
@@ -138,7 +137,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 * 更新プログラムの展開 MP
 
 > [!NOTE]
-> ワークスペースに関連付けられるように管理グループ レベルでエージェントが構成されている Operations Manager 1807 管理グループがある場合、それらを表示するための現在の回避策としては、**Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** ルールで **IsAutoRegistrationEnabled** を **True** にオーバーライドします。
+> ワークスペースに関連付けられるように管理グループ レベルでエージェントが構成されている Operations Manager 1807 または 2019 管理グループがある場合、それらを表示するための現在の回避策としては、**Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** ルールで **IsAutoRegistrationEnabled** を **True** にオーバーライドします。
 
 ソリューション管理パックの更新方法の詳細については、[Azure Monitor ログへの Operations Manager の接続](../azure-monitor/platform/om-agents.md)に関するページを参照してください。
 
@@ -608,7 +607,7 @@ Update Management では、Azure または Azure 以外の VM の動的グルー
 
 * Subscription
 * リソース グループ
-* Locations
+* 場所
 * Tags
 
 ![グループを選択する](./media/automation-update-management/select-groups.png)

@@ -8,12 +8,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: b601f37ad7e0f0071b38a97c84cf25d57ed11ee1
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 03c7a139be59df7d80fa6d6eb0ec7219fe4d31d3
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639701"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744544"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
 
@@ -30,6 +30,7 @@ ms.locfileid: "68639701"
 |クライアント コンピューター (64 ビットおよび 32 ビット)|Windows 8|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y|Y|ボリューム、共有、フォルダー、ファイル、重複除去されたボリューム<br /><br />保護されるボリュームは NTFS である必要があります。 FAT および FAT32 はサポートされていません。<br /><br />ボリュームは少なくとも 1 GB である必要があります。 Azure Backup Server はボリューム シャドウ コピー サービス (VSS) を使用してデータ スナップショットを取得し、そのスナップショットはボリュームが少なくとも 1 GB である場合にのみ機能します。|
 |クライアント コンピューター (64 ビットおよび 32 ビット)|Windows 7|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|ボリューム、共有、フォルダー、ファイル、重複除去されたボリューム<br /><br />保護されるボリュームは NTFS である必要があります。 FAT および FAT32 はサポートされていません。<br /><br />ボリュームは少なくとも 1 GB である必要があります。 Azure Backup Server はボリューム シャドウ コピー サービス (VSS) を使用してデータ スナップショットを取得し、そのスナップショットはボリュームが少なくとも 1 GB である場合にのみ機能します。|
 |クライアント コンピューター (64 ビットおよび 32 ビット)|Windows 7|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y|Y|ボリューム、共有、フォルダー、ファイル、重複除去されたボリューム<br /><br />保護されるボリュームは NTFS である必要があります。 FAT および FAT32 はサポートされていません。<br /><br />ボリュームは少なくとも 1 GB である必要があります。 Azure Backup Server はボリューム シャドウ コピー サービス (VSS) を使用してデータ スナップショットを取得し、そのスナップショットはボリュームが少なくとも 1 GB である場合にのみ機能します。|
+|サーバー (64 ビット)|Windows Server 2019|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /><br />VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /><br />物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|Y<br /><br />Not Nano サーバー|N<br /><br />Not Nano サーバー|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル)、重複除去されたボリューム|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2016|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /><br />VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /><br />物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|Y<br /><br />Not Nano サーバー|Y<br /><br />Not Nano サーバー|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル)、重複除去されたボリューム|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2012 R2 - Datacenter および Standard|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|Y|Y|ボリューム、共有、フォルダー、ファイル<br /><br />Windows Server 2012 の重複除去されたボリュームを保護するには、Azure Backup Server が少なくとも Windows Server 2012 R2 上で実行されている必要があります。|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2012 R2 - Datacenter および Standard|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|Y|Y|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル)<br /><br />Windows Server 2012 の重複除去されたボリュームを保護するには、Azure Backup Server が Windows Server 2012 または 2012 R2 で実行されている必要があります。|
@@ -73,6 +74,7 @@ ms.locfileid: "68639701"
 |SharePoint|SharePoint 2010|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|Y|Y|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー|
 |SharePoint|SharePoint 2010|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|Y|Y|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー|
 |SharePoint|SharePoint 2010|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|Y|Y|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー|
+|Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2019|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|N|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2016|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2012 R2 - Datacenter および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2012 - Datacenter および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|

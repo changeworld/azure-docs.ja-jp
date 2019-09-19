@@ -44,7 +44,7 @@
           href: sql-database-import.md
         - name: マネージド インスタンスにデータベースのバックアップを復元する
           href: sql-database-managed-instance-get-started-restore.md
-    - name: Query
+    - name: クエリ
       href: sql-database-connect-query.md
       items:
         - name: SSMS
@@ -164,7 +164,7 @@
           href: sql-database-reserved-capacity.md
         - name: Premium RS サービス レベルから移行する
           href: sql-database-service-tiers-prs.md
-    - name: コンピューティングとストレージ
+    - name: サービス階層
       items:
         - name: 概要
           href: sql-database-service-tiers-general-purpose-business-critical.md
@@ -302,6 +302,8 @@
                   href: sql-database-vnet-service-endpoint-rule-overview.md
                 - name: 仮想ネットワーク エンドポイント - PowerShell
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Private Link
+              href: sql-database-private-endpoint-overview.md
         - name: アクセス制御
           items:
             - name: アクセス制御

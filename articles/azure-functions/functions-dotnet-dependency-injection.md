@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/28/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e31f3dc166177ce36289b97d85d90a9582c9cae5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377376"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375996"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -71,7 +71,7 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>挿入された依存関係を使用する
 
-ASP.NET Core では、コンストラクターの挿入を使用して、依存関係を関数で使用できるようにします。 次のサンプルでは、`IMyService` と `HttpClient` の依存関係が、HTTP によってトリガーされる関数にどのように挿入されるかを示します。
+ASP.NET Core では、コンストラクターの挿入を使用して、依存関係を関数で使用できるようにします。 次のサンプルでは、`IMyService` と `HttpClient` の依存関係が、HTTP によってトリガーされる関数にどのように挿入されるかを示します。 
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace MyNamespace
 }
 ```
 
-コンストラクターの挿入の使用は、依存関係の注入を利用する場合には静的関数を使用すべきでないことを意味します。
+コンストラクターの挿入の使用は、依存関係の注入を利用する場合には静的関数を使用すべきでないことを意味します。 Cosmos クライアントについては、[こちら](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/CodeSamples/AzureFunctions/AzureFunctionsCosmosClient.cs)を参照してください。
 
 ## <a name="service-lifetimes"></a>サービスの有効期間
 

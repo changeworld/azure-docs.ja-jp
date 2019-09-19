@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 7885b03e9f92fc8e8c5b2c78049760cbed8d4dc7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703975"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885377"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
@@ -178,7 +178,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合は、用意されているスクリプトのいずれかを選択します。 |
     | 名前 |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
-    | Head/Worker/ZooKeeper |スクリプトを実行するノードを指定します: **[Head]** 、 **[Worker]** 、または **[ZooKeeper]** 。 |
+    | Head/Worker/ZooKeeper |スクリプトを実行するノードを指定します: **[ヘッド]** 、 **[ワーカー]** 、または **[ZooKeeper]** 。 |
     | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
 
     スケーリング操作中にスクリプトが確実に適用されるようにするには、 __[スクリプト操作を保持する]__ エントリを使用します。
@@ -260,7 +260,7 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合、提供されているスクリプトを選択します。 |
     | 名前 |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
-    | Head/Worker/Zookeeper |スクリプトを実行するノードを指定します: **[Head]** 、 **[Worker]** 、または **[ZooKeeper]** 。 |
+    | ヘッド/ワーカー/Zookeeper |スクリプトを実行するノードを指定します: **[ヘッド]** 、 **[ワーカー]** 、または **[ZooKeeper]** 。 |
     | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
 
     スケーリング操作中にスクリプトが確実に適用されるようにするには、 __[スクリプト操作を保持する]__ エントリを使用します。
@@ -356,7 +356,7 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 6. スクリプト アクション セクションのエントリの右側にある省略記号 **[...]** を選択して、アクションを実行することもできます。
 
-    ![スクリプト アクション、省略記号](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
+    ![スクリプト アクション、省略記号](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -442,7 +442,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 3. **[Operations]** 列で **run\_customscriptaction** エントリを探します。 これらのエントリは、スクリプト アクションの実行時に作成されます。
 
-    ![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+    ![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     **STDOUT** と **STDERR** の出力を表示するには、**run\customscriptaction** エントリを選択してリンクをたどります。 この出力結果はスクリプトの実行時に生成され、有益な情報が含まれていることがあります。
 
@@ -452,7 +452,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 * ストレージ ログは、 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`にあります。
 
-    ![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+    ![スクリプト アクション ログ](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     このディレクトリの下で、**ヘッド ノード**、**ワーカー ノード**、および **zookeeper ノード**ごとにログが整理されています。 次の例を参照してください。
 

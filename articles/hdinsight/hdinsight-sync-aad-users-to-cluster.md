@@ -1,19 +1,19 @@
 ---
 title: Azure Active Directory ユーザーをクラスターに同期する - Azure HDInsight
-description: Azure Active Directory の認証されたユーザーをクラスターに同期します。
+description: Azure Active Directory の認証されたユーザーを HDInsight クラスターに同期します。
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688544"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879337"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
@@ -47,7 +47,7 @@ ms.locfileid: "64688544"
 
 1. [SSH でクラスターに接続します](hdinsight-hadoop-linux-use-ssh-unix.md)。 Azure Portal のクラスターの概要ペインから、 **[Secure Shell (SSH)]** ボタンを選択します。
 
-    ![[Secure Shell (SSH)]](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ![[Secure Shell (SSH)]](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
 2. 表示されている `ssh` コマンドをコピーし、それを SSH クライアントに貼り付けます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
 
@@ -139,7 +139,7 @@ ms.locfileid: "64688544"
 
 3. 新しいユーザーが [ユーザー] テーブル内に表示されます。 [種類] は `Local` ではなく、`LDAP` に設定されています。
 
-    ![[ユーザー] ページ](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![[ユーザー] ページ](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>新しいユーザーとして Ambari にログインする
 

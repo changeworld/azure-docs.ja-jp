@@ -9,52 +9,53 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: c7db2b4d49e3b9297c32d2e11ffe7c7702c17544
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: d0b2c9c7450b8a44ca93a9d9fa8770b7ab3d9282
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274677"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743844"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal を使用して Cognitive Services リソースを作成する
 
-このクイック スタートでは、Azure portal を使用して Azure Cognitive Services リソースを作成します。 Cognitive Services リソースが正常に作成されると、エンドポイントと、アプリケーションを認証するために使用できるキーが取得されます。
+このクイックスタートを使用して、Azure Cognitive Services の使用を開始します。 Azure portal で Cognitive Services リソースを作成すると、アプリケーションの認証を行うためのエンドポイントとキーが得られます。
+
+
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 * 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)。
 
-[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
-
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>新しい Azure Cognitive Services リソースを作成する
 
-Cognitive Services リソースを作成する前に、リソースを格納するための Azure リソース グループを用意する必要があります。 新しいリソースを作成するときに、新しいリソース グループを作成するか、既存のものを使用するかを選択できます。 この記事では、新しいリソース グループを作成する方法を示します。
-
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[+リソースの作成]** をクリックします。
-
-    ![Cognitive Services APIs の選択](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
-
-2. 既に説明したように、Cognitive Services リソースは 2 つの方法で作成できます (マルチサービス リソースを使用するか、単一サービス リソースを使用します)。
+1. リソースを作成します。
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[マルチサービス リソース](#tab/multiservice)
-
-    マルチサービス リソースを作成するには、検索バーに「**Cognitive Services**」と入力します。
-
-    ![Cognitive Services を検索する](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
-
-    [Cognitive Services] ページで、 **[作成]** を選択します。
-
-    ![Cognitive Services アカウントを作成する](media/cognitive-services-apis-create-account/azurecogservsearchmulti-2.png)
-
+    
+    マルチサービス リソースには、ポータルで **Cognitive Services** という名前が付けられます。 [Cognitive Services リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)。
+    
+    現在、マルチサービス リソースでは次のコグニティブ サービスにアクセスできます。
+    
+    |                  |                                                      |                    |                               |                  |
+    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
+    | Computer Vision  | Content Moderator                                    | Face               | Language Understanding (LUIS) | Text Analytics   |
+    | Translator Text  | Bing Search v7 <br>(Web、画像、ニュース、ビデオ、ビジュアル) | Bing Custom Search | Bing Entity Search            | Bing Autosuggest |
+    | Bing Spell Check |                                                      |                    |                               |                  |
+    
     #### <a name="single-service-resourcetabsingleservice"></a>[単一サービス リソース](#tab/singleservice)
 
-    使用できるすべての Cognitive Services を表示するには、**Azure Marketplace** の **[AI + 機械学習]** を選択します。 関心があるサービスが表示されない場合は、 **[すべて表示]** をクリックし、**Cognitive Services** までスクロールします。 Cognitive Services のカタログ全体を表示するには、 **[詳細]** をクリックします。
+    以下のリンクを使用して、利用可能なコグニティブ サービスのリソースを作成します。
 
-    関心のあるサービスを選択した後、 **[作成]** をクリックします。
-    
-    ![Cognitive Services APIs の選択](media/cognitive-services-apis-create-account/azureMarketplace.png)
-
+    | 視覚                      | 音声                  | 言語                          | 決定             | Search                 |
+    |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
+    | [Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Speech Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [イマーシブ リーダー](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaly Detector](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
+    | [Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Custom Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Entity Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Bing Spell Check](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
+    |           |                         | [Translator Text](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Autosuggest](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
+
 3. **[作成]** ページで、次の情報を指定します。
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[マルチサービス リソース](#tab/multiservice)
@@ -89,32 +90,23 @@ Cognitive Services リソースを作成する前に、リソースを格納す�
 
 ## <a name="get-the-keys-for-your-resource"></a>リソースのキーを取得する
 
-リソースが正常に作成されると、画面の右上にポップアップ通知が表示されます。 通知の **[リソースに移動]** をクリックして、作成したコグニティブ サービス リソースを確認します。 
+1. リソースが正常にデプロイされたら、 **[次の手順]** の下にある **[リソースに移動]** をクリックします。
 
-![コグニティブ サービス リソースに移動](media/cognitive-services-apis-create-account/cog-serv-go-to-resource.png)
+    ![Cognitive Services を検索する](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
-開かれた [クイックスタート] ウィンドウで、エンドポイントとキーにアクセスできます。
+2. 開かれたクイックスタート ウィンドウで、キーとエンドポイントにアクセスできます。
 
-![キーとエンドポイントを取得する](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
+    ![キーとエンドポイントを取得する](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
-
-## <a name="pricing-tiers-and-billing"></a>価格レベルと請求
-
-価格レベル (および請求される金額) は、認証情報を使用して送信するトランザクションの数に基づきます。 各価格レベルにより、以下が指定されます。
-* 1 秒あたりに許可されるトランザクションの最大数 (TPS)。
-* 価格レベル内で有効にされるサービス機能。
-* 事前に定義された数のトランザクションのコスト。 この量を超えると、サービスの「[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)」で指定されている追加料金が発生します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのグループに含まれている他のリソースも削除されます。
 
-Azure Portal を使用してリソース グループを削除するには:
-
 1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 **[リソース グループ]** を選択して、リソース グループの一覧を表示します。
-2. 削除するリソース グループを見つけて、一覧の右側にある [詳細] ボタン (...) を右クリックします。
-3. **[リソース グループの削除]** を選択し、確認します。
+2. 削除するリソースが含まれているリソース グループを見つけます
+3. リソース グループの一覧を右クリックします。 **[リソース グループの削除]** を選択し、確認します。
 
 ## <a name="see-also"></a>関連項目
 

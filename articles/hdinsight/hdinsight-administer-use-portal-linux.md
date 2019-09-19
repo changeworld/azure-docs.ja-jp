@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
-description: Azure Portal を使用して HDInsight クラスターを作成および管理する方法について説明します。
+description: Azure portal を使用して Azure HDInsight クラスターを作成および管理する方法について説明します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: c745fceca5efa66b1b23661001d93ddb287fe37b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 8bb6ca0483a7bc0a5af63a1fae7e5e5a5415abba
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460633"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810313"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -107,7 +107,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 |作成日|クラスターがデプロイされた日付。|
 |オペレーティング システム|**[Windows]** または **[Linux]** 。|
 |TYPE|Hadoop、HBase、Storm、Spark。|
-|バージョン|「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](hdinsight-component-versioning.md)」をご覧ください。|
+|Version|「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](hdinsight-component-versioning.md)」をご覧ください。|
 |サブスクリプション|サブスクリプションの名前。|
 |既定のデータ ソース|クラスターの既定のファイル システムです。|
 |ワーカー ノードのサイズ|worker ノードの選択されている VM のサイズ。|
@@ -214,7 +214,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
    | フィールド | 値 |
    | --- | --- |
    | スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
-   | Name |"SSH パスワードの変更" |
+   | 名前 |"SSH パスワードの変更" |
    | Bash スクリプト URI |changepassword.sh ファイルへの URI |
    | ノードの種類:(ヘッド、worker、Nimbus、Supervisor、Zookeeper など) |表示するすべてのノード型に ✓ |
    | parameters |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを 1 つ入れる必要があります。 |

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: cbaaed3fff99778bfab1feeacdab02bf8245a85a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 031879ac1d0d2dd1148c0c37ee72c60d093f8a7d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714709"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809372"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する
 
@@ -81,15 +81,15 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
     - 特定のワーカー ノードからのエラー メッセージを表示するには:
 
-        ![特定のエラーの検索結果](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-refined.png "特定のエラーの検索結果")
+        ![特定のエラーの検索結果 1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-refined.png "特定のエラーの検索結果 1")
 
     - 特定の時刻に発生したエラーを表示するには:
 
-        ![特定のエラーの検索結果](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-time.png "特定のエラーの検索結果")
+        ![特定のエラーの検索結果 2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-time.png "特定のエラーの検索結果 2")
 
 6. 特定のエラーを表示するには: **[[+] 詳細表示]** を選択すると、実際のエラー メッセージを確認できます。
 
-    ![特定のエラーの検索結果](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-arrived.png "特定のエラーの検索結果")
+    ![特定のエラーの検索結果 3](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-arrived.png "特定のエラーの検索結果 3")
 
 ## <a name="create-alerts-for-tracking-events"></a>イベント追跡用のアラートを作成する
 
@@ -105,11 +105,11 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 4. ページの先頭にある **[新しいアラート ルール]** を選択します。
 
-    ![クエリを入力してアラートを作成する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "クエリを入力してアラートを作成する")
+    ![クエリを入力してアラートを作成する 1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "クエリを入力してアラートを作成する 1")
 
 5. **[ルールの作成]** ウィンドウで、クエリとその他の情報を入力してアラートを作成し、 **[アラート ルールの作成]** を選択します。
 
-    ![クエリを入力してアラートを作成する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "クエリを入力してアラートを作成する")
+    ![クエリを入力してアラートを作成する 2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "クエリを入力してアラートを作成する 2")
 
 既存のアラートを編集または削除するには、次の手順を実行します。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: a7944b284a9c1c0424af54874554d05d49ad4b20
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806034"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860591"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Azure Machine Learning service でのコンピューティング ターゲットとは 
 
@@ -55,7 +55,7 @@ Azure Machine Learning コンピューティングをトレーニングやバッ
 * 自動でのクラスター管理とジョブ スケジューリング 
 * CPU と GPU の両方のリソースをサポートします
 
-SDK または CLI を使用して、Azure portal で Azure Machine Learning コンピューティング インスタンスを作成できます。 作成されると、他の種類のコンピューティング ターゲットとは異なり、それが自動的にワークスペースの一部になります。
+SDK または CLI を使用して、Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で Azure Machine Learning コンピューティング インスタンスを作成できます。 作成されると、他の種類のコンピューティング ターゲットとは異なり、それが自動的にワークスペースの一部になります。
 
 ## <a name="unmanaged-compute"></a>アンマネージド コンピューティング
 
