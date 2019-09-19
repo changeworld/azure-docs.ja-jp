@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 154848c33960cb78b10c58e7a39ddec669d4fae0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872988"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744591"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する
 Azure Monitor for containers を使用している場合、パフォーマンスのグラフと正常性状態を使用して、2 つの観点から実際の Azure Kubernetes Service (AKS) クラスターのワークロードを監視できます。 AKS クラスターから直接監視するか、Azure Monitor からサブスクリプション内のすべての AKS クラスターを監視することができます。 Azure Container Instances の表示は、特定の AKS クラスターを監視するときにも可能です。
@@ -37,7 +37,7 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 - ポッド環境のみが監視され、Docker 環境は対象外です。
 - プレビュー リリースでは、最大 30 の Windows Server コンテナーがサポートされます。 この制限は、Linux コンテナーには適用されません。 
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com) にサインインします。 
 
@@ -118,18 +118,18 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 
 メトリックス エクスプローラーでは、Azure Monitor for containers からのノードとポッドの使用率のメトリックを集計して表示できます。 次の表は、メトリックのグラフを使用してコンテナーのメトリックを視覚化する方法の理解に役立つ詳細情報をまとめたものです。
 
-|名前空間 | メトリック |
-|----------|--------|
+|名前空間 | メトリック | 説明 | 
+|----------|--------|-------------|
 | insights.container/nodes | |
-| | cpuUsageMillicores |
-| | cpuUsagePercentage |
-| | memoryRssBytes |
-| | memoryRssPercentage |
-| | memoryWorkingSetBytes |
-| | memoryWorkingSetPercentage |
-| | nodesCount |
+| | cpuUsageMillicores | クラスター全体で集計された CPU 使用率の測定値。 これは、CPU コアを 1,000 ユニット (ミリ = 1,000) に分割したものです。 多くのアプリケーションによって 1 つのコアが使用されている可能性があるコンテナーで、コアの使用状況を特定するために使用されます。| 
+| | cpuUsagePercentage | クラスター全体で集計された平均 CPU 使用率の測定値 (%)。|
+| | memoryRssBytes | 使用中のコンテナー RSS メモリ (バイト数)。| 
+| | memoryRssPercentage | 使用中のコンテナー RSS メモリ (%)。|
+| | memoryWorkingSetBytes | 使用中のコンテナーのワーキングセット メモリ。| 
+| | memoryWorkingSetPercentage | 使用中のコンテナーのワーキングセット メモリ (%)。 | 
+| | nodesCount | Kubernetes からのノードの数。|
 | insights.container/pods | |
-| | PodCount |
+| | PodCount | Kubernetes からのポッドの数。|
 
 メトリックを[分割](../platform/metrics-charts.md#apply-splitting-to-a-chart)してディメンションごとに表示したり、セグメント間の比較を視覚化したりできます。 ノードの場合は、"*ホスト*" ディメンションでグラフをセグメント化できます。 ポッドの場合は、次のディメンションでセグメント化できます。
 
@@ -170,7 +170,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 ページ上部のコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認します。 メモリ使用率を確認するには、 **[メトリック]** ドロップダウン リストで **[メモリ RSS]** または **[メモリ ワーキング セット]** を選択します。 **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**Min&nbsp;%** の値が、未定義または表示できない値を示す数値データ型である、*NaN&nbsp;%* として示されます。
 
-**メモリ ワーキング セット**は、含まれている常駐メモリと仮想メモリ (キャッシュ) の両方を示し、アプリケーションが使用している合計になります。 **メモリ RSS** は、メイン メモリだけを示し、常駐メモリになります。 このメトリックは、使用可能なメモリの実際の容量を示します。
+**メモリ ワーキング セット**は、含まれている常駐メモリと仮想メモリ (キャッシュ) の両方を示し、アプリケーションが使用している合計になります。 **メモリ RSS** は、メイン メモリ (つまり常駐メモリ) だけを示します。 このメトリックは、使用可能なメモリの実際の容量を示します。
 
 ![コンテナー ノード パフォーマンス ビュー](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 

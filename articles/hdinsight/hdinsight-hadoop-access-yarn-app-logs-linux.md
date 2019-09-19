@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0c5ecfba97c61288d08681006645eab0bdd23f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b230f91b9d6b169b89b125bdd0394c2c7ecd96f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059461"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879865"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする
 
@@ -42,7 +42,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 このパスで、`user` はアプリケーションを開始したユーザーの名前です。 `applicationId` は、YARN RM からアプリケーションに割り当てられた一意の識別子です。
 
-集計されたログは、コンテナーでインデックスが作成され、[TFile][T-file] に[バイナリ形式][binary-format]で書かれているので、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
+集計されたログは、コンテナーによってインデックスが作成される[バイナリ形式][binary-format]の [TFile][T-file] で書かれているため、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
 
 ## <a name="yarn-cli-tools"></a>YARN CLI ツール
 
@@ -62,10 +62,11 @@ YARN ResourceManager UI はクラスターのヘッド ノードで実行され�
 1. ご利用の Web ブラウザーで、 https://CLUSTERNAME.azurehdinsight.net に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 2. 左側のサービスの一覧で、 **[YARN]** を選択します。
 
-    ![選択された YARN サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
+    ![選択された YARN サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+
 3. **[クイック リンク]** ボックスの一覧で、クラスター ヘッドノードのいずれかを選択し、 **[ResourceManager Log]** を選択します。
 
-    ![YARN クイック リンク](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnquicklinks.png)
+    ![YARN クイック リンク](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
     YARN のログへのリンクの一覧が表示されます。
 

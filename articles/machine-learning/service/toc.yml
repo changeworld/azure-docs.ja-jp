@@ -152,6 +152,9 @@
         - name: データセットを追加および登録する
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: データセットを使用したトレーニング
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: モデルをトレーニングする
       items:
         - name: トレーニング環境をセットアップする

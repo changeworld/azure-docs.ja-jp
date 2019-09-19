@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677985"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860406"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Azure Machine Learning service 用のビジュアル インターフェイスとは 
 
@@ -81,7 +81,7 @@ Azure Machine Learning service 用のビジュアル インターフェイス (�
 | Azure Machine Learning コンピューティング | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-コンピューティング先は、自分の Machine Learning [ワークスペース](concept-workspace.md)に接続されています。 [Azure portal](https://portal.azure.com) で自分のワークスペースのコンピューティング先を管理します。
+コンピューティング先は、自分の Machine Learning [ワークスペース](concept-workspace.md)に接続されています。 [Azure portal](https://portal.azure.com) または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で、自分のワークスペースのコンピューティング先を管理します。
 
 ## <a name="deployment"></a>Deployment
 

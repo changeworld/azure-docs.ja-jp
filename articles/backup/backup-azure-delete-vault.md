@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/10/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3d6d374b6e516180ec488fe4de1317a3c99a7f7c
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a49449f799696ce6962afea6bdc212f658c660bd
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050118"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860370"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -65,7 +65,7 @@ Azure への MABS (Microsoft Azure Backup Server) または DPM (System Center D
 
          ![[バックアップ データの削除] ウィンドウ。](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-5. **通知**アイコン ![新しい通知アイコン。](./media/backup-azure-delete-vault/messages.png) を確認します。 プロセスが完了すると、サービスによって次のメッセージが表示されます。*バックアップを停止し、"* バックアップ アイテム *" のバックアップ データを削除しています*。 *操作は正常に完了しました*。
+5. 次の **[通知]** アイコンを確認します: ![[通知] アイコン。](./media/backup-azure-delete-vault/messages.png) プロセスが完了すると、サービスによって次のメッセージが表示されます。*バックアップを停止し、"* バックアップ アイテム *" のバックアップ データを削除しています*。 *操作は正常に完了しました*。
 6. **[バックアップ アイテム]** メニューで **[更新]** を選択して、バックアップ アイテムが削除されたことを確認します。
 
       ![バックアップ アイテムの削除に関するページ。](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -97,8 +97,6 @@ Azure への MABS (Microsoft Azure Backup Server) または DPM (System Center D
     >- バックアップ アイテムが存在しない場合は、同意のチェック ボックスで削除が求められます。
 
 4. 同意のチェック ボックスをオンにして、 **[削除]** を選択します。
-
-
 
 
 5. **通知**アイコン ![バックアップデータの削除](./media/backup-azure-delete-vault/messages.png) を確認します。 操作が完了すると、次のメッセージが表示されます。"*バックアップを停止し、"バックアップ アイテム" のバックアップ データを削除しています。* " *操作は正常に完了しました*。
@@ -175,6 +173,148 @@ MABS 管理コンソールからバックアップ アイテムを削除する�
 
 4. コンテナーを削除することを確認するために、 **[はい]** を選択します。 コンテナーが削除されます。 ポータルが **[新規作成]** サービス メニューに戻ります。
 
+## <a name="delete-the-recovery-services-vault-by-using-powershell"></a>PowerShell を使用して Recovery Services コンテナーを削除する
+
+最初に「 **[開始する前に](#before-you-start)** 」セクションを読み、依存関係とコンテナーの削除プロセスを理解してください。
+
+保護を停止してバックアップ データを削除するには:
+
+- Azure VM バックアップで SQL を使用しており、SQL インスタンスの自動保護を有効にしている場合は、先に自動保護を無効にします。
+
+    ```PowerShell
+        Disable-AzRecoveryServicesBackupAutoProtection 
+           [-InputItem] <ProtectableItemBase> 
+           [-BackupManagementType] <BackupManagementType> 
+           [-WorkloadType] <WorkloadType> 
+           [-PassThru] 
+           [-VaultId <String>] 
+           [-DefaultProfile <IAzureContextContainer>] 
+           [-WhatIf] 
+           [-Confirm] 
+           [<CommonParameters>] 
+    ```
+
+  Azure Backup で保護された項目の保護を無効にする方法について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0)してください 
+
+- クラウド内のバックアップで保護されているすべての項目の保護を停止し、データを削除します (例: laaS VM、Azure ファイル共有など)。
+
+    ```PowerShell
+       Disable-AzRecoveryServicesBackupProtection 
+       [-Item] <ItemBase> 
+       [-RemoveRecoveryPoints] 
+       [-Force] 
+       [-VaultId <String>] 
+       [-DefaultProfile <IAzureContextContainer>] 
+       [-WhatIf] 
+       [-Confirm] 
+       [<CommonParameters>] 
+    ```
+    Backup で保護された項目の保護の無効化について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) してください。 
+
+- Azure をバックアップ先とする Azure Backup エージェント (MARS) を使用して保護されているオンプレミスのファイルとフォルダーの場合は、次の PowerShell コマンドを使用して、各 MARS PowerShell モジュールからバックアップ データを削除します。
+
+    ```
+    Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
+    ```
+
+    その後、次のプロンプトが表示されます。
+     
+    *Microsoft Azure Backup このバックアップ ポリシーを削除してよろしいですか? 削除されたバックアップ データは 14 日間保持されます。14 日が経過すると、バックアップ データが完全に削除されます。<br/> [Y] はい [A] すべてはい [N] いいえ [L] すべていいえ [S] 中断 [?] ヘルプ (既定値は "Y"):*
+
+
+- MABS (Microsoft Azure Backup Server) または Azure への DPM (System Center Data Protection Manager) を使用して保護されているオンプレミスのマシンの場合は、次のコマンドを使用して、Azure 内にバックアップされたデータを削除します。
+
+    ```
+    Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin> 
+    ```
+
+    その後、次のプロンプトが表示されます。 
+         
+   *Microsoft Azure Backup  このバックアップ ポリシーを削除してよろしいですか? 削除されたバックアップ データは 14 日間保持されます。14 日が経過すると、バックアップ データが完全に削除されます。<br/> [Y] はい [A] すべてはい [N] いいえ [L] すべていいえ [S] 中断 [?] ヘルプ (既定値は "Y"):*
+
+バックアップされたデータを削除した後、オンプレミスのすべてのコンテナーと管理サーバーの登録を解除します。 
+
+- Azure をバックアップ先とする Azure Backup エージェント (MARS) を使用して保護されているオンプレミスのファイルとフォルダーの場合:
+
+    ```PowerShell
+    Unregister-AzRecoveryServicesBackupContainer 
+              [-Container] <ContainerBase> 
+              [-PassThru] 
+              [-VaultId <String>] 
+              [-DefaultProfile <IAzureContextContainer>] 
+              [-WhatIf] 
+              [-Confirm] 
+              [<CommonParameters>] 
+    ```
+    ボールトからの Windows Server またはその他のコンテナーの登録解除について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0)してください。 
+
+- MABS (Microsoft Azure Backup Server) または Azure への DPM (System Center Data Protection Manager) を使用して保護されたオンプレミスのマシンの場合:
+
+    ```PowerShell
+        Unregister-AzRecoveryServicesBackupManagementServer
+          [-AzureRmBackupManagementServer] <BackupEngineBase>
+          [-PassThru]
+          [-VaultId <String>]
+          [-DefaultProfile <IAzureContextContainer>]
+          [-WhatIf]
+          [-Confirm]
+          [<CommonParameters>]
+    ```
+
+    ボールトからのバックアップ管理コンテナーの登録解除について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0)してください。
+
+バックアップされたデータを完全に削除し、すべてのコンテナーの登録を解除してから、ボールトの削除に進みます。 
+
+Recovery Services コンテナーを削除するには: 
+
+   ```PowerShell
+       Remove-AzRecoveryServicesVault 
+      -Vault <ARSVault> 
+      [-DefaultProfile <IAzureContextContainer>] 
+      [-WhatIf] 
+      [-Confirm] 
+      [<CommonParameters>]        
+   ```
+
+Recovery Services コンテナーの削除について、[詳細を学習](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)してください。 
+
+## <a name="delete-the-recovery-services-vault-by-using-cli"></a>CLI を使用して Recovery Services コンテナーを削除する
+
+最初に「 **[開始する前に](#before-you-start)** 」セクションを読み、依存関係とコンテナーの削除プロセスを理解してください。
+
+> [!NOTE]
+> 現在、Azure Backup CLI は Azure VM のバックアップの管理のみをサポートしているため、ボールトを削除する次のコマンドは、ボールトに Azure VM のバックアップが含まれている場合にのみ機能します。 ボールトに Azure VM 以外の種類のバックアップ項目が含まれている場合、Azure Backup CLI を使用してボールトを削除することはできません。 
+
+既存の Recovery services コンテナーを削除するには、次の手順を実行します。 
+
+- 保護を停止してバックアップ データを削除するには 
+
+    ```CLI
+    az backup protection disable --container-name 
+                             --item-name 
+                             [--delete-backup-data {false, true}] 
+                             [--ids] 
+                             [--resource-group] 
+                             [--subscription] 
+                             [--vault-name] 
+                             [--yes] 
+    ```
+
+    詳細については、この [記事](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable.)を参照してください。 
+
+- 既存の Recovery Services コンテナーを削除します。 
+
+    ```CLI
+    az backup vault delete [--force] 
+                       [--ids] 
+                       [--name] 
+                       [--resource-group] 
+                       [--subscription] 
+                       [--yes] 
+    ```
+
+    詳細については、この [記事](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest)を参照してください 
+
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Recovery Services コンテナーを削除する
 
 Recovery Services コンテナーを削除するこのオプションは、すべての依存関係が削除されても "*コンテナーの削除エラー*" が引き続き発生する場合にのみ、お勧めします。 次のヒントのいずれかまたはすべてをお試しください。
@@ -182,8 +322,6 @@ Recovery Services コンテナーを削除するこのオプションは、す�
 - コンテナー メニューの **[基本]** ウィンドウから、バックアップ アイテム、バックアップ管理サーバー、レプリケートされたアイテムがどれも一覧に表示されていないことを確認します。 バックアップ アイテムがある場合は、「[開始する前に](#before-you-start)」セクションを参照してください。
 - [ポータルからのコンテナーの削除](#delete-the-recovery-services-vault)を再試行します。
 - 依存関係をすべて削除してもなお、"*コンテナーの削除エラー*" が発生する場合は、ARMClient ツールを使用して次の手順を実行します (注記の後に記載)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 1. [chocolatey.org](https://chocolatey.org/) にアクセスし、Chocolatey をダウンロードしてインストールします。 次に、次のコマンドを実行して ARMClient エージェントをインストールします。
 

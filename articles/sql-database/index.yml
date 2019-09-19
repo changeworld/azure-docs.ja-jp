@@ -73,7 +73,7 @@ sections:
       - type: list
         style: cards
         className: cardsM
-        columns: 3
+        columns: 2
         items:
           - href: /azure/sql-database/sql-database-single-index
             html: <p>SQL Database サーバーで管理されている単一データベースを、予測可能なパフォーマンスの単一データベースを必要とする SaaS アプリケーションやマイクロサービスに使用します。</p>
@@ -90,6 +90,11 @@ sections:
             image:
               src: media/index/i_mi.svg
             title: マネージド インスタンス
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: <p>マネージド インスタンス プールは、リソースを共有して迅速にスケーリングするマネージド インスタンスを複数デプロイするためのシンプルでコスト効率の高いソリューションとして使用します。</p>
+            image:
+              src: media/index/i_instancepool.png
+            title: インスタンス プール
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
@@ -128,6 +133,12 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
+          - title: インスタンス プールを作成する
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
+              - href: null
   - title: ステップバイステップのチュートリアルと学習教材
     items:
       - type: paragraph

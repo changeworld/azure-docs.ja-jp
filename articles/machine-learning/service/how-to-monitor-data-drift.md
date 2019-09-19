@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128278"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858699"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) にデプロイされたモデルのデータの誤差 (プレビュー) を検出する
 
@@ -36,7 +36,7 @@ Azure Machine Learning service では、AKS にデプロイされたモデルへ
 + データの誤差についてのアラートを電子メールで送信します。
 
 > [!Note]
-> このサービスは (プレビュー) で、構成オプションに制限されます。 詳細情報および更新情報については、[API ドキュメント](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)および[リリース ノート](azure-machine-learning-release-notes.md)を参照してください。 
+> このサービスは "プレビュー" であり、構成オプションに制限があります。 詳細情報および更新情報については、[API ドキュメント](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)および[リリース ノート](azure-machine-learning-release-notes.md)を参照してください。 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning service でデータの誤差が監視される仕組み
 
@@ -134,6 +134,7 @@ datadrift_contribution|誤差に寄与するフィーチャーの重要度。|
 * `RunDetails`[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用する。
 * 任意の `datadrift` 実行オブジェクト上で [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) 関数を使用する。
 * モデルについて Azure portal でメトリックを表示する。
+* [ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) の **[モデル]** セクションでメトリックを表示します。
 
 次の Python の例は、関連するデータの誤差のメトリックをプロットする方法を示しています。 返されたメトリックを使用して、カスタムの視覚化を作成できます。
 
@@ -158,15 +159,17 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-データの誤差の検出機能の構成は、Azure portal のモデルの詳細ページで確認できます。
+データの誤差の検出機能の構成は、Azure portal のモデルの詳細ページまたはワークスペースのランディング ページ (プレビュー) で確認できます。
 
 ![Azure portal のデータの誤差の構成](media/how-to-monitor-data-drift/drift_config.png)
 
 ## <a name="view-results-in-azure-portal"></a>Azure portal で結果を表示する
 
-[Azure portal](https://portal.azure.com) でワークスペースに結果を表示するには、モデル ページに移動します。 モデルの詳細タブに、データの誤差の構成が表示されます。 データの誤差のメトリックを視覚化する [Data Drift (Preview)]/(データの誤差 (プレビュー)/) タブが現在利用できます。 
+[Azure portal](https://portal.azure.com) でワークスペースに結果を表示するには、モデル ページに移動します。 モデルの詳細タブに、データの誤差の構成が表示されます。 データの誤差のメトリックを視覚化する [Data Drift (preview)]/(データの誤差 (プレビュー)/) タブを現在利用できます。 
 
 ![Azure portal のデータの誤差](media/how-to-monitor-data-drift/drift_ui.png)
+
+結果は、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) のモデルの詳細でも確認できます。
 
 ## <a name="receiving-drift-alerts"></a>誤差アラートを受け取る
 

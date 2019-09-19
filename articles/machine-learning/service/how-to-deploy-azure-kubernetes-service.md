@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278703"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858741"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -30,7 +30,7 @@ Azure Machine Learning service を使って Azure Kubernetes Service (AKS) 上�
 
 Azure Kubernetes Service にデプロイするときは、__ご利用のワークスペースに接続されている__ AKS クラスターにデプロイします。 AKS クラスターをワークスペースに接続するには、次の 2 つの方法があります。
 
-* Azure Machine Learning service SDK、Machine Learning CLI、または Azure portal を使って、AKS クラスターを作成します。 このプロセスにより、クラスターがワークスペースに自動的に接続されます。
+* Azure Machine Learning service SDK、Machine Learning CLI、[Azure portal](https://portal.azure.com)、または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) を使用して、AKS クラスターを作成します。 このプロセスにより、クラスターがワークスペースに自動的に接続されます。
 * 既存の AKS クラスターを Azure Machine Learning service のワークスペースにアタッチします。 Azure Machine Learning service SDK、Machine Learning CLI、または Azure portal を使って、クラスターをアタッチできます。
 
 > [!IMPORTANT]

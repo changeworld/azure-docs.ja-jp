@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 3c3205b64803ac4ee67997ef546ffd64c89f23b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5918cc3835d00536845a96ed81ef663867291e29
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624826"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858800"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -278,7 +278,7 @@ print(per_class_imp)
 
 ![モデル説明コンソール出力](./media/how-to-auto-train-remote/expl-print.png)
 
-また、ウィジェット UI、およびワークスペース内の Azure portal 上の Web UI を介して、機能の重要度を視覚化することもできます。
+また、ウィジェット UI、Azure portal 上の Web UI、または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) を介して、機能の重要度を視覚化することもできます。 
 
 ![モデル説明 UI](./media/how-to-auto-train-remote/model-exp.png)
 

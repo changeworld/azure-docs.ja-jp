@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 92bd53fd0426f896eff8dc63b690167db3ee700b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dc98a0ab47e269aa99f21d3f10952cdabe2c897f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884116"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736036"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>リージョン間の Azure VM のレプリケートに関するサポート マトリックス
 
@@ -53,6 +53,7 @@ ms.locfileid: "68884116"
 Azure Government    | 米国政府バージニア、US Gov アイオワ、米国政府アリゾナ、米国政府テキサス、米国防総省東部、米国防総省中部 
 ドイツ | ドイツ中部、ドイツ北東部
 中国 | 中国東部、中国北部、中国北部 2、中国東部 2
+国内のディザスター リカバリーのために予約されている、制限されたリージョン |ドイツ北部はドイツ中西部用に予約されており、スイス西部はスイス北部用に予約されており、フランス南部はフランス中部のお客様用に予約されています 
 
 >[!NOTE]
 >

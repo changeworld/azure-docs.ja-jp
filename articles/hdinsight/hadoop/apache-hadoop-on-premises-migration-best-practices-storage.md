@@ -1,21 +1,21 @@
 ---
-title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
+title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージ
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのストレージのベスト プラクティスについて説明します。
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2fd8dd09da8080e9eff60bcec7d595476243cd02
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691519"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736129"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
 この記事では、Azure HDInsight システムのデータ ストレージのための推奨事項について説明します。 これは、オンプレミスの Apache Hadoop システムを Azure HDInsight に移行する際に役立つベスト プラクティスを紹介するシリーズの一部です。
 

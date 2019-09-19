@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 270ebb6247e812d42ac84698d0073b41c639cb9a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2f3c3532637bef041ad1983b7573837dd0f29211
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011590"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860614"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps:Azure Machine Learning service でモデルを管理、デプロイ、および監視する
 
@@ -123,7 +123,7 @@ Azure Machine Learning service での ONNX の詳細については、「[ML モ
 
 ### <a name="analytics"></a>Analytics
 
-Microsoft Power BI は、データ分析への機械学習モデルの使用をサポートします。 詳しくは、「[Azure Machine Learning の Power BI への統合 (プレビュー)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)」をご覧ください。
+Microsoft Power BI は、データ分析への機械学習モデルの使用をサポートします。 詳細については、[Azure Machine Learning の Power BI への統合 (プレビュー)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)に関する記事をご覧ください。
 
 
 ## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>運用および ML 関連の問題について ML アプリケーションを監視する

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: d23d1881bb2d07d6287d648bb8ceb3e7930d547e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074465"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844573"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 を Azure IoT Hub に接続する
 
@@ -179,7 +179,7 @@ DevKit は、IoT ハブ上のデバイス固有のエンドポイントに接続
 
 5. Arduino 設定で VS Code を構成します。
 
-    Visual Studio Code で、 **[ファイル] > [優先設定] > [設定]** の順にクリックします。 次に、 **[...]** をクリックし、**settings.json を開きます**。
+    Visual Studio Code で、 **[ファイル] > [基本設定] > [設定]** (macOS では、 **[Code] > [基本設定] > [設定]** ) の順にクリックします。 次に、  *[設定]* ページの右上隅にある **[設定を開く (JSON)]** アイコンをクリックします。
 
     ![Azure IoT Tools のインストール](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 

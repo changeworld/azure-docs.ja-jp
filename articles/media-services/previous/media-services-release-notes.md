@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019308"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860354"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -29,7 +29,7 @@ ms.locfileid: "70019308"
 
 お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム]に投稿してください。 
 
-## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>現在の既知の問題
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>既知の問題
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services の全般的な問題
 
 | 問題 | 説明 |
@@ -41,6 +41,7 @@ ms.locfileid: "70019308"
 | パブリック REST バージョン 2 では、クエリ結果が 1000 件に制限されているため、エンティティにクエリを実行すると、上限の 1000 個のエンティティが一度に返される。 |[こちらの .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[こちらの REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、Skip および Take (.NET)/top (REST) を使用してください。 |
 | 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。 |詳細については、[こちらのセクション](media-services-deliver-content-overview.md#known-issues)をご覧ください。 |
 | Media Services .NET SDK オブジェクトをシリアル化できないため、Azure Cache for Redis と連携しない。 |SDK AssetCollection オブジェクトをシリアル化して、Azure Cache for Redis に追加しようとすると、例外がスローされます。 |
+|資産またはアカウント レベルのフィルターを取得しようとすると、REST API からの応答として、"The filter cannot be accessed by this version of REST Api (このバージョンの REST Api ではフィルターにアクセスできません)" というエラー メッセージが表示されます。|フィルターを取得するために使用されている API バージョンよりも新しいバージョンを使用してフィルターが作成または変更されました。 この状態は、ユーザーに利用されているコードまたはツールによって 2 つの API バージョンが使用されている場合に発生する可能性があります。  この場合の最適な解決策は、コードまたはツールをアップグレードして、2 つの API バージョンのうちの新しい方の API バージョンを使用することです。|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。

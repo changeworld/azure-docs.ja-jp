@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278178"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879065"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> クロス検証 (CV) 手順の場合、時系列データは、正規 K 分割クロス検証方法の基本的な統計的想定に違反する可能性があるため、自動化された機械学習が、元のローリング検証手順を実装して、時系列データに対しクロス検証分割を作成します。 この手順を使用するには、`AutoMLConfig` オブジェクトで `n_cross_validations` パラメーターを指定します。 検証を迂回して、`X_valid` および `y_valid` パラメーターを使った独自の検証セットを使用できます。
+次のような高度な予測の構成の詳細なコード例については、[エネルギー需要ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を参照してください。
+
+* 休日の検出と特性付け
+* ローリング オリジン クロス検証
+* 構成可能なラグ
+* ローリング ウィンドウの集計機能
 
 ### <a name="view-feature-engineering-summary"></a>特徴エンジニアリングの概要を確認する
 

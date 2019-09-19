@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991935"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801714"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow のデバッグ モード
 
@@ -20,16 +20,17 @@ ms.locfileid: "69991935"
 
 ## <a name="overview"></a>概要
 
-Azure Data Factory Mapping Data Flow のデバッグ モードは、デザイン サーフェスの上部にある [Data Flow Debug] (データ フローのデバッグ) ボタンを使って切り替えることができます。 データ フローを設計するときにデバッグ モードを有効にすると、データ フローの構築およびデバッグ時にデータ シェイプの変換を対話的に監視できます。 デバッグ セッションは、Data Flow のデザイン セッションでも、データ フローのパイプライン デバッグ実行中にも使用できます。
+Azure Data Factory Mapping Data Flow のデバッグ モードを使用すると、データ フローの構築およびデバッグ時にデータ シェイプの変換を対話的に監視できます。 デバッグ セッションは、Data Flow のデザイン セッションでも、データ フローのパイプライン デバッグ実行中でも使用できます。 デバッグ モードを有効にするには、デザイン サーフェスの上部にある [Data Flow Debug]\(データ フローのデバッグ\) ボタンを使用します。
 
-![デバッグ ボタン](media/data-flow/debugbutton.png "デバッグ ボタン")
+![デバッグ スライダー](media/data-flow/debugbutton.png "デバッグ スライダー")
+
+スライダーを有効にすると、使用する統合ランタイム構成を選択するように求めるメッセージが表示されます。 AutoResolveIntegrationRuntime を選択した場合は、60 分の Time to Live が設定された一般的なコンピューティングの 8 個のコアを持つクラスターがスピンアップされます。 データ フロー統合ランタイムの詳細については、[データ フローのパフォーマンス](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime)に関するページを参照してください。
+
+![デバッグ IR の選択](media/data-flow/debugbutton2.png "デバッグ IR の選択")
 
 デバッグ モードが有効なときは、アクティブな Spark クラスターを使用して対話的にデータ フローを構築します。 Azure Data Factory でデバッグを無効にすると、セッションは終了します。 デバッグ セッションを有効にしている間に Azure Databricks によって発生する 1 時間あたりの料金を把握しておく必要があります。
 
 ほとんどの場合、デバッグ モードでデータ フローを構築し、ビジネス ロジックを検証してデータ変換を確認してから、Azure Data Factory で作業内容を公開することをお勧めします。 パイプライン パネルの [デバッグ] ボタンを使用して、パイプライン内部のデータ フローをテストします。
-
-> [!NOTE]
-> Data Factory ツールバーのデバッグ モード ライトが緑色の間、60 分の Time to Live と 8 コア/時の一般コンピューティングの Data Flow デバッグ レートで課金されます 
 
 ## <a name="cluster-status"></a>クラスターの状態
 
@@ -81,7 +82,7 @@ Join、Exists、または Lookup の変換を単体テストする場合、ご�
 
 ### <a name="data-profiling"></a>データ プロファイル
 
-[データのプレビュー] タブで列を選択し、[データのプレビュー] ツールバーで **[統計]** をクリックすると、データ グリッドの右端にグラフがポップアップ表示され、各フィールドに関する詳細な統計情報が示されます。 Azure Data Factory では、表示するグラフの種類のデータ サンプリングに基づいて判断が下されます。 カーディナリティが高いフィールドの既定は NULL/NOT NULL グラフです。一方、カーディナリティが低いカテゴリ データや数値データでは、データ値の頻度を示す棒グラフが表示されます。 また、文字列フィールドの最大/長さ、数値フィールドの最小/最大値、標準偏差、百分位、カウント、および平均も表示されます。
+[データのプレビュー] タブで列を選択し、[データのプレビュー] ツール バーで **[統計]** をクリックすると、データ グリッドの右端にグラフがポップアップ表示され、各フィールドに関する詳細な統計情報が示されます。 Azure Data Factory では、表示するグラフの種類のデータ サンプリングに基づいて判断が下されます。 カーディナリティが高いフィールドの既定は NULL/NOT NULL グラフです。一方、カーディナリティが低いカテゴリ データや数値データでは、データ値の頻度を示す棒グラフが表示されます。 また、文字列フィールドの最大/長さ、数値フィールドの最小/最大値、標準偏差、百分位、カウント、および平均も表示されます。
 
 ![列の統計](media/data-flow/stats.png "列の統計")
 

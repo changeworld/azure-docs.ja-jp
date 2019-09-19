@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240711"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910550"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute を使用してオンプレミスから CloudSimple に接続する
 
@@ -32,7 +32,7 @@ ms.locfileid: "70240711"
 
 ## <a name="scenarios"></a>シナリオ
 
-オンプレミス ネットワークをプライベート クラウド ネットワークに接続すると、次のようなさまざまな方法でプライベート クラウドを使用できるようになります。
+オンプレミス ネットワークをプライベート クラウド ネットワークに接続すると、次のシナリオのようなさまざまな方法でプライベート クラウドを使用できるようになります。
 
 * サイト間 VPN 接続を作成せずに、プライベート クラウド ネットワークにアクセスする。
 * プライベート クラウド上で ID ソースとしてオンプレミスの Active Directory を使用する。
@@ -43,6 +43,7 @@ ms.locfileid: "70240711"
 ## <a name="connecting-expressroute-circuits"></a>ExpressRoute 回線の接続
 
 ExpressRoute 接続を確立するには、ExpressRoute 回線上で承認を作成し、認証情報を CloudSimple に提供する必要があります。
+
 
 ### <a name="create-expressroute-authorization"></a>ExpressRoute 承認の作成
 
@@ -70,6 +71,11 @@ ExpressRoute 接続を確立するには、ExpressRoute 回線上で承認を作
     * 問題のサブタイプ:**オンプレミスへの ExpressRoute 接続を作成する**
     * コピーして [詳細] ウィンドウに保存したリソース ID と承認キーを指定します。
     * トランジット ネットワーク用の /29 ネットワーク アドレス空間を指定します。
+    * ExpressRoute 経由で既定のルートを送信していますか?
+    * プライベート クラウドのトラフィックは、ExpressRoute 経由で送信される既定のルートを使用する必要がありますか?
+
+    > [!IMPORTANT]
+    > 既定のルートを送信することで、オンプレミスのインターネット接続を使用して、プライベート クラウドからすべてのインターネット トラフィックを送信することができます。  プライベート クラウドに構成されている既定のルートを無効にし、オンプレミス接続の既定のルートを使用するには、サポート チケットに詳細を指定してください。
 
 ## <a name="next-steps"></a>次の手順
 

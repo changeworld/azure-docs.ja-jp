@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 51a19d867b4906aacfe58cb4fdfd08f32a16e5f3
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972353"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814573"
 ---
 # <a name="private-cloud-vmware-components"></a>プライベート クラウド VMware コンポーネント
 
@@ -30,10 +30,10 @@ ms.locfileid: "69972353"
 
 | コンポーネント | Version | ライセンス付きのバージョン |
 |-----------|---------|------------------|
-| ESXi | 6.7U1 | Enterprise Plus |
-| vCenter | 6.7U1 | vCenter Standard |
+| ESXi | 6.7U2 | Enterprise Plus |
+| vCenter | 6.7U2 | vCenter Standard |
 | vSAN | 6.7 | Enterprise |
-| NSX Data Center | 2.3 | 詳細 |
+| NSX Data Center | 2.4.1 | 詳細 |
 
 ## <a name="esxi"></a>ESXi
 
@@ -85,7 +85,7 @@ ESXi ホストは、プライベート クラウドの高可用性を保証す�
 
 ### <a name="vsphere-cluster-limits"></a>vSphere クラスターの制限
 
-| Resource | 制限 |
+| リソース | 制限 |
 |----------|-------|
 | プライベート クラウドを作成するためのノードの最小数 (最初の vSphere クラスター) | 3 |
 | プライベート クラウド上の vSphere クラスター内のノードの最大数 | 16 |

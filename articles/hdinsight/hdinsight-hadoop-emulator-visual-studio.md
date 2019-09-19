@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3286ca3b9c85236ff322eb19324bc5ac7a904e22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fba32c9c21faa6e02c8b48b3907ab67e47036d5
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65605455"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885521"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
 
@@ -45,13 +45,13 @@ Hortonworks サンドボックスが実行中であることを確認します�
 
 3. **[HDInsight Emulator に接続する]** ダイアログ ボックスで、Ambari 用に構成したパスワードを入力します。
 
-    ![ダイアログ ボックスのスクリーンショット (パスワード テキスト ボックスを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
+    ![ダイアログ ボックスのスクリーンショット (ambari パスワードのテキスト ボックスを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
     **[次へ]** をクリックして続行します。
 
 4. **[パスワード]** フィールドに、`root` アカウント用に構成したパスワードを入力します。 他のフィールドは既定値のままにします。
 
-    ![ダイアログ ボックスのスクリーンショット (パスワード テキスト ボックスを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+    ![ダイアログ ボックスのスクリーンショット (ルート パスワードのテキスト ボックスを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
 
     **[次へ]** をクリックして続行します。
 
@@ -90,7 +90,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     **[送信]** の横にあるドロップダウン メニューで **[詳細設定]** を選択することもできます。 [詳細設定] オプションでは、ジョブを送信するときに利用できる追加のオプションを指定できます。
 
-    ![[スクリプトの送信] ダイアログ ボックスのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
+    ![[スクリプトの送信] ダイアログ ボックスのスクリーンショット (Hive)](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
 
 3. クエリを送信すると、ジョブの状態が表示されます。 ここでは、Hadoop で処理されるジョブの情報が表示されます。 **[ジョブの状態]** は、ジョブの状態を示します。 状態は定期的に更新されます。更新アイコンを使用して、状態を手動で更新することもできます。
 
@@ -149,7 +149,7 @@ Hive には構造化データを操作するための SQL に似た言語が用�
 
     Pig では Hive とは異なる言語を使用しますが、ジョブを実行する方法はどちらの言語でも同じで、 **[送信]** ボタンをクリックします。 **[送信]** の横にあるドロップダウンを選択すると、Pig の詳細な送信設定用のダイアログ ボックスが表示されます。
 
-    ![[スクリプトの送信] ダイアログ ボックスのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
+    ![[スクリプトの送信] ダイアログ ボックスのスクリーンショット (Pig)](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
 
 3. 表示されるジョブの状態と出力は、Hive クエリの場合と同じです。
 
@@ -185,7 +185,7 @@ Data Lake Tools では、Hadoop で実行されたジョブに関する情報も
 
 データベースまたはテーブルのプロパティを表示することができます。 **[プロパティ]** を選択すると、選択したアイテムの詳細が [プロパティ] ウィンドウに表示されます。 その例については、次のスクリーンショットに表示されている情報をご覧ください。
 
-![[プロパティ] ウィンドウのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
+![[プロパティ] ウィンドウのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/hdi-properties-window.png)
 
 ### <a name="create-a-table"></a>テーブルを作成する
 

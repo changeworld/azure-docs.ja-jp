@@ -1,6 +1,6 @@
 ---
 title: 機械学習の概要 - Azure HDInsight
-description: HDInsight の機械学習オプションについて説明します。
+description: Azure HDInsight 内のクラスターのためのビッグ データの機械学習オプションの概要。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: ca69424ecbddc068fdaf8bb5839a647701ee27fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17615c0005a3cbc5b20cea697b4c75b5ed06ae0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686602"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812000"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 

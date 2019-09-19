@@ -8,18 +8,21 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b53f293f6289377d85f4346933f7edb7369065cf
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 43848e99f679e306747c4cb7b31a4d4692c888cc
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231633"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918337"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
 
 以下の記事では、UK OFFICIAL および UK NHS のブループリント サンプルが、UK OFFICIAL および UK NHS コントロールにどのようにマップされるのかについて詳しく説明します。 コントロールの詳細については、[UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications) に関するページをご覧ください。
 
 以下のマッピングでは、マップ先は **UK OFFICIAL** コントロールと **UK NHS** コントロールです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、 **[\[プレビュー\]: UK OFFICIAL コントロールと UK NHS コントールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする]** ビルトイン ポリシー イニシアチブを見つけて選択します。
+
+> [!IMPORTANT]
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールの[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立ちますが、多くの場合、コントロールと 1 つ以上のポリシーの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)に関するページを参照してください。
 
 ## <a name="1-data-in-transit-protection"></a>1 転送中のデータの保護
 

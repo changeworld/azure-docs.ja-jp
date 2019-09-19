@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 1820c31053c13a0f3039812b31df415bc9fa4fdc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314917"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910371"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -131,7 +131,7 @@ Azure Policy で重要な概念:
 
 - **割り当て**は、特定のスコープ (管理グループ、サブスクリプションなど) にイニシアティブまたはポリシーを適用することです 
 
-Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアティブがあります。 Azure リソースに対する Security Center のポリシーを評価するために、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。  
+Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアティブがあります。 Azure リソースに対する Security Center のポリシーを評価するために、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。
 
 組み込みイニシアティブでは、既定で Security Center のポリシーがすべて有効になっています。 組み込みイニシアティブから特定のポリシーを無効にできます。たとえば、**Web アプリケーション ファイアウォール**の効果パラメーターを **[無効]** に変更することで、このポリシーを除くすべての Security Center のポリシーを適用できます。 
 

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405973"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811946"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>ファイアウォールを使用した Azure HDInsight クラスターの送信ネットワーク トラフィックの構成 (プレビュー)
 
@@ -81,7 +81,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
    | **Name** | **プロトコル** | **ソース アドレス** | **宛先アドレス** | **宛先ポート** | **メモ** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | UDP | * | * | `123` | Time サービス |
-   | Rule_2 | 任意 | * | DC_IP_Address_1、DC_IP_Address_2 | `*` | Enterprise セキュリティ パッケージ (ESP) を使用している場合は、ESP クラスター用に AAD DS との通信を許可するネットワーク ルールを [IP アドレス] セクションに追加します。 ドメイン コントローラーの IP アドレスはポータルの [AAD-DS] セクションで確認できます | 
+   | Rule_2 | Any | * | DC_IP_Address_1、DC_IP_Address_2 | `*` | Enterprise セキュリティ パッケージ (ESP) を使用している場合は、ESP クラスター用に AAD DS との通信を許可するネットワーク ルールを [IP アドレス] セクションに追加します。 ドメイン コントローラーの IP アドレスはポータルの [AAD-DS] セクションで確認できます | 
    | Rule_3 | TCP | * | Data Lake Storage アカウントの IP アドレス | `*` | Azure Data Lake Storage を使用している場合は、ADLS Gen1 と Gen2 での SNI の問題に対処するネットワーク ルールを [IP アドレス] セクションに追加することができます。 このオプションでは、トラフィックはファイアウォールにルーティングされ、大量のデータ読み込みのためにコストが上がる可能性がありますが、トラフィックはファイル ログに記録されて監査可能になります。 Data Lake Storage アカウントの IP アドレスを決定します。 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` などの powershell コマンドを使用して、FQDN を IP アドレスに解決できます。|
    | Rule_4 | TCP | * | * | `12000` | (省略可能) Log Analytics を使用している場合は、Log Analytics ワークスペースとの通信を可能にするネットワーク ルールを [IP アドレス] セクションに作成します。 |
 
@@ -93,7 +93,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 1. **[追加]** をクリックして、ネットワーク ルール コレクションの作成を完了します。
 
-   ![タイトル:アプリケーション ルール コレクションの詳細を入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![タイトル:アプリケーション ルール コレクションを入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>ルート テーブルを作成して構成する
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879909"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812834"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -85,7 +85,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
    * **アプリケーションの発行と管理**には、"*アプリケーション管理者*" ロールが必要です。 アプリケーション管理者ロールは、登録、SSO 設定、ユーザーとグループの割り当てとライセンス、アプリケーション プロキシ設定、同意など、ディレクトリ内のすべてのアプリケーションを管理できます。 条件付きアクセスの管理権限は付与されません。 "*クラウド アプリケーション管理者*" ロールには、アプリケーション プロキシ設定を管理できない以外は、アプリケーション管理者のすべての権限が含まれます。
 
-* **ライセンス**: アプリケーション プロキシは Azure AD Basic サブスクリプションで利用できます。 ライセンス オプションと機能の完全な一覧については、[Azure Active Directory の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)をご覧ください。  
+* **ライセンス**: アプリケーション プロキシは Azure AD Premium サブスクリプションで利用できます。 ライセンス オプションと機能の完全な一覧については、[Azure Active Directory の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)をご覧ください。  
 
 ### <a name="application-discovery"></a>アプリケーションの検出
 

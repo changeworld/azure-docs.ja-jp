@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9a2b030185c821ec9bd577ecdabbc929766f2d14
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997912"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858883"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "69997912"
 * モデル メトリックを探索する
 * モデルを登録して展開する
 
-コードを書かずに実験を作成する場合は、「[Create your automated machine learning experiments in the Azure portal](how-to-create-portal-experiments.md)」(Azure portal で自動機械学習の実験を作成する) を参照してください。
+コードを書かずに実験を作成する場合は、[Azure portal で自動機械学習の実験を作成する](how-to-create-portal-experiments.md)こともできます。
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
@@ -553,13 +553,13 @@ LogisticRegression
     print(per_class_summary)
     ```
 
-Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 run オブジェクトを使用して URL を表示します。
+run オブジェクトを使用して特徴の重要度を確認するための URL を表示します。
 
 ```
 automl_run.get_portal_url()
 ```
 
-Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの `RunDetails` [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用する場合も表示されます。 グラフの詳細については、「[Understand automated machine learning results](how-to-understand-automated-ml.md)」 (自動機械学習の結果について) を参照してください。
+Azure portal のワークスペースで、または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの `RunDetails` [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用する場合も表示されます。 グラフの詳細については、「[Understand automated machine learning results](how-to-understand-automated-ml.md)」 (自動機械学習の結果について) を参照してください。
 
 ```Python
 from azureml.widgets import RunDetails

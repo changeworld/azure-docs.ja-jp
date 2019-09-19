@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9766b530b4d795d0f35f097de20155cdd17687ca
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562206"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812402"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>ユーザーをサインインさせる Web アプリ - サインイン
 
@@ -28,7 +28,8 @@ ms.locfileid: "68562206"
 
 ## <a name="sign-in"></a>サインイン
 
-サインアウトの実装に必要なのは、前の記事の[アプリのコード構成](scenario-web-app-sign-user-app-configuration.md)でのコードだけです。ユーザーがお客様のアプリにサインインしたら、ユーザーをサインアウトできるようにしたい場合があります。サインアウトは、ASP.NET Core によって自動的に処理されます。
+サインインの実装に必要なのは、前の記事の[アプリのコード構成](scenario-web-app-sign-user-app-configuration.md)で確認したコードだけです。
+ユーザーがお客様のアプリにサインインしたら、ユーザーをサインアウトできるようにしたい場合があります。サインアウトは、ASP.NET Core によって自動的に処理されます。
 
 ## <a name="what-sign-out-involves"></a>サインアウトの関連事項
 

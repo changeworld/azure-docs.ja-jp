@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 75fcbdc20c1caf191d4a22672fc9641b36c263c5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.date: 09/06/2019
+ms.openlocfilehash: 1571fc449bd40063c531f9942fe9b51da56f783c
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309337"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764348"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -33,8 +33,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ## <a name="cross-region-replication"></a>リージョン間レプリケーション
 マスター サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
 
+任意の [Azure Database for PostgreSQL リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)にマスター サーバーを作成できます。 マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。 次の図は、マスター リージョンに応じて使用できるレプリカ リージョンを示しています。
 
-任意の [Azure Database for PostgreSQL リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)にマスター サーバーを作成できます。  マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。
+[ ![読み取りレプリカ　リージョン](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
 マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカをいつでも作成できます。 ユニバーサル レプリカ リージョンは次のとおりです。
@@ -47,11 +48,11 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ディザスター リカバリー計画にリージョン間レプリカを使用している場合、レプリカの作成場所は別のリージョンのいずれか 1 つではなく、ペアになっているリージョンにすることをお勧めします。 ペアになっているリージョンでは、同時更新を避け、物理的な分離とデータの保存に優先順位を付けます。  
 
-ただし、考慮すべきいくつかの制限があります。 
+考慮すべきいくつかの制限があります。 
 
 * リージョン別の提供状況Azure Database for PostgreSQL は、米国西部 2、フランス中部、アラブ首長国連邦北部、およびドイツ中部で利用できます。 ただし、それらのペアになっているリージョンは使用できません。
     
-* 一方向のペア:一部の Azure リージョンは一方向にのみペアになっています。 これらのリージョンには、インド西部、ブラジル南部、および US Gov バージニアが含まれます。 
+* 一方向のペア:一部の Azure リージョンは一方向にのみペアになっています。 これらのリージョンには、インド西部とブラジル南部が含まれます。 
    これは、インド西部のマスター サーバーでインド南部のレプリカを作成できることを意味します。 ただし、インド南部のマスター サーバーでインド西部のレプリカを作成することはできません。 この理由は、インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド西部ではないためです。
 
 

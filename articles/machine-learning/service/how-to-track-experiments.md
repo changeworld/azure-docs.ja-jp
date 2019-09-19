@@ -12,25 +12,25 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946386"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858723"
 ---
-# <a name="log-metrics-during-training-runs"></a>トレーニングの実行中にメトリックを記録する
+# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Azure Machine Learning を使用して機械学習のトレーニング メトリックを追跡する
 
-実験を追跡し、メトリックを監視することで、モデルの作成プロセスを拡張します。 この記事では、Azure Machine Learning service におけるトレーニング スクリプトへのログ記録の追加、実験の実行の送信、実行の監視、実行の結果の表示を行う方法について説明します。
+実験を追跡し、メトリックを監視することで、モデルの作成プロセスを拡張します。 この記事では、Azure Machine Learning service におけるトレーニング スクリプトへのログ記録コードの追加、実験の実行の送信、実行の監視、結果の検査を行う方法について説明します。
 
 > [!NOTE]
-> Azure Machine Learning service では、AutoML や トレーニング ジョブを実行する Docker コンテナーなど、トレーニング中に他のソースから情報をログに記録することもできます。 これらのログについては記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
+> Azure Machine Learning service では、トレーニング中に、自動化された機械学習の実行や、トレーニング ジョブを実行する Docker コンテナーなど、他のソースから情報をログに記録することもできます。 これらのログについては記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
 
-## <a name="list-of-training-metrics"></a>トレーニング メトリックの一覧 
+## <a name="available-metrics-to-track"></a>追跡で使用できるメトリック
 
 実験のトレーニング中に、次のメトリックを実行に追加できます。 実行で追跡できる内容の詳細な一覧については、[Run クラスのリファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)をご覧ください。
 
-|Type| Python 関数 | メモ|
+|種類| Python 関数 | メモ|
 |----|:----|:----|
 |スカラー値 |関数:<br>`run.log(name, value, description='')`<br><br>例:<br>run.log("accuracy", 0.95) |指定した名前で実行に数値または文字列値を記録します。 実行にメトリックを記録すると、メトリックは実験の実行レコードに格納されます。  同じメトリックを実行内で複数回記録でき、結果はそのメトリックのベクターと見なされます。|
 |リスト|関数:<br>`run.log_list(name, value, description='')`<br><br>例:<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 指定した名前で実行に値リストを記録します。|
@@ -43,7 +43,7 @@ ms.locfileid: "68946386"
 > [!NOTE]
 > スカラー、リスト、行、およびテーブルのメトリックの型には、float、integer、または string を使用できます。
 
-## <a name="start-logging-metrics"></a>メトリックのログ記録を開始する
+## <a name="choose-a-logging-option"></a>ログ記録オプションの選択
 
 実験を追跡または監視する場合は、実行を送信するときにログ記録を開始するコードを追加する必要があります。 実行の送信をトリガーする方法を以下に示します。
 * __Run.start_logging__ - トレーニング スクリプトにログ関数を追加し、指定した実験で対話型のログ セッションを開始します。 **start_logging** では、ノートブックなどのシナリオで使用するための対話型の実行が作成されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。
@@ -273,7 +273,7 @@ print(run.get_portal_url())
 ```run.get_metrics()``` を使用して、トレーニング済みモデルのメトリックを表示できます。 上の例でログに記録されたすべてのメトリックを取得して、最適なモデルを決定できます。
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal"></a>Azure portal で実験を表示する
+## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で実験を表示する
 
 実験の実行が完了したら、記録された実験の実行レコードを参照できます。 履歴には 2 つの方法でアクセスできます。
 

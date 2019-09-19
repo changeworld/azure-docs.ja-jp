@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: f567eefee84cf6a01afad4e5245337dd92b8cc48
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.date: 09/06/2019
+ms.openlocfilehash: 7e1f27738ae5a87cfb84fad955f80ad2f2eb910f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309428"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773312"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -34,7 +34,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ## <a name="cross-region-replication"></a>リージョン間レプリケーション
 マスター サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
 
-任意の [Azure Database for MySQL リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)にマスター サーバーを作成できます。  マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。
+任意の [Azure Database for MySQL リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)にマスター サーバーを作成できます。  マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。 次の図は、マスター リージョンに応じて使用できるレプリカ リージョンを示しています。
+
+[ ![読み取りレプリカ リージョン](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
 マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカをいつでも作成できます。 ユニバーサル レプリカ リージョンは次のとおりです。

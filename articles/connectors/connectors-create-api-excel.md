@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050915"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859241"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Azure Logic Apps を使用して Excel Online データを管理する
 
@@ -53,6 +53,9 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 1. トリガーで、 **[新しいステップ]** を選択します。
 
 1. 検索ボックスに、フィルターとして「excel」と入力します。 アクションの一覧で、目的のアクションを選択します。
+
+   > [!NOTE]
+   > ロジック アプリ デザイナーでは、100 以上の列を含むテーブルを読み込むことはできません。 可能であれば、デザイナーでテーブルを読み込めるように、選択したテーブルの列数を減らします。
 
 1. メッセージに従って、Office 365 アカウントにサインインします。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88b1d05a47f4a8267ab936a922ac190a925bd5ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11a9fc521a7b17ae0ff2f579f173f4d43383bdd5
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510180"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880092"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
@@ -42,13 +42,15 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ページの右上隅のアカウント名を選択して、Azure AD B2C テナントを選択します。
-3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、 **[アプリの登録]** 、 **[追加]** の順にクリックします。
+3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、 **[アプリの登録]** 、 **[新規登録]** の順にクリックします。
 4. 画面の指示に従い、新しいアプリケーションを作成します。 
-    1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
-    2. これはこの例に関係がないので、**任意のサインオン URL** (例: `https://B2CGraphAPI`) を指定します。  
+    1. 適切な名前を追加します
+    2. **[Accounts in this Organizational directory only]\(この組織ディレクトリ内のアカウントのみ\)** を選択します
+    3. アプリケーションの種類として **[Web]** を選択し、この例では関係がないので、**任意のサインオン URL** (例: `https://B2CGraphAPI`) を指定します。  
+    4. [登録] をクリックします。
 5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
-6. [設定] メニューで **[キー]** をクリックします。
-7. **[パスワード]** セクションにキーの説明を入力し、期間を選択して、 **[保存]** をクリックします。 後のセクションで使用するために、キーの値 (クライアント シークレットとも呼ばれます) をコピーします。
+6. [設定] メニューで、 **[証明書とシークレット]** をクリックします。
+7. **[クライアント シークレット]** セクションで **[新しいクライアント シークレット]** をクリックし、シークレットの説明を入力して、期間を選択します。その後、 **[追加]** をクリックします。 後のセクションで使用するために、シークレットの値 (クライアント シークレットとも呼ばれます) をコピーします。
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>アプリケーション用に作成、読み取り、および更新アクセス許可を構成する
 ここでは、ユーザーの作成、読み取り、更新、および削除に必要なすべてのアクセス許可を取得するようにアプリケーションを構成する必要があります。

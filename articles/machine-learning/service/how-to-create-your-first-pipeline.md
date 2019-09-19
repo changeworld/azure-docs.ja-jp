@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 87897c031ff717fb67830cb8fa3bc5fced336418
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 12ba2991f22576dc62559d5c62dc4a0e769d2681
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278855"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858772"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 
@@ -410,19 +410,21 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>発行されたパイプラインの結果を表示する
 
 すべての発行済みパイプラインとその実行の詳細の一覧を表示します。
-1. [Azure Portal](https://portal.azure.com/) にサインインします。  
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 1. [ワークスペースを表示](how-to-manage-workspace.md#view)して、パイプラインの一覧を検索します。
  ![機械学習パイプラインの一覧](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. 実行結果を表示する特定のパイプラインを選択します。
 
+これらの結果は、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) でも確認できます。
+
 ### <a name="disable-a-published-pipeline"></a>発行されたパイプラインを無効にする
 
 発行済みパイプラインの一覧にパイプラインが表示されないようにするには、それを無効にします。
 
 ```
-# Get the pipeline by using its ID in the Azure portal
+# Get the pipeline by using its ID from the Azure portal
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```

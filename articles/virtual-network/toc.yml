@@ -255,8 +255,18 @@
           href: manage-public-ip-address-prefix.md
     - name: リージョン間で移動する
       items:
+        - name: ネットワーク セキュリティ グループ - ポータル
+          href: move-across-regions-nsg-portal.md
+        - name: ネットワーク セキュリティ グループ - PowerShell
+          href: move-across-regions-nsg-powershell.md
         - name: 仮想ネットワーク - ポータル
           href: virtual-network-azure-to-azure-migrate-vnet-portal.md
+        - name: 仮想ネットワーク - PowerShell
+          href: virtual-network-azure-to-azure-migrate-vnet-powershell.md
+        - name: パブリック IP - ポータル
+          href: move-across-regions-publicip-portal.md
+        - name: パブリック IP - PowerShell
+          href: move-across-regions-publicip-powershell.md
     - name: トラブルシューティング
       items:
         - name: 仮想ネットワーク ピアリングの問題のトラブルシューティング

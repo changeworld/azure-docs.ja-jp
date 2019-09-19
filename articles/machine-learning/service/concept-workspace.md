@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856210"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860498"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースとは
 
@@ -36,7 +36,7 @@ ms.locfileid: "68856210"
 + ワークスペースを作成すると、[関連するリソース](#resources)も自動的に作成されます。
 + [実験](concept-azure-machine-learning-architecture.md#experiments)は、ご自身のモデルの構築に使用するトレーニング実行です。  以下を使用して、実験を作成および実行できます
     + [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-    + Azure portal の[自動化された機械学習の実験 (プレビュー)](how-to-create-portal-experiments.md) セクション。
+    + Azure portal またはワークスペースのランディング ページ (プレビュー) の、[自動化された機械学習の実験 (プレビュー)](how-to-create-portal-experiments.md) セクション。
     + [ビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md)。
 + [パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)は、お使いのモデルをトレーニングおよび再トレーニングするための再利用可能なワークフローです。
 + [データセット](concept-azure-machine-learning-architecture.md#datasets-and-datastores)は、モデルのトレーニングとパイプラインの作成に使用するデータの管理に役立ちます。
@@ -49,6 +49,7 @@ ms.locfileid: "68856210"
 
 + Web 上:
     + [Azure Portal](https://portal.azure.com)
+    + [ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com)
     + [ビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md)
 + Python では Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用
 + コマンド ラインでは Azure Machine Learning [CLI 拡張機能](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)を使用

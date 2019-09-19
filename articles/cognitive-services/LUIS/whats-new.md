@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: b29fdf4e5b3f2719865820695f659df7e75e19b5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256438"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813285"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -27,6 +27,8 @@ ms.locfileid: "70256438"
 ### <a name="september-3-2019"></a>2019 年 9 月 3 日
 
 * Azure オーサリング リソース - [今すぐ移行](luis-migration-authoring.md)。
+    * 1 つの Azure リソースにつき 500 個のアプリ
+    * 1 つのアプリにつき 100 個のバージョン
 * 事前に作成されたエンティティのトルコ語のサポート
 * datetimeV2 のイタリア語のサポート
 
