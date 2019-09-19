@@ -271,7 +271,7 @@
           href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
     - name: アプリ設定のリファレンス
       href: functions-app-settings.md
-    - name: バインド
+    - name: トリガーとバインド
       items:
         - name: BLOB ストレージ
           href: functions-bindings-storage-blob.md

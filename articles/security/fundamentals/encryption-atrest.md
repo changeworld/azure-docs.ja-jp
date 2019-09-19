@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918864"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984849"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -272,6 +272,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Azure Analysis Services          | はい                | -                  | -                  |
 | Azure Data Catalog               | はい                | -                  | -                  |
 | Azure HDInsight 上の Apache Kafka  | はい                | RSA の長さすべて。   | -                  |
+| Azure Data Explorer              | はい                | -                  | -                  |
 | Azure Data Factory               | はい                | -                  | -                  |
 | Azure Data Lake Store            | はい                | はい、RSA 2048 ビット  | -                  |
 | **Containers**                   |                    |                    |                    |

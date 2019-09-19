@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900034"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967753"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -31,7 +31,7 @@ ms.locfileid: "70900034"
 
 HDInsight で ML Services クラスターに対して複数の同時ユーザーを有効にするには、RStudio Community バージョンが実行されているエッジ ノードのユーザーを追加します。 HDInsight クラスターを作成するときに、2 人のユーザー (HTTP ユーザーと SSH ユーザー) を指定する必要があります。
 
-![同時ユーザー 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![同時ユーザー 1](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **クラスター ログイン ユーザー名**: 作成した HDInsight クラスターを保護するために使用される、HDInsight ゲートウェイを介した認証用の HTTP ユーザー。 この HTTP ユーザーは、Apache Ambari UI、Apache Hadoop YARN UI、およびその他の UI コンポーネントにアクセスするために使用されます。
 - **Secure Shell (SSH) ユーザー名**: Secure Shell を介してクラスターにアクセスする SSH ユーザー。 このユーザーは、ヘッド ノード、ワーカー ノード、エッジ ノードすべてに対応する Linux システムのユーザーです。 そのため、Secure Shell を使用して、リモート クラスター内の任意のノードにアクセスできます。
@@ -66,7 +66,7 @@ RStudio はクラスターのエッジ ノードで実行されているため�
 
 次のスクリーンショットは出力を示しています。
 
-![同時ユーザー 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![同時ユーザー 3](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 "Current Kerberos password:" というメッセージが表示されたら、単に **Enter** キーを押して無視します。 `useradd` コマンドの `-m` オプションは、システムによってユーザーのホーム フォルダーが作成されることを示します。このフォルダーは、RStudio Community バージョンに必要です。
 

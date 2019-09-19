@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 34658fb1db84ff09a4c3d22ea95f5bfc7384721d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d966ff3bc00d5190ebc163d4f4bfa35ba73d21ab
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883647"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087670"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -354,7 +354,7 @@ public async Task Process(MessagePayload message)
 
 ### <a name="dependency-types"></a>依存関係の種類
 
-Application Insights では、依存関係の種類を使用して UI エクスペリエンスがカスタマイズされます。 キューの場合、[トランザクションの診断エクスペリエンス](/azure-monitor/app/transaction-diagnostics)を向上させる次の種類の `DependencyTelemetry` が認識されます。
+Application Insights では、依存関係の種類を使用して UI エクスペリエンスがカスタマイズされます。 キューの場合、[トランザクションの診断エクスペリエンス](/azure/azure-monitor/app/transaction-diagnostics)を向上させる次の種類の `DependencyTelemetry` が認識されます。
 - Azure Storage キューの `Azure queue`
 - Azure Event Hubs の`Azure Event Hubs`
 - Azure Service Bus の `Azure Service Bus`
@@ -486,7 +486,7 @@ public async Task RunAllTasks()
 ## <a name="next-steps"></a>次の手順
 
 - Application Insights における[テレメトリの相関付け](correlation.md)について基本的な知識を身に付けます。
-- 相関データで[トランザクションの診断エクスペリエンス](/azure-monitor/app/transaction-diagnostics)と[アプリケーション マップ](/azure-monitor/app/app-map)がどのように機能するかを確認します。
+- 相関データで[トランザクションの診断エクスペリエンス](../../azure-monitor/app/transaction-diagnostics.md)と[アプリケーション マップ](../../azure-monitor/app/app-map.md)がどのように機能するかを確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照してください。
 - カスタムの[イベントとメトリック](../../azure-monitor/app/api-custom-events-metrics.md)を Application Insights にレポートします。
 - コンテキスト プロパティ コレクションの標準的な[構成](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)を確認します。

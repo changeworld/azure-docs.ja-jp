@@ -4,18 +4,18 @@ summary: Azure Private Link を使用すると、仮想ネットワーク内の�
 metadata:
   title: Private Link のドキュメント - クイックスタート、攻略ガイド、API リファレンス
   description: Azure Private Link サービスの使用方法について説明します。 クイックスタート、チュートリアル、Private Link サービスをデプロイする方法を紹介します。
-  ms.service: virtual-network
+  ms.service: private-link
   ms.topic: landing-page
   ms.collection: collection
   author: KumudD
   ms.author: kumud
   ms.date: 09/16/2019
-  ms.openlocfilehash: 867c20b96f8a48aeb52e455d718057e686ddfcbe
-  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.openlocfilehash: 24b6d3ce2514ef25a015182e4a4fcd641ac76d50
+  ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/16/2019
-  ms.locfileid: "71020213"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71104605"
 landingContent:
 - title: Azure Private Link について
   linkLists:
