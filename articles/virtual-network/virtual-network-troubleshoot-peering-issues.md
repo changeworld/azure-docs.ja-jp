@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc01a20a077a1c624ed490600db919fe3197556c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901395"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091112"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
 
@@ -58,7 +58,7 @@ ms.locfileid: "70901395"
 異なるサブスクリプションまたは Active Directory テナント内の仮想ネットワークの仮想ネットワーク ピアリングを構成するには、[Azure CLI の異なるサブスクリプションでのピアリングの作成](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)に関するページの手順に従います。
 
 > [!Note]
-> ネットワーク ピアリングを構成するには、両方のサブスクリプションで**ネットワーク共同作成者**のアクセス許可を持っている必要があります。 詳細については、[ピアリングのアクセス許可](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering%23permissions)に関するページを参照してください。
+> ネットワーク ピアリングを構成するには、両方のサブスクリプションで**ネットワーク共同作成者**のアクセス許可を持っている必要があります。 詳細については、[ピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページを参照してください。
 
 ## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>シナリオ 2:オンプレミス リソースを使用するハブスポーク トポロジで仮想ネットワーク ピアリングを構成する
 
@@ -104,7 +104,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 ## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>シナリオ 4:2 つのピアリングされた仮想ネットワーク間で接続の問題が発生している
 
-必要な[ロールとアクセス許可](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions)があるアカウントで、[Azure portal](https://portal.azure.com/) にサインインします。 仮想ネットワークを選択して、 **[ピアリング]** を選び、 **[状態]** フィールドを確認します。 状態はどうなっていますか?
+必要な[ロールとアクセス許可](virtual-network-manage-peering.md#permissions)があるアカウントで、[Azure portal](https://portal.azure.com/) にサインインします。 仮想ネットワークを選択して、 **[ピアリング]** を選び、 **[状態]** フィールドを確認します。 状態はどうなっていますか?
 
 ### <a name="connection-type-1-the-peering-status-shows-connected"></a>接続の種類 1:ピアリングの状態が [接続済み] と表示されている
 

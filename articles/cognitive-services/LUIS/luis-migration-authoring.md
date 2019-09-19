@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: 7fe35edfbfc8f50aa9428e41e7d807a0838417ec
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259623"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844774"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -43,7 +43,7 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 次のものは移行に当たりません。 
 
 * コラボレーターを収集し、Azure のオーサリング リソースに自動的に移動または追加するプロセス。 この手順はアプリの所有者が実行する必要があります。 この手順には、適切なリソースへのアクセス許可が必要です。
-* 予測ランタイム リソースを作成して割り当てるプロセス。 予測ランタイム リソースが必要な場合、これは[別のプロセス](/luis-how-to-azure-subscription.md#create-runtime-resource-in-the-azure-portal)であり、かつ不変です。 
+* 予測ランタイム リソースを作成して割り当てるプロセス。 予測ランタイム リソースが必要な場合、これは[別のプロセス](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)であり、かつ不変です。 
 
 ## <a name="how-are-the-apps-migrating"></a>アプリはどのように移行されるか
 
@@ -62,7 +62,9 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 * **必要に応じて**、各アプリをエクスポートするかエクスポート [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) を使用して、LUIS ポータルのアプリの一覧からアプリをバックアップします。
 * **必要に応じて**、各アプリのコラボレーターの一覧を保存します。 このメールの一覧は、移行プロセスの一部として提供されています。
-* **必須**。[Azure サブスクリプション](https://azure.microsoft.com/free/)が必要です。 サブスクリプション プロセスの一部では、課金情報が必要です。 ただし、LUIS を使用する際には、無料 (F0) 価格レベルを使用できます。 使用量が増えるにつれて、最終的には有料レベルが必要になることがあります。 
+* **必須**。[Azure サブスクリプション](https://azure.microsoft.com/free/)が必要です。 サブスクリプション プロセスの一部では、課金情報が必要です。 ただし、LUIS を使用する際には、無料 (`F0`) 価格レベルを使用できます。 
+
+**LUIS アプリの作成は無料です**。これは `F0` レベルの印で確認できます。 価格レベルの詳細については[こちら](luis-boundaries.md#key-limits)をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、[サインアップ](https://azure.microsoft.com/free/)してください。 
 
@@ -91,7 +93,7 @@ _Azure portal_ のオーサリング リソースの **[Access Control (IAM)]** 
 
 ### <a name="after-the-app-is-migrated"></a>アプリを移行した後
 
-移行プロセスを完了した後は、アプリ所有者によって自身が Azure オーサリング リソースに追加されている必要があります。  
+移行プロセス後、元のアプリにアクセスする必要がある場合、自分をコラボレーターとして Azure オーサリング リソースに追加するよう、アプリ所有者に依頼する必要があります。  
 
 ## <a name="next-steps"></a>次の手順
 

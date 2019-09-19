@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/21/2019
-ms.openlocfilehash: 9a4142010ef9e47a1a41e472c945b694f197f34f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 40c5d023647d3592e44588fbc24bf2743da34373
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885056"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088619"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Azure ストレージ コンテナーに Azure HDInsight のファイルが多数含まれる場合、Apache Spark ジョブの実行速度が低下する
 

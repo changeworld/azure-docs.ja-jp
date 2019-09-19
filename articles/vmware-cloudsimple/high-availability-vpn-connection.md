@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ea8ad80d8d12ae9ecac88bd6a3d661ca895d67f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972774"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845327"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>オンプレミスから CloudSimple VPN ゲートウェイへの高可用接続を構成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "69972774"
 
 オンプレミスのファイアウォールを構成する前に、次のタスクを実行します。
 
-1. お客様の組織が必要なノードを[購入](create-nodes.md)し、少なくとも 1 つの CloudSimple Private Cloud を作成していることを確認します。
+1. お客様の組織が必要なノードを[プロビジョニング](create-nodes.md)し、少なくとも 1 つの CloudSimple Private Cloud を作成していることを確認します。
 2. オンプレミス ネットワークと CloudSimple Private Cloud の間に[サイト間 VPN ゲートウェイを構成](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)します。
 
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>オンプレミスの Cisco ASA ファイアウォールを構成する

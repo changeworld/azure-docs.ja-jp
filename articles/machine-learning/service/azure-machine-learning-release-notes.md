@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 48da5e27184076676edb3f3b89b478bcf2fe347f
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278303"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900452"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -23,12 +23,42 @@ ms.locfileid: "70278303"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2019-09-09"></a>2019-09-09
+
+### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Azure Machine Learning ワークスペースの新しい Web エクスペリエンス (プレビュー)
+データ サイエンティストやデータ エンジニアは、新しい Web エクスペリエンスで、データの準備および視覚化から、モデルのトレーニングおよびデプロイまでの機械学習のエンドツーエンドのライフサイクルを 1 つの場所で完了できます。 
+
+![Azure Machine Learning ワークスペースの UI (プレビュー)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
+
+**主な機能:**
+
+新しい Azure Machine Learning インターフェイスでは、次のことができるようになりました。
++ ご自分のノートブックまたはリンクを Jupyter 外で管理する
++ [自動 ML の実験を実行する](tutorial-first-experiment-automated-ml.md)
++ [ローカル ファイル、データストアおよび Web ファイルからデータセットを作成する](how-to-create-register-datasets.md)
++ モデル作成のためにデータセットを調査および準備する
++ ご自身のモデルのデータ誤差を監視する 
++ ダッシュボードに最近使用したリソースを表示する
+
+このリリースの時点では、次のブラウザーがサポートされています: Chrome、Firefox、Safari、Microsoft Edge プレビュー。
+
+**既知の問題:**
+
+1. 展開中に "Something went wrong! Error loading chunk files" (問題が発生しました。チャンク ファイルの読み込み中にエラーが発生しました) と表示される場合、お使いのブラウザーを更新します。  
+
+1. Notebooks と Files でファイルを削除または名前変更できない。 パブリック プレビュー中に、Notebook VM の Jupyter UI またはターミナルを使用して、ファイルの更新操作を実行できます。 これはマウントされたネットワーク ファイル システムであるため、Notebook VM に対して行ったすべての変更は、直ちに Notebook Workspace に反映されます。 
+
+1. Notebook VM に SSH 接続するには:
+   1. VM のセットアップ時に作成された SSH キーを検索します。 または、Azure ML Azure portal でそのキーを探します。[コンピューティング] タブを開き、一覧から Notebook VM を検索し、そのプロパティを開いて、そのダイアログからキーをコピーします。
+   1. それらの公開および秘密 SSH キーをご自分のローカル コンピューターにインポートします。
+   1. それらを Notebook VM への SSH 接続に使用します。 
+
 ## <a name="2019-09-03"></a>2019-09-03
 ### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Azure Machine Learning SDK for Python v1.0.60
 
 + **新機能**
   + データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照する FileDataset が導入されました。 ファイルの形式は任意です。 FileDataset では、ファイルをダウンロードしたり、コンピューターにマウントしたりできます。 FileDataset の詳細については、 https://aka.ms/file-dataset を参照してください。
-  + PythonScript Step、Adla Step、Databrick Step、DataTransferStep、AzureBatch Step にパイプライン YAML サポートを追加しました
+  + PythonScript Step、Adla Step、Databricks Step、DataTransferStep、AzureBatch Step にパイプライン YAML サポートを追加しました
 
 + **バグの修正と機能強化**
   + **azureml-automl-core**
@@ -39,7 +69,7 @@ ms.locfileid: "70278303"
     + AutoML モデルで AutoMLExceptions が返されるようになりました
     + このリリースでは、自動化された機械学習のローカル実行の実行パフォーマンスが向上しています。
   + **azureml-core**
-    + 登録名でキーが指定された `TabularDataset` と `FileDataset` のオブジェクトのディクショナリを返す `Dataset.get_all()` が導入されました。 
+    + 登録名でキーが指定された `TabularDataset` と `FileDataset` のオブジェクトのディクショナリを返す Dataset.get_all(workspace) が導入されました。 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -70,6 +100,12 @@ ms.locfileid: "70278303"
   + **azureml-train-core**
     + 一部のハイパーパラメーター空間定義エラーの初期エラーが、サーバー側ではなく SDK で直接発生します。
 
+### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure Machine Learning Data Prep SDK v1.1.14
++ **バグの修正と機能強化**
+  + 未加工のパスと資格情報を使用した ADLS/ADLSGen2 への書き込みが有効になりました。
+  + `include_path=True` が `read_parquet` で使用できなかった原因となったバグを修正しました。
+  + "無効なプロパティ値: hostsecret" の例外が原因で発生した `to_pandas_dataframe()` エラーを修正しました。
+  + Spark モードで DBFS のファイルを読み取ることができなかったバグを修正しました。
   
 ## <a name="2019-08-19"></a>2019-08-19
 
@@ -96,7 +132,7 @@ ms.locfileid: "70278303"
   + **azureml-core**
     + Blob_cache_timeout パラメーターの順序付けに関する問題を修正しました。
     + 外部例外 fit 型 および transform 型をシステム エラーに追加しました。
-    + リモート実行のための Key Vault シークレットのサポートが追加されました。 ワークスペースに関連付けられている keyvault のシークレットを追加、取得、一覧表示するための azureml.core.keyvault.Keyvault クラスを追加しました。 サポートされている操作は次のとおりです。
+    + リモート実行のための Key Vault シークレットのサポートが追加されました。 ご自身のワークスペースに関連付けられている keyvault のシークレットを追加、取得、一覧表示するための azureml.core.keyvault.Keyvault クラスを追加しました。 サポートされている操作は次のとおりです。
       + azureml.core.workspace.Workspace.get_default_keyvault()
       + azureml.core.keyvault.Keyvault.set_secret(name, value)
       + azureml.core.keyvault.Keyvault.set_secrets(secrets_dict)
@@ -112,7 +148,7 @@ ms.locfileid: "70278303"
     + 送信済みの実行からの実行を送信するためのサポートを追加します。
     + 最初のトークンの有効期限が切れた後にファイルがアップロードされない原因となった FileWatcher の期限が切れる SAS トークンの問題を修正しました。
     + データセット Python SDK への HTTP csv/tsv ファイルのインポートがサポートされるようになりました。
-    + Workspace.setup() メソッドを非推奨にしました。 ユーザーに表示される警告メッセージとして、代わりに create() または get()/fromconfig() の使用が推奨されます。
+    + Workspace.setup() メソッドを非推奨にしました。 ユーザーに表示される警告メッセージとして、代わりに create() または get()/from_config() の使用が推奨されるようになりました。
     + Environment.add_private_pip_wheel() を追加しました。これにより、カスタマイズしたプライベート Python パッケージ (.whl) をワークスペースにアップロードし、それらを安全に利用して環境をビルド/具体化できるようにしました。
     + Microsoft が生成した証明書と顧客証明書の両方について、AKS クラスターにデプロイされたスコアリング エンドポイントの SSL 証明書を更新できるようになりました。
   + **azureml-explain-model**
@@ -146,7 +182,7 @@ ms.locfileid: "70278303"
   + `read_parquet` を Spark で 実行するときのパフォーマンスが大幅に向上しています。
   + あいまいな日付形式の列が 1 つ存在することで `column_type_builder` が失敗する問題を修正しました。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure ポータル
 + **プレビュー機能**
   + ログと出力ファイルのストリーミングが、[実行の詳細] ページで使用できるようになりました。 プレビューの切り替えが有効になっている場合、ファイルによってリアルタイムで更新がストリーミングされます。
   + ワークスペース レベルでクォータを設定する機能がプレビューでリリースされます。 AmlCompute クォータはサブスクリプション レベルで割り当てられますが、ワークスペース間でそのクォータを配分し、公平な共有とガバナンスのために割り当てることができるようになりました。 ワークスペースの左側のナビゲーション バーにある **[Usages+Quotas]\(使用量 + クォータ\)** ブレードをクリックして、 **[Configure Quotas]\(クォータの構成\)** タブを選択します。これはワークスペースをまたぐ操作であるため、ワークスペース レベルでクォータを設定できるようにするには、サブスクリプション管理者である必要があることに注意してください。
@@ -268,7 +304,7 @@ ms.locfileid: "70278303"
   + **azureml-explain-model**
     + azureml-contrib-explain-model パッケージの生の特徴の重要度のための LIME Explainer の変換引数を修正しました
     + LimeExplainer の scipy sparse のサポートを追加します
-    + SHAP Explainer ラッパーと、線形モデルを説明するための Tabular Explainer へのもう 1 つのレベルを追加しました
+    + 線形モデルを説明する Shape Linear Explainer ラッパーと、別のレベルの Tabular Explainer を追加しました
     + 説明モデル ライブラリの Mimic Explainer で、スパース データ入力で include_local = False の場合のエラーを修正しました
     + automl 出力に予期される値を追加します
     + 生の特徴の重要度を取得するために変換引数が指定された場合の、permutation feature importance を修正しました
@@ -405,7 +441,7 @@ ms.locfileid: "70278303"
 + **バグの修正と機能強化**
   + azureml-core から paramiko の依存関係が削除されました。 従来のコンピューティング先のアタッチ方法に対する非推奨の警告が追加されました。
   + run.create_children のパフォーマンスが向上しました
-  + バイナリ分類器を使う Mimic Explainer で、教師の確率が SHAP 値のスケーリングに使われるときの、確率の順序が修正されました。
+  + バイナリ分類器を使う Mimic Explainer で、教師の確率が SHAPE 値のスケーリングに使われるときの、確率の順序が修正されました。
   + 自動化された機械学習に対するエラー処理とメッセージが改善されました。 
   + 自動化された機械学習のイテレーションのタイムアウトの問題が修正されました。
   + 自動化された機械学習に対する時系列変換のパフォーマンスが向上しました。

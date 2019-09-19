@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885106"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995554"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight で Apache Spark ジョブを最適化する
 
@@ -96,7 +96,7 @@ Spark はデータをメモリ内に配置することで動作するため、�
 
 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) を使用する場合は、YARN が Spark の各ノード上のすべてのコンテナーで使用される最大合計メモリを制御します。  次の図は、重要なオブジェクトとそれらの関連性を示しています。
 
-![YARN の Spark メモリの管理](./media/apache-spark-perf/yarn-spark-memory.png)
+![YARN の Spark メモリの管理](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 ''メモリ不足'' のメッセージに対処するには、次を試してください。
 

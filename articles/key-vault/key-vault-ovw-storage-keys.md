@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000546"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883066"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Azure Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する 
 
@@ -158,7 +158,7 @@ Key Vault から [Shared Access Signature トークン](../storage/common/storag
 - サービス プリンシパルと証明書を使用します。 
 - サービス プリンシパルとパスワードを使用します。 この方法は推奨されません。
 
-詳細については、「[Azure Key Vault:基本的な概念](basic-concepts.md)」を参照してください。
+詳細については、「[Azure Key Vault:基本的な概念](key-vault-whatis.md#basic-concepts)」を参照してください。
 
 次の例では、Shared Access Signature トークンをフェッチする方法を示します。 Shared Access Signature 定義を作成したら、トークンをフェッチします。 
 
