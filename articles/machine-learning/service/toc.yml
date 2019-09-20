@@ -31,7 +31,7 @@
             - name: ML モデルを自動トレーニングする
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
-        - name: パイプラインを使用したバッチ スコアリング (詳細設定)
+        - name: Machine Learning パイプライン (上級)
           items:
             - name: 分類モデルのバッチ スコアリング
               displayName: pipelines

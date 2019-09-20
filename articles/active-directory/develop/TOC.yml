@@ -89,6 +89,8 @@
           href: authentication-scenarios.md
         - name: 認証フローとアプリ シナリオ
           href: authentication-flows-app-scenarios.md
+        - name: ID プラットフォームのベスト プラクティス
+          href: identity-platform-integration-checklist.md
         - name: アプリケーションのシナリオ
           items:
             - name: サインイン対象ユーザー
@@ -217,8 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: 運用環境に移行する
                   href: scenario-mobile-production.md
-            - name: 統合チェックリスト
-              href: identity-platform-integration-checklist.md
         - name: Microsoft Authentication Library (MSAL)
           items:
             - name: 概要

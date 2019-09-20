@@ -666,6 +666,8 @@
           href: how-to-configure-change-feed-start-time.md
         - name: 変更フィード推定機能の使用
           href: how-to-use-change-feed-estimator.md
+        - name: 変更フィード プロセッサ ライブラリからの移行
+          href: how-to-migrate-from-change-feed-library.md
     - name: Apache Spark による組み込みの分析
       items:
         - name: Azure Databricks の Spark コネクタ

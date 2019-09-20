@@ -103,6 +103,8 @@
           href: sizes-hpc.md
         - name: 旧世代
           href: sizes-previous-gen.md
+        - name: Isolated のサイズ
+          href: isolation.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
         - name: vCPU のクォータ

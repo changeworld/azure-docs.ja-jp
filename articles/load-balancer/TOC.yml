@@ -123,6 +123,14 @@
       href: load-balancer-query-metrics-rest-api.md
     - name: 内部ロード バランサー用の高可用性ポートを構成する
       href: load-balancer-configure-ha-ports.md
+    - name: リージョン間で移動する
+      items:
+        - name: 外部ロード バランサー - ポータル
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: 外部ロード バランサー - PowerShell
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: 内部ロード バランサー - PowerShell
+          href: move-across-regions-internal-load-balancer-powershell.md
     - name: トラブルシューティング
       items:
         - name: Azure Load Balancer のトラブルシューティング

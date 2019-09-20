@@ -1,8 +1,8 @@
-- name: Azure データ エクスプローラーのドキュメント
+- name: Azure Data Explorerのドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure データ エクスプローラーとは
+    - name: Azure Data Explorerとは
       href: data-explorer-overview.md
 - name: クイック スタート
   expanded: true
@@ -128,12 +128,18 @@
           href: dealing-with-duplicates.md
     - name: 監視
       items:
+        - name: 診断ログを使用してインジェストを監視する
+          href: using-diagnostic-logs.md
         - name: メトリックを使用してクラスターの正常性を監視する
           href: using-metrics.md
     - name: 他のツールとの統合
       items:
-        - name: Azure Data Factory テンプレートを使用してデータを一括コピーする
-          href: data-factory-template.md
+        - name: Azure Data Factory
+          items:
+            - name: Azure Data Factory テンプレートを使用してデータを一括コピーする
+              href: data-factory-template.md
+            - name: Azure Data Factory を使用して制御コマンドを実行する
+              href: data-factory-command-activity.md
         - name: Apache Spark コネクタ
           href: spark-connector.md
         - name: Python を使用して Databricks から接続する

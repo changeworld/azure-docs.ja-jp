@@ -239,17 +239,17 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: ドキュメント リンク
           href: cognitive-search-resources-documentation.md
-    - name: ナレッジ ストア (プレビュー)
-      items:
-        - name: Azure portal でのナレッジ ストアの作成
-          href: knowledge-store-create-portal.md
-        - name: REST と Postman を使用した作成
-          href: knowledge-store-howto.md
-        - name: Storage Explorer を使用した表示
-          href: knowledge-store-view-storage-explorer.md
-        - name: Power BI を使用した接続
-          href: knowledge-store-connect-power-bi.md
-    - name: データのクエリを実行する
+        - name: ナレッジ ストア (プレビュー)
+          items:
+            - name: Azure portal でのナレッジ ストアの作成
+              href: knowledge-store-create-portal.md
+            - name: REST と Postman を使用した作成
+              href: knowledge-store-howto.md
+            - name: Storage Explorer を使用した表示
+              href: knowledge-store-view-storage-explorer.md
+            - name: Power BI を使用した接続
+              href: knowledge-store-connect-power-bi.md
+    - name: ドキュメントにクエリを実行する
       items:
         - name: 基本的なクエリの作成
           href: search-query-overview.md
@@ -265,7 +265,7 @@
           href: search-query-lucene-examples.md
         - name: moreLikeThis (プレビュー)
           href: search-more-like-this.md
-    - name: フィルターの使用
+    - name: フィルターを適用する
       items:
         - name: フィルターの概要
           href: search-filters.md
@@ -283,18 +283,14 @@
       items:
         - name: ページ関連の機能
           href: search-pagination-page-layout.md
-    - name: 関連性のチューニング
-      items:
-        - name: スコアリング プロファイルの追加
+        - name: 関連性のチューニング (スコアリング プロファイル)
           href: index-add-scoring-profiles.md
-    - name: 管理
+    - name: 管理および監視
       items:
         - name: ポータルの管理
           href: search-manage.md
         - name: PowerShell の管理
           href: search-manage-powershell.md
-    - name: 監視
-      items:
         - name: Monitor アクティビティとログ記録
           href: search-monitor-usage.md
         - name: 検索トラフィックの分析

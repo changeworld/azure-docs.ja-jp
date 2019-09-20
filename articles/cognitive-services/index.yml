@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/12/2019
-  ms.openlocfilehash: 2bb26de076096ff47d38ddb12b1bc17f4aeafb34
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 09/16/2019
+  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70965457"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71087549"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -53,7 +53,7 @@ conceptualContent:
       text: Face
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: フォームの認識 (プレビュー)
+      text: Form Recognizer (プレビュー)
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: Ink Recognizer (プレビュー)
@@ -93,7 +93,7 @@ conceptualContent:
     - url: ./translator-speech/overview.md
       itemType: overview
       text: Translator Speech (廃止)
-  - title: 決定サービス
+  - title: 決定
     summary: 情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。
     links:
     - url: ./anomaly-detector/index.yml
@@ -138,12 +138,12 @@ conceptualContent:
     - url: ./bing-web-search/index.yml
       itemType: overview
       text: Web Search
-  - title: Containers
+  - title: Cognitive Service コンテナー
     summary: Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure 内で利用できるものと同じリッチな API シリーズを使用できます。また、Docker コンテナーに付随するサービスをデプロイおよびホストできる柔軟性があります。
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Cognitive Services のコンテナー
+      text: Cognitive Service コンテナー
     - url: ./containers/container-reuse-recipe.md
       itemType: overview
       text: 再利用するためのコンテナーを作成する

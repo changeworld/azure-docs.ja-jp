@@ -102,6 +102,8 @@
         - name: 旧世代
           href: sizes-previous-gen.md
           displayName: D-series Ds-series A-series Basic
+        - name: Isolated のサイズ
+          href: isolation.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
         - name: ベンチマーク スコア

@@ -271,6 +271,14 @@
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: IntelliJ での Apache Spark アプリの作成
           href: ./spark/apache-spark-create-standalone-application.md
+    - name: 概念
+      items:
+        - name: HDInsight 上の Spark のベスト プラクティス
+          href: ./spark/spark-best-practices.md
+        - name: Apache Spark の設定を構成する
+          href: ./spark/apache-spark-settings.md
+        - name: Apache Spark ジョブを最適化する
+          href: ./spark/apache-spark-perf.md
     - name: 方法
       items:
         - name: ツールの使用
@@ -323,10 +331,6 @@
               href: ./spark/apache-spark-resource-manager.md
             - name: 拡張された History Server を使用して Apache Spark アプリケーションを管理する
               href: ./spark/apache-azure-spark-history-server.md
-            - name: Apache Spark の設定を構成する
-              href: ./spark/apache-spark-settings.md
-            - name: Apache Spark ジョブを最適化する
-              href: ./spark/apache-spark-perf.md
             - name: IO キャッシュによるキャッシュを有効にする
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: Apache Spark での Notebook の使用

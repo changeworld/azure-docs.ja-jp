@@ -44,6 +44,9 @@ sections:
           - title: VNet 統合
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
             html: <p>セキュリティで保護されたサービスが、プライベート IP アドレスを使用してプライベート Azure VNet 内に配置されます。</p>
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: <p>リソースを共有するマネージド インスタンスを複数デプロイするためのコスト効果の高いソリューション。</p>
+            title: インスタンス プール
           - title: 簡単に移行
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
             html: <p>ネイティブ復元を使用して、オンプレミス データベースを Azure クラウドに簡単に移行します。</p>
@@ -59,9 +62,6 @@ sections:
           - title: サービス階層
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
             html: <p>各自のビジネス ニーズに応じて、General Purpose または Business Critical サービス レベルを選択します。</p>
-          - title: 高度なセキュリティ
-            href: /azure/sql-database/sql-database-security-index
-            html: <p>Azure SQL データベースに組み込まれているセキュリティ機能を使用して、インスタンスとデータベースを保護します。<p>
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
@@ -93,6 +93,12 @@ sections:
               - href: null
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
+              - href: null
+          - title: 新しいインスタンス プールの作成
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
               - href: null
           - title: Azure ネットワーク環境の構成
             values:

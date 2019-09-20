@@ -5,6 +5,8 @@
     - name: Azure AD B2C について
       expanded: true
       href: active-directory-b2c-overview.md
+    - name: 技術と機能の概要
+      href: technical-overview.md
 - name: クイック スタート
   expanded: true
   items:

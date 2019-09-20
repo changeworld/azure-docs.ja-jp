@@ -584,6 +584,8 @@
           href: solution-template-bulk-copy-with-control-table.md
         - name: データベースからの差分コピー
           href: solution-template-delta-copy-with-control-table.md
+        - name: Amazon S3 から Azure Storage にデータを移行する
+          href: solution-template-migration-s3-azure.md
         - name: ファイルの移動
           href: solution-template-move-files.md
         - name: Databricks を使用したデータ変換

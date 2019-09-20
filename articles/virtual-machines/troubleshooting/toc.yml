@@ -187,3 +187,9 @@
   href: understand-vm-reboot.md
 - name: リモートのトラブルシューティング ツール
   href: remote-tools-troubleshoot-azure-vm-issues.md
+- name: 仮想マシンの修復
+  items:
+    - name: Azure 仮想マシンの修復コマンドを使用して Windows VM を修復する
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md

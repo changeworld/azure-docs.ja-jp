@@ -232,7 +232,7 @@
       items:
         - name: Azure portal を使用した読み取りレプリカの管理
           href: howto-read-replicas-portal.md
-        - name: Azure CLI を使用した読み取りレプリカの作成
+        - name: 読み取りレプリカ Azure CLI の管理、REST API
           href: howto-read-replicas-cli.md
 - name: リファレンス
   items:
