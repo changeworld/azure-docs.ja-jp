@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker のドキュメント
   description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジにある Q&A から回答となる可能性が最も高いものが提示されます。
-  ms.openlocfilehash: 36b1c69ba1b94afadd105117ee5ac9dabcdd64a7
-  ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+  ms.openlocfilehash: 8e47211194be3653c3d0ba060b573bad446162ba
+  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/19/2019
-  ms.locfileid: "71123002"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71155086"
 landingContent:
 - title: QnA Maker について
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: QnA Maker とは
       url: overview/overview.md
+    - text: QnA Maker ポータル
+      url: https://www.qnamaker.ai
   - linkListType: concept
     links:
     - text: 開発ライフサイクル
@@ -54,14 +56,6 @@ landingContent:
       url: how-to/chit-chat-knowledge-base.md
     - text: セキュリティで保護された SharePoint データ ソースを追加する
       url: how-to/add-sharepoint-datasources.md
-- title: テストして公開する
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: ナレッジ ベースを対話形式でテストする
-      url: how-to/test-knowledge-base.md
-    - text: ナレッジ ベースの公開
-      url: quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base
 - title: ナレッジ ベースから回答を取得する
   linkLists:
   - linkListType: get-started
@@ -78,6 +72,14 @@ landingContent:
     links:
     - text: メタデータを使用して回答を取得する
       url: how-to/metadata-generateanswer-usage.md
+- title: テストして公開する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ナレッジ ベースを対話形式でテストする
+      url: how-to/test-knowledge-base.md
+    - text: ナレッジ ベースの公開
+      url: quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base
 - title: ナレッジ ベースを改善する
   linkLists:
   - linkListType: how-to-guide
@@ -112,3 +114,13 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: トラブルシューティング
+      url: troubleshooting.md
+    - text: Stack Overflow で質問する
+      url: https://stackoverflow.com/questions/tagged/QnAMaker
+    - text: UserVoice によるサービスへの影響
+      url: https://cognitive.uservoice.com/forums/578689-qna-maker-api

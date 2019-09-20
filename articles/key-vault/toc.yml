@@ -92,6 +92,10 @@
           href: create-certificate-scenarios.md
 - name: ハウツー ガイド
   items:
+    - name: セキュリティ
+      items:
+        - name: Recommendations
+          href: security-recommendations.md
     - name: App Service のマネージド ID を使用する
       href: managed-identity.md
     - name: Azure Key Vault のログ記録
