@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 55401ca498f06aa0b959c3926f2a07f40e7fb638
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972615"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845474"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>レイヤー 2 拡張済みネットワークを使用したワークロードの移行
 
@@ -108,7 +108,7 @@ VMware NSX-T 2.3 リリース時点:
 
 次の手順では、IPsec サービスと L2VPN サービスの Tier0 DR 論理ルーター インスタンスの論理ルーター ID をフェッチする方法を示します。 後で L2VPN を実装するときに、論理ルーター ID が必要になります。
 
-1. NSX-T Manager (https://nsx-t-manager-ip-address) にサインインし、 **[Networking]\(ネットワーク\)**  >  **[Routers]\(ルーター\)**  >  **[Provider-LR]\(プロバイダー LR\)**  >  **[Overview]\(概要\)** の順に選択します。 **[High Availability Mode]\(高可用性モード\)** については、 **[Active-Standby]\(アクティブ/スタンバイ\)** を選択します。 このアクションにより、Tier0 ルーターが現在アクティブになっている Edge VM を示すポップアップ ウィンドウが開きます。
+1. NSX-T Manager https://*nsx-t-manager-ip-address* にサインインし、 **[Networking]\(ネットワーク\)** 、 **[Routers]\(ルーター\)** 、 **[Provider-LR]\(プロバイダー LR\)** 、 **[Overview]\(概要\)** の順に選択します。 **[High Availability Mode]\(高可用性モード\)** については、 **[Active-Standby]\(アクティブ/スタンバイ\)** を選択します。 このアクションにより、Tier0 ルーターが現在アクティブになっている Edge VM を示すポップアップ ウィンドウが開きます。
 
     ![アクティブ/スタンバイを選択する](media/l2vpn-fetch01.png)
 
