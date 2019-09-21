@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 09/20/2019
-  ms.openlocfilehash: 5149324e7de1052bd3a3123758985dd8b722c116
-  ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+  ms.openlocfilehash: 97ba213c59c463abeccd8ce0fe268d39672210d2
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71162043"
+  ms.locfileid: "71172572"
 landingContent:
 - title: Azure DNS について
   linkLists:
