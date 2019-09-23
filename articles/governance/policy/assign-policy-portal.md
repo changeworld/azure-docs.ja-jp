@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 805f9178cb77241b8332fb78687a8409206e5c05
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 6db0879152dfcfd37719c8d22f836da6db7ed79d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231580"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000907"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>クイック スタート:準拠していないリソースを識別するためのポリシー割り当てを作成する
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この新しい割り当てに準拠していない既存のリソースがある場合、 **[準拠していないリソース]** の下に表示されます。
 
-既存のリソースに対して条件が評価され、該当した場合、そのリソースはポリシーに準拠していないとしてマークされます。 次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。 Azure Portal では評価ロジックは表示されませんが、コンプライアンスの状態の結果が表示されます。 コンプライアンスの状態の結果は、"対応" または "準拠していない" のいずれかです。
+既存のリソースに対して条件が評価され、該当した場合、そのリソースはポリシーに準拠していないとしてマークされます。 次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。 Azure portal では評価ロジックは表示されませんが、コンプライアンスの状態の結果は表示されます。 コンプライアンスの状態の結果は、"対応" または "準拠していない" のいずれかです。
 
 | **リソースの状態** | **効果** | **ポリシーの評価** | **コンプライアンスの状態** |
 | --- | --- | --- | --- |

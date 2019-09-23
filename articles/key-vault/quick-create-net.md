@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b61dab28ff3fb6710e59e6209282c71a8f52f674
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914877"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996638"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ
 
@@ -26,7 +26,6 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 - FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
 
 [API リファレンスのドキュメント](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -118,26 +117,14 @@ az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 }
 ```
 
-clientId、clientSecret、subscriptionId、tenantId を書き留めておきます。これらは、「[キー コンテナーに対して認証を行う](#authenticate-to-your-key-vault)」手順で使用します。
-
-また、サービス プリンシパルの appID も必要になります。 これを探すには、[az ad sp list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) に `--show-mine` パラメーターを指定して実行します。
-
-```azurecli
-az ad sp list --show-mine
-```
-
-返された JSON に `appID` が表示されます。
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
+clientId および clientSecret を書き留めておきます。これらは、下記の手順「[キー コンテナーに対する認証](#authenticate-to-your-key-vault)」で使用します。
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
 
-サービス プリンシパルにキー コンテナーへのアクセス許可を付与するアクセス ポリシーを作成します。 これは、[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを使用して行います。 ここでは、キーとシークレットの両方に対する get、list、set の各アクセス許可をサービス プリンシパルに付与します。
+[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドに clientId を渡すことでご利用のサービス プリンシパルにアクセス許可を付与するアクセス ポリシーをご利用のキー コンテナー用に作成します。 キーとシークレットの両方に対する get、list、set の各アクセス許可をサービス プリンシパルに付与します。
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
@@ -164,10 +151,6 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-servi
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 `setx` を呼び出すたびに、"成功: 指定した値は保存されました。" という応答が返されます。
