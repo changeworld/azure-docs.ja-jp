@@ -3,16 +3,16 @@ title: サンプル - カナダ連邦の PBMM ブループリント - コント�
 description: カナダ連邦の PBMM ブループリント サンプルの Azure Policy に対するコントロール マッピング。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 068e3253dbcb7ef8d0a5c0191ac1a0b75bd8c0e9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: baafb0fbcf1dba1cadfff1d5f5e02e2df4f34a25
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918762"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002906"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング
 
@@ -310,6 +310,12 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 > 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 
 
 ## <a name="next-steps"></a>次の手順
+
+カナダ連邦の PBMM ブループリント サンプルのコントロール マッピングを確認しました。 次に、概要と、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [カナダ連邦の PBMM ブループリント - 概要](./control-mapping.md)
+> [カナダ連邦の PBMM ブループリント - デプロイ手順](./deploy.md)
 
 ブループリントとその使用方法に関するその他の記事:
 

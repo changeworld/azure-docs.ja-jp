@@ -1,6 +1,6 @@
 ---
 title: 初めての自動機械学習の実験を作成する
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のワークスペース ランディング ページ (プレビュー) で自動機械学習を使用して分類モデルをトレーニングおよびデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910213"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092007"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>チュートリアル:自動化された機械学習を使用して最初の分類モデルを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "70910213"
 このチュートリアルでは、次のタスクを実施する方法について説明します。
 
 > [!div class="checklist"]
-> * Azure Machine Learning service ワークスペースを作成します。
+> * Azure Machine Learning ワークスペースを作成します。
 > * 自動機械学習の実験を実行します。
 > * 実験の詳細を表示します。
 > * モデルをデプロイします。
@@ -67,7 +67,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 1. 実験名として「**my-1st-automl-experiment**」と入力します。
 
-1. **[Create a new compute]\( 新しいコンピューティングの作成\)** を選択します。 
+1. **[Create a new compute]\( 新しいコンピューティングの作成\)** を選択します。 コンピューティングとは、トレーニング スクリプトを実行したりサービスのデプロイをホストしたりするために使用されるローカルまたはクラウド ベースのリソース環境です。 この実験では、クラウド ベースのコンピューティングを使用します。 
 
     1. この実験のコンピューティング コンテキストを構成します。
         
@@ -99,7 +99,8 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
         ファイル形式| 区切り記号
         区切り記号| コンマ
         エンコード| UTF-8
-        列見出し| すべてのファイルのヘッダーを同じものにする            行のスキップ | なし
+        列見出し| すべてのファイルのヘッダーを同じものにする
+        行のスキップ | なし
 
         >[!NOTE]
         > このフォーム上の設定のいずれかが更新されると、それに応じてプレビューが更新されます。
@@ -146,9 +147,9 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 ## <a name="deploy-the-model"></a>モデルをデプロイする
 
-ワークスペース ランディング ページで自動機械学習を使用すると、最良のモデルを Web サービスとしてデプロイし、新しいデータを予測したり、潜在的な機会領域を特定したりできます。 この実験では、デプロイは、定期預金の潜在顧客を特定するためのスケーラブルな反復ソリューションを金融機関が持つことを意味します。
+ワークスペース ランディング ページで自動機械学習を使用すると、わずかな手順で最良のモデルを Web サービスとしてデプロイすることができます。 デプロイとは、新しいデータを予測したり、潜在的な機会領域を特定したりできるようにモデルを統合することです。 この実験における Web サービスへのデプロイは、定期預金の潜在顧客を特定するためのスケーラブルな反復 Web ソリューションを金融機関が持つことを意味します。 
 
-この実験では、**VotingEnsemble** は **AUC_weighted** メトリックに基づいて最適なモデルと見なされます。  このモデルをデプロイしますが、デプロイには完了まで約 20 分かかることにご留意ください。
+この実験では、**VotingEnsemble** は **AUC_weighted** メトリックに基づいて最適なモデルと見なされます。  このモデルをデプロイしますが、デプロイには完了まで約 20 分かかることにご留意ください。 デプロイ プロセスには、モデルを登録したり、リソースを生成したり、Web サービス用にそれらを構成したりすることを含む、いくつかの手順が伴います。
 
 1. **[実行の詳細]** ページで、右上隅の **[Deploy Best Model]\(最適なモデルのデプロイ\)** を選択します。
 
@@ -161,7 +162,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
     スコアリング スクリプト| 自動生成
     環境スクリプト| 自動生成
     
-1. **[デプロイ]** を選択します。
+1. **[デプロイ]** を選択します。  
 
     デプロイが正常に完了すると、デプロイ完了メッセージが表示されます。
     

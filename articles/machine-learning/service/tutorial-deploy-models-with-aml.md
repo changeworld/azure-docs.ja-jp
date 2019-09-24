@@ -1,7 +1,7 @@
 ---
 title: 画像の分類チュートリアル:モデルをデプロイする
-titleSuffix: Azure Machine Learning service
-description: このチュートリアルでは、Azure Machine Learning サービスを使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをデプロイする方法について説明します。 このチュートリアルは、2 部構成のシリーズの 2 番目です。
+titleSuffix: Azure Machine Learning
+description: このチュートリアルでは、Azure Machine Learning を使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをデプロイする方法について説明します。 このチュートリアルは、2 部構成のシリーズの 2 番目です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6e5ab17a04c994f09bccc0f51f11749ee8590b1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036212"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003065"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>チュートリアル:Azure Container Instances に画像分類モデルをデプロイする
 
@@ -23,7 +23,7 @@ ms.locfileid: "70036212"
 
 これで、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) に Web サービスとしてモデルをデプロイする準備が整いました。 Web サービスは、1 つのイメージ (この場合は Docker イメージ) です。 ここにスコアリング ロジックとモデル自体がカプセル化されています。 
 
-チュートリアルのこのパートでは、Azure Machine Learning service を使って次の作業を行います。
+チュートリアルのこのパートでは、Azure Machine Learning を使って次の作業を行います。
 
 > [!div class="checklist"]
 > * テスト環境を設定する。
@@ -378,7 +378,7 @@ service.delete()
 
 ## <a name="next-steps"></a>次の手順
 
-+ [Azure Machine Learning service のすべてのデプロイ オプション](how-to-deploy-and-where.md)について学習します。
++ [Azure Machine Learning のすべてのデプロイ オプション](how-to-deploy-and-where.md)について学習します。
 + [Web サービス用のクライアントを作成](how-to-consume-web-service.md)する方法について学習します。
 +  [大量のデータの予測](how-to-run-batch-predictions.md)を非同期的に行います。
 + [Application Insights を使用して Azure Machine Learning のモデルを監視](how-to-enable-app-insights.md)します。

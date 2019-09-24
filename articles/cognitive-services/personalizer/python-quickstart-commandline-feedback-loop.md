@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 404ee6fd51493735b8f96e98276f71d1d2f91158
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5b5efa4a8c6d92f9937709f57f99851c90058dda
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882878"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067692"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>クイック スタート:Python 用 Personalize クライアント ライブラリ
 
@@ -37,7 +37,7 @@ Python 用 Personalizer クライアント ライブラリの概要。 以下の
 
 ### <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 さらに、以下を実行できます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://portal.azure.com/) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 詳細については、[Azure portal を使用して Cognitive Services リソースを作成する方法](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページを参照してください。 さらに、以下を実行できます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。

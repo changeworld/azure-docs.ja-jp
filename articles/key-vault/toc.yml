@@ -42,10 +42,12 @@
               href: tutorial-python-windows-virtual-machine.md
     - name: ストレージ アカウント キー
       items:
-        - name: Azure CLI を使用したマネージド ストレージ アカウント キー
+        - name: Azure CLI を使用したストレージ アカウント キーの管理
           href: key-vault-ovw-storage-keys.md
-        - name: PowerShell を使用したマネージド ストレージ アカウント キー
+        - name: PowerShell を使用したストレージ アカウント キーの管理
           href: key-vault-overview-storage-keys-powershell.md
+        - name: コードでの Shared Access Signature トークンの取得
+          href: storage-keys-sas-tokens-code.md
     - name: Azure コンテナー
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure Resource Manager テンプレート

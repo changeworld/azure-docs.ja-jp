@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: fd8abf81589f3338f9e45c6c1d23681269ccc654
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164851"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966985"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>クイック スタート:Java 用 Computer Vision クライアント ライブラリ
 
@@ -106,7 +106,7 @@ dependencies {
 |名前|説明|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | このクラスは、すべての Computer Vision の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
-|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| このクラスは、クライアント オブジェクトから派生し、画像分析、テキスト検出、サムネイル生成など、すべての画像操作を直接処理します。
+|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| このクラスは、クライアント オブジェクトから派生し、画像分析、テキスト検出、サムネイル生成など、すべての画像操作を直接処理します。|
 |[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| この列挙型は、標準の分析操作で実行できるさまざまな種類の画像分析を定義します。 必要に応じて、VisualFeatureTypes の値のセットを指定します。 |
 
 ## <a name="code-examples"></a>コード例
@@ -172,17 +172,17 @@ dependencies {
 
 ### <a name="get-image-tags"></a>画像タグの取得
 
-次のコードは、画像内の検出されたタグのセットを取得します。 詳細については、[コンテンツ タグ](../concept-tagging-images.md)に関するページを参照してください
+次のコードは、画像内の検出されたタグのセットを取得します。 詳細については、[コンテンツ タグ](../concept-tagging-images.md)に関するページを参照してください。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
-### <a name="get-faces"></a>顔の取得
+### <a name="detect-faces"></a>顔を検出する
 
 次のコードは、画像内で検出された顔を、その四角形の座標と顔選択属性と共に返します。 詳細については、[顔の検出](../concept-detecting-faces.md)に関するページを参照してください。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
-### <a name="get-adult-or-racy-content"></a>成人向けまたはわいせつなコンテンツの取得
+### <a name="detect-adult-or-racy-content"></a>成人向けまたはわいせつなコンテンツを検出する
 
 次のコードは、画像内で検出された成人向けまたはわいせつなコンテンツの存在を出力します。 詳細については、[成人向けまたはわいせつなコンテンツ](../concept-detecting-adult-content.md)に関するページを参照してください。
 
@@ -205,6 +205,12 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 次のコードは、画像内の検出されたランドマークに関するデータを解析します。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
+
+### <a name="get-the-image-type"></a>画像の種類を取得する
+
+次のコードは、画像の種類 (クリップ アートであるか線画であるか) に関する情報を出力します。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 

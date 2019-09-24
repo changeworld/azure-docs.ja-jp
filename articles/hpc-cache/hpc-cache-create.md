@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 479adf9419cdd6b04e50fa479d47b56762b2bdc6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774625"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037068"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -21,7 +21,7 @@ Azure portal を使用してキャッシュを作成します。
 
 ## <a name="define-basic-details"></a>基本的な詳細を定義する
 
-![Azure portal のプロジェクト詳細ページのスクリーンショット](media/create-1.png)
+![Azure portal のプロジェクト詳細ページのスクリーンショット](media/hpc-cache-create-basics.png)
 
 **[プロジェクトの詳細]** で、Azure HPC キャッシュのホストとなるサブスクリプションとリソース グループを選択します。 [プレビュー アクセス](hpc-cache-prereqs.md#azure-subscription) リストにサブスクリプションが登録されていることを確認してください。
 
@@ -47,7 +47,7 @@ Azure portal を使用してキャッシュを作成します。
 
 キャッシュ ヒット率を最大限に高めるために、Azure HPC Cache ではキャッシュ ストレージに関して、どのファイルをキャッシュして事前に読み込むかを管理します。 キャッシュの内容は絶えず評価され、アクセスされる頻度が低くなったファイルは長期ストレージに移されます。 メタデータ用の追加領域やその他のオーバーヘッドと共にアクティブな作業ファイル一式を無理なく保持できるキャッシュ ストレージ サイズを選んでください。
 
-![キャッシュ サイズ設定ページのスクリーンショット](media/create-cache-iops.png)
+![キャッシュ サイズ設定ページのスクリーンショット](media/hpc-cache-create-iops.png)
 
 ## <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -55,19 +55,21 @@ Azure portal を使用してキャッシュを作成します。
 
 ストレージ ターゲットはキャッシュの作成中に定義することもできますが、ポータルにあるご自分のキャッシュのページの **[構成]** セクションでリンクを使用して、それらを後から追加することもできます。
 
-![ストレージ ターゲットのページのスクリーンショット](media/create-targets.png)
+![ストレージ ターゲットのページのスクリーンショット](media/hpc-cache-storage-targets-pop.png)
 
 **[ストレージ ターゲットの追加] リンク**をクリックして、バックエンド ストレージ システムを定義します。 ストレージには、Azure BLOB コンテナーまたはオンプレミスの NFS システムを使用できます。
 
 最大 10 個の異なるストレージ ターゲットを定義できます。
 
-ストレージ ターゲットを追加する具体的な手順については、「[ストレージを追加する](hpc-cache-add-storage.md)」を参照してください。 その手順は、BLOB ストレージと NFS エクスポートで異なります。
+ストレージ ターゲットを追加する具体的な手順については、[ストレージの追加](hpc-cache-add-storage.md)に関するページを参照してください。 その手順は、BLOB ストレージと NFS エクスポートで異なります。
 
-どちらのタイプのストレージも、バックエンド ストレージ システムの検出方法 (NFS アドレスまたは BLOB コンテナー名) とクライアント側の名前空間のパスを指定する必要があります。
+いくつかのヒントを次に示します。 
 
-BLOB ストレージ ターゲットを作成する際は、[アクセス制御ロールの追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)に関するセクションの説明のとおり、キャッシュにストレージ アカウントへのアクセス許可があることを確認してください。 ロールの構成を正しくできるかどうかが不安な場合は、最初にキャッシュを作成した後で BLOB ストレージを追加してください。
+* どちらのタイプのストレージも、バックエンド ストレージ システムの検出方法 (NFS アドレスまたは BLOB コンテナー名) とクライアント側の名前空間のパスを指定する必要があります。
 
-NFS ストレージ ターゲットを作成するときは、[使用モデル](hpc-cache-add-storage.md#choose-a-usage-model)を指定します。 使用モデルの設定が、キャッシュによるワークフローの最適化に役立ちます。
+* BLOB ストレージ ターゲットを作成する際は、[アクセス制御ロールの追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)に関するセクションの説明のとおり、キャッシュにストレージ アカウントへのアクセス許可があることを確認してください。 ロールの構成を正しくできるかどうかが不安な場合は、最初にキャッシュを作成した後で BLOB ストレージを追加してください。
+
+* NFS ストレージ ターゲットを作成するときは、[使用モデル](hpc-cache-add-storage.md#choose-a-usage-model)を指定します。 使用モデルの設定が、キャッシュによるワークフローの最適化に役立ちます。
 
 ## <a name="add-resource-tags-optional"></a>リソース タグを追加する (省略可)
 
@@ -77,11 +79,13 @@ NFS ストレージ ターゲットを作成するときは、[使用モデル](
 
 新しいキャッシュを構成したら、 **[確認と作成]** タブをクリックします。選択内容がポータルによって検証されるほか、自分で選択内容を確認することができます。 すべて正しければ **[作成]** をクリックしてください。 
 
-キャッシュの作成には 10 分程度かかります。 進行状況は、Azure portal の通知パネルで追跡できます。 完了すると、新しい Azure HPC Cache インスタンスへのリンクと共に通知が表示されます。 
+キャッシュの作成には 10 分程度かかります。 進行状況は、Azure portal の通知パネルで追跡できます。 
 
-キャッシュは、ご自分のサブスクリプションの **[リソース]** 一覧でも確認できます。 
+![ポータルのキャッシュ作成画面 ("デプロイが進行中です" ページと "通知" ページ) のスクリーンショット](media/hpc-cache-deploy-status.png)
 
-![Azure portal における Azure HPC Cache インスタンスのスクリーンショット](media/finished-hpc-cache.png)
+作成が完了すると、新しい Azure HPC Cache インスタンスへのリンクと共に通知が表示され、ご利用のサブスクリプションの **[リソース]** リストにキャッシュが表示されます。 
+
+![Azure portal における Azure HPC Cache インスタンスのスクリーンショット](media/hpc-cache-new-overview.png)
 
 ## <a name="next-steps"></a>次の手順
 

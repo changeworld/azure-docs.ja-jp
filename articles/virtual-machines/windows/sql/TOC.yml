@@ -36,6 +36,8 @@
           href: virtual-machines-windows-sql-automated-backup-v2.md
     - name: 管理
       items:
+        - name: 専用ホスト
+          href: virtual-machines-windows-sql-dedicated-host.md
         - name: Azure Portal の場合
           href: virtual-machines-windows-sql-manage-portal.md
         - name: SQL 2008 および R2 のサポートの延長

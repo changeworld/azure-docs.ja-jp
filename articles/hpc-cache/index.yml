@@ -10,12 +10,12 @@ metadata:
   author: ekpgh
   ms.author: v-erkell
   ms.date: 08/30/2019
-  ms.openlocfilehash: 4d5935646c3266624395b3b29a34d9cf8d446de7
-  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.openlocfilehash: db39dac68106c9a7538a9c6ea369d2614c012c1f
+  ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/06/2019
-  ms.locfileid: "70774557"
+  ms.lasthandoff: 09/23/2019
+  ms.locfileid: "71180695"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:
@@ -37,10 +37,8 @@ landingContent:
       url: hpc-cache-mount.md
   - linkListType: concept
     links:
-    - text: 集約された名前空間を構成する
+    - text: 集約された名前空間を計画する
       url: hpc-cache-namespace.md
-    - text: 新しい Blob Storage にデータを設定する
-      url: hpc-cache-ingest.md
 - title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide

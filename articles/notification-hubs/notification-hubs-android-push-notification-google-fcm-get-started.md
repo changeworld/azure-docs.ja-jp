@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/15/2019
+ms.date: 09/11/2019
 ms.author: jowargo
-ms.openlocfilehash: a01a71190f6de4bd08ee306f0175b01fee3db3d5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: f1a6980efd7614ce245c45852b6ce08eb71d1cfd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227876"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935145"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>チュートリアル:Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
 
@@ -190,7 +190,7 @@ ms.locfileid: "68227876"
      > [!IMPORTANT]
      > 先に進む前に、ハブの**名前**と **DefaultListenSharedAccessSignature** を入力します。 
 
-3. `RegistrationIntentService`という名前の別の新しいクラスをプロジェクトに追加します。 このクラスによって、`IntentService` インターフェイスが実装されます。 また、[FCM トークンの更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)と[通知ハブへの登録](notification-hubs-push-notification-registration-management.md)も処理されます。
+2. `RegistrationIntentService`という名前の別の新しいクラスをプロジェクトに追加します。 このクラスによって、`IntentService` インターフェイスが実装されます。 また、[FCM トークンの更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)と[通知ハブへの登録](notification-hubs-push-notification-registration-management.md)も処理されます。
 
     次のコードをこのクラスに使用します。
 
@@ -292,7 +292,7 @@ ms.locfileid: "68227876"
     }
     ```
 
-4. `MainActivity` クラスで、クラス宣言の上に次の `import` ステートメントを追加します。
+3. `MainActivity` クラスで、クラス宣言の上に次の `import` ステートメントを追加します。
 
     ```java
     import com.google.android.gms.common.ConnectionResult;
@@ -303,7 +303,7 @@ ms.locfileid: "68227876"
     import android.widget.Toast;
     ```
 
-5. クラスの先頭に次のメンバーを追加します。 これらのフィールドは、[Google の推奨に従って Google Play 開発者サービスの可用性をチェックする](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)ために使用します。
+4. クラスの先頭に次のメンバーを追加します。 これらのフィールドは、[Google の推奨に従って Google Play 開発者サービスの可用性をチェックする](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)ために使用します。
 
     ```java
     public static MainActivity mainActivity;
@@ -312,7 +312,7 @@ ms.locfileid: "68227876"
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     ```
 
-6. `MainActivity` クラスに、Google Play 開発者サービスが利用可能かどうかを確認する次のメソッドを追加します。
+5. `MainActivity` クラスに、Google Play 開発者サービスが利用可能かどうかを確認する次のメソッドを追加します。
 
     ```java
     /**
@@ -339,7 +339,7 @@ ms.locfileid: "68227876"
     }
     ```
 
-7. `MainActivity` クラスに次のコードを追加します。このコードは、Google Play 開発者サービスを確認してから、`IntentService` を呼び出して FCM 登録トークンを取得し、ハブに登録します。
+6. `MainActivity` クラスに次のコードを追加します。このコードは、Google Play 開発者サービスを確認してから、`IntentService` を呼び出して FCM 登録トークンを取得し、ハブに登録します。
 
     ```java
     public void registerWithNotificationHubs()
@@ -352,7 +352,7 @@ ms.locfileid: "68227876"
     }
     ```
 
-8. `MainActivity` クラスの `OnCreate` メソッドで、アクティビティの作成時に登録プロセスを開始するために次のコードを追加します。
+7. `MainActivity` クラスの `OnCreate` メソッドで、アクティビティの作成時に登録プロセスを開始するために次のコードを追加します。
 
     ```java
     @Override
@@ -366,7 +366,7 @@ ms.locfileid: "68227876"
     }
     ```
 
-9. アプリの状態を確認してアプリ内で報告するには、次の追加メソッドを `MainActivity` に追加します。
+8. アプリの状態を確認してアプリ内で報告するには、次の追加メソッドを `MainActivity` に追加します。
 
     ```java
     @Override
@@ -405,15 +405,17 @@ ms.locfileid: "68227876"
     }
     ```
 
-10. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的に報告します。 **res** > **layout** > **activity_main.xml** レイアウトで、そのコントロールに次の ID を追加します。
+9. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的に報告します。 **res** > **layout** > **activity_main.xml** レイアウトで、そのコントロールに次の ID を追加します。
 
     ```java
     android:id="@+id/text_hello"
     ```
 
-11. 次に、AndroidManifest.xml で定義したレシーバーのサブクラスを追加します。 `FirebaseService`という名前の別の新しいクラスをプロジェクトに追加します。
+    ![Azure Notification Hubs - Test Send](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
-12. 次の import ステートメントを `FirebaseService.java` の先頭に追加します。
+10. 次に、AndroidManifest.xml で定義したレシーバーのサブクラスを追加します。 `FirebaseService`という名前の別の新しいクラスをプロジェクトに追加します。
+
+11. 次の import ステートメントを `FirebaseService.java` の先頭に追加します。
 
     ```java
     import com.google.firebase.messaging.FirebaseMessagingService;
@@ -428,10 +430,10 @@ ms.locfileid: "68227876"
     import android.net.Uri;
     import android.os.Build;
     import android.os.Bundle;
-    import android.support.v4.app.NotificationCompat;
+    import androidx.core.app.NotificationCompat;
     ```
 
-13. `FirebaseService` クラス用に次のコードを追加して、`FirebaseMessagingService` のサブクラスにします。
+12. `FirebaseService` クラス用に次のコードを追加して、`FirebaseMessagingService` のサブクラスにします。
 
     このコードでは `onMessageReceived` メソッドをオーバーライドし、受信した通知をレポートします。 また、`sendNotification()` メソッドを使用して Android の通知マネージャーにプッシュ通知を送信します。 アプリが動作していないときに通知を受信した場合は、`sendNotification()` メソッドを呼び出します。
 
@@ -518,12 +520,16 @@ ms.locfileid: "68227876"
     }
     ```
 
-14. Android Studio のメニュー バーで、 **[Build]\(ビルド\)**  >  **[Rebuild Project]\(プロジェクトのリビルド\)** の順に選択し、コードにエラーがないことを確認します。 `ic_launcher` アイコンに関するエラーが発生する場合は、AndroidManifest.xml ファイルから次のステートメントを削除します。 
+13. Android Studio のメニュー バーで、 **[Build]\(ビルド\)**  >  **[Rebuild Project]\(プロジェクトのリビルド\)** の順に選択し、コードにエラーがないことを確認します。 `ic_launcher` アイコンに関するエラーが発生する場合は、AndroidManifest.xml ファイルから次のステートメントを削除します。 
 
     ```
         android:icon="@mipmap/ic_launcher"
     ```
-15. お使いのデバイスでアプリを実行し、そのアプリがハブに正常に登録されることを確認します。
+14. アプリを実行するための仮想デバイスがあることを確認します。 ない場合は、次の手順に従って追加してください。
+    1. ![デバイス マネージャーを開く](./media/notification-hubs-android-push-notification-google-fcm-get-started/open-device-manager.png)
+    2. ![仮想デバイスを作成する](./media/notification-hubs-android-push-notification-google-fcm-get-started/your-virtual-devices.PNG)
+
+15. 選択したデバイスでアプリを実行し、そのアプリがハブに正常に登録されることを確認します。
 
     > [!NOTE]
     > インスタンス ID サービスの `onTokenRefresh()` メソッドが呼び出されるまでは、初期起動時に登録が失敗する場合があります。 更新すると、通知ハブに正常に登録されるようになります。

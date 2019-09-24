@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f237af58bb98f667d4481a88bbb4daa77657468c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376150"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966925"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>クイック スタート:Python 用 Face クライアント ライブラリ
 
@@ -285,7 +285,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Java 用の Face ライブラリを使用して基本的なタスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
+このクイックスタートでは、Python 用の Face ライブラリを使用して基本的なタスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
 
 > [!div class="nextstepaction"]
 > [Face API リファレンス (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)

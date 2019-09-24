@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b4e9b72be5d03e0b3441983ca991a16688f5f4cd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916457"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934187"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Azure Maps を使用してジオフェンスを設定する
 
@@ -56,7 +56,7 @@ Azure Maps の Data Upload API を使用して建設現場のジオフェンス�
     
     URL パス内の GEOJSON パラメーターは、アップロードするデータの形式を表します。
 
-3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のサブスクリプション キーに置き換えてください。
+3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のプライマリ サブスクリプション キーに置き換えてください。
    
     ![Postman のキーと値のペアから成るパラメーター](./media/tutorial-geofence/postman-key-vals.png)
 

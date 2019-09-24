@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/04/2019
-  ms.openlocfilehash: e5f784b7411d3e5454efd586d91953b03ff8a05a
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.openlocfilehash: 8234ea3e9f82716346e38c572a66cf87fc505269
+  ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70967025"
+  ms.lasthandoff: 09/23/2019
+  ms.locfileid: "71203892"
 landingContent:
 - title: Computer Vision について
   linkLists:
@@ -40,6 +40,10 @@ landingContent:
       url: quickstarts-sdk/csharp-sdk.md
     - text: Python SDK の使用
       url: quickstarts-sdk/python-sdk.md
+    - text: Java SDK の使用
+      url: quickstarts-sdk/java-sdk.md
+    - text: Node SDK の使用
+      url: quickstarts-sdk/node-sdk.md
 - title: 画像内のオブジェクトを検出する
   linkLists:
   - linkListType: concept
@@ -54,6 +58,8 @@ landingContent:
       url: quickstarts-sdk/python-sdk.md
     - text: Java SDK の使用
       url: quickstarts-sdk/java-sdk.md
+    - text: Node SDK の使用
+      url: quickstarts-sdk/node-sdk.md
 - title: コンテンツ タグを画像に適用する
   linkLists:
   - linkListType: concept
@@ -68,6 +74,8 @@ landingContent:
       url: quickstarts-sdk/python-sdk.md
     - text: Java SDK の使用
       url: quickstarts-sdk/java-sdk.md
+    - text: Node SDK の使用
+      url: quickstarts-sdk/node-sdk.md
 - title: コンテナーの使用
   linkLists:
   - linkListType: get-started
@@ -98,6 +106,8 @@ landingContent:
       url: quickstarts-sdk/python-sdk.md
     - text: Java SDK の使用
       url: quickstarts-sdk/java-sdk.md
+    - text: Node SDK の使用
+      url: quickstarts-sdk/node-sdk.md
 - title: リファレンス
   linkLists:
   - linkListType: reference
