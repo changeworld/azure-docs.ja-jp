@@ -26,7 +26,7 @@
               href: tutorial-train-models-with-aml.md
             - name: 2. モデルをデプロイする
               href: tutorial-deploy-models-with-aml.md
-        - name: 回帰 (ニューヨーク市のタクシー データ)
+        - name: 自動 ML による回帰 (NYC タクシー データ)
           items:
             - name: ML モデルを自動トレーニングする
               displayName: 'automl, automated, auto ml,'
@@ -44,7 +44,7 @@
         - name: 2. 回帰モデルをデプロイする
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
-    - name: 自動化された機械学習
+    - name: 自動 ML (インターフェイス)
       items:
         - name: 分類 (銀行データ)
           displayName: 'automl, automated, auto ml, portal, ui'
@@ -107,13 +107,13 @@
         - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: 開発環境をセットアップする
+    - name: 環境をセットアップする
       items:
-        - name: 開発環境を構成する
+        - name: 開発環境をセットアップする
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: ソフトウェア環境を管理する
-          displayName: 'pip, Conda'
+        - name: ソフトウェア環境をセットアップする
+          displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
         - name: ログの有効化
           displayName: 'troubleshoot, log, files, tracing'

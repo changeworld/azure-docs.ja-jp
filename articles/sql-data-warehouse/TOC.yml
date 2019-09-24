@@ -140,7 +140,11 @@
             - name: パフォーマンス チューニング ガイダンス
               href: performance-tuning-ordered-CCI.md
         - name: 結果セットのキャッシュ
-          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+          items:
+            - name: データベースの設定
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
+            - name: セッションの設定
+              href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: テーブル
           items:
             - name: 概要

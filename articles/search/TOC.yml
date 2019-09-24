@@ -251,18 +251,18 @@
               href: knowledge-store-connect-power-bi.md
     - name: ドキュメントにクエリを実行する
       items:
-        - name: 基本的なクエリの作成
+        - name: クエリの種類と構成
           href: search-query-overview.md
-        - name: Search エクスプローラー (ポータル)
+        - name: 簡単なクエリを作成する
+          href: search-query-simple-examples.md
+        - name: 完全な Lucene 構文を使用する
+          href: search-query-lucene-examples.md
+        - name: Search エクスプローラーを使用する (ポータル)
           href: search-explorer.md
         - name: 単純なクエリ構文
           href: query-simple-syntax.md
         - name: Full Lucene クエリ構文
           href: query-lucene-syntax.md
-        - name: 例 (簡単な構文)
-          href: search-query-simple-examples.md
-        - name: 例 (完全な Lucene)
-          href: search-query-lucene-examples.md
         - name: moreLikeThis (プレビュー)
           href: search-more-like-this.md
     - name: フィルターを適用する

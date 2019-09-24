@@ -192,6 +192,8 @@
           href: functions-deployment-slots.md
         - name: Azure Pipelines を使用してビルドおよびデプロイする
           href: functions-how-to-azure-devops.md
+        - name: GitHub アクションを使用して構築およびデプロイする
+          href: functions-how-to-github-actions.md
         - name: ZIP 展開
           href: deployment-zip-push.md
         - name: パッケージから実行

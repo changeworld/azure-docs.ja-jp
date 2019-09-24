@@ -27,7 +27,7 @@
           href: tutorial-create-populate-tsi-environment.md
     - name: Azure Time Series Insights プレビュー
       items:
-        - name: Azure Time Series Insights プレビューのチュートリアル
+        - name: プレビュー環境を設定する
           href: time-series-insights-update-create-environment.md
 - name: 概念
   items:
@@ -118,7 +118,7 @@
         - name: Azure Time Series Insights GA
           href: /rest/api/time-series-insights/ga
           items:
-            - name: Query
+            - name: クエリ
               href: /rest/api/time-series-insights/ga-query
               items:
                 - name: API

@@ -183,8 +183,8 @@
       href: /rest/api/mariadb
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: データイン レプリケーションのストアド プロシージャ
-      href: reference-data-in-stored-procedures.md
+    - name: Azure ストアド プロシージャ
+      href: reference-stored-procedures.md
 - name: リソース
   items:
     - name: デプロイ テンプレート

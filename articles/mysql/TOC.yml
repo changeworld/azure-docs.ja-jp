@@ -229,8 +229,8 @@
       href: /rest/api/mysql
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: データイン レプリケーションのストアド プロシージャ
-      href: reference-data-in-stored-procedures.md
+    - name: Azure ストアド プロシージャ
+      href: reference-stored-procedures.md
 - name: リソース
   items:
     - name: デプロイ テンプレート
