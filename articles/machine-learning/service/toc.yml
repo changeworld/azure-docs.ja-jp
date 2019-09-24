@@ -54,26 +54,6 @@
     - name: Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: ビジュアル インターフェイスの実験
-      items:
-        - name: 価格を予測する
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-basic.md
-        - name: 価格を予測する (詳細設定)
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
-        - name: 信用リスクの予測
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-basic.md
-        - name: 信用リスクを予測する (詳細設定)
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
-        - name: 顧客離れを予測する
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-churn.md
-        - name: フライトの遅延を予測する
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-flight-delay.md
     - name: Azure Open Datasets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
@@ -174,6 +154,27 @@
               href: how-to-train-pytorch.md
             - name: Chainer の使用
               href: how-to-train-chainer.md
+        - name: ビジュアル インターフェイスの使用
+          displayName: sample visual interface experiments
+          items:
+            - name: 価格を予測する
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+            - name: 価格を予測する (詳細設定)
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
+            - name: 信用リスクの予測
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+            - name: 信用リスクを予測する (詳細設定)
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+            - name: 顧客離れを予測する
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-churn.md
+            - name: フライトの遅延を予測する
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-flight-delay.md
         - name: ハイパーパラメーターを調整する
           displayName: parameter
           href: how-to-tune-hyperparameters.md
