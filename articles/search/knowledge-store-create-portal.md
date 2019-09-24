@@ -23,7 +23,7 @@ ms.locfileid: "70963189"
 
 ナレッジ ストアは、Azure Search の機能の 1 つです。AI エンリッチメント パイプラインからの出力を、後から下流で行われる分析などの処理に使用できるよう永続化するものです。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Search を使用してそのインデックスを作成し、Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure ストレージ内のナレッジ ストアにその結果を保存します。 その後、Power BI や Storage Explorer などのツールを使用してナレッジ ストアを探索することができます。
 
-この記事では、Azure portal のデータのインポート ウィザードを使用して AI エンリッチメントを取り込み、インデックスを作成して、一連のホテルのレビューに適用します。 ホテルのレビューは Azure BLOG ストレージにインポートされ、その結果がナレッジ ストアとして Azure Table Storage に保存されます。
+この記事では、Azure portal のデータのインポート ウィザードを使用して AI エンリッチメントを取り込み、インデックスを作成して、一連のホテルのレビューに適用します。 ホテル レビューは Azure Blob Storage にインポートされ、その結果がナレッジ ストアとして Azure Table Storage に保存されます。
 
 ナレッジ ストアを作成したら、Storage Explorer または Power BI を使用してそのナレッジ ストアにアクセスする方法を学習します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "70963189"
 
 + [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
 
-+ サンプル データとナレッジ ストアを格納するための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 ストレージ アカウントには、Azure Search サービスと同じ場所 (米国西部など) を使用する必要があります。また、"*アカウントの種類*" は "*StorageV2 (汎用 V2)* " (既定) または "*Storage (汎用 V1)* " であることが必要です。
++ サンプル データとナレッジ ストアを格納するための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 ストレージ アカウントには、Azure Search サービスと同じ場所 (米国西部など) を使用する必要があります。また、"*アカウントの種類*は*StorageV2 (汎用 V2)* (既定) または *[Storage (汎用 V1)]* であることが必要です。
 
 ## <a name="load-the-data"></a>データを読み込む
 
