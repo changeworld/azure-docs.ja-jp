@@ -61,7 +61,7 @@
           href: time-series-insights-update-use-cases.md
         - name: タイム シリーズ モデル
           href: time-series-insights-update-tsm.md
-        - name: データ照会
+        - name: タイム シリーズ クエリ
           href: time-series-insights-update-tsq.md
         - name: エクスプローラー プレビューでデータを視覚化する
           href: time-series-insights-update-explorer.md
