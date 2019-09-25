@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 09/18/2019
-  ms.openlocfilehash: d23fac0d030c1d288e1491273d39e07d80426885
-  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.openlocfilehash: 8c4f701c398e27114844b5a2b95c894044c3a8b2
+  ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/19/2019
-  ms.locfileid: "71147314"
+  ms.lasthandoff: 09/25/2019
+  ms.locfileid: "71268868"
 landingContent:
 - title: Azure Logic Apps について
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Azure Logic Apps のコネクタ
-      url: /azure/connectors/apis-list.md
+      url: /azure/connectors/apis-list
     - text: 定期的なワークフローをスケジュール設定する
       url: concepts-schedule-automated-recurring-tasks-workflows.md
     - text: B2B エンタープライズ統合

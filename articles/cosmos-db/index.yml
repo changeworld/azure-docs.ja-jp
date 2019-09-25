@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: f10dff319ba526960f9d2766de7ad4f41651a774
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  ms.openlocfilehash: e75a28b18dcf21980755d0888690907ce0436a67
+  ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155723"
+  ms.lasthandoff: 09/25/2019
+  ms.locfileid: "71268806"
 landingContent:
 - title: Azure Cosmos DB について
   linkLists:
@@ -283,7 +283,7 @@ landingContent:
     - text: CQL シェル、Spark – Cassandra API
       url: cassandra-import-data.md
     - text: Azure Database Migration Service – MongoDB API
-      url: /dms/tutorial-mongodb-cosmos-db?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcosmos-db%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json.md
+      url: /azure/dms/tutorial-mongodb-cosmos-db
     - text: AzCopy、データ移行ツール – Table API
       url: table-import.md
   - linkListType: how-to-guide
@@ -311,4 +311,4 @@ landingContent:
     - text: Cosmos DB から Spark へのコネクタを使用する
       url: spark-connector.md
     - text: Apache Kafka で Cosmos DB を使用する
-      url: /hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcosmos-db%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json.md
+      url: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
