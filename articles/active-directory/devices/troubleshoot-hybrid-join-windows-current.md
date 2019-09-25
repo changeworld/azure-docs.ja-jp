@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297568"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995183"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング 
 
@@ -404,6 +404,9 @@ WamDefaultAuthority: organizations
 - 代替ログイン ID
 - HTTP プロキシが見つからない
 
+## <a name="known-issues"></a>既知の問題
+- [設定] -> [アカウント] -> [職場または学校にアクセスする] で、Hybrid Azure AD 参加済みデバイスには、モバイル ホットスポットまたは外部 WiFi ネットワークに接続されているときに、Azure AD 用に 1 つとオンプレミス AD 用に 1 つという 2 つの異なるアカウントが表示される場合があります。 これは UI のみの問題であり、機能には影響しません。 
+ 
 ## <a name="next-steps"></a>次の手順
 
 [dsregcmd コマンドを使用したデバイスのトラブルシューティング](troubleshoot-device-dsregcmd.md)に進みます。

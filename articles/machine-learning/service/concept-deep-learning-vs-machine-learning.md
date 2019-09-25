@@ -1,6 +1,6 @@
 ---
 title: ディープ ラーニングと機械学習
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: ディープ ラーニングと機械学習について、および両方の概念が人工知能とどのように関連しているかについて説明します。 ディープ ラーニングは、不正行為の検出、音声と顔の認識、感情分析、時系列予測などのシナリオに適用できます。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 3b0546c42ddd5252b35d1a77d7b152733beec233
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240954"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035500"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習
 
@@ -106,9 +106,9 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 
 ## <a name="next-steps"></a>次の手順
 
-次の記事では、[Azure Machine Learning service](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri) でディープ ラーニング テクノロジを使用する方法について説明されています。
+次の記事では、[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri) でディープ ラーニング テクノロジを使用する方法について説明されています。
 
 - [TensorFlow モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 - [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 - [Pytorch モデルを使用して画像を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-- [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)

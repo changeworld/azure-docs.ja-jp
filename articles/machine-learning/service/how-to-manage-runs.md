@@ -1,6 +1,6 @@
 ---
 title: Python でのトレーニングの実行の開始、監視、およびキャンセル
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 自分の機械学習の実験を、開始、状態設定、タグ付けおよび整理する方法を説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 6615b5c277577ee2238434591c61362885f2fec6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376291"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002742"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -33,9 +33,9 @@ ms.locfileid: "70376291"
 
 次のものが必要です。
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* [Azure Machine Learning service ワークスペース](how-to-manage-workspace.md)。
+* [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
 * Azure Machine Learning SDK for Python (バージョン 1.0.21 以降)。 SDK の最新バージョンのインストールまたは最新バージョンへの更新を行うには、[SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関する記事を参照してください。
 
@@ -45,7 +45,7 @@ ms.locfileid: "70376291"
     print(azureml.core.VERSION)
     ```
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) と [Azure Machine Learning service 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) と [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
 ## <a name="start-a-run-and-its-logging-process"></a>実行とそのロギング プロセスを開始する
 
@@ -79,7 +79,7 @@ notebook_run.log(name="message", value="Hello from run!")
     az login
     ```
 
-1. ワークスペースの構成を、トレーニング スクリプトを含むフォルダーにアタッチします。 `myworkspace` は、お使いの Azure Machine Learning service ワークスペースに置き換えます。 `myresourcegroup` は、ワークスペースが含まれている Azure リソース グループに置き換えます。
+1. ワークスペースの構成を、トレーニング スクリプトを含むフォルダーにアタッチします。 `myworkspace` は、ご利用の Azure Machine Learning ワークスペースに置き換えます。 `myresourcegroup` は、ワークスペースが含まれている Azure リソース グループに置き換えます。
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
@@ -253,7 +253,7 @@ print(parent_run.get_children())
 
 ## <a name="tag-and-find-runs"></a>実行のタグ付けおよび検索
 
-Azure Machine Learning service では、実行の整理にプロパティとタグを使用したり、自分の実行に対し重要な情報をクエリしたりできます。
+Azure Machine Learning では、実行の整理にプロパティとタグを使用したり、自分の実行に対し重要な情報をクエリしたりできます。
 
 ### <a name="add-properties-and-tags"></a>プロパティとタグの追加
 

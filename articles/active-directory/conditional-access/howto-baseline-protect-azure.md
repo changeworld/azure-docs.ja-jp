@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 06b3a3f12b2955ae97c43b0caf6a4ac13c9b770a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532946"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086742"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>ベースライン ポリシー:サービス管理のために MFA を要求する (プレビュー)
 
@@ -50,7 +50,7 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
-**サービス管理のために MFA を要求する**ポリシーは、すべての Azure Resource Manager ユーザーに適用されます。したがって、デプロイが確実かつスムーズに行われるようにするための考慮事項がいくつかあります。 たとえば、MFA を実行できない、または実行すべきではないユーザーやサービス プリンシパルを Azure AD で特定する、ご自身の組織で使用されている先進認証に対応していないアプリケーションやクライアントを特定する、といった考慮事項です。
+**サービス管理のために MFA を要求する**ポリシーは、すべての Azure Resource Manager ユーザーに適用されます。
 
 ## <a name="enable-the-baseline-policy"></a>ベースライン ポリシーを有効にする
 

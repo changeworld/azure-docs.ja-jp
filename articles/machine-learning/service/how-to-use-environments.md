@@ -1,6 +1,6 @@
 ---
 title: モデルのトレーニングとデプロイのための環境の作成、使用、管理
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: モデルのトレーニングとデプロイのための環境を作成し、管理します。 環境の Python パッケージとその他の設定を管理します。
 services: machine-learning
 author: rastala
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 242f3cec0ac766e537bd0483725ba51685bb7ced
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098953"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996629"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>トレーニングとデプロイのための環境の作成と管理
 
 この記事では、Azure Machine Learning の[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)を作成および管理し、プロジェクトのソフトウェア依存関係の変化を追跡して再現できるようにする方法について説明します。
 
-ソフトウェアの依存関係の管理は、開発者にとって一般的なタスクです。 手動で多くのソフトウェアを構成しなくても、ビルドの再現可能性を保証できることが理想的です。 Azure Machine Learning service の Environments クラスは、ローカル開発のための pip や Conda などのソリューションを念頭に、ローカルと分散型両方のクラウド開発のためのソリューションを提供します。
+ソフトウェアの依存関係の管理は、開発者にとって一般的なタスクです。 手動で多くのソフトウェアを構成しなくても、ビルドの再現可能性を保証できることが理想的です。 Azure Machine Learning の Environments クラスは、ローカル開発のための pip や Conda などのソリューションを念頭に、ローカルと分散型両方のクラウド開発のためのソリューションを提供します。
 
 この記事の例は、以下の方法を示します。
 
@@ -52,7 +52,7 @@ Python 環境とスクリプトの依存関係を [Conda](https://conda.io/docs/
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning SDK for Python が[インストール](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)されていること。
-* [Azure Machine Learning service ワークスペース](how-to-manage-workspace.md)。
+* [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
 ## <a name="create-an-environment"></a>環境の作成
 

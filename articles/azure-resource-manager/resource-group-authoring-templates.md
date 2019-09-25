@@ -4,14 +4,14 @@ description: 宣言型 JSON 構文を使用した Azure Resource Manager テン�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d396b6b48687e451396849cc256c25f847a219cf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4a5c1a99911c31f539d4f55adefb2c5f06243dd0
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306840"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984095"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
@@ -84,6 +84,8 @@ ms.locfileid: "70306840"
 | maxLength |いいえ |string 型、securestring 型、array 型パラメーターの長さの最大値 (この値を含む)。 |
 | description |いいえ |ポータルを通じてユーザーに表示されるパラメーターの説明。 詳しくは、[テンプレート内のコメント](#comments)に関するページをご覧ください。 |
 
+パラメーターの使用方法の例については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
+
 ## <a name="variables"></a>変数
 
 テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。
@@ -116,6 +118,8 @@ ms.locfileid: "70306840"
 ```
 
 `copy` を使用して変数に複数の値を作成する方法については、「[変数の反復処理](resource-group-create-multiple.md#variable-iteration)」をご覧ください。
+
+変数の使用方法の例については、「[Azure Resource Manager テンプレートの変数](template-variables.md)」を参照してください。
 
 ## <a name="functions"></a>Functions
 
@@ -159,6 +163,8 @@ ms.locfileid: "70306840"
 | parameter-value |いいえ |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
 | output-type |はい |出力値の型。 出力値では、関数入力パラメーターと同じ型がサポートされています。 |
 | output-value |はい |評価され、関数から返されるテンプレート言語式。 |
+
+カスタム関数の使用方法の例については、「[Azure Resource Manager テンプレートのユーザー定義関数](template-user-defined-functions.md)」を参照してください。
 
 ## <a name="resources"></a>リソース
 
@@ -259,6 +265,8 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | condition |いいえ | この出力値が返されたかどうかを示すブール値。 `true` の場合、値はデプロイの出力に含まれています。 `false` の場合、このデプロイでは、出力値はスキップされます。 指定しない場合、既定値は `true` です。 |
 | type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 出力の種類に **securestring** を指定した場合、値はデプロイ履歴に表示されず、他のテンプレートから取得できません。 複数のテンプレートでシークレット値を使用するには、シークレットをキー コンテナーに格納し、パラメーター ファイルでそのシークレットを参照します。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](resource-manager-keyvault-parameter.md)」を参照してください |
 | value |はい |評価され、出力値として返されるテンプレート言語式。 |
+
+出力の使用方法の例については、「[Azure Resource Manager テンプレートの出力](template-outputs.md)」を参照してください。
 
 <a id="comments" />
 

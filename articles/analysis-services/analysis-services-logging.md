@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 357e7975b1c4fe44d86b7e29e96a9abb6ab63c35
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6b311135832e1ec861cf6e14e5ad7e82574294bf
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932265"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959067"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
@@ -67,7 +67,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 ### <a name="all-metrics"></a>すべてのメトリック
 
-メトリックのカテゴリは、メトリックに表示されるのと同じ[サーバーのメトリック](analysis-services-monitor.md#server-metrics)をログ記録します。
+[メトリック] カテゴリでは、同じ[サーバー メトリック](analysis-services-monitor.md#server-metrics)が AzureMetrics テーブルに記録されます。 クエリの[スケールアウト](analysis-services-scale-out.md)を使用していて、読み取りレプリカごとにメトリックを分離する必要がある場合は、代わりに AzureDiagnostics テーブルを使用します。この **OperationName** は **LogMetric** と同じです。
 
 ## <a name="setup-diagnostics-logging"></a>診断ログのセットアップ
 
@@ -161,27 +161,53 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 
 クエリ ビルダーで、**LogManagement** > **AzureDiagnostics** を展開します。 AzureDiagnostics には、エンジンとサービスのイベントが含まれています。 クエリが即座に作成されることに注目してください。 EventClass\_s フィールドには、オンプレミスのログ記録の xEvents を使用している場合にはなじみのある、xEvent 名が含まれています。 **[EventClass\_s]** またはイベント名のいずれかをクリックすると、Log Analytics ワークスペースでクエリの作成が続行されます。 後で再利用するため、クエリは必ず保存しておいてください。
 
-### <a name="example-query"></a>クエリの例
-このクエリでは、モデル データベースとサーバーに対する各クエリ終了/更新終了イベントの CPU が計算されて返されます。
+### <a name="example-queries"></a>クエリの例
+
+#### <a name="example-1"></a>例 1
+
+次のクエリでは、モデル データベースとサーバーの各クエリの終了/更新終了イベントの期間が返されます。 スケールアウトした場合、レプリカ番号は ServerName_s に含まれているので、結果はレプリカごとに分割されます。 RootActivityId_g によるグループ化で Azure Diagnostics REST API から取得される行数が減り、[Log Analytics のレート制限](https://dev.loganalytics.io/documentation/Using-the-API/Limits)に関する記事で説明されている制限内に収めることができます。
 
 ```Kusto
-let window =  AzureDiagnostics
-   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName" and DatabaseName_s =~ "MyDatabaseName" ;
 window
 | where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
 | where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
 | extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
-| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
-| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
-| join kind=leftouter (
-window
-    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
-    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
-    ) on RootActivityId_g
-| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
-
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs
+| order by StartTime_t asc
 ```
 
+#### <a name="example-2"></a>例 2
+
+次のクエリでは、サーバーのメモリと QPU の消費量が返されます。 スケールアウトした場合、レプリカ番号は ServerName_s に含まれているので、結果はレプリカごとに分割されます。
+
+```Kusto
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where name_s == "memory_metric" or name_s == "qpu_metric"
+| project ServerName_s, TimeGenerated, name_s, value_s
+| summarize avg(todecimal(value_s)) by ServerName_s, name_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
+
+#### <a name="example-3"></a>例 3
+
+次のクエリでは、サーバーの Rows read/sec Analysis Services エンジン パフォーマンス カウンターが返されます。
+
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where parse_json(tostring(parse_json(perfobject_s).counters))[0].name == "Rows read/sec" 
+| extend Value = tostring(parse_json(tostring(parse_json(perfobject_s).counters))[0].value) 
+| project ServerName_s, TimeGenerated, Value
+| summarize avg(todecimal(Value)) by ServerName_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
 
 使用できるクエリは数百あります。 クエリについて詳しくは、「[Azure Monitor ログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」をご覧ください。
 
