@@ -3,9 +3,8 @@ title: Azure Security Center チュートリアル - Azure Security Center で�
 description: このチュートリアルでは、Just In Time VM アクセス ポリシーとアプリケーション制御ポリシーを構成する方法を示します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 7533a8636697db92a69cfec99d0e89138164d7b7
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.date: 12/03/2018
+ms.author: memildin
+ms.openlocfilehash: 28da3933cf1f1970758fcaec1358c9c16558af03
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147897"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200669"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル:Azure Security Center でリソースを保護する
 Security Center は、アクセスおよびアプリケーション制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態を軽減します。 Just In Time (JIT) 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。

@@ -4,16 +4,15 @@ description: Azure portal の Storage Explorer で Azure Search のナレッジ 
 author: lisaleib
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 6c90cec91e85f64397f70b015ffde15a2ea6deaf
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9ec93bcd2309bb47b24983260c35726ac24b5e95
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963119"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265612"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Storage Explorer でナレッジ ストアを表示する
 

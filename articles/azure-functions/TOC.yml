@@ -54,7 +54,7 @@
     - name: Functions と Logic Apps
       href: functions-twitter-email.md
     - name: VS Code での Python 関数の開発
-      href: tutorial-vs-code-serverless-python.md
+      href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: サーバーレス API のための OpenAPI 定義
       href: functions-openapi-definition.md
     - name: 仮想ネットワークへの接続

@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2017
-ms.openlocfilehash: 19a828abfee780dd757d0575f94a0358c12088cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/20/2019
+ms.openlocfilehash: e0a59697a3e4da97cf082c4c771fe93ad33b6035
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087730"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173544"
 ---
 # <a name="terraform-cloud-shell-development"></a>Terraform Cloud Shell の開発 
 
@@ -33,7 +33,7 @@ Terraform をインストールすると、Cloud Shell ですぐに使用でき�
 
 Azure サブスクリプションのリソースにアクセスし、変更を加える場合、Azure Terraform モジュールは資格情報を要求します。 Cloud Shell で作業するときに、Cloud Shell で Azure Terraform モジュールを使用するには、次のコードをスクリプトに追加します。
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
 }

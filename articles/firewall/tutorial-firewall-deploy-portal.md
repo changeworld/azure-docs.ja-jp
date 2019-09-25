@@ -236,7 +236,7 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 1. Azure portal で、**Srv-Work** 仮想マシンのネットワーク設定を確認し、プライベート IP アドレスをメモします。
 2. リモート デスクトップを **Srv-Jump** 仮想マシンに接続し、サインインします。 そこから **Srv-Work** のプライベート IP アドレスへのリモート デスクトップ接続を開きます。
 
-3. Internet Explorer を開き、 https://www.google.com を参照します。
+3. Internet Explorer を開き、 [https://www.google.com](https://www.google.com) を参照します。
 4. Internet Explorer のセキュリティ アラートで、**[OK]** > **[閉じる]** の順に選択します。
 
    Google のホーム ページが表示されます。
