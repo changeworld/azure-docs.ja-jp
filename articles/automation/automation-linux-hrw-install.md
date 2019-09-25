@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94d34c8a9a3480032a79d100af883a85868d327e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 878e79097114f60aff084d60c835661196cec5ce
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478482"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076008"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -51,7 +51,7 @@ Linux Hybrid Runbook Worker の最小要件は次のようになります。
 |Glibc |GNU C ライブラリ| 2.5-12 |
 |Openssl| OpenSSL ライブラリ | 1.0 (TLS 1.1 と TLS 1.2 がサポートされます)|
 |Curl | cURL Web クライアント | 7.15.5|
-|Python-ctypes | |
+|Python-ctypes | Python 2.x が必要 |
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール)|
 | **オプション パッケージ** | **説明** | **最小バージョン**|
 | PowerShell Core | PowerShell の Runbook を実行するには、PowerShell をインストールする必要があります。インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/setup/installing-powershell-core-on-linux)」をご覧ください。  | 6.0.0 |

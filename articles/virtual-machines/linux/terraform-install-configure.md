@@ -1,5 +1,5 @@
 ---
-title: Azure で使用するために Terraform をインストールして構成する |Microsoft Docs
+title: Azure リソースを作成するために Terraform をインストールして構成する | Microsoft Docs
 description: Azure リソースを作成するための Terraform のインストールと構成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -12,16 +12,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
-ms.author: gwallace
-ms.openlocfilehash: 105b3805e1297f796e0353f9328044896248aaa0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/17/2019
+ms.author: tarcher
+ms.openlocfilehash: cd6052db1328fce5ef1a846fbab94fd7066079f6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081764"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090737"
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>VM などのインフラストラクチャを Azure にプロビジョニングするための Terraform のインストールと構成
+# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Azure リソースを作成するために Terraform をインストールして構成する
  
 Terraform は、[シンプルなテンプレート言語](https://www.terraform.io/docs/configuration/syntax.html)を使ってクラウド インフラストラクチャを簡単に定義、プレビュー、およびデプロイできるツールです。 この記事では、Terraform を使用して Azure にリソースをプロビジョニングするために必要な手順について説明します。
 

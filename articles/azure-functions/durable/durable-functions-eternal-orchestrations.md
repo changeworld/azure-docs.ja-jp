@@ -2,19 +2,19 @@
 title: Durable Functions での永続的オーケストレーション - Azure
 description: Azure Functions の Durable Functions 拡張機能を使用して永続的オーケストレーションを実装する方法について説明します。
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 788693698e75a24269e29c54e03af35c1853f1f6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: dbe51eddcf748843fd90cc533063fd25e7c282fd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735204"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933379"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 
@@ -22,7 +22,7 @@ ms.locfileid: "70735204"
 
 ## <a name="orchestration-history"></a>オーケストレーションの履歴
 
-[チェックポイント処理および再生](durable-functions-checkpointing-and-replay.md)に関するページで説明したように、Durable Task Framework では、各関数オーケストレーションの履歴が追跡されます。 この履歴は、オーケストレーター関数が新しい作業をスケジュールする限り、拡大し続けます。 オーケストレーター関数が無限ループに入り、作業を継続的にスケジュールすると、この履歴は巨大になり、パフォーマンスが大幅に低下する可能性があります。 "*永続的オーケストレーション*" の概念は、無限ループを必要とするアプリケーションのこうした問題を軽減することを目的としています。
+[オーケストレーションの履歴](durable-functions-orchestrations.md#orchestration-history)に関するページで説明したように、Durable Task Framework では、各関数オーケストレーションの履歴が追跡されます。 この履歴は、オーケストレーター関数が新しい作業をスケジュールする限り、拡大し続けます。 オーケストレーター関数が無限ループに入り、作業を継続的にスケジュールすると、この履歴は巨大になり、パフォーマンスが大幅に低下する可能性があります。 "*永続的オーケストレーション*" の概念は、無限ループを必要とするアプリケーションのこうした問題を軽減することを目的としています。
 
 ## <a name="resetting-and-restarting"></a>リセットと再開
 

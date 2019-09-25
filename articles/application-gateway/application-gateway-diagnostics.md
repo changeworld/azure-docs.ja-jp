@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306189"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057907"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -309,6 +309,8 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |details.data     | 要求で見つかった、ルールに一致するデータ。         |
 |details.file     | ルールが含まれている構成ファイル。        |
 |details.line     | イベントをトリガーした、構成ファイル内の行番号。       |
+|hostname   | Application Gateway のホスト名または IP アドレス。    |
+|transactionId  | 同じ要求内で発生した複数の規則違反をグループ化するのに役立つ、指定されたトランザクションの一意の ID。   |
 
 ```json
 {
@@ -333,6 +335,8 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 

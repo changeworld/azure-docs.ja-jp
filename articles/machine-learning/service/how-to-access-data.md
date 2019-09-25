@@ -1,7 +1,7 @@
 ---
 title: Azure ストレージ サービスのデータにアクセスする
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service でトレーニング中にデータストアを使用して Azure ストレージ サービスにアクセスする方法について説明します
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning でトレーニング中にデータストアを使用して Azure ストレージ サービスにアクセスする方法について説明します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191916"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035312"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure ストレージ サービスのデータにアクセスする
 
@@ -151,7 +151,7 @@ datastore.download(target_path='your target path',
 
 次の表では、実行中にデータストアの使用方法をコンピューティング先に指示するメソッドの一覧を示します。 
 
-方法|Method|説明|
+方法|方法|説明|
 ----|-----|--------
 マウントする| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| コンピューティング先にデータストアをマウントするために使用します。
 ダウンロード|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|データストアの内容を `path_on_compute` によって指定された場所にダウンロードするために使用します。 <br> このダウンロードは実行前に行われます。
@@ -232,9 +232,9 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="access-data-during-scoring"></a>スコアリング中にデータにアクセスする
 
-Azure Machine Learning service には、スコアリングにモデルを使用する方法が複数用意されています。 これらの方法の一部では、データストアへのアクセスは提供されていません。 次の表を使用して、スコアリング中にデータストアへのアクセスが許可されるのはどの方法かを理解します。
+Azure Machine Learning には、スコアリングにモデルを使用する方法が複数用意されています。 これらの方法の一部では、データストアへのアクセスは提供されていません。 次の表を使用して、スコアリング中にデータストアへのアクセスが許可されるのはどの方法かを理解します。
 
-| Method | データストア アクセス | 説明 |
+| 方法 | データストア アクセス | 説明 |
 | ----- | :-----: | ----- |
 | [バッチ予測](how-to-run-batch-predictions.md) | ✔ | 大量のデータの予測を非同期的に行います。 |
 | [Web サービス](how-to-deploy-and-where.md) | &nbsp; | モデルを Web サービスとしてデプロイします。 |

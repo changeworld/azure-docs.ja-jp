@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 6b62bee2a6159cfd1aa1d7278f0b1ffa744f3a87
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ebf7b712dda19b396b044235bf194a5dd402ffac
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124004"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996414"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -50,7 +50,7 @@ Linux のシリアル コンソールのドキュメントについては、「[
 > シリアル コンソールに何も表示されていない場合は、VM または仮想マシン スケール セットでブート診断が有効になっていることを確認してください。
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>カスタム イメージまたは古いイメージでシリアル コンソールを有効にする
-Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効です。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。
+Azure の新しい Windows Server イメージでは、既定で [Special Administration Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効です。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。
 
 以前の Windows Server イメージ (2018 年 2 月より前に作成されたもの) では、Azure portal の実行コマンド機能を使用してシリアル コンソールを自動的に有効にすることができます。 Azure Portal で、 **[実行コマンド]** を選択し、一覧から **EnableEMS** という名前のコマンドを選択します。
 
@@ -184,7 +184,7 @@ Microsoft は、シリアル コンソールには問題がいくつかあるこ
 問題                             |   対応策
 :---------------------------------|:--------------------------------------------|
 接続バナーの後に **Enter** キーを押しても、サインイン プロンプトが表示されない。 | 詳細については、[Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 このエラーは、Windows がシリアル ポートに正常に接続できない原因となるカスタム VM、堅牢化されたアプライアンス、ブート構成を実行している場合に発生する可能性があります。 このエラーは Windows 10 VM を実行している場合にも発生します。Windows Server VM のみが EMS を有効にするように構成されているからです。
-Windows VM に接続したときに、正常性情報だけが表示される| このエラーは、Windows イメージ用に Special Administrative Console が有効になっていない場合に発生します。 Windows VM で SAC を手動で有効にする方法については、「[カスタム イメージまたは古いイメージでシリアル コンソールを有効にする](#enable-the-serial-console-in-custom-or-older-images)」を参照してください。 詳細については、[Windows 正常性シグナル](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)に関するページをご覧ください。
+Windows VM に接続したときに、正常性情報だけが表示される| このエラーは、Windows イメージ用に Special Administration Console が有効になっていない場合に発生します。 Windows VM で SAC を手動で有効にする方法については、「[カスタム イメージまたは古いイメージでシリアル コンソールを有効にする](#enable-the-serial-console-in-custom-or-older-images)」を参照してください。 詳細については、[Windows 正常性シグナル](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)に関するページをご覧ください。
 カーネル デバッグを有効にすると、SAC プロンプトで入力できない。 | VM に RDP で接続して、管理者特権でのコマンド プロンプトから `bcdedit /debug {current} off` を実行します。 RDP で接続できない場合は、代わりに OS ディスクを別の Azure VM に接続して、データ ディスクとしてアタッチされている間に `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` を実行して変更し、ディスクを戻すこともできます。
 元のコンテンツに反復する文字が含まれる場合、SAC の PowerShell に貼り付けると 3 文字目が生成される。 | 回避策は、`Remove-Module PSReadLine` を実行して、現在のセッションから PSReadLine モジュールをアンロードすることです。 このアクションは、モジュールを削除またはアンインストールしません。
 一部のキーボード入力で、不適切な SAC 出力が生成される (例: **[A**、 **[3~** )。 | [VT100](https://aka.ms/vtsequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。

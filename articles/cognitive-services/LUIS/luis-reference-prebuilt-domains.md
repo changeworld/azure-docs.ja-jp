@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: b840f1ce42c9d7e4af8854a2c6bd7fd26f5b88e9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307430"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067611"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS アプリの事前構築済みのドメインのリファレンス
 このリファレンスは、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)に関する情報を提供します。事前構築済みのドメインは、LUIS が提供している意図とエンティティの事前構築済みのコレクションです。
@@ -54,10 +54,10 @@ Calendar では、個人的な会合や予定に関することを扱います�
 意図の名前 | 説明 | 例
 ---------|----------|---------------
  AcceptEventEntry | カレンダーで予定/会議/イベントを承諾します。 | 予定を承諾します。 <br> イベントを承諾します。 <br> 本日の会議を承諾します。
- Cancel | 仮想アシスタントで進行中のアクションを取り消します。たとえば、会議作成プロセスを取り消します。 <br> ***注意**:この意図では主に、"Cancel" アクションは Calendar シナリオに含まれます。 "Cancel" で汎用的な式が必要であれば、**Utilities** ドメインで "Cancel" 意図を活用してください。* | 問題ありません。イベントをキャンセルして。 <br> いいえ。予定をキャンセルして。
+ Cancel | 仮想アシスタントで進行中のアクションを取り消します。たとえば、会議作成プロセスを取り消します。 <br> _**注意**:この意図では主に、"Cancel" アクションは Calendar シナリオに含まれます。"Cancel" で汎用的な式が必要であれば、**Utilities** ドメインで "Cancel" 意図を活用してください。_ | 問題ありません。イベントをキャンセルして。 <br> いいえ。予定をキャンセルして。
  ChangeCalendarEntry | 予定表のエントリを変更するか、再スケジュールします。 | 明日午前 6 時の予定を 午後 2 時に再スケジュールして。 <br> 午後 5 時に予定していた医師の予約を再スケジュールして。 <br> Jenny Olson との昼食を金曜日に再スケジュールして。 <br> イベント時間を変更して。
  CheckAvailability | ユーザーのカレンダーや他のユーザーのカレンダーで、予定や会議の空き状況を検索します。 | Jim はいつ会うことができる? <br> 明日、Carol が空いている時間を表示して。 <br> Chris は土曜日に空いている?
- Confirm | 前の意図に基づいて操作/アクションを実行するかどうかを確認します。 <br> ***注意**:この意図では主に、"Confirm" アクションは Calendar シナリオ向けとして含まれます。 "Confirm" でさらに一般的な表現が必要であれば、**Utilities** ドメインで "Confirm" 意図を活用してください。*| そのとおり。会議を作成して。 <br> はい、ありがとう。会議に接続して。
+ Confirm | 前の意図に基づいて操作/アクションを実行するかどうかを確認します。 <br> _**注意**:この意図では主に、"Confirm" アクションは Calendar シナリオ向けとして含まれます。"Confirm" でさらに一般的な表現が必要であれば、**Utilities** ドメインで "Confirm" 意図を活用してください。_| そのとおり。会議を作成して。 <br> はい、ありがとう。会議に接続して。
  ConnectToMeeting | 会議に接続します。 | Andy との 11 時の電話会議に接続して。 <br> 予算会議の呼び出しを承諾して。
  ContactMeetingAttendees | 会議出席者に連絡します。 | 3 時の会議に遅れると連絡して。 <br> 午前 8 時の会議を 8 時 30 分から始める必要があると同僚に通知して。
  CreateCalendarEntry | 新しい 1 回限りの項目をカレンダーに追加します。 | 問題について話し合うための会議を作成して。 <br> abc@microsoft.com との会議を作成して。
@@ -69,10 +69,10 @@ Calendar では、個人的な会合や予定に関することを扱います�
  FindCalendarDetail | スケジュールの詳細を確認し、表示します。 | 同僚の Paul との間で予定している会議の詳細を教えて。
  FindDuration | 期間を確認します。 | 買い物を取りに行く時間はどのくらいあるの? <br> 昼食の時間はどのくらいあるの?
  FindMeetingRoom | 利用可能な会議室を検索します。 | どの会議室が使える? <br> 新しい会議の場所を 1 つ検索して。
- GoBack | 最後の手順または項目に戻ります。  <br> ***注意**:より汎用的な GoBack の発話については、**Utilities** ドメインを参照してください。* | 1 つ戻って。 <br> 最後のメールに戻って。
- Reject | ユーザーは仮想アシスタントの提案を拒否します。 <br> ***注意**:より汎用的な Reject の発話については、**Utilities** ドメインを参照してください。* | イベントを設定する必要はありません。 <br> その時間はやることが他にあります。
-ShowNext | 次のイベントを確認します。 <br> ***注意**:より汎用的な ShowNext の発話については、**Utilities** ドメインを参照してください。* | 次のイベントは何? <br> 次の予定は何?
- ShowPrevious | 前のイベントを確認します。 <br> ***注意**:より汎用的な ShowPrevious の発話については、**Utilities** ドメインを参照してください。* | それの前のスケジュールは何?
+ GoBack | 最後の手順または項目に戻ります。  <br> _**注意**:より汎用的な GoBack の発話については、**Utilities** ドメインを参照してください。_ | 1 つ戻って。 <br> 最後のメールに戻って。
+ Reject | ユーザーは仮想アシスタントの提案を拒否します。 <br> _**注意**:より汎用的な Reject の発話については、**Utilities** ドメインを参照してください。_ | イベントを設定する必要はありません。 <br> その時間はやることが他にあります。
+ShowNext | 次のイベントを確認します。 <br> _**注意**:より汎用的な ShowNext の発話については、**Utilities** ドメインを参照してください。_ | 次のイベントは何? <br> 次の予定は何?
+ ShowPrevious | 前のイベントを確認します。 <br> _**注意**:より汎用的な ShowPrevious の発話については、**Utilities** ドメインを参照してください。_ | それの前のスケジュールは何?
  TimeRemaining | 次のイベントまでの残り時間を確認します。 | 会議までの残り時間を表示して。 <br> 次の会議が始まるまでの時間を表示して。
  
 ### <a name="entities"></a>**エンティティ**
@@ -157,7 +157,7 @@ ContactName | personName  | 連絡先またはメッセージ受信者の名前�
 日付/時刻 | datetime | メールを受信した日時。 | **今日**のメールを読んで。 <br> **今日**、私にメールしたのは誰? <br> **午後 7 時**に電話したのは誰? | 本日 <br> 明日
 DestinationPhone | simple | 通話または SMS 送信の相手。 | **家**に電話をかけて。 <br> **家**に SMS を送って。 | 家 <br> home
 EmailAddress | email | 送信または問い合わせるメール アドレス。 | Megan.Flynn@MKF.com にメールを送って。<br> abc@outlook.com 
-EmailSubject | simple、pattern.Any | 電子メールの件名として使用されるテキスト。 | David に送るメールを作る。件名は "**やあ**" にして。  | RE: 興味深い話
+EmailSubject | simple、pattern.Any | 電子メールの件名として使用されるテキスト。 | David に送るメールを作る。件名は**やあ**にして。  | RE: 興味深い話
 Key | simple | ユーザーが押すキー。 | **Space** キーを押して。 <br> **9** を押して。 | シャープ記号 <br> 星 <br> 8
 Line | simple | メールまたは SMS を送信するときに使用す回線。 | 最後の **hotmail** を読んで。 <br> **携帯電話**で Peter を呼び出して。 <br> **職場**の電話でお父さんを呼び出して。| hotmail <br> Skype <br> British cell
 SenderName | personName | 送信者の名前。 | **David** からのメールを読んで。 <br> Chanda からのメール。 | David <br> Chanda
@@ -254,7 +254,7 @@ Note ドメインは、ユーザーがメモを作成したり、項目を書き
 AddToNote | 開いているメモに情報を追加します。 | 計画メモに追加し、プロジェクトについて上司に連絡して。
 Clear | 既存のメモからすべての項目をクリアします。 | 休暇メモからすべての項目を削除して。 <br>読書メモを全部消去して。
 Confirm | メモに関するアクションを確認します。 <br> ***注意**:この意図では主に、"Confirm" アクションは Note シナリオ向けとして含まれます。 "Confirm" でさらに一般的な表現が必要であれば、**Utilities** ドメインで "Confirm" 意図を活用してください。* | このメモでもかまいません。 <br>リスト上のすべての項目を保存することを確認します。
-Create | 新しいメモを作成します。 | メモを作成して。 <br>Jason が 5 月第 1 週に上京することを忘れないようにメモして。 
+作成 | 新しいメモを作成します。 | メモを作成して。 <br>Jason が 5 月第 1 週に上京することを忘れないようにメモして。 
 削除 | メモ全体を削除します。 | 休暇メモを削除して。 <br>買い物メモを削除して。
 ReadAloud | メモを読み上げて。 | 最初のメモを読んで。 <br>詳細を読んで。
 閉じます | 現在のメモを閉じて。 | メモを閉じて。 <br>現在のメモを閉じて。
