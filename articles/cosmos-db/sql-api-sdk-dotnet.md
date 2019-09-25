@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 431ede41e115c82c877041da4a0eb93eacf83cbd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142660"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932568"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -44,6 +44,11 @@ ms.locfileid: "70142660"
 
 > [!NOTE]
 > .NET Framework を使用している場合は、.NET Standard をターゲットとする [.NET SDK](sql-api-sdk-dotnet-standard.md) の最新バージョン 3.x を参照してください。 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* ConnectionPolicy に PortReusePolicy を追加しました
+* UWP アプリで SDK が使用されるときの ntdll!RtlGetVersion TypeLoadException の問題を修正しました
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
@@ -385,6 +390,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.6.0](#2.6.0) |2019 年 8 月 30 日 |--- |
 | [2.5.1](#2.5.1) |2019 年 7 月 2 日 |--- |
 | [2.4.1](#2.4.1) |2019 年 6 月 20 日 |--- |
 | [2.4.0](#2.4.0) |2019 年 5 月 5 日 |--- |
