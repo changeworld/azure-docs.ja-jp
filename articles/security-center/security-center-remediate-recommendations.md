@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/19/2019
 ms.locfileid: "69575567"
 ---
-# <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center のセキュリティ レコメンデーション
+# <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
 レコメンデーションは、リソースのセキュリティを強化する方法を提案します。  レコメンデーションに記載されている修復手順に従って、レコメンデーションを実装します。 
 
