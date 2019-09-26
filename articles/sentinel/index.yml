@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Sentinel プレビューのドキュメント
+title: Azure Sentinel のドキュメント
 metadata:
-  title: Azure Sentinel プレビューのドキュメント - チュートリアル、クイック スタート | Microsoft Doc
+  title: Azure Sentinel のドキュメント - チュートリアル、クイックスタート | Microsoft Doc
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: Azure Sentinel プレビューとは、企業全体にクラウド規模のインテリジェントなセキュリティ分析を提供するクラウドネイティブな SIEM です。 クラウドの速度と規模の際限をなくし、本当に重要なことに集中できるようにします。 クラウド アセットとオンプレミスのアセット、Office 365、Azure リソース、その他のクラウドすべてから簡単にデータを収集します。 Microsoft のセキュリティ分析の専門家による組み込みの機械学習を使用して、効率的に脅威を検出します。 これらの対応は、組み込みのオーケストレーションと自動プレイブックを使用して自動化できます。
+  description: Azure Sentinel とは、企業全体にクラウド規模のインテリジェントなセキュリティ分析を提供するクラウドネイティブな SIEM です。 クラウドの速度と規模の際限をなくし、本当に重要なことに集中できるようにします。 クラウド アセットとオンプレミスのアセット、Office 365、Azure リソース、その他のクラウドすべてから簡単にデータを収集します。 Microsoft のセキュリティ分析の専門家による組み込みの機械学習を使用して、効率的に脅威を検出します。 これらの対応は、組み込みのオーケストレーションと自動プレイブックを使用して自動化できます。
 sections:
   - title: 5 分間のクイック スタート
     items:

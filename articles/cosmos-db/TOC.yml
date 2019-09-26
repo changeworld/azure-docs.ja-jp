@@ -227,6 +227,10 @@
           href: spark-api-introduction.md
         - name: ラムダ アーキテクチャ
           href: lambda-architecture.md
+    - name: Jupyter ノートブックによる組み込みの分析
+      items:
+        - name: Jupyter ノートブックの概要
+          href: cosmosdb-jupyter-notebooks.md
     - name: サーバー側プログラミング
       items:
         - name: ストアド プロシージャ、トリガー、UDF
@@ -675,6 +679,10 @@
         - name: Apache Kafka と Cosmos DB を使用したストリーミング
           href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
           maintainContext: true
+    - name: 組み込み Jupyter ノートブック
+      items:
+        - name: ノートブックの有効化
+          href: enable-notebooks.md
     - name: サーバー側プログラミング
       items:
         - name: ストアド プロシージャ、トリガー、UDF を書き込む

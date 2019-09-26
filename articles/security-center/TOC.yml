@@ -57,6 +57,8 @@
           href: security-center-alerts-integration.md
         - name: クラウドのスマート アラートの関連付け (インシデント)
           href: security-center-alerts-cloud-smart.md
+        - name: セキュリティ アラート マップと脅威インテリジェンス
+          href: security-center-threat-intel.md
         - name: アラートの検証 (EICAR テスト ファイル)
           href: security-center-alert-validation.md
 - name: ハウツー ガイド
@@ -65,7 +67,7 @@
       href: security-center-secure-score.md
     - name: 高度なセキュリティへのアップグレード
       href: security-center-onboarding.md
-    - name: Windows Defender ATP でのサーバーの保護
+    - name: Microsoft Defender ATP でのサーバーの保護
       href: security-center-wdatp.md
     - name: Azure VM 上の SQL 向けの Advanced Data Security (パブリック プレビュー)
       href: security-center-iaas-advanced-data.md
