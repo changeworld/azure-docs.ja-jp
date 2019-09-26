@@ -23,12 +23,15 @@
             - name: 新しい Blob Storage を事前に読み込む
               href: hpc-cache-ingest.md
             - name: 代替のデータ取り込み方法
-            - name: 並列コピーを使用してキャッシュを設定する
-              href: hpc-cache-ingest-parallelcp.md
-            - name: msrsync を使用してキャッシュを設定する
-              href: hpc-cache-ingest-msrsync.md
-            - name: 手動によるファイル コピーを使用してキャッシュを設定する
-              href: hpc-cache-ingest-manual.md
+              items:
+                - name: 並列コピーを使用してキャッシュを設定する
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: msrsync を使用してキャッシュを設定する
+                  href: hpc-cache-ingest-msrsync.md
+                - name: 手動によるファイル コピーを使用してキャッシュを設定する
+                  href: hpc-cache-ingest-manual.md
+    - name: キャッシュに接続する
+      href: hpc-cache-mount.md
 - name: リソース
   items:
     - name: サポート チケットを開く

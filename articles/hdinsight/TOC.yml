@@ -219,7 +219,7 @@
               href: ./hdinsight-release-notes.md
             - name: HDInsight 3.6 の完全なリリース ノート
               href: ./hdinsight-release-notes-archive.md
-        - name: FAQ
+        - name: よく寄せられる質問 (FAQ)
           href: ./hdinsight-faq.md
         - name: クラスター構成できめ細かなロールベースのアクセスに移行する
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md

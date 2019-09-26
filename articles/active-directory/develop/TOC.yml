@@ -344,6 +344,8 @@
               href: v2-permissions-and-consent.md
             - name: 同意フレームワーク
               href: consent-framework.md
+            - name: 管理者の同意
+              href: v2-admin-consent.md
             - name: アプリケーションの同意エクスペリエンス
               href: application-consent-experience.md
         - name: 各国のクラウド
