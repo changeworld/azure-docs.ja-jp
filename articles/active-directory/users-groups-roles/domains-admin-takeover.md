@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914773"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146458"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -88,14 +88,11 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 ### <a name="support-for-external-admin-takeover"></a>外部管理者の引き継ぎのサポート
 外部管理者の引き継ぎは、次のオンライン サービスによってサポートされています。
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 サポートされているサービス プランは次のとおりです。
 
-- Power BI Free
-- Power BI Pro
 - PowerApps Free
 - PowerFlow Free
 - 個人向け RMS
@@ -113,10 +110,6 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 アンマネージド テナントが異なるリージョンにあるときは、キーとテンプレートは移動しません。 たとえば、アンマネージド テナントがヨーロッパにあり、所有している組織が北米にあるとします。
 
 個人向け RMS は保護コンテンツを開くために Azure AD 対応として設計されていますが、ユーザーがコンテンツ保護もすることを防ぎません。 ユーザーが個人向け RMS サブスクリプションでコンテンツを保護したとき、キーとテンプレートが移動していなければ、ドメイン引き継ぎ後、そのコンテンツにアクセスできなくなります。
-
-#### <a name="more-information-about-power-bi"></a>Power BI の詳細情報
-
-外部引き継ぎを実行すると、引き継ぎの前に作成された Power BI コンテンツは、[Power BI アーカイブ済みワークスペース](/power-bi/service-admin-power-bi-archived-workspace)に配置されます。 新しいテナントで使用するすべてのコンテンツを手動で移行する必要があります。
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>ForceTakeover オプションの Azure AD PowerShell コマンドレット
 「[PowerShell の例](#powershell-example)」で使用されているコマンドレットを以下に示します。

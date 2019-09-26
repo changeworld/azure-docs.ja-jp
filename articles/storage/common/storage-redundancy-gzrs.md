@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036333"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300647"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>geo ゾーン冗長ストレージ (GZRS) (プレビュー) を使用して高可用性 Azure Storage アプリケーションを構築する
 
@@ -29,7 +29,11 @@ GZRS と RA-GZRS は、汎用 v2 ストレージ アカウントでのみサポ�
 
 GZRS と RA-GZRS は現在、次のリージョンにおいてプレビューで利用できます。
 
+- 北ヨーロッパ
+- 西ヨーロッパ
 - 米国東部
+- 米国東部 2
+- 米国中部
 
 Microsoft では引き続き、他の Azure リージョンでも GZRS と RA-GZRS を有効にしていきます。 サポートされているリージョンについては、 [Azure サービスの更新情報](https://azure.microsoft.com/updates/) に関するページを定期的に確認してください。
 

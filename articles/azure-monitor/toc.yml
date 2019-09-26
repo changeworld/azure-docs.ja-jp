@@ -431,6 +431,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: パフォーマンス カウンター
                   href: app/performance-counters.md
+                - name: EventCounters
+                  href: app/eventcounters.md
                 - name: 依存関係
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
@@ -519,6 +521,8 @@
                   items:
                     - name: 概要
                       href: platform/diagnostics-extension-overview.md
+                    - name: ログの収集
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: バージョン履歴
@@ -644,22 +648,20 @@
               href: insights/service-map.md
             - name: コンピューター グループ
               href: platform/computer-groups.md
-        - name: Azure リソース
+        - name: Azure プラットフォーム
           items:
-            - name: 診断ログ
+            - name: プラットフォームのログの概要
+              href: platform/platform-logs-overview.md
+            - name: リソース ログ
               items:
                 - name: 概要
-                  href: platform/diagnostic-logs-overview.md
-                - name: ログでの収集
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Azure Storage からの収集
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: Azure Monitor ログの収集
+                  href: platform/resource-logs-collect-workspace.md
                 - name: ストレージへのアーカイブ
-                  href: platform/archive-diagnostic-logs.md
-                - name: Resource Manager テンプレートを使用した有効化
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: Azure サブスクリプション
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs へのストリーム
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: アクティビティ ログ
               items:
                 - name: 概要
@@ -674,6 +676,14 @@
                   href: platform/activity-log-export.md
                 - name: スキーマ
                   href: platform/activity-log-schema.md
+            - name: 診断設定
+              items:
+                - name: 診断設定の作成
+                  href: platform/diagnostic-settings.md
+                - name: Resource Manager での診断設定の作成
+                  href: platform/diagnostic-settings-template.md
+                - name: BLOB ストレージのフォーマットの変更
+                  href: platform/resource-logs-blob-format.md
             - name: Event Hubs へのデータのストリーム配信
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -685,6 +695,7 @@
         - name: Storage
           items:
             - name: Azure Monitor for Storage
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: データベース
           items:
@@ -747,7 +758,7 @@
             - name: Configuration Manager の接続
               href: platform/collect-sccm.md
         - name: Event Hubs へのデータのストリーム配信
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: データを分析する
       items:
         - name: メトリック

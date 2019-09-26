@@ -3,7 +3,7 @@ title: Azure 仮想マシン エージェントの概要 | Microsoft Docs
 description: Azure 仮想マシン エージェントの概要
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: roiyz
-ms.openlocfilehash: 6a845cad298e2aedbe68a11cd170120d1d229043
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.author: akjosh
+ms.openlocfilehash: 7c163dd48e53a3116d58cb94988f2822ddede5e5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382839"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169127"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。

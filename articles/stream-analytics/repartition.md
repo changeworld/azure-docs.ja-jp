@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101507"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266438"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>パーティション再分割を使用して Azure Stream Analytics での処理を最適化する
 
@@ -56,7 +56,7 @@ SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY D
 
 ジョブで出力に SQL データベースを使用する場合、スループットを最大化するために、最適なパーティション数に一致するように明示的なパーティション再分割を使用します。 SQL は 8 つのライターで最適に動作するため、フラッシュする前またはさらに上流の段階でフローを 8 つに再分割すると、ジョブのパフォーマンスを向上させることができます。 
 
-入力パーティションが 8 個より多い場合、入力パーティション構成の継承は適切な選択ではない可能性があります。 出力ライターの数を明示的に指定するために、クエリ内で [INTO](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) を使用することを検討してください。 
+入力パーティションが 8 個より多い場合、入力パーティション構成の継承は適切な選択ではない可能性があります。 出力ライターの数を明示的に指定するために、クエリ内で [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) を使用することを検討してください。 
 
 次の例では、自然にパーティション分割されているかどうかに関係なく、入力から読み取り、DeviceID ディメンションに従ってストリームを10倍に再分割し、データを出力にフラッシュします。 
 

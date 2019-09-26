@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 682582c8c695550f7dfdfcc079e1d0bf04828180
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c5817427102bf10dcd1ece932b0f582d973efaf7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997226"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257901"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 
@@ -37,7 +37,7 @@ ms.locfileid: "70997226"
 このサンプルを実行するには、次のものが必要になります。
 
 - [Python 2.7 以降](https://www.python.org/downloads/release/python-2713)または [Python 3 以降](https://www.python.org/downloads/release/python-364/)
-- [Flask](http://flask.pocoo.org/)、[Flask-Session](https:/pythonhosted.org/Flask-Session/)、[要求](https://2.python-requests.org/en/master/)
+- [Flask](http://flask.pocoo.org/)、[Flask-Session](https://pythonhosted.org/Flask-Session/)、[要求](https://2.python-requests.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
 - Azure Active Directory (Azure AD) テナント。 Azure AD テナントの取得方法の詳細については、[Azure AD テナントの取得方法](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)に関するページを参照してください。
 

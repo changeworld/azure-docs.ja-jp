@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 09/10/2019
-ms.openlocfilehash: fd1da6a43e4c1d7d6b66d5dbacb2d7a587c2856a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898679"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219430"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>商業マーケットプレース アカウントをパートナー センターに作成する
 
@@ -60,7 +60,7 @@ ms.locfileid: "70898679"
 
 ### <a name="agree-to-terms-and-conditions"></a>使用条件に同意する
 
-[Microsoft Marketplace Publisher Agreement](http://go.microsoft.com/fwlink/?LinkID=699560) の使用条件に同意していただく必要があります。
+[Microsoft Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560) の使用条件に同意していただく必要があります。
 
 ### <a name="provide-your-publisher-profile"></a>発行元プロファイルを提供する
 
@@ -103,7 +103,7 @@ Microsoft Partner Network アカウントを使用して[パートナー セン�
 
 1. パートナー センターから、 **[設定]**  >  **[パートナーの設定]**  >  **[プログラム]**  >  **[Get Started]\(はじめに\)** を選択します。
 2. Microsoft Partner Network ではユーザーのサブスクリプションが検出され、ユーザーが会社名および MPN ID を入力するための発行元プロファイル ページが表示されます。
-3. [Microsoft Marketplace 発行元契約](http://go.microsoft.com/fwlink/?LinkID=699560)の使用条件を読み、 **[同意して続行する]** を選択して登録を完了します。
+3. [Microsoft Marketplace 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の使用条件を読み、 **[同意して続行する]** を選択して登録を完了します。
 
 登録したら、[Commercial Marketplace Overview]\(商業マーケットプレースの概要\) ページに移動します。 **商業マーケットプレース**が左側のナビゲーション バーに表示されます。 **[設定]**  >  **[パートナーの設定]**  >  **[プログラム]** を選択すると、商業マーケットプレースが登録済みとして表示されます。
 

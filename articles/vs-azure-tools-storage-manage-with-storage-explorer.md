@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 2b923a381be9d6cdb1a83f582a541c9e17e117a4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 43e76b9331eb8dbe95265810b9191a10d4caee08
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086629"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272023"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -79,7 +79,7 @@ Storage Explorer には、ストレージ アカウントに対する接続方�
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 > [!NOTE]
-> サインインした後にリソースにフルにアクセスするには、Storage Explorer で管理 (Azure Resource Manager) とデータ レイヤーの両方のアクセス許可が必要です。 つまり、ストレージ アカウント、アカウント内のコンテナー、およびコンテナー内のデータへのアクセスを提供する Azure Active Directory (Azure AD) のアクセス許可が必要です。 データ レイヤーのみのアクセス許可がある場合は、[Azure AD を使用してリソースを追加する](#add-a-resource-via-azure-ad)ことを検討してください。 Storage Explorer に必要な特定のアクセス許可の詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#role-based-access-control-permission-issues)を参照してください。
+> サインインした後にリソースにフルにアクセスするには、Storage Explorer で管理 (Azure Resource Manager) とデータ レイヤーの両方のアクセス許可が必要です。 つまり、ストレージ アカウント、アカウント内のコンテナー、およびコンテナー内のデータへのアクセスを提供する Azure Active Directory (Azure AD) のアクセス許可が必要です。 データ レイヤーのみのアクセス許可がある場合は、[Azure AD を使用してリソースを追加する](#add-a-resource-via-azure-ad)ことを検討してください。 Storage Explorer に必要な特定のアクセス許可の詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues)を参照してください。
 
 1. Storage Explorer で、 **[アカウントの管理]** を選択して [アカウント管理] パネルに移動します。
 

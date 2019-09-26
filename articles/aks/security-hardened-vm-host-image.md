@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b7e079e92c2f438fa7acc87a7d7333c371fe8e54
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099440"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202977"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 仮想マシン ホストでのセキュリティ強化 
 
@@ -76,8 +76,6 @@ AKS クラスターは、セキュリティが最適化された OS が実行さ
 |5.4.1.4 |非アクティブなパスワードのロックが 30 日以下であることを確認する |
 |5.4.4 |既定のユーザーの umask が 027 またはそれより厳しいことを確認する |
 |5.6 |su コマンドへのアクセスが制限されていることを確認する|
-
-(*) 有効にする必要があります。 クラスター定義に関する[ドキュメント](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md)を参照してください。
 
 ## <a name="additional-notes"></a>その他のメモ
  

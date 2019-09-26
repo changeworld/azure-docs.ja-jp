@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6b311135832e1ec861cf6e14e5ad7e82574294bf
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b158545390dafa36e7dad285953c78243f891f28
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959067"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259424"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
-Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
+Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../azure-monitor/platform/resource-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
 
 ![Storage、Event Hubs、または Azure Monitor ログに対する診断ログ記録](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -141,7 +141,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 
-[Resource Manager テンプレートを使用してリソースの作成時に診断設定を有効にする](../azure-monitor/platform/diagnostic-logs-stream-template.md)方法を学習します。 
+[Resource Manager テンプレートを使用してリソースの作成時に診断設定を有効にする](../azure-monitor/platform/diagnostic-settings-template.md)方法を学習します。 
 
 ## <a name="manage-your-logs"></a>ログを管理する
 
@@ -327,6 +327,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure リソースの診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)についてさらに詳しく学習します。
+[Azure リソースの診断ログ](../azure-monitor/platform/resource-logs-overview.md)についてさらに詳しく学習します。
 
 PowerShell ヘルプの「[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)」を参照してください。

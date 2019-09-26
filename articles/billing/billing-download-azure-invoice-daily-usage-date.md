@@ -5,7 +5,7 @@ keywords: 請求書,請求書のダウンロード,Azure の請求書,Azure の�
 services: billing
 documentationcenter: ''
 author: genlin
-manager: adpick
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.service: billing
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 45f4a45828501afea52f0ad522c3f3f6777f7ccd
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c65696a37e33cd6ced93639677659e110a1db6d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057680"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121798"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 

@@ -5,16 +5,15 @@ manager: eladz
 author: vkurpad
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: vikurpad
-ms.openlocfilehash: df2c469ef825863f958c8c263253c7d1c6f6c732
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f75e6dece376076d4aa5e33497aff7e4f9f56857
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004212"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265692"
 ---
 # <a name="working-with-skillsets"></a>スキルセットを使用する
 この記事の対象者は強化パイプラインの動作をより深く理解する必要がある開発者であり、コグニティブ検索プロセスの概念を理解していることが前提です。 コグニティブ検索を初めて使用する場合は、最初に次の記事をお読みください。

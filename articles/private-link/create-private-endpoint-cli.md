@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 33383f42c3731d8a5aefdcde5008d706d5a9eed8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104798"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219374"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLI を使用してプライベート エンドポイントを作成する
 プライベート エンドポイントは、Azure の Private Link の基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイック スタートでは、Azure CLI を使用して、仮想ネットワーク上の VM と、プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM にアクセスし、Private Link リソース (この例ではプライベート Azure SQL Database サーバー) に安全にアクセスできます。 
@@ -107,7 +107,7 @@ az network private-dns link vnet create --resource-group myResourceGroup \
    --registration-enabled false 
 
 #Query for the network interface ID  
-az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id'
+networkInterfaceId=$(az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id' -o tsv)
  
  
 az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
@@ -123,7 +123,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 次のように、インターネットから VM *myVm* に接続します。
 
-1. ポータルの検索バーで、「*myVm*」と入力します。
+1. ポータルの検索バーに、「*myVm*」と入力します。
 
 1. **[接続]** を選択します。 **[接続]** ボタンを選択すると、 **[Connect to virtual machine]\(仮想マシンに接続する\)** が開きます。
 
@@ -144,7 +144,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. VM デスクトップが表示されたら最小化してローカル デスクトップに戻ります。  
 
-## <a name="access-dql-database-server-privately-from-the-vm"></a>VM から DQL Database サーバーにプライベートにアクセスする
+## <a name="access-sql-database-server-privately-from-the-vm"></a>VM から SQL Database サーバーにプライベートにアクセスする
 
 このセクションでは、プライベート エンドポイントを使用して VM から SQL Database サーバーに接続します。
 

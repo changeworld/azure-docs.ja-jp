@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 2b7ad95dc652f2099af75308f05ddd0684e088aa
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 15b4d3208be693a5b8d858d30b663347515f5a68
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104743"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130286"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを作成する
 
-プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースと Private Link リソースとの非公開での通信が可能になります。 このクイックスタートでは、Azure PowerShell を使用して Azure Virtual Network 上に VM、SQL Database サーバー、Azure プライベート エンドポイントを作成する方法について説明します。 その後、VM から SQL Database サーバーに安全にアクセスできます。
+プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイック スタートでは、Azure PowerShell を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM から SQL Database サーバーに安全にアクセスできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -84,8 +84,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Setting | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
-    | アドレス空間 | 規定値 **[10.1.0.0/24]** のままにします。|
-    | Subnet | 規定値 **[mySubnet (10.1.0.0/24)]** のままにします。|
+    | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
+    | Subnet | 既定値 **[mySubnet (10.1.0.0/24)]** のままにします。|
     | パブリック IP | 既定値 **(new) myVm-ip\((新規) myVm-ip** のままにします。 |
     | パブリック受信ポート | **[選択したポートを許可する]** を選択します。 |
     | 受信ポートの選択 | **[HTTP]** と **[RDP]** を選択します。|
@@ -199,6 +199,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>VM から SQL データベース サーバーにプライベートにアクセスする
 
 1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+
 2. 「 `nslookup myserver.database.windows.net`」と入力します。 
 
     次のようなメッセージが返されます。

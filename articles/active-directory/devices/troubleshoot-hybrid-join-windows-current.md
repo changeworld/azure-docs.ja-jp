@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995183"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162403"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング 
 
@@ -110,7 +110,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 以降
 
-参加状態の出力の [Diagnostic Data] セクションで [Previous Registration] サブセクションを探します。
+参加状態の出力の [Diagnostic Data] セクションで [Previous Registration] サブセクションを探します。 このセクションは、デバイスがドメイン参加済みで、ハイブリッド Azure AD 参加ができない場合にのみ表示されます。
 [Error Phase] フィールドは参加エラーのフェーズを表し、[Client ErrorCode] は参加操作のエラー コードを表します。
 
 ```
@@ -181,7 +181,7 @@ WamDefaultAuthority: organizations
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 以降
 
-参加状態の出力の [Diagnostic Data] セクションで [DRS Discovery Test] を探します。
+参加状態の出力の [Diagnostic Data] セクションで [DRS Discovery Test] を探します。 このセクションは、デバイスがドメイン参加済みで、ハイブリッド Azure AD 参加ができない場合にのみ表示されます。
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 以降
 
-参加状態の出力の [Diagnostic Data] セクションで [Previous Registration] サブセクションを探します。
+参加状態の出力の [Diagnostic Data] セクションで [Previous Registration] サブセクションを探します。 このセクションは、デバイスがドメイン参加済みで、ハイブリッド Azure AD 参加ができない場合にのみ表示されます。
 [Registration Type] フィールドは、実行された参加の種類を表します。
 
 ```

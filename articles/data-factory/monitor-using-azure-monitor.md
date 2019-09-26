@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: c8d78473a1128dd4f96f2cfa0c14d2d3b1b2c1e9
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910183"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300559"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリのアラート送信および監視を行う
 
@@ -504,8 +504,6 @@ Azure Data Factory Analytics をインストールすると、既定のセット
 - ADF の統計 - 3) パイプラインの実行の最長期間
 
 !["Workbooks (プレビュー)" と "AzureDataFactoryAnalytics" が強調表示されているウィンドウ](media/data-factory-monitor-oms/monitor-oms-image6.png)
-
-![実行とエラーのグラフィック表示](media/data-factory-monitor-oms/monitor-oms-image7.png)
 
 前述のメトリックの視覚化、これらのメトリックの背後にあるクエリの確認、クエリの編集、アラートの作成、およびその他のアクションを実行できます。
 

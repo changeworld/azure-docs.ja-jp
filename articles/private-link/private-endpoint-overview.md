@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7394a9e1b1fa90741bc26fc0e9b6b7e6284d75e0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104696"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266365"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -43,7 +43,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
  
 - 同じプライベート リンク リソースを使用して、複数のプライベート エンドポイントを作成できます。 共通の DNS サーバー構成を使用する単一のネットワークでは、特定のプライベート リンク リソースに単一のプライベート エンドポイントを使用することで、エントリの重複や DNS 解決の競合を回避することをお勧めします。 
  
-- 同じ仮想ネットワーク内の同じサブネットまたは異なるサブネットに複数のプライベート エンドポイントを作成できます。 サブスクリプションに作成できるプライベート エンドポイントの数には制限があります。 詳細については、 [Azure の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits)に関する記事を参照してください。
+- 同じ仮想ネットワーク内の同じサブネットまたは異なるサブネットに複数のプライベート エンドポイントを作成できます。 サブスクリプションに作成できるプライベート エンドポイントの数には制限があります。 詳細については、 [Azure の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)に関する記事を参照してください。
 
 
  

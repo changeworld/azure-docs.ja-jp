@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194677"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161977"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -20,7 +20,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 > [!div class="checklist"]
 > - [コンプライアンスの詳細](#compliance-details)
-> - [変更履歴 (プレビュー)](#change-history-preview)
+> - [変更履歴 (プレビュー)](#change-history)
 
 ## <a name="compliance-details"></a>コンプライアンスの詳細
 
@@ -79,7 +79,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 > [!NOTE]
 > データを保護するために、プロパティ値が _secret_ の場合は現在の値にアスタリスクが表示されます。
 
-これらの詳細は、リソースが現在コンプライアンス違反であることの理由を説明するものですが、コンプライアンス違反の原因となった変更がリソースに対して行われたタイミングでは表示しません。 この情報を得るには、「[変更履歴 (プレビュー)](#change-history-preview)」を参照してください。
+これらの詳細は、リソースが現在コンプライアンス違反であることの理由を説明するものですが、コンプライアンス違反の原因となった変更がリソースに対して行われたタイミングでは表示しません。 この情報を得るには、「[変更履歴 (プレビュー)](#change-history)」を参照してください。
 
 ### <a name="compliance-reasons"></a>コンプライアンスの理由
 

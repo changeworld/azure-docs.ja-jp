@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 87d0f08d67dbbe6a0fa1725aba850c8d9b6c5619
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104699"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273648"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLI を使用してプライベート リンク サービスを作成する
 この記事では、Azure CLI を使用して Azure 上でプライベート リンク サービスを作成する方法を示します。
@@ -29,13 +29,13 @@ ms.locfileid: "71104699"
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-[az network vnet create](/cli/azure/network/az-network-vnet-create) を使用して仮想ネットワークを作成します。 この例では、*mySubnet* という名前のサブネットを使って、*myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して仮想ネットワークを作成します。 この例では、*mySubnet* という名前のサブネットを使って、*myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-a-subnet"></a>サブネットの作成
-[az network vnet subnet create](/cli/azure/network/az-network-vnet-subnet-create) を使って、仮想ネットワーク用のサブネットを作成します。 この例では、*myVirtualNetwork* 仮想ネットワークに *mySubnet* という名前のサブネットを作成します。
+[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) を使って、仮想ネットワーク用のサブネットを作成します。 この例では、*myVirtualNetwork* 仮想ネットワークに *mySubnet* という名前のサブネットを作成します。
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
@@ -82,7 +82,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>サブネット上で Private Link サービス ネットワーク ポリシーを無効にする 
-プライベート リンク サービスでは、仮想ネットワーク内の任意のサブネットからの IP が必要になります。 現時点では、これらの IP 上でのネットワーク ポリシーはサポートされていません。  そのため、サブネット上のネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](/cli/azure/network/az-network-vnet-subnet-update) を使って、サブネットを更新して Private Link サービス ネットワーク ポリシーを無効にします。
+プライベート リンク サービスでは、仮想ネットワーク内の任意のサブネットからの IP が必要になります。 現時点では、これらの IP 上でのネットワーク ポリシーはサポートされていません。  そのため、サブネット上のネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使って、サブネットを更新して Private Link サービス ネットワーク ポリシーを無効にします。
 
 ```azurecli-interactive
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
@@ -90,7 +90,7 @@ az network vnet subnet update --resource-group myResourceGroup --vnet-name myVir
  
 ## <a name="create-a-private-link-service"></a>Private Link サービスを作成する  
  
-[az network private-link-service create](/cli/azure/network/az-network-private-link-service-create) を使って、Standard Load Balancer フロントエンド IP 構成を使用してプライベート リンク サービスを作成します。 この例では、*myResourceGroup* という名前のリソース グループ内で *myLoadBalancer* という名前の Standard Load Balancer を使用して、*myPLS* という名前のプライベート リンク サービスを作成します。 
+[az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) を使って、Standard Load Balancer フロントエンド IP 構成を使用してプライベート リンク サービスを作成します。 この例では、*myResourceGroup* という名前のリソース グループ内で *myLoadBalancer* という名前の Standard Load Balancer を使用して、*myPLS* という名前のプライベート リンク サービスを作成します。 
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -111,7 +111,7 @@ az network private-link-service create \
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 
 ### <a name="create-the-virtual-network"></a>仮想ネットワークの作成 
- [az network vnet create](/cli/azure/network/az-network-vnet-create) を使って、仮想ネットワークを作成します。 この例では、*myResourcegroup* という名前のリソース グループ内に  *myPEVNet*  という名前の仮想ネットワークを作成します。 
+ [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使って、仮想ネットワークを作成します。 この例では、*myResourcegroup* という名前のリソース グループ内に  *myPEVNet*  という名前の仮想ネットワークを作成します。 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>サブネットを作成する 
- [az network vnet subnet create](/cli/azure/network/az-network-vnet-subnet-create) を使って、仮想ネットワーク内にサブネットを作成します。 この例では、*myResourcegroup* という名前のリソース グループ内で *myPEVnet* という名前の仮想ネットワークに、 *mySubnet*  という名前のサブネットを作成します。 
+ [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) を使って、仮想ネットワーク内にサブネットを作成します。 この例では、*myResourcegroup* という名前のリソース グループ内で *myPEVnet* という名前の仮想ネットワークに、 *mySubnet*  という名前のサブネットを作成します。 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -129,7 +129,7 @@ az network vnet subnet create \
 --address-prefixes 10.0.0.0/24 
 ```   
 ## <a name="disable-private-endpoint-network-policies-on-subnet"></a>サブネット上でプライベート エンドポイントのネットワーク ポリシーを無効にする 
-プライベート エンドポイントは、仮想ネットワークにある任意のサブネット内に作成できます。 現時点では、プライベート エンドポイント上でのネットワーク ポリシーはサポートされていません。  そのため、サブネット上のネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](/cli/azure/network/az-network-vnet-subnet-update) を使って、サブネットを更新して、プライベート エンドポイント ネットワーク ポリシーを無効にします。 
+プライベート エンドポイントは、仮想ネットワークにある任意のサブネット内に作成できます。 現時点では、プライベート エンドポイント上でのネットワーク ポリシーはサポートされていません。  そのため、サブネット上のネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使って、サブネットを更新して、プライベート エンドポイント ネットワーク ポリシーを無効にします。 
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ az network private-endpoint create \
  
 ## <a name="show-private-link-service-connections"></a>プライベート リンク サービスの接続を表示する 
  
-[az network private-link-service show](/cli/azure/network/az-network-private-link-service-show) を使って、ご自身のプライベート リンク サービスでの接続要求を確認します。    
+[az network private-link-service show](/cli/azure/network/private-link-service#az-network-private-link-service-show) を使って、ご自身のプライベート リンク サービスでの接続要求を確認します。    
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```

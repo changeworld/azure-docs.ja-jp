@@ -3,7 +3,7 @@ title: Azure リソースを作成するために Terraform をインストー�
 description: Azure リソースを作成するための Terraform のインストールと構成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
+author: tomarchermsft
 manager: gwallace
 editor: na
 tags: azure-resource-manager
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd6052db1328fce5ef1a846fbab94fd7066079f6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090737"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168734"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Azure リソースを作成するために Terraform をインストールして構成する
  
@@ -37,7 +37,7 @@ Terraform をインストールするには、ご利用のオペレーティン�
 
 `terraform` コマンドでパス構成を確認します。 次の出力例のように、使用可能な Terraform オプションの一覧が表示されます。
 
-```bash
+```console
 azureuser@Azure:~$ terraform
 Usage: terraform [--version] [--help] <command> [args]
 ```
@@ -94,7 +94,7 @@ export ARM_ENVIRONMENT=public
 
 空のディレクトリに `test.tf` というファイルを作成し、次のスクリプトを貼り付けます。
 
-```tf
+```hcl
 provider "azurerm" {
 }
 resource "azurerm_resource_group" "rg" {
@@ -111,7 +111,7 @@ terraform init
 
 出力は次の例のようになります。
 
-```bash
+```console
 * provider.azurerm: version = "~> 0.3"
 
 Terraform has been successfully initialized!
@@ -125,7 +125,7 @@ terraform apply
 
 出力は次の例のようになります。
 
-```bash
+```console
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
   + create
