@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035321"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269207"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -87,7 +87,7 @@ ms.locfileid: "71035321"
 * ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md) を使用します。
 * Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) を使用します。
 * 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
-* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning)を使用します。
+* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code)を使用します。
 
 ## <a name="resources"></a> 関連するリソース
 

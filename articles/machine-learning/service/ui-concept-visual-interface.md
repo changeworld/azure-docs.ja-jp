@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996521"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128801"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Azure Machine Learning 用のビジュアル インターフェイスとは 
 
@@ -95,8 +95,8 @@ Web サービスでは、アプリケーションと自分のスコアリング 
 
 * 予測分析と機械学習の基本について学習する: [チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)
 * いずれかのサンプルを使用して、ニーズに合わせて変更します。
-    * [サンプル 1 - 回帰: 価格を予測する](ui-sample-regression-predict-automobile-price-basic.md)
-    * [サンプル 2 - 回帰: 価格を予測し、アルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [サンプル 3 - 分類: 信用リスクを予測する](ui-sample-classification-predict-credit-risk-basic.md)
-    * [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [サンプル 5 - 分類:顧客離れ、強い欲求、アップセルを予測する](ui-sample-classification-predict-churn.md)
+    * [サンプル 1 - 回帰: 価格を予測する](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [サンプル 2 - 回帰: 価格を予測し、アルゴリズムを比較する](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [サンプル 3 - 分類: 信用リスクを予測する](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [サンプル 5 - 分類:顧客離れ、強い欲求、アップセルを予測する](how-to-ui-sample-classification-predict-churn.md)

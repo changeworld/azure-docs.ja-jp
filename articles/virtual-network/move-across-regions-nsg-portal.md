@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0dd460f7ed829bf82c285b80e59778dacd882404
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059376"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219192"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure ネットワーク セキュリティ グループ (NSG) を別のリージョンに移動する
 
@@ -27,7 +27,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 - Azure ネットワーク セキュリティ グループはリージョン間で移動できません。  新しい NSG を移動先リージョンのリソースに関連付ける必要があります。
 
 - NSG 構成をエクスポートし、テンプレートをデプロイして別のリージョンで NSG を作成するには、ネットワーク共同作成者ロール以上が必要です。
-   
+
 - ソース ネットワーク レイアウトと現在使用しているすべてのリソースを特定します。 このレイアウトには、ロード バランサー、パブリック IP、仮想ネットワークが含まれますが、この限りではありません。
 
 - 自分の Azure サブスクリプションで、使用される移動先リージョンに NSG を作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
@@ -41,7 +41,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>テンプレートをエクスポートし、ポータルからデプロイする
 
-1. [Azure portal](http://portal.azure.com) >  **[リソース グループ]** にログインします。
+1. [Azure portal](https://portal.azure.com) >  **[リソース グループ]** にログインします。
 2. 移動元の NSG が含まれているリソース グループを探し、それをクリックします。
 3. **[設定]**  >  **[テンプレートのエクスポート]** を選択します。
 4. **[テンプレートのエクスポート]** ブレードで **[デプロイ]** を選択します。
@@ -77,19 +77,19 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
             "location": "<target-region>",
             "properties": {
                 "provisioningState": "Succeeded",
-                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78", 
+                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78",
              }
             }
            ]
 
     ```
-  
-11. リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です (**米国中部** = **centralus**)。
-    
+
+11. リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です (**Central US** = **centralus**)。
+
 12. また、必要に応じて、テンプレート内の次のような他のパラメーターも変更できます。これらは要件に基づくオプションです。
 
     * **セキュリティ規則** - **template.json** ファイルの **securityRules** セクションで規則を追加または削除することで、移動先 NSG にデプロイされた規則を編集できます。
-    
+
         ```json
            "resources": [
             {
@@ -155,7 +155,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 14. **[基本]**  >  **[サブスクリプション]** をクリックして、移動先 NSG をデプロイするサブスクリプションを選択します。
 
-15. **[基本]**  >  **[リソース グループ]** をクリックして、移動先 NSG をデプロイするリソース グループを選択します。  **[新規作成]** をクリックして、移動先 NSG 用の新しいリソース グループを作成できます。  既存の NSG の移動元リソース グループと確実に違う前にします。 
+15. **[基本]**  >  **[リソース グループ]** をクリックして、移動先 NSG をデプロイするリソース グループを選択します。  **[新規作成]** をクリックして、移動先 NSG 用の新しいリソース グループを作成できます。  既存の NSG の移動元リソース グループと確実に違う前にします。
 
 16. **[基本]**  >  **[場所]** が NSG をデプロイする移動先の場所に設定されていることを確認します。
 
@@ -165,7 +165,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 19. **[購入]** ボタンをクリックして、移動先のネットワーク セキュリティ グループをデプロイします。
 
-## <a name="discard"></a>破棄 
+## <a name="discard"></a>破棄
 
 移動先 NSG を破棄する場合は、移動先 NSG が含まれるリソース グループを削除します。  これを行うには、ポータルのダッシュボードでリソース グループを選択し、概要ページの上部にある **[削除]** を選択します。
 

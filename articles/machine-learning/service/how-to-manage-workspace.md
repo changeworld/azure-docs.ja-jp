@@ -11,16 +11,16 @@ ms.author: shipatel
 author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 776b873e089c331f2f2867c94e542903075be4f7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 511c737e160c0f0753e570314c9b29346972cb04
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034504"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269265"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する
 
-この記事では、[Azure Machine Learning ](overview-what-is-azure-ml.md)用の Azure portal で [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、削除します。  ワークスペースを初めて利用する際にはポータルが最も手軽ですが、ニーズに変化が生じたり自動化の要件が高まったりした場合は、[CLI](reference-azure-machine-learning-cli.md)、[Python コード](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning)を使用して、ワークスペースを作成したり、削除したりすることもできます。
+この記事では、[Azure Machine Learning ](overview-what-is-azure-ml.md)用の Azure portal で [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、削除します。  ワークスペースを初めて利用する際にはポータルが最も手軽ですが、ニーズに変化が生じたり自動化の要件が高まったりした場合は、[CLI](reference-azure-machine-learning-cli.md)、[Python コード](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code)を使用して、ワークスペースを作成したり、削除したりすることもできます。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
