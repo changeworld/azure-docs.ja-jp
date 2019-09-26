@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: d45842a4c61f871a479c91f7b192de8e567f9821
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8158611678acc23d89bab377c170759c6bf9677f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861962"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962636"
 ---
 # <a name="animated-character-detection-preview"></a>アニメーション化された文字の検出 (プレビュー)
 
@@ -91,8 +91,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
     1. 新しい名前を入力したら、新しい名前の横にあるチェックマーク アイコンをクリックします。 これにより、モデル内の新しい名前が Video Indexer に保存されます。
     1. 必要なすべての名前の編集が完了したら、モデルをトレーニングする必要があります。
 
-        * 試用版アカウント: [カスタマイズ] ページを開き、[アニメーション化された文字] タブをクリックし、所有する **[トレーニング]** ボタン モデルをクリックします。
-        * 有料アカウント: [カスタマイズ] ページを開き、[アニメーション化された文字] タブをクリックします。関連するモデルの場合は、 **[Edit in Custom Vision]\(Custom Vision で編集\)** リンクをクリックします。 Custom Vision でモデルのページに転送されます。 [トレーニング] ボタンをクリックして、モデルをトレーニングします。 
+        [カスタマイズ] ページを開き、 **[アニメーション化された文字]** タブをクリックします。関連するモデルの場合は、 **[Edit in Custom Vision]\(Custom Vision で編集\)** リンクをクリックします。 Custom Vision でモデルのページに転送されます。 **[トレーニング]** ボタンをクリックし、モデルをトレーニングします。 
     1. トレーニングが完了すると、そのモデルを使用してインデックスを作成、またはインデックスを再作成したビデオで、トレーニング済みの文字が認識されるようになります。 
     Custom Vision アカウントにアクセスできる有料アカウントでは、モデルとタグ付けされたイメージが表示されます。 詳細については、[Custom Vision の分類子の改善](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)に関するページをご覧ください。
 

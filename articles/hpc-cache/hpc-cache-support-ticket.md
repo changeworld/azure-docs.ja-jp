@@ -4,42 +4,27 @@ description: Azure HPC Cache のサポート リクエストを開く方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: a252243ae84516fe06a89ef1119c4b4ce58dbeef
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775159"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036919"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Azure HPC Cache のサポート チケットを開く
 
 サポート チケットを開くには、Azure portal を使用します。 キャッシュ インスタンスに移動し、サイド バーの一番下に表示される **[新しいサポート リクエスト]** リンクをクリックします。
 
-> [!NOTE]
-> プレビュー期間中は、[このリンク](<https://support.microsoft.com/supportforbusiness/productselection?sapId=6b415938-2927-0d9d-6c3c-fbacea64e42d>)を使用して、Azure HPC Cache (プレビュー) 製品のサポート ケースを開くこともできます。
+アクティブなキャッシュがないときにチケットを開くには、Azure portal からメインの **[ヘルプとサポート]** ページを使用します。 **[新しいサポート リクエスト]** を選択し、Azure HPC Cache に固有のヘルプであるため **[テクニカル]** を選択します。
 
-<!-- add screenshot of form with thing to select product etc. -->
+一覧からご利用のサブスクリプションを選択します。
 
-<!-- 
-[ xxx update procedure - this is copied from Azure FXT Edge Filer but Azure HPC Cache has context, you don't need to fill in everything xxx ]
+Azure HPC Cache プレビュー サービスを見つけるには、 **[すべてのサービス]** ボタンをクリックし、HPC を検索します。
 
-1. Open the [Azure portal](https://portal.azure.com/) and sign in.
-1. In the left panel, scroll to the bottom and click **Help + support**.
-1. Click **New support request**. 
+![サポート リクエストのスクリーンショット - [基本] タブ、一部に説明のとおり入力されています](media/hpc-cache-support-request.png)
 
-   ![Screenshot of blank support request form](media/fxt-support-blank.png)
+残りのフィールドに自分の情報や設定を入力し、準備ができたらチケットを送信します。
 
-1. Fill out the request form.  
-    1. In the **Basics** tab, choose the **Issue type** ``Technical``. 
-    1. Select your subscription. 
-    1. Under **Service**, select **Azure FXT Edge Filer**. You might need to click the **All services** filter control to find it. 
-    1. Enter a **Summary** and choose the **Problem type**. 
-    ![Screenshot of blank support request form](media/fxt-support-populated.png) 
-    1. Click **Next** to continue. 
-1. In the **Details** tab, add more information about the problem and how to contact you. You can upload a file related to the problem. 
-1. In **Review + create**, check the information and click the **Create** button to submit your request.
-
-After you submit the request, you will receive a confirmation email with a ticket number. A support staff member will contact you about the request.
--->
+要求を送信すると、チケット番号を含む確認の電子メールを受信します。 サポート担当者から要求についての問い合わせが来ます。

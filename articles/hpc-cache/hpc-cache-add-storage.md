@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 4554214b74b4d09fa40e355270208bebda4076b7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775047"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037203"
 ---
 # <a name="add-storage"></a>ストレージを追加する
 
@@ -27,13 +27,15 @@ ms.locfileid: "70775047"
 
 キャッシュ作成ウィザードの **[ストレージ ターゲット]** タブを使用して、キャッシュ インスタンスを作成すると同時にストレージを定義します。
 
-![[ストレージ ターゲット] ページのスクリーンショット](media/create-targets.png)
+![[ストレージ ターゲット] ページのスクリーンショット](media/hpc-cache-storage-targets-pop.png)
 
 **[ストレージ ターゲットの追加]** リンクをクリックしてストレージを追加します。
 
 ## <a name="add-storage-targets-from-the-cache"></a>キャッシュからストレージ ターゲットを追加する
 
 Azure portal からキャッシュ インスタンスを開き、左側のサイド バーにある **[ストレージ ターゲット]** をクリックします。 ストレージ ターゲットのページには、既存のターゲットがすべて表示されるほか、新たに追加するためのリンクが表示されます。
+
+![サイドバーの [ストレージ ターゲット] リンクのスクリーンショット。[設定] と [監視] というカテゴリ見出しの間にある [構成] という見出しの下にあります](media/hpc-cache-storage-targets-sidebar.png)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>新しい Azure Blob Storage ターゲットを追加する
 
@@ -51,8 +53,6 @@ Azure BLOB コンテナーを定義するには、次の情報を入力します
 * **[ストレージ コンテナー]** - このターゲットの BLOB コンテナーを選択します。
 
 * **[Virtual namespace path]\(仮想名前空間パス\)** - このストレージ ターゲットに使用するクライアント側のファイルパスを設定します。 仮想名前空間の機能の詳細については、「[集約された名前空間を構成する](hpc-cache-namespace.md)」を参照してください。
-
-<!--  The namespace path value must end with a slash (``/``) and should not start with one.  -->
 
 完了したら、 **[OK]** をクリックしてストレージ ターゲットを追加します。
 

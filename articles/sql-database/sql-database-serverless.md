@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858504"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993467"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
 
@@ -132,7 +132,7 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 |監査|監査レコードの表示。<br>監査ポリシーの更新または表示。|
 |データ マスク|データ マスク ルールの追加、変更、削除、表示|
 |透過的なデータ暗号化|透過的データ暗号化の状態またはステータスの表示|
-|クエリ (パフォーマンス) データ ストア|クエリ ストアの設定の変更または表示、自動チューニング|
+|クエリ (パフォーマンス) データ ストア|クエリ ストアの設定の変更または表示|
 |自動調整|自動インデックス作成などの自動調整の推奨事項の適用と検証|
 |データベースのコピー|コピーとしてのデータベースの作成。<br>BACPAC ファイルへのエクスポート。|
 |SQL データ同期|構成可能なスケジュールまたは手動で実行される、ハブとメンバー データベースの間の同期|

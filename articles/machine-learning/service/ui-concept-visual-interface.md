@@ -1,7 +1,7 @@
 ---
 title: ビジュアル インターフェイス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) を構成する用語、概念、ワークフローについて説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning 用のビジュアル インターフェイス (プレビュー) を構成する用語、概念、ワークフローについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860406"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996521"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Azure Machine Learning service 用のビジュアル インターフェイスとは 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Azure Machine Learning 用のビジュアル インターフェイスとは 
 
-Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) では、コードを記述することなく、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、追跡を行うことができます。
+Azure Machine Learning 用のビジュアル インターフェイス (プレビュー) では、コードを記述することなく、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、追跡を行うことができます。
 
 プログラミングは必要ありません。[データセット](#dataset)と[モジュール](#module)を視覚的に接続して、モデルを構築します。
 
-ビジュアル インターフェイスでは、Azure Machine Learning service [ワークスペース](concept-workspace.md)を使用し、次の操作を行います。
+ビジュアル インターフェイスでは、Azure Machine Learning [ワークスペース](concept-workspace.md)を使用し、次の操作を行います。
 
 + ワークスペースに示す[実験](#experiment)の成果物を作成する
 + [データセット](#dataset)にアクセスする

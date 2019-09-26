@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276499"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058342"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -28,7 +28,7 @@ Kubernetes では、API サーバーは、リソースの作成やノードの�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、[kubenet][kubenet] を使用しているクラスターを操作することを前提としています。  [Azure Container Networking Interface (CNI)][cni-networking] ベースのクラスターでは、アクセスをセキュリティで保護するために必要なルート テーブルがありません。  ルート テーブルを手動で作成する必要があります。  詳細については、[ルート テーブルの管理](https://docs.microsoft.com/azure/virtual-network/manage-route-table)に関するページをご覧ください。
+この記事では、[kubenet][kubenet] を使用しているクラスターで作業することを前提としています。  [Azure Container Networking Interface (CNI)][cni-networking] ベースのクラスターでは、アクセスをセキュリティで保護するために必要なルート テーブルがありません。  ルート テーブルを手動で作成する必要があります。  詳細については、[ルート テーブルの管理](https://docs.microsoft.com/azure/virtual-network/manage-route-table)に関するページをご覧ください。
 
 API サーバーの許可された IP 範囲は、作成する新しい AKS クラスターに対してのみ機能します。 この記事では、Azure CLI を使用して AKS クラスターを作成する方法について説明します。
 
@@ -256,6 +256,8 @@ az aks update \
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
+[cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

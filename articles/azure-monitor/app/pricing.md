@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: dalek
-ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277009"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067010"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -151,7 +151,7 @@ systemEvents
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
 > [!NOTE]
-> 考えられる問題への対処が行われる間、この機能は一時的に削除されています。  2019 年 9 月中旬に再度利用できるようになる予定です。
+> 考えられる問題への対処が行われる間、この機能は一時的に削除されています。  2019 年 10 月の第 1 週までには元に戻します。
 
 Application Insights リソースの既定の保持期間は 90 日です。 Application Insights リソースごとに異なる保持期間を選択できます。 使用可能な保持期間の完全なセットは、30 日、60 日、90 日、120 日、180 日、270 日、365 日、550 日、または 730 日です。 
 

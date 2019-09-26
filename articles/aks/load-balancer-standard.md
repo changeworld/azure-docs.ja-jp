@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9cfced0860b206e41b3e9f82f1ed2b92867e6b39
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 42323af40ee18a965363321196a04aa75c00aa40
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914836"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996953"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -277,6 +277,8 @@ azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP  
 
 既定で作成される管理対象の送信パブリック IP と共に *Standard* SKU ロード バランサーを使用するとき、*load-balancer-managed-ip-count* パラメーターを使用し、管理対象の送信パブリック IP の数を拡大縮小できます。
 
+既存のクラスターを更新するには、次のコマンドを実行します。 このパラメーターをクラスター作成時に設定し、複数の管理対象送信パブリック IP を与えることもできます。
+
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
@@ -284,11 +286,15 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-上の例では、*myResourceGroup* の *myAKSCluster* クラスターに対して、管理対象の送信パブリック IP の数が *2* に設定されます。 *load-balancer-managed-ip-count* パラメーターを使用することで、クラスター作成時の、管理対象の送信パブリック IP の初回数を設定することもできます。 管理対象の送信パブリック IP の既定数は 1 です。
+上の例では、*myResourceGroup* の *myAKSCluster* クラスターに対して、管理対象の送信パブリック IP の数が *2* に設定されます。 
+
+また、*load-balancer-managed-ip-count* パラメーターを使用して、`--load-balancer-managed-outbound-ip-count` パラメーターを追加し、それを希望する値に設定するときに、クラスターの作成時に管理対象の送信パブリック IP の初期数を設定することもできます。 管理対象の送信パブリック IP の既定数は 1 です。
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>任意 - エグレスのために独自のパブリック IP またはプレフィックスを指定する
 
-*Standard* SKU ロード バランサーの使用時、AKS クラスターによって、AKS クラスターに対して作成された同じリソース グループでパブリック IP が自動的に作成され、そのパブリック IP が *Standard* SKU ロード バランサーに割り当てられます。 あるいは、独自のパブリック IP を割り当てることができます。
+*Standard* SKU ロード バランサーの使用時、AKS クラスターによって、AKS クラスターに対して作成された同じリソース グループでパブリック IP が自動的に作成され、そのパブリック IP が *Standard* SKU ロード バランサーに割り当てられます。 あるいは、クラスター作成時に独自のパブリック IP を割り当てたり、既存のクラスターのロード バランサー プロパティを更新したりできます。
+
+複数の IP アドレスまたはプレフィックスを導入することで、1 つのロード バランサー オブジェクトの背後で IP アドレスを定義するとき、複数のバックアップ サービスを定義できます。 特定のノードのエグレス エンドポイントは、そのノードが関連付けられているサービスに依存します。
 
 > [!IMPORTANT]
 > *Standard* SKU ロード バランサーと共に、エグレス用の *Standard* SKU パブリック IP を使用する必要があります。 [az network public-ip show][az-network-public-ip-show] コマンドを使用することで、パブリック IP の SKU を検証できます。
@@ -324,8 +330,6 @@ az network public-ip prefix show --resource-group myResourceGroup --name myPubli
 
 上のコマンドでは、*myResourceGroup* リソース グループの *myPublicIPPrefix* パブリック IP プレフィックスの IP が表示されます。
 
-*load-balancer-outbound-ip-prefixes* パラメーターと前のコマンドからの ID を指定し、*az aks update* コマンドを使用します。
-
 次の例では、*load-balancer-outbound-ip-prefixes* パラメーターと前のコマンドからの ID が使用されています。
 
 ```azurecli-interactive
@@ -337,6 +341,36 @@ az aks update \
 
 > [!IMPORTANT]
 > パブリック IP と IP プレフィックスは、AKS クラスターと同じリージョンにあり、同じサブスクリプションに含まれている必要があります。
+
+### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>クラスター作成時に独自のパブリック IP またはプレフィックスを定義する
+
+エグレス エンドポイントをホワイトリストに記載するといったシナリオを支援する目的で、クラスター作成時、エグレス用に独自の IP アドレスや IP プレフィックスを導入することがあります。 クラスター作成手順に上のコードと同じパラメーターを追加し、クラスターのライフサイクルの開始時に独自のパブリック IP と IP プレフィックスを定義します。
+
+*load-balancer-outbound-ips* パラメーターを指定して *az aks create* コマンドを使用し、開始時に自分のパブリック IP で新しいクラスターを作成します。
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
+```
+
+*load-balancer-outbound-ip-prefixes* パラメーターを指定して *az aks create* コマンドを使用し、開始時に自分のパブリック IP プレフィックスで新しいクラスターを作成します。
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
+```
 
 ## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>Standard SKU ロード バランサーの構成をクリーンアップする
 

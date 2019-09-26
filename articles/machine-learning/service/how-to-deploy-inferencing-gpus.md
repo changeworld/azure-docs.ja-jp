@@ -1,7 +1,7 @@
 ---
 title: GPU を使用した推論のためのモデルをデプロイする
-titleSuffix: Azure Machine Learning service
-description: この記事では、Azure Machine Learning service を使用して、GPU 対応の Tensorflow ディープ ラーニング モデルを Web サービスとしてデプロイし、推論要求をスコア付けする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: この記事では、Azure Machine Learning を使用して、GPU 対応の Tensorflow ディープ ラーニング モデルを Web サービスとしてデプロイし、推論要求をスコア付けする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bfed4daed51e95bb0b86ef187d45722e2c3a25ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844994"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002766"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
 
-この記事では、Azure Machine Learning service を使用して GPU 対応のモデルを Web サービスとしてデプロイする方法について説明します。 この記事の情報は、Azure Kubernetes Service (AKS) へのモデルのデプロイに基づいています。 AKS クラスターは、モデルが推論に使用する GPU リソースを提供します。
+この記事では、Azure Machine Learning を使用して GPU 対応のモデルを Web サービスとしてデプロイする方法について説明します。 この記事の情報は、Azure Kubernetes Service (AKS) へのモデルのデプロイに基づいています。 AKS クラスターは、モデルが推論に使用する GPU リソースを提供します。
 
 推論、つまりモデルによるスコア付けは、デプロイしたモデルを使用して予測を行うフェーズです。 CPU の代わりに GPU を使用すると、高度に並列化可能な計算によってパフォーマンスが向上します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "70844994"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 詳細については、「[Azure Machine Learning service ワークスペースを作成する](how-to-manage-workspace.md)」を参照してください。
+* Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
 * Azure Machine Learning SDK がインストールされた Python 開発環境。 詳細については、[Azure Machine Learning Web サービス](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関するページを参照してください。  
 
@@ -51,7 +51,7 @@ ms.locfileid: "70844994"
 既存のワークスペースに接続するには、次のコードを使用します。
 
 > [!IMPORTANT]
-> このコード スニペットでは、ワークスペースの構成が現在のディレクトリまたはその親に保存されていることを想定しています。 ワークスペースの作成方法について詳しくは、「[Azure Machine Learning service ワークスペースを作成し、管理する](how-to-manage-workspace.md)」を参照してください。   構成をファイルに保存する方法について詳しくは、「[ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)」を参照してください。
+> このコード スニペットでは、ワークスペースの構成が現在のディレクトリまたはその親に保存されていることを想定しています。 ワークスペースの作成方法について詳しくは、[Azure Machine Learning ワークスペースを作成し、管理する](how-to-manage-workspace.md)方法に関するページを参照してください。   構成をファイルに保存する方法について詳しくは、「[ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)」を参照してください。
 
 ```python
 from azureml.core import Workspace
@@ -93,7 +93,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure では、AKS クラスターが存在する限り、課金が行われます。 使い終わったら、必ず自分の AKS クラスターを削除してください。
 
-AKS と Azure Machine Learning service の使用の詳細については、[Azure Kubernetes Service へのデプロイ方法](how-to-deploy-azure-kubernetes-service.md)に関する記事を参照してください。
+AKS と Azure Machine Learning の使用の詳細については、[Azure Kubernetes Service にデプロイする方法](how-to-deploy-azure-kubernetes-service.md)に関するページを参照してください。
 
 ## <a name="write-the-entry-script"></a>エントリ スクリプトを記述する
 

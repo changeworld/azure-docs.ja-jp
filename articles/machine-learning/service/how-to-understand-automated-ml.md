@@ -1,6 +1,6 @@
 ---
 title: 自動 ML 結果の概要
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。
 services: machine-learning
 author: nilesha
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860564"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999445"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "70860564"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 * SDK を使用するか、Azure portal またはワークスペースのランディング ページ (プレビュー) で、自動機械学習の実験を作成します。
 

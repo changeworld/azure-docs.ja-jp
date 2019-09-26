@@ -4,14 +4,14 @@ description: Azure HPC Cache で使用する Azure Blob Storage にデータを�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 07a97b1afa8049ace97f1589393cd76c24f21368
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775167"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105309"
 ---
 # <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Azure HPC Cache の Azure Blob Storage にデータを移動する
 
@@ -31,15 +31,17 @@ Blob Storage コンテナーにコンテンツを読み込む Python ベース�
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>CLFSLoad を使用して Blob Storage にデータを事前に読み込む
 
-新しい Blob Storage コンテナーをストレージ ターゲットとして追加する前に、[Avere CLFSLoad](https://aka.ms/avere-clfsload) ユーティリティを使用して、Blob Storage コンテナーにデータをコピーすることができます。 このユーティリティは Linux VM 上で動作し、Azure HPC Cache に必要な独自の形式でデータを書き込みます。 キャッシュで使用する Blob Storage コンテナーにデータを事前設定する方法としては、これが最も効率的です。
+Avere CLFSLoad ユーティリティを使用して、 <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> ストレージ ターゲットとして追加する前に、Blob Storage コンテナーにデータをコピーすることができます。 このユーティリティは単一の Linux システム上で動作し、Azure HPC Cache に必要な独自の形式でデータを書き込みます。 キャッシュで使用する Blob Storage コンテナーにデータを事前設定する方法としては、CLFSLoad が最も効率的です。
+
+Avere CLFSLoad ユーティリティは、Azure HPC Cache チームからの要求によって入手できます。 チームの担当者に問い合わせるか、サポート チケットを開いてサポートを依頼してください。
 
 この方法が使用できるのは新しい空のコンテナーのみです。 コンテナーは、Avere CLFSLoad を使用する前に作成してください。
 
-詳細については、[Avere CLFSLoad の Readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md) を参照してください。 <!-- caution literal link -->
+詳細情報は、Avere CLFSLoad ディストリビューションに含まれています。これは、Azure HPC Cache チームからの要請によって利用できます。 <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
 
 大まかな手順を以下に示します。
 
-1. Python バージョン 3.6 以降がインストールされた Linux システム (物理マシンまたは VM) を用意します (パフォーマンスを高めるために Python 3.7 を推奨します)。
+1. Python バージョン 3.6 以降を使用して Linux システム (VM または物理) を準備します (パフォーマンスを高めるために Python 3.7 を推奨します)。
 1. Avere-CLFSLoad ソフトウェアを Linux システムにインストールします。
 1. Linux のコマンド ラインから転送を実行します。
 
@@ -50,7 +52,7 @@ Avere CLFSLoad ユーティリティには、次の情報が必要です。
 * コンテナーへの書き込みをユーティリティに許可する Shared Access Signature (SAS) トークン
 * データ ソースへのローカル パス (コピーするデータが格納されたローカル ディレクトリ、またはデータが格納されているマウントされたリモート システムのローカル パス)
 
-これらの要件については、[Avere CLFSLoad の Readme](https://aka.ms/avere-clfsload) に詳しく記載されています。
+<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Azure HPC Cache 経由でデータをコピーする
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: bd4016d91000ee23023eaa64872bff9a057058d1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: f3aca6f62ff529dc2ea8356e18a0162e7d9a85d8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916061"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067045"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
 
@@ -45,10 +45,13 @@ Azure Monitor for VMs は、次のリージョンで Log Analytics ワークス�
 - 米国中西部
 - 米国西部 2<sup>1</sup>
 - East US
+- 米国東部 2<sup>1</sup>
 - カナダ中部
 - 英国南部
+- 北ヨーロッパ<sup>1</sup>
 - 西ヨーロッパ
 - 東南アジア
+- 東日本<sup>1</sup>
 - オーストラリア東部<sup>1</sup>
 - オーストラリア南東部<sup>1</sup>
 

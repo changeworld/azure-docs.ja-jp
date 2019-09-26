@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844774"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932826"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -35,7 +35,8 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 次のものが移行に当たります。
 
-* 所有者の**すべて**のアプリが対象。
+* LUIS のすべてのユーザー、所有者、共同作成者。
+* **すべて**のアプリ。
 * **一方向の**移行である。
 
 所有者は移行するアプリのサブセットを選択できません。また、プロセスを元に戻すことはできません。 
@@ -87,13 +88,17 @@ _Azure portal_ のオーサリング リソースの **[Access Control (IAM)]** 
 
 ## <a name="migration-for-the-app-contributor"></a>アプリ共同作成者による移行
 
+コラボレーター/共同作成者を含め、LUIS の全ユーザーを移行する必要があります。 
+
 ### <a name="before-the-app-is-migrated"></a>アプリを移行する前
 
 自身がコラボレーターであるアプリをエクスポートしてから、アプリを LUIS にインポートすることもできます。 インポート プロセスにより新しいアプリが新しいアプリ ID で作成され、自身がその所有者になります。
 
 ### <a name="after-the-app-is-migrated"></a>アプリを移行した後
 
-移行プロセス後、元のアプリにアクセスする必要がある場合、自分をコラボレーターとして Azure オーサリング リソースに追加するよう、アプリ所有者に依頼する必要があります。  
+アプリの所有者に依頼し、[Azure オーサリング リソースに自分の電子メールをコラボレーターとして追加](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)してもらう必要があります。 
+
+移行プロセスの後、自分が所有するアプリはすべて、LUIS ポータルの **[マイ アプリ]** ページで利用できます。  
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/27/2019
-ms.openlocfilehash: 33e21b54927280e2692a58c311e2de23e257f923
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 09/16/2019
+ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845372"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010202"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
-この記事では、Azure SQL Database マネージド インスタンスのリソース制限の概要を示し、これらの制限の引き上げを要求する方法について説明します。
+この記事では、Azure SQL Database Managed Instance の技術特性とリソース制限の概要を示し、これらの制限の引き上げを要求する方法について説明します。
 
 > [!NOTE]
-> サポートされている機能と T-SQL ステートメントの違いについては、[機能の違い](sql-database-features.md)と [T-SQL ステートメントのサポート](sql-database-managed-instance-transact-sql-information.md)に関するページをご覧ください。
+> サポートされている機能と T-SQL ステートメントの違いについては、[機能の違い](sql-database-features.md)と [T-SQL ステートメントのサポート](sql-database-managed-instance-transact-sql-information.md)に関するページをご覧ください。 単一データベースとマネージド インスタンスのサービス レベル間の一般的な違いについては、「[サービス レベルの比較](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)」を参照してください。
 
 ## <a name="instance-level-resource-limits"></a>インスタンス レベルのリソース制限
 
@@ -43,11 +43,11 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 
 > [!IMPORTANT]
 > - Gen4 ハードウェアは段階的に廃止されています。Gen5 ハードウェアに新しいマネージド インスタンスをデプロイすることをお勧めします。
-> - 現時点で、Gen4 ハードウェアは次のリージョンで利用できます。北ヨーロッパ、西ヨーロッパ、米国東部、米国中南部、米国中北部、米国西部 2、米国中部、カナダ中部、インド南部、東南アジア、韓国中部。
+> - 現時点で、Gen4 ハードウェアは引き続き次のリージョンでのみ利用できます。北ヨーロッパ、西ヨーロッパ、米国東部、米国中南部、米国中北部、米国西部 2、米国中部、カナダ中部、インド南部、東南アジア、韓国中部。
 
 ### <a name="service-tier-characteristics"></a>サービス レベルの特性
 
-マネージド インスタンスには 2 つのサービス レベルがあります。General Purpose と Business Critical です。 これらのレベルは、次の表に示すように、別の機能を提供します。
+マネージド インスタンスには 2 つのサービス レベルがあります。[General Purpose](sql-database-service-tier-general-purpose.md) と [Business Critical](sql-database-service-tier-business-critical.md) です。 これらのレベルでは、次の表に示すように、[別の機能](sql-database-service-tiers-general-purpose-business-critical.md)が提供されます。
 
 | **機能** | **汎用** | **Business Critical** |
 | --- | --- | --- |
@@ -58,6 +58,7 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 | インスタンスごとの最大データベース数 | 100 | 100 |
 | インスタンスごとの最大データベース ファイル数 | 最大 280 | データベースあたり 32,767 ファイル |
 | 最大ファイル サイズ | 8 TB | 4 TB |
+| 最大ログ ファイル サイズ | 2 TB | 2 TB |
 | データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 K - 110 K (1375/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
 | ログ書き込みスループット制限 | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 22 MB/秒 | 仮想コアあたり 4 MB/秒<br/>インスタンスあたり最大 48 MB/秒|
 | データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 該当なし |
@@ -66,13 +67,14 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 | インメモリ OLTP | サポートされていません | 使用可能 |
 | 最大セッション数 | 30000 | 30000 |
 | [読み取り専用レプリカ](sql-database-read-scale-out.md) | 0 | 1 (価格に含まれます) |
-| 価格/課金 | [仮想コアと予約ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | [仮想コアと予約ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 
-| 割引モデル | [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション|
 
 > [!NOTE]
 > - ユーザー データベースとシステム データベースのデータ ファイルおよびログ ファイルのサイズはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、<a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
 > - スループットと IOPS も、マネージド インスタンスによって明示的に制限されないページ サイズに依存します。
 > 自動フェールオーバー グループを利用すれば、異なる Azure リージョンで別の読み取り可能レプリカを作成できます。
+
+> [!NOTE]
+> 詳しくは、この記事の[マネージド インスタンス プールのリソースの制限事項](sql-database-instance-pools.md#instance-pools-resource-limitations)をご覧ください。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
@@ -94,7 +96,7 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 サポートされているサブスクリプションの種類には、リージョンごとのリソース数の制限を組み入れることができます。 マネージド インスタンスには、サブスクリプションの種類に応じて、Azure リージョンごとに 2 つの既定の制限があります。
 
 - **サブネットの制限**: マネージド インスタンスが単一リージョンにデプロイされているサブネットの最大数。
-- **仮想コアの制限**:1 つのリージョン内のすべてのインスタンスにデプロイできる仮想コアの最大数。
+- **仮想コアの制限**:1 つのリージョン内のすべてのインスタンスにデプロイできる仮想コアの最大数。 インスタンスの合計数は、仮想コアの制限内である限り、制限されません。
 
 > [!Note]
 > これらの制限は既定の設定であり、技術的な制限ではありません。 現在のリージョンでさらに多くのマネージド インスタンスが必要な場合、[Azure portal でサポート要求](#obtaining-a-larger-quota-for-sql-managed-instance)を特別に作成して、これらの制限をオンデマンドで引き上げることができます。 サポート要求を送信せずに、代わりに、別の Azure リージョンに新しいマネージド インスタンスを作成することも可能です。

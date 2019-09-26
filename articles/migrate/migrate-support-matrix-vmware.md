@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375317"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067769"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware の評価と移行のサポート マトリックス
 
@@ -43,10 +43,13 @@ ms.locfileid: "70375317"
 Azure Government | 米国政府バージニア州
 アジア太平洋 | 東アジアまたは東南アジア
 オーストラリア | オーストラリア東部またはオーストラリア南東部
+ブラジル | ブラジル南部
 カナダ | カナダ中部またはカナダ東部
 ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+フランス | フランス中部
 インド | インド中部またはインド南部
 日本 |  東日本または西日本
+韓国 | 韓国中部または韓国南部
 イギリス | 英国南部または英国西部
 米国 | 米国中部または米国西部 2
 
@@ -73,7 +76,7 @@ Azure Migrate では、軽量アプライアンスを実行して VMware VM を�
 
 **サポート** | **詳細**
 --- | ---
-**アプライアンスのデプロイ** | アプライアンスは VMware VM としてデプロイします。 32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/> バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。 
+**アプライアンスのデプロイ** | アプライアンスは VMware VM としてデプロイします。 32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/> バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。
 **Azure Migrate プロジェクト** | 単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> プロジェクト内で最大 35,000 個の VM を評価できます。
 **検出** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは、1 つの vCenter Server に接続できます。
 **評価グループ** | 1 つのグループに最大 35,000 個のマシンを追加できます。

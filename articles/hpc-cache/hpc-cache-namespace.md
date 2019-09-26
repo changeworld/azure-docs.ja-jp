@@ -1,17 +1,17 @@
 ---
-title: Azure HPC Cache を作成する
+title: Azure HPC キャッシュを作成する
 description: Azure HPC Cache インスタンスを作成する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 41361a3513c052d960726498d55745bf09afdfbb
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: c3d14eaefaa1f317cb061273866ffee83747f12b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775027"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036839"
 ---
 # <a name="configure-aggregated-namespace"></a>集約された名前空間を構成する
 <!-- change link in GUI -->

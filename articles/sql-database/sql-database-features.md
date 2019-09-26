@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2ddef73121ef2f6c145516ca114989aa12b8003c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873516"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103150"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能
 
@@ -32,7 +32,7 @@ Azure SQL Database は、データベースを管理し、高可用性を保証�
 
 次の表は、SQL Server の主要な機能を一覧にして、その機能が Managed Instance または Single Database およびエラスティック プールで一部または完全にサポートされるかに関する情報と、機能に関する詳細情報へのリンクを示します。
 
-| **SQL の機能** | **単一データベースとエラスティック プール** | **マネージド インスタンス** |
+| **SQL の機能** | **単一データベースとエラスティック プール** | **マネージド インスタンスとインスタンス プール** |
 | --- | --- | --- |
 | [常に暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください |
 | [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれており、[ユーザーが管理することはできません](sql-database-managed-instance-transact-sql-information.md#always-on-availability)。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください |
@@ -112,10 +112,10 @@ Azure SQL Database は、データベースを管理し、高可用性を保証�
 
 Azure プラットフォームには、標準のデータベース機能に追加の価値として追加される多数の PaaS 機能が用意されています。 Azure SQL Database サービスで使用できる外部サービスは多数あります。 
 
-| **プラットフォーム機能** | **単一データベースとエラスティック プール** | **マネージド インスタンス** |
+| **プラットフォーム機能** | **単一データベースとエラスティック プール** | **マネージド インスタンスとインスタンス プール** |
 | --- | --- | --- |
-| [アクティブ geo レプリケーション](sql-database-active-geo-replication.md) | はい - ハイパースケール以外のすべてのサービス レベル | いいえ。代わりとしての[自動フェールオーバー グループ (プレビュー)](sql-database-auto-failover-group.md) に関するページを参照してください |
-| [自動フェールオーバー グループ](sql-database-auto-failover-group.md) | はい - ハイパースケール以外のすべてのサービス レベル | はい、[パブリック プレビュー](sql-database-auto-failover-group.md)中|
+| [アクティブ geo レプリケーション](sql-database-active-geo-replication.md) | はい - ハイパースケール以外のすべてのサービス レベル | いいえ。代わりに[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関するページを参照してください |
+| [自動フェールオーバー グループ](sql-database-auto-failover-group.md) | はい - ハイパースケール以外のすべてのサービス レベル | はい。[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関するページを参照してください|
 | 自動スケール | はい、[サーバーレス モデル](sql-database-serverless.md)でのみ サーバーレス モデル以外では、サービス レベルの変更 (仮想コア、ストレージ、または DTU の変更) は高速でオンラインで行われます。 サービス レベルの変更には、最小限またはゼロ ダウンタイムが必要です。 | いいえ、予約済みのコンピューティングとストレージを選択する必要があります。 サービス レベル (仮想コアまたは最大ストレージ) の変更はオンラインで行われ、最小限またはゼロ ダウンタイムが必要です。 |
 | [自動バックアップ](sql-database-automated-backups.md) | はい。 完全バックアップは 7 日おき、差分は 12 時間おきに行われ、ログ バックアップは 5 分から 10 分おきに行われます。 | はい。 完全バックアップは 7 日おき、差分は 12 時間おきに行われ、ログ バックアップは 5 分から 10 分おきに行われます。 |
 | [自動チューニング (インデックス)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [はい](sql-database-automatic-tuning.md)| いいえ |
@@ -131,7 +131,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | [ポリシーベースの管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | いいえ | いいえ |
 | パブリック IP アドレス | はい。 アクセスは、ファイアウォールまたはサービス エンドポイントを使用して制限できます。  | はい。 明示的に有効にする必要があり、NSG ルールでポート 3342 を有効にする必要があります。 必要に応じて、パブリック IP を無効にすることができます。 詳細については、[パブリック エンドポイント](sql-database-managed-instance-public-endpoint-securely.md)に関するページを参照してください。 | 
 | [データベースのポイントインタイム リストア](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | はい - ハイパースケール以外のすべてのサービス レベル - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください | ○ - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください |
-| リソース プール | はい、[エラスティック プール](sql-database-elastic-pool.md)として | いいえ。 単一のマネージド インスタンスは、同じリソース プールを共有する複数のデータベースを保持できます。 マネージド インスタンスではリソースを共有できません。 |
+| リソース プール | はい、[エラスティック プール](sql-database-elastic-pool.md)として | はい。 単一のマネージド インスタンスは、同じリソース プールを共有する複数のデータベースを保持できます。 さらに、リソースを共有できる[インスタンス プール (プレビュー)](sql-database-instance-pools.md) に複数のマネージド インスタンスをデプロイすることもできます。 |
 | スケールアップまたはスケールダウン (オンライン) | はい、最小限のダウンタイムで、DTU または予約済みの仮想コアまたは最大ストレージを変更できます。 | はい、最小限のダウンタイムで予約済みの仮想コアまたは最大ストレージを変更できます。 |
 | SQL エイリアス | はい、[DNS エイリアス](dns-alias-overview.md)に関するページを参照 | いいえ |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | はい | はい |
@@ -146,7 +146,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 ## <a name="tools"></a>ツール
 Azure SQL データベースでは、データの管理に役立つさまざまなデータ ツールがサポートされています。
 
-| **ツール** | **単一データベースとエラスティック プール** | **マネージド インスタンス** |
+| **ツール** | **単一データベースとエラスティック プール** | **マネージド インスタンスとインスタンス プール** |
 | --- | --- | --- |
 | Azure ポータル | はい | はい |
 | Azure CLI | はい | はい|
@@ -167,7 +167,7 @@ Azure SQL データベースでは、データの管理に役立つさまざま�
 
 さまざまな移行方法を利用し、SQL Server、Single Database、Managed Instance データベース間でデータを移動できます。 **オンライン**の手法の場合、移行中、ソースで行われた変更がすべて集められます。一方で**オフライン**の手法の場合、移行の進行中、ソースでデータを変更しているワークロードを停止する必要があります。
 
-| **ソース** | **単一データベースとエラスティック プール** | **Managed Instance** |
+| **ソース** | **単一データベースとエラスティック プール** | **マネージド インスタンスとインスタンス プール** |
 | --- | --- | --- |
 | SQL Server (オンプレミス、AzureVM、Amazon RDS) | **オンライン:** [データ移行サービス (DMS)](https://docs.microsoft.com/sql/dma/dma-overview)、[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md) <br/> **オフライン:** [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **オンライン:** [データ移行サービス (DMS)](https://docs.microsoft.com/sql/dma/dma-overview)、[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md) <br/> **オフライン:** ネイティブ バックアップ/復元、[BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[スナップショット レプリケーション](sql-database-managed-instance-transactional-replication.md) |
 | 単一データベース | **オフライン:** [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **オフライン:** [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP |
@@ -183,3 +183,4 @@ Azure SQL データベースでは、データの管理に役立つさまざま�
 Azure SQL Database フレーバーについて詳しくは、以下をご覧ください。
 - [SQL Database とは](sql-database-technical-overview.md)
 - [マネージド インスタンスとは](sql-database-managed-instance.md)
+- [マネージド インスタンス プールとは](sql-database-instance-pools.md)

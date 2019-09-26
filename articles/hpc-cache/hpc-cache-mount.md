@@ -4,14 +4,14 @@ description: Azure HPC Cache サービスにクライアントを接続する方
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0ccd256ed399fff7c364883ada45d2d15c75a120
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775075"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036939"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Cache をマウントする
 
@@ -19,13 +19,13 @@ ms.locfileid: "70775075"
 
 キャッシュの概要ページに表示される一連のマウント アドレスと仮想名前空間パス (ストレージ ターゲットを作成するときに設定したもの) を使用します。 
 
-![Azure HPC Cache インスタンスの概要ページのスクリーンショット (右下に一連のマウント アドレスが枠囲みで強調表示されている)](media/mount-addresses.png)
+![Azure HPC Cache インスタンスの概要ページのスクリーンショット (右下に一連のマウント アドレスが枠囲みで強調表示されている)](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
 > キャッシュのマウント アドレスは、キャッシュのサブネット内のネットワーク インターフェイスに対応します。 これらの NIC は、末尾に `-cluster-nic-` と数字が付いた名前でリソース グループに表示されます。 これらのインターフェイスは変更したり削除したりしないでください。キャッシュが利用できなくなります。
 
-仮想名前空間パスは、 **[ストレージ ターゲット]** ページに表示されます。 
-![キャッシュの [ストレージ ターゲット] パネルのスクリーンショット (テーブルの [パス] 列のエントリが枠囲みで強調表示されている)](media/storage-target-path.png)
+仮想名前空間パスは、 **[ストレージ ターゲット]** ページに表示されます。 ターゲット名をクリックすると、それに関連付けられている集約された名前空間パスなど、詳細が表示されます。 
+![キャッシュの [ストレージ ターゲット] パネルのスクリーンショット (テーブルの [パス] 列のエントリが枠囲みで強調表示されている)](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>マウント コマンドの構文
 

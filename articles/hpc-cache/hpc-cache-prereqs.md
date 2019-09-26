@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7bd1268784df50168e03673ac809b3a5854e2be7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775071"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036869"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -22,7 +22,7 @@ Azure portal を使用して新しい Azure HPC Cache を作成する前に、�
 有料サブスクリプションをお勧めします。
 
 > [!NOTE]
-> パブリック プレビューのリリース期間中は、お客様のサブスクリプションを使用してキャッシュ インスタンスを作成するためには、そのサブスクリプションを Azure HPC Cache チームがアクセス リストに追加する必要があります。 この手順によって、それぞれのお客様が確実にそのテスト キャッシュから高品質の応答性を得ることができます。 [こちらのフォーム](https://aka.ms/onboard-hpc-cache)に必要事項を記入してアクセスを要求してください。
+> プレビューのリリース期間中は、お客様のサブスクリプションを使用してキャッシュ インスタンスを作成するためには、そのサブスクリプションを Azure HPC Cache チームがアクセス リストに追加する必要があります。 この手順によって、それぞれのお客様が確実にそのテスト キャッシュから高品質の応答性を得ることができます。 [こちらのフォーム](https://aka.ms/onboard-hpc-cache)に必要事項を記入してアクセスを要求してください。
 
 ## <a name="network-infrastructure"></a>ネットワーク インフラストラクチャ
 
@@ -59,7 +59,7 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 * Azure HPC Cache は、仮想ネットワーク インターフェイス (NIC) を作成できることが必要です。 キャッシュを作成するユーザーは、NIC を作成できるだけの権限をサブスクリプションにおいて有している必要があります。
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* Blob Storage を使用する場合、Azure HPC Cache インスタンスは、ストレージ アカウントにアクセスするために承認を必要とします。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えることができます。 ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者の 2 つのロールが必要となります。 [キャッシュにストレージを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
+* Blob Storage を使用する場合、Azure HPC Cache インスタンスは、ストレージ アカウントにアクセスするために承認を必要とします。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えることができます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。 [キャッシュにストレージを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
 
 ## <a name="storage-infrastructure"></a>ストレージ インフラストラクチャ
 

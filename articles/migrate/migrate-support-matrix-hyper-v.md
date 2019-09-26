@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376094"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066772"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 
@@ -27,9 +27,9 @@ ms.locfileid: "70376094"
 **Deployment** | **詳細***
 --- | ---
 **オンプレミスの Hyper-V VM を評価する** | 最初の評価を[設定](tutorial-prepare-hyper-v.md)します。<br/><br/> 大規模な評価を[実行](scale-hyper-v-assessment.md)します。
-**Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。 
+**Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。
 
-Azure Migrate のサーバー移行では、System Center Virtual Machine Manager (VMM) を使って管理している Hyper-V サーバーの移行をサポートしていません。 
+Azure Migrate のサーバー移行では、System Center Virtual Machine Manager (VMM) を使って管理している Hyper-V サーバーの移行をサポートしていません。
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate プロジェクト
 
@@ -44,10 +44,13 @@ Hyper-V VM | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価
   Azure Government | 米国政府バージニア州
   アジア太平洋 | 東アジアまたは東南アジア
   オーストラリア | オーストラリア東部またはオーストラリア南東部
+  ブラジル | ブラジル南部
   カナダ | カナダ中部またはカナダ東部
   ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+  フランス | フランス中部
   インド | インド中部またはインド南部
   日本 |  東日本または西日本
+  韓国 | 韓国中部または韓国南部
   イギリス | 英国南部または英国西部
   米国 | 米国中部または米国西部 2
 
