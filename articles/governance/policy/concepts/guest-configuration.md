@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/04/2019
 ms.locfileid: "70308566"
 ---
-# <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
+# <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
 Azure リソースの監査と[修復](../how-to/remediate-resources.md)以外に、Azure Policy ではマシン内の設定を監査することができます。 検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
 
