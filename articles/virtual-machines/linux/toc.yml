@@ -472,6 +472,8 @@
         - name: テンプレートによるディスクのデプロイ
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: ディスクに VHD をアップロードする - CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: ディスクのサイズの変更
           href: expand-disks.md
         - name: ディスクのスナップショットの作成

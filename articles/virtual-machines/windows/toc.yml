@@ -470,6 +470,8 @@
           href: detach-disk.md
         - name: テンプレートによるディスクのデプロイ
           href: using-managed-disks-template-deployments.md
+        - name: ディスクに VHD をアップロードする - PowerShell
+          href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: ディスクのサイズの変更
           href: expand-os-disk.md
         - name: ディスクのスナップショットの作成
