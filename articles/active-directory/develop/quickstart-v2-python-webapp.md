@@ -120,7 +120,7 @@ REDIRECT_URI = "http://localhost:5000/getAToken"
 
 #### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
 
-- MSAL Python ライブラリ、Flask フレームワーク、サーバー側のセッション管理用の Flask-Sessions、および要求を、次のように pip を使用してインストールする必要があります。
+- MSAL Python ライブラリ、Flask フレームワーク、サーバー側のセッション管理用の Flask-Sessions、および requests を、次のように pip を使用してインストールする必要があります。
 
 ```Shell
 pip install msal
