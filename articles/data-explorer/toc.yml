@@ -90,6 +90,8 @@
       items:
         - name: Power BI
           items:
+            - name: ベスト プラクティス
+              href: power-bi-best-practices.md
             - name: コネクタ
               href: power-bi-connector.md
             - name: インポートされたクエリ
