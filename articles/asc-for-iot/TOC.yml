@@ -39,6 +39,8 @@
       href: concept-security-alerts.md
     - name: セキュリティに関する推奨事項
       href: concept-recommendations.md
+    - name: ベースライン
+      href: concept-baseline.md
     - name: イベントの集計
       href: event-aggregation.md
     - name: 価格と関連コスト
