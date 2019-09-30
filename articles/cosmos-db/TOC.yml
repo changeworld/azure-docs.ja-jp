@@ -691,6 +691,8 @@
       items:
         - name: ノートブックの有効化
           href: enable-notebooks.md
+        - name: 組み込みのノートブック コマンドの使用
+          href: use-notebook-features-and-commands.md
     - name: サーバー側プログラミング
       items:
         - name: ストアド プロシージャ、トリガー、UDF を書き込む

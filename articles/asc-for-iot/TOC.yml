@@ -21,7 +21,7 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: IoT Hub 内で Azure Security Center for IoT を有効にする
+    - name: IoT Hub で Azure Security Center for IoT をオンボードする
       href: quickstart-onboard-iot-hub.md
     - name: ソリューションを構成する
       href: quickstart-configure-your-solution.md
@@ -73,6 +73,8 @@
       href: how-to-security-data-access.md
     - name: デバイスを調査する
       href: how-to-investigate-device.md
+    - name: ソリューションをカスタマイズする
+      href: how-to-customize-solution.md
 - name: リソース
   items:
     - name: よく寄せられる質問

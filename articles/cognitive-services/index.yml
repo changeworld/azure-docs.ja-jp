@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 09/16/2019
-  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
-  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.openlocfilehash: 9071de52e97a041c9769f6c93fa36f39aff4e4fe
+  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/18/2019
-  ms.locfileid: "71087549"
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71316413"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -139,23 +139,26 @@ conceptualContent:
       itemType: overview
       text: Web Search
   - title: Cognitive Service コンテナー
-    summary: Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure 内で利用できるものと同じリッチな API シリーズを使用できます。また、Docker コンテナーに付随するサービスをデプロイおよびホストできる柔軟性があります。
+    summary: Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure 内で利用できるものと同じリッチな API シリーズを使用できます。Docker コンテナーに付随するサービスをデプロイおよびホストできる柔軟性もあります。
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
       text: Cognitive Service コンテナー
     - url: ./containers/container-reuse-recipe.md
-      itemType: overview
+      itemType: learn
       text: 再利用するためのコンテナーを作成する
     - url: ./containers/azure-container-instance-recipe.md
       itemType: how-to-guide
       text: Azure コンテナー インスタンスにコンテナーをデプロイして実行する
     - url: ./containers/azure-kubernetes-recipe.md
-      itemType: how-to-guide
+      itemType: deploy
       text: Azure Kubernetes Service にデプロイする
     - url: ./containers/docker-compose-recipe.md
-      itemType: how-to-guide
+      itemType: get-started
       text: Docker Compose を使用して複数のコンテナーをデプロイする
+    - url: ./containers/container-faq.md
+      itemType: reference
+      text: Cognitive Services コンテナーに関する FAQ
 additionalContent:
   sections:
   - items:

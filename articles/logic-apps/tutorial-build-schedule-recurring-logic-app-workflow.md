@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931308"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172163"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>チュートリアル:スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する
 
@@ -235,7 +235,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. 直前のアクションの下で **[新しいステップ]** を選択します。
 
-1. **[アクションを選択してください]** で **[Built-in]\(組み込み\)** を選択し、「条件」を検索して、 **[条件]** アクションを選択します。
+1. **[アクションを選択してください]** で **[Built-in]\(組み込み\)** を選択します。 検索ボックスに、フィルターとして「条件」と入力します。 アクションの一覧で、 **[条件]** アクションを選択します。
 
    ![[条件] アクションを選択する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -245,17 +245,17 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    1. 条件内で、左側にある **[値の選択]** ボックス内をクリックします。
 
-   1. 動的コンテンツ リストが表示されたら、 **[変数]** から **travelTime** プロパティを選択します。
+   1. 表示された動的コンテンツ リストから、 **[変数]** の **travelTime** プロパティを選択します。
 
       ![左側の条件を作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. 比較ボックスで、演算子として **[次の値より大きい]** を選択します。
+   1. 中央の比較ボックスで、演算子として **[次の値より大きい]** を選択します。
 
    1. 条件の右側にある **[値の選択]** ボックスで、上限として「`15`」を入力します。
 
       完成した条件は次の例のようになります。
 
-      ![条件をビルドする](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![完成した条件](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. ロジック アプリを保存し、
 

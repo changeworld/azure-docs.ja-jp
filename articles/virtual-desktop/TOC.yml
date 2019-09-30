@@ -28,6 +28,10 @@
           href: connect-windows-7-and-10.md
         - name: Web ブラウザーから接続する
           href: connect-web.md
+        - name: macOS クライアントに接続する
+          href: connect-macos.md
+        - name: iOS クライアントに接続する
+          href: connect-ios.md
     - name: Azure Resource Manager テンプレートを使用してホスト プールを作成する
       href: create-host-pools-arm-template.md
     - name: PowerShell を使用してホスト プールを作成する

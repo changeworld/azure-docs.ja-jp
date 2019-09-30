@@ -155,6 +155,8 @@
               href: sql-data-warehouse-tables-data-types.md
             - name: 分散テーブル
               href: sql-data-warehouse-tables-distribute.md
+            - name: テーブル制約
+              href: sql-data-warehouse-table-constraints.md
             - name: インデックス
               href: sql-data-warehouse-tables-index.md
             - name: ID

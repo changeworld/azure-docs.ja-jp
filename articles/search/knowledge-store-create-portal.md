@@ -4,16 +4,15 @@ description: Azure portal のデータのインポート ウィザードを使�
 author: lisaleib
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 14996d0ac9ee4e086a5dccd9275ef694adca06ca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fb979a7ff4144694aecad0985c5bce9be2de05bd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963189"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265193"
 ---
 # <a name="create-an-azure-search-knowledge-store-in-the-azure-portal"></a>Azure portal で Azure Search のナレッジ ストアを作成する
 
@@ -116,7 +115,7 @@ Azure Search のインデクサーからホテルのレビューにアクセス�
 1. **[インデックス名]** に「`hotel-reviews-idx`」と入力します。
 1. 属性については、次のように選択します。
     + すべてのフィールドについて **[取得可能]** を選択します。
-    + *Sentiment*、*Language*、*Keyphrases* の各フィールドについて、 **[フィルター可能]** と **[ファセット可能]** を選択します。
+    + 以下のフィールドで、 **[フィルター可能]** と **[ファセット可能]** をオンにします。*Sentiment*、*Language*、*Keyphrases*
     + *city*、*name*、*reviews_text*、*language*、*Keyphrases* の各フィールドについて、 **[検索可能]** を選択します。
 
     インデックスは、次の画像のようになります。 一覧が長いため、この画像には一部のフィールドが表示されていません。

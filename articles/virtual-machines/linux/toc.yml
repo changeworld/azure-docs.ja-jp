@@ -476,6 +476,8 @@
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: ディスクのサイズの変更
           href: expand-disks.md
+        - name: Storage Explorer を使用してディスクを管理する
+          href: disks-use-storage-explorer-managed-disks.md
         - name: ディスクのスナップショットの作成
           href: snapshot-copy-managed-disk.md
         - name: 増分スナップショットの作成

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915147"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240969"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -57,6 +57,7 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
 
 * 1809 以降の更新プログラムが適用された Windows 10。
 * 開発設定に応じて、独自のコンピューターまたは仮想マシンを使用できます。
+  * 開発用マシンで、入れ子になった仮想化がサポートされていることを確認します。 この機能は、次のセクションでインストールするコンテナー エンジンを実行するために必要です。
 * [Git](https://git-scm.com/) のインストール。 
 
 Window 上の Azure IoT Edge デバイス:
@@ -299,7 +300,7 @@ IotEdgeModule1 コードは、入力キューを介してメッセージを受�
 
 3. Visual Studio の **[出力]** セクションを監視して、IoT ハブに到着するメッセージを確認してください。 
 
-   両方のモジュールが開始するまでに数分かかる場合があります。 IoT Edge ランタイムは、新しい配置マニフェストを受け取り、コンテナー ランタイムからモジュール イメージを取得して、それぞれの新しいモジュールを開始する必要があります。 もし 
+   両方のモジュールが開始するまでに数分かかる場合があります。 IoT Edge ランタイムは、新しい配置マニフェストを受け取り、コンテナー ランタイムからモジュール イメージを取得して、それぞれの新しいモジュールを開始する必要があります。 
 
    ![デバイスからクラウドへの着信メッセージを表示する](./media/tutorial-develop-for-windows/view-d2c-messages.png)
 
