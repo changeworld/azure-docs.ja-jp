@@ -426,5 +426,5 @@ LUIS エンティティ | エンティティの種類 | 説明 | 例
 ------------|-------------|-------------|---------
 SearchEngine | List | ユーザーが使用を望む検索エンジン。 | Bing <br> Google
 SearchText | simple、pattern.Any | ユーザーが検索を希望するテキスト。 <br> _"in" の後の Web サイトが検索エンジンではない場合、"friends in facebook" に SearchText のタグを付けます。URL にも SearchText のタグを付けます。_ | 映画 <br> ディープ ラーニング <br> トム クルーズ
-Link | url | Web サイト リンク。 | www.twitter.com
+Link | url | Web サイト リンク。 | [www.twitter.com](www.twitter.com)
 
