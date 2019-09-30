@@ -9,10 +9,10 @@ ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 09/27/2019
 ms.locfileid: "71264470"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) 用のアプリケーションの準備
