@@ -244,7 +244,7 @@
             - name: Azure portal でのナレッジ ストアの作成
               href: knowledge-store-create-portal.md
             - name: REST と Postman を使用した作成
-              href: knowledge-store-howto.md
+              href: knowledge-store-create-rest.md
             - name: Storage Explorer を使用した表示
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI を使用した接続

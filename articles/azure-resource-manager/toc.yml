@@ -14,7 +14,7 @@
     - name: テンプレートの作成 - VS Code
       href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
     - name: テンプレートの作成 - Visual Studio
-      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+      href: vs-azure-tools-update-deploy-script-to-az-powershell.md
     - name: テンプレートの作成 - IntelliJ IDEA
       href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: チュートリアル
