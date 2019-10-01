@@ -219,84 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: 運用環境に移行する
                   href: scenario-mobile-production.md
-        - name: Microsoft Authentication Library (MSAL)
-          items:
-            - name: 概要
-              href: msal-overview.md
-            - name: ADAL からの移行
-              items:
-                - name: MSAL.NET への移行
-                  href: msal-net-migration.md
-                - name: MSAL.js への移行
-                  href: msal-compare-msal-js-and-adal-js.md
-                - name: iOS と macOS での MSAL への移行
-                  href: migrate-objc-adal-msal.md
-                - name: ブローカーを使用して Xamarin アプリを ADAL.NET から MSAL.NET に移行する
-                  href: msal-net-migration-ios-broker.md
-            - name: サポートされている認証フロー
-              href: msal-authentication-flows.md
-            - name: トークンの取得およびキャッシュ
-              items:
-                - name: トークンの取得およびキャッシュ
-                  href: msal-acquire-cache-tokens.md
-                - name: v1.0 アプリ用のスコープ
-                  href: msal-v1-app-scopes.md
-            - name: クライアント アプリケーション
-              items:
-                - name: クライアント アプリケーション
-                  href: msal-client-applications.md
-                - name: アプリケーションの構成
-                  href: msal-client-application-configuration.md
-                - name: アプリケーションの初期化 (.NET)
-                  href: msal-net-initializing-client-applications.md
-                - name: クライアント アサーション (.NET)
-                  href: msal-net-client-assertions.md
-                - name: アプリケーションの初期化 (JS)
-                  href: msal-js-initializing-client-applications.md
-            - name: エラーと例外を処理する
-              href: msal-handling-exceptions.md
-            - name: ログの記録
-              href: msal-logging.md
-            - name: シングル サインオン
-              items:
-                - name: MSAL.js でのシングル サインオン
-                  href: msal-js-sso.md
-                - name: iOS と macOS での MSAL によるシングル サインオン
-                  items:
-                    - name: MSAL アプリ間の SSO
-                      href: single-sign-on-macos-ios.md
-                    - name: ADAL アプリと MSAL アプリの間の SSO
-                      href: sso-between-adal-msal-apps-macos-ios.md
-            - name: ADFS による統合
-              items:
-                - name: MSAL.NET での ADFS のサポート
-                  href: msal-net-adfs-support.md
-            - name: Azure AD B2C との統合
-              items:
-                - name: JavaScript
-                  href: msal-b2c-overview.md
-                - name: .NET
-                  href: msal-net-aad-b2c-considerations.md
-                - name: iOS と macOS
-                  href: 'config-authority.md#b2c'
-            - name: 考慮事項と既知の問題
-              items:
-                - name: MSAL.NET
-                  items:
-                    - name: Web ブラウザー
-                      href: msal-net-web-browsers.md
-                - name: MSAL.js
-                  items:
-                    - name: IE の使用に関する考慮事項
-                      href: msal-js-use-ie-browser.md
-                    - name: 既知の問題 - IE と Microsoft Edge
-                      href: msal-js-known-issues-ie-edge-browsers.md
-                    - name: 既知の問題 - Safari
-                      href: msal-js-known-issues-safari-browser.md
-                - name: iOS と macOS での MSAL
-                  items:
-                    - name: SSL の問題
-                      href: ssl-issues.md
         - name: 認証プロトコル
           items:
             - name: アプリケーションの種類と OAuth2.0
@@ -440,6 +362,98 @@
               href: vs-active-directory-webapi-what-happened.md
             - name: 認証検出時のエラー
               href: vs-active-directory-error.md
+    - name: Microsoft Authentication Library (MSAL)
+      items:
+        - name: 概要
+          href: msal-overview.md
+        - name: アカウントとテナント プロファイル (Android)
+          href: accounts-overview.md
+        - name: 承認エージェント (Android)
+          href: authorization-agents.md
+        - name: 仲介型認証 (Android)
+          items:
+            - name: 仲介型認証 (Android)
+              href: brokered-auth.md
+        - name: 移行
+          items:
+            - name: MSAL.NET への移行
+              href: msal-net-migration.md
+            - name: MSAL.js への移行
+              href: msal-compare-msal-js-and-adal-js.md
+            - name: MSAL.Android への移行
+              href: migrate-android-adal-msal.md
+            - name: MSAL.iOS と MacOS への移行
+              href: migrate-objc-adal-msal.md
+            - name: ブローカーを使用して Xamarin アプリを ADAL.NET から MSAL.NET に移行する
+              href: msal-net-migration-ios-broker.md
+        - name: サポートされている認証フロー
+          href: msal-authentication-flows.md
+        - name: 単一および複数アカウントのパブリック クライアント アプリ (Android)
+          href: single-multi-account.md
+        - name: トークンの取得およびキャッシュ
+          items:
+            - name: トークンの取得およびキャッシュ
+              href: msal-acquire-cache-tokens.md
+            - name: v1.0 アプリ用のスコープ
+              href: msal-v1-app-scopes.md
+        - name: クライアント アプリケーション
+          items:
+            - name: クライアント アプリケーション
+              href: msal-client-applications.md
+            - name: アプリケーションの構成 (.NET)
+              href: msal-client-application-configuration.md
+            - name: アプリケーションの初期化 (.NET)
+              href: msal-net-initializing-client-applications.md
+            - name: クライアント アサーション (.NET)
+              href: msal-net-client-assertions.md
+            - name: アプリケーションの初期化 (JS)
+              href: msal-js-initializing-client-applications.md
+        - name: エラーと例外を処理する
+          href: msal-handling-exceptions.md
+        - name: ログの記録
+          href: msal-logging.md
+        - name: シングル サインオン
+          items:
+            - name: MSAL.js でのシングル サインオン
+              href: msal-js-sso.md
+            - name: iOS と macOS での MSAL によるシングル サインオン
+              items:
+                - name: MSAL アプリ間の SSO
+                  href: single-sign-on-macos-ios.md
+                - name: ADAL アプリと MSAL アプリの間の SSO
+                  href: sso-between-adal-msal-apps-macos-ios.md
+        - name: ADFS による統合
+          items:
+            - name: MSAL.NET での ADFS のサポート
+              href: msal-net-adfs-support.md
+        - name: Azure AD B2C との統合
+          items:
+            - name: Android
+              href: msal-android-b2c.md
+            - name: JavaScript
+              href: msal-b2c-overview.md
+            - name: .NET
+              href: msal-net-aad-b2c-considerations.md
+            - name: iOS と macOS
+              href: 'config-authority.md#b2c'
+        - name: 考慮事項と既知の問題
+          items:
+            - name: MSAL.NET
+              items:
+                - name: Web ブラウザー
+                  href: msal-net-web-browsers.md
+            - name: MSAL.js
+              items:
+                - name: IE の使用に関する考慮事項
+                  href: msal-js-use-ie-browser.md
+                - name: 既知の問題 - IE と Microsoft Edge
+                  href: msal-js-known-issues-ie-edge-browsers.md
+                - name: 既知の問題 - Safari
+                  href: msal-js-known-issues-safari-browser.md
+            - name: iOS と macOS での MSAL
+              items:
+                - name: SSL の問題
+                  href: ssl-issues.md
     - name: 参照
       items:
         - name: 認証ライブラリ
@@ -449,6 +463,8 @@
           href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
         - name: アプリケーション マニフェスト
           href: reference-app-manifest.md
+        - name: Android MSAL 構成ファイル
+          href: msal-configuration.md
         - name: 認証と承認エラー コード
           href: reference-aadsts-error-codes.md
         - name: 重大な変更
