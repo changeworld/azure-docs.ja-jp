@@ -165,6 +165,8 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: サブスクリプションの管理
   items:
+    - name: サブスクリプションの状態
+      href: billing-azure-subscription-states.md
     - name: サブスクリプションの再アクティブ化
       href: billing-subscription-become-disable.md
     - name: 所有権の移転

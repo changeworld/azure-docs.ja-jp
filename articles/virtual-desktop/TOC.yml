@@ -24,10 +24,12 @@
   items:
     - name: Windows Virtual Desktop リソースに接続する
       items:
-        - name: Windows 10 または Windows 7 から接続する
+        - name: Windows デスクトップ クライアントに接続する
           href: connect-windows-7-and-10.md
-        - name: Web ブラウザーから接続する
+        - name: Web クライアントに接続する
           href: connect-web.md
+        - name: Android クライアントに接続する
+          href: connect-android.md
         - name: macOS クライアントに接続する
           href: connect-macos.md
         - name: iOS クライアントに接続する
@@ -72,6 +74,8 @@
       href: partners.md
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
       href: windows-10-multisession-faq.md
+    - name: データの場所
+      href: data-locations.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート

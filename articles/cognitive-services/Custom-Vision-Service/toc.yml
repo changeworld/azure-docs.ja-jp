@@ -44,9 +44,9 @@
           href: go-tutorial-object-detection.md
 - name: チュートリアル
   items:
-    - name: IoT Visual Alerts アプリ
+    - name: IoT デバイスでビジュアルの状態をレポートする
       href: iot-visual-alerts-tutorial.md
-    - name: モバイル向けのロゴ検出機能
+    - name: モバイルでロゴを認識する
       href: logo-detector-mobile.md
 - name: ハウツー ガイド
   items:

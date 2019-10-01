@@ -249,6 +249,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI を使用した接続
               href: knowledge-store-connect-power-bi.md
+        - name: エンリッチメントに関する問題のトラブルシューティング
+          href: cognitive-search-common-errors-warnings.md
     - name: ドキュメントにクエリを実行する
       items:
         - name: クエリの種類と構成

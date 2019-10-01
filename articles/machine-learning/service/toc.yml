@@ -49,6 +49,10 @@
         - name: 分類 (銀行データ)
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+    - name: Machine Learning CLI
+      items:
+        - name: モデルのトレーニングとデプロイ
+          href: tutorial-train-deploy-model-cli.md
 - name: サンプル
   items:
     - name: Notebooks
@@ -63,6 +67,9 @@
     - name: コンピューティング ターゲット
       displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
+    - name: モデル トレーニング
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
     - name: ビジュアル インターフェイス
       displayName: studio
       href: ui-concept-visual-interface.md
@@ -138,7 +145,7 @@
     - name: モデルをトレーニングする
       items:
         - name: トレーニング環境をセットアップする
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: Estimator を使用してトレーニングする
           items:

@@ -128,8 +128,8 @@
           displayName: 'vanity, ingest'
         - name: おすすめのライブ エンコーダー
           href: recommended-on-premises-live-encoders.md
-        - name: クラウド DVR の使用
-          displayName: archive
+        - name: タイムシフトとライブツー VOD
+          displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
         - name: 機能の比較
           href: live-event-types-comparison.md
