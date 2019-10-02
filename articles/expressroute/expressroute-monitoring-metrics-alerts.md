@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 92ec03e20fb6e681a0afd14048449ad004ebca0c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991462"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154775"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute の監視、メトリック、およびアラート
 
@@ -23,57 +23,50 @@ ms.locfileid: "69991462"
 >**クラシック メトリック**の使用はお勧めしません。
 >
 
-## <a name="circuit-metrics"></a>回線のメトリック
+## <a name="expressroute-metrics"></a>ExpressRoute メトリック
 
-**[メトリック]** に移動するには、監視する回線の ExpressRoute ページをクリックします。 **[監視]** の下に **[メトリック]** が表示されます。 以下に一覧表示されているメトリックから選択します。 既定の集計が適用されます。 必要に応じて、さまざまなディメンションでメトリックを表示する分割を適用できます。
+**[メトリック]** を表示するには、 *[Azure Monitor]* ページに移動して *[メトリック]* をクリックします。 **[ExpressRoute]** メトリックを表示するには、リソースの種類を *[ExpressRoute 回線]* でフィルターを適用します。 **[Global Reach]** メトリックを表示するには、リソースの種類を *[ExpressRoute 回線]* でフィルターを適用し、Global Reach が有効になっている ExpressRoute 回線リソースを選択します。 **ExpressRoute Direct** メトリックを表示するには、 *[ExpressRoute ポート]* でリソースの種類をフィルターします。 
 
-### <a name="metrics-available"></a>使用可能なメトリック: 
-* **可用性** 
-    * ARP の可用性
-      * 使用可能なディメンション:
-        * ピア (プライマリ/セカンダリの ExpressRoute ルーター)
-        * ピアリングの種類 (プライベート/パブリック/Microsoft)
-    * BGP の可用性
-      * 使用可能なディメンション:
-        * ピア (プライマリ/セカンダリの ExpressRoute ルーター)
-        * ピアリングの種類 (プライベート/パブリック/Microsoft)
-* **トラフィック**
-    * BitsInPerSecond (受信ビット数/秒)
-      * 使用可能なディメンション:
-        * ピアリングの種類 (プライベート/パブリック/Microsoft)
-    * BitsOutPerSecond (送信ビット数/秒)
-      * 使用可能なディメンション:
-        * ピアリングの種類 (プライベート/パブリック/Microsoft)
-    * GlobalReachBitsInPerSecond
-      * 使用可能なディメンション:
-        * ピアリングされた回線 Skey (サービス キー)
-    * GlobalReachBitsOutPerSecond
-      * 使用可能なディメンション:
-        * ピアリングされた回線 Skey (サービス キー)
+メトリックを選択すると、既定の集計が適用されます。 必要に応じて、さまざまなディメンションでメトリックを表示する分割を適用できます。
 
+### <a name="available-metrics"></a>使用可能なメトリック
+|**メトリック**|**カテゴリ**|**ディメンション**|**機能**|
+| --- | --- | --- | --- |
+|ARP の可用性|可用性|<ui><li>ピア (プライマリ/セカンダリの ExpressRoute ルーター)</ui></li><ui><li> ピアリングの種類 (プライベート/パブリック/Microsoft)</ui></li>|ExpressRoute|
+|BGP の可用性|可用性|<ui><li> ピア (プライマリ/セカンダリの ExpressRoute ルーター)</ui></li><ui><li> ピアリングの種類</ui></li>|ExpressRoute|
+|BitsInPerSecond (受信ビット数/秒)|トラフィック|<ui><li> ピアリングの種類 (ExpressRoute)</ui></li><ui><li>リンク (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond (送信ビット数/秒)|トラフィック| <ui><li>ピアリングの種類 (ExpressRoute)</ui></li><ui><li> リンク (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|GlobalReachBitsInPerSecond|トラフィック|<ui><li>ピアリングされた回線 Skey (サービス キー)</ui></li>|Global Reach|
+|GlobalReachBitsOutPerSecond|トラフィック|<ui><li>ピアリングされた回線 Skey (サービス キー)</ui></li>|Global Reach|
+|AdminState|物理的な接続性|Link|ExpressRoute Direct|
+|LineProtocol|物理的な接続性|Link|ExpressRoute Direct|
+|RxLightLevel|物理的な接続性|<ui><li>リンク</ui></li><ui><li>レーン</ui></li>|ExpressRoute Direct|
+|TxLightLevel|物理的な接続性|<ui><li>リンク</ui></li><ui><li>レーン</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >*GlobalGlobalReachBitsInPerSecond* と *GlobalGlobalReachBitsOutPerSecond* の使用は、少なくとも 1 つの Global Reach 接続が確立されている場合にのみ表示されます。
 >
 
-## <a name="bits-in-and-out---metrics-across-all-peerings"></a>ビットのインとアウト - すべてのピアリング全体でのメトリック
+## <a name="circuits-metrics"></a>回線のメトリック
+
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a>ビットのインとアウト - すべてのピアリング全体でのメトリック
 
 特定の ExpressRoute 回線上のすべてのピアリングを超えてメトリックを表示できます。
 
 ![回線のメトリック](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
-## <a name="bits-in-and-out---metrics-per-peering"></a>ビットのインとアウト - ピアリングごとのメトリック
+### <a name="bits-in-and-out---metrics-per-peering"></a>ビットのインとアウト - ピアリングごとのメトリック
 
 プライベート、パブリック、Microsoft ピアリングのメトリック (ビット/秒) を表示できます。
 
 ![ピアリングごとのメトリック](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
 
-## <a name="bgp-availability---split-by-peer"></a>BGP の可用性 - ピアによる分割  
+### <a name="bgp-availability---split-by-peer"></a>BGP の可用性 - ピアによる分割  
 
 ピアリングとピア (プライマリとセカンダリの ExpressRoute ルーター) 全体で、BGP の可用性はほぼリアルタイムで表示できます。 このダッシュボードには、プライベート ピアリング用のプライマリ BGP セッションはアップ状態であり、プライベート ピアリング用の 2 番目の BGP セッションはダウンしていると表示されます。 
 
 ![ピアごとの BGP の可用性](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
 
-## <a name="arp-availability---split-by-peering"></a>ARP の可用性 - ピアリングによる分割  
+### <a name="arp-availability---split-by-peering"></a>ARP の可用性 - ピアリングによる分割  
 
 ピアリングとピア (プライマリとセカンダリの ExpressRoute ルーター) 全体で、[ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) の可用性はほぼリアルタイムで表示できます。 このダッシュボードには、両方のピアを超えてプライベート ピアリング ARP セッションはアップ状態ですが、ピアリング間の Microsoft ピアリングに対しては完全にダウンしていると表示されます。 既定の集計 (平均) は、両方のピアとの間に使用されていました。  
 

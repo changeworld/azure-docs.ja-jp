@@ -102,6 +102,8 @@
           href: global-dist-under-the-hood.md
         - name: リージョン プレゼンス
           href: regional-presence.md
+        - name: トランザクションと分析のストレージ
+          href: globally-distributed-transactional-analytical-storage.md
     - name: パーティション分割
       items:
         - name: 概要
@@ -453,11 +455,12 @@
         - name: Azure Functions をトリガーする
           displayName: change feed
           href: change-feed-functions.md
-    - name: Apache Spark による組み込みの分析
+    - name: グローバル分散分析と AI
       items:
         - name: はじめに
+          displayName: 'Apache Spark, spark'
           href: spark-api-introduction.md
-        - name: Analytics のユースケース
+        - name: 分析のユース ケース
           href: analytics-usecases.md
         - name: Analytics - ソリューション アーキテクチャ
           href: analytics-solution-architectures.md

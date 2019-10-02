@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 09/18/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 28cfbc7183628b00c463f1c3a8a954ba4074409b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e522c7ea306667f675af4bbe7486e25fb7f4ec9f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415956"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122798"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
-ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure、Office 365、Dynamics 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用できます。 ただし、ブランチ オフィスは相互にデータを直接交換することはできません。 言い換えれば、10.0.1.0/24 はデータを、10.0.3.0/24 と 10.0.4.0/24 には送信できますが、10.0.2.0/24 には送信できません。
+ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure や Office 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用できます。 ただし、ブランチ オフィスは相互にデータを直接交換することはできません。 言い換えれば、10.0.1.0/24 はデータを、10.0.3.0/24 と 10.0.4.0/24 には送信できますが、10.0.2.0/24 には送信できません。
 
 ![ない場合][1]
 

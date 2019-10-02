@@ -17,12 +17,12 @@ ms.date: 06/07/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a0a5b5306414eb50a1928ec8a1854f56055681
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e50f2b92318ada729ad8e3405af8403f31d7b6e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987896"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129282"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory アクティビティ ログ コンテンツ パックのエラーのトラブルシューティングを行う 
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
 | 原因 | 修正方法 |
 | ---   | ---        |
 | 更新失敗エラーは、コンテンツ パックに接続するユーザーの資格情報がリセットされたが、コンテンツ パックの接続設定が更新されていないときに発生することがあります。 | Power BI で、Azure Active Directory アクティビティ ログ ダッシュボード (**Azure Active Directory のアクティビティ ログ**) に対応するデータセットを検索し、[更新のスケジュール設定] を選択し、Azure AD 資格情報を入力します。 |
-| 大規模なデータセットが原因で更新が失敗します。 | 現時点において、Power BI を使用した Azure AD コンテンツ パックでは、Power BI サービスのタイムアウトに関するいくつかの制限のため、小さなデータ セットのみ (500,00 行未満) のみサポートできます。 調整エラーが発生した場合、またはタイムアウトの問題で更新に失敗した場合は、大規模なデータセットをフェッチしようとしていることが原因の可能性があります。 クエリの時間を短縮し、もう一度やり直してください。|
+| 大規模なデータセットが原因で更新が失敗します。 | 現時点において、Power BI を使用した Azure AD コンテンツ パックでは、Power BI サービスのタイムアウトに関するいくつかの制限のため、小さなデータ セットのみ (500,000 行未満) のみサポートできます。 調整エラーが発生した場合、またはタイムアウトの問題で更新に失敗した場合は、大規模なデータセットをフェッチしようとしていることが原因の可能性があります。 クエリの時間を短縮し、もう一度やり直してください。|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>データ ソースの資格情報を更新できませんでした 

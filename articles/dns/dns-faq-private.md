@@ -5,21 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 6/12/2019
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 480cf22491dbbfcb9fe1961b5c9a7aa6fe12a0cb
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: fca7359f9fa54899bb72be3b939e1a1839dbfbd1
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274041"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155704"
 ---
 # <a name="azure-private-dns-faq"></a>Azure プライベート DNS に関する FAQ
 
-> [!IMPORTANT]
-> 現在、Azure プライベート DNS はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 ## <a name="does-azure-dns-support-private-domains"></a>Azure DNS では、プライベート ドメインはサポートされますか。
 
@@ -29,11 +26,11 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 
 ## <a name="will-azure-dns-private-zones-work-across-azure-regions"></a>Azure DNS Private Zones は Azure リージョンを超えて機能しますか。
 
-はい。 Azure リージョンを超えた仮想ネットワーク間での DNS 解決では、Private Zones がサポートされます。 Private Zones は、仮想ネットワークを明示的にピアリングしていない場合でも動作します。 すべての仮想ネットワークは、プライベート ゾーンの解決仮想ネットワークとして指定する必要があります。 TCP/HTTP トラフィックをあるリージョンから別のリージョンにフローするには、お客様による仮想ネットワークのピアリングが必要な場合があります。
+はい。 Azure リージョンを超えた仮想ネットワーク間での DNS 解決では、Private Zones がサポートされます。 Private Zones は、仮想ネットワークを明示的にピアリングしていない場合でも動作します。 すべての仮想ネットワークは、プライベート ゾーンの解決仮想ネットワークとして指定する必要があります。 TCP/HTTP トラフィックをあるリージョンから別のリージョンにフローするには、仮想ネットワークのピアリングが必要な場合があります。
 
 ## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>プライベート ゾーンでは、仮想ネットワークからインターネットに接続されている必要はありますか?
 
-いいえ。 プライベート ゾーンは、仮想ネットワークと共に動作します。 お客様は、それらを使用して、仮想ネットワーク内またはそれらの間で、仮想マシンやその他のリソース用のドメインを管理します。 名前解決にインターネットへの接続は必要ありません。
+いいえ。 プライベート ゾーンは、仮想ネットワークと共に動作します。 それらを使用して、仮想ネットワーク内またはそれらの間で、仮想マシンやその他のリソース用のドメインを管理します。 名前解決にインターネットへの接続は必要ありません。
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>複数の仮想ネットワークの解決に同じプライベート ゾーンを使用できますか?
 
@@ -75,7 +72,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 
 Azure プライベート DNS を使用する際は、次の制限が既定で適用されます。
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 |サブスクリプションあたりのプライベート DNS ゾーン数|1000|
 |プライベート DNS ゾーンあたりのレコード セット数|25,000|

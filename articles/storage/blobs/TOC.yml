@@ -440,6 +440,8 @@
           items:
             - name: BLOB、キュー、ファイル (バージョン 12.x - プレビュー)
               href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+            - name: BLOB、キュー、ファイル (バージョン 8)
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
             - name: ストレージ リソース プロバイダー
               href: /java/api/overview/azure/storage/management
         - name: Node.js
@@ -535,8 +537,10 @@
               href: 'https://www.nuget.org/packages/Azure.Storage.Blobs/'
             - name: Azure Configuration Manager
               href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
-            - name: Azure Storage Data Movement Library
+            - name: Azure Storage データ移動ライブラリ
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+            - name: ストレージ リソース プロバイダーのライブラリ
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
         - name: ソース コード
           items:
             - name: .NET
@@ -550,7 +554,7 @@
                 - name: データ移動ライブラリ
                   href: 'https://github.com/Azure/azure-storage-net-data-movement'
                 - name: ストレージ リソース プロバイダーのライブラリ
-                  href: /dotnet/api/overview/azure/storage/management
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
             - name: Java
               items:
                 - name: Azure Storage クライアント ライブラリ バージョン 12.x (プレビュー)

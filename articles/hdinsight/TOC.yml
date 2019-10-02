@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight クラスターの管理 - PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: ETL パイプラインの作成
+          href: ./hdinsight-sales-insights-etl.md
     - name: サンプル
       items:
         - name: Azure CLI のサンプル

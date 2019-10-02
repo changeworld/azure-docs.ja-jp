@@ -138,7 +138,7 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: Azure PowerShell の使用
                   href: learn/quick-create-workspace-posh.md
-            - name: ワークスペースを削除する
+            - name: ワークスペースの削除と復旧
               href: platform/delete-workspace.md
             - name: サービス プロバイダー向けの設計
               href: platform/service-providers.md

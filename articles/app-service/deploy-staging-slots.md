@@ -12,14 +12,14 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070592"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129718"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -220,6 +220,9 @@ ms.locfileid: "70070592"
 - `WEBSITE_SWAP_WARMUP_PING_PATH`:サイトをウォームアップするための ping へのパス。 このアプリ設定を追加するには、値としてスラッシュで始まるカスタム パスを指定します。 例: `/statuscheck`。 既定値は `/` です。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`:ウォーム アップ操作の有効な HTTP 応答コード。 HTTP コードのコンマ区切りの一覧で、このアプリ設定を追加します。 たとえば `200,202` とします。 返された状態コードが一覧にない場合、ウォームアップとスワップの操作が停止されます。 既定で、すべての応答コードは有効です。
 
+> [!NOTE]
+> `<applicationInitialization>` は、各アプリの起動に含まれますが、2 つのアプリ設定はスロット スワップにのみ適用されます。
+
 問題がある場合は、「[スワップのトラブルシューティングを行う](#troubleshoot-swaps)」を参照してください。
 
 ## <a name="monitor-a-swap"></a>スワップを監視する
@@ -368,6 +371,8 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
     </conditions>
     ```
 - 一部の [IP 制限ルール](app-service-ip-restrictions.md)により、スワップ操作でのアプリへの HTTP 要求の送信が妨げられる可能性があります。 `10.` および `100.` で始まる IPv4 アドレスの範囲は、デプロイに対して内側です。 これらにアプリへの接続を許可する必要があります。
+
+- スロットをスワップした後、アプリが予期せず再起動する可能性があります。 これは、スワップ後にホスト名のバインド構成の同期が切れ、単体では再起動を行うことができないためです。 ただし、基盤となる特定のストレージ イベント (記憶域ボリュームのフェールオーバーなど) によってこれらの不一致が検出され、すべてのワーカー プロセスが強制的に再起動される可能性があります。 このような再起動を最小限に抑えるには、*すべてのスロット*で[`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`アプリ設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)を設定します。 ただし、このアプリケーション設定は Windows Communication Foundation (WCF) アプリでは動作*しません*。
 
 ## <a name="next-steps"></a>次の手順
 [非運用スロットへのアクセスをブロックする](app-service-ip-restrictions.md)

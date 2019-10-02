@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995554"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181084"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight で Apache Spark ジョブを最適化する
 
@@ -60,7 +60,7 @@ Spark では、csv、json、xml、parquet、orc、avro など、多くの形式�
 | ストアの種類 | ファイル システム | 速度 | 一時的 | ユース ケース |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //url/ | **Standard** | はい | 一時的なクラスター |
-| Azure Data Lake Storage Gen 2| **abfs[s]:** //url/ | **より高速** | はい | 一時的なクラスター |
+| Azure Data Lake Storage Gen 2| **abfs:** //url/ | **より高速** | はい | 一時的なクラスター |
 | Azure Data Lake Storage Gen 1| **adl:** //url/ | **より高速** | はい | 一時的なクラスター |
 | ローカルの HDFS | **hdfs:** //url/ | **最も高速** | いいえ | 24 時間 365 日の対話型クラスター |
 

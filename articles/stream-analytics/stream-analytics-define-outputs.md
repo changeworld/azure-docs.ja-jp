@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984874"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173586"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -210,6 +210,7 @@ DateTime | String | String |  DateTime | string
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 | 形式 |JSON 型のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 |
 | プロパティ列 | 省略可能。 ペイロードではなく、送信メッセージのユーザー プロパティとして関連付ける必要があるコンマ区切りの列です。 この機能の詳細は、「[出力用のカスタム メタデータ プロパティ](#custom-metadata-properties-for-output)」セクションにあります。 |
+| システム プロパティ列 | 省略可能。 ペイロードではなく送信メッセージに添付する必要がある、システムプロパティと対応する列名のキーと値のペア。 この機能の詳細については、「[Service Bus キューとトピックの出力に関するシステム プロパティ](#system-properties-for-service-bus-queue-and-topic-outputs)」を参照してください。  |
 
 パーティション数は、[Service Bus SKU とサイズに基づいています](../service-bus-messaging/service-bus-partitioning.md)。 パーティション キーは、各パーティションに固有の整数値です。
 
@@ -229,6 +230,7 @@ Service Bus キューには、送信者から受信者への一対一の通信�
 | エンコード |CSV または JSON 形式を使用する場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 | プロパティ列 | 省略可能。 ペイロードではなく、送信メッセージのユーザー プロパティとして関連付ける必要があるコンマ区切りの列です。 この機能の詳細は、「[出力用のカスタム メタデータ プロパティ](#custom-metadata-properties-for-output)」セクションにあります。 |
+| システム プロパティ列 | 省略可能。 ペイロードではなく送信メッセージに添付する必要がある、システムプロパティと対応する列名のキーと値のペア。 この機能の詳細については、「[Service Bus キューとトピックの出力に関するシステム プロパティ](#system-properties-for-service-bus-queue-and-topic-outputs)」を参照してください。 |
 
 パーティション数は、[Service Bus SKU とサイズに基づいています](../service-bus-messaging/service-bus-partitioning.md)。 パーティション キーは、各パーティションに固有の整数値です。
 
@@ -294,6 +296,25 @@ Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエン
 次のスクリーンショットは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) を利用して EventHub で検査される出力メッセージ プロパティを示しています。
 
 ![イベント カスタム プロパティ](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Service Bus キューとトピックの出力に関するシステム プロパティ 
+クエリ列を、[システム プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)として送信 Service Bus キューまたはトピック メッセージに添付できます。 これらの列はペイロードに含まれず、代わりに対応する BrokeredMessage [システム プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) には、クエリ列の値が設定されます。
+システムプロパティ (`MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`) はサポートされています。
+これらの列の文字列値は、対応するシステム プロパティ値の型として解析され、解析エラーはデータ エラーとして扱われます。
+このフィールドは、JSON オブジェクト形式で提供されます。 この形式の詳細は次のとおりです。
+* 中かっこ {} で囲まれている。
+* キーと値のペアで記述されている。
+* キーと値は文字列である必要がある。
+* キーはシステム プロパティの名前、値はクエリ列の名前となっている。
+* キーと値は、コロンで区切って指定されている。
+* キーと値のペアはそれぞれ、コンマで区切られている。
+
+このプロパティの使用方法を次に示します。
+
+* クエリ: `select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* システム プロパティ列: `{ "MessageId": "column1", "PartitionKey": "column2"}`
+
+これにより、`column1` の値を持つ Service Bus キューメッセージに `MessageId` が設定され、PartitionKey が `column2` の値で設定されます。
 
 ## <a name="partitioning"></a>パーティション分割
 

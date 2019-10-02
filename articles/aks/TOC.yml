@@ -21,17 +21,17 @@
       items:
         - name: Draft の使用
           href: kubernetes-draft.md
-        - name: Java の使用 (VS Code と CLI)
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: .NET Core の使用 (VS Code と CLI)
+        - name: Visual Studio Code と Azure Dev Spaces を使用する
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: .NET Core の使用 (Visual Studio 2017)
+        - name: Visual Studio と Azure Dev Spaces を使用する
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: Node.js の使用 (VS Code と CLI)
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: CLI と Azure Dev Spaces を使用する
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: チーム開発に Azure Dev Spaces を使用する
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: チュートリアル
   items:

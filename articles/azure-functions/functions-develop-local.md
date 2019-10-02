@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 7e0b5137355c9fd89600fa48c075c81cfb1190e3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c50615b9cbe5c3ca926d893858bb39eeb5720067
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085444"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129588"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 

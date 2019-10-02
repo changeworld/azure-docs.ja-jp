@@ -70,6 +70,14 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: ハウツー ガイド
   items:
+    - name: クラスルーム ラボ - クラスの種類
+      items:
+        - name: クラスの種類
+          href: classroom-labs/class-types.md
+        - name: 自然処理でのディープ ラーニング
+          href: classroom-labs/class-type-deep-learning-natural-processing.md
+        - name: Linux でのシェル スクリプト
+          href: classroom-labs/class-type-shell-scripting-linux.md
     - name: クラスルーム ラボ
       items:
         - name: ラボ アカウントを作成および構成する (ラボ アカウント オーナー)

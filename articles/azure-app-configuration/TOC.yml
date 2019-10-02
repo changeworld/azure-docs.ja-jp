@@ -25,6 +25,8 @@
       items:
         - name: ASP.NET Core
           href: quickstart-feature-flag-aspnet-core.md
+        - name: Java Spring
+          href: quickstart-feature-flag-spring-boot.md
 - name: チュートリアル
   items:
     - name: ASP.NET Core で動的な構成を有効にする
@@ -33,6 +35,8 @@
       href: enable-dynamic-configuration-dotnet-core.md
     - name: .NET Core アプリ内で機能フラグを使用する
       href: use-feature-flags-dotnet-core.md
+    - name: Spring Boot アプリ内で機能フラグを使用する
+      href: use-feature-flags-spring-boot.md
     - name: 機能フラグを管理する
       href: manage-feature-flags.md
     - name: CI/CD パイプラインとの統合

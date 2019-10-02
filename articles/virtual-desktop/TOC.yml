@@ -38,6 +38,8 @@
       href: create-host-pools-arm-template.md
     - name: PowerShell を使用してホスト プールを作成する
       href: create-host-pools-powershell.md
+    - name: Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
+      href: deploy-windows-7-virtual-machine.md
     - name: Windows Virtual Desktop セッション ホストに Windows ライセンスを適用する
       href: apply-windows-license.md
     - name: ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する
@@ -86,6 +88,8 @@
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
       href: troubleshoot-vm-configuration.md
+    - name: Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う
+      href: troubleshoot-windows-7-vm.md
     - name: リモート デスクトップ クライアントの接続
       href: troubleshoot-client-connection.md
     - name: Windows Virtual Desktop PowerShell

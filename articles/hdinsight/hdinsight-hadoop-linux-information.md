@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441989"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181114"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -124,11 +124,9 @@ __Azure Storage__ を使用する場合は、次のいずれかの URI スキー
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
-__Azure Data Lake Storage Gen2__ を使用する場合は、次のいずれかの URI スキームを使用します。
+__Azure Data Lake Storage Gen2__ を使用する場合は、次の URI スキームを使用します。
 
-* `abfs:///`:暗号化されていない通信を使用して既定のストレージにアクセスします。
-
-* `abfss:///`:暗号化された通信を使用して既定のストレージにアクセスします。  abfss スキームは、HDInsight バージョン 3.6 以降でのみサポートされます。
+* `abfs://`:暗号化された通信を使用して既定のストレージにアクセスします。
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
