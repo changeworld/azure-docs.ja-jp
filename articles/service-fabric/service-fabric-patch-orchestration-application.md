@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: ccc0399b6ac886ec8d9ef7d207c3539f1d078070
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2aa2dd8373a9568478a02691ca5e6a43e80cd408
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951922"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289418"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -273,7 +273,11 @@ NodeAgentNTService は、[修復タスク](https://docs.microsoft.com/dotnet/api
 
     [![修正プログラム適用中状態のクラスターのイメージ](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
 
-4. ノードが無効になると、修復タスクは実行中状態に移されます。 ノードが無効状態で停止した後、修復タスクが準備中状態で停止した場合、新しい修復タスクをブロックする結果になり、それゆえクラスターの修正プログラムの適用が停止することがあることに注意してください。
+4. ノードが無効になると、修復タスクは実行中状態に移されます。
+   
+   >[!NOTE]
+   > 無効状態に陥ったノードによって新しい修復タスクがブロックされる可能性があり、その場合、クラスターでのパッチ適用操作が停止します。
+
 5. 修復タスクが実行中状態になると、そのノードへの修正プログラムのインストールが開始します。 続いて修正プログラムがインストールされると、ノードは修正プログラムに応じて再起動したり、再起動しなかったりします。 修復タスクが復元状態に移されていることを投稿します。これにより、ノードが再び有効に戻り、続いて完了のマークが付けられます。
 
    v1.4.0 以降のバージョンのアプリケーションでは、プロパティ "WUOperationStatus-[NodeName]" を使用した NodeAgentService で正常性イベントを見ることにより、更新プログラムの状態を確認できます。 下の図で強調表示されたセクションは、ノード 'poanode_0' および 'poanode_2' での Windows Update の状態を表示しています。

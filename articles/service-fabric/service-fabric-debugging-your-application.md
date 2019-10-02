@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 682059914b5d86f5e670e373a4acf3e4ac6246ba
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428215"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300677"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのデバッグ
 > [!div class="op_single_selector"]
@@ -61,6 +61,13 @@ ms.locfileid: "66428215"
 8. サービスのデバッグは、その他のアプリケーションのデバッグと似ています。 通常は、デバッグを容易にするために Visual Studio を使用してブレークポイントを設定します。 Reliable Collections は複数のノード間で複製されますが、IEnumerable は実装されます。 この実装は、デバッグ中に Visual Studio の結果ビューを使用して、内部で何を格納したかを確認できることを示します。 それを行うには、コード内の任意の場所にブレークポイントを設定します。
    
     ![アプリケーションのデバッグを開始する][breakpoint]
+
+
+### <a name="running-a-script-as-part-of-debugging"></a>デバッグの一部としてのスクリプトの実行
+特定のシナリオでは、デバッグ セッションの開始の一部としてスクリプトを実行する必要があります (既定のサービスを使用していない場合など)。
+
+Visual Studio では、Service Fabric Application プロジェクト (.sfproj) の **Scripts** フォルダーに **Start-Service.ps1** というファイルを追加できます。 このスクリプトは、ローカル クラスターでアプリケーションが作成された後に呼び出されます。
+
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 

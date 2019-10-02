@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4781126bc4fcfb6391db42a75553a13e0e4cc4f9
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105258"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155145"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -24,6 +24,8 @@ ms.locfileid: "71105258"
 > オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure の委任されたリソース管理に顧客をオンボードする](onboard-customer.md)」を参照してください。
 
 マネージド サービス オファーの発行は、他の種類のオファーを Azure Marketplace に発行する場合と同様です。 そのプロセスについては、「[Azure Marketplace と AppSource の公開ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」および「[Azure Marketplace と AppSource Marketplace のオファーを管理する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)」(特に「[マネージド サービス](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
+
+顧客がオファーを追加すると、1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任できるようになります。これらは、[Azure の委任されたリソース管理のためにオンボード](#the-customer-onboarding-process)されます。 サブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードできるようにするには、先に **Microsoft.ManagedServices** リソース プロバイダーを手動で登録して、サブスクリプションのオンボードを承認する必要があることに注意してください。
 
 > [!IMPORTANT]
 > マネージド サービス オファー内の各プランには、 **[Manifest Details]\(マニフェストの詳細\)** セクションが含まれています。そこでは、そのプランを購入した顧客に代わり、委任されたリソース グループやサブスクリプションへのアクセス権を持つ Azure Active Directory (Azure AD) エンティティをお客様のテナント内に定義します。 ここに含めたグループ (またはユーザーまたはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意する必要があります。 顧客ごとに異なる担当グループを割り当てるには、各顧客に限定された個別のプライベート プランを発行する必要があります。

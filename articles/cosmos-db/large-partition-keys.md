@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: bd1697378e5db0432d181f9f688ccc2468b306e7
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: a1216daade2df832b606fceb648fca998c3fdec8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566021"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300131"
 ---
 # <a name="create-containers-with-large-partition-key"></a>大きいパーティション キーを持つコンテナーを作成する
 
@@ -19,9 +19,21 @@ Azure Cosmos DB では、データの水平方向のスケーリングを実現�
 
 大きいパーティション キーは、ハッシュ関数の拡張バージョンの機能を使ってサポートされ、最大 2 KB の大きいパーティション キーから一意のハッシュを生成できます。 このハッシュ バージョンは、パーティション キーのサイズに関係なく、パーティション キーのカーディナリティが高いシナリオにも推奨されます。 パーティション キーのカーディナリティは、一意の論理パーティションの数として定義されます (たとえば、コンテナー内の論理パーティションの数が約 30000)。 この記事では、Azure portal とさまざまな SDK を使って、大きいパーティション キーを持つコンテナーを作成する方法について説明します。 
 
-## <a name="create-a-large-partition-key-net-sdk-v2"></a>大きいパーティション キーを作成する (.Net SDK V2)
+## <a name="create-a-large-partition-key-net-sdk"></a>大きいパーティション キーを作成する (.Net SDK)
 
 .NET SDK を使って大きいパーティション キーを持つコンテナーを作成するには、`PartitionKeyDefinitionVersion.V2` プロパティを指定します。 次の例では、PartitionKeyDefinition オブジェクト内で Version プロパティを指定し、それを PartitionKeyDefinitionVersion.V2 に設定する方法を示します。
+
+### <a name="v3-net-sdk"></a>v3 .NET SDK
+
+```csharp
+await database.CreateContainerAsync(
+    new ContainerProperties(collectionName, $"/longpartitionkey")
+    {
+        PartitionKeyDefinitionVersion = PartitionKeyDefinitionVersion.V2, 
+    })
+```
+
+### <a name="v2-net-sdk"></a>v2 .NET SDK
 
 ```csharp
 DocumentCollection collection = await newClient.CreateDocumentCollectionAsync(

@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e7b89fbb4b6343db62cf3476f3c35220b12649b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104041"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145655"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -78,6 +78,7 @@ ms.locfileid: "71104041"
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) |  モバイル アプリの場合、アプリケーションの登録エクスペリエンスを使用して、各プラットフォームを構成します。 アプリケーションでのシングル サインインに Microsoft Authenticator または Microsoft ポータル サイトを利用するためには、アプリに "ブローカー リダイレクト URI" が構成されている必要があります。 これにより、認証後に Microsoft からアプリケーションに制御を返すことができます。 各プラットフォームを構成するときに、アプリの登録エクスペリエンスにプロセスが表示されます。 クイックスタートを使用して、実際の例をダウンロードします。 iOS 上では、可能な限りブローカーと System Webview を使用します。|
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) |  Web アプリまたは Web API では、アカウントごとに1つのトークン キャッシュを保持します。  Web アプリの場合、トークン キャッシュは、アカウント ID によってキー指定されている必要があります。  Web API の場合、アカウントは、API の呼び出しに使用されるトークンのハッシュによって、キー指定されている必要があります。 MSAL.NET では、.NET Framework および .NET Core サブプラットフォーム上でカスタム トークン キャッシュのシリアル化が提供されます。 セキュリティとパフォーマンス上の理由から、ユーザーごとに1つのキャッシュをシリアル化することをお勧めします。 詳細については、[トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)に関するページを参照してください。|
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | アプリに必要なデータを [Microsoft Graph](https://developer.microsoft.com/graph) を介して入手できる場合は、個々の API ではなく Microsoft Graph エンドポイントを使用してこのデータに対するアクセス許可を要求します。 |
+| ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) |アクセス トークンの値を表示したり、クライアントとして解析したりしないでください。  値や形式が変化したり、警告なしで暗号化されたりする可能性があります。クライアントでユーザーに関する情報が必要な場合は、常に、id_token を使用するか、または Microsoft Graph を呼び出してください。  アクセス トークンの解析は、Web API でのみ行う必要があります (これは、形式の定義と暗号化キーの設定は、Web API で行われているためです)。 |
 
 ## <a name="end-user-experience"></a>エンド ユーザー エクスペリエンス
 

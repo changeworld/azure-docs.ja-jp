@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414595"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299842"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -100,11 +100,14 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
    1. **[保存]** を選択します。
 
-これで、このデバイスの登録が存在しているので、IoT Edge ランタイムによってインストール時にデバイスを自動的にプロビジョニングできます。 デバイス キーの作成時に使用できるよう、登録の**主キー**の値をコピーしておいてください。
+これで、このデバイスの登録が存在しているので、IoT Edge ランタイムによってインストール時にデバイスを自動的にプロビジョニングできます。 IoT Edge ランタイムのインストール時や、グループ登録に使用するデバイス キーを作成する場合に使用できるよう、登録の**プライマリ キー**の値をコピーしておいてください。
 
 ## <a name="derive-a-device-key"></a>デバイス キーを派生させる
 
-デバイスでは、プロビジョニングの間に、派生デバイス キーと一意の登録 ID を使用して、登録で対称キーの構成証明が実行されます。 デバイス キーを生成するには、DPS 登録からコピーしたキーを使用して、デバイスに対する一意の登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。
+> [!NOTE]
+> このセクションは、グループ登録を使用する場合にのみ必須となります。
+
+各デバイスでは、プロビジョニングの間に、派生デバイス キーと一意の登録 ID を使用して、登録で対称キーの構成証明が実行されます。 デバイス キーを生成するには、DPS 登録からコピーしたキーを使用して、デバイスに対する一意の登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。
 
 デバイス コードには、登録の主キーやセカンダリ キーを含めないでください。
 
@@ -159,7 +162,10 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 * DPS の **ID スコープ**値
 * 作成したデバイス**登録 ID**
-* 対称キーの構成証明用の、デバイスの派生デバイス キー
+* DPS の登録からコピーした**プライマリ キー**
+
+> [!TIP]
+> グループ登録の場合、DPS の登録キーではなく、各デバイスの[派生キー](#derive-a-device-key)が必要となります。
 
 ### <a name="linux-device"></a>Linux デバイス
 

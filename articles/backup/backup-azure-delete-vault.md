@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 719f7f1c30a79b9057f25d6137423451cc606bfa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088417"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162225"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -33,6 +33,9 @@ ms.locfileid: "71088417"
 
   ![保護されたサーバーの削除エラー。](./media/backup-azure-delete-vault/error-message.jpg)
 
+- バックアップ項目が論理的に削除された状態になっている場合は、以下の警告メッセージが表示されるので、完全に削除されるまで待つ必要があります。 詳しくは、こちらの[記事](https://aka.ms/SoftDeleteCloudWorkloads)を参照してください。
+
+   ![コンテナーの削除エラー。](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 コンテナーを削除するには、ご使用のセットアップに対応するシナリオを選択し、推奨される手順に従います。
 

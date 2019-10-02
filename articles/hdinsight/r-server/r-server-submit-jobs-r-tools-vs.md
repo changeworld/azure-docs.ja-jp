@@ -1,19 +1,19 @@
 ---
 title: R Tools for Visual Studio からのジョブの送信 - Azure HDInsight
 description: ローカルの Visual Studio マシンから HDInsight クラスターに R ジョブを送信します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1323e46d734d047f68652d0b21902e03182e6b62
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967961"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130251"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
@@ -41,7 +41,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
    2. **[R Tools]** メニュー項目に移動して、 **[データ サイエンスの設定...]** を選択します。
 
-       ![[データ サイエンスの設定...]](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Visual Studio データ サイエンスの設定](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
       > 手順 1 のアプローチを使用して、 **[データ サイエンスの設定]** コマンドを繰り返さずに、パーソナライズされたデータ サイエンティストのレイアウトを保存および復元することもできます。
@@ -56,11 +56,11 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 6. ファイルの先頭から、R Ctrl + Enter キーを押して、1 回に 1 行ずつを R インタラクティブ ウィンドウに送信します。 一部の行では、パッケージをインストールするために時間がかかる場合があります。
     * または、Ctrl + A キー を押して R ファイルのすべての行を選択した後で、Ctrl + Enter キー を押してすべて実行するか、ツール バーで [Execute Interactive]\(対話型で実行\) アイコンを選択します。
 
-        ![対話型で実行](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Visual Studio の対話型実行](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. スクリプトのすべての行を実行すると、次のような出力が表示されます。
 
-    ![ワークスペース](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Visual Studio のワークスペース R ツール](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>HDInsight ML Services クラスターにジョブを送信する
 
@@ -96,7 +96,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![Spark コンテキストの設定](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![Apache Spark のコンテキストの設定](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. [R インタラクティブ] ウィンドウで次のコマンドを実行します。
 
@@ -113,17 +113,17 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
 
     1. Azure の HDInsight ML Services クラスターのウィンドウで、左側のメニューから **[ストレージ アカウント]** を選択します。
 
-        ![ストレージ アカウント](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Azure HDInsight のストレージ アカウント](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. クラスターの既定のストレージ アカウントを選択し、コンテナー/ディレクトリ名をメモします。
 
     3. ストレージ アカウントのウィンドウの左側のメニューで **[コンテナー]** を選択します。
 
-        ![Containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Azure HDInsight のストレージ コンテナー](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. クラスターのコンテナー名を選択し、 **[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、 *[RevoShare]* 、 **[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
 
-        ![コピーされたファイル](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![HDInsight のコピーされたファイル フォルダーの場所](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. 現在の Apache Spark コンテキストの使用が完了したら、コンテキストを停止する必要があります。 複数のコンテキストを同時に実行することはできません。
 
@@ -135,4 +135,3 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
 
 * [HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
 * 「[HDInsight で ScaleR と SparkR を組み合わせる](../hdinsight-hadoop-r-scaler-sparkr.md)」では、航空会社のフライトの遅延を予測する例が示されています。
-

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 5a1e0329f8d0227c05924137d5eaddd9658d5b3c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 1e993ec50694d8672fbe05f982d5dbc45a815abb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076902"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161467"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用した Azure Key Vault からのシークレットの設定と取得
 
@@ -59,6 +59,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-json[<Azure Resource Manager template create key vault>](~/quickstart-templates/101-key-vault-create/azuredeploy.json)]
 
+テンプレートでは、次の 2 つの Azure リソースが定義されています。
+
+* **Microsoft.KeyVault/vaults**: Azure キー コンテナーが作成されます。
+* **Microsoft.KeyVault/vaults/secrets**: キー コンテナー シークレットが作成されます。
+
 その他の Azure Key Vault テンプレートのサンプルは[こちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)から入手できます。
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートを使用すると、キー コンテナーとシークレットが作成されます。
@@ -83,6 +88,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[購入]** を選択します。 キー コンテナーが正常にデプロイされると、次の通知が表示されます。
 
     ![Resource Manager テンプレート、Key Vault 統合、デプロイ ポータル通知](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+
+テンプレートをデプロイするには Azure portal を使用します。 Azure portal だけでなく、Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」を参照してください。
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 

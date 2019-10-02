@@ -1,19 +1,19 @@
 ---
 title: Azure portal を使用して HDInsight に Apache Kafka を設定する - クイック スタート
 description: このクイックス タートでは、Azure portal を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b66306de6b2afa1e39a91ba3b3981aec4b440e1a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960317"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123583"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -38,8 +38,8 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. 左側のメニューから、 **[+ リソースの作成]**  >  **[Analytics]**  >  **[HDInsight]** に移動します。
-   
-    ![HDInsight クラスターの作成](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+
+    ![Azure portal での HDInsight リソースの作成](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. **[基本]** から次の情報を入力するか、選択します。
 
@@ -47,9 +47,9 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     | --- | --- |
     | クラスター名 | HDInsight クラスターの一意の名前。 |
     | Subscription | サブスクリプションを選択します。 |
-    
+
    __[クラスターの種類]__ を選択して **[クラスターの構成]** を表示します。
-   
+
    ![HDInsight 基本構成の Apache Kafka クラスター](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. __[クラスターの構成]__ から、次の値を選択します。
@@ -61,7 +61,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
     **[選択]** を選択してクラスターの種類の設定を保存し、 __[基本]__ に戻ります。
 
-    ![クラスターの種類の選択](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
+    ![HDInsight での Apache Kafka クラスターの種類](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. __[基本]__ から次の情報を入力するか、選択します。
 
@@ -77,7 +77,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
     データの高可用性を実現するために、__3 つの障害ドメイン__ を含むリージョン (場所) を選択します。 リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
 
-   ![サブスクリプションを選択します。](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
+   ![Azure portal でのクラスター作成の基本](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
     __[次へ]__ を選択して、基本的な構成を完了します。
 
@@ -105,7 +105,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
 11. **[概要]** でクラスターの構成を確認します。 間違った設定を変更するには、 __[編集]__ リンクを使用します。 最後に、 **[作成]** を選択してクラスターを作成します。
 
-    ![クラスター構成の概要](./media/apache-kafka-get-started/kafka-configuration-summary.png)
+    ![Kafka クラスター構成の概要](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
     クラスターの作成には最大で 20 分かかります。
 

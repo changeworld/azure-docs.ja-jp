@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 6a598ad3f68c613a745fd56f3b368e309afeb8b6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074346"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122971"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -28,12 +28,7 @@ Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納デー�
 
 ストレージ アカウントを作成するときは、次の冗長オプションのいずれかを選択できます。
 
-- [ローカル冗長ストレージ (LRS)](storage-redundancy-lrs.md)
-- [ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md)
-- [geo 冗長ストレージ (GRS)](storage-redundancy-grs.md)
-- [読み取りアクセス geo 冗長ストレージ (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [geo ゾーン冗長ストレージ (GZRS)](storage-redundancy-gzrs.md)
-- [読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS)](storage-redundancy-gzrs.md)
+[!INCLUDE [azure-storage-redundancy](../../../includes/azure-storage-redundancy.md)]
 
 次の表は、特定の種類のイベント (または同様の影響を受けるイベント) に対して、各レプリケーション戦略が提供する持続性と可用性の範囲について概要を説明したものです。
 
@@ -55,7 +50,7 @@ Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納デー�
 Azure Storage の持続性と可用性の保証については、[Azure Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) に関するページをご覧ください。
 
 > [!NOTE]
-> Azure Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。
+> 現在、Azure Premium Storage でサポートされているのは、ローカル冗長ストレージ (LRS) だけです。
 
 ## <a name="changing-replication-strategy"></a>レプリケーション戦略の変更
 

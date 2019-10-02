@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801379"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289603"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -183,8 +183,8 @@ ms.locfileid: "70801379"
 > | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
 > | **NotActions** |  |
-> | Microsoft.Authorization/*/Delete | ロールとロール割り当ての削除 |
-> | Microsoft.Authorization/*/Write | ロールとロール割り当ての作成 |
+> | Microsoft.Authorization/*/Delete | ロール、ポリシーの割り当て、ポリシーの定義、ポリシー セットの定義を削除します。 |
+> | Microsoft.Authorization/*/Write | ロール、ロールの割り当て、ポリシーの割り当て、ポリシーの定義、ポリシー セットの定義を作成します。 |
 > | Microsoft.Authorization/elevateAccess/Action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
 > | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント アーティファクトを作成または更新します |
 > | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント アーティファクトを削除します |

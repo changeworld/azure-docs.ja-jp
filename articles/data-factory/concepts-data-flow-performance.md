@@ -5,13 +5,13 @@ author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
-ms.date: 05/16/2019
-ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/22/2019
+ms.openlocfilehash: e4b3e08c0cc7fc1ead2aed551c228c6a1165c3b6
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992349"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180862"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -90,6 +90,13 @@ Azure Data Factory の Mapping Data Flow では、大規模なデータ変換の
 * Data Flow デザイナー内で、変換の [Data Preview]\(データのプレビュー\) タブを使用して、変換ロジックの結果を表示します。
 * パイプライン デザイン キャンバスに Data Flow アクティビティを配置して、パイプライン デザイナーからデータ フローの単体テストを実行し、[デバッグ] ボタンを使用してテストします。
 * デバッグ モードのテストは、Just-In-Time クラスター起動を待機することなく、ウォーミングされたライブ クラスター環境に対して機能します。
+* データ フロー デザイナーのエクスペリエンス内でのデータ プレビュー デバッグの間に、データ フロー デザイナーの UI の [デバッグ設定] リンクから行の制限を設定することによって、各ソースに対してテストするデータの量を制限できます。 最初にデバッグ モードを有効にする必要があることに注意してください。
+
+![デバッグ設定](media/data-flow/debug-settings.png "デバッグ設定")
+
+* パイプライン デバッグ実行からデータ フローをテストするときは、各ソースでサンプリング サイズを設定することによって、テストに使用する行の数を制限できます。 通常の運用可能なスケジュールでパイプラインをスケジュールするときは、サンプリングを無効にしてください。
+
+![行サンプリング](media/data-flow/source1.png "行サンプリング")
 
 ### <a name="disable-indexes-on-write"></a>書き込み時にインデックスを無効にする
 * シンクからの書き込み先のターゲット テーブルでインデックスを無効にする Data Flow アクティビティの前に、ADF パイプラインのストアド プロシージャ アクティビティを使用します。
@@ -140,6 +147,10 @@ Azure Data Factory の Mapping Data Flow では、大規模なデータ変換の
 ```DateFiles/*_201907*.txt```
 
 パイプラインで BLOB ストアを検索し、ForEach を使用して、その内側でデータ フローの実行アクティビティを使用しながら、一致するすべてのファイルを反復処理するよりも、この方が効率よく実行することができます。
+
+### <a name="increase-the-size-of-your-debug-cluster"></a>デバッグ クラスターのサイズを増やす
+
+既定では、デバッグを有効にすると、各データファクトリに対して自動的に作成される既定の Azure Integration Runtime が使用されます。 この既定の Azure IR は、一般的なコンピューティング プロパティを使用して、8 コア (ドライバー ノード用に 4、ワーカー ノード用に 4) に設定されます。 大きなデータを使用してテストする場合は、より大きな構成で新しい Azure IR を作成することによってデバッグ クラスターのサイズを大きくし、デバッグ時に切り替えるときにこの新しい Azure IR を選択することができます。 これにより、データ フローを使用したデータ プレビューとパイプライン デバッグにこの Azure IR を使用するように、ADF に指示されます。
 
 ## <a name="next-steps"></a>次の手順
 

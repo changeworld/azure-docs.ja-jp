@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876755"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300719"
 ---
 # <a name="remote-desktop-client-connections"></a>リモート デスクトップ クライアントの接続
 
@@ -152,6 +152,11 @@ Windows 7 および Windows 10 用のリモート デスクトップ クライ�
 **原因:** ユーザーが接続しようとしている VM が、ドメインに参加していません。
 
 **解決策:** ホスト プールの一部であるすべての VM を、ドメイン コントローラーに参加させます。
+
+### <a name="error-connectionfailedusersidinformationmismatch"></a>エラー:ConnectionFailedUserSIDInformationMismatch
+**原因:** ユーザーの Azure Active Directory (AD) トークンの SID が、ユーザーのリモート サインインを有効にしようとしたときにドメイン コントローラーによって返された SID と一致しません。 このエラーは、通常、元は Windows Server AD に属していたユーザーで Azure Active Directory Domain Services (Azure AD DS) 環境にサインインしようとしたときに発生します。
+
+**解決策:** このシナリオは、現時点ではサポートされていません。 Azure AD DS に接続されている Windows Virtual Desktop VM にサインインできるのは、Azure Active Directory のユーザーだけです。
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>ユーザーが接続しても何も表示されない (フィードなし)
 

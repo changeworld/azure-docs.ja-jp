@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/10/2019
+ms.date: 09/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 3c4c70aeed833e25eb75a9eaa385e2299c2a4b7e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984849"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300759"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -178,7 +178,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 - キーのライフサイクル管理の全責任をユーザーが負う
 - 追加のセットアップと構成のオーバーヘッド
 
-#### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>ユーザーが管理するハードウェア上でサービスが管理するキーを使用したサーバー側暗号化
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>ユーザーが管理するハードウェアでユーザーが管理するキーを使用したサーバー側暗号化
 
 一部の Azure サービスでは、Host Your Own Key (HYOK) キー管理モデルが可能です。 この管理モードは、保存データを暗号化するが、キーの管理を Microsoft の管理外の独自のリポジトリで行う必要があるシナリオで有用です。 このモデルでは、サービスは、外部サイトからキーを取得する必要があります。 パフォーマンスと可用性の保証が影響を受け、構成は複雑です。 さらに、サービスは暗号化および複合化操作中に DEK にアクセスできるため、このモデルの全体としてのセキュリティ保証は、キーが Azure Key Vault でユーザーによって管理される場合と似ています。  この結果、特定のキー管理の要件がない限り、このモデルはほとんどの組織に適していません。 これらの制限により、ほとんどの Azure サービスは、ユーザーが制御するハードウェア上でサーバーが管理するキーを使用したサーバー側暗号化をサポートしていません。
 
@@ -262,7 +262,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **サービス管理キーを使用したサーバー側**     | **顧客管理キーを使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
 | **AI と機械学習**      |                    |                    |                    |
-| Azure Search                     | はい                | -                  | -                  |
+| Azure Search                     | はい                | プレビュー            | -                  |
 | Azure Machine Learning サービス   | はい                | -                  | -                  |
 | Azure Machine Learning Studio    | はい                | プレビュー、RSA 2048 ビット | -               |
 | Power BI                         | はい                | プレビュー、RSA 2048 ビット | -                  |

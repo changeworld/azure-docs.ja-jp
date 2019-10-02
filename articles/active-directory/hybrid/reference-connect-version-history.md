@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0b210868c87b06a6b7caf55aece74cba956b406a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097592"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290776"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -46,7 +46,13 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 ## <a name="14x0"></a>1.4.X.0
 
 >[!IMPORTANT]
->以前は、オンプレミスの AD に参加しているダウンレベルの Windows コンピューターは、状況によっては、クラウドに正しく同期されていませんでした。 例として、AD 内にあるダウンレベルの Windows デバイスに対して userCertificate 属性値が設定されているとします。 ただし、これらの OS バージョンは AAD Sync 経由で Azure AD に登録するように設計されていなかったため、Azure AD のそうしたデバイスは常に "保留中" の状態のままでした。このバージョンの Azure AD Connect では、AAD Sync はダウンレベルの Windows コンピューターの Azure AD への同期を停止し、以前に誤って同期されていたダウンレベルの Windows デバイスの Azure AD からの削除も行います。 この変更では、MSI パッケージを使用して Azure AD に正しく登録されたダウンレベルの Windows デバイスは削除されないことに注意してください。 これらのデバイスは、デバイスベースの条件付きアクセスの目的で、引き続き想定どおりに動作します。 ダウンレベルの Windows デバイスの一部またはすべてが、Azure AD に表示されなくなる場合があります。 これらのデバイス ID は、条件付きアクセスの承認時に Azure AD によって実際に使用されることはなかったため、これは問題ありません。 このようなお客様は、場合によっては、デバイスベースの条件付きアクセスにそうしたデバイスが完全に参加できるように、 https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan に再度アクセスし、ダウンレベルの Windows デバイスを正しく登録しておく必要があります。 Azure AD 内のダウンレベルのコンピューター/デバイス オブジェクトのこうした削除がエクスポート削除しきい値を超えていることが確認された場合は、お客様がこれらの削除の実行を許可することをお勧めします。
+>ハイブリッド Azure AD 参加済みとして登録された Windows コンピューターは、Azure AD 内でデバイス オブジェクトとして表されます。 それらのデバイス オブジェクトは、条件付きアクセスに使用できます。 Windows 10 コンピューターは、Azure AD Connect を介してクラウドに同期され、ダウン レベルの Windows コンピューターは AD FS またはシームレス シングル サインオンを使用して直接登録されます。
+>
+>Azure AD Connect を介してクラウドに同期されるのは、Hybrid Azure AD Join によって特定の userCertificate 属性値が構成されている Windows 10 コンピューターだけです。  以前のバージョンの Azure AD Connect では、この要件が厳密に適用されておらず、結果的に、不要なデバイス オブジェクトが Azure AD に生じていました。 これらのコンピューターは Azure AD に登録するように意図されていなかったため、Azure AD のそうしたデバイスは常に "保留中" の状態のままでした。
+>
+>このバージョンの Azure AD Connect では、ハイブリッド Azure AD 参加済みとなるように正しく構成された Windows 10 コンピューターだけが同期されます。 [ダウンレベルの Windows デバイス](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices)は、Azure AD Connect によって同期されるべきではありません。  過去に誤って同期された Azure AD 内のデバイスは、Azure AD から削除されるようになりました。  ただし、Hybrid Azure AD Join 用に正しく Azure AD に登録された Windows デバイスがこの変更によって削除されることはありません。 
+>
+>それらの Windows デバイスの一部またはすべてが、Azure AD に表示されなくなる場合があります。 これらのデバイス ID が、条件付きアクセスの承認時に Azure AD によって使用されることはないため、これは問題ありません。 一部のお客様については、Windows コンピューターを正しく登録し、そうしたデバイスがデバイスベースの条件付きアクセスに完全に参加できるよう、必要に応じて「[方法: Hybrid Azure Active Directory 参加の実装を計画する](../../active-directory/devices/hybrid-azuread-join-plan.md)」を再確認してください。 Azure AD Connect が[ダウンレベルの Windows デバイス](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices)の削除を試みる場合、そのデバイスは、[Windows 10 以外のコンピューター向けの Microsoft Workplace Join の MSI](https://www.microsoft.com/download/details.aspx?id=53554) によって作成されたものではなく、他の Azure AD 機能から利用することはできません。  Azure AD 内のコンピューター オブジェクトまたはデバイス オブジェクトの削除がエクスポート削除しきい値を超えていることが確認された場合は、お客様がこれらの削除の実行を許可することをお勧めします。
 
 ### <a name="release-status"></a>リリースの状態
 2019 年 9 月 10日:自動アップグレード向けにのみリリース済み
@@ -57,7 +63,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 - MIIS_Service の非推奨の WMI エンドポイントが削除されたことを顧客に通知する必要があります。 今後、すべての WMI 操作は、PS コマンドレットを使用して実行する必要があります。
 - AZUREADSSOACC オブジェクトの制約付き委任のリセットによるセキュリティ強化
 - 同期規則を追加または編集するときに、規則で使用されている属性で、コネクタ スキーマに含まれているがコネクタに追加されていないものがある場合、それらの属性はコネクタに自動的に追加されます。 規則が影響を与えるオブジェクトの種類についても同じことが当てはまります。 コネクタに何かが追加されると、コネクタは次の同期サイクルでフル インポートのマークが付けられます。
-- エンタープライズ管理者またはドメイン管理者のコネクタ アカウントとしての使用はサポートされなくなりました。
+- 新しい AAD Connect のデプロイでは、エンタープライズ管理者またはドメイン管理者のコネクタ アカウントとしての使用がサポートされなくなりました。 エンタープライズ管理者またはドメイン管理者をコネクタ アカウントとして使用する現在の AAD Connect デプロイが、このリリースによって影響を受けることはありません。
 - 同期マネージャーでは、規則の作成、編集、削除時に同期が実行されます。 フル インポートまたは完全同期が実行される場合は、規則の変更時にユーザーに通知するポップアップが表示されます。
 - [コネクタ] > [プロパティ] > [接続] ページにパスワード エラーの軽減手順が追加されました
 - コネクタのプロパティ ページに、Sync Service Manager の非推奨警告が追加されました。 この警告は、ユーザーに対して変更は AADC ウィザードを使用して行う必要があることを通知します。
