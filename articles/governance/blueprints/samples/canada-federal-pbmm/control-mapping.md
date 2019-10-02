@@ -7,12 +7,12 @@ ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: baafb0fbcf1dba1cadfff1d5f5e02e2df4f34a25
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 64f0517eece5efcd928b18c7f040fb88c3c36546
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002906"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309535"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング
 
@@ -21,7 +21,7 @@ ms.locfileid: "71002906"
 以下のマッピングは、**カナダ連邦 PBMM** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:Audit Canada Federal PBMM controls]\(プレビュー: カナダ連邦 PBMM コントロールの監査\)** 組み込みポリシー イニシアティブ。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つまたは複数の [Azure Policy](../../../policy/overview.md) 定義に関連付けられています。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義にもアドレス指定されていないコントロールが含まれます。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md)を参照してください。
+> 以下の各コントロールは、1 つまたは複数の [Azure Policy](../../../policy/overview.md) 定義に関連付けられています。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md)を参照してください。
 
 ## <a name="location-constraints"></a>場所の制約
 
@@ -43,7 +43,7 @@ ms.locfileid: "71002906"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) アカウント管理 | ロールベースのスキーム
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールの実装状況を把握することで、それらの実装ニーズや実装の適切性を確認することができます (カスタム RBAC ルールはエラーを起こしやすいので、これは非常に重要です)。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールはエラーを起こしやすいため、カスタム RBAC ルールがどこに実装されているかを理解しておくと、実装のニーズや適切性を確認するために役に立ちます。
 
 - SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある

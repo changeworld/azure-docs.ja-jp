@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b7665caad60a5135da5780da242772af3c0a05a4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984882"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260289"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure ファイル共有の作成および管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows、Linux、macOS でマウントできます。 このガイドでは、[Azure Portal](https://portal.azure.com/) を使用して Azure ファイル共有を操作する方法の基本について説明します。
@@ -29,7 +29,7 @@ Azure ファイル共有を作成するには:
 2. ストレージ アカウント ページの **[サービス]** セクションで、 **[ファイル]** を選択します。
     ![ストレージ アカウントのサービス セクションのスクリーンショット: Files サービスの選択](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. **[File サービス]** ページの上部にあるメニューで、 **[+ ファイル共有]** をクリックします。 **[新しいファイル共有]** ページが表示されます。
+3. **[File サービス]** ページの上部にあるメニューで、 **[ファイル共有]** をクリックします。 **[新しいファイル共有]** ページが表示されます。
 4. **[名前]** で、「*myshare*」と入力します。
 5. **[OK]** をクリックして、Azure ファイル共有を作成します。
 

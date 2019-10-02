@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b5ddbff646104b3d4a35c26c1ecf3968dea31d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 988c73236d9f5ef360ded03bca36a4bb24ebd308
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852907"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290832"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>クイック スタート:ユーザーをサインインさせて、JavaScript のシングルページ アプリケーションからアクセス トークンを取得する
 
@@ -96,7 +96,8 @@ ms.locfileid: "68852907"
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -169,7 +170,8 @@ npm install msal
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -182,8 +184,9 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 > |Where  |  |
 > |---------|---------|
-> |`ClientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID。|
+> |`clientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID。|
 > |`authority`    | (省略可能) 先ほど構成に関するセクションで説明したように、アカウントの種類をサポートする機関 URL。 既定の機関は `https://login.microsoftonline.com/common`です。 |
+> |`redirectURI`     | アプリケーション登録の構成済みの応答/リダイレクト URI。 例では、 `http://localhost:30662/`が使用されます。 |
 > |`cacheLocation`  | (省略可能) 認証状態のブラウザー ストレージを設定します。 既定では sessionStorage です。   |
 > |`storeAuthStateInCookie`  | (省略可能) 認証フローの検証に必要な認証要求の状態をブラウザーの Cookie に格納するライブラリ。 この Cookie は、特定の[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)に対処するために、IE および Edge ブラウザー用に設定されます。 |
 

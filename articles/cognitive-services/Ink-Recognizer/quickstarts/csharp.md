@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 6a1b4ab43a7d87ac1162a7f0a3556d6bc3bfbfab
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 86e69d75c067159a4daa637984a392a393dc46fa
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721249"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211784"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>クイック スタート:Ink Recognizer REST API および C# を使用したデジタル インクの認識
 
@@ -60,7 +60,7 @@ ms.locfileid: "67721249"
     using Newtonsoft.Json.Linq;
     ```
 
-2. サブスクリプション キーとエンドポイントの変数を作成します。 インク認識に使用できる URI を以下に示します。 これは、API 要求 URl を作成するために、後からサービス エンドポイントに付加されます。
+2. サブスクリプション キーとエンドポイントの変数を作成します。 以下のエンドポイントを Ink Recognizer リソース用に生成されたものに置き換えます。 それをインク認識エンジン URI に追加して API に接続します。
 
     ```csharp
     // Replace the subscriptionKey string with your valid subscription key.
@@ -70,7 +70,7 @@ ms.locfileid: "67721249"
     const string dataPath = @"PATH-TO-INK-STROKE-DATA"; 
 
     // URI information for ink recognition:
-    const string endpoint = "https://api.cognitive.microsoft.com";
+    const string endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 

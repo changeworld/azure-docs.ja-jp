@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: b1c739b6355d3b32063e5289720ed1d191611e65
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 36ff0fe4550b140a722ed25f4e372f7c88581211
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721233"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212687"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>クイック スタート:Ink Recognizer REST API および Java を使用したデジタル インクの認識
 
@@ -58,7 +58,7 @@ ms.locfileid: "67721233"
     import java.nio.file.Paths;
     ```
 
-2. サブスクリプション キーとエンドポイントの変数を作成します。 インク認識に使用できる URI を以下に示します。 これは、API 要求 URL を作成するために、後からサービス エンドポイントに付加されます。
+2. サブスクリプション キーとエンドポイントの変数を作成します。 以下のエンドポイントを Ink Recognizer リソース用に生成されたものに置き換えます。 それをインク認識エンジン URI に追加して API に接続します。
 
     ```java
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -66,7 +66,7 @@ ms.locfileid: "67721233"
     // Replace the dataPath string with a path to the JSON formatted ink stroke data file.
     static final String dataPath = "PATH_TO_INK_STROKE_DATA";
     
-    static final String endpoint = "https://api.cognitive.microsoft.com";
+    static final String endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     static final String inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: c5817427102bf10dcd1ece932b0f582d973efaf7
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 587e7a82e2a9cde8ff6d08274928ab22aa969061
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257901"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309625"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 
@@ -101,48 +101,35 @@ ms.locfileid: "71257901"
 1. **app_config.py** ファイルを開きます。このファイルはルート フォルダーにあり、次のコード スニペットに置き換えることができます。
 
 ```python
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-CLIENT_ID = "Enter_the_Application_Id_here"
 CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-SCOPE = ["https://graph.microsoft.com/User.Read"]
-REDIRECT_URI = "http://localhost:5000/getAToken"
+CLIENT_ID = "Enter_the_Application_Id_here"
 ```
 
 > [!div renderon="docs"]
 > 各値の説明:
 >
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
-> - `Enter_the_Tenant_Info_Here` - 以下のいずれかのオプション。
->   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を**テナント ID** または**テナント名** (例: contoso.onmicrosoft.com) に置き換えます
->   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
->   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
 > - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
 
 #### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
 
-- MSAL Python ライブラリ、Flask フレームワーク、サーバー側のセッション管理用の Flask-Sessions、および requests を、次のように pip を使用してインストールする必要があります。
+1. MSAL Python ライブラリ、Flask フレームワーク、サーバー側のセッション管理用の Flask-Sessions、および requests を、次のように pip を使用してインストールする必要があります。
 
-```Shell
-pip install msal
-pip install flask
-pip install Flask-Session
-pip install requests
-```
+   ```Shell
+   pip install -r requirements.txt
+   ```
 
-- Flask 用の環境変数が既に設定されている場合: シェルまたはコマンド ラインから app.py を実行する:
+2. シェルまたはコマンド ラインから app.py を実行する:
 
-```Shell
-python app.py
-```
+   ```Shell
+   python app.py
+   ```
 
-- Flask 用の環境変数が設定されていない場合:
+## <a name="next-steps"></a>次の手順
 
-    1. プロジェクト ディレクトリに移動し、シェルまたはコマンド ライン上に次のコマンドを入力します。
+ユーザーのサインインを行う Web API と、Web アプリの呼び出しの詳細を確認します。
 
-```Shell
-export FLASK_APP=app.py
-export FLASK_DEBUG=1
-flask run
-```
+> [!div class="nextstepaction"]
+> [シナリオ: ユーザーのサインインを行う Web アプリ](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

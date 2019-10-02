@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 2fc9e91a34975642a666aa794694cfcc3321c93f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 2289c21fcc172c8dffd7d6b3f9c0e2e11736e71a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962542"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265998"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>クイック スタート:.NET 用 Personalize クライアント ライブラリ
 
@@ -225,6 +225,12 @@ static void Main(string[] args)
     } while (runLoop);
 }
 ```
+
+コード ファイルを実行する前に、[コンテンツの選択肢](#get-content-choices-represented-as-actions)を取得する次のメソッドを追加します。
+
+* GetUsersTimeOfDay
+* GetUsersTastePreference
+* GetKey
 
 ## <a name="request-a-rank"></a>ランクを要求する
 

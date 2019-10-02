@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5b5efa4a8c6d92f9937709f57f99851c90058dda
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067692"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266248"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>クイック スタート:Python 用 Personalize クライアント ライブラリ
 
@@ -127,6 +127,12 @@ Personalizer の学習ループとは、[rank](#request-a-rank) 呼び出しと 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 
 rank 呼び出しと reward 呼び出しについて、以降の各セクションでさらに詳しく見ていきましょう。
+
+コード ファイルを実行する前に、[コンテンツの選択肢](#get-content-choices-represented-as-actions)を取得する次のメソッドを追加します。
+
+* get_user_preference
+* get_user_timeofday
+* get_actions
 
 ## <a name="request-a-rank"></a>ランクを要求する
 

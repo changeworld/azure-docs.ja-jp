@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: db263c1c7f0a8b87b315c5aa6da31336229c9643
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 159233da989a5bbec75dbd0a6cfe230b8a512979
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502732"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261290"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
 Azure Cosmos DB は、[Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) と呼ばれる、[Apache TinkerPop](https://tinkerpop.apache.org) のグラフ トラバーサル言語をサポートしています。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
@@ -48,7 +48,7 @@ TinkerPop は、さまざまなグラフ テクノロジに対応する標準で
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin のワイヤ形式: GraphSON
 
-Azure Cosmos DB では、Gremlin の操作から結果を返すときに [GraphSON 形式](https://tinkerpop.apache.org/docs/3.3.2/reference/#graphson-reader-writer)を使用します。 GraphSON は、JSON を使用して頂点、辺、プロパティ (単一値および複数値プロパティ) を表すための Gremlin の標準形式です。 
+Azure Cosmos DB では、Gremlin の操作から結果を返すときに [GraphSON 形式](http://tinkerpop.apache.org/docs/current/reference/#graphson)を使用します。 Azure Cosmos DB は現在 "GraphSONv2" バージョンをサポートしています。 GraphSON は、JSON を使用して頂点、辺、プロパティ (単一値および複数値プロパティ) を表すための Gremlin の標準形式です。
 
 たとえば、次のスニペットは、Azure Cosmos DB から "*クライアントに返される*" GraphSON による頂点の表現を示しています。 
 

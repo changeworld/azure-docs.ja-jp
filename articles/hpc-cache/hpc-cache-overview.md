@@ -1,21 +1,21 @@
 ---
-title: Azure HPC Cache の概要
+title: Azure HPC Cache プレビューの概要
 description: ハイパフォーマンス コンピューティングのためのファイル アクセス アクセラレータ ソリューションである Azure HPC Cache について説明します。
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 77eca3ef58733a616705fdaac1d2880b5a990e8a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 093116a8def69e3f63af9aeb963abc60841cbe85
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036879"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257010"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Azure HPC Cache とは
+# <a name="what-is-azure-hpc-cache-preview"></a>Azure HPC Cache とは (プレビュー)
 
-ハイパフォーマンス コンピューティング (HPC) タスクには、Azure HPC Cache を使用することでデータへのアクセスを高速化できます。 Azure にファイルをキャッシュすることによって、ローカル データセンターのネットワーク接続ストレージ (NAS) 環境内など、データが複数の WAN リンクにまたがって保存されるワークフローであっても、クラウド コンピューティングのスケーラビリティを活かせるようになります。
+ハイパフォーマンス コンピューティング (HPC) タスクには、Azure HPC Cache を使用することでデータへのアクセスを高速化できます。 Azure HPC Cache で Azure 内のファイルをキャッシュすることで、クラウド コンピューティングのスケーラビリティを既存のワークフローでも実現します。 このサービスは、ローカル データセンターのネットワーク接続ストレージ (NAS) 環境などの WAN リンクにデータが格納されているワークフローでも使用できます。
 
 Azure HPC Cache は、Azure portal から簡単に立ち上げて監視することができます。 既にある NFS ストレージや新しい BLOB コンテナーをその集約された名前空間に追加できるため、バックエンドのストレージ ターゲットを変更する場合でも、クライアント アクセスはシンプルになります。
 
@@ -37,13 +37,13 @@ Azure HPC Cache は、業種を越えてさまざまなワークフローに取�
 
 多くのライフ サイエンス ワークフローは、スケールアウト ファイル キャッシュの恩恵を受けることができます。
 
-ゲノム解析ワークフローを Azure に移植したいと考えている研究施設は、Azure HPC Cache を使用することで簡単にシフトすることができます。 このキャッシュは POSIX ファイル アクセスに対応しているため、何も変更せずに、既存のクライアント側ワークフローをクラウドで実行することができます。
+ゲノム解析ワークフローを Azure に移植したいと考えている研究施設は、Azure HPC Cache を使用することで簡単にシフトすることができます。 キャッシュには POSIX ファイル アクセスが用意されているため、既存のクライアント ワークフローをクラウドで実行するためにクライアント側の変更は必要ありません。
 
 二次解析、薬理学的シミュレーション、AI による画像分析などのタスクについても、Azure HPC Cache を活用して効率を高めることができます。
 
 ### <a name="financial-services-analytics"></a>金融サービスの分析
 
-Azure HPC Cache は定量分析計算やリスク分析ワークロード、モンテカルロ シミュレーションをスピードアップするのに役立ちます。これにより、金融サービス会社はより優れた分析情報を得て戦略的な決定を行えます。
+Azure HPC Cache のデプロイは定量分析計算やリスク分析ワークロード、モンテカルロ シミュレーションをスピードアップするために役立ちます。これにより、金融サービス会社はより優れた分析情報を得て戦略的な決定を行えます。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
@@ -57,6 +57,10 @@ Azure HPC Cache は、次の Azure リージョンで使用できます。
 * 米国西部 2
 
 最新情報については、[Azure HPC Cache の製品ページ](https://azure.microsoft.com/services/hpc-cache)をご覧ください。
+
+## <a name="preview-availability"></a>プレビューのリリース状況
+
+サービスの品質を保証するために、Azure HPC Cache パブリック プレビューは制限されています。 アクセスを依頼するには、[こちらのフォーム](https://aka.ms/onboard-hpc-cache)に入力してください。 サブスクリプションがアクセス一覧に追加された後に、テスト キャッシュを作成できます。
 
 ## <a name="next-steps"></a>次の手順
 
