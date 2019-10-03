@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034355"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123279"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) にデプロイされたモデルのデータの誤差 (プレビュー) を検出する
 
@@ -23,7 +23,7 @@ ms.locfileid: "71034355"
 
 ## <a name="what-is-data-drift"></a>データの誤差とは
 
-データの誤差は、運用環境のモデルに提供されるデータが、モデルをトレーニングするために使用されるデータとは異なる場合に発生します。 これは、モデルの精度が時間の経過と共に低下する主な理由の 1 つであるため、データの誤差の監視はモデルのパフォーマンスの問題を検出するために役立ちます。 
+機械学習においてデータの誤差とは、モデルのパフォーマンスの低下につながるモデルの入力データの変更のことです。 これは、モデルの精度が時間の経過と共に低下する主な理由の 1 つであるため、データの誤差の監視はモデルのパフォーマンスの問題を検出するために役立ちます。 
 
 ## <a name="what-can-i-monitor"></a>何を監視できるか
 

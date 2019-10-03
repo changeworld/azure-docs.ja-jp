@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 9/24/2019
 ms.author: ellacroi
-ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309015"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259952"
 ---
 # <a name="marketplace-faqs"></a>Marketplace に関する FAQ
 
@@ -245,6 +245,14 @@ Microsoft サポートの [Azure サポート](https://support.microsoft.com/get
 
 Marketplace サービスまたは購入に関する技術的な問題がある場合、お客様は発行元に直接問い合わせる必要があります。 発行元の連絡先情報やサポート Web サイトへのリンクは、Azure Marketplace のそれぞれのソリューションの詳細ページで確認できます。
 
+**ライセンスの追加は、期間中に増やした場合にどのように処理されますか?**
+
+既存のサブスクリプションに追加されたライセンスは、残りのサブスクリプション期間に対して評価されます。
+
+**期間中のライセンスの削除はどのように処理されますか?**
+
+取り消されたライセンスは、この FAQ に記載されている返金ポリシーの対象となります。  取り消されたすべてのライセンスはアカウントから直ちに削除され、使用できなくなります。
+
 ## <a name="faq-for-publishers"></a>発行元向けの FAQ
 
 ### <a name="what-you-need-to-know-about-azure-marketplace"></a>Azure Marketplace について知っておくべきこと
@@ -348,7 +356,7 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
 "*Web Apps (SaaS アプリ、アドオン) およびコンサルティング サービス*":
 
 1. Cloud パートナー ポータルで、疑問符アイコンを選択して **[サポート]** をクリックします。
-1. [https://aka.ms/MFASetup](<https://go.microsoft.com/fwlink/?linkid=844975>) にアクセスします。
+1. <https://go.microsoft.com/fwlink/?linkid=844975> にアクセスします。
 1. サポート ページで、オファーの種類を選択します。
 1. 発行されたオファーの **[削除]** を選択します。
 1. インシデント チケットを作成します。

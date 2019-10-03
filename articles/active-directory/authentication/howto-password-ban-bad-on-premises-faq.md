@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097567"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268633"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 
@@ -100,6 +100,8 @@ FRS (DFSR に対する先行テクノロジ) には、多くの既知の問題�
 **Q:Azure AD Connect などの他のサービスと並行して Azure AD パスワード保護プロキシ サービスをデプロイしても大丈夫ですか?**
 
 はい。 Azure AD パスワード保護プロキシ サービスと Azure AD Connect は、互いに直接競合することはありません。
+
+残念ながら、Azure AD パスワード保護プロキシ ソフトウェアによってインストールされた Microsoft Azure AD Connect エージェント アップデーター サービスのバージョンと、[Azure Active Directory アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) ソフトウェアによってインストールされたサービスのバージョンとの間には互換性がありません。 この非互換性が原因で、エージェント アップデーター サービスがソフトウェアの更新のために Azure に接続できなくなっている可能性があります。 Azure AD パスワード保護プロキシと Azure Active Directory アプリケーション プロキシを同じマシンにインストールすることはお勧めしません。
 
 **Q:DC エージェントとプロキシはどのような順序でインストールして登録する必要がありますか?**
 

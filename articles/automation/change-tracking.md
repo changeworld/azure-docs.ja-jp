@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952994"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240277"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -198,7 +198,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 |---|---|---|
 |ファイル|500||
 |レジストリ|250||
-|Windows ソフトウェア|250|ソフトウェア更新プログラムは含まれません|
+|Windows ソフトウェア|250|ソフトウェア修正プログラムは含まれません|
 |Linux パッケージ|1250||
 |サービス|250||
 |デーモン|250||
@@ -318,7 +318,7 @@ Change Tracking と Inventory の重要な機能は、構成の状態と、ハ�
 
 Hosts ファイルへの変更に関するアラートは、Change Tracking や Inventory のデータに関するアラートの 1 つの適切な利用ですが、以下のセクションでクエリの例と共に定義されているケースを含み、アラートにはその他多くのシナリオがあります。
 
-|Query  |説明  |
+|クエリ  |説明  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|システムの重要なファイルに対する変更を追跡するのに役立ちます|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|キー構成ファイルに対する変更を追跡するのに役立ちます|

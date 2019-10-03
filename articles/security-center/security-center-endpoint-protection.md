@@ -29,7 +29,7 @@ Azure Security Center は、Endpoint Protection ソリューションの[サポ�
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center は、[Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) が実行され、結果が **AMServiceEnabled: Fasle の場合に、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。False** の場合に生成されます
+* Security Center は、[Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) が実行され、結果が **AMServiceEnabled: Fasle の場合に、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。False**
 
 * Security Center は、[Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) が実行され、次のいずれかが発生した場合に、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
 

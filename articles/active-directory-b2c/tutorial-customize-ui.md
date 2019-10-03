@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063275"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291106"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でユーザー エクスペリエンスのインターフェースをカスタマイズする
 
@@ -63,7 +63,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 
 1. メニューで **[CORS]** を選択します。
 2. **[許可されるオリジン]** には、`https://your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `https://fabrikam.b2clogin.com` 」のように入力します。 テナント名を入力するときは、すべて小文字を使用する必要があります。
-3. **[許可されたメソッド]** に、`GET` と `OPTIONS` を両方選択します。
+3. **[許可されたメソッド]** に、`GET`、`PUT`、`OPTIONS` を選択します。
 4. **[許可されたヘッダー]** に、アスタリスク (*) を入力します。
 5. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
 6. **[最長有効期間]** には「200」と入力します。

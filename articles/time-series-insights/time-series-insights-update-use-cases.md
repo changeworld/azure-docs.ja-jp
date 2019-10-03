@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736153"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264511"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 
@@ -40,11 +40,15 @@ Azure Time Series Insights は、エンドツーエンドのサービスとし�
 
 [![データ エクスプローラー](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
-ほとんどのお客様は、洞察にかかる時間が Time Series Insights の最も強力な資産であることに同意しています。 Time Series Insights では、事前のデータ準備が不要です。 高速に動作し、Azure IoT Hub や Azure Event Hubs の数十億件ものイベントに数分で接続します。 接続したら、数十億件のイベントを視覚化して分析し、データの異常を特定し、潜んでいる傾向を明らかにします。
+分析情報を最短時間で取得できることが Time Series Insights の特筆すべき機能の 1 つであることに、ほとんどのお客様が納得します。
 
-Time Series Insights は、直感的で使い方は簡単です。 コードを全く記述しなくてもデータを操作できます。 新しい言語を習得することもありません。 Time Series Insights は、SQL を使い慣れている上級ユーザー向けに、詳細なテキストベースのクエリを備えています。 初心者向けに、選択してクリックの探索も用意されています。
+* Time Series Insights では、事前のデータ準備が不要です。 
+* 高速に動作し、Azure IoT Hub や Azure Event Hubs の数十億件ものイベントに数分で接続します。 
+* 接続したら、数十億件のイベントを視覚化して分析し、データの異常を特定し、潜んでいる傾向を明らかにします。
 
-お客様は、資産関連の問題をすばやく診断できます。 DevOps を実行して、IoT ソリューションのバグの根本原因を取得できます。 また、データ サイエンス イニシアティブを調査するための領域を識別することもできます。  
+Time Series Insights は、直感的で使い方は簡単です。 コードを全く記述しなくてもデータを操作できます。 新しい言語を学ぶ必要もありません。Time Series Insights は、SQL を熟知した、詳しい知識があるユーザー向けの、詳細なテキストベースのクエリ言語を備えています。 初心者向けに、選択してクリックの探索も用意されています。
+
+お客様は、スピードを活かして、資産関連の問題をすばやく診断できます。 DevOps 分析を実行して、IoT ソリューションのバグの根本原因を把握できます。 また、データ サイエンス イニシアティブの一貫として、さらなる調査に向け、フラグを設定する領域を特定することもできます。  
 
 Time Series Insights に格納されたデータと対話する方法は主に 3 つあります。
 

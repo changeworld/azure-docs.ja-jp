@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 09bcce6daf519c7d5e99c7c120064f5c8bb92475
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e1cf67abcc44a3ca134e5435137869d4fff1a7eb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996874"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162365"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -197,6 +197,9 @@ public class HttpTrigger
 ```
 
 オプションの使用に関する詳細については、「[ASP.NET Core のオプション パターン](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)」を参照してください。
+
+> [!WARNING]
+> 従量課金プランで *local.settings.json* や *appsettings.{environment}.json* のようなファイルから値を読み取らないようにします。 トリガー接続に関連するこれらのファイルから読み取られた値は、ホスティング インフラストラクチャに構成情報へのアクセス権がないため、アプリのスケールとして利用することはできません。
 
 ## <a name="next-steps"></a>次の手順
 

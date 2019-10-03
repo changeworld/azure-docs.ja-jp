@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053167"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272413"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS にボットを組み合わせてナレッジ ベースを配信する
 QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
@@ -51,7 +51,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 
 ## <a name="web-app-bot"></a>Web アプリ ボット
 
-1. LUIS アプリを自動的にインクルードする ["Basic" Web アプリ ボットを作成](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)します。 4\.x の SDK および C# プログラミング言語を選択します。
+1. LUIS アプリを自動的にインクルードする ["Basic" Web アプリ ボットを作成](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)します。 C# プログラミング言語を選択します。
 
 1. Azure portal に Web アプリ ボットを作成したら、その Web アプリ ボットを選択します。
 1. Web アプリ ボット サービス ナビゲーションで **[アプリケーションの設定]** を選択し、使用可能な設定の **[アプリケーションの設定]** セクションにスクロールします。

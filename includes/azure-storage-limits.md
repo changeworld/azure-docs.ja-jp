@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 78996fae99393d3bec11c1a3f8f734e281291ad3
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b51d984726cfd178189e7fe1a994c35c7efaed36
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71107273"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71124086"
 ---
 次の表では、Azure の汎用 v1、v2、および BLOB ストレージのアカウントの既定の制限について説明します。 *受信*制限は、ストレージ アカウントに送信される要求のすべてのデータを指します。 *送信*制限は、ストレージ アカウントから受信する応答のすべてのデータを指します。
 
@@ -31,12 +31,7 @@ ms.locfileid: "71107273"
 
 <sup>1</sup>Azure Standard Storage アカウントは、要求によるより高い容量制限とより高いイングレス制限をサポートします。 イングレスのアカウント制限の引き上げを要求する場合は、[Azure サポートにお問い合わせください](https://azure.microsoft.com/support/faq/)。 詳細については、「[ストレージ アカウントの制限引き上げを発表](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)」を参照してください。
 
-<sup>2</sup> [Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)には次のオプションがあります。
-
-- **RA-GRS**: 読み取りアクセス geo 冗長ストレージ。 RA-GRS が有効な場合、2 次拠点への送信ターゲットは、1 次拠点と同じになります。
-- **GRS**: geo 冗長ストレージ。
-- **ZRS**: ゾーン冗長ストレージ。
-- **LRS**: ローカル冗長ストレージ。
+<sup>2</sup> 読み取りアクセスが有効な場合 (RA-GRS/RA-GZRS)、セカンダリ ロケーションへのエグレス ターゲットは、プライマリ ロケーションと同じになります。 [Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)には、次のオプションがあります。[!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
 > [!NOTE]
 > ほとんどのシナリオで汎用 v2 ストレージ アカウントを使用することをお勧めしています。 汎用 v1 または Azure BLOB ストレージ アカウントは汎用 v2 アカウントに簡単にアップグレードできます。その際にダウンタイムは発生せず、データをコピーする必要はありません。

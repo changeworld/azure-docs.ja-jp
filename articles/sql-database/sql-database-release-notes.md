@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 232f8b13174aed19477ee0b139c83fba439049ac
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101541"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266415"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
@@ -60,6 +60,7 @@ ms.locfileid: "71101541"
 
 ### <a name="managed-instance-h2-2019-updates"></a>2019 年下期のマネージド インスタンスの更新プログラム
 
+- [自動フェールオーバー グループ](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/)では、プライマリ インスタンスから別のリージョンにあるセカンダリ インスタンスへの、すべてのデータベースのレプリケートが有効になります。
 - [グローバル トレース フラグ](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)を使用して、マネージド インスタンスの動作を構成します。
 
 ### <a name="managed-instance-h1-2019-updates"></a>2019 年上期のマネージド インスタンスの更新プログラム
@@ -69,7 +70,7 @@ ms.locfileid: "71101541"
   - <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016、SharePoint 2019</a>、および <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a> のサポート
   - 選択した<a href="https://aka.ms/managed-instance-collation">サーバーレベルの照合順序</a>と<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">タイム ゾーン</a>を使用して、インスタンスを作成します。
   - マネージド インスタンスは現在、<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">組み込みのファイアウォール</a>によって保護されています。
-  - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 vCores</a> またはポイント イン タイム リストアのための<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日間のバックアップ保有期間の構成</a>を得るために、[パブリック エンドポイント](sql-database-managed-instance-public-endpoint-configure.md)と [Proxy Override](/sql-database-connectivity-architecture.md#connection-policy) 接続を使用するように、インスタンスを構成します。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないので、代わりに、<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できます。
+  - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 vCores</a> またはポイント イン タイム リストアのための<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日間のバックアップ保有期間の構成</a>を得るために、[パブリック エンドポイント](sql-database-managed-instance-public-endpoint-configure.md)と [Proxy Override](sql-database-connectivity-architecture.md#connection-policy) 接続を使用するように、インスタンスを構成します。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないので、代わりに、<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できます。
   - 新しい機能を利用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用してお使いのデータベースを別のデータ センターに geo リストアして</a>、[データベース名を変更し](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[仮想クラスターを削除する](sql-database-managed-instance-delete-virtual-cluster.md)ことができます。
   - 新しい組み込みの[インスタンス共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)を使用すると、セキュリティ原則による職務の分離 (SoD) のコンプライアンスとエンタープライズ標準によるコンプライアンスを有効にできます。
   - マネージド インスタンスは、中国北部 2 および中国東部 2 と、GA (US Gov テキサス、US Gov アリゾナ) の Azure Government リージョン内で利用できます。 また、次のパブリック リージョンでも利用できます。オーストラリア中部、オーストラリア中部 2、ブラジル南部、フランス南部、アラブ首長国連邦中部、アラブ首長国連邦北部、南アフリカ北部、南アフリカ西部です。

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 20d8106f06b708527fc60e025a19c6b07656acb3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102645"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240283"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -71,11 +71,11 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 ### <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-次の表は、サポートされているオペレーティング システムの一覧です。
+次の表は、更新プログラム評価でサポートされているオペレーティング システムの一覧です。 修正プログラムを適用するには、Hybrid Runbook Worker が必要です。 Hybrid Runbook Worker の要件の詳細については、[Windows HRW](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) および [Linux HRW](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker) のインストール ガイドを参照してください。
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
-|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM および SP1 Standard)|**更新の評価**: サポートされています<br><br>**修正プログラムの適用**: Hybrid Runbook Worker が必要です。 「[Hybrid Runbook Worker の要件](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)」を参照してください|
+|Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM および SP1 Standard)||
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux での分類の更新](#linux-2)に関するページを参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
@@ -83,7 +83,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 > [!NOTE]
 > Azure 仮想マシン スケール セットは、Update Management で管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 一度にすべての VM インスタンスを更新しない場合、段階的に更新をスケジュールする必要があります。
-> 「[Azure 以外のマシンの配布準備](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)」の手順に従って、VMSS ノードを追加することができます。
+> [Azure 以外のマシンのオンボード](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)の手順に従って、VMSS ノードを追加することができます。
 
 ### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
 
@@ -249,6 +249,9 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | 再起動制御| 再起動の処理方法を決定します。 使用できるオプションは次のとおりです。</br>必要に応じて再起動 (既定値)</br>常に再起動</br>再起動しない</br>Only reboot - will not install updates (再起動のみ - 更新プログラムをインストールしない)|
 
 更新プログラムのデプロイはプログラムで作成することもできます。 REST API を使用して更新プログラムのデプロイを作成する方法については、「[Software Update Configurations - Create](/rest/api/automation/softwareupdateconfigurations/create)」(ソフトウェア更新プログラムの構成 - 作成) をご覧ください。 週単位の更新プログラムのデプロイを作成するために使用できるサンプル Runbook もあります。 この Runbook について詳しくは、「[Create a weekly update deployment for one or more VMs in a resource group](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)」(リソース グループ内の VM に対して週単位の更新プログラムのデプロイを作成する) をご覧ください。
+
+> [!NOTE]
+> **[再起動制御]** が **[再起動しない]** に設定されている場合、[[Registry keys used to manage restart]\(再起動の管理に使用するレジストリ キー\)](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) に一覧表示されているレジストリ キーにより再起動イベントが発生する場合があります。
 
 ### <a name="maintenance-windows"></a>メンテナンス期間
 

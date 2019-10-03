@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993467"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123095"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
 
@@ -160,6 +160,12 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
    |GP_S_Gen5_1|汎用|第 5 世代|1|
    |GP_S_Gen5_2|汎用|第 5 世代|2|
    |GP_S_Gen5_4|汎用|第 5 世代|4|
+   |GP_S_Gen5_6|汎用|第 5 世代|6|
+   |GP_S_Gen5_8|汎用|第 5 世代|8|
+   |GP_S_Gen5_10|汎用|第 5 世代|10|
+   |GP_S_Gen5_12|汎用|第 5 世代|12|
+   |GP_S_Gen5_14|汎用|第 5 世代|14|
+   |GP_S_Gen5_16|汎用|第 5 世代|16|
 
 2. 必要に応じて、最小仮想コア数と自動一時停止遅延を指定して、既定値を変更します。 これらのパラメーターに対して使用可能な値を次の表に示します。
 
@@ -282,7 +288,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>リソース制限
 
-リソースの制限については、[サーバーレス コンピューティング レベル](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)に関する記事をご覧ください。
+リソースの制限については、[サーバーレス コンピューティング レベル](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)をご覧ください。
 
 ## <a name="billing"></a>課金
 

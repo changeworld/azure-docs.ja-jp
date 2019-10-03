@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 11c9b2ea3ea054415f25f864651df28288aa0025
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181148"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266842"
 ---
 診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/azure-monitor/app/app-insights-overview.md) や [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md) など、より高度な監視方法を使用することもできます。
 
@@ -54,12 +54,12 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 アクティビティ ログ データには、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor)、[Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) のいずれかを使ってアクセスすることもできます
 
-[Azure 診断ログ](../articles/azure-monitor/platform/diagnostic-logs-overview.md)は、VM から出力されるログです。その操作に関する豊富なデータが提供されます。 診断ログは、VM 内で実行された操作についての洞察が得られるという点でアクティビティ ログとは異なります。
+[Azure リソース ログ](../articles/azure-monitor/platform/resource-logs-overview.md)は、VM から出力されるログです。その操作に関する豊富なデータが提供されます。 リソース ログは、VM 内で実行された操作についての分析情報が得られるという点でアクティビティ ログとは異なります。
 
 たとえば、診断ログでは次のことを実行できます。
 
 - 監査や手動での検査に使用するために診断ログを[ストレージ アカウント](../articles/azure-monitor/platform/archive-diagnostic-logs.md)に保存する。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
-- サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを Event Hubs にストリーミング](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)する。
+- サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを Event Hubs にストリーミング](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md)する。
 - これを [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) で分析する。
 
 ## <a name="advanced-monitoring"></a>高度な監視

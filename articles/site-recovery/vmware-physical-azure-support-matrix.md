@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: cb46acf3f54b5955ba8542adf73b7ca896f20c28
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910433"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266404"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -193,6 +193,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー - ディスクの除外 | はい
 ゲスト/サーバー マルチパス (MPIO) | いいえ
 ゲスト/サーバー GPT パーティション | \- 5 個のパーティションが[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/) (モビリティ サービスのバージョン 9.25) 以降でサポートされています。 以前は 4 個までサポートしていました。
+ReFS | Resilient File System は、モビリティ サービスのバージョン 9.23 以降でサポートされています。
 ゲスト/サーバー EFI/UEFI ブート | - バージョン 9.13 以降のモビリティ サービスを実行している場合、サポートされます。<br/> - Windows Server 2012 以降を実行している VMware VM または物理サーバーを Azure に移行する場合にサポートされます。<br/> - VM は移行の場合にのみレプリケートできます。 オンプレミスへのフェールバックはサポートされていません。<br/> - NTFS のみがサポートされます。 <br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 <br/> - ディスクのセクター サイズは、物理セクターごとに 512 バイトとする必要があります。
 
 ## <a name="replication-channels"></a>レプリケーション チャネル

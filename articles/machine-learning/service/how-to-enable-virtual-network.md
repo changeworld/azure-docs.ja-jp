@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: f12c77a25bad9781d5f23b9563f6684997a2a6c4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 9299959eef24f6890218dc2d2aa733cc227e1a32
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002787"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162578"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する
 
@@ -345,6 +345,22 @@ aks_target = ComputeTarget.create(workspace=ws,
 ```
 
 作成プロセスが完了すると、仮想ネットワークの背後にある AKS クラスターで推論 (モデルのスコアリング) を実行できるようになります。 詳細については、[AKS へのデプロイ方法](how-to-deploy-to-aks.md)に関するページをご覧ください。
+
+## <a name="use-azure-firewall"></a>Azure Firewall の使用
+
+Azure Firewall を使用する場合は、次のアドレスとの間で送受信されるトラフィックを許可するネットワーク ルールを構成する必要があります。
+
+- `*.batchai.core.windows.net`
+- `ml.azure.com`
+- `*.azureml.ms`
+- `*.experiments.azureml.net`
+- `*.modelmanagement.azureml.net`
+- `mlworkspace.azure.ai`
+- `*.aether.ms`
+
+ルールを追加するときは、__プロトコル__を任意に、ポートを `*` に設定します。
+
+ネットワーク ルールの構成の詳細については、「[Azure Firewall のデプロイと構成](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

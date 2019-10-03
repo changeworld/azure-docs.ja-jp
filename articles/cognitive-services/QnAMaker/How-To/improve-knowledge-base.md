@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: b5528d8cd23893248170bdb15588925f3c92c02b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ab4447c8c07f8e8315c0258cc3254e5272ab7582
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934731"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272437"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
 
@@ -79,6 +79,8 @@ QnA Maker の暗黙的フィードバックでは、スコアの近さを判定�
     **[Active Learning]\(アクティブ ラーニング\)** が有効になると、ユーザーが送信した質問に基づいて、ナレッジ ベースから定期的に新しい質問が提案されます。 設定を再度切り替えると、 **[Active Learning] (アクティブ ラーニング)** を無効にできます。
 
 ## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングの提案を受け入れる
+
+提案を承認し、保存してトレーニングした後、アクティブラーニングによりナレッジ ベースまたは Search Service が変更されます。 提案を承認すると、代わりの質問として追加されます。
 
 1. 提案された質問を表示するには、ナレッジ ベースの **[Edit]\(編集\)** ページで、 **[View Options]\(オプションの表示\)** 、 **[Show active learning suggestions]\(アクティブ ラーニングの提案を表示\)** の順に選択します。 
 
@@ -387,7 +389,14 @@ async callTrain(stepContext){
 ]
 ```
 
+また、変更のダウンロード API を使用すると、REST または任意の言語ベースの SDK を使用してこれらの変更をレビューすることもできます。
+* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+
+
 このアプリを再インポートすると、アクティブ ラーニングは引き続き情報を収集し、ナレッジ ベースに対する提案を提示します。 
+
+
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

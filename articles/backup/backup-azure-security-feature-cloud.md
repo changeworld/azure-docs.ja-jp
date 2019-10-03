@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018184"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129332"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup を使用したクラウド ワークロードを保護するためのセキュリティ機能
 
@@ -122,9 +122,9 @@ Recovery Services コンテナーによって使用されるストレージ ア�
 
 Recovery Services コンテナー内に論理的に削除された状態のバックアップ項目がある場合、そのコンテナーを削除することはできません。 論理的に削除された項目は、削除操作の 14 日後に完全に削除されます。 論理的に削除されたすべての項目が消去された場合のみコンテナーを削除できます。  
 
-#### <a name="how-can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>削除後の 14 日間の論理的な削除期間より前にデータを削除するにはどうすればよいですか?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>削除後の 14 日間の論理的な削除期間より前にデータを削除することはできますか?
 
-削除してから 14 日間はデータを消去することはできません。 これが障害またはコンプライアンスの問題になっている場合は、Microsoft サポートにお問い合わせください。
+いいえ。 論理的に削除された項目を強制的に削除することはできません。これらは、14 日後に自動的に削除されます。 このセキュリティ機能は、偶発的または悪意のある削除からバックアップされたデータを保護するために有効になっています。  VM で他の操作を実行する前に、14 日間待機する必要があります。  論理的に削除された項目については課金されません。  新しいコンテナーで 14 日以内の論理的な削除のマークが付けられた VM を再保護する必要がある場合は、Microsoft サポートにお問い合わせください。
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell または CLI で論理的な削除操作を実行できますか?
 

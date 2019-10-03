@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 85ca03bee728ec075383566be14d2484dd7431af
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035587"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170434"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -63,10 +63,10 @@ Azure Machine Learning 用のこれらのツールを使用します。
 + <a href="#compute-targets">コンピューティング先</a>
 + <a href="#training-scripts">トレーニング スクリプト</a>
 + <a href="#runs">Run</a>
++ <a href="#environments">環境</a>
 + <a href="#github-tracking-and-integration">Git の追跡</a>
 + <a href="#snapshots">スナップショット</a>
 + <a href="#activities">アクティビティ</a>
-+ <a href="#images">Image</a>
 + <a href="#deployment">Deployment</a>
 + <a href="#web-service-deployments">Web サービス</a>
 + <a href="#iot-module-deployments">IoT モジュール</a>
@@ -180,28 +180,15 @@ PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning に�
 
 アクティビティでは、ユーザーがこれらの操作の進行状況を簡単に監視できるように、SDK または Web UI 経由で通知を提供できます。
 
-### <a name="images"></a>イメージ
+### <a name="environments"></a>環境
 
-イメージによって、モデルを使用するために必要なすべてのコンポーネントと共に、モデルを確実にデプロイする方法が提供されます。 イメージには次の項目が含まれます。
+Azure ML 環境は、データの準備、モデルのトレーニング、モデルのサービスの提供のための再現可能な環境を作成するために使用される構成 (Docker、Python、Spark など) を指定するために使用されます。 これらは、Azure Machine Learning ワークスペース内で管理およびバージョン管理されるエンティティであり、さまざまなコンピューティング ターゲット間で再現、監査、移植が可能な機械学習ワークフローを実現します。
 
-* モデル。
-* スコアリング スクリプトまたはアプリケーション。 スクリプトを使用して、モデルに入力を渡し、モデルから出力を戻します。
-* モデルまたはスコアリング スクリプトあるいはアプリケーションで必要な依存関係。 たとえば、Python パッケージの依存関係が列記されている Conda 環境ファイルを含めることがあります。
+ローカル コンピューティング上の環境オブジェクトを使用してトレーニング スクリプトを開発し、Azure Machine Learning コンピューティング上で同じ環境を再利用して大規模なモデル トレーニングを行うことができ、その同じ環境を使用してモデルをデプロイすることもできます。 
 
-Azure Machine Learning では、次の 2 種類のイメージを作成できます。
+トレーニングと推論のために[再利用可能な ML 環境を作成して管理する方法](how-to-use-environments.md)を学習します。
 
-* **FPGA イメージ**:Azure のフィールド プログラマブル ゲート アレイにデプロイするときに使用されます。
-* **Docker イメージ**:FPGA 以外のコンピューティング先にデプロイするときに使用されます。 例として、Azure Container Instances や Azure Kubernetes Service があります。
 
-Azure Machine Learning は基本イメージを提供し、それが既定で使用されます。 独自のカスタム イメージを指定することもできます。
-
-### <a name="image-registry"></a>イメージ レジストリ
-
-イメージは、ワークスペースの**イメージ レジストリ**に分類されます。 後でクエリを実行してイメージを見つけられるように、イメージの作成時に追加のメタデータ タグを指定することができます。
-
-イメージの作成例については、「[Azure Container Instances に画像分類モデルをデプロイする](tutorial-deploy-models-with-aml.md)」を参照してください。
-
-カスタム イメージを使用するモデルのデプロイ例については、[カスタム Docker イメージを使用するモデルのデプロイ方法](how-to-deploy-custom-docker-image.md)に関するページを参照してください。
 
 ### <a name="deployment"></a>Deployment
 

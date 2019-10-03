@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 6f1a0485dbae3234d476ba5df62126f05d52f435
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ab0a622dcb72072621e6696d423a1d4d2917bedc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813349"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178396"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL データベースの復旧
 
@@ -66,7 +66,7 @@ Standard または Premium サービス レベルを使用している場合、�
 現在、サーバー全体を復元するための組み込みの方法はありません。 このタスクを達成する 1 つの方法として、たとえば、[Azure SQL Database:Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトがあります。
 
 > [!IMPORTANT]
-> 自動バックアップを使って復旧するには、サブスクリプションにおける SQL Server の共同作成者ロールのメンバーまたはサブスクリプション所有者である必要があります。[RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)に関するページをご覧ください。 復旧には、Azure ポータル、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
+> 自動バックアップを使って復旧するには、サブスクリプションにおける SQL Server の共同作成者ロールのメンバーまたはサブスクリプション所有者である必要があります。[RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)に関するページをご覧ください。 復旧には、Azure portal、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
 
 ## <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
@@ -82,7 +82,7 @@ Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/
 
   ユーザー エラーまたはアプリケーション エラーからの復旧のために、復元されたデータベースからデータを取得する場合は、復元されたデータベースからデータを抽出して元のデータベースに適用するデータ復旧スクリプトを作成して実行する必要があります。 復元操作が完了するまでに時間がかかる可能性がありますが、復元プロセスを通して、復元しているデータベースがデータベース一覧に表示されます。 復元中にデータベースを削除すると、復元操作は取り消され、復元が完了していないデータベースに対しては課金されません。
 
-Azure portal を使用して単一のデータベース、プールされたデータベース、またはインスタンス データベースを特定の時点に復旧するには、データベースのページを開き、ツールバーの **[復元]** をクリックします。
+Azure portal を使用して単一のデータベース、プールされたデータベース、またはインスタンス データベースを特定の時点に復旧するには、データベースのページを開き、ツール バーの **[復元]** をクリックします。
 
 ![ポイントインタイム リストア](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
@@ -117,21 +117,56 @@ geo リストアは、ホスティング リージョンでのインシデント
 
 ![地理リストア](./media/sql-database-geo-restore/geo-restore-2.png)
 
-> [!TIP]
-> geo リストアの実行方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページを参照してください。
+### <a name="geo-restore-using-azure-portal"></a>Azure portal を使用した geo リストア
+
+Azure portal からデータベースを geo リストアする一般的な概念は、新しい単一インスタンスデータベースまたはマネージド インスタンス データベースを作成し、データベース作成画面で使用可能な geo リストア バックアップを選択することによって行われます。 新しく作成されたデータベースには、geo リストアされたバックアップ データが含まれます。
+
+#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
+
+任意のリージョンとサーバーの Azure portal から単一の Azure SQL Database を geo リストアするには、次の手順に従います。
+
+1. マーケットプレースで **[+ 追加]** をクリックし、 **[SQL データベースの作成]** を選択し、 **[基本]** タブで必要な情報を入力します
+2. **[追加設定]** タブを選択します
+3. [既存のデータを使用します] の下で **[バックアップ]** をクリックします
+4. 使用可能な geo リストア バックアップのドロップダウン リストからバックアップを選択します
+
+![単一 Azure SQL Database の geo リストア](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
+
+新しいデータベースを作成するプロセスを完了します。 単一の Azure SQL Database が作成されると、これには復元された geo リストア バックアップが含まれます。
+
+#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
+
+マネージド インスタンス データベースを Azure portal から任意のリージョンの既存のマネージド インスタンスに geo リストアするには、データベースを復元するマネージド インスタンスを選択し、次の手順に従います。
+
+1. **[+ 新しいデータベース]** をクリックします
+2. 目的のデータベース名を入力します
+3. [既存のデータを使用します] の下で **[バックアップ]** オプションを選択します
+4. 使用可能な geo リストア バックアップのドロップダウン リストからバックアップを選択します
+
+![マネージド インスタンス データベースの geo リストア](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
+
+新しいデータベースを作成するプロセスを完了します。 インスタンス データベースが作成されると、これには復元された geo リストア バックアップが含まれます。
+
+### <a name="geo-restore-using-powershell"></a>PowerShell を使用した geo リストア
+
+#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
+
+単一の Azure SQL Database に対して geo リストアを実行する方法を示す PowerShell スクリプトについては、「[PowerShell を使用して単一の Azure SQL データベースを以前の時点に復元します](scripts/sql-database-restore-database-powershell.md)」を参照してください。
+
+#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
+
+マネージド インスタンスのデータベースに対して geo リストアを実行する方法を示す PowerShell スクリプトについては、「[PowerShell を使用して Managed Instance データベースを別の geo リージョンに復元する](scripts/sql-managed-instance-restore-geo-backup.md)」を参照してください。
+
+### <a name="geo-restore-considerations"></a>geo リストアに関する考慮事項
 
 geo セカンダリでのポイントインタイム リストアは、現在はサポートされていません。 ポイントインタイム リストアは、プライマリ データベースでのみ実行できます。 geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](sql-database-disaster-recovery.md)に関するページを参照してください。
 
 > [!IMPORTANT]
 > geo リストアは、SQL Database で使用できる最も基本的なディザスター リカバリー ソリューションです。 geo リストアは、自動的に作成される geo レプリケートされたバックアップに依存し、その RPO は 1 時間、推定復旧時間は最大 12 時間です。 地域的な停止後は需要が急激に増加する可能性があるため、目的のデータベースを復元する容量がターゲット リージョンに確保される保証はありません。 比較的小規模なデータベースを使用する、ビジネスに不可欠ではないアプリケーションでは、geo リストアが適切なディザスター リカバリー ソリューションです。 大規模なデータベースを使用し、事業継続性を確保する必要があるビジネスに不可欠なアプリケーションの場合は、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用する必要があります。 大幅に低い RPO と RTO が実現され、容量が常に保証されます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
 
-### <a name="geo-restore-using-the-azure-portal"></a>Azure portal を使用した geo リストア
-
-Azure portal を使用してデータベースを geo リストアするには、[SQL データベース] ページを開き、 **[追加]** をクリックします。 **[ソースの選択]** テキスト ボックスで、 **[バックアップ]** を選択します。 任意のリージョン内のサーバー上で復旧を実行するバックアップを指定します。 
-
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>自動バックアップを使用したプログラム実行の復旧
 
-前に説明したように、データベースの復旧は、Azure Portal のほかに、Azure PowerShell または REST API を使用してプログラムで実行できます。 次の表では、使用できるコマンド セットについて説明します。
+前に説明したように、データベースの復旧は、Azure portal の他に、Azure PowerShell または REST API を使用してプログラムで実行できます。 次の表では、使用できるコマンド セットについて説明します。
 
 ### <a name="powershell"></a>PowerShell
 

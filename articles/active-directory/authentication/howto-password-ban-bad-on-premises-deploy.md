@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959932"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268665"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -43,23 +43,24 @@ ms.locfileid: "70959932"
 ## <a name="deployment-requirements"></a>デプロイ要件
 
 * Azure AD パスワード保護でのライセンス要件については、[組織内の不適切なパスワードの排除](concept-password-ban-bad.md#license-requirements)に関する記事を参照してください。
-* Azure AD パスワード保護用の DC エージェント サービスがインストールされるすべてのドメイン コントローラーでは、Windows Server 2012 以降を実行している必要があります。 この要件は、Active Directory ドメインまたはフォレストも Windows Server 2012 ドメインまたはフォレストの機能レベルにする必要があることを意味するものではありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアが実行するために必要な最低限の DFL または FFL はありません。
+* Azure AD パスワード保護 DC エージェント ソフトウェアがインストールされるマシンではすべて、Windows Server 2012 以降を実行する必要があります。 この要件は、Active Directory ドメインまたはフォレストも Windows Server 2012 ドメインまたはフォレストの機能レベルにする必要があることを意味するものではありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアが実行するために必要な最低限の DFL または FFL はありません。
 * DC エージェント サービスがインストールされるすべてのマシンには、.NET 4.5 をインストールする必要があります。
-* Azure AD パスワード保護用のプロキシ サービスがインストールされるすべてのマシンでは、Windows Server 2012 R2 以降を実行している必要があります。
+* Azure AD パスワード保護プロキシ サービスがインストールされるマシンではすべて、Windows Server 2012 R2 以降を実行する必要があります。
    > [!NOTE]
-   > ドメイン コントローラーにインターネットへの直接の送信接続があった場合でも、Azure AD パスワード保護のデプロイには、プロキシ サービスの展開が必須要件です。 
+   > ドメイン コントローラーにインターネットへの直接の送信接続があった場合でも、Azure AD パスワード保護のデプロイには、プロキシ サービスのデプロイが必須要件です。 
    >
 * Azure AD パスワード保護プロキシ サービスがインストールされるすべてのマシンには、.NET 4.7 をインストールしておく必要があります。
-  .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合には、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
-* ドメイン コントローラーを含め、Azure AD パスワード保護コンポーネントがインストールされるすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 Windows Update からすべての更新プログラムを確実に取得することでランタイムを入手できます。 または、OS 固有の更新プログラム パッケージで入手できます。 詳しくは、「[Update for Universal C Runtime in Windows (Windows のユニバーサル C ランタイムの更新プログラム)](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)」をご覧ください。
+  .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合は、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
+* ドメイン コントローラーを含め、Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 Windows Update からすべての更新プログラムを確実に取得することでランタイムを入手できます。 または、OS 固有の更新プログラム パッケージで入手できます。 詳しくは、「[Update for Universal C Runtime in Windows (Windows のユニバーサル C ランタイムの更新プログラム)](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)」をご覧ください。
 * 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、パスワード保護用のプロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。 この接続では、ドメイン コントローラーがプロキシ サービス上の RPC エンドポイント マッパー ポート 135 および RPC サーバー ポートにアクセスできるようにする必要があります。 RPC サーバー ポートは、既定では動的 RPC ポートですが、[静的ポートを使用](#static)するように構成することができます。
-* プロキシ サービスをホストしているすべてのマシンに、次のエンドポイントへのネットワーク アクセスが必要です。
+* Azure AD のパスワード保護プロキシ サービスがインストールされるすべてのマシンに、次のエンドポイントへのネットワーク アクセスが必要です。
 
     |**エンドポイント**|**目的**|
     | --- | --- |
     |`https://login.microsoftonline.com`|認証要求|
     |`https://enterpriseregistration.windows.net`|Azure AD パスワード保護機能|
 
+  また、「[アプリケーション プロキシ環境の設定手順](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)」で指定した一連のポートと URL に対して、ネットワーク アクセスを有効にする必要もあります。 これらの構成手順は、Microsoft Azure AD Connect エージェント アップデーター サービスを機能させるために必要です (このサービスはプロキシ サービスとサイド バイ サイドでインストールされます)。 Microsoft Azure AD Connect エージェント アップデーター ソフトウェアのバージョン間の非互換性のため、Azure AD パスワード保護プロキシとアプリケーション プロキシを同じマシンにサイド バイ サイドでインストールすることはお勧めしません。
 * パスワード保護用のプロキシ サービスがホストされているすべてのコンピューターを、プロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 これは、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
 * パスワード保護用プロキシ サービスがホストされているすべてのマシンで、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
 * Azure AD でパスワード保護用プロキシ サービスとフォレストを登録するグローバル管理者アカウント。
@@ -68,7 +69,7 @@ ms.locfileid: "70959932"
 
   ご利用のドメインでまだ DFSR を使用していない場合、Azure AD パスワード保護をインストールする前に DFSR 使用にドメインを移行する必要があります。 詳細については、次のリンクを参照してください。
 
-  [SYSVOL レプリケーション移行ガイド:FRS レプリケーションから DFS レプリケーションに移行する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+  [SYSVOL レプリケーション移行ガイド: FRS レプリケーションから DFS レプリケーションに移行する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
   > [!WARNING]
   > Azure AD パスワード保護 DC エージェント ソフトウェアは現在のところ、sysvol レプリケーションのために依然として FRS (DFSR の前身テクノロジ) を使用しているドメインにあるドメイン コントローラーにインストールされますが、この環境ではソフトウェアは正しく機能しません。 その他のマイナスの副作用としては、個々のファイルを複製できない、sysvol 復元処理が成功したように見えたが、一部のファイルの複製に失敗しており、何のエラーも表示されない、などがあります。 できるだけ早く、DFSR の使用にドメインを移行してください。DFSR に固有のメリットがあるだけでなく、Azure AD パスワード保護のデプロイのブロックを解除します。 今後のバージョンでは、ドメインで依然として FRS を使用している場合、このソフトウェアは自動的に無効になります。

@@ -16,16 +16,16 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4426c070d2fd2e26e0d4368a94996bc32e95129d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fdfb2d7d33111f1adf998cd75446576d2010a365
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103951"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257773"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Microsoft Authenticator を使用する iOS アプリケーションを ADAL.NET から MSAL.NET に移行する
 
-あなたは Azure Active Directory Authentication Library for .NET (ADAL.NET) と iOS ブローカーを使用しています。 リリース 4.3 以降の iOS 上でブローカーをサポートする Microsoft Authentication Library for .NET (MSAL.NET) に移行するタイミングです。 
+あなたは Azure Active Directory Authentication Library for .NET (ADAL.NET) と iOS ブローカーを使用しています。 リリース 4.3 以降の iOS 上でブローカーをサポートする [Microsoft Authentication Library](msal-overview.md) for .NET (MSAL.NET) に移行するときが来ました。 
 
 どこから始めればよいでしょうか。 この記事では、お使いの Xamarin iOS アプリを ADAL から MSAL に移行する方法について説明します。
 
@@ -36,7 +36,7 @@ ms.locfileid: "71103951"
 
 ### <a name="what-are-brokers"></a>ブローカーとは
 
-ブローカーは、Android および iOS に Microsoft が提供するアプリケーションです (iOS と Android については [Microsoft Authenticator](https://www.microsoft.com/account/authenticator) アプリに関するページ、Android については Intune ポータル サイト アプリを参照してください)。 
+ブローカーは、Android および iOS に Microsoft が提供するアプリケーションです (iOS と Android については [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) アプリに関するページ、Android については Intune ポータル サイト アプリを参照してください)。 
 
 これでは、次が可能です。
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 36bcb8f7a3ee75794741b44f91956950179e5544
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103150"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162295"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能
 
@@ -161,7 +161,7 @@ Azure SQL データベースでは、データの管理に役立つさまざま�
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | はい | はい。[バージョン 18.0 以降](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)に関するページを参照してください |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | はい | はい |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | × - [拡張イベント](sql-database-xevent-db-diff-from-svr.md)に関する記事を参照してください | はい |
-| [System Center Operations Manager - SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [はい](https://www.microsoft.com/download/details.aspx?id=38829) | いいえ |
+| [System Center Operations Manager - SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [はい](https://www.microsoft.com/download/details.aspx?id=38829) | はい。[プレビュー段階](https://www.microsoft.com/download/details.aspx?id=100306) |
 
 ## <a name="migration-methods"></a>移行の方法
 

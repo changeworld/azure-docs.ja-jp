@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 4628955998ab8b289a429cdfb85e23f7f97b0b40
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101431"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241000"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Microsoft Azure と Oracle Cloud Infrastructure を統合した Oracle アプリケーション ソリューション (プレビュー)
 
@@ -50,7 +50,7 @@ Oracle ソリューションを完全に Azure インフラストラクチャに
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* プレビューでのクロスクラウド接続は、Azure 米国東部 (eastus) リージョンと OCI Ashburn (us-ashburn-1) リージョンに限定されています。
+* プレビューでのクロスクラウド接続は、Azure 米国東部 (eastus) および英国南部 (uksouth) リージョンと OCI Ashburn (米国東部) およびロンドン (英国南部) リージョンに限定されています。 英国南部については、待機時間が短くなるように相互接続をデプロイするときに、OCI の可用性ドメイン 1 (AD 1) を使用してください。
 
 ## <a name="networking"></a>ネットワーク
 

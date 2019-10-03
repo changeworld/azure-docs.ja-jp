@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541497"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266876"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -183,8 +183,26 @@ Premium SSD、Standard SSD、および Standard HDD でスナップショット�
 **Ultra ディスクを可用性セットで実行されている VM に接続できますか?**
 いいえ。これはまだサポートされていません。
 
-**Ultra ディスクを使用する VM に対して Azure Site Recovery (ASR) を有効にできますか?**
-いいえ。Ultra ディスクに対して ASR はまだサポートされていません。
+**Ultra ディスクを使用する VM に対して Azure Site Recovery を有効にできますか?**
+いいえ。Ultra ディスクに対して Azure Site Recovery はまだサポートされていません。
+
+## <a name="uploading-to-a-managed-disk"></a>マネージド ディスクへのアップロード
+
+**既存のマネージド ディスクにデータをアップロードできますか?**
+
+いいえ。アップロードは、**ReadyToUpload** 状態を持つ新しい空のディスクの作成中にのみ使用できます。
+
+**マネージド ディスクにアップロードするにはどうすればよいですか?**
+
+[creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) の [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) プロパティを "Upload" に設定することでマネージド ディスクを作成してから、それにデータをアップロードします。
+
+**VM がアップロード状態にある間、その VM にディスクを接続できますか?**
+
+いいえ。
+
+**アップロード状態にあるマネージド ディスクのスナップショットを取得できますか?**
+
+いいえ。
 
 ## <a name="standard-ssd-disks"></a>Standard SSD ディスク
 

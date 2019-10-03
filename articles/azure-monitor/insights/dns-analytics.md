@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982587"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265163"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -179,6 +179,12 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 1. **検索クエリ ボックス**に「`DnsInventory`」と入力して、ソリューションによって管理されている DNS サーバーのすべての DNS インベントリ関連データを表示します。 結果には、DNS サーバー、DNS ゾーン、リソース レコードのログ データが表示されます。
 
     ![DnsInventory ログ検索](./media/dns-analytics/log-search-dnsinventory.png)
+    
+### <a name="troubleshooting"></a>トラブルシューティング
+
+一般的なトラブルシューティングの手順:
+
+1. DNS 参照データが見つからない - この問題のトラブルシューティングを行うには、構成をリセットするか、ポータルで構成ページを 1 回読み込んでください。 リセットの場合は、設定を別の値に変更してから元の値に戻し、構成を保存します。
 
 ## <a name="feedback"></a>フィードバック
 

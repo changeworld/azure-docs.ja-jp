@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache のサポート チケットを開く
+title: Azure HPC Cache (プレビュー) のサポート チケットを開く
 description: Azure HPC Cache のサポート リクエストを開く方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 630af5322483782c1e26cd792bf7d7957e555d84
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036919"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299941"
 ---
-# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Azure HPC Cache のサポート チケットを開く
+# <a name="open-a-support-ticket-for-azure-hpc-cache-preview"></a>Azure HPC Cache (プレビュー) のサポート チケットを開く
 
 サポート チケットを開くには、Azure portal を使用します。 キャッシュ インスタンスに移動し、サイド バーの一番下に表示される **[新しいサポート リクエスト]** リンクをクリックします。
 
@@ -24,6 +24,8 @@ ms.locfileid: "71036919"
 Azure HPC Cache プレビュー サービスを見つけるには、 **[すべてのサービス]** ボタンをクリックし、HPC を検索します。
 
 ![サポート リクエストのスクリーンショット - [基本] タブ、一部に説明のとおり入力されています](media/hpc-cache-support-request.png)
+
+<!-- update screenshot after preview to update product name -->
 
 残りのフィールドに自分の情報や設定を入力し、準備ができたらチケットを送信します。
 

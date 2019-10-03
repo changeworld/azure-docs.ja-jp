@@ -4,14 +4,14 @@ description: リソースのデプロイに Azure Resource Manager テンプレ�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d0d162f0f6f3024f6b4b63b8df1df9fd413afc8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965311"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300151"
 ---
 # <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
@@ -47,9 +47,11 @@ Resource Manager テンプレートを使用するか、他のいずれかのコ
 
 * **デプロイのブループリント**:Microsoft が提供する[ブループリント](../governance/blueprints/overview.md)を活用することで、規制やコンプライアンスの基準を満たすことができます。 これらのブループリントには、さまざまなアーキテクチャ用の既成のテンプレートが含まれています。
 
+* **CI/CD の統合**: テンプレートを継続的インテグレーションと継続的配置 (CI/CD) ツールに統合することができます。これにより、リリース パイプラインを自動化し、高速で信頼性の高いアプリケーションとインフラストラクチャの更新を行うことができます。 Azure DevOps と Resource Manager テンプレート タスクを使うことで、Azure Pipelines を使用して Azure Resource Manager テンプレート プロジェクトを継続的にビルドおよびデプロイすることができます。 詳細については、[パイプラインを使用した VS プロジェクト](./vs-resource-groups-project-devops-pipelines.md)の記事と、[Azure Pipelines を使用した継続的インテグレーション](./resource-manager-tutorial-use-azure-pipelines.md)の記事を参照してください。
+
 * **エクスポート可能なコード**:リソース グループの現在の状態をエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。 [エクスポートしたテンプレート](export-template-portal.md)を表示すると、テンプレートの構文について理解するのに役立ちます。
 
-* **作成ツール**:[Visual Studio Code](resource-manager-tools-vs-code.md) とテンプレート ツール拡張機能でテンプレートを作成できます。 Intellisense、構文の強調表示、インライン ヘルプ、その他の多くの言語機能が与えられます。
+* **作成ツール**:[Visual Studio Code](resource-manager-tools-vs-code.md) とテンプレート ツール拡張機能でテンプレートを作成できます。 Intellisense、構文の強調表示、インライン ヘルプ、その他の多くの言語機能が与えられます。 Visual Studio コードに加えて、[Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用することもできます。
 
 ## <a name="template-file"></a>テンプレート ファイル
 
@@ -124,7 +126,4 @@ REQUEST BODY
 ## <a name="next-steps"></a>次の手順
 
 * テンプレート ファイルのプロパティについては、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」をご覧ください。
-* あるリソースが別のリソースの前にデプロイされるよう、依存関係を明示的に設定するには、[Azure Resource Manager テンプレートで依存関係を定義する](resource-group-define-dependencies.md)方法に関するページを参照してください。
-* テンプレートにリソースを追加し、必要に応じてデプロイすることができます。 詳しくは、「[Resource Manager テンプレートでの条件付きデプロイ](conditional-resource-deployment.md)」をご覧ください。
-* テンプレートで JSON のブロックを何度も繰り返すのではなく、変数、プロパティ、またはリソースの複数のインスタンスを指定できます。 詳しくは、「[Azure Resource Manager テンプレートでのリソース、プロパティ、または変数の反復](resource-group-create-multiple.md)」をご覧ください。
 * テンプレートのエクスポートの詳細については、「[クイックスタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](./resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。

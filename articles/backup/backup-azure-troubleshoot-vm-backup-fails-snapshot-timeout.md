@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018165"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268771"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -110,7 +110,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
 **エラー メッセージ**:The configured disk size(s) is currently not supported by Azure Backup. (構成されたディスク サイズは、現在、Azure Backup ではサポートされていません。) <br>
 
-VM をバックアップするときにディスク サイズが 30 TB よりも大きいと、バックアップ操作が失敗することがあります。 また、現時点では、4 TB を超える暗号化されたディスクのバックアップはサポートされていません。 ディスクを分割して、ディスクのサイズが、サポートされている制限以下になるようにしてください。
+VM をバックアップするときにディスク サイズが 30 TB よりも大きいと、バックアップ操作が失敗することがあります。 また、現時点では、4 TB のサイズを超える暗号化されたディスクのバックアップはサポートされていません。 ディスクを分割して、ディスクのサイズが、サポートされている制限以下になるようにしてください。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません
 
@@ -233,7 +233,11 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
 ### <a name="clean_up_restore_point_collection"></a> 復元ポイント コレクションをクリーンアップする
 
-ロックを解除した後で、復元ポイントをクリーンアップする必要があります。 復元ポイントをクリーンアップするには、次のいずれかの手順に従います。<br>
+ロックを解除した後で、復元ポイントをクリーンアップする必要があります。
+
+VM のリソース グループまたは VM 自体を削除した場合、マネージド ディスクのインスタント復元スナップショットはアクティブなままで、リテンション期間の設定に従って有効期限が切れます。 復元ポイント コレクションに格納されているインスタント復元スナップショットを削除するには (不要になった場合)、以下の手順に従って復元ポイント コレクションをクリーンアップします。
+
+復元ポイントをクリーンアップするには、次のいずれかの手順に従います。<br>
 
 - [アドホック バックアップを実行して復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 - [Azure portal から復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-from-azure-portal)<br>
