@@ -3,9 +3,8 @@ title: Azure Security Center のよく寄せられる質問 (FAQ) | Microsoft Do
 description: この FAQ は、Azure Security Center について寄せられる質問とその回答です。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 33ce4c3c7f7cba8310ca75ffd0de3ecb24ad6d8d
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.author: memildin
+ms.openlocfilehash: b8ca4dfe8b1bba169b1234461dc5e8855fef1d7e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873411"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202287"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center によく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -55,7 +54,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 Security Center のロールと許可されているアクションの詳細については、「[Permissions in Azure Security Center (Azure Security Center のアクセス許可)](security-center-permissions.md)」を参照してください。
 
 ## <a name="data-collection-agents-and-workspaces"></a>データの収集、エージェント、およびワークスペース
-Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット (VMSS)、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。
+Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure コンピューター (オンプレミスを含む) からデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。
 
 ### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Security Center で作成されたワークスペース上の Azure Monitor ログには課金されますか?
 いいえ。 ノードごとの Azure Monitor ログの課金が構成されている場合でも、Security Center で作成されるワークスペースに Azure Monitor ログの料金はかかりません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。
@@ -133,10 +132,10 @@ Linux マシンでは、エージェントのマルチ ホームはまだサポ�
 
 2019 年 3 月 17 日より前に Security Center にオンボードされたサブスクリプションの既存のマシンでは、既存のエージェントが検出されると、Microsoft Monitoring Agent 拡張機能はインストールされず、マシンに影響はありません。 これらのマシンについては、マシンでのエージェントのインストールに関する問題を解決するために、"マシンの監視エージェント正常性の問題を解決する" の推奨事項を参照してください。
 
- 詳細については、次のセクションの「[SCOM または OMS のダイレクト エージェントが既に VM にインストールされている場合、どうなりますか?](#scomomsinstalled)」をご覧ください。
+ 詳細については、次のセクションの「[System Center Operations Manager または OMS のダイレクト エージェントが既に VM にインストールされている場合、どうなりますか?](#scomomsinstalled)」をご覧ください
 
-### VM に System Center Operations Manager (SCOM) エージェントが既にインストールされている場合はどうなりますか?<a name="scomomsinstalled"></a>
-Security Center によって、Microsoft Monitoring Agent 拡張機能は、既存の System Center Operations Manager エージェントと並行してインストールされます。 既存の SCOM エージェントは、引き続き通常どおり System Center Operations Manager サーバーに報告します。 System Center Operations Manager エージェントと Microsoft Monitoring Agent は、このプロセス中に最新バージョンに更新される、共通のランタイム ライブラリを共有することに注意してください。 注 - System Center Operations Manager エージェントのバージョン 2012 がインストールされている場合は、自動プロビジョニングを有効にしないでください (System Center Operations Manager サーバーもバージョン 2012 である場合、管理容易性機能が失われる可能性があり)。
+### VM に System Center Operations Manager エージェントが既にインストールされている場合はどうなりますか?<a name="scomomsinstalled"></a>
+Security Center によって、Microsoft Monitoring Agent 拡張機能は、既存の System Center Operations Manager エージェントと並行してインストールされます。 既存のエージェントは、引き続き通常どおり System Center Operations Manager サーバーに報告します。 Operations Manager エージェントと Microsoft Monitoring Agent は、このプロセス中に最新バージョンに更新される、共通のランタイム ライブラリを共有することに注意してください。 注 - Operations Manager エージェントのバージョン 2012 がインストールされている場合は、自動プロビジョニングを有効にしないでください (Operations Manager サーバーもバージョン 2012 である場合、管理容易性機能が失われる可能性があり)。
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>これらの拡張機能を削除するとどのような影響がありますか?
 Microsoft Monitoring Extension を削除すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 Security Center は、VM に拡張機能が存在せず、拡張機能を再インストールすることが 24 時間以内に判断されます。
@@ -160,8 +159,8 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 
 次の条件に該当する場合、自動プロビジョニングの停止を検討する可能性があります。
 
-- Security Center による自動的なエージェントのインストールが、サブスクリプション全体に適用されている。  VM のサブセットには自動インストールを適用できません。 Microsoft Monitoring Agent ではインストールできない重要な VM がある場合は、自動プロビジョニングを停止する必要があります。
-- Microsoft Monitoring Agent (MMA) 拡張機能をインストールすると、エージェントのバージョンが更新される。 これは、ダイレクト エージェントと SCOM エージェントに該当します (後者の場合、SCOM と MMA で共通のランタイム ライブラリが共有され、それはプロセスで更新されます)。 インストールされている SCOM エージェントがバージョン 2012 であり、これがアップグレードされている場合、SCOM サーバーもバージョン 2012 になっていると、管理容易性の機能が失われる恐れがあります。 インストールされている SCOM エージェントがバージョン 2012 の場合、自動プロビジョニングの停止を検討してください。
+- Security Center による自動的なエージェントのインストールが、サブスクリプション全体に適用されている。 VM のサブセットには自動インストールを適用できません。 Microsoft Monitoring Agent ではインストールできない重要な VM がある場合は、自動プロビジョニングを停止する必要があります。
+- Microsoft Monitoring Agent (MMA) 拡張機能をインストールすると、エージェントのバージョンが更新される。 これは、ダイレクト エージェントと System Center Operations Manager エージェントに該当します (後者の場合、Operations Manager と MMA で共通のランタイム ライブラリが共有され、それはプロセスで更新されます)。 インストールされている Operations Manager エージェントがバージョン 2012 であり、これがアップグレードされている場合、Operations Manager サーバーもバージョン 2012 になっていると、管理容易性の機能が失われる恐れがあります。 インストールされている Operations Manager エージェントがバージョン 2012 の場合、自動プロビジョニングの停止を検討してください。
 - サブスクリプション (一元化されたワークスペース) の外部にカスタム ワークスペースを保持している場合、自動プロビジョニングを停止する必要があります。 手動で Microsoft Monitoring Agent 拡張機能をインストールして、Security Center が接続をオーバーライドせずに、お使いのワークスペースに接続できます。
 - サブスクリプションごとに複数のワークスペースが作成されることを回避したいと考えていて、サブスクリプション内に独自のカスタム ワークスペースがある場合、次の 2 つの選択肢があります。
 
@@ -298,7 +297,7 @@ Security Center は、顧客の Azure 環境を継続的に監視し、分析を
 Azure Security Center は、次の Azure リソースを監視します。
 
 * 仮想マシン (VM) ( [Cloud Services](../cloud-services/cloud-services-choose-me.md)を含む)
-* 仮想マシン スケール セット (VMSS)
+* 仮想マシン スケール セット
 * Azure 仮想ネットワーク
 * Azure SQL サービス
 * Azure ストレージ アカウント

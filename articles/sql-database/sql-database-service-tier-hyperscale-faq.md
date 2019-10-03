@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515361"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162248"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -54,7 +54,7 @@ ms.locfileid: "69515361"
 | | マネージド インスタンス  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
 | **IO スループット** | 単一データベース ** | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。 | 5000 IOPS (最大 200,000 IOPS)|
 | | マネージド インスタンス | ファイル サイズに依存 | 該当なし | Managed Instance:ファイル サイズに依存|
-|**可用性**|All|1 レプリカ、読み取りスケールなし、ローカル キャッシュなし | 複数のレプリカ、最大 15 の読み取りスケール、部分的ローカル キャッシュ | 3 レプリカ、1 読み取りスケール、ゾーン冗長 HA、完全ローカル キャッシュ |
+|**可用性**|All|1 レプリカ、読み取りスケールなし、ローカル キャッシュなし | 複数のレプリカ、最大 4 の読み取りスケール、部分的ローカル キャッシュ | 3 レプリカ、1 読み取りスケール、ゾーン冗長 HA、完全ローカル キャッシュ |
 |**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 日、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
 
 \*エラスティック プールはハイパースケール サービス レベルではサポートされていません。
@@ -361,6 +361,11 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>これらのセカンダリ コンピューティング ノードにどのように接続するか
 
 これらの追加読み取り専用計算ノードに接続するには、接続文字列の `ApplicationIntent` 引数を `readonly` に設定してください。 `readonly` がマークされたすべての接続は、追加読み取り専用計算ノードのいずれかに自動的にルーティングされます。  
+
+### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>SSMS やその他のクライアント ツールを使用してセカンダリ コンピューティング ノードに正常に接続したかどうかをどのように確認するか
+
+SSMS やその他のクライアント ツールを使用して、次の T-SQL クエリを実行することができます: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`。
+結果は、接続が読み取り専用のセカンダリ ノードを指している場合には `READ_ONLY`、接続がプライマリ ノードを指している場合には `READ_WRITE` になります。
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>読み取りスケール レプリカ専用のエンドポイントを作成できるか
 

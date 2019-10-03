@@ -8,22 +8,22 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 468bcdb6aa688157196bb9cba8added623a857d3
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 362b696351e4faca02fa6ea8aed7e7447454cd34
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155294"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262019"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
-[Azure Monitor 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)は、Azure サービスから出力されるログで、サービスやリソースの操作が記述されています。 Azure Monitor を通じて使用可能なすべての診断ログでは、共通の上位スキーマを共有します。そのため、各サービスは独自のイベントの一意のプロパティをフレキシブルに出力することができます。
+[Azure Monitor 診断ログ](../../azure-monitor/platform/resource-logs-overview.md)は、Azure サービスから出力されるログで、サービスやリソースの操作が記述されています。 Azure Monitor を通じて使用可能なすべての診断ログでは、共通の上位スキーマを共有します。そのため、各サービスは独自のイベントの一意のプロパティをフレキシブルに出力することができます。
 
 (`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 この記事では、診断ログの上位スキーマについて説明し、各サービスのスキーマへのリンクを示します。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>診断ログの上位スキーマ
 
-| Name | 必須/省略可能 | 説明 |
+| 名前 | 必須/省略可能 | 説明 |
 |---|---|---|
 | time | 必須 | イベントのタイムスタンプ (UTC)。 |
 | resourceId | 必須 | イベントを出力したリソースのリソース ID。 テナント サービスの場合、形式は /tenants/tenant-id/providers/provider-name です。 |
@@ -70,7 +70,7 @@ ms.locfileid: "67155294"
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS Protection | [Azure DDoS Protection Standard を管理する](../../virtual-network/manage-ddos-protection.md) |
-| PowerBI 専用 | [Azure の Power BI Embedded の診断ログ](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Power BI 専用 | [Azure の Power BI Embedded の診断ログ](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | 復旧サービス | [Azure Backup のデータ モデル](../../backup/backup-azure-reports-data-model.md)|
 | Search |[検索トラフィックの分析の有効化と使用](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus の診断ログ](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -205,7 +205,7 @@ ms.locfileid: "67155294"
 
 ## <a name="next-steps"></a>次の手順
 
-* [診断ログの詳細の確認](../../azure-monitor/platform/diagnostic-logs-overview.md)
-* [リソース診断ログを **Event Hubs** にストリーミングする](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
+* [診断ログの詳細の確認](../../azure-monitor/platform/resource-logs-overview.md)
+* [リソース診断ログを **Event Hubs** にストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Azure Monitor REST API を使用してリソース診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)

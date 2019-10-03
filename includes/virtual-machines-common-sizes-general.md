@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a47589728bdbe3842790a7c13fe35d04dbbe6883
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d89feaa5225aea56af86aa7f70d3666994fdaec
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881648"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266893"
 ---
 汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 この記事では、このグループ内のサイズのストレージのスループットに加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
@@ -80,13 +80,15 @@ Dsv3 シリーズのサイズは、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プ
 
 <sup>1</sup> Dsv3 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
 
-## <a name="dasv3-series"></a>Dasv3 シリーズ
+## <a name="dasv3-series-preview"></a>Dasv3 シリーズ (プレビュー)
 
 Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-Dasv3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452V プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Dasv3 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。
+Dasv3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Dasv3 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。
+
+[プレビュー用にサインアップするには、こちらをクリックしてください](http://aka.ms/azureamdpreview)。
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
 |---|---|---|---|
@@ -123,13 +125,15 @@ Dv3 シリーズのサイズは、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プ�
 
 <sup>1</sup> Dv3 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
 
-## <a name="dav3-series"></a>Dav3 シリーズ
+## <a name="dav3-series-preview"></a>Dav3 シリーズ (プレビュー)
 
 Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-Dav3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452V プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成しています。 Dav3 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Dasv3 サイズを使用してください。 Dasv3 サイズの価格および課金の計算方法は、Dav3 シリーズと同じです。
+Dav3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成しています。 Dav3 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Dasv3 サイズを使用してください。 Dasv3 サイズの価格および課金の計算方法は、Dav3 シリーズと同じです。
+
+[プレビュー用にサインアップするには、こちらをクリックしてください](http://aka.ms/azureamdpreview)。
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
 |---|---|---|---|

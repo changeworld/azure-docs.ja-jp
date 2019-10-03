@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/29/2019
+ms.date: 09/20/2019
 ms.author: helohr
-ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f919ff1efcb094dec4c810f51a1810f2383ea09d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163297"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174093"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
 
@@ -296,17 +296,76 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 16. コマンドレットの実行が終わると、サイドバイサイドが誤作動する VM を再起動します。
 
-## <a name="remote-licensing-model-is-not-configured"></a>リモート ライセンス モデルが構成されていない
+## <a name="remote-licensing-model-isnt-configured"></a>リモート ライセンス モデルが構成されていない
 
-管理者アカウントを使用して Windows 10 Enterprise マルチセッションにサインインしている場合、「Remote Desktop licensing mode is not configured, Remote Desktop Services will stop working in X days. On the Connection Broker server, use Server Manager to specify the Remote Desktop licensing mode. （リモート デスクトップ ライセンス モードが構成されていません。リモート デスクトップ サービスはあと X 日で動作を停止します。Connection Broker サーバーで、サーバー マネージャーを使用してリモート デスクトップ ライセンス モードを指定してください。）」と書かれた通知を受信する可能性があります。 このメッセージが表示された場合、手動でライセンス モードを **[Per user] (ユーザーごと)** に構成する必要があります。
+管理者アカウントを使用して Windows 10 Enterprise マルチセッションにサインインしている場合、「Remote Desktop licensing mode is not configured, Remote Desktop Services will stop working in X days. On the Connection Broker server, use Server Manager to specify the Remote Desktop licensing mode. （リモート デスクトップ ライセンス モードが構成されていません。リモート デスクトップ サービスはあと X 日で動作を停止します。Connection Broker サーバーで、サーバー マネージャーを使用してリモート デスクトップ ライセンス モードを指定してください。）」と書かれた通知を受信する可能性があります。
 
-ライセンス モードを手動で構成するには  
+制限時間が経過すると、「このコンピューターで利用できるリモート デスクトップ クライアント アクセス ライセンスがないため、リモート セッションは切断されました」というエラー メッセージが表示されます。
 
-1. **[スタート] メニュー**検索ボックスに移動します。**gpedit.msc** を探して開き、ローカル グループ ポリシー エディターにアクセスします。 
-2.  **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[ライセンス]** に移動します。 
-3. **[Set the Remote Desktop licensing mode] (リモート デスクトップ ライセンス モードの設定)** を選択し、 **[Per user] (ユーザーごと)** に変更します。
+これらのメッセージのいずれかが表示された場合は、グループ ポリシー エディターを開き、ライセンス モードを **[接続ユーザー数]** に手動で構成する必要があることを意味します。 手動による構成プロセスは、使用している Windows 10 Enterprise マルチセッションのバージョンによって異なります。 以下のセクションでは、バージョン番号を確認する方法と、それぞれの作業内容について説明します。
 
-現在、通知および猶予期間のタイムアウトの問題について調査しており、今後の更新で問題に対応する予定です。 
+>[!NOTE]
+>Windows Virtual Desktop では、ホスト プールに Windows Server セッション ホストが含まれている場合は、RDS クライアント アクセス ライセンス (CAL) のみが必要です。 RDS CAL を構成する方法については、「[クライアント アクセス ライセンス (CAL) を使用して RDS 展開をライセンスする](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)」を参照してください。
+
+### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>使用している Windows 10 Enterprise マルチセッションのバージョンを特定する
+
+使用している Windows 10 Enterprise マルチセッションのバージョンを特定するには、次のようにします。
+
+1. 管理者アカウントを使用してサインインします。
+2. [スタート] メニューの横にある検索バーに「About」と入力します。
+3. **[PC 情報]** を選択します。
+4. "バージョン" の横の数字を確認します。 次の図に示すように、この数字は "1809" または "1903" のいずれかになります。
+   
+    ![Windows の仕様ウィンドウのスクリーンショット。 バージョン番号が青色で強調表示されています。](media/windows-specifications.png)
+
+バージョン番号がわかったら、該当するセクションに進んでください。
+
+### <a name="version-1809"></a>バージョン 1809
+
+バージョン番号が "1809" の場合は、Windows 10 Enterprise マルチセッション バージョン 1903 にアップグレードするか、最新のイメージを使用してホスト プールを再デプロイすることができます。
+
+Windows 10 バージョン 1903 にアップグレードするには、次のようにします。
+
+1. [Windows 10 May 2019 Update](https://support.microsoft.com/help/4028685/windows-10-get-the-update) をダウンロードしてインストールします (まだ、インストールしていない場合)。
+2. コンピューターに管理者アカウントでサインインします。
+3. **gpedit.msc** を実行してグループ ポリシー エディターを開きます。
+4. [コンピューターの構成] の下の **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[ライセンス]** に移動します。
+5. **[リモート デスクトップ ライセンス モードの設定]** を選択します。
+6. 開いたウィンドウで、最初に **[有効]** を選択し、次に [オプション] の下で RD セッション ホスト サーバーのライセンス モードを、以下の画像に示すように **[接続ユーザー数]** と指定します。
+    
+    ![手順 6. の指示に従って構成された [リモート デスクトップ ライセンス モードの設定] ウィンドウのスクリーンショット。](media/group-policy-editor-per-user.png)
+
+7. **[適用]** を選択します。
+8. **[OK]** を選択します。
+9.  コンピューターを再起動します。
+
+最新のイメージでホスト プールを再デプロイするには、次のようにします。
+
+1. 「[Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」の手順を、イメージの OS バージョン選択するところまで進めます。 Windows 10 Enterprise マルチセッションを Office365 ProPlus ありまたはなしで選択できます。
+2. コンピューターに管理者アカウントでサインインします。
+3. **gpedit.msc** を実行してグループ ポリシー エディターを開きます。
+4. [コンピューターの構成] の下の **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[ライセンス]** に移動します。
+5. **[リモート デスクトップ ライセンス モードの設定]** を選択します。
+6. 開いたウィンドウで、最初に **[有効]** を選択し、次に [オプション] の下で RD セッション ホスト サーバーのライセンス モードを **[接続ユーザー数]** と指定します。
+7. **[適用]** を選択します。
+8. **[OK]** を選択します。
+9.  コンピューターを再起動します。
+
+### <a name="version-1903"></a>バージョン 1903
+
+バージョン番号が "1903" の場合は、次の手順に従います。
+
+1. コンピューターに管理者アカウントでサインインします。
+2. **gpedit.msc** を実行してグループ ポリシー エディターを開きます。
+3. [コンピューターの構成] の下の **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[ライセンス]** に移動します。
+4. **[リモート デスクトップ ライセンス モードの設定]** を選択します。
+6. 開いたウィンドウで、最初に **[有効]** を選択し、次に [オプション] の下で RD セッション ホスト サーバーのライセンス モードを、以下の画像に示すように **[接続ユーザー数]** と指定します。
+    
+    ![手順 6. の指示に従って構成された [リモート デスクトップ ライセンス モードの設定] ウィンドウのスクリーンショット。](media/group-policy-editor-per-user.png)
+
+7. **[適用]** を選択します。
+8. **[OK]** を選択します。
+9.  コンピューターを再起動します。
 
 ## <a name="next-steps"></a>次の手順
 

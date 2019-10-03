@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8e793891ea646ae8c91077ead36be9b84c1b08c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906387"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200206"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>評価のために依存関係の視覚化を設定する
 
@@ -61,7 +61,7 @@ Log Analytics エージェント (MMA) | MMA のインストール方法の[詳�
 
     ![ワークスペースの追加](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    - 新しいワークスペースの名前を指定すると、Azure Migrate プロジェクトと同じ場所に作成されます。
+    - 新しいワークスペースの名前を指定したら、ワークスペースを作成する[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)を選択できます。
     - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。
     - ワークスペースをアタッチするには、閲覧者アクセス権が必要です。
     - プロジェクトに関連付けられたワークスペースは、アタッチ後は変更できません。

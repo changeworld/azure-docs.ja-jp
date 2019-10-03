@@ -4,17 +4,17 @@ description: ダウンストリーム デバイスまたはリーフ デバイ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999400"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266118"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -33,6 +33,10 @@ ms.locfileid: "70999400"
 * 作業を開始するときに役立つ、複数の言語で用意された Azure IoT のサンプルを紹介します。 
 
 この記事では、"*ゲートウェイ*" および "*IoT Edge ゲートウェイ*" という用語は、透過的ゲートウェイとして構成された IoT Edge デバイスを指します。 
+
+## <a name="prerequisites"></a>前提条件 
+
+「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」で生成された **azure-iot-test-only.root.ca.cert.pem** 証明書ファイルを、ダウンストリーム デバイスで利用できるようにします。 ダウンストリーム デバイスは、この証明書を使用してゲートウェイ デバイスの ID を検証します。 
 
 ## <a name="prepare-a-downstream-device"></a>ダウンストリーム デバイスを準備する
 
@@ -89,6 +93,14 @@ sudo update-ca-certificates
 ### <a name="windows"></a>Windows
 
 次の手順は、Windows ホストに CA 証明書をインストールする方法の例です。 この例は、前提条件の記事の **azure-iot-test-only.root.ca.cert.pem** 証明書を使用していること、およびダウンストリーム デバイス上の場所に証明書をコピー済みであることを前提にしています。
+
+証明書は、PowerShell の [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) を使用して管理者としてインストールできます。
+
+```powershell
+import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
+```
+
+**certlm** ユーティリティを使用して証明書をインストールすることもできます。 
 
 1. スタート メニューで、**コンピューター証明書の管理**を検索して選択します。 **certlm** というユーティリティが開きます。
 2. **[証明書 - ローカル コンピューター]**  >  **[信頼されたルート証明機関]** に移動します。

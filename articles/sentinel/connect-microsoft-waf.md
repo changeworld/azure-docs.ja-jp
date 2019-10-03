@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel Preview に Microsoft Web アプリケーション ファイアウォール データを接続する | Microsoft Docs
+title: Azure Sentinel に Microsoft Web アプリケーション ファイアウォール データを接続する | Microsoft Docs
 description: Azure Sentinel に Microsoft Web アプリケーション ファイアウォール データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0a308394c3cfa77f80db1361b5a49a485ee5ca0e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611348"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240034"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Microsoft Web アプリケーション ファイアウォールからデータを接続する
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 Azure Application Gateway の Microsoft Web アプリケーション ファイアウォール (WAF) からログをストリームできます。 この WAF によって、SQL インジェクションやクロスサイト スクリプティングなどの一般的な Web 脆弱性からアプリケーションが保護されます。また、ルールをカスタマイズして偽陽性を減らすことができます。 次の手順に従って、Microsoft の Web アプリケーション ファイアウォールのログを Azure Sentinel にストリーミングします。
 
@@ -53,4 +51,4 @@ Microsoft Web アプリケーション ファイアウォールがデプロイ�
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Microsoft Web アプリケーション ファイアウォールを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。

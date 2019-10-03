@@ -8,25 +8,24 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910569"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202211"
 ---
+# <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
+
 > [!NOTE]
 > このドキュメントでは、2019 年 7 月 31 日に Azure Security Center から廃止された機能を一覧に示して詳しく説明します。
 >
 >
 
-
-# <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
-
 マイクロソフトでは、2019 年 7 月まで 6 か月にわたって、Azure Security Center に対していくつかの[強化策](https://azure.microsoft.com/updates/?product=security-center)を実施しました。
 これらの機能強化に伴い、2019 年 7 月 31 日をもって、いくつの冗長な機能と関連する API を Security Center から削除しました。
 
-これらの廃止される機能のほとんどは、Azure Security Center または Azure Log Analytics の新しい機能で置き換えることができます。 その他の機能は、[Azure Sentinel (プレビュー)](https://azure.microsoft.com/services/azure-sentinel/) を使用して実装できます。
+これらの廃止された機能のほとんどは、Azure Security Center または Azure Log Analytics の他の機能で置き換えることができます。 その他の機能は、[Azure Sentinel (プレビュー)](https://azure.microsoft.com/services/azure-sentinel/) を使用して実装できます。
 
 廃止された Security Center の機能は次のとおりです。
 
@@ -104,11 +103,11 @@ Security Center は、セキュリティの脅威を識別するために役立�
 
 ![[セキュリティ アラート マップ] - ボタン][10]
 
-**[セキュリティ イベント マップに移動]** ボタンを選択すると、脅威インテリジェンス ダッシュボードが開きます。 脅威インテリジェンスのダッシュボードは廃止されました。
+**[セキュリティ イベント マップに移動]** ボタンを選択すると、(廃止された) 脅威インテリジェンス ダッシュボードが開きました。
 
 ![[脅威インテリジェンス] ダッシュボード][11]
 
-ワークスペースを選択してその脅威インテリジェンス ダッシュボードを表示すると、Log Analytics のセキュリティ アラート マップ (プレビュー) 画面が開きます。 この画面は廃止されました。
+ワークスペースを選択してその脅威インテリジェンス ダッシュボードを表示すると、Log Analytics の (廃止された) セキュリティ アラート マップ (プレビュー) 画面が開きました。
 
 ![Log Analytics にある [セキュリティ アラート マップ]][12]
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 423fad943190232d9e5e674b98b62f4f0dffb8ae
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728745"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224506"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption の前提条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "68728745"
 
 ## <a name="supported-vm-sizes"></a>サポートされる VM のサイズ
 
-Azure Disk Encryption は、次の最小メモリ要件を満たした仮想マシンで利用できます。
+Azure Disk Encryption は、[Basic (A シリーズ VM)](https://azure.microsoft.com/pricing/details/virtual-machines/series/) では使用できません。 Azure Disk Encryption は、次の最小メモリ要件を満たした他の仮想マシンで利用できます。
 
 | 仮想マシン | 最小メモリ要件 |
 |--|--|

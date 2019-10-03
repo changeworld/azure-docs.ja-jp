@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 09/20/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 412bfee12e50b66a780f33b2bca8c4ecc61d83f7
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70861164"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219356"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -68,8 +68,6 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 * メッセージ センター閲覧者
 * レポート閲覧者
 
-認証管理者のロールは現在パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 > [!IMPORTANT]
 > このロールのユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーの資格情報を変更するということは、そのユーザーの ID とアクセス許可を引き受けることができるということを意味します。 例:
 
@@ -78,6 +76,12 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 * グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
 * Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
 * 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
+
+### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps 管理者](#azure-devops-administrator-permissions)
+
+このロールが割り当てられたユーザーは、Azure DevOps ポリシーを管理して、新しい Azure DevOps 組織の作成を、構成可能な一連のユーザーやグループに制限できます。 このロールのユーザーは、会社の Azure AD 組織を支える Azure DevOps 組織を通じて、このポリシーを管理できます。
+
+エンタープライズ Azure DevOps のすべてのポリシーは、このロールのユーザーによって管理できます。
 
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure Information Protection 管理者](#azure-information-protection-administrator-permissions)
 
@@ -491,6 +495,19 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.directory/users/password/update | Office 365 組織内のすべてのユーザーのパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
+
+### <a name="azure-devops-administrator-permissions"></a>Azure DevOps 管理者のアクセス許可
+
+Azure DevOps 組織のポリシーと設定を管理できます。
+
+> [!NOTE]
+> このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記の[ロールの説明](#azure-devops-administrator)を参照してください。
+>
+>
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.devOps/allEntities/allTasks | Azure DevOps の構成の読み取りと構成。 |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Azure Information Protection 管理者のアクセス許可
 

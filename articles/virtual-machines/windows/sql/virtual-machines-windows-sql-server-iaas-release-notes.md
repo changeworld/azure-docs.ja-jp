@@ -12,16 +12,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: e58b01c6a01a22ef2dd45dc49d741f0287d603a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 759bec280b40973cf651dec3741a71d67c01fe04
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100375"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200170"
 ---
 # <a name="release-notes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のリリース ノート
 
 Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) をデプロイできます。 この記事は、[Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) の最新リリースで導入された新機能と機能強化をまとめたものです。 この記事では、今回のリリースとは直接関連しないものの、同じタイム フレームで公開された注目すべきコンテンツの更新についても一覧表示しています。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
+
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="service-improvements"></a>サービスの機能強化
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+| **Azure の専用ホスト** | SQL Server VM は、[Azure 専用ホスト](virtual-machines-windows-sql-dedicated-host.md)で実行できます。 |
+| &nbsp; | &nbsp; |
+
 
 ## <a name="july-2019"></a>2019 年 7 月
 

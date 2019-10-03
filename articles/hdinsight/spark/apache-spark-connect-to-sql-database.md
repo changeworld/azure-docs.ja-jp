@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 74bff4059442c85cfcde589c5a6cc7ab36472881
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984805"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147038"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL データベースのデータを読み書きする
 
@@ -38,7 +38,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
 1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。
 1. 右側の**クラスター ダッシュボード**の下で、 **[Jupyter Notebook]** を選択します。  **クラスター ダッシュボード**が表示されない場合は、左側のメニューの **[概要]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-    ![Spark 上の Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上の Jupyter Notebook")
+    ![Apache Spark 上の Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上の Jupyter Notebook")
    
    > [!NOTE]  
    > ブラウザーで次の URL を開き、Spark クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
@@ -182,7 +182,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
 
 1. 出力に、**HVAC.csv** のスキーマが表示されます。 **hvactable** にも同じスキーマがあります。 出力にテーブルの列が一覧表示されます。
 
-    ![テーブルのスキーマ](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "テーブルのスキーマ")
+    ![hdinsight Apache Spark スキーマ テーブル](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "テーブルのスキーマ")
 
 1. 最後に、次のスニペットを使って、HVAC.csv からデータを読み取り、Azure SQL データベースの **hvactable** にストリーミングします。 コード セルにスニペットを貼り付け、プレースホルダーの値をお使いの Azure SQL データベースの値に置き換えてから、**Shift + Enter** キーを押して実行します。
 
