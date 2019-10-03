@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fd4bf602cb5ca409b957e9dbd6f963d88428a63f
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103394"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694641"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して ASP.NET Web API へのアクセスを許可する
 
@@ -54,23 +54,13 @@ ms.locfileid: "71103394"
 
 スコープを使用すると、保護されたリソースへのアクセスを統制できます。 スコープは、スコープベースのアクセス制御を実装するために Web API によって使用されます。 たとえば Web API のユーザーが、読み取りと書き込みの両方のアクセス権限を持つ場合もあれば、読み取りアクセス権限しか持たない場合もあります。 このチュートリアルでは、スコープを使用して、Web API の読み取りアクセス許可と書き込みアクセス許可を定義します。
 
-1. **[アプリケーション]** を選択し、*webapi1* を選択します。
-2. **[公開済みスコープ]** を選択します。
-3. **スコープ**に「`Hello.Read`」と入力し、説明に「`Read access to hello`」と入力します。
-4. **スコープ**に「`Hello.Write`」と入力し、説明に「`Write access to hello`」と入力します。
-5. **[Save]** をクリックします。
-
-公開済みスコープを使用すると、クライアント アプリケーションに Web API へのアクセス許可を付与することができます。
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する
 
 保護された Web API をアプリケーションから呼び出すには、その API へのアクセス許可をアプリケーションに付与する必要があります。 前提条件のチュートリアルでは、Azure AD B2C に *webapp1* という名前の Web アプリケーションを作成しました。 このアプリケーションを使用して、Web API を呼び出します。
 
-1. **[アプリケーション]** を選択し、*webapp1* を選択します。
-2. **[API アクセス]** を選択し、 **[追加]** を選択します。
-3. **[API の選択]** ドロップダウンで、*webapi1* を選択します。
-4. **[スコープの選択]** ドロップダウンで、前に定義した **Hello.Read** スコープと **Hello.Write** スコープを選択します。
-5. Click **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 アプリケーションが登録されて、保護された Web API を呼び出すことができるようになります。 アプリケーションを使用するには、ユーザーは Azure AD B2C での認証を行います。 アプリケーションで、保護された Web API にアクセスするための認可の付与が、Azure AD B2C から取得されます。
 
@@ -79,8 +69,6 @@ ms.locfileid: "71103394"
 Web API を登録し、スコープを定義したので、Azure AD B2C テナントを使用するように Web API を構成します。 このチュートリアルでは、サンプル Web API を構成します。 サンプル Web API は、前提条件のチュートリアルでダウンロードしたプロジェクトに含まれます。
 
 サンプル ソリューションには 2 つのプロジェクトがあります。
-
-サンプル ソリューションには次の 2 つのプロジェクトが含まれます。
 
 * **TaskWebApp** - タスク一覧を作成および編集します。 このサンプルでは、**サインアップまたはサインイン**のユーザー フローを使用してユーザーのサインアップまたはサインインを実行します。
 * **TaskService** - タスク リストの作成、読み取り、更新、削除の機能をサポートします。 API は Azure AD B2C によって保護されており、TaskWebApp によって呼び出されます。
@@ -99,8 +87,8 @@ Web API を登録し、スコープを定義したので、Azure AD B2C テナ�
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
@@ -128,8 +116,8 @@ Web API を登録し、スコープを定義したので、Azure AD B2C テナ�
 1. ポータルで作成したものと一致するようにスコープの設定を構成します。
 
     ```csharp
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ## <a name="run-the-sample"></a>サンプルを実行する

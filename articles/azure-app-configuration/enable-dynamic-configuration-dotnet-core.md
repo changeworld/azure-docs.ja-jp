@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: 3eee34f594cb23a8b64f6fd10837c9a641eda62d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: e56aba81b2e6b8e66aeb2c3e5284843055713826
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075969"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316087"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>チュートリアル:.NET Core アプリで動的な構成を使用する
 
@@ -59,8 +59,6 @@ class Program
 
     static void Main(string[] args)
     {
-        IConfigurationRefresher refresher = null;
-
         var builder = new ConfigurationBuilder();
         builder.AddAzureAppConfiguration(options =>
         {
