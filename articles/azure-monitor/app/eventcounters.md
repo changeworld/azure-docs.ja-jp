@@ -143,7 +143,7 @@ performanceCounters
 
 ### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>どのプラットフォームで .NET Core 3.0 カウンターの既定の一覧を表示できますか。
 
-EventCounter には特別なアクセス許可は必要なく、.NET Core 3.0 がサポートされているすべてのプラットフォームでサポートされています。 次のトピックがあります。
+EventCounter には特別なアクセス許可は必要なく、.NET Core 3.0 がサポートされているすべてのプラットフォームでサポートされています。 これには次のものが含まれます
 
 * **[オペレーティング システム]** :Windows、Linux、または macOS。
 * **ホスティング方法**: プロセス内、プロセス外。
