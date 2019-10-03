@@ -4,10 +4,12 @@
 - name: 概要
   expanded: true
   items:
-    - name: Data Science Virtual Machine とは
+    - name: Data Science Virtual Machine (DSVM) とは
       href: overview.md
     - name: Geo AI DSVM とは
       href: geo-ai-dsvm-overview.md
+    - name: DSVM に含まれているツール
+      href: tools-included.md
 - name: クイック スタート
   expanded: true
   items:

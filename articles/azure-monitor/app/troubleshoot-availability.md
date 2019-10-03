@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067070"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146594"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -46,10 +46,9 @@ ms.locfileid: "71067070"
 
 ## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>プロトコル違反エラーでテストが断続的に失敗します
 
-|症状/エラー メッセージ| 考えられる原因|
-|----|---------|
-プロトコル違反 CR の後には LF を指定しなければなりません | これは、形式に誤りのあるヘッダーが検出されたときに発生します。 具体的には、行末の指定で CRLF を使用していないヘッダーがあります。これは HTTP 仕様に違反しているため、.NET WebRequest レベルで失敗します。
- || ロード バランサーまたは CDN が原因である可能性もあります。
+|症状/エラー メッセージ| 考えられる原因| 考えられる解決策 |
+|----|---------|-----|
+|サーバーによってプロトコル違反が発生しました。 Section=ResponseHeader Detail=CR の後には LF を指定しなければなりません | これは、形式に誤りのあるヘッダーが検出されたときに発生します。 具体的には、行末の指定で CRLF を使用していないヘッダーがあり、これは HTTP 仕様に違反しています。 Application Insights では、この HTTP 仕様が適用され、形式が正しくないヘッダーを持つ応答は失敗します。| a. Web サイト ホスト プロバイダー/CDN プロバイダーに問い合わせて、問題のあるサーバーを修正してください。 <br> b. 失敗した要求がリソース (スタイル ファイル、イメージ、スクリプトなど) である場合は、依存する要求の解析を無効にすることを検討してください。 これを行うと、それらのファイルの可用性を監視できなくなることに注意してください。
 
 > [!NOTE]
 > HTTP ヘッダーの緩和された検証を行うブラウザーでは、URL は 失敗しない場合があります。 この問題の詳細については、こちらのブログ記事を参照してください: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  

@@ -113,7 +113,7 @@
       href: concept-generating-thumbnails.md
     - name: 印刷されたテキストと手書きのテキストの認識
       href: concept-recognizing-text.md
-    - name: 成人向けコンテンツとわいせつなコンテンツの検出
+    - name: 成人向けコンテンツの検出
       href: concept-detecting-adult-content.md
 - name: ハウツー ガイド
   items:

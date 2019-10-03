@@ -3,23 +3,22 @@ title: Azure Security Center でサポートされている使用可能な機能
 description: このドキュメントでは、Azure Security Center でサポートされるサービスの一覧を示します。
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0d2b417dd01e26f0f93722be66d82972b52aca83
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 09/24/2019
+ms.author: memildin
+ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234570"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218263"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Security Center でサポートされている使用可能な機能
 
@@ -42,7 +41,7 @@ ms.locfileid: "70234570"
 ||**仮想マシン**|**Virtual Machine Scale Set**||**仮想マシン**|**Virtual Machine Scale Set**|
 |VMBA 脅威検出アラート|✔|✔|✔|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|推奨事項 (無料) 脅威の検出 (Standard)|
 |ネットワーク経由の脅威検出アラート|✔|✔|X|✔|✔|X|Standard|
-|Windows Defender ATP の統合|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|X|X|X|Standard|
+|Microsoft Defender ATP の統合|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|X|X|X|Standard|
 |不足しているパッチ|✔|✔|✔|✔|✔|✔|無料|
 |セキュリティ構成|✔|✔|✔|✔|✔|✔|無料|
 |エンドポイント保護の評価|✔|✔|✔|X|X|X|無料|
@@ -125,7 +124,7 @@ Azure Security Center では、次の PaaS リソースがサポートされて�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Security Center でデータが収集される方法と Log Analytics エージェント](security-center-enable-data-collection.md)について確認します。
+- [Security Center によるデータの収集方法と Log Analytics エージェント](security-center-enable-data-collection.md)について確認します。
 - [Security Center でデータを管理および保護する](security-center-data-security.md)方法を確認します。
 - [Azure Security Center を導入するための設計上の考慮事項を計画し、理解する](security-center-planning-and-operations-guide.md)方法について説明しています。
 - [Security Center がサポートされているプラットフォーム](security-center-os-coverage.md)を確認します。

@@ -830,6 +830,8 @@
                   href: log-query/app-expression.md
                 - name: ワークスペースの式
                   href: log-query/workspace-expression.md
+                - name: リソースの式
+                  href: log-query/resource-expression.md
                 - name: アプリケーション データ リソースの統合
                   href: log-query/unify-app-resource-data.md
             - name: 例とガイダンス

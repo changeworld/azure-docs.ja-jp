@@ -261,6 +261,8 @@
       items:
         - name: Python で ML パイプラインを作成する
           href: how-to-create-your-first-pipeline.md
+        - name: ML パイプラインのデバッグとトラブルシューティング
+          href: how-to-debug-pipelines.md
         - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context

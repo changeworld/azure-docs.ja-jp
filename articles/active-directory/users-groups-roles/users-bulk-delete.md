@@ -13,23 +13,26 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2204c572ca1f74f8060d0b6176df69359fe69a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: eb01b46d61b6ba99c3ec9c537dccc350074f5e05
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901379"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146424"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括削除する (プレビュー)
 
-Azure Active Directory (Azure AD) では、ユーザーの一括作成および削除操作、ゲストの一括招待がサポートされています。また、ユーザー、グループ、グループ メンバーのリストのダウンロードがサポートされています。
+Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CSV) ファイルを使用してユーザーを一括削除することで、グループの多数のメンバーを削除できます。
 
 ## <a name="to-bulk-delete-users"></a>ユーザーを一括削除するには
 
 1. 組織のユーザー管理者アカウントで、ご自身の Azure AD 組織にサインインします。
 1. Azure AD で、 **[ユーザー]**  >  **[一括削除]** の順に選択します。
 1. **[ユーザーの一括削除]** ページで **[ダウンロード]** を選択し、ユーザー プロパティの有効な CSV ファイルを受信し、削除するユーザーを追加します。
-1. CSV ファイルの編集が完了したら、またはアップロードするご自身のファイルの準備が既にできている場合、 **[csv ファイルをアップロードします]** の下からそのファイルを選択します。
+
+   ![CSV ファイルには、削除するユーザーの名前と ID が含まれています。](./media/users-bulk-delete/delete-csv-file.png)
+
+1. CSV ファイルの編集が完了したら、 **[csv ファイルをアップロードします]** の下から検証するファイルを選択します。
 
    ![削除するユーザーをリストするローカル CSV ファイルを選択する](./media/users-bulk-delete/bulk-delete.png)
 

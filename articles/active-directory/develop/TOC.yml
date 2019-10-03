@@ -276,6 +276,12 @@
               href: authentication-national-cloud.md
             - name: 認証
               href: msal-national-cloud.md
+        - name: 自動ユーザー プロビジョニング (SCIM)
+          items:
+            - name: 自動ユーザー プロビジョニングとは
+              href: /azure/active-directory/manage-apps/user-provisioning
+            - name: SCIM エンドポイントの構築と統合
+              href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
     - name: ハウツー ガイド
       items:
         - name: 認証

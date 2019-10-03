@@ -27,6 +27,8 @@
           href: tutorial-geofence.md
         - name: 空間分析
           href: tutorial-iot-hub-maps.md
+        - name: Azure Notebooks (Python) を使用した EV ルーティング
+          href: tutorial-ev-routing.md
 - name: 概念
   items:
     - name: Azure Maps による認証

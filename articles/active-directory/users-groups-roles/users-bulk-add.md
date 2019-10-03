@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ポータルでのユーザー追加のための一括インポート (プレビュー) | Microsoft Docs
+title: Azure Active Directory ポータルでユーザーを一括作成する (プレビュー) | Microsoft Docs
 description: Azure Active Directory の Azure AD 管理センターでユーザーを一括追加します
 services: active-directory
 author: curtand
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a22052117448cdb71bbc16e1df7899e6d3eb764e
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 87c62cbe71f2e02c6f2c09620a8470a97ae57392
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901311"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146302"
 ---
-# <a name="bulk-import-users-preview-in-azure-active-directory"></a>Azure Active Directory でのユーザーの一括インポート (プレビュー)
+# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括作成する (プレビュー)
 
 Azure Active Directory (Azure AD) では、ユーザーの一括作成および削除操作、ゲストの一括招待がサポートされています。また、ユーザー、グループ、グループ メンバーのリストのダウンロードがサポートされています。
 
@@ -37,6 +37,9 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 1. 組織のユーザー管理者アカウントで、[ご自身の Azure AD 組織にサインイン](https://aad.portal.azure.com)します。
 1. Azure AD で、 **[ユーザー]**  > [一括作成] **の順に選択します。**
 1. **[ユーザーの一括作成]** ページで **[ダウンロード]** を選択し、ユーザー プロパティの有効な CSV (コンマ区切りの値) ファイルを取得し、ご自分の新規ユーザーを追加します。
+
+   ![CSV ファイルには、作成するユーザーの名前と ID が含まれています。](./media/users-bulk-add/add-csv-file.png)
+
 1. CSV ファイルの編集が完了したら、またはアップロードするご自身のファイルの準備が既にできている場合、 **[csv ファイルをアップロードします]** の下からそのファイルを選択します。
 
    ![追加するユーザーをリストするローカル CSV ファイルを選択する](./media/users-bulk-add/upload-button.png)
