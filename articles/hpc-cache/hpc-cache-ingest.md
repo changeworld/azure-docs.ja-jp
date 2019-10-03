@@ -1,29 +1,29 @@
 ---
-title: Azure HPC Cache クラウド コンテナーにデータを移動する
+title: Azure HPC Cache (プレビュー) クラウド コンテナーにデータを移動する
 description: Azure HPC Cache で使用する Azure Blob Storage にデータを事前設定する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105309"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300007"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Azure HPC Cache の Azure Blob Storage にデータを移動する
+# <a name="move-data-to-azure-blob-storage"></a>Azure Blob Storage にデータを移動する
 
-Azure Blob Storage へのデータの移動がワークフローに含まれる場合は、Azure HPC Cache 経由でデータをコピーする効率的な方法を使用していることを確認してください。
+Azure Blob Storage へのデータの移動がワークフローに含まれる場合は、効率的な方法を使用していることを確認してください。 ストレージ ターゲットとして定義する前に、新しい BLOB コンテナーにデータを事前に読み込むか、コンテナーを追加してから、Azure HPC Cache を使用してデータをコピーすることができます。
 
 この記事では、Azure HPC Cache で使用する Blob Storage にデータを移動する最良の方法について説明します。
 
 次の情報に留意してください。
 
-* Azure HPC Cache では、Blob Storage 内のデータを整理するために、専用のストレージ形式が使用されます。 Blob Storage ターゲットが、新しいコンテナーか空のコンテナー、またはそれまで Azure HPC Cache データに使用されていた BLOB コンテナーのいずれかでなければならないのは、そのためです。 このクラウド ファイル システムは、[Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) でも使用されます。
+* Azure HPC Cache では、Blob Storage 内のデータを整理するために、専用のストレージ形式が使用されます。 Blob Storage ターゲットが、新しいコンテナーか空のコンテナー、またはそれまで Azure HPC Cache データに使用されていた BLOB コンテナーのいずれかでなければならないのは、そのためです。 (このクラウド ファイル システムは、<bpt id="p1">[</bpt>Avere vFXT for Azure<ept id="p1">](https://azure.microsoft.com/services/storage/avere-vfxt/)</ept> でも使用されます。)
 
-* Azure HPC Cache 経由でデータをコピーするのが最善の選択肢となるのは、複数のクライアントおよび並列操作を使用するときです。 1 つのクライアントからの単純なコピー コマンドでは、データの移動が低速になります。
+* バックエンドのストレージ ターゲットに Azure HPC Cache 経由でデータをコピーするのが最善の選択肢となるのは、複数のクライアントおよび並列操作を使用するときです。 1 つのクライアントからの単純なコピー コマンドでは、データの移動が低速になります。
 
 Blob Storage コンテナーにコンテンツを読み込む Python ベースのユーティリティが利用できます。 詳細については、[Blob Storage へのデータの事前読み込み](#pre-load-data-in-blob-storage-with-clfsload)のセクションを参照してください。
 
@@ -33,7 +33,7 @@ Blob Storage コンテナーにコンテンツを読み込む Python ベース�
 
 Avere CLFSLoad ユーティリティを使用して、 <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> ストレージ ターゲットとして追加する前に、Blob Storage コンテナーにデータをコピーすることができます。 このユーティリティは単一の Linux システム上で動作し、Azure HPC Cache に必要な独自の形式でデータを書き込みます。 キャッシュで使用する Blob Storage コンテナーにデータを事前設定する方法としては、CLFSLoad が最も効率的です。
 
-Avere CLFSLoad ユーティリティは、Azure HPC Cache チームからの要求によって入手できます。 チームの担当者に問い合わせるか、サポート チケットを開いてサポートを依頼してください。
+Avere CLFSLoad ユーティリティは、Azure HPC Cache チームからの要求によって入手できます。 それについてチームの担当者に問い合わせるか、[サポート チケット](hpc-cache-support-ticket.md)を開いてサポートを依頼してください。
 
 この方法が使用できるのは新しい空のコンテナーのみです。 コンテナーは、Avere CLFSLoad を使用する前に作成してください。
 
@@ -41,7 +41,7 @@ Avere CLFSLoad ユーティリティは、Azure HPC Cache チームからの要�
 
 大まかな手順を以下に示します。
 
-1. Python バージョン 3.6 以降を使用して Linux システム (VM または物理) を準備します (パフォーマンスを高めるために Python 3.7 を推奨します)。
+1. Python バージョン 3.6 以降を使用して Linux システム (VM または物理) を準備します パフォーマンスを高めるために Python 3.7 を推奨します。
 1. Avere-CLFSLoad ソフトウェアを Linux システムにインストールします。
 1. Linux のコマンド ラインから転送を実行します。
 
@@ -60,7 +60,7 @@ Avere CLFSLoad ユーティリティを使用したくない場合、または�
 
 ![マルチクライアントのマルチスレッドのデータ移動を示す図:左上に、オンプレミスのハードウェア ストレージを表すアイコンがあり、そこから複数の矢印が出ています。 矢印は、4 つのクライアント マシンを指しています。 各クライアント マシンから Azure HPC Cache に向かって 3 本の矢印が出ています。 Azure HPC Cache から、複数の矢印が Blob Storage を指しています。](media/hpc-cache-parallel-ingest.png) 
 
-ストレージ システム間でデータを転送するためによく使われる ``cp`` または ``copy`` コマンドは、一度に 1 つのファイルだけをコピーするシングルスレッドのプロセスです。 つまり、一度に 1 つのファイルしかファイル サーバーに取り込まれません。これでは、クラスターのリソースを浪費してしまいます。
+ストレージ システム間でデータを転送するためによく使われる ``cp`` または ``copy`` コマンドは、一度に 1 つのファイルだけをコピーするシングルスレッドのプロセスです。 つまり、一度に 1 つのファイルしかファイル サーバーに取り込まれません。これでは、キャッシュのリソースを浪費してしまいます。
 
 このセクションでは、Azure HPC Cache の Blob Storage にデータを移動するための、マルチクライアント、マルチスレッドのファイル コピー システムを作成する方法について説明します。 複数のクライアントとシンプルなコピー コマンドを使ってデータを効率よくコピーするために使用できる、ファイル転送の概念と決定点について説明します。
 
