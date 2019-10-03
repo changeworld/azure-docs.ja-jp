@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 6b825e61542dabc92baf482ede6c93edc486e059
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 703416d2df103c1ac8db06cbef43600058c250ef
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002355"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350478"
 ---
 # <a name="model-interpretability-with-azure-machine-learning"></a>Azure Machine Learning でのモデルの解釈可能性
 
@@ -150,8 +150,7 @@ Python の `numpy.array`、`pandas.DataFrame`、`iml.datatypes.DenseData`、ま�
     
     # you can use one of the following four interpretable models as a global surrogate to the black box model
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
-    from azureml.explain.model.mimic.models.linear_model import LinearExplainableModel
-    from azureml.explain.model.mimic.models.linear_model import SGDExplainableModel
+    from azureml.explain.model.mimic.models.linear_model import LinearExplainableModel,SGDExplainableModel
     from azureml.explain.model.mimic.models.tree_model import DecisionTreeExplainableModel
 
     # "features" and "classes" fields are optional
@@ -210,7 +209,7 @@ Python の `numpy.array`、`pandas.DataFrame`、`iml.datatypes.DenseData`、ま�
 
     ```python
     # explain the first five data points in the test set
-    local_explanation = explainer.explain_local(x_test[0:4])
+    local_explanation = explainer.explain_local(x_test[0:5])
 
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()

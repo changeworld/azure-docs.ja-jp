@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 351247041d4e2f857bcb38b38a490c1a160a6a70
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: a6e8187a085d637ad3abc650daf15d92b96755a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299587"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338110"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -225,7 +225,7 @@ Windows で動作する Spring Boot アプリでは、 Azure App Services での
 
 Application Insights Java SDK では、[W3C 分散トレース](https://w3c.github.io/trace-context/)がサポートされるようになりました。
 
-受信 SDK の構成の詳細については、[相関関係](correlation.md#w3c-distributed-tracing)に関する記事をご覧ください。
+受信 SDK の構成の詳細については、[相関関係](correlation.md#telemetry-correlation-in-the-java-sdk)に関する記事をご覧ください。
 
 送信 SDK の構成は、[AI-Agent.xml](java-agent.md) ファイル内で定義されます。
 

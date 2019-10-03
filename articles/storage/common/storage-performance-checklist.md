@@ -4,16 +4,16 @@ description: 高パフォーマンス アプリケーションの開発におい
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e700cf04123bf02c1014aa418189221fbbb0b812
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985162"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670926"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 
@@ -130,7 +130,7 @@ Azure Storage では、範囲を基にしたパーティション構成を使用
 * 可能な場合は、より大きな Put Blob または Put Block サイズ (Standard アカウントでは 4 MiB 以上、Premium アカウントでは 256 KiB 以上) を使用して高スループットのブロック BLOB (HTBB) をアクティブ化します。 HTBB は、パーティションの名前付けによる影響を受けない高パフォーマンスの取り込みを提供します。
 * アカウント、コンテナー、BLOB、テーブルおよびキューに対して使用する命名規則を精査します。 お客様のニーズに最も適したハッシュ関数を使用して、アカウント、コンテナー、BLOB 名に 3 桁のハッシュでプレフィックスを付けることを検討します。  
 * タイムスタンプまたは数値識別子を使用してデータを整理する場合は、末尾にのみ (または先頭にのみ) 追加されるトラフィック パターンを使用していないことを確認する必要があります。 これらのパターンは、範囲ベースのパーティション分割システムには適していません。すべてのトラフィックを 1 つのパーティションに向けたり、システムを効果的な負荷分散から制限したりする場合があります。 たとえば、*yyyymmdd* などのタイムスタンプを持つ BLOB オブジェクトを使用する毎日の操作がある場合、毎日の操作に対するすべてのトラフィックが、1 台のパーティション サーバーで提供される 1 つのオブジェクトに直接送信されます。 BLOB の制限およびパーティションの制限ごとにお客様のニーズを満たすかどうかを確認して、必要に応じて、この操作を複数の BLOB に分割することを検討します。 同様に、時系列データをテーブルに保存する場合、すべてのトラフィックをキーの名前空間の最後の部分に直接送信することができます。 タイムスタンプまたは数値 ID を使用する必要がある場合は、3 桁のハッシュを使用して ID にプレフィックスを付けます。また、タイムスタンプの場合は、*ssyyyymmdd* のように時刻の秒の部分を使用したプレフィックスを付けます。 操作の一覧およびクエリを繰り返し実行する場合は、クエリの数を制限するハッシュ関数を選択します。 その他の場合は、ランダムなプレフィックスが望ましい場合があります。  
-* Azure Storage で使用されるパーティション構成の詳細については、[Azure Storage: 強力な一貫性を備えた高使用可能なクラウド ストレージ サービス](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)を参照してください。
+* Azure Storage で使用されるパーティション構成の詳細については、[Azure Storage: 強力な一貫性を備えた高可用性クラウド ストレージ サービス](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)を参照してください。
 
 ### <a name="networking"></a>ネットワーク
 

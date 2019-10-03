@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 0ae2b695a64e55b493453549627860872166ed25
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202493"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71822271"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Azure Security Center で Disk Encryption を適用する
 お使いの Windows または Linux VM ディスクが Azure Disk Encryption を使用して暗号化されていない場合、Azure Security Center により、ディスク暗号化を適用することが推奨されます。 Disk Encryption を使用すると、Windows および Linux IaaS VM ディスクを暗号化できます。  VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。
@@ -43,7 +43,7 @@ Security Center で暗号化が必要と識別された Azure Virtual Machines �
 * Azure Disk Encryption の前提条件となる Azure PowerShell スクリプトの取得と実行。
 * 仮想マシンの暗号化。
 
-これらの手順については、「[Azure PowerShell を使用して Windows IaaS VM を暗号化する](../security/azure-disk-encryption-linux-powershell-quickstart.md)」で具体的に説明しています。 このトピックでは、ディスク暗号化を構成するために Windows クライアント マシンを使用していると想定しています。
+これらの手順については、「[Azure PowerShell を使用して Windows IaaS VM を暗号化する](../virtual-machines/linux/disk-encryption-powershell-quickstart.md)」で具体的に説明しています。 このトピックでは、ディスク暗号化を構成するために Windows クライアント マシンを使用していると想定しています。
 
 Azure Virtual Machines に使用できる方法はたくさんあります。 既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。 こうした方法の詳細については、「[Azure Disk Encryption](../security/azure-security-disk-encryption.md)」を参照してください。
 

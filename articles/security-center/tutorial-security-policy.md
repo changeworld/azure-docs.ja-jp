@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: memildin
-ms.openlocfilehash: 11e1c837e416a5d2105f494c43823298edfd4355
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 488210e4f2c5d3a8a978079d0c7293ce091d998b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200498"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338768"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -42,7 +42,7 @@ Security Center を有効にすると、Security Center に組み込まれたセ
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 Azure 管理グループの範囲は、サブスクリプションを上回ります。 "管理グループ" と呼ばれるコンテナーにサブスクリプションを整理して、管理グループに管理ポリシーを適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用されたポリシーを自動的に継承します。 各ディレクトリには、"ルート" 管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 Azure Security Center で使用する管理グループを設定するには、「[Azure Security Center に対するテナント全体の可視性を確保する](security-center-management-groups.md)」の指示に従ってください。
 
 > [!NOTE]
-> 管理グループとサブスクリプションの階層を理解することが重要です。 管理グループ、ルート管理、および管理グループへのアクセスの詳細については、「[Organize your resources with Azure Management Groups (Azure 管理グループを使用してリソースを整理する)](../governance/management-groups/index.md#root-management-group-for-each-directory)」を参照してください。
+> 管理グループとサブスクリプションの階層を理解することが重要です。 管理グループ、ルート管理、および管理グループへのアクセスの詳細については、「[Organize your resources with Azure Management Groups (Azure 管理グループを使用してリソースを整理する)](../governance/management-groups/overview.md#root-management-group-for-each-directory)」を参照してください。
 >
 
 ## <a name="how-security-policies-work"></a>セキュリティ ポリシーのしくみ

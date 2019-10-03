@@ -5,21 +5,21 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 94baeb3d459b700cc95d88fb82f995957640aab6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1f4cdf45fb643499f7d6ab717c6f36395ad292c8
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012193"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827690"
 ---
 `objectIdType` (または**オブジェクト識別子の型**) は、ロールに与えられる ID の型を示します。 `DeviceId` および `UserDefinedFunctionId` 型を除き、オブジェクト識別子の型は Azure Active Directory オブジェクトのプロパティに対応します。
 
 次の表に、Azure Digital Twins でサポートされているオブジェクト識別子の型を示します。
 
-| Type | 説明 |
+| 種類 | 説明 |
 | --- | --- |
 | UserId | ユーザーにロールを割り当てます。 |
 | deviceId | デバイスにロールを割り当てます。 |

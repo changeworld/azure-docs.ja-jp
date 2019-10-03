@@ -3,16 +3,16 @@ title: Azure Data Share プレビューのトラブルシューティング
 description: Azure Data Share プレビューに関する問題のトラブルシューティングを行う方法について説明します
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 386a5e34dccafa61859cd13c3e0ad88cd3a7ffac
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421464"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320293"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Azure Data Share プレビューでの一般的な問題のトラブルシューティング
 

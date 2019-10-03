@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269207"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720176"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -66,9 +66,6 @@ ms.locfileid: "71269207"
 + 実験、パイプライン、モデル、デプロイなどの機械学習の成果物を表示します。
 + モデルを追跡および監視します。
 
-
-
-
 ## <a name="workspace-management"></a>ワークスペースの管理
 
 次のワークスペース管理タスクを実行することもできます。
@@ -80,7 +77,7 @@ ms.locfileid: "71269207"
 | ワークスペース アクセスの管理    | **&check;**   | |  **&check;**    |
 | ノートブック VM を作成する | **&check;**   | |     |
 
-### <a name='create-workspace'></a> ワークスペースを作成する
+## <a name='create-workspace'></a> ワークスペースを作成する
 
 ワークスペースは、さまざまな方法で作成できます。
 

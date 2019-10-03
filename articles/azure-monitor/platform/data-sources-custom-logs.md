@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2019
+ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124125"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327458"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor のカスタム ログ
 
@@ -58,7 +58,7 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 
 1. Azure portal で、 **[Log Analytics ワークスペース]** 、目的のワークスペース、 **[詳細設定]** の順に選択します。
 2. **[データ]**  >  **[カスタム ログ]** をクリックします。
-3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスのチェックを外します。
+3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。 Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。
 4. **[追加+]** をクリックし、カスタム ログ ウィザードを開きます。
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>手順 2. サンプル ログをアップロードし、解析する

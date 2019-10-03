@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307429"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316351"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -34,18 +34,18 @@ LUIS が理解する発話の言語を次に示します。
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| オランダ語 |`nl-NL` |-|  -   |-|✔|
-| フランス語 (フランス) |`fr-FR` |-| ✔ |✔ |✔|
+| オランダ語 |`nl-NL` |✔|  -   |-|✔|
+| フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
 | フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|
-| ドイツ語 |`de-DE` |-| ✔ |✔ |✔|
+| ドイツ語 |`de-DE` |✔| ✔ |✔ |✔|
 | ヒンディー語 | `hi-IN`|-|-|-|-|
-| イタリア語 |`it-IT` |-| ✔ |✔|✔|
-| *[日本語](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|キー フレーズのみ|
-| 韓国語 |`ko-KR` |-|   -   |-|キー フレーズのみ|
-| ポルトガル語 (ブラジル) |`pt-BR` |-| ✔ |✔ |一部のサブカルチャのみ|
-| スペイン語 (スペイン) |`es-ES` |-| ✔ |✔|✔|
+| イタリア語 |`it-IT` |✔| ✔ |✔|✔|
+| *[日本語](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|キー フレーズのみ|
+| 韓国語 |`ko-KR` |✔|   -   |-|キー フレーズのみ|
+| ポルトガル語 (ブラジル) |`pt-BR` |✔| ✔ |✔ |一部のサブカルチャのみ|
+| スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | スペイン語 (メキシコ)|`es-MX` |-|  -   |✔|✔|
-| トルコ語 | `tr-TR` |-|-|-|センチメントのみ|
+| トルコ語 | `tr-TR` |✔|-|-|センチメントのみ|
 
 
 言語サポートは、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)および[事前構築済みのドメイン](luis-reference-prebuilt-domains.md)によって異なります。

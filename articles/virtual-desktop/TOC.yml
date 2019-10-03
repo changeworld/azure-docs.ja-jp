@@ -66,6 +66,8 @@
   items:
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
+    - name: リモート セッションで推奨される帯域幅
+      href: bandwidth-recommendations.md
     - name: Windows Virtual Desktop における委任されたアクセス
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法

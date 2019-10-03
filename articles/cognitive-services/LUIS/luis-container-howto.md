@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: b15ab7be5467d35b774dce643d6bb3910560ae01
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: a718a2335ed4928c6cd40ad4dc832eaf82bc6a2b
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172330"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695294"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -309,7 +309,9 @@ LUIS ポータルから、お客様のアプリを選択し、 **[Import endpoin
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-出力[マウント](luis-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。 
+出力[マウント](luis-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>課金
 
@@ -323,7 +325,6 @@ LUIS コンテナーでは、お客様の Azure アカウントの _Cognitive Se
 
 2019 //Build でリリースされる最新のコンテナーでは、次がサポートされます。
 
-* Bing Spell Check: `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` クエリ文字列パラメーターでクエリ予測エンドポイントに対して要求します。 詳細については、[Bing Spell Check v7 チュートリアル](luis-tutorial-bing-spellcheck.md)を参照してください。 この機能を使用すると、コンテナーが Bing Spell Check V7 リソースに発話を送信します。
 * [新しい事前構築済みドメイン](luis-reference-prebuilt-domains.md): 企業向けのこれらのドメインには、エンティティ、発話の例、およびパターンが含まれます。 これらのドメインを独自の用途で拡張します。 
 
 <a name="unsupported-dependencies"></a>
@@ -341,6 +342,7 @@ LUIS アプリケーションは、次の依存関係を一切**含んでいな�
 |サポートされていないエンティティ (英語 (en-US) カルチャ)|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) 事前構築済みエンティティ|
 |音声認識の準備|コンテナーでは、外部依存関係がサポートされません。|
 |センチメント分析|コンテナーでは、外部依存関係がサポートされません。|
+|Bing Spell Check|コンテナーでは、外部依存関係がサポートされません。|
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]

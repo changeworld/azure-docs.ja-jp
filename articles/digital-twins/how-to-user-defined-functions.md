@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013968"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336903"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins 内でユーザー定義関数を作成する方法
 
@@ -197,7 +197,7 @@ function process(telemetry, executionContext) {
 
 ユーザー定義関数の実行に使われるロールの割り当てを作成します。 ユーザー定義関数にロールが割り当てられていない場合、ユーザー定義関数には Management API と対話したり、グラフ オブジェクトで操作を実行したりするための適切なアクセス許可がありません。 ユーザー定義関数で実行できるアクションは、Azure Digital Twins Management API 内のロールベースのアクセス制御によって指定および定義されます。 たとえば、ユーザー定義関数の範囲は、特定のロールまたは特定のアクセス制御パスを指定することで限定できます。 詳しくは、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントをご覧ください。
 
-1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#all)して、ユーザー定義関数に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
+1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#retrieve-all-roles)して、ユーザー定義関数に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles

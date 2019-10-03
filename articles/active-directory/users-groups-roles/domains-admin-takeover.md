@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146458"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315721"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -101,7 +101,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 
 外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプション経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。 
 
-アンマネージド テナントからドメイン名を削除し、目的のテナントでその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 **ForceTakeover オプションでユーザーが移動することはありません。サブスクリプションへのアクセスが保持されます。このオプションでは、ドメイン名のみが移動します。**
+アンマネージド テナントからドメイン名を削除し、目的のテナントでその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 
 
 #### <a name="more-information-about-rms-for-individuals"></a>個人向け RMS の詳細
 

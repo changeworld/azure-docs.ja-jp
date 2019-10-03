@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: da3cb81eaeaa3b1609ffe67b2aea92a69b6bb47a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 07db6c5cecf2b8dec803e73d5775edef3f8906fa
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726260"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828626"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure Disk Encryption の前提条件 (以前のリリース)
 
@@ -53,6 +53,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | Ubuntu | 18.04| OS とデータ ディスク |
 | Ubuntu | 16.04| OS とデータ ディスク |
 | Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
+| RHEL | 7.7 | OS とデータ ディスク (後述する注を参照してください) |
 | RHEL | 7.6 | OS とデータ ディスク (後述する注を参照してください) |
 | RHEL | 7.5 | OS とデータ ディスク (後述する注を参照してください) |
 | RHEL | 7.4 | OS とデータ ディスク (後述する注を参照してください) |
@@ -60,6 +61,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | RHEL | 7.2 | OS とデータ ディスク (後述する注を参照してください) |
 | RHEL | 6.8 | データ ディスク (後述する注を参照してください) |
 | RHEL | 6.7 | データ ディスク (後述する注を参照してください) |
+| CentOS | 7.7 | OS とデータ ディスク |
 | CentOS | 7.6 | OS とデータ ディスク |
 | CentOS | 7.5 | OS とデータ ディスク |
 | CentOS | 7.4 | OS とデータ ディスク |

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: c58f8ae0605f99952507a5f308316f784b3d8de1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: eced3415db27562ea60b67f5c23ca7fafe09ccc0
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105138"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316641"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Form Recognizer コンテナーのインストールと実行
 
@@ -42,7 +42,7 @@ Form Recognizer コンテナーを使用する前に、次の前提条件を満�
 
 ## <a name="gathering-required-parameters"></a>必須パラメーターの収集
 
-すべての Cognitive Services のコンテナーに対して必須である、3 つの主要なパラメーターがあります。 エンドユーザー使用許諾契約書 (EULA) は、`accept` の値を使って提示される必要があります。 さらに、エンドポイント URL と API キーの両方が必要です。
+すべての Cognitive Services のコンテナーに対して必須である、3 つの主要なパラメーターがあります。 エンドユーザー使用許諾契約書 (EULA) は、`accept` の値と共に提示される必要があります。 さらに、エンドポイント URL と API キーの両方が必要です。
 
 ### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>エンドポイント URI `{COMPUTER_VISION_ENDPOINT_URI}` と `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
@@ -303,7 +303,9 @@ formrecognizer_config =
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-コンテナーを実行すると、コンテナーは **stdout** と **stderr** を使用して、コンテナーの起動時や実行時に発生する問題のトラブルシューティングに役立つ情報を出力します。
+出力[マウント](form-recognizer-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>課金
 

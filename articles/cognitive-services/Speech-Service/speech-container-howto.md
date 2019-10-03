@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/26/2019
 ms.author: dapine
-ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: dbd4f2cd4691f9ae6d8e37f38d2b600ec4897e45
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105160"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326697"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
@@ -176,7 +176,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
-コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法の詳細については、[必要なパラメーターの収集](#gathering-required-parameters)に関する記事を参照してください。
+コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法の詳細については、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。
 
 `docker run` コマンドの[例](speech-container-configuration.md#example-docker-run-commands)を利用できます。
 
@@ -270,7 +270,9 @@ speech_config = speechsdk.SpeechConfig(
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-コンテナーを実行するとき、コンテナーでは **stdout** と **stderr** を使用して、コンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立つ情報を出力します。
+出力[マウント](speech-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>課金
 

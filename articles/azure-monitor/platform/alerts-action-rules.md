@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: df069ee398ea2937f03765b10576061b5e541390
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 34997c130094b7e8b209b3ad3030038670d0a254
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656720"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702985"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 

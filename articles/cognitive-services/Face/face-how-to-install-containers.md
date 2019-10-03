@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: fbfc3f48bed5a4772573dcf2ab168cd3498a4cac
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f2bf5766dc09b85f276349a5e72f1bc3b8ba23b3
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101997"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316369"
 ---
 # <a name="install-and-run-face-containers"></a>Face コンテナーのインストールと実行
 
@@ -82,7 +82,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 ## <a name="run-the-container-with-docker-run"></a>docker run でコンテナーを実行する
 
-コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法について詳しくは、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。
+コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法の詳細については、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。
 
 `docker run` コマンドの[例](face-resource-container-config.md#example-docker-run-commands)を利用できます。
 
@@ -126,8 +126,9 @@ ApiKey={API_KEY}
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-出力[マウント](./face-resource-container-config.md#mount-settings)とログが有効な状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。 
+出力[マウント](./face-resource-container-config.md#mount-settings)とログが有効な状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。
 
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>課金
 

@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/25/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 551918373f8292d798980600d6e0d43add55bd18
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224506"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828286"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption の前提条件
 
@@ -70,6 +70,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | Ubuntu | 18.04| OS とデータ ディスク |
 | Ubuntu | 16.04| OS とデータ ディスク |
 | Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
+| RHEL | 7.7 | OS とデータ ディスク (後述する注を参照してください) |
 | RHEL | 7.6 | OS とデータ ディスク (後述する注を参照してください) |
 | RHEL | 7.5 | OS とデータ ディスク (後述する注を参照してください) |
 | RHEL | 7.4 | OS とデータ ディスク (後述する注を参照してください) |
@@ -77,6 +78,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | RHEL | 7.2 | OS とデータ ディスク (後述する注を参照してください) |
 | RHEL | 6.8 | データ ディスク (後述する注を参照してください) |
 | RHEL | 6.7 | データ ディスク (後述する注を参照してください) |
+| CentOS | 7.7 | OS とデータ ディスク |
 | CentOS | 7.6 | OS とデータ ディスク |
 | CentOS | 7.5 | OS とデータ ディスク |
 | CentOS | 7.4 | OS とデータ ディスク |
@@ -181,7 +183,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 
 
 ## <a name="prerequisite-workflow-for-key-vault"></a>Key Vault の前提条件ワークフロー
-Azure Disk Encryption に関する Key Vault と Azure AD の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用できます。 前提条件のスクリプトの使用について詳しくは、[VM の暗号化クイック スタート](azure-disk-encryption-linux-powershell-quickstart.md)および[Azure Disk Encryption の付録](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)に関するページをご覧ください。 
+Azure Disk Encryption に関する Key Vault と Azure AD の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用できます。 前提条件のスクリプトの使用について詳しくは、[VM の暗号化クイック スタート](../virtual-machines/linux/disk-encryption-powershell-quickstart.md)および[Azure Disk Encryption の付録](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)に関するページをご覧ください。 
 
 1. 必要な場合は、リソース グループを作成します。
 2. Key Vault を作成します。 

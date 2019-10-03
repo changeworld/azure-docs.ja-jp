@@ -72,7 +72,7 @@
   items:
     - name: クラスルーム ラボ - クラスの種類
       items:
-        - name: クラスの種類
+        - name: クラスの種類の概要
           href: classroom-labs/class-types.md
         - name: 自然処理でのディープ ラーニング
           href: classroom-labs/class-type-deep-learning-natural-processing.md

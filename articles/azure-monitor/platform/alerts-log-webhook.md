@@ -1,19 +1,19 @@
 ---
 title: Azure アラートでのログ アラートに対する Webhook アクション
 description: この記事では、Log Analytics ワークスペースまたは Application Insights を使用してログ アラート ルールを作成する方法、アラートでデータが HTTP Webhook としてプッシュされる方法、および可能なさまざまなカスタマイズの詳細について説明します。
-author: msvijayn
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8bdd0d5230feeeb4c80775ce63aa7e4eaccb601c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226790"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677761"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alerts-log.md)ときは、[アクション グループを使用して構成](action-groups.md)し、1 つ以上のアクションを実行することができます。 この記事では、使用できるさまざまな Webhook アクションについて説明し、JSON ベースのカスタム Webhook の構成方法を示します。

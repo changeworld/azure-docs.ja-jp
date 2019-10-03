@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: af157204ad1e1b28639ae2d8f192b3122afa8147
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299241"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338085"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、メソッド実行時間の監視
 
@@ -122,7 +122,7 @@ AI-Agent.xml に次のコードを追加します。
 
 すべてのサービスが、W3C プロトコルをサポートする新しいバージョンの SDK に更新されたときに、これを行うことが理想的です。 W3C をサポートする新しいバージョンの SDK にできるだけ早く移行することを強くお勧めします。
 
-**受信と送信 (エージェント) の構成が**[両方とも](correlation.md#w3c-distributed-tracing)正確に同じであることを確認してください。
+**受信と送信 (エージェント) の構成が**[両方とも](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)正確に同じであることを確認してください。
 
 ## <a name="view-the-data"></a>データの表示
 Application Insights リソースでは、集計されたリモートの依存関係やメソッドの実行時間が [[パフォーマンス] タイル][metrics]に表示されます。

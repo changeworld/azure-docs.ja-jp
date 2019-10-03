@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 99e61cef55bd97704063e4d2da90909d0376c327
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 06dfa40b6f320646513ab759f0ad5f4d10790236
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961460"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719990"
 ---
 # <a name="entity-functions-preview"></a>エンティティ関数 (プレビュー)
 
@@ -50,7 +50,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
     {
         case "add":
             int amount = ctx.GetInput<int>();
-            currentValue += operand;
+            currentValue += amount;
             break;
         case "reset":
             currentValue = 0;
