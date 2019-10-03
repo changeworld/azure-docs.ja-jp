@@ -7,18 +7,18 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: a20f5b16b90b9bac7e6bc3ff808cf443b252fb44
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 75561c643c2b8881e4b390be885b77f2fff4971d
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204490"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673451"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>コードでの Shared Access Signature トークンの取得
 
 キー コンテナー内の [Shared Access Signature トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用して、ストレージ アカウントを管理できます。 この記事では、SAS トークンをフェッチし、それを使用して操作を実行する C# コードの例を示します。  SAS トークンを作成して保存する方法の詳細については、「[Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する](key-vault-ovw-storage-keys.md)」または「[Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する](key-vault-overview-storage-keys-powershell.md)」を参照してください。
 
-# <a name="code-samples"></a>コード サンプル
+## <a name="code-samples"></a>コード サンプル
 
 この例では、コードはキー コンテナーから SAS トークンをフェッチし、それを使用して新しいストレージ アカウントを作成し、新しい Blob service クライアントを作成します。  
 
