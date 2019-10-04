@@ -101,10 +101,6 @@
             - name: 2. Application Insights へのテレメトリの追加
               displayName: 'Application insight, kusto'
               href: luis-tutorial-bot-nodejs-appinsights.md
-- name: サンプル
-  items:
-    - name: コード サンプル
-      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
 - name: 概念
   items:
     - name: ベスト プラクティス
@@ -411,6 +407,8 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: リソース
   items:
+    - name: コード サンプル
+      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 言語とリージョンのサポート
