@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170466"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315267"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
@@ -88,7 +88,6 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 **[現在の状態を消去して、同期を再開します]** チェック ボックスをオンにし、 **[保存]** を選択して次の操作を実行します。
 
 * プロビジョニング サービスを停止する
-* Azure AD が管理しているアカウントに関するキャッシュ データをダンプする
 * サービスを再起動し、初期周期を再実行する
 
 このオプションを使用すると、プロビジョニング デプロイ プロセスを繰り返し開始できます。
