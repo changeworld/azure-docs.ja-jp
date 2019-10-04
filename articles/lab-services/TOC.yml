@@ -220,6 +220,8 @@
               href: connect-environment-lab-virtual-network.md
             - name: 入れ子になったテンプレートを使用したテスト環境の構成
               href: deploy-nested-template-environments.md
+            - name: Azure マネージド ID を使用した環境のデプロイ
+              href: use-managed-identities-environments.md
         - name: 再利用可能なテンプレートの管理
           items:
             - name: カスタム イメージと数式
