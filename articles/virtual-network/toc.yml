@@ -230,6 +230,8 @@
           items:
             - name: サブネット
               href: virtual-network-manage-subnet.md
+            - name: サブネットの委任
+              href: manage-subnet-delegation.md
             - name: ピアリング
               href: virtual-network-manage-peering.md
             - name: DDoS 保護
