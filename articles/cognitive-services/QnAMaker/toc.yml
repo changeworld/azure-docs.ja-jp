@@ -4,10 +4,12 @@
   items:
     - name: QnA Maker とは
       href: Overview/overview.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイック スタート
   items:
     - name: 新しいナレッジ ベースの作成
-      href: How-To/create-knowledge-base.md
+      href: quickstarts/create-publish-knowledge-base.md
     - name: メタデータによる質問の追加
       href: quickstarts/add-question-metadata-portal.md
     - name: 回答の取得
