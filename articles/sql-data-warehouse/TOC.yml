@@ -139,6 +139,12 @@
           items:
             - name: パフォーマンス チューニング ガイダンス
               href: performance-tuning-ordered-CCI.md
+            - name: '[テーブルの作成]'
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=aps-pdw-2016-au7'
+            - name: CTAS
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7'
+            - name: インデックスの作成と変更
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-2017#examples--and-'
         - name: 結果セットのキャッシュ
           items:
             - name: データベースの設定

@@ -198,6 +198,14 @@
           href: compute-benchmark-scores.md
         - name: vCPU のクォータ
           href: quotas.md
+        - name: 予約インスタンス
+          items:
+            - name: VM の前払い
+              href: prepay-reserved-vm-instances.md
+            - name: Azure の予約とは
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: VM インスタンス サイズの柔軟性
+              href: reserved-vm-instance-size-flexibility.md
     - name: 専用ホスト
       href: dedicated-hosts.md
     - name: メンテナンスと更新
@@ -359,14 +367,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: ログ アラートを作成する
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: コストを管理する
-      items:
-        - name: VM の前払い - Azure の予約
-          href: prepay-reserved-vm-instances.md
-        - name: Azure の予約とは
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: VM インスタンス サイズの柔軟性
-          href: reserved-vm-instance-size-flexibility.md
     - name: イメージの使用
       items:
         - name: 共有イメージ
@@ -422,8 +422,6 @@
         - name: 近接通信配置グループの作成
           href: proximity-placement-groups.md
         - name: 垂直方向にスケーリングする
-          href: vertical-scaling-automation.md
-        - name: 可用性ゾーン内に VM を作成する
           items:
             - name: PowerShell
               href: create-powershell-availability-zone.md

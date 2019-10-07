@@ -82,6 +82,8 @@
       href: functions-deployment-technologies.md
     - name: イベントとメッセージング
       items:
+        - name: 信頼できるイベント処理
+          href: functions-reliable-event-processing.md
         - name: 同一入力のための設計
           href: functions-idempotent.md
     - name: トリガーとバインド
