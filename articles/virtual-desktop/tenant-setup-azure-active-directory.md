@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop プレビューでテナントを作成する - Azure
-description: Windows Virtual Desktop プレビューのテナントを Azure Active Directory に設定する方法を説明します。
+title: Windows Virtual Desktop でテナントを作成する - Azure
+description: Windows Virtual Desktop のテナントを Azure Active Directory に設定する方法を説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,9 +14,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/06/2019
 ms.locfileid: "70734465"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューでテナントを作成する
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop でテナントを作成する
 
-Windows Virtual Desktop プレビューでのテナントの作成は、デスクトップ仮想ソリューションを構築するための最初の手順です。 テナントは、1 つまたは複数のホスト プールのグループです。 各ホスト プールは複数のセッション ホストで構成されていて、Azure において仮想マシンとして動作し、Windows Virtual Desktop サービスに登録されます。 各ホスト プールはさらに、リモート デスクトップおよびリモート アプリケーションのリソースをユーザーに発行するために使用される、1 つ以上のアプリ グループで構成されます。 テナントを使用すると、ホスト プールの構築、アプリ グループの作成、ユーザーの割り合て、サービスを通じた接続の作成を行うことができます。
+Windows Virtual Desktop でのテナントの作成は、デスクトップ仮想ソリューションを構築するための最初の手順です。 テナントは、1 つまたは複数のホスト プールのグループです。 各ホスト プールは複数のセッション ホストで構成されていて、Azure において仮想マシンとして動作し、Windows Virtual Desktop サービスに登録されます。 各ホスト プールはさらに、リモート デスクトップおよびリモート アプリケーションのリソースをユーザーに発行するために使用される、1 つ以上のアプリ グループで構成されます。 テナントを使用すると、ホスト プールの構築、アプリ グループの作成、ユーザーの割り合て、サービスを通じた接続の作成を行うことができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -107,7 +107,7 @@ Azure サブスクリプション ID を検索するには:
 3. **サブスクリプション ID** を探し、その値にマウス ポインターを合わせてクリップボード アイコンを表示します。 クリップボード アイコンを選択し、この値を後で **AzureSubscriptionId** 値として使用できるように便利な場所に貼り付けます。
    ![Azure サブスクリプションのプロパティのスクリーンショット。 "サブスクリプション ID" をコピーして貼り付けるために、クリップボード アイコンにマウス ポインターを合わせています。](media/tenant-subscription-id.png)
 
-## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Windows Virtual Desktop プレビュー テナントを作成する
+## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Windows Virtual Desktop テナントを作成する
 
 これで、Azure Active Directory に対してクエリを実行するアクセス許可を Windows Virtual Desktop サービスに付与し、TenantCreator ロールをユーザー アカウントに割り当てたため、Windows Virtual Desktop テナントを作成できます。
 
