@@ -114,22 +114,34 @@
           href: sisense.md
     - name: 管理
       items:
-        - name: クラスターの正常性を確認する
-          href: check-cluster-health.md
-        - name: クラスター VM の SKU を選択する
-          href: manage-cluster-choose-sku.md
-        - name: クラスターの水平スケーリングを管理する
-          href: manage-cluster-horizontal-scaling.md
-        - name: クラスターの垂直スケーリングを管理する
-          href: manage-cluster-vertical-scaling.md
-        - name: クラスターのセキュリティを管理する
-          href: manage-cluster-security.md
-        - name: データベースのアクセス許可を管理する
-          href: manage-database-permissions.md
-        - name: データの削除
-          href: delete-data.md
-        - name: 重複したデータを処理する
-          href: dealing-with-duplicates.md
+        - name: クラスター
+          items:
+            - name: クラスター VM の SKU を選択する
+              href: manage-cluster-choose-sku.md
+            - name: クラスターの水平スケーリングを管理する
+              href: manage-cluster-horizontal-scaling.md
+            - name: クラスターの垂直スケーリングを管理する
+              href: manage-cluster-vertical-scaling.md
+            - name: クラスターのセキュリティを管理する
+              href: manage-cluster-security.md
+            - name: クラスターの正常性を確認する
+              href: check-cluster-health.md
+        - name: Database
+          items:
+            - name: データベースのアクセス許可を管理する
+              href: manage-database-permissions.md
+            - name: ポリシー
+              items:
+                - name: 'C#'
+                  href: database-table-policies-csharp.md
+                - name: Python
+                  href: database-table-policies-python.md
+        - name: Data
+          items:
+            - name: データの削除
+              href: delete-data.md
+            - name: 重複したデータを処理する
+              href: dealing-with-duplicates.md
     - name: 監視
       items:
         - name: 診断ログを使用してインジェストを監視する
