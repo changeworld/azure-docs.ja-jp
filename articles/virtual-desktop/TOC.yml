@@ -54,7 +54,7 @@
       href: install-office-on-wvd-master-image.md
     - name: Windows Virtual Desktop の GPU を構成する
       href: configure-vm-gpu.md
-    - name: セッション ホストを自動的にスケーリングする
+    - name: セッション ホストを動的にスケーリングする
       href: set-up-scaling-script.md
     - name: Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
@@ -84,7 +84,7 @@
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
       href: troubleshoot-set-up-overview.md
-    - name: 診断機能を使用して問題を特定する
+    - name: 問題の特定と診断
       href: diagnostics-role-service.md
     - name: テナントとホスト プールの作成
       href: troubleshoot-set-up-issues.md

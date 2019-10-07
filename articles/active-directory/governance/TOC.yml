@@ -36,22 +36,30 @@
       items:
         - name: 一般的なシナリオ
           href: entitlement-management-scenarios.md
-        - name: 新しいアクセス パッケージを作成する
-          href: entitlement-management-access-package-create.md
-        - name: アクセス パッケージを編集する
-          href: entitlement-management-access-package-edit.md
-        - name: カタログを作成する
-          href: entitlement-management-catalog-create.md
-        - name: アクセスの要求
-          href: entitlement-management-request-access.md
-        - name: 要求の承認
-          href: entitlement-management-request-approve.md
-        - name: タスクの委任
-          href: entitlement-management-delegate.md
-        - name: レポートとログを表示する
-          href: entitlement-management-reports.md
-        - name: トラブルシューティング
-          href: entitlement-management-troubleshoot.md
+        - name: 管理者と部門管理者
+          items:
+            - name: タスクの委任
+              href: entitlement-management-delegate.md
+            - name: リソースのカタログを作成する
+              href: entitlement-management-catalog-create.md
+            - name: レポートとログを表示する
+              href: entitlement-management-reports.md
+            - name: トラブルシューティング
+              href: entitlement-management-troubleshoot.md
+        - name: プロジェクト マネージャー
+          items:
+            - name: 新しいアクセス パッケージを作成する
+              href: entitlement-management-access-package-create.md
+            - name: アクセス パッケージを編集する
+              href: entitlement-management-access-package-edit.md
+        - name: 承認者
+          items:
+            - name: 要求の承認
+              href: entitlement-management-request-approve.md
+        - name: 要求元
+          items:
+            - name: アクセスの要求
+              href: entitlement-management-request-access.md
     - name: アクセス レビュー
       items:
         - name: グループとアプリ

@@ -85,7 +85,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: アプリケーションを Azure AD DS にデプロイする
+    - name: アプリケーションをデプロイする
       items:
         - name: Azure AD アプリケーション プロキシをデプロイする
           href: deploy-azure-app-proxy.md
@@ -95,11 +95,17 @@
       items:
         - name: 一般的なエラー
           href: troubleshoot.md
-        - name: 一致しないテナントのエラー
+        - name: ドメイン参加の問題
+          href: troubleshoot-domain-join.md
+        - name: アカウント ロックアウト
+          href: troubleshoot-account-lockout.md
+        - name: サインインの問題
+          href: troubleshoot-sign-in.md
+        - name: 一致しないテナントのエラーの解決
           href: mismatched-tenant-error.md
         - name: 中断されたドメイン
           href: suspension.md
-        - name: セキュリティで保護された LDAP
+        - name: Secure LDAP の問題
           href: tshoot-ldaps.md
         - name: 既知の問題
           items:
