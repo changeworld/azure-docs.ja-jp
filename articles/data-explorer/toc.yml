@@ -43,11 +43,29 @@
     - name: データの取り込み
       items:
         - name: イベント ハブ
-          href: ingest-data-event-hub.md
+          items:
+            - name: Azure ポータル
+              href: ingest-data-event-hub.md
+            - name: Python
+              href: data-connection-event-hub-python.md
+            - name: 'C#'
+              href: data-connection-event-hub-csharp.md
         - name: Event Grid
-          href: ingest-data-event-grid.md
+          items:
+            - name: Azure ポータル
+              href: ingest-data-event-grid.md
+            - name: Python
+              href: data-connection-event-grid-python.md
+            - name: 'C#'
+              href: data-connection-event-grid-csharp.md
         - name: IoT Hub
-          href: ingest-data-iot-hub.md
+          items:
+            - name: Azure ポータル
+              href: ingest-data-iot-hub.md
+            - name: Python
+              href: data-connection-iot-hub-python.md
+            - name: 'C#'
+              href: data-connection-iot-hub-csharp.md
         - name: ワンクリックでのインジェスト
           href: ingest-data-one-click.md
         - name: ストリーミング インジェスト
