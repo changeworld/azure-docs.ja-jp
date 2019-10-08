@@ -778,29 +778,35 @@
   items:
     - name: 用語集
       href: sql-database-glossary-terms.md
-    - name: Microsoft Learn でスキルを身に付ける
-      href: /learn/browse/?products=azure-sql-database
-    - name: SQL Server のブログ
-      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
-    - name: Microsoft Azure のブログ
-      href: 'https://azure.microsoft.com/blog/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: パブリック データ セット
-      href: sql-database-public-data-sets.md
-    - name: 接続のトラブルシューティング
-      href: 'https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?service=sql-database'
     - name: アーキテクチャ センター
       href: /azure/architecture/
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?products=azure-sql-database
     - name: 顧客事例
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Microsoft Azure のブログ
+      href: 'https://azure.microsoft.com/blog/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: パブリック データ セット
+      href: sql-database-public-data-sets.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+    - name: SQL Server のブログ
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
+    - name: トラブルシューティング
+      items:
+        - name: 接続に関する問題
+          href: troubleshoot-connectivity-issues-microsoft-azure-sql-database.md
+        - name: 問題解決
+          items:
+            - name: Import/Export サービスがハングする
+              href: azure-sql-database-hangs-importing-exporting.md
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'

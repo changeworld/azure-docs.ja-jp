@@ -71,6 +71,8 @@
         - name: Deployment Manager の正常性チェックの使用
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+        - name: VS デプロイ スクリプトを Az Powershell に更新する
+          href: vs-azure-tools-update-deploy-script-to-az-powershell.md
         - name: テンプレートのデプロイに関するトラブルシューティング
           href: resource-manager-tutorial-troubleshoot.md
 - name: サンプル
@@ -141,14 +143,17 @@
           displayName: deployment
           href: resource-group-template-deploy-portal.md
         - name: デプロイ - CLI
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-cli.md
         - name: デプロイ - PowerShell
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy.md
         - name: デプロイ - REST API
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: エラー発生時の再デプロイ
+          displayName: rollback
+          href: rollback-on-error.md
         - name: SAS トークンによるテンプレートのセキュリティ保護
           href: secure-template-with-sas-token.md
         - name: 複数のリソース グループまたはサブスクリプションへのデプロイ

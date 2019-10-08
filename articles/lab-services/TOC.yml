@@ -78,6 +78,8 @@
           href: classroom-labs/class-type-deep-learning-natural-processing.md
         - name: Linux でのシェル スクリプト
           href: classroom-labs/class-type-shell-scripting-linux.md
+        - name: 倫理的ハッキング
+          href: classroom-labs/class-type-ethical-hacking.md
     - name: クラスルーム ラボ
       items:
         - name: ラボ アカウントを作成および構成する (ラボ アカウント オーナー)
@@ -90,6 +92,8 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+            - name: テンプレート VM で入れ子になった仮想化を有効にする
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: クラスルーム ラボを作成して構成する (講師)
           items:
             - name: クラスルーム ラボを作成して管理する

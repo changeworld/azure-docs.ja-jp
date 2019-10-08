@@ -59,7 +59,8 @@
           href: concepts-connectivity-architecture.md
     - name: ビジネス継続性
       items:
-        - name: 概要
+        - name: ビジネス継続性の概要
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
           href: concepts-business-continuity.md
         - name: バックアップと復元
           href: concepts-backup.md
@@ -185,7 +186,7 @@
       href: /rest/api/mariadb
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: Azure ストアド プロシージャ
+    - name: 管理ストアド プロシージャ
       href: reference-stored-procedures.md
 - name: リソース
   items:

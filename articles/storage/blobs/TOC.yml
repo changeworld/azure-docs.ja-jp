@@ -27,14 +27,14 @@
           items:
             - name: .NET
               href: storage-quickstart-blobs-dotnet.md
-            - name: Node.js
-              href: storage-quickstart-blobs-nodejs-v10.md
+            - name: Java
+              href: storage-quickstart-blobs-java.md
             - name: Python
               href: storage-quickstart-blobs-python.md
-            - name: v10 SDK を使用した JS/HTML
+            - name: JavaScript (Node.js)
+              href: storage-quickstart-blobs-nodejs-v10.md
+            - name: JavaScript (ブラウザー)
               href: storage-quickstart-blobs-javascript-client-libraries-v10.md
-            - name: v2 SDK を使用した JS/HTML
-              href: storage-quickstart-blobs-javascript-client-libraries.md
             - name: Go
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -410,12 +410,12 @@
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
             - name: Xamarin
               href: storage-xamarin-blob-storage.md
-            - name: レガシ SDK
+            - name: 以前の SDK バージョン
               items:
-                - name: Java (Storage SDK V7)
-                  href: storage-quickstart-blobs-java.md
-                - name: Node.js (Storage SDK v2)
+                - name: JavaScript (Node.js) (Storage SDK v2)
                   href: storage-quickstart-blobs-nodejs.md
+                - name: JavaScript (ブラウザー) (Storage SDK v2)
+                  href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: BLOB の管理
           items:
             - name: Azure CLI
