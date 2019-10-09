@@ -386,7 +386,7 @@ END
    ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 1. **[完了]** をクリックした後、テーブル名として **@dataset().SinkTableName** が表示されます。
+ 1. **[完了]** をクリックした後、テーブル名として **\@dataset().SinkTableName** が表示されます。
    
    ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
