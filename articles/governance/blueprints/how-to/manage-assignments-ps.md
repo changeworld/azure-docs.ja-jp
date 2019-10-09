@@ -3,16 +3,16 @@ title: PowerShell を使用した割り当ての管理方法
 description: 公式の Azure Blueprints PowerShell モジュールである Az.Blueprint でブループリント割り当てを管理する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/14/2019
+ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: beaa3f4c5ab272592e7fae5a95b40a9b586aaf65
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 18a22865f97dfa9868bb593cf3e3e461e02988eb
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232893"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687097"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell を使用した割り当ての管理方法
 
@@ -43,7 +43,7 @@ PowerShell の Blueprints モジュールは **Az.Blueprint** です。
    > [!NOTE]
    > **Az.Accounts** が既にインストールされている場合は、`-AllowClobber` を使用して強制的にインストールすることが必要になる可能性があります。
 
-1. モジュールがインポートされており、適切なバージョン (0.1.0) であることを確認します。
+1. モジュールがインポートされていて、適切なバージョン (0.2.5) であることを確認します。
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
@@ -164,8 +164,13 @@ ResourceGroups    : ResourceGroup
 
 - **ResourceGroupParameter** (オプション)
   - リソース グループのアーティファクトの[ハッシュ テーブル](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 各リソース グループのアーティファクト プレースホルダーには、そのリソース グループ アーティファクト上で **Name** または **Location** あるいはその両方を動的に設定するために、キー/値のペアが指定されます
+  - 各リソース グループのアーティファクト プレースホルダーには、そのリソース グループ アーティファクトに **Name** および **Location** を動的に設定するための、キー/値のペアがあります
   - リソース グループ パラメーターが指定されておらず、**defaultValue** がない場合、リソース グループ パラメーターは省略できません
+- **AssignmentFile** (省略可能)
+  - ブループリント割り当ての JSON ファイル表現へのパス
+  - このパラメーターは、**Name**、**Blueprint**、**SubscriptionId**、および共通のパラメーターのみを含む PowerShell パラメーター セットの一部です。
+
+### <a name="example-1-provide-parameters"></a>例 1:パラメーターを指定する
 
 次の例では、`Get-AzBlueprint` でフェッチされたバージョン「1.1」の「my-blueprint」ブループリント定義の新しい割り当てを作成し、マネージド ID と割り当てオブジェクトの場所を「westus2」に設定し、_AllResourcesReadOnly_ でリソースをロックし、**Parameters** と **ResourceGroupParameter** の両方のハッシュ テーブルを、`{subId}` と表される特定のサブスクリプション上で設定します。
 
@@ -184,7 +189,7 @@ $bpRGParameters = @{ResourceGroup=@{name='storage_rg';location='westus2'}}
 
 # Create the new blueprint assignment
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Blueprint $bpDefinition `
-    -SubscriptionId '{subId}' -Location 'westus2' -Lock AllResourcesReadyOnly `
+    -SubscriptionId '{subId}' -Location 'westus2' -Lock AllResourcesReadOnly `
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
@@ -196,15 +201,59 @@ Id                : /subscriptions/{subId}/providers/Microsoft.Blueprint/bluepri
                     gnments/my-blueprint-assignment
 Scope             : /subscriptions/{subId}
 LastModified      : 2019-03-13
-LockMode          : AllResourcesReadyOnly
+LockMode          : AllResourcesReadOnly
 ProvisioningState : Creating
 Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
+### <a name="example-2-use-a-json-assignment-definition-file"></a>例 2:JSON 割り当て定義ファイルを使用する
+
+以下の例では、[例 1](#example-1-provide-parameters) とほぼ同じ割り当てを作成します。
+パラメーターをコマンドレットに渡す代わりに、この例では、JSON 割り当て定義ファイルと **AssignmentFile** パラメーターの使用について示します。 さらに、**excludedPrincipals** プロパティを **locks** の一部として構成します。 **excludedPrincipals** に対応する PowerShell パラメーターは存在せず、このプロパティは JSON 割り当て定義ファイルを通じて設定することによってのみ構成できます。
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "location": "westus2",
+  "properties": {
+    "description": "Assignment of the 101-blueprint-definition-subscription",
+    "blueprintId": "/subscriptions/{subId}/providers/Microsoft.Blueprint/blueprints/101-blueprints-definition-subscription",
+    "locks": {
+      "mode": "AllResourcesReadOnly",
+      "excludedPrincipals": [
+          "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+          "38833b56-194d-420b-90ce-cff578296714"
+      ]
+    },
+    "parameters": {
+      "storageAccount_storageAccountType": {
+        "value": "Standard_GRS"
+      }
+    },
+    "resourceGroups": {
+      "ResourceGroup": {
+        "name": "storage_rg",
+        "location": "westus2"
+      }
+    }
+  }
+}
+```
+
+```azurepowershell-interactive
+# Login first with Connect-AzAccount if not using Cloud Shell
+
+# Create the new blueprint assignment
+$bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -SubscriptionId '{subId}' `
+    -AssignmentFile '.\assignment.json'
+```
+
 ## <a name="update-blueprint-assignments"></a>ブループリント割り当てを更新する
 
-既に作成されているブループリント割り当てを更新する必要が生じる場合があります。 `Set-AzBlueprintAssignment` コマンドレットがこのアクションを処理します。 このコマンドレットは、`New-AzBlueprintAssignment` コマンドレットと同じパラメーターの多くを使用し、割り当てで設定されたすべてのものを更新できるようにします。 この例外は、_Name_、_Blueprint_、および _SubscriptionId_ です。 指定された値だけが更新されます。
+既に作成されているブループリント割り当てを更新する必要が生じる場合があります。 `Set-AzBlueprintAssignment` コマンドレットがこのアクションを処理します。 このコマンドレットは、`New-AzBlueprintAssignment` コマンドレットと同じパラメーターの多くを使用し、割り当てで設定されたすべてのものを更新できるようにします。 例外は、_Name_、_Blueprint_、および _SubscriptionId_ です。 指定された値だけが更新されます。
 
 ブループリント割り当ての更新時に行われる処理を理解するには、「[割り当ての更新の規則](./update-existing-assignments.md#rules-for-updating-assignments)」を参照してください。
 
@@ -242,7 +291,7 @@ ResourceGroups    : ResourceGroup
 
 - **ResourceGroupParameter** (オプション)
   - リソース グループのアーティファクトの[ハッシュ テーブル](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 各リソース グループのアーティファクト プレースホルダーには、そのリソース グループ アーティファクト上で **Name** または **Location** あるいはその両方を動的に設定するために、キー/値のペアが指定されます
+  - 各リソース グループのアーティファクト プレースホルダーには、そのリソース グループ アーティファクトに **Name** および **Location** を動的に設定するための、キー/値のペアがあります
   - リソース グループ パラメーターが指定されておらず、**defaultValue** がない場合、リソース グループ パラメーターは省略できません
 
 次の例では、ロック モードを変更することによって `Get-AzBlueprint` でフェッチされたバージョン「1.1」の「my-blueprint」ブループリント定義の割り当てを更新します。
@@ -310,7 +359,7 @@ $bpRGParameters = @{ResourceGroup=@{name='storage_rg';location='westus2'}}
 
 # Create the new blueprint assignment
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Blueprint $bpDefinition `
-    -SubscriptionId '{subId}' -Location 'westus2' -Lock AllResourcesReadyOnly `
+    -SubscriptionId '{subId}' -Location 'westus2' -Lock AllResourcesReadOnly `
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 #endregion CreateAssignment
 

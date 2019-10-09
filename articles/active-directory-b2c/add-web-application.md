@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 50a4ead58cc70524ec464e52ce546b36f9685df5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 88ce3931d9f47b8c16251a45e54fa96b97f038e2
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064531"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693289"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントに Web API アプリケーションを追加する
 
@@ -36,22 +36,12 @@ ms.locfileid: "71064531"
 
 スコープを使用すると、保護されたリソースへのアクセスを統制できます。 スコープは、スコープベースのアクセス制御を実装するために Web API によって使用されます。 たとえば Web API のユーザーが、読み取りと書き込みの両方のアクセス権限を持つ場合もあれば、読み取りアクセス権限しか持たない場合もあります。 このチュートリアルでは、スコープを使用して、Web API の読み取りアクセス許可と書き込みアクセス許可を定義します。
 
-1. **[アプリケーション]** を選択し、*webapi1* を選択します。
-2. **[公開済みスコープ]** を選択します。
-3. **スコープ**に「`Read`」と入力し、説明に「`Read access to the application`」と入力します。
-4. **スコープ**に「`Write`」と入力し、説明に「`Write access to the application`」と入力します。
-5. **[Save]** をクリックします。
-
-公開済みスコープを使用すると、クライアント アプリケーションに Web API へのアクセス許可を付与することができます。
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する
 
 保護された Web API をアプリケーションから呼び出すには、その API へのアクセス許可をアプリケーションに付与する必要があります。 たとえば「[チュートリアル: Azure Active Directory B2C にアプリケーションを登録する](tutorial-register-applications.md)」では、Azure AD B2C に *webapp1* という Web アプリケーションが作成されます。 このアプリケーションを使用して、Web API を呼び出すことができます。
 
-1. **[アプリケーション]** を選択し、自分の Web アプリケーションを選択します。
-2. **[API アクセス]** を選択し、 **[追加]** を選択します。
-3. **[API の選択]** ドロップダウンで、*webapi1* を選択します。
-4. **[スコープの選択]** ドロップダウンで、前に定義した **Read** スコープと **Write** スコープを選択します。
-5. Click **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 アプリケーションが登録されて、保護された Web API を呼び出すことができるようになります。 アプリケーションを使用するには、ユーザーは Azure AD B2C での認証を行います。 アプリケーションで、保護された Web API にアクセスするための認可の付与が、Azure AD B2C から取得されます。

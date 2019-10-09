@@ -4,14 +4,14 @@ description: Azure Cosmos DB で Time to Live を構成および管理する方�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: ddda7b96147892efb38cb0405120db3613e98cf8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e36b894ec9c7433bc114145e0de5f519f73486f1
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104868"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815907"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する
 
@@ -36,10 +36,16 @@ Azure Cosmos DB では、コンテナー レベルで Time to Live (TTL) の構�
 
    ![Azure portal で Time to Live を構成する](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
+* DefaultTimeToLive が null の場合、Time to Live はオフになります
+* DefaultTimeToLive が -1 の場合、Time to Live の設定はオン (既定値なし) になります
+* DefaultTimeToLive が他の整数値 (0 を除く) の場合、Time to Live の設定はオンになります
 
-- DefaultTimeToLive が null の場合、Time to Live はオフになります
-- DefaultTimeToLive が -1 の場合、Time to Live の設定はオン (既定値なし) になります
-- DefaultTimeToLive が他の整数値 (0 を除く) の場合、Time to Live の設定はオンになります
+## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>Azure CLI または PowerShell を使用してコンテナーの Time to Live を有効にする
+
+コンテナーで TTL を作成または有効にするには、以下を参照してください。
+
+* [Azure CLI を使用して TTL を利用するコンテナーを作成する](manage-with-cli.md#create-a-container-with-ttl)
+* [PowerShell を使用して TTL を利用するコンテナーを作成する](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>SDK を使用してコンテナーの Time to Live を有効にする
 
@@ -185,11 +191,10 @@ SalesOrder salesOrder = new SalesOrder
 const itemDefinition = {
           id: "doc",
           name: "sample Item",
-          key: "value", 
+          key: "value",
           ttl: 2
         };
 ```
-
 
 ## <a name="reset-time-to-live"></a>Time to Live をリセットする
 
