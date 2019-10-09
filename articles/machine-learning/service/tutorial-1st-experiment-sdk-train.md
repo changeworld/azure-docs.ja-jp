@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004025"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828026"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
@@ -35,21 +35,15 @@ ms.locfileid: "71004025"
 
 チュートリアルのこのパートでは、パート 1 の最後で開いたサンプル Jupyter ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` のコードを実行します。 この記事では、ノートブック内の同じコードについて説明します。
 
-## <a name="launch-jupyter-web-interface"></a>Jupyter の Web インターフェイスを起動する
+## <a name="open-the-notebook"></a>ノートブックを開く
 
-1. Azure portal のワークスペース ページで、左側の **[ノートブック VM]** を選択します。
+1. [ワークスペース ランディング ページ](https://ml.azure.com/)にサインインします。
 
-1. このチュートリアルのパート 1 で作成した VM の **[URI]** 列で **[Jupyter]** を選択します。
+1. [パート 1](tutorial-1st-experiment-sdk-setup.md#open) に示すように、フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** を開きます。
 
-    ![Jupyter ノートブック サーバーを開始する](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-   リンクから、ノートブック サーバーが起動され、新しいブラウザー タブで Jupyter ノートブックの Web ページが開かれます。このリンクは、VM を作成するユーザーに対してのみ動作します。 ワークスペースの各ユーザーは、独自の VM を作成する必要があります。
-
-1. Jupyter ノートブックの Web ページで、最上位のフォルダー名を選択します。最上位のフォルダー名はユーザー名です。  
-
-   このフォルダーは、ノートブック VM 自体にではなく、ワークスペースの[ストレージ アカウント](concept-workspace.md#resources)に存在します。  ノートブック VM を削除しても、それまでの作業はすべて維持されます。  後で新しいノートブック VM を作成すると、この同じフォルダーが読み込まれます。 他のユーザーとワークスペースを共有すると、互いのフォルダーが表示されます。
-
-1. `samples-*` サブディレクトリを開き、同じ名前の `.yml` ファイル**ではなく**、Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` を開きます。 
+> [!Warning]
+> Jupyter インターフェイスで "*新しい*" ノートブックを作成**しないでください**。 ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` には、このチュートリアルに必要な**すべてのコードとデータ**が含まれています。
 
 ## <a name="connect-workspace-and-create-experiment"></a>ワークスペースを接続し、実験を作成する
 
@@ -57,7 +51,7 @@ ms.locfileid: "71004025"
 > 以降この記事には、ノートブックと同じ内容が記載されています。  
 >
 > コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 
-> ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、トップ メニューから **[セル] > [すべて実行]** の順に選択してノートブック全体を実行します。
+> ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、上部のツール バーから **[すべて実行]** を選択して、ノートブック全体を実行します。
 
 `Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 クラウド ノートブック サーバーでは、ファイルは自動的にルート ディレクトリに配置されます。
 

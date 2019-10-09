@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 10e0f24642d54c43d6c818773d0eb17815ab784b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: b6ac528d0d2916f513be4e2a72bff061bdad8e58
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996916"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718641"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -130,7 +130,7 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
     ![アクセス ポリシーの設定](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. [証明書のアクセス許可] を選択し、[Get]\(取得\) と [List]\(一覧\) のチェック ボックスをオンにします。これによって、CDN がこれらのアクセス許可を実行して証明書を取得および一覧表示できるようにします。
+3. **[証明書のアクセス許可]** を選択し、 **[Get]\(取得\)** と **[List]\(一覧\** ) のチェック ボックスをオンにします。これによって、CDN がこれらのアクセス許可を実行して証明書を取得および一覧表示できるようにします。
 
 4. **[OK]** を選択します。 
 
@@ -190,7 +190,7 @@ CNAME レコードが正しい形式である場合、DigiCert は自動的に�
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>カスタム ドメインが CDN エンドポイントにマップされていない
 
 >[!NOTE]
->**Azure CDN from Akamai** を使用する場合は、カスタム ドメインは前述のように CNAME レコードによって cdn エンドポイントにマップされる必要があります。  現在、この機能は未着手となっています。 
+>**Azure CDN from Akamai** を使用している場合は、次の CNAME を、自動ドメイン検証が有効になるように設定する必要があります。 "_acme-challenge.<custom domain hostname> -> CNAME -> <custom domain hostname>.ak-acme-challenge.azureedge.net"
 
 CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、この手順の残りの部分に従ってください。
 

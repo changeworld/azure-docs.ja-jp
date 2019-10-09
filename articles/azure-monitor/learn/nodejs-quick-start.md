@@ -7,17 +7,17 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.service: application-insights
-ms.custom: mvc, seo-javascript-2019
+ms.custom: mvc, seo-javascript-september2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 3312822d3e4f74a2db39712d61880c8dd0dd8d5e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1db26002167f4b7c5b4fc19699ddb021de8ac23d
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001181"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703024"
 ---
-# <a name="start-monitoring-your-nodejs-web-application"></a>Node.js Web アプリケーションの監視を開始する
+# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
 Azure Application Insights を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を簡単に監視できます。 アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断することもできます。 バージョン 0.20 以降の SDK リリースでは、MongoDB、MySQL、Redis を含む一般的なサードパーティ製パッケージを監視できます。
 

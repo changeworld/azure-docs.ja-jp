@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/24/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 16e1c96da8fa35a4e8aaa8ce91da1c7976291079
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a7114044f5e29af4bbf8e7c38b390b833ac818ec
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261920"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803496"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート:C# を使用して QnA Maker のナレッジ ベースを作成する
 
@@ -27,10 +27,12 @@ ms.locfileid: "71261920"
 * [取得操作の詳細](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 * [[発行]](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
 
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 * 最新の [**Visual Studio Community エディション**](https://www.visualstudio.com/downloads/)。
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーと (リソース名を含む) エンドポイントを取得するには、Azure portal で対象のリソースの **[クイックスタート]** を選択します。 
 
 > [!NOTE] 
 > 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)から入手できます。

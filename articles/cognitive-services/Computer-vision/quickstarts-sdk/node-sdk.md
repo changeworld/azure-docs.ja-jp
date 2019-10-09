@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/18/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: bcce9c53e2618f9501dde63905fb834bce7985ee
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fdf2b132b5d07b2b12c679cb436968c6fb19887e
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204440"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719508"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Computer Vision クライアント ライブラリ
 
@@ -171,9 +171,9 @@ npm install azure-cognitiveservices-computervision ms-rest-azure
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
-### <a name="detect-adult-or-racy-content"></a>成人向けまたはわいせつなコンテンツを検出する
+### <a name="detect-adult-racy-or-gory-content"></a>成人向け、わいせつ、または不快なコンテンツを検出する
 
-次のコードは、画像内で検出された成人向けまたはわいせつなコンテンツの存在を出力します。 詳細については、[成人向けまたはわいせつなコンテンツ](../concept-detecting-adult-content.md)に関するページを参照してください。
+次のコードは、画像内で検出された成人向けのコンテンツの存在を出力します。 詳細については、「[成人向けコンテンツ、わいせつなコンテンツ、不快なコンテンツ](../concept-detecting-adult-content.md)」を参照してください。
 
 使用する画像の URL を定義します。
 
@@ -238,7 +238,7 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-`recognizeText` 関数を定義します。 これにより、クライアント オブジェクトに対して recognizeText メソッドが呼び出され、操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。 次に、結果が返されるまで、操作 ID を使用して 1 秒間隔で操作が確認されます。 次に、抽出された結果が返されます。
+`recognizeText` 関数を定義します。 これにより、クライアント オブジェクトに対して **recognizeText** メソッドが呼び出され、操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。 次に、結果が返されるまで、操作 ID を使用して 1 秒間隔で操作が確認されます。 次に、抽出された結果が返されます。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 4f039fde275e5dca49b3c78550722d827bead062
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 3ccc5c7c0def7ec1d8d2f8927dc8f8e5d3678a52
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155112"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718983"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ
 
@@ -93,7 +93,8 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、「[.NET を使用した Azure Key Vault に対するサービス間認証](service-to-service-authentication.md)」を参照してください。 ただし、わかりやすくするために、このクイックスタートでは .NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルを使用する必要があります。
+クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](managed-identity.md)に関するページを参照してください。 ただし、わかりやすくするために、このクイックスタートでは .NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。
+
 Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用してサービス プリンシパルを作成します。
 
 ```azurecli

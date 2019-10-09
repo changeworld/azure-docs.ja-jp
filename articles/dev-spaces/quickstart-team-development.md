@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用したチーム Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3509fd32e06117ce3709f110223b38ef0e0eed30
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842590"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815790"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用した Kubernetes 上でのチーム開発
 
@@ -47,6 +47,9 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
 
 `use-dev-spaces` コマンドを使用して AKS クラスターで Dev Spaces を有効にし、プロンプトに従います。 下記のコマンドを使用すると、*MyResourceGroup* グループ内の *MyAKS* クラスターで Dev Spaces が有効になり、*dev* という開発空間が作成されます。
+
+> [!NOTE]
+> この `use-dev-spaces` コマンドでは、Azure Dev Spaces CLI がまだインストールされていない場合にはこれもインストールされます。 Azure Dev Spaces CLI を Azure Cloud Shell にインストールすることはできません。
 
 ```cmd
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 3074ed30c5e1f6edae78a8ef3c3d655e302a2663
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 09/30/2019
 ms.locfileid: "70997283"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Azure のお客様向けのオープン バンキング (PSD2) と強力なカスタマー認証 (SCA)
@@ -57,7 +57,7 @@ Marketplace および予約の購入は、Azure サービスとは別に課金�
 
 1. [Azure Portal](https://portal.azure.com/) にアカウント管理者としてサインインします。
 2. **[コストの管理と請求]** で検索します。
-3. [請求先] で、[請求書] を選択します。
+3. [課金] で、 **[請求書]** を選択します。
 4. 右側にある **[Azure Marketplace と Reservations]** タブをクリックします。
 5. 対応するサブスクリプションを選択します。
 6. [請求書] グリッドで、状態列を確認します。 請求書が **[期限]** または **[期限経過]** になっている場合は、 **[今支払う]** をクリックします。 プロセス中に多要素認証を完了するように求められます。

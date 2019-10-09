@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 8e52a37376e91e5c529cddd9b211d81c4b2fa442
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 31bd85ca9b106758dbb7bfd399b7a493ea7fea9f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203843"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803088"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>クイック スタート:.NET 用 QnA Maker クライアント ライブラリ
 
@@ -30,6 +30,8 @@ ms.locfileid: "71203843"
 
 [リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/) | [C# サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)
 
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
@@ -41,7 +43,7 @@ ms.locfileid: "71203843"
 
 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に QnA Maker のリソースを作成します。 
 
-リソースからキーを取得した後、`QNAMAKER_SUBSCRIPTION_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+対象のリソースのキーとエンドポイントを取得した後、`QNAMAKER_SUBSCRIPTION_KEY` という名前で、そのキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。 リソース名は、エンドポイント URL の一部として使用されます。
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -113,13 +115,16 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 
 次に、自分のキーを使用して [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.apikeyserviceclientcredentials?view=azure-dotnet) オブジェクトを作成し、それを自分のエンドポイントと共に使用して、[QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) オブジェクトを作成します。
 
-このサンプル コードに示される `westus` リージョンに自分のキーがない場合は、**Endpoint** 変数の場所を変更します。 この場所は、Azure portal の QnA Maker リソースの **[概要]** ページで確認できます。
+**Endpoint** の変数 `<your-custom-domain>` を、対象のカスタム ドメインの名前に変更します。 この場所は、Azure portal の QnA Maker リソースの **[概要]** ページで確認できます。
 
-[!code-csharp[Authorization to resource key](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Authorization)]
+```csharp
+var subscriptionKey = Environment.GetEnvironmentVariable("QNAMAKER_SUBSCRIPTION_KEY");
+var client = new QnAMakerClient(new ApiKeyServiceClientCredentials(subscriptionKey)) { Endpoint = "https://<your-custom-domain>.api.cognitive.microsoft.com" };
+```
 
 ## <a name="authenticate-the-runtime-for-generating-an-answer"></a>回答を生成するためのランタイムを認証する
 
-**main** メソッドに、`QNAMAKER_ENDPOINT_HOSTNAME` および `QNAMAKER_ENDPOINT_KEY` という名前の環境変数から取得される、リソースの Azure キーの変数を作成します。 ナレッジ ベースを公開すると、これらの値が返されます。 公開後は、QnA Maker ポータルの **[設定]** ページでこれらの設定を確認できます。 
+**main** メソッドに、`QNAMAKER_ENDPOINT_HOSTNAME` および `QNAMAKER_ENDPOINT_KEY` という名前の環境変数から取得される、リソースの認証の変数を作成します。 ナレッジ ベースを公開すると、これらの値が返されます。 公開後は、QnA Maker ポータルの **[設定]** ページでこれらの設定を確認できます。 
 
 ナレッジ ベースにクエリを実行して回答を生成したり、アクティブ ラーニングからトレーニングしたりするための [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) を作成します。
 

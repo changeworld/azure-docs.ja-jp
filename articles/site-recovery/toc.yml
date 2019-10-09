@@ -371,7 +371,7 @@
               href: delete-vault.md
     - name: アプリのディザスター リカバリー
       items:
-        - name: オンプレミス アプリで Azure へのディザスター リカバリーを設定する
+        - name: オンプレミス アプリのディザスター リカバリーについて
           href: site-recovery-workload.md
         - name: Active Directory と DNS
           href: site-recovery-active-directory.md

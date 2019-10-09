@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 97e28165702e352c7840f12a3214776dcc8642bc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 54f9e1eb9614708880c9a45cddcf9d7a282d0305
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308078"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802849"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート: Python を使用して QnA Maker のナレッジ ベースを公開する
 
@@ -28,7 +28,7 @@ ms.locfileid: "70308078"
 ## <a name="prerequisites"></a>前提条件
 
 * [Python 3.7](https://www.python.org/downloads/)
-* QnA Maker サービスが必要です。 キーを取得するには、ダッシュボードで [リソース管理] の [キー] を選択します。
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーと (リソース名を含む) エンドポイントを取得するには、Azure portal で対象のリソースの **[クイックスタート]** を選択します。
 * URL の kbid クエリ文字列パラメーターに含まれている QnA Maker ナレッジ ベース (KB) ID (下図)。
 
     ![QnA Maker ナレッジ ベース ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)

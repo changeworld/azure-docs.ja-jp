@@ -134,8 +134,7 @@
           href: resource-group-linked-templates.md
         - name: 複数のインスタンスの作成
           href: resource-group-create-multiple.md
-        - name: サブスクリプションでリソース グループとリソースを作成する
-          displayName: subscription level deployment
+        - name: サブスクリプション レベルのリソース
           href: deploy-to-subscription.md
     - name: テンプレートのデプロイ
       items:

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9a3c11c7303d467a1a993c49d983131639683239
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3740a032db6ca9fd0fb88ce348610684d9f895bc
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064872"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326326"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してネイティブ クライアント アプリケーションで認証を有効にする
 
@@ -37,20 +37,9 @@ ms.locfileid: "71064872"
 
 ## <a name="add-the-native-client-application"></a>ネイティブ クライアント アプリケーションを追加する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
-5. アプリケーションの名前を入力します。 たとえば、*nativeapp1* とします。
-6. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** の場合、 **[いいえ]** を選択します。
-7. **[ネイティブ クライアントを含める]** の場合、 **[はい]** を選択します。
-8. **[リダイレクト URI]** に、カスタム スキームを含めた有効なリダイレクト URI を入力します。 リダイレクト URI を選択する際には、2 つの重要な考慮事項があります。
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-    - **一意** - リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 `com.onmicrosoft.contoso.appname://redirect/path` の例では、`com.onmicrosoft.contoso.appname` はスキームです。 このパターンに従う必要があります。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーにはアプリケーションを選択する選択肢が与えられます。 ユーザーが不適切な選択を行った場合、サインインは失敗します。
-    - **完全** - リダイレクト URI には、スキームとパスが必要です。 パスには、ドメインの後に少なくとも 1 つのスラッシュを含める必要があります。 たとえば、`//contoso/` は機能しますが、`//contoso` は失敗します。 リダイレクト URI にアンダースコアなどの特殊文字は含めないようにしてください。
-
-9. **Create** をクリックしてください。
-10. プロパティ ページで、サンプルを構成するときに使用するアプリケーション ID を記録します。
+後の手順で使用するために、**アプリケーション ID** を記録しておきます。
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 

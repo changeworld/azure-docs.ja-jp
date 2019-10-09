@@ -32,8 +32,10 @@
       items:
         - name: サーバーレベルの IP ファイアウォール規則
           href: sql-database-server-level-firewall-rule.md
-        - name: Managed Instance でのパブリック エンドポイントの構成
+        - name: マネージド インスタンスでのパブリック エンドポイントの構成
           href: sql-database-managed-instance-public-endpoint-configure.md
+        - name: マネージド インスタンスでの接続の種類の構成
+          href: sql-database-managed-instance-connection-type.md
         - name: マネージド インスタンスへのクライアント VM 接続
           href: sql-database-managed-instance-configure-vm.md
         - name: マネージド インスタンスへのポイント対サイト接続

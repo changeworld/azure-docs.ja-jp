@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 73c9f80a830b41df2afbb5eda4aede0f3c9ef665
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 27884d83b9ca828a81922d27fe958334665e664a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968378"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719535"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>クイック スタート:.NET 用 Computer Vision クライアント ライブラリ
 
@@ -185,9 +185,9 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_faces)]
 
-### <a name="detect-adult-or-racy-content"></a>成人向けまたはわいせつなコンテンツを検出する
+### <a name="detect-adult-racy-or-gory-content"></a>成人向け、わいせつ、または不快なコンテンツを検出する
 
-次のコードは、画像内で検出された成人向けまたはわいせつなコンテンツの存在を出力します。 詳細については、[成人向けまたはわいせつなコンテンツ](../concept-detecting-adult-content.md)に関するページを参照してください。
+次のコードは、画像内で検出された成人向けのコンテンツの存在を出力します。 詳細については、「[成人向けコンテンツ、わいせつなコンテンツ、不快なコンテンツ](../concept-detecting-adult-content.md)」を参照してください。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_adult)]
 

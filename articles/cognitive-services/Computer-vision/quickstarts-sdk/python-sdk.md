@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 8d47ae84fd489b4841d8bcf7755da6c30cf6035d
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: ab6a0d5c2a4c4623506d90b76b77462abb8fe4af
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967000"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719487"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>クイック スタート:Python 用 Computer Vision クライアント ライブラリ
 
@@ -64,7 +64,7 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 次のようにして、クライアント ライブラリをインストールできます。
 
 ```console
-pip install --upgrade azure-cognitiveservices-Computer Vision
+pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
@@ -128,7 +128,7 @@ pip install --upgrade azure-cognitiveservices-Computer Vision
 
 次のコードは、企業のブランドとロゴを画像から検出してコンソールに出力します。 詳細については、[ブランドの検出](../concept-brand-detection.md)に関するページを参照してください。
 
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_brands)]
 
 ### <a name="detect-faces"></a>顔を検出する
 
@@ -136,9 +136,9 @@ pip install --upgrade azure-cognitiveservices-Computer Vision
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_faces)]
 
-### <a name="detect-adult-or-racy-content"></a>成人向けまたはわいせつなコンテンツを検出する
+### <a name="detect-adult-racy-or-gory-content"></a>成人向け、わいせつ、または不快なコンテンツを検出する
 
-次のコードは、画像内で検出された成人向けまたはわいせつなコンテンツの存在を出力します。 詳細については、[成人向けまたはわいせつなコンテンツ](../concept-detecting-adult-content.md)に関するページを参照してください。
+次のコードは、画像内で検出された成人向けのコンテンツの存在を出力します。 詳細については、「[成人向けコンテンツ、わいせつなコンテンツ、不快なコンテンツ](../concept-detecting-adult-content.md)」を参照してください。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_adult)]
 

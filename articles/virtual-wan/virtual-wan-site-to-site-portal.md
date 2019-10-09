@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 357cc23c9dedb49dfd19dc897102762066ffd1b2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515161"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679360"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -53,7 +53,7 @@ ms.locfileid: "68515161"
 
 物理的な場所に合わせて必要な数のサイトを作成します。 たとえば、NY、ロンドン、および LA にブランチ オフィスがある場合は、3 つの別個のサイトを作成します。 これらのサイトには、オンプレミス VPN デバイスのエンドポイントが含まれています。 現時点では、サイトに対してプライベート アドレス空間を 1 つだけ指定できます。
 
-1. 作成した WAN をクリックします。 [WAN] ページの **[WAN Architecture]\(WAN アーキテクチャ\)** で **[VPN サイト]** をクリックして VPN サイト ページを開きます。
+1. 作成した WAN をクリックします。 [WAN] ページの **[仮想 WAN のアーキテクチャ]** で **[VPN サイト]** をクリックして VPN サイト ページを開きます。
 2. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
 3. **[サイトの作成]** ページで、次のフィールドに入力します。
 

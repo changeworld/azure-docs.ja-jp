@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: a1e53b21a3168e9745d36e191cc86ba9d20192b5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: b271de5437ee58c8b01c762c3ee770b2a5d0746b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308155"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802891"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>クイック スタート: Go を使用して QnA Maker のナレッジ ベースを公開する
 
@@ -28,7 +28,7 @@ ms.locfileid: "70308155"
 ## <a name="prerequisites"></a>前提条件
 
 * [Go 1.10.1](https://golang.org/dl/)
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーと (リソース名を含む) エンドポイントを取得するには、Azure portal で対象のリソースの **[クイックスタート]** を選択します。
 
 * URL の kbid クエリ文字列パラメーターに含まれている QnA Maker ナレッジ ベース (KB) ID (下図)。
 
