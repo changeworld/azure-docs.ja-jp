@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 2b601825a58fe5739a43df607067acc8d629c5f4
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558902"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709423"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "69558902"
 
 データ収集を制御するために構成できる設定を次に示します。
 
-|キー |データ型 |値 |説明 |
+|Key |データ型 |値 |説明 |
 |----|----------|------|------------|
 |`schema-version` |String (大文字と小文字が区別されます) |v1 |これは、この ConfigMap を解析するときにエージェントで使われるスキーマのバージョンです。 現在サポートされているスキーマのバージョンは、v1 です。 この値に対する変更はサポートされておらず、ConfigMap の評価時に拒否されます。|
 |`config-version` |string | | ソース管理システム/リポジトリでこの構成ファイルのバージョンを追跡する機能をサポートします。 許容される最大文字数は 10 で、他のすべての文字は切り捨てられます。 |
@@ -70,7 +70,7 @@ Prometheus からのメトリックのアクティブなスクレーピングは
 
 URL が指定されると、コンテナー用 Azure Monitor はエンドポイントのみをスクレーピングします。 Kubernetes サービスが指定されると、クラスター DNS サーバーを使用してサービス名が解決されて IP アドレスが取得された後で、解決されたサービスがスクレーピングされます。
 
-|Scope (スコープ) | キー | データ型 | 値 | 説明 |
+|Scope (スコープ) | Key | データ型 | 値 | 説明 |
 |------|-----|-----------|-------|-------------|
 | クラスター全体 | | | | メトリックのエンドポイントを収集するには、次の 3 つの方法のいずれかを指定します。 |
 | | `urls` | string | コンマ区切りの配列 | HTTP エンドポイント (指定された IP アドレスまたは有効な URL パス)。 (例: `urls=[$NODE_IP/metrics]`)。 ($NODE_IP は、コンテナーの Azure Monitor の特定のパラメーターであり、ノードの IP アドレスの代わりに使用できます。 すべて大文字である必要があります。) |
@@ -187,6 +187,22 @@ Prometheus に対する構成変更の適用に関連するエラーは、確認
 ```
 
 ## <a name="review-prometheus-data-usage"></a>Prometheus のデータ使用状況を確認する
+
+Azure Monitor によって収集された prometheus メトリックを表示するには、名前空間として "prometheus" を指定します。 `default` kubernetes 名前空間から prometheus メトリックを表示するクエリの例を次に示します。
+
+```
+InsightsMetrics 
+| where Namespace contains "prometheus"
+| extend tags=parse_json(Tags)
+| where tostring(tags.namespace) == "default" 
+```
+
+prometheus のデータは、名前で直接照会することもできます。
+
+```
+InsightsMetrics 
+| where Name contains "some_prometheus_metric"
+```
 
 各メトリック サイズのインジェスト ボリューム (1 日あたりの GB) を取得して、高いかどうかを把握できるよう、次のクエリが用意されています。
 
