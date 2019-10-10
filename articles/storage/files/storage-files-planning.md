@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212009"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327665"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -96,6 +96,8 @@ Premium ファイル共有を作成する方法については、[Azure Premium 
 
 > [!IMPORTANT]
 > Premium ファイル共有は、ストレージ アカウントを提供するほとんどのリージョンにおいて、LRS で利用できます。また、一部のリージョンでは ZRS で利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS 対応のリージョンを見つけるには、「[サポート範囲とリージョンの可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)」を参照してください。
+>
+> この[アンケート](https://aka.ms/pfsfeedback)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
 
 #### <a name="provisioned-shares"></a>プロビジョニングされた共有
 

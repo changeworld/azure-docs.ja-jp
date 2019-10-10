@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179889"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309395"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps でデータの操作を実行する
 
@@ -175,55 +175,93 @@ JavaScript Object Notation (JSON) オブジェクトからのプロパティと�
 
 ### <a name="customize-table-format"></a>テーブルの形式をカスタマイズする
 
-既定では、 **[列]** プロパティは、配列の項目に基づいてテーブルの列を自動的に作成するように設定されます。 
-
-カスタム ヘッダーと値を指定するには、次の手順のようにします。
+既定では、 **[列]** プロパティは、配列の項目に基づいてテーブルの列を自動的に作成するように設定されます。 カスタム ヘッダーと値を指定するには、次の手順のようにします。
 
 1. **[列]** の一覧を開き、 **[カスタム]** を選択します。
 
 1. **[ヘッダー]** プロパティで、代わりに使用するカスタム ヘッダー テキストを指定します。
 
-1. **[キー]** プロパティで、代わりに使用するカスタム値を指定します。
+1. **[値]** プロパティで、代わりに使用するカスタム値を指定します。
 
-配列の値を参照して編集するには、**CSV テーブルの作成**アクションの JSON 定義で `@item()` 関数を使用します。
+配列から値を返すには、**CSV テーブルの作成**アクションで [`item()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#item)を使用できます。 `For_each` ループでは、[`items()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#items)を使用できます。
 
-1. デザイナーのツール バーで、 **[コード ビュー]** を選択します。 
-
-1. コード エディターで、アクションの `inputs` セクションを編集し、必要な方法でテーブル出力をカスタマイズします。
-
-この例では、`header` プロパティを空の値に設定し、各 `value` プロパティを逆参照することによって、`columns` 配列から列の値のみを返し、ヘッダーは返しません。
-
-```json
-"Create_CSV_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "CSV",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-この例で返される結果を次に示します。
+たとえば、プロパティ値のみを含み、配列からのプロパティ名を含まないテーブル列が必要であるとします。 これらの値のみを返すには、以下に示すデザイナー ビューまたはコード ビューでの操作手順に従ってください。 この例で返される結果を次に示します。
 
 ```text
-Results from Create CSV table action:
-
 Apples,1
 Oranges,2
 ```
 
-デザイナーで、**CSV テーブルの作成**アクションの表示は次のようになります。
+#### <a name="work-in-designer-view"></a>デザイナー ビューでの操作
 
-![列ヘッダーのない "CSV テーブルの作成"](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+アクションで、 **[ヘッダー]** 列を空のままにします。 **[値]** 列の各行で、目的の各配列プロパティを逆参照します。 **[値]** の下の各行は、指定された配列プロパティのすべての値を返し、テーブル内の列になります。
+
+1. **[値]** の下にある目的の各行で、編集ボックス内をクリックして、動的コンテンツの一覧が表示されるようにします。
+
+1. 動的コンテンツ リストの **[式]** を選択します。
+
+1. 式エディターで、必要な配列プロパティ値を指定する次の式を入力し、 **[OK]** を選択します。
+
+   `item()?['<array-property-name>']`
+
+   例:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![プロパティを逆参照するための式](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+
+1. 必要な配列プロパティごとに、前の手順を繰り返します。 完了すると、アクションは次の例のようになります。
+
+   ![完成した式](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+
+1. 式をより記述的なバージョンに解決するには、コード ビューに切り替え、再びデザイナー ビューに戻って、折りたたまれているアクションを再度開きます。
+
+   これにより、**CSV テーブルの作成**アクションは次の例のようになります。
+
+   ![解決された式を持つ「CSV テーブルの作成」アクション (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+
+#### <a name="work-in-code-view"></a>コード ビューでの操作
+
+アクションの JSON 定義で、`columns` 配列内で `header` プロパティを空のストリングに設定します。 `value` プロパティごとに、目的の各配列プロパティを逆参照します。
+
+1. デザイナーのツール バーで、 **[コード ビュー]** を選択します。
+
+1. コード エディターでは、アクションの `columns` 配列で、必要な配列値の列ごとに、空の `header` プロパティとこの `value` 式を追加します。
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   例:
+
+   ```json
+   "Create_CSV_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "CSV",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. デザイナー ビューに戻り、折りたたまれたアクションを再度開きます。
+
+   **CSV テーブルの作成**アクションは次の例のようになり、式は、より記述的なバージョンに解決されました。
+
+   ![解決された式を持つ「CSV テーブルの作成」アクション (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[テーブル アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)」をご覧ください。
 
@@ -288,55 +326,93 @@ JavaScript Object Notation (JSON) オブジェクトからのプロパティと�
 
 ### <a name="customize-table-format"></a>テーブルの形式をカスタマイズする
 
-既定では、 **[列]** プロパティは、配列の項目に基づいてテーブルの列を自動的に作成するように設定されます。 
-
-カスタム ヘッダーと値を指定するには、次の手順のようにします。
+既定では、 **[列]** プロパティは、配列の項目に基づいてテーブルの列を自動的に作成するように設定されます。 カスタム ヘッダーと値を指定するには、次の手順のようにします。
 
 1. **[列]** の一覧を開き、 **[カスタム]** を選択します。
 
 1. **[ヘッダー]** プロパティで、代わりに使用するカスタム ヘッダー テキストを指定します。
 
-1. **[キー]** プロパティで、代わりに使用するカスタム値を指定します。
+1. **[値]** プロパティで、代わりに使用するカスタム値を指定します。
 
-配列の値を参照して編集するには、**HTML テーブルの作成**アクションの JSON 定義で `@item()` 関数を使用します。
+配列から値を返すには、**HTML テーブルの作成**アクションで [`item()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#item)を使用できます。 `For_each` ループでは、[`items()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#items)を使用できます。
 
-1. デザイナーのツール バーで、 **[コード ビュー]** を選択します。 
-
-1. コード エディターで、アクションの `inputs` セクションを編集し、必要な方法でテーブル出力をカスタマイズします。
-
-この例では、`header` プロパティを空の値に設定し、各 `value` プロパティを逆参照することによって、`columns` 配列から列の値のみを返し、ヘッダーは返しません。
-
-```json
-"Create_HTML_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "HTML",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-この例で返される結果を次に示します。
+たとえば、プロパティ値のみを含み、配列からのプロパティ名を含まないテーブル列が必要であるとします。 これらの値のみを返すには、以下に示すデザイナー ビューまたはコード ビューでの操作手順に従ってください。 この例で返される結果を次に示します。
 
 ```text
-Results from Create HTML table action:
-
-Apples    1
-Oranges   2
+Apples,1
+Oranges,2
 ```
 
-デザイナーで、**HTML テーブルの作成**アクションの表示は次のようになります。
+#### <a name="work-in-designer-view"></a>デザイナー ビューでの操作
 
-![列ヘッダーのない "HTML テーブルの作成"](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+アクションで、 **[ヘッダー]** 列を空のままにします。 **[値]** 列の各行で、目的の各配列プロパティを逆参照します。 **[値]** の下の各行は、指定されたプロパティのすべての値を返し、テーブル内の列になります。
+
+1. **[値]** の下にある目的の各行で、編集ボックス内をクリックして、動的コンテンツの一覧が表示されるようにします。
+
+1. 動的コンテンツ リストの **[式]** を選択します。
+
+1. 式エディターで、必要な配列プロパティ値を指定する次の式を入力し、 **[OK]** を選択します。
+
+   `item()?['<array-property-name>']`
+
+   例:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![プロパティを逆参照するための式](./media/logic-apps-perform-data-operations/html-table-expression.png)
+
+1. 必要な配列プロパティごとに、前の手順を繰り返します。 完了すると、アクションは次の例のようになります。
+
+   ![完成した式](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+
+1. 式をより記述的なバージョンに解決するには、コード ビューに切り替え、再びデザイナー ビューに戻って、折りたたまれているアクションを再度開きます。
+
+   これにより、**HTML テーブルの作成**アクションは次の例のようになります。
+
+   ![解決された式を持つ「HTML テーブルの作成」アクション (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+
+#### <a name="work-in-code-view"></a>コード ビューでの操作
+
+アクションの JSON 定義で、`columns` 配列内で `header` プロパティを空のストリングに設定します。 `value` プロパティごとに、目的の各配列プロパティを逆参照します。
+
+1. デザイナーのツール バーで、 **[コード ビュー]** を選択します。
+
+1. コード エディターでは、アクションの `columns` 配列で、必要な配列値の列ごとに、空の `header` プロパティとこの `value` 式を追加します。
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   例:
+
+   ```json
+   "Create_HTML_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "HTML",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. デザイナー ビューに戻り、折りたたまれたアクションを再度開きます。
+
+   **HTML テーブルの作成**アクションは次の例のようになり、式は、より記述的なバージョンに解決されました。
+
+   ![解決された式を持つ「HTML テーブルの作成」アクション (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[テーブル アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)」をご覧ください。
 

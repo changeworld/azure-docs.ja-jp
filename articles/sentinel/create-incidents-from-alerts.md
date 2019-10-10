@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1acef92ed5de86d4526d8b5c4bcf338b341c50f7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241155"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029767"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Microsoft セキュリティ アラートからインシデントを自動的に作成する
 
@@ -35,7 +35,7 @@ Microsoft Cloud App Security や Azure Advanced Threat Protection など、Azure
 
 Azure Sentinel で利用できる組み込みのルールを使用して、どの接続された Microsoft セキュリティ ソリューションで Azure Sentinel インシデントをリアルタイムで自動的に作成するかを選択します。 また、ルールを編集して、Microsoft セキュリティ ソリューションによって生成されたアラートのうち Azure Sentinel にインシデントを作成する必要があるものをフィルター処理する、より具体的なオプションを定義することもできます。 たとえば、重要度の高い Azure Security Center アラートからのみ Azure Sentinel インシデントを自動的に作成することを選択できます。
 
-1. Azure portal の Azure Sentinel で  **[Analytics]** を選択します。
+1. Azure portal の Azure Sentinel の下で **[Analytics]** を選択します。
 
 1. **[Rule templates]\(ルール テンプレート\)** を選択してすべての組み込みの分析ルールを表示します。
 

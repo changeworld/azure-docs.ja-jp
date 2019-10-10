@@ -1,5 +1,5 @@
 ---
-title: MSAL アプリケーションでのログ記録 | Microsoft ID プラットフォーム
+title: Microsoft Authentication Library (MSAL) アプリケーションでのログ記録 | Azure
 description: Microsoft Authentication Library (MSAL) アプリケーションのログ記録について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dad8a276cd40b1ff04bbced833b5d70cec4fc87
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268584"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678031"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL アプリケーションでのログ記録
 
@@ -44,14 +44,14 @@ MSAL では、いくつかのレベルのログ記録の詳細が提供されま
 ## <a name="logging-in-msalnet"></a>MSAL.NET でのログ
 
  > [!NOTE]
- > MSAL.NET の詳細については、[MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) をチェックしてください。 MSAL.NET のログ記録のサンプルなど多くを入手できます。
- 
+ > MSAL.NET のログ記録のサンプルなどについては、[MSAL.NET の Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) を参照してください。
+
 MSAL 3.x では、ログ記録は、`.WithLogging` ビルダー修飾子を使用してアプリの作成時にアプリケーションごとに設定されます。 このメソッドは、次のオプション パラメーターを取ります。
 
-- *Level* では、目的のログ記録のレベルを指定できます。 エラーに設定すると、エラーだけを記録します
-- *PiiLoggingEnabled* では、true に設定した場合、個人および組織のデータをログ記録できます。 既定では、これは false に設定されています。そのため、ご利用のアプリケーションでは個人データはログ記録されません。
-- *LogCallback* は、ログ記録を行う委任に設定されます。 *PiiLoggingEnabled* が true の場合、このメソッドはメッセージを 2 回受信します。1 回目は *containsPii* パラメーターが false になっており、メッセージには個人データが含まれず、2 回目は *containsPii* パラメーターが true になっており、メッセージには個人データが含まれることがあります。 場合によっては (メッセージに個人データが含まれない場合)、メッセージは同じになります。
-- *DefaultLoggingEnabled* は、プラットフォームの既定のログ記録を有効にします。 既定では、false になっています。 これを true に設定した場合、デスクトップ/UWP アプリケーションのイベント トレーシング、iOS の NSLog、および Android の logcat を使用します。
+- `Level` では、目的のログ記録のレベルを指定できます。 エラーに設定すると、エラーだけを記録します
+- `PiiLoggingEnabled` を true に設定した場合、個人および組織のデータをログ記録できます。 既定では、false に設定されており、そのためアプリケーションは個人データをログ記録しません。
+- `LogCallback` は、ログ記録を行う委任に設定されます。 `PiiLoggingEnabled` が true の場合、このメソッドはメッセージを 2 回受信します。1 回目は `containsPii` パラメーターが false になっており、メッセージには個人データが含まれず、2 回目は `containsPii` パラメーターが true になっており、メッセージには個人データが含まれることがあります。 場合によっては (メッセージに個人データが含まれない場合)、メッセージは同じになります。
+- `DefaultLoggingEnabled` は、プラットフォームの既定のログ記録を有効にします。 既定では、false になっています。 これを true に設定した場合、デスクトップ/UWP アプリケーションのイベント トレーシング、iOS の NSLog、および Android の logcat を使用します。
 
 ```csharp
 class Program
@@ -80,16 +80,54 @@ class Program
  }
  ```
 
- ## <a name="logging-in-msaljs"></a>MSAL.js でのログ記録
+## <a name="logging-in-msal-for-android-using-java"></a>Java を使用した MSAL for Android でのログ記録
 
- `UserAgentApplication` インスタンスの作成用の構成中にロガー オブジェクトを渡すことによって、MSAL.js でのログ記録を有効にできます。 このロガー オブジェクトには、次のプロパティがあります。
+ログ記録コールバックを作成することにより、アプリの作成時にログ記録を有効にします。 コールバックでは、次のパラメーターを受け取ります。
+
+- `tag` は、ライブラリによってコールバックに渡される文字列です。 ログ エントリに関連付けられており、ログ メッセージを並べ替えるために使用できます。
+- `logLevel` では、目的のログ記録のレベルを指定できます。 サポートされているログ レベルは、`Error`、`Warning`、`Info`、`Verbose` です。
+- `message` はログ エントリの内容です。
+- `containsPII` では、個人データまたは組織データを含むメッセージをログに記録するかどうかを指定します。 既定では、これは false に設定されています。そのため、ご利用のアプリケーションでは個人データはログ記録されません。 `containsPII` が `true` の場合、このメソッドはメッセージを 2 回受信します。1 回目は `containsPII` パラメーターが `false` になっており、`message` には個人データが含まれず、2 回目は `containsPii` パラメーターが `true` に設定され、メッセージには個人データが含まれることがあります。 場合によっては (メッセージに個人データが含まれない場合)、メッセージは同じになります。
+
+```java
+private StringBuilder mLogs;
+
+mLogs = new StringBuilder();
+Logger.getInstance().setExternalLogger(new ILoggerCallback()
+{
+   @Override
+   public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII)
+   {
+      mLogs.append(message).append('\n');
+   }
+});
+```
+
+既定では、MSAL logger では個人を特定できる情報や組織を特定できる情報はキャプチャされません。
+個人を特定できる情報や組織を特定できる情報のログ記録を有効にするには:
+
+```java
+Logger.getInstance().setEnablePII(true);
+```
+
+個人データと組織データのログ記録を無効にするには:
+
+```java
+Logger.getInstance().setEnablePII(false);
+```
+
+既定では、logcat へのログ記録は無効になっています。 有効にするには: 
+```java
+Logger.getInstance().setEnableLogcatLog(true);
+```
+
+## <a name="logging-in-msaljs"></a>MSAL.js でのログ記録
+
+ `UserAgentApplication` インスタンスの作成用の構成中にロガー オブジェクトを渡すことによって、MSAL.js でのログ記録を有効にします。 このロガー オブジェクトには、次のプロパティがあります。
 
 - `localCallback`: ユーザー設定の方法でログを使用および公開するために開発者が指定できるコールバック インスタンス。 ログをリダイレクトする方法に応じて localCallback メソッドを実装します。
-
-- `level` (省略可能): 構成可能なログ レベル。 サポートされるレベルは、エラー、警告、情報、詳細です。 既定値は情報です。
-
-- `piiLoggingEnabled` (省略可能): true に設定した場合、個人および組織のデータをログ記録できます。 既定では、これは false に設定されています。そのため、ご利用のアプリケーションでは個人データはログ記録されません。 個人データのログは、Console、Logcat、NSLog などの既定の出力には決して書き込まれません。 既定値は false に設定されます。
-
+- `level` (省略可能): 構成可能なログ レベル。 サポートされているログ レベルは、`Error`、`Warning`、`Info`、`Verbose` です。 既定では、 `Info`です。
+- `piiLoggingEnabled` (省略可能): true に設定した場合、個人データと組織データをログに記録できます。 既定では、これは false であるため、ご利用のアプリケーションでは個人データはログ記録されません。 個人データのログは、Console、Logcat、NSLog などの既定の出力には決して書き込まれません。
 - `correlationId` (省略可能): デバッグ目的で要求を応答にマップするために使用される一意の識別子。 既定値は RFC4122 バージョン 4 guid (128 ビット) です。
 
 ```javascript
@@ -99,7 +137,7 @@ function loggerCallback(logLevel, message, containsPii) {
 
 var msalConfig = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”,
+        clientId: “<Enter your client id>”,
     },
      system: {
              logger: new Msal.Logger(

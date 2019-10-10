@@ -4,16 +4,16 @@ description: この記事では、Azure EA Portal で管理者が行う一般的
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105480"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308099"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -31,7 +31,7 @@ ms.locfileid: "71105480"
 
 Azure EA 管理者は、部署を作成した後、部署管理者を追加し、それぞれを部署に関連付けることができます。 部署管理者は、新しいアカウントを作成できます。 Azure EA サブスクリプションを作成するには、新しいアカウントが必要です。
 
-部署を追加する方法の詳細については、「Create an Azure EA department (Azure EA 部署を作成する)」を参照してください。
+部門管理者を追加する方法の詳細については、[Azure EA 部門管理者の作成](billing-ea-portal-get-started.md#add-a-department-admin)に関するセクションを参照してください。
 
 ## <a name="enterprise-user-roles"></a>エンタープライズ ユーザー ロール
 
@@ -124,14 +124,14 @@ Azure アカウントの詳細については、「Add an account (アカウン�
 
 登録の転送を要求する場合は、次の情報を指定します。
 
-- 元の登録については、転送元の登録番号とアカウント
-- 対象の登録については、転送先の登録番号
+- 元の登録については、転送元の登録番号とアカウント。
+- 対象の登録については、転送先の登録番号。
 - 登録の転送の有効日には、対象の登録の開始日以降の日付を指定できます。 選択した日付は、既に発行されている超過分の請求書の使用量に影響を与えません。
 
 登録の転送前に注意するべきその他の点は、次のとおりです。
 
-- 元の登録と対象の登録の両方で、EA 管理者からの承認が必要です
-  - 場合によっては、Microsoft が元の登録の EA 管理者に追加の承認を要求することがあります
+- 元の登録と対象の登録の両方で、EA 管理者からの承認が必要です。
+  - 場合によっては、Microsoft が元の登録の EA 管理者に追加の承認を要求することがあります。
 - 登録の転送要件が満たさない場合は、アカウントの転送を検討してください。
 - 指定したアカウントのみが転送されます。 すべてのアカウントの転送を要求することができます。
 - 元の登録の状態は、アクティブまたは延長として保持されます。 有効期限が切れるまでは、この登録を使用し続けることができます。
@@ -208,7 +208,7 @@ Azure EA 登録を終了する場合は、次のことができます。
 6. 必要に応じて連絡先を追加し、 **[追加]** をクリックします。
 7. **[Save]** をクリックします。
 
-![連絡先を追加する[連絡先の追加] を示す例 ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![[連絡先の追加] ボックスを示す例 ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure スポンサー プラン
 Azure スポンサー プランは、Microsoft Azure の限定スポンサー アカウントです。 Microsoft が選択した一部のお客様のみに送られる招待メールを通じて利用可能になります。 Microsoft Azure スポンサー プランの対象となるお客様には、ご使用のアカウント ID に電子メールの招待状が送信されます。

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77f0b196777ae0f2ff0b870eac0a01b11854190b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063454"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936806"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -29,8 +29,8 @@ ms.locfileid: "71063454"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
-| inputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
+| InputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
+| InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | stringComparison | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 
 **AssertStringClaimsAreEqual** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationStringsAreNotEqual** セルフアサート技術プロファイル メタデータにより、ユーザーに表示されるエラー メッセージが制御されます。
@@ -154,8 +154,8 @@ ms.locfileid: "71063454"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
-| inputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
+| InputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
+| InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | operator | string | 指定できる値: `EQUAL` または `NOT EQUAL`。 |
 | InputParameter | ignoreCase | ブール値 | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
 | OutputClaim | outputClaim | ブール値 | この要求変換が呼び出された後に生成される ClaimType。 |
@@ -195,7 +195,7 @@ ms.locfileid: "71063454"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 比較する要求の種類。 |
+| InputClaim | inputClaim1 | string | 比較する要求の種類。 |
 | InputParameter | operator | string | 指定できる値: `EQUAL` または `NOT EQUAL`。 |
 | InputParameter | compareTo | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 | InputParameter | ignoreCase | ブール値 | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
@@ -504,7 +504,7 @@ ms.locfileid: "71063454"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | string | 比較する要求の種類。 |
+| InputClaim | inputClaim | string | 比較する要求の種類。 |
 | InputParameter | matchTo | string | `inputClaim` と比較する文字列。 |
 | InputParameter | stringComparison | string | 指定できる値: `Ordinal` または `OrdinalIgnoreCase`。 |
 | InputParameter | stringMatchMsg | string | 文字列が等しい場合に設定する最初の値。 |
@@ -553,7 +553,7 @@ ms.locfileid: "71063454"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | claimToMatch | string | 比較する要求の種類。 |
+| InputClaim | claimToMatch | string | 比較する要求の種類。 |
 | InputParameter | matchTo | string | inputClaim と比較する文字列。 |
 | InputParameter | stringComparison | string | 指定できる値: `Ordinal` または `OrdinalIgnoreCase`。 |
 | InputParameter | outputClaimIfMatched | string | 文字列が等しい場合に設定する値。 |

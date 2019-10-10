@@ -7,18 +7,22 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 15b4d3208be693a5b8d858d30b663347515f5a68
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130286"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687051"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを作成する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイック スタートでは、Azure PowerShell を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM から SQL Database サーバーに安全にアクセスできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+
+> [!NOTE]
+> プライベート エンドポイントとサービス エンドポイントを同じサブネット内で併用することはできません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -210,30 +214,31 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     Name:    myserver.privatelink.database.windows.net
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
-3. Install [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+    ```
+3. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) をインストールします。
 
-4. In **Connect to server**, enter or select this information:
+4.  **[サーバーに接続]** で、次の情報を入力または選択します。
 
-    | Setting | Value |
+    | Setting | 値 |
     | ------- | ----- |
-    | Server type| Select **Database Engine**.|
-    | Server name| Select *myserver.database.windows.net* |
-    | User name | Enter a password provided during the SQL server creation. |
-    |Password |Enter a password provided during the SQL server creation. |
-    |Remember password|Select **Yes**.|
+    | サーバーの種類| **データベース エンジン**を選択します。|
+    | サーバー名| *myserver.database.windows.net* を選択します。 |
+    | ユーザー名 | SQL サーバーの作成時に指定したパスワードを入力します。 |
+    |パスワード |SQL サーバーの作成時に指定したパスワードを入力します。 |
+    |パスワードを保存する|**[はい]** を選択します。|
     |||
-1. Select **Connect**.
-2. Browse databases from left menu.
-3. (Optionally) Create or query information from mydatabase.
-4. Close the remote desktop connection to *myVm*. 
+1.  **[接続]** を選択します。
+2. 左側のメニューでデータベースを参照します。
+3. (省略可能) 情報を作成するか、mydatabase に対して情報のクエリを実行します。
+4.  *myVm* へのリモート デスクトップ接続を閉じます。 
 
-## Clean up resources 
-When you're done using the private endpoint, SQL server, and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
-2. Select **Delete resource group**. 
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+プライベート エンドポイント、SQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。 
+1. ポータルの上部にある **検索** ボックスに「 *myResourceGroup* 」と入力し、検索結果から  *myResourceGroup*  を選択します。 
+2.  **[リソース グループの削除]** を選択します。 
+3.  **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)**   に「myResourceGroup」と入力し、 **[削除]** を選択します。
 
-## Next steps
+## <a name="next-steps"></a>次の手順
 
-In this quickstart, you created a VM on a virtual network, a SQL database server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the SQL database server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint?](private-endpoint-overview.md).
+このクイックスタートでは、仮想ネットワーク上の VM と SQL データベース サーバー、プライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用して SQL データベース サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。
 

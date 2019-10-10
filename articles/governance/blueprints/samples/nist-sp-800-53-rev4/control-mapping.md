@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 55f336e0888b4f480a03610ab035cd6a1a755a2e
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: c4d8cd7996e45aafca37e68974d6250578ba9502
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309493"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980957"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 のブループリント サンプルのコントロール マッピング
 
@@ -86,7 +85,7 @@ Azure SQL Database 用の高度なデータ セキュリティであるデータ
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) リモート アクセス | 自動監視および制御
 
-このブループリントは、Azure App Service アプリケーションのリモート デバッグがオフになっているかどうかを監視するための [Azure Policy](../../../policy/overview.md) 定義と、パスワードなしでアカウントからのリモート接続を許可する Linux 仮想マシンを監査するポリシー定義を割り当てることによって、リモート アクセスの監視と制御を支援するものです。 また、このブループリントでは、ストレージ アカウントに対する無制限のアクセスの監視に役立つ Azure Policy 定義も 1 件割り当てられます。 これらのインジケーターを監視すれば、リモート アクセスの方式がセキュリティ ポリシーに従っているかどうかを確かめることができます。
+このブループリントは、Azure App Service アプリケーションのリモート デバッグがオフになっていることを監視するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによってリモート アクセスの監視と制御を支援するものです。 また、パスワードなしでアカウントからのリモート接続を許可する Linux 仮想マシンを監査するポリシー定義も、このブループリントによって割り当てられます。 さらに、このブループリントでは、ストレージ アカウントに対する無制限のアクセスの監視に役立つ Azure Policy 定義も 1 件割り当てられます。 これらのインジケーターを監視すれば、リモート アクセスの方式がセキュリティ ポリシーに従っているかどうかを確かめることができます。
 
 - \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する
 - \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する要件をデプロイする

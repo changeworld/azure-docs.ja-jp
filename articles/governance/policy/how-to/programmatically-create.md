@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 695e04dcbc7762c85dd0dd9aaff6e5fd9fe99348
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 047e9cab8d7776fc3b5353aebc571e28ad780ae8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155573"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977948"
 ---
 # <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 

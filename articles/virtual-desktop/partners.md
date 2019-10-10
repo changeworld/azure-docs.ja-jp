@@ -7,16 +7,38 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918990"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673014"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
-この記事では、Windows Virtual Desktop のパートナーをアルファベット順に示します。
+この記事では、Windows Virtual Desktop のパートナー一覧を示します。
+
+## <a name="citrix"></a>Citrix
+
+![Citrix のロゴ](./media/partners/citrix.png)
+
+Citrix は、企業のオンプレミスに展開されているものと、Azure 上の仮想アプリとデスクトップ ワークロードのハイブリッド環境の一元管理を提供する、認定プロバイダーです。 Citrix Workspace と Virtual Apps and Desktops サービスを使用するユーザーには、高精度なエクスペリエンスを提供する Citrix の高度な HDX プロトコルが使用され、場所を問わずに、任意のデバイスからのアプリやデスクトップへのアクセスが許可されます。
+
+Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度およびパフォーマンスの改善、オンデマンドでのワークロードのプロビジョニング、画像およびアプリケーションの管理の単純化など、Windows Virtual Desktop の価値を広げます。 IT は、インテリジェントなスケーリング ツールでコストを最適化する一方で、さまざまな業種で一番厳しいアプリケーションに対して実地テストされたすばらしいエクスペリエンスをエンドユーザーに提供できます。
+
+- [パートナーの Web サイトにアクセスする。](https://more.citrix.com/wvd)
+
+
+## <a name="vmware"></a>VMware
+
+![VMware のロゴ](./media/partners/vmware.png)
+
+組織は VMware Horizon Cloud on Microsoft Azure で、Microsoft Azure 上の自社のインスタンスを、仮想化された Windows アプリケーションおよびデスクトップを提供するシンプルで直観的な Horizon Cloud コントロール プレーンに接続して、安全で包括的なクラウド ホスト ソリューションを構築できます。 VMware は、Windows Virtual Desktop のリリースで Microsoft とパートナーシップを組み、Horizon Cloud on Microsoft Azure を使用し、お客様の Windows Virtual Desktop の機能を拡張しました。
+
+承認されたプロバイダーであるため、VMware Horizon Cloud on Microsoft Azure のお客様は、広範なエンドポイント サポート、グローバルにクラウド向けに最適化されたブローカリング、柔軟なデスクトップ オプションと構成、ユーザーの環境管理、ハイブリッド環境のサポートなどの Horizon Cloud の最新のエンタープライズ クラスのすべての機能に加え、Windows 10 Enterprise でのマルチセッション、Windows 7 のセキュリティ更新プログラムの最長 3 年間の無料延長、FSLogix 機能などの Windows Virtual Desktop のすべての利点を得ることができます。 
+
+- [Horizon Cloud on Microsoft Azure のテクニカル プレビューに登録する。](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)
+- [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
 
 ## <a name="cloudjumper"></a>CloudJumper
 
@@ -28,6 +50,17 @@ CloudJumper のソフトウェアである Cloud Workspace Management Suite に�
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg)
 - [パートナーの Web サイトにアクセスする。](https://cloudjumper.com/wvd/)
+
+## <a name="controlup"></a>ControlUp
+
+![ControlUp のロゴ](./media/partners/controlup.png)
+
+ControlUp は、Windows Virtual Desktop に付加価値を与えるサービス プロバイダーです。IT チームは、これで、オンプレミス、ハイブリッド クラウド、クラウド インフラストラクチャ上の単一のコンソールからリアルタイムで監視、トラブルシューティング、分析、問題解決を実行できます。 IT はまた、ControlUp の分析および管理プラットフォームで、急増するユース ケースに先を見越して対応する修正プログラムを自動化できます。
+
+ControlUp を Windows Virtual Desktop で使用すると、Windows Virtual Desktop 環境とエンドユーザー エクスペリエンスを最適化する機能が追加されます。 IT は、ControlUp コンソールからエンドユーザーの環境を確認し、パフォーマンスの問題を効果的に監視およびトラブルシューティングできるようになります。 直観的なダッシュボードには、展開されている仮想デスクトップの分析情報および分析と、コミュニティ ベンチマークが多数ある自動レポートのオプションがあります。 ControlUp では、複数のデート ソースおよび種類を、コンピューティング、ストレージ、Windows Virtual Desktop インフラストラクチャに渡って集計した高パフォーマンスなデータ セットに整理して管理し、詳細に 1 つのウィンドウから可視できます。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)
+- [パートナーの Web サイトにアクセスする。](https://www.controlup.com/solutions/ms_wvd/)
 
 ## <a name="lakeside-software"></a>Lakeside Software
 

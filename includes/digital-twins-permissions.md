@@ -2,18 +2,19 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: digital-twins
-author: dsk-2015
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/24/2019
-ms.author: dkshir
+ms.date: 09/30/2019
 ms.custom: include file
-ms.openlocfilehash: 1fc30ea5aa843329b6227bfa564b3d10e2273cd7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 880c2a811df7b4d41760676d4d6e0153e9384f38
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310494"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949754"
 ---
 >[!NOTE]
 >このセクションでは、[新しい Azure AD アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)手順について説明します。 まだ従来のネイティブ アプリの登録がある場合、サポートされている限りはそれを使用できます。 さらに、何らかの理由でアプリ登録の新しい方法が設定で機能しない場合は、従来のネイティブ AAD アプリを作成してみてください。 詳細な手順については、「[Register your Azure Digital Twins app with Azure Active Directory legacy (Azure Digital Twins アプリを Azure Active Directory レガシに登録する)](../articles/digital-twins/how-to-use-legacy-aad.md)」を参照してください。 
@@ -39,16 +40,18 @@ ms.locfileid: "71310494"
 
 1. アプリの登録の **[API アクセス許可]** ウィンドウを開きます。 **[アクセス許可の追加]** ボタンを選択します。 **[API アクセス許可の要求]** ウィンドウで、 **[所属する組織で使用している API]** タブを選択し、以下を探します:
     
-    1. **Azure Digital Twins**。 **Azure Digital Twins** API を選択します。
+    1. `Azure Digital Twins` **Azure Digital Twins** API を選択します。
 
         [![API または Azure Digital Twins を検索する](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    1. または、**Azure Smart Spaces** を検索します。 **Azure Smart Spaces Service** API を選択します。
+    1. または、`Azure Smart Spaces Service` を検索します。 **Azure Smart Spaces Service** API を選択します。
 
         [![Azure Smart Spaces の API を検索する](./media/digital-twins-permissions/aad-app-search-api.png)](./media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
-    > [!NOTE]
-    > 検索時に表示される正確な名前は、所属する Azure テナントによって異なる場合があります。
+    > [!IMPORTANT]
+    > 表示される Azure AD API の名前と ID は、テナントによって異なります。
+    > * テスト テナントと顧客アカウントでは、`Azure Digital Twins` を検索する必要があります。
+    > * 他の Microsoft アカウントでは、`Azure Smart Spaces Service` を検索する必要があります。
 
 1. 選択された API は、同じ **[API アクセス許可の要求]** ウィンドウに **Azure Digital Twins** と表示されます。 **[Read (1)]\(読み取り (1)\)** ドロップ ダウンを選択し、 **[Read.Write]** チェック ボックスをオンにします。 **[アクセス許可の追加]** ボタンを選択します
 

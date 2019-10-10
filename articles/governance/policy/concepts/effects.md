@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 06a5ffbef2b841acc7ea7ecc82d05dfccbc0cab1
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 991cfb54dc511c284c5f5d0cf1807d5dd42b34ea
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146999"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978071"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 

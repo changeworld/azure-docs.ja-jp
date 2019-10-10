@@ -151,6 +151,10 @@
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
             - name: セッションの設定
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+            - name: キャッシュ サイズの確認
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest'
+            - name: キャッシュのクリーンアップ
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest'
         - name: テーブル
           items:
             - name: 概要

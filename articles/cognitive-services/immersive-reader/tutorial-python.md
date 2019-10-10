@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 5e33108c9fc674abaf980a1272cca31aa21cffff
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991130"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326442"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>チュートリアル:Python サンプル プロジェクトを使用してイマーシブ リーダーを起動する
 
@@ -113,7 +113,7 @@ pip install jinja2
 virtualenv をインストールします。 分離された Python 環境を作成するためのツール。
 
 ```cmd
-pip install pip install virtualenv
+pip install virtualenv
 ```
 
 virtualenvwrapper-win をインストールします。 virtualenvwrapper の背後にある考え方は、virtualenv の使用を容易にすることです。
@@ -126,6 +126,12 @@ requests モジュールをインストールします。 requests は、Python 
 
 ```cmd
 pip install requests
+```
+
+python-dotenv モジュールをインストールします。 このモジュールは、.env ファイルからキーと値のペアを読み取り、それらを環境変数に追加します。
+
+```cmd
+pip install python-dotenv
 ```
 
 仮想環境を作成する
@@ -251,6 +257,12 @@ requests モジュールをインストールします。 requests は、Python 
 
 ```bash
 pip install requests --user
+```
+
+python-dotenv モジュールをインストールします。 このモジュールは、.env ファイルからキーと値のペアを読み取り、それらを環境変数に追加します。
+
+```bash
+pip install python-dotenv --user
 ```
 
 仮想環境を保持するフォルダーを選択し、次のコマンドを実行します

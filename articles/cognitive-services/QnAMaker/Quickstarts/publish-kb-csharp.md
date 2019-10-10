@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/24/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: a116dd595b7bde3f320bc0617c99fdb2ab7830d4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2b2c2ed43a229d929353767b229f8331b49a0e46
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261952"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802898"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート: C# を使用して QnA Maker のナレッジ ベースを公開する
 
@@ -28,7 +28,7 @@ ms.locfileid: "71261952"
 ## <a name="prerequisites"></a>前提条件
 
 * 最新の [**Visual Studio Community エディション**](https://www.visualstudio.com/downloads/)。
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーと (リソース名を含む) エンドポイントを取得するには、Azure portal で対象のリソースの **[クイックスタート]** を選択します。
 * URL の kbid クエリ文字列パラメーターに含まれている QnA Maker ナレッジ ベース (KB) ID (下図)。
 
     ![QnA Maker ナレッジ ベース ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)

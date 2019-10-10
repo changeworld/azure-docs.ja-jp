@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 09/16/2019
-ms.openlocfilehash: 85ab8a61e0aebadf212217bc88e07e0066eca02b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 10/02/2019
+ms.openlocfilehash: c3f8189cf1b09b38b641b92b9234fde618839987
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146797"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828801"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
@@ -38,12 +38,27 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 | ハードウェア | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、高速 NVMe SSD、仮想コア=1 LP (ハイパー スレッド) |
 | 仮想コアの数 | 8、16、24 の仮想コア | 4、8、16、24、32、40、64、80 の仮想コア |
 | 最大メモリ (メモリ/コア比) | 仮想コアあたり 7 GB<br/>メモリ量を増やすには、仮想コアを追加します。 | 仮想コアあたり 5.1 GB<br/>メモリ量を増やすには、仮想コアを追加します。 |
-| 最大インメモリ OLTP メモリ | インスタンスの制限:仮想コアあたり 3 GB<br/>データベースの制限:<br/> - 8 コア:データベースあたり 8 GB<br/> - 16 コア:データベースあたり 20 GB<br/> - 24 コア:データベースあたり 36 GB | インスタンスの制限:仮想コアあたり 2.5 GB<br/>データベースの制限:<br/> - 8 コア:データベースあたり 13 GB<br/> - 16 コア:データベースあたり 32 GB |
+| 最大インメモリ OLTP メモリ | インスタンスの制限:仮想コアあたり 1 から 1.5 GB| インスタンスの制限:仮想コアあたり 0.8 から 1.65 GB |
 | インスタンスの予約済み最大ストレージ |  汎用: 8 TB<br/>Business Critical:1 TB | 汎用:8 TB<br/> Business Critical: コアの数に応じて 1 TB、2 TB、または 4 TB |
 
 > [!IMPORTANT]
 > - Gen4 ハードウェアは段階的に廃止されています。Gen5 ハードウェアに新しいマネージド インスタンスをデプロイすることをお勧めします。
 > - 現時点で、Gen4 ハードウェアは引き続き次のリージョンでのみ利用できます。北ヨーロッパ、西ヨーロッパ、米国東部、米国中南部、米国中北部、米国西部 2、米国中部、カナダ中部、インド南部、東南アジア、韓国中部。
+
+#### <a name="in-memory-oltp-available-space"></a>使用可能なインメモリ OLTP 領域 
+
+[Business Critical](sql-database-service-tier-business-critical.md) サービス レベルのインメモリ OLTP 領域は、仮想コアの数とハードウェアの世代によって異なります。 次の表に、インメモリ OLTP オブジェクトに使用できるメモリの制限をリストします。
+
+| インメモリ OLTP 領域  | **Gen5** | **Gen4** |
+| --- | --- | --- |
+| 4 仮想コア  | 3.14 GB | |   
+| 8 仮想コア  | 6.28 GB | 8 GB |
+| 16 仮想コア | 15.77 GB | 20 GB |
+| 24 仮想コア | 25.25 GB | 36 GB |
+| 32 仮想コア | 37.94 GB | |
+| 40 仮想コア | 52.23 GB | |
+| 64 仮想コア | 99.9 GB    | |
+| 80 仮想コア | 131.68 GB| |
 
 ### <a name="service-tier-characteristics"></a>サービス レベルの特性
 

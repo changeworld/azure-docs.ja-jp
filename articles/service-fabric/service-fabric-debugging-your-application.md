@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300677"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947900"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのデバッグ
 > [!div class="op_single_selector"]
@@ -76,14 +76,10 @@ Service Fabric アプリケーションが Azure 内の Service Fabric クラス
 
 > [!NOTE]
 > この機能には [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) と [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/) が必要です。    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > リモート デバッグは開発/テスト シナリオ向けであり、運用環境向けではありません。これは、実行中のアプリケーションに影響が生じるためです。
-> 
-> 
 
 1. **Cloud Explorer** でクラスターに移動します。 右クリックし、 **[デバッグを有効にする]** を選択します。
    
@@ -128,8 +124,6 @@ Service Fabric アプリケーションが Azure 内の Service Fabric クラス
 > [!WARNING]
 > ストリーミング トレースは開発/テスト シナリオ向けであり、運用環境向けではありません。これは、実行中のアプリケーションに影響が生じるためです。
 > 運用環境のシナリオでは、Azure Diagnostics を使用したイベント転送に頼る必要があります。
-> 
-> 
 
 1. **Cloud Explorer** でクラスターに移動します。 右クリックし、 **[ストリーミング トレースを有効にする]** を選択します。
    

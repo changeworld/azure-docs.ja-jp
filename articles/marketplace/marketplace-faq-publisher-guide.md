@@ -1,26 +1,26 @@
 ---
-title: Azure Marketplace に関する FAQ
-description: Microsoft Azure Marketplace についての一般的な質問への回答
+title: Microsoft Commercial Marketplace の FAQ
+description: Azure Marketplace と Microsoft AppSource についての一般的な質問への回答
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 10/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259952"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827989"
 ---
-# <a name="marketplace-faqs"></a>Marketplace に関する FAQ
+# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace の FAQ
 
-Microsoft Azure Marketplace についての一般的な質問への回答。
+Azure Marketplace と Microsoft AppSource についての一般的な質問への回答。
 
 ## <a name="faq-for-customers"></a>お客様向けの FAQ
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Azure Marketplace について知っておくべきこと
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketplace と Microsoft AppSource について知っておくべきこと
 
 **Azure Marketplace とは何ですか?**
 
@@ -155,7 +155,7 @@ BYOL ソリューションに対するライセンス資格情報の取得と適
 
 **どのような種類の試用版がサポートされていますか?**
 
-無料試用版オファーは、試用版を開始するための参照情報が含まれるリストです。 これにより、お客様は発行元によって定義された試用版エクスペリエンスを設定するために Web サイトに移動します。 試用版は、最初の月が無料の有料オファリングに追加することもできます。 
+発行元は、有料 SaaS オファーの場合は 1 か月間、VM イメージの場合は 1 か月または 3 か月間の無料使用分を追加できます。 無料試用版オファーは、試用版を開始するための参照情報が含まれるリストです。 これにより、お客様は発行元によって定義された試用版エクスペリエンスを設定するために Web サイトに移動します。 試用版は、最初の月が無料の有料オファリングに追加することもできます。 
 
 **Free レベルまたはライセンス持ち込み (BYOL) オファリングをデプロイするには、ファイル上に支払い方法 (クレジット カードなど) を指定する必要がありますか?**
 
@@ -169,6 +169,10 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 はい。Enterprise Agreement (EA) のお客様の場合、登録管理者は登録に関するすべてのアカウントの購入特権を無効にした後、購入を行うための十分に長い期間それを再び有効にすることができます。 さらに、すべてのお客様は Azure Policy を使用して、自分の Azure サブスクリプションのデプロイ オプション (Azure Marketplace リソースの管理を含む) を制限できます。
 
+**商業マーケットプレースでの購入では、どのような支払い方法がサポートされていますか?**
+
+お客様は、クレジット カードを使用して Azure Marketplace と Microsoft AppSource からオファリングを購入できます。 既存の Azure サブスクリプションをお持ちの場合、Azure Marketplace からの購入では、アカウントに構成されている支払い方法が使用され、個別の品目として同じ請求書に表示されます。 一部のオファーでは Azure の年額コミットメントが使用されますが、ほとんどの商業マーケットプレースでの購入では、Azure インフラストラクチャの消費とは異なり、Enterprise Agreement コミットメントは使用されません。
+
 **Azure Marketplace のオファーに対して、自分のアカウントの Azure サブスクリプション クレジットまたは年額コミットメント資金を適用できますか?**
 
 特定の Azure Marketplace のオファーは、Azure サブスクリプション クレジットまたは年額コミットメント資金を使用できます。 このプログラムに参加している製品の完全な一覧については、[Azure 年額コミットメント](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)に関するページを参照してください。 これらのオファーには、BYOL または BYOS オプションは含まれません。 その他のすべての Azure Marketplace のオファーは、Azure サブスクリプション クレジットや年額コミットメントを使用できません。これには、1 か月の無料試用版のクレジット、月単位の MSDN クレジット、Azure プロモーションからのクレジット、年額コミットメントの残高、および Azure から提供されるその他のすべての無料クレジットが含まれます。
@@ -176,12 +180,6 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 **Azure Marketplace での購入物にボリューム ライセンス割引は適用されますか?**
 
 いいえ。 Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
-
-**サブスクリプションに対する支払いはどのようにすればよいですか?Azure Marketplace での購入物は、Azure の請求書に記載されますか、それとも別の請求書となりますか?**
-
-MOSP - [マイクロソフト オンライン サブスクリプション プログラム](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web ダイレクトなど) のお客様は、自分の Azure サブスクリプション プロファイルのファイル上にある同じクレジット カードに対して請求されます。 ファイル上にクレジット カードがない場合は、Azure Marketplace から購入できません。 この場合は、代わりに Azure の料金が自分に請求されるようにする特別な免除を受けています。
-
-Enterprise Agreement (EA) のお客様は、その EA に対して請求されます。 ここに一覧表示されている特定の Azure Marketplace のオファーは、まず使用可能なすべての年額コミットメントから差し引かれ、次に四半期ごとの 1 つの請求書で超過分として課金されます。 EA インダイレクト カスタマー、教育機関のお客様、および政府機関のお客様は、担当のライセンス ソリューション プロバイダー (LSP) によって課金されます。
 
 **Azure Marketplace サブスクリプションの詳細や課金情報はどこで表示できますか?**
 
@@ -197,7 +195,7 @@ MOSP - [マイクロソフト オンライン サブスクリプション プロ
 
 **Azure Marketplace での購入物に対してどれくらいの頻度で課金されますか?**
 
-マイクロソフトエンタープライズ契約のお客様は、概要が説明されている特定のサービスについて、まず使用可能な年額コミットメント資金からその月に消費したこれらのサービスの総コストが差し引かれます。 年額コミットメントから差し引かれないすべての Azure Marketplace のオファーは、後で月単位に課金されます。 SaaS の年間サブスクリプションは、1 年間のサービスに対して 1 回課金されます。
+年額コミットメントから差し引かれないすべての Azure Marketplace のオファーは、後で月単位に課金されます。 SaaS の年間サブスクリプションは、1 年間のサービスに対して 1 回課金されます。
 
 MOSP - [マイクロソフト オンライン サブスクリプション プログラム](https://azure.microsoft.com/support/legal/subscription-agreement/) (Web ダイレクト) のお客様は、自分の Azure サブスクリプション プロファイルのファイル上にある同じクレジット カードに対して月単位で請求されます。 SaaS の年間サブスクリプションは、1 年間のサービスに対して 1 回課金されます。
 
@@ -210,10 +208,6 @@ Azure Marketplace から購入された他のサービスを EA サブスクリ�
 **Azure Marketplace での仮想マシン オファーのコスト構造における "*価格*"、"*ソフトウェア価格*"、"*合計額*" の違いは何ですか?**
 
 "*価格*" は、ソフトウェアを実行する Azure 仮想マシンのコストを指します。 "*ソフトウェア価格*" は、Azure 仮想マシン上で実行されている Marketplace 発行元のソフトウェアのコストを指します。 "*合計額*" は、Azure 仮想マシンと Azure 仮想マシン上で実行されている Marketplace 発行元のソフトウェアを合わせた総コストを指します。
-
-**Azure Marketplace のオファーを実行するために必要な Azure の製品やサービスに対して、自分のアカウントの Azure サブスクリプション クレジットまたは年額コミットメント資金を適用できますか?**
-
-はい。 アカウントの Azure サブスクリプション クレジットまたは年額コミットメント資金を Azure 製品や Azure Marketplace のオファーに対して使用できます。 たとえば、Azure 年額コミットメント資金を Azure Marketplace での仮想マシンのオファーの "*価格*" コンポーネントに対して適用できます。 ただし、Azure サブスクリプション クレジットと年額コミットメント資金は、Azure 仮想マシン上で実行されている Marketplace 発行元の特定のソフトウェア ("*ソフトウェア価格*") に対してのみ適用できます。
 
 **Azure Marketplace での購入物のうちのどれだけを使用したかを確認するにはどうすればよいですか?**
 
@@ -253,9 +247,26 @@ Marketplace サービスまたは購入に関する技術的な問題がある�
 
 取り消されたライセンスは、この FAQ に記載されている返金ポリシーの対象となります。  取り消されたすべてのライセンスはアカウントから直ちに削除され、使用できなくなります。
 
+**使用量ベースのオファーでは、返金はサポートされていますか?**
+
+使用量に基づく料金 (時間単位 VM かカスタム測定かにかかわらず) は、キャンセルによる払い戻しはできません。 消費が発生すると、Microsoft のコマース プラットフォームによって料金が処理され、返金が要求されたサービス品質紛争は、Microsoft システムの外部で発行元と顧客の間で直接処理されます。 定額価格と従量制課金制をサポートするオファーでは、標準の返金ポリシーに従って定額料金が請求されます。
+
+**期間中にプランを変更することはできますか?**
+
+いいえ、月単位と年単位の間で移行することはできません。
+
+**同じオファーから 2 つのプランを購入することはできますか?**
+
+はい、同じオファーから 2 つのプランを同時に所有することができます。
+
+**返金とプラン変更のポリシーはネットショップごとに異なりますか?**
+
+いいえ、ビジネス ポリシーは、Azure Marketplace と Microsoft AppSource の間で一貫しています。 クラウド ソリューション プロバイダー プログラムのパートナーによって再販が行われた場合、パートナーは顧客に対して別のポリシーを適用できます。
+
+
 ## <a name="faq-for-publishers"></a>発行元向けの FAQ
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Azure Marketplace について知っておくべきこと
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketplace と Microsoft AppSource について知っておくべきこと
 
 **Azure Marketplace とは何ですか?**
 
@@ -356,7 +367,7 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
 "*Web Apps (SaaS アプリ、アドオン) およびコンサルティング サービス*":
 
 1. Cloud パートナー ポータルで、疑問符アイコンを選択して **[サポート]** をクリックします。
-1. <https://go.microsoft.com/fwlink/?linkid=844975> にアクセスします。
+1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](<https://go.microsoft.com/fwlink/?linkid=844975>) にアクセスします。
 1. サポート ページで、オファーの種類を選択します。
 1. 発行されたオファーの **[削除]** を選択します。
 1. インシデント チケットを作成します。

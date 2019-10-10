@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6326b2ea9b4c2247df4f93eba904b7527666131
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202019"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996378"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
 
@@ -118,7 +118,7 @@ ASC から JIT ポリシーを構成し、JIT のポリシー使用して VM へ
 
 ASC から VM へのアクセス権を要求するには、以下の手順に従います。
 
-1. **[Just In Time VM アクセス]** で、 **[構成済み]** タブを選択します。
+1. **[Just-in-time VM access] (Just-In-Time VM アクセス)** で、 **[構成済み]** タブを選択します。
 
 2. **[仮想マシン]** で、アクセスを要求する VM をクリックします。 VM の横にチェックマークが付きます。
 

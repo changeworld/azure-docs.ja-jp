@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233257"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676652"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
 
@@ -189,8 +189,8 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
 ユーザーが診断ツールを使用できるようにする前に、ユーザーが次のアクセス許可を持っていることを確認してください。
 
-- ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/azure/azure-monitor/platform/roles-permissions-security)を参照してください。
--  ユーザーは、Windows Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Windows Virtual Desktop プレビューにおける委任されたアクセス](delegated-access-virtual-desktop.md)」を参照してください。
+- ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/articles/azure-monitor/platform/roles-permissions-security.md)を参照してください。
+-  ユーザーは、Windows Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Windows Virtual Desktop における委任されたアクセス](delegated-access-virtual-desktop.md)」を参照してください。
 
 また、ユーザーに次の情報を提供する必要もあります。
 

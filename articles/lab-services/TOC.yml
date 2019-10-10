@@ -92,8 +92,6 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-            - name: テンプレート VM で入れ子になった仮想化を有効にする
-              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: クラスルーム ラボを作成して構成する (講師)
           items:
             - name: クラスルーム ラボを作成して管理する
@@ -112,6 +110,8 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: 仮想マシンのパスワードを設定またはリセットする
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: テンプレート VM で入れ子になった仮想化を有効にする
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: クラスルーム ラボの VM に接続する (学生)
           items:
             - name: クラスルーム ラボへのアクセス

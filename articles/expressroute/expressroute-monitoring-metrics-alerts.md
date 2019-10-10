@@ -2,18 +2,18 @@
 title: 監視、メトリック、およびアラート - Azure ExpressRoute | Microsoft Docs
 description: このページでは、ExpressRoute の監視について説明しています。
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154775"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672138"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute の監視、メトリック、およびアラート
 
@@ -72,9 +72,41 @@ ms.locfileid: "71154775"
 
 ![ピアごとの ARP の可用性](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
+## <a name="expressroute-direct-metrics"></a>ExpressRoute Direct メトリック
+
+### <a name="admin-state---split-by-link"></a>管理状態 - リンクによる分割
+ExpressRoute Direct ポート ペアのリンクごとに管理状態を表示できます。
+
+![er direct 管理状態](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
+
+### <a name="bits-in-per-second---split-by-link"></a>1 秒あたりのビット イン - リンクで分割
+ExpressRoute Direct ポート ペアの両方のリンクを対象に、1 秒あたりのビット インを表示できます。 
+
+![er direct の 1 秒あたりのビット イン](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
+
+### <a name="bits-out-per-second---split-by-link"></a>1 秒あたりのビット アウト - リンクで分割
+ExpressRoute Direct ポート ペアの両方のリンクを対象に、1 秒あたりのビット アウトも表示できます。 
+
+![er direct の 1 秒あたりのビット アウト](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
+
+### <a name="line-protocol---split-by-link"></a>回線プロトコル - リンクによる分割
+ExpressRoute Direct ポート ペアのリンクごとに回線プロトコルを表示できます。
+
+![er direct 回線プロトコル](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
+
+### <a name="rx-light-level---split-by-link"></a>Rx ライト レベル - リンクによる分割
+ポート別の Rx ライト レベル (ExpressRoute Direct ポートで**受信**するライト レベル) を表示できます。 正常な Rx ライト レベルは通常、-10 から 0 dBm までの範囲に収まります。
+
+![er direct 回線 Rx ライト レベル](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
+
+### <a name="tx-light-level---split-by-link"></a>Tx ライト レベル - リンクによる分割
+ポート別の Tx ライト レベル (ExpressRoute Direct ポートで**送信**するライト レベル) を表示できます。 正常な Tx ライト レベルは一般に、-10 から 0 dBm までの範囲に収まります。
+
+![er direct 回線 Rx ライト レベル](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute ゲートウェイの接続 (ビット/秒)
 
-![ゲートウェイの接続](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg ) 
+![ゲートウェイの接続](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>ExpressRoute ゲートウェイの接続のアラート
 

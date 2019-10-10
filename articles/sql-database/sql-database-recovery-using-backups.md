@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
-ms.date: 08/27/2019
-ms.openlocfilehash: ab0a622dcb72072621e6696d423a1d4d2917bedc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.reviewer: mathoma, carlrab, danil
+ms.date: 09/26/2019
+ms.openlocfilehash: 890a9701615a05186b34883f4e953bbc045e906f
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178396"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350074"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL データベースの復旧
 
@@ -81,32 +81,60 @@ Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/
 - **データの復旧**
 
   ユーザー エラーまたはアプリケーション エラーからの復旧のために、復元されたデータベースからデータを取得する場合は、復元されたデータベースからデータを抽出して元のデータベースに適用するデータ復旧スクリプトを作成して実行する必要があります。 復元操作が完了するまでに時間がかかる可能性がありますが、復元プロセスを通して、復元しているデータベースがデータベース一覧に表示されます。 復元中にデータベースを削除すると、復元操作は取り消され、復元が完了していないデータベースに対しては課金されません。
+  
+### <a name="point-in-time-restore-using-azure-portal"></a>Azure portal を使用したポイントインタイム リストア
 
-Azure portal を使用して単一のデータベース、プールされたデータベース、またはインスタンス データベースを特定の時点に復旧するには、データベースのページを開き、ツール バーの **[復元]** をクリックします。
+1 つの SQL データベースまたはインスタンス データベースの特定の時点への復旧は、Azure portal 内で復元するデータベースの概要ブレードから実行されます。
 
-![ポイントインタイム リストア](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
+#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
 
-> [!IMPORTANT]
+Azure portal を使用して 1 つのデータベースまたはプールされたデータベースを特定の時点に復旧するには、データベースの概要ページを開き、ツール バーの **[復元]** をクリックします。 バックアップ ソースを選択し、新しいデータベースが作成される特定の時点のバックアップ ポイントを選択します。 
+
+  ![point-in-time-restore-single-sql-database](./media/sql-database-recovery-using-backups/pitr-backup-sql-database-annotated.png)
+
+#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
+
+Azure portal を使用してマネージド インスタンス データベースを特定の時点に復旧するには、データベースの概要ページを開き、ツール バーの **[復元]** をクリックします。 新しいデータベースが作成される特定の時点のバックアップ ポイントを選択します。 
+
+  ![point-in-time-restore-managed-instance-database](./media/sql-database-recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+
+> [!TIP]
 > データベースをプログラムでバックアップから復元するには、「[自動バックアップを使用したプログラム実行の復旧](sql-database-recovery-using-backups.md#programmatically-performing-recovery-using-automated-backups)」を参照してください。
 
 ## <a name="deleted-database-restore"></a>削除されたデータベースの復元
 
-Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)、または [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用して、同じ SQL Database サーバーに、削除されたデータベースを、削除時点またはそれ以前の時点に復元できます。 [PowerShell を使用して Managed Instance 上の削除されたデータベースを復元](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance)できます。 
+Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)、または [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用して、同じ SQL Database サーバーまたは同じマネージド インスタンス上で、削除されたデータベースを、削除時点またはそれ以前の時点に復元できます。 削除されたデータベースの復元は、バックアップから新しいデータベースを作成することによって実行されます。
+
+> [!IMPORTANT]
+> Azure SQL Database サーバーまたはマネージド インスタンスを削除すると、そのデータベースもすべて削除されます。これを復旧することはできません。 現在、削除されたサーバーの復元または削除されたマネージド インスタンスの復元はサポートされていません。
+
+### <a name="deleted-database-restore-using-azure-portal"></a>Azure portal を使用した削除済みデータベースの復元
+
+削除されたデータベースの Azure portal からの復元は、サーバーおよびインスタンス リソースから実行されます。
+
+#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
+
+Azure portal を使用して 1 つの削除済みデータベースまたはプールされた削除済みデータベースを復旧するには、サーバーの概要ページを開き、ナビゲーション メニューの **[削除されたデータベース]** をクリックします。 復元する削除済みデータベースを選択し、バックアップから復元されたデータを使用して作成される新しいデータベースの名前を入力します。
+
+  ![deleted-database-restore](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+
+#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
+
+この時点で、マネージド インスタンスの削除済みデータベースを復元するオプションは、Azure portal では使用できません。 PowerShell を使用して、マネージド インスタンス上の削除されたデータベースを復元できます。[PowerShell を使用したマネージド インスタンス上の削除されたデータベースの復元](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance)に関するページをご覧ください。
+
+### <a name="deleted-database-restore-using-powershell"></a>PowerShell を使用した削除済みデータベースの復元
+
+PowerShell を使用して、Azure SQL Database とマネージド インスタンスの削除されたデータベースを復元するには、以下のサンプル スクリプトを使用します。
+
+#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
+
+削除された Azure SQL データベースの復元方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページをご覧ください。
+
+#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
+
+削除されたインスタンス データベースの復元方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用したマネージド インスタンス上の削除されたデータベースの復元](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance)に関するページをご覧ください。 
 
 > [!TIP]
-> 削除されたデータベースの復元方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページを参照してください。
-> [!IMPORTANT]
-> Azure SQL Database サーバー インスタンスを削除すると、そのデータベースもすべて削除されます。これを回復することはできません。 現時点では、削除されたサーバーを復元するためのサポートはありません。
-
-### <a name="deleted-database-restore-using-the-azure-portal"></a>Azure portal を使用した削除済みデータベースの復元
-
-Azure portal を使用して削除されたデータベースを復旧するには、サーバーのページを開き、[操作] 領域で **[削除済みデータベース]** をクリックします。
-
-![削除されたデータベースの復元 1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
-
-![削除されたデータベースの復元 2](./media/sql-database-recovery-using-backups/deleted-database-restore-2.png)
-
-> [!IMPORTANT]
 > 削除されたデータベースをプログラムで復元するには、「[自動バックアップを使用したプログラム実行の復旧](sql-database-recovery-using-backups.md#programmatically-performing-recovery-using-automated-backups)」を参照してください。
 
 ## <a name="geo-restore"></a>geo リストア
@@ -130,7 +158,7 @@ Azure portal からデータベースを geo リストアする一般的な概�
 3. [既存のデータを使用します] の下で **[バックアップ]** をクリックします
 4. 使用可能な geo リストア バックアップのドロップダウン リストからバックアップを選択します
 
-![単一 Azure SQL Database の geo リストア](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
+    ![単一 Azure SQL Database の geo リストア](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
 
 新しいデータベースを作成するプロセスを完了します。 単一の Azure SQL Database が作成されると、これには復元された geo リストア バックアップが含まれます。
 
@@ -143,7 +171,7 @@ Azure portal からデータベースを geo リストアする一般的な概�
 3. [既存のデータを使用します] の下で **[バックアップ]** オプションを選択します
 4. 使用可能な geo リストア バックアップのドロップダウン リストからバックアップを選択します
 
-![マネージド インスタンス データベースの geo リストア](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
+    ![マネージド インスタンス データベースの geo リストア](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
 
 新しいデータベースを作成するプロセスを完了します。 インスタンス データベースが作成されると、これには復元された geo リストア バックアップが含まれます。
 
@@ -172,7 +200,9 @@ geo セカンダリでのポイントインタイム リストアは、現在は
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数はかなりの程度まで同じです。
+
+#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
 
 - スタンドアロン データベースまたはプールされたデータベースを復元するには、「[Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase)」を参照してください。
 
@@ -185,6 +215,8 @@ geo セカンダリでのポイントインタイム リストアは、現在は
 
   > [!TIP]
   > データベースのポイントインタイム リストアの実行方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページを参照してください。
+
+#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
 
 - マネージド インスタンス データベースを復元するには、「[Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)」を参照してください。
 
@@ -205,8 +237,13 @@ REST API を使用して単一のデータベースまたはプールされた�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-- Azure CLI を使用して単一のデータベースまたはプールされたデータベースを復元するには、「[az sql db restore](/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
-- Azure CLI を使用してマネージド インスタンスを復元するには、「[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)」を参照してください。
+#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
+
+Azure CLI を使用して単一のデータベースまたはプールされたデータベースを復元するには、「[az sql db restore](/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
+
+#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
+
+Azure CLI を使用してマネージド インスタンス データベースを復元するには、「[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)」を参照してください
 
 ## <a name="summary"></a>まとめ
 

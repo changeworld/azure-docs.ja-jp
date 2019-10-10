@@ -1,5 +1,5 @@
 ---
-title: U-SQL とデバッグを Azure Data Lake Tools for Visual Studio Code のローカルで実行する
+title: U-SQL ジョブのデバッグ - Azure Data Lake Tools for Visual Studio Code
 description: Azure Data Lake Tools for Visual Studio Code を使用して U-SQL　ジョブをローカルで実行およびデバッグを行う方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 765bcaab0f91e097be827bfa6e8f505ef5330d57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c425ee8c9fd99420bbcbba31c7a74c360938aef
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814205"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338247"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL を実行し、Visual Studio Code のローカルでデバッグする
 このアーティクルは、ローカルの開発コンピューター上で U-SQL ジョブを実行して、初期のコーディング フェーズを迅速化したり、Visual Studio Code でローカルにコードをデバッグしたりする方法について説明します。 Azure Data Lake Tools for Visual Studio Code に関する手順については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」をご覧ください。
@@ -51,7 +51,7 @@ U-SQL ジョブをローカルで実行したり U-SQL をローカルでデバ�
 2. 初回使用時は、 **[同意する]** を選択し、マイクロソフト ソフトウェア ライセンス条項に同意します。 
 
    ![マイクロソフト ソフトウェア ライセンス条項に同意](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. cmd コンソールが表示されます。 初回使用時は「**3**」と入力し、データの入力と出力に使用するローカル フォルダーのパスを決める必要があります。 その他のオプションについては、既定値を使用できます。 
+3. cmd コンソールが表示されます。 初回使用時は「**3**」と入力し、データの入力と出力に使用するローカル フォルダーのパスを決める必要があります。 バックスラッシュでパスを定義できなかった場合は、スラッシュを使用してください。 その他のオプションについては、既定値を使用できます。
 
    ![Data Lake Tools for Visual Studio Code のローカル実行 cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
 4. Ctrl + Shift + P キーを押してコマンド パレットを開き、「**ADL:Submit Job**」と入力し、 **[Local]\(ローカル\)** を選択してローカル アカウントにジョブを送信します。

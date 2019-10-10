@@ -11,14 +11,17 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3c747f25b92d9f165bfeb4468a0e263f102976f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002859"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350573"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
+
+>[!IMPORTANT]
+> この SDK は間もなく廃止され、[Application Insights による簡素化されたデータ監視](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)で置き換えられます。 
 
 この記事では、Azure Kubernetes Cluster (AKS) にデプロイした Azure Machine Learning から入力モデル データを収集し、Azure Blob ストレージに格納する方法について説明します。 
 

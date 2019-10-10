@@ -105,6 +105,8 @@
               href: map-add-line-layer.md
             - name: 多角形レイヤーを追加する
               href: map-add-shape.md
+            - name: 浮き出し多角形レイヤーを追加する
+              href: map-extruded-polygon.md
             - name: ヒート マップ レイヤーを追加する
               href: map-add-heat-map-layer.md
             - name: ポップアップを追加する

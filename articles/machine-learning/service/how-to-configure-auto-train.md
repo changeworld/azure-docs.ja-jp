@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5a0f2922763f8fccb9f3eec8bab4d6eddee7e446
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259993"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350593"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -328,7 +328,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 自動化された ML を使用して生成されたモデルには、次の手順が含まれます。
 + 自動化された特徴エンジニアリング: (preprocess=True の場合)
-+ ハイパーパラメーター値を使用したスケーリングまたは正規化、およびアルゴリズム
++ ハイパーパラメーター値を使用したスケーリング/正規化とアルゴリズム
 
 透過的に処理して、自動化された ML の fitted_model 出力からこの情報を取得します。
 
@@ -410,7 +410,7 @@ preprocess=True の場合に実行される前処理および[自動化された
    |EngineeringFeatureCount|自動化された特徴エンジニアリングの変換によって生成された特徴の数。|
    |変換|エンジニアリングされた特徴を生成するために入力特徴に適用される変換の一覧。|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>ハイパーパラメーター値を使用したスケーリング/正規化:
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>ハイパーパラメーター値を使用したスケーリング/正規化とアルゴリズム:
 
 パイプラインのスケーリング/正規化およびアルゴリズム/ハイパーパラメーター値を理解するには、fitted_model.steps を使用します。 [スケーリング/正規化の詳細については、こちらを参照してください](concept-automated-ml.md#preprocess)。 出力例を次に示します。
 

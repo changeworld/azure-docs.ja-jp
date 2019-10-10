@@ -2,17 +2,16 @@
 title: サンプル - SWIFT CSP-CSCF v2020 ブループリント - デプロイ手順
 description: SWIFT CSP-CSCF v2020 ブループリント サンプルのデプロイ手順。
 author: DCtheGeek
-ms.author: meladie
+ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: cb17cfb343c8adbe9ca145bd4eba9b8fc332f440
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 7584653fb83b561f9dd19b11c6a080c038ab6586
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71220065"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243798"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのデプロイ
 

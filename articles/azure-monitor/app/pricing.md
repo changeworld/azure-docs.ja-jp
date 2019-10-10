@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: dalek
-ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 448469d4c1ff15ed2ba814dfaa653c4d3c7e3452
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067010"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677814"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -30,7 +30,7 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 ## <a name="pricing-model"></a>価格モデル
 
-[Azure Application Insights][start] の価格は、取り込まれたデータ量に基づきます。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。
+[Azure Application Insights][start] の価格は、取り込まれたデータの量に基づいています。データを長期保持する場合にもかかります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。
 
 ### <a name="data-volume-details"></a>データ ボリュームの詳細
 
@@ -47,7 +47,7 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 単一ページの "*ping テスト*" については、個別の料金はかかりません。 Ping テストと複数ステップ テストからのテレメトリについては、アプリの他のテレメトリと同じ料金が請求されます。
 
-## <a name="review-usage-and-estimate-costs"></a>使用量の確認とコストの見積もり
+## <a name="understand-your-usage-and-estimate-costs"></a>ご自分の使用量を理解してコストを見積もる
 
 Application Insights では、最近の使用パターンに基づいてコストがどのようになるかを簡単に理解できるようになっています。 作業を開始するには、Azure portal で Application Insights リソースの **[使用量と推定コスト]** ページに移動します。
 
@@ -110,11 +110,17 @@ systemEvents
 * 異なるインストルメンテーション キー間でテレメトリを分割します。 
 * 事前集計メトリック。 TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。 または、[事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。
 
-## <a name="manage-the-maximum-daily-data-volume"></a>最大日次データ ボリュームを管理する
+## <a name="manage-your-maximum-daily-data-volume"></a>ご自分のデータの 1 日の最大ボリュームを管理する
 
 日次ボリューム上限を使用すると、収集されるデータを制限できます。 ただし、上限に達した場合は、その日の残りの時間についてアプリケーションから送信されたすべてのテレメトリが失われます。 アプリケーションが日次上限に達することは "*望ましくありません*"。 日次上限に達した後は、アプリケーションの正常性とパフォーマンスを追跡できません。
 
 日次ボリューム上限を使用する代わりに、[サンプリング](../../azure-monitor/app/sampling.md)を使用して、データ ボリュームを目的のレベルに調整してください。 その後、アプリケーションが予期せず大量のテレメトリの送信を開始した場合に、"最後の手段" としてのみ日次上限を使用します。
+
+### <a name="identify-what-daily-data-limit-to-define"></a>定義する日次データ制限を明らかにする
+
+Application Insights の使用量と推定コストを確認し、データ インジェストの傾向および日次のデータ ボリュームの上限をどう定義するか理解します。 上限に達した後はリソースを監視できなくなるので、慎重に検討してください。 
+
+### <a name="set-the-daily-cap"></a>1 日の上限を設定する
 
 日次上限を変更するには、Application Insights リソースの **[構成]** セクションで、 **[使用量と推定コスト]** ページから **[日次上限]** を選択します。
 
@@ -160,6 +166,10 @@ Application Insights リソースの既定の保持期間は 90 日です。 App
 ![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
 
 長期の保持期間に対する課金が有効になっている場合、90 日を超えて保持されているデータには、Azure Log Analytics のデータ保持期間に対して現在請求されているのと同じ料金で課金されます。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。 [この提案に投票する](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ことによって、可変の保持期間の進捗に関する最新情報を把握してください。 
+
+## <a name="data-transfer-charges-using-application-insights"></a>Application Insights の使用でのデータ転送料金
+
+Application Insights にデータを転送する場合、データ帯域幅の料金が発生する場合があります。 [Azure 帯域幅の価格ページ](https://azure.microsoft.com/pricing/details/bandwidth/)で説明されているように、2 つのリージョンに存在する Azure サービス間のデータ転送は、通常の料金で送信データ転送として課金されます。 受信データ転送は無料です。 ただし、この料金は、Application Insights のデータ インジェストのコストと比へると非常に小さい (数パーセント) ものです。 そのため、Log Analytics のコスト管理では、ご自分で取り込まれたデータ ボリュームに注目する必要があり、それについて理解するためのガイダンスが[こちら](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)に用意されています。   
 
 ## <a name="limits-summary"></a>制限の概要
 

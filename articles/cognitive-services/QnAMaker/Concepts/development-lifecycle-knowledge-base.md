@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 97a4673be2a611149806855e792c5bf1f7a0942a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955165"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695109"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。 
@@ -61,6 +61,14 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 サービスの使用状況について、さまざまな分析を行うことができます。 Application Insights を使用して [QnA Maker サービスを分析する](../How-To/get-analytics-knowledge-base.md)方法の詳細を確認してください。
 
 分析から学んだ内容に基づいて、適切な[ナレッジ ベースの更新](../How-To/edit-knowledge-base.md)を行います。
+
+## <a name="version-control-of-a-knowledge-base"></a>ナレッジ ベースのバージョン管理
+
+QnA Maker では、バージョン管理は提供されません。 **[設定]** ページからナレッジ ベースをエクスポートして、独自の方法とツールを使用する必要があります。
+
+**[設定]** ページから、ナレッジ ベースの TSV 形式または XLS 形式へのエクスポートを完了します。 
+
+特定のバージョンに戻る必要がある場合は、自分のローカル システムからそのファイルをインポートする必要があります。 **[設定]** ページから、TSV ファイルまたは XLS ファイルをインポートします。 これにより、ナレッジ ベース内の現在の質問と回答が、インポートされたファイルの内容に置き換えられます。   
 
 ## <a name="next-steps"></a>次の手順
 

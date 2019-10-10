@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: memildin
-ms.openlocfilehash: b8ca4dfe8b1bba169b1234461dc5e8855fef1d7e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bbb34a0a9d8035ce8cbfd3f3283677133370a9f2
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202287"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316721"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center によく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -44,7 +44,7 @@ Azure Security Center は 2 つのレベルで提供されます。
 **Standard レベル**には、脅威インテリジェンス、行動分析、異常検出、セキュリティ インシデント、脅威評価レポートなどの高度な脅威検出機能が追加されます。 Standard レベルの無料試用版を開始できます。 アップグレードを行うには、 [セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-pricing)で価格レベルを選択してください。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 ### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Azure Security Center で価格レベルの変更を実行した組織内のユーザーを追跡するにはどうすればよいですか?
-Azure サブスクリプションでは、価格レベルを変更するアクセス許可を持つ管理者が複数いる可能性があるため、ユーザーは価格レベルの変更を実行したユーザーを確認できます。 そのためには、Azure アクティビティ ログを使います。 詳しくは、[こちら](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)をご覧ください
+Azure サブスクリプションには、価格レベルを変更する許可が与えられた管理者が複数設定されていることがあります。 価格レベルを変更したユーザーを見つけるには、Azure アクティビティ ログを使用します。 詳細については、[このページ](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) が使用されています。RBAC が提供する[組み込みのロール](../role-based-access-control/built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
@@ -147,7 +147,7 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 
    ![Pricing tier][1]
 
-2. 次に、 **[セキュリティ ポリシー - データ収集]** ブレードで **[オフ]** を選択して自動プロビジョニングを無効にします。
+2. 次に、 **[セキュリティ ポリシー - データ収集]** ページで **[オフ]** を選択して自動プロビジョニングを無効にします。
    ![データ収集][2]
 
 ### <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成を停止するにはどうすればよいですか?
@@ -168,13 +168,13 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
    2. 移行の完了を許可して、VM 上に Microsoft Monitoring Agent がインストールされ、作成されたワークスペースに VM が接続されるようにします。 その後、既にインストールされているエージェントを再構成し、既定のワークスペース設定を設定して、独自のカスタム ワークスペースを選択します。 詳細については、「[既存の Log Analytics ワークスペースを使用するにはどうすればよいですか?](#how-can-i-use-my-existing-log-analytics-workspace)」をご覧ください。
 
 ### <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>自動プロビジョニングを停止すると、どのような影響がありますか?
-移行が完了すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 停止した場合、Microsoft Monitoring Agent を手動でインストールする必要があります。 [停止する場合に推奨される手順](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)に関するセクションをご覧ください。
+移行が完了すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 停止した場合、Microsoft Monitoring Agent を手動でインストールします。 [停止する場合に推奨される手順](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)に関するセクションをご覧ください。
 
 ### <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>自動プロビジョニングを停止する場合、どのような手順が推奨されますか?
 
-Security Center がお使いの VM からセキュリティ データを収集して、推奨や通知を提示できるように、Microsoft Monitoring Agent 拡張機能を手動でインストールする必要があります。 インストールのガイダンスとして、[Windows VM 用のエージェントのインストール](../virtual-machines/extensions/oms-windows.md)または [Linux VM 用のエージェントのインストール](../virtual-machines/extensions/oms-linux.md)に関するページを参照してください。
+Security Center がお使いの VM からセキュリティ データを収集して、推奨や通知を提示できるように、Microsoft Monitoring Agent 拡張機能を手動でインストールします。 インストールのガイダンスとして、[Windows VM 用のエージェントのインストール](../virtual-machines/extensions/oms-windows.md)または [Linux VM 用のエージェントのインストール](../virtual-machines/extensions/oms-linux.md)に関するページを参照してください。
 
-エージェントをいずれかの既存のカスタム ワークスペースまたは Security Center が作成したワークスペースに接続できます。 カスタム ワークスペースの 'Security' または 'SecurityCenterFree' ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、 **[セキュリティ ポリシー – 価格レベル]** ブレードを利用して、カスタム ワークスペースまたはサブスクリプションを選択します。
+エージェントをいずれかの既存のカスタム ワークスペースまたは Security Center が作成したワークスペースに接続できます。 カスタム ワークスペースの 'Security' または 'SecurityCenterFree' ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、 **[セキュリティ ポリシー – 価格レベル]** ページを利用して、カスタム ワークスペースまたはサブスクリプションを選択します。
 
    ![Pricing tier][1]
 
@@ -191,8 +191,8 @@ Microsoft Monitoring Agent は手動で削除することができます。 た�
 エージェントを手動で削除するには:
 
 1.  ポータルで、 **[Log Analytics]** を開きます。
-2.  [Log Analytics] ブレードで、ワークスペースを選択します。
-3.  監視しない各 VM を選択し、 **[切断]** を選択します。
+2.  [Log Analytics] ページで、ワークスペースを選択します。
+3.  監視しない VM を選択し、 **[切断]** を選択します。
 
    ![エージェントを削除する][3]
 
@@ -209,11 +209,11 @@ Microsoft Monitoring Agent は手動で削除することができます。 た�
 Azure サブスクリプションのデータ収集の有効化は、セキュリティ ポリシーで行うことができます。 データ収集を有効にするには、 [Azure portal にサインイン](https://portal.azure.com)して、 **[参照]** 、 **[セキュリティ センター]** 、 **[セキュリティ ポリシー]** の順に選びます。 自動プロビジョニングを有効にするサブスクリプションを選択します。 サブスクリプションを選ぶと、 **[セキュリティ ポリシー] - [データ収集]** が開きます。 **[自動プロビジョニング]** で **[オン]** を選びます。
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>データ収集を有効にするとどうなりますか。
-自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent をプロビジョニングします。 自動プロビジョニングを強くお勧めしますが、エージェントを手動でインストールすることもできます。 [Microsoft Monitoring Agent の拡張機能をインストールする方法を参照してください](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
+自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent をプロビジョニングします。 自動プロビジョニングをお勧めしますが、エージェントを手動でインストールすることもできます。 [Microsoft Monitoring Agent の拡張機能をインストールする方法を参照してください](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
 
 エージェントで、プロセス作成イベント 4688 とイベント 4688 内の *CommandLine* フィールドが有効になります。 VM に作成された新しいプロセスは EventLog に記録され、Security Center の検出サービスによって監視されます。 新しいプロセスごとに記録される詳細については、[4688 の説明フィールド](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)を参照してください。 また、エージェントは VM に作成された 4688 イベントも収集し、検索に保存します。
 
-さらに、エージェントは、[適応型アプリケーション制御](security-center-adaptive-application.md)のデータ収集を有効にでき、Security Center は、ローカル AppLocker ポリシーを監査モードで構成して、すべてのアプリケーションを許可します。 これをきっかけとして AppLocker がイベントを生成するようになり、そのイベントが Security Center によって収集されて活用されます。 ただし、既に AppLocker ポリシーが構成されているマシンでは、このポリシーが構成されないので注意してください。 
+さらに、エージェントは、[適応型アプリケーション制御](security-center-adaptive-application.md)のデータ収集を有効にでき、Security Center は、ローカル AppLocker ポリシーを監査モードで構成して、すべてのアプリケーションを許可します。 このポリシーをきっかけとして AppLocker がイベントを生成するようになり、そのイベントが Security Center によって収集されて活用されます。 ただし、既に AppLocker ポリシーが構成されているマシンでは、このポリシーが構成されないので注意してください。 
 
 [セキュリティ連絡先の情報](security-center-provide-security-contact-details.md)が指定されている場合、Security Center が VM で疑わしいアクティビティを検出すると、電子メールでユーザーに通知します。 Security Center のセキュリティ アラート ダッシュボードにもアラートが表示されます。
 
@@ -275,7 +275,7 @@ Azure Security Center は、Azure リソースのセキュリティの状態を�
 ここにはセキュリティ ポリシーで有効な推奨事項のみが表示されています。
 
 ### <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Azure リソースの現在のセキュリティ状態を確認する方法を教えてください。
-**[Security Center Overview]\(Security Center の概要\)** ブレードでは、お使いの環境の全体的なセキュリティ体制が [コンピューティング]、[ネットワーク]、[ストレージおよびデータ]、[アプリケーション] に分けて詳しく示されます。 リソースの種類にはそれぞれ、潜在的なセキュリティの脆弱性が確認されたかどうかを示すインジケーターがあります。 各タイルをクリックすると、Security Center によって特定されたセキュリティの問題の一覧が、サブスクリプション内のリソースのインベントリと共に表示されます。
+**[Security Center Overview]\(Security Center の概要\)** ページでは、お使いの環境の全体的なセキュリティ体制が [コンピューティング]、[ネットワーク]、[ストレージおよびデータ]、[アプリケーション] に分けて詳しく示されます。 リソースの種類にはそれぞれ、潜在的なセキュリティの脆弱性が確認されたかどうかを示すインジケーターがあります。 各タイルをクリックすると、Security Center によって特定されたセキュリティの問題の一覧が、サブスクリプション内のリソースのインベントリと共に表示されます。
 
 ### <a name="what-triggers-a-security-alert"></a>セキュリティの警告をトリガーするものは何ですか。
 Azure Security Center は、Azure のリソース、ネットワーク、パートナー ソリューション (マルウェア対策やファイアウォールなど) から、自動的にログ データを収集して分析し、結合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。

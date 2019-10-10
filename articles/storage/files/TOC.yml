@@ -23,9 +23,9 @@
       href: storage-sync-files-extend-servers.md
 - name: 概念
   items:
-    - name: Azure Files について
+    - name: Azure Files のデプロイの計画
       href: storage-files-planning.md
-    - name: Azure File Sync について
+    - name: Azure File Sync のデプロイの計画
       href: storage-sync-files-planning.md
     - name: クラウドの階層化について
       href: storage-sync-cloud-tiering.md

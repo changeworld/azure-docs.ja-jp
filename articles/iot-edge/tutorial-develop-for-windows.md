@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240969"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693410"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -134,7 +134,7 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
    | ----- | ----- |
    | Visual Studio テンプレート | **[C# モジュール]** を選択します。 | 
    | モジュール名 | 既定の **IotEdgeModule1** をそのまま使用します。 | 
-   | リポジトリの URL | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/iotedgemodule1 のようになります。 |
+   | リポジトリの URL | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの**概要**ページから**ログイン サーバー**の値を取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/iotedgemodule1 のようになります。 |
 
       ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -143,33 +143,38 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
 新しいプロジェクトが Visual Studio ウィンドウに読み込まれたら、少し時間を取って、作成されたファイルをよく確認してください。 
 
 * **CSharpTutorialApp** という IoT Edge プロジェクト。
-    * **Modules** フォルダーには、プロジェクトに含まれるモジュールへのポインターが含まれています。 この例では、IotEdgeModule1 だけです。 
-    * **deployment.template.json** ファイルは、配置マニフェストの作成に役立つテンプレートです。 *配置マニフェスト*は、どのモジュールをデバイスにデプロイするか、それらをどのように構成するか、そしてそれらが互いに、およびクラウドとどのように通信するかを正確に定義するファイルです。 
+  * **Modules** フォルダーには、プロジェクトに含まれるモジュールへのポインターが含まれています。 この例では、IotEdgeModule1 だけです。 
+  * 非表示の **.env** ファイルは、コンテナー レジストリへの資格情報を保持しています。 これらの資格情報は IoT Edge デバイスと共有されており、コンテナー イメージをプルするためにアクセスすることができます。
+  * **deployment.template.json** ファイルは、配置マニフェストの作成に役立つテンプレートです。 *配置マニフェスト*は、どのモジュールをデバイスにデプロイするか、それらをどのように構成するか、そしてそれらが互いに、およびクラウドとどのように通信するかを正確に定義するファイルです。
+    > [!TIP]
+    > レジストリ資格情報セクションで、アドレスは、ソリューションを作成したときに指定した情報から自動的に入力されています。 ただし、ユーザー名とパスワードは、.env ファイルに格納されている変数を参照します。 これはセキュリティのためです .env ファイルは GIT Ignore ですが、デプロイ テンプレートはそうではないからです。
 * **IotEdgeModule1** という IoT Edge モジュール プロジェクト。
-    * **program.cs** ファイルには、プロジェクト テンプレートに付属する既定の C# モジュール コードが含まれています。 既定のモジュールは、ソースから入力を受け取り、それを IoT Hub に渡します。 
-    * **module.json** ファイルには、完全なイメージ リポジトリ、イメージ バージョン、サポートされているプラットフォームごとに使用する Dockerfile など、モジュールに関する詳細情報が含まれています。
+  * **program.cs** ファイルには、プロジェクト テンプレートに付属する既定の C# モジュール コードが含まれています。 既定のモジュールは、ソースから入力を受け取り、それを IoT Hub に渡します。 
+  * **module.json** ファイルには、完全なイメージ リポジトリ、イメージ バージョン、サポートされているプラットフォームごとに使用する Dockerfile など、モジュールに関する詳細情報が含まれています。
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
 
-IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバイスにプルするためにレジストリ資格情報が必要です。 これらの資格情報を配置テンプレートに追加します。 
+IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバイスにプルするためにレジストリ資格情報が必要です。 IoT Edge 拡張機能は、Azure からコンテナー レジストリの情報をプルし、それをデプロイ テンプレートに取り込もうと試みます。
 
-1. **deployment.template.json** ファイルを開きます。
+1. モジュール ソリューション内の **deployment.template.json** ファイルを開きます。
 
-2. $edgeAgent の必要なプロパティで、**registryCredentials** プロパティを見つけます。 
-
-3. 次の形式に従って、自分の資格情報でプロパティを更新します。 
+1. $edgeAgent の必要なプロパティで、**registryCredentials** プロパティを見つけ、正しい情報が格納されていることを確認します。
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
    ```
 
-4. deployment.template.json ファイルを保存します。 
+1. モジュール ソリューション内の **.env** ファイルを開きます。 (既定では、このファイルがソリューション エクスプローラーで非表示になっているため、表示するためには、 **[Show All Files]** ボタンを選択しなければならない場合があります。)
+
+1. Azure コンテナー レジストリからコピーした **Username** と **Password** の値を追加します。
+
+1. 変更内容を .env ファイルに保存します。
 
 ### <a name="review-the-sample-code"></a>サンプル コードを確認する
 

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b24a0e9f3f557ea2ac425db7caeed63959d18dd8
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 2aee31d3e874f709d5ec30ed4ddc0ba0445d4130
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181250"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980759"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>新しい Azure ポリシーの影響を評価する
 

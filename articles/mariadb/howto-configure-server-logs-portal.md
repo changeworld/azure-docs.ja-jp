@@ -1,17 +1,17 @@
 ---
 title: Azure portal での Azure Database for MariaDB のサーバー ログの構成とアクセス
 description: この記事では、Azure portal から Azure Database for MariaDB のサーバー ログの構成方法とアクセス方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 3dbf7064e409230916668e62ef861c0ce149fdbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/30/2019
+ms.openlocfilehash: c8be9519d3393330b3022fadd2de6a49e58ecdcf
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065638"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703512"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Azure Portal でのサーバー ログの構成とアクセス
 
@@ -42,7 +42,7 @@ Azure portal から [Azure Database for MariaDB の低速クエリ ログ](conce
 6. ログのリストに戻るには、 **[サーバー パラメーター]** ページの**閉じるボタン** (X のアイコン) をクリックします。
 
 ## <a name="view-list-and-download-logs"></a>リストの表示とログのダウンロード
-ログ記録が開始されると、使用可能な低速クエリ ログのリストを表示したり、[サーバー ログ] ウィンドウで個々のログ ファイルをダウンロードすることができます。 
+ログ記録が開始されると、使用可能な低速クエリ ログの一覧を表示したり、[サーバー ログ] ウィンドウで個々のログ ファイルをダウンロードしたりすることができます。 
 
 1. Azure Portal を開きます。
 
@@ -61,8 +61,25 @@ Azure portal から [Azure Database for MariaDB の低速クエリ ログ](conce
 
    ![ダウンロード アイコンをクリック](./media/howto-configure-server-logs-portal/5-download.png)
 
+## <a name="set-up-diagnostic-logs"></a>診断ログの設定
+
+1. サイドバーの **[監視]** セクションの下で、 **[診断設定]** を選択します。
+
+1. [+ Add diagnostic setting] (診断設定の追加) をクリックします。![診断設定の追加](./media/howto-configure-server-logs-portal/add-diagnostic-setting.png)
+
+1. 診断設定の名前を指定します。
+
+1. どのデータ シンク (ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース) に低速クエリ ログを送信するか指定します。
+
+1. ログの種類として "MySqlSlowLogs" を選択します。
+![診断設定の構成](./media/howto-configure-server-logs-portal/configure-diagnostic-setting.png)
+
+1. 低速クエリ ログをパイプするようにデータ シンクを設定したら、 **[保存]** をクリックすることができます。
+![診断設定の保存](./media/howto-configure-server-logs-portal/save-diagnostic-setting.png)
+
+1. 構成したデータ シンクを調べて低速クエリ ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
+
 ## <a name="next-steps"></a>次の手順
+- [CLI で低速クエリ ログにアクセスする](howto-configure-server-logs-cli.md)に関する記事を参照して、プログラムで低速クエリ ログをダウンロードする方法について学習します。
 - Azure Database for MariaDB の[低速クエリ ログ](concepts-server-logs.md)の詳細について学習します。
 - パラメーターの定義とログ記録の詳細については、[ログ](https://mariadb.com/kb/en/library/slow-query-log-overview/) に関するページの MariaDB のドキュメントを参照してください。
-
-<!--- See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->

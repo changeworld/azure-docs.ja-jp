@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: b96b80a735c0caee8a3aabaf19b04fd0e153ba6b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0908ca232ee38e2b0d461aa9f597558adc4461ef
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034328"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350521"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 
@@ -264,7 +264,8 @@ root_run.complete()
 >[!Note]
  `export_to_tensorboard(run_name, logdir)` のように実行名を指定することで、特定の実行を TensorBoard にエクスポートすることもできます。
 
-TensorBoard を起動および停止する この実験の実行履歴がエクスポートされたら、[start()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) メソッドを使用して TensorBoard を起動できます。 
+### <a name="start-and-stop-tensorboard"></a>TensorBoard を起動および停止する
+この実験の実行履歴がエクスポートされたら、[start()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) メソッドを使用して TensorBoard を起動できます。 
 
 ```Python
 from azureml.tensorboard import Tensorboard

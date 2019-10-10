@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 562ad0e5e6088c2fbadc853779b7533c5398e079
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: c67ca111bf87c9dbfa69c93149d29dbd32767fbd
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176649"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350759"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする
 この記事では、次のタスクの手順について説明します。
@@ -36,8 +36,9 @@ ms.locfileid: "71176649"
 ![Linux イメージのリモート デスクトップ接続を有効にする](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> **リモート デスクトップ接続**を有効にすると、Linux マシンの **RDP** ポートのみが開きます。 仮想マシンイメージ (たとえば、Ubuntu Data Science Virtual Machine イメージ) に RDP が既にインストールされて構成されている場合、追加の手順に従わなくても RDP 経由で VM に接続できます。
-> VM イメージに RDP がインストールおよび構成されていない場合、最初に SSH を使用して Linux マシンに接続し、RDP と GUI のパッケージをインストールします。これで、後で RDP を使用して Linux マシンに接続できるようになります。 次に、学生が学生の Linux VM にリモート デスクトップ接続できるように、イメージを発行します。
+> **リモート デスクトップ接続**を有効にすると、Linux マシンの **RDP** ポートのみが開きます。 仮想マシンイメージに、RDP が既にインストールおよび構成されている場合 (例:Ubuntu Data Science Virtual Machine イメージ)、追加の手順に従うことなく、RDP 経由で VM に接続できます。
+> 
+> VM イメージに RDP がインストールおよび構成されていない場合、最初に SSH を使用して Linux マシンに接続し、RDP と GUI のパッケージをインストールします。これで、後で RDP を使用して Linux マシンに接続できるようになります。 詳しくは、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。 次に、学生が学生の Linux VM にリモート デスクトップ接続できるように、イメージを発行します。 
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 現時点では、次のオペレーティング システムのリモート デスクトップ接続がサポートされています。

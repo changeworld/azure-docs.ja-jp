@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center for IoT ソリューションのイベント集計について | Microsoft Docs
-description: Azure Security Center for IoT サービスでのイベントの集計方法について説明します。
+title: Azure Security Center for IoT イベント集計について | Microsoft Docs
+description: Azure Security Center for IoT イベント集計を確認します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933898"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327313"
 ---
-# <a name="security-agent-event-aggregation"></a>セキュリティ エージェントのイベント集計
+# <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center for IoT イベント集計
 
-Azure Security Center for IoT セキュリティ エージェントは、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。 セキュリティ エージェントは、新しいプロセスや新しい接続イベントなど、さまざまな種類のデバイス イベントを収集します。 新しいプロセスと新しい接続のイベントは両方とも、正当に、1 秒以内にデバイス上で頻繁に発生することがあります。堅牢で包括的なセキュリティのために重要ですが、これによってセキュリティ エージェントが送信を強制されるメッセージの量は、IoT Hub のクォータとコストの制限にすぐに達する、またはそれを超える可能性があります。 ただし、これらのイベントには、デバイスの保護に不可欠な重要なセキュリティ情報が含まれています。
+Azure Security Center for IoT セキュリティ エージェントにより、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。 セキュリティ エージェントは、新しいプロセスや新しい接続イベントなど、さまざまな種類のデバイス イベントを収集します。 新しいプロセスと新しい接続のイベントは両方とも、正当に、1 秒以内にデバイス上で頻繁に発生することがあります。堅牢で包括的なセキュリティのために重要ですが、これによってセキュリティ エージェントが送信を強制されるメッセージの量は、IoT Hub のクォータとコストの制限にすぐに達する、またはそれを超える可能性があります。 ただし、これらのイベントには、デバイスの保護に不可欠な重要なセキュリティ情報が含まれています。
 
 デバイスを保護しながら、追加のクォータとコストを削減するために、Azure Security Center for IoT エージェントはこれらの種類のイベントを集計します。
 
@@ -44,8 +44,8 @@ Azure Security Center for IoT セキュリティ エージェントは、ロー�
 
 イベントは、次の条件が満たされている場合にのみ同一と見なされます。 
 
-* ProcessCreate イベント - **コマンドライン**、**実行可能ファイル**、**ユーザー名**、および **ユーザー ID** が同一である
-* ConnectionCreate イベント - **コマンドライン**、**ユーザー ID**、**方向**、**ローカル アドレス**、**リモート アドレス**、**プロトコル**、および **宛先ポート**が同一である
+* ProcessCreate イベント - **コマンドライン**、**実行可能ファイル**、**ユーザー名**、および**ユーザー ID** が同一である
+* ConnectionCreate イベント - **コマンドライン**、**ユーザー ID**、**方向**、**ローカル アドレス**、**リモート アドレス**、**プロトコル**、および**宛先ポート**が同一である
 * ProcessTerminate イベント - **実行可能ファイル**と**終了状態**が同一である
 
 ### <a name="working-with-aggregated-events"></a>集計されたイベントの操作

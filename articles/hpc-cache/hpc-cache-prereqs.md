@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299914"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709970"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Azure HPC Cache (プレビュー) の前提条件
 
@@ -57,15 +57,14 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 アクセス許可に関連したこれらの前提条件は、キャッシュの作成を始める前に確認しておいてください。
 
 * キャッシュ インスタンスで仮想ネットワーク インターフェイス (NIC) を作成できる必要があります。 キャッシュを作成するユーザーは、NIC を作成できるだけの権限をサブスクリプションにおいて有している必要があります。
-<!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
 * Blob Storage を使用する場合、Azure HPC Cache には、ストレージ アカウントにアクセスするための承認が必要です。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えることができます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。 ロールを追加するには、[ストレージ ターゲットを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
 
 ## <a name="storage-infrastructure"></a>ストレージ インフラストラクチャ
 
-キャッシュでは、Azure BLOB コンテナーまたは NFS ハードウェア ストレージ エクスポートがサポートされます。 ストレージ ターゲットはキャッシュの作成時に定義できますが、後からストレージを追加することもできます。
+キャッシュでは、Azure BLOB コンテナーまたは NFS ハードウェア ストレージ エクスポートがサポートされます。 キャッシュを作成した後で、ストレージ ターゲットを追加します。
 
-ストレージの種類ごとに特定の前提条件があります。 
+ストレージの種類ごとに特定の前提条件があります。
 
 ### <a name="nfs-storage-requirements"></a>NFS ストレージの要件
 

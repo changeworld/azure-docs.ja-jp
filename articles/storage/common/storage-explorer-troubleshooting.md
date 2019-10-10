@@ -1,19 +1,19 @@
 ---
 title: Azure Storage Explorer トラブルシューティング ガイド | Microsoft Docs
 description: Azure Storage Explorer のデバッグ手法の概要
-services: virtual-machines
+services: storage
 author: Deland-Han
 manager: dcscontentpm
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: ad73520c99dd5418fd4444b3f41d7d1e22f8d52f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ca9b4b337eed54f02f42cad53d22387eace6b76c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090828"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694708"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -125,7 +125,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 1. Storage Explorer を閉じます。
 2. キーチェーンを開きます (コマンド キーと Space キーを押し、「**keychain**」と入力して、Enter キーを押す)。
 3. "ログイン" キーチェーンを選択します。
-4. 南京錠アイコンを選択してキーチェーンをロックします。 (プロセスが完了すると、南京錠はロックされているように見えます。 開いているアプリによっては、数秒かかる場合があります。)
+4. 南京錠アイコンを選択してキーチェーンをロックします。 (南京錠は、プロセスの完了時にロックされているように見えます。 開いているアプリによっては、数秒かかることがあります。)
 
     ![南京錠アイコン](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
@@ -216,7 +216,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
 アカウント キーが表示される場合は、Microsoft が問題の解決を手助けできるように、GitHub でイシューを報告してください。
 
-## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Error occurred while adding new connection:TypeError:Cannot read property 'version' of undefined (新しい接続の追加中にエラーが発生しました: TypeError: 未定義のプロパティ 'version' を読み取れません)
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>新しい接続の追加中にエラーが発生しました: (Error occurred while adding new connection:)TypeError:Cannot read property 'version' of undefined (未定義のプロパティ ' version' を読み取ることができません)
 
 カスタム接続を追加しようとしたときにこのエラー メッセージが表示される場合は、ローカル資格情報マネージャーに格納されている接続データが破損している可能性があります。 この問題を回避するには、破損したローカル接続を削除してから、再度追加してください。
 

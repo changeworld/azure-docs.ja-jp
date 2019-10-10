@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 4df831c1329ab13f19e6ecf979e404d4a90e5f72
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 535656f315f65ffb7aa241618fe9e73b8246b71f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219767"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027869"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>マッピング データ フローの列パターンの
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Azure Data Factory のデータ フロー変換によっては、"列パターン" の概念がサポートされる場合があります。この場合は、ハードコーディングされた列名ではなく、パターンに基づいて、テンプレートの列を作成できます。 式ビルダー内でこの機能を使用すると、変換する列に一致するパターンを定義できます。特定の正確なフィールド名は不要です。 パターンが便利なのは、受信ソース フィールドが頻繁に変更されるときです。特に、テキスト ファイルや NoSQL データベースの列が変更される場合に便利です。 この状態は、"スキーマの誤差" と呼ばれることがあります。
 

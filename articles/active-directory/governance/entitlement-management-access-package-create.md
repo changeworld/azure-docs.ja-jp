@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678186"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326339"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) で新しいアクセス パッケージを作成する
 
@@ -79,7 +79,7 @@ ms.locfileid: "68678186"
 
 **[リソース ロール]** タブでは、アクセス パッケージに含めるリソースを選択します。  アクセス パッケージを要求して受け取るユーザーは、そのアクセス パッケージ内のすべてのリソース ロールを受け取ります。
 
-1. 追加するリソースの種類をクリックします ( **[グループ]** 、 **[アプリケーション]** 、または **[SharePoint サイト]** )。
+1. 追加するリソースの種類をクリックします ( **[Groups and Teams]\(Groups と Teams\)** 、 **[アプリケーション]** 、または **[SharePoint サイト]** )。
 
 1. 表示される選択ウィンドウで、一覧から 1 つまたは複数のリソースを選択します。
 

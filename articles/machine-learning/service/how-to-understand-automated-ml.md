@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b0024bc12f29a76da02c9f7e62af7727b9af7249
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999445"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350645"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
 
@@ -30,7 +30,7 @@ ms.locfileid: "70999445"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* SDK を使用するか、Azure portal またはワークスペースのランディング ページ (プレビュー) で、自動機械学習の実験を作成します。
+* SDK を使用するか、Azure portal またはワークスペースのランディング ページ (プレビュー) で、自動機械学習の実行の実験を作成します。
 
     * SDK を使用し、[分類モデル](how-to-auto-train-remote.md)または[回帰モデル](tutorial-auto-train-models.md)を作成する
     * [Azure portal またはワークスペースのランディング ページ (プレビュー)](how-to-create-portal-experiments.md) を使用し、適切なデータをアップロードして分類または回帰モデルを作成します。

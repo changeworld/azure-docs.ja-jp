@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272413"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802808"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS にボットを組み合わせてナレッジ ベースを配信する
 QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
@@ -37,13 +37,13 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 1. [アプリを作成します](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app)。
 1. それぞれの QnA Maker ナレッジ ベースの[意図を追加](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents)します。 発話例は、QnA Maker ナレッジ ベースの質問に対応している必要があります。
 1. [LUIS アプリをトレーニング](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train)し、[LUIS アプリを公開](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp)します。
-1. **管理**セクションで、LUIS アプリ ID、LUIS エンドポイント キー、およびホスト リージョンをメモします。 これらの値は後で必要になります。 
+1. **管理**セクションで、LUIS アプリ ID、LUIS エンドポイント キー、および[カスタム ドメイン名](../../cognitive-services-custom-subdomains.md)をメモします。 これらの値は後で必要になります。 
 
 ## <a name="create-qna-maker-knowledge-bases"></a>QnA Maker ナレッジ ベースの作成
 
 1. [QnA Maker](https://qnamaker.ai) にサインインします。
 1. LUIS アプリのそれぞれの意図に対してナレッジ ベースを[作成](https://www.qnamaker.ai/Create)します。
-1. ナレッジ ベースをテストして発行します。 それぞれの KB を公開するとき、KB ID、ホスト ( _.azurewebsites.net/qnamaker_ の前のサブドメイン)、および承認エンドポイント キーをメモします。 これらの値は後で必要になります。 
+1. ナレッジ ベースをテストして発行します。 それぞれの KB を公開するとき、KB ID、リソース名 ( _.azurewebsites.net/qnamaker_ の前のカスタム サブドメイン)、および承認エンドポイント キーをメモします。 これらの値は後で必要になります。 
 
     この記事では、KB はすべて同じ Azure QnA Maker サブスクリプションで作成されることを想定しています。
 
@@ -109,13 +109,13 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
     [Serializable]
     public class QnAMakerService
     {
-        private string qnaServiceHostName;
+        private string qnaServiceResourceName;
         private string knowledgeBaseId;
         private string endpointKey;
 
-        public QnAMakerService(string hostName, string kbId, string endpointkey)
+        public QnAMakerService(string resourceName, string kbId, string endpointkey)
         {
-            qnaServiceHostName = hostName;
+            qnaServiceResourceName = resourceName;
             knowledgeBaseId = kbId;
             endpointKey = endpointkey;
 
@@ -136,7 +136,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
         }
         public async Task<string> GetAnswer(string question)
         {
-            string uri = qnaServiceHostName + "/qnamaker/knowledgebases/" + knowledgeBaseId + "/generateAnswer";
+            string uri = qnaServiceResourceName + "/qnamaker/knowledgebases/" + knowledgeBaseId + "/generateAnswer";
             string questionJSON = "{\"question\": \"" + question.Replace("\"","'") +  "\"}";
 
             var response = await Post(uri, questionJSON);
@@ -169,7 +169,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
         // QnA Maker global settings
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
-        static string qnamaker_endpointDomain = "my-qnamaker-s0-s";
+        static string qnamaker_resourceName = "my-qnamaker-s0-s";
         
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
@@ -178,8 +178,8 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
         static string Finance_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
         // Instantiate the knowledge bases
-        public QnAMakerService hrQnAService = new QnAMakerService("https://" + qnamaker_endpointDomain + ".azurewebsites.net", HR_kbID, qnamaker_endpointKey);
-        public QnAMakerService financeQnAService = new QnAMakerService("https://" + qnamaker_endpointDomain + ".azurewebsites.net", Finance_kbID, qnamaker_endpointKey);
+        public QnAMakerService hrQnAService = new QnAMakerService("https://" + qnamaker_resourceName + ".azurewebsites.net", HR_kbID, qnamaker_endpointKey);
+        public QnAMakerService financeQnAService = new QnAMakerService("https://" + qnamaker_resourceName + ".azurewebsites.net", Finance_kbID, qnamaker_endpointKey);
 
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
             LUIS_appId,

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 6e3045ba8363965fcfc198356ed68447a187308d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4fd27acc58f5aaeb9b7680062ad97aaba22dec51
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123433"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686990"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -70,7 +70,7 @@ ExpressRoute では、プライベート ピアリング、Microsoft ピアリ�
 * ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br><br>**以下のサービスはサポートされていません**。
     * CDN
     * Azure Front Door
-    * Multi-factor Authentication
+    * Multi-Factor Authentication Server (レガシ)
     * Traffic Manager
 
 ### <a name="public-peering"></a>パブリック ピアリング
@@ -84,13 +84,15 @@ ExpressRoute では、プライベート ピアリング、Microsoft ピアリ�
   **以下のサービスはサポートされていません**。
     * CDN
     * Azure Front Door
-    * Multi-factor Authentication
+    * Multi-Factor Authentication Server (レガシ)
     * Traffic Manager
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Dynamics 365 は ExpressRoute でサポートされていますか。
 
 Dynamics 365 および Common Data Service (CDS) 環境は Azure でホストされているため、お客様はその基礎となっている Azure リソース向け ExpressRoute のサポートを利用できます。 このサービス エンドポイントに接続できるのは、Dynamics 365/CD(CDS) 環境がホストされている Azure リージョンが、ルーター フィルターに含まれている場合です。
 
+> [!NOTE]
+> Azure ExpressRoute 経由の Dynamics 365 接続には、[ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) は必要**ありません**。
 
 ## <a name="data-and-connections"></a>データおよび接続
 
