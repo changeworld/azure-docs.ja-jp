@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103542"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177065"
 ---
 # <a name="call-the-computer-vision-api"></a>Computer Vision API を呼び出す
 
@@ -56,7 +56,7 @@ Computer Vision API への呼び出しでは、毎回サブスクリプション
 * 次の Computer Vision API の例のように、クエリ文字列で渡します。
 
   ```
-  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
   ```
 
 * HTTP 要求ヘッダーで指定します。
@@ -83,7 +83,7 @@ Computer Vision API の呼び出しを実行する基本的な方法は、画像
 ### <a name="option-1-get-a-list-of-tags-and-a-description"></a>オプション 1:タグの一覧と説明を取得する
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
 
 ```csharp
@@ -105,14 +105,14 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 タグのみの場合は、次を実行します。
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
 var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
 説明のみの場合は、次を実行します。
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
   imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
@@ -123,14 +123,14 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 ### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>オプション 1:スコープされた分析 - 特定のモデルのみを分析する
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
 ```
 
 このオプションでは、他のすべてのクエリ パラメーター {visualFeatures, details} は有効ではありません。 サポートされているすべてのモデルを表示する場合は、次のコマンドを使用します。
 
 ```
-GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
+GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models 
 var models = await visionClient.ListModelsAsync();
 ```
 
@@ -139,7 +139,7 @@ var models = await visionClient.ListModelsAsync();
 1 つ以上のドメイン固有モデルからの詳細に加え、汎用的な画像分析を取得するアプリケーションでは、モデルのクエリ パラメーターを使用して v1 API を拡張します。
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
 ```
 
 このメソッドを呼び出すときは、まず [86 カテゴリ](../Category-Taxonomy.md)分類子を呼び出します。 いずれかのカテゴリが既知の (対応する) モデルのカテゴリと一致した場合、分類子呼び出しの 2 番目のパスが発生します。 たとえば、"details=all" の場合、または "details" に "celebrities" が含まれている場合、86 カテゴリ分類子を呼び出した後に有名人モデルを呼び出します。 結果には、そのカテゴリに属する人物が含まれます。 有名人に関心があるユーザーにとって、この方法は、オプション 1 に比べて待ち時間が長くなります。

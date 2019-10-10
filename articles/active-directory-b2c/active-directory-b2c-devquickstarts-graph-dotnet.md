@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 903492d790cdde93dfe84763de139fe85e26b234
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218271"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802081"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
@@ -43,32 +43,17 @@ Azure AD B2C テナントを作成したら、[Azure portal](https://portal.azur
 
 ### <a name="register-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを登録する
 
-B2C テナントで Azure AD Graph API を使用するには、Azure Active Directory の**アプリの登録**ワークフローを使用してアプリケーションを登録する必要があります。
+B2C テナントで Azure AD Graph API を使用するには、Azure Active Directory のアプケーション登録ワークフローを使用してアプリケーションを登録する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、Azure AD B2C テナントが含まれているディレクトリに切り替えます。
-1. 左側のメニューで **[Azure Active Directory]** (Azure AD B2C *ではない*) を選択します。 または、 **[すべてのサービス]** を選択してから、 **[Azure Active Directory]** を検索して選択します。
-1. 左側のメニューで **[管理]** の下の **[アプリの登録 (レガシー)]** を選択します。
-1. **[新しいアプリケーションの登録]** を選択します
-1. アプリケーションの名前を入力します。 たとえば、*管理アプリ*です。
-1. **[サインオン URL]** に、有効な URL を入力します。 たとえば、 *https://localhost* です。 このエンドポイントは、到達可能である必要はありませんが、有効な URL である必要があります。
-1. **作成** を選択します。
-1. **[登録済みのアプリケーション]** の概要ページに表示される **[アプリケーション ID]** を記録します。 この値は、後の手順で構成に使用します。
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
 ### <a name="assign-api-access-permissions"></a>API アクセス許可を割り当てる
 
-1. **[登録済みのアプリ]** 概要ページで、 **[設定]** を選択します。
-1. **[API アクセス]** の下の、 **[必要なアクセス許可]** を選択します。
-1. **[Windows Azure Active Directory]** を選択します。
-1. **[アプリケーションのアクセス許可]** で **[ディレクトリ データの読み取りと書き込み]** を選択します。
-1. **[保存]** を選択します。
-1. **[アクセス許可の付与]** を選択し、 **[はい]** を選択します。 アクセス許可が完全に反映されるまでに数分かかる場合があります。
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="create-client-secret"></a>クライアント シークレットを作成する
 
-1. **[API アクセス]** で、 **[キー]** を選択します。
-1. **[キーの説明]** ボックスにキーの説明を入力します。 たとえば、*管理キー*です。
-1. 有効な **[期間]** を選択し、 **[保存]** を選択します。
-1. キーの**値**を記録します。 この値は、後の手順で構成に使用します。
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 これで Azure AD B2C テナントのユーザーの*作成*、*読み取り*、*更新*を実行するアクセス許可を持つアプリケーションが用意されました。 次のセクションに進み、ユーザーの*削除*および*パスワードの更新*のアクセス許可を追加します。
 
@@ -83,7 +68,7 @@ B2C テナントで Azure AD Graph API を使用するには、Azure Active Dire
 1. **[管理]** で **[ロールと管理者]** を選択します。
 1. **[ユーザー管理者]** ロールを選択します。
 1. **[割り当ての追加]** を選択します。
-1. **[選択]** テキスト ボックスに、前に登録したアプリケーションの名前 (たとえば、*管理アプリ*) を入力します。 検索結果に表示されたらアプリケーションを選択します。
+1. **[選択]** テキスト ボックスに、前に登録したアプリケーションの名前 (たとえば、*managementapp1*) を入力します。 検索結果に表示されたらアプリケーションを選択します。
 1. **[追加]** を選択します。 アクセス許可が完全に反映されるまでに数分かかる場合があります。
 
 これで、Azure AD B2C アプリケーションには、B2C テナントでユーザーの削除またはパスワードの更新を行うために必要な追加のアクセス許可が付与されました。

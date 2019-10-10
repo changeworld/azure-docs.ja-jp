@@ -4,14 +4,14 @@ description: Azure HPC Cache で長期的なファイルの保管にオンプレ
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300038"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710038"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -21,17 +21,9 @@ ms.locfileid: "71300038"
 
 キャッシュの仮想ネットワークからストレージのエクスポートにアクセスできなければならないことに注意してください。 オンプレミスのハードウェア ストレージの場合、NFS ストレージへのアクセスに使用されるホスト名を解決できる DNS サーバーの設定が必要になることがあります。 詳細については、「[DNS アクセス](hpc-cache-prereqs.md#dns-access)」を参照してください。
 
-ストレージ ターゲットは、ご自身のキャッシュの作成中または作成後に追加できます。 この手順は、追加するのが Azure Blob Storage であるか NFS エクスポートであるかによって若干異なります。 それぞれの詳細を以下に示します。
+キャッシュを作成した後で、ストレージ ターゲットを追加します。 この手順は、追加するのが Azure Blob Storage であるか NFS エクスポートであるかによって若干異なります。 それぞれの詳細を以下に示します。
 
-## <a name="add-storage-targets-while-creating-the-cache"></a>キャッシュの作成中にストレージ ターゲットを追加する
-
-Azure HPC Cache 作成ウィザードの **[ストレージ ターゲット]** タブを使用して、キャッシュ インスタンスを作成すると同時にストレージを定義します。
-
-![ストレージ ターゲットのページのスクリーンショット](media/hpc-cache-storage-targets-pop.png)
-
-**[ストレージ ターゲットの追加]** リンクをクリックしてストレージを追加します。
-
-## <a name="add-storage-targets-from-the-cache"></a>キャッシュからストレージ ターゲットを追加する
+## <a name="open-the-storage-targets-page"></a>ストレージ ターゲットのページを開く
 
 Azure portal からキャッシュ インスタンスを開き、左側のサイド バーにある **[ストレージ ターゲット]** をクリックします。 ストレージ ターゲットのページには、既存のターゲットがすべて表示されるほか、新たに追加するためのリンクが表示されます。
 
@@ -107,7 +99,7 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 1 つのストレージ ターゲットからすべてのパスを作成します。
 <!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
 
-各名前空間パスに対して、次の値を入力します。 
+各名前空間パスに対して、次の値を入力します。
 
 * **[Virtual namespace path]\(仮想名前空間パス\)** - このストレージ ターゲットに使用するクライアント側のファイル パスを設定します。 仮想名前空間の機能の詳細については、「[集約された名前空間を構成する](hpc-cache-namespace.md)」を参照してください。
 
@@ -115,7 +107,7 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 
 * **[NFS export path]\(NFS エクスポート パス\)** - NFS エクスポートのパスを入力します。
 
-* **[Subdirectory path]\(サブディレクトリ パス\)** - エクスポートの特定のサブディレクトリをマウントしたい場合は、ここに入力します。 それ以外の場合、このフィールドは空白のままにしてください。 
+* **[Subdirectory path]\(サブディレクトリ パス\)** - エクスポートの特定のサブディレクトリをマウントしたい場合は、ここに入力します。 それ以外の場合、このフィールドは空白のままにしてください。
 
 完了したら、 **[OK]** をクリックしてストレージ ターゲットを追加します。
 
@@ -124,7 +116,7 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 
 NFS ストレージ システムを指すストレージ ターゲットを作成するときは、そのターゲットの "*使用モデル*" を選択する必要があります。 どのようにデータがキャッシュされるかは、このモデルによって決まります。
 
-* 読み取り (高負荷) - 主にデータの読み取りアクセスを高速化するためにキャッシュを使用する場合は、このオプションを選択します。 
+* 読み取り (高負荷) - 主にデータの読み取りアクセスを高速化するためにキャッシュを使用する場合は、このオプションを選択します。
 
 * 読み取り/書き込み - クライアントが読み取りと書き込みのためにキャッシュを使用する場合は、このオプションを選択します。
 
