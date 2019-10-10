@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: d2922f79c0b2ef7098e0f51e0c3bf6ab18a1b0e3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cbae4455ae4cfcc0397b8b50b7f86843f7f82a59
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200277"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695375"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -440,7 +440,8 @@ Windows ベースのコンピューターにインストールされているロ
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
    ```
   データ ディスクが VM に接続されている場合、テンポラル ドライブ ボリュームの文字は通常 *D* になります。この指定は、設定や使用可能なドライブ数に応じて異なる場合があります。
-
+  * ウイルス対策ソフトウェアによって提供されている可能性のあるスクリプト ブロッカーを無効にすることをお勧めします。 イメージから新しい VM をデプロイするときに実行される Windows プロビジョニング エージェント スクリプトが干渉されて、ブロックされる可能性があります。
+  
 ## <a name="next-steps"></a>次の手順
 * [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)
 * [Azure Windows VM のライセンス認証に関する問題のトラブルシューティング](troubleshoot-activation-problems.md)

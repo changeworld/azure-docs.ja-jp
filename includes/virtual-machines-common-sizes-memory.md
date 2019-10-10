@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 4d0e7bc7f491e328f5e9fce291d415452c49c745
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266927"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830119"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
@@ -200,6 +200,8 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
+M シリーズのサイズは Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz に基づいています   
+
 書き込みアクセラレータ:[サポートされています](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 | Size            | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
@@ -239,6 +241,8 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
+DSv2 シリーズのサイズは Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz に基づいています
+
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2&nbsp;<sup>3</sup> |2 |14 |28 |8 |8000 / 64 (72) |6400 / 96 |2/1,500 |
@@ -261,6 +265,8 @@ ACU: 210 から 250
 Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
+
+DSv2 シリーズのサイズは Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz に基づいています
 
 | Size              | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

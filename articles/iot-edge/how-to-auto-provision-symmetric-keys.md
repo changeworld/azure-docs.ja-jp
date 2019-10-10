@@ -5,17 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 07/10/2019
+ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 53b1abca25119f4168aaf12a66c4347c53ed0a62
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299842"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828072"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -27,7 +26,7 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 * デバイスの個別登録を作成する。
 * IoT Edge ランタイムをインストールし、IoT Hub に接続する。
 
-対称キーの構成証明は、Device Provisioning Service インスタンスを使用してデバイスを認証する簡単なアプローチです。 この構成証明の方法では、初めてデバイスのプロビジョニングを行う開発者または厳密なセキュリティ要件がない開発者に対して、"Hello world" エクスペリエンスを提示します。 [TPM](../iot-dps/concepts-tpm-attestation.md) を使用するデバイス構成証明は、より安全であり、さらに厳格なセキュリティ要件に対して使用する必要があります。
+対称キーの構成証明は、Device Provisioning Service インスタンスを使用してデバイスを認証する簡単なアプローチです。 この構成証明の方法では、初めてデバイスのプロビジョニングを行う開発者または厳密なセキュリティ要件がない開発者に対して、"Hello world" エクスペリエンスを提示します。 [TPM](../iot-dps/concepts-tpm-attestation.md) または [X.509 証明書](../iot-dps/concepts-security.md#x509-certificates)を使用するデバイス構成証明は、より安全であり、さらに厳格なセキュリティ要件に対して使用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -191,9 +190,29 @@ provisioning:
 
 ### <a name="windows-device"></a>Windows デバイス
 
-指示に従って、派生デバイスキー を生成したデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
+派生デバイスキーを生成したデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムを、手動プロビジョニングではなく、自動プロビジョニング用に構成します。
 
-[Windows に IoT Edge をインストールして自動的にプロビジョニングする](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+Windows での IoT Edge のインストールの詳細については、コンテナーの管理や IoT Edge の更新などのタスクに関する前提条件や手順を含めて、「[Windows に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-windows.md)」を参照してください。
+
+1. 管理者モードで PowerShell ウィンドウを開きます。 IoT Edge をインストールするときは、PowerShell (x86) ではなく、PowerShell の AMD64 セッションを必ず使用してください。
+
+1. **Deploy-IoTEdge** コマンドを使用して、ご使用の Windows コンピューターがサポートされているバージョンであることを確認し、コンテナー機能をオンに設定した後、moby ランタイムと IoT Edge ランタイムをダウンロードします。 コマンドの既定値では Windows コンテナーが使用されます。
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Deploy-IoTEdge
+   ```
+
+1. この時点で、IoT Core デバイスが自動的に再起動することがあります。 その他の Windows 10 または Windows Server デバイスでは、再起動が求められることがあります。 その場合、デバイスをすぐに再起動してください。 デバイスが起動されたら、管理者として PowerShell を再実行します。
+
+1. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 自動プロビジョニングを使用するために `-Dps` フラグを使用する場合を除き、このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。
+
+   `{scope_id}`、`{registration_id}`、および `{symmetric_key}` のプレースホルダー値を、前に収集したデータに置き換えます。
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   ```
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: d24481c1364b41f38e4ca7b8f7d726ebc22a1117
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 447f52a08c9e833808508852c4619f6ce1d947e1
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624638"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703365"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET Bulk Executor ライブラリ:ダウンロード情報 
 
@@ -61,6 +61,12 @@ ms.locfileid: "69624638"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
 
 * Bulk Executor ライブラリを .NET Core アプリケーションに対応させるため、サポートされているターゲット フレームワークの 1 つとして .NET Standard 2.0 が追加されました。
+
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
+
+* 特定のシナリオで CPU 使用率が高い問題を修正しました。
+* トレースで TraceSource が使用されるようになりました。 ユーザーは、`BulkExecutorTrace` ソースのリスナーを定義できます。
+* サイズが 2MB に近いドキュメントの送信時にロックがまれに発生する問題を修正しました。
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 

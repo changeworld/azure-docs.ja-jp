@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 10/2/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b210868c87b06a6b7caf55aece74cba956b406a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290776"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827098"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -43,19 +43,25 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 このプロセスを進めている間、リリースのバージョン番号では、"1.3.X.0" のようにマイナー リリース番号の位置に "X" が表示されます。これは、このドキュメントのリリース ノートは、"1.3." で始まるすべてのバージョンで有効であることを示しています。 リリース プロセスが終了すると、すぐにリリース バージョン番号が最近リリースされたバージョンに更新され、リリースの状態が "ダウンロードと自動アップグレード用にリリース済み" に更新されます。
 Azure AD Connect のすべてのリリースが自動アップグレードに対応しているわけではありません。 リリースの状態により、リリースが自動アップグレードに対応しているか、ダウンロードにのみ対応しているかが分かります。 Azure AD Connect サーバーに対して自動アップグレードが有効になっている場合、そのサーバーは、自動アップグレードのためにリリースされた Azure AD Connect の最新バージョンに自動的にアップグレードされます。 Azure AD Connect のすべての構成が自動アップグレードの対象となっているわけではないので注意してください。 詳細については、[自動アップグレード](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)に関するこのリンクを参照してください。
 
-## <a name="14x0"></a>1.4.X.0
-
->[!IMPORTANT]
->ハイブリッド Azure AD 参加済みとして登録された Windows コンピューターは、Azure AD 内でデバイス オブジェクトとして表されます。 それらのデバイス オブジェクトは、条件付きアクセスに使用できます。 Windows 10 コンピューターは、Azure AD Connect を介してクラウドに同期され、ダウン レベルの Windows コンピューターは AD FS またはシームレス シングル サインオンを使用して直接登録されます。
->
->Azure AD Connect を介してクラウドに同期されるのは、Hybrid Azure AD Join によって特定の userCertificate 属性値が構成されている Windows 10 コンピューターだけです。  以前のバージョンの Azure AD Connect では、この要件が厳密に適用されておらず、結果的に、不要なデバイス オブジェクトが Azure AD に生じていました。 これらのコンピューターは Azure AD に登録するように意図されていなかったため、Azure AD のそうしたデバイスは常に "保留中" の状態のままでした。
->
->このバージョンの Azure AD Connect では、ハイブリッド Azure AD 参加済みとなるように正しく構成された Windows 10 コンピューターだけが同期されます。 [ダウンレベルの Windows デバイス](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices)は、Azure AD Connect によって同期されるべきではありません。  過去に誤って同期された Azure AD 内のデバイスは、Azure AD から削除されるようになりました。  ただし、Hybrid Azure AD Join 用に正しく Azure AD に登録された Windows デバイスがこの変更によって削除されることはありません。 
->
->それらの Windows デバイスの一部またはすべてが、Azure AD に表示されなくなる場合があります。 これらのデバイス ID が、条件付きアクセスの承認時に Azure AD によって使用されることはないため、これは問題ありません。 一部のお客様については、Windows コンピューターを正しく登録し、そうしたデバイスがデバイスベースの条件付きアクセスに完全に参加できるよう、必要に応じて「[方法: Hybrid Azure Active Directory 参加の実装を計画する](../../active-directory/devices/hybrid-azuread-join-plan.md)」を再確認してください。 Azure AD Connect が[ダウンレベルの Windows デバイス](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices)の削除を試みる場合、そのデバイスは、[Windows 10 以外のコンピューター向けの Microsoft Workplace Join の MSI](https://www.microsoft.com/download/details.aspx?id=53554) によって作成されたものではなく、他の Azure AD 機能から利用することはできません。  Azure AD 内のコンピューター オブジェクトまたはデバイス オブジェクトの削除がエクスポート削除しきい値を超えていることが確認された場合は、お客様がこれらの削除の実行を許可することをお勧めします。
+## <a name="14250"></a>1.4.25.0
 
 ### <a name="release-status"></a>リリースの状態
-2019 年 9 月 10日:自動アップグレード向けにのみリリース済み
+9/28/2019:一部のテナントを対象に自動アップグレード用がリリース。 ダウンロードでは利用できません。
+
+このバージョンでは、前のバージョンから 1.4.18.0 に自動アップグレードされたサーバーの一部で SSPR (パスワード リセットのセルフサービス) とパスワード ライトバックに問題を発生させたバグが修正されました。
+
+### <a name="fixed-issues"></a>修正された問題
+
+特定の状況下では、バージョン 1.4.18.0 に自動アップグレードされたサーバーで、アップグレードの完了後、パスワード リセットのセルフサービスとパスワード ライトバックを再度有効にできませんでした。 この自動アップグレードでは、その問題が解決され、パスワード リセットのセルフサービスとパスワード ライトバックが再度有効になります。
+
+## <a name="14180"></a>1.4.18.0
+
+>[!IMPORTANT]
+>このバージョンの Azure AD Connect をご利用のお客様に、Windows デバイスの一部または全部が Azure AD から消えるという現象が発生することがあります。 これらのデバイス ID が、条件付きアクセスの承認時に Azure AD によって使用されることはないため、これは問題ありません。 詳細については、[Azure AD Connect 1.4.xx.x デバイスが消える現象](reference-connect-device-disappearance.md)に関するページを参照してください。
+
+
+### <a name="release-status"></a>リリースの状態
+9/25/2019:自動アップグレード用とダウンロード用がリリース。
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 - 新しいトラブルシューティング ツールは、"ユーザーが同期していない"、"グループが同期していない"、"グループ メンバーが同期していない" という各シナリオのトラブルシューティングに役立ちます。
@@ -89,9 +95,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 - 初期インストール時に ADSync サービスを開始できないグループ ポリシーに関する診断およびトラブルシューティングを機能強化しました。
 - Windows コンピューターの表示名が正しく書き込まれなかったバグを修正しました。
 - Windows コンピューターの OS の種類が正しく書き込まれなかったバグを修正しました。
-- Windows 10 以外のコンピューターが予期せず同期していたバグを修正しました。 この変更の影響として、以前に同期された Windows 10 以外のコンピューターが削除されるようになったことに注意してください。 Windows コンピューターの同期は、Windows 10 デバイスでのみ機能する Hybrid Azure AD ドメイン参加にのみ使用されるため、これはどの機能にも影響しません。 
-- Windows コンピューターの表示名が正しく書き込まれなかったバグを修正しました。
-- Windows コンピューターの OS の種類が正しく書き込まれなかったバグを修正しました。
+- Windows 10 以外のコンピューターが予期せず同期していたバグを修正しました。 この変更の影響として、以前に同期された Windows 10 以外のコンピューターが削除されるようになったことに注意してください。 Windows コンピューターの同期は、Windows 10 デバイスでのみ機能する Hybrid Azure AD ドメイン参加にのみ使用されるため、これはどの機能にも影響しません。
 - ADSync PowerShell モジュールに新しい (内部) コマンドレットをいくつか追加しました。
 
 

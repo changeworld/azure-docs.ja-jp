@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/01/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5e325f7766e7b0d9764949eb3fbf9753d65db8b3
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: e21bad930bba02e4cbf715a050278ada812e55fa
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619387"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718932"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する
 
@@ -31,15 +31,20 @@ Azure Monitor ログは、企業内のソースまたは Azure に展開され�
 
 この記事では、データ ボリュームとストレージの拡大を事前に監視し、制限を定義して関連コストを制御する方法を説明します。 
 
-データのコストは、次の要因に大きく依存する可能性があります。 
 
-- 生成されてワークスペースに取り込まれるデータのボリューム 
-    - 有効化された管理ソリューションの数
-    - 監視対象システムの数
-    - 各監視対象リソースから収集されたデータの種類 
-- データを保持する時間の長さ 
+## <a name="pricing-model"></a>価格モデル
 
-## <a name="understand-your-workspaces-usage-and-estimated-cost"></a>ワークスペースの使用料と推定コストを理解する
+Log Analytics の料金は、取り込まれたデータの量に基づき、データ保持が長い場合にもかかります。 各 Log Analytics ワークスペースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ インジェストの量は、次の要因に大きく依存する可能性があります。 
+
+  - 有効化された管理ソリューションの数
+  - 独自の課金モデルを持つソリューションの使用 (たとえば、[Azure Security Center](https://azure.microsoft.com/en-us/pricing/details/security-center/))
+  - 監視対象 VM の数
+  - 各監視対象 VM から収集されるデータの種類 
+
+> [!NOTE]
+> 最近発表された容量予約価格レベルは、2019 年 11 月 1 日から Log Analytics で利用できるようになります。 詳しくは、[https://azure.microsoft.com/en-us/pricing/details/monitor/](Azure Monitor pricing page) をご覧ください。
+
+## <a name="understand-your-usage-and-estimate-costs"></a>使用量を理解してコストを見積もる
 
 Azure Monitor ログでは、最近の使用パターンに基づいてコストを簡単に理解できます。 これには、データ使用状況を確認して分析するために **Log Analytics の [使用量と推定コスト]** を使用します。 これには、各ソリューションによって収集されるデータの量、保持されるデータの量、および取り込まれたデータ量と無料使用量を超える追加保有期間に基づいたコストの推定値が示されます。
 
@@ -53,20 +58,20 @@ Azure Monitor ログでは、最近の使用パターンに基づいてコスト
  
 Log Analytics の課金は Azure の課金内容に加えられます。 Azure Portal の [課金] または [Azure Billing Portal](https://account.windowsazure.com/Subscriptions) で、Azure の課金内容の詳細を確認できます。  
 
-## <a name="daily-cap"></a>日次上限
+## <a name="manage-your-maximum-daily-data-volume"></a>最大日次データ ボリュームを管理する
 
 日次上限を構成して、ワークスペースの毎日のインジェストを制限できますが、1 日の上限に達することが目標ではないので注意する必要があります。  そうしないと、その日の残りの時間についてデータが失われ、ワークスペースで最新のデータが利用できることに依存する機能を持つ他の Azure サービスやソリューションに影響を与える可能性があります。  その結果、IT サービスをサポートするリソースの正常性状態を監視してアラートを受け取る機能が影響を受けます。  日次上限は、マネージド リソースからのデータ ボリュームの予期しない増加を管理して制限内に留めるための手段、またはワークスペースの計画外の料金を制限する手段として使うためのものです。  
 
 日次上限に達すると、課金対象のデータの種類の収集は、その日はそれ以上行われません。 選択した Log Analytics ワークスペースのページの上部に警告バナーが表示され、**LogManagement** カテゴリの *Operation* テーブルに操作イベントが送信されます。 [*1 日の上限を次に設定する*] で定義されているリセット時刻が過ぎると、データ収集が再開されます。 この操作イベントに基づいてアラート ルールを定義し、データの日次制限に達したら通知するよう構成することをお勧めします。 
 
 > [!NOTE]
-> 日次上限によって Azure Security Center からのデータの収集が停止することはありません。
+> 2017 年 6 月 19 日より前にインストールされた Azure Security Center のワークスペースを除き、1 日の上限では、Azure Security Center からのデータ収集は停止されません。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>定義する日次データ制限を明らかにする
 
 [Log Analytics の使用量と推定コスト](usage-estimated-costs.md)に関する記事を参照し、データ インジェストの傾向および定義する日次データ ボリューム上限について理解してください。 上限に達した後はリソースを監視できなくなるので、慎重に検討してください。 
 
-### <a name="manage-the-maximum-daily-data-volume"></a>最大日次データ ボリュームを管理する
+### <a name="set-the-daily-cap"></a>1 日の上限を設定する
 
 次の手順では、Log Analytics ワークスペースが 1 日に取り込むデータのボリュームを管理する制限を構成する方法について説明します。  
 
@@ -76,7 +81,7 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
 
     ![Log Analytics のデータ制限の構成](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
-### <a name="alert-when-daily-cap-reached"></a>日次上限に到達した際のアラート
+### <a name="alert-when-daily-cap-reached"></a>1 日の上限に達したら警告する
 
 データ制限のしきい値に達したら Azure Portal に視覚的な合図が表示されますが、この動作は、早急な措置を必要とする運用上の問題を管理する方法と、必ずしも一致していない場合があります。  アラート通知を受け取るには、Azure Monitor で新しいアラート ルールを作成します。  詳細については、[アラートを作成、表示、管理する方法](alerts-metric.md)に関するページをご覧ください。
 
@@ -107,6 +112,8 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
     ![ワークスペースのデータ保持設定の変更](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
 この保持期間は `dataRetention` パラメーターを使用して [ARM 経由で設定](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この機能は ARM 経由でのみ公開されます。 
+
+既定では、2 種類のデータ `Usage` と `AzureActivity` が 90 日間保持され、この 90 日間の保持に対しては課金されません。 これらのデータの種類は、データ インジェスト料金の対象にもなりません。 
 
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
@@ -413,6 +420,10 @@ union withsource = $table Usage
 ログ アラートが条件に一致するときに通知されるように、既存の[アクション グループ](action-groups.md)を指定するか、アクション グループを新たに作成します。
 
 アラートを受け取ったら、次のセクションの手順を使用して、使用量が予想よりも多い理由のトラブルシューティングを行います。
+
+## <a name="data-transfer-charges-using-log-analytics"></a>Log Analytics を使用したデータ転送の料金
+
+Log Analytics にデータを送信すると、データ帯域幅の料金が発生する可能性があります。 [Azure 帯域幅の価格ページ](https://azure.microsoft.com/en-us/pricing/details/bandwidth/)で説明されているように、2 つのリージョンに存在する Azure サービス間のデータ転送は、通常の料金で送信データ転送として課金されます。 受信データ転送は無料です。 ただし、この料金は、Log Analytics データ インジェストのコストと比へると非常に小さい (数パーセント) ものです。 そのため、Log Analytics のコスト管理では、取り込まれたデータ ボリュームに注目する必要があり、それについて理解するためのガイダンスが[こちら](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)に用意されています。   
 
 ## <a name="limits-summary"></a>制限の概要
 

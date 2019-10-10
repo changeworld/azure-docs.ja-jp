@@ -1,19 +1,20 @@
 ---
-title: Azure HDInsight - よく寄せられる質問
-description: Azure HDInsight の概要について説明します
+title: Azure HDInsight についてよく寄せられる質問
+description: HDInsight についてよく寄せられる質問
+keywords: よく寄せられる質問、FAQ
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: v-miegge
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 4accd8c2f58dd89fb5f918ca6e58e71caeaed57f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213871"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827605"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -27,7 +28,9 @@ ms.locfileid: "71213871"
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>既存の HDInsight クラスターを削除するにはどうすればよいですか。
 
-使用されなくなったクラスターを削除する方法の詳細については、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](https://docs.microsoft.com/azure/hdinsight/hdinsight-delete-cluster)」を参照してください。 1 つのクラスターに対する作成操作と削除操作の間隔は少なくとも 30 から 60 分にすることをお勧めします。 そうしないと、操作が失敗し、次のエラー メッセージが返される可能性があります。
+クラスターが使用されなくなったときに削除する方法の詳細については、[HDInsight クラスターの削除](hdinsight-delete-cluster.md)に関する記事を参照してください。
+
+作成操作と削除操作の間は、少なくとも 30 から 60 分空けてください。 そうしないと、次のエラー メッセージが表示され、操作が失敗する可能性があります。
 
 ``Conflict (HTTP Status Code: 409) error when attempting to delete a cluster immediately after creation of a cluster. If you encounter this error, wait until the newly created cluster is in operational state before attempting to delete it.``
 
@@ -55,44 +58,49 @@ Azure では、リソース グループあたり 800 デプロイのクォー�
 
 クォータの引き上げを依頼するには、次の手順を実行します。
 
-1. Azure portal にアクセスし、[ヘルプとサポート] を選択します。
-2. [新しいサポート要求] を選択します
-3. [新しいサポート要求] ページの [基本] タブで、次のオプションを選択します。
+1. [Azure portal](https://portal.azure.com) にアクセスし、 **[ヘルプとサポート]** を選択します。
+   
+1. **[新しいサポート リクエスト]** を選択します。
+   
+1. **[新しいサポート リクエスト]** ページの **[基本]** タブに次の情報を指定します。
+   
+   - **問題の種類:** **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
+   - **サブスクリプション:** 変更するサブスクリプションを選択します。
+   - **クォータの種類**: **[HDInsight]** を選択します。
 
-   * [問題の種類]\: サービスとサブスクリプションの制限 (クォータ)
-   * サブスクリプション:変更するサブスクリプション
-   * [クォータの種類]: HDInsight
-
-詳細については、[サポート チケットを作成してコア数を増やす](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning#quotas)方法に関する記事を参照してください。
+詳細については、[サポート チケットを作成してコア数を増やす](hdinsight-capacity-planning.md#quotas)方法に関する記事を参照してください。
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>HDInsight クラスターにはどのような種類のノードがありますか。
 
 Azure HDInsight クラスターには、さまざまな種類の仮想マシン、つまりノードがあります。 それぞれのノードの種類が、システムの運用において役割を果たしています。
 
-詳細については、「[Azure HDInsight クラスターでのリソースの種類](https://docs.microsoft.com/azure/hdinsight/hdinsight-virtual-network-architecture#resource-types-in-azure-hdinsight-clusters)」を参照してください。
+詳細については、「[Azure HDInsight クラスターでのリソースの種類](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters)」を参照してください。
 
 ## <a name="individual-components"></a>個別のコンポーネント
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>クラスターには追加のコンポーネントをインストールできますか。
 
-はい。次のいずれかの方法を使用して、追加のコンポーネントをインストールしたり、クラスター構成をカスタマイズしたりすることができます。
+はい。 追加のコンポーネントをインストールするか、クラスター構成をカスタマイズするには、次のように使用します。
 
-* 作成時または作成後にスクリプトを使用します。 このようなスクリプトは、[スクリプト操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)を介して呼び出されます。 この構成オプションは、Azure portal、HDInsight Windows PowerShell コマンドレット、または HDInsight .NET SDK から使用できます。 
-* クラスターがプロビジョニングされた後、sudo または他のメソッドを使用します。
-* [HDInsight アプリケーション プラットフォーム](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)を使用して、エコシステム アプリケーションをインストールします。
+- 作成時または作成後のスクリプト。 スクリプトは、[スクリプト操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)を使用して呼び出されます。これは Azure portal、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。 この構成オプションは、Azure portal、HDInsight Windows PowerShell コマンドレット、または HDInsight .NET SDK から使用できます。
+
+- クラスターをプロビジョニングした後の `sudo` または他のメソッド。
+  
+- エコシステム アプリケーションをインストールする [HDInsight アプリケーション プラットフォーム](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)。
 
 ただし、Microsoft サポート チームは、次の状況に対してのみサポートを提供できます。
 
-* スクリプトの読み込み中に発生した問題またはエラー。 カスタム スクリプトの実行中に発生したエラーは、サポート チケットの範囲外です。 
-* クラスターの作成プロセスに含まれる追加のアプリケーション。 
+- スクリプトの読み込み中に発生した問題またはエラー。 カスタム スクリプトの実行中に発生したエラーは、サポート チケットの範囲外です。
+
+- クラスターの作成プロセスに含まれる追加のアプリケーション。 
 
 サポートされるコンポーネントの一覧については、「[HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)」を参照してください。
 
 個々のコンポーネントのサポートについても、クラスターの種類ごとに異なる場合があります。 たとえば、Spark は Kafka クラスターではサポートされません。また、その逆も同様です。
 
-クラスター作成プロセス以外のアプリケーションまたはサービスについては、対応するベンダーまたはサービス プロバイダーにお問い合わせください。 これらのアクションのサポートには、コミュニティ サイトを利用することもできます。 多くのコミュニティ サイトを利用できます。 たとえば、[HDInsight の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=hdinsight)や、[Stack Overflow](https://stackoverflow.com/questions/tagged/hdinsight) などです。 Apache プロジェクトにも、[Apache の Web サイト](https://apache.org/)にプロジェクトのサイトがあります。 たとえば、[Hadoop](https://hadoop.apache.org/) などです。
+クラスター作成プロセス以外のアプリケーションとサービスについては、ベンダーまたはサービス プロバイダーにサポートを依頼してください。 多くのコミュニティ サポート サイトを使用することもできます。 たとえば、[HDInsight の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や、[Stack Overflow](https://stackoverflow.com/) などです。 Apache プロジェクトにも、[Apache の Web サイト](https://apache.org/)にプロジェクトのサイトがあります。 たとえば、[Hadoop](https://hadoop.apache.org/) などです。 
 
- Azure サポートに関連するその他の質問については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/)」を参照してください。
+Azure サポートの詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>クラスターにプレインストールされている個々のコンポーネントをアップグレードできますか。
 
@@ -102,7 +110,7 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 
 ### <a name="can-spark-and-kafka-run-on-the-same-hdinsight-cluster"></a>Spark と Kafka は同じ HDInsight クラスター上で実行できますか。
 
-いいえ。同じ HDInsight クラスター上で Apache Kafka と Apache Spark を実行することはできません。 リソースの競合の問題を回避するには、それぞれに個別のクラスターを作成する必要があります。
+いいえ。同じ HDInsight クラスター上で Apache Kafka と Apache Spark を実行することはできません。 リソース競合の問題を回避するには、Kafka と Spark 用に個別のクラスターを作成します。
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Ambari のタイムゾーンは変更するにはどうすればよいですか。
 
@@ -119,7 +127,7 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>既存のメタストアから Azure SQL Server に移行するにはどうすればよいですか。 
 
-SQL Server から Azure SQL Server に移行する方法については、「[チュートリアル:DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオフラインで移行する](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)」を参照してください。
+SQL Server から Azure SQL Server に移行する方法については、「[チュートリアル:DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオフラインで移行する](../dms/tutorial-sql-server-to-azure-sql.md)」を参照してください。
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>クラスターが削除されると Hive メタストアは削除されますか。
 
@@ -129,11 +137,11 @@ SQL Server から Azure SQL Server に移行する方法については、「[�
 
 カスタムのメタストアの場合:メタストアのライフサイクルは、クラスターのライフサイクルに関連付けられていません。 そのため、メタデータを失うことなくクラスターを作成および削除できます。 Hive スキーマなどのメタデータは、HDInsight クラスターを削除して再作成した後でも保持されます。
 
-詳細については、[Azure HDInsight での外部メタデータ ストアの使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)に関する記事を参照してください。
+詳細については、[Azure HDInsight での外部メタデータ ストアの使用](hdinsight-use-external-metadata-stores.md)に関する記事を参照してください。
 
 ### <a name="does-migrating-a-hive-metastore-also-migrate-the-default-policies-of-the-ranger-database"></a>Hive メタストアを移行すると、Rangers データベースの既定のポリシーも移行されますか。
 
-いいえ。ポリシー定義は、Rangers データベース内にあります。 そのため、Rangers データベースを移行してもポリシーは移行されません。
+いいえ。ポリシー定義は Rangers データベース内にあります。そのため、Rangers データベースを移行すると、そのポリシーも移行されます。
 
 ### <a name="can-you-migrate-a-hive-metastore-from-an-enterprise-security-package-esp-cluster-to-a-non-esp-cluster-and-vice-versa"></a>Enterprise セキュリティ パッケージ (ESP) クラスターから非 ESP クラスターに (およびその逆に) Hive メタストアを移行できますか。
 
@@ -141,7 +149,7 @@ SQL Server から Azure SQL Server に移行する方法については、「[�
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Hive メタストア データベースのサイズを見積もるにはどうすればよいですか。
 
-Hive メタストアは、Hive サーバーによって使用されるデータ ソースのメタデータを格納するために使用されます。 そのため、サイズの要件は、Hive に使用する必要があるデータ ソースの数と、データ ソースの複雑さによって影響を受けます。 そのため、サイズを事前に見積もることはできません。 「[Hive metastore のベスト プラクティス](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores#hive-metastore-best-practices)」で説明されているように、S2 以上のレベルでは 50 DTU と 250 GB のストレージが提供されます。 ボトルネックにぶつかった場合は、データベースをスケールアップできます。
+Hive メタストアは、Hive サーバーによって使用されるデータ ソースのメタデータを格納するために使用されます。サイズの要件は、Hive データ ソースの数と複雑さによって変わり、事前に見積もることはできません。 [Hive メタストアのベスト プラクティス](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)で概要が説明されているように、S2 レベルから始めることができます。この場合、50 DTU と 250 GB のストレージが提供されます。また、ボトルネックがわかった場合は、データベースをスケールアップすることができます。
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>外部メタストアとして Azure SQL Database 以外のデータベースはサポートされていますか。
 
@@ -159,53 +167,55 @@ Hive メタストアは、Hive サーバーによって使用されるデータ 
 
 詳細については、以下のドキュメントをご覧ください。
 
-* [ネットワーク トラフィックのコントロール](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
-* [Secure incoming traffic to HDInsight clusters in a virtual network with private endpoint](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/) (プライベート エンドポイントを使用した、仮想ネットワーク内の HDInsight クラスターへのセキュリティで保護された着信トラフィック)
-* [HDInsight の管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [ネットワーク トラフィックのコントロール](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+
+- [Secure incoming traffic to HDInsight clusters in a virtual network with private endpoint](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/) (プライベート エンドポイントを使用した、仮想ネットワーク内の HDInsight クラスターへのセキュリティで保護された着信トラフィック)
+
+- [HDInsight の管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>HDInsight クラスターと同じサブネット内に追加の仮想マシンをデプロイできますか。
 
 はい。HDInsight クラスターと同じサブネット内に追加の仮想マシンをデプロイできます。 次の構成が可能です。
 
-* エッジ ノード:クラスターに別のエッジ ノードを追加することができます。詳細については、「[HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node)」を参照してください。 
-* スタンドアロン ノード:スタンドアロンの仮想マシンを同じサブネットに追加し、その仮想マシンからクラスターにアクセスするには、プライベート エンド ポイント `https://<CLUSTERNAME>-int.azurehdinsight.net` を使用します。 詳細については、「[ネットワーク トラフィックのコントロール](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)」を参照してください。
+- エッジ ノード:クラスターに別のエッジ ノードを追加することができます。詳細については、「[HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md)」を参照してください。
+
+- スタンドアロン ノード:スタンドアロンの仮想マシンを同じサブネットに追加し、その仮想マシンからクラスターにアクセスするには、プライベート エンド ポイント `https://<CLUSTERNAME>-int.azurehdinsight.net` を使用します。 詳細については、「[ネットワーク トラフィックのコントロール](hdinsight-plan-virtual-network-deployment.md#networktraffic)」を参照してください。
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>既存の HDInsight クラスターを別の仮想ネットワークに追加することはできますか。
 
-いいえ。既存の HDInsight クラスターを別の仮想ネットワークに追加することはできません。 仮想ネットワークは、プロビジョニング時に指定する必要があります。 プロビジョニング時に仮想ネットワークが指定されていない場合は、デプロイによって、外部からアクセスできない内部ネットワークが作成されます。 詳細については、「[既存の仮想ネットワークへの HDInsight の追加](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#existingvnet)」を参照してください。
+いいえ、できません。 仮想ネットワークは、プロビジョニング時に指定する必要があります。 プロビジョニング時に仮想ネットワークが指定されていない場合は、デプロイによって、外部からアクセスできない内部ネットワークが作成されます。 詳細については、「[既存の仮想ネットワークへの HDInsight の追加](hdinsight-plan-virtual-network-deployment.md#existingvnet)」を参照してください。
 
 ## <a name="security-and-certificates"></a>セキュリティと証明書
 
-Azure HD insights クラスターでのマルウェア対策に関する Microsoft の推奨事項は何ですか。
+### <a name="what-are-the-recommendations-for-malware-protection-on-azure-hdinsight-clusters"></a>Azure HDInsight クラスターでのマルウェア対策の推奨事項は何ですか。
 
-マルウェア対策の詳細については、「[Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](https://docs.microsoft.com/azure/security/fundamentals/antimalware)」を参照してください。
+マルウェア対策の詳細については、「[Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../security/fundamentals/antimalware.md)」を参照してください。
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>HDInsight ESP クラスター用にキー タブを作成するにはどうすればよいですか。
 
-ドメイン ユーザー名の Kerberos keytab を作成できます。 後でこの keytab を使用して、パスワードを入力することなく、リモートのドメインに参加しているクラスターに対する認証を行うことができます。 ドメイン名に大文字が含まれていることに注意してください。
+ドメイン ユーザー名の Kerberos keytab を作成します。 後でこの keytab を使用して、パスワードを入力することなく、リモートのドメインに参加しているクラスターに対する認証を行うことができます。 ドメイン名は大文字です。
 
-```
-o ktutil 
-o ktutil: addent -password -p stXX@ DOMAIN.COM -k 1 -e RC4-HMAC 
-o Password for stXX@DOMAIN.COM: provided by lab instructors 
-o ktutil: wkt stXX.keytab 
-o ktutil: q
+```shell
+ktutil
+ktutil: addent -password -p <username>@<DOMAIN.COM> -k 1 -e RC4-HMAC
+Password for <username>@<DOMAIN.COM>: <password>
+ktutil: wkt <username>.keytab
+ktutil: q
 ```
 
 ### <a name="can-i-use-an-existing-azure-active-directory-tenant-to-create-an-hdinsight-cluster-that-has-the-esp"></a>既存の Azure Active Directory テナントを使用して、ESP がある HDInsight クラスターを作成できますか。
 
-ESP がある HDInsight クラスターを作成する前に、Azure Active Directory Domain Services (AAD-DS) を有効にしておく必要があります。 オープンソースの Hadoop は、(OAuth とは対照的に) 認証に Kerberos を使用します。
+ESP を使用して HDInsight クラスターを作成する前に、Azure Active Directory Domain Services (Azure AD DS) を有効にする必要があります。 オープンソースの Hadoop は、(OAuth とは対照的に) 認証に Kerberos を使用します。
 
-仮想マシンをドメインに参加させるには、ドメイン コントローラーが必要です。 AAD-DS は、マネージド ドメイン コントローラーです。 これは、セキュリティで保護された Hadoop クラスターをマネージ方式で構築するための Kerberos 要件をすべて提供する AAD の拡張機能と考えられます。 マネージド サービスとしての HDInsight は、エンドツーエンドのセキュリティを提供するために AAD-DS と統合されています。
+ドメインに VM を参加させるには、ドメイン コントローラーが必要です。 Azure AD DS はマネージド ドメイン コントローラーであり、マネージド形式で安全な Hadoop クラスターを構築するためのすべての Kerberos 要件を提供する Azure Active Directory の拡張機能と考えられています。 マネージド サービスとしての HDInsight は、エンドツーエンドのセキュリティを提供するために Azure AD DS と統合されています。
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>AAD-DS のセキュリティで保護された LDAP 設定で自己署名証明書を使用し、ESP クラスターをプロビジョニングすることはできますか。
 
-証明機関 (CA) から発行された証明書を使用することをお勧めしますが、自己署名証明書の使用は ESP でもサポートされています。
+証明機関から発行された証明書を使用することをお勧めしますが、自己署名証明書の使用は ESP でもサポートされています。 詳細については、次を参照してください。
 
-詳細については、次を参照してください。
+- [Azure Active Directory Domain Services を有効にする](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
-* [Azure AD-DS](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#enable-azure-ad-ds) を有効にする
-* [チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps)
+- [チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Ranger に表示されているログイン アクティビティをプルするにはどうすればよいですか。
 
@@ -220,12 +230,12 @@ Clamscan は、HDInsight クラスターで実行され、Azure セキュリテ�
 スケジュールを制御する必要があるシナリオでは、次の手順を使用できます。
 
 1. 次のコマンドを使用して、自動実行を無効にします。
-
-   ``/usr/local/vbin/azsecd config -s clamav -d Disabled``
-
-2. このコマンドを root として実行する Cron ジョブを作成します。
-
-   ``/usr/local/bin/azsecd manual -s clamav``
+   
+   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+   
+1. 次のコマンドをルートとして実行する Cron ジョブを追加します。
+   
+   `/usr/local/bin/azsecd manual -s clamav`
 
 Cron ジョブを設定して実行する方法の詳細については、「[Cron ジョブを設定する方法](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)」を参照してください。
 
@@ -233,33 +243,34 @@ Cron ジョブを設定して実行する方法の詳細については、「[Cr
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>既存の HDInsight クラスターに追加のストレージ アカウントとして Azure Data Lake Storage Gen2 を追加することはできますか。
 
-いいえ。 現在のところ、BLOB ストレージをプライマリ ストレージとして使用する既存の HDInsight クラスターに Azure Data Lake Storage Gen2 を追加することはできません。 詳細については、「[Azure HDInsight クラスターで使用するストレージ オプションを比較する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options)」を参照してください。 
+いいえ。現時点では、プライマリ ストレージとして BLOB ストレージを持つクラスターに Azure Data Lake Storage Gen2 ストレージ アカウントを追加することはできません。 詳細については、[ストレージ オプションの比較](hdinsight-hadoop-compare-storage-options.md)に関する記事を参照してください。
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>Data Lake ストレージ アカウントの現在リンクされているサービス プリンシパルを見つける方法を教えてください。
 
-これらの設定を確認するには、ポータルでクラスターのプロパティにある [Data Lake Storage Gen1 アクセス] を確認します。 詳細については、「[クラスターのセットアップを確認する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#verify-cluster-set-up)」を参照してください。
+設定は、Azure portal のクラスター プロパティの **[Data Lake Storage Gen1 アクセス]** で確認できます。 詳細については、「[クラスターのセットアップを確認する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up)」を参照してください。
  
-HDInsight クラスターのストレージ アカウントと BLOB コンテナーの使用量を計算するにはどうすればよいですか。
-次のいずれかの手順を使用できます。
+### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>HDInsight クラスターのストレージ アカウントと BLOB コンテナーの使用量を計算するにはどうすればよいですか。
 
-* [PowerShell の使用](https://docs.microsoft.com/azure/storage/scripts/storage-blobs-container-calculate-size-powershell)
-* 次のコマンドを使用して、HDI クラスター上の /user/hive/.Trash/ フォルダーのサイズを確認することもできます。
+次のいずれかを実行します。
 
-   ``hdfs dfs -du -h /user/hive/.Trash/``
+- [PowerShell の使用](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
+
+- HDInsight クラスター上の */user/hive/.Trash/* フォルダーのサイズを確認するには、次のコマンド ラインを使用します。
+  
+  `hdfs dfs -du -h /user/hive/.Trash/`
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>BLOB ストレージ アカウントの監査を設定するにはどうすればよいですか。
 
-BLOB ストレージ アカウントを監査するには、「[Azure ポータルでのストレージ アカウントの監視](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)」に記載されている手順に従って BLOB ストレージ アカウントの監視を構成する必要があります。 HDFS 監査ログでは、ローカルの HDFS ファイルシステムのみの監査情報のみが提供されます (hdfs://mycluster)。  リモート ストレージで実行される操作は含まれません。
+BLOB ストレージ アカウントを監査するには、「[Azure ポータルでのストレージ アカウントの監視](../storage/common/storage-monitor-storage-account.md)」の手順を使用して監視を構成します。 HDFS 監査ログでは、ローカルの HDFS ファイルシステムのみの監査情報のみが提供されます (hdfs://mycluster)。  リモート ストレージで実行される操作は含まれません。
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>BLOB コンテナーと HDInsight ヘッド ノードの間でファイルを転送する方法を教えてください。
 
-次の例のように、ヘッド ノード上でシェル スクリプトを実行することで、BLOB コンテナーと HDInsight ヘッド ノードの間でファイルを転送できます。
+ヘッド ノードで次のシェル スクリプトのようなスクリプトを実行します。
 
-```
+```shell
 for i in cat filenames.txt
-
 do
-         hadoop fs -get $i <local destination>
+   hadoop fs -get $i <local destination>
 done
 ```
  
@@ -268,44 +279,39 @@ done
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>ストレージ用の Ranger プラグインはありますか。
 
-現在のところ、BLOB ストレージ、Azure Data Lake Storage (ADLS) Gen1、または Azure Data Lake Storage Gen2 用の Ranger プラグインは存在しません。 ESP クラスターの場合、ベスト プラクティスとして ADLS を使用し、HDFS ツールを使用してファイル システム レベルで細かいアクセス許可を手動で設定します。 また、ADLS を使用する場合、ESP クラスターではクラスター レベルで AAD を使用して、ファイル システム アクセス制御の一部が実行されます。 
+現時点では、BLOB ストレージと Azure Data Lake Storage Gen1 または Gen2 用の Ranger プラグインは存在しません。 ESP クラスターの場合は、Azure Data Lake Storage を使用する必要があります。これは、HDFS ツールを使用して、少なくともファイル システム レベルのきめ細かいアクセス許可を手動で設定できるためです。 また、Azure Data Lake Storage を使用する場合、ESP クラスターでは、Azure Active Directory を使用してクラスター レベルでファイル システム アクセス制御の一部が実行されます。 
 
-次の記事に記載されている手順に従って、Azure Storage Explorer を使用し、ユーザーが配置されているセキュリティ グループにデータ アクセス ポリシーを割り当てることができます。
+Azure Storage Explorer を使用して、ユーザーのセキュリティ グループにデータ アクセス ポリシーを割り当てることができます。 詳細については、次を参照してください。
 
-* [Hive またはその他のサービスを使用して Data Lake Storage Gen2 でデータをクエリするためのアクセス許可を Azure AD ユーザーに設定するにはどうすればよいですか。](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-* [Azure Data Lake Storage Gen2 で Azure Storage Explorer を使用してファイルとディレクトリ レベルのアクセス許可を設定する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Hive またはその他のサービスを使用して Data Lake Storage Gen2 でデータをクエリするためのアクセス許可を Azure AD ユーザーに設定するにはどうすればよいですか。](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
+- [Azure Data Lake Storage Gen2 で Azure Storage Explorer を使用してファイルとディレクトリ レベルのアクセス許可を設定する](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>ワーカー ノードのディスク サイズを増やすことなく、クラスター上の HDFS ストレージを増やすことはできますか。
 
-いいえ。ワーカー ノードのディスク サイズを増やすことはできません。 ディスク サイズを大きくする唯一の方法は、クラスターを削除し、大きな worker 仮想マシン上で再作成することです。
-
-クラスターを削除するとデータが削除されるため、Microsoft では HDInsight 内のデータの格納に HDFS を使用することはお勧めしません。 代わりに、Azure にデータを格納することをお勧めします。 クラスターをスケールアップして、HDInsight クラスターに容量を追加することもできます。
+いいえ。ワーカー ノードのディスク サイズを増やすことはできません。そのため、ディスク サイズを増やす唯一の方法は、クラスターを削除し、より大きな worker VM で再作成することです。 HDInsight データを格納するために HDFS を使用しないでください。これは、クラスターを削除するとデータが削除されるためです。 代わりに、Azure にデータを格納します。 クラスターをスケールアップして、HDInsight クラスターに容量を追加することもできます。
 
 ## <a name="edge-nodes"></a>エッジ ノード
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>クラスターの作成後にエッジ ノードを追加することはできますか。
 
-はい。空のエッジ ノードは、既存の HDInsight クラスターに、またはクラスターの作成時に新しいクラスターに追加できます。
-
-詳細については、「[HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node)」を参照してください。
+HDInsight クラスター、または新しいクラスターへ (クラスターの作成時)。 詳細については、「[HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md)」を参照してください。
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>エッジ ノードに接続するにはどうすればよいですか。
 
-エッジ ノードを作成した後、ポート 22 で SSH を使用してエッジ ノードに接続できます。 エッジ ノードの名前はクラスター ポータルから確認できます (名前の末尾は一般に "-ed" です)。
+エッジ ノードを作成した後は、ポート 22 で SSH を使用してそれに接続できます。 エッジ ノードの名前は、クラスター ポータルから確認できます。 通常、名前は *-ed* で終わります。
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>保存されたスクリプトが新しく作成されたエッジ ノード上で自動的に実行されないのはなぜですか。
 
-保存されたスクリプトは、スケール操作によってクラスターに追加される新しいワーカー ノードのカスタマイズに使用されます。エッジ ノードには適用されません。
+保存済みスクリプトは、スケーリング操作でクラスターに追加される新しいワーカー ノードをカスタマイズするために使用します。 保存されたスクリプトはエッジ ノードには適用されません。
 
 ## <a name="rest-api"></a>REST API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>クラスターから Tez クエリ ビューをプルする REST API 呼び出しを教えてください。
 
-次の REST エンドポイントを使用して、応答が JSON 形式になる必要な情報を取得できます。 基本認証ヘッダーを使用して、これらの要求を行うことができます。
+次の REST エンドポイントを使用して、JSON 形式で必要な情報をプルできます。 基本認証ヘッダーを使用して要求を行います。
 
-* "Tez クエリ" ビュー - https://`<cluster name>`.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/
-
-* "Tez DAG" ビュー - https://`<cluster name>`.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/
+- Tez Query View: *https:\//\<cluster name>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
+- Tez Dag View: *https:\//\<cluster name>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Azure Active Directory ユーザーを使用して HDI クラスターから構成の詳細を取得するにはどうすればよいですか。
 
@@ -313,17 +319,30 @@ AAD ユーザーと適切な認証トークンをネゴシエートするには�
 
 * https://`<cluster dnsname>`.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
-### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Ambari restful API を使用して YARN パフォーマンスを監視するにはどうすればよいですか。
+### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Ambari Restful API を使用して YARN パフォーマンスを監視するにはどうすればよいですか。
 
-curl コマンドを同じ VNet またはピアリングされた VNet で呼び出す場合は、次のコマンドを使用します。
+同じ仮想ネットワークまたはピアリングされた仮想ネットワークで Curl コマンドを呼び出す場合、コマンドは次のようになります。
 
-``curl -u <cluster login username> -sS -G http://headnodehost:8080/api/v1/clusters/anssenllap/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+```curl
+curl -u <cluster login username> -sS -G
+http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+```
  
-VNet 以外またはピアリングされていない VNet からコマンドを呼び出す場合、コマンドの形式は次のようになります。
- 
-* 非 ESP クラスターの場合: ``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
- 
-* ESP クラスターの場合: ``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+仮想ネットワークの外部から、またはピアリングされていない仮想ネットワークからコマンドを呼び出すと、コマンドの形式は次のようになります。
+
+- 非 ESP クラスターの場合:
+  
+  ```curl
+  curl -u <cluster login username> -sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
+
+- ESP クラスターの場合:
+  
+  ```curl
+  curl -u <cluster login username>-sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
 
 > [!NOTE]
 > Curl でパスワードの入力を求められます。 クラスター ログイン ユーザー名の有効なパスワードを入力する必要があります。
@@ -334,13 +353,17 @@ VNet 以外またはピアリングされていない VNet からコマンドを
 
 価格の詳細と課金に関連する FAQ については、「[Azure HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
+### <a name="when-does-hdinsight-billing-start--stop"></a>HDInsight の課金はいつ開始および停止されますか。
+
+HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位で評価されます。
+
 ### <a name="how-do-i-cancel-my-subscription"></a>サブスクリプションを取り消すにはどうすればよいですか。
 
 サブスクリプションを取り消す方法の詳細については、「[Azure サブスクリプションの取り消し](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription)」を参照してください。
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>従量課金制サブスクリプションの場合、サブスクリプションを取り消した後はどうなりますか。
 
-取り消し後のサブスクリプションの詳細については、「[サブスクリプションの取り消し後の流れ](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription#what-happens-after-i-cancel-my-subscription)」を参照してください。
+取り消し後のサブスクリプションの詳細については、「[サブスクリプションの取り消し後の流れ](/azure/billing/billing-how-to-cancel-azure-subscription)」を参照してください。
 
 ## <a name="hive"></a>Hive
 
@@ -352,8 +375,8 @@ Ambari UI に表示されるのは 1.2 のみですが、HDInsight 3.6 には Hi
 
 ### <a name="what-does-hdinsight-offer-in-terms-of-real-time-stream-processing-capabilities"></a>HDInsight はリアルタイムのストリーム処理機能に関してどのような機能を提供していますか。
 
-Azure HDInsight でのストリーム処理の統合機能の詳細については、「[Azure でのストリーム処理テクノロジの選択](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/stream-processing)」を参照してください。
+Azure HDInsight でのストリーム処理の統合機能の詳細については、「[Azure でのストリーム処理テクノロジの選択](/azure/architecture/data-guide/technology-choices/stream-processing)」を参照してください。
 
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>クラスターが一定期間アイドル状態になったときに、クラスターのヘッド ノードを動的に終了する方法はありますか。
 
-いいえ。クラスターのヘッド ノードを動的に終了することはできません。 このシナリオには Azure Data Factory を使用できます。
+HDInsight クラスターでこれを行うことはできません。 これらのシナリオには Azure Data Factory を使用できます。

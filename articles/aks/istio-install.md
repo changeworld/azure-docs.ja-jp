@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9344d2832c37c34d5690dc8f3aae7394ca644276
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542887"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827317"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
@@ -23,7 +23,7 @@ ms.locfileid: "69542887"
 > [!NOTE]
 > これらの手順は Istio バージョン `1.1.3` を参考にしています。
 >
-> Istio `1.1.x` リリースは、Istio チームによって Kubernetes バージョン `1.11`、`1.12`、`1.13` に対してテストされています。 Istio のその他のバージョンは[GitHub の Istio リリース][istio-github-releases]に関するページにあります。また、各リリースに関する情報は[Istio のリリース ノート][istio-release-notes]を参照してください。
+> Istio `1.1.x` リリースは、Istio チームによって Kubernetes バージョン `1.11`、`1.12`、`1.13` に対してテストされています。 Istio のその他のバージョンは [GitHub の Istio リリース][istio-github-releases]に関するページにあります。また、各リリースに関する情報は [Istio のニュース][istio-release-notes]を参照してください。
 
 この記事では、次のことについて説明します。
 
@@ -555,7 +555,7 @@ Application Insights と Istio を使用して AKS アプリケーションを�
 [istio-docs-concepts]: https://istio.io/docs/concepts/what-is-istio/
 [istio-github]: https://github.com/istio/istio
 [istio-github-releases]: https://github.com/istio/istio/releases
-[istio-release-notes]: https://istio.io/about/notes/
+[istio-release-notes]: https://istio.io/news/
 [istio-install-download]: https://istio.io/docs/setup/kubernetes/download-release/
 [istio-install-helm]: https://istio.io/docs/setup/kubernetes/install/helm/
 [istio-install-helm-options]: https://istio.io/docs/reference/config/installation-options/

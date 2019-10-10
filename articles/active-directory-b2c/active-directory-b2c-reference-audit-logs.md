@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033822"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802106"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -74,7 +74,7 @@ Azure portal は、Azure AD B2C テナントの監査ログ イベントへの�
 
 次のようないくつかのフィルター処理オプションが用意されています。
 
-* **アクティビティのリソースの種類** - 「[使用できるアクティビティの概要](#overview-of-activities-available-in-the-b2c-category-of-audit-logs)」セクションの表に示されているアクティビティの種類でフィルター処理します。
+* **アクティビティ リソースの種類** - [使用できるアクティビティの概要](#overview-of-activities-available-in-the-b2c-category-of-audit-logs)に関するセクションの表で示されているアクティビティの種類でフィルター処理します。
 * **日付** - 表示されているアクティビティの日付範囲をフィルター処理します。
 
 一覧で行を選択すると、イベントのアクティビティの詳細が表示されます。
@@ -94,30 +94,25 @@ Azure AD Reporting API へのスクリプトベースまたはアプリケーシ
 
 B2C テナント内の既存の Azure Active Directory アプリケーションの登録でこれらのアクセス許可を有効にすることも、監査ログの自動化専用に新しく作成することもできます。
 
-新しいアプリケーションを作成し、必要な API アクセス許可を割り当てて、クライアント シークレットを作成するには、次の手順を実行します。
+次の手順に従って、アプリケーションを登録し、必要な Microsoft Graph API のアクセス許可を付与した後、クライアント シークレットを作成します。
 
-1. Azure Active Directory にアプリケーションを登録する
-    1. [Azure portal](https://portal.azure.com) にサインインし、Azure AD B2C テナントが含まれているディレクトリに切り替えます。
-    1. 左側のメニューから、 **[Azure Active Directory]** (Azure AD B2C *ではない*) を選択します。 または、 **[すべてのサービス]** を選択してから、 **[Azure Active Directory]** を検索して選択します。
-    1. 左側のメニューで **[管理]** の下の **[アプリの登録 (レガシー)]** を選択します。
-    1. **[新しいアプリケーションの登録]** を選択します
-    1. アプリケーションの名前を入力します。 *Audit Log App* など。
-    1. **[サインオン URL]** に、有効な URL を入力します。 たとえば、 *https://localhost* です。 このエンドポイントは、到達可能である必要はありませんが、有効な URL である必要があります。
-    1. **作成** を選択します。
-    1. **[登録済みのアプリケーション]** ページに表示される **[アプリケーション ID]** を記録します。 この値は、後のセクションで示される PowerShell サンプル スクリプトのような自動化スクリプトでの認証に必要です。
-1. API アクセス許可を割り当てる
-    1. **[登録済みのアプリ]** 概要ページで、 **[設定]** を選択します。
-    1. **[API アクセス]** の下の、 **[必要なアクセス許可]** を選択します。
-    1. **[追加]** を選択し、 **[API を選択します]** を選択します。
-    1. **[Microsoft Graph]** を選択し、 **[選択]** を選択します。
-    1. **[アプリケーションのアクセス許可]** で、 **[すべての監査ログ データの読み取り]** を選択します。
-    1. **[選択]** ボタンを選択し、 **[完了]** を選択します。
-    1. **[アクセス許可の付与]** を選択し、 **[はい]** を選択します。
-1. クライアント シークレットを作成する
-    1. **[API アクセス]** で、 **[キー]** を選択します。
-    1. **[キーの説明]** ボックスにキーの説明を入力します。 *監査ログ キー* など。
-    1. 有効な**期間**を選択し、 **[保存]** を選択します。
-    1. キーの**値**を記録します。 この値は、後のセクションで示される PowerShell サンプル スクリプトのような自動化スクリプトでの認証に必要です。
+### <a name="register-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを登録する
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>API アクセス許可を割り当てる
+
+1. **[登録済みのアプリ]** 概要ページで、 **[設定]** を選択します。
+1. **[API アクセス]** の下の、 **[必要なアクセス許可]** を選択します。
+1. **[追加]** を選択し、 **[API を選択します]** を選択します。
+1. **[Microsoft Graph]** を選択し、 **[選択]** を選択します。
+1. **[アプリケーションのアクセス許可]** で、 **[すべての監査ログ データの読み取り]** を選択します。
+1. **[選択]** ボタンを選択し、 **[完了]** を選択します。
+1. **[アクセス許可の付与]** を選択し、 **[はい]** を選択します。
+
+### <a name="create-client-secret"></a>クライアント シークレットを作成する
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 これで、必要な API アクセス、アプリケーション ID、および自動化スクリプトで使用できるキーを持つアプリケーションが作成されました。 スクリプトを使用してアクティビティ イベントを取得する方法の例については、この記事の後半の「PowerShell スクリプト」セクションを参照してください。
 

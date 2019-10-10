@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120481"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803397"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -33,7 +33,7 @@ ms.locfileid: "71120481"
 | アカウントあたりの添付ファイルの最大サイズ (添付ファイル機能は推薦されていません) | 2 GB | 
 
 > [!NOTE]
-> ストレージまたはスループットのより高い制限が必要なパーティション キーを含むワークロードを管理するためのベスト プラクティスについては、[ホット パーティション キーの設計](synthetic-partition-keys.md)に関するページを参照してください。
+> ストレージまたはスループットにより高い制限が必要なパーティション キーを持つワークロードを管理するためのベスト プラクティスについては、「[合成パーティション キーの作成](synthetic-partition-keys.md)」を参照してください。
 >
 
 Cosmos コンテナー (または共有スループット データベース) には、400 RU の最小スループットが必要です。 コンテナーが大きくなるにつれ、サポートされる最小スループットは次の要因にも依存するようになります。

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/25/2019
+ms.date: 10/02/2019
 ms.author: b-juche
-ms.openlocfilehash: 3d34caba9512dc0c0b20cf10476f5c38a2fab8ce
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299664"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827506"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -68,7 +68,11 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
 
     サポートされるネットワーク トポロジについては、「[Azure NetApp Files のネットワーク計画のガイドライン](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)」を参照してください。
 
-    ネットワーク セキュリティ グループ (NSG) とファイアウォールに、Active Directory と DNS トラフィック要求を許可するように適切に構成された規則が必要です。
+    ネットワーク セキュリティ グループ (NSG) とファイアウォールに、Active Directory と DNS トラフィック要求を許可するように適切に構成された規則が必要です。 
+
+* Azure NetApp Files の委任されたサブネットは、すべてのローカルおよびリモート ドメイン コントローラーを含め、ドメイン内のすべての Active Directory Domain Services (ADDS) ドメイン コントローラーに接続できる必要があります。 そうでない場合、サービスの中断が発生する可能性があります。  
+
+    Azure NetApp Files の委任されたサブネット経由で到達できないドメイン コントローラーがある場合は、Azure サポート リクエストを送信して、その範囲を**グローバル** (既定) から**サイト**に変更することができます。  Azure NetApp Files は、Azure NetApp Files の委任されたサブネットのアドレス空間が存在するサイト内のドメイン コントローラーとのみ通信する必要があります。
 
     AD サイトとサービスに関する「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。 
 

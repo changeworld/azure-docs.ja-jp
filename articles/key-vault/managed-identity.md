@@ -1,5 +1,5 @@
 ---
-title: App Service アプリケーションのシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする
+title: システム割り当てマネージド ID を使用して Azure Key Vault にアクセスする
 description: App Service アプリケーション用のマネージド ID を作成し、それを使用して Azure Key Vault にアクセスする方法を説明します
 services: key-vault
 author: msmbaldwin
@@ -9,18 +9,19 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ac6f9be80d31804089ae2589998079dc7df66b3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004180"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720249"
 ---
-# <a name="use-an-app-service-managed-identity-to-access-azure-key-vault"></a>App Service のマネージド ID を使用して Azure Key Vault にアクセスする 
+# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>マネージド ID で Key Vault の認証を提供する
 
-この記事では、App Service アプリケーション用のマネージド ID を作成し、それを使用して Azure Key Vault にアクセスする方法を説明します。 Azure VM でホストされているアプリケーションの場合は、「[Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)」をご覧ください。 
+アプリで Azure Active Directory のマネージド ID を使用すると、Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。 
 
-アプリで Azure Active Directory のマネージド ID を使用すると、Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。 
+この記事では、App Service アプリケーション用のマネージド ID を作成し、それを使用して Azure Key Vault にアクセスする方法を説明します。 Azure VM でホストされているアプリケーションの場合は、「[Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)」をご覧ください。
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +33,8 @@ ms.locfileid: "71004180"
    - [Azure CLI を使用してキー コンテナーを作成する](quick-create-cli.md)
    - [Azure PowerShell を使用してキー コンテナーを作成する](quick-create-powershell.md)
    - [Azure portal を使用してキー コンテナーを作成する](quick-create-portal.md)。
-- キー コンテナーへのアクセスを許可する既存の App Service アプリケーション。 [App Service のドキュメント](../app-service/overview.md)/ の手順に従って簡単に作成できます
+- キー コンテナーへのアクセスを許可する既存の App Service アプリケーション。 [App Service のドキュメント](../app-service/overview.md)の手順に従って簡単に作成できます。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/overview)。 別の方法として、[Azure portal](http://portal.azure.com) を使用することもできます。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>システム割り当て ID の追加 
@@ -101,7 +103,7 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 
 ### <a name="azure-cli"></a>Azure CLI
 
-キー コンテナーへのアクセス権をアプリケーションに付与するには、Azure CLI の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを使用し、**ObjectId** パラメーターとして前に記録した *principalId* を指定します。
+キー コンテナーへのアクセス権をアプリケーションに付与するには、Azure CLI の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを使用し、**ObjectId** パラメーターとして前に記録した **principalId** を指定します。
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 
@@ -109,7 +111,9 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Key Vault の概要](key-vault-overview.md)を確認する
-- 「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照する
-- [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)について学習する
+- [Azure Key Vault セキュリティ: ID 管理とアクセス管理](overview-security.md#identity-and-access-management)
+- [アクセス制御ポリシーを使用して Key Vault の認証を提供する](key-vault-group-permissions-for-apps.md)
+- [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
+- [キー コンテナーのセキュリティ保護](key-vault-secure-your-key-vault.md)。
+- [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)
 - [Azure Key Vault のベスト プラクティス](key-vault-best-practices.md)を確認する

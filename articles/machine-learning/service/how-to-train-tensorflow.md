@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 52c675369fa70d1b1113f34b9b0dda2126547e0a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3b8f213bd614e4adce74b83c87649a0f248cba7b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002515"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710100"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する
 
@@ -32,7 +32,7 @@ TensorFlow モデルを一から開発する場合でも、[既存のモデル](
  - Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 
      - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-    - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-tensorflow** フォルダーの順に移動して、次の完了および展開済みノートブックを見つけます。 
+    - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > ml-frameworks > tensorflow > deployment > train-hyperparameter-tune-deploy-with-tensorflow** フォルダーの順に移動して、次の完了および展開済みノートブックを見つけます。 
  
  - 独自の Jupyter Notebook サーバー
 
@@ -40,7 +40,7 @@ TensorFlow モデルを一から開発する場合でも、[既存のモデル](
     - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - [サンプル スクリプト ファイル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` および `utils.py` をダウンロードする
      
-    このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb)は、GitHub サンプル ページにもあります。 このノートブックには、インテリジェントなハイパーパラメーター調整、モデル デプロイ、およびノートブックのウィジェットを示す展開済みセクションが含まれています。
+    このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb)は、GitHub サンプル ページにもあります。 このノートブックには、インテリジェントなハイパーパラメーター調整、モデル デプロイ、およびノートブックのウィジェットを示す展開済みセクションが含まれています。
 
 ## <a name="set-up-the-experiment"></a>実験を設定する
 
@@ -84,34 +84,33 @@ os.makedirs(script_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='tf-mnist')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>データセットとスクリプトをアップロードする
+### <a name="create-a-file-dataset"></a>ファイル データセットの作成
 
-[データストア](how-to-access-data.md)は、データをコンピューティング先にマウントまたはコピーすることでデータを格納およびアクセスできる場所です。 各ワークスペースには既定のデータストアがあります。 トレーニング中に簡単にアクセスできるように、データとトレーニング スクリプトをデータストアにアップロードします。
+`FileDataset` オブジェクトでは、ご利用のワークスペース データストアまたはパブリック URL 内の 1 つまたは複数のファイルが参照されます。 ファイルは任意の形式にすることができ、クラスには、ファイルのダウンロードまたはご利用のコンピューティングへのファイルのマウントを行うための機能が用意されています。 `FileDataset` を作成することにより、データソースの場所への参照を作成します。 データセットに変換を適用した場合は、それらの変換もデータセットに格納されます。 データは既存の場所に残るので、追加のストレージ コストは発生しません。 詳細については、`Dataset` パッケージの[攻略](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)ガイドを参照してください。
 
-1. MNIST データセットをローカルにダウンロードします。
+```python
+from azureml.core.dataset import Dataset
 
-    ```Python
-    os.makedirs('./data/mnist', exist_ok=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
 
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename = './data/mnist/train-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename = './data/mnist/train-labels.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename = './data/mnist/test-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename = './data/mnist/test-labels.gz')
-    ```
+他のユーザーと共有したり、さまざまな実験で再利用したり、トレーニング スクリプト内で名前で参照したりできるように、データセットをご利用のワークスペースに登録するには、`register()` メソッドを使います。
 
-1. MNIST データセットを既定のデータストアにアップロードします。
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
 
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/mnist', target_path='mnist', overwrite=True, show_progress=True)
-    ```
-
-1. TensorFlow トレーニング スクリプトの `tf_mnist.py` とヘルパー ファイルの `utils.py` をアップロードします。
-
-    ```Python
-    shutil.copy('./tf_mnist.py', script_folder)
-    shutil.copy('./utils.py', script_folder)
-    ```
+# list the files referenced by dataset
+dataset.to_path()
+```
 
 ## <a name="create-a-compute-target"></a>コンピューティング ターゲットを作成する
 

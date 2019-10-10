@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033471"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802370"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -59,7 +59,7 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 
 **SCIM をサポートするアプリケーションを接続するには:**
 
-1. [Azure Active Directory ポータル](https://aad.portal.azure.com)にサインインします。 
+1. [Azure Active Directory ポータル](https://aad.portal.azure.com)にサインインします。 [開発者プログラム](https://developer.microsoft.com/office/dev-program)にサインアップすることにより、P2 ライセンスで Azure Active Directory の無料試用版にアクセスできることに注意してください
 1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 ギャラリーから追加されたアプリを含む、構成済みのすべてのアプリの一覧が表示されます。
 1. **[+ 新しいアプリケーション]**  >  **[すべて]**  >  **[ギャラリー以外のアプリケーション]** の順に選択します。
 1. アプリケーションの名前を入力し、 **[追加]** を選択してアプリ オブジェクトを作成します。 新しいアプリがエンタープライズ アプリケーションの一覧に追加され、そのアプリの管理画面が開きます。
@@ -96,6 +96,9 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 > [!NOTE]
 > 初期サイクルは、サービスが実行されている限り約 40 分ごとに実行される以降の同期よりも、実行に時間がかかります。
 
+**Azure AD アプリケーション ギャラリーにアプリケーションを発行するには:**
+
+複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用できるようにすることができます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)で確認してください。 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Azure AD SCIM の実装について
 
 お客様が SCIM 2.0 ユーザー管理 API がサポートされるアプリケーションを構築している場合、このセクションには、Azure AD SCIM クライアントの実装方法、SCIM プロトコル要求の処理と応答のモデル化方法が詳細に記載されています。 SCIM エンドポイントを実装した後は、前のセクションに説明されている手順に従ってテストすることができます。

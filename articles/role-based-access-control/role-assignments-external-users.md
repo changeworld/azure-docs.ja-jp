@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967329"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802683"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>RBAC を使用して外部ゲスト ユーザーの Azure リソースへのアクセスを管理する
 
@@ -206,3 +206,4 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 - [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)
 - [Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/b2b/user-properties.md)
 - [B2B コラボレーションの招待メールの要素 - Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [ゲスト ユーザーを共同管理者として追加する](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)

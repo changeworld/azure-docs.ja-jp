@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c9b4cdfb77f1605a6730d0735541eeb78dcd323
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: b90650fa2cd343c81b7bbb2fcea24c3a95f537b6
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075523"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702050"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Red Hat Enterprise Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる
 
@@ -78,14 +78,24 @@ sudo vi /etc/hosts
 
 VM を Azure AD DS マネージド ドメインに参加させるには、VM にいくつかの追加パッケージが必要です。 これらのパッケージをインストールして構成するには、`yum` を使用してドメイン参加ツールを更新およびインストールします。
 
+ **RHEL 7** 
+
 ```console
 sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
+```
+
+ **RHEL 6** 
+
+```console
+sudo yum install adcli sssd authconfig krb5-workstation
 ```
 
 ## <a name="join-vm-to-the-managed-domain"></a>VM をマネージド ドメインに参加させる
 
 必要なパッケージが VM にインストールされたので、VM を Azure AD DS マネージド ドメインに参加させます。
-
+ 
+  **RHEL 7**
+     
 1. `realm discover` コマンドを使用して、Azure AD DS マネージド ドメインを検出します。 次の例では、領域 *CONTOSO.COM* を検出しています。 独自の Azure AD DS マネージド ドメイン名を、すべて大文字で指定します。
 
     ```console
@@ -93,7 +103,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
     ```
 
    `realm discover` コマンドで Azure AD DS マネージド ドメインが見つからない場合は、次のトラブルシューティング手順を確認してください。
-
+   
     * ドメインに VM からアクセスできることを確認します。 `ping contoso.com` を試し、肯定応答が返されるかどうかを確認します。
     * VM が、Azure AD DS マネージド ドメインを利用可能な仮想ネットワークと同じ仮想ネットワーク、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
     * 仮想ネットワークに対する DNS サーバーの設定が、Azure AD DS マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
@@ -101,10 +111,10 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 1. 次に、`kinit` コマンドを使用して Kerberos を初期化します。 *AAD DC Administrators* グループに属しているユーザーを指定します。 必要に応じて、[Azure AD のグループにユーザー アカウントを追加します](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
     やはり、Azure AD DS マネージド ドメインの名前をすべて大文字で入力する必要があります。 次の例では、`contosoadmin@contoso.com` という名前のアカウントを使用して Kerberos を初期化しています。 *AAD DC Administrators* グループのメンバーである独自のユーザー アカウントを入力してください。
-
+    
     ```console
     kinit contosoadmin@CONTOSO.COM
-    ```
+    ``` 
 
 1. 最後に、`realm join` コマンドを使用して、マシンを Azure AD DS マネージド ドメインに参加させます。 前の `kinit` コマンドで指定した *AAD DC Administrators* グループのメンバーと同じユーザー アカウントを使用します (`contosoadmin@CONTOSO.COM` など)。
 
@@ -118,7 +128,108 @@ VM を Azure AD DS マネージド ドメインに参加させるにはしばら
 Successfully enrolled machine in realm
 ```
 
+  **RHEL 6** 
+
+1. `adcli info` コマンドを使用して、Azure AD DS マネージド ドメインを検出します。 次の例では、領域 *CONTOSO.COM* を検出しています。 独自の Azure AD DS マネージド ドメイン名を、すべて大文字で指定します。
+
+    ```console
+    sudo adcli info contoso.com
+    ```
+    
+   `adcli info` コマンドで Azure AD DS マネージド ドメインが見つからない場合は、次のトラブルシューティング手順を確認してください。
+   
+    * ドメインに VM からアクセスできることを確認します。 `ping contoso.com` を試し、肯定応答が返されるかどうかを確認します。
+    * VM が、Azure AD DS マネージド ドメインを利用可能な仮想ネットワークと同じ仮想ネットワーク、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
+    * 仮想ネットワークに対する DNS サーバーの設定が、Azure AD DS マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
+
+1. まず、`adcli join` コマンドを使用してドメインに参加します。このコマンドを実行すると、コンピューターを認証するためのキータブも作成されます。 *AAD DC Administrators* グループのメンバーであるユーザー アカウントを使用します。 
+
+    ```console
+    sudo adcli join contoso.com -U contosoadmin
+    ```
+
+1. 次に、`/ect/krb5.conf` を構成し、`contoso.com` Active Directory ドメインを使用する `/etc/sssd/sssd.conf` ファイルを作成します。 
+   `CONTOSO.COM` が独自のドメイン名に置き換えられていることを確認します。
+
+    `/ect/krb5.conf` ファイルをエディターで開きます。
+
+    ```console
+    sudo vi /etc/krb5.conf
+    ```
+
+    次のサンプルと同じになるように `krb5.conf` ファイルを更新します。
+
+    ```console
+    [logging]
+     default = FILE:/var/log/krb5libs.log
+     kdc = FILE:/var/log/krb5kdc.log
+     admin_server = FILE:/var/log/kadmind.log
+    
+    [libdefaults]
+     default_realm = CONTOSO.COM
+     dns_lookup_realm = true
+     dns_lookup_kdc = true
+     ticket_lifetime = 24h
+     renew_lifetime = 7d
+     forwardable = true
+    
+    [realms]
+     CONTOSO.COM = {
+     kdc = CONTOSO.COM
+     admin_server = CONTOSO.COM
+     }
+    
+    [domain_realm]
+     .CONTOSO.COM = CONTOSO.COM
+     CONTOSO.COM = CONTOSO.COM
+    ```
+    
+   `/etc/sssd/sssd.conf` ファイルを作成します。
+    
+    ```console
+    sudo vi /etc/sssd/sssd.conf
+    ```
+
+    次のサンプルと同じになるように `sssd.conf` ファイルを更新します。
+
+    ```console
+    [sssd]
+     services = nss, pam, ssh, autofs
+     config_file_version = 2
+     domains = CONTOSO.COM
+    
+    [domain/CONTOSO.COM]
+    
+     id_provider = ad
+    ```
+
+1. `/etc/sssd/sssd.conf` のアクセス許可が 600 であり、ルート ユーザーによって所有されていることを確認します。
+
+    ```console
+    sudo chmod 600 /etc/sssd/sssd.conf
+    sudo chown root:root /etc/sssd/sssd.conf
+    ```
+
+1. `authconfig` を使用し、AD Linux 統合について VM に指示します。
+
+    ```console
+    sudo authconfig --enablesssd --enablesssdauth --update
+    ```
+    
+1. sssd サービスを開始し、有効にします。
+
+    ```console
+    sudo service sssd start
+    sudo chkconfig sssd on
+    ```
+
 VM のドメイン参加プロセスを正常に完了できない場合は、VM のネットワーク セキュリティ グループで、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットに対する TCP + UDP ポート 464 での送信 Kerberos トラフィックが許可されていることを確認します。
+
+次に、`getent` を使用してユーザー AD 情報を照会できるかどうかを確認します。
+
+```console
+sudo getent passwd contosoadmin
+```
 
 ## <a name="allow-password-authentication-for-ssh"></a>SSH のパスワード認証を許可する
 
@@ -140,8 +251,16 @@ VM のドメイン参加プロセスを正常に完了できない場合は、VM
 
 1. 変更を適用し、ユーザーがパスワードを使用してサインインできるようにするには、SSH サービスを再起動します。
 
+   **RHEL 7** 
+    
     ```console
     sudo systemctl restart sshd
+    ```
+
+   **RHEL 6** 
+    
+    ```console
+    sudo service sshd restart
     ```
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>"AAD DC Administrators" グループに sudo 特権を付与する

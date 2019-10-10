@@ -4,14 +4,14 @@ description: Azure Cosmos DB でインデックス作成ポリシーを管理す
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: thweiss
-ms.openlocfilehash: b80a4b8697544a0f7fe7cee99b666a513f53a0d6
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 46d0124eb701b0c2d779a96c8efd50ba43e8fc07
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104844"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034456"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -334,6 +334,7 @@ Azure Cosmos DB では、インデックス作成ポリシーは下のいずれ�
 
 - Azure portal を使用する
 - Azure CLI を使用する
+- PowerShell を使用する
 - SDK のいずれかを使用する
 
 [インデックス作成ポリシーの更新](index-policy.md#modifying-the-indexing-policy)により、インデックスの変換がトリガーされます。 この変換の進行状況は、SDK から追跡することもできます。
@@ -361,21 +362,15 @@ Azure Cosmos のコンテナーには、そのインデックス作成ポリシ�
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-Azure CLI で [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) を使用すると、コンテナーのインデックス作成ポリシーの JSON 定義を置き換えることができます。
+カスタム インデックス作成ポリシーを使用したコンテナーの作成の詳細については、[CLI を使用したカスタム インデックス作成ポリシーでのコンテナーの作成](manage-with-cli.md#create-a-container-with-a-custom-index-policy)に関する説明を参照してください。
 
-```azurecli-interactive
-az cosmosdb collection update \
-    --resource-group-name $resourceGroupName \
-    --name $accountName \
-    --db-name $databaseName \
-    --collection-name $containerName \
-    --indexing-policy "{\"indexingMode\": \"consistent\", \"includedPaths\": [{ \"path\": \"/*\", \"indexes\": [{ \"dataType\": \"String\", \"kind\": \"Range\" }] }], \"excludedPaths\": [{ \"path\": \"/headquarters/employees/?\" } ]}"
-```
+## <a name="use-powershell"></a>PowerShell の使用
+
+カスタム インデックス作成ポリシーを使用したコンテナーの作成の詳細については、[Powershell を使用したカスタム インデックス作成ポリシーでのコンテナーの作成](manage-with-powershell.md#create-container-custom-index)に関する説明を参照してください。
 
 ## <a name="use-the-net-sdk-v2"></a>.NET SDK V2 の使用
 
 [.NetSDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) の `DocumentCollection` オブジェクトでは、`IndexingMode` を変更し、`IncludedPaths` および `ExcludedPaths` を追加または削除できる `IndexingPolicy` プロパティを公開しています。
-
 
 ```csharp
 // Retrieve the container's details
@@ -406,7 +401,6 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 ## <a name="use-the-net-sdk-v3"></a>.NET SDK V3 の使用
 
 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) の `ContainerProperties` オブジェクト (その使用法については[こちらのクイックスタート](create-sql-api-dotnet.md)を参照) では `IndexingPolicy` プロパティを公開しています。これを使用すると、`IndexingMode` を変更したり `IncludedPaths` や `ExcludedPaths` を追加または削除したりすることができます。
-
 
 ```csharp
 // Retrieve the container's details
@@ -465,69 +459,56 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) の `DocumentCollection` オブジェクト (その使用法については[こちらのクイック スタート](create-sql-api-java.md)を参照) では、`getIndexingPolicy()` および `setIndexingPolicy()` メソッドを公開しています。 これらによって操作される `IndexingPolicy` オブジェクトを使用すると、インデックス作成モードを変更したり、対象のパスと対象外のパスを追加または削除したりすることができます。
 
-コンテナーの詳細を取得する
-
 ```java
+// Retrieve the container's details
 Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), null);
 containerResponse.subscribe(result -> {
 DocumentCollection container = result.getResource();
 IndexingPolicy indexingPolicy = container.getIndexingPolicy();
-```
 
-インデックス作成モードを同期に設定する
-
-```java
+// Set the indexing mode to consistent
 indexingPolicy.setIndexingMode(IndexingMode.Consistent);
-```
 
-対象パスを追加する
+// Add an included path
 
-```java
 Collection<IncludedPath> includedPaths = new ArrayList<>();
 ExcludedPath includedPath = new IncludedPath();
-includedPath.setPath("/age/*");
+includedPath.setPath("/*");
 includedPaths.add(includedPath);
 indexingPolicy.setIncludedPaths(includedPaths);
-```
 
-対象外パスを追加する
+// Add an excluded path
 
-```java
 Collection<ExcludedPath> excludedPaths = new ArrayList<>();
 ExcludedPath excludedPath = new ExcludedPath();
 excludedPath.setPath("/name/*");
 excludedPaths.add(excludedPath);
 indexingPolicy.setExcludedPaths(excludedPaths);
-```
 
-空間インデックスを追加する
+// Add a spatial index
 
-```java
 Collection<SpatialSpec> spatialIndexes = new ArrayList<SpatialSpec>();
 Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
 
 SpatialSpec spec = new SpatialSpec();
 spec.setPath("/locations/*");
-collectionOfSpatialTypes.add(SpatialType.Point);          
+collectionOfSpatialTypes.add(SpatialType.Point);
 spec.setSpatialTypes(collectionOfSpatialTypes);
 spatialIndexes.add(spec);
 
 indexingPolicy.setSpatialIndexes(spatialIndexes);
 
-```
+// Add a composite index
 
-複合インデックスを追加する
-
-```java
 Collection<ArrayList<CompositePath>> compositeIndexes = new ArrayList<>();
 ArrayList<CompositePath> compositePaths = new ArrayList<>();
 
 CompositePath nameCompositePath = new CompositePath();
-nameCompositePath.setPath("/name/*");
+nameCompositePath.setPath("/name");
 nameCompositePath.setOrder(CompositePathSortOrder.Ascending);
 
 CompositePath ageCompositePath = new CompositePath();
-ageCompositePath.setPath("/age/*");
+ageCompositePath.setPath("/age");
 ageCompositePath.setOrder(CompositePathSortOrder.Descending);
 
 compositePaths.add(ageCompositePath);
@@ -535,12 +516,11 @@ compositePaths.add(nameCompositePath);
 
 compositeIndexes.add(compositePaths);
 indexingPolicy.setCompositeIndexes(compositeIndexes);
-```
 
-変更に従ってコンテナーを更新する
+// Update the container with changes
 
-```java
  client.replaceCollection(container, null);
+});
 ```
 
 コンテナーに対するインデックス変換の進行状況を追跡するには、クォータ情報の読み込みを要求する `RequestOptions` オブジェクトを渡したうえで、その値を `x-ms-documentdb-collection-index-transformation-progress` 応答ヘッダーから取得します。

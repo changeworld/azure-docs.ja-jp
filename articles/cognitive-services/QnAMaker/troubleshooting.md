@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 00d3d63ff1a5b4d5dab0534e039145b97091af87
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300236"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802165"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
 QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
 
+<a name="how-to-get-the-qnamaker-service-hostname"></a>
 
-## <a name="how-to-get-the-qnamaker-service-hostname"></a>QnA Maker サービスのホスト名を取得する方法
+## <a name="how-to-get-the-qnamaker-service-endpoint"></a>QnA Maker サービス エンドポイントを取得する方法
 
-QnA Maker サービスのホスト名は、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 ホスト名は、 https:// *{ホスト名}* .azurewebsites.net という形式の URL です。
+QnA Maker サービス エンドポイントは、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 エンドポイントは、次の形式の URL です: https://your-resource-name.azurewebsites.net 。
     
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 
@@ -35,9 +36,9 @@ QnA Maker サービスのホスト名は、デバッグ目的で QnA Maker サ�
 
      ![QnAMaker の App Service を選択する](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
-1. ホスト名 URL は [概要] セクションで確認できます。
+1. エンドポイントの URL は [概要] セクションで確認できます。
 
-    ![QnA Maker のホスト名](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    ![QnA Maker のエンドポイント](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
     
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>QnA Maker ポータルでヘルプ ボットを使用する
@@ -173,7 +174,7 @@ Azure Bot Service でボットを作成するには、[こちら](./Tutorials/cr
 次のナレッジ ベースに関する情報が必要です。
 
 * ナレッジ ベース ID。
-* ナレッジ ベースの公開されたエンドポイント ホスト名 - 公開後に **[設定]** ページで見つかります。
+* ナレッジ ベースの公開されたエンドポイント カスタム サブドメイン名 (`host` と呼ばれます)。公開後に **[設定]** ページで見つかります。
 * ナレッジ ベースの公開されたエンドポイント キー - 公開後に **[設定]** ページで見つかります。 
 
 この情報を使用して、Azure portal でご利用のボットのアプリ サービスにアクセスします。 **[設定] -> [構成] -> [アプリケーション設定]** で、これらの値を変更します。  

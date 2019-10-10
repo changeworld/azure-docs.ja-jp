@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210119"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827571"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
 このドキュメントでは、Azure App Service の仮想ネットワーク統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットでルーティングできないネットワークに配置できます。  
@@ -343,6 +343,6 @@ App Service は、PowerShell を使用して Azure 仮想ネットワークと�
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

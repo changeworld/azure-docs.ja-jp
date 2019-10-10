@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0e03cd3747fe6770be7dddaf36d634547ed75b39
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275733"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718938"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -36,7 +36,7 @@ ms.locfileid: "70275733"
 | 競合 | リソースの現在の状態では許可されていない操作を要求しています。 たとえば、ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。 | |
 | DeploymentActive | このリソース グループへの同時実行デプロイが完了するまで待ちます。 | |
 | DeploymentFailed | DeploymentFailed エラーは、そのエラーを解決するために必要な詳細が示されない一般的なエラーです。 エラー コードのエラー詳細で情報を確認してください。 | [エラー コードを見つける](#find-error-code) |
-| DeploymentQuotaExceeded | リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 Azure CLI の場合は [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete) を、PowerShell では [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) を使用して、履歴からエントリを削除できます。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 | |
+| DeploymentQuotaExceeded | リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 | [デプロイ数が 800 を超えたときのエラーを解決する](deployment-quota-exceeded.md) |
 | DnsRecordInUse | DNS レコード名は、一意の名前にする必要があります。 別の番号を入力します。 | |
 | ImageNotFound | VM イメージの設定を確認してください。 |  |
 | InUseSubnetCannotBeDeleted | リソースを更新しようとするときにこのエラーが発生することがありますが、リソースを削除して作成すると、要求が処理されます。 変更されていないすべての値を指定してください。 | [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource) |

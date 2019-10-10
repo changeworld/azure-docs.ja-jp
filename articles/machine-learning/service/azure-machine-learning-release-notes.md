@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 61a42a8c1176cdd347fd2956a07c295ecf49321e
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067727"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695557"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -23,6 +23,58 @@ ms.locfileid: "71067727"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2019-09-30"></a>2019-09-30
+
+### <a name="azure-machine-learning-sdk-for-python-v1065"></a>Azure Machine Learning SDK for Python v1.0.65
+
+  + **新機能**
+    + キュレートされた環境が追加されました。 これらの環境は、一般的な機械学習タスク用のライブラリを使用してあらかじめ構成されており、実行時間を短縮するため、Docker イメージとして事前にビルドおよびキャッシュされています。 既定で、"AzureML" というプレフィックスが付けられて、ワークスペースの環境の一覧に表示されます。
+  
+  + **azureml-train-automl**
+    + ADB と HDI に対する ONNX の変換サポートが追加されました
+
++ **プレビュー機能**  
+  + **azureml-train-automl**
+    + テキスト フィーチャライザーとして BERT と BiLSTM がサポートされました (プレビューのみ)
+    + 列の目的およびトランスフォーマーのパラメーターに対して特性付けのカスタマイズがサポートされました (プレビューのみ)
+    + トレーニングの間にユーザーがモデルの説明を有効にしたときに、生の説明がサポートされるようになりました (プレビューのみ)
+    + トレーニング可能なパイプラインとして、時系列予測用の Prophet が追加されました (プレビューのみ)
+  
+  + **azureml-contrib-datadrift**
+    + azureml-contrib-datadrift から azureml-datadrift にパッケージが再配置されました。contrib パッケージは、今後のリリースで削除される予定です 
+
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + FeaturizationConfig が AutoMLConfig と AutoMLBaseSettings に導入されました
+      + 特性付けの列の目的が特定の列と特徴の種類でオーバーライドされます
+      + トランスフォーマー パラメーターがオーバーライドされます
+    + explain_model() および retrieve_model_explanations() の非推奨メッセージが追加されました
+    + トレーニング可能なパイプラインとして Prophet が追加されました (プレビューのみ)
+    + ターゲットのラグ、ローリング ウィンドウのサイズ、最大の水平の自動検出のサポートが追加されました。 target_lags、target_rolling_window_size、または max_horizon のいずれかが "auto" に設定されている場合、トレーニング データに基づいて対応するパラメーターの値を推定するために、ヒューリスティックが適用されます。
+    + データ セットに 1 つのグレイン列が含まれている場合の予測を修正しました。このグレインは数値型であり、トレーニング セットとテスト セットの間にギャップがあります
+    + 予測タスクでのリモート実行での重複インデックスに関するエラー メッセージを修正しました
+    + データセットが不均衡かどうかを確認するためのガードレールが追加されました。 そうである場合は、ガードレール メッセージがコンソールに書き込まれます。
+  + **azureml-core**
+    + モデル オブジェクトを使用してストレージ内のモデルへの SAS URL を取得する機能が追加されました。 例: model.get_sas_url()
+    + 送信された実行に関連付けられたデータセットを取得するための `run.get_details()['datasets']` が導入されます
+    + JSON Lines ファイルから TabularDataset を作成する API `Dataset.Tabular.from_json_lines_files` が追加されます。 TabularDataset での JSON Lines ファイルのこの表形式データの詳細については、 https://aka.ms/azureml-data のドキュメントを参照してください。
+    + 追加の VM サイズ フィールド (OS ディスク、GPU の数) が supported_vmsizes() 関数に追加されました
+    + 実行、プライベートおよびパブリック IP、ポートなどを表示する追加のフィールドが、list_nodes() 関数に追加されました。
+    + クラスターのプロビジョニング時に新しいフィールドを指定できるようになりました。--remotelogin_port_public_access は、クラスターの作成時に SSH ポートを開いたままにするか、閉じるかに応じて、有効または無効に設定できます。 それを指定しない場合は、クラスターが VNet の内部にデプロイされるかどうかに応じて、ポートはサービスによってスマートに開くか、閉じるかされます。
+  + **azureml-explain-model**
+    + 分類シナリオでの説明の出力に関するドキュメントが改善されました。
+    + 評価の例の説明で予測された y 値をアップロードする機能が追加されました。 視覚化がいっそう有用になります。
+    + 説明プロパティが MimicWrapper に追加され、基になる MimicExplainer を取得できるようになりました。
+  + **azureml-pipeline-core**
+    + Module、ModuleVersion、ModuleStep を説明するノートブックが追加されました
+  + **azureml-pipeline-steps**
+    + AML パイプラインによる R スクリプトの実行をサポートする RScriptStep が追加されました
+    + "パラメーター SubscriptionId の割り当てが指定されていない" というエラー メッセージの原因になっていた AzureBatchStep でのメタデータ パラメーターの解析を修正しました
+  + **azureml-train-automl**
+    + データ入力形式として、training_data、validation_data、label_column_name、weight_column_name がサポートされるようになりました
+    + explain_model() および retrieve_model_explanations() の非推奨メッセージが追加されました
+
+  
 ## <a name="2019-09-16"></a>2019-09-16
 
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK for Python v1.0.62

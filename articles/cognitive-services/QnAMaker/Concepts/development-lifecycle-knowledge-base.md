@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 52d4efaba25dcede3322586d05fceb4d166f51e3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695109"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973803"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。 
@@ -24,7 +24,7 @@ QnA Maker は、モデル変更、音声例、公開、エンドポイント ク
 ![作成サイクル](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成
-QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコンテンツに基づいて、ユーザー クエリに対する最も一致する回答を提供します。 ナレッジ ベースの作成は、質問、回答、関連付けられているメタデータのコンテンツ リポジトリを設定する場合に行う 1 回限りの操作です。 ナレッジ ベースは、FAQ ページ、製品マニュアル、構造化された Q と A のペアなど、既存のコンテンツをクロールすることで作成できます。 [ナレッジ ベースの作成](../How-To/create-knowledge-base.md)方法を確認してください。
+QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコンテンツに基づいて、ユーザー クエリに対する最も一致する回答を提供します。 ナレッジ ベースの作成は、質問、回答、関連付けられているメタデータのコンテンツ リポジトリを設定する場合に行う 1 回限りの操作です。 ナレッジ ベースは、FAQ ページ、製品マニュアル、構造化された Q と A のペアなど、既存のコンテンツをクロールすることで作成できます。 [ナレッジ ベースの作成](../quickstarts/create-publish-knowledge-base.md)方法を確認してください。
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>ナレッジ ベースのテストと更新
 
@@ -74,8 +74,3 @@ QnA Maker では、バージョン管理は提供されません。 **[設定]**
 
 > [!div class="nextstepaction"]
 > [信頼度スコア](./confidence-score.md)
-
-## <a name="see-also"></a>関連項目 
-
-[ナレッジ ベース](./knowledge-base.md)
-[QnA Maker の概要](../Overview/overview.md)
