@@ -1,17 +1,17 @@
 ---
 title: Azure portal で Azure Database for MySQL の低速クエリ ログを構成してアクセスする
 description: この記事では、Azure portal から Azure Database for MySQL の低速クエリ ログを構成し、それにアクセスする方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: b16ac525d41eb2423828a647fdb75fd3f4a80a31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/30/2019
+ms.openlocfilehash: b3986c19ec008437f3230b3674ce60d1dfba2024
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052723"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703437"
 ---
 # <a name="configure-and-access-slow-query-logs-in-the-azure-portal"></a>Azure portal で低速クエリ ログを構成してアクセスする
 
@@ -60,6 +60,24 @@ MySQL の低速クエリ ログへのアクセスを構成します。
 5. 図に示されているように、表の行内の各ログ ファイルの横にある**ダウンロード** ボタン (下向き矢印のアイコン) を使用して、個々のログ ファイルをダウンロードします。
 
    ![ダウンロード アイコンをクリック](./media/howto-configure-server-logs-in-portal/5-download.png)
+
+## <a name="set-up-diagnostic-logs"></a>診断ログの設定
+
+1. サイドバーの **[監視]** セクションの下で、 **[診断設定]** を選択します。
+
+1. [+ Add diagnostic setting] (診断設定の追加) をクリックします。![診断設定の追加](./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png)
+
+1. 診断設定の名前を指定します。
+
+1. どのデータ シンク (ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース) に低速クエリ ログを送信するか指定します。
+
+1. ログの種類として "MySqlSlowLogs" を選択します。
+![診断設定の構成](./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png)
+
+1. 低速クエリ ログをパイプするようにデータ シンクを設定したら、 **[保存]** をクリックすることができます。
+![診断設定の保存](./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png)
+
+1. 構成したデータ シンクを調べて低速クエリ ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
 
 ## <a name="next-steps"></a>次の手順
 - [CLI で低速クエリ ログにアクセスする](howto-configure-server-logs-in-cli.md)に関する記事を参照して、プログラムで低速クエリ ログをダウンロードする方法について学習します。

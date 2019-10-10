@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240283"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677859"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
 Azure Automation の Update Management ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーで、Windows コンピューターと Linux コンピューターに対してオペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
-仮想マシンの Update Management は、Azure Automation アカウントから直接有効にすることができます。 Automation アカウントから仮想マシンの Update Management を有効にする方法については、[複数の仮想マシンの更新管理](manage-update-multi.md)に関するページを参照してください。 また、Azure portal の仮想マシン ページから仮想マシンの Update Management を有効にすることもできます。 このシナリオは、[Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) および [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) の仮想マシンに対して使用できます。
+仮想マシンの Update Management は、Azure Automation アカウントから直接有効にすることができます。 Automation アカウントから仮想マシンの Update Management を有効にする方法については、[複数の仮想マシンの更新管理](manage-update-multi.md)に関するページを参照してください。 また、Azure portal の仮想マシン ページから仮想マシンの Update Management を有効にすることもできます。 このシナリオは、[Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) および [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) の仮想マシンに対して使用できます。
 
 > [!NOTE]
 > Update Management ソリューションでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[Azure でのワークスペースのマッピング](./how-to/region-mappings.md)に関する記事をご覧ください。 リージョン マッピングは、Automation アカウントとは別のリージョンの仮想マシンを管理する機能には影響しません。

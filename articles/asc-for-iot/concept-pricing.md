@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
+ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933799"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348509"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
 
@@ -34,20 +34,17 @@ Azure Security Center for IoT の価格モデルは 2 つの部分で構成さ�
 
 - メッセージごとのコスト - IoT Edge またはリーフ デバイスからのセキュリティ メッセージに基づく拡張されたセキュリティ機能。
 
-  >[!Note]
-  > セキュリティ メッセージには、IoT Hub でのクォータ消費額もかかります。
 
 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
 
 ## <a name="associated-costs"></a>関連コスト
 
-Azure Security Center for IoT には、直接的な価格には含まれない 2 種類の関連コストがあります。
+Azure Security Center for IoT には、直接の価格には含まれない関連コストがあります。
 
-- IoT Hub のクォータ消費額
 
 - Log Analytics のストレージ コスト
 
-設定を変更して特定の機能を無効にすることで、関連コストを削減できます。
+特定のソリューション機能を無効にすることで、関連コストを削減できます。 設定を変更することで、無効化します。
 
 設定を変更するには:
 
@@ -61,8 +58,6 @@ Azure Security Center for IoT には、直接的な価格には含まれない 2
 
 |     | 使用法 | Comment (コメント) |
 | --- | --- | --- |
-| **IoT Hub のクォータ消費額** |  |
-| [デバイスのエクスポート](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) ジョブ (ツイン エクスポート) | 1 回 (1 日あたり) | "_ツイン メタデータ コレクション_" を無効にします |
 | **Log Analytics ストレージ** |  |
 | デバイスの推奨事項とアラート| サービスによって生成されるセキュリティ推奨事項とアラート | 非オプション |
 | 生セキュリティ データ| セキュリティ エージェントによって収集される、IoT デバイスからの生セキュリティ データ | "_生デバイス セキュリティ イベントの保存_" を無効にします |

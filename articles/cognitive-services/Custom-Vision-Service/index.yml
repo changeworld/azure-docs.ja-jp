@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Custom Vision のドキュメント
-summary: Azure Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにする認識サービスです。 画像分類器は、視覚特性に従って画像に ("クラス" を表す) ラベルを適用する AI サービスです。
+summary: Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにするコグニティブ サービスです。 画像分類器は、視覚特性に従って画像に ("クラス" を表す) ラベルを適用する AI サービスです。
 metadata:
   title: Custom Vision のドキュメント
-  description: Azure Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにする認識サービスです。 画像分類器は、視覚特性に従って画像に ("クラス" を表す) ラベルを適用する AI サービスです。
+  description: Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにするコグニティブ サービスです。 画像分類器は、視覚特性に従って画像に ("クラス" を表す) ラベルを適用する AI サービスです。
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 931f67bd0f5c73426781da39ded3bcfff0a8dea3
-  ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
+  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71211977"
+  ms.lasthandoff: 10/09/2019
+  ms.locfileid: "72176166"
 landingContent:
 - title: Custom Vision について
   linkLists:

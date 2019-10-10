@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71018508"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345555"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -94,6 +94,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
   * [Private Link](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtual Network](#networking-limits)
+  * [Virtual WAN](#virtual-wan-limits)
 * [Notification Hubs](#notification-hubs-limits)
 * [リソース グループ](#resource-group-limits)
 * [ロールベースのアクセス制御](#role-based-access-control-limits)
@@ -161,6 +162,9 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 #### <a name="expressroute-limits"></a>ExpressRoute の制限
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
+
+#### <a name="virtual-wan-limits"></a>Virtual WAN の制限
+[!INCLUDE [virtual-wan-limits](../includes/virtual-wan-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway の制限
 

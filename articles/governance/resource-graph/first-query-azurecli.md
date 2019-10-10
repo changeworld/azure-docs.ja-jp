@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 07/26/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 6fffd9e0bbaea47bfeac56a7972a38df0cbef351
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 34325fe8e8fdf7f53eb730818dc57800b65076e2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164692"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976707"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
