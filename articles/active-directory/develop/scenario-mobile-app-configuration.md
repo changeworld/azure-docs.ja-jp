@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b731c9936ab85b19428687330044a46c563c49
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 168fbb275f70acd229dfd8f2e3f0d4c325db0f94
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268360"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678010"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すモバイル アプリ - コード構成
 
@@ -155,9 +155,13 @@ Android と iOS では、ブローカーによって次のことが可能にな�
 - デバイスの識別。 Azure AD デバイスに関連する条件付きアクセス ポリシーを有効にします。これを行うには、デバイスをワークプレースに追加するときにデバイスで作成したデバイス証明書にアクセスします。
 - アプリケーション ID の検証。 アプリケーションはブローカーを呼び出してリダイレクト URL を渡し、それがブローカーによって検証されます。
 
-### <a name="enable-the-brokers-on-xamarin"></a>Xamarin でのブローカーの有効化
+### <a name="enable-the-broker-on-xamarin"></a>Xamarin でのブローカーの有効化
 
 これらの機能のいずれかを有効にするには、`PublicClientApplicationBuilder.CreateApplication` メソッドを呼び出すときに `WithBroker()` パラメーターを使用します。 `.WithBroker()` は既定で true に設定されます。 [Xamarin.iOS](#brokered-authentication-for-xamarinios) の場合は次の手順に従ってください。
+
+### <a name="enable-the-broker-for-msal-for-android"></a>Android 向け MSAL に対するブローカーの有効化
+
+Android でブローカーを有効にする方法の詳細については、「[Android での仲介型認証](brokered-auth.md)」を参照してください。 
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL に対するブローカーの有効化
 

@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b48e0cddfe4880382147e7bfb634335f10d6f5f9
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036641"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028848"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでの商用マーケットプレース向け分析
 
@@ -26,6 +26,7 @@ Microsoft Partner Center の分析レポートにアクセスして、売上を�
 |[Orders (注文)](#orders-dashboard)|注文に関するグラフィカルでダウンロード可能な形式の情報|
 |[Customers (顧客)](#customer-dashboard)|増加傾向などの顧客に関する情報を、グラフィカルでダウンロード可能な形式で提示|
 |[Downloads (ダウンロード)](#downloads-dashboard)|過去 30 日間のダウンロード要求の一覧|
+|[評価とレビュー](#ratings-and-reviews)| 顧客が入手したオファーについて書き残す評価とレビューに関する情報。
 
 ## <a name="summary-dashboard"></a>[Summary]\(概要\) ダッシュボード
 
@@ -285,3 +286,38 @@ Microsoft Partner Center の分析レポートにアクセスして、売上を�
 | プロバイダー名| 顧客| Microsoft とエンド カスタマー間の関係に関与するプロバイダーの名前。 顧客がリセラーを通じたエンタープライズの場合は、これはリセラーとなります。 クラウド ソリューション プロバイダー (CSP) が関係している場合、これは CSP となります。|
 | SKU| 順序| 発行中に定義される SKU 名。 1 つのプランに多数の SKU を関連付けることは可能ですが、1 つの SKU に関連付けることのできるプランは 1 つのみです。||
 | 評価版の終了日| 順序| この注文の試用期間の終了予定日または終了日。||
+
+## <a name="ratings-and-reviews"></a>評価とレビュー
+
+顧客は、両方のマーケットプレースでオファーを参照、検索、および購入する際に、入手したオファーの評価やレビューを書き残すことができます。 新しい評価やレビューを送信したり、既に送信済みの評価やレビューを更新または削除したりすることができます。 レビューは、オファーの製品表示ページの [レビュー] タブで、Azure Marketplace または AppSource に投稿されます。 顧客は、評価またはレビューの際に自分の名前を含めることも、匿名で投稿することもできます。  
+
+> [!NOTE]
+> 顧客は、自分が所有する評価とレビューにのみ変更を加えることができます。
+
+**[Ratings & review]\(評価とレビュー\) ダッシュボード**には、顧客アクティビティの傾向と分析情報が表示されます。 次のものがグラフィックに表示されます。
+
+- 評価とレビュー  
+- レビュー コメント
+
+### <a name="marketplace-storefront-tabs"></a>Marketplace のネットショップのタブ
+
+公開元は、AppSource と Azure Marketplace のタブで別々にオファーのメトリックを表示できます。 特定のオファーのメトリックを表示するには、ドロップダウンから **[Offer]\(オファー\)** を選択します。
+
+![パートナー センターでのオファーの分析ドロップダウン](./media/analyze-offer-dropdown.png)
+
+### <a name="ratings-and-reviews-summary"></a>評価とレビューの概要
+
+評価とレビューの概要セクションには、選択した日付範囲について以下のメトリックが表示されます。
+
+- **平均評価:** 選択したオファーに対して顧客によって送信された全評価の加重平均星評価。
+- **評価の内訳:** 評価を送信した顧客数別の星評価の内訳。 棒グラフは、実際の評価と改訂された評価 (更新された評価数) で積み上げられます。
+- **合計評価:** 送信された評価の総数。 この数には、レビューがある評価とない評価も含まれます。
+- **レビューがある評価:** 送信されたレビューの数。
+
+![パートナー センターの評価とレビューの分析の概要](./media/analyze-ratings-summary.png)
+
+### <a name="review-comments"></a>レビュー コメント
+
+レビューは、投稿された日時の順に表示されます。 既定のビューには、すべてのレビューが表示されます。 ドロップダウン メニューの **[Filter]\(フィルター\)** を使用して、星評価でレビューをフィルター処理できます。 レビューに出現するキーワードを検索することもできます。  
+
+![パートナー センターのレビュー コメントの分析](./media/analyze-reviews.png)

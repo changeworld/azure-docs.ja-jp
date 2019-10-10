@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 07934e3c7d9f61ecb4153e6a169882509a81dc75
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241035"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028089"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center
 
@@ -107,7 +107,7 @@ Microsoft Defender ATP で無害なテスト アラートを生成するには:
 
 3. コマンドが成功した場合、Azure Security Center ダッシュボードと Microsoft Defender ATP ポータルに新しいアラートが表示されます。 このアラートは、表示されるまでに数分かかることがあります。
 
-4. Security Center 内でアラートを確認するには、 **[セキュリティ通知]**  >   **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。
+4. Security Center でアラートを確認するには、 **[セキュリティ通知]**  >   **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。
 
 5. 調査ウィンドウで、リンクを選択して Microsoft Defender ATP ポータルに移動します。
 

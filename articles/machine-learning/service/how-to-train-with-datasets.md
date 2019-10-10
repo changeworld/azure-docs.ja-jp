@@ -10,21 +10,23 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/16/2019
-ms.openlocfilehash: ceccc515b73bd41c7933889c61617c360c678eb7
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 09/25/2019
+ms.openlocfilehash: 9ccc5f5721d1ddc8459918913a4f3ce707766dea
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059368"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316690"
 ---
 # <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning でデータセット (プレビュー) を作成してトレーニングする
 
 この記事では、接続文字列やデータ パスを気にせずに、リモート実験トレーニングの実行時に [Azure Machine Learning データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)を使用する 2 つの方法について説明します。
 
-- オプション 1:トレーニング スクリプトでデータセットを直接渡します。
+- オプション 1:構造化データがある場合、TabularDataset を作成し、トレーニング スクリプトで直接それを使用します。
 
-- オプション 2:データセットを使用して、トレーニング用のリモート コンピューティングにファイルをマウントまたはダウンロードします。
+- オプション 2:非構造化データがある場合、FileDataset を作成し、トレーニングのためにリモート コンピューティングにファイルをマウントまたはダウンロードします。
+
+Azure Machine Learning データセットにより、[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) などの Azure Machine Learning トレーニング製品とのシームレスな統合が提供されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +41,9 @@ ms.locfileid: "71059368"
 > [!Note]
 > 一部の Dataset クラス (プレビュー) は [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
 
-## <a name="option-1-pass-datasets-as-inputs-to-training-scripts"></a>オプション 1:トレーニング スクリプトへの入力としてデータセットを渡す
+## <a name="option-1-use-datasets-directly-in-training-scripts"></a>オプション 1:トレーニング スクリプトでデータセットを直接使用する
 
-Azure Machine Learning データセットにより、[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) などの Azure Machine Learning トレーニング製品とのシームレスな統合が提供されます。 この例では、[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) を作成し、それをトレーニング用の `estimator` オブジェクトへの入力として使用します。 
+この例では、[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) を作成し、それをトレーニング用の `estimator` オブジェクトへの直接入力として使用します。 
 
 ### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
@@ -52,6 +54,24 @@ from azureml.core.dataset import Dataset
 
 web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
+```
+
+### <a name="access-the-input-dataset-in-your-training-script"></a>トレーニング スクリプトで入力データセットにアクセスする
+
+TabularDataset オブジェクトを使用すると、使い慣れたデータ準備とトレーニングのライブラリを操作できるように、pandas または spark DataFrame にデータを読み込むことができます。 この機能を利用するには、トレーニング構成で TabularDataset を入力として渡し、それをスクリプトで取得します。
+
+これを行うには、トレーニング スクリプト内の [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) オブジェクトを使用して入力データセットにアクセスし、[`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe--) メソッドを使用します。 
+
+```Python
+%%writefile $script_folder/train_titanic.py
+
+from azureml.core import Dataset, Run
+
+run = Run.get_context()
+# get the input dataset by name
+dataset = run.input_datasets['titanic_ds']
+# load the TabularDataset to pandas DataFrame
+df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-estimator"></a>エスティメーターを構成する
@@ -77,25 +97,6 @@ est = Estimator(source_directory=script_folder,
 # Submit the estimator as part of your experiment run
 experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
-
-```
-
-### <a name="access-the-input-dataset-in-your-training-script"></a>トレーニング スクリプトで入力データセットにアクセスする
-
-TabularDataset オブジェクトを使用すると、使い慣れたデータ準備とトレーニングのライブラリを操作できるように、pandas または spark DataFrame にデータを読み込むことができます。 この機能を利用するには、トレーニング構成で TabularDataset を入力として渡し、それをスクリプトで取得します。
-
-これを行うには、トレーニング スクリプト内の [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) オブジェクトを使用して入力データセットにアクセスし、[`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe--) メソッドを使用します。 
-
-```Python
-%%writefile $script_folder/train_titanic.py
-
-from azureml.core import Dataset, Run
-
-run = Run.get_context()
-# get the input dataset by name
-dataset = run.input_datasets['titanic']
-# load the TabularDataset to pandas DataFrame
-df = dataset.to_pandas_dataframe()
 ```
 
 ## <a name="option-2--mount-files-to-a-remote-compute-target"></a>オプション 2:リモート コンピューティング先にファイルをマウントする
@@ -125,9 +126,9 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>エスティメーターを構成する
 
-エスティメーターの `inputs` パラメーターを使用してデータセットを渡す代わりに、`script_params` を使用してデータセットを渡し、トレーニング スクリプト内でデータ パス (マウント ポイント) を取得することもできます。 これにより、トレーニング スクリプトから Azure Machine Learning SDK への依存関係を回避できます。
+エスティメーターの `inputs` パラメーターを使用してデータセットを渡す代わりに、`script_params` を使用してデータセットを渡し、トレーニング スクリプト内でデータ パス (マウント ポイント) を取得することもできます。 このようにデータにアクセスし、既存のトレーニング スクリプトを使用できます。
 
-scikit-learn 実験の実行の送信には、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) エスティメーター オブジェクトが使用されます。
+scikit-learn 実験の実行の送信には、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) エスティメーター オブジェクトが使用されます。 SKlearn エスティメーターによるトレーニングの詳細については[こちら](how-to-train-scikit-learn.md)を参照してください。
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -187,10 +188,11 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="notebook-examples"></a>ノートブックの例
 
-<bpt id="p1">[</bpt>サンプル ノートブック<ept id="p1">](https://aka.ms/dataset-tutorial)</ept>では、ScriptRun オブジェクトと <bpt id="p2">[</bpt>HyperdDrive<ept id="p2">](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)</ept> オブジェクトを指定したデータセットの使用など、この記事の概念を示し、拡張しています。
+[データセット ノートブック](https://aka.ms/dataset-tutorial)では、この記事の概念を示し、さらに詳しく説明します。 
 
 ## <a name="next-steps"></a>次の手順
 
 * TabularDatasets を使用して[機械学習モデルを自動的にトレーニングする](how-to-auto-train-remote.md)。
 
 * FileDatasets を使用して[画像分類モデルをトレーニングする](https://aka.ms/filedataset-samplenotebook)。
+

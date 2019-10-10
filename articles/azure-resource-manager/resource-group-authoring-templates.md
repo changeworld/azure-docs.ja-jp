@@ -4,14 +4,14 @@ description: 宣言型 JSON 構文を使用した Azure Resource Manager テン�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5c1a99911c31f539d4f55adefb2c5f06243dd0
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984095"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694971"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
@@ -75,7 +75,7 @@ ms.locfileid: "70984095"
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | parameter-name |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
+| type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 「[データの種類](#data-types)」を参照してください。 |
 | defaultValue |いいえ |パラメーターに値が指定されない場合のパラメーターの既定値。 |
 | allowedValues |いいえ |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
 | minValue |いいえ |int 型パラメーターの最小値。 |
@@ -85,6 +85,18 @@ ms.locfileid: "70984095"
 | description |いいえ |ポータルを通じてユーザーに表示されるパラメーターの説明。 詳しくは、[テンプレート内のコメント](#comments)に関するページをご覧ください。 |
 
 パラメーターの使用方法の例については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
+
+### <a name="data-types"></a>データの種類
+
+インライン パラメーターとして渡される整数の場合、値の範囲はデプロイに使用する SDK またはコマンドライン ツールによって制限されることがあります。 たとえば、PowerShell を使用してテンプレートをデプロイする場合、整数型は -2147483648 から 2147483647 の範囲で指定できます。 この制限を回避するには、[パラメーター ファイル](resource-manager-parameter-files.md)で大きな整数値を指定します。 リソースの種類によって、整数プロパティに独自の制限が適用されます。
+
+テンプレートでブール値と整数値を指定する場合は、値を引用符で囲まないでください。 文字列値は二重引用符で始めて終わります。
+
+オブジェクトは左中かっこで始めて、右中かっこで終わります。 配列は左大かっこで始めて、右大かっこで終わります。
+
+セキュリティで保護された文字列とセキュリティで保護されたオブジェクトは、リソースのデプロイ後に読み取ることはできません。
+
+データ型の書式設定のサンプルについては、「[パラメーターの型の形式](resource-manager-parameter-files.md#parameter-type-formats)」を参照してください。
 
 ## <a name="variables"></a>変数
 
@@ -123,7 +135,7 @@ ms.locfileid: "70984095"
 
 ## <a name="functions"></a>Functions
 
-テンプレート内で、独自の関数を作成できます。 これらの関数は、テンプレートで使用可能です。 通常は、テンプレート内で繰り返したくない複雑な式を定義します。 ユーザー定義関数は、テンプレートでサポートされている[関数](resource-group-template-functions.md)および式から作成します。
+テンプレート内で、独自の関数を作成できます。 これらの関数は、テンプレートで使用可能です。 通常は、テンプレート全体で繰り返したくない複雑な式を定義します。 ユーザー定義関数は、テンプレートでサポートされている[関数](resource-group-template-functions.md)および式から作成します。
 
 ユーザー関数を定義するときに、適用される制限がいくつかあります。
 

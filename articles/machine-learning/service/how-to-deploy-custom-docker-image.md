@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260757"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326489"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 
@@ -183,15 +183,16 @@ Microsoft は、一般公開されているリポジトリにいくつかの doc
 | Image | 説明 |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning の基本イメージ |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | ONNX ランタイムが含まれています。 |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | ONNX ランタイムと CUDA コンポーネントが含まれています。 |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | ONNX ランタイムと TensorRT が含まれています。 |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU 推論用の ONNX Runtime が含まれています |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | GPU 用の ONNX Runtime と CUDA が含まれています |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | GPU 用の ONNX Runtime と TensorRT が含まれています |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Movidius<sup>TM</sup> MyriadX VPU に基づく Intel<sup></sup> Vision Accelerator Design 用の ONNX Runtime と OpenVINO が含まれています |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Intel<sup></sup> Movidius<sup>TM</sup> USB スティック用の ONNX Runtime と OpenVINO が含まれています |
+
+ONNX Runtime の基本イメージの詳細については、GitHub リポジトリの [ONNX Runtime dockerfile のセクション](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md)を参照してください。
 
 > [!TIP]
 > これらのイメージは一般公開されているため、使用するときにアドレス、ユーザー名、またはパスワードを入力する必要はありません。
-
-> [!IMPORTANT]
-> CUDA または TensorRT を使用する Microsoft イメージを使用できるのは Microsoft Azure サービスのみです。
 
 詳細については、[Azure Machine Learning コンテナー](https://github.com/Azure/AzureML-Containers)に関するページを参照してください。
 

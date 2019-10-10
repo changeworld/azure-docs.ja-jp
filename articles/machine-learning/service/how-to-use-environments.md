@@ -9,13 +9,13 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/16/2019
-ms.openlocfilehash: b46ca59bc93477c338001009ff7eeeddc7248684
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 09/27/2019
+ms.openlocfilehash: 2056970a91a90fc14528b13650472722a235c354
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147327"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350487"
 ---
 # <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Azure Machine Learning を使用してトレーニングとデプロイのための再利用可能な環境を作成および管理します。
 
@@ -42,7 +42,9 @@ ms.locfileid: "71147327"
 
 ### <a name="types-of-environments"></a>環境の種類
 
-環境は**ユーザー管理**と**システム管理**の 2 つのカテゴリに大別できます。
+環境は、**キュレーション**、**ユーザー管理**、**システム管理**の 3 つのカテゴリに大別できます。
+
+キュレートされた環境は Azure Machine Learning から提供され、既定でお使いのワークスペースで利用できます。 Python のパッケージと設定の集まりが含まれており、さまざまな機械学習フレームワークを開始するのに役立ちます。 
 
 ユーザー管理環境の場合は、ユーザーが環境を設定し、トレーニング スクリプトで必要なすべてのパッケージをコンピューティング ターゲットにインストールする必要があります。 Conda で自動的に環境やインストールの確認が行われることはありません。 
 
@@ -53,9 +55,42 @@ Python 環境とスクリプトの依存関係を [Conda](https://conda.io/docs/
 * Azure Machine Learning SDK for Python が[インストール](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)されていること。
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
+
 ## <a name="create-an-environment"></a>環境の作成
 
 実験用の環境を作成するには、複数の方法があります。
+
+### <a name="use-curated-environment"></a>キュレートされた環境を使用する
+
+キュレートされた環境の 1 つを選択し、開始できます。 
+
+* __AzureML-Minimal__ 環境には、実行追跡とアセット アップロードを可能にする最小限のパッケージ セットが含まれています。 それを独自の環境の開始点として利用できます。
+
+* __AzureML-Tutorial__ 環境には、Scikit-Learn、Pandas、Matplotlib など、一般的なデータ サイエンス パッケージと大きな azureml-sdk パッケージ セットが含まれています。
+
+キュレートされた環境は Docker イメージのキャッシュでバックアップされ、実行準備コストを下げます。
+
+__Environment.get__ メソッドを使用し、次のいずれかのキュレートされた環境を選択します。
+
+```python
+from azureml.core import Workspace, Environment
+
+ws = Workspace.from_config()
+env = Environment.get(workspace=ws, name="AzureML-Minimal")
+```
+
+次のコードを利用し、キュレートされた環境とそのパッケージを一覧表示できます。
+```python
+envs = Environment.list(workspace=ws)
+
+for env in envs:
+    if env.startswith("AzureML"):
+        print("Name",env)
+        print("packages", envs[env].python.conda_dependencies.serialize_to_string())
+```
+
+> [!WARNING]
+>  独自の環境の名前にはプレフィックスとして _AzureML_ を使用しないでください。 これはキュレートされた環境用に予約されています。
 
 ### <a name="instantiate-an-environment-object"></a>環境オブジェクトのインスタンス化
 
@@ -85,7 +120,7 @@ myenv = Environment.from_pip_requirements(name = "myenv"
 
 ローカル コンピューター上に既存の Conda 環境がある場合、それから環境オブジェクトを作成するためのソリューションがサービスによって提供されます。 これにより、ローカルの対話型環境をリモート実行で再利用できます。
 
-次の処理では、既存の Conda 環境 `mycondaenv` から、[from_existing_conda_environment()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) メソッドを使用して環境オブジェクトを作成します。
+次のコードでは、既存の Conda 環境 `mycondaenv` から、[from_existing_conda_environment()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) メソッドを使用して環境オブジェクトを作成します。
 
 ``` python
 myenv = Environment.from_existing_conda_environment(name = "myenv",
@@ -114,7 +149,7 @@ run = myexp.submit(config=runconfig)
 run.wait_for_completion(show_output=True)
 ```
 
-同様に、[`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) オブジェクトをトレーニングに使用する場合、環境を指定しなくても推定インスタンスを実行として直接送信できます。これは、`Estimator` オブジェクトが既に環境とコンピューティング ターゲットをカプセル化しているためです。
+同様に、[`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) オブジェクトをトレーニングに使用する場合、環境を指定しなくても推定インスタンスを実行として直接送信できます。 `Estimator` オブジェクトが既に環境とコンピューティング ターゲットをカプセル化しています。
 
 
 ## <a name="add-packages-to-an-environment"></a>環境にパッケージを追加する
@@ -162,7 +197,7 @@ myenv.python.conda_dependencies=conda_dep
 
 実行を送信するか、Web サービスをデプロイすると、環境が自動的にワークスペースに登録されます。 [register()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#register-workspace-) メソッドを使用して、環境を手動で登録することもできます。 これは環境をエンティティに変える操作であり、このエンティティはクラウド内で追跡およびバージョン管理され、ワークスペースのユーザー間で共有することができます。
 
-次の処理では、環境 `myenv` をワークスペース `ws` に登録します。
+次のコードでは、環境 `myenv` をワークスペース `ws` に登録します。
 
 ```python
 myenv.register(workspace=ws)
@@ -176,12 +211,7 @@ Environment クラスには、名前を指定して、一覧として、また�
 
 #### <a name="view-list-of-environments"></a>環境の一覧を表示する
 
-[list()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#list-workspace-) を使用してワークスペース内の環境を表示し、再利用する環境を選択します。
-
-```python
-from azureml.core import Environment
-list("workspace_name")
-```
+[`Environment.list(workspace="workspace_name")`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#list-workspace-) を使用してワークスペース内の環境を表示し、再利用する環境を選択します。
 
 #### <a name="get-environment-by-name"></a>名前を指定して環境を取得する
 
@@ -230,15 +260,12 @@ myenv.docker.enabled = True
 
 ビルドされた Docker イメージは既定で、ワークスペースに関連付けられている Azure Container Registry に表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 一意識別子 (*uuuid*) の部分は、環境構成から計算されたハッシュに対応します。 これにより、サービスは、特定の環境に対応するイメージが既に存在していて再利用できるかどうかを判断できます。
 
-さらに、サービスは、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)の 1 つを自動的に使用し、指定された Python パッケージをインストールします。 基本イメージには CPU バージョンと GPU バージョンがあり、`gpu_support=True` を設定することによって GPU イメージを指定できます。
+さらに、サービスは、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)の 1 つを自動的に使用し、指定された Python パッケージをインストールします。 基本イメージには、CPU と GPU のバージョンが含まれます。 Azure Machine Learning サービスでは、使用するバージョンが自動的に検出されます。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
 myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
-
-# Specify GPU image
-myenv.docker.gpu_support=True
 ```
 
 > [!NOTE]
@@ -250,7 +277,7 @@ myenv.docker.gpu_support=True
 
 トレーニング実行を送信すると、必要な依存関係のサイズによっては、新しい環境の構築に数分かかる場合があります。 環境はサービスによってキャッシュされるため、環境定義が変更されない限り、完全セットアップにかかる時間は 1 回だけです。
 
-次に示すのは、[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) をラッパー オブジェクトとして使用するローカル スクリプト実行の例です。
+次のローカル スクリプト実行の例では、[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) をラッパー オブジェクトとして使用します。
 
 ```python
 from azureml.core import Environment, ScriptRunConfig, Experiment
@@ -263,10 +290,10 @@ myenv = Environment(name="myenv")
 runconfig = ScriptRunConfig(source_directory=".", script="train.py")
 
 # Attach compute target to run config
-runconfig.compute_target = "local"
+runconfig.run_config.target = "local"
 
 # Attach environment to run config
-runconfig.environment = myenv
+runconfig.run_config.environment = myenv
 
 # Submit run 
 run = exp.submit(runconfig)
@@ -281,7 +308,7 @@ run = exp.submit(runconfig)
 
 トレーニングのために [Estimator](how-to-train-ml-models.md) を使用している場合、Estimator インスタンスには環境とコンピューティング ターゲットが既にカプセル化されているため、そのインスタンスを直接送信するだけで済みます。
 
-以下では、scikit-learn モデルに対してリモート コンピューティングで実行される単一ノード トレーニングに Estimator を使用し、以前に作成されたコンピューティング ターゲット オブジェクト `compute_target` とデータストア オブジェクト `ds` を想定します。
+次のコードでは、scikit-learn モデルに対してリモート コンピューティングで実行される単一ノード トレーニングに Estimator を使用し、以前に作成されたコンピューティング ターゲット オブジェクト `compute_target` とデータストア オブジェクト `ds` を想定します。
 
 ```python
 from azureml.train.estimator import Estimator

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316351"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949544"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -73,7 +73,9 @@ Speech ディクテーション モードの言語については、Speech の�
 サポートされている言語と状態の一覧については、Bing Spell Check の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)に関するページをご覧ください。
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>アプリケーションの珍しい単語または外国の単語
-`en-us` カルチャの LUIS では、学習によって英語の単語のほとんど (スラングを含む) が区別されます。 `zh-cn` カルチャの LUIS では、学習によってほとんどの中国語の文字が区別されます。 `en-us` で珍しい単語を使用するか、`zh-cn` で珍しい文字を使用する場合、LUIS で単語または文字を区別できない可能性があるときは、その単語または文字を[フレーズ リスト機能](luis-how-to-add-features.md)に追加できます。 たとえば、アプリケーションのカルチャ以外の単語、つまり外国の単語は、フレーズ リスト機能に追加する必要があります。 このフレーズ リストは、交換不可能としてマークする必要があります。これにより、一連の珍しい単語によって、LUIS が学習によって認識する必要があるクラスが形成されていること、ただし、それらはシノニムではなく、相互に交換できないことが示されます。
+`en-us` カルチャの LUIS では、学習によって英語の単語のほとんど (スラングを含む) が区別されます。 `zh-cn` カルチャの LUIS では、学習によってほとんどの中国語の文字が区別されます。 `en-us` で珍しい単語を使用するか、`zh-cn` で珍しい文字を使用する場合、LUIS で単語または文字を区別できない可能性があるときは、その単語または文字を[フレーズ リスト機能](luis-how-to-add-features.md)に追加できます。 たとえば、アプリケーションのカルチャ以外の単語、つまり外国の単語は、フレーズ リスト機能に追加する必要があります。 
+
+<!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
 ### <a name="hybrid-languages"></a>ハイブリッド言語
 ハイブリッド言語では、英語、中国語など、2 つのカルチャの単語が結合されます。 アプリが基づくカルチャは 1 つであるため、これらの言語は LUIS ではサポートされていません。

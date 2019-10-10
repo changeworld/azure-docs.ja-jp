@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5f76df0045fc3939392759ed0edd266380295a85
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260170"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677895"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Azure Front Door Service でのメトリックとログの監視
 
 Azure Front Door Service を使用すると、次の方法でリソースを監視できます。
 
-- **メトリック**。 現在、Application Gateway にはパフォーマンス カウンターを表示する 7 つのメトリックがあります。
+- **メトリック**。 現在、Azure Front Door にはパフォーマンス カウンターを表示するメトリックが 7 つあります。
 - **ログ**。 アクティビティ ログや診断ログでは、リソースのパフォーマンス、アクセス、その他のデータを監視目的で保存または使用することができます。
 
 ### <a name="metrics"></a>メトリック

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327458"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177612"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor のカスタム ログ
 
@@ -172,7 +172,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 カスタム ログではデータを収集できない場合、次の代替手段を検討してください。
 
 - カスタム スクリプトまたはその他の手法を使用し、Azure Monitor によって収集される [Windows イベント](data-sources-windows-events.md)または [Syslog](data-sources-syslog.md) にデータを書き込む。 
-- [HTTP Data Collector API](data-collector-api.md) を使用して Azure Monitor に直接データを送信する。 Azure Automation で Runbook を使用する例は、[Azure Automation の Runbook を使用して Azure Monitor でログ データを収集する](runbook-datacollect.md)ことに関するページに記載されています。
+- [HTTP Data Collector API](data-collector-api.md) を使用して Azure Monitor に直接データを送信する。 
 
 ## <a name="next-steps"></a>次の手順
 * インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。

@@ -7,13 +7,12 @@ ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: b5cf0cf5dc8a0964d981c5537b6fa41f1c6c2058
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 2e810c810fd2c143f3d3e43a6ff1df87a150fa3b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968437"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981641"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Canada Federal PBMM ブループリント サンプルをデプロイする
 

@@ -9,16 +9,18 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: dcb0fe4da968408a261e387c636cc548fa757a09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: d397adfb6ed2d3aef93bd40d14eb0ad199cdb90c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036667"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309349"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
-ロジック アプリからオンプレミスのデータ ソースにアクセスするには、Azure Portal でオンプレミス データ ゲートウェイ リソースを作成します。 その後、ロジック アプリは[オンプレミス コネクタ](../connectors/apis-list.md#on-premises-connectors)を使用できます。 この記事では、[ゲートウェイをダウンロードしてローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した*後で* Azure ゲートウェイ リソースを作成する方法を示します。 ゲートウェイの詳細については、「[ゲートウェイのしくみ](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
+ロジック アプリからオンプレミスのデータ ソースにアクセスするには、Azure Portal でオンプレミス データ ゲートウェイ リソースを作成します。 その後、ロジック アプリは[オンプレミス コネクタ](../connectors/apis-list.md#on-premises-connectors)を使用できます。 Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)があります。
+
+この記事では、[ゲートウェイをダウンロードしてローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した*後で* Azure ゲートウェイ リソースを作成する方法を示します。 ゲートウェイの詳細については、「[ゲートウェイのしくみ](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。 
 
 > [!TIP]
 > Azure 仮想ネットワークに接続するには、代わりに[*統合サービス環境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成することことを考慮してください。 

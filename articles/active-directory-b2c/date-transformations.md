@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 077915705c242805d3709b5d52d445288fa5336a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 13c3f3aaf54bc3fb8ef656b5c1ce227fa70cee0b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064346"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936799"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -29,8 +29,8 @@ ms.locfileid: "71064346"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | string | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
-| inputClaim | rightOperand | string | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
+| InputClaim | leftOperand | string | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
+| InputClaim | rightOperand | string | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
 | InputParameter | AssertIfEqualTo | ブール値 | 左オペランドが右オペランドと等しい場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | ブール値 | 右オペランドがない場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 2 つの日時の間で時刻が等しいと見なすことができるミリ秒数を指定します (たとえば、時刻の誤差を説明)。 |
