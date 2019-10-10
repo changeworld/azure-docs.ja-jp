@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 30751bebd397b378924453987462c9e2b3b55ebf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803896"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836466"
 ---
 # <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>Azure Notebooks を使用した電気自動車のルート案内 (Python)
 
-Azure Maps は、Azure とネイティブに統合されている地理空間サービス API のポートフォリオです。開発者、企業、ISV はこれらを利用して、位置情報を認識するアプリや IoT、モビリティ、ロジスティックス、資産追跡といった各種ソリューションを構築できます。 Azure Maps REST API シリーズを Python や R などの言語で呼び出して、地理空間データ解析や機械学習のシナリオを実現できます。 Azure Maps には、ユーザーがさまざまな条件 (車種や到達可能領域など) に基づいて複数のデータ ポイント間のルートを計算できる、堅牢な[ルート案内 API]([https://docs.microsoft.com/rest/api/maps/route) セットが用意されています。 このチュートリアルでは、バッテリ残量が低下している電気自動車のドライバーに対して、走行時間的に最も近い充電スタンドを案内するシナリオについて説明します。
+Azure Maps は、Azure とネイティブに統合されている地理空間サービス API のポートフォリオです。開発者、企業、ISV はこれらを利用して、位置情報を認識するアプリや IoT、モビリティ、ロジスティックス、資産追跡といった各種ソリューションを構築できます。 Azure Maps REST API シリーズを Python や R などの言語で呼び出して、地理空間データ解析や機械学習のシナリオを実現できます。 Azure Maps には、ユーザーがさまざまな条件 (車種や到達可能領域など) に基づいて複数のデータ ポイント間のルートを計算できる、堅牢な[ルート案内 API](https://docs.microsoft.com/rest/api/maps/route) セットが用意されています。 このチュートリアルでは、バッテリ残量が低下している電気自動車のドライバーに対して、走行時間的に最も近い充電スタンドを案内するシナリオについて説明します。
 
 このチュートリアルでは、次のことについて説明します。
 
