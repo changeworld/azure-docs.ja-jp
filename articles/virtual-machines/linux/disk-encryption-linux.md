@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7f8c029c5ceff0865b060cf8edc794454d6c282
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829956"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174710"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -36,7 +36,7 @@ Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、Azure 
 
 ## <a name="install-tools-and-connect-to-azure"></a>ツールをインストールし、Azure に接続する
 
-Azure Disk Encryption は、[Azure CLI](/cli/azure) と [Azure PowerShell](/azure/new-azureps-module-az) を使用して、有効にして管理することができます。 そのためには、ツールをローカルにインストールし、Azure サブスクリプションに接続する必要があります。
+Azure Disk Encryption は、[Azure CLI](/cli/azure) と [Azure PowerShell](/powershell/azure/new-azureps-module-az) を使用して、有効にして管理することができます。 そのためには、ツールをローカルにインストールし、Azure サブスクリプションに接続する必要があります。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -66,7 +66,7 @@ az account set --subscription "<subscription name or ID>"
 詳しくは、[Azure CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli)に関する記事をご覧ください。 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell az モジュール](/azure/new-azureps-module-az)には、Azure リソースの管理に [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) モデルを使う一連のコマンドレットが用意されています。 これは、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用してブラウザーで使用することも、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」の手順に従ってご使用のローカル マシンにインストールすることもできます。 
+[Azure PowerShell az モジュール](/powershell/azure/new-azureps-module-az)には、Azure リソースの管理に [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) モデルを使う一連のコマンドレットが用意されています。 これは、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用してブラウザーで使用することも、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」の手順に従ってご使用のローカル マシンにインストールすることもできます。 
 
 既にローカルにインストールされている場合、Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用します。 [Azure PowerShell リリース](https://github.com/Azure/azure-powershell/releases)の最新バージョンをダウンロードします。
 
