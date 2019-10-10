@@ -1,5 +1,5 @@
 - name: SQL Data Warehouse のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: SQL Data Warehouse の概要

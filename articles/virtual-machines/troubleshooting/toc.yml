@@ -56,11 +56,11 @@
     - name: SSH のトラブルシューティング
       href: troubleshoot-ssh-connection.md
     - name: ファイル システム エラーのトラブルシューティング
-      href: 'https://support.microsoft.com/help/3213321'
+      href: linux-recovery-cannot-start-file-system-errors.md
     - name: カーネルに関連するブートの問題のトラブルシューティング
       href: 'https://support.microsoft.com/help/4091524'
     - name: fstab エラーのトラブルシューティング
-      href: 'https://support.microsoft.com/help/3206699'
+      href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: SSH のトラブルシューティングの詳細
       href: detailed-troubleshoot-ssh-connection.md
 - name: 一般的なエラー メッセージ

@@ -25,6 +25,8 @@
       href: powershell-create-instance.md
 - name: 概念
   items:
+    - name: 管理の基本
+      href: administration-concepts.md
     - name: 一般的なデプロイ シナリオ
       href: scenarios.md
     - name: Azure AD DS の同期のしくみ

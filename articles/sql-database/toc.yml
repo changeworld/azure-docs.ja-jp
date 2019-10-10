@@ -198,22 +198,20 @@
                   href: /sql/connect/ruby/ruby-driver-for-sql-server
     - name: バックアップ、復元、高可用性 (BCDR)
       items:
-        - name: バックアップを使用した復元
-          href: sql-database-recovery-using-backups.md
-        - name: 高速データベースの復旧
-          href: sql-database-accelerated-database-recovery.md
-        - name: 障害復旧ガイダンス
-          href: sql-database-disaster-recovery.md
-        - name: 復旧の演習
-          href: sql-database-disaster-recovery-drills.md
         - name: ビジネス継続性
           href: sql-database-business-continuity.md
         - name: 高可用性
           href: sql-database-high-availability.md
-        - name: 自動バックアップ
-          href: sql-database-automated-backups.md
-        - name: 長期のバックアップ リテンション期間
-          href: sql-database-long-term-retention.md
+        - name: バックアップ
+          items:
+            - name: 自動バックアップ
+              href: sql-database-automated-backups.md
+            - name: バックアップを使用した復元
+              href: sql-database-recovery-using-backups.md
+            - name: 高速データベースの復旧
+              href: sql-database-accelerated-database-recovery.md
+            - name: 長期のバックアップ リテンション期間
+              href: sql-database-long-term-retention.md
         - name: フェールオーバー グループと geo レプリケーション
           items:
             - name: アクティブ geo レプリケーション
@@ -222,6 +220,10 @@
               href: sql-database-auto-failover-group.md
             - name: レプリカのセキュリティの構成
               href: sql-database-geo-replication-security-config.md
+            - name: 障害復旧ガイダンス
+              href: sql-database-disaster-recovery.md
+            - name: 復旧の演習
+              href: sql-database-disaster-recovery-drills.md
     - name: 監視と調整
       items:
         - name: 監視と調整に関するドキュメント
