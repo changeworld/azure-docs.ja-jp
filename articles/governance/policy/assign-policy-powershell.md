@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: c18e48d76381bf40e6177feb389a0197aace081d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 7e86436b1b87ab4eec3a971ec19e7dc0ffb106b3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000847"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978124"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して準拠していないリソースを識別するためのポリシー割り当てを作成する
 

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676648"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840144"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>診断機能を使用して問題を特定する
+# <a name="identify-and-diagnose-issues"></a>問題の特定と診断
 
 Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Windows Virtual Desktop ロールでは、ユーザーがシステムとやり取りするたびに診断アクティビティがログに記録されます。 各ログには、トランザクションに関連する Windows Virtual Desktop ロール、エラー メッセージ、テナント情報、ユーザー情報などの関連情報が含まれています。 診断アクティビティは、エンドユーザーのアクションと管理者のアクションの両方によって作成され、3 つの主要バケットに分類できます。
 

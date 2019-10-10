@@ -7,17 +7,15 @@ editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 01/26/2019
+ms.topic: overview
+ms.date: 10/07/2019
 ms.author: bwren
-ms.openlocfilehash: 140a5cba6926e8711f0b70896ade55c11d332e0d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 578cb57c9c971874e16ddb75d399e165cc75dfa6
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345298"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035657"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 

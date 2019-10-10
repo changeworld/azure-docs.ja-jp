@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 07b196b8e7081a6cce1ae87297528c1711b3b8bb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 047c92f1c50409e6a1716f0ef2f774464bd12a0a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259437"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972780"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループの診断ログ
 
 ネットワーク セキュリティ グループ (NSG) には、仮想ネットワーク サブネットとネットワーク インターフェイスのどちらか一方または両方へのトラフィックを許可または拒否するルールが含まれています。 NSG の診断ログを有効にすると、次のカテゴリの情報をログに記録できます。
 
-* **イベント:** MAC アドレスに基づいて、VM に適用される NSG ルールに関するエントリがログに記録されます。 これらのルールの状態は 60 秒ごとに収集されます。
-* **ルール カウンター:** トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
+* **イベント:** MAC アドレスに基づいて、VM に適用される NSG ルールに関するエントリがログに記録されます。
+* **ルール カウンター:** トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 
 診断ログは、Azure Resource Manager デプロイ モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイ モデルでデプロイされた NSG については診断ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイ モデルの理解](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 

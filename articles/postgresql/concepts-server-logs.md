@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17083029f2377037b99abfa3ce8371661eccb957
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091114"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029992"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのサーバー ログ
 Azure Database for PostgreSQL ではクエリ ログとエラー ログが生成されます。 クエリとエラー ログを使用して、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復を行えます。 トランザクション ログへのアクセスは含まれていません。 
@@ -24,7 +24,7 @@ Azure Database for PostgreSQL ではクエリ ログとエラー ログが生成
 これらのパラメーターの詳細については、PostgreSQL の「[Error Reporting and Logging](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)」(エラー レポートとログ記録) のドキュメントを参照してください。 Azure Database for PostgreSQL パラメーターを構成する方法については、[portal のドキュメント](howto-configure-server-parameters-using-portal.md)または　[CLI のドキュメント](howto-configure-server-parameters-using-cli.md)を参照してください。
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>portal または CLI によるサーバー ログへのアクセス
-ログを有効にしている場合、[Azure portal](howto-configure-server-logs-in-portal.md)、[Azure CLI](howto-configure-server-logs-using-cli.md)、および Azure REST API を使用して、Azure Database for PostgreSQL ログ ストレージからそれらにアクセスできます。 ログ ファイルのローテーションは、1 時間ごとか 100 MB ごとのどちらか早い方のタイミングで行われます。 このログ ストレージのリテンション期間を設定するには、サーバーに関連付けられている **log\_retention\_period** パラメーターを使用します。 既定値は 3 日間です。最大値は 7 日間です。 サーバーには、ログ ファイルを保持するために、十分なストレージが割り当てられている必要があります (このリテンション期間パラメーターは、Azure 診断ログに影響しません)。
+ログを有効にしている場合、[Azure portal](howto-configure-server-logs-in-portal.md)、[Azure CLI](howto-configure-server-logs-using-cli.md)、および Azure REST API を使用して、Azure Database for PostgreSQL ログ ストレージからそれらにアクセスできます。 ログ ファイルのローテーションは、1 時間ごとか 100 MB ごとのどちらか早い方のタイミングで行われます。 このログ ストレージのリテンション期間を設定するには、サーバーに関連付けられている **log\_retention\_period** パラメーターを使用します。 既定値は 3 日間です。最大値は 7 日間です。 サーバーには、ログ ファイルを保持するために、十分なストレージが割り当てられている必要があります (このリテンション期間パラメーターは、Azure 診断ログに影響しません)。
 
 
 ## <a name="diagnostic-logs"></a>診断ログ

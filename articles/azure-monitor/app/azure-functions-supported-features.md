@@ -3,7 +3,7 @@ title: Azure Application Insights - Azure Functions でサポートされる機�
 description: Azure Functions でサポートされる Application Insights の機能
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: ''
 ms.service: application-insights
 ms.workload: TBD
@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 0199d8f0c4a76a10fffcab7cf2819643d0ac2d68
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075357"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959904"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
