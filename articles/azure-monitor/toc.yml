@@ -119,6 +119,10 @@
           href: app/troubleshoot-faq.md
 - name: ハウツー ガイド
   items:
+    - name: 監視シナリオ
+      items:
+        - name: Azure サービスの監視
+          href: insights/monitor-azure-resource.md
     - name: Azure Monitor の管理
       items:
         - name: ワークスペース デプロイの設計

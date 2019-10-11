@@ -36,3 +36,5 @@
   items:
     - name: サポート チケットを開く
       href: hpc-cache-support-ticket.md
+    - name: リージョンの障害から復旧する
+      href: hpc-region-recovery.md

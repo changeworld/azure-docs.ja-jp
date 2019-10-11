@@ -234,6 +234,10 @@
       items:
         - name: セキュリティとポリシー
           href: security-policy.md
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: 組み込みのセキュリティ制御
+          href: virtual-machines-windows-security-controls.md
     - name: 状態とライフサイクル
       href: states-lifecycle.md
     - name: 監視
@@ -242,8 +246,6 @@
       href: backup-recovery.md
     - name: インフラストラクチャの例
       href: infrastructure-example.md
-    - name: 組み込みのセキュリティ制御
-      href: virtual-machines-windows-security-controls.md
 - name: ハウツー ガイド
   items:
     - name: VM の作成
@@ -286,8 +288,31 @@
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md
         - name: 暗号化
-          href: encrypt-disks.md
-          displayName: encryption
+          items:
+            - name: Windows のディスク暗号化のシナリオ
+              href: disk-encryption-windows.md
+            - name: Azure CLI を使用した VM の暗号化
+              href: disk-encryption-cli-quickstart.md
+            - name: Azure PowerShell を使用した VM の暗号化
+              href: disk-encryption-powershell-quickstart.md
+            - name: Azure portal を使用した VM の暗号化
+              href: disk-encryption-portal-quickstart.md
+            - name: Azure Disk Encryption に対応したキー コンテナー
+              href: disk-encryption-key-vault.md
+            - name: ディスク暗号化のサンプル スクリプト
+              href: disk-encryption-sample-scripts.md
+            - name: ディスク暗号化のトラブルシューティング
+              href: disk-encryption-troubleshooting.md
+            - name: ディスク暗号化の FAQ
+              href: disk-encryption-faq.md
+            - name: ディスク暗号化 - 以前のバージョン (AAD)
+              items:
+                - name: 概要
+                  href: disk-encryption-overview-aad.md
+                - name: Azure Disk Encryption に対応したキー コンテナー
+                  href: disk-encryption-key-vault-aad.md
+                - name: Windows のディスク暗号化のシナリオ
+                  href: disk-encryption-windows-aad.md
         - name: WinRM の使用
           href: winrm.md
         - name: アクセス制御の使用

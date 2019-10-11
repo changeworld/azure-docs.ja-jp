@@ -80,6 +80,8 @@
           items:
             - name: データのコピー ツール
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+    - name: マッピング データ フローを使用してデータを変換する
+      href: tutorial-data-flow.md
     - name: クラウドのデータを変換する
       items:
         - name: HDInsight Spark
@@ -143,7 +145,7 @@
       href: concepts-integration-runtime.md
     - name: マッピング データ フロー
       items:
-        - name: マッピング データ フローの概念
+        - name: マッピング データ フローの概要
           href: concepts-data-flow-overview.md
         - name: デバッグ モード
           href: concepts-data-flow-debug-mode.md
@@ -151,8 +153,6 @@
           href: concepts-data-flow-json.md
         - name: スキーマの誤差
           href: concepts-data-flow-schema-drift.md
-        - name: '[検査] ウィンドウ'
-          href: concepts-data-flow-inspect-pane.md
         - name: 列パターン
           href: concepts-data-flow-column-pattern.md
         - name: データ フローの監視
@@ -161,12 +161,8 @@
           href: concepts-data-flow-performance.md
         - name: ノードの移動
           href: concepts-data-flow-move-nodes.md
-        - name: '[最適化] タブ'
-          href: concepts-data-flow-optimize-tab.md
         - name: 式ビルダー
           href: concepts-data-flow-expression-builder.md
-        - name: 参照ノード
-          href: concepts-data-flow-reference-node.md
         - name: 式言語
           href: data-flow-expression-functions.md
     - name: ロールとアクセス許可
@@ -390,6 +386,8 @@
     - name: データを変換する
       href: transform-data.md
       items:
+        - name: データ フローの実行アクティビティ
+          href: control-flow-execute-data-flow-activity.md
         - name: Azure 関数アクティビティ
           href: control-flow-azure-function-activity.md
         - name: カスタム アクティビティ
@@ -424,8 +422,6 @@
       items:
         - name: 変数アクティビティの追加
           href: control-flow-append-variable-activity.md
-        - name: データ フローの実行アクティビティ
-          href: control-flow-execute-data-flow-activity.md
         - name: パイプラインの実行アクティビティ
           href: control-flow-execute-pipeline-activity.md
         - name: アクティビティのフィルター処理

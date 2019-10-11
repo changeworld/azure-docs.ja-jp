@@ -46,6 +46,8 @@
               href: connect-azure-ad-identity-protection.md
             - name: Azure Information Protection の接続
               href: connect-azure-information-protection.md
+            - name: Microsoft Defender ATP の接続
+              href: connect-microsoft-defender-advanced-threat-protection.md
             - name: Azure ATP の接続
               href: connect-azure-atp.md
             - name: Azure Security Center の接続
