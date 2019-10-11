@@ -18,7 +18,7 @@ Azure portal では、Cosmos DB アカウントのスループット、ストレ
 
 1. Cosmos DB アカウントのナビゲーション メニューで **[メトリック]** を選択します。
    
-2. **[待機時間]** など、タブを選択し、右側で期間を選択します。 グラフ上の **[実際]** と **[SLA]** の線を比較します。
+2. **[遅延時間]** など、タブを選択し、右側で期間を選択します。 グラフ上の **[実際]** と **[SLA]** の線を比較します。
    
    ![Azure Cosmos DB の一連のメトリック](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-metrics-suite.png)
    
