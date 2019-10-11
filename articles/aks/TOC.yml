@@ -215,8 +215,6 @@
               href: azure-ad-integration.md
         - name: Azure AD の統合での Kubernetes RBAC の使用
           href: azure-ad-rbac.md
-        - name: ACR での認証
-          href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
     - name: 監視およびログ記録
       items:

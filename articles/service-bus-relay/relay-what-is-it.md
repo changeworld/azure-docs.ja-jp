@@ -58,7 +58,7 @@ Azure Relay のハイブリッド接続機能は、以前存在していたリ�
 ## <a name="wcf-relay"></a>WCF リレー
 WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作します。 一連の WCF "リレー" バインディングを使用して、オンプレミス サービスとリレー サービスとの間に接続を作成します。 リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。 詳細については、[WCF リレーの概要](service-bus-relay-tutorial.md)に関するページを参照してください。
 
-## <a name="hybrid-connections-vs-wcf-relay"></a>ハイブリッド接続とWCF リレー
+## <a name="hybrid-connections-vs-wcf-relay"></a>ハイブリッド接続WCF リレー
 ハイブリッド接続と WCF Relay のどちらでも、企業ネットワーク内に存在する資産へのセキュアな接続を実現できます。 どちらの機能を優先して使用するかは、次の表に示すように、個々のニーズによって決まります。
 
 |  | WCF リレー | ハイブリッド接続 |

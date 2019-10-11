@@ -98,7 +98,7 @@
             - name: Azure Container Instances からの認証
               href: container-registry-auth-aci.md
             - name: Azure Kubernetes Service (AKS) からの認証
-              href: container-registry-auth-aks.md
+              href: ../aks/cluster-container-registry-integration.md
         - name: ロールとアクセス許可
           href: container-registry-roles.md
         - name: コンテンツの信頼
