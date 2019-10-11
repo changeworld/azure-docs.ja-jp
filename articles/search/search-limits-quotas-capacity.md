@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300655"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327159"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
 
-+ **Free** は、Azure サブスクリプションに付属しているマルチテナント共有サービスです。
++ **Free** は、Azure サブスクリプションに付属しているマルチテナント共有サービスです。 インデックス作成とクエリの要求は、他のテナントで使用されているレプリカおよびパーティションで実行されます。
 
-+ **Basic** は、小規模の運用環境のワークロード専用のコンピューティング リソースを提供します。
++ **Basic** では、小規模な運用ワークロードに対して専用のコンピューティング リソースが提供されますが、一部のネットワーク インフラストラクチャは他のテナントと共有されます。
 
 + **Standard** は、すべてのレベルでさらに多くのストレージや処理能力を持つ専用マシン上で実行されます。 Standard には 4 つのレベル(S1、S2、S3、S3 HD) があります。
 

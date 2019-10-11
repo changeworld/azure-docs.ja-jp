@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087721"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309851"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -58,7 +58,7 @@ ms.locfileid: "71087721"
   * スプール用のソリッドステート ドライブ (SSD) ストレージ
 
   > [!NOTE]
-  > このゲートウェイは、Windows Server 2016 Core をサポートしていません。
+  > このゲートウェイでは、Windows Server Core はサポートされていません。
 
 * **関連する考慮事項**
 
@@ -74,6 +74,8 @@ ms.locfileid: "71087721"
   * ゲートウェイ インストール用に選択するリージョンは、後でロジック アプリ用の Azure ゲートウェイ リソースを作成するときに選択する必要がある場所と同じです。 既定では、このリージョンは、Azure アカウントを管理する Azure AD テナントと同じ場所です。 ただし、この場所はゲートウェイのインストール中に変更できます。
 
   * ゲートウェイには、標準モードと個人用モード (Power BI にのみ適用) の 2 つのモードがあります。 同じコンピューターにおいて同じモードで複数のゲートウェイを実行することはできません。
+
+  * Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)があります。
 
 <a name="install-gateway"></a>
 

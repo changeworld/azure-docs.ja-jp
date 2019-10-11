@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/26/2019
+ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091138"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327124"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -62,6 +62,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サー
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS トポロジの空間型と関数|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
 
@@ -227,9 +228,6 @@ TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時
 
 ### <a name="installing-timescaledb"></a>TimescaleDB をインストールする
 TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、**サーバーの再起動**が必要です。 [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを変更できます。
-
-> [!NOTE]
-> TimescaleDB は、Azure Database for PostgreSQL バージョン 9.6 および 10 で有効にできます。
 
 [Azure portal](https://portal.azure.com/) を使用して以下を実行します。
 

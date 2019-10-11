@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086577"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315002"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -46,7 +46,7 @@ Azure AD DS マネージド ドメインは、Azure 仮想ネットワーク内�
 * Azure AD DS は、独自のサブネットにデプロイする必要があります。 既存のサブネットまたはゲートウェイ サブネットは使用しないでください。
 * Azure AD DS マネージド ドメインのデプロイ時に、ネットワーク セキュリティ グループが作成されます。 このネットワーク セキュリティ グループには、サービス通信を正しく行うために必要な規則が含まれています。
     * 独自のカスタム規則を持つ既存のネットワーク セキュリティ グループを作成または使用しないでください。
-* Azure AD DS には、5 から 7 個の IP アドレスが必要です。 サブネットの IP アドレス範囲でこの数のアドレスを提供できることを確認してください。
+* Azure AD DS には、3 から 5 個の IP アドレスが必要です。 サブネットの IP アドレス範囲でこの数のアドレスを提供できることを確認してください。
     * 使用可能な IP アドレスを制限すると、Azure AD Domain Services で 2 つのドメイン コントローラーを維持できなくなる可能性があります。
 
 次の図の例は、Azure AD DS に独自のサブネットがあり、外部接続用にゲートウェイ サブネットがあり、アプリケーション ワークロードが仮想ネットワーク内の接続されたサブネットにある有効な設計を示しています。

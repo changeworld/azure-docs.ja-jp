@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265163"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316180"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -180,9 +180,9 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
     ![DnsInventory ログ検索](./media/dns-analytics/log-search-dnsinventory.png)
     
-### <a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshooting"></a>トラブルシューティング
 
-一般的なトラブルシューティングの手順:
+一般的なトラブルシューティング手順:
 
 1. DNS 参照データが見つからない - この問題のトラブルシューティングを行うには、構成をリセットするか、ポータルで構成ページを 1 回読み込んでください。 リセットの場合は、設定を別の値に変更してから元の値に戻し、構成を保存します。
 

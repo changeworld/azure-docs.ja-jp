@@ -3,7 +3,7 @@ title: Linux VM に Azure Active Directory の資格情報を使用してログ�
 description: Azure Active Directory 認証を使用してサインインするために、Linux VM を作成して構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: 946ccc61ead7f005667984a490761bc64560a69e
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300730"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327092"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
