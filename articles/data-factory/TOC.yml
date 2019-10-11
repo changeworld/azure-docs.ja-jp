@@ -432,6 +432,8 @@
           href: control-flow-get-metadata-activity.md
         - name: If 条件アクティビティ
           href: control-flow-if-condition-activity.md
+        - name: Switch アクティビティ
+          href: control-flow-switch-activity.md
         - name: ルックアップ アクティビティ
           href: control-flow-lookup-activity.md
         - name: 変数アクティビティの設定
@@ -598,6 +600,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: データ フローのトラブルシューティング
+          href: data-flow-troubleshoot-guide.md
 - name: シナリオ
   items:
     - name: データ レイクおよび EDW のデータ移行

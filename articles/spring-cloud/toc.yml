@@ -2,7 +2,9 @@
   href: index.yml
   displayName: Azure Spring Cloud
 - name: 概要
-  href: spring-cloud-overview.md
+  items:
+    - name: Azure Spring Cloud とは
+      href: spring-cloud-overview.md
 - name: クイック スタート
   expanded: true
   items:
@@ -12,7 +14,7 @@
       href: spring-cloud-quickstart-launch-app-cli.md
     - name: ソースから Spring Cloud アプリを起動する
       href: spring-cloud-launch-from-source.md
-    - name: Maven を使用して Java Spring アプリを起動する
+    - name: Maven を使用して Spring Cloud アプリを起動する
       href: spring-cloud-quickstart-launch-app-maven.md
 - name: チュートリアル
   items:
