@@ -6,7 +6,7 @@
       href: relay-what-is-it.md
 - name: チュートリアル
   items:
-    - name: ハイブリッド接続と
+    - name: ハイブリッド接続
       items:
         - name: メッセージの送受信 - .NET WebSocket
           href: relay-hybrid-connections-dotnet-get-started.md
@@ -26,7 +26,7 @@
           href: service-bus-relay-rest-tutorial.md
 - name: サンプル
   items:
-    - name: ハイブリッド接続と
+    - name: ハイブリッド接続
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
     - name: WCF リレー
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
