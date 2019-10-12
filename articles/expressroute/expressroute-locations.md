@@ -85,8 +85,8 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/bt-compute-for-microsoft-azure)** |サポートされています |サポートされています |アムステルダム、香港特別行政区、ヨハネスブルグ、ロンドン、ニューポート (ウェールズ)、サンパウロ、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |サポートされています |サポートされています |マイアミ |
 | **CDC** | サポートされています | サポートされています | キャンベラ、キャンベラ2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |サポートされています |サポートされています |アムステルダム 2、シカゴ、香港、ラスベガス、ニューヨーク、パリ、サンアントニオ、シリコン バレー、東京、トロント、ワシントン DC |
-| **[Chief Telecom](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |サポートされています |サポートされています |香港、台北 |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |サポートされています |サポートされています |アムステルダム 2、シカゴ、香港特別行政区、ラスベガス、ニューヨーク、パリ、サンアントニオ、シリコン バレー、東京、トロント、ワシントン DC |
+| **[Chief Telecom](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |サポートされています |サポートされています |香港特別行政区、台北 |
 | **China Telecom Global** |サポートされています |サポートされています |香港特別行政区 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |サポートされています |サポートされています |シカゴ、ダラス、モントリオール、トロント、ワシントン DC |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、ダブリン、ロンドン、ニューポート、大阪、パリ、シンガポール 2、東京 |
