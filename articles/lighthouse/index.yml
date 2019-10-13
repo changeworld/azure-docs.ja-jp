@@ -3,19 +3,19 @@ title: Azure Lighthouse ドキュメント
 summary: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
 metadata:
   title: Azure Lighthouse ドキュメント
-  description: 大規模な顧客のリソースを管理する方法について説明します。
+  description: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
   ms.service: lighthouse
   ms.topic: landing-page
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
   ms.date: 09/25/2019
-  ms.openlocfilehash: d2003af574961a5729949f60824aa67692be1655
-  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+  ms.openlocfilehash: 9543ac8a6e7dc30fa44e4bada42ca4786cc53ba0
+  ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/25/2019
-  ms.locfileid: "71264568"
+  ms.lasthandoff: 10/11/2019
+  ms.locfileid: "72286562"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
