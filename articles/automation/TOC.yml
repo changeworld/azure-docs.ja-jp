@@ -123,6 +123,8 @@
               href: automation-scenario-source-control-integration-with-VSTS.md
     - name: トラブルシューティング
       items:
+        - name: Microsoft Azure Automation のケースを開くときに収集するデータ
+          href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: Hybrid Runbook Worker のトラブルシューティング
           href: troubleshoot/hybrid-runbook-worker.md
           displayName: 'troubleshoot, HRW, hybrid worker'

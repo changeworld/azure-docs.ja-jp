@@ -101,6 +101,8 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
 - name: リソース
   items:
+    - name: 価格
+      href: 'https://azure.microsoft.com/en-us/pricing/details/app-configuration/'
     - name: ビデオ
       items:
         - name: 使用の開始

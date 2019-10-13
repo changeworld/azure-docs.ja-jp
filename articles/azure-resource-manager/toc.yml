@@ -228,8 +228,6 @@
           href: resource-group-delete.md
         - name: リソースのロック
           href: resource-group-lock-resources.md
-        - name: サブスクリプションにアクセスするための認証 API
-          href: resource-manager-api-authentication.md
         - name: EA サブスクリプションを作成する
           href: programmatically-create-subscription.md
         - name: EA サブスクリプションを作成するためのアクセスを許可する
