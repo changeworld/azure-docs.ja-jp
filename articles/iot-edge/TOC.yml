@@ -177,6 +177,8 @@
       href: how-to-configure-proxy-support.md
     - name: エッジでのデータの格納
       items:
+        - name: モジュールにデバイスのローカル ストレージへのアクセスを許可する
+          href: how-to-access-host-storage-from-module.md
         - name: IoT Edge 上の Azure Blob Storage
           href: how-to-store-data-blob.md
         - name: Blob Storage モジュールのデプロイ

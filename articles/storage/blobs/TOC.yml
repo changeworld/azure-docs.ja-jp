@@ -270,7 +270,7 @@
         - name: ストレージ アカウントの作成と管理
           items:
             - name: 汎用ストレージ アカウントの作成
-              displayName: 'resource manager, resource manager template, template, ARM'
+              displayName: 'Resource Manager, Resource Manager template, template, ARM'
               href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ブロック BLOB ストレージ アカウントの作成
               href: storage-blob-create-account-block-blob.md
@@ -585,8 +585,6 @@
       items:
         - name: Data Lake Storage の概要
           href: ../blobs/data-lake-storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ビッグ データの処理
-          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: クイック スタート
       items:
         - name: Databricks を使用したデータの分析
@@ -617,6 +615,10 @@
       items:
         - name: マルチプロトコル アクセス
           href: ../blobs/data-lake-storage-multi-protocol-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: ビッグ データの処理
+          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure サービスとの統合
+          href: ../blobs/data-lake-store-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure BLOB ファイル システムの URI
@@ -693,18 +695,6 @@
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ファイルレベルおよびディレクトリレベルのアクセス許可の設定
               href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
-        - name: Azure サービスと統合する
-          items:
-            - name: HDInsight クラスターで使用する
-              href: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Hadoop ファイル システム CLI で使用する
-              href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Databricks で使用する
-              href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
-            - name: Azure SQL Data Warehouse で使用する
-              href: '../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase'
-            - name: Power BI で使用する
-              href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: パフォーマンスを最適化する
           items:
             - name: 概要
@@ -717,6 +707,7 @@
               href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: HDInsight の Storm を最適化する
               href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: ファイル (BLOB) を管理する
           items:
             - name: PowerShell
@@ -729,6 +720,9 @@
               href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: オンプレミスの HDFS ストアを移行する
               href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Hadoop ファイル システム CLI で使用する
+          href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Power BI で使用する
     - name: リファレンス
       items:
         - name: PowerShell

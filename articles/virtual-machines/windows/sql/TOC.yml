@@ -100,8 +100,10 @@
                   href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
         - name: フェールオーバー クラスター インスタンス
           items:
-            - name: 構成
+            - name: 記憶域スペース ダイレクトの使用
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+            - name: Premium ファイル ストレージの使用
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

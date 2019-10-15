@@ -44,6 +44,8 @@
     - name: サービス プロバイダーを表示し、管理する
       displayName: 'managed services offer, azure marketplace, publish'
       href: ./how-to/view-manage-service-providers.md
+    - name: 修復できるポリシーをデプロイする
+      href: ./how-to/deploy-policy-remediation.md
 - name: リファレンス
   items:
     - name: Azure CLI
