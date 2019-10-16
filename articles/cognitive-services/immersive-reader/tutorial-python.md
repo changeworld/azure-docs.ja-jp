@@ -19,7 +19,7 @@ ms.locfileid: "71326442"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>チュートリアル:Python サンプル プロジェクトを使用してイマーシブ リーダーを起動する
 
-[概要](./overview.md)に関するページでは、イマーシブ リーダーの機能とそのしくみ (どのようにして言語学習者、新しい読者、学習障碍者の読解力向上のために実証済みの手法を実装するか) について説明しました。 このチュートリアルでは、イマーシブ リーダーを起動する Python Web アプリケーションの作成方法について説明します。 このチュートリアルでは、以下の内容を学習します。
+[概要](./overview.md)に関するページでは、イマーシブ リーダーの機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 このチュートリアルでは、イマーシブ リーダーを起動する Python Web アプリケーションの作成方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * サンプル プロジェクトを使用して、Pip、Flask、Jinja、および virtualenv を使用する Python Web アプリを作成する
@@ -104,13 +104,13 @@ Flask をインストールします。
 pip install flask
 ```
 
-Jinja2 をインストールします。 Python 用の完全な機能を備えたテンプレート エンジン。
+Jinja2 をインストールします。 Python 用の完全な機能を備えたテンプレート エンジンです。
 
 ```cmd
 pip install jinja2
 ```
 
-virtualenv をインストールします。 分離された Python 環境を作成するためのツール。
+virtualenv をインストールします。 分離された Python 環境を作成するためのツールです。
 
 ```cmd
 pip install virtualenv
@@ -134,7 +134,7 @@ python-dotenv モジュールをインストールします。 このモジュ�
 pip install python-dotenv
 ```
 
-仮想環境を作成する
+仮想環境を作成します。
 
 ```cmd
 mkvirtualenv advanced-python
@@ -146,7 +146,7 @@ mkvirtualenv advanced-python
 cd C:\immersive-reader-sdk\js\samples\advanced-python
 ```
 
-サンプル プロジェクトを環境に接続します。 これにより、新しく作成された仮想環境がサンプル プロジェクトのルート フォルダーにマップされます。
+サンプル プロジェクトをこの環境に接続します。 これにより、新しく作成された仮想環境がサンプル プロジェクトのルート フォルダーにマップされます。
 
 ```cmd
 setprojectdir .
@@ -166,9 +166,9 @@ activate
 deactivate
 ```
 
-環境が非アクティブ化されたため、`(advanced-python)` プレフィックスは削除されます。
+この環境が非アクティブ化されたため、`(advanced-python)` プレフィックスは削除されます。
 
-環境を再アクティブ化するには、サンプル プロジェクトのルート フォルダーから `workon advanced-python` を実行します。
+この環境を再アクティブ化するには、サンプル プロジェクトのルート フォルダーから `workon advanced-python` を実行します。
 
 ```cmd
 workon advanced-python
@@ -176,7 +176,7 @@ workon advanced-python
 
 ### <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
-環境がアクティブになったら、サンプル プロジェクトのルート フォルダーから `flask run` を入力してサンプル プロジェクトを実行します。
+この環境がアクティブになったら、サンプル プロジェクトのルート フォルダーから `flask run` を入力してサンプル プロジェクトを実行します。
 
 ```cmd
 flask run
@@ -235,13 +235,13 @@ Flask をインストールします。
 pip install flask --user
 ```
 
-Jinja2 をインストールします。 Python 用の完全な機能を備えたテンプレート エンジン。
+Jinja2 をインストールします。 Python 用の完全な機能を備えたテンプレート エンジンです。
 
 ```bash
 pip install Jinja2 --user
 ```
 
-virtualenv をインストールします。 分離された Python 環境を作成するためのツール。
+virtualenv をインストールします。 分離された Python 環境を作成するためのツールです。
 
 ```bash
 pip install virtualenv --user
@@ -277,13 +277,13 @@ mkdir ~/.virtualenvs
 cd immersive-reader-sdk/js/samples/advanced-python
 ```
 
-仮想環境を作成する
+仮想環境を作成します。
 
 ```bash
 mkvirtualenv -p /usr/local/bin/python3 advanced-python
 ```
 
-サンプル プロジェクトを環境に接続します。 これにより、新しく作成された仮想環境がサンプル プロジェクトのルート フォルダーにマップされます。
+サンプル プロジェクトをこの環境に接続します。 これにより、新しく作成された仮想環境がサンプル プロジェクトのルート フォルダーにマップされます。
 
 ```bash
 setprojectdir .
@@ -303,9 +303,9 @@ activate
 deactivate
 ```
 
-環境が非アクティブ化されたため、`(advanced-python)` プレフィックスは削除されます。
+この環境が非アクティブ化されたため、`(advanced-python)` プレフィックスは削除されます。
 
-環境を再アクティブ化するには、サンプル プロジェクトのルート フォルダーから `workon advanced-python` を実行します。
+この環境を再アクティブ化するには、サンプル プロジェクトのルート フォルダーから `workon advanced-python` を実行します。
 
 ```bash
 workon advanced-python
@@ -313,7 +313,7 @@ workon advanced-python
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
-環境がアクティブになったら、サンプル プロジェクトのルート フォルダーから `flask run` を入力してサンプル プロジェクトを実行します。
+この環境がアクティブになったら、サンプル プロジェクトのルート フォルダーから `flask run` を入力してサンプル プロジェクトを実行します。
 
 ```bash
 flask run

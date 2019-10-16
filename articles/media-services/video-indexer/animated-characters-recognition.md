@@ -103,7 +103,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 1. アニメーション化されたキャラクターを削除します。
 
     1. ビデオ分析情報内のアニメーション化された文字を削除するには、 **[Insights]\(分析情報\)** タブに移動し、ウィンドウの右上隅の **[編集]** ボタンをクリックします。
-    1. アニメーション化された文字を選択し、名前の下にある **[削除]** ボタンをクリックします。
+    1. アニメーション化されたキャラクターを選択し、名前の下にある **[削除]** ボタンをクリックします。
 
     > [!NOTE]
     > これにより、このビデオから分析情報が削除されますが、モデルには影響しません。
@@ -119,7 +119,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
         > [!NOTE]
         > 試用版アカウントでは、使用できるモデルは 1 つだけです。 削除した後は、他のモデルをトレーニングすることはできません。
 
-## <a name="use-the-animated-character-detection-with-api"></a>API でアニメーション化された文字の検出を使用する 
+## <a name="use-the-animated-character-detection-with-api"></a>API でアニメーション化されたキャラクターの検出を使用する 
 
 1. Custom Vision アカウントを接続します。
 
@@ -127,19 +127,19 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
     Custom Vision アカウントをまだお持ちではない場合は、アカウントを作成してください。 詳細については、[Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home) に関するページを参照してください。
 
     [API を使用して Custom Vision アカウントを接続します](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)。
-1. アニメーション化された文字モデルを作成します。
+1. アニメーション化されたキャラクター モデルを作成します。
 
     [アニメーション モデルの作成](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) API を使用します。
 1. ビデオのインデックスを作成、またはインデックスを再作成します。
 
     [インデックスの再作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) API を使用します。 
-1. アニメーション化された文字モデルをカスタマイズします。
+1. アニメーション化されたキャラクター モデルをカスタマイズします。
 
     [アニメーション モデルのトレーニング](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) API を使用します。
 
 ### <a name="view-the-output"></a>出力を表示する
 
-生成された JSON ファイル内のアニメーション化された文字を確認します。
+生成された JSON ファイル内のアニメーション化されたキャラクターを確認します。
 
 ```json
 "animatedCharacters": [
@@ -173,8 +173,8 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 ## <a name="limitations"></a>制限事項
 
 * 現時点では、"アニメーション ID" 機能は東アジア リージョンでサポートされていません。
-* ビデオの品質が低い場合、ビデオ内でサイズが小さい文字や遠くに見える文字は正しく識別されない可能性があります。
-* アニメーション化された文字セットごとにモデルを使用することをお勧めします (アニメーション化された系列ごと、など)。
+* ビデオの品質が低い場合、ビデオ内でサイズが小さいキャラクターや遠くに見えるキャラクターは正しく識別されない可能性があります。
+* アニメーション化されたキャラクター セットごとにモデルを使用することをお勧めします (アニメーション化された系列ごと、など)。
 
 ## <a name="next-steps"></a>次の手順
 
