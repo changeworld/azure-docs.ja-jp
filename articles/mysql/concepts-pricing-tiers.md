@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL の価格レベル
-description: この記事では、Azure Database for MySQL の価格レベルについて説明します。
+description: コンピューティング世代、ストレージの種類、ストレージのサイズ、仮想コア、メモリ、バックアップのリテンション期間など、Azure Database for MySQL のさまざまな価格レベルについて説明します。
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 087a88322175b1908ab591a5b9afb5ae45227bb1
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177962"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972824"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 

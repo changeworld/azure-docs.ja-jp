@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3c63283a1a13e2deb178a53dfc5045d371d6a28a
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202344"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996921"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -80,7 +80,7 @@ Azure Security Center Free を使用している場合は、セキュリティ �
 
 Security Center に関連したデータは、以下に示した各種のデータ ストリームから使用できます。
 
-* **Azure アクティビティ**: セキュリティに関するあらゆる警告、承認された Security Center の[ジャスト イン タイム](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)要求、[アダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)によって生成されたあらゆる警告が対象となります。
+* **Azure アクティビティ**: セキュリティに関するあらゆるアラート、承認された Security Center の [Just-In-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) 要求、[適応型アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)によって生成されたあらゆるアラート。
 * **Azure Monitor ログ**: セキュリティに関するあらゆるアラート。
 
 

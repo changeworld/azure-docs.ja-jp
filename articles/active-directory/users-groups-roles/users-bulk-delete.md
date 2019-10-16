@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb01b46d61b6ba99c3ec9c537dccc350074f5e05
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d7c47887c12c8bf9be7a0c5b11dfb3f099965cb7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146424"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174367"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括削除する (プレビュー)
 
@@ -26,18 +26,22 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 ## <a name="to-bulk-delete-users"></a>ユーザーを一括削除するには
 
-1. 組織のユーザー管理者アカウントで、ご自身の Azure AD 組織にサインインします。
+1. 組織のユーザー管理者アカウントで、[ご自身の Azure AD 組織にサインイン](https://aad.portal.azure.com)します。
 1. Azure AD で、 **[ユーザー]**  >  **[一括削除]** の順に選択します。
-1. **[ユーザーの一括削除]** ページで **[ダウンロード]** を選択し、ユーザー プロパティの有効な CSV ファイルを受信し、削除するユーザーを追加します。
-
-   ![CSV ファイルには、削除するユーザーの名前と ID が含まれています。](./media/users-bulk-delete/delete-csv-file.png)
-
-1. CSV ファイルの編集が完了したら、 **[csv ファイルをアップロードします]** の下から検証するファイルを選択します。
+1. **[ユーザーの一括削除]** ページで **[ダウンロード]** を選択して、ユーザー プロパティの有効な CSV ファイルを受信します。
 
    ![削除するユーザーをリストするローカル CSV ファイルを選択する](./media/users-bulk-delete/bulk-delete.png)
 
-1. ファイルの内容が検証されたら、ジョブを送信する前にエラーをすべて修正する必要があります。
-1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを削除する Azure Batch ジョブを開始します。 エラーが発生した場合は、[一括操作の結果] ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
+1. この CSV ファイルを開いて、削除するユーザーごとに 1 行を追加します。 唯一の必須値は、**ユーザー プリンシパル名**です。 そのうえでファイルを保存します。
+
+   ![CSV ファイルには、削除するユーザーの名前と ID が含まれています。](./media/users-bulk-delete/delete-csv-file.png)
+
+1. **[ユーザーの一括削除 (プレビュー)]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択して [送信] をクリックすると、CSV ファイルの検証が開始されます。
+1. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを削除する Azure 一括操作を開始します。
+1. 削除操作が完了すると、一括操作が成功したという通知が表示されます。
+
+エラーが発生した場合は、 **[一括操作の結果]** ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
 
 ## <a name="check-status"></a>状態の確認
 

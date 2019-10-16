@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MariaDB のストアド プロシージャ
-description: この記事では、Azure Database for MariaDB 固有のストアド プロシージャについて説明します。
+title: Azure Database for MariaDB の管理ストアド プロシージャ
+description: データイン レプリケーションの構成、タイムゾーンの設定、クエリの終了を行う場合に役立つ Azure Database for MySQL のストアド プロシージャについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: d9daaf619a19c0f4e4a591d4bbb4925679fd1fcb
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0a33edeac735502964427ddc3b05076fb9fac969
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174566"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973467"
 ---
-# <a name="azure-database-for-mariadb-stored-procedures"></a>Azure Database for MariaDB のストアド プロシージャ
+# <a name="azure-database-for-mariadb-management-stored-procedures"></a>Azure Database for MariaDB の管理ストアド プロシージャ
 
 ストアド プロシージャは、MariaDB サーバーの管理に役立つ Azure Database for MariaDB サーバーで使用できます。 これには、サーバーの接続管理、クエリ、データイン レプリケーションの設定が含まれます。  
 

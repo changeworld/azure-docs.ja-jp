@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202768"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996727"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
@@ -131,9 +131,9 @@ Security Center によって推奨されていない "許可" ルールを追加
 
 ### ルールを削除する<a name ="delete-rule"> </a>
 
-推奨されるルールが不要な場合は、削除できます。 たとえば、推奨されるルールを適用すると、正当なトラフィックがブロックされると判断することがあるかもしれません。
+現在のセッションの推奨されるルールが不要な場合は、削除できます。 たとえば、推奨されるルールを適用すると、正当なトラフィックがブロックされると判断することがあるかもしれません。
 
-*アダプティブ ネットワークのセキュリティ強化機能ルールを削除するには:*
+*現在のセッションのアダプティブ ネットワークのセキュリティ強化機能ルールを削除するには:*
 
 1. **[ルール]** タブで、ルールの行の最後にある 3 つのドット (...) をクリックし、 **[削除]** をクリックします。  
 

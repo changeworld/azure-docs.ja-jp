@@ -4,14 +4,14 @@ description: タグをサポートしている Azure リソースの種類を示
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 06028224379bd42e1e0ea21b684ce443abd5992a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996825"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937012"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](resource-group-using-tags.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。
@@ -40,7 +40,6 @@ ms.locfileid: "70996825"
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
@@ -123,6 +122,7 @@ ms.locfileid: "70996825"
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft.ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
@@ -393,6 +393,7 @@ ms.locfileid: "70996825"
 > | billingAccounts/customers | いいえ |いいえ |
 > | billingAccounts/customers/billingSubscriptions | いいえ |いいえ |
 > | billingAccounts/customers/initiateTransfer | いいえ |いいえ |
+> | billingAccounts/customers/policies | いいえ |いいえ |
 > | billingAccounts/customers/products | いいえ |いいえ |
 > | billingAccounts/customers/transactions | いいえ |いいえ |
 > | billingAccounts/customers/transfers | いいえ |いいえ |
@@ -440,13 +441,6 @@ ms.locfileid: "70996825"
 > | ------------- | ----------- | ----------- |
 > | mapApis | はい |はい |
 > | updateCommunicationPreference | いいえ |いいえ |
-
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | タグのサポート | コスト レポートのタグ |
-> | ------------- | ----------- | ----------- |
-> | BizTalk | はい |はい |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -542,7 +536,7 @@ ms.locfileid: "70996825"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | capabilities | いいえ |いいえ |
-> | domainNames | はい |はい |
+> | domainNames | いいえ |いいえ |
 > | domainNames/capabilities | いいえ |いいえ |
 > | domainNames/internalLoadBalancers | いいえ |いいえ |
 > | domainNames/serviceCertificates | いいえ |いいえ |
@@ -556,7 +550,7 @@ ms.locfileid: "70996825"
 > | quotas | いいえ |いいえ |
 > | resourceTypes | いいえ |いいえ |
 > | validateSubscriptionMoveAvailability | いいえ |いいえ |
-> | virtualMachines | はい |はい |
+> | virtualMachines | いいえ |いいえ |
 > | virtualMachines/diagnosticSettings | いいえ |いいえ |
 > | virtualMachines/metricDefinitions | いいえ |いいえ |
 > | virtualMachines/metrics | いいえ |いいえ |
@@ -577,10 +571,10 @@ ms.locfileid: "70996825"
 > | expressRouteCrossConnections | いいえ |いいえ |
 > | expressRouteCrossConnections/peerings | いいえ |いいえ |
 > | gatewaySupportedDevices | いいえ |いいえ |
-> | networkSecurityGroups | はい |はい |
+> | networkSecurityGroups | いいえ |いいえ |
 > | quotas | いいえ |いいえ |
-> | reservedIps | はい |はい |
-> | virtualNetworks | はい |はい |
+> | reservedIps | いいえ |いいえ |
+> | virtualNetworks | いいえ |いいえ |
 > | virtualNetworks/remoteVirtualNetworkPeeringProxies | いいえ |いいえ |
 > | virtualNetworks/virtualNetworkPeerings | いいえ |いいえ |
 
@@ -596,7 +590,7 @@ ms.locfileid: "70996825"
 > | osPlatformImages | いいえ |いいえ |
 > | publicImages | いいえ |いいえ |
 > | quotas | いいえ |いいえ |
-> | storageAccounts | はい |はい |
+> | storageAccounts | いいえ |いいえ |
 > | storageAccounts/blobServices | いいえ |いいえ |
 > | storageAccounts/fileServices | いいえ |いいえ |
 > | storageAccounts/metricDefinitions | いいえ |いいえ |
@@ -634,10 +628,10 @@ ms.locfileid: "70996825"
 > | diskEncryptionSets | はい |はい |
 > | disks | はい |はい |
 > | galleries | はい |はい |
-> | galleries/applications | はい |はい |
-> | galleries/applications/versions | はい |はい |
-> | galleries/images | はい |はい |
-> | galleries/images/versions | はい |はい |
+> | galleries/applications | いいえ |いいえ |
+> | galleries/applications/versions | いいえ |いいえ |
+> | galleries/images | いいえ |いいえ |
+> | galleries/images/versions | いいえ |いいえ |
 > | hostGroups | はい |はい |
 > | hostGroups/hosts | はい |はい |
 > | images | はい |はい |
@@ -645,13 +639,11 @@ ms.locfileid: "70996825"
 > | restorePointCollections | はい |はい |
 > | restorePointCollections/restorePoints | いいえ |いいえ |
 > | sharedVMImages | はい |はい |
-> | sharedVMImages/versions | はい |はい |
-> | snapshots | はい |はい |
+> | sharedVMImages/versions | いいえ |いいえ |
+> | スナップショット | はい |はい |
 > | virtualMachines | はい |はい |
 > | virtualMachines/extensions | はい |はい |
 > | virtualMachines/metricDefinitions | いいえ |いいえ |
-> | virtualMachines/scriptJobs | いいえ |いいえ |
-> | virtualMachines/softwareUpdateDeployments | いいえ |いいえ |
 > | virtualMachineScaleSets | はい |はい |
 > | virtualMachineScaleSets/extensions | いいえ |いいえ |
 > | virtualMachineScaleSets/networkInterfaces | いいえ |いいえ |
@@ -919,6 +911,9 @@ ms.locfileid: "70996825"
 > | serverGroups | はい |はい |
 > | servers | はい |はい |
 > | servers/advisors | いいえ |いいえ |
+> | servers/privateEndpointConnectionProxies | いいえ |いいえ |
+> | servers/privateEndpointConnections | いいえ |いいえ |
+> | servers/privateLinkResources | いいえ |いいえ |
 > | servers/queryTexts | いいえ |いいえ |
 > | servers/recoverableServers | いいえ |いいえ |
 > | servers/topQueryStatistics | いいえ |いいえ |
@@ -1199,6 +1194,7 @@ ms.locfileid: "70996825"
 > | clusters/databases | いいえ |いいえ |
 > | clusters/databases/dataconnections | いいえ |いいえ |
 > | clusters/databases/eventhubconnections | いいえ |いいえ |
+> | clusters/sharedidentities | いいえ |いいえ |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1363,11 +1359,13 @@ ms.locfileid: "70996825"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | netAppAccounts | はい |はい |
+> | netAppAccounts/backupPolicies | はい |はい |
 > | netAppAccounts/capacityPools | はい |はい |
 > | netAppAccounts/capacityPools/volumes | はい |はい |
+> | netAppAccounts/capacityPools/volumes/backups | いいえ |いいえ |
 > | netAppAccounts/capacityPools/volumes/mountTargets | はい |はい |
 > | netAppAccounts/capacityPools/volumes/snapshots | はい |はい |
-
+> | netAppAccounts/vaults | いいえ |いいえ |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1458,6 +1456,7 @@ ms.locfileid: "70996825"
 > [!NOTE]
 > Azure Front Door Service の場合は、リソースの作成時にタグを適用できますが、タグの更新や追加は現在サポートされていません。
 
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1465,6 +1464,13 @@ ms.locfileid: "70996825"
 > | ------------- | ----------- | ----------- |
 > | namespaces | はい |いいえ |
 > | namespaces/notificationHubs | はい |いいえ |
+
+## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | タグのサポート | コスト レポートのタグ |
+> | ------------- | ----------- | ----------- |
+> | osNamespaces | はい |はい |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1614,6 +1620,8 @@ ms.locfileid: "70996825"
 > | resources | いいえ |いいえ |
 > | subscriptions | いいえ |いいえ |
 > | subscriptions/providers | いいえ |いいえ |
+> | subscriptions/resourceGroups | いいえ |いいえ |
+> | subscriptions/resourcegroups/resources | いいえ |いいえ |
 > | subscriptions/resources | いいえ |いいえ |
 > | subscriptions/tagnames | いいえ |いいえ |
 > | subscriptions/tagNames/tagValues | いいえ |いいえ |
@@ -1680,6 +1688,7 @@ ms.locfileid: "70996825"
 > | securityStatusesSummaries | いいえ |いいえ |
 > | serverVulnerabilityAssessments | いいえ |いいえ |
 > | settings | いいえ |いいえ |
+> | subAssessments | いいえ |いいえ |
 > | tasks | いいえ |いいえ |
 > | topologies | いいえ |いいえ |
 > | workspaceSettings | いいえ |いいえ |

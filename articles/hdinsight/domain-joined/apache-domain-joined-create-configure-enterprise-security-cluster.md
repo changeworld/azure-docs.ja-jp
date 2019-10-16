@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: 9b9071eae4ec18cb1d5fd277f6f5403ce3997f48
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aed656c65fc70946f7d91cb4354e1c081954e68c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261736"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030398"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -166,17 +166,17 @@ Azure HDInsight の Enterprise セキュリティ パッケージ (ESP) を使�
 
 ### <a name="configure-a-sync-with-the-on-premises-domain-controller"></a>オンプレミスのドメイン コントローラーとの同期を構成する
 
-1. **[Azure AD に接続]** ページで、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 Active Directory テナントを構成するときに作成したユーザー名 `fabrikamazureadmin@hdifabrikam.com` を使用します。  **[次へ]** を選択します。 
+1. **[Azure AD に接続]** ページで、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 Active Directory テナントを構成するときに作成したユーザー名 `fabrikamazureadmin@hdifabrikam.com` を使用します。 次に、 **[次へ]** を選択します。 
 
     ![[Azure AD に接続] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
 
-1. **[Active Directory ドメイン サービスへの接続]** ページで、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 前に作成したユーザー名 `HDIFabrikam\HDIFabrikamAdmin` とそのパスワードを使用します。  **[次へ]** を選択します。 
+1. **[Active Directory ドメイン サービスへの接続]** ページで、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 前に作成したユーザー名 `HDIFabrikam\HDIFabrikamAdmin` とそのパスワードを使用します。 次に、 **[次へ]** を選択します。 
 
    ![[Azure AD に接続] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. **[Azure AD サインインの構成]** ページで、 **[次へ]** を選択します。
    ![[Azure AD サインインの構成] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 
-1. **[構成の準備完了]** ページで、 **[インストール]** を選択します。
+1. **[構成の準備完了]** ページで、 **[インストール]** を選択します。
 
    ![[構成の準備完了] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
 
@@ -250,8 +250,8 @@ Azure AD DS を有効にすると、ローカル DNS サーバーが Azure AD VM
 
 1. カスタム DNS サーバーの IP アドレスを見つけます。 
     1. **HDIFabrikam.com** Azure AD DS リソースを選択します。 
-    1. **[管理]** で、 **[プロパティ]** を選択します。 
-    1.  **[仮想ネットワーク上の IP アドレス]** で IP アドレスを検索します。
+    1. **[管理]** の下で、 **[プロパティ]** を選択します。 
+    1. **[仮想ネットワーク上の IP アドレス]** で IP アドレスを検索します。
 
     ![Azure AD DS のカスタム DNS IP アドレスを見つける](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png)
 
@@ -260,7 +260,7 @@ Azure AD DS を有効にすると、ローカル DNS サーバーが Azure AD VM
     1. **[設定]** で、 **[DNS サーバー]** を選択します。 
     1. **[カスタム]** を選択します。
     1. テキスト ボックスに、最初の IP アドレス (*10.0.0.4*) を入力します。
-    1.  **[保存]** を選択します。
+    1. **[保存]** を選択します。
     1. 手順を繰り返して、他の IP アドレス (*10.0.0.5*) を追加します。
 
 このシナリオでは、IP アドレス 10.0.0.4 と 10.0.0.5 を使用するように Azure AD DS を構成し、同じ IP アドレスを Azure AD DS 仮想ネットワークに設定しました。
@@ -291,19 +291,19 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
 1. Microsoft 管理コンソール (MMC) を起動します。
 1. ローカル コンピューターの証明書を管理する **[証明書]** スナップインを追加します。
-1.  **[証明書 (ローカル コンピューター)]**  >  **[個人用]**  >  **[証明書]** を展開します。 新しい証明書が**個人用**ストアに存在するはずです。 この証明書は完全修飾ホスト名に対して発行されます。
+1. **[証明書 (ローカル コンピューター)]**  >  **[個人用]**  >  **[証明書]** を展開します。 新しい証明書が**個人用**ストアに存在するはずです。 この証明書は完全修飾ホスト名に対して発行されます。
 
     ![ローカル証明書の作成を確認する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
 
-1. 右側のウィンドウで、作成した証明書を右クリックします。  **[すべてのタスク]** をポイントし、 **[エクスポート]** を選択します。
+1. 右側のウィンドウで、作成した証明書を右クリックします。 **[すべてのタスク]** をポイントし、 **[エクスポート]** を選択します。
 
-1.  **[秘密キーのエクスポート]**  ページで **[はい、秘密キーをエクスポートします]** を選択します。 キーのインポート先のコンピューターでは、暗号化されたメッセージを読み取るために秘密キーが必要です。
+1. **[秘密キーのエクスポート]** ページで **[はい、秘密キーをエクスポートします]** を選択します。 キーのインポート先のコンピューターでは、暗号化されたメッセージを読み取るために秘密キーが必要です。
 
     ![証明書エクスポート ウィザードの [秘密キーのエクスポート] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
-1.  **[エクスポート ファイル形式]**  ページで、既定設定をそのままにして、 **[次へ]** を選択します。 
-1.  **[パスワード]**  ページで、秘密キーのパスワードを入力します。 **[暗号化]** では、**TripleDES-SHA1** を選択します。 次に、 **[次へ]** を選択します。
-1.  **[エクスポートするファイル]**  ページで、エクスポートした証明書ファイルのパスと名前を入力し、 **[次へ]** を選択します。 ファイル名の拡張子は .pfx である必要があります。 このファイルは、セキュリティで保護された接続を確立するために Azure portal で構成されます。
+1. **[エクスポート ファイルの形式]** ページでは、既定値をそのまま使用し、 **[次へ]** を選択しますます。 
+1. **[パスワード]** ページで、秘密キーのパスワードを入力します。 **[暗号化]** では、**TripleDES-SHA1** を選択します。 次に、 **[次へ]** を選択します。
+1. **[エクスポートするファイル]** ページで、エクスポートした証明書ファイルのパスと名前を入力し、 **[次へ]** を選択します。 ファイル名の拡張子は .pfx である必要があります。 このファイルは、セキュリティで保護された接続を確立するために Azure portal で構成されます。
 1. Azure AD DS マネージド ドメインに対して LDAPS を有効にします。
     1. Azure portal でドメイン **HDIFabrikam.com** を選択します。
     1. **[管理]** で、 **[Secure LDAP]** を選択します。

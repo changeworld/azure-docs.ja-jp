@@ -13,20 +13,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 4318c4b4d8f1b1f0974d0fae0a2ae5bd6e94b593
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 3a5517c31cdac0bf6f5ea386a8614d15521d4479
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076530"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035537"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure マネージド ID と統合する
 
 Azure Active Directory [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) は、クラウド アプリケーションのシークレット管理を単純化するのに役立ちます。 マネージド ID では、コードを設定して、それが実行される Azure コンピューティング サービス用に作成されたサービス プリンシパルを使用できます。 Azure Key Vault またはローカル接続文字列に格納された別の資格情報の代わりに、マネージド ID を使用します。 
 
-Azure App Configuration とその .NET Core、.NET、Java Spring のクライアント ライブラリには、マネージド サービス ID (MSI) サポートが組み込まれています。 これの使用は必須ではありませんが、MSI によって、シークレットが含まれるアクセス トークンが不要になります。 アプリ構成ストアにアクセスするためにコード側で知る必要があるのは、アプリ構成ストアのサービス エンドポイントだけです。 シークレットの流出を心配することなく、この URL をコードに直接埋め込むことができます。
+Azure App Configuration とその .NET Core、.NET、Java Spring のクライアント ライブラリには、マネージド サービス ID (MSI) サポートが組み込まれています。 これの使用は必須ではありませんが、MSI によって、シークレットが含まれるアクセス トークンが不要になります。 コードはサービス エンドポイントのみを使用してアプリ構成ストアにアクセスできます。 シークレットの流出を心配することなく、この URL をコードに直接埋め込むことができます。
 
 このチュートリアルでは、MSI を活用して App Configuration にアクセスする方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
+
+またこのチュートリアルでは、必要に応じて App Configuration の Key Vault 参照と共に MSI を使用する方法についても説明します。 これにより、Key Vault に格納されているシークレットと、App Configuration の構成値にシームレスにアクセスできます。 この機能を確認する場合は、[ASP.NET Core の Key Vault 参照の使用](./use-key-vault-references-dotnet-core.md)に関するページの手順を最初に完了します。
 
 このチュートリアルの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
@@ -35,6 +37,7 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
 > [!div class="checklist"]
 > * App Configuration へのマネージド ID アクセスを許可する。
 > * App Configuration に接続する際にマネージド ID を使用するようにアプリを構成する。
+> * 必要に応じて、App Configuration Key Vault 参照を使用して Key Vault に接続するときに、マネージド ID を使用するようにアプリを構成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,23 +66,25 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
 
 1. [Azure portal](https://portal.azure.com) で **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストアを選択します。
 
-2. **[アクセス制御 (IAM)]** を選択します。
+1. **[アクセス制御 (IAM)]** を選択します。
 
-3. **[アクセスの確認]** タブで、 **[ロールの割り当てを追加する]** カード UI の **[追加]** を選択します。
+1. **[アクセスの確認]** タブで、 **[ロールの割り当てを追加する]** カード UI の **[追加]** を選択します。
 
-4. **[役割]** で **[共同作成者]** を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
+1. **[役割]** で **[共同作成者]** を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
 
-5. **[サブスクリプション]** で自分の Azure サブスクリプションを選択します。 アプリの App Service リソースを選択します。
+1. **[サブスクリプション]** で自分の Azure サブスクリプションを選択します。 アプリの App Service リソースを選択します。
 
-6. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
     ![マネージド ID の追加](./media/add-managed-identity.png)
+
+1. 省略可能:Key Vault へのアクセスも許可する場合は、[マネージド ID で Key Vault の認証を提供する](https://docs.microsoft.com/azure/key-vault/managed-identity)の指示に従ってください。
 
 ## <a name="use-a-managed-identity"></a>マネージド ID の使用
 
 1. Azure portal の構成画面に移動して、ご利用のアプリ構成ストアへの URL を見つけてから、 **[アクセス キー]** タブをクリックします。
 
-2. *appsettings.json* を開き、以下のスクリプトを追加します。 *\<service_endpoint>* を、角かっこも含めて、ご利用のアプリ構成ストアへの URL に置き換えます。 
+1. *appsettings.json* を開き、以下のスクリプトを追加します。 *\<service_endpoint>* を、角かっこも含めて、ご利用のアプリ構成ストアへの URL に置き換えます。 
 
     ```json
     "AppConfig": {
@@ -87,7 +92,7 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
     }
     ```
 
-3. *Program.cs* を開き、`config.AddAzureAppConfiguration()` メソッドを置換して `CreateWebHostBuilder` メソッドを更新します。
+1. App Configuration に直接格納されている値にのみアクセスする場合は、*Program.cs* を開き、`config.AddAzureAppConfiguration()` メソッドを置換して `CreateWebHostBuilder` メソッドを更新します。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -100,6 +105,24 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
             })
             .UseStartup<Startup>();
     ```
+
+1. Key Vault 参照だけでなく App Configuration の値も使用する場合は、*Program.cs* を開き、次に示すように `CreateWebHostBuilder` メソッドを更新します。 これにより、`AzureServiceTokenProvider` を使用して新しい `KeyVaultClient` が作成され、この参照が `UseAzureKeyVault` メソッドの呼び出しに渡されます。
+
+    ```csharp
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+                    KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+                    
+                    config.AddAzureAppConfiguration(options => options.ConnectWithManagedIdentity(settings["AppConfig:Endpoint"])).UseAzureKeyVault(kvClient));
+                })
+                .UseStartup<Startup>();
+    ```
+
+    他の App Configuration キーと同様に Key Vault 参照にアクセスできるようになりました。 構成プロバイダーは、Key Vault に対して認証して値を取得するように構成した `KeyVaultClient` を使用します。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -114,7 +137,7 @@ Kudu ビルド サーバーを使用したアプリへのローカル Git のデ
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="enable-local-git-with-kudu"></a>Kudu を使用するローカル Git を有効にする
-ご自分のアプリ用にローカル GIT リポジトリをまだ用意していない場合は、アプリのプロジェクト ディレクトリから次のコマンドを実行して、リポジトリを初期化する必要があります。
+アプリのローカル Git リポジトリがない場合は、初期化する必要があります。 そのためには、アプリのプロジェクト ディレクトリから次のコマンドを実行します。
 
 ```cmd
 git init

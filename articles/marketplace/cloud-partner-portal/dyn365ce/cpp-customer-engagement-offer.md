@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace 向けの Dynamics 365 for Customer Engagement オファー | Azure Marketplace
-description: Cloud パートナー ポータルを使用して AppSource Marketplace 向けの Dynamics 365 for Customer Engagement オファーを作成する方法について説明します。
+description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述:「Cloud パートナー ポータルを使用して AppSource Marketplace 向けの Dynamics 365 for Customer Engagement オファーを作成する方法について説明します。」
 services: Dynamics 365 for Customer Engagement, AppSource Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/17/2018
-ms.author: pabutler
-ms.openlocfilehash: 74d1c101139464f9ae5b22438e30a1fde30f18f2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a8904d53b421529ab08a40e809d31e58abfe9cc3
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173008"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034305"
 ---
 # <a name="dynamics-365-for-customer-engagement-offer"></a>Dynamics 365 for Customer Engagement プラン
 
