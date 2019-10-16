@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (Python) | Microsoft Docs
-description: このクイック スタートでは、サンプルの Python アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、IoT ハブから利用統計情報を読み取ります。
+title: Azure IoT Hub へのテレメトリの送信に関するクイック スタート (Python) | Microsoft Docs
+description: このクイック スタートでは、サンプルの Python アプリケーションを実行して、IoT Hub にシミュレートされたテレメトリを送信し、IoT Hub からテレメトリを読み取ります。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -21,9 +21,9 @@ ms.locfileid: "72166408"
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub は、保管や処理のために IoT デバイスから大量の利用統計情報をクラウドに取り込むことを可能にする Azure サービスです。 このクイック スタートでは、シミュレートされたデバイス アプリケーションから、IoT ハブを経由して、処理のためのバックエンド アプリケーションに、利用統計情報を送信します。
+IoT Hub は、保管や処理のために IoT デバイスから大量のテレメトリをクラウドに取り込むことを可能にする Azure サービスです。 このクイック スタートでは、シミュレートされたデバイス アプリケーションから、IoT Hub を経由して、処理のためのバックエンド アプリケーションに、テレメトリを送信します。
 
-このクイック スタートでは、あらかじめ作成されている Python アプリケーションを使って利用統計情報を送信し、CLI ユーティリティを使ってハブから利用統計情報を読み取ります。 これら 2 つのアプリケーションを実行する前に、IoT ハブを作成し、デバイスをハブに登録します。
+このクイック スタートでは、あらかじめ作成されている Python アプリケーションを使ってテレメトリを送信し、CLI ユーティリティを使って Hub からテレメトリを読み取ります。 これら 2 つのアプリケーションを実行する前に、IoT Hub を作成し、デバイスを Hub に登録します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,7 +45,7 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
@@ -71,9 +71,9 @@ az extension add --name azure-cli-iot-ext
 
     この値は、このクイックスタートの後の方で使用します。
 
-## <a name="send-simulated-telemetry"></a>シミュレートされた利用統計情報の送信
+## <a name="send-simulated-telemetry"></a>シミュレートされたテレメトリの送信
 
-シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度の利用統計情報を送信します。
+シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度のテレメトリを送信します。
 
 1. ローカル ターミナル ウィンドウで、サンプルの Python プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
@@ -93,14 +93,14 @@ az extension add --name azure-cli-iot-ext
     python SimulatedDevice.py
     ```
 
-    次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT ハブに利用統計情報を送信したときの出力を示しています。
+    次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT Hub にテレメトリを送信したときの出力を示しています。
 
     ![シミュレートされたデバイスを実行する](media/quickstart-send-telemetry-python/SimulatedDevice.png)
 
 
-## <a name="read-the-telemetry-from-your-hub"></a>ハブから利用統計情報を読み取る
+## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
-IoT Hub CLI 拡張機能は、IoT ハブ上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
+IoT Hub CLI 拡張機能は、IoT Hub 上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージを受信して処理します。
 
 Azure Cloud Shell で、以下のコマンドを実行します。`YourIoTHubName` は実際の IoT ハブの名前に置き換えます。
 
@@ -108,7 +108,7 @@ Azure Cloud Shell で、以下のコマンドを実行します。`YourIoTHubNam
 az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice 
 ```
 
-次のスクリーンショットは、シミュレートされたデバイスからハブに送信された利用統計情報を拡張機能が受信したときの出力を示しています。
+次のスクリーンショットは、シミュレートされたデバイスから Hub に送信されたテレメトリを拡張機能が受信したときの出力を示しています。
 
 ![バックエンド アプリケーションを実行する](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
 

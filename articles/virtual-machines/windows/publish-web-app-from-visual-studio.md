@@ -120,7 +120,7 @@ Azure Pipelines に継続的デリバリーのパイプラインを設定する�
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
 [発行 ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[発行 ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
 [Azure アカウント セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
 [Azure VM セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [WebDeploy ログイン]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
