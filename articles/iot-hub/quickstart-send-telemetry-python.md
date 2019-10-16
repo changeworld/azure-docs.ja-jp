@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72166408"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Python)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート: デバイスから IoT Hub にテレメトリを送信してバックエンド アプリケーションで読み取る (Python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -49,7 +49,7 @@ az extension add --name azure-cli-iot-ext
 
 1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     **MyPythonDevice**: これは、登録するデバイスの名前です。 示されているように、**MyPythonDevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
@@ -59,7 +59,7 @@ az extension add --name azure-cli-iot-ext
 
 1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します。
 
-    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
@@ -100,9 +100,11 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
-IoT Hub CLI 拡張機能は、IoT Hub 上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージを受信して処理します。
 
-Azure Cloud Shell で、以下のコマンドを実行します。`YourIoTHubName` は実際の IoT ハブの名前に置き換えます。
+IoT Hub CLI 拡張機能は、IoT Hub 上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージを受信して処理します。  
+
+
+Azure Cloud Shell で、以下のコマンドを実行します。`YourIoTHubName` は実際の IoT Hub の名前に置き換えます。
 
 ```azurecli-interactive
 az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice 
@@ -118,9 +120,11 @@ az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、IoT ハブを設定し、デバイスを登録し、Python アプリケーションを使用してシミュレートされた利用統計情報をハブに送信し、簡単なバックエンド アプリケーションを使用してハブから利用統計情報を読み取りました。
+
+このクイック スタートでは、IoT Hub をセットアップし、デバイスを登録し、Python アプリケーションを使って Hub にシミュレートされたテレメトリを送信し、簡単なバックエンド アプリケーションを使って Hub からテレメトリを読み取りました。
+
 
 バックエンド アプリケーションからシミュレートされたデバイスを制御する方法を学習するには、次のクイック スタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-python.md)
+> [クイック スタート: IoT Hub に接続されたデバイスを制御する](quickstart-control-device-python.md)
