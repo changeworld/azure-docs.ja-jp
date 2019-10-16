@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 10/09/2019
 ms.locfileid: "70933151"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions の種類と機能 (Azure Functions)
@@ -29,7 +29,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 > [!NOTE]
 > オーケストレーター関数は通常のコードを使用して記述されますが、コードの記述方法については厳密な要件があります。 具体的には、オーケストレーター関数のコードは*決定的*である必要があります。 これらの決定性の要件に従わないと、オーケストレーター関数が正しく動作しない可能性があります。 これらの要件とその対処方法の詳細については、[コードの制約](durable-functions-code-constraints.md)に関するトピックを参照してください。
 
-オーケストレーター関数とその機能の詳細については、「<bpt id="p1">[</bpt>持続的オーケストレーション<ept id="p1">](durable-functions-orchestrations.md)</ept>」を参照してください。
+オーケストレーター関数とその機能の詳細については、「[永続的オーケストレーション](durable-functions-orchestrations.md)」の記事を参照してください。
 
 ## <a name="activity-functions"></a>アクティビティ関数
 
@@ -56,7 +56,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 
 ## <a name="client-functions"></a>クライアント関数
 
-オーケストレーター関数は[オーケストレーション トリガー バインディング](durable-functions-bindings.md#orchestration-trigger)によってトリガーされ、エンティティ関数は[エンティティ トリガー バインディング](durable-functions-bindings.md#entity-trigger)によってトリガーされます。 これらのトリガーはどちらも、[タスク ハブ](durable-functions-task-hubs.md)にエンキューされているメッセージに反応することによって機能します。 これらのメッセージを配信する主な方法は、"*クライアント関数*" 内から[オーケストレーター クライアント バインディング](durable-functions-bindings.md#orchestration-client)または[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用する方法です。 オーケストレーター以外の関数は、"<bpt id="p1">*</bpt>クライアント関数<ept id="p1">*</ept>" にすることができます。 たとえば、オーケストレーターは、HTTP によってトリガーされる関数や Azure Event Hub によってトリガーされる関数などからトリガーできます。関数を "*クライアント関数*" にするのは、持続的クライアント出力バインディングの使用です。
+オーケストレーター関数は[オーケストレーション トリガー バインディング](durable-functions-bindings.md#orchestration-trigger)によってトリガーされ、エンティティ関数は[エンティティ トリガー バインディング](durable-functions-bindings.md#entity-trigger)によってトリガーされます。 これらのトリガーはどちらも、[タスク ハブ](durable-functions-task-hubs.md)にエンキューされているメッセージに反応することによって機能します。 これらのメッセージを配信する主な方法は、"*クライアント関数*" 内から[オーケストレーター クライアント バインディング](durable-functions-bindings.md#orchestration-client)または[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用する方法です。 オーケストレーター以外の関数は、"*クライアント関数*" にすることができます。 たとえば、オーケストレーターは、HTTP によってトリガーされる関数や Azure Event Hub によってトリガーされる関数などからトリガーできます。関数を "*クライアント関数*" にするのは、持続的クライアント出力バインディングの使用です。
 
 > [!NOTE]
 > 他の関数タイプとは異なり、オーケストレーター関数とエンティティ関数は、Azure portal のボタンを使用して直接トリガーすることはできません。 Azure portal でオーケストレーターまたはエンティティ関数をテストする場合は、実装の一部としてオーケストレーターまたはエンティティ関数を開始する "*クライアント関数*" を代わりに実行する必要があります。 最も簡単なテスト エクスペリエンスを実現するには、"*手動トリガー*" 関数をお勧めします。

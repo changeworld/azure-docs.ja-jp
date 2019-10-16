@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815876"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176005"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -38,7 +38,7 @@ ms.locfileid: "71815876"
 > * パイプラインの実行を開始します。
 > * パイプラインとアクティビティの実行を監視します。
 
-このチュートリアルでは .NET SDK を使用します。 Azure Data Factory の操作にはその他のメカニズムを使用することもできます。 Data Factory のクイックスタートについては、[5 分間のクイックスタート](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts)を参照してください。
+このチュートリアルでは .NET SDK を使用します。 Azure Data Factory の操作にはその他のメカニズムを使用することもできます。 Data Factory のクイックスタートについては、[5 分間のクイックスタート](/azure/data-factory/quickstart-create-data-factory-portal)を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
@@ -232,7 +232,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順でサポートされていた Azure Storage のリンクされたサービスを参照します。 BLOB データセットには、コピー元の BLOB の場所として *FolderPath* と *FileName* が記述されています。
+Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順でサポートされていた Azure Storage のリンクされたサービスを参照します。 BLOB データセットには、コピー元の BLOB の場所が記述されます。*FolderPath* と *FileName* が使用されます。
 
 *FolderPath* ではパラメーターが使用されていることに注意してください。 `sourceBlobContainer` はパラメーターの名前であり、この式はパイプラインの実行で渡された値に置き換えられます。 パラメーターを定義する構文は `@pipeline().parameters.<parameterName>` です。
 

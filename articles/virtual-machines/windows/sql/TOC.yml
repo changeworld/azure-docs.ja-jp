@@ -102,7 +102,7 @@
           items:
             - name: 記憶域スペース ダイレクトの使用
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: Premium ファイル ストレージの使用
+            - name: Premium ファイル共有の使用
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: リファレンス
   items:

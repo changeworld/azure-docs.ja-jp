@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9de3232bcd7908f775dadff4dc584f2a687b0c68
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8c9b8489ded264a895d480ed180b411da079e883
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299755"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950123"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure ストレージ サービスのデータにアクセスする
 
-この記事では、Azure Machine Learning データストアを使用して Azure ストレージ サービスのデータに簡単にアクセスする方法について説明します。 データストアは、サブスクリプション ID やトークン承認など接続情報を格納する目的で使用されます。 データストアを使用すれば、ストレージにアクセスするために接続情報をスクリプトにハードコーディングする必要がなくなります。
+この記事では、Azure Machine Learning データストアを使用して Azure ストレージ サービスのデータに簡単にアクセスする方法について説明します。 データストアは、サブスクリプション ID やトークン承認など接続情報を格納する目的で使用されます。 データストアを使用すれば、ストレージにアクセスするために接続情報をスクリプトにハードコーディングする必要がなくなります。 データストアは、これらの [Azure Storage ソリューション](#matrix)から作成できます。
 
 ここでは、次のタスクの例を示します。
 * [データストアを登録する](#access)
@@ -30,49 +30,81 @@ ms.locfileid: "71299755"
 
 ## <a name="prerequisites"></a>前提条件
 
-データストアを使用するには、まず[ワークスペース](concept-workspace.md)が必要です。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-まず、[新しいワークスペースを作成する](how-to-manage-workspace.md)か、既存のワークスペースを取得します。
+- [Azure BLOB コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)または [Azure ファイル共有](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)が含まれる Azure ストレージ アカウント。
 
-```Python
-import azureml.core
-from azureml.core import Workspace, Datastore
+- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) または[ワークスペースのランディングページ (プレビュー)](https://ml.azure.com/) へのアクセス。
 
-ws = Workspace.from_config()
-```
+- Azure Machine Learning ワークスペース。 
+    - [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)するか、Python SDK を使用して既存のワークスペースを使用します。
+
+        ```Python
+        import azureml.core
+        from azureml.core import Workspace, Datastore
+        
+        ws = Workspace.from_config()
+        ```
 
 <a name="access"></a>
 
-## <a name="register-datastores"></a>データストアを登録する
+## <a name="create-and-register-datastores"></a>データストアの作成と登録
+
+Azure ストレージ ソリューションをデータストアとして登録すると、データストアが特定のワークスペースに自動的に作成されます。 Python SDK またはワークスペースのランディングページを使用して、データストアを作成してワークスペースに登録することができます。
+
+### <a name="using-the-python-sdk"></a>Python SDK の使用
 
 すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。
+
+Register() メソッドの設定に必要な情報については、[Azure portal](https://ms.portal.azure.com) を参照してください。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キーまたは SAS トークンなどの認証情報については、左側の **[設定]** ウィンドウの **[アカウント キー]** に移動します。 
 
 次の例では、Azure BLOB コンテナーまたは Azure ファイル共有のデータストアとしての登録を示しています。
 
 + **Azure BLOB コンテナー データストア**の場合、[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) を使用します。
 
-  ```Python
-  datastore = Datastore.register_azure_blob_container(workspace=ws, 
-                                                      datastore_name='your datastore name', 
-                                                      container_name='your azure blob container name',
-                                                      account_name='your storage account name', 
+    次のコードでは、データストア (`my_datastore`) を作成し、ワークスペース (`ws`) に登録します。 このデータストアは、指定されたアカウントキーを使用して Azure ストレージ アカウント (`my_storage_account`) の Azure blob コンテナー (`my_blob_container`) にアクセスします。
+
+    ```Python
+       datastore = Datastore.register_azure_blob_container(workspace=ws, 
+                                                          datastore_name='my_datastore', 
+                                                          container_name='my_blob_container',
+                                                          account_name='my_storage_account', 
+                                                          account_key='your storage account key',
+                                                          create_if_not_exists=True)
+    ```
+
++ **Azure ファイル共有データストア**の場合、[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) を使用します。 
+
+    次のコードでは、データストア (`my_datastore`) を作成し、ワークスペース (`ws`) に登録します。 このデータストアは、指定されたアカウントキーを使用して Azure ストレージ アカウント (`my_storage_account`) の Azure ファイル共有 (`my_file_share`) にアクセスします。
+
+    ```Python
+       datastore = Datastore.register_azure_file_share(workspace=ws, 
+                                                      datastore_name='my_datastore', 
+                                                      file_share_name='my_file_share',
+                                                      account_name='my_storage account', 
                                                       account_key='your storage account key',
                                                       create_if_not_exists=True)
-  ```
-
-+ **Azure ファイル共有データストア**の場合、[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) を使用します。 例: 
-  ```Python
-  datastore = Datastore.register_azure_file_share(workspace=ws, 
-                                                  datastore_name='your datastore name', 
-                                                  file_share_name='your file share name',
-                                                  account_name='your storage account name', 
-                                                  account_key='your storage account key',
-                                                  create_if_not_exists=True)
-  ```
+    ```
 
 ####  <a name="storage-guidance"></a>ストレージのガイダンス
 
 Azure BLOB コンテナーをお勧めします。 BLOB では Standard ストレージと Premium ストレージの両方を使用できます。 お勧めは Premium ストレージです。より高価になりますが、スループットの速度が上がるため、特に大規模なデータ セットに対するトレーニングでは、トレーニングの実行速度が向上する可能性があります。 ストレージ アカウントのコストの情報については、[Azure の料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)に関するページをご覧ください。
+
+### <a name="using-the-workspace-landing-page"></a>ワークスペース ランディング ページの使用 
+
+新しいデータストアを作成するには、ワークスペースのランディング ページでいくつかの手順を実行します。
+
+1. [ワークスペース ランディング ページ](https://ml.azure.com/)にサインインします。
+1. 左側のウィンドウの **[管理]** から、 **[データストア]** を選択します。
+1. **[+ 新しいデータストア]** を選択します。
+1. 新しいデータスト アフォームに入力します。 フォームは、Azure ストレージの種類と選択した認証の種類に基づいて更新されます。
+  
+フォームの記入に必要な情報については、[Azure portal](https://ms.portal.azure.com) を参照してください。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キーまたは SAS トークンなどの認証項目については、左側の **[設定]** ウィンドウの **[アカウント キー]** に移動します。
+
+次の例は、Azure blob データストアを作成するフォームがどのように表示されるかを示しています。 
+    
+ ![新しいデータストア](media/how-to-access-data/new-datastore-form.png)
+
 
 <a name="get"></a>
 
@@ -201,6 +233,7 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
 ```
+<a name="matrix"></a>
 
 ### <a name="compute-and-datastore-matrix"></a>コンピューティングとデータストアのマトリックス
 

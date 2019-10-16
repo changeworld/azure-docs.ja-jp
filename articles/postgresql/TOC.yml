@@ -103,7 +103,7 @@
           items:
             - name: 監視と調整
               href: concepts-monitoring.md
-            - name: サーバー ログ
+            - name: ログ
               href: concepts-server-logs.md
             - name: 監査ログ
               href: concepts-audit.md
@@ -207,7 +207,7 @@
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
-        - name: サーバー ログへのアクセス
+        - name: アクセス ログ
           items:
             - name: Azure ポータル
               href: howto-configure-server-logs-in-portal.md

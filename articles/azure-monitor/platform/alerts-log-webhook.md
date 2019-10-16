@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677761"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838568"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alerts-log.md)ときは、[アクション グループを使用して構成](action-groups.md)し、1 つ以上のアクションを実行することができます。 この記事では、使用できるさまざまな Webhook アクションについて説明し、JSON ベースのカスタム Webhook の構成方法を示します。
 
 > [!NOTE]
-> また、Webhook の統合に[共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を使用することもできます。 共通アラート スキーマには、Azure Monitor のすべてのアラート サービスで、1 つの拡張可能で統合されたアラート ペイロードを使用できる利点があります。 [共通アラート スキーマの定義については、こちらを参照してください。](https://aka.ms/commonAlertSchemaDefinitions)
+> また、Webhook の統合に[共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を使用することもできます。 共通アラート スキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードを実現できることです。共通アラート スキーマでは、ログ アラートのカスタム JSON オプションが優先されないことに注意してください。 アラート ルール レベルで行ったカスタマイズに関係なく共通のアラート スキーマ ペイロードが選択されている場合は、これに従います。 [共通アラート スキーマの定義については、こちらを参照してください。](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Webhook アクション
 

@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: 734a6be81a8052b2894f4c27b165bb8dc4f14caf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fb92e882607575e99ae800bd9c6d7c36b5d89d8e
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171552"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034533"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用して承認ベースの自動化されたワークフローを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "71171552"
 
 完成したロジック アプリの大まかなワークフローは、次のようになります。
 
-![完成したロジック アプリの概観](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
+![完成したロジック アプリの概観](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,11 +53,11 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. Azure のメイン メニューで、 **[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** の順に選択します。
 
-   ![ロジック アプリを作成する](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
+   ![新しいロジック アプリ リソースを作成する](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
 1. **[ロジック アプリの作成]** で、ロジック アプリに関する情報を次のように入力します。 完了したら **[作成]** を選択します。
 
-   ![ロジック アプリに関する情報の入力](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
+   ![ロジック アプリに関する情報を入力する](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
@@ -70,7 +70,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. Azure によってアプリがデプロイされた後、Azure ツール バーで、対象のデプロイされたロジック アプリに対して、 **[通知]**  >  **[リソースに移動]** の順に選択します。
 
-   ![リソースに移動](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app.png)
+   ![新しいロジック アプリ リソースに移動する](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
    または、検索ボックスに名前を入力して、目的のロジック アプリを見つけて選択することもできます。
 
@@ -108,13 +108,13 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    1. 次に、メールの件名に対してフィルターを適用できるよう、トリガーに次のプロパティを追加します。 **[新しいパラメーターの追加] リスト**を開いて、 **[件名フィルター]** プロパティを選択します。
 
-      ![新しいパラメーターの追加](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
+      ![トリガーに [件名フィルター] プロパティを追加する](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
       このトリガーのプロパティの詳細については、[Office 365 Outlook のコネクタ リファレンス](https://docs.microsoft.com/connectors/office365/)または [Outlook.com のコネクタ リファレンス](https://docs.microsoft.com/connectors/outlook/)を参照してください。
 
    1. このプロパティがトリガーに表示されたら、このテキストを入力します: `subscribe-test-members-ML`。
 
-      ![件名フィルター テキストの入力、新しいパラメーターの追加](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
+      ![[件名フィルター] プロパティにテキストを入力する](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
 
 1. ここではトリガーの詳細を非表示にするために、トリガーのタイトル バーをクリックします。
 
@@ -161,13 +161,13 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. **[アクションを選択してください]** で **[Built-in]\(組み込み\)** を選択します。 検索ボックスに、フィルターとして「`condition`」と入力します。 アクションの一覧で、 **[条件]** アクションを選択します。
 
-   ![[条件] を選択](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition.png)
+   ![[条件] アクションを探して選択する](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
 1. 条件の名前をわかりやすい名前に変更します。
 
    1. 条件のタイトル バーにある**省略記号** ( **...** ) ボタン、 **[名前の変更]** の順に選択します。
 
-      ![条件の名前の変更](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition.png)
+      ![条件の説明に使用する名前を変更する](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
 
    1. 条件の名前をわかりやすく「`If request approved`」に変更します。
 
@@ -177,7 +177,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    1. 表示される動的コンテンツ リストの **[承認のメールを送信します]** で、 **[SelectedOption]** プロパティを選択します。
 
-      ![[承認の電子メールを送信します] の [SelectedOption] を選択](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
+      ![動的コンテンツ リストから [SelectedOption] を選択する](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
    1. 中央の比較ボックスで、 **[次の値に等しい]** 演算子を選択します。
 
@@ -185,7 +185,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       完成した条件は次の例のようになります。
 
-      ![完成した条件](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
+      ![Approved に対する完成した条件の例](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
 
 1. ロジック アプリを保存し、
 
@@ -242,7 +242,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       完成した条件は次の例のようになります。
 
-      ![完成した条件](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
+      ![Subscribed に対する完成した条件の例](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
 
 次に、承認されたメンバーのメーリング リストへの登録に成功するか失敗したときに送信されるメールを設定します。
 
@@ -250,7 +250,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. **[If add member succeeded]** 条件の下にある **[true の場合]** 分岐で、 **[アクションの追加]** を選択します。
 
-   ![条件の [true の場合] 分岐で [アクションの追加] を選択](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
+   ![[true の場合] 分岐で、[アクションの追加] を選択する](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
 1. **[アクションの選択]** の検索ボックスにフィルターとして「`outlook send email`」と入力し、 **[メールの送信]** アクションを選択します。
 
@@ -275,7 +275,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. **[If add member succeeded]** 条件の下にある **[false の場合]** 分岐で、 **[アクションの追加]** を選択します。
 
-   ![条件の [false の場合] 分岐で [アクションの追加] を選択](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
+   ![[false の場合] 分岐で、[アクションの追加] を選択する](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
 1. **[アクションの選択]** の検索ボックスにフィルターとして「`outlook send email`」と入力し、 **[メールの送信]** アクションを選択します。
 
@@ -298,7 +298,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 次に、ロジック アプリをテストします。この時点で、ロジック アプリは次のようになっています。
 
-![完成したロジック アプリ](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-complete.png)
+![ロジック アプリのワークフローの完成例](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-completed.png)
 
 ## <a name="run-your-logic-app"></a>ロジック アプリを実行する
 
@@ -312,11 +312,11 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. 購読者のメール アドレスがメーリング リストに存在しない場合、その人物のメール アドレスが追加され、次のようなメールが届きます。
 
-   ![成功時のメール](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-success.png)
+   ![メールの例 - 登録に成功](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-success.png)
 
    購読者を追加できなかった場合は、次のようなメールが届きます。
 
-   ![失敗時のメール](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-failed.png)
+   ![メールの例 - 登録に失敗](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-failed.png)
 
    メールが届かない場合は、迷惑メール フォルダーを確認してください。 この種のメールは、迷惑メール フィルターによってリダイレクトされる場合があります。 また、ロジック アプリが正しく動作しているかどうかわからない場合は、[ロジック アプリのトラブルシューティング](../logic-apps/logic-apps-diagnosing-failures.md)に関するページを参照してください。
 

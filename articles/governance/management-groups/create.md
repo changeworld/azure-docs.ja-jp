@@ -2,20 +2,16 @@
 title: 管理グループを作成して Azure リソースを整理する - Azure のガバナンス
 description: ポータル、Azure PowerShell、および Azure CLI を使用して、複数のリソースを管理する Azure 管理グループを作成する方法について説明します。
 author: rthorn17
-manager: rithorn
 ms.service: governance
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 92ab550aa76adc39863a6557d3959b4538bc9a63
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337792"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980792"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
@@ -31,9 +27,13 @@ ms.locfileid: "71337792"
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理 + ガバナンス]** を選択します。
 
-1. メイン ページで、 **[新しい管理グループ]** を選択します。
+1. **[コストの管理と請求]** を選択します
+
+1. [コストの管理と請求] - [管理グループ] ページで、 **[管理グループ]** を選択します
+
+1. **[+ 管理グループの追加]** を選択します。
 
    ![管理グループを操作するためのページ](./media/main.png)
 

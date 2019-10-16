@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:最初の ML モデルをトレーニングする
+title: チュートリアル:Python で最初の Azure ML モデルをトレーニングする
 titleSuffix: Azure Machine Learning
 description: このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828026"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173300"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 

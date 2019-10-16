@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: fdf2b132b5d07b2b12c679cb436968c6fb19887e
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: a51a8e02ec08b9a4ee353c2c45345c4d01246894
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719508"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981829"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Computer Vision クライアント ライブラリ
 

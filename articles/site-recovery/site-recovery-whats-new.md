@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: raynew
-ms.openlocfilehash: c54273e0ca8c88a6fe47d5611950acd38f50b4c0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212801"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937522"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -73,7 +73,7 @@ Azure VM ディザスター リカバリーの新機能をまとめて表に示�
 
 **機能** | **詳細**
 --- | ---
-ストレージ アカウント | Site Recovery では、Hyper-V から Azure へのディザスター リカバリーに対してファイアウォールが有効になっている、ストレージ アカウントの使用をサポートするようになりました。  ターゲット アカウントとして、またはキャッシュ ストレージに対して、ファイアウォールが有効なストレージ アカウントを選択できます。 ファイアウォールが有効なアカウントを使用している場合は必ず、[信頼された Microsoft サービスを許可] オプションを有効にしてください。
+ストレージ アカウント | Site Recovery では、Hyper-V から Azure へのディザスター リカバリーに対してファイアウォールが有効になっている、ストレージ アカウントの使用をサポートするようになりました。  ターゲット アカウントとして、またはキャッシュ ストレージに対して、ファイアウォールが有効なストレージ アカウントを選択できます。 ファイアウォールが有効なアカウントを使用している場合は必ず、[信頼された Microsoft サービスを許可] オプションを有効にしてください。<br/><br/> これは、System Center VMM の有無にかかわらず、Hyper-V VM でサポートされています。
 
 
 ## <a name="updates-august-2019"></a>更新プログラム (2019 年 8 月)

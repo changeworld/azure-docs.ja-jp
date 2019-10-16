@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178100"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950057"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する
 
@@ -159,6 +159,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
 ```
 
+> [!NOTE]
+> テンプレートの各デプロイのパラメーターとして同じ `roleNameGuid` 値が指定されていない場合、このテンプレートはべき等ではありません。 `roleNameGuid` が指定されていない場合、既定では、デプロイごとに新しい GUID が生成され、後続のデプロイは `Conflict: RoleAssignmentExists` のエラーで失敗します。
+
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>リソースをスコープとするロールの割り当ての作成
 
 リソース レベルでロールの割り当てを作成する必要がある場合は、ロールの割り当ての形式が異なります。 ロールを割り当てるリソースのリソース プロバイダーの名前空間とリソースの種類を指定します。 ロールの割り当ての名前にリソースの名前も含めます。
@@ -180,8 +183,6 @@ az deployment create --location centralus --template-file rbac-test.json --param
 
 - ロールを割り当てるユーザー、グループ、またはアプリケーションの一意識別子
 - 割り当てるロール
-- ロール割り当てに使用する一意の識別子。または既定の識別子を使用できます
-
 
 ```json
 {
@@ -203,13 +204,6 @@ az deployment create --location centralus --template-file rbac-test.json --param
             ],
             "metadata": {
                 "description": "Built-in role to assign"
-            }
-        },
-        "roleNameGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]",
-            "metadata": {
-                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -238,7 +232,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],

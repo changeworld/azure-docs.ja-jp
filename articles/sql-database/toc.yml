@@ -22,14 +22,13 @@
               href: sql-database-purchase-models.md
             - name: 仮想コアベースのモデル
               href: sql-database-service-tiers-vcore.md
+              items:
+                - name: サーバーレス コンピューティング レベル
+                  href: sql-database-serverless.md
+                - name: 予約容量の前払い
+                  href: sql-database-reserved-capacity.md
             - name: DTU サービス レベル
               href: sql-database-service-tiers-dtu.md
-            - name: サーバーレス コンピューティング レベル
-              href: sql-database-serverless.md
-            - name: 予約容量の前払い
-              href: sql-database-reserved-capacity.md
-            - name: Premium RS サービス レベルから移行する
-              href: sql-database-service-tiers-prs.md
         - name: コンピューティングとストレージ
           items:
             - name: 概要
@@ -43,6 +42,8 @@
               href: sql-database-service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
               href: sql-database-service-tier-hyperscale-faq.md
+            - name: Premium RS サービス レベルから移行する
+              href: sql-database-service-tiers-prs.md
 - name: クイック スタート
   expanded: true
   items:
@@ -224,6 +225,8 @@
               href: sql-database-disaster-recovery.md
             - name: 復旧の演習
               href: sql-database-disaster-recovery-drills.md
+            - name: フェールオーバー グループの構成
+              href: sql-database-configure-failover-group.md
     - name: 監視と調整
       items:
         - name: 監視と調整に関するドキュメント
@@ -488,7 +491,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Azure SQL Data Sync の設定
           href: sql-database-get-started-sql-data-sync.md
-        - name: フェールオーバー グループへのエラスティック プールの追加
+        - name: エラスティック プールをフェールオーバー グループに追加する
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: セキュリティを構成する
           href: sql-database-security-tutorial.md
@@ -604,8 +607,6 @@
           href: sql-database-geo-replication-portal.md
         - name: geo レプリカのセキュリティの構成
           href: sql-database-geo-replication-security-config.md
-        - name: フェールオーバー グループの構成
-          href: sql-database-configure-failover-group.md
         - name: インメモリ機能を試す
           href: sql-database-in-memory-sample.md
         - name: 自動チューニングの有効化
@@ -714,6 +715,8 @@
           href: replication-with-sql-database-managed-instance.md
         - name: セキュリティを構成する
           href: sql-database-managed-instance-aad-security-tutorial.md
+        - name: マネージド インスタンスをフェールオーバー グループに追加する
+          href: sql-database-managed-instance-failover-group-tutorial.md
     - name: 概念
       items:
         - name: Management API リファレンス

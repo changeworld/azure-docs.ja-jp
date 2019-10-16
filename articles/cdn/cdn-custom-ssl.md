@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b6ac528d0d2916f513be4e2a72bff061bdad8e58
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718641"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177759"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -132,7 +132,9 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
 3. **[証明書のアクセス許可]** を選択し、 **[Get]\(取得\)** と **[List]\(一覧\** ) のチェック ボックスをオンにします。これによって、CDN がこれらのアクセス許可を実行して証明書を取得および一覧表示できるようにします。
 
-4. **[OK]** を選択します。 
+4. **[シークレットのアクセス許可]** を選択し、 **[Get]\(取得\)** と **[List]\(一覧\** ) のチェック ボックスをオンにします。これによって、CDN がこれらのアクセス許可を実行してシークレットを取得および一覧表示できるようにします。
+
+5. **[OK]** を選択します。 
 
     Azure CDN は、このキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。
  
@@ -190,7 +192,7 @@ CNAME レコードが正しい形式である場合、DigiCert は自動的に�
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>カスタム ドメインが CDN エンドポイントにマップされていない
 
 >[!NOTE]
->**Azure CDN from Akamai** を使用している場合は、次の CNAME を、自動ドメイン検証が有効になるように設定する必要があります。 "_acme-challenge.<custom domain hostname> -> CNAME -> <custom domain hostname>.ak-acme-challenge.azureedge.net"
+>**Azure CDN from Akamai** を使用している場合は、次の CNAME を、自動ドメイン検証が有効になるように設定する必要があります。 "_acme-challenge.&lt;custom domain hostname&gt; -> CNAME -> &lt;custom domain hostname&gt;.ak-acme-challenge.azureedge.net"
 
 CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、この手順の残りの部分に従ってください。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266910"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949728"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -73,7 +73,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="os-disk"></a>OS ディスク
 
-どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 その OS ディスクには、VM の作成時に選択された OS がプリインストールされています。
+どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 その OS ディスクには、VM の作成時に選択された OS がプリインストールされています。 このディスクにはブートボリュームが含まれています。
 
 このディスクの最大容量は 2,048 GiB です。
 
