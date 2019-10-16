@@ -159,7 +159,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 > [!NOTE]
 > この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。  
 
-次に、次のコマンドを入力し、Enter キーを押します。
+次に、以下のコマンドを入力し、Enter キーを押します。
 
 ```azcopy
 azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
@@ -184,7 +184,7 @@ azcopy login --service-principal --application-id <application-id> --tenant-id=<
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 ```
 
-次に、次のコマンドを入力し、Enter キーを押します。
+次に、以下のコマンドを入力し、Enter キーを押します。
 
 ```azcopy
 azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>

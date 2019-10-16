@@ -82,7 +82,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
     ```
 
-1. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
+1. 既定でネットワーク アクセスを許可する既定のルールを設定します。
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
@@ -104,7 +104,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Deny
     ```
 
-1. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
+1. 既定でネットワーク アクセスを許可する既定のルールを設定します。
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow

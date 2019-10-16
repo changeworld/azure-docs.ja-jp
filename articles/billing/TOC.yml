@@ -195,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: 追加のサブスクリプションの作成
       href: billing-create-subscription.md
-    - name: 追加のサブスクリプションの作成 - Microsoft 顧客契約
-      href: billing-mca-create-subscription.md
     - name: プログラムによる Enterprise サブスクリプションの作成
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: サブスクリプション情報のエクスポート
