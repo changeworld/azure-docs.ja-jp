@@ -1,19 +1,19 @@
 ---
-title: Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する | Microsoft Docs
+title: Azure Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する | Microsoft Docs
 description: Azure Digital Twins を使用して、人、場所、デバイスの間の関係をモデル化します
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177073"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950007"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する
 

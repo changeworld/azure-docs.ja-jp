@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: fdb34173e0ca52f57a004e3a5b4a076e423ff5bd
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 6d61b94a50716966ac0b3c75551ddd9d8e291965
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241199"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024463"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>チュートリアル:難しい設定なしで脅威を検出する
 
@@ -39,7 +39,7 @@ Azure Sentinel に [データ ソースを接続した](quickstart-onboard.md)�
 
 ## <a name="about-out-of-the-box-detections"></a>難しい設定の要らない検出機能について
 
-難しい設定の要らない検出機能をすべて表示するには、 **[Analytics]** に進み、 **[Rule templates]\(ルール テンプレート\)** に進みます。 このタブには、すべての Azure Sentinel 組み込み規則が含まれています。
+難しい設定の要らない検出機能をすべて表示するには、 **[Analytics]** 、 **[Rule templates]\(ルール テンプレート\)** の順に選択します。 このタブには、すべての Azure Sentinel 組み込み規則が含まれています。
 
    ![Azure Sentinel の組み込み検出機能を利用して脅威を検出する](media/tutorial-detect-built-in/view-oob-detections.png)
 

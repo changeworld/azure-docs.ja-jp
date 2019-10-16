@@ -116,7 +116,7 @@
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
         - name: QnA Maker と LUIS を使用したボットの作成
           href: Tutorials/integrate-qnamaker-luis.md
-        - name: 別の言語によるナレッジ ベースの作成
+        - name: 言語の選択
           href: How-To/language-knowledge-base.md
         - name: ナレッジ ベースの移行
           href: Tutorials/migrate-knowledge-base.md
@@ -141,6 +141,12 @@
           href: How-To/business-continuity-plan.md
 - name: リファレンス
   items:
+    - name: Languages
+      href: Overview/language-support.md
+    - name: 制限
+      href: limits.md
+    - name: トラブルシューティング
+      href: troubleshooting.md
     - name: REST API リファレンス
       items:
         - name: API の作成
@@ -150,10 +156,6 @@
         - name: Train API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: トラブルシューティング
-      href: troubleshooting.md
-    - name: 制限
-      href: limits.md
     - name: サンプル
       items:
         - name: QnA Maker のヘルプ ボット
@@ -206,8 +208,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金と制限
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: 言語のサポート
-      href: Overview/language-support.md
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice

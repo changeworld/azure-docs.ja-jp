@@ -93,7 +93,7 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 Azure AD 統合サービスのみを操作し、パスワードの有効期限ポリシーに準拠している必要がある同期済みユーザーがいる場合は、*EnforceCloudPasswordPolicyForPasswordSyncedUsers* 機能を有効にすることで、Azure AD パスワードの有効期限ポリシーに強制的に準拠させることができます。
 
- *EnforceCloudPasswordPolicyForPasswordSyncedUsers*  が無効になっている場合 (既定の設定)、Azure AD Connect では、同期済みユーザーの PasswordPolicies 属性は "DisablePasswordExpiration" に設定されます。 これは、ユーザーのパスワードが同期されるたびに実行され、そのユーザーのクラウド パスワードの有効期限ポリシーを無視するように Azure AD へ指示されます。 Azure AD PowerShell モジュールを使用して、次のコマンドを使って属性の値を確認できます。
+ *EnforceCloudPasswordPolicyForPasswordSyncedUsers* が無効になっている場合 (既定の設定)、Azure AD Connect では、同期済みユーザーの PasswordPolicies 属性は "DisablePasswordExpiration" に設定されます。  これは、ユーザーのパスワードが同期されるたびに実行され、そのユーザーのクラウド パスワードの有効期限ポリシーを無視するように Azure AD へ指示されます。 Azure AD PowerShell モジュールを使用して、次のコマンドを使って属性の値を確認できます。
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 

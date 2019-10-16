@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b9e28f986f28bde6e46319ddb404d424c100726
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174468"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026691"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sonarqube の統合
 
@@ -139,7 +139,7 @@ Sonarqube に対する Azure AD SSO を構成してテストするには、次�
 
 2. Sonarqube マーケット プレースから SAML プラグインをインストールします。
 
-3. ページの左上で **[ADMIN]\(管理者\)**  をクリックし、 **[SAML]** に移動します。
+3. ページの左上で **[ADMIN]\(管理者\)** をクリックし、 **[SAML]** に移動します。
 
 4. **[SAML]** ページで、次の手順を実行します。
 

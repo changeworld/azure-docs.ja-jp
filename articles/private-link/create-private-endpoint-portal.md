@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 95dbe2b9ccfdc0a900ba53668869e3872b6e51d5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687051"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030311"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを作成する
 
@@ -135,7 +135,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 このセクションでは、SQL サーバーを作成し、それにプライベート エンドポイントを追加します。 
 
 1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[プライベート リンク センター (プレビュー)]** を選択します。
-2.  **[プライベート リンク センター - 概要]** の **サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
+2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
 1. **[Create a private endpoint (Preview) - Basics]\(プライベート エンドポイント (プレビュー) の作成 - 基本\)** で次の情報を入力または選択します。
 
     | Setting | 値 |

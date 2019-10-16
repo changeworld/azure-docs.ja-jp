@@ -15,7 +15,7 @@ ms.lasthandoff: 09/27/2019
 ms.locfileid: "71350204"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
- ラジアン単位で表される y/x のアーク タンジェンの主値を返します。  
+ ラジアン単位で表される y/x のアーク タンジェントの主値を返します。  
   
 ## <a name="syntax"></a>構文
   

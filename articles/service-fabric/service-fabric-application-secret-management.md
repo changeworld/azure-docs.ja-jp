@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 9854ad7118684e1a5e57b0809d733d812ad64176
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b05473fd9868821285853b089fe711aa48f347fc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828829"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973430"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションで暗号化されたシークレットを管理する
 このガイドでは、Service Fabric アプリケーションでシークレットを管理する手順について説明します。 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。
@@ -56,7 +56,7 @@ Service Fabric アプリケーションで暗号化されたシークレット�
 </CodePackage>
 ```
 
-アプリケーション マニフェストに証明書を指定することで、シークレットを Service Fabric アプリケーションに含めることもできます。 **SecretsCertificate** 要素を **ApplicationManifest.xml** に追加して、目的の証明書の拇印を含めます。
+アプリケーション マニフェストに証明書を指定することで、シークレットを Service Fabric アプリケーションに含めることも必要です。 **SecretsCertificate** 要素を **ApplicationManifest.xml** に追加して、目的の証明書の拇印を含めます。
 
 ```xml
 <ApplicationManifest … >

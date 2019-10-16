@@ -15,7 +15,7 @@
   items:
     - name: '関数の作成 - C#'
       href: functions-create-your-first-function-visual-studio.md
-    - name: 関数の作成 - Java/Maven
+    - name: 関数の作成 - Java
       href: functions-create-first-java-maven.md
     - name: 関数の作成 - JavaScript
       href: functions-create-first-function-vs-code.md
@@ -27,6 +27,8 @@
       items:
         - name: 'ストレージ - C#'
           href: functions-add-output-binding-storage-queue-vs.md
+        - name: ストレージ - Java
+          href: functions-add-output-binding-storage-queue-java.md
         - name: ストレージ - JavaScript
           href: functions-add-output-binding-storage-queue-vs-code.md
         - name: ストレージ - Python

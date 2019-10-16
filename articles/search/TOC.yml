@@ -169,7 +169,7 @@
           href: search-howto-complex-data-types.md
         - name: リレーショナル データをモデル化する
           href: index-sql-relational-data.md
-    - name: データを読み込む
+    - name: データのインデックス作成
       items:
         - name: データ インポートの概要
           href: search-what-is-data-import.md
@@ -181,7 +181,21 @@
           href: search-howto-large-index.md
         - name: 同時更新を処理する
           href: search-howto-concurrency.md
-    - name: インデクサーを使用してデータを読み込む
+    - name: Azure BLOB データのインデックス作成
+      items:
+        - name: BLOB データで AI を使用する
+          href: search-blob-ai-integration.md
+        - name: フルテキスト検索を追加する
+          href: search-blob-storage-integration.md
+        - name: BLOB インデクサーの設定
+          href: search-howto-indexing-azure-blob-storage.md
+        - name: 一対多の BLOB のインデックス作成
+          href: search-howto-index-one-to-many-blobs.md
+        - name: CSV BLOB のインデックス作成
+          href: search-howto-index-csv-blobs.md
+        - name: JSON BLOB のインデックス作成
+          href: search-howto-index-json-blobs.md
+    - name: '"インデクサー" を使用したインデックス作成'
       items:
         - name: インデクサーの概要
           href: search-indexer-overview.md
@@ -191,16 +205,6 @@
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
         - name: Azure Cosmos DB インデクサー
           href: search-howto-index-cosmosdb.md
-        - name: Azure Blob Storage インデクサー
-          items:
-            - name: BLOB インデクサーの設定
-              href: search-howto-indexing-azure-blob-storage.md
-            - name: 一対多の BLOB のインデックス作成
-              href: search-howto-index-one-to-many-blobs.md
-            - name: CSV BLOB のインデックス作成
-              href: search-howto-index-csv-blobs.md
-            - name: JSON BLOB のインデックス作成
-              href: search-howto-index-json-blobs.md
         - name: インデクサーのスケジュール設定
           href: search-howto-schedule-indexers.md
         - name: フィールドのマッピング
@@ -295,8 +299,6 @@
           href: search-manage-powershell.md
         - name: Monitor アクティビティとログ記録
           href: search-monitor-usage.md
-        - name: 検索トラフィックの分析
-          href: search-traffic-analytics.md
 - name: リファレンス
   items:
     - name: Azure CLI

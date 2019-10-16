@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/04/2019
-  ms.openlocfilehash: 14358c23bf9739c75915b66849a657633e2cc2db
-  ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+  ms.openlocfilehash: 3505a6f42998fcfb35c6baab3377cad83e30a3d3
+  ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/06/2019
-  ms.locfileid: "71978860"
+  ms.lasthandoff: 10/15/2019
+  ms.locfileid: "72333009"
 landingContent:
 - title: Azure Time Series Insights について
   linkLists:
@@ -119,9 +119,9 @@ landingContent:
     links:
     - text: Azure Time Series Insights
       url: /rest/api/time-series-insights/
-    - text: Azure Time Series Insights プレビュー
+    - text: データ アクセスの概念のプレビュー
       url: /rest/api/time-series-insights/preview
-    - text: Azure Time Series Insights GA
+    - text: データ アクセスの一般提供
       url: /rest/api/time-series-insights/ga
     - text: JavaScript クライアント SDK
       url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

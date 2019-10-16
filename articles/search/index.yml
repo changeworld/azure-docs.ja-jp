@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 9c89fa143ad5e7fb2c4ba9c227682d14aa511bd9
-  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+  ms.openlocfilehash: ece327a4155e0336de97b95ffa0a58a1d48097da
+  ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/25/2019
-  ms.locfileid: "71265639"
+  ms.lasthandoff: 10/14/2019
+  ms.locfileid: "72302731"
 landingContent:
 - title: Azure Search について
   linkLists:
@@ -46,6 +46,20 @@ landingContent:
     links:
     - text: Azure Search の概要
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
+- title: Blob Storage で使用する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: AI を使用して BLOB データを理解する
+      url: search-blob-ai-integration.md
+    - text: フルテキスト検索を BLOB データに追加する
+      url: search-blob-storage-integration.md
+    - text: AI エンリッチメントを保存する
+      url: knowledge-store-create-portal.md
+  - linkListType: tutorial
+    links:
+    - text: 半構造化 BLOB データのインデックスを作成する
+      url: search-semi-structured-data.md
 - title: データにインデックスを付ける
   linkLists:
   - linkListType: concept

@@ -10,21 +10,21 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 02/23/2019
-ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 10/01/2019
+ms.openlocfilehash: 7b5fd9800fdd2ee3b46087308f81f506e3e09e03
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995425"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034964"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベル
 
 Azure SQL Database は、インフラストラクチャに障害が発生した場合でも 99.99 パーセントの可用性を確保するために、クラウド環境に合わせて調整された SQL Server データベース エンジン アーキテクチャに基づいています。 Azure SQL Database では 3 つのサービス レベルが使用されており、それぞれアーキテクチャ モデルが異なります。 これらのサービス レベルは次のとおりです。
 
-- [General Purpose](sql-database-service-tier-general-purpose.md)。ほとんどの一般的なワークロード向けに設計されています。
-- [Business Critical](sql-database-service-tier-business-critical.md)。1 つの読み取り可能レプリカを使用する低待機時間のワークロード向けに設計されています。
-- [Hyperscale](sql-database-service-tier-hyperscale.md)。複数の読み取り可能なレプリカを使用する非常に大規模なデータベース (最大 100 TB) 向けに設計されています。
+- [General Purpose](sql-database-service-tier-general-purpose.md)。予算重視のワークロード向けに設計されています。
+- [Hyperscale](sql-database-service-tier-hyperscale.md)。ほとんどのビジネス ワークロード向けに設計されており、拡張性の高いストレージ、読み取りスケールアウト、およびデータベースの高速復元機能を提供します。
+- [Business critical](sql-database-service-tier-business-critical.md)。これは障害に対する高い回復性と高速フェールオーバーを使用する、低待機時間のワークロード向けに設計されています。
 
 この記事では、サービス レベル間の違いと、仮想コア ベースの購入モデルでの General Purpose と Business Critical のサービス レベルにおけるストレージとバックアップに関する考慮事項について説明します。
 
@@ -34,7 +34,7 @@ Azure SQL Database は、インフラストラクチャに障害が発生した�
 
 | | リソースの種類 | 汎用 |  ハイパースケール | Business Critical |
 |:---:|:---:|:---:|:---:|:---:|
-| **最適な用途** | |  ほとんどのビジネス ワークロード。 予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。 | データ容量要件が大きいデータ アプリケーション、最大 100 TB までストレージを自動拡張する機能、コンピューティングの流動的スケーリング。 | トランザクション レートが高く、待ち時間 IO が最低のOLTP アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|
+| **最適な用途** | |  予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。 | ほとんどのビジネス ワークロード。 最大 100 TB までのストレージ サイズの自動スケーリング、垂直および水平方向へのなめらかなコンピューティング スケーリング、データベースの高速復元。 | トランザクション レートが高く IO 待ち時間が低い OLTP アプリケーション。 同期的に更新された複数のレプリカを使用して、最高の耐障害性と高速フェールオーバーを提供します。|
 |  **リソースの種類で使用可能:** ||単一データベース/エラスティック プール/マネージド インスタンス | 単一データベース | 単一データベース/エラスティック プール/マネージド インスタンス |
 | **コンピューティング サイズ**|単一データベース/エラスティック プール | 1 - 80 の仮想コア | 1 - 80 の仮想コア | 1 - 80 の仮想コア |
 | | マネージド インスタンス | 4、8、16、24、32、40、64、80 の仮想コア | 該当なし | 4、8、16、24、32、40、64、80 の仮想コア |
@@ -52,7 +52,7 @@ Azure SQL Database は、インフラストラクチャに障害が発生した�
 |**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 日、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
 |**インメモリ OLTP** | | 該当なし | 該当なし | 使用可能 |
 |**読み取り専用レプリカ**| | 0  | 0 - 4 | 1 (組み込み、価格に含まれます) |
-|**価格/課金** | 単一データベース | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 | [レプリカごとの仮想コアと使用されたストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 |
+|**価格/課金** | 単一データベース | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 | [レプリカごとの仮想コアと使用されたストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対してはまだ請求されません。 | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 |
 || マネージド インスタンス | [仮想コアと予約ストレージとバックアップ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 該当なし | [仮想コアと予約ストレージとバックアップ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 
 |**割引モデル**| | [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [Azure ハイブリッド特典](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション|
 
@@ -63,7 +63,7 @@ Azure SQL Database は、インフラストラクチャに障害が発生した�
 
 ## <a name="data-and-log-storage"></a>データとログのストレージ
 
-次の要因は、データとログ ファイルに使用されるストレージ量に影響を及ぼします。
+次の要因は、データ ファイルとログ ファイルに使用されるストレージの量に影響し、General Purpose と Business Critical に適用されます。 Hyperscale のデータ ストレージとログ ストレージの詳細については、「[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)」を参照してください。
 
 - 割り当てられたストレージは、データ ファイル (MDF) およびログ ファイル (LDF) によって使用されます。
 - 各単一データベースのコンピューティング サイズでは、最大データベース サイズがサポートされ、既定の最大サイズは 32 GB です。

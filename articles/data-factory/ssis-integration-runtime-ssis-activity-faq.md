@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 8e800ec8a7a2dd52e052547efa51deaad8c9bb45
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: ec5a3ab0a2498e7d9bb24bed1bc0a37194e38e9e
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104918"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936960"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -121,12 +121,17 @@ SSIS 統合ランタイムで多数のパッケージが並列に実行されて
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>エラー メッセージ:"Microsoft OLE DB Provider for Analysis Services。 'Hresult: 0x80004005 説明:' COM エラー: COM エラー: mscorlib; 呼び出しのターゲットが例外をスローしました"
 
 考えられる原因の 1 つは、Azure Analysis Services の認証用に、Azure Multi-Factor Authentication が有効になっているユーザー名またはパスワードが構成されていることです。 この認証は、SSIS 統合ランタイムではサポートされていません。 Azure Analysis Services の認証には、サービス プリンシパルを使用してみてください。
+
 1. 「[サービス プリンシパルによる自動化](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)」の説明に従って、サービス プリンシパルを準備します。
 2. 接続マネージャーで、 **[特定のユーザー名とパスワードを使用する]** を構成します。ユーザー名として **AppID**、パスワードとして **clientSecret** を設定します。
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>エラー メッセージ:"ADO NET 変換元では、接続 {GUID} を取得できませんでした。エラー メッセージ: ユーザー 'NT AUTHORITY\ANONYMOUS LOGON' はログインできませんでした。'" (マネージド ID の使用時)
 
 *ConnectUsingManagedIdentity* パラメーターが **True** のときは、接続マネージャーの認証方法を **[Active Directory パスワード認証]** として構成していないことを確認してください。 代わりに **[SQL 認証]** として構成できます。これは、*ConnectUsingManagedIdentity* が設定されている場合は無視されます。
+
+### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>エラー メッセージ:"0xC020801F at ..., OData Source [...] (... での 0xC020801F、OData ソース [...]): ランタイム接続マネージャーからマネージド接続を取得できません"
+
+考えられる原因の 1 つは、SSIS 統合ランタイムでトランスポート層セキュリティ (TLS) が有効になっていないことです。これは、OData ソースに必要です。 [セットアップをカスタマイズする] を使用して、SSIS 統合ランタイムで TLS を有効にできます。 詳細については、「[SSIS から Project Online Odata に接続することはできません](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis)」と「[Azure-SSIS 統合ランタイムの設定のカスタマイズ](how-to-configure-azure-ssis-ir-custom-setup.md)」を参照してください。
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>エラー メッセージ:"Request staging task with operation guid ... fail since error:Failed to dispatch staging operation with error message:Microsoft.SqlServer.IntegrationServices.AisAgentCore.AisAgentException:Failed to load data proxy. (操作 guid ... のステージング タスクの要求は次のエラーのため失敗します: ステージング操作のディスパッチに失敗しました。エラー メッセージ: Microsoft.SqlServer.IntegrationServices.AisAgentCore.AisAgentException: データ プロキシの読み込みに失敗しました。)"
 

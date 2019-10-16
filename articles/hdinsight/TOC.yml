@@ -580,7 +580,7 @@
     - name: クイック スタート
       items:
         - name: Apache HBase のクエリ - Apache Phoenix
-          href: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+          href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Apache HBase のクエリ - HBase シェル
           href: ./hbase/query-hbase-with-hbase-shell.md
     - name: チュートリアル

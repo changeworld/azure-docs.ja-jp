@@ -111,7 +111,9 @@
   items:
     - name: Time Series Insights
       items:
-        - name: Azure Time Series Insights GA
+        - name: Azure Time Series Insights
+          href: /rest/api/time-series-insights/index
+        - name: データ アクセスの一般提供
           href: /rest/api/time-series-insights/ga
           items:
             - name: クエリ
@@ -123,17 +125,8 @@
                   href: /rest/api/time-series-insights/ga-query-syntax
             - name: 参照データ API
               href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: Azure Time Series Insights プレビュー
+        - name: データ アクセスの概念のプレビュー
           href: /rest/api/time-series-insights/preview
-          items:
-            - name: タイム シリーズ クエリ
-              href: /rest/api/time-series-insights/preview-query
-            - name: タイム シリーズ モデル
-              href: /rest/api/time-series-insights/preview-model
-            - name: Time Series の環境 API
-              href: /rest/api/time-series-insights/preview-env
-            - name: Time Series の式と構文
-              href: /rest/api/time-series-insights/preview-tsx
     - name: クライアント SDK
       items:
         - name: JavaScript クライアント SDK

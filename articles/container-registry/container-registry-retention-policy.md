@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 10/02/2019
 ms.author: danlep
-ms.openlocfilehash: 36d27bc6089bbe3f4ada6862a9c1be1fa0bdbae7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 79b3e48373114bfcee6dca2e6142f23bed1699e6
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71305922"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972646"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>タグなしマニフェストの保持ポリシーの設定
 
@@ -27,12 +27,17 @@ Azure Container Registry では、タグが関連付けられていない格納�
 > [!WARNING]
 > 保持ポリシーの設定は慎重に行ってください。削除したイメージ データは復元できません。 (イメージ名ではなく) マニフェスト ダイジェストによってイメージをプルするシステムを使用している場合は、タグなしマニフェスト用の保持ポリシーは設定しないようにしてください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス](container-registry-image-tag-version.md)を採用することを検討してください。
 
-Azure CLI コマンドを使用して 1 つのイメージ タグまたはマニフェストを削除する場合は、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
-
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
 * 保持ポリシーを構成できるのは、**Premium** コンテナー レジストリだけです。 レジストリ サービス レベルについては、[「Azure Container Registry SKU」](container-registry-skus.md)をご覧ください。
 * 保持ポリシーは、タグなしマニフェストに対してのみ設定できます。
+* 現在、保持ポリシーは、ポリシーが有効になった*後に*タグが外されたマニフェストにのみ適用されます。 レジストリ内の既存のタグなしマニフェストは、ポリシーの対象になりません。 タグ付けされていない既存のマニフェストを削除するには、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」の記事にある例を参照してください。
+
+## <a name="about-the-retention-policy"></a>アイテム保持ポリシーについて
+
+Azure Container Registry は、レジストリ内のマニフェストのカウントを参照します。 マニフェストがタグ付けされていない場合は、保持ポリシーを確認します。 保持ポリシーが有効になっている場合、マニフェストの削除操作は、ポリシーで設定された日数に従って、特定の日付のキューに登録されます。
+
+個別のキュー管理ジョブは、常にメッセージを処理し、必要に応じてスケーリングします。 例えば、保持ポリシーが 30 日のレジストリで、1 時間間隔の 2 つのマニフェストのタグを解除したとします。 この場合、2 つのメッセージがキューに登録されます。 30 日後、ポリシーが引き続き有効であると見なされ、約 1 時間間隔でメッセージがキューから取得されて処理されます。
 
 ## <a name="set-a-retention-policy---cli"></a>保持ポリシーの設定 - CLI
 
@@ -45,27 +50,38 @@ Azure CLI コマンドを使用して 1 つのイメージ タグまたはマニ
 次の例では、レジストリ *myregistry* 内のタグなしマニフェストに対して、30 日間の保持ポリシーを設定しています。
 
 ```azurecli
-az acr config retention update --name myregistry --status enabled --days 30 --type UntaggedManifests
+az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-次の例では、レジストリ内にあるマニフェストのタグ付けがなくなると即座にそのマニフェストを削除するように、ポリシーを設定します。 このようなポリシーを作成するには、保持期間を 0 日に設定します。
+次の例では、レジストリ内にあるマニフェストのタグ付けがなくなると即座にそのマニフェストを削除するように、ポリシーを設定します。 このようなポリシーを作成するには、保持期間を 0 日に設定します。 
 
 ```azurecli
-az acr config retention update --name myregistry --status enabled --days 0 --type UntaggedManifests
+az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
+
+### <a name="validate-a-retention-policy"></a>アイテム保持ポリシーを検証する
+
+保有期間が 0 日の上記のポリシーを有効にすると、タグなしマニフェストが削除されることをすぐに確認できます。
+
+1. テスト イメージ `hello-world:latest` をレジストリにプッシュするか、別のテストイメージを選択して置き換えます。
+1. [az acr repository untag][az-acr-repository-untag] コマンドを使用して、例えば `hello-world:latest` イメージのタグを削除します。 タグなしマニフェストはレジストリに残ります。
+    ```azurecli
+    az acr repository untag --name myregistry --image hello-world:latest
+    ```
+1. 数秒で、タグなしマニフェストが削除されます。 削除されたことを確認するには、[az acr repository show-manifests][az-acr-repository-show-manifests] コマンドなどを使用してリポジトリでマニフェストを一覧表示します。 リポジトリにテスト イメージが 1 つしかない場合、リポジトリ自体が削除されます。
 
 ### <a name="disable-a-retention-policy"></a>保持ポリシーの無効化
 
 レジストリに設定されている保持ポリシーを確認するには、[az acr config retention show][az-acr-config-retention-show] コマンドを実行します。
 
 ```azurecli
-az acr config retention show --name myregistry
+az acr config retention show --registry myregistry
 ```
 
 レジストリの保持ポリシーを無効にするには、[az acr config retention update][az-acr-config-retention-update] コマンドを実行して `--status disabled` を設定します。
 
 ```azurecli
-az acr config retention update --name myregistry --status disabled
+az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
 ## <a name="set-a-retention-policy---portal"></a>保持ポリシーの設定 - ポータル
@@ -101,3 +117,5 @@ az acr config retention update --name myregistry --status disabled
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-config-retention-update]: /cli/azure/acr/config/retention#az-acr-config-retention-update
 [az-acr-config-retention-show]: /cli/azure/acr/config/retention#az-acr-config-retention-show
+[az-acr-repository-untag]: /cli/azure/acr/repository#az-acr-repository-untag
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

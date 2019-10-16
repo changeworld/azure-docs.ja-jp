@@ -553,7 +553,7 @@
         - name: 認証
           items:
             - name: 認証の基本
-              href: authentication-scenarios.md
+              href: v1-authentication-scenarios.md
             - name: OAuth 2.0 と OpenID Connect プロトコル
               items:
                 - name: OpenID Connect
