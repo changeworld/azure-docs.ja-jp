@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 54d7dc4e57991f6b773169f539a86fdc8451cbba
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950384"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329559"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
@@ -365,11 +365,7 @@ docker push <docker-id>/mydockerimage:v1.0.0
 
 ブラウザーで以前と同じ URL を使用して、対象の関数をトリガーします。 同じ応答が表示されます。 ただし、今回は、`name` パラメーターとして渡された文字列が `outqueue` ストレージ キューに書き込まれます。
 
-### <a name="set-the-storage-account-connection"></a>ストレージ アカウントの接続を設定する
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>ストレージ キューに対するクエリを実行する
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 

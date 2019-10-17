@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 755290997cb6aab328cd38ce81a21c598c737b5f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693410"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429010"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 

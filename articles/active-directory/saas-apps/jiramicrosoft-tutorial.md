@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b43f720e3bccae3b9c6457a3317427fb3fc1a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 20d5db9656dbcab31d73e504f1ca67fd577aec8e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960050"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439743"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合
 
@@ -214,8 +214,8 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
     1. Azure AD 資格情報でのみサインインする場合は、 **[Force Azure Login]\(Azure ログインを強制する)** チェックボックスを有効にします。
     
        > [!Note]
-       >Azure ログインの強制を有効にしたときにログイン ページで管理ログインの既定のログイン フォームを有効にするには、ブラウザー URL にクエリ パラメーターを追加します。
-       > `https://<domain:port>/login.action?force_azure_login=false`
+       > Azure ログインの強制を有効にしたときにログイン ページで管理ログインの既定のログイン フォームを有効にするには、ブラウザー URL にクエリ パラメーターを追加します。
+       > `https://<domain:port>/login.jsp?force_azure_login=false`
 
     1. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 

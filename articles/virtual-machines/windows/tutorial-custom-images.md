@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c216e5a572a36d2306326dd0dd6e1b7ed586de8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 58f7e530008303f16f2d015e29e60e95480cab2c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350837"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390568"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
 
@@ -134,6 +134,7 @@ New-AzVm `
 ```
 
 1 つのイメージからの同時デプロイ数は 20 VM を上限とするようお勧めします。 同じカスタム イメージからの 20 VM を超える大規模な同時デプロイを予定している場合は、複数のイメージ レプリカを含んだ [Shared Image Gallery](shared-image-galleries.md) を使用してください。 
+
 
 ## <a name="image-management"></a>イメージの管理 
 
