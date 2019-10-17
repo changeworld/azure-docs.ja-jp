@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 8fd50ed571e42a1eb6673c56a61314d2adfe27f2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fcb65e75de730178901742dc36c72776e39b044b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172451"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977972"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
@@ -92,7 +91,7 @@ return @{
 
 #### <a name="scaffolding-a-guest-configuration-project"></a>ゲスト構成プロジェクトのスキャフォールディング
 
-サンプルコードを使用して作業開始プロセスの迅速化に取り組む開発者向けに、Plaster PowerShell モジュールのテンプレートの「ゲスト構成プロジェクト」という名前のコミュニティ プロジェクトがあります。 このツールを使用することで、作業中の構成とサンプルリソースを含むプロジェクトと、プロジェクトを検証するための一連の [Pester](https://github.com/pester/pester) をスキャフォールディングできます。 このテンプレートには、ゲスト構成パッケージの構築と検証を自動化するための Visual Studio Code のタスク ランナーも含まれています。 詳細については、[ゲスト構成プロジェクト](https://github.com/microsoft/guestconfigurationproject) に関する GitHub プロジェクトを参照してください。
+サンプルコードを使用して作業開始プロセスの迅速化に取り組む開発者向けに、[Plaster](https://github.com/powershell/plaster) PowerShell モジュール用のテンプレートとして**ゲスト構成プロジェクト**という名前のコミュニティ プロジェクトがあります。 このツールを使用することで、作業中の構成とサンプルリソースを含むプロジェクトと、プロジェクトを検証するための一連の [Pester](https://github.com/pester/pester) をスキャフォールディングできます。 このテンプレートには、ゲスト構成パッケージの構築と検証を自動化するための Visual Studio Code のタスク ランナーも含まれています。 詳細については、[ゲスト構成プロジェクト](https://github.com/microsoft/guestconfigurationproject) に関する GitHub プロジェクトを参照してください。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux でのカスタム ゲスト構成の構成
 

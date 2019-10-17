@@ -14,19 +14,19 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: b0634038dbf5771ac1aa0bc00d007e758171b238
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d5e124c6f73285efdaef515deba5816093a27e98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443500"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027551"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Apache Cordova アプリへの認証の追加
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-users) を今すぐチェックしてください。
->
+> Visual Studio App Center では、モバイル アプリ開発の中心となるエンドツーエンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
+> モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) にサインアップしてください。
 
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、Apache Cordova で todolist クイック スタート プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [Mobile Apps の使用] チュートリアルを完了しておく必要があります。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 9825ef1426a1c93f94b502c396fbaab1f86a924e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263499"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240938"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -112,14 +112,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Update AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットを使用して、スケール セットの OS アップグレード履歴を確認します。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
+スケール セットに自動 OS イメージ アップグレードを構成するには、[Update-AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットを使用します。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-[az vmss update](/cli/azure/vmss#az-vmss-update) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
+スケール セットに自動 OS イメージ アップグレードを構成するには、[az vmss update](/cli/azure/vmss#az-vmss-update) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true

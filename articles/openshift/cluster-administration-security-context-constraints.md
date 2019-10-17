@@ -1,26 +1,26 @@
 ---
 title: Azure Red Hat OpenShift でセキュリティ コンテンツ制約を管理する | Microsoft Docs
-description: Azure Red Hat OpenShift クラスター管理者によるセキュリティ コンテンツ制約の管理
+description: Azure Red Hat OpenShift クラスター管理者に対するセキュリティ コンテンツ制約
 services: container-service
 author: troy0820
 ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 8e85ac98683487c6b18be7f502f28cad9a0c2251
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71712842"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168990"
 ---
-# <a name="overview"></a>概要 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Azure Red Hat OpenShift でセキュリティ コンテンツ制約を管理する 
 
-セキュリティ コンテキスト制約を利用することで、管理者はポッドのアクセス許可を制御できます。 この API タイプの詳細については、[セキュリティ コンテキスト制約](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html) (SCC) アーキテクチャ ドキュメントを参照してください。 インスタンス内の SCC は、CLI を使用して通常の API オブジェクトとして管理できます。
+セキュリティ コンテキスト制約 (SCC) を利用することで、クラスター管理者はポッドのアクセス許可を制御できます。 この API タイプの詳細については、[SCC のアーキテクチャ ドキュメント](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)を参照してください。 インスタンス内の SCC は、CLI を使用して通常の API オブジェクトとして管理できます。
 
-## <a name="listing-security-context-constraints"></a>セキュリティ コンテキスト制約の一覧表示
+## <a name="list-security-context-constraints"></a>セキュリティ コンテキスト制約の一覧表示
 
-SCC の現在の一覧を取得するには 
+SCC の現在の一覧を取得するには、次のコマンドを使用します。 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examining-a-security-context-constraints-object"></a>セキュリティ コンテキスト制約オブジェクトの調査
+## <a name="examine-an-object-for-security-context-constraints"></a>セキュリティ コンテキスト制約のオブジェクトを調べる
 
-特定の SCC を調べるには、`oc get`、`oc describe`、または `oc edit` を使用します。  たとえば、**制約付き** SCC は次のように確認します。
+特定の SCC を調べるには、`oc get`、`oc describe`、または `oc edit` を使用します。  たとえば、**制約付き** SCC を調べるには、次のコマンドを使用します。
 ```bash
 $ oc describe scc restricted
 Name:                   restricted
@@ -72,6 +72,5 @@ Settings:
     Ranges:             <none>
 ```
 ## <a name="next-steps"></a>次の手順
-osa-customer-admin ロールの構成方法:
 > [!div class="nextstepaction"]
-> [Azure Red Hat OpenShift の Azure Active Directory 統合](howto-aad-app-configuration.md) 
+> [Azure Red Hat OpenShift クラスターを作成する](tutorial-create-cluster.md) 

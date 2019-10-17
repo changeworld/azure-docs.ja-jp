@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300127"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844397"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>非パーティション分割コンテナーをパーティション分割コンテナーに移行する
 
@@ -99,7 +99,7 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>パーティション キーを持たないドキュメントにアクセスする
 
-アプリケーションでは、"CosmosContainerSettings.NonePartitionKeyValue" という特殊なシステム プロパティを使って、パーティション キーを持たない既存のドキュメントにアクセスできます。これは、移行されないドキュメントの値です。 このプロパティは、すべての CRUD とクエリ操作で使用できます。 次の例では、NonePartitionKey から 1 つのドキュメントを読み取るサンプルを示します。 
+アプリケーションでは、"PartitionKey.None" という特殊なシステム プロパティを使って、パーティション キーを持たない既存のドキュメントにアクセスできます。これは、移行されないドキュメントの値です。 このプロパティは、すべての CRUD とクエリ操作で使用できます。 次の例では、NonePartitionKey から 1 つのドキュメントを読み取るサンプルを示します。 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 

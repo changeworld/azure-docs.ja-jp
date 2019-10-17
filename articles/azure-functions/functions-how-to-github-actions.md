@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8e9e1189c3eb9de273926645ad0d4cfde5ba1c49
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260037"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028985"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
@@ -29,9 +29,9 @@ Azure Functions のワークフロー ファイルには、次の 3 つのセク
 
 | Section | タスク |
 | ------- | ----- |
-| **認証** | <ol><li>サービス プリンシパルを定義します。</li><li>GitHub シークレットを作成します。</li></ol>|  
+| **認証** | <ol><li>サービス プリンシパルを定義します。</li><li>発行プロファイルをダウンロードします。</li><li>GitHub シークレットを作成します。</li></ol>|
 | **ビルド** | <ol><li>環境を設定します。</li><li>関数アプリを構築します。</li></ol> |
-| **デプロイする** | <ol><li>関数アプリをデプロイします。</li></ol>| 
+| **デプロイする** | <ol><li>関数アプリをデプロイします。</li></ol>|
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
@@ -43,16 +43,27 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 この例のリソースのプレースホルダーは、ご自分のサブスクリプション ID、リソース グループ、および関数アプリ名に置き換えます。 これにより、ご自分の関数アプリにアクセスするためのロールの割り当て資格情報が出力されます。 この JSON オブジェクトをコピーします。このオブジェクトは、GitHub に対する認証に使用します。
 
+> [!NOTE]
+> 認証に発行プロファイルを使用する場合は、サービス プリンシパルを作成する必要はありません。
+
 > [!IMPORTANT]
 > 常に最小限のアクセス権を付与することをお勧めします。 これが、前の例の範囲がリソース グループ全体ではなく、特定の関数アプリに限定されている理由です。
+
+## <a name="download-the-publishing-profile"></a>発行プロファイルのダウンロード
+
+functionapp の発行プロファイルをダウンロードするには、アプリの **[概要]** ページに移動し、 **[発行プロファイルの取得]** をクリックします。
+
+   ![[発行プロファイルのダウンロード]](media/functions-how-to-github-actions/get-publish-profile.png)
+
+ファイルの内容をコピーします。
 
 ## <a name="configure-the-github-secret"></a>GitHub シークレットの構成
 
 1. [GitHub](https://github.com) でご自分のリポジトリを参照し、 **[設定]**  >  **[シークレット]**  >  **[Add a new secret]** \(新しいシークレットの追加\) を選択します。
 
-    ![シークレットの追加](media/functions-how-to-github-actions/add-secret.png)
+   ![シークレットの追加](media/functions-how-to-github-actions/add-secret.png)
 
-1. **[名前]** には `AZURE_CREDENTIALS` を、 **[値]** にはコピーしたコマンド出力を使用し、 **[Add secret]** \(シークレットの追加\) を選択します。 
+1. **[Name]\(名前\)** には `AZURE_CREDENTIALS` を、 **[Value]\(値\)** にはコピーしたコマンド出力を使用し、 **[Add secret]\(シークレットの追加\)** を選択します。 発行プロファイルを使用している場合は、 **[Name]\(名前\)** には `SCM_CREDENTIALS`、 **[Value]\(値\)** にはファイルの内容を使用します。
 
 これで GitHub は、お使いの Azure の関数アプリに認証できるようになりました。
 

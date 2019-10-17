@@ -4,14 +4,14 @@ description: Azure Migrate サービスでマシンの依存関係を使用し�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 10/01/2019
 ms.author: hamusa
-ms.openlocfilehash: 8e793891ea646ae8c91077ead36be9b84c1b08c8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1cd1ff83fd706e3474426f6cc2ac99d39e74dc22
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200206"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177944"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>評価のために依存関係の視覚化を設定する
 
@@ -38,7 +38,7 @@ ms.locfileid: "71200206"
 --- | ---
 可用性 | 依存関係の視覚化は、Azure Government では使用できません。
 サービス マップ | 依存関係の視覚化では、Azure Monitor で Service Map ソリューションが使用されます。 [Service Map](../azure-monitor/insights/service-map.md) は、サーバー間の接続を自動的に検出して表示します。
-エージェント | 依存関係の視覚化を使用するには、マップするマシン上に次のエージェントをインストールします。<br/> - [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md) (以前は Microsoft Monitoring Agent (MMA) と呼ばれていました)。<br/> - [Service Map の Dependency Agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> エージェントのインストールを自動化するには、デプロイ ツール (System Center Configuration Manager など) を使用するか、または Azure Migrate 用のエージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) など) を使用します。
+エージェント | 依存関係の視覚化を使用するには、マップするマシン上に次のエージェントをインストールします。<br/> - [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md) (以前は Microsoft Monitoring Agent (MMA) と呼ばれていました)。<br/> - [Service Map の Dependency Agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> エージェントのインストールを自動化するには、Azure Migrate 用のエージェント デプロイ ソリューションを備えたデプロイ ツール (System Center Configuration Manager など) を使用することができます。
 依存関係エージェント | Windows および Linux での [Dependency Agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) のサポートを確認します。<br/><br/> スクリプトを使用した依存関係エージェントのインストールの[詳細情報](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)を確認します。
 Log Analytics エージェント (MMA) | MMA のインストール方法の[詳細情報](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)を確認します。<br/><br/> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)のガイダンスを参照してください。 ただし、このようなマシンには、Dependency Agent をインストールする必要がある点に注意してください。<br/><br/> Log Analytics エージェントでサポートされている Linux オペレーティング システムを[確認](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)します。
 評価グループ | 依存関係を視覚化するグループには、10 個を超えるマシンを含めないでください。 マシンが 10 台を超える場合は、小さいグループに分割して依存関係を視覚化してください。
@@ -88,6 +88,10 @@ Windows マシンにエージェントをインストールするには、次の
 4. **[エージェントのセットアップ オプション]** で、 **[Azure Log Analytics]**  >  **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
+エージェントは、コマンド ラインからインストールするか、System Center Configuration Manager や [Intigua](https://go.microsoft.com/fwlink/?linkid=2104196) などの自動化された方法を使用してインストールすることができます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)のページを参照してください。 この[スクリプト](https://go.microsoft.com/fwlink/?linkid=2104394)を使用して、MMA エージェントをインストールすることもできます。
+
+MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)をご覧ください。
+
 #### <a name="install-the-agent-on-a-linux-machine"></a>Linux マシンにエージェントをインストールする
 
 Linux マシンにエージェントをインストールするには、次の手順に従います。
@@ -97,11 +101,18 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems)をご覧ください。 
+
 ### <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 1. Windows マシンに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。
 2. Linux マシンに依存関係エージェントをインストールするには、次のコマンドを使用してルートとしてインストールします。
 
     ```sh InstallDependencyAgent-Linux64.bin```
+
+スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples)をご覧ください。
+
+依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems)をご覧ください。
+
 
 ## <a name="create-a-group-using-dependency-visualization"></a>依存関係の視覚化を使用してグループを作成する
 

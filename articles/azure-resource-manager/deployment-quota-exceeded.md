@@ -4,14 +4,14 @@ description: リソース グループ履歴でデプロイが 800 を超えた�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 755383c9d40c104d50ad9bb7a31b3a00f8348313
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cb8a8238c4daac6370d47bb9e99b3503ebb68783
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827009"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176560"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>デプロイ数が 800 を超えたときのエラーを解決する
 
@@ -31,6 +31,18 @@ ms.locfileid: "71827009"
 az group deployment delete --resource-group exampleGroup --name deploymentName
 ```
 
+5 日を経過したデプロイをすべて削除するには、次を使用します。
+
+```azurecli-interactive
+startdate=$(date +%F -d "-5days")
+deployments=$(az group deployment list --resource-group exampleGroup --query "[?properties.timestamp>'$startdate'].name" --output tsv)
+
+for deployment in $deployments
+do
+  az group deployment delete --resource-group exampleGroup --name $deployment
+done
+```
+
 次のコマンドでは、デプロイ履歴の現在のデプロイ数を取得できます。
 
 ```azurecli-interactive
@@ -43,6 +55,16 @@ az group deployment list --resource-group exampleGroup --query "length(@)"
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
+```
+
+5 日を経過したデプロイをすべて削除するには、次を使用します。
+
+```azurepowershell-interactive
+$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
+
+foreach ($deployment in $deployments) {
+  Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name $deployment.DeploymentName
+}
 ```
 
 次のコマンドでは、デプロイ履歴の現在のデプロイ数を取得できます。

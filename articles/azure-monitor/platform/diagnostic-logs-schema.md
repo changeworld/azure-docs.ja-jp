@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: fdcfcbaf99d48a345d2be4da297be1c9139da15c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 70dd4af16746ecf54310dffcb854c3c0857283ba
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308111"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033878"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -55,6 +55,7 @@ ms.locfileid: "71308111"
 | Azure Batch |[Azure Batch 診断ログ](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL の診断ログ](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL の診断ログ](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Data Explorer | [Azure Data Explorer の診断ログ](../../data-explorer/using-diagnostic-logs.md) |
 | Cognitive Services | [Azure Cognitive Services の診断ログ](../../cognitive-services/diagnostic-logging.md) |
 | Content Delivery Network | [CDN の Azure 診断ログ](../../cdn/cdn-azure-diagnostic-logs.md) |
 | Cosmos DB | [Azure Cosmos DB のログ](../../cosmos-db/logging.md) |

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 953558e34d41184f75d72baf5982e84eb51b1781
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e9b2967905bc927432d1ca4606bc2b2ba2ac4108
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694865"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177358"
 ---
 # <a name="http-features"></a>HTTP 機能
 
@@ -195,7 +195,7 @@ public static async Task RunOrchestrator(
 
 ### <a name="limitations"></a>制限事項
 
-HTTP API を呼び出す組み込みのサポートは便利な機能であり、すべてのシナリオに適しているわけではありません。 It's not appropriate for all scenarios.
+HTTP API を呼び出す組み込みのサポートは便利な機能です。 これは、すべてのシナリオに適しているわけではありません。
 
 オーケストレーター関数で送信される HTTP 要求とその応答はキュー メッセージとしてシリアル化され、永続的です。 このキュー動作によって、HTTP 呼び出しで[信頼性が高く、安全にオーケストレーションを再生する](durable-functions-orchestrations.md#reliability)ことが保証されます。 ただし、キュー動作にも制限事項があります。
 
@@ -210,6 +210,38 @@ HTTP API を呼び出す組み込みのサポートは便利な機能であり�
 > .NET 開発者であれば、この機能で、組み込みの .NET **HttpRequestMessage** および **HttpResponseMessage** 型ではなく、**DurableHttpRequest** および **DurableHttpResponse** 型が使用される理由を疑問に思うかもしれません。
 >
 > この設計の選択は意図的なものです。 主な理由は、カスタム型を使用することで、内部 HTTP クライアントのサポートされている動作についてユーザーが誤った想定を行うことを回避するためです。 Durable Functions に固有の型により、API の設計を簡素化することもできます。 また、[マネージド ID の統合](#managed-identities)や[ポーリング コンシューマー パターン](#http-202-handling)などの特別な機能を、より簡単に利用できるようになります。 
+
+### <a name="extensibility-net-only"></a>拡張機能 (.NET のみ)
+
+オーケストレーションの内部 HTTP クライアントの動作をカスタマイズするには、[Azure Functions の .NET 依存関係の挿入](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)を使用できます。 この機能は、小規模な動作変更を行う場合に役立ちます。 これは、モック オブジェクトを挿入することによる、HTTP クライアントの単体テストにも役立ちます。
+
+次の例では、外部 HTTP エンドポイントを呼び出すオーケストレーター関数に対する SSL 証明書の検証を無効にするために、依存関係の挿入を使用する方法を示します。
+
+```csharp
+public class Startup : FunctionsStartup
+{
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        // Register own factory
+        builder.Services.AddSingleton<
+            IDurableHttpMessageHandlerFactory,
+            MyDurableHttpMessageHandlerFactory>();
+    }
+}
+
+public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFactory
+{
+    public HttpMessageHandler CreateHttpMessageHandler()
+    {
+        // Disable SSL certificate validation (not recommended in production!)
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+    }
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

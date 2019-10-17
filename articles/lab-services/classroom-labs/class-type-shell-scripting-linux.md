@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 083a7e7ad4ac40a7782936e664a9136d0452e93d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695765"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030659"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux でのシェル スクリプト作成を教えるためのラボを設定する
 この記事では、Linux でのシェル スクリプトの作成を教えるためのラボを設定する方法について説明します。 スクリプトの作成は、管理者がタスクを繰り返さなくて済むようにできる、システム管理の役に立つ部分です。 このサンプル シナリオのクラスでは、従来の bash スクリプトと拡張スクリプトについて説明します。 拡張スクリプトは、bash コマンドと Ruby を組み合わせたスクリプトです。 このアプローチにより、Ruby でデータを渡すことができ、bash コマンドでシェルと対話することができます。 
 
-これらのスクリプト クラスを受ける学生は、Linux 仮想マシンを使用して、Linux の基本を学習し、bash シェル スクリプトの作成にも慣れます。 Linux 仮想マシンには、有効になったリモート デスクトップ アクセスが付属しており、[gedit](https://help.gnome.org/users/gedit/stable/) と [Visual Studio Code](https://code.visualstudio.com/) テキスト エディターがインストールされています。
+これらのスクリプト作成のクラスを受講する学生は、Linux 仮想マシンを使用して、Linux の基本を学習し、bash シェル スクリプトの作成にも慣れることができます。 Linux 仮想マシンには、有効になったリモート デスクトップ アクセスが付属しており、[gedit](https://help.gnome.org/users/gedit/stable/) と [Visual Studio Code](https://code.visualstudio.com/) テキスト エディターがインストールされています。
 
 ## <a name="lab-configuration"></a>ラボの構成
 このラボを設定するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 Azure サブスクリプションを作成したら、Azure Lab Services で新しいラボ アカウントを作成するか、既存のラボ アカウントを使用することができます。 新しいラボ アカウントを作成するには、次のチュートリアルを参照してください: 「[チュートリアル: Azure Lab Services でラボ アカウントを設定する](tutorial-setup-lab-account.md)」。
@@ -83,7 +83,9 @@ Ruby は、bash スクリプトと組み合わせることができるオープ�
 ## <a name="cost"></a>コスト 
 このラボのコストを見積もるには、次の例を使用できます。
  
-20 時間の授業が予定されていて、宿題または課題のために 10 時間のクォータが用意されている、25 人の学生のクラスの場合、ラボの価格は次のようになります: 学生 25 人 * (20 + 10) 時間 * 20 ラボ ユニット * 0.01 USD/時間 = 150 USD
+20 時間の授業が予定されていて、宿題または課題のために 10 時間のクォータが用意されている、25 人の学生のクラスの場合、ラボの価格は次のようになります: 
+
+学生 25 人 * (20 + 10) 時間 * 20 ラボ ユニット * 0.01 USD/時間 = 150 USD
 
 価格の詳細については、次のドキュメントを参照してください: 「[Azure Lab Services の価格](https://azure.microsoft.com/pricing/details/lab-services/)」。
 

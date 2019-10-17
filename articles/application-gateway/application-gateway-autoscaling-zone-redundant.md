@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: b97dab0f41915ac6193c35cad9a6af812b16fd4a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104883"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177449"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
@@ -35,7 +35,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-Standard_v2 および WAF_v2 SKU は、次のリージョンで利用できます: 米国中北部、米国中南部、米国西部、米国西部 2、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、東南アジア、フランス中部、英国西部、東日本、西日本、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、東アジア、韓国中部、韓国南部、インド南部、英国南部、インド中部、インド西部、インド南部。
+Standard_v2 および WAF_v2 SKU は、次のリージョンで利用できます: 米国中北部、米国中南部、米国西部、米国西部 2、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、東南アジア、フランス中部、英国西部、東日本、西日本、オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、東アジア、韓国中部、韓国南部、インド南部、英国南部、インド中部、インド西部、インド南部。
 
 ## <a name="pricing"></a>価格
 

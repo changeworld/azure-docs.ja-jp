@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac78029ba2d1f45ef67ef0d858fdd2917bd4a97a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033332"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001697"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Azure AD の自動ユーザー プロビジョニングで利用できるアプリケーションとシステム
 
-Azure AD は、一般に普及している多くの SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、SCIM 2.0 標準の特定の領域を実装するアプリにも広く対応しています。
+Azure AD は、一般的な多くの SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、[SCIM 2.0 標準](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)の特定の領域を実装するアプリにも広く対応しています。
 
 ### <a name="pre-integrated-applications"></a>事前統合されたアプリケーション
 
@@ -218,7 +218,7 @@ Azure portal でプロビジョニング ログを確認する方法について
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>SaaS アプリへの自動ユーザー プロビジョニングは、Azure AD の入れ子になった動的グループに対応しますか。
 
-いいえ。 "割り当てられたユーザーとグループのみを同期する" ように構成されている場合、Azure AD ユーザー プロビジョニング サービスは、入れ子になったグループに含まれているユーザーを読み取ったりプロビジョニングしたりすることができません。 明示的に割り当てられたグループの直接のメンバーであるユーザーだけを読み取ってプロビジョニングできます。
+No. "割り当てられたユーザーとグループのみを同期する" ように構成されている場合、Azure AD ユーザー プロビジョニング サービスは、入れ子になったグループに含まれているユーザーを読み取ったりプロビジョニングしたりすることができません。 明示的に割り当てられたグループの直接のメンバーであるユーザーだけを読み取ってプロビジョニングできます。
 
 これは、「アプリケーションへのグループベースの割り当て」の制限であり、シングル サインオンにも影響し、「[SaaS アプリケーションへのアクセスをグループで管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps )」で説明しています。
 

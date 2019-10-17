@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828740"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000500"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
 
@@ -110,7 +110,7 @@ Managed Instance　はファイル共有と Windows フォルダーにはアク�
 
 [CREATE CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) に関する記事、および [BACKUP CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql) に関する記事をご覧ください。 
  
-**対処法**: 証明書または秘密キーのスクリプトを作成し、.sql ファイルとして保存してバイナリから作成します。
+**対処法**: 証明書のバックアップを作成してバックアップを復元するのでなく、[証明書のバイナリ コンテンツと秘密キーを取得し、それを .sql ファイルとして保存し、バイナリから作成します](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)。
 
 ```sql
 CREATE CERTIFICATE  
@@ -329,6 +329,7 @@ Managed Instance はファイル共有や Windows フォルダーにアクセス
 
 - が、Azure BLOB ストレージからファイルをインポートしている間、`BULK INSERT` コマンドで `DATASOURCE` が必要です。 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) に関する記事をご覧ください。
 - Azure BLOB ストレージからのファイルの内容を読み取る場合、`OPENROWSET` 関数で `DATASOURCE` が必要です。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
+- `OPENROWSET` を使用すると、他の Azure SQL 単一データベース、マネージド インスタンス、または SQL Server インスタンスからデータを読み取ることができます。 Oracle データベースや Excel ファイルなどのその他のソースはサポートされていません。
 
 ### <a name="clr"></a>CLR
 

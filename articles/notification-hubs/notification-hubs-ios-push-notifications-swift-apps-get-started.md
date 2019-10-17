@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211957"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030643"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>チュートリアル:Notification Hubs REST API を使用する Swift iOS アプリにプッシュ通知を送信する
 
@@ -297,7 +297,7 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 ブリッジ ヘッダーを追加して構成するには:
 
-1. Xcode で、 **[ファイル]**  >  **[New]\(新規\)**  >  **[ファイル]**  >  **[Header File]\(ヘッダー ファイル\)** を選択します。 ヘッダー ファイルの名前を **BridgingHeader.h** にします。
+1. Xcode で、 **[File]\(ファイル)**  >  **[New]\(新規\)**  >  **[File]\(ファイル)**  >  **[Header File]\(ヘッダー ファイル\)** を選択します。 ヘッダー ファイルの名前を **BridgingHeader.h** にします。
 
 1. **CommonHMAC.h** をインポートするようにファイルを編集します。
 
@@ -313,11 +313,11 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 1. ブリッジ ヘッダーを参照するようにターゲットの**ビルド設定**を更新します。
 
-   1.  **[Building Settings]\(ビルド設定\)**  タブを開き、 **[Swift Compiler]\(Swift コンパイラ\)**  セクションまで下へスクロールします。
+   1. **[Building Settings]\(ビルド設定\)** タブを開き、 **[Swift Compiler]\(Swift コンパイラ\)** セクションまで下にスクロールします。
 
-   1.  **[Install Objective-C Compatibility Header]\(Objective-C 互換性ヘッダーをインストールする\)**   オプションが  **[Yes]\(はい\)** に設定されていることを確認します。
+   1. **[Install Objective-C Compatibility Header]\(Objective-C 互換性ヘッダーをインストールする\)** オプションを確実に **[はい]** に設定します。
 
-   1. ファイル パス `'<ProjectName>/BridgingHeader.h'` を **[Objective-C bridging Header]\(Objective-C ブリッジ ヘッダー\)**   オプションに入力します。 これは、今回使用するブリッジ ヘッダーのファイル パスです。
+   1. ファイル パス `'<ProjectName>/BridgingHeader.h'` を **[Objective-C bridging Header]\(Objective-C ブリッジ ヘッダー\)** オプションに入力します。 これは、今回使用するブリッジ ヘッダーのファイル パスです。
 
    これらのオプションが見つからない場合は、 **[Basic]\(基本\)** または **[Customized]\(カスタマイズ\)** ではなく **[すべて]** ビューが選択されていることを確認してください。
 

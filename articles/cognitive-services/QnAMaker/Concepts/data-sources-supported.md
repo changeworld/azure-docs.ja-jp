@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1a9f3eb0ea79a0cd79850e721d081b00dc582a31
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 4bd1386c68f3173c19b282c1e01ecff545c4bcd7
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695273"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972064"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker コンテンツのデータ ソース
 
@@ -34,9 +34,9 @@ QnA Maker は、Web ページ、PDF ファイル、または MS Word doc ファ�
 |*Excel|構造化 QnA ファイル<br> (RTF、HTML サポートなど)|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |*TXT/TSV|構造化 QnA ファイル|[Sample chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
-エクスポートされたナレッジ ベースからの **TSV ファイルと XLS ファイル**は、QnA Maker ポータルの **[設定]** ページからファイルをインポートすることによってのみ使用できます。 ナレッジ ベースの作成時にデータ ソースとして使用したり、 **[設定]** ページのファイルまたは URL の追加機能から使用したりすることはできません。 
+### <a name="import-and-export-knowledge-base"></a>ナレッジ ベースのインポートとエクスポート
 
-詳細については、[複数ターンに関するドキュメント]()を参照してください。 
+エクスポートされたナレッジ ベースからの **TSV ファイルと XLS ファイル**は、QnA Maker ポータルの **[設定]** ページからファイルをインポートすることによってのみ使用できます。 ナレッジベースの作成中に、または **[設定]** ページの **[+ ファイルの追加]** 機能または **[+ URL の追加]** 機能から、それらをデータ ソースとして使用することはできません。 
 
 ## <a name="data-source-locations"></a>データ ソースの場所
 
