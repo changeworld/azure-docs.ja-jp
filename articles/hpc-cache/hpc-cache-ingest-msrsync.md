@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.author: rohogue
+ms.openlocfilehash: 6eac6c367be42021a4654f85c8f4ec980c9f6925
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180937"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255285"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC Cache (プレビュー) のデータの取り込み - msrsync の方法
 
