@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2019
-ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.date: 10/11/2019
+ms.openlocfilehash: 4f81b23378427faa522071f4a20e07485f5c3387
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327124"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296421"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -44,7 +44,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サー
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | 国際対応の製品番号規格のデータ型|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | 監査機能を提供する|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | 暗号化関数|
 > |[pgrouting](https://pgrouting.org/)                    | 2.6.2           | pgRouting の拡張機能|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
@@ -90,7 +90,7 @@ Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サー
 > |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | 国際対応の製品番号規格のデータ型|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | 監査機能を提供する|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.2             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | 暗号化関数|
 > |[pgrouting](https://pgrouting.org/)                    | 2.5.2           | pgRouting の拡張機能|
 > |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
@@ -136,7 +136,7 @@ Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サ�
 > |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | 国際対応の製品番号規格のデータ型|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | 監査機能を提供する|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.1.2             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | 暗号化関数|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting の拡張機能|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
@@ -182,7 +182,7 @@ Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サ�
 > |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | 国際対応の製品番号規格のデータ型|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | 階層ツリー状の構造体のデータ型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | 監査機能を提供する|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.0.7             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | 暗号化関数|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | pgRouting の拡張機能|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | 行レベルのロック情報を表示する|

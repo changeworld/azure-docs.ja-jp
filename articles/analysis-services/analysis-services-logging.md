@@ -2,18 +2,17 @@
 title: Azure Analysis Services の診断ログ | Microsoft Docs
 description: Azure Analysis Services の診断ログの設定について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b158545390dafa36e7dad285953c78243f891f28
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a9684042a76c9c906a75334c319b4ca8ee0b727b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259424"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298614"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 

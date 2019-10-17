@@ -285,6 +285,8 @@
       items:
         - name: 資産の公開 - CLI
           href: cli-publish-asset.md
+        - name: 説明的なオーディオの通知
+          href: signal-descriptive-audio-howto.md
 - name: リファレンス
   items:
     - name: OpenAPI の仕様 (Swagger)
