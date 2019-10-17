@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 56e420f9641638bfa79ff077be73132b00b934ab
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71131294"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
@@ -40,7 +40,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 4. 軽減ステップを実行する
 5. az vm repair restore を実行する
 
-その他のドキュメントと手順については、「az vm repair」に関するページをご覧ください。
+その他のドキュメントと手順については、「[az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)」をご覧ください。
 
 ## <a name="repair-process-example"></a>修復プロセスの例
 
@@ -52,7 +52,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 
    **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell にコード貼り付けてから、 **[入力]** を選択して実行します。
 
-   CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+   CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 2. `az vm repair` コマンドを初めて使用する場合は、VM 修復 CLI 拡張機能を追加します。
 
@@ -74,7 +74,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 
 4. 必要に応じて作成した修復 VM で軽減ステップを実行し、ステップ 5 に進みます。
 
-5. `az vm repair restore` を実行します。 このコマンドは、修復された OS ディスクを VM の元の OS ディスクとスワップします。
+5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose

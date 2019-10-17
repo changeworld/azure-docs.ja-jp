@@ -71,6 +71,10 @@
       items:
         - name: Azure リソースの管理
           href: ./ansible-manage-azure-dynamic-inventories.md
+    - name: 仮想マシン
+      items:
+        - name: Shared Image Gallery の作成
+          href: ansible-vm-create-from-shared-generalized-image.md
     - name: 仮想マシン スケール セット
       items:
         - name: 構成
@@ -81,6 +85,8 @@
           href: ./ansible-auto-scale-vmss.md
         - name: カスタム イメージの更新
           href: ./ansible-vmss-update-image.md
+        - name: Shared Image Gallery の作成
+          href: ansible-vm-create-from-shared-generalized-image.md
     - name: 仮想ネットワーク
       items:
         - name: ピアリングの構成

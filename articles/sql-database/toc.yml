@@ -271,6 +271,8 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: 拡張イベント - リング バッファー
                   href: sql-database-xevent-code-ring-buffer.md
+        - name: Hyperscale パフォーマンス診断
+          href: sql-database-hyperscale-performance-diagnostics.md
     - name: スケーラビリティ
       items:
         - name: スケーラビリティのドキュメント

@@ -143,7 +143,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: マッピング データ フロー
+    - name: データ フローのマッピング
       items:
         - name: マッピング データ フローの概要
           href: concepts-data-flow-overview.md

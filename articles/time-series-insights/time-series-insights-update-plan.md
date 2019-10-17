@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300691"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273725"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する
 
@@ -82,7 +82,7 @@ Time Series Insights にイベントを送信する方法を確認できます�
 * タイム シリーズ モデルにメタデータを格納します。
 * タイム シリーズ モード、インスタンス フィールド、およびイベントには、必要な情報 (タイム シリーズ ID、タイムスタンプなど) のみを含めます。
 
-詳細については、[イベントの調整](./time-series-insights-send-events.md#json)に関するページを参照してください。
+詳細については、[イベントの調整](./time-series-insights-send-events.md#supported-json-shapes)に関するページを参照してください。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
