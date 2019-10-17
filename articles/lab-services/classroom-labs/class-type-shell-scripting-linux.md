@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 147d3dba2e2dc271d5b7422d7ba2b28c04f583af
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030659"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330632"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux でのシェル スクリプト作成を教えるためのラボを設定する
 この記事では、Linux でのシェル スクリプトの作成を教えるためのラボを設定する方法について説明します。 スクリプトの作成は、管理者がタスクを繰り返さなくて済むようにできる、システム管理の役に立つ部分です。 このサンプル シナリオのクラスでは、従来の bash スクリプトと拡張スクリプトについて説明します。 拡張スクリプトは、bash コマンドと Ruby を組み合わせたスクリプトです。 このアプローチにより、Ruby でデータを渡すことができ、bash コマンドでシェルと対話することができます。 
@@ -40,7 +40,7 @@ ms.locfileid: "72030659"
 | ------------ | ------------------ |
 | 仮想マシン (VM) サイズ | Small  |
 | VM イメージ | [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) |
-| リモート デスクトップ接続を有効にする | [Enable]\(有効にする\)。 <p>この設定を有効にすると、教師と学生はリモート デスクトップ (RDP) を使用して VM に接続できます。 詳細については、「[Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする](how-to-enable-remote-desktop-linux.md#teachers-connecting-to-the-template-vm-using-rdp)」を参照してください。 </p>|
+| リモート デスクトップ接続を有効にする | [Enable]\(有効にする\)。 <p>この設定を有効にすると、教師と学生はリモート デスクトップ (RDP) を使用して VM に接続できます。 詳細については、「[Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)」を参照してください。 </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>デスクトップと xrdp をインストールする
@@ -96,9 +96,9 @@ Ruby は、bash スクリプトと組み合わせることができるオープ�
 次の手順は、どのラボの設定でも同じです。
 
 - [ユーザーの追加](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [クォータを設定する](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [クォータを設定する](how-to-configure-student-usage.md#set-quotas-for-users)
 - [スケジュールを設定する](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [登録リンクを学生に電子メールで送る](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link)。 
+- [登録リンクを学生に電子メールで送る](how-to-configure-student-usage.md#send-invitations-to-users)。 
 
 
 

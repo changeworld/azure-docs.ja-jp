@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028675"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330667"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>エシカル ハッキング クラスを教えるためのラボを設定する 
 この記事では、エシカル ハッキングのフォレンジクス面に焦点を当てたクラスを設定する方法について説明します。 侵入テストは、悪意のある攻撃者が利用する可能性のある脆弱性を実証するためにシステムまたはネットワークへの侵入を試みる訓練で、エシカル ハッキング コミュニティで使用します。 
@@ -141,7 +141,7 @@ Rapid7 Metasploitable イメージは、故意にセキュリティの脆弱性�
 次の手順は、どのラボの設定でも同じです。
 
 - [ユーザーの追加](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [クォータを設定する](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [クォータを設定する](how-to-configure-student-usage.md#set-quotas-for-users)
 - [スケジュールを設定する](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [登録リンクを学生に電子メールで送る](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link)。 
+- [登録リンクを学生に電子メールで送る](how-to-configure-student-usage.md#send-invitations-to-users)。 
 
