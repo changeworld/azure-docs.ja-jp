@@ -304,19 +304,33 @@
           href: spark-job.md
         - name: GPU の使用
           href: gpu-cluster.md
-        - name: Istio の使用
-          items:
-            - name: インストールと構成
-              href: istio-install.md
-            - name: インテリジェントなルーティングとカナリア リリース
-              href: istio-scenario-routing.md
-        - name: Hashicorp Consul Connect の使用
-          items:
-            - name: インストールと構成
-              href: consul-install.md
         - name: Azure Database for PostgreSQL の使用
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+    - name: サービス メッシュの選択とデプロイ
+      items:
+        - name: サービス メッシュについて
+          href: servicemesh-about.md
+        - name: Istio の使用
+          items:
+            - name: Istio について
+              href: servicemesh-istio-about.md
+            - name: インストールと構成
+              href: servicemesh-istio-install.md
+            - name: シナリオ - インテリジェントなルーティングとカナリア リリース
+              href: servicemesh-istio-scenario-routing.md
+        - name: Linkerd の使用
+          items:
+            - name: Linkerd について
+              href: servicemesh-linkerd-about.md
+            - name: インストールと構成
+              href: servicemesh-linkerd-install.md
+        - name: Consul の使用
+          items:
+            - name: Consul について
+              href: servicemesh-consul-about.md
+            - name: インストールと構成
+              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: Ansible を使用した AKS クラスターの作成
