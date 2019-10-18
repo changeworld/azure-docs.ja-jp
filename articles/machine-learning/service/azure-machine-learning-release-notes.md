@@ -10,18 +10,27 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61a42a8c1176cdd347fd2956a07c295ecf49321e
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: da0c674eaf3bc650beae0a05f8f8a0c3613fbeaf
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695557"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177900"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) のリファレンス ページを参照してください。 
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-10-08"></a>2019-10-08
+
+### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースの新しい Web エクスペリエンス (プレビュー)
+
+[新しいワークスペース ポータル](http://ml.azure.com)の [実験] タブが更新されているため、データ サイエンティストはより高性能な方法で実験を監視できます。 次の機能を調査できます。
++ 実験の一覧を簡単にフィルター処理して並べ替えることができる試験的なメタデータ
++ 実行を視覚化して比較できる簡略化され高性能な実験の詳細ページ
++ トレーニング実行を理解して監視するために詳細ページを実行するための新しいデザイン
 
 ## <a name="2019-09-30"></a>2019-09-30
 
@@ -829,7 +838,7 @@ Azure Machine Learning SDK for Python v1.0.30 がリリースされました。
 
  + **変更点**
    + azureml-contrib-tensorboard が azureml-tensorboard パッケージに置き換えられました。
-   + このリリースでは、マネージド コンピューティング クラスター (amlcompute) の作成時にユーザー アカウントを設定できます。 これは、これらのプロパティをプロビジョニング構成に渡すことで実行できます。 詳細については、[SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-)をご覧ください。
+   + このリリースでは、マネージド コンピューティング クラスター (amlcompute) の作成時にユーザー アカウントを設定できます。 これは、これらのプロパティをプロビジョニング構成に渡すことで実行できます。 詳細については、[SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remotelogin-port-public-access--notspecified--)をご覧ください。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure Machine Learning Data Prep SDK v1.0.17
 

@@ -345,6 +345,8 @@
               href: active-directory-how-applications-are-added.md
             - name: リダイレクト URI および応答 URL に関する制約と制限
               href: reply-url.md
+            - name: サポートされているアカウントの種類別の検証の相違点
+              href: supported-accounts-validation.md
             - name: 単一テナント アプリとマルチテナント アプリ
               href: single-and-multi-tenant-apps.md
         - name: アクセス許可と同意
@@ -553,7 +555,7 @@
         - name: 認証
           items:
             - name: 認証の基本
-              href: authentication-scenarios.md
+              href: v1-authentication-scenarios.md
             - name: OAuth 2.0 と OpenID Connect プロトコル
               items:
                 - name: OpenID Connect

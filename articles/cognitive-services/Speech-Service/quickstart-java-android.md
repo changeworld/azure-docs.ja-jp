@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
 ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71803315"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Android で Speech SDK を使用して Java で音声を認識する

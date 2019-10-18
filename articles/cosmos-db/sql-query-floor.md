@@ -15,7 +15,7 @@ ms.lasthandoff: 09/27/2019
 ms.locfileid: "71351207"
 ---
 # <a name="floor-azure-cosmos-db"></a>FLOOR (Azure Cosmos DB)
- 指定された数値式未満の最大の整数を返します。  
+ 指定された数値式以下の最大の整数を返します。  
   
 ## <a name="syntax"></a>構文
   

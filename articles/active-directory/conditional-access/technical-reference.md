@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162429"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274186"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -72,7 +72,6 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 - Project Online
 - Skype for Business Online
 - 仮想プライベート ネットワーク (VPN)
-- Visual Studio App Center
 - Windows Defender ATP
 
 ### <a name="other-applications"></a>他のアプリケーション

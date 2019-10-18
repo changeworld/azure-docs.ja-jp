@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 18fbaad8ce15ab4eb9a08d5edc273098e7fb372e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315689"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263968"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して、グループを作成し、更新する手順を説明します。 このコンテンツは、Office 365 グループ (統合グループと呼ばれることもあります) にのみ適用されます。 
@@ -50,11 +50,12 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
   
    ``` PowerShell
    Install-Module AzureADPreview
+   ```
+   
+## <a name="create-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の作成
+次の手順では、ディレクトリ内のすべての Office 365 グループに適用される設定をディレクトリ レベルで作成します。 Get-AzureADDirectorySettingTemplate コマンドレットは、[グラフ用の Azure AD PowerShell プレビュー モジュール](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)でのみ使用できます。
 
-## Create settings at the directory level
-These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
-
-1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
+1. DirectorySettings コマンドレットでは、使用する SettingsTemplate の ID を指定する必要があります。 使用する ID を把握していない場合、このコマンドレットでは、すべての Settings テンプレートの一覧が返されます。
   
    ```powershell
    Get-AzureADDirectorySettingTemplate

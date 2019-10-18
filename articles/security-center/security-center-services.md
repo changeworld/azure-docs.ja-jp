@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218263"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982838"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Security Center でサポートされている使用可能な機能
 
@@ -39,20 +39,21 @@ ms.locfileid: "71218263"
 |----|----|----|----|----|----|----|----|
 |**Environment**|**Azure**||**Azure 以外**|**Azure**||**Azure 以外**||
 ||**仮想マシン**|**Virtual Machine Scale Set**||**仮想マシン**|**Virtual Machine Scale Set**|
-|VMBA 脅威検出アラート|✔|✔|✔|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|推奨事項 (無料) 脅威の検出 (Standard)|
+|仮想マシン動作分析の脅威検出アラート|✔|✔|✔|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|推奨事項 (無料) 脅威の検出 (Standard)|
 |ネットワーク経由の脅威検出アラート|✔|✔|X|✔|✔|X|Standard|
 |Microsoft Defender ATP の統合|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|X|X|X|Standard|
 |不足しているパッチ|✔|✔|✔|✔|✔|✔|無料|
 |セキュリティ構成|✔|✔|✔|✔|✔|✔|無料|
 |エンドポイント保護の評価|✔|✔|✔|X|X|X|無料|
-|JIT VM アクセス|✔|X|X|✔|X|X|Standard|
+|Just-In-Time VM アクセス|✔|X|X|✔|X|X|Standard|
 |アダプティブ アプリケーション制御|✔|X|✔|✔|X|✔|Standard|
-|FIM|✔|✔|✔|✔|✔|✔|Standard|
+|ファイルの整合性の監視|✔|✔|✔|✔|✔|✔|Standard|
 |ディスク暗号化の評価|✔|✔|X|✔|✔|X|無料|
 |サード パーティ デプロイ|✔|X|X|✔|X|X|無料|
 |NSG の評価|✔|✔|X|✔|✔|X|無料|
 |ファイルレス脅威の検出|✔|✔|✔|X|X|X|Standard|
 |ネットワーク マップ|✔|✔|X|✔|✔|X|Standard|
+|アダプティブ ネットワークのセキュリティ強化機能|✔|X|X|✔|X|X|Standard|
 |アダプティブ ネットワーク制御|✔|✔|X|✔|✔|X|Standard|
 |規制へのコンプライアンス ダッシュボードおよびレポート|✔|✔|✔|✔|✔|✔|Standard|
 |Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の検出|X|X|X|✔|✔|✔|Standard|

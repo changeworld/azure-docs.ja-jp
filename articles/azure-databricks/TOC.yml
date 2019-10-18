@@ -26,7 +26,7 @@
     - name: Event Hubs を使用したデータのストリーミング
       href: databricks-stream-from-eventhubs.md
     - name: Cognitive Services を使用した感情分析
-  href: databricks-sentiment-analysis-cognitive-services.md
+      href: databricks-sentiment-analysis-cognitive-services.md
 - name: ハウツー ガイド
   items:
     - name: 使用の開始
@@ -543,7 +543,7 @@
         - name: Delta Lake の概要
           href: /azure/databricks/delta/delta-intro
           maintainContext: true
-        - name: Delta を使ってみる
+        - name: Delta Lake を使ってみる
           href: /azure/databricks/delta/quick-start
           maintainContext: true
         - name: 入門用ノートブック
@@ -617,6 +617,9 @@
               maintainContext: true
         - name: よく寄せられる質問
           href: /azure/databricks/delta/delta-faq
+          maintainContext: true
+        - name: Delta のその他のリソース
+          href: /azure/databricks/delta/delta-resources
           maintainContext: true
     - name: DataFrames と Datasets
       items:
@@ -772,9 +775,6 @@
             - name: PyTorch
               href: /azure/databricks/applications/deep-learning/single-node-training/pytorch
               maintainContext: true
-            - name: JCuda
-              href: /azure/databricks/applications/deep-learning/single-node-training/jcuda
-              maintainContext: true
             - name: 分散 DL に対する単一ノードの PyTorch
               href: /azure/databricks/applications/deep-learning/distributed-training/mnist-pytorch
               maintainContext: true
@@ -852,35 +852,28 @@
           maintainContext: true
     - name: グラフ分析
       items:
-        - name: GraphFrames を使用したグラフ分析のチュートリアル
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
-          maintainContext: true
-        - name: GraphFrames - Python
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
-          maintainContext: true
-        - name: GraphFrames - Scala
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
-          maintainContext: true
-        - name: GraphX (レガシ) を使用したグラフ分析
-          href: /azure/databricks/spark/latest/graph-analysis/graph-analysis-graphx-tutorial
-          maintainContext: true
         - name: グラフ分析の概要
           href: /azure/databricks/spark/latest/graph-analysis/index
           maintainContext: true
-        - name: グラフ分析のチュートリアル
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
-          maintainContext: true
-        - name: GraphFrames の概要
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/index
-          maintainContext: true
-        - name: GraphFrames - Python
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
-          maintainContext: true
-        - name: GraphFrames - Scala
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
+        - name: GraphFrames
+          items:
+            - name: GraphFrames を使用したグラフ分析のチュートリアル
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
+              maintainContext: true
+            - name: GraphFrames - Python
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
+              maintainContext: true
+            - name: GraphFrames - Scala
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
+              maintainContext: true
+        - name: GraphX (レガシ) を使用したグラフ分析
+          href: /azure/databricks/spark/latest/graph-analysis/graph-analysis-graphx-tutorial
           maintainContext: true
     - name: Genomics
       items:
+        - name: Genomics の概要
+          href: /azure/databricks/applications/genomics/index
+          maintainContext: true
         - name: Genomics ETL の概要
           href: /azure/databricks/applications/genomics/etl/index
           maintainContext: true
@@ -921,6 +914,9 @@
             - name: サンプル品質管理
               href: /azure/databricks/applications/genomics/etl/sample-qc
               maintainContext: true
+            - name: リフトオーバー
+              href: /azure/databricks/applications/genomics/etl/lift-over
+              maintainContext: true
         - name: 3 次解析
           items:
             - name: 3 次解析の概要
@@ -937,9 +933,6 @@
               maintainContext: true
             - name: 回帰テスト
               href: /azure/databricks/applications/genomics/tertiary/regression-tests
-              maintainContext: true
-            - name: SAIGE と SAIGE-GENE
-              href: /azure/databricks/applications/genomics/tertiary/saige
               maintainContext: true
             - name: Python 統計ライブラリ
               href: /azure/databricks/applications/genomics/tertiary/pandas-udf
@@ -1072,6 +1065,9 @@
               maintainContext: true
             - name: 仮想ネットワークをピアリングする
               href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering
+              maintainContext: true
+            - name: ご使用のプレビュー ワークスペースを GA にアップグレードする
+              href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject-upgrade
               maintainContext: true
             - name: Azure Databricks を VNet にデプロイする
               href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
@@ -1282,6 +1278,9 @@
               maintainContext: true
             - name: カスタム UDF が原因で Spark ジョブがハングする
               href: /azure/databricks/kb/jobs/spark-udf-performance
+              maintainContext: true
+            - name: ジョブの失敗 - maxresultsize
+              href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
               maintainContext: true
         - name: ライブラリ
           items:
@@ -1587,8 +1586,17 @@
                 - name: サポートされているランタイム リリース
                   href: /azure/databricks/release-notes/runtime/supported
                   maintainContext: true
+                - name: Databricks Runtime 6.1
+                  href: /azure/databricks/release-notes/runtime/6.1
+                  maintainContext: true
+                - name: Databricks Runtime 6.1 ML
+                  href: /azure/databricks/release-notes/runtime/6.1ml
+                  maintainContext: true
                 - name: Databricks Runtime 6.0
                   href: /azure/databricks/release-notes/runtime/6.0
+                  maintainContext: true
+                - name: Databricks Runtime 6.0 with Conda
+                  href: /azure/databricks/release-notes/runtime/6.0conda
                   maintainContext: true
                 - name: Databricks Runtime 6.0 ML
                   href: /azure/databricks/release-notes/runtime/6.0ml

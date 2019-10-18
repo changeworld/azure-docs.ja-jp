@@ -6,20 +6,19 @@ ms.author: dacoulte
 ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b2b38fe2d9a2bf4c645e5b1cda4b8fba356353d3
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 27cf1539fc98b2ad7f1b82e194989c1619ab99fb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181187"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980705"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
 リソース ポリシーの定義は、Azure Policy でソースに対する規則を確立するために使用されます。 各定義には、リソースのコンプライアンスと、リソースが準拠していない場合にどのような効果を適用するかが記述されます。
 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、すべてのリソースに特定のタグが指定されていることを必須にすることができます。 ポリシーは、すべての子リソースが継承します。 リソース グループにポリシーが適用された場合、ポリシーは、そのリソース グループ内のすべてのリソースに適用されます。
 
-Azure Policy で使用されるスキーマについては、[https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policydefinitions](/azure/templates/microsoft.authorization/2019-01-01/policydefinitions) を参照してください。
+ポリシー定義のスキーマは [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json) にあります
 
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 

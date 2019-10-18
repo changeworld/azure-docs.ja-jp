@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/1/2019
-ms.openlocfilehash: fd38bf1f7741c4d610ef43a12d90533d4ac7b703
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: db95788b0f2c041157bdc16000d0328c042e86d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802414"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973688"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Data Science VM 用のディープ ラーニングと AI のフレームワーク
 以下の一覧では、DSVM でのディープ ラーニング フレームワークを示します。
@@ -83,6 +83,33 @@ ms.locfileid: "71802414"
 | サポートされている DSVM エディション      | Windows および Linux   |
 | DSVM での構成/インストール方法  | CNTK は、[Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) では Python 3.6 に、[Linux](./dsvm-languages.md#python-linux-edition) では Python 3.5 にインストールされます |
 | 実行方法      | ターミナル: 適切な環境をアクティブ化し、Python を実行します。 <br/>Jupyter: [Jupyter](provision-vm.md) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) に接続し、サンプル用の CNTK ディレクトリを開きます。 |
+
+## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+|    |           |
+| ------------- | ------------- |
+| サポートされるバージョン | 1.3.0 |
+| サポートされている DSVM エディション      | Windows および Linux   |
+| DSVM での構成/インストール方法  | MXNet は、Windows では `C:\dsvm\tools\mxnet` に、Ubuntu では `/dsvm/tools/mxnet` にインストールされます。 Python バインディングは、[Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) では Python 3.6 に、[Linux](./dsvm-languages.md#python-linux-edition) では Python 3.5 にインストールされます。R バインディングは、Ubuntu DSVM にも含まれています。 |
+| 実行方法      | ターミナル: 適切な conda 環境をアクティブ化して、`import mxnet` を実行します。 <br/>Jupyter: [Jupyter](provision-vm.md#access-the-dsvm) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) に接続して、サンプル用の `mxnet` ディレクトリを開きます。 |
+
+## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[MXNet モデル サーバー](https://github.com/awslabs/mxnet-model-server#quick-start)
+
+|    |           |
+| ------------- | ------------- |
+| サポートされるバージョン | 1.0.1 |
+| サポートされている DSVM エディション      | Windows および Linux   |
+| DSVM での構成/インストール方法  | MXNet モデル サーバーは、[Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) では Python 3.6 に、[Linux](./dsvm-languages.md#python-linux-edition) では Python 3.5 にインストールされます |
+| 実行方法      | ターミナル: まず、`sudo systemctl stop jupyterhub` を実行して、JupyterHub サービスを停止させます。両方とも同じポートでリッスンしているためです。 次に、適切な conda 環境をアクティブ化し、`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` を実行します。 |
+
+## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[NVidia システム管理インターフェイス (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
+
+|    |           |
+| ------------- | ------------- |
+| サポートされるバージョン |  |
+| サポートされている DSVM エディション      | Windows および Linux   |
+| 何を目的としていますか? | GPU アクティビティをクエリするための NVIDIA ツール |
+| DSVM での構成/インストール方法  | `nvidia-smi` はシステム パス上にあります。 |
+| 実行方法      | **GPU を備えた**仮想マシンで、コマンド プロンプト (Windows の場合) またはターミナル (Linux の場合) を開き、`nvidia-smi` を実行します。 |
 
 ## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
 

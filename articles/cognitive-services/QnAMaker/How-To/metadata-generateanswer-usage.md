@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300262"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971806"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -249,4 +249,4 @@ GenerateAnswer への応答には、一致した質問と回答のセットの�
 **[発行]** ページでは、[Postman](../Quickstarts/get-answer-from-kb-using-postman.md) と [cURL](../Quickstarts/get-answer-from-kb-using-curl.md) を使用して回答を生成するための情報も指定できます。 
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの作成](./create-knowledge-base.md)
+> [ナレッジ ベース ボットを作成する](../tutorials/integrate-qnamaker-luis.md)

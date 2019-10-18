@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e005cf0860faeaad7010ea4da3ca1c5227ade14b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: fda6c72504a75d600931185e224bb46db03e23ed
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034793"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374292"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -50,11 +50,8 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
 * モデルをデプロイするときに、サービスに関する情報と共に `Webservice` オブジェクトが返されます。
 
     ```python
-    service = Webservice.deploy_from_model(name='myservice',
-                                           deployment_config=myconfig,
-                                           models=[model],
-                                           image_config=image_config,
-                                           workspace=ws)
+    service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+    service.wait_for_deployment(show_output = True)
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```

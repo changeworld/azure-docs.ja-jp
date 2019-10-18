@@ -580,7 +580,7 @@
     - name: クイック スタート
       items:
         - name: Apache HBase のクエリ - Apache Phoenix
-          href: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+          href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Apache HBase のクエリ - HBase シェル
           href: ./hbase/query-hbase-with-hbase-shell.md
     - name: チュートリアル
@@ -595,6 +595,8 @@
               href: ./hbase/apache-hbase-rest-sdk.md
             - name: Java アプリケーションの開発
               href: ./hbase/apache-hbase-build-java-maven-linux.md
+            - name: Apache Phoenix と Apache Zeppelin
+              href: ./hbase/apache-hbase-phoenix-zeppelin.md
             - name: HDInsight の Apache Phoenix
               href: ./hdinsight-phoenix-in-hdinsight.md
             - name: Apache Phoenix Query Server REST SDK の使用

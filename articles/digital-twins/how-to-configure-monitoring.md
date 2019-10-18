@@ -1,20 +1,20 @@
 ---
-title: Azure Digital Twins で監視を構成する方法 | Microsoft Docs
+title: 監視を構成する方法 - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins で監視を構成する方法。
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.author: v-adgera
+ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d7d81636bfb60c2d5fa059da01ac535e09b829f4
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261039"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949993"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure Digital Twins で監視を構成する方法
 

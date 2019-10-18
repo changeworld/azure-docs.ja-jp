@@ -1,10 +1,10 @@
 - name: Azure Blob Storage のドキュメント
   href: /azure/storage/blobs/
 - name: 概要
-  expanded: true
   items:
     - name: Azure Blob Storage とは
       href: storage-blobs-overview.md
+  expanded: true
 - name: BLOB ストレージ
   items:
     - name: 概要
@@ -150,7 +150,7 @@
             - name: スケーラビリティとパフォーマンスのターゲット
               href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: パフォーマンスとスケーラビリティのチェックリスト
-              href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: storage-performance-checklist.md
             - name: Blob Storage での待ち時間
               href: storage-blobs-latency.md
         - name: コンカレンシー
@@ -198,47 +198,7 @@
                 - name: アーカイブ
                   items:
                     - name: インポート (v1) のドライブを準備する
-                      href: ../common/storage-import-export-tool-preparing-hard-drives-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                      items:
-                        - name: プロパティとメタデータを設定する
-                          href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: サンプル - インポートのドライブを準備する
-                          href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: インポートのクイック コマンド リファレンス
-                          href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: インポート (v2) のドライブを準備する
-                      href: ../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                      items:
-                        - name: プロパティとメタデータを設定する
-                          href: ../common/storage-import-export-tool-setting-properties-metadata-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: サンプル - インポートのドライブを準備する
-                          href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: インポートのクイック コマンド リファレンス
-                          href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: インポート ジョブを作成する
-                      href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: エクスポート ジョブを作成する
-                      href: ../common/storage-import-export-creating-an-export-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: ジョブの状態を取得する
-                      href: ../common/storage-import-export-retrieving-state-info-for-a-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: ジョブを列挙する
-                      href: ../common/storage-import-export-enumerating-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: ジョブをキャンセルおよび削除する
-                      href: ../common/storage-import-export-cancelling-and-deleting-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: ドライブ マニフェストをバックアップする
-                      href: ../common/storage-import-export-backing-up-drive-manifests.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 診断とエラーからの回復
-                      href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: インポート ジョブのコマンド
-                      href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: インポート ジョブのコマンド
-                      href: ../common/storage-import-export-tool-quick-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: サービス マニフェスト ファイル
-                      href: ../common/storage-import-export-file-format-manifest.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: サービスのメタデータとプロパティ ファイル
-                      href: ../common/storage-import-export-file-format-metadata-and-properties.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: サービス ログ ファイル
-                      href: ../common/storage-import-export-file-format-log.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 監視とトラブルシューティング
           items:
             - name: トラブルシューティングのチュートリアル
@@ -270,7 +230,7 @@
         - name: ストレージ アカウントの作成と管理
           items:
             - name: 汎用ストレージ アカウントの作成
-              displayName: 'resource manager, resource manager template, template, ARM'
+              displayName: 'Resource Manager, Resource Manager template, template, ARM'
               href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ブロック BLOB ストレージ アカウントの作成
               href: storage-blob-create-account-block-blob.md
@@ -471,33 +431,39 @@
         - name: AzCopy v10
           items:
             - name: azcopy
-              href: ../common/storage-ref-azcopy.md
+              href: ../common/storage-ref-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy bench
+              href: ../common/storage-ref-azcopy-bench.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy copy
-              href: ../common/storage-ref-azcopy-copy.md
+              href: ../common/storage-ref-azcopy-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy doc
-              href: ../common/storage-ref-azcopy-doc.md
+              href: ../common/storage-ref-azcopy-doc.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy env
-              href: ../common/storage-ref-azcopy-env.md
+              href: ../common/storage-ref-azcopy-env.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy jobs
-              href: ../common/storage-ref-azcopy-jobs.md
+              href: ../common/storage-ref-azcopy-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy jobs clean
+              href: ../common/storage-ref-azcopy-jobs-clean.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy jobs list
-              href: ../common/storage-ref-azcopy-jobs-list.md
+              href: ../common/storage-ref-azcopy-jobs-list.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy jobs remove
+              href: ../common/storage-ref-azcopy-jobs-remove.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy jobs resume
-              href: ../common/storage-ref-azcopy-jobs-resume.md
+              href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy jobs show
-              href: ../common/storage-ref-azcopy-jobs-show.md
+              href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy list
-              href: ../common/storage-ref-azcopy-list.md
+              href: ../common/storage-ref-azcopy-list.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy login
-              href: ../common/storage-ref-azcopy-login.md
+              href: ../common/storage-ref-azcopy-login.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy logout
-              href: ../common/storage-ref-azcopy-logout.md
+              href: ../common/storage-ref-azcopy-logout.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy make
-              href: ../common/storage-ref-azcopy-make.md
+              href: ../common/storage-ref-azcopy-make.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy remove
-              href: ../common/storage-ref-azcopy-remove.md
+              href: ../common/storage-ref-azcopy-remove.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy sync
-              href: ../common/storage-ref-azcopy-sync.md
+              href: ../common/storage-ref-azcopy-sync.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Resource Manager テンプレート
           displayName: ARM
           href: /azure/templates/microsoft.storage/allversions
@@ -585,8 +551,6 @@
       items:
         - name: Data Lake Storage の概要
           href: ../blobs/data-lake-storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ビッグ データの処理
-          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: クイック スタート
       items:
         - name: Databricks を使用したデータの分析
@@ -617,6 +581,10 @@
       items:
         - name: マルチプロトコル アクセス
           href: ../blobs/data-lake-storage-multi-protocol-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: ビッグ データの処理
+          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure サービスとの統合
+          href: ../blobs/data-lake-store-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure BLOB ファイル システムの URI
@@ -693,19 +661,8 @@
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ファイルレベルおよびディレクトリレベルのアクセス許可の設定
               href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
-        - name: Azure サービスと統合する
-          items:
-            - name: HDInsight クラスターで使用する
-              href: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Hadoop ファイル システム CLI で使用する
-              href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Databricks で使用する
-              href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
-            - name: Azure SQL Data Warehouse で使用する
-              href: '../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase'
-            - name: Power BI で使用する
-              href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: パフォーマンスを最適化する
+          href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           items:
             - name: 概要
               href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -729,6 +686,9 @@
               href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: オンプレミスの HDFS ストアを移行する
               href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Hadoop ファイル システム CLI で使用する
+          href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Power BI で使用する
     - name: リファレンス
       items:
         - name: PowerShell

@@ -7,12 +7,12 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d371026b932a0870798a32b3102102836962b78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203925"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981221"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>クイック スタート:Python を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -183,7 +183,7 @@ for blob in generator:
 
 
 `get_blob_to_path` メソッドを使用して、ローカル ディスクに BLOB をダウンロードします。
-次のコードでは、以前にアップロードした BLOB をダウンロードします。 ローカル ディスク上で両方のファイルを表示できるように、システムによって BLOB 名に *_DOWNLOADED* が付加されます。"
+次のコードでは、以前にアップロードした BLOB をダウンロードします。 ローカル ディスク上で両方のファイルを表示できるように、システムによって BLOB 名に *_DOWNLOADED* が付加されます。
 
 ```python
 # Download the blob(s).

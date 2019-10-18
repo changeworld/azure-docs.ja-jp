@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 2056970a91a90fc14528b13650472722a235c354
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4d4d83e12d284ce760b8a7e87fd42e6c8ebb4850
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350487"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001217"
 ---
 # <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Azure Machine Learning を使用してトレーニングとデプロイのための再利用可能な環境を作成および管理します。
 
@@ -207,7 +207,7 @@ myenv.register(workspace=ws)
 
 ### <a name="get-existing-environments"></a>既存の環境を取得する
 
-Environment クラスには、名前を指定して、一覧として、または特定のトレーニング実行を指定してワークスペース内の既存の環境を取得するメソッドがあります。 これにより、トラブルシューティングまたは監査のための再現性が得られます。
+Environment クラスには、ご利用のワークスペース内の既存の環境を、名前によって、リストとして、またはトラブルシューティングまたは監査目的での特定のトレーニング実行および再現性によって取得できるメソッドが用意されています。
 
 #### <a name="view-list-of-environments"></a>環境の一覧を表示する
 
@@ -243,7 +243,7 @@ Python パッケージの追加など、既存の環境に変更を加えた場�
 
 ```python
 from azureml.core import Image
-build = env.build()
+build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
@@ -258,7 +258,7 @@ Docker を `enable` にすると、サービスは Docker イメージを構築�
 myenv.docker.enabled = True
 ```
 
-ビルドされた Docker イメージは既定で、ワークスペースに関連付けられている Azure Container Registry に表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 一意識別子 (*uuuid*) の部分は、環境構成から計算されたハッシュに対応します。 これにより、サービスは、特定の環境に対応するイメージが既に存在していて再利用できるかどうかを判断できます。
+ビルドされた Docker イメージは既定で、ワークスペースに関連付けられている Azure Container Registry に表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 一意識別子 (*uuid*) の部分は、環境構成から計算されたハッシュに対応します。 これにより、サービスは、特定の環境に対応するイメージが既に存在していて再利用できるかどうかを判断できます。
 
 さらに、サービスは、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)の 1 つを自動的に使用し、指定された Python パッケージをインストールします。 基本イメージには、CPU と GPU のバージョンが含まれます。 Azure Machine Learning サービスでは、使用するバージョンが自動的に検出されます。
 

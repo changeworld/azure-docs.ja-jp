@@ -6,18 +6,17 @@ ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.custom: mvc
-manager: jeconnoc
-ms.openlocfilehash: dfb4abaf3868b76e17fb35f952c4db6bcdf30634
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+manager: gwallace
+ms.openlocfilehash: 951e48e591f490ea6321329352fd798fea58855d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838935"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329697"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Visual Studio Code を使用して関数を Azure Storage に接続する
 
-Azure Functions を使用すると、独自の統合コードを記述しなくても、Azure サービスやその他のリソースに関数を接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 トリガーは、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 この記事では、Visual Studio Code を使用して、[前のクイックスタートの記事](functions-create-first-function-vs-code.md)で作成した関数を Azure Storage に接続する方法を説明します。 この関数に追加する出力バインドは、HTTP 要求のデータを Azure Queue storage キュー内のメッセージに書き込みます。 
 

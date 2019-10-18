@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins でのイベントとメッセージのルーティング | Microsoft Docs
+title: イベントとメッセージのルーティング - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins でのサービス エンドポイントへのイベントとメッセージのルーティングの概要を説明します
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177090"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949264"
 ---
 # <a name="routing-events-and-messages"></a>ルーティング イベントおよびメッセージ
 

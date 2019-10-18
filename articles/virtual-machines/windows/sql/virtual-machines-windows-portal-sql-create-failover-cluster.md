@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036385"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170266"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -81,7 +81,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 - [Azure リソース グループ](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> 現時点で、Azure 上の SQL Server FCI では [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM からこの拡張機能をアンインストールすることをお勧めします。 この拡張機能では、自動バックアップや自動修正などの機能のほか、ポータルの SQL 用の機能の一部がサポートされます。 エージェントをアンインストールすると、これらの機能が SQL VM で動作しなくなります。
+> 現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、[SQL Server IaaS エージェント拡張機能](virtual-machines-windows-sql-server-agent-extension.md)の[軽量](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)管理モードでのみサポートされています。 フェールオーバー クラスターに参加している VM から完全拡張機能をアンインストールし、`lightweight` モードで SQL VM リソース プロバイダーに登録します。 完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 エージェントを軽量管理モードで再インストールすると、これらの機能は SQL VM で動作しなくなります。
 
 ### <a name="what-to-have"></a>必要なもの
 

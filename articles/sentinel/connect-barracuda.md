@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: b3ca93d9e70456d25d5f78b2ca1fde8e4ea24f8d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5142204db86158937c16d19bf52fb677099598a5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240200"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72284658"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Barracuda アプライアンスの接続 
 
@@ -37,10 +37,7 @@ Barracuda Web アプリケーション ファイアウォールでは、Log Anal
 1. [Barracuda WAF 構成フロー](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)に移動し、手順に従って次のパラメーターを使用して接続を設定します。
     - **ワークスペース ID**: Azure Sentinel Barracuda コネクタのページから、ワークスペース ID の値をコピーします。
     - **主キー**: Azure Sentinel Barracuda コネクタのページから、主キーの値をコピーします。
-2. Azure Sentinel ポータルで Azure Sentinel をデプロイしたワークスペースに移動し、行の末尾にある省略記号 (...) を選択して、 **[詳細設定]** を選択します。 
-1. **[データ]** 、 **[Syslog]** の順に選択します。
-1. Barracuda に設定したファシリティが存在することを確認して重大度を設定し、 **[保存]** をクリックします。
-6. Log Analytics で Barracuda イベントに関連するスキーマを使用するために、**CommonSecurityLog** と **barracuda_CL** を検索します。
+1. Log Analytics で Barracuda イベントに関連するスキーマを使用するために、**CommonSecurityLog** と **barracuda_CL** を検索します。
 
 
 ## <a name="validate-connectivity"></a>接続の検証

@@ -15,17 +15,20 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 09/24/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 4664007bf892b2ae445d6b5174e4f346944e620b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 3cdec1bb9d4cb44c4cead6d2d208d661bf5da6ae
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272308"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971875"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
 事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) で入手できます。
 
 Azure を利用するのが初めてであれば、 [無料の Azure アカウントを作成します](https://azure.microsoft.com/free)。
+
+> [!NOTE]
+> 一部のサブスクリプションでは、Windows 10 イメージを展開することはできません。 詳細については、「[Azure で Windows クライアントを開発/テスト シナリオに使用する](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)」を参照してください。
 
 ## <a name="what-configurations-and-versions-are-available"></a>どんな構成とバージョンを使用できますか。
 最新のメジャー バージョン (Visual Studio 2019、Visual Studio 2017、Visual Studio 2015) のイメージは、Azure Marketplace で提供されています。  リリースされたメジャー バージョンごとに、最初に Web にリリースされたバージョン (RTW: Released To Web) と最新の更新バージョンが表示されます。  これらの各バージョンでは、Visual Studio Enterprise エディションと Visual Studio Community エディションが提供されます。  これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。  イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンと、その時点のイメージの日付が記載されます。

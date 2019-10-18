@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 53bed3fe50afef260ac44f73a9f82e6894015c90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349013"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937317"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI を使用して Azure Data Explorer データのクエリと視覚化を行う場合のベスト プラクティス
 
@@ -104,7 +104,7 @@ Kusto クエリからは、既定で最大 500,000 行または 64 MB が返さ�
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. クエリの関連部分を実際のパラメーターに置き換えます。 クエリを複数の部分に分割し、パラメーターと共に & 記号を使用して連結します。
+1. クエリの関連部分を実際のパラメーターに置き換えます。 クエリを複数の部分に分割し、パラメーターと共にアンパサンド (&) を使用して再度連結します。
 
    たとえば、前述のクエリでは、`State == 'ALABAMA'` の部分を使用し、`State == '` と `'` のように分割します。それらの間に `State` パラメーターを配置します。
    

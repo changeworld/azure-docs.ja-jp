@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 09ba4bc9e5ac496a7d1d65ff145d56818e53116e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243350"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432068"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する
 
@@ -34,7 +34,7 @@ Azure Automation State Configuration を使うと、サーバーの構成を指�
 - Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
 - Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 - Azure PowerShell モジュール バージョン 3.6 以降。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
-- Desired State Configuration (DSC) に関する知識。 DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overviews)」をご覧ください。
+- Desired State Configuration (DSC) に関する知識。 DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 

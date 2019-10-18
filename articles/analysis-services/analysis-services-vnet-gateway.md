@@ -2,18 +2,17 @@
 title: Azure Virtual Network データソースに対してオンプレミス データ ゲートウェイを使用する | Microsoft Docs
 description: VNet 上のデータソースに対してゲートウェイを使用するようにサーバーを構成する方法を説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 675d8ecd3d6a3310a9b102df37df18bed02df3de
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d1993996c0f982624d6976b50871fa8c4592e2f6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958802"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301218"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Azure Virtual Network (VNet) 上のデータソースに対してゲートウェイを使用する
 

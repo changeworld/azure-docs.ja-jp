@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172163"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034674"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>チュートリアル:スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "71172163"
 
 完成したロジック アプリの大まかなワークフローは、次のようになります。
 
-![ロジック アプリの概観](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
+![ロジック アプリの大まかなワークフローの概要](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,11 +52,11 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. Azure のメイン メニューで、 **[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** の順に選択します。
 
-   ![ロジック アプリを作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
+   ![ロジック アプリ リソースを作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
 1. **[ロジック アプリの作成]** で、ロジック アプリに関する情報を次のように入力します。 完了したら **[作成]** を選択します。
 
-   ![ロジック アプリに関する情報の入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
+   ![ロジック アプリに関する情報を入力する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
@@ -69,7 +69,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. Azure によってアプリがデプロイされた後、Azure ツール バーで、対象のデプロイされたロジック アプリに対して、 **[通知]**  >  **[リソースに移動]** の順に選択します。
 
-   ![リソースに移動](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-logic-app.png)
+   ![新しいロジック アプリ リソースに移動する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    または、検索ボックスに名前を入力して、目的のロジック アプリを見つけて選択することもできます。
 
@@ -87,11 +87,11 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. **[繰り返し]** シェイプの**省略記号** ( **...** ) ボタンを選択し、 **[名前の変更]** を選択します。 トリガーの名前をわかりやすく「`Check travel time every weekday morning`」に変更します。
 
-   ![トリガーの名前変更](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
+   ![繰り返しトリガーの説明に使用する名前を変更する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
 1. トリガー内で次のプロパティを変更します。
 
-   ![間隔と頻度を変更する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
+   ![繰り返しトリガーの間隔と頻度を変更する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
@@ -105,7 +105,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    * **設定時刻 (時間)**
    * **設定時刻 (分)**
 
-   ![トリガーのプロパティを追加する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
+   ![繰り返しトリガーのプロパティを追加する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
 
 1. 今度は、以下の図と説明に従って、追加したプロパティの値を設定します。
 
@@ -140,7 +140,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. Bing 地図の接続が存在しない場合、接続を作成するように求められます。 これらの接続情報を入力して **[作成]** を選択します。
 
-   ![Bing 地図の接続を作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
+   ![Bing Maps API の接続を作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
@@ -221,11 +221,11 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    1. 式の中でプロパティの値が解決されたら **[OK]** を選択します。
 
-      ![[OK] を選択する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
+      ![式の作成を完了するために [OK] を選択する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
 
       **[値]** プロパティが次のように表示されます。
 
-      ![式が解決された状態の [値] プロパティ](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
+      ![式が解決された状態の [値] プロパティが表示される](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
 1. ロジック アプリを保存し、
 
@@ -247,7 +247,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    1. 表示された動的コンテンツ リストから、 **[変数]** の **travelTime** プロパティを選択します。
 
-      ![左側の条件を作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
+      ![条件の左辺を作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
    1. 中央の比較ボックスで、演算子として **[次の値より大きい]** を選択します。
 
@@ -255,7 +255,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       完成した条件は次の例のようになります。
 
-      ![完成した条件](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![移動時間をチェックするための条件が完成](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. ロジック アプリを保存し、
 
@@ -269,7 +269,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. **[アクションを選択してください]** で **[標準]** を選択します。 検索ボックスに、「メールの送信」と入力します。 多数の結果が返されるため、最初に、必要な電子メール コネクタを選択してください (次の例を参照)。
 
-   ![電子メール コネクタを選択する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
+   ![必要な電子メール コネクタを選択する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
 
    * Azure の職場または学校アカウントには、**Office 365 Outlook** を選択します。
    * 個人用 Microsoft アカウントには、**Outlook.com** を選択します。
@@ -320,17 +320,17 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    1. 式の中でプロパティが解決されたら **[OK]** を選択します。
 
-      ![式が解決された状態の [本文] プロパティ](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
+      ![[本文] プロパティが解決されたら [OK] を選択する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
 
       **[本文]** プロパティが次のように表示されます。
 
-      ![式が解決された状態の [本文] プロパティ](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
+      ![式の中で解決された [本文] プロパティ](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
 1. ロジック アプリを保存し、
 
 次に、ロジック アプリをテストします。この時点で、ロジック アプリは次のようになっています。
 
-![完成したロジック アプリ](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
+![ロジック アプリのワークフローの完成例](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
 
 ## <a name="run-your-logic-app"></a>ロジック アプリを実行する
 
@@ -340,7 +340,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 * 最新の移動時間が指定の上限を超えた場合、最新の移動時間と上限を基準とした超過分の時間 (分) とがメールで通知されます。 以下に示したのは、このロジック アプリから送信されるメールの例です。
 
-![移動時間が記載された送信メール](./media/tutorial-build-scheduled-recurring-logic-app-workflow/email-notification.png)
+![移動時間を示す送信メールの例](./media/tutorial-build-scheduled-recurring-logic-app-workflow/received-example-email-notification.png)
 
 メールが届かない場合は、迷惑メール フォルダーを確認してください。 この種のメールは、迷惑メール フィルターによってリダイレクトされる場合があります。 また、ロジック アプリが正しく動作しているかどうかわからない場合は、[ロジック アプリのトラブルシューティング](../logic-apps/logic-apps-diagnosing-failures.md)に関するページを参照してください。
 

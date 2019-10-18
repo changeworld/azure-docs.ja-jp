@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147288"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285987"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource 向けコンサルティング サービス
 Azure Marketplace および AppSource のコンサルティング サービスは、お客様とサービスを結ぶという目標を Microsoft パートナーに提供し、Azure の使用と業務目標を支援して拡張します。 
@@ -79,7 +79,6 @@ Microsoft Azure に基づくコンサルティング サービスおよびマネ
 |デンマーク   |イタリア   |     ノルウェー          |米国 |
 |フィンランド   |日本   |     ポーランド          
 
-コンサルティング サービスは、一部のリージョンで提供が開始されます。 最初の提供開始は、米国、カナダ、英国、オーストラリアです。 他の国/地域のカタログは、ある程度の数の魅力的なサービス プランがパートナーから提出されて、Microsoft がそれを承認した後に開始されます。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource のコンサルティング サービスに登録する方法
 最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)します。 パブリッシャーは、登録要件の完全なチェックリストについて、「[Marketplace のネットショップで公開元になる](https://docs.microsoft.com/azure/marketplace/become-publisher)」を参照することができます。 

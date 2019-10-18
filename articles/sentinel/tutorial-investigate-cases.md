@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229415"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024614"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
@@ -44,7 +44,7 @@ ms.locfileid: "71229415"
 
 ## <a name="how-to-investigate-incidents"></a>インシデントの調査方法
 
-1.  **[インシデント]** を選択します。  **[インシデント]**   ページには、所有しているインシデントの数、開いているインシデントの数、 **[処理中]** に設定したインシデントの数、閉じたインシデントの数が表示されます。 各インシデントについて、その発生時刻とインシデントの状態を確認できます。 重大度を調べて、最初に処理するインシデントを決定します。
+1. **[インシデント]** を選択します。 **[インシデント]** ページには、自分に割り当てられたインシデントの数、開いているインシデントの数、 **[処理中]** に設定したインシデントの数、閉じたインシデントの数が表示されます。 各インシデントについて、その発生時刻とインシデントの状態を確認できます。 重大度を調べて、最初に処理するインシデントを決定します。
 
     ![インシデントの重大度の表示](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -78,14 +78,14 @@ ms.locfileid: "71229415"
 
 調査グラフを使用するには:
 
-1. インシデントを選択し、 **[調査]** を選択します。 これにより、調査グラフが表示されます。 グラフには、アラートに直接接続されているエンティティと、さらに接続されている各リソースのイラスト マップが示されます。
+1. インシデントを選択し、 **[調査]** を選択します。 これにより、調査グラフが表示されます。 グラフには、アラートに直接接続されているエンティティと、さらに接続されている各リソースのイラスト マップが示されます。
 
    > [!IMPORTANT] 
    > 分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合にのみ、インシデントを調査できます。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
 
    ![マップを表示する](media/tutorial-investigate-cases/map1.png)
 
-1. エンティティを選択すると、 **[エンティティ]**   ウィンドウが開き、そのエンティティに関する情報を確認できます。
+1. エンティティを選択すると、 **[エンティティ]** ウィンドウが開き、そのエンティティに関する情報を確認できます。
 
     ![マップでのエンティティの表示](media/tutorial-investigate-cases/map-entities.png)
   

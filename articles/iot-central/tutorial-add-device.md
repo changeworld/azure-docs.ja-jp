@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 192374971e92bae282c5092dd8c5e7261fce0c5f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2673d0d2c1cb174316e99a79a10a67347e2bc031
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066371"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001354"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションに実デバイスを追加する
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-このチュートリアルでは、実デバイスを Microsoft Azure IoT Central アプリケーションに追加して構成する方法について説明します。
+このチュートリアルでは、"*実デバイス*" を自分の Microsoft Azure IoT Central アプリケーションに追加して構成する方法について説明します。 このチュートリアルでは、Node.js を使用して実デバイスをコーディングし、そのコードをデスクトップ マシンで実行します。 このチュートリアルを完了するのに、Raspberry Pi や MXChip IoT DevKit デバイスなどの個別の IoT デバイスは必要ありません。
 
 このチュートリアルは次の 2 つの部分で構成されています。
 
@@ -52,11 +52,11 @@ ms.locfileid: "71066371"
 
    **デバイス エクスプローラー**に、**Connected Air Conditioner** デバイス テンプレートとシミュレートされたデバイスが表示されます。 デバイス テンプレートを作成すると、IoT Central によってシミュレートされたデバイスが自動的に作成されます。
 
-2. コネクテッド空調機の実デバイスの接続を開始するには、 **+** を選択してから **[Real]\(実デバイス\)** を選択します。
+2. **Connected Air Conditioner** デバイス テンプレートが**デバイス エクスプローラー**で選択されていることに注意してください。 このテンプレートを使用する空調機の実デバイスの接続を開始するには、 **[+]** を選択してから **[Real]\(実デバイス\)** を選択します。
 
    ![コネクテッド空調機の新しい実デバイスの追加の開始](media/tutorial-add-device/newreal.png)
 
-3. デバイス ID (小文字のみ) を入力するか、推奨デバイス ID を使います。 新しいデバイスの名前を入力して、 **[作成]** を選択することもできます。
+3. 自分の**デバイス ID** (小文字のみ) を入力するか、推奨される値を使用します。 新しいデバイスの **[デバイス名]** を入力して、 **[作成]** を選択することもできます。
 
    ![デバイス名の変更](media/tutorial-add-device/rename.png)
 
@@ -76,9 +76,9 @@ ms.locfileid: "71066371"
 
 ## <a name="prepare-the-client-code"></a>クライアント コードの準備
 
-この記事のサンプル コードは [Node.js](https://nodejs.org/) で記述されており、次の処理を行うための十分なコードを示しています。
+この記事のサンプル コードは [Node.js](https://nodejs.org/) で記述されており、次の用途で使用されるデバイス用の十分なコードを示しています。
 
-* Azure IoT Central アプリケーションにデバイスとして接続する。
+* Azure IoT Central アプリケーションに接続する。
 * コネクテッド空調デバイスとして温度テレメトリを送信する。
 * Azure IoT Central アプリケーションにデバイス プロパティを送信する。
 * **Set Temperature** 設定を使用するオペレーターに応答する。
@@ -96,7 +96,7 @@ ms.locfileid: "71066371"
 
    ![接続情報の表示リンクが表示されている [デバイス] ページ](media/tutorial-add-device/connectionlink.png)
 
-1. [デバイス接続] ページで、 **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** の値をメモします。 これらの値を、このチュートリアルで後ほど使用します。
+1. **[デバイス接続]** ページで、 **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** の値をメモします。 これらの値を、このチュートリアルで後ほど使用します。
 
    ![接続の詳細](media/tutorial-add-device/device-connect.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "71066371"
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
@@ -150,7 +150,7 @@ ms.locfileid: "71066371"
 
 ## <a name="review-client-code"></a>クライアント コードのレビュー
 
-前のセクションでは、Azure IoT Central アプリケーションに接続するアプリケーションのスケルトン Node.js プロジェクトを作成しました。 次の手順では、次の処理を行うためのコードを追加します。
+前のセクションでは、Azure IoT Central アプリケーションに接続するデバイス アプリケーションのスケルトン Node.js プロジェクトを作成しました。 次の手順では、次の処理を行うためのコードを追加します。
 
 * Azure IoT Central アプリケーションに接続する。
 * Azure IoT Central アプリケーションにテレメトリを送信する。

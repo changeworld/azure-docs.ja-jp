@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130169"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029262"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -49,7 +49,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6.  **[バックアップ項目]**   ブレードでは、保護されている VM の一覧を表示することができます。 この例では、コンテナーは 1 つの仮想マシン、demobackup を保護します。  
+6. **[バックアップ項目]** ブレードでは、保護されている VM の一覧を表示できます。 この例では、コンテナーは 1 つの仮想マシン、demobackup を保護します。  
 
     ![[バックアップ項目] ブレードを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -66,7 +66,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3.  **[バックアップ項目]**   ブレードでは、保護されている VM と、最新の復旧ポイントの時点の最後のバックアップの状態の一覧を表示することができます。
+3. **[バックアップ項目]** ブレードでは、保護されている VM と、最新の復元ポイントの時点の最後のバックアップの状態の一覧を表示できます。
 
     ![[バックアップ項目] ブレードを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 

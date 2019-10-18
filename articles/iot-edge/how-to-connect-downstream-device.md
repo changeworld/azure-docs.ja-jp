@@ -4,17 +4,17 @@ description: ダウンストリーム デバイスまたはリーフ デバイ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/07/2019
+ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c37c3ed2031746d7c476850749bb3dc613252654
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266118"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176807"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -183,17 +183,23 @@ Windows ホストで OpenSSL または別の TLS ライブラリを使用して�
 このセクションでは、Azure IoT Python デバイス クライアントを IoT Edge ゲートウェイに接続するサンプル アプリケーションを示します。 
 
 1. **send_message** のサンプルを [Python 用 Azure IoT device SDK のサンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)から入手します。 
-2. Edge コンテナーまたはデバッグ シナリオで実行していること、`EdgeHubConnectionString` 環境変数と `EdgeModuleCACertificateFile` 環境変数が設定されていることを確認します。
+2. IoT Edge コンテナーまたはデバッグ シナリオで実行していること、`EdgeHubConnectionString` 環境変数と `EdgeModuleCACertificateFile` 環境変数が設定されていることを確認します。
 3. お使いのデバイス上でサンプルを実行する方法を示す手順については、SDK ドキュメントを参照してください。 
 
 
 ## <a name="test-the-gateway-connection"></a>ゲートウェイ接続をテストする
 
-これは、すべて正しく設定されていることをテストするサンプル コマンドです。 "verified OK" (検証 OK) というメッセージが表示されます。
+このサンプル コマンドを使用して、ダウンストリーム デバイスがゲートウェイ デバイスに接続できるかテストします。 
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+このコマンドは、MQTTS (ポート 8883) 経由の接続をテストします。 別のプロトコルを使用している場合は、AMQPS (5671) または HTTPS (433) に合わせて必要に応じてコマンドを調整します。
+
+このコマンドの出力は、チェーン内のすべての証明書に関する情報を含む、長い出力になる場合があります。 接続に成功すると、`Verification: OK` または `Verify return code: 0 (ok)` のような行が表示されます。
+
+![ゲートウェイ接続を確認する](./media/how-to-connect-downstream-device/verification-ok.png)
 
 ## <a name="troubleshoot-the-gateway-connection"></a>ゲートウェイ接続をトラブルシューティングする
 

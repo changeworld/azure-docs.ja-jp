@@ -135,7 +135,7 @@ azcopy login --tenant-id=<tenant-id>
 
 ユーザーの介入なしで実行されるスクリプト内で AzCopy を使用する予定の場合、これは優れたオプションです (特にオンプレミスで実行するとき)。 Azure で実行されている VM で AzCopy を実行する場合、マネージド サービス ID を管理しやすくなります。 詳しくは、この記事の「[マネージド ID を認証する](#managed-identity)」セクションを参照してください。
 
-そのスクリプトを実行する前に、少なくとも 1 回対話的にサインインする必要があります。そうすることで、ご自分のサービス プリンシパルの資格情報を AzCopy に渡すことができます。  それらの資格情報は暗号化された安全なファイルに格納されます。そのため、実際のスクリプトでその機密情報を渡す必要がありません。
+そのスクリプトを実行する前に、少なくとも 1 回対話的にサインインする必要があります。そうすることで、ご自身のサービス プリンシパルの資格情報を AzCopy に渡すことができます。  それらの資格情報は暗号化された安全なファイルに格納されます。そのため、実際のスクリプトでその機密情報を渡す必要がありません。
 
 クライアント シークレットを使用して、またはご自分のサービス プリンシパルのアプリ登録に関連付けられている証明書のパスワードを使用して、ご自分のアカウントにサインインできます。
 
@@ -159,7 +159,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 > [!NOTE]
 > この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。  
 
-次に、次のコマンドを入力し、Enter キーを押します。
+次に、以下のコマンドを入力し、Enter キーを押します。
 
 ```azcopy
 azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
@@ -184,7 +184,7 @@ azcopy login --service-principal --application-id <application-id> --tenant-id=<
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 ```
 
-次に、次のコマンドを入力し、Enter キーを押します。
+次に、以下のコマンドを入力し、Enter キーを押します。
 
 ```azcopy
 azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>

@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686733"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240112"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)
 
 > [!NOTE] 
-> Key Vault 参照は現在プレビューの段階です。
+> 現在のところ、Key Vault 参照はプレビュー段階であり、Linux 従量課金プランではサポートされていません。
 
 このトピックでは、コードを変更せず、App Service または Azure Functions アプリケーションの Azure Key Vault のシークレットを使用する方法を紹介します。 [Azure Key Vault](../key-vault/key-vault-overview.md) は、アクセス ポリシーと監査履歴を完全制御する、一元化されたシークレット管理を提供するサービスです。
 

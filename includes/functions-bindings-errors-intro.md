@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: f771b6b0416c5777c1ebde7e2cf2c4ffc6f375ff
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 178fa7d5f129a12736ec068fca605ba24cd37839
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155293"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955869"
 ---
 Azure Functions で発生するエラーは、次のいずれかが元になっています。
 
@@ -23,7 +23,7 @@ Azure Functions で発生するエラーは、次のいずれかが元になっ�
 - [Application Insights を有効にする](../articles/azure-functions/functions-monitoring.md)
 - [構造化エラー処理を使用する](#use-structured-error-handling)
 - [べき等に設計する](../articles/azure-functions/functions-idempotent.md)
-- 再試行ポリシーを実装する (該当する場合)
+- [再試行ポリシーを実装する](../articles/azure-functions/functions-reliable-event-processing.md) (該当する場合)
 
 ### <a name="use-structured-error-handling"></a>構造化エラー処理を使用する
 

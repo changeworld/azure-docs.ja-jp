@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 520bce39841f1008a0e47af1089db7fdce5ccae8
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "70736001"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255323"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -4826,7 +4826,7 @@ Web テーブルからデータをコピーする場合は、コピー アクテ
 | [Azure Batch](#azure-batch) |[.NET カスタム アクティビティ](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity)、[Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL Database](#azure-sql-database)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse)、[SQL Server](#sql-server-1) |[ストアド プロシージャ](#stored-procedure-activity) |
+| [Azure SQL Database](#azure-sql-database)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse)、[SQL Server](#sql-server-stored-procedure) |[ストアド プロシージャ](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>オンデマンド Azure HDInsight クラスター
 Azure Data Factory サービスは、データを処理するための Windows/Linux ベースのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 このリンクされたサービスでは、変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
@@ -4996,7 +4996,8 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 }
 ```
 
-## <a name="sql-server"></a>SQL Server
+## <a name="sql-server-stored-procedure"></a>SQL Server ストアド プロシージャ ア
+
 SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。
 
 ### <a name="linked-service"></a>リンクされたサービス

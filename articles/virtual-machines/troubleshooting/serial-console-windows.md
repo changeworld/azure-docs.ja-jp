@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: ebf7b712dda19b396b044235bf194a5dd402ffac
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 9fbe6768014550a3746085406e9039e83185c20f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996414"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949682"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -179,7 +179,7 @@ RDP 構成の問題 | シリアル コンソールにアクセスし、設定を
 ブートローダーの操作 | シリアル コンソールを使用して BCD にアクセスします。 詳細については、「[シリアル コンソールの Windows ブート メニューの有効化](#enable-the-windows-boot-menu-in-the-serial-console)」を参照してください。
 
 ## <a name="known-issues"></a>既知の問題
-Microsoft は、シリアル コンソールには問題がいくつかあることを認識しています。 そのような問題と軽減手順を以下に示します。 これらの問題と軽減策は、VM と仮想マシン スケール セット インスタンスの両方に適用されます。
+Microsoft は、シリアル コンソールおよび VM のオペレーティング システムには問題がいくつかあることを認識しています。 Windows VM のそのような問題と軽減手順を以下に示します。 これらの問題と軽減策は、VM と仮想マシン スケール セット インスタンスの両方に適用されます。 表示されているエラーと一致しない場合は、[シリアル コンソールに関する一般的なエラー](./serial-console-errors.md)に関する記事で一般的なシリアル コンソール サービス エラーを参照してください。
 
 問題                             |   対応策
 :---------------------------------|:--------------------------------------------|
@@ -189,8 +189,6 @@ Windows VM に接続したときに、正常性情報だけが表示される| �
 元のコンテンツに反復する文字が含まれる場合、SAC の PowerShell に貼り付けると 3 文字目が生成される。 | 回避策は、`Remove-Module PSReadLine` を実行して、現在のセッションから PSReadLine モジュールをアンロードすることです。 このアクションは、モジュールを削除またはアンインストールしません。
 一部のキーボード入力で、不適切な SAC 出力が生成される (例: **[A**、 **[3~** )。 | [VT100](https://aka.ms/vtsequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。
 長い文字列を貼り付けると機能しない。 | シリアル コンソールでは、シリアル ポートの帯域幅に対する過負荷を防止するために、ターミナルに貼り付けられる文字列の長さが 2048 文字に制限されます。
-シリアル コンソールが、階層型名前空間を持つ Azure Data Lake Storage Gen2 を使用するストレージ アカウントで機能しません。 | これは階層型名前空間の既知の問題です。 緩和するには、Azure Data Lake Storage Gen2 を使用して VM のブート診断ストレージ アカウントを作成しないようにします。 このオプションは、ストレージ アカウントの作成時にのみ設定できます。 この問題を緩和するには、Azure Data Lake Storage Gen2 を有効にせずに別個のブート診断ストレージ アカウントを作成しなければならない場合があります。
-
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

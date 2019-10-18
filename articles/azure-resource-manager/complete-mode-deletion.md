@@ -4,14 +4,14 @@ description: リソースの種類に応じて Azure Resource Manager テンプ�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8238dddee041573d9b122e62cec66118c681ef6
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cdc00ccc61e20865e993a18c72b930d9570896f2
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995261"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937047"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完全モード デプロイでの Azure リソースの削除
 
@@ -43,7 +43,6 @@ ms.locfileid: "70995261"
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
@@ -126,6 +125,7 @@ ms.locfileid: "70995261"
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft.ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
@@ -396,6 +396,7 @@ ms.locfileid: "70995261"
 > | billingAccounts/customers | いいえ |
 > | billingAccounts/customers/billingSubscriptions | いいえ |
 > | billingAccounts/customers/initiateTransfer | いいえ |
+> | billingAccounts/customers/policies | いいえ |
 > | billingAccounts/customers/products | いいえ |
 > | billingAccounts/customers/transactions | いいえ |
 > | billingAccounts/customers/transfers | いいえ |
@@ -443,13 +444,6 @@ ms.locfileid: "70995261"
 > | ------------- | ----------- |
 > | mapApis | はい |
 > | updateCommunicationPreference | いいえ |
-
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | 完全モードの削除 |
-> | ------------- | ----------- |
-> | BizTalk | はい |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -637,10 +631,10 @@ ms.locfileid: "70995261"
 > | diskEncryptionSets | はい |
 > | disks | はい |
 > | galleries | はい |
-> | galleries/applications | はい |
-> | galleries/applications/versions | はい |
-> | galleries/images | はい |
-> | galleries/images/versions | はい |
+> | galleries/applications | いいえ |
+> | galleries/applications/versions | いいえ |
+> | galleries/images | いいえ |
+> | galleries/images/versions | いいえ |
 > | hostGroups | はい |
 > | hostGroups/hosts | はい |
 > | images | はい |
@@ -648,13 +642,11 @@ ms.locfileid: "70995261"
 > | restorePointCollections | はい |
 > | restorePointCollections/restorePoints | いいえ |
 > | sharedVMImages | はい |
-> | sharedVMImages/versions | はい |
-> | snapshots | はい |
+> | sharedVMImages/versions | いいえ |
+> | スナップショット | はい |
 > | virtualMachines | はい |
 > | virtualMachines/extensions | はい |
 > | virtualMachines/metricDefinitions | いいえ |
-> | virtualMachines/scriptJobs | いいえ |
-> | virtualMachines/softwareUpdateDeployments | いいえ |
 > | virtualMachineScaleSets | はい |
 > | virtualMachineScaleSets/extensions | いいえ |
 > | virtualMachineScaleSets/networkInterfaces | いいえ |
@@ -871,7 +863,6 @@ ms.locfileid: "70995261"
 > | ------------- | ----------- |
 > | services | はい |
 > | services/projects | はい |
-> | slots | はい |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
@@ -923,6 +914,9 @@ ms.locfileid: "70995261"
 > | serverGroups | はい |
 > | servers | はい |
 > | servers/advisors | いいえ |
+> | servers/privateEndpointConnectionProxies | いいえ |
+> | servers/privateEndpointConnections | いいえ |
+> | servers/privateLinkResources | いいえ |
 > | servers/queryTexts | いいえ |
 > | servers/recoverableServers | いいえ |
 > | servers/topQueryStatistics | いいえ |
@@ -1203,6 +1197,7 @@ ms.locfileid: "70995261"
 > | clusters/databases | いいえ |
 > | clusters/databases/dataconnections | いいえ |
 > | clusters/databases/eventhubconnections | いいえ |
+> | clusters/sharedidentities | いいえ |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1367,11 +1362,13 @@ ms.locfileid: "70995261"
 > | リソースの種類 | 完全モードの削除 |
 > | ------------- | ----------- |
 > | netAppAccounts | はい |
+> | netAppAccounts/backupPolicies | はい |
 > | netAppAccounts/capacityPools | はい |
 > | netAppAccounts/capacityPools/volumes | はい |
+> | netAppAccounts/capacityPools/volumes/backups | いいえ |
 > | netAppAccounts/capacityPools/volumes/mountTargets | はい |
 > | netAppAccounts/capacityPools/volumes/snapshots | はい |
-
+> | netAppAccounts/vaults | いいえ |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1464,6 +1461,13 @@ ms.locfileid: "70995261"
 > | ------------- | ----------- |
 > | namespaces | はい |
 > | namespaces/notificationHubs | はい |
+
+## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | 完全モードの削除 |
+> | ------------- | ----------- |
+> | osNamespaces | はい |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1618,7 +1622,6 @@ ms.locfileid: "70995261"
 > | subscriptions/resources | いいえ |
 > | subscriptions/tagnames | いいえ |
 > | subscriptions/tagNames/tagValues | いいえ |
-> | tags | いいえ |
 > | tenants | いいえ |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1682,6 +1685,7 @@ ms.locfileid: "70995261"
 > | securityStatusesSummaries | いいえ |
 > | serverVulnerabilityAssessments | いいえ |
 > | settings | いいえ |
+> | subAssessments | いいえ |
 > | tasks | いいえ |
 > | topologies | いいえ |
 > | workspaceSettings | いいえ |

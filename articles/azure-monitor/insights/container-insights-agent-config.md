@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ada573cc919d775af52abc5a75004866aebbeddb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709423"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033937"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する
 
@@ -49,7 +49,7 @@ ms.locfileid: "71709423"
 |`[log_collection_settings.stdout] exclude_namespaces =`|string | コンマ区切りの配列 |stdout のログを収集しない Kubernetes 名前空間の配列。 この設定は、`log_collection_settings.stdout.enabled` を `true` に設定した場合にのみ有効です。 ConfigMap で指定しない場合、既定値は `exclude_namespaces = ["kube-system"]` です。|
 |`[log_collection_settings.stderr] enabled =` |Boolean | true または false |stderr コンテナーのログ収集が有効かどうかを制御します。 `true` に設定した場合、stdout のログ収集に対して名前空間を除外しないと (`log_collection_settings.stderr.exclude_namespaces` 設定)、クラスター内のすべてのポッド/ノードのすべてのコンテナーから、stderr ログが収集されます。 ConfigMap で指定しない場合、既定値は `enabled = true` です。 |
 |`[log_collection_settings.stderr] exclude_namespaces =` |string |コンマ区切りの配列 |stderr のログを収集しない Kubernetes 名前空間の配列。 この設定は、`log_collection_settings.stdout.enabled` を `true` に設定した場合にのみ有効です。 ConfigMap で指定しない場合、既定値は `exclude_namespaces = ["kube-system"]` です。 |
-| `[log_collection_settings.env_var] enabled =` |Boolean | true または false | これは、環境変数の収集が有効かどうかを制御します。 `false` に設定すると、クラスター内のすべてのポッド/ノードで実行されているすべてのコンテナーの環境変数が収集されません。 ConfigMap で指定しない場合、既定値は `enabled = true` です。 |
+| `[log_collection_settings.env_var] enabled =` |Boolean | true または false | この設定により、クラスター内のすべてのポッド/ノードにわたる環境変数コレクションが制御されます。ConfigMap で指定されていない場合、既定値は `enabled = true` になります。 環境変数のコレクションがグローバルに有効になっている場合は、特定のコンテナーに対してそのコレクションを無効にすることができます。そのためには、Dockerfile 設定を使用して、または[ポッドの構成ファイル](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)の **env:** セクションで、環境変数 `AZMON_COLLECT_ENV` を **False** に設定します。 環境変数のコレクションがグローバルに無効になっている場合、特定のコンテナーに対してコレクションを有効にすることはできません (つまり、コンテナー レベルで適用できる唯一のオーバーライドは、既にグローバルに有効になっている場合にコレクションを無効にすることです)。 |
 
 ### <a name="prometheus-scraping-settings"></a>Prometheus のスクレーピングの設定
 
@@ -84,7 +84,7 @@ URL が指定されると、コンテナー用 Azure Monitor はエンドポイ�
 | ノード全体またはクラスター全体 | `interval` | string | 60s | 収集間隔の既定値は 1 分 (60 秒) です。 *[prometheus_data_collection_settings.node]* または *[prometheus_data_collection_settings.cluster]* に対する収集を、ns、us (または Âµs)、ms、s、m、h などの時間単位に変更できます。 |
 | ノード全体またはクラスター全体 | `fieldpass`<br> `fielddrop`| string | コンマ区切りの配列 | リスティングの許可 (`fieldpass`) および禁止 (`fielddrop`) を設定することにより、エンドポイントから特定のメトリックを収集する、または収集しないように指定できます。 許可リストを最初に設定する必要があります。 |
 
-ConfigMap はグローバル リストであり、エージェントに適用できる ConfigMap は 1 つだけです。 別の ConfigMap で収集を上書きすることはできません。
+ConfigMaps はグローバル リストであり、エージェントに適用できる ConfigMap は 1 つだけです。 別の ConfigMaps でコレクションを上書きすることはできません。
 
 ## <a name="configure-and-deploy-configmaps"></a>ConfigMap を構成してデプロイする
 

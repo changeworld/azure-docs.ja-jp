@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932826"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973293"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -99,6 +99,10 @@ _Azure portal_ のオーサリング リソースの **[Access Control (IAM)]** 
 アプリの所有者に依頼し、[Azure オーサリング リソースに自分の電子メールをコラボレーターとして追加](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)してもらう必要があります。 
 
 移行プロセスの後、自分が所有するアプリはすべて、LUIS ポータルの **[マイ アプリ]** ページで利用できます。  
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+LUIS オーサリング キーは、移行プロセスが完了した後に LUIS ポータルにのみ表示されます。 LUIS CLI などを使用してオーサリング キーを作成する場合でも、ユーザーは移行プロセスを完了する必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Digital Twins で UDF をデバッグする方法 | Microsoft Docs
 description: Azure Digital Twins で UDF をデバッグする方法に関するガイドライン。
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: v-adgera
+ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260853"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949897"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 
@@ -55,6 +55,13 @@ AzureDiagnostics
 | クエリの値 | 置換後の文字列 |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | イベント データで指定した相関 ID |
+
+最近のテレメトリ ログのクエリをすべて表示するには、次の手順に従います。
+
+```Kusto
+AzureDiagnostics
+| order by CorrelationId desc
+```
 
 ユーザー定義関数のログ記録を有効にした場合、それらのログがカテゴリ `UserDefinedFunction` で Log Analytics インスタンスに表示されます。 それらを取得するには、Log Analytics で、次のクエリ条件を入力します。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 40299b2ff9a20792cf25828051d2f937f3f1e9da
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: aab2535eb44ca5007859c71bf1f8142b26de7d14
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201271"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996740"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
 この記事では、Azure Security Center でユーザー データを管理する方法について説明します。 ユーザー データの管理には、データへのアクセス、削除、またはエクスポート機能が含まれます。
@@ -30,7 +30,7 @@ ms.locfileid: "71201271"
 ## <a name="searching-for-and-identifying-personal-data"></a>個人データの検索と識別
 Security Center のユーザーは、Azure portal から自分の個人データを表示できます。 Security Center では、メール アドレスや電話番号などのセキュリティ連絡先の詳細情報のみを保存します。 詳細については、「[Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md)」を参照してください。
 
-Azure portal で、ユーザーは、Security Center の Just In Time VM アクセス機能を使用して、許可されている IP 構成を表示できます。 詳しくは、[Just In Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)に関する記事をご覧ください。
+Azure portal で、ユーザーは、Security Center の Just In Time VM アクセス機能を使用して、許可されている IP 構成を表示できます。 詳しくは、「[Just In Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。
 
 Azure portal で、ユーザーは、IP アドレスや攻撃者の詳細など、Security Center から提供されるセキュリティ アラートを表示できます。 詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 

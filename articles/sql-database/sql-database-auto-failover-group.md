@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 6f5d865b5a12ce8989631deee7ebda49dbe1ab12
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/09/2019
+ms.openlocfilehash: b876fba2ae10c4f8b973ad1bb0c98bfa95c7f481
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103195"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249314"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -303,9 +303,6 @@ ms.locfileid: "71103195"
 
 > [!NOTE]
 > セカンダリ データベースをフェールオーバー グループ構成の一部として作成した場合、セカンダリ データベースをダウングレードすることは推奨されません。 これは、フェールオーバーがアクティブ化された後にデータ層に通常のワークロードを処理するのに十分な容量を確保するためです。
-
-> [!IMPORTANT]
-> フェールオーバー グループのメンバーである Managed Instance のアップグレードまたはダウングレードは、現在サポートされていません。
 
 ## <a name="preventing-the-loss-of-critical-data"></a>重要なデータの損失の防止
 

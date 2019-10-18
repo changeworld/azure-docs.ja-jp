@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264511"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981171"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 
@@ -56,7 +56,7 @@ Time Series Insights に格納されたデータと対話する方法は主に 3
 
 - 2 つ目の開始方法は、JavaScript SDK を使用して、Web アプリケーションに強力なチャートやグラフをすばやく埋め込むことです。 数行のコードで、強力なクエリを作成できます。 それらを使用して、折れ線グラフ、円グラフ、棒グラフ、ヒートマップ、データ グリッドなどのデータを入力します。 SDK を使用することで、これらのすべての要素がすぐに使用できる状態で存在します。 さらに、SDK は、Time Series Insights クエリ API を抽象化します。 それらを使用して、SQL に似た述語を作成して、ダッシュボードに表示するデータをクエリできます。 プレゼンテーション レイヤーのハイブリッド ソリューションに対して、Time Series Insights は、パラメーター化 URL を提供します。 それらは、データを深く探索するための Time Series Insights プレビュー エクスプローラーとのシームレスな接続ポイントを提供します。
 
-    * JavaScript SDK の詳細については、[Time Series Insights JS クライアント ライブラリ](tutorial-explore-js-client-lib.md)と [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
+    * JavaScript SDK の詳細については、[Time Series Insights JS クライアント ライブラリ](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)と [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
 
     * URL と新しい UI の共有の詳細について、[Azure Time Series Insights プレビューのエクスプローラーでのデータ視覚化](time-series-insights-update-explorer.md)に関するページを確認してください。
 

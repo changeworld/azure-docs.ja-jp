@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a52f9fca172e42aa39a4507347185026451a8ff2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123255"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029042"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -67,7 +67,7 @@ a.b.c.d/29 を使用してピアリングをセットアップすることを選
 ### <a name="ip-addresses-used-for-azure-public-peering"></a>Azure パブリック ピアリングに使用する IP アドレス
 
 > [!NOTE]
-> Azure パブリック ピアリングは、新しい回線では使用できません。
+> Azure パブリック ピアリングは新しい回線では使用できません。
 > 
 
 ユーザーは、所有しているパブリック IP アドレスを使用して BGP セッションをセットアップする必要があります。 Microsoft は、ルーティング インターネット レジストリおよびインターネット ルーティング レジストリを介して IP アドレスの所有権を確認できる必要があります。 
@@ -215,14 +215,16 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 
 | **サービス** | **BGP コミュニティ値** |
 | --- | --- |
-| Exchange Online | 12076:5010 |
-| SharePoint Online | 12076:5020 |
-| Skype for Business Online | 12076:5030 |
+| Exchange Online** | 12076:5010 |
+| SharePoint Online** | 12076:5020 |
+| Skype For Business Online** | 12076:5030 |
+| CRM Online |12076:5040 |
 | Azure Global Services* | 12076:5050 |
-| その他の Office 365 Online サービス | 12076:5100 |
+| Azure Active Directory |12076:5060 |
+| その他の Office 365 Online サービス** | 12076:5100 |
 
 *現在のところ、Azure Global Services には、Azure DevOps のみが含まれています。
-
+** Microsoft からの承認が必要です。「[Microsoft ピアリングにルート フィルターを構成する](how-to-routefilter-portal.md)」を参照してください 
 
 > [!NOTE]
 > Microsoft は、Microsoft にアドバタイズされるルートに設定されたすべての BGP コミュニティ値を無視します。

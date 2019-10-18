@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 0707ed3dfee9af27b7cab66c7952d1e7c1d57cb8
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 8accac7fe6068007180403fdab27013da161b28c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703211"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437195"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Language Understanding の開発者向けリソース
 
@@ -52,7 +52,7 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 |Go|[作成と予測](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[作成](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[予測](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[REST を使用した作成](luis-get-started-go-add-utterance.md)<br>[REST を使用した予測](luis-get-started-go-get-intent.md)|
 |Java|[作成と予測](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven の作成](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven の予測](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[作成](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[予測](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[作成](luis-get-started-java-add-utterance.md)<br>[予測](luis-get-started-java-get-intent.md)
 |Node.js|[作成](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[予測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM の作成](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM の予測](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[作成](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[予測](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[REST を使用した作成](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-get-intent)<br>[REST を使用した予測](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-add-utterance)|
-|Python|[作成と予測](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/?view=azure-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[作成](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[作成](sdk-python-quickstart-authoring-app.md)<br>[REST を使用した予測](luis-get-started-python-get-intent.md)
+|Python|[作成と予測](sdk-python-quickstart-authoring-app.md)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[作成](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[作成](sdk-python-quickstart-authoring-app.md)<br>[REST を使用した予測](luis-get-started-python-get-intent.md)
 
 ## <a name="other-tools-and-sdks"></a>その他のツールと SDK
 

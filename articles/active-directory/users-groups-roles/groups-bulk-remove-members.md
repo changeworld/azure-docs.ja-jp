@@ -13,19 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08708c23f9c8f4c4a8fc9f2f0aa5cd20d8333a42
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146377"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517090"
 ---
 # <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーの一括削除 (プレビュー)
 
 Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CSV) ファイルを使用してグループ メンバーを一括削除することで、多数のメンバーをグループから削除できます。
-
-> [!NOTE]
-> Azure AD の一括操作は Azure AD のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 プレビューの使用条件について詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="to-bulk-remove-group-members"></a>グループ メンバーを一括削除するには
 

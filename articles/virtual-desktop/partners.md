@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673014"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937505"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -33,9 +33,9 @@ Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度
 
 ![VMware のロゴ](./media/partners/vmware.png)
 
-組織は VMware Horizon Cloud on Microsoft Azure で、Microsoft Azure 上の自社のインスタンスを、仮想化された Windows アプリケーションおよびデスクトップを提供するシンプルで直観的な Horizon Cloud コントロール プレーンに接続して、安全で包括的なクラウド ホスト ソリューションを構築できます。 VMware は、Windows Virtual Desktop のリリースで Microsoft とパートナーシップを組み、Horizon Cloud on Microsoft Azure を使用し、お客様の Windows Virtual Desktop の機能を拡張しました。
-
-承認されたプロバイダーであるため、VMware Horizon Cloud on Microsoft Azure のお客様は、広範なエンドポイント サポート、グローバルにクラウド向けに最適化されたブローカリング、柔軟なデスクトップ オプションと構成、ユーザーの環境管理、ハイブリッド環境のサポートなどの Horizon Cloud の最新のエンタープライズ クラスのすべての機能に加え、Windows 10 Enterprise でのマルチセッション、Windows 7 のセキュリティ更新プログラムの最長 3 年間の無料延長、FSLogix 機能などの Windows Virtual Desktop のすべての利点を得ることができます。 
+組織は VMware Horizon Cloud on Microsoft Azure で、Microsoft Azure 上の自社のインスタンスを、仮想化された Windows アプリケーションおよびデスクトップを提供するシンプルで直観的な Horizon Cloud コントロール プレーンに接続して、安全で包括的なクラウド ホスト ソリューションを構築できます。 VMware は、Windows Virtual Desktop のリリースで Microsoft とパートナーシップを組み、Horizon Cloud on Microsoft Azure を使用し、お客様の Windows Virtual Desktop の機能を拡張しました。 この機能は、2019 の終わりまでにテクニカル プレビューで使用できるようになります。
+ 
+認定プロバイダーに対する Windows Virtual Desktop のベネフィットは、Microsoft Azure の顧客での VMware Horizon Cloud まで拡張されます。これには、マルチセッションに対する Windows 10 Enterprise、最大 3 年間の無料拡張セキュリティ更新プログラムを含む Windows 7、および FSLogix が含まれます。 さらに、幅広いエンドポイント サポート、グローバルなクラウド最適化ブローカー、柔軟なデスクトップ オプションと構成、ユーザー環境の管理、ハイブリッド環境のサポートなど、Horizon Cloud のエンタープライズ クラスの機能が顧客に提供されます。
 
 - [Horizon Cloud on Microsoft Azure のテクニカル プレビューに登録する。](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)
 - [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
@@ -93,7 +93,7 @@ Nerdio は、Azure IT 自動化プラットフォームです。これにより�
 Nerdio により、Azure リソースのプロビジョニングが簡素化され、デプロイが合理化されることで、Windows Virtual Desktop の価値が拡大します。 IT 担当者は、Azure に対して Nerdio を使用することで、Windows Virtual Desktop を含む Azure 環境全体を 2 時間未満で自動的にデプロイし、管理できます。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
-- [パートナーの Web サイトにアクセスする。](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)
+- [パートナーの Web サイトにアクセスする。](https://getnerdio.com/windows-virtual-desktop/)
 
 ## <a name="thinprint"></a>ThinPrint
 

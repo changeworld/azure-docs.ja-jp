@@ -6,21 +6,18 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a01cee2ba803a048e426507b57b96d0833743636
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5326e765701a42323ea62df8d35128c4117b2ed9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181242"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981413"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
 ポリシーの割り当ては、リソースに割り当てられるポリシーまたはイニシアティブを定義するために、Azure Policy によって使用されます。 ポリシーの割り当てでは、割り当て時にそのリソース グループのパラメーターの値を決定でき、ポリシー定義を再利用して、同じリソースのプロパティのコンプライアンス ニーズが異なる場合に対応できます。
 
-Azure Policy で使用されるスキーマについては、[https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policyassignments](/azure/templates/microsoft.authorization/2019-01-01/policyassignments) を参照してください。
-
-ポリシーの割り当てを作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
+ポリシーの割り当てを作成するには、JSON を使用します。 ポリシーの割り当てには、次に対する要素が含まれています。
 
 - 表示名
 - description

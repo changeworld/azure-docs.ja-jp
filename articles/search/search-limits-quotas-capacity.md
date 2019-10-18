@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: heidist
-ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327159"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947775"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -147,6 +147,18 @@ QPS の見積もりは、すべての顧客ごとに個別に開発する必要�
 ## <a name="data-limits-cognitive-search"></a>データの制限 (コグニティブ検索)
 
 [エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、および[言語検出](cognitive-search-skill-language-detection.md)の Text Analytics リソースに対して呼び出しを行う[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードの最大サイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) によって測定されるため、50,000 文字にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
+
+## <a name="throttling-limits"></a>スロットルの制限
+
+システムがピーク時の容量に近づくにつれて、検索クエリとインデックス作成要求が調整されます。 スロットルの動作は API によって異なります。 クエリ API (検索/提案/オートコンプリート) とインデックス作成 API は、サービスの負荷に基づいて動的に調整されます。 インデックス API には、静的な要求レート制限があります。 
+
+インデックスに関連する操作の静的なレート要求の制限:
+
++ インデックスの一覧取得 (GET /indexes):1 秒あたり 5 件 (検索単位あたり)
++ インデックスの取得 (GET /indexes/myindex):1 秒あたり 10 件 (検索単位あたり)
++ インデックスの作成 (POST /indexes):1 分あたり 12 件 (検索単位あたり)
++ インデックスの作成または更新 (PUT /indexes/myindex):1 秒あたり 6 件 (検索単位あたり)
++ インデックスの削除 (DELETE /indexes/myindex):1 分あたり 12 件 (検索単位あたり) 
 
 ## <a name="api-request-limits"></a>API 要求の制限
 * 要求あたりの最大値: 16 MB<sup>1</sup>

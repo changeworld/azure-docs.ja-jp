@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:カスタム ロゴ検出器を使用して Azure サービスを認識する - Custom Vision
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、ロゴ検出シナリオの一部として Azure Custom Vision を使用するサンプル アプリについて見ていきます。 Custom Vision を他のコンポーネントと共に使用してエンド ツー エンドのアプリケーションを提供する方法を学習します。
+description: このチュートリアルでは、ロゴ検出シナリオの一部として Custom Vision を使用するサンプル アプリについて見ていきます。 Custom Vision を他のコンポーネントと共に使用してエンド ツー エンドのアプリケーションを提供する方法を学習します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261967"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177790"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
-このチュートリアルでは、より大きなシナリオの一部として Azure Custom Vision を使用するサンプル アプリについて見ていきます。 モバイル プラットフォーム用の Xamarin.Forms アプリである AI Visual Provision アプリは、Azure サービスのロゴの写真を分析した後、実際のサービスをユーザーの Azure アカウントにデプロイします。 ここでは、このアプリで Custom Vision を他のコンポーネントと共に使用して便利なエンド ツー エンドのアプリケーションを提供する方法を学習します。 自分でアプリのシナリオ全体を実行するか、設定の Custom Vision 部分のみを完成させて、アプリでこの部分がどのように使用されているかを調べることができます。
+このチュートリアルでは、より大きなシナリオの一部として Custom Vision を使用するサンプル アプリについて見ていきます。 モバイル プラットフォーム用の Xamarin.Forms アプリである AI Visual Provision アプリは、Azure サービスのロゴの写真を分析した後、実際のサービスをユーザーの Azure アカウントにデプロイします。 ここでは、このアプリで Custom Vision を他のコンポーネントと共に使用して便利なエンド ツー エンドのアプリケーションを提供する方法を学習します。 自分でアプリのシナリオ全体を実行するか、設定の Custom Vision 部分のみを完成させて、アプリでこの部分がどのように使用されているかを調べることができます。
 
 ここでは、次の操作方法について説明します。
 

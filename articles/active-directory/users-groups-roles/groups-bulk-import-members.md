@@ -13,19 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4412bc9ce8d78b5810b25b60724575af66774127
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 8ff4234d9fd28e655e868108e37b09c5afe2767c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146231"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517131"
 ---
 # <a name="bulk-import-group-members-preview-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーの一括インポート (プレビュー)
 
 Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CSV) ファイルを使用してグループ メンバーを一括インポートすることで、多数のメンバーをグループに追加できます。
-
-> [!NOTE]
-> Azure AD 一括操作は Azure AD のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 プレビューの使用条件について詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="to-bulk-import-group-members"></a>グループ メンバーを一括インポートするには
 

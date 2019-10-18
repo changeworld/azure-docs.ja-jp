@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 875db0d34932dca1c7eae7e3650acf01856c6413
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1482ac4b885507e37ba5972065810682c19bebed
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934426"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958459"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -45,7 +45,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 **サポート** | **詳細**
 --- | ---
 **サポートされているデプロイ** | SQL Marketplace の Azure VM と、Marketplace 以外の (SQL Server が手動でインストールされる) VM がサポートされています。
-**サポートされている地域** | オーストラリア南東部 (ASE)、オーストラリア東部 (AE) <br> ブラジル南部 (BRS)<br> カナダ中部 (CNC)、カナダ東部 (CE)<br> 東南アジア (SEA)、東アジア (EA) <br> 米国東部 (EUS)、米国東部 2 (EUS2)、米国中西部 (WCUS)、米国西部 (WUS)、米国西部 2 (WUS 2)、米国中北部 (NCUS)、米国中部 (CUS)、米国中南部 (SCUS) <br> インド中部 (INC)、インド南部 (INS) <br> 東日本 (JPE)、西日本 (JPW) <br> 韓国中部 (KRC)、韓国南部 (KRS) <br> 北ヨーロッパ (NE)、西ヨーロッパ <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov アリゾナ、US Gov バージニア、US Gov テキサス、US DoD 中部、US DoD 東部
+**サポートされている地域** | オーストラリア南東部 (ASE)、オーストラリア東部 (AE)、オーストラリア中部 (AC)、オーストラリア中部 2 (AC) <br> ブラジル南部 (BRS)<br> カナダ中部 (CNC)、カナダ東部 (CE)<br> 東南アジア (SEA)、東アジア (EA) <br> 米国東部 (EUS)、米国東部 2 (EUS2)、米国中西部 (WCUS)、米国西部 (WUS)、米国西部 2 (WUS 2)、米国中北部 (NCUS)、米国中部 (CUS)、米国中南部 (SCUS) <br> インド中部 (INC)、インド南部 (INS)、インド西部 <br> 東日本 (JPE)、西日本 (JPW) <br> 韓国中部 (KRC)、韓国南部 (KRS) <br> 北ヨーロッパ (NE)、西ヨーロッパ <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov アリゾナ、US Gov バージニア、US Gov テキサス、US DoD 中部、US DoD 東部 <br> ドイツ北部、ドイツ中西部 <br> スイス北部、スイス西部
 **サポートされているオペレーティング システム** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012<br/><br/> Linux は現在サポートされていません。
 **サポートされる SQL Server のバージョン** | SQL Server 2017 (詳細は[こちら](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017))、SQL Server 2016 および SP (詳細は[こちら](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack))、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
 **サポートされている .NET バージョン** | VM 内にインストールされている .NET Framework 4.5.2 以降

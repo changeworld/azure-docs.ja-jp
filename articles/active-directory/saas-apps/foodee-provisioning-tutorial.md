@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812723"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170070"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>チュートリアル:Foodee を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -118,7 +118,7 @@ Azure AD で Foodee の自動ユーザー プロビジョニングを構成す�
 
 1. **[管理者資格情報]** で、次の操作を行います。
 
-   a. **[テナント URL]** ボックスに、前に取得した **https://concierge.food.ee/scim/v2** 値を入力します。
+   a. **[テナント URL]** ボックスに、前に取得した **https:\//concierge.food.ee/scim/v2** 値を入力します。
 
    b. **[シークレット トークン]** ボックスに、前に取得した **API トークン**値を入力します。
    
