@@ -51,11 +51,11 @@ Video Indexer アカウントの種類に応じて、異なる機能セットを
 
 このセクションでは、アニメーション化されたキャラクターの検出モデルの使用を開始するために必要な手順について説明します。
 
-### <a name="connect-your-custom-vision-account-paid-accounts-only"></キャラクター Custom Vision アカウントを接続する (有料アカウントのみ)
+### <a name="connect-your-custom-vision-account-paid-accounts-only">"></a>Custom Vision アカウントを接続する (有料アカウントのみ)
 
 Video Indexer 有料アカウントをお持ちの場合は、最初に Custom Vision アカウントを接続する必要があります。 Custom Vision アカウントをまだお持ちではない場合は、アカウントを作成してください。 詳細については、[Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home) に関するページを参照してください。
 
-### <a name="create-an-animated-characters-model"></a>アニメーション化されたキャキャラクターターモデルを作成する
+### <a name="create-an-animated-characters-model"></a>アニメーション化されたキャキャラクターモデルを作成する
 
 1. [Video Indexer](https://vi.microsoft.com/) Web サイトに移動してサインインします。
 1. ページの右上隅にあるコンテンツ モデルのカスタマイズ ボタンをクリックします。
@@ -85,7 +85,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 
 1. モデルにタグを付け、トレーニングします。
 
-    1. 名前を編集して、検出された文キャラクタータグを付けます。 モデルにトレーニングされたキャラクターは、そのモデルでインデックス付けされる次のビデオで認識されるようになります。 
+    1. 名前を編集して、検出されたキャラクターにタグを付けます。 モデルにトレーニングされたキャラクターは、そのモデルでインデックス付けされる次のビデオで認識されるようになります。  
     1. ビデオ内のアニメーション化されたキャラクターにタグを付けるには、 **[Insights]\(分析情報\)** タブに移動し、ウィンドウの右上隅の **[編集]** ボタンをクリックします。
     1. **[Insights]\(分析情報\)** ウィンドウで、検出されたアニメーション化されたキャラクターのいずれかをクリックし、名前を "Unknown #X" (または前にキャラクターに割り当てられた名前) から変更します。
     1. 新しい名前を入力したら、新しい名前の横にあるチェックマーク アイコンをクリックします。 これにより、モデル内の新しい名前が Video Indexer に保存されます。
