@@ -154,8 +154,8 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
     "name": "Bunny",
     "appearances": [
         {
-            "startTime": "0:00:52.333
-      キャラクター    "endTime": "0:02:02.6",
+            "startTime": "0:00:52.333",
+         	"endTime": "0:02:02.6",
             "startSeconds": 52.3,
             "endSeconds": 122.6
         },
