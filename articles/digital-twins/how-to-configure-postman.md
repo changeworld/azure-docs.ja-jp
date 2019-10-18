@@ -1,19 +1,19 @@
 ---
 title: Azure Digital Twins 用に Postman を構成する方法 | Microsoft Docs
 description: Azure Digital Twins 用に Postman を構成する方法。
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-adgera
-ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803408"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949209"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Digital Twins 用に Postman を構成する方法
 
@@ -122,7 +122,8 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
    [![コンテンツの種類 multipart/mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. テキストではないデータをシリアル化し、ファイルを生成します。 JSON データは JSON ファイルとして保存されます。
-1. **[本文]** タブで、 **[キー]** 名を割り当て、`file` または `text` を選択して各ファイルを追加します。
+1. **[Body]\(本文\)** タブで、`form-data` を選択します。 
+1. **キー**名を割り当て、`file` を選択することによって、各ファイルを追加します。
 1. 次に、 **[ファイルの選択]** ボタンで各ファイルを選択します。
 
    [![Postman クライアントの例](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)

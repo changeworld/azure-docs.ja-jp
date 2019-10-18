@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70993635"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketplace と AppSource の統合ソリューション

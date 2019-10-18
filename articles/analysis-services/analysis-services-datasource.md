@@ -2,18 +2,17 @@
 title: Azure Analysis Services でサポートされるデータ ソース | Microsoft Docs
 description: Azure Analysis Services のデータ モデルでサポートされるデータ ソースについて説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993383"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512447"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -21,7 +20,7 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 ## <a name="azure-data-sources"></a>Azure データ ソース
 
-|データソース  |メモリ内  |DirectQuery  |
+|データ ソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
 |Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   はい      |    はい      |
 |Azure SQL Data Warehouse     |   はい      |   はい       |
@@ -48,7 +47,7 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 
 ### <a name="in-memory-and-directquery"></a>メモリ内と DirectQuery
 
-|データソース | メモリ内のプロバイダー | DirectQuery プロバイダー |
+|データ ソース | メモリ内のプロバイダー | DirectQuery プロバイダー |
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
@@ -58,7 +57,7 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 
 ### <a name="in-memory-only"></a>メモリ内のみ
 
-|データソース  |  
+|データ ソース  |  
 |---------|
 |Access データベース     |  
 |Active Directory<sup>[1](#tab1400b)</sup>     |  

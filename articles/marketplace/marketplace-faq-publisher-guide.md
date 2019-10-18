@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 10/2/2019
+ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827989"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969575"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace の FAQ
 
@@ -159,7 +159,7 @@ BYOL ソリューションに対するライセンス資格情報の取得と適
 
 **Free レベルまたはライセンス持ち込み (BYOL) オファリングをデプロイするには、ファイル上に支払い方法 (クレジット カードなど) を指定する必要がありますか?**
 
-いいえ。 Free レベルまたは BYOL オファリングをデプロイするために支払い方法は必要ありません。 ただし、無料試用版オファリングには支払い方法が必要です。 **[今すぐ入手する]** または **[Free software trial] (無料試用版ソフトウェア)** ボタンを含む一覧が、選択された Azure サブスクリプションにデプロイされます。  これらの一覧は、選択されたアカウントの登録された支払い方法を使用して課金されます。 Azure 使用料金は、ソフトウェア ライセンス料とは別に課金されます。
+No. Free レベルまたは BYOL オファリングをデプロイするために支払い方法は必要ありません。 ただし、無料試用版オファリングには支払い方法が必要です。 **[今すぐ入手する]** または **[Free software trial] (無料試用版ソフトウェア)** ボタンを含む一覧が、選択された Azure サブスクリプションにデプロイされます。  これらの一覧は、選択されたアカウントの登録された支払い方法を使用して課金されます。 Azure 使用料金は、ソフトウェア ライセンス料とは別に課金されます。
 
 **Azure Marketplace で販売されるオファーの価格について質問がある場合、Enterprise Agreement (EA) インダイレクト カスタマーはだれに問い合わせればよいですか?**
 
@@ -171,7 +171,7 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 **商業マーケットプレースでの購入では、どのような支払い方法がサポートされていますか?**
 
-お客様は、クレジット カードを使用して Azure Marketplace と Microsoft AppSource からオファリングを購入できます。 既存の Azure サブスクリプションをお持ちの場合、Azure Marketplace からの購入では、アカウントに構成されている支払い方法が使用され、個別の品目として同じ請求書に表示されます。 一部のオファーでは Azure の年額コミットメントが使用されますが、ほとんどの商業マーケットプレースでの購入では、Azure インフラストラクチャの消費とは異なり、Enterprise Agreement コミットメントは使用されません。
+お客様は、クレジット カードを使用して Azure Marketplace と Microsoft AppSource からオファリングを購入できます。 既存の Azure サブスクリプションをお持ちの場合、Azure Marketplace からの購入では、アカウントに構成されている支払い方法が使用され、個別の品目として同じ請求書に表示されます。 一部のオファーでは Azure の年額コミットメントが使用されますが、商業マーケットプレースでのほとんどの購入では、Azure インフラストラクチャの消費とは異なり、Enterprise Agreement コミットメントは使用されません。
 
 **Azure Marketplace のオファーに対して、自分のアカウントの Azure サブスクリプション クレジットまたは年額コミットメント資金を適用できますか?**
 
@@ -179,7 +179,7 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 **Azure Marketplace での購入物にボリューム ライセンス割引は適用されますか?**
 
-いいえ。 Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
+No. Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
 
 **Azure Marketplace サブスクリプションの詳細や課金情報はどこで表示できますか?**
 
@@ -381,9 +381,9 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
     > [!NOTE]
     > アプリは 90 日後に既存の一覧に表示されなくなります。
 
-"*Power BI アプリ*":
+**変更がオファーに反映されないのはなぜですか?**
 
-問い合わせ先: [Anjana Sompur (Slalom Consulting LLC)](mailto:v-ansomp@microsoft.com)。
+パートナー センター内で行われた変更は、オファーを再発行した後でのみ、システムおよびネットショップで更新されます。 変更後に発行のためオファーを送信したことを確認してください。
 
 ### <a name="benefits-and-go-to-market-gtm-resources"></a>特典と Go-To-Market (GTM) リソース
 
@@ -463,6 +463,16 @@ Azure Marketplace では、お客様の請求先住所で定義されている 1
 **Free レベルと無料試用版ソフトウェアの違いは何ですか?**
 
 Free レベルのサブスクリプションのオファリングは永続的に無料です。  無料試用版ソフトウェア (今すぐ試す) オファリングは、限定された期間だけ無料の有料サブスクリプションです。
+
+**エンドツーエンドの購入とプロビジョニングのフローを検証するプロセスはどのようなものですか?**
+
+発行プロセスの間に、オファーのプレビューへのアクセスが提供されます。 アクセスできるのは [プレビュー] タブで指定されているユーザーだけであり、これは他のユーザーには表示されないライブ オファーです。 これを購入して、プロセスをテストすることができます。ただし、オファーの構成に応じて全額料金が請求されます。
+
+購入を非常に低価格で行うため、Microsoft は、テストのコストとして受け入れることのできる価格で設定したプライベート プランを自分自身に発行することを提案します。 ゼロもサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されません。
+
+**標準ポリシー以外での返金は提供されますか?**
+
+はい。サポート チケットを通じて要求すると、適切であると思われる場合、Microsoft はお客様に対するクレジットを処理します。
 
 ## <a name="next-steps"></a>次の手順
 

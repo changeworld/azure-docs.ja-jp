@@ -1,20 +1,20 @@
 ---
-title: Windows Virtual Desktop でのテナントとホスト プールの作成 - Azure
-description: Windows Virtual Desktop 環境でテナントやセッション ホスト仮想マシン (VM) を構成しているときに発生する問題を解決する方法。
+title: セッション ホスト仮想マシンの構成 - Azure
+description: Windows Virtual Desktop セッション ホスト仮想マシンを構成しているときに発生する問題を解決する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: d163bbf50193743b6602bc9ec3d330df4c14ebcc
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676420"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841293"
 ---
-# <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
+# <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
 この記事は、Windows Virtual Desktop セッション ホスト仮想マシン (VM) の構成中に発生する問題を解決するときにご利用ください。
 

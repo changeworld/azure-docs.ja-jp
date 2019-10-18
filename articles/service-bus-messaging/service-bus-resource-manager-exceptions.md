@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802510"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296388"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus に関する Resource Manager での例外
 
@@ -57,9 +57,9 @@ HTTP の場合と同様に、"エラー コード 429" は "要求が多すぎ�
 | 429 | 50004 | SubCode=50004. (サブコード = 50004。) The request was terminated because the namespace *your namespace* is being throttled. (名前空間 <名前空間> が調整されているため、要求は終了されました。) | このエラー状態は、受信要求の数がリソースの制限を超えた場合に発生します。 | 数秒待ってから、もう一度やり直してください。 <br/> <br/> [クォータ](service-bus-quotas.md)および [Azure Resource Manager の要求制限](../azure-resource-manager/resource-manager-request-limits.md)の詳細を確認してください。|
 | 429 | 40901 | SubCode=40901. (サブコード = 40901。) Another conflicting operation is in progress. (別の競合する操作が実行中です。) | 同じリソース/エンティティで、競合する別の操作が進行中です | 現在の処理中の操作が完了するのを待ってから、再試行してください。 |
 | 429 | 40900 | SubCode=40900. (サブコード = 40900。) 競合しています。 リソースの現在の状態では許可されていない操作を要求しています。 | この状態は、同じエンティティ (キュー、トピック、サブスクリプション、またはルール) に対して複数の要求により操作が同時に実行された場合に発生する可能性があります。 | 数秒待ってから、もう一度やり直してください |
+| 429 | 40901 | Request on entity *'entity name'* conflicted with another request (エンティティ '<エンティティ名>' の要求が別の要求と競合しました) | 同じリソース/エンティティで、競合する別の操作が進行中です | 前の操作が完了するのを待ってから、再試行してください |
+| 429 | 40901 | Another update request is in progress for the entity *'entity name'* . (エンティティ '<エンティティ名>' の別の更新要求が進行中です。) | 同じリソース/エンティティで、競合する別の操作が進行中です | 前の操作が完了するのを待ってから、再試行してください |
 | 429 | なし | Resource Conflict Occurred. (リソースの競合が発生しました。) Another conflicting operation may be in progress. (別の競合する操作が実行中の可能性があります。) If this is a retry for failed operation, background cleanup is still pending. (失敗した操作の再試行の場合は、バックグラウンドのクリーンアップがまだ保留中になっています。) 後でもう一度やり直してください。 | この状態は、同じエンティティに対して保留中の操作がある場合に発生する可能性があります。 | 前の操作が完了するのを待ってから、再試行してください。 |
-| 429 | なし | Request on entity *'entity name'* conflicted with another request (エンティティ '<エンティティ名>' の要求が別の要求と競合しました) | 同じリソース/エンティティで、競合する別の操作が進行中です | 前の操作が完了するのを待ってから、再試行してください |
-| 429 | なし | Another update request is in progress for the entity *'entity name'* . (エンティティ '<エンティティ名>' の別の更新要求が進行中です。) | 同じリソース/エンティティで、競合する別の操作が進行中です | 前の操作が完了するのを待ってから、再試行してください |
 
 
 ## <a name="error-code-not-found"></a>エラー コード:見つかりません

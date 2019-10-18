@@ -10,12 +10,12 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034312"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028525"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインを使用して大規模なデータ セットに対してバッチ予測を実行する
 
@@ -193,7 +193,7 @@ model = Model.register(
 >[!Warning]
 >次のコードは、[サンプルのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)で使用される [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) に含まれる内容のサンプルに過ぎません。 ご自身のシナリオに合わせて、独自のスコアリング スクリプトを作成する必要があります。
 
-`batch_score.py` スクリプトでは、入力イメージが *dataset_path* で、事前トレーニング済みモデルが *model_dir* でそれぞれ受け取られて、*results-label.txt* が *output_dir* に出力されます。
+`batch_score.py` スクリプトでは、*dataset_path* の入力イメージ、*model_dir* の事前トレーニング済みモデルを取得し、*results-label.txt* を *output_dir* に出力します。
 
 ```python
 # Snippets from a sample scoring script

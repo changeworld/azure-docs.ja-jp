@@ -16,12 +16,12 @@ ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 864a6476ad894952a2ef877d534ffe8a86e07819
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326377"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170024"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) で既存のアクセス パッケージを編集および管理する
 
@@ -309,7 +309,7 @@ Azure AD では、ユーザーにアクセス パッケージが割り当てら�
 
 マイ アクセス ポータルのリンクを内部のビジネス パートナーに送信するときは、リンク全体をコピーすることが大切です。 そうすることで、パートナーが確実にディレクトリのポータルにアクセスして要求を行うことができます。 
 
-リンクは "myaccess" で始まり、ディレクトリ ヒントを含み、アクセス パッケージ ID で終わります。次のすべての要素がリンクに含まれることを確認してください。
+リンクは "myaccess" で始まり、ディレクトリ ヒントを含み、アクセス パッケージ ID で終わります。 次のすべての要素がリンクに含まれることを確認してください。
 
  `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -367,5 +367,4 @@ Azure AD では、ユーザーにアクセス パッケージが割り当てら�
 
 ## <a name="next-steps"></a>次の手順
 
-- [カタログ所有者またはアクセス パッケージ マネージャーを追加する](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [要求プロセスとメール通知](entitlement-management-process.md)

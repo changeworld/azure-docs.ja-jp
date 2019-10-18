@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: e145c7af3ff3cdd6d3cca2a7b0da0fdc23a418b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246008"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511494"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -131,7 +131,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
 
 新しい KEK を生成するには、Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) コマンド、Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレット、または [Azure portal](https://portal.azure.com/) を使用します。 RSA キーの種類を生成する必要があります。Azure Disk Encryption では、楕円曲線キーの使用はまだサポートされていません。
 
-代わりに、オンプレミスのキー管理 HSM から KEK をインポートすることもできます。 詳細については、[Key Vault](/key-vault/key-vault-hsm-protected-keys) のドキュメントを参照してください。 
+代わりに、オンプレミスのキー管理 HSM から KEK をインポートすることもできます。 詳細については、[Key Vault](/azure/key-vault/key-vault-hsm-protected-keys) のドキュメントを参照してください。
 
 キー コンテナー KEK の URL はバージョン管理されている必要があります。 Azure では、このバージョン管理制限が適用されます。 有効なシークレットと KEK URI については、次の例をご覧ください。
 

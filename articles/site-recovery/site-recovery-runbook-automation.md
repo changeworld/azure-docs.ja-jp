@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: f6e2fedf3f2f8384d4a6062852888c312e8285a1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212874"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173494"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
 
@@ -112,7 +112,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 ## <a name="customize-the-recovery-plan"></a>復旧計画のカスタマイズ
 
 1. コンテナーで、 **[復旧計画 (Site Recovery)]** を選択します。
-2. 復旧計画を作成するには、 **[+Recovery Plan]\(+復旧計画\)** をクリックします。 [詳細情報](/site-recovery-create-recovery-plans.md)。 復旧計画が既にある場合は、それを選択して開きます。
+2. 復旧計画を作成するには、 **[+Recovery Plan]\(+復旧計画\)** をクリックします。 [詳細情報](site-recovery-create-recovery-plans.md)。 復旧計画が既にある場合は、それを選択して開きます。
 3. 復旧計画のページで、 **[カスタマイズ]** をクリックします。
 
     ![[カスタマイズ] ボタンをクリックします。](media/site-recovery-runbook-automation-new/custom-rp.png)

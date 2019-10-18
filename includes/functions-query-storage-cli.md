@@ -4,13 +4,15 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
-ms.openlocfilehash: 03ed1b28b4cabc054301e11c2b4d0f9e632abe02
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ca576290ea511dc54b89ecebef72ca2a42e9169f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839060"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329600"
 ---
+### <a name="query-the-storage-queue"></a>ストレージ キューに対するクエリを実行する
+
 次の例のように、[`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) コマンドを使用して、アカウントのストレージ キューを表示できます。
 
 ```azurecli-interactive

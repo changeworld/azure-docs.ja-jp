@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a6bebfa11294821ff717f221e3e0ddfd68cd65c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: aa04b2508f89b9658d904624e884bf9133caf3b7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948222"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299557"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 
@@ -126,4 +126,5 @@ Time Series Insights エクスプローラーを使用するための前提条�
 ## <a name="next-steps"></a>次の手順
 
 - Time Series Insights 環境で[問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)方法を学習します。
+
 - [Azure Time Series Insights クイック スタート](time-series-quickstart.md)のガイド ツアーを実行します。

@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828225"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173397"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
 
@@ -326,7 +326,7 @@ Get-AzSqlDatabase `
 
 ## <a name="available-regions"></a>対応リージョン
 
-サーバーレス コンピューティング レベルは、次のリージョンを除く全世界で利用できます。オーストラリア中部、中国東部、中国北部、フランス南部、ドイツ中部、ドイツ北東部、インド西部、韓国南部、南アフリカ西部、英国北部、英国南部、英国西部、および米国中西部。
+サーバーレス コンピューティング レベルは、次のリージョンを除く全世界で利用できます。中国東部、中国北部、ドイツ中部、ドイツ北東部、英国北部、英国南部 2、米国中西部の各リージョンと、米国政府中部 (アイオワ) を除くすべてのリージョンで利用できます。
 
 ## <a name="next-steps"></a>次の手順
 

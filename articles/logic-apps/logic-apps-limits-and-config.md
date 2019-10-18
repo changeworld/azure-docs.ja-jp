@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 02c27faa4ac45165747d5eb450e75f666ba7d013
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 62d2a2533bf7b5b0e9e98d09c34583e55403753f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703464"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174757"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -275,7 +275,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 * 統合サービス環境 (ISE) 内で実行されるロジック アプリの場合は、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)ことを確認してください。
 
-* ロジック アプリでは、[ファイアウォール規則](../storage/common/storage-network-security.md)が与えられており、同じリージョンに存在する Azure ストレージ アカウントに直接アクセスできません。 ただし、ロジック アプリでは、異なるリージョンに存在する Azure ストレージ アクセスにアクセスできます。リージョン間の通信にパブリック IP アドレスが使用されるためです。 必ず、[お使いのリージョンで管理対象コネクタに送信 IP アドレスを許可](../logic-apps/logic-apps-limits-and-config.md#outbound)してください。 あるいは、ここで、より高度なオプションを使用できます。
+* ロジック アプリでは、[ファイアウォール規則](../storage/common/storage-network-security.md)が与えられており、同じリージョンに存在する Azure ストレージ アカウントに直接アクセスできません。 ただし、[ご利用のリージョンでマネージド コネクタに送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を許可する場合、Azure Table Storage コネクタまたは Azure Queue Storage コネクタの使用時を除き、ロジック アプリでは別のリージョンにあるストレージ アカウントにアクセスできます。 Table Storage または Queue Storage にアクセスするには、HTTP のトリガーとアクションを利用できます。 それ以外では、もっと高度なオプションをここで利用できます。
 
   * Azure 仮想ネットワーク内のリソースに接続できる[統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成します。
 

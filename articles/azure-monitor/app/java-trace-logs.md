@@ -12,15 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299244"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038153"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
+
+> [!TIP]
+> Application Insights インストルメンテーション キーは、アプリケーションに対して 1 回だけ設定する必要があります。 Java Spring のようなフレームワークを使用している場合は、アプリの構成の別の場所で既にキーを登録済みである可能性があります。
 
 ## <a name="using-the-application-insights-java-agent"></a>Application Insights Java エージェントを使用する
 

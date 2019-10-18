@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory で SCIM を使用してアプリのプロビジョニングを自動化する | Microsoft Docs
-description: Azure Active Directory では、SCIM プロトコル仕様のインターフェイスを持つ Web サービスによってアクセスされるアプリケーションや ID ストアにユーザーやグループを自動的にプロビジョニングできます
+title: Azure Active Directory での SCIM のユーザー プロビジョニング | Microsoft Docs
+description: SCIM エンドポイントを構築し、SCIM API を Azure Active Directory と統合して、アプリケーションへのユーザーとグループのプロビジョニングの自動化を開始する方法について学習します。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802370"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001730"
 ---
-# <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
+# <a name="scim-user-provisioning-with-azure-active-directory"></a>Azure Active Directory での SCIM のユーザー プロビジョニング
 
-SCIM は、システム間での ID の管理方法の一貫性を高めることを目的とした、標準化されたプロトコルとスキーマです。 アプリケーションでユーザー管理のために SCIM エンドポイントがサポートされている場合、Azure AD ユーザー プロビジョニング サービスからこのエンドポイントに対して、割り当てられたユーザーとグループの作成、変更、削除要求を送信することができます。
+System for Cross-Domain Identity Management ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)) は、システムとの間で ID を管理する方法の一貫性を高めることを目的とした、標準化されたプロトコルとスキーマです。 アプリケーションでユーザー管理のために SCIM エンドポイントがサポートされている場合、Azure AD ユーザー プロビジョニング サービスからこのエンドポイントに対して、割り当てられたユーザーとグループの作成、変更、削除要求を送信することができます。
 
 Azure AD が[事前統合された自動ユーザー プロビジョニング](../saas-apps/tutorial-list.md)をサポートしているアプリケーションの多くで、SCIM がユーザー変更通知の受信手段として実装されています。  さらに、お客様は Azure portal で一般的な "ギャラリー以外の" 統合オプションを使用することにより、[SCIM 2.0 プロトコル仕様](https://tools.ietf.org/html/rfc7644)の特定のプロファイルをサポートするアプリケーションを接続することができます。
 

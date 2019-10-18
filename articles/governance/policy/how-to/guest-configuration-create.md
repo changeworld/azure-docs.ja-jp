@@ -6,17 +6,16 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 8fd50ed571e42a1eb6673c56a61314d2adfe27f2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0be6afc2d4d7f97717200b86d5e5b3bc2194afee
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172451"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376183"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
-ゲスト構成では [Desired State Configuration](/powershell/dsc) (DSC) リソース モジュールを使って、Azure マシンの監査用の構成を作成します。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは**非準拠**と見なされます。
+ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使って、Azure マシンの監査用の構成を作成します。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは**非準拠**と見なされます。
 
 [Azure Policy のゲスト構成](/azure/governance/policy/concepts/guest-configuration)は、マシン内の設定を監査するためにのみ使用できます。 マシン内の設定の修復はまだ利用できません。
 
@@ -56,7 +55,7 @@ Azure マシンの状態を検証するための独自の構成を作成する�
 
 ## <a name="create-custom-guest-configuration-configuration-and-resources"></a>カスタム ゲスト構成の構成とリソースを作成する
 
-ゲスト構成のカスタム ポリシーを作成する最初のステップは、DSC 構成の作成です。 DSC の概念と用語の概要については、[PowerShell DSC の概要](/powershell/dsc/overview/overview)に関する記事をご覧ください。
+ゲスト構成のカスタム ポリシーを作成する最初のステップは、DSC 構成の作成です。 DSC の概念と用語の概要については、[PowerShell DSC の概要](/powershell/scripting/dsc/overview/overview)に関する記事をご覧ください。
 
 構成に、ゲスト構成エージェントをインストールすることで組み込まれるリソースのみが必要な場合は、構成 MOF ファイルを作成するだけでかまいません。 追加のスクリプトを実行する必要がある場合は、カスタム リソース モジュールを作成する必要があります。
 
@@ -92,7 +91,7 @@ return @{
 
 #### <a name="scaffolding-a-guest-configuration-project"></a>ゲスト構成プロジェクトのスキャフォールディング
 
-サンプルコードを使用して作業開始プロセスの迅速化に取り組む開発者向けに、Plaster PowerShell モジュールのテンプレートの「ゲスト構成プロジェクト」という名前のコミュニティ プロジェクトがあります。 このツールを使用することで、作業中の構成とサンプルリソースを含むプロジェクトと、プロジェクトを検証するための一連の [Pester](https://github.com/pester/pester) をスキャフォールディングできます。 このテンプレートには、ゲスト構成パッケージの構築と検証を自動化するための Visual Studio Code のタスク ランナーも含まれています。 詳細については、[ゲスト構成プロジェクト](https://github.com/microsoft/guestconfigurationproject) に関する GitHub プロジェクトを参照してください。
+サンプルコードを使用して作業開始プロセスの迅速化に取り組む開発者向けに、[Plaster](https://github.com/powershell/plaster) PowerShell モジュール用のテンプレートとして**ゲスト構成プロジェクト**という名前のコミュニティ プロジェクトがあります。 このツールを使用することで、作業中の構成とサンプルリソースを含むプロジェクトと、プロジェクトを検証するための一連の [Pester](https://github.com/pester/pester) をスキャフォールディングできます。 このテンプレートには、ゲスト構成パッケージの構築と検証を自動化するための Visual Studio Code のタスク ランナーも含まれています。 詳細については、[ゲスト構成プロジェクト](https://github.com/microsoft/guestconfigurationproject) に関する GitHub プロジェクトを参照してください。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux でのカスタム ゲスト構成の構成
 
@@ -116,7 +115,7 @@ Configuration baseline
 baseline
 ```
 
-詳細については、[構成の作成、コンパイル、適用](/powershell/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
+詳細については、[構成の作成、コンパイル、適用](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
 
 ### <a name="custom-guest-configuration-configuration-on-windows"></a>Windows でのカスタム ゲスト構成の構成
 
@@ -142,7 +141,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-詳細については、[構成の作成、コンパイル、適用](/powershell/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
+詳細については、[構成の作成、コンパイル、適用](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
 
 ## <a name="create-guest-configuration-custom-policy-package"></a>ゲスト構成のカスタム ポリシー パッケージを作成する
 
@@ -191,7 +190,7 @@ Azure Policy のゲスト構成で、実行時に使われるシークレット�
 
 1. 最後に、カスタム リソース内で、上で生成されたクライアント ID を使って、コンピューターから利用可能なトークンを使って Key Vault にアクセスします。
 
-   `client_id` と Key Vault インスタンスへの URL は、[プロパティ](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema)としてリソースに渡すことができるため、複数の環境の場合、または値を変更する必要がある場合でも、リソースを更新する必要はありません。
+   `client_id` と Key Vault インスタンスへの URL は、[プロパティ](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema)としてリソースに渡すことができるため、複数の環境の場合、または値を変更する必要がある場合でも、リソースを更新する必要はありません。
 
 カスタム リソースで次のコード サンプルを使うことで、ユーザー割り当て ID を使って Key Vault からシークレットを取得できます。 Key Vault への要求から返される値はプレーンテキストです。 ベスト プラクティスとしては、それを資格情報オブジェクト内に格納します。
 
@@ -227,7 +226,7 @@ Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsS
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
 ```
 
-パラメーターでのテスト方法の詳細については、後述の「[カスタム ゲスト構成ポリシーでのパラメーターの使用](/azure/governance/policy/how-to/guest-configuration-create#using-parameters-in-custom-guest-configuration-policies)」のセクションを参照してください。
+パラメーターでのテスト方法の詳細については、後述の「[カスタム ゲスト構成ポリシーでのパラメーターの使用](#using-parameters-in-custom-guest-configuration-policies)」のセクションを参照してください。
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Azure Policy 定義とイニシアティブ デプロイ ファイルを作成する
 
@@ -368,7 +367,7 @@ Azure で作成されるポリシー定義とイニシアティブ定義に関�
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows グループ ポリシー コンテンツから Azure Policy ゲスト構成への変換
 
-Windows マシンを監査する場合のゲスト構成は、PowerShell Desired State Configuration 構文の実装です。 DSC コミュニティでは、エクスポートしたグループ ポリシー テンプレートを DSC 形式に変換するためのツールが公開されています。 このツールを前述のゲスト構成コマンドレットと共に使用することで、Windows グループ ポリシーのコンテンツを変換し、Azure Policy 用にパッケージ化および公開して監査することができます。 ツールの使用の詳細については、[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
+Windows マシンを監査する場合のゲスト構成は、PowerShell Desired State Configuration 構文の実装です。 DSC コミュニティでは、エクスポートしたグループ ポリシー テンプレートを DSC 形式に変換するためのツールが公開されています。 このツールを前述のゲスト構成コマンドレットと共に使用することで、Windows グループ ポリシーのコンテンツを変換し、Azure Policy 用にパッケージ化および公開して監査することができます。 ツールの使用の詳細については、[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/scripting/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
 コンテンツの変換後は、パッケージを作成して Azure Policy として公開する上記の手順は、他の DSC コンテンツと同じです。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>省略可能:ゲスト構成パッケージに署名する

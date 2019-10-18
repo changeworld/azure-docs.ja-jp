@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: dfc0cd6686ac4ea1af2beb34edeadd17e4c952e1
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: e2e051db00c9b8de5268e64be70ab99752bf7a55
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71328733"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001415"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -67,11 +67,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
           "name": "[parameters('clusters_kustocluster_name')]",
           "type": "Microsoft.Kusto/clusters",
           "sku": {
-              "name": "D13_v2",
+              "name": "Standard_D13_v2",
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-09-07-preview",
+          "apiVersion": "2019-05-15",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-09-07-preview",
+          "apiVersion": "2019-05-15",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
@@ -110,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Deploy to Azure (Azure へのデプロイ)](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-フォームを使用して、[Azure portal でテンプレートの編集とデプロイを実行](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)できます。
+    フォームを使用して、[Azure portal でテンプレートの編集とデプロイを実行](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)できます。
 
 1. **[基本]** セクションと **[設定]** セクションを完了します。 一意のクラスター名とデータベース名を選択します。
 Azure Data Explorer クラスターとデータベースの作成には数分かかります。
@@ -142,7 +142,7 @@ Azure Data Explorer クラスターとデータベースの作成には数分か
 
 #### <a name="verify-the-deployment-using-powershell"></a>PowerShell を使用してデプロイを確認する
 
-デプロイを確認するには、次の Azure PowerShell スクリプトを使用します。  Cloud Shell がまだ開いている場合は、最初の行 (Read-Host) をコピー/実行する必要はありません。 PowerShell での Azure Data Explorer リソースの管理の詳細については、[Az.Kusto](/powershell/module/az.kusto/?view=azps-2.7.0) を参照してください。 関連する変更を行う
+デプロイを確認するには、次の Azure PowerShell スクリプトを使用します。  Cloud Shell がまだ開いている場合は、最初の行 (Read-Host) をコピー/実行する必要はありません。 PowerShell での Azure Data Explorer リソースの管理の詳細については、[Az.Kusto](/powershell/module/az.kusto/?view=azps-2.7.0) を参照してください。 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"

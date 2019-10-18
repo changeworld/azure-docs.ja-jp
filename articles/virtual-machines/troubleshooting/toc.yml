@@ -69,8 +69,9 @@
   href: performance-diagnostics.md
 - name: Linux または Windows を実行する Azure 仮想マシンの汎用パフォーマンスのトラブルシューティング
   href: troubleshoot-performance-virtual-machine-linux-windows.md
-- name: Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート
+- name: 32 ビット オペレーティング システムのサポート
   href: support-32-bit-operating-systems-virtual-machines.md
+- name: PerfInsights
   items:
     - name: Windows
       items:
