@@ -49,16 +49,6 @@
             - name: Azure Disk Encryption について
               displayName: 'BitLocker, bek'
               href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: クイック スタート
-              items:
-                - name: Azure CLI を使用して Linux VM を暗号化する
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: Azure PowerShell を使用して Linux VM を暗号化する
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: Azure CLI を使用して Windows VM を暗号化する
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: Azure PowerShell を使用して Windows VM を暗号化する
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
             - name: Azure Disk Encryption
               items:
                 - name: ディスク暗号化の前提条件
@@ -151,8 +141,6 @@
           href: network-best-practices.md
         - name: DDoS Protection
           href: ddos-best-practices.md
-        - name: 境界のセキュリティ
-          href: network-best-practices.md
 - name: Application
   items:
     - name: PaaS
@@ -185,9 +173,6 @@
   items:
     - name: 監査とログ記録
       items:
-        - name: セキュリティ管理
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: リモート管理セキュリティ
           href: management.md
         - name: Azure ログ統合
@@ -199,9 +184,6 @@
             - name: Azure AD 監査ログの統合
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: Security Center のアラートの統合
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: Key Vault のログの統合
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md
