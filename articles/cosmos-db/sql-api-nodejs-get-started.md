@@ -170,7 +170,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    }
    ```
 
-3. 終了メッセージを印刷するヘルパー関数 **exit** を追加するために、**createDatabase** 関数と **readDatabase** 関数を設定したコードの下に以下のコードをコピーして貼り付けます。 
+3. 終了メッセージを出力するヘルパー関数 **exit** を追加するために、**createDatabase** 関数と **readDatabase** 関数を設定したコードの下に以下のコードをコピーして貼り付けます。 
 
    ```javascript
    // ADD THIS PART TO YOUR CODE
