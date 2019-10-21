@@ -1,6 +1,6 @@
 ---
 title: Azure CLI サンプル - Azure マネージド アプリケーション | Microsoft Docs
-description: Azure CLI サンプル - Azure マネージド アプリケーション
+description: Azure マネージド アプリケーションを扱う際に使用する Azure CLI サンプル スクリプトを紹介します。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8b7c645bd9ee87faf51eab58651ddc5c7cde46a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77a25e3d92306e4e5d0f597a02a69dfb62d54398
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60588872"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332715"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 

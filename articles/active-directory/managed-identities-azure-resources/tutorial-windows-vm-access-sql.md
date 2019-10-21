@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2018
+ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d5452f23e830ca7a9ffe5ca5ed3d4aa12fb717
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236048"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433170"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 
@@ -103,7 +103,7 @@ SQL DB では、一意の AAD 表示名が必要です。 これにより、ユ�
 
 Azure SQL は Azure AD 認証をネイティブにサポートするため、Azure リソースのマネージド ID を使用して取得されたアクセス トークンを直接受け入れることができます。 SQL への接続を作成する**アクセス トークン** メソッドを使用します。 これは Azure SQL の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
 
-アクセス トークンを使用して SQL への接続を開く .NET のコード例を次に示します。 このコードは、VM のシステム割り当てマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、 **.NET Framework 4.6** 以降が必要です。 AZURE-SQL-SERVERNAME と DATABASE の値を適切な値に置き換えます。 Azure SQL のリソース ID が `https://database.windows.net/` であることにご注意ください。
+アクセス トークンを使用して SQL への接続を開く .NET のコード例を次に示します。 このコードは、VM のシステム割り当てマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、 **.NET Framework 4.6** 以降または **.NET Core 2.2** 以降が必要です。 AZURE-SQL-SERVERNAME と DATABASE の値を適切な値に置き換えます。 Azure SQL のリソース ID が `https://database.windows.net/` であることにご注意ください。
 
 ```csharp
 using System.Net;

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/14/2019
-ms.openlocfilehash: 4c186787af08a565dc100dfbd79d166688d89d8f
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 01319de8fd72875ca35bb7a869a6eaedee62f2a7
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013436"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285521"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -126,6 +126,9 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 ### <a name="create-the-cluster"></a>クラスターを作成する
 
 これで、クラスターを作成する準備ができました。 以下では、指定された Azure AD テナントにクラスターを作成し、Azure AD アプリ オブジェクト、セキュリティ プリンシパルとして使用するシークレット、クラスターへの管理者アクセスを備えたメンバーを含むセキュリティ グループを指定します。
+
+> [!IMPORTANT]
+> クラスターを作成する前に、[ここで詳しく説明](howto-aad-app-configuration.md#add-api-permissions)されているように、Azure AD アプリに対する適切なアクセス許可が正しく追加されていることを確認してください
 
 クラスターと仮想ネットワークの間でピアリングを実行**しない**場合は、次のコマンドを使用します。
 

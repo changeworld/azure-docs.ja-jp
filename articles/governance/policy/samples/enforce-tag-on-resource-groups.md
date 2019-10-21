@@ -1,17 +1,17 @@
 ---
-title: 'サンプル: リソース グループへのタグと値の強制'
+title: サンプル - リソース グループへのタグと値の強制
 description: このサンプル ポリシー定義は、1 つのリソース グループに 1 つのタグと値を使用することを要求します。
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 00c94aa6077c8a8599b31e9ab37f925fdfebefb0
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4af5ee88ad491e7864e82afc337801e47f2204
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977169"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255777"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>サンプル: リソース グループへのタグと値の強制
 

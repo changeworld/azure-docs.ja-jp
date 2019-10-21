@@ -1,17 +1,17 @@
 ---
-title: サンプル - 仮想ネットワーク エンドポイントがない Key Vault の監査
+title: サンプル - vNet エンドポイントがないキー コンテナー
 description: このサンプル ポリシー定義では、仮想ネットワーク サービス エンドポイントがないインスタンスを検出するために、Key Vault のコンテナーを監査します。
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7bcbcdf68b3c8f882a1e0fbb9953fea575f96556
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976959"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255731"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>サンプル - 仮想ネットワーク エンドポイントがない Key Vault コンテナー
 

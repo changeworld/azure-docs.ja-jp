@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: jhakulin
 ms.custom: ''
-ms.openlocfilehash: 02031e8e2800329134eaf34f5f99c93a20b99aac
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c9467bac8b5998252c021faca4eb4177c42a1736
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803779"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387386"
 ---
 # <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>クイック スタート:Speech SDK を使用したクロスプラットフォーム Xamarin アプリで音声を認識する
 
@@ -64,7 +64,9 @@ ms.locfileid: "71803779"
 
 1. `OnRecognitionButtonClicked` ハンドラーから `YourServiceRegion` という文字列を見つけて、ご利用のサブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。 たとえば、無料試用版サブスクリプションの場合は `westus` を使用します。
 
-1. 次に、各プラットフォーム プロジェクト (UWP、Android、iOS) にマイクへのアクセス許可を照会する [Xamarin サービス](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)を作成する必要があります。 そのためには、`helloworld` プロジェクト下に `Services` という新規フォルダーを追加し、そこに新しい C# ソース ファイルを作成して (`Services` フォルダーを右クリックして **[追加]**  >  **[新しいアイテム]**  >  **[コード ファイル]** ) 名前を `IMicrophoneService.cs` に変更してから、次のスニペットの全コードをそのファイル内に入力します: [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
+1. 次に、各プラットフォーム プロジェクト (UWP、Android、iOS) にマイクへのアクセス許可を照会する [Xamarin サービス](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)を作成する必要があります。 そのためには、`helloworld` プロジェクト下に `Services` という新規フォルダーを追加し、そこに新しい C# ソース ファイルを作成して (`Services` フォルダーを右クリックして **[追加]**  >  **[新しいアイテム]**  >  **[コード ファイル]** ) 名前を `IMicrophoneService.cs` に変更してから、次のスニペットの全コードをそのファイル内に入力します:
+
+[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>`helloworld.Android` プロジェクトのサンプル コードを追加する
 

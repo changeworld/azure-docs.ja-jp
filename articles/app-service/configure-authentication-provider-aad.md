@@ -40,7 +40,7 @@ ms.locfileid: "72176993"
 
 1. [Azure portal] で App Service アプリに移動します。
 1. 左側のウィンドウで **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
-1. **[Azure Active Directory]** を選択し、 **[管理モード]** の **[高速]** を選択します。
+1. **[Azure Active Directory]** を選択し、 **[管理モード]** の **[簡易]** を選択します。
 1. **[OK]** を選択して、Azure Active Directory に App Service アプリを登録します。 新しいアプリ登録が作成されます。
 
    代わりに既存のアプリ登録を選択する場合は、次のようにします。

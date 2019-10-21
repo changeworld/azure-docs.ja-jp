@@ -35,20 +35,6 @@
       href: policy-samples.md
 - name: 概念
   items:
-    - name: NAT Gateway
-      items:
-        - name: 概要
-          items:
-            - name: NAT Gateway について
-              href: nat-service-overview.md
-        - name: クイック スタート
-          items:
-            - name: NAT ゲートウェイの作成 - Azure CLI
-              href: quickstart-create-nat-gateway-cli.md
-        - name: チュートリアル
-          items:
-            - name: NAT ゲートウェイの作成と検証 - Azure CLI
-              href: tutorial-create-validate-nat-gateway-cli.md
     - name: セキュリティ グループ
       href: security-overview.md
     - name: ルーティング
@@ -75,6 +61,8 @@
       href: public-ip-address-prefix.md
     - name: Azure VNet の IPv6
       href: ipv6-overview.md
+    - name: パブリック IPv6 アドレスのプレフィックス
+      href: ipv6-public-ip-address-prefix.md
     - name: DDoS 保護
       href: ddos-protection-overview.md
     - name: バックエンド接続の相互運用性
@@ -248,6 +236,8 @@
           items:
             - name: サブネット
               href: virtual-network-manage-subnet.md
+            - name: サブネットの委任
+              href: manage-subnet-delegation.md
             - name: ピアリング
               href: virtual-network-manage-peering.md
             - name: DDoS 保護
@@ -271,6 +261,8 @@
           href: virtual-network-public-ip-address.md
         - name: パブリック IP プレフィックス
           href: manage-public-ip-address-prefix.md
+        - name: パブリック IPv6 アドレスのプレフィックス
+          href: ipv6-reserve-public-ip-address-prefix.md
     - name: リージョン間で移動する
       items:
         - name: ネットワーク セキュリティ グループ - ポータル
