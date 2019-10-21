@@ -80,14 +80,14 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>解決方法:場所ヘッダーを書き換える
 
-場所ヘッダーのホスト名を Application Gateway のドメイン名に設定します。 これを行うには、応答の場所ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で[書き換え規則](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)を作成します。 また、場所ヘッダーを書き換え、Application Gateway のホスト名を含めるようにする必要があります。 詳細は、[場所ヘッダーの書き換え方法](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)に関する記事の手順を参照してください。
+ヘッダーの Location を Application Gateway のドメイン名に設定します。 これを行うには、応答のヘッダーのLocation に azurewebsites.net が含まれているかどうかを評価する条件で[書き換え規則](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) を作成します。 また、ヘッダーの Location を書き換え、Application Gate way のホスト名を含めるようにする必要があります。 詳細は、[ヘッダーの Location を書き換える方法](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url) に関する記事の手順を参照してください。
 
 > [!NOTE]
 > HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) でのみ利用できます。 v1 SKU を使用する場合、[v1 から v2 に移行する](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)ことをお勧めします。 v2 SKU で利用できる書き換えやその他の[高度な機能](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku)を使用することがあります。
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>代替ソリューション:カスタム ドメイン名の使用
 
-v1 SKU を使用する場合、場所ヘッダーを書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service に渡します。
+v1 SKU を使用する場合、ヘッダーの Location を書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service  に渡します。
 
 (リダイレクトがある場合) App Service は、Application Gateway を指し、自ホストではない、元の同じホスト ヘッダーに対してリダイレクトを行うようになります。
 
