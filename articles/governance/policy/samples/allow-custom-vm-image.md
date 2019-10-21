@@ -6,12 +6,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: c109f870736274f82bf4e165f890d49237c22cbc
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: eba5a576212317bd2cb92856bc1065e9e5a89c8c
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977814"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255823"
 ---
 # <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>サンプル - リソース グループのカスタム VM イメージの許可
 

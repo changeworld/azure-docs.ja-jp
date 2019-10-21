@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs と Bing の空間データを使用したジオフェンス型プッシュ通知 | Microsoft Docs
+title: Azure Notification Hubs と Bing の空間データを使用してプッシュ通知を送信する | Microsoft Docs
 description: このチュートリアルでは、Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: windows
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 84e52feb6e30e0b9b693019b671906fad8c908db
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213248"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387497"
 ---
-# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
+# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
 
 このチュートリアルでは、Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する方法について学習します。
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034640"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390131"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>クイック スタート:Bing Image Search REST API と Python を使用してイメージを検索する
 
@@ -67,12 +67,13 @@ ms.locfileid: "70034640"
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. `requests` ライブラリを使用して、Bing Image Search API を呼び出します。 ヘッダーとパラメーターを要求に追加し、その応答を JSON オブジェクトとして返します。 
+2. `requests` ライブラリを使用して、Bing Image Search API を呼び出します。 ヘッダーとパラメーターを要求に追加し、その応答を JSON オブジェクトとして返します。 応答の `thumbnailUrl` フィールドからいくつかのサムネイル画像の URL を取得します。
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>応答の表示
@@ -80,6 +81,8 @@ ms.locfileid: "70034640"
 1. matplotlib ライブラリを使用して、4 つの列と 4 つの行から成る新しい図を作成します。 
 
 2. 図の行と列を繰り返し処理し、PIL ライブラリの `Image.open()` メソッドを使用して、それぞれの領域に画像のサムネイルを追加します。 
+
+3. `plt.show()` を使用して図を描画し、画像を表示します。
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,9 +93,9 @@ ms.locfileid: "70034640"
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. `plt.show()` を使用して図を描画し、画像を表示します。
 
 ## <a name="example-json-response"></a>JSON の応答例
 

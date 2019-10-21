@@ -1,21 +1,21 @@
 ---
-title: Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
+title: ブロックチェーン アプリケーションを作成する - Azure Blockchain Workbench
 description: Azure Blockchain Workbench プレビューでブロックチェーン アプリケーションを作成する方法についてのチュートリアル。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: adc47ecb06c0e2dbfcae7b85aeec284027315e5b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: a7d7c68840999772461655090d0213ada0997a7a
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845161"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329104"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
 

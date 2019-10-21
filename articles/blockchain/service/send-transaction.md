@@ -1,19 +1,19 @@
 ---
-title: Visual Studio Code と Azure Blockchain Service を使用してスマート コントラクトを作成、ビルド、デプロイする
+title: Visual Studio Code を使用する - Azure Blockchain Service
 description: Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイするチュートリアル
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934984"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329237"
 ---
 # <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>チュートリアル:Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする
 

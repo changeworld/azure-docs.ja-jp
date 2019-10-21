@@ -1,6 +1,6 @@
 ---
 title: Resource Manager デプロイのトラブルシューティング | Microsoft Docs
-description: Resource Manager デプロイを監視およびトラブルシューティングする方法について学習します。
+description: Azure Resource Manager テンプレートのデプロイを監視およびトラブルシューティングする方法について学習します。 アクティビティ ログとデプロイ履歴を紹介します。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c889c3123160680d96889227d6964ff197dc41cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388644"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390203"
 ---
 # <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>チュートリアル:Resource Manager テンプレート デプロイのトラブルシューティング
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」から [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) テンプレートを開き、2 つのテンプレートの問題を設定します。
 
-1. Visual Studio Code から、**[ファイル]**>**[ファイルを開く]** を選択します。
+1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - **apiVersion1** は無効な要素名です。 これは検証エラーになります。
     - API バージョンは "2018-07-01" である必要があります。  これはデプロイ エラーになります。
 
-5. **[ファイル]**>**[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
+5. **[ファイル]** > **[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
 
 ## <a name="troubleshoot-the-validation-error"></a>検証エラーのトラブルシューティング
 
@@ -116,7 +116,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 アクティビティ ログからエラーを見つけることもできます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[監視]** > **[アクティビティ ログ]** を選択します。
+2. **[監視]**  >  **[アクティビティ ログ]** を選択します。
 3. フィルターを使用してログを見つけます。
 
     ![Resource Manager チュートリアルのトラブルシューティング](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 60fe9569b0e6e92ae161271439ecbf1b04788ed4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694573"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374247"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションから ASP.NET Core Web API へのアクセスを許可する
 
@@ -70,7 +70,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
-1. Visual Studio または Visual Studio Code で *B2C-WebApi/ **appsettings.json*** ファイルを開きます。
+1. Visual Studio または Visual Studio Code で <em>B2C-WebApi/**appsettings.json**</em> ファイルを開きます。
 1. 実際のテナント名、Web API アプリケーションのアプリケーション ID、サインアップ ポリシーまたはサインイン ポリシーの名前、前に定義したスコープを反映するように `AzureAdB2C` ブロックを変更します。 ブロックは次の例のようになります (`Tenant` と `ClientId` には適切な値が入力されます)。
 
     ```json

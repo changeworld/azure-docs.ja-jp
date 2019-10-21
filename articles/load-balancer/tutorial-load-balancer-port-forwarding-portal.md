@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: aa4837ec1fd8ef19eb6d0c77f946ef358becd542
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273443"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428226"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>チュートリアル: ポータルを使用して Azure Load Balancer のポート フォワーディングを構成する
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
     | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | Type          | **[パブリック]** を選択します。                                        |
+    | 種類          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
     | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
@@ -235,6 +235,7 @@ VM に対してインバウンド インターネット (HTTP) 接続を許可�
    - **[名前]** : 「*MyNATRuleVM1*」と入力します。
    - **[ポート]** : 「*4221*」と入力します。
    - **[ターゲット仮想マシン]** : ドロップ ダウンから **[MyVM1]** を選択します。
+   - **[ネットワーク IP 構成]** : ドロップ ダウンから **[ipconfig1]** を選択します。
    - **[ポート マッピング]** : **[カスタム]** を選択します。
    - **[ターゲット ポート]** : 「*3389*」と入力します。
    

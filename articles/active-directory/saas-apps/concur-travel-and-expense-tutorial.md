@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 03/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f933cf54b354475146c1291b486173e0b57dbb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026721"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373407"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur Travel and Expense の統合
 
@@ -38,16 +38,18 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Concur Travel and Expense でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Concur Travel and Expense のサブスクリプション。
+* Concur ユーザー アカウントの "社内管理者" ロール。 適切なアクセス権があるかどうかは、[Concur SSO セルフサービス ツール](https://www.concursolutions.com/nui/authadmin/ssoadmin)に移動して調べることができます。 アクセス権がなかった場合は、Concur サポートまたは導入プロジェクト マネージャーに問い合わせてください。 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+このチュートリアルでは、Azure AD の SSO を構成してテストします。
 
-* Concur Travel and Expense では、**IDP** Initiated SSO がサポートされます
+* Concur Travel and Expense では、**IDP Initiated SSO** と **SP Initiated SSO** がサポートされます
+* Concur Travel and Expense では、運用環境と導入環境の両方で SSO のテストがサポートされます 
 
 > [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+> このアプリケーションの識別子は、米国、EMEA、中国の 3 つのリージョンのそれぞれについて固定された文字列値です。 そのため、1 つのテナントで構成できるインスタンスは、各リージョンにつき 1 つだけです。 
 
 ## <a name="adding-concur-travel-and-expense-from-the-gallery"></a>ギャラリーからの Concur Travel and Expense の追加
 
@@ -85,13 +87,16 @@ Concur Travel and Expense に対する Azure AD SSO を構成してテストす�
 
 1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+    > [!NOTE]
+    > 識別子 (エンティティ ID) と応答 URL (Assertion Consumer Service URL) はリージョン固有です。 Concur エンティティのデータセンターに基づいて選択してください。 Concur エンティティのデータセンターがわからない場合は、Concur サポートにお問い合わせください。 
+
+5. **[SAML でシングル サインオンをセットアップします]** ページで、 **[ユーザー属性]** の編集 (ペン) アイコンをクリックして設定を編集します。 [一意のユーザー ID] は、Concur のユーザーのログイン ID と一致している必要があります。 通常、**user.userprincipalname** は **user.mail** に変更する必要があります。
+
+    ![ユーザー属性の編集](common/edit-attribute.png)
+
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、メタデータをダウンロードしてコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
-
-1. **[Concur Travel and Expense のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -125,11 +130,31 @@ Concur Travel and Expense に対する Azure AD SSO を構成してテストす�
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>Concur Travel and Expense の SSO の構成
 
-**Concur Travel and Expense** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Concur Travel and Expense サポート チーム](https://www.concur.com/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Concur Travel and Expense** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** を [Concur SSO セルフ サービス ツール](https://www.concursolutions.com/nui/authadmin/ssoadmin)にアップロードし、"社内管理者" ロールがあるアカウントでログインする必要があります。 
+
+1. **[追加]** をクリックします。
+1. IdP のカスタム名を入力します (例: "Azure AD (US)")。 
+1. **[Upload XML File]\(XML ファイルのアップロード\)** をクリックし、先ほどダウンロードした**フェデレーション メタデータ XML** を添付します。
+1. **[Add Metadata]\(メタデータの追加\)** をクリックして変更を保存します。
+
+    ![Concur SSO セルフ サービス ツールのスクリーンショット](./media/concur-travel-and-expense-tutorial/add-metadata-concur-self-service-tool.png)
 
 ### <a name="create-concur-travel-and-expense-test-user"></a>Concur Travel and Expense のテスト ユーザーの作成
 
-このセクションでは、Concur Travel and Expense で B.Simon というユーザーを作成します。  [Concur Travel and Expense サポート チーム](https://www.concur.com/support)と連携し、Concur Travel and Expense プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Concur Travel and Expense で B.Simon というユーザーを作成します。 Concur サポート チームと連携し、Concur Travel and Expense プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+
+> [!NOTE]
+> B.Simon の Concur ログイン ID は、Azure AD における B.Simon の一意識別子と一致している必要があります。 たとえば、Azure AD における B.Simon の一意識別子が `B.Simon@contoso.com` である場合、 Concur における B.Simon のログイン ID も `B.Simon@contoso.com` である必要があります。 
+
+## <a name="configure-concur-mobile-sso"></a>Concur Mobile の SSO の構成
+Concur Mobile の SSO を有効にするには、Concur サポート チームに**ユーザーのアクセス URL** を提供する必要があります。 次の手順に従って、Azure AD から**ユーザーのアクセス URL** を入手してください。
+1. **[エンタープライズ アプリケーション]** に移動します。
+1. **[Concur Travel and Expense]** をクリックします。
+1. **[プロパティ]** をクリックします。
+1. **[ユーザーのアクセス URL]** をコピーして、その URL を Concur サポートに提供します。
+
+> [!NOTE]
+> SSO をセルフ サービスで構成するオプションは用意されていません。Concur サポート チームと連携して Mobile の SSO を有効にしてください。 
 
 ## <a name="test-sso"></a>SSO のテスト 
 

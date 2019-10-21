@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5e9b94f0c67b4b4630d554f4dde22502c90e777c
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173644"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376371"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>チュートリアル:Azure Service Fabric 上に Java API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
 
@@ -228,7 +228,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>HTTPCommunicationListener.java ファイルを追加する
 
-HTTP 通信リスナーは、HTTP サーバーを設定し、投票アクションを定義する API を公開するコントローラーとして機能します。 *VotingWeb/src/statelessservice* フォルダーの *statelessservice* パッケージを右クリックして **[New****File]\(新規****ファイル\)** を選択します。  ファイルに *HttpCommunicationListener.java* という名前を付け、 **[Finish]\(完了\)** を選択します。
+HTTP 通信リスナーは、HTTP サーバーを設定し、投票アクションを定義する API を公開するコントローラーとして機能します。 *VotingWeb/src/statelessservice* フォルダーの *statelessservice* パッケージを右クリックして **[New]\(新規\)**  >  **[File]\(ファイル\)** の順に選択します。  ファイルに *HttpCommunicationListener.java* という名前を付け、 **[Finish]\(完了\)** を選択します。
 
 ファイルの内容を次のように置き換え、変更を保存します。  後の HttpCommunicationListener.java ファイルの更新では、バックエンド サービスの投票データのレンダリング、読み取り、および書き込みを行うための変更をこのファイルに加えます。  ここでは、リスナーは単に投票アプリの静的 HTML を返します。
 

@@ -1,5 +1,5 @@
 ---
-title: Linux 上の PostgreSQL を使用した Python (Django) Web アプリ - Azure App Service | Microsoft Docs
+title: チュートリアル:Linux 上の PostgreSQL を使用した Python (Django) Web アプリ - Azure App Service
 description: PostgreSQL データベースに接続するデータ駆動型の Python (Django) Web アプリを Azure 上で実行する方法について説明します。
 services: app-service\web
 documentationcenter: python
@@ -11,19 +11,22 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.custom:
+- mvc
+- seodec18
+- seo-python-october2019
+ms.openlocfilehash: 34dbce2a6da2395bbc627a30d464a9817dfe76fe
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203269"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439439"
 ---
-# <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>PostgreSQL を使用した Python (Django) Web アプリを Azure App Service で作成する
+# <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Python (Django) Web アプリを Azure App Service で作成する
 
 [App Service on Linux](app-service-linux-intro.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、PostgreSQL をデータベース バックエンドとして使用する、データ駆動型の Python (Django) Web アプリを作成する方法について説明します。 完了すると、Azure App Service on Linux 上で実行される Django Web アプリが完成します。
 
-![App Service on Linux での Python Django Web アプリ](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Azure App Service on Linux での Python Django Web アプリ](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -144,7 +147,7 @@ Quit the server with CONTROL-C.
 
 `http://localhost:8000/admin` に移動し、前の手順で作成した管理者ユーザーを使用してサインインします。 **[質問]** の横の **[追加]** を選択し、いくつかの選択肢があるポーリングの質問を作成します。
 
-![ローカルで実行される Python Django アプリケーション](./media/tutorial-python-postgresql-app/django-admin-local.png)
+![App Services の Python Django アプリをローカルで実行する](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
 `http://localhost:8000` にもう一度移動し、ポーリングの質問が表示されていることを確認します。
 
@@ -273,7 +276,7 @@ python manage.py runserver
 
 `http://localhost:8000/admin` に移動し、作成した管理者ユーザーを使用してサインインし、前と同じようにポーリングの質問を作成します。
 
-![ローカルで実行される Python Django アプリケーション](./media/tutorial-python-postgresql-app/django-admin-local.png)
+![App Services の Python Django アプリをローカルで実行する](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
 `http://localhost:8000` にもう一度移動し、ポーリングの質問が表示されていることを確認します。 これで、ご自分のアプリによって、Azure 上のデータベースにデータが書き込まれます。
 
@@ -388,7 +391,7 @@ http://<app-name>.azurewebsites.net
 
 `<app-name>.azurewebsites.net` に移動し、作成済みの管理者ユーザーを使用してサインインします。 必要に応じて、いくつかのポーリングの質問を追加で作成します。
 
-![ローカルで実行される Python Django アプリケーション](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![App Services の Python Django アプリを Azure で実行する](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 **お疲れさまでした。** Azure App Service for Linux で Python (Django) Web アプリが実行されています。
 
@@ -402,11 +405,11 @@ http://<app-name>.azurewebsites.net
 
 左側のメニューで、 **[App Services]** を選択し、お客様の Azure アプリの名前を選択します。
 
-![Azure アプリへのポータル ナビゲーション](./media/tutorial-python-postgresql-app/app-resource.png)
+![Azure portal で Python Django アプリに移動する](./media/tutorial-python-postgresql-app/navigate-to-django-app-in-app-services-in-the-azure-portal.png)
 
 既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
-![Azure Portal の [App Service] ページ](./media/tutorial-python-postgresql-app/app-mgmt.png)
+![Azure portal の [概要] ページで Python Django アプリを管理する](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

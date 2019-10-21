@@ -1,5 +1,5 @@
 ---
-title: Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
+title: Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service へのデプロイ
 description: Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイについて説明します。
 ms.service: jenkins
 keywords: Jenkins, Azure, 開発, Kubernetes, k8s, AKS, ブルー/グリーン デプロイ, 継続的デリバリー, CD
@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/11/2018
-ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 10/09/2019
+ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092295"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249408"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
 
@@ -147,7 +147,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. パブリック エンドポイントとテスト エンドポイントの DNS 名を更新します。 Kubernetes クラスターの作成時に、**MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>** という名前付けパターンで、[追加のリソース グループ](https://github.com/Azure/AKS/issues/3)も作成されます。
+1. パブリック エンドポイントとテスト エンドポイントの DNS 名を更新します。 Kubernetes クラスターの作成時に、**MC_&lt;your-resource-group-name> _&lt;your-kubernetes-cluster-name>_ &lt;your-location>** という名前付けパターンで、[追加のリソース グループ](https://github.com/Azure/AKS/issues/3)も作成されます。
 
     リソース グループ内のパブリック IP を特定します。
 
@@ -251,7 +251,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 ## <a name="create-the-job"></a>ジョブを作成する
 1. タイプ **パイプライン**で新しいジョブを追加します。
 
-1. **[Pipeline]\(パイプライン\)** > **[Definition]\(定義\)** > **[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** の順に選択します。
+1. **[Pipeline]\(パイプライン\)**  >  **[Definition]\(定義\)**  >  **[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** の順に選択します。
 
 1. &lt;your-forked-repo> で、SCM リポジトリの URL を入力します。
 
@@ -268,7 +268,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
     - 青のエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
     - グリーンのエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
-パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントでは既定の tomcat イメージが表示されます。  
+パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントでは既定の tomcat イメージが表示されます。 
 
 ビルドを複数回実行する場合は、ブルーとグリーンのデプロイが順に繰り返されます。 つまり、現在の環境がブルーの場合、ジョブはグリーンの環境にデプロイしてテストを行います。 その後、テストが順調な場合、ジョブはアプリケーションのパブリック エンドポイントを更新して、グリーンの環境にトラフィックをルーティングします。
 

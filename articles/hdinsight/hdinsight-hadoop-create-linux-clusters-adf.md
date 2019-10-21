@@ -6,20 +6,21 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 04/18/2019
-ms.openlocfilehash: 0b3062e14873ec971163c125fccd6852d8662663
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 10/09/2019
+ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098718"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264547"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
+
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 このチュートリアルでは、Azure Data Factory を使用して Azure HDInsight で [Apache Hadoop](https://hadoop.apache.org/) クラスター (オンデマンド) を作成する方法について説明します。 その後 Azure Data Factory でデータ パイプラインを使用して Hive ジョブを実行し、クラスターを削除します。 このチュートリアルを完了すると、クラスターの作成、ジョブの実行、クラスターの削除がスケジュールに従って実行されるビッグ データ ジョブの実行を作動可能な状態にする方法を習得できます。
 
-このチュートリアルに含まれるタスクは次のとおりです。 
+このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
 > * Azure のストレージ アカウントの作成
@@ -41,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-preliminary-azure-objects"></a>予備の Azure オブジェクトを作成します。
 
-このセクションでは、オンデマンドで作成する HDInsight クラスターに使用する各種オブジェクトを作成します。 作成されるストレージ アカウントには、クラスターで実行されるサンプル [Apache Hive](https://hive.apache.org/) ジョブのシミュレートに使用するサンプル [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) スクリプト (`partitionweblogs.hql`) が含まれます。
+このセクションでは、オンデマンドで作成する HDInsight クラスターに使用する各種オブジェクトを作成します。 作成されるストレージ アカウントには、クラスターで実行されるサンプル [Apache Hive](https://hive.apache.org/) ジョブのシミュレートに使用するサンプル [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) スクリプトの `partitionweblogs.hql` が含まれます。
 
 このセクションでは、Azure PowerShell スクリプトを使用してストレージ アカウントを作成し、ストレージ アカウント内の必要なファイルをコピーします。 このセクションの Azure PowerShell サンプル スクリプトでは、次のタスクを実行します。
 
@@ -50,9 +51,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. Azure Storage アカウントを作成します。
 4. ストレージ アカウントに BLOB コンテナーを作成します。
 5. サンプル HiveQL スクリプト (**partitionweblogs.hql**) を BLOB コンテナーにコピーします。 このスクリプトは、[https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql) で入手できます。 サンプル スクリプトは、別のパブリック BLOB コンテナーで既に使用できます。 下記の PowerShell スクリプトでは、作成された Azure ストレージ アカウントにこれらのファイルのコピーを作成します。
-
-> [!WARNING]  
-> ストレージ アカウントの種類 `BlobStorage` は、HDInsight クラスターには使用できません。
 
 **Azure PowerShell を使用してストレージ アカウントを作成し、ファイルをコピーするには:**
 
@@ -81,6 +79,10 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
+
 #endregion
 
 ####################################
@@ -127,11 +129,13 @@ Write-Host "`nCopying files ..." -ForegroundColor Green
 
 $blobs = Get-AzStorageBlob `
     -Context $sourceContext `
-    -Container $sourceContainerName
+    -Container $sourceContainerName `
+    -Blob "hivescripts\hivescript.hql"
 
 $blobs|Start-AzStorageBlobCopy `
     -DestContext $destContext `
-    -DestContainer $destContainerName
+    -DestContainer $destContainerName `
+    -DestBlob "hivescripts\partitionweblogs.hql"
 
 Write-Host "`nCopied files ..." -ForegroundColor Green
 Get-AzStorageBlob `
@@ -150,16 +154,16 @@ Write-host "`nScript completed" -ForegroundColor Green
 **ストレージ アカウントの作成を確認するには**
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. 左側のウィンドウの **[リソース グループ]** を選択します。
-3. PowerShell スクリプトで作成したリソース グループの名前を選択します。 一覧表示されるリソース グループが多すぎる場合は、フィルターを使用します。
-4. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが 1 つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 ストレージ アカウント名を選択します。
-5. **[BLOB]** タイルを選択します。
-6. **adfgetstarted** コンテナーを選択します。 **hivescripts** というフォルダーが表示されます。
-7. このフォルダーを開き、サンプル スクリプト ファイル (**partitionweblogs.hql**) があることを確認します。
+1. 左側から、 **[すべてのサービス]**  >  **[全般]**  >  **[リソース グループ]** の順に移動します。
+1. PowerShell スクリプトで作成したリソース グループの名前を選択します。 一覧表示されるリソース グループが多すぎる場合は、フィルターを使用します。
+1. **[概要]** ビューには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが 1 つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 ストレージ アカウント名を選択します。
+1. **[コンテナー]** タイルを選択します。
+1. **adfgetstarted** コンテナーを選択します。 **hivescripts** というフォルダーが表示されます。
+1. このフォルダーを開き、サンプル スクリプト ファイル (**partitionweblogs.hql**) があることを確認します。
 
 ## <a name="understand-the-azure-data-factory-activity"></a>Azure Data Factory のアクティビティを理解する
 
-[Azure Data Factory](../data-factory/introduction.md) では、データの移動と変換を調整して自動化します。 Azure Data Factory を使用すると、入力データ スライスを処理するために HDInsight Hadoop クラスターをジャスト イン タイムで作成し、処理が完了したらクラスターを削除できます。 
+[Azure Data Factory](../data-factory/introduction.md) では、データの移動と変換を調整して自動化します。 Azure Data Factory を使用すると、入力データ スライスを処理するために HDInsight Hadoop クラスターをジャスト イン タイムで作成し、処理が完了したらクラスターを削除できます。
 
 Azure Data Factory では、データ ファクトリに 1 つまたは複数のデータ パイプラインを設定できます。 データ パイプラインには、1 つ以上のアクティビティがあります。 次の 2 種類のアクティビティがあります。
 
@@ -194,6 +198,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
     |Resource group | **[既存のものを使用]** を選択し、PowerShell スクリプトを使用して作成したリソース グループを選択します。 |
     |Version | **V2**のままにします。 |
     |Location | 場所は、リソース グループの作成時に指定した場所に自動的に設定されます。 このチュートリアルでは、場所は **[米国東部]** に設定されます。 |
+    |Enable GIT|このボックスはオフにしてください。|
 
     ![Azure Portal を使用して Azure Data Factory を作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Azure Portal を使用して Azure Data Factory を作成する")
 
@@ -234,7 +239,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
     |Azure サブスクリプション |ドロップダウン リストからサブスクリプションを選択します。|
     |ストレージ アカウント名 |PowerShell スクリプトの一部として作成した Azure Storage アカウントを選択します。|
 
-    続けて、 **[完了]** を選択します。
+    **[テスト接続]** を選択し、成功した場合は **[作成]** を選択します。
 
     ![Azure Storage のリンクされたサービスの名前を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Azure Storage のリンクされたサービスの名前を指定する")
 
@@ -262,13 +267,12 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
     | Cluster name prefix\(クラスター名のプレフィックス\) | データ ファクトリによって作成されるすべてのクラスターの種類にプレフィックスとして追加する値を指定します。 |
     |Subscription |ドロップダウン リストからサブスクリプションを選択します。|
     | リソース グループの選択 | 以前に使用した PowerShell スクリプトの一部として作成したリソース グループを選択します。|
-    |地域を選択 | ドロップダウン リストからリージョンを選択します。|
     | OS type/Cluster SSH ユーザー名 | SSH ユーザー名 (通常は`sshuser`) を入力します。 |
     | OS type/Cluster SSH パスワード | SSH ユーザーのパスワードを指定します。 |
     | OS type/Cluster ユーザー名 | クラスターのユーザー名 (通常は`admin`) を入力します。 |
-    | OS type/Cluster ユーザー パスワード | クラスター ユーザーのパスワードを指定します。 |
+    | OS type/Cluster パスワード | クラスター ユーザーのパスワードを指定します。 |
 
-    続けて、 **[完了]** を選択します。
+    **[作成]** を選択します。
 
     ![HDInsight のリンクされたサービスの値を入力する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "HDInsight のリンクされたサービスの値を入力する")
 
@@ -282,7 +286,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     ![Data Factory パイプラインにアクティビティを追加する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Data Factory パイプラインにアクティビティを追加する")
 
-3. Hive アクティビティが選択されていることを確認します。 **[HDI Cluster]\(HDI クラスター\)** タブを選択し、 **[HDInsight のリンクされたサービス]** ドロップダウン リストから HDInsight 用に以前に作成したリンク サービスの **HDinightLinkedService** を選択します。
+3. Hive アクティビティが選択されていることを確認します。 **[HDI Cluster]\(HDI クラスター\)** タブを選択し、 **[HDInsight のリンクされたサービス]** ドロップダウン リストから HDInsight 用に以前に作成したリンク サービスの **HDInsightLinkedService** を選択します。
 
     ![パイプラインの HDInsight クラスターの詳細を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "パイプラインの HDInsight クラスターの詳細を指定する")
 
@@ -340,7 +344,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-オンデマンドの HDInsight クラスターを作成した場合、HDInsight クラスターを明示的に削除する必要はありません。 クラスターは、パイプラインの作成時に指定した構成に基づいて削除されます。 ただし、クラスターを削除した後も、クラスターに関連付けられているストレージ アカウントは引き続き存在します。 データをそのまま保持できるように、この動作は仕様です。 データを保持する必要がない場合は、作成したストレージ アカウントを削除して構いません。
+オンデマンドの HDInsight クラスターを作成した場合、HDInsight クラスターを明示的に削除する必要はありません。 クラスターは、パイプラインの作成時に指定した構成に基づいて削除されます。 ただし、クラスターを削除した後も、クラスターに関連付けられているストレージ アカウントは引き続き存在します。 データをそのまま保持できるように、この動作は仕様です。 データを保持する必要がない場合は、作成したストレージ アカウントを削除してかまいません。
 
 また、このチュートリアルで作成したリソース グループ全体を削除することもできます。 これにより、作成したストレージ アカウントと Azure Data Factory が削除されます。
 
