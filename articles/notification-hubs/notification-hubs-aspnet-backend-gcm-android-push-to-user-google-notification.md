@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs を使用して特定の Android アプリケーションに通知を送信する | Microsoft Docs
 description: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する方法について説明します。
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1b867d571e97209c4385c1f23b49fe5a03ab94d5
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: c5c9ec26c9387cd9ae129002697210c2b342ab9b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212084"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385886"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs および Google Cloud Messaging を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する (非推奨)
 
