@@ -44,39 +44,8 @@
           href: data-encryption-best-practices.md
         - name: 保存時のデータ暗号化
           href: encryption-atrest.md
-        - name: IaaS VM のディスク暗号化
-          items:
-            - name: Azure Disk Encryption について
-              displayName: 'BitLocker, bek'
-              href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Azure Disk Encryption
-              items:
-                - name: ディスク暗号化の前提条件
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites'
-                - name: Windows VM のディスク暗号化
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows'
-                - name: Linux VM のディスク暗号化
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux'
-                - name: Disk Encryption を仮想マシン スケール セットの拡張機能のシーケンス処理と共に使用する
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-extension-sequencing'
-                - name: ディスク暗号化に関する付録
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-appendix'
-                - name: ディスク暗号化の FAQ
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq'
-                - name: トラブルシューティング
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg'
-                - name: Azure AD アプリを使用した Azure Disk Encryption (以前のリリース)
-                  displayName: active directory
-                  items:
-                    - name: Azure AD アプリによるディスク暗号化の前提条件
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad'
-                    - name: Azure AD アプリによるディスク暗号化 (Windows VM)
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows-aad'
-                    - name: Azure AD アプリによるディスク暗号化 (Linux VM)
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
+        - name: VM および VM Scale Sets の Azure Disk Encryption
+          href: azure-disk-encryption-vms-vmss.md
     - name: Storage のセキュリティ ガイド
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: カスタマー ロックボックス
@@ -154,13 +123,6 @@
           href: paas-applications-using-sql.md
     - name: IoT
       href: iot-overview.md
-      items:
-        - name: IoT セキュリティのベスト プラクティス
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-best-practices?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
-        - name: IoT のセキュリティ
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-architecture?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
-        - name: IoT デプロイのセキュリティ保護
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-security-deployment?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Azure Service Fabric のセキュリティ
       href: service-fabric-overview.md
       items:
@@ -273,8 +235,8 @@
           href: ../blueprints/ukofficial-iaaswa-overview.md
         - name: PaaS Web アプリケーション
           href: ../blueprints/ukofficial-paaswa-overview.md
-- name: ホワイト ペーパー
-  href: white-papers.md
+- name: セキュリティ ホワイト ペーパー
+  href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure セキュリティ サービス
   href: services-technologies.md
 - name: 技術的概要

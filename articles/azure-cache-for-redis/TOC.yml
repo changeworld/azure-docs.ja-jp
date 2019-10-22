@@ -39,6 +39,8 @@
           href: cache-best-practices.md
         - name: キャッシュに関する Azure アーキテクチャのベスト プラクティス
           href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+    - name: フェールオーバーと修正プログラムの説明
+      href: cache-failover.md
 - name: ハウツー ガイド
   items:
     - name: プラン

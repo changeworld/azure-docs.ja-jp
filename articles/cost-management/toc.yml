@@ -32,6 +32,8 @@
       items:
         - name: データへのアクセスの割り当て
           href: assign-access-acm-data.md
+        - name: 一般的なタスクにコスト分析を使用する
+          href: cost-analysis-common-uses.md
         - name: コストのアラートの使用
           href: cost-mgt-alerts-monitor-usage-spending.md
         - name: AWS 統合の設定と構成
