@@ -237,6 +237,8 @@
               href: cognitive-search-custom-skill-interface.md
             - name: 例 - Azure Functions
               href: cognitive-search-create-custom-skill-example.md
+            - name: 例 - パワー スキル
+              href: 'https://aka.ms/powerskills'
             - name: 例 - コンテナー
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: トラブルシューティングのヒント
