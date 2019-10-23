@@ -6,18 +6,26 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 07/29/2019
+ms.date: 10/16/2019
 ms.author: dapatil
-ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620108"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433417"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Deployment Planner のバージョン履歴
 
 この記事では、Azure Site Recovery Deployment Planner のすべてのバージョンの履歴と修正、それぞれの既知の制限とそのリリース日を紹介します。
+
+## <a name="version-251"></a>バージョン 2.51
+
+**リリース日:2019 年 8 月 22 日**
+
+**修正:**
+
+- Deployment Planner バージョン 2.5 でのコストに関する推奨事項の問題を修正
 
 ## <a name="version-25"></a>バージョン 2.5
 

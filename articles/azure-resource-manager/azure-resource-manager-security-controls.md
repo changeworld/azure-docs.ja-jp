@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager のセキュリティ コントロール
-description: Azure Resource Manager を評価するためのセキュリティ コントロールのチェックリスト
+description: Azure Resource Manager サービスを評価するための組み込みセキュリティ コントロールのチェックリスト。
 services: azure-resource-manager
 author: msmbaldwin
 manager: rkarlin
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97fd6611d7e2a2787b865365c4c7579f89f17d01
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 78f3f41ca2f0aa45d295fd9846cf3aa96cccea72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886303"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390458"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Azure Resource Manager のセキュリティ コントロール
 
@@ -25,7 +25,7 @@ ms.locfileid: "70886303"
 
 | セキュリティ コントロール | はい/いいえ | メモ |
 |---|---|--|
-| 保存時のサーバー側の暗号化:Microsoft のマネージド キー | はい |  |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい |  |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | HTTPS/TLS。 |
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | 該当なし | Azure Resource Manager では、制御データのみが格納され、お客様のコンテンツは格納されません。 |
 | 列レベルの暗号化 (Azure Data Services)| はい | |
@@ -63,4 +63,4 @@ ms.locfileid: "70886303"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について説明します。
+- [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

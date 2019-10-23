@@ -10,18 +10,18 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13fa2b892013cf4a3fb96220c901030c6b0aee0b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a899de22137decc1eb1578369a2751710c17abda
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129111"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332874"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
 
-この記事では、Azure Portal を使用して Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。
+この記事では、[Azure portal](https://portal.azure.com) を使用して Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。
 
 Azure ポータルを使用して、容量を特定の価格 SKU 内で増減できます。
 
@@ -59,6 +59,12 @@ Azure ポータルを使用して、容量を特定の価格 SKU 内で増減で
 
 1. **[保存]** を選択して環境をスケーリングします。 変更がコミットされるまで、一時的に進行状況のインジケーターが表示されます。
 
+1. 新しい容量が、[スロットルを防止するのに十分](time-series-insights-diagnose-and-solve-problems.md)であることを確認します。
+
 ## <a name="next-steps"></a>次の手順
 
-- 新しい容量が、[スロットルを防止するのに十分](time-series-insights-diagnose-and-solve-problems.md)であることを確認します。
+- 詳細については、[Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを参照してください。
+
+- [Azure Time Series Insights のデータ リテンションの構成](time-series-insights-how-to-configure-retention.md)について確認します。
+
+- [環境の計画](time-series-insights-environment-planning.md)について確認します。

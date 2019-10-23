@@ -1,7 +1,7 @@
 ---
-title: 複数の入力を使用するワークフローを送信する - Microsoft Genomics
-titleSuffix: Azure
-description: この記事では、入力ファイルが、同じサンプルに属する複数の FASTQ ファイルまたは BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。 msgen クライアントが既にインストールされていて、そのサービスを通じてサンプル データが正常に実行されているとします。
+title: 複数の入力を使用するワークフローを送信する
+titleSuffix: Microsoft Genomics
+description: この記事では、入力ファイルが同じサンプルの複数の FASTQ ファイルまたは BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。
 services: genomics
 ms.service: genomics
 author: grhuynh
@@ -9,12 +9,12 @@ manager: cgronlund
 ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 399b1ed735ce1b7a3fca1d27155863f6bfa18776
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780880"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248560"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>同じサンプルに属する複数の入力を使用するワークフローを送信する
 

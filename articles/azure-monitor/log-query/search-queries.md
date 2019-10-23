@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: b118740f3a57e168c5dfb071c199bcf424bd5113
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a0ceb5aa82b0d38ab5d2567689e3e131ba781ce9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295558"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254989"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor ログでの検索クエリ
 Azure Monitor ログ クエリは、テーブル名または search コマンドで始めることができます。 このチュートリアルでは、検索ベースのクエリについて説明します。 それぞれの方法に利点があります。
@@ -50,7 +50,7 @@ search in (Event, SecurityEvent) "error"
 ```
 
 ### <a name="table-and-column-scoping"></a>テーブルと列の範囲指定
-既定で、**search** ではデータ セット内のすべての列が評価されます。 特定の列のみを検索するには、次の構文を使用します。
+既定で、**search** ではデータ セット内のすべての列が評価されます。 特定の列 (次の例では *Source*  という名前) のみを検索するには、次の構文を使用します。
 
 ```Kusto
 search in (Event) Source:"error"

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: db0921d709f842b004ec4c23d15a986f2e59ec23
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 43b8dfd571537aaaf6753d6b762ab84cfe4cfd0d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687074"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376161"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell を使用してプライベート エンドポイントを作成する
 プライベート エンドポイントは、Azure の Private Link の基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>サブネットを追加する
 
-Azure では、仮想ネットワーク内のサブネットにリソースがデプロイされるため、サブネットを作成する必要があります。  [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) を使用して、 *mySubnet*  という名前のサブネット構成を作成します。 次の例では、プライベート エンドポイントのネットワーク ポリシー フラグを **Disabled** に設定して、*mySubnet* という名前のサブネットを作成します。
+Azure では、仮想ネットワーク内のサブネットにリソースがデプロイされるため、サブネットを作成する必要があります。  [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) を使用して、*mySubnet* というサブネット構成を作成します。 次の例では、プライベート エンドポイントのネットワーク ポリシー フラグを **Disabled** に設定して、*mySubnet* という名前のサブネットを作成します。
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -167,7 +167,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
- [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress)  を使用して、VM のパブリック IP アドレスを返します。 この例では、 *myVM*  VM のパブリック IP アドレスを返しています。
+ [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress)  を使用して、VM のパブリック IP アドレスを返します。 この例では、*myVM* VM のパブリック IP アドレスを返しています。
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -184,13 +184,13 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-1. メッセージが表示されたら、 **[接続]** を選択します。 
+1. メッセージが表示されたら、 **[Connect]** を選択します。 
 2. VM の作成時に指定したユーザー名とパスワードを入力します。
   > [!NOTE]
   > 場合によっては、[その他] > [別のアカウントを使用する] を選択して、VM の作成時に入力した資格情報を指定する必要があります。 
   
-3.  **[OK]** をクリックします。 
-4. 証明書の警告を受け取ることがあります。 その場合は、 **[はい]**   または  **[続行]** を選択します。 
+3. **[OK]** を選択します。 
+4. 証明書の警告を受け取ることがあります。 この場合は、 **[はい]** または **[続行]** を選択します。 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>VM から SQL Database サーバーにプライベートにアクセスする
 
@@ -214,7 +214,7 @@ mstsc /v:<publicIpAddress>
 5. [接続] を選択します。
 6. 左側のメニューで [データベース] を参照します。 
 7. (省略可能) 情報を作成するか、mydatabase に対して情報のクエリを実行します
-8.  *myVM* へのリモート デスクトップ接続を閉じます。 
+8. *myVM* へのリモート デスクトップ接続を閉じます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 プライベート エンドポイント、SQL Database サーバー、VM を使いおわったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937505"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300172"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -62,6 +62,16 @@ ControlUp を Windows Virtual Desktop で使用すると、Windows Virtual Deskt
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)
 - [パートナーの Web サイトにアクセスする。](https://www.controlup.com/solutions/ms_wvd/)
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![deviceTRUST ロゴ](./media/partners/devicetrust.png)
+
+企業をコンテキスト化する Windows Virtual Desktop 付加価値サービス プロバイダーである deviceTRUST は、ガバナンス要件を満たすために必要な情報と制御を IT 部門に提供しながら、ユーザーが任意の場所、任意のデバイス、任意のネットワークから Windows Virtual Desktop に自由にアクセスできるようにします。 
+
+この deviceTRUST は、コンテキスト セキュリティ テクノロジによって Windows Virtual Desktop の価値を拡張します。 deviceTRUST により、セキュリティで保護された Windows Virtual Desktop アクセスのための条件付きアクセス、つまり Windows Virtual Desktop 内での条件付きアプリケーション アクセスが可能になり、追加のインフラストラクチャなしで、条件付き Windows Virtual Desktop ポリシーが適用できるようになります。 deviceTRUST を使用すると、セキュリティ、コンプライアンス、および規制に関するすべての要件を満たす柔軟なモバイル ワークスペースが実現します。 
+
+- [パートナーの Web サイトにアクセスする。](https://devicetrust.com/wvd)
+
 ## <a name="lakeside-software"></a>Lakeside Software
 
 ![Lakeside Software ロゴ](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ Liquidware Essentials により、Azure へのユーザー環境の移行を合�
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)
 - [パートナーの Web サイトにアクセスする。](https://www.liquidware.com/solutions/solutions-platform/microsoft)
 
+## <a name="login-vsi"></a>Login VSI
+
+![Login VSI ロゴ](./media/partners/loginvsi.png)
+
+Login VSI は、Windows Virtual Desktop 環境でアプリケーション パフォーマンス テスト用のソフトウェアを提供する Windows Virtual Desktop 付加価値サービスプロバイダーで、Microsoft パートナーでもあります。 Login VSI Enterprise Edition は、お客様がオンプレミスのビジネス サービスを Windows Virtual Desktop に移行するときに、ビジネス クリティカルなアプリケーションに対応する Windows 10 Enterprise マルチセッション、Windows 10 Enterprise、および Windows 7 のパフォーマンス、スケーラビリティ、および可用性を評価し、最適な維持する目的で使用します。
+
+- [パートナーの Web サイトにアクセスする。](https://www.loginvsi.com)
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio ロゴ](./media/partners/nerdio.png)
@@ -94,6 +112,26 @@ Nerdio により、Azure リソースのプロビジョニングが簡素化さ�
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
 - [パートナーの Web サイトにアクセスする。](https://getnerdio.com/windows-virtual-desktop/)
+
+## <a name="policypak"></a>PolicyPak
+
+![PolicyPak ロゴ](./media/partners/policypak.png)
+
+PolicyPak Software は、アプリケーション、デスクトップ、ブラウザー、Java、およびセキュリティ設定の全体的な設定管理を行う Windows Virtual Desktop パートナーです。 PolicyPak により、デスクトップ、システム、およびセキュリティ設定のコンプライアンスが確保されます。 また、一連のコンポーネントを追加することで Windows の組み込み管理が強化され、Windows Virtual Desktop の価値が高まります。 既存の Active Directory グループ ポリシーや Windows Intune を使って、PolicyPak の設定を提供し、Windows 10 マシンの管理者の能力を強化することもできます。 
+
+PolicyPak の主なユース ケースは、ローカル管理者権限の削除と UAC プロンプトの対処、ランサムウェアのブロック、複数のブラウザーの管理、Internet Explorer のエンタープライズ モードと互換性モードの管理、GPO 数の削減、Windows 10 ファイルの関連付けの管理、Windows 10 スタート メニューとタスク バーの管理、および Windows 10 機能とオプション機能の管理です。  
+
+- [パートナーの Web サイトにアクセスする。](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![PrinterLogic ロゴ](./media/partners/printerlogic.png)
+
+Windows Virtual Desktop 付加価値サービス プロバイダー プラットフォームである PrinterLogic は、IT プロフェッショナルが、すべてのプリント サーバーを排除し、可用性の高いサーバーレス印刷インフラストラクチャを提供できるようにします。 PrinterLogic は、プリンター オブジェクトの一元管理と、任意のプリンターまたはエンドポイント OS へのデプロイを容易に行えるようにすることで、Windows Virtual Desktop と Azure の価値を高めます。   
+
+SaaS として、または独自のプライベート クラウドで Web スタックとして利用できる PrinterLogic プラットフォームにより、仮想セッションで必要とする適切なプリンターが、ユーザー ID、デバイス名、または場所に基づいて確実に確保されます。 この機能は、印刷の追跡とレポート作成、モバイル印刷、安全なバッジ リリース印刷など、一連のエンタープライズ印刷管理機能によって補完されます。 
+
+- [パートナーの Web サイトにアクセスする。](https://www.printerlogic.com)
 
 ## <a name="thinprint"></a>ThinPrint
 

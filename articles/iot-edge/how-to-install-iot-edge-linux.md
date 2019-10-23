@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e08999798c72545f9fa1d1b5d362e23450ce16f5
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 9bc4d60eab0dac80d1b2b524f32bc506a66dee18
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695325"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516664"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
@@ -248,19 +248,25 @@ sudo systemctl restart iotedge
 
 前のセクションで**手動構成**手順を使用した場合、IoT Edge ランタイムがデバイス上で正常にプロビジョニングおよび実行されている必要があります。 **自動構成**手順を使用した場合は、ランタイムが IoT ハブにデバイスを登録できるように、追加の手順を完了する必要があります。 次の手順については、「[Linux 仮想マシンでのシミュレートされた TPM IoT Edge デバイスの作成とプロビジョニング](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm)」をご覧ください。
 
-以下を使用して、IoT Edge デーモンの状態を確認できます。
+以下により、IoT Edge デーモンの状態を確認できます。
 
 ```bash
 systemctl status iotedge
 ```
 
-以下を使用して、デーモンのログを確認します。
+デーモンのログを調べます:
 
 ```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
-また、以下を使用して、実行中のモジュールを一覧表示します。
+最も一般的な構成およびネットワーク エラーの自動チェックを実行します。 
+
+```bash
+sudo iotedge check
+```
+
+実行中のモジュールを一覧表示します:
 
 ```bash
 sudo iotedge list

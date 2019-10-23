@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 885be4a58b65002d71e677b63fc6f756194753d7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245964"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435739"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption 
 
-Azure Disk Encryption は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Windows の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化が提供されます。これは、ディスク暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](../../key-vault/index.yml) に統合されています。 
+Azure Disk Encryption は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Windows の [Bitlocker](https://en.wikipedia.org/wiki/BitLocker) 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化が提供されます。これは、ディスク暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](../../key-vault/index.yml) に統合されています。 
 
 [Azure Security Center](../../security-center/index.yml) を使用している場合、暗号化されていない VM があると警告を受け取ります。 アラートは高重要度として表示され、このような VM は暗号化することをお勧めします。
 
@@ -32,7 +32,7 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 
 ### <a name="supported-vm-sizes"></a>サポートされる VM のサイズ
 
-Windows VM は、[さまざまなサイズ](sizes-general.md)で利用できます。 Azure Disk Encryption は、[Basic、A シリーズ VM](/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。
+Windows VM は、[さまざまなサイズ](sizes-general.md)で利用できます。 Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。
 
 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 

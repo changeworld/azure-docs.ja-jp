@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: c67f21a6ed8a7697977bb7737f0e46348efb2530
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71266504"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight での Apache HBase のパフォーマンスに関する問題のトラブルシューティング
@@ -67,7 +67,7 @@ Azure HDInsight に移行する場合は、必ず体系的かつ正確に移行�
 
 HDInsight HBase では、HFiles はリモート ストレージに格納されるため、キャッシュ ミスが発生した場合、読み取りのコストは、オンプレミスのシステムよりも確実に高くなります。オンプレミスのシステムのデータは、ネットワーク待機時間が伴うためローカル HDFS によってサポートされます。 ほとんどのシナリオにおいて、HBase キャッシュ (ブロック キャッシュとバケット キャッシュ) のインテリジェントな用途は、この問題を回避するように設計されています。 ただし、これが顧客にとって問題になる場合が時々あります。 Premium ブロック BLOB アカウントを使用することが、それには多少役に立ちます。 ただし、WASB (Windows Azure ストレージ ドライバー) BLOB が、読み取りモードであると判断した内容 (シーケンシャルとランダム) に基づいてブロック内のデータを取得する場合に `fs.azure.read.request.size` などの特定のプロパティに依存する場合、読み取りでの待機時間が長いインスタンスを引き続き確認する場合があります。 経験的な実験により、読み取り要求のブロック サイズ (`fs.azure.read.request.size`) を 512 KB に設定し、HBase テーブルのブロック サイズを同じになるように一致させると、実際に最良の結果が得られることがわかりました。
 
-HDInsight HBase では、ほとんどの大規模ノード クラスターの場合に、<ph id="ph2">`regionservers`</ph> を実行している VM に接続されたローカル SSD 上にファイルとして <ph id="ph1">`bucketcache`</ph> を提供します。 場合によっては、代わりにオフ ヒープ キャッシュを使用すると、いくらか改善されることがあります。 これには、使用可能なメモリを使用しなければならず、ファイルベースのキャッシュよりもサイズが小さくなる可能性があるという制限があるので、これが常に最適な選択であるとは限りません。
+HDInsight HBase では、ほとんどの大規模ノード クラスターの場合に、`regionservers` を実行している VM に接続されたローカル SSD 上にファイルとして `bucketcache` を提供します。 場合によっては、代わりにオフ ヒープ キャッシュを使用すると、いくらか改善されることがあります。 これには、使用可能なメモリを使用しなければならず、ファイルベースのキャッシュよりもサイズが小さくなる可能性があるという制限があるので、これが常に最適な選択であるとは限りません。
 
 調整した他の特定のパラメーターのいくつかは、次のようないくつかの理由で、程度に差はあるものの、役立つように思われました。
 

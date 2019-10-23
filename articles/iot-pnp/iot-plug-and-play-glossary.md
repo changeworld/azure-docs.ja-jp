@@ -3,18 +3,18 @@ title: 用語集 - IoT プラグ アンド プレイ プレビュー | Microsoft
 description: 概念 - IoT プラグ アンド プレイ プレビューに関連する一般用語の用語集。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 08/29/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858832"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249301"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューの用語集
 
@@ -97,6 +97,7 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 
 - デバイス接続文字列を使用すると、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)は、IoT ハブ上のデバイス向けエンドポイントに接続できます。 デバイス上のクライアント コードでは、この接続文字列を使用して、IoT ハブとのセキュリティで保護された接続を確立します。
 - IoT Hub 接続文字列を使用すると、バックエンドのソリューションやツールは IoT ハブ上のサービス向けエンドポイントに安全に接続できます。 これらのソリューションやツールは、その IoT ハブと、それに接続されているデバイスを管理します。
+- 会社モデル リポジトリ接続文字列を使用すると、バックエンドのソリューションやツールで[会社モデル リポジトリ](#company-model-repository)に安全に接続できます。 これらのソリューションとツールは、リポジトリ内の[デバイス機能モデル](#device-capability-model)および[インターフェイス](#interface)を使用または管理します。
 
 ## <a name="device-capability-model"></a>デバイス機能モデル
 

@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244110"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274209"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -30,6 +30,7 @@ ms.locfileid: "72244110"
 - リソースがコンプライアンス状態を変更したときに他のどのプロパティが変更された可能性があるかを把握する。 これらの追加プロパティの評価により、Azure Policy 定義による管理が必要な可能性がある他のプロパティの分析情報を得ることができます。
 
 この記事では、Resource Graph の SDK を介してこの情報を収集する方法について説明します。 Azure portal でこの情報を表示するには、Azure Policy の[変更履歴](../../policy/how-to/determine-non-compliance.md#change-history-preview)またはAzure アクティビティ ログの[変更履歴](../../../azure-monitor/platform/activity-log-view.md#azure-portal)を参照してください。
+インフラストラクチャ レイヤーからアプリケーションのデプロイまで、アプリケーションに対する変更の詳細については、[Azure Monitor でのアプリケーション変更分析の使用 (プレビュー)](../../../azure-monitor/app/change-analysis.md)に関するページをご覧ください。
 
 > [!NOTE]
 > Resource Graph の変更の詳細は、Resource Manager プロパティが対象です。 仮想マシン内で変更を追跡するには、Azure Automation の[変更の追跡](../../../automation/automation-change-tracking.md)または Azure Policy の [VM のゲスト構成](../../policy/concepts/guest-configuration.md)を参照してください。

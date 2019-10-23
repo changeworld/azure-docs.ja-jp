@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3cf30b53f950ff18dd6dcde332b7e97e332133aa
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034201"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516572"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Windows で IoT Edge を使用し、Linux コンテナーを実行する
 
@@ -92,7 +92,7 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
-IoT Edge サービスの状態を確認します。 実行中として一覧表示されるはずです。  
+IoT Edge サービスの状態を確認します。 
 
 ```powershell
 Get-Service iotedge
@@ -104,8 +104,13 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。 
+最も一般的な構成およびネットワーク エラーの自動チェックを実行します。 
 
+```powershell
+iotedge check
+```
+
+実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。 
 
 ```powershell
 iotedge list

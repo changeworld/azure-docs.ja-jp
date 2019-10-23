@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 15036b33e637953de7dc12100468d3dd8570f775
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476869"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376105"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
-Start/Stop VMs during off-hours ソリューションでは、ユーザー定義のスケジュールで Azure Virtual Machines を起動および停止し、Azure Monitor ログによって分析情報を提供して、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用することで必要に応じて電子メールを送信します。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。
+Start/Stop VMs during off-hours ソリューションでは、ユーザー定義のスケジュールで Azure Virtual Machines を起動および停止し、Azure Monitor ログによって分析情報を提供して、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用することで必要に応じて電子メールを送信します。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。 クラシック VM でこのソリューションを使用するには、既定では作成されないクラシック実行アカウントが必要です。 クラシック実行アカウントの作成手順については、「[クラシック実行アカウント](automation-create-standalone-account.md#classic-run-as-accounts)」を参照してください。
 
 > [!NOTE]
 > Start/Stop VMs during off-hours ソリューションは、このソリューションのデプロイ時にご使用の Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 このソリューションは現在、Azure モジュールの新しいバージョンでは動作しません。 これは、Start/Stop VMs during off-hours ソリューションの実行に使用する Automation アカウントのみに影響します。 「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」で説明しているように、ご使用の他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
@@ -80,17 +80,17 @@ Automation アカウントと Log Analytics に対して Start/Stop VMs during o
 
 新しい Automation アカウントと Log Analytics ワークスペースに Start/Stop VMs during off-hours ソリューションをデプロイするには、ソリューションをデプロイするユーザーは前のセクションで定義されているアクセス許可と次のアクセス許可を持っている必要があります。
 
-- サブスクリプションの共同管理者 - これは、クラシック実行アカウントの作成にのみ必要です。
+- サブスクリプションの共同管理者 - これは、クラシック VM を管理する場合に、クラシック実行アカウントの作成にのみ必要です。 [クラシック実行アカウント](automation-create-standalone-account.md#classic-run-as-accounts)は、既定では作成されなくなりました。
 - [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **アプリケーション開発者** ロールに属していること。 実行アカウントの構成の詳細については、[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)に関するページをご覧ください。
 - サブスクリプションまたは次のアクセス許可の共同作成者。
 
 | アクセス許可 |Scope (スコープ)|
 | --- | --- |
-| Microsoft.Authorization/Operations/read | サブスクリプション|
-| Microsoft.Authorization/permissions/read |サブスクリプション|
-| Microsoft.Authorization/roleAssignments/read | サブスクリプション |
-| Microsoft.Authorization/roleAssignments/write | サブスクリプション |
-| Microsoft.Authorization/roleAssignments/delete | サブスクリプション |
+| Microsoft.Authorization/Operations/read | Subscription|
+| Microsoft.Authorization/permissions/read |Subscription|
+| Microsoft.Authorization/roleAssignments/read | Subscription |
+| Microsoft.Authorization/roleAssignments/write | Subscription |
+| Microsoft.Authorization/roleAssignments/delete | Subscription |
 | Microsoft.Automation/automationAccounts/connections/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/certificates/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/write | リソース グループ |
@@ -270,7 +270,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |External_AutoStop_Threshold | 変数 _External_AutoStop_MetricName_ で指定される Azure アラート ルールのしきい値。 パーセンテージの値の範囲は 1 ～ 100 です。|
 |External_AutoStop_TimeAggregationOperator | 時間の集計演算子。条件を評価するために選択した時間枠のサイズに適用されます。 指定できる値は、**Average**、**Minimum**、**Maximum**、**Total**、および **Last** です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure が分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
-|External_EnableClassicVMs| クラシック VM をソリューションの対象とするかどうかを指定します。 既定値は True です。 CSP サブスクリプションでは、これを False に設定する必要があります。|
+|External_EnableClassicVMs| クラシック VM をソリューションの対象とするかどうかを指定します。 既定値は True です。 CSP サブスクリプションでは、これを False に設定する必要があります。 クラシック VM には[クラシック実行アカウント](automation-create-standalone-account.md#classic-run-as-accounts)が必要です。|
 |External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。 これは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合、除外対象として設定した VM が意図せず起動または停止されることがあります。|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
@@ -345,7 +345,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 以下の表は、このソリューションによって収集されたジョブ レコードを探すログ検索の例です。
 
-|Query | 説明|
+|クエリ | 説明|
 |----------|----------|
 |正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

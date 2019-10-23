@@ -4,16 +4,16 @@ description: この記事では、azcopy sync コマンドに関する参照情�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fb6c3b711a89ae7e4ef403a75927c4c6172523d0
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196753"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513418"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -26,19 +26,18 @@ ms.locfileid: "70196753"
 サポートされているペアは次のとおりです。
 
 - ローカル <-> Azure BLOB (SAS または OAuth 認証のいずれかを使用できます)
+- Azure BLOB <-> Azure BLOB (ソースには SAS が含まれているか、パブリックにアクセス可能である必要があります。宛先には SAS または OAuth 認証のいずれかを使用できます)
+- Azure ファイル <-> Azure ファイル (ソースには SAS が含まれているか、パブリックにアクセス可能である必要があります。宛先には SAS 認証が使用されている必要があります)
 
 sync コマンドは、いくつかの点で copy コマンドと異なります。
 
-  1. 再帰フラグは既定でオンになっています。
-  2. 同期元と同期先には、パターン (* や? など) を含めることはできません。
-  3. include フラグと exclude フラグには、ファイル名に一致するパターンの一覧を指定できます。 説明については、例のセクションを参照してください。
-  4. 同期元に存在しないファイルまたは BLOB が同期先に存在する場合、ユーザーはそれらを削除することを求められます。
-
-     このプロンプトは、対応するフラグを使用して、削除の質問に自動的に応答することで、通知しないようにすることができます。
+1. 既定では、再帰フラグは true で、sync によってすべてのサブディレクトリがコピーされます。 再帰フラグが false の場合、sync はディレクトリ内の最上位レベルのファイルのみがコピーされます。
+2. 仮想ディレクトリ間で同期する際に仮想ディレクトリの 1 つと同じ名前の BLOB がある場合は、パスの末尾にスラッシュ (例を参照) を追加します。
+3. 'DeleteDestination' フラグが true または prompt に設定されている場合、sync を実行するとソースに存在しないファイルと BLOB を削除します。
 
 ### <a name="advanced"></a>詳細
 
-AzCopy は、ファイルの拡張子またはコンテンツ (拡張子が指定されていない場合) に基づいて、ローカル ディスクからアップロードするときにファイルのコンテンツの種類を自動的に検出します。
+ファイル拡張子を指定しない場合、AzCopy は、ファイルの拡張子またはコンテンツ (拡張子が指定されていない場合) に基づいて、ローカル ディスクからアップロードするときにファイルのコンテンツの種類を自動的に検出します。
 
 組み込みのルックアップ テーブルは小さいですが、Unix では、次の 1 つ以上の名前において使用可能な場合は、ローカル システムの mime.types ファイルによって拡張されます。
 
@@ -96,28 +95,61 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
 ```
 
+1 つの BLOB を同期する:
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+
+Sync a virtual directory:
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
+```
+
+BLOB と同じ名前の仮想ディレクトリを同期します (あいまいさを排除するため、パスの末尾にスラッシュを追加します)。
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
+```
+
+Azure ファイル ディレクトリを同期する (BLOB と同じ構文):
+
+```azcopy
+azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
+```
+
 > [!NOTE]
 > include/exclude フラグが一緒に使用されている場合は、include パターンに一致するファイルだけが検索されますが、exclude パターンに一致するファイルは常に無視されます。
 
 ## <a name="options"></a>オプション
 
-|オプション|説明|
-|--|--|
-|--block-size-mb float|Azure Storage にアップロードする場合、または Azure Storage からダウンロードする場合に、このブロック サイズ (MiB で指定) を使用します。 既定値は、ファイル サイズに基づいて自動的に計算されます。 小数を使用できます (例: 0.25)。|
-|--check-md5 string|ダウンロード時に MD5 ハッシュを検証する厳密さを指定します。 このオプションはダウンロード時にのみ使用できます。 指定できる値は、NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing などです。 (既定値は "FailIfDifferent")。|
-|--delete-destination string|同期元に存在しない余分なファイルを同期先から削除するかどうかを定義します。 true、false、または prompt に設定できます。 prompt に設定すると、ファイルと BLOB の削除をスケジュールする前に、ユーザーに質問が表示されます。 (既定値は "false" です)。|
-|--exclude string|名前がパターンの一覧と一致するファイルを除外します。 例: *.jpg;* .pdf;exactName。|
-|-h, --help|sync コマンドのヘルプ コンテンツを表示します。|
-|--include string|名前がパターンの一覧と一致するファイルのみを含めます。 例: *.jpg;* .pdf;exactName。|
-|--log-level string|ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (低速応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 (既定値は "INFO")。|
-|--put-md5|各ファイルの MD5 ハッシュを作成し、ハッシュを同期先の BLOB またはファイルの Content-MD5 プロパティとして保存します。 (既定では、ハッシュは作成されません)。アップロード時にのみ使用できます。|
-|--recursive|既定では true で、ディレクトリ間で同期するときにサブディレクトリを再帰的に検索します。 (既定値は true)。|
+**--block-size-mb** float         Azure Storage にアップロードする場合、または Azure Storage からダウンロードする場合に、このブロック サイズ (MiB で指定) を使用します。 既定値は、ファイル サイズに基づいて自動的に計算されます。 小数を使用できます (例:0.25)。
+
+**--check-md5** string            ダウンロード時に MD5 ハッシュを検証する厳密さを指定します。 このオプションはダウンロード時にのみ使用できます。 指定できる値は、次のとおりです。NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing です。 (既定値は "FailIfDifferent")。 (既定値は "FailIfDifferent")
+
+**--delete-destination** string   同期元に存在しない余分なファイルを同期先から削除するかどうかを定義します。 true、false、または prompt に設定できます。 prompt に設定すると、ファイルと BLOB の削除をスケジュールする前に、ユーザーに質問が表示されます。 (既定値は 'false')。 (既定値は "false")
+
+**--exclude-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルを除外します。 例: A;S;R
+
+**--exclude-pattern** string      名前がパターンの一覧と一致するファイルを除外します。 例: *.jpg;* .pdf;exactName
+
+**-h, --help**                sync のヘルプ コンテンツを表示します
+
+**--include-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルのみを含めます。 例: A;S;R
+
+**--include-pattern** string      名前がパターンの一覧と一致するファイルをのみを含めます。 例: *.jpg;* .pdf;exactName
+
+**--log-level** string            ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO(すべての要求と応答)、WARNING(遅い応答)、ERROR(失敗した要求のみ)、および NONE(出力ログなし)。 (既定値は INFO)。 (既定値は "INFO")
+
+**--put-md5**                     各ファイルの MD5 ハッシュを作成し、ハッシュを同期先の BLOB またはファイルの Content-MD5 プロパティとして保存します。 (既定では、ハッシュは作成されません)。アップロード時にのみ使用できます。
+
+**--recursive**                   既定では true で、ディレクトリ間で同期するときにサブディレクトリを再帰的に検索します。 (既定値は true)。 (既定値は true)
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 
 |オプション|説明|
 |---|---|
-|--cap-mbps uint32|転送速度を制限します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
+|--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
 
 ## <a name="see-also"></a>関連項目

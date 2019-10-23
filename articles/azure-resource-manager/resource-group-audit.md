@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ff45be4eea5c6e8ab83093847164ede0e94579a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606602"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329441"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>リソースのアクションを監視するアクティビティ ログの表示
 
@@ -55,7 +55,7 @@ ms.locfileid: "65606602"
 
     ![フィルターの表示](./media/resource-group-audit/view-filters.png)
 
-1. 特定の操作に焦点を合わせるには、フィルターを変更するか、新しいフィルターを適用します。 たとえば、次の図は、 **[Timespan]\(期間\)** の新しい値と、 **[リソースの種類]** がストレージ アカウントに設定されていることを示しています。 
+1. 特定の操作に焦点を合わせるには、フィルターを変更するか、新しいフィルターを適用します。 たとえば、次の図は、 **[Timespan]\(期間\)** の新しい値と、 **[リソースの種類]** がストレージ アカウントに設定されていることを示しています。
 
     ![フィルター オプションを設定する](./media/resource-group-audit/set-filter.png)
 
@@ -193,6 +193,7 @@ Resource Graph を使用すると、リソースの変更履歴を確認でき�
 
 * Azure アクティビティ ログは、サブスクリプション内のアクションに関してさらに洞察を得るために、Power BI で使用できます。 [Power BI などでの Azure アクティビティ ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関する記事をご覧ください。
 * セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+* インフラストラクチャ レイヤーからアプリケーションのデプロイまで、アプリケーションに対する変更の詳細については、[Azure Monitor でのアプリケーション変更分析の使用](../azure-monitor/app/change-analysis.md)に関するページをご覧ください。
 * デプロイ操作を表示するコマンドについては、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関するページをご覧ください。
 * すべてのユーザーのリソースに対する削除を回避する方法については、「 [Azure Resource Manager によるリソースのロック](resource-group-lock-resources.md)」をご覧ください。
 * 各 Microsoft Azure Resource Manager プロバイダーで使用できる操作の一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md)」をご覧ください。

@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08/29/2019
-ms.openlocfilehash: 99263b7c7efee54381c9a7f624429b343dba49d0
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 75eebdf1e7628bc9c38305b7f11d4fc69af031b9
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806073"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391706"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances を使用してコストを削減する
 
@@ -26,7 +26,7 @@ Azure 予約 VM インスタンスにコミットすると、コストを削減�
 - Azure portal で VM の予約インスタンスを購入するときに、購入のレコメンデーションと推奨される数量が示されます。
 - Azure Advisor によって、個々のサブスクリプションに対して購入のレコメンデーションが提供されます。  
 - API を使用して、共有スコープと単一サブスクリプション スコープの両方に対する購入のレコメンデーションを取得できます。 詳細については、「[Reserved instance purchase recommendation APIs for enterprise customers](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)」 (エンタープライズ顧客向けの予約インスタンスの購入に関するレコメンデーション API) を参照してください。
-- Enterprise Agreement (EA) の顧客の場合、共有スコープと単一サブスクリプション スコープにおける購入のレコメンデーションは、[Azure Consumption Insights の Power BI コンテンツ パック](/power-bi/service-connect-to-azure-consumption-insights)で利用できます。
+- Enterprise Agreement (EA) および Microsoft Customer Agreement (MCA) の顧客の場合、共有スコープと単一サブスクリプション スコープにおける購入のレコメンデーションは、[Azure Consumption Insights の Power BI コンテンツ パック](/power-bi/service-connect-to-azure-consumption-insights)で利用できます。
 
 ### <a name="services-that-get-vm-reservation-discounts"></a>VM の予約割引が適用されるサービス
 
@@ -97,7 +97,7 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 
 | フィールド      | 説明|
 |------------|--------------|
-|Subscription|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従来課金制の個々のサブスクリプション (プラン番号: MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制料金のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
+|Subscription|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または Microsoft Customer Agreement または従来課金制の個々のサブスクリプション (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 年額コミットメント残高から料金が差し引かれるか(使用可能な場合)、超過料金として課金されます。 従量課金制料金のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
 |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>**単一のリソース グループのスコープ** — 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。</li><li>**単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。</li><li>**共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 EA の顧客の場合、課金コンテキストは課金です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。</li></ul>|
 |リージョン    |予約の対象となる Azure リージョン。|    
 |VM サイズ     |VM インスタンスのサイズ|

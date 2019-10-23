@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: eb29f8280ac1da3cd366b0c54cc6e2ce92b06286
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726469"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333065"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -52,7 +52,7 @@ Site Recovery は、パブリック エンドポイント経由で、ターゲ�
 
 Azure Site Recovery によって、[Azure 仮想マシン](azure-to-azure-architecture.md)のディザスター リカバリーが可能になります。 Azure 仮想マシンが [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) を使用するかどうかに応じて、レプリケーション データは、Azure Storage アカウントまたはターゲット Azure リージョンのレプリカ マネージド ディスクに送信されます。 レプリケーションのエンドポイントはパブリックですが、Azure VM のレプリケーション トラフィックは、ソース仮想ネットワークがどの Azure リージョンに存在するかに関わらず、既定ではインターネットを経由しません。 0\.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)でオーバーライドし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
 
-Azure VM のディザスター リカバリーの場合、既定では、レプリケーションのために ExpressRoute は必要ありません。 仮想マシンが Azure リージョンにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
+Azure VM のディザスター リカバリーの場合、既定では、レプリケーションのために ExpressRoute は必要ありません。 仮想マシンがターゲットの Azure リージョンにフェールオーバーされたら、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってそれらのマシンにアクセスできます。 データ転送の料金は、Azure リージョン間でのデータ レプリケーションのモードに関係なく適用されることに注意してください。
 
 既に ExpressRoute を使用してオンプレミスのデータ センターからソース リージョンの Azure VM に接続している場合は、フェールオーバーのターゲット リージョンで ExpressRoute 接続を再確立することを計画できます。 同じ ExpressRoute 回線を使用して新しい仮想ネットワーク接続経由でターゲット リージョンに接続することも、ディザスター リカバリー用の別個の ExpressRoute 回線と接続を利用することもできます。 考えられるさまざまなシナリオの説明については、[ここ](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)をご覧ください。
 

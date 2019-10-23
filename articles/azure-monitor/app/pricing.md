@@ -13,58 +13,47 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f9d92f03b1f55ad9d1f1e272886095ae48033266
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936698"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750398"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
 > [!NOTE]
 > この記事では、Application Insights のコストを理解し、それを制御する方法について説明します。  関連記事の「[使用量と推定コストの監視](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs)」では、さまざまな価格モデルに対する複数の Azure 監視機能全体の使用量と推定コストを表示する方法について説明します。
 
-Application Insights の課金のしくみについてご質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights)に投稿してください。
+Application Insights は、Azure とオンプレミスのどちらでホストされているかに関係なく、Web アプリケーションの可用性、パフォーマンス、使用状況の監視に必要なものすべてを使えるように設計されています。 Application Insights では、.NET、Java、Node.js など、一般的な言語とフレームワークがサポートされています。また、Azure DevOps、Jira、PagerDuty などの DevOps プロセスおよびツールと統合できます。 アプリケーションの監視コストがどのように決まるかを把握することが重要です。 この記事では、アプリケーションの監視コストを発生させるものを確認し、それらを予防的に監視および制御する方法について説明します。
+
+Application Insights の課金のしくみについてご質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)に投稿してください。
 
 ## <a name="pricing-model"></a>価格モデル
 
-[Azure Application Insights][start] の価格は従量課金制モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 
+[Azure Application Insights][start] の価格は**従量課金制**モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Live Metrics Stream](../../azure-monitor/app/live-stream.md) を使用するためのデータ ボリューム料金はありません。
 
-### <a name="data-volume-details"></a>データ ボリュームの詳細
-
-* データ ボリュームとは、Application Insights で受信したテレメトリのバイト数です。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Analytics にインポートされた表形式データ](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)では、データ ボリュームは、Application Insights に送信されたファイルの非圧縮サイズとして測定されます。
-* アプリケーションのデータ ボリューム料金は、2018 年 4 月から**データ インジェスト**という新しい課金メーターで報告されるようになりました。 この新しいメーターは Applications Insights や Log Analytics などの監視テクノロジで共有され、現在は **Log Analytics** というサービス名の下に表示されます。 
-* [ライブ メトリック ストリーム](../../azure-monitor/app/live-stream.md) データは、課金対象としてカウントされません。
-
-> [!NOTE]
-> この記事のスクリーンショットに表示されているすべての価格は、例を示す目的でのみ使用されています。 お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格][pricing]」をご覧ください。
-
-### <a name="multi-step-web-tests"></a>複数手順の Web テスト
-
-[複数ステップ Web テスト](../../azure-monitor/app/availability-multistep.md)に対しては、追加料金が発生します。 複数ステップ Web テストは、一連のアクションを実行する Web テストです。
-
-単一ページの "*ping テスト*" については、個別の料金はかかりません。 Ping テストと複数ステップ テストからのテレメトリについては、アプリの他のテレメトリと同じ料金が請求されます。
+[複数ステップ Web テスト](../../azure-monitor/app/availability-multistep.md)に対しては、追加料金が発生します。 複数ステップ Web テストは、一連のアクションを実行する Web テストです。 単一ページの "*ping テスト*" については、個別の料金はかかりません。 Ping テストと複数ステップ テストからのテレメトリについては、アプリの他のテレメトリと同じ料金が請求されます。
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>アプリケーションを管理するためのコストの見積もり 
 
 Application Insights をまだ使用していない場合は、[Azure Monitor 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=monitor)を使用して、Application Insights の使用コストを見積もることができます。 まず、[検索] ボックスに「Azure Monitor」と入力し、結果として表示される Azure Monitor タイルをクリックします。 ページを下にスクロールして Azure Monitor に移動し、[種類] ドロップダウンから [Application Insights] を選択します。  知りたいことは Application Insights によるアプリケーションの監視で収集されるデータの量なので、ここでは 1 か月間に収集することが予想されるデータの GB 数を入力できます。 
 
-これに対応する方法は 2 つあり、ASP.NET SDK で利用できる既定の監視とアダプティブ サンプリングを使用するか、または他の似た顧客の実績に基づいてデータ インジェストを推定します。 
+これに対応する方法は 2 つあります。1 つは、ASP.NET SDK で利用できる既定の監視とアダプティブ サンプリングを使用する方法で、もう 1 つは他の似た顧客の実績に基づいてデータ インジェストを推定する方法です。 
 
 ### <a name="data-collection-when-using-sampling"></a>サンプリングを使用する場合のデータ収集
 
 ASP.NET SDK の[アダプティブ サンプリング](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)を使用すると、データ ボリュームが自動的に調整されて、既定の Application Insights 監視に対して指定されている最大トラフィック レート内に維持されます。 アプリケーションが少量のテレメトリを生成している場合 (デバッグ時や使用量が少ない場合など)、量が構成されている秒あたりイベント数レベルを下回っている限り、サンプリング プロセッサによって項目がドロップされることはありません。 量の多いアプリケーションの場合、既定のしきい値である 5 イベント/秒では、アダプティブ サンプリングによって 1 日あたりのイベント数は 432,000 に制限されます。 標準的な平均イベント サイズである 1 KB を使用すると、アプリケーションがホストされているノードごとに、1 か月 (31 日) あたり 13.4 GB のテレメトリに対応します (サンプリングは各ノードに対してローカルに行われるため)。 
 
-アダプティブ サンプリングがサポートされていない SDK の場合は、[インジェスト サンプリング](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling ) を使用できます。この機能では、保持するデータの割合に基づいて、または Web サーバーと Web ブラウザーから送信されるトラフィックを減らすために [ASP.NET、ASP.NET Core、および Java の Web サイトでは固定レートのサンプリング](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)で、Application Insights によってデータが受信されたときにサンプリングされます
+アダプティブ サンプリングがサポートされていない SDK の場合は、[インジェスト サンプリング](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)を使用できます。この機能では、保持するデータの割合に基づいて、または Web サーバーと Web ブラウザーから送信されるトラフィックを減らすために [ASP.NET、ASP.NET Core、および Java の Web サイトでは固定レートのサンプリング](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications)で、Application Insights によってデータが受信されたときにサンプリングされます
 
 ### <a name="learn-from-what-similar-customers-collect"></a>似た顧客の収集を参考にする
 
-Application Insights 用の Azure Monitoring 料金計算ツールでは、"アプリケーションのアクティビティに基づいてデータ量を見積もる" 機能を有効にした場合、アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーパーセンタイル量が表示されます。 もちろん、これらのアプリケーションでの Application Insights の構成は範囲が広いので (たとえば、既定の[サンプリング](../../azure-monitor/app/sampling.md)を使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 しかし、これは、他の似た顧客が行っていることを理解するための出発点となります。 
+Application Insights 用の Azure Monitoring 料金計算ツールでは、"アプリケーションのアクティビティに基づいてデータ量を見積もる" 機能を有効にした場合、アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーセンタイル量が表示されます。 もちろん、これらのアプリケーションでの Application Insights の構成は範囲が広いので (既定の[サンプリング](../../azure-monitor/app/sampling.md)を使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 しかし、これは、他の似た顧客が行っていることを理解するための出発点となります。 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>ご自分の使用量を理解してコストを見積もる
 
-Application Insights では、最近の使用パターンに基づいてコストがどのようになるかを簡単に理解できるようになっています。 作業を開始するには、Azure portal で Application Insights リソースの **[使用量と推定コスト]** ページに移動します。
+Application Insights では、最近の使用パターンに基づいてコストがどのようになるかを簡単に理解できるようになっています。 作業を開始するには、Azure portal で Application Insights リソースの **[使用量と推定コスト]** ページに移動します。 
 
 ![価格の選択](./media/pricing/pricing-001.png)
 
@@ -74,6 +63,8 @@ C. 過去 1 か月のデータ ボリュームの傾向を表示します。
 D. データ インジェストの[サンプリング](../../azure-monitor/app/sampling.md)を有効にします。   
 E. 1 日のデータ ボリュームの上限を設定します。  
 
+(この記事のスクリーンショットに表示されている価格はすべて、例を示す目的でのみ使用されていることに注意してください。 お客様の通貨およびリージョンでの現在の価格については、[Application Insights の価格][pricing]に関するページをご覧ください。)
+
 Application Insights の使用量をさらに詳しく調査するには、 **[メトリック]** ページを開き、"データ ポイントの量" という名前のメトリックを追加してから、 *[Apply splitting]\(分割の適用\)* オプションを選択して、"テレメトリ項目の種類" でデータを分割します。 
 
 Application Insights の課金は Azure の課金内容に加えられます。 Azure Portal の **[課金]** セクションか [Azure Billing Portal](https://account.windowsazure.com/Subscriptions) で、Azure の課金内容の詳細を確認できます。 
@@ -82,7 +73,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Azure の請求書での Application Insights の使用状況の表示 
 
-Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 リソースの種類 (Application Insights の場合は microsoft.insights/components) でフィルターを追加すると、支出を追跡することができます。
+Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 リソースの種類 (Application Insights の場合は microsoft.insights/components) でフィルターを追加すると、支出を追跡できます。
 
 [Azure portal から使用状況をダウンロード](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)することで、ご自分の使用状況をさらに詳しく理解できます。 ダウンロードしたスプレッドシートでは、Azure リソースごとに、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Application Insights のリソースからの使用量を検索することができます。それには、まず、[測定カテゴリ] 列でフィルター処理を行って "Application Insights" と "Log Analytics" を表示し、次に [インスタンス ID] 列に対するフィルター ("contains microsoft.insights/components") を追加します。  すべての Azure Monitor コンポーネントに対して 1 つのログ バックエンドがあるため、ほとんどの Application Insights の使用量は、メーターでは Log Analytics の測定カテゴリで報告されます。  Application Insights の測定カテゴリで報告されるのは、従来の価格レベルおよび複数ステップ Web テストでの Application Insights リソースのみです。  使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)」を参照してください。 
 
@@ -105,9 +96,15 @@ systemEvents
 
 このクエリは、データ ボリュームに対するアラートを設定するために、[Azure ログ アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)で使用できます。 
 
-送信するデータの量は、次の 3 つの方法で管理できます。
+送信するデータの量は、次の手法で管理できます。
 
 * **サンプリング**:サンプリングを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 サンプリングは、送信するデータの量を調整するために使用できる主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](../../azure-monitor/app/sampling.md)。
+
+* **Ajax 呼び出しの制限**: 各ページ ビューで、[報告できる Ajax 呼び出しの数を制限](../../azure-monitor/app/javascript.md#configuration)できます。Ajax レポートを無効にすることもできます。
+
+* **不要なモジュールの無効化**: [ApplicationInsights.config を編集](../../azure-monitor/app/configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
+
+* **事前集計メトリック**: TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。 または、[事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。
  
 * **日次上限**:Azure portal で Application Insights リソースを作成する場合、日次上限は 100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。 日次上限の既定値は、テストを容易にするために設定されます。 アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 
 
@@ -120,16 +117,6 @@ systemEvents
     Application Insights には使用できなかったクレジットがある一部のサブスクリプションの種類の制限を除去しました。 これまでは、サブスクリプションに使用制限がある場合は、[日次上限] ダイアログに、使用制限を解除して日次上限を 32.3 MB/日から引き上げる方法が表示されました。
     
 * **スロットル**:スロットルにより、データ速度は、インストルメンテーション キーごとに 1 分間で平均して 1 秒あたり 32,000 イベントに制限されます。 アプリから送信されるデータ量は分単位で評価されます。 1 分間で平均して 1 秒あたりのレートを超える場合、一部の要求がサーバーから拒否されます。 SDK はデータをバッファー処理し、その再送信を試みます。 急激な増加を数分間に分散させます。 アプリが常にスロットル レートを超えてデータを送信した場合、一部のデータが破棄されます (ASP.NET、Java、JavaScript SDK はこの方法でデータの再送信を試みますが、その他の SDK は調整されたデータを単に破棄します)。スロットルが発生した場合、この状況が発生したことを通知する警告が表示されます。
-
-## <a name="reduce-your-data-volume"></a>データ ボリュームの削減
-
-データ ボリュームを減らすために、以下のことを実行できます。
-
-* [サンプリング](../../azure-monitor/app/sampling.md)の使用。 このテクノロジは、メトリックがゆがめずにデータ速度を低下させます。 Search では、関連項目間を移動する機能は失われません。 サーバー アプリケーションでは、サンプリングは自動的に動作します。
-* [報告できる AJAX 呼び出しの数を制限する](../../azure-monitor/app/javascript.md#configuration) か、AJAX レポートを無効にします。
-* [ApplicationInsights.config を編集](../../azure-monitor/app/configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
-* 異なるインストルメンテーション キー間でテレメトリを分割します。 
-* 事前集計メトリック。 TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。 または、[事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>ご自分のデータの 1 日の最大ボリュームを管理する
 
@@ -183,7 +170,7 @@ Application Insights リソースの既定の保持期間は 90 日です。 App
 
 ![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
 
-この保持期間は `retentionInDays` パラメーターを使用して [ARM 経由で設定](https://docs.microsoft.com/azure/azure-monitor/app/powershell)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この機能は ARM 経由でのみ公開されます。 
+この保持期間は `retentionInDays` パラメーターを使用して [PowerShell でプログラムによって設定](powershell.md#set-the-data-retention)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この消去機能は、Azure Resource Manager 経由でのみ公開されます。また、使用するときは細心の注意を払う必要があります。 
 
 2019 年 12 月の初めに長期の保持期間に対する課金が開始する場合、90 日を超えて保持されているデータには、Azure Log Analytics のデータ保持期間に対して現在請求されているのと同じ料金で課金されます。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。 [この提案に投票する](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ことによって、可変の保持期間の進捗に関する最新情報を把握してください。 
 

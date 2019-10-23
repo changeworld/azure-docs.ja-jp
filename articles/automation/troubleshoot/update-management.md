@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 89c5c849ffdbe70ae449f41ac08471c84f2fb5bc
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186210"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372628"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -21,11 +21,58 @@ ms.locfileid: "70186210"
 
 根本的な問題を特定するための Hybrid Worker エージェント用のエージェント トラブルシューティング ツールがあります。 このトラブルシューティング ツールの詳細については、[更新エージェントの問題のトラブルシューティング](update-agent-issues.md)に関する記事を参照してください。 その他のすべての問題については、考えられる問題に関する以下の詳細情報をご覧ください。
 
-## <a name="general"></a>全般
+ソリューションまたは仮想マシンをオンボードしようとして問題が発生した場合は、ローカル コンピューター上の **[アプリケーションとサービス ログ]** にある **Operations Manager** イベント ログで、イベント ID **4502** のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。
 
-### <a name="rp-register"></a>シナリオ:サブスクリプションで Automation リソース プロバイダーを登録できない
+次のセクションでは、具体的なエラー メッセージと、考えられる個別の解決策を示します。 他のオンボードの問題については、[ソリューションをオンボードする際のトラブルシューティング](onboarding.md)に関する記事を参照してください。
 
-#### <a name="issue"></a>問題
+## <a name="nologs"></a>シナリオ:Update Management のポータルにマシンが表示されない
+
+### <a name="issue"></a>問題
+
+次のシナリオが発生する場合があります。
+
+* VM の Update Management ビューで自分のマシンが **[構成されていません]** と表示される。
+
+* Automation アカウントの Update Management ビューに自分のマシンがない。
+
+* **[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがありますが、Hybrid Runbook Worker に対する Azure Monitor ログにハートビート データが表示され、Update Management には表示されません。
+
+### <a name="cause"></a>原因
+
+これは、ローカル構成の潜在的な問題や正しく設定されなかったスコープ構成が原因で発生する可能性があります。
+
+Hybrid Runbook Worker の再登録と再インストールが必要な可能性があります。
+
+自分のワークスペースで定義したクォータに達していて、データの格納が停止している可能性があります。
+
+### <a name="resolution"></a>解決策
+
+* OS に応じて [Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
+
+* マシンが適切なワークスペースに対してレポートしていることを確認します。 自分のマシンのレポート先となるワークスペースを確認してください。 これを確認する方法については、「[Log Analytics へのエージェント接続を確認する](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)」を参照してください。 次に、これが自分の Azure Automation アカウントにリンクされたワークスペースであることを確認します。 これを確認するには、自分の Automation アカウントに移動して、 **[関連リソース]** の **[リンクされたワークスペース]** をクリックします。
+
+* Log Analytics ワークスペースにマシンが表示されていることを確認します。 自分の Automation アカウントにリンクされた Log Analytics ワークスペースで、次のクエリを実行します。 クエリの結果に自分のマシンが表示されない場合、自分のマシンは最近チェックインされていません。これは、ローカル構成に問題がある可能性が最も高く、[エージェントを再インストール](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)できることを意味します。 クエリ結果に自分のマシンが表示される場合は、以下の箇条書きで指定されているスコープ構成を確認する必要があります。
+
+  ```loganalytics
+  Heartbeat
+  | summarize by Computer, Solutions
+  ```
+
+* スコープ構成に問題がないかどうかを確認します。 [スコープ構成](../automation-onboard-solutions-from-automation-account.md#scope-configuration)では、どのマシンがソリューション用に構成されるかを決定します。 自分のワークスペースで表示されているマシンが **Update Management** ポータルに表示されていない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 これを行う方法については、「[ワークスペースでのマシンの配布準備](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)」を参照してください。
+
+* 自分のワークスペースで、次のクエリを実行します。 結果に `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` と表示される場合、自分のワークスペースで定義したクォータに達していて、データの保存が停止されています。 自分のワークスペースで **[使用量と推定コスト]**  >  **[データ ボリュームの管理]** の順に移動して、クォータを確認するか、または既存のクォータを削除します。
+
+  ```loganalytics
+  Operation
+  | where OperationCategory == 'Data Collection Status'
+  | sort by TimeGenerated desc
+  ```
+
+* 上記の手順で問題が解決しないときは、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」(Windows の場合) または「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」(Linux の場合) の手順に従って、ハイブリッド worker を再インストールしてください。
+
+## <a name="rp-register"></a>シナリオ:サブスクリプションで Automation リソース プロバイダーを登録できない
+
+### <a name="issue"></a>問題
 
 Automation アカウントでソリューションを使用するときに次のエラーが発生することがあります。
 
@@ -33,11 +80,11 @@ Automation アカウントでソリューションを使用するときに次の
 Error details: Unable to register Automation Resource Provider for subscriptions:
 ```
 
-#### <a name="cause"></a>原因
+### <a name="cause"></a>原因
 
 Automation リソース プロバイダーがサブスクリプションに登録されていません。
 
-#### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解決策
 
 Automation リソース プロバイダーを登録するには、Azure portal で次の手順を実行します。
 
@@ -47,21 +94,9 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 4. リソース プロバイダーの一覧で、**Microsoft.Automation** リソース プロバイダーが登録されていることを確認します。
 5. このプロバイダーが一覧にない場合は、[](/azure/azure-resource-manager/resource-manager-register-provider-errors)示されている手順に従って **Microsoft.Automation** プロバイダーを登録します。
 
-### <a name="mw-exceeded"></a>シナリオ:スケジュールされた更新管理がエラー MaintenanceWindowExceeded で失敗した
+## <a name="components-enabled-not-working"></a>シナリオ:"Update Management" ソリューションのコンポーネントは有効であり、この仮想マシンの構成を行っている
 
-#### <a name="issue"></a>問題
-
-更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。
-
-#### <a name="resolution"></a>解決策
-
-スケジュール済みの更新プログラムの展開で失敗したものがあれば編集し、メンテナンス期間を延長します。
-
-メンテナンス期間の詳細については、「[更新プログラムをインストールする](../automation-update-management.md#install-updates)」を参照してください。
-
-### <a name="components-enabled-not-working"></a>シナリオ:"Update Management" ソリューションのコンポーネントは有効であり、この仮想マシンの構成を行っている
-
-#### <a name="issue"></a>問題
+### <a name="issue"></a>問題
 
 オンボードから 15 分経過しても、仮想マシンに関する次のメッセージが引き続き表示される。
 
@@ -69,14 +104,14 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
 ```
 
-#### <a name="cause"></a>原因
+### <a name="cause"></a>原因
 
 このエラーは次の理由で発生する可能性があります。
 
 1. Automation アカウントに戻る通信がブロックされています。
 2. オンボードしている VM の複製元が、Microsoft Monitoring Agent がインストールされた状態で sysprep されなかった複製マシンであった可能性があります。
 
-#### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解決策
 
 1. 「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」で、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
 2. 複製されたイメージを使用する場合:
@@ -85,9 +120,9 @@ The components for the 'Update Management' solution have been enabled, and now t
    3. `Restart-Service HealthService` を実行して `HealthService` を再起動します。 これにより、キーが再作成され、新しい UUID が生成されます。
    4. これが機能しない場合は、そのイメージを先に sysprep した後、MMA エージェントをインストールします。
 
-### <a name="multi-tenant"></a>シナリオ:別の Azure テナントのマシンを対象とした更新プログラムのデプロイを作成しているときに、リンクされているサブスクリプションのエラーが発生する。
+## <a name="multi-tenant"></a>シナリオ:別の Azure テナントのマシンを対象とした更新プログラムのデプロイを作成しているときに、リンクされているサブスクリプションのエラーが発生する。
 
-#### <a name="issue"></a>問題
+### <a name="issue"></a>問題
 
 別の Azure テナントのマシンを対象とした更新プログラムのデプロイを作成しようとすると次のエラーが発生します。
 
@@ -95,11 +130,11 @@ The components for the 'Update Management' solution have been enabled, and now t
 The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
 ```
 
-#### <a name="cause"></a>原因
+### <a name="cause"></a>原因
 
 このエラーは、別のテナントの Azure 仮想マシンを含んだ更新プログラムのデプロイを作成するときに発生します。
 
-#### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解決策
 
 次の回避策を使用してそれらをスケジュールする必要があります。 スケジュールは、[New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) コマンドレットと `-ForUpdate` スイッチを使用して作成できます。[New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) コマンドレットを使用する際、`-NonAzureComputer` パラメーターに他のテナントのマシンを渡すことができます。 以下の例は、その方法を示しています。
@@ -114,7 +149,53 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="updates-nodeployment"></a>シナリオ:デプロイなしの更新プログラムのインストール
+## <a name="node-reboots"></a>シナリオ:原因不明の再起動
+
+### <a name="issue"></a>問題
+
+**[再起動しない]** を指定して **[Reboot Control]\(再起動制御\)** を構成しましたが、更新プログラムのインストール後にマシンが再起動されます。
+
+### <a name="cause"></a>原因
+
+Windows Update の動作は、再起動の動作を変更できるいくつかのレジストリ キーによって変更されることがあります。
+
+### <a name="resolution"></a>解決策
+
+[レジストリの編集による自動更新の構成](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-rej7uijui7jgistry)に関する記事と「[再起動の管理に使われるレジストリ キー](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)」に記載されているレジストリ キーを確認して、マシンが正しく構成されていることを確認します。
+
+## <a name="failed-to-start"></a>シナリオ:更新プログラムの展開で "起動できませんでした" とマシンに表示される
+
+### <a name="issue"></a>問題
+
+マシンの状態がマシンを "**起動できませんでした**" です。 マシンの特定の詳細情報を表示すると、次のエラーが表示されます。
+
+```error
+Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+```
+
+### <a name="cause"></a>原因
+
+このエラーは、次のいずれかの理由で発生する可能性があります。
+
+* そのマシンはもう存在しません。
+* マシンの電源が切れていて到達できません。
+* マシンにネットワーク接続の問題があり、マシン上のハイブリッド worker にアクセスできません。
+* SourceComputerId を変更する Microsoft Monitoring Agent に更新がありました
+* Automation アカウントで 2,000 の同時ジョブ制限に達した場合、更新の実行が制限された可能性があります。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
+
+### <a name="resolution"></a>解決策
+
+該当する場合は、更新プログラムの展開に[動的グループ](../automation-update-management-groups.md)を使用します。
+
+* マシンがまだ存在し、到達可能であることを確認します。 存在しない場合は、展開を編集してそのマシンを削除します。
+* Update Management に必要なポートとアドレスの一覧については、[ネットワーク計画](../automation-update-management.md#ports)のセクションを参照し、使用しているマシンがこれらの要件を満たしていることを確認します。
+* Log Analytics で次のクエリを実行して、環境内で `SourceComputerId` が変更されたマシンを見つけます。 `Computer` 値は同じで `SourceComputerId` 値が異なるコンピューターを探します。 影響を受けるマシンを見つけたら、それらのマシンをターゲットとする更新プログラムの展開を編集し、`SourceComputerId` が正しい値を反映するようにマシンの削除と再追加を行う必要があります。
+
+   ```loganalytics
+   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
+   ```
+
+## <a name="updates-nodeployment"></a>シナリオ:デプロイなしの更新プログラムのインストール
 
 ### <a name="issue"></a>問題
 
@@ -130,60 +211,11 @@ Windows レジストリキー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Wi
 
 Update Management クライアントの場合は、このキーを "3" - **自動でダウンロードするが、自動でインストールはしない**に設定することをお勧めします。
 
-詳細については、[自動更新の構成](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates)に関する記事を参照してください。
+詳細については、[自動更新の構成](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates)に関する記事を参照してください。
 
-### <a name="nologs"></a>シナリオ:Update Management のポータルにマシンが表示されない
+## <a name="machine-already-registered"></a>シナリオ:マシンが違うアカウントに既に登録されている
 
-#### <a name="issue"></a>問題
-
-次のシナリオが発生する場合があります。
-
-* VM の Update Management ビューで自分のマシンが **[構成されていません]** と表示される。
-
-* Automation アカウントの Update Management ビューに自分のマシンがない。
-
-* **[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがありますが、Hybrid Runbook Worker に対する Azure Monitor ログにハートビート データが表示され、Update Management には表示されません。
-
-#### <a name="cause"></a>原因
-
-これは、ローカル構成の潜在的な問題や正しく設定されなかったスコープ構成が原因で発生する可能性があります。
-
-Hybrid Runbook Worker の再登録と再インストールが必要な可能性があります。
-
-自分のワークスペースで定義したクォータに達していて、データの格納が停止している可能性があります。
-
-#### <a name="resolution"></a>解決策
-
-* マシンが適切なワークスペースに対してレポートしていることを確認します。 自分のマシンのレポート先となるワークスペースを確認してください。 これを確認する方法については、「[Log Analytics へのエージェント接続を確認する](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)」を参照してください。 次に、これが自分の Azure Automation アカウントにリンクされたワークスペースであることを確認します。 これを確認するには、自分の Automation アカウントに移動して、 **[関連リソース]** の **[リンクされたワークスペース]** をクリックします。
-
-* Log Analytics ワークスペースにマシンが表示されていることを確認します。 自分の Automation アカウントにリンクされた Log Analytics ワークスペースで、次のクエリを実行します。 クエリの結果に自分のマシンが表示されない場合、自分のマシンはハートビートを送信していません。これは、ローカル構成に問題がある可能性が最も高いことを意味します。 OS に応じて [Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行できます。または、[エージェントを再インストール](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)できます。 クエリ結果に自分のマシンが表示される場合は、以下の箇条書きで指定されているスコープ構成を確認する必要があります。
-
-  ```loganalytics
-  Heartbeat
-  | summarize by Computer, Solutions
-  ```
-
-* スコープ構成に問題がないかどうかを確認します。 [スコープ構成](../automation-onboard-solutions-from-automation-account.md#scope-configuration)では、どのマシンがソリューション用に構成されるかを決定します。 自分のワークスペースで表示されているマシンが表示されていない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 これを行う方法については、「[ワークスペースでのマシンの配布準備](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)」を参照してください。
-
-* 上記の手順で問題が解決しないときは、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」(Windows の場合) または「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」(Linux の場合) の手順に従って、ハイブリッド worker を再インストールしてください。
-
-* 自分のワークスペースで、次のクエリを実行します。 結果に `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` と表示される場合、自分のワークスペースで定義したクォータに達していて、データの保存が停止されています。 自分のワークスペースで **[使用量と推定コスト]**  >  **[データ ボリュームの管理]** の順に移動して、クォータを確認するか、または既存のクォータを削除します。
-
-  ```loganalytics
-  Operation
-  | where OperationCategory == 'Data Collection Status'
-  | sort by TimeGenerated desc
-  ```
-
-## <a name="windows"></a>Windows
-
-ソリューションまたは仮想マシンをオンボードしようとして問題が発生した場合は、ローカル コンピューター上の **[アプリケーションとサービス ログ]** にある **Operations Manager** イベント ログで、イベント ID **4502** のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。
-
-次のセクションでは、具体的なエラー メッセージと、考えられる個別の解決策を示します。 他のオンボードの問題については、[ソリューションをオンボードする際のトラブルシューティング](onboarding.md)に関する記事を参照してください。
-
-### <a name="machine-already-registered"></a>シナリオ: マシンが違うアカウントに既に登録されている
-
-#### <a name="issue"></a>問題
+### <a name="issue"></a>問題
 
 次のエラー メッセージが表示されます。
 
@@ -191,17 +223,18 @@ Hybrid Runbook Worker の再登録と再インストールが必要な可能性�
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
 ```
 
-#### <a name="cause"></a>原因
+### <a name="cause"></a>原因
 
 マシンが既に Update Management 用の別のワークスペースにオンボードされています。
 
-#### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解決策
 
-[Hybrid Runbook グループを削除する](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)ことにより、マシン上の古いアーティファクトのクリーンアップを実行してから、再試行します。
+1. 「[Update Management のポータルにマシンが表示されない](#nologs)」の手順に従って、マシンのレポート先が正しいワークスペースであることを確認します。
+2. [Hybrid Runbook グループを削除する](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)ことにより、マシン上の古いアーティファクトのクリーンアップを実行してから、再試行します。
 
-### <a name="machine-unable-to-communicate"></a>シナリオ: マシンがサービスと通信できない
+## <a name="machine-unable-to-communicate"></a>シナリオ: マシンがサービスと通信できない
 
-#### <a name="issue"></a>問題
+### <a name="issue"></a>問題
 
 次のいずれかのエラー メッセージが表示されます。
 
@@ -217,17 +250,17 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
-#### <a name="cause"></a>原因
+### <a name="cause"></a>原因
 
 ネットワーク通信をブロックしているプロキシ、ゲートウェイ、またはファイアウォールが存在する可能性があります。
 
-#### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解決策
 
 ネットワークを見直し、適切なポートとアドレスが許可されていることを確認します。 Update Management および Hybrid Runbook Worker で必要なポートとアドレスの一覧については、[ネットワーク要件](../automation-hybrid-runbook-worker.md#network-planning)を参照してください。
 
-### <a name="unable-to-create-selfsigned-cert"></a>シナリオ: 自己署名証明書を作成できない
+## <a name="unable-to-create-selfsigned-cert"></a>シナリオ: 自己署名証明書を作成できない
 
-#### <a name="issue"></a>問題
+### <a name="issue"></a>問題
 
 次のいずれかのエラー メッセージが表示されます。
 
@@ -235,59 +268,51 @@ The certificate presented by the service <wsid>.oms.opinsights.azure.com was not
 Unable to Register Machine for Patch Management, Registration Failed with Exception AgentService.HybridRegistration. PowerShell.Certificates.CertificateCreationException: Failed to create a self-signed certificate. ---> System.UnauthorizedAccessException: Access is denied.
 ```
 
-#### <a name="cause"></a>原因
+### <a name="cause"></a>原因
 
 Hybrid Runbook Worker が自己署名証明書を生成できませんでした。
 
-#### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解決策
 
 フォルダー **C:\ProgramData\Microsoft\Crypto\RSA** への読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
 
-### <a name="failed-to-start"></a>シナリオ:更新プログラムの展開で "起動できませんでした" とマシンに表示される
+## <a name="mw-exceeded"></a>シナリオ:スケジュールされた更新管理がエラー MaintenanceWindowExceeded で失敗した
 
-#### <a name="issue"></a>問題
+### <a name="issue"></a>問題
 
-マシンの状態がマシンを "**起動できませんでした**" です。 マシンの特定の詳細情報を表示すると、次のエラーが表示されます。
+更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。
 
-```error
-Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
-```
+### <a name="resolution"></a>解決策
 
-#### <a name="cause"></a>原因
+スケジュール済みの更新プログラムの展開で失敗したものがあれば編集し、メンテナンス期間を延長します。
 
-このエラーは、次のいずれかの理由で発生する可能性があります。
+メンテナンス期間の詳細については、「[更新プログラムをインストールする](../automation-tutorial-update-management.md#schedule-an-update-deployment)」を参照してください。
 
-* そのマシンはもう存在しません。
-* マシンの電源が切れていて到達できません。
-* マシンにネットワーク接続の問題があり、マシン上のハイブリッド worker にアクセスできません。
-* SourceComputerId を変更する Microsoft Monitoring Agent に更新がありました
-* Automation アカウントで 2,000 の同時ジョブ制限に達した場合、更新の実行が制限された可能性があります。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
+## <a name="hresult"></a>シナリオ:マシンが未評価として表示され、HResult 例外が表示される
 
-#### <a name="resolution"></a>解決策
+### <a name="issue"></a>問題
 
-該当する場合は、更新プログラムの展開に[動的グループ](../automation-update-management.md#using-dynamic-groups)を使用します。
+* **[コンプライアンス]** に **[評価が行われていません]** と表示されているマシンがあり、その下に例外メッセージが表示されます。
+* 評価が行われていないとして表示されているマシンがあります
+* ポータルに HRESULT エラー コードが表示されます。
 
-* マシンがまだ存在し、到達可能であることを確認します。 存在しない場合は、展開を編集してそのマシンを削除します。
-* Update Management に必要なポートとアドレスの一覧については、[ネットワーク計画](../automation-update-management.md#ports)のセクションを参照し、使用しているマシンがこれらの要件を満たしていることを確認します。
-* Log Analytics で次のクエリを実行して、環境内で `SourceComputerId` が変更されたマシンを見つけます。 `Computer` 値は同じで `SourceComputerId` 値が異なるコンピューターを探します。 影響を受けるマシンを見つけたら、それらのマシンをターゲットとする更新プログラムの展開を編集し、`SourceComputerId` が正しい値を反映するようにマシンの削除と再追加を行う必要があります。
+### <a name="cause"></a>原因
 
-   ```loganalytics
-   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
-   ```
+更新エージェント (Windows 上の Windows Update エージェント、Linux ディストリビューション用のパッケージ マネージャー) が正しく構成されていません。 Update Management は、必要な更新プログラム、パッチの状態、デプロイされたパッチの結果を提供するために、マシンの更新エージェントを利用しています。 この情報がないと、必要なパッチやインストール済みのパッチを適切にレポートすることができません。
 
-### <a name="hresult"></a>シナリオ:マシンが未評価として表示され、HResult 例外が表示される
+### <a name="resolution"></a>解決策
 
-#### <a name="issue"></a>問題
+マシン上で更新をローカルで実行してみます。 これが失敗した場合は、通常、更新エージェントで構成エラーが発生したことを意味します。
 
-**[コンプライアンス]** に **[評価が行われていません]** と表示されているマシンがあり、その下に例外メッセージが表示されます。
+エラーの一般的な原因は次のとおりです。
 
-#### <a name="cause"></a>原因
+* ネットワークの構成とファイアウォール。
+* Linux の場合は、適切なドキュメントを確認して、パッケージ リポジトリのネットワーク エンドポイントにアクセスできることを確認します。
+* Windows の場合は、「[イントラネット エンドポイントから更新プログラムがダウンロードされない (WSUS/SCCM)](/windows/deployment/update/windows-update-troubleshooting#updates-arent-downloading-from-the-intranet-endpoint-wsussccm)」の一覧にあるエージェントの構成を確認してください。
+  * マシンが Windows Update 用に構成されている場合は、[](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy) に表示されているエンドポイントにアクセスできることを確認します。
+  * マシンが WSUS 用に構成されている場合は、[WUServer レジストリ キー](/windows/deployment/update/waas-wu-settings)によって構成された WSUS サーバーにアクセスできることを確認します。
 
-マシンで Windows Update または WSUS が正しく構成されていません。 Update Management は、必要な更新プログラム、パッチの状態、デプロイされたパッチの結果を提供するために、Windows Update または WSUS を利用しています。 この情報がないと、必要なパッチやインストール済みのパッチを適切にレポートすることができません。
-
-#### <a name="resolution"></a>解決策
-
-赤で表示された例外をダブルクリックして、例外メッセージ全体を確認します。 考えられる解決策または取るべき対策については、次の表を参照してください。
+HRESULT が表示される場合は、赤で表示された例外をダブルクリックして、例外メッセージ全体を確認します。 考えられる解決策または取るべき対策については、次の表を参照してください。
 
 |例外  |解決策または対策  |
 |---------|---------|
@@ -307,45 +332,27 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 > [!NOTE]
 > [Windows Update トラブルシューティング ツール](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)により、それは Windows クライアント向けであるが、Windows Server でも機能することが示されます。
 
-## <a name="linux"></a>Linux
+## <a name="scenario-update-run-returns-status-failed"></a>シナリオ: 更新実行によって状態 "失敗" が返される
 
-### <a name="scenario-update-run-fails-to-start"></a>シナリオ: 更新プログラムの実行を開始できない
-
-#### <a name="issue"></a>問題
-
-Linux マシンで更新プログラムの実行を開始できません。
-
-#### <a name="cause"></a>原因
-
-Linux ハイブリッド worker が異常です。
-
-#### <a name="resolution"></a>解決策
-
-次のログ ファイルのコピーを作成し、トラブルシューティングのために保存します。
-
-```bash
-/var/opt/microsoft/omsagent/run/automationworker/worker.log
-```
-
-### <a name="scenario-update-run-starts-but-encounters-errors"></a>シナリオ: 更新プログラムの実行が開始されるがエラーが発生する
-
-#### <a name="issue"></a>問題
+### <a name="issue"></a>問題
 
 更新プログラムの実行が開始されますが、実行中にエラーが発生します。
 
-#### <a name="cause"></a>原因
+### <a name="cause"></a>原因
 
 次の原因が考えられます。
 
 * パッケージ マネージャーが異常です。
-* 特定のパッケージがクラウドに基づく修正プログラムと干渉しています。
-* その他の理由。
+* 更新エージェント (Windows の場合は WUA、Linux の場合はディストリビューション固有のパッケージ マネージャー) が正しく構成されていません。
+* 特定のパッケージがクラウド ベースの修正プログラムと干渉している可能性があります。
+* マシンにアクセスできませんでした。
+* 更新プログラムに解決されていない依存関係がありました。
 
-#### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解決策
 
-Linux 上で正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けるマシンからの出力を確認します。 コンピューターのパッケージ マネージャーからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムをデプロイするには、パッケージ マネージャーが正常である必要があります。
+正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けたマシンからの[ジョブ出力を確認](../manage-update-multi.md#view-results-of-an-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムをデプロイするには、パッケージ マネージャーが正常である必要があります。
 
-場合によっては、Update Management とパッケージの更新プログラムが干渉して、更新プログラムのデプロイが完了されていないことがあります。 この場合、これらのパッケージを今後の更新プログラムの実行から除外するか、それらを手動でインストールする必要があります。
+ジョブが失敗する直前に特定の修正プログラム、パッケージ、または更新プログラムが表示される場合は、次の更新プログラムの展開からそれらを[除外](../automation-tutorial-update-management.md#schedule-an-update-deployment)してみることができます。 Windows Update からログ情報を収集するには、「[Windows Update のログ ファイル](/windows/deployment/update/windows-update-logs)」を参照してください。
 
 修正プログラムの問題を解決できない場合は、次のログ ファイルをコピーし、トラブルシューティングのために、次の更新プログラムの展開が開始される**前に**保存します。
 
@@ -364,39 +371,23 @@ Linux 上で正常に開始した後に更新プログラムの実行中にエ�
 
 * これは、多くの場合、WSUS/SCCM から更新プログラムを取得するようにマシンが構成されているのに、WSUS/SCCM で更新プログラムが承認されなかったときに起こります。
 * WSUS/SCCM のためにマシンが構成されているかどうかは、[このドキュメントの「レジストリを編集して自動更新を構成する」セクション内のレジストリ キーに対して "UseWUServer" レジストリ キーを相互参照する](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)ことでチェックできます
+* WSUS 内で更新プログラムが承認されていない場合、更新プログラムはインストールされません。 次のクエリを使用して、Log Analytics 内で未承認の更新プログラムを確認できます。
 
-### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>**インストールされると更新プログラムが表示されますが、コンピューター上で検索できません**
+  ```loganalytics
+  Update | where UpdateState == "Needed" and ApprovalSource == "WSUS" and Approved == "False" | summarize max(TimeGenerated) by Computer, KBID, Title
+  ```
+
+### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>インストールされると更新プログラムが表示されますが、コンピューター上で検索できない
 
 * 更新プログラムは多くの場合、他の更新プログラムによって置き換えられます。 詳細については、[Windows Update のトラブルシューティング ガイドの「この更新プログラムの置き換え」](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)を参照してください
 
-### <a name="installing-updates-by-classification-on-linux"></a>**Linux での更新プログラムの分類別インストール**
+### <a name="installing-updates-by-classification-on-linux"></a>Linux での更新プログラムの分類別インストール
 
 * 分類 ([緊急更新プログラムとセキュリティ更新プログラム]) 別に Linux に更新プログラムを展開する場合、特に CentOS に関する重要な注意事項があります。 これらの[制限事項は、Update Management の概要に関するページに記載されています](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2)
 
-### <a name="kb2267602-is-consistently--missing"></a>**KB2267602 が一貫して欠落している**
+### <a name="kb2267602-is-consistently--missing"></a>KB2267602 が一貫して欠落している
 
 * KB2267602 は [Windows Defender の定義更新](https://www.microsoft.com/wdsi/definitions)です。 これは毎日更新されます。
-
-## <a name="other"></a>シナリオ:問題が上記の一覧にない
-
-### <a name="issue"></a>問題
-
-一覧表示されている他のシナリオで解決されない問題があります。
-
-### <a name="cause"></a>原因
-
-レジストリ キーが正しく構成されていないか見つからなと、Update Management で問題が発生する可能性があります。
-
-### <a name="resolution"></a>解決策
-
-レジストリ キー `HKLM:\SOFTWARE\Microsoft\HybridRunbookWorker` を削除し、**HealthService** を再起動します。
-
-次の PowerShell コマンドを使うこともできます。
-
-```powershell
-Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force
-Restart-Service healthservice
-```
 
 ## <a name="next-steps"></a>次の手順
 

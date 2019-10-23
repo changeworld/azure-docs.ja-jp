@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266415"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249386"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
@@ -46,6 +46,7 @@ ms.locfileid: "71266415"
 
 | 機能 | 詳細 |
 | ---| --- |
+| <a href="/azure/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration-public-preview-in-east-us-and-west-us">サービス支援サブネット構成</a> | セキュリティで保護された便利なサブネット構成の管理方法です。 |
 | <a href="/azure/sql-database/sql-database-instance-pools">インスタンス プール</a> | 比較的小規模な SQL インスタンスをクラウドに移行するための、便利かつ費用対効果に優れた方法です。 |
 | <a href="https://aka.ms/managed-instance-tde-byok">Bring Your Own Key (BYOK) による透過的なデータ暗号化 (TDE)</a> |詳しくは、「[Azure Key Vault のユーザー管理キーを使用した Azure SQL Transparent Data Encryption: Bring Your Own Key のサポート](transparent-data-encryption-byok-azure-sql.md)」をご覧ください。|
 | <a href="https://aka.ms/managed-instance-aadlogins">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> ステートメントを使って、サーバーレベルのログインを作成します。 |

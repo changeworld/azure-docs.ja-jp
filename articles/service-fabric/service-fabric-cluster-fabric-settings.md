@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 71f2b111c0291bc9563b12a1cdbd88ea7e9f5b5b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241748"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376138"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -347,6 +347,7 @@ ms.locfileid: "70241748"
 |DefaultContainerRepositoryAccountName|string、既定値は ""|静的|ApplicationManifest.xml に指定されている資格情報の代わりに使用される既定の資格情報 |
 |DefaultContainerRepositoryPassword|string、既定値は ""|静的|ApplicationManifest.xml に指定されている資格情報の代わりに使用される既定のパスワード資格情報|
 |DefaultContainerRepositoryPasswordType|string、既定値は ""|静的|空の文字列でない場合、値は "Encrypted" または "SecretsStoreRef" です。|
+|DefaultDnsSearchSuffixEmpty|ブール値、既定値は FALSE|静的|既定では、コンテナー サービスの SF DNS 名にサービス名が付加されます。 この機能はこの動作を停止させ、解決の過程で SF DNS 名に既定では何も付加されないようにします。|
 |DeploymentMaxFailureCount|int、既定値は 20| 動的|ノードへのアプリケーションのデプロイは、DeploymentMaxFailureCount 回、再試行された後に失敗します。| 
 |DeploymentMaxRetryInterval| TimeSpan、既定値は Common::TimeSpan::FromSeconds(3600)|動的| timespan を秒単位で指定します。 デプロイの最大再試行間隔。 連続して失敗するたびに、再試行間隔が Min(DeploymentMaxRetryInterval; Continuous Failure Count * DeploymentRetryBackoffInterval) として計算されます |
 |DeploymentRetryBackoffInterval| TimeSpan、既定値は Common::TimeSpan::FromSeconds(10)|動的|timespan を秒単位で指定します。 デプロイ エラーのバックオフ間隔。 継続的なデプロイ エラーのたびに、システムによってデプロイが最大 MaxDeploymentFailureCount 回、再試行されます。 再試行間隔は、継続的なデプロイ エラーとデプロイ バックオフ間隔の積です。 |
@@ -533,7 +534,7 @@ ms.locfileid: "70241748"
 |DetailedNodeListLimit | int、既定値は 15 |動的| 未配置レプリカ レポートでの切り捨て前に含める、制約ごとのノードの数を定義します。 |
 |DetailedPartitionListLimit | int、既定値は 15 |動的| 診断での切り捨て前に含める、制約の診断エントリごとのパーティションの数を定義します。 |
 |DetailedVerboseHealthReportLimit | int、既定値は 200 | 動的|未配置レプリカが永続的に未配置の状態になった回数がここで定義した回数に達すると、詳細な正常性レポートが出力されます。 |
-|EnforceUserServiceMetricCapacities|ブール値、既定値は FALSE | 静的 |ファブリック サービス保護を有効にします。すべてのユーザー サービスは 1 つのジョブオブジェクト/cgroup の下にあり、指定されたリソース量に制限されます。ユーザー ジョブ オブジェクトおよび設定の制限の作成/削除は Fabric Host が開いている間に行われるため、これは静的である必要があります (FabricHost の再起動が必要)。 |
+|EnforceUserServiceMetricCapacities|ブール値、既定値は FALSE | 静的 |ファブリック サービスの保護を有効にします。 すべてのユーザー サービスは 1 つのジョブ オブジェクト/cgroup の下にあり、指定された量のリソースに制限されます。 ユーザー ジョブ オブジェクトの作成と削除、および制限の設定はファブリック ホストを開いている間に行われるため、これは静的である必要があります (FabricHostの再起動が必要です)。 |
 |FaultDomainConstraintPriority | int、既定値は 0 |動的| 障害ドメインの制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |GlobalMovementThrottleCountingInterval | 時間 (秒単位)、既定値は 600 |静的| timespan を秒単位で指定します。 ドメイン レプリカの移動ごとに追跡する、過去の間隔の長さを示します (GlobalMovementThrottleThreshold と共に使用)。 0 に設定すると、グローバルな調整を完全に無視できます。 |
 |GlobalMovementThrottleThreshold | uint、既定値は 1000 |動的| 均衡化フェーズにおいて、GlobalMovementThrottleCountingInterval で示される過去の間隔での移動の最大許容数。 |
@@ -752,7 +753,7 @@ ms.locfileid: "70241748"
 |PropertyWriteBatch |string、既定値は "Admin" |動的|名前付けプロパティの書き込み操作のセキュリティ構成。 |
 |ProvisionApplicationType |string、既定値は "Admin" |動的| アプリケーションの種類をプロビジョニングするためのセキュリティ構成。 |
 |ProvisionFabric |string、既定値は "Admin" |動的| MSI またはクラスター マニフェストをプロビジョニングするためのセキュリティ構成。 |
-|Query |string、既定値は "Admin\|\|User" |動的| クエリのセキュリティ構成。 |
+|クエリ |string、既定値は "Admin\|\|User" |動的| クエリのセキュリティ構成。 |
 |RecoverPartition |string、既定値は "Admin" | 動的|パーティションを復旧するためのセキュリティ構成。 |
 |RecoverPartitions |string、既定値は "Admin" | 動的|複数のパーティションを復旧するためのセキュリティ構成。 |
 |RecoverServicePartitions |string、既定値は "Admin" |動的| サービス パーティションを復旧するためのセキュリティ構成。 |

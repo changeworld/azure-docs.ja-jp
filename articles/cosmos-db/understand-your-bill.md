@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB の課金内容の理解
 description: この記事では、いくつかの例で、Azure Cosmos DB の課金内容を理解する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1dc4120ec9f1db8ac34800096ae407b5581758a4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 6d2edb7674a82a0388a0e028bee1b222e0e55004
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614167"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754722"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 

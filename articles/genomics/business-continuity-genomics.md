@@ -1,21 +1,21 @@
 ---
-title: ビジネス継続性 - Microsoft Genomics | Microsoft Docs
-titleSuffix: Azure
-description: この概要では、Microsoft Genomics が提供するビジネス継続性とディザスター リカバリーの機能について説明します。 Azure リージョンの停止など、データ損失の原因となる可能性のある破壊的なイベントから復旧するためのオプションについて説明します。
+title: ビジネス継続性の概要
+titleSuffix: Microsoft Genomics
+description: この概要では、Microsoft Genomics が提供するビジネス継続性とディザスター リカバリーの機能について説明します。
 keywords: ビジネス継続性, ディザスター リカバリー
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 7a51477dbbf6f4e50959a6d979342961c7e49ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60641111"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249174"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Microsoft Genomics によるビジネス継続性の概要
 この概要では、Microsoft Genomics が提供するビジネス継続性とディザスター リカバリーの機能について説明します。 Azure リージョンの停止など、データ損失の原因となる可能性のある破壊的なイベントから復旧するためのオプションについて説明します。 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: b7ace716f920304eff3ddcfa3fab887f780cec0e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000500"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372318"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
 
@@ -537,13 +537,21 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 ### <a name="tempdb"></a>TEMPDB
 
-`tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズはインスタンス ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでも Business Critical レベルでも 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
+`tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズはインスタンス ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでは 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
 
 ### <a name="error-logs"></a>エラー ログ
 
-マネージド インスタンスでは、エラー ログに詳細情報が書き込まれます。 エラー ログに記録される内部システム イベントが数多く存在します。 カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、[マネージド インスタンス - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) に関する記事を参照してください。
+マネージド インスタンスでは、エラー ログに詳細情報が書き込まれます。 エラー ログに記録される内部システム イベントが数多く存在します。 カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、Azure Data Studio の[マネージド インスタンス - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) または [マネージド インスタンスの拡張機能 (プレビュー)](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) に関する記事をご覧ください。
 
 ## <a name="Issues"></a> 既知の問題
+
+### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>インメモリ OLTP のメモリ制限が適用されない
+
+**日付:** 2019 年 10 月
+
+Business Critical サービス レベルでは、[メモリ最適化オブジェクトの最大メモリ制限](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)が正しく適用されない場合があります。 マネージド インスタンスでは、ワークロードが、インメモリ OLTP 操作に対してより多くのメモリを使用できる場合があり、これがインスタンスの可用性と安定性に影響を及ぼすことがあります。 インメモリ OLTP クエリは、制限に達しても、すぐには失敗しない可能性があります。 この問題は、まもなく解決されます。 多くのインメモリ OLTP メモリを使用するクエリは、[制限](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)に達するとすぐに失敗するようになります。
+
+**対処法:** [SQL Server Management Studio](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) を使用して[インメモリ OLTP ストレージの使用状況を監視](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)し、使用可能な量を超えるメモリがワークロードによって使用されないようにします。 仮想コアの数に応じてメモリ制限を増やすか、ワークロードを最適化して、使用するメモリを減らします。
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>空ではないファイルを削除しようとしたときに誤ったエラーが返される
 

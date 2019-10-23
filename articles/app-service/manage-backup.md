@@ -4,25 +4,24 @@ description: Azure App Service でアプリのバックアップを作成する�
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
-editor: jimbe
+manager: gwallace
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/06/2016
+ms.date: 10/16/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8784a06306f59015b95293d90ff5509dcfcae045
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bbfab41c3324bc16874463d2fc0201f99ee9284b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057935"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517028"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
-[Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。  バックアップは、無期限に保持されるように構成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。
+[Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 バックアップが無期限に保持されるように構成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。
 
 アプリをバックアップから復元する方法については、 [Azure でのアプリの復元](web-sites-restore.md)に関するページを参照してください。
 
@@ -36,21 +35,21 @@ App Service によって、アプリで使用するようにユーザーが構�
 * アプリに接続されているデータベース
 
 次のデータベース ソリューションがバックアップ機能でサポートされています。 
-   - [SQL Database](https://azure.microsoft.com/services/sql-database/)
-   - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
-   - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-   - [アプリ内 MySQL](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
+
+- [SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
+- [アプリ内 MySQL](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
->  各バックアップは増分更新ではなく、アプリの完全なオフライン コピーです。
->  
+> 各バックアップは増分更新ではなく、アプリの完全なオフライン コピーです。
+>
 
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要件および制限
-* バックアップと復元の機能には、**Standard** レベルまたは **Premium** レベル以上のレベルにある App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md)に関するページを参照してください。  
-  **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
+* バックアップと復元の機能には、**Standard** レベルまたは **Premium** レベル以上のレベルにある App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md)に関するページを参照してください。 **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
 * バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」をご覧ください。
 * 最大 10 GB のアプリとデータベースのコンテンツをバックアップできます。 バックアップのサイズがこの制限を超えた場合、エラーが発生します。
 * SSL が有効な Azure Database for MySQL はサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
@@ -63,52 +62,54 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 ## <a name="create-a-manual-backup"></a>手動バックアップの作成
 1. [Azure Portal](https://portal.azure.com) で、アプリのページに移動し、 **[バックアップ]** を選択します。 **[バックアップ]** ページが表示されます。
-   
-    ![バックアップ ページ][ChooseBackupsPage]
-   
-   > [!NOTE]
-   > 次のメッセージが表示された場合は、メッセージをクリックして App Service プランをアップグレードした後、バックアップに進むことができます。
-   > 詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md) に関するページを参照してください。  
-   > ![ストレージ アカウントの選択](./media/web-sites-backup/01UpgradePlan1.png)
-   > 
-   > 
 
-2. **[バックアップ]** ページで、 **[構成]** をクリックします。
-![[構成] をクリックする](./media/web-sites-backup/ClickConfigure1.png)
-3. **[バックアップ構成]** ページで、 **[ストレージ:未構成]** をクリックし、ストレージ アカウントを構成します。
-   
-    ![ストレージ アカウントの選択][ChooseStorageAccount]
+    ![バックアップ ページ](./media/manage-backup/access-backup-page.png)
+
+    > [!NOTE]
+    > 次のメッセージが表示された場合は、メッセージをクリックして App Service プランをアップグレードした後、バックアップに進むことができます。
+    > 詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md) に関するページを参照してください。
+    > ![ストレージ アカウントの選択](./media/manage-backup/upgrade-plan.png)
+    > 
+    > 
+
+2. **[バックアップ]** ページで、 **[バックアップが構成されていません。アプリのバックアップを構成するには、ここをクリックしてください]** を選択します。
+
+    ![[構成] をクリックします](./media/manage-backup/configure-start.png)
+
+3. **[バックアップ構成]** ページで、 **[ストレージ: 未構成]** をクリックして、ストレージ アカウントを構成します。
+
+    ![ストレージ アカウントの選択](./media/manage-backup/configure-storage.png)
+
 4. **[ストレージ アカウント]** と **[コンテナー]** を選択して、バックアップ先を選択します。 ストレージ アカウントは、バックアップするアプリと同じサブスクリプションに属する必要があります。 必要に応じて、各ページで新しいストレージ アカウントまたは新しいコンテナーを作成できます。 完了したら、 **[選択]** をクリックします。
-   
-    ![ストレージ アカウントの選択](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
-5. 開いたままになっている **[バックアップ構成]** ページで、 **[データベースをバックアップする]** を構成し、バックアップに含めるデータベース (SQL データベースまたは MySQL) を選択してから、 **[OK]** をクリックします。  
-   
-    ![ストレージ アカウントの選択](./media/web-sites-backup/03ConfigureDatabase1.png)
-   
-   > [!NOTE]
-   > この一覧に表示されるデータベースでは、その接続文字列がアプリの **[アプリケーション設定]** ページの **[接続文字列]** セクションに存在する必要があります。 
-   >
-   > アプリ内 MySQL データベースは、構成しなくても自動的にバックアップされます。 接続文字列を追加するなど、アプリ内 MySQL データベースを手動で設定すると、バックアップが正しく動作しない場合があります。
-   > 
-   > 
-6. **[バックアップ構成]** ページで、 **[保存]** をクリックします。    
+
+5. 開いたままになっている **[バックアップ構成]** ページで、 **[データベースをバックアップする]** を構成し、バックアップに含めるデータベース (SQL データベースまたは MySQL) を選択してから、 **[OK]** をクリックします。
+
+    ![ストレージ アカウントの選択](./media/manage-backup/configure-database.png)
+
+    > [!NOTE]
+    > この一覧に表示されるデータベースでは、その接続文字列がアプリの **[アプリケーション設定]** ページの **[接続文字列]** セクションに存在する必要があります。 
+    >
+    > アプリ内 MySQL データベースは、構成しなくても自動的にバックアップされます。 接続文字列を追加するなど、アプリ内 MySQL データベースを手動で設定すると、バックアップが正しく動作しない場合があります。
+    > 
+    > 
+
+6. **[バックアップ構成]** ページで、 **[保存]** をクリックします。
 7. **[バックアップ]** ページで、 **[バックアップ]** をクリックします。
-   
-    ![BackUpNow ボタン][BackUpNow]
-   
+
+    ![BackUpNow ボタン](./media/manage-backup/manual-backup.png)
+
     バックアップ処理中に、進行状況についてのメッセージが表示されます。
 
-ストレージ アカウントとコンテナーの構成が終わったら、いつでも手動バックアップを開始できます。  
+ストレージ アカウントとコンテナーの構成が終わったら、いつでも手動バックアップを開始できます。
 
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>自動バックアップの構成
 1. **[バックアップ構成]** ページで、 **[スケジュールされたバックアップ]** を**オン**に設定します。 
-   
-    ![ストレージ アカウントの選択](./media/web-sites-backup/05ScheduleBackup1.png)
-2. バックアップ スケジュールのオプションが表示されます。 **[スケジュールされたバックアップ]** を**オン**に設定し、必要に応じてバックアップ スケジュールを構成して、 **[OK]** をクリックします。
-   
-    ![自動化されたバックアップを有効にする][SetAutomatedBackupOn]
+
+    ![自動化されたバックアップを有効にする](./media/manage-backup/scheduled-backup.png)
+
+2. 必要に応じてバックアップのスケジュールを構成し、 **[OK]** を選択します。
 
 <a name="partialbackups"></a>
 
@@ -127,19 +128,18 @@ App Service によって、アプリで使用するようにユーザーが構�
 ### <a name="exclude-files-from-your-backup"></a>バックアップからファイルを除外する
 一度バックアップされており今後まったく変更されることがないログ ファイルや静止画像を含むアプリがあるとします。 このような場合には、将来のバックアップ時にそれらのフォルダーやファイルを保存しないように除外できます。 バックアップからファイルやフォルダーを除外するには、アプリの `D:\home\site\wwwroot`フォルダー内に `_backup.filter` ファイルを作成します。 このファイルに、除外するファイルやフォルダーの一覧を指定します。 
 
-ファイルにアクセスする簡単な方法として Kudu を使用できます。 Web アプリ の **[高度なツール] -> [移動]** 設定をクリックして、Kudu にアクセスします。
+ファイルにアクセスするには、`https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動します。 メッセージに従って Azure アカウントにサインインします。
 
-![ポータルを使用する Kudu][kudu-portal]
+バックアップから除外するフォルダーを識別します。 たとえば、強調表示されたフォルダーおよびファイルを除外したいとします。
 
-バックアップから除外するフォルダーを識別します。  たとえば、強調表示されたフォルダーおよびファイルを除外したいとします。
-
-![images フォルダー][ImagesFolder]
+![images フォルダー](./media/manage-backup/kudu-images.png)
 
 `_backup.filter` という名前のファイルを作成し、前のリストをこのファイルに配置します。ただし `D:\home` は削除します。 1 つのディレクトリまたはファイルを 1 行に配置します。 したがって、ファイルの内容は次のようになります。
- ```bash
-    \site\wwwroot\Images\brand.png
-    \site\wwwroot\Images\2014
-    \site\wwwroot\Images\2013
+
+ ```
+\site\wwwroot\Images\brand.png
+\site\wwwroot\Images\2014
+\site\wwwroot\Images\2013
 ```
 
 `_backup.filter`ファイルを、[ftp](deploy-ftp.md)やその他の方法を使用して、サイトの `D:\home\site\wwwroot\` ディレクトリにアップロードします。 Kudu の `DebugConsole` を使用してファイルを直接作成し、そこにコンテンツを挿入することもできます。
@@ -178,16 +178,3 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 ## <a name="next-steps"></a>次の手順
 アプリをバックアップから復元する方法については、 [Azure でのアプリの復元](web-sites-restore.md)に関するページを参照してください。 
-
-
-<!-- IMAGES -->
-[ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage1.png
-[ChooseStorageAccount]: ./media/web-sites-backup/02ChooseStorageAccount-1.png
-[BackUpNow]: ./media/web-sites-backup/04BackUpNow1.png
-[SetAutomatedBackupOn]: ./media/web-sites-backup/06SetAutomatedBackupOn1.png
-[SaveIcon]: ./media/web-sites-backup/10SaveIcon.png
-[ImagesFolder]: ./media/web-sites-backup/11Images.png
-[LogsFolder]: ./media/web-sites-backup/12Logs.png
-[GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
-[kudu-portal]:./media/web-sites-backup/kudu-portal.PNG
-

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051845"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376199"
 ---
 # <a name="monitoring-scheduled-events"></a>スケジュールされたイベントの監視
 
@@ -164,7 +164,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 1. **[アクション]** で、 **[アクショングループの作成]** を選択します。 **[アクション グループの追加]** ページが開きます。
 1. **[アクション グループ名]** に「*myActionGroup*」と入力します。
 1. **[短い名前]** に「**myActionGroup**」と入力します。
-1. **[リソース グループ]** で、*myResourceGroupAvailability** を選択します。
+1. **[リソース グループ]** で、**myResourceGroupAvailability** を選択します。
 1. [アクション] の **[アクション名]** に「**電子メール**」 と入力し、 **[電子メール/SMS/プッシュ/音声]** を選択します。 **[電子メール/SMS/プッシュ/音声]** ページが開きます。
 1. **[電子メール]** を選択し、ご自分の電子メール アドレスを入力して、 **[OK]** を選択します。
 1. **[アクション グループの追加]** ページで、 **[OK]** を選択します。 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 88b5cacf432e467c893dac6fc5839c468b2eafbd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: d193dcd0c0539c2daa7220d915fdc3e02c8ea798
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828658"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512428"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Azure PowerShell を使用して Azure に vhd をアップロードする
 
@@ -87,9 +87,9 @@ Revoke-AzDiskAccess -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 
 ## <a name="copy-a-managed-disk"></a>マネージド ディスクをコピーする
 
-ダイレクト アップロードを行うと、マネージド ディスクをコピーするプロセスも簡略化されます。 同じリージョン内またはリージョン間 (別のリージョン) でコピーできます。
+ダイレクト アップロードを行うと、マネージド ディスクをコピーするプロセスも簡略化されます。 同じリージョン内またはリージョン間で (別のリージョンへ) コピーできます。
 
-次のスクリプトでは、これが自動で実行されます。このプロセスは前述の手順と似ていますが、既存のディスクを操作しているため、いくつかの違いがあります。
+次のスクリプトでは、これが自動的に実行されます。このプロセスは前述の手順と似ていますが、既存のディスクを操作しているため、いくつかの違いがあります。
 
 > [!IMPORTANT]
 > Azure のマネージド ディスクのディスク サイズ (バイト単位) を指定する場合は、512 のオフセットを追加する必要があります。 これは、Azure からディスク サイズが返されるときにフッターが省略されるためです。 この操作を行わないと、コピーは失敗します。 次のスクリプトでは、この操作が自動的に行われています。
@@ -128,4 +128,4 @@ Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName
 
 vhd をマネージド ディスクに正常にアップロードしたので、ディスクを VM にアタッチして使用を開始できます。
 
-ディスクを VM にアタッチする方法については、この主題に関する記事を参照してください。[PowerShell を使用してデータ ディスクを Windows VM にアタッチする](attach-disk-ps.md)。
+データ ディスクを VM にアタッチする方法については、この主題に関する記事を参照してください。[PowerShell を使用してデータ ディスクを Windows VM にアタッチする](attach-disk-ps.md)。 ディスクを OS ディスクとして使用する方法については、「[特殊化されたディスクからの Windows VM の作成](create-vm-specialized.md#create-the-new-vm)」を参照してください。

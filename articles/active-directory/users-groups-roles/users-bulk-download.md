@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174207"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517065"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory ポータルでユーザーの一覧をダウンロードする (プレビュー)
 
@@ -35,6 +35,38 @@ Azure AD 管理センターからユーザー一覧をダウンロードする�
 1. **[ユーザーをダウンロード]** ページで **[開始]** を選択し、ユーザー プロファイルのプロパティが一覧表示された CSV ファイルを受け取ります。 エラーが発生した場合は、[一括操作の結果] ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
 
    ![ダウンロードするユーザー一覧を表示する場所を選択します](./media/users-bulk-download/bulk-download.png)
+
+   ダウンロードしたファイルには、フィルター処理されたユーザーの一覧が含まれます。
+
+   次のユーザー属性が含まれます。 
+
+   - userPrincipalName
+   - displayName
+   - surname
+   - mail
+   - givenName
+   - objectId
+   - userType
+   - jobTitle
+   - department
+   - manager
+   - accountEnabled
+   - usageLocation
+   - streetAddress
+   - state
+   - country
+   - physicalDeliveryOfficeName
+   - city
+   - postalCode
+   - telephoneNumber
+   - mobile
+   - authenticationPhoneNumber
+   - authenticationAlternativePhoneNumber
+   - authenticationEmail
+   - alternateEmailAddress
+   - ageGroup
+   - consentProvidedForMinor
+   - legalAgeGroupClassification
 
 ## <a name="check-status"></a>状態の確認
 

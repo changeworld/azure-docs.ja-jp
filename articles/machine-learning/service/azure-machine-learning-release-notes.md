@@ -10,18 +10,63 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: da0c674eaf3bc650beae0a05f8f8a0c3613fbeaf
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f51b9c3032518fb66215126c5a8bf26ab9b59526
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177900"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331570"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) のリファレンス ページを参照してください。 
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-10-14"></a>2019-10-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1069"></a>Azure Machine Learning SDK for Python v1.0.69
+
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + 最適に実行されるよう、実行ごとに説明を計算せずにモデル説明をが制限されるようになりました。 ローカル、リモート、および ADB で動作変更が実施されます。
+    + UI のオンデマンドのモデル説明のサポートを追加
+    + AutoML の依存関係として psutil を追加し、amlcompute に conda 依存関係として psutil を含めました。
+    + いくつかの系列で線形代数エラーを引き起こしていた予測データにおけるヒューリスティックの遅延とウィンドウのサイズが元に戻る問題を修正しました
+      + 予測実行にヒューリスティックによって決定されたパラメーターの印刷出力を追加しました。
+  + **azureml-contrib-datadrift**
+    + データセット レベルの誤差が最初のセクションに含まれていない場合、出力メトリックの作成に保護を追加しました。
+  + **azureml-contrib-interpret**
+    + azureml-contrib-explain-model パッケージの名前が azureml-contrib-interpret に変更されました
+  + **azureml-core**
+    + 未登録のデータ セットに API を追加しました。 `dataset.unregister_all_versions()`
+    + データの変更時間を確認するデータ セット API が追加されました。 `dataset.data_changed_time`
+    + Azure Machine Learning パイプラインで `PythonScriptStep`、`EstimatorStep`、`HyperDriveStep` への入力として `FileDataset` および `TabularDataset` を使用できるようになりました
+    + 多数のファイルを含むフォルダーの `FileDataset.mount` のパフォーマンスが向上しました
+    + 実行の詳細で既知のエラーに対する推奨事項に関する URL を追加しました。
+    + run.get_metrics において実行の子が多すぎる場合に要求が失敗するバグを修正しました
+    + Arcadia クラスターでの認証のサポートが追加されました。
+    + 実験オブジェクトを作成すると、実行履歴の追跡を行うため [Azure Machine Learning] ワークスペースで実験が取得または作成されます。 実験 ID とアーカイブする時間は、作成時に実験オブジェクトに設定されます。 例: experiment = Experiment (ワークスペース、"新しい実験")。experiment_id = experiment.id archive() とおよび reactivate() は、実験に対して呼び出すことができる関数で、UX に表示されるか、または実験の一覧を表示するよう規定で返されます。 アーカイブされた実験と同じ名前の新しい実験を作成した場合は、新しい名前を渡すことで、再アクティブ化するときにアーカイブされた実験の名前を変更できます。 存在できる同じ名前のアクティブな実験は 1 つだけです。 例: experiment1 = Experiment (ワークスペース、"アクティブな実験") experiment1.archive() # アーカイブと同じ名前で新しいアクティブな実験を作成します。 experiment2. = Experiment (ワークスペース、"アクティブな実験") experiment1.reactivate (新しい名前 = "以前アクティブだった実験")。Experiment の静的メソッドの list() は、名前フィルターと ViewType フィルターを受け取ることができます。 ViewType 値は、"ACTIVE_ONLY"、"ARCHIVED_ONLY"、および "ALL" です。例: archived_experiments = Experiment.list (ワークスペース、view_type = "ARCHIVED_ONLY") all_first_experiments = Experiment.list (ワークスペース、name = "最初の実験"、view_type = "ALL")
+    + モデル デプロイとサービスの更新で環境を使用するサポート
+  + **azureml-datadrift**
+    + DataDriftDector クラスの show 属性では、省略可能な引数 'with_details' はサポートされません。 show 属性では、特徴列のデータ誤差の係数とデータ誤差の影響のみが表示されます。
+    + DataDriftDetector 属性 'get_output' の動作変更:
+      + 入力パラメーター start_time、end_time は必須ではなく省略可能です。
+      + 同じ呼び出しで特定の run_id を使用している入力固有の start_time および/または end_time は相互に排他的であるため、値エラーの例外が発生します。 
+      + 入力固有の start_time または end_time では、スケジュールされた実行の結果のみが返されます。 
+      + パラメーター 'daily_latest_only' は推薦されません。
+    + データセット ベースのデータ誤差の出力の取得がサポートされるようになりました。
+  + **azureml-explain-model**
+    + AzureML-explain-model パッケージの名前を AzureML-interpret に変更し、現時点では旧バージョンとの互換性を維持するために古いパッケージを保持します
+    + ExplanationClient からのダウンロード時に、未加工の説明が既定の回帰ではなく分類タスクに設定されるバグを修正しました。
+    + `MimicWrapper` を使用して直接作成する `ScoringExplainer` のサポートを追加しました
+  + **azureml-pipeline-core**
+    + 大規模なパイプライン作成のパフォーマンスが向上しました
+  + **azureml-train-core**
+    + TensorFlow Estimator で TensorFlow 2.0 がサポートされるようになりました
+  + **azureml-train-automl**
+    + オーケストレーションで既に処理が行われているため、セットアップの反復処理に失敗した場合でも親の実行が失敗しなくなりました。
+    + AutoML 実験で local-docker および local-conda がサポートされるようになりました
 
 ## <a name="2019-10-08"></a>2019-10-08
 

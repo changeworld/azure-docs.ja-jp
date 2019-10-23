@@ -1,6 +1,6 @@
 ---
-title: 'Azure Status Monitor v2 API リファレンス: インストルメンテーション エンジンを有効にする |Microsoft Docs'
-description: Status Monitor v2 API リファレンス。 Enable-InstrumentationEngine。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+title: 'Azure Application Insights Agent API リファレンス: インストルメンテーション エンジンを有効にする |Microsoft Docs'
+description: Application Insights Agent API リファレンス。 Enable-InstrumentationEngine。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 3c0f4e015d3e01e86daaf101c15e16857540a520
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 9958121c38b96dc9cfa4dda2812fa9ce2b18d785
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033159"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388282"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>Status Monitor v2 API:Enable-InstrumentationEngine
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights Agent API: Enable-InstrumentationEngine
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -79,7 +79,7 @@ Configuring registry for instrumentation engine...
 - Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
 - トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
  
- Status Monitor v2 の活用:
- - ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。
+ Application Insights Agent をさらに活用する:
+ - Application Insights Agent の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行うには、このガイドを参照してください。
  - 設定が正しく記録されたことを確認するために[構成を取得](status-monitor-v2-api-get-config.md)します。
  - 監視を検査するために[状態を取得](status-monitor-v2-api-get-status.md)します。

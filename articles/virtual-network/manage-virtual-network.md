@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 04cd5035d012e7846cc97a5a057fd71ebe103ce3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168749"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515566"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -47,7 +47,7 @@ ms.locfileid: "72168749"
      - 169.254.0.0/16 (リンク ローカル)
      - 168.63.129.16/32 (内部 DNS、DHCP、および Azure Load Balancer の[正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
 
-     仮想ネットワークを作成する際に定義できるアドレス範囲は 1 つだけですが、仮想ネットワークの作成後にアドレス範囲をアドレス空間に追加することができます。 既存の仮想ネットワークにアドレス範囲を追加する方法については、「[アドレス範囲の追加または削除](#add-or-remove-an-address-range)」を参照してください。
+     ポータルで仮想ネットワークを作成する際に定義できるアドレス範囲は 1 つだけですが、仮想ネットワークの作成後にアドレス範囲をアドレス空間に追加することができます。 既存の仮想ネットワークにアドレス範囲を追加する方法については、「[アドレス範囲の追加または削除](#add-or-remove-an-address-range)」を参照してください。
 
      >[!WARNING]
      >仮想ネットワークのアドレス範囲が他の仮想ネットワークやオンプレミス ネットワークと重複している場合、そのネットワークに接続することはできません。 アドレス範囲を定義する前に、将来その仮想ネットワークを他の仮想ネットワークやオンプレミス ネットワークに接続する可能性があるかどうかを検討してください。

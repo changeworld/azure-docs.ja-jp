@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 4d801ada8fd8a8b35c71601d3ca274f26afb24f6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262275"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434290"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL での低速クエリ ログ
 Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
@@ -40,6 +40,9 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 - **log_queries_not_using_indexes**: インデックスを使用していないクエリを slow_query_log に記録するかどうかを決定します。
 - **log_throttle_queries_not_using_indexes**:このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
 
+> [!Note]
+> `sql_text` の場合、2048 文字を超えたログは切り捨てられます。
+
 低速クエリ ログのパラメーターの完全な説明については、MySQL の[低速クエリ ログのドキュメント](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)を参照してください。
 
 ## <a name="diagnostic-logs"></a>診断ログ
@@ -66,8 +69,8 @@ Azure Database for MySQL は、Azure Monitor の診断ログと統合されま�
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | サーバーの名前 |
 | `start_time_t` [UTC] | クエリの開始時刻 |
-| `query_time_s` | クエリの実行にかかった合計時間 |
-| `lock_time_s` | クエリがロックされていた合計時間 |
+| `query_time_s` | クエリの実行にかかった合計時間 (秒) |
+| `lock_time_s` | クエリのロックにかかった合計時間 (秒) |
 | `user_host_s` | ユーザー名 |
 | `rows_sent_s` | 送信された行の数 |
 | `rows_examined_s` | 検査された行の数 |

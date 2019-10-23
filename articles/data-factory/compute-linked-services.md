@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ae3350b14ca1073a5fbb1a353b9301c57e7f1ea4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176849"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298328"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
@@ -27,7 +27,8 @@ ms.locfileid: "72176849"
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [On-demand HDInsight クラスター](#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [カスタム](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) |
+| [Azure Machine Learning サービス](#azure-machine-learning-service-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
@@ -354,8 +355,8 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 | linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングに利用されます。 | はい      |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ       |
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning のリンクされたサービス
-Azure Machine Learning の「リンクされたサービス」を作成し、Machine Learning のバッチ スコアリング エンドポイントを Data Factory に登録します。
+## <a name="azure-machine-learning-studio-linked-service"></a>Azure Machine Learning Studio のリンクされたサービス
+Azure Machine Learning Studio の「リンクされたサービス」を作成し、Machine Learning のバッチ スコアリング エンドポイントを Data Factory に登録します。
 
 ### <a name="example"></a>例
 
@@ -385,11 +386,55 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 | 種類                   | type プロパティは次の値に設定されます。**AzureML**。 | はい                                      |
 | mlEndpoint             | バッチ スコアリング URL です。                   | はい                                      |
 | apiKey                 | 公開されたワークスペース モデルの API です。     | はい                                      |
-| updateResourceEndpoint | トレーニング済みモデル ファイルを使用した予測 Web サービスの更新に使用される Azure ML Web サービス エンドポイントの更新リソース URL です | いいえ                                       |
+| updateResourceEndpoint | トレーニング済みモデル ファイルを使用した予測 Web サービスの更新に使用される Azure Machine Learning Web サービス エンドポイントの更新リソース URL です | いいえ                                       |
 | servicePrincipalId     | アプリケーションのクライアント ID を取得します。     | UpdateResourceEndpoint が指定されている場合は必須です |
 | servicePrincipalKey    | アプリケーションのキーを取得します。           | UpdateResourceEndpoint が指定されている場合は必須です |
 | tenant                 | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | UpdateResourceEndpoint が指定されている場合は必須です |
 | connectVia             | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ                                       |
+
+## <a name="azure-machine-learning-service-linked-service"></a>Azure Machine Learning service のリンクされたサービス
+Azure Machine Learning service のリンクされたサービスを作成して、Azure Machine Learning service ワークスペースをデータ ファクトリに接続します。
+
+> [!NOTE]
+> 現在、Azure Machine Learning service のリンクされたサービスでは、サービス プリンシパル認証のみがサポートされています。
+
+### <a name="example"></a>例
+
+```json
+{
+    "name": "AzureMLServiceLinkedService",
+    "properties": {
+        "type": "AzureMLService",
+        "typeProperties": {
+            "subscriptionId": "subscriptionId",
+            "resourceGroupName": "resourceGroupName",
+            "mlWorkspaceName": "mlWorkspaceName",
+            "servicePrincipalId": "service principal id",
+            "servicePrincipalKey": {
+                "value": "service principal key",
+                "type": "SecureString"
+            },
+            "tenant": "tenant ID"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime?",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="properties"></a>properties
+| プロパティ               | 説明                              | 必須                                 |
+| ---------------------- | ---------------------------------------- | ---------------------------------------- |
+| 種類                   | type プロパティは次の値に設定されます。**AzureMLService**。 | はい                                      |
+| subscriptionId         | Azure サブスクリプション ID              | はい                                      |
+| resourceGroupName      | 名前 | はい                                      |
+| mlWorkspaceName        | Machine Learning Services service ワークスペースの名前 | はい  |
+| servicePrincipalId     | アプリケーションのクライアント ID を取得します。     | いいえ |
+| servicePrincipalKey    | アプリケーションのキーを取得します。           | いいえ |
+| tenant                 | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | UpdateResourceEndpoint が指定されている場合は必須です | いいえ |
+| connectVia             | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |    
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
 **Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
@@ -410,7 +455,7 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
                 "type": "SecureString"
             },
             "tenant": "tenant ID",
-            "subscriptionId": "<optional, subscription id of ADLA>",
+            "subscriptionId": "<optional, subscription ID of ADLA>",
             "resourceGroupName": "<optional, resource group name of ADLA>"
         },
         "connectVia": {

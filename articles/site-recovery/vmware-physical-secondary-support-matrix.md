@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: c330afb2c5d315b3d386d1477669f1aab2f6e6f9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972071"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255205"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -25,6 +25,17 @@ ms.locfileid: "69972071"
 > [!NOTE]
 > オンプレミスの VMware VM と物理サーバーのレプリケーションは、InMage Scout によって提供されます。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。
 
+## <a name="end-of-support-announcement"></a>サポート終了のお知らせ
+Site Recovery によるオンプレミスの VMware データセンターまたは物理データセンター間のレプリケーションのシナリオのサポート終了が近づいています。
+
+- 2018 年 8 月以降、このシナリオを Recovery Services コンテナーで構成することはできません。また、InMage Scout ソフトウェアをコンテナーからダウンロードすることもできません。 既存の展開はサポートされます。
+- - 2020 年 12 月 31 日以降、このシナリオはサポートされなくなります。
+既存のパートナーは、サポート終了まで新しいお客様にこのシナリオを提供できます。
+- 2018 年と 2019 年中に、2 つの更新プログラムがリリースされます。
+
+    - 更新プログラム 7:ネットワーク構成とコンプライアンスの問題を修正し、TLS 1.2 のサポートを提供します。
+    - 更新プログラム 8:Linux オペレーティング システム RHEL/CentOS 7.3/7.4/7.5 および SUSE 12 のサポートを追加します
+    - 更新プログラム 8 以降、更新プログラムはリリースされません。 更新プログラム 8 で追加されたオペレーティング システムに対する限定的な修正プログラムのサポートおよびベスト エフォートに基づくバグの修正が提供されます。
 
 ## <a name="host-servers"></a>ホスト サーバー
 
