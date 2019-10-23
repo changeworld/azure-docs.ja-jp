@@ -12,16 +12,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/02/2019
-ms.openlocfilehash: 19febc5a0a6e4a72cfebfaecd917185538130152
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8d4e7fa314ce3a5f8534e7742880114ccc7f7144
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035025"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598138"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 
-この記事では、データベース接続エラー、一時的なエラー (一時的な障害)、リソース ガバナンス エラー、データベース コピーの問題、エラスティック プール、その他のエラーなど、SQL Database クライアント アプリケーションの SQL エラー コードの一覧を示します。 大半は Azure SQL Database に固有のカテゴリで、Microsoft SQL Server には当てはまりません。 [システム エラー メッセージ](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx)もご覧ください。
+この記事では、データベース接続エラー、一時的なエラー (一時的な障害)、リソース ガバナンス エラー、データベース コピーの問題、エラスティック プール、その他のエラーなど、SQL Database クライアント アプリケーションの SQL エラー コードの一覧を示します。 大半は Azure SQL Database に固有のカテゴリで、Microsoft SQL Server には当てはまりません。 [システム エラー メッセージ](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)もご覧ください。
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>データベース接続エラー、一時的なエラー、その他の一時的なエラー
 

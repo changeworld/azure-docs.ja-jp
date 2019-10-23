@@ -4,14 +4,14 @@ description: Visual Studio を使用して、Azure リソース グループ プ
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.date: 06/20/2019
+ms.date: 10/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: c7f71dbadf24244756cf65f68ceea24547190737
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170249"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597627"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
@@ -23,7 +23,8 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 
 このセクションでは、**Web アプリ** テンプレートを使用して Azure リソース グループ プロジェクトを作成します。
 
-1. Visual Studio で、 **[ファイル]** 、 **[新規作成]** 、 **[プロジェクト]** の順に選択します。 **[Azure リソース グループ]** プロジェクト テンプレートを選択し、 **[次へ]** を選択します。
+1. Visual Studio で、 **[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。
+1. **[Azure リソース グループ]** プロジェクト テンプレートを選択し、 **[次へ]** を選択します。
 
     ![Create project](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 

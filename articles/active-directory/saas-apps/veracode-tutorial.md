@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50056e6b201313805e7b9253e7a962e096b9df65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72372998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Veracode の統合
@@ -109,13 +109,13 @@ Veracode に対する Azure AD SSO を構成してテストするには、次の
 
 1. 上部のメニューで、 **[設定]** 、 **[管理者]** の順にクリックします。
    
-    ![Administration](./media/veracode-tutorial/ic802911.png "Administration")
+    ![管理](./media/veracode-tutorial/ic802911.png "管理")
 
 1. **[SAML]** タブをクリックします。
 
 1. **[組織の SAML 設定]** セクションで、次の手順に従います。
 
-    ![Administration](./media/veracode-tutorial/ic802912.png "Administration")
+    ![管理](./media/veracode-tutorial/ic802912.png "管理")
 
     a.  **[Issuer]\(発行者\)** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
@@ -125,7 +125,7 @@ Veracode に対する Azure AD SSO を構成してテストするには、次の
 
 1. **[自己登録の設定]** セクションで次の手順を実行し、 **[保存]** をクリックします。
 
-    ![Administration](./media/veracode-tutorial/ic802913.png "Administration")
+    ![管理](./media/veracode-tutorial/ic802913.png "管理")
 
     a. **[新しいユーザーのアクティブ化]** として **[アクティブ化不要]** を選択します。
 
