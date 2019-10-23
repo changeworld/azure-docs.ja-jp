@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e814c9f7859fb18280c3a9ffd72bd4053a4895ad
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cfaa2598d53fa57b4a628a7ad1b847a9b078bf2b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883210"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598152"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -71,7 +71,7 @@ Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で�
 ### <a name="integrate-with-other-azure-services"></a>他の Azure サービスとの統合
 
 Azure 内の安全なストアとして、Key Vault は次のようなシナリオの簡略化に使用されてきました。
--  [Azure Disk Encryption](../security/azure-security-disk-encryption.md)
+-  [Azure Disk Encryption](../security/fundamentals/encryption-overview.md)
 -  SQL サーバーと Azure SQL Database 内の [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site)。 
 
