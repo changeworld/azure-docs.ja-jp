@@ -98,13 +98,13 @@
     - name: 診断とトラブルシューティング
       items:
         - name: Redis サーバーに関するトラブルシューティング
-          href: cache-how-to-troubleshoot-server.md
+          href: cache-troubleshoot-server.md
         - name: Redis クライアントに関するトラブルシューティング
-          href: cache-how-to-troubleshoot-client.md
+          href: cache-troubleshoot-client.md
         - name: タイムアウトに関するトラブルシューティング
-          href: cache-how-to-troubleshoot-timeouts.md
+          href: cache-troubleshoot-timeouts.md
         - name: データ損失に関するトラブルシューティング
-          href: cache-how-to-troubleshoot-data-loss.md
+          href: cache-troubleshoot-data-loss.md
     - name: スケール
       items:
         - name: 別のサイズとレベルに更新する

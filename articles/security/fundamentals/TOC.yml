@@ -3,10 +3,6 @@
 - name: アーキテクチャと設計
   href: overview.md
   expanded: false
-  items: null
-- name: アーキテクチャと設計
-  href: overview.md
-  expanded: false
   items:
     - name: クラウドにおける共同責任
       href: shared-responsibility.md
@@ -232,16 +228,12 @@
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure セキュリティ サービス
   href: services-technologies.md
-- name: 技術的概要
-  href: overviews.md
 - name: ベスト プラクティス
   href: best-practices-and-patterns.md
 - name: リソース
   items:
     - name: 組み込みのセキュリティ制御
       href: security-controls.md
-    - name: Azure セキュリティの MVP プログラム
-      href: mvp.md
     - name: サイバーセキュリティに関する相談
       href: cyber-services.md
     - name: セキュリティ イベント サポート チケットのログ記録
