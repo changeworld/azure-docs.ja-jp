@@ -43,7 +43,7 @@ install-script PrivateDnsMigrationScript
 
 ![スクリプトのインストール](./media/private-dns-migration-guide/install-migration-script.png)
 
-https://www.powershellgallery.com/packages/PrivateDnsMigrationScript では、最新バージョンの PowerShell スクリプトを手動で取得することもできます
+[https://www.powershellgallery.com/packages/PrivateDnsMigrationScript](https://www.powershellgallery.com/packages/PrivateDnsMigrationScript ) では、最新バージョンの PowerShell スクリプトを手動で取得することもできます
 
 ## <a name="running-the-script"></a>スクリプトの実行
 
