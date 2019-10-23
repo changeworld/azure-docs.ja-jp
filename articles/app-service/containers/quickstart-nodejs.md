@@ -7,12 +7,12 @@ ms.date: 08/12/2019
 ms.topic: quickstart
 ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: b28e8e4dccf75d36b318e838e35de23d176c5c23
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 32e141cae98e3fe34c8207f1565a82d2d76bdd25
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176758"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439211"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Azure で Node.js アプリを作成する
 
@@ -28,7 +28,7 @@ Azure アカウントをお持ちでない場合は、無料アカウントに[�
 
 ### <a name="sign-in"></a>サインイン
 
-拡張機能のインストール後、自分の Azure アカウントにログインします。 アクティビティ バーで Azure のロゴをクリックし、**Azure App Service** エクスプローラーを表示します。 **[Azure にサインイン]** をクリックして、指示に従います。
+拡張機能のインストール後、自分の Azure アカウントにログインします。 アクティビティ バーで Azure のロゴを選択し、**Azure App Service** エクスプローラーを表示します。 **[サインイン: Azure]** を選択して、指示に従います。
 
 ![Azure にサインイン](./media/quickstart-nodejs/sign-in.png)
 
@@ -41,7 +41,7 @@ export HTTPS_PROXY=https://username:password@proxy:8080
 export HTTP_PROXY=http://username:password@proxy:8080
 ```
 
-環境変数を設定しても問題が解決しない場合は、下の **[問題が発生しました]** ボタンをクリックしてお問い合わせください。
+環境変数を設定しても問題が解決しない場合は、下の **[問題が発生しました]** ボタンを選択してお問い合わせください。
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
 
@@ -57,24 +57,14 @@ VS Code では、ステータス バーに自分の Azure メール アドレス
 次に、クラウドにデプロイできる Node.js アプリケーションを作成します。 このクイックスタートでは、アプリケーション ジェネレーターを使用して、アプリケーションをターミナルからすばやくスキャフォールディングします。
 
 > [!TIP]
-> [Node.js チュートリアル](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)を既に完了している場合は、「[Web サイトのデプロイ](#deploy-the-website)」に進んでかまいません。
+> [Node.js チュートリアル](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)を既に完了している場合は、「[Azure へのデプロイ](#deploy-to-azure)」に進んでかまいません。
 
-### <a name="install-the-express-generator"></a>Express ジェネレーターのインストール
+### <a name="scaffold-a-new-application-with-the-express-generator"></a>Express ジェネレーターを使用した新しいアプリケーションのスキャフォールディング
 
-[Express](https://www.expressjs.com) は、Node.js アプリケーションの構築と実行に広く使われているフレームワークです。 [Express ジェネレーター](https://expressjs.com/en/starter/generator.html) ツールを使用して新しい Express アプリケーションをスキャフォールディング (作成) できます。 Express ジェネレーターは npm モジュールとして提供されており、npm コマンドライン ツール (`npm`) を使用してインストールされます。
-
-```bash
-npm install -g express-generator
-```
-
-`-g` スイッチを指定すると、自分のマシンに Express ジェネレーターがグローバルにインストールされて、どこからでも実行できるようになります。
-
-### <a name="scaffold-a-new-application"></a>新しいアプリケーションのスキャフォールディング
-
-次に、下記を実行して、`myExpressApp` という新しい Express アプリケーションをスキャフォールディングします。
+[Express](https://www.expressjs.com) は、Node.js アプリケーションの構築と実行に広く使われているフレームワークです。 [Express ジェネレーター](https://expressjs.com/en/starter/generator.html) ツールを使用して新しい Express アプリケーションをスキャフォールディング (作成) できます。 Express ジェネレーターは npm モジュールとして提供されており、npm コマンドライン ツール (`npx`) を使用して直接 (インストールなしで) 実行できます。
 
 ```bash
-express myExpressApp --view pug --git
+npx express-generator myExpressApp --view pug --git
 ```
 
 `--view pug --git` は、[pug](https://pugjs.org/api/getting-started.html) テンプレート エンジン (旧称 `jade`) を使用すること、また `.gitignore` ファイルを作成することをジェネレーターに伝えるパラメーターです。
@@ -101,9 +91,9 @@ npm start
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-the-website"></a>Web サイトのデプロイ
+## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
-このセクションでは、VS Code と Azure App Service 拡張機能を使用して自分の Node.js Web サイトをデプロイします。 このクイックスタートで使用するのは最も基本的なデプロイ モデルであり、自分のアプリは zip 圧縮されて、Linux 上の Azure Web アプリにデプロイされます。
+このセクションでは、VS Code と Azure App Service 拡張機能を使用して自分の Node.js アプリをデプロイします。 このクイックスタートで使用するのは最も基本的なデプロイ モデルであり、自分のアプリは zip 圧縮されて、Linux 上の Azure Web アプリにデプロイされます。
 
 ### <a name="deploy-using-azure-app-service"></a>Azure App Service を使用したデプロイ
 
@@ -113,7 +103,7 @@ npm start
 code .
 ```
 
-**Azure App Service** エクスプローラーで青色の上矢印アイコンをクリックして、自分のアプリを Azure にデプロイします。
+**Azure App Service** エクスプローラーで青色の上矢印アイコンを選択して、自分のアプリを Azure にデプロイします。
 
 ![Web アプリへのデプロイ](./media/quickstart-nodejs/deploy.png)
 
@@ -122,43 +112,43 @@ code .
 
 1. 現在開いているディレクトリ (`myExpressApp`) を選択します。
 
-2. **[Create new Web App]\(新しい Web アプリを作成する\)** を選択します。
+1. **[Create new Web App]\(新しい Web アプリの作成\)** を選択します。既定のデプロイ先は App Service on Linux になります。
 
-3. 自分の Web アプリ用にグローバルに一意な名前を入力し、Enter キーを押します。 アプリ名に使用できる有効な文字は "a-z"、"0-9"、"-" です。
+1. 自分の Web アプリ用にグローバルに一意な名前を入力し、Enter キーを押します。 アプリ名に使用できる有効な文字は "a-z"、"0-9"、"-" です。
 
-4. 該当する **Node.js バージョン**を選択します (LTS を推奨)。
+1. 該当する **Node.js バージョン**を選択します (LTS を推奨)。
 
     自分のアプリ用に作成されている Azure リソースが通知チャネルに表示されます。
 
-ターゲット サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** をクリックします。 その後、アプリがデプロイされます。
+1. ターゲット サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** を選択します。 その後、アプリがデプロイされます。
 
-![構成済みのデプロイ](./media/quickstart-nodejs/server-build.png)
+    ![構成済みのデプロイ](./media/quickstart-nodejs/server-build.png)
 
-デプロイが開始されると、以後デプロイのターゲットが自動的に同じ App Service Web アプリとなるように自分のワークスペースを更新するよう求められます。 自分の変更が適切なアプリにデプロイされるよう **[はい]** を選択してください。
+1. デプロイが開始されると、以後デプロイのターゲットが自動的に同じ App Service Web アプリとなるように自分のワークスペースを更新するよう求められます。 自分の変更が適切なアプリにデプロイされるよう **[はい]** を選択してください。
 
-![構成済みのデプロイ](./media/quickstart-nodejs/save-configuration.png)
+    ![構成済みのデプロイ](./media/quickstart-nodejs/save-configuration.png)
 
 > [!TIP]
 > 必ず、PORT 環境変数 (`process.env.PORT`) に指定されたポートで自分のアプリケーションがリッスンするようにしてください。
 
-### <a name="browse-the-website"></a>Web サイトの閲覧
+### <a name="browse-the-app-in-azure"></a>Azure でアプリを参照する
 
-デプロイが完了したら、プロンプトの **[Web サイトの参照]** をクリックして、自分が新しくデプロイした Web サイトを表示します。
+デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-**"このディレクトリまたはページを表示するアクセス許可がありません"** というエラーが表示された場合、おそらくアプリケーションが正常に起動できていません。 次のセクションに進んでログ出力を表示し、エラーを探して修正してください。 ご自身で解決できない場合は、以下の **[問題が発生しました]** ボタンをクリックしてお問い合わせください。 喜んでお手伝いします。
+**"このディレクトリまたはページを表示するアクセス許可がありません"** というエラーが表示された場合、おそらくアプリケーションが正常に起動できていません。 次のセクションに進んでログ出力を表示し、エラーを探して修正してください。 ご自身で解決できない場合は、以下の **[問題が発生しました]** ボタンを選択してお問い合わせください。 喜んでお手伝いします。
 
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
 
-### <a name="updating-the-website"></a>Web サイトの更新
+### <a name="update-the-app"></a>アプリの更新
 
 同じプロセスを使用し、新しいアプリを作成する代わりに既存のものを選択することで、このアプリに対する変更をデプロイできます。
 
 ## <a name="viewing-logs"></a>ログの表示
 
-このセクションでは、稼働中の Web サイトのログ (またはその "末尾") を表示する方法について説明します。 サイトでの `console.log` の呼び出しはすべて、Visual Studio Code の出力ウィンドウに表示されます。
+このセクションでは、実行中の App Service アプリのログを表示 (または "tail") する方法について説明します。 アプリでの `console.log` の呼び出しはすべて、Visual Studio Code の出力ウィンドウに表示されます。
 
 **Azure App Service** エクスプローラーでアプリを探して右クリックし、 **[ストリーミング ログの表示]** を選択します。
 

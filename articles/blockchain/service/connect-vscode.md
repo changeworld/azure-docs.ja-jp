@@ -1,21 +1,21 @@
 ---
-title: Azure Blockchain Development Kit for Ethereum を使用して Azure Blockchain Service に接続する
+title: Azure Blockchain Development Kit for Ethereum を使用する - Azure Blockchain Service
 description: Visual Studio Code で Azure Blockchain Development Kit for Ethereum 拡張機能を使用して、Azure Blockchain Service コンソーシアム ネットワークに接続します
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: 82b71a9d837ed3cb1d9461c0de2559178685b4b4
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6364e887c699219d80974d592a8ff7c77cca2621
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935360"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329315"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>クイック スタート:Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する
 

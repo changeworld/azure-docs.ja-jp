@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure Cache for Redis を使用する Python アプリを作成する | Microsoft Docs'
+title: クイック スタート:Azure Cache for Redis を使用する Python アプリを作成する
 description: このクイック スタートでは、Azure Cache for Redis を使用する Python アプリを作成する方法について説明します
 services: cache
 documentationcenter: ''
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.custom:
+- mvc
+- seo-python-october2019
+ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743932"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435537"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>クイック スタート: Python で Azure Cache for Redis を使用する
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>クイック スタート:Azure Cache for Redis を使用する Python アプリを作成する
 
-このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Python アプリに組み込みます。
+この記事では、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Python アプリに組み込みます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +48,7 @@ ms.locfileid: "70743932"
     pip3 install redis
 ```
 
-![redis-py をインストールする](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![Azure Cache for Redis への redis-py Python インターフェイスをインストールする](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
 ## <a name="read-and-write-to-the-cache"></a>キャッシュの読み取りと書き込みを実行する
@@ -98,7 +100,7 @@ for c in result:
 
 Python でスクリプトを実行します。
 
-![完了した Python テスト](./media/cache-python-get-started/cache-python-completed.png)
+![Python スクリプトを実行して、Azure Cache for Redis のキャッシュ アクセスをテストする](./media/cache-python-get-started/cache-python-completed.png)
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
@@ -115,7 +117,7 @@ Python でスクリプトを実行します。
 
 **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
-![削除](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Azure Cache for Redis のクイックスタート用のリソース グループを削除する](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** を選択します。
 

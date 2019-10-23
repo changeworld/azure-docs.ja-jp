@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell を使用して最初のクエリを実行する
+title: PowerShell を使用して最初のクエリを実行する
 description: この記事では、Azure PowerShell の Resource Graph モジュールを有効にして、最初のクエリを実行する手順について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 95cf19d4a782f9e4c866d31fac0da74aebff5d2d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a7d65d975d43a63a38863721273debab46115045
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976788"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389723"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -61,7 +61,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
    # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   Search-AzGraph -Query 'project name, type | limit 5'
+   Search-AzGraph -Query 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -71,7 +71,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   Search-AzGraph -Query 'project name, type | limit 5 | order by name asc'
+   Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -81,7 +81,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   Search-AzGraph -Query 'project name, type | order by name asc | limit 5'
+   Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。

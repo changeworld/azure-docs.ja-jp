@@ -1,18 +1,18 @@
 ---
-title: Azure Lighthouse を使用したテナント間の管理エクスペリエンス
+title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309648"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300988"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -58,6 +58,7 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 - すべてのサブスクリプションのアラートを表示する機能を使用して、委任されたサブスクリプションのアラートを Azure portal で表示するか、REST API を介してプログラムで表示する
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
 - ログ分析: 複数のテナントにあるリモートの顧客ワークスペースからデータを照会する
+- 顧客のテナント内に、サービス プロバイダー テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -65,7 +66,7 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 - 委任されたサブスクリプション内でポリシー定義を作成および編集する
 - 委任されたサブスクリプション内で顧客が定義したポリシー定義を割り当てる
 - 顧客には、サービス プロバイダーが作成したポリシーと顧客自身が作成したポリシーが並べて表示される
-- 顧客のテナント内で deployIfNotExists の割り当てを修復できる (顧客がそのポリシー割り当てのマネージド ID と *roleDefinitionIds* を構成済みの場合)
+- [顧客のテナント内で deployIfNotExists の修復または割り当ての変更を行う](../how-to/deploy-policy-remediation.md)ことができる
 
 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/):
 

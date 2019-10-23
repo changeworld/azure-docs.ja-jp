@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: ab6c381e779ddc19211f183b9bc80e586f58e804
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90fb3fe732889f3ba3965210cd8a681a0487f78e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261421"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515022"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -80,16 +80,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイックスタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このクイックスタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    > [!NOTE]
    > * *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
-   > * 示されているように、*MyDevice* を使用します。 これは、登録済みデバイスに付けられた名前です。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
+   > * 登録しているデバイスの名前については、示されているように、*MyDevice* を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. 先ほど登録したデバイスの "*デバイス接続文字列*" を取得するには、Cloud Shell で次のコマンドを実行します。
@@ -98,10 +98,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    このクイックスタートの後の方で使用できるように、デバイス接続文字列を書き留めておきます。 次の例のようになります。
+    このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -111,10 +111,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    このクイックスタートの後の方で使用するために、返された値を書き留めておきます。 次の例のようになります。
+    このクイックスタートの後の方で使用できるように、返されたサービス接続文字列を書き留めておきます。 次の例のようになります。
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -124,15 +124,15 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-device-local-proxy-application"></a>デバイスローカルのプロキシ アプリケーションの実行
 
-解凍したプロジェクト フォルダーの *device-streams-proxy/device* ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
+ローカル ターミナル ウィンドウで、解凍したプロジェクト フォルダーの `device-streams-proxy/device` ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
 
 | 引数名 | 引数値 |
 |----------------|-----------------|
-| `deviceConnectionString` | 前に作成したデバイスの接続文字列。 |
+| `DeviceConnectionString` | 前に作成したデバイスのデバイス接続文字列。 |
 | `targetServiceHostName` | SSH サーバーがリッスンする IP アドレス。 デバイスローカルのプロキシ アプリケーションが実行されているのと同じ IP である場合、アドレスは `localhost` です。 |
 | `targetServicePort` | アプリケーション プロトコルによって使用されるポート (SSH の場合、既定ではポート 22)。  |
 
-次のようにコードをコンパイルして実行します。
+以下のコマンドを使用して、コードをコンパイルし、実行します。
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/device/
@@ -142,23 +142,23 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $deviceConnectionString localhost 22
+dotnet run ${DeviceConnectionString} localhost 22
 
 # In Windows
-dotnet run %deviceConnectionString% localhost 22
+dotnet run {DeviceConnectionString} localhost 22
 ```
 
 ### <a name="run-the-service-local-proxy-application"></a>サービスローカルのプロキシ アプリケーションの実行
 
-解凍したプロジェクト フォルダーの `device-streams-proxy/service` に移動します。 以下の情報が必要になります。
+別のローカル ターミナル ウィンドウで、解凍したプロジェクト フォルダーの `device-streams-proxy/service` に移動します。 以下の情報を手元に用意しておいてください。
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
-| `iotHubConnectionString` | IoT Hub のサービス接続文字列。 |
-| `deviceId` | 前に作成したデバイスの識別子。 |
+| `ServiceConnectionString` | IoT Hub のサービス接続文字列。 |
+| `MyDevice` | 前に作成したデバイスの識別子。 |
 | `localPortNumber` | SSH クライアントの接続先のローカル ポート。 このサンプルではポート 2222 を使用していますが、他の任意の数を使用することもできます。 |
 
-次のようにコードをコンパイルして実行します。
+以下のコマンドを使用して、コードをコンパイルし、実行します。
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/service/
@@ -168,10 +168,10 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $serviceConnectionString MyDevice 2222
+dotnet run ${ServiceConnectionString} MyDevice 2222
 
 # In Windows
-dotnet run %serviceConnectionString% MyDevice 2222
+dotnet run {ServiceConnectionString} MyDevice 2222
 ```
 
 ### <a name="run-the-ssh-client"></a>SSH クライアントの実行
@@ -179,7 +179,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 次に SSH クライアント アプリケーションを使用してポート 2222 でサービスローカルのプロキシ アプリケーションに接続します (SSH デーモンに直接ではなく)。
 
 ```
-ssh <username>@localhost -p 2222
+ssh {username}@localhost -p 2222
 ```
 
 この時点で、SSH サインイン ウィンドウで資格情報の入力を求められます。
@@ -198,42 +198,42 @@ SSH クライアント アプリケーションのコンソール出力。 SSH �
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの RDP 接続
 
-RDP の設定は、SSH の設定 (上記) によく似ています。 代わりに RDP 接続先 IP とポート 3389 を使用し、(SSH クライアントではなく) RDP クライアントを使用します。
+RDP の設定は、SSH の設定 (上記) に似ています。 代わりに RDP 接続先 IP とポート 3389 を使用し、(SSH クライアントではなく) RDP クライアントを使用します。
 
 ### <a name="run-the-device-local-proxy-application-rdp"></a>デバイスローカルのプロキシ アプリケーション (RDP) の実行
 
-解凍したプロジェクト フォルダーの *device-streams-proxy/device* ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
+ローカル ターミナル ウィンドウで、解凍したプロジェクト フォルダーの `device-streams-proxy/device` ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
 
 | 引数名 | 引数値 |
 |----------------|-----------------|
-| `DeviceConnectionString` | 前に作成したデバイスの接続文字列。 |
+| `DeviceConnectionString` | 前に作成したデバイスのデバイス接続文字列。 |
 | `targetServiceHostName` | RDP サーバーが実行されているホスト名または IP アドレス。 デバイスローカルのプロキシ アプリケーションが実行されているのと同じ IP である場合、アドレスは `localhost` です。 |
 | `targetServicePort` | アプリケーション プロトコルによって使用されるポート (RDP の場合、既定ではポート 3389)。  |
 
-次のようにコードをコンパイルして実行します。
+以下のコマンドを使用して、コードをコンパイルし、実行します。
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/device
 
 # Run the application
 # In Linux or macOS
-dotnet run $DeviceConnectionString localhost 3389
+dotnet run ${DeviceConnectionString} localhost 3389
 
 # In Windows
-dotnet run %DeviceConnectionString% localhost 3389
+dotnet run {DeviceConnectionString} localhost 3389
 ```
 
 ### <a name="run-the-service-local-proxy-application-rdp"></a>サービスローカルのプロキシ アプリケーション (RDP) の実行
 
-解凍したプロジェクト フォルダーの `device-streams-proxy/service` に移動します。 以下の情報が必要になります。
+別のローカル ターミナル ウィンドウで、解凍したプロジェクト フォルダーの `device-streams-proxy/service` に移動します。 以下の情報を手元に用意しておいてください。
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
-| `iotHubConnectionString` | IoT Hub のサービス接続文字列。 |
-| `deviceId` | 前に作成したデバイスの識別子。 |
+| `ServiceConnectionString` | IoT Hub のサービス接続文字列。 |
+| `MyDevice` | 前に作成したデバイスの識別子。 |
 | `localPortNumber` | SSH クライアントの接続先のローカル ポート。 このサンプルではポート 2222 を使用していますが、これを他の任意の数に変更できます。 |
 
-次のようにコードをコンパイルして実行します。
+以下のコマンドを使用して、コードをコンパイルし、実行します。
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/service/
@@ -243,10 +243,10 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $serviceConnectionString MyDevice 2222
+dotnet run ${ServiceConnectionString} MyDevice 2222
 
 # In Windows
-dotnet run %serviceConnectionString% MyDevice 2222
+dotnet run {ServiceConnectionString} MyDevice 2222
 ```
 
 ### <a name="run-rdp-client"></a>RDP クライアントを実行する

@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43986ce57b8d320beeae748d3b848cf9ef38744d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2803f8d659726ac95bcefa6191a816ed2b2dcb2d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718724"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375409"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Azure 外部サービスの料金について
 外部サービスは、Azure Marketplace でサードパーティ ソフトウェア ベンダーによって公開されています。 たとえば、SendGrid は、Azure で購入できる外部サービスですが、Microsoft が公開したものではありません。 一部の Microsoft 製品も、Azure Marketplace で販売されています。
 
 ## <a name="how-external-services-are-billed"></a>外部サービスの請求方法
 
-- [Microsoft 顧客契約](#check-access)をお持ちの場合は、サードパーティのサービスは、Azure サービスの残りの部分と一緒に請求されます。
-- Microsoft 顧客契約をお持ちでない場合は、外部サービスは、Azure サービスとは別に請求されます。
+- Microsoft 顧客契約 (MCA) または Microsoft Partner Agreement (MPA) をお持ちの場合、サードパーティのサービスは、他の Azure サービスと一緒に請求されます。 MCA または MPA が利用できるかどうかを確かめるには、[課金アカウントの種類を確認](#check-billing-account-type)してください。
+- MCA も MPA もお持ちでない場合、外部サービスは、Azure サービスとは別に請求されます。
 - 外部サービスの課金モデルはサービスごとに異なります。 従量課金制で請求されるサービスもあれば、月額固定料金が設定されているサービスもあります。
 - 外部サービスでは月々の無料クレジットは使用できません。 [無料クレジット](https://azure.microsoft.com/pricing/spending-limits/)付きの Azure サブスクリプションを使用している場合でも、外部サービスからの請求にこれらの無料クレジットを適用することはできません。 新しい外部サービスまたはリソースをプロビジョニングすると、警告が表示されます。
 
@@ -48,11 +48,11 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices"></a>請求書の表示とダウンロード
+## <a name="view-and-download-invoices-for-external-services"></a>外部サービスの請求書を表示してダウンロードする
 
-[Microsoft 顧客契約](#check-access)をお持ちの場合は、サードパーティの料金は Azure の料金と同じ請求書に記載されます。 Azure portal から [Azure の請求書を表示およびダウンロード](billing-download-azure-invoice.md)して、サードパーティの料金を確認する方法を説明します。
+Microsoft 顧客契約 (MCA) または Microsoft Partner Agreement (MPA) をお持ちの場合、サードパーティのサービスは、他の Azure サービスと一緒に請求されます。 MCA または MPA が利用できるかどうかを確かめるには、[課金アカウントの種類を確認](#check-billing-account-type)してください。 利用できる場合は、[Azure portal で請求書を表示してダウンロードする方法](billing-download-azure-invoice.md)に関するページを参照して、ご利用のサードパーティの料金を確認してください。
 
-Microsoft 顧客契約をお持ちでない場合は、サードパーティの料金は別の請求書になります。 Azure Marketplace の請求書は、次の手順に従って、Azure portal から表示およびダウンロードできます。
+MCA も MPA もお持ちでない場合、サードパーティの料金は別の請求書になります。 Azure Marketplace の請求書は、次の手順に従って、Azure portal から表示およびダウンロードできます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. "**コスト管理 + 請求**" を検索します。
@@ -108,8 +108,8 @@ EA のお客様は、EA ポータルで外部サービスの支払いを表示�
     ![リソースの削除](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
 1. **[削除]** をクリックします。
 
-## <a name="check-access"></a>アクセスの確認
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>課金アカウントの種類を確認する
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

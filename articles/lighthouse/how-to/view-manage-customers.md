@@ -1,5 +1,5 @@
 ---
-title: 顧客と委任されたリソースを Azure portal で表示し、管理する
+title: 顧客と委任されたリソースを表示し、管理する
 description: Azure の委任されたリソース管理を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] を使用して、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
 author: JnHs
 ms.author: jenhayes
@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: acc90afa258fa7140cd7dfa8711dd64b554df45d
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810846"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302749"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>顧客と委任されたリソースを表示し、管理する
 
@@ -37,7 +37,7 @@ Azure portal の **[マイ カスタマー]** ページにアクセスするに�
 
 - 顧客に関連付けられているサブスクリプション、オファー、委任をすべて表示するには、その顧客の名前を選択します。
 - オファーとその委任の詳細を表示するには、そのオファーの名前を選択します。
-- 委任されたサブスクリプションまたはリソース グループについて、acrolecess の割り当ての詳細を表示するには、該当するエントリを **[委任]** 列で選択します。
+- 委任されたサブスクリプションまたはリソース グループについて、ロールの割り当ての詳細を表示するには、該当するエントリを **[委任]** 列で選択します。
 
 ## <a name="view-delegations"></a>委任を表示する
 

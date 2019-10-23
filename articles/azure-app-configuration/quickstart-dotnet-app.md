@@ -3,8 +3,8 @@ title: .NET Framework を使用した Azure App Configuration のクイック �
 description: .NET Framework アプリと共に Azure App Configuration を使用する場合のクイック スタート
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +12,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 10/09/2019
+ms.author: lcozzens
+ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326524"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329806"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して .NET Framework アプリを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "68326524"
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.1](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "68326524"
 
 6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
-    | キー | 値 |
+    | Key | 値 |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
@@ -47,7 +47,9 @@ ms.locfileid: "68326524"
 
 1. Visual Studio を起動し、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
 
-2. **[新しいプロジェクト]** で、 **[インストール済み]**  >  **[Visual C#]**  >  **[Windows デスクトップ]** の順に選択します。 **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前を入力します。 **[.NET Framework 4.7.1]** 以降を選択し、 **[OK]** を選択します。
+1. **[新しいプロジェクトの作成]** で、 **[コンソール]** プロジェクトの種類をフィルターで選択し、 **[コンソール アプリ (.NET Framework)]** をクリックします。 **[次へ]** をクリックします。
+
+1. **[新しいプロジェクトの構成]** で、プロジェクト名を入力します。 **[フレームワーク]** で、 **.NET Framework 4.7.1** 以上を選択します。 **Create** をクリックしてください。
 
 ## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 
@@ -56,9 +58,10 @@ ms.locfileid: "68326524"
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-2. プロジェクトの *App.config* ファイルを次のように更新します。
+1. プロジェクトの *App.config* ファイルを次のように更新します。
 
     ```xml
     <configSections>
@@ -80,12 +83,12 @@ ms.locfileid: "68326524"
 
    アプリ構成ストアの接続文字列は環境変数 `ConnectionString` から読み取られます。 `appSettings` セクションの `configBuilders` プロパティの `MyConfigStore` の前に、`Environment` 構成ビルダーを追加します。
 
-3. *Program.cs* を開き、`ConfigurationManager` を呼び出して App Configuration を使用するように `Main` メソッドを更新します。
+1. *Program.cs* を開き、`ConfigurationManager` を呼び出して App Configuration を使用するように `Main` メソッドを更新します。
 
     ```csharp
     static void Main(string[] args)
     {
-        string message = ConfigurationManager.AppSettings["TestApp:Settings:Message"];
+        string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
     }
@@ -101,7 +104,7 @@ ms.locfileid: "68326524"
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. 変更を有効にするために、Visual Studio を再起動します。 Ctrl + F5 キーを押して、アプリをビルドし、実行します。
+1. 変更を有効にするために、Visual Studio を再起動します。 Ctrl + F5 キーを押して、アプリをビルドし、実行します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

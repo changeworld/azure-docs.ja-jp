@@ -28,19 +28,17 @@
     - name: Azure Cache for Redis のサンプル
       href: cache-redis-samples.md
     - name: Azure PowerShell
-      href: cache-howto-manage-redis-cache-powershell.md
+      href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
 - name: 概念
   items:
     - name: ベスト プラクティス
-      items:
-        - name: Azure Cache for Redis のベスト プラクティス
-          href: cache-best-practices.md
-        - name: キャッシュに関する Azure アーキテクチャのベスト プラクティス
-          href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-    - name: フェールオーバーと修正プログラムの説明
+      href: cache-best-practices.md
+    - name: フェールオーバーと修正プログラムの適用
       href: cache-failover.md
+    - name: キャッシュに関するアーキテクチャのベスト プラクティス
+      href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: ハウツー ガイド
   items:
     - name: プラン
@@ -58,19 +56,25 @@
     - name: 自動化
       items:
         - name: Azure PowerShell でデプロイして管理する
-          href: cache-howto-manage-redis-cache-powershell.md
+          href: cache-how-to-manage-redis-cache-powershell.md
         - name: Azure CLI でデプロイして管理する
           href: cli-samples.md
         - name: Azure Cache for Redis をプロビジョニングする
           href: cache-redis-cache-arm-provision.md
         - name: Azure Cache for Redis で Web アプリをプロビジョニングする
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: ASP.NET と統合する
+    - name: アプリケーションと統合する
       items:
-        - name: セッション状態プロバイダー
-          href: cache-aspnet-session-state-provider.md
-        - name: 出力キャッシュ プロバイダー
-          href: cache-aspnet-output-cache-provider.md
+        - name: ASP.NET
+          items:
+            - name: セッション状態プロバイダーの使用
+              href: cache-aspnet-session-state-provider.md
+            - name: 出力キャッシュ プロバイダーの使用
+              href: cache-aspnet-output-cache-provider.md
+        - name: Java Spring
+          items:
+            - name: Spring Boot Initializer の使用
+              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: 管理
       items:
         - name: Azure Portal での構成
@@ -85,24 +89,28 @@
           href: 'cache-administration.md#schedule-updates'
         - name: redis-cli.exe アクセスの構成
           href: cache-how-to-redis-cli-tool.md
-    - name: 監視とトラブルシューティング
+    - name: 監視
       items:
         - name: Azure Portal での監視
           href: cache-how-to-monitor.md
-        - name: キャッシュに関する問題のトラブルシューティング
-          href: cache-how-to-troubleshoot.md
         - name: 例外のアラートを設定する
           href: 'cache-how-to-monitor.md#operations-and-alerts'
+    - name: 診断とトラブルシューティング
+      items:
+        - name: Redis サーバーに関するトラブルシューティング
+          href: cache-how-to-troubleshoot-server.md
+        - name: Redis クライアントに関するトラブルシューティング
+          href: cache-how-to-troubleshoot-client.md
+        - name: タイムアウトに関するトラブルシューティング
+          href: cache-how-to-troubleshoot-timeouts.md
+        - name: データ損失に関するトラブルシューティング
+          href: cache-how-to-troubleshoot-data-loss.md
     - name: スケール
       items:
         - name: 別のサイズとレベルに更新する
           href: cache-how-to-scale.md
         - name: Redis クラスターを使用してスケールイン/スケールアウトする
           href: cache-how-to-premium-clustering.md
-    - name: Spring Boot との統合
-      items:
-        - name: Azure Cache for Redis で Spring Boot Initializer アプリを使用する
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
 - name: リファレンス
   items:
     - name: コード サンプル

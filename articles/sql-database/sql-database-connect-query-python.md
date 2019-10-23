@@ -1,26 +1,26 @@
 ---
-title: Python を使用して Azure SQL Database に照会する | Microsoft Docs
+title: クイック スタート:Python を使用して Azure SQL Database のクエリを実行する
 description: このトピックでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータベースに照会するプログラムを Python で作成する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
+ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 659f6333d16f84cc35be45c45b7a7119e53fd0d0
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 32861fa8f8756c4e8d30c055582789d41a92fe7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764296"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331857"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>クイック スタート:Python を使用して Azure SQL データベースのクエリを実行する
 
- このクイック スタートでは、[Python](https://python.org) を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。 SDK の詳細については、[リファレンス](https://docs.microsoft.com/python/api/overview/azure/sql) ドキュメント、[pyodbc GitHub リポジトリ](https://github.com/mkleehammer/pyodbc/wiki/)、[pyodbc サンプル](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)を確認してください。
+ この記事では、[Python](https://python.org) を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。 SDK の詳細については、[リファレンス](https://docs.microsoft.com/python/api/overview/azure/sql) ドキュメント、[pyodbc GitHub リポジトリ](https://github.com/mkleehammer/pyodbc/wiki/)、[pyodbc サンプル](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 

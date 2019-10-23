@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 83339273d9161c3947df191d10e788980db39b28
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 4a6fd7dd40905a8a81a104c9d6ef22040ff88f15
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "67446029"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516268"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>クイック スタート:Node.js プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -70,16 +70,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 「[クイックスタート: ](quickstart-send-telemetry-node.md)を完了した場合は、この手順を省略できます。
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このセクションでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    > [!NOTE]
    > * *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
-   > * 示されているように、*MyDevice* を使用します。 これは、登録済みデバイスに付けられた名前です。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
+   > * 登録しているデバイスの名前については、示されているように、*MyDevice* を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、"*サービス接続文字列*" も必要です。 次のコマンドを実行すると、自分の IoT ハブの文字列が取得されます。
@@ -88,10 +88,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    このクイックスタートの後の方で使用するために、返された値を書き留めておきます。 次の例のようになります。
+   このクイックスタートの後の方で使用できるように、返されたサービス接続文字列を書き留めておきます。 次の例のようになります。
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -110,25 +110,25 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-service-local-proxy-application"></a>サービスローカルのプロキシ アプリケーションの実行
 
-デバイスローカルのプロキシ アプリケーションを実行しつつ、次の手順に従って、Node.js で記述されたサービスローカルのプロキシ アプリケーションを実行します。
+デバイスローカルのプロキシ アプリケーションを実行しつつ、ローカル ターミナル ウィンドウで次の手順に従って、Node.js で記述されたサービスローカルのプロキシ アプリケーションを実行します。
 
 1. 環境変数として、サービス資格情報、SSH デーモンが実行されているターゲット デバイスの ID、およびデバイスで実行されているプロキシのポート番号を指定します。
 
    ```
    # In Linux
-   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export IOTHUB_CONNECTION_STRING="{ServiceConnectionString}"
    export STREAMING_TARGET_DEVICE="MyDevice"
    export PROXY_PORT=2222
 
    # In Windows
-   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET IOTHUB_CONNECTION_STRING={ServiceConnectionString}
    SET STREAMING_TARGET_DEVICE=MyDevice
    SET PROXY_PORT=2222
    ```
 
-   実際のデバイス ID と接続文字列に合わせて上記の値を変更します。
+   ServiceConnectionString プレースホルダーを、サービス接続文字列に一致するように変更します。また、**MyDevice** を、これ以外の名前を指定した場合は、デバイス ID に一致するように変更します。
 
-1. 解凍したプロジェクト フォルダーの *Quickstarts/device-streams-service* ディレクトリに移動し、サービスローカルのプロキシ アプリケーションを実行します。
+1. 解凍したプロジェクト フォルダーの `Quickstarts/device-streams-service` ディレクトリに移動します。 次のコードを使用して、サービスローカルのプロキシ アプリケーションを実行します。
 
    ```
    cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
@@ -168,7 +168,7 @@ SSH クライアント アプリケーションのコンソール出力 (SSH ク
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、IoT ハブの設定、デバイスの登録、およびサービス プロキシ アプリケーションのデプロイによる IoT デバイスへの RDP および SSH の有効化を行いました。 RDP および SSH トラフィックは、IoT ハブへのデバイス ストリームを介してトンネリングされます。 このプロセスにより、デバイスへの直接接続の必要性がなくなります。
+このクイックスタートでは、IoT ハブの設定、デバイスの登録、およびサービス プロキシ アプリケーションのデプロイによる IoT デバイスへの RDP および SSH の有効化を行いました。 RDP および SSH トラフィックは、IoT ハブを介したデバイス ストリームを通じてトンネリングされます。 このプロセスにより、デバイスへの直接接続の必要性がなくなります。
 
 デバイス ストリームについて詳しく学習するには、次を参照してください。
 

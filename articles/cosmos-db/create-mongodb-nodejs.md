@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7fd74e31b0527b256f6bb9f17029a02aaf41568b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: b9cadbf35680953058bd38d7db26a6e6c684836b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931801"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327285"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>クイック スタート:既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 
@@ -27,9 +27,9 @@ ms.locfileid: "70931801"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
+このクイックスタートでは、Node.js で記述された既存の MongoDB アプリを使用する方法と、MongoDB クライアントをサポートする Azure Cosmos データベースにこのアプリを接続する方法を説明します。 言い換えると、Cosmos データベースへのデータの格納は、アプリケーションでは意識されません。
 
-このクイック スタートでは、Node.js で記述された既存の MongoDB アプリを使用する方法と、MongoDB クライアントをサポートする Cosmos データベースにこのアプリを接続する方法を説明します。 言い換えると、Cosmos データベースへのデータの格納は、アプリケーションでは意識されません。
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、およびグラフ データベースをすばやく作成したり、クエリを実行したりでき、そのすべてで、Cosmos DB の中核にあるグローバル配信および水平スケール機能が活用されます。
 
 操作を完了すると、MEAN アプリケーション (MongoDB、Express、Angular、および Node.js) が [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) で実行されます。 
 
@@ -101,7 +101,7 @@ az login
 
 次の例は、西ヨーロッパ リージョンにリソース グループを作成します。 リソース グループには一意の名前を選択します。
 
-Azure Cloud Shell を使用する場合は、 **[使ってみる]** を選択し、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
+Azure Cloud Shell を使用する場合は、 **[試してみる]** を選択し、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
@@ -205,7 +205,7 @@ npm start
 
 開発環境が稼働したことを通知するコンソール メッセージが表示されます。 
 
-ブラウザーで `http://localhost:3000` にアクセスします。 上部のメニューの **[Sign Up]** を選択し、ダミー ユーザーを 2 つ作成します。 
+ブラウザーで `http://localhost:3000` にアクセスします。 上部のメニューの **[新規登録]** を選択し、ダミー ユーザーを 2 つ作成します。 
 
 MEAN.js サンプル アプリケーションでは、ユーザー データをデータベースに格納します。 操作が成功し、MEAN.js が作成されたユーザーに自動的にサインインすれば、Azure Cosmos DB 接続は機能しています。 
 

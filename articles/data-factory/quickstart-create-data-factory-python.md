@@ -1,5 +1,5 @@
 ---
-title: Python を使用して Azure データ ファクトリを作成する | Microsoft Docs
+title: クイック スタート:Python を使用して Azure データ ファクトリを作成する
 description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 services: data-factory
 documentationcenter: ''
@@ -12,22 +12,23 @@ ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
-ms.openlocfilehash: 4d3b7ce56863d82ed8322b937a290c52774677d2
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.custom: seo-python-october2019
+ms.openlocfilehash: afe6ae001712db6d2a0dfa676daf847a2c4cf86e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272278"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438690"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用して Azure データ ファクトリとパイプラインを作成する
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-python.md)
 
-Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
-
 このクイックスタートでは、Python を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリのパイプラインは、データを Azure BLOB ストレージ内の 1 つのフォルダーから別のフォルダーにコピーします。
+
+Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 

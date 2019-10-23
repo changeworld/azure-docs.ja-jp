@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802533"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515189"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>クイック スタート:Python 用 Personalize クライアント ライブラリ
+# <a name="quickstart-personalizer-client-library-for-python"></a>クイック スタート:Python 用 Personalizer クライアント ライブラリ
 
 Personalizer サービスを使用するこの Python クイックスタートでパーソナライズしたコンテンツを表示します。
 

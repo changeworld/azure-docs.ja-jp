@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 486a6b46b6c4590b7f49cd8aba449204cd8f4fac
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c38cd7f4b2fb1ae88b65031d3c93b153500b96ac
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709704"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72375781"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>組織の Azure の価格の表示とダウンロード
 
-Azure Enterprise Agreement (EA) または [Microsoft 顧客契約](#check-your-access-to-a-microsoft-customer-agreement)を結んでいる Azure カスタマーは Azure portal で価格を表示したり、ダウンロードしたりできます。
+Azure Enterprise Agreement (EA)、Microsoft 顧客契約 (MCA)、Microsoft Partner Agreement (MPA) のいずれかを結んでいる Azure カスタマーは、その価格を Azure portal で表示してダウンロードすることができます。 [課金アカウントの種類を確認する方法をご覧ください](#check-your-billing-account-type)。
 
-## <a name="ea-pricing"></a>EA の価格
+## <a name="download-pricing-for-an-enterprise-agreement"></a>マイクロソフト エンタープライズ契約の価格をダウンロードする
 
 組織のエンタープライズ管理者が設定したポリシーに基づきますが、特定の管理者ロールのみが組織の EA 価格情報へのアクセスを提供します。 詳細については、「[Understand Azure Enterprise Agreement administrative roles in Azure](billing-understand-ea-roles.md)」(Azure の Azure Enterprise Agreement 管理者ロールを理解する) を参照してください。
 
@@ -42,18 +42,9 @@ Azure Enterprise Agreement (EA) または [Microsoft 顧客契約](#check-your-a
 
    ![価格シートの [CSV のダウンロード] ボタンを示すスクリーンショット](./media/billing-ea-pricing/download-ea-price-sheet.png)
 
-## <a name="microsoft-customer-agreement-pricing"></a>Microsoft Customer Agreement の価格
+## <a name="download-pricing-for-an-mca-or-mpa-account"></a>MCA または MPA アカウントの価格をダウンロードする
 
-価格を表示およびダウンロードするには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 Microsoft 顧客契約の課金ロールの詳細については、「[課金プロファイルのロールとタスク](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
-
-### <a name="download-price-sheets-for-the-current-billing-period"></a>現在の請求期間の価格シートのダウンロード
-
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-1. "*コスト管理 + 請求*" を検索します。
-1. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
-1. **[概要]** 領域で、月度累計請求金額の下にあるダウンロード リンクを見つけます。
-1. **[Azure 価格シート]** を選択します。
-![概要からのダウンロードを示すスクリーンショット](./media/billing-ea-pricing/open-pricing.png)
+MCA を結んでいる場合、価格を表示してダウンロードするためには、課金プロファイルの所有者、共同作成者、閲覧者、請求書管理者のいずれかである必要があります。 MPA を結んでいる場合、価格を表示してダウンロードするためには、取引先組織の全体管理者ロールおよび管理者エージェント ロールが割り当てられている必要があります。
 
 ### <a name="download-price-sheets-for-billed-charges"></a>課金された料金の価格シートのダウンロード
 
@@ -69,6 +60,17 @@ Azure Enterprise Agreement (EA) または [Microsoft 顧客契約](#check-your-a
 1. 特定の請求期間のすべての Azure サービスの価格を表示する場合は、 **[Azure 価格シート]** を選択してください。
 
 ![コンテキスト メニューと価格シートを示すスクリーンショット](./media/billing-ea-pricing/contextmenu-pricesheet.png)
+
+### <a name="download-price-sheets-for-the-current-billing-period"></a>現在の請求期間の価格シートのダウンロード
+
+MCA を結んでいる場合、現在の請求期間の価格をダウンロードすることができます。
+
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. "*コスト管理 + 請求*" を検索します。
+1. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
+1. **[概要]** 領域で、月度累計請求金額の下にあるダウンロード リンクを見つけます。
+1. **[Azure 価格シート]** を選択します。
+![概要からのダウンロードを示すスクリーンショット](./media/billing-ea-pricing/open-pricing.png)
 
 ## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Azure 料金計算ツールを利用してコストを見積もる
 
@@ -86,8 +88,8 @@ Azure Enterprise Agreement (EA) または [Microsoft 顧客契約](#check-your-a
 1. 製品を検索して見積もりに追加します。
 1. 表示された見積価格は、選択した組織に対する価格に基づきます。
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>課金アカウントの種類を確認する
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>次の手順
 

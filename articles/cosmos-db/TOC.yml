@@ -599,8 +599,10 @@
       items:
         - name: はじめに
           href: mongodb-introduction.md
-        - name: ワイヤ プロトコルのサポート
+        - name: ワイヤ プロトコルのサポート (3.2)
           href: mongodb-feature-support.md
+        - name: ワイヤ プロトコルのサポート (3.6)
+          href: mongodb-feature-support-36.md
         - name: クイック スタート
           items:
             - name: .NET

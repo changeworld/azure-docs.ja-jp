@@ -1,6 +1,6 @@
 ---
 title: Azure で課金を管理して予想外のコストを防ぐ
-description: Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Azure サブスクリプションに対して、コスト追跡および管理機能を使用します。
+description: Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Azure アカウントのコスト追跡および管理機能を使用します。
 author: bandersmsft
 manager: amberb
 tags: billing
@@ -11,110 +11,80 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: d6c287d5ead0095a4f7bb5ad754212b134f7103c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719817"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375644"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
 Azure にサインアップしたら、支出を把握するために行えることがいくつかあります。
 
-- [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)では、Azure リソースを作成する前に、料金を見積もることができます。 
-
-- [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) は、サブスクリプションに関する現在のコスト内訳と予測を提供します。 
-
-- プロジェクトまたはチームごとのコストをグループ化して把握したい場合は、[リソースのタグ付け](../azure-resource-manager/resource-group-using-tags.md)を検討します。 使用したいレポート システムが組織にある場合は、[課金 API](billing-usage-rate-card-overview.md) を確認します。
-
-- サブスクリプションがマイクロソフト エンタープライズ契約 (EA) から作成された場合、Azure portal でコストを表示できます。 クラウド ソリューション プロバイダー (CSP) または Azure スポンサー プランを介したサブスクリプションの場合は、以下の機能の一部が適用されない場合があります。 詳しくは、「[EA、CSP、およびスポンサー プラン向けのその他のリソース](#other-offers)」をご覧ください。
-
-- サブスクリプションが無料試用版プラン、[Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure イン オープン プラン (AIO)、または BizSpark の場合、クレジットをすべて使うと、サブスクリプションは自動的に無効になります。 サブスクリプションが予期せず無効化されないようにするには、[使用制限](#spending-limit)を確認してください。
-
-- [Azure の無料アカウント](https://azure.microsoft.com/free/)にサインアップしている場合、[最も一般的な Azure サービスのいくつかを 12 か月間無料で使用できます](billing-create-free-services-included-free-account.md)。 下記の推奨事項に加えて、[無料アカウントの課金の回避](billing-avoid-charges-free-account.md)に関する記事もご覧ください。
+- サービスを追加する前に[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や Azure 価格シートを使用するか、Azure portal でサービスを追加する際に推定コストを把握します。
+- [予算](../cost-management/tutorial-acm-create-budgets.md)、[アラート](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)、[コスト分析](../cost-management/quick-acm-cost-analysis.md)を使用してコストを監視します。
+- 請求書に記載されている請求金額を、[詳しい使用状況ファイル](billing-download-azure-invoice-daily-usage-date.md)を比較してそれらを確認します。
+- [Billing](https://docs.microsoft.com/rest/api/billing/) API と [Consumption](https://docs.microsoft.com/rest/api/consumption/) API を使用して課金およびコストのデータを独自のレポート システムに統合します。
+- マイクロソフト エンタープライズ契約 (EA)、クラウド ソリューション プロバイダー (CSP)、Azure スポンサー プランのお客様向けに別途用意されているリソースおよびツールを使用します。
+- [Azure 無料アカウント](https://azure.microsoft.com/free/)で利用できる[最も人気の高い Azure サービスを 12 か月間無料](billing-create-free-services-included-free-account.md)で活用します。 下記の推奨事項に加えて、[無料アカウントの課金の回避](billing-avoid-charges-free-account.md)に関する記事もご覧ください。
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Azure サービスを追加する前にコストを見積もる
 
-次に、以下のツールを使用したコストの見積もりに関する追加情報を示します。
+次のいずれかのツールを使用して、Azure サービスの使用にかかるコストを見積もります。
 - Azure 料金計算ツール
+- Azure 価格シート
 - Azure ポータル
-- 使用制限
 
 次のセクションの画像は、米ドルでの価格の例を示しています。
 
 ### <a name="estimate-cost-online-using-the-pricing-calculator"></a>料金計算ツールを使用してオンラインでコストを見積もる
 
-関心のあるサービスの月額料金を見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を確認します。 ファースト パーティ Azure リソースを追加すると、推定料金が得られます。 料金計算ツールでは、通貨の種類を変更できます。
+[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用して、追加したいサービスにかかる毎月の推定コストを把握します。 通貨を変更することにより、お住まいの地域の通貨で見積もり額を表示することができます。
 
 ![料金計算ツール メニューのスクリーンショット](./media/billing-getting-started/pricing-calc.png)
 
-たとえば、料金計算ツールで、1 つの A1 Windows 仮想マシン (VM) は、常に実行したままにしておいた場合、コンピューティング時間で一定の量の月額料金がかかると見積もられます。
+ファースト パーティの Azure サービスについては、すべて推定コストを確認できます。 たとえば、次のスクリーンショットで、A1 Windows 仮想マシン (VM) を常に実行したままにしておく場合、コンピューティング時間での推定月額料金は 66.96 ドルになります。
 
 ![A1 Windows VM の推定月額料金を示す料金計算ツールのスクリーンショット](./media/billing-getting-started/pricing-calcvm.png)
 
 料金設定の詳細については、[料金に関する FAQ](https://azure.microsoft.com/pricing/faq/) を参照してください。 Azure 営業担当者と話したい場合は、FAQ ページの上部に表示されている電話番号までご連絡ください。
 
+### <a name="view-and-download-azure-price-sheet"></a>Azure 価格シートを表示してダウンロードする
+
+マイクロソフト エンタープライズ契約 (EA) または Microsoft 顧客契約 (MCA) を通じて Azure にアクセスできる場合は、お使いの Azure アカウントの価格シートを表示してダウンロードすることができます。 この価格シートは、すべての Azure サービスの価格が記載された Excel ファイルです。 詳細については、[Azure 価格の表示とダウンロード](billing-ea-pricing.md)に関するページを参照してください。
+
 ### <a name="review-estimated-costs-in-the-azure-portal"></a>Azure portal で推定料金を検討する
 
-通常、Azure portal でサービスを追加すると、お使いの課金通貨での推定月額料金を示すビューが表示されます。 たとえば、Windows VM のサイズを選択すると、コンピューティング時間の推定月額料金が表示されます。
+Azure portal でサービスを追加している間は、1 か月あたりの推定コストを表示できます。 たとえば、Windows VM のサイズを選択すると、コンピューティング時間の推定月額料金が表示されます。
 
 ![例: 推定月額料金を示す A1 Windows VM](./media/billing-getting-started/vm-size-cost.png)
-
-### <a name="spending-limit"></a>使用制限が有効になっているかどうかを確認する
-
-クレジットを使用するサブスクリプションがある場合、使用制限が既定で有効になっています。 この場合、すべてのクレジットを使い果たすと、クレジット カードに課金されなくなります。 Azure プランの一覧と使用制限の提供状況については、[こちら](https://azure.microsoft.com/support/legal/offer-details/)をご覧ください。
-
-ただし、使用制限に達すると、サービスは無効になります。 つまり、VM の割り当てが解除されます。 サービスのダウンタイムを回避するには、使用制限を無効にする必要があります。 超過分は記録されているクレジット カードに課金されます。
-
-使用制限が有効になっているかどうかを確認するには、[アカウント センターの [サブスクリプション] ビュー](https://account.windowsazure.com/Subscriptions)に移動します。 使用制限が有効になっている場合、次のようなバナーが表示されます。
-
-![使用制限が有効になっていることに関するアカウント センターの警告を示すスクリーンショット](./media/billing-getting-started/spending-limit-banner.png)
-
-バナーをクリックし、画面の指示に従って使用制限を削除します。 サインアップ時にクレジット カード情報を入力しなかった場合、使用制限を削除するには、この情報を入力する必要があります。 詳細については、「[Azure 使用制限 - しくみと有効化または削除する方法](https://azure.microsoft.com/pricing/spending-limits/)」をご覧ください。
-
-## <a name="use-budgets-and-cost-alerts"></a>予算とコストのアラートを使用する
-
-[予算](../cost-management/tutorial-acm-create-budgets.md)を作成して、コストを管理し、異常な支出や浪費のリスクについて、関係者に自動的に通知する[アラート](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)を作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。
 
 ## <a name="monitor-costs-when-using-azure-services"></a>Azure サービス使用時にコストを監視する
 次のツールを使用して、コストを監視できます。
 
-- Tags
-- コストの内訳とバーン レート
+- 予算とコストのアラート
 - コスト分析
 
-### <a name="tags"></a>リソースにタグを追加して課金データをグループ化する
+### <a name="track-costs-with-budgets-and-cost-alerts"></a>予算とコストのアラートを使用してコストを追跡する
 
-タグを使用して、サポートされているサービスの課金データをグループ化できます。 たとえば、さまざまなチーム用に複数の VM を実行している場合、タグを使用して、コスト センター (例: HR、マーケティング、財務) または環境 (運用、運用前、テスト) 別にコストを分類できます。
+[予算](../cost-management/tutorial-acm-create-budgets.md)を作成して、コストを管理し、異常な支出や浪費について、関係者に自動的に通知する[アラート](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)を作成できます。 
 
-![ポータルでのタグの設定を示すスクリーンショット](./media/billing-getting-started/tags.png)
+### <a name="costs"></a> コスト分析を使用してコストを調査および分析する
 
-タグはさまざまなコスト レポート ビューのあらゆる場所に表示されます。 たとえば、[コスト分析ビュー](#costs)に今すぐ表示され、最初の請求期間の終了後に詳細な使用状況を示す CSV ファイルに表示されます。
+Azure サービスを実行状態に移した後は、定期的にコストをチェックして Azure の利用状況を追跡してください。 コスト分析を使用することで、Azure の利用に関するコストの発生源を把握することができます。 
 
-詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/resource-group-using-tags.md)に関するページを参照してください。
+1. [Azure portal で [コストの管理と請求] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade)に移動します。
 
-### <a name="costs"></a>コストの内訳とバーン レートの監視
-
-Azure サービスを実行させた後、定期的に料金を確認します。 Azure portal で現在の支出とバーン レートを確認できます。
-
-1. [Azure portal の [サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) にアクセスし、サブスクリプションを選択します。
-
-2. お使いのサブスクリプションでサポートされていれば、コストの内訳とバーン レートが表示されます。
-
-    ![Azure Portal に表示されたバーン レートと内訳のスクリーンショット](./media/billing-getting-started/burn-rate.PNG)
-
-3. 一覧の左側にある [[コスト分析]](../cost-management/quick-acm-cost-analysis.md) をクリックして、リソース別にコストの内訳を表示します。 サービスを追加したら、データが表示されるまで 24 時間待ちます。
+2. 画面の左側の **[コスト分析]** をクリックすると、サービス、場所、サブスクリプションなど、さまざまな角度から最新のコスト明細が表示されます。 サービスを追加するか購入したら、データが表示されるまで 24 時間待ちます。 既定では、コスト分析には、閲覧しているスコープのコストが表示されます。 たとえば、以下のスクリーンショットでは、Contoso の課金アカウントのコストが表示されています。 コスト分析で別のスコープに切り替えるには、[スコープ] ピルを使用します。 スコープの詳細については、「[スコープを理解して使用する](../cost-management/understand-work-scopes.md#scopes)」を参照してください。
 
     ![Azure Portal のコスト分析ビューのスクリーンショット](./media/billing-getting-started/cost-analysis.png)
 
-4. [タグ](#tags)、リソースの種類、リソース グループ、期間などのさまざまなプロパティでフィルター処理できます。 ビューをコンマ区切り値 (.csv) ファイルにエクスポートする場合は、 **[適用]** をクリックしてフィルターを確認し、 **[ダウンロード]** をクリックします。
+4. タグ、リソースの種類、期間など、さまざまなプロパティでフィルター処理することができます。 **[フィルターの追加]** をクリックして、プロパティのフィルターを追加し、フィルター処理する値を選択します。 コンマ区切り値 (.csv) ファイルにビューをエクスポートするには、 **[エクスポート]** を選択します。
 
-5. また、リソースをクリックして、毎日の支出の履歴とリソースのコストを確認できます。
+5. さらに、グラフのラベルをクリックすると、そのラベルの日単位の支出履歴を表示できます。 たとえば、次のスクリーンショットでは、仮想マシンをクリックすると、VM の実行にかかっている 1 日あたりのコストが表示されます。
 
     ![Azure Portal の支出の履歴ビューのスクリーンショット](./media/billing-getting-started/costhistory.png)
-
-表示されているコストを、サービスを選択したときに表示された見積もりと比較します。 コストが見積もりと大きく異なる場合は、リソースに対して選択した料金プランを確認します。
 
 ## <a name="optimize-and-reduce-costs"></a>コストの最適化と削減
 コスト管理の原則をよく理解していない場合は、「[Azure Cost Management でクラウド投資を最適化する方法](../cost-management/cost-mgt-best-practices.md)」をお読みください。
@@ -133,23 +103,25 @@ Azure portal で、VM の自動シャットダウンと Advisor の推奨事項�
 
 ### <a name="turn-on-and-review-azure-advisor-recommendations"></a>Azure Advisor の推奨事項を有効にして確認する
 
-[Azure Advisor](../advisor/advisor-overview.md) を使うと、使用量の少ないリソースを特定してコストを削減できます。 Azure Portal で Advisor にアクセスします。
+[Azure Advisor](../advisor/advisor-overview.md) を使うと、使用量の少ないリソースを特定してコストを削減できます。 Azure portal で **Advisor** を検索します。
 
 ![Azure Portal の [Azure Advisor] ボタンのスクリーンショット](./media/billing-getting-started/advisor-button.png)
 
-Advisor ダッシュボードの **[コスト]** タブで、実施可能な推奨事項を取得できます。
+左側から **[コスト]** を選択します。 アクションにつながる推奨情報が **[コスト]** タブに表示されます。
 
 ![Advisor のコストに関する推奨事項の例を示すスクリーンショット](./media/billing-getting-started/advisor-action.png)
 
 コスト節約のための Advisor の推奨事項に関するガイド付きチュートリアルについては、「[推奨事項に従ってコストを最適化する](../cost-management/tutorial-acm-opt-recommendations.md)」をご覧ください。
 
-## <a name="review-costs-against-your-latest-invoice"></a>最新の請求書に照らしてコストを確認する
+## <a name="review-charges-against-your-latest-invoice"></a>最新の請求書に照らして請求金額を確認する
 
-請求期間の終了時に、最新の請求書を入手できます。 また、[請求書と詳細な使用状況ファイルをダウンロード](billing-download-azure-invoice-daily-usage-date.md)して、課金が正しく行われていることを確認できます。 毎日の使用状況と請求書の比較の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」を参照してください。
+請求期間の終了時に請求書を入手できます。 [請求書と詳細な使用状況ファイルをダウンロード](billing-download-azure-invoice-daily-usage-date.md)し、それらを比較することで、課金が正しく行われていることを確認できます。 毎日の使用状況と請求書の比較の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」を参照してください。
 
-### <a name="billing-api"></a>課金 API
+Microsoft 顧客契約 (MCA) で Azure を使用している場合は、[請求書をトランザクションと比較](billing-mca-understand-your-bill.md#view-transactions-for-an-invoice-in-the-azure-portal)して、請求書上の請求金額を把握することもできます。
 
-Azure 課金 API を使用すると、使用状況データをプログラムによって取得できます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](billing-usage-rate-card-overview.md)」をご覧ください。
+## <a name="integrate-with-billing-and-consumption-apis"></a>Billing および Consumption API と統合する
+
+Azure の [Billing](https://docs.microsoft.com/rest/api/billing/) と [Consumption](https://docs.microsoft.com/rest/api/consumption/) API を使用して、請求データとコスト データをプログラムから入手することもできます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](billing-usage-rate-card-overview.md)」をご覧ください。
 
 ## <a name="other-offers"></a> その他のリソースと特殊なケース
 
@@ -164,7 +136,7 @@ Azure 課金 API を使用すると、使用状況データをプログラムに
 
 大規模な組織の IT を管理している場合は、[Azure エンタープライズ スキャフォールディング](/azure/architecture/cloud-adoption-guide/subscription-governance)に関する記事と、[エンタープライズ IT に関するホワイト ペーパー](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf をダウンロード、英語のみ) を読むことをお勧めします。
 
-#### <a name="EA"></a>Azure portal での Enterprise Agreement のコスト ビュー
+### <a name="EA"></a>Azure portal での Enterprise Agreement のコスト ビュー
 
 Enterprise コスト ビューは、現在、パブリック プレビューの中にあります。 注意する項目:
 
@@ -175,21 +147,18 @@ Enterprise コスト ビューは、現在、パブリック プレビューの�
     - お客様はアカウント所有者であり、[AO ビューの請求金額] 設定が登録管理者によって無効にされている。  登録管理者に問い合わせて、コストにアクセスできるように設定してもらってください。
     - お客様は部門管理者であり、 **[DA ビューの請求金額]** 設定が登録管理者によって無効にされている。  登録管理者に問い合わせて、アクセスできるように設定してもらってください。
     - チャネル パートナーを通して Azure を購入したが、パートナーが価格情報を公開していない。  
-- エンタープライズ ポータルでコストのアクセスに関連する設定を更新した場合、変更が Azure portal に表示されるまで数分の遅延があります。
+- Enterprise Portal でコストのアクセスに関連する設定を更新した場合、変更が Azure portal に表示されるまで数分の遅延があります。
 - 使用制限と請求書ガイダンスは、EA サブスクリプションには適用されません。
 
 ### <a name="check-your-subscription-and-access"></a>サブスクリプションとアクセスを確認する
 
-コストを表示するには、[課金情報へのサブスクリプション レベルのアクセス権](billing-manage-access.md)をお客様が所有している必要があります。 [アカウント管理者だけ](https://account.azure.com/Subscriptions)が、アカウント センターにアクセスして、課金情報を変更したり、サブスクリプションを管理したりできます。 アカウント管理者とは、サインアップ プロセスを完了したユーザーです。 詳細については、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](billing-add-change-azure-subscription-administrator.md)」をご覧ください。
+コストを表示するには、コストまたは課金の情報へのアカウント レベルまたはサブスクリプション レベルのアクセス権が必要です。 課金アカウントの種類によってアクセス権は異なります。 課金アカウントの詳細および課金アカウントの種類の確認については、「[Azure portal での課金アカウントの表示](billing-view-all-accounts.md)」を参照してください。
 
-ご自身がアカウント管理者であるかどうかを確認するには、Azure portal で [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) に移動します。 サブスクリプションの一覧を表示し、 **[自分の役割]** を見つけます。 *アカウント管理者*が役割である場合、すべての特権を持っています。 *所有者*などの他の役割が表示されている場合は、すべての特権を持っているわけではありません。
+Microsoft Online Services プログラム (MOSP) の課金アカウント経由で Azure にアクセスできる場合は、「[Asure の課金情報へのアクセスの管理](billing-manage-access.md)」を参照してください。
 
-![Azure Portal の [サブスクリプション] ビューに表示された役割のスクリーンショット](./media/billing-getting-started/sub-blade-view.PNG)
+マイクロソフト エンタープライズ契約 (EA) の課金アカウント経由で Azure にアクセスできる場合は、「[Azure の Azure Enterprise Agreement 管理者ロールを理解する](billing-understand-ea-roles.md)」を参照してください。
 
-サブスクリプションを管理して課金情報を変更するには、[アカウント管理者を探します](billing-subscription-transfer.md#whoisaa)。アカウント管理者にタスクを実行してもらうか、[サブスクリプションを譲渡](billing-subscription-transfer.md)してもらうように依頼します。
-
-組織にアカウント管理者が存在せず、課金を管理する必要がある場合は、[お問い合わせください](https://go.microsoft.com/fwlink/?linkid=2083458)。
-
+Microsoft 顧客契約 (MCA) の課金アカウント経由で Azure にアクセスできる場合は、「[Azure での Microsoft 顧客契約の管理ロールを理解する](billing-understand-mca-roles.md)」を参照してください。
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>サービス インシデントに対するサービス レベル アグリーメントの控除を要求する
 
@@ -197,7 +166,7 @@ Enterprise コスト ビューは、現在、パブリック プレビューの�
 
 控除を要求するには、次の手順を実行します。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。 複数のアカウントをお持ちの場合は、Azure のダウンタイムの影響を受けたアカウントを必ず使用してください。 
+1. [Azure Portal](https://portal.azure.com/) にサインインします。 複数のアカウントをお持ちの場合は、Azure のダウンタイムの影響を受けたアカウントを必ず使用してください。 
 2. 新しいサポート リクエストを作成します。
 3. **[問題の種類]** で **[課金]** を選択します。
 4. **[問題の種類]** で **[払戻要求]** を選択します。

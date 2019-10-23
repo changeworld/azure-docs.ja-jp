@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 23a005ebb16f4786c7dde9ec5b2a7ae7c5685cb8
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4474a36c2b87a618a9f755d2f42e330e837568f4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377233"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516508"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -28,7 +28,7 @@ Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/su
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-次の図は、デバイスローカルおよびサービスローカルのプロキシ プログラムで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする方法を示しています。 パブリック プレビュー中、C SDK ではデバイス側のみのデバイス ストリームがサポートされます。 そのため、このクイックスタートでは、デバイスローカルのプロキシ アプリケーションのみを実行する手順について説明しています。 以下のサービス側のクイックスタートのいずれかを実行する必要があります。
+次の図は、デバイスローカルおよびサービスローカルのプロキシ プログラムで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする方法を示しています。 パブリック プレビュー中、C SDK ではデバイス側のみのデバイス ストリームがサポートされます。 そのため、このクイックスタートでは、デバイスローカルのプロキシ アプリケーションのみを実行する手順について説明しています。 対応するサービス側アプリケーションをビルドして実行するには、次のいずれかのクイックスタートの手順に従ってください。
 
 * [C# プロキシを使用した IoT Hub デバイス ストリーム経由の SSH または RDP](./quickstart-device-streams-proxy-csharp.md)
 * [NodeJS プロキシを使用した IoT Hub デバイス ストリーム経由の SSH または RDP](./quickstart-device-streams-proxy-nodejs.md)
@@ -118,16 +118,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    > [!NOTE]
    > * *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
-   > * 示されているように、*MyDevice* を使用します。 これは、登録済みデバイスに付けられた名前です。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
+   > * 登録しているデバイスの名前については、示されているように、*MyDevice* を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. 先ほど登録したデバイスの "*デバイス接続文字列*" を取得するには、Cloud Shell で次のコマンドを実行します。
@@ -136,10 +136,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    このクイックスタートの後の方で使用できるように、デバイス接続文字列を書き留めておきます。 次の例のようになります。
+    このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,12 +149,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-device-local-proxy-application"></a>デバイスローカルのプロキシ アプリケーションの実行
 
-1. *iothub_client/samples/iothub_client_c2d_streaming_proxy_sample* フォルダーの *iothub_client_c2d_streaming_proxy_sample.c* ソース ファイルを編集して、デバイス接続文字列、ターゲット デバイス IP またはホスト名、SSH ポート 22 を指定します。
+1. フォルダー `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` 内のソース ファイル **iothub_client_c2d_streaming_proxy_sample.c** を編集して、お客様のデバイスの接続文字列、ターゲット デバイスの IP またはホスト名、および SSH ポート 22 を指定します。
 
    ```C
-   /* Paste in your iothub connection string  */
-   static const char* connectionString = "[Connection string of IoT Hub]";
-   static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
+   /* Paste in your device connection string  */
+   static const char* connectionString = "{DeviceConnectionString}";
+   static const char* localHost = "{IP/Host of your target machine}"; // Address of the local server to connect to.
    static const size_t localPort = 22; // Port of the local server to connect to.
    ```
 
@@ -198,7 +198,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 デバイスローカルとサービスローカルの両方のプロキシが実行されていると、お客様の SSH クライアント プログラムを使用して、(SSH デーモンに直接ではなく) ポート 2222 でサービスローカルのプロキシに接続します。
 
 ```cmd/sh
-ssh <username>@localhost -p 2222
+ssh {username}@localhost -p 2222
 ```
 
 この時点で、SSH サインイン ウィンドウで資格情報の入力を求められます。

@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 358f55594037f4a468d31265f4e65a6ec4d7ef28
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.custom: seo-python-october2019
+ms.openlocfilehash: d4cfba26192eb097d06f82e18acb41c1f9640e66
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020133"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437329"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>クイック スタート: Python と Azure Cosmos DB で Table API アプリを構築する
 
@@ -84,7 +85,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 1. [Azure portal](https://portal.azure.com/) で **[接続文字列]** を選択します。 
 
-    ![[接続文字列] ウィンドウで [接続文字列] を確認してコピーする](./media/create-table-python/connection-string.png)
+    ![[接続文字列] 設定で接続文字列を確認してコピーする](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. 右側のボタンを使って、アカウント名をコピーします。
 
@@ -94,7 +95,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 5. ポータルの主キーを 20 行目の STORAGE_ACCOUNT_KEY 値に貼り付けます。
 
-3. config.py ファイルを保存します。
+6. config.py ファイルを保存します。
 
 ## <a name="run-the-app"></a>アプリの実行
 

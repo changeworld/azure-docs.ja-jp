@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 82fbaa35d8d06cdb1999a76a36fb4a1dade017e9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 1d0c6edf250e49fe966388253617181ed2b3dff1
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883890"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329654"
 ---
-# <a name="create-your-first-function-from-the-command-line"></a>コマンド ラインから最初の関数を作成する
+# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>クイック スタート:Azure CLI を使用してコマンド ラインから初めての関数を作成する
 
 このクイックスタート トピックでは、コマンド ラインまたはターミナルから最初の関数を作成する方法について説明します。 Azure CLI を使用して、関数をホストする[サーバーレス](https://azure.microsoft.com/solutions/serverless/) インフラストラクチャである Function App を作成します。 関数コード プロジェクトは、[Azure Functions Core Tools](functions-run-local.md) を使用してテンプレートから生成されます。このツールは、関数アプリ プロジェクトを Azure にデプロイするためにも使用されます。
 
@@ -28,7 +28,7 @@ ms.locfileid: "70883890"
 
 + [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降をインストールします。
 
-+ [Azure CLI]( /cli/azure/install-azure-cli) をインストールします。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 [Azure Cloud Shell](https://shell.azure.com/bash) を使用することもできます。
++ [Azure CLI](/cli/azure/install-azure-cli) をインストールします。 この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 [Azure Cloud Shell](https://shell.azure.com/bash) を使用することもできます。
 
 + 有効な Azure サブスクリプション
 

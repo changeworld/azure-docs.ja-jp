@@ -12,14 +12,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: a2764c8e634fd8d827cba9fa7ec9cb61cc6c40af
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035305"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299940"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -53,7 +53,9 @@ ms.locfileid: "72035305"
 
 2. 新しいフォルダーで次のコマンドを実行して、新しい ASP.NET Core MVC Web アプリ プロジェクトを作成します。
 
+    ```CLI
         dotnet new mvc --no-https
+    ```
 
 ## <a name="add-secret-manager"></a>シークレット マネージャーを追加する
 
@@ -83,19 +85,23 @@ ms.locfileid: "72035305"
 
 1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
 
+    ```CLI
         dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
-
+    ```
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
+    ```CLI
         dotnet restore
-
+    ```
 3. シークレット マネージャーに、*ConnectionStrings:AppConfig* という名前のシークレットを追加します。
 
     このシークレットには、アプリ構成ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分のアプリ構成ストアの接続文字列に置き換えます。
 
     このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 
+    ```CLI
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```
 
     > [!IMPORTANT]
     > 一部のシェルでは、引用符で囲まれていない限り、接続文字列が切り捨てられます。 `dotnet user-secrets` コマンドの出力に接続文字列全体が表示されていることを確認します。 そうでない場合は、接続文字列を引用符で囲んでコマンドを再実行します。
@@ -111,6 +117,11 @@ ms.locfileid: "72035305"
     ```
 
 5. `config.AddAzureAppConfiguration()` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
+    
+    > [!IMPORTANT]
+    > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>.NET Core 2.x 用に `CreateWebHostBuilder` を更新する
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -123,9 +134,23 @@ ms.locfileid: "72035305"
             .UseStartup<Startup>();
     ```
 
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3.x 用に `CreateHostBuilder` を更新する
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+        })
+        .UseStartup<Startup>());
+    ```
+
 6. Views の Home ディレクトリにある *Index.cshtml* を開いて、内容を次のコードに置き換えます。
 
-    ```html
+    ```HTML
     @using Microsoft.Extensions.Configuration
     @inject IConfiguration Configuration
 
@@ -144,7 +169,7 @@ ms.locfileid: "72035305"
 
 7. Views の Shared ディレクトリにある *_Layout.cshtml* を開いて、内容を次のコードに置き換えます。
 
-    ```html
+    ```HTML
     <!DOCTYPE html>
     <html>
     <head>
@@ -173,11 +198,15 @@ ms.locfileid: "72035305"
 
 1. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
-        dotnet build
+    ```CLI
+       dotnet build
+    ```
 
 2. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
 
+    ```CLI
         dotnet run
+    ```
 
 3. ブラウザー ウィンドウを開いて、`http://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
 

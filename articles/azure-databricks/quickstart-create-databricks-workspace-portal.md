@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure portal を使用して Azure Databricks で Spark ジョブを実行する
+title: Azure portal を使用して Azure Databricks で Spark ジョブを実行する
 description: このクイックスタートでは、Azure Portal を使用して Azure Databricks ワークスペースと Apache Spark クラスターを作成し、Spark ジョブを実行する方法を示します。
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 3570325880b4c8d8eb311f00477262126a2b18ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f7f8c94504eef1023939ed41aa6124baef354e39
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932565"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791581"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Databricks 上で Spark ジョブを実行する
 
@@ -25,13 +25,13 @@ ms.locfileid: "68932565"
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com) にサインインします。
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
-> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
+> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -39,11 +39,11 @@ ms.locfileid: "68932565"
 
 1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
-    ![Azure Portal の Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure Portal の Databricks")
+    ![Azure portal での Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure portal での Databricks")
 
 2. **[Azure Databricks サービス]** で値を指定して、Databricks ワークスペースを作成します。
 
-    ![Azure Databricks ワークスペースを作成する](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
+    ![Azure Databricks ワークスペースを作成します](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
 
     次の値を指定します。
     
@@ -53,9 +53,10 @@ ms.locfileid: "68932565"
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
     |**Location**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
-    |**価格レベル**     |  **Standard**、**Premium**、**Trial** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
+    |**Pricing Tier**     |  **Standard**、**Premium**、**Trial** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
+    |**Virtual Network**     |  独自の仮想ネットワーク (VNet) での Azure Databricks ワークスペースのデプロイを選択します。 詳細については、「[Azure Virtual Network に Azure Databricks をデプロイする (VNet インジェクション)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)」を参照してください。        |
 
-    **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、 **[作成]** をクリックします。
+    **作成** を選択します。
 
 4. ワークスペースの作成には数分かかります。 ワークスペースの作成中に、 **[通知]** でデプロイの状態を表示できます。
 
@@ -70,7 +71,7 @@ ms.locfileid: "68932565"
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルから、 **[新しいクラスター]** をクリックします。
 
-    ![Azure の Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Azure の Databricks")
+    ![Azure での Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Azure での Databricks")
 
 3. **[New cluster]\(新しいクラスター\)** ページで、クラスターを作成するための値を指定します。
 
@@ -79,7 +80,7 @@ ms.locfileid: "68932565"
     以下を除くすべての値は、既定値のままにします。
 
    * クラスターの名前を入力します。
-   * この記事では、**5.2** ランタイムを使用してクラスターを作成します。
+   * この記事では、**5.3** ランタイムを使用してクラスターを作成します。
    * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
     
      **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
@@ -136,11 +137,11 @@ ms.locfileid: "68932565"
 
 5. 次のスクリーンショットのような表形式の出力が表示されます (一部の列のみ示してあります)。
 
-    ![サンプル データ](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "サンプルの JSON データ")
+    ![サンプル データ](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "サンプル JSON データ")
 
 6. 次に、他のソースではなく Citizens Connect App や City Worker App を使用して安全に関するいくつのイベントが報告されているかを表示するために、このデータの視覚的な表現を作成します。 表形式の出力の一番下から **[横棒グラフ]** アイコンを選択し、 **[Plot Options] (プロット オプション)** をクリックします。
 
-    ![棒グラフを作成する](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "棒グラフを作成する")
+    ![横棒グラフを作成する](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "横棒グラフを作成する")
 
 8. **[Customize Plot]\(プロットのカスタマイズ\)** で、スクリーンショットに示すように値をドラッグ アンド ドロップします。
 
