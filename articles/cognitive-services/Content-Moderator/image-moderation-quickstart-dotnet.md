@@ -3,19 +3,19 @@ title: クイック スタート:画像を分析して好ましくない内容�
 titleSuffix: Azure Cognitive Services
 description: Content Moderator SDK for .NET を使用して、さまざまな好ましくない素材の画像コンテンツを分析する方法
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: pafarley
+ms.openlocfilehash: 3fdc3fa0b7c624558aef84f86afd85c5aedb7054
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946232"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757317"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>クイック スタート:画像を分析して好ましくない内容を検出する (C#)
 
