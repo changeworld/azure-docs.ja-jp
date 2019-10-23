@@ -9,10 +9,10 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8b585a47d3950d232eb3e8047c12ee8949030c95
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68780217"
 ---
 Azure Portal を使用して Resource Manager デプロイ モデルで VNet を作成するには、次の手順に従います。 これらの手順をチュートリアルとして使用する場合は、**例として示されている値**を使用してください。 これらの手順をチュートリアルとして使用しない場合は、必ず独自の値に置き換えてください。 仮想ネットワークの操作の詳細については、「 [仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
@@ -26,7 +26,7 @@ Azure Portal を使用して Resource Manager デプロイ モデルで VNet を
 3. **Create** をクリックしてください。 **[仮想ネットワークの作成]** ページが開きます。
 4. **[仮想ネットワークの作成]** ページで、VNet の設定を構成します。 フィールドへの入力時、入力された文字が有効であれば、赤色の感嘆符が緑色のチェック マークに変わります。 次の値を使用します。
 
-   - **[名前]** :VNet1
+   - **Name**:VNet1
    - **[アドレス空間]** : 10.1.0.0/16
    - **サブスクリプション**:一覧表示されているサブスクリプションが、使用するものであることを確認します。 ドロップダウンを使用して、サブスクリプションを変更できます。
    - **[リソース グループ]** :TestRG1 ( **[新規作成]** をクリックして新しいグループを作成します)

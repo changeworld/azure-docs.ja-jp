@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 33fc6e59a0a85275b055524d8ccf5d78935725a8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 05ce5fd560168c1f60b7c559539f4a368ba83ca8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718757"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754281"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API を使用してサブスクリプションの課金を確認する
 
@@ -92,7 +92,7 @@ Authorization: Bearer
 |**meterDetails** | 使用に関する詳細情報。 |
 |**nextLink**| 設定時には、詳細の次のページの URL が指定されます。 ページが最終ページの場合は空白です。 |
 
-この例は省略されたものです。response の各フィールドの詳しい説明については、[使用状況の詳細の一覧](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod)をご覧ください。
+この例は省略されたものです。response の各フィールドの詳しい説明については、[使用状況の詳細の一覧](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy)をご覧ください。
 
 その他の状態コードは､エラー状態を示します｡ そのような場合､response オブジェクトによって､要求が失敗した理由が説明されます。
 

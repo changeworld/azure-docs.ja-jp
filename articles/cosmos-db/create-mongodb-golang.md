@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
 description: 記載されている Golang のコード サンプルを使用すると、Azure Cosmos DB の MongoDB 用 API を使用して接続とクエリを行うことができます。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: 5b60ac28cd8f65d464e659f328872524be59b3ed
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586876"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755113"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
 
@@ -25,7 +25,7 @@ ms.locfileid: "56586876"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、およびグラフ データベースをすばやく作成したり、クエリを実行したりでき、そのすべてで、Cosmos DB の中核にあるグローバル配信および水平スケール機能が活用されます。
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、およびグラフ データベースをすばやく作成したり、クエリを実行したりでき、そのすべてで、Cosmos DB の中核にあるグローバル配信および水平スケール機能が活用されます。
 
 このクイック スタートでは、[Golang](https://golang.org/) で記述された既存の MongoDB アプリを使用する方法と、そのアプリを Azure Cosmos DB の MongoDB 用 API を使用して Cosmos データベースに接続する方法を示します。
 
@@ -69,7 +69,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. 左側のナビゲーション メニューで **[クイック スタート]** をクリックし、**[その他]** をクリックして、Go アプリケーションに必要な接続文字列情報を表示します。
+1. 左側のナビゲーション メニューで **[クイック スタート]** をクリックし、 **[その他]** をクリックして、Go アプリケーションに必要な接続文字列情報を表示します。
 
 2. Goglang で GOROOT\CosmosDBSample ディレクトリの main.go ファイルを開き、下のスクリーンショットに示されている、Azure Portal の接続文字列情報を使用して次のコード行を更新します。 
 
@@ -214,9 +214,9 @@ if err != nil {
     
 ## <a name="run-the-app"></a>アプリの実行
 
-1. Golang で、gopkg がインストールされた場所 (既定では USERPROFILE\go) が、GOPATH (**[ファイル]**、**[設定]**、**[Go]**、**[GOPATH]** にあります) に含まれていることを確認します。 
+1. Golang で、gopkg がインストールされた場所 (既定では USERPROFILE\go) が、GOPATH ( **[ファイル]** 、 **[設定]** 、 **[Go]** 、 **[GOPATH]** にあります) に含まれていることを確認します。 
 2. ドキュメントを削除する行 (103 から 107 行目) をコメントアウトし、アプリの実行後にドキュメントを参照できるようにします。
-3. Golang で **[実行]** をクリックし、**[Run 'Build main.go and run']\('main.go をビルドして実行' を実行\)** をクリックします。
+3. Golang で **[実行]** をクリックし、 **[Run 'Build main.go and run']\('main.go をビルドして実行' を実行\)** をクリックします。
 
     アプリが終了し、「[ドキュメントの作成](#create-document)」で作成したドキュメントの説明が表示されます。
     
@@ -232,11 +232,11 @@ if err != nil {
 
 Azure Portal に戻り、データ エクスプローラーでドキュメントを表示します。
 
-1. 左側のナビゲーション メニューで **[データ エクスプローラー (プレビュー)]** をクリックし、**[golang-coach]**、**[パッケージ]** の順に展開して、**[ドキュメント]** をクリックします。 **[ドキュメント]** タブで [\_id] をクリックすると、右側のウィンドウにドキュメントが表示されます。 
+1. 左側のナビゲーション メニューで **[データ エクスプローラー (プレビュー)]** をクリックし、 **[golang-coach]** 、 **[パッケージ]** の順に展開して、 **[ドキュメント]** をクリックします。 **[ドキュメント]** タブで [\_id] をクリックすると、右側のウィンドウにドキュメントが表示されます。 
 
     ![新しく作成したドキュメントが表示されているデータ エクスプローラー](./media/create-mongodb-golang/golang-cosmos-db-data-explorer.png)
     
-2. ドキュメントの作業をインラインで行い、**[更新]** をクリックしてドキュメントを保存します。 また、ドキュメントを削除したり、新しいドキュメントやクエリを作成したりすることもできます。
+2. ドキュメントの作業をインラインで行い、 **[更新]** をクリックしてドキュメントを保存します。 また、ドキュメントを削除したり、新しいドキュメントやクエリを作成したりすることもできます。
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

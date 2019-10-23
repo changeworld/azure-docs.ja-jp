@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: b-juche
-ms.openlocfilehash: 09a1e48d2eb9ab9b117cb1b1161d5137607400ad
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 290fc279a7d2ff2369758c170b3fb64635ee01af
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212089"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532276"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK および CLI ツール
 
@@ -53,7 +53,7 @@ ms.locfileid: "71212089"
 
 |    言語/ツール    |    コード サンプル ドキュメント    |
 |------------------|--------------------------------------------|
-|    .NET   |    [.NETCore 用の Azure NetApp Files SDK サンプル](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-netcore/)    |    
+|    .NET   |    [.NETCore 用の Azure NetApp Files SDK サンプル](https://docs.microsoft.com/en-us/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
 |    Python    |    [Python 用の Azure NetApp Files SDK サンプル](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
 
 ## <a name="next-steps"></a>次の手順   

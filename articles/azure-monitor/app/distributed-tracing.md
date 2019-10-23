@@ -1,21 +1,19 @@
 ---
 title: Azure Application Insights における分散トレース | Microsoft Docs
 description: OpenCensus プロジェクトでローカル フォワーダーとパートナーシップを使用した分散トレースに対する Microsoft のサポートに関する情報を提供します
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
-ms.reviewer: mbullwin
 ms.date: 09/17/2018
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 7bc04748f2a5b8caa8f589140dd46f0650b7b390
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: mbullwin
+ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898848"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677116"
 ---
 # <a name="what-is-distributed-tracing"></a>分散トレースとは
 

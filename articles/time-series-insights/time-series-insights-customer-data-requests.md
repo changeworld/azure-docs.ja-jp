@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 3437634ff70371f9679423149b6996a099c044b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: fb464d2c75e271bf2f7f1684ed991d01691d70e4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950730"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330938"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -68,7 +68,7 @@ Time Series Insights 内に格納されているデータを表示およびエ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [TSI 環境へのデータ アクセスの許可](./time-series-insights-data-access.md)に関する詳細を確認してください。
+* [Azure Time Series Insights 環境に対するデータ アクセスの許可](./time-series-insights-data-access.md)の詳細を確認します。
 
 * [Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)について確認してください。
 

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: 7e22aaf2ead4dd618c2907f8659455e1862110a5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b0300dd91876b651015ae78c53dbc1e72bf8dd68
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650098"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285701"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -38,14 +38,15 @@ Microsoft は、動作保証済み Linux ディストリビューションのパ
 |Canonical |UbuntuServer |16.04 LTS |latest |はい | 
 |Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
 |CoreOS |CoreOS |安定版 |latest |はい |
-|OpenLogic 7.6 |CentOS |7-CI |latest |preview |
+|OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |preview |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい |
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
     
 現時点では、Azure Stack では cloud-init を使用した RHEL 7.x と CentOS 7.x のプロビジョニングはサポートされていません。
 
 * RHEL 7.6 の cloud init パッケージでは、次のパッケージがサポートされています。*18.2-1.el7_6.2* 
-* RHEL 7.7 (プレビュー) の cloud init パッケージでは、次のパッケージがサポートされています。*18.5-3.el7*
+* RHEL 7.7 (プレビュー) の cloud init パッケージでは、プレビュー パッケージは次のとおりです: *18.5-3.el7*
+* CentOS 7.7 (プレビュー) の cloud init パッケージでは、プレビュー パッケージは次のとおりです: *18.5-3.el7.centos*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init と Linux エージェント (WALA) の相違点
 WALA は、VM のプロビジョニングと構成および Azure 拡張機能の処理に使われる、Azure プラットフォーム固有のエージェントです。 既存の cloud-init のお客様が現在の cloud-init スクリプトを使用できるよう、Linux エージェントではなく cloud-init を使うように VM 構成タスクの拡張を行っています。  Linux システム構成用の cloud-init スリプトが既にある場合、それを有効にするために**追加の設定は必要ありません**。 

@@ -8,22 +8,25 @@ ms.date: 09/17/2019
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 18333d3da0bb444ea236a4fbda4d6b72d7647053
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: seo-javascript-october2019
+ms.openlocfilehash: 242ba7dbe4bfcc003899e95e76dc57d809dbc95a
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059058"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72427976"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Python から Azure Queue storage を使用する方法
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
+この記事では、Azure Queue ストレージ サービスを使用した一般的なシナリオについて説明します。 キュー メッセージの挿入、ピーク、取得、削除と、キューの作成と削除の各シナリオについて説明します。
+
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概要
 
-このガイドでは、Azure Queue ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Python で作成され、 [Microsoft Azure Storage SDK for Python]を使用しています。 キュー メッセージの挿入、ピーク、取得、削除と、キューの作成と削除の各シナリオについて説明します。 キューの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
+この記事のサンプルは Python で作成され、[Microsoft Azure Storage SDK for Python]を使用しています。 キューの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 

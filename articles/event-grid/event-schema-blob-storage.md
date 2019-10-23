@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: fa638a00e0d35e1d48bc3205ce2a77e7faf5d22e
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 0ab81d3c1d4c68827cf1569bf4a22c3311fe355d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718377"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555823"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid の Blob Storage 用のイベント スキーマ
 
@@ -36,17 +36,14 @@ ms.locfileid: "71718377"
 
 ストレージ アカウントの階層型名前空間を有効にした状態でクライアントが Azure Data Lake Storage Gen2 REST API を呼び出すと、これらのイベントがトリガーされます。
 
-> [!NOTE]
-> これらのイベントはパブリック プレビュー段階で、**米国西部 2**および**米国中西部**リージョンでのみ使用できます。
-
- |イベント名|説明|
- |----------|-----------|
- |**Microsoft.Storage.BlobCreated** | BLOB が作成または置換されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `CreateFile` および `FlushWithClose` 操作を使用した場合に、このイベントがトリガーされます。 |
- |**Microsoft.Storage.BlobDeleted** |BLOB が削除されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `DeleteFile` 操作を呼び出した場合に、このイベントもトリガーされます。 |
- |**Microsoft.Storage.BlobRenamed**|BLOB の名前が変更されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `RenameFile` 操作を使用した場合に、このイベントがトリガーされます。|
- |**Microsoft.Storage.DirectoryCreated**|ディレクトリが作成されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `CreateDirectory` 操作を使用した場合に、このイベントがトリガーされます。|
- |**Microsoft.Storage.DirectoryRenamed**|ディレクトリの名前が変更されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `RenameDirectory` 操作を使用した場合に、このイベントがトリガーされます。|
- |**Microsoft.Storage.DirectoryDeleted**|ディレクトリが削除されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `DeleteDirectory` 操作を使用した場合に、このイベントがトリガーされます。|
+|イベント名|説明|
+|----------|-----------|
+|**Microsoft.Storage.BlobCreated** | BLOB が作成または置換されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `CreateFile` および `FlushWithClose` 操作を使用した場合に、このイベントがトリガーされます。 |
+|**Microsoft.Storage.BlobDeleted** |BLOB が削除されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `DeleteFile` 操作を呼び出した場合に、このイベントもトリガーされます。 |
+|**Microsoft.Storage.BlobRenamed**|BLOB の名前が変更されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `RenameFile` 操作を使用した場合に、このイベントがトリガーされます。|
+|**Microsoft.Storage.DirectoryCreated**|ディレクトリが作成されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `CreateDirectory` 操作を使用した場合に、このイベントがトリガーされます。|
+|**Microsoft.Storage.DirectoryRenamed**|ディレクトリの名前が変更されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `RenameDirectory` 操作を使用した場合に、このイベントがトリガーされます。|
+|**Microsoft.Storage.DirectoryDeleted**|ディレクトリが削除されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `DeleteDirectory` 操作を使用した場合に、このイベントがトリガーされます。|
 
 > [!NOTE]
 > ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされることを確認する場合、`FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、この API によって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)」をご覧ください。

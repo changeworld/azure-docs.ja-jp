@@ -9,13 +9,13 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: conceptual
-ms.date: 10/3/2019
-ms.openlocfilehash: 47a701cce348e86359947376b3d6a9915dfb2264
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/11/2019
+ms.openlocfilehash: 72a881a2ab508caa2274f3b9299157921cb8ceff
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950170"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330692"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
@@ -62,12 +62,22 @@ ms.locfileid: "71950170"
 
 |    |           |
 | ------------- | ------------- |
-| 紹介   | さまざまなソースから Azure Cosmos DB にデータをインポートするツール。 ソースは、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、Azure Cosmos DB SQL API コレクションなどです。      |
+| 紹介   | さまざまなソースからクラウド内の NoSQL データベースである Azure Cosmos DB にデータをインポートするツール。 ソースは、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、Azure Cosmos DB SQL API コレクションなどです。      |
 | サポートされている DSVM バージョン      | Windows      |
 | 標準的な使用      | VM から CosmosDB にファイルをインポート、Azure テーブル ストレージから CosmosDB にデータをインポート、および Microsoft SQL Server データベースから CosmosDB にデータをインポートします。     |
 |  使用/実行方法    |   コマンド ライン バージョンを使用するには、コマンド プロンプトを開いて「`dt`」と入力します。 GUI ツールを使用するには、コマンド プロンプトを開いて「`dtui`」と入力します。    |
 | サンプルへのリンク      | [CosmosDB インポート データ](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
+
+## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+
+|    |           |
+| ------------- | ------------- |
+| 紹介   | Azure クラウドに格納されているファイルと対話するためのグラフィカル ユーザー インターフェイス。 |
+| サポートされている DSVM バージョン      | Windows      |
+| 標準的な使用      | DSVM からのデータのインポートとエクスポート。    |
+|  使用/実行方法    | [スタート] メニュー内で "Azure Storage Explorer" を検索します。 |
+| サンプルへのリンク      | [Azure Storage Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp

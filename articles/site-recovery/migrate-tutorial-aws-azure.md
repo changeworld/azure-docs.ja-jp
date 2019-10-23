@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984994"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789388"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 > [!NOTE]
-    > これで、Azure Migrate サービスを使用して AWS インスタンスを Azure に移行できるようになりました。 [詳細情報](../migrate/tutorial-migrate-physical-virtual-machines.md)。
+> これで、Azure Migrate サービスを使用して AWS インスタンスを Azure に移行できるようになりました。 [詳細情報](../migrate/tutorial-migrate-physical-virtual-machines.md)。
 
 ## <a name="prerequisites"></a>前提条件
 - 移行する VM で、サポートされている OS バージョンが実行されていることを確認します。 次のバージョンがサポートされています。 

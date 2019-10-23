@@ -9,12 +9,12 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3e56b44988dc6dbfed99f339795fee6d15c7dd57
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534688"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372783"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -147,12 +147,19 @@ Automation アカウントの自分のワークスペースを Log Analytics ワ
 
 **解決策**:VM がソリューションを使用できるようにするためには VM は実行中である必要があります。 **[VM の起動]** インライン リンクをクリックし、ページから移動せずに VM を起動します。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+Update Management から VM を削除するには:
+
+* Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
+* [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
+
 ## <a name="next-steps"></a>次の手順
 
-お使いの仮想マシンでソリューションを使用できるようになりました。Update Management の概要の記事にアクセスし、お使いのマシンに更新の評価を表示する方法を参照してください。
+お使いの仮想マシンでソリューションを使用できるようになりました。Update Management の概要の記事にアクセスして、お使いのマシンに**更新プログラムの展開**を作成する方法を参照してください。
 
 > [!div class="nextstepaction"]
-> [Update Management - 更新の評価を表示する](./automation-update-management.md#viewing-update-assessments)
+> [Update Management - Azure VM の更新プログラムとパッチの管理](./automation-tutorial-update-management.md)
 
 ソリューションおよびその使用方法についてのその他のチュートリアル
 

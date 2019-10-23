@@ -7,12 +7,12 @@ author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 7a81f26b4dad5f7257e5c3fd012dffaf06d573bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e46e2c2933ee9afda860b68b10c135ac75a5d247
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073779"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263928"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル:Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure Kubernetes Service (AKS) にデプロイする
 
@@ -35,15 +35,15 @@ ms.locfileid: "65073779"
 
 - [AKS クラスター][aks-quickstart]、および [AKS クラスターの資格情報][aks-credentials]で構成されている `kubectl`
 
-- [ACR レジストリによって認証][acr-authentication]するために構成される [Azure Container Registry (ACR) レジストリ][acr-quickstart]、ACR ログイン サーバー名、および AKS クラスター
+- [ACR レジストリで認証を行う][acr-authentication]ために構成されている [Azure Container Registry (ACR) レジストリ][acr-quickstart]、ACR ログイン サーバー名、および AKS クラスター
 
 - インストールおよび構成済みの Azure CLI バージョン 2.0.46 以降。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
-- 開発システムにインストールされた [Docker][docker-install]
+- 開発システムに[インストールされた Docker][docker-install]
 
 - GitHub アカウント、[GitHub 個人用アクセス トークン][git-access-token]、および開発システムにインストールされた Git クライアント
 
-- このサンプル スクリプトによる方法ではなく、独自の Jenkins インスタンスを指定して、Jenkins をデプロイする場合、Jenkins インスタンスには [Docker がインストールされ、構成されている][docker-install]ほか、[kubectl][kubectl-install] が必要です。
+- このサンプル スクリプトによる方法ではなく、独自の Jenkins インスタンスを指定して、Jenkins をデプロイする場合、Jenkins インスタンスには[インストールされて構成された Docker][docker-install] と [kubectl][kubectl-install] が必要です。
 
 ## <a name="prepare-your-app"></a>アプリケーションの準備
 
@@ -72,7 +72,7 @@ cd azure-voting-app-redis
 docker-compose up -d
 ```
 
-必要な基本イメージがプルされ、アプリケーション コンテナーがビルドされます。 次に [docker images][docker-images] コマンドを使って、作成されたイメージを確認します。 3 つのイメージがダウンロードまたは作成されました。 `azure-vote-front` イメージはアプリケーションを含み、`nginx-flask` イメージをベースとして使用します。 `redis` イメージは、Redis インスタンスを起動するために使用されます。
+必要な基本イメージがプルされ、アプリケーション コンテナーがビルドされます。 その後、[docker images][docker-images] コマンドを使用して、作成されたイメージを確認できます。 3 つのイメージがダウンロードまたは作成されていることを確認してください。 `azure-vote-front` イメージはアプリケーションを含み、`nginx-flask` イメージをベースとして使用します。 `redis` イメージは、Redis インスタンスを起動するために使用されます。
 
 ```
 $ docker images
@@ -83,13 +83,13 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-*azure-vote-front* コンテナー イメージを ACR にプッシュする前に、ACR ログイン サーバーを [az acr list][az-acr-list] コマンドを使って取得します。 次の例では、*myResourceGroup* という名前のリソース グループでレジストリの ACR ログイン サーバー アドレスを取得します。
+*azure-vote-front* コンテナー イメージを ACR にプッシュする前に、[az acr list][az-acr-list] コマンドを使用して ACR ログイン サーバーを取得します。 次の例では、*myResourceGroup* という名前のリソース グループでレジストリの ACR ログイン サーバー アドレスを取得します。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-[docker tag][docker-tag] コマンドを使って、ACR ログイン サーバー名とバージョン番号 `v1` でイメージにタグを付けます。 前のステップで取得した独自の `<acrLoginServer>` 名を指定します。
+[docker tag][docker-tag] コマンドを使用して、ACR ログイン サーバー名とバージョン番号 `v1` でイメージにタグを付けます。 前のステップで取得した独自の `<acrLoginServer>` 名を指定します。
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
@@ -111,13 +111,13 @@ containers:
   image: microsoft/azure-vote-front:v1
 ```
 
-次に、[kubectl apply][kubectl-apply] コマンドを使用してアプリケーションを AKS クラスターにデプロイします。
+次に、[kubectl apply][kubectl-apply] コマンドを使用して、アプリケーションを AKS クラスターにデプロイします。
 
 ```console
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-アプリケーションをインターネットに公開するための Kubernetes ロード バランサー サービスが作成されます。 このプロセスには数分かかることがあります。 ロード バランサーの展開の進行状況を監視するには、[kubectl get service][kubectl-get]コマンドを `--watch` 引数を指定して使用します。 *EXTERNAL-IP* アドレスが "*保留中*" から "*IP アドレス*" に変わったら、`Control + C` を使用して kubectl ウォッチ プロセスを停止します。
+アプリケーションをインターネットに公開するための Kubernetes ロード バランサー サービスが作成されます。 このプロセスには数分かかることがあります。 ロード バランサーのデプロイの進行状況を監視するには、[kubectl get service][kubectl-get] コマンドを使用し、`--watch` 引数を指定します。 *EXTERNAL-IP* アドレスが "*保留中*" から "*IP アドレス*" に変わったら、`Control + C` を使用して kubectl ウォッチ プロセスを停止します。
 
 ```console
 $ kubectl get service azure-vote-front --watch
@@ -313,7 +313,7 @@ SHOWHOST = 'false'
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、CI/CD ソリューションの一部として Jenkins を使用する方法について説明しました。 [Azure DevOps Project][azure-devops] や [Ansible による AKS クラスターの作成][aks-ansible] など、AKS では他の CI/CD ソリューションや自動ツールと統合できます。
+この記事では、CI/CD ソリューションの一部として Jenkins を使用する方法について説明しました。 [Azure DevOps プロジェクト][azure-devops]や [Ansible による AKS クラスターの作成][aks-ansible]など、AKS は他の CI/CD ソリューションや自動ツールと統合できます。
 
 <!-- LINKS - external -->
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
@@ -326,7 +326,7 @@ SHOWHOST = 'false'
 
 <!-- LINKS - internal -->
 [az-acr-list]: /cli/azure/acr#az-acr-list
-[acr-authentication]: ../container-registry/container-registry-auth-aks.md#grant-aks-access-to-acr
+[acr-authentication]: cluster-container-registry-integration.md
 [acr-quickstart]: ../container-registry/container-registry-get-started-azure-cli.md
 [aks-credentials]: /cli/azure/aks#az-aks-get-credentials
 [aks-quickstart]: kubernetes-walkthrough.md

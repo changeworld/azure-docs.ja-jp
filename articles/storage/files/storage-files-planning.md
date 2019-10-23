@@ -4,15 +4,15 @@ description: Azure Files のデプロイを計画するときの考慮事項に�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327665"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514666"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -26,7 +26,7 @@ ms.locfileid: "71327665"
 
 * **[ストレージ アカウント]** : Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、[拡張性とパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
 
-* **共有**:File Storage 共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて親の共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ファイル共有の合計容量まで増やすことができます。 Standard ファイル共有の合計容量は最大 5 TiB (GA) または 100 TiB (プレビュー) です。Pemium ファイル共有の合計容量は最大 100 TiB です。
+* **共有**:File Storage 共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて親の共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ファイル共有の合計容量まで増やすことができます。 Premium および Standard ファイル共有の合計容量は 100 TiB です。
 
 * **ディレクトリ**:ディレクトリの階層 (オプション)。
 
@@ -79,10 +79,8 @@ Azure Files には、Standard と Premium の 2 つのパフォーマンス レ�
 
 Standard ファイル共有は、ハード ディスク ドライブ (HDD) によってサポートされます。 Standard ファイル共有は、汎用のファイル共有や開発/テスト環境などのパフォーマンスの変動の影響を受けにくい IO ワークロードに対して信頼性の高いパフォーマンスを提供します。 Standard ファイル共有は、従量課金制の課金モデルでのみ利用できます。
 
-サイズが最大 5 TiB の Standard ファイル共有は、GA オファリングとして利用できます。 一方、より大きなファイル共有 (5 TiB を超え、最大 100 TiB までの共有) は、現在プレビュー オファリングとして利用できます。
-
 > [!IMPORTANT]
-> オンボードの手順と、プレビューの範囲と制限については、「[大きなファイル共有へのオンボード (Standard レベル)](#onboard-to-larger-file-shares-standard-tier)」セクションを参照してください。
+> 5 TiB を超えるファイル共有を使用する場合は、オンボードの手順、およびリージョンの可用性と制限について、「[大きなファイル共有へのオンボード (Standard レベル)](#onboard-to-larger-file-shares-standard-tier)」セクションを参照してください。
 
 ### <a name="premium-file-shares"></a>Premium ファイル共有
 
@@ -195,75 +193,43 @@ GRS が有効なストレージ アカウントでは、すべてのデータが
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>大きなファイル共有へのオンボード (Standard レベル)
 
-このセクションは Standard ファイル共有にのみ適用されます。 すべての Premium ファイル共有は、GA オファリングとして 100 TiB を利用できます。
+このセクションは Standard ファイル共有にのみ適用されます。 すべての Premium ファイル共有は、100 TiB の容量を利用できます。
 
 ### <a name="restrictions"></a>制限
 
-- Azure プレビューの[使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)は、Azure ファイル同期デプロイでの使用を含む、プレビュー期間内の大規模なファイル共有に適用されます。
-- 新しい汎用ストレージ アカウントを作成する必要があります (既存のストレージ アカウントを拡張することはできません)。
-- LRS/ZRS から GRS/GZRS へのアカウント変換は、大きいファイル共有のプレビューへのサブスクリプションが承認された後に作成された新しいストレージ アカウントでは実行できません。
-
+- LRS/ZRS から GRS/GZRS へのアカウントの変換は、大きなファイル共有が有効になっているストレージ アカウントでは実行できません。
 
 ### <a name="regional-availability"></a>リージョン別の提供状況
 
 Standard ファイル共有は、すべてのリージョンで 5 TiB まで利用できます。 一部のリージョンでは、100 TiB の上限まで利用できます。これらのリージョンについては次の表を参照してください。
 
-|リージョン |サポートされる冗長性 |既存のストレージ アカウントをサポートする |ポータルのサポート* |
-|-------|---------|---------|---------|
-|オーストラリア東部 |LRS     |いいえ    |はい|
-|オーストラリア南東部|LRS     |いいえ    |まだ、いいえ|
-|インド中部  |LRS     |いいえ    |まだ、いいえ|
-|東アジア      |LRS     |いいえ    |まだ、いいえ|
-|East US        |LRS     |いいえ    |まだ、いいえ|
-|フランス中部 |LRS、ZRS|いいえ    |LRS - はい、ZRS - まだ、いいえ|
-|フランス南部   |LRS     |いいえ    |はい|
-|北ヨーロッパ   |LRS     |いいえ    |まだ、いいえ|
-|インド南部    |LRS     |いいえ    |まだ、いいえ|
-|東南アジア |LRS、ZRS|いいえ    |はい|
-|米国中西部|LRS     |いいえ    |まだ、いいえ|
-|西ヨーロッパ    |LRS、ZRS|いいえ    |はい|
-|米国西部        |LRS     |いいえ    |まだ、いいえ|
-|米国西部 2      |LRS、ZRS|いいえ    |はい|
+|リージョン |サポートされる冗長性 |
+|-------|---------|
+|オーストラリア東部 |LRS     |
+|オーストラリア南東部|LRS |
+|インド中部  |LRS     |
+|東アジア      |LRS     |
+|米国東部*        |LRS     |
+|フランス中部 |LRS、ZRS|
+|フランス南部   |LRS     |
+|インド南部    |LRS     |
+|東南アジア |LRS、ZRS|
+|米国中西部|LRS     |
+|西ヨーロッパ*    |LRS、ZRS|
+|米国西部*        |LRS     |
+|米国西部 2      |LRS、ZRS|
 
-
-\* ポータルがサポートされていないリージョンでも、PowerShell または Azure コマンド ライン インターフェイス (CLI) を使用して、5 TiB を超える共有を作成できます。 代わりに、クォータを指定せずに、ポータルを使用して新しい共有を作成します。 これにより、既定のサイズ 100 TiB の共有が作成され、後で PowerShell または Azure CLI を使用して更新できます。
+\* 新しいアカウントでサポートされていますが、すべての既存のアカウントのアップグレード プロセスが完了しているわけではありません。
 
 この[アンケート](https://aka.ms/azurefilesatscalesurvey)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
 
-### <a name="steps-to-onboard"></a>オンボードの手順
+### <a name="enable-and-create-larger-file-shares"></a>より大きなファイル共有を有効にして作成する
 
-大きなファイル共有プレビューにサブスクリプションを登録するには、Azure PowerShell を使用する必要があります。 [Azure Cloud Shell](https://shell.azure.com/) を使用するか、[Azure PowerShell モジュールをローカルに](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0)インストールすることで、次の PowerShell コマンドを実行できます。
-
-まず、プレビューで登録するサブスクリプションが選択されていることを確認します。
-
-```powershell
-$context = Get-AzSubscription -SubscriptionId ...
-Set-AzContext $context
-```
-
-次に、次のコマンドを利用してプレビューに登録します。
-
-```powershell
-Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-両方のコマンドを実行すると、サブスクリプションは自動的に承認されます。
-
-登録状態を確認するには、次のコマンドを実行します。
-
-```powershell
-Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-```
-
-状態が "**登録済み**" に更新されるまでに最大 15 分かかる場合があります。 状態が "**登録済み**" になったら、機能を利用できるようになるはずです。
-
-### <a name="use-larger-file-shares"></a>大きなファイル共有を使用する
-
-より大きなファイル共有を使い始めるには、新しい汎用 v2 ストレージ アカウントと新しいファイル共有を作成します。
+大きなファイル共有の使用を開始するには、[大きなファイル共有の有効化](storage-files-how-to-create-large-file-share.md)に関する記事を参照してください。
 
 ## <a name="data-growth-pattern"></a>データ増加パターン
 
-現在、Azure ファイル共有の最大サイズは、5 TiB (プレビューでは 100 TiB) です。 この現在の制限のため、Azure ファイル共有をでデプロイするときは、予想されるデータの増加を考慮する必要があります。
+現在、Azure ファイル共有の最大サイズは、100 TiB です。 この現在の制限のため、Azure ファイル共有をでデプロイするときは、予想されるデータの増加を考慮する必要があります。
 
 Azure ファイル同期を使って複数の Azure ファイル共有を 1 つの Windows ファイル サーバーに同期することができます。これにより、オンプレミスにある古くて大きいファイル共有を Azure File Sync に取り込むことができます。詳しくは、[Azure File Sync のデプロイの計画](storage-files-planning.md)に関するページをご覧ください。
 

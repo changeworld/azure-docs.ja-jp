@@ -1,17 +1,17 @@
 ---
-title: ポータルから既存の割り当てを更新する方法
+title: ポータルから既存の割り当てを更新する
 description: Azure Blueprints でポータルから既存の割り当てを更新するためのメカニズムについて学習します。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: bf1fdca5476f66249eb5b73bbcbf5913142eb0d3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: f78ddd5fa314d588f5d667c181528c38df3f1cef
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978478"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299208"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
 

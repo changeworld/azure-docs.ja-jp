@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 50059711df195c13ee44061ee4844f0192e0e10d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992093"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677279"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Monitor を使用してハイブリッド環境の Windows コンピューターからデータを収集する
 
@@ -37,7 +37,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
 
-    ![Azure ポータル](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure ポータル](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **[作成]** を選択し、次の項目について選択します。
 
@@ -47,7 +47,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
    * 2018 年 4 月 2 日より後に作成された新しいサブスクリプションでワークスペースを作成した場合は、自動的に "*1 GB あたり*" の価格プランが使用され、価格レベルを選択するためのオプションは利用できなくなります。  4 月 2 日より前に作成された既存のサブスクリプションのワークスペースを作成している場合、または既存の EA 登録に関連付けられたサブスクリプションに対してワークスペースを作成している場合は、希望の価格レベルを選択します。  特定のレベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
   
-        ![Log Analytics リソース ブレードの作成](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Log Analytics リソース ブレードの作成](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. **[Log Analytics ワークスペース]** ウィンドウで必要な情報を入力したら、 **[OK]** を選択します。  
 
@@ -64,7 +64,7 @@ Windows 用の Log Analytics エージェント (Microsoft Monitoring Agent (MMA
 
 3. **[詳細設定]** を選択します。
 
-    ![Log Analytics の詳細設定](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics の詳細設定](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
   
 4. **[接続されたソース]** 、 **[Windows サーバー]** の順に選択します。
 
@@ -109,7 +109,7 @@ Azure Monitor では、指定されたイベントを Windows イベント ロ�
 
 2. **[詳細設定]** を選択します。
 
-    ![Log Analytics の詳細設定](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics の詳細設定](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
  
 3. **[データ]** を選択してから、 **[Windows イベント ログ]** を選択します。  
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs を使用して iOS デバイスにローカライズしたプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs を使用して iOS にローカライズされたプッシュ通知を送信する | Microsoft Docs
 description: Azure Notification Hubs を使用して iOS デバイスにローカライズしたプッシュ通知を送信する方法について説明します。
 services: notification-hubs
 documentationcenter: ios
@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211895"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385653"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS デバイスにローカライズしたプッシュ通知を送信する
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS にローカライズされたプッシュ通知を送信する
 
 > [!div class="op_single_selector"]
 > * [Windows ストア C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)

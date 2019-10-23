@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719877"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331267"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
 > [!div class="op_single_selector"]
@@ -34,8 +34,7 @@ Azure Search は、高度な検索エクスペリエンスをカスタムアプ�
 
 管理タスクに*アップグレード*は表示されません。 リソースはサービスがプロビジョニングされたときに割り当てられるため、別のレベルに移動するには新しいサービスが必要です。 詳細については、[Azure Search サービスの作成](search-create-service-portal.md)に関するページを参照してください。
 
-> [!Tip]
-> 検索トラフィックまたはクエリのパフォーマンスを分析するには、 クエリの量、ユーザーが検索する用語、ユーザーがインデックス内の特定のドキュメントに誘導されるときに検索結果が成功する度合いを監視できます。 詳細については、[Azure Search の検索トラフィックの分析](search-traffic-analytics.md)、[使用状況とクエリ メトリックの監視](search-monitor-usage.md)、[パフォーマンスと最適化](search-performance-optimization.md)に関する各ページを参照してください。
+クエリの量やその他のメトリックを監視し、それらの分析情報を使用してサービスを調整し、応答時間を短縮することができます。 詳細については、「[Azure Search サービスでの使用状況と統計の監視](search-monitor-usage.md)と「[Azure Search のパフォーマンスと最適化に関する考慮事項](search-performance-optimization.md)を参照してください。
 
 <a id="admin-rights"></a>
 
@@ -55,7 +54,7 @@ Azure Search は、ポータルまたはプログラム インターフェイス
 
 * ポータルのサービス ダッシュボードで、プロパティ、およびステータス メッセージを確認する。
 * [PowerShell](search-manage-powershell.md) または[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) を使用して[サービスのプロパティを取得](https://docs.microsoft.com/rest/api/searchmanagement/services)するか、インデックス リソース使用率のステータスを確認する。
-* 既に説明したように、 [検索トラフィックの分析](search-traffic-analytics.md)を使用する。
+
 
 <a id="sub-5"></a>
 

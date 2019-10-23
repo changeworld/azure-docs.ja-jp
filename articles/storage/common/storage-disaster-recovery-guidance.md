@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671075"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595197"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
 
@@ -119,8 +119,14 @@ GRS および RA-GRS アカウントの場合は、DNS エントリが更新さ�
 
 アカウントのフェールオーバーは、Azure Resource Manager デプロイで GRS または RA-GRS を使用するすべてのお客様がプレビューで使用できます。 汎用 v1、汎用 v2、および BLOB のストレージ アカウントの種類がサポートされています。 現在、アカウントのフェールオーバーは次のリージョンで利用できます。
 
-- 米国西部 2
+- 東アジア
+- 東南アジア
+- オーストラリア東部
+- オーストラリア南東部
+- 米国中部
+- 米国東部 2
 - 米国中西部
+- 米国西部 2
 
 プレビューは、非運用環境のみでの使用を意図されています。 運用環境のサービス レベル契約(SLA) は現在使用できません。
 

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57b4f018cd044b4f516266dcf9776e82252f7f22
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 439e5ab4bf943293ff4ed20ed477bc98bb683836
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937110"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299336"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -213,7 +213,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
     }
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
- ```
+```
 
 ## <a name="configuration"></a>構成
 
@@ -264,7 +264,7 @@ Azure Functions では、NCRONTAB 式を解釈するのに [NCronTab](https://gi
 |---------|---------|---------|
 |特定の値 |<nobr>"0 5 * * * *"</nobr>|hh:05:00。hh は毎時です (1 時間に 1 回)|
 |すべての値 (`*`)|<nobr>"0 * 5 * * *"</nobr>|毎日 5:mm:00。mm はその時間の毎分です (1 日に 60 回)|
-|範囲 (`-` 演算子)|<nobr>"5-7 * * * * *"</nobr>|hh:mm:05、hh:mm:06、hh:mm:07。hh:mm は毎時の毎分です (1 分間に 3 回)|  
+|範囲 (`-` 演算子)|<nobr>"5-7 * * * * *"</nobr>|hh:mm:05、hh:mm:06、hh:mm:07。hh:mm は毎時の毎分です (1 分間に 3 回)|
 |値のセット (`,` 演算子)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05、hh:mm:08、hh:mm:10。hh:mm は毎時の毎分です (1 分間に 3 回)|
 |間隔値 (`/` 演算子)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00、hh:10:00、hh:15:00、... hh:55:00 まで。hh は毎時です (1 時間に 12 回)|
 
@@ -317,7 +317,7 @@ CRON 式とは異なり、`TimeSpan` の値は各関数呼び出しの間の時�
 |---------|---------|
 |"01:00:00" | 1 時間ごと        |
 |"00:01:00"|1 分ごと         |
-|"24:00:00" | 1 日ごと        |
+|"24:00:00" | 24 時間ごと        |
 |"1.00:00:00" | 毎日        |
 
 ## <a name="scale-out"></a>スケールアウト
@@ -326,7 +326,16 @@ CRON 式とは異なり、`TimeSpan` の値は各関数呼び出しの間の時�
 
 ## <a name="function-apps-sharing-storage"></a>ストレージを共有する関数アプリ
 
-ストレージ アカウントを複数の関数アプリで共有している場合は、各関数アプリの *host.json* の `id` がそれぞれ異なることを確認してください。 `id` プロパティは省略することができます。または、各関数アプリの `id` を手動でそれぞれ異なる値に設定することもできます。 1 つの関数アプリが複数のインスタンスにスケール アウトする場合、タイマー インスタンスが 1 しか存在しないようにするために、タイマー トリガーではストレージ ロックが使用されます。 2 つの関数アプリが同じ `id` を共有していて、それぞれタイマー トリガーを使用している場合は、1 つのタイマーのみが実行されます。
+App Service にデプロイされていない関数アプリの間でストレージ アカウントを共有している場合は、ホスト ID を各アプリに明示的に割り当てることが必要な場合があります。
+
+| Functions バージョン | Setting                                              |
+| ----------------- | ---------------------------------------------------- |
+| 2.x               | `AzureFunctionsWebHost__hostid` 環境変数 |
+| 1.x               | *host.json* での `id`                                  |
+
+識別値を省略するか、各関数アプリの識別構成に異なる値を手動で設定することができます。
+
+1 つの関数アプリが複数のインスタンスにスケールアウトされる場合、タイマー インスタンスが 1 しか存在しないようにするために、タイマー トリガーではストレージ ロックが使用されます。 2 つの関数アプリで同じ識別構成が共有されていて、それぞれでタイマー トリガーが使用されている場合は、1 つのタイマーのみが実行されます。
 
 ## <a name="retry-behavior"></a>再試行の動作
 

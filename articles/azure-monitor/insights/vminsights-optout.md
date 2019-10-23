@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor for VMs (プレビュー) での監視を無効にする | Microsoft Docs
 description: この記事では、Azure Monitor for VMs で仮想マシンの監視を停止する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/05/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: eb667486a6e3279cb78fefe02723f14d9f7c9b4f
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.date: 11/05/2018
+ms.openlocfilehash: 70e71688fde5aff4002c7d49b1408bcefeab1eed
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155692"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555167"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) で VM の監視を無効にする
 

@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: be59f5fd34c52397b54146a8aeaf51f4d594452f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8ea6a365b0c7bc6c254c1313445bb54231e161ae
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383347"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285651"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)に関するページを参照してください。
@@ -267,19 +267,15 @@ PowerShell を使用してセルフホステッド統合ランタイムを共有
 
 *企業ファイアウォール* レベルでは、次のドメインと送信ポートを構成する必要があります。
 
-ドメイン名 | Port | 説明
------------- | ----- | ------------
-*.servicebus.windows.net | 443 | バックエンドのデータ移動サービスとの通信に使用
-*.core.windows.net | 443 | Azure Blob Storage を使用した段階的なコピーに使用 (構成されている場合)
-*. frontend.clouddatahub.net | 443 | バックエンドのデータ移動サービスとの通信に使用
-download.microsoft.com | 443 | 更新プログラムのダウンロードに使用
+[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
+
 
 *Windows ファイアウォール* レベル (コンピューター レベル) では、通常、これらの送信ポートが有効になっています。 有効になっていない場合は、セルフホステッド統合ランタイム コンピューターに応じて、ドメインとポートを構成することができます。
 
 > [!NOTE]
-> お使いのソースやシンクに基づいて、追加のドメインと送信ポートを企業ファイアウォールまたは Windows ファイアウォールのホワイトリストに追加する必要がある場合があります。
+> お使いのソースやシンクに基づいて、追加のドメインと送信ポートを企業ファイアウォールまたは Windows ファイアウォールで許可する必要がある場合があります。
 >
-> 一部のクラウド データベース (Azure SQL Database や Azure Data Lake など) では、そのファイアウォール構成でセルフホステッド統合ランタイム コンピューターの IP アドレスをホワイトリストに追加する必要がある場合があります。
+> 一部のクラウド データベース (Azure SQL Database や Azure Data Lake など) では、そのファイアウォール構成でセルフホステッド統合ランタイム コンピューターの IP アドレスを許可する必要がある場合があります。
 
 ### <a name="copy-data-from-a-source-to-a-sink"></a>ソースからシンクへのデータのコピー
 ファイアウォール ルールが、企業ファイアウォール、セルフホステッド統合ランタイム コンピューター上の Windows ファイアウォール、およびデータ ストア自体に対して確実に正しく有効にします。 このルールを有効にすると、自己ホスト型統合ランタイムは、ソースとシンクの両方に正常に接続されます。 コピー操作に関連するデータ ストアごとにルールを有効にしてください。
@@ -360,7 +356,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 > [!IMPORTANT]
 > diahost.exe.config と diawp.exe.config の両方を忘れずに更新してください。
 
-また、Microsoft Azure が会社のホワイトリストにあることを確認する必要もあります。 有効な Microsoft Azure IP アドレスの一覧は、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=41653)からダウンロードできます。
+また、Microsoft Azure が会社の許可リストにあることを確認する必要もあります。 有効な Microsoft Azure IP アドレスの一覧は、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=41653)からダウンロードできます。
 
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>ファイアウォールとプロキシ サーバー関連の問題で発生する可能性がある症状
 次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成が原因である可能性があります。構成が不適切だと、セルフホステッド統合ランタイムが自身を認証するための Data Factory に接続できません。 ファイアウォールとプロキシ サーバーが確実に正しく構成されるようにするには、前のセクションを参照してください。

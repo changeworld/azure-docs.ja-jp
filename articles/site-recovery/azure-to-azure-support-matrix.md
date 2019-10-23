@@ -5,18 +5,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 895ce98f290ce23580bb70023e2539ab4272f8b8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 843cac8c7a5e6c80b7663df2a48079dd307b7d5a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350270"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383503"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>リージョン間の Azure VM のレプリケートに関するサポート マトリックス
 
-この記事は、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、Azure リージョン間での Azure VM のディザスター リカバリーを設定するときのサポートと前提条件をまとめたものです。
+この記事は、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、Azure リージョン間での Azure VM のディザスター リカバリーに対するサポートと前提条件をまとめたものです。
 
 
 ## <a name="deployment-method-support"></a>デプロイ方法のサポート
@@ -32,7 +32,7 @@ ms.locfileid: "71350270"
 ## <a name="resource-support"></a>リソースのサポート
 
 **リソースのアクション** | **詳細**
---- | --- | ---
+--- | --- 
 **リソース グループ間の資格情報コンテナーの移動** | サポートされていません
 **リソース グループ間のコンピューティング、ストレージ、およびネットワークの移動** | サポートされていません。<br/><br/> VM のレプリケート後に VM や関連コンポーネント (ストレージやネットワークなど) を移動する場合は、その VM のレプリケーションを無効にしてから、再度有効にする必要があります。
 **ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | 同じ Azure Active Directory テナント内でサポートされます。
@@ -58,7 +58,7 @@ Azure Government    | 米国政府バージニア、US Gov アイオワ、米国
 >[!NOTE]
 >
 > - **ブラジル南部**では、次のリージョンにレプリケートしてフェールオーバーできます: 米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、および米国中北部。
-> - ブラジル南部は、Site Recovery を使用して VM をレプリケートするソース リージョンとしてのみ使用できます。 ターゲット リージョンとしては動作できません。 これは、地理的な距離による待機時間の問題のためです。
+> - ブラジル南部は、Site Recovery を使用して VM をレプリケートするソース リージョンとしてのみ使用できます。 ターゲット リージョンとしては動作できません。 これは、地理的な距離による待機時間の問題のためです。 ソース リージョンとしてのブラジル南部からターゲットにフェールオーバーする場合は、ターゲット リージョンからブラジル南部へのフェールバックがサポートされていることに注意してください。
 > - 適切なアクセス権があるリージョン内では動作できます。
 > - コンテナーの作成を希望しているリージョンが表示されない場合は、お使いのサブスクリプションが、そのリージョン内にリソースを作成するアクセス権を持っていることを確認します。
 > - レプリケーションを有効にしても地理的クラスター内にリージョンが表示されない場合は、お使いのサブスクリプションにそのリージョンに VM を作成するアクセス許可があることを確認します。
@@ -82,17 +82,21 @@ Site Recovery は、このセクションに示したオペレーティング �
 
 ### <a name="windows"></a>Windows
 
+
 **オペレーティング システム** | **詳細**
 --- | ---
-Windows Server 2019 | サーバー コア、デスクトップ エクスペリエンス搭載サーバー
-Windows Server 2016  | サーバー コア、デスクトップ エクスペリエンス搭載サーバー
-Windows Server 2012 R2 |
-Windows Server 2012 |
-Windows Server 2008 R2 | SP1 以降を実行
-Windows 10 (x64) |
-Windows 8.1 (x64) |
-Windows 8 (x64) |
-Windows 7 (x64) | SP1 以降を実行 (Windows 7 RTM はサポートされていません)
+Windows Server 2019 | サーバー コア、デスクトップ エクスペリエンス搭載サーバーに対してサポートされます。
+Windows Server 2016  | サーバー コア、デスクトップ エクスペリエンス搭載サーバーに対してサポートされます。
+Windows Server 2012 R2 | サポートされています。
+Windows Server 2012 | サポートされています。
+Windows Server 2008 R2 with SP1/SP2 | サポートされています。<br/><br/> Azure VM のモビリティ サービス拡張機能のバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) から、Windows Server 2008 R2 SP1/SP2 を実行しているマシンに Windows [サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://aka.ms/SHA-2KB)でご確認ください。
+Windows Server 2008 with SP2 | Azure VM のモビリティ サービス拡張機能のバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) から、Windows Server 2008 with SP2 を実行しているマシンに Windows [サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4493730) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://aka.ms/SHA-2KB)でご確認ください。
+Windows 10 (x64) | サポートされています。
+Windows 8.1 (x64) | サポートされています。
+Windows 8 (x64) | サポートされています。
+Windows 7 (x64) with SP1 以降 | Azure VM のモビリティ サービス拡張機能のバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) から、Windows 7 with SP1 を実行しているマシンに Windows [サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://aka.ms/SHA-2KB)でご確認ください。
+
+
 
 #### <a name="linux"></a>Linux
 

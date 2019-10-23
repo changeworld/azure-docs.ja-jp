@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus キューの使用方法 (Python) | Microsoft Docs
+title: チュートリアル:Python で Azure Service Bus キューを使用する
 description: Python から Azure Service Bus キューを使用する方法を説明します。
 services: service-bus-messaging
 documentationcenter: python
@@ -14,14 +14,15 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 69ae02ea7c0c04312dd4e64125c80384172c6528
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141912"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438114"
 ---
-# <a name="how-to-use-service-bus-queues-with-python"></a>Python で Service Bus キューを使用する方法
+# <a name="tutorial-use-azure-service-bus-queues-with-python"></a>チュートリアル:Python で Azure Service Bus キューを使用する
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 

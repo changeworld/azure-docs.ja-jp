@@ -3,19 +3,18 @@ layout: HubPage
 hide_bc: false
 title: Azure Monitor ログ データのドキュメント | Microsoft Docs
 description: Azure Monitor では、さまざまなソースをログ データとして収集し、クエリ言語を使用した関連付けと分析のためにそのデータを格納することができます。
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: hub-page
-ms.date: 01/29/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ced88f973ff26f7c8990c1c80bf8532949ef9ae8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/29/2019
+ms.openlocfilehash: 407e18008c947f95204ea073db31b5f2279a5a4c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640108"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597323"
 ---
 <div id="main" class="v2">
     <div class="container">

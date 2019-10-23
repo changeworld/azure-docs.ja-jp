@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2019
+ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28354f54978e8ba776d8b0da294652ff462a05f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853450"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72324718"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -62,7 +62,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 1. **[アクセス制御 (IAM)]** を選択します。
 1. **[ロールの割り当ての追加]** を選択します。
-1. アプリケーションに割り当てるロールを選択します。 アプリケーションがインスタンスの**再起動**、**開始**、**停止**などのアクションを実行できるようにするには、 **[共同作成者]** ロールを選択します。 既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
+1. アプリケーションに割り当てるロールを選択します。 たとえば、アプリケーションがインスタンスの**再起動**、**開始**、**停止**などのアクションを実行できるようにするには、 **[共同作成者]** ロールを選択します。  [使用可能なロール](../../role-based-access-control/built-in-roles.md)の詳細を参照してください。既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
 
    ![アプリケーションに割り当てるロールを選択します。](./media/howto-create-service-principal-portal/select-role.png)
 
@@ -89,7 +89,13 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 ### <a name="upload-a-certificate"></a>証明書のアップロード
 
-既存の証明書がある場合は、それを使用できます。  必要に応じて、テスト目的で自己署名証明書を作成することもできます。 PowerShell を開いて、次のパラメーターを使用して [New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行して、コンピューター上のユーザー証明書ストアに自己署名証明書を作成します: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`。  Windows コントロール パネルからアクセスできる [[Manage User Certificate]\(ユーザー証明書の管理)](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)MMC スナップインを使用して、この証明書をエクスポートします。
+既存の証明書がある場合は、それを使用できます。  必要に応じて、テスト目的で自己署名証明書を作成することもできます。 PowerShell を開き、次のパラメーターを使用して [New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行して、コンピューター上のユーザー証明書ストアに自己署名証明書を作成します。 
+
+```powershell
+$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
+```
+
+Windows コントロール パネルからアクセスできる [[Manage User Certificate]\(ユーザー証明書の管理)](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC スナップインを使用して、この証明書をファイルにエクスポートします。
 
 証明書をアップロードするには、次の手順に従います。
 
@@ -114,6 +120,14 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
    ![後からこれを取得することはできないので、このシークレット値をコピーする](./media/howto-create-service-principal-portal/copy-secret.png)
 
+## <a name="configure-access-policies-on-resources"></a>リソースに対するアクセス ポリシーを構成する
+アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)必要があります。  
+
+1. **Azure portal** で、キー コンテナーに移動し、[[アクセス ポリシー]](https://portal.azure.com) を選択します。  
+1. **[アクセス ポリシーの追加]** を選択し、アプリケーションに付与するキー、シークレット、証明書のアクセス許可を選択します。  以前に作成したサービス プリンシパルを選択します。
+1. **[追加]** を選択してアクセス ポリシーを追加し、 **[保存]** を選択して変更をコミットします。
+    ![アクセス ポリシーの追加](./media/howto-create-service-principal-portal/add-access-policy.png)
+
 ## <a name="required-permissions"></a>必要なアクセス許可
 
 アプリケーションを Azure AD テナントに登録し、Azure サブスクリプションでそのアプリケーションをロールに割り当てるための十分なアクセス許可が必要です。
@@ -125,7 +139,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
    ![自分のロールを見つける。 ユーザーの場合、確実に管理者以外がアプリを登録できるようにする](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. **[ユーザー設定]** を選択します。
+1. 左側のウィンドウで、 **[ユーザー設定]** を選択します。
 1. **[アプリの登録]** 設定を確認します。 この値は、管理者だけが設定できます。 **[はい]** に設定されている場合は、Azure AD テナント内のすべてのユーザーがアプリを登録できます。
 
 アプリの登録の設定が **[いいえ]** に設定されている場合は、管理者ロールを持つユーザーのみが、これらの種類のアプリケーションを登録できます。 使用可能な管理者ロールと各ロールに与えられている Azure AD での具体的なアクセス許可については、[利用可能なロール](../users-groups-roles/directory-assign-admin-roles.md#available-roles)と[ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)に関するページを参照してください。 アカウントがユーザー ロールに割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、管理者に、アプリの登録のすべての側面を作成および管理できるいずれかの管理者ロールに自分を割り当てるか、ユーザーがアプリを登録できるようにするよう依頼してください。
@@ -150,6 +164,5 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 ## <a name="next-steps"></a>次の手順
 
-* マルチテナント アプリケーションのセットアップについては、「 [Azure Resource Manager API を使用した承認の開発者ガイド](../../azure-resource-manager/resource-manager-api-authentication.md)」を参照してください。
 * セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)」を参照してください。  
 * ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。

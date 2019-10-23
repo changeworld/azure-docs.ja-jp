@@ -1,6 +1,6 @@
 ---
 title: 'Azure Databricks からさまざまなデータ ソースに接続する '
-description: Azure Databricks からさまざまなデータ ソースに接続する方法を説明します。
+description: Azure Databricks から Azure SQL Database、Azure Data Lake Store、Blob Storage、Cosmos DB、Event Hubs、Azure SQL Data Warehouse に接続する方法について説明します。
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: f2b7136ec21416e31c2af658974577023a4494de
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c77d1d1a66d3ee92f5ad3f2016d2160831fa3ad9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240342"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299313"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Azure Databricks からデータ ソースに接続する
 

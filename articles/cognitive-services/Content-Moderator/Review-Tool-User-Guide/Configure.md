@@ -3,19 +3,19 @@ title: レビュー ツールの設定を構成する - Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Content Moderator 用のチーム、タグ、コネクタ、ワークフロー、および資格情報を構成または取得するには、レビュー ツールを使用します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882729"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757425"
 ---
 # <a name="configure-the-review-tool"></a>レビュー ツールの構成
 
@@ -75,7 +75,7 @@ ms.locfileid: "68882729"
 新しいタグを作成するには、各フィールドに短いコード、名前、および説明を入力する必要があります。
 
 - **[Short code]\(短いコード)** : タグの 2 文字のコードを入力します。 例: **cb**。
-- **[名前]** :短く、わかりやすいタグ名をスペースなしの小文字で入力します。 例: **isbullying**。
+- **Name**:短く、わかりやすいタグ名をスペースなしの小文字で入力します。 例: **isbullying**。
 - **[説明]** : (省略可能) そのタグの対象とするコンテンツの種類の説明を入力します。 例:**ネットいじめの説明または例**。
 
 **[追加]** をクリックしてタグを追加し、タグの作成を完了したら **[保存]** をクリックします。
