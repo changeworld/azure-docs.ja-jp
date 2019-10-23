@@ -26,7 +26,7 @@ ms.locfileid: "67839019"
 > * [バージョン 2 (最新バージョン)](../connector-mysql.md)
 
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の MySQL コネクタ](../connector-mysql.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の MySQL connector](../connector-mysql.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの MySQL データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
@@ -42,10 +42,10 @@ MySQL データベースが Azure IaaS 仮想マシン (VM) でホストされ�
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で MySQL Database に接続するには、[MySQL コネクタ/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (バージョン 6.6.5 から 6.10.7 まで) を Data Management Gateway と同じシステムにインストールする必要があります。 この 32 ビット ドライバーは 64 ビット Data Management Gateway と互換性があります。 MySQL バージョン 5.1 以降がサポートされています。
+Data Management Gateway で MySQL Database に接続するには、[MySQL Connector/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (バージョン 6.6.5 から 6.10.7 まで) を Data Management Gateway と同じシステムにインストールする必要があります。 この 32 ビット ドライバーは 64 ビット Data Management Gateway と互換性があります。 MySQL バージョン 5.1 以降がサポートされています。
 
 > [!TIP]
-> エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL コネクタ/Net をより新しいバージョンにアップグレードすることを検討してください。
+> エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL Connector/Net をより新しいバージョンにアップグレードすることを検討してください。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
