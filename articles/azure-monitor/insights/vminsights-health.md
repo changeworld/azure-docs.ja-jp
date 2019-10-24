@@ -1,24 +1,18 @@
 ---
 title: Azure 仮想マシンの正常性を把握する | Microsoft Docs
 description: この記事では、Azure Monitor for VMs を使用して、仮想マシンと基になるオペレーティング システムの正常性を把握する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 65ad9e1f5ef62ab2dd9f37a13d3c18871c30e603
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 10/15/2019
+ms.openlocfilehash: c9dfd3bfcacc1f50bb9be04c927bf3cbb4895f6d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515488"
+ms.locfileid: "72555264"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331140"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529487"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Security Center でサポートされている使用可能な機能
 
@@ -96,14 +96,14 @@ Azure Security Center では、次の PaaS リソースがサポートされて�
 |MySQL*|✔| ✔|
 |CosmosDB*|X| ✔|
 |BLOB ストレージ|✔| ✔|
-|ストレージ アカウント|✔| NA|
+|ストレージ アカウント|✔| X|
 |App Service|✔| ✔|
 |Function|✔| X|
 |クラウド サービス|✔| X|
-|VNet|✔| NA|
-|Subnet|✔| NA|
-|NIC|✔| NA|
-|NSG|✔| NA|
+|VNet|✔| X|
+|Subnet|✔| X|
+|NIC|✔| X|
+|NSG|✔| X|
 |Subscription|✔ **| ✔|
 |Batch アカウント|✔| X|
 |Service Fabric アカウント|✔| X|
@@ -114,7 +114,7 @@ Azure Security Center では、次の PaaS リソースがサポートされて�
 |Stream Analytics|✔| X|
 |イベント ハブの名前空間|✔| X|
 |ロジック アプリ|✔| X|
-|Redis|✔| NA|
+|Redis|✔| X|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
 |Key Vault|✔| X|
