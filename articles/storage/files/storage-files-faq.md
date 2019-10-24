@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cc827f52d227ee36620bd215dfcba96b433804d3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 6fecd143055da2829ac49cee4f50d448a37a6e1b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103053"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514890"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -245,7 +245,7 @@ ms.locfileid: "71103053"
 * <a id="expressroute-not-required"></a>
 **Azure Files に接続するためや、Azure File Sync をオンプレミスで使用するために、Azure ExpressRoute を使用する必要はありますか。**  
 
-    いいえ。 ExpressRoute から Azure ファイル共有にアクセスする必要はありません。 Azure ファイル共有を直接オンプレミスにマウントしている場合、必要なのは、インターネット アクセスのためにポート 445 (TCP 送信) が開放されていることだけです (これは SMB が通信に使用するポートです)。 Azure File Sync を使用している場合、必要なのは、HTTPS アクセスのためのポート 443 (TCP 送信) だけです (SMB は必要ありません)。 ただし、ExpressRoute は、これらのアクセス オプションのいずれでも使用 "*できます*"。
+    No. ExpressRoute から Azure ファイル共有にアクセスする必要はありません。 Azure ファイル共有を直接オンプレミスにマウントしている場合、必要なのは、インターネット アクセスのためにポート 445 (TCP 送信) が開放されていることだけです (これは SMB が通信に使用するポートです)。 Azure File Sync を使用している場合、必要なのは、HTTPS アクセスのためのポート 443 (TCP 送信) だけです (SMB は必要ありません)。 ただし、ExpressRoute は、これらのアクセス オプションのいずれでも使用 "*できます*"。
 
 * <a id="mount-locally"></a>
 **ローカル マシンに Azure ファイル共有をマウントするにはどうすればよいですか。**  
@@ -344,7 +344,12 @@ ms.locfileid: "71103053"
 
 * <a id="need-larger-share"></a>
 **Azure ファイル共有に使用できるサイズ**  
-    Azure ファイル共有のサイズ (Premium および Standard) は最大 100 TiB までスケールアップできます。 GA オファリングとして最大 100 TiB の Premium ファイル共有サイズを利用できます。 GA オファリングとして最大 5 TiB の Standard ファイル共有サイズを利用できますが、プレビューでは最大 100 TiB のサイズを利用できます。 Standard レベルの大きいファイル共有のプレビューのオンボード手順については、この計画ガイドの「[大きなファイル共有へのオンボード (Standard レベル)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)」セクションを参照してください。
+    Azure ファイル共有のサイズ (Premium および Standard) は最大 100 TiB までスケールアップできます。 Standard レベルの大きいファイル共有のオンボード手順については、この計画ガイドの「[大きなファイル共有へのオンボード (Standard レベル)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)」セクションを参照してください。
+
+* <a id="lfs-performance-impact"></a>
+**ファイル共有のクォータを拡張すると、ワークロードや Azure File Sync に影響しますか。**
+    
+    No. クォータを拡張しても、ワークロードや Azure File Sync には影響しません。
 
 * <a id="open-handles-quota"></a>
 **同じファイルに同時にアクセスできるクライアントの数はどのくらいですか。**    
@@ -373,7 +378,7 @@ ms.locfileid: "71103053"
 
 * <a id="nested-shares"></a>
 **共有は入れ子にできますか。つまり、共有の下に共有を配置できますか。**  
-    いいえ。 ファイル共有はマウント可能な "*仮想ドライバーである*" ため、共有の入れ子はサポートしていません。
+    No. ファイル共有はマウント可能な "*仮想ドライバーである*" ため、共有の入れ子はサポートしていません。
 
 * <a id="ibm-mq"></a>
 **IBM MQ での Azure Files の使用方法**  

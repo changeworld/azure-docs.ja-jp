@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8f33e36568171ab7b37f536a3c7883b004cb71c0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2b2b8fe383ff4ee3d4b23c2c6e555b44e0cc088c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68838028"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390067"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -44,16 +44,12 @@ ms.locfileid: "68838028"
 
 ## <a name="webjobs-nuget-packages"></a>WebJobs NuGet パッケージ
 
-1. 次の NuGet パッケージの最新の安定した3.x バージョンをインストールします。
+1. `Microsoft.Azure.WebJobs` を含む、`Microsoft.Azure.WebJobs.Extensions` NuGet パッケージの最新の安定した 3.x バージョンをインストールします。
 
-   * `Microsoft.Azure.WebJobs`
-   * `Microsoft.Azure.WebJobs.Extensions`
-
-     バージョン 3.0.4 用の**パッケージ マネージャー コンソール** コマンドを次に示します。
+     バージョン 3.0.2 用の**パッケージ マネージャー コンソール** コマンドを次に示します。
 
      ```powershell
-     Install-Package Microsoft.Azure.WebJobs -version 3.0.4
-     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.1
+     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.2
      ```
 
 ## <a name="create-the-host"></a>ホストを作成する
@@ -90,16 +86,9 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 ここでは、[ASP.NET Core ログ記録フレームワーク](/aspnet/core/fundamentals/logging)を使用するコンソール ログ記録を設定します。
 
-1. 次の NuGet パッケージの最新の安定したバージョンをイストールします。
+1. `Microsoft.Extensions.Logging` を含む、`Microsoft.Extensions.Logging.Console` NuGet パッケージの最新の安定したバージョンをインストールします。
 
-   * `Microsoft.Extensions.Logging` - ログ記録フレームワーク。
-   * `Microsoft.Extensions.Logging.Console` - コンソールにログを送信するコンソール プロバイダー。
-
-   バージョン 2.2.0 用の**パッケージ マネージャー コンソール** コマンドを次に示します。
-
-   ```powershell
-   Install-Package Microsoft.Extensions.Logging -version 2.2.0
-   ```
+   バージョン 2.2.0 用の **パッケージ マネージャー コンソール** コマンドを次に示しします。
 
    ```powershell
    Install-Package Microsoft.Extensions.Logging.Console -version 2.2.0
@@ -155,10 +144,10 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 1. [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージの最新の安定バージョンであるバージョン 3.x をインストールします。 
 
-    バージョン 3.0.3 用の**パッケージ マネージャー コンソール** コマンドを次に示します。
+    バージョン 3.0.4 用の**パッケージ マネージャー コンソール** コマンドを次に示します。
 
     ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.3
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.4
     ```
 
 2. `ConfigureWebJobs` 拡張メソッド内で、[`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) インスタンスの `AddAzureStorage` メソッドを呼び出し、ストレージ拡張機能を初期化します。 この段階で、`ConfigureWebJobs` メソッドは次の例のようになります。
@@ -338,13 +327,13 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. **[接続文字列]** ボックスで、次のエントリを追加します。
 
-   |EnableAdfsAuthentication  |接続文字列  |データベースの種類|
+   |名前  |接続文字列  |データベースの種類|
    |---------|---------|------|
    |AzureWebJobsStorage | {先ほどコピーした Storage 接続文字列}|カスタム|
 
 1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
 
-   |EnableAdfsAuthentication  |値  |
+   |名前  |値  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 

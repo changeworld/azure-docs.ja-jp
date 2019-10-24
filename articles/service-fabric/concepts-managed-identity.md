@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968278"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333134"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric アプリケーションのマネージド ID (プレビュー)
 
@@ -63,6 +63,8 @@ Service Fabric のマネージド ID は、Azure にデプロイされた Servic
 次のシナリオはサポートされていないか、推奨されません。これらのアクションはブロックされるとは限りませんが、アプリケーションの停止につながる可能性がありますので注意してください。
 
    - アプリケーションに割り当てられている ID を削除または変更する。変更を行う必要がある場合は、別のデプロイを送信して、先に新しい ID 割り当てを追加してから、以前に割り当てた ID を削除してください。 既存のアプリケーションから ID を削除すると、アプリケーションがアップグレード不可能な状態のままになるなど、望ましくない影響が生じる可能性があります。 ID の削除が必要な場合は、アプリケーションごと削除するのが安全です。これによって、アプリケーションに関連付けられているシステム割り当て ID (そのように定義されている場合) が削除され、アプリケーションに割り当てられているユーザー定義 ID との関連付けもすべて削除されることに注意してください。
+
+   - マネージド ID の SF サポートはこの時点で [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md) に統合されていません。マネージド ID 機能のプレビュー期間の終わりに統合は実現されます。
 
 >
 > [!NOTE]

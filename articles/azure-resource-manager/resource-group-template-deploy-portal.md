@@ -1,17 +1,17 @@
 ---
 title: Azure Portal を使用した Azure リソースのデプロイ | Microsoft Docs
-description: Azure ポータルと Azure Resource Manager を使用して、リソースをデプロイします。
+description: Azure portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: a171d9b4f054c942eebb08e7e11dd1164545f408
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 249afcaad85d9031e0972d4fcfc185b5ff890f65
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460280"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390347"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 

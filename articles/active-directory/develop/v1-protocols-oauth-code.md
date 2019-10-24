@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b0184aa7bff4203f50d834f603bed5fd2af52e4c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193233"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514423"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
 
@@ -265,7 +265,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が https://login.microsoftonline.com または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
 | error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](https://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 |
 | error_description |エラーの詳しい説明。 このメッセージはエンドユーザー向けではありません。 |
-| resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから**権限昇格**攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、 `resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、 https://service.contoso.com/data にアクセスしている場合、`resource_id` は htttps://service.contoso.com/ になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |
+| resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから**権限昇格**攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、 `resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、 https://service.contoso.com/data にアクセスしている場合、`resource_id` は https://service.contoso.com/ になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |
 
 #### <a name="bearer-scheme-error-codes"></a>ベアラー スキームのエラー コード
 RFC 6750 仕様では、応答で WWW-Authenticate ヘッダーとベアラー スキームを使用するリソースのために、次のエラーが定義されています。

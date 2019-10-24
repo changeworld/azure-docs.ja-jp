@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 5ba530a614dd7eb064e1d9b5a59fc00b9280ef0a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: da8b4ebd5cf1e7a57842a116e5d9e21e3c3f7874
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008638"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387298"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -332,7 +332,7 @@ Blob Storage をコピー先またはコピー元として Parquet 形式、区�
 
 > [!NOTE]
 >
-> 次のセクションで説明する Parquet/テキスト形式の **AzureBlob** 型のデータセットは、下位互換性のために引き続きコピー/Lookup/GetMetadata アクティビティでそのままサポートされますが、Mapping Data Flow では機能しません。 今後は、この新しいモデルを使用することをお勧めします。ADF オーサリング UI はこれらの新しい型を生成するように切り替えられています。
+> 次のセクションで説明する Parquet/テキスト形式の **AzureBlob** 型のデータセットは、下位互換性のために引き続きコピー/Lookup/GetMetadata アクティビティでそのままサポートされますが、マッピング データ フローでは機能しません。 今後は、この新しいモデルを使用することをお勧めします。ADF オーサリング UI はこれらの新しい型を生成するように切り替えられています。
 
 **例:**
 

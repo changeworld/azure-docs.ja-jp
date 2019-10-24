@@ -1,21 +1,21 @@
 ---
-title: Azure Cost Management のデータへのアクセス許可の割り当て | Microsoft Docs
+title: Azure Cost Management のデータへのアクセス許可を割り当てる
 description: この記事では、Azure Cost Management のデータに対するアクセス許可をさまざまなアクセス スコープで割り当てる方法を説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695389"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375129"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -63,6 +63,8 @@ EA ポータルで **[DA ビューの請求額]** が無効になっている場
 - Azure アカウント
 - 管理グループ
 - Resource group
+
+パートナーによって顧客が Microsoft 顧客契約にオンボードされた後は、さまざまなスコープが利用可能です。 CSP のお客様は、CSP パートナーによって有効化された場合は Cost Management の機能を使用できます。 詳細については、「[パートナー向け Azure Cost Management の概要](get-started-partners.md)」を参照してください。
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>EA ポータルでのコストへのアクセスを有効にする
 

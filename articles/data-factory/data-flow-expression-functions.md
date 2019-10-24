@@ -1,26 +1,26 @@
 ---
-title: Azure Data Factory の Mapping Data Flow 機能の式関数
-description: Mapping Data Flow の式関数について説明します。
+title: Azure Data Factory のマッピング データ フロー機能での式関数
+description: マッピング データ フローでの式関数について説明します。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: c062a75516a1b865c1ff6c35f00d4fbf7c4881c6
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 27d968aa5202fbeb38be9a2416514d2185c1d8b9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029376"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436747"
 ---
-# <a name="data-transformation-expressions-in-mapping-data-flow"></a>Mapping Data Flow のデータ変換式 
+# <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式 
 
 
 
 ## <a name="expression-functions"></a>式関数
 
-Data Factory では、Mapping Data Flow の機能の式言語を使用してデータ変換を構成します。
+Data Factory では、マッピング データ フロー機能の式言語を使用して、データ変換が構成されます。
 
 ___
 ### <code>abs</code>
@@ -197,7 +197,8 @@ ___
 ___
 ### <code>currentUTC</code>
 <code><b>currentUTC([<i>&lt;value1&gt;</i> : string]) => timestamp</b></code><br/><br/>
-現在のタイムスタンプを UTC で取得します。 現在の時刻がクラスターのタイム ゾーンとは異なるタイムゾーンで解釈されるようにする場合は、省略可能なタイム ゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡すことができます。 既定値は現在のタイムゾーンです。 使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.htmlTo UTC 時刻を別のタイムゾーンに変換するには、fromUTC() を使用します * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
+現在のタイムスタンプを UTC で取得します。 現在の時刻がクラスターのタイム ゾーンとは異なるタイムゾーンで解釈されるようにする場合は、省略可能なタイム ゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡すことができます。 既定値は現在のタイムゾーンです。 使用可能な形式については、Java の SimpleDateFormat を参照してください。 [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) を使用して UTC 時刻を別のタイムゾーンに変換するには、fromUTC() を使用します
+* ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
 * ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``
 * ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
 ___

@@ -13,22 +13,22 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d0a946ede154561aaa49d335b7b91fdae72c51d3
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155551"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332508"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される (Azure 内)
 
-この記事は、仮想マシン (VM) が起動中に次のメッセージで停止している問題の解決に役立ちます。"Windows の準備をしています。 コンピューターの電源を切らないでください。"
+この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のある "準備しています" 画面および "Windows の準備をしています" 画面について説明します。 また、サポート チケットのためのデータを収集する手順について説明します。
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptoms"></a>現象
 
-**ブート診断**を使用して VM のスクリーンショットを取得するときに、オペレーティング システムが完全に起動されません。 VM は、次のメッセージを表示します。"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される
+Windows VM が起動しません。 **起動診断**を利用して VM のスクリーンショットを取得すると、VM に "準備しています" または "Windows の準備をしています" というメッセージが表示されることがあります。
 
 ![Windows Server 2012 R2 でのメッセージの例](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -38,178 +38,71 @@ ms.locfileid: "71155551"
 
 この問題は通常、構成の変更後にサーバーが最終リブートを行っている場合に発生します。 構成の変更は、Windows Update またはサーバーのロール/機能に関する変更によって初期化される可能性があります。 Windows Update では、更新のサイズが大きかった場合、オペレーティング システムが変更を再構成するまでに必要な時間が長くなります。
 
-## <a name="back-up-the-os-disk"></a>OS ディスクのバックアップ
-
-この問題を修正しようとする前に、OS ディスクをバックアップしてください。
-
-### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>暗号化されたディスクがある VM の場合は、最初にディスクのロックを解除する必要があります
-
-次の手順に従って、その VM が暗号化された VM であるかどうかを判定します。
-
-1. Azure portal で VM を開き、ディスクを参照します。
-
-2. **[暗号化]** 列を見て、暗号化が有効になっているかどうかを確認します。
-
-OS ディスクが暗号化されている場合は、暗号化されたディスクのロックを解除します。 ディスクのロックを解除するには、次の手順に従います。
-
-1. 影響を受ける VM と同じリソース グループ、ストレージ アカウント、場所に復旧 VM を作成します。
-
-2. Azure Portal で、影響を受ける VM を削除し、そのディスクを保持します。
-
-3. PowerShell を管理者として実行します。
-
-4. 次のコマンドレットを実行し、シークレット名を取得します。
-
-    ```Powershell
-    Login-AzAccount
- 
-    $vmName = “VirtualMachineName”
-    $vault = “AzureKeyVaultName”
- 
-    # Get the Secret for the C drive from Azure Key Vault
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.Tags.VolumeLetter -eq “C:\”) -and ($_.ContentType -eq ‘BEK‘)}
-
-    # OR Use the below command to get BEK keys for all the Volumes
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq   $vmName) -and ($_.ContentType -eq ‘BEK’)}
-    ```
-
-5. シークレット名を取得したら、PowerShell で次のコマンドを実行します。
-
-    ```Powershell
-    $secretName = 'SecretName'
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $vault -Name $secretname
-    $bekSecretBase64 = $keyVaultSecret.SecretValueText
-    ```
-
-6. Base64 でエンコードされた値をバイトに変換し、その出力をファイルに書き込みます。 
-
-    > [!Note]
-    > USB のロック解除オプションを使用する場合は、BEK ファイル名が元の BEK GUID に一致している必要があります。 これらの手順に従う前に、C ドライブ上に "BEK" という名前のフォルダーを作成してください。
-    
-    ```Powershell
-    New-Item -ItemType directory -Path C:\BEK
-    $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
-    $path = “c:\BEK\$secretName.BEK”
-    [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
-    ```
-
-7. PC に BEK ファイルが作成された後、ロックされた OS ディスクが接続されている復旧 VM にファイルをコピーします。 BEK ファイルの場所を使用して、次のコマンドを実行します。
-
-    ```Powershell
-    manage-bde -status F:
-    manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
-    ```
-    **省略可能**: シナリオによっては、次のコマンドを使用してディスクを復号化することが必要になる場合があります。
-   
-    ```Powershell
-    manage-bde -off F:
-    ```
-
-    > [!Note]
-    > 前のコマンドでは、暗号化するディスクが文字 F 上にあることを前提にしています。
-
-8. ログを収集する必要がある場合は、**ドライブ文字:\Windows\System32\winevt\Logs** のパスに移動します。
-
-9. 復旧マシンからドライブをデタッチします。
-
-### <a name="create-a-snapshot"></a>スナップショットの作成
-
-スナップショットを作成するには、「[ディスクのスナップショットの作成](../windows/snapshot-copy-managed-disk.md)」の手順に従います。
-
 ## <a name="collect-an-os-memory-dump"></a>OS のメモリ ダンプの収集
 
-構成時に VM が停止したときに OS ダンプを収集するには、[OS ダンプの収集](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file)に関するセクションにある手順を使用します。
+変更が処理されるまで待っても問題が解決されないときは、場合によっては、メモリ ダンプ ファイルを収集し、サポートに問い合わせる必要があります。 ダンプ ファイルを収集するには、次の手順を実行します。
+
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>復旧 VM に OS ディスクを接続する
+
+1. バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
+2. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
+3. 復旧 VM にリモート デスクトップ接続します。 
+4. OS ディスクが暗号化されている場合、次の手順に進む前に暗号化をオフにする必要があります。 詳細については、[起動できない VM で暗号化されている OS ディスクを復号する](troubleshoot-bitlocker-boot-error.md#solution)方法に関するページを参照してください。
+
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
+
+1. 復旧 VM で、接続されている OS ディスクの Windows フォルダーに移動します。 接続されている OS ディスクに割り当てられているドライブ文字が F の場合は、F:\Windows に移動する必要があります。
+2. memory.dmp ファイルを探し、ダンプ ファイルと共に[サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。 
+
+ダンプ ファイルが見つからない場合は、ダンプ ログとシリアル コンソールを有効にする次の手順に進みます。
+
+### <a name="enable-dump-log-and-serial-console"></a>ダンプ ログとシリアル コンソールを有効にする
+
+ダンプ ログとシリアル コンソールを有効にするには、次のスクリプトを実行します。
+
+1. 管理者特権のコマンド プロンプト セッション ([管理者として実行]) を開きます。
+2. 次のスクリプトを実行します。
+
+    このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。実際の VM の適切な値に置き換えてください。
+
+    ```powershell
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+
+    REM Enable Serial Console
+    bcdedit /store F:\boot\bcd /set {bootmgr} displaybootmenu yes
+    bcdedit /store F:\boot\bcd /set {bootmgr} timeout 5
+    bcdedit /store F:\boot\bcd /set {bootmgr} bootems yes
+    bcdedit /store F:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    bcdedit /store F:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+    REM Suggested configuration to enable OS Dump
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    reg unload HKLM\BROKENSYSTEM
+    ```
+
+    1. この VM に選択しているサイズに応じて、RAM と同じサイズのメモリを割り当てることができる十分な領域がディスク上にあることを確認します。
+    2. 十分な領域がない場合、または大きなサイズの VM (G、GS、または E シリーズ) の場合、このファイルが作成される場所を変更し、VM に接続されている他のデータ ディスクに任せることができます。 このために、以下のキーを変更する必要があります。
+
+            reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+
+            REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+            REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+
+            reg unload HKLM\BROKENSYSTEM
+
+3. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](../windows/troubleshoot-recovery-disks-portal.md)。
+4. VM を起動し、シリアル コンソールにアクセスします。
+5. **[マスク不可能割り込み (NMI) を送信する]** を選択し、メモリ ダンプをトリガーします。
+    ![マスク不可能割り込みを送信する場所に関するイメージ](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
+6. OS ディスクを復旧 VM にもう一度アタッチし、ダンプ ファイルを収集します。
 
 ## <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
 ダンプ ファイルを収集した後、根本原因を分析するために [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に問い合わせてください。
-
-
-## <a name="rebuild-the-vm-by-using-powershell"></a>PowerShell を使用して VM を再構築する
-
-メモリ ダンプ ファイルを収集した後、次の手順に従って VM を再構築します。
-
-**非マネージド ディスクの場合**
-
-```powershell
-# To log in to Azure Resource Manager
-Login-AzAccount
-
-# To view all subscriptions for your account
-Get-AzSubscription
-
-# To select a default subscription for your current session
-Get-AzSubscription –SubscriptionID “SubscriptionID” | Select-AzSubscription
-
-$rgname = "RGname"
-$loc = "Location"
-$vmsize = "VmSize"
-$vmname = "VmName"
-$vm = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-
-$nic = Get-AzNetworkInterface -Name ("NicName") -ResourceGroupName $rgname;
-$nicId = $nic.Id;
-
-$vm = Add-AzVMNetworkInterface -VM $vm -Id $nicId;
-
-$osDiskName = "OSdiskName"
-$osDiskVhdUri = "OSdiskURI"
-
-$vm = Set-AzVMOSDisk -VM $vm -VhdUri $osDiskVhdUri -name $osDiskName -CreateOption attach -Windows
-
-New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
-```
-
-**マネージド ディスクの場合**
-
-```powershell
-# To log in to Azure Resource Manager
-Login-AzAccount
-
-# To view all subscriptions for your account
-Get-AzSubscription
-
-# To select a default subscription for your current session
-Get-AzSubscription –SubscriptionID "SubscriptionID" | Select-AzSubscription
-
-#Fill in all variables
-$subid = "SubscriptionID"
-$rgName = "ResourceGroupName";
-$loc = "Location";
-$vmSize = "VmSize";
-$vmName = "VmName";
-$nic1Name = "FirstNetworkInterfaceName";
-#$nic2Name = "SecondNetworkInterfaceName";
-$avName = "AvailabilitySetName";
-$osDiskName = "OsDiskName";
-$DataDiskName = "DataDiskName"
-
-#This can be found by selecting the Managed Disks you wish you use in the Azure portal if the format below doesn't match
-$osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
-$dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
-
-$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize;
-
-#Uncomment to add Availability Set
-#$avSet = Get-AzAvailabilitySet –Name $avName –ResourceGroupName $rgName;
-#$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id;
-
-#Get NIC Resource Id and add
-$nic1 = Get-AzNetworkInterface -Name $nic1Name -ResourceGroupName $rgName;
-$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic1.Id -Primary;
-
-#Uncomment to add a secondary NIC
-#$nic2 = Get-AzNetworkInterface -Name $nic2Name -ResourceGroupName $rgName;
-#$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic2.Id;
-
-#Windows VM
-$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Windows;
-
-#Linux VM
-#$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Linux;
-
-#Uncomment to add additional Data Disk
-#Add-AzVMDataDisk -VM $vm -ManagedDiskId $dataDiskResourceId -Name $dataDiskName -Caching None -DiskSizeInGB 1024 -Lun 0 -CreateOption Attach;
-
-New-AzVM -ResourceGroupName $rgName -Location $loc -VM $vm;
-```

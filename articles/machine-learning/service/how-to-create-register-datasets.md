@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 08/22/2019
-ms.openlocfilehash: 2034701008396f524e5b058ddb726ddce89e4e32
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/10/2019
+ms.openlocfilehash: 54f8a1248688a6d62192e4f34cf6b98a94086da8
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300609"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274770"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning でデータセット (プレビュー) を作成してアクセスする
 
@@ -55,11 +55,13 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
 ## <a name="create-datasets"></a>データセットを作成する
 
-データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るので、追加のストレージ コストは発生しません。
+データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るので、追加のストレージ コストは発生しません。 TabularDatasets と FileDatasets の両方を作成するには、Python SDK を使用するか、またはワークスペースのランディング ページ (プレビュー) を使用します。 
 
 データを Azure Machine Learning からアクセスできるようにするには、[Azure データストア](how-to-access-data.md)またはパブリック Web URL のパスからデータセットを作成する必要があります。
 
-[Azure データストア](how-to-access-data.md)からデータセットを作成するには、以下のようにします。
+### <a name="using-the-sdk"></a>SDK を使用する
+
+Python SDK を使用して [Azure データストア](how-to-access-data.md)からデータセットを作成するには
 
 * 登録された Azure データストアへの `contributor` または `owner` アクセス権を持っていることを確認します。
 
@@ -78,12 +80,7 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 ```
-
-### <a name="create-tabulardatasets"></a>TabularDataset を作成する
-
-TabularDatasets を作成するには、SDK を使用するか、またはワークスペースのランディング ページ (プレビュー) を使用します。 timestamp は、データの列から、またはデータが格納されているパス パターンの列から指定できます。これにより、時間による簡単かつ効率的なフィルター処理が可能になります。
-
-#### <a name="using-the-sdk"></a>SDK を使用する
+#### <a name="create-tabulardatasets"></a>TabularDataset を作成する
 
 csv 形式または tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。
 
@@ -120,10 +117,13 @@ from azureml.core import Dataset, Datastore
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
-時間によるフィルター処理を簡単かつ効率的にするには、`TabularDataset` クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) メソッドを使用します。 その他の例と詳細については、[こちら](https://aka.ms/azureml-tsd-notebook)を参照してください。
+
+TabularDatasets では、タイムスタンプはデータの列から、またはデータが格納されているパス パターンの列から指定できます。これにより、時間による簡単かつ効率的なフィルター処理が可能になります。
+
+タイムスタンプの列を指定し、時間でのフィルター処理を有効にするには、`TabularDataset` クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) メソッドを使用します。 その他の例と詳細については、[こちら](https://aka.ms/azureml-tsd-notebook)を参照してください。
 
 ```Python
-# create a TabularDataset with timeseries trait
+# create a TabularDataset with time series trait
 datastore_paths = [(datastore, 'weather/*/*/*/data.parquet')]
 
 # get a coarse timestamp column from the path pattern
@@ -132,24 +132,14 @@ dataset = Dataset.Tabular.from_parquet_files(path=datastore_path, partition_form
 # set coarse timestamp to the virtual column created, and fine grain timestamp from a column in the data
 dataset = dataset.with_timestamp_columns(fine_grain_timestamp='datetime', coarse_grain_timestamp='coarse_time')
 
-# filter with timeseries trait specific methods
+# filter with time-series-trait-specific methods
 data_slice = dataset.time_before(datetime(2019, 1, 1))
 data_slice = dataset.time_after(datetime(2019, 1, 1))
 data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
 data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
 
-#### <a name="using-the-workspace-landing-page"></a>ワークスペース ランディング ページの使用
-
-Web エクスペリエンスを使用してデータセットを作成するには、[ワークスペース ランディング ページ](https://ml.azure.com)にサインインします。 現在、ワークスペース ランディング ページでは、TabularDatasets の作成のみがサポートされています。
-
-次のアニメーションは、ワークスペース ランディング ページでデータセットを作成する方法を示しています。
-
-まず、左側のウィンドウの **[アセット]** セクションで **[データセット]** を選択します。 次に、 **[+ データセットの作成]** を選択して、ご利用のデータセットのソースを選択します。これは、ローカル ファイル、データストア、パブリック Web URL のいずれからでも選択できます。 **[設定とプレビュー]** フォームおよび **[スキーマ]** フォームはフファイルの種類に基づいてインテリジェントに設定されます。 **[次へ]** を選択してそれらを確認するか、または作成前にデータセットをさらに構成します。 **[完了]** を選択して、データセットの作成を完了します。
-
-![UI を使用してデータセットを作成する](media/how-to-create-register-datasets/create-dataset-ui.gif)
-
-### <a name="create-filedatasets"></a>FileDataset を作成する
+#### <a name="create-filedatasets"></a>FileDataset を作成する
 
 任意の形式のファイルを読み取り、登録されていない FileDataset を作成するには、`FileDatasetFactory` クラスの [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) メソッドを使います。
 
@@ -169,6 +159,16 @@ web_paths = [
            ]
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
+
+### <a name="using-the-workspace-landing-page"></a>ワークスペース ランディング ページの使用
+
+Web エクスペリエンスを使用してデータセットを作成するには、[ワークスペース ランディング ページ](https://ml.azure.com)にサインインします。 ワークスペース ランディング ページでは、TabularDatasets と FileDatasets の両方の作成がサポートされています。
+
+次のアニメーションは、ワークスペース ランディング ページでデータセットを作成する方法を示しています。
+
+まず、左側のウィンドウの **[アセット]** セクションで **[データセット]** を選択します。 次に、 **[+ データセットの作成]** を選択して、ご利用のデータセットのソースを選択します。これは、ローカル ファイル、データストア、パブリック Web URL のいずれからでも選択できます。 **[Dataset Type]\(データセットの種類\)** (*表形式またはファイル) を選択します。 **[設定とプレビュー]** フォームおよび **[スキーマ]** フォームはフファイルの種類に基づいてインテリジェントに設定されます。 **[次へ]** を選択してそれらを確認するか、または作成前にデータセットをさらに構成します。 **[完了]** を選択して、データセットの作成を完了します。
+
+![UI を使用してデータセットを作成する](media/how-to-create-register-datasets/create-dataset-ui.gif)
 
 ## <a name="register-datasets"></a>データセットを登録する
 

@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1702a0c7ab2d2a76e6ec0e8b217539804a683ff7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c9cc6ab0342682bce7befdfe412221ec581312be
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834823"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389596"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>リダイレクト URI および応答 URL に関する制約と制限
 
@@ -24,7 +24,7 @@ ms.locfileid: "68834823"
 
 ## <a name="maximum-number-of-redirect-uris"></a>リダイレクト URI の最大数
 
-次の表では、アプリの登録時に追加できるリダイレクト URI の最大数を示しています。 
+次の表では、アプリの登録時に追加できるリダイレクト URI の最大数を示しています。
 
 | サインイン中のアカウント | リダイレクト URI の最大数 | 説明 |
 |--------------------------|---------------------------------|-------------|
@@ -34,6 +34,12 @@ ms.locfileid: "68834823"
 ## <a name="maximum-uri-length"></a>URI の最大長
 
 アプリ登録に追加するリダイレクト URI ごとに最大 256 文字を使用できます。
+
+## <a name="supported-schemes"></a>サポートされているスキーム
+現在、Azure AD アプリケーション モデルでは、組織の Azure Active Directory (Azure AD) テナントで Microsoft の職場または学校アカウントにサインインするアプリに対して、HTTP と HTTPS の両方のスキームがサポートされています。 つまり、アプリケーション マニフェストの `signInAudience` フィールドは、*AzureADMyOrg* または *AzureADMultipleOrgs* に設定されています。 個人用の Microsoft アカウントと職場および学校のアカウントにサインインするアプリ (つまり、`signInAudience` が *AzureADandPersonalMicrosoftAccount*  に設定されている) では、HTTPS スキームのみが許可されます。
+
+> [!NOTE]
+> 新しい[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでは、開発者は UI で HTTP スキームを使用して URI を追加することはできません。 職場または学校アカウントにサインインするアプリに対して HTTP URI を追加することは、アプリ マニフェスト エディターでのみサポートされます。 今後、新しいアプリではリダイレクト URI で HTTP スキームを使用できなくなります。 ただし、リダイレクト URI に HTTP スキームを含む以前のアプリは引き続き動作します。 開発者は、リダイレクト URI で HTTPS スキームを使用する必要があります。
 
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>URI にワイルドカードを使用する制限
 

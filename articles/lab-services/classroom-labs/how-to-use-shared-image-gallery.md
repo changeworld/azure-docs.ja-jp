@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e9073e7cba97c4f5e2d550e5e49a6655ec76abbe
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390000"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332062"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーを使用する
 この記事では、教師およびラボ管理者が、他のユーザーが再利用できるようテンプレート仮想マシン イメージを保存する方法を示します。 これらのイメージは、Azure [共有イメージ ギャラリー](../../virtual-machines/windows/shared-image-galleries.md)に保存されます。 最初の手順として、ラボ管理者は、ラボ アカウントに既存の共有イメージ ギャラリーをアタッチします。 共有イメージ ギャラリーがアタッチされたら、ラボ アカウントで作成されたラボは、共有イメージ ギャラリーにイメージを保存できます。 その他の教師は、共有イメージ ギャラリーからこのイメージを選択して、そのクラスのテンプレートを作成できます。 
@@ -31,18 +31,18 @@ ms.locfileid: "70390000"
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>共有イメージ ギャラリーに既存のイメージを保存する
 共有イメージ ギャラリーがアタッチされたら、ラボ アカウントの管理者または教師は、他の教師が再利用できるよう共有イメージ ギャラリーにイメージを保存できます。 
 
-1. ラボのホーム ページで、 **[テンプレート]** セクションのタイル上の **[Save image]\(イメージの保存\)** を選択します。
+1. ラボの **[テンプレート]** ページで、ツール バーにある **[Export to Shared Image Gallery]\(Shared Image Gallery にエクスポートする\)** を選択します。
 
-    ![[Save image]\(イメージの保存\) ボタン](../media/how-to-use-shared-image-gallery/save-image-button.png)
-2.  **[Save virtual machine image]\(仮想マシン イメージの保存\)** ウィンドウで、イメージの名前を入力し、 **[保存]** を選択します。 
+    ![[Save image]\(イメージの保存\) ボタン](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
+2. **[Export to Shared Image Gallery]\(Shared Image Gallery にエクスポートする\)** ダイアログで**イメージの名前を入力**し、 **[エクスポート]** を選択します。 
 
-    ![[Save virtual machine image]\(仮想マシン イメージの保存\) ウィンドウ](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
-3. ラボ タイルで状態をチェックします。 
+    ![[Export to Shared Image Gallery]\(Shared Image Gallery にエクスポートする\) ダイアログ](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
+3. この操作の進捗状況は **[テンプレート]** ページで確認できます。 この操作には時間がかかることがあります。 
 
-    ![イメージの保存操作の状態](../media/how-to-use-shared-image-gallery/save-image-status.png)
-4. 操作が成功したことを確認します。
+    ![エクスポートが進行中](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
+4. エクスポート操作に成功すると、次のメッセージが表示されます。
 
-    ![イメージの保存操作が成功](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+    ![エクスポート完了](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
 ラボのコンテキスト外で共有イメージ ギャラリーにイメージをアップロードすることもできます。 詳細については、[共有イメージ ギャラリーの概要](../../virtual-machines/windows/shared-images.md)に関するページを参照してください。 
 
