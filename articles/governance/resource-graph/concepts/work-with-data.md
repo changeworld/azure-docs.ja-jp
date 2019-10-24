@@ -3,15 +3,15 @@ title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の使用時に大きなデータ セットを取得して制御する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/01/2019
+ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: c78f2e37fa29fa1cdcb9acc6a4600688750b6d74
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980289"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387588"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -29,11 +29,11 @@ Azure Resource Graph は、Azure 環境内にあるリソースを操作し、�
 既定の制限は、Resource Graph と対話するすべての方法でオーバーライドできます。 次の例では、データ セットのサイズ制限を _200_ に変更する方法を示します。
 
 ```azurecli-interactive
-az graph query -q "project name | order by name asc" --first 200 --output table
+az graph query -q "Resources | project name | order by name asc" --first 200 --output table
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project name | order by name asc" -First 200
+Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
 [REST API](/rest/api/azureresourcegraph/resources/resources) でのコントロールは **$top** であり、**QueryRequestOptions** の一部です。
@@ -52,11 +52,11 @@ Search-AzGraph -Query "project name | order by name asc" -First 200
 次の例では、クエリ結果の最初の _10_ レコードをスキップして、代わりに 11 番目のレコードから結果セットを返し始める方法を示します。
 
 ```azurecli-interactive
-az graph query -q "project name | order by name asc" --skip 10 --output table
+az graph query -q "Resources | project name | order by name asc" --skip 10 --output table
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project name | order by name asc" -Skip 10
+Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
 [REST API](/rest/api/azureresourcegraph/resources/resources) でのコントロールは **$skip** であり、**QueryRequestOptions** の一部です。
@@ -71,17 +71,101 @@ Search-AzGraph -Query "project name | order by name asc" -Skip 10
 次の例では、Azure CLI および Azure PowerShell で、最初の 3000 個のレコードを**スキップ**し、これらのスキップされたレコードの後の**最初の** 1000 個のレコードを返す方法を示します。
 
 ```azurecli-interactive
-az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+az graph query -q "Resources | project id, name | order by id asc" --first 1000 --skip 3000
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 1000 -Skip 3000
 ```
 
 > [!IMPORTANT]
 > 改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに**反映する**必要があります。 それがクエリにないと、応答には **$skipToken** が含まれません。
 
 例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resources/resources#next-page-query)」をご覧ください。
+
+## <a name="formatting-results"></a>結果の書式設定
+
+Resource Graph クエリの結果は _Table_ と _ObjectArray_ の 2 つの形式で提供されます。 この形式は、要求オプションの一部として **resultFormat** パラメーターを使用して構成されます。 _Table_ 形式は **resultFormat** の既定値です。
+
+既定では、Azure CLI の結果は JSON で提供されます。 Azure PowerShell の結果は、既定では **PSCustomObject** になりますが、`ConvertTo-Json` コマンドレットを使用してすぐに JSON に変換することができます。 他の SDK のために、_ObjectArray_ 形式を出力するようにクエリ結果を構成できます。
+
+### <a name="format---table"></a>形式 - Table
+
+既定の形式である _Table_ は、クエリによって返されるプロパティの列のデザインと行の値を強調表示するように設計された JSON 形式で結果を返します。 この形式は、構造化テーブルまたはスプレッドシートで定義されているデータによく似ており、最初に列が識別され、その後でデータを示す各行がこれらの列に合わせて表示されます。
+
+_Table_ 形式でのクエリ結果の例を次に示します。
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": {
+        "columns": [{
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "type",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "subscriptionId",
+                "type": "string"
+            }
+        ],
+        "rows": [
+            [
+                "veryscaryvm2-nsg",
+                "microsoft.network/networksecuritygroups",
+                "eastus",
+                "11111111-1111-1111-1111-111111111111"
+            ]
+        ]
+    },
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+### <a name="format---objectarray"></a>形式 - ObjectArray
+
+_ObjectArray_ 形式でも結果は JSON 形式で返されます。 ただし、このデザインは、列と行データが配列グループで一致する、JSON で共通するキーと値のペアの関係に対応しています。
+
+_ObjectArray_ 形式でのクエリ結果の例を次に示します。
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": [{
+        "name": "veryscaryvm2-nsg",
+        "type": "microsoft.network/networksecuritygroups",
+        "location": "eastus",
+        "subscriptionId": "11111111-1111-1111-1111-111111111111"
+    }],
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+_ObjectArray_ 形式を使用するように **resultFormat** を設定する例を以下に示します。
+
+```csharp
+var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
+var request = new QueryRequest(subscriptions, "Resources | limit 1", options: requestOptions);
+```
+
+```python
+request_options = QueryRequestOptions(
+    result_format=ResultFormat.object_array
+)
+request = QueryRequest(query="Resources | limit 1", subscriptions=subs_list, options=request_options)
+response = client.resources(request)
+```
 
 ## <a name="next-steps"></a>次の手順
 

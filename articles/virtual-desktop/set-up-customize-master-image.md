@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710194"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330843"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -62,11 +62,25 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>ソフトウェアの準備とインストール
 
-このセクションでは、FSLogix、Windows Defender、その他の一般的なアプリケーションを準備し、インストールする方法について説明します。 
+このセクションでは、FSLogix と Windows Defender の準備とインストールのほか、アプリとイメージのレジストリについてのいくつかの基本的な構成オプションについて説明します。 
 
-Office 365 ProPlus および OneDrive を VM にインストールする場合は、[マスター VHD イメージに Office をインストールする](install-office-on-wvd-master-image.md)を参照してください。 その記事の「次の手順」にあるリンクに従ってこの記事に戻り、マスター VHD プロセスを完了します。
+Office 365 ProPlus と OneDrive を VM にインストールする場合は、「[マスター VHD イメージに Office をインストールする](install-office-on-wvd-master-image.md)」に移動し、そこに記載されている手順に従ってアプリをインストールします。 完了したら、この記事に戻ります。
 
 ユーザーが特定の LOB アプリケーションにアクセスする必要がある場合は、このセクションの手順を完了した後にそれらをインストールすることをお勧めします。
+
+### <a name="set-up-user-profile-container-fslogix"></a>ユーザー プロファイル コンテナーを設定する (FSLogix)
+
+FSLogix コンテナーをイメージの一部として含めるには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)を使用して FSLogix コンテナーの機能をテストできます。
+
+### <a name="configure-windows-defender"></a>Windows Defender を構成する
+
+VM に Windows Defender が構成されている場合、ファイルの添付中は VHD ファイルと VHDX ファイルの内容全体をスキャンしないように構成されていることを確認してください。
+
+この構成では、ファイル添付中の VHD ファイルと VHDX ファイルのスキャンのみ削除され、リアルタイム スキャンには影響しません。
+
+Windows Server 上で Windows Defender を構成する手順について詳しくは、「[Windows Server 上で Windows Defender ウイルス対策の除外を構成する](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)」をご覧ください。
+
+特定のファイルをスキャンから除外するように Windows Defender を構成する方法について詳しくは、「[ファイル拡張子とフォルダーの場所に基づく除外の構成と検証](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)」をご覧ください。
 
 ### <a name="disable-automatic-updates"></a>自動更新を無効にする
 
@@ -88,20 +102,6 @@ Windows 10 PC のスタート画面のレイアウトを指定するには、こ
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
-
-### <a name="set-up-user-profile-container-fslogix"></a>ユーザー プロファイル コンテナーを設定する (FSLogix)
-
-FSLogix コンテナーをイメージの一部として含めるには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)を使用して FSLogix コンテナーの機能をテストできます。
-
-### <a name="configure-windows-defender"></a>Windows Defender を構成する
-
-VM に Windows Defender が構成されている場合、ファイルの添付中は VHD ファイルと VHDX ファイルの内容全体をスキャンしないように構成されていることを確認してください。
-
-この構成では、ファイル添付中の VHD ファイルと VHDX ファイルのスキャンのみ削除され、リアルタイム スキャンには影響しません。
-
-Windows Server 上で Windows Defender を構成する手順について詳しくは、「[Windows Server 上で Windows Defender ウイルス対策の除外を構成する](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)」をご覧ください。
-
-特定のファイルをスキャンから除外するように Windows Defender を構成する方法について詳しくは、「[ファイル拡張子とフォルダーの場所に基づく除外の構成と検証](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)」をご覧ください。
 
 ### <a name="configure-session-timeout-policies"></a>セッション タイムアウト ポリシーを構成する
 

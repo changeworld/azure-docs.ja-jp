@@ -1,19 +1,19 @@
 ---
-title: Azure Data Factory の Mapping Data Flow のパラメーター
+title: Azure Data Factory のマッピング データ フローのパラメーター
 description: データ ファクトリのパイプラインからマッピング データ フローをパラメーター化する方法について学習します
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 733d3f9c4079193107f22178bdbde3a3ecf0e7ca
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028214"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387547"
 ---
-# <a name="mapping-data-flow-parameters"></a>Mapping Data Flow のパラメーター
+# <a name="mapping-data-flow-parameters"></a>マッピング データ フローのパラメーター
 
 
 
@@ -28,27 +28,27 @@ Azure Data Factory の Mapping Data Flow では、パラメーターの使用を
 > [!NOTE]
 > パイプラインの制御フローの式を使用するには、ご利用のデータ フローのパラメーターは文字列型である必要があります。
 
-## <a name="create-parameters-in-mapping-data-flow"></a>Mapping Data Flow でパラメーターを作成する
+## <a name="create-parameters-in-mapping-data-flow"></a>マッピング データ フローでパラメーターを作成する
 
 ご利用のデータ フローにパラメーターを追加するには、データ フローのキャンバスの空白部分をクリックして、全般プロパティを表示します。 設定ウィンドウで、[パラメーター] という名前のタブが表示されます。 [新規] ボタンをクリックして、新しいパラメーターを作成します。 パラメーターごとに、名前を割り当て、型を選択し、必要に応じて既定値を設定する必要があります。
 
-![Data Flow のパラメーターを作成する](media/data-flow/create-params.png "Create Data Flow parameters")
+![データ フローのパラメーターを作成する](media/data-flow/create-params.png "データ フローのパラメーターを作成する")
 
 パラメーターは任意のデータ フロー式で使用することができます。 パラメーターは $ で始まり、変更することはできません。 [パラメーター] タブの下に、式ビルダー内で利用可能なパラメーターの一覧が表示されます。
 
-![データ フローのパラメーター式](media/data-flow/parameter-expression.png "Data flow parameter expression")
+![データ フロー パラメーター式](media/data-flow/parameter-expression.png "データ フロー パラメーター式")
 
 ## <a name="use-parameters-in-your-data-flow"></a>データ フローでパラメーターを使用する
 
-* 変換式内でパラメーター値を使用できます。 式ビルダーの [パラメーター] タブの下にパラメーターの一覧が表示されます。 ![Data Flow のパラメーターを使用する](media/data-flow/params9.png "Use Data Flow parameters")
+* 変換式内でパラメーター値を使用できます。 式ビルダーの [パラメーター] タブの下にパラメーターの一覧が表示されます。 ![データ フローのパラメーターを使用する](media/data-flow/params9.png "Uデータ フローのパラメーターを使用する")
 
-* パラメーターは、自分のソースおよびシンクの変換設定に動的な値を構成するためにも使用されます。 構成フィールド内をクリックすると、[動的なコンテンツの追加] リンクが表示されます。 そこをクリックすると、パラメーターを使用して動的な値を使用できる式ビルダーに移動します。 ![Data Flow の動的コンテンツ](media/data-flow/params6.png "Data flow dynamic content")
+* パラメーターは、自分のソースおよびシンクの変換設定に動的な値を構成するためにも使用されます。 構成フィールド内をクリックすると、[動的なコンテンツの追加] リンクが表示されます。 そこをクリックすると、パラメーターを使用して動的な値を使用できる式ビルダーに移動します。 ![データ フローの動的なコンテンツ](media/data-flow/params6.png "Dデータ フローの動的なコンテンツ")
 
-## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>パイプラインから Mapping Data Flow のパラメーターを設定する
+## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>パイプラインからマッピング データ フローのパラメーターを設定する
 
 パラメーターを使ってデータ フローを作成したら、データ フローの実行アクティブティを使用してパイプラインからそれを実行できます。 パイプラインのキャンバスにアクティビティを追加した後、アクティビティの [パラメーター] タブに利用可能なデータ フローのパラメーターが提示されます。
 
-![Data Flow のパラメーターを設定する](media/data-flow/parameter-assign.png "Setting a Data Flow parameter")
+![データ フロー パラメーターの設定](media/data-flow/parameter-assign.png "データ フロー パラメーターの設定")
 
 パラメーターのデータ型が文字列の場合、テキスト ボックスをクリックしてパラメーター値を設定するときに、パイプラインまたはデータ フロー式のいずれかを入力することを選択できます。 パイプライン式を選択した場合、パイプラインの式パネルが表示されます。 `'@{<expression>}'` を使用して、必ず文字列補間の構文内にパイプライン関数を含めてください。たとえば、次のようになります。
 
@@ -59,9 +59,9 @@ Azure Data Factory の Mapping Data Flow では、パラメーターの使用を
 * ```toInteger(Role)```
 * ```'this is my static literal string'```
 
-Mapping Data Flow にはそれぞれ、パイプラインとデータ フロー式のパラメーターの任意の組み合わせを含めることができます。 
+各マッピング データ フローには、パイプラインとデータ フロー式のパラメーターの任意の組み合わせを含めることができます。 
 
-![Data Flow パラメーターのサンプル](media/data-flow/parameter-example.png "Data flow parameters sample")
+![データ フロー パラメーターのサンプル](media/data-flow/parameter-example.png "データ フロー パラメーターのサンプル")
 
 
 

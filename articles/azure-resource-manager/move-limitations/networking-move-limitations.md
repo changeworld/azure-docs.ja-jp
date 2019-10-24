@@ -4,14 +4,14 @@ description: Azure Resource Manager を使用して、仮想ネットワーク�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 10/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6ad7f32704d8cb73999a6e3cf60cb2a238268242
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 14a7cb326a3017b1bdbcad21c8483eaaacd54674
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034545"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437812"
 ---
 # <a name="move-guidance-for-networking-resources"></a>ネットワーク リソースの移動ガイダンス
 
@@ -21,7 +21,9 @@ ms.locfileid: "70034545"
 
 仮想ネットワークを移動するときは、その依存リソースも移動する必要があります。 VPN ゲートウェイでは、IP アドレス、仮想ネットワーク ゲートウェイ、および関連付けられているすべての接続リソースを移動する必要があります。 各ローカル ネットワーク ゲートウェイは、異なるリソース グループ内に配置することができます。
 
-ネットワーク インターフェイス カードで仮想マシンを移動するには、すべての依存リソースを移動する必要があります。 ネットワーク インターフェイス カードに対応した仮想ネットワーク、仮想ネットワークに対応した他のすべてのネットワーク インターフェイス カード、および VPN ゲートウェイを移動します。
+ネットワーク インターフェイス カードを使用している仮想マシンを新しいサブスクリプションに移動するには、すべての依存リソースを移動する必要があります。 ネットワーク インターフェイス カードに対応した仮想ネットワーク、仮想ネットワークに対応した他のすべてのネットワーク インターフェイス カード、および VPN ゲートウェイを移動します。
+
+詳細については、「[サブスクリプション間での移動のシナリオ](../resource-group-move-resources.md#scenario-for-move-across-subscriptions)」を参照してください。
 
 ## <a name="peered-virtual-network"></a>ピアリングされた仮想ネットワーク
 

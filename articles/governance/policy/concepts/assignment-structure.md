@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 5326e765701a42323ea62df8d35128c4117b2ed9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981413"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255898"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
@@ -58,8 +58,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ## <a name="enforcement-mode"></a>適用モード
 
-**enforcementMode** プロパティを使用すると、ユーザーは、ポリシーの適用を開始したり、[Azure Activity ログ](../../../azure-monitor/platform/activity-logs-overview.md)のエントリをトリガーしたりすることなく、既存のリソースに対するポリシーの結果をテスできます。
-このシナリオは、一般に "What If" と呼ばれ、安全な展開のプラクティスに沿っています。
+**enforcementMode** プロパティを使用すると、ユーザーは、ポリシーの適用を開始したり、[Azure Activity ログ](../../../azure-monitor/platform/activity-logs-overview.md)のエントリをトリガーしたりすることなく、既存のリソースに対するポリシーの結果をテスできます。 このシナリオは、一般に "What If" と呼ばれ、安全な展開のプラクティスに沿っています。 **enforcementMode** は、[無効](./effects.md#disabled)の効果とは異なります。なぜなら、その効果は、リソースの評価がまったく行われないようにするからです。
 
 このプロパティの値は次のとおりです。
 

@@ -719,6 +719,8 @@
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: マネージド インスタンスをフェールオーバー グループに追加する
           href: sql-database-managed-instance-failover-group-tutorial.md
+        - name: オンプレミスのユーザーとグループの移行
+          href: tutorial-managed-instance-azure-active-directory-migration.md
     - name: 概念
       items:
         - name: Management API リファレンス

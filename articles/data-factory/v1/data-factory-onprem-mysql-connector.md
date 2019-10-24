@@ -45,7 +45,7 @@ MySQL データベースが Azure IaaS 仮想マシン (VM) でホストされ�
 Data Management Gateway で MySQL Database に接続するには、[MySQL Connector/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (バージョン 6.6.5 から 6.10.7 まで) を Data Management Gateway と同じシステムにインストールする必要があります。 この 32 ビット ドライバーは 64 ビット Data Management Gateway と互換性があります。 MySQL バージョン 5.1 以降がサポートされています。
 
 > [!TIP]
-> エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL コネクタ/Net をより新しいバージョンにアップグレードすることを検討してください。
+> エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL Connector/Net をより新しいバージョンにアップグレードすることを検討してください。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 

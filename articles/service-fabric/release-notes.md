@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 984e7ed82ba81d8c40688efd0a0a06e095be7c06
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4a681b3a09def3a7b27b603cf5201aebdbf2e4bf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018981"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72386211"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -65,6 +65,8 @@ Service Fabric 6.5 の新機能は以下のとおりです。
 | 2019 年 7 月 2 日 | [Azure Service Fabric 6.5 更新リリース](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
 | 2019 年 7 月 29 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
 | 2019 年 8 月 23 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
+| 2019 年 10 月 14 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md)  |
+
 
 ## <a name="previous-versions"></a>以前のバージョン
 

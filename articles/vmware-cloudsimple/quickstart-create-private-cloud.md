@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828947"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285777"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>クイックスタート - プライベート クラウドの環境を構成する
 
@@ -183,9 +183,9 @@ CloudSimple では初めて vCenter にサインインするときに、パス�
 * vSphere Flash Client を使っている場合は、エラーが報告されます
 * HTML5 クライアントを使っている場合は、エラーは報告されません。 クライアントでは変更が受け付けられず、古いパスワードが引き続き使用されます。
 
-## <a name="change-nsx-administrator-password"></a>NSX 管理者のパスワードを変更する
+## <a name="access-nsx-manager"></a>NSX Manager にアクセスする
 
-NSX Manager は、既定のパスワードでデプロイされます。  プライベート クラウドを作成した後、そのパスワードを変更することをお勧めします。
+NSX Manager は、既定のパスワードでデプロイされます。 
 
 * ユーザー名: **admin**
 * Password (パスワード):**CloudSimple123!**
@@ -198,8 +198,6 @@ CloudSimple ポータルで、NSX Manager の完全修飾ドメイン名 (FQDN) 
 4. **NSX Manager** の FQDN または IP アドレスを使用し、Web ブラウザーを使って接続します。
 
     ![NSX Manager の FQDN を検索する](media/private-cloud-nsx-manager-fqdn.png)
-
-パスワードを変更するには、「[NSX Manager Installation ](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)」(NSX Manager のインストール) の手順に従ってください。
 
 ## <a name="create-a-port-group"></a>ポート グループを作成する
 

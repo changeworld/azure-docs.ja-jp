@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1b7417de8de6fb063de18fe670ef474a3b486d0
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269393"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264207"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>方法:iOS/macOS のブラウザーと WebView のカスタマイズ
 
-対話型の認証には Web ブラウザーが必要です。 iOS の場合、Microsoft Authentication Library (MSAL) ではシステムの Web ブラウザー (アプリの上部に表示される場合があります) を既定で使用することで、ユーザーのサインインのための対話型認証が行われます。 システム ブラウザーを使用すると、シングル サインオン (SSO) の状態を他のアプリケーションや Web アプリケーションと共有できるという大きな利点があります。
+対話型の認証には Web ブラウザーが必要です。 iOS の場合、Microsoft Authentication Library (MSAL) ではシステムの Web ブラウザー (アプリの上部に表示される場合があります) を既定で使用することで、ユーザーのサインインのための対話型認証が行われます。 システム ブラウザーを使用すると、シングル サインオン (SSO) の状態を他のアプリケーションや Web アプリケーションと共有できるという利点があります。
 
 次のような Web コンテンツを表示するためのその他のオプションに対する構成をカスタマイズすることで、エクスペリエンスを変更できます。
 

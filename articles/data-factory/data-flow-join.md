@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029328"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387235"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>Mapping Data Flow の結合変換
+# <a name="mapping-data-flow-join-transformation"></a>マッピング データ フローの結合変換
 
 
 

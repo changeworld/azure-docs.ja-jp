@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory の Mapping Data Flow の選択変換
-description: Azure Data Factory の Mapping Data Flow の選択変換
+title: Azure Data Factory のマッピング データ フローの選択変換
+description: Azure Data Factory のマッピング データ フローの選択変換
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6ef9712dd2fd6b8d53fd4ad2c3e07e1d6c8f1aec
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029270"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72387196"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>マッピング データ フローの選択変換
 
@@ -23,18 +23,18 @@ ms.locfileid: "72029270"
 
 ![自己結合](media/data-flow/selfjoin.png "自己結合")
 
-上の図では、選択変換が一番上にあります。 これは、元のストリームを "OrigSourceBatting" にエイリアス化しています。 下部の強調表示されている結合変換で、この選択エイリアス ストリームを右側の結合として使用して、内部結合の右側と左側の両方で同じキーを参照できるようになっていることがわかります。
+上の図では、先頭に選択変換があります。 これは、元のストリームを "OrigSourceBatting" にエイリアス化しています。 下部の強調表示されている結合変換で、この選択エイリアス ストリームを右側の結合として使用して、内部結合の右側と左側の両方で同じキーを参照できるようになっていることがわかります。
 
 選択変換は、データ フローから列を選択解除する方法としても使用できます。 たとえば、シンクに 6 つの列が定義されているが、特定の 3 つの列のみを選択して変換した後、シンクにフローする場合は、選択変換を使用してこれら 3 つの列のみを選択できます。
 
-![選択変換](media/data-flow/newselect1.png "選択のエイリアス")
+![選択変換](media/data-flow/newselect1.png "エイリアスの選択")
 
 ## <a name="options"></a>オプション
 * "選択" 変換の既定の設定は、受信するすべての列を処理し、それらの元の名前を保持することです。 選択変換の名前を設定することで、ストリームをエイリアス化できます。
 * 個々の列をエイリアス化する場合は、[すべて選択] をオフにし、下部にある列マッピングを使用します。
 * 入力または出力メタデータから重複している列を排除するには、[Skip Duplicates]\(重複をスキップ\) を選択します。
 
-![重複をスキップ](media/data-flow/select-skip-dup.png "重複をスキップ")
+![重複のスキップ](media/data-flow/select-skip-dup.png "重複のスキップ")
 
 * 重複のスキップを選択すると、[Inspect]\(検査\) タブに結果が表示されます。ADF では列の最初の出現が保持され、ユーザーにはそれ以降の同じ列の出現がフローから削除されたように見えます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "72029270"
 ## <a name="mapping"></a>マッピング
 既定では、選択変換によってすべての列が自動的にマップされ、すべての着信列が出力の同じ名前に渡されます。 [Select Settings]\(選択の設定\) で設定されている出力ストリーム名によって、ストリームの新しいエイリアス名が定義されます。 "選択" の "自動マップ" 設定をそのまま使用した場合、すべての列が同じであるストリーム全体に別名を付けることができます。
 
-![変換ルールの選択](media/data-flow/rule2.png "ルールベースのマッピング")
+![選択変換のルール](media/data-flow/rule2.png "ルールベースのマッピング")
 
 列の別名の作成、削除、名前の変更、または順序の変更を行う場合は、最初に "自動マップ" をオフにする必要があります。 既定では、"すべての入力列" という名前の既定のルールが自動的に入力されます。 すべての着信列が常に出力で同じ名前にマップされるようにする場合は、このルールをそのままにしておくことができます。
 

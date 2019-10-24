@@ -639,6 +639,8 @@
                   href: insights/vminsights-workbooks.md
                 - name: ログ クエリによるデータの分析
                   href: insights/vminsights-log-search.md
+                - name: 依存関係エージェントのアップグレード
+                  href: insights/vminsights-dependency-agent-maintenance.md
                 - name: 監視を無効にする
                   href: insights/vminsights-optout.md
             - name: 容量とパフォーマンス ソリューション

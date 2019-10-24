@@ -1,18 +1,18 @@
 ---
 title: Azure Managed Application のデプロイ テンプレートの成果物のリファレンス
-description: この記事は、デプロイ テンプレートの成果物に対するリファレンスです。
+description: Azure Managed Applications のデプロイ テンプレート成果物の例を示します。
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: fe2517a8cc2ddee6623f88b2ae5e46c9e5319567
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ec59c9cde4f23b4a9d641d286e152ea737576534
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336637"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330168"
 ---
 # <a name="reference-deployment-template-artifact"></a>リファレンス: デプロイ テンプレートの成果物
 

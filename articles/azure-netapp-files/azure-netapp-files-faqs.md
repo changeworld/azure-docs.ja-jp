@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299633"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298473"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -29,7 +29,7 @@ ms.locfileid: "71299633"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS データ パスはインターネットを経由しますか?  
 
-いいえ。 NFS データ パスはインターネットを経由しません。 Azure NetApp Files は、サービスが使用可能な Azure Virtual Network (VNet) にデプロイされている Azure のネイティブ サービスです。 Azure NetApp Files は、委任されたサブネットを使用し、VNet 上に直接ネットワーク インターフェイスをプロビジョニングします。 
+No. NFS データ パスはインターネットを経由しません。 Azure NetApp Files は、サービスが使用可能な Azure Virtual Network (VNet) にデプロイされている Azure のネイティブ サービスです。 Azure NetApp Files は、委任されたサブネットを使用し、VNet 上に直接ネットワーク インターフェイスをプロビジョニングします。 
 
 詳細については、「[Azure NetApp Files のネットワーク計画のガイドライン](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)」を参照してください。  
 
@@ -50,7 +50,7 @@ ms.locfileid: "71299633"
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM とストレージ間のネットワーク トラフィックは暗号化できますか?
 
-データ トラフィック (NFSv3 または SMBv3 クライアントから Azure NetApp Files のボリュームへのトラフィック) は暗号化されません。 ただし、(NFS または SMB クライアントを実行している) Azure VM から Azure NetApp Files へのトラフィックは、Azure VM 間のトラフィックと同様に安全です。 このトラフィックは、Azure データセンター ネットワークに対してローカルです。 
+データ トラフィック (NFSv3、NFSv4.1、または SMBv3 クライアントから Azure NetApp Files のボリュームへのトラフィック) は暗号化されません。 ただし、(NFS または SMB クライアントを実行している) Azure VM から Azure NetApp Files へのトラフィックは、Azure VM 間のトラフィックと同様に安全です。 このトラフィックは、Azure データセンター ネットワークに対してローカルです。 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>ストレージは保存時に暗号化できますか?
 
@@ -120,7 +120,11 @@ DF で報告されるボリューム サイズは、Azure NetApp Files ボリュ
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Azure NetApp Files でサポートされている NFS のバージョンを何ですか?
 
-Azure NetApp Files では、現在、NFSv3 がサポートされています。
+Azure NetApp Files では、NFSv3 および NFSv4.1 がサポートされています。 いずれかの NFS バージョンを使用してボリュームを作成できます。 
+
+> [!IMPORTANT] 
+> NFSv 4.1 機能にアクセスするには、ホワイトリストへの登録が必要です。  ホワイトリストへの登録を申請するには、申請を <anffeedback@microsoft.com> に送信してください。 
+
 
 ### <a name="how-do-i-enable-root-squashing"></a>ルート スカッシュを有効にするにはどうすればよいですか?
 
@@ -154,7 +158,7 @@ Azure NetApp Files には、容量プールとボリュームの使用状況の�
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Azure NetApp Files は Azure Storage Explorer を使用して管理できますか?
 
-いいえ。 Azure NetApp Files は、Azure Storage Explorer ではサポートされていません。
+No. Azure NetApp Files は、Azure Storage Explorer ではサポートされていません。
 
 ## <a name="data-migration-and-protection-faqs"></a>データの移行と保護に関する FAQ
 
@@ -188,11 +192,11 @@ Azure NetApp Files ボリュームを別の Azure リージョンにレプリケ
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box を使用した移行はサポートされていますか?
 
-いいえ。 Azure Data Box では、現在のところ Azure NetApp Files はサポートされていません。 
+No. Azure Data Box では、現在のところ Azure NetApp Files はサポートされていません。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Azure Import/Export サービスを使用した移行はサポートされていますか?
 
-いいえ。 Azure Import/Export サービスでは、現在のところ Azure NetApp Files はサポートされません。
+No. Azure Import/Export サービスでは、現在のところ Azure NetApp Files はサポートされません。
 
 ## <a name="next-steps"></a>次の手順  
 

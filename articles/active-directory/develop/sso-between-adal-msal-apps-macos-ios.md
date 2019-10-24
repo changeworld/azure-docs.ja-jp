@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 218e659452779b6372541c3abec908878493f5d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 2a554602b9648190926168e4886d4f0773692225
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269345"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264155"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>方法:macOS および iOS 上の ADAL アプリと MSAL アプリの間での SSO
 
@@ -110,7 +110,7 @@ ADAL の `homeAccountId` は、MSAL の `identifier` に相当します。 こ�
 
 `homeAccountId` を利用できない場合や、表示可能な識別子しかない場合は、ADAL の `userId` を使用して MSAL のアカウントを参照できます。
 
-MSAL では、まず `username` または `identifier` によりアカウントが参照されます。 `identifier` がある場合、クエリには必ずこれを使用し、`username` はフォールバックにのみ使用してください。 アカウントが見つかったら、acquireTokenSilent 呼び出しでそのアカウントを使用します。
+MSAL では、まず `username` または `identifier` によりアカウントが参照されます。 `identifier` がある場合、クエリには必ずこれを使用し、`username` はフォールバックにのみ使用してください。 アカウントが見つかったら、`acquireTokenSilent` 呼び出しでそのアカウントを使用します。
 
 Objective-C:
 
@@ -289,4 +289,4 @@ do {
 
 ## <a name="next-steps"></a>次の手順
 
-[認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)について学習します
+[認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)の詳細を確認します

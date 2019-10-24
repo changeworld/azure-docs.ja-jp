@@ -59,6 +59,8 @@
           items:
             - name: .NET Core コンソール (デーモン)
               href: quickstart-v2-netcore-daemon.md
+            - name: Python コンソール デーモン
+              href: quickstart-v2-python-daemon.md
             - name: ASP.NET デーモン Web アプリ
               href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
     - name: チュートリアル

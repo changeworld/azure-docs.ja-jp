@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: ca831fe66a0ce6a2dbfafc54a761b86473067b10
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846888"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514783"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
 
@@ -74,11 +74,8 @@ Storage Analytics では、ストレージ サービスに対する要求に関�
 
 [Azure Portal](https://portal.azure.com) では、現在のところ、ストレージ アカウントで分単位のメトリックを構成できません。分単位のメトリックは PowerShell かプログラミングを使用して有効にする必要があります。
 
-> [!NOTE]
->  Azure Portal では、現在のところ、ストレージ アカウントで分単位のメトリックを構成できません。 PowerShell を使用するか、プログラミングによって分単位の分析を有効にする必要があります。
-
 ## <a name="enable-storage-metrics-using-powershell"></a>PowerShell を使用してストレージ メトリックを有効にする  
-ローカル マシンの PowerShell を使用して、ストレージ アカウントのストレージ メトリックを構成できます。Azure PowerShell コマンドレット **Get-AzureStorageServiceMetricsProperty** を使って現在の設定を取得し、コマンドレット **Set-AzureStorageServiceMetricsProperty** を使って現在の設定を変更します。  
+ローカル マシンの PowerShell を使用して、ストレージ アカウントのストレージ メトリックを構成できます。Azure PowerShell コマンドレット **Get-AzStorageServiceMetricsProperty** を使って現在の設定を取得し、コマンドレット **Set-AzStorageServiceMetricsProperty** を使って現在の設定を変更します。  
 
 ストレージ メトリックを制御するコマンドレットでは次のパラメーターが使用されます。  
 
@@ -94,22 +91,22 @@ Storage Analytics では、ストレージ サービスに対する要求に関�
 > [!NOTE]
 > このコマンドは、`Connect-AzAccount` コマンドを使用して Azure サブスクリプションにサインインしていることを想定しています。
 
-```  
+```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
 
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
 
 * `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
-
+        
 * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
 
 
 次のコマンドは、既定のストレージ アカウントの BLOB サービスの現在の時間単位メトリック レベルとリテンション日数を取得します。  
 
-```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
+```powershell
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
 Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)に関する記事をご覧ください。  

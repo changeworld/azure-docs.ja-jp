@@ -4,14 +4,14 @@ description: Azure Resource Manager を使用して、新しいリソース グ�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b9cce7ac367f42329e3198c75a7640a205d01fe
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 443d6f2bcbb61d9106b079a4e63c48bb433d19c6
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035540"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286738"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 
@@ -24,8 +24,9 @@ ms.locfileid: "70035540"
 * 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません。
 * Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません。
 * プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションでの仮想マシンをプロビジョニング解除し、新しいサブスクリプションに再デプロイしてください。
-* 既存の仮想ネットワーク内に仮想マシンがあるが、その仮想ネットワーク内のすべてのリソースを移動するつもりはない。
+* 仮想ネットワーク内のすべてのリソースを移動しない場合、既存の仮想ネットワーク内の仮想マシンを新しいサブスクリプションに移動することはできません。
 * 低優先度の仮想マシンと低優先度の仮想マシン スケール セットは、リソース グループまたはサブスクリプション間で移動することはできません。
+* 可用性セット内の仮想マシンを個別に移動することはできません。
 
 ## <a name="virtual-machines-with-azure-backup"></a>Azure Backup を利用した仮想マシン
 
