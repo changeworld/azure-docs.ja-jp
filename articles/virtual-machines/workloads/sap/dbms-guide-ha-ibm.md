@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 4571b0e1a2c9207ce913901f11157f5155201393
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ca6f1bda2dff9a8a9e54cb9d9ce5fd2d34c7245
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100033"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428081"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -38,7 +38,7 @@ ms.locfileid: "70100033"
 [sles-pacemaker]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker
 [sap-instfind]:https://help.sap.com/viewer/9e41ead9f54e44c1ae1a1094b0f80712/ALL/en-US/576f5c1808de4d1abecbd6e503c9ba42.html
 [nfs-ha]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs
-[sles-ha-guide]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
+[sles-ha-guide]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP4/
 [ascs-ha]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse
 
 [dbms-guide]:dbms-guide.md
@@ -80,8 +80,8 @@ SAP ノート [1928533] に記載されているように、サポートされ�
 | [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide] (この記事) |
 | [Linux 上の SAP のための Azure Virtual Machines データベース管理システム (DBMS) のデプロイ][dbms-guide]に関するガイド |
 | [Azure での SAP ワークロードの計画とデプロイに関するチェックリスト][azr-sap-plancheck] |
-| [SUSE Linux Enterprise Server for SAP Applications 12 SP3 のベスト プラクティス ガイド][sles-for-sap-bp] |
-| [SUSE Linux Enterprise High Availability Extension 12 SP3][sles-ha-guide] |
+| [SUSE Linux Enterprise Server for SAP Applications 12 SP4 のベスト プラクティス ガイド][sles-for-sap-bp] |
+| [SUSE Linux Enterprise High Availability Extension 12 SP4][sles-ha-guide] |
 | [SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ][dbms-db2] |
 | [IBM Db2 HADR 11.1][db2-hadr-11.1] |
 | [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
@@ -149,7 +149,7 @@ IBM Db2 LUW のリソース エージェントは、SUSE Linux Enterprise Server
 
 ### <a name="manual-deployment"></a>手動デプロイ
 
-選択した OS が IBM Db2 LUW 用の IBM/SAP によってサポートされていることを確認してください。 Azure VM と Db2 リリースでサポートされている OS バージョンのリストは、SAP ノート [1928533] で確認できます。 Db2 リリースごとの OS リリースのリストは、SAP 製品の可用性マトリックスにあります。 SLES 12 SP3 以上の使用を強くお勧めします。このバージョン以降の SUSE Linux で Azure に関連したパフォーマンスが向上するためです。
+選択した OS が IBM Db2 LUW 用の IBM/SAP によってサポートされていることを確認してください。 Azure VM と Db2 リリースでサポートされている OS バージョンのリストは、SAP ノート [1928533] で確認できます。 Db2 リリースごとの OS リリースのリストは、SAP 製品の可用性マトリックスにあります。 SLES 12 SP4 以上の使用を強くお勧めします。このバージョン以降の SUSE Linux で Azure に関連したパフォーマンスが向上するためです。
 
 1. リソース グループを作成または選択します。
 1. 仮想ネットワークとサブネットを作成または選択します。
