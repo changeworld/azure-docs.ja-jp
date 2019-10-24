@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
-ms.openlocfilehash: 316ddbf662a5418e54f37cb335475a86c50118c7
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131094"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264494"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Data Factory コマンド アクティビティを使用して Azure Data Explorer 制御コマンドを実行する
 
@@ -34,6 +34,8 @@ ms.locfileid: "71131094"
    ![新しいパイプラインの作成](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>ルックアップ アクティビティを作成する
+
+[ルックアップ アクティビティ](/azure/data-factory/control-flow-lookup-activity)では、Azure Data Factory でサポートするすべてのデータ ソースからデータセットを取得できます。 ルックアップ アクティビティからの出力は、ForEach またはその他のアクティビティで使用できます。
 
 1. **[アクティビティ]** ウィンドウの **[全般]** で、 **[ルックアップ]** アクティビティを選択します。 右のメイン キャンバスにドラッグ アンド ドロップします。
  
@@ -103,7 +105,9 @@ ms.locfileid: "71131094"
 
 ## <a name="create-a-for-each-activity"></a>For-Each アクティビティを作成する 
 
-1. 次に、For-each アクティビティをパイプラインに追加します。 このアクティビティは、ルックアップ アクティビティから返されたデータを処理します。 
+[For-Each](/azure/data-factory/control-flow-for-each-activity) アクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 
+
+1. 次に、For-Each アクティビティをパイプラインに追加します。 このアクティビティは、ルックアップ アクティビティから返されたデータを処理します。 
     * **[アクティビティ]** ウィンドウで、 **[Iteration & Conditions]\(繰り返しと条件\)**  から **[ForEach]** アクティビティを選択し、キャンバスにドラッグ アンド ドロップします。
     * ルックアップ アクティビティの出力と、キャンバス内の ForEach アクティビティの入力を線で繋いで接続します。
 

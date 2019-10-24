@@ -1,6 +1,6 @@
 ---
-title: 'Azure Status Monitor v2 API リファレンス: 構成を取得する | Microsoft Docs'
-description: Status Monitor v2 API リファレンス。 Get-ApplicationInsightsMonitoringConfig。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+title: 'Azure Application Insights Agent API リファレンス: 構成を取得する | Microsoft Docs'
+description: Application Insights Agent API リファレンス。 Get-ApplicationInsightsMonitoringConfig。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1da24a93a671b388c44d96711bc2fe007f33d197
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e0b389dfb27443b9b26b8ed650399c641c55eb86
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033171"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388268"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig"></a>Status Monitor v2 API:Get-ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights Agent API: Get-ApplicationInsightsMonitoringConfig
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -66,6 +66,6 @@ Filters:
 - Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
 - トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
  
- Status Monitor v2 の活用:
- - ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。
+ Application Insights Agent をさらに活用する:
+ - Application Insights Agent の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行うには、このガイドを参照してください。
  - [Set config](status-monitor-v2-api-set-config.md) コマンドレットを使用して、構成に変更を加えます。

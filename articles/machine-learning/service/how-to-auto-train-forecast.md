@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 03c5d46221dc385a390e840381270c01c40bdc6d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170408"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436632"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -64,14 +64,15 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-この場合、データは既に時間フィールド `day_datetime` により昇順で並べ替えられています。 ただし、実験を設定するときに、有効な時系列を構築するために、目的の時間列が昇順で並べ替えられていることを確認してください。 データには 1,000 個のレコードが含まれていると想定し、データ内を結果が予測できるように分割してトレーニングおよびテスト用データ セットを作成してください。 この場合、ターゲット フィールド `sales_quantity` を分割して、予測トレーニングおよびテスト セットを作成します。
+この場合、データは既に時間フィールド `day_datetime` により昇順で並べ替えられています。 ただし、実験を設定するときに、有効な時系列を構築するために、目的の時間列が昇順で並べ替えられていることを確認してください。 データには 1,000 個のレコードが含まれていると想定し、データ内を結果が予測できるように分割してトレーニングおよびテスト用データ セットを作成してください。 ラベル列の名前を識別し、ラベルに設定します。 この例では、ラベルが `sales_quantity` になります。 その後、ラベル フィールドを `test_data` から分離し、`test_target` セットを作成します。
 
 ```python
-X_train = data.iloc[:950]
-X_test = data.iloc[-50:]
+train_data = data.iloc[:950]
+test_data = data.iloc[-50:]
 
-y_train = X_train.pop("sales_quantity").values
-y_test = X_test.pop("sales_quantity").values
+label =  "sales_quantity"
+ 
+test_labels = test_data.pop(label).values
 ```
 
 > [!NOTE]
@@ -113,14 +114,10 @@ time_series_settings = {
 }
 ```
 
-
-
 > [!NOTE]
 > 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
 
 上記のコード スニペットで `grain_column_names` を定義することで、AutoML では 2 つの個別の時系列グループを作成します (複数の時系列とも呼ばれます)。 グレインが定義されていない場合、AutoML ではデータセットが単一の時系列であると想定されます。 単一の時系列の詳細については、「[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)」を参照してください。
-
-
 
 次に標準的な `AutoMLConfig` オブジェクトを作成し、`forecasting` タスクの種類を指定して、実験を送信します。 モデルの終了後、最適な実行イテレーションを取得します。
 
@@ -133,8 +130,8 @@ import logging
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
                              iterations=10,
-                             X=X_train,
-                             y=y_train,
+                             training_data=train_data,
+                             label_column_name=label,
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
@@ -172,8 +169,8 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 最適モデルのイテレーションを使用して、テスト データ セットの値を予測します。
 
 ```python
-y_predict = fitted_model.predict(X_test)
-y_actual = y_test.flatten()
+predict_labels = fitted_model.predict(test_data)
+actual_labels = test_labels.flatten()
 ```
 
 または、`predict()` ではなく `forecast()` 関数を使用することもできます。これにより、いつ予測を開始するかを指定できます。 次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 `predict()` を使用すると通常そうなるように、このケースでは、予測の始まりはトレーニング データの最後になります。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
@@ -181,29 +178,29 @@ y_actual = y_test.flatten()
 `forecast()` 関数の `forecast_destination` パラメーターを使用して、指定した日付までの値を予測することもできます。
 
 ```python
-y_query = y_test.copy().astype(np.float)
-y_query.fill(np.nan)
-y_fcst, X_trans = fitted_pipeline.forecast(
-    X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+label_query = test_labels.copy().astype(np.float)
+label_query.fill(np.nan)
+label_fcst, data_trans = fitted_pipeline.forecast(
+    test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-`y_test` の実際の値と `y_pred` の予測値との RMSE (二乗平均平方根誤差) を計算します。
+`actual_labels` の実際の値と `predict_labels` の予測値との RMSE (二乗平均平方根誤差) を計算します。
 
 ```python
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-rmse = sqrt(mean_squared_error(y_actual, y_predict))
+rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
 rmse
 ```
 
-モデル全体の精度は判別しているので、最も現実的な次の手順は、モデルを使用して不明な将来の値を予測することです。 テスト セット `X_test` と同じ形式ですが将来の日時を使用してデータ セットを提供するだけで、結果の予測セットは時系列手順ごとに予測された値になります。 データ セット内の最後の時系列レコードは 2018 年 12 月 31 日のものだったとします。 次の日 (または予測する必要のある数の期間、< = `max_horizon`) の需要を予測するには、2019 年 1 月 1 日の店舗ごとに 1 つの時系列レコードを作成します。
+モデル全体の精度は判別しているので、最も現実的な次の手順は、モデルを使用して不明な将来の値を予測することです。 テスト セット `test_data` と同じ形式ですが将来の日時を使用してデータ セットを提供するだけで、結果の予測セットは時系列手順ごとに予測された値になります。 データ セット内の最後の時系列レコードは 2018 年 12 月 31 日のものだったとします。 次の日 (または予測する必要のある数の期間、< = `max_horizon`) の需要を予測するには、2019 年 1 月 1 日の店舗ごとに 1 つの時系列レコードを作成します。
 
     day_datetime,store,week_of_year
     01/01/2019,A,1
     01/01/2019,A,1
 
-必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.predict(X_test)` を実行して将来の値を予測します。
+必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.predict(test_data)` を実行して将来の値を予測します。
 
 > [!NOTE]
 > `max_horizon` を超える数の期間について値を予測することはできません。 現在の期間を超えて将来の値を予測するには、さらに期間を長くしてモデルを再度トレーニングする必要があります。

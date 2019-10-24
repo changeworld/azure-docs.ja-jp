@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 22f0ef7da9018da128e9a978cefa71eaa786829c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098924"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274118"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -116,7 +116,7 @@ TCP プローブは、定義済みのポートに 3 ウェイ オープン TCP �
 
 HTTP プローブと HTTPS プローブは TCP プローブに基づいており、パスが指定された HTTP GET を発行します。 これら両方のプローブは、HTTP GET に対して相対パスをサポートします。 HTTPS プローブは、トランスポート層セキュリティ (TLS、旧称は SSL) ラッパーがある点を除き、HTTP プローブと同じです。 タイムアウト期間内にインスタンスが HTTP ステータス 200 で応答すると、正常性プローブはアップとしてマークされます。  既定では、構成された正常性プローブ ポートのチェックが、正常性プローブによって 15 秒ごとに試行されます。 最小のプローブ間隔は 5 秒です。 すべての間隔の合計期間が 120 秒を超えることはできません。
 
-HTTP プローブまたは HTTPS プローブは、お客様が正常性プローブを表現したい場合にも役立ちます。  プローブ ポートがサービス自体に対するリスナーでもある場合は、ロード バランサーのローテーションからインスタンスを削除するお客様独自のロジックを実装します。 たとえば、CPU が 90% を超え、200 以外の HTTP ステータスが返される場合は、そのインスタンスが削除されるようにすることができます。 
+プローブ ポートがサービス自体に対するリスナーでもある場合は、HTTP/HTTPS プローブは、ロード バランサーのローテーションからインスタンスを削除するお客様独自のロジックを実装するのにも役立ちます。 たとえば、CPU が 90% を超え、200 以外の HTTP ステータスが返される場合は、そのインスタンスが削除されるようにすることができます。 
 
 Cloud Services を使用し、w3wp.exe を使う Web ロールがある場合は、Web サイトの自動監視も実現します。 Web サイトのコードで障害が発生すると、200 以外の状態がLoad Balancer プローブに返ります。
 

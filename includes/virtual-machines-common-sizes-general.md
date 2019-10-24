@@ -6,14 +6,14 @@ author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 08/08/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 58db6d0a51dd07344b4fc30473a02c6df83e4d28
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 9462d9c807f8300d65e8e5a3e997ebc858342a97
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310567"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514470"
 ---
 汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 この記事では、このグループ内のサイズのストレージのスループットに加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
@@ -23,9 +23,9 @@ ms.locfileid: "71310567"
 
   ユース ケースの例には、開発とテスト用のサーバー、低トラフィックの Web サーバー、小規模から中規模のデータベース、概念実証、コード リポジトリがあります。
 
-- オリジナルの D シリーズの後継である Dv2 シリーズは、より強力な CPU と最適な CPU 対メモリ構成を備えているため、ほとんどの運用環境のワークロードに適しています。 Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。 これは最新世代の Intel Xeon® E5-2673 v3 2.4 GHz (Haswell) または E5-2673 v4 2.3 GHz (Broadwell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.1 GHz まで実現できます。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
+- オリジナルの D シリーズの後継である Dv2 シリーズは、より強力な CPU と最適な CPU 対メモリ構成を備えているため、ほとんどの運用環境のワークロードに適しています。 Dv2 シリーズは D シリーズよりも、およそ 35% 高速です。 Dv2 シリーズは、Intel Turbo Boost Technology 2.0 を備えた、Intel® Xeon® 8171M 2.1 GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) のいずれかのプロセッサ上で実行されています。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
-- Dv3 シリーズは、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサ、または最新の 2.3 GHz Intel XEON ® E5-2673 v4 (Broadwell) プロセッサをハイパー スレッド構成で備えているため、ほとんどの汎用ワークロードに向けてより優れた価値提案が提供されます。  メモリが増設 (約 3.5 GiB/vCPU から 4 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。  Dv3 には、D/Dv2 ファミリのハイ メモリ VM サイズが含まれなくなりました。これらは新しい Ev3 ファミリに移行されました。
+- Dv3 シリーズは、Intel® Xeon® 8171M 2.1 GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) のいずれかのハイパースレッド構成のプロセッサ上で実行され、ほとんどの汎用ワークロードに対してより優れた価値を提供します。  メモリが増設 (約 3.5 GiB/vCPU から 4 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。  Dv3 シリーズには、D/Dv2 シリーズのハイ メモリの VM サイズがなくなりました。これらは、[Windows ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#ev3-series) と [Linux ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#ev3-series) 用にメモリ最適化された Ev3 シリーズに移動されました。
 
   D シリーズのユース ケースの例には、エンタープライズ級のアプリケーション、リレーショナル データベース、メモリ内キャッシュ、分析があります。
 
@@ -44,8 +44,8 @@ Web サーバー、小規模なデータベース、開発とテスト環境な�
 
 | Size             | vCPU  | メモリ: GiB | 一時ストレージ (SSD) GiB | VM のベース CPU パフォーマンス | VM の最大 CPU パフォーマンス | 初期のクレジット | 1 時間に蓄積されるクレジット | 蓄積できるクレジットの最大値 | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1ls<sup>1</sup>  | 1           | 0.5              | 1                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
-| Standard_B1s  | 1           | 1              | 2                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400/10                                  | 320/10                                  | 2  |
+| Standard_B1ls<sup>1</sup>  | 1           | 0.5              | 4                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
+| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400/10                                  | 320/10                                  | 2  |
 | Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100%                   | 30                   | 12                 | 288           | 2                         | 800/10                                  | 640/10                                  | 2  |
 | Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200%                   | 60                   | 24                 | 576            | 4                                      | 1,600/15                                 | 1,280/15                                 | 3  |
 | Standard_B2ms | 2           | 8              | 16                         | 60%                   | 200%                   | 60                   | 36                 | 864            | 4                                      | 2,400/22.5                               | 1,920/22.5                               | 3  |
@@ -65,7 +65,7 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-Dsv3 シリーズのサイズは、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサまたは最新の 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) プロセッサをベースとしており、Intel Turbo Boost Technology 2.0 の使用により 3.5 GHz まで高速化でき、Premium Storage を使用します。 Dsv3 シリーズのサイズは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、一時ストレージの組み合わせを提供します。
+Dsv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた、Intel® Xeon® 8171M 2.1 GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) のいずれかのプロセッサ上で実行され、Premium Storage が使用されます。 Dsv3 シリーズのサイズは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、一時ストレージの組み合わせを提供します。
 
 
 | Size             | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
@@ -108,7 +108,7 @@ Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-Dv3 シリーズのサイズは、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサまたは 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) プロセッサをベースとしており、Intel Turbo Boost Technology 2.0 の使用により 3.5 GHz まで高速化できます。 Dv3 シリーズのサイズは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、一時ストレージの組み合わせを提供します。
+Dv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた、Intel® Xeon® 8171M 2.1 GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) のいずれかのプロセッサ上で実行されます。 Dv3 シリーズのサイズは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、一時ストレージの組み合わせを提供します。
 
 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Dsv3 サイズを使用してください。 Dsv3 サイズの料金および課金の計算方法は、Dv3 シリーズと同じです。 
 
@@ -153,6 +153,8 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
+DSv2 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた、Intel® Xeon® 8171M 2.1 GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) のいずれかのプロセッサ上で実行され、Premium Storage が使用されます。
+
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3.5 |7 |4 |4000/32 (43) |3200 / 48 |2/750 |
@@ -168,6 +170,8 @@ ACU: 210-250
 Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
+
+DSv2 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた、Intel® Xeon® 8171M 2.1 GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) のいずれかのプロセッサ上で実行されます。
 
 | Size           | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数 | スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
@@ -185,6 +189,7 @@ Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
+DSv2 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた、Intel® Xeon® 8171M 2.1 GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) のいずれかのプロセッサ上で実行され、Premium Storage が使用されます。
 
 | Size            | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

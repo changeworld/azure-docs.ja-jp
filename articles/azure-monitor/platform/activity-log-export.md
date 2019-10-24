@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 68bf455bbdfb6d2d45c5eccc60c3ad8ce40d3247
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258469"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515788"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
@@ -155,7 +155,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
     | 名前 |はい |ログ プロファイルの名前。 |
     | storage-account-id |はい |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
     | locations |はい |アクティビティ ログ イベントを収集するリージョンのスペース区切りリスト。 `az account list-locations --query [].name` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
-    | days |はい |イベントを保持する日数。1 -365 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。  0 の場合は、enabled パラメーターを true に設定する必要があります。 |
+    | days |はい |イベントを保持する日数。1 -365 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。  0 の場合は、enabled パラメーターを false に設定する必要があります。 |
     |enabled | はい |True または False。  アイテム保持ポリシーを有効または無効にするために使います。  True の場合は、days パラメーターを 0 より大きい値にする必要があります。
     | categories |はい |収集するイベント カテゴリのスペース区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 

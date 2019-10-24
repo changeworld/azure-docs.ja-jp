@@ -10,22 +10,22 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d51c27b90113679c1547f2d030459a03cc22c80c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990141"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299811"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>イマーシブ リーダー サービスで Azure Active Directory (Azure AD) 認証を使用する
 
-以降のセクションでは、Azure Cloud Shell 環境または Azure CLI を使用して、カスタム サブドメインを含む新しいイマーシブ リーダー リソースを作成し、Azure テナントで Azure AD を構成します。 最初の構成が完了したら、Azure AD を呼び出してアクセス トークンを取得します。これは、Immersive Reader SDK を使用する場合の方法と似ています。 問題が発生した場合は、各セクションに、Azure CLI の各コマンドで使用可能なすべてのオプションへのリンクが提供されています。
+以降のセクションでは、Azure Cloud Shell 環境または Azure PowerShell を使用して、カスタム サブドメインを含む新しいイマーシブ リーダー リソースを作成してから、ご利用の Azure テナントで Azure AD を構成します。 最初の構成が完了したら、Azure AD を呼び出してアクセス トークンを取得します。これは、Immersive Reader SDK を使用する場合の方法と似ています。 問題が発生した場合は、各セクションに、Azure PowerShell の各コマンドで使用可能なすべてのオプションへのリンクが提供されています。
 
 ## <a name="create-an-immersive-reader-resource-with-a-custom-subdomain"></a>カスタム サブドメインを含むイマーシブ リーダー リソースを作成する
 
 1. まず、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。 [サブスクリプションを選択](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description)します。
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
@@ -41,7 +41,7 @@ ms.locfileid: "68990141"
    -CustomSubdomainName は、グローバルに一意である必要があります。また、"."、"!"、"," などの特殊文字を含めることはできません。
 
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME> -Type ImmersiveReader -SkuName S0 -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
 
    // Display the Resource info
@@ -58,7 +58,7 @@ ms.locfileid: "68990141"
 
    リソースがポータルで作成された場合、今すぐ[既存のリソースを取得](https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount?view=azps-1.8.0)することもできます。
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = Get-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME>
 
    // Display the Resource info
@@ -74,7 +74,7 @@ ms.locfileid: "68990141"
    >[!NOTE]
    > "クライアント シークレット" とも呼ばれるパスワードは、認証トークンを取得するときに使用されます。
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $password = "<YOUR_PASSWORD>"
    $secureStringPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
    $aadApp = New-AzADApplication -DisplayName ImmersiveReaderAAD -IdentifierUris http://ImmersiveReaderAAD -Password $secureStringPassword
@@ -87,7 +87,7 @@ ms.locfileid: "68990141"
 
 2. 次に、Azure AD アプリケーションの[サービス プリンシパルを作成](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0)する必要があります。
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $principal = New-AzADServicePrincipal -ApplicationId $aadApp.ApplicationId
 
    // Display the service principal info
@@ -99,7 +99,7 @@ ms.locfileid: "68990141"
 
 3. 最後の手順では、(リソースにスコープが設定された) サービス プリンシパルに ["Cognitive Services ユーザー" ロールを割り当て](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0)ます。 ロールを割り当てることにより、このリソースにサービス プリンシパル アクセス権を付与します。 同じサービス プリンシパル アクセスをサブスクリプション内の複数のリソースに対して許可できます。
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    New-AzRoleAssignment -ObjectId $principal.Id -Scope $resource.Id -RoleDefinitionName "Cognitive Services User"
    ```
 
@@ -112,13 +112,13 @@ ms.locfileid: "68990141"
 この例では、パスワードを使用してサービス プリンシパルを認証し、Azure AD トークンを取得します。
 
 1. **TenantId** を取得します。
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $context = Get-AzContext
    $context.Tenant.Id
    ```
 
 2. トークンを取得します。
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $authority = "https://login.windows.net/" + $context.Tenant.Id
    $resource = "https://cognitiveservices.azure.com/"
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority

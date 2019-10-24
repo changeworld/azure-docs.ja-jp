@@ -9,22 +9,22 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: d3e22df76124185c1e23f04f59145e12a1fec023
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b3aa6d06add1d80512eda0e62888b4a36760e98c
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164262"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274798"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
-この記事では、Azure Resource Manager テンプレート、PowerShell、Time Series Insights リソースプロバイダーを使用して Time Series Insights リソースを作成し、デプロイする方法について説明します。
+この記事では、[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/)、PowerShell、Time Series Insights リソース プロバイダーを使用して Time Series Insights リソースを作成し、デプロイする方法について説明します。
 
 Time Series Insights は、次のリソースをサポートしています。
 
-   | Resource | 説明 |
+   | リソース | 説明 |
    | --- | --- |
    | 環境 | Time Series Insights 環境とは、イベント ブローカーから読み取って保存したイベントを論理的にグループ化し、クエリで使用できるようにしたものです。 詳細については、「[Azure Time Series Insights 環境の計画](time-series-insights-environment-planning.md)」を参照してください。 |
    | イベント ソース | イベント ソースとは、イベント ブローカーへの接続を指します。Time Series Insights は、このイベント ブローカーからイベントを読み取って環境に取り込みます。 現在サポートされているイベント ソースは、IoT Hub とイベント ハブです。 |
@@ -47,7 +47,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 1. 「[Getting started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)」の手順に従って、Azure PowerShell をインストールします。
 
-1. [201-timeseriesinsights-environment-with-eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) テンプレートを GitHub からクローンまたはコピーします。
+1. [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) テンプレートを GitHub からクローンまたはコピーします。
 
    * パラメーター ファイルを作成する
 
@@ -208,7 +208,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
        DeploymentName          : MyDemoDeployment
        ResourceGroupName       : MyDemoRG
        ProvisioningState       : Succeeded
-       Timestamp               : 5/8/2019 10:28:34 PM
+       Timestamp               : 10/11/2019 3:20:37 AM
        Mode                    : Incremental
        TemplateLink            :
        Parameters              :

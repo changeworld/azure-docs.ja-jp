@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 3c8d0d3ec0f11592610363e9150be47112995853
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2afc3a859ddb5378b6313c43d693842fdb5fce14
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219864"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296440"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
@@ -81,7 +81,7 @@ Video Indexer のビデオとオーディオ モデルを使用して、ビデ�
 
 * **キーワードの抽出**:音声と視覚テキストからキーワードを抽出します。
 * **名前付きエンティティの抽出**:自然言語処理 (NLP) を使用して、音声および視覚テキストからブランド、場所、および人物を抽出します。
-* **トピックの推論**:トランスクリプトから主なトピックを推論します。 第 1 レベルの IPTC 分類が含まれています。
+* **トピックの推論**:トランスクリプトから主なトピックを推論します。 第 2 レベルの IPTC 分類が含まれています。
 * **成果物**:各モデルについて、"次のレベルの詳細情報" 成果物の豊富なセットを抽出します。
 * **センチメント分析**:音声と視覚テキストから、ポジティブ、ネガティブ、ニュートラルのセンチメントを識別します。
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5d567074a0038915cc43a585b34c9c71ccf3eb1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464994"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431282"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight の Apache Kafka 用に Secure Sockets Layer (SSL) 暗号化および認証を設定する
 
@@ -128,7 +128,7 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
 
     ![Ambari での kafka ssl 構成プロパティの編集](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. 完全修飾ドメイン名 (FQDN) ではなく IP アドレスを提供するように、Kafka `server.properties` ファイルに構成プロパティを追加します。
+1. 以下のコマンドを実行して、完全修飾ドメイン名 (FQDN) ではなく IP アドレスが提供されるように、Kafka `server.properties` ファイルに構成プロパティを追加します。
 
     ```bash
     IP_ADDRESS=$(hostname -i)

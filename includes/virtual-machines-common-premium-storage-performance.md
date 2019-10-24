@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71975316"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391697"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -286,24 +286,24 @@ Premium Storage データ ディスクの ReadOnly キャッシュを構成す�
 * キャッシュが **ReadWrite** に設定されている Premium Storage ディスクの場合は、書き込みの耐久性のためにバリアを有効にしてください。
 * VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する汎用一意識別子 (UUID) 参照で /etc/fstab を更新する必要があります。 詳細については、[Linux VM への管理ディスクの追加](../articles/virtual-machines/linux/add-disk.md)に関する記事を参照してください。
 
-Premium SSD では、次の Linux ディストリビューションが検証されました。 Premium SSD のパフォーマンスと安定性を向上するには、VM をこれらのバージョン以降のいずれかにアップグレードすることをお勧めします。 
+Premium SSD では、次の Linux ディストリビューションが検証されました。 Premium SSD のパフォーマンスと安定性を向上させるには、VM をこれらのバージョン以降のいずれかにアップグレードすることをお勧めします。 
 
 バージョンによっては、Azure 向けの最新の Linux Integration Services (LIS) v4.0 が必要になります。 ディストリビューションをダウンロードしてインストールするには、次の表に記載されているリンクを参照してください。 検証が完了すると、イメージが一覧に追加されます。 イメージごとにパフォーマンスが変動することが Microsoft の検証によって判明しています。 パフォーマンスは、ワークロードの特性やイメージの設定に応じて異なります。 ワークロードの種類に応じて、異なるイメージをチューニングします。
 
 | ディストリビューション | Version | サポートされるカーネル | 詳細 |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
-| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
-| Debian | 7.x、8.x | 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
-| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5、6.6、6.7、7.0 | &nbsp; | [LIS4 が必須](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> "*次のセクションの注を参照してください*" |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 が推奨](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> "*次のセクションの注を参照してください*" |
-| Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+ | &nbsp; | &nbsp; |
-| Oracle | 6.0+、7.2+ | &nbsp; | UEK4 または RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Ubuntu | 12.04 以降| 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
+| Ubuntu | 14.04 以降| 3.13.0-44.73+  | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Debian | 7.x、8.x またはそれ以降| 3.16.7-ckt4-1+ | &nbsp; |
+| SUSE | SLES 12 以降| 3.12.36-38.1+ | suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
+| SUSE | SLES 11 SP4 以降| 3.0.101-0.63.1+ | &nbsp; |
+| CoreOS | 584.0.0+ 以降| 3.18.4+ | CoreOS 584.0.0 |
+| CentOS | 6.5、6.6、6.7、7.0、またはそれ以降| &nbsp; | [LIS4 が必須](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> "*次のセクションの注を参照してください*" |
+| CentOS | 7.1+ 以降| 3.10.0-229.1.2.el7+ | [LIS4 が推奨](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> "*次のセクションの注を参照してください*" |
+| Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+、またはそれ以降 | &nbsp; | &nbsp; |
+| Oracle | 6.0+、7.2+、またはそれ以降 | &nbsp; | UEK4 または RHCK |
+| Oracle | 7.0-7.1 以降 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 以降 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 用 LIS ドライバー
 

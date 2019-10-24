@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 5dde098277b16c7ec5339aa6b963b04dd608c8ac
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079667"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390603"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -36,7 +36,7 @@ Azure Portal を使用して、[特殊化された VHD から新しい VM を作
 
 この記事では、マネージド ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](sa-create-vm-specialized.md)に関するページを参照してください。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+1 つの VHD またはスナップショットからの同時デプロイ数は 20 VM を上限とするようお勧めします。 
 
 ## <a name="option-1-use-an-existing-disk"></a>オプション 1:既存のディスクの使用
 

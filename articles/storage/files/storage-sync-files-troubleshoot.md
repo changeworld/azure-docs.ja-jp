@@ -4,15 +4,15 @@ description: Azure File Sync の一般的な問題をトラブルシューティ
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e07d154ce5dae8a461bf9db19303db685f8a4152
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 31a9eda0e17083aac25be071c1d1a3ab84049e39
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103072"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274882"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -797,6 +797,17 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 4. サーバー エンドポイントでクラウドを使った階層化が有効になっていた場合は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」セクションの手順を実行して、サーバー上の孤立した階層化ファイルを削除します。
 5. 同期グループを作成し直します。
 
+<a id="-2145844941"></a>**HTTP 要求がリダイレクトされたため、同期に失敗しました**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80190133 |
+| **HRESULT (10 進値)** | -2145844941 |
+| **エラー文字列** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
+| **修復が必要か** | はい |
+
+このエラーは、Azure File Sync が HTTP リダイレクトをサポートしていないために発生します (3xx 状態コード)。 この問題を解決するには、プロキシ サーバーまたはネットワーク デバイスで HTTP リダイレクトを無効にします。
+
 ### <a name="common-troubleshooting-steps"></a>一般的なトラブルシューティング手順
 <a id="troubleshoot-storage-account"></a>**ストレージ アカウントが存在することを確認します。**  
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
@@ -1008,7 +1019,22 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
         - 管理者特権でのコマンド プロンプトで、`fltmc` を実行します。 ファイル システム フィルター ドライバーの StorageSync.sys と StorageSyncGuard.sys が表示されることを確認します。
 
 > [!NOTE]
-> イベント ID 9006 は、ファイルの呼び戻しが失敗した場合に、テレメトリ イベント ログに 1 時間に 1 回ログ記録されます (エラー コードごとに 1 つのイベントがログ記録されます)。 問題を診断するために追加情報が必要な場合は、操作イベント ログと診断イベント ログを使用する必要があります。
+> イベント ID 9006 は、ファイルの呼び戻しが失敗した場合に、テレメトリ イベント ログに 1 時間に 1 回ログ記録されます (エラー コードごとに 1 つのイベントがログ記録されます)。 「[呼び戻しエラーと修復](#recall-errors-and-remediation)」セクションを確認して、エラー コードに対する修復手順が一覧表示されているかどうかを確認します。
+
+### <a name="recall-errors-and-remediation"></a>呼び戻しエラーと修復
+
+| HRESULT | HRESULT (10 進値) | エラー文字列 | 問題 | Remediation |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80070079 | -121 | ERROR_SEM_TIMEOUT | I/O タイムアウトのため、ファイルの呼び戻しに失敗しました。 この問題は、サーバー リソースの制約、ネットワーク接続の低下、または Azure Storage の問題 (調整など) といったいくつかの理由によって発生する可能性があります。 | 必要なアクションはありません。 エラーが数時間継続して発生する場合は、サポート ケースを開いてください。 |
+| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | ネットワークの問題が発生したため、ファイルの呼び戻しに失敗しました。  | エラーが引き続き発生する場合は、Azure ファイル共有へのネットワーク接続を確認します。 |
+| 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | サーバー エンドポイントが削除されたため、ファイルの呼び戻しに失敗しました。 | この問題を解決する方法は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。 |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | アクセス拒否エラーが発生したため、ファイルの呼び戻しに失敗しました。 この問題は、ストレージ アカウントでファイアウォールと仮想ネットワークの設定が有効になっていて、サーバーにそのストレージ アカウントへのアクセス権がない場合に発生します。 | この問題を解決するには、デプロイ ガイドの「[ファイアウォールと仮想ネットワークの設定を構成する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)」セクションに記載されている手順に従い、サーバー IP アドレスまたは仮想ネットワークを追加します。 |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Azure ファイル共有にアクセスできないため、ファイルの呼び戻しに失敗しました。 | この問題を解決するには、ファイルが Azure ファイル共有に存在することを確認します。 ファイルが Azure ファイル共有に存在する場合は、最新の Azure File Sync [エージェントのバージョン](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)にアップグレードします。 |
+| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | ストレージ アカウントへの承認エラーが発生したため、ファイルの呼び戻しに失敗しました。 | この問題を解決するには、[Azure File Sync にストレージ アカウントへのアクセス権がある](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)ことを確認します。 |
+| 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Azure ファイル共有にアクセスできないため、ファイルの呼び戻しに失敗しました。 | ファイル共有が存在し、アクセス可能であることを確認します。 ファイル共有が削除され、再作成された場合は、「[Azure ファイル共有が削除されて再作成されたため、同期に失敗しました](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810)」セクションに記載されている手順を行い、同期グループを削除して再作成します。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | システム リソースが不足しているため、ファイルの呼び戻しに失敗しました。 | エラーが引き続き発生する場合は、どのアプリケーションまたはカーネル モード ドライバーがシステム リソースを消費しているかを調べます。 |
+| 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | メモリが不足しているため、ファイルの呼び戻しに失敗しました。 | エラーが引き続き発生する場合は、メモリ不足の原因になっているアプリケーションまたはカーネル モード ドライバーを調べます。 |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | ディスク領域が不足しているため、ファイルの呼び戻しに失敗しました。 | この問題を解決するには、ファイルを別のボリュームに移動することでボリュームの領域を解放するか、ボリュームのサイズを増やすか、または Invoke-StorageSyncCloudTiering コマンドレットを使用することでファイルを強制的に階層化します。 |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない
 サーバーのエンドポイントを削除する前にファイルが再呼び出しされない場合、サーバー上の階層化ファイルはアクセスできなくなります。

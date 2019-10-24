@@ -1,6 +1,6 @@
 ---
 title: Azure OptionsGroup UI 要素 | Microsoft Docs
-description: Azure Portal の Microsoft.Common.OptionsGroup UI 要素について説明します。
+description: Azure Portal の Microsoft.Common.OptionsGroup UI 要素について説明します。 管理対象アプリケーションをデプロイするとき、利用できるオプションからユーザーが選択できるようにします。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9aee881844e9338cc1da2484a94c8355f2516c82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bec506575f1c526e59487edb67349cdf862f1a7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720762"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331667"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 要素
 使用可能なオプションの行を備えた選択コントロールです。

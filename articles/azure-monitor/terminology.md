@@ -1,26 +1,24 @@
 ---
 title: Azure Monitor の用語の更新 | Microsoft Docs
 description: Azure 監視サービスに対して行われた最近の用語の変更について説明します。
-author: bwren
-manager: carmonm
-editor: tysonn
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/18/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f8a86c0b71a5248164ea522472f9f2ecb2ce36bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.date: 10/08/2019
+ms.openlocfilehash: 5324c17cdf2593d8e1022e6ddbf52b4e24ee64e8
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827362"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597822"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor の名称と用語の変更
 最近、Azure Monitor に大きな変更が加えられ、Azure のお客様が監視を簡単に行えるようにするためにさまざまなサービスが統合されました。 この記事では、Azure Monitor のドキュメント内で最近行われた名称と用語の変更について説明します。
+
+## <a name="october-2019---diagnostic-log-to-resource-log"></a>2019 年 10 月 - 診断ログからリソース ログへ
+実際に収集されている内容と一致するように、診断ログは "リソース ログ" に変更されました。 "診断設定" という用語は変わりありません。  
 
 ## <a name="february-2019---log-analytics-terminology"></a>2019 年 2 月 - Log Analytics の用語
 Azure Monitor にさまざまなサービスを統合した後、次の段階として、Azure Monitor サービスとそのさまざまなコンポーネントをよりわかりやすく説明するためにドキュメント内の用語を変更しています。 

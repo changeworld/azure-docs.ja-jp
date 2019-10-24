@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/09/2019
+ms.date: 10/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 1025041ae69f2048a6c5396aaebb50b5fa884f86
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 78fe9eec757274e4262857ac0441af61c47a992b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444165"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515548"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -36,7 +36,8 @@ Log Analytics ワークスペースがない場合は、作成する必要があ
 * 「[Log Analytics での Windows および Linux のパフォーマンス データ ソース](../../azure-monitor/platform/data-sources-performance-counters.md)」の説明に従って、手動で行います
 * [Azure PowerShell ギャラリー](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)で入手できる PowerShell スクリプトをダウンロードして実行します
 
-### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>ServiceMap および InfrastructureInsights ソリューションをインストールする
+### <a name="install-the-servicemap-solution"></a>ServiceMap ソリューションをインストールする
+
 この方法には、Log Analytics ワークスペースでソリューション コンポーネントを有効にするための構成を指定する JSON テンプレートが含まれています。
 
 テンプレートを使用してリソースをデプロイする方法がわからない場合は、以下を参照してください。
@@ -84,24 +85,6 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
                             "product": "[Concat('OMSGallery/', 'ServiceMap')]",
                             "promotionCode": ""
                         }
-                    },
-                    {
-                        "apiVersion": "2015-11-01-preview",
-                        "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
-                        "type": "Microsoft.OperationsManagement/solutions",
-                        "dependsOn": [
-                            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
-                        ],
-                        "properties": {
-                            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
-                        },
-                        "plan": {
-                            "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
-                            "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'InfrastructureInsights')]",
-                            "promotionCode": ""
-                        }
                     }
                 ]
             }
@@ -142,6 +125,7 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
         ```
 
 ## <a name="enable-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して有効にする
+
 仮想マシンまたは仮想マシン スケール セットをオンボードするための、Azure Resource Manager テンプレートの例が用意されています。 これらのテンプレートには、既存のリソースに対する監視を有効にして、監視が有効な新しいリソースを作成するために使用できるシナリオが含まれています。
 
 >[!NOTE]
@@ -163,7 +147,7 @@ Azure Resource Manager テンプレートはアーカイブ ファイル (.zip) 
 - **NewVmOnboarding** テンプレートでは、仮想マシンを作成し、これを監視するために Azure Monitor for VMs を有効にします。
 - **ExistingVmssOnboarding** テンプレートでは、仮想マシン スケール セットが既に存在する場合に Azure Monitor for VMs を有効にします。
 - **NewVmssOnboarding** テンプレートでは、仮想マシン スケール セットを作成し、これを監視するために Azure Monitor for VMs を有効にします。
-- **ConfigureWorksapce** テンプレートでは、Linux および Windows オペレーティング システム パフォーマンス カウンターのソリューションと収集を有効にすることで、Azure Monitor for VMs をサポートする Log Analytics ワークスペースを構成します。
+- **ConfigureWorkspace** テンプレートでは、Linux および Windows オペレーティング システム パフォーマンス カウンターのソリューションと収集を有効にすることで、Azure Monitor for VMs をサポートする Log Analytics ワークスペースを構成します。
 
 >[!NOTE]
 >仮想マシン スケール セットが既に存在し、アップグレード ポリシーが**手動**に設定されている場合、**ExistingVmssOnboarding** Azure Resource Manager テンプレートを実行しても、これらのインスタンスに対して Azure Monitor for VMs は既定では有効になりません。 手動でインスタンスをアップグレードする必要があります。
@@ -180,6 +164,7 @@ New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceG
 ```powershell
 provisioningState       : Succeeded
 ```
+
 ### <a name="deploy-by-using-the-azure-cli"></a>Azure CLI を使用したデプロイ
 
 Azure CLI を使用して監視を有効にするには、次の手順のようにします。
@@ -363,7 +348,6 @@ Failed: (0)
 
 これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。
  
-- 正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 
 - 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 
+
 - VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事を参照してください。 
-- 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。

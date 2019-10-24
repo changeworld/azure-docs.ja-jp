@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/19/2019
+ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0a3c8cbee92be85fe415a4d44d5493940bb45a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f7c75a567dbefc71b4b0fea595dae56a03def5ed
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638634"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295451"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法:Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
@@ -46,9 +46,14 @@ ms.locfileid: "69638634"
 
 自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [必要なアクセス許可のチェック](howto-create-service-principal-portal.md#required-permissions)に関するページを参照してください。
 
+## <a name="assign-the-application-to-a-role"></a>アプリケーションをロールに割り当てる
+サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 どのロールがそのアプリケーションに適切なアクセス許可を提供するかを判断します。 利用可能なロールについては、「[RBAC: 組み込みロール](/azure/role-based-access-control/built-in-roles)」を参照してください。
+
+スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの*閲覧者*ロールに追加すると、そのリソース グループと、その中にあるどのリソースも読み取りができることになります。 アプリケーションがインスタンスの再起動、開始、停止などのアクションを実行できるようにするには、 *[共同作成者]* ロールを選択します。
+
 ## <a name="create-service-principal-with-self-signed-certificate"></a>自己署名証明書を使用したサービス プリンシパルの作成
 
-以下の例では、単純なシナリオについて説明します。 ここでは、[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) を使用して自己署名証明書でのサービス プリンシパルを作成し、[New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用して[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールをサービス プリンシパルに割り当てます。 ロールの割り当ては、現在選択されている Azure サブスクリプションに制限されます。 別のサブスクリプションを選択するには、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を使用します。
+以下の例では、単純なシナリオについて説明します。 ここでは、[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) を使用して自己署名証明書でのサービス プリンシパルを作成し、[New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用して[閲覧者](/azure/role-based-access-control/built-in-roles#reader)ロールをサービス プリンシパルに割り当てます。 ロールの割り当ては、現在選択されている Azure サブスクリプションに制限されます。 別のサブスクリプションを選択するには、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を使用します。
 
 > [!NOTE]
 > New-SelfSignedCertificate コマンドレットと PKI モジュールは、現在、PowerShell Core ではサポートされていません。 
@@ -64,7 +69,7 @@ $sp = New-AzADServicePrincipal -DisplayName exampleapp `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
 Sleep 20
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
 この例では、新しいサービス プリンシパルが Azure AD 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合は、次のエラーが表示されます。"プリンシパル {0} がディレクトリ {DIR-ID} にありません。" このエラーを解決するには、しばらく待ってから **New-AzRoleAssignment** コマンドを再実行します。
@@ -105,7 +110,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>証明機関の証明書を使用したサービス プリンシパルの作成
 
-次の例では、証明機関から発行された証明書を使用して、サービス プリンシパルを作成します。 割り当ては、指定された Azure サブスクリプションに制限されます。 [共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールにサービス プリンシパルが追加されます。 ロールの割り当て中にエラーが発生した場合は、割り当てが再試行されます。
+次の例では、証明機関から発行された証明書を使用して、サービス プリンシパルを作成します。 割り当ては、指定された Azure サブスクリプションに制限されます。 [閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールにサービス プリンシパルが追加されます。 ロールの割り当て中にエラーが発生した場合は、割り当てが再試行されます。
 
 ```powershell
 Param (
@@ -141,7 +146,7 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
@@ -222,6 +227,5 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 ## <a name="next-steps"></a>次の手順
 
 * パスワードを使用するサービス プリンシパルを設定するには、「[Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)」を参照してください。
-* アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「 [Azure Resource Manager API を使用した承認の開発者ガイド](../../azure-resource-manager/resource-manager-api-authentication.md)」を参照してください。
 * アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」を参照してください。
 * Azure AD 認証の詳細については、「[Azure AD の認証シナリオ](authentication-scenarios.md)」をご覧ください。

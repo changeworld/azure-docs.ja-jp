@@ -1,31 +1,27 @@
 ---
 title: コンテナー用 Azure Monitor のログをリアルタイムで表示する | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor によるコンテナー ログ (stdout と stderr) およびイベントを、kubectl を使用せずにリアルタイム ビューで表示する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 07/12/2019
+ms.openlocfilehash: 25cfe10ec192f874d050bca22ce1b85c2d1afbb4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035358"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554085"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>ログとイベントをリアルタイムで表示する方法 (プレビュー)
 コンテナー用 Azure Monitor (現在、プレビュー段階) には、kubectl コマンドを実行せずに、Azure Kubernetes Service (AKS) コンテナーのログ (stdout と stderr) とイベントのライブ ビューを提供する機能が含まれています。 いずれかのオプションを選択すると、 **[ノード]** 、 **[コントローラー]** 、 **[コンテナー]** ビューのパフォーマンス データ テーブルの下に新しいウィンドウが表示されます。 ここにはコンテナー エンジンによって生成されたライブ ログおよびイベントが表示され、リアルタイムでの問題のトラブルシューティングに一層役立てることができます。
 
 >[!NOTE]
->この機能を動作させるには、クラスター リソースへの**共同作成者**アクセスが必要です。
->
+>この機能は、Azure 中国を含む、すべての Azure リージョンで利用できます。 現在、Azure 米国政府機関では利用できません。
+
+>[!NOTE]
+>この機能を動作させるには、クラスター リソースへの **Azure Kubernetes Service クラスター ユーザー ロール** アクセスが必要です。 Azure Kubernetes クラスター ユーザー ロールの詳細については、[こちら](https://docs.microsoft.com/en-us/azure/aks/control-kubeconfig-access#available-cluster-roles-permissions)を参照してください。
 
 ライブ ログでは、次の 3 つの方法でログへのアクセスが制御されます。
 
@@ -74,6 +70,9 @@ Kubernetes RBAC 認証を有効にした場合は、クラスター ロール �
 
 -  **リダイレクト URI**:**Web** アプリケーションの種類を 2 つ作成する必要があります。 最初のベース URL の値は `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`、2番目のベース URL の値は `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にする必要があります。
 - アプリケーションを登録した後、 **[概要]** ページの左側のウィンドウから **[認証]** を選択します。 **[認証]** ページで、 **[詳細設定]** の **[アクセス トークン]** と **[ID トークン]** を暗黙的に許可してから、変更内容を保存します。
+
+>[!NOTE]
+>この機能を Azure 中国リージョンで使用している場合、最初のベース URL の値を `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にし、2 番目のベース URL の値を `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にする必要があります。
 
 >[!NOTE]
 >シングル サインオン用の Azure Active Directory での認証の構成は、新しい AKS クラスターの最初のデプロイ中にのみ実行できます。 既にデプロイされている AKS クラスターに対して、シングル サインオンを構成することはできません。

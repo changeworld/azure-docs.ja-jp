@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: magoedte
-ms.openlocfilehash: d73ab2d5cca4f20f954a0b0e972111d3f395c3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cff0286e944414d70cffd801620159ffef3db1a5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080453"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389826"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -34,8 +34,7 @@ ms.locfileid: "65080453"
 Azure CLI で作成した新しい AKS クラスターの監視を有効にするには、クイック スタート記事の「[AKS クラスターの作成](../../aks/kubernetes-walkthrough.md#create-aks-cluster)」セクションの手順に従ってください。  
 
 >[!NOTE]
->Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
->
+>Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.74 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 aks-preview CLI 拡張機能バージョン 0.4.12 以降をインストールしている場合は、プレビュー拡張機能を有効にするために行ったすべての変更を削除します。これは、AKS プレビュー機能が Azure US Government クラウドでは利用できないので、既定の Azure CLI 動作をオーバーライドできるためです。
 
 ## <a name="enable-using-terraform"></a>Terraform を使用して有効にする
 

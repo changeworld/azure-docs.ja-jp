@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327139"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331211"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
 
@@ -58,7 +58,6 @@ Azure Search では管理対象のオブジェクトの外部にデータは格�
 
 | リソース | 使用対象 |
 |----------|----------|
-| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | アプリのユーザー イベントと関連付けられた、後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 これは、アプリケーション コードによって送信されたフィルター要求ではなく、ユーザーが開始した検索からのイベントをマッピングする、ユーザーのアクションまたはシグナルが考慮された唯一のソリューションです。 この方法を使用するには、インストルメンテーション コードをコピーしてソース ファイルに貼り付け、要求の情報を Application Insights にルーティングします。 詳しくは、「[検索トラフィックの分析](search-traffic-analytics.md)」をご覧ください。 |
 | [Azure Monitor ログ](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントは Log Analytics ワークスペースに記録されます。 ワークスペースに対してクエリを実行し、ログから詳細な情報を取得することができます。 詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata)に関するページを参照してください |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントのログは BLOB コンテナーに記録されて、JSON ファイルに格納されます。 ファイルの内容を表示するには JSON エディターを使用します。|
 | [イベント ハブ](https://docs.microsoft.com/azure/event-hubs/) | この記事に記載されているスキーマに基づいてログに記録されるイベントとクエリ メトリック。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
@@ -136,7 +135,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 | 名前 | 種類 | 例 | メモ |
 | --- | --- | --- | --- |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |お使いのリソース ID |
 | metricName |string |"Latency" |メトリックの名前 |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | average |int |64 |メトリックの時間間隔内の生のサンプルの平均値 |

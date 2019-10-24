@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: c25ca8c27b84f34b025ec5abce00c8d8c70e5df6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5812cc73fb1da58c591d0593e079851e05bd0940
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125697"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331952"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -98,6 +98,9 @@ Azure Site Recovery サービスに構成サーバーを登録するには、AAD
 > デプロイ後は、リソースの構成 (CPU/メモリ/コアの制限) を変更したり、構成サーバーにインストールされているサービスやファイルを変更または削除したりしないでください。 これは、Azure サービスへの構成サーバーの登録と構成サーバーのパフォーマンスに影響を及ぼします。
 
 ## <a name="add-an-additional-adapter"></a>さらにアダプターを追加する
+
+> [!NOTE]
+> フェールオーバー時、ソース コンピューターの IP アドレスを維持し、後でオンプレミスにフォールバックする予定であれば、NIC が 2 つ必要です。 1 つの NIC がソース コンピューターに接続され、もう 1 つの NIC が Azure 接続に使用されます。
 
 構成サーバーにさらに NIC を追加する場合は、サーバーをコンテナーに登録する前に追加します。 登録後のアダプターの追加はサポートされていません。
 

@@ -10,17 +10,64 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/7/2019
+ms.date: 10/15/2019
 ms.author: raiye
-ms.openlocfilehash: 736cb30942646788ee6f365f67244d27f1aa0316
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b4150858986f204723dc258b23daf22de5d39842
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035185"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430171"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="october-2019-guest-os"></a>2019 年 10 月のゲスト OS
+
+>[!NOTE]
+>10 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 10 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-10   |  [4520003]  |  Windows セキュリティ   |  2.91  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519985]  |  Windows セキュリティ   |  3.78  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519990]  |  Windows セキュリティ   |  4.71  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519998]  |  最新の累積更新プログラム   |  5.36  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519338]  |  最新の累積更新プログラム   |  6.12  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519974]  |  Internet Explorer   |  2.91、3.78、4.71  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4516065]  |  セキュリティ以外   |  2.91  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4516655]  |  SSU   |  2.91  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4516055]  |  セキュリティ以外   |  3.78  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4512939]  |  SSU   |  3.78  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4514370]  |  .NET Framework 3.5   |  3.78  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  3.78  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4516067]  |  セキュリティ以外   |  4.71  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4512938]  |  SSU   |  4.71  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4514371]  |  .NET Framework 3.5   |  4.71  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  4.71  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4512574]  |  SSU   |  5.36  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4512577]  |  SSU   |  6.12  |  2019 年 9 月 10 日  |
+
+[4520003]: https://support.microsoft.com/kb/4520003
+[4519985]: https://support.microsoft.com/kb/4519985
+[4519990]: https://support.microsoft.com/kb/4519990
+[4519998]: https://support.microsoft.com/kb/4519998
+[4519338]: https://support.microsoft.com/kb/4519338
+[4519974]: https://support.microsoft.com/kb/4519974
+[4516065]: https://support.microsoft.com/kb/4516065
+[4516655]: https://support.microsoft.com/kb/4516655
+[4516055]: https://support.microsoft.com/kb/4516055
+[4512939]: https://support.microsoft.com/kb/4512939
+[4514370]: https://support.microsoft.com/kb/4514370
+[4514368]: https://support.microsoft.com/kb/4514368
+[4516067]: https://support.microsoft.com/kb/4516067
+[4512938]: https://support.microsoft.com/kb/4512938
+[4514371]: https://support.microsoft.com/kb/4514371
+[4514367]: https://support.microsoft.com/kb/4514367
+[4512574]: https://support.microsoft.com/kb/4512574
+[4512577]: https://support.microsoft.com/kb/4512577
+
+
 
 ## <a name="september-2019-guest-os"></a>2019 年 9 月のゲスト OS
 

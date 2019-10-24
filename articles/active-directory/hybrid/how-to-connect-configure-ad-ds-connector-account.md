@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64918497"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515819"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -34,12 +34,12 @@ Azure AD Connect の高速インストールでは、自動的に生成された
 
 | 機能 | アクセス許可 |
 | --- | --- |
-| ms-DS-ConsistencyGuid 機能 |「[設計概念 - sourceAnchor としての ms-DS-ConsistencyGuid の使用](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」に記載された msDS-ConsistencyGuid 属性への書き込みアクセス許可。 | 
+| ms-DS-ConsistencyGuid 機能 |「[設計概念 - sourceAnchor としての ms-DS-ConsistencyGuid の使用](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」に記載された ms-DS-ConsistencyGuid 属性に対する読み取りと書き込みのアクセス許可。 | 
 | パスワード ハッシュの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
-| Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への書き込みアクセス許可。 |
+| Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への読み取りと書き込みのアクセス許可。 |
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
-| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/howto-sspr-writeback.md)」に記載された属性への書き込みアクセス許可。 |
-| デバイスの書き戻し |「[デバイスの書き戻し](how-to-connect-device-writeback.md)」に記載されているデバイスのオブジェクトとコンテナーに対する書き込みアクセス許可。 |
+| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/howto-sspr-writeback.md)」に記載された属性への読み取りと書き込みのアクセス許可。 |
+| デバイスの書き戻し |「[デバイスの書き戻し](how-to-connect-device-writeback.md)」に記載されているデバイスのオブジェクトとコンテナーに対する読み取りと書き込みのアクセス許可。 |
 | グループの書き戻し |同期された **Office 365 グループ**のグループ オブジェクトの読み取り、作成、更新、削除。  詳しくは、「[グループの書き戻し](how-to-connect-preview.md#group-writeback)」をご覧ください。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>ADSyncConfig PowerShell モジュールの使用 
@@ -136,15 +136,15 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 このコマンドレットは、次のアクセス許可を設定します。 
  
 
-|Type |Name |Access |適用対象| 
+|種類 |名前 |Access |適用対象| 
 |-----|-----|-----|-----|
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |デバイスの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント|すべてのプロパティの読み取り |InetOrgPerson の子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |コンピューターの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |foreignSecurityPrincipal の子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |グループの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |ユーザーの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |連絡先の子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |デバイスの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント|すべてのプロパティの読み取り |InetOrgPerson の子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |コンピューターの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |foreignSecurityPrincipal の子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |グループの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |ユーザーの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |連絡先の子孫オブジェクト| 
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>MS-DS-Consistency-Guid のアクセス許可の構成 
@@ -162,9 +162,9 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|Type |Name |Access |適用対象|
+|種類 |名前 |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW|AD DS コネクタ アカウント|プロパティの読み取り/書き込み|ユーザーの子孫オブジェクト|
+|Allow|AD DS コネクタ アカウント|プロパティの読み取り/書き込み|ユーザーの子孫オブジェクト|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>パスワード同期のアクセス許可 
 パスワード ハッシュ同期を使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
@@ -182,10 +182,10 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|Type |Name |Access |適用対象|
+|種類 |名前 |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW |AD DS コネクタ アカウント |ディレクトリの変更のレプリケート |このオブジェクトのみ (ドメインのルート)| 
-|ALLOW |AD DS コネクタ アカウント |ディレクトリの変更すべてのレプリケート |このオブジェクトのみ (ドメインのルート)| 
+|Allow |AD DS コネクタ アカウント |ディレクトリの変更のレプリケート |このオブジェクトのみ (ドメインのルート)| 
+|Allow |AD DS コネクタ アカウント |ディレクトリの変更すべてのレプリケート |このオブジェクトのみ (ドメインのルート)| 
   
 ### <a name="permissions-for-password-writeback"></a>パスワード ライトバックのアクセス許可 
 パスワード ライトバックを使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
@@ -202,11 +202,11 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|Type |Name |Access |適用対象|
+|種類 |名前 |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW |AD DS コネクタ アカウント |パスワードのリセット |ユーザーの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |プロパティ lockoutTime の書き込み |ユーザーの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |プロパティ pwdLastSet の書き込み |ユーザーの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |パスワードのリセット |ユーザーの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |プロパティ lockoutTime の書き込み |ユーザーの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |プロパティ pwdLastSet の書き込み |ユーザーの子孫オブジェクト| 
 
 ### <a name="permissions-for-group-writeback"></a>グループの書き戻しのアクセス許可 
 グループの書き戻しを使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
@@ -222,11 +222,11 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|Type |Name |Access |適用対象|
+|種類 |名前 |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW |AD DS コネクタ アカウント |汎用の読み取り/書き込み |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
-|ALLOW |AD DS コネクタ アカウント |子オブジェクトの作成/削除 |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
-|ALLOW |AD DS コネクタ アカウント |削除/ツリー オブジェクトの削除|オブジェクトの種類のグループとサブオブジェクトのすべての属性|
+|Allow |AD DS コネクタ アカウント |汎用の読み取り/書き込み |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
+|Allow |AD DS コネクタ アカウント |子オブジェクトの作成/削除 |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
+|Allow |AD DS コネクタ アカウント |削除/ツリー オブジェクトの削除|オブジェクトの種類のグループとサブオブジェクトのすべての属性|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Exchange ハイブリッドのデプロイのアクセス許可 
 Exchange ハイブリッドのデプロイを使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
@@ -245,12 +245,12 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 このコマンドレットは、次のアクセス許可を設定します。  
  
 
-|Type |Name |Access |適用対象|
+|種類 |名前 |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |ユーザーの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |InetOrgPerson の子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |グループの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |連絡先の子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |ユーザーの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |InetOrgPerson の子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |グループの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |連絡先の子孫オブジェクト| 
 
 ### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Exchange メールのパブリック フォルダーのアクセス許可 (プレビュー) 
 Exchange メールのパブリック フォルダー機能を使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
@@ -267,9 +267,9 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|Type |Name |Access |適用対象|
+|種類 |名前 |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |パブリック フォルダーの子孫オブジェクト| 
+|Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |パブリック フォルダーの子孫オブジェクト| 
 
 ### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>AD DS コネクタ アカウントのアクセス許可の制限 
 この PowerShell スクリプトは、パラメーターとして指定された AD コネクタ アカウントに対するアクセス許可のセキュリティを強化します。 アクセス許可のセキュリティの強化には、次の手順が含まれます。 
@@ -292,18 +292,18 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|Type |Name |Access |適用対象|
+|種類 |名前 |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW |SYSTEM |フル コントロール |このオブジェクト 
-|ALLOW |Enterprise Admins |フル コントロール |このオブジェクト 
-|ALLOW |Domain Admins |フル コントロール |このオブジェクト 
-|ALLOW |管理者 |フル コントロール |このオブジェクト 
-|ALLOW |Enterprise Domain Controllers |コンテンツの一覧 |このオブジェクト 
-|ALLOW |Enterprise Domain Controllers |すべてのプロパティの読み取り |このオブジェクト 
-|ALLOW |Enterprise Domain Controllers |読み取りのアクセス許可 |このオブジェクト 
-|ALLOW |Authenticated Users |コンテンツの一覧 |このオブジェクト 
-|ALLOW |Authenticated Users |すべてのプロパティの読み取り |このオブジェクト 
-|ALLOW |Authenticated Users |読み取りのアクセス許可 |このオブジェクト 
+|Allow |SYSTEM |フル コントロール |このオブジェクト 
+|Allow |Enterprise Admins |フル コントロール |このオブジェクト 
+|Allow |Domain Admins |フル コントロール |このオブジェクト 
+|Allow |管理者 |フル コントロール |このオブジェクト 
+|Allow |Enterprise Domain Controllers |コンテンツの一覧 |このオブジェクト 
+|Allow |Enterprise Domain Controllers |すべてのプロパティの読み取り |このオブジェクト 
+|Allow |Enterprise Domain Controllers |読み取りのアクセス許可 |このオブジェクト 
+|Allow |Authenticated Users |コンテンツの一覧 |このオブジェクト 
+|Allow |Authenticated Users |すべてのプロパティの読み取り |このオブジェクト 
+|Allow |Authenticated Users |読み取りのアクセス許可 |このオブジェクト 
 
 ## <a name="next-steps"></a>次の手順
 - [Azure AD Connect:アカウントとアクセス許可](reference-connect-accounts-permissions.md)
