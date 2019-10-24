@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 4622a8575d7b6a38226ee3a980c05f143c128356
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68963535"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple デバイスを安全にインストールして操作する

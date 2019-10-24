@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor for VMs の有効化 (プレビュー) の概要 | Microsoft Docs
 description: Azure Monitor for VMs のデプロイと構成の方法を説明します。 システム要件を確認してください。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/24/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 477343e188bece55f72a59debbab8c9a3f3e2905
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.date: 09/24/2019
+ms.openlocfilehash: 9d132faf0b4d1de232e2b7e6e5ab6730978e27a8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264994"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555227"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
 

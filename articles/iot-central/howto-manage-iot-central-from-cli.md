@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1ec83541c62d93eee91348531797ecdeb8c9fc6e
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 42a2b2d7962f3efd71639f65e9e6f6f5d6783afb
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873485"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286431"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Azure CLI から IoT Central を管理する
 
@@ -53,7 +53,7 @@ az iotcentral app create \
 | パラメーター         | 説明 |
 | ----------------- | ----------- |
 | resource-group    | そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
-| location          | このコマンドでは既定で、リソース グループの場所が使用されます。 現在、IoT Central アプリケーションは、**米国東部**、**米国西部**、**北ヨーロッパ**、**西ヨーロッパ**のリージョン、または**オーストラリア**地域で作成できます。 |
+| location          | このコマンドでは既定で、リソース グループの場所が使用されます。 現在、IoT Central アプリケーションは、**米国東部**、**米国西部**、**北ヨーロッパ**、または**西ヨーロッパ**のリージョン、あるいは**オーストラリア**または**アジア太平洋**の地域で作成できます。 |
 | 名前              | Azure portal 内のアプリケーションの名前。 |
 | subdomain         | アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は https://mysubdomain.azureiotcentral.com です。 |
 | sku               | 現在使用できる値は **S1** (Standard レベル) のみです。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |

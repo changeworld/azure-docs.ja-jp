@@ -12,19 +12,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 80d4bd2f4f9ea4c451f312f05fd42fbc1ba433ab
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 740e53728356755bcc42e1e0aafb64992b30e113
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181226"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249027"
 ---
 # <a name="run-sql-server-integration-services-ssis-packages-with-azure-enabled-dtexec-utility"></a>Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services (SSIS) パッケージを実行する
 この記事では、Azure 対応の **dtexec** (**AzureDTExec**) コマンド プロンプト ユーティリティについて説明します。  Azure Data Factory (ADF) の Azure-SSIS Integration Runtime (IR) で SSIS パッケージを実行するために使用されます。
 
 従来の **dtexec** ユーティリティは、SQL Server に付属しています。詳細については、[dtexec ユーティリティ](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017) のドキュメントを参照してください。  多くの場合、オンプレミスで SSIS パッケージを実行するために、Active Batch や Control-M などのサードパーティ製のオーケストレーター/スケジューラによって呼び出されます。  最新の **AzureDTExec** ユーティリティは、SQL Server Management Studio (SSMS) ツールに付属しています。  また、Azure で SSIS パッケージを実行するために、サードパーティ製のオーケストレーター/スケジューラで呼び出すこともできます。  これにより、SSIS パッケージのクラウドへのリフト アンド シフト/移行が促進されます。  移行後、日常業務でサードパーティ製のオーケストレーター/スケジューラを使い続けたい場合は、**dtexec** ではなく **AzureDTExec** を呼び出します。
 
-**AzureDTExec** は、ADF パイプラインでは SSIS パッケージの実行アクティビティとして実行されます。詳しくは、[ADF アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関するページをご覧ください。  ADF のパイプラインが生成される Azure Active Directory (AAD) アプリケーションを使用するように、SSMS で構成できます。  また、パッケージが格納されているファイル システム/ファイル共有/Azure Files にアクセスするように構成することもできます。  **AzureDTExec** では、呼び出しオプションで指定した値に基づいて、SSIS パッケージの実行アクティビティが含まれる固有の ADF パイプラインが生成されて実行されます。  オプションに同じ値を指定して **AzureDTExec** を呼び出すと、既存のパイプラインが再実行されます。  オプションに新しい値を指定して **AzureDTExec** を呼び出すと、新しいパイプラインが生成されます。
+**AzureDTExec** は、ADF パイプラインでは SSIS パッケージの実行アクティビティとして実行されます。詳しくは、[ADF アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関するページをご覧ください。  ADF のパイプラインが生成される Azure Active Directory (AAD) アプリケーションを使用するように、SSMS で構成できます。  また、パッケージが格納されているファイル システム/ファイル共有/Azure Files にアクセスするように構成することもできます。  **AzureDTExec** では、呼び出しオプションで指定した値に基づいて、SSIS パッケージの実行アクティビティが含まれる固有の ADF パイプラインが生成されて実行されます。  オプションに同じ値を指定して **AzureDTExec** を呼び出すと、既存のパイプラインが再実行されます。
 
 ## <a name="prerequisites"></a>前提条件
 **AzureDTExec** を使用するには、[こちら](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)から最新の SSMS (バージョン 18.3 以降) をダウンロードしてインストールします。
@@ -70,21 +70,26 @@ ms.locfileid: "71181226"
 
 - **LogAccessPassword**: ログ ファイルを書き込むときに、UNC パス内のログ フォルダーにアクセスするためのパスワード資格情報を入力します。**LogPath** が指定されていて、**LogLevel** が **null** ではないときは必須です。
 
-- **PipelineNameHashStrLen**: **AzureDTExec** を呼び出すときに指定するオプションの値から生成されるハッシュ文字列の長さを入力します。  この文字列は、Azure-SSIS IR でパッケージを実行する ADF パイプラインの一意な名前を形成するために使用されます。  長さは 32 文字で十分です。
+- **PipelineNameHashStrLen**: **AzureDTExec** を呼び出すときに指定するオプションの値から生成されるハッシュ文字列の長さを入力します。  この文字列は、Azure-SSIS IR でパッケージを実行する ADF パイプラインの一意な名前を形成するために使用されます。  通常、長さは 32 文字で十分です。
 
 パッケージとログ ファイルをオンプレミスのファイル システム/ファイル共有に保存する場合は、オンプレミスのネットワークに接続されている VNet に Azure-SSIS IR を結合し、パッケージをフェッチしてログ ファイルを書き込むことができるようにする必要があります。詳しくは、[VNet への Azure-SSIS IR の参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)に関する記事をご覧ください。
 
 **AzureDTExec.settings** ファイルに書き込まれた機密の値がプレーン テキストで表示されないようにするには、Base64 エンコードの文字列にエンコードします。  **AzureDTExec** を呼び出すと、Base64 でエンコードされたすべての文字列が元の値にデコードされます。  **AzureDTExec.settings** ファイルにアクセスできるアカウントを制限することで、ファイルのセキュリティを強化できます。
 
 ## <a name="invoke-azuredtexec-utility"></a>AzureDTExec ユーティリティを呼び出す
-コマンド ライン プロンプトで **AzureDTExec** を呼び出し、ユース ケース シナリオの特定のオプションに関連する値を指定できます。次に例を示します。
+コマンド ライン プロンプトで **AzureDTExec** を呼び出し、ユース ケース シナリオの特定のオプションに関連する値を指定できます。
 
-`AzureDTExec.exe
-  /F \\MyStorageAccount.file.core.windows.net\MyFileShare\MyPackage.dtsx
-  /Conf \\MyStorageAccount.file.core.windows.net\MyFileShare\MyConfig.dtsConfig
-  /Conn "MyConnectionManager;Data Source=MyDatabaseServer.database.windows.net;User ID=MyAdminUsername;Password=MyAdminPassword;Initial Catalog=MyDatabase"
-  /Set \package.variables[MyVariable].Value;MyValue
-  /De MyEncryptionPassword`
+ユーティリティが `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn` にインストールされていることを確認します。 パスを 'PATH' 環境変数に追加すると、どこからでも呼び出すことができます。
+
+```dos
+> cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
+> AzureDTExec.exe  ^
+  /F \\MyStorageAccount.file.core.windows.net\MyFileShare\MyPackage.dtsx  ^
+  /Conf \\MyStorageAccount.file.core.windows.net\MyFileShare\MyConfig.dtsConfig  ^
+  /Conn "MyConnectionManager;Data Source=MyDatabaseServer.database.windows.net;User ID=MyAdminUsername;Password=MyAdminPassword;Initial Catalog=MyDatabase"  ^
+  /Set \package.variables[MyVariable].Value;MyValue  ^
+  /De MyEncryptionPassword
+```
 
 **AzureDTExec** を呼び出すときのオプションは、**dtexec** を呼び出すときと似ています。詳しくは、[dtexec ユーティリティ](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)のドキュメントをご覧ください。  現在サポートされているオプションは次のとおりです。
 
@@ -98,5 +103,12 @@ ms.locfileid: "71181226"
 
 - **/De[crypt]** : **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** 保護レベルで構成されているパッケージの暗号化解除パスワードを設定します。
 
+> [!NOTE]
+> オプションに新しい値を指定して **AzureDTExec** を呼び出すと、 **/De[cript]** オプション以外の新しいパイプラインが生成されます。
+
 ## <a name="next-steps"></a>次の手順
-SSIS パッケージの実行アクティビティを含む一意のパイプラインが生成され、**AzureDTExec** のを呼び出しの後で実行されたら、ADF ポータルで編集したり再実行したりできます。詳しくは、[ADF アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事をご覧ください。
+
+SSIS パッケージの実行アクティビティを含む一意のパイプラインが生成され、**AzureDTExec** のを呼び出しの後で実行されたら、ADF ポータルで監視できます。 詳細については、[ADF アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関するページをご覧ください。
+
+> [!WARNING]
+> 生成されたパイプラインは、**AzureDTExec**  によってのみ使用されることが想定されています。 プロパティ/パラメーターは将来変更される可能性があるため、他の目的では変更したり再利用したりしないでください。これにより、**AzureDTExec** が壊れる可能性があります。 このような状況が発生した場合は、いつでもパイプラインを削除することができます。これにより、次にパイプラインが **AzureDTExec** によって呼び出されたときに新しいパイプラインが生成されます。

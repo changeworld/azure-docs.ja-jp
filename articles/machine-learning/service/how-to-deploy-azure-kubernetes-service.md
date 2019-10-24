@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: dfaa39b33839406ffdf484299cb520aebf011c7d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034625"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299688"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -114,7 +114,7 @@ az ml computetarget create aks -n myaks
 
 **推定所要時間:** 約 5 分です。
 
-お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.12.## である場合は、それを使用してお客様のイメージをデプロイできます。
+お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.14 より低い場合は、それを使用してお客様のイメージをデプロイできます。
 
 > [!TIP]
 > 既存の AKS クラスターは、Azure Machine Learning ワークスペースと異なる Azure リージョンに存在してもかまいません。
@@ -133,7 +133,7 @@ Azure CLI または portal を使用した AKS クラスターの作成の詳細
 * [AKS クラスターの作成 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [AKS クラスターの作成 (ポータル)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
-次の例では、既存の AKS 1.12.## クラスターをワークスペースにアタッチする方法を示します。
+次の例では、既存の AKS クラスターをワークスペースにアタッチする方法を示します。
 
 **SDK を使用する**
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: a53d5810b20aa8389c152889fed5d7f4e8cfc5b7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 728d32ddb63658d24e932e8eeef4a3f50371ccc3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177669"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72265054"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -91,6 +91,9 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 仮想ネットワーク ピアリング接続を利用するイグレス トラフィックとエグレス トラフィックには少額の料金が発生します。 VNet ピアリングとグローバル VNet ピアリングの料金の詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
 
 ゲートウェイ転送は、1 つの仮想ネットワークが構内間接続または VNet 間接続用にピアリングされた仮想ネットワーク内の VPN/ExpressRoute ゲートウェイを活用できるようにするピアリング プロパティです。 ピアリングされた VNet でのゲートウェイ (イングレスまたはエグレス) へのトラフィックは、VNet ピアリングの料金が発生します。 詳細については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway/)」または ExpressRoute ゲートウェイの価格、[VNet のピアリングの価格](https://azure.microsoft.com/pricing/details/virtual-network)に関するページを参照してください。
+
+>[!NOTE]
+> このドキュメントの以前のバージョンでは、VNet ピアリングの料金はゲートウェイ転送には適用されないことが規定されていました。 これは、価格ページの正しい価格を反映するように更新されています。
 
 ## <a name="next-steps"></a>次の手順
 

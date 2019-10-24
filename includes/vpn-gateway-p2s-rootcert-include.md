@@ -9,10 +9,10 @@ ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c8e7e5272f180c482ca7fdd44302f49eb888b25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67181035"
 ---
 エンタープライズ ソリューションを使って生成されたルート証明書を使用する (推奨) か、または自己署名証明書を生成します。 ルート証明書の作成後、秘密キーではなく公開証明書データを、Base64 でエンコードされた X.509 .cer ファイルとしてエクスポートします。 その後、公開証明書データを Azure サーバーにアップロードします。

@@ -9,10 +9,10 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69520855"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "69520855"
 
 ### <a name="can-i-use-certificates-from-azure-key-vault"></a>Azure Key Vault の証明書を使用できますか?
 
-いいえ。
+No.
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>証明書の作成にどのようなツールを使用できますか。
 

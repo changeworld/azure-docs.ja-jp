@@ -12,48 +12,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 23cd7c3765fc99eb5907aa853d7431d5e247aea6
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: e7d1947b2194c04bb5269887b73e2f4fa13df6e7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709725"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375734"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
 
-EA のお客様である場合や [Microsoft 顧客契約](#check-your-access-to-a-microsoft-customer-agreement)を結んでいる場合は、[Azure portal](https://portal.azure.com/) で Azure の使用量と料金をダウンロードできます。 その他のサブスクリプションの場合は、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスして使用量をダウンロードします。
+Azure の利用状況と請求金額に対する日単位の内訳を Azure portal からダウンロードすることができます。 Azure 使用状況情報を取得するアクセス許可を持つのは、特定のロール (アカウント管理者やエンタープライズ管理者など) だけです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
 
-Azure 使用状況情報を取得するアクセス許可を持つのは、特定のロール (アカウント管理者やエンタープライズ管理者など) だけです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
+Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と請求金額を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。  Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の利用状況と請求金額を表示してダウンロードできるのは、取引先組織である Microsoft の全体管理者ロールと管理者エージェント ロールだけです。 [Azure portal で課金アカウントの種類を確認](#check-your-billing-account-type)してください。
 
-[Microsoft 顧客契約](#check-your-access-to-a-microsoft-customer-agreement)を結んでいる場合、Azure の使用量と料金を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 Microsoft 顧客契約の課金ロールの詳細については、「[課金プロファイルのロールとタスク](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+## <a name="download-usage-from-the-azure-portal-csv"></a>Azure portal から利用状況をダウンロードする (.csv)
 
-## <a name="download-usage-from-the-account-center-csv"></a>アカウント センターから使用状況をダウンロードする (.csv)
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. "*コスト管理 + 請求*" を検索します。
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。
+    ![Azure portal の検索を表示するスクリーンショット](./media/billing-download-azure-usage/portal-cm-billing-search.png)
 
-2. 請求書と使用状況を確認するサブスクリプションを選択します。
-
-3. **[請求履歴]** を選択します。
-
-    ![Screenshot that shows billing history option](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
-
-4. 過去 6 回の請求期間と、現行の未請求期間の明細も確認できます。
-
-    ![Screenshot that shows billing periods, options to download invoice and daily usage, and total charges for each billing period](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
-
-5. 見積もりを作成した時点での料金の見積もりを表示するには、 **[現在の明細書の表示]** を選択します。 この情報は毎日更新されますが、すべての累計使用量が含まれていない可能性があります。 その月の実際の請求書は、この見積もりとは異なる場合があります。
-
-    ![Screenshot that shows the View Current Statement option](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
-
-    ![Screenshot that shows the estimate of current charges](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
-
-6. CSV ファイル形式で毎日の使用状況データをダウンロードするには、 **[利用状況のダウンロード]** を選択します。 バージョンが 2 つある場合は、バージョン 2 をダウンロードします。
-
-    ![Screenshot that shows the Download Usage option](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
-
-Azure アカウント センターにアクセスできるのは、アカウント管理者のみです。 所有者などの他の課金管理者は、[課金 API](billing-usage-rate-card-overview.md) を使用して使用状況の情報を取得できます。
-
-毎日の使用状況の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。 コスト管理に関するヘルプについては、[Azure の課金とコスト管理で想定外の料金を防ぐ](billing-getting-started.md)方法に関するページを参照してください。
+1. お持ちのアクセス権によっては、課金アカウントまたは課金プロファイルを選択する必要があります。
+1. 左側のメニューの **[課金]** から **[請求書]** を選択します。
+1. 請求書グリッドで、ダウンロードする使用量に対応する請求期間の行を探します。
+1. 右側にあるダウンロード アイコンまたは省略記号 (`...`) をクリックします。
+1. ダウンロード メニューから **[Azure の利用状況と請求金額をダウンロードする]** を選択します。
 
 ## <a name="download-usage-for-ea-customers"></a>EA のお客様の使用量のダウンロード
 
@@ -62,33 +45,14 @@ EA のお客様として使用量データを表示およびダウンロード�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。
 
-    ![Azure portal の検索を表示するスクリーンショット](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
+    ![Azure portal の検索を表示するスクリーンショット](./media/billing-download-azure-usage/portal-cm-billing-search.png)
 
 1. **[使用量 + 請求金額]** を選択します。
 1. ダウンロードしたい月で、 **[ダウンロード]** を選択します。
 
-## <a name="download-usage-for-your-microsoft-customer-agreement"></a>Microsoft 顧客契約に関する使用量のダウンロード
+## <a name="download-usage-for-pending-charges"></a>保留中の料金の使用量のダウンロード
 
-Microsoft 顧客契約を結んでいる場合は、自分の請求プロファイルの Azure の使用量と料金をダウンロードできます。 Azure の使用量と料金の CSV ファイルをダウンロードするには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。
-
-### <a name="download-usage-for-billed-charges"></a>課金された料金の使用量のダウンロード
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. "*コスト管理 + 請求*" を検索します。
-3. 課金プロファイルを選択します。 アクセス方法によっては、最初に請求先アカウントを選択することが必要な場合があります。
-4. **[請求書]** を選択します。
-5. 請求書グリッドで、ダウンロードする使用量に対応する請求書の行を探します。
-6. 行の末尾にある省略記号 (`...`) をクリックします。
-
-    ![行の末尾にある省略記号を示すスクリーンショット](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
-
-7. ダウンロードのコンテキスト メニューで [**Azure の利用状況と請求金額]** を選択します。
-
-     ![選択された Azure の使用量と料金のスクリーンショット](./media/billing-download-azure-usage/contextmenu-usage.png)
-
-### <a name="download-usage-for-pending-charges"></a>保留中の料金の使用量のダウンロード
-
-現在の請求期間について、当月の累計使用量をダウンロードすることもできます。 これらの料金はまだ請求されていません。
+Microsoft 顧客契約を結んでいる場合は、現在の請求期間の月度累計使用量をダウンロードすることができます。 これらの料金はまだ請求されていません。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. "*コスト管理 + 請求*" を検索します。
@@ -98,8 +62,8 @@ Microsoft 顧客契約を結んでいる場合は、自分の請求プロファ�
 
     ![概要からのダウンロードを示すスクリーンショット](./media/billing-download-azure-usage/open-usage.png)
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>課金アカウントの種類を確認する
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

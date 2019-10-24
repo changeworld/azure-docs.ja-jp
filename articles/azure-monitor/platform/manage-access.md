@@ -13,24 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 920e470a8bc06050219d0f603ab842cfc267e6ce
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695015"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329402"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
-Azure Monitor の[ログ](data-platform-logs.md) データは、Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは基本的に、データと構成情報が含まれるコンテナーです。 ログ データへのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行します。
+Azure Monitor は、[ログ](data-platform-logs.md) データを Log Analytics ワークスペースに格納します。 ワークスペースは、データと構成情報が含まれるコンテナーです。 ログ データへのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行します。
 
-この記事では、次のように、ログへのアクセスを管理する方法と、ログを含むワークスペースを管理する方法について説明します。
+この記事では、以下のアクセスを許可する方法など、ログへのアクセスを管理する方法と、ログを含むワークスペースを管理する方法について説明します。 
 
-* Azure のロールベースのアクセス制御 (RBAC) を使用して、特定のリソースのデータにアクセスする必要があるユーザーにアクセス権を付与する方法について説明します。
-
-* ワークスペースのアクセス許可を使用して、ワークスペースへのアクセス権を付与する方法。
-
-* Azure RBAC を使用して、ワークスペース内の特定のテーブルのログ データにアクセスする必要があるユーザーにアクセス権を付与する方法。
+* ワークスペース (ワークスペースのアクセス許可を使用)
+* 特定のリソースのログ データにアクセスする必要があるユーザー (Azure のロールベースのアクセス制御 (RBAC) を使用)
+* ワークスペース内の特定のテーブルのログ データにアクセスする必要があるユーザー (Azure RBAC を使用)
 
 ## <a name="configure-access-control-mode"></a>アクセス制御モードを構成する
 
@@ -150,15 +148,15 @@ Log Analytics 閲覧者ロールには、次の Azure アクションが含ま�
 
 "*Log Analytics 共同作成者*" ロールのメンバーは、以下の操作を行うことができます。
 
-* すべての監視データの読み取り (Log Analytics 閲覧者と同様)
-* Automation アカウントの作成と構成
-* 管理ソリューションの追加と削除
+* Log Analytics 閲覧者が読み取れるすべての監視データを読み取る
+* Automation アカウントを作成および構成する
+* 管理ソリューションを追加および削除する
 
     > [!NOTE]
     > 最後の 2 つのアクションを正常に実行するには、このアクセス許可をリソース グループまたはサブスクリプション レベルで付与する必要があります。
 
-* ストレージ アカウント キーの読み取り
-* Azure Storage からのログの収集の構成
+* ストレージ アカウント キーを読み取る
+* Azure Storage からのログの収集を構成する
 * 次のような、Azure リソースの監視設定の編集
   * VM への VM 拡張機能の追加
   * すべての Azure リソースに対する Azure Diagnostics の構成

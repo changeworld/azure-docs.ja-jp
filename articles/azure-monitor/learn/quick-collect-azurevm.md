@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, sec-javascript-october2019
+ms.openlocfilehash: f400fb7f177301e2b8c21cde9be334635025b4b3
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992150"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677692"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンからデータを収集する
 
@@ -35,7 +35,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
 
-    ![Azure ポータル](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure ポータル](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **[作成]** を選択し、次の項目について選択します。
 
@@ -45,7 +45,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
    * 2018 年 4 月 2 日より後に作成された新しいサブスクリプションでワークスペースを作成した場合は、自動的に "*1 GB あたり*" の価格プランが使用され、価格レベルを選択するためのオプションは利用できなくなります。  4 月 2 日より前に作成された既存のサブスクリプションのワークスペースを作成している場合、または既存の EA 登録に関連付けられたサブスクリプションに対してワークスペースを作成している場合は、希望の価格レベルを選択します。  特定のレベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
   
-        ![Log Analytics リソース ブレードの作成](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Log Analytics リソース ブレードの作成](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. **[Log Analytics ワークスペース]** ウィンドウで必要な情報を入力したら、 **[OK]** を選択します。  
 
@@ -80,7 +80,7 @@ Azure Monitor は、Windows イベント ログまたは Linux Syslog からイ�
 
 1. **[詳細設定]** を選択します。
 
-    ![Log Analytics の [詳細設定]](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics の [詳細設定]](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
 
 2. **[データ]** を選択してから、 **[Windows イベント ログ]** を選択します。
 
@@ -114,7 +114,7 @@ Azure Monitor は、Windows イベント ログまたは Linux Syslog からイ�
 
 6. 新しい Log Analytics ワークスペースの Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。
 
-    ![既定の Windows パフォーマンス カウンターが選択されている状態](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![既定の Windows パフォーマンス カウンターが選択されている状態](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     **[下の構成をコンピューターに適用する]** を選択し、 **[選択したパフォーマンス カウンターを追加する]** を選択します。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。  
 

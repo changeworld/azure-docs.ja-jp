@@ -1,21 +1,18 @@
 ---
 title: コンテナーの Azure Monitor についてよく寄せられる質問 | Microsoft Docs
 description: コンテナーの Azure Monitor は、Azure 内の AKS クラスターおよび Container Instances の正常性を監視するソリューションです。 この記事ではよくある質問の回答を示します。
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f8d763f8bb228a0d4d83a3776f818d59939b942d
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.date: 08/14/2019
+ms.openlocfilehash: bda64dd555f1970b70878d827f6be1dab3f1e2d5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559083"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555435"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>コンテナーの Azure Monitor についてよく寄せられる質問
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079655"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390495"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Azure Portal を使用して VHD から VM を作成する
 
@@ -34,6 +34,7 @@ Azure で仮想マシン (VM) を作成する方法には、次のいくつか�
 
 複数の VM を作成する場合は、特殊化されたディスクを使用しないでください。 代わりに、より大規模なデプロイの場合は、[イメージを作成](capture-image-resource.md)してから、[そのイメージを使用して複数の VM を作成](create-vm-generalized-managed.md)します。
 
+1 つのスナップショットまたは VHD からの同時デプロイ数は 20 VM を上限とするようお勧めします。 
 
 ## <a name="copy-a-disk"></a>ディスクをコピーする
 
@@ -74,6 +75,7 @@ Azure で仮想マシン (VM) を作成する方法には、次のいくつか�
 10. **[Guest config] (ゲストの構成)** ページで、必要に応じてすべての拡張機能を追加します。
 11. 完了したら、 **[確認および作成]** を選択します。 
 12. VM 構成が検証に合格したら、 **[作成]** を選択してデプロイを開始します。
+
 
 ## <a name="next-steps"></a>次の手順
 

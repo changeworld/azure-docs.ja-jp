@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: akjosh
-ms.openlocfilehash: 3a999b93ce7246a91db8dd3df7536513b6e11029
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 86c05519e7027ec8b7434919bf43f9b4602b0300
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174043"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789951"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -38,7 +38,7 @@ ms.locfileid: "71174043"
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Linux 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS 上で実行できます。詳細については、この[記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems)をご覧ください。
+Linux 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS 上で実行できます。詳細については、この[記事](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)をご覧ください。
 
 ### <a name="script-location"></a>スクリプトの場所
 

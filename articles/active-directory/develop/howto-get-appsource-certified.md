@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034c02c89c6e720311b3dc36428035e8cbdd2b3b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835215"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374092"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 
@@ -33,7 +33,7 @@ AppSource でスタンドアロン SaaS アプリケーションを一覧表示�
 
 ## <a name="guides-and-code-samples"></a>ガイドとコード サンプル
 
-OpenID Connect を使用してアプリケーションを Azure AD と統合する方法について学習するには、[Azure Active Directory 開発者ガイド](v1-overview.md#get-started "の開発者用 Azure AD で作業開始")に関するページにある説明とコード サンプルに従ってください。
+OpenID Connect を使用してアプリケーションを Azure AD と統合する方法について学習するには、[Azure Active Directory 開発者ガイド](v1-overview.md#get-started "開発者向けの Azure AD の概要")のページにある説明とコード サンプルに従ってください。
 
 ## <a name="multi-tenant-applications"></a>マルチテナント アプリケーション
 
@@ -113,7 +113,7 @@ AppSource の試用エクスペリエンスの詳細については、[こちら
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure AD のサインインをサポートするアプリケーションの作成の詳細については、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)」を参照してください。
+- Azure AD のサインインをサポートするアプリケーションの作成の詳細については、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios)」を参照してください。
 - AppSource で SaaS アプリケーションを一覧表示する方法については、[AppSource パートナーの情報](https://appsource.microsoft.com/partners)に関するページをご覧ください
 
 ## <a name="get-support"></a>サポートを受ける
@@ -125,8 +125,8 @@ Azure AD との統合について、Microsoft は [Stack Overflow](https://stack
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
 
 <!--Reference style links -->
-[AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
+[AAD-Auth-Scenarios-Browser-To-WebApp]:v1-authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started

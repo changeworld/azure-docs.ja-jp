@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: a271f03788bc7b831e6d8daff3d53503db5a2710
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 4b2533131407081b97bb491895d96cf566442090
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491015"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72375460"
 ---
 契約の種類を確認して課金アカウントの種類を判断する
  
@@ -23,7 +23,7 @@ ms.locfileid: "67491015"
  
     ![[プロパティ] ページで Microsoft 顧客契約を示すスクリーンショット](./media/billing-check-account-type/billing-mca-property.png)
     
-    プロパティ ページの **[請求先アカウントの種類]** によって、アカウントの種類が決まります。 Microsoft オンライン サービス プログラム、エンタープライズ契約、または Microsoft 顧客契約の場合があります。 課金アカウントの種類の詳細については、「[Azure portal での課金アカウントの表示](../articles/billing/billing-view-all-accounts.md)」を参照してください。  
+    プロパティ ページの **[請求先アカウントの種類]** によって、アカウントの種類が決まります。 Microsoft Online Services プログラム、マイクロソフト エンタープライズ契約、Microsoft 顧客契約、Microsoft Partner Agreement の場合があります。 課金アカウントの種類の詳細については、「[Azure portal での課金アカウントの表示](../articles/billing/billing-view-all-accounts.md)」を参照してください。  
  
 4. 複数の課金スコープにアクセスできる場合は、左側から **[課金アカウント]** または **[すべての課金スコープ]** を選択します。 **[請求先アカウントの種類]** 列の種類を確認します。
  

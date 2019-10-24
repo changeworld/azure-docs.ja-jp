@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24404d6b55f83f96d8e2601afd35b2dec00cc7e9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0872d3c798bd5bd94e425869822602e8123517b4
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099732"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303612"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
@@ -138,7 +138,14 @@ HANA L インスタンスと Azure の間で大量のデータを転送するた
 * SAP HANA on Azure (L インスタンス) ユニットには、お客様が HANA L インスタンスのデプロイを要求したときに提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 詳細については、「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 この IP アドレスには、Azure 仮想ネットワークを HANA L インスタンスに接続する回線と Azure サブスクリプションを使用してアクセスできます。 サーバー IP プールのアドレス範囲から割り当てられる IP アドレスは、ハードウェア ユニットに直接割り当てられます。 このソリューションの最初のデプロイでこの割り当てが行われるため、NAT を使用した割り当ては*行われません*。 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>HANA L インスタンスへの直接ルーティング
-既定では、HANA L インスタンス ユニットとオンプレミスの間、または 2 つの異なるリージョンにデプロイされた HANA L インスタンス ルーティング間の推移的なルーティングが機能しません。 そのような推移的なルーティングを可能にするためのいくつかの可能性があります。
+
+既定では、推移的なルーティングは次のシナリオでは機能しません。
+
+* HANA Large Instances ユニットとオンプレミスのデプロイの間。
+
+* 2 つの異なるリージョンにデプロイされている HANA Large Instances ルーティングの間。
+
+それらのシナリオで推移的なルーティングを有効にするには 3 つの方法があります。
 
 - データをルーティングするリバース プロキシ。 たとえば、仮想ファイアウォール/トラフィック ルーティング ソリューションとして HANA L インスタンスやオンプレミスに接続する Azure 仮想ネットワークにデプロイされる F5 BIG-IP や NGINX (および Traffic Manager) などです。
 - Linux VM で [IPTables ルール](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)を使用して、オンプレミスの場所と HANA L インスタンス ユニット間、または別のリージョンにある HANA L インスタンス ユニット間のルーティングを有効にします。 IPTables を実行している VM は、HANA L インスタンスおよびオンプレミスに接続している Azure 仮想ネットワークにデプロイする必要があります。 VM は、VM のネットワーク スループットが予想ネットワーク トラフィックに対して十分であるように、サイズを設定する必要があります。 VM のネットワーク帯域幅の詳細については、「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」という記事を参照してください。

@@ -1,24 +1,19 @@
 ---
 title: コンソール アプリケーション用の Azure Application Insights | Microsoft Docs
 description: Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
-ms.author: mbullwin
-ms.openlocfilehash: 53a765cd2e71b5b1eb1ac2c70506fd55aec6736e
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1cafa78fb4fba28fbd0691e256efe482fc9664ef
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274135"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678199"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
 

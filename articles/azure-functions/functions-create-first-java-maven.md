@@ -1,30 +1,28 @@
 ---
-title: Java と Maven を使用して関数を発行する - Azure Functions
-description: Java と Maven を使用して、HTTP によってトリガーされる簡単な関数作成し、Azure に発行します。
-services: functions
-documentationcenter: na
+title: Java と Maven を使用して関数を Azure に発行する
+description: Java と Maven を使用して、HTTP によってトリガーされる関数を作成し、Azure に発行します。
 author: rloutlaw
-manager: justhe
-keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
+manager: gwallace
 ms.service: azure-functions
 ms.topic: quickstart
-ms.devlang: java
 ms.date: 08/10/2018
-ms.author: routlaw
-ms.reviewer: glenga
+ms.author: glenga
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5447fdcfa86c35b7c5cf079ae8446c30785e893f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5c51e445aaa27f3f83627ccf0da8fb80e01f156c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299412"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329525"
 ---
-# <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>クイック スタート:Java を使用して関数を作成し、Azure Functions に発行する
+# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>クイック スタート:Java と Maven を使用して関数を作成し、Azure に発行する
 
-この記事では、Maven コマンドライン ツールを使用して Java 関数を作成し、Azure Functions に発行する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
+この記事では、Maven コマンドライン ツールを使用して Java 関数を作成し、Azure Functions に発行する方法を示します。 完了すると、関数コードは Azure の[サーバーレス ホスティング プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求によってトリガーされます。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+<!--
+> [!NOTE] 
+> You can also create a Kotlin-based Azure Functions project by using the azure-functions-kotlin-archetype instead. Visit the [GitHub repository](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) for more information.
+-->
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,8 +30,12 @@ Java を使用して関数を開発するには、以下のものがインスト
 
 - [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8
 - [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降
+- Azure サブスクリプション。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 
 > [!IMPORTANT]
 > このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
@@ -67,170 +69,124 @@ mvn archetype:generate ^
     "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
-Maven によって、プロジェクトの生成を終了するために必要な値の入力を求めるメッセージが表示されます。 _groupId_、_artifactId_、_version_ の値については、[Maven の名前付け規則](https://maven.apache.org/guides/mini/guide-naming-conventions.html)をご覧ください。 _appName_ の値は Azure 全体で一意である必要があるため、Maven は既定値として前に入力された _artifactId_ を基にしてアプリ名を生成します。 _packageName_ の値により、生成される関数コードの Java パッケージが決まります。
+Maven により、デプロイ時にプロジェクトの生成を終了するための値の入力が求められます。 入力を求められたら、次の値を入力します。
 
-以下の `com.fabrikam.functions` および `fabrikam-functions` 識別子は例として使用されており、このクイック スタートの後の方の手順を読みやすくしています。 この手順では、Maven に独自の値を指定することをお勧めします。
+| 値 | 説明 |
+| ----- | ----------- |
+| **groupId** | Java の[パッケージ命名規則](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)に従って、すべてのプロジェクトにわたって対象のプロジェクトを一意に識別する値。 このクイックスタートの例では、`com.fabrikam.functions` を使用します。 |
+| **artifactId** | バージョン番号のない、jar の名前である値。 このクイックスタートの例では、`fabrikam-functions` を使用します。 |
+| **version** | 既定値 `1.0-SNAPSHOT` を選択します。 |
+| **package** | 生成された関数コードの Java パッケージである値。 既定値を使用します。 このクイックスタートの例では、`com.fabrikam.functions` を使用します。 |
+| **appName** | Azure の新しい関数アプリを識別するグローバルに一意の名前。 既定値の、ランダムな番号が付加された _artifactId_ を使用します。 この値は後で必要になるのでメモしておきます。 |
+| **appRegion** | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 既定では、 `westus`です。 次の [Azure CLI] コマンドを実行して、すべてのリージョンの一覧を取得します:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **resourceGroup** | その中に関数アプリを作成する新しい[リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 このクイックスタートの例で使用されている `myResourceGroup` を使用します。 リソース グループは、対象の Azure サブスクリプションに一意である必要があります。|
 
-```Output
-Define value for property 'groupId' (should match expression '[A-Za-z0-9_\-\.]+'): com.fabrikam.functions
-Define value for property 'artifactId' (should match expression '[A-Za-z0-9_\-\.]+'): fabrikam-functions
-Define value for property 'version' 1.0-SNAPSHOT : 
-Define value for property 'package': com.fabrikam.functions
-Define value for property 'appName' fabrikam-functions-20170927220323382:
-Define value for property 'appRegion' westus: :
-Define value for property 'resourceGroup' java-functions-group: :
-Confirm properties configuration: Y
-```
+「`Y`」と入力するか、Enter キーを押して確認します。
 
-Maven は、この例 `fabrikam-functions` の場合、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルを作成します。 このプロジェクトで生成されたコードを実行できる準備が整っているのは、要求の本文をエコーする [HTTP トリガー](/azure/azure-functions/functions-bindings-http-webhook)関数です。 *src/main/java/com/fabrikam/functions/Function.java* を次のコードに置き換えます。 
+Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
 
-```java
-package com.fabrikam.functions;
-
-import java.util.*;
-import com.microsoft.azure.functions.annotation.*;
-import com.microsoft.azure.functions.*;
-
-public class Function {
-    /**
-     * This function listens at endpoint "/api/HttpTrigger-Java". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTrigger-Java
-     * 2. curl {your host}/api/HttpTrigger-Java?name=HTTP%20Query
-     */
-    @FunctionName("HttpTrigger-Java")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST }, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
-            final ExecutionContext context) {
-        context.getLogger().info("Java HTTP trigger processed a request.");
-
-        // Parse query parameter
-        String query = request.getQueryParameters().get("name");
-        String name = request.getBody().orElse(query);
-
-        if (name == null) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
-        } else {
-            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        }
-    }
-}
-
-```
-
-## <a name="enable-extension-bundles"></a>拡張バンドルを有効にする
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+テキスト エディターで *src/main/java* パスの新しい Function.java ファイルを開き、生成されたコードを確認します。 このコードは、要求の本文をエコーする、[HTTP によってトリガーされる](functions-bindings-http-webhook.md)関数です。 
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
-新しく作成されたプロジェクト フォルダー (host.json ファイルと pom.xml ファイルの格納先) にディレクトリを変更し、Maven で関数をビルドして実行します。
+次のコマンドを実行します。このコマンドでは、ディレクトリを新しく作成されたプロジェクト フォルダーに変更し、関数プロジェクトをビルドして実行します。
 
-```CMD
+```console
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
 ```
 
-> [!NOTE]
-> Java 9 でこの例外、`javax.xml.bind.JAXBException` が発生している場合は、[GitHub](https://github.com/jOOQ/jOOQ/issues/6477) で回避策を参照してください。
-
-関数がシステム上でローカルに実行されていて、HTTP 要求に応答する準備ができている場合に、次の出力が表示されます。
+プロジェクトをローカルで実行すると、次のような Azure Functions Core Tools からの出力が表示されます。
 
 ```Output
-Listening on http://localhost:7071
-Hit CTRL-C to exit...
+...
+
+Now listening on: http://0.0.0.0:7071
+Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-   hello: http://localhost:7071/api/HttpTrigger-Java
+    HttpTrigger-Java: [GET,POST] http://localhost:7071/api/HttpTrigger-Java
+...
 ```
 
-新しいターミナル ウィンドウで curl を使用して、コマンド ラインから関数をトリガーします。
+新しいターミナル ウィンドウで cURL を使用して、コマンド ラインから関数をトリガーします。
 
 ```CMD
-curl -w "\n" http://localhost:7071/api/HttpTrigger-Java -d LocalFunction
-```
-
-```Output
-Hello LocalFunction!
-```
-
-関数のコードを停止するには、ターミナルで `Ctrl-C` を使います。
-
-## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
-
-Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
-
-```azurecli
-az login
-```
-
-`azure-functions:deploy` Maven ターゲットを使用して、新しい関数アプリにコードをデプロイします。 これで、[Zip デプロイが [パッケージから実行する]](functions-deployment-technologies.md#zip-deploy) モードを有効にして実行されます。
-
-> [!NOTE]
-> Visual Studio Code を使用して関数アプリをデプロイするときは、無料サブスクリプション以外のサブスクリプションを選択してください。そうでないと、エラーが発生します。 IDE の左側で自分のサブスクリプションを確認することができます。
-
-```azurecli
-mvn azure-functions:deploy
-```
-
-デプロイが完了すると、Azure 関数アプリへのアクセスに使うことができる URL が表示されます。
-
-```output
-[INFO] Successfully deployed Function App with package.
-[INFO] Deleting deployment package from Azure Storage...
-[INFO] Successfully deleted deployment package fabrikam-function-20170920120101928.20170920143621915.zip
-[INFO] Successfully deployed Function App at https://fabrikam-function-20170920120101928.azurewebsites.net
-[INFO] ------------------------------------------------------------------------
-```
-
-`cURL` を使用して、Azure で実行している関数アプリをテストします。 前の手順でデプロイされた独自の関数アプリの URL と一致するように、下のサンプルの URL を変更する必要があります。
-
-> [!NOTE]
-> **アクセス権**を `Anonymous` に設定していることを確認します。 `Function` の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](../azure-functions/functions-bindings-http-webhook.md#authorization-keys)を提示する必要があります。
-
-```azurecli
-curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
+curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
 ```Output
 Hello AzureFunctions!
 ```
+ローカルで実行する場合、[関数キー](functions-bindings-http-webhook.md#authorization-keys)は必要ありません。 関数のコードを停止するには、ターミナルで `Ctrl+C` を使います。
 
-## <a name="make-changes-and-redeploy"></a>変更を加えて再デプロイする
+## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
-関数アプリから返されるテキストに変更を加えるために、生成されたプロジェクトの `src/main.../Function.java` ソース ファイルを編集します。 変更するのは次の行です。
+最初に関数アプリをデプロイすると、関数アプリと関連リソースが Azure に作成されます。 デプロイする前に、[az login](/cli/azure/authenticate-azure-cli) Azure CLI コマンドを使用して、対象の Azure サブスクリプションにサインインします。 
 
-```java
-return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+```azurecli
+az login
 ```
 
-これを次のように変更してください。
+> [!TIP]
+> 対象のアカウントで複数のサブスクリプションにアクセスできる場合は、[az account set](/cli/azure/account#az-account-set) を使用して、このセッションの既定のサブスクリプションを設定します。 
 
-```java
-return request.createResponseBuilder(HttpStatus.OK).body("Hi, " + name).build();
+次の Maven コマンドを使用して、対象のプロジェクトを新しい関数アプリにデプロイします。 
+
+```azurecli
+mvn azure-functions:deploy
 ```
 
-変更を保存します。 mvn クリーン パッケージを実行し、前と同様にターミナルから `azure-functions:deploy` を実行して再デプロイします。 関数アプリが更新されます。次の要求を実行してみましょう。
+この `azure-functions:deploy` Maven ターゲットでは、次のリソースが Azure に作成されます。
 
-```bash
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
++ リソース グループ。 指定した _resourceGroup_ の名前が付けられます。
++ ストレージ アカウント。 Functions に必要です。 名前は、ストレージ アカウント名の要件に基づいてランダムに生成されます。
++ App Service プラン。 指定した _appRegion_ での関数アプリのサーバーレス ホスティング。 名前はランダムに生成されます。
++ 関数アプリ。 関数アプリは、関数のデプロイと実行の単位です。 名前は _appName_ で、ランダムに生成された番号が付加されます。 
+
+また、デプロイにより、プロジェクト ファイルがパッケージ化され、[zip デプロイ](functions-deployment-technologies.md#zip-deploy)を使用して Run-From-Package モードが有効な状態で新しい関数アプリにデプロイされます。
+
+デプロイが完了すると、関数アプリのエンドポイントへのアクセスに使うことができる URL が表示されます。 公開した HTTP トリガーは `authLevel = AuthorizationLevel.FUNCTION` を使用するため、HTTP 経由で関数エンドポイントを呼び出すために関数キーを取得する必要があります。 関数キーを取得する最も簡単な方法は、[Azure portal] を利用することです。
+
+## <a name="get-the-http-trigger-url"></a>HTTP トリガー URL を取得する
+
+<!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
+
+関数をトリガーするために必要な URL は、関数キーと共に Azure portal から取得できます。 
+
+1. [Azure portal] を参照してサインインし、対象の関数アプリの _appName_ をページ上部の **[検索]** に入力して、Enter キーを押します。
+ 
+1. 対象の関数アプリで、 **[関数 (読み取り専用)]** を展開し、対象の関数を選択します。次に、右上にある **[</> 関数の URL の取得]** を選択します。 
+
+    ![Azure Portal からの関数 URL のコピー](./media/functions-create-java-maven/get-function-url-portal.png)
+
+1. **[default (Function key)]\(既定 (関数キー)\)** を選択し、 **[コピー]** を選択します。 
+
+これで、コピーした URL を使用して関数にアクセスできます。
+
+## <a name="verify-the-function-in-azure"></a>Azure で関数を検証する
+
+`cURL` を使用して Azure で実行されている関数アプリを検証するには、次のサンプルの URL を、ポータルからコピーした URL に置き換えます。
+
+```azurecli
+curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-出力結果が更新されていることがわかります。
+これにより、要求の本文に `AzureFunctions` が含まれる POST 要求が関数エンドポイントに送信されます。 次の応答が表示されます。
 
 ```Output
-Hi, AzureFunctionsTest
+Hello AzureFunctions!
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-簡単な HTTP トリガーを使って Java 関数アプリを作成し、Azure Functions にデプロイしました。
+HTTP でトリガーされる関数を含む Java 関数プロジェクトを作成し、ローカル コンピューターでそれを実行し、Azure にデプロイしました。 次は以下の方法で関数を拡張します。
 
-- 「[Azure Functions Java developer guide](functions-reference-java.md)」(Azure Functions Java 開発者ガイド) で、Java 関数の開発の詳細について確認します。
-- `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。
-- [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使って関数を作成し、ローカルでデバッグします。 
-- Azure にデプロイされた関数を Visual Studio Code でデバッグします。 その手順については、Visual Studio Code の[サーバーレス Java アプリケーション](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)に関するドキュメントを参照してください。
+> [!div class="nextstepaction"]
+> [Azure Storage キュー出力バインドを追加する](functions-add-output-binding-storage-queue-java.md)
 
-> [!NOTE] 
-> 代わりに、azure-functions-kotlin-archetype を使用して、Kotlin ベースの Azure Functions プロジェクトを作成することもできます。 詳細については、GitHub [リポジトリ](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype)を参照してください。
+
+[Azure CLI]: /cli/azure
+[Azure Portal]: https://portal.azure.com

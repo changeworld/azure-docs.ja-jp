@@ -1,24 +1,19 @@
 ---
 title: 管理ソリューションでの保存された検索条件 | Microsoft Docs
 description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。 この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件を Resource Manager テンプレートで定義する方法について説明します。
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/29/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce4f3dcbc28668f786c706e7029061e541a76ce9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772982"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553911"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
@@ -49,7 +44,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表は、この例で使用されているリソースの API バージョンの一覧です。
 
-| リソースの種類 | API バージョン | Query |
+| リソースの種類 | API バージョン | クエリ |
 |:---|:---|:---|
 | savedSearches | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
 

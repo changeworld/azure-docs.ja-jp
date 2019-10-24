@@ -1,23 +1,18 @@
 ---
 title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/01/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: e3ec202ba6126b150fb78c76591682f163018661
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.date: 07/01/2019
+ms.openlocfilehash: 9dbdd683a8545e0f8c573dfba60daa96ef5ff08d
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604543"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677867"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 

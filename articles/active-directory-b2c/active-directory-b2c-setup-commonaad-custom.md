@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a0b9166d24bea28bb3271d719e8ffe0b24d71381
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f254ebe599e64f4c48a839d9defd57e0899138a5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826927"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755779"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -83,19 +83,19 @@ ms.locfileid: "71826927"
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/common/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration</Item>
             <!-- Update the Client ID below to the Application ID -->
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
-            <Item Key="scope">openid</Item>
+            <Item Key="scope">openid profile</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
             <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
-            <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
+            <Item Key="ValidTokenIssuerPrefixes">https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000,https://login.microsoftonline.com/11111111-1111-1111-1111-111111111111</Item>
             <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
-            <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+            <!-- <Item Key="ValidTokenIssuerPrefixes">https://login.microsoftonline.com/</Item> -->
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret"/>
@@ -129,17 +129,17 @@ ms.locfileid: "71826927"
 ### <a name="restrict-access"></a>アクセスを制限する
 
 > [!NOTE]
-> **ValidTokenIssuerPrefixes** の値として `https://sts.windows.net` を使用すると、すべての Azure AD ユーザーがアプリケーションにサインインできるようになります。
+> **ValidTokenIssuerPrefixes** の値として `https://login.microsoftonline.com/` を使用すると、すべての Azure AD ユーザーがアプリケーションにサインインできるようになります。
 
 有効なトークン発行者の一覧を更新し、サインインできる Azure AD テナント ユーザーの特定の一覧へのアクセスを制限する必要があります。
 
-値を取得するには、サインインさせるユーザーの Azure AD テナントごとに、OpenID Connect Discovery のメタデータを調べます。 メタデータの URL の形式は、`https://login.windows.net/your-tenant/.well-known/openid-configuration` のようになっています。`your-tenant` は Azure AD テナントの名前です。 例:
+値を取得するには、サインインさせるユーザーの Azure AD テナントごとに、OpenID Connect Discovery のメタデータを調べます。 メタデータの URL の形式は、`https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` のようになっています。`your-tenant` は Azure AD テナントの名前です。 例:
 
-`https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
+`https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 
 サインインに使用する Azure AD テナントごとに次の手順を実行します。
 
-1. ブラウザーを開き、そのテナントに対応する OpenID Connect のメタデータ URL に移動します。 **発行者**オブジェクトを探し、その値を記録します。 `https://sts.windows.net/00000000-0000-0000-0000-000000000000/` のようになっていると思います。
+1. ブラウザーを開き、そのテナントに対応する OpenID Connect のメタデータ URL に移動します。 **発行者**オブジェクトを探し、その値を記録します。 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/` のようになっていると思います。
 1. その値をコピーして **ValidTokenIssuerPrefixes** キーに貼り付けます。 複数の発行者は、コンマで区切ります。 前出の `ClaimsProvider` XML サンプルでは、発行者が 2 つ存在する例を確認できます。
 
 ### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認

@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート:Resource Manager テンプレートを使用して Azure Databricks で Spark ジョブを実行する '
+title: Azure Resource Manager を使用して Azure Databricks ワークスペースを作成する
 description: このクイック スタートでは、Azure Resource Manager テンプレートを使用して Azure Databricks ワークスペースを作成し、Apache Spark クラスターを作成して、Spark ジョブを実行する方法を示します。
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 8d4cfb2be687f258255379d93fd60028dcd2eb2c
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 5f22c9e7b7f040a0e6b957cbc184720918ce9222
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "68932610"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274143"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Databricks で Spark ジョブを実行する
 

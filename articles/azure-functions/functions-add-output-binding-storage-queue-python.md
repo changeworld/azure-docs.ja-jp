@@ -1,26 +1,22 @@
 ---
 title: Python 関数に Azure Storage キュー バインドを追加する
-description: Azure CLI と Functions Core Tools を使用して、Python 関数に Azure Storage キュー出力バインドを追加する方法について説明します。
-services: functions
-keywords: ''
+description: Python 関数に Azure Storage キュー出力バインドを追加する方法を学習します。
 author: ggailey777
 ms.author: glenga
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.custom: mvc
-ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+manager: gwallace
+ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839194"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329730"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python 関数に Azure Storage キュー バインドを追加する
 
-Azure Functions を使用すると、独自の統合コードを記述しなくても、Azure サービスやその他のリソースを関数に接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 "*トリガー*" は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 この記事では、[前のクイック スタートの記事](functions-create-first-function-python.md)で作成した関数を Azure Storage キューと統合する方法を説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
 
@@ -34,7 +30,7 @@ Azure Functions を使用すると、独自の統合コードを記述しなく�
 
 ## <a name="download-the-function-app-settings"></a>関数アプリの設定をダウンロードする
 
-[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+[!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>拡張バンドルを有効にする
 
@@ -63,7 +59,7 @@ func host start
 ```
 
 > [!NOTE]  
-> 前のクイックスタートでは host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x)が他の Microsoft バインド拡張機能と共に自動的にダウンロードされ、インストールされました。
+> host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x)が他の Microsoft バインド拡張機能と共に自動的にダウンロードされ、インストールされました。
 
 ランタイム出力から `HttpTrigger` 関数の URL をコピーして、それをブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 前の記事のときと同じ応答がブラウザーに表示されるはずです。
 
@@ -71,17 +67,17 @@ func host start
 
 次に、Azure CLI を使用して新しいキューを表示し、メッセージが追加されたことを確認します。 また、[Microsoft Azure Storage Explorer][Azure Storage Explorer] または [Azure portal](https://portal.azure.com) を使用してキューを表示することもできます。
 
-### <a name="set-the-storage-account-connection"></a>ストレージ アカウントの接続を設定する
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>ストレージ キューに対するクエリを実行する
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-ここで、更新された関数アプリを Azure に再発行します。
+### <a name="redeploy-the-project"></a>プロジェクトを再デプロイする 
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+公開したアプリを更新するには、[`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools コマンドを使用して、プロジェクト コードを Azure にデプロイします。 この例では、`<APP_NAME>` をご自身のアプリの名前に置き換えてください。
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
 
 デプロイした関数をテストするために、ここでも cURL またはブラウザーを使用できます。 次の例のように、前の手順と同様に、クエリ文字列 `&name=<yourname>` を URL に追加します。
 
@@ -89,7 +85,7 @@ func host start
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-[ストレージ キュー メッセージを調べて](#query-the-storage-queue)、出力バインドがキューに新しいメッセージを再度生成することを確認できます。
+再度 [Storage キュー メッセージを調べて](#query-the-storage-queue)、出力バインドが期待どおりにキューに新しいメッセージを生成することを確認できます。
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

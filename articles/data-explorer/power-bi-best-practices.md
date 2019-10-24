@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937317"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286755"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI を使用して Azure Data Explorer データのクエリと視覚化を行う場合のベスト プラクティス
 
@@ -48,7 +48,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 複雑なクエリは、Kusto でのほうが Power Query よりも簡単に表現できます。 これらは [Kusto 関数](/azure/kusto/query/functions)として実装し、Power BI で呼び出す必要があります。 この方法は、Kusto クエリの `let` ステートメントと共に **DirectQuery** を使用する場合に必要です。 Power BI によって 2 つのクエリが結合され、`join` 演算子と共に `let` ステートメントを使用できないため、構文エラーが発生する可能性があります。 したがって、結合の各部分を Kusto 関数として保存し、Power BI でこれら 2 つの関数を結合できるようにします。
 
-### <a name="how-to-simulate-a-relative-data-time-operator"></a>相対日付/時刻演算子をシミュレートする方法
+### <a name="how-to-simulate-a-relative-date-time-operator"></a>相対 date-time 演算子をシミュレートする方法
 
 Power BI には、`ago()` などの "*相対*" 日付/時刻演算子が含まれていません。
 `ago()` をシミュレートするには、`DateTime.FixedLocalNow()` および `#duration` Power BI 関数の組み合わせを使用します。

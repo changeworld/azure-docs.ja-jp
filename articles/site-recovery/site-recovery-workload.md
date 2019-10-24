@@ -1,22 +1,22 @@
 ---
-title: Azure Site Recovery で保護できるワークロード | Microsoft Docs
+title: Azure Site Recovery を使用したオンプレミス アプリのディザスター リカバリーについて
 description: Azure Site Recovery サービスによるディザスター リカバリーを使用して保護できるワークロードについて説明します。
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ad989a28e150635637a477d07803107a9fefff63
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232193"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255560"
 ---
-# <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
+# <a name="about-disaster-recovery-for-on-premises-apps"></a>オンプレミス アプリのディザスター リカバリーについて
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスによるディザスター リカバリーを使用して保護できるワークロードとアプリケーションについて説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスによるディザスター リカバリーを使用して保護できるオンプレミスのワークロードとアプリについて説明します。
 
 
 

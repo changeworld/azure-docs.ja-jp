@@ -9,8 +9,10 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: マネージド ドメインの作成
+    - name: 基本的なマネージド ドメインの作成
       href: tutorial-create-instance.md
+    - name: アプリ用の仮想ネットワークの構成
+      href: tutorial-configure-networking.md
     - name: Windows Server VM のドメイン参加
       href: join-windows-vm.md
     - name: 管理ツールのインストール
@@ -19,6 +21,8 @@
       href: tutorial-configure-ldaps.md
     - name: パスワード ハッシュ同期の構成
       href: tutorial-configure-password-hash-sync.md
+    - name: 高度なマネージド ドメインの作成
+      href: tutorial-create-instance-advanced.md
 - name: サンプル
   items:
     - name: Azure PowerShell を使用したマネージド ドメインの作成
@@ -65,6 +69,8 @@
           href: notifications.md
         - name: マネージド ドメインを削除する
           href: delete-aadds.md
+        - name: クラシック デプロイから移行する (プレビュー)
+          href: migrate-from-classic-vnet.md
     - name: Azure AD DS のセキュリティ保護
       items:
         - name: マネージド ドメインをセキュリティで保護します

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e652237e6faa705aa3ea09e7cf80c4eb692acc98
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300306"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375589"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure 用にクレジット カードを追加、更新、または削除する
 
@@ -131,7 +131,7 @@ Azure portal では、新しいクレジット カードの追加、既存のク
 1. 既存のカードを選択するか、新たに追加します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-クレジット カードを追加または更新するときにエラーが発生する場合は、ブラウザーをプライベート モードで開いてみてください。
+バーチャル カードやプリペイド カードはサポートされません。 有効なクレジット カードを追加または更新するときにエラーが発生する場合は、ブラウザーをプライベート モードで開いてみてください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 次のセクションでは、クレジット カードの情報の変更についてよく寄せられる質問に回答します。

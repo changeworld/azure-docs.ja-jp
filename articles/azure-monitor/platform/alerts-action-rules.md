@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor アラートのアクション ルール
 description: Azure Monitor におけるアクション ルールとはどのようなものか、およびそれを構成して管理する方法を説明します。
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 19f17aff4f915f8a16ccf9d69b12a845d9493e96
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 04/25/2019
+ms.openlocfilehash: a858388a11cfdf36bacb1e5840f00fc6ef097867
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299287"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555708"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 

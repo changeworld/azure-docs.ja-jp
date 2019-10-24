@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169920"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429568"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でリソースのカタログを作成および管理する
 
@@ -52,7 +52,7 @@ ms.locfileid: "72169920"
 
 1. 選択された外部ディレクトリ内のユーザーがこのカタログ内のアクセス パッケージを要求できるようにする場合は、 **[Enabled for external users]\(外部ユーザーに対して有効にする\)** を **[はい]** に設定します。
 
-    ![新しいカタログ ペイン](./media/entitlement-management-catalog-create/new-catalog.png)
+    ![新しいカタログ ペイン](./media/entitlement-management-shared/new-catalog.png)
 
 1. **[作成]** をクリックすると、カタログが作成されます。
 
@@ -130,7 +130,9 @@ ms.locfileid: "72169920"
 
 1. カタログの **[概要]** ページで **[編集]** をクリックします。
 
-1. カタログの名前または説明を編集します。
+1. カタログの名前、説明、または有効になっている設定を編集します。
+
+    ![カタログの設定を編集する](./media/entitlement-management-shared/catalog-edit.png)
 
 1. **[Save]** をクリックします。
 

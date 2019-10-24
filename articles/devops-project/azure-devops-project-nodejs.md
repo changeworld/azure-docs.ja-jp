@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 monikerRange: vsts
-ms.openlocfilehash: 9fc276626d2a863f7f2e53cd7312ab8b3be513dd
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 11edeb35119e2c598fd83fd89c65ba4dc4679650
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815781"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256095"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>クイック スタート:Azure DevOps Projects を使用して Azure Pipelines に Node.js 用の CI/CD パイプラインを作成する
 
@@ -37,7 +37,7 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 
 1. 左のウィンドウで **[リソースの作成]** を選択し、**DevOps Projects** を検索します。 
 
-    ![継続的デリバリーの構成の開始](_img/azure-devops-project-nodejs/fullbrowser.png)
+    ![継続的デリバリー構成リソースを作成する](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>サンプル アプリケーションと Azure サービスを選択する
 
@@ -60,7 +60,7 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
      
 3. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
 
-    ![ダッシュボード ビュー](_img/azure-devops-project-nodejs/dashboardnopreview.png) 
+    ![CI/CD パイプラインのダッシュボード ビュー](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
     
 DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されました。  Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、Node.js アプリに対してチームで共同作業を行う準備ができました。
 

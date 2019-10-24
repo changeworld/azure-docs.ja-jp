@@ -1,17 +1,17 @@
 ---
-title: サンプル - アプリケーションが Linux VM 内にインストールされていないかどうかを監査する
+title: サンプル - Linux VM 上の欠落しているアプリケーションの監査
 description: このサンプル Policy ゲスト構成のイニシアチブと定義は、指定したアプリケーションが Linux 仮想マシン内にインストールされていないかどうかを監査します。
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4d4f4c1102c4409d891bb20b54788dc8ed40ee
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977034"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255752"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>サンプル - 指定したアプリケーションが Linux VM 内にインストールされていないかどうかを監査する
 

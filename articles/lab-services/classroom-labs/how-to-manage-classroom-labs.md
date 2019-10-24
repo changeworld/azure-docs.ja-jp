@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f9cb82abd5bc0823f5e7bc23fe437007bccc8e0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 85a3a9f7afac8250b225d42462f6b29042e34a2a
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873580"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330459"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -29,21 +29,19 @@ ms.locfileid: "70873580"
 ## <a name="create-a-classroom-lab"></a>クラスルーム ラボを作成する
 
 1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 Internet Explorer 11 はまだサポートされていないことに注意してください。 
-2. **[サインイン]** をクリックします。 ラボ アカウントに**ラボの作成者**のメンバーである**ユーザー ID** を入力または作成し、パスワードを入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
+2. **[サインイン]** を選択して、資格情報を入力します。 ラボ アカウントに**ラボの作成者**のメンバーである**ユーザー ID** を入力または作成し、パスワードを入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
+3. **[New lab]\(新しいラボ\)** を選択します。 
+    
+    ![クラスルーム ラボを作成する](../media/tutorial-setup-classroom-lab/new-lab-button.png)
 3. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. ラボの**名前**を指定します。 
-    2. ラボでの**仮想マシンの数**の最大値を指定します。 ラボの仮想マシンの数は、後で増やしたり減らしたりできます。 
+    2. クラスに必要な**仮想マシンのサイズ**を選択します。 使用可能なサイズの一覧については、「[VM サイズ](#vm-sizes)」のセクションを参照してください。 
+    3. クラスルーム ラボで使用する**仮想マシン イメージ**を選択します。 Linux イメージを選択した場合は、リモート デスクトップ接続を有効にするためのオプションが表示されます。 詳細については、[Linux のリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。
+    4. ページに表示される **1 時間あたりの合計料金**を確認します。 
     6. **[保存]** を選択します。
 
-        ![クラスルーム ラボを作成する](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-4. **[Select virtual machine specifications]** \(仮想マシンの仕様の選択\) ページで、次の手順を実行します。
-    1. ラボで作成する仮想マシン (VM) の **[サイズ]** を選択します。 現時点では、 **[小]** 、 **[中]** 、 **[中 (仮想化)]** 、 **[大]** 、および **[GPU]** のサイズが許可されます。 詳細については、「[VM サイズ](#vm-sizes)」セクションをご覧ください。
-    1. VM を作成する**リージョン**を選択します。 
-    1. ラボで VM の作成に使用する **VM イメージ**を選択します。 Linux イメージを選択した場合は、リモート デスクトップ接続を有効にするためのオプションが表示されます。 詳細については、[Linux のリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。
-    1. **[次へ]** を選択します。
-
-        ![VM 仕様の指定](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
-5. **[資格情報の設定]** ページで、ラボ内のすべての VM に使う既定の資格情報を指定します。 
+        ![[New Lab]\(新しいラボ\) ウィンドウ](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+4. **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページで、ラボ内のすべての VM 用の既定の資格情報を指定します。
     1. ラボ内のすべての VM に使う**ユーザーの名前**を指定します。
     2. ユーザーの**パスワード**を指定します。 
 
@@ -51,43 +49,46 @@ ms.locfileid: "70873580"
         > ユーザー名とパスワードはメモしておいてください。 これらは再表示されません。
     3. 学生に自分自身のパスワードを設定させる場合は、 **[Use same password for all virtual machines]\(すべての仮想マシンに同じパスワードを使用する\)** オプションを無効にします。 この手順は**省略可能**です。 
 
-        教師は、ラボ内のすべての VM に同じパスワードを使用するか、学生に自分の VM のパスワードを設定させるかを選択できます。 既定では、この設定は、Ubuntu を除き、すべての Windows と Linux のイメージで有効になっています。 **Ubuntu** VM を選択すると、この設定は無効になり、初めてサインインしたときに、パスワードを設定するよう求めるプロンプトが学生に表示されます。
-    1. **作成** を選択します。 
+        教師は、ラボ内のすべての VM に同じパスワードを使用するか、学生に自分の VM のパスワードを設定させるかを選択できます。 既定では、この設定は、Ubuntu を除き、すべての Windows と Linux のイメージで有効になっています。 **Ubuntu** VM を選択すると、この設定は無効になり、初めてサインインしたときに、パスワードを設定するよう求めるプロンプトが学生に表示されます。  
 
-        ![資格情報の設定](../media/tutorial-setup-classroom-lab/set-credentials.png)
-6. **[Configure template**]\(テンプレートの構成\) ページで、ラボの作成プロセスの状態を確認します。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 ラボ内のテンプレートは仮想マシンの基本イメージで、すべてのユーザーの仮想マシンがこのイメージに基づいて作成されます。 テンプレート仮想マシンを設定して、ラボ ユーザーに提供する正しい仮想マシンが構成されるようにします。  
+        ![[New Lab]\(新しいラボ\) ウィンドウ](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+        > [!IMPORTANT]
+        > ユーザー名とパスワードはメモしておいてください。 これらは再表示されません。    
+    4. 次に、 **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページで **[次へ]** を選択します。 
+5. **[Lab policies]\(ラボのポリシー\)** ページで、ラボに対してスケジュールされた時間外で各ユーザーに割り当てられる時間数を入力し ( **[quota for each user]\(各ユーザーのクォータ\)** )、 **[完了]** を選択します。 
 
-    ![テンプレートの構成](../media/tutorial-setup-classroom-lab/configure-template.png)
-7. テンプレートの構成が完了すると、次のページが表示されます。 
+    ![[Quota for each user]\(各ユーザーのクォータ\)](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+5. テンプレート VM の作成の状態を示す次の画面が表示されます。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 
 
-    ![完了後の [Configure template]\(テンプレートの構成\) ページ](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. このチュートリアルでは、以下の手順は省略可能です。 
+    ![テンプレート VM の作成の状態](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
+8. **[テンプレート]** ページで、次の手順を実行します。これらの手順は、チュートリアルでは**省略可能**です。
+
     2. **[接続]** を選択してテンプレート VM に接続します。 Linux のテンプレート VM の場合は、SSH と RDP のどちらを使用して接続するかを選択します (RDP が有効な場合)。
     1. **[パスワードのリセット]** を選択して、VM のパスワードをリセットします。 
     1. テンプレート VM にソフトウェアをインストールして構成します。 
     1. VM を**停止**します。  
     1. テンプレートの**説明**を入力します。
-9. [Configure template]\(テンプレートの構成\) ページの **[次へ]** を選択します。 
-10. **[Publish the template]** \(テンプレートの発行\) ページで、次の操作を行います。 
-    1. テンプレートをすぐに発行するには、 *[I understand I can't modify the template after publishing.This process can only be done once and can take up to an hour]* \(発効したらテンプレートを変更できなくなること、このプロセスは一度のみ実行でき最大 1 時間かかる可能性があることを理解しています\) チェックボックスをオンにし、 **[発行]** を選択します。  テンプレートを発行して、対象のラボ ユーザーがテンプレート VM のインスタンスを利用できるようにします。
+10. **[テンプレート]** ページで、ツール バーの **[発行]** を選択します。 
 
-        > [!WARNING]
-        > 一度発行すると、再発行することはできません。 
-    2. 後で発行する場合は、 **[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「テンプレートを発行する」セクションを参照してください。
+    ![テンプレートを発行するボタン](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
-        ![テンプレートを発行する](../media/tutorial-setup-classroom-lab/publish-template.png)
-11. テンプレートの**発行に関する進行状況**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 
+    > [!WARNING]
+    > 一度発行すると、再発行することはできません。 
+8. **[Publish template]\(テンプレートの発行\)** ページで、ラボに作成する仮想マシンの数を入力し、 **[発行]** を選択します。 
+
+    ![テンプレートの発行 - VM の数](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+11. ページには、テンプレートの**発行の状態**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 
 
     ![テンプレートの発行 - 進行状況](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-12. テンプレートが正常に発行されると、次のページが表示されます。 **[完了]** を選択します。
-
-    ![テンプレートの発行 - 正常](../media/tutorial-setup-classroom-lab/publish-success.png)
-1. ラボの**ダッシュボード**が表示されます。 
-    
-    ![クラスルーム ラボのダッシュボード](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. **[仮想マシン]** ページに切り替えて、 **[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
+4. 左側のメニューで [仮想マシン] を選択するか、[仮想マシン] タイルを選択して、 **[Virtual machines pool]\(仮想マシン プール\)** ページに切り替えます。 **[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
 
     ![仮想マシンが停止済み状態](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+
+    次のタスクはこのページで実行します (このチュートリアルでは、これらの手順を実行しないでください。 これらの手順は情報提供のみを目的としています)。 
+    
+    1. ラボの容量 (ラボ内の VM の数) を変更するには、ツール バーの **[Lab capacity]\(ラボの容量\)** を選択します。
+    2. すべての VM を一度に起動するには、ツール バーの **[Start all]\(すべて起動\)** を選択します。 
+    3. 特定の VM を起動するには、 **[状態]** の下向き矢印を選択し、 **[開始]** を選択します。 また、最初の列で VM を選択した後にツール バーの **[開始]** を選択して、VM を起動することもできます。                
 
 ### <a name="vm-sizes"></a>VM サイズ  
 
@@ -104,26 +105,23 @@ ms.locfileid: "70873580"
 ## <a name="view-all-classroom-labs"></a>すべてのクラスルーム ラボを表示する
 1. [Azure Lab Services ポータル](https://labs.azure.com)に移動します。
 2. **[サインイン]** をクリックします。 ラボ アカウントに**ラボの作成者**のメンバーである**ユーザー ID** を入力または作成し、パスワードを入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
-3. 選択したラボ アカウント内にすべてのラボが表示されることを確認します。 
+3. 選択したラボ アカウント内にすべてのラボが表示されることを確認します。 ラボのタイルには、ラボ内の仮想マシンの数と各ユーザーのクォータ (スケジュールされた時間外) が表示されます。
 
     ![すべてのラボ](../media/how-to-manage-classroom-labs/all-labs.png)
 3. 上部にあるドロップダウン リストを使用して、別のラボ アカウントを選択できます。 選択したラボ アカウントのラボが表示されます。 
 
 ## <a name="delete-a-classroom-lab"></a>クラスルーム ラボを削除する
-1. ラボ用のタイルで、隅にある 3 つのドット (...) を選択します。 
-
-    ![ラボを選ぶ](../media/how-to-manage-classroom-labs/select-three-dots.png)
-2. **[削除]** を選択します。 
+1. ラボ用のタイルで、隅にある 3 つのドット (...) を選択し、 **[削除]** を選択します。 
 
     ![[削除] ボタン](../media/how-to-manage-classroom-labs/delete-button.png)
-3. **[ラボの削除]** ダイアログ ボックスで、 **[削除]** を選択します。 
-
-    ![[削除] ダイアログ ボックス](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
+3. **[Delete lab]\(ラボの削除\)** ダイアログ ボックスで、 **[削除]** を選択して削除を続行します。 
 
 ## <a name="switch-to-another-classroom-lab"></a>別のクラスルーム ラボに切り替える
 現在のクラスルーム ラボから別のクラスルーム ラボに切り替えるには、一番上のラボ アカウントにあるラボのドロップダウン リストを選択します。
 
 ![一番上のドロップダウン リストからラボを選択する](../media/how-to-manage-classroom-labs/switch-lab.png)
+
+このドロップダウン リストで **[New lab]\(新しいラボ\)** を使用して新しいラボを作成することもできます。 
 
 
 ## <a name="next-steps"></a>次の手順

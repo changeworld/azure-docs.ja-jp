@@ -11,10 +11,10 @@ ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: lahugh
 ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70094202"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch のコスト分析と予算

@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
+title: Visual Studio を使用してロールのリモート デスクトップを有効にする (Azure Cloud Services)
 description: Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法
 services: cloud-services
 author: ghogen
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 6a6d045513e3e91c5a8b2004e47378a097be8963
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 96f71306c060a6a533a3ab1c0c54b49d74e5cd82
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515922"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298390"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Visual Studio を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
 

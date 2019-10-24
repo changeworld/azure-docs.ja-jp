@@ -1,6 +1,6 @@
 ---
 title: IoT Hub デバイス ストリームを介して Node.js でデバイス アプリと通信する (プレビュー) | Microsoft Docs
-description: このクイック スタートでは、デバイス ストリームを介して IoT デバイスと通信する Node.js サービス側アプリケーションを実行します。
+description: このクイックスタートでは、デバイス ストリームを介して IoT デバイスと通信する Node.js サービス側アプリケーションを実行します。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: e85f2ea849aca9deeb92da7d7b2381d6c2b1b725
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c7257ec35f9a53f84edebd5e15b7144c49daf682
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802448"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514945"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して Node.js でデバイス アプリケーションと通信する (プレビュー)
 
@@ -48,7 +48,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 *  **米国中部 EUAP**
 
-このクイック スタートのサービス側アプリケーションを実行するには、開発用マシンに Node.js v10.x.x 以降が必要です。
+このクイックスタートのサービス側アプリケーションを実行するには、開発用マシンに Node.js v10.x.x 以降が必要です。
 
 複数のプラットフォームに対応する Node.js を [Nodejs.org](https://nodejs.org) からダウンロードできます。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
-次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、および IoT Device Provisioning Service (DPS) のコマンドが Azure CLI に追加されます。
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -76,16 +76,16 @@ az extension add --name azure-cli-iot-ext
 
 前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-node.md)を完了した場合は、この手順を省略できます。
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
-   **MyDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **MyDevice**: これは、登録するデバイスの名前です。 示されているように、**MyDevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 2. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、"*サービス接続文字列*" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
@@ -93,10 +93,10 @@ az extension add --name azure-cli-iot-ext
     **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    次のような戻り値をメモしておきます。
+    このクイックスタートの後の方で使用できるように、返されたサービス接続文字列を書き留めておきます。 次の例のようになります。
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -106,7 +106,7 @@ az extension add --name azure-cli-iot-ext
 
 ### <a name="run-the-device-side-application"></a>デバイス側アプリケーションの実行
 
-前述のように、IoT Hub Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 デバイス側アプリケーションについては、次のクイック スタートのいずれかに記載されている対応するデバイス プログラムを使用してください。
+前述のように、IoT Hub Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 デバイス側アプリケーションについては、以下のクイックスタートに記載されている、対応するいずれかのデバイス プログラムを使用してください。
 
    * [IoT Hub デバイス ストリームを介して C でデバイス アプリと通信する](./quickstart-device-streams-echo-c.md)
 
@@ -116,21 +116,21 @@ az extension add --name azure-cli-iot-ext
 
 ### <a name="run-the-service-side-application"></a>サービス側アプリケーションの実行
 
-デバイス側アプリケーションが実行されているとして、Node.js でサービス側アプリケーションを実行するには、次の手順に従います。
+デバイス側アプリケーションが実行されているとして、Node.js でサービス側アプリケーションを実行するには、ローカルのターミナル ウィンドウで次の手順に従います。
 
 * サービス資格情報とデバイス ID を環境変数として指定します。
  
    ```cmd/sh
    # In Linux
-   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export IOTHUB_CONNECTION_STRING="{ServiceConnectionString}"
    export STREAMING_TARGET_DEVICE="MyDevice"
 
    # In Windows
-   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET IOTHUB_CONNECTION_STRING={ServiceConnectionString}
    SET STREAMING_TARGET_DEVICE=MyDevice
    ```
   
-   `MyDevice` を、デバイス用に選択したデバイス ID に変更します。
+   ServiceConnectionString プレースホルダーを、サービス接続文字列に一致するように変更します。また、**MyDevice** を、これ以外の名前を指定した場合は、デバイス ID に一致するように変更します。
 
 * 解凍したプロジェクト フォルダーの `Quickstarts/device-streams-service` に移動し、ノードを使用してサンプルを実行します。
 
@@ -156,7 +156,7 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、IoT ハブの設定、デバイスの登録、デバイス側とサービス側のアプリケーション間のデバイス ストリームの確立、そのストリームを使用したアプリケーション間のデータのやり取りを行いました。
+このクイックスタートでは、IoT ハブの設定、デバイスの登録、デバイス側とサービス側のアプリケーション間のデバイス ストリームの確立、そのストリームを使用したアプリケーション間のデータのやり取りを行いました。
 
 以下のリンクを使用して、デバイス ストリームについてさらに詳しく学習します。
 

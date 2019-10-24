@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights のデータ モデル | Microsoft Docs
 description: JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 4f8fd0b317c17f142664d22291c23442dd49f970
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/08/2019
+ms.openlocfilehash: 8f84e3179a6f949e4a322a2218736fc9ebe60442
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053295"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677910"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights エクスポート データ モデル
 次のテーブルは、 [Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) からポータルに送信されるテレメトリのプロパティを一覧表示したものです。
@@ -114,7 +109,7 @@ ms.locfileid: "67053295"
 ## <a name="context"></a>Context
 テレメトリのすべての種類には、コンテキストのセクションが付いています。 これらのフィールドのすべてが各データ ポイントで送信されるわけではありません。
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | context.custom.dimensions [0] |object [ ] |カスタム プロパティ パラメーターによって設定される、キーと値の文字列ペア。 キーの最大長は 100 で、値の最大長は 1024 です。 100 を超える一意の値で、プロパティを検索することはできますが、セグメント化には使用できません。 ikey あたり最大 200 キー。 |
 | context.custom.metrics [0] |object [ ] |カスタム測定パラメーターと TrackMetrics によって設定される、キーと値のペア。 キーの最大長は 100 で、値は通常は数値です。 |
@@ -161,7 +156,7 @@ ms.locfileid: "67053295"
 ## <a name="events"></a>events
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)によって生成されたカスタム イベント。
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | event [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | event [0] name |string |イベント名。  最大長 250。 |
@@ -172,7 +167,7 @@ ms.locfileid: "67053295"
 ## <a name="exceptions"></a>例外
 サーバーおよびブラウザーの [例外](../../azure-monitor/app/asp-net-exceptions.md) をレポートします。
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | basicException [0] assembly |string | |
 | basicException [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
@@ -201,7 +196,7 @@ ms.locfileid: "67053295"
 ## <a name="trace-messages"></a>トレース メッセージ
 [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) および[ログ アダプター](../../azure-monitor/app/asp-net-trace-logs.md)によって送信されます。
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | message [0] loggerName |string | |
 | message [0] parameters |string | |
@@ -211,7 +206,7 @@ ms.locfileid: "67053295"
 ## <a name="remote-dependency"></a>リモート依存関係
 TrackDependency によって送信されます。 サーバーでの [依存関係の呼び出し](../../azure-monitor/app/asp-net-dependencies.md) とブラウザーでの AJAX の呼び出しのパフォーマンスおよび使用状況をレポートするために使用されます。
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | remoteDependency [0] async |ブール値 | |
 | remoteDependency [0] baseName |string | |
@@ -232,7 +227,7 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 ## <a name="requests"></a>Requests
 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)によって送信されます。 標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | request [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 例: 4 =&gt; 25%。 |
 | request [0] durationMetric.value |number |要求の到着から応答までの時間。 1e7 == 1 秒 |
@@ -250,7 +245,7 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 
 コンテキストの値は、クライアント OS やブラウザーのバージョンを示します。
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess.value |integer |HTML の取得終了からページの表示までの時間。 |
 | clientPerformance [0] name |string | |
@@ -267,7 +262,7 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 ## <a name="page-views"></a>ページ ビュー
 trackPageView() または [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | view [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | view [0] durationMetric.value |integer |trackPageView() で、または startTrackPage() - stopTrackPage() によって、オプションで設定される値。 clientPerformance 値と同じではありません。 |
@@ -280,7 +275,7 @@ trackPageView() または [stopTrackPage](../../azure-monitor/app/api-custom-eve
 ## <a name="availability"></a>可用性
 [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)をレポートします。
 
-| Path | Type | メモ |
+| Path | 種類 | メモ |
 | --- | --- | --- |
 | availability [0] availabilityMetric.name |string |可用性 |
 | availability [0] availabilityMetric.value |number |1.0 または 0.0 |

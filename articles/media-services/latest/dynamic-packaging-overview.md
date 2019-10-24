@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/10/2019
+ms.date: 10/03/2019
 ms.author: juliako
-ms.openlocfilehash: 152a767ad1aa2494579f15dd8051c6bc1f718a92
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910291"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383526"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
 
@@ -236,11 +236,30 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ### <a name="signaling-audio-description-tracks"></a>オーディオ説明トラックのシグナル通知
 
-お客様は、マニフェストのオーディオ説明としてオーディオ トラックに注釈を付けることができます。 そのためには、"accessibility" パラメーターと "role" パラメーターを .ism ファイルに追加します。 オーディオ トラックに値が "description" の "accessibility" パラメーターと値が "alternate" の "role" パラメーターがあると、Media Services はオーディオ説明を認識します。 Media Services によって .ism ファイル内にオーディオ説明が検出されると、オーディオ説明情報が `StreamIndex` 要素の `Accessibility="description"` および `Role="alternate"` 属性としてクライアント マニフェストに渡されます。
+ナレーション トラックをビデオに追加することで、目が不自由なクライアントがナレーションを聞いて動画の内容を追うことができます。 オーディオ トラックには、マニフェストでオーディオ説明として注釈を付ける必要があります。 そのためには、"accessibility" パラメーターと "role" パラメーターを .ism ファイルに追加します。 オーディオ トラックをオーディオ説明としてシグナル通知するためには、これらのパラメーターを正しく設定する必要があります。 たとえば、特定のオーディオ トラックの .ism ファイルに `<param name="accessibility" value="description" />` と `<param name="role" value="alternate"` を追加します。 
 
-"accessibility" = "description" と "role" = "alternate" の組み合わせが .ism ファイルに設定されている場合、DASH マニフェストと Smooth マニフェストは、"accessibility" パラメーターと "role" パラメーターに設定されている値を保持します。 これら 2 つの値を適切に設定し、オーディオ トラックをオーディオ説明としてマークすることはお客様の責任です。 DASH に指定された "accessibility" = "description" と "role" = "alternate" は、オーディオ トラックがオーディオ説明であることを意味します。
+詳細については、[説明を含んだオーディオ トラックをシグナル通知する方法](signal-descriptive-audio-howto.md)の例を参照してください。
 
-HLS v7 以降 (`format=m3u8-cmaf`) では、.ism ファイルに "accessibility" = "description" と "role" = "alternate" の組み合わせが設定されている場合にのみ、プレイリストに `CHARACTERISTICS="public.accessibility.describes-video"` が保持されます。 
+#### <a name="smooth-streaming-manifest"></a>Smooth Streaming マニフェスト
+
+Smooth Streaming ストリームを再生している場合、そのオーディオ トラックに対応する `Accessibility` 属性と `Role` 属性の値がマニフェストに含まれています。たとえば、オーディオ説明であることを示すために、`Role="alternate" Accessibility="description"` が `StreamIndex` 要素に追加されます。
+
+#### <a name="dash-manifest"></a>DASH マニフェスト
+
+DASH マニフェストの場合は、オーディオ説明をシグナル通知するために次の 2 つの要素が追加されます。
+
+```xml
+<Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
+<Role schemeIdUri="urn:mpeg:dash:role:2011" value="alternate"/>
+```
+
+#### <a name="hls-playlist"></a>HLS プレイリスト
+
+HLS v7 以降 `(format=m3u8-cmaf)` では、オーディオ説明トラックをシグナル通知する際に、そのプレイリストに `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` が含まれます。
+
+#### <a name="example"></a>例
+
+詳細については、[オーディオ説明トラックをシグナル通知する方法](signal-descriptive-audio-howto.md)に関するページを参照してください。
 
 ## <a name="dynamic-manifest"></a>動的マニフェスト
 

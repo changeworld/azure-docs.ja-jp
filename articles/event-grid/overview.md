@@ -1,20 +1,20 @@
 ---
-title: アプリケーション イベントを公開およびサブスクライブする - Azure Event Grid
+title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 05/25/2019
+ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 117c74eac1e234f84af6be2d275637d7b8f4e2a7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077155"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794025"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -22,7 +22,7 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 フィルターを使用することで、特定のイベントをさまざまなエンドポイントにルーティングしたり、複数のエンドポイントにマルチキャストしたり、イベントを確実に配信したりできます。
 
-Azure Event Grid は、すべてのリージョンの複数の障害ドメインに、および可用性ゾーン (それらをサポートするリージョン内の) にネイティブに分散させることによって、可用性を最大化するようにデプロイされます。 現在、Azure Event Grid はすべてのパブリック リージョンで使用できます。 まだ、Azure Germany、Azure China 21Vianet、Azure Government クラウドでは使用できません。
+Azure Event Grid は、すべてのリージョンの複数の障害ドメインに、および可用性ゾーン (それらをサポートするリージョン内の) にネイティブに分散させることによって、可用性を最大化するようにデプロイされます。 Event Grid でサポートされているリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)」を参照してください。
 
 この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 
 
@@ -35,7 +35,7 @@ Azure Event Grid は、すべてのリージョンの複数の障害ドメイン
 各ソースの機能の完全な詳細のほか、関連記事については、[イベント ソース](event-sources.md)に関する記事を参照してください。 現在、次の Azure サービスは Event Grid へのイベントの送信をサポートしています。
 
 * [Azure サブスクリプション (管理操作)](event-sources.md#azure-subscriptions)
-* [コンテナー レジストリ](event-sources.md#container-registry)
+* [Container Registry](event-sources.md#container-registry)
 * [カスタム トピック](event-sources.md#custom-topics)
 * [Event Hubs](event-sources.md#event-hubs)
 * [IoT Hub](event-sources.md#iot-hub)

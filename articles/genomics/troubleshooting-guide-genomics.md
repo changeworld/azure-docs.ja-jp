@@ -1,22 +1,22 @@
 ---
-title: 'Microsoft Genomics: トラブルシューティング ガイド | Microsoft Docs'
-titleSuffix: Azure
-description: トラブルシューティング戦略の詳細について説明します。
+title: トラブルシューティング ガイド
+titleSuffix: Microsoft Genomics
+description: Microsoft Genomics を使用するためのトラブルシューティング方法について説明します。
 keywords: トラブルシューティング, エラー, デバッグ
-services: microsoft-genomics
+services: genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790506"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248513"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -116,7 +116,7 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 
 | ファイルの種類 | エラー コード | エラー メッセージ                                                                           | 推奨されるトラブルシューティングの手順                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| 任意          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength]\(読み取り [readId] に [numberOfBases] ベースありますが、制限は [maxReadLength] です\)           | このエラーの最も一般的な理由は、2 つの読み取りの連結につながるファイルの破損です。 入力ファイルを確認してください。 |
+| Any          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength]\(読み取り [readId] に [numberOfBases] ベースありますが、制限は [maxReadLength] です\)           | このエラーの最も一般的な理由は、2 つの読み取りの連結につながるファイルの破損です。 入力ファイルを確認してください。 |
 | BAM          | 200        |   ファイル '[yourFileName]' を読み取ることができません。                                                                                       | BAM ファイルの形式を確認してください。 正しく書式設定されたファイルを使用して、ワークフローを再送信します。                                                                           |
 | BAM          | 201        |  Unable to read BAM file [File_name].                                                                                      |BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 202        | Unable to read BAM file [File_name]. File too small and missing header.\(BAM ファイル [File_name] を読み取ることができません。ファイルが小さすぎ、ヘッダーがありません。\)                                                                                        | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |

@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory の Mapping Data Flow を使用して固定長テキスト ファイルを処理する
-description: Azure Data Factory の Mapping Data Flow を使用して固定長テキスト ファイルを処理する方法について説明します。
+title: Azure Data Factory のマッピング データ フローを使用して固定長テキスト ファイルを処理する
+description: Azure Data Factory のマッピング データ フローを使用して固定長テキスト ファイルを処理する方法について説明します。
 services: data-factory
 author: balakreshnan
 ms.service: data-factory
@@ -8,14 +8,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962125"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387044"
 ---
-# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Data Factory の Mapping Data Flow を使用して固定長テキスト ファイルを処理する
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローを使用して固定長テキスト ファイルを処理する
 
 Microsoft Azure Data Factory のマッピング データ フローを使用すると、固定幅のテキスト ファイルからデータを変換できます。 次のタスクでは、区切り記号を使用せずにテキスト ファイルのデータセットを定義し、次に序数の位置に基づいて部分文字列の分割を設定します。
 
@@ -27,7 +27,7 @@ Microsoft Azure Data Factory のマッピング データ フローを使用す�
 
     ![固定幅パイプライン](media/data-flow/fwpipe.png)
 
-3. データ フロー アクティビティで、 **[New Mapping Data Flow]\(新しい Mapping Data Flow\)** を選択します
+3. データ フロー アクティビティで、 **[New mapping data flow]\(新しいマッピング データ フロー\)** を選択します。
 
 4. ソース、派生列、選択、およびシンクの変換を追加します。
 
@@ -89,4 +89,4 @@ Microsoft Azure Data Factory のマッピング データ フローを使用す�
 
 ## <a name="next-steps"></a>次の手順
 
-* Mapping Data Flow の[変換](concepts-data-flow-overview.md)を使用して、残りのデータ フロー ロジックを構築します
+* マッピング データ フローの[変換](concepts-data-flow-overview.md)を使用して、残りのデータ フロー ロジックを構築します。

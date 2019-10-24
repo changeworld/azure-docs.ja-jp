@@ -1,33 +1,31 @@
 ---
 title: WebJobs でバックグラウンド タスクを実行する - Azure App Service
 description: Azure App Service Web アプリ、API アプリ、またはモバイル アプリで Web ジョブを使用してバックグラウンド タスクを実行する方法を説明します。
-services: app-service
 author: ggailey777
-manager: jeconnoc
-editor: jimbe
-ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
+manager: gwallace
+s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 53f808570a298c8e576b6df7b4654196ffc56813
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 293227352f27a724228136532c88e35fe877feb2
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177503"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312173"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
+この記事では、実行可能ファイルまたはスクリプトをアップロードする Web ジョブを [Azure ポータル](https://portal.azure.com)を使用してデプロイする方法について説明します。 Visual Studio を使用した Web ジョブの開発とデプロイ方法については、[Visual Studio を使用した Web ジョブのデプロイ](webjobs-dotnet-deploy-vs.md)に関する記事を参照してください。
+
 ## <a name="overview"></a>概要
-Web ジョブは、Web アプリ、API アプリ、またはモバイル アプリと同じコンテキストでプログラムやスクリプトを実行できる [Azure App Service](https://docs.microsoft.com/azure/app-service/) の機能です。 Web ジョブの使用に追加コストはかかりません。
+Web ジョブは、Web アプリ、API アプリ、またはモバイル アプリと同じコンテキストでプログラムやスクリプトを実行できる [Azure App Service](index.yml) の機能です。 Web ジョブの使用に追加コストはかかりません。
 
 > [!IMPORTANT]
 > Web ジョブは App Service on Linux ではまだサポートされていません。
-
-この記事では、実行可能ファイルまたはスクリプトをアップロードする Web ジョブを [Azure ポータル](https://portal.azure.com)を使用してデプロイする方法について説明します。 Visual Studio を使用した Web ジョブの開発とデプロイ方法については、[Visual Studio を使用した Web ジョブのデプロイ](webjobs-dotnet-deploy-vs.md)に関する記事を参照してください。
 
 Azure WebJobs SDK と Web ジョブを使用して、多くのプログラミング タスクを単純化できます。 詳細については、「 [Azure Web ジョブ SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)」をご覧ください。
 
@@ -180,6 +178,8 @@ when making changes in one don't forget the other two.
 ```
 
 詳細については、「[Scheduling a triggered WebJob (トリガーされる Web ジョブのスケジュール設定)](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)」を参照してください。
+
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
 ## <a name="ViewJobHistory"></a>ジョブ履歴を表示する
 

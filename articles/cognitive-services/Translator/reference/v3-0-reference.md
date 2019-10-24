@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772783"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72252974"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -48,21 +48,20 @@ Microsoft Translator Text API への要求は、ほとんどの場合、その�
 |Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
 |Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
 
-
 ## <a name="authentication"></a>認証
 
-Microsoft Cognitive Services の Translator Text API または [Cognitive Services マルチサービス](https://azure.microsoft.com/pricing/details/cognitive-services/)をサブスクライブし、(Azure portal で入手できる) お客様のサブスクリプション キーを使用して認証します。 
+Azure Cognitive Services の Translator Text API または [Cognitive Services マルチサービス](https://azure.microsoft.com/pricing/details/cognitive-services/)をサブスクライブし、(Azure portal で入手できる) お客様のサブスクリプション キーを使用して認証します。 
 
-お客様のサブスクリプションの認証に使用できるヘッダーは 3 つあります。 次の表で、それぞれの使用方法を説明します。
+お客様のサブスクリプションの認証に使用できるヘッダーは 3 つあります。 次の表は、それぞれの使用方法を示しています。
 
 |headers|説明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
 |Authorization|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
-|Ocp-Apim-Subscription-Region|"*Cognitive Services マルチサービス サブスクリプションで、マルチサービスの秘密鍵を渡す場合に使用します*"。<br/>値は、マルチサービス サブスクリプションのリージョンです。 マルチサービス サブスクリプションを使用しない場合、この値は省略できます。|
+|Ocp-Apim-Subscription-Region|*マルチサービスの秘密鍵を渡す場合は、Cognitive Services マルチサービス サブスクリプションで使用します。*<br/>値は、マルチサービス サブスクリプションのリージョンです。 マルチサービス サブスクリプションを使用しない場合、この値は省略できます。|
 
 ###  <a name="secret-key"></a>秘密鍵
-1 つ目の方法は、`Ocp-Apim-Subscription-Key` ヘッダーを使用した認証です。 単に、`Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` ヘッダーをお客様の要求に追加します。
+1 つ目の方法は、`Ocp-Apim-Subscription-Key` ヘッダーを使用した認証です。 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` ヘッダーをお客様の要求に追加します。
 
 ### <a name="authorization-token"></a>承認トークン
 または、お客様の秘密鍵をアクセス トークンと交換する方法もあります。 このトークンをそれぞれの要求に `Authorization` ヘッダーとして含めます。 承認トークンを取得するには、次の URL に `POST` 要求を送信します。
@@ -73,7 +72,7 @@ Microsoft Cognitive Services の Translator Text API または [Cognitive Servic
 
 指定の秘密鍵でトークンを取得する要求の例を次に示します。
 
-```
+```curl
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
 
@@ -83,11 +82,11 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 
 要求が成功すると、応答本文内にプレーン テキストとしてエンコードされたアクセス トークンが返されます。 有効なトークンは、Authorization 内のベアラー トークンとして Translator サービスに渡されます。
 
-```
+```http
 Authorization: Bearer <Base64-access_token>
 ```
 
-認証トークンは 10 分間有効です。 Translator API に対して複数の呼び出しを行う場合は、このトークンを再利用する必要があります。 ただし、プログラムで、長時間にわたって Translator API に要求を行う場合は、一定間隔 (例: 8 分ごと) でプログラムから新しいアクセス トークンを要求する必要があります。
+認証トークンは 10 分間有効です。 Translator API に対して複数の呼び出しを行う場合は、このトークンを再利用する必要があります。 ただし、プログラムで、長時間にわたって Translator API に要求を行う場合は、一定間隔 (例えば、8 分ごと) でプログラムから新しいアクセス トークンを要求する必要があります。
 
 ### <a name="multi-service-subscription"></a>マルチサービスのサブスクリプション
 
@@ -111,12 +110,11 @@ Authorization: Bearer <Base64-access_token>
 標準的なエラー応答は、`error` という名前の名前/値ペアを含む JSON オブジェクトです。 値は、以下のプロパティを含む JSON オブジェクトでもあります。
 
   * `code`:サーバー定義のエラー コード。
-
   * `message`:エラーを人間が読み取ることができる表現にした文字列。
 
 たとえば、無料試用版のサブスクリプションを使用したユーザーは、無料クォータがなくなると、次のエラーを受け取ります。
 
-```
+```json
 {
   "error": {
     "code":403001,
@@ -136,7 +134,7 @@ Authorization: Bearer <Base64-access_token>
 | 400005| 入力テキストが見つからないか無効です｡|
 | 400006| 言語とスクリプトの組み合わせが無効です｡|
 | 400018| ソース スクリプト指定子 ("From script") が見つからないか無効です｡|
-| 400019| サポートされていない言語が指定されています｡|
+| 400019| サポートされていない言語の 1 つが指定されています｡|
 | 400020| 一連の入力テキストに無効な要素があります｡|
 | 400021| API バージョン パラメーターが見つからないか無効です｡|
 | 400023| 無効な言語ペアが指定されています｡|

@@ -12,10 +12,10 @@ author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 511c737e160c0f0753e570314c9b29346972cb04
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71269265"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する

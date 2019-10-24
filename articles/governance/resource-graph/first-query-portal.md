@@ -3,15 +3,15 @@ title: Azure Resource Graph エクスプローラーを使用して初めての�
 description: この記事では、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行する手順を紹介します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387615"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752148"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -45,7 +45,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="schema-browser"></a>スキーマ ブラウザー
 
-スキーマ ブラウザーは、Resource Graph エクスプローラーの左側のウィンドウに配置されています。 このリソース一覧には、Azure Resource Graph でサポートされており、なおかつ自分がアクセス可能なテナントに存在する Azure リソースの "_リソースの種類_" がすべて表示されます。 リソースの種類またはサブプロパティを展開すると子プロパティが表示されます。その子プロパティを使用して、Resource Graph クエリを作成できます。 リソースの種類を選択すると、クエリ ボックスに `where type =="<resource type>"` が配置されます。 いずれかの子プロパティを選択すると、クエリ ボックスに `where <propertyName> == "INSERT_VALUE_HERE"` が追加されます。 スキーマ ブラウザーは、クエリに使用するプロパティを見つけるための優れた手段です。 _INSERT\_VALUE\_HERE_ は実際の値に置き換え、条件や演算子、関数を使いながら、意図した結果が得られるようにクエリを調整してください。
+スキーマ ブラウザーは、Resource Graph エクスプローラーの左側のウィンドウに配置されています。 このリソース一覧には、Azure Resource Graph でサポートされており、なおかつ自分がアクセス可能なテナントに存在する Azure リソースの "_リソースの種類_" がすべて表示されます。 リソースの種類またはサブプロパティを展開すると子プロパティが表示されます。その子プロパティを使用して、Resource Graph クエリを作成できます。
+
+リソースの種類を選択すると、クエリ ボックスに `where type =="<resource type>"` が配置されます。 いずれかの子プロパティを選択すると、クエリ ボックスに `where <propertyName> == "INSERT_VALUE_HERE"` が追加されます。
+スキーマ ブラウザーは、クエリに使用するプロパティを見つけるための優れた手段です。 _INSERT\_VALUE\_HERE_ は実際の値に置き換え、条件や演算子、関数を使いながら、意図した結果が得られるようにクエリを調整してください。
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Resource Graph クエリからグラフを作成する
 

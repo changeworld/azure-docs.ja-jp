@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c25069ce5231a1f89027dea69579231f0fe4bcd
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025487"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517086"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -147,3 +147,337 @@ AKS クラスターの作成時には、ユーザーに代わってリソース�
 AKS クラスターからのエグレス トラフィックを制限するときには、AKS 向けの[必須および任意の推奨される](limit-egress-traffic.md)送信ポート、ネットワーク規則と FQDN、アプリケーション規則があります。 ご利用の設定がこのような規則と競合するとき、一部の `kubectl` コマンドを実行できないことがあります。 また、AKS クラスターの作成時にエラーが表示されることがあります。
 
 必須または任意の推奨される送信ポート、ネットワーク規則と FQDN、およびアプリケーション規則のいずれにもご利用の設定が競合していないことを確認します。
+
+## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage および ASK のトラブルシューティング
+
+### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>推奨される Kubernetes for Azure Disk の安定したバージョンは何ですか。 
+
+| Kubernetes バージョン | 推奨されるバージョン |
+| -- | :--: |
+| 1.12 | 1.12.9 以上 |
+| 1.13 | 1.13.6 以上 |
+| 1.14 | 1.14.2 以上 |
+
+
+### <a name="what-versions-of-kubernetes-have-azure-disk-support-on-the-sovereign-cloud"></a>ソブリン クラウドで Azure Disk をサポートしている Kubernetes のバージョンは何ですか。
+
+| Kubernetes バージョン | 推奨されるバージョン |
+| -- | :--: |
+| 1.12 | 1.12.0 以上 |
+| 1.13 | 1.13.0 以上 |
+| 1.14 | 1.14.0 以上 |
+
+
+### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>Azure Disk の WaitForAttach に失敗しました: "/dev/disk/azure/scsi1/lun1" を解析しています: 構文が無効です
+
+Kubernetes バージョン1.10 では、Azure Disk の再マウントによって MountVolume が失敗する場合があります。
+
+Linux では、正しくない DevicePath フォーマット エラーが表示されることがあります。 例:
+
+```console
+MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
+  Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
+```
+
+Windows では、間違った DevicePath (LUN) 番号のエラーが表示されることがあります。 例:
+
+```console
+Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
+1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
+```
+
+この問題は、次のバージョンの Kubernetes で修正されました。
+
+| Kubernetes バージョン | 修正済みのバージョン |
+| -- | :--: |
+| 1.10 | 1.10.2 以上 |
+| 1.11 | 1.11.0 以上 |
+| 1.12 以上 | 該当なし |
+
+### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure Disk の MountOptions で UID と GID を設定するときにエラーが発生する
+
+既定では、Azure ディスクは ext4、xfs ファイル システムを使用します。uid=x、gid=x などの mountOptions はマウント時に設定できません。 たとえば、mountOptions uid=999、gid=999 を設定しようとすると、次のようなエラーが表示されます。
+
+```console
+Warning  FailedMount             63s                  kubelet, aks-nodepool1-29460110-0  MountVolume.MountDevice failed for volume "pvc-d783d0e4-85a1-11e9-8a90-369885447933" : azureDisk - mountDevice:FormatAndMount failed with mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/plugins/kubernetes.io/azure-disk/mounts/m436970985 --scope -- mount -t xfs -o dir_mode=0777,file_mode=0777,uid=1000,gid=1000,defaults /dev/disk/azure/scsi1/lun2 /var/lib/kubelet/plugins/kubernetes.io/azure-disk/mounts/m436970985
+Output: Running scope as unit run-rb21966413ab449b3a242ae9b0fbc9398.scope.
+mount: wrong fs type, bad option, bad superblock on /dev/sde,
+       missing codepage or helper program, or other error
+```
+
+問題を軽減するには、次のいずれかの操作を行います。
+
+* fsGroup で GID、runAsUser で UID を設定して、[ポッドのセキュリティ コンテキストを構成](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)します。 たとえば、次の設定ではポッドを root として実行するよう設定し、任意のファイルからアクセスできるようにします。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+  >[!NOTE]
+  > 既定では、GID と UID は root または 0 としてマウントされるためです。 GID または UID が非 root (1000 など) として設定されている場合、Kubernetes は `chown` を使用して、そのディスクにあるすべてのディレクトリとファイルを変更します。 この操作には時間がかかることがあり、ディスクのマウントが非常に遅くなる可能性があります。
+
+* initContainers で `chown` を使用して、GID と UID を設定します。 例:
+
+```yaml
+initContainers:
+- name: volume-mount
+  image: busybox
+  command: ["sh", "-c", "chown -R 100:100 /data"]
+  volumeMounts:
+  - name: <your data volume>
+    mountPath: /data
+```
+
+### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>ポッドによって使用されている Azure Disk PersistentVolumeClaim の削除により発生したエラー
+
+ポッドによって使用されている Azure Disk PersistentVolumeClaim を削除しようとすると、エラーが表示される場合があります。 例:
+
+```console
+$ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
+...
+Message:         disk.DisksClient#Delete: Failure responding to request: StatusCode=409 -- Original Error: autorest/azure: Service returned an error. Status=409 Code="OperationNotAllowed" Message="Disk kubernetes-dynamic-pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06 is attached to VM /subscriptions/{subs-id}/resourceGroups/MC_markito-aks-pvc_markito-aks-pvc_westus/providers/Microsoft.Compute/virtualMachines/aks-agentpool-25259074-0."
+```
+
+Kubernetes バージョン 1.10 以降では、このエラーを防ぐために既定で PersistentVolumeClaim 保護機能が有効になっています。 この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用している場合は、PersistentVolumeClaim を削除する前に PersistentVolumeClaim を使用してポッドを削除することで、この問題を軽減できます。
+
+
+### <a name="error-cannot-find-lun-for-disk-when-attaching-a-disk-to-a-node"></a>ディスクをノードに接続すると、"Cannot find Lun for disk" (ディスクの Lun が見つかりませんでした) というエラーが発生する
+
+ディスクをノードに接続すると、次のエラーが表示される場合があります。
+
+```console
+MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6" : Cannot find Lun for disk kubernetes-dynamic-pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6
+```
+
+この問題は、次のバージョンの Kubernetes で修正されました。
+
+| Kubernetes バージョン | 修正済みのバージョン |
+| -- | :--: |
+| 1.10 | 1.10.10 以上 |
+| 1.11 | 1.11.5 以上 |
+| 1.12 | 1.12.3 以上 |
+| 1.13 | 1.13.0 以上 |
+| 1.14 以上 | 該当なし |
+
+この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用している場合は、数分間待ってから再試行することで、問題を軽減できます。
+
+### <a name="azure-disk-attachdetach-failure-mount-issues-or-io-errors-during-multiple-attachdetach-operations"></a>Azure ディスクのアタッチ/デタッチの失敗、マウントの問題、または複数のアタッチ/デタッチ操作中の I/O エラー
+
+Kubernetes バージョン 1.9.2 以降では、複数のアタッチ/デタッチ操作を並行して実行すると、VM キャッシュがダーティであるため、次のディスクの問題が発生することがあります。
+
+* Diskのアタッチ/デタッチの失敗
+* Diskの I/O エラー
+* 予期しない VM からのディスクのデタッチ
+* 存在しないディスクのアタッチによる VM のエラー状態
+
+この問題は、次のバージョンの Kubernetes で修正されました。
+
+| Kubernetes バージョン | 修正済みのバージョン |
+| -- | :--: |
+| 1.10 | 1.10.12 以上 |
+| 1.11 | 1.11.6 以上 |
+| 1.12 | 1.12.4 以上 |
+| 1.13 | 1.13.0 以上 |
+| 1.14 以上 | 該当なし |
+
+この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用している場合は、次のようにして問題を軽減できます。
+
+* 長時間デタッチを待機しているディスクがある場合は、ディスクを手動でデタッチしてください。
+
+### <a name="azure-disk-waiting-to-detach-indefinitely"></a>デタッチを無期限で待機している Azure Disk
+
+一部のケースでは、Azure Disk のデタッチ操作が最初の試行で失敗した場合、デタッチ操作は再試行されず、元のノード VM にアタッチされたままになります。 このエラーは、ディスクを 1 つのノードから別のノードに移動するときに発生する可能性があります。 例:
+
+```console
+[Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
+```
+
+この問題は、次のバージョンの Kubernetes で修正されました。
+
+| Kubernetes バージョン | 修正済みのバージョン |
+| -- | :--: |
+| 1.11 | 1.11.9 以上 |
+| 1.12 | 1.12.7 以上 |
+| 1.13 | 1.13.4 以上 |
+| 1.14 以上 | 該当なし |
+
+この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用している場合は、ディスクを手動でデタッチしてください。
+
+### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>競合状態の問題および無効なデータ ディスク リストにつながるAzure ディスクのデタッチの失敗
+
+Azure Disk のデタッチに失敗すると、エクスポネンシャル バックオフを使用してディスクのデタッチを最大 6 回再試行します。 また、データ ディスク リストにノード レベルのロックを約 3 分間保持します。 手動によるアタッチやデタッチ操作など、この期間中にディスク リストを手動で更新すると、ノード レベルのロックによって保持されていたディスクの一覧が互換性のために残され、ノード VM が不安定になることがあります。
+
+この問題は、次のバージョンの Kubernetes で修正されました。
+
+| Kubernetes バージョン | 修正済みのバージョン |
+| -- | :--: |
+| 1.12 | 1.12.9 以上 |
+| 1.13 | 1.13.6 以上 |
+| 1.14 | 1.14.2 以上 |
+| 1.15 以上 | 該当なし |
+
+この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用し、かつノード VM のディスク リストが古くなっている場合は、単一の一括操作として VM からすべての存在しないディスクを切断することで問題を軽減できます。 **存在しないディスクを個別にデタッチすると失敗する場合があります。**
+
+
+### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>多数の Azure ディスクによってアタッチ/デタッチが遅くなる
+
+ノード VM に接続されている Azure ディスクの数が 10 を超えると、アタッチとデタッチの操作が遅くなる場合があります。 この問題は既知の問題であり、現時点では回避策はありません。
+
+### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>エラー状態のノード VM につながる Azure Disk デタッチ エラー
+
+一部のエッジ ケースでは、Azure Disk のデタッチが部分的に失敗し、ノード VM がエラー状態のままになる場合があります。
+
+この問題は、次のバージョンの Kubernetes で修正されました。
+
+| Kubernetes バージョン | 修正済みのバージョン |
+| -- | :--: |
+| 1.12 | 1.12.10 以上 |
+| 1.13 | 1.13.8 以上 |
+| 1.14 | 1.14.4 以上 |
+| 1.15 以上 | 該当なし |
+
+この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用し、かつノード VM がエラー状態である場合は、次のいずれかを使用して VM の状態を手動で更新することで、この問題を軽減できます。
+
+* 可用性セットベースのクラスターの場合:
+    ```console
+    az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
+    ```
+
+* VMSS ベースのクラスターの場合:
+    ```console
+    az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
+    ```
+
+## <a name="azure-files-and-aks-troubleshooting"></a>Azure Files および AKS のトラブルシューティング
+
+### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>推奨される Kubernetes for Azure File の安定したバージョンは何ですか。
+ 
+| Kubernetes バージョン | 推奨されるバージョン |
+| -- | :--: |
+| 1.12 | 1.12.6 以上 |
+| 1.13 | 1.13.4 以上 |
+| 1.14 | 1.14.0 以上 |
+
+### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>ソブリン クラウドで Azure Files をサポートしている Kubernetes のバージョンは何ですか。
+
+| Kubernetes バージョン | 推奨されるバージョン |
+| -- | :--: |
+| 1.12 | 1.12.0 以上 |
+| 1.13 | 1.13.0 以上 |
+| 1.14 | 1.14.0 以上 |
+
+### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Azure Files を使用する場合の既定の mountOptions は何ですか。
+
+推奨設定
+
+| Kubernetes バージョン | fileMode および dirMode の値|
+| -- | :--: |
+| 1.12.0 - 1.12.1 | 0755 |
+| 1.12.2 以上 | 0777 |
+
+Kuberetes バージョン 1.8.5 以降のクラスターを使い、ストレージ クラスを使用して永続ボリュームを動的に作成している場合は、ストレージ クラスのオブジェクトに対してマウント オプションを指定できます。 次の例では、*0777* が設定されます。
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: azurefile
+provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
+parameters:
+  skuName: Standard_LRS
+```
+
+その他の便利な *mountOptions* 設定を次に示します。
+
+* *mfsymlinks* は、Azure Files mount (cifs) をサポートするシンボリック リンクを作成します
+* *nobrl* は、サーバーにバイト範囲のロック要求が送信されるのを防止します。 この設定は、cifs 形式の必須のバイト範囲のロックにより中断する特定のアプリケーションに必要です。 ほとんどの cifs サーバーでは、アドバイザリ バイト範囲のロック要求はまだサポートされていません。 *nobrl* を使用しない場合、cifs 形式の必須なバイト範囲のロックで中断されたアプリケーションでは、次のようなエラー メッセージが発生する可能性があります。
+    ```console
+    Error: SQLITE_BUSY: database is locked
+    ```
+
+### <a name="error-could-not-change-permissions-when-using-azure-files"></a>Azure Files を使用すると、"could not change permissions" (アクセス許可を変更できませんでした) というエラーが発生する
+
+Azure Files プラグインで PostgreSQL を実行すると、次のようなエラーが表示されることがあります。
+
+```console
+initdb: could not change permissions of directory "/var/lib/postgresql/data": Operation not permitted
+fixing permissions on existing directory /var/lib/postgresql/data
+```
+
+このエラーは、cifs/SMB プロトコルを使用する Azure Files プラグインにより発生します。 cifs/SMB プロトコルを使用している場合、ファイルとディレクトリのアクセス許可をマウント後に変更することはできません。
+
+この問題を解決するには、*subPath* を Azure Disk プラグインと一緒に使用します。 
+
+> [!NOTE] 
+> ext3/4 ディスクの種類の場合、ディスクのフォーマット後に lost+found ディレクトリがあります。
+
+### <a name="azure-files-has-high-latency-compared-to-azure-disk-when-handling-many-small-files"></a>多数の小さなファイルを処理する際、Azure ディスクと比べて Azure Files の待機時間が長くなる
+
+多数の小さなファイルを処理する場合など、Azure ディスクと比較して Azure Files を使用すると待機時間が長くなることがあります。
+
+### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>ストレージアカウントの [Allow access from selected network]/(選択したネットワークからのアクセスを許可する/) 設定を有効にすると、エラーが発生する
+
+AKS で動的プロビジョニングに使用されるストレージアカウントの *[Allow access from selected network]/(選択したネットワークからのアクセスを許可する/)* 設定を有効にすると、AKS がファイル共有を作成するときに次のエラーが表示されます。
+
+```console
+persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
+```
+
+このエラーは、 *[Allow access from selected network]/(選択したネットワークからのアクセスを許可する/)* の設定時に *Kubernetes persistentvolume-controller* が選択したネットワーク上に存在しないことが原因で発生します。
+
+[Azure Files で静的プロビジョニング](azure-files-volume.md)を使用することによって、この問題を軽減できます。
+
+### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Windows ポッドで Azure Files を再マウントできない
+
+Azure Files がマウントされている Windows ポッドが削除され、同じノードで再作成されるようにスケジュールされている場合、マウントは失敗します。 このエラーは、Azure Files マウントが既にノードにマウントされているために `New-SmbGlobalMapping` コマンドが失敗することが原因で発生します。
+
+例えば、次のようなエラー メッセージが表示される場合があります。
+
+```console
+E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (\"42c0ea39-1af9-11e9-8941-000d3af95268\")" failed. No retries permitted until 2019-01-18 08:15:53.0410149 +0000 GMT m=+732.446642701 (durationBeforeRetry 1s). Error: "MountVolume.SetUp failed for volume \"pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (UniqueName: \"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\") pod \"deployment-azurefile-697f98d559-6zrlf\" (UID: \"42c0ea39-1af9-11e9-8941-000d3af95268\") : azureMount: SmbGlobalMapping failed: exit status 1, only SMB mount is supported now, output: \"New-SmbGlobalMapping : Generic failure \\r\\nAt line:1 char:190\\r\\n+ ... ser, $PWord;New-SmbGlobalMapping -RemotePath $Env:smbremotepath -Cred ...\\r\\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\r\\n    + CategoryInfo          : NotSpecified: (MSFT_SmbGlobalMapping:ROOT/Microsoft/...mbGlobalMapping) [New-SmbGlobalMa \\r\\n   pping], CimException\\r\\n    + FullyQualifiedErrorId : HRESULT 0x80041001,New-SmbGlobalMapping\\r\\n \\r\\n\""
+```
+
+この問題は、次のバージョンの Kubernetes で修正されました。
+
+| Kubernetes バージョン | 修正済みのバージョン |
+| -- | :--: |
+| 1.12 | 1.12.6 以上 |
+| 1.13 | 1.13.4 以上 |
+| 1.14 以上 | 該当なし |
+
+### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>ストレージ アカウント キーが変更されたため Azure Files マウントが失敗する
+
+ストレージ アカウント キーが変更されている場合、Azure Files マウント エラーが発生することがあります。
+
+この問題は、base64 でエンコードされたストレージ アカウント キーを使用して Azure シークレット ファイルの *azurestorageaccountkey* フィールドを手動で更新することで軽減できます。
+
+Base64 でストレージ アカウント キーをエンコードするには、`base64` を使用します。 例:
+
+```console
+echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
+```
+
+Azure シークレット ファイルを更新するには、`kubectl edit secret` を使用します。 例:
+
+```console
+kubectl edit secret azure-storage-account-{storage-account-name}-secret
+```
+
+数分後、エージェント ノードは更新されたストレージ キーを使用して Azure File のマウントを再試行します。

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147358"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372717"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -114,6 +114,12 @@ Azure portal の [メッセージ ルーティング] ブレードで、フォ�
 ## <a name="testing-routes"></a>ルートのテスト
 
 新しいルートを作成したり、既存のルートを編集したりする場合は、サンプル メッセージを使用してルート クエリをテストする必要があります。 個々のルートをテストすることも、すべてのルートを一度にテストすることも可能で、テスト中にメッセージがエンドポイントにルーティングされることはありません。 テストには、Azure portal、Azure Resource Manager、Azure PowerShell、および Azure CLI を使用することができます。 結果は、サンプル メッセージがクエリに一致したか、メッセージがクエリに一致しなかったか、サンプル メッセージまたはクエリ構文が正しくないためにテストを実行できなかったかを識別するのに役立ちます。 詳細については、[ルートのテスト](/rest/api/iothub/iothubresource/testroute)に関するページと[すべてのルートのテスト](/rest/api/iothub/iothubresource/testallroutes)に関するページを参照してください。
+
+## <a name="ordering-guarantees-with-at-least-once-delivery"></a>順序では最低 1 回の配信が保証される
+
+IoT Hub メッセージ ルーティングでは、エンドポイントへのメッセージの配信順序と少なくとも 1 回の配信が保証されます。 これは、重複するメッセージが存在する可能性があり、元のメッセージの順序に従って一連のメッセージを再送信できることを意味します。 たとえば、元のメッセージの順序が [1,2,3,4] の場合に、[1,2,1,2,3,1,2,3,4] のようなメッセージ シーケンスを受け取ることがあります。 順序保証では、メッセージ [1] を受信した場合、常に [2, 3, 4] が続きます。
+
+メッセージの重複を処理するには、発生ポイントでメッセージのアプリケーション プロパティに一意識別子をスタンプすることをお勧めします。これは通常、デバイスまたはモジュールです。 メッセージを消費するサービスでは、この識別子を使用して重複するメッセージを処理できます。
 
 ## <a name="latency"></a>Latency
 

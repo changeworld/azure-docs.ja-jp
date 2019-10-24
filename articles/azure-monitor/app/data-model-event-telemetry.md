@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights Telemetry のデータ モデル - イベント テレメトリ | Microsoft Docs
 description: イベント テレメトリ用の Application Insights データ モデル
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 8e519e5a5e5fe6b893fa5663e1426630f46f885f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900852"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678148"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>イベント テレメトリ:Application Insights データ モデル
 
@@ -25,7 +21,7 @@ ms.locfileid: "60900852"
 
 意味的には、イベントは、要求に相関付けられる場合と、関連付けられない場合があります。 ただし、適切に使用すれば、イベント テレメトリは、要求やトレースよりも重要になります。 イベントはビジネス テレメトリを表しているため、独立したより緩やかな[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)の対象にする必要があります。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名前
 
 イベント名。 適切なグループ分けや有効なメトリックのために、多数の個別イベント名が生成されないようにアプリケーションを制限してください。 たとえば、1 つのイベントで生成されるインスタンスごとに別の名前を使用しないでください。
 

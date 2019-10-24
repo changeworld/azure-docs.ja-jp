@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 08db59e26a66aca57d65458a302c3c1de2e34a7b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124919"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373495"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -83,7 +83,7 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能の恩恵を受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
 
-*"**Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます"* 。 --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 シャドウ IT を検出することに加え、MCAS は、アプリのリスク レベルを判別し、会社のデータへの未承認アクセス、データ漏洩の可能性、およびアプリケーションに固有のその他のセキュリティ リスクを防止することもできます。
 

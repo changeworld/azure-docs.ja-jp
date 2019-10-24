@@ -4,16 +4,16 @@ description: この記事では、Azure EA Portal で管理者が行う一般的
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035209"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329347"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -62,7 +62,7 @@ Azure アカウントの詳細については、「Add an account (アカウン�
 
 有効な転送日には、転送先の登録の開始日以降の日付を指定できます。 転送先の登録は、"_対象の登録_" です。 アカウントの転送後、有効な転送日より前のアカウントの使用状況情報はすべて、転送元の登録に残ります。 転送元の登録は、"_元の登録_" です。  元の登録の使用量は、年額コミットメントまたは超過分に対して課金されます。 有効な転送日以降に発生した使用量は、新しい登録に転送され、これに応じて課金されます。
 
-アカウントの転送は、対象の登録の開始日まで遡ることができます。 また、元の登録の有効な開始日まで遡ることもできます。
+登録の転送は、対象の登録の開始日までさかのぼることができます。 また、元の登録の有効な開始日まで遡ることもできます。
 
 ### <a name="monetary-commitment"></a>年額コミットメント
 
@@ -212,12 +212,11 @@ Azure EA 登録を終了する場合は、次のことができます。
 ![[連絡先の追加] ボックスを示す例 ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure スポンサー プラン
+
 Azure スポンサー プランは、Microsoft Azure の限定スポンサー アカウントです。 Microsoft が選択した一部のお客様のみに送られる招待メールを通じて利用可能になります。 Microsoft Azure スポンサー プランの対象となるお客様には、ご使用のアカウント ID に電子メールの招待状が送信されます。
+
 詳細については、次を参照してください。
 
-- スポンサー プランの概要 - https://azure.microsoft.com/en-us/offers/ms-azr-0143p/
-- スポンサー プランの残高ポータル - https://www.microsoftazuresponsorships.com/balance  
-- 外部スポンサーに関する FAQ - https://azuresponsorships-staging.azurewebsites.net/faq
 - スポンサー プランのアクティブ化のためのサポート リクエスト - http://aka.ms/azrsponsorship
 
 ## <a name="next-steps"></a>次の手順

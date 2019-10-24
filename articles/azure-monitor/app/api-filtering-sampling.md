@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights SDK におけるフィルター処理および前処理 | Microsoft Docs
 description: テレメトリが Application Insights ポータルに送信される前に、SDK でフィルター処理またはデータへのプロパティの追加を行うためのテレメトリ プロセッサおよびテレメトリ初期化子を記述します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/23/2016
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 095d539404412d34c66201646f6134ff740f86b7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/23/2016
+ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299274"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677804"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
@@ -30,7 +25,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 開始する前に次の操作を実行してください。
 
-* アプリケーションに適した SDK をアプリにインストールします ( [ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[Non HTTP/Worker for .NET/.NET Core](worker-service.md)、[Java](../../azure-monitor/app/java-get-started.md))。
+* アプリケーションに適した SDK をインストールします。[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[Non HTTP/Worker for .NET/.NET Core](worker-service.md)、または [Java](../../azure-monitor/app/java-get-started.md)。
 
 <a name="filtering"></a>
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e82ce8f5c97aed7e2cb832d8e808ff84691f7c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401204"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285495"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR Service でのメッセージと接続
 
@@ -42,13 +42,15 @@ Azure portal に表示されるメッセージ数は、累計 100 件を超え�
 
 ## <a name="how-connections-are-counted"></a>接続のカウント方法
 
-サーバー接続とクライアント接続があります。 既定では、各アプリケーション サーバーと Azure SignalR Service との接続はハブあたり 5 つで、各クライアントと Azure SignalR Service とのクライアント接続は 1 つです。
+Azure SignalR Service にはサーバー接続とクライアント接続があります。 既定では、各アプリケーション サーバーの初期接続はハブあたり 5 個で、各クライアントのクライアント接続は 1 個です。
 
 Azure portal に表示される接続数には、サーバー接続とクライアント接続の両方が含まれます。
 
 たとえば、2 つのアプリケーション サーバーがあり、コードを使って 5 つのハブを定義するものとします。 サーバー接続の数は 50 になります:2 アプリ サーバー * 5 ハブ * 5 接続/ハブ。
 
-ASP.NET SignalR では、サーバー接続数の計算方法が異なります。 ユーザーが定義するハブに加えて、1 つの既定のハブが含まれます。 既定では、各アプリケーション サーバーにさらに 5 つのサーバー接続が必要になります。 既定のハブの接続数は、他のハブの接続数と一貫しています。
+ASP.NET SignalR では、サーバー接続数の計算方法が異なります。 ユーザーが定義するハブに加えて、1 つの既定のハブが含まれます。 既定では、各アプリケーション サーバーにさらに 5 つの初期サーバー接続が必要になります。 既定のハブの初期接続数は、他のハブの接続数と一貫しています。
+
+アプリケーション サーバーの有効期間中は、サービスとアプリケーション サーバーは接続状態の同期を維持し、サーバー接続を調整してパフォーマンスとサービスの安定性を高めます。 そのため、サーバーの接続数がときどき変更される場合があります。
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>受信/送信トラフィックのカウント方法
 

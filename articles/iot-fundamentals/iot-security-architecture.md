@@ -7,13 +7,15 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: a356c068a54833d66bdc600ad3caeb21e49ea815
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bf00bbc614f9fc46a983405800d4136e65c9de05
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626604"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789086"
 ---
+# <a name="internet-of-things-iot-security-architecture"></a>モノのインターネット (IoT) のセキュリティ アーキテクチャ
+
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 ## <a name="see-also"></a>関連項目

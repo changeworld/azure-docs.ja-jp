@@ -1,5 +1,5 @@
 ---
-title: Azure の委任されたリソース管理に顧客をオンボードする - Azure Lighthouse
+title: Azure の委任されたリソース管理に顧客をオンボードする
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 author: JnHs
 ms.author: jenhayes
@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f1d01a4b6b4e42261542cc64516a2e1c2bef56c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: e16747d74df7db0fb2ca2d4e0f07247258a980d7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958721"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299756"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
 
@@ -188,7 +188,7 @@ az role definition list --name "<roleName>" | grep name
     }
 }
 ```
-上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、**delegatedRoleDefinitionIds** プロパティと 1 つ以上の組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらの組み込みロールをマネージド ID に割り当てることができます。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。
+上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、**delegatedRoleDefinitionIds** プロパティと 1 つ以上の組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらの組み込みロールを[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に割り当てることができます。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートをデプロイする
 

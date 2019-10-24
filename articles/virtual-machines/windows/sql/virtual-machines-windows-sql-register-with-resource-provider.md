@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023600"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512364"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -203,7 +203,7 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
      $sqlvm.Properties.sqlManagement
   ```
 
-"*軽量*" の IaaS 拡張機能がインストールされている SQL Server VM の場合、Azure portal を使用してモードを "_フル_" にアップグレードできます。 _No-Agent_ モードの SQL Server VM は、OS が Windows 2008 R2 以降にアップグレードされ後で "_フル_" にアップグレードできます。 ダウングレードはできません。これを行うには、SQL IaaS 拡張機能を完全にアンインストールし、再度インストールする必要があります。 
+"*軽量*" の IaaS 拡張機能がインストールされている SQL Server VM の場合、Azure portal を使用してモードを "_フル_" にアップグレードできます。 _No-Agent_ モードの SQL Server VM は、OS が Windows 2008 R2 以降にアップグレードされ後で "_フル_" にアップグレードできます。 ダウングレードはできません。これを行うには、Azure portal を使用して SQL VM リソース プロバイダーのリソースを削除し、SQL VM リソース プロバイダーに再登録する必要があります。 
 
 エージェントのモードを "フル" にアップグレードするには: 
 
@@ -353,7 +353,7 @@ No. エージェントなしモードでは、管理モードを完全または�
 
 No. SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 この管理モードは、完全モードから軽量またはエージェントなしモードにダウングレードできません。また、軽量モードからエージェントなしモードにダウングレードすることもできません。 
 
-管理モードを完全管理から変更するには、SQL Server IaaS 拡張機能を削除してください。 その後、Microsoft.SqlVirtualMachine リソースをドロップし、SQL Server VM を SQL VM リソースプロバイダーに再登録します。
+管理モードを完全管理から変更するには、Microsoft.SqlVirtualMachine リソースを削除し、SQL Server VM を SQL VM リソース プロバイダーに再登録します。
 
 **Azure portal から SQL VM リソースプロバイダーに登録できますか?**
 

@@ -1,24 +1,18 @@
 ---
 title: メトリックのためのコンテナーの Azure Monitor の更新方法 | Microsoft Docs
 description: この記事では、集計したメトリックの探索とアラートをサポートするカスタム メトリック機能を有効にするために、コンテナーの Azure Monitor を更新する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/06/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/06/2019
+ms.openlocfilehash: dd1618151b97ab4f958bfd5d50333b9551014f0f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148868"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554073"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
 コンテナーの Azure Monitor では、Azure Kubernetes Services (AKS) クラスター ノードおよびポッドからのメトリックの収集と、Azure Monitor メトリック ストアへのそれらの書き込みのサポートを導入します。 この変更は、パフォーマンス グラフでの集計計算 (Avg、Count、Max、Min、Sum) を表示するときの適時性の改善、Azure portal ダッシュボードでのパフォーマンス グラフのピン留めのサポート、およびメトリック アラートのサポートを実現するためのものです。

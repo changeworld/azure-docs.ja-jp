@@ -64,9 +64,9 @@
           href: virtual-machines-windows-ps-sql-create.md
     - name: リソース プロバイダーへの登録
       href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: SQL VM のライセンス モデルの変更
+    - name: ライセンス モデルを変更する
       href: virtual-machines-windows-sql-ahb.md
-    - name: SQL Server のエディションの変更
+    - name: エディションを変更する
       href: virtual-machines-windows-sql-change-edition.md
     - name: 移行
       items:
@@ -103,7 +103,7 @@
             - name: 記憶域スペース ダイレクトの使用
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
             - name: Premium ファイル共有の使用
-              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

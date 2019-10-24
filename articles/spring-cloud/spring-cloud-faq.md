@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 09970468a277dcaf3f28b4f5065572568089a12e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038491"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433326"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -30,7 +30,7 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、Log Analytics �
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure Spring Cloud にはどのようなサービス プランがあるのでしょうか?
 
-Azure Spring Cloud は、プレビュー期間中は無料でご利用いただけます。
+プレビュー期間中は、Azure Spring Cloud で提供されるサービス プランは 1 つです。
 
 リソース | 金額
 ------- | -------

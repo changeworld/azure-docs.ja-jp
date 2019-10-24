@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: b39482f5c753fbfe6cc6663dda4f5381300c2c21
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 7ccf6d93419b981203067e28f8c85ef8445ab0c2
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017248"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595283"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -64,7 +64,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 | --- | --- |
 |Azure Virtual Machines 展開サービス|[ユーザー管理のキー コンテナーから VM に証明書を展開する](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
 |Azure Resource Manager テンプレート展開サービス|[デプロイ時にセキュリティで保護された値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)。|
-|Azure Disk Encryption ボリューム暗号化サービス|仮想マシンのデプロイ中に、BitLocker キー (Windows VM) または DM パスフレーズ (Linux VM) とキー暗号化キーへのアクセスを許可する。 これにより、[Azure Disk Encryption](../security/azure-security-disk-encryption.md) が有効になります。|
+|Azure Disk Encryption ボリューム暗号化サービス|仮想マシンのデプロイ中に、BitLocker キー (Windows VM) または DM パスフレーズ (Linux VM) とキー暗号化キーへのアクセスを許可する。 これにより、[Azure Disk Encryption](../security/fundamentals/encryption-overview.md) が有効になります。|
 |Azure Backup|[Azure Backup](../backup/backup-introduction-to-azure-backup.md) を使用して、Azure 仮想マシンのバックアップ中に関連するキーとシークレットのバックアップと復元を許可する。|
 |Exchange Online と SharePoint Online|[カスタマー キー](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)を使用する Azure Storage サービス暗号化のためにカスタマー キーへのアクセスを許可する。|
 |Azure Information Protection|[Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) のテナント キーへのアクセスを許可する。|

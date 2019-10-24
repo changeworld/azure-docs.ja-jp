@@ -2,18 +2,17 @@
 title: Azure Analysis Services とは | Microsoft Docs
 description: Azure での Analysis Services の概要を説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1f3552fe574291bf696e3b4418924c7e005d713e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259551"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512597"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -149,7 +148,7 @@ Azure Analysis Services の表形式モデルは、単純なテキスト ファ�
 
 ## <a name="compatibility-level"></a>互換性レベル
 
-互換性レベルとは、Analysis Services エンジンにおけるリリースに固有の動作を指します。 Azure Analysis Services は、互換性レベル 1200 以上の表形式モデルをサポートします。 詳細については、「[Analysis Services 表形式モデルの互換性レベル](analysis-services-compat-level.md)」を参照してください。
+互換性レベルとは、Analysis Services エンジンにおけるリリースに固有の動作を指します。 Azure Analysis Services は、互換性レベル 1200 以上の表形式モデルをサポートします。 詳細については、「[テーブル モデルの互換性レベル](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)」を参照してください。
 
 
 ## <a name="your-data-is-secure"></a>データのセキュリティを確保

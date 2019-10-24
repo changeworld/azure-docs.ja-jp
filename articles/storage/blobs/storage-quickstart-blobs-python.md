@@ -1,5 +1,5 @@
 ---
-title: Azure クイック スタート - Python を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
+title: クイック スタート:Python を使用して Azure Blob Storage 内に BLOB を作成する
 description: このクイック スタートでは、ストレージ アカウントとコンテナーをオブジェクト (BLOB) ストレージ内に作成します。 その後、Python 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,16 +7,17 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981221"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430155"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>クイック スタート:Python を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>クイック スタート:Python を使用して Azure Blob Storage 内で BLOB をアップロード、ダウンロード、および一覧表示する
 
-このクイックスタートでは、Python を使用して、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行います。 BLOB は、単に大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 Azure Storage の BLOB は、ファイル共有、スキーマレス テーブル、およびメッセージ キューとは異なります。  詳細については、「[Azure Storage の概要](/azure/storage/common/storage-introduction)」を参照してください。
+この記事では、Python を使用して、Azure Blob Storage 内のコンテナーのブロック BLOB のアップロード、ダウンロード、および一覧表示を行います。 BLOB は、単に大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 Azure Storage の BLOB は、ファイル共有、スキーマレス テーブル、およびメッセージ キューとは異なります。  詳細については、「[Azure Storage の概要](/azure/storage/common/storage-introduction)」を参照してください。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

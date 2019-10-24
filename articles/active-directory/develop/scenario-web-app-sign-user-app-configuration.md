@@ -15,12 +15,12 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1453821561ab7bb361fbb3e5d57634cf23a7be2c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310070"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596731"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>ユーザーをサインインさせる Web アプリ - コードの構成
 
@@ -381,5 +381,24 @@ Session(app)
 
 次の記事では、サインインとサインアウトをトリガーする方法について説明します。
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [サインインとサインアウト](scenario-web-app-sign-user-sign-in.md)
+> [サインインとサインアウト](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [サインインとサインアウト](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [サインインとサインアウト](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [サインインとサインアウト](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=python)
+
+---

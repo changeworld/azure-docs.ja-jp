@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: 76de724ba5f966d2b2630d0a0570966bb72c3bad
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 36ae2624c8c2e66372b39f001af3e99db58b41d1
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243257"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264219"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
@@ -43,7 +43,7 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 | Live Metrics Stream (北ヨーロッパ) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
 | Live Metrics Stream (西ヨーロッパ) |euw.rt.prod.applicationinsights.trafficmanager.net |13.80.134.255<br/>40.68.61.229<br/>23.101.69.223<br/>52.232.106.242 |443 |
 | Live Metrics Stream (東アジア) |ase.rt.prod.applicationinsights.trafficmanager.net |23.100.90.7<br/>23.101.13.65<br/>23.101.0.142<br/>23.101.9.4 |443 |
-| Live Metrics Stream (東南アジア) |asse.rt.prod.applicationinsights.trafficmanager.net |207.46.224.101<br/>207.46.236.191<br/>137.116.151.139<br/>23.101.9.4 |443 |
+| Live Metrics Stream (東南アジア) |asse.rt.prod.applicationinsights.trafficmanager.net |207.46.224.101<br/>207.46.236.191<br/>137.116.151.139<br/>13.76.87.86 |443 |
 
 ## <a name="status-monitor"></a>Status Monitor
 Status Monitor の構成 - 変更を加える場合にのみ必要です。

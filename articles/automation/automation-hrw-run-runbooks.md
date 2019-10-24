@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240320"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372846"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -89,9 +89,8 @@ Hybrid Runbook Worker で Azure リソースのマネージド ID を使用す�
 
 1. Azure VM の作成
 2. [VM で Azure リソースのマネージド ID を構成します](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
-3. [Resource Manager で VM にリソース グループへのアクセスを許可します](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
-4. [VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得します](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
-5. 仮想マシンに [Windows Hybrid Runbook Worker をインストールします](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。
+3. [Resource Manager 内でのリソース グループへのアクセス権を VM に付与します](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+4. 仮想マシンに [Windows Hybrid Runbook Worker をインストールします](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。
 
 前記の手順が完了したら、Azure リソースに対する認証のために Runbook で `Connect-AzureRmAccount -Identity` を使用できます。 この構成により、実行アカウントを使用して実行アカウントの証明書を管理する必要性が軽減されます。
 
@@ -102,6 +101,9 @@ Connect-AzureRmAccount -Identity
 # Get all VM names from the subscription
 Get-AzureRmVm | Select Name
 ```
+
+> [!NOTE]
+> `Connect-AzureRMAccount -Identity` は、システム割り当て ID と単一ユーザー割り当て ID を使用する Hybrid Runbook Worker に対して機能します。 HRW 上で複数のユーザー割り当て ID を使用する必要がある場合は、`-AccountId` パラメーターを指定して、特定のユーザー割り当て ID を選択する必要があります。
 
 ### <a name="runas-script"></a>Automation 実行アカウント
 

@@ -1,17 +1,17 @@
 ---
-title: サンプル - ストレージ アカウントのクール アクセス層の拒否
+title: サンプル - ストレージ アカウントでのクール アクセス層の禁止
 description: このサンプル ポリシー定義は、BLOB ストレージ アカウントにクール アクセス層の使用を禁止します。
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 21ee0e62e300b5807e3a38a0834c3365ab123dad
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a686126d0f164df2df224ced2e16f03a0a9bb283
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977233"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255799"
 ---
 # <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>サンプル - ストレージ アカウントのクール アクセス層の拒否
 

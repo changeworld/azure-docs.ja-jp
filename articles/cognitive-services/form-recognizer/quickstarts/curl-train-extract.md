@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b889be6f881894b2666ed47304f6b61e7c776474
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073708"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264364"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>クイック スタート:cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
 
@@ -26,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このクイック スタートを完了するには、以下が必要です。
 - アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。
 - インストールされた [cURL](https://curl.haxx.se/windows/)。
-- 同じ種類の少なくとも 5 つのフォームのセット。 このデータをモデルのトレーニングに使用します。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにデータをアップロードします。
+- 同じ種類の少なくとも 5 つのフォームのセット。 このデータをモデルのトレーニングに使用します。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。
 
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
@@ -95,7 +95,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "C
 
 1. `<Endpoint>` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
 1. `<modelID>` を、前のセクションで受信したモデル ID で置き換えます。
-1. `<path to your form>` をお使いのフォームのファイル パス (例: C:\temp\file.pdf) に置き換えます。
+1. `<path to your form>` をお使いのフォームのファイル パス (例: C:\temp\file.pdf) に置き換えます。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Test** フォルダーにあるファイルを使用できます。
 1. `<file type>` を、ファイルの種類で置き換えます。 サポートされている種類: `application/pdf`、`image/jpeg`、`image/png`。
 1. `<subscription key>` は、実際のサブスクリプション キーで置き換えてください。
 

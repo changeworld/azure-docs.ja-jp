@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/17/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e1875ebdb62cfc6d606465b863215513aaa47c02
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972901"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597312"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する
 
@@ -32,7 +32,7 @@ Azure Monitor ログは、企業内のソースまたは Azure に展開され�
 
 ## <a name="pricing-model"></a>価格モデル
 
-Log Analytics の既定の料金は、取り込まれたデータの量に基づく**従量課金制**であり、必要に応じてデータの保持期間を長くすることができます。 各 Log Analytics ワークスペースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ インジェストの量は、次の要因に大きく依存する可能性があります。 
+Log Analytics の既定の料金は、取り込まれたデータの量に基づく**従量課金制**であり、必要に応じてデータの保持期間を長くすることができます。 データ ボリュームは、格納されるデータのサイズとして測定されます。 各 Log Analytics ワークスペースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ インジェストの量は、次の要因に大きく依存する可能性があります。 
 
   - 有効にされている管理ソリューションの数とその構成 (例: 
   - 監視対象 VM の数
@@ -123,13 +123,13 @@ Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azur
 
     ![ワークスペースのデータ保持設定の変更](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-この保持期間は `retentionInDays` パラメーターを使用して [ARM 経由で設定](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この機能は ARM 経由でのみ公開されます。 
+このデータ保持期間は、`retentionInDays` パラメーターを使用して [Azure Resource Manager 経由で設定](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この機能は Azure Resource Manager 経由でのみ公開されます。 
 
 既定では、2 種類のデータ `Usage` と `AzureActivity` が 90 日間保持され、この 90 日間の保持に対しては課金されません。 これらのデータの種類は、データ インジェスト料金の対象にもなりません。 
 
 ### <a name="retention-by-data-type"></a>データの種類別のリテンション期間
 
-また、個々のデータの種類に対してそれぞれ異なるリテンション期間を指定することもできます。 それぞれのデータの種類は、ワークスペースのサブリソースです。 たとえば、SecurityEvent テーブルは [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) で次のようにアドレス指定できます。
+また、個々のデータの種類に対してそれぞれ異なるリテンション期間を指定することもできます。 それぞれのデータの種類は、ワークスペースのサブリソースです。 たとえば、SecurityEvent テーブルは [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) で次のようにアドレス指定できます。
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -161,7 +161,7 @@ Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azur
 
 データの種類 `Usage` および `AzureActivity` は、カスタム リテンション期間を使用して設定することはできません。 これらは既定のワークスペース リテンション期間の最大値 (90 日) を取ります。 
 
-ARM に直接接続してデータの種類別にリテンション期間を設定する優れたツールとして、OSS ツール [ARMclient](https://github.com/projectkudu/ARMClient) があります。  ARMclient の詳細については、[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) および [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) による記事を参照してください。  ARMClient を使用して、SecurityEvent データを 730 日のリテンション期間に設定する例を次に示します。
+Azure Resource Manager に直接接続してデータの種類別にリテンション期間を設定する優れたツールとして、OSS ツール [ARMclient](https://github.com/projectkudu/ARMClient) があります。  ARMclient の詳細については、[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) および [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) による記事を参照してください。  ARMClient を使用して、SecurityEvent データを 730 日のリテンション期間に設定する例を次に示します。
 
 ```
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
@@ -193,7 +193,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 3. **[価格レベル]** で価格レベルを選択し、 **[選択]** をクリックします。  
     ![選択された料金プラン](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-`sku` パラメーター (ARM テンプレートの `pricingTier`) を使用して [ARM 経由で価格レベルを設定](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)することもできます。 
+`sku` パラメーター (ARM テンプレートの `pricingTier`) を使用して [Azure Resource Manager 経由で価格レベルを設定](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)することもできます。 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics がデータを収集しなくなった場合のトラブルシューティング
 
@@ -268,7 +268,7 @@ union withsource = tt *
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 句 "where IsBillable = true" は、取り込み料金がかからない特定のソリューションからのデータ型を除外することに注意してください。 
@@ -278,7 +278,7 @@ Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 ### <a name="data-volume-by-computer"></a>コンピューターごとのデータ ボリューム
@@ -428,7 +428,7 @@ Azure アラートでは、検索クエリを使用する[ログ アラート](a
 ```kusto
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type 
+| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
 | where DataGB > 100
 ```
 
@@ -438,7 +438,7 @@ union withsource = $table Usage
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
 | extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type 
+| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
 | where EstimatedGB > 100
 ```
 
@@ -451,7 +451,7 @@ union withsource = $table Usage
 - **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
 - **[アラートの条件]** では、以下を指定します。
    - **[シグナル名]** では、 **[カスタム ログ検索]** を選択します。
-   - **[検索クエリ]** : `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **[検索クエリ]** : `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
    - **[アラート ロジック]** は "*結果の数*" **に基づき、** **[条件]** は**しきい値**の *0* "*より大きい*" です
    - **[期間]** を *1440* 分にします。使用状況データが更新されるのは 1 時間に 1 回のみのため、 **[アラートの頻度]** を *60* 分ごとにします。
 - **[アラートの詳細を定義します]** では、以下を指定します。
@@ -465,7 +465,7 @@ union withsource = $table Usage
 - **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
 - **[アラートの条件]** では、以下を指定します。
    - **[シグナル名]** では、 **[カスタム ログ検索]** を選択します。
-   - **[検索クエリ]** : `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **[検索クエリ]** : `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
    - **[アラート ロジック]** は "*結果の数*" **に基づき、** **[条件]** は**しきい値**の *0* "*より大きい*" です
    - **[期間]** を *180* 分にします。使用状況データが更新されるのは 1 時間に 1 回のみのため、 **[アラートの頻度]** を *60* 分ごとにします。
 - **[アラートの詳細を定義します]** では、以下を指定します。

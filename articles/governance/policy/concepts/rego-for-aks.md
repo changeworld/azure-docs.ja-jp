@@ -1,17 +1,17 @@
 ---
-title: Azure Kubernetes Service に対する Azure Policy の理解
+title: Azure Kubernetes Service に対する Azure Policy について学習する
 description: Azure Policy が Rego および Open Policy Agent を使用して、Azure Kubernetes Service 上でクラスターを管理する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 81dfb0d82502607cce761ce66c8e60563d1be157
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243767"
+ms.locfileid: "72254748"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes Service に対する Azure Policy の理解
 

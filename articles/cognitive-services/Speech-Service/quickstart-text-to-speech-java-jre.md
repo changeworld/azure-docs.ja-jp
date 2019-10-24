@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: 832525ae1441fca85f8df661b4a187c0be8d91dc
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c66e321618b46d52f791f95dab570e3721e806a9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803699"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299233"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Java 用 Speech SDK を使用して音声を合成する
 

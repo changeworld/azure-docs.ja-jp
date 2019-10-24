@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177435"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389969"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -48,7 +48,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 ネットワーク セキュリティ グループ (NSG) は、Application Gateway でサポートされています。 ただし、いくつか制限事項があります。
 
-- Application Gateway v1 SKU の場合はポート 65503-65534、v2 SKU の場合はポート 65200-65535 の着信トラフィックの例外を含める必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティ (そのようなゲートウェイの顧客を含む) は、そのようなエンドポイントに対する変更を開始できません。
+- Application Gateway V1 SKU では、TCP ポート 65503-65534 での着信インターネット トラフィックと、宛先サブネットが *[すべて]* に設定されている V2 SKU の TCP ポート 65200-65535 を許可する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティ (そのようなゲートウェイの顧客を含む) は、そのようなエンドポイントに対する変更を開始できません。
 
 - 送信インターネット接続はブロックできません。 NSG の既定のアウトバウンド規則ではインターネット接続が許可されています。 推奨事項は次のとおりです。
 

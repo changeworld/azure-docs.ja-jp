@@ -1,24 +1,18 @@
 ---
 title: コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを監視する | Microsoft Docs
 description: この記事では、コンテナーの Azure Monitor を使用してパフォーマンスとログ データを表示および分析する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/17/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 945dc6c35eacab99db28172703e1aebed10bd58a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.date: 09/17/2019
+ms.openlocfilehash: a65951a90767acce5570244af8a9250845e12def
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067089"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554248"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する
 Azure Monitor for containers を使用している場合、パフォーマンスのグラフと正常性状態を使用して、2 つの観点から実際の Azure Kubernetes Service (AKS) クラスターのワークロードを監視できます。 AKS クラスターから直接監視するか、Azure Monitor からサブスクリプション内のすべての AKS クラスターを監視することができます。 Azure Container Instances の表示は、特定の AKS クラスターを監視するときにも可能です。

@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: f46a4771f1db5e4040cb23b1a9236c91699b6ad5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: bd31cf066b7844eeae02c24cb39ece686630b5ff
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057860"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329857"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート:Node.js で Azure Cache for Redis を使用する
 
@@ -113,7 +113,7 @@ node redistest.js
 
 次の例では、`Message` キーは、前に Azure portal の Redis コンソールを使って設定されたキャッシュ値を持っていたことがわかります。 アプリは、そのキャッシュ値を更新しました。 また、アプリは `PING` および `CLIENT LIST` コマンドも実行しました。
 
-![完了したキャッシュ アプリ](./media/cache-nodejs-get-started/cache-app-complete.png)
+![完了した Redis Cache キャッシュ アプリ](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -129,7 +129,7 @@ node redistest.js
 
 **[名前でフィルター]** テキスト ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
-![削除](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
+![Azure リソース グループを削除する](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
 リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** を選択します。
 

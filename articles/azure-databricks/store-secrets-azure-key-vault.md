@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault を使用した Azure Databricks から Azure Blob Storage へのアクセスに関するチュートリアル
+title: キー コンテナーを使用して BLOB ストレージにアクセスする - Azure Databricks
 description: このチュートリアルでは、キー コンテナーに格納されたシークレットを使用して Azure Databricks から Azure Blob Storage にアクセスする方法について説明します。
 author: mamccrea
 ms.author: mamccrea
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7983e18066578e3f036da84c73b6554ead2c40a1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976527"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791563"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用して Azure Databricks から Azure Blob Storage にアクセスする
 
@@ -30,13 +30,13 @@ ms.locfileid: "68976527"
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
-> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
+> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
 
 ## <a name="create-a-storage-account-and-blob-container"></a>ストレージ アカウントと BLOB コンテナーを作成する
 

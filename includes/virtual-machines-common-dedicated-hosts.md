@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266859"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390545"
 ---
 ## <a name="benefits"></a>メリット 
 
@@ -82,6 +82,8 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 ![ポータルの使用量とクォータのページのスクリーンショット](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
 詳しくは、「[仮想マシンの vCPU クォータ](/azure/virtual-machines/windows/quotas)」をご覧ください。
+
+無料試用版および MSDN サブスクリプションには、Azure 専用ホストのクォータはありません。
 
 ## <a name="pricing"></a>価格
 

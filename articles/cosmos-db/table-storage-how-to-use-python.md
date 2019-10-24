@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 883965d1d59e5523527a6aab1e83521d7491bf82
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68356270"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675708"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 
@@ -76,7 +76,7 @@ table_service = TableService(account_name='myaccount', account_key='mykey')
 Azure Cosmos DB に接続するには、Azure Portal からプライマリ接続文字列をコピーし、コピーした接続文字列を使って [TableService][py_TableService] オブジェクトを作成します。
 
 ```python
-table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;)
+table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;')
 ```
 
 ## <a name="create-a-table"></a>テーブルを作成する

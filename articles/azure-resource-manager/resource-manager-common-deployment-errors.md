@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001641"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263042"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -35,6 +35,7 @@ ms.locfileid: "72001641"
 | BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-location.md) |
 | 競合 | リソースの現在の状態では許可されていない操作を要求しています。 たとえば、ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。 | |
 | DeploymentActiveAndUneditable | このリソース グループへの同時実行デプロイが完了するまで待ちます。 | |
+| DeploymentFailedCleanUp | 完全モードでデプロイすると、テンプレートにないすべてのリソースが削除されます。 このエラーは、テンプレートにないすべてのリソースを削除するための適切なアクセス許可がない場合に表示されます。 このエラーを回避するには、デプロイ モードを増分モードに変更します。 | [Azure Resource Manager のデプロイ モード](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | デプロイ名に使用できるのは、文字、数字、'-'、'.' または '_'. のみです。 | |
 | DeploymentNameLengthLimitExceeded | デプロイ名は、64 文字までに制限されています。  | |
 | DeploymentFailed | DeploymentFailed エラーは、そのエラーを解決するために必要な詳細が示されない一般的なエラーです。 エラー コードのエラー詳細で情報を確認してください。 | [エラー コードを見つける](#find-error-code) |
@@ -246,7 +247,7 @@ az group deployment operation list \
 }
 ```
 
-または、設定の誤った依存関係に関連すると思われるデプロイ エラーが発生していると仮定します。 テンプレートをテストするには、これを簡略化されたテンプレートに分解します。 最初に、1 つのリソース (SQL Server など) のみをデプロイするテンプレートを作成します。 そのリソースを正しく定義したことを確認したら、それに依存するリソース (SQL Database など) を追加します。 これら 2 つのリソースを正しく定義したことを確認したら、その他の依存リソース (監査ポリシーなど) を追加します。 各テスト デプロイの合間に、リソース グループを削除して、依存関係を適切にテストしていることを確認します。
+または、設定が誤っている依存関係に関連すると思われるデプロイ エラーが発生しているとします。 テンプレートをテストするには、これを簡略化されたテンプレートに分解します。 最初に、1 つのリソース (SQL Server など) のみをデプロイするテンプレートを作成します。 そのリソースを正しく定義したことを確認したら、それに依存するリソース (SQL Database など) を追加します。 これら 2 つのリソースを正しく定義したことを確認したら、その他の依存リソース (監査ポリシーなど) を追加します。 各テスト デプロイの合間に、リソース グループを削除して、依存関係を適切にテストしていることを確認します。
 
 
 ## <a name="next-steps"></a>次の手順

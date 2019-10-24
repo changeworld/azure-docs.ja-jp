@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: deab527d44713bffed1f430ec283592d0e4232ee
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.date: 10/14/2019
+ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764411"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331315"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
@@ -58,6 +58,10 @@ azure_sys データベースに保持するデータの最初のバッチには�
 
 領域の使用量を最小限に抑えるために、ランタイム統計ストア内のランタイム実行統計は、固定の構成可能な時間枠で集計されます。 これらのストア内の情報は、クエリ ストアのビューに対してクエリを実行することで表示できます。
 
+## <a name="access-query-store-information"></a>クエリ ストア情報へのアクセス
+
+クエリ ストア データは、Postgres サーバー上の azure_sys データベースに格納されます。 
+
 次のクエリでは、クエリ ストア内のクエリに関する情報が返されます。
 ```sql
 SELECT * FROM query_store.qs_view; 
@@ -67,6 +71,9 @@ SELECT * FROM query_store.qs_view;
 ```sql
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
+
+分析とアラート用の [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage にクエリ ストア データを出力することもできます。 構成するログ カテゴリは **QueryStoreRuntimeStatistics** と **QueryStoreWaitStatistics** です。 セットアップの詳細については、[Azure Monitor の診断設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事を参照してください。
+
 
 ## <a name="finding-wait-queries"></a>待機クエリの検索
 待機イベントの種類では、類似性によってさまざまな待機イベントがバケットに結合されます。 クエリ ストアでは、待機イベントの種類、特定の待機イベント名、対象のクエリが提供されます。 この待機情報をクエリのランタイム統計に関連付けられることは、クエリのパフォーマンス特性に何が寄与しているかをより深く理解できることを意味します。

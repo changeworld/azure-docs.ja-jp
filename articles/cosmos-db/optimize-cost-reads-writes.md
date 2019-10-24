@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB での読み取りと書き込みのコストの最適化
 description: この記事では、データに対して読み取りおよび書き込み操作を実行する際に Azure Cosmos DB のコストを削減する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 13ce5ee8b0e2a5d9cc84ea1a408ebba152b46050
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 934853b80c6e6377923df4c2b5cce7b7d7d57d7c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967405"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754932"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の読み取りと書き込みのコストの最適化
 

@@ -1,17 +1,17 @@
 ---
-title: Azure リソースの配列プロパティのポリシーを作成する
+title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターを作成し、配列の言語式のルールを作成し、[*] エイリアスを評価し、既存の配列に要素を付加する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: e5b90eb975d0d495723a70095b447d37e051fc0b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978036"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255811"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 

@@ -4,16 +4,16 @@ description: Azure Data Lake Storage Gen2 の概要について説明します
 author: normesta
 ms.service: storage
 ms.topic: overview
-ms.date: 12/06/2018
+ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: de2dc5068dc454925744688a43f49a855aac42f3
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d843e288297db656cca6e2a07f2e1f3322ebfa89
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991850"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299655"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -64,7 +64,7 @@ Data Lake Storage Gen2 は、Azure Blob ストレージに基づいて構築さ�
 | 概念                                | 最上位レベルの組織 | 下位レベルの組織                                            | データ コンテナー |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | BLOB - 汎用オブジェクト ストレージ | コンテナー              | 仮想ディレクトリ (SDK のみ - アトミック操作を提供しない) | BLOB           |
-| ADLS Gen2 - Analytics ストレージ          | コンテナー            | Directory                                                           | ファイル           |
+| Azure Data Lake Storage Gen2 - Analytics Storage          | コンテナー            | Directory                                                           | ファイル           |
 
 ## <a name="supported-open-source-platforms"></a>サポートされるオープン ソース プラットフォーム
 
@@ -81,10 +81,15 @@ Data Lake Storage Gen2 は、Azure Blob ストレージに基づいて構築さ�
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 以降 | [Databricks Runtime のバージョン](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
 |[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [クラウド データ アクセスの構成](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
 
+## <a name="supported-azure-services"></a>サポート対象の Azure サービス
+
+Data Lake Storage gen2 は、データの取り込み、分析の実行、およびビジュアル表現の作成に使用できるいくつかの Azure サービスをサポートしています。 サポートされている Azure サービスの一覧については、「[Azure Data Lake Storage と Azure サービスを統合する](data-lake-store-integrate-with-azure-services.md)」を参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
 以下の記事では、Data Lake Storage Gen2 の主要な概念の一部と、データの分析情報を保管、アクセス、管理、および取得する方法の詳細を示しています。
 
--   [階層構造の名前空間](data-lake-storage-namespace.md)
--   [ストレージ アカウントの作成](data-lake-storage-quickstart-create-account.md)
--   [Azure Databricks での Data Lake Storage Gen2 アカウントの使用](data-lake-storage-quickstart-create-databricks-account.md)
+- [階層構造の名前空間](data-lake-storage-namespace.md)
+- [ストレージ アカウントの作成](data-lake-storage-quickstart-create-account.md)
+- [Azure Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)
+- [Azure Data Lake Storage と Azure サービスを統合する](data-lake-store-integrate-with-azure-services.md)。

@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/25/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55203c4b555b54514425b484b367f8b735e98e40
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b84ab9691064e7040e586ad82835f27fa5555920
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003905"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434655"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル: Custom Vision Service を使用してエッジで画像の分類を実行する
 
@@ -76,7 +76,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
    | ----- | ----- |
    | 名前 | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
    | 説明 | オプションのプロジェクトの説明。 |
-   | リソース グループ | Custom Vision Service Resource を含む Azure リソース グループを 1 つ選択するか、まだ追加していない場合は**新規作成**します。 |
+   | リソース | Custom Vision Service リソースを含む Azure リソース グループを 1 つ選択するか、まだ追加していない場合は**新規作成**します。 |
    | プロジェクトの種類 | **分類** |
    | 分類の種類 | **[Multiclass (single tag per image)]\(マルチクラス (画像ごとに 1 つのタグ)\)** |
    | ドメイン | **[General (compact)]\(汎用 (コンパクト)\)** |
@@ -142,8 +142,6 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 ソリューションとは、単一の IoT Edge デプロイ用に複数のモジュールを開発、整理するための論理的な方法のことです。 ソリューションには、1 つまたは複数のモジュールのコードと、それらを IoT Edge デバイス上でどのように構成するかを宣言する配置マニフェストが含まれています。 
 
-1. Visual Studio Code で、 **[表示]**  >  **[ターミナル]** の順に選択し、VS Code 統合ターミナルを開きます。
-
 1. **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
 
 1. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
@@ -154,7 +152,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
    | Provide a solution name (ソリューション名の指定) | **CustomVisionSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **[Python モジュール]** を選択します。 |
    | Provide a module name (モジュール名の指定) | モジュールに **classifier** という名前を付けます。<br><br>このモジュール名は、小文字にすることが重要です。 IoT Edge では、モジュールを参照するときに大文字と小文字が区別されます。このソリューションでは、すべての要求が小文字で書式設定されるライブラリを使用します。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 最終的には、\<レジストリ名\>.azurecr.io/classifier のような文字列になります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。<br><br>最終的には、 **\<レジストリ名\>.azurecr.io/classifier** のような文字列になります。 |
  
    ![Docker イメージ リポジトリを指定する](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -219,7 +217,7 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
    | Select deployment template file (配置テンプレート ファイルの選択) | CustomVisionSolution フォルダー内の deployment.template.json ファイルを選択します。 |
    | Select module template (モジュール テンプレートの選択) | **[Python モジュール]** を選択します |
    | Provide a module name (モジュール名の指定) | モジュールに **cameraCapture** という名前を付けます |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 最終的には、 **\<レジストリ名\>.azurecr.io/cameracapture** のような文字列になります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。<br><br>最終的には、 **\<レジストリ名\>.azurecr.io/cameracapture** のような文字列になります。 |
 
    VS Code ウィンドウで、新しいモジュールがソリューション ワークスペースに読み込まれ、deployment.template.json ファイルが更新されます。 これで、classifier と cameraCapture という 2 つのモジュール フォルダーが表示されるようになりました。 
 

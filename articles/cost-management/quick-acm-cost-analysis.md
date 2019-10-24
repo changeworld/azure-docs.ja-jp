@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 2ca0c0741ea543b30695303d473389979f2e1045
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f2e1d19f69b426cee870d2ede489b7c458404704
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855046"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374769"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -34,16 +34,7 @@ Azure コストを正しく制御して最適化するには、コストが組�
 
 コスト分析では、さまざまな種類の Azure アカウントがサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。
 
-[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様の場合、コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。
-
-- 請求先アカウント
-- 部署
-- 登録アカウント
-- 管理グループ
-- Subscription
-- Resource group
-
-Azure Cost Management データに対するアクセス権割り当ての詳細については、[データへのアクセスの割り当て](assign-access-acm-data.md)に関するページを参照してください。
+Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](assign-access-acm-data.md)に関するページを参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -116,7 +107,7 @@ Azure Cost Management データに対するアクセス権割り当ての詳細�
 
 ![先月の Azure サービス コストの例を示す、グループ化された日単位の累積ビュー](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-既定では、コスト分析では計上されて請求書に表示されるすべての使用量と購入コストが示されます (**実績コスト** とも呼ばれます)。 実際コストを表示することは、請求書を調整するために最適です。 ただし、支出の異常やその他のコスト変化を監視している場合、購入コストの急増は警告を示す可能性があります。 予約購入コストが原因の急増を平坦化するには、**償却コスト**に切り替えます。 
+既定では、コスト分析では計上されて請求書に表示されるすべての使用量と購入コストが示されます (**実績コスト** とも呼ばれます)。 実際コストを表示することは、請求書を調整するために最適です。 ただし、支出の異常やその他のコスト変化を監視している場合、購入コストの急増は警告を示す可能性があります。 予約購入コストが原因の急増を平坦化するには、**償却コスト**に切り替えます。
 
 ![期間全体に予約購入を分散させ、予約を使用したリソースに割り当てるには、実際コストと償却コストを切り替えます](./media/quick-acm-cost-analysis/metric-picker.png)
 
@@ -169,11 +160,11 @@ Azure Cost Management データに対するアクセス権割り当ての詳細�
 
 ## <a name="saving-and-sharing-customized-views"></a>カスタマイズされたビューの保存と共有
 
-コスト分析を Azure portal のダッシュボードにピン留めするか、またはコスト分析へのリンクをコピーすることで、カスタマイズされたビューを保存して他のユーザーと共有します。 
+コスト分析を Azure portal のダッシュボードにピン留めするか、またはコスト分析へのリンクをコピーすることで、カスタマイズされたビューを保存して他のユーザーと共有します。
 
 コスト分析をピン留めするには、右上隅にあるピン アイコンを選択します。 コスト分析をピン留めすると、メイン グラフまたはテーブル ビューだけが保存されます。 他のユーザーがタイルにアクセスできるようにするには、ダッシュボードを共有します。 ダッシュボードの構成だけが共有され、基になるデータには他のユーザーはアクセスできないことに注意してください。 コストへのアクセス権がないのに、共有ダッシュボードにアクセスすると、"アクセス拒否" メッセージが表示されます。
 
-コスト分析へのリンクを共有するには、ブレードの上部にある **[共有]** を選択します。 カスタム URL が表示され、この特定のスコープに対するこの特定のビューが開かれます。 コストへのアクセス権がない場合にこの URL を受け取ると、"アクセス拒否" メッセージが表示されます。 
+コスト分析へのリンクを共有するには、ブレードの上部にある **[共有]** を選択します。 カスタム URL が表示され、この特定のスコープに対するこの特定のビューが開かれます。 コストへのアクセス権がない場合にこの URL を受け取ると、"アクセス拒否" メッセージが表示されます。
 
 サポートされている各スコープに対するコストへのアクセス許可について詳しくは、「[スコープを理解して使用する](understand-work-scopes.md)」をご覧ください。
 
@@ -183,14 +174,14 @@ Azure Cost Management データに対するアクセス権割り当ての詳細�
 
 完全な未集計のデータセットが必要な場合は、課金アカウントからダウンロードします。 次に、ポータルの左側のナビゲーション ウィンドウにあるサービスの一覧から、 **[コストの管理と請求]** に移動します。 該当する場合は、課金アカウントを選択します。 **[使用量 + 請求金額]** に移動し、対象の請求期間の **[ダウンロード]** アイコンをクリックします。
 
-コスト データを自動的に受け取る場合も、同じようにします。 動的フィルタリング、グループ化、集計などの高度な分析のためには [Query API](/rest/api/cost-management/query) を使用し、完全な未集計のデータセットの場合は [UsageDetails API](/rest/api/consumption/usageDetails) を使用します。 これらの API の一般提供 (GA) バージョンは 2019-01-01 です。 これらの API 内で予約購入および Marketplace 購入のプレビューにアクセスするには、**2019-04-01-preview** を使用します。 
+コスト データを自動的に受け取る場合も、同じようにします。 動的フィルタリング、グループ化、集計などの高度な分析のためには [Query API](/rest/api/cost-management/query) を使用し、完全な未集計のデータセットの場合は [UsageDetails API](/rest/api/consumption/usageDetails) を使用します。 これらの API の一般提供 (GA) バージョンは 2019-01-01 です。 これらの API 内で予約購入および Marketplace 購入のプレビューにアクセスするには、**2019-04-01-preview** を使用します。
 
 たとえば、次に示すのは、料金タイプ (使用量、購入、返金)、パブリッシャーの種類 (Azure、Marketplace)、リソース グループ (購入の場合は空)、予約 (該当しない場合は空) で分割した償却コストの集計ビューです。
 
 ```
 POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
 Content-Type: application/json
- 
+
 {
   "type": "AmortizedCost",
   "timeframe": "Custom",
@@ -221,7 +212,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 ```
 
 計上される購入を表示するために実際のコストが必要な場合は、**type**/**metric** を **ActualCost** に変更します。 これらの API について詳しくは、[Query](/rest/api/cost-management/query) API と [UsageDetails](/rest/api/consumption/usageDetails) API のドキュメントをご覧ください。 公開されているドキュメントは GA バージョンのものです。 ただし、新しい type/metric 属性と変更されたプロパティ名を除けば、*2019-04-01-preview* API バージョンでも同じように動作することに注意してください。 (プロパティ名の詳細については以下を参照してください。)
- 
+
 Cost Management API は、上記のリソースのすべてのスコープで機能します: Azure RBAC アクセスによるリソース グループ、サブスクリプション、管理グループ、EA ポータル アクセスによる EA 課金アカウント (登録)、部門、登録アカウント。 スコープ ID の決定方法やアクセスの管理方法など、スコープについて詳しくは、「[スコープを理解して使用する](understand-work-scopes.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順

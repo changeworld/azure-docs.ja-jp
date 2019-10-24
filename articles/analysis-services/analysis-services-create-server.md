@@ -2,18 +2,17 @@
 title: クイック スタート - Azure portal を使用して Analysis Services サーバーを作成する | Microsoft Docs
 description: Azure で Analysis Services サーバーのインスタンスを作成する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aae5b87e49b6d64e4c9ee854b65821d65969e66b
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536814"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295044"
 ---
 # <a name="quickstart-create-a-server---portal"></a>クイック スタート: サーバーの作成 - ポータル
 
@@ -24,7 +23,7 @@ ms.locfileid: "67536814"
 * **Azure サブスクリプション**: [Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)にアクセスしてアカウントを作成します。
 * **Azure Active Directory**: お使いのサブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。 また、その Azure Active Directory でアカウントを使用して Azure にサインインしている必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします 
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする 
 
 [ポータルにサインイン](https://portal.azure.com)します。
 
@@ -37,7 +36,7 @@ ms.locfileid: "67536814"
 
 2. **[Analysis Services]** で、必要なフィールドを入力して **[作成]** をクリックします。
    
-   * **サーバー名**: サーバーの参照に使われる一意の名前を入力します。 サーバー名は小文字で始まり、3 文字から 128 文字の小文字と数値を使用する必要があります。ホワイトスペースと特殊文字は使用できません。 Whitespaces and special characters are not allowed.
+   * **サーバー名**: サーバーの参照に使われる一意の名前を入力します。 サーバー名は小文字で始まり、3 文字から 128 文字の小文字と数値を使用する必要があります。 ホワイトスペースと特殊文字は使用できません。
    * **サブスクリプション**:このサーバーを関連付けるサブスクリプションを選びます。
    * **リソース グループ**: 新しいリソース グループを作成するか、既存のリソース グループを選択します。 リソース グループは、Azure リソースのコレクション管理をサポートするように設計されています。 詳しくは、「[Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
    * **場所**: この Azure データセンターの場所でサーバーをホストします。 最大のユーザー ベースに最も近い場所を選びます。

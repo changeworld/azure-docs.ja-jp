@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 862ec629504da4d8ee7eadd8f9b925984d96614c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718890"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375750"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の表示とダウンロード
 
@@ -25,14 +25,16 @@ ms.locfileid: "71718890"
 
 請求書を表示するアクセス許可があるのは、特定のロールだけです。 たとえば、アカウント管理者やエンタープライズ管理者が該当します。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページを参照してください。
 
-[Microsoft 顧客契約](#check-your-access-to-a-microsoft-customer-agreement)を交わしている場合、請求書を取得するための次のいずれかのロールがあります。
+Microsoft 顧客契約 (MCA) を結んでいる場合、請求書を取得するためには、次のいずれかのロールが必要です。
 
 - 課金プロファイル所有者
 - Contributor
 - Reader
 - 請求書マネージャー
 
-Microsoft Customer Agreement の課金ロールの詳細については、「[課金プロファイルのロールとタスク](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の請求書を表示してダウンロードするためには、取引先組織の全体管理者または管理者エージェントであることが必要です。 [課金アカウントの種類を確認](#check-your-billing-account-type)して、必要なアクセス許可を把握してください。 
+
+<!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
 ## <a name="noinvoice"></a> 請求書が表示されない理由
 
@@ -42,52 +44,25 @@ Microsoft Customer Agreement の課金ロールの詳細については、「[�
 
 - Azure では請求期間の最後に課金される。 そのため、請求書がまだ生成されていない可能性があります。 請求期間の終了までお待ちください。
 
-- 請求書を表示するアクセス許可がない。 Microsoft 顧客契約を結んでいる場合、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 その他のサブスクリプションでは、アカウント管理者でない場合は古い請求書が表示されないことがあります。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
+- 請求書を表示するアクセス許可がない。 MCA または MPA を結んでいる場合、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 その他のサブスクリプションでは、アカウント管理者でない場合は古い請求書が表示されないことがあります。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
 
-- ご利用のサブスクリプションで無料試用版を使用している場合や月単位のクレジット額がある場合、請求書が表示されるのは、毎月のクレジット額を超えたときのみ。 Microsoft 顧客契約を交わしている場合は、常に請求書が表示されます。
+- ご利用のサブスクリプションで無料試用版を使用している場合や月単位のクレジット額がある場合、請求書が表示されるのは、毎月のクレジット額を超えたときのみ。 Microsoft 顧客契約または Microsoft Partner Agreement を交わしている場合は、常に請求書が表示されます。 
 
-## <a name="download-your-azure-invoices-pdf"></a>Azure 請求書 (.pdf) のダウンロード
-
-ほとんどのサブスクリプションでは、請求書を Azure portal からダウンロードできます。 Microsoft 顧客契約を結んでいる場合は、「[Microsoft 顧客契約の請求書のダウンロード](#download-invoices-for-a-microsoft-customer-agreement)」を参照してください。
-
-### <a name="download-invoices-for-an-individual-subscription"></a>個々のサブスクリプションの請求書のダウンロード
-
-1. Azure portal の [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ページで、[請求書へのアクセス権を持つユーザー](billing-manage-access.md)として自分のサブスクリプションを選択します。
-
-2. **[請求書]** を選択します。
-
-    ![Screenshot that shows the Billing & usage option](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
-
-3. PDF 請求書のコピーを表示するには、 **[請求書のダウンロード]** をクリックします。 "**使用できません**" というメッセージが表示される場合は、「[前回の請求期間の請求書が表示されない理由](#noinvoice)」を参照してください。
-
-    ![Screenshot that shows billing periods, the download option, and total charges for each billing period](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
-
-4. 請求期間をクリックして、毎日の使用状況を表示することもできます。
-
-請求書の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。 コスト管理に関するヘルプについては、[Azure の課金とコスト管理で想定外の料金を防ぐ](billing-getting-started.md)方法に関するページを参照してください。
-
-### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求書のダウンロード
-
-請求書は、Microsoft の顧客契約の[課金プロファイル](billing-mca-overview.md#billing-profiles)ごとに生成されます。 Azure portal から請求書をダウンロードするには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。
+## <a name="download-invoices-in-the-azure-portal"></a>Azure portal で請求書をダウンロードする
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。
-1. 課金プロファイルを選択します。 アクセス方法によっては、最初に請求先アカウントを選択することが必要な場合があります。
-1. **[請求書]** を選択します。
+1. お持ちのアクセス権によっては、課金アカウントまたは課金プロファイルを選択する必要があります。
+1. 左側のメニューの **[課金]** から **[請求書]** を選択します。
 1. 請求書グリッドで、ダウンロードする請求書の行を探します。
-1. 行の末尾にある省略記号 (`...`) をクリックします。
-    ![行の末尾にある省略記号を示すスクリーンショット](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
-1. ダウンロードのコンテキスト メニューで、 **[請求書]** を選択します。
+1. 行の末尾にあるダウンロード アイコンまたは省略記号 (`...`) をクリックします。
+1. ダウンロード メニューで、 **[請求書]** を選択します。
 
-    ![コンテキスト メニューを示すスクリーンショット](./media/billing-download-azure-invoice/contextmenu.png)
+請求書の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。 コスト管理に関するヘルプについては、[Azure の課金とコスト管理で想定外の料金を防ぐ](billing-getting-started.md)方法に関するページを参照してください。
 
-直近の請求期間の請求書が表示されない場合は、「[前回の請求期間の請求書が表示されない理由](#noinvoice)」を参照してください。
+## <a name="get-your-subscriptions-invoices-in-email"></a>サブスクリプションの請求書をメールで受け取る
 
-## <a name="get-your-invoice-in-email-pdf"></a>メールで請求書を入手する (.pdf)
-
-オプトインして、Azure の請求書を電子メールで受取る受信者を追加設定することができます。 この機能は、サポート オファー、エンタープライズ契約、Azure イン オープン プランなどの特定のサブスクリプションでは利用できない場合があります。 Microsoft 顧客契約を結んでいる場合は、次のセクションの「[サブスクリプションの請求書をメールで受け取る](#get-your-subscriptions-invoices-in-email)」を参照してください。
-
-### <a name="get-your-subscriptions-invoices-in-email"></a>サブスクリプションの請求書をメールで受け取る
+オプトインして、Azure の請求書を電子メールで受取る受信者を追加設定することができます。 この機能は、サポート オファー、エンタープライズ契約、Azure イン オープン プランなどの特定のサブスクリプションでは利用できない場合があります。
 
 1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ページで、自分のサブスクリプションを選択します。 自分が所有するサブスクリプションごとにオプトインします。 **[請求書]** をクリックし、 **[請求書を送信する]** をクリックします。
 
@@ -103,13 +78,14 @@ Microsoft Customer Agreement の課金ロールの詳細については、「[�
 
 以上の手順を実行してもメールが届かない場合は、[プロファイルの通信設定](https://account.windowsazure.com/profile)のメール アドレスが正しいことを確認してください。
 
-### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>サブスクリプションの請求書のメールによる取得をオプトアウトする
+## <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>サブスクリプションの請求書のメールによる取得をオプトアウトする
 
 請求書をメールで受け取らないようにするには、前述の手順に従って **[電子メールで送信した請求書からオプトアウトする]** をクリックします。 このオプションにより、メールで請求書を受信するよう設定されているすべてのメール アドレスが削除されます。 オプトアウトを解除する場合、受信者を再構成できます。
 
  ![オプトアウト フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
-### <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft 顧客契約の請求書をメールで受け取る
+<!-- Does following section apply to MPA too? -->
+## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft 顧客契約の請求書をメールで受け取る
 
 Microsoft 顧客契約を結んでいる場合は、メールの請求書の取得をオプトインできます。 すべての課金プロファイルの所有者、共同作成者、閲覧者、および請求書管理者が、メールで請求書を取得します。 閲覧者は、メールの請求書の設定を更新できません。
 
@@ -124,14 +100,12 @@ Microsoft 顧客契約を結んでいる場合は、メールの請求書の取�
 1. **[オプトイン]** を選択します。
 1. **[Update]** をクリックします。
 
-### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft 顧客契約の請求書のメールによる取得をオプトアウトする
+## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft 顧客契約の請求書のメールによる取得をオプトアウトする
 
 請求書をメールで受け取らないようにするには、前述の手順に従って **[オプトアウトする]** をクリックします。すべての所有者、共同作成者、閲覧者、および請求書管理者も、メールの請求書の取得からオプトアウトされます。 閲覧者の場合は、メールの請求書の基本設定を変更できません。
 
-
-
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>課金アカウントの種類を確認する
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

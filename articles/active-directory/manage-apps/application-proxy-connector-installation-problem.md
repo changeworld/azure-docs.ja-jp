@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c82bba6ccb1eaa1933176362e34b8c3e30c37f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a35558b81d064680981bcf403a3584e3a3d00e4f
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783627"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311748"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
 
@@ -37,13 +37,16 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 3.  **管理者の認証** – コネクタのインストールを完了するために、ユーザーはインストール時に管理者の資格情報を提供する必要があります。
 
+> [!NOTE]
+> コネクタのインストール ログは %TEMP% フォルダーにあり、インストール エラーの原因に関する追加情報を提供するのに役立ちます。
+
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>クラウド アプリケーション プロキシ サービスと Microsoft のログイン ページへの接続を確認する
 
 **目的:** コネクタ コンピューターが AAD アプリケーション プロキシの登録エンドポイントと Microsoft のログイン ページに接続できることを確認します。
 
-1.  ブラウザーを開き、Web ページ <https://aadap-portcheck.connectorporttest.msappproxy.net> に移動し、ポート 80 と 443 で米国中部と米国東部のデータ センターへの接続が機能していることを確認します。
+1.  [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) またはその他のポート テスト ツールを使用して、コネクタ サーバー上でポートのテストを実行して、ポート 443 と 80 が開いているかどうかを確認します。
 
-2.  どちらかのポートが機能していない (緑色のチェックマークが表示されない) 場合は、ファイアウォールまたはバックエンド プロキシで \*.msappproxy.net およびポート 80 と 443 が正しく定義されていることを確認します。
+2.  これらのポートのいずれかが正常に実行されない場合は、ファイアウォールまたはバックエンド プロキシが、必要なドメインおよびポートにアクセスできることを確認します。「[オンプレミスの環境を準備する](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)」を参照してください。
 
 3.  ブラウザー (別のタブ) を開き、Web ページ <https://login.microsoftonline.com> に移動し、そのページにログインできることを確認します。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ca5a98fb4fd0fd07cd0e2557840a2e0aed6901e5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931262"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285606"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -152,24 +152,17 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 ![IPSec VPN とゲートウェイの使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a> ファイアウォール構成とホワイトリストに登録する IP アドレス
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> IP アドレスに対するファイアウォールの構成と許可リストの設定
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件  
 企業では、組織の中央ルーターで企業ファイアウォールが実行されています。 セルフホステッド統合ランタイムがインストールされているローカル コンピューターで Windows ファイアウォールがデーモンとして実行されています。 
 
 次の表には、企業ファイアウォールの送信ポートとドメインの要件を示しています。
 
-| ドメイン名                  | 送信ポート | 説明                              |
-| ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | セルフホステッド統合ランタイムが Data Factory のデータ移動サービスに接続するために必要です。 |
-| `*.frontend.clouddatahub.net` | 443            | セルフホステッド統合ランタイムが Data Factory サービスに接続するために必要です。 |
-| `download.microsoft.com`    | 443            | セルフホステッド統合ランタイムが更新プログラムをダウンロードするために必要です。 自動更新を無効にした場合は、これをスキップできます。 |
-| `*.core.windows.net`          | 443            | [ステージング コピー](copy-activity-performance.md#staged-copy)機能を使用する場合に、セルフホステッド統合ランタイムが Azure ストレージ アカウントに接続するために使用します。 |
-| `*.database.windows.net`      | 1433           | (オプション) Azure SQL Database または Azure SQL Data Warehouse との間でコピーするときに必要です。 ステージング コピー機能を使用すると、ポート 1433 を開かずに Azure SQL Database または Azure SQL Data Warehouse にデータをコピーします。 |
-| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | (オプション) Azure Data Lake Store との間でコピーするときに必要です。 |
+[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> 各データ ソースで必要な場合は、企業ファイアウォール レベルでポートまたはホワイトリストに登録するドメインを管理する必要があります。 この表では、例として Azure SQL Database、Azure SQL Data Warehouse、Azure Data Lake Store のみを使用しています。   
+> 各データ ソースで必要な場合は、企業ファイアウォール レベルでドメインに対するポートを管理するか、許可リストを設定することが必要になる場合があります。 この表では、例として Azure SQL Database、Azure SQL Data Warehouse、Azure Data Lake Store のみを使用しています。   
 
 次の表には、Windows ファイアウォールの受信ポートの要件があります。
 
@@ -179,10 +172,10 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 ![ゲートウェイのポートの要件](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>データ ストアの IP 構成とホワイトリスト登録
-クラウドの一部のデータ ストアでは、ストアにアクセスするコンピューターの IP アドレスをホワイトリストに登録する必要もあります。 セルフホステッド統合ランタイム コンピューターの IP アドレスがファイアウォールで適切にホワイトリストに登録または構成されていることを確認します。
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>データ ストアでの IP の構成と許可リストの設定
+クラウドの一部のデータ ストアでは、ストアにアクセスするコンピューターの IP アドレスを許可する必要もあります。 セルフホステッド統合ランタイム コンピューターの IP アドレスがファイアウォールで適切に許可または構成されていることを確認します。
 
-以下のクラウド データ ストアでは、セルフホステッド統合ランタイム コンピューターの IP アドレスをホワイトリストに登録する必要があります。 これらのデータ ストアの中には、既定では、ホワイトリストに登録する必要がないものもあります。 
+以下のクラウド データ ストアでは、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可する必要があります。 これらのデータ ストアの中には、既定では、許可する必要がないものもあります。 
 
 - [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -198,7 +191,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 **セルフホステッド統合ランタイムの動作にはどのようなポートの要件がありますか?**
 
-セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (企業のファイアウォール レベルではない) でのみ受信ポート 8060 を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of-gateway)に関するセクションを参照してください。 
+セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (企業のファイアウォール レベルではない) でのみ受信ポート 8060 を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、「[IP アドレスに対するファイアウォールの構成と許可リストの設定](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」セクションを参照してください。 
 
 
 ## <a name="next-steps"></a>次の手順

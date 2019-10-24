@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d852b786c1cc1c1eb9d39b931f9b8a142f969815
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065866"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302549"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -27,7 +27,7 @@ Azure AD 拡張機能が動作しない一般的な理由は 2 つあります�
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>既存の従業員ベースの Azure AD テナントで Azure AD B2C 機能を使用できますか。
 
-Azure AD と Azure AD B2C は、別個の製品であるため、同じテナントで共存させることはできません。 Azure AD テナントは、組織を表します。 Azure AD B2C テナントは、証明書利用者アプリケーションで使用される ID のコレクションを表します。 Azure AD B2C では、カスタム ポリシー (パブリック プレビュー中) を使用して、Azure AD にフェデレーションし、組織の従業員の認証を許可することができます。
+Azure AD と Azure AD B2C は、別個の製品であるため、同じテナントで共存させることはできません。 Azure AD テナントは、組織を表します。 Azure AD B2C テナントは、証明書利用者アプリケーションで使用される ID のコレクションを表します。 Azure AD B2C では、カスタム ポリシーを使用して、Azure AD にフェデレーションし、組織の従業員の認証を許可することができます。
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Azure AD B2C を使用してソーシャル ログイン (Facebook および Google+) を Office 365 に提供することはできますか。
 
@@ -49,7 +49,7 @@ Azure AD B2C も[カスタム ポリシー](active-directory-b2c-overview-custom
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>さまざまなソーシャル ID プロバイダーからお客様に関する情報をさらに収集するためにスコープを構成できますか。
 
-いいえ。 サポートされている一連のソーシャル ID プロバイダーに使用されている、既定のスコープは次のとおりです。
+No. サポートされている一連のソーシャル ID プロバイダーに使用されている、既定のスコープは次のとおりです。
 
 * Facebook: 電子メール
 * Google +: 電子メール
@@ -122,7 +122,7 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Azure AD B2C で提供されているページの UI をローカライズできますか。 どの言語がサポートされていますか。
 
-はい。  [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md) (パブリック プレビュー中) に関する記事を確認してください。 Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列をオーバーライドすることができます。
+「[言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)」をご覧ください。 Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列をオーバーライドすることができます。
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を contoso.b2clogin.com から login.contoso.com に変更できますか。
 

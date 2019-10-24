@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 168d977b9dc0ea6117796cf98a8562f168258d28
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140941"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387452"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 

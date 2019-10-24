@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a5c4ffde886735e096c4c4a96a648c997d1e7dec
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050185"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515060"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C でデバイス アプリケーションと通信する (プレビュー)
 
@@ -122,10 +122,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    > [!NOTE]
    > * *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
-   > * 示されているように、*MyDevice* を使用します。 これは、登録済みデバイスに付けられた名前です。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
+   > * 登録しているデバイスの名前については、示されているように、*MyDevice* を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. 登録したデバイスの "*デバイス接続文字列*" を取得するには、Cloud Shell で次のコマンドを実行します。
@@ -134,10 +134,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    このクイックスタートの後の方で使用できるように、デバイス接続文字列を書き留めておきます。 次の例のようになります。
+    このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,14 +149,14 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 デバイス側アプリケーションを実行するには、次の手順に従います。
 
-1. *iothub_client/samples/iothub_client_c2d_streaming_sample* フォルダーの *iothub_client_c2d_streaming_sample.c* ソース ファイルを編集して、デバイスの資格情報を指定してから、デバイス接続文字列を指定します。
+1. `iothub_client/samples/iothub_client_c2d_streaming_sample` フォルダー内の **iothub_client_c2d_streaming_sample.c** ソース ファイルを編集してデバイスの資格情報を指定し、デバイスの接続文字列を追加します。
 
    ```C
    /* Paste in your iothub connection string  */
-   static const char* connectionString = "[device connection string]";
+   static const char* connectionString = "{DeviceConnectionString}";
    ```
 
-1. 次のようにコードをコンパイルします。
+1. 以下のコマンドを使用して、コードをコンパイルします。
 
    ```bash
    # In Linux
@@ -186,7 +186,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-service-side-application"></a>サービス側アプリケーションの実行
 
-前述のように、IoT Hub C SDK ではデバイス側のみのデバイス ストリームがサポートされています。 サービス側アプリケーションをビルドして実行するには、次のいずれかのクイックスタートの手順に従ってください。
+前述のように、IoT Hub C SDK ではデバイス側のみのデバイス ストリームがサポートされています。 対応するサービス側アプリケーションをビルドして実行するには、次のいずれかのクイックスタートの手順に従ってください。
 
 * [IoT Hub デバイス ストリームを介して C# でデバイス アプリと通信する](./quickstart-device-streams-echo-csharp.md)
 

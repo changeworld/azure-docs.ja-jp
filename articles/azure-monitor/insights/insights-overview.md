@@ -1,23 +1,18 @@
 ---
 title: Azure Monitor の Insights の概要 | Microsoft Docs
 description: Insights は、Azure Monitor で特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 この記事では、現在利用可能な分析情報のそれぞれについて簡単に説明します。
-services: azure-monitor
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 8cb39a174c570b7019e872d731f49252a9505406
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/22/2019
+ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245476"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555344"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Monitor の Insights の概要
 Insights は、特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 [Azure Monitor データ プラットフォーム](../platform/data-platform.md)にデータを格納し、Azure Monitor のその他の機能を分析やアラートに使用しますが、追加のデータを収集したり、Azure portal で独自のユーザー エクスペリエンスを提供したりできます。 Azure portal で、Azure Monitor メニューの **[Insights]** セクションから分析情報にアクセスします。

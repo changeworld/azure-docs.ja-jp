@@ -1,25 +1,19 @@
 ---
 title: 管理ソリューションの Azure Automation リソース | Microsoft Docs
 description: 一般的な管理ソリューションでは、Azure Automation の Runbook を追加して、監視データの収集や処理などのプロセスを自動化します。  この記事では、ソリューションに Runbook とその関連リソースを追加する方法について説明します。
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 5281462e-f480-4e5e-9c19-022f36dce76d
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c9b13f44dae068597cb82a0aa803283ad5e67bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110363"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555245"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]

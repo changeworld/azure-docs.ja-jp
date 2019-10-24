@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170266"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300597"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -375,14 +375,15 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. 次の項目を入力して、ロード バランサーを構成します。
 
-   - **Name**:ロード バランサーを識別する名前。
-   - **[タイプ]** :ロード バランサーのタイプとして、パブリックまたはプライベートのどちらかを選ぶことができます。 プライベート ロード バランサーには、同じ VNET 内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
-   - **[仮想ネットワーク]** : 仮想マシンと同じネットワーク。
-   - **サブネット**:仮想マシンと同じサブネット。
-   - **[プライベート IP アドレス]** :SQL Server FCI クラスターのネットワーク リソースに割り当てたものと同じ IP アドレス。
-   - **[サブスクリプション]** : Azure サブスクリプション。
+   - **サブスクリプション**:Azure サブスクリプション。
    - **リソース グループ**:仮想マシンと同じリソース グループを使用します。
-   - **[場所]** :仮想マシンと同じ Azure の場所を使用します。
+   - **Name**:ロード バランサーを識別する名前。
+   - **[リージョン]** :仮想マシンと同じ Azure の場所を使用します。
+   - **[タイプ]** :ロード バランサーのタイプとして、パブリックまたはプライベートのどちらかを選ぶことができます。 プライベート ロード バランサーには、同じ VNET 内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
+   - **SKU**:ロード バランサーの SKU は Standard である必要があります。 
+   - **[仮想ネットワーク]** : 仮想マシンと同じネットワーク。
+   - **[IP アドレスの割り当て]** :IP アドレスの割り当ては、静的である必要があります。 
+   - **[プライベート IP アドレス]** :SQL Server FCI クラスターのネットワーク リソースに割り当てたものと同じ IP アドレス。
    次の図を参照してください。
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)

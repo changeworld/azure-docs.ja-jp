@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dce3fea1427632f37d826b79016e3aa3e22dad5f
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345538"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264159"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>クイック スタート:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す
 
@@ -266,7 +266,7 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 > |各値の説明: ||
 > |---------|---------|
 > | `scopes` | 要求するスコープを含む (つまり、Microsoft Graph 用の `[ "user.read" ]` またはカスタム Web API 用の `[ "<Application ID URL>/scope" ]`) (`api://<Application ID>/access_as_user`) |
-> | `account` | トークンが要求されているアカウント。 このクイックスタートは単一アカウントのアプリケーションです。複数アカウントのアプリを構築する場合は、どのアカウントをトークン要求に使用するかを識別するためのロジックを定義する必要があります `applicationContext.account(forHomeAccountId: self.homeAccountId)` |
+> | `account` | トークンが要求されているアカウント。 このクイックスタートでは、単一アカウントのアプリケーションを取り扱います。 複数アカウントのアプリを構築する場合は、`applicationContext.account(forHomeAccountId: self.homeAccountId)` を使用して、どのアカウントをトークン要求に使用するかを識別するためのロジックを定義する必要があります |
 
 ## <a name="next-steps"></a>次の手順
 

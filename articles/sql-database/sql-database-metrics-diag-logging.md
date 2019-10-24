@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 208ebaa2e22f4cd0ee2138f3e49f78c1e56860cf
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 235cdff1297b840bfd1a522e265633b47094c855
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260333"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597964"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -574,7 +574,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |query_hash_s|使用可能な場合は、失敗したクエリのクエリ ハッシュ |
 |query_plan_hash_s|使用可能な場合は、失敗したクエリのクエリ プラン ハッシュ |
 
-[Azure SQL Server エラー メッセージ](https://msdn.microsoft.com/library/cc645603.aspx)の詳細。
+[Azure SQL Server エラー メッセージ](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)の詳細。
 
 ### <a name="database-wait-statistics-dataset"></a>データベースの待機統計データセット
 

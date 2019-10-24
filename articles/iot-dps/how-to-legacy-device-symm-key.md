@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13e22d772ef9b90f415f10b65e4a4290a1f7bd81
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65914304"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434821"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>対称キーを使用してレガシ デバイスをプロビジョニングする方法
-
 
 多くのレガシ デバイスに共通する問題は、多くの場合にその ID が 1 つの情報で構成されていることです。 この ID 情報は、通常は MAC アドレスまたはシリアル番号です。 レガシ デバイスには、デバイスを安全に識別するために使用できる証明書、TPM、またはその他のセキュリティ機能がない場合があります。 IoT ハブ用の Device Provisioning Service には、対称キーの構成証明が含まれています。 対称キーの構成証明は、MAC アドレスやシリアル番号などの情報に基づいてデバイスを識別するために使用できます。
 
@@ -28,6 +27,8 @@ ms.locfileid: "65914304"
 
 この記事は、Windows ベースのワークスペース向けです。 ただし、Linux でもこの手順を実行できます。 Linux の例については、「[How to provision for multitenancy](how-to-provision-multitenant.md)」(マルチテナント方式のプロビジョニング) を参照してください。
 
+> [!NOTE]
+> この記事で使用されているサンプルは、C で記述されています。[C# デバイス プロビジョニングの対称キーのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)も使用できます。 このサンプルを使用するには、[azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) リポジトリをダウンロードまたは複製し、サンプル コードのインラインの手順に従います。 この記事の手順に従って、ポータルを使用して対称キー登録グループを作成し、サンプルの実行に必要な ID スコープと登録グループのプライマリ キーとセカンダリ キーを検索できます。 また、サンプルを使用して個別登録を作成することもできます。
 
 ## <a name="overview"></a>概要
 
@@ -198,7 +199,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 このサンプル コードでは、Device Provisioning Services のインスタンスにプロビジョニング要求を送信するデバイスのブート シーケンスがシミュレートされます。 ブート シーケンスにより、デバイスが認識され、登録グループで構成した IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

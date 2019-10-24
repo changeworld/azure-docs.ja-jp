@@ -1,25 +1,19 @@
 ---
 title: Azure での管理ソリューション ファイルの作成 | Microsoft Docs
 description: 管理ソリューションには、パッケージ化された管理シナリオが用意されており、お客様はそれを Azure 環境に追加できます。  この記事では、管理ソリューションを作成してお使いの環境で使用したり顧客に提供したりする方法について、詳しく説明します。
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47ee691186da7f915ca8fcf87415784ab12ef1e0
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595765"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553847"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -83,7 +77,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 >
 >
 
-| パラメーター | Type | 説明 |
+| パラメーター | 種類 | 説明 |
 |:--- |:--- |:--- |
 | accountName |string |Azure automation アカウント名。 |
 | pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
@@ -208,7 +202,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ### <a name="dependencies"></a>依存関係
 ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
 
 | プロパティ | 説明 |
@@ -224,7 +218,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| name |ソリューションの名前。 |
+| 名前 |ソリューションの名前。 |
 | version |作成者によって決定されるソリューションのバージョン。 |
 | product |ソリューションを特定する一意の文字列。 |
 | publisher |ソリューションの発行者。 |

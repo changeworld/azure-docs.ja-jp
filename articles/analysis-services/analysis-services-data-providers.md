@@ -2,18 +2,17 @@
 title: Azure Analysis Services への接続に必要なクライアント ライブラリ | Microsoft Docs
 description: Azure Analysis Services に接続するクライアント アプリケーションとツールに必要なクライアント ライブラリについて説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9e597b03abfdeda01d74986b7b30c14de46fd3f1
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861138"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512778"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
@@ -23,10 +22,10 @@ ms.locfileid: "70861138"
 
 |ダウンロード  |製品バージョン  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.1.25    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.1.25       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.5.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.5.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.9.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.9.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO と ADOMD (NuGet パッケージ)
 
@@ -34,8 +33,8 @@ Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント �
 
 |Package  | 製品バージョン  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.5     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.5      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.9     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.9      |
 
 NuGet パッケージ アセンブリの AssemblyVersion は、セマンティック バージョニングであるMAJOR.MINOR.PATCH に従います。 NuGet 参照では、(MSI のインストールの結果として得られる) GAC 内に別のバージョンがある場合でも、必要なバージョンが読み込まれます。 PATCH は、リリースごとにインクリメントされます。 AMO と ADOMD のバージョンは常に同期されます。
 
@@ -45,7 +44,7 @@ Analysis Services では、データ プロバイダーとも呼ばれる、3 �
 
 Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは、3 つのクライアント ライブラリがすべてインストールされ、新しいバージョンが使用可能になると更新されます。 更新のバージョンや頻度によっては、一部のクライアント ライブラリが、Azure Analysis Services で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、ライブラリを手動かプログラムでインストールする必要があります。 手動インストール用のクライアント ライブラリは、配布可能なパッケージとして SQL Server Feature Pack に含まれています。 ただし、これらのクライアント ライブラリは SQL Server のバージョンに対応しており、最新版ではない可能性があります。  
 
-クライアント接続用のクライアント ライブラリは、Azure Analysis Services サーバーをデータ ソースに接続するために必要なデータ プロバイダーとは異なります。 データソース接続について詳しくは、「[Datasource connections](analysis-services-datasource.md)」(データソース接続) をご覧ください。
+クライアント接続用のクライアント ライブラリは、Azure Analysis Services サーバーをデータ ソースに接続するために必要なデータ プロバイダーとは異なります。 データ ソース接続について詳しくは、[データ ソースの接続](analysis-services-datasource.md)に関する記事をご覧ください。
 
 ## <a name="client-library-types"></a>クライアント ライブラリの種類
 
@@ -73,7 +72,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1.  [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](`C:\Program Files\Microsoft Analysis Services\AS OLEDB\`) にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
   
 2.  **[msolap.dll]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。 ファイル名が msolap140.dll である場合は、最新のバージョンよりも古いバージョンであるため、アップグレードする必要があります。
     
@@ -82,12 +81,12 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
 ### <a name="amo"></a>AMO
 
-1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](`C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`) にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
 2. **[Microsoft.AnalysisServices]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。  
 
 ### <a name="adomd"></a>ADOMD
 
-1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](`C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`) にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
 2. **[Microsoft.AnalysisServices.AdomdClient]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。  
 
 

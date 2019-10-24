@@ -3,13 +3,13 @@ ms.topic: include
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a3c630b54ff95a9b1200e2421c787a514a0aa52
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.date: 10/09/2019
+ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431046"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72259100"
 ---
 ## <a name="business-disaster-recovery"></a>ビジネスのディザスター リカバリー
 
@@ -24,6 +24,7 @@ Azure を通じて提供される (および、すべての Time Series Insights
 - **フェールオーバー**:Azure では [geo レプリケーションと負荷分散](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)が提供されます。
 - **データ復元**と**ストレージ復旧**: Azure では、[データを保持および復旧するためのいくつかのオプション](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)が提供されます。
 - **Site Recovery**:Azure は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) を通じたサイトの復旧機能を提供します。
+- **Azure Backup**:[Azure Backup ](https://docs.microsoft.com/azure/backup/backup-architecture) は、Azure VM のオンプレミス バックアップとクラウド内バックアップの両方をサポートしています。
 
 デバイスやユーザーにグローバルで複数のリージョンにわたる高可用性を提供するには、必ず関連する Azure 機能を有効にしてください。
 

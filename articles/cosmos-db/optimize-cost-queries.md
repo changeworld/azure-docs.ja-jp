@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB でクエリを実行するために要求ユニットとコストを最適化する
 description: クエリの要求ユニット使用量を評価し、パフォーマンスとコストの観点からクエリを最適化する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717016"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753300"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのクエリ コストを最適化する
 

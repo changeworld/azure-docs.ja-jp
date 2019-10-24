@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b6d1de1ee24ce9ca67d3bd8fa514ec9ea7a5c771
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca0f83628edeef9e55ebc81798d0229791b80a7a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709553"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375490"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する
 
@@ -27,7 +27,7 @@ ms.locfileid: "71709553"
 
 次の図は、新しい課金アカウントで課金がどのように構成されているかについて説明しています。
 
-![EA から MCA への移行後の階層の図](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![EA から MCA への移行後の階層の図](./media/mca-setup-account/mca-post-transition-hierarchy.png)
 
 | Enterprise Agreement   | Microsoft 顧客契約    |
 |------------------------|--------------------------------------------------------|
@@ -72,9 +72,9 @@ Enterprise Agreement 加入契約で作成されたアカウントは、新し�
 
 課金アカウントの各課金プロファイルに対して、月次請求書が生成されます。 請求書ごとに、Azure の利用状況と請求金額を含む csv ファイル、価格シート、および税務書類をダウンロードできます (該当する場合)。 当月の料金に対する Azure の利用状況と請求金額を含む csv ファイルをダウンロードすることもできます。
 
-Azure の利用状況と請求金額を含む csv ファイルをダウンロードする方法については、「[Download usage for your Microsoft Customer Agreement (Microsoft 顧客契約の利用状況のダウンロード)](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement)」を参照してください。
+Azure の利用状況と請求金額を含む csv ファイルをダウンロードする方法については、「[Download usage for your Microsoft Customer Agreement (Microsoft 顧客契約の利用状況のダウンロード)](billing-download-azure-daily-usage.md)」を参照してください。
 
-価格シートをダウンロードする方法については、[お客様の Microsoft 顧客契約向けの価格のダウンロード](billing-ea-pricing.md#microsoft-customer-agreement-pricing)に関する記事を参照してください。
+価格シートをダウンロードする方法については、[お客様の Microsoft 顧客契約向けの価格のダウンロード](billing-ea-pricing.md)に関する記事を参照してください。
 
 税務書類をダウンロードする方法については、[お客様の Microsoft 顧客契約向けの税務書類の表示](billing-mca-download-tax-document.md#view-and-download-tax-documents)に関する記事を参照してください。
 
@@ -90,7 +90,7 @@ Enterprise Agreement 加入契約の部署と同様に、ニーズに基づい�
 
 ### <a name="create-a-new-account"></a>新しいアカウントを作成する
 
-Enterprise Agreement 加入契約で作成されたアカウントと同様に、請求書セクションに対する Azure サブスクリプション作成者ロールをユーザーに割り当てて、Azure サブスクリプションへのアクセス許可をユーザーに与えます。 詳細については、「[Give others permission to create Azure subscriptions (Azure サブスクリプションを作成する権限を他のユーザーに付与する)](billing-mca-create-subscription.md#give-others-permission)」を参照してください。
+Enterprise Agreement 加入契約で作成されたアカウントと同様に、請求書セクションに対する Azure サブスクリプション作成者ロールをユーザーに割り当てて、Azure サブスクリプションへのアクセス許可をユーザーに与えます。 ロールの割り当ての詳細については、「[Azure portal での組み込みロールを管理する](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)」を参照してください。
 
 ## <a name="changes-for-department-administrators"></a>部署管理者への変更
 
@@ -116,7 +116,7 @@ Enterprise Agreement に含まれていた各部署に対して、請求書セ�
 
 ### <a name="create-a-new-account-in-your-department"></a>部署内に新しいアカウントを作成する
 
-部署用に作成された請求書セクションに対する Azure サブスクリプション作成者ロールをユーザーに割り当てます。 詳細については、「[Give others permission to create Azure subscriptions (Azure サブスクリプションを作成する権限を他のユーザーに付与する)](billing-mca-create-subscription.md#give-others-permission)」を参照してください。
+部署用に作成された請求書セクションに対する Azure サブスクリプション作成者ロールをユーザーに割り当てます。 ロールの割り当ての詳細については、「[Azure portal での組み込みロールを管理する](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)」を参照してください。
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>部署内のアカウントに対する請求料金を表示する
 

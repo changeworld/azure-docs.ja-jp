@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949021"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249194"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure Digital Twins でのロール ベースのアクセス制御
 
-Azure Digital Twins では、空間グラフ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 これは、"ロールベースのアクセス制御" (RBAC) と呼ばれるきめ細かいロールとアクセス許可の管理によって行われます。 RBAC は _ロール_ と _ロール割り当て_ により構成されます。 ロールによってアクセス許可のレベルが特定されます。 ロール割り当てによってロールがユーザーまたはデバイスに関連付けられます。
+Azure Digital Twins では、空間グラフ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 これは、[ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) と呼ばれるきめ細かいロールとアクセス許可の管理によって行われます。 RBAC は _ロール_ と _ロール割り当て_ により構成されます。 ロールによってアクセス許可のレベルが特定されます。 ロール割り当てによってロールがユーザーまたはデバイスに関連付けられます。
 
 RBAC を使用し、次にアクセス許可を付与できます。
 
@@ -84,3 +84,5 @@ Azure Digital Twins のロールの割り当てでは、ユーザー、Azure AD 
 ## <a name="next-steps"></a>次の手順
 
 - Azure Digital Twins ロールの割り当ての作成と管理の詳細については、[ロール割り当ての作成と管理](./security-create-manage-role-assignments.md)に関するページを参照してください。
+
+- 詳細については、「[Azure リソースの RBAC](https://docs.microsoft.com/azure/role-based-access-control/)」を参照してください。

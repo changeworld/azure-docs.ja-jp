@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 10/03/2019
+ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: cad57e3e7e52ec291819110bab9d8d79f51e5a2f
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: e862cd604263c5125259344baf2e990ad56a3291
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958165"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675826"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 

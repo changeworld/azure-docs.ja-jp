@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 198ab5f567652a76d209168041f305b9da4d0b43
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 10/14/2019
+ms.openlocfilehash: 49ad7334c418e29c821320608be729e060b4a8ae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147179"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331330"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の監査ログ
 
@@ -20,6 +20,8 @@ Azure Database for PostgreSQL - Single Server でのデータベース アクテ
 > [!NOTE]
 > pgAudit は Azure Database for PostgreSQL ではプレビュー段階にあります。
 > この拡張機能は、汎用サーバーとメモリ最適化サーバー上でのみ有効にすることができます。
+
+コンピューティングやストレージのスケーリングなどの操作に Azure リソースレベルのログが必要な場合は、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に関する記事を参照してください。
 
 ## <a name="usage-considerations"></a>使用に関する考慮事項
 既定では、pgAudit ログ ステートメントは、Postgres の標準ログ記録機能を使用して、通常のログ ステートメントと共に出力されます。 Azure Database for PostgreSQL では、これらの .log ファイルを Azure portal または CLI を介してダウンロードできます。 ファイルのコレクション用の最大ストレージ容量は 1 GB で、各ファイルは最大 7 日間 (既定では 3 日間) 使用できます。 このサービスは、短期的なストレージ オプションです。

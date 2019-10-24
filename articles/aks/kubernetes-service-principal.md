@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: 304b9dae9f3a1e134809d8959a96dc4e3ec0edd3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e24d930ec82ea92a040efeed3056a10917ce2b2a
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615104"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263909"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -93,7 +93,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ### <a name="azure-container-registry"></a>Azure Container Registry
 
-Azure Container Registry (ACR) をコンテナーのイメージ ストアとして使用する場合、AKS クラスターがイメージを読み取ってプルするためのアクセス許可を与える必要があります。 レジストリに対する "*閲覧者*" ロールを AKS クラスターのサービス プリンシパルに委任する必要があります。 詳細な手順については、「[ACR へのアクセス許可を AKS に付与する][aks-to-acr]」を参照してください。
+Azure Container Registry (ACR) をコンテナーのイメージ ストアとして使用する場合、AKS クラスターがイメージを読み取ってプルするためのアクセス許可を、サービス プリンシパルに与える必要があります。 現在は、[az aks create][az-aks-create] または [az aks update][az-aks-update] コマンドを使用してレジストリと統合し、サービス プリンシパルに適切なロールを割り当てる構成をお勧めします。 詳細な手順については、「[Azure Kubernetes Service から Azure Container Registry の認証を受ける][aks-to-acr]」を参照してください。
 
 ### <a name="networking"></a>ネットワーク
 
@@ -177,6 +177,6 @@ Azure Active Directory サービス プリンシパルの詳細については�
 [rbac-custom-role]: ../role-based-access-control/custom-roles.md
 [rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
+[aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md

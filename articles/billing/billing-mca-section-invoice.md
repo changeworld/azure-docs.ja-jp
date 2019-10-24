@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ba2a274397aa1941ef2be03ce97b0f0c9ce96a31
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 77dd8a5e54697a37a2039238ecdedb3e2a2fa326
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709565"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375477"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>請求書にセクションを作成してコストを整理する
 
@@ -55,5 +55,5 @@ ms.locfileid: "71709565"
 ## <a name="next-steps"></a>次の手順
 
 - [Microsoft 顧客契約用に追加の Azure サブスクリプションを作成する](billing-mca-create-subscription.md)
-- [Azure サブスクリプションを作成する権限を他のユーザーに付与する](billing-mca-create-subscription.md#give-others-permission)
+- [Azure portal での組み込みロールを管理する](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 - [その他の請求先アカウント内のユーザーから Azure サブスクリプションの課金所有権を取得する](billing-mca-request-billing-ownership.md)

@@ -3,19 +3,19 @@ title: レビュー ツールの概念の説明 - Content Moderator
 titleSuffix: Azure Cognitive Services
 description: AI と目視レビューを組み合わせたモデレート作業を調整する Web サイトである Content Moderator レビュー ツールについて説明します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.date: 03/15/2019
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.author: sajagtap
-ms.openlocfilehash: 7f20b9c824045ac2f8c13df3ed8f776195de611a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 465f24c3d9b7f53c0b494f387cc5d21aa6bd83b5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564518"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754225"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator レビュー ツール
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 17ffc07bb5632b1b56b7bff1e843e5955d396089
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982783"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372211"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
@@ -69,14 +69,14 @@ ms.locfileid: "71982783"
 | 最大メモリ | Gen4:56 GB - 168 GB (7 GB/仮想コア)<br/>Gen5:20.4 GB から 408 GB (5.1 GB/仮想コア)<br/>メモリ量を増やすには、仮想コアを追加します。 | Gen4:56 GB - 168 GB (7 GB/仮想コア)<br/>Gen5:20.4 GB - 読み取り/書き込みクエリの場合は 408 GB (5.1 GB/仮想コア)<br/>+ 追加の 20.4 GB - 読み取り専用クエリの場合は 408 GB (5.1 GB/仮想コア)。<br/>メモリ量を増やすには、仮想コアを追加します。 |
 | インスタンスの最大ストレージ サイズ (予約済み) | - 4 仮想コアの場合は 2 TB (Gen5 のみ)<br/>- その他のサイズの場合は 8 TB | Gen4:1 TB (テラバイト) <br/> Gen5: <br/>- 4、8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
 | 最大データベース サイズ | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 2 TB から 8 TB)。 | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 1 TB から 4 TB)。 |
-| 最大 tempDB サイズ | 24 GB/仮想コア (96 から 1,920 GB) と現在利用可能なインスタンスのストレージ サイズに制限されています。<br/>tempdb 領域を増やすには、仮想コアを追加します。 | 現在利用可能なインスタンスのストレージ サイズまで。 現在、termdb ログ ファイルのサイズは、仮想コアあたり 24 GB に制限されています。 |
+| 最大 tempDB サイズ | 24 GB/仮想コア (96 から 1,920 GB) と現在利用可能なインスタンスのストレージ サイズに制限されています。<br/>tempdb 領域を増やすには、仮想コアを追加します。<br/> ログ ファイルは 120 GB に制限されています。| 現在利用可能なインスタンスのストレージ サイズまで。 |
 | インスタンスごとの最大データベース数 | インスタンスのストレージ サイズの制限に達していない限り、100 個。 | インスタンスのストレージ サイズの制限に達していない限り、100 個。 |
 | インスタンスごとの最大データベース ファイル数 | インスタンスのストレージ サイズまたは [Azure Premium ディスクの記憶域割り当ての領域](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)の上限に達していない限り、最大で 280 個。 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 32,767 ファイル。 |
 | データ ファイルの最大サイズ | 現在利用可能なインスタンスのストレージ サイズ (最大 2 TB から 8 TB) と [Azure Premium ディスクの記憶域割り当ての領域](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)に制限されています。 | 現在利用可能なインスタンスのストレージ サイズ (最大 1 TB から 4 TB) に制限されています。 |
 | 最大ログ ファイル サイズ | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 |
-| データ/ログの IOPS (概算) | インスタンス* あたり最大で 30 から 40 K IOPS、ファイルあたり 500 から 7500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 K から 110 K (1375 IOPS/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
+| データ/ログの IOPS (概算) | インスタンス* あたり最大で 30 から 40 K IOPS、ファイルあたり 500 から 7500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](#file-io-characteristics-in-general-purpose-tier)| 5.5 K から 110 K (1375 IOPS/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
 | ログ書き込みのスループット制限 (インスタンスあたり) | 仮想コアあたり 3 MB/秒<br/>最大 22 MB/秒 | 仮想コアあたり 4 MB/秒<br/>最大 48 MB/秒 |
-| データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 制限なし。 |
+| データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](#file-io-characteristics-in-general-purpose-tier) | 制限なし。 |
 | ストレージ IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
 | インメモリ OLTP | サポートされていません | 利用可能、[サイズは仮想コアの数に依存](#in-memory-oltp-available-space) |
 | 最大セッション数 | 30000 | 30000 |
@@ -85,8 +85,8 @@ ms.locfileid: "71982783"
 > [!NOTE]
 > - **現在利用可能なインスタンスのストレージ サイズ**は、予約インスタンスのサイズと使用されているストレージ スペースの差です。
 > - ユーザー データベースとシステム データベースのデータ ファイルおよびログ ファイルのサイズはどちらも、最大ストレージ サイズの制限と比較されるインスタンス ストレージ サイズに含まれます。 データベースによって使用される合計領域を確認するには、<a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> システム ビューを使用します。 エラー ログは保持されず、サイズには含まれません。 バックアップは、ストレージ サイズに含まれません。
-> - スループットと IOPS も、マネージド インスタンスによって明示的に制限されないページ サイズに依存します。
-> 自動フェールオーバー グループを利用すれば、異なる Azure リージョンで別の読み取り可能レプリカを作成できます。
+> - General Purpose レベルではスループットと IOPS も、マネージド インスタンスによって明示的に制限されない[ファイル サイズ](#file-io-characteristics-in-general-purpose-tier)に依存します。
+> - 自動フェールオーバー グループを利用すれば、異なる Azure リージョンで別の読み取り可能レプリカを作成できます。
 > - 最大インスタンス IOPS は、ワークロードにおけるファイルのレイアウトおよび分散に依存します。 たとえば、それぞれ最大 5K IOPS を持つ 1 GB ファイルを 7 個と、それぞれ 500 IOPS を持つ小さいファイル (128 GB 未満) を 7 個作成したとすると、ワークロードですべてのファイルを使用できる場合、インスタンスあたり 38500 IOPS (7 x 5000 + 7 x 500) を取得できます。 IOPS の値によっては、自動バックアップにも使用されることに注意してください。
 
 > [!NOTE]

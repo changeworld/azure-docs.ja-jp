@@ -3,20 +3,20 @@ title: Apache Kafka 対応のイベント ハブを作成する - Azure Event Hu
 description: この記事では、Azure portal を使用して Apache Kafka 対応の Azure Event Hubs 名前空間を作成する手順について説明します。
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: 9ce0f74ec6d4e536bfb3fe827ae6f8ae143b640e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822477"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555806"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Apache Kafka 対応イベント ハブの作成
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka 対応 Event Hubs 名前空間の作成
 
-1. [Azure Portal][Azure portal] にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
+1. [Azure portal][Azure portal] にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
 
 2. Event Hubs を検索し、以下に示すオプションを選択します。
     

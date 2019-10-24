@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 1d0bdfbbad7e811ac8f1eeffb1991cc5430483a6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 8975ed39d5443ccfae81e281186aed05493a7009
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262903"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512590"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー
 
@@ -49,8 +49,8 @@ SQL Server の高可用性ソリューションは、AlwaysOn 可用性グルー
 
 | テクノロジ | サンプル アーキテクチャ |
 | --- | --- |
-| **可用性グループ** |同じリージョンの Azure VM で実行している可用性レプリカによって、高い可用性が実現します。 Windows フェールオーバー クラスタリングには Active Directory ドメインが必要であるため、ドメイン コントローラー VM を構成する必要があります。<br/> ![可用性グループ](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-ha-always-on.png)<br/>詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)」を参照してください。 |
-| **フェールオーバー クラスター インスタンス** |共有記憶域を必要とするフェールオーバー クラスター インスタンス (FCI) は、3 つの異なる方法で作成できます。<br/><br/>1.接続されたストレージを使用する Azure VM で実行される 2 ノード フェールオーバー クラスター。このストレージは [Windows Server 2016 Storage Spaces Direct \(S2D\)](virtual-machines-windows-portal-sql-create-failover-cluster.md) を使用して、ソフトウェア ベースの仮想 SAN を提供します。<br/><br/>2.サード パーティのクラスタリング ソリューションでサポートされるストレージを使用する Azure VM で実行される 2 ノード フェールオーバー クラスター。 SIOS DataKeeper を使用する具体的な例については、[フェールオーバー クラスタリングとサード パーティ製ソフトウェアの SIOS DataKeeper を使用したファイル共有の高可用性](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)に関するページを参照してください。<br/><br/>手順 3.ExpressRoute を介してリモート iSCSI ターゲット共有ブロック記憶域を使用する Azure VM で実行される 2 ノード フェールオーバー クラスター。 たとえば、NetApp Private Storage (NPS) は、ExpressRoute と Equinix を使用して iSCSI ターゲットを Azure VM に公開します。<br/><br/>サードパーティの共有記憶域とデータ レプリケーション ソリューションの場合は、フェールオーバーでのデータ アクセスに関する問題について、ベンダーに問い合わせてください。<br/><br/>[Azure File Storage](https://azure.microsoft.com/services/storage/files/) 上での FCI の使用は、このソリューションが Premium Storage を利用していないためにまだサポートされていないことに注意してください。 近日中にサポートできるように作業中です。 |
+| **可用性グループ** |同じリージョンの Azure VM で実行している可用性レプリカによって、高い可用性が実現します。  Windows フェールオーバー クラスタリングには Active Directory ドメインが必要であるため、ドメイン コントローラー VM を構成する必要があります。<br/><br/> Azure VM を異なる[可用性ゾーン](https://docs.microsoft.com/en-us/azure/availability-zones/az-overview)にデプロイし、冗長性と可用性を高めることができます。詳細については[こちら](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)のドキュメントを参照してください。 可用性グループ内の SQL Server VM が可用性ゾーンにデプロイされている場合は、[Azure SQL VM CLI](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-availability-group-cli) & [Azure クイックスタート テンプレート](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-availability-group-quickstart-template)に記載されているように [Standard Load Balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview) をリスナーに使用します。<br/> ![可用性グループ](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-ha-always-on.png)<br/>詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)」を参照してください。 |
+| **フェールオーバー クラスター インスタンス** |共有記憶域を必要とするフェールオーバー クラスター インスタンス (FCI) は、4 つの異なる方法で作成できます。<br/><br/>1.接続されたストレージを使用する Azure VM で実行される 2 ノード フェールオーバー クラスター。このストレージは [Windows Server 2016 Storage Spaces Direct \(S2D\)](virtual-machines-windows-portal-sql-create-failover-cluster.md) を使用して、ソフトウェア ベースの仮想 SAN を提供します。<br/><br/> 2.[Premium ファイル共有](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage)を使用して Azure VM で実行される 2 ノード フェールオーバー クラスター。 Premium ファイル共有は、SSD によってバックアップされる、フェールオーバー クラスター インスタンスとの使用が完全にサポートされている継続的に待機時間の短いファイル共有です。<br/><br/>手順 3.サード パーティのクラスタリング ソリューションでサポートされるストレージを使用する Azure VM で実行される 2 ノード フェールオーバー クラスター。 SIOS DataKeeper を使用する具体的な例については、[フェールオーバー クラスタリングとサード パーティ製ソフトウェアの SIOS DataKeeper を使用したファイル共有の高可用性](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)に関するページを参照してください。<br/><br/>4.ExpressRoute を介してリモート iSCSI ターゲット共有ブロック記憶域を使用する Azure VM で実行される 2 ノード フェールオーバー クラスター。 たとえば、NetApp Private Storage (NPS) は、ExpressRoute と Equinix を使用して iSCSI ターゲットを Azure VM に公開します。<br/><br/>サードパーティの共有記憶域とデータ レプリケーション ソリューションの場合は、フェールオーバーでのデータ アクセスに関する問題について、ベンダーに問い合わせてください。<br/><br/>[Azure File Storage](https://azure.microsoft.com/services/storage/files/) 上での FCI の使用は、このソリューションが Premium Storage を利用していないためにまだサポートされていないことに注意してください。 近日中にサポートできるように作業中です。 |
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>Azure のみ:ディザスター リカバリー ソリューション
 Azure 内の SQL Server データベースのディザスター リカバリー ソリューションを実現するには、可用性グループ、データベース ミラーリング、またはストレージ BLOB によるバックアップと復元を使用します。

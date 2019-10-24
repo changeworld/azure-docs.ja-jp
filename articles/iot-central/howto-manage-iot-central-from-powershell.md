@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: e91d2d487a8b3409c53a0a0731700c39cf56dd63
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: b31470b329c0f63d186e5babfac3c0d8e6767538
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066353"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286215"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 
@@ -66,7 +66,7 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |パラメーター         |説明 |
 |------------------|------------|
 |ResourceGroupName |そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
-|Location |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現在、IoT Central アプリケーションは、**米国東部**、**米国西部**、**北ヨーロッパ**、**西ヨーロッパ**のリージョン、または**オーストラリア**地域で作成できます。 |
+|Location |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現在、IoT Central アプリケーションは、**米国東部**、**米国西部**、**北ヨーロッパ**、**西ヨーロッパ**のリージョン、または**オーストラリア**あるいは**アジア太平洋**の地域で作成できます。  |
 |名前              |Azure portal 内のアプリケーションの名前。 |
 |Subdomain         |アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は https://mysubdomain.azureiotcentral.com です。 |
 |Sku               |現在使用できる値は **S1** (Standard レベル) のみです。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |

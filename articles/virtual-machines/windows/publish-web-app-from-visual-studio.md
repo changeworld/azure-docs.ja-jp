@@ -42,7 +42,7 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 
 4. **Microsoft Azure Virtual Machines** アイコンを選択し、 **[発行]** を選択します。
 
-   ![[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]
+   ![発行 ページ - Microsoft Azure Virtual Machine Services アイコン]
 
 5. (仮想マシンに接続されている Azure サブスクリプション) の適切なアカウントを選択します。  
    - Visual Studio にサインインしている場合は、アカウントの一覧に、認証されたすべてのアカウントが表示されます。  

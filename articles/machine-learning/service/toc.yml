@@ -269,6 +269,8 @@
         - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Python で ML パイプラインをスケジュールする
+          href: how-to-schedule-pipelines.md
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md
@@ -295,7 +297,15 @@
         - name: データの入力と出力
           items:
             - name: データのインポート
-              href: ../algorithm-module-reference/import-data.md
+              items:
+                - name: データのインポート
+                  href: ../algorithm-module-reference/import-data.md
+                - name: HTTP 経由の Web URL からのインポート
+                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
+                - name: '"Azure Blob Storage からのインポート" モジュール'
+                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
+                - name: Azure SQL Database からのインポート
+                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: データのエクスポート
               href: ../algorithm-module-reference/export-data.md
             - name: データの手動入力
@@ -328,6 +338,10 @@
               href: ../algorithm-module-reference/normalize-data.md
             - name: パーティションとサンプル
               href: ../algorithm-module-reference/partition-and-sample.md
+            - name: クリップの値
+              href: ../algorithm-module-reference/clip-values.md
+            - name: SQL 変換の適用
+              href: ../algorithm-module-reference/apply-sql-transformation.md
         - name: 機械学習
           items:
             - name: モデルのスコア付け
@@ -380,6 +394,12 @@
               href: ../algorithm-module-reference/create-python-model.md
             - name: R スクリプトの実行
               href: ../algorithm-module-reference/execute-r-script.md
+        - name: 統計関数
+          items:
+            - name: 算術演算の適用
+              href: ../algorithm-module-reference/apply-math-operation.md
+            - name: データの集計
+              href: ../algorithm-module-reference/summarize-data.md
         - name: エラー メッセージとコード
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: リソース

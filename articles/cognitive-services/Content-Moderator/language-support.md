@@ -3,19 +3,19 @@ title: 言語サポート - Content Moderator API
 titleSuffix: Azure Cognitive Services
 description: これは、Content Moderator API でサポートされる自然言語の一覧です。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 6c71cefc25296df5a05c19ee84eb4e24ea90aa9d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.author: pafarley
+ms.openlocfilehash: b4e6a5ca2dc19671dab3087c0a182925ac8f9a1b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562776"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755314"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Content Moderator API の言語サポート
 

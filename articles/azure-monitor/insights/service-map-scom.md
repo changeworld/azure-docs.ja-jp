@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor for VMs と System Center Operations Manager の統合 | Microsoft Docs
 description: Azure Monitor for VMs は、Windows システムおよび Linux システム上のアプリケーション コンポーネントを自動的に検出して、サービス間の通信をマップします。 この記事では、マップ機能を使用して、Operations Manager で分散アプリケーション ダイアグラムを自動的に作成する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 07/12/2019
+ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489721"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553963"
 ---
 # <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能の統合
 

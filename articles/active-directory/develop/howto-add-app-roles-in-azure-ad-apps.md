@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e933399454942f4ee50440cffd791599679074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e8c0e761c7a03efda470aba83bfa02a30b22a21
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299140"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754321"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法:アプリケーションにアプリ ロールを追加してトークンで受け取る
 
@@ -129,7 +129,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 
 ## <a name="more-information"></a>詳細情報
 
-- [Azure AD アプリケーション ロールとロール要求を使用した Web アプリでの承認 (サンプル)](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapp-roleclaims/)
+- [Azure AD アプリケーション ロールとロール要求を使用した Web アプリでの承認 (サンプル)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
 - [アプリでのセキュリティ グループとアプリケーション ロールの使用 (ビデオ)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [グループ要求とアプリケーション ロールが追加された Azure Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
 - [Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

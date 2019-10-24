@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor for VMs (プレビュー) からログを照会する方法 | Microsoft Docs
 description: Azure Monitor for VMs ソリューションは、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/10/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/10/2019
+ms.openlocfilehash: 7363f1ec11974dab3e0c0149c18ac4f0bf1c86ee
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472576"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555194"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) からログを照会する方法
 VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics ワークスペースにこれらを転送します。  このデータは、Azure Monitor で[クエリ](../../azure-monitor/log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
@@ -150,7 +144,7 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 - 冗長性とデータ量を減らすために、ワイルドカード IP 付きレコードは、特定の IP アドレスと一致するレコード (同じプロセス、ポート、プロトコル) がある場合は省略されます。 ワイルドカードの IP レコードが省略されると、特定の IP アドレスを持つレコードの *IsWildcardBind* プロパティは *True* に設定されます。  これは、ポートがレポート マシンのすべてのインターフェイスに公開されていることを示します。 
 - 特定のインターフェイスにのみバインドされているポートでは、IsWildcardBind は *False* に設定されます。 
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL レコード
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL レコード
 *ServiceMapComputer_CL* 型があるレコードには、Dependency エージェントを有するサーバー用のインベントリ データがあります。 これらのレコードは、次の表に示したプロパティを持ちます。
 
 | プロパティ | Description |
@@ -175,7 +169,7 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 | VirtualMachineName_s | VM の名前 |
 | BootTime_t | ブート時間 |
 
-### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 型のレコード
+### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL 型のレコード
 *ServiceMapProcess_CL* 型があるレコードには、Dependency エージェントを有するサーバー上での TCP 接続プロセス用のインベントリ データがあります。 これらのレコードは、次の表に示したプロパティを持ちます。
 
 | プロパティ | Description |

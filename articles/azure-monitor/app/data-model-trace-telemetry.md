@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights Telemetry のデータ モデル - トレース テレメトリ | Microsoft Docs
 description: トレース テレメトリ用の Application Insights データ モデル
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 855a93d8a6350c625fe0820fae83644aec3459ed
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899291"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678117"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>トレース テレメトリ:Application Insights データ モデル
 

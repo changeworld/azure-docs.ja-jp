@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 35c8841220c116cc34ba670eaa9ac7b36dc4cd7a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3c77cc1baa07b0ee0e9f0141d81c623259ea57c4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615516"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387524"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 
@@ -36,7 +36,7 @@ Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時
 
 | **グローバルに適用可能** | **米国政府** | **業界に固有** | **地域/国に固有** |
 | --- | --- | --- | --- |
-| CSA STAR 認証 | DoD SRG Level 2 | HIPAA BAA | オーストラリアの IRAP Unclassified |
+| CSA STAR 認証 | DoD SRG Level 2 | HIPAA BAA | オーストラリアの IRAP |
 | CSA STAR 証明 | FedRAMP Moderate | HITRUST | ドイツの C5|
 | ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | シンガポールの MTCS Level 3 |
 | ISO 22301:2012 | | | スペインの ENS High|

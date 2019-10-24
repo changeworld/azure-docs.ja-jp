@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 86bacbe22ce23fc4b0355374d81a96310e59178a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "68949883"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255021"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -273,7 +273,7 @@ context.log(message)
 既定のトレース レベルでストリーミング関数ログに書き込むことができます。 `context.log` には、他のトレース レベルで関数のログを書き込むことができる追加のログ記録メソッドがあります。
 
 
-| Method                 | 説明                                |
+| 方法                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
 | **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
@@ -421,7 +421,7 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 | Functions バージョン | Node.js バージョン | 
 |---|---|
 | 1.x | 6.11.2 (ランタイムによりロック) |
-| 2.x  | _アクティブ LTS_ および_メンテナンス LTS_ Node.js バージョン (8.11.1 および 10.14.1 を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
+| 2.x  | _アクティブ LTS_ および_メンテナンス LTS_ Node.js バージョン (10 以下を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用して Azure でバージョンを `~10` に設定します。|
 
 ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。
 

@@ -3,19 +3,19 @@ title: チュートリアル:Windows ML で ONNX モデルを使用する - Cust
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services からエクスポートされた ONNX モデルを使用する Windows UWP アプリの作成方法について説明します。
 services: cognitive-services
-author: larryfr
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
-ms.author: larryfr
-ms.openlocfilehash: 65956ab9fa182794b4cb9ac1fc1800198f2dcdaa
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 7877f24ee77fa694745d0af0a99778fc53cd71e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561113"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754141"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>チュートリアル:Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
 
@@ -31,9 +31,9 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 ## <a name="prerequisites"></a>前提条件
 
-* Windows 10 ビルド 17738 以降
+* Windows 10 バージョン 1809 以降
 
-* ビルド 17738 以降用の Windows SDK
+* ビルド 17763 以降の Windows SDK
 
 * Visual Studio 2017 バージョン 15.7 以降がインストールされ、 __ユニバーサル Windows プラットフォーム開発__ ワークロードが有効にされている。
 
@@ -45,7 +45,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 ## <a name="get-the-example-code"></a>サンプル コードを入手する
 
-サンプル アプリケーションは [https://github.com/Azure-Samples/cognitive-services-onnx12-customvision-sample/](https://github.com/Azure-Samples/cognitive-services-onnx12-customvision-sample/) で入手できます。
+サンプル アプリケーションは [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample) で入手できます。
 
 ## <a name="run-the-example"></a>例を実行する
 
@@ -59,7 +59,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 1. Custom Vision Service を使用して分類器を[作成およびトレーニング](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)します。 モデルをエクスポートするには、 **[General (compact)]\(全般 (コンパクト)\)** など、__コンパクト__ なドメインを選択します。 既存の分類器をエクスポートするには、右上にある歯車アイコンを選択して、ドメインをコンパクトに変換します。 __[設定]__ でコンパクト モデルを選択し、保存してからプロジェクトをトレーニングします。  
 
-1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングの反復を選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]* 、 *[ONNX]* 、 *[ONNX1.2]* 、 *[エクスポート]* の順に選択します。 ファイルの準備ができたら、 *[ダウンロード]* ボタンを選択します。
+1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングの反復を選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]* 、 *[ONNX]* 、 *[エクスポート]* の順に選択します。 ファイルの準備ができたら、 *[ダウンロード]* ボタンを選択します。
 
 1. ONNX ファイルをプロジェクトの __[Assets]__ フォルダーにドロップします。 
 

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 388b389cca7c3e820ea3ccfd37a2a93ccd476b31
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c3c13b7e28ef7c17fd45682d828f318de5326542
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254634"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293872"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -30,6 +30,10 @@ Azure Functions では、C# および C# スクリプト プログラミング�
 
 * [Azure Functions の開発者向けガイド](functions-reference.md)
 * [Azure Functions 向けの Visual Studio 2019 Tools](functions-develop-vs.md)
+
+## <a name="supported-versions"></a>サポートされているバージョン
+
+Azure Functions 2.x ランタイムでは、.NET Core 2.2 が使用されます。 関数のコードでは、Visual Studio プロジェクトの設定を更新することにより、.NET Core 2.2 API を使用できます。 .NET Core 2.2 をインストールしていない顧客に悪影響を及ぼさないように、関数テンプレートの既定は .NET Core 2.2 ではありません。
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
@@ -54,6 +58,7 @@ Visual Studio では、**Azure Functions** プロジェクト テンプレート
 
 > [!IMPORTANT]
 > ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にする方法については、[関数を無効にする方法](disable-function.md#functions-2x---c-class-libraries)に関するページをご覧ください。
+
 
 ## <a name="methods-recognized-as-functions"></a>関数として認識されるメソッド
 

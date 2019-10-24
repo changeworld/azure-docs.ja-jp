@@ -4,18 +4,18 @@ description: Azure Resource Manager と Azure CLI を使用してリソースを
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: bef9d0490ce9109a960b69febf2970a289c25e40
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c5a07d8b52e83215b2fdc220d76557ca45e1eae9
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973406"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286018"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
 
-この記事では、Azure CLI と Resource Manager テンプレートを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理に関する概念に精通していない場合は、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。  
+この記事では、Azure CLI と Resource Manager テンプレートを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理に関する概念に精通していない場合は、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
@@ -49,7 +49,7 @@ az deployment create --location <location> --template-file <path-to-template>
 2. デプロイ済みのリソースのコンテナーとして機能するリソース グループを作成します。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 末尾をピリオドにすることはできません。
 3. 作成するリソースを定義するテンプレートをリソース グループにデプロイする
 
-テンプレートには、デプロイをカスタマイズできるパラメーターを含めることができます。 たとえば、特定の環境 (開発、テスト、運用など) 向けにカスタマイズした値を指定できます。 サンプル テンプレートでは、ストレージ アカウント SKU のパラメーターを定義します。 
+テンプレートには、デプロイをカスタマイズできるパラメーターを含めることができます。 たとえば、特定の環境 (開発、テスト、運用など) 向けにカスタマイズした値を指定できます。 サンプル テンプレートでは、ストレージ アカウント SKU のパラメーターを定義します。
 
 次の例では、リソース グループを作成し、ローカル コンピューターからテンプレートをデプロイします。
 
@@ -149,9 +149,31 @@ az group deployment create \
   --parameters @storage.parameters.json
 ```
 
+## <a name="handle-extended-json-format"></a>拡張 JSON 形式を処理する
+
+複数行の文字列またはコメントを含むテンプレートをデプロイするには、`--handle-extended-json-format` スイッチを使用する必要があります。  例:
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[
+    parameters('location')
+    ]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  /*
+    storage account and network interface
+    must be deployed first
+  */
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
 ## <a name="test-a-template-deployment"></a>テンプレートのデプロイをテストする
 
-リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[az group deployment validate](/cli/azure/group/deployment#az-group-deployment-validate) を使用します。 
+リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[az group deployment validate](/cli/azure/group/deployment#az-group-deployment-validate) を使用します。
 
 ```azurecli-interactive
 az group deployment validate \
@@ -176,8 +198,8 @@ az group deployment validate \
   "error": {
     "code": "InvalidTemplate",
     "details": null,
-    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter 
-      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed 
+    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter
+      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed
       value(s): 'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.",
     "target": null
   },

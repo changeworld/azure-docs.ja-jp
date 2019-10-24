@@ -1,20 +1,20 @@
 ---
-title: Azure Data Factory Mapping Data Flow の代理キー変換
-description: Azure Data Factory の Mapping Data Flow 代理キー変換を使用して順次キー値を生成する方法
+title: Azure Data Factory マッピング データ フローの代理キー変換
+description: Azure Data Factory のマッピング データ フロー代理キー変換を使用して順次キー値を生成する方法
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 45e2d35a3b0a3f3c89913bbe70d7c43c17cbcee0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 144d6298a13d35d94a68b35c443a3a47cefcfc2a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029180"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387161"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>Mapping Data Flow の代理キー変換
+# <a name="mapping-data-flow-surrogate-key-transformation"></a>マッピング データ フローの代理キー変換
 
 
 
@@ -38,7 +38,7 @@ ms.locfileid: "72029180"
 
 "クエリ" オプションを使用し、ソース変換を利用してお使いのソースからの MAX() を選択します。
 
-![代理キーのクエリ](media/data-flow/sk002.png "代理キー変換のクエリ")
+![代理キー クエリ](media/data-flow/sk002.png "代理キー変換のクエリ")
 
 ### <a name="file-sources"></a>ファイル ソース
 
@@ -48,7 +48,7 @@ ms.locfileid: "72029180"
 
 どちらの場合でも、以前の最大値を含むソースと受信する新しいデータを結合する必要があります。
 
-![代理キーの結合](media/data-flow/sk004.png "代理キーの結合")
+![代理キー結合](media/data-flow/sk004.png "代理キー結合")
 
 ## <a name="next-steps"></a>次の手順
 

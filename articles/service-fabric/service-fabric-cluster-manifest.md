@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ae7fbef864634e47866de13384871a98b8ce4675
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca04539049766e1f053d74b3a8536f154c3fd830
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209718"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383586"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
 この記事では、*ClusterConfig.json* ファイルで設定できる、スタンドアロン Azure Service Fabric クラスターの構成設定について説明します。 このファイルを使って、クラスターのノード、セキュリティ構成、およびフォールト ドメインとアップグレード ドメインに関するネットワーク トポロジに関する情報を指定します。  構成設定を変更または追加した後、[スタンドアロン クラスターを作成する](service-fabric-cluster-creation-for-windows-server.md)か、[スタンドアロン クラスターの構成をアップグレードする](service-fabric-cluster-config-upgrade-windows-server.md)かのいずれかを行うことができます。
@@ -202,6 +202,7 @@ KtlLogger セクションでは、Reliable Services のグローバル構成設�
     ]
 }
 ```
+使用可能なすべてのアドオン機能は、[Service Fabric REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures)に関するページで確認できます。
 
 ### <a name="container-support"></a>コンテナー サポート
 スタンドアロン クラスターの Windows Server コンテナーと Hyper-V コンテナーの両方でコンテナー サポートを有効にするには、DnsService アドオン機能を有効にする必要があります。

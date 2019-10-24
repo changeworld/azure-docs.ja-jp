@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "69018917"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263876"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
@@ -115,7 +115,7 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-アプリケーションが読み込まれなかった場合、イメージ レジストリに関する承認の問題が原因になっている可能性があります。 コンテナーのステータスを表示するには、`kubectl get pods` コマンドを使用します。 コンテナー イメージをプルできない場合は、[Kubernetes シークレットによる Container Registry へのアクセスの許可](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)に関するページを参照してください。
+アプリケーションが読み込まれなかった場合、イメージ レジストリに関する承認の問題が原因になっている可能性があります。 コンテナーのステータスを表示するには、`kubectl get pods` コマンドを使用します。 コンテナー イメージがプルできない場合は、「[Azure Kubernetes Service から Azure Container Registry の認証を受ける](cluster-container-registry-integration.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

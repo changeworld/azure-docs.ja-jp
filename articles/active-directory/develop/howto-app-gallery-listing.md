@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001737"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374067"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -71,7 +71,7 @@ Microsoft のチームが詳細をレビューし、それに応じてアクセ�
 
 Azure AD アプリ ギャラリーにアプリケーションを公開するには、まず、Azure AD でサポートされている以下のフェデレーション プロトコルのいずれかを実装する必要があります。 また、Azure AD アプリケーション ギャラリーの使用条件に同意する必要もあります。 [この Web ページ](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)で Azure AD アプリケーション ギャラリーの使用条件を読み取ります。
 
-- **OpenID Connect**:Open ID Connect プロトコルを使用してアプリケーションを Azure AD と統合するには、[開発者向けの手順](authentication-scenarios.md)に従ってください。
+- **OpenID Connect**:Open ID Connect プロトコルを使用してアプリケーションを Azure AD と統合するには、[開発者向けの手順](v1-authentication-scenarios.md)に従ってください。
 
     ![ギャラリーでの OpenID Connect アプリケーションの一覧表示](./media/howto-app-gallery-listing/openid.png)
 
@@ -109,7 +109,7 @@ Azure AD アプリ ギャラリーの既存のアプリケーションを更新�
     ![ギャラリーでの SAML アプリケーションの一覧表示](./media/howto-app-gallery-listing/updateorremove.png)
 
     * 既存のアプリケーションを更新するには、要件に従って適切なオプションを選択します。
-    * Azure AD アプリ ギャラリーから既存のアプリケーションを削除する場合は、[Remove my application listing from the gallery]\(自分のアプリケーション一覧をギャラリーから削除する\) を選択します。
+    * Azure AD アプリ ギャラリーから既存のアプリケーションを削除する場合は、 **[Remove my application listing from the gallery]\(自分のアプリケーション一覧をギャラリーから削除する\)** を選択します。
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
 ## <a name="list-requests-by-customers"></a>顧客による一覧表示の要求

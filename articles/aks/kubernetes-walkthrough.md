@@ -7,21 +7,27 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: mlearned
-ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 3a07186856fd05c65f583a94f324df05e348d24f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.custom:
+- H1Hack27Feb2017
+- mvc
+- devcenter
+- seo-javascript-september2019
+- seo-javascript-october2019
+- seo-python-october2019
+ms.openlocfilehash: f98950a73c74537fb0d3762d08810646c9ecb875
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960013"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435598"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
+# <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする
 
 このクイックスタートでは、Azure CLI を使用して Azure Kubernetes Service (AKS) クラスターをデプロイします。 AKS は、クラスターをすばやくデプロイおよび管理することができる、マネージド Kubernetes サービスです。 このクラスターで、Web フロント エンドと Redis インスタンスが含まれている複数コンテナー アプリケーションが実行されます。 その後、アプリケーションを実行するクラスターとポッドの正常性を監視する方法を示します。
 
 Windows Server コンテナー (現在 AKS でプレビュー段階にあります) を使用する場合は、[Windows Server コンテナーをサポートする AKS クラスターの作成][windows-container-cli]に関するページを参照してください。
 
-![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure Kubernetes Service にデプロイされた投票アプリ](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
 このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」を参照してください。
 
@@ -230,7 +236,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 Azure Vote アプリが動作していることを確認するには、Web ブラウザーを開いてサービスの外部 IP アドレスにアクセスします。
 
-![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure Kubernetes Service にデプロイされた投票アプリ](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
 AKS クラスターが作成されたとき、クラスター ノードとポッドの両方の正常性メトリックを取得するために、[コンテナーに対する Azure Monitor](../azure-monitor/insights/container-insights-overview.md) が有効になりました。 これらの正常性メトリックは、Azure portal で利用できます。
 

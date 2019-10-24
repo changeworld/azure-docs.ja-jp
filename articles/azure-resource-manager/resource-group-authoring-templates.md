@@ -4,14 +4,14 @@ description: 宣言型 JSON 構文を使用した Azure Resource Manager テン�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e5ef3dcd7c2eec08237d5eb31fb95a0e450d9ac9
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694971"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286723"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
@@ -66,7 +66,7 @@ ms.locfileid: "71694971"
     "minLength": <minimum-length-for-string-or-array>,
     "maxLength": <maximum-length-for-string-or-array-parameters>,
     "metadata": {
-      "description": "<description-of-the parameter>" 
+      "description": "<description-of-the parameter>"
     }
   }
 }
@@ -107,8 +107,8 @@ ms.locfileid: "71694971"
 ```json
 "variables": {
   "<variable-name>": "<variable-value>",
-  "<variable-name>": { 
-    <variable-complex-type-value> 
+  "<variable-name>": {
+    <variable-complex-type-value>
   },
   "<variable-object-name>": {
     "copy": [
@@ -252,7 +252,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | properties |いいえ |リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値と同じです。 コピー配列を指定して、1 つのプロパティの複数のインスタンスを作成することもできます。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 |
 | sku | いいえ | 一部のリソースでは、デプロイする SKU を定義する値が許可されます。 たとえば、ストレージ アカウントの冗長性の種類を指定することができます。 |
 | kind | いいえ | 一部のリソースでは、デプロイするリソースの種類を定義する値が許可されます。 たとえば、作成する Cosmos DB の種類を指定することができます。 |
-| プラン | いいえ | 一部のリソースでは、デプロイするプランを定義する値が許可されます。 たとえば、仮想マシンのマーケットプレース イメージを指定することができます。 | 
+| プラン | いいえ | 一部のリソースでは、デプロイするプランを定義する値が許可されます。 たとえば、仮想マシンのマーケットプレース イメージを指定することができます。 |
 | resources |いいえ |定義されているリソースに依存する子リソース。 親リソースのスキーマで許可されているリソースの種類のみを指定します。 親リソースへの依存関係は示されません。 この依存関係は明示的に定義する必要があります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。 |
 
 ## <a name="outputs"></a>出力
@@ -355,7 +355,10 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 メタデータ オブジェクトをユーザー定義関数に追加することはできません。
 
-インライン コメントの場合、`//` を使用できますが、この構文はすべてのツールで機能しません。 Azure CLI を使用してインライン コメントを使用したテンプレートをデプロイすることはできません。 また、インライン コメントを使用したテンプレートでの作業に、ポータルのテンプレート エディターは使用できません。 このスタイルのコメントを追加する場合は、ご使用のツールでインライン JSON コメントがサポートされていることを確認してください。
+インライン コメントの場合、`//` または `/* ... */` を使用できますが、この構文はすべてのツールでは機能しません。 ポータルのテンプレート エディターを使用して、インライン コメントのあるテンプレートの作業を行うことはできません。 このスタイルのコメントを追加する場合は、ご使用のツールでインライン JSON コメントがサポートされていることを確認してください。
+
+> [!NOTE]
+> Azure CLI を使用してコメントが含まれるテンプレートをデプロイするには、`--handle-extended-json-format` スイッチを使用する必要があります。
 
 ```json
 {
@@ -363,7 +366,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[parameters('location')]", //defaults to resource group location
   "apiVersion": "2018-10-01",
-  "dependsOn": [ // storage account and network interface must be deployed first
+  "dependsOn": [ /* storage account and network interface must be deployed first */
     "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
   ],
@@ -376,6 +379,30 @@ VS Code では、コメントを使用した JSON に言語モードを設定で
 1. **[JSON with Comments]\(コメントを使用した JSON\)** を選択します。
 
    ![言語モードの選択](./media/resource-group-authoring-templates/select-json-comments.png)
+
+## <a name="multi-line-strings"></a>複数行の文字列
+
+文字列を複数の行に分割することができます。 たとえば、次の JSON の例では、location プロパティとコメントの 1 つです。
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[
+    parameters('location')
+    ]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  /*
+    storage account and network interface
+    must be deployed first
+  */
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
+Azure CLI を使用して複数行の文字列が含まれるテンプレートをデプロイするには、`--handle-extended-json-format` スイッチを使用する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

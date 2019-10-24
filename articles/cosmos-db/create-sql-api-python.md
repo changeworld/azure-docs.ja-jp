@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB:Python と SQL API によるアプリの構築
+title: クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Python アプリを構築する
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Python コード サンプルについて説明します
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,18 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: f085ca6de2c04caa90c34bc1293da1210d2883eb
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.custom:
+- seodec18
+- seo-javascript-september2019
+- seo-python-october2019
+ms.openlocfilehash: 3e328d242bccd9f2ab037131d3fcce585bc6b8da
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020178"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432809"
 ---
-# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
+# <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -25,9 +29,11 @@ ms.locfileid: "70020178"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
+このクイック スタートでは、Azure portal を使用して、Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウント、ドキュメント データベース、コンテナーを作成する方法を説明します。 その後、[SQL API](sql-api-sdk-python.md) 用の Python SDK で構築されたコンソール アプリを構築して実行します。
+
 Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、ワイド カラム、およびグラフ データベースをすばやく作成し、クエリを実行できます。 そのすべての操作に、Azure Cosmos DB が備える分散とスケールは利益をもたらします。
 
-このクイック スタートでは、Azure portal を使用して、Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウント、ドキュメント データベース、コンテナーを作成する方法を説明します。 その後、[SQL API](sql-api-sdk-python.md) 用の Python SDK で構築されたコンソール アプリを構築して実行します。 このクイック スタートでは、[Python SDK](https://pypi.org/project/azure-cosmos) のバージョン 3.0 を使用します。
+このクイック スタートでは、[Python SDK](https://pypi.org/project/azure-cosmos) のバージョン 3.0 を使用します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -86,7 +92,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 
 1. [Azure portal](https://portal.azure.com/) で Azure Cosmos アカウントにアクセスし、左側のナビゲーションにある **[キー]** を選択します。 次の手順では、画面の右側にあるコピー ボタンを使用して、 **[URI]** と **[主キー]** を `CosmosGetStarted.py` ファイルにコピーします。
 
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
+    ![Azure portal でキー設定のアクセス キーと URI を取得する](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
 2. Visual Studio Code で \git-samples\azure-cosmos-db-python-getting-started 内の `CosmosGetStarted.py` ファイルを開きます。
 

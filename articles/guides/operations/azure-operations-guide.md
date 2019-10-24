@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: b225052daa61932f3b8b868789cfb3c204eca88f
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9b23e3b69b4970e765ea1cd5af690cf074bad774
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543428"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693447"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -461,7 +461,6 @@ Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語から�
 ### <a name="hybrid-virtual-networks"></a>ハイブリッド仮想ネットワーク
 
 ExpressRoute またはサイト間 VPN 接続を使用し、オンプレミス ネットワークを Azure 仮想ネットワークに接続できます。 この構成では、Azure Virtual Network は基本的に、オンプレミス ネットワークのクラウド ベースの拡張機能です。
-![VPN を使用するハイブリッド仮想ネットワーク](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
 Azure 仮想ネットワークはオンプレミス ネットワークに接続されるため、クロスプレミス仮想ネットワークは、組織によって使用されるアドレス空間の一意の部分を使用する必要があります。 企業内の異なる場所に特定の IP サブネットが割り当てられるのと同様に、ネットワークを拡張すると、Azure を別の場所として扱うことができます。
 仮想ネットワークのデプロイにはいくつかの選択肢があります。

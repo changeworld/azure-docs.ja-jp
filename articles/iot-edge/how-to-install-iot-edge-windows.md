@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 513cf477e8c2899da17ee8e9bdfdb9ad2bedd159
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c1b507398a2edd839b610a7c52892e23a88481a0
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828094"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516618"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -166,6 +166,12 @@ Get-Service iotedge
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
+
+最も一般的な構成およびネットワーク エラーの自動チェックを実行します。
+
+```powershell
+iotedge check
 ```
 
 実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。 

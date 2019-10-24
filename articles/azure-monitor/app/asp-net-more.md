@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights をさらに活用する | Microsoft Docs
 description: Application Insights の利用開始後に使用できる機能の概要を示します。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 7ec10a2d-c669-448d-8d45-b486ee32c8db
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/03/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 7e62efb0b64b0b882b36126af4a1f9d520d92475
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/03/2017
+ms.openlocfilehash: 8c51745c43ced8ad3031a6a01096261ef72b33fc
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230643"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678350"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Application Insights からのテレメトリの追加
 [Application Insights を ASP.NET コードに追加](../../azure-monitor/app/asp-net.md)した後、さらに多くのテレメトリを取得するためにできることがいくつかあります。 

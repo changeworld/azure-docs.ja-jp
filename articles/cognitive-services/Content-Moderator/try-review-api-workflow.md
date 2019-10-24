@@ -3,19 +3,19 @@ title: REST API コンソールを使用してモデレーション ワークフ
 titleSuffix: Azure Cognitive Services
 description: Azure Content Moderator Review API シリーズを使用し、ご自分のコンテンツ ポリシーに基づいてカスタム ワークフローとしきい値を定義できます。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: cb93cf1b7a5338058c6f2d93b4bb27f60286882e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881202"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754185"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>モデレーション ワークフローを定義して使用する (REST)
 

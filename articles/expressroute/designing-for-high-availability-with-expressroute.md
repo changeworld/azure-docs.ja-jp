@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67466647"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>ExpressRoute を使用した高可用性のための設計

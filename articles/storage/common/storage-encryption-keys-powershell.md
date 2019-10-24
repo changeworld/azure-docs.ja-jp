@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 10/09/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 982996bdbc5e618cf90aa4b028c0585a7898f465
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670959"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249282"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>PowerShell から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "71670959"
 この記事では、PowerShell を使用して、カスタマー マネージド キーを使用するキー コンテナーを構成する方法について説明します。
 
 > [!IMPORTANT]
-> Azure Storage 暗号化でカスタマー マネージド キーを使うには、キー コンテナーで 2 つの必須プロパティ **[論理的削除]** と **[Do Not Purge]\(削除しない\)** が構成されている必要があります。 Azure portal で新しいキー コンテナーを作成すると、これらのプロパティは既定で有効になります。 ただし、既存のキー コンテナーでこれらのプロパティを有効にする必要がある場合は、PowerShell または Azure CLI を使う必要があります。
+> Azure Storage 暗号化でカスタマー マネージド キーを使うには、キー コンテナーに **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** の 2 つのプロパティが構成されている必要があります。 これらのプロパティは、既定では有効になっていません。 これらのプロパティを有効にするには、PowerShell または Azure CLI を使用します。
 > RSA キーで 2048 のキー サイズのみがサポートされています。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>ストレージ アカウントに ID を割り当てる

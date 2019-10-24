@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/26/2019
-ms.openlocfilehash: 86750cea5e7f0d4726f3e0e9a03795ef2a602d8b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42881fcb12f29ec14bbdc0ec4942b2eef17c7312
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443842"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434407"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL の監査ログ
 
@@ -27,7 +27,13 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 調整できるその他のパラメーターは次のとおりです。
 
 - `audit_log_events`: 記録するイベントを制御します。 特定の監査イベントについては、次のを参照してください。
-- `audit_log_exclude_users`:ログ記録から除外する MySQL ユーザー。 最大で 4 人のユーザーを指定できます。 パラメーターの最大長は 256 文字です。
+- `audit_log_include_users`:ログ記録の対象となる MySQL ユーザー。 このパラメーターの既定値は空で、すべてのユーザーがログに記録されます。 優先順位は、`audit_log_exclude_users` より高くなっています。 パラメーターの最大長は 512 文字です。
+> [!Note]
+> `audit_log_include_users` は `audit_log_exclude_users` よりも優先度が高くなります。たとえば、audit_log_include_users = `demouser` かつ audit_log_exclude_users = `demouser` の場合、`audit_log_include_users` の優先度が高いためログが監査されます。
+- `audit_log_exclude_users`:ログ記録から除外する MySQL ユーザー。 パラメーターの最大長は 512 文字です。
+
+> [!Note]
+> `sql_text` の場合、2048 文字を超えたログは切り捨てられます。
 
 | **Event** | **説明** |
 |---|---|
@@ -96,7 +102,7 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 | `LogicalServerName_s` | サーバーの名前 |
 | `event_class_s` | `general_log` |
 | `event_subclass_s` | `LOG`、`ERROR`、`RESULT` (MySQL 5.6 でのみ利用可能) |
-| `event_time` | UNIX タイムスタンプのクエリ開始秒 |
+| `event_time` | UTC タイムスタンプのクエリの開始時刻 |
 | `error_code_d` | エラー コード (クエリが失敗した場合)。 `0` は、エラーなしを意味します |
 | `thread_id_d` | クエリを実行したスレッドの ID |
 | `host_s` | 空白 |

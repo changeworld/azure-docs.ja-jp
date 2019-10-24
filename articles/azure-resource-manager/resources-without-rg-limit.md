@@ -4,14 +4,14 @@ description: リソース グループ内に 800 より多くのインスタン�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973321"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249133"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -32,7 +32,7 @@ ms.locfileid: "71973321"
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices - 制限を増やすには、サポートにお問い合わせください。
+* botServices - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -128,7 +128,7 @@ ms.locfileid: "71973321"
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses - 制限を増やすには、サポートにお問い合わせください。
+* publicIPAddresses - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -139,7 +139,7 @@ ms.locfileid: "71973321"
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections - 制限を増やすには、サポートにお問い合わせください。
+* workspaceCollections - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 

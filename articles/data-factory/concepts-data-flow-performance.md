@@ -1,21 +1,21 @@
 ---
-title: Azure Data Factory の Mapping Data Flow のパフォーマンスとチューニング ガイド | Microsoft Docs
-description: Azure Data Factory での Mapping Data Flow のパフォーマンスに影響する主な要因について説明します。
+title: Azure Data Factory のマッピング データ フローのパフォーマンスとチューニング ガイド | Microsoft Docs
+description: Azure Data Factory でのマッピング データ フローのパフォーマンスに影響する主な要因について説明します。
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 9db1b96cb495fd0de452091da79ab61f7ae59118
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030722"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72387320"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
-Azure Data Factory の Mapping Data Flow には、大規模なデータ変換の設計、デプロイ、および調整するためのコード不要のインターフェイスが用意されています。 Mapping Data Flow に慣れていない場合は、[Mapping Data Flow の概要](concepts-data-flow-overview.md)に関するページを参照してください。
+Azure Data Factory の Mapping Data Flow には、大規模なデータ変換の設計、デプロイ、および調整するためのコード不要のインターフェイスが用意されています。 マッピング データ フローに慣れていない場合は、[マッピング データ フローの概要](concepts-data-flow-overview.md)に関するページを参照してください。
 
 ADF UX から Data Flow の設計およびテストをする場合は、クラスターのウォーム アップを待機することなく、リアルタイムでデータ フローを実行するように、必ずデバッグ モードをオンにします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
@@ -25,7 +25,7 @@ Mapping Data Flow を設計する際に、[構成] パネルの [データ プ�
 
 ![データ フローの監視](media/data-flow/mon002.png "データ フローの監視 2")
 
- この情報を使用して、サイズの異なるデータ ソースに対するデータ フローのパフォーマンスを見積もることができます。 詳しくは、[Mapping Data Flow の監視](concepts-data-flow-monitoring.md)に関するページを参照してください。
+ この情報を使用して、サイズの異なるデータ ソースに対するデータ フローのパフォーマンスを見積もることができます。 詳細については、[マッピング データ フローの監視](concepts-data-flow-monitoring.md)に関するページを参照してください。
 
 ![データ フローの監視](media/data-flow/mon003.png "データ フローの監視 3")
 
@@ -56,7 +56,7 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 1. **[列]** を選択した場合は、パーティション列を選択します。
 1. **[クエリ]** を選択した場合は、データベース テーブルのパーティション構成に一致するクエリを入力します。 このクエリにより、ソース データベース エンジンがパーティション削除を利用できるようになります。 ソース データベース テーブルをパーティション分割する必要はありません。 ソースがまだパーティション分割されていない場合でも、ADF では、ソース変換でユーザーが選択したキーに基づいて、Spark 変換環境でデータのパーティション分割が使用されます。
 
-![ソース部分](media/data-flow/sourcepart3.png "ソース部分")
+![ソース パーツ](media/data-flow/sourcepart3.png "ソース パーツ")
 
 ### <a name="source-batch-size-input-and-isolation-level"></a>ソース バッチ サイズ、入力、および分離レベル
 
@@ -66,7 +66,7 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 * クエリを設定すると、Data Flow に到達する前にソースで行をフィルター処理してから、処理することができます。 これにより、初期データの取得がより高速になります。 クエリを使用する場合は、READ UNCOMMITTED など、省略可能なクエリ ヒントを Azure SQL DB に追加することができます。
 * [コミットされていないものを読み取り] は、ソース変換に関するより高速なクエリ結果を提供します。
 
-![ソース](media/data-flow/source4.png "ソース")
+![ソース](media/data-flow/source4.png "source")
 
 ### <a name="sink-batch-size"></a>シンクのバッチ サイズ
 
@@ -105,7 +105,7 @@ DW への行単位の挿入を回避するには、シンク設定で **[Enable 
 
 ### <a name="file-naming-options"></a>ファイルの名前付けのオプション
 
-Mapping Data Flow で変換されたデータを書き込む最も一般的な方法は、BLOB または ADLS ファイル ストアに書き込むことです。 シンクでは、名前付きファイルではなく、コンテナーまたはフォルダーをポイントするデータセットを選択する必要があります。 Mapping Data Flow では、実行に Spark が使用されるため、出力はご使用のパーティション構成に基づいて複数のファイルに分割されます。
+マッピング データ フローで変換されたデータを書き込む最も一般的な方法は、BLOB または ADLS ファイル ストアに書き込むことです。 シンクでは、名前付きファイルではなく、コンテナーまたはフォルダーをポイントするデータセットを選択する必要があります。 マッピング データ フローでは、実行に Spark が使用されるため、出力はご使用のパーティション構成に基づいて複数のファイルに分割されます。
 
 一般的なパーティション構成では、 _[単一ファイルへの出力]_ を選択します。これによりすべての出力 PART ファイルがシンク内の 1 つのファイルにマージされます。 この操作では、出力を単一のクラスター ノード上の単一のパーティションに減らす必要があります。 多数の大きなソース ファイルを単一の出力ファイルに結合する場合、クラスター ノードのリソースが不足することがあります。
 
@@ -113,7 +113,7 @@ Mapping Data Flow で変換されたデータを書き込む最も一般的な�
 
 ### <a name="looping-through-file-lists"></a>ファイル リストのループ処理
 
-ソース変換が For Each アクティビティを通じてループするのではなく、複数のファイルを反復処理する場合、Mapping Data Flow の方が実行効率に優れています。 ソース変換では、ワイルドカードまたはファイル リストを使用することをお勧めします。 ループ処理を Spark クラスター内で行うことにより、Data Flow プロセスの実行速度を上げることができます。 詳細については、[ソース変換でのワイルドカード](data-flow-source.md#file-based-source-options)に関するセクションを参照してください。
+ソース変換が For Each アクティビティを通じてループするのではなく、複数のファイルを反復処理する場合、マッピング データ フローの方が実行効率に優れています。 ソース変換では、ワイルドカードまたはファイル リストを使用することをお勧めします。 ループ処理を Spark クラスター内で行うことにより、Data Flow プロセスの実行速度を上げることができます。 詳細については、[ソース変換でのワイルドカード](data-flow-source.md#file-based-source-options)に関するセクションを参照してください。
 
 たとえば、2019 年 7 月のデータ ファイルの一覧を Blob Storage のフォルダーで処理する場合は、ソース変換で次のワイルドカードを使用できます。
 

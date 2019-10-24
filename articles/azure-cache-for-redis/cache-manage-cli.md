@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4756635ae0ab0d282975a6376e60da5f148917
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119080"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755424"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Azure Cache for Redis を作成および管理する方法
 > [!div class="op_single_selector"]
-> * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure クラシック CLI](cache-manage-cli.md)
 >
 
@@ -46,7 +46,7 @@ Azure Cache for Redis インスタンスを作成および更新する場合に�
 
 | プロパティ | Switch | 説明 |
 | --- | --- | --- |
-| name |-n, --name |Azure Cache for Redis の名前です。 |
+| 名前 |-n, --name |Azure Cache for Redis の名前です。 |
 | resource group |-g, --resource-group |リソース グループの名前です。 |
 | location |-l, --location |キャッシュを作成する場所です。 |
 | size |-z, --size |Azure Cache for Redis のサイズです。 有効な値: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
@@ -60,7 +60,7 @@ Azure Cache for Redis インスタンスを作成および更新する場合に�
 | StaticIP |-p, --static-ip \<static-ip\> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
 | Subnet |t, --subnet \<subnet\> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
 | VirtualNetwork |-v, --virtual-network \<virtual-network\> |VNET でキャッシュをホストする場合に、Azure Cache for Redis をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| サブスクリプション |-s、--subscription |サブスクリプションの識別子です。 |
+| Subscription |-s、--subscription |サブスクリプションの識別子です。 |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>すべての Azure Cache for Redis コマンドを表示する
 すべての Azure Cache for Redis コマンドとそのパラメーターを表示するには、`azure rediscache -h` コマンドを使用します。

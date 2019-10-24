@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 2f46f90edcdd1c4cdf7583c7e628aee205b312e1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 10/11/2019
+ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098652"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311664"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -43,7 +43,7 @@ Ambari Web UI はお使いの HDInsight クラスター (`https://CLUSTERNAME.az
 > [!WARNING]  
 > HDInsight では、Ambari Web UI の機能の一部がサポートされません。 詳しくは、このドキュメントの「[サポートされていない操作](#unsupported-operations)」セクションをご覧ください。
 
-Ambari Web UI に接続すると、そのページに対する認証が求められます。 クラスターの作成時に利用したクラスター管理者ユーザー (既定では Admin) とパスワードを使用します。
+Ambari Web UI に接続するときに、そのページに対する認証が求められます。 クラスターの作成時に利用したクラスター管理者ユーザー (既定では Admin) とパスワードを使用します。
 
 ページが開くと、上部にバーがあります。 このバーには、次の情報とコントロールが含まれています。
 
@@ -82,7 +82,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ![Apache Ambari の警告グループの管理](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-**[Actions]** メニューで、 __[Manage Alert Notifications ]__ を選択して、アラート方法を管理したり、アラート通知を作成したりすることもできます。 現在の通知が表示されます。 ここから通知を作成することもできます。 特定のアラート/重要度の組み合わせが発生したとき、通知は **EMAIL** または **SNMP** で送信されます。 たとえば、 **[YARN Default]** グループのいずれかのアラートが **[Critical]** に設定されたときに電子メール メッセージを送信できます。
+**[Actions]\(アクション\)** メニューの __[Manage Notifications]\(通知の管理\)__ を選択して、アラート方法を管理したり、アラート通知を作成したりすることもできます。 現在の通知が表示されます。 ここから通知を作成することもできます。 特定のアラート/重要度の組み合わせが発生したとき、通知は **EMAIL** または **SNMP** で送信されます。 たとえば、 **[YARN Default]** グループのいずれかのアラートが **[Critical]** に設定されたときに電子メール メッセージを送信できます。
 
 ![Apache Ambari のアラート通知の作成](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
