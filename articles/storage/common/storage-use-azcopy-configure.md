@@ -4,16 +4,16 @@ description: AzCopy の構成、最適化、トラブルシューティングを
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273922"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595123"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 

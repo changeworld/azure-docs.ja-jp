@@ -1,20 +1,18 @@
 ---
 title: Azure App Services のパフォーマンスを監視する | Microsoft Docs
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/04/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ec741c0051ccd8020b7d7ab689e15add3ad716bd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 10/04/2019
+ms.openlocfilehash: 1937cce03412db55dafc2025c6a59b037deee3d1
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286177"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677656"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 

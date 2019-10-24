@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: c78f2e37fa29fa1cdcb9acc6a4600688750b6d74
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 74a618606fa8f2bdc678e8afc90640b5be8315a7
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387588"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752116"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > 改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに**反映する**必要があります。 それがクエリにないと、応答には **$skipToken** が含まれません。
 
-例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resources/resources#next-page-query)」をご覧ください。
+例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query)」をご覧ください。
 
 ## <a name="formatting-results"></a>結果の書式設定
 
