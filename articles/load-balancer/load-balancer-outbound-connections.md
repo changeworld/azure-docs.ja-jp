@@ -1,5 +1,5 @@
 ---
-title: Azure の Outbound connections
+title: Azure の アウトバウンド接続
 titlesuffix: Azure Load Balancer
 description: この記事では、Azure によって、パブリック インターネット サービスと VM がどのように通信するかを説明します。
 services: load-balancer
