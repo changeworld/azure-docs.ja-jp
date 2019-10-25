@@ -285,6 +285,8 @@
     - name: Machine Learning CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: 機械学習パイプライン YAML のリファレンス
+      href: reference-pipeline-yaml.md
     - name: ビジュアル インターフェイス モジュール
       displayName: 'module, reference, algorithm, studio'
       items:

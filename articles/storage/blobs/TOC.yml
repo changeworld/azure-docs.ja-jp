@@ -627,7 +627,7 @@
       items:
         - name: ストレージ アカウントの作成と管理
           items:
-            - name: 汎用ストレージ アカウントの作成
+            - name: Data Lake 用のストレージ アカウントの作成
               href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ストレージ アカウントの管理
               href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
