@@ -119,7 +119,7 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **キーボード**: 切り替えキー機能を有効にする (既定ではオフ) |sync |X |簡単操作 |
 | **Internet Explorer**: ドメイン言語: 中国語 (CHS) QWERTY - 自己学習を有効にする |sync |X |言語 |
 | **言語**: CHS QWERTY - Dynamic candidate ranking を有効にする |sync |X |言語 |
-| **言語**: CHS QWERTY - 文字セット簡体字中国語 |sync |X |言語 |
+| **言語**: CHS QWERTY - 文字セット簡体中国語 |sync |X |言語 |
 | **言語**: CHS QWERTY - 文字セット繁体字中国語 |sync |X |言語 |
 | **言語**: CHS QWERTY - Fuzzy Pinyin |sync |backup |言語 |
 | **言語**: CHS QWERTY - Fuzzy Pairs |sync |backup |言語 |

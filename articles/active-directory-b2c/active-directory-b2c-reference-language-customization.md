@@ -205,7 +205,7 @@ Azure AD B2C では、以下の言語がサポートされています。 ユー
 |-----------------------| :-----------: | :----------------: | :----------------: |
 | アラビア語                | ar            | :x:                | :heavy_check_mark: |
 | ブルガリア語             | bg            | :x:                | :heavy_check_mark: |
-| バングラ語                | bn            | :heavy_check_mark: | :x:                |
+| ベンガル語                | bn            | :heavy_check_mark: | :x:                |
 | カタルニア語               | ca            | :x:                | :heavy_check_mark: |
 | チェコ語                 | cs            | :heavy_check_mark: | :heavy_check_mark: |
 | デンマーク語                | da            | :heavy_check_mark: | :heavy_check_mark: |

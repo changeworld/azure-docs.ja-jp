@@ -231,7 +231,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
 
 ### <a name="translate-a-single-input"></a>単一の入力を翻訳する
 
-この例では、1 つの文を英語から簡体字中国語に翻訳する方法を示します。
+この例では、1 つの文を英語から簡体中国語に翻訳する方法を示します。
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
@@ -253,7 +253,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-a-single-input-with-language-auto-detection"></a>言語自動検出を使用して単一の入力を翻訳する
 
-この例では、1 つの文を英語から簡体字中国語に翻訳する方法を示します。 要求では入力言語が指定されていません。 代わりに、ソース言語の自動検出が使用されます。
+この例では、1 つの文を英語から簡体中国語に翻訳する方法を示します。 要求では入力言語が指定されていません。 代わりに、ソース言語の自動検出が使用されます。
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
