@@ -120,7 +120,7 @@
         - name: 'C# での REST API のサンプル'
           href: samples-rest.md
         - name: その他の Azure のサンプル
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator'
     - name: Azure ウェビナー シリーズ
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: 料金と制限
