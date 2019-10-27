@@ -110,13 +110,7 @@
 - name: ハウツー ガイド
   items:
     - name: IoT Edge デバイスを登録する
-      items:
-        - name: Azure ポータル
-          href: how-to-register-device-portal.md
-        - name: Azure CLI
-          href: how-to-register-device-cli.md
-        - name: Visual Studio Code
-          href: how-to-register-device-vscode.md
+      href: how-to-register-device.md
     - name: IoT Edge のインストールと管理
       items:
         - name: Linux
