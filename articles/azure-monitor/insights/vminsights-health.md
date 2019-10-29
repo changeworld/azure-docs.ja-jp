@@ -1,24 +1,18 @@
 ---
 title: Azure 仮想マシンの正常性を把握する | Microsoft Docs
 description: この記事では、Azure Monitor for VMs を使用して、仮想マシンと基になるオペレーティング システムの正常性を把握する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/12/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 10/15/2019
+ms.openlocfilehash: c9dfd3bfcacc1f50bb9be04c927bf3cbb4895f6d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933113"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555264"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する
 
@@ -81,7 +75,7 @@ Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有�
 >ルックバック期間は、ルックバック時間枠内でメトリック値 (過去 5 分間など) が確認される頻度を表します。  
 
 >[!NOTE]
->頻度は、1 分ごとなど、条件が満たされたかどうかをメトリック アラートが確認する頻度を表します。  これは、正常性基準が実行されるレートです。ルックバックは、正常性基準が評価される期間です。 たとえば、正常性基準によって <bpt id="p1">**</bpt>CPU 使用率<ept id="p1">**</ept> が 95% を超えるかどうかが 5 分間の頻度で評価される場合に、CPU 使用率が 95% を超える時間が 15 分間 (連続する 3 回の評価サイクル) 続くと、状態の重大度が "重大" に更新されます (まだ更新されていない場合)。
+>頻度は、1 分ごとなど、条件が満たされたかどうかをメトリック アラートが確認する頻度を表します。  これは、正常性基準が実行されるレートです。ルックバックは、正常性基準が評価される期間です。 たとえば、正常性基準によって **CPU 使用率** が 95% を超えるかどうかが 5 分間の頻度で評価される場合に、CPU 使用率が 95% を超える時間が 15 分間 (連続する 3 回の評価サイクル) 続くと、状態の重大度が "重大" に更新されます (まだ更新されていない場合)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -117,7 +111,7 @@ VM に対して定義されている正常性状態の説明をまとめたも�
 - エージェントが再構成され、Azure Monitor for VMs を有効にしたときに指定されたワークスペースに報告しなくなった。 ワークスペースに報告するようにエージェントを構成するには、「[ワークスペースの追加または削除](../platform/agent-manage.md#adding-or-removing-a-workspace)」を参照してください。
 - VM が削除された。
 - Azure Monitor for VMs に関連付けられたワークスペースが削除された。 Premier サポートの特典がある場合は、そのワークスペースを復旧できます。 [Premier](https://premier.microsoft.com/) に移動し、サポート要求を開きます。
-- ソリューションの依存関係が削除された。 Log Analytics ワークスペースで ServiceMap および InfrastructureInsights ソリューションを再び有効にするには、[Azure Resource Manager テンプレート](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions)を使用して、これらのソリューションを再インストールします。 または、[作業の開始] タブにある [ワークスペースの構成] オプションを使用します。
+- ソリューションの依存関係が削除された。 Log Analytics ワークスペースで ServiceMap および InfrastructureInsights ソリューションを再び有効にするには、[Azure Resource Manager テンプレート](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution)を使用して、ServiceMap ソリューションを再インストールします。 InfastructureInsights ソリューションを再インストールするには、vminsights@microsoft.com 宛にメールを送ります。 
 - VM がシャットダウンされた。
 - Azure VM サービスが使用できないか、またはメンテナンスが実行されている。
 - ワークスペースの [1 日のデータまたは保持期間の制限](../platform/manage-cost-storage.md)に達した。
@@ -441,4 +435,5 @@ Azure Monitor for VMs の正常性では、異常な正常性基準からアラ�
 ## <a name="next-steps"></a>次の手順
 
 - 制限および全体的な VM のパフォーマンスを識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。
+
 - 検出されたアプリケーションの依存関係の詳細については、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関するページを参照してください。

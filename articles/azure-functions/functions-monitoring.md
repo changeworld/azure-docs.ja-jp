@@ -1,21 +1,20 @@
 ---
 title: Azure Functions を監視する
 description: Azure Application Insights を Azure Functions とともに使用して、関数の実行を監視する方法を説明します。
-services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: dc333ef542da1330672ad1dc8ad731969eef6742
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098682"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374566"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -28,6 +27,8 @@ Application Insights を使用することをお勧めします。これによ�
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights の価格と制限
 
 Function App との Application Insights 統合は無料でお試しいただくことができます。 1 日に無料で処理できるデータ量には上限があります。 この上限には、テスト中に達する場合もあります。 1 日あたりの上限に近づいた場合は、ポータルと電子メール通知でお知らせします。 これらのアラートに気が付かず、上限に達してしまった場合は、新しいログが Application Insights クエリに表示されません。 不要なトラブルシューティングに時間を費やさずにすむように、上限には気を付けてください。 詳細については、「[Application Insights での価格とデータ ボリュームの管理](../azure-monitor/app/pricing.md)」を参照してください。
+
+関数アプリで使用できる Application Insights 機能の完全な一覧については、「[Azure Functions でサポートされる Application Insights の機能」 ](../azure-monitor/app/azure-functions-supported-features.md)を参照してください。
 
 ## <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
 
@@ -606,7 +607,7 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ## <a name="streaming-logs"></a>ストリーミング ログ
 
-アプリケーションの開発中、Azure 内での実行時にログに書き込まれている内容がほぼリアルタイムで必要になることがよくあります。
+アプリケーションの開発中、Azure 内での実行時にログに書き込まれている内容をほぼリアルタイムで確認する必要が生じることがよくあります。
 
 関数実行によって生成されているログ ファイルのストリームを表示する方法は 2 つあります。
 

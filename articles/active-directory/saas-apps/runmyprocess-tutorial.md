@@ -17,10 +17,10 @@ ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46c31a209e8521b24e7f604dbe630f689fca484e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68880408"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>チュートリアル:RunMyProcess と Azure Active Directory の統合
@@ -159,11 +159,11 @@ Azure AD ユーザーが RunMyProcess にサインインできるようにする
 
 1. 左側のナビゲーション パネルで **[Account (アカウント)]** 、 **[Users (ユーザー)]** の順にクリックし、 **[New User (新しいユーザー)]** をクリックします。
 
-    ![New User](./media/runmyprocess-tutorial/tutorial_runmyprocess_003.png "New User")
+    ![[New User]\(新しいユーザー\)](./media/runmyprocess-tutorial/tutorial_runmyprocess_003.png "[新しいユーザー]")
 
 1. **[ユーザーの設定]** セクションで、次の手順に従います。
 
-    ![プロファイル](./media/runmyprocess-tutorial/tutorial_runmyprocess_004.png "Profile")
+    ![プロファイル](./media/runmyprocess-tutorial/tutorial_runmyprocess_004.png "プロファイル")
   
     a. プロビジョニングする有効な Azure AD アカウントの**名前**と**メール**を対応するボックスに入力します。
 

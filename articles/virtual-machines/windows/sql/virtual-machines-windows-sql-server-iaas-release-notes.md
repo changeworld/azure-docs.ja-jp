@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f680eae7f8c4cc2b57e3238a14b793f9b4298a79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828587"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300087"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 
@@ -29,6 +29,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | 変更点 | 詳細 |
 | --- | --- |
 | **パフォーマンスが最適化されたストレージ構成** | 新しい SQL Server VM を作成するときに、[ストレージの構成を完全にカスタマイズする](virtual-machines-windows-sql-server-storage-configuration.md#new-vms)ことができるようになりました。 |
+| **FCI 用の Premium ファイル共有** | [記憶域スペース ダイレクト](virtual-machines-windows-portal-sql-create-failover-cluster.md)の元の方法ではなく、[Premium ファイル共有](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md)を使用してフェールオーバー クラスター インスタンスを作成できるようになりました。 
 | &nbsp; | &nbsp; |
 
 ## <a name="august-2019"></a>2019 年 8 月

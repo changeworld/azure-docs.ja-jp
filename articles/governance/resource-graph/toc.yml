@@ -17,6 +17,11 @@
     - name: 最初のクエリを実行する - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+- name: チュートリアル
+  items:
+    - name: Azure portal でのクエリの作成と共有
+      displayName: 'query, portal'
+      href: ./tutorials/create-share-query.md
 - name: サンプル
   items:
     - name: 初歩的なクエリ

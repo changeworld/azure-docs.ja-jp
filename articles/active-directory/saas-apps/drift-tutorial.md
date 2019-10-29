@@ -1,11 +1,11 @@
 ---
-title: チュートリアル:Azure Active Directory と Drift の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Drift の統合 | Microsoft Docs
 description: Azure Active Directory と Drift の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: celested
+ms.reviewer: barbkess
 ms.assetid: 39dcbb95-c192-448c-86a1-cedede1c0972
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/27/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4728ad4fcd44c754a62ec19037562e63d92ec304
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0cd749ef66ee62f6d89d949cef7ce800bc46d59a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656608"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554356"
 ---
-# <a name="tutorial-integrate-drift-with-azure-active-directory"></a>チュートリアル:Drift と Azure Active Directory の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-drift"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Drift の統合
 
 このチュートリアルでは、Drift と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Drift を統合すると、次のことができます。
 
@@ -42,7 +42,13 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Drift では、**SP Initiated SSO と IDP Initiated SSO** のほか、**Just In Time** ユーザー プロビジョニングがサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+
+* Drift では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Drift では、**Just In Time** ユーザー プロビジョニングがサポートされます
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-drift-from-the-gallery"></a>ギャラリーからの Drift の追加
 
@@ -55,30 +61,30 @@ Azure AD への Drift の統合を構成するには、ギャラリーから管�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Drift**」と入力します。
 1. 結果のパネルから **[Drift]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on-for-drift"></a>Drift の Azure AD シングル サインオンの構成とテスト
 
-**B. Simon** というテスト ユーザーを使用して、Drift に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Drift の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Drift に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Drift の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Drift に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[Drift の構成](#configure-drift)** - アプリケーション側で SSO 設定を構成します。
-3. **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** - B. Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B. Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Drift テスト ユーザーの作成](#create-drift-test-user)** - Drift で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Drift の SSO の構成](#configure-drift-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Drift テスト ユーザーの作成](#create-drift-test-user)** - Drift で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **Drift** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]** ボタンをクリックして構成を保存し、次の手順を実行する必要があります。
+1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
 
     a. **[追加の URL を設定します]** をクリックします。
  
@@ -88,43 +94,55 @@ Drift に対する Azure AD SSO を構成してテストするには、次の構
 
     d. **[サインオン URL]** テキスト ボックスに URL として「`https://start.drift.com`」と入力します。
 
-6. Drift アプリケーションでは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+6. Drift アプリケーションでは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/edit-attribute.png)
 
-7. 上記に加えて、Drift アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 [ユーザー属性] ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。 
+7. その他に、Drift アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。 
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |    
-    | Name | user.displayname |
+    | 名前 | user.displayname |
 
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
-
-    c. **[名前空間]** は空白のままにします。
-
-    d. [ソース] として **[属性]** を選択します。
-
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
-
-    f. **[OK]** をクリックします。
-
-    g. **[Save]** をクリックします。
-
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
-
-   ![証明書のダウンロードのリンク](common/metadataxml.png)
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
 1. **[Set up Drift]\(Drift の設定\)** セクションで、要件に基づいて適切な URL をコピーします。
 
-   ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="configure-drift"></a>Drift の構成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に Drift へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Drift]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-drift-sso"></a>Drift の SSO の構成
 
 1. Drift 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
@@ -146,36 +164,6 @@ Drift に対する Azure AD SSO を構成してテストするには、次の構
 
     c. **[Enable SAML]** をクリックします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションでは、Azure portal 内で B. Simon というテスト ユーザーを作成します。
-
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B. Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B. Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、B. Simon に Drift へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[Drift]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B. Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
-
 ### <a name="create-drift-test-user"></a>Drift テスト ユーザーの作成
 
 このセクションでは、Britta Simon というユーザーを Drift に作成します。 Drift では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Drift にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
@@ -183,14 +171,19 @@ Drift に対する Azure AD SSO を構成してテストするには、次の構
 >[!Note]
 >ユーザーを手動で作成する必要がある場合は、[Drift のサポート チーム](mailto:integrations@drift.com)にお問い合わせください。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト 
 
-アクセス パネル上で [Drift] タイルを選択すると、SSO を設定した Drift に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+
+アクセス パネル上で [Drift] タイルをクリックすると、SSO を設定した Drift に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD で Drift を試す](https://aad.portal.azure.com/)
+

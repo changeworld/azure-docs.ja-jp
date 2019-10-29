@@ -57,4 +57,4 @@ Microsoft Translator API の GetTranslations() メソッドと GetTranslationsAr
 返される翻訳候補の数は最大で maxTranslations までですが、それより少ない場合もあります。
 
 ## <a name="language-pairs"></a>言語ペア
-この機能は、簡体字中国語と繁体字中国語の間では、翻訳方向を問わず使用できません。 Microsoft Translator がサポートしている他のすべての言語ペアで使用できます。
+この機能は、簡体中国語と繁体中国語の間では、翻訳方向を問わず使用できません。 Microsoft Translator がサポートしている他のすべての言語ペアで使用できます。

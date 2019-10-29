@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/28/2019
-ms.openlocfilehash: 0e4cafee26d9d3345d9099c3c9fc048fb982ada5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 10/17/2019
+ms.openlocfilehash: a5ccf2d45d2c699f1f2261884f09f8cefe92b615
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166408"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598198"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Python)
 
@@ -24,8 +24,6 @@ ms.locfileid: "72166408"
 IoT Hub は、保管や処理のために IoT デバイスから大量のテレメトリをクラウドに取り込むことを可能にする Azure サービスです。 このクイック スタートでは、シミュレートされたデバイス アプリケーションから、IoT Hub を経由して、処理のためのバックエンド アプリケーションに、テレメトリを送信します。
 
 このクイック スタートでは、あらかじめ作成されている Python アプリケーションを使ってテレメトリを送信し、CLI ユーティリティを使って Hub からテレメトリを読み取ります。 これら 2 つのアプリケーションを実行する前に、IoT Hub を作成し、デバイスを Hub に登録します。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -38,6 +36,8 @@ az extension add --name azure-cli-iot-ext
 ```
 
 [https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip ) からサンプル Python プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+
+Python バージョン 3.5.3 以降を開発用マシンにインストールします。 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

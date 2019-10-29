@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0410da26a2ea5811c5a107ce233f2442b60fd9ca
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670845"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382007"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する
 
@@ -24,9 +24,17 @@ Shared Access Signature (SAS) により、データのセキュリティを損�
 
 Azure Storage では、次の 3 種類の Shared Access Signature がサポートされています。
 
-- **ユーザー委任 SAS (プレビュー)。** ユーザー委任 SAS は、Azure Active Directory (Azure AD) 資格情報と、SAS に指定されたアクセス許可によっても保護されます。 ユーザー委任 SAS は、BLOB ストレージにのみ適用されます。 ユーザー委任 SAS を作成するには、まず、SAS への署名に使用されるユーザー委任キーを要求する必要があります。 ユーザー委任 SAS の詳細については、[ユーザー委任 SAS の作成 (REST API)](/rest/api/storageservices/create-user-delegation-sas) に関するページを参照してください。
-- **サービス SAS。** サービス SAS は、ストレージ アカウント キーで保護されます。 サービス SAS は、次のうち 1 つだけの Azure Storage サービスのリソースへのアクセスを委任します。Blob storage、Queue storage、Table storage、または Azure Files。 サービス SAS の詳細については、 [サービス SAS の作成 (REST API)](/rest/api/storageservices/create-service-sas) に関するページを参照してください。
-- **アカウント SAS。** アカウント SAS は、ストレージアカウント キーで保護されます。 アカウント SAS は、1 つ以上のストレージ サービスのリソースへのアクセスを委任します。 サービスまたはユーザー委任 SAS を介して実行できるすべての操作は、アカウント SAS を介しても実行できます。 さらに、アカウント SAS を使用して、**Get/Set Service Properties** や **Get Service Stats** など、サービスのレベルで適用される操作へのアクセスを委任できます。 サービス SAS で許可されていない BLOB コンテナー、テーブル、キューおよびファイル共有の読み取り、書き込みおよび削除操作へのアクセスも委任できます。 アカウント SAS の詳細については、[アカウント SAS の作成 (REST API)](/rest/api/storageservices/create-account-sas) に関するページを参照してください。
+- **ユーザー委任 SAS (プレビュー)。** ユーザー委任 SAS は、Azure Active Directory (Azure AD) 資格情報と、SAS に指定されたアクセス許可によっても保護されます。 ユーザー委任 SAS は、BLOB ストレージにのみ適用されます。
+
+    ユーザー委任 SAS の詳細については、[ユーザー委任 SAS の作成 (REST API)](/rest/api/storageservices/create-user-delegation-sas) に関するページを参照してください。
+
+- **サービス SAS。** サービス SAS は、ストレージ アカウント キーで保護されます。 サービス SAS は、次のうち 1 つだけの Azure Storage サービスのリソースへのアクセスを委任します。Blob storage、Queue storage、Table storage、または Azure Files。 
+
+    サービス SAS の詳細については、 [サービス SAS の作成 (REST API)](/rest/api/storageservices/create-service-sas) に関するページを参照してください。
+
+- **アカウント SAS。** アカウント SAS は、ストレージアカウント キーで保護されます。 アカウント SAS は、1 つ以上のストレージ サービスのリソースへのアクセスを委任します。 サービスまたはユーザー委任 SAS を介して実行できるすべての操作は、アカウント SAS を介しても実行できます。 さらに、アカウント SAS を使用して、**Get/Set Service Properties** や **Get Service Stats** など、サービスのレベルで適用される操作へのアクセスを委任できます。 サービス SAS で許可されていない BLOB コンテナー、テーブル、キューおよびファイル共有の読み取り、書き込みおよび削除操作へのアクセスも委任できます。 
+
+    アカウント SAS の詳細については、[アカウント SAS の作成 (REST API)](/rest/api/storageservices/create-account-sas) に関するページを参照してください。
 
 > [!NOTE]
 > セキュリティのベスト プラクティスとして、より侵害されやすいアカウント キーを使用するのではなく、可能な限り Azure AD 資格情報を使用することをお勧めします。 アプリケーション設計で、BLOB ストレージへのアクセスのため、Shared Access Signature が必要な場合は、セキュリティを強化するために、可能な限り、Azure AD 資格情報を使用してユーザー委任 SAS を作成してください。
@@ -45,9 +53,9 @@ Shared Access Signature とは、特殊なクエリ パラメーターのセッ�
 
 ### <a name="sas-signature"></a>SAS の署名
 
-SAS に署名するには、次の 2 つの方法があります。
+次の 2 つの方法のいずれかで SAS に署名できます。
 
-- Azure Active Directory (Azure AD) 資格情報を使用して作成されたユーザー委任キーを使用する。 ユーザー委任 SAS は、ユーザー委任キーで署名されます。
+- Azure Active Directory (Azure AD) 資格情報を使用して作成された*ユーザー委任キー*を使用する。 ユーザー委任 SAS は、ユーザー委任キーで署名されます。
 
     ユーザー委任キーを取得して SAS を作成するには、Azure AD セキュリティ プリンシパルに **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールベースのアクセス制御 (RBAC) ロールが割り当てられている必要があります。 ユーザー委任キーを取得するアクセス許可を持つ RBAC ロールの詳細については、[ユーザー委任 SAS の作成 (REST API)](/rest/api/storageservices/create-user-delegation-sas) に関するページを参照してください。
 

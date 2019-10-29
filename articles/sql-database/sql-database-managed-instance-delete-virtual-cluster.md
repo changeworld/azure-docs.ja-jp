@@ -10,23 +10,24 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: f6e0b55ad2fbd9b4c45dbd1facaebd4750314c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ad09682275b5cc2311b792899a85c1c47eafc0d
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567539"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431295"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の削除後にサブネットを削除する
 
 この記事では、サブネットに存在する最後の Azure SQL Database Managed Instance を削除した後で、そのサブネットを手動で削除する方法についてのガイドラインを紹介します。
 
-SQL Database では、[仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)を使用して、削除されたマネージド インスタンスを格納します。 同じサブネット内にマネージド インスタンスをすばやく作成できるように、仮想クラスターはインスタンス削除後 12 時間存続します。 空の仮想クラスターを維持しても料金はかかりません。 この期間中は、仮想クラスターに関連付けられたサブネットを削除できません。
+マネージド インスタンスは、[仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)にデプロイされます。 各仮想クラスターは、サブネットに関連付けられています。 同じサブネット内にマネージド インスタンスをすばやく作成できるように、仮想クラスターは、最後のインスタンスが削除されてから 12 時間存続するように設計されています。 空の仮想クラスターを維持しても料金はかかりません。 この期間中は、仮想クラスターに関連付けられたサブネットを削除できません。
 
 12 時間を待たずに仮想クラスターとそのサブネットをすぐに削除したい場合、手動で削除できます。 Azure portal または仮想クラスター API を使用して、仮想クラスターを手動で削除します。
 
-> [!NOTE]
-> 仮想クラスターを正常に削除するためには、その仮想クラスターにマネージド インスタンスが存在していないことが必要です。
+> [!IMPORTANT]
+> - 仮想クラスターを正常に削除するためには、その仮想クラスターにマネージド インスタンスが存在していないことが必要です。 
+> - 仮想クラスターの削除は、時間のかかる (約 1.5 時間) 操作であり (最も新しい仮想クラスターの削除時間については「[マネージド インスタンスの管理操作](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations)」を参照)、その間、このプロセスが完了するまで、仮想クラスターはポータルにまだ表示されています。
 
 ## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Azure portal から仮想クラスターを削除する
 
@@ -38,10 +39,10 @@ Azure portal を使用して仮想クラスターを削除するには、仮想�
 
 ![削除オプションが強調された、Azure portal の仮想クラスター ダッシュボードのスクリーンショット](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Azure portal の通知領域に、仮想クラスターが削除されたことの確認が表示されます。 仮想クラスターが正常に削除されると、サブネットが直ちに解放されて再利用できる状態になります。
+Azure portal の通知で、仮想クラスターの削除要求が正常に送信されたことの確認が示されます。 削除操作自体には約 1.5 時間かかり、その間、仮想クラスターはポータルにまだ表示されています。 プロセスが完了すると、仮想クラスターは表示されなくなり、それに関連付けられていたサブネットは解放されて再利用できるようになります。
 
 > [!TIP]
-> マネージド インスタンスが仮想クラスターに表示されておらず、仮想クラスターを削除できない場合、継続的なインスタンスのデプロイが進行中でないことを確認してください。 これには、開始後にキャンセルされたがまだ進行中であるデプロイが含まれます。 インスタンスがデプロイされたリソース グループの [デプロイ] タブを確認すると、進行中のデプロイが示されます。 この場合、デプロイの完了を待ち、マネージド インスタンス、仮想クラスターの順に削除します。
+> マネージド インスタンスが仮想クラスターに表示されておらず、仮想クラスターを削除できない場合、継続的なインスタンスのデプロイが進行中でないことを確認してください。 これには、開始後にキャンセルされたがまだ進行中であるデプロイが含まれます。 これは、これらの操作で仮想クラスターがまだ使用されていて、削除されないようロックしているためです。 インスタンスがデプロイされたリソース グループの [デプロイ] タブを確認すると、進行中のデプロイが示されます。 この場合、デプロイの完了を待ち、マネージド インスタンス、仮想クラスターの順に削除します。
 
 ## <a name="delete-virtual-cluster-by-using-the-api"></a>API を使用して仮想クラスターを削除する
 

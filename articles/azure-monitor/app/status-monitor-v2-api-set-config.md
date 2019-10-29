@@ -1,6 +1,6 @@
 ---
-title: 'Azure Status Monitor v2 API リファレンス: 構成を設定する | Microsoft Docs'
-description: Status Monitor v2 API リファレンス。 Set-ApplicationInsightsMonitoringConfig。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+title: 'Azure Application Insights Agent API リファレンス: 構成を設定する | Microsoft Docs'
+description: Application Insights Agent API リファレンス。 Set-ApplicationInsightsMonitoringConfig。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 6d93be5b01be63a75041b939f6b8deb9106c4262
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2ab941b5587a8836f1e472fbce3966b12bfa1e11
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200448"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388252"
 ---
-# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig"></a>Status Monitor v2 API:Set-ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights Agent API: Set-ApplicationInsightsMonitoringConfig
 
 このドキュメントでは、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -132,7 +132,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 - Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
 - トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
  
- Status Monitor v2 の活用:
- - ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。
+ Application Insights Agent をさらに活用する:
+ - Application Insights Agent の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行うには、このガイドを参照してください。
  - 設定が正しく記録されたことを確認するために[構成を取得](status-monitor-v2-api-get-config.md)します。
  - 監視を検査するために[状態を取得](status-monitor-v2-api-get-status.md)します。

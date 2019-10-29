@@ -28,7 +28,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 * テキスト内のさまざまなセンチメントに対する自動ラベル付け。
 * ドキュメントおよび文レベルでの感情分析と出力。 
 
-英語、フランス語、イタリア語、日本語、簡体字中国語、および繁体字中国語がサポートされており、次のリージョンで利用できます: `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`、`West US 2`。
+英語、フランス語、イタリア語、日本語、簡体中国語、および繁体中国語がサポートされており、次のリージョンで利用できます: `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`、`West US 2`。
 
 > [!div class="nextstepaction"]
 > [感情分析 v3 の詳細情報](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

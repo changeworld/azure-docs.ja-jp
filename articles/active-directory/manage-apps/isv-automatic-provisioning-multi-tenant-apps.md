@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 11fda31cd06db67e0a11a68a02da8b91a77e04e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729189"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429456"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
 
@@ -79,17 +79,17 @@ Azure AD には、アプリケーションで自動ユーザー プロビジョ�
 <sup>*</sup> – AD から Azure AD にユーザーを同期するには、Azure AD Connect のセットアップが必要です。  
 <sup>+</sup >– プロビジョニングに SCIM を使用しても、他の目的のためにアプリケーションを MIcrosoft Graph と統合することが妨げられることはありません。
 
-## <a name="azure-ad-provisioning-service"></a>Azure AD プロビジョニング サービス
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD プロビジョニング サービス (SCIM)
 
-Azure AD プロビジョニング サービスでは、多くの ID プロバイダー (IdP) によってサポートされているプロトコルである SCIM が使用されます。 Azure AD に加えて IdP をサポートする場合は、Azure AD プロビジョニング サービスを使用することをお勧めします。これは、SCIM 準拠の IdP は SCIM エンドポイントに接続できるためです。
+Azure AD プロビジョニング サービスで使用される [SCIM](https://aka.ms/SCIMOverview) は、多くの ID プロバイダー (IdP) とアプリケーション (Slack、G Suite、Dropbox など) によってサポートされているプロビジョニングの業界標準です。 Azure AD に加えて IdP をサポートする場合は、Azure AD プロビジョニング サービスを使用することをお勧めします。これは、SCIM 準拠の IdP は SCIM エンドポイントに接続できるためです。 単純な /User エンドポイントを構築すると、独自の同期エンジンを維持しなくてもプロビジョニングを有効にすることができます。 
 
 Azure AD プロビジョニング サービスでの SCIM の使用方法について詳しくは、次を参照してください。 
+
+* [SCIM 標準についての詳細情報](https://aka.ms/SCIMOverview)
 
 * [System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 * [Azure AD SCIM の実装について](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
-
-* [Microsoft CLI ライブラリを使用した SCIM エンドポイントの構築](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 ## <a name="microsoft-graph-for-provisioning"></a>プロビジョニングのための Microsoft Graph
 
@@ -106,16 +106,6 @@ Azure AD プロビジョニング サービスでの SCIM の使用方法につ�
 * [Microsoft Graph 認証の概要](https://docs.microsoft.com/graph/auth/)
 
 * [Microsoft Graph の概要](https://developer.microsoft.com/graph/get-started)
-
-* [Microsoft Graph API を使用する](https://docs.microsoft.com/graph/use-the-api)
-
-* [Microsoft Graph Explorer](https://aka.ms/ge) 
-
-* [Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)
-
-* [Microsoft Graph の操作に関するベスト プラクティス](https://docs.microsoft.com/graph/best-practices-concept)
-
-* [Microsoft Graph の主なシナリオ](https://developer.microsoft.com/graph/examples)
 
 ## <a name="using-saml-jit-for-provisioning"></a>プロビジョニングに SAML JIT を使用する
 

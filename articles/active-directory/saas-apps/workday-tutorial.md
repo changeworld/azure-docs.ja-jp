@@ -17,10 +17,10 @@ ms.date: 08/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69891979"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workday の統合
@@ -151,11 +151,11 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 2. ホーム ページの左上にある **[Search]\(検索\)** ボックスで、「**Edit Tenant Setup – Security**」(テナントのセットアップの編集 - セキュリティ) という名前を検索します。
 
-    ![テナントのセキュリティの編集](./media/workday-tutorial/IC782925.png "Edit Tenant Security")
+    ![テナントのセキュリティの編集](./media/workday-tutorial/IC782925.png "テナントのセキュリティの編集")
 
 3. **[リダイレクト URL]** セクションで、次の手順を実行します。
 
-    ![リダイレクト URL](./media/workday-tutorial/IC7829581.png "Redirection URLs")
+    ![リダイレクト URL](./media/workday-tutorial/IC7829581.png "[リダイレクト URL]")
 
     a. **[行の追加]** をクリックします。
 
@@ -172,7 +172,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 4. **[SAML 設定]** セクションで、次の手順を実行します。
 
-    ![SAML のセットアップ](./media/workday-tutorial/IC782926.png "SAML Setup")
+    ![SAML 設定](./media/workday-tutorial/IC782926.png "[SAML 設定]")
 
     a.  **[Enable SAML Authentication]** を選択します。
 
@@ -180,13 +180,13 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 5. **[SAML Identity Providers]\(SAML ID プロバイダー\)** セクションで、次の手順を実行します。
 
-    ![SAML ID プロバイダー](./media/workday-tutorial/IC7829271.png "SAML Identity Providers")
+    ![SAML ID プロバイダー](./media/workday-tutorial/IC7829271.png "SAML ID プロバイダー")
 
     a. **[Identity Provider Name]\(ID プロバイダー名\)** テキスト ボックスに、プロバイダー名を入力します (例:*SPInitiatedSSO*)。
 
     b. Azure portal の **[Workday の構成]** セクションで **Azure AD 識別子**の値をコピーし、 **[Issuer]\(発行者\)** ボックスに貼り付けます。
 
-    ![SAML ID プロバイダー](./media/workday-tutorial/IC7829272.png "SAML Identity Providers")
+    ![SAML ID プロバイダー](./media/workday-tutorial/IC7829272.png "SAML ID プロバイダー")
 
     c. Azure portal の **[Workday の構成]** セクションで**ログアウト URL** の値をコピーし、 **[Logout Response URL]\(ログアウト応答 URL\)** ボックスに貼り付けます。
 
@@ -204,7 +204,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 6. **[x509 公開鍵の表示]** セクションで、次の手順を実行します。
 
-    ![x509 公開鍵の表示](./media/workday-tutorial/IC782930.png "x509 公開鍵の表示")
+    ![x509 公開鍵の表示](./media/workday-tutorial/IC782930.png "[x509 公開鍵の表示]")
 
     a. **[Name]\(名前\)** テキスト ボックスに、証明書の名前を入力します (例:*PPE\_SP*)。
 
@@ -225,7 +225,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 7. 次の手順に従います。
 
-    ![SSO 構成](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO configuration")
+    ![SSO 構成](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO 構成")
 
     a.  **[サービス プロバイダー ID]** ボックスに、「 **http://www.workday.com** 」と入力します。
 
@@ -233,7 +233,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
     c. **[認証要求署名方法]** として **[SHA256]** を選択します。
 
-    ![認証要求署名方法](./media/workday-tutorial/WorkdaySSOConfiguration.png "Authentication Request Signature Method") 
+    ![認証要求署名方法](./media/workday-tutorial/WorkdaySSOConfiguration.png "認証要求署名方法") 
 
     d. Click **OK**.
 

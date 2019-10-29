@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 3fc90e685a3c6a077250028bae5602e95f114c03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091359"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293444"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
 
@@ -138,69 +138,7 @@ az iot hub device-identity add-children \
 
 ### <a name="host-storage-for-system-modules"></a>システム モジュール用のホスト ストレージ
 
-既定では、メッセージとモジュールの状態情報は、IoT Edge ハブのローカル コンテナー ファイルシステムに格納されます。 信頼性を向上させるために、特にオフラインで操作する場合は、専用のストレージをホスト IoT Edge デバイスに設定することもできます。
-
-ホスト システムにストレージを設定するには、コンテナー内のストレージ フォルダーを指す IoT Edge ハブと IoT Edge エージェントの環境変数を作成します。 その後、作成オプションを使用して、ホスト コンピューター上のフォルダーにそのストレージ フォルダーをバインドします。 
-
-IoT Edge ハブ モジュールの環境変数および作成オプションは、Azure portal の **[Edge ランタイムの詳細設定を構成する]** セクションで構成できます。 
-
-1. IoT Edge ハブと IoT Edge エージェントの両方について、モジュール内のディレクトリを指す **storageFolder** という名前の環境変数を追加します。
-1. IoT Edge ハブと IoT Edge エージェントの両方について、ホスト コンピューター上のローカル ディレクトリをモジュール内のディレクトリに接続するバインドを追加します。 例: 
-
-   ![ローカル ストレージの作成オプションと環境変数を追加する](./media/offline-capabilities/offline-storage.png)
-
-または、配置マニフェストでローカル ストレージを直接構成することもできます。 例: 
-
-```json
-"systemModules": {
-    "edgeAgent": {
-        "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
-            "createOptions": {
-                "HostConfig": {
-                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
-                }
-            }
-        },
-        "type": "docker",
-        "env": {
-            "storageFolder": {
-                "value": "<ModuleStoragePath>"
-            }
-        }
-    },
-    "edgeHub": {
-        "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-            "createOptions": {
-                "HostConfig": {
-                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"],
-                    "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
-        },
-        "type": "docker",
-        "env": {
-            "storageFolder": {
-                "value": "<ModuleStoragePath>"
-            }
-        },
-        "status": "running",
-        "restartPolicy": "always"
-    }
-}
-```
-
-`<HostStoragePath>` と `<ModuleStoragePath>` を実際のホストとモジュールのストレージ パスに置き換えます。どちらの値も絶対パスにする必要があります。 
-
-たとえば、`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` は、ご利用のホスト システム上のディレクトリ **/etc/iotedge/storage** がコンテナー上のディレクトリ **/iotedge/storage/** にマップされていることを意味します。 または Windows システムにおける別の例として、`"Binds":["C:\\temp:C:\\contemp"]` は、ご利用のホスト システム上のディレクトリ **C:\\temp** がコンテナー上のディレクトリ **C:\\contemp** にマップされていることを意味します。 
-
-Linux デバイスでは、IoT Edge ハブのユーザー プロファイル (UID 1000) に、ホスト システム ディレクトリに対する読み取り、書き込み、および実行のアクセス許可があることを確認します。 これらのアクセス許可は、IoT Edge ハブでメッセージをディレクトリに格納し、後で取得できるようにするために必要です (IoT Edge エージェントはルートとして動作するため、追加のアクセス許可は必要ありません)。Linux システム上でディレクトリのアクセス許可を管理するには、`chown` を使用してディレクトリの所有者を変更してから `chmod` を使用してアクセス許可を変更するなど、いくつかの方法があります。 例:
-
-```bash
-sudo chown 1000 <HostStoragePath>
-sudo chmod 700 <HostStoragePath>
-```
-
-作成オプションの詳細については、[Docker ドキュメント](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)を参照してください。
+既定では、メッセージとモジュールの状態情報は、IoT Edge ハブのローカル コンテナー ファイルシステムに格納されます。 信頼性を向上させるために、特にオフラインで操作する場合は、専用のストレージをホスト IoT Edge デバイスに設定することもできます。 詳細については、「[Give modules access to a device's local storage](how-to-access-host-storage-from-module.md)」 (モジュールにデバイスのローカル ストレージへのアクセスを許可する) を参照してください
 
 ## <a name="next-steps"></a>次の手順
 

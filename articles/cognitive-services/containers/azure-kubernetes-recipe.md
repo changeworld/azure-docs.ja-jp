@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Service の実行
+title: Kubernetes Service で言語検出コンテナーを実行する
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: 実行するサンプルを使って言語検出コンテナーを Azure Kubernetes Service にデプロイし、Web ブラウザーでテストします。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 852530910f7a8c6c815493d0dbcc57f67695d6de
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066105"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515240"
 ---
-# <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に言語検出コンテナーをデプロイする
+# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に Text Analytics 言語検出コンテナーをデプロイする
 
 言語検出コンテナーをデプロイする方法について説明します。 この手順では、ローカルの Docker コンテナーを作成し、コンテナーを独自のプライベート コンテナー レジストリにプッシュし、Kubernetes クラスターでコンテナーを実行して、Web ブラウザーでテストする方法を示します。
 

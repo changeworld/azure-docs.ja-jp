@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 6090881cc2b94fa42fdac22220c858a0153ccc5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648091"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331243"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>PowerShell を使用して Azure Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ PowerShell は、サービスの名前、リージョン、またはレベルの
 
 PowerShell やその他の API (ポータルのみ) の使用がサポートされていないその他のタスクは、次のとおりです。
 + [AI によって強化されたインデックス作成](cognitive-search-concept-intro.md)のための [Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)。 Cognitive Service は、サブスクリプションやサービスではなく、スキルにアタッチされます。
-+ Azure Search の監視に使用される[アドオンの監視ソリューション](search-monitor-usage.md#add-on-monitoring-solutions)または[検索トラフィックの分析](search-traffic-analytics.md)。
++ Azure Search を監視するための[アドオン監視ソリューション](search-monitor-usage.md#add-on-monitoring-solutions)。
 
 <a name="check-versions-and-load"></a>
 

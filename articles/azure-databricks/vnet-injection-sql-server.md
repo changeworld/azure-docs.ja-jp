@@ -1,5 +1,5 @@
 ---
-title: Azure Databricks ノートブックから仮想ネットワーク内の SQL Server Linux Docker コンテナーのクエリを実行する
+title: Azure Databricks で SQL Server Linux Docker コンテナーのクエリを実行する
 description: この記事では、仮想ネットワークに Azure Databricks をデプロイする (VNet インジェクションとも呼ばれる) 方法について説明します。
 services: azure-databricks
 author: mamccrea
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60770791"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273980"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>チュートリアル:Azure Databricks ノートブックから仮想ネットワーク内の SQL Server Linux Docker コンテナーのクエリを実行する
 
@@ -66,12 +66,12 @@ ms.locfileid: "60770791"
     |-------|---------------|-----------|
     |source|IP アドレス|IP アドレスでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |ソース IP アドレス|<ご使用のパブリック IP\>|パブリック IP アドレスを入力します。 パブリック IP アドレスは、[bing.com](https://www.bing.com/) にアクセスして **"my IP"** を検索することで見つけることができます。|
-    |ソース ポート範囲|*|すべてのポートからのトラフィックを許可します。|
-    |宛先|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
+    |Source port ranges|*|すべてのポートからのトラフィックを許可します。|
+    |Destination|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |送信先 IP アドレス|<ご使用の VM のパブリック IP\>|仮想マシンのパブリック IP アドレスを入力します。 これは仮想マシンの **[概要]** ページで見つかります。|
     |宛先ポート範囲|22|SSH 用にポート 22 を開きます。|
-    |優先順位|290|ルールに優先順位を付けます。|
-    |Name|ssh-databricks-tutorial-vm|ルールに名前を付けます。|
+    |Priority|290|ルールに優先順位を付けます。|
+    |名前|ssh-databricks-tutorial-vm|ルールに名前を付けます。|
 
 
     ![ポート 22 の受信セキュリティ規則を追加する](./media/vnet-injection-sql-server/open-port.png)
@@ -82,12 +82,12 @@ ms.locfileid: "60770791"
     |-------|---------------|-----------|
     |source|IP アドレス|IP アドレスでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |ソース IP アドレス|10.179.0.0/16|仮想ネットワークのアドレス範囲を入力します。|
-    |ソース ポート範囲|*|すべてのポートからのトラフィックを許可します。|
-    |宛先|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
+    |Source port ranges|*|すべてのポートからのトラフィックを許可します。|
+    |Destination|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |送信先 IP アドレス|<ご使用の VM のパブリック IP\>|仮想マシンのパブリック IP アドレスを入力します。 これは仮想マシンの **[概要]** ページで見つかります。|
     |宛先ポート範囲|1433|SQL Server 用にポート 22 を開きます。|
-    |優先順位|300|ルールに優先順位を付けます。|
-    |Name|sql-databricks-tutorial-vm|ルールに名前を付けます。|
+    |Priority|300|ルールに優先順位を付けます。|
+    |名前|sql-databricks-tutorial-vm|ルールに名前を付けます。|
 
     ![ポート 1433 の受信セキュリティ規則を追加する](./media/vnet-injection-sql-server/open-port2.png)
 

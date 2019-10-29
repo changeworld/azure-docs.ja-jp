@@ -1,6 +1,6 @@
 ---
-title: Azure Status Monitor v2 のトラブルシューティングと既知の問題 | Microsoft Docs
-description: Status Monitor v2 の既知の問題とトラブルシューティングの例です。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+title: Azure Application Insights Agent に関するトラブルシューティングと既知の問題 | Microsoft Docs
+description: Application Insights Agent の既知の問題とトラブルシューティングの例。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ab1ce01c41679c6ff686ab37692d3b8e9167a4f8
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058288"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388197"
 ---
-# <a name="troubleshooting-status-monitor-v2"></a>Status Monitor v2 のトラブルシューティング
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent (旧称 Status Monitor v2) のトラブルシューティング
 
 監視を有効にしたとき、データ収集を妨げる問題が発生する可能性があります。
 この記事では、既知の問題をすべて一覧にまとめ、トラブルシューティングの例を示します。
@@ -99,9 +99,9 @@ Enable コマンドを実行した後、次の手順を実行します。
 PowerShell セッションにモジュールが読み込まれていない場合は、`Import-Module <path to psd1>` コマンドを使って手動で読み込むことができます。
 
 
-### <a name="troubleshooting-the-status-monitor-v2-module"></a>Status Monitor v2 モジュールのトラブルシューティング
+### <a name="troubleshooting-the-application-insights-agent-module"></a>Application Insights Agent モジュールのトラブルシューティング
 
-#### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>Status Monitor v2 モジュールで使用できるコマンドを一覧表示する
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>Application Insights Agent モジュールで使用できるコマンドの一覧を表示する
 使用できるコマンドを取得するには、`Get-Command -Module Az.ApplicationMonitor` コマンドを実行します。
 
 ```
@@ -117,7 +117,7 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Status Monitor v2 モジュールの現在のバージョンを確認する
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Application Insights Agent モジュールの現在のバージョンを確認する
 モジュールに関する以下の情報を表示するには、`Get-ApplicationInsightsMonitoringStatus -PowerShellModule` コマンドを実行します。
    - PowerShell モジュールのバージョン
    - Application Insights SDK のバージョン

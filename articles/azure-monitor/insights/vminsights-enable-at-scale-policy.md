@@ -1,24 +1,18 @@
 ---
 title: Azure Policy を使用して Azure Monitor for VMs を有効にする | Microsoft Docs
 description: この記事では、Azure Policy を使用して、複数の Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/07/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cbb471d337bd386b6c5f2c7a960565ef29855c9c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 10/15/2019
+ms.openlocfilehash: 068d320c85a1e10027c92b92c1b3c205a999bed7
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338235"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553835"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -46,7 +40,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 このページからは、Azure Monitor for VMs のための Log Analytics ワークスペースを構成することもできます。これにより、次が実行されます。
 
-- Service Map ソリューションと Infrastructure Insights ソリューションをインストールします。
+- Service Map ソリューションをインストールします。
 - パフォーマンス グラフ、ワークブック、およびカスタム ログ クエリとアラートによって使用されるオペレーティング システムのパフォーマンス カウンターを有効にします。
 
 ![Azure Monitor for VMs のワークスペースの構成](./media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
@@ -54,6 +48,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 このオプションは、どのポリシー アクションにも関連していません。 これは、Azure Monitor for VMs を有効にするために必要な[前提条件](vminsights-enable-overview.md)を満たす簡単な方法を提供するために利用できます。  
 
 ### <a name="what-information-is-available-on-this-page"></a>このページで入手できる情報
+
 次の表は、ポリシー対象範囲の ページに表示される情報の内訳とその解釈方法を示しています。
 
 | Function | 説明 | 
@@ -113,6 +108,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 |\[プレビュー\]:VM の Log Analytics ワークスペースの監査 - 不一致の報告 |ポリシーまたはイニシアチブの割り当てで指定された Log Analytics ワークスペースに VM がロギングされていない場合は、それらの VM を非準拠として報告します。 |ポリシー |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Azure Monitor のイニシアティブを割り当てる
+
 **[Azure Monitor for VMs Policy Coverage]\(Azure Monitor for VMs のポリシー対象範囲\)** ページからポリシー割り当てを作成するには、次の手順を実行します。 これらの手順を完了する方法については、 [Azure portal でのポリシー割り当ての作成](../../governance/policy/assign-policy-portal.md)に関する記事を参照してください。
 
 ポリシーまたはイニシアチブを割り当てる場合、割り当てで選択されたスコープは、ここに一覧表示されているスコープまたはそのサブセットである可能性があります。 たとえば、管理グループ (対象範囲スコープ) ではなく、サブスクリプション (ポリシー スコープ) の割り当てを作成している可能性があります。 この場合、対象範囲の割合は、ポリシーまたはイニシアチブ スコープ内の VM 数を対象範囲スコープ内の VM 数で割った値を示します。 あるいは、ご自分がポリシー スコープからいくつかの VM、リソース グループ、またはサブスクリプションを除外している可能性があります。 これが空白の場合は、ポリシーまたはイニシアチブが存在しないか、アクセス許可がないことを示します。 情報は **[割り当ての状態]** の下に表示されます。
@@ -208,7 +204,6 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。 
 
-- 正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 
 - 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 
+
 - VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。 
-- 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。

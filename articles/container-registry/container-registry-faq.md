@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827406"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286516"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -39,7 +39,7 @@ ms.locfileid: "71827406"
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Azure Container Registry で Kubernetes を構成するにはどうすればよいですか?
 
-[Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) のドキュメントおよび [Azure Kubernetes Service](container-registry-auth-aks.md) の手順を参照してください。
+[Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) のドキュメントおよび [Azure Kubernetes Service](../aks/cluster-container-registry-integration.md) の手順を参照してください。
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>コンテナー レジストリの管理者の資格情報を取得するにはどうすればよいですか?
 
@@ -420,7 +420,7 @@ Microsoft Edge または IE ブラウザーを使用している場合は、最�
 * 広告ブロッカー
 * DNS エラー
 
-ネットワーク管理者に問い合わせるか、ネットワークの構成と接続を確認してください。 また、ブラウザーでシークレット/プライベート セッションを試して、古いブラウザー キャッシュや Cookie を回避することもできます。
+ネットワーク管理者に問い合わせるか、ネットワークの構成と接続を確認してください。 Azure CLI を使用して `az acr check-health -n yourRegistry` を実行し、ご使用の環境から Container Registry に接続できるかどうかを確認します。 また、ブラウザーでシークレット/プライベート セッションを試して、古いブラウザー キャッシュや Cookie を回避することもできます。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows で http トレースを収集するにはどうすればよいですか?
 

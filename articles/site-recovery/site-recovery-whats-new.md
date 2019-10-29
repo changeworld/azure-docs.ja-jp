@@ -5,20 +5,35 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5e3d226b0f15148c5ac4a9da84462f4a3277e112
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937522"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383558"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、継続的に更新され、改善されています。 最新情報を入手し続ける助けになるように、この記事では、最新のリリース、新機能、および新しいコンテンツに関する情報を提供します。 このページは定期的に更新されます。
 
 [Azure 更新プログラム](https://azure.microsoft.com/updates/?product=site-recovery) チャネルで Site Recovery の更新通知をフォローし、サブスクライブすることができます。
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>サービス スタック更新プログラム/SHA-2の更新
+
+Azure VM からセカンダリ リージョンへのディザスター リカバリー、またはオンプレミスの VMware VM や物理サーバーから Azure へのディザスター リカバリーの場合は、次の点に注意してください。
+
+- バージョン 9.30.x.x (2019 年 11 月以降で予期されるリリース) のモビリティ サービス拡張機能 (Azure VM の場合) およびモビリティ サービス エージェント (VMware/物理マシンの場合) 以降、一部のコンピューター オペレーティング システムではサービス スタック更新プログラムと SHA-2 が実行されている必要があります。 詳細については、次の表を参照してください。
+- リンクされた KB に従って、更新プログラムと SHA-2 をインストールします。 SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。
+- SHA-2 のアップグレードと要件についての詳細は、[こちら](https://aka.ms/SHA-2KB)でご確認ください。
+
+**オペレーティング システム** | **Azure VM** | **VMware VM/物理マシン**
+--- | --- | ---
+**Windows 2008 R2 SP1** | [サービス スタック更新プログラム](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [サービス スタック更新プログラム](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 SP2** | [サービス スタック更新プログラム](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [サービス スタック更新プログラム](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 SP1** | [サービス スタック更新プログラム](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [サービス スタック更新プログラム](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+
 
 ## <a name="supported-updates"></a>サポートされる更新プログラム
 

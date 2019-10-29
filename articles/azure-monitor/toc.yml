@@ -36,7 +36,7 @@
           href: log-query/get-started-portal.md
         - name: ログ クエリ
           href: log-query/get-started-queries.md
-        - name: ログ データの視覚化
+        - name: ログ データを含むダッシュボード
           href: learn/tutorial-logs-dashboards.md
         - name: ログ データに基づくアラート
           href: learn/tutorial-response.md
@@ -50,7 +50,7 @@
           href: learn/tutorial-alert.md
         - name: アプリケーション ユーザーについて
           href: learn/tutorial-users.md
-        - name: カスタム ダッシュボードの作成
+        - name: アプリケーション データを含むダッシュボード
           href: learn/tutorial-app-dashboards.md
     - name: プラットフォーム メトリックとログ データのアーカイブ
       href: learn/tutorial-archive-data.md
@@ -639,6 +639,8 @@
                   href: insights/vminsights-workbooks.md
                 - name: ログ クエリによるデータの分析
                   href: insights/vminsights-log-search.md
+                - name: 依存関係エージェントのアップグレード
+                  href: insights/vminsights-dependency-agent-maintenance.md
                 - name: 監視を無効にする
                   href: insights/vminsights-optout.md
             - name: 容量とパフォーマンス ソリューション
@@ -887,7 +889,11 @@
         - name: Workbooks
           href: app/usage-workbooks.md
         - name: ダッシュボード
-          href: app/app-insights-dashboards.md
+          items:
+            - name: ログ データを使用したダッシュボード
+              href: learn/tutorial-logs-dashboards.md
+            - name: アプリケーション データを使用したダッシュボード
+              href: learn/tutorial-app-dashboards.md
         - name: データを Grafana に送信する
           href: platform/grafana-plugin.md
     - name: アラート
@@ -1096,10 +1102,8 @@
           href: platform/metrics-supported.md
         - name: 新しいアラートでサポートされるメトリック
           href: platform/alerts-metric-near-real-time.md
-    - name: 診断ログ
-      items:
-        - name: 診断ログのサービス、カテゴリ、スキーマ
-          href: platform/diagnostic-logs-schema.md
+    - name: リソース ログのサービス、カテゴリ、スキーマ
+      href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (プレビュー)
@@ -1108,9 +1112,11 @@
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
+        - name: アラート、メトリック、アクティビティ ログ、自動スケール
+          href: /powershell/module/az.monitor
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: ログ
+        - name: Log Analytics
           href: /powershell/module/az.operationalinsights
     - name: REST API
       items:

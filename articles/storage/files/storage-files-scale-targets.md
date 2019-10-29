@@ -4,15 +4,15 @@ description: Azure Files のスケーラビリティとパフォーマンスの�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 5/5/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ed4aa832c4ec7ccda760d535aa920be8d5c4e2e3
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 766dacb69a3f1857197684f552d05a1376e94509
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699624"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514869"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -51,8 +51,8 @@ Azure Files については、ストレージ アカウント、共有、ファ�
 ### <a name="file-share-and-file-scale-targets"></a>ファイル共有とファイルのスケール ターゲット
 
 > [!NOTE]
-> 5 TiB を超える Standard ファイル共有はプレビュー段階であり、いくつかの制限事項があります。
-> 制限事項の一覧と、これらのより大きなファイル共有サイズのプレビューへのオンボードについては、計画ガイドの「[Standard file shares (標準ファイル共有)](storage-files-planning.md#standard-file-shares)」セクションを参照してください。
+> 5 TiB を超える標準ファイル共有には、特定の制限事項と地域に関する制限があります。
+> 制限事項の一覧と、地域に関する制限、およびこれらの大きなファイル共有サイズを有効にするための手順については、計画ガイドの「[大きなファイル共有へのオンボード](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)」セクションを参照してください。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

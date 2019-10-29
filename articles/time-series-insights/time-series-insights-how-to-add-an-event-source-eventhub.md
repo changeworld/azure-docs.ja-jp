@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8403c8fbc4faf35e0ccd3c87347e88a46f0769ff
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: aaddfb19889e31bb8e0d52d1df2d6b034b6e7f6b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854477"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274373"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -38,11 +38,13 @@ ms.locfileid: "68854477"
 
 イベント ハブに新しいコンシューマー グループを追加するには:
 
-1. Azure portal で、イベント ハブを見つけて開きます。
+1. [Azure portal](https://portal.azure.com) で、イベント ハブ名前空間からご利用のイベント ハブを見つけて開きます。
+
+    [![イベント ハブ名前空間を開く](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
 
 1. **[エンティティ]** で **[コンシューマー グループ]** を選択し、 **[コンシューマー グループ]** を選択します。
 
-   [![イベント ハブ - コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox)
+   [![イベント ハブ - コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
 
 1. **[コンシューマー グループ]** ページで、 **[名前]** に新しい一意の値を入力します。  Time Series Insights 環境で新しいイベント ソースを作成するとき、この同じ名前を使用します。
 
@@ -56,56 +58,56 @@ ms.locfileid: "68854477"
 
 1. **[環境トポロジ]** で **[イベント ソース]** を選択し、 **[追加]** を選択します。
 
-   [![[イベント ソース] で [追加] ボタンを選択](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox)
+   [![[イベント ソース] で [追加] ボタンを選択](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
 1. **[イベント ソース名]** に値を入力します。この値はこの Time Series Insights 環境に一意であり、たとえば、**event-stream** とします。
 
 1. **[ソース]** で **[イベント ハブ]** を選択します。
 
 1. **[インポート オプション]** に適切な値を選択します。
-   - サブスクリプションのいずれかに既にイベント ハブが存在する場合、 **[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
 
-       [![[新しいイベント ソース] ウィンドウで、最初の 3 つのパラメーターの値を入力](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
+   * サブスクリプションのいずれかに既にイベント ハブが存在する場合、 **[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
 
+     [![イベント ソースのインポート オプションの選択](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
 
-       [![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+    *  **[利用可能なサブスクリプションからのイベント ハブを使用する]** オプションに必要なプロパティについて次の表で説明します。
 
-     **[利用可能なサブスクリプションからのイベント ハブを使用する]** オプションに必要なプロパティについて次の表で説明します。
+       [![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
 
-     | プロパティ | 説明 |
-     | --- | --- |
-     | サブスクリプション ID | このイベント ハブが作成されたサブスクリプションを選択します。
-     | Service Bus 名前空間 | イベント ハブが含まれている Azure Service Bus 名前空間を選択します。
-     | イベント ハブ名 | イベント ハブの名前を選択します。
-     | イベント ハブ ポリシー名 | 共有アクセス ポリシーを選択します。 イベント ハブの **[構成]** タブで共有アクセス ポリシーを作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**読み取り**アクセス許可の設定が "*必須*" です。
-     | イベント ハブ ポリシー キー | キーの値は事前入力されることがあります。
-     | イベント ハブ コンシューマー グループ | イベント ハブからイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。 |
-     | イベントのシリアル化の形式 | 現在のところ、JSON が唯一利用できるシリアル化形式です。 イベント メッセージはこの形式にする必要があります。そうでないとデータを読み取ることができません。 |
-     | タイムスタンプ プロパティ名 | この値を決定するには、イベント ハブに送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**がイベント タイムスタンプとして使用されます。 |
+       | プロパティ | 説明 |
+       | --- | --- |
+       | Subscription | 目的のイベント ハブ インスタンスと名前空間が属しているサブスクリプション。 |
+       | Event Hub 名前空間 | 目的のイベント ハブ インスタンスが属しているイベント ハブ名前空間。 |
+       | イベント ハブ名 | 目的のイベント ハブ インスタンスの名前。 |
+       | イベント ハブ ポリシーの値 | 目的の共有アクセス ポリシーを選択します。 イベント ハブの **[構成]** タブで共有アクセス ポリシーを作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**読み取り**アクセス許可の設定が "*必須*" です。 |
+       | イベント ハブ ポリシー キー | 選択したイベント ハブ ポリシーの値から事前設定されます。 |
 
-    - イベント ハブがサブスクリプションの外部であるか、高度なオプションを選択する場合、 **[イベント ハブ設定を手動で行う]** を選択します。
+    * イベント ハブがサブスクリプションの外部であるか、高度なオプションを選択する場合、 **[イベント ハブ設定を手動で行う]** を選択します。
 
-      **[イベント ハブ設定を手動で行う]** オプションに必要なプロパティについて次の表で説明します。
+       **[イベント ハブ設定を手動で行う]** オプションに必要なプロパティについて次の表で説明します。
  
-      | プロパティ | 説明 |
-      | --- | --- |
-      | サブスクリプション ID | このイベント ハブが作成されたサブスクリプション。
-      | Resource group | このイベント ハブが作成されたリソース グループ。
-      | Service Bus 名前空間 | Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成したとき、Service Bus 名前空間も作成されました。
-      | イベント ハブ名 | イベント ハブの名前。 イベント ハブを作成したときに、固有の名前を設定しています。
-      | イベント ハブ ポリシー名 | 共有アクセス ポリシー。 イベント ハブの **[構成]** タブで共有アクセス ポリシーを作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**読み取り**アクセス許可の設定が "*必須*" です。
-      | イベント ハブ ポリシー キー | Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。
-      | イベント ハブ コンシューマー グループ | イベント ハブからイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。
-      | イベントのシリアル化の形式 | 現在のところ、JSON が唯一利用できるシリアル化形式です。 イベント メッセージはこの形式にする必要があります。そうでないとデータを読み取ることができません。 |
-      | タイムスタンプ プロパティ名 | この値を決定するには、イベント ハブに送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**がイベント タイムスタンプとして使用されます。 |
+       | プロパティ | 説明 |
+       | --- | --- |
+       | サブスクリプション ID | 目的のイベント ハブ インスタンスと名前空間が属しているサブスクリプション。 |
+       | Resource group | 目的のイベント ハブ インスタンスと名前空間が属しているリソース グループ。 |
+       | Event Hub 名前空間 | 目的のイベント ハブ インスタンスが属しているイベント ハブ名前空間。 |
+       | イベント ハブ名 | 目的のイベント ハブ インスタンスの名前。 |
+       | イベント ハブ ポリシーの値 | 目的の共有アクセス ポリシーを選択します。 イベント ハブの **[構成]** タブで共有アクセス ポリシーを作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**読み取り**アクセス許可の設定が "*必須*" です。 |
+       | イベント ハブ ポリシー キー | Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。 |
+
+    * どちらのオプションも以下の構成オプションを共有します。
+
+       | プロパティ | 説明 |
+       | --- | --- |
+       | イベント ハブ コンシューマー グループ | イベント ハブからイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。 |
+       | イベントのシリアル化の形式 | 現在のところ、JSON が唯一利用できるシリアル化形式です。 イベント メッセージはこの形式にする必要があります。そうでないとデータを読み取ることができません。 |
+       | タイムスタンプ プロパティ名 | この値を決定するには、イベント ハブに送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**がイベント タイムスタンプとして使用されます。 |
 
 1. イベント ハブに追加した専用 Time Series Insights コンシューマー グループ名を追加します。
 
 1. **作成** を選択します。
 
-   [![[作成] を選択](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png#lightbox)
-
-   イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
+   イベント ソースの作成後、Time Series Insights では自動的に環境へのデータのストリーミングを開始します。
 
 ## <a name="next-steps"></a>次の手順
 

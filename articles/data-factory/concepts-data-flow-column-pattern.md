@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory の Mapping Data Flow の列パターン
-description: Azure Data Factory の Mapping Data Flows の列パターンを使用して一般化されたデータ変換パターンを作成する
+title: Azure Data Factory のマッピング データ フローの列パターン
+description: Azure Data Factory のマッピング データ フローの列パターンを使用して一般化されたデータ変換パターンを作成する
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 535656f315f65ffb7aa241618fe9e73b8246b71f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a95bbb726f8c391270d3f60ed769d9475004b1e4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027869"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388018"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>マッピング データ フローの列パターンの
 
@@ -41,7 +41,7 @@ Azure Data Factory のデータ フロー変換によっては、"列パター�
 
 ![列の位置](media/data-flow/position.png "列の位置")
 
-## <a name="rule-based-mapping"></a>ルール ベースのマッピング
+## <a name="rule-based-mapping"></a>ルールベースのマッピング
 ソースと選択の変換内の列をマッピングする場合、[Fixed mapping]\(固定マッピング\) または [Rule-based mapping]\(ルール ベースのマッピング\) を選択できます。 データのスキーマがわかっていて、ソース データセットの特定の列が常に特定の静的な名前と一致することが予想される場合は、固定マッピングを使用できます。 ただし、柔軟性の高いスキーマを操作する場合は、ルール ベースのマッピングを使用します。 上記のルールを使用して、パターン マッチを作成できます。
 
 ![ルール ベースのマッピング](media/data-flow/rule2.png "ルール ベースのマッピング")
@@ -57,5 +57,5 @@ Azure Data Factory のデータ フロー変換によっては、"列パター�
 * `position` は、データ フロー内の列の序数位置です
 
 ## <a name="next-steps"></a>次の手順
-* ADF Mapping Data Flow の[式言語](https://aka.ms/dataflowexpressions)に関する記事で、データ変換の詳細を確認します。
+* ADF マッピング データ フローの[式言語](https://aka.ms/dataflowexpressions)に関する記事で、データ変換の詳細を確認します
 * [シンク変換](data-flow-sink.md)と[選択変換](data-flow-select.md)の列パターンをルール ベースのマッピングで使用します

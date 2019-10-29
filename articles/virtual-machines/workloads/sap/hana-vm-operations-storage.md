@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/15/2019
+ms.date: 10/11/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 45d8844a34c5b7d9f36099304c1619e09d39305c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0ab25b7a6d723ed5f2e74ad60ff54f9bf6d0fe4c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099629"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300556"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -28,7 +28,8 @@ Azure は、SAP HANA を実行する Azure VM に適した、異なる種類の�
 
 - Standard SSD ディスク ドライブ (SSD)
 - Premium ソリッド ステート ドライブ (SSD)
-- [Ultra Disk](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-ultra-ssd) 
+- [Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)
+- [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 これらのディスクの種類の詳細については、[ディスクの種類の選択](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types)に関する記事を参照してください。
 
@@ -36,7 +37,13 @@ Azure では、Azure Standard と Premium Storage の 2 つの VHD 展開方法�
 
 ストレージの種類と、IOPS およびストレージ スループットの SLA の一覧については、[マネージド ディスクに関する Azure ドキュメント](https://azure.microsoft.com/pricing/details/managed-disks/)をご覧ください。
 
-**推奨事項:Azure 書き込みアクセラレータと組み合わせて Azure Premium Storage を使用し、デプロイには Azure Managed Disks を使用します**
+HANA での使用の場合、次の 3 種類のストレージが SAP によって認定されています。
+
+- Azure Premium Storage - [Azure 書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) を使用して /hana/log をキャッシュする必要があります
+- Azure Ultra Disk
+- /hana/log および /hana/data 用の Azure NetApp Files の上にある NFS v4.1 のボリューム
+
+ストレージの種類によっては、組み合わせることができます。 例: /hana/data を Premium Storage に配置することができます。また、必須の低待機時間を確保するために、/hana/log を Ultra Disk ストレージ上に配置することもできます。 ただし、たとえば hana/data に対しては NFS ボリュームを使用し、/hana/log に対しては認定された他の種類のストレージのいずれか 1 つを使用するという混在はお勧めできません。
 
 オンプレミスでは、I/O サブシステムとその機能を気にする必要はほとんどありませんでした。 SAP HANA に対する最低限のストレージ要件が満たされていることを、アプライアンスのベンダーが保証する必要があったためです。 Azure インフラストラクチャを自身で構築する場合は、これらの要件の一部に注意する必要があります。 求められる一部の最小スループット特性により、次のことを行う必要があります。
 
@@ -56,6 +63,18 @@ DBMS システムではストレージの待ち時間が短いことが重要で
 
 RAID の下の Azure VHD の数を増やすと、IOPS とストレージ スループットが累積されます。 そのため、3 つの Azure Premium Storage P30 ディスクで RAID 0 を構成した場合、1 つの Azure Premium Storage P30 ディスクの 3 倍の IOPS と 3 倍のストレージ スループットが得られます。
 
+また、VM のサイズ設定や VM の決定を行うときには全体的な VM I/O スループットも考慮してください。 VM の全体的なストレージ スループットについては、「[メモリ最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)」をご覧ください。
+
+## <a name="linux-io-scheduler-mode"></a>Linux I/O Scheduler モード
+Linux には、数種類の I/O スケジューリング モードがあります。 Linux ベンダーおよび SAP が一般的に推奨しているのは、ディスク ボリュームの I/O スケジューラ モードを **cfq** モードから **noop** モードに再構成することです。 詳細については、[SAP ノートの #1984798](https://launchpad.support.sap.com/#/notes/1984787) を参照してください。 
+
+
+## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Azure M シリーズ仮想マシン用の Azure 書き込みアクセラレータおよび Premium Storage を使用するソリューション
+Azure 書き込みアクセラレータは、Azure M シリーズ VM 専用に提供される機能です。 名前が示すように、この機能の目的は、Azure Premium Storage に対する書き込みの I/O 待機時間を短縮することです。 SAP HANA の場合、書き込みアクセラレータは **/hana/log** ボリュームに対してのみ使用する必要があります。 したがって、 **/hana/data** と **/hana/log** は別々のボリュームであり、Azure 書き込みアクセラレータは **/hana/log** ボリュームのみをサポートします。 
+
+> [!IMPORTANT]
+> Azure Premium Storage を使用する場合は、Azure [書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)または /hana/log ボリュームの使用が必須です。 書き込みアクセラレータは、Premium Storage と、M シリーズおよび Mv2 シリーズの VM でのみ使用できます。
+
 下に示すキャッシュの推奨事項は、次のような SAP HANA の I/O 特性を前提にしています。
 
 - HANA データ ファイルに対する読み取りワークロードはほとんどありません。 例外は、HANA インスタンスの再開後や、データが HANA に読み込まれたときの、大きなサイズの I/O です。 データ ファイルに対する大きな読み取り I/O の別のケースとして、HANA データベースのバックアップがあり得ます。 結果として、大部分のケースではすべてのデータ ファイル ボリュームを完全に読み取る必要があるため、読み取りキャッシュはほとんど意味がありません。
@@ -67,24 +86,18 @@ RAID の下の Azure VHD の数を増やすと、IOPS とストレージ スル�
 **推奨事項:これらの観察された SAP HANA の I/O パターンの結果として、Azure Premium Storage を使用したさまざまなボリュームに対するキャッシュを次のように設定する必要があります。**
 
 - **/hana/data** - キャッシュなし
-- **/hana/log** - キャッシュなし - M シリーズに対する例外 (このドキュメントの後半を参照)
+- **/hana/log** - キャッシュなし - M シリーズおよび Mv2 シリーズの場合は例外。これらに対して書き込みアクセラレータはキャッシュ機能として有効にされます
 - **/hana/shared** - 読み取りキャッシュ
 
-
-また、VM のサイズ設定や VM の決定を行うときには全体的な VM I/O スループットも考慮してください。 VM の全体的なストレージ スループットについては、「[メモリ最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)」をご覧ください。
-
-## <a name="linux-io-scheduler-mode"></a>Linux I/O Scheduler モード
-Linux には、数種類の I/O スケジューリング モードがあります。 Linux ベンダーおよび SAP が一般的に推奨しているのは、ディスク ボリュームの I/O スケジューラ モードを **cfq** モードから **noop** モードに再構成することです。 詳細については、[SAP ノートの #1984798](https://launchpad.support.sap.com/#/notes/1984787) を参照してください。 
-
-
-## <a name="production-storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Azure M シリーズ仮想マシンの Azure 書き込みアクセラレータを使用する運用環境ストレージ ソリューション
-Azure 書き込みアクセラレータは、Azure M シリーズ VM 専用にロールアウトされる機能です。 名前が示すように、この機能の目的は、Azure Premium Storage に対する書き込みの I/O 待機時間を短縮することです。 SAP HANA の場合、書き込みアクセラレータは **/hana/log** ボリュームに対してのみ使用する必要があります。 したがって、 **/hana/data** と **/hana/log** は別々のボリュームであり、Azure 書き込みアクセラレータは **/hana/log** ボリュームのみをサポートします。 
+### <a name="production-recommended-storage-solution"></a>運用環境で推奨されるストレージ ソリューション
 
 > [!IMPORTANT]
 > Azure M シリーズ仮想マシンの SAP HANA 認定は、 **/hana/log** ボリュームに Azure 書き込みアクセラレータを使用している場合に限定されます。 そのため、運用環境シナリオでの Azure M シリーズ仮想マシンへの SAP HANA のデプロイは、 **/hana/log** ボリュームに Azure 書き込みアクセラレータを使用して構成することが求められます。  
 
 > [!NOTE]
 > 運用環境シナリオでは、[IAAS に関する SAP ドキュメント](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)で、特定の VM の種類が SAP HANA でサポートされているかどうかを確認してください。
+
+
 
 **推奨事項:運用環境シナリオで推奨される構成は次のようになります。**
 
@@ -119,7 +132,7 @@ Azure 書き込みアクセラレータの詳細と制限事項についても�
 **推奨事項:/hana/log ボリュームを形成するディスクには、書き込みアクセラレータを使用する必要があります**
 
 
-## <a name="cost-conscious-azure-storage-configuration"></a>コストを意識した Azure Storage 構成
+### <a name="cost-conscious-azure-storage-configuration"></a>コストを意識した Azure Storage 構成
 次の表に、顧客が Azure VM 上で SAP HANA をホストする際にも使用する VM の種類ごとの構成を示します。 VM の種類によっては、SAP HANA のストレージの最低条件をすべて満たしていないものも、SAP HANA と一緒に使用することが SAP で公式にサポートされていないものもあります。 ただし、これまでのところ、これらの VM は、運用環境以外のシナリオで問題なく動作しているように思われました。 **/hana/data** と **/hana/log** は 1 つのボリュームに結合されます。 そのため、Azure 書き込みアクセラレータの使用は IOPS の観点から制限となる可能性があります。
 
 > [!NOTE]
@@ -161,7 +174,7 @@ VM の種類 M416xx_v2 は、まだ Microsoft から一般提供されていま�
 >  
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>SAP HANA 用の Azure Ultra Disk ストレージ構成
-Microsoft は、[Azure Ultra Disk](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#ultra-disk) と呼ばれる新しい Azure ストレージの種類をロール アウトしています。 これまでに提供されていた Azure Storage と Ultra Disk との大きな違いは、ディスク機能がディスク サイズにバインドされなくなることです。 顧客として、Ultra Disk に次の機能を定義できます。
+Microsoft は、[Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) と呼ばれる新しい Azure ストレージの種類をロール アウトしています。 これまでに提供されていた Azure Storage と Ultra Disk との大きな違いは、ディスク機能がディスク サイズにバインドされなくなることです。 顧客として、Ultra Disk に次の機能を定義できます。
 
 - 4 GiB から 65,536 GiB のディスク範囲のサイズ
 - 100 IOPS から 160K IOPS の IOPS の範囲 (最大値は VM の種類によっても異なる)
@@ -169,28 +182,71 @@ Microsoft は、[Azure Ultra Disk](https://docs.microsoft.com/en-us/azure/virtua
 
 Ultra Disk によって、自分のサイズ、IOPS、ディスク スループットの範囲を実行する 1 つのディスクを定義することができます。 Azure Premium Storage 上の LVM または MDADM などの論理ボリュームを使用する代わりに、IOPS とストレージ スループットの要件を満たすボリュームを構築します。 Ultra Disk と Premium Storage との間の構成の組み合わせを実行できます。 その結果、Ultra Disk の使用をパフォーマンス クリティカルの /hana/data と /hana/log ボリュームに制限し、Azure Premium Storage を使用したその他のボリュームをカバーすることができます
 
+Ultra Disk のその他の利点は、Premium Storage と比較して読み取り待機時間が短いことです。 読み取り待機時間が短いということは、HANA の起動時間とその後のメモリへのデータの読み込み時間を短縮する必要がある場合に利点があります。 Ultra Disk ストレージの利点は、HANA によってセーブポイントが書き込まれているときにも感じることができます。 /hana/data 用の Premium Storage ディスクは、通常、書き込みアクセラレータでキャッシュされないため、Ultra Disk と比較して Premium Storage 上の/hana/data への書き込み待機時間は長くなります。 Ultra Disk でのセーブポイントの書き込みにより、Ultra Disk でのパフォーマンスが向上することが期待できます。
+
 > [!IMPORTANT]
-> Ultra Disk は、すべての Azure リージョンにはまだ存在しておらず、VM の種類もまだすべてはサポートされていません。 使用可能な Ultra Disk、サポートされている VM ファミリの詳細については、「[Azure で利用できるディスクの種類](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#ultra-disk)」を参照してください。
+> Ultra Disk は、まだ、すべての Azure リージョンには存在しておらず、すべての種類の VM がサポートされているわけでもありません。 使用可能な Ultra Disk、サポートされている VM ファミリの詳細については、「[Azure で利用できるディスクの種類](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)」を参照してください。
+
+### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>純粋な Ultra Disk 構成を使用した運用環境で推奨されるストレージ ソリューション
+この構成では、/hana/data ボリュームと /hana/log ボリュームを別々に保持します。 推奨値は、[SAP TDI ストレージに関するホワイトペーパー](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) で推奨されているように SAP HANA およびストレージ構成に対して VM の種類を認定するために SAP が用意している KPI から導出されます。
 
 | VM の SKU | RAM | 最大 VM I/O<br /> スループット | /hana/data volume | /hana/data I/O throughput | /hana/data IOPS | /hana/log volume | /hana/log I/O throughput | /hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E64s_v3 | 432 GiB | 1,200 MB/秒 | 600 GB | 700 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
-| M32ts | 192 GiB | 500 MB/秒 | 250 GB | 500 MBps | 7500 | 256 GB | 500 MBps  | 2000 |
-| M32ls | 256 GiB | 500 MB/秒 | 300 GB | 500 MBps | 7500 | 256 GB | 500 MBps  | 2000 |
-| M64ls | 512 GiB | 1000 MB/秒 | 600 GB | 500 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
-| M64s | 1000 GiB | 1,000 MB/秒 |  1200 GB | 500 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
-| M64ms | 1750 GiB | 1,000 MB/秒 | 2100 GB | 500 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
-| M128s | 2000 GiB | 2,000 MB/秒 |2400 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 2000 | 
-| M128ms | 3800 GiB | 2,000 MB/秒 | 4800 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 2000 | 
-| M208s_v2 | 2850 GiB | 1,000 MB/秒 | 3500 GB | 1000 MBps | 9000 | 512 GB | 500 MBps  | 2000 | 
-| M208ms_v2 | 5700 GiB | 1,000 MB/秒 | 7200 GB | 1000 MBps | 9000 | 512 GB | 500 MBps  | 2000 | 
-| M416s_v2 | 5700 GiB | 2,000 MB/秒 | 7200 GB | 1500 MBps | 9000 | 512 GB | 800 MBps  | 2000 | 
-| M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 14400 GB | 1500 MBps | 9000 | 512 GB | 800 MBps  | 2000 |   
+| M32ts | 192 GiB | 500 MB/秒 | 250 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2000 |
+| M32ls | 256 GiB | 500 MB/秒 | 300 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2000 |
+| M64ls | 512 GiB | 1000 MB/秒 | 600 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
+| M64s | 1000 GiB | 1,000 MB/秒 |  1200 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
+| M64ms | 1750 GiB | 1,000 MB/秒 | 2100 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
+| M128s | 2000 GiB | 2,000 MB/秒 |2400 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 3000 | 
+| M128ms | 3800 GiB | 2,000 MB/秒 | 4800 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 3000 | 
+| M208s_v2 | 2850 GiB | 1,000 MB/秒 | 3500 GB | 1000 MBps | 9000 | 512 GB | 400 MBps  | 2500 | 
+| M208ms_v2 | 5700 GiB | 1,000 MB/秒 | 7200 GB | 1000 MBps | 9000 | 512 GB | 400 MBps  | 2500 | 
+| M416s_v2 | 5700 GiB | 2,000 MB/秒 | 7200 GB | 1500 MBps | 9000 | 512 GB | 800 MBps  | 3000 | 
+| M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 14400 GB | 1500 MBps | 9000 | 512 GB | 800 MBps  | 3000 |   
 
 VM の種類 M416xx_v2 は、まだ Microsoft から一般提供されていません。 一覧の値は開始位置になることが意図されており、実際の要求に対して評価される必要があります。 Azure Ultra Disk を使用する利点は、VM または停止しているシステムに適用されたワークロードをシャットダウンする必要なく、IOPS とスループットの値を適用できることです。   
 
 > [!NOTE]
 > これまでのところ、Ultra Disk ストレージでのストレージ スナップショットは利用できません。 これにより、Azure Backup Services での VM スナップショットの使用はブロックされます。
+
+### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>純粋な Ultra Disk 構成を使用した運用環境で推奨されるストレージ ソリューション
+この構成では、/hana/data ボリュームと /hana/log ボリュームを同じディスク上で使用します。 推奨値は、[SAP TDI ストレージに関するホワイトペーパー](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) で推奨されているように SAP HANA およびストレージ構成に対して VM の種類を認定するために SAP が用意している KPI から導出されます。
+
+| VM の SKU | RAM | 最大 VM I/O<br /> スループット | /hana/data および hana/log 用のボリューム | /hana/data とログ I/O のスループット | /hana/data と log IOPS |
+| --- | --- | --- | --- | --- | --- |
+| E64s_v3 | 432 GiB | 1,200 MB/秒 | 1,200 GB | 1,200 MBps | 9,500 | 
+| M32ts | 192 GiB | 500 MB/秒 | 512 GB | 400 MBps | 9,500 | 
+| M32ls | 256 GiB | 500 MB/秒 | 600 GB | 400 MBps | 9,500 | 
+| M64ls | 512 GiB | 1,000 MB/秒 | 1,100 GB | 900 MBps | 10,000 | 
+| M64s | 1000 GiB | 1,000 MB/秒 |  1,700 GB | 900 MBps | 10,000 | 
+| M64ms | 1750 GiB | 1,000 MB/秒 | 2,600 GB | 900 MBps | 10,000 | 
+| M128s | 2000 GiB | 2,000 MB/秒 |2,900 GB | 1,800 MBps |12,000 | 
+| M128ms | 3800 GiB | 2,000 MB/秒 | 5,300 GB | 1,800 MBps |12,000 |  
+| M208s_v2 | 2850 GiB | 1,000 MB/秒 | 4,000 GB | 900 MBps | 10,000 |  
+| M208ms_v2 | 5700 GiB | 1,000 MB/秒 | 7,700 GB | 900 MBps | 10,000 | 
+| M416s_v2 | 5700 GiB | 2,000 MB/秒 | 7,700 GB | 1,800 MBps | 12,000 |  
+| M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 15,000 GB | 1,800 MBps | 12,000 |    
+
+VM の種類 M416xx_v2 は、まだ Microsoft から一般提供されていません。 一覧の値は開始位置になることが意図されており、実際の要求に対して評価される必要があります。 Azure Ultra Disk を使用する利点は、VM または停止しているシステムに適用されたワークロードをシャットダウンする必要なく、IOPS とスループットの値を適用できることです。  
+
+## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Azure NetApp Files 上の NFS v4.1 ボリューム
+Azure NetApp Files には、/hana/shared、/hana/data、/hana/log の各ボリュームに使用できるネイティブ NFS 共有が用意されています。 これらのボリュームに ANF ベースの NFS 共有を使用するには、v4.1 NFS プロトコルを使用する必要があります。 ANF に基づいて共有を行う場合、HANA 関連のボリュームの使用に対して NFS プロトコル v3 はサポートされていません。 
+
+> [!IMPORTANT]
+> Azure NetApp Files に実装されている NFS v3 プロトコルは、/hana/shared、/hana/data、および /hana/log に対してはサポートされていないため使用できません
+
+ストレージの待機時間の要件を満たすために、それらの NFS ボリュームを SAP HANA に使用する VM は ANF インフラストラクチャに近接していることが不可欠です。 これを実現するには、ANF インフラストラクチャの近くに Microsoft の助けを借りて VM を配置する必要があります。 そのような近接配置を Microsoft が実行できるようにするために、Microsoft では、何らかのデータと空の Azure 可用性セットをお客様に求めるフォームを発行します。 次に Microsoft は、必要に応じて、ANF インフラストラクチャの近くに可用性セットを配置します。 
+
+ANF インフラストラクチャでは、さまざまなパフォーマンス カテゴリが提供されます。 これらのカテゴリについては、「[Azure NetApp Files のサービス レベル](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)」を参照してください。 
+
+> [!NOTE]
+> /hana/data と /hana/log には、ANF Ultra ストレージ カテゴリを使用することをお勧めします。 /hana/shared の場合、standard または premium のカテゴリで十分です
+
+ANF ベースの NFS ボリュームの推奨スループットに対する推奨事項が間もなく公開される予定です。
+
+n+m HANA のスケールアウト構成を作成する方法について説明するドキュメントが間もなく公開される予定です。
+
 
 ## <a name="next-steps"></a>次の手順
 詳細については、次を参照してください。

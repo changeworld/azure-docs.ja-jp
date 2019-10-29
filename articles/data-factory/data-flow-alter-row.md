@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory の Mapping Data Flow の行の変更変換
-description: Azure Data Factory の Mapping Data Flow の行の変更変換を使用してデータベースのターゲットを更新する方法
+title: Azure Data Factory のマッピング データ フローの行の変更変換
+description: Azure Data Factory のマッピング データ フローの行の変更変換を使用してデータベースのターゲットを更新する方法
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fc497837792075501bcd92f6ee07ad9ee4fe2dfa
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027011"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72387261"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory の行の変更変換
 
@@ -19,7 +19,7 @@ ms.locfileid: "72027011"
 
 
 
-![行設定の変更](media/data-flow/alter-row1.png "行設定の変更")
+![行の変更の設定](media/data-flow/alter-row1.png "行の変更の設定")
 
 > [!NOTE]
 > 行の変更変換は、自分のデータ フローのデータベース シンクでのみ動作します。 行に割り当てるアクション (挿入、更新、削除、アップサート) は、デバッグ セッション中に発生することはありません。 Execute Data Flow タスクをパイプラインに追加し、パイプラインのデバッグまたはトリガーを使用して、ご利用のデータベース テーブルで行ポリシーの変更を適用する必要があります。
@@ -28,7 +28,7 @@ ms.locfileid: "72027011"
 
 行の変更変換を作成し、`true()` の条件を持つ行ポリシーを指定します。 以前に定義された式のいずれにも一致しない行はそれぞれ、指定された行ポリシー用にマークされます。 既定では、どの条件式も満たさない行はそれぞれ、`Insert` 用にマークされます。
 
-![行を変更する 1 つのポリシー](media/data-flow/alter-row4.png "行を変更する 1 つのポリシー")
+![行の変更を行う 1 つのポリシー](media/data-flow/alter-row4.png "行の変更を行う 1 つのポリシー")
 
 > [!NOTE]
 > すべての行を 1 つのポリシーでマークするには、そのポリシーの条件を作成し、条件を `true()` として指定します。
@@ -37,7 +37,7 @@ ms.locfileid: "72027011"
 
 Data Flow のデバッグ モードをオンにして、[データ プレビュー] ウィンドウで行ポリシーの変更の結果を表示します。 Data Flow のデバッグ モードで行の変更を実行しても、自分のターゲットに対して DDL アクションや DML アクションは生成されません。 このようなアクションを発生させるには、パイプライン内の Execute Data Flow アクティビティの内部でデータ フローを実行します。
 
-![行ポリシーの変更](media/data-flow/alter-row3.png "行ポリシーの変更")
+![行の変更を行う複数のポリシー](media/data-flow/alter-row3.png "行の変更を行う複数のポリシー")
 
 これにより、条件に基づいて各行の状態を確認して表示できるようになります。 データ フローで発生する挿入、更新、削除、アップサート アクションごとに、それを表すアイコンがあり、パイプライン内でデータ フローを実行するときに発生しているアクションを示します。
 
@@ -45,7 +45,7 @@ Data Flow のデバッグ モードをオンにして、[データ プレビュ�
 
 行の変更を動作させるために、データベース シンクの種類を設定する必要があります。 シンクの設定で、行の変更条件に対応する各アクションが許可されるように設定する必要があります。
 
-![行シンクの変更](media/data-flow/alter-row2.png "行シンクの変更")
+![行の変更のシンク](media/data-flow/alter-row2.png "行の変更のシンク")
 
 データベース シンクを使用した ADF Data Flow 内の既定の動作は、行を挿入するためのものです。 更新、アップサート、削除も許可する場合、アクションを許可するシンクでこれらのチェック ボックスもオンにする必要があります。
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/08/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 433bcd31399d8443355edcb2e8586993644174ca
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6870297eea194b89a84a89e1e8ef8decf5c1788e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242353"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374541"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -34,6 +34,7 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | **Enterprise Agreement (EA)** | [Microsoft Azure エンタープライズ](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 年 5 月<sup>1</sup> |
 | **Microsoft 顧客契約** | [Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | 該当なし | 2019 年 3 月<sup>3</sup> |
 | **Microsoft 顧客契約** | [Dev/Test 用 Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | 該当なし | 2019 年 3 月<sup>3</sup> |
+| **Microsoft パートナー契約** | Microsoft Azure プラン | CSP_2015-05-01、CSP_MG_2017-12-01、CSPDEVTEST_2018-05-01 | 該当なし | 2019 年 10 月 |
 | **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2018 年 10 月 2 日<sup>2</sup> |
 | **従量課金制** | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2018 年 10 月 2 日<sup>2</sup> |
 | **従量課金制** | [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2018 年 10 月 2 日<sup>2</sup> |

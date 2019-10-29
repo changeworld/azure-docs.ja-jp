@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: 2d90fe4d40c51b21deea23675d6b51b972429237
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ec5ff756d7e732430675676868bc754627a2a4a1
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390239"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429029"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
@@ -91,7 +91,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 ## <a name="step-3-view-results"></a>手順 3:結果の表示
 
-すべての POST 要求で、ID と検出されたプロパティを含む JSON 形式の応答が返されます。
+すべての POST 要求で、ID と検出されたプロパティを含む JSON 形式の応答が返されます。 返されるキー フレーズの順序は、モデル別に内部的に決定されます。
 
 出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。
 

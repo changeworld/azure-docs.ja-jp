@@ -7,16 +7,19 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676595"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311801"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
 Windows Virtual Desktop サービスでは、ユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが推奨されています。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 1 つのコンテナーに完全なユーザー プロファイルが格納されます。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。 この記事では、Windows Virtual Desktop の Azure Files 機能で FSLogix プロファイル コンテナーが使用される方法について説明します。
+
+>[!NOTE]
+>Azure 上の FSLogix プロファイル コンテナーのさまざまなストレージ オプションに関する比較資料をお探しの場合は、「[FSLogix プロファイル コンテナー用のストレージ オプション](store-fslogix-profile.md)」を参照してください。
 
 ## <a name="user-profiles"></a>ユーザー プロファイル
 

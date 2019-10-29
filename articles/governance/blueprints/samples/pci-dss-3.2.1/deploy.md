@@ -1,18 +1,18 @@
 ---
-title: サンプル - PCI-DSS v3.2.1 ブループリント - デプロイ手順
-description: Payment Card Industry Data Security Standard v3.2.1 のブループリント サンプルのデプロイ手順。
+title: PCI DSS v 3.2.1 のブループリント サンプル - デプロイ手順
+description: ブループリント アーティファクトのパラメーターの詳細を含む、Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルのデプロイ手順。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980920"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299033"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 のブループリント サンプルのデプロイ
 
@@ -100,7 +100,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |\[プレビュー\] PCI v3.2.1:2018 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシーの割り当て|リソースの種類の一覧 | 選択したリソースの種類の診断設定の監査。 既定値では、すべてのリソースが選択されています| 
 |許可される場所|ポリシーの割り当て|許可される場所の一覧|任意のリソースのデプロイ先として許可されているデータ センターの場所の一覧。 この一覧は、目的の Azure の場所に合わせてグローバルにカスタマイズできます。 許可したい場所を選択してください。| 
 |リソース グループが許可される場所|ポリシーの割り当て |許可される場所 |このポリシーでは、組織がリソース グループを作成できる場所を制限できます。 geo コンプライアンス要件を強制するために使用されます。| 
-|SQL サーバーでの監査のデプロイ|ポリシーの割り当て|保持日数|日数でのデータ保持期間。 既定値は 180 ですが、PCI では 365 が必要です。| 
+|SQL サーバーでの監査のデプロイ|ポリシーの割り当て|保持日数|データ保持期間 (日数)。 既定値は 180 ですが、PCI では 365 が必要です。| 
 |SQL サーバーでの監査のデプロイ|ポリシーの割り当て|ストレージ アカウントのリソース グループ名|監査によって、Azure Storage アカウントの監査ログにデータベース イベントが書き込まれます (ストレージ アカウントは、SQL Server が作成された各リージョンに作成され、そのリージョン内のすべてのサーバーによって共有されます)。| 
 
 ## <a name="next-steps"></a>次の手順

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: d43fe7f1f0fc63ab50821a345802a9e7e62881b2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169483"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372559"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -197,7 +197,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 **上のメソッドを使用してサンプリングを構成する場合は、AddApplicationInsightsTelemetry() で ```aiOptions.EnableAdaptiveSampling = false;``` 設定を使用するようにしてください。**
 
-## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites"></a>ASP.NET、ASP.NET Core、および Java Web サイトのための固定レート サンプリング
+## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications"></a>ASP.NET、ASP.NET Core、Java Web サイト、および Python アプリケーションのための固定レート サンプリング
 
 固定レート サンプリングは、Web サーバーおよび Web ブラウザーから送信されるトラフィックを削減します。 アダプティブ サンプリングとは異なり、管理者によって決定された固定レートでテレメトリを削減します。 また、クライアントとサーバーのサンプリングが同期されて、関連する項目が維持されます。たとえば、検索でページ ビューを見るとき、それに関連する要求を検索できます。
 
@@ -336,7 +336,27 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 <a name="other-web-pages"></a>
 
+### <a name="configuring-fixed-rate-sampling-in-opencensus-python"></a>OpenCensus Python での固定レート サンプリングの構成 ###
 
+1. 最新の [OpenCensus Azure Monitor エクスポーター](../../azure-monitor/app/opencensus-python.md)を使用してアプリケーションをインストルメント化します。
+
+> [!NOTE]
+> 固定レート サンプリングは、トレース エクスポーターを使用した場合にのみ使用できます。 つまり、受信要求と送信要求のみが、サンプリングを構成できるテレメトリの種類です。
+> 
+> 
+
+2. `Tracer` 構成の一部として `sampler` を指定できます。 明示的なサンプラーが指定されていない場合は、既定で ProbabilitySampler が使用されます。 ProbabilitySampler では、既定で 1/10,000 のレートが使用されます。これは、10,000 の要求のうちの 1 つが Application Insights に送信されることを意味します。 サンプリング レートを指定する場合は、以下を参照してください。
+
+3. サンプラーを指定する場合は、サンプリング レートが 0.0 から 1.0 の範囲であるサンプラーを `Tracer` に 指定していることを確認します。 サンプリング レート 1.0 は 100% を表します。つまり、すべての要求は Application Insights にテレメトリとして送信されます。
+
+    ```python
+    tracer = Tracer(
+        exporter=AzureExporter(
+            instrumentation_key='00000000-0000-0000-0000-000000000000',
+        ),
+        sampler=ProbabilitySampler(1.0),
+    )
+    ```
 
 ## <a name="ingestion-sampling"></a>インジェスト サンプリング
 
@@ -487,7 +507,7 @@ Azure Functions で実行されているアプリに対してサンプリング�
 
 *テレメトリを複数回サンプリングできますか*
 
-* いいえ。 ある項目が既にサンプリングされている場合、SamplingTelemetryProcessor はサンプリングの検討からその項目を無視します。 同じことがインジェスト サンプリングにも当てはまります。これにより、SDK 自体で既にサンプリングされている項目にはサンプリングが適用されません。
+* No. ある項目が既にサンプリングされている場合、SamplingTelemetryProcessor はサンプリングの検討からその項目を無視します。 同じことがインジェスト サンプリングにも当てはまります。これにより、SDK 自体で既にサンプリングされている項目にはサンプリングが適用されません。
 
 *サンプリングを、"各テレメトリ タイプの X% を収集" という単純な方法にしないのはなぜですか。*
 

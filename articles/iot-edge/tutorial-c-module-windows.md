@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b69000e251bb71bc08ea97b24a7422daf2cd89e4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: fdd1aeea20160bb1a9f91de934bd9268a179648a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813816"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529244"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C IoT Edge モジュールを開発する
 
@@ -92,7 +92,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
    ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-c-module-windows/add-application-and-module.png)
 
-5. **[OK]** を選択して変更を適用します。 
+5. **[追加]** を選択してプロジェクトを作成します。 
 
 ### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
 

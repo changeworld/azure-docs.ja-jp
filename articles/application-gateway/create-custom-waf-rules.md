@@ -1,5 +1,5 @@
 ---
-title: Azure Web アプリケーション ファイアウォール (WAF) v2 のカスタム規則の作成と使用
+title: Azure Web アプリケーション ファイアウォール (WAF) v2 のカスタム規則を作成して使用する
 description: この記事では、Azure Application Gateway で Web アプリケーション ファイアウォール (WAF) v2 のカスタム規則を作成する方法について説明します。
 services: application-gateway
 ms.topic: article
@@ -7,27 +7,27 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: bfd2154216e679b3074d36ea3b49c69ff5a92da8
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 8cf82ce9ed4a9dc701c016f15224d6adfa299736
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937181"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263585"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web アプリケーション ファイアウォール v2 のカスタム規則の作成と使用
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web アプリケーション ファイアウォール v2 のカスタム規則を作成して使用する
 
-Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) v2 では、Web アプリケーションが保護されます。 この保護は、Open Web Application Security Project (OWASP) コア規則セット (CRS) によって提供されます。 場合によっては、特定のニーズを満たすために、独自のカスタム規則を作成する必要があります。 WAF のカスタム規則の詳細については、[Web アプリケーション ファイアウォールのカスタム規則の概要](custom-waf-rules-overview.md)に関する記事を参照してください。
+Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) v2 は、Web アプリケーションの保護を提供します。 この保護は、Open Web Application Security Project (OWASP) コア規則セットによって提供されます。 場合によっては、特定のニーズを満たすために、独自のカスタム規則を作成する必要があります。 WAF のカスタム規則の詳細については、[Web アプリケーション ファイアウォールのカスタム規則の概要](custom-waf-rules-overview.md)に関する記事を参照してください。
 
-この記事では、WAF v2 で作成および使用できるカスタム規則の例を示します。 Azure PowerShell を使用して WAF にカスタム規則をデプロイする方法については、[Azure PowerShell を使用した Web アプリケーション ファイアウォールのカスタム規則の構成](configure-waf-custom-rules.md)に関する記事を参照してください。
+この記事では、WAF v2 で作成して使用できるカスタム規則のいくつかの例を示しています。 Azure PowerShell を使って、カスタム規則で WAF をデプロイする方法については、[Azure PowerShell を使用した Web アプリケーション ファイアウォールのカスタム規則の構成](configure-waf-custom-rules.md)に関する記事を参照してください。
 
->[!NOTE]
-> アプリケーション ゲートウェイが WAF レベルを使用していない場合、アプリケーション ゲートウェイを WAF レベルにアップグレードするオプションが右側のウィンドウに表示されます。
+> [!NOTE]
+> アプリケーション ゲートウェイが WAF 層を使用していない場合は、アプリケーション ゲートウェイを WAF 層にアップグレードするオプションが右側のウィンドウに表示されます。
 
 ![WAF を有効にする][fig1]
 
 ## <a name="example-1"></a>例 1
 
-*evilbot* という名前のボットがあることが分かっており、このボットによる Web サイトのクロールをブロックしたいとします。 この場合は、要求ヘッダーで User-Agent *evilbot* をブロックします。
+*evilbot* という名前のボットがあることが分かっており、このボットによる Web サイトのクロールをブロックしたいとします。 この例では、要求ヘッダーで User-Agent の *evilbot* をブロックします。
 
 ロジック: p
 
@@ -51,7 +51,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-対応する JSON を次に示します。
+対応する JSON コードを次に示します。
 
 ```json
   {
@@ -75,7 +75,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-このカスタム規則を使用してデプロイされた WAF を確認するには、[Azure PowerShell を使用した Web アプリケーション ファイアウォールのカスタム規則の構成](configure-waf-custom-rules.md)に関する記事を参照してください。
+このカスタム規則を使用してデプロイされた WAF を表示するには、[Azure PowerShell を使用した Web アプリケーション ファイアウォールのカスタム規則の構成](configure-waf-custom-rules.md)に関する記事を参照してください。
 
 ### <a name="example-1a"></a>例 1a
 
@@ -101,7 +101,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-対応する JSON を次に示します。
+対応する JSON コードを次に示します。
 
 ```json
   {
@@ -129,7 +129,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 範囲 198.168.5.0/24 内の IP アドレスからのすべての要求をブロックしたいとします。
 
-この例では、ある IP アドレス範囲が発信元であるすべてのトラフィックをブロックします。 規則の名前は *myrule1* で、優先度は 100 に設定されます。
+この例では、ある IP アドレス範囲が発信元であるすべてのトラフィックをブロックします。 規則の名前は *myrule1* で、優先度は 100 に設定されています。
 
 ロジック: p
 
@@ -151,7 +151,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-対応する JSON を次に示します。
+対応する JSON コードを次に示します。
 
 ```json
   {
@@ -175,13 +175,15 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-対応する CRS 規則: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+対応するコア規則セットの規則を次に示します。
+
+  `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>例 3
 
-この例では、User-Agent *evilbot* と、範囲 192.168.5.0/24 内のトラフィックをブロックしたいとします。 これを行うには、2 つの個別の一致条件を作成し、両方を同じ規則に配置します。 これにより、User-Agent ヘッダー内の *evilbot* **および**範囲 192.168.5.0/24 からの IP アドレスの両方が一致した場合、要求がブロックされることが保証されます。
+この例では、User-Agent *evilbot* と、範囲 192.168.5.0/24 内のトラフィックをブロックしたいとします。 この結果を得るためには、2 つの別々の一致条件を作成し、それらを両方とも同じ規則に入れます。 この方法を使用すると、User-Agent ヘッダー内の *evilbot* *と*範囲 192.168.5.0/24 の IP アドレスの両方が一致すると、要求が確実にブロックされます。
 
-ロジック: p **かつ** q
+ロジック: p *かつ* q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -212,7 +214,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
    -Action Block
 ```
 
-対応する JSON を次に示します。
+対応する JSON コードを次に示します。
 
 ```json
 { 
@@ -251,9 +253,9 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-4"></a>例 4
 
-この例では、要求が IP アドレス範囲 *192.168.5.0/24* の外であるか、またはユーザー エージェント文字列が *chrome* でない (つまり、ユーザーが Chrome ブラウザーを使用していない) 場合にブロックしたいとします。 このロジックは "**または**" を使用するため、次の例で示しているように、2 つの条件は別々の規則内にあります。 トラフィックをブロックするには、*myrule1* と *myrule2* の両方が一致する必要があります。
+この例では、要求が IP アドレス範囲 *192.168.5.0/24* の外の場合、またはユーザー エージェント文字列が *chrome* でない (つまり、ユーザーが Chrome ブラウザーを使用していない) 場合にブロックしたいとします。 このロジックでは "*または*" を使用しているため、次の例に示すように、2 つの条件は別々の規則内にあります。 トラフィックをブロックするには、*myrule1* と *myrule2* の両方が一致する必要があります。
 
-ロジック: (p **かつ** q) **でない** = p **でない**または q **でない**
+ロジック: (p *かつ* q) *でない* = p *でない*または q *でない*
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -291,7 +293,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-対応する JSON を次に示します。
+対応する JSON コードを次に示します。
 
 ```json
 {
@@ -338,9 +340,9 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-5"></a>例 5
 
-カスタム SQLI をブロックしたいとします。 ここで使用されるロジックは "**または**" であり、すべての値は *RequestUri* 内にあるため、すべての *MatchValue* はコンマ区切りリストに含まれる可能性があります。
+カスタム SQLI をブロックしたいとします。 ここで使用されるロジックは "*または*" であり、すべての値は *RequestUri* 内にあるため、すべての *MatchValue* はコンマ区切りリストに含めることができます。
 
-ロジック: p **または** q **または** r
+ロジック: p *または* q *または* r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -359,7 +361,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-対応する JSON:
+対応する JSON コードを次に示します。
 
 ```json
   {
@@ -385,7 +387,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-代替の Azure PowerShell:
+代替の Azure PowerShell コードを次に示します。
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -436,7 +438,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-対応する JSON:
+対応する JSON コードを次に示します。
 
 ```json
   {

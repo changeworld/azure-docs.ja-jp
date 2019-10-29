@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 08/01/2019
+ms.date: 10/15/2019
 ms.author: aahi
-ms.openlocfilehash: 28dbcde723e25577545cfd44fed9ef00249d8f30
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 926d7043ea6f56c1ba6d13fd4586fc6f6d59cfa8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694906"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554714"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>クイック スタート:Python 用 Anomaly Detector クライアント ライブラリ
 
@@ -26,7 +26,7 @@ Python 用 Anomaly Detector クライアント ライブラリは、次の目的
 * バッチ要求として、時系列データセット全体で異常を検出する
 * 時系列で最新のデータ ポイントの異常状態を検出する
 
-[ライブラリのリファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [パッケージ (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [サンプル](https://github.com/Azure-Samples/anomalydetector)
+[ライブラリのリファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [パッケージ (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [コード サンプル](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,11 +40,9 @@ Python 用 Anomaly Detector クライアント ライブラリは、次の目的
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-試用版のサブスクリプションまたはリソースからキーを取得した後、`ANOMALY_DETECTOR_KEY` という名前のキーの[環境変数を作成](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)します。
-
 ### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
 
- お気に入りのエディターまたは IDE で、新しい Python アプリケーションを作成します。 次に、次のライブラリをインポートします。
+ 新しい Python ファイルを作成して次のライブラリをインポートします。
 
 [!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
 
@@ -114,7 +112,7 @@ Anomaly Detector API を呼び出し、クライアントの [last_detect()](htt
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-IDE で、またはコマンド ラインで `python` コマンドとファイル名を指定して、アプリケーションを実行します。
+`python` コマンドとファイル名を使用してアプリケーションを実行します。
  
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

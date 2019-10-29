@@ -42,6 +42,8 @@
           items:
             - name: カタログ作成者への委任
               href: entitlement-management-delegate-catalog.md
+            - name: 接続されている組織の追加
+              href: entitlement-management-organization.md
             - name: 外部ユーザーのアクセス権の管理
               href: entitlement-management-external-users.md
             - name: レポートとログを表示する

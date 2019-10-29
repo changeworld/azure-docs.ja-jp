@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory Mapping Data Flow のピボット変換
-description: Azure Data Factory Mapping Data Flow のピボット変換を使用した行から列へのデータのピボット
+title: Azure Data Factory マッピング データ フローのピボット変換
+description: Azure Data Factory マッピング データ フローのピボット変換を使用した行から列へのデータのピボット
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e59f0623b898fedada63e51fabbaf88d8b17f59d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029301"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387793"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory のピボット変換
 
@@ -60,7 +60,7 @@ ADF Data Flow のピボットを集計として使用します。この場合、
 
 ピボットでは、行の値に基づいて動的に新しい列名が生成されます。 データ フローで後から参照できるように、それらの新しい列をメタデータに変換できます。 これを行うには、[データのプレビュー] タブをクリックします。ピボット変換によって生成されたすべての新しい列が表示され、テーブル ヘッダーに "誤差" アイコンが表示されます。 [Map drifted]\(誤差のマップ\) ボタンをクリックすると、それらの新しい列がメタデータに変換され、データ フローのモデルの一部になります。
 
-![ピボット列](media/data-flow/newpivot1.png "[Map drifted]\(誤差のマップ\) ピボット列")
+![列のピボット](media/data-flow/newpivot1.png "誤差のピボット列のマップ")
 
 ### <a name="landing-new-columns-in-sink"></a>シンクでの新しい列の取得
 

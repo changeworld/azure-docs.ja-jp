@@ -19,8 +19,8 @@ ms.locfileid: "61465798"
 # <a name="configure-localization"></a>ローカライズを構成する 
 
 Azure Media Clipper は、18 の言語で使用可能です。 ウィジェットの言語を設定するには、初期化中に `language` パラメーターを定義する必要があります。 下記の一覧から、目的の言語コード文字列を渡します。
-- 簡体字中国語: zh-hans
-- 繁体字中国語: zh-hant
+- 簡体中国語: zh-hans
+- 繁体中国語: zh-hant
 - チェコ語: cs
 - オランダ語、フラマン語: nl
 - 英語: en

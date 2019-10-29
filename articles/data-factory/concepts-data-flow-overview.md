@@ -1,20 +1,20 @@
 ---
-title: Azure Data Factory の Mapping Data Flow | Microsoft Docs
-description: Azure Data Factory の Mapping Data Flow の概要
+title: Azure Data Factory のマッピング データ フロー | Microsoft Docs
+description: Azure Data Factory のマッピング データ フローの概要
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 8d0ad794caee8a06c8d403a981037d6560fb3f43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 37fec388acda78f3d13c8e85ddddf780ad099d69
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030179"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387992"
 ---
-# <a name="what-are-mapping-data-flows"></a>マッピング データ フローについて
+# <a name="what-are-mapping-data-flows"></a>マッピング データ フローとは
 
 Mapping Data Flows は、Azure Data Factory の視覚的に設計されたデータ変換です。 データ フローを使用すると、データ エンジニアは、コードを記述することなくグラフィカルなデータ変換ロジックを開発できます。 生成されたデータ フローは、スケールアウトされた Spark クラスターを使用して、Azure Data Factory パイプライン内でアクティビティとして実行されます。 データ フロー アクティビティは、既存の Data Factory スケジュール、制御、フロー、および監視機能を介して運用可能にすることができます。
 
@@ -32,13 +32,13 @@ Mapping Data Flows は、コーディングを必要としない、完全に視�
 
 データ フロー キャンバスは、上部バー、グラフ、および構成パネルの 3 つの部分に分かれています。 
 
-![Canvas](media/data-flow/canvas1.png "Canvas")
+![キャンバス](media/data-flow/canvas1.png "キャンバス")
 
 ### <a name="graph"></a>Graph
 
 グラフには変換ストリームが表示されます。 ここにはソース データが 1 つ以上のシンクに流れるときのソース データの系列が表示されます。 新しいソースを追加するには、[ソースの追加] ボックスをクリックします。 新しい変換を追加するには、既存の変換の右下にあるプラス記号をクリックします。
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![キャンバス](media/data-flow/canvas2.png "キャンバス")
 
 ### <a name="configuration-panel"></a>構成パネル
 

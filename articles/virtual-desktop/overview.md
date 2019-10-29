@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676561"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597901"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -76,8 +76,8 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 * Azure Active Directory と同期している Windows Server Active Directory。 これは、次のいずれかを使うことにより可能になります。
   * Azure AD Connect
   * Azure AD Domain Services
-  >[!NOTE]
-  >Windows Virtual Desktop では、Azure Active Directory をソースとする Azure AD Domain Services ユーザーのみがサポートされます。 Windows Server AD をソースとするユーザーは、今回はサポートされません。
+     >[!NOTE]
+     >Azure AD Domain Services を使用する場合、ユーザーは Azure Active Directory をソースとする必要があります。 Windows Server AD をソースとするユーザーによる Azure AD Domain Services の使用は、現時点ではサポートされていません。
 * Azure サブスクリプション (Windows Server Active Directory を含むか、Windows Server Active Directory に接続している仮想ネットワークが含まれるもの)
   
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。

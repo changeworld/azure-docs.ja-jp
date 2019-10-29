@@ -1,27 +1,24 @@
 ---
 title: Azure Functions のベスト プラクティス | Microsoft Docs
 description: Azure Functions のベスト プラクティスとパターンについて説明します。
-services: functions
-documentationcenter: na
-author: wesmc7777
-manager: jeconnoc
-keywords: Azure Functions, パターン, ベスト プラクティス, 関数, イベント処理, webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
+author: ggailey777
+manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933050"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596884"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
-この記事では、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリのパフォーマンスと信頼性を向上させるためのガイダンスを紹介しています。 
+この記事では、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリのパフォーマンスと信頼性を向上させるためのガイダンスを紹介しています。  
 
 ## <a name="general-best-practices"></a>一般的なベスト プラクティス
 
@@ -29,7 +26,9 @@ Azure Functions を使用して、サーバーレス ソリューションを構
 
 ### <a name="avoid-long-running-functions"></a>実行時間の長い関数を使用しない
 
-サイズが大きく実行時間の長い関数では、予期しないタイムアウトの問題が発生する可能性があります。 Node.js の依存関係が多いと、関数のサイズが大きくなることがあります。 また、依存関係をインポートすると、読み込み時間が長くなり、予期しないタイムアウトが発生する可能性もあります。 依存関係は明示的にも暗黙的にも読み込まれます。 コードによって読み込まれる単一のモジュールによって、独自の追加モジュールが読み込まれることがあります。  
+サイズが大きく実行時間の長い関数では、予期しないタイムアウトの問題が発生する可能性があります。 特定のホスティング プランのタイムアウトの詳細については、「[Function App タイムアウト期間](functions-scale.md#timeout)」を参照してください。 
+
+Node.js の依存関係が多いと、関数のサイズが大きくなることがあります。 また、依存関係をインポートすると、読み込み時間が長くなり、予期しないタイムアウトが発生する可能性もあります。 依存関係は明示的にも暗黙的にも読み込まれます。 コードによって読み込まれる単一のモジュールによって、独自の追加モジュールが読み込まれることがあります。 
 
 可能な限り、大きな関数は、連携して高速な応答を返す、より小さな関数セットにリファクタリングしてください。 たとえば、webhook または HTTP トリガー関数では、一定の時間内に確認応答が必要になる場合があります。webhook は通常、即座に応答を必要とします。 この HTTP トリガー ペイロードは、キュー トリガー関数によって処理されるキューに渡すことができます。 このアプローチを使用すると、実際の作業を遅らせて、即座に応答を返すことができます。
 

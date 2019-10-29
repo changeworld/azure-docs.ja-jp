@@ -1,5 +1,7 @@
-- name: Event Grid のドキュメント
+- name: Azure Event Grid のドキュメント
   href: index.yml
+- name: IoT Edge の Event Grid のドキュメントに切り替える
+  href: edge/pub-sub-events-webhook-local.md
 - name: 概要
   items:
     - name: Event Grid とは

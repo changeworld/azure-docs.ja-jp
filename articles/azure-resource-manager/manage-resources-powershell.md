@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell を使用した Azure リソースの管理 | Microsoft Docs
-description: Azure PowerShell と Azure Resource Manager を使用してリソースを管理します。
+description: Azure PowerShell と Azure Resource Manager を使用して、リソースを管理します。 リソースをデプロイおよび削除する方法を示します。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: f61fcf7833021f23485992c7445f91d9a7b9ee45
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: aa215555fdd39e9d756d5fc925282b1eaffc9ebf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001520"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390362"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure PowerShell を使用した Azure リソースの管理
 

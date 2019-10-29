@@ -64,7 +64,7 @@ Load Balancer は、Azure SDN スタックの重要な構成要素であり、�
 
 </br>Front Door では HTTP ワークロードに対するパフォーマンス、運用およびセキュリティ上の利点が得られるため、HTTP ワークロードでは Front Door を使用することをお勧めします。    Traffic Manager と Front Door を並行して使用することで、アプリケーションのすべてのトラフィックを処理できます。 
 
-## <a name="building-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでのビルド 
+## <a name="building-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの構築 
 すべての Web サイト、API、サービスに地理的な冗長性を持たせ、そのユーザーへのトラフィックを、できる限り最も近い (待機時間が最も短い) 場所から配信することをお勧めします。  Traffic Manager、Front Door Service、Application Gateway、Load Balancer のサービスを組み合わせることで、地理的およびゾーン的な冗長性を構築し、信頼性、スケール、パフォーマンスを最大化できます。
 
 次の図では、これらすべてのサービスの組み合わせを使用してグローバル Web サービスを構築するサービス例について説明します。   ここでは、アーキテクトは Traffic Manager を使用して、ファイルやオブジェクトを配信するためにグローバル バックエンドにルーティングしています。同時に、Front Door を使用して、App Service に移行されたサービスに対して /store/* のパターンと一致する URL パスをグローバルにルーティングし、その他のすべての要求をリージョンの Application Gateway にルーティングします。

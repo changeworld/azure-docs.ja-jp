@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: c67ca111bf87c9dbfa69c93149d29dbd32767fbd
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 65a77b8243e7afc8d858360d3d3be86f44e6b67e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350759"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332203"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする
 この記事では、次のタスクの手順について説明します。
@@ -48,34 +48,20 @@ ms.locfileid: "71350759"
 - Debian 9 "Stretch"
 - Ubuntu Server 16.04 LTS
 
-## <a name="teachers-connecting-to-the-template-vm-using-rdp"></a>教師が RDP を使用してテンプレート VM に接続する
-教師は最初に SSH を使用してテンプレート VM に接続し、これに RDP と GUI のパッケージをインストールする必要があります。 これで、教師は次の手順で RDP を使用して Linux VM に接続できるようになります。 
+## <a name="connect-to-the-template-vm"></a>テンプレート VM に接続する 
+教師は最初に SSH を使用してテンプレート VM に接続し、これに RDP と GUI のパッケージをインストールする必要があります。 その後、教師は RDP を使用し、テンプレート VM に接続できます。 
 
-ラボの作成時に、テンプレート VM に接続するための **[リモート デスクトップ]** オプションが表示されます。 
+1. ツール バーに **[Customize template]\(テンプレートのカスタマイズ\)** が表示されていれば、それを選択します。 次に、 **[Customize template]\(テンプレートのカスタマイズ\)** ダイアログ ボックスで **[続行]** を選択します。 この操作によりテンプレート VM が開始されます。  
 
-![作成時に RDP 経由でテンプレートに接続する](../media/how-to-enable-remote-desktop-linux/connect-at-creation.png)
+    ![テンプレートのカスタマイズ](../media/how-to-enable-remote-desktop-linux/customize-template.png)
+2. テンプレート VM が起動したら、ツール バーで **[Connect template]\(接続テンプレート\)** を選択し、それから **[Connect via SSH]\(SSH 経由で接続する\)** を選択できます。 
 
-ラボが作成され、テンプレート VM が開始すると、ラボのホーム ページに **[リモート デスクトップ]** オプションが表示されます。 テンプレート VM がまだ開始されていない場合は、開始します。 
-
-![ラボの作成後に RDP 経由でテンプレートに接続する](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
-
-SSH または RDP を使用した VM への接続の詳細については、[SSH または RDP を使用して接続する](#connect-using-ssh-or-rdp) を参照してください。 
-
-## <a name="teachers-connecting-to-a-student-vm-using-rdp"></a>教師が RDP を使用して学生用 VM に接続する
-教師/教授は、 **[仮想マシン]** 表示に切り替えて **[接続]** アイコンを選択すると学生用 VM に接続できます。 その前に、テンプレート イメージを、これにインストールされている RDP と GUI のパッケージを使用して**発行**する必要があります。 
-
-![教師が学生用 VM に接続する](../media/how-to-enable-remote-desktop-linux/teacher-connect-to-student-vm.png)
-
-SSH または RDP を使用した VM への接続の詳細については、[SSH または RDP を使用して接続する](#connect-using-ssh-or-rdp) を参照してください。 
-
-## <a name="connect-using-ssh-or-rdp"></a>SSH または RDP を使用して接続する
-**[SSH]** オプションを選択した場合は、次の **[仮想マシンに接続する]** ダイアログ ボックスが表示されます。  
-
-![SSH 接続文字列](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
-
-テキスト ボックスの横にある **[コピー]** ボタンを選択して、クリップボードにコピーします。 SSH 接続文字列を保存します。 仮想マシンに接続するには、SSH ターミナル ([Putty](https://www.putty.org/) など) からこの接続文字列を使用します。
-
-**[RDP]** オプションを選択した場合は、RDP ファイルがお使いのコンピューターにダウンロードされます。 それを保存してから開いて、マシンに接続します。 
+    ![ラボの作成後に RDP 経由でテンプレートに接続する](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
+3. **[仮想マシンに接続する]** ダイアログ ボックスが表示されます。 テキスト ボックスの横にある **[コピー]** ボタンを選択して、クリップボードにコピーします。 SSH 接続文字列を保存します。 仮想マシンに接続するには、SSH ターミナル ([Putty](https://www.putty.org/) など) からこの接続文字列を使用します。
+ 
+    ![SSH 接続文字列](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
+4. 自分と生徒が後で RDP を利用して Linux コンピューターに接続できるように RDP パッケージと GUI パッケージをインストールします。 詳しくは、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。 次に、学生が学生の Linux VM にリモート デスクトップ接続できるように、イメージを発行します。
+5. これらのパッケージをインストールすると、ツール バーの **[Connect to template]\(テンプレートに接続\)** を使用し、それから **[Connect via RDP]\(RDP 経由で接続する\)** を選択し、RDP 経由でテンプレート VM に接続できます。 RDP ファイルを保存し、それを使用して RDP 経由でテンプレート VM に接続します。 
 
 ## <a name="next-steps"></a>次の手順
 リモート デスクトップ接続機能をインストラクターが有効にした後で、学生が RDP と SSH 経由でその VM に接続することはできません。 詳細については、[クラスルーム ラボの Linux VM でリモート デスクトップを使用する方法](how-to-use-remote-desktop-linux-student.md)に関するページを参照してください。 

@@ -1,6 +1,6 @@
 ---
 title: Azure Section UI 要素 | Microsoft Docs
-description: Azure Portal の Microsoft.Common.Section UI 要素について説明します。
+description: Azure Portal の Microsoft.Common.Section UI 要素について説明します。 管理対象アプリケーションをデプロイする目的で、ポータルで要素をグループ化するために使用します。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: c89b45dd4d8e6c2964f3d2bcbb6c3cef445c79e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a48c89785e0a448609026aab53364f6cf704e948
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698891"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331648"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 要素
 見出しの下の 1 つまたは複数の要素をグループ化するコントロールです。

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0ff8fb7a2e03ccaccff4f84d77486238acba0ba5
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 75b2c08ab02ef41ee4d196d8f81c633aeb46a14e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350231"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390048"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -68,7 +68,13 @@ Site Recovery は、サポートされているマシンで実行されている
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
 マシンのワークロード | Site Recovery は、サポートされているマシンで実行されているすべてのワークロードのレプリケーションをサポートします。 [詳細情報](https://aka.ms/asr_workload)。
-Windows | - Windows Server 2019 ([更新プログラム ロールアップ 34](https://support.microsoft.com/help/4490016) からサポート (モビリティ サービスのバージョン 9.22) 以降。<br/> - Windows Server 2016 (64 ビット サーバー コア、デスクトップ エクスペリエンス搭載サーバー)<br/> - Windows Server 2012 R2、Windows Server 2012<br/> - Windows Server 2008 R2 SP1 以降。<br/> - Windows Server 2008、SP2 以降の 64 および 32 ビット]。 移行についてのみサポートされています。 [詳細情報](migrate-tutorial-windows-server-2008.md)。<br/> - Windows 10、Windows 8.1、Windows 8、Windows 7 64 ビット ([更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) からサポート (モビリティ サービスのバージョン 9.22 以降)。 Windows 7 RTM はサポートされていません。 
+Windows Server 2019 | [更新プログラム ロールアップ 34](https://support.microsoft.com/help/4490016) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。
+Windows Server 2016 64 ビット | Server Core、Server with Desktop Experience でサポートされています。
+Windows Server 2012 R2 / Windows Server 2012 | サポートされています。
+Windows Server 2008 R2 SP1 以降。 | サポートされています。<br/><br/> モビリティ サービス エージェントのバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) 以降では、Windows 2008 R2 SP1 以降を実行しているコンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。 SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
+Windows Server 2008 SP2 以降 (64 ビット/32 ビット) |  移行についてのみサポートされています。 [詳細情報](migrate-tutorial-windows-server-2008.md)。<br/><br/> モビリティ サービス エージェントのバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) 以降では、Windows 2008 SP2 コンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4493730) と [SHA-2 更新プログラム](h https://support.microsoft.com/help/4474419)をインストールする必要があります。 ISHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
+Windows 10、Windows 8.1、Windows 8 | サポートされています。
+Windows 7 SP1 64 ビット | [更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。 </br></br> モビリティ サービス エージェントのバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) 以降では、Windows 7 SP1 コンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
 Linux | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません。<br/><br/>すべての Linux サーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。 テスト フェールオーバー/フェールオーバー後に Azure でサーバーを起動するために必要です。 LIS コンポーネントがない場合、Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。 <br/><br/> Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。
 Linux Red Hat Enterprise | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.6<br/> <br/> Red Hat Enterprise Linux 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
 Linux:CentOS | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.6<br/> <br/> CentOS 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
@@ -143,10 +149,10 @@ BTRFS | \- BTRFS は[更新プログラム ロールアップ 34](https://suppor
 ホスト ネットワークの NIC チーミング | VMware VM でサポートされています。 <br/><br/>物理マシンのレプリケーションではサポートされません。
 ホスト ネットワークの VLAN | はい。
 ホスト ネットワークの IPv4 | はい。
-ホスト ネットワークの IPv6 | いいえ。
-ゲスト/サーバー ネットワークの NIC チーミング | いいえ。
+ホスト ネットワークの IPv6 | No.
+ゲスト/サーバー ネットワークの NIC チーミング | No.
 ゲスト/サーバー ネットワークの IPv4 | はい。
-ゲスト/サーバー ネットワークの IPv6 | いいえ。
+ゲスト/サーバー ネットワークの IPv6 | No.
 ゲスト/サーバー ネットワークの静的 IP (Windows) | はい。
 ゲスト/サーバー ネットワークの静的 IP (Linux) | はい。 <br/><br/>フェールバックで DHCP を使用するように VM が構成されます。
 ゲスト/サーバー ネットワークのマルチ NIC | はい。

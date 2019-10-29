@@ -9,14 +9,14 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 615c09dd8a7287918bb009ce11854278b21554c1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899410"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388114"
 ---
-# <a name="immersive-reader-sdk-reference"></a>イマーシブ リーダー SDK リファレンス
+# <a name="immersive-reader-sdk-reference-for-ios"></a>iOS 用イマーシブ リーダー SDK リファレンス
 
 イマーシブ リーダー iOS SDK は、イマーシブ リーダーを iOS アプリケーションに統合するための Swift CocoaPod です。
 
@@ -34,7 +34,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>parameters
 
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | ---- | ---- |------------ |
 | `navController` | UINavigationController | 関数が呼び出されている iOS アプリケーションの Navigation Controller。 |
 | `token` | string | Azure AD 認証トークン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |

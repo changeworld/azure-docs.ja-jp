@@ -1,6 +1,6 @@
 ---
-title: 'Azure Status Monitor v2 API リファレンス: 状態を取得する | Microsoft Docs'
-description: Status Monitor v2 API リファレンス。 Get-ApplicationInsightsMonitoringStatus。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+title: Azure Application Insights エージェント API リファレンス:状態を取得する | Microsoft Docs
+description: Application Insights エージェント API リファレンス。 Get-ApplicationInsightsMonitoringStatus。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6e103e1856e338669224540a991c4b9ea6b10d6d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058251"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389870"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Status Monitor v2 API:Get-ApplicationInsightsMonitoringStatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights エージェント API:Get-ApplicationInsightsMonitoringStatus
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -204,5 +204,5 @@ Application Insights SDK を含む任意の DLL のバージョンを特定す�
 
 ## <a name="next-steps"></a>次の手順
 
- Status Monitor v2 の活用:
- - ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。
+ Application Insights エージェントをさらに活用する:
+ - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。

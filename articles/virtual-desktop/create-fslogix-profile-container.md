@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: dd3b68d600edcbbae73fff542e677d3ebc6b16ee
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 4e714b872ae43eb313efe549c77f5610342f430c
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390817"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311621"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 
@@ -28,6 +28,9 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 >[!NOTE]
 >この記事では、Azure NetApp Files 共有へのアクセスの保護に関するベスト プラクティスは扱いません。
+
+>[!NOTE]
+>Azure 上の FSLogix プロファイル コンテナーのさまざまなストレージ オプションに関する比較資料をお探しの場合は、「[FSLogix プロファイル コンテナー用のストレージ オプション](store-fslogix-profile.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

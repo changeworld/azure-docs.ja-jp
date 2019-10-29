@@ -10,12 +10,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 01e1401c5054eb56d4e2313b5e03ce5a36d1b301
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7058806e58dbc2d9a196062c129688e6a96c5f31
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704061"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264461"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 
@@ -31,7 +31,7 @@ ms.locfileid: "67704061"
 * [1 つのプロジェクトを含む Azure DevOps 組織](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Azure Container Registry [管理者アカウント](../../container-registry/container-registry-authentication.md#admin-account)の詳細が利用可能
-* [お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../container-registry/container-registry-auth-aks.md)
+* [お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../aks/cluster-container-registry-integration.md)
 
 ## <a name="download-sample-code"></a>サンプル コードのダウンロード
 時間を節約するために、サンプル コードの GitHub リポジトリのフォークを作成しましょう。 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces ) に移動して、 **[フォーク]** を選択します。 フォーク プロセスが完了すると、リポジトリのフォーク済みバージョンがローカルに**複製**されます。 既定で _master_ ブランチがチェックアウトされますが、_azds_updates_ ブランチに時間を節約するためのいくつかの変更を組み入れてあり、フォーク時にこのブランチも転送されているはずです。 _azds_updates_ ブランチには、Dev Spaces チュートリアルのセクション内で手動実行するように示されている更新プログラムと、CI/CD システムのデプロイを効率化するために事前作成されたいくつかの YAML および JSON ファイルが含まれています。 `git checkout -b azds_updates origin/azds_updates` のようなコマンドを使用して、ローカル リポジトリに _azds_updates_ ブランチをチェックアウトできます。
@@ -77,7 +77,7 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 このファイルからパイプラインを作成するには:
 1. DevOps プロジェクトのメイン ページ上で、[パイプライン] > [ビルド] の順に移動します。
 1. **新しい**ビルド パイプラインを作成するオプションを選択します。
-1. ソースとして **[GitHub]** を選択し、必要に応じて自分の GitHub アカウントを使って承認して、dev 空間のサンプル アプリ リポジトリのフォーク済みバージョンから _azds_updates_ ブランチを選択します。
+1. ソースとして **[GitHub]** を選択し、必要に応じて自分の GitHub アカウントを使って承認して、_dev-spaces_ のサンプル アプリケーション リポジトリのフォーク済みバージョンから _azds_updates_ ブランチを選択します。
 1. テンプレートとして、 **[コードとしての構成]** または **[YAML]** を選択します。
 1. この時点で、ビルド パイプラインの構成ページが表示されています。 前述したように、 **[...]** ボタンを使用して **[YAML ファイル パス]** の言語固有パスに移動します。 たとえば、「 `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 」のように入力します。
 1. **[変数]** タブに移動します。
@@ -133,11 +133,11 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 すべてのタスクが完了すると、リリースが行われます。
 
 > [!TIP]
-> "*UPGRADE FAILED: timed out waiting for the condition*" のようなエラー メッセージでリリースが失敗した場合、[Kubernetes ダッシュボードを使用して](../../aks/kubernetes-dashboard.md)、ご自身のクラスター内のポッドを調べてみてください。 ポットがエラーになっており、エラー メッセージが "*Failed to pull image "azdsexample.azurecr.io/mywebapi:122": rpc error: code = Unknown desc = Error response from daemon:Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: unauthorized: authentication required*" のように始まっている場合、クラスターがお使いの Azure コンテナー レジストリからプルするための承認を受けていないことが原因になっている可能性があります。 「[お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../container-registry/container-registry-auth-aks.md)」の前提条件を完了していることを確認してください。
+> "*UPGRADE FAILED: timed out waiting for the condition*" のようなエラー メッセージでリリースが失敗した場合、[Kubernetes ダッシュボードを使用して](../../aks/kubernetes-dashboard.md)、ご自身のクラスター内のポッドを調べてみてください。 ポットがエラーになっており、エラー メッセージが "*Failed to pull image "azdsexample.azurecr.io/mywebapi:122": rpc error: code = Unknown desc = Error response from daemon:Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: unauthorized: authentication required*" のように始まっている場合、クラスターがお使いの Azure コンテナー レジストリからプルするための承認を受けていないことが原因になっている可能性があります。 「[お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../aks/cluster-container-registry-integration.md)」の前提条件を完了していることを確認してください。
 
 これで、Dev Spaces サンプル アプリの GitHub フォークに対応する CI/CD パイプラインを完全に自動化できました。 コードをコミットしてプッシュするたびに、ビルド パイプラインでは *mywebapi* および *webfrontend* イメージをビルドして、お使いのカスタム ACR インスタンスにプッシュします。 その後、リリース パイプラインでは、アプリごとの Helm チャートを Dev Spaces が有効になっているクラスター上の _dev_ 空間にデプロイします。
 
-## <a name="accessing-your-dev-services"></a>_dev_ サービスへのアクセス
+## <a name="accessing-your-_dev_-services"></a>_dev_ サービスへのアクセス
 デプロイ後は、`http://dev.webfrontend.fedcba098.eus.azds.io` のようなパブリック URL を使って、*webfrontend* の _dev_ バージョンにアクセスできます。 `azds list-uri` コマンドを実行して、この URL を調べることができます。 
 
 ```cmd

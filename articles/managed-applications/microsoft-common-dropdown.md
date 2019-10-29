@@ -1,6 +1,6 @@
 ---
 title: Azure の DropDown UI 要素 | Microsoft Docs
-description: Azure Portal の Microsoft.Common.DropDown UI 要素について説明します。
+description: Azure Portal の Microsoft.Common.DropDown UI 要素について説明します。 管理対象アプリケーションをデプロイするとき、利用できるオプションからユーザーが選択するために使用します。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e78fa419b067c0bad48229dcfd8d4e986fc16903
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5784b5df9b522f0489ca1f6087627b45cec5349d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117303"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331740"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 要素
 ドロップダウン リストを備えた選択コントロールです。

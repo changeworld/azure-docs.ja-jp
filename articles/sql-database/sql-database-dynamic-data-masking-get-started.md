@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database の動的データ マスク | Microsoft Docs
-description: SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。
+title: Azure SQL Database と Data Warehouse に対する動的データ マスキング | Microsoft Docs
+description: 動的データ マスキングを使用し、SQL Database と Data Warehouse に対する権限を持たないユーザーに対して機密データをマスクすることにより、機密データの公開を制限します
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,14 +11,14 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: 366b9437aab134985c73611fa8b46c6fbd3d309c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e36e91330232a90ff51cf92ce8dc920b51e2d914
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568764"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430120"
 ---
-# <a name="sql-database-dynamic-data-masking"></a>SQL Database の動的データ マスク
+# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse に対する動的データ マスキング
 
 SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。 
 
@@ -26,7 +26,7 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 
 たとえば、コール センターのサポート担当者は、クレジット カード番号の一部の数字から電話の相手を特定できますが、このようなデータ項目をサポート担当者にすべて公開してはなりません。 クエリの結果セットのクレジット カード番号の末尾 4 桁を除くすべての数字をマスクするマスク ルールを定義できます。 別の例として、開発者は、適切なデータ マスクを定義し、個人を特定できる情報 (PII) データを保護し、法令遵守規定に違反することなくトラブルシューティングの目的で運用環境に対して照会を行うことができます。
 
-## <a name="sql-database-dynamic-data-masking-basics"></a>SQL Database 動的データ マスクの基礎
+## <a name="dynamic-data-masking-basics"></a>動的データ マスキングの基礎
 
 SQL Database の構成ブレードまたは設定ブレードで動的データ マスク操作を選ぶことにより、Azure Portal で動的データ マスク ポリシーを設定します。
 

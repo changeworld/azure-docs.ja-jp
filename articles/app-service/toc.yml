@@ -123,6 +123,8 @@
               href: deploy-continuous-deployment.md
             - name: ローカル Git からのデプロイ
               href: deploy-local-git.md
+            - name: GitHub Actions を使用したデプロイ
+              href: deploy-github-actions.md
             - name: テンプレートを使用したデプロイ
               href: deploy-complex-application-predictably.md
         - name: デプロイメント資格情報の設定

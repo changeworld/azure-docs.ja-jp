@@ -12,12 +12,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 59f8fcefd48425fb49d6a828046764a213bea18f
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71220020"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965718"
 landingContent:
 - title: Data Lake Analytics について
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
     - text: Azure portal でユーザーを追加する
       url: data-lake-analytics-add-users.md
     - text: ポリシーを使用して Azure Data Lake Analytics を管理する
-      url: data-lake-analytics-policies.md
+      url: data-lake-analytics-account-policies.md
 - title: 継続的インテグレーションと継続的配置
   linkLists:
   - linkListType: how-to-guide
@@ -89,3 +89,13 @@ landingContent:
       url: data-lake-analytics-cicd-test.md
     - text: U-SQL SDK の使用
       url: data-lake-analytics-u-sql-sdk.md
+- title: U-SQL 開発者向けの Spark について
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: U-SQL 開発者向けの Apache Spark について
+      url: data-lake-analytics-understand-spark-for-usql-developers.md
+    - text: Apache Spark のデータ形式について
+      url: data-lake-analytics-understand-spark-data-formats.md
+    - text: Apache Spark のコードの概念ついて
+      url: data-lake-analytics-understand-spark-code-concepts.md

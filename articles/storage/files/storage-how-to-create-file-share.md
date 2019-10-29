@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b30df7410f56c203eb600089cce130a8de23d1b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013559"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514612"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Azure Files にファイル共有を作成する
 Azure のファイル共有は、 [Azure portal](https://portal.azure.com/)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。 このチュートリアルでは、次の事項について説明します。
@@ -23,6 +23,9 @@ Azure のファイル共有は、 [Azure portal](https://portal.azure.com/)、A
 ## <a name="prerequisites"></a>前提条件
 Azure ファイル共有を作成するには、既存のストレージ アカウントを使用するか、[新しい Azure ストレージ アカウントを作成する](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)ことができます。 PowerShell で Azure ファイル共有を作成するには、アカウント キーとストレージ アカウントの名前が必要になります。 PowerShell または CLI を使用する場合は、ストレージ アカウント キーが必要になります。
 
+> [!NOTE]
+> 5 TiB を超えるファイル共有を作成する場合は、[大きなファイル共有の有効化](storage-files-how-to-create-large-file-share.md)に関する Microsoft の記事を参照してください。
+
 ## <a name="create-a-file-share-through-the-azure-portal"></a>Azure portal を使用したファイル共有の作成
 1. **Azure portal の [ストレージ アカウント] ブレードに移動します**。    
     ![[ストレージ アカウント] ブレード](./media/storage-how-to-create-file-share/create-file-share-portal1.png)
@@ -30,7 +33,7 @@ Azure ファイル共有を作成するには、既存のストレージ アカ�
 2. **ファイル共有の追加ボタンをクリックします**。    
     ![ファイル共有の追加ボタンをクリックする](./media/storage-how-to-create-file-share/create-file-share-portal2.png)
 
-3. **名前とクォータを指定します。クォータの現在の最大値は 5 TiB です**。    
+3. **名前とクォータを指定します**。    
     ![新しいファイル共有の名前と必要なクォータを指定する](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
 4. **新しいファイル共有を表示します**。![新しいファイル共有を表示する](./media/storage-how-to-create-file-share/create-file-share-portal4.png)

@@ -1,6 +1,6 @@
 ---
-title: Azure Status Monitor v2 概要 | Microsoft Docs
-description: Status Monitor v2 の概要。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+title: Azure Application Insights エージェントの概要 | Microsoft Docs
+description: Application Insights エージェントの概要。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,23 +12,28 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 294b0d2d91650f33f0b92179a069a8c7cd845525
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057832"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389831"
 ---
-# <a name="status-monitor-v2"></a>Status Monitor v2
+# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
-Status Monitor v2 は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)に公開されている PowerShell モジュールです。
+> [!IMPORTANT]
+> このガイダンスは、Application Insights エージェントのオンプレミスと Azure 以外のクラウド デプロイに推奨されます。 [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)に推奨される方法を次に示します。
+
+Application Insights エージェント (旧称 Status Monitor V2) は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)に公開されている PowerShell モジュールです。
 これは [Status Monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) を置き換えるものです。
-このモジュールは、IIS でホストされている .NET Web アプリケーションをコードの記述なしにインストルメンテーションできるようにします。
 テレメトリが Azure portal に送信され、そこでアプリを[監視](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)できます。
+
+> [!NOTE]
+> このモジュールでは、現在、IIS でホストされる .NET Web アプリのコード不要のインストルメンテーションのみがサポートされます。 SDK を使用して、ASP.NET Core、Java、および Node.js アプリケーションをインストルメント化します。
 
 ## <a name="powershell-gallery"></a>PowerShell ギャラリー
 
-Status Monitor v2 は https://www.powershellgallery.com/packages/Az.ApplicationMonitor にあります。
+Application Insights エージェントは、 https://www.powershellgallery.com/packages/Az.ApplicationMonitor にあります。
 
 ![PowerShell ギャラリー](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -54,19 +59,15 @@ Status Monitor v2 は https://www.powershellgallery.com/packages/Az.ApplicationM
 
 ## <a name="faq"></a>FAQ
 
-- Status Monitor v2 は、プロキシ インストールをサポートしますか?
+- Application Insights エージェントでプロキシのインストールはサポートされますか?
 
-  *はい*。 Status Monitor v2 をダウンロードする方法は複数あります。 コンピューターがインターネットにアクセスできる場合は、`-Proxy` パラメーターを使用して PowerShell ギャラリーにオンボードできます。
+  *はい*。 Application Insights エージェントをダウンロードするには、複数の方法があります。 コンピューターがインターネットにアクセスできる場合は、`-Proxy` パラメーターを使用して PowerShell ギャラリーにオンボードできます。
 このモジュールを手動でダウンロードし、コンピューターにインストールするか、直接使用することもできます。
 これらの各オプションについては、[詳細な手順](status-monitor-v2-detailed-instructions.md)で説明しています。
 
 - Status Monitor v2 では ASP.NET Core アプリケーションはサポートされていますか?
 
   *いいえ*。 ASP.NET Core アプリケーションの監視を有効にする手順については、「[Application Insights for ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)」を参照してください。 ASP.NET Core アプリケーション用に Status Monitor をインストールする必要はありません。 これは、ASP.NET Core アプリケーションが IIS でホストされている場合にも当てはまります。
-  
-Status Monitor v2 では ASP.NET Core アプリケーションはサポートされていますか? 
-
-  *いいえ*。 ASP.NET Core アプリケーションの監視を有効にするには、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)の手順に従ってください。 ASP.NET Core アプリケーション用に Status Monitor をインストールする必要はありません。 これは、ASP.NET Core アプリケーションが IIS でホストされている場合にも当てはまります。
 
 - 有効化が成功したことを確認する方法を教えてください。
 

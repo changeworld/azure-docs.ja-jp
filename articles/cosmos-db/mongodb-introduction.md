@@ -4,15 +4,15 @@ description: Azure Cosmos DB の MongoDB 用 API を使用して、Azure Cosmos 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 22438837a7cee1755d115993683101c260b99f2c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953834"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754976"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 
@@ -22,9 +22,9 @@ ms.locfileid: "65953834"
 
 Azure Cosmos DB は、Cassandra、MongoDB、Gremlin、Azure Table Storage など、一般的な NoSQL データベース向けのワイヤ プロトコルを実装しています。 Cosmos DB 内部で直接かつ効率的にワイヤ プロトコルのネイティブ実装が提供されているため、NoSQL データベースの既存のクライアント SDK、ドライバー、ツールで透過的に Cosmos DB を操作できます。 Cosmos DB では、任意の NoSQL データベース向けにワイヤ互換性のある API を提供するためにデータベースのソース コードを使用することは一切ありません。
 
-既定では、Azure Cosmos DB の MongoDB 用 API は、MongoDB のワイヤ プロトコルのバージョン 3.2 と互換性があります。 現在、ワイヤ プロトコルのバージョン 3.4 で追加された機能やクエリ演算子は、プレビュー機能として使用できます。 これらのプロトコル バージョンを認識する MongoDB クライアント ドライバーはすべて、Cosmos DB にネイティブに接続できる必要があります。
+既定では、Azure Cosmos DB の MongoDB 用 API を使用して作成された新しいアカウントは、MongoDB ワイヤ プロトコルのバージョン 3.6 と互換性があります。 これらのプロトコル バージョンを認識する MongoDB クライアント ドライバーはすべて、Cosmos DB にネイティブに接続できます。
 
-![Azure Cosmos DB の MongoDB 用 API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
+![Azure Cosmos DB の MongoDB 用 API](./media/mongodb-introduction/cosmosdb-mongodb.png)
 
 ## <a name="key-benefits"></a>主な利点
 
@@ -38,7 +38,7 @@ Azure Cosmos DB は、Cassandra、MongoDB、Gremlin、Azure Table Storage など
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>Cosmos DB の MongoDB 用 API
 
-クイック スタートに従って Cosmos アカウントを作成し、既存の MongoDB アプリケーションを移行して Azure Cosmos DB を使用するか、新しいアプリケーションを構築します。
+クイックスタートに従って Azure Cosmos アカウントを作成し、既存の MongoDB アプリケーションを移行して Azure Cosmos DB を使用するか、新しいアプリケーションを構築します。
 
 * [既存の MongoDB Node.js Web アプリを移行する](create-mongodb-nodejs.md)
 * [Azure Cosmos DB の MongoDB 用 API と .NET SDK を使用して Web アプリを構築する](create-mongodb-dotnet.md)

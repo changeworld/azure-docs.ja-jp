@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c4cd906148f0f83ab4d66a9daaa606d7b9c183cd
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846243"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303592"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのレート制限ルールを構成する
 Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) では、1 分間中に単一クライアント IP から送信できる要求数が制御されます。
@@ -78,9 +78,7 @@ URL 一致条件 (URL に /promo が含まれる) を定義するには、[New-A
 
 `Get-AzureRmResourceGroup` を使用して、Front Door プロファイルが含まれているリソース グループの名前を見つけます。 次に、Front Door プロファイルを含む指定されたリソース グループ内で、[New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用して、カスタム レート制限ルールによるセキュリティ ポリシーを構成します。
 
-次の例では、*myResourceGroupFD1* という名前のリソース グループを使用します。また、Front Door プロファイルを作成したときに、[Front Door の作成に関するクイック スタート](quickstart-create-front-door.md)で説明されている手順に従ったと想定しています。
-
- [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用します。
+次の例では、*myResourceGroupFD1* という名前のリソース グループを使用します。また、Front Door プロファイルを作成したときに、[Front Door の作成に関するクイック スタート](quickstart-create-front-door.md)で説明されている手順 ([New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用) に従ったと想定しています。
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `

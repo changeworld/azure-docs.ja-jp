@@ -1,21 +1,21 @@
 ---
-title: Azure PowerShell を使用して Azure Blockchain Service コンソーシアムのメンバーを管理する
+title: Azure PowerShell を使用して Azure Blockchain Service のメンバーを管理する
 description: Azure PowerShell を使用して Azure Blockchain Service コンソーシアムのメンバーを管理する方法について説明します。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 9f76597a91c0e22f57d1ba66ff1a16eea9002af0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c35a3bd99518825805c2f29cfdc586e1ccf5b0bb
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250082"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329176"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する
 
@@ -151,6 +151,8 @@ New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 
 #### <a name="example"></a>例
 
+[Web3 接続を確立](#establish-a-web3-connection)し、$ContractConnection 変数を設定します。
+
 ```powershell-interactive
 $ContractConnection | Get-BlockchainMember -Name <Member Name>
 ```
@@ -181,6 +183,8 @@ Role           : ADMIN
 
 #### <a name="example"></a>例
 
+[Web3 接続を確立](#establish-a-web3-connection)し、$ContractConnection 変数と $MemberAccount 変数を設定します。
+
 ```powershell-interactive
 $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $MemberAccount
 ```
@@ -206,6 +210,8 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 | Web3Client |  New-Web3Connection から取得した Web3Client オブジェクト| はい |
 
 #### <a name="example"></a>例
+
+[Web3 接続を確立](#establish-a-web3-connection)し、$ContractConnection 変数と $MemberAccount 変数を設定します。
 
 ```powershell-interactive
 $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Display name> -Web3Account $MemberAccount
@@ -234,6 +240,8 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 #### <a name="example"></a>例
 
+[Web3 接続を確立](#establish-a-web3-connection)し、$ContractConnection 変数と $MemberAccount 変数を設定します。
+
 ```powershell-interactive
 $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subscription ID> -Role USER -Web3Account $MemberAccount
 ```
@@ -251,6 +259,8 @@ $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subs
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
 #### <a name="example"></a>例
+
+[Web3 接続を確立](#establish-a-web3-connection)し、$ContractConnection 変数を設定します。
 
 ```powershell-interactive
 $ContractConnection | Get-BlockchainMemberInvitation – SubscriptionId <Azure subscription ID>
@@ -282,6 +292,8 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
 
 #### <a name="example"></a>例
 
+[Web3 接続を確立](#establish-a-web3-connection)し、$ContractConnection 変数と $MemberAccount 変数を設定します。
+
 ```powershell-interactive
 $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscription ID> -Web3Account $MemberAccount
 ```
@@ -304,6 +316,8 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
 #### <a name="example"></a>例
+
+[Web3 接続を確立](#establish-a-web3-connection)し、$ContractConnection 変数と $MemberAccount 変数を設定します。
 
 ```powershell-interactive
 $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subscription ID> -Role USER -Web3Account $MemberAccount

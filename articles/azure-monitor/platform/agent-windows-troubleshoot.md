@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 9df389b6e6a73530c9bbf5a2187d6735946e309f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 96f020f24e27ff799f9bfbc08d899e8375b86094
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249772"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431828"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -36,7 +36,7 @@ Azure Monitor の Windows 用 Log Analytics エージェントで発生する可
 
 ## <a name="connectivity-issues"></a>接続に関する問題
 
-エージェントがプロキシ サーバーまたはファイアウォールを介して通信する場合は、ソース コンピューターと Azure Monitor サービスからの通信を妨げる制限が設定されている場合があります。 通信がブロックされる場合、または不適切な構成の場合、エージェントをインストールするときや設定後に追加のワークスペースに報告するようにエージェントを構成するときにワークスペースへの登録が失敗することがあります。また、登録が成功した後にエージェントの通信が失敗します。 このセクションでは、Windows エージェントに関するこの種の問題を解決する方法について説明します。 
+エージェントがプロキシ サーバーまたはファイアウォールを介して通信する場合は、ソース コンピューターと Azure Monitor サービスからの通信を妨げる制限が設定されている場合があります。 不適切な構成のために通信がブロックされた場合、エージェントをインストールするときや、設定後に追加のワークスペースに報告するようにエージェントを構成するときに、ワークスペースへの登録が失敗することがあります。 登録が成功した後で、エージェントの通信が失敗する可能性があります。 このセクションでは、Windows エージェントに関するこの種の問題を解決する方法について説明します。
 
 次の表に示す以下のポートと URL を許可するようにファイアウォールまたはプロキシが構成されていることを再確認してください。 また、エージェントと Azure Monitor 間のセキュリティで保護された TLS チャネルが妨げられる可能性があるため、Web トラフィックに対して HTTP 検査が有効になっていないことを確認します。  
 

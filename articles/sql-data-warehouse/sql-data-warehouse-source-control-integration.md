@@ -11,10 +11,10 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70098745"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のソース管理の統合
@@ -31,27 +31,27 @@ ms.locfileid: "70098745"
 
 1. Azure DevOps 組織内で、Azure Repo リポジトリを介して SSDT データベース プロジェクトをホストするプロジェクトを作成します
 
-   ![プロジェクトを作成する](media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "プロジェクトを作成する")
+   ![プロジェクトの作成](media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Create Project")
 
 2. Visual Studio を開き、[接続の管理] を選択して、手順 1 で作成した Azure DevOps 組織とプロジェクトに接続します
 
-   ![[接続の管理]](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "[接続の管理]")
+   ![接続の管理](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "接続の管理")
 
    ![接続](media/sql-data-warehouse-source-control-integration/3-connect.png "接続")
 
 3. プロジェクトからお使いのローカル コンピューターに Azure Repo リポジトリを複製します
 
-   ![リポジトリを複製する](media/sql-data-warehouse-source-control-integration/4-clone-repo.png "リポジトリを複製する")
+   ![リポジトリの複製](media/sql-data-warehouse-source-control-integration/4-clone-repo.png "リポジトリをクローンする")
 
 ## <a name="create-and-connect-your-project"></a>プロジェクトを作成して接続する
 
 1. Visual Studio で、**ローカルの複製されたリポジトリ**に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します
 
-   ![新しいプロジェクトを作成する](media/sql-data-warehouse-source-control-integration/5-create-new-project.png "新しいプロジェクトを作成する")  
+   ![新しいプロジェクトの作成](media/sql-data-warehouse-source-control-integration/5-create-new-project.png "新しいプロジェクトの作成")  
 
 2. 空の sqlproject を右クリックし、お使いのデータ ウェアハウスをデータベース プロジェクトにインポートします
 
-   ![プロジェクトをインポートする](media/sql-data-warehouse-source-control-integration/6-import-new-project.png "プロジェクトをインポートする")  
+   ![プロジェクトのインポート](media/sql-data-warehouse-source-control-integration/6-import-new-project.png "プロジェクトのインポート")  
 
 3. Visual Studio のチーム エクスプローラーで、ローカル Git リポジトリに対するすべての変更をコミットします 
 
@@ -67,7 +67,7 @@ ms.locfileid: "70098745"
 
 1. Visual Studio SQL Server Data Tools (SSDT) から対象のデータベース プロジェクトのテーブル列を更新して、変更が Azure Repo にプッシュされたことを確認します
 
-   ![更新列を検証する](media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "更新列を検証する")
+   ![更新列を確認する](media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "更新列を確認する")
 
 2. 変更をコミットしてローカル リポジトリから Azure Repo にプッシュします
 

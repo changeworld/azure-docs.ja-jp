@@ -7,12 +7,12 @@ services: service-health
 ms.service: service-health
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: a6f6288aebe599db794a7f15fc733563d26c66cc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3e3c83b7233ad4da263dec31c6012209ebaca0fe
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067092"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515856"
 ---
 # <a name="service-health-overview"></a>Service Health の概要
 
@@ -27,7 +27,7 @@ Service Health はお使いのリソースに及ぼす可能性のある次の 3
 3. **正常性に関する勧告** - ユーザーが注目する必要のある Azure サービスの変化。 Azure の機能が非推奨となるタイミングや、使用量のクォータを超えた場合に関する例も含まれます。
 
 > [!NOTE]
-> Service Health イベントを表示するには、ユーザーがサブスクリプションに閲覧者ロールを持っている必要があります。
+> Service Health イベントを表示するには、サブスクリプション上でユーザーに[閲覧者ロールが付与](../role-based-access-control/role-assignments-portal.md)されている必要があります。
 
 ## <a name="get-started-with-service-health"></a>Service Health の使用
 

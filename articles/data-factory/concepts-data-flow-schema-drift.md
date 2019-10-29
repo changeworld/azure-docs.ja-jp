@@ -1,5 +1,5 @@
 ---
-title: Mapping Data Flow のスキーマの誤差 | Azure Data Factory
+title: マッピング データ フローのスキーマの誤差 | Azure Data Factory
 description: スキーマの誤差がある Azure Data Factory 内での回復力のあるデータ フローの作成
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 5eff92352251febca1d4e7033618372dc929d987
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029412"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387966"
 ---
-# <a name="schema-drift-in-mapping-data-flow"></a>Mapping Data Flow のスキーマの誤差
+# <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
 
 
 
@@ -56,7 +56,7 @@ Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイ�
 * 名前、ストリーム、位置、または型の任意の組み合わせで一致するように、派生列または集計変換に列パターンを追加します
 * パターンを使用して誤差の列と列の別名と一致するように、選択またはシンク変換にルールベースのマッピングを追加します
 
-列パターンを実装する方法の詳細については、「[Mapping Data Flow の列パターン](concepts-data-flow-column-pattern.md)」を参照してください。
+列パターンを実装する方法の詳細については、「[マッピング データ フローの列パターン](concepts-data-flow-column-pattern.md)」を参照してください。
 
 ### <a name="map-drifted-columns-quick-action"></a>誤差の列のクイック アクションをマップする
 

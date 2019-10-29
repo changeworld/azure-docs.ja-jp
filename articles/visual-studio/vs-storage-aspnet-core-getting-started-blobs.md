@@ -1,5 +1,5 @@
 ---
-title: Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET Core) | Microsoft Docs
+title: Azure Blob ストレージと Visual Studio の概要 (ASP.NET Core)
 description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET Core プロジェクトで Azure Blob Storage の使用を開始する方法について説明します
 services: storage
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 8ae82548d4976e505dae055445c71a5c12cbf263
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 91e95dcf7cfc46073e2fd752a0e7e5ae6fce4ee8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516173"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300083"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Azure Blob ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET Core)
 

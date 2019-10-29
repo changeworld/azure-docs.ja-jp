@@ -1,18 +1,18 @@
 ---
 title: Azure Managed Application の createUiDefinition 成果物リファレンス
-description: この記事は、createUiDefinition 成果物に対するリファレンスです。
+description: Azure Managed Application の createUiDefinition 成果物を作成する方法について説明します。 このファイルの名前は createUiDefinition.json です。
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 5168e977a7bc289ec8981ef1df8cddd5cc6df678
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 09364a849926fc829a890bfcdc8b760c7c7e189c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336633"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330193"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>リファレンス: ユーザー インターフェイス要素の成果物
 

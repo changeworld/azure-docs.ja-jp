@@ -8,12 +8,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: a558bbd114bdaa2046bd0bfb8ffd846d0804b9a3
-  ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+  ms.openlocfilehash: 63c9b205048b6cd4f59d1f5972f8f789a875b768
+  ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/10/2019
-  ms.locfileid: "67785599"
+  ms.lasthandoff: 10/23/2019
+  ms.locfileid: "72803262"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -25,6 +25,14 @@ landingContent:
       url: v2-overview.md
     - text: 開発者のための Azure Active Directory (v1.0)
       url: v1-overview.md
+  - linkListType: concept
+    links:
+    - text: 認証の基本
+      url: authentication-scenarios.md
+    - text: 認証フローとアプリ シナリオ
+      url: authentication-flows-app-scenarios.md
+    - text: ベスト プラクティスと推奨事項
+      url: identity-platform-integration-checklist.md
   - linkListType: learn
     links:
     - text: One Dev Minute - Microsoft ID プラットフォーム
@@ -43,10 +51,6 @@ landingContent:
     links:
     - text: JavaScript
       url: tutorial-v2-javascript-spa.md
-  - linkListType: deploy
-    links:
-    - text: アプリの統合のテスト
-      url: identity-platform-integration-checklist.md
   - linkListType: download
     links:
     - text: サンプル - JavaScript、Angular
@@ -69,10 +73,6 @@ landingContent:
     links:
     - text: ASP.NET Core
       url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
-  - linkListType: deploy
-    links:
-    - text: アプリの統合のテスト
-      url: identity-platform-integration-checklist.md
   - linkListType: download
     links:
     - text: サンプル - ASP.NET Core、ASP.NET
@@ -87,10 +87,6 @@ landingContent:
     links:
     - text: ASP.NET Core
       url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial
-  - linkListType: deploy
-    links:
-    - text: アプリの統合のテスト
-      url: identity-platform-integration-checklist.md
   - linkListType: download
     links:
     - text: サンプル - ASP.NET Core、ASP.NET、Node.js、Ruby
@@ -105,10 +101,6 @@ landingContent:
     links:
     - text: ASP.NET Core Web API
       url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
-  - linkListType: deploy
-    links:
-    - text: アプリの統合のテスト
-      url: identity-platform-integration-checklist.md
   - linkListType: download
     links:
     - text: サンプル - ASP.NET
@@ -123,10 +115,6 @@ landingContent:
     links:
     - text: Microsoft Graph を呼び出す ASP.NET Core Web API
       url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
-  - linkListType: deploy
-    links:
-    - text: アプリの統合のテスト
-      url: identity-platform-integration-checklist.md
 - title: Web API を呼び出すデスクトップ アプリの構築
   linkLists:
   - linkListType: get-started
@@ -145,10 +133,6 @@ landingContent:
       url: tutorial-v2-windows-desktop.md
     - text: Microsoft Graph API を呼び出す (UWP)
       url: tutorial-v2-windows-uwp.md
-  - linkListType: deploy
-    links:
-    - text: アプリの統合のテスト
-      url: identity-platform-integration-checklist.md
   - linkListType: download
     links:
     - text: サンプル - .NET、.NET Core
@@ -165,10 +149,6 @@ landingContent:
       url: quickstart-v2-netcore-daemon.md
     - text: トークンを取得して Microsoft Graph API を呼び出す (ASP.NET Web アプリ)
       url: https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp
-  - linkListType: deploy
-    links:
-    - text: アプリの統合のテスト
-      url: identity-platform-integration-checklist.md
   - linkListType: download
     links:
     - text: サンプル - ASP.NET コンソール、ASP.NET web
@@ -193,10 +173,6 @@ landingContent:
       url: tutorial-v2-android.md
     - text: ユーザーをサインインさせて Microsoft Graph API を呼び出す (iOS)
       url: tutorial-v2-ios.md
-  - linkListType: deploy
-    links:
-    - text: アプリの統合のテスト
-      url: identity-platform-integration-checklist.md
   - linkListType: download
     links:
     - text: サンプル - Android、iOS、Xamarin

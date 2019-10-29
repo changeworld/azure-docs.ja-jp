@@ -81,7 +81,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Unity で共有する</a>。
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Azure Cosmos DB を使用して Unity で共有する</a>。
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">セッションやデバイス間で共有する。</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Azure Cosmos DB を使用して永続的に共有する。</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">新しい Unity HoloLens アプリを開始する。</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">新しい Android アプリを開始する。</a>

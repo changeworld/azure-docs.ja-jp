@@ -11,10 +11,10 @@ ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 7afb616fffaf01b1efa4f5d5a4af9dddd9683781
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70143848"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のための継続的インテグレーションとデプロイ

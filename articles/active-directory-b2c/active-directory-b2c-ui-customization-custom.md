@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88a8258a91237c7b3eadccc32a30c3fe8149eca5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ef4ddc422041de623b96f3a0c85f067427cacd7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064644"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374223"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -119,7 +119,7 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
 
 UI のカスタマイズを構成するには、**ContentDefinition** とその子要素を基本ファイルから拡張ファイルにコピーします。
 
-1. ポリシーの基本ファイルを開きます。 たとえば、*`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`*** です。 これは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つで、[カスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)に関するページの前提条件で取得されている必要があります。
+1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>です。 これは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つで、[カスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)に関するページの前提条件で取得されている必要があります。
 1. **ContentDefinitions** 要素を検索し、その内容全体をコピーします。
 1. 拡張ファイルを開きます。 たとえば、*TrustFrameworkExtensions.xml* です。 **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
 1. コピーした **ContentDefinitions** 要素の内容全体を **BuildingBlocks** 要素の子として貼り付けます。

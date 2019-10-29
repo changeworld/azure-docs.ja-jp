@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell スクリプトのサンプル - マネージド リソース グループを取得し、VM のサイズを変更する | Microsoft Docs
+title: マネージド リソース グループの取得と VM のサイズ変更 - Azure PowerShell
 description: Azure マネージド アプリケーションのマネージド リソース グループを取得する Azure PowerShell サンプル スクリプトを紹介します。 このスクリプトでは、VM のサイズを変更します。
 services: managed-applications
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: f36ed42e0b7f8e4d1e5b092d2a14fd0cd8178ee0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f11f9b56a8a17330fac3fb50bfd5f560357463e7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330119"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529419"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>PowerShell でマネージド リソース グループ内のリソースを取得し、VM のサイズを変更する
 

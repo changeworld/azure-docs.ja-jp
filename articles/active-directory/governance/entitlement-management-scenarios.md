@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8e7709abcc97baac9bf657b9fff2110cb2e72c1
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 81382ebecdff6c7b146386b3ae2b0768a7c834bf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489028"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389064"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) での一般的なシナリオ
 
@@ -47,8 +47,8 @@ ms.locfileid: "68489028"
 > | 手順 | 例 |
 > | --- | --- |
 > | **1.** [カタログ内に新しいアクセス パッケージを作成する](entitlement-management-access-package-create.md#start-new-access-package) | ![アクセス パッケージを作成します。](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [リソースのロールをアクセス パッケージに追加する](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>グループ</li><li>[アプリケーション]</li><li>SharePoint サイト</li></ul> | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [ポリシーを追加する](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>ディレクトリ内のユーザーに対して</li><li>承認を要求する</li><li>有効期限の設定</li></ul> | ![ポリシーの追加](./media/entitlement-management-scenarios/policy.png) |
+> | **2.** [リソースのロールをアクセス パッケージに追加する](entitlement-management-access-package-resources.md#add-resource-roles)<ul><li>グループ</li><li>[アプリケーション]</li><li>SharePoint サイト</li></ul> | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
+> | **3.** [ポリシーを追加する](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)<ul><li>ディレクトリ内のユーザーに対して</li><li>承認を要求する</li><li>ライフサイクル設定</li></ul> | ![ポリシーの追加](./media/entitlement-management-scenarios/policy.png) |
 
 ### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>ビジネス パートナー ディレクトリからのユーザー (自分のディレクトリ内にまだいないユーザーを含む) に、グループ、アプリケーション、または SharePoint サイトへのアクセスを要求することを許可します。
 
@@ -56,9 +56,9 @@ ms.locfileid: "68489028"
 > | 手順 | 例 |
 > | --- | --- |
 > | **1.** [カタログ内に新しいアクセス パッケージを作成する](entitlement-management-access-package-create.md#start-new-access-package) | ![アクセス パッケージを作成します。](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [リソースのロールをアクセス パッケージに追加する](entitlement-management-access-package-edit.md#add-resource-roles) | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [外部ユーザーのポリシーを追加する](entitlement-management-access-package-edit.md#policy-for-users-not-in-your-directory)<ul><li>ディレクトリ内にいないユーザーの場合</li><li>承認を要求する</li><li>有効期限の設定</li></ul> | ![外部ユーザーのポリシーを追加する](./media/entitlement-management-scenarios/policy-external.png) |
-> | **4.** [アクセス パッケージを要求するマイ アクセス ポータル リンクをビジネス パートナーに送信する](entitlement-management-access-package-edit.md#copy-my-access-portal-link)<ul><li>ビジネス パートナーはユーザーとリンクを共有できる</li></ul> |  |
+> | **2.** [リソースのロールをアクセス パッケージに追加する](entitlement-management-access-package-resources.md#add-resource-roles) | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
+> | **3.** [外部ユーザーのポリシーを追加する](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)<ul><li>ディレクトリ内にいないユーザーの場合</li><li>承認を要求する</li><li>ライフサイクル設定</li></ul> | ![外部ユーザーのポリシーを追加する](./media/entitlement-management-scenarios/policy-external.png) |
+> | **4.** [アクセス パッケージを要求するリンクをビジネス パートナーに送信する](entitlement-management-access-package-settings.md)<ul><li>ビジネス パートナーはユーザーとリンクを共有できる</li></ul> |  |
 
 ### <a name="i-want-to-change-the-groups-applications-or-sharepoint-sites-in-an-access-package"></a>アクセス パッケージ内のグループ、アプリケーション、または SharePoint サイトを変更できる
 
@@ -66,7 +66,7 @@ ms.locfileid: "68489028"
 > | 手順 | 例 |
 > | --- | --- |
 > | **1.** アクセス パッケージを開く | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [リソース ロールを追加または削除する](entitlement-management-access-package-edit.md#add-resource-roles) | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles-add.png) |
+> | **2.** [リソース ロールを追加または削除する](entitlement-management-access-package-resources.md#add-resource-roles) | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles-add.png) |
 
 ### <a name="i-want-to-view-who-has-an-assignment-to-groups-applications-or-sharepoint-sites"></a>グループ、アプリケーション、または SharePoint サイトへの割り当てを持っているユーザーを表示する
 
@@ -74,7 +74,7 @@ ms.locfileid: "68489028"
 > | 手順 | 例 |
 > | --- | --- |
 > | **1.** アクセス パッケージを開く | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [割り当てを表示する](entitlement-management-access-package-edit.md#view-who-has-an-assignment)<ul><li>アクセス パッケージへのアクセスを持つユーザーを表示する</li><li>どのユーザーのアクセスの有効期限が切れているかを表示する</li></ul> |  |
+> | **2.** [割り当てを表示する](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)<ul><li>アクセス パッケージへのアクセスを持つユーザーを表示する</li><li>どのユーザーのアクセスの有効期限が切れているかを表示する</li></ul> |  |
 
 ### <a name="i-want-to-view-groups-applications-or-sharepoint-sites-a-user-has-access-to"></a>ユーザーがアクセスするグループ、アプリケーション、または SharePoint サイトを表示する
 
@@ -109,7 +109,7 @@ ms.locfileid: "68489028"
 > [!div class="mx-tableFixed"]
 > | 手順 | 例 |
 > | --- | --- |
-> | **1.** [受信したマイ アクセス ポータル リンクの検索](entitlement-management-access-package-edit.md#copy-my-access-portal-link) |  |
+> | **1.** [受信したアクセス パッケージ リンクの検索](entitlement-management-access-package-settings.md) |  |
 > | **2.** [マイ アクセス ポータルへのサインイン](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![マイ アクセス ポータル アイコン](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
 > | **3.** [アクセスの要求](entitlement-management-request-access.md#request-an-access-package) | ![外部ユーザーのアクセスを要求する](./media/entitlement-management-scenarios/request-access-external.png) |
 
@@ -124,4 +124,4 @@ ms.locfileid: "68489028"
 ## <a name="next-steps"></a>次の手順
 
 - [チュートリアル:最初のアクセス パッケージを作成する](entitlement-management-access-package-first.md)
-- [タスクを委任する](entitlement-management-delegate.md)
+- [委任とロール](entitlement-management-delegate.md)

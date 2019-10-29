@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e7d69e2258036318b736f245f9e3aec3cf5f54de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67876436"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389941"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
+
+> [!IMPORTANT]
+> Status Monitor の使用は推奨されなくなりました。 これは Azure Monitor Application Insights エージェント (旧称 Status Monitor v2) に置き換えられました。 [オンプレミス サーバーのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)または [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)に関するドキュメントを参照してください。
 
 Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 [Microsoft Azure](https://azure.com) サブスクリプションが必要です。
 
@@ -39,7 +42,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 * **実行時:** 後述するように、コードのリビルドと再デプロイを行うことなく、サーバー上の Web アプリをインストルメント化します。
 
 > [!NOTE]
-> ビルド時のインストルメンテーションを使用すると、実行時のインストルメンテーションはオンにしても機能しません。
+> ビルド時のインストルメンテーションを使用する場合は、実行時のインストルメンテーションはオンにしても機能しません。
 
 各方法の特徴について概要を次に示します。
 

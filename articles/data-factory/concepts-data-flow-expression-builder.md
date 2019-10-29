@@ -1,23 +1,23 @@
 ---
-title: Azure Data Factory の Mapping Data Flow の式ビルダー
-description: Azure Data Factory の Mapping Data Flow の式ビルダー
+title: Azure Data Factory のマッピング データ フローの式ビルダー
+description: Azure Data Factory のマッピング データ フローの式ビルダー
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 9862866d5cddb227d9417ac15db6b8ea851507e6
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030297"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388049"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>Mapping Data Flow の式ビルダー
+# <a name="mapping-data-flow-expression-builder"></a>マッピング データ フローの式ビルダー
 
 
 
-Azure Data Factory の Mapping Data Flow には、データ変換の式を入力できる式ボックスが表示されます。 このボックス内で、データ フローからの列、フィールド、変数、パラメーター、関数を使用します。 式を作成するには、式ビルダーを使用します。式ビルダーは、変換内の式テキスト ボックスをクリックすると起動します。 変換の列を選択したときに、[計算列] のオプションが表示されることもあります。 このオプションをクリックすると、起動した式ビルダーも表示されます。
+Azure Data Factory のマッピング データ フローには、データ変換の式を入力できる式ボックスが表示されます。 このボックス内で、データ フローからの列、フィールド、変数、パラメーター、関数を使用します。 式を作成するには、式ビルダーを使用します。式ビルダーは、変換内の式テキスト ボックスをクリックすると起動します。 変換の列を選択したときに、[計算列] のオプションが表示されることもあります。 このオプションをクリックすると、起動した式ビルダーも表示されます。
 
 ![式ビルダー](media/data-flow/xpb1.png "式ビルダー")
 
@@ -39,7 +39,7 @@ Azure Data Factory の Mapping Data Flow には、データ変換の式を入力
 
 データ フロー式を処理しているときに、Azure Data Factory のデータ フロー デザイン サーフェイスからデバッグ モードをオンにします。これにより、作業しながら、作成中の式のデータの結果をプレビューできます。 式に対して、リアルタイムのライブ デバッグが可能です。
 
-![デバッグ モード](media/data-flow/debugbutton.png "[Debug]\(デバッグ\) ボタン")
+![デバッグ モード](media/data-flow/debugbutton.png "[デバッグ] ボタン")
 
 [更新] ボタンをクリックして、式の結果をソースのライブ サンプルに対してリアルタイムで更新します。
 
@@ -49,7 +49,7 @@ Azure Data Factory の Mapping Data Flow には、データ変換の式を入力
 
 単一行および複数行コメントの構文を使用して、式にコメントを追加します。
 
-![コメント](media/data-flow/comments.png "コメント")
+![説明](media/data-flow/comments.png "説明")
 
 ## <a name="regular-expressions"></a>正規表現
 

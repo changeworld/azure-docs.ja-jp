@@ -1,0 +1,92 @@
+- name: Lab Services のドキュメント
+  href: index.yml
+- name: DevTest Labs のドキュメントへの切り替え
+  href: ../devtest-lab-overview.md
+- name: 概要
+  items:
+    - name: クラスルーム ラボについて
+      href: classroom-labs-overview.md
+    - name: Lab Services と DevTest Labs について
+      href: ../lab-services-overview.md?toc=%2fazure%2flab-services%2fclassroom-labs%2ftoc.json
+- name: チュートリアル
+  items:
+    - name: ラボ アカウントを設定する
+      href: tutorial-setup-lab-account.md
+    - name: クラスルーム ラボを設定する
+      href: tutorial-setup-classroom-lab.md
+    - name: クラスルーム ラボへのアクセス
+      href: tutorial-connect-virtual-machine-classroom-lab.md
+    - name: クラスルーム ラボの使用状況を追跡する
+      href: tutorial-track-usage.md
+- name: 概念
+  items:
+    - name: クラスルーム ラボの概念
+      href: classroom-labs-concepts.md
+    - name: シナリオ
+      items:
+        - name: クラスを実施するためのラボの使用
+          href: classroom-labs-scenarios.md
+- name: ハウツー ガイド
+  items:
+    - name: クラスルーム ラボ - クラスの種類
+      items:
+        - name: クラスの種類の概要
+          href: class-types.md
+        - name: 自然処理でのディープ ラーニング
+          href: class-type-deep-learning-natural-processing.md
+        - name: Linux でのシェル スクリプト
+          href: class-type-shell-scripting-linux.md
+        - name: 倫理的ハッキング
+          href: class-type-ethical-hacking.md
+    - name: ラボ アカウントを作成および構成する (ラボ アカウント オーナー)
+      items:
+        - name: ラボ アカウントを作成および管理する
+          href: how-to-manage-lab-accounts.md
+        - name: ラボ アカウントを構成する
+          href: how-to-configure-lab-accounts.md
+        - name: ピア仮想ネットワークにラボを接続する
+          href: how-to-connect-peer-virtual-network.md
+        - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
+          href: how-to-attach-detach-shared-image-gallery.md
+    - name: クラスルーム ラボを作成して構成する (講師)
+      items:
+        - name: クラスルーム ラボを作成して管理する
+          href: how-to-manage-classroom-labs.md
+        - name: テンプレートを設定、カスタマイズ、公開する
+          href: how-to-create-manage-template.md
+        - name: 仮想マシン プールを設定および管理する
+          href: how-to-set-virtual-machine-passwords.md
+        - name: ラボ ユーザーを追加および管理する
+          href: how-to-configure-student-usage.md
+        - name: スケジュールの作成と管理
+          href: how-to-create-schedules.md
+        - name: 共有イメージ ギャラリーを使用する
+          href: how-to-use-shared-image-gallery.md
+        - name: Linux のリモート デスクトップ接続を有効にする
+          href: how-to-enable-remote-desktop-linux.md
+        - name: テンプレート VM で入れ子になった仮想化を有効にする
+          href: how-to-enable-nested-virtualization-template-vm.md
+        - name: テンプレート VM 内に複数の VM を備えた環境を作成する
+          href: how-to-enable-multi-vm-environment.md
+    - name: クラスルーム ラボの VM に接続する (学生)
+      items:
+        - name: クラスルーム ラボへのアクセス
+          href: how-to-use-classroom-lab.md
+        - name: Linux VM にリモート デスクトップ接続を使用する
+          href: how-to-use-remote-desktop-linux-student.md
+        - name: 仮想マシンのパスワードを設定またはリセットする
+          href: how-to-set-virtual-machine-passwords-student.md
+- name: リファレンス
+  items:
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/labservices/'
+- name: リソース
+  items:
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/?product=lab-services'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/lab-services/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+    - name: よく寄せられる質問
+      href: classroom-labs-faq.md

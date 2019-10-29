@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 966386bfed5f94556f145afab1c665eb3c90546a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065549"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296399"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する
 
@@ -102,5 +102,5 @@ ms.locfileid: "71065549"
 以下の値は前の例で構成されています。
 
 - **シングル サインオン (SSO)** : シングル サインオンは、**SingleSignOn** で構成します。 指定できる値は、`Tenant`、`Application`、`Policy`、`Suppressed` です。
-- **Web アプリのセッションの有効期間 (分)** : Web アプリのセッションの有効期間は、**SessionExpiryInSeconds** 要素で設定します。 既定値は 86,400 秒 (1,440 分) です。
 - **Web アプリのセッション タイムアウト**: Web アプリのセッション タイムアウトは、**SessionExpiryType** 要素で設定します。 指定できる値は、`Absolute` および `Rolling` です。
+- **Web アプリのセッションの有効期間**: Web アプリのセッションの有効期間は、**SessionExpiryInSeconds** 要素で設定します。 既定値は 86,400 秒 (1,440 分) です。
