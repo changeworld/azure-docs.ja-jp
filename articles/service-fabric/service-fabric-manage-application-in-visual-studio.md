@@ -22,7 +22,8 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "60720096"
 ---
-# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
+# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Service Fabric アプリケーションの記述と管理が簡単にするための Visual Studio の利用
+
 Azure Service Fabric アプリケーションとサービスを Visual Studio で管理できます。 [開発環境のセットアップ](service-fabric-get-started.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
 
 ## <a name="deploy-your-service-fabric-application"></a>Service Fabric アプリケーションのデプロイ
