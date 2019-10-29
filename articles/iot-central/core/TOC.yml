@@ -8,8 +8,6 @@
       href: overview-iot-options.md
     - name: UI について
       href: overview-iot-central-tour.md
-    - name: 接続を維持する
-      href: concepts-stay-connected.md
 - name: クイック スタート
   expanded: true
   items:

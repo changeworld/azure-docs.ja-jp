@@ -17,10 +17,10 @@ ms.date: 08/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a63872680d28664c6d5a7ff109f6de72817173d5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68989643"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>チュートリアル:Aha! と Azure Active Directory を統合する
@@ -60,7 +60,7 @@ Aha! の Azure AD への統合を構成するには、 Aha! をギャラリー�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-aha"></a>Aha! の Azure AD シングル サインオンの構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、 Aha! に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと Aha! の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Aha! に対する Azure AD SSO を構成してテストします。 using a test user called <bpt id="p1">**</bpt>B.Simon<ept id="p1">**</ept>. SSO を機能させるために、Azure AD ユーザーと Aha! の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Aha! で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
@@ -142,23 +142,23 @@ Aha! で Azure AD SSO を構成してテストするには、次の構成要素�
 
 4. 上部のメニューで **[Settings]** をクリックします。
 
-    ![設定](./media/aha-tutorial/IC798950.png "Settings")
+    ![設定](./media/aha-tutorial/IC798950.png "設定")
 
 5. **[アカウント]** クリックします。
   
-    ![プロファイル](./media/aha-tutorial/IC798951.png "Profile")
+    ![プロファイル](./media/aha-tutorial/IC798951.png "プロファイル")
 
 6. **[セキュリティとシングル サインオン]** クリックします。
 
-    ![セキュリティとシングル サインオン](./media/aha-tutorial/IC798952.png "Security and single sign-on")
+    ![セキュリティとシングル サインオン](./media/aha-tutorial/IC798952.png "セキュリティとシングル サインオン")
 
 7. **[シングル サインオン]** セクションで、 **[ID プロバイダー]** として **[SAML2.0]** を選択します。
 
-    ![セキュリティとシングル サインオン](./media/aha-tutorial/IC798953.png "Security and single sign-on")
+    ![セキュリティとシングル サインオン](./media/aha-tutorial/IC798953.png "セキュリティとシングル サインオン")
 
 8. **[シングル サインオン]** 構成ページで、次の手順を実行します。
 
-    ![シングル サインオン](./media/aha-tutorial/IC798954.png "Single Sign-On")
+    ![シングル サインオン](./media/aha-tutorial/IC798954.png "[Single Sign-On]")
 
     a. **[名前]** テキスト ボックスに、構成の名前を入力します。
 
