@@ -53,8 +53,10 @@
       href: resource-scenario-status.md
     - name: 前提条件の概要
       href: pre-reqs.md
-    - name: Azure SQL DB マネージド インスタンスへの移行のネットワーク トポロジ
+    - name: Azure SQL DB MI への移行のネットワーク トポロジ
       href: resource-network-topologies.md
+    - name: SQL Server から Azure SQL DB MI へオンライン移行するためのカスタム ロール
+      href: resource-custom-roles-sql-db-managed-instance.md
     - name: トラブルシューティングと既知の問題
       items:
         - name: ソース データベースの接続に関する問題のトラブルシューティング

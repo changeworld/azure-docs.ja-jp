@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 84753f2c3ab19a0cc9d72ef8ce5011dfc8e5a8da
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: f3d5aaaf57387ae4ccefdfe8ec22435f03b2452f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711890"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757555"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>クイック スタート: Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 このクイックスタートでは、[Azure Portal](https://portal.azure.com/) を使用して、Asure Storage 内にコンテナーを作成したり、そのコンテナー内のブロック BLOB をアップロードおよびダウンロードしたりする方法を説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "51711890"
 Azure Portal でコンテナーを作成するには、次の手順に従います。
 
 1. Azure Portal で新しいストレージ アカウントに移動します。
-2. ストレージ アカウントの左側のメニューで、**[Blob service]** セクションまでスクロールしてから、**[BLOB]** を選択します。
+2. ストレージ アカウントの左側のメニューで、 **[Blob service]** セクションまでスクロールしてから、 **[コンテナー]** を選択します。
 3. **[+ コンテナー]** ボタンを選択します。
 4. 新しいコンテナーの名前を入力します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。 コンテナーと BLOB の名前の詳細については、「[Naming and referencing containers, blobs, and metadata (コンテナー、BLOB、およびメタデータの名前付けと参照)](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 5. コンテナーにパブリック アクセスのレベルを設定します。 既定のレベルは **[ プライベート (匿名アクセスなし)]** です。
@@ -45,7 +45,7 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 1. Azure Portal で、前のセクションで作成したコンテナーに移動します。
 2. コンテナーを選択して、それに含まれている BLOB の一覧を表示します。 このコンテナーは新しいため、BLOB はまだ含まれていません。
 3. **[アップロード]** ボタンを選択して、コンテナーに BLOB をアップロードします。
-4. ローカル ファイル システムを参照して、ブロック BLOB としてアップロードするファイルを見つけて、**[アップロード]** を選択します。
+4. ローカル ファイル システムを参照して、ブロック BLOB としてアップロードするファイルを見つけて、 **[アップロード]** を選択します。
      
     ![ローカル ドライブから BLOB をアップロードする方法を示したスクリーン ショット](media/storage-quickstart-blobs-portal/upload-blob.png)
 
@@ -57,7 +57,7 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 ブロック BLOB をダウンロードして、ブラウザーで表示したり、ローカル ファイル システムに保存したりできます。 ブロック BLOB をダウンロードするには、次の手順に従います。
 
 1. 前のセクションでアップロードした BLOB の一覧に移動します。 
-2. ダウンロードする BLOB を右クリックし、**[ダウンロード]** を選択します。 
+2. ダウンロードする BLOB を右クリックし、 **[ダウンロード]** を選択します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -67,7 +67,7 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 
 1. Azure Portal でストレージ アカウント内のコンテナーの一覧に移動します。
 2. 削除するコンテナーを選択します。
-3. **[詳細]** ボタン (**[...]**) を選択し、**[削除]** を選択します。
+3. **[詳細]** ボタン ( **[...]** ) を選択し、 **[削除]** を選択します。
 4. コンテナーを削除することを確認します。
 
 ## <a name="next-steps"></a>次の手順

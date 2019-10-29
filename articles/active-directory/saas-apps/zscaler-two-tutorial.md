@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 7ea4eecd5c27b6a9f14bc358c7db61da544e7530
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68825098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>チュートリアル:Azure Active Directory と Zscaler Two の統合
@@ -169,7 +169,7 @@ Zscaler Two で Azure AD シングル サインオンを構成するには、次
 
 4. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
    
-    ![Administration](./media/zscaler-two-tutorial/ic800206.png "Administration")
+    ![管理](./media/zscaler-two-tutorial/ic800206.png "管理")
 
     a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
 
@@ -177,7 +177,7 @@ Zscaler Two で Azure AD シングル サインオンを構成するには、次
 
 5. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
             
-    ![ユーザーと認証の管理](./media/zscaler-two-tutorial/ic800208.png "Manage Users & Authentication")
+    ![ユーザーと認証の管理](./media/zscaler-two-tutorial/ic800208.png "[ユーザーと認証の管理]")
     
     a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
 
@@ -210,7 +210,7 @@ Zscaler Two で Azure AD シングル サインオンを構成するには、次
 
 2. **[ツール]** メニューの **[インターネット オプション]** を選択し、 **[インターネット オプション]** ダイアログを開きます。   
     
-     ![インターネット オプション](./media/zscaler-two-tutorial/ic769492.png "Internet Options")
+     ![[インターネット オプション]](./media/zscaler-two-tutorial/ic769492.png "[インターネット オプション]")
 
 3. **[接続]** タブをクリックします。   
   
@@ -220,7 +220,7 @@ Zscaler Two で Azure AD シングル サインオンを構成するには、次
 
 5. [プロキシ サーバー] セクションで、次の手順を実行します。   
    
-    ![プロキシ サーバー](./media/zscaler-two-tutorial/ic769494.png "Proxy server")
+    ![[プロキシ サーバー]](./media/zscaler-two-tutorial/ic769494.png "プロキシ サーバー")
 
     a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
 

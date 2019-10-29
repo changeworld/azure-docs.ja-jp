@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68943439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル:Azure Active Directory と PolicyStat の統合
@@ -162,15 +162,15 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 2. **[Admin]** タブをクリックし、左側のナビゲーション ウィンドウの **[Single Sign-On Configuration]** をクリックします。
    
-    ![管理者メニュー](./media/policystat-tutorial/ic808633.png "管理者メニュー")
+    ![[Administrator Menu]\(管理者メニュー\)](./media/policystat-tutorial/ic808633.png "管理者メニュー")
 
 3. **[Setup]** セクションで、 **[Enable Single Sign-on Integration]** を選択します。
    
-    ![シングル サインオンの構成](./media/policystat-tutorial/ic808634.png "シングル サインオンの構成")
+    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808634.png "[Single Sign-On Configuration]")
 
 4. **[Configure Attributes]** をクリックし、 **[Configure Attributes]** セクションで次の手順に従います。
    
-    ![シングル サインオンの構成](./media/policystat-tutorial/ic808635.png "シングル サインオンの構成")
+    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808635.png "[Single Sign-On Configuration]")
    
     a. **[Username Attribute]** ボックスに、「**uid**」と入力します。
 
@@ -184,7 +184,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 5. **[Your IDP Metadata]** をクリックし、 **[Your IDP Metadata]** セクションで次の手順に従います。
    
-    ![シングル サインオンの構成](./media/policystat-tutorial/ic808636.png "シングル サインオンの構成")
+    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808636.png "[Single Sign-On Configuration]")
    
     a. ダウンロードしたメタデータ ファイルの内容をコピーし、 **[Your Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** テキスト ボックスに貼り付けます。
 

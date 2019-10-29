@@ -1,125 +1,121 @@
 ---
 title: チュートリアル:ビジュアル インターフェイスで機械学習モデルをデプロイする
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning のビジュアル インターフェイスで予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。 このチュートリアルは、線形回帰を使用した自動車価格の予測に関する 2 部構成のシリーズのパート 2 です。
+description: Azure Machine Learning のビジュアル インターフェイスで予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 10/22/2019
+ms.openlocfilehash: 6f8717f70a2cb03a7fd683cfe61f1198461f4305
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128976"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792668"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで機械学習モデルをデプロイする
 
-[チュートリアルのパート 1](ui-tutorial-automobile-price-train-score.md) で作成した予測モデルを他のユーザーが使用できるように、Azure Web サービスとしてデプロイできます。 これまでは、モデルのトレーニングを実験してきました。 ここでは、ユーザー入力に基づいて新しい予測を生成しましょう。 チュートリアルのこのパートでは、次のことを行います。
+[チュートリアルのパート 1](ui-tutorial-automobile-price-train-score.md) で作成した予測モデルを他のユーザーが使用できるようにするには、モデルをリアルタイム エンドポイントにデプロイします。 パート 1 では、モデルをトレーニングしました。 ここでは、ユーザー入力に基づいて新しい予測を生成しましょう。 チュートリアルのこのパートでは、次のことを行います。
 
 > [!div class="checklist"]
-> * モデルをデプロイできるよう準備する
-> * Web サービスのデプロイ
-> * Web サービスをテストする
-> * Web サービスを管理する
-> * Web サービスを使用する
+> * リアルタイム エンドポイントをデプロイする
+> * 推論クラスターを作成する
+> * リアルタイム エンドポイントをテストする
 
 ## <a name="prerequisites"></a>前提条件
 
 [チュートリアルのパート 1](ui-tutorial-automobile-price-train-score.md) を完了して、ビジュアル インターフェイスで機械学習モデルをトレーニングしてスコア付けする方法を学習します。
 
-## <a name="prepare-for-deployment"></a>デプロイの準備をする
+## <a name="deploy-a-real-time-endpoint"></a>リアルタイム エンドポイントをデプロイする
 
-実験を Web サービスとしてデプロイする前に、まず "*トレーニング実験*" を "*予測実験*" に変換する必要があります。
+パイプラインをデプロイするためには、次の作業が必要となります。
 
-1. 実験キャンバスの下部にある **[Create Predictive Experiment]\(予測実験の作成\)** * を選択します。
+1. トレーニング パイプラインをリアルタイム推論パイプラインに変換します。これにより、トレーニング モジュールが削除され、推論要求のための入力と出力が追加されます。
+1. 推論パイプラインをデプロイします。
 
-    ![トレーニング実験から予測実験への自動変換を示すアニメーション GIF](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
+### <a name="create-a-real-time-inference-pipeline"></a>リアルタイム推論パイプラインを作成する
 
-    **[Create Predictive Experiment]\(予測実験の作成\)** を選択すると、以下のようないくつかの処理が行われます。
+1. パイプライン キャンバスの上部で **[Create inference pipeline]\(推論パイプラインの作成\)**  >  **[Real-time inference pipeline]\(リアルタイム推論パイプライン\)** の順に選択します。
+
+    **[Create inference pipeline]\(推論パイプラインの作成\)** を選択すると、以下のようないくつかの処理が行われます。
     
-    * トレーニング済みのモデルは、モジュール パレットに**トレーニング済みのモデル** モジュールとして格納されます。 このモジュールは、 **[Trained Models]\(トレーニング済みモデル\)** の下に表示されます。
-    * トレーニングに使用したモジュールは削除されます。具体的には次のモジュールが削除されます。
-      * モデルのトレーニング
-      * データの分割
-      * モデルの評価
-    * 保存したトレーニング済みのモデルは実験に追加されます。
-    * **Web サービスの入力**と **Web サービスの出力**モジュールが追加されます。 これらのモジュールでは、ユーザー データがモデルに入力される位置と、データが返される位置が特定されます。
+    * トレーニング済みのモデルは、モジュール パレットに **[Dataset]\(データセット\)** モジュールとして格納されます。 これは **[マイ データセット]** で見つかります。
+    * **[Train Model]\(モデルのトレーニング\)** や **[Split Data]\(データの分割\)** など、トレーニングに使用されたモジュールは削除されます。
+    * 保存したトレーニング済みのモデルが再びパイプラインに追加されます。
+    * **[Web Service Input]\(Web サービスの入力\)** モジュールと **[Web Service Output]\(Web サービスの出力\)** モジュールが追加されます。 これらのモジュールでは、ユーザー データがモデルに入力される位置と、データが返される位置が特定されます。
 
-    **トレーニング実験**は、実験キャンバスの上部にある新しいタブに保存されたままです。
+    > [!Note]
+    > **トレーニング パイプライン**は、パイプライン キャンバスの上部にある新しいタブに保存されます。 また、公開されたパイプラインとしてビジュアル インターフェイスでも確認できます。
+    >
 
-1. **[実行]** します。
+    これでパイプラインは次のようになっているはずです。  
 
-1. モデルがまだ機能していることを確認するには、**Score Model (モデルのスコア付け)** モジュールの出力を選択し、 **[結果の表示]** を選択します。 元のデータが、予測価格 ("Scored Labels" (スコア付けラベル)) と共に表示されます。
+   ![デプロイ準備が完了したパイプラインの予測される構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-現在、実験は以下のようになっています。  
+1. **[Run]\(実行\)** を選択し、パート 1 で使用したものと同じコンピューティング先と実験を使用します。
 
-![デプロイできるよう準備した後の実験の予測される構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
+1. **[Score Model]\(モデルのスコア付け\)** モジュールを選択します。
 
-## <a name="deploy-the-web-service"></a>Web サービスをデプロイする
+1. [プロパティ] ウィンドウで、 **[出力]**  >  **[Visualize]\(視覚化\)** の順に選択し、引き続きモデルが正しく機能していることを確認します。 元のデータが、予測価格 ("Scored Labels" (スコア付けラベル)) と共に表示されます。
 
-1. キャンバスの下にある **[Deploy Web Service]\(Web サービスのデプロイ\)** を選択します。
+1. **[デプロイ]** を選択します。
 
-1. Web サービスを実行する **[Compute Target]\(コンピューティング ターゲット\)** を選択します。
+### <a name="create-an-inferencing-cluster"></a>推論クラスターを作成する
 
-    現時点では、ビジュアル インターフェイスでは Azure Kubernetes Service (AKS) のコンピューティング ターゲットへのデプロイのみがサポートされています。 機械学習サービス ワークスペース内の使用可能な AKS コンピューティング ターゲットから選択するか、または表示されるダイアログ ボックスの手順を使用して新しい AKS 環境を構成します。
+表示されたダイアログで、自分のワークスペースから既存の Azure Kubernetes Service (AKS) クラスターを選択して自分のモデルをデプロイできます。 既存の AKS クラスターがない場合は、次の手順を使用して作成してください。
 
-    ![新しいコンピューティング ターゲットの可能な構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
+1. ダイアログの **[Compute]\(コンピューティング\)** を選択して **[Compute]\(コンピューティング\)** ページに移動します。
 
-1. **[Deploy Web Service]\(Web サービスのデプロイ\)** を選択します。 デプロイが完了したら、次の通知が表示されます。 デプロイには数分かかる場合があります。
+1. ナビゲーション リボンで、 **[Inference Clusters]\(推論クラスター\)**  >  **[+ New]\(+ 新規\)** の順に選択します。
 
-    ![デプロイが成功したことを確認するメッセージを示すスクリーンショット。](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
+    ![推論クラスターの新規作成ウィンドウに移動する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
-## <a name="test-the-web-service"></a>Web サービスをテストする
+1. 推論クラスター ウィンドウで、新しい Kubernetes サービスを構成します。
 
-ビジュアル インターフェイス Web サービスをテストおよび管理するには、 **[Web サービス]** タブに移動します。
+1. **[Compute name]\(コンピューティング名\)** に「aks-compute」と入力します。
+    
+1. 近くにある利用可能な**リージョン**を選択します。
 
-1. Web サービス セクションに移動します。 **Tutorial - Predict Automobile Price[Predictive Exp]** (チュートリアル - 自動車価格を予測する [予測実験]) という名前の、デプロイした Web サービスが表示されます。
+1. **作成** を選択します。
 
-     ![最近作成された Web サービスが強調表示された状態の Web サービス タブを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/web-services.png)
+    > [!Note]
+    > 新しい AKS サービスの作成には約 15 分かかります。 プロビジョニングの状態は、 **[Inference Clusters]\(推論クラスター\)** ページで確認できます。
+    >
 
-1. 追加情報を表示する Web サービスの名前を選択します。
+### <a name="deploy-the-real-time-endpoint"></a>リアルタイム エンドポイントをデプロイする
+
+AKS サービスのプロビジョニングが完了したら、リアルタイム推論パイプラインに戻ってデプロイを完了します。
+
+1. キャンバスの上にある **[Deploy]\(デプロイ\)** を選択します。
+
+1. **[Deploy new real-time endpoint]\(新しいリアルタイム エンドポイントのデプロイ\)** を選択します。 
+
+1. 作成した AKS クラスターを選択します。
+
+1. **[デプロイ]** を選択します。
+
+    ![新しいリアルタイム エンドポイントの設定方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+
+    デプロイが完了するとキャンバスの上に成功通知が表示されます。完了までに数分かかる場合があります。
+
+## <a name="test-the-real-time-endpoint"></a>リアルタイム エンドポイントをテストする
+
+ワークスペースの左側にあるナビゲーション ウィンドウで **[Endpoints]\(エンドポイント\)** ページに移動して、リアルタイム エンドポイントをテストできます。
+
+1. **[Endpoints]\(エンドポイント\)** ページで、デプロイ済みのエンドポイントを選択します。
+
+    ![リアルタイム エンドポイントのタブを示すスクリーンショット (強調表示されているのは、先ほど作成したエンドポイント)](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
 1. **[テスト]** を選択します。
 
-    [![Web サービスのテスト ページを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
-
 1. テスト データを入力するか、自動入力されたサンプル データを使用し、 **[テスト]** を選択します。
 
-    テスト要求が Web サービスに送信され、ページに結果が表示されます。 価格値は入力データに対して生成されますが、予測値を生成するためには使用されません。
+    テスト要求がエンドポイントに送信され、ページに結果が表示されます。 価格値は入力データに対して生成されますが、予測値を生成するためには使用されません。
 
-## <a name="consume-the-web-service"></a>Web サービスを使用する
-
-ユーザーは、Azure Web サービスに API 要求を送信し、新しい自動車の価格を予測する結果を受け取ることができるようになりました。
-
-**要求/応答** - ユーザーは、HTTP プロトコルを使用してサービスに 1 つまたは複数の行の自動車データを送信します。 サービスは、1 つまたは複数の結果セットを返します。
-
-REST 呼び出しのサンプルは、Web サービスの詳細ページの **[Consume]\(使用\)** タブに表示されます。
-
-   ![[Consume]\(使用\) タブに表示される REST 呼び出しのサンプルを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
-
-**[API Doc]\(API ドキュメント\)** タブに移動すると、API の追加情報が表示されます。
-
-## <a name="manage-models-and-deployments"></a>モデルとデプロイの管理
-
-ビジュアル インターフェイスで作成したモデルおよび Web サービスのデプロイは、Azure Machine Learning ワークスペースからも管理できます。
-
-1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  
-
-1. ワークスペースで、 **[モデル]** を選択します。 次に、作成した実験を選択します。
-
-    ![Azure portal で実験に移動する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
-
-    このページに、モデルに関する追加情報が表示されます。
-
-1. **[デプロイ]** を選択すると、モデルを使用するすべての Web サービスが一覧表示されます。 Web サービスの名前を選択すると、Web サービスの詳細ページに移動します。 このページでは、Web サービスのより詳細な情報を取得できます。
-
-    [![詳細な実行レポートを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
-
-これらのモデルとデプロイは、[ワークスペース ランディング ページ (プレビュー)](https://ml.azure.com) の **[モデル]** および **[エンドポイント]** セクションでも見つけることができます。
+    ![リアルタイム エンドポイントのテスト方法を示すスクリーンショット (強調表示されているのは価格のスコア付けラベル)](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -127,7 +123,7 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、ビジュアル インターフェイスで機械学習モデルを作成、デプロイ、および使用する際の主な手順を学習しました。 ビジュアル インターフェイスを使用して他の種類の問題を解決する方法の詳細については、他のサンプル実験を参照してください。
+このチュートリアルでは、ビジュアル インターフェイスで機械学習モデルを作成、デプロイ、および使用する際の主な手順を学習しました。 ビジュアル インターフェイスを使用して他の種類の問題を解決する方法の詳細については、他のサンプル パイプラインを参照してください。
 
 > [!div class="nextstepaction"]
 > [クレジット リスク分類のサンプル](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

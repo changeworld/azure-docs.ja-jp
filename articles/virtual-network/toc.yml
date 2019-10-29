@@ -103,8 +103,12 @@
                   href: virtual-network-ipv4-ipv6-dual-stack-cli.md
                 - name: Resource Manager テンプレート
                   href: ipv6-configure-template-json.md
-            - name: インプレース アップグレード
-              href: ipv6-add-to-existing-vnet-powershell.md
+            - name: IPv6 を IPv4 アプリケーションに追加する
+              items:
+                - name: Azure PowerShell
+                  href: ipv6-add-to-existing-vnet-powershell.md
+                - name: Azure CLI
+                  href: ipv6-add-to-existing-vnet-cli.md
             - name: Standard Public Load Balancer
               items:
                 - name: Azure PowerShell

@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: pafarley
-ms.openlocfilehash: f3b9a7aefc5fc347c4d5114575388914ea8d6fee
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698535"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755249"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>クイック スタート:Python 用 Content Moderator クライアント ライブラリ
 
@@ -42,9 +42,9 @@ Python 用 Content Moderator クライアント ライブラリは、次の目�
 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に Content Moderator 用のリソースを作成します。 さらに、以下を実行できます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
-* 自分のリソースを [Azure portal](https://portal.azure.com/) で表示する。
+* お使いのリソースを [Azure portal](https://portal.azure.com/) で表示する
 
-試用版のサブスクリプションまたはリソースからキーを取得した後、`CONTENT_MODERATOR_SUBSCRIPTION_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+試用版のサブスクリプションまたはリソースからキーを取得した後、キーとエンドポイント URL の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `CONTENT_MODERATOR_SUBSCRIPTION_KEY` および `CONTENT_MODERATOR_ENDPOINT` という名前を付けます。
  
 ### <a name="create-a-python-script"></a>Python スクリプトを作成する
 
@@ -52,7 +52,7 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-次に、自分のリソースの Azure の場所用の変数と、環境変数としてのキーを作成します。 
+次に、自分のリソースのエンドポイントの場所用の変数と、環境変数としてのキーを作成します。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
@@ -92,7 +92,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
 > [!NOTE]
-> このクイック スタートでは、`CONTENT_MODERATOR_SUBSCRIPTION_KEY` という名前の Content Moderator キーの[環境変数が作成](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)されていることを前提としています。
+> このクイックスタートでは、Content Moderator キーとエンドポイントの[環境変数を作成](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)してあることを前提としています。
 
 ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) オブジェクトを作成し、それをエンドポイントと共に使用して、[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) オブジェクトを作成します。
 
@@ -355,4 +355,4 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 >[画像のモデレートの概念](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Azure Content Moderator とは](./overview.md)
-* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision) にあります。
+* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py) にあります。
