@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/24/2019
-  ms.openlocfilehash: 486badfa18f461a8dce9733593a8979318364e12
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 9a09bb92f38e5678f71e1126617d39471479940c
+  ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931718"
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73044078"
 landingContent:
 - title: Content Moderator について
   linkLists:
@@ -37,7 +37,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: image-moderation-quickstart-dotnet.md
+      url: dotnet-sdk-quickstart.md
     - text: Python SDK の使用
       url: python-sdk-quickstart.md
     - text: Java SDK の使用
@@ -58,8 +58,6 @@ landingContent:
       url: image-lists-quickstart-dotnet.md
     - text: Python SDK の使用
       url: python-sdk-quickstart.md
-    - text: Java SDK の使用
-      url: java-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: API コンソールの使用
@@ -73,11 +71,9 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: text-moderation-quickstart-dotnet.md
+      url: dotnet-sdk-quickstart.md
     - text: Python SDK の使用
       url: python-sdk-quickstart.md
-    - text: Java SDK の使用
-      url: java-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: API コンソールの使用
@@ -90,8 +86,6 @@ landingContent:
       url: term-lists-quickstart-dotnet.md
     - text: Python SDK の使用
       url: python-sdk-quickstart.md
-    - text: Java SDK の使用
-      url: java-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: API コンソールの使用
@@ -122,8 +116,6 @@ landingContent:
     links:
     - text: Python SDK を使用してレビューを作成する
       url: python-sdk-quickstart.md
-    - text: Java SDK を使用してレビューを作成する
-      url: java-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: レビューの定義と使用 (レビュー ツール)

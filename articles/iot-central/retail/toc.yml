@@ -130,8 +130,6 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
-    - name: API リファレンス ドキュメント
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
     - name: 顧客データ要求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: サポートされているブラウザー
