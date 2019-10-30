@@ -8,80 +8,91 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: a5717d8ee44e4d2e086a6e7bc1b7c3d0deb614c8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 77655f08350419f0d102c9927b3e09b87edba341
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827541"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592864"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>プレビュー - Azure Kubernetes Service でマネージド ID を使用する
 
-現在、AKS クラスター (具体的には Kubernetes クラウド プロバイダー) で Azure 内にロード バランサーやマネージド ディスクなどの追加リソースを作成するには、ユーザーがサービス プリンシパルを指定するか、AKS が代理で作成する必要があります。 サービス プリンシパルは、通常、有効期限付きで作成されます。 最終的には、クラスターはサービス プリンシパルを更新する必要がある状態になります。そうならないと、クラスターは機能しません。 サービス プリンシパルを管理すると、複雑さが増します。 マネージド ID は、本質的にサービス プリンシパルのラッパーであり、管理がより簡単になります。 詳細については、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に関する記事を参照してください。
+現在、Azure Kubernetes Service (AKS) クラスター (具体的には Kubernetes クラウド プロバイダー) で Azure 内にロード バランサーやマネージド ディスクなどの追加リソースを作成するには、*サービス プリンシパル*が必要です。 ユーザーがサービス プリンシパルを指定するか、AKS が代理で作成する必要があります。 通常、サービス プリンシパルには有効期限があります。 最終的にはクラスターは、クラスターを引き続き機能させるためにサービス プリンシパルを更新する必要がある状態になります。 サービス プリンシパルを管理すると、複雑さが増します。
 
-AKS では、2 つのマネージド ID が作成されます。1 つはシステム割り当てのマネージド ID、もう 1 つはユーザー割り当ての ID です。 システム割り当てのマネージド ID は、ユーザーに代わって Azure リソースを作成するために、Kubernetes クラウド プロバイダーによって使用されます。 このシステム割り当てのマネージド ID のライフ サイクルは、クラスターのそれに関連付けられ、クラスターが削除されると削除されます。 また、AKS ではユーザー割り当てのマネージド ID も作成されます。これは、AKS が ACR にアクセスすること、kubelet が Azure からメタデータを取得することなどを承認するために使用されます。
+*マネージド ID* は、本質的にサービス プリンシパルのラッパーであり、管理がより簡単になります。 詳細については、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) について確認してください。
 
-このプレビュー期間中は、まだサービス プリンシパルが必要です。 これは監視、仮想ノード、Azure ポリシー、http アプリケーション ルーティングなどのアドオンの承認に使用されます。 SPN に対するアドオンの依存関係を削除するために進行中の作業があり、最終的に AKS の SPN の要件は完全に削除されます。
+AKS は 2 つのマネージド ID を作成します。
+
+- **システム割り当てマネージド ID**:Kubernetes クラウド プロバイダーがユーザーに代わって Azure リソースを作成するために使用する ID。 このシステム割り当ての ID のライフ サイクルは、クラスターのそれに関連付けられます。 この ID は、クラスターが削除されると削除されます。
+- **ユーザー割り当てマネージド ID**:クラスターでの承認に使用される ID。 たとえば、ユーザーが割り当てた ID を使用して、アクセス制御レコード (ACR) を使用するように AKS を承認したり、kubelet が Azure からメタデータを取得することを承認したりします。
+
+このプレビュー期間中は、まだサービス プリンシパルが必要です。 これは監視、仮想ノード、Azure Policy、HTTP アプリケーション ルーティングなどのアドオンの承認に使用されます。 サービス プリンシパル名 (SPN) のアドオンの依存関係を削除する作業が進行中です。 最終的には、AKS の SPN の要件が完全に削除されます。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポート記事を参照してください。
 >
-> * [AKS のサポート ポリシー](support-policies.md)
-> * [Azure サポートに関する FAQ](faq.md)
+> - [AKS のサポート ポリシー](support-policies.md)
+> - [Azure サポートに関する FAQ](faq.md)
 
 ## <a name="before-you-begin"></a>開始する前に
 
-次のものが必要です。
+次のリソースがインストールされている必要があります。
 
-* Azure CLI バージョン 2.0.70 以降および aks-preview 0.4.14 拡張機能も必要です。
+- Azure CLI、バージョン 2.0.70 以降
+- aks-preview 0.4.14 拡張機能
 
-## <a name="install-latest-aks-cli-preview-extension"></a>最新の AKS CLI プレビュー拡張機能をインストールする
-
-**aks-preview 0.4.14** 拡張機能以降が必要です。
+aks-preview 0.4.14 以降の拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
 
 ```azurecli
-az extension update --name aks-preview 
+az extension update --name aks-preview
 az extension list
 ```
 
 > [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
+> サブスクリプションで機能を登録した後、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にすると、サブスクリプションで後で作成されたすべての AKS クラスターに対して既定値が使用される場合があります。 運用サブスクリプションではプレビュー機能を有効にしないでください。 代わりに、プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name MSIPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "*登録済み*" と表示されるまでに数分かかることがあります。 [az feature list][az-feature-list] コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](https://docs.microsoft.com/en-us/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録されたら、[az provider register][az-provider-register] コマンドを使用して *Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](https://docs.microsoft.com/en-us/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identity"></a>マネージド ID を指定して AKS クラスターを作成する
+## <a name="create-an-aks-cluster-with-managed-identities"></a>マネージド ID を指定して AKS クラスターを作成する
 
 次の CLI コマンドを使用し、マネージド ID を指定して AKS クラスターを作成できるようになりました。
+
+最初に、Azure リソース グループを作成します。
+
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location westus2
 ```
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+次に、AKS クラスターを作成します。
+
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
-## <a name="get-credentials-to-access-the-cluster"></a>クラスターにアクセスする資格情報を取得する
+最後に、クラスターにアクセスする資格情報を取得します。
+
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-数分でクラスターが作成されたら、アプリケーションのワークロードをデプロイし、サービス プリンシパル ベースの AKS クラスターの場合と同様に、対話することができます。 
+
+クラスターは数分で作成されます。 その後、新しいクラスターにアプリケーションのワークロードをデプロイし、サービス プリンシパル ベースの AKS クラスターの場合と同様に対話することができます。
 
 > [!IMPORTANT]
-> * マネージド ID を指定した AKS クラスターは、クラスターの作成時にのみ有効にすることができます。
-> * 既存の AKS クラスターを更新またはアップグレードしてマネージド ID を有効にすることはできません
+>
+> - マネージド ID を指定した AKS クラスターは、クラスターの作成時にのみ有効にすることができます。
+> - 既存の AKS クラスターを更新またはアップグレードしてマネージド ID を有効にすることはできません。

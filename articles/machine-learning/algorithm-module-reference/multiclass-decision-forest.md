@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b56f08dfd1a14ffedffb612bb8974086ee08ede7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128618"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692779"
 ---
 # <a name="multiclass-decision-forest-module"></a>多クラス デシジョン フォレスト モジュール
 
@@ -41,7 +41,7 @@ Azure Machine Learning のデシジョン フォレスト分類子は、デシ�
 
 
 
-1. インターフェイス内のご利用の実験に**多クラス デシジョン フォレスト** モジュールを追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[Initialize]\(初期化\)** の **[分類]** にあります。
+1. インターフェイス内のご利用のパイプラインに**多クラス デシジョン フォレスト** モジュールを追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[Initialize]\(初期化\)** の **[分類]** にあります。
 
 2. モジュールをダブルクリックして **[Properties]\(プロパティ\)** ウィンドウを開きます。
 
@@ -74,9 +74,9 @@ Azure Machine Learning のデシジョン フォレスト分類子は、デシ�
 
 10. ラベル付けされたデータセットと、いずれかのトレーニング モジュールを接続します。
 
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[[Train Model]\(モデルのトレーニング\)](./train-model.md) モジュールを使用します。
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](./train-model.md) モジュールを使用します。
 
-11. 実験を実行します。
+11. パイプラインを実行します。
 
 ## <a name="results"></a>結果
 

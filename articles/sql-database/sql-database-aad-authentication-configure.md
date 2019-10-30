@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: 11e3a9931d424433f2e3fd1f64e2e95a5835b65c
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.date: 10/16/2019
+ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960467"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550707"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
-この記事では、Azure AD を作成して設定した後、Azure [SQL Database](sql-database-technical-overview.md)、[Managed Instance](sql-database-managed-instance.md)、[SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) で Azure AD を使用する方法を示します。 概要については、「[Azure Active Directory 認証](sql-database-aad-authentication.md)」を参照してください。
+この記事では、Azure AD を作成して設定した後、Azure [SQL Database](sql-database-technical-overview.md)、[マネージド インスタンス](sql-database-managed-instance.md)、[SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) で Azure AD を使用する方法を示します。 概要については、「[Azure Active Directory 認証](sql-database-aad-authentication.md)」を参照してください。
 
 > [!NOTE]
 > この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
@@ -56,15 +56,15 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 ## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングする
 
 > [!IMPORTANT]
-> 次の手順は、マネージド インスタンスをプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者だけが実行できます。 次の手順では、ディレクトリ内の異なる権限を持ったユーザーにアクセス許可を付与するプロセスについて説明します。
+> 次の手順は、マネージド インスタンスをプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者か、特権ロール管理者だけが実行できます。 次の手順では、ディレクトリ内の異なる権限を持ったユーザーにアクセス許可を付与するプロセスについて説明します。
 
 セキュリティ グループ メンバーシップを通じたユーザーの認証や、新しいユーザーの作成などといったタスクを正常に実行するには、マネージド インスタンスに Azure AD の読み取りアクセス許可が必要です。 そのためには、マネージド インスタンスに Azure AD の読み取りアクセス許可を付与する必要があります。 これには 2 つの方法があります。ポータルから付与する方法と、PowerShell を使用する方法です。 いずれの場合も、次の手順を実行します。
 
 1. Azure Portal の右上隅にあるユーザー アイコンを選択すると、Active Directory 候補の一覧がドロップダウンで表示されます。
 2. 既定の Azure AD として適切な Active Directory を選択します。
 
-   この手順では、Active Directory に関連付けられたサブスクリプションを Managed Instance とリンクすることで、Azure AD とマネージド インスタンスの両方に同じサブスクリプションが使用されるようにします 。
-3. マネージド インスタンスに移動し、Azure AD 統合に使用するものを選択します。
+   この手順では、Active Directory に関連付けられたサブスクリプションをマネージド インスタンスとリンクすることで、Azure AD とマネージド インスタンスの両方に同じサブスクリプションが使用されるようにします。
+3. マネージド インスタンスに移動し、Azure AD 統合に使用するものを選択します。マネージド インスタンスに移動し、Azure AD 統合に使用するものを選択します。
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
@@ -73,8 +73,8 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
     ![アクセス許可の付与 (ポータル)](./media/sql-database-aad-authentication/grant-permissions.png)
 
     ```powershell
-    # Gives Azure Active Directory read permission to a Service Principal representing the Managed Instance.
-    # Can be executed only by a "Company Administrator" or "Global Administrator" type of user.
+    # Gives Azure Active Directory read permission to a Service Principal representing the managed instance.
+    # Can be executed only by a "Company Administrator", "Global Administrator", or "Privileged Role Administrator" type of user.
 
     $aadTenant = "<YourTenantId>" # Enter your tenant ID
     $managedInstanceName = "MyManagedInstance"
@@ -146,10 +146,58 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
     管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 [Active Directory 管理者] ボックスに新しい管理者が表示されます。
 
-Managed Instance に Azure AD 管理者をプロビジョニングしたら、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文を利用し、Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) の作成を開始できます。 詳細については、[Managed Instance の概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。
+マネージド インスタンスに Azure AD 管理者をプロビジョニングしたら、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文を利用し、Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) の作成を開始できます。 詳細については、[マネージド インスタンスの概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。
 
 > [!TIP]
 > 後で管理者を削除するには、[Active Directory 管理者] ページの上部にある **[管理者の削除]** を選択し、 **[保存]** を選択します。
+
+### <a name="powershell-for-sql-managed-instance"></a>SQL マネージド インスタンス用の PowerShell
+
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。 Azure AD 管理者をプロビジョニングするには、次のような Azure PowerShell コマンドを実行する必要があります。
+
+- Connect-AzAccount
+- Select-AzSubscription
+
+SQL マネージド インスタンスの Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
+
+| コマンドレット名 | 説明 |
+| --- | --- |
+| [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |現在のサブスクリプションでの SQL マネージド インスタンスの Azure AD 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。|
+| [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |現在のサブスクリプションでの SQL マネージド インスタンスの Azure AD 管理者を削除します。 |
+| [Get-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator) |現在のサブスクリプションでの SQL マネージド インスタンスの Azure AD 管理者に関する情報を返します。|
+
+### <a name="powershell-examples-for-managed-instance"></a>マネージド インスタンス用の PowerShell の例
+
+次のコマンドでは、ResourceGroup01 というリソース グループに関連付けられている、ManagedInstance01 というマネージド インスタンスの Azure AD 管理者に関する情報が取得されます。
+
+```powershell
+Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+```
+
+次のコマンドでは、ManagedInstance01 というマネージド インスタンスの、DBAs という Azure AD 管理者グループがプロビジョニングされます。 このサーバーは、リソース グループ ResourceGroup01 に関連付けられています。
+
+```powershell
+Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -DisplayName "DBAs" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
+```
+
+次のコマンドを実行すると、リソース グループ ResourceGroup01 に関連付けられている、ManagedInstanceName01 というマネージド インスタンスの Azure AD 管理者が削除されます。
+
+```powershell
+Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
+```
+
+### <a name="cli-for-sql-managed-instance"></a>SQL マネージド インスタンス用の CLI
+
+次の CLI コマンドを呼び出して、SQL マネージド インスタンスの Azure AD 管理者をプロビジョニングすることもできます。
+
+| command | 説明 |
+| --- | --- |
+|[az sql mi ad-admin create](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) |SQL マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。 |
+|[az sql mi ad-admin delete](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) |SQL マネージド インスタンスの Azure Active Directory 管理者を削除します。 |
+|[az sql mi ad-admin list](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) |現在 SQL マネージド インスタンス用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
+|[az sql mi ad-admin update](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) |SQL マネージド インスタンスの Active Directory 管理者を更新します。 |
+
+CLI コマンドの詳細については、「[az sql mi](https://docs.microsoft.com/cli/azure/sql/mi)」を参照してください。 
 
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Azure SQL Database サーバーの Azure Active Directory 管理者をプロビジョニングする
 
@@ -185,14 +233,14 @@ Managed Instance に Azure AD 管理者をプロビジョニングしたら、<a
 
 後で管理者を削除するには、 **[Active Directory 管理者]** ページの上部にある **[管理者の削除]** を選択し、 **[保存]** を選択します。
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL Database と Azure SQL Data Warehouse 用の PowerShell
 
 PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。 Azure AD 管理者をプロビジョニングするには、次のような Azure PowerShell コマンドを実行する必要があります。
 
 - Connect-AzAccount
 - Select-AzSubscription
 
-Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
+Azure SQL Database および Azure SQL Data Warehouse の Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
 
 | コマンドレット名 | 説明 |
 | --- | --- |
@@ -200,7 +248,9 @@ Azure AD 管理者のプロビジョニングと管理に使用するコマン�
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
 | [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |現在 Azure SQL Server または Azure SQL Data Warehouse 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
 
-これらの各コマンドの情報を確認するには、PowerShell の get-help コマンドを使用します (例: ``get-help Set-AzSqlServerActiveDirectoryAdministrator``)。
+これらの各コマンドの情報を確認するには、PowerShell の get-help コマンドを使用します。 たとえば、「 ``get-help Set-AzSqlServerActiveDirectoryAdministrator`` 」のように入力します。
+
+### <a name="powershell-examples-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL Database と Azure SQL Data Warehouse 用の PowerShell の例
 
 次のスクリプトでは、**Group-23** という名前のリソース グループ内にあるサーバー **demo_server** に対して、**DBA_Group** という名前の Azure AD 管理者グループ (オブジェクト ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) をプロビジョニングします。
 
@@ -236,9 +286,10 @@ Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。 詳細については、[Service Management REST API リファレンスと Azure SQL Database の操作](https://docs.microsoft.com/rest/api/sql/)に関するページを参照してください。
+> [!NOTE]
+> Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。 詳細については、[Service Management REST API リファレンスと Azure SQL Database の操作](https://docs.microsoft.com/rest/api/sql/)に関するページを参照してください。
 
-### <a name="cli"></a>CLI  
+### <a name="cli-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL Database と Azure SQL Data Warehouse 用の CLI
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングすることもできます。
 
@@ -249,7 +300,7 @@ Azure Active Directory 管理者は、REST API を使用してプロビジョニ
 |[az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) |現在 Azure SQL Server または Azure SQL Data Warehouse 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
 |[az sql server ad-admin update](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) |Azure SQL Server または Azure SQL Data Warehouse の Active Directory 管理者を更新します。 |
 
-CLI コマンドの詳細については、「[SQL - az sql](https://docs.microsoft.com/cli/azure/sql/server)」を参照してください。  
+CLI コマンドの詳細については、「[az sql server](https://docs.microsoft.com/cli/azure/sql/server)」を参照してください。
 
 ## <a name="configure-your-client-computers"></a>クライアント コンピューターを構成する
 
@@ -268,7 +319,7 @@ Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Ware
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する
 
 >[!IMPORTANT]
->Managed Instance で Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) がサポートされたので、Azure AD ユーザー、グループ、アプリケーションからログインを作成できます。 Azure AD サーバー プリンシパル (ログイン) では、包含データベース ユーザーとしてデータベース ユーザーを作成することを要求せずに Managed Instance で認証を受ける機能が提供されます。 詳細については、[Managed Instance の概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
+>マネージド インスタンスで Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) がサポートされたので、Azure AD ユーザー、グループ、アプリケーションからログインを作成できます。 Azure AD サーバー プリンシパル (ログイン) では、包含データベース ユーザーとしてデータベース ユーザーを作成することを要求せずにマネージド インスタンスで認証を受ける機能が提供されます。 詳細については、[マネージド インスタンスの概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
 
 Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成することが必要です。 Azure AD の ID に基づく包含データベース ユーザーは、master データベースにログインを持たないデータベース ユーザーで、そのデータベースに関連付けられている Azure AD ディレクトリの ID にマップされています。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9671ddcf98ae97c0a3df49cce008faf403f5dcd2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5adcf252fed4ac94ae4261886b24eb087424bdbe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981102"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533148"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -59,7 +59,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 **制限** | **詳細**
 --- | ---
 **Azure VM のデータ ディスク数** | 最大 16 個
-**Azure VM のデータ ディスク サイズ** | ディスクごとに最大 30 TB までの仮想マシンで、1 つの VM にあるすべてのディスクを組み合わせて最大 256 TB のバックアップをサポートします。
+**Azure VM のデータ ディスク サイズ** | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM のバックアップ オプション
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1189689566da84df6d6b8845bf7c81bd8aa5f1ab
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072224"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API Management のページ テンプレート
@@ -39,7 +39,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ##  <a name="SignIn"></a> サインイン  
  **サインイン** テンプレートを使用すると、開発者ポータルでサインイン ページをカスタマイズすることができます。  
   
- ![Sign In Page](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM Sign In Page Developer Portal Templates")  
+ ![サインイン ページ](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM サインイン ページ開発者ポータル テンプレート")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -138,7 +138,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ##  <a name="SignUp"></a> サインアップ  
  **サインアップ** テンプレートを使用すると、開発者ポータルでサインアップ ページをカスタマイズすることができます。  
   
- ![Sign Up Page](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM Sign Up Page Developer Portal Templates")  
+ ![サインアップ ページ](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM サインアップ ページ開発者ポータル テンプレート")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -186,7 +186,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ##  <a name="PageNotFound"></a> ページが見つかりません  
  **ページが見つかりません** テンプレートを使用すると、開発者ポータルでページが見つかりませんページをカスタマイズすることができます。  
   
- ![Not Found Page](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM Not Found Page Developer Portal Templates")  
+ ![ページが見つかりませんページ](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM ページが見つかりませんページ開発者ポータル テンプレート")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -225,7 +225,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |referenceCode|string|このページが内部エラーの結果として表示された場合に生成されるコード。|  
 |errorCode|string|このページが内部エラーの結果として表示された場合に生成されるコード。|  

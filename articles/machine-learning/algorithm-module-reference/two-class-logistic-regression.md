@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 818b8627decd5ee7db711abc417f71c83e32b6c0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7020bf529fa635d74959a9dac071aa6e2b134c5b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128376"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692621"
 ---
 # <a name="two-class-logistic-regression-module"></a>2 クラスのロジスティック回帰モジュール
 
@@ -36,7 +36,7 @@ ms.locfileid: "70128376"
 
 たとえば、[Voted] というラベル列であれば、その値には "Yes" と "No" が考えられます。 または、[Credit Risk] であれば、"High" と "Low" という値が考えられるでしょう。 
   
-1.  **2 クラスのロジスティック回帰**モジュールを実験に追加します。  
+1.  **2 クラスのロジスティック回帰**モジュールをパイプラインに追加します。  
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
@@ -67,14 +67,14 @@ ms.locfileid: "70128376"
   
      この最適化パラメーターによって、次のステップと方向の計算に使用されるメモリ量が制限されます。 指定するメモリ量を小さくすると、トレーニングにかかる時間は短縮されますが、正確さが低下します。  
   
-6.  **[Random number seed]\(乱数シード\)** に整数値を入力します。 同じ実験を複数回にわたって実行したときの結果に再現性を確保したい場合は、シード値を定義することが大切です。  
+6.  **[Random number seed]\(乱数シード\)** に整数値を入力します。 同じパイプラインを複数回にわたって実行したときの結果に再現性を確保したい場合は、シード値を定義することが大切です。  
   
   
-8. タグ付けされたデータセットを実験に追加し、いずれかの[トレーニング モジュール](module-reference.md)を接続します。  
+8. タグ付けされたデータセットをパイプラインに追加し、いずれかの[トレーニング モジュール](module-reference.md)を接続します。  
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](./train-model.md) モジュールを使用します。  
   
-9. 実験を実行します。  
+9. パイプラインを実行します。  
   
 ## <a name="results"></a>結果
 

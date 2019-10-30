@@ -1,6 +1,6 @@
 ---
-title: ワークフロー定義言語のトリガーとアクションの種類のリファレンス - Azure Logic Apps
-description: Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス ガイド
+title: トリガーとアクションの種類のスキーマ リファレンス - Azure Logic Apps
+description: Azure Logic Apps でのワークフロー定義言語トリガーとアクションの種類のスキーマ リファレンス ガイド
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -9,14 +9,14 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9bee329953a1f39720b054ed90e1d56c6743862e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350673"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679870"
 ---
-# <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
+# <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
 このリファレンスでは、ロジック アプリの基となるワークフロー定義でトリガーとアクションを識別するために使用される一般的な種類について説明します。ワークフロー定義については、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で説明および検証されています。
 ロジック アプリで使用できる特定のコネクターのトリガーおよびアクションを見つけるには、[コネクタの概要](https://docs.microsoft.com/connectors/)にある一覧を参照してください。

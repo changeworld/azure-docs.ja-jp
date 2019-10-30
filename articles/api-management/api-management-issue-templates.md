@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072252"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API Management の問題テンプレート
@@ -35,7 +35,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ##  <a name="IssueList"></a> 問題リスト  
  **問題リスト** テンプレートを使用すると、開発者ポータルで問題リスト ページの本文をカスタマイズすることができます。  
   
- ![Issue List Developer Portal](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM Issue List Developer Portal")  
+ ![問題リスト開発者ポータル](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 問題リスト開発者ポータル")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -96,7 +96,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`Issues`|[問題](api-management-template-data-model-reference.md#Issue)エンティティのコレクション。|現在のユーザーに表示される問題。|  
 |`Paging`|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  

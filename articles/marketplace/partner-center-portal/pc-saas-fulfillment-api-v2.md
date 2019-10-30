@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a2041aefcfdcb1746e64f50c7cb53b3bfaec3299
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 75e806e56fa94916f76f9e7fa6572ae07987e017
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872807"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595554"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
@@ -181,7 +181,11 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
 
 コード:200 <br/>
 認証トークンに基づいて、すべての発行元のオファーの発行元と対応するサブスクリプションを取得します。
-応答ペイロード:<br>
+
+>[!Note]
+>[モック API](#mock-apis) は初めてオファーを開発するときに使用されますが、実際にオファーを発行するときは実際の API を使用する必要があります。  実際の API とモック API は、コードの最初の行が異なります。  実際の API には `subscription` セクションがありますが、このセクションはモック API には存在しません。
+
+モック API の応答ペイロード:<br>
 
 ```json
 {
@@ -215,7 +219,46 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
   "continuationToken": ""
 }
 ```
+実際の API の場合: <br>
 
+```json
+{
+  "subscriptions": [
+      {
+          "id": "<guid>",
+          "name": "Contoso Cloud Solution",
+          "publisherId": "contoso",
+          "offerId": "offer1",
+          "planId": "silver",
+          "quantity": "10",
+          "beneficiary": { // Tenant, object id and email address for which SaaS subscription is purchased.
+              "emailId": "<email>",
+              "objectId": "<guid>",                     
+              "tenantId": "<guid>"
+          },
+          "purchaser": { // Tenant, object id and email address that purchased the SaaS subscription. These could be different for reseller scenario
+              "emailId": "<email>",
+              "objectId": "<guid>",                      
+              "tenantId": "<guid>"
+          },
+            "term": {
+                "startDate": "2019-05-31",
+                "endDate": "2019-06-29",
+                "termUnit": "P1M"
+          },
+          "allowedCustomerOperations": [
+              "Read" // Possible Values: Read, Update, Delete.
+          ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
+          "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
+          "isFreeTrial": true, // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.(optional field – default false)
+          "isTest": false, //indicating whether the current subscription is a test asset
+          "sandboxType": "None", // Possible Values: None, Csp (Csp sandbox purchase)
+          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
+      }
+  ],
+  "@nextLink": ""
+}
+```
 継続トークンは、取得するプランに追加の "ページ" がある場合にのみ存在します。 
 
 コード:403 <br>

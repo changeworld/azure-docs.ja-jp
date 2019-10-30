@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719963"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598291"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer と Media Indexer 2 から Video Indexer に移行する
 
@@ -37,7 +37,7 @@ Azure Media Services Video Indexer は、Azure Media Analytics、Azure Search、
 
 |以下が必要な場合  |と |
 |---|---|
-|字幕ファイル形式(VTT、SRT、または TTML)<br/>のメディア ファイル形式に対する音声からテキストへの文字起こしと、追加のオーディオ分析情報 (キーワード、トピック推論、音響イベント、話者のダイアライゼーション、エンティティの抽出、翻訳など) を提供するソリューション| Video Indexer v2 REST API または Azure Media Services v3 オーディオ アナライザー プリセットを通じて Azure Video Indexer の機能を使用するように、お使いのアプリケーションを更新します。|
+|次の字幕形式のメディア ファイル形式での音声からテキストへの文字起こしを提供するソリューション。VTT、SRT、または TTML<br/>さらに、キーワード、トピック推論、音響イベント、話者の分離 (ダイアライゼーション)、エンティティの抽出、翻訳など、その他のオーディオ分析情報を提供するソリューション| Video Indexer v2 REST API または Azure Media Services v3 オーディオ アナライザー プリセットを通じて Azure Video Indexer の機能を使用するように、お使いのアプリケーションを更新します。|
 |音声テキスト変換機能| Cognitive Services Speech API を直接使用します。|  
 
 ## <a name="getting-started-with-video-indexer"></a>Video Indexer の使用を開始する
@@ -77,9 +77,9 @@ Video Indexer、Azure Media Services v3 AudioAnalyzerPreset、および Cognitiv
 * オーディオ インデックス BLOB (AIB) ファイルはサポートされなくなります。 この機能は、Indexer 1 テクノロジに固有のものであり、提供されなくなりました。  
 * Cognitive Services Speech Services では、キーワード抽出はサポートされません。 ただし、Video Indexer と Media Services v3 AudioAnalyzerPreset はどちらも、JSON ファイル形式のより堅牢なキーワード セットを提供します。 
 
-## <a name="contact-us"></a>お問い合わせ 
+## <a name="need-help"></a>お困りの際は、
 
-Azure Media Indexer 1 と Azure Media Indexer 2 の非推奨や、他のサービスへの移行についてご質問がある場合は、amshelp@microsoft.com までお問い合わせください。 
+[[新しいサポート要求]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動することによってサポート チケットを開くことができます
 
 ## <a name="next-steps"></a>次の手順
 

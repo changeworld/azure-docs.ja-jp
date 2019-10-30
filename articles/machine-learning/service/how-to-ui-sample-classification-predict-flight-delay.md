@@ -9,42 +9,40 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
-ms.date: 07/02/2019
-ms.openlocfilehash: 257f6034df7d1974f3964c4d07ca96d17c7fe509
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 6e65075b309ed12505ce6fffadac12af3f16344b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131158"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692564"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>サンプル 6 - 分類:R を利用してフライトの遅延を予測する
 
-この実験では、過去のフライトと天候のデータを利用し、予定されている旅客便が 15 分以上遅れるかどうかを予測します。
+このパイプラインでは、過去のフライトと天候のデータを利用し、予定されている旅客便が 15 分以上遅れるかどうかを予測します。 この問題には、遅延と定刻という 2 つのクラスを予測する分類の問題として取り組むことができます。
 
-この問題には、遅延と定刻という 2 つのクラスを予測する分類の問題として取り組むことができます。 分類子を構築する目的で、このモデルは、過去のフライト データから大量の例を使用します。
+このサンプルの最終的なパイプラインのグラフは次のようになります。
 
-このサンプルの最終的な実験のグラフは次のようになります。
-
-[![実験のグラフ](media/how-to-ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. サンプル 6 実験の **[開く]** ボタンを選択します。
+4. サンプル 6 パイプラインの **[開く]** ボタンを選択します。
 
-    ![実験を開く](media/how-to-ui-sample-classification-predict-flight-delay/open-sample6.png)
+    ![パイプラインを開く](media/how-to-ui-sample-classification-predict-flight-delay/open-sample6.png)
 
 ## <a name="get-the-data"></a>データを取得する
 
-この実験では、**Flight Delays Data** データセットが使用されます。 これは米国運輸省の TranStats データ コレクションの一部です。 このデータセットには、2013 年 4 月から 10 月までのフライト遅延情報が含まれます。 データはビジュアル インターフェイスにアップロードする前に次のように前処理されています。
+このパイプラインでは、**Flight Delays Data** データセットが使用されます。 これは米国運輸省の TranStats データ コレクションの一部です。 このデータセットには、2013 年 4 月から 10 月までのフライト遅延情報が含まれます。 データセットは、次のように前処理されています。
 
 * 米国本土で最も利用者が多い空港上位 70 か所を含めるようにフィルターを適用しました。
-* キャンセルされたフライトについては、15 分超の遅延として再分類しました。
+* キャンセルされたフライトは、15 分超の遅延として再分類しました。
 * 進路を変更したフライトは除外しました。
 * 14 列を選択しました。
 
-フライト データを補足する目的で、**気象データセット**が使用されます。 気象データには、NOAA で観測された土地別/時間別の天候が含まれます。また、気象データは、同じ期間 (2013 年 4 月から 10 月まで) に空港の測候所で観測されたものです。 Azure ML ビジュアル インターフェイスにアップロードする前に次のように前処理されています。
+フライト データを補足する目的で、**気象データセット**が使用されます。 気象データには、NOAA で観測された土地別/時間別の天候が含まれます。また、気象データは、フライトのデータセットと同じ期間に空港の測候所で観測されたものです。 これは次のように前処理されています。
 
 * 気象観測所 ID を対応する空港 ID にマッピングしました。
 * 混雑度が上位 70 に入る空港に関連付けられていない気象観測所を除外しました。
@@ -107,10 +105,9 @@ Select Columns モジュールを利用することで、年度、月、時間�
 **Two-Class Logistic Regression** モジュールを利用してモデルを作成し、トレーニング データセットでそれをトレーニングします。 
 
 **Train Model** モジュールの結果、分類モデルがトレーニングされ、新しいサンプルを評価し、予測するために利用できます。 テスト セットを使用し、トレーニングしたモデルからスコアを生成します。 次に、**Evaluate Model** モジュールを使用し、モデルを分析し、その品質を比較します。
+パイプラインを実行したら、出力ポートをクリックし、 **[視覚化]** を選択すると、**Score Model** モジュールの出力を表示できます。 出力には、点数の付いたラベルとラベルの確率が含まれます。
 
-実験を実行したら、出力ポートをクリックし、 **[視覚化]** を選択すると、**Score Model** モジュールの出力を表示できます。 出力には、点数の付いたラベルとラベルの確率が含まれます。
-
-最後になりますが、結果の品質をテストする目的で、**Evaluate Model** モジュールを実験キャンバスに追加し、左の入力ポートを Score Model モジュールの出力に接続します。 出力ポートをクリックし、 **[視覚化]** を選択することで、実験を実行し、**Evaluate Model** モジュールの出力を表示します。
+最後になりますが、結果の品質をテストする目的で、**Evaluate Model** モジュールをパイプライン キャンバスに追加し、左の入力ポートを Score Model モジュールの出力に接続します。 出力ポートをクリックし、 **[視覚化]** を選択することで、パイプラインを実行し、**Evaluate Model** モジュールの出力を表示します。
 
 ## <a name="evaluate"></a>Evaluate
 このロジスティック回帰モデルでは、テスト セットで AUC が 0.631 になります。
@@ -126,3 +123,4 @@ Select Columns モジュールを利用することで、年度、月、時間�
 - [サンプル 3 - 分類: 信用リスクを予測する](how-to-ui-sample-classification-predict-credit-risk-basic.md)
 - [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [サンプル 5 - 分類:顧客離れを予測する](how-to-ui-sample-classification-predict-churn.md)
+- [サンプル 7 - テキスト分類: ブック レビュー](how-to-ui-sample-text-classification.md)

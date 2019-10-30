@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b7d041b678ccf2a476afc6d0744f6971349677e
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 0b2f89a846747eaf78c60077372b48802506731e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034868"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553367"
 ---
 # <a name="data-querying"></a>データ照会
 
@@ -25,7 +25,7 @@ Time Series Insights では、3 つの主要な API カテゴリを使用でき�
 
 * **Environment API**:Time Series Insights 環境自体のクエリを行うことができます。 クエリの例は、呼び出し元がアクセス権を持っている環境や環境のメタデータの一覧です。
 
-* **Time Series Model-Query (TSM-Q) API**:タイム シリーズ モデルの環境部分に格納されているメタデータの作成、読み取り、更新、削除操作を実行できます。 たとえば、インスタンス、種類、階層などです。
+* **Time Series Model-Query (TSM-Q) API**:タイム シリーズ モデルの環境部分に格納されているメタデータの作成、読み取り、更新、削除 (CRUD) 操作を実行できます。 たとえば、インスタンス、種類、階層などです。
 
 * **Time Series Query (TSQ) API**:ソース プロバイダーから記録されたイベント データを取得できます。 これらの API では、タイム シリーズ データの変換、結合、計算操作を実行できます。
 

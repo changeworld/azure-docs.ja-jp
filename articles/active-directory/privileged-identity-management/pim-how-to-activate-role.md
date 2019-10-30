@@ -14,12 +14,12 @@ ms.date: 06/28/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9d9b2aff1d196d8b2987d77046831e7200ee2fe
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 6007762c897337170dec69c3486302aa62723480
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804475"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756287"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールをアクティブ化する
 
@@ -27,15 +27,15 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 管理ロールの候補者となっている場合は、特権の必要な操作を実行する必要のあるときにロールをアクティブにできます。 たとえば、Office 365 の機能をときどきしか管理しないユーザーは、組織の特権ロール管理者によって永続的なグローバル管理者には設定されない可能性があります。このロールは他のサービスにも影響を与えるからです。 その代わりに、Exchange Online 管理者などの Azure AD ロールが割り当てられます。 このような権限が必要な場合には、ロールをアクティブ化することを要求できます。それにより、事前に定義された期間だけ管理者権限が付与されます。
 
-この記事は、PIM で Azure AD ロールをアクティブにする必要がある管理者向けです。
+この記事は、Privileged Identity Management で自分の Azure AD ロールをアクティブ化する必要のある管理者を対象としています。
 
 ## <a name="activate-a-role"></a>ロールのアクティブ化
 
-Azure AD ロールを有効にする必要がある場合は、PIM の **[自分のロール]** ナビゲーション オプションを使用してアクティブ化を要求できます。
+Azure AD ロールを引き受ける必要がある場合は、Privileged Identity Management の **[自分のロール]** ナビゲーション オプションを使用してアクティブ化を要求できます。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. **[Azure AD Privileged Identity Management]** を開きます。 ダッシュボードに PIM タイルを追加する方法については、「[PIM の使用を開始する](pim-getting-started.md)」をご覧ください。
+1. **[Azure AD Privileged Identity Management]** を開きます。 ダッシュボードに [Privileged Identity Management] タイルを追加する方法については、「[Privileged Identity Management の使用開始](pim-getting-started.md)」を参照してください。
 
 1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
@@ -129,14 +129,14 @@ Azure AD ロールを有効にする必要がある場合は、PIM の **[自分
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>ロールをアクティブにした後、アクセス許可が付与されない
 
-PIM でロールをアクティブにしても、アクティブ化は特権ロールを必要とするすべてのポータルにすぐに反映されない場合があります。 場合によっては、変更が伝達されても、ポータルにおける Web キャッシュが原因で、変更がすぐに有効にならないことがあります。 アクティブ化が遅延している場合は、次の手順を行ってください。
+Privileged Identity Management でロールをアクティブ化しても、アクティブ化が、特権ロールを必要とするすべてのポータルに直ちには伝播されない可能性があります。 場合によっては、変更が伝達されても、ポータルにおける Web キャッシュが原因で、変更がすぐに有効にならないことがあります。 アクティブ化が遅延している場合は、次の手順を行ってください。
 
 1. Azure portal からサインアウトした後に、もう一度サインインします。
 
     Azure AD ロールをアクティブにすると、アクティブ化の各ステージが順次表示されます。 すべてのステージが完了すると、 **[サインアウト]** リンクが表示されます。 このリンクを使用してサインアウトできます。これにより、ほとんどの場合、アクティブ化の遅延は解決します。
 
-1. PIM で自分がロールのメンバーとして表示されていることを確認します。
+1. Privileged Identity Management で、自分がそのロールのメンバーとして一覧表示されていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で自分の Azure リソース ロールをアクティブにする](pim-resource-roles-activate-your-roles.md)
+- [Privileged Identity Management で自分の Azure リソース ロールをアクティブ化する](pim-resource-roles-activate-your-roles.md)

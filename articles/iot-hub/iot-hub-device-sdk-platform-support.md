@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 030ea87018e1a2d438e3e4d728af76e429efda08
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169015"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693330"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT device SDK プラットフォームのサポート
 
@@ -56,11 +56,13 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 
 [Azure IoT Hub Python デバイス SDK](https://github.com/Azure/azure-iot-sdk-python) は次の構成でテストされ、これらの構成をサポートしています。
 
-| OS                  | コンパイラ                       |
-|---------------------|--------------------------------|
-| Linux               | Python 2.7、3.4、3.5、3.6、3.7 |
-| MacOS High Sierra   | Python 2.7、3.4、3.5、3.6、3.7 |
-| Windows 10 ファミリ   | Python 2.7、3.4、3.5、3.6、3.7 |
+| OS                  | コンパイラ                          |
+|---------------------|-----------------------------------|
+| Linux               | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
+| MacOS High Sierra   | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
+| Windows 10 ファミリ   | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
+
+*非同期 API は Python バージョン 3.5.3 以降でのみサポートされます。3.7 以降を使用することをお勧めします。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -70,6 +72,8 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 デスクトップおよびサーバー SKU   | .NET Core 2.1、.NET Framework 4.5.1、または .NET Framework 4.7 |
+
+.NET SDK は、[Azure Device Agent](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) を含む Windows IoT Core、または [RPC を使用して UWP アプリケーションと通信できるカスタム NTService](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/) でも使用できます。
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fa6a3af7893830eba2f4a5c43184991bff68d8a8
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898203"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756545"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -41,9 +41,15 @@ ms.locfileid: "69898203"
     次に、Azure Maps のスタイル シートとスクリプト ソースの参照を、ファイルの `<head>` 要素に追加します。
 
     ```HTML
-    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/css/atlas.min.css" type="text/css">
-    <script src="node_modules/azure-maps-control/dist/js/atlas.min.js"></script>
+    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+    <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
     ```
+
+    >[!Note]
+    > Typescript の定義は、次のものを追加することによってアプリケーションにインポートできます。
+    > ```Javascript
+    > import * as atlas from 'azure-maps-control';
+    > ```
 
 3. ページの本文全体を埋めるようにマップをレンダリングするには、次の `<style>` 要素を `<head>` 要素に追加します。
 
@@ -102,6 +108,8 @@ ms.locfileid: "69898203"
     </script>
     ```
 
+    Azure Active Directory (AAD) と Azure Maps を統合する方法を示すサンプルの一覧は、[ここ](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)にあります。 
+    
     詳細については、「[Azure Maps による認証](azure-maps-authentication.md)」ドキュメントを参照してください。
 
 6. 必要に応じて、ページの見出しに次のメタ タグ要素を追加すると役立つ場合があります。
@@ -222,3 +230,8 @@ map = new atlas.Map('myMap', {
 
 > [!div class="nextstepaction"]
 > [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+Azure Active Directory (AAD) と Azure Maps を統合する方法を示すサンプルの一覧については、次を参照してください。
+
+> [!div class="nextstepaction"]
+> [AAD 認証のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

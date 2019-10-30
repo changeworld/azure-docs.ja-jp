@@ -1,7 +1,7 @@
 ---
 title: Linear regression (線形回帰):モジュール リファレンス
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Linear Regression (線形回帰) モジュールを使用して、実験で使用するために線形回帰モデルを作成する方法について学習します。
+description: Azure Machine Learning service で Linear Regression (線形回帰) モジュールを使用して、パイプラインで使用するために線形回帰モデルを作成する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 506f37a2e01f428ccadc0368bd2efb6b58c9106c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128691"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693710"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
-この記事では、Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
 
-このモジュールを使用して、実験で使用するために、線形回帰モデルを作成します。  線形回帰では、1 つまたは複数の独立変数と数値の結果、または属性変数との間の線形関係を確立しようとします。 
+このモジュールを使用して、パイプラインで使用するために、線形回帰モデルを作成します。  線形回帰では、1 つまたは複数の独立変数と数値の結果、または属性変数との間の線形関係を確立しようとします。 
 
 このモデルを使用して線形回帰 モデルを定義し、ラベル付けされたデータセットを使用してモデルをトレーニングします。 その後、トレーニング済みのモデルは、予測に使用できます。
 
@@ -63,9 +63,9 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a>通常の最小二乗法を使用して回帰モデルを作成する
 
-1. インターフェイスから **Linear Regression Model (線形回帰モデル)** モジュールを実験に追加します。
+1. インターフェイスから **Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
 
-    **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、 **[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分の実験にドラッグします。
+    **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、 **[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分のパイプラインにドラッグします。
 
 2. **[プロパティ]** ウィンドウの **[Solution method]\(ソリューション メソッド\)** ドロップダウン リストで、 **[Ordinary Least Squares]\(通常の最小二乗法\)** を選択します。 このオプションでは、回帰直線を見つけるために使用する計算メソッドを指定します。
 
@@ -79,12 +79,12 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 5. **[Random number seed]\(乱数シード\)** には、必要に応じて、モデルによって使用される乱数ジェネレーターにシードを設定する値を入力できます。
 
-    同じ実験におけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。 それ以外の場合、既定はシステム クロックからの値を使用します。
+    同じパイプラインにおけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。 それ以外の場合、既定はシステム クロックからの値を使用します。
 
 
-7. [Train Model (モデルのトレーニング)](./train-model.md) モジュールを自分の実験に追加して、ラベル付けされたデータセットに接続します。
+7. [Train Model (モデルのトレーニング)](./train-model.md) モジュールを自分のパイプラインに追加して、ラベル付けされたデータセットに接続します。
 
-8. 実験を実行します。
+8. パイプラインを実行します。
 
 ## <a name="results-for-ordinary-least-squares-model"></a>通常の最小二乗法モデルの結果
 
@@ -97,9 +97,9 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 ## <a name="bkmk_GradientDescent"></a>オンライン勾配降下を使用して回帰モデルを作成する
 
-1. インターフェイスから **Linear Regression Model (線形回帰モデル)** モジュールを実験に追加します。
+1. インターフェイスから **Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
 
-    **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、 **[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分の実験にドラッグします。
+    **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、 **[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分のパイプラインにドラッグします
 
 2. **[プロパティ]** ウィンドウの **[Solution method]\(ソリューション メソッド\)** ドロップダウン リストで、回帰直線を見つけるために使用する計算メソッドとして、 **[Online Gradient Descent]\(オンライン勾配降下\)** を選びます。
 
@@ -125,14 +125,14 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 9. イテレーションが進むときに学習速度を下げる必要がある場合、 **[Decrease learning rate]\(学習速度の低下\)** のオプションを選択します。  
 
-10. **[Random number seed]\(乱数シード\)** には、必要に応じて、モデルによって使用される乱数ジェネレーターにシードを設定する値を入力できます。 同じ実験におけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。
+10. **[Random number seed]\(乱数シード\)** には、必要に応じて、モデルによって使用される乱数ジェネレーターにシードを設定する値を入力できます。 同じパイプラインにおけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。
 
 
 12. ラベル付けされたデータセットと、トレーニング モジュールの 1 つを追加します。
 
     統合パラメーターの一括処理を使用していない場合、[Train Model (モデルのトレーニング)](train-model.md) モジュールを使用します。
 
-13. 実験を実行します。
+13. パイプラインを実行します。
 
 ## <a name="results-for-online-gradient-descent"></a>オンライン勾配降下の結果
 

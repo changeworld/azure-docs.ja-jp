@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 642b99e3eaaf73844d30d1cd464ae0b777b0b3fa
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71957797"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595055"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -131,7 +131,7 @@ No. VNet は、1 つのリージョンに制限されます。 ただし、仮�
 [Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事をご覧ください。
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>ネットワークを作成した後、DNS サーバーを変更できますか。
-はい。 いつでも、VNet の DNS サーバーの一覧を変更できます。 DNS サーバーの一覧を変更する場合は、新しい DNS サーバーを取得するために VNet で VM をそれぞれ再起動する必要があります。
+はい。 いつでも、VNet の DNS サーバーの一覧を変更できます。 DNS サーバーの一覧を変更する場合は、新しい DNS 設定を有効にするために、VNet 内の影響を受けるすべての VM 上で DHCP リースの更新を実行する必要があります。 Windows OS を実行している VM の場合は、その VM 上で直接 `ipconfig /renew` を入力することによってこれを行うことができます。 その他の OS の種類については、特定の OS の種類の DHCP リースの更新に関するドキュメントを参照してください。 
 
 ### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Azure で提供される DNS と Vnet と組み合わせて使用について
 Azure で提供される DNS は、Microsoft によって提供されるマルチ テナント DNS サービスです。 Azure は、すべての VM とクラウド サービス ロール インスタンスをこのサービスに登録します。 このサービスは、同じクラウド サービス内に含まれる VM とロール インスタンスのホスト名によって、また、同じ VNet 内の VM とロール インスタンスの FQDN によって名前解決を提供します。 DNS の詳細については、[VM と Cloud Services ロール インスタンスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事をご覧ください。

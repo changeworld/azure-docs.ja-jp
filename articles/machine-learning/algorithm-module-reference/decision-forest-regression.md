@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b8bb3285aecb6aff399606e6263f014027a86581
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128883"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693184"
 ---
 # <a name="decision-forest-regression-module"></a>デシジョン フォレスト回帰モジュール
 
@@ -42,7 +42,7 @@ ms.locfileid: "70128883"
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>デシジョン フォレスト回帰モデルを構成する方法
 
-1. **デシジョン フォレスト回帰**モジュールを実験に追加します。 このモジュールは、インターフェイスの **[Machine Learning]\(機械学習\)** 、 **[Initialize Model]\(モデルの初期化\)** 、 **[Regression]\(回帰\)** にあります。
+1. **デシジョン フォレスト回帰**モジュールをパイプラインに追加します。 このモジュールは、インターフェイスの **[Machine Learning]\(機械学習\)** 、 **[Initialize Model]\(モデルの初期化\)** 、 **[Regression]\(回帰\)** にあります。
 
 2. モジュールのプロパティを開き、 **[Resampling method]\(再サンプリング方法\)** で、個々のツリーの作成に使用する方法を選択します。  **[Bagging]\(バギング\)** または **[レプリケート]** から選択できます。
 
@@ -82,7 +82,7 @@ ms.locfileid: "70128883"
 
    
 
-10. 実験を実行します。
+10. パイプラインを実行します。
 
 ### <a name="results"></a>結果
 
@@ -92,7 +92,7 @@ ms.locfileid: "70128883"
 
 + 各ノードのルールを表示するには、各ツリーをクリックして、分割をドリルダウンします。
 
-+ トレーニング済みのモデルのスナップショットを保存するには、トレーニング モジュールの出力を右クリックし、 **[Save As Trained Model]\(トレーニング済みのモデルとして保存する\)** を選択します。 実験を連続実行しても、このモデルのコピーは更新されません。 
++ トレーニング済みのモデルのスナップショットを保存するには、トレーニング モジュールの出力を右クリックし、 **[Save As Trained Model]\(トレーニング済みのモデルとして保存する\)** を選択します。 パイプラインを連続実行しても、このモデルのコピーは更新されません。 
 
 ## <a name="next-steps"></a>次の手順
 
