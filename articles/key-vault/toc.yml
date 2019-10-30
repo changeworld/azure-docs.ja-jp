@@ -54,6 +54,8 @@
       href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
     - name: キー ローテーションと監査を設定する
       href: key-vault-key-rotation-log-monitoring.md
+    - name: Event Grid を使用した Key Vault イベントの監視
+      href: event-grid-overview.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -74,6 +76,8 @@
           href: key-vault-security-controls.md
     - name: 論理的な削除
       href: key-vault-ovw-soft-delete.md
+    - name: Key Vault イベントの監視
+      href: event-grid-overview.md
     - name: Throttling
       href: key-vault-ovw-throttling.md
     - name: 仮想ネットワーク サービス エンドポイント
@@ -104,6 +108,8 @@
           href: managed-identity.md
         - name: アクセス制御ポリシーを使用する
           href: key-vault-group-permissions-for-apps.md
+    - name: Event Grid を使用したキー コンテナー通知のルーティング
+      href: event-grid-tutorial.md
     - name: Azure Key Vault のログ記録
       href: key-vault-logging.md
     - name: ファイアウォールの内側にアクセスする
