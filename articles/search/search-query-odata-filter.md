@@ -1,13 +1,13 @@
 ---
-title: OData フィルター リファレンス - Azure Search
-description: Azure Search クエリでのフィルター構文に関する OData 言語リファレンスです。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData の filter リファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリでのフィルター構文に関する OData 言語リファレンス。
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8817ce075409a3f166b82404767697dc1326cc89
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647583"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793371"
 ---
-# <a name="odata-filter-syntax-in-azure-search"></a>Azure Search での OData $filter 構文
+# <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $filter 構文
 
-Azure Search では、[OData フィルター式](query-odata-filter-orderby-syntax.md)を使用して、フルテキスト検索語句の他に追加の条件が検索クエリに適用されます。 この記事では、フィルターの構文について詳しく説明します。 フィルターとは何か、またフィルターをどのように使用して特定のクエリのシナリオを実現するのかについて、より一般的な情報は、「[Azure Search のフィルター](search-filters.md)」を参照してください。
+Azure Cognitive Search では、[OData フィルター式](query-odata-filter-orderby-syntax.md)を使用して、フルテキスト検索語句の他に追加の条件が検索クエリに適用されます。 この記事では、フィルターの構文について詳しく説明します。 フィルターとは何か、またフィルターをどのように使用して特定のクエリのシナリオを実現するのかについて、より一般的な情報は、[Azure Cognitive Search のフィルター](search-filters.md)に関するページを参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -53,27 +53,27 @@ variable ::= identifier | field_path
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 ブール式の種類は次のとおりです。
 
-- `any` または `all` を使用したコレクション フィルター式。 これらによってコレクション フィールドにフィルター条件が適用されます。 詳細については、[Azure Search での OData コレクション演算子](search-query-odata-collection-operators.md)に関するページを参照してください。
-- `and`、`or`、および `not` の演算子を使用して他のブール式を結合する論理式。 詳細については、[Azure Search での OData 論理演算子](search-query-odata-logical-operators.md)に関するページを参照してください。
-- `eq`、`ne`、`gt`、`lt`、`ge`、および `le` の演算子を使用してフィールドまたは範囲変数と定数値とを比較する比較式。 詳細については、[Azure Search での OData 比較演算子](search-query-odata-comparison-operators.md)に関するページを参照してください。 比較式はまた、`geo.distance` 関数を使用して地理空間座標間の距離を比較する場合も使用されます。 詳細については、[Azure Search での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関するページを参照してください。
+- `any` または `all` を使用したコレクション フィルター式。 これらによってコレクション フィールドにフィルター条件が適用されます。 詳細については、[Azure Cognitive Search での OData コレクション演算子](search-query-odata-collection-operators.md)に関するページを参照してください。
+- `and`、`or`、および `not` の演算子を使用して他のブール式を結合する論理式。 詳細については、[Azure Cognitive Search での OData 論理演算子](search-query-odata-logical-operators.md)に関するページを参照してください。
+- `eq`、`ne`、`gt`、`lt`、`ge`、および `le` の演算子を使用してフィールドまたは範囲変数と定数値とを比較する比較式。 詳細については、[Azure Cognitive Search での OData 比較演算子](search-query-odata-comparison-operators.md)に関するページを参照してください。 比較式はまた、`geo.distance` 関数を使用して地理空間座標間の距離を比較する場合も使用されます。 詳細については、[Azure Cognitive Search での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関するページを参照してください。
 - ブール型リテラル: `true` および `false`。 これらの定数はプログラムでフィルターを生成する場合に役立つ可能性がありますが、それ以外の場合は実際には使用されない傾向にあります。
 - 次のような Boolean 関数の呼び出し
-  - `geo.intersects`: 指定されたポイントが指定された多角形内にあるかどうかをテストします。 詳細については、[Azure Search での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関するページを参照してください。
-  - `search.in`: フィールドまたは範囲変数を、値のリスト内の各値と比較します。 詳細については、Azure Search での [OData `search.in` 関数](search-query-odata-search-in-function.md)に関するページを参照してください。
-  - `search.ismatch` および `search.ismatchscoring`: フィルター コンテキスト内でフルテキスト検索操作を実行します。 詳細については、[Azure Search での OData フルテキスト検索関数](search-query-odata-full-text-search-functions.md)に関するページを参照してください。
+  - `geo.intersects`: 指定されたポイントが指定された多角形内にあるかどうかをテストします。 詳細については、[Azure Cognitive Search での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関するページを参照してください。
+  - `search.in`: フィールドまたは範囲変数を、値のリスト内の各値と比較します。 詳細については、[Azure Cognitive Search での OData `search.in` 関数](search-query-odata-search-in-function.md)に関するページを参照してください。
+  - `search.ismatch` および `search.ismatchscoring`: フィルター コンテキスト内でフルテキスト検索操作を実行します。 詳細については、[Azure Cognitive Search での OData フルテキスト検索関数](search-query-odata-full-text-search-functions.md)に関するページを参照してください。
 - `Edm.Boolean` 型のフィールド パスまたは範囲変数。 たとえば、ご利用のインデックスに `IsEnabled` というブール フィールドが含まれている場合に、このフィールドが `true` であるすべてのドキュメントを取得するときは、フィルター式を単に `IsEnabled` という名前にすることができます。
 - かっこで囲まれたブール式。 かっこを使用することは、フィルター内で操作の順序を明示的に決定するのに役立ちます。 OData 演算子の既定の優先順位の詳細については、次のセクションを参照してください。
 
 ### <a name="operator-precedence-in-filters"></a>フィルターでの演算子の優先順位
 
-サブ式をかっこで囲まずにフィルター式を記述した場合、Azure Search では一連の演算子の優先順位規則に従って式が評価されます。 これらの規則は、どの演算子を使用してサブ式が結合されているかに基づいています。 次の表に、優先順位の最も高いものから最も低いものへの順に演算子のグループを一覧表示します。
+サブ式をかっこで囲まずにフィルター式を記述した場合、Azure Cognitive Search では一連の演算子の優先順位規則に従って式が評価されます。 これらの規則は、どの演算子を使用してサブ式が結合されているかに基づいています。 次の表に、優先順位の最も高いものから最も低いものへの順に演算子のグループを一覧表示します。
 
 | Group | 演算子 |
 | --- | --- |
@@ -103,7 +103,7 @@ variable ::= identifier | field_path
 
 ### <a name="filter-size-limitations"></a>フィルター サイズの制限
 
-Azure Search に送信できるフィルター式のサイズと複雑性には制限があります。 この上限はおおよそ、フィルター式の句の数に基づきます。 目安として、数百の句がある場合、上限を超える危険性があります。 サイズが無制限のフィルターを生成しない方法でアプリケーションを設計することをお勧めします。
+Azure Cognitive Search に送信できるフィルター式のサイズと複雑性には制限があります。 この上限はおおよそ、フィルター式の句の数に基づきます。 目安として、数百の句がある場合、上限を超える危険性があります。 サイズが無制限のフィルターを生成しない方法でアプリケーションを設計することをお勧めします。
 
 > [!TIP]
 > 等価比較の長い論理和演算ではなく、[ `search.in` 関数](search-query-odata-search-in-function.md) を使用すると、関数呼び出しが 1 つの句としてカウントされるため、フィルター句の制限を回避するのに役立ちます。
@@ -196,7 +196,7 @@ Azure Search に送信できるフィルター式のサイズと複雑性には�
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

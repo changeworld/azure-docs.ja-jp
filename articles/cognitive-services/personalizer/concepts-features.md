@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989083"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756098"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -97,6 +97,13 @@ JSON オブジェクトには、入れ子にした JSON オブジェクトと単
     ]
 }
 ```
+
+### <a name="restrictions-in-character-sets-for-namespaces"></a>名前空間での文字セットにおける制限事項
+
+名前空間に名前を付けるために使用する文字列は、いくつかの制限に従う必要があります。 
+* Unicode にすることはできません。
+* 名前空間の名前には、コード < 256 での印刷可能な記号の一部を使用できます。 
+* コード < 32 (印刷不可)、32 (スペース)、58 (コロン)、124 (パイプ)、および126 から 140 での記号は使用できません。
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Personalizer のためにフィーチャー セットをより効果的にする方法
 

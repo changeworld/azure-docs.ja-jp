@@ -1,13 +1,13 @@
 ---
-title: OData select リファレンス - Azure Search
-description: Azure Search クエリでの select 構文に関する OData 言語リファレンスです。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData の select リファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリでの select 構文に関する OData 言語リファレンスです。
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647872"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793247"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>Azure Search の OData $select 構文
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $select 構文
 
- [OData **$select** パラメーター](query-odata-filter-orderby-syntax.md)を使用すると、Azure Search の検索結果に含めるフィールドを選択できます。 この記事では、 **$select** の構文について詳しく説明します。 検索結果を表示するときに **$select** を使用する方法に関するより一般的な情報については、「[Azure Search での検索結果の操作方法](search-pagination-page-layout.md)」を参照してください。
+ [OData **$select** パラメーター](query-odata-filter-orderby-syntax.md)を使用すると、Azure Cognitive Search の検索結果に含めるフィールドを選択できます。 この記事では、 **$select** の構文について詳しく説明します。 検索結果を表示するときに **$select** を使用する方法に関するより一般的な情報については、「[Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)」を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -45,10 +45,10 @@ field_path ::= identifier('/'identifier)*
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 **$select** パラメーターには 2 つの形式があります。
 
@@ -110,7 +110,7 @@ field_path ::= identifier('/'identifier)*
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search での検索結果の操作方法](search-pagination-page-layout.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

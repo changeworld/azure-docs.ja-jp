@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fa0fa6220fd090bf7fcbe14e85556b6010651e0e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a5674658fa237e44c7caea45c8f6d587a471b981
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675015"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595639"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 
@@ -263,11 +263,18 @@ Web サービスのスキーマを自動生成するには、定義された型�
 name: project_environment
 dependencies:
   - python=3.6.2
+  - scikit-learn=0.20.0
   - pip:
     - azureml-defaults
-    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
+
+> [!IMPORTANT]
+> 依存関係が Conda と pip (PyPi から) の両方で利用できる場合、Conda パッケージには通常、インストールの信頼性を高めるビルド済みのバイナリが付属しているため、Conda バージョンを使用することをお勧めします。
+>
+> 詳細については、「[Conda と Pip について](https://www.anaconda.com/understanding-conda-and-pip/)」を参照してください。
+>
+> 依存関係が Conda を介して使用可能かどうかを確認するには、`conda search <package-name>` コマンドを使用するか、[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) および [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) でパッケージ インデックスを使用します。
 
 自動スキーマ生成を使用する場合、エントリ スクリプトで `inference-schema` パッケージをインポートする必要があります。
 
@@ -546,7 +553,7 @@ test_sample = json.dumps({'data': [
 ]})
 
 profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(true)
+profile.wait_for_profiling(True)
 profiling_results = profile.get_results()
 print(profiling_results)
 ```

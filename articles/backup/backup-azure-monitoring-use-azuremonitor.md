@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: ba2288ecebbeda97b3cd9c24ae930be6af193ab8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177716"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792847"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -29,15 +29,15 @@ Azure Backup では、Recovery Services コンテナーに[組み込みの監視
 ## <a name="using-log-analytics-workspace"></a>Log Analytics ワークスペースを使用する
 
 > [!NOTE]
-> Azure VM バックアップ、Azure Backup エージェント、System Center Data Protection Manager、Azure VM の SQL バックアップ、および Azure Files 共有のバックアップのデータは、診断設定によって Log Analytics ワークスペースに送られます。 
+> Azure VM バックアップ、Azure Backup エージェント、System Center Data Protection Manager、Azure VM の SQL バックアップ、および Azure Files 共有のバックアップのデータは、診断設定によって Log Analytics ワークスペースに送られます。 Microsoft Azure Backup Server (MABS) のサポートはまもなく追加される予定です。
 
-大規模な監視/レポートのためには、2 つの Azure サービスの機能が必要です。 "*診断設定*" では、複数の Azure Resource Manager リソースから別のリソースにデータを送信します。 "*Log Analytics*" では、アクション グループを使用して他の通知チャネルを定義できるカスタム アラートが生成されます。 
+大規模な監視/レポートのためには、2 つの Azure サービスの機能が必要です。 "*診断設定*" では、複数の Azure Resource Manager リソースから別のリソースにデータを送信します。 "*Log Analytics*" では、アクション グループを使用して他の通知チャネルを定義できるカスタム アラートが生成されます。
 
 以下のセクションでは、Log Analytics を使用して Azure Backup の大規模な監視を行う方法を詳しく説明します。
 
 ### <a name="configure-diagnostic-settings"></a>診断設定を構成する
 
-Recovery Services コンテナーなどの Azure Resource Manager リソースは、スケジュールされた操作およびユーザーがトリガーした操作に関する情報を診断データとして記録します。 
+Recovery Services コンテナーなどの Azure Resource Manager リソースは、スケジュールされた操作およびユーザーがトリガーした操作に関する情報を診断データとして記録します。
 
 監視セクションで **[診断設定]** を選択し、Recovery Services コンテナーの診断データの送信先を指定します。
 
@@ -66,21 +66,21 @@ Recovery Services コンテナーなどの Azure Resource Manager リソース�
 
 概要タイルのいずれかを選択すると、さらに詳しい情報を表示できます。 表示されるレポートの一部を次に示します。
 
-* ログ バックアップ以外のジョブ
+- ログ バックアップ以外のジョブ
 
    ![バックアップ ジョブの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
 
-* Azure リソース バックアップからのアラート
+- Azure リソース バックアップからのアラート
 
    ![復元ジョブの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
 
 同様に、他のタイルをクリックすると、復元ジョブ、クラウド ストレージ、バックアップ項目、オンプレミス リソース バックアップからのアラート、およびログ バックアップ ジョブに関するレポートを表示できます。
- 
+
 これらのグラフは、テンプレートで提供されています。 必要に応じて、グラフを編集したり、グラフを追加したりできます。
 
 ### <a name="create-alerts-by-using-log-analytics"></a>Log Analytics を使用してアラートを作成する
 
-Azure Monitor では、Log Analytics ワークスペースで独自のアラートを作成できます。 ワークスペースで、"*Azure アクション グループ*" を使用して、優先する通知メカニズムを選択します。 
+Azure Monitor では、Log Analytics ワークスペースで独自のアラートを作成できます。 ワークスペースで、"*Azure アクション グループ*" を使用して、優先する通知メカニズムを選択します。
 
 > [!IMPORTANT]
 > このクエリの作成コストについては、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
@@ -115,7 +115,7 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
 
 既定のグラフによって基本的なシナリオ用の Kusto クエリが提供されるため、それに基づいてアラートを作成できます。 クエリを変更して、アラートを設定する対象のデータを取得することもできます。 次のサンプル Kusto クエリを **[ログ]** ページに貼り付け、次のクエリに対してアラートを作成します。
 
-* 成功したすべてのバックアップ ジョブ
+- 成功したすべてのバックアップ ジョブ
 
     ````Kusto
     AzureDiagnostics
@@ -124,8 +124,8 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
     | where OperationName == "Job" and JobOperation_s == "Backup"
     | where JobStatus_s == "Completed"
     ````
-    
-* 失敗したすべてのバックアップ ジョブ
+
+- 失敗したすべてのバックアップ ジョブ
 
     ````Kusto
     AzureDiagnostics
@@ -134,8 +134,8 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
     | where OperationName == "Job" and JobOperation_s == "Backup"
     | where JobStatus_s == "Failed"
     ````
-    
-* 成功したすべての Azure VM バックアップ ジョブ
+
+- 成功したすべての Azure VM バックアップ ジョブ
 
     ````Kusto
     AzureDiagnostics
@@ -158,7 +158,7 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
     | project-away Resource
     ````
 
-* 成功したすべての SQL ログ バックアップ ジョブ
+- 成功したすべての SQL ログ バックアップ ジョブ
 
     ````Kusto
     AzureDiagnostics
@@ -181,7 +181,7 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
     | project-away Resource
     ````
 
-* 成功したすべての Azure Backup エージェント ジョブ
+- 成功したすべての Azure Backup エージェント ジョブ
 
     ````Kusto
     AzureDiagnostics
@@ -223,7 +223,7 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
 アクティビティ ログを使用して、バックアップ成功などのイベントの通知を受け取ることもできます。 開始するには、次の手順に従います。
 
 1. Azure Portal にサインインします。
-1. 関連する Recovery Services コンテナーを開きます。 
+1. 関連する Recovery Services コンテナーを開きます。
 1. コンテナーのプロパティで、 **[アクティビティ ログ]** セクションを開きます。
 
 適切なログを指定してアラートを作成するには:
@@ -233,7 +233,7 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
    ![Azure VM バックアップのアクティビティ ログを検索するためのフィルター処理](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
 1. 操作名を選択すると、関連する詳細が表示されます。
-1. **[新しいアラート ルール]** を選択して **[ルールの作成]** ページを開きます。 
+1. **[新しいアラート ルール]** を選択して **[ルールの作成]** ページを開きます。
 1. 「[Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)」の手順に従って、アラートを作成します。
 
    ![新しいアラート ルール](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
@@ -247,7 +247,7 @@ Azure Monitor では、アクティビティ ログと Log Analytics ワーク�
 アクティビティ ログを使用して通知を受け取ることはできますが、大規模な監視にはアクティビティ ログではなく Log Analytics を使用することを強くお勧めします。 理由は次のとおりです。
 
 - **シナリオの制限**: アクティビティ ログを使用した通知は、Azure VM バックアップにのみ適用されます。 通知は、Recovery Services コンテナーごとに設定する必要があります。
-- **定義の一致**: スケジュール済みバックアップ アクティビティは、アクティビティ ログの最新定義と一致しません。 代わりに、[診断ログ](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)と一致します。 この一致によって、アクティビティ ログ チャネルを通過するデータが変更された場合に、予期しない影響が発生します。
+- **定義の一致**: スケジュール済みバックアップ アクティビティは、アクティビティ ログの最新定義と一致しません。 代わりに、[リソース ログ](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)と一致します。 この一致によって、アクティビティ ログ チャネルを通過するデータが変更された場合に、予期しない影響が発生します。
 - **アクティビティ ログ チャネルの問題**: Recovery Services コンテナーでは、Azure Backup から取り込まれたアクティビティ ログは、新しいモデルに従ったものになっています。 残念ながら、この変更は、Azure Government、Azure Germany、および Azure China 21Vianet のアクティビティ ログの生成に影響します。 これらのクラウド サービスのユーザーが Azure Monitor のアクティビティ ログからアラートを作成または構成した場合、アラートはトリガーされません。 また、すべての Azure パブリック リージョンにおいて、ユーザーが [Recovery Services のアクティビティ ログを Log Analytics ワークスペースに収集](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)した場合、それらのログは表示されません。
 
 Azure Backup で保護されるすべてのワークロードでは、大規模な監視とアラートのためには Log Analytic ワークスペースを使用してください。

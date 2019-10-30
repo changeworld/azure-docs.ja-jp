@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 09/01/2019
-ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.date: 10/18/2019
+ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309851"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675684"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -31,17 +31,21 @@ ms.locfileid: "71309851"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションを保持する Azure アカウントがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-  * ゲートウェイをインストールして管理するには、同じ Azure アカウントを使用する必要があります。 インストール中に、この Azure アカウントを使用して、コンピューター上のゲートウェイを Azure サブスクリプションに関連付けます。 後で、ゲートウェイ インストールに対して Azure portal でAzure リソースを作成するときにも、同じ Azure アカウントを使用します。 
+  * ローカル コンピューター上にゲートウェイをインストールして管理するには、同じ Azure アカウントを使用する必要があります。
 
-  * `username@contoso.com` のような、職場アカウントまたは学校アカウント (*組織*アカウントとも呼ばれる) を使用してサインインする必要があります。 Azure B2B (ゲスト) アカウントや個人の Microsoft アカウント (@hotmail.com や @outlook.com など) は使用できません。
+    ゲートウェイのインストール中に、Azure アカウントを使用してサインインします。これにより、ゲートウェイのインストールが Azure アカウントに関連付けられ、そのアカウントのみに限定されます。 その後、Azure portal 上で同じ Azure アカウントを使用して、ゲートウェイのインストールを登録して要求する Azure ゲートウェイ リソースを作成する必要があります。 Azure Logic Apps では、オンプレミスのトリガーとアクションにおいて、オンプレミスのデータ ソースへの接続にゲートウェイ リソースが使用されます。
+
+    > [!NOTE]
+    > 1 つのゲートウェイ インストールと 1 つの Azure ゲートウェイ リソースだけを互いに関連付けることができます。 同じゲートウェイのインストールを複数の Azure アカウントまたは Azure ゲートウェイ リソースに関連付けることはできません。 ただし、1 つの Azure アカウントを、複数のゲートウェイのインストールと Azure ゲートウェイ リソースに関連付けることは可能です。 オンプレミスのトリガーまたはアクションでは、さまざまな Azure サブスクリプションから選んで、関連付けられる 1 つのゲートウェイ リソースを選択できます。
+
+  * `username@contoso.com` のような、職場アカウントまたは学校アカウントのどちらか (*組織*アカウントとも呼ばれる) を使用して、サインインする必要があります。 Azure B2B (ゲスト) アカウントや個人の Microsoft アカウント (@hotmail.com や @outlook.com など) は使用できません。
 
     > [!TIP]
     > Office 365 オファリングにサインアップして、仕事用メール アドレスを指定しなかった場合、アドレスは `username@domain.onmicrosoft.com` のようになります。 アカウントは Azure Active Directory (Azure AD) のテナント内に格納されます。 ほとんどの場合、Azure AD アカウントのユーザープリンシパル名 (UPN) は、メール アドレスと同じです。
     >
-    > Microsoft アカウントに関連付けられている [Visual Studio Standard サブスクリプション](https://visualstudio.microsoft.com/vs/pricing/)を使用するには、まず [Azure AD でテナントを作成する](../active-directory/develop/quickstart-create-new-tenant.md)か、既定のディレクトリを使用します。 ディレクトリにパスワードを持つユーザーを追加した後、そのユーザーにサブスクリプションへのアクセス権を与えます。 
-    > その後、ゲートウェイのインストール中に、このユーザー名とパスワードでサインインできます。
+    > Microsoft アカウントに関連付けられている [Visual Studio Standard サブスクリプション](https://visualstudio.microsoft.com/vs/pricing/)を使用するには、まず [Azure AD でテナントを作成する](../active-directory/develop/quickstart-create-new-tenant.md)か、または既定のディレクトリを使用します。 ディレクトリにパスワードを持つユーザーを追加した後、そのユーザーに Azure サブスクリプションへのアクセス権を付与します。 その後、ゲートウェイのインストール中に、このユーザー名とパスワードでサインインできます。
 
 * ローカル コンピューターの要件を以下に示します。
 
@@ -75,7 +79,7 @@ ms.locfileid: "71309851"
 
   * ゲートウェイには、標準モードと個人用モード (Power BI にのみ適用) の 2 つのモードがあります。 同じコンピューターにおいて同じモードで複数のゲートウェイを実行することはできません。
 
-  * Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)があります。
+  * Azure Logic Apps では、ゲートウェイを介した読み取りおよび書き込み操作がサポートされます。 ただし、これらの操作には、[ペイロードのサイズに制限](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)があります。
 
 <a name="install-gateway"></a>
 
@@ -95,11 +99,11 @@ ms.locfileid: "71309851"
 
    ![要件の確認と使用条件への同意](./media/logic-apps-gateway-install/accept-terms.png)
 
-1. ゲートウェイが正常にインストールされた後、組織アカウントのメール アドレスを指定し、 **[サインイン]** を選択します。例:
+1. ゲートウェイが正常にインストールされた後、Azure アカウント用のメール アドレスを指定し、 **[サインイン]** を選択します。たとえば、次のようになります。
 
    ![職場または学校アカウントでのサインイン](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-   これでアカウントにサインインしました。
+   ゲートウェイのインストールは、1 つの Azure アカウントのみに関連付けできます。
 
 1. **[このコンピューターに新しいゲートウェイを登録します]**  >  **[次へ]** の順に選択します。 この手順では、[ゲートウェイ クラウド サービス](#gateway-cloud-service)を使用して、ゲートウェイのインストールを登録します。
 
@@ -155,7 +159,7 @@ ms.locfileid: "71309851"
 
 オンプレミスのデータ アクセスが単一障害点にならないようにするには、複数のゲートウェイ インストール (標準モードのみ) をそれぞれ別のコンピューターにインストールし、クラスターまたはグループとしてそれらを設定します。 このようにして、プライマリ ゲートウェイが使用できない場合、データ要求は 2 番目のゲートウェイにルーティングされます (それ以降も同様)。 1 台のコンピューターにインストールできる標準ゲートウェイは 1 つだけであるため、クラスター内の追加のゲートウェイをそれぞれ別のコンピューターにインストールする必要があります。 オンプレミス データ ゲートウェイと連携するすべてのコネクタにおいて高可用性がサポートされます。
 
-* 少なくとも 1 つのゲートウェイ インストールが既に、プライマリ ゲートウェイとそのインストールの回復キーと同じ Azure サブスクリプション内にある必要があります。
+* 少なくとも 1 つのゲートウェイ インストールが既に、プライマリ ゲートウェイとそのインストールに対する回復キーと同じ Azure アカウントに用意されている必要があります。
 
 * プライマリ ゲートウェイでは、2017 年 11 月以降のゲートウェイ更新プログラムが実行されている必要があります。
 
@@ -235,19 +239,19 @@ Azure AD テナント内のすべてのオンプレミス データ ゲートウ
 
 ゲートウェイからオンプレミス データ ソースに接続するには、格納されている資格情報が使用されます。 ユーザーに関係なく、ゲートウェイでは格納されている資格情報を使用して接続が行われます。 Power BI での Analysis Services に対する DirectQuery や LiveConnect など、特定のサービスで認証の例外が発生する可能性があります。
 
-### <a name="azure-active-directory"></a>Azure Active Directory
+### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
-Microsoft クラウド サービスでは、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) を使用して、ユーザーの認証が行われます。 Azure AD テナントには、ユーザー名とセキュリティ グループが含まれています。 通常、サインインに使用するメール アドレスは、アカウントのユーザー プリンシパル名 (UPN) と同じです。
+Microsoft クラウド サービスでは、[Azure AD](../active-directory/fundamentals/active-directory-whatis.md) を使用して、ユーザーの認証が行われます。 Azure AD テナントには、ユーザー名とセキュリティ グループが含まれています。 通常、サインインに使用するメール アドレスは、アカウントのユーザー プリンシパル名 (UPN) と同じです。
 
 ### <a name="what-is-my-upn"></a>自分の UPN を確認する
 
 ドメイン管理者でないユーザーは、UPN がわからない可能性があります。 自分のアカウントの UPN を調べるには、ワークステーションから `whoami /upn` コマンドを実行します。 結果は、メール アドレスに似ていますが、ローカル ドメイン アカウントに対する UPN です。
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-active-directory"></a>オンプレミスの Active Directory と Azure Active Directory を同期する
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>オンプレミスの Active Directory と Azure AD を同期する
 
-オンプレミスの Active Directory アカウントの UPN と Azure AD アカウントの UPN は、同じである必要があります。 そのため、オンプレミスの各 Active Directory アカウントと Azure AD アカウントを一致させる必要があります。 クラウド サービスでは、Azure AD 内のアカウントのみが認識されます。 そのため、オンプレミスの Active Directory にアカウントを追加する必要はありません。 アカウントが Azure AD に存在しない場合、そのアカウントを使用することはできません。 
+オンプレミスの Active Directory アカウントの UPN と Azure AD アカウントの UPN は、同じである必要があります。 そのため、オンプレミスの各 Active Directory アカウントと Azure AD アカウントを一致させる必要があります。 クラウド サービスでは、Azure AD 内のアカウントのみが認識されます。 そのため、オンプレミスの Active Directory にアカウントを追加する必要はありません。 アカウントが Azure AD に存在しない場合、そのアカウントを使用することはできません。
 
-オンプレミスの Active Directory アカウントと Azure AD を一致させる方法を次に示します。 
+オンプレミスの Active Directory アカウントと Azure AD を一致させる方法を次に示します。
 
 * Azure AD に手動でアカウントを追加します。
 

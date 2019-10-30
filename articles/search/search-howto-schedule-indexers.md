@@ -1,31 +1,31 @@
 ---
-title: インデクサーのスケジュールを設定する方法 - Azure Search
-description: Azure Search インデクサーのスケジュールを設定して、定期的に、または特定の時間にコンテンツのインデックスを作成します。
-ms.date: 05/31/2019
+title: インデクサーのスケジュール設定方法
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search インデクサーのスケジュールを設定して、定期的に、または特定の時間にコンテンツのインデックスを作成します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: e9d4f49bd0aec1a04b4839b2084a81fb538f7890
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186579"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793689"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Azure Search のインデクサーのスケジュールを設定する方法
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーをスケジュールする方法
+
 インデクサーは通常、その作成直後に 1 回実行されます。 必要に応じて、ポータル、REST API、または .NET SDK を使用してもう一度実行できます。 スケジュールに従って定期的に実行するようにインデクサーを構成することもできます。
 
 インデクサーのスケジュール設定が役立つ状況には、次のものがあります。
 
-* ソース データが時間の経過と共に変化し、変更されたデータを Azure Search インデクサーによって自動的に処理したい。
+* ソース データは時間の経過と共に変化し、変更されたデータを Azure Cognitive Search インデクサーによって自動的に処理したいとします。
 * 複数のデータ ソースからインデックスが取得され、競合を減らすために、必ず異なるタイミングでインデクサーが実行されるようにしたい。
-* ソース データが非常に大きく、時間の経過と共にインデクサーの処理を拡大したい。 大量のデータのインデックス作成の詳細については、「[Azure Search で大容量のデータ セットのインデックスを作成する方法](search-howto-large-index.md)」を参照してください。
+* ソース データが非常に大きく、時間の経過と共にインデクサーの処理を拡大したい。 大量のデータのインデックス作成の詳細については、[Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法](search-howto-large-index.md)に関する記事を参照してください。
 
-スケジューラは Azure Search の組み込みの機能です。 外部のスケジューラを使用して検索インデクサーを制御することはできません。
+スケジューラは Azure Cognitive Search の組み込みの機能です。 外部のスケジューラを使用して検索インデクサーを制御することはできません。
 
 ## <a name="define-schedule-properties"></a>スケジュールのプロパティを定義する
 
@@ -48,7 +48,7 @@ ms.locfileid: "70186579"
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>ポータルでスケジュールを定義する
+## <a name="schedule-in-the-portal"></a>ポータルでスケジュールを設定する
 
 ポータルでデータ インポート ウィザードを使用して、インデクサーのスケジュールを作成時に定義できます。 既定のスケジュール設定は **[Hourly] \(毎時間\)** で、この場合、インデクサーは作成後に 1 回実行され、その後は 1 時間ごとに再実行されます。
 
@@ -56,15 +56,15 @@ ms.locfileid: "70186579"
 
 スケジュールを **[カスタム]** に設定すると、 **[Interval] \(間隔\)** と **[Start Time (UTC)] \(開始時刻 (UTC)\)** を指定するフィールドが表示されます。 設定できる最短の間隔は 5 分、最長は 1440 分 (24 時間) です。
 
-   ![データ インポート ウィザードでのインデクサーのスケジュールの設定](media/search-howto-schedule-indexers/schedule-import-data.png "データ インポート ウィザードでのインデクサーのスケジュールの設定")
+   ![データ インポート ウィザードでインデクサー スケジュールを設定する](media/search-howto-schedule-indexers/schedule-import-data.png "データ インポート ウィザードでインデクサー スケジュールを設定する")
 
 インデクサーが作成されたら、インデクサーの編集パネルを使用してスケジュール設定を変更できます。 スケジュールのフィールドはデータ インポート ウィザードと同じです。
 
-   ![インデクサーの編集パネルでのスケジュールの設定](media/search-howto-schedule-indexers/schedule-edit.png "インデクサーの編集パネルでのスケジュールの設定")
+   ![インデクサーの編集パネルでスケジュールを設定する](media/search-howto-schedule-indexers/schedule-edit.png "インデクサーの編集パネルでスケジュールを設定する")
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>REST API を使用してスケジュールを定義する
+## <a name="schedule-using-rest-apis"></a>REST API を使用してスケジュールを設定する
 
 REST API を使用してインデクサーのスケジュールを定義できます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを含めます。 次の例では、既存のインデクサーを更新する PUT 要求を示します。
 
@@ -86,9 +86,9 @@ REST API を使用してインデクサーのスケジュールを定義でき�
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>.NET SDK を使用してスケジュールを定義する
+## <a name="schedule-using-the-net-sdk"></a>.NET SDK を使用してスケジュールを設定する
 
-Azure Search .NET SDK を使用してインデクサーのスケジュールを定義できます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを含めます。
+Azure Cognitive Search .NET SDK を使用してインデクサーのスケジュールを定義できます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを含めます。
 
 次の C# の例では、定義済みのデータ ソースとインデックスを使用してインデクサーを作成し、初回は今から 30 分後、その後は毎日 1 回実行するようにスケジュールを設定します。
 

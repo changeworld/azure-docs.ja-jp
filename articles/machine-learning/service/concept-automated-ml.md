@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: e80d79c16b0748e25e549365001990fb014b5f14
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 895425232dabc78650b6ee7ed035048471084237
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030539"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793891"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -108,6 +108,8 @@ ms.locfileid: "72030539"
 [時系列予測の自動化された機械学習](how-to-auto-train-forecast.md)について理解を深め、例を確認してください。 または、次などの、高度な予測の構成の詳細なコード例については、[エネルギー需要ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を参照してください。
 
 * 休日の検出と特性付け
+* 時系列と DNN 学習 (自動 ARIMA、Prophet、ForecastTCN)
+* グループ化による多くのモデルのサポート
 * ローリング オリジン クロス検証
 * 構成可能なラグ
 * ローリング ウィンドウの集計機能

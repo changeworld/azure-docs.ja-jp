@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK バージョン 10 へのアップグレード - Azure Search
+title: Azure Search .NET SDK バージョン 10 へのアップグレード
+titleSuffix: Azure Cognitive Search
 description: 以前のバージョンから Azure Search .NET SDK バージョン 10 にコードを移行します。 新機能と必要なコード変更について説明します。
-author: arv100kri
 manager: nitinme
-services: search
-ms.service: search
+author: arv100kri
+ms.author: arjagann
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: arjagann
-ms.custom: seodec2018
-ms.openlocfilehash: e4633a1c0543331b0ea9820703ed685fb99f2130
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182370"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793055"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-10"></a>Azure Search .NET SDK バージョン 10 へのアップグレード
+# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Azure Search .NET SDK バージョン 10 へのアップグレード
 
 バージョン 9.0 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 10 を使用するようにアプリケーションをアップグレードできます。
 
@@ -158,6 +157,6 @@ var skillset = new Skillset()
 ## <a name="next-steps"></a>次の手順
 
 - Shaper スキルに対する変更によって影響を受ける可能性が最も高いのは、新規または既存のコードです。 次の手順として、入力構造を示すこの例を見直してください。[Shaper スキルの JSON 定義の例](cognitive-search-skill-shaper.md)
-- [コグニティブ検索ガイドの概要](cognitive-search-concept-intro.md)を参照してください。
-- SDK についてのご意見をお待ちしております。 問題が発生した場合は、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) でご質問ください。 バグを発見した場合は、 [Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。 問題のタイトルの前に、必ず "[Azure Search]" を付けてください。
+- [AI エンリッチメントの概要](cognitive-search-concept-intro.md)に関するページを参照してください。
+- SDK についてのご意見をお待ちしております。 問題が発生した場合は、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) でご質問ください。 バグを発見した場合は、 [Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。 ご自身の問題のタイトルの前には、必ず "[Azure Cognitive Search]" を付けてください。
 

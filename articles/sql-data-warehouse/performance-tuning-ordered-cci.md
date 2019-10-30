@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035108"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595361"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>順序指定クラスター化列ストア インデックスを使用したパフォーマンス チューニング  
 
@@ -119,12 +119,12 @@ OPTION (MAXDOP 1);
 ## <a name="create-ordered-cci-on-large-tables"></a>大きなテーブルでの順序指定 CCI の作成
 順序指定 CCI の作成はオフライン操作です。  パーティションがないテーブルの場合、順序指定 CCI の作成プロセスが完了するまで、ユーザーはデータにアクセスできません。   パーティション テーブルの場合、エンジンはパーティションごとに順序指定 CCI パーティションを作成するため、ユーザーは引き続き、順序指定 CCI の作成が処理中でないパーティションのデータにアクセスできます。   このオプションを使用すると、大きなテーブルでの順序指定 CCI の作成時に、ダウンタイムを最小限に抑えることができます。 
 
-1.  ターゲットとなる大きなテーブル (Table A) にパーティションを作成します。
-2.  テーブルとパーティションのスキーマが Table A と同じ、空の順序指定 CCI テーブル (Table B) を作成します。
+1.  ターゲットとなる大きなテーブル (Table_A) にパーティションを作成します。
+2.  テーブルとパーティションのスキーマが Table A と同じ、空の順序指定 CCI テーブル (Table_B) を作成します。
 3.  Table A から Table B にパーティションを 1 つ切り替えます。
-4.  Table B で ALTER INDEX <Ordered_CCI_Index> REBUILD PARTITION = <Partition_ID> を実行して、切り替え先のパーティションを再構築します。  
-5.  Table A のパーティションごとに手順 3 および 4 を繰り返します。
-6.  すべてのパーティションを Table A から Table B に切り替えて再構築したら、Table A を削除して Table B の名前を Table A に変更します。 
+4.  Table B で ALTER INDEX <Ordered_CCI_Index> ON <Table_B> REBUILD PARTITION = <Partition_ID> を実行して、切り替え先のパーティションを再構築します。  
+5.  Table_A のパーティションごとに手順 3 および 4 を繰り返します。
+6.  すべてのパーティションを Table_A から Table_B に切り替えて再構築したら、Table_A を削除して Table_B の名前を Table_A に変更します。 
 
 ## <a name="examples"></a>例
 

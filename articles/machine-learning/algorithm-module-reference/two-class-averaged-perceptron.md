@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128437"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693643"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>2 クラス平均化パーセプトロン モジュール
 
@@ -32,7 +32,7 @@ ms.locfileid: "70128437"
 
 ## <a name="how-to-configure-two-class-averaged-perceptron"></a>2 クラス平均化パーセプトロンの構成方法
 
-1.  **2 クラス平均化パーセプトロン** モジュールを実験に追加します。  
+1.  **2 クラス平均化パーセプトロン** モジュールをパイプラインに追加します。  
 
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
@@ -46,7 +46,7 @@ ms.locfileid: "70128437"
   
      早く停止することで、より優れた一般化がもたらされる場合が多いです。 イテレーションの回数を増やすと適合が向上する反面、過剰適合のおそれがあります。
   
-5.  **[Random number seed]\(乱数シード\)** には、必要に応じて、シードとして使用する整数値を入力します。 繰り返し実行したときの実験の再現性を確保したい場合は、シードを使用することをお勧めします。  
+5.  **[Random number seed]\(乱数シード\)** には、必要に応じて、シードとして使用する整数値を入力します。 繰り返し実行したときのパイプラインの再現性を確保したい場合は、シードを使用することをお勧めします。  
   
 1.  トレーニング データセットと、次のいずれかのトレーニング モジュールを接続します。
   

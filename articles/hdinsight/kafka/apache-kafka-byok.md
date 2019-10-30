@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71122681"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む
@@ -59,7 +59,7 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
 
         b. **[オプション]** を **[生成]** に設定し、キーの名前を付けます。
 
-        ![Apache Kafka のキー名の生成](./media/apache-kafka-byok/apache-kafka-create-key.png "キー名を生成する")
+        ![Apache Kafka のキー名の生成](./media/apache-kafka-byok/apache-kafka-create-key.png "キー名の生成")
 
         c. キーの一覧から作成したキーを選択します。
 
@@ -136,7 +136,7 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
 
 **OS ディスク/リソース ディスクも暗号化されますか?**
 
-   いいえ。 OS ディスクとリソース ディスクは暗号化されません。
+   No. OS ディスクとリソース ディスクは暗号化されません。
 
 **クラスターをスケール アップするとき、新しいブローカーは BYOK をシームレスにサポートしますか?**
 

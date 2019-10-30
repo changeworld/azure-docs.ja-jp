@@ -1,13 +1,13 @@
 ---
-title: OData コレクション演算子のリファレンス - Azure Search
-description: Azure Search クエリでの OData コレクション演算子 (any および all) とラムダ式。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData コレクション演算子のリファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリでの OData コレクション演算子 (any および all) とラムダ式。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e057d0b57162d10aab13d8b1f77e0eaddca2ec2a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fdb250a844b70cef4f6941debbb1fa7450874932
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647636"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793396"
 ---
-# <a name="odata-collection-operators-in-azure-search---any-and-all"></a>Azure Search の OData コレクション演算子 - `any` と `all`
+# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Cognitive Search での OData コレクション演算子 - `any` と `all`
 
-Azure Search で使用する [OData フィルター式](query-odata-filter-orderby-syntax.md)を作成する場合、コレクション フィールドにフィルターを適用すると便利なことがよくあります。 これを行うには、`any` 演算子と `all`演算子を使用します。
+Azure Cognitive Search で使用する [OData フィルター式](query-odata-filter-orderby-syntax.md)を記述する場合、コレクション フィールドにフィルターを適用すると便利なことがよくあります。 これを行うには、`any` 演算子と `all`演算子を使用します。
 
 ## <a name="syntax"></a>構文
 
@@ -48,10 +48,10 @@ lambda_expression ::= identifier ':' boolean_expression
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 コレクションをフィルター処理する式には 3 つの形式があります。
 
@@ -88,13 +88,13 @@ lambda_expression ::= identifier ':' boolean_expression
 
 フィルター式のすべての機能がラムダ式の本体内で使用できるわけではありません。 制限事項は、フィルター処理するコレクション フィールドのデータ型によって異なります。 以下の表に制限事項をまとめています。
 
-[!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
+[!INCLUDE [Limitations on OData lambda expressions in Azure Cognitive Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-これらの制限と例の詳細については、[Azure Search でのコレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)に関する記事をご覧ください。 これらの制限が存在する理由の詳細については、[Azure Search でのコレクション フィルター](search-query-understand-collection-filters.md)に関する記事をご覧ください。
+これらの制限と例の詳細については、[Azure Cognitive Search でのコレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)に関する記事をご覧ください。 これらの制限が存在する理由の詳細については、[Azure Cognitive Search でのコレクション フィルターの概要](search-query-understand-collection-filters.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

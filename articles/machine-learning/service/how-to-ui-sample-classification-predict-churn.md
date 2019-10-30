@@ -1,7 +1,7 @@
 ---
 title: 'ビジュアル インターフェイスの例 #5: 顧客離れ + 強い欲求 + アップセルを予測するための分類'
 titleSuffix: Azure Machine Learning
-description: このビジュアル インターフェイス サンプルの実験では、カスタマー リレーションシップ マネジメント (CRM) の一般的なタスクである顧客離れのバイナリ分類器予測を示します。
+description: このビジュアル インターフェイス サンプルのパイプラインでは、カスタマー リレーションシップ マネジメント (CRM) の一般的なタスクである顧客離れのバイナリ分類器予測を示します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,45 +9,45 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: 260d94ddf2572979e819ee89dfcbd315ef3c4769
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 82639779dde08bb1f71fb75dba62038dbf34d1b6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131246"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693543"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>サンプル 5 - 分類: 顧客離れ、強い欲求、アップセルを予測する 
 
-コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。
+コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習のパイプラインを構築する方法について説明します。
 
-この実験では、顧客関係管理 (CRM) システムの一般的なタスクである顧客離れ、強い欲求、アップセルを予測するために、3 つの **2 クラス ブースト デシジョン ツリー**分類子をトレーニングします。 データ値とラベルは複数のデータ ソースに分割され、顧客情報を匿名化するためにスクランブルがかけられますが、それでもビジュアル インターフェイスを使用し、データ セットを組み合わせ、スクランブルがかけられた値を使用してモデルをトレーニングすることができます。
+このパイプラインでは、顧客関係管理 (CRM) システムの一般的なタスクである顧客離れ、強い欲求、アップセルを予測するために、3 つの **2 クラス ブースト デシジョン ツリー**分類子をトレーニングします。 データ値とラベルは複数のデータ ソースに分割され、顧客情報を匿名化するためにスクランブルがかけられますが、それでもビジュアル インターフェイスを使用てデータ セットを組み合わせ、隠された値を使用してモデルをトレーニングすることができます。
 
-なぜなら、「どれにするか」という質問に答えようとしているからです。 これは分類問題と呼ばれていますが、このプロジェクトと同じ理論を適用して、回帰、分類、クラスタリングなど、あらゆる種類の機械学習問題に対処することができます。
+なぜなら、「どれにするか」という質問に答えようとしているからです。 これは分類問題と呼ばれていますが、このサンプルに示した同じ理論を適用して、回帰、分類、クラスタリングなど、あらゆる種類の機械学習問題に対処することができます。
 
-この実験の完成したグラフを次に示します。
+このパイプラインの完成したグラフを次に示します。
 
-![実験グラフ](./media/how-to-ui-sample-classification-predict-churn/experiment-graph.png)
+![パイプラインのグラフ](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. サンプル 5 実験の **[Open]\(開く\)** ボタンを選択します。
+4. サンプル 5 のパイプラインの **[開く]** ボタンを選択します。
 
-    ![実験を開く](media/how-to-ui-sample-classification-predict-churn/open-sample5.png)
+    ![パイプラインを開く](media/how-to-ui-sample-classification-predict-churn/open-sample5.png)
 
 ## <a name="data"></a>Data
 
-この実験で使用するデータは、KDD Cup 2009 のものです。 データには、50,000 行と 230 の特徴列が含まれます。 タスクは、これらの特徴を使用する顧客の顧客離れ、強い欲求、アップセルを予測することです。 データとタスクについて詳細については、[KDD の Web サイト](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)を参照してください。
+このパイプライン用のデータは、KDD Cup 2009 のものです。 データには、50,000 行と 230 の特徴列が含まれます。 タスクは、これらの特徴を使用する顧客の顧客離れ、強い欲求、アップセルを予測することです。 データとタスクについて詳細については、[KDD の Web サイト](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)を参照してください。
 
-## <a name="experiment-summary"></a>実験の概要
+## <a name="pipeline-summary"></a>パイプラインの概要
 
-このビジュアル インターフェイス サンプルの実験では、カスタマー リレーションシップ マネジメント (CRM) の一般的なタスクである顧客離れ、強い欲求、アップセルのバイナリ分類器予測を示します。
+このビジュアル インターフェイス サンプルのパイプラインは、カスタマー リレーションシップ マネジメント (CRM) の一般的なタスクである顧客離れ、強い欲求、アップセルのバイナリ分類器予測を示します。
 
-最初に、簡単なデータ処理をいくつか行います。
+最初に、簡単なデータ処理がいくつかあります。
 
-- 生のデータセットには、欠損値が多く含まれています。 **見つからないデータのクリーンアップ** モジュールを使用して、欠損値を 0 に置換します。
+- 生のデータセットには、多くの欠損値が含まれています。 **見つからないデータのクリーンアップ** モジュールを使用して、欠損値を 0 に置換します。
 
     ![データセットをクリーンアップする](./media/how-to-ui-sample-classification-predict-churn/cleaned-dataset.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "71131246"
 
 - **データの分割**モジュールを使用して、データセットをトレーニング セットとテスト セットに分割します。
 
-    その後、ブースト デシジョン ツリー バイナリ分類器と既定のパラメーターを使用して、予測モデルを構築します。 タスクごとに 1 つのモデル、つまりアップセル、強い欲求、顧客離れの予測ごとに 1 つのモデルを構築します。
+- その後、ブースト デシジョン ツリー バイナリ分類器と既定のパラメーターを使用して、予測モデルを構築します。 タスクごとに 1 つのモデル、つまりアップセル、強い欲求、顧客離れの予測ごとに 1 つのモデルを構築します。
 
 ## <a name="results"></a>結果
 
@@ -80,3 +80,4 @@ ms.locfileid: "71131246"
 - [サンプル 3 - 分類: 信用リスクを予測する](how-to-ui-sample-classification-predict-credit-risk-basic.md)
 - [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [サンプル 6 - 分類:フライトの遅延を予測する](how-to-ui-sample-classification-predict-flight-delay.md)
+- [サンプル 7 - テキスト分類:ブック レビュー](how-to-ui-sample-text-classification.md)

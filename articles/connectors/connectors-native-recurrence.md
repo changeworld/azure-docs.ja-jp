@@ -1,5 +1,5 @@
 ---
-title: 繰り返しトリガーを使用して繰り返しタスクをスケジュール設定する - Azure Logic Apps
+title: 定期的なタスクとワークフローをスケジュール設定する - Azure Logic Apps
 description: Azure Logic Apps で繰り返しトリガーを使用して自動化された繰り返しタスクおよびワークフローをスケジュール設定して実行する
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 0bd7262daf23f205552e46bc3ca2802cf35f85db
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 8715bbcb6926fbfc2f77bd05d0ce036a6255eb85
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914453"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679068"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Azure Logic Apps で繰り返しトリガーを使用して繰り返しタスクおよびワークフローを作成、スケジュール設定、および実行する
 

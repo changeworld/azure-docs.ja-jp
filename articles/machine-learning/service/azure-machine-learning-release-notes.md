@@ -10,18 +10,38 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: f51b9c3032518fb66215126c5a8bf26ab9b59526
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afad2648ec73b02d4e06ad55f850a518d2488f68
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331570"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756050"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) のリファレンス ページを参照してください。 
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-10-21"></a>2019-10-21
+
+### <a name="visual-interface-preview"></a>ビジュアル インターフェイス (プレビュー)
+
++ Azure Machine Learning ビジュアル インターフェイス (プレビュー) は、[Azure Machine Learning パイプライン](concept-ml-pipelines.md)で実行するために全面的に見直されました。 ビジュアル インターフェイスで作成されたパイプライン (以前は実験と呼ばれていました) は、コア Azure Machine Learning エクスペリエンスと完全に統合されました。
+  + SDK 資産と統合された管理エクスペリエンス
+  + ビジュアル インターフェイスのモデル、パイプライン、およびエンドポイントのバージョン管理と追跡 
+  + 新しい UI デザイン
+  + バッチ推論のデプロイの追加
+  + 推論コンピューティング先に対する Azure Kubernetes Service (AKS) のサポートの追加
+  + 新しい Python ステップのパイプライン作成ワークフロー
+  + ビジュアルの作成ツールの新しい[ランディング ページ](https://ml.azure.com)
+
++ **新しいモジュール**
+  + 算術演算の適用
+  + SQL 変換の適用
+  + クリップの値
+  + データの集計
+  + SQL データベースからのインポート  
 
 ## <a name="2019-10-14"></a>2019-10-14
 
@@ -67,6 +87,7 @@ ms.locfileid: "72331570"
   + **azureml-train-automl**
     + オーケストレーションで既に処理が行われているため、セットアップの反復処理に失敗した場合でも親の実行が失敗しなくなりました。
     + AutoML 実験で local-docker および local-conda がサポートされるようになりました
+
 
 ## <a name="2019-10-08"></a>2019-10-08
 
@@ -883,7 +904,7 @@ Azure Machine Learning SDK for Python v1.0.30 がリリースされました。
 
  + **変更点**
    + azureml-contrib-tensorboard が azureml-tensorboard パッケージに置き換えられました。
-   + このリリースでは、マネージド コンピューティング クラスター (amlcompute) の作成時にユーザー アカウントを設定できます。 これは、これらのプロパティをプロビジョニング構成に渡すことで実行できます。 詳細については、[SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remotelogin-port-public-access--notspecified--)をご覧ください。
+   + このリリースでは、マネージド コンピューティング クラスター (amlcompute) の作成時にユーザー アカウントを設定できます。 これは、これらのプロパティをプロビジョニング構成に渡すことで実行できます。 詳細については、[SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--)をご覧ください。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure Machine Learning Data Prep SDK v1.0.17
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/11/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 099bca7483100da1a4ee2f8f10057c416ad145b0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a9a837d8a486e10ea2a62be69b889e657b1dbc05
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841469"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72601027"
 ---
 メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。 各タグは、名前と値のペアで構成されます。 たとえば、運用環境のすべてのリソースには名前 "環境" と値 "運用" を適用できます。
 
@@ -30,3 +30,6 @@ ms.locfileid: "67841469"
 * リソース グループに適用したタグは、そのリソース グループ内のリソースには継承されません。
 * Cloud Services など、クラシック リソースにタグを適用することはできません。
 * タグ名には、これらの文字を含めることはできません: `<`、`>`、`%`、`&`、`\`、`?`、`/`
+
+   > [!NOTE]
+   > また、Azure DNS ゾーンと Traffic Manger サービスでは現在、タグ内でスペースを使用することはできません。 

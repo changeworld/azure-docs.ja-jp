@@ -1,25 +1,25 @@
 ---
-title: 組み込みのインデクサーを使用して大容量のデータ セットのインデックスを作成する - Azure Search
-description: 大容量データのインデックス作成またはバッチ モードでの計算負荷の高いインデックス作成の戦略と、リソース管理と、スケジュール設定されたインデックス作成、並列インデックス作成、および分散インデックス作成のためのテクニックとについて説明します。
-services: search
-author: HeidiSteen
+title: 組み込みのインデクサーを使用して大容量のデータ セットのインデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: 大容量データのインデックス作成またはバッチ モードでの計算負荷の高いインデックス作成の戦略と、リソース管理と、スケジュール設定されたインデックス作成、並列インデックス作成、および分散インデックス作成のためのテクニック。
 manager: nitinme
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/19/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: aaf0d5edb91d60be85360746f76c4ca1f8db8978
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257023"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793758"
 ---
-# <a name="how-to-index-large-data-sets-in-azure-search"></a>Azure Search で大容量のデータ セットのインデックスを作成する方法
+# <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
 
-データ量が増加した場合や処理の変更が必要になった場合、単純な、または既定のインデックス作成戦略では、もはや十分でないことに気付くことがあります。 Azure Search の場合、大容量のデータ セットに対応するための方法がいくつかあります。それは、データ アップロード要求を構造化する方法から、スケジュール設定され分散されたワークロードに対してソース固有のインデクサーを使用する方法までさまざまです。
+データ量が増加した場合や処理の変更が必要になった場合、単純な、または既定のインデックス作成戦略では、もはや十分でないことに気付くことがあります。 Azure Cognitive Search の場合、大容量のデータ セットに対応するための方法がいくつかあります。それは、データ アップロード要求を構造化する方法から、スケジュール設定され分散されたワークロードに対してソース固有のインデクサーを使用する方法までさまざまです。
 
-実行時間の長いプロセスにも同じ手法が適用されます。 具体的には、「[並列インデックス作成](#parallel-indexing)」で説明する手順は、[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)での画像分析や自然言語処理など、計算負荷の高いインデックス作成に役立ちます。
+実行時間の長いプロセスにも同じ手法が適用されます。 具体的には、「[並列インデックス作成](#parallel-indexing)」で説明する手順は、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)での画像分析や自然言語処理など、計算負荷の高いインデックス作成に役立ちます。
 
 以下のセクションでは、大量のデータのインデックスを作成する 3 つの方法について説明します。
 
@@ -44,7 +44,7 @@ ms.locfileid: "71257023"
 
 + スケジューラを使用すると、インデックス作成を一定の間隔で配分して行い、時間をかけて徐々に行うことができます。
 + スケジュール済みのインデックス作成は、最後の既知の停止ポイントから再開することができます。 24 時間の範囲内でデータ ソースが完全にクロールされていない場合、中断されたところから 2 日目にインデクサーによってインデックス作成が再開されます。
-+ データをより小さな個々のデータ ソースにパーティション分割することにより、並列処理が実現されます。 ソース データは、Azure BLOB ストレージ内の複数のコンテナーなど、より小さなコンポーネントに分割してから、対応する複数の[データ ソース オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-data-source)を Azure Search で作成して、並列でインデックスを作成することができます。
++ データをより小さな個々のデータ ソースにパーティション分割することにより、並列処理が実現されます。 ソース データは、Azure BLOB ストレージ内の複数のコンテナーなど、より小さなコンポーネントに分割してから、対応する複数の[データ ソース オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成して、並列でインデックスを作成することができます。
 
 > [!NOTE]
 > インデクサーはデータ ソース固有のものです。そのため、インデクサー アプローチの使用は、Azure 上で選択される次のデータ ソースに対してのみ有効です。[SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Table Storage](search-howto-indexing-azure-tables.md)、[Cosmos DB](search-howto-index-cosmosdb.md)。
@@ -55,7 +55,7 @@ ms.locfileid: "71257023"
 
 スケジュール機能付きインデックスは、特定の間隔で始動する設計になっており、通常は、ジョブが完了し、次回のスケジュール間隔で再開されます。 ただし、間隔内で処理が完了しない場合、インデクサーは (時間不足のため) 停止します。 処理がどこで停止したかがシステムに記録されており、次の間隔では、前回停止した個所から処理が再開されます。 
 
-実際には、インデックスの読み込みに数日かかる場合、24 時間スケジュールでインデクサーを配置できます。 次の 24 時間サイクルでインデックス作成が再開すると、前回正常だったと認識されたドキュメントから再開されます。 このようにして、インデクサーは、すべての未処理ドキュメントが処理されるまで、ドキュメントのバックログに従って数日にわたり処理を続けます。 この方法の詳細については、[Azure Blob Storage での大容量のデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)に関するページを参照してください。 一般的なスケジュール設定の詳細については、[インデクサーの作成 (REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) に関するページ、または「[Azure Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)」を参照してください。
+実際には、インデックスの読み込みに数日かかる場合、24 時間スケジュールでインデクサーを配置できます。 次の 24 時間サイクルでインデックス作成が再開すると、前回正常だったと認識されたドキュメントから再開されます。 このようにして、インデクサーは、すべての未処理ドキュメントが処理されるまで、ドキュメントのバックログに従って数日にわたり処理を続けます。 この方法の詳細については、[Azure Blob Storage での大容量のデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)に関するページを参照してください。 一般的なスケジュール設定の詳細については、[インデクサーの作成 (REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) に関するページ、または [Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
 <a name="parallel-indexing"></a>
 
@@ -74,17 +74,17 @@ ms.locfileid: "71257023"
 + すべてのインデクサーが同時に実行されるよう、スケジュールを設定します。
 
 > [!NOTE]
-> Azure Search では、特定のワークロードに専用のレプリカまたはパーティションは割り当てられません。 高負荷の並列インデックスを作成すると、システムが過負荷状態になり、クエリのパフォーマンスに悪影響を及ぼす危険性があります。 テスト環境がある場合は、並列インデックス作成をまずテスト環境で実装してトレードオフを把握してください。
+> Azure Cognitive Search では、特定のワークロードに専用のレプリカまたはパーティションは割り当てられません。 高負荷の並列インデックスを作成すると、システムが過負荷状態になり、クエリのパフォーマンスに悪影響を及ぼす危険性があります。 テスト環境がある場合は、並列インデックス作成をまずテスト環境で実装してトレードオフを把握してください。
 
 ### <a name="how-to-configure-parallel-indexing"></a>並列インデックス作成の構成方法
 
-インデクサーの処理容量は、検索サービスによって使用される各サービス ユニット (SU) の 1 つのインデクサー サブシステムを基に概算されます。 2 つ以上のレプリカがある Basic または Standard レベルにプロビジョニングされている Azure Search サービス上では、複数の並列インデクサーが可能です。 
+インデクサーの処理容量は、検索サービスによって使用される各サービス ユニット (SU) の 1 つのインデクサー サブシステムを基に概算されます。 2 つ以上のレプリカがある Basic または Standard レベルにプロビジョニングされている Azure Cognitive Search サービス上では、複数の並列インデクサーが可能です。 
 
 1. [Azure Portal](https://portal.azure.com) の、検索サービス ダッシュ ボードの **[概要]** ページにある、 **[価格レベル]** で並列インデックスに対応できることを確認してください。 Basic および Standard の両方のレベルで、複数のレプリカが提供されています。
 
 2. **[設定]**  >  **[スケール]** で並列処理の[レプリカを増やし](search-capacity-planning.md)ます。インデクサー ワークロードごとに 1 つ追加します。 既存のクエリ量は十分な数に設定します。 インデックス作成のためのクエリ ワークロードを犠牲にすることは、適切なトレードオフではありません。
 
-3. Azure Search インデクサーが到達可能なレベルの複数のコンテナーにデータを分割します。 これには、Azure SQL Database 内の複数のテーブル、Azure BLOB ストレージ内の複数のコンテナー、または複数のコレクションが考えられます。 テーブルまたはコンテナーごとに 1 つのデータ ソース オブジェクトを定義します。
+3. Azure Cognitive Search インデクサーが到達可能なレベルの複数のコンテナーにデータを分割します。 これには、Azure SQL Database 内の複数のテーブル、Azure BLOB ストレージ内の複数のコンテナー、または複数のコレクションが考えられます。 テーブルまたはコンテナーごとに 1 つのデータ ソース オブジェクトを定義します。
 
 4. 並列実行する複数のインデクサーを作成し、スケジュールを設定します。
 
@@ -94,7 +94,7 @@ ms.locfileid: "71257023"
 
    + 各インデクサーの定義で、同じランタイム実行パターンをスケジュールします。 たとえば、`"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` は、8 時間間隔ですべてのインデクサーが 2018 年 5 月 15 日に実行されるスケジュールを作成します。
 
-予定された時刻に、すべてのインデクサーの実行が開始され、データが読み込まれ、エンリッチメント (認知検索パイプラインを構成した場合) が適用され、インデックスに書き込まれます。 Azure Search では、更新中のインデックスはロックされません。 同時書き込みは、特定の書き込みが最初の試行に成功しなかった場合、再試行することで管理されます。
+予定された時刻に、すべてのインデクサーの実行が開始され、データが読み込まれ、エンリッチメント (認知検索パイプラインを構成した場合) が適用され、インデックスに書き込まれます。 Azure Cognitive Search では、更新中のインデックスはロックされません。 同時書き込みは、特定の書き込みが最初の試行に成功しなかった場合、再試行することで管理されます。
 
 > [!Note]
 > レプリカを増やす際、インデックスのサイズが大幅に増加することが予想される場合は、パーティション数を増やすことを検討してください。 パーティションにはインデックスのコンテンツのスライスが格納され、パーティション数が多いほど、各パーティションに格納されるスライスも小さくなります。
@@ -107,4 +107,4 @@ ms.locfileid: "71257023"
 + [Azure Cosmos DB インデクサー](search-howto-index-cosmosdb.md)
 + [Azure Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)
 + [Azure Table Storage インデクサー](search-howto-indexing-azure-tables.md)
-+ [Azure Search のセキュリティ](search-security-overview.md)
++ [Azure Cognitive Search のセキュリティ](search-security-overview.md)

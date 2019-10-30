@@ -1,22 +1,23 @@
 ---
-title: 検索結果のページングに関する C# チュートリアル - Azure Search
-description: このチュートリアルは、"初めてのアプリを作成する - Azure Search" プロジェクトに基づいて作成されており、2 種類のページングのいずれかを選択できます。 1 つ目のページングでは、ページ番号の範囲のボタンや、[最初]、[次へ]、[前へ]、および [最後] ボタンなどを使用します。 2 つ目のページング システムでは、垂直スクロール バーの下限に移動することによってトリガーされる無限スクロールを使用します。
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: 検索結果のページングに関する C# チュートリアル
+titleSuffix: Azure Cognitive Search
+description: このチュートリアルは、"初めてのアプリを作成する - Azure Cognitive Search" プロジェクトに基づいて作成されており、2 種類のページングのいずれかを選択できます。 1 つ目のページングでは、ページ番号の範囲のボタンや、[最初]、[次へ]、[前へ]、および [最後] ボタンなどを使用します。 2 つ目のページング システムでは、垂直スクロール バーの下限に移動することによってトリガーされる無限スクロールを使用します。
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: 7e6c433168b73c6b58d13d4698bed55d7c18ec58
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434618"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793996"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-search"></a>C# のチュートリアル: 検索結果のページング - Azure Search
+# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# のチュートリアル: 検索結果のページング - Azure Cognitive Search
 
-2 つの異なるページング システムを実装する方法について説明します。1 つ目はページ番号に基づき、2 つ目は無限スクロールに基づきます。 両方のページング システムが広く使用されており、どちらを選択するかは結果を処理するユーザー エクスペリエンスによります。 このチュートリアルでは、ページング システムを「[C# チュートリアル: 初めてのアプリを作成する - Azure Search](tutorial-csharp-create-first-app.md)」チュートリアルで作成したプロジェクト内に構築します。
+2 つの異なるページング システムを実装する方法について説明します。1 つ目はページ番号に基づき、2 つ目は無限スクロールに基づきます。 両方のページング システムが広く使用されており、どちらを選択するかは結果を処理するユーザー エクスペリエンスによります。 このチュートリアルでは、ページング システムを「[C# チュートリアル: 最初のアプリを作成する - Azure Cognitive Search](tutorial-csharp-create-first-app.md)」チュートリアルで作成したプロジェクトで構築します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -27,7 +28,7 @@ ms.locfileid: "67434618"
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-「[C# チュートリアル: 初めてのアプリを作成する - Azure Search](tutorial-csharp-create-first-app.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでもかまいません。
+「[C# チュートリアル: 初めてのアプリを作成する - Azure Cognitive Search](tutorial-csharp-create-first-app.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでもかまいません。
 
 ## <a name="extend-your-app-with-numbered-paging"></a>番号付きのページングでアプリを拡張する
 
@@ -361,7 +362,7 @@ ms.locfileid: "67434618"
     ```
 
     > [!Note]
-    > **IncludeTotalResultCount** を true に設定すると、この合計は Azure Search によって計算される必要があるため、通常はたいしたことはありませんが、パフォーマンスに影響します。 複雑なデータセットでは、返される値が "_近似値_" であるという警告が表示されます。 ここで使用しているホテル データでは、正確な値になります。
+    > **IncludeTotalResultCount** を true に設定すると、この合計は Azure Cognitive Search によって計算される必要があるため、通常はたいしたことはありませんが、パフォーマンスに影響します。 複雑なデータセットでは、返される値が "_近似値_" であるという警告が表示されます。 ここで使用しているホテル データでは、正確な値になります。
 
 ### <a name="compile-and-run-the-app"></a>アプリをコンパイルして実行する
 
@@ -474,7 +475,7 @@ ms.locfileid: "67434618"
 
 1. home コントローラー ファイルを開き、元のチュートリアルから **RunQueryAsync** メソッドを削除します。
 
-2. **Index(model)** アクションを以下のコードに置き換えます。 これで、**paging** フィールドが null の場合、または "next" に設定されている場合はこれを処理し、Azure Search の呼び出しを処理するようになりました。
+2. **Index(model)** アクションを以下のコードに置き換えます。 これで、**paging** フィールドが null の場合、または "next" に設定されている場合はこれを処理し、Azure Cognitive Search の呼び出しを処理するようになりました。
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -600,4 +601,4 @@ ms.locfileid: "67434618"
 ページングは、インターネット検索の基礎です。 ページングについて十分に理解したら、次のステップは、検索の入力候補表示を追加して、さらにユーザー エクスペリエンスを向上させることです。
 
 > [!div class="nextstepaction"]
-> [C# のチュートリアル: オートコンプリートと検索候補を追加する - Azure Search](tutorial-csharp-type-ahead-and-suggestions.md)
+> [C# チュートリアル: オートコンプリートと検索候補を追加する - Azure Cognitive Search](tutorial-csharp-type-ahead-and-suggestions.md)

@@ -1,22 +1,21 @@
 ---
-title: ポータルで Azure 管理アクセス用の RBAC ロールを設定する - Azure Search
-description: Azure Search Management の管理タスクを制御および委任するための、Azure portal でのロールベースの管理制御 (RBAC)。
-author: HeidiSteen
+title: ポータルで Azure 管理アクセス用の RBAC ロールを設定する
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search Management の管理タスクを制御および委任するための、Azure portal でのロールベースの管理制御 (RBAC)。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 04/05/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 924d2529e3477c299d4a90c076fe9e6c8faf11f3
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 321aabb26d5929f7587dd61e7d4059701f7ad526
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647411"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794320"
 ---
-# <a name="set-rbac-roles-for-administrative-access"></a>管理アクセス用の RBAC ロールを設定する
+# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure Cognitive Search 管理アクセス用の RBAC ロールを設定する
 
 Azure では、ポータルまたはリソース マネージャー API で管理するすべてのサービスに対して、 [グローバルなロールベースの承認モデル](../role-based-access-control/role-assignments-portal.md) を用意しています。 所有者、共同作成者、および閲覧者のロールによって、各ロールに割り当てられる Active Directory のユーザー、グループ、およびセキュリティ プリンシパルに対する*サービス管理*のレベルが決まります。 
 
@@ -25,7 +24,7 @@ Azure では、ポータルまたはリソース マネージャー API で管�
 
 ## <a name="management-tasks-by-role"></a>ロール別の管理タスク
 
-Azure Search の場合、ロールは次の管理タスクをサポートするアクセス許可レベルに関連付けられています。
+Azure Cognitive Search の場合、ロールは次の管理タスクをサポートするアクセス許可レベルに関連付けられています。
 
 | Role | タスク |
 | --- | --- |
@@ -39,5 +38,5 @@ Azure Search の場合、ロールは次の管理タスクをサポートする�
 ## <a name="see-also"></a>関連項目
 
 + [PowerShell を使用した管理](search-manage-powershell.md) 
-+ [Performance and optimization in Azure Search](search-performance-optimization.md) (Azure Search のパフォーマンスと最適化)
++ [Azure Cognitive Search のパフォーマンスと最適化](search-performance-optimization.md)
 + [Azure Portal でのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)

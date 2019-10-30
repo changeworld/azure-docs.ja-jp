@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 3718b79562ec05383b9881a1a97cc5bcc5e04258
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075452"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596892"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks クラスターに対するリージョンのディザスター リカバリー
 
@@ -21,7 +21,7 @@ ms.locfileid: "67075452"
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks のアーキテクチャ
 
-アーキテクチャを全体的な視点から眺めてみましょう。Azure portal から Azure Databricks ワークスペースを作成すると、選択した Azure リージョン (米国西部など) に、ご利用のサブスクリプションの Azure リソースとして[マネージド アプライアンス](../managed-applications/overview.md)がデプロイされます。 このアプライアンスは、ご利用のサブスクリプションで利用できる Azure Storage アカウントおよび[ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)と共に [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) にデプロイされます。 この仮想ネットワークが Databricks ワークスペースに対する境界レベルのセキュリティを提供し、またネットワーク セキュリティ グループによって保護されることになります。 Databricks クラスターは、ワークスペース内でワーカー VM とドライバー VM の種類、Databricks Runtime のバージョンを指定することによって作成できます。 永続データを格納するストレージ アカウントは、Azure Blob Storage と Azure Data Lake Store のどちらかになります。 クラスターの作成後は、ノートブック、REST API、ODBC/JDBC エンドポイントを特定のクラスターにアタッチすることにより、そのエンドポイントを介してジョブを実行することができます。
+アーキテクチャを全体的な視点から眺めてみましょう。Azure portal から Azure Databricks ワークスペースを作成すると、選択した Azure リージョン (米国西部など) に、ご利用のサブスクリプションの Azure リソースとして[マネージド アプライアンス](../managed-applications/overview.md)がデプロイされます。 このアプライアンスは、ご利用のサブスクリプションで利用できる Azure Storage アカウントおよび[ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)と共に [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) にデプロイされます。 この仮想ネットワークが Databricks ワークスペースに対する境界レベルのセキュリティを提供し、またネットワーク セキュリティ グループによって保護されることになります。 Databricks クラスターは、ワークスペース内でワーカー VM とドライバー VM の種類、Databricks Runtime のバージョンを指定することによって作成できます。 永続データはストレージ アカウント上で利用でき、Azure Blob Storage または Azure Data Lake Store のどちらかになります。 クラスターの作成後は、ノートブック、REST API、ODBC/JDBC エンドポイントを特定のクラスターにアタッチすることにより、そのエンドポイントを介してジョブを実行することができます。
 
 Databricks ワークスペース環境の管理と監視は、Databricks のコントロール プレーンで行います。 クラスターの作成をはじめとするすべての管理操作は、コントロール プレーンから開始されます。 メタデータ (スケジュールされたジョブなど) はすべて Azure Database に格納され、geo レプリケーションによるフォールト トレランスが確保されます。
 
@@ -284,9 +284,9 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
    現在、ライブラリをワークスペース間で直接移行する方法はありません。 そうしたライブラリは、新しいワークスペースに手動で再インストールする必要があります。 カスタム ライブラリをワークスペースにアップロードする [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) と [Libraries CLI](https://github.com/databricks/databricks-cli#libraries-cli) とを組み合わせて自動化することはできます。
 
-8. **Azure Blob Storage と Azure Data Lake Store のマウントを移行する**
+8. **Azure Blob Storage と Azure Data Lake Storage のマウントを移行する**
 
-   ノートブック ベースのソリューションを使って、[Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) と [Azure Data Lake Store (Gen 2)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) のマウント ポイントをすべて手動で再マウントします。 プライマリ ワークスペースにはストレージ リソースがマウント済みかと思いますので、それをセカンダリ ワークスペースについても行う必要があります。 マウントのための外部 API は存在しません。
+   Notebook ベースのソリューションを使って、[Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) と [Azure Data Lake Storage (Gen 2)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) のマウント ポイントをすべて手動で再マウントします。 プライマリ ワークスペースにはストレージ リソースがマウント済みかと思いますので、それをセカンダリ ワークスペースについても行う必要があります。 マウントのための外部 API は存在しません。
 
 9. **クラスター初期化スクリプトを移行する**
 

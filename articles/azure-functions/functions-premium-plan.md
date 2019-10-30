@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096226"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755414"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions の Premium プラン (プレビュー)
 
@@ -104,17 +104,20 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 以下に、パブリック プレビューで現在サポートされているリージョンを OS ごとに示します。
 
-|Region| Windows | Linux |
+|リージョン| Windows | Linux |
 |--| -- | -- |
+|オーストラリア中部| ✔* | |
+|オーストラリア中部 2| ✔* | |
 |オーストラリア東部| ✔ | |
 |オーストラリア南東部 | ✔ | ✔ |
+|ブラジル南部| ✔** |  |
 |カナダ中部| ✔ |  |
 |米国中部| ✔ |  |
 |東アジア| ✔ |  |
-|East US | | ✔ |
+|East US | ✔ | ✔ |
 |米国東部 2| ✔ |  |
 |フランス中部| ✔ |  |
-|東日本|  | ✔ |
+|東日本| ✔ | ✔ |
 |西日本| ✔ | |
 |韓国中部| ✔ |  |
 |米国中北部| ✔ |  |
@@ -122,10 +125,15 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |米国中南部| ✔ |  |
 |インド南部 | ✔ | |
 |東南アジア| ✔ | ✔ |
+|英国南部| ✔ | |
 |英国西部| ✔ |  |
 |西ヨーロッパ| ✔ | ✔ |
 |インド西部| ✔ |  |
 |米国西部| ✔ | ✔ |
+
+\* 最大スケールアウトは 20 個のインスタンスに制限されます
+
+\** 最大スケールアウトは 60 個のインスタンスに制限されます
 
 ## <a name="known-issues"></a>既知の問題
 

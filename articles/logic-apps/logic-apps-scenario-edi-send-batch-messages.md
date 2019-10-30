@@ -1,6 +1,6 @@
 ---
-title: EDI メッセージをグループまたはコレクションとしてバッチ処理を行う - Azure Logic Apps | Microsoft Docs
-description: ロジック アプリでバッチ処理を行う EDI メッセージを送信します
+title: EDI メッセージをグループとしてバッチ処理する - Azure Logic Apps
+description: Azure Logic Apps においてバッチ、グループ、またはコレクションとして EDI メッセージを送受信する
 services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: c2b0e2ed801724b682e0c4a60d6d7dff9645aab3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827421"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680180"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Azure Logic Apps を使用して取引先パートナーに EDI メッセージをバッチで送信する
 

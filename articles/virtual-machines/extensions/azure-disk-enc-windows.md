@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 11394f692765cc1df5db0eb5c0dd06425026505d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092644"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598009"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -28,17 +28,11 @@ Azure Disk Encryption は、BitLocker を利用して、Windows を実行して�
 
 ## <a name="prerequisites"></a>前提条件
 
-前提条件の詳細な一覧については、[Azure Disk Encryption の前提条件](
-../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
+前提条件の完全な一覧については、「[Linux VM に対する Azure Disk Encryption](../linux/disk-encryption-overview.md)」の特に次のセクションを参照してください。
 
-### <a name="operating-system"></a>オペレーティング システム
-
-現在の Windows バージョンの一覧については、[Azure Disk Encryption の前提条件](../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
-
-### <a name="internet-connectivity"></a>インターネット接続
-
-Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッケージ管理エンドポイントにアクセスするためにインターネット接続が必要です。  ネットワーク セキュリティ設定の詳細については、[Azure Disk Encryption の前提条件](
-../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
+- [Linux VM に対する Azure Disk Encryption](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [ネットワーク要件](../windows/disk-encryption-overview.md#networking-requirements)
+- [グループ ポリシーの要件](../windows/disk-encryption-overview.md#group-policy-requirements)
 
 ## <a name="extension-schemata"></a>拡張機能のスキーマ
 

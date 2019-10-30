@@ -1,24 +1,23 @@
 ---
-title: Active Directory を使用して結果をトリミングするためのセキュリティ フィルター - Azure Search
-description: セキュリティ フィルターと Azure Active Directory (AAD) ID を使用した Azure Search コンテンツに対するアクセス制御。
-author: brjohnstmsft
+title: Active Directory を使用して結果をトリミングするためのセキュリティ フィルター
+titleSuffix: Azure Cognitive Search
+description: セキュリティ フィルターと Azure Active Directory (AAD) ID を使用した Azure Cognitive Search コンテンツに対するアクセス制御。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 11/07/2017
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 8bcc1dcd1d86c0ca18ed03dc60834884a42a39c9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186519"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794312"
 ---
-# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター
+# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
-この記事では、Azure Active Directory (AAD) セキュリティ ID と共に Azure Search のフィルターを使用し、ユーザー グループのメンバーシップに基づいて検索結果をトリミングする方法について説明します。
+この記事では、Azure Active Directory (AAD) セキュリティ ID と共に Azure Cognitive Search のフィルターを使用し、ユーザー グループのメンバーシップに基づいて検索結果をトリミングする方法について説明します。
 
 この記事に含まれるタスクは次のとおりです。
 > [!div class="checklist"]
@@ -33,7 +32,7 @@ ms.locfileid: "70186519"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Search のインデックスには、ドキュメントに対する読み取りアクセス権を持つグループの ID のリストを格納するための[セキュリティ フィールド](search-security-trimming-for-azure-search.md)が存在する必要があります。 このユース ケースでは、セキュリティ保護可能な項目 (個々の大学アプリケーションなど) とその項目へのアクセス権を持っているユーザー (入学担当者) を指定するセキュリティ フィールドの間に、一対一の対応があることを前提としています。
+Azure Cognitive Search のインデックスには、ドキュメントに対する読み取りアクセス権を持つグループの ID のリストを格納するための[セキュリティ フィールド](search-security-trimming-for-azure-search.md)が存在する必要があります。 このユース ケースでは、セキュリティ保護可能な項目 (個々の大学アプリケーションなど) とその項目へのアクセス権を持っているユーザー (入学担当者) を指定するセキュリティ フィールドの間に、一対一の対応があることを前提としています。
 
 このチュートリアルを行うには、AAD でユーザー、グループ、および関連付けを作成するために必要な AAD 管理者アクセス許可を持っている必要があります。
 
@@ -60,9 +59,9 @@ Microsoft Graph に用意されている API では、REST API を使ってプ�
 
 設定済みのアプリケーションに対する検索を追加する場合は、ユーザーとグループ識別子が AAD に既に存在していることがあります。 その場合は、次の 3 つのステップをスキップできます。 
 
-ただし、既存のユーザーがいない場合は、Microsoft Graph API を使ってセキュリティ プリンシパルを作成できます。 次のコード スニペットでは、識別子を生成する方法を示します。この識別子は、Azure Search のインデックスでセキュリティ フィールドのデータ値になります。 この架空の大学入学アプリケーションでは、これは入学スタッフのセキュリティ識別子です。
+ただし、既存のユーザーがいない場合は、Microsoft Graph API を使ってセキュリティ プリンシパルを作成できます。 次のコード スニペットでは、識別子を生成する方法を示します。この識別子は、Azure Cognitive Search のインデックスでセキュリティ フィールドのデータ値になります。 この架空の大学入学アプリケーションでは、これは入学スタッフのセキュリティ識別子です。
 
-特に大規模な組織では、ユーザーとグループ メンバーシップが頻繁に変更される場合があります。 ユーザーとグループの ID を作成するコードは、組織のメンバーシップの変更を反映するのに十分な頻度で実行する必要があります。 また、Azure Search インデックスについても、許可されたユーザーとリソースの現在の状態を反映するために同様の更新スケジュールが必要です。
+特に大規模な組織では、ユーザーとグループ メンバーシップが頻繁に変更される場合があります。 ユーザーとグループの ID を作成するコードは、組織のメンバーシップの変更を反映するのに十分な頻度で実行する必要があります。 また、Azure Cognitive Search インデックスについても、許可されたユーザーとリソースの現在の状態を反映するために同様の更新スケジュールが必要です。
 
 ### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>手順 1:[AAD グループ](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0)を作成する 
 ```csharp
@@ -105,11 +104,11 @@ Microsoft Graph は、大量の要求を処理できるように設計されて�
 
 ## <a name="index-document-with-their-permitted-groups"></a>許可されているグループでドキュメントにインデックスを付ける
 
-Azure Search のクエリ操作は、Azure Search インデックスを介して実行されます。 このステップでは、インデックス操作が、セキュリティ フィルターとして使われる識別子などの検索可能なデータを、インデックスにインポートします。 
+Azure Cognitive Search のクエリ操作は、Azure Search インデックスを介して実行されます。 このステップでは、インデックス操作が、セキュリティ フィルターとして使われる識別子などの検索可能なデータを、インデックスにインポートします。 
 
-Azure Search では、ユーザー ID の認証は行われず、ユーザーが表示アクセス許可を持っているコンテンツを確立するためのロジックは提供されません。 セキュリティによるトリミングのユース ケースでは、機密性の高いドキュメントとそのドキュメントにアクセスできるグループ識別子の関連付けをユーザーが提供し、そのまま検索インデックスにインポートされるものと想定されています。 
+Azure Cognitive Search では、ユーザー ID の認証は行われず、ユーザーが表示アクセス許可を持っているコンテンツを確立するためのロジックは提供されません。 セキュリティによるトリミングのユース ケースでは、機密性の高いドキュメントとそのドキュメントにアクセスできるグループ識別子の関連付けをユーザーが提供し、そのまま検索インデックスにインポートされるものと想定されています。 
 
-この仮定の例では、Azure Search インデックスに対する PUT 要求の本文には、志望者の小論文または成績証明書と共にそのコンテンツを表示するアクセス許可を持つグループ識別子が含まれます。 
+この仮定の例では、Azure Cognitive Search インデックスに対する PUT 要求の本文には、志望者の小論文または成績証明書と共にそのコンテンツを表示するアクセス許可を持つグループ識別子が含まれます。 
 
 このチュートリアルのコード サンプルで使われている汎用的な例のインデックス操作は次のようなものです。
 
@@ -133,7 +132,7 @@ _indexClient.Documents.Index(batch);
 
 ## <a name="issue-a-search-request"></a>検索要求を発行する
 
-セキュリティによるトリミングが目的の場合、インデックスのセキュリティ フィールドの値は、検索結果にドキュメントを含めるか除外するために使われる静的な値です。 たとえば、入学者選考のグループ ID が "A11B22C33D44-E55F66G77-H88I99JKK" の場合、Azure Search インデックスのセキュリティ フィールドがこの識別子であるドキュメントは、要求元に返送される検索結果に含まれるか、または検索結果から除外されます。
+セキュリティによるトリミングが目的の場合、インデックスのセキュリティ フィールドの値は、検索結果にドキュメントを含めるか除外するために使われる静的な値です。 たとえば、入学者選考のグループ ID が "A11B22C33D44-E55F66G77-H88I99JKK" の場合、Azure Cognitive Search インデックスのセキュリティ フィールドがこの識別子であるドキュメントは、要求元に返送される検索結果に含まれるか、または検索結果から除外されます。
 
 要求を発行したユーザーのグループに基づいて検索結果で返されるドキュメントをフィルター処理するには、次の手順のようにします。
 
@@ -185,10 +184,10 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 
 ## <a name="conclusion"></a>まとめ
 
-このチュートリアルでは、AAD のサインインを使って Azure Search の結果のドキュメントをフィルター処理し、要求で指定されたフィルターに一致しないドキュメントの結果をトリミングする方法を説明しました。
+このチュートリアルでは、AAD のサインインを使って Azure Cognitive Search の結果のドキュメントをフィルター処理し、要求で指定されたフィルターに一致しないドキュメントの結果をトリミングする方法を説明しました。
 
 ## <a name="see-also"></a>関連項目
 
-+ [Azure Search フィルターを使用した ID ベースのアクセス制御](search-security-trimming-for-azure-search.md)
-+ [Azure Search のフィルター](search-filters.md)
-+ [Azure Search 操作でのデータ セキュリティとアクセス制御](search-security-overview.md)
++ [Azure Cognitive Search フィルターを使用した ID ベースのアクセスの制御](search-security-trimming-for-azure-search.md)
++ [Azure Cognitive Search のフィルター](search-filters.md)
++ [Azure Cognitive Search 操作でのデータ セキュリティとアクセスの制御](search-security-overview.md)
