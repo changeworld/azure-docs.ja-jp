@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/13/2019
 ms.author: v-qiwe
 ms.custom: include file
-ms.openlocfilehash: 32bc5f76e0be19ae5adb24f10094494d94eeb4d6
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: ee4d253eaa50b4299f4b912ccacbd50307d6fdc5
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019581"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72601028"
 ---
 **[体験版]** タブでは、デモ (つまり "体験版") を設定して、顧客が購入をコミットする前にオファーを試せるようにすることができます。 詳細については、記事「[体験版とは](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)」を参照してください。 オファーの体験版を提供する必要がなくなった場合は、 **[Offer setup]\(オファーの設定\)** ページに戻り、 **[Enable test drive]\(体験版を有効にする\)** をオフにします。
 
@@ -57,7 +57,7 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **インスタンス URL** (必須): 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: https://testdrive.crm.dynamics.com) 。
 
-- **Instance Web API URL (インスタンスの Web API URL)** (必須): 自分の Microsoft 365 アカウントにログインして、 **[設定]** 、 **[カスタマイズ]** 、 **[開発者リソース]** 、 **[インスタンスの Web API] ([サービスのルート URL])** に移動することによって、自分の Dynamics 365 インスタンスの Web API URL を取得し、そこにある URL (例: https://testdrive.crm.dynamics.com/api/data/v9.0) をコピーします。
+- **Instance Web API URL (インスタンスの Web API URL)** (必須): 自分の Microsoft 365 アカウントにログインして、 **[設定]** \&gt; 、 **[カスタマイズ]** 、 **[開発者リソース]** \&gt; 、 **[インスタンスの Web API] ([サービスのルート URL])** に移動することによって、自分の Dynamics 365 インスタンスの Web API URL を取得し、そこにある URL (例: https://testdrive.crm.dynamics.com/api/data/v9.0) をコピーします。
 
 - **ロール名** (必須): Dynamics 365 のカスタム体験版で自分が定義したセキュリティ ロールの名前を入力します。 これは、体験版の使用中にユーザーに割り当てられます (例: test-drive-role)。
 
