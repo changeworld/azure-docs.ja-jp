@@ -1,7 +1,7 @@
 ---
-title: Join Data (データの結合\):モジュール リファレンス
+title: Join Data (データの結合):モジュール リファレンス
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Join Data (データの結合\) モジュールを使用してデータセットをマージする方法について説明します。
+description: Azure Machine Learning service で Join Data (データの結合) モジュールを使用してデータセットをマージする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,22 +9,22 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128729"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693088"
 ---
 # <a name="join-data"></a>データの結合
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイスで **Join Data (データの結合\)** モジュールを使用し、データベーススタイルの結合操作を使用して 2 つのデータセットをマージする方法について説明します。  
+この記事では、Azure Machine Learning service のビジュアル インターフェイスで **Join Data (データの結合)** モジュールを使用し、データベーススタイルの結合操作を使用して 2 つのデータセットをマージする方法について説明します。  
 
 ## <a name="how-to-configure-join-data"></a>[Join Data]\(データの結合\) を構成する方法
 
 2 つのデータセットに対して結合を実行するには、それらをキー列で関連付ける必要があります。 複数の列を使用した複合キーもサポートされています。 
 
-1. 結合するデータセットを追加してから、 **[Join Data]\(データの結合\)** モジュールを実験にドラッグします。 
+1. 結合するデータセットを追加してから、 **[Join Data]\(データの結合\)** モジュールをパイプラインにドラッグします。 
 
     このモジュールは、 **[操作]** の下の **[データ変換]** カテゴリ内にあります。
 
@@ -62,7 +62,7 @@ ms.locfileid: "70128729"
     * 両方の入力テーブルのキーを表示するには、このオプションを選択します。
     * 左側の入力のキー列のみを返すには、オフにします。
 
-1. 実験を実行するか、[Join Data]\(データの結合\) モジュールを選択して **[Run Selected]\(選択項目の実行\)** を選択して結合を実行します。
+1. パイプラインを実行するか、[Join Data]\(データの結合\) モジュールを選択して **[Run Selected]\(選択項目の実行\)** を選択して結合を実行します。
 
 1. 結果を表示するには、 **[Join Data]\(データの結合\)**  >  **[Results dataset]\(結果データセット\)**  >  **[可視化]** を右クリックします。
 

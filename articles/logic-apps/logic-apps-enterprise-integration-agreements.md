@@ -1,5 +1,5 @@
 ---
-title: 取引先契約を作成して管理する - Azure Logic Apps
+title: 取引先の契約 - Azure Logic Apps
 description: Azure Logic Apps および Enterprise Integration Pack を使用して取引先間の契約を作成して管理します
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330313"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680420"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps で取引先契約を作成して管理する
 

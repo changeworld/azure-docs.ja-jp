@@ -1,25 +1,25 @@
 ---
-title: 言語処理とテキスト処理のためのアナライザー - Azure Search
+title: 言語処理とテキスト処理のためのアナライザー
+titleSuffix: Azure Cognitive Search
 description: インデックスの検索可能なテキスト フィールドにアナライザーを割り当てて、既定の標準 Lucene をカスタムの定義済みの代替または言語固有の代替と置換します。
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
-ms.author: heidist
-manager: nitinme
 author: HeidiSteen
-ms.openlocfilehash: 387248b2dac7c10ec0e96454f26964ca7f15c56e
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+manager: nitinme
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 67ee2790cbf0f9e147222c5cf3ea4448362d9f87
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650007"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791209"
 ---
-# <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
+# <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure コグニティブ検索でのテキスト処理のためのアナライザー
 
 *アナライザー*は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する[フル テキスト検索エンジン](search-lucene-query-architecture.md)のコンポーネントです。 シナリオに応じて、さまざまなアナライザーがさまざまな方法でテキストを操作します。 言語アナライザーは検索品質を向上させるために言語規則を使用してテキストを処理しますが、他のアナライザーは、文字を小文字に変換するなどのより基本的なタスクを実行します。 
 
-言語アナライザーが最もよく使用され、Azure Search インデックスのすべての検索可能フィールドには既定のアナライザーが割り当てられています。 テキスト分析中は、次の言語変換が一般的です。
+言語アナライザーが最もよく使用され、Azure コグニティブ検索のインデックスのすべての検索可能フィールドには既定の言語アナライザーが割り当てられています。 テキスト分析中は、次の言語変換が一般的です。
 
 + 重要ではない単語 (ストップワード) と感嘆符は削除されます。
 + フレーズとハイフンでつながれた単語は、構成要素に分割されます。
@@ -30,19 +30,19 @@ ms.locfileid: "69650007"
 
 ## <a name="default-analyzer"></a>既定のアナライザー  
 
-Azure Search では、["Unicode テキストのセグメント化"](https://unicode.org/reports/tr29/) の規則に従ってテキストを要素に分割する [Apache Lucene 標準アナライザー (標準 Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を既定として使用します。 さらに、標準アナライザーはすべての文字を小文字形式に変換します。 インデックス付きドキュメントと検索語句の両方について、インデックス作成とクエリ処理の間に分析が行われます。  
+Azure コグニティブ検索では、["Unicode テキストのセグメント化"](https://unicode.org/reports/tr29/) の規則に従ってテキストを要素に分割する [Apache Lucene 標準アナライザー (標準 Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を既定として使用します。 さらに、標準アナライザーはすべての文字を小文字形式に変換します。 インデックス付きドキュメントと検索語句の両方について、インデックス作成とクエリ処理の間に分析が行われます。  
 
 すべての検索可能フィールドで自動的に使用されます。 フィールド単位で既定値をオーバーライドすることができます。 代わりのアナライザーとしては、[言語アナライザー](index-add-language-analyzers.md)、[カスタム アナライザー](index-add-custom-analyzers.md)、または[使用可能なアナライザーの一覧](index-add-custom-analyzers.md#AnalyzerTable)の定義済みアナライザーを使用できます。
 
 
 ## <a name="types-of-analyzers"></a>アナライザーの種類
 
-次の一覧では、Azure Search で使用可能なアナライザーについて説明しています。
+次の一覧では、Azure コグニティブ検索で使用可能なアナライザーについて説明しています。
 
 | Category | 説明 |
 |----------|-------------|
 | [標準 Lucene のアナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | [既定]。 指定や構成は必要ありません。 この汎用アナライザーは、ほとんどの言語とシナリオで適切に実行されます。|
-| 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズまたは構成なしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](index-add-custom-analyzers.md#AnalyzerTable)は、特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](index-add-language-analyzers.md)は、各言語に合わせて高度の言語サポートが必要な場合に使用されます。 Azure Search は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
+| 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズまたは構成なしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](index-add-custom-analyzers.md#AnalyzerTable)は、特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](index-add-language-analyzers.md)は、各言語に合わせて高度の言語サポートが必要な場合に使用されます。 Azure コグニティブ検索は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
 |[カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 1 つのトークナイザー (必須) と省略可能なフィルター (文字またはトークン) から構成される既存の要素を組み合わせたユーザー定義の構成のことです。|
 
 **Pattern** や **Stop** など、いくつかの定義済みアナライザーは、限られた構成オプションしかサポートしていません。 これらのオプションを設定するには、実際には、[定義済みアナライザーのリファレンス](index-add-custom-analyzers.md#AnalyzerTable)で説明されている定義済みアナライザーと代替オプションの 1 つで構成されるカスタム アナライザーを作成します。 他のカスタム構成と同様に、新しい構成に *myPatternAnalyzer* などの名前を付けて、Lucene パターン アナライザーの名前を区別できるようにします。
@@ -80,7 +80,7 @@ Azure Search では、["Unicode テキストのセグメント化"](https://unic
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>特定の要件がない場合は読み取り/書き込みに 1 つのアナライザー
 
-Azure Search では、追加の **indexAnalyzer** および **searchAnalyzer** フィールド パラメーターを使用して、インデックス作成と検索に別々のアナライザーを指定することができます。 指定しなかった場合、**analyzer** プロパティで設定されたアナライザーが、インデックス作成と検索の両方に使用されます。 `analyzer` が指定されなかった場合は、標準の Lucene アナライザーが使用されます。
+Azure コグニティブ検索では、追加の **indexAnalyzer** および **searchAnalyzer** フィールド パラメーターを使用して、インデックス作成と検索に別々のアナライザーを指定することができます。 指定しなかった場合、**analyzer** プロパティで設定されたアナライザーが、インデックス作成と検索の両方に使用されます。 `analyzer` が指定されなかった場合は、標準の Lucene アナライザーが使用されます。
 
 一般的な規則は、特定の要件で別に指示がない場合は、インデックスとクエリの両方に同じアナライザーを使用することです。 テストは徹底的に行ってください。 検索時とインデックス作成時にテキスト処理が異なると、検索アナライザーの構成とインデックス作成アナライザーの構成が揃っていない場合、クエリ用語とインデックス用語に不一致が生じるおそれがあります。
 
@@ -286,7 +286,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
 
 この例では、Microsoft の英語およびフランス語のアナライザーを説明フィールドに割り当てます。 これは、[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) サンプルの hotels.cs ファイルの Hotel クラスを使用して作成した、hotels インデックスのより大きな定義から抜粋されたスニペットです。
 
-Azure Search でサポートされているテキスト アナライザーを提供する [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 型を指定して、[Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) を呼び出します。
+Azure コグニティブ検索でサポートされているテキスト アナライザーを提供する [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 型を指定して、[Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) を呼び出します。
 
 ```csharp
     public partial class Hotel
@@ -336,7 +336,7 @@ Azure Search でサポートされているテキスト アナライザーを提
 
 ## <a name="next-steps"></a>次の手順
 
-+ 包括的な説明については、「[Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。 この記事では、例を使って、表面上は直感的ではないと思われるような動作について説明しています。
++ [Azure コグニティブ検索のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関するページの包括的な説明を確認します。 この記事では、例を使って、表面上は直感的ではないと思われるような動作について説明しています。
 
 + [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) の例に関するセクションや[単純なクエリ構文](query-simple-syntax.md)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 66022b5e4885c515bd6117f9a44b8108ff84ae5c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250102"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791816"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリー用の構成サーバーを管理する
 
@@ -20,6 +20,10 @@ Azure への VMware 仮想マシンと物理サーバーのディザスター �
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="update-windows-license"></a>Windows ライセンスを更新する
+
+OVF テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 中断なく使用するには、購入したライセンスで Windows をライセンス認証する必要があります。 ライセンスの更新は、スタンドアロン キーまたは KMS 標準キーのいずれかを使用して行うことができます。 ガイダンスは、[OS を実行するための DISM Windows コマンド ライン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)で入手できます。 キーを取得するには、「[KMS クライアント セットアップ キー](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)」を参照してください。
 
 ## <a name="access-configuration-server"></a>構成サーバーにアクセスする
 
@@ -183,7 +187,7 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
 
 ### <a name="parameters"></a>parameters
 
-|パラメーター名| Type | 説明| 値|
+|パラメーター名| 種類 | 説明| 値|
 |-|-|-|-|
 | /ServerMode|必須|構成サーバーとプロセス サーバーの両方をインストールするか、プロセス サーバーだけをインストールするかを指定します。|CS<br>PS|
 |/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|
@@ -291,10 +295,6 @@ ProxyPassword="Password"
 2. 最新の情報に更新する構成サーバーをクリックします。
 3. 選択した構成サーバーの詳細を含むブレードで、 **[More]\(詳細\)**  >  **[サーバーを最新の情報に更新する]** をクリックします。
 4. **[Recovery Services コンテナー]**  >  **[監視]**  >  **[Site Recovery jobs]\(Site Recovery ジョブ\)** で、ジョブの進行状況を監視します。
-
-## <a name="update-windows-license"></a>Windows ライセンスを更新する
-
-OVF テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 中断なく使用するには、購入したライセンスで Windows をライセンス認証する必要があります。
 
 ## <a name="failback-requirements"></a>フェールバックの要件
 

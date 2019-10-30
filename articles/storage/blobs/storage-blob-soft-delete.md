@@ -5,20 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 253f42080d7c0eab2f7b3cfc5de3d4462f63c738
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ece49ff749a3b51e2fd4982f2df2726c57c6bf3d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673414"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785201"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
+
 Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
 
-## <a name="how-does-it-work"></a>それはどのように機能しますか?
+## <a name="how-soft-delete-works"></a>論理的な削除のしくみ
+
 論理的な削除機能を有効にすると、BLOB または BLOB のスナップショットを保存し、それらが削除されたときに復旧することができます。 この保護は、上書きの結果として消去された BLOB データにまで拡張されます。
 
 削除されたデータは、完全に消去されるのではなく、論理的に削除された状態に移行します。 論理的な削除が有効になっている状態で、データを上書きすると、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 論理的に削除されたオブジェクトは、明示的に一覧表示されない限り表示されません。 論理的に削除されたデータが完全に有効期限切れになって復旧できなくなるまでの時間を構成することができます。
@@ -26,6 +28,7 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 論理的な削除には下位互換性があります。この機能が提供する保護を利用するために、アプリケーションを変更する必要はありません。 ただし、[データ復旧](#recovery)には新しい **Undelete Blob** API が導入されています。
 
 ### <a name="configuration-settings"></a>構成設定
+
 新しいアカウントを作成したとき、論理的な削除は既定で無効に設定されます。 既存のストレージ アカウントについても、論理的な削除の既定の設定はオフです。 ストレージ アカウントの有効期間中であればいつでも、機能のオンとオフを切り替えることができます。
 
 以前に機能を有効にしたときに論理的に削除されたデータが保存されている場合は、機能が無効になっていても、論理的に削除されたデータにアクセスして復旧できます。 論理的な削除を有効にするときは、リテンション期間も構成する必要があります。
@@ -35,6 +38,7 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 論理的な削除のリテンション期間はいつでも変更できます。 更新されたリテンション期間は、それ以降に削除されたデータにのみ適用されます。 以前に削除されたデータは、データが削除されたときに構成されていたリテンション期間に基づいて期限が切れます。 論理的に削除されたオブジェクトの削除を試行しても、有効期限に影響はありません。
 
 ### <a name="saving-deleted-data"></a>削除されたデータの保存
+
 論理的な削除は、BLOB または BLOB のスナップショットが削除または上書きされる多くの場合に、データを保持します。
 
 **Put Blob**、**Put Block**、**Put Block List**、または **Copy Blob** を使って BLOB が上書きされると、書き込み操作前の BLOB の状態のスナップショットが自動的に生成されます。 このスナップショットは論理的に削除されたスナップショットであり、論理的に削除されたオブジェクトが明示的に一覧表示されない限り表示されません。 論理的に削除されたオブジェクトを一覧表示する方法については、「[復旧](#recovery)」セクションをご覧ください。
@@ -85,9 +89,10 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 "Put Page" を呼び出してページ BLOB の範囲を上書きまたはクリアしても、スナップショットは自動的に生成されないということに、注意することが重要です。 仮想マシンのディスクは、ページ BLOB を利用しており、**Put Page** を使ってデータを書き込みます。
 
 ### <a name="recovery"></a>復旧
-削除されたデータの復旧を容易にするため、新しい "Undelete Blob" API が導入されました。 論理的に削除されたベース BLOB に対して削除取り消し API を呼び出すと、その BLOB およびそれに関連付けられているすべての論理的に削除されたスナップショットが、アクティブとして復元されます。 アクティブなベース BLOB に対して削除取り消し API を呼び出すと、それに関連付けられているすべての論理的に削除されたスナップショットが、アクティブとして復元されます。 アクティブとして復元されるスナップショットは、ユーザー生成のスナップショットと同じように処理されます。ベース BLOB を上書きすることはありません。
 
-特定の論理的に削除されたスナップショットに BLOB を復元するには、ベース BLOB に対して **Undelete Blob** を呼び出します。 その後、アクティブになった BLOB にスナップショットをコピーできます。 新しい BLOB にスナップショットをコピーすることもできます。
+論理的に削除されたベース BLOB に対して [Undelete Blob](/rest/api/storageservices/undelete-blob) 操作を呼び出すと、それとそれに関連付けられているすべての論理的に削除されたスナップショットが、アクティブとして復元されます。 アクティブなベース BLOB に対して `Undelete Blob` 操作を呼び出すと、それに関連付けられているすべての論理的に削除されたスナップショットが、アクティブとして復元されます。 アクティブとして復元されるスナップショットは、ユーザー生成のスナップショットと同じように処理されます。ベース BLOB を上書きすることはありません。
+
+特定の論理的に削除されたスナップショットに BLOB を復元するには、ベース BLOB に対して `Undelete Blob` を呼び出します。 その後、アクティブになった BLOB にスナップショットをコピーできます。 新しい BLOB にスナップショットをコピーすることもできます。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
@@ -96,7 +101,8 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 論理的に削除された BLOB および BLOB のスナップショットを表示するには、削除されたデータを **List Blobs** に含めます。 論理的に削除されたベース BLOB だけを表示することも、論理的に削除された BLOB のスナップショットを含めることもできます。 すべての論理的に削除されたデータについて、データが削除された日時と、データが完全に期限切れになるまでの日数を表示できます。
 
 ### <a name="example"></a>例
-次に示すのは、論理的な削除が有効になっているときに、"HelloWorld" という名前の BLOB のアップロード、上書き、スナップショット作成、削除、復元を行う .NET スクリプトのコンソール出力です。
+
+次に示すのは、論理的な削除が有効になっているときに、*HelloWorld* という名前の BLOB のアップロード、上書き、スナップショット作成、削除、復元を行う .NET スクリプトのコンソール出力です。
 
 ```bash
 Upload:
@@ -131,16 +137,21 @@ Copy a snapshot over the base blob:
 この出力を生成したアプリケーションについては、「[次のステップ](#next-steps)」セクションをご覧ください。
 
 ## <a name="pricing-and-billing"></a>価格と課金
+
 論理的に削除されたデータはすべて、アクティブなデータと同じレートで課金されます。 構成されているリテンション期間の後で完全に削除されたデータについては請求されません。 スナップショットとその課金方法について詳しくは、「[スナップショットの課金方法について](storage-blob-snapshots.md)」をご覧ください。
 
-スナップショットの自動生成に関するトランザクションには課金されません。 **Undelete Blob** のトランザクションは、"書き込み操作" のレートで課金されます。
+スナップショットの自動生成に関するトランザクションには課金されません。 **Undelete Blob** のトランザクションは、書き込み操作のレートで課金されます。
 
 一般的な Azure Blob Storage の価格について詳しくは、[Azure Blob Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
 論理的な削除を初めて有効にするときは、リテンション期間を短くして、この機能が請求に及ぼす影響をよく理解することをお勧めします。
 
-## <a name="quickstart"></a>クイック スタート
+## <a name="get-started"></a>作業開始
+
+次の手順では、論理的な削除の基本的な使用方法について説明します。
+
 ### <a name="azure-portal"></a>Azure ポータル
+
 論理的な削除を有効にするには、 **[Blob service]** の **[論理的な削除]** オプションに移動します。 **[有効]** をクリックして、論理的に削除されたデータを保持する日数を入力します。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
@@ -187,6 +198,7 @@ $MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 誤って削除された BLOB を復旧するには、それらの BLOB で Undelete を呼び出します。 アクティブな BLOB と論理的に削除された BLOB の両方で **Undelete Blob** を呼び出すと、関連付けられているすべての論理的に削除されたスナップショットがアクティブとして復元されることに注意してください。 次の例では、コンテナー内にあるすべての論理的に削除された BLOB とアクティブな BLOB で Undelete を呼び出しています。
+
 ```powershell
 # Create a context by specifying storage account name and key
 $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
@@ -206,6 +218,7 @@ $Blobs.ICloudBlob.Undelete()
 ```
 
 ### <a name="azure-cli"></a>Azure CLI 
+
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
 ```azurecli-interactive
@@ -219,6 +232,7 @@ az storage blob service-properties delete-policy show --account-name mystorageac
 ```
 
 ### <a name="python-client-library"></a>Python クライアント ライブラリ
+
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
 ```python
@@ -236,6 +250,7 @@ block_blob_service.set_blob_service_properties(
 ```
 
 ### <a name="net-client-library"></a>.NET クライアント ライブラリ
+
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
 ```csharp
@@ -277,49 +292,65 @@ blockBlob.StartCopy(copySource);
 ```
 
 ## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>論理的な削除を使用するための特殊な考慮事項は何かありますか?
-アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 これは、頻繁に上書きされるデータを論理的な削除が無効な別のストレージ アカウントに格納することによって緩和できます。 
+
+アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 論理的な削除が無効な別のストレージ アカウントに頻繁に上書きされるデータを格納することで、この追加コストを軽減できます。 
 
 ## <a name="faq"></a>FAQ
-**論理的な削除を使用できるストレージの種類はどれですか?**  
+
+### <a name="for-which-storage-services-can-i-use-soft-delete"></a>論理的な削除を使用できるのはどのストレージ サービスですか?
+
 現時点では、論理的な削除を使うことができるのは BLOB (オブジェクト) ストレージだけです。
 
-**すべてのストレージ アカウントの種類で論理的な削除を使用できますか?**  
-はい。論理的な削除は、BLOB ストレージ アカウントだけでなく汎用 (GPv1 および GPv2 の両方) ストレージ アカウントの BLOB でも利用できます。 これは、Standard と Premium 両方のアカウントに適用されます。 論理的な削除は、管理ディスクでは利用できません。
+### <a name="is-soft-delete-available-for-all-storage-account-types"></a>すべてのストレージ アカウントの種類で論理的な削除を使用できますか?
 
-**すべてのストレージ層で論理的な削除を使用できますか?**  
+はい。論理的な削除は、BLOB ストレージ アカウントだけでなく汎用 (GPv1 および GPv2 の両方) ストレージ アカウントの BLOB でも利用できます。 Standard と Premium の両方の種類のアカウントがサポートされています。 論理的な削除は、内部のページ BLOB であるアンマネージド ディスクに対して使用できます。 論理的な削除は、管理ディスクでは利用できません。
+
+### <a name="is-soft-delete-available-for-all-storage-tiers"></a>すべてのストレージ層で論理的な削除を使用できますか?
+
 はい。論理的な削除は、ホット、クール、アーカイブを含むすべてのストレージ層で使うことができます。 ただし、アーカイブ層の BLOB に対しては、論理的な削除の上書き保護は提供されません。
 
-**論理的に削除されたスナップショットを使って BLOB を階層化するために、BLOB 層の設定 API を使用できますか?**  
+### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>論理的に削除されたスナップショットを使って BLOB を階層化するために、BLOB 層の設定 API を使用できますか?
+
 はい。 論理的に削除されたスナップショットは、元の階層に残りますが、基本の BLOB は新しい層に移動されます。 
 
-**Premium ストレージ アカウントには BLOB ごとのスナップショットに 100 個の制限があります。論理的に削除されたスナップショットは、この制限にカウントされますか?**  
+### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>Premium ストレージ アカウントには BLOB ごとのスナップショットに 100 個の制限があります。 論理的に削除されたスナップショットは、この制限にカウントされますか?
+
 いいえ。論理的に削除されたスナップショットは、この制限にはカウントされません。
 
-**既存のストレージ アカウントで論理的な削除を有効にすることができますか?**  
+### <a name="can-i-turn-on-soft-delete-for-existing-storage-accounts"></a>既存のストレージ アカウントで論理的な削除を有効にすることができますか?
+
 はい。論理的な削除は、既存と新規の両方のストレージ アカウントに対して構成できます。
 
-**論理的な削除を有効にしてある状態で、アカウント全体またはコンテナー全体を削除した場合、関連付けられているすべての BLOB が保存されますか?**  
-いいえ。アカウント全体またはコンテナー全体を削除した場合は、関連付けられているすべての BLOB が完全に削除されます。 偶発的な削除からストレージ アカウントを保護する方法については、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/resource-group-lock-resources.md)」をご覧ください。
+### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>論理的な削除を有効にしてある状態で、アカウント全体またはコンテナー全体を削除した場合、関連付けられているすべての BLOB が保存されますか?
 
-**削除されたデータの容量メトリックを見ることはできますか?**  
-論理的に削除されたデータは、ストレージ アカウントの合計容量の一部として含まれます。 ストレージ容量の監視と追跡について詳しくは、「[Storage Analytics](../common/storage-analytics.md)」をご覧ください。
+いいえ。アカウント全体またはコンテナー全体を削除した場合は、関連付けられているすべての BLOB が完全に削除されます。 誤って削除されないようにストレージ アカウントを保護する方法の詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
 
-**論理的な削除を無効にした場合でも、論理的に削除されたデータにアクセスできますか?**  
+### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>削除されたデータの容量メトリックを見ることはできますか?
+
+論理的に削除されたデータは、ストレージ アカウントの合計容量の一部として含まれます。 ストレージ容量の追跡と監視の詳細については、「[Storage Analytics](../common/storage-analytics.md)」を参照してください。
+
+### <a name="if-i-turn-off-soft-delete-will-i-still-be-able-to-access-soft-deleted-data"></a>論理的な削除を無効にした場合でも、論理的に削除されたデータにアクセスできますか?
+
 はい。論理的な削除が無効になっていても、期限が切れていなければ、論理的に削除されたデータにアクセスしてそれを復旧することができます。
 
-**BLOB の論理的に削除されたスナップショットを読み取ってコピーできますか?**  
+### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>BLOB の論理的に削除されたスナップショットを読み取ってコピーできますか?  
+
 はい。ただし、最初に BLOB で Undelete を呼び出す必要があります。
 
-**すべての BLOB の種類で論理的な削除を使用できますか?**  
+### <a name="is-soft-delete-available-for-all-blob-types"></a>すべての BLOB の種類で論理的な削除を使用できますか?
+
 はい。論理的な削除は、ブロック BLOB、追加 BLOB、ページ BLOB で利用できます。
 
-**論理的な削除は、仮想マシンのディスクに対して使用できますか?**  
-論理的な削除は、Premium と Standard 両方の非管理ディスクに利用できます。 論理的な削除は、**Delete Blob**、**Put Blob**、**Put Block List**、**Put Block**、**Copy Blob** によって削除されたデータの復旧にのみ役立ちます。 **Put Page** を呼び出すことで上書きされたデータは復旧できません。
+### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>論理的な削除は、仮想マシンのディスクに対して使用できますか?  
 
-**論理的な削除を使うには、既存のアプリケーションを変更する必要がありますか?**  
-論理的な削除は、お使いの API のバージョンに関係なく利用できます。 ただし、論理的に削除された BLOB および BLOB のスナップショットを一覧表示および復旧するには、[ストレージ サービス REST API](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) の 2017-07-29 以降のバージョンを使う必要があります。 この機能を使っているかどうかにかかわらず、一般に、最新バージョンを常に使うことをお勧めします。
+論理的な削除は、内部のページ BLOB である Premium と Standard のアンマネージド ディスクの両方で使用できます。 論理的な削除は、**Delete Blob**、**Put Blob**、**Put Block List**、**Put Block**、**Copy Blob** 操作によって削除されたデータの復旧にのみ役立ちます。 **Put Page** を呼び出すことで上書きされたデータは復旧できません。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>論理的な削除を使うには、既存のアプリケーションを変更する必要がありますか?
+
+論理的な削除は、お使いの API のバージョンに関係なく利用できます。 ただし、論理的に削除された BLOB および BLOB のスナップショットを一覧表示および復旧するには、[ストレージ サービス REST API](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) の 2017-07-29 以降のバージョンを使う必要があります。 Microsoft では、常に最新バージョンの Azure Storage API を使用することをお勧めします。
+
+## <a name="next-steps"></a>次の手順
+
 * [.NET サンプル コード](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)
 * [Azure Storage のレプリケーション](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

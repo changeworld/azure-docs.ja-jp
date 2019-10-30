@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170290"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790910"
 ---
 # <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Linux または Windows を実行する Azure 仮想マシンの汎用パフォーマンスのトラブルシューティング
 
-この記事では、仮想マシン (VM) の監視と観察によるパフォーマンスの一般的なトラブルシューティングについて説明し、発生する可能性のある問題を修復します。
+この記事では、仮想マシン (VM) の監視と観察によるパフォーマンスの一般的なトラブルシューティングについて説明し、発生する可能性のある問題を修復します。 監視だけでなく、Perfinsights を使用することもできます。これにより、ベスト プラクティスのレコメンデーションと IO/CPU/メモリに関する主要なボトルネックを含むレポートが提供されます。 Perfinsights は、[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) と [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) の両方の Azure VM に用意されています。
+
+この記事では、監視を使用してパフォーマンスのボトルネックを診断する手順について説明します。
 
 ## <a name="enabling-monitoring"></a>監視を有効にする
 
@@ -34,32 +36,55 @@ ms.locfileid: "72170290"
  
 ### <a name="enable-vm-diagnostics-through-microsoft-azure-portal"></a>Microsoft Azure portal を使用して VM 診断を有効にする
 
-VM 診断を有効にするには、VM にアクセスし、 **[設定]** をクリックしてから、 **[診断]** をクリックします。
+VM 診断を有効にするには
 
-![[設定]、[診断] の順にクリックする](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
- 
+1. VM に移動します
+2. **[診断の設定]** をクリックします
+3. ストレージ アカウントを選択し、 **[ゲスト レベルの監視を有効にする]** をクリックします。
+
+   ![[設定]、[診断] の順にクリックする](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
+
+診断の設定に使用されたストレージ アカウントは、 **[診断の設定]** の下にある **[エージェント]** タブから確認できます。
+
+![ストレージ アカウントを確認する](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
+
 ### <a name="enable-storage-account-diagnostics-through-azure-portal"></a>Azure portal を使用したストレージ アカウント診断を有効にする
 
-最初に、VM を選択して、VM で使用されているストレージ アカウント (1 つまたは複数) を特定します。 **[設定]** をクリックしてから、 **[ディスク]** をクリックします。
+ストレージは、Azure の仮想マシンの IO パフォーマンスを分析する場合に非常に重要なレベルです。 ストレージ関連のメトリックについては、追加の手順として診断を有効にする必要があります。 ストレージ関連のカウンターのみを分析する場合も、これを有効にすることができます。
 
-![[設定]、[ディスク] の順にクリックする](media/troubleshoot-performance-virtual-machine-linux-windows/3-storage-disks-disks-selection.png)
+1. VM を選択して、VM で使用されているストレージ アカウント (1 つまたは複数) を特定します。 **[設定]** をクリックしてから、 **[ディスク]** をクリックします。
 
-ポータルで、VM のストレージ アカウント (1 つまたは複数) にアクセスし、次の手順を行います。
+   ![[設定]、[ディスク] の順にクリックする](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
-![BLOB メトリックの選択](media/troubleshoot-performance-virtual-machine-linux-windows/4-select-blob-metrics.png)
- 
-1. **[すべての設定]** を選択します。
-2. 診断を有効にします。
-3. " **BLOB* メトリック*"* を選択し、リテンション期間を **30** 日間に設定します。
-4. 変更を保存します。
+2. ポータルで、VM のストレージ アカウント (1 つまたは複数) にアクセスし、次の手順を行います。
+
+   1. 上記の手順で見つけたストレージ アカウントの概要をクリックします。
+   2. 既定のメトリックが表示されます。 
+
+    ![Default metrics](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
+
+3. 任意のメトリックをクリックすると、メトリックを構成して追加するためのオプションをより多く含む、別のブレードが表示されます。
+
+   ![メトリックの追加](media/troubleshoot-performance-virtual-machine-linux-windows/6-add-metrics.png)
+
+これらのオプションを構成するには
+
+1.  **[メトリック]** を選びます。
+2.  **[リソース]** (ストレージ アカウント) を選択します。
+3.  **[名前空間]** を選択します。
+4.  **[メトリック]** を選択します。
+5.  **[集計]** の種類を選択します。
+6.  このビューをダッシュボードにピン留めすることができます。
 
 ## <a name="observing-bottlenecks"></a>ボトルネックを観察する
+
+必要なメトリックの初期セットアップ プロセスを実行すると、VM と関連するストレージ アカウントの診断を有効にした後、分析フェーズに移行できるようになります。
 
 ### <a name="accessing-the-monitoring"></a>監視にアクセスする
 
 調査する Azure VM を選択し、 **[監視]** を選択します。
 
-![監視を選択する](media/troubleshoot-performance-virtual-machine-linux-windows/5-observe-monitoring.png)
+![監視を選択する](media/troubleshoot-performance-virtual-machine-linux-windows/7-select-monitoring.png)
  
 ### <a name="timelines-of-observation"></a>観察のタイムライン
 
@@ -67,7 +92,7 @@ VM 診断を有効にするには、VM にアクセスし、 **[設定]** をク
 
 ### <a name="check-for-cpu-bottleneck"></a>CPU のボトルネックを確認する
 
-![CPU のボトルネックを確認する](media/troubleshoot-performance-virtual-machine-linux-windows/6-cpu-bottleneck-time-range.png)
+![CPU のボトルネックを確認する](media/troubleshoot-performance-virtual-machine-linux-windows/8-cpu-bottleneck-time-range.png)
 
 1. グラフを編集します。
 2. 時間の範囲を設定します。
@@ -94,6 +119,8 @@ VM 診断を有効にするには、VM にアクセスし、 **[設定]** をク
 * 問題を把握する – アプリケーション/プロセスを特定し、それに応じてトラブルシューティングを行います。
 
 VM を増やしても CPU の実行が 95% ある場合は、この設定でパフォーマンスが向上するか、アプリケーションのスループットが許容できるレベルになるかを判断します。 それ以外の場合は、個々のアプリケーション\プロセスのトラブルシューティングを行います。
+
+[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) または [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) に Perfinsights を使用して、どのプロセスが CPU 使用率に影響を与えているかを分析できます。 
 
 ## <a name="check-for-memory-bottleneck"></a>メモリのボトルネックを確認する
 
@@ -124,9 +151,13 @@ VM を増やしても CPU の実行が 95% ある場合は、この設定でパ�
 
 より大きな VM にアップグレードした後も、100% まで一定して増加し続けていることがわかった場合は、アプリケーション/プロセスを特定し、トラブルシューティングを行います。
 
+[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) または [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) に Perfinsights を使用して、どのプロセスがメモリ使用率に影響を与えているかを分析できます。 
+
 ## <a name="check-for-disk-bottleneck"></a>ディスクのボトルネックを確認する
 
 VM のストレージ サブシステムを確認するには、VM 診断のカウンターとストレージ アカウント診断も使用して、Azure VM レベルで診断を確認します。
+
+VM 内の固有のトラブルシューティングでは、[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) または [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) に Perfinsights を使用できます。これにより、どのプロセスが IO に影響を与えているかを分析できます。 
 
 ゾーン冗長および Premium Storage アカウントのカウンターはないことに注意してください。 これらのカウンターに関連する問題の場合は、サポート ケースを生成します。
 
@@ -134,7 +165,7 @@ VM のストレージ サブシステムを確認するには、VM 診断のカ�
 
 以下の項目を操作するには、ポータルで VM のストレージ アカウントにアクセスします。
 
-![監視でストレージ アカウント診断を表示する](media/troubleshoot-performance-virtual-machine-linux-windows/7-virtual-machine-storage-account.png)
+![監視でストレージ アカウント診断を表示する](media/troubleshoot-performance-virtual-machine-linux-windows/9-virtual-machine-storage-account.png)
 
 1. 監視グラフを編集します。
 2. 時間の範囲を設定します。
@@ -175,6 +206,10 @@ AverageE2ELatency は、クライアントの待機時間を表します。 ア�
 
 IOPS の上限に達しているかどうかを確認するには、ストレージ アカウントの診断にアクセスし、TotalRequests を調べて、TotalRequests が 20000 に達しているかどうかを確認します。 パターンの変更、制限が初めて表示されているかどうか、またはこの制限が特定の時間に発生するかどうかを特定します。
 
+Standard ストレージの新しいディスク オファリングでは、IOPS とスループットの制限が異なる場合がありますが、Standard ストレージ アカウントの累積制限は 20000 IOPS です (Premium ストレージの制限は、アカウント レベルまたはディスク レベルで異なります)。 さまざまな Standard ストレージのディスク オファリングとディスクごとの制限については、以下を参照してください。
+
+* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)
+
 #### <a name="references"></a>参照
 
 * [仮想マシンのディスクのスケーラビリティ ターゲット](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
@@ -187,7 +222,9 @@ IOPS の上限に達しているかどうかを確認するには、ストレー
 
 VM に接続されている VHD のスループットの上限を確認します。 VM メトリック ディスクの読み取りと書き込みを追加します。
 
-各 VHD は最大 60 MB/秒をサポートできます (IOPS は VHD ごとには公開されません)。 データを見て、ディスクの読み取りと書き込みを使用して VM レベルでの VHD の合計スループット (MB) の上限に達しているかどうかを確認し、VM ストレージ構成を最適化して、1 つの VHD 制限を超えてスケーリングします。
+Standard ストレージの新しいディスク オファリングには、さまざまな IOPS とスループットの制限があります (IOPS は VHD ごとには公開されません)。 データを見て、ディスクの読み取りと書き込みを使用して VM レベルでの VHD の合計スループット (MB) の上限に達しているかどうかを確認し、VM ストレージ構成を最適化して、1 つの VHD 制限を超えてスケーリングします。 さまざまな Standard ストレージのディスク オファリングとディスクごとの制限については、以下を参照してください。
+
+* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>ディスクの高使用率と待機時間の修復
 
@@ -213,6 +250,6 @@ VM に接続されている VHD のスループットの上限を確認します
 
 ## <a name="next-steps"></a>次の手順
 
-この記事についてさらにヘルプが必要な場合は、[MSDN の MSDN Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートにお問い合わせください。
+この記事についてさらにヘルプが必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートにお問い合わせください。
 
 または、Azure サポート インシデントを送信してください。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

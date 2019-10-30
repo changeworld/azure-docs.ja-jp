@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 42d0d7dcc4e10e6f9bfad02a68f3ec176b8a7fb4
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315991"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785831"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -73,7 +73,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [接続のパフォーマンスに関する考慮事項](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>監視とトラブルシューティングに関する FAQ
-このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。 Azure Cache for Redis インスタンスの監視とトラブルシューティングの詳細については、「[Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)」と [Azure Cache for Redis のトラブルシューティング方法](cache-how-to-troubleshoot.md)についてのページを参照してください。
+このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。 Azure Cache for Redis インスタンスの監視とトラブルシューティングの詳細については、「[Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)」と、さまざまなトラブルシューティングのガイドを参照してください。
 
 * [キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [タイムアウトが発生する理由](#why-am-i-seeing-timeouts)
@@ -178,7 +178,7 @@ Azure Cache for Redis の価格は[ここ](https://azure.microsoft.com/pricing/d
 - [Azure China 21Vianet Cloud - Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
-Azure Government Cloud、Azure China 21Vianet Cloud、Microsoft Azure Germany での PowerShell を使用した Azure Cache for Redis の利用の詳細については、[他のクラウドに接続する方法 - Azure Cache for Redis PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds) に関するページを参照してください。
+Azure Government Cloud、Azure China 21Vianet Cloud、Microsoft Azure Germany での PowerShell を使用した Azure Cache for Redis の利用の詳細については、[他のクラウドに接続する方法 - Azure Cache for Redis PowerShell](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds) に関するページを参照してください。
 
 <a name="cache-configuration"></a>
 
@@ -197,6 +197,7 @@ StackExchange.Redis には多くのオプションが用意されています。
   * 一般的に ConnectRetry と ConnectTimeout に関しては、フェイル ファストして再試行することをお勧めします。 これは、ワークロードと、クライアントが Redis コマンドを発行してから応答を受け取るまでに要する時間の平均に基づいたガイダンスです。
   * 自分で接続の状態を確認して再接続するのではなく、StackExchange.Redis が自動的に再接続するように設定します。 **ConnectionMultiplexer.IsConnected プロパティは使用しません**。
   * 問題の肥大化 - ある問題が発生し、再試行によって問題が肥大化して、解決しないことがあります。 問題の肥大化が発生した場合は、Microsoft Patterns & Practices グループ発行の「[再試行に関する一般的なガイダンス](../best-practices-retry-general.md)」に説明されている指数バックオフ再試行アルゴリズムの使用を検討する必要があります。
+  
 * **タイムアウト値**
   * ワークロードを考慮したうえで値を適宜設定します。 大きな値を保存する場合は、タイムアウトを大きな値に設定します。
   * StackExchange.Redis が再接続できるように、 `AbortOnConnectFail` を false に設定します。
@@ -443,7 +444,7 @@ Azure Cache for Redis の **[リソース] メニュー**にも、キャッシ�
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>タイムアウトが発生する理由
-タイムアウトは、Redis との対話に使用されているクライアントで発生します。 Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。 ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。 タイムアウトの問題のトラブルシューティングについては、「[クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#client-side-troubleshooting)」および「[StackExchange.Redis のタイムアウトの例外](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions)」を参照してください。
+タイムアウトは、Redis との対話に使用されているクライアントで発生します。 Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。 ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。 タイムアウトの問題のトラブルシューティングについては、[クライアント側のトラブルシューティング](cache-troubleshoot-client.md)に関するページ、および「[StackExchange.Redis のタイムアウトの例外](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions)」を参照してください。
 
 <a name="cache-disconnect"></a>
 

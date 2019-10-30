@@ -5,48 +5,60 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4f99b24435998fc4d0c7ab724c66a318586a80d4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694939"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527998"
 ---
-# <a name="working-with-nsg-access-and-azure-bastion-preview"></a>NSG アクセスと Azure Bastion を使用する (プレビュー)
+# <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
 Azure Bastion の使用時にネットワーク セキュリティ グループ (NSG) を使用できます。 詳細については、「[セキュリティ グループ](../virtual-network/security-overview.md)」を参照してください。 
 
-> [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
->
-
-![アーキテクチャ](./media/bastion-nsg/nsg_architecture.png)
+![アーキテクチャ](./media/bastion-nsg/nsg-architecture.png)
 
 この図の内容は次のとおりです。
 
-* Azure Bastion ホストは仮想ネットワーク内にデプロイされています。
+* Bastion ホストは仮想ネットワークにデプロイされています。
 * ユーザーは任意の HTML5 ブラウザーを使用して Azure portal に接続します。
-* ユーザーは、接続先の仮想マシンを選択します。
-* 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。
+* ユーザーは RDP/SSH で接続するために Azure 仮想マシンに移動します。
+* 接続統合 - ブラウザー内でのシングルクリックによる RDP/SSH セッション
 * Azure VM ではパブリック IP が必要ありません。
 
 ## <a name="nsg"></a>ネットワーク セキュリティ グループ
 
-* **AzureBastionSubnet:** Azure Bastion は、特定の AzureBastionSubnet にデプロイされます。  
-    * **パブリック インターネットからのイグレス トラフィック:** Azure Bastion によってパブリック IP が作成されます。このパブリック IP では、イグレス トラフィック用にポート 443 が有効になっている必要があります。 AzureBastionSubnet でポート 3389/22 が開かれている必要はありません。
-    * **ターゲット VM へのエグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 NSG では、他のターゲット VM サブネットへのエグレス トラフィックを許可する必要があります。
+このセクションでは、ユーザーと Azure Bastion との間のネットワーク トラフィックと、仮想ネットワーク内のターゲット VM へのネットワークトラフィックについて説明します。
+
+### <a name="azurebastionsubnet"></a>AzureBastionSubnet
+
+Azure Bastion は、AzureBastionSubnet に特定してデプロイされます。
+
+* **イグレス トラフィック:**
+
+   * **パブリック インターネットからのイグレス トラフィック:** Azure Bastion によってパブリック IP が作成されます。このパブリック IP では、イグレス トラフィック用にポート 443 が有効になっている必要があります。 AzureBastionSubnet でポート 3389/22 が開かれている必要はありません。
+   * **Azure Bastion からのイグレス トラフィックのコントロール プレーン:** コントロール プレーン接続の場合は、**GatewayManager** サービス タグからのポート 443 受信を有効にします。 これにより、コントロール プレーン、つまりゲートウェイ マネージャーから Azure Bastion への通信が可能になります。
+
+* **エグレス トラフィック:**
+
+   * **ターゲット VM へのエグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 NSG では、他のターゲット VM サブネットへのエグレス トラフィックをポート 3389 と 22 に許可する必要があります。
+   * **Azure の他のパブリックエンド ポイントへのエグレス トラフィック:** Azure Bastion から Azure 内のさまざまなパブリック エンドポイントに接続できる必要があります (たとえば、診断ログや測定ログを格納するため)。 このため、Azure Bastion には **AzureCloud** サービス タグに対する 443 への送信が必要です。
+
 * **ターゲット VM サブネット:** これは、RDP/SSH で接続するターゲット仮想マシンを含むサブネットです。
-    * **Azure Bastion からのイグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 プライベート IP 経由のターゲット VM 側で RDP/SSH ポート (それぞれポート 3389、22) が開かれている必要があります。
+
+   * **Azure Bastion からのイグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 プライベート IP 経由のターゲット VM 側で RDP/SSH ポート (それぞれポート 3389/22) が開かれている必要があります。 ベスト プラクティスとして、この規則に Azure Bastion サブネットの IP アドレス範囲を追加して、ターゲット VM サブネット内のターゲット VM で Bastion によってのみこれらのポートが開かれるよにすることができます。
 
 ## <a name="apply"></a>AzureBastionSubnet への NSG の適用
 
-**AzureBastionSubnet** に NSG を適用する場合、Azure コントロール プレーンおよびインフラストラクチャに対して次の 2 つサービス タグを許可します。
+NSG を作成して ***AzureBastionSubnet*** に適用する場合は、NSG に次の規則を追加済みであることを確認してください。 これらのルールを追加しないと、NSG の作成/更新は失敗します。
 
-* **GatewayManager (Resource Manager のみ)** :このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として GatewayManager を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。  AzureBastionSubnet 上に NSG を作成する場合は、インバウンド トラフィックに対して GatewayManager タグを有効にします。
+* **コントロール プレーンの接続:** 443 での GatewayManager からの受信
+* **診断ログとその他:** 443 での AzureCloud への送信。 このサービス タグ内で地域タグはまだサポートされていません。
+* **ターゲット VM:** 3389 および 22 に対する VirtualNetwork への送信
 
-* **AzureCloud (Resource Manager のみ)** :このタグは、すべてのデータセンターのパブリック IP アドレスを含む Azure の IP アドレス空間を表します。 値として AzureCloud を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定のリージョンの AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして AzureCloud.EastUS と指定できます。 AzureBastionSubnet 上に NSG を作成する場合は、アウトバウンド トラフィックに対して AzureCloud タグを有効にします。 インターネットへの受信用にポート 443 を開いている場合は、受信トラフィックに対して AzureCloud タグを有効にする必要はありません。
+NSG ルールの例は、この[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)で参照できます。
 
 ## <a name="next-steps"></a>次の手順
 

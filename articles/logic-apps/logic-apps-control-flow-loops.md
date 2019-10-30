@@ -1,21 +1,20 @@
 ---
-title: アクションを繰り返す、または配列を処理するループを追加する - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps 内のワークフロー アクションを繰り返したり、配列を処理したりするループを作成する方法です
+title: アクションを繰り返すループを追加する - Azure Logic Apps
+description: Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-manager: jeconnoc
-ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/05/2019
+ms.openlocfilehash: 31885749a7194a94a403e5c156220b3fceab951d
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684099"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680444"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 

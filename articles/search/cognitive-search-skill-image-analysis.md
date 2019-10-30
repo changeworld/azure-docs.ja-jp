@@ -1,29 +1,28 @@
 ---
-title: Image Analysis の認知検索スキル - Azure Search
-description: Azure Search エンリッチメント パイプラインの ImageAnalysis 認知スキルを使用した画像解析を通じてセマンティック テキストを抽出します｡
-services: search
+title: Image Analysis の認知スキル
+titleSuffix: Azure Cognitive Search
+description: Azure コグニティブ検索の AI エンリッチメント パイプラインの Image Analysis コグニティブ スキルを使用した画像解析を通じてセマンティック テキストを抽出します。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 08/28/2019
 ms.author: luisca
-ms.openlocfilehash: 69e798601dc53ffb666aa9dcddd68980256fa3fc
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 04114d00f3905675a1794a3875e650661febc832
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265448"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791988"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>Image Analysis の認知スキル
+# <a name="image-analysis-cognitive-skill"></a>Image Analysis の認知スキル
 
 **Image Analysis** スキルは､イメージの内容に基づいて豊富な一群のビジュアル フィーチャーを抽出します｡ たとえば､イメージからキャプションを生成したり､タグを生成したり､セレブリティやランドマークを特定したりできます｡ このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 
 
 > [!NOTE]
-> 少量 (20 件未満のトランザクション) であれば Azure Search で無料で実行できますが、ワークロードが大きい場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 少量 (20 件未満のトランザクション) であれば Azure コグニティブ検索で無料で実行できますが、ワークロードが大きい場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -521,6 +520,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

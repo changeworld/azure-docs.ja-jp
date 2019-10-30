@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 06/21/2019
 ms.author: joncole
-ms.openlocfilehash: 6ac4722c1253f97bfb8c232202e24a923c027edf
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 29e5a81c438a7aa834fc002b916739a952c9a270
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018836"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785868"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Cache for Redis のベスト プラクティス 
 次のベスト プラクティスに従うことにより、Azure Cache for Redis インスタンスを使用するときのパフォーマンスとコスト効率を最大限にできます。
@@ -31,9 +31,9 @@ ms.locfileid: "69018836"
 
  * [修正プログラムの適用やフェールオーバーによる](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)**接続の中断に対応できるようにシステムを開発します**。
 
- * メモリの負荷が高い状況下での**システムの応答性を向上させるように [maxmemory-reserved の設定](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)を構成します**。  この設定は、書き込み負荷の高いワークロードにとって、または Redis に大きい値 (100 KB 以上) を格納している場合、特に重要です。  キャッシュ サイズの 10% から始めて、書き込み負荷の高いロードがある場合に増やすことをお勧めします。 値を選択するときの[いくつかの考慮事項](cache-how-to-troubleshoot.md#considerations-for-memory-reservations)を参照してください。
+ * メモリの負荷が高い状況下での**システムの応答性を向上させるように [maxmemory-reserved の設定](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)を構成します**。  この設定は、書き込み負荷の高いワークロードにとって、または Redis に大きい値 (100 KB 以上) を格納している場合、特に重要です。 最初はキャッシュのサイズの 10% を使用し、書き込み負荷が高い場合は割合を増やすことをお勧めします。
 
- * **値が小さいほど Redis のパフォーマンスは向上する**ため、大きいデータを複数のキーに分割することを検討します。  [Redis に関するこちらのディスカッション](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)では、慎重に検討する必要があるいくつかの考慮事項を示しています。  値が大きい場合に生じる可能性のある問題の例については、 [こちらの記事](cache-how-to-troubleshoot.md#large-requestresponse-size) を参照してください。
+ * **値が小さいほど Redis のパフォーマンスは向上する**ため、大きいデータを複数のキーに分割することを検討します。  [Redis に関するこちらのディスカッション](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)では、慎重に検討する必要があるいくつかの考慮事項を示しています。  値が大きい場合に生じる可能性のある問題の例については、 [こちらの記事](cache-troubleshoot-client.md#large-request-or-response-size) を参照してください。
 
  * **キャッシュ インスタンスとアプリケーションを同じリージョンに配置します。**  別のリージョンにあるキャッシュに接続すると、待ち時間が大幅に増加して、信頼性が低下します。  Azure の外部から接続することはできますが、これは、*特に Redis をキャッシュとして使用しているときには*お勧めできません。  Redis を単なるキー/値ストアとして使用している場合は、待ち時間は一番の問題ではない可能性があります。 
 
@@ -43,10 +43,9 @@ ms.locfileid: "69018836"
      > [!NOTE]
      > このガイダンスは、*接続試行*に固有のものであり、GET や SET などの*操作*が終了するのを待つ時間とは関係ありません。
  
+ * **コストの高い操作を避けます** - 一部の Redis 操作 ([KEYS コマンド](https://redis.io/commands/keys)など) は、"*非常に*" コストが高く、避ける必要があります。  詳細については、[実行時間の長いコマンド](cache-troubleshoot-server.md#long-running-commands)に関連したいくつかの考慮事項を参照してください。
 
- * **コストの高いコマンドを避けます** - 一部の REDIS 操作 ([KEYS コマンド](https://redis.io/commands/keys)など) は、*非常に*コストが高く、避ける必要があります。  詳細については、[コストの高いコマンドに関連したいくつかの考慮事項](cache-how-to-troubleshoot.md#expensive-commands)を参照してください。
-
-
+ * **TLS 暗号化を使用します** - Azure Cache for Redis の既定では、TLS で暗号化された通信が必要です。  現在、TLS バージョン 1.0、1.1、および 1.2 がサポートされています。  ただし、TLS 1.0 と 1.1 は業界全体で非推奨になる予定であるため、可能であれば TLS 1.2 を使用してください。  お使いのクライアント ライブラリまたはツールで TLS がサポートされていない場合は、[Azure portal](cache-configure.md#access-ports) または[管理 API](https://docs.microsoft.com/rest/api/redis/redis/update) を使用して、暗号化されていない接続を有効にすることができます。  暗号化された接続ができない場合は、キャッシュとクライアント アプリケーションを仮想ネットワークに配置することをお勧めします。  使用されるポートの詳細については、 
  
 ## <a name="memory-management"></a>メモリ管理
 Redis サーバー インスタンス内でのメモリ使用量に関連したいくつかの考慮すべき事項があります。  いくつかの例を次に示します。
