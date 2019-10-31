@@ -32,9 +32,13 @@
                   href: hpc-cache-ingest-manual.md
     - name: キャッシュに接続する
       href: hpc-cache-mount.md
+    - name: キャッシュを管理する
+      href: hpc-cache-manage.md
 - name: リソース
   items:
     - name: サポート チケットを開く
       href: hpc-cache-support-ticket.md
     - name: リージョンの障害から復旧する
       href: hpc-region-recovery.md
+    - name: Azure HPC Cache で Azure NetApp Files を使用する
+      href: hpc-cache-netapp.md

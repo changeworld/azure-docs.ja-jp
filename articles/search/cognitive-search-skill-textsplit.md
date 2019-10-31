@@ -1,22 +1,21 @@
 ---
-title: テキスト分割コグニティブ検索スキル - Azure Search
-description: Azure Search のエンリッチメント パイプラインの長さに基づいて、テキストをテキストのチャンクまたはページに分割します。
-services: search
+title: テキスト分割コグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search の AI 強化パイプラインの長さに基づいて、テキストをチャンクまたはページに分割します。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a6e46970b6c0fc91c464207049d2dedaaee1afdd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265681"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784841"
 ---
-#   <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
+# <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
 
 **テキスト分割**スキルは、テキストをテキストのチャンクに分割します。 テキストを特定の長さの文章またはページに分割するかどうかを指定できます。 このスキルは、他のスキル ダウンストリームでテキストの最大長の要件がある場合に、特に便利です。 
 
@@ -133,5 +132,5 @@ Microsoft.Skills.Text.SplitSkill
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

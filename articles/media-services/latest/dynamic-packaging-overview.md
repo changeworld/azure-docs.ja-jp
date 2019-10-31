@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383526"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595528"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
 
@@ -98,7 +98,7 @@ Media Services v3 のライブ ストリームの詳細については、[ライ
 ダイナミック パッケージでは、[H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC または AVC1) または [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1、または hvc1) でエンコードされたビデオの MP4 ファイルがサポートされています。
 
 > [!NOTE]
-> ダイナミック パッケージでは、最大 4K の解像度および最大 60 フレーム/秒のフレーム レートをテスト済みです。 [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した H.265 へのエンコードがサポートされます。 この点についてご質問がありましたら、amshelp@microsoft.com までお問い合わせください。 
+> ダイナミック パッケージでは、最大 4K の解像度および最大 60 フレーム/秒のフレーム レートをテスト済みです。 [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した H.265 へのエンコードがサポートされます。
 
 ## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>ダイナミック パッケージによってサポートされているオーディオ コーデック
 
@@ -124,7 +124,7 @@ Media Services v3 のライブ ストリームの詳細については、[ライ
 ダイナミック パッケージでは、[Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) オーディオ (古いコーデック) を含むファイルはサポートされていません。
 
 > [!NOTE]
-> [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した Dolby Digital Plus へのエンコードがサポートされます。 この点についてご質問がありましたら、amshelp@microsoft.com までお問い合わせください。 
+> [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した Dolby Digital Plus へのエンコードがサポートされます。 
 
 ## <a name="manifests"></a>マニフェスト 
  
@@ -272,6 +272,10 @@ HLS v7 以降 `(format=m3u8-cmaf)` では、オーディオ説明トラックを
 ## <a name="more-information"></a>詳細情報
 
 [Azure Media Services コミュニティ](media-services-community.md)を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
+
+## <a name="need-help"></a>お困りの際は、
+
+[[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
 
 ## <a name="next-steps"></a>次の手順
 

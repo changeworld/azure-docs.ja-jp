@@ -1,6 +1,6 @@
 ---
-title: Azure Functions と Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする
-description: Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする Azure 関数を作成する
+title: Azure Functions を使用してロジック アプリを呼び出す - Azure Logic Apps
+description: Azure Service Bus をリッスンすることでロジック アプリを呼び出すかトリガーする Azure 関数を作成する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,14 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
-ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 06/04/2019
-ms.openlocfilehash: 3d4f642ae25a179ea2c3241240996da774cd8c23
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 2ab6ace7c30c3dd385928b6b0ae8000485d5f495
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494940"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680139"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Functions と Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする
 

@@ -1,10 +1,9 @@
 ---
-title: Node.js と azure/service-bus での Azure Service Bus キューの使用方法 | Microsoft Docs
-description: Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
+title: Node.js で azure/service-bus キューを使用する方法
+description: azure/service-bus パッケージを使用して Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 7aacefde9c037fcce64d9256e35082eb04e0a2f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58049855cc27d51134b9f76a773f32f49c6381b6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988349"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790305"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Node.js および azure/service-bus パッケージで Service Bus キューを 使用する方法
 > [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
@@ -109,7 +108,7 @@ Service Bus キューとのやりとりは、[ServiceBusClient](https://docs.mic
     async function main(){
       const sbClient = ServiceBusClient.createFromConnectionString(connectionString); 
       const queueClient = sbClient.createQueueClient(queueName);
-      const receiver = queueClient.createReceiver(ReceiveMode.ReceiveAndDelete);
+      const receiver = queueClient.createReceiver(ReceiveMode.receiveAndDelete);
       try {
         const messages = await receiver.receiveMessages(10)
         console.log("Received messages:");

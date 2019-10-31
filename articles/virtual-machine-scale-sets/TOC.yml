@@ -125,6 +125,8 @@
     - name: メンテナンスと更新
       href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
+    - name: オーケストレーション モード
+      href: orchestration-modes.md
     - name: Disk Storage
       items:
         - name: Managed Disks

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180109"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550644"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -78,11 +78,12 @@ Premium プランを使用すると、従量課金プランと同じように、
 
 これらのオプションの構成方法については、[Azure Functions の Premium プランのドキュメント](functions-premium-plan.md)を参照してください。
 
-Premium プランの課金は、実行や消費されたメモリごとの課金ではなく、必要な予約インスタンスで使用されたコア秒数、実行時間、メモリに基づいています。  少なくとも 1 つのインスタンスが常にウォーム状態である必要があります。 つまり、実行数に関係なく、アクティブなプランごとに固定の月額コストがかかります。
+Premium プランの課金は、実行や消費されたメモリごとの課金ではなく、必要なインスタンスや事前ウォーミングされたインスタンスで使用されたコア秒数とメモリに基づいています。 1 つのプランにつき、少なくとも 1 つのインスタンスが常にウォーム状態である必要があります。 つまり、実行数に関係なく、アクティブなプランごとに最小の月額コストがかかります。 なお、Premium プランのすべての関数アプリでは、事前ウォーミングされたインスタンスとアクティブなインスタンスが共有されことに注意してください。
 
 次のような状況では、Azure Functions の Premium プランを検討してください。
 
 * 関数を継続的に、またはほぼ継続的に実行したい。
+* 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒の請求額は低い。
 * 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。
 * 従量課金プランで[許可されている最大実行時間](#timeout)よりも長くコードを実行する必要がある。
 * VNET/VPN 接続など、Premium プランでのみ利用できる機能が必要である。

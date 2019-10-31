@@ -10,13 +10,19 @@
     - name: Terraform のインストールと構成
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
-    - name: マルチサービス アプリケーションの作成
-      href: terrafom-quickstart.md
+    - name: Terraform 構成の作成
+      href: terraform-create-configuration.md
     - name: Linux VM の作成
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
 - name: チュートリアル
   items:
+    - name: セットアップと構成
+      items:
+        - name: Terraform 状態を Azure Storage に格納する
+          href: terraform-backend.md
+        - name: Terraform 用に Azure Cloud Shell を構成する
+          href: terraform-cloud-shell.md
     - name: App Service
       items:
         - name: Terraform および Azure プロバイダーのデプロイ スロット
@@ -29,8 +35,8 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: インフラストラクチャ
       items:
-        - name: MSI が有効な Terraform VM の作成
-          href: terraform-vm-msi.md
+        - name: Azure リソースのマネージド ID が有効になっている Terraform VM の作成
+          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Terraform モジュールを使用した VM クラスターの作成
           href: terraform-create-vm-cluster-module.md
         - name: Terraform と HCL を使用して VM クラスターを作成する
@@ -67,10 +73,6 @@
   items:
     - name: 構成テンプレート
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: ハウツー ガイド
-  items:
-    - name: Azure Storage での状態の格納
-      href: terraform-backend.md
 - name: リファレンス
   items:
     - name: Azure モジュールのレジストリ

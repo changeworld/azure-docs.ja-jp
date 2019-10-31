@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 6a81f105f9632a7ca7e2bf7188e358274020c78f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1801ca8bd59153de81ef680253da229e2bd4a338
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084763"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597862"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -28,16 +28,11 @@ Azure Disk Encryption は、Linux の DM-Crypt サブシステムを活用して
 
 ## <a name="prerequisites"></a>前提条件
 
-前提条件の詳細な一覧については、[Azure Disk Encryption の前提条件](
-../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
+前提条件の完全な一覧については、「[Linux VM に対する Azure Disk Encryption](../linux/disk-encryption-overview.md)」の特に次のセクションを参照してください。
 
-### <a name="operating-system"></a>オペレーティング システム
-
-現在、Azure Disk Encryption は、特定のディストリビューションとバージョンでサポートされています。  [Azure Disk Encryption がサポートされているオペレーティング システム: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) に関するセクションで、サポートされている Linux ディストリビューションの一覧をご覧ください。
-
-### <a name="internet-connectivity"></a>インターネット接続
-
-Linux 用 Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッケージ管理エンドポイントにアクセスするためにインターネット接続が必要です。  詳細については、[Azure Disk Encryption の前提条件](../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
+- [Linux VM に対する Azure Disk Encryption](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [追加の VM 要件](../linux/disk-encryption-overview.md#additional-vm-requirements)
+- [ネットワーク要件](../linux/disk-encryption-overview.md#networking-requirements)
 
 ## <a name="extension-schemata"></a>拡張機能のスキーマ
 

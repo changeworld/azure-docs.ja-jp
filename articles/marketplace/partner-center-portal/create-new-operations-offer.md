@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: bcde469ba4a376b278295d9c14c9ae12e434e3d5
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a8a8d7f6004ac32aeb7ce2b8cbffeca9ddf0079
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244237"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595534"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>新しい Dynamics 365 for Operations オファーを作成する
 

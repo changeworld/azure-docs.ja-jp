@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
-ms.custom: it-pro
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb424866a681316af23e9d2bba28a8da8c3a6f78
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286802"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592885"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -49,10 +49,15 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="application-administratorapplication-administrator-permissions"></a>[アプリケーション管理者](#application-administrator-permissions)
 
-このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
+このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されないことに注意してください。
 
 > [!IMPORTANT]
 > このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにアプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
+
+さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph に対するアクセス許可を除く) に "_同意する_" 権限を付与します。
+
+> [!IMPORTANT]
+> この例外は、"_他の_" アプリ (サードパーティ製アプリや自分が登録したアプリなど) に対するアクセス許可には引き続き同意できるが、Azure AD 自体に対するアクセス許可には同意できないことを意味します。 アプリ登録の一環としてこれらのアクセス許可を "_要求_" することはできますが、 これらのアクセス許可を "_許可する_" (つまり、同意する) には、Azure AD 管理者が必要です。つまり、悪意のあるユーザーは、ディレクトリ全体に書き込み可能なアプリを作成してそれに同意し、そのアプリのアクセス許可を通じて自分自身をグローバル管理者に昇格させるなどの方法によって、自分のアクセス許可を簡単に昇格させることはできません。
 
 ### <a name="application-developerapplication-developer-permissions"></a>[アプリケーション開発者](#application-developer-permissions)
 
@@ -219,12 +224,14 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 > [!NOTE]
 > グローバル閲覧者ロールには現在、制限事項がいくつか与えられています。
 >
->* SharePoint 管理センター - SharePoint 管理センターでは、グローバル閲覧者ロールがサポートされていません。 [Microsoft 365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage)の [管理者センター] の左下にあるウィンドウには "SharePoint" が表示されません。*https://{Azure AD organization name}-admin.sharepoint.com* に移動しようとするとアクセスが拒否されます。
+>* SharePoint 管理センター - SharePoint 管理センターでは、グローバル閲覧者ロールがサポートされていません。 [Microsoft 365 管理センター](https://admin.microsoft.com/Adminportal/Home#/homepage)の [管理センター] の下の左側のウィンドウに "SharePoint" が表示されません。
+>* [OneDrive 管理センター](https://admin.onedrive.com/) - OneDrive 管理センターでは、グローバル閲覧者ロールがサポートされていません。
 >* [Azure AD portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - グローバル閲覧者は企業アプリのプロビジョニング モードを閲覧できません。
 >* [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
 >* [M365 セキュリティ センター](https://security.microsoft.com/homepage) - グローバル閲覧者は機密ラベルと保持ラベルを閲覧できません。 M365 セキュリティ センターの左側のウィンドウに **[機密ラベル]** 、 **[保持ラベル]** 、 **[Label analytics]\(ラベル分析\)** タブがありません。
 >* [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ**を閲覧できません。
 >* [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) では、グローバル閲覧者ロールがサポートされていません。
+>* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) - グローバル閲覧者は、[中央レポート](https://docs.microsoft.com/azure/information-protection/reports-aip)のみでサポートされ、テナントが [統合ラベル付けプラットフォーム](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)にない場合にサポートされます。
 >
 > 以上の機能は現在、開発中です。
 >

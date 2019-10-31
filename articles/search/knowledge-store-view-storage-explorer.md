@@ -1,23 +1,24 @@
 ---
-title: Storage Explorer でナレッジ ストアを表示する - Azure Search
-description: Azure portal の Storage Explorer で Azure Search のナレッジ ストアを表示して分析します。
+title: Storage Explorer でナレッジ ストアを表示する
+titleSuffix: Azure Cognitive Search
+description: Azure portal の Storage Explorer で Azure Cognitive Search のナレッジ ストアを表示して分析します。
+manager: nitinme
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 9ec93bcd2309bb47b24983260c35726ac24b5e95
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265612"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789973"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Storage Explorer でナレッジ ストアを表示する
 
 > [!Note]
-> ナレッジ ストアはプレビュー段階であるため、運用環境では使用しないでください。 この機能は、[Azure Search REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供されています。 現時点で .NET SDK のサポートはありません。
+> ナレッジ ストアはプレビュー段階であるため、運用環境では使用しないでください。 この機能は、[Azure Cognitive Search REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供されています。 現時点で .NET SDK のサポートはありません。
 >
 この記事では、Azure portal の Storage Explorer を使用してナレッジ ストアに接続し、探索する方法を説明します。 このチュートリアルで使用されているナレッジ ストア サンプルを作成する方法については、「[Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)」を参照してください。
 
@@ -45,7 +46,7 @@ ms.locfileid: "71265612"
 
 クエリを実行するには、コマンド バーの **[クエリ]** をクリックして条件を入力します。  
 
-   ![Storage Explorer でテーブルにクエリを実行する](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Storage Explorer でテーブルにクエリを実行する")
+   ![Storage Explorer のクエリ テーブル](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Storage Explorer のクエリ テーブル")
 
 ## <a name="clean-up"></a>クリーンアップ
 

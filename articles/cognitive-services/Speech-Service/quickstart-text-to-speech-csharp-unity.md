@@ -10,31 +10,31 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: be5f07b8ea58d0d62c70e0e9dc8ab187ce4a0f63
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b4d329d9d3c2a259fb90b0278c54ba8590590995
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803198"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675486"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity"></a>クイック スタート:Unity 用 Speech SDK を使用して音声を合成する
 
 [音声認識](quickstart-csharp-unity.md)のクイックスタートも利用できます。
 
-このガイドでは、[Unity](https://unity3d.com/) と Unity 用 Speech SDK を使用してテキスト読み上げアプリケーションを作成します。
+このガイドでは、[Unity](https://unity3d.com/) と Unity 用 Azure Cognitive Services Speech SDK を使用してテキスト読み上げアプリケーションを作成します。
 完了すると、テキストから音声を合成し、デバイスのスピーカーにリアルタイムで出力できます。
-Unity に慣れていない場合は、アプリケーションの開発を始める前に [Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/UnityManual.html)を確認することをお勧めします。
+Unity に慣れていない場合は、アプリケーションの開発を始める前に [Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/UnityManual.html)を確認してください。
 
 > [!NOTE]
-> Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています。
+> Unity では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています。
 
 ## <a name="prerequisites"></a>前提条件
 
 このプロジェクトを完了するには、以下が必要になります。
 
-* [Unity 2018.3 以降](https://store.unity.com/)および [UWP ARM64 のサポートを追加する Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
+* [Unity 2018.3 以降](https://store.unity.com/)および [UWP ARM64 のサポートを追加する Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)。
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 Visual Studio 2017 バージョン 15.9 以降も許容されます。
-* Windows ARM64 をサポートするため、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします 
+* Windows ARM64 をサポートするため、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします。
 * 音声サービス用のサブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 ## <a name="create-a-unity-project"></a>Unity プロジェクトを作成する
@@ -46,34 +46,32 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-* Unity 用 Speech SDK (ベータ版) は、Unity のアセット パッケージとしてパッケージ化されています (.unitypackage)。
-  これは、[こちら](https://aka.ms/csspeech/unitypackage)からダウンロードできます。
-* **[Assets]\(アセット\)**  >  **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package]\(カスタム パッケージ\)** の順に選択して、Speech SDK をインポートします。
-  詳細については、[Unity のドキュメント](https://docs.unity3d.com/Manual/AssetPackages.html)を参照してください。
-* ファイル ピッカーで、先ほどダウンロードした Speech SDK の .unitypackage ファイルを選択します。
-* すべてのファイルが選択されていることを確認したら、 **[Import]\(インポート\)** をクリックします。
+* Unity 用 Speech SDK (ベータ版) は、Unity のアセット パッケージとしてパッケージ化されています (.unitypackage)。 これは、[こちらの Web サイト](https://aka.ms/csspeech/unitypackage)からダウンロードできます。
+* **[Assets]\(アセット\)**  >  **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package]\(カスタム パッケージ\)** の順に選択して、Speech SDK をインポートします。 詳細については、[Unity のドキュメント](https://docs.unity3d.com/Manual/AssetPackages.html)を参照してください。
+* ファイル ピッカーで、ダウンロードした Speech SDK の .unitypackage ファイルを選択します。
+* すべてのファイルが選択されていることを確認したら、 **[Import]\(インポート\)** を選択します。
 
   ![Speech SDK Unity アセット パッケージをインポートするときの Unity エディターのスクリーンショット](media/sdk/qs-csharp-unity-01-import.png)
 
-## <a name="add-ui"></a>UI を追加する
+## <a name="add-a-ui"></a>UI を追加する
 
 合成するテキストを入力するための入力フィールド、音声合成をトリガーするボタン、および結果を表示するテキスト フィールドから成る最小限の UI をシーンに追加します。
 
 * [[Hierarchy]\(ヒエラルキー\) ウィンドウ](https://docs.unity3d.com/Manual/Hierarchy.html) (既定では左側) に、Unity の新しいプロジェクトで作成されたサンプルのシーンが表示されます。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの上部にある **[Create]\(作成\)** をクリックし、 **[UI]**  >  **[Input Field]\(入力フィールド\)** の順に選択します。
-* これで、3 つのゲーム オブジェクトが作成され、[Hierarchy]\(ヒエラルキー\) ウィンドウに表示されます。 **[Canvas]\(キャンバス\)** オブジェクト、その中で入れ子になった **[Input Field]\(入力フィールド\)** オブジェクト、および **[EventSystem]** オブジェクトです。
+* **[Hierarchy]\(ヒエラルキー\)** ウィンドウの上部にある **[Create]\(作成\)** をクリックし、 **[UI]**  >  **[Input Field]\(入力フィールド\)** の順に選択します。
+* このオプションにより、3 つのゲーム オブジェクトが作成され、 **[Hierarchy]\(ヒエラルキー\)** ウィンドウに表示されます。 **[Canvas]\(キャンバス\)** オブジェクト、その中で入れ子になった **[Input Field]\(入力フィールド\)** オブジェクト、および **[EventSystem]** オブジェクトです。
 * [[Scene]\(シーン\) ビューに移動](https://docs.unity3d.com/Manual/SceneViewNavigation.html)して、[[Scene]\(シーン\) ビュー](https://docs.unity3d.com/Manual/UsingTheSceneView.html)内でキャンバスと入力フィールドが適切に表示されていることを確認します。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Input Field]\(入力フィールド\)** オブジェクトをクリックして、その設定を [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html)に表示します (既定では右側)。
+* **[Hierarchy]\(ヒエラルキー\)** ウィンドウ内で **[Input Field]\(入力フィールド\)** オブジェクトを選択して、その設定を [[Inspector]\(インスペクター\)](https://docs.unity3d.com/Manual/UsingTheInspector.html) ウィンドウに表示します (既定では右側)。
 * **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** に設定して、入力フィールドがキャンバスの中央に配置されるようにします。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの上部にある **[Create]\(作成\)** を再度クリックし、 **[UI]**  >  **[Button]\(ボタン\)** の順に選択して、ボタンを作成します。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Button]\(ボタン\)** オブジェクトをクリックして、その設定を [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html)に表示します (既定では右側)。
-* **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** と **-48** に設定し、 **[Width]\(幅\)** プロパティと **[Height]\(高さ\)** プロパティを **160** と **30** に設定して、ボタンと入力フィールドが重ならないようにします。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの上部にある **[Create]\(作成\)** を再度クリックし、 **[UI]**  >  **[Text]\(テキスト\)** の順に選択して、テキスト フィールドを作成します。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Text]\(テキスト\)** オブジェクトをクリックして、その設定を [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html)に表示します (既定では右側)。
-* **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** と **80** に設定し、 **[Width]\(幅\)** プロパティと **[Height]\(高さ\)** プロパティを **320** と **80** に設定して、テキスト フィールドと入力フィールドが重ならないようにします。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの上部にある **[Create]\(作成\)** を再度クリックし、 **[Audio]\(オーディオ\)**  >  **[Audio Source]\(オーディオ ソース\)** の順に選択して、オーディオ ソースを作成します。
+* もう一度 **[Hierarchy]\(ヒエラルキー\)** ウィンドウの上部にある **[Create]\(作成\)** を選択します。 **[UI]**  >  **[Button]\(ボタン\)** の順に選択してボタンを作成します。
+* **[Hierarchy]\(ヒエラルキー\)** ウィンドウ内で **[Button]\(ボタン\)** オブジェクトを選択して、その設定を [[Inspector]\(インスペクター\)](https://docs.unity3d.com/Manual/UsingTheInspector.html) ウィンドウに表示します (既定では右側)。
+* **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** と **-48** に設定します。 **[Width]\(幅\)** プロパティと **[Height]\(高さ\)** プロパティを **160** と **30** に設定して、ボタンと入力フィールドが重ならないようにします。
+* もう一度 **[Hierarchy]\(ヒエラルキー\)** ウィンドウの上部にある **[Create]\(作成\)** を選択します。 **[UI]**  >  **[Text]\(テキスト\)** の順に選択して、テキスト フィールドを作成します。
+* **[Hierarchy]\(ヒエラルキー\)** ウィンドウ内で **[Text]\(テキスト\)** オブジェクトを選択して、その設定を [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html)に表示します (既定では右側)。
+* **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** と **80** に設定します。 **[Width]\(幅\)** プロパティと **[Height]\(高さ\)** プロパティを **320** と **80** に設定して、テキスト フィールドと入力フィールドが重ならないようにします。
+* もう一度 **[Hierarchy]\(ヒエラルキー\)** ウィンドウの上部にある **[Create]\(作成\)** を選択します。 **[Audio]\(オーディオ\)**  >  **[Audio Source]\(オーディオ ソース\)** の順に選択して、オーディオ ソースを作成します。
 
 完了したら、次のスクリーンショットのような UI になります。
 
@@ -81,16 +79,16 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
 
-1. [[Project]\(プロジェクト\) ウィンドウ](https://docs.unity3d.com/Manual/ProjectView.html) (既定では左下) で **[Create]\(作成\)** をクリックし、 **[C# script]\(C# スクリプト\)** を選択します。 スクリプトに `HelloWorld` という名前を付けます。
+1. [[Project]\(プロジェクト\) ウィンドウ](https://docs.unity3d.com/Manual/ProjectView.html) (既定では左下) で **[Create]\(作成\)** を選択し、 **[C# script]\(C# スクリプト\)** を選択します。 スクリプトに `HelloWorld` という名前を付けます。
 
 1. ダブルクリックしてスクリプトを編集します。
 
    > [!NOTE]
-   > **[Edit]\(編集\)**  >  **[Preferences]\(設定\)** で、起動するコード エディターを構成できます。[Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/Preferences.html)を参照してください。
+   > **[Edit]\(編集\)**  >  **[Preferences]\(設定\)** の順に選択して、起動するコード エディターを構成できます。 詳細については、[Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/Preferences.html)を参照してください。
 
 1. すべてのコードを次のものに置き換えます。
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
 
 1. `YourSubscriptionKey` という文字列を探し、実際の Speech Services のサブスクリプション キーに置き換えます。
 
@@ -98,27 +96,25 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 1. スクリプトへの変更を保存します。
 
-1. Unity エディターに戻ってから、スクリプトをコンポーネントとしてゲーム オブジェクトのいずれかに追加する必要があります。
+1. Unity エディターに戻り、ゲーム オブジェクトの 1 つにコンポーネントとしてスクリプトを追加します。
 
-   * [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Canvas]\(キャンバス\)** オブジェクトをクリックします。 [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html) (既定では右側) でその設定が開きます。
-   * [Inspector]\(インスペクター\) ウィンドウの **[Add Component]\(コンポーネントの追加\)** をクリックし、上で作成した HelloWorld スクリプトを検索して、追加します。
-   * Hello World コンポーネントには、初期化されていない 4 つのプロパティ、**Output Text**、**Input Field**、**Speak Button**、および **Audio Source** が含まれていることに注意してください。これらは `HelloWorld` クラスのパブリック プロパティに一致します。
-     これらを接続するには、オブジェクト ピッカー (プロパティの右側にある小さな円アイコン) をクリックして、先ほど作成したテキスト オブジェクトとボタン オブジェクトを選択します。
+   * **[Hierarchy]\(ヒエラルキー\)** ウィンドウ内で **[Canvas]\(キャンバス\)** オブジェクトを選択して、その設定を [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html)に表示します (既定では右側)。
+   * **[Inspector]\(インスペクター\)** ウィンドウで、 **[Add Component]\(コンポーネントの追加\)** を選択します。 次に、先ほど作成した `HelloWorld` スクリプトを検索して、追加します。
+   * HelloWorld コンポーネントには、初期化されていない 4 つのプロパティ、**Output Text**、**Input Field**、**Speak Button**、および **Audio Source** が含まれています。これらは `HelloWorld` クラスのパブリック プロパティに一致します。
+     これらを接続するには、オブジェクト ピッカー (プロパティの右側にある小さな円アイコン) を選択します。 先ほど作成したテキスト オブジェクトとボタン オブジェクトを選択します。
 
      > [!NOTE]
-     > 入力フィールドとボタンには、入れ子になったテキスト オブジェクトも含まれています。 テキスト出力用として、誤ってこれを選択しないようにしてください (このような混乱を避けるために、[Inspector]\(インスペクター\) ウィンドウの [Name]\(名前\) フィールドを使用してテキスト オブジェクトの名前を変更してもかまいません)。
+     > 入力フィールドとボタンには、入れ子になったテキスト オブジェクトも含まれています。 テキスト出力用として、誤ってこれを選択しないようにしてください。 または、このような混乱を避けるために、 **[Inspector]\(インスペクター\)** ウィンドウ内で **[Name]\(名前\)** フィールドを使用するテキスト オブジェクトの名前を変更してもかまいません。
 
 ## <a name="run-the-application-in-the-unity-editor"></a>Unity エディターでアプリケーションを実行する
 
-* Unity エディターのツール バー (メニュー バーの下) の **[Play]\(再生\)** を押します。
+* Unity エディターのメニュー バーの下のツール バーの **[Play]\(再生\)** を選択します。
+* アプリの起動後、入力フィールドに何かテキストを入力して、ボタンを選択します。 テキストが Speech Services に転送されて音声に合成され、スピーカーで再生されます。
 
-* アプリの起動後、入力フィールドにテキストを入力して、ボタンをクリックします。 テキストが Speech Services に転送されて音声に合成され、スピーカーで再生されます。
-
-  [![Unity のゲーム ウィンドウで実行中のクイック スタートのスクリーンショット](media/sdk/qs-tts-csharp-unity-output-inline.png)](media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
+  [![Unity の [Game]\(ゲーム\) ウィンドウで実行中のクイックスタートのスクリーンショット](media/sdk/qs-tts-csharp-unity-output-inline.png)](media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
 
 * [[Console]\(コンソール\) ウィンドウ](https://docs.unity3d.com/Manual/Console.html)でデバッグ メッセージを確認します。
-
-* 音声の合成が完了したら、Unity エディターのツール バーにある **[Play]\(再生\)** をクリックしてアプリを停止します。
+* 音声の合成が完了したら、Unity エディターのツール バーにある **[Play]\(再生\)** を選択してアプリを停止します。
 
 ## <a name="additional-options-to-run-this-application"></a>このアプリケーションを実行するための追加のオプション
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 4883b1420913eb4e5f3bd5f13a95e410370d9184
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fc6d889fb9be40c98e1a2a0de6fddb29939f3b5d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128475"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693651"
 ---
 # <a name="train-clustering-model"></a>クラスタリング モデルのトレーニング
 
@@ -29,7 +29,7 @@ ms.locfileid: "70128475"
   
 ## <a name="how-to-use-train-clustering-model"></a>クラスタリング モデルのトレーニングの使用方法  
   
-1.  **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールを Studio の自分の実験に追加します。 このモジュールは、**Machine Learning モジュール**の **[トレーニング]** カテゴリにあります。  
+1.  **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールを Studio の自分のパイプラインに追加します。 このモジュールは、**Machine Learning モジュール**の **[トレーニング]** カテゴリにあります。  
   
 2. [K-Means Clustering (K-Means クラスタリング)](k-means-clustering.md) モジュール、または互換性のあるクラスタリング モデルを作成する別のカスタム モジュールを追加し、クラスタリング モデルのパラメーターを設定します。  
     
@@ -43,7 +43,7 @@ ms.locfileid: "70128475"
 
     このオプションの選択を解除すると、クラスターの割り当てだけが出力されます。 
 
-7. 実験を実行するか、**Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールをクリックして **[選択した項目を実行]** を選択します。  
+7. パイプラインを実行するか、**Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールをクリックして **[選択した項目を実行]** を選択します。  
   
 ### <a name="results"></a>結果
 

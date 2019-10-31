@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ebb960085691206b096090813636ef56366e6536
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038361"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592478"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>よくある問題に関するトラブルシューティング ガイド
 
@@ -146,6 +146,49 @@ _Azure Spring Cloud_ サービス インスタンスの名前は、`azureapps.io
 また、_Azure Log Analytics_ で "_サービス レジストリ_" のクライアント ログを確認することもできます。 詳細については、「[Analyze logs and metrics with Diagnostic settings](diagnostic-services.md)」(診断の設定でログとメトリックを分析する) を参照してください。
 
 _Azure Log Analytics_ の使用に関しては、[こちらの入門記事](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)を参照してください。 ログのクエリを実行する際は、[Kusto クエリ言語](https://docs.microsoft.com/azure/kusto/query/)を使用してください。
+
+### <a name="i-want-to-inspect-my-applications-environment-variables"></a>アプリケーションの環境変数を調べたい
+
+Azure Spring Cloud フレームワークに環境変数が伝えられることによって、Azure は、アプリケーションに含まれるサービスをどこでどのように構成するかを把握します。  潜在的な問題をトラブルシューティングするためにまず必要な手順は、環境変数が正しいことの確認です。  環境変数は、Spring Boot Actuator エンドポイントを使用して確認できます。  
+
+> [!WARNING]
+> この手順では、テスト エンドポイントを使用して環境変数を公開します。  テスト エンドポイントがパブリックにアクセスできる場合や、アプリケーションにドメイン名が割り当てられている場合は、この先の手順を行わないようにしてください。
+
+1. `https://<your application test endpoint>/actuator/health` という URL に移動します。  
+    - `{"status":"UP"}` のような応答は、エンドポイントが有効になっていることを示します。
+    - 応答が否定的である場合は、`POM.xml` に次の依存関係を追加してください。
+
+        ```xml
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+        ```
+
+1. Spring Boot Actuator エンドポイントが有効になったら、Azure portal に移動してアプリケーションの構成ページを見つけます。  `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value `*` という名前で環境変数を追加します。 
+
+1. アプリケーションを再起動します。
+
+1. `https://<the test endpoint of your app>/actuator/env` に移動して、応答を調べます。  次のようになります。
+
+    ```json
+    {
+        "activeProfiles": [],
+        "propertySources": {,
+            "name": "server.ports",
+            "properties": {
+                "local.server.port": {
+                    "value": 1025
+                }
+            }
+        }
+    }
+    ```
+
+`systemEnvironment` という名前の子ノードを検索します。  このノードにアプリケーションの環境変数が格納されています。
+
+> [!IMPORTANT]
+> アプリケーションをパブリックにアクセスできるようにする前に、公開した環境変数は必ず元に戻してください。  Azure portal に移動してアプリケーションの構成ページを探し、環境変数 `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` を削除します。
 
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>アプリケーションのメトリックまたはログが見つからない
 

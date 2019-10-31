@@ -1,7 +1,7 @@
 ---
 title: HTTP 経由の Web URL からのインポート:モジュール リファレンス
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の HTTP 経由の Web URL からのインポート モジュールを使用して、機械学習の実験で使用するためにパブリック Web ページからデータを読み取る方法について説明します。
+description: Azure Machine Learning service の HTTP 経由の Web URL からのインポート モジュールを使用して、機械学習のパイプラインで使用するためにパブリック Web ページからデータを読み取る方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e2521dabdab8e9365019f35514f2d8d235c9c014
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128753"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693133"
 ---
 # <a name="import-from-web-url-via-http-module"></a>HTTP 経由の Web URL からのインポート モジュール
 
 この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
 
-機械学習の実験で使用するためにパブリック Web ページからデータを読み取るには、このモジュールを使用します。
+機械学習のパイプラインで使用するためにパブリック Web ページからデータを読み取るには、このモジュールを使用します。
 
 Web ページで公開されているデータには次の制限が適用されます。
 
@@ -31,7 +31,7 @@ Web ページで公開されているデータには次の制限が適用され�
 
 ## <a name="use-the-data-import-wizard"></a>データ インポート ウィザードを使用する
 
-1. **データのインポート** モジュールを実験に追加します。 このモジュールは、インターフェイスの **[Data Input and Output]\(データの入力と出力\)** カテゴリにあります。
+1. **データのインポート** モジュールをパイプラインに追加します。 このモジュールは、インターフェイスの **[Data Input and Output]\(データの入力と出力\)** カテゴリにあります。
 
 2. **[Launch Import Data Wizard]\(データのインポート ウィザードを起動\)** をクリックし、[HTTP を使用する Web URL] を選択します。
 
@@ -45,7 +45,7 @@ Web ページで公開されているデータには次の制限が適用され�
 
 次の手順では、インポート元を手動で構成する方法について説明します。
 
-1. [データのインポート](import-data.md) モジュールを実験に追加します。 このモジュールは、インターフェイスの **[Data Input and Output]\(データの入力と出力\)** カテゴリにあります。
+1. [データのインポート](import-data.md) モジュールをパイプラインに追加します。 このモジュールは、インターフェイスの **[Data Input and Output]\(データの入力と出力\)** カテゴリにあります。
 
 2. **[データ ソース]** で、 **[HTTP を使用する Web URL]** を選択します。
 
@@ -63,13 +63,13 @@ Web ページで公開されているデータには次の制限が適用され�
 
 5. データが CSV または TSV 形式である場合は、 **[File has header row]\(ファイルにヘッダー行が含まれる\)** オプションを使用して、ソース データにヘッダー行が含まれるかどうかを示します。 ヘッダー行は列名の割り当てに使用されます。
 
-6. データが大きく変化しないと予測される場合、または実験を実行するたびにデータを再読み込みしたくない場合は、 **[Use cached results]\(キャッシュされた結果を使用する\)** オプションを選択します。
+6. データが大きく変化しないと予測される場合、またはパイプラインを実行するたびにデータを再読み込みしたくない場合は、 **[Use cached results]\(キャッシュされた結果を使用する\)** オプションを選択します。
 
-    このオプションを選択すると、実験ではモジュールが最初に実行されたときにデータが読み込まれ、その後はデータセットのキャッシュされたバージョンが使用されます。
+    このオプションを選択すると、パイプラインではモジュールが最初に実行されたときにデータが読み込まれ、その後はデータセットのキャッシュされたバージョンが使用されます。
 
-    実験データセットの繰り返しごとにデータセットを再読み込みする場合は、 **[Use cached results]\(キャッシュされた結果を使用する\)** オプションの選択を解除します。 [データのインポート](import-data.md)のパラメーターが変更された場合も、結果が再読み込みされます。
+    パイプライン データセットの繰り返しごとにデータセットを再読み込みする場合は、 **[Use cached results]\(キャッシュされた結果を使用する\)** オプションの選択を解除します。 [データのインポート](import-data.md)のパラメーターが変更された場合も、結果が再読み込みされます。
 
-7. 実験を実行します。
+7. パイプラインを実行します。
 
 ## <a name="results"></a>結果
 

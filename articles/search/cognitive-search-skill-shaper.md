@@ -1,22 +1,21 @@
 ---
-title: Shaper コグニティブ検索スキル - Azure Search
-description: 非構造化データからメタデータと構造化された情報を抽出し、Azure Search エンリッチメント パイプライン内で複合型としてシェイプします。
-services: search
+title: Shaper コグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: 非構造化データからメタデータと構造化された情報を抽出し、Azure コグニティブ検索の AI エンリッチメント パイプライン内で複合型としてシェイプします。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265351"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791872"
 ---
-#   <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
+# <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
 **Shaper** スキルは、複数の入力を、エンリッチメント パイプラインの後の部分で参照できる[複合型](search-howto-complex-data-types.md)に統合します。 **Shaper** スキルでは、基本的に、構造を作成し、その構造のメンバーの名前を定義して、各メンバーに値を割り当てることができます。 統合されたフィールドが検索のシナリオで役立つ例として、姓と名を組み合わせて 1 つの構造体にする、市と県を組み合わせて 1 つの構造体にする、名前と誕生日を組み合わせて 1 つの構造体にする、などの操作を行って一意の ID を確立することが挙げられます。
 
@@ -32,7 +31,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>シナリオ 1: 複合型
 
-*analyzedText* という名前の構造を作成し、それに 2 つのメンバーがあって、それぞれが *text* と *sentiment* という名前だとします。 Azure Search インデックス内では、マルチパートの検索可能フィールドは*複合型*と呼ばれ、通常は、それにマップする対応した複合構造をソース データが備えている場合に作成されます。
+*analyzedText* という名前の構造を作成し、それに 2 つのメンバーがあって、それぞれが *text* と *sentiment* という名前だとします。 インデックス内では、マルチパートの検索可能フィールドは*複合型*と呼ばれ、通常は、それにマップする対応した複合構造をソース データが備えている場合に作成されます。
 
 ただし、複合型を作成するための別の方法として、**Shaper** スキルを利用することもできます。 このスキルをスキルセットに含めることで、スキルセット処理中のメモリ内操作において、入れ子になった構造を持つデータ シェイプを出力できます。その後、それをインデックス内の複合型にマップできます。 
 
@@ -110,7 +109,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ### <a name="skill-output"></a>スキルの出力
 
-**Shaper** スキルにより、*text* と *sentiment* の要素が組み合わせられている *analyzedText* という名前の新しい要素が生成されます。 この出力は、インデックス スキーマに準拠します。 Azure Search インデックスにインポートされ、インデックスが作成されます。
+**Shaper** スキルにより、*text* と *sentiment* の要素が組み合わせられている *analyzedText* という名前の新しい要素が生成されます。 この出力は、インデックス スキーマに準拠します。 Azure コグニティブ検索のインデックスにインポートされ、インデックスが作成されます。
 
 ```json
 {
@@ -249,8 +248,8 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [複合型を使用する方法](search-howto-complex-data-types.md)
-+ [ナレッジ ストアの概要](knowledge-store-concept-intro.md)
++ [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md)
 + [ナレッジ ストアの使用を開始する方法](knowledge-store-howto.md)

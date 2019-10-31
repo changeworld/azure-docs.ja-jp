@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 79bd0ce90c76f95ce12662e0d496b481382e805a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 84be9c2b1d8e28fb847e52bda36f9857bd28da28
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177694"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528753"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -43,7 +43,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
-   ![Application Insights リソースの追加](./media/nodejs-quick-start/1createresourseappinsights.png)
+   ![Azure Application Insights リソースを追加する](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
    >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
@@ -62,7 +62,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. **[概要]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
 
-   ![新しい App Insights リソースのフォーム](./media/nodejs-quick-start/3key.png)
+   ![Application Insights のインストルメンテーション キーを表示する](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
 2. Application Insights SDK for Node.js をアプリケーションに追加します。 アプリのルート フォルダーから次のものを実行します。
 
@@ -86,19 +86,19 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
 
-   ![Application Insights の概要メニュー](./media/nodejs-quick-start/4overview.png)
+   ![Application Insights の概要メニュー](./media/nodejs-quick-start/azure-app-insights-overview-menu.png)
 
 2. **[アプリケーション マップ]** を選択し、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
 
-   ![アプリケーション マップ](./media/nodejs-quick-start/5appmap.png)
+   ![Application Insights のアプリケーション マップ](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/nodejs-quick-start/006.png) **[Analytics 内のビュー]** を選択します。  これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **[Analytics 内のビュー]** を選択します。  これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
-   ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/nodejs-quick-start/6analytics.png)
+   ![Application Insights Analytics のグラフ](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
 4. **[概要]** ページに戻って KPI グラフを観察します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。
 
-   ![正常性の概要のタイムライン グラフ](./media/nodejs-quick-start/7kpidashboards.png)
+   ![Application Insights の正常性の概要に関するタイムライン グラフ](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
    **[ページ ビューの読み込み時間]** グラフに**クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
 
@@ -124,7 +124,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 5. 左側で、 **[メトリック]** を選択します。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。 **[Add new chart (新しいグラフを追加)]** を選択して追加のカスタム ビューを作成したり、 **[編集]** を選択して既存のグラフの種類、高さ、カラー パレット、グループ化、メトリックを変更したりできます。 たとえば、メトリックのドロップダウンの [ブラウザーのページ読み込み時間] を選択し、集計から [平均] を選択することで、ブラウザーの平均ページ読み込み時間を表示するグラフを作成できます。 Azure メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
 
-   ![サーバー メトリックのグラフ](./media/nodejs-quick-start/8metrics.png)
+   ![Application Insights サーバーのメトリックのグラフ](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
 Node.js の監視に関する詳細については、[App Insights Node.js の追加ドキュメント](../../azure-monitor/app/nodejs.md)を参照してください。
 

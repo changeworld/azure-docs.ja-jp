@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: fb57d69b4969bcbf66717a8ca29ede23f2ed8e43
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 30ffcd9bdb8170777c245d95b0c07198a34c5464
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429143"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72556069"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>クイック スタート: Azure CLI と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
@@ -27,7 +27,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 最後に、イベント データが Web アプリに送信されたことを確認します。
 
-![Azure Event Grid ビューアーを使用して、イベント データが送信されたことを確認する](./media/custom-event-quickstart/azure-event-grid-viewer-displays-event-data.png)
+![Azure Event Grid ビューアーで結果を表示する](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -98,7 +98,8 @@ az eventgrid event-subscription create \
 
 Web アプリをもう一度表示し、その Web アプリにサブスクリプションの検証イベントが送信されたことに注目します。 目のアイコンを選択してイベント データを展開します。 Event Grid は検証イベントを送信するので、エンドポイントはイベント データを受信することを確認できます。 Web アプリには、サブスクリプションを検証するコードが含まれています。
 
-![Azure Event Grid ビューアーでサブスクリプションの検証コードを表示する](./media/custom-event-quickstart/view-subscription-validation-code-in-azure-event-grid-viewer.png)
+![Azure Event Grid ビューアーでサブスクリプション イベントを表示する](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
+
 
 ## <a name="send-an-event-to-your-custom-topic"></a>カスタム トピックへのイベントの送信
 

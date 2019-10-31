@@ -3,24 +3,24 @@ title: Power BI で Apache Hive データを視覚化する - Azure HDInsight
 description: Microsoft Power BI を利用し、Azure HDInsight で処理された Hive データを視覚化する方法について説明します。
 keywords: hdinsight,hadoop,hive,対話型クエリ,対話型 hive,LLAP,odbc
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,
+ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 0e8f0e6ff6ba4b280d6174b6cec231ddca782912
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 10/15/2019
+ms.openlocfilehash: 9b99e24d00441f0caab4b55a46e5ccc8be9cdd64
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058592"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529537"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight 上の Microsoft Power BI で ODBC を使用して Apache Hive データを視覚化する
 
 ODBC を使用して Microsoft Power BI Desktop を Azure HDInsight に接続し、Apache Hive データを視覚化する方法について説明します。
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Power BI Desktop の汎用 ODBC コネクタを介してインポートするために、Hive ODBC ドライバーを利用することができます。 ただし、Hive クエリ エンジンの非対話的な性質を与えられた BI ワークロードに対しては、この方法はお勧めしません。 この場合は、[HDInsight 対話型クエリ コネクタ](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)および [HDInsight Spark コネクタ](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)を選択した方が、良いパフォーマンスを得られます。
 
 この記事では、`hivesampletable` Hive テーブルのデータを Power BI に読み込みます。 Hive テーブルには、携帯電話の使用データが含まれます。 その使用データを世界地図に示します。
@@ -43,31 +43,33 @@ ODBC を使用して Microsoft Power BI Desktop を Azure HDInsight に接続し
 
 ## <a name="load-data-from-hdinsight"></a>HDInsight からデータを読み込む
 
-hivesampletable Hive テーブルはすべての HDInsight クラスターに付属しています。
+**hivesampletable** Hive テーブルは、すべての HDInsight クラスターに付属しています。
 
 1. Power BI Desktop を起動します。
 
-2. 最上位メニューから、 **[ホーム]**  >  **[データの取得]**  >  **[その他...]** に移動します。
+1. 最上位メニューから、 **[ホーム]**  >  **[データの取得]**  >  **[その他...]** に移動します。
 
     ![HDInsight Excel Power BI でデータを開く](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
-3. **[データの取得]** ダイアログで、左側から **[その他]** を選択し、右側から **[ODBC]** を選択して、一番下にある **[接続]** を選択します。
+1. **[データの取得]** ダイアログで、左側から **[その他]** を選択し、右側から **[ODBC]** を選択して、一番下にある **[接続]** を選択します。
 
-4. **[ODBC から]** ダイアログで、ドロップダウン リストから最後のセクションで作成したデータ ソース名を選択して、 **[OK]** を選択します。
+1. **[ODBC から]** ダイアログで、ドロップダウン リストから最後のセクションで作成したデータ ソース名を選択します。 **[OK]** をクリックします。
 
-5. **[ナビゲーター]** ダイアログで、 **[ODBC] > [HIVE] > [既定]** の順に展開し、 **[hivesampletable]** を選択して、 **[読み込み]** を選択します。
+1. 初めて使用する場合は、 **[ODBC ドライバー]** ダイアログ ボックスが開きます。 左側のメニューから **[既定またはカスタム]** を選択します。 次に、 **[接続]** を選択して **[ナビゲーター]** を開きます。
 
-6. **[ODBC ドライバー]** ダイアログで、 **[既定またはカスタム]** を選択して、 **[接続]** を選択します。
+1. **[ナビゲーター]** ダイアログで、 **[ODBC] > [HIVE] > [既定]** の順に展開し、 **[hivesampletable]** を選択して、 **[読み込み]** を選択します。
 
 ## <a name="visualize-data"></a>データの視覚化
 
 前の手順の続きです。
 
-1. [視覚化] ウィンドウで **[マップ]** を選択します。  地球儀のアイコンです。
+1. [視覚化] ウィンドウで、 **[マップ]** (地球アイコン) を選択します。
 
     ![HDInsight Power BI のレポート カスタマイズ](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
-2. **[フィールド]** ウィンドウで、 **[country]** と **[devicemake]** を選択します。 データが地図に描かれます。
-3. 地図を広げます。
+
+1. **[フィールド]** ウィンドウで、 **[country]** と **[devicemake]** を選択します。 データが地図に描かれます。
+
+1. 地図を広げます。
 
 ## <a name="next-steps"></a>次の手順
 

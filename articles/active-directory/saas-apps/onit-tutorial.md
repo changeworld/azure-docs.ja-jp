@@ -17,10 +17,10 @@ ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e908cb76a57f027494230edc648b69da0730ac27
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70164237"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Onit の統合
@@ -137,7 +137,7 @@ Onit に対する Azure AD SSO を構成してテストするには、次の構�
 
 2. 上部のメニューで **[管理]** をクリックします。
    
-    ![Administration](./media/onit-tutorial/IC791174.png "Administration")
+    ![管理](./media/onit-tutorial/IC791174.png "管理")
 
 3. **コーポレーションの編集**をクリックします。
    
@@ -149,7 +149,7 @@ Onit に対する Azure AD SSO を構成してテストするには、次の構�
 
 5. **[セキュリティ]** タブで、次の手順に従います。
 
-    ![シングル サインオン](./media/onit-tutorial/IC791177.png "Single Sign-On")
+    ![シングル サインオン](./media/onit-tutorial/IC791177.png "[Single Sign-On]")
 
     a. **[認証方式]** として **[シングル サインオンとパスワード]** を選びます。
     
@@ -169,11 +169,11 @@ Azure AD ユーザーが Onit にログインできるようにするには、�
 
 2. **[ユーザーの追加]** をクリックします。
 
-    ![Administration](./media/onit-tutorial/IC791180.png "Administration")
+    ![管理](./media/onit-tutorial/IC791180.png "管理")
 
 3. **[ユーザーの追加]** ダイアログ ページで、次の手順に従います。
 
-    ![ユーザーの追加](./media/onit-tutorial/IC791181.png "Add User")
+    ![ユーザーの追加](./media/onit-tutorial/IC791181.png "ユーザーの追加")
 
     a. プロビジョニングする有効な Azure AD アカウントの関連するテキストボックスに、 **[名前]** と **[電子メール アドレス]** を入力します。
 

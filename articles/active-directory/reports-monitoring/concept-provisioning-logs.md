@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70983494"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 詳細な情報を取得するには、リスト ビューで項目を選択します。
 
-![詳細情報](./media/concept-provisioning-logs/steps.png "フィルター")
+![詳細情報](./media/concept-provisioning-logs/steps.png "filter")
 
 
 ## <a name="filter-provisioning-activities"></a>プロビジョニング アクティビティのフィルター処理
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - Date
 
 
-![フィルター](./media/concept-provisioning-logs/filter.png "フィルター")
+![Filter](./media/concept-provisioning-logs/filter.png "filter")
 
 **ID** フィルターを使用すると、関心のある名前または ID を指定できます。 この ID には、ユーザー、グループ、ロール、またはその他のオブジェクトを指定できます。 オブジェクトの名前または ID で検索できます。 ID はシナリオによって異なります。 たとえば、Azure AD から SalesForce にオブジェクトをプロビジョニングする場合、ソース ID は Azure AD 内のユーザーのオブジェクト ID であり、ターゲット ID は Salesforce のユーザーの ID です。 Workday から Active Directory にプロビジョニングする場合、ソース ID は Workday ワーカーの従業員 ID です。 ユーザーの名前が必ずしも ID 列に存在するとは限らないことに注意してください。 常に 1 つの ID が存在します。 
 
@@ -161,7 +161,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - まとめ
 
 
-![フィルター](./media/concept-provisioning-logs/provisioning-tabs.png "タブ")
+![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "タブ")
 
 
 
@@ -176,7 +176,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 
 
-![フィルター](./media/concept-provisioning-logs/steps.png "フィルター")
+![Filter](./media/concept-provisioning-logs/steps.png "filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>トラブルシューティングと推奨事項

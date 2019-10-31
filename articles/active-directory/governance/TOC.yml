@@ -42,6 +42,8 @@
           items:
             - name: カタログ作成者への委任
               href: entitlement-management-delegate-catalog.md
+            - name: 接続されている組織の追加
+              href: entitlement-management-organization.md
             - name: 外部ユーザーのアクセス権の管理
               href: entitlement-management-external-users.md
             - name: レポートとログを表示する
@@ -66,7 +68,7 @@
               href: entitlement-management-access-package-request-policy.md
             - name: ライフサイクルの設定の変更
               href: entitlement-management-access-package-lifecycle-policy.md
-            - name: 要求の表示と管理
+            - name: 要求を表示する
               href: entitlement-management-access-package-requests.md
             - name: 割り当ての表示、追加、削除
               href: entitlement-management-access-package-assignments.md

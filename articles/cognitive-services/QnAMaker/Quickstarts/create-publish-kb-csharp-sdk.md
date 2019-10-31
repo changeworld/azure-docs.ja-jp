@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 31bd85ca9b106758dbb7bfd399b7a493ea7fea9f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 80dab733d5a4e7c04ee75e289a0bc33b88cc811f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803088"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597164"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>クイック スタート:.NET 用 QnA Maker クライアント ライブラリ
 

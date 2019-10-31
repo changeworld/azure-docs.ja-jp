@@ -1,5 +1,5 @@
 - name: 基礎のドキュメント
-  href: index.md
+  href: index.yml
 - name: アーキテクチャと設計
   href: overview.md
   expanded: false
@@ -40,7 +40,8 @@
           href: data-encryption-best-practices.md
         - name: 保存時のデータ暗号化
           href: encryption-atrest.md
-        - name: VM および VM Scale Sets の Azure Disk Encryption
+        - name: 仮想マシン用の Azure Disk Encryption
+          displayName: virtual machines and virtual machine scale sets
           href: azure-disk-encryption-vms-vmss.md
     - name: Storage のセキュリティ ガイド
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'

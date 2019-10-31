@@ -1,25 +1,24 @@
 ---
-title: インデクサーの状態と結果を監視する方法 - Azure Search
-description: REST API または .NET SDK を使用し、Azure portal で Azure Search インデクサーの状態、進捗状況、結果を監視します。
-ms.date: 06/28/2019
-author: RobDixon22
+title: インデクサーの状態と結果を監視する方法
+titleSuffix: Azure Cognitive Search
+description: REST API または .NET SDK を使用し、Azure portal で Azure Cognitive Search インデクサーの状態、進捗状況、結果を監視します。
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 6a8eaca029767e1d6bce4bc8ce22ce5523be26d8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186600"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793796"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Azure Search インデクサーの状態と結果を監視する方法
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Cognitive Search インデクサーの状態と結果を監視する方法
 
-Azure Search では、各インデクサーの現在と過去の実行を対象に、状態と監視に関する情報を提供します。
+Azure Cognitive Search では、各インデクサーの現在と過去の実行を対象に、状態と監視に関する情報を提供します。
 
 インデクサー監視は次の場合に役立ちます。
 
@@ -27,7 +26,7 @@ Azure Search では、各インデクサーの現在と過去の実行を対象�
 * 進行中または過去のインデクサー実行の結果を見る。
 * トップレベルのインデクサー エラーとインデックスが作成されている個々のドキュメントに関するエラーまたは警告を確認する。
 
-## <a name="find-indexer-status-and-history-details"></a>インデクサーの状態と履歴の詳細を見つける。
+## <a name="get-status-and-history"></a>状態と履歴の取得
 
 インデクサー監視情報には以下を含むさまざまな方法でアクセスできます。
 
@@ -45,7 +44,7 @@ Azure Search では、各インデクサーの現在と過去の実行を対象�
 
 <a name="portal"></a>
 
-## <a name="monitor-indexers-in-the-portal"></a>ポータルでインデクサーを監視する
+## <a name="monitor-using-the-portal"></a>ポータルを使用して監視する
 
 検索サービスの [概要] ページの **[インデクサー]** 一覧では、すべてのインデクサーの現在の状況を確認できます。
 
@@ -59,7 +58,7 @@ Azure Search では、各インデクサーの現在と過去の実行を対象�
 
 一覧のインデクサーをクリックすると、インデクサーの現在と過去の実行に関する詳細が表示されます。
 
-   ![インデクサーの概要と実行履歴](media/search-monitor-indexers/indexer-summary.png "インデクサーの概要と実行履歴")
+   ![インデクサー概要と実行履歴](media/search-monitor-indexers/indexer-summary.png "インデクサー概要と実行履歴")
 
 **インデクサー概要**グラフには、最近の実行で処理されたドキュメントの数がグラフで表示されます。
 
@@ -71,15 +70,15 @@ Azure Search では、各インデクサーの現在と過去の実行を対象�
 
 実行中にドキュメント固有の問題が発生した場合、[エラー] フィールドと [警告] フィールドにそれが一覧表示されます。
 
-   ![エラーを含むインデクサー詳細](media/search-monitor-indexers/indexer-execution-error.png "エラーを含むインデクサー詳細")
+   ![エラーを含むインデクサーの詳細](media/search-monitor-indexers/indexer-execution-error.png "エラーを含むインデクサーの詳細")
 
 警告は一部の種類のインデクサーで一般的であり、必ずしも問題を示すとは限りません。 たとえば、認識サービスを利用するインデクサーの場合、画像または PDF ファイルに処理するテキストが含まれないとき、警告が報告されることがあります。
 
-インデクサーのエラーと警告を調査する方法については、「[Azure Search のインデクサーの一般的な問題のトラブルシューティング](search-indexer-troubleshooting.md)」を参照してください。
+インデクサーのエラーと警告を調査する方法については、[Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング](search-indexer-troubleshooting.md)に関する記事を参照してください。
 
 <a name="restapi"></a>
 
-## <a name="monitor-indexers-using-the-rest-api"></a>REST API を使用してインデクサーを監視する
+## <a name="monitor-using-rest-apis"></a>REST API を使用した監視
 
 インデクサーの現在の状態と実行の履歴は、[インデクサー状態の取得](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)コマンドを使用して取得できます。
 
@@ -126,9 +125,9 @@ Azure Search では、各インデクサーの現在と過去の実行を対象�
 
 <a name="dotnetsdk"></a>
 
-## <a name="monitor-indexers-using-the-net-sdk"></a>.NET SDK を使用してインデクサーを監視する
+## <a name="monitor-using-the-net-sdk"></a>.NET SDK を使用した監視
 
-Azure Search .NET SDK を使用してインデクサーのスケジュールを定義できます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを含めます。
+Azure Cognitive Search .NET SDK を使用してインデクサーのスケジュールを定義できます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを含めます。
 
 次の C# 例では、インデクサーの状態とその最近の (あるいは進行中の) 実行の結果に関する情報がコンソールに書き込まれます。
 

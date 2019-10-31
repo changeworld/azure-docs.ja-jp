@@ -1,23 +1,22 @@
 ---
-title: Azure Search の moreLikeThis (プレビュー) - Azure Search
-description: Azure Search REST API で公開されている moreLikeThis (プレビュー) 機能の暫定版ドキュメント。
-author: brjohnstmsft
+title: moreLikeThis (プレビュー) クエリ機能
+titleSuffix: Azure Cognitive Search
+description: moreLikeThis (プレビュー) 機能について説明します。この機能は、Azure Cognitive Search REST API のプレビュー バージョンで使用できます。
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: d7c816c545c6647907aa9d700a4eb6ed91277465
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.devlang: rest-api
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b7959beca8a7787a331388b77ebe4060c3675e6d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182312"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793467"
 ---
-# <a name="morelikethis-in-azure-search"></a>Azure Search における moreLikeThis
+# <a name="morelikethis-preview-in-azure-cognitive-search"></a>Azure Cognitive Search の moreLikeThis (プレビュー)
 
 > [!Note]
 > moreLikeThis はプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
@@ -50,4 +49,4 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 Web テスト ツールを使用して、この機能を実験します。  この演習では、Postman を使用することをお勧めします。
 
 > [!div class="nextstepaction"]
-> [Postman を使用して Azure Search REST API を調べる](search-get-started-postman.md)
+> [Postman を使用して Azure Cognitive Search REST API を調べる](search-get-started-postman.md)

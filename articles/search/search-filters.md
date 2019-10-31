@@ -1,24 +1,23 @@
 ---
-title: インデックスでの検索結果の範囲指定用フィルター - Azure Search
-description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値でフィルター処理してクエリの検索結果を減らします。
-author: HeidiSteen
+title: インデックスの検索結果の範囲指定用フィルター
+titleSuffix: Azure Cognitive Search
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Cognitive Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値でフィルター処理して、クエリの検索結果を減らします。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 06/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 49af6f1f535df098aa45cccd7e2d629ff6ccef50
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649836"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792856"
 ---
-# <a name="filters-in-azure-search"></a>Azure Search のフィルター 
+# <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
-*フィルター*は、Azure Search クエリに使用されているドキュメントを選択するための条件を提供します。 フィルター処理されていない検索には、インデックスのすべてのドキュメントが含まれます。 フィルターによって、検索クエリの範囲がドキュメントのサブセットに絞り込まれます。 たとえば、フィルターによって、フルテキスト検索を特定のブランドや色、特定のしきい値を超える価格帯の製品のみに制限することができます。
+*フィルター*は、Azure Cognitive Search で使用されているドキュメントの選択条件です。 フィルター処理されていない検索には、インデックスのすべてのドキュメントが含まれます。 フィルターによって、検索クエリの範囲がドキュメントのサブセットに絞り込まれます。 たとえば、フィルターによって、フルテキスト検索を特定のブランドや色、特定のしきい値を超える価格帯の製品のみに制限することができます。
 
 一部の検索エクスペリエンスは実装の一部としてフィルター要件を課しますが、*値ベース* (製品の種類を "書籍"、カテゴリを "ノンフィクション"、出版元を "Simon & Schuster" に検索範囲を指定するなど) の条件を使用して検索を制限したいときにいつでもフィルターを使用できます。
 
@@ -63,7 +62,7 @@ ms.locfileid: "69649836"
 
 ## <a name="defining-filters"></a>フィルターを定義する
 
-フィルターは OData 式です。[Azure Search でサポートされている OData V4 構文のサブセット](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述します。 
+フィルターは [Azure Cognitive Search でサポートされている OData V4 構文のサブセット](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述される OData 式です。 
 
 各**検索**操作に 1 つのフィルターを指定できますが、フィルター自体には複数のフィールド、複数の条件、および複数のフルテキスト検索式 (**ismatch** 関数を使用する場合) を含めることができます。 マルチパートのフィルター式では、任意の順序で述語を指定できます (演算子の優先順位の規則に従います)。 特定の順序で述語を並べ替えても、感知できるほどパフォーマンスが向上することはありません。
 
@@ -148,7 +147,7 @@ REST API では、フィルター可能の設定は単純型フィールドの�
 
 ### <a name="making-an-existing-field-filterable"></a>既存のフィールドをフィルター可能にする
 
-既存のフィールドを変更してフィルター可能にすることはできません。 代わりに、新しいフィールドを追加するか、インデックスを再構築する必要があります。 インデックスの再構築の詳細については、「[Azure Search インデックスを再構築する方法](search-howto-reindex.md)」をご覧ください。
+既存のフィールドを変更してフィルター可能にすることはできません。 代わりに、新しいフィールドを追加するか、インデックスを再構築する必要があります。 インデックスの再構築またはフィールドへの再入力の詳細については、[Azure Cognitive Search のインデックスを再構築する方法](search-howto-reindex.md)に関するページをご覧ください。
 
 ## <a name="text-filter-fundamentals"></a>テキスト フィルターの基礎
 
@@ -199,7 +198,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 ## <a name="see-also"></a>関連項目
 
-+ [Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)
++ [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

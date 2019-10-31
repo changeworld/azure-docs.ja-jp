@@ -1,6 +1,6 @@
 ---
-title: ワークフロー定義言語のスキーマ参照 - Azure Logic Apps
-description: Azure Logic Apps でのワークフロー定義言語のスキーマに関するリファレンス ガイドです
+title: ワークフロー定義言語のスキーマ - Azure Logic Apps
+description: Azure Logic Apps でのワークフロー定義言語のスキーマ リファレンス
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 05/13/2019
-ms.openlocfilehash: c84791cb30622350b3e6d6356abd4580636c4ddf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 64c01baf0852e7e09ce9ffed2d079b47e95f7190
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385350"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680080"
 ---
-# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語のスキーマ参照
+# <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps でのワークフロー定義言語のスキーマ リファレンス ガイド
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) でロジック アプリを作成するとき、ロジック アプリには基になるワークフロー定義があり、ロジック アプリで実行される実際のロジックが記述されています。 そのワークフロー定義は、[JSON](https://www.json.org/) を使って作成し、ワークフロー定義言語スキーマによって検証される構造に従います。 このリファレンスでは、この構造に関する概要と、ワークフロー定義で属性がスキーマによってどのように定義されるかを説明します。
 
@@ -77,7 +77,7 @@ ms.locfileid: "68385350"
 },
 ```
 
-| Attribute | 必須 | Type | 説明 |
+| Attribute | 必須 | 種類 | 説明 |
 |-----------|----------|------|-------------|
 | <*parameter-name*> | はい | string | 定義するパラメーターの名前 |
 | <*parameter-type*> | はい | int、float、string、bool、array、object、securestring、secureobject <p><p>**メモ**:すべてのパスワード、キー、およびシークレットで、`securestring` 型または `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 パラメーターのセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)」を参照してください。 | パラメーターの型 |
@@ -115,7 +115,7 @@ ms.locfileid: "68385350"
 }
 ```
 
-| Attribute | 必須 | Type | 説明 |
+| Attribute | 必須 | 種類 | 説明 |
 |-----------|----------|------|-------------|
 | <*static-result-definition-name*> | はい | string | アクションの定義が `runtimeConfiguration.staticResult` オブジェクトを介して参照できる、静的な結果の定義の名前。 詳細については、「[ランタイム構成の設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)」を参照してください。 <p>任意の一意の名前を使用できます。 既定では、この一意の名前に数値が追加されます。この数値は必要に応じてインクリメントされます。 |
 | <*output-attributes-and-values-returned*> | はい | 多様 | これらの属性の要件は、さまざまな条件によって異なります。 たとえば、`status` が `Succeeded` の場合、`outputs` 属性には、アクションによってモック出力として返される属性と値が含まれます。 `status` が `Failed` の場合は、`outputs` 属性には `errors` 属性が含まれます。これは、エラー情報が格納された、1 つ以上のエラー `message` オブジェクトの配列です。 |
@@ -278,7 +278,7 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 }
 ```
 
-| Attribute | 必須 | Type | 説明 |
+| Attribute | 必須 | 種類 | 説明 |
 |-----------|----------|------|-------------|
 | <*key-name*> | はい | string | 出力戻り値のキーの名前 |
 | <*key-type*> | はい | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 |

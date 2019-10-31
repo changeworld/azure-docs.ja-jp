@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 437f93e35040a93fb0c3098d6ec53883c3f856a7
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981171"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553292"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 
@@ -32,13 +32,13 @@ ms.locfileid: "71981171"
 
 ## <a name="introduction"></a>はじめに
 
-Azure Time Series Insights は、エンドツーエンドのサービスとしてのプラットフォームのオファリングです。 豊富なコンテキスト情報を付加され、時系列に合わせて最適化された IoT スケールのデータの収集、処理、格納、分析、クエリに使用されます。 Time Series Insights は、アドホックなデータ探索と運用分析に最適です。 Time Series Insights は、産業用 IoT デプロイの広範なニーズを満たす、個別に拡張可能なカスタマイズされたサービス オファリングです。
+Azure Time Series Insights は、エンドツーエンドの、サービスとしてのプラットフォームのオファリングです。 豊富なコンテキスト情報を付加され、時系列に合わせて最適化された IoT スケールのデータの収集、処理、格納、分析、クエリに使用されます。 Time Series Insights は、アドホックなデータ探索と運用分析に最適です。 Time Series Insights は、産業用 IoT デプロイの広範なニーズを満たす、個別に拡張可能なカスタマイズされたサービス オファリングです。
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>データ探索と視覚的な異常検出
 
 数十億件ものイベントを瞬時に調査して分析し、データの異常を特定し、潜んでいる傾向を明らかにします。 Time Series Insights は、IoT と DevOps の分析ワークロードでほぼリアルタイムのパフォーマンスを発揮します。
 
-[![データ エクスプローラー](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
+[![データ エクスプローラー](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
 
 分析情報を最短時間で取得できることが Time Series Insights の特筆すべき機能の 1 つであることに、ほとんどのお客様が納得します。
 
@@ -66,7 +66,7 @@ Time Series Insights に格納されたデータと対話する方法は主に 3
 
 Time Series Insights を使用すると、大規模に機器の正常性、使用状況、パフォーマンスを監視できます。 Time Series Insights では、簡単な方法で運用の効率性を測定できます。 Time Series Insights を使用すると、取り込みやクエリのパフォーマンスを損なうことなく予測不能な各種 IoT ワークロードを管理するのに役立ちます。
 
-[![概要](media/v2-update-use-cases/overview.svg)](media/v2-update-use-cases/overview.svg#lightbox)
+[![概要](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 運用プロセスからのデータのストリーミングと継続的処理により、適切なテクノロジやソリューションと組み合わせた場合に、あらゆるビジネスを適切に変換できます。 多くの場合、これらのソリューションは、複数のシステムの組み合わせになります。 これらにより、特に IoT 領域内の、絶えず変更され、共通のパターンを共有するデータの探索と分析が可能になります。
 
@@ -86,7 +86,7 @@ Time Series Insights は、履歴データに対してほぼリアルタイム�
 
 Machine Learning や Azure Databricks などの高度な分析サービスと統合します。 Time Series Insights は数百万のデバイスから生データを取り込みます。 Azure 分析サービスのスイートによって、シームレスに使用できるコンテキスト データを追加します。
 
-[![分析](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
+[![分析](media/v2-update-use-cases/advanced-analytics.png)](media/v2-update-use-cases/advanced-analytics.png#lightbox)
 
 高度な分析と機械学習では、大量のデータを使用し、処理します。 このデータは、データドリブンの意思決定を行い、予測分析の実行に使われます。 IoT のユース ケースでは、高度な分析アルゴリズムが、数百万のデバイスから収集されたデータから学習します。 これらのデバイスは、毎秒複数回データを転送します。 IoT デバイスから収集されたデータは生データです。 デバイスの場所やセンサー読み取りの単位などのコンテキスト情報が不足しています。 そのため、生データを高度な分析に直接使用することは困難です。
 
@@ -96,7 +96,7 @@ Time Series Insights では、2 つの簡単なコスト効率の高い方法で
 
     Time Series Insights は、組織全体のすべてのデータの信頼できるソースとして使用できます。 使用するダウンストリーム分析ワークロード用の中央リポジトリを作成します。 Time Series Insights は、ほぼリアルタイムのストレージ サービスであるため、高度な分析モデルが、受信する IoT テレメトリ データから継続的に学習できます。 そのため、モデルはより正確な予測ができます。
 
-- 2 つ目に、Time Series Insights は、機械学習と予測モデルの出力を取り込み、その結果を視覚化して格納できます。 この手順により、組織はモデルを最適化し、調整できます。 Time Series Insights により、トレーニング済みモデルの出力と同じ平面上にストリーミング テレメトリ データを簡単に視覚化できます。 このように、データ サイエンス チームが異常を特定し、パターンを識別するために役立ちます。  
+- 2 つ目に、機械学習と予測モデルの出力を Time Series Insights に取り込めば、その結果を視覚化して格納できます。 この手順により、組織はモデルを最適化し、調整できます。 Time Series Insights により、トレーニング済みモデルの出力と同じ平面上にストリーミング テレメトリ データを簡単に視覚化できます。 このように、データ サイエンス チームが異常を特定し、パターンを識別するために役立ちます。  
 
 ## <a name="next-steps"></a>次の手順
 

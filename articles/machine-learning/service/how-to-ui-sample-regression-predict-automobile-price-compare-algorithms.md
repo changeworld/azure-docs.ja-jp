@@ -1,7 +1,7 @@
 ---
 title: 'ビジュアル インターフェイスの例 #3: 価格を予測しアルゴリズムを比較するための回帰'
 titleSuffix: Azure Machine Learning
-description: この記事では、コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較する方法について説明します。
+description: この記事では、コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習のパイプラインを構築する方法について説明します。 技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,34 +10,34 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: c40d76b87ca7437e25c567176b0309f08f3ca9f2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 651644eaae910792aac2144531d09afc4cde7153
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131134"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692789"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>サンプル 2 - 回帰:価格を予測し、アルゴリズムを比較する
 
-コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 このサンプルでは、技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較します。 ご自身で機械学習の問題に取り組むことができるように、ここではこの実験で行われた選択の理論的な根拠を提示します。
+コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習のパイプラインを構築する方法について説明します。 このサンプルでは、技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較します。 ご自身で機械学習の問題に取り組むことができるように、ここではこのパイプラインで行われた選択の理論的な根拠を提示します。
 
-機械学習を始めたばかりの場合は、この実験の[基本的なバージョン](how-to-ui-sample-regression-predict-automobile-price-basic.md)を参照してください。
+機械学習を始めたばかりの場合は、このパイプラインの[基本的なバージョン](how-to-ui-sample-regression-predict-automobile-price-basic.md)を参照してください。
 
-この実験の完成したグラフを次に示します。
+このパイプラインの完成したグラフを次に示します。
 
-[![実験のグラフ](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![パイプラインのグラフ](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. サンプル 2 実験の **[Open]\(開く\)** ボタンを選択します。
+4. サンプル 2 パイプラインの **[開く]** ボタンを選択します。
 
-    ![実験を開く](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
+    ![パイプラインを開く](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="experiment-summary"></a>実験の概要
+## <a name="pipeline-summary"></a>パイプラインの概要
 
-機械学習の実験を構築するには、次のステップを使用します。
+機械学習のパイプラインを構築するには、次のステップを使用します。
 
 1. データを取得する。
 1. データを前処理する。
@@ -60,11 +60,9 @@ ms.locfileid: "71131134"
 
 機械学習の問題はさまざまです。 一般的な機械学習タスクには、分類、クラスタリング、回帰、推奨システムなどがあり、それぞれに異なるアルゴリズムが必要になる場合があります。 アルゴリズムの選択は、多くの場合、ユース ケースの要件によって異なります。 アルゴリズムを選択したら、より正確なモデルをトレーニングするためにそのパラメーターを調整する必要があります。 次に、精度、明瞭度、効率性などのメトリックに基づいて、すべてのモデルを評価する必要があります。
 
-この実験の目的は自動車の価格を予測することであり、またラベル列 (価格) には実数が含まれるため、回帰モデルを選択することをお勧めします。 特徴の数が比較的少なく (100 未満)、これらの特徴が疎でないことを考慮すると、決定境界は非線形である可能性があります。
+このパイプラインの目的は自動車の価格を予測することであり、またラベル列 (価格) には実数が含まれるため、回帰モデルを選択することをお勧めします。 特徴の数が比較的少なく (100 未満)、これらの特徴が疎でないことを考慮すると、決定境界は非線形である可能性があります。
 
-この実験の目的は自動車の価格を予測することであり、またラベル列 (価格) には実数が含まれるため、回帰モデルを選択することをお勧めします。 特徴の数が比較的少なく (100 未満)、これらの特徴が疎でないことを考慮すると、決定境界は非線形である可能性があります。
-
-異なるアルゴリズムのパフォーマンスを比較するために、**Boosted Decision Tree Regression** と **Decision Forest Regression** の 2 つの非線形アルゴリズムを使用してモデルを構築します。 どちらのアルゴリズムにも変更可能なパラメーターがありますが、このサンプルでは既定値を使用します。
+異なるアルゴリズムのパフォーマンスを比較するために、**Boosted Decision Tree Regression** と **Decision Forest Regression** の 2 つの非線形アルゴリズムを使用してモデルを構築します。 どちらのアルゴリズムにも変更可能なパラメーターがありますが、このサンプルではこのパイプラインの既定値を使用します。
 
 **データの分割**モジュールを使用して、トレーニング データセットが元のデータの 70% を含み、テスト データセットが元のデータの 30% を含むように、入力データをランダムに分割します。
 
@@ -74,7 +72,7 @@ ms.locfileid: "71131134"
 
 モデルのトレーニングが終わったら、**モデルのスコア付け**モジュールと**モデルの評価**モジュールを使用して予測結果を生成し、モデルを評価します。 **モデルのスコア付け**は、トレーニングされたモデルを使用してテスト データセットの予測を生成します。 次に、そのスコアを **Evaluate Model (モデルの評価)** に渡して評価メトリックを生成します。
 
-この実験では、**Evaluate Model (モデルの評価)** の 2 つのインスタンスを使用して、2 組のモデルを比較します。
+このパイプラインでは、**Evaluate Model (モデルの評価)** の 2 つのインスタンスを使用して、2 組のモデルを比較します。
 
 まず、トレーニング データセットで 2 つのアルゴリズムを比較します。
 次に、テスト データセットで 2 つのアルゴリズムを比較します。
@@ -100,3 +98,4 @@ ms.locfileid: "71131134"
 - [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [サンプル 5 - 分類:顧客離れを予測する](how-to-ui-sample-classification-predict-churn.md)
 - [サンプル 6 - 分類:フライトの遅延を予測する](how-to-ui-sample-classification-predict-flight-delay.md)
+- [サンプル 7 - テキスト分類: ブック レビュー](how-to-ui-sample-text-classification.md)

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: abc7302ee59103a9cbab156b95a41b77eb95d474
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729159"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677876"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>チュートリアル:Python および TensorFlow を使用して Azure Functions で機械学習モデルを適用する
 
@@ -140,7 +140,7 @@ Azure Custom Vision Service でトレーニングされ、エクスポートさ�
 > [!NOTE]
 > Custom Vision Service の Free レベルを使用して独自のビルドを作成する場合は、[サンプル プロジェクト リポジトリ](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)の指示に従ってください。
 
-このモデルは、 *<REPOSITORY_ROOT>/resources/model* フォルダー内の *model.db* と *labels.txt* の 2 つのファイルで構成されています。 これらを *classify* 関数のフォルダーにコピーします。
+このモデルは、 *<REPOSITORY_ROOT>/resources/model* フォルダー内の 2 つのファイルで構成されています: *model.pb* および *labels.txt*。 これらを *classify* 関数のフォルダーにコピーします。
 
 #### <a name="linux-and-macos"></a>Linux および macOS:
 
@@ -179,7 +179,7 @@ copy ..\resources\predict.py classify
 ヘルパー ライブラリには、インストールされる必要があるいくつかの依存関係があります。 エディターで *start/requirements.txt* を開き、次の依存関係をファイルに追加します。
 
 ```txt
-tensorflow
+tensorflow==1.15
 Pillow
 requests
 ```

@@ -1,19 +1,19 @@
 ---
-title: 例:Bing Entity Search API を使用してカスタム コグニティブ スキルを作成する - Azure Search
-description: Azure Search のコグニティブ検索インデックス作成パイプラインにマッピングされたカスタム スキルで Bing Entity Search サービスを使用する方法を紹介します。
+title: 例:Bing Entity Search API を使用してカスタム コグニティブ スキルを作成する
+titleSuffix: Azure Cognitive Search
+description: Azure コグニティブ検索の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: d76a250cc3554b086501899376cb411346a4251c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9ab828daa009f7204abb1c64291d937a1f0dba2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266344"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784929"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例:Bing Entity Search API を使用してカスタム スキルを作成する
 
@@ -69,7 +69,7 @@ namespace SampleSkills
 {
     /// <summary>
     /// Sample custom skill that wraps the Bing entity search API to connect it with a 
-    /// cognitive search pipeline.
+    /// AI enrichment pipeline.
     /// </summary>
     public static class BingEntitySearch
     {
@@ -313,7 +313,7 @@ namespace SampleSkills
 
 Bing Entity Search API にサインアップしたときに取得したキーに基づいて、`key` 定数の独自の *key* 値を確実に入力します。
 
-このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 それと同じスキルでもう少し構造化されたバージョンが、[power skills リポジトリ](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)にあります。
+このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 [power skills リポジトリ](https://aka.ms/entity-search-power-skill)には、同じスキルをさらに構造化したバージョンや、カスタム スキルの他の例があります。
 
 もちろん、ファイル名を `Function1.cs` から `BingEntitySearch.cs` に変更できます。
 
@@ -478,6 +478,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 ## <a name="next-steps"></a>次の手順
 お疲れさまでした。 最初のカスタム エンリッチャーが作成されました。 これで同じパターンに従って、独自のカスタム機能を追加できます。 
 
++ [Power Skills: カスタム スキルのリポジトリ](https://aka.ms/powerskills)
 + [コグニティブ検索パイプラインにカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

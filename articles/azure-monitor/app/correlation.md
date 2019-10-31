@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights におけるテレメトリの関連付け | Microsoft Docs
 description: Application Insights におけるテレメトリの相関付け
-services: application-insights
-documentationcenter: .net
-author: lgayhardt
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.author: lagayhar
-ms.openlocfilehash: fe52fe51b347b232e03bad943906413b90c853c0
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338186"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755379"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -218,6 +214,82 @@ public void ConfigureServices(IServiceCollection services)
 詳細については、「[Application Insights Telemetry のデータ モデル](../../azure-monitor/app/data-model.md)」をご覧ください。 
 
 OpenTracing の概念の定義については、OpenTracing の[仕様](https://github.com/opentracing/specification/blob/master/specification.md)と [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) に関するページをご覧ください。
+
+## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python におけるテレメトリの相関付け
+
+OpenCensus Python は、前述の `OpenTracing` データモデル仕様に従います。 また、構成を必要とせずに [W3C Trace-Context](https://w3c.github.io/trace-context/) もサポートしています。
+
+### <a name="incoming-request-correlation"></a>着信要求の相関付け
+
+OpenCensus Python は、着信要求の W3C Trace Context ヘッダーを、要求自体から生成された範囲に関連付けます。 OpenCensus はこれを、`flask`、`django`、`pyramid` などの一般的な Web アプリケーション フレームワークの統合によって自動的に実行します。 W3C Trace Context ヘッダーは、[正しい形式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)で入力し、要求と共に送信するだけで済みます。 これを示す `flask` アプリケーションの例を次に示します。
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+これは、ポート `8080` をリッスンして、サンプルの `flask` アプリケーションをローカル コンピューターで実行します。 トレース コンテキストを関連付けるため、エンドポイントに要求を送信します。 この例では、`curl` コマンドを使用できます。
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+[Trace ContextTrace ヘッダー形式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) を見ると、次の情報が得られます: `version`: `00`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`: `00f067aa0ba902b7`
+`trace-flags`: `01`
+
+Azure Monitor に送信された要求エントリを確認すると、トレース ヘッダー情報が入力されたフィールドを確認できます。
+
+![トレース ヘッダーのフィールドが赤色の枠線で強調表示されている、ログ (分析) の要求テレメトリのスクリーンショット](./media/opencensus-python/0011-correlation.png)
+
+`id` フィールドの形式は `<trace-id>.<span-id>` です。ここで、`trace-id` は要求で渡されたトレース ヘッダーから取得され、`span-id` はこのスパンで生成された 8 バイト配列です。 
+
+`operation_ParentId` フィールドの形式は `<trace-id>.<parent-id>` です。ここで、`trace-id` と `parent-id` は、要求で渡されたトレース ヘッダーから取得されます。
+
+### <a name="logs-correlation"></a>ログの関連付け
+
+OpenCensus Python では、トレース ID、スパン ID、サンプリング フラグを使用してログ レコードを強化することで、ログの関連付けを実現できます。 これを行うには、OpenCensus [logging integration](https://pypi.org/project/opencensus-ext-logging/) をインストールします。 Python `LogRecord` に属性 `traceId`、`spanId`、および `traceSampled` が追加されます。 これは統合後に作成されたロガーに対してのみ有効になることに注意してください。
+これを示すサンプル アプリケーションを次に示します。
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+このコードを実行すると、コンソールに次の情報が表示されます。
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+スパン内にあるログ メッセージの spanId が存在していることを確認します。これは、`hello` という名前のスパンに属する spanId と同じです。
 
 ## <a name="telemetry-correlation-in-net"></a>.NET におけるテレメトリの相関付け
 

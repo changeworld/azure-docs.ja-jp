@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 36f26808b94893990ceec65e114b11113dbafd6f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 72549a2df3490344987567d1e62c65f76f151097
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177482"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693262"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -96,7 +96,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 * **アクティビティ ログ**:[Azure アクティビティ ログ](../monitoring-and-diagnostics/insights-debugging-with-events.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
 * **アクセス ログ**:このログを使用して Application Gateway のアクセス パターンを表示し、重要な情報を分析できます。 これには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別されます。
-* **パフォーマンス ログ**:このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。
+* **パフォーマンス ログ**:このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。 パフォーマンス ログは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](application-gateway-metrics.md)を使用します。
 * **ファイアウォール ログ**:このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。
 
 > [!NOTE]
@@ -252,7 +252,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 
 ### <a name="performance-log"></a>パフォーマンス ログ
 
-パフォーマンス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 パフォーマンス ログ データは、1 分間隔で生成されます。 次のデータがログに記録されます。
+パフォーマンス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 パフォーマンス ログ データは、1 分間隔で生成されます。 これは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](application-gateway-metrics.md)を使用します。 次のデータがログに記録されます。
 
 
 |値  |説明  |

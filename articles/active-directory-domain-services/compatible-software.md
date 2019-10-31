@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services:互換性のあるサード パーティ製ソフトウェア | Microsoft Docs
+title: Azure AD Domain Services 用の互換性のあるサードパーティ製ソフトウェア | Microsoft Docs
 description: Azure Active Directory Domain Services で機能するサードパーティ製ソフトウェア
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: iainfou
-ms.openlocfilehash: 7d0130c3489d29f4e6b0fbe42f184dd06f17bbd7
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f5a633a49a0f7b99da4eac08a527d17299aa34b9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473780"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754449"
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Azure AD Domain Services と互換性があるサードパーティ製ソフトウェア
 

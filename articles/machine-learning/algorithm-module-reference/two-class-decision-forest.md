@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 37a2ce77e438145219df9cb553d1881626e8a2c6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 243f1774069f048d0e8a1ce11e3ac42e4e73f58b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128394"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693617"
 ---
 # <a name="two-class-decision-forest-module"></a>2 クラス デシジョン フォレスト モジュール
 
@@ -49,7 +49,7 @@ ms.locfileid: "70128394"
 
 ## <a name="how-to-configure"></a>構成方法
   
-1.  Azure Machine Learning で **2 クラス デシジョン フォレスト** モジュールを実験に追加し、そのモジュールの **[プロパティ]** ウィンドウを開きます。 
+1.  Azure Machine Learning で **2 クラス デシジョン フォレスト** モジュールをパイプラインに追加し、そのモジュールの **[プロパティ]** ウィンドウを開きます。 
 
     このモジュールは、 **[Machine Learning]\(機械学習\)** にあります。 **[初期化]** 、 **[分類]** の順に展開します。  
   
@@ -97,9 +97,9 @@ ms.locfileid: "70128394"
   
     それぞれのツリーをクリックして分割をドリルダウンすると、各ノードのルールが表示されます。
 
-+ モデルのスナップショットを保存するために、 **[Trained Model]\(トレーニング済みのモデル\)** 出力を右クリックし、 **[Save Model]\(モデルの保存\)** を選択します。 実験を連続で実行しても、保存済みのモデルは更新されません。
++ モデルのスナップショットを保存するために、 **[Trained Model]\(トレーニング済みのモデル\)** 出力を右クリックし、 **[Save Model]\(モデルの保存\)** を選択します。 パイプラインを連続で実行しても、保存済みのモデルは更新されません。
 
-+ このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールを実験に追加します。
++ このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールをパイプラインに追加します。
 
 
 ## <a name="next-steps"></a>次の手順

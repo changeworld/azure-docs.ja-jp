@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 78a73e687d653998cf4e641c216f383474dcc8bd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9376493cdd1a8a9790f4de8ee3769acf8dca5ade
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244449"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595566"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>新しい Dynamics 365 Business Central オファーの作成
 

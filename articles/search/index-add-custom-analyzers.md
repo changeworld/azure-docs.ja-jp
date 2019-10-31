@@ -1,13 +1,13 @@
 ---
-title: カスタム アナライザーを追加する - Azure Search
-description: Azure Search のフルテキスト検索クエリで使用されるテキスト トークナイザーと文字フィルターを変更します。
-ms.date: 08/08/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: インデックスの文字列フィールドにカスタム アナライザーを追加する
+titleSuffix: Azure Cognitive Search
+description: Azure コグニティブ検索のフルテキスト検索クエリで使用されるテキスト トークナイザーと文字フィルターを構成します。
+manager: nitinme
 author: Yahnoosh
 ms.author: jlembicz
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0cd2cf4b7847b767bac391f2547c0a5c3e3a9135
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: bed011d62fa227697562f552ecb649c4b1fc00c9
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891571"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790153"
 ---
-# <a name="add-custom-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスにカスタム アナライザーを追加する
+# <a name="add-custom-analyzers-to-an-azure-cognitive-search-index"></a>Azure コグニティブ検索のインデックスにカスタム アナライザーを追加する
 
 *カスタム アナライザー*は特定の種類の[テキスト アナライザー](search-analyzers.md)であり、既存のトークナイザーとオプションのフィルターのユーザー定義の組み合わせで構成されます。 新しい方法でトークナイザーとフィルターを組み合わせることにより、特定の結果を実現するために、検索エンジンでテキスト処理をカスタマイズできます。 たとえば、"*文字フィルター*" でカスタム アナライザーを作成し、テキスト入力をトークン化する前に HTML マークアップを削除できます。
 
@@ -36,7 +36,7 @@ ms.locfileid: "69891571"
 
  [フルテキスト検索エンジン](search-lucene-query-architecture.md)の役割を簡単に説明すると、クエリと取得を効率的に行えるようにドキュメントを処理して格納することです。 大まかに言えば、ドキュメントから重要な単語を抽出して、インデックスに配置し、インデックスを使用して指定されたクエリの単語に一致するドキュメントを検索します。 ドキュメントと検索クエリから単語を抽出するプロセスを、"*字句解析*" と呼びます。 字句解析を実行するコンポーネントは、"*アナライザー*" と呼ばれます。
 
- Azure Search では、[アナライザー](#AnalyzerTable)の表で示されている定義済みの言語に依存しないアナライザー、または[言語アナライザー &#40;Azure Search Service REST API&#41;](index-add-language-analyzers.md) に列記されている言語固有のアナライザーから、選択できます。 また、独自のカスタム アナライザーを定義することもできます。  
+ Azure コグニティブ検索では、[アナライザー](#AnalyzerTable)の表で示されている定義済みの言語に依存しないアナライザー、または[言語アナライザー &#40;Azure コグニティブ検索サービス REST API&#41;](index-add-language-analyzers.md) に列記されている言語固有のアナライザーから、選択できます。 また、独自のカスタム アナライザーを定義することもできます。  
 
  カスタム アナライザーを使用すると、テキストをインデックス付け可能で検索可能なトークンに変換するプロセスを制御できます。 それは、定義済みの 1 つのトークナイザー、1 つ以上のトークン フィルター、1 つ以上の文字フィルターで構成されるユーザー定義の構成です。 トークナイザーではテキストがトークンに分割され、トークン フィルターではトークナイザーによって生成されたトークンが変更されます。 文字フィルターは、トークナイザーによって処理される前に、入力テキストを準備するために適用されます。 たとえば、文字フィルターを使用して、特定の文字や記号を置き換えることができます。
 
@@ -52,13 +52,13 @@ ms.locfileid: "69891571"
 
 - ASCII フォールディング。 検索語句に含まれる ö や ê などの付加記号を正規化するための標準 ASCII フォールディング フィルターを追加します。  
 
-  このページでは、サポートされているアナライザー、トークナイザー、トークン フィルター、文字フィルターの一覧を示します。 また、インデックスの定義に対する変更の説明と使用例も示されています。 Azure Search の実装に利用されている基礎技術の背景については、 [解析パッケージの概要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html)を参照してください。 アナライザーの構成の例については、[Azure Search でのアナライザーの追加](search-analyzers.md#examples)に関するセクションをご覧ください。
+  このページでは、サポートされているアナライザー、トークナイザー、トークン フィルター、文字フィルターの一覧を示します。 また、インデックスの定義に対する変更の説明と使用例も示されています。 Azure コグニティブ検索の実装に利用されている基礎技術の背景については、[解析パッケージの概要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html) のページを参照してください。 アナライザーの構成の例については、[Azure コグニティブ検索でのアナライザーの追加](search-analyzers.md#examples)に関するセクションをご覧ください。
 
 ## <a name="validation-rules"></a>検証規則  
  アナライザー、トークナイザー、トークン フィルター、文字フィルターの名前は一意でなければならず、事前定義済みのアナライザー、トークナイザー、トークン フィルター、文字フィルターと同じにすることはできません。 既に使用されている名前については、「[プロパティ リファレンス](#PropertyReference)」をご覧ください。
 
 ## <a name="create-custom-analyzers"></a>カスタム アナライザーの作成
- インデックスを作成するときに、カスタム アナライザーを定義できます。 このセクションでは、カスタム アナライザーを指定する構文について説明します。 [Azure Search でのアナライザーの追加](search-analyzers.md#examples)に関するセクションのサンプル定義を見て、構文を理解することもできます。  
+ インデックスを作成するときに、カスタム アナライザーを定義できます。 このセクションでは、カスタム アナライザーを指定する構文について説明します。 [Azure コグニティブ検索でのアナライザーの追加](search-analyzers.md#examples)に関するセクションのサンプル定義を見て、構文を理解することもできます。  
 
  アナライザーの定義には、名前、種類、1 つ以上の文字フィルター、最大で 1 つのトークナイザー、トークン化後の処理のための 1 つ以上のトークン フィルターが含まれます。 文字フィルターは、トークン化の前に適用されます。 トークン フィルターと文字フィルターは、左から右に適用されます。
 
@@ -214,7 +214,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|Type|サポートされているアナライザーの一覧に含まれるアナライザーの種類です。 下記の[アナライザー](#AnalyzerTable)の表の **analyzer_type** 列をご覧ください。|  
+|種類|サポートされているアナライザーの一覧に含まれるアナライザーの種類です。 下記の[アナライザー](#AnalyzerTable)の表の **analyzer_type** 列をご覧ください。|  
 |オプション|下記の[アナライザー](#AnalyzerTable)の表に列記されている定義済みアナライザーの有効なオプションを指定する必要があります。|  
 
 #### <a name="custom-analyzers"></a>カスタム アナライザー
@@ -222,7 +222,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|Type|"#Microsoft.Azure.Search.CustomAnalyzer" を指定する必要があります。|  
+|種類|"#Microsoft.Azure.Search.CustomAnalyzer" を指定する必要があります。|  
 |CharFilters|[文字フィルター](#char-filters-reference)の表に列記されている定義済みの文字フィルターのいずれか、またはインデックスの定義で指定されているカスタム文字フィルターに設定します。|  
 |トークナイザー|必須。 下記の[トークナイザー](#Tokenizers)の表に列記されている定義済みのトークナイザーのいずれか、またはインデックスの定義で指定されているカスタム トークナイザーに設定します。|  
 |TokenFilters|[トークン フィルター](#TokenFilters)の表に列記されている定義済みのトークン フィルターのいずれか、またはインデックスの定義で指定されているカスタム トークン フィルターに設定します。|  
@@ -239,7 +239,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|Type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
+|種類|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
 |オプション|指定した[文字フィルター](#char-filters-reference)の種類で有効なオプションを使用する必要があります。|  
 
 ### <a name="tokenizers"></a>トークナイザー
@@ -252,7 +252,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|Type|サポートされているトークナイザーの一覧のトークナイザー名を使用します。 下記の[トークナイザー](#Tokenizers)の表の **tokenizer_type** 列をご覧ください。|  
+|種類|サポートされているトークナイザーの一覧のトークナイザー名を使用します。 下記の[トークナイザー](#Tokenizers)の表の **tokenizer_type** 列をご覧ください。|  
 |オプション|下記の[トークナイザー](#Tokenizers)の表で示されている特定のトークナイザーの種類の有効なオプションを指定する必要があります。|  
 
 ### <a name="token-filters"></a>トークン フィルター
@@ -263,7 +263,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|Type|サポートされているトークン フィルターの一覧のトークン フィルター名を使用します。 下記の[トークン フィルター](#TokenFilters)の表の **token_filter_type** 列をご覧ください。|  
+|種類|サポートされているトークン フィルターの一覧のトークン フィルター名を使用します。 下記の[トークン フィルター](#TokenFilters)の表の **token_filter_type** 列をご覧ください。|  
 |オプション|特定のトークン フィルターの種類の[トークン フィルター](#TokenFilters)を使用する必要があります。|  
 
 <a name="PropertyReference"></a>  
@@ -383,6 +383,6 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 
 
 ## <a name="see-also"></a>関連項目  
- [Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Azure Search でのアナライザーの例](search-analyzers.md#examples)    
- [インデックスを作成する &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [Azure コグニティブ検索 REST API](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Azure コグニティブ検索でのアナライザーの例](search-analyzers.md#examples)    
+ [インデックスの作成 &#40;Azure コグニティブ検索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

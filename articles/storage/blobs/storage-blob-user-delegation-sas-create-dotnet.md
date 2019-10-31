@@ -5,85 +5,54 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: c75a13a20c1dbb222db69145e24838deb111fb66
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671339"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595213"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する (プレビュー)
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-この記事では、[.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/Azure.Storage.Blobs)を使用するコンテナーまたは BLOB 用のユーザー委任 SAS を Azure Active Directory (Azure AD) 資格情報を使用して作成する方法について説明します。
+この記事では、Azure Active Directory (Azure AD) 資格情報を使用して .NET 用 Azure Storage クライアント ライブラリを使用するコンテナーまたは Blob 用のユーザー委任 SAS を作成する方法について説明します。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
+## <a name="authenticate-with-the-azure-identity-library-preview"></a>Azure ID ライブラリを使用した認証 (プレビュー)
+
+.NET 対応の Azure ID クライアント ライブラリ (プレビュー) では、セキュリティ プリンシパルが認証されます。 コードが Azure 上で実行されている場合、セキュリティ プリンシパルは Azure リソースに対するマネージド ID です。
+
+開発環境でコードを実行している場合は、認証が自動的に処理されるか、使用しているツールに応じてブラウザー ログインが必要になることがあります。 Microsoft Visual Studio では、アクティブな Azure AD ユーザー アカウントが自動的に認証に使用されるように、シングル サインオン (SSO) がサポートされます。 SSO の詳細については、[アプリケーションへのシングル サインオン](../../active-directory/manage-apps/what-is-single-sign-on.md)に関するページを参照してください。
+
+他の開発ツールでは、Web ブラウザー経由でログインするように求められる場合があります。 また、サービス プリンシパルを使用して、開発環境から認証することもできます。 詳細については、[ポータルでの Azure アプリ用の ID 作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
+
+認証後、Azure ID クライアント ライブラリでは、トークン資格情報を取得します。 このトークン資格情報は、Azure Storage に対して操作を実行するために作成するサービス クライアント オブジェクトにカプセル化されます。 ライブラリでは、適切なトークン資格情報を取得することで、これをシームレスに処理します。
+
+Azure ID クライアント ライブラリの詳細については、「[.NET 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)」を参照してください。
+
+## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC ロールを割り当ててデータにアクセスする
+
+Azure AD セキュリティ プリンシパルが Blob データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での Blob データへのアクセスを許可する RBAC ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して Azure Blob およびキューへのアクセスを承認します](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)」にある「**アクセス権に RBAC ロールを割り当てる**」というタイトルのセクションを参照してください。
+
 ## <a name="install-the-preview-packages"></a>プレビュー パッケージをインストールする
 
-この記事の例では、BLOB ストレージ用の Azure Storage クライアント ライブラリの最新のプレビュー バージョンが使用されます。 プレビュー パッケージをインストールするには、NuGet パッケージ マネージャー コンソールから次のコマンドを実行します。
+この記事の例では、[Blob ストレージ用の Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/Azure.Storage.Blobs)の最新のプレビュー バージョンが使用されます。 プレビュー パッケージをインストールするには、NuGet パッケージ マネージャー コンソールから次のコマンドを実行します。
 
-```
+```powershell
 Install-Package Azure.Storage.Blobs -IncludePrerelease
 ```
 
-この記事の例では、Azure AD の資格情報で認証するために、[.NET 用 Azure ID クライアント ライブラリ](https://www.nuget.org/packages/Azure.Identity/)の最新のプレビュー バージョンも使用されます。 Azure ID クライアント ライブラリによって、セキュリティ プリンシパルが認証されます。 その後、認証されたセキュリティ プリンシパルによって、ユーザー委任 SAS を作成できます。 Azure ID クライアント ライブラリの詳細については、「[.NET 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)」を参照してください。
+この記事の例では、Azure AD の資格情報で認証するために、[.NET 用 Azure ID クライアント ライブラリ](https://www.nuget.org/packages/Azure.Identity/)の最新のプレビュー バージョンも使用されます。 プレビュー パッケージをインストールするには、NuGet パッケージ マネージャー コンソールから次のコマンドを実行します。
 
-```
+```powershell
 Install-Package Azure.Identity -IncludePrerelease
 ```
-
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
-
-Azure ID クライアント ライブラリ経由で Azure AD の資格情報を使用して認証するには、コードの実行場所に応じて、サービス プリンシパルまたはマネージド ID をセキュリティ プリンシパルとして使用します。 コードが開発環境で実行される場合は、テスト目的でサービス プリンシパルを使用します。 コードが Azure で実行される場合は、マネージド ID を使用します。 この記事では、開発環境からコードを実行することを前提として、サービス プリンシパルを使用してユーザー委任 SAS を作成する方法を示します。
-
-Azure CLI を使用してサービス プリンシパルを作成し、RBAC ロールを割り当てるには、[az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを呼び出します。 新しいサービス プリンシパルに割り当てる Azure Storage データ アクセス ロールを指定します。 ロールには、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションが含まれている必要があります。 Azure Storage 用に提供されている組み込みロールの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
-
-さらに、ロール割り当て用のスコープを指定します。 サービス プリンシパルでは、ストレージ アカウント レベルで実行される操作であるユーザー委任キーが作成されるため、ロールの割り当てには、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルでスコープを設定する必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「[ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-user-delegation-sas)」の「**RBAC によるアクセス許可の割り当て**」セクションを参照してください。
-
-サービス プリンシパルにロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者にロールの割り当ての実行を依頼しなければならない可能性があります。
-
-次の例では、Azure CLI を使用して新しいサービス プリンシパルを作成し、**ストレージ BLOB データ閲覧者ロール**をアカウント スコープで割り当てています。
-
-```azurecli-interactive
-az ad sp create-for-rbac \
-    --name <service-principal> \
-    --role "Storage Blob Data Reader" \
-    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
-```
-
-`az ad sp create-for-rbac` コマンドによって、サービス プリンシパルのプロパティの一覧が JSON 形式で返されます。 これらの値をコピーして、次の手順で必要な環境変数を作成するために使用できるようにします。
-
-```json
-{
-    "appId": "generated-app-ID",
-    "displayName": "service-principal-name",
-    "name": "http://service-principal-uri",
-    "password": "generated-password",
-    "tenant": "tenant-ID"
-}
-```
-
-> [!IMPORTANT]
-> RBAC ロールの割り当ての反映には数分かかることがあります。
-
-## <a name="set-environment-variables"></a>環境変数の設定
-
-Azure ID クライアント ライブラリでは、実行時に 3 つの環境変数から値を読み取って、サービス プリンシパルが認証されます。 次の表で、各環境変数に設定する値について説明します。
-
-|環境変数|値
-|-|-
-|`AZURE_CLIENT_ID`|サービス プリンシパル用のアプリ ID
-|`AZURE_TENANT_ID`|サービス プリンシパルの Azure AD テナント ID
-|`AZURE_CLIENT_SECRET`|サービス プリンシパル用に生成されたパスワード
-
-> [!IMPORTANT]
-> 環境変数を設定したら、コンソール ウィンドウを閉じて再度開きます。 Visual Studio または他の開発環境を使用している場合は、新しい環境変数を登録するために開発環境の再起動が必要である可能性があります。
 
 ## <a name="add-using-directives"></a>using ディレクティブを追加する
 
@@ -100,11 +69,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="authenticate-the-service-principal"></a>サービス プリンシパルを認証する
+## <a name="get-an-authenticated-token-credential"></a>認証済みのトークン資格情報を取得する
 
-サービス プリンシパルを認証するには、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。 `DefaultAzureCredential` コンストラクター によって、先ほど作成した環境変数が読み取られます。
+Azure Storage への要求を承認するためにコード上で使用できるトークン資格情報を取得するには、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。
 
-次のコード スニペットでは、認証された資格情報を取得し、それを使用して BLOB ストレージ用のサービス クライアントを作成する方法が示されています。
+次のコード スニペットでは、認証されたトークン資格情報を取得し、それを使用して Blob ストレージ用のサービス クライアントを作成する方法が示されています。
 
 ```csharp
 string blobEndpoint = string.Format("https://{0}.blob.core.windows.net", accountName);

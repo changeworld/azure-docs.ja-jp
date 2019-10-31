@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 318a9c2df7902ae89a731ca45b24b8bb6241faa1
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: fd7e94261d8302224b0e31e5f4ac46978dfa812f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498389"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690879"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -43,7 +43,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 ## <a name="permissions"></a>実行アカウントを構成するためのアクセス許可
 
-実行アカウントを作成または更新するには、特定の特権およびアクセス許可が必要です。 Azure Active Directory の全体管理者と、サブスクリプションの所有者は、すべてのタスクを完了することができます。 職務権限を分離している状況では、タスク、相当するコマンドレット、および必要なアクセス許可の一覧を次の表に示します。
+実行アカウントを作成または更新するには、特定の特権およびアクセス許可が必要です。 Azure Active Directory のアプリケーション管理者とサブスクリプションの所有者は、すべてのタスクを完了できます。 職務権限を分離している状況では、タスク、相当するコマンドレット、および必要なアクセス許可の一覧を次の表に示します。
 
 |タスク|コマンドレット  |最小限のアクセス許可  |アクセス許可を設定する場所|
 |---|---------|---------|---|
@@ -424,7 +424,7 @@ $roleDefinition | Set-AzureRMRoleDefinition
 
 実行アカウントによって使用されるサービス プリンシパルが**共同作成者**に含まれるか、あるいはカスタム ロール定義であるかを確認するには、Automation アカウントに移動し、 **[アカウント設定]** で **[実行アカウント]**  >  **[Azure 実行アカウント]** を選択します。 **[ロール]** の下に、使用されているロール定義が見つかります。
 
-[![](media/manage-runas-account/verify-role.png "実行アカウントのロールを確認する")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+[![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
 複数のサブスクリプションまたは Automation アカウントの Automation 実行アカウントによって使用されるロール定義を確認するには、PowerShell ギャラリーの [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) スクリプトを使用できます。
 

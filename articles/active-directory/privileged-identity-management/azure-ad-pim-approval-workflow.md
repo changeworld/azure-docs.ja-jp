@@ -4,11 +4,11 @@ description: Azure AD Privileged Identity Management (PIM) で Azure AD ロー�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -16,14 +16,14 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a8d373a7e6edeaefd933e4f8ec8ee11e3c14ee
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 3245f7343a48d3e54795c14dcb23b836c8d9d988
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804027"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756425"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールに対する要求を承認または拒否する
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対する要求を承認または拒否する
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、アクティブ化の承認を必要とするようにロールを構成できます。また、代理承認者として 1 名以上のユーザーまたはグループを選択できます。 代理承認者は、要求を承認するまでに 24 時間あります。 要求が 24 時間以内に承認されない場合、有資格ユーザーは新しい要求を再送信する必要があります。 24 時間の承認時間枠は構成できません。
 
@@ -31,7 +31,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 ## <a name="view-pending-requests"></a>保留中の要求を表示する
 
-代理承認者は、Azure AD ロール要求が代理承認者による承認を待っている状態になると、メール通知を受け取ります。 これらの保留中の要求は、PIM で表示できます。
+代理承認者は、Azure AD ロール要求が代理承認者による承認を待っている状態になると、メール通知を受け取ります。 これらの保留中の要求は、Privileged Identity Management で表示できます。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -77,5 +77,5 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM での電子メール通知](pim-email-notifications.md)
-- [PIM で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)
+- [Privileged Identity Management での電子メール通知](pim-email-notifications.md)
+- [Privileged Identity Management で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)

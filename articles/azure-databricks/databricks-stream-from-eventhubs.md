@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
-ms.openlocfilehash: 942553e2ececf2bdc7bb2b240d4fa6c5f338beb2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 0ea85e60a84b540af2c772f81326dd8c45f61d4d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "68976498"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784020"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル:Event Hubs を使用してデータを Azure Databricks にストリーム配信する
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
-> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
+> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,11 +67,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure Portal で、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Azure Databricks]** の順に選択します。
 
-    ![Azure Portal の Databricks](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Azure Portal の Databricks")
+    ![Azure portal での Databricks](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Azure portal での Databricks")
 
 3. **[Azure Databricks サービス]** で値を指定して、Databricks ワークスペースを作成します。
 
-    ![Azure Databricks ワークスペースを作成する](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
+    ![Azure Databricks ワークスペースを作成します](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
 
     次の値を指定します。
 
@@ -95,7 +95,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** を選択します。
 
-    ![Azure の Databricks](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Azure の Databricks")
+    ![Azure での Databricks](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Azure での Databricks")
 
 3. **[New cluster]\(新しいクラスター\)** ページで、クラスターを作成するための値を指定します。
 
@@ -137,9 +137,9 @@ Twitter アプリケーションについて取得した値を保存します。
 
 1. Azure Databricks ワークスペースで **[クラスター]** を選択し、既存の Spark クラスターを選択します。 クラスター メニューで、 **[ライブラリ]** を選択し、 **[新規インストール]** をクリックします。
 
-   ![[ライブラリの追加] ダイアログ ボックス](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "[ライブラリの追加] でのクラスターの検索")
+   ![ライブラリの追加ダイアログ ボックス](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "[ライブラリの追加] でのクラスターの検索")
 
-   ![[ライブラリの追加] ダイアログ ボックス](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "[ライブラリの追加] での新規インストール")
+   ![ライブラリの追加ダイアログ ボックス](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "[ライブラリの追加] での新規インストール")
 
 2. [新しいライブラリ] ページの **[ソース]** で、 **[Maven]** を選択します。 **[座標]** では、追加したいパッケージの **[パッケージの検索]** をクリックします。 ここでは、このチュートリアルで使用するライブラリの Maven 座標です。
 

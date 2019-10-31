@@ -12,22 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086175"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674923"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>NFS ボリュームのエクスポート ポリシーを構成する
 
-Azure NetApp Files ボリュームへのアクセスを制御するエクスポート ポリシーは、必要に応じて構成することができます。 エクスポート ポリシーは NFS ボリュームについてのみサポートされています。 
+Azure NetApp Files ボリュームへのアクセスを制御するエクスポート ポリシーは、必要に応じて構成することができます。 Azure NetApp Files エクスポート ポリシーでサポートされるのは NFS のみです。  NFSv3 と NFSv4 の両方がサポートされています。 
 
 ## <a name="steps"></a>手順 
 
-1.  [Manage Volume]\(ボリュームの管理\) ブレードから **[Create Export Policy]\(エクスポート ポリシーの作成\)** ブレードをクリックします。 
+1.  Azure NetApp Files ナビゲーション ウィンドウで **[ポリシーのエクスポート]** をクリックします。 
 
 2.  次のフィールドの情報を指定して、エクスポート ポリシー ルールを作成します。   
     *  **[インデックス]**    
@@ -44,10 +44,6 @@ Azure NetApp Files ボリュームへのアクセスを制御するエクスポ�
         * アクセス権なし 
         * 読み取りと書き込み
         * 読み取り専用
-
-    * **[プロトコル]**    
-        エクスポート ポリシーに使用するプロトコルを指定します。   
-        現在、Azure NetApp Files エクスポート ポリシーでサポートされるのは NFSv3 のみです。
 
     ![エクスポート ポリシー](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

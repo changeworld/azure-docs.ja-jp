@@ -1,24 +1,25 @@
 ---
-title: 結果の並べ替えに関する C# のチュートリアル - Azure Search
-description: このチュートリアルでは、「検索結果のページング - Azure Search」プロジェクトに検索結果の並べ替えを追加します。 プライマリ プロパティで結果を並べ替える方法、および、プライマリ プロパティが同じである結果をセカンダリ プロパティで並べ替える方法を学びます。 最後に、スコアリング プロファイルに基づいて結果を並べ替える方法を学びます。
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: 結果の並べ替えに関する C# チュートリアル
+titleSuffix: Azure Cognitive Search
+description: このチュートリアルでは、「検索結果のページング - Azure Cognitive Search」プロジェクトに検索結果の並べ替えを追加します。 プライマリ プロパティで結果を並べ替える方法、および、プライマリ プロパティが同じである結果をセカンダリ プロパティで並べ替える方法を学びます。 最後に、スコアリング プロファイルに基づいて結果を並べ替える方法を学びます。
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/21/2019
-ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327661"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794048"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C# のチュートリアル: 結果の並べ替え - Azure Search
+# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# のチュートリアル: 結果の並べ替え - Azure Cognitive Search
 
 これまでのチュートリアルでは、結果は既定の順序で返され、表示されてきました。 これはデータの配置順である場合もあれば、並べ替えパラメーターが指定されていないときに使用される既定の_スコアリング プロファイル_が定義されている場合もあります。 このチュートリアルでは、プライマリ プロパティに基づいて結果を並べ替える方法について、次に、結果のプライマリ プロパティが同じである場合にセカンダリ プロパティでその選択を並べ替える方法について説明します。 最後の例では、数値に基づいた並べ替えの代わりに、カスタム スコアリング プロファイルに基づいて並べ替える方法を示しています。 _複合型_の表示についても少し踏み込んで説明します。
 
-返された結果を比較しやすくするため、このプロジェクトは 「[C# のチュートリアル: 検索結果のページング - Azure Search](tutorial-csharp-paging.md)」チュートリアルで作成した無限スクロール プロジェクトを基にしています。
+返された結果を比較しやすくするため、このプロジェクトは 「[C# のチュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」チュートリアルで作成した無限スクロール プロジェクトを基にしています。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -31,7 +32,7 @@ ms.locfileid: "71327661"
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-無限スクロール バージョンの「[C# のチュートリアル: 検索結果のページング - Azure Search](tutorial-csharp-paging.md)」プロジェクトを実行できるようにします。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでも構いません。
+無限スクロール バージョンの「[C# のチュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでも構いません。
 
 ## <a name="order-results-based-on-one-property"></a>1 つのプロパティに基づいて結果を並べ替える
 
@@ -435,7 +436,7 @@ ms.locfileid: "71327661"
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Azure Search によって距離フィルターを使用して結果が返されましたが、データと指定された地点の間の計算された距離は_返されません_。 この値を結果に表示したい場合、ビューまたはコントローラーで値を再計算します。
+3. Azure Cognitive Search によって距離フィルターを使用して結果が返されましたが、データと指定された地点の間の計算された距離は_返されません_。 この値を結果に表示したい場合、ビューまたはコントローラーで値を再計算します。
 
     次のコードは、2 つの緯度/経度点の間で距離を計算します。
 
@@ -465,7 +466,7 @@ ms.locfileid: "71327661"
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>スコアリング プロファイルに基づいて結果を並べ替える
 
-これまでのチュートリアルで示した例は、数値 (評価、改装日、地理的距離) で並べ替える方法を示しており、_正確な_並べ替えプロセスを提供します。 ただし、検索やデータによっては、2 つのデータ要素の比較がこれまでのように簡単にはいかない場合があります。 Azure Search には_スコアリング_の概念が含まれています。 _スコアリング プロファイル_は、データのセットに対して指定できます。テキストベースのデータを比較して最初に表示するものを決める場合などに真価を発揮する、より複雑で定性的な比較を提供するために使用できます。
+これまでのチュートリアルで示した例は、数値 (評価、改装日、地理的距離) で並べ替える方法を示しており、_正確な_並べ替えプロセスを提供します。 ただし、検索やデータによっては、2 つのデータ要素の比較がこれまでのように簡単にはいかない場合があります。 Azure Cognitive Search には、_スコアリング_の概念が含まれています。 _スコアリング プロファイル_は、データのセットに対して指定できます。テキストベースのデータを比較して最初に表示するものを決める場合などに真価を発揮する、より複雑で定性的な比較を提供するために使用できます。
 
 スコアリング プロファイルはユーザーが定義するのではなく、通常はデータ セットの管理者が定義します。 hotels データに対して複数のスコアリング プロファイルがセットアップされています。 スコアリング プロファイルの定義方法を見てから、それに基づいた検索を行うためのコードを記述してみましょう。
 
@@ -957,7 +958,7 @@ ms.locfileid: "71327661"
 
 ### <a name="resources"></a>リソース
 
-詳細については、次の「[スコアリング プロファイルを Azure Search のインデックスに追加する](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)」を参照してください。
+詳細については、次の「[スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)」を参照してください。
 
 ## <a name="takeaways"></a>重要なポイント
 
@@ -971,6 +972,6 @@ ms.locfileid: "71327661"
 
 ## <a name="next-steps"></a>次の手順
 
-この一連の C# チュートリアルを完了しました。Azure Search API に関する貴重な知識が得られたことでしょう。
+この一連の C# チュートリアルを完了しました。Azure Cognitive Search API に関する貴重な知識が得られたことでしょう。
 
-さらなるリファレンスやチュートリアルについては、[Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure) や、[Azure Search ドキュメント](https://docs.microsoft.com/azure/search/)のその他のチュートリアルをぜひ参考にしてください。
+さらなるリファレンスやチュートリアルについては、[Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure) や、[Azure Cognitive Search ドキュメント](https://docs.microsoft.com/azure/search/)のその他のチュートリアルをぜひ参考にしてください。

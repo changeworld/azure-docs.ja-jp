@@ -1,10 +1,10 @@
 ---
-title: Azure Security の概要 | Microsoft Docs
+title: Azure セキュリティの概要 | Microsoft Docs
 description: Azure のセキュリティ、サービス、およびそのしくみについて説明します。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262759"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595387"
 ---
-# <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
+# <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 ## <a name="overview"></a>概要
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。
 
-Microsoft Azure に実装されている多数のセキュリティ制御について、お客様側と Microsoft 側の運用上の観点からご理解いただくために、このホワイト ペーパー「Azure セキュリティの概要」では、Microsoft Azure で提供されるセキュリティについて総合的に説明します。
+この記事では、Azure で利用できるセキュリティについて包括的に説明します。
 
 ### <a name="azure-platform"></a>Azure プラットフォーム
 Azure は、オペレーティング システム、プログラミング言語、フレームワーク、ツール、データベース、デバイスにおいて幅広い選択肢をサポートするパブリック クラウド サービス プラットフォームです。 Docker を統合した Linux コンテナーの実行、JavaScript、Python、.NET、PHP、Java、Node.js によるアプリの構築、iOS、Android、Windows の各デバイスに対応したバックエンドの構築を行えます。
@@ -40,37 +40,25 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 > [!Note]
 > ここでは、アプリケーションやサービスをカスタマイズしてセキュリティを強化できる顧客向けの制御機能に重点を置いています。
 >
-> 概要情報だけでなく Microsoft で Azure プラットフォーム自体のセキュリティを保護する方法の詳細について確認するには、 [Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/default.aspx) を参照してください。
+> Microsoft が Azure プラットフォーム自体をセキュリティで保護する方法については、「[Azure インフラストラクチャのセキュリティ](infrastructure.md)」を参照してください。
 
-### <a name="abstract"></a>要約
-当初、パブリック クラウドの移行は、コストの削減と素早い導入によって決定されていました。 セキュリティは、これまで長い間パブリック クラウドの移行にとって重大な懸念事項であり、致命的な問題でもありました。 しかし、パブリック クラウドのセキュリティはいつしか重大な懸念事項からクラウド移行の原動力へと変化していきました。 この背景には、アプリケーションを保護する大規模なパブリック クラウド サービス プロバイダーの優れた能力と、クラウド ベースの資産データがあります。
+## <a name="summary-of-azure-security-capabilities"></a>Azure のセキュリティ機能の概要
 
-Azure のインフラストラクチャでは、数百万の顧客を同時にホストできるように施設からアプリケーションまでが設計されており、ビジネスのセキュリティ ニーズを満たす信頼性の高い基盤となっています。 また、Azure には構成可能な幅広いセキュリティ オプションと制御機能が用意されており、デプロイの独自の要件を満たすようにセキュリティをカスタマイズできるだけでなく、IT 制御ポリシーや外部規制の遵守も実現します。
+### <a name="features-to-secure-the-azure-platform"></a>Azure プラットフォームをセキュリティで保護するための機能
+次の機能で、Azure プラットフォームが安全な方法で管理されていることを確認できます。 Microsoft が安全なプラットフォーム、プライバシー管理、コンプライアンス、透明性という 4 つの領域においてお客様の信頼に関する質問にどのように対処しているかの詳細については、リンクをクリックすることで確認できます。
 
-このホワイト ペーパーでは、Microsoft Azure クラウド プラットフォームでの Microsoft のセキュリティ対策について、次の点を中心に概説します。
-* Azure インフラストラクチャ、顧客データ、およびアプリケーションのセキュリティを確保するために Microsoft で実装されるするセキュリティ機能。
-* サービスのセキュリティおよび Azure サブスクリプション内のデータをユーザーが管理できるようにする Azure のサービスとセキュリティ機能。
-
-## <a name="summary-azure-security-capabilities"></a>Azure のセキュリティ機能の概要
-次の表に、Azure インフラストラクチャ、顧客データ、および安全なアプリケーションのセキュリティを確保するために Microsoft で実装されているセキュリティ機能の概要を示します。
-### <a name="security-features-implemented-to-secure-the-azure-platform"></a>Azure プラットフォームのセキュリティを確保するために実装されるセキュリティ機能
-次に一覧された機能で、Azure プラットフォームが安全な方法で管理されていることを確認できます。 Microsoft が次の 4 つの領域においてお客様の信頼に関する質問にどのように対処しているかの詳細については、リンクをクリックすることで確認できます:安全なプラットフォーム、プライバシー管理、コンプライアンス、透明性。
-
-
-| [安全なプラットフォーム](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [プライバシー管理](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[コンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [透明性](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
+| [安全なプラットフォーム](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [プライバシー管理](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[コンプライアンス](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [透明性](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
-| [セキュリティ開発サイクル](https://www.microsoft.com/en-us/sdl/)、内部監査 | [データの常時管理](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [トラスト センター](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](https://azuredatacentermap.azurewebsites.net/)|
-| [侵入テスト](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)、[不正侵入検出、DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)、[監査、ログ記録](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [条件に応じたアクセス権の付与](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [クラウド サービス向けデリジェンス チェックリスト](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[データにアクセスできるユーザーとその条件](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
-| [最新のデータ センター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)、物理的なセキュリティ、[セキュリティで保護されたネットワーク](network-overview.md) | [法執行機関への対応](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [サービス、場所、および業界ごとのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
-|  [セキュリティ インシデント対応](https://aka.ms/SecurityResponsepaper)、[責任の分担](https://aka.ms/sharedresponsibility) |[厳格なプライバシー基準](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+| [セキュリティ開発サイクル](https://www.microsoft.com/sdl/)、内部監査 | [データの常時管理](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [トラスト センター](https://www.microsoft.com/trustcenter/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](https://azuredatacentermap.azurewebsites.net/)|
+| [侵入テスト](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)、[不正侵入検出、DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement)、[監査、ログ記録](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [条件に応じたアクセス権の付与](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [クラウド サービス向けデリジェンス チェックリスト](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[データにアクセスできるユーザーとその条件](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [最新のデータ センター](https://www.microsoft.com/cloud-platform/global-datacenters)、物理的なセキュリティ、[セキュリティで保護されたネットワーク](network-overview.md) | [法執行機関への対応](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [サービス、場所、および業界ごとのコンプライアンス](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
+|  [セキュリティ インシデント対応](https://aka.ms/SecurityResponsepaper)、[責任の分担](https://aka.ms/sharedresponsibility) |[厳格なプライバシー基準](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
-
-
-### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>データおよびアプリケーションのセキュリティを確保するために Azure で提供されるセキュリティ機能
+### <a name="features-to-secure-data-and-application"></a>データとアプリケーションをセキュリティで保護するための機能
 アプリケーションやサービスのセキュリティを管理する担当者の責任範囲は、クラウド サービス モデルによって異なります。 ビルトイン機能および Azure サブスクリプションに展開可能なパートナー ソリューションに、これらの責任範囲をカバーする Azure プラットフォームで使用可能な機能があります。
 
-ビルトイン機能は、次の 6 つの機能区分に分類されます:操作、アプリケーション、ストレージ、ネットワーキング、コンピューティング、ID。 Azure プラットフォームのこれら 6 つの領域で使用できる機能の詳細については、概要情報に記載されています。
+ビルトイン機能は、次の 6 つの機能区分に分類されます。操作、アプリケーション、ストレージ、ネットワーキング、コンピューティング、ID。 Azure プラットフォームのこれら 6 つの領域で使用できる機能の詳細については、概要情報に記載されています。
 
 ## <a name="operations"></a>Operations
 このセクションでは、セキュリティ操作を行う上で重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
@@ -104,10 +92,10 @@ Azure Monitor ログは、フォレンジック分析などのセキュリティ
 [Azure Advisor](../../advisor/index.yml) は、Azure のデプロイの最適化に役立つ、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 次に、[Azure の全体的な使用量を削減する](../../advisor/advisor-cost-recommendations.md)機会を探すと同時に、[パフォーマンス](../../advisor/advisor-performance-recommendations.md)、[セキュリティ](../../advisor/advisor-security-recommendations.md)、リソースの[高可用性](../../advisor/advisor-high-availability-recommendations.md)の向上に役立つソリューションを提案します。 Azure Advisor では、Azure にデプロイするソリューションの全体的なセキュリティの状況を大幅に改善することができる提案を行います。 これらの提案は [Azure Security Center](../../security-center/security-center-intro.md) で実施されるセキュリティ分析に基づいています。
 
 ### <a name="azure-security-center"></a>Azure Security Center
-[Azure Security Center](../../security-center/security-center-intro.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+[Security Center](../../security-center/security-center-intro.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-さらに、Azure Security Center は、すぐに対応できるようにアラートや推奨事項が表示された単一のダッシュ ボードを提供することで、セキュリティ操作に役立てることができます。 多くの場合、Azure Security Center コンソール内で 1 回クリックすれば問題を修復することができます。
-## <a name="applications"></a>アプリケーション
+さらに、Security Center は、すぐに対応できるようにアラートや推奨事項が表示された単一のダッシュ ボードを提供することで、セキュリティ操作に役立てることができます。 多くの場合、Security Center コンソール内で 1 回クリックすれば問題を修復することができます。
+## <a name="applications"></a>[アプリケーション]
 このセクションでは、アプリケーション セキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="web-application-vulnerability-scanning"></a>Web アプリケーションの脆弱性のスキャン
@@ -190,6 +178,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 [クロス オリジン リソース共有 (CORS)](https://docs.microsoft.com/rest/api/storageservices/fileservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) は、ドメインどうしが互いのリソースへのアクセスを許可するメカニズムです。 ユーザー エージェントは、特定のドメインから読み込まれた JavaScript コードが別のドメインにあるリソースへのアクセスに使用できることを確認する追加のヘッダーを送信します。 次に、後者のドメインが元のドメイン リソースへのアクセスを許可または拒否する追加のヘッダーを使用して応答します。
 
 Azure Storage サービスで CORS がサポートされるようになりました。これにより、サービスに CORS ルールを設定すると、別のドメインからサービスに対して行われた適切な認証要求が評価され、指定したルールに従って許可するかどうかを決定します。
+
 ## <a name="networking"></a>ネットワーク
 このセクションでは、Azure ネットワーク セキュリティの重要な機能と、これらの機能の概要情報に関する追加の情報を提供します。
 
@@ -212,7 +201,6 @@ Azure Virtual Network におけるルーティング動作を制御する機能�
 ネットワーク セキュリティ グループ、ユーザー定義ルート、強制トンネリングにより [OSI モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク層とトランスポート層のレベルでセキュリティ保護を行うことはできますが、より高いレベルのスタックでセキュリティを有効にする場合は時間がかかることがあります。 Azure パートナー ネットワーク セキュリティ アプライアンス ソリューションを使用すれば、これらの拡張ネットワーク セキュリティ機能を利用できます。 最新の Azure パートナー ネットワーク セキュリティ ソリューションについては、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にアクセスし、"security" および "network security" と検索すると見つかります。
 
 ### <a name="azure-virtual-network"></a>Azure Virtual Network
-
 Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。 サブスクリプション専用に Azure ネットワーク ファブリックが論理的に分離されています。 このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。 VNet をサブネットに分割し、Azure IaaS 仮想マシン (VM) や[クラウド サービス (PaaS ロール インスタンス)](../../cloud-services/cloud-services-choose-me.md) を配置できます。
 
 また、Azure のいずれかの[接続オプション](../../vpn-gateway/index.yml)を使用し、仮想ネットワークをオンプレミスのネットワークに接続することができます。 つまり、Azure が提供するエンタープライズ規模のメリットを享受しながら、IP アドレス ブロックを完全に制御して、ネットワークを Azure に拡張できます。
@@ -268,19 +256,19 @@ Web アプリケーション ファイアウォール (WAF) は [Azure Applicati
 
 -   一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
 
-
 Web 攻撃に対する保護を提供する Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、侵入の脅威からアプリケーションがより確実に保護されます。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールを備えたアプリケーション ゲートウェイに簡単に変換できます。
 
 ### <a name="traffic-manager"></a>Traffic Manager
 [Microsoft Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) では、さまざまなデータ センターのサービス エンドポイントへのユーザー トラフィックの分散を制御できます。 Traffic Manager でサポートされるサービス エンドポイントには、Azure VM、Web アプリケーション、およびクラウド サービスが含まれます。 Azure 以外の外部エンドポイントで Traffic Manager を使用することもできます。 Traffic Manager では、ドメイン ネーム システム (DNS) を使用して、[トラフィック ルーティング方法](../../traffic-manager/traffic-manager-routing-methods.md)とエンドポイントの正常性に基づいて最適なエンドポイントにクライアント要求を送信します。
 
 Traffic Manager には、さまざまなアプリケーション ニーズ、エンドポイントの正常性、[監視](../../traffic-manager/traffic-manager-monitoring.md)、自動フェールオーバーに対応する、さまざまなトラフィック ルーティング方法が備わっています。 Traffic Manager は Azure リージョン全体の障害などの障害に対応します。
+
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) は、高可用性と優れたネットワーク パフォーマンスをアプリケーションに提供します。 Azure Load Balancer は、負荷分散セットで定義されているサービスの正常なインスタンス間で着信トラフィックを分散する、レイヤー 4 (TCP、UDP) ロード バランサーです。 Azure Load Balancer は次のように構成できます。
 
 -   仮想マシンへの着信インターネット トラフィックを負荷分散します。 この構成は、 [インターネットに接続する負荷分散](../../load-balancer/load-balancer-overview.md#publicloadbalancer)と呼ばれます。
 
--   仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間で、トラフィックを負荷分散します。 この構成は、 [内部負荷分散](../../load-balancer/load-balancer-overview.md#internalloadbalancer)と呼ばれます。 
+-   仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間で、トラフィックを負荷分散します。 この構成は、 [内部負荷分散](../../load-balancer/load-balancer-overview.md#internalloadbalancer)と呼ばれます。
 
 - 外部トラフィックを特定の仮想マシンに転送します。
 
@@ -289,18 +277,18 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 ### <a name="azure-dns"></a>Azure DNS
 [ドメイン ネーム システム (DNS)](https://technet.microsoft.com/library/bb629410.aspx) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 [Azure DNS](../../dns/dns-overview.md) は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 DNS では、セキュリティの 3 つの柱、"CIA" (機密性、整合性、可用性) の中の可用性がサポートされています。
+
 ### <a name="azure-monitor-logs-nsgs"></a>Azure Monitor ログ NSG
 NSG に対して、以下の診断ログ カテゴリを有効にできます。
+
 -   イベント:MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 
 -   ルール カウンター:トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
-### <a name="azure-security-center"></a>Azure Security Center
-
+### <a name="security-center"></a>Security Center
 [Azure Security Center](../../security-center/security-center-intro.md) では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/security-center-recommendations.md)が作成されます。
 
 ## <a name="compute"></a>Compute
-
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="antimalware--antivirus"></a>マルウェア対策とウイルス対策ソフトウェア
@@ -332,17 +320,14 @@ SQL Server をオンプレミス コンピューターで実行している場�
 修正プログラムは潜在的な問題を見つけて修正するための基盤となるだけでなく、社内でデプロイする必要のあるソフトウェア更新プログラムの数を削減し、コンプライアンスを監視する機能を強化することにより、ソフトウェア更新管理プロセスを簡略化します。
 
 ### <a name="security-policy-management-and-reporting"></a>セキュリティ ポリシーの管理とレポート
-[Azure Security Center](../../security-center/security-center-intro.md) は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
-
-### <a name="azure-security-center"></a>Azure Security Center
-Security Center は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+[Security Center](../../security-center/security-center-intro.md) は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
-
 システム、アプリケーション、およびデータのセキュリティ保護は、ID ベースのアクセス制御から始まります。 Microsoft のビジネス製品およびサービスに組み込まれている ID およびアクセス管理機能は、正規ユーザーが必要とするときはいつでもどこでも利用できるようにする一方で、組織および個人情報を不正アクセスから保護します。
 
 ### <a name="secure-identity"></a>セキュリティ保護された ID
 Microsoft では、複数のセキュリティ上の方法およびテクノロジを製品やサービスに使用して、ID とアクセスを管理します。
+
 -   [多要素認証](https://azure.microsoft.com/services/multi-factor-authentication/)では、複数のメソッドを使用してクラウドのオンプレミス環境にアクセスする必要があります。 幅広い簡単な検証オプションによって強力な認証を提供する一方で、簡単なサインイン プロセスでユーザーの要求に応えます。
 
 -   [Microsoft Authenticator](https://aka.ms/authenticator) は Microsoft Azure Active Directory と Microsoft アカウントの両方で機能するわかりやすい多要素認証機能で、ウェアラブルな承認や指紋ベースの承認がサポートされています。
@@ -378,14 +363,7 @@ Microsoft では、複数のセキュリティ上の方法およびテクノロ�
 - [Azure Active Directory アプリケーション プロキシ](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/)は、オンプレミスでホストされた Web アプリケーションに対する SSO およびセキュリティ保護されたリモート アクセスを提供します。
 
 ## <a name="next-steps"></a>次の手順
-- [Microsoft Azure セキュリティの概要](https://docs.microsoft.com/azure/security)
 
-Azure 内でデータとサービスを保護するために使用できる、Azure のサービスと機能
+- [クラウドにおける共同責任](shared-responsibility.md)について理解します。
 
-- [Azure Security Center](https://azure.microsoft.com/services/security-center/)
-
-Azure リソースのセキュリティの可視性と管理能力を高めることで脅威を防止、検出して対応可能
-
-- [Azure Security Center でのセキュリティ ヘルスの監視](../../security-center/security-center-monitoring.md)
-
-ポリシーに対するコンプライアンスを監視するAzure Security Center の監視機能
+- [Azure Security Center](https://azure.microsoft.com/services/security-center/) で、Azure リソースのセキュリティを高度に視覚化して制御することで、脅威の回避、検出、対応を支援する方法について確認します。

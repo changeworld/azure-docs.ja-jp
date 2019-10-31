@@ -1,7 +1,7 @@
 ---
 title: 'Azure Blob Storage からのインポート: モジュール リファレンス'
 titleSuffix: Azure Machine Learning service
-description: このトピックでは、Azure Machine Learning service の "Azure Blob Storage からのインポート" モジュールを使用して、機械学習の実験に使用するために Azure Blob Storage からデータを読み取る方法について説明します。
+description: このトピックでは、Azure Machine Learning service の "Azure Blob Storage からのインポート" モジュールを使用して、機械学習のパイプラインに使用するために Azure Blob Storage からデータを読み取る方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: fea64070c496379351bb75f2a38aba9b4db70dcd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f8d23bfbee6d3665d770d8cbbcb9440827a88e8e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128720"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693735"
 ---
 # <a name="import-from-azure-blob-storage-module"></a>"Azure Blob Storage からのインポート" モジュール
 
 この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
 
-機械学習の実験にデータを使用できるように Azure Blob Storage からデータを読み取るには、このモジュールを使用します。  
+機械学習のパイプラインにデータを使用できるように Azure Blob Storage からデータを読み取るには、このモジュールを使用します。  
 
 Azure Blob service は、大量のデータ (バイナリ データを含む) を格納することを目的としています。 Azure BLOB には、HTTP または HTTPS を使用して、どこからでもアクセスすることができます。 Blob Storage の種類によっては、認証が要求される場合があります。 
 
@@ -38,7 +38,7 @@ Blob Storage からのインポートでは、**ブロック BLOB** 形式が使
 
 次の手順では、インポート元を手動で構成する方法について説明します。
 
-1. **データのインポート** モジュールを実験に追加します。 このモジュールは、インターフェイスの **[Data Input and Output]\(データの入力と出力\)** にあります。
+1. **データのインポート** モジュールをパイプラインに追加します。 このモジュールは、インターフェイスの **[Data Input and Output]\(データの入力と出力\)** にあります。
 
 2. **[データ ソース]** に **[Azure Blob Storage]** を選択します。
 
@@ -77,7 +77,7 @@ Blob Storage からのインポートでは、**ブロック BLOB** 形式が使
     コンテナー名にワイルドカードを使用することはできません。 複数のコンテナーからファイルをインポートする必要がある場合、コンテナーごとに**データのインポート** モジュールの個別のインスタンスを使用し、[行の追加](./add-rows.md)モジュールを使ってデータセットをマージしてください。
 
     > [!NOTE]
-    > **[Use cached results]\(キャッシュされた結果を使用する\)** オプションを選択した場合、コンテナー内のファイルに変更を加えても、実験のデータは更新されません。
+    > **[Use cached results]\(キャッシュされた結果を使用する\)** オプションを選択した場合、コンテナー内のファイルに変更を加えても、パイプラインのデータは更新されません。
 
 7. Azure Machine Learning がデータを適切に処理できるよう、BLOB に格納されているデータの形式を指定するオプションを **[BLOB ファイル形式]** で選択します。 次の形式がサポートされています。
 
@@ -93,7 +93,7 @@ Blob Storage からのインポートでは、**ブロック BLOB** 形式が使
 
    
 
-8. 実験を実行します。
+8. パイプラインを実行します。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,22 +1,23 @@
 ---
-title: 初めてのアプリを作成する C# チュートリアル - Azure Search
-description: このチュートリアルでは、Azure Search の最初のアプリを構築するためのステップバイステップ ガイドを提供します。 このチュートリアルでは、GitHub で公開されている動作するアプリへのリンクと、ゼロからアプリを構築する完全なプロセスの両方を提供します。 Azure Search の重要なコンポーネントについて説明します。
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: 最初のアプリを作成する C# チュートリアル
+titleSuffix: Azure Cognitive Search
+description: 最初の検索アプリを作成する手順について説明します。 このチュートリアルでは、GitHub で公開されている動作するアプリへのリンクと、ゼロからアプリを構築する完全なプロセスの両方を提供します。 Azure Cognitive Search の重要なコンポーネントについて説明します。
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: d569437a3e6f6f05ddb9c6fa85f62c77ac51f72b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443818"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794133"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-search"></a>C# のチュートリアル: 初めてのアプリを作成する - Azure Search
+# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# のチュートリアル: 最初のアプリを作成する - Azure Cognitive Search
 
-Azure Search を使用してクエリを実行し、インデックスから検索結果を表示する Web インターフェイスを作成する方法について説明します。 このチュートリアルは、検索ページの構築に集中することができるように、ホストされている既存のインデックスを使用して始めます。 インデックスには、架空のホテルのデータが含まれています。 基本的なページができた後は、以降のレッスンでページング、ファセット、および入力候補を提示する機能を追加し、ページを強化できます。
+Azure Cognitive Search を使用してクエリを実行し、インデックスから検索結果を表示する Web インターフェイスを作成する方法について説明します。 このチュートリアルは、検索ページの構築に集中することができるように、ホストされている既存のインデックスを使用して始めます。 インデックスには、架空のホテルのデータが含まれています。 基本的なページができた後は、以降のレッスンでページング、ファセット、および入力候補を提示する機能を追加し、ページを強化できます。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -60,7 +61,7 @@ IDE として使用するために [Visual Studio をインストール](https:/
 
 うまくいけば、プロジェクトがスムーズに実行され、Azure アプリが起動します。 より高度な検索で使用する重要なコンポーネントの多くは、この 1 つのアプリに含まれています。そのため、一通り体験し、ステップ バイ ステップで再作成してみるとよいでしょう。
 
-ゼロからこのプロジェクトを作成し、Azure Search のコンポーネントに関する知識を強化するには、次の手順を実行します。
+ゼロからこのプロジェクトを作成し、Azure Cognitive Search のコンポーネントに関する知識を強化するには、次の手順を実行します。
 
 ## <a name="set-up-a-development-environment"></a>開発環境をセットアップする
 
@@ -72,11 +73,11 @@ IDE として使用するために [Visual Studio をインストール](https:/
 
     ![MVC プロジェクトを作成する](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
 
-3. 次に、 **[ツール]** メニューから、 **[Nuget パッケージ マネージャー]** 、 **[ソリューションの NuGet パッケージの管理]** の順に選択します。1 つのパッケージをインストールする必要があります。 **[参照]** タブを選択し、検索ボックスに「Azure Search」と入力します。 **[Microsoft.Azure.Search]** が一覧に表示されたら、それをインストールします (バージョン 9.0.1、またはそれ以降)。 インストールを完了するには、他にいくつかのダイアログ ボックスをクリックする必要があります。
+3. 次に、 **[ツール]** メニューから、 **[Nuget パッケージ マネージャー]** 、 **[ソリューションの NuGet パッケージの管理]** の順に選択します。1 つのパッケージをインストールする必要があります。 **[参照]** タブを選択し、検索ボックスに「Azure Cognitive Search」と入力します。 **[Microsoft.Azure.Search]** が一覧に表示されたら、それをインストールします (バージョン 9.0.1 またはそれ以降)。 インストールを完了するには、他にいくつかのダイアログ ボックスをクリックする必要があります。
 
     ![NuGet を使用して Azure ライブラリを追加する](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
-### <a name="initialize-azure-search"></a>Azure Search を初期化する
+### <a name="initialize-azure-cognitive-search"></a>Azure Cognitive Search を初期化する
 
 このサンプルでは、一般に公開されているホテルのデータを使用します。 このデータは、架空のホテル名と説明を含む 50 個の無作為なコレクションで、デモ データを提供するためにのみ作成されたものです。 このデータにアクセスするには、名前とキーを指定する必要があります。
 
@@ -223,7 +224,7 @@ IDE として使用するために [Visual Studio をインストール](https:/
     }
     ```
 
-5. **Hotel**、**Address**、および **Room** の各クラスは、Azure で[_複合型_](search-howto-complex-data-types.md)と呼ばれています。これは、Azure Search の重要な機能です。 複合型にはいくつもの深さのクラスとサブクラスを持つことができるので、_単純型_ (プリミティブ メンバーのみを含むクラス) を使用するよりもはるかに複雑なデータ構造を表現できます。 もう 1 つモデルが必要なので、再度新しいモデル クラスを作成する手順を実行します。今回はクラスを SearchData.cs と呼び、既定のコードを以下で置き換えます。
+5. **Hotel**、**Address**、および **Room** の各クラスは、Azure で[_複合型_](search-howto-complex-data-types.md)と呼ばれています。これは、Azure Cognitive Search の重要な機能です。 複合型にはいくつもの深さのクラスとサブクラスを持つことができるので、_単純型_ (プリミティブ メンバーのみを含むクラス) を使用するよりもはるかに複雑なデータ構造を表現できます。 もう 1 つモデルが必要なので、再度新しいモデル クラスを作成する手順を実行します。今回はクラスを SearchData.cs と呼び、既定のコードを以下で置き換えます。
 
     ```cs
     using Microsoft.Azure.Search.Models;
@@ -425,7 +426,7 @@ Index.cshtml の内容をすべて削除し、次の手順でファイルを再�
                     model.searchText = "";
                 }
 
-                // Make the Azure Search call.
+                // Make the Azure Cognitive Search call.
                 await RunQueryAsync(model);
             }
 
@@ -451,7 +452,7 @@ GitHub のサンプルでは、未使用のビューとそれに関連する操�
 
 ### <a name="add-the-runqueryasync-method"></a>RunQueryAsync メソッドを追加する
 
-Azure Search の呼び出しは、**RunQueryAsync** メソッド内にカプセル化されます。
+Azure Cognitive Search の呼び出しは、**RunQueryAsync** メソッド内にカプセル化されます。
 
 1. まず、Azure のサービスを設定するいくつかの静的変数を追加し、それらを開始する呼び出しを行います。
 
@@ -517,11 +518,11 @@ Azure Search の呼び出しは、**RunQueryAsync** メソッド内にカプセ�
 
      ![「beach」の検索](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
 
-3. 「five star」と入力してみてください。 結果が返されないことに注意してください。 より高度な検索では、「five star」を「luxury」のシノニムとして扱い、その結果を返します。 Azure Search ではシノニムを使用することもできますが、最初のチュートリアルでは説明しません。
+3. 「five star」と入力してみてください。 結果が返されないことに注意してください。 より高度な検索では、「five star」を「luxury」のシノニムとして扱い、その結果を返します。 Azure Cognitive Search ではシノニムを使用することもできますが、最初のチュートリアルでは説明しません。
  
 4. 検索テキストとして「hot」を入力してみてください。 「hotel」という単語を含むエントリは_返されません_。 いくつかの結果が返されますが、この検索では単語全体を検索しています。
 
-5. 「pool」、「sunshine」、「view」など、その他の単語を試してみてください。 Azure Search は非常に単純な動作をしていますが、それでも納得できるレベルであることがわかります。
+5. 「pool」、「sunshine」、「view」など、その他の単語を試してみてください。 Azure Cognitive Search は非常に単純な動作をしていますが、それでも納得できるレベルであることがわかります。
 
 ## <a name="test-edge-conditions-and-errors"></a>エッジ条件とエラーをテストする
 
@@ -542,17 +543,17 @@ Azure Search の呼び出しは、**RunQueryAsync** メソッド内にカプセ�
 
 このプロジェクトの重要なポイントを示します。
 
-* Azure Search の呼び出しは簡潔で、結果の解釈は簡単です。
+* Azure Cognitive Search の呼び出しは簡潔で、結果の解釈は簡単です。
 * 非同期呼び出しを使用すると、コントローラーはわずかに複雑になります。しかし、高品質なアプリを開発する場合は、非同期呼び出しを使用するのがベスト プラクティスです。
 * このアプリでは、**searchParameters** に設定された内容に応じて、簡単なテキスト検索を実行しました。 ただし、この 1 つのクラスには、高度な検索を行うことができる多数のメンバーを追加できます。 このアプリを大幅に強化するために、大規模な追加作業は必要ありません。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Search を使用して最適なユーザー エクスペリエンスを提供するためには、さらに機能を追加する必要があります。中でも重要なのが、ページング (ページ番号または無限スクロールを使用) やオートコンプリート/入力候補の機能です。 高度な検索パラメーター (たとえば、特定の地点から指定した半径内にあるホテルの検索や、検索結果の並び替え) についても、検討する必要があります。
+Azure Cognitive Search を使用して最適なユーザー エクスペリエンスを提供するためには、さらに機能を追加する必要があります。中でも重要なのが、ページング (ページ番号または無限スクロールを使用) やオートコンプリート/入力候補の機能です。 高度な検索パラメーター (たとえば、特定の地点から指定した半径内にあるホテルの検索や、検索結果の並び替え) についても、検討する必要があります。
 
 これらの次の手順は、一連のチュートリアルの中で説明します。 ページングから見ていきましょう。
 
 > [!div class="nextstepaction"]
-> [C# のチュートリアル: 検索結果のページング- Azure Search](tutorial-csharp-paging.md)
+> [C# チュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)
 
 

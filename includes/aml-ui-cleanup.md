@@ -7,17 +7,16 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 05/06/2019
-ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 10/16/2019
+ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181592"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692353"
 ---
 >[!IMPORTANT]
 >作成したリソースは、Azure Machine Learning service のその他のチュートリアルおよびハウツー記事の前提条件として使用できます。
-
 
 ### <a name="delete-everything"></a>すべてを削除する
 
@@ -49,6 +48,6 @@ ms.locfileid: "67181592"
 
 ### <a name="delete-individual-assets"></a>個々の資産を削除する
 
-実験を作成したビジュアル インターフェイスで、個々の資産を選択し、 **[削除]** ボタンを選択してそれらを削除します。
+実験を作成したビジュアル インターフェイスで、個々の資産を選択し、 **[削除]** ボタンを選択してそれらを削除します。 ワークスペースからデータセットを登録解除するには、各データセットを選択し、 **[登録解除]** を選択します。
 
-![実験を削除する](./media/aml-ui-cleanup/delete-experiment.png)
+![アセットを削除する](./media/aml-ui-cleanup/delete-asset.png)

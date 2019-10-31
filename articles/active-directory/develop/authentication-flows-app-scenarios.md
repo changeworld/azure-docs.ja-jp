@@ -18,10 +18,10 @@ ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71557a2776bae36508beec8d5af9e00923393163
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72324749"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
@@ -159,7 +159,7 @@ Windows ドメインに参加しているか、Azure Active Directory (Azure AD)
 
 ![Web API を呼び出すモバイル アプリ](media/scenarios/mobile-app.svg)
 
-MSAL iOS と MSAL Android では、既定でシステム Web ブラウザーが使用されます。 もっとも、代わりに埋め込みの Web ビューを使用するように指定することもできます。 具体的な仕様は、モバイル プラットフォーム (ユニバーサル Windows プラットフォーム (UWP)、iOS、Android) に応じて異なります。
+MSAL iOS と MSAL Android では、既定でシステム Web ブラウザーが使用されます。 もっとも、代わりに埋め込みの Web ビューを使用するように指定することもできます。 モバイル プラットフォームに依存する特異性があります。ユニバーサル Windows プラットフォーム (UWP)、iOS、または Android。
 
 デバイス ID やデバイス登録に関連して条件付きアクセスを使用するシナリオなど、一部のシナリオでは、デバイス上に[ブローカー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)をインストールする必要があります。 ブローカーにはたとえば、Microsoft ポータル サイト (Android)、Microsoft Authenticator (Android および iOS) があります。 このほか、MSAL もブローカーと対話できるようになりました。
 

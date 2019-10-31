@@ -1,25 +1,23 @@
 ---
-title: 検索ボックスでの多言語対応コンテンツの言語フィルター処理 - Azure Search
-description: クエリ実行の範囲を言語固有のフィールドに設定して、多言語検索をサポートするための条件をフィルター処理します。
-author: HeidiSteen
+title: 検索ボックスでの多言語対応コンテンツの言語フィルター処理
+titleSuffix: Azure Cognitive Search
+description: クエリの実行範囲を言語固有のフィールドに設定して、多言語検索をサポートする条件をフィルター処理します。
 manager: nitinme
-services: search
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 10/23/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649855"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792884"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>Azure Search の言語によるフィルター処理方法 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Cognitive Search での言語によるフィルター処理の方法 
 
-多言語対応の検索アプリケーションで重要な要件は、ユーザーが使用する言語で検索し、結果を取得できる機能です。 Azure Search では、多言語対応アプリの言語要件を満たすために、特定の言語の文字列を格納する専用の一連のフィールドを作成し、クエリ時それらのフィールドに対してのみフル テキスト検索を制限するという方法を使用しています。
+多言語対応の検索アプリケーションで重要な要件は、ユーザーが使用する言語で検索し、結果を取得できる機能です。 Azure Cognitive Search での多言語対応アプリの言語要件の対応には、特定言語の文字列のみを格納する一連のフィールドを作成し、クエリ時それらのフィールドに対してのみフル テキスト検索をして制限する方法があります。
 
 要求のクエリ パラメーターは、検索操作の範囲指定だけでなく、提供する検索機能と互換性がある内容を含まないフィールドの結果をトリミングするためにも使用されています。
 
@@ -28,11 +26,11 @@ ms.locfileid: "69649855"
 | **searchFields** | フル テキスト検索の対象を、指定したフィールドの一覧にのみ制限します。 |
 | **$select** | 応答をトリミングし、指定したフィールドのみを含めます。 既定では、すべての取得可能なフィールドが返されます。 **$select** パラメーターを使用すると、返すフィールドを選択できます。 |
 
-フィールドの内容の整合性によって、この手法が成功するかどうかが決まります。 Azure Storage では、文字列の変換や言語の検出を行いません。 フィールドに目的の文字列が含まれているかどうかは、ユーザーが判断する必要があります。
+フィールドの内容の整合性によって、この手法が成功するかどうかが決まります。 Azure Cognitive Search では、文字列の変換や言語の検出は行いません。 フィールドに目的の文字列が含まれているかどうかは、ユーザーが判断する必要があります。
 
 ## <a name="define-fields-for-content-in-different-languages"></a>複数言語のコンテンツのフィールドを定義する
 
-Azure Search のクエリは、単一のインデックスを対象にしています。 通常、単一の検索操作で言語固有の文字列を提供したい場合は、それらの値を格納する専用のフィールドを定義します。たとえば、英語の文字列用のフィールド、フランス語用のフィールドなどです。 
+Azure Cognitive Search のクエリは、単一のインデックスを対象にしています。 通常、単一の検索操作で言語固有の文字列を提供したい場合は、それらの値を格納する専用のフィールドを定義します。たとえば、英語の文字列用のフィールド、フランス語用のフィールドなどです。 
 
 このサンプルには以下の[不動産のサンプル](search-get-started-portal.md)が含まれているので、次のスクリーンショットのようなフィールド定義になります。 この例では、このインデックスのフィールド用に言語アナライザーの割り当てが表示されていることに注目してください。 文字列を含むフィールドを、対象言語の言語ルールを処理するように設計されたアナライザーと組み合わせると、フル テキスト検索のパフォーマンスは向上します。
 
@@ -64,8 +62,8 @@ parameters =
 
 ## <a name="see-also"></a>関連項目
 
-+ [Azure Search のフィルター](search-filters.md)
++ [Azure Cognitive Search のフィルター](search-filters.md)
 + [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)
++ [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

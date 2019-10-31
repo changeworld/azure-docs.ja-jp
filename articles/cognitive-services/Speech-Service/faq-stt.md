@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: bde68a70ac047433e86b7e06bc5f4a56bdd28595
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028500"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595332"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -71,6 +71,28 @@ ms.locfileid: "72028500"
 
 より高いスケールが必要な場合は、[音声のサポート](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text)にお問い合わせください。
 
+カスタム モデルのコンカレンシーを向上させるには、次の情報が必要です。
+
+- モデルがデプロイされているリージョン。
+- デプロイされたモデルのエンドポイント ID。
+
+基本モデルのコンカレンシーを向上させるには、次の情報が必要です。
+
+- お使いのサービスのリージョン。
+
+または
+
+- お使いのサブスクリプションでのアクセス トークン ([こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)を参照)。
+
+or
+
+- お使いのサブスクリプションでのリソース ID:
+  - https://portal.azure.com へ移動します。
+  - 検索ボックス内で `Cognitive Services` を選択します。
+  - 表示されたサービスから、コンカレンシーを引き上げる音声サービスを選択します。
+  - このサービスのプロパティを表示します。
+  - 完全な `Resource ID` をコピーします。
+
 **Q:自分のモデルをダウンロードしてローカルで実行できますか。**
 
 **A**: モデルをダウンロードしてローカルで実行することはできません。
@@ -94,7 +116,7 @@ ms.locfileid: "72028500"
 
 **Q:データセットのサイズの制限とは何ですか、なぜ制限するのですか。**
 
-**A**: データセットの現在の制限は 2 GB です。 この制限は、HTTP のアップロード用のファイルのサイズに対する制限が原因です。 
+**A**: データセットの現在の制限は 2 GB です。 この制限は、HTTP のアップロード用のファイルのサイズに対する制限が原因です。
 
 **Q:テキスト ファイルを zip で圧縮すればさらに大きなテキスト ファイルをアップロードできるでしょうか。** 
 

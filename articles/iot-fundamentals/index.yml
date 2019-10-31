@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: e74fbe6e358c3a230fe466f3e73850022574a868
-  ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+  ms.openlocfilehash: 866faa560a9ffbc08bf171951b6e1456cabe5a3d
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70919068"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72935235"
 highlightedContent:
   items:
   - title: Azure IoT とは?
@@ -56,17 +56,17 @@ conceptualContent:
       text: 関連項目
   - title: Azure IoT Central を使用してフル マネージド IoT ソリューションをデプロイする
     links:
-    - url: ../iot-central/overview-iot-central.md
+    - url: ../iot-central/core/overview-iot-central.md
       itemType: overview
       text: Azure IoT Central とは
-    - url: ../iot-central/quick-deploy-iot-central.md
+    - url: ../iot-central/core/quick-deploy-iot-central.md
       itemType: quickstart
       text: IoT Central アプリケーションを作成する
-    - url: ../iot-central/tutorial-define-device-type.md
+    - url: ../iot-central/core/tutorial-define-device-type.md
       itemType: tutorial
       text: デバイスの種類を定義する
     footerLink:
-      url: ../iot-central/index.yml
+      url: ../iot-central/core/index.yml
       text: 関連項目
   - title: Azure IoT ソリューション アクセラレータを使用して構築済みの IoT ソリューションをカスタマイズする
     links:

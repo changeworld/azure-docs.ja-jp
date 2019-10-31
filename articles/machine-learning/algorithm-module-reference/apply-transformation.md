@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 8b4ec9e71d9ce932a7b206467db91760f4a4fc47
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: adb2477fe2b7eea0dd0a98c7240843d90411d832
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128980"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693874"
 ---
 # <a name="apply-transformation-module"></a>変換の適用モジュール
 
@@ -32,7 +32,7 @@ Azure Machine Learning には、作成に関するサポート、およびさま
 
 ## <a name="how-to-use-apply-transformation"></a>変換の適用の使用方法  
   
-1. **変換の適用**モジュールを実験に追加します。 このモジュールは、**Machine Learning** の **[スコア]** カテゴリにあります。 
+1. **Apply Transformation (変換の適用)** モジュールをパイプラインに追加します。 このモジュールは、**Machine Learning** の **[スコア]** カテゴリにあります。 
   
 2. 入力として使用する既存の変換を見つけます。  以前に保存した変換は、左側のナビゲーション ウィンドウの **[変換]** グループにあります。  
   
@@ -42,7 +42,7 @@ Azure Machine Learning には、作成に関するサポート、およびさま
   
 4. 変換を定義しているときにすべてのカスタマイズが行われているため、他のパラメーターを設定する必要はありません。  
   
-5. 新しいデータセットに変換を適用するには、実験を実行します。  
+5. 新しいデータセットに変換を適用するには、パイプラインを実行します。  
 
 ## <a name="next-steps"></a>次の手順
 

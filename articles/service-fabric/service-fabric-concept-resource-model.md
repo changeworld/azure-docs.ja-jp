@@ -5,14 +5,14 @@ services: service-fabric
 author: athinanthny
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390096"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752319"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデルとは
 Azure Resource Manager を使用して、Service Fabric クラスターに Service Fabric アプリケーションをデプロイすることをお勧めします。 この方法を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell または Azure CLI を使用してアプリケーションをデプロイおよび管理する場合とは異なり、クラスターの準備が整うまで待つ必要はありません。 アプリケーションの登録、プロビジョニング、デプロイのプロセスを、すべて 1 ステップで実行できます。 これは、クラスターでアプリケーションのライフサイクルを管理するためのベスト プラクティスです。 詳細については、[ベスト プラクティス](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)に関する項目を参照してください。
@@ -41,8 +41,14 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 ![ストレージ アカウントの作成][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>ストレージ アカウントの構成 
-ストレージ アカウントが作成されたら、アプリケーションをステージングできる BLOB コンテナーを作成する必要があります。 Azure portal で、アプリケーションを格納するストレージ アカウントに移動します。 **[BLOB]** ブレードを選択し、 **[コンテナーの追加]** ボタンをクリックします。 [Blob Public] (BLOB パブリック) アクセス レベルの新しいコンテナーを追加します。
-   
+ストレージ アカウントが作成されたら、アプリケーションをステージングできる BLOB コンテナーを作成する必要があります。 Azure portal で、アプリケーションを格納するストレージ アカウントに移動します。 **[BLOB]** ブレードを選択し、 **[コンテナーの追加]** ボタンをクリックします。 クラスター内のリソースは、パブリック アクセス レベルをプライベートに設定することで、セキュリティで保護することができます。 アクセスは次のさまざまな方法で付与できます。
+* [Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/common/storage-auth-aad-app.md)
+* [Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](../storage/common/storage-auth-aad-rbac-portal.md)
+* [共有アクセス署名 (SAS) を使用したアクセスの委任](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
+)
+
+ この例では、引き続き BLOB の匿名読み取りアクセスを使用します。
+
 ![BLOB の作成][CreateBlob]
 
 ### <a name="stage-application-in-a-storage-account"></a>ストレージ アカウントでアプリケーションをステージングする

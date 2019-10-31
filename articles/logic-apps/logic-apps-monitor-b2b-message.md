@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor ログを使用して B2B メッセージを監視する - Azure Logic Apps | Microsoft Docs
-description: Azure Monitor ログを使用して、統合アカウントと Azure Logic Apps の AS2、X12、および EDIFACT メッセージを監視し、診断ログを設定します
+title: Azure Monitor を使用して B2B メッセージを監視する - Azure Logic Apps
+description: Azure Monitor を使用して Azure Logic Apps に AS2、X12、および EDIFACT メッセージの診断ログを設定する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261200"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680199"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Azure Logic Apps で Azure Monitor ログを使用して Azure B2B メッセージを監視する
+# <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Azure Monitor を使用して Azure Logic Apps に B2B メッセージの診断ログを設定する
 
 統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が相互にメッセージを交換できるようになります。 この通信が予想どおりに動作していることを確認するために、[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を使用して、AS2、X12、および EDIFACT メッセージを監視し、統合アカウントの診断ログを設定できます。 このサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援し、深いデバッグを行うためのランタイムの詳細とイベントの収集を実行します。 また、Azure Storage や Azure Event Hubs などの他のサービスでこのデータを使用することもできます。
 

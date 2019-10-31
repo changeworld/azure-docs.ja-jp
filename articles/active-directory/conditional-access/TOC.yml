@@ -50,6 +50,8 @@
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Azure 管理のために MFA を必須にする
           href: howto-conditional-access-policy-azure-management.md
+        - name: すべてのユーザーに対して MFA を必須にする
+          href: howto-conditional-access-policy-all-users-mfa.md
         - name: レガシ認証をブロックする
           href: howto-conditional-access-policy-block-legacy.md
         - name: リスクベースの条件付きアクセス

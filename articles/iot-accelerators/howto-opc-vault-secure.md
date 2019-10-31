@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71203682"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスの使用
@@ -65,7 +65,7 @@ ms.locfileid: "71203682"
 
 5. 承認では、ユーザーが承認者ロールと Azure Key Vault での署名アクセス許可を持っている必要があります。 一般的なワークフローでは、承認者ロールと要求者ロールを別々のユーザーに割り当てる必要があります。 実際のキー ペアの作成と署名操作を開始する場合は **[Approve]\(承認\)** を選択し、キャンセルする場合は **[Reject]\(拒否\)** を選択します。 新しいキー ペアが作成され、証明書の要求元からダウンロードされるまで Azure Key Vault に安全に格納されます。 公開キーを使用して生成された証明書は、CA によって署名されます。 これらの操作の完了には数秒かかることがあります。
 
-   ![証明書要求の詳細の表示のスクリーンショット。下に承認メッセージが表示される](media/howto-opc-vault-secure/view-key-pair.png "キー ペアの表示")
+   ![下部に承認メッセージが表示された証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/view-key-pair.png "キー ペアの表示")
 
 7. 生成された秘密キー (PFX または PEM) と証明書 (DER) は、選択した形式でバイナリ ファイルとしてここからダウンロードできます。 たとえば、証明書をコマンド ラインまたはテキスト エントリにコピーして貼り付けるには、base64 でエンコードされたバージョンを使用することもできます。 
 8. 秘密キーをダウンロードして安全に保存したら、 **[Delete Private Key]\(秘密キーの削除\)** を選択できます。 公開キーを持つ証明書は、後で使用できるように残します。
@@ -90,7 +90,7 @@ ms.locfileid: "71203682"
 
 5. 承認では、ユーザーが承認者ロールと Azure Key Vault での署名アクセス許可を持っている必要があります。 実際の署名操作を開始する場合は **[Approve]\(承認\)** を選択し、キャンセルする場合は **[Reject]\(拒否\)** を選択します。 公開キーを使用して生成された証明書は、CA によって署名されます。 この操作の完了には数秒かかることがあります。
 
-   ![証明書要求の詳細の表示のスクリーンショット。下に承認メッセージが表示される](media/howto-opc-vault-secure/view-cert-csr.png "証明書の表示")
+   ![下部に承認メッセージが表示された証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/view-cert-csr.png "証明書の表示")
 
 6. 生成された証明書 (DER) は、ここからバイナリ ファイルとしてダウンロードできます。 たとえば、証明書をコマンド ラインまたはテキスト エントリにコピーして貼り付けるには、base64 でエンコードされたバージョンを使用することもできます。 
 10. 証明書をダウンロードして安全に保存したら、 **[Delete Certificate]\(証明書の削除\)** を選択できます。

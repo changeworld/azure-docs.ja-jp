@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71257586"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure のセキュリティとコンプライアンスのブループリント:FedRAMP 用の分析
@@ -41,7 +41,7 @@ Microsoft Azure では、多様なレポート サービスおよび分析サー
 
 Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由で管理されます。SSMS は、セキュアな VPN または ExpressRoute 接続経由で Azure SQL Database にアクセスするように構成されたローカル コンピューターから実行されます。 **Azure では、参照アーキテクチャのリソース グループに対する管理とデータ インポートのために、VPN または Azure ExpressRoute 接続を構成することを推奨しています。**
 
-![FedRAMP に対する分析の参照アーキテクチャの図](images/fedramp-analytics-reference-architecture.png?raw=true "FedRAMP に対する分析の参照アーキテクチャの図")
+![FedRAMP 用の分析の参照アーキテクチャ図](images/fedramp-analytics-reference-architecture.png?raw=true "FedRAMP 用の分析の参照アーキテクチャ図")
 
 ### <a name="roles"></a>ロール
 分析のブループリントは、操作ユーザー、SQL/データ管理者、およびシステム エンジニエアという 3 種類の汎用ユーザーによるシナリオの枠組みを示します。 Azure Role-based Access Control (RBAC) は、組み込みのカスタム ロールを利用した厳密なアクセス管理の実装を可能にします。 リソースは、[Role-based Access Control](../../role-based-access-control/role-assignments-portal.md) の構成および[事前定義済みロール](../../role-based-access-control/built-in-roles.md)の枠組みの提示と実装に利用できます。
@@ -71,7 +71,7 @@ SQL/データ管理者は、Azure SQL データベースにアップロードす
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 以下のセクションでは、開発と実装の要素について詳しく説明します。
 
-![alt テキスト](images/fedramp-analytics-components.png?raw=true "FedRAMP に対する分析のコンポーネントの図")
+![代替テキスト](images/fedramp-analytics-components.png?raw=true "FedRAMP 用の分析のコンポーネント図")
 
 **Azure Functions**:[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) は、ほとんどのプログラミング言語を介してクラウドで小規模なコード部分を実行するためのソリューションです。 このソリューションにおける Functions は、Azure Storage と連動してお客様のデータを自動的にクラウドにプルし、他の Azure サービスとの連携を推進します。 Functions は簡単に拡張可能でき、実行されたときだけ料金が発生します。
 

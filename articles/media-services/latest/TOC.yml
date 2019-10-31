@@ -5,6 +5,7 @@
     - name: Media Services について
       href: media-services-overview.md
     - name: Media Services の最新情報
+      displayName: release notes
       href: release-notes.md
 - name: チュートリアル
   expanded: true

@@ -1,5 +1,5 @@
 ---
-title: 改ページ位置の自動修正でデータ、項目、レコードを増やす - Azure Logic Apps
+title: 改ページ位置の自動修正で項目やレコードを増やす - Azure Logic Apps
 description: Azure Logic Apps で、コネクタ アクションの既定のページ サイズの上限を超過するように改ページ位置の自動修正を設定する
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 2d1bcf2cf83fab106f79120c3caacc424f839836
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e86600312490c77ed492cb28a359add0fed90596
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64476532"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679894"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Azure Logic Apps で改ページ位置の自動修正を使用し、データ、項目、レコードを増やす
 

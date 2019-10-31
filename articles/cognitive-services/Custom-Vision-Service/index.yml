@@ -2,7 +2,7 @@
 title: Custom Vision のドキュメント
 summary: Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにするコグニティブ サービスです。 画像分類器は、視覚特性に従って画像に ("クラス" を表す) ラベルを適用する AI サービスです。
 metadata:
-  title: Custom Vision のドキュメント
+  title: Custom Vision のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   description: Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにするコグニティブ サービスです。 画像分類器は、視覚特性に従って画像に ("クラス" を表す) ラベルを適用する AI サービスです。
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
-  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+  ms.openlocfilehash: 21e4c324b947cb863614f50bb2ee0bfe09246372
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72176166"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931637"
 landingContent:
 - title: Custom Vision について
   linkLists:
@@ -128,3 +128,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/598141-custom-vision-service
+    - text: スタック オーバーフロー
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

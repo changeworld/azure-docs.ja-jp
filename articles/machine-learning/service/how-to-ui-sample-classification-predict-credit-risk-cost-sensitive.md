@@ -1,7 +1,7 @@
 ---
 title: 'ビジュアル インターフェイスの例 #4: 信用リスクを予測するための分類 (費用重視)'
 titleSuffix: Azure Machine Learning
-description: この記事では、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 カスタムの Python スクリプトを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
+description: この記事では、ビジュアル インターフェイスを使用して、複雑な機械学習パイプラインを構築する方法について説明します。 カスタムの Python スクリプトを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,41 +9,41 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: c06da0fd325f6b79bc0e14c4e6a246497f86a900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 7196e9522695a28a5560faa77860073bd08e25ee
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131238"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693512"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>サンプル 4 - 分類:信用リスクを予測する (費用重視)
 
-この記事では、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 Python スクリプトを使用してカスタム ロジックを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
+この記事では、ビジュアル インターフェイスを使用して、複雑な機械学習パイプラインを構築する方法について説明します。 Python スクリプトを使用してカスタム ロジックを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
 
 このサンプルでは、分類器をトレーニングして、クレジット履歴、年齢、クレジット カードの枚数などのクレジット アプリケーション情報を使用して信用リスクを予測します。 ただし、この記事の概念を適用して、独自の機械学習の問題に取り組むことができます。
 
 機械学習を始めたばかりの場合は、まず[基本的な分類器のサンプル](how-to-ui-sample-classification-predict-credit-risk-basic.md)の記事を参照してください。
 
-この実験の完成したグラフを次に示します。
+このパイプラインの完成したグラフを次に示します。
 
-[![実験のグラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. サンプル 4 実験の **[Open]\(開く\)** ボタンを選択します。
+4. サンプル 4 パイプラインの **[開く]** ボタンを選択します。
 
-    ![実験を開く](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
+    ![パイプラインを開く](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
 ## <a name="data"></a>Data
 
-このサンプルでは、UC Irvine リポジトリの German Credit Card のデータセットを使用します。 このデータセットには、20 個のフィーチャーと 1 個のラベルを含む 1,000 個のサンプルが含まれています。 サンプルはそれぞれ人を表します。 20 個のフィーチャーには、数値とカテゴリのフィーチャーが含まれています。 データセットの詳細については、[UCI Web サイト](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)を参照してください。 最後の列は信用リスクを表すラベルで、使用できるのは次の 2 つの値だけです: 高信用リスク = 2、および低信用リスク = 1。
+このサンプルでは、UC Irvine リポジトリの German Credit Card のデータセットを使用します。 これには、20 個のフィーチャーと 1 個のラベルを含む 1,000 個のサンプルが含まれています。 各サンプルは個人を表します。 20 個のフィーチャーには、数値とカテゴリのフィーチャーが含まれています。 データセットの詳細については、[UCI Web サイト](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)を参照してください。 最後の列は信用リスクを表すラベルで、使用できるのは次の 2 つの値だけです: 高信用リスク = 2、および低信用リスク = 1。
 
-## <a name="experiment-summary"></a>実験の概要
+## <a name="pipeline-summary"></a>パイプラインの概要
 
-この実験では、この問題を解決するモデルを生成するため、次の 2 つの異なるアプローチを比較します。
+このパイプラインでは、この問題を解決するモデルを生成するため、次の 2 つの異なるアプローチを比較します。
 
 - 元のデータセットを使ってトレーニングする。
 - レプリケートされたデータセットを使ってトレーニングする。
@@ -52,9 +52,9 @@ ms.locfileid: "71131238"
 
 低リスクのサンプルを高リスクとして誤って分類した場合のコストは 1 で、高リスクのサンプルを低リスクとして誤って分類した場合のコストは 5 です。 この誤分類コストを考慮するため、**Execute Python Script (Python スクリプトの実行)** モジュールを使用します。
 
-実験のグラフを次に示します。
+パイプラインのグラフを次に示します。
 
-[![実験のグラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>データ処理
 
@@ -108,11 +108,11 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 1. **Train Model (モデルのトレーニング)** を使用して、データにアルゴリズムを適用し、実際のモデルを作成します。
 1. **Score Model (モデルのスコア付け)** を使用して、テスト サンプルを使用してスコアを生成しまうす。
 
-次の図は、この実験の一部を示したもので、ここでは 2 つの異なる SVM モデルをトレーニングするために元のトレーニング セットとレプリケートされたトレーニング セットが使用されています。 **Train Model (モデルのトレーニング)** はトレーニング セットに接続され、**Score Model (モデルのスコア付け)** はテスト セットに接続されています。
+次の図は、このパイプラインの一部を示したもので、ここでは 2 つの異なる SVM モデルをトレーニングするために元のトレーニング セットとレプリケートされたトレーニング セットが使用されています。 **Train Model (モデルのトレーニング)** はトレーニング セットに接続され、**Score Model (モデルのスコア付け)** はテスト セットに接続されています。
 
-![実験グラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-実験の評価ステージでは、これらの 4 つのモデルの精度をそれぞれ計算します。 この実験のために、**Evaluate Model (モデルの評価)** を使用して同じ誤分類のコストを持つサンプルを比較します。
+パイプラインの評価ステージでは、この 4 つのモデルの精度をそれぞれ計算します。 このパイプラインの場合は、**Evaluate Model (モデルの評価)** を使用して同じ誤分類のコストを持つサンプルを比較します。
 
 **Evaluate Model (モデルの評価)** モジュールでは、2 つのスコア付けされたモデルと同じ数のパフォーマンス メトリックを計算できます。 そのため、**Evaluate Model (モデルの評価)** の 1 つのインスタンスを使って、2 つの SVM モデルと **Evaluate Model (モデルの評価)** のもう 1 つのインスタンスを評価して、2 つのブースト デシジョン ツリー モデルを評価します。
 
@@ -142,12 +142,14 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>結果
 
-実験の結果を表示するには、最後の **Select Columns in Dataset (データセット内の列の選択)** モジュールの可視化出力を右クリックします。
+パイプラインの結果を表示するには、最後の **Select Columns in Dataset (データセット内の列の選択)** モジュールの可視化出力を右クリックします。
 
 ![可視化出力](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
 最初の列には、モデルの生成に使用された機械学習アルゴリズムが一覧表示されます。
+
 2 番目の列には、トレーニング セットの種類が示されます。
+
 3 番目の列には、費用重視の精度の値が含まれます。
 
 これらの結果から、最適な精度が、**Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)** で作成されたモデルによって提供され、レプリケートされたトレーニング データセットでトレーニングされたことがわかります。
@@ -165,3 +167,4 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 - [サンプル 3 - 分類: 信用リスクを予測する](how-to-ui-sample-classification-predict-credit-risk-basic.md)
 - [サンプル 5 - 分類:顧客離れを予測する](how-to-ui-sample-classification-predict-churn.md)
 - [サンプル 6 - 分類:フライトの遅延を予測する](how-to-ui-sample-classification-predict-flight-delay.md)
+- [サンプル 7 - テキスト分類:ブック レビュー](how-to-ui-sample-text-classification.md)

@@ -1,23 +1,23 @@
 ---
-title: Azure Portal で Azure Search インデックスを作成する - Azure Search
-description: ポータルに組み込まれているインデックス デザイナーを使用して Azure Search のインデックスを作成する方法について説明します。
+title: Azure portal で Azure Cognitive Search インデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: ポータルに組み込まれているインデックス デザイナーを使用して Azure Cognitive Search のインデックスを作成する方法について説明します。
 manager: nitinme
-author: heidisteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9340b9c058ba780b8d74587f21c1b9fbe59576d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937263"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792449"
 ---
-# <a name="create-an-azure-search-index-in-the-portal"></a>ポータルで Azure Search インデックスを作成する
+# <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>ポータルで Azure Cognitive Search インデックスを作成する
 
-Azure Search では、プロトタイプまたは Azure Search サービスでホストされる[検索インデックス](search-what-is-an-index.md)の作成に役立つインデックス デザイナーがポータルに組み込まれています。 このツールは、スキーマの構築に使用されます。 定義を保存すると、空のインデックス全体が Azure Search で表現されます。 インデックスに検索可能なコンテンツを読み込む方法は指定されていません。
+Azure Cognitive Search では、プロトタイプまたは Azure Cognitive Search サービスでホストされる[検索インデックス](search-what-is-an-index.md)の作成に役立つインデックス デザイナーがポータルに組み込まれています。 このツールは、スキーマの構築に使用されます。 定義を保存すると、空のインデックス全体が Azure Cognitive Search で表現されます。 インデックスに検索可能なコンテンツを読み込む方法は指定されていません。
 
 インデックス デザイナーは、インデックスを作成する 1 つの方法です。 または、[データのインポート ウィザード](search-get-started-portal.md)を使用して、インデックスの作成と読み込みを行うこともできます。 このウィザードでは、このウィザード自身が作成したインデックスのみが機能します。 プログラムでは、[.NET](search-create-index-dotnet.md) または [REST](search-create-index-rest-api.md) API を使用して、インデックスを作成できます。
 
@@ -27,9 +27,9 @@ Azure Search では、プロトタイプまたは Azure Search サービスで�
 
 2. ページの上部にあるコマンド バーの **[インデックスの追加]** リンクをクリックします。
 
-   ![コマンド バーの [インデックスの追加] リンク](media/search-create-index-portal/add-index.png "コマンド バーの [インデックスの追加] リンク")
+   ![コマンド バーにインデックス リンクを追加する](media/search-create-index-portal/add-index.png "コマンド バーにインデックス リンクを追加する")
 
-3. Azure Search インデックスに名前を付けます。 インデックス名は、インデックス作成とクエリ操作で参照されます。 インデックス名は、そのインデックスへの接続や、Azure Search REST API で HTTP 要求を送信するために使用されるエンドポイント URL の一部になります。
+3. Azure Cognitive Search インデックスに名前を付けます。 インデックス名は、インデックス作成とクエリ操作で参照されます。 インデックス名は、そのインデックスへの接続や、Azure Cognitive Search REST API で HTTP 要求を送信するために使用されるエンドポイント URL の一部になります。
 
    * 文字で始めます。
    * 小文字、数字、またはダッシュ ("-") のみを使用してください。
@@ -43,11 +43,11 @@ Azure Search では、プロトタイプまたは Azure Search サービスで�
 
 1. 受信データ自体が階層化されている場合、入れ子構造を表すために、スキーマには[複合型](search-howto-complex-data-types.md)が含まれている必要があります。 あらかじめ登録されているサンプル データ セットである Hotels (ホテル) は、各ホテルとの一対一のリレーションシップを持つ Address (複数のサブフィールドを含む) と、各ホテルに複数の部屋が関連付けられている複合型コレクションの Rooms を使用した複合型を示しています。 
 
-1. 型 Edm.String の *key* フィールドを指定します。 キー フィールドはどの Azure Search インデックスにも必須であり、かつ文字列である必要があります。 このフィールドの値で、各ドキュメントが一意に識別される必要があります。 既定では、このフィールドには *id* という名前が付けられますが、文字列が[名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)を満たす限り、その名前を変更できます。 たとえば、フィールド コレクションに *hotel-id* が含まれている場合は、それをキーに選択します。 
+1. 型 Edm.String の *key* フィールドを指定します。 キー フィールドはどの Azure Cognitive Search インデックスにも必須であり、かつ文字列である必要があります。 このフィールドの値で、各ドキュメントが一意に識別される必要があります。 既定では、このフィールドには *id* という名前が付けられますが、文字列が[名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)を満たす限り、その名前を変更できます。 たとえば、フィールド コレクションに *hotel-id* が含まれている場合は、それをキーに選択します。 
 
 1. 各フィールドに属性を設定します。 インデックス デザイナーでは、そのデータ型に対して無効な属性は除外されますが、含める必要がある値は提案されません。 属性の目的を理解するには、次のセクションのガイダンスを参照してください。
 
-    Azure Search API のドキュメントには、単純な*ホテル* インデックスを処理するコード例が含まれています。 下のスクリーンショットでは、インデックス定義中に指定されたフランス語の言語アナライザーを含むインデックス定義を確認できます。これは、ポータルで実習問題として再作成できます。
+    Azure Cognitive Search API のドキュメントには、単純な*ホテル* インデックスを処理するコード例が含まれています。 下のスクリーンショットでは、インデックス定義中に指定されたフランス語の言語アナライザーを含むインデックス定義を確認できます。これは、ポータルで実習問題として再作成できます。
 
     ![ホテル デモのインデックス](media/search-create-index-portal/field-definitions.png "ホテル デモのインデックス")
 
@@ -76,7 +76,7 @@ Azure Search では、プロトタイプまたは Azure Search サービスで�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Search インデックスを作成した後、次の手順である「[upload searchable data into the index (検索可能なデータをインデックスにアップロードする)](search-what-is-data-import.md)」に移動できます。
+Azure Search インデックスを作成した後、次の[検索可能なデータをインデックスにアップロードする](search-what-is-data-import.md)手順に進むことができます。
 
 あるいは、[インデックスをより深く調査する](search-what-is-an-index.md)こともできます。 フィールド コレクションに加えて、インデックスはアナライザー、サジェスター、スコアリング プロファイル、CORS の各設定も指定します。 ポータルは、最も一般的な要素であるフィールド、アナライザー、およびサジェスターを定義するためのタブ付きページを提供します。 その他の要素を作成または変更するには、REST API または .NET SDK を使用できます。
 

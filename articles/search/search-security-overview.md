@@ -1,30 +1,29 @@
 ---
-title: セキュリティとデータ プライバシー - Azure Search
-description: Azure Search は、SOC 2、HIPAA、およびその他の認定に準拠しています。 接続とデータの暗号化、認証、および ID は、Azure Search フィルターのユーザーとグループのセキュリティ識別子を介してアクセスします。
-author: HeidiSteen
+title: セキュリティとデータ プライバシー
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search は、SOC 2、HIPAA、およびその他の認定に準拠しています。 接続とデータの暗号化、認証、および ID は、フィルター式のユーザーとグループのセキュリティ識別子を介してアクセスします。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 3a6ac7ff22c04bff5948193c163a7071cf2c2ff5
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2e509535473fa50fd3150965e1513e056ead18a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320391"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794349"
 ---
-# <a name="security-and-data-privacy-in-azure-search"></a>Azure Search のセキュリティとデータ プライバシー
+# <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Cognitive Search のセキュリティとデータ プライバシー
 
-Azure Search には、包括的なセキュリティ機能とアクセスの制御が組み込まれており、その機能を利用して非公開のコンテンツが保持されます。 この記事では、Azure Search に組み込まれているセキュリティ機能と標準へのコンプライアンスの一覧を紹介します。
+Azure Cognitive Search には、包括的なセキュリティ機能とアクセスの制御が組み込まれており、その機能を利用して非公開のコンテンツが保持されます。 この記事では、Azure Cognitive Search に組み込まれているセキュリティ機能と標準へのコンプライアンスの一覧を紹介します。
 
-Azure Search のセキュリティ アーキテクチャには、物理的なセキュリティ、暗号化された伝送、暗号化されたストレージ、プラットフォーム全体の標準へのコンプライアンスが含まれます。 運用上、Azure Search は認証された要求のみを受け入れます。 必要に応じてセキュリティ フィルターを使用し、コンテンツに対してユーザーごとのアクセス制御を追加できます。 この記事では、各層のセキュリティについて触れますが、主に Azure Search でデータと操作がどのようにセキュリティ保護されるのかについて重点的に説明します。
+Azure Cognitive Search のセキュリティ アーキテクチャには、物理的なセキュリティ、暗号化された伝送、暗号化されたストレージ、プラットフォーム全体の標準へのコンプライアンスが含まれます。 運用上、Azure Cognitive Search は認証された要求のみを受け入れます。 必要に応じてセキュリティ フィルターを使用し、コンテンツに対してユーザーごとのアクセス制御を追加できます。 この記事では、各層のセキュリティについて触れますが、主に Azure Cognitive Search でデータと操作がどのようにセキュリティ保護されるのかについて重点的に説明します。
 
 ## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>標準へのコンプライアンス: ISO 27001、SOC 2、HIPAA
 
-Azure Search は次の標準について認定され、[2018 年 6 月に発表されました](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)。
+Azure Cognitive Search は次の標準について認定され、[2018 年 6 月に発表されました](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)。
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [SOC 2 Type 2 へのコンプライアンス](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) 完全なレポートについては、[Azure - Azure Government SOC 2 タイプ II レポート](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)を参照してください。 
@@ -38,17 +37,17 @@ Azure Search は次の標準について認定され、[2018 年 6 月に発表�
 
 ## <a name="encrypted-transmission-and-storage"></a>伝送とストレージの暗号化
 
-暗号化は、接続から、伝送、Azure Search に格納されているインデックス付きデータまで、インデックス作成のパイプライン全体に拡張されています。
+暗号化は、接続から、伝送、Azure Cognitive Search に格納されているインデックス付きデータまで、インデックス作成のパイプライン全体に拡張されています。
 
 | セキュリティ レイヤー | 説明 |
 |----------------|-------------|
-| 転送中の暗号化 <br>(HTTPS/SSL/TLS) | Azure Search は HTTPS ポート 443 をリッスンします。 プラットフォーム全体で、Azure サービスへの接続が暗号化されます。 <br/><br/>クライアントからサービスへの Azure Search のすべての通信は、SSL/TLS 1.2 に対応しています。  サービスへの SSL 接続には TLSv1.2 を必ず使用してください。|
-| 保存時の暗号化 <br>Microsoft のマネージド キー | 暗号化はインデックス作成処理に完全に含まれ、完了までの時間やインデックス サイズにはほぼ影響しません。 完全に暗号化されていないインデックス (2018 年 1 月より前に作成されたインデックス) の増分更新を含め、すべてのインデックス作成で自動的に行われます。<br><br>内部的には、暗号化は [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) に基づいており、[256 ビットの AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使用しています。<br><br> 暗号化は Azure Search の内部で行われ、Microsoft が内部的に管理する証明書と暗号化キーが使用され、汎用的に適用されます。 暗号化のオン/オフの切り替え、独自のキーの管理または代替、ポータル内またはプログラムによる暗号化設定の表示を行うことはできません。<br><br>保存時の暗号化は、2018 年 1 月 24 日に発表され、すべてのリージョンで、全リージョンの Free レベルを含むすべてのサービス層に適用されています。 完全な暗号化を行うには、この日付より前に作成されたインデックスを削除し、再構築する必要があります。 そうしないと、1 月 24 日の後に追加された新しいデータのみが暗号化されます。|
-| 保存時の暗号化 <br>顧客管理キー | 顧客管理のキーを使用した暗号化は、無料サービスでは使用できない**プレビュー**機能です。 有料サービスの場合、最新のプレビュー api-version (api-version=2019-05-06-Preview) を使用すると、2019 年 1 月以降に作成された検索サービスでのみ使用することができます。<br><br>Azure Key Vault 内で顧客管理のキーを使用して、Azure Search のインデックスとシノニム マップを暗号化できるようになりました。 詳細については、[Azure Search での暗号化キーの管理に関するページ](search-security-manage-encryption-keys.md)を参照してください。<br>この機能は、既定の暗号化に置き換わるものではなく、既定の暗号化に追加で適用されるものです。<br>この機能を有効にすると、インデックスのサイズが増加し、クエリのパフォーマンスが低下します。 日付を見ると、クエリ時間が 30 ～ 60% 増加することが予想されますが、実際のパフォーマンスは、インデックスの定義やクエリの種類によって変化します。 こうしたパフォーマンスの影響のため、この機能をインデックスに対して有効にするのは、実際に必要な場合のみにすることをお勧めします。
+| 転送中の暗号化 <br>(HTTPS/SSL/TLS) | Azure Cognitive Search は HTTPS ポート 443 をリッスンします。 プラットフォーム全体で、Azure サービスへの接続が暗号化されます。 <br/><br/>クライアントからサービスへの Azure Cognitive Search のすべての通信は、SSL/TLS 1.2 に対応しています。  サービスへの SSL 接続には TLSv1.2 を必ず使用してください。|
+| 保存時の暗号化 <br>Microsoft のマネージド キー | 暗号化はインデックス作成処理に完全に含まれ、完了までの時間やインデックス サイズにはほぼ影響しません。 完全に暗号化されていないインデックス (2018 年 1 月より前に作成されたインデックス) の増分更新を含め、すべてのインデックス作成で自動的に行われます。<br><br>内部的には、暗号化は [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) に基づいており、[256 ビットの AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使用しています。<br><br> 暗号化は Azure Cognitive Search の内部で行われ、Microsoft が内部的に管理する証明書と暗号化キーが使用され、汎用的に適用されます。 暗号化のオン/オフの切り替え、独自のキーの管理または代替、ポータル内またはプログラムによる暗号化設定の表示を行うことはできません。<br><br>保存時の暗号化は、2018 年 1 月 24 日に発表され、すべてのリージョンで、全リージョンの Free レベルを含むすべてのサービス層に適用されています。 完全な暗号化を行うには、この日付より前に作成されたインデックスを削除し、再構築する必要があります。 そうしないと、1 月 24 日の後に追加された新しいデータのみが暗号化されます。|
+| 保存時の暗号化 <br>顧客管理キー | 顧客管理のキーを使用した暗号化は、無料サービスでは使用できない**プレビュー**機能です。 有料サービスの場合、最新のプレビュー api-version (api-version=2019-05-06-Preview) を使用すると、2019 年 1 月以降に作成された検索サービスでのみ使用することができます。<br><br>Azure Key Vault 内で顧客管理のキーを使用して、Azure Cognitive Search のインデックスとシノニム マップを暗号化できるようになりました。 詳細については、[Azure Cognitive Search での暗号化キーの管理](search-security-manage-encryption-keys.md)に関する記事を参照してください。<br>この機能は、既定の暗号化に置き換わるものではなく、既定の暗号化に追加で適用されるものです。<br>この機能を有効にすると、インデックスのサイズが増加し、クエリのパフォーマンスが低下します。 日付を見ると、クエリ時間が 30 ～ 60% 増加することが予想されますが、実際のパフォーマンスは、インデックスの定義やクエリの種類によって変化します。 こうしたパフォーマンスの影響のため、この機能をインデックスに対して有効にするのは、実際に必要な場合のみにすることをお勧めします。
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 全体のユーザー アクセスの制御
 
-いくつかのセキュリティ メカニズムが Azure 全体で利用できます。これらは当然、作成された Azure Search リソースでも利用できます。
+いくつかのセキュリティ メカニズムが Azure 全体で利用できます。これらは当然、作成された Azure Cognitive Search リソースでも利用できます。
 
 + [削除を防止するサブスクリプション レベルまたはリソース レベルのロック](../azure-resource-manager/resource-group-lock-resources.md)
 + [情報および管理操作に対するアクセスをコントロールするロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md)
@@ -59,7 +58,7 @@ Azure Search は次の標準について認定され、[2018 年 6 月に発表�
 
 ## <a name="service-access-and-authentication"></a>サービス アクセスと認証
 
-Azure Search は Azure プラットフォームのセキュリティ保護機能を継承しますが、独自のキーベースの認証も提供しています。 API キーは、ランダムに生成された数字と文字から成る文字列です。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 
+Azure Cognitive Search は Azure プラットフォームのセキュリティ保護機能を継承しますが、独自のキーベースの認証も提供しています。 API キーは、ランダムに生成された数字と文字から成る文字列です。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 
 
 検索サービスへのアクセスには 2 つのレベルがあり、次の 2 種類のキーによって有効になります。
 
@@ -74,17 +73,17 @@ Azure Search は Azure プラットフォームのセキュリティ保護機能
 
 ## <a name="index-access"></a>インデックへのアクセス
 
-Azure Search では、個別のインデックスはセキュリティ保護可能なオブジェクトでありません。 その代わり、インデックスへのアクセスは操作のコンテキストと共にサービス層 (読み取りまたは書き込みアクセス) で決定されます。
+Azure Cognitive Search では、個別のインデックスはセキュリティ保護可能なオブジェクトでありません。 その代わり、インデックスへのアクセスは操作のコンテキストと共にサービス層 (読み取りまたは書き込みアクセス) で決定されます。
 
 エンドユーザーのアクセスの場合、クエリ キーを使用して接続するようにクエリ要求を構成できます (これにより、すべての要求が読み取り専用になります)。また、アプリで使用される特定のインデックスを含めることができます。 クエリ要求では、インデックスの結合または複数のインデックスへの同時アクセスといった概念がないので、当然すべての要求のターゲットは単一のインデックスです。 そのため、クエリ要求自体 (キーと単一のターゲット インデックス) の構築でセキュリティ境界を定義します。
 
-インデックスに対する管理者と開発者のアクセスは区別されていません。サービスによって管理されているオブジェクトの作成、削除、更新を行うには、どちらも書き込みアクセスが必要です。 サービスに対する管理者キーを持っている人はだれでも、そのサービスのインデックスの読み取り、変更、削除を行えます。 インデックスが誤って削除されたり、悪意によって削除されたりすることを防止するうえで、コード資産の社内ソース管理は、望ましくないインデックスの削除または変更を修復する対応策になります。 Azure Search は可用性を確保するためにクラスター内のフェールオーバーを備えていますが、インデックスの作成または読み込みに使用される専用コードを格納したり実行したりしません。
+インデックスに対する管理者と開発者のアクセスは区別されていません。サービスによって管理されているオブジェクトの作成、削除、更新を行うには、どちらも書き込みアクセスが必要です。 サービスに対する管理者キーを持っている人はだれでも、そのサービスのインデックスの読み取り、変更、削除を行えます。 インデックスが誤って削除されたり、悪意によって削除されたりすることを防止するうえで、コード資産の社内ソース管理は、望ましくないインデックスの削除または変更を修復する対応策になります。 Azure Cognitive Search は可用性を確保するためにクラスター内のフェールオーバーを備えていますが、インデックスの作成または読み込みに使用される専用コードを格納したり実行したりしません。
 
-インデックス レベルでセキュリティ境界が必要なマルチテナントのソリューションでは、通常、そのソリューションに顧客がインデックス分離を処理するための中間層が含まれています。 マルチテナントのユース ケースの詳細については、「[マルチテナント SaaS アプリケーションと Azure Search の設計パターン](search-modeling-multitenant-saas-applications.md)」を参照してください。
+インデックス レベルでセキュリティ境界が必要なマルチテナントのソリューションでは、通常、そのソリューションに顧客がインデックス分離を処理するための中間層が含まれています。 マルチテナントのユース ケースの詳細については、[マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン](search-modeling-multitenant-saas-applications.md)に関する記事を参照してください。
 
 ## <a name="admin-access"></a>管理者アクセス
 
-[ロールベースのアクセス (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) によって、サービスとそのコンテンツに対するコントロールにアクセスできるかどうかが決まります。 Azure Search サービスの所有者または共同作成者であれば、ポータルまたは PowerShell **Az.Search** モジュールを使用して、サービス上のオブジェクトを作成、更新、または削除できます。 [Azure Search 管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) を使用することもできます。
+[ロールベースのアクセス (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) によって、サービスとそのコンテンツに対するコントロールにアクセスできるかどうかが決まります。 Azure Cognitive Search サービスの所有者または共同作成者であれば、ポータルまたは PowerShell **Az.Search** モジュールを使用して、サービス上のオブジェクトを作成、更新、または削除できます。 [Azure Cognitive Search 管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) を使用することもできます。
 
 ## <a name="user-access"></a>ユーザー アクセス
 
@@ -99,7 +98,7 @@ Azure Search では、個別のインデックスはセキュリティ保護可�
 
 ## <a name="table-permissioned-operations"></a>表: 許可される操作
 
-次の表では、Azure Search で許可される操作のほか、特定の操作へのアクセスを有効にするキーについてまとめています。
+次の表では、Azure Cognitive Search で許可される操作のほか、特定の操作へのアクセスを有効にするキーについてまとめています。
 
 | Operation | アクセス許可 |
 |-----------|-------------------------|
@@ -123,6 +122,6 @@ Azure Search では、個別のインデックスはセキュリティ保護可�
 
 + [.NET の作業開始 (管理者キーを使用したインデックスの作成のデモンストレーション)](search-create-index-dotnet.md)
 + [REST の作業開始 (管理者キーを使用したインデックスの作成のデモンストレーション)](search-create-index-rest-api.md)
-+ [Azure Search フィルターを使用した ID ベースのアクセス制御](search-security-trimming-for-azure-search.md)
-+ [Azure Search フィルターを使用した Active Directory の ID ベースのアクセス制御](search-security-trimming-for-azure-search-with-aad.md)
-+ [Azure Search のフィルター](search-filters.md)
++ [Azure Cognitive Search フィルターを使用した ID ベースのアクセス制御](search-security-trimming-for-azure-search.md)
++ [Azure Cognitive Search フィルターを使用した Active Directory の ID ベースのアクセス制御](search-security-trimming-for-azure-search-with-aad.md)
++ [Azure Cognitive Search のフィルター](search-filters.md)

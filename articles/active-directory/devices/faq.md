@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8d44b868f2ea92c2d7bb8d7139822112a8545045
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193194"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787453"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -132,7 +132,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>Q:Azure portal の [登録済み] 列の下に "保留中" とマークされているデバイスがあるのはなぜですか?
 
-**A**: "保留中" は、デバイスが登録されていないことを示します。 この状態は、デバイスがオンプレミスの AD からの Azure AD Connect を使用して同期され、デバイスの登録の準備ができていることを示します。 これらのデバイスでは、参加の種類が "Hybrid Azure AD 参加済み" に設定されています。 詳細については、[ハイブリッド Azure Active Directory 参加の実装を計画する方法](hybrid-azuread-join-plan.md)に関するページを参照してください。
+**A**: "保留中" は、デバイスが登録されていないことを示します。 この状態は、デバイスがオンプレミスの AD から Azure AD Connect を使用して同期され、デバイスの登録の準備ができていることを示します。 これらのデバイスでは、参加の種類が "Hybrid Azure AD 参加済み" に設定されています。 詳細については、[ハイブリッド Azure Active Directory 参加の実装を計画する方法](hybrid-azuread-join-plan.md)に関するページを参照してください。
 
 >[!NOTE]
 >デバイスは、登録済みの状態から "保留中" に変更されることもあります。

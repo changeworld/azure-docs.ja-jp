@@ -1,6 +1,6 @@
 ---
-title: HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする - Azure Logic Apps
-description: HTTP エンドポイントを設定し、Azure Logic Apps のワークフローを呼び出したり、トリガーしたり、入れ子にします
+title: ロジック アプリの呼び出し、トリガー、または入れ子 - Azure Logic Apps
+description: Azure Logic Apps でロジック アプリ ワークフローの呼び出し、トリガー、または入れ子を行う HTTP エンドポイントを設定する
 services: logic-apps
 ms.service: logic-apps
 ms.workload: integration
@@ -12,14 +12,14 @@ ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: f93e90ef442740e4fb17f166023fbe3d5f0bae66
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: eb8451272ecb5bc7b9a7c670545170cd74621883
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875952"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680323"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする
+# <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTP エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います。
 
 ロジック アプリで同期 HTTP エンドポイントをトリガーとしてネイティブに公開することで、URL からロジック アプリをトリガーしたり呼び出したりすることができます。 呼び出し可能なエンドポイントのパターンを使用して、ロジック アプリのワークフローをネストすることもできます。
 
@@ -38,7 +38,7 @@ HTTP エンドポイントを作成するには、ロジック アプリで受�
 
 HTTP エンドポイントを作成するには、受信要求を受信できるトリガーを追加します。
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。 ロジック アプリに移動して、ロジック アプリ デザイナーを開きます。
+1. [Azure Portal](https://portal.azure.com "Azure ポータル") にサインインします。 ロジック アプリに移動して、ロジック アプリ デザイナーを開きます。
 
 2. ロジック アプリに受信要求を受信させるトリガーを追加します。 たとえば、ロジック アプリに**要求**トリガーを追加します。
 
@@ -287,7 +287,7 @@ A:はい、HTTP エンドポイントでは、[**API Management**](../api-manage
 
 * [要求メソッドを変更する](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
 * [要求の URL セグメントを変更する](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
-* [Azure Portal](https://portal.azure.com/ "Azure Portal") で API Management ドメインをセットアップする
+* [Azure portal](https://portal.azure.com/ "Azure ポータル") で API Management ドメインをセットアップする
 * 基本認証を確認するためのポリシーをセットアップする
 
 #### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>Q:2014 年 12 月 1 日のプレビューからスキーマが移行されたとき、どのように変更されましたか。

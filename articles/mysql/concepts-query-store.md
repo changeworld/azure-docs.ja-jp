@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/17/2019
+ms.openlocfilehash: 40718cdb12cbc46bf0587dfdc657ee06c090061b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029866"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598241"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MySQL のパフォーマンスの監視
 
@@ -70,6 +70,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 ```
 
 ## <a name="finding-wait-queries"></a>待機クエリの検索
+
+> [!NOTE]
+> 待機統計は、ワークロード時間のピーク時に有効にしたり、機密性の高いワークロードに対して無期限に有効にしたりしないでください。 <br>CPU 使用率が高い状態で実行されているワークロードや、低い仮想コアで構成されているサーバーで実行されているワークロードの場合は、待機統計を有効にするときに注意が必要です。 無期限には有効にしないでください。 
 
 待機イベントの種類では、類似性によってさまざまな待機イベントがバケットに結合されます。 クエリ ストアでは、待機イベントの種類、特定の待機イベント名、対象のクエリが提供されます。 この待機情報をクエリのランタイム統計に関連付けられることは、クエリのパフォーマンス特性に何が寄与しているかをより深く理解できることを意味します。
 

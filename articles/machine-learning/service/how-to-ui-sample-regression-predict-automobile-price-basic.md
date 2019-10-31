@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: a91f1446d8aab3db36499a9b5707d48d387b6081
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 861b04203575a6046608cf3fad3117ad2726acab
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131130"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693461"
 ---
 # <a name="sample-1---regression-predict-price"></a>サンプル 1 - 回帰: 価格を予測する
 
 コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、機械学習の回帰モデルを構築する方法について説明します。
 
-この実験では、製造元、モデル、馬力、サイズなどの技術的な特徴に基づいて自動車の価格を予測する**デシジョン フォレスト リグレッサー**をトレーニングします。 なぜなら、「いくらにするか」という質問に答えようとしているからです。 これは回帰問題と呼ばれます。 ただし、この例の同じ基本的な手順を適用して、回帰、分類、クラスタリングなど、あらゆる種類の機械学習問題に対処することができます。
+このパイプラインでは、製造元、モデル、馬力、サイズなどの技術的な特徴に基づいて自動車の価格を予測する**デシジョン フォレスト リグレッサー**をトレーニングします。 なぜなら、「いくらにするか」という質問に答えようとしているからです。 これは回帰問題と呼ばれます。 ただし、この例の同じ基本的な手順を適用して、回帰、分類、クラスタリングなど、あらゆる種類の機械学習問題に対処することができます。
 
 トレーニング機械学習モデルの基本的な手順は次のとおりです。
 
@@ -30,21 +30,21 @@ ms.locfileid: "71131130"
 1. モデルをトレーニングする
 1. モデルを評価する
 
-これから取り組む実験の最終的な完成したグラフを次に示します。 ご自身で同様の決定を下すことができるように、ここではすべてのモジュールの理論的な根拠を提示します。
+パイプラインの最終的な完成したグラフを次に示します。 この記事では、ご自身で同様の決定を下すことができるように、ここではすべてのモジュールの理論的な根拠を提示します。
 
-![実験のグラフ](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
+![パイプラインのグラフ](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. サンプル 1 実験の **[Open]\(開く\)** ボタンを選択します。
+4. サンプル 1 パイプラインの **[開く]** ボタンを選択します。
 
-    ![実験を開く](media/how-to-ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
+    ![パイプラインを開く](media/how-to-ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
 
 ## <a name="get-the-data"></a>データを取得する
 
-このサンプルでは、UCI Machine Learning Repository から取得された **Automobile price data (Raw)** データセットを使用します。 このデータセットには、メーカー、モデル、価格、車両特徴 (シリンダー数など)、MPG、保険リスク スコアなど、自動車に関する情報を含む 26 列が含まれています。 この実験の目的は、自動車の価格を予測することです。
+このサンプルでは、UCI Machine Learning Repository から取得された **Automobile price data (Raw)** データセットを使用します。 このデータセットには、メーカー、モデル、価格、車両特徴 (シリンダー数など)、MPG、保険リスク スコアなど、自動車に関する情報を含む 26 列が含まれています。 このサンプルの目的は、自動車の価格を予測することです。
 
 ## <a name="pre-process-the-data"></a>データを前処理する
 
@@ -58,7 +58,7 @@ ms.locfileid: "71131130"
 
 機械学習の問題はさまざまです。 一般的な機械学習タスクには、分類、クラスタリング、回帰、推奨システムなどがあり、それぞれに異なるアルゴリズムが必要になる場合があります。 アルゴリズムの選択は、多くの場合、ユース ケースの要件によって異なります。 アルゴリズムを選択したら、より正確なモデルをトレーニングするためにそのパラメーターを調整する必要があります。 次に、精度、明瞭度、効率性などのメトリックに基づいて、すべてのモデルを評価する必要があります。
 
-この実験の目的は自動車の価格を予測することであり、またラベル列 (価格) には実数が含まれるため、回帰モデルを選択することをお勧めします。 特徴の数が比較的少なく (100 未満)、これらの特徴が疎でないことを考慮すると、決定境界は非線形である可能性があります。 そのため、この実験では**デシジョン フォレスト回帰**を使用します。
+このサンプルの目的は自動車の価格を予測することであり、またラベル列 (価格) には実数が含まれるため、回帰モデルを選択することをお勧めします。 特徴の数が比較的少なく (100 未満)、これらの特徴が疎でないことを考慮すると、決定境界は非線形である可能性があります。 そのため、このパイプラインでは**デシジョン フォレスト回帰**を使用します。
 
 **データの分割**モジュールを使用して、トレーニング データセットが元のデータの 70% を含み、テスト データセットが元のデータの 30% を含むように、入力データをランダムに分割します。
 
@@ -89,3 +89,4 @@ ms.locfileid: "71131130"
 - [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [サンプル 5 - 分類:顧客離れを予測する](how-to-ui-sample-classification-predict-churn.md)
 - [サンプル 6 - 分類:フライトの遅延を予測する](how-to-ui-sample-classification-predict-flight-delay.md)
+- [サンプル 7 - テキスト分類:ブック レビュー](how-to-ui-sample-text-classification.md)

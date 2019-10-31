@@ -1,22 +1,21 @@
 ---
-title: テキスト マージ コグニティブ検索スキル - Azure Search
-description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure Search のエンリッチメント パイプラインでこのコグニティブ スキル使用します。
-services: search
+title: テキスト マージ コグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure コグニティブ検索の AI エンリッチメント パイプラインでこのコグニティブ スキルを使用します。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265272"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791839"
 ---
-#    <a name="text-merge-cognitive-skill"></a>テキスト マージ コグニティブ スキル
+#   <a name="text-merge-cognitive-skill"></a>テキスト マージ コグニティブ スキル
 
 **テキスト マージ** スキルは、フィールドのコレクションからのテキストを 1 つのフィールドに統合します。 
 
@@ -143,6 +142,6 @@ Microsoft.Skills.Text.MergeSkill
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

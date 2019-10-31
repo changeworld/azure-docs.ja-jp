@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK バージョン 9 へのアップグレード - Azure Search
+title: Azure Search .NET SDK バージョン 9 へのアップグレード
+titleSuffix: Azure Cognitive Search
 description: 以前のバージョンから Azure Search .NET SDK バージョン 9 にコードを移行します。 新機能と必要なコード変更について説明します。
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 32908ab209cbe05a0acf9da896e1e1fb11e6f5dd
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183232"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793021"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK バージョン 9 へのアップグレード
+# <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK バージョン 9 へのアップグレード
 
 バージョン 7.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 9 を使用するようにアプリケーションをアップグレードできます。
 
@@ -38,7 +37,7 @@ Azure Search .NET SDK のバージョン 9 には、以前のバージョンか�
 ## <a name="whats-new-in-version-9"></a>バージョン 9 の新機能
 Azure Search .NET SDK のバージョン 9 は、Azure Search REST API の最新の一般提供バージョン (2019-05-06) を対象としています。 これにより、次のような Azure Search の新機能を .NET アプリケーションから使用することが可能になります。
 
-* [認知検索](cognitive-search-concept-intro.md)は Azure Search の AI 機能であり、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツを充実させて Azure Search インデックス内で検索しやすくします。
+* [AI エンリッチメント](cognitive-search-concept-intro.md)では、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツを充実させて Azure Search インデックスで検索しやすくします。
 * [複合型](search-howto-complex-data-types.md)のサポートにより、Azure Search インデックス内の入れ子になったほとんどすべての JSON 構造をモデル化できます。
 * [オートコンプリート](search-autocomplete-tutorial.md)には、自動検索候補の動作を実装するための**サジェスト** API の代替手段が用意されています。 オートコンプリートは、ユーザーが現在入力している単語または語句を "完成" させます。
 * [JsonLines 解析モード](search-howto-index-json-blobs.md)。Azure BLOB インデックスの一部で、JSON エンティティごとに 1 つの検索ドキュメントが新規行として作成されます。

@@ -1,25 +1,25 @@
 ---
-title: コグニティブ検索パイプラインにスキルセットを作成する - Azure Search
-description: データの抽出、自然言語処理、または画像分析のステップを定義して、データから構造化された情報を抽出および強化して、Azure Search で使用できるようにします。
+title: エンリッチメント パイプラインにスキルセットを作成する
+titleSuffix: Azure Cognitive Search
+description: データの抽出、自然言語処理、または画像分析のステップを定義して、データから構造化された情報を抽出して強化し、Azure コグニティブ検索で使用できるようにします。
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265528"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787468"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>エンリッチメント パイプラインにスキルセットを作成する方法
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure コグニティブ検索で AI エンリッチメント パイプラインにスキルセットを作成する方法 
 
-コグニティブ検索では、Azure Search で検索できるように、データを抽出および拡充します。 Microsoft では抽出ステップとエンリッチメント ステップを "*コグニティブ スキル*" と呼び、インデックスの作成中に参照される "*スキルセット*" と組み合わせます。 スキルセットでは、[組み込みのスキル](cognitive-search-predefined-skills.md)またはカスタム スキルを使用できます (詳細については、[コグニティブ検索用のカスタム スキルの作成例](cognitive-search-create-custom-skill-example.md)に関するページを参照してください)。
+AI エンリッチメントは、データを抽出して強化し、Azure コグニティブ検索でデータを検索できるようにすることです。 Microsoft では抽出ステップとエンリッチメント ステップを "*コグニティブ スキル*" と呼び、インデックスの作成中に参照される "*スキルセット*" と組み合わせます。 スキルセットでは、[組み込みのスキル](cognitive-search-predefined-skills.md)またはカスタム スキルを使用できます (詳細については、[AI エンリッチメント パイプラインにカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)を参照してください)。
 
-この記事では、使用するスキル用にエンリッチメント パイプラインを作成する方法を学習します。 スキルセットは、Azure Search [インデクサー](search-indexer-overview.md)に接続されます。 この記事で取り上げているパイプライン デザインの一環として、スキルセット自体を構築します。 
+この記事では、使用するスキル用にエンリッチメント パイプラインを作成する方法を学習します。 スキルセットは、Azure コグニティブ検索[インデクサー](search-indexer-overview.md)にアタッチされます。 この記事で取り上げているパイプライン デザインの一環として、スキルセット自体を構築します。 
 
 > [!NOTE]
 > インデクサーの指定はパイプライン デザインの別の部分として取り上げます (「[次の手順](#next-step)」で説明します)。 インデクサーの定義には、スキルセットの参照と、入力をターゲット インデックスの出力に接続するために使用されるフィールド マッピングが含まれます。
@@ -45,10 +45,10 @@ ms.locfileid: "71265528"
 ![仮定のエンリッチメント パイプライン](media/cognitive-search-defining-skillset/sample-skillset.png "仮定のエンリッチメント パイプライン")
 
 
-このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。 機能上、このスキルセットは、Azure Search にインデクサー定義をアップロードするときに表現されます。 インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](https://docs.microsoft.com/rest/api/searchservice/create-indexer)を参照してください。
+このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。 機能上、このスキルセットは、Azure コグニティブ検索にインデクサー定義をアップロードするときに表現されます。 インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](https://docs.microsoft.com/rest/api/searchservice/create-indexer)を参照してください。
 
 
-この図で、"*ドキュメント クラッキング*" のステップは自動的に行われます。 基本的に、Azure Search では、よく知られているファイルを開く方法を把握しており、各ドキュメントから抽出されたテキストを含む "*content*" フィールドが作成されます。 白いボックスは組み込みエンリッチャーで、ドットのある "Bing Entity Search" ボックスは、作成するカスタム エンリッチャーを表します。 図に示すように、スキルセットには、3 つのスキルが含まれています。
+この図で、"*ドキュメント クラッキング*" のステップは自動的に行われます。 基本的に、Azure コグニティブ検索では、よく知られているファイルを開く方法を把握しており、各ドキュメントから抽出されたテキストを含む "*content*" フィールドが作成されます。 白いボックスは組み込みエンリッチャーで、ドットのある "Bing Entity Search" ボックスは、作成するカスタム エンリッチャーを表します。 図に示すように、スキルセットには、3 つのスキルが含まれています。
 
 ## <a name="skillset-definition-in-rest"></a>REST でのスキルセットの定義
 
@@ -241,13 +241,13 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 結果として生成される構造体は、次の図のようになります。
 
-![サンプル出力構造体](media/cognitive-search-defining-skillset/enriched-doc.png "サンプル出力構造体")
+![出力構造のサンプル](media/cognitive-search-defining-skillset/enriched-doc.png "出力構造のサンプル")
 
-ここまでは、この構造は、内部のみ、メモリのみであり、Azure Search インデックス内だけで使用されていました。 検索以外で使用するシェイプによるエンリッチメントを保存するための 1 つの方法として、ナレッジ ストアの追加が提供されています。
+ここまでは、この構造は、内部のみ、メモリのみであり、Azure コグニティブ検索インデックス内だけで使用されていました。 検索以外で使用するシェイプによるエンリッチメントを保存するための 1 つの方法として、ナレッジ ストアの追加が提供されています。
 
 ## <a name="add-a-knowledge-store"></a>ナレッジ ストアを追加する
 
-[ナレッジ ストア](knowledge-store-concept-intro.md)は、エンリッチされたドキュメントを保存するための Azure Search 内のプレビュー機能です。 Azure ストレージ アカウントによってサポートされている、自身で作成したナレッジ ストアは、エンリッチされたデータが配置されるリポジトリになります。 
+[ナレッジ ストア](knowledge-store-concept-intro.md)は、エンリッチされたドキュメントを保存するための Azure コグニティブ検索のプレビュー機能です。 Azure ストレージ アカウントによってサポートされている、自身で作成したナレッジ ストアは、エンリッチされたデータが配置されるリポジトリになります。 
 
 ナレッジ ストアの定義は、スキルセットに追加されます。 プロセス全体のチュートリアルについては、[ナレッジ ストアの使用を開始する方法](knowledge-store-howto.md)に関するページをご覧ください。
 

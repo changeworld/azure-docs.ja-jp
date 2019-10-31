@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: 03b8e12d63ba84b4e20d7263f1c2ecb8d912936d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203158"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693344"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure で HTTP によってトリガーされる関数を作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "71203158"
 
 開始する前に、以下が必要になります。
 
-+ [Python 3.6.x](https://www.python.org/downloads/) をインストールします。
++ [Python 3.6.8](https://www.python.org/downloads/) をインストールします。 このバージョンの Python は、Functions で検証されています。 3.7 以降のバージョンはまだサポートされていません。
 
 + [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.7.1575 以降をインストールします。
 

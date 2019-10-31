@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243272"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674936"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -398,22 +398,15 @@ pip install -r requirements.txt
 
 発行の準備ができたら、依存関係がすべて、プロジェクト ディレクトリのルートにある *requirements.txt* ファイル内にリストされていることを確認します。 Azure Functions では、これらの依存関係を[リモート ビルド](functions-deployment-technologies.md#remote-build)できます。
 
-発行から除外されたプロジェクト ファイルとフォルダー (仮想環境フォルダーなど) は、.funcignore ファイルに一覧表示されます。  
+発行から除外されたプロジェクト ファイルとフォルダー (仮想環境フォルダーなど) は、.funcignore ファイルに一覧表示されます。 
 
-Azure にデプロイし、リモート ビルドを実行するには、次のコマンドを使用します。
+既定では、[Azure Functions Core Tools](functions-run-local.md#v2) と [VS Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、リモート ビルドが実行されます。 たとえば、次のコマンドを使用します。
 
 ```bash
-func azure functionapp publish <app name> --build remote
+func azure functionapp publish <app name>
 ```
 
-リモート ビルドを使用しておらず、使用しているパッケージにおいてコンパイラが必要とされるが、PyPI からの manylinux 対応のホイールのインストールがサポートされていない場合、ローカルでビルドしない Azure への発行は失敗し、次のエラーが返されます。
-
-```
-There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
-The terminal process terminated with exit code: 1
-```
-
-必要なバイナリをローカルでビルドして構成するには、[Azure Functions Core Tools](functions-run-local.md#v2) (func) を使用することにより、ご利用のローカル マシン上に [Docker をインストール](https://docs.docker.com/install/)し、次のコマンドを実行して発行します。 `<app name>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
+ご自身のアプリを Azure ではなくローカルでビルドするには、[Azure Functions Core Tools](functions-run-local.md#v2) (func) を使用することにより、ご利用のローカル マシン上に [Docker をインストール](https://docs.docker.com/install/)し、次のコマンドを実行して発行します。 `<app name>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

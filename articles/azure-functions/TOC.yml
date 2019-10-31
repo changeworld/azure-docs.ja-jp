@@ -245,8 +245,12 @@
         - name: 関数の無効化
           href: disable-function.md
     - name: 監視
-      href: functions-monitoring.md
-      displayName: 'App Insights, Application Insights, logs, logging'
+      items:
+        - name: 関数の監視
+          href: functions-monitoring.md
+          displayName: 'App Insights, Application Insights, logs, logging'
+        - name: ログの分析
+          href: functions-monitor-log-analytics.md
     - name: セキュリティ保護
       items:
         - name: SSL 証明書の購入

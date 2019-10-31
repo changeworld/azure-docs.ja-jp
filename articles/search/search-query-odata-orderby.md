@@ -1,13 +1,13 @@
 ---
-title: OData の order by リファレンス - Azure Search
-description: Azure Search クエリでの order-by 構文に関する OData 言語リファレンスです。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData の order-by リファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリでの order-by 構文に関する OData 言語リファレンス。
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8ee44549931100a1affa5e2bb9e5cda904c05ed1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647537"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793301"
 ---
-# <a name="odata-orderby-syntax-in-azure-search"></a>Azure Search での OData $orderby 構文
+# <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $orderby 構文
 
- [OData **$orderby** パラメーター](query-odata-filter-orderby-syntax.md)を使用すれば、Azure Search での検索結果にカスタムの並べ替え順序を適用することができます。 この記事では、 **$orderby** の構文について詳しく説明します。 検索結果を表示するときに **$orderby** を使用する方法に関するより一般的な情報については、「[Azure Search での検索結果の操作方法](search-pagination-page-layout.md)」を参照してください。
+ [OData **$orderby** パラメーター](query-odata-filter-orderby-syntax.md)を使用すれば、Azure Cognitive Search での検索結果にカスタムの並べ替え順序を適用することができます。 この記事では、 **$orderby** の構文について詳しく説明します。 検索結果を表示するときに **$orderby** を使用する方法に関するより一般的な情報については、「[Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)」を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -45,10 +45,10 @@ sortable_function ::= geo_distance_call | 'search.score()'
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 各句にはソート基準を指定し、必要に応じてその後に並べ替え方向 (昇順の場合は `asc`、降順の場合は `desc`) を指定します。 方向を指定しない場合、既定値は昇順となります。 並べ替え基準は `sortable` フィールドのパスとすることも、[`geo.distance`](search-query-odata-geo-spatial-functions.md) 関数または [`search.score`](search-query-odata-search-score-function.md) 関数の呼び出しとすることもできます。
 
@@ -80,7 +80,7 @@ search.score と評価に基づいて降順でホテルを並べ替え、その�
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search での検索結果の操作方法](search-pagination-page-layout.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

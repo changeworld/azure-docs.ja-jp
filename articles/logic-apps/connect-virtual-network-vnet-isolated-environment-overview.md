@@ -1,6 +1,6 @@
 ---
-title: 統合サービス環境 (ISE) により Azure Logic Apps から Azure Virtual Network にアクセスする
-description: この概要では、統合サービス環境 (ISE) によって、Logic Apps から Azure Virtual Network (VNET) にアクセスする方法を説明します
+title: Azure の仮想ネットワークにアクセスする - Azure Logic Apps
+description: 統合サービス環境 (ISE) を利用して、ロジック アプリから Azure の仮想ネットワーク (VNET) にアクセスする方法の概要
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 831a1457d865429fd53af1887a14c363b806300c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5d42b9fc2dfd7cbee230b65f7d9844c9e7332147
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516601"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680499"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 

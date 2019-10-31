@@ -1,22 +1,22 @@
 ---
-title: クイック スタート:REST API シリーズを使用して Java で検索インデックスを作成する - Azure Search
-description: Java と Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
+title: クイック スタート:REST API を使用して Java で検索インデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: Java と Azure Cognitive Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
-ms.service: search
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166238"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792814"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>クイック スタート:REST API シリーズを使用して Java で Azure Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>クイック スタート:REST API を使用して Java で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "72166238"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-[IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)、[Azure Search サービス REST API](/rest/api/searchservice/) を使用して Azure Search インデックスの作成、読み込み、クエリ実行を行う Java コンソール アプリケーションを作成します。この記事では、このアプリケーションを作成するための詳細な手順を説明します。 代わりに、[完全なアプリケーションをダウンロードして実行する](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)こともできます。
+[IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)、[Azure Cognitive Search の REST API](/rest/api/searchservice/) を使用して Azure Cognitive Search インデックスの作成、読み込み、クエリ実行を行う Java コンソール アプリケーションを作成します。この記事では、このアプリケーションを作成するための詳細な手順を説明します。 代わりに、[完全なアプリケーションをダウンロードして実行する](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -38,13 +38,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 + [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
 
-+ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
@@ -143,7 +143,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[OK]** をクリックしてウィンドウを閉じます。
 
-### <a name="add-azure-search-service-information"></a>Azure Search サービス情報の追加
+### <a name="add-azure-cognitive-search-service-information"></a>Azure Cognitive Search サービスの情報を追加する
 
 1. **[Project]\(プロジェクト\)** ウィンドウで、ソース ツリーを展開して `src` >  `main` >`resources` > `app` フォルダーにアクセスし、`config.properties` ファイルを追加します。 これを行うには、`app` フォルダーを選択し、Alt + Insert キーを押して、 **[File]\(ファイル\)** を選択し、ファイル名を入力します。
 
@@ -259,7 +259,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="add-the-http-operations"></a>HTTP 操作を追加する
 
 1. `src` >  `main` > `java` > `service` フォルダーに、`SearchServiceClient` クラスを追加します。 これを行うには、`service` フォルダーを選択し、Alt + Insert キーを押して、 **[Java Class]\(Java クラス\)** を選択し、クラス名を入力します。
-1. `SearchServiceClient` クラスを開き、その内容を次のコードに置き換えます。 このコードは、Azure Search REST API を使用するために必要な HTTP 操作を提供します。 インデックスの作成、ドキュメントのアップロード、作成したインデックスへのクエリ実行を行うためのメソッドは、後のセクションで追加します。
+1. `SearchServiceClient` クラスを開き、その内容を次のコードに置き換えます。 このコードは、Azure Cognitive Search REST API を使用するために必要な HTTP 操作を提供します。 インデックスの作成、ドキュメントのアップロード、作成したインデックスへのクエリ実行を行うためのメソッドは、後のセクションで追加します。
 
     ```java
     package main.java.service;
@@ -512,9 +512,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     インデックス名は "hotels-quickstart" になります。 このインデックス フィールドの属性によって、インデックス付きデータをアプリケーションで検索する方法が決まります。 たとえば、フルテキスト検索に含める必要があるすべてのフィールドに、`IsSearchable` 属性を割り当てる必要があります。 属性の詳細については、「[フィールド コレクションとフィールド属性](search-what-is-an-index.md#fields-collection)」を参照してください。
     
-    このインデックスの `Description` フィールドでは、省略可能な `analyzer` プロパティを使用して既定の Lucene 言語アナライザーをオーバーライドします。 `Description_fr` フィールドでは、フランス語のテキストを格納するため、フランス語の Lucene アナライザー `fr.lucene` を使用しています。 `Description` では、オプションの Microsoft 言語アナライザー en.lucene を使用しています。 アナライザーの詳細については、「[Azure Search でのテキスト処理のためのアナライザー](search-analyzers.md)」を参照してください。
+    このインデックスの `Description` フィールドでは、省略可能な `analyzer` プロパティを使用して既定の Lucene 言語アナライザーをオーバーライドします。 `Description_fr` フィールドでは、フランス語のテキストを格納するため、フランス語の Lucene アナライザー `fr.lucene` を使用しています。 `Description` では、オプションの Microsoft 言語アナライザー en.lucene を使用しています。 アナライザーの詳細については、[Azure Cognitive Search でのテキスト処理のためのアナライザー](search-analyzers.md)に関するページを参照してください。
 
-1. 次のコードを `SearchServiceClient` クラスに追加します。 これらのメソッドにより、インデックスの作成と削除を実行し、インデックスが存在するかどうかを確認する Azure Search REST サービスの URL が作成されます。 また、メソッドは HTTP 要求も行います。
+1. 次のコードを `SearchServiceClient` クラスに追加します。 これらのメソッドにより、インデックスの作成と削除を実行し、インデックスが存在するかどうかを確認する Azure Cognitive Search REST サービスの URL が作成されます。 また、メソッドは HTTP 要求も行います。
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -694,9 +694,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ホテル ドキュメントを読み込んだので、検索クエリを作成してホテルのデータにアクセスできます。
 
-1. 次のコードを `SearchServiceClient` クラスに追加します。 このコードにより、インデックス付きデータを検索する Azure Search REST サービスの URL が作成され、検索結果が出力されます。
+1. 次のコードを `SearchServiceClient` クラスに追加します。 このコードにより、インデックス付きデータを検索する Azure Cognitive Search REST サービスの URL が作成され、検索結果が出力されます。
 
-    `SearchOptions` クラスと `createSearchOptions` メソッドを使用すると、使用可能な Azure Search REST API クエリ オプションのサブセットを指定できます。 REST API クエリ オプションの詳細については、「[Search Documents (Azure Search サービス REST API)](/rest/api/searchservice/search-documents)」を参照してください。
+    `SearchOptions` クラスと `createSearchOptions` メソッドを使用すると、使用可能な Azure Cognitive Search REST API クエリ オプションのサブセットを指定できます。 REST API クエリ オプションの詳細については、[Search Documents (Azure Cognitive Search REST API)](/rest/api/searchservice/search-documents) に関するページを参照してください。
 
     `SearchPlus` メソッドでは、検索クエリ URL が作成され、検索要求が行われた後、その結果がコンソールに出力されます。 
 

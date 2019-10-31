@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: bwren
-ms.openlocfilehash: affefa96d6e38a88c994938115ddf44bcf8bd36d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: c9fdd0c530ca34305aa3a9197c3bb938d4fb9f1f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695067"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528706"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 この記事では、アクティビティ ログを Log Analytics ワークスペースに収集する方法と、このデータを分析するためのログ クエリおよびビューを提供する Activity Log Analytics [監視ソリューション](../insights/solutions.md)の使用方法について説明します。 
@@ -31,7 +31,7 @@ ms.locfileid: "71695067"
 - [ログ クエリ](../log-query/log-query-overview.md)を使用して複雑な分析を実行し、アクティビティ ログのエントリから詳細な分析情報を得ます。
 
 ## <a name="connect-to-log-analytics-workspace"></a>Log Analytics ワークスペースに接続する
-アクティビティ ログは 1 つのワークスペースにしか接続できませんが、1 つのワークスペースを、同じ Azure テナント内の複数のサブスクリプションのアクティビティ ログに接続できます。 複数のテナントをまたいだ収集については、「[Azure アクティビティ ログを異なる Azure Active Directory テナント内のサブスクリプションにまたがる Log Analytics ワークスペースに収集する](activity-log-collect-tenants.md)」を参照してください。
+1 つのワークスペースを、同じ Azure テナント内の複数のサブスクリプションのアクティビティ ログに接続できます。 複数のテナントをまたいだ収集については、「[Azure アクティビティ ログを異なる Azure Active Directory テナント内のサブスクリプションにまたがる Log Analytics ワークスペースに収集する](activity-log-collect-tenants.md)」を参照してください。
 
 > [!IMPORTANT]
 > Microsoft.OperationalInsights と Microsoft.OperationsManagement リソース プロバイダーがサブスクリプションに登録されていない場合、次の手順でエラーが発生することがあります。 これらのプロバイダーの登録については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。

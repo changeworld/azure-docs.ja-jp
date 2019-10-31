@@ -1,29 +1,28 @@
 ---
-title: 複合データ型をモデル化する方法 - Azure Search
-description: 階層または入れ子になったデータ構造は、ComplexType とCollections データ型を使用して、Azure Search インデックスでモデル化できます。
-author: brjohnstmsft
+title: 複合データ型をモデル化する方法
+titleSuffix: Azure Cognitive Search
+description: 階層または入れ子になったデータ構造は、ComplexType とCollections データ型を使用して、Azure Cognitive Search インデックスでモデル化できます。
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.custom: seodec2018
-ms.openlocfilehash: b9c9b35adc0dde032723c3c60adedf5b2e7b4cb6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: af68f232c893259747e6ed106eced70fd8b89351
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183200"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792225"
 ---
-# <a name="how-to-model-complex-data-types-in-azure-search"></a>Azure Search で複合データ型をモデル化する方法
+# <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Cognitive Search で複合データ型をモデル化する方法
 
-Azure Search インデックスの作成に使われる外部データセットは、さまざまな形状をしている可能性があります。 場合によっては、階層や入れ子の下部構造が含まれます。 たとえば、単一の顧客に複数の住所が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデリングの用語では、このような構造は *complex* (複合)、*compound* (複合)、*composite* (複合)、または *aggregate* (集約) データ型と呼ばれることがあります。 Azure Search でこの概念に対して使われる用語は **複合型** (complex type) です。 Azure Search では、複合型は**複合フィールド**を使ってモデル化されます。 複合フィールドは、他の複合型も含めて任意のデータ型を使用できる子 (サブフィールド) が含まれるフィールドです。 これは、プログラミング言語の構造化されたデータ型と同様の方法で機能します。
+Azure Cognitive Search インデックスの作成に使われる外部データセットは、さまざまな形状をしている可能性があります。 場合によっては、階層や入れ子の下部構造が含まれます。 たとえば、単一の顧客に複数の住所が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデリングの用語では、このような構造は *complex* (複合)、*compound* (複合)、*composite* (複合)、または *aggregate* (集約) データ型と呼ばれることがあります。 Azure Cognitive Search では、この概念に対して**複合型**という単語が使われます。 Azure Cognitive Search では、複合型は**複合フィールド**を使ってモデル化されます。 複合フィールドは、他の複合型も含めて任意のデータ型を使用できる子 (サブフィールド) が含まれるフィールドです。 これは、プログラミング言語の構造化されたデータ型と同様の方法で機能します。
 
 複合フィールドでは、データ型に応じて、ドキュメント内の 1 つのオブジェクトまたはオブジェクトの配列が表されます。 `Edm.ComplexType` 型のフィールドでは単一のオブジェクトが表され、`Collection(Edm.ComplexType)` 型のフィールドではオブジェクトの配列が表されます。
 
-Azure Search は、複合型とコレクションをネイティブでサポートしています。 これらの型を使うと、Azure Search インデックス内のほとんどすべての JSON 構造をモデル化できます。 Azure Search API の以前のバージョンでは、フラット化された行セットのみをインポートできました。 最新のバージョンでは、インデックスはソース データにより密接に調和できるようになりました。 つまり、ソース データに複合型がある場合、インデックスも複合型を持つことができます。
+Azure Cognitive Search は、複合型とコレクションをネイティブでサポートしています。 これらの型を使うと、Azure Cognitive Search インデックス内のほとんどすべての JSON 構造をモデル化できます。 Azure Cognitive Search API の以前のバージョンでは、フラット化された行セットのみをインポートできました。 最新のバージョンでは、インデックスはソース データにより密接に調和できるようになりました。 つまり、ソース データに複合型がある場合、インデックスも複合型を持つことができます。
 
 Azure portal の**データのインポート** ウィザードで読み込むことができる [Hotels データ セット](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)から始めることをお勧めします。 ウィザードでは、ソース内の複合型が検出され、検出された構造に基づいてインデックス スキーマが提案されます。
 
@@ -68,7 +67,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 次の例は、単純フィールド、コレクション、および複合型を含む JSON インデックス スキーマを示しています。 最上位レベルのフィールドと同様に、複合型内の各サブフィールドには型があり、場合によっては属性がある点に注意してください。 スキーマは、上記のデータ例に対応しています。 `Address` はコレクションではない複合フィールドです (1 つのホテルには 1 つの住所があります)。 `Rooms` は複合コレクション フィールドです (1 つのホテルには多くの部屋があります)。
 
 <!---
-For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
+For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Cognitive Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
 
 Indexers are a different story. When defining an indexer, in particular one used to build a knowledge store, your index can have nested complex types. An indexer is able to hold a chain of complex data structures in-memory, and when it includes a skillset, it can support highly complex data forms. For more information and an example, see [How to get started with knowledge store](knowledge-store-howto.md).
 -->
@@ -120,7 +119,7 @@ Indexers are a different story. When defining an indexer, in particular one used
 
     search=Address/City:Portland AND Address/State:OR
 
-このようなクエリは、フィルターとは異なり、フルテキスト検索では "*非相関*" です。 フィルターでは、複合コレクションのサブフィールドに対するクエリを、[`any` または `all`](search-query-odata-collection-operators.md) の範囲変数を使って相関させることができます。 上の Lucene クエリでは、"Portland, Maine" および "Portland, Oregon" の両方と共に Oregon の他の都市を含むドキュメントが返されます。 このようになるのは、各句がドキュメント全体のそのフィールドのすべての値に適用され、"現在のサブ ドキュメント" という概念がないためです。 これについて詳しくは、「[Understanding OData collection filters in Azure Search](search-query-understand-collection-filters.md)」(Azure Search での OData コレクション フィルターについて) をご覧ください。
+このようなクエリは、フィルターとは異なり、フルテキスト検索では "*非相関*" です。 フィルターでは、複合コレクションのサブフィールドに対するクエリを、[`any` または `all`](search-query-odata-collection-operators.md) の範囲変数を使って相関させることができます。 上の Lucene クエリでは、"Portland, Maine" および "Portland, Oregon" の両方と共に Oregon の他の都市を含むドキュメントが返されます。 このようになるのは、各句がドキュメント全体のそのフィールドのすべての値に適用され、"現在のサブ ドキュメント" という概念がないためです。 これについて詳しくは、[Azure Cognitive Search での OData コレクション フィルター](search-query-understand-collection-filters.md)に関する記事をご覧ください。
 
 ## <a name="selecting-complex-fields"></a>複合フィールドの選択
 

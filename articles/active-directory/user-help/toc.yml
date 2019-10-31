@@ -29,7 +29,7 @@
     - name: パスワードをリセットするためのサインアップ
       href: active-directory-passwords-reset-register.md
     - name: パスワードをリセットする
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
 - name: Microsoft Authenticator アプリのヘルプ
   items:
     - name: 概要

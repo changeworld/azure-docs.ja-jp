@@ -68,6 +68,8 @@
       href: environment-setup.md
     - name: リモート セッションで推奨される帯域幅
       href: bandwidth-recommendations.md
+    - name: ユーザー接続の待ち時間の特定
+      href: connection-latency.md
     - name: Windows Virtual Desktop における委任されたアクセス
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法
