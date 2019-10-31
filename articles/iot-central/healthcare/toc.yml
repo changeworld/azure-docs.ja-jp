@@ -34,8 +34,6 @@
           href: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: ジョブの実行
           href: ../core/howto-run-a-job.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: デバイス グループを使用する
-          href: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: デバイス テンプレートをバージョン管理する
           href: ../core/howto-version-device-template-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: 監視と分析

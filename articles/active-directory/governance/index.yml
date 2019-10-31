@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 0abe0599bcaf88c2a925cb580bea601b827daba2
-  ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+  ms.openlocfilehash: 98b634b7aba20fc79e2bae15a5786aae4d1a0bd1
+  ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/16/2019
-  ms.locfileid: "72430247"
+  ms.lasthandoff: 10/30/2019
+  ms.locfileid: "73173060"
 landingContent:
 - title: Identity Governance について
   linkLists:
@@ -33,7 +33,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure AD エンタイトルメント管理とは (プレビュー)
+    - text: Azure AD エンタイトルメント管理とは
       url: entitlement-management-overview.md
   - linkListType: tutorial
     links:

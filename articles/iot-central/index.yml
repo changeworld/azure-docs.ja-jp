@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: a27fa47333739e688e879b936a6e3b25a4d3c749
-  ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+  ms.openlocfilehash: cf720d7a526a913cc4c06ee160de3eecbe92e0a1
+  ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72968958"
+  ms.lasthandoff: 10/30/2019
+  ms.locfileid: "73176117"
 highlightedContent:
   items:
   - title: IoT Central とは
@@ -51,7 +51,7 @@ conceptualContent:
       text: 関連項目
   - title: 接続状態を維持する (プレビュー機能)
     links:
-    - url: ./core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./core/tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
       itemType: how-to-guide
       text: デバイス グループを使用する
     - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
@@ -126,7 +126,7 @@ additionalContent:
   - items:
     - title: IoT Central API
       summary: IoT Central API を調べます。
-      url: https://docs.microsoft.com/rest/api/azure/
+      url: https://docs.microsoft.com/rest/api/iotcentral/
     - title: Microsoft Learn の IoT Central
       summary: 無料のサンドボックス環境で IoT Central を調べます。
-      url: https://aka.ms/iotcentralapimslearnjourney
+      url: https://docs.microsoft.com/learn/browse/?products=azure-iot-central
