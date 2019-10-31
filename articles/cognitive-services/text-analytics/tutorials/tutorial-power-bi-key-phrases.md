@@ -19,7 +19,8 @@ ms.locfileid: "71241027"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 
-Microsoft Power BI Desktop は、データへの接続、データの変換、およびデータの視覚化を実行できる無料のアプリケーションです。 Microsoft Azure Cognitive Services の一部である Text Analytics サービスは、自然言語処理を提供します。 それは、与えられた未加工の構造化されていないテキストから、最も重要なフレーズの抽出、センチメントの分析、およびブランドなどのよく知られているエンティティの識別を行うことができます。 これらのツールを組み合わせることで、ユーザーが話している内容とそれに対する感情をすばやく確認できます。
+Microsoft Power BI Desktop は、データへの接続、データの変換、およびデータの視覚化を実行できる無料のアプリケーションです。 Microsoft Azure Cognitive Services の一部である Text Analytics サービスは、自然言語処理を提供します。 それは、与えられた未加工の構造化されていないテキストから、最も重要なフレーズの抽出、感情の分析、およびブランドなどのよく知られているエンティティの識別を行うことができます。 これらのツールを組み合わせることで、ユーザーが話している内容とそれに対する感情をすばやく確認できます。
+
 
 このチュートリアルで学習する内容は次のとおりです。
 
