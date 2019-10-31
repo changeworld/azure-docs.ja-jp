@@ -27,6 +27,8 @@
       href: storage-files-planning.md
     - name: Azure File Sync のデプロイの計画
       href: storage-sync-files-planning.md
+    - name: 直接アクセスに関するネットワークの考慮事項
+      href: storage-files-networking-overview.md
     - name: クラウドの階層化について
       href: storage-sync-cloud-tiering.md
     - name: ストレージ アカウントについて
@@ -101,6 +103,8 @@
           href: storage-sync-files-deployment-guide.md
         - name: File Sync のプロキシとファイアウォールの設定
           href: storage-sync-files-firewall-and-proxy.md
+        - name: Premium ファイル共有を使用した SQL Server FCI
+          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: マウントする
       items:
         - name: Windows で Azure Files を使用する
@@ -109,6 +113,14 @@
           href: storage-how-to-use-files-linux.md
         - name: macOS で Azure Files を使用する
           href: storage-how-to-use-files-mac.md
+    - name: ネットワーク
+      items:
+        - name: サイト間 VPN を構成する
+          href: storage-files-configure-s2s-vpn.md
+        - name: Windows でポイント対サイト VPN を構成する
+          href: storage-files-configure-p2s-vpn-windows.md
+        - name: Linux でポイント対サイト VPN を構成する
+          href: storage-files-configure-p2s-vpn-linux.md
     - name: 管理
       items:
         - name: Azure File Sync でのサーバーの登録
@@ -169,6 +181,8 @@
           href: storage-troubleshooting-files-performance.md
         - name: Azure File Sync のトラブルシューティング
           href: storage-sync-files-troubleshoot.md
+        - name: Azure Files の削除に関するトラブルシューティング
+          href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
