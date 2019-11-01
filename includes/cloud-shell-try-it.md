@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
 ms.openlocfilehash: fdb4ddc43c1fcde55da8186bd2c09b709eb41374
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/28/2019
 ms.locfileid: "71055207"
 ---
 ## <a name="use-azure-cloud-shell"></a>Azure Cloud Shell を使用する
