@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4f7c6d94-bbda-4f35-8dea-f6aa315fac14
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef826f2987ca6e8d78841344359ea276e0f0fc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c30e3dea6d787a50b200ad6062e689ef4ea19cb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094464"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pexip"></a>チュートリアル:Azure Active Directory と Pexip の統合
 

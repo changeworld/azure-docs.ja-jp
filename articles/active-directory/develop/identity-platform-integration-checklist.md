@@ -15,13 +15,13 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f3976f69302ff50bf067bbaa2eff4be25ac64f43
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
+ms.openlocfilehash: 1ce33e90cab1c5172cbf14470f24345d0446b0de
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786339"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200287"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
