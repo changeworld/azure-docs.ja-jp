@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7dc40d2c-6349-40cb-b304-b098bd03a66c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 097569c6ec43d6d45e89ff3a32fe907861eedc81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: faad03885d3b427d73d06c683db8041a9324f9be
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106457"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157719"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>チュートリアル:Azure Active Directory と BC in the Cloud の統合
 

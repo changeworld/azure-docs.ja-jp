@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor での効率的なログ クエリの記述 | Microsoft Docs
 description: Log Analytics でクエリを記述する方法を学習するためのリソースへの参照。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/17/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 25d6b582ed4d4e24df3841f4191471296e25abd8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/17/2019
+ms.openlocfilehash: a5ee03f6c42f076549856161a6ebe0b1888fe4aa
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519365"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894128"
 ---
 # <a name="writing-efficient-log-queries-in-azure-monitor"></a>Azure Monitor での効率的なログ クエリの記述
 この記事では、Azure Monitor で効率的なログ クエリを記述するための推奨事項を示します。 これらの方式を使用すると、クエリがすばやく、かつ最小限のオーバーヘッドで実行されるように保証できます。

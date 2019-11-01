@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor で Surface Hub を監視する | Microsoft Docs
 description: Surface Hub ソリューションを使用して、Surface Hub の正常性を追跡し、Surface Hub がどのように使用されているかを理解します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/16/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 7e0dbb4c3cd8ae4bb552e7b7f0748f1bde2f51de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/16/2018
+ms.openlocfilehash: 7ced5f678b9f8b2d4aa073a984276f41b8b7c4b9
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232789"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900621"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Azure Monitor で Surface Hub を監視して正常性を追跡する
 

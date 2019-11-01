@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 2364218a9ccbde1cbfc276e3354cb93e42e5ce0b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c6135f3ab90a2002c3cf0c8d26211d66d0c637e8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553743"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802409"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) とは?
 
@@ -33,7 +33,8 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 - マップ
 
 >[!NOTE]
->最近、パブリック プレビューのお客様から受け取ったフィードバックを基に正常性機能に加えている[変更を発表しました](https://azure.microsoft.com/updates/upcoming-changes-for-azure-monitor-for-vms-as-we-prepare-for-ga)。 実施する変更の数を考慮して、新しいお客様への正常性機能の提供を停止する予定です。 既存のお客様は、引き続き正常性機能を使用できます。 詳細については、[一般提供の FAQ](vminsights-ga-release-faq.md) に関するページを参照してください。  
+>最近、パブリック プレビューのお客様から受け取ったフィードバックを基に正常性機能に加えている[変更を発表しました](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+)。 実施する変更の数を考慮して、新しいお客様への正常性機能の提供を停止する予定です。 既存のお客様は、引き続き正常性機能を使用できます。 詳細については、[一般提供の FAQ](vminsights-ga-release-faq.md) に関するページを参照してください。  
 
 Azure Monitor ログとの統合により、強力な集計とフィルター処理が実現されています。さらに、時間の経過に伴うデータの傾向を分析することができます。 そうした包括的なワークロード監視は、Azure Monitor または Service Map 単独では実現できません。  
 

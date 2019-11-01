@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166590"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933895"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric でリバース プロキシを設定して構成する
 オプションの Azure Service Fabric サービスであるリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントのある他のサービスを検出してそのサービスと通信するのに役立ちます。 詳しくは、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。 この記事では、クラスターでリバース プロキシを設定して構成する方法を示します。 
@@ -44,7 +44,7 @@ Azure のクラスターでは、Azure Resource Manager テンプレートを使
 
 新しいクラスターでは、[カスタム Resource Manager テンプレートを作成する](service-fabric-cluster-creation-via-arm.md)こと、またはサンプル テンプレートを使用することができます。 
 
-Azure クラスター用のセキュリティ保護されたリバース プロキシの構成に役立つ Resource Manager テンプレートのサンプルは、GitHub の[セキュリティ保護されたリバース プロキシのサンプル テンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample)のページにあります。 証明書によるセキュリティ保護されたリバース プロキシの構成と証明書のロールオーバーの処理の手順とそれに使用するテンプレートについては、README の「[Configure HTTPS Reverse Proxy in a secure cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)」(セキュリティ保護されたクラスターで HTTPS リバース プロキシを構成する) をご覧ください。
+Azure クラスター用のセキュリティ保護されたリバース プロキシの構成に役立つ Resource Manager テンプレートのサンプルは、GitHub の[セキュリティ保護されたリバース プロキシのサンプル テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample)のページにあります。 証明書によるセキュリティ保護されたリバース プロキシの構成と証明書のロールオーバーの処理の手順とそれに使用するテンプレートについては、README の「[Configure HTTPS Reverse Proxy in a secure cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)」(セキュリティ保護されたクラスターで HTTPS リバース プロキシを構成する) をご覧ください。
 
 既存のクラスターの場合、[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)、または [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) を使用して、クラスターのリソース グループの Resource Manager テンプレートをエクスポートすることができます。
 

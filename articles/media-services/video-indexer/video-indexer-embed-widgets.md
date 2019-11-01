@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71036626"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162613"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -253,7 +253,7 @@ Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを�
 
 既定では、Video Indexer プレーヤーで、ビデオのトランスクリプトに基づいたクローズド キャプションが自動生成されます。 トランスクリプトは、ビデオがアップロードされた時に選択されたソース言語でビデオから抽出されます。
 
-別の言語で埋め込む場合は、`&captions=< Language | ”all” | “false” >` を埋め込みプレーヤー の URL に追加します。 使用可能なすべての言語にキャプションが必要な場合は、値 `all` を使用してください。 既定でキャプションが表示されるようにする場合は、`&showCaptions=true` を渡します。
+別の言語で埋め込む場合は、`&captions=< Language | "all" | "false" >` を埋め込みプレーヤー の URL に追加します。 使用可能なすべての言語にキャプションが必要な場合は、値 `all` を使用してください。 既定でキャプションが表示されるようにする場合は、`&showCaptions=true` を渡します。
 
 埋め込み URL は次のようになります。 
 

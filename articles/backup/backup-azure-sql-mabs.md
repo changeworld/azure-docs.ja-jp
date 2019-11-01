@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f36560dbaea5b3efe29d38ca750fc732b9281360
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954470"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969129"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用した Azure への SQL Server のバックアップ
+
 この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する手順について説明します。
 
 SQL Server データベースの Azure へのバックアップと Azure からの回復の管理には、次の 3 つの手順が含まれます。
@@ -25,9 +26,11 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 3. Azure からデータベースを回復します。
 
 ## <a name="before-you-start"></a>開始する前に
+
 開始する前に、[Azure Backup Server がインストールされていて、準備が完了している](backup-azure-microsoft-azure-backup.md)ことを確認してください。
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>SQL Server データベースを保護するための Azure へのバックアップ ポリシーの作成
+
 1. Azure Backup Server の UI で **[保護]** ワークスペースをクリックします。
 2. ツール リボンで、 **[新規]** をクリックし、新しい保護グループを作成します。
 
@@ -111,6 +114,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     ![Creation of Protection Group In-Progress](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>SQL Server データベースのオンデマンド バックアップ
+
 前の手順でバックアップ ポリシーを作成しましたが、"回復ポイント" は最初のバックアップ実行時にのみ作成されます。 次の手順は、スケジューラが開始するのを待つ代わりに、回復ポイントの作成を手動でトリガーします。
 
 1. データベースの保護グループの状態に " **OK** " と表示されるのを待ってから、回復ポイントを作成します。
@@ -127,6 +131,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     ![Monitoring console](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Azure からの SQL Server データベースの回復
+
 保護されているエンティティ (SQL Server データベース) を Azure から回復するには、次の手順が必要です。
 
 1. DPM サーバーの管理コンソールを開きます。 DPM によってバックアップされたサーバーを確認できる **[回復]** ワークスペースに移動します。 目的のデータベース (この場合は ReportServer$MSDPM2012) を参照します。 "**オンライン**" で終わる **[回復元]** の時間を選択します。
@@ -149,5 +154,6 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     回復が完了すると、復元されたデータベースはアプリケーション コンシステントになります。
 
-### <a name="next-steps"></a>次のステップ:
+### <a name="next-steps"></a>次の手順
+
 •   [Azure Backup の FAQ](backup-azure-backup-faq.md)

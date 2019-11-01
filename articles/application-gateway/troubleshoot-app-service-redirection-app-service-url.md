@@ -28,7 +28,7 @@ Azure Application Gateway と共に Azure App Service をバックエンド タ�
 
 バックエンド アプリケーションでリダイレクト応答が送信されるとき、バックエンド アプリケーションで指定されているものとは別の URL にクライアントをリダイレクトしたい場合があります。 App Service が Application Gateway の背後でホストされており、クライアントに相対パスへのリダイレクトを行わせる必要があるときに、これを行うことがあります。 たとえば、contoso.azurewebsites.net/path1 から contoso.azurewebsites.net/path2 へのリダイレクトです。 
 
-App Service では、リダイレクト応答を送信するとき、その応答の場所ヘッダーで、Application Gateway から受信した要求のものと同じホスト名が使用されます。 たとえば、クライアントでは、Application Gateway contoso.com/path2 を経由するのではなく、contoso.azurewebsites.net/path2 に直接要求を行います。 Application Gateway の迂回は望まれません。
+App Service では、リダイレクト応答を送信するとき、その応答の location ヘッダーで、アプリケーション ゲートウェイから受信した要求のものと同じホスト名が使用されます。 たとえば、クライアントでは、Application Gateway contoso.com/path2 を経由するのではなく、contoso.azurewebsites.net/path2 に直接要求を行います。 Application Gateway の迂回は望まれません。
 
 この問題は次のような主な理由から発生することがあります。
 
@@ -54,7 +54,7 @@ App Service はマルチテナント サービスであるため、要求のホ�
 
 ![アプリケーション ゲートウェイでホスト名が変更される](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
-App Service でリダイレクトが実行されるときは、特に構成されていない限り、場所ヘッダーには元のホスト名 "contoso.com" ではなくオーバーライドされたホスト名 "example.azurewebsites.net" が使用されます。 次の要求と応答のヘッダー例を参照してください。
+App Service でリダイレクトが実行されるときは、特に構成されていない限り、location ヘッダーには元のホスト名 contoso.com ではなくオーバーライドされたホスト名 contoso.azurewebsites.net が使用されます。 次の要求と応答のヘッダー例を参照してください。
 ```
 ## Request headers to Application Gateway:
 
@@ -76,20 +76,18 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-前の例では、応答ヘッダーにリダイレクトの状態コード 301 があることがわかります。 場所ヘッダーには、元のホスト名 www.contoso.com ではなく、App Service のホスト名があります。
+前の例では、応答ヘッダーにリダイレクトの状態コード 301 があることがわかります。 location ヘッダーには、元のホスト名 www.contoso.com ではなく、App Service のホスト名があります。
 
-## <a name="solution-rewrite-the-location-header"></a>解決方法: ヘッダーの Location を書き換える
+## <a name="solution-rewrite-the-location-header"></a>解決方法:location ヘッダーを書き換える
 
-ヘッダーの Location を Application Gateway のドメイン名に設定します。 これを行うには、応答のヘッダーのLocation に azurewebsites.net が含まれているかどうかを評価する条件で[書き換え規則](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) を作成します。 また、ヘッダーの Location を書き換え、Application Gate way のホスト名を含めるようにする必要があります。 詳細は、[ヘッダーの Location を書き換える方法](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url) に関する記事の手順を参照してください。
+location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)に関する記事の手順を参照してください。
 
 > [!NOTE]
 > HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) でのみ利用できます。 v1 SKU を使用する場合、[v1 から v2 に移行する](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)ことをお勧めします。 v2 SKU で利用できる書き換えやその他の[高度な機能](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku)を使用することがあります。
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>代替ソリューション:カスタム ドメイン名の使用
 
-
-v1 SKU を使用する場合、ヘッダーの Location を書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service に渡します。
-
+v1 SKU を使用する場合、location ヘッダーを書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service  に渡します。
 
 (リダイレクトがある場合) App Service は、Application Gateway を指し、自ホストではない、元の同じホスト ヘッダーに対してリダイレクトを行うようになります。
 

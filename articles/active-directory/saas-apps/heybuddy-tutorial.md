@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d51b5af6-018e-4678-9a3f-b70438394f67
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e00cc46385f5d60b28607bfc08b9ca9540f152c6
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7edfc0a90a8477bdee50b871e00cd988e511b401
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944975"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>チュートリアル:Azure Active Directory と HeyBuddy の統合
 
@@ -122,7 +123,7 @@ HeyBuddy で Azure AD シングル サインオンを構成するには、次の
 
 6. その他に、HeyBuddy アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | EnableAdfsAuthentication |  ソース属性|
+    | Name |  ソース属性|
     | -------- | --------- |
     | ロール  | user.assignedroles |
     | | |
