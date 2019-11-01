@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl rpm| Microsoft Docs
 description: Service Fabric CLI sfctl rpm のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 3f40451087aba5af5b02625ad3ac1ca6231d976c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 9c37dc8131f14a3b35e68b3e88502c91f96810f6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035886"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901031"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 クエリを実行し、修復マネージャー サービスにコマンドを送信します。

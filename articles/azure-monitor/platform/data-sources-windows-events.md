@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor での Windows イベント ログを収集および分析する | Microsoft Docs
 description: Azure Monitor による Windows イベント ログの収集を構成する方法、および Azure Monitor で作成されるレコードの詳細について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cc81a8d8023d0724f4ecb71c157e8f575aa9edc8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 11/28/2018
+ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997470"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932400"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](agent-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -67,7 +61,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 ## <a name="log-queries-with-windows-events"></a>Windows イベントでのログ クエリ
 次の表は、Windows イベント レコードを取得するログ クエリのさまざまな例を示しています。
 
-| Query | 説明 |
+| クエリ | 説明 |
 |:---|:---|
 | Event |すべての Windows イベント。 |
 | Event &#124; where EventLevelName == "error" |重大度が「エラー」のすべての Windows イベント。 |

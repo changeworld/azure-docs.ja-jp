@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 7538e47a1d0bed0c72ff5ed467c98828cc9c18ba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cde565fbafec7f1209d0c65d6f3ebc121f38e6f5
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086639"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991389"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 
@@ -254,8 +254,8 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type** |該当なし| "notificationHub" に設定する必要があります。 |
-|**direction** |該当なし| "out" に設定する必要があります。 | 
+|**type** |該当なし| `notificationHub` に設定する必要があります。 |
+|**direction** |該当なし| `out` に設定する必要があります。 | 
 |**name** |該当なし| 通知ハブ メッセージの関数コードで使用される変数名。 |
 |**tagExpression** |**TagExpression** | タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。  詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。 |
 |**hubName** | **HubName** | Azure Portal 内の通知ハブ リソースの名前。 |

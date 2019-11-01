@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 10/11/2019
-ms.openlocfilehash: a2b29f2c24a3244cdc800d882e7c2ed8f943eabe
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 900228e1f9bdf9d367fa37b9ec90a6148faec656
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677583"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880253"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Functions を使用してカスタム可用性テストを作成して実行する
 
@@ -159,7 +159,7 @@ private static async Task AvailabilityTestRun(string name, string location, stri
         log.LogError($"[Error]: {ex.Message}");
 
         // optional - throw to fail the function
-        throw;
+        //throw;
     }
     finally
     {

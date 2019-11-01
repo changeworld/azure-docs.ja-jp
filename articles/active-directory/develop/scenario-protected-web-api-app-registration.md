@@ -1,5 +1,6 @@
 ---
-title: 保護されている Web API - アプリの登録 | Azure
+title: 保護されている Web API - アプリの登録
+titleSuffix: Microsoft identity platform
 description: 保護されている Web API をビルドする方法と、アプリを登録するために必要な情報について学習します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbccfc38a4e5e4b31cb625c614e838a3c92e7429
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c905dfd86fd80b9e55aa7bd5a9b9b03f277570c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562304"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802547"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API:アプリの登録
 

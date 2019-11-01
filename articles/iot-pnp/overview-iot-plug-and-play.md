@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858994"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935391"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューとは
 
@@ -26,7 +26,7 @@ IoT プラグ アンド プレイ プレビューを使用することで、ソ�
 
 デバイス機能モデル間でインターフェイスを再利用して、コラボレーションを容易にし、開発を高速化することができます。
 
-IoT プラグ アンド プレイが [Azure Digital Twins](../digital-twins/about-digital-twins.md) とシームレスに連携するように、IoT プラグ アンド プレイ スキーマは、[Digital Twin Definition Language (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL) を使用して定義されます。 IoT プラグ アンド プレイと DTDL はコミュニティにも開かれており、Microsoft はお客様、パートナー、業界とのコラボレーションを歓迎しています。 どちらも、サービスおよびツールをまたいで簡単に導入できるオープンな W3C 標準 (JSON-LD や RDF など) に基づいています。 また、IoT プラグ アンド プレイと DTDL を使用する場合、追加料金は発生しません。 [Azure IoT Hub](../iot-hub/about-iot-hub.md)、[Azure IoT Central](../iot-central/overview-iot-central.md)、およびその他の Azure サービスの標準料金は変わりません。
+IoT プラグ アンド プレイが [Azure Digital Twins](../digital-twins/about-digital-twins.md) とシームレスに連携するように、IoT プラグ アンド プレイ スキーマは、[Digital Twin Definition Language (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL) を使用して定義されます。 IoT プラグ アンド プレイと DTDL はコミュニティにも開かれており、Microsoft はお客様、パートナー、業界とのコラボレーションを歓迎しています。 どちらも、サービスおよびツールをまたいで簡単に導入できるオープンな W3C 標準 (JSON-LD や RDF など) に基づいています。 また、IoT プラグ アンド プレイと DTDL を使用する場合、追加料金は発生しません。 [Azure IoT Hub](../iot-hub/about-iot-hub.md)、[Azure IoT Central](../iot-central/core/overview-iot-central.md)、およびその他の Azure サービスの標準料金は変わりません。
 
 IoT Hub または IoT Central で構築されたソリューションは、IoT プラグ アンド プレイのメリットを活用することができます。
 
@@ -48,7 +48,7 @@ IoT プラグ アンド プレイは、次の 2 種類の開発者にとって�
 
 ソリューション開発者は、IoT プラグ アンド プレイ デバイスを使用する、クラウドでホストされた IoT ソリューションを開発できます。 次のいずれかの Azure サービスを使用できます。
 
-- [IoT Central](../iot-central/overview-iot-central.md) - 物理的な世界とデジタルの世界とを結ぶ製品が簡単に作成できるフル マネージドの IoT SaaS (サービスとしてのソフトウェア) ソリューションです。
+- [IoT Central](../iot-central/core/overview-iot-central.md) - 物理的な世界とデジタルの世界とを結ぶ製品が簡単に作成できるフル マネージドの IoT SaaS (サービスとしてのソフトウェア) ソリューションです。
 - [IoT Hub](../iot-hub/about-iot-hub.md) - マネージド クラウド サービスであり、ご利用の IoT アプリケーションとデバイスとの間で、セキュリティで保護された双方向通信を行うためのメッセージ ハブとして機能します。
 
 IoT プラグ アンド プレイ デバイスは、Azure Certified for IoT デバイス カタログの中で見つけることができます。 カタログ内の各 IoT プラグ アンド プレイ デバイスは検証済みであり、デバイス機能モデルを備えています。 デバイス機能モデルを表示してデバイスの機能を理解したり、それを使用して Azure IoT Central 内でデバイスをシミュレートしたりできます。
