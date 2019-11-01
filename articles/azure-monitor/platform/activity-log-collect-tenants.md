@@ -1,23 +1,18 @@
 ---
 title: Azure テナントにまたがる Log Analytics ワークスペースに Azure アクティビティ ログを収集する | Microsoft Docs
 description: Event Hubs と Logic Apps を使用して Azure アクティビティ ログからデータを収集し、それを別のテナント内の Azure Monitor の Log Analytics ワークスペースに送信します。
-services: log-analytics, logic-apps, event-hubs
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/06/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: d8cea59cd0bbeff410f585693cb7ffed82fd9327
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/06/2019
+ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245600"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932889"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Azure Active Directory テナントにまたがる Azure Monitor に Azure Activity ログを収集する
 
@@ -128,8 +123,8 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
    |Setting | 説明  |
    |:---|:---|
-   | Name           | ロジック アプリの一意の名前。 |
-   | サブスクリプション   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
+   | 名前           | ロジック アプリの一意の名前。 |
+   | Subscription   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
    | リソース グループ | ロジック アプリのために、既存の Azure リソース グループを選択するか、新しいものを作成します。 |
    | Location       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
    | Log Analytics  | ロジック アプリの各実行の状態を Log Analytics ワークスペースにログ記録するかどうかを選択します。  |

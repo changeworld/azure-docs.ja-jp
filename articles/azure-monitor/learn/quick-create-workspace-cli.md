@@ -1,24 +1,18 @@
 ---
 title: Azure CLI を使用して Log Analytics ワークスペースを作成する | Microsoft Docs
 description: Azure CLI で Log Analytics ワークスペースを作成して、クラウドおよびオンプレミス環境から管理ソリューションを有効にし、データを収集できるようにする方法を学習します。
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/12/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 7ee8302a026cf7584996bca481e79190586b77b3
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 03/12/2019
+ms.openlocfilehash: 18bfc99ded6e3e9171fbb20fbf329700817829de
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838852"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894996"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 

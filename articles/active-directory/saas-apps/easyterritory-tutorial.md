@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d29b362d-e986-4f67-8ff2-e158e49353aa
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fecfc00cfae3a4407f815d27a3f48d6c3bfc92a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0cde3fc47e961e6bc1ff41c1a3f58634144f8c4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103792"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158395"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>チュートリアル:Azure Active Directory と EasyTerritory の統合
 

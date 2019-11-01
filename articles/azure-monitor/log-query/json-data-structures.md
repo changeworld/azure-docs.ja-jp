@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor ログ クエリ内の文字列の操作 | Microsoft Docs
 description: この記事は、Azure portal で Azure Monitor Log Analytics を使用して、Azure Monitor でログ データのクエリと分析を行うためのチュートリアルとなっています。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 82ac27e10a74dc99adb7615d604502e696aa9edb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519647"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894325"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の JSON とデータ構造の操作
 

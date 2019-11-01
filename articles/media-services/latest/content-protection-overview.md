@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: c1f1f1b7448fb87135973a596017441ec02d8023
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338796"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73102020"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
@@ -108,8 +108,6 @@ FairPlay で暗号化されたコンテンツをテストする場合は、[こ�
 * 要求 (コンテンツ保護におけるビジネス要件によって変わります)
 * 署名の検証のための対称または非対称検証
 * キー ロールオーバーのサポート (必要な場合)
-
-[この STS ツール](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt)を使用して STS をテストできます。 対称、非対称、およびキーのロールオーバーありの Azure Active Directory (Azure AD) の 3 種類の検証キーがすべてサポートされています。 
 
 ## <a name="streaming-protocols-and-encryption-types"></a>ストリーミング プロトコルと暗号化の種類
 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 51ace608-5a4f-48c0-9446-d9f86ad2e890
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0808361acf762ac21281493b71f7c89c9eef228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 020b34cc4487879b374ff3ddb4a1bb76f14093bc
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104324"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>チュートリアル:Azure Active Directory と Dealpath の統合
 

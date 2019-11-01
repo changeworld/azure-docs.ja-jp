@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddf337cc5573b4821f279d85aa43988ff4705874
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5be397ca14a90c333e20f0a1a42b63e0c9f0ae0e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107432"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>チュートリアル:Azure Active Directory と Accredible の統合
 

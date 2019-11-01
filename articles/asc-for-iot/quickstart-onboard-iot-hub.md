@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cdf9f61c88d93f0cbf0b80576aa30dff5ce9cab
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 67361c402bdbc82d5df01709dc962b59671cb2aa
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551601"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991399"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>クイック スタート:IoT Hub で Azure Security Center for IoT サービスをオンボードする
 
@@ -43,14 +43,8 @@ ms.locfileid: "72551601"
 IoT Hub でセキュリティを有効にするには、次の手順を実行します。 
 
 1. Azure portal で **[IoT Hub]** を開きます。 
-1. **[セキュリティ]** メニューの **[Secure your IoT solution]\(IoT ソリューションのセキュリティ保護\)** をクリックします。
-1. **[有効にする]** は既定のオンのままにします。 
-1. Log Analytics ワークスペースを選択します。
-1. Log Analytics ワークスペースの詳細を指定します。 
-   - **ツイン コレクション**のトグルを**オン**のままにして、**ツイン コレクション**を有効にすることを選択します。
-   - Log Analytics で **[Store raw device security events]\(生デバイス セキュリティ イベントの保存\)** を選択して、ストレージの既定の情報の種類に加えて**生イベント**を保存することを選択します。 **生イベント**のトグルは、**オン**のままにしておきます。 
-    
-1. **[Save]** をクリックします。 
+1. **[セキュリティ]** メニューの **[Secure your IoT solution]\(IoT ソリューションのセキュリティ保護\)** をクリックします。    
+
 
 お疲れさまでした。 IoT Hub 上で Azure Security Center for IoT を有効にすることができました。 
 

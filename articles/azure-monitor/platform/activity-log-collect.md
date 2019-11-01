@@ -1,24 +1,18 @@
 ---
 title: Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する | Microsoft Docs
 description: Azure Monitor のログに Azure アクティビティ ログを収集し、監視ソリューションを使用して、すべての Azure サブスクリプションにわたって Azure アクティビティ ログの分析や検索ができます。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/30/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: c9fdd0c530ca34305aa3a9197c3bb938d4fb9f1f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.date: 09/30/2019
+ms.openlocfilehash: 514dcf05eaa37bd338ef6359977b9a5508838459
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528706"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932859"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 この記事では、アクティビティ ログを Log Analytics ワークスペースに収集する方法と、このデータを分析するためのログ クエリおよびビューを提供する Activity Log Analytics [監視ソリューション](../insights/solutions.md)の使用方法について説明します。 

@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596da9cfe0e914183bd3b2603ffa1047f1d9352b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310022"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063049"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -122,23 +122,25 @@ Windows VM でマネージド ID を使用する方法については、以下�
 
 Linux VM でマネージド ID を使用する方法については、以下のページをご覧ください。
 
+* [Azure Container Registry にアクセスする](../../container-registry/container-registry-authentication-managed-identity.md)
 * [Azure Data Lake Store にアクセスする](tutorial-linux-vm-access-datalake.md)
 * [Azure Resource Manager にアクセスする](tutorial-linux-vm-access-arm.md)
 * [アクセス キーを使用して Azure Storage にアクセスする](tutorial-linux-vm-access-storage.md)
 * [Shared Access Signature を使用して Azure Storage にアクセスする](tutorial-linux-vm-access-storage-sas.md)
 * [Azure Key Vault で Azure AD 以外のリソースにアクセスする](tutorial-linux-vm-access-nonaad.md)
-* [Azure Container Registry にアクセスする](../../container-registry/container-registry-authentication-managed-identity.md)
 
 その他の Azure サービスでマネージド ID を使用する方法については、以下のページをご覧ください。
 
 * [Azure App Service](/azure/app-service/overview-managed-identity)
-* [Azure Functions](/azure/app-service/overview-managed-identity)
-* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
-* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 * [Azure Container Registry タスク](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
+* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure Functions](/azure/app-service/overview-managed-identity)
+* [Azure Kubernetes Service](/azure/aks/use-managed-identity)
+* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
+
 
 ## この機能をサポートする Azure サービスは?<a name="which-azure-services-support-managed-identity"></a>
 

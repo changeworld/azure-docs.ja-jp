@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor での高度なクエリ | Microsoft Docs
 description: この記事では、Analytics ポータルを使用して Azure Monitor でクエリを記述することに関するチュートリアルを提供します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 65713ed9c2d0635e776a7a7e5f205b6d55438ed4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/15/2018
+ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589588"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894496"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Azure Monitor での高度なクエリの記述
 

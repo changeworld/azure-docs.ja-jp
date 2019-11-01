@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor での Azure Log Analytics VM 拡張機能のトラブルシューティング | Microsoft Docs
 description: Windows および Linux Azure VM の Log Analytics VM 拡張機能で最も一般的な問題の現象、原因、解決方法を説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/06/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: dd5e0749116ef335887ea634b9d2790c63bf171d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/06/2019
+ms.openlocfilehash: 9ec0d5036632c575415a7de19b9ea35eb2a28118
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751933"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931927"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Azure Monitor での Log Analytics VM 拡張機能のトラブルシューティング
 この記事では、Microsoft Azure で実行されている Windows および Linux 仮想マシンの Log Analytics VM 拡張機能で発生する可能性のあるエラーのトラブルシューティングを支援し、それらの問題について考えられる解決策を提案します。

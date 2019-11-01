@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a2096004a7b389f627c528a8dfb4768ac001f390
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155618"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965388"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -97,7 +97,7 @@ ms.locfileid: "67155618"
 
 Azure IoT Edge デバイスを IoT ハブに接続するために、まずハブ内のデバイスの ID を作成します。 クラウドでデバイス ID から接続文字列を取り、それを使用して IoT Edge デバイス上でランタイムを構成します。 デバイスが構成されてハブに接続したら、モジュールをデプロイしてメッセージを送信することができます。 対応するデバイス ID の構成を IoT ハブで変更することによって、物理 IoT Edge デバイスの構成を変更することもできます。
 
-このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を作成します。 これらの手順は、[Azure portal](how-to-register-device-portal.md) または [Azure CLI](how-to-register-device-cli.md) を使用して完了することもできます。
+このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を作成します。 これらの手順は、[Azure portal](how-to-register-device.md#register-in-the-azure-portal) または [Azure CLI](how-to-register-device.md#register-with-the-azure-cli) を使用して完了することもできます。
 
 1. 開発用コンピューターで Visual Studio Code を開きます。
 

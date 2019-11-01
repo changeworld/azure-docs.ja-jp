@@ -1,24 +1,18 @@
 ---
 title: SQL から Azure Monitor ログ クエリへのチート シート | Microsoft Docs
 description: SQL を使い慣れているユーザーが Azure Monitor でログ クエリを記述する助けとなります。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b756b9484273c098dbeb6685430f70626b3af787
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2018
+ms.openlocfilehash: 4acf3c2f8cee3ca9e679915eec677b6dd92792bf
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789230"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932909"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL から Azure Monitor ログ クエリへのチート シート 
 

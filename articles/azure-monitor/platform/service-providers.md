@@ -1,24 +1,18 @@
 ---
 title: サービス プロバイダー向け Azure Monitor | Microsoft Docs
 description: Azure Monitor は、マネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV)、およびホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視するのに役立ちます。
-services: log-analytics
-documentationcenter: ''
-author: MeirMen
-manager: jochan
-editor: ''
-ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/06/2019
+author: MeirMen
 ms.author: meirm
-ms.openlocfilehash: 971757a4778dd50be486bead0c50fd6b3a25002e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 08/06/2019
+ms.openlocfilehash: b0f25d01421edd329b03d8f2b7e1aafaa2ba67d5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839279"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932057"
 ---
 # <a name="azure-monitor-for-service-providers"></a>サービス プロバイダー向け Azure Monitor
 Azure Monitor の Log Analytics ワークスペースは、マネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV)、およびホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視するのに役立ちます。 

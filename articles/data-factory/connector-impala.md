@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Impala からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Impala からデータをコピーする | Microsoft Docs
 description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Impala のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,19 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 4bebdbda8fbba10b3e8817d3958e75d39522538a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 54f46c09cfab64d53e8f5f503ca46004289f18c2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092040"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935563"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Impala からデータをコピーする (プレビュー)
+# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Azure Data Factory を使用して Impala からデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Impala からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!IMPORTANT]
-> このコネクタは、現在プレビューの段階です。 実際にお試しいただき、フィードバックをお寄せください。 ソリューションでプレビュー版コネクタの依存関係を取得したい場合、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -166,9 +163,9 @@ Impala からデータをコピーするには、コピー アクティビティ
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

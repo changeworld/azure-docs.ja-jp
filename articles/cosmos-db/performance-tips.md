@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/25/2019
 ms.locfileid: "71261305"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント

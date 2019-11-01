@@ -3,7 +3,7 @@ title: Azure Resource Manager テンプレートを使用して Azure Time Serie
 description: この記事では、Azure Resource Manager を使用して Azure Time Series Insights 環境をプログラムによって管理する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.devlang: csharp
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3aa6d06add1d80512eda0e62888b4a36760e98c
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f7a88dafb9662e404cedf10334b22af149a3cd16
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274798"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991215"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 

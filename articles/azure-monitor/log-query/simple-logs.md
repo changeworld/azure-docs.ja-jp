@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor の簡易ログ エクスペリエンス (プレビュー) | Microsoft Docs
 description: 簡易ログ エクスペリエンスを使用すると、KQL を直接扱うことなく Azure Monitor で基本的なクエリを作成できます。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/12/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 09/12/2019
+ms.openlocfilehash: 0b8b23d5d355614bf74b1b22c6a8443b9a2f9391
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262185"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932982"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Monitor の簡易ログ エクスペリエンス (プレビュー)
 Azure Monitor には、KQL 言語を使用して[ログ クエリ](log-query-overview.md)を作成するための[充実したエクスペリエンス](get-started-portal.md)が備わっています。 ただし、基本的なクエリ要件には、KQL の機能が全部揃っている必要はなく、簡素化されたエクスペリエンスの方が好ましい場合もあります。 簡易ログ エクスペリエンスを使用すると、KQL を直接扱うことなく基本的なクエリを作成できます。 簡易ログは、必要なクエリが高度化していく中で、KQL の学習ツールとしても使用できます。

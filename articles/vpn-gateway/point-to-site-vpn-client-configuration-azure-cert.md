@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 095c7c4bf2a0fb08c0a7fe7e0a8118e76732c9c7
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fb6c484e234b4641a521bd876acdfeb4df562260
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961602"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063118"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -174,17 +174,17 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
   
    ```
    conn azure
-   keyexchange=ikev2
-   type=tunnel
-   leftfirewall=yes
-   left=%any
-   leftauth=eap-tls
-   leftid=%client # use the DNS alternative name prefixed with the %
-   right= Enter the VPN Server value here# Azure VPN gateway address
-   rightid=% # Enter the VPN Server value here# Azure VPN gateway FQDN with %
-   rightsubnet=0.0.0.0/0
-   leftsourceip=%config
-   auto=add
+         keyexchange=ikev2
+         type=tunnel
+         leftfirewall=yes
+         left=%any
+         leftauth=eap-tls
+         leftid=%client # use the DNS alternative name prefixed with the %
+         right= Enter the VPN Server value here# Azure VPN gateway address
+         rightid=% # Enter the VPN Server value here# Azure VPN gateway FQDN with %
+         rightsubnet=0.0.0.0/0
+         leftsourceip=%config
+         auto=add
    ```
 6. 次のコードを */etc/ipsec.secrets* に追加します。
 

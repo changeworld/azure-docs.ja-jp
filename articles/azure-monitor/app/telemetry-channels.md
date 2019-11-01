@@ -1,24 +1,19 @@
 ---
 title: Azure Application Insights におけるテレメトリ チャネル | Microsoft Docs
 description: .NET および .NET Core 用の Azure Application Insights SDK でテレメトリ チャネルをカスタマイズする方法について説明します。
-services: application-insights
-documentationcenter: .net
-author: cijothomas
-manager: carmonm
-ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.author: cithomas
-ms.openlocfilehash: af00641123354831c7bf174a743ded2886343579
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: cb7b9047e1036a2ab4bfd94cca88589dcdcd0ca3
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561360"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899546"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル
 

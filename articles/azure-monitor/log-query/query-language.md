@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor ログ クエリ | Microsoft Docs
 description: Azure Monitor でログ クエリを記述する方法について説明しているリソースへの参照。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/11/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6fae245e4d72f7f6f7809d85da17023deb1518e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/11/2019
+ms.openlocfilehash: 7c6530416f0eb6b822b6f5f3eb53f59aeae05d53
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65560850"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894348"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor ログ クエリ
 Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azure Monitor ログ クエリでは、同じ Kusto クエリ言語のバージョンが使用されます。 [Kusto クエリ言語のドキュメント](/azure/kusto/query)には言語に関するすべての詳細が記載されているため、Azure Monitor ログ クエリを記述するためのプライマリ リソースとなります。 このページでは、クエリの記述方法を学習するためのその他のリソースへのリンクと、言語による Azure Monitor の実装の違いに関する情報へのリンクを示します。
