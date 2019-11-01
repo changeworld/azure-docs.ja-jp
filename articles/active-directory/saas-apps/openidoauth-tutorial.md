@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166452b052313397f1ec17adb59cad3c20fab1f9
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: dbf9cde8dd2032e81abe0fb2572c2181d4ba21ee
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497485"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160218"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの OpenID および OAuth アプリケーションを構成する
 
@@ -124,7 +125,7 @@ Azure AD のユーザーとグループや、Microsoft クラウド サービス
 
 3. ユーザーの認証がまだであれば、Azure AD の /authorize エンドポイントによってサインイン画面が表示されます。
 
-    ![Authentication](./media/openidoauth-tutorial/authentication.png)
+    ![認証](./media/openidoauth-tutorial/authentication.png)
 
 4. ユーザーのサインインが終わると、そのユーザーに対して同意ページを表示する必要があるかどうかが Azure AD により判定されます。 表示の要否の判定基準は、ユーザー (またはそのユーザーが所属する組織の管理者) がアプリケーションに既に同意を与えているかどうかです。
 

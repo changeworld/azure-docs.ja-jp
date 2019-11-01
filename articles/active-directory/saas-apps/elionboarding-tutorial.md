@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 58579baf-53fb-4c34-a6aa-648ad8a22039
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a2c584da34988e6512484586288e6d6f2599a40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0097dbb4478170b2be69118a35b6cffd326c6188
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103409"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157198"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eli-onboarding"></a>チュートリアル:Azure Active Directory と Eli Onboarding の統合
 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 193b163f-bdee-4974-b16d-777c51b991df
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b25007fa8e9d547b9e5671390514b3bc10f329fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93ea2fb15c426da1198c655efb38c9a298a998d0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106094"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bomgar-remote-support"></a>チュートリアル:Azure Active Directory と Bomgar Remote Support の統合
 

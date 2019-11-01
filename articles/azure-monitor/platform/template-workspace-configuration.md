@@ -1,24 +1,18 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う | Microsoft Docs
 description: Azure Resource Manager テンプレートを使用して、Log Analytics ワークスペースの作成と構成を実行できます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/22/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: c2b6032af166a4bfa71d95d08329a79c23adbc6f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 10/22/2019
+ms.openlocfilehash: 5410d6ef11c3f95bb4f02dbd914a1aacbd068a1b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787534"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176382"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
@@ -190,7 +184,7 @@ ms.locfileid: "72787534"
     },
     "immediatePurgeDataOn30Days": {
       "type": "bool",
-      "defaultValue": "false",
+      "defaultValue": "[bool('false')]",
       "metadata": {
         "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
@@ -419,7 +413,7 @@ ms.locfileid: "72787534"
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), parameters('customLogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {

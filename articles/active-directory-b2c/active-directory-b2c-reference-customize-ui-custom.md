@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7053f5b0211878d2f0b9d810fc3f4c0b9361e6f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e4714de9868dbd540e2e662b22a22da6df6514b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509605"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147537"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -43,7 +43,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 > [!NOTE]
 > セキュリティ上の理由から、現時点ではカスタマイズのための JavaScript の使用はブロックされています。 
 
-各 HTML5/CSS テンプレートでは、"*アンカー*" 要素を指定します。この要素は、以降で示すとおり、HTML またはコンテンツ ページ内の必須の `<div id=”api”>` 要素と対応します。 Azure AD B2C では、すべてのコンテンツ ページにこの特定の div が存在している必要があります。
+各 HTML5/CSS テンプレートでは、"*アンカー*" 要素を指定します。この要素は、以降で示すとおり、HTML またはコンテンツ ページ内の必須の `<div id="api">` 要素と対応します。 Azure AD B2C では、すべてのコンテンツ ページにこの特定の div が存在している必要があります。
 
 ```
 <!DOCTYPE html>
