@@ -1,6 +1,6 @@
 ---
-title: Visual Studio Code でワークフローを作成、管理する - Azure Logic Apps
-description: クイックスタート - Visual Studio Code (VS Code) でロジック アプリの JSON 定義を作成、管理する
+title: Visual Studio Code を使用してワークフローを自動化する - Azure Logic Apps
+description: Visual Studio Code (VS Code) を使用して、ロジック アプリの基になる JSON 定義を作成または管理します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,16 +12,16 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: 34de50517580c84c78ee1f192daa908b3f262670
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a1387ca4d94410bafb1b1024345b5e307e215e6f
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035500"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679164"
 ---
-# <a name="quickstart-create-and-manage-logic-app-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリの定義を作成、管理する
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリのワークフロー定義を作成および管理する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、ロジック アプリを作成し、管理できます。ロジック アプリを使用すると、組織や企業間でアプリ、データ、システム、サービスを統合するためのタスク、ワークフロー、プロセスを自動化できます。 この記事では、コード ベースのエクスペリエンスで JavaScript Object Notation (JSON) のワークフロー定義スキーマを使用することによって、ロジック アプリのワークフロー定義を作成および編集する方法について説明します。 Azure に既にデプロイされている既存のロジック アプリを使用することもできます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、ロジック アプリを作成し、管理できます。ロジック アプリを使用すると、組織や企業間でアプリ、データ、システム、サービスを統合するためのタスク、ワークフロー、プロセスを自動化できます。 このクイックスタートでは、コードベースのエクスペリエンスを通じて、ロジック アプリの JavaScript Object Notation (JSON) を使用する、基になるワークフロー定義を作成および編集する方法を示します。 Azure に既にデプロイされている既存のロジック アプリを使用することもできます。
 
 これらのタスクは [Azure portal](https://portal.azure.com) と Visual Studio でも実行できますが、既にロジック アプリ定義を使い慣れていて、コードで直接作業する場合は、Visual Studio Code の方が迅速に作業を開始できます。 たとえば、既に作成されているロジック アプリを無効化、有効化、削除、更新することができます。 また、Visual Studio Code が実行されている開発プラットフォーム (Linux、Windows、Mac など) からロジック アプリと統合アカウントを操作することもできます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "72035500"
 
 * Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* [ロジック アプリのワークフロー定義](../logic-apps/logic-apps-workflow-definition-language.md)とその構造についての基礎知識 (JavaScript Object Notation (JSON) を使用)
+* JSON で記述されている[ロジック アプリのワークフロー定義](../logic-apps/logic-apps-workflow-definition-language.md)とその構造についての基礎知識
 
   Azure Logic Apps を初めて使用する方は、こちらの[クイックスタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)をお試しください。Azure portal で初めてのロジック アプリを作成し、基本的な概念を重点的に身に付けることができます。
 

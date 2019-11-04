@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 56e745a4f4e4bfbe82da00b46b7a5c0a58e3785e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018739"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789805"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>ファイアウォールを使用した Azure HDInsight クラスターの送信ネットワーク トラフィックの構成 (プレビュー)
 
@@ -139,7 +139,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 アプリケーションに他の依存関係がある場合は、それらを Azure Firewall に追加する必要があります。 その他すべてに関する HTTP/HTTPS トラフィックとネットワークのルールを許可するようにアプリケーション ルールを作成します。
 
-## <a name="logging"></a>ログの記録
+## <a name="logging-and-scale"></a>ログ記録とスケール
 
 Azure Firewall は、いくつかの異なるストレージ システムにログを送信できます。 ファイアウォールのログ記録の構成手順については、次のチュートリアルの手順に従ってください。「[チュートリアル: 「Azure Firewall のログとメトリックを監視する](../firewall/tutorial-diagnostics.md)」を参照してください。
 
@@ -151,8 +151,12 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に役立ちます。 Azure Monitor ログについて詳しくは、「[Azure Monitor でログ データを分析する](../azure-monitor/log-query/log-query-overview.md)」をご覧ください
 
+Azure Firewall のスケールの制限と要求の増加については、[こちら](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits)のドキュメント、または [FAQ](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq) を参照してください。 
+
 ## <a name="access-to-the-cluster"></a>クラスターへのアクセス
-ファイアウォールを正常にセットアップした後は、内部エンドポイント (`https://<clustername>-int.azurehdinsight.net`) を使用して VNET 内から Ambari にアクセスできます。 パブリック エンドポイント (`https://<clustername>.azurehdinsight.net`) または SSH エンドポイント (`<clustername>-ssh.azurehdinsight.net`) を使用するには、[こちら](https://docs.microsoft.com/azure/firewall/integrate-lb)で説明されている非対称ルーティングの問題を回避するために、必ずルート テーブルに正しいルートが指定されており、NSG ルールが設定されていることを確認します。
+ファイアウォールを正常にセットアップした後は、内部エンドポイント (`https://<clustername>-int.azurehdinsight.net`) を使用して VNET 内から Ambari にアクセスできます。 
+
+パブリック エンドポイント (`https://<clustername>.azurehdinsight.net`) または SSH エンドポイント (`<clustername>-ssh.azurehdinsight.net`) を使用するには、[こちら](https://docs.microsoft.com/azure/firewall/integrate-lb)で説明されている非対称ルーティングの問題を回避するために、必ずルート テーブルに正しいルートとNSG ルールが指定されていることを確認します。 特にこのケースでは、インバウンド NSG 規則のクライアント IP アドレスを許可し、次ホップを `internet` に設定してユーザー定義ルート テーブルに追加する必要があります。 これが正しくセットアップされていない場合、タイムアウト エラーが表示されます。
 
 ## <a name="configure-another-network-virtual-appliance"></a>別のネットワーク仮想アプライアンスの構成
 

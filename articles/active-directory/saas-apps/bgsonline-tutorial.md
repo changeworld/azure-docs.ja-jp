@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4fd6b29b-1b46-4fd1-9f5e-16b1c9d892cd
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 124dbcf43bc02274c0299b9d89cc8d282f3afd5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bccd90340fe8f8dfd5393a391899caf92dd2251f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106239"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>チュートリアル:Azure Active Directory と BGS Online の統合
 

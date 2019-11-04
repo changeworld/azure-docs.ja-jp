@@ -1,21 +1,21 @@
 ---
-title: コグニティブ検索の強化された入力フィールドを出力フィールドにマップする - Azure Search
-description: ソース データ フィールドを抽出して強化し、Azure Search インデックスの出力フィールドにマップします。
+title: AI によって強化された入力フィールドを出力フィールドにマップする
+titleSuffix: Azure Cognitive Search
+description: ソース データ フィールドを抽出して強化し、Azure Cognitive Search インデックスの出力フィールドにマップします。
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 4ceb8e6290e3e7f4fb552db13c97558db1c8c97e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 77f378f4e0c4a8e4827523e244f7b18c2a9ba336
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265501"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792117"
 ---
-# <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>強化されたフィールドを検索可能なインデックスにマップする方法
+# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI によって強化されたフィールドを検索可能なインデックスにマップする方法
 
 この記事では、強化された入力フィールドを検索可能なインデックスの出力フィールドにマップする方法を学習します。 [定義済みのスキルセット](cognitive-search-defining-skillset.md)が用意できたら、値に直接影響するすべてのスキルの出力フィールドを検索インデックス内の特定のフィールドにマップする必要があります。 フィールド マッピングは、強化されたドキュメントからインデックスにコンテンツを移動するために必要です。
 
@@ -72,4 +72,4 @@ sourceFieldName のパスは、1 つ以上の要素を表すことができま�
 ## <a name="next-steps"></a>次の手順
 強化されたフィールドを検索可能なフィールドにマップすると、[インデックス定義の一部として](search-what-is-an-index.md)検索可能な各フィールドにフィールド属性を設定できます。
 
-フィールド マッピングの詳細については、「[Field mappings in Azure Search indexers](search-indexer-field-mappings.md)」 (Azure Search インデクサーでのフィールド マッピング) を参照してください。
+フィールド マッピングの詳細については、[Azure Cognitive Search インデクサーでのフィールド マッピング](search-indexer-field-mappings.md)に関する記事を参照してください。

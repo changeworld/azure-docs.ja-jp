@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71677081"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
@@ -38,7 +38,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 1. 左側のメニューから、 **[+ リソースの作成]**  >   **[Analytics]**  >  **[HDInsight]** に移動します。
 
-    ![Azure portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Azure portal で新しいクラスターを作成する")
+    ![Azure portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Azure Portal での新しいクラスターの作成")
 
 1. **[HDInsight クラスターの作成]** ページで、 **[Go to classic create experience]\(従来の作成エクスペリエンスに移動\)** を選択します。
 
@@ -48,7 +48,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 1. **[1 基本]** を選択します。 そして、次の情報を入力します。
 
-    ![HDInsight のクラスター作成の基礎](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Azure portal での新しいクラスターの作成")
+    ![HDInsight でのクラスター作成の基本](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Azure Portal での新しいクラスターの作成")
 
     * **[クラスター名]** を入力します。 この名前はグローバルに一意である必要があります。
 
@@ -79,7 +79,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 1. **[3 ストレージ]** で、既定のストレージとして Azure Storage と Azure Data Lake Storage のどちらを使用するかを指定します。 詳細については、後の表を参照してください。
 
-     ![HDInsight のクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Azure portal での新しいクラスターの作成")
+     ![HDInsight でのクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Azure Portal での新しいクラスターの作成")
 
      | Storage                                      | 説明 |
      |----------------------------------------------|-------------|
@@ -98,7 +98,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 1. **[5 クラスター サイズ]** に、このクラスターのために使用されるノードに関する情報が表示されます。 クラスターで必要な worker ノードの数を設定します。 クラスター実行の推定コストが表示されます。
 
-    ![HDInsight のクラスター ノードの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "クラスター ノード数の指定")
+    ![HDInsight でのクラスター ノードの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "クラスター ノードの数を指定する")
 
    > [!IMPORTANT]  
    > 32 個を超えるワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択します。 クラスターの作成時に、または作成後にクラスターのスケーリングで、ノードを計画します。
@@ -113,7 +113,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 1. **[7 概要]** で、これまでに入力した情報を確認します。 **[作成]** を選択します。
 
-     ![HDInsight のクラスター作成の概要](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "クラスター ノード数の指定")
+     ![HDInsight でのクラスター作成の概要](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "クラスター ノードの数を指定する")
     
     > [!NOTE]  
     > クラスターが作成されるまで、通常は約 20 分かかります。 **[通知]** を監視して、プロビジョニング プロセスをチェックします。

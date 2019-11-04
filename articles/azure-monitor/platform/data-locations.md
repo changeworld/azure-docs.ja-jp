@@ -1,22 +1,18 @@
 ---
 title: Azure Monitor における監視データの場所 | Microsoft Docs
 description: Azure Monitor データ プラットフォームを含め、監視データの保存先となる、Azure 内のさまざまな場所について説明します。
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/21/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6f6071bc1d3d7514d22658a07810690ec8a8056b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 05/21/2019
+ms.openlocfilehash: 2ec1f0161713c7014f71fb3eaee31b0abdf52902
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972754"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932551"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>Azure Monitor における監視データの場所
 

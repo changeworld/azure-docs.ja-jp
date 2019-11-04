@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: c6fc363a7ab9de215647e371a9d3c846f8688bd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30e5daba56bb371aafa6d2636a0a9f641977e6fa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466325"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162569"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要 
 
@@ -54,13 +54,13 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
           "renewal_server_url":"<renewal server url>",
           "renewal_delay_seconds":<renewal delay>,
           "renewal_retry_interval_seconds":<renewal retry interval>,
-          "renew_with_usage”:<renew with usage>
+          "renew_with_usage":<renew with usage>
        }
     }
 
 ## <a name="json-message"></a>JSON メッセージ
 
-| Name | 値 | 説明 |
+| 名前 | 値 | 説明 |
 | --- | --- | --- |
 | payload |Base64 でエンコードされた文字列 |クライアントから送信されたライセンス要求です。 |
 | content_id |Base64 でエンコードされた文字列 |各 content_key_specs.track_type のキー ID およびコンテンツ キーを取得するために使用される識別子です。 |
@@ -78,7 +78,7 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 
 use_policy_overrides_exclusively オプションに関係なく、各 content_key_specs 値がすべてのトラックに対して指定されている必要があります。 
 
-| Name | 値 | 説明 |
+| 名前 | 値 | 説明 |
 | --- | --- | --- |
 | content_key_specs track_type |string |トラックの種類の名前です。 ライセンス要求で content_key_specs が指定されている場合は、すべてのトラックの種類を明示的に指定します。 指定しないと、直前の 10 秒間を再生できません。 |
 | content_key_specs  <br/> security_level |uint32 |再生に関するクライアントの堅牢性の要件を定義します。 <br/> - ソフトウェアベースのホワイトボックス暗号化が必須です。 <br/> - ソフトウェア暗号化と難読化デコーダーが必須です。 <br/> - キー マテリアルと暗号化の操作を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 <br/> - コンテンツの暗号化とデコードを、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。  <br/> - 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 |
@@ -87,7 +87,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 | content_key_specs.key_id |Base64 でエンコードされた文字列バイナリ、16 バイト |キーの一意識別子です。 |
 
 ## <a name="policy-overrides"></a>ポリシーのオーバーライド
-| Name | 値 | 説明 |
+| 名前 | 値 | 説明 |
 | --- | --- | --- |
 | policy_overrides&#46;can_play |ブール値、true または false |コンテンツの再生が許可されていることを示します。 既定値は false です。 |
 | policy_overrides&#46;can_persist |ブール値、true または false |オフラインで使用するために、ライセンスを非揮発性ストレージに保持できることを示します。 既定値は false です。 |
@@ -102,7 +102,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 | policy_overrides&#46;renew_with_usage |ブール値、true または false |使用が開始されたときに、更新のためにライセンスが送信されることを示します。 このフィールドは、can_renew が true の場合にのみ使用されます。 |
 
 ## <a name="session-initialization"></a>セッションの初期化
-| Name | 値 | 説明 |
+| 名前 | 値 | 説明 |
 | --- | --- | --- |
 | provider_session_token |Base64 でエンコードされた文字列 |このセッション トークンはライセンスに渡され、後続の更新に含まれます。 セッション トークンは、セッションの範囲を超えて保持されません。 |
 | provider_client_token |Base64 でエンコードされた文字列 |ライセンスの応答で返信されるクライアント トークンです。 ライセンス要求にクライアント トークンが含まれる場合、この値は無視されます。 クライアント トークンは、ライセンス セッションの範囲を超えて保持されます。 |

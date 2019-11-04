@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e649fc4e-3e15-4948-b977-00bfe9f7db13
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 0918333d70efcd8c93f77f99b2a36b099fb211e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba7a8e4dc8172d0ba254a10d4efd5d9354a3d453
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096954"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161358"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>チュートリアル:Azure Active Directory と Mobile Xpense の統合
 

@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor ビューのフィルター | Microsoft Docs
 description: Azure Monitor ビューのフィルターを使用すると、ユーザーはビュー自体を変更せずに、特定のプロパティの値によってビュー内のデータをフィルター処理することができます。  この記事では、フィルターの使用方法およびカスタム ビューへの追加方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/22/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/22/2018
+ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551724"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931976"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Monitor ビューのフィルター
 [Azure Monitor ビュー](view-designer.md)内の**フィルター**を使用すると、ユーザーはビュー自体を変更せずに、特定のプロパティの値によってビュー内のデータをフィルター処理することができます。  たとえば、ビューのユーザーが、特定のコンピューターまたは複数のコンピューターからのデータだけをフィルター表示したビューを利用できます。  1 つのビューに複数のフィルターを作成して、ユーザーが複数のプロパティでフィルター処理することが可能です。  この記事では、フィルターの使用方法およびカスタム ビューへの追加方法について説明します。
@@ -57,8 +51,8 @@ ms.locfileid: "60551724"
 | フィールド名 | 値のクエリ | タグ |
 |:--|:--|:--|
 | Computer   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | [Computers (コンピューター)] |
-| EventLevelName | Event &#124; distinct EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
+| EventLevelName | Event &#124; distinct EventLevelName | 重大度 |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | 重大度 |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 

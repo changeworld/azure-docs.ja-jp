@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fb9ee12c0373f2d7038417935709caae4a6eb43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87728a5ff9690df6f47a2721ad4a51b5c2388877
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107482"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>チュートリアル:Azure Active Directory と 8x8 Virtual Office の統合
 

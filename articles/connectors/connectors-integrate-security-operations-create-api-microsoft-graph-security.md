@@ -1,6 +1,6 @@
 ---
-title: セキュリティ操作を Microsoft Graph Security と統合する - Azure Logic Apps
-description: セキュリティ操作を Microsoft Graph Security と Azure Logic Apps を使用して管理することによって、アプリの脅威の防止、検出、および対応能力を強化します
+title: セキュリティ操作の統合と管理 - Azure Logic Apps と Microsoft Graph Security
+description: Microsoft Graph Security と Azure Logic Apps を使用して、アプリの脅威の防止、検出、および対応を強化します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,12 +10,12 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
-ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 845f57d84f49bdd964cc6f61790faff093f59466
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60448050"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679091"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 

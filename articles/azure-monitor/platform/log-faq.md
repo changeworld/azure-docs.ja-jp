@@ -1,24 +1,18 @@
 ---
 title: Log Analytics についてよく寄せられる質問 | Microsoft Docs
 description: Azure Log Analytics サービスについてよく寄せられる質問とその回答
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/13/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 08e915354df4f4aa1d9a183e78cbad47460b8d37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/13/2018
+ms.openlocfilehash: e3ebb87a7a5f6200d860c1c79591719c32313e11
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356223"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932211"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 
@@ -109,7 +103,7 @@ A:使用している Operations Manager の更新プログラム ロールアッ
 
 ### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>Q:オンプレミス バージョンの Log Analytics はありますか?
 
-A:いいえ。 Log Analytics は、大量のデータを処理および格納するスケーラブルなクラウド サービスです。 
+A:No. Log Analytics は、大量のデータを処理および格納するスケーラブルなクラウド サービスです。 
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>Q. Log Analytics がデータを収集しなくなった場合にトラブルシューティングするにはどうすればよいですか?
 

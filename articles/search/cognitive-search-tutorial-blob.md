@@ -1,23 +1,23 @@
 ---
-title: REST チュートリアル:コグニティブ検索を使用して AI エンリッチメント パイプラインを構築する - Azure Search
-description: Postman と Azure Search REST API を使用した、JSON BLOB のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
+title: REST チュートリアル:JSON BLOB からテキストと構造を抽出する AI エンリッチメント パイプラインを作成する
+titleSuffix: Azure Cognitive Search
+description: Postman と Azure Cognitive Search REST API を使用した、JSON BLOB のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 08/23/2019
 ms.author: luisca
-ms.openlocfilehash: 6f7c5e2955c57e0e1891593504e5eec1a06bbb04
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265367"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790190"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>チュートリアル:コグニティブ検索を使用して "非構造化コンテンツ" に構造を追加する
+# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>チュートリアル:AI エンリッチメントを使用して "非構造化コンテンツ" に構造を追加する
 
-非構造化テキストまたは画像のコンテンツがある場合、Azure Search の[コグニティブ検索](cognitive-search-concept-intro.md)機能を使用すると、情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 コグニティブ検索では画像ファイル (JPG、PNG、TIFF) を処理できますが、このチュートリアルでは、ワードベースのコンテンツに焦点を当て、言語検出とテキスト分析を適用して、クエリ、ファセット、およびフィルターで利用できる新しいフィールドと情報を作成します。
+非構造化テキストまたは画像のコンテンツがある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)を使用すると、情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 パイプラインでは画像ファイル (JPG、PNG、TIFF) を処理できますが、このチュートリアルでは、ワードベースのコンテンツに焦点を当て、言語検出とテキスト分析を適用して、クエリ、ファセット、およびフィルターで利用できる新しいフィールドと情報を作成します。
 
 > [!div class="checklist"]
 > * まずは、Azure Blob Storage で、PDF、MD、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="1---create-services"></a>1 - サービスを作成する
 
-このチュートリアルでは、インデックス作成とクエリに Azure Search を使用するほか、AI エンリッチメントには Cognitive Services を、データ提供には Azure Blob Storage を使用します。 可能である場合は、近接性と管理性を高めるために、3 つのサービスすべてを同じリージョンおよびリソース グループ内に作成します。 実際には、Azure Storage アカウントは任意のリージョンに置くことができます。
+このチュートリアルでは、インデックス作成とクエリに Azure Cognitive Search を使用するほか、AI エンリッチメントには Cognitive Services を、データ提供には Azure Blob Storage を使用します。 可能である場合は、近接性と管理性を高めるために、3 つのサービスすべてを同じリージョンおよびリソース グループ内に作成します。 実際には、Azure Storage アカウントは任意のリージョンに置くことができます。
 
 ### <a name="start-with-azure-storage"></a>Azure Storage の使用を開始する
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. *[ストレージ アカウント]* を検索し、Microsoft のストレージ アカウント オファリングを選択します。
 
-   ![ストレージ アカウントを作成する](media/cognitive-search-tutorial-blob/storage-account.png "ストレージ アカウントを作成する")
+   ![ストレージ アカウントの作成](media/cognitive-search-tutorial-blob/storage-account.png "ストレージ アカウントの作成")
 
 1. [基本] タブでは、次の項目が必要です。 それ以外のすべてのものには、既定値をそのまま使用します。
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    + **ストレージ アカウント名**。 同じ種類のリソースが複数存在することになると考えられる場合は、名前を使用して、種類とリージョンを基に区別が付くようにします (たとえば、*blobstoragewestus*)。 
 
-   + **場所**。 可能であれば、Azure Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
+   + **場所**。 可能であれば、Azure Cognitive Search と Cognitive Services に使用するのと同じ場所を選択します。 1 つの場所であれば、帯域幅の料金がかかりません。
 
    + **アカウントの種類**。 既定値の *[StorageV2 (general purpose v2)]\(StorageV2 (汎用 v2)\)* を選択します。
 
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![サンプル ファイルをアップロードする](media/cognitive-search-tutorial-blob/sample-files.png "サンプル ファイルをアップロードする")
 
-1. Azure Storage を終了する前に、Azure Search で接続を作成できるように、接続文字列を取得します。 
+1. Azure Storage を終了する前に、Azure Cognitive Search で接続を作成できるように、接続文字列を取得します。 
 
    1. 自分のストレージ アカウント (例として *blobstragewestus* を使用しています) の [概要] ページに戻ります。 
    
@@ -86,17 +86,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="cognitive-services"></a>Cognitive Services
 
-コグニティブ検索における AI エンリッチメントは、自然言語と画像の処理のための Text Analytics や Computer Vision など、Cognitive Services によってサポートされています。 実際のプロトタイプまたはプロジェクトを完成させることが目的であれば、この時点で (Azure Search と同じリージョンに) Cognitive Services をプロビジョニングして、インデックス作成操作にアタッチできるようにします。
+AI エンリッチメントは、自然言語と画像の処理のための Text Analytics や Computer Vision など、Cognitive Services によってサポートされています。 実際のプロトタイプまたはプロジェクトを完成させることが目的であれば、この時点で (Azure Cognitive Search と同じリージョンに) Cognitive Services をプロビジョニングして、インデックス作成操作にアタッチできるようにします。
 
-ただし、この演習では、Azure Search がバックグラウンドで Cognitive Services に接続し、インデクサーの実行ごとに 20 個の無料トランザクションを提供できるため、リソースのプロビジョニングをスキップできます。 このチュートリアルで使用するトランザクションは 7 個であるため、無料の割り当てで十分です。 より大規模なプロジェクトの場合は、従量課金制の S0 レベルで Cognitive Services をプロビジョニングすることを計画してください。 詳細については、[Cognitive Services のアタッチ](cognitive-search-attach-cognitive-services.md)に関するページを参照してください。
+ただし、この演習では、Azure Cognitive Search がバックグラウンドで Cognitive Services に接続し、インデクサーの実行ごとに 20 個の無料トランザクションを提供できるため、リソースのプロビジョニングをスキップできます。 このチュートリアルで使用するトランザクションは 7 個であるため、無料の割り当てで十分です。 より大規模なプロジェクトの場合は、従量課金制の S0 レベルで Cognitive Services をプロビジョニングすることを計画してください。 詳細については、[Cognitive Services のアタッチ](cognitive-search-attach-cognitive-services.md)に関するページを参照してください。
 
-### <a name="azure-search"></a>Azure Search
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
-3 番目のコンポーネントは Azure Search であり、[ポータルで作成](search-create-service-portal.md)できます。 このチュートリアルは Free レベルを使用して完了できます。 
+3 番目のコンポーネントは Azure Cognitive Search であり、[ポータルで作成](search-create-service-portal.md)できます。 このチュートリアルは Free レベルを使用して完了できます。 
 
 Azure Blob Storage と同様に、アクセス キーを収集してください。 さらに、要求の構築を始めるときに、各要求の認証に使用されるエンドポイントと管理者 API キーを指定する必要があります。
 
-### <a name="get-an-admin-api-key-and-url-for-azure-search"></a>Azure Search のための管理者 API キーと URL を取得する
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Cognitive Search のための管理者 API キーと URL を取得する
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、自分の検索サービスの **[概要]** ページで、自分の検索サービスの名前を確認します。 エンドポイント URL を見ることで、自分のサービス名を確かめることができます。 エンドポイント URL が `https://mydemo.search.windows.net` だったら、自分のサービス名は `mydemo` になります。
 
@@ -110,17 +110,17 @@ Azure Blob Storage と同様に、アクセス キーを収集してください
 
 ## <a name="2---set-up-postman"></a>2 - Postman を設定する
 
-Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
+Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Cognitive Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
 
 このチュートリアルで使用した要求メソッドは **POST**、**PUT**、**GET** です。 これらのメソッドを使用して、検索サービスに対して 4 つの API 呼び出しを行い、データ ソース、スキルセット、インデックス、およびインデクサーを作成します。
 
-ヘッダーで "Content-type" を `application/json` に設定し、`api-key` に自分の Azure Search サービスの管理者 API キーを設定します。 ヘッダーを設定したら、この演習の各要求でそれらを使用できます。
+ヘッダーで "Content-type" を `application/json` に設定し、`api-key` に自分の Azure Cognitive Search サービスの管理者 API キーを設定します。 ヘッダーを設定したら、この演習の各要求でそれらを使用できます。
 
   ![Postman の要求 URL とヘッダー](media/search-get-started-postman/postman-url.png "Postman の要求 URL とヘッダー")
 
 ## <a name="3---create-the-pipeline"></a>3 - パイプラインを作成する
 
-Azure Search では、AI 処理はインデックス作成 (またはデータ インジェスト) 中に行われます。 チュートリアルのこの部分では、データ ソース、インデックス定義、スキルセット、インデクサーという 4 つのオブジェクトを作成します。 
+Azure Cognitive Search では、AI 処理はインデックス作成 (またはデータ インジェスト) 中に行われます。 チュートリアルのこの部分では、データ ソース、インデックス定義、スキルセット、インデクサーという 4 つのオブジェクトを作成します。 
 
 ### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
@@ -171,7 +171,7 @@ Azure Search では、AI 処理はインデックス作成 (またはデータ �
    | [テキスト分割](cognitive-search-skill-textsplit.md)  | キー フレーズの抽出スキルを呼び出す前に、大きいコンテンツを小さいチャンクに分割します。 キー フレーズ抽出は、50,000 文字以下の入力を受け入れます。 いくつかのサンプル ファイルは、分割してこの制限内に収める必要があります。 |
    | [キー フレーズ抽出](cognitive-search-skill-keyphrases.md) | 上位のキー フレーズを抜き出します。 |
 
-   各スキルは、ドキュメントのコンテンツで実行されます。 処理中に、Azure Search が各ドキュメントを解読して、さまざまなファイル形式からコンテンツを読み取ります。 ソース ファイルから配信されたテキストが見つかると、ドキュメントごとに 1 つずつ、生成された ```content``` フィールドに配置されます。 そのため、入力は ```"/document/content"``` になります。
+   各スキルは、ドキュメントのコンテンツで実行されます。 処理中に、Azure Cognitive Search が各ドキュメントを解析して、さまざまなファイル形式からコンテンツを読み取ります。 ソース ファイルから配信されたテキストが見つかると、ドキュメントごとに 1 つずつ、生成された ```content``` フィールドに配置されます。 そのため、入力は ```"/document/content"``` になります。
 
    キー フレーズの抽出では、テキスト スプリッター スキルを使用して大きなファイルをページに分割するため、キー フレーズ抽出スキルのコンテキストは ```"/document/content"``` ではなく、```"document/pages/*"``` (ドキュメント内の各ページ) になります。
 
@@ -239,7 +239,7 @@ Azure Search では、AI 処理はインデックス作成 (またはデータ �
 
 ### <a name="step-3-create-an-index"></a>手順 3:インデックスを作成する
 
-[インデックス](https://docs.microsoft.com/rest/api/searchservice/create-index)は、Azure Search の逆インデックスおよびその他の構成要素でコンテンツの物理的な表現を作成するために使用されるスキーマを提供します。 インデックスの最大コンポーネントはフィールド コレクションであり、そこではデータ型と属性によって Azure Search でのコンテンツと動作が決まります。
+[インデックス](https://docs.microsoft.com/rest/api/searchservice/create-index)は、Azure Cognitive Search の逆インデックスおよびその他の構成要素でコンテンツの物理的な表現を作成するために使用されるスキーマを提供します。 インデックスの最大コンポーネントはフィールド コレクションであり、そこではデータ型と属性によって Azure Cognitive Search でのコンテンツと動作が決まります。
 
 1. **PUT** と次の URL を使用して、インデックスに名前を付けます。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
@@ -323,7 +323,7 @@ Azure Search では、AI 処理はインデックス作成 (またはデータ �
 
 ### <a name="step-4-create-and-run-an-indexer"></a>手順 4:インデクサーの作成と実行
 
-[インデクサー](https://docs.microsoft.com/rest/api/searchservice/create-indexer)は、パイプラインを駆動するものです。 これまでに作成した 3 つのコンポーネント (データ ソース、スキルセット、インデックス) は、インデクサーへの入力です。 Azure Search でのインデクサーの作成は、パイプライン全体の動作を引き起こすイベントです。 
+[インデクサー](https://docs.microsoft.com/rest/api/searchservice/create-indexer)は、パイプラインを駆動するものです。 これまでに作成した 3 つのコンポーネント (データ ソース、スキルセット、インデックス) は、インデクサーへの入力です。 Azure Cognitive Search でのインデクサーの作成は、パイプライン全体の動作を引き起こすイベントです。 
 
 1. **PUT** と次の URL を使用して、インデクサーに名前を付けます。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
@@ -481,7 +481,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 
 ## <a name="reset-and-rerun"></a>リセットして再実行する
 
-パイプライン開発の初期の実験的な段階では、設計反復のための最も実用的なアプローチは、Azure Search からオブジェクトを削除してリビルドできるようにすることです。 リソース名は一意です。 オブジェクトを削除すると、同じ名前を使用して再作成することができます。
+パイプライン開発の初期の実験的な段階では、設計反復のための最も実用的なアプローチは、Azure Cognitive Search からオブジェクトを削除してリビルドできるようにすることです。 リソース名は一意です。 オブジェクトを削除すると、同じ名前を使用して再作成することができます。
 
 新しい定義でドキュメントのインデックスを再作成するには、以下の操作を行います。
 
@@ -503,17 +503,17 @@ DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-
 
 このチュートリアルでは、構成要素 (データ ソース、スキルセット、インデックス、およびインデクサー) の作成によってエンリッチされたインデックス作成パイプラインを作成するための、基本的な手順を示します。
 
-[定義済みのスキル](cognitive-search-predefined-skills.md)については、スキルセットの定義と、入力と出力を介したスキルの連結のしくみとともに説明しました。 また、Azure Search サービスでエンリッチされた値をパイプラインから検索可能なインデックス内にルーティングするには、インデクサーの定義に `outputFieldMappings` が必要であることも学習しました。
+[組み込みのスキル](cognitive-search-predefined-skills.md)については、スキルセットの定義と、入力と出力を介したスキルの連結のしくみと共に説明しました。 また、Azure Cognitive Search サービス上の検索可能なインデックスに対し、エンリッチされた値をパイプラインからルーティングするには、インデクサーの定義に `outputFieldMappings` が必要であることも学習しました。
 
 最後に、結果をテストし、今後の反復のためにシステムをリセットする方法について学習しました。 インデックスに対するクエリを発行すると、エンリッチされたインデックス作成パイプラインによって作成された出力が返されることを学習しました。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-チュートリアルの後で最も速くクリーンアップする方法は、Azure Search サービスと Azure BLOB サービスが含まれているリソース グループを削除することです。 両方のサービスを同じグループに配置すると仮定した場合は、ここでリソース グループを削除すると、このチュートリアル用に作成したサービスと保存したコンテンツを含み、そのリソース グループ内のすべてのものが完全に削除されます。 Portal では、リソース グループ名は各サービスの [概要] ページに表示されます。
+チュートリアルの後に最も短時間でクリーンアップする方法は、Azure Cognitive Search サービスと Azure Blob service が含まれているリソース グループを削除することです。 両方のサービスを同じグループに配置すると仮定した場合は、ここでリソース グループを削除すると、このチュートリアル用に作成したサービスと保存したコンテンツを含み、そのリソース グループ内のすべてのものが完全に削除されます。 Portal では、リソース グループ名は各サービスの [概要] ページに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
 カスタム スキルを使ってパイプラインをカスタマイズまたは拡張します。 カスタム スキルを作成してスキルセットに追加すると、自分で作成したテキストまたは画像分析をオンボードできます。 
 
 > [!div class="nextstepaction"]
-> [例:コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
+> [例:AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)

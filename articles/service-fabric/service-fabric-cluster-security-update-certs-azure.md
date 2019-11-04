@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599957"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934014"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
@@ -53,13 +53,13 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 以下の手順は、Resource Manager の動作方法を理解していること、Resource Manager テンプレートを使用して少なくとも 1 つの Service Fabric クラスターをデプロイしていること、クラスターをセットアップするために使用したテンプレートが手元にあることを前提としています。 また、JSON を使いこなせることを前提としています。
 
 > [!NOTE]
-> 操作を理解するため、または作業の出発点とするために利用できるサンプル テンプレートおよびパラメーターをお探しの場合は、[こちらの Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)からダウンロードできます。 
+> 操作を理解するため、または作業の出発点とするために利用できるサンプル テンプレートおよびパラメーターをお探しの場合は、[こちらの Git リポジトリ](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)からダウンロードできます。 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Resource Manager テンプレートを編集する
 
-サンプル 5-VM-1-NodeTypes-Secure_Step2.JSON にはこれから行うすべての編集内容が含まれています。 このサンプルは、[Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)から入手できます。
+サンプル 5-VM-1-NodeTypes-Secure_Step2.JSON にはこれから行うすべての編集内容が含まれています。 このサンプルは、[Git リポジトリ](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)から入手できます。
 
 **すべての手順に従う**
 
@@ -178,7 +178,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>追加した新しいパラメーターを反映するようにテンプレート ファイルを編集する
-[git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) のサンプルを使用して操作する場合は、サンプル 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON の変更から始めることができます 
+[git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) のサンプルを使用して操作する場合は、サンプル 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON の変更から始めることができます 
 
 Resource Manager テンプレートのパラメーター ファイルを編集し、secCertificateThumbprint と secCertificateUrlValue に 2 つの新しいパラメーターを追加します。 
 

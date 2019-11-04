@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70030c9014e83984b2cd493ba0d3b2a36180feb3
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: f307d6245b107fdbd3c6d6baafa5a162988235da
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575072"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800014"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
 
@@ -137,7 +137,7 @@ Storm ワーカー ノードは、次のサービスを実行します。
 
 ### <a name="java-based-topology"></a>Java ベースのトポロジ
 
-[HDInsight で Apache Storm を使用して Azure Event Hubs のイベントを処理する (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[HDInsight で Apache Storm を使用して Azure Event Hubs のイベントを処理する (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# ベースのトポロジ (HDInsight 3.4 以降の Linux Storm クラスター上の Mono)
 

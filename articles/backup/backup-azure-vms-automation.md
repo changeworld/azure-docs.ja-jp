@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: f1aa2c4b6fbe554304bfff239c6220d245fe7467
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219457"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969057"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -28,9 +28,9 @@ ms.locfileid: "71219457"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- Recovery Services コンテナーについての[詳細情報](backup-azure-recovery-services-vault-overview.md)を確認します。
-- Azure VM バックアップのアーキテクチャを[確認](backup-architecture.md#architecture-direct-backup-of-azure-vms)して、バックアップ プロセスについて[学び](backup-azure-vms-introduction.md)、サポート、制限、および前提条件を[確認](backup-support-matrix-iaas.md)します。
-- Recovery Services の PowerShell オブジェクト階層を確認します。
+* Recovery Services コンテナーについての[詳細情報](backup-azure-recovery-services-vault-overview.md)を確認します。
+* Azure VM バックアップのアーキテクチャを[確認](backup-architecture.md#architecture-direct-backup-of-azure-vms)して、バックアップ プロセスについて[学び](backup-azure-vms-introduction.md)、サポート、制限、および前提条件を[確認](backup-support-matrix-iaas.md)します。
+* Recovery Services の PowerShell オブジェクト階層を確認します。
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services オブジェクトの階層
 
@@ -83,7 +83,6 @@ Azure ライブラリに含まれる **Az.RecoveryServices** [コマンドレッ
 
     コマンドの出力では、**RegistrationState** が **Registered** に変更されるはずです。 そうでない場合は、 **[Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** コマンドレットをもう一度実行してください。
 
-
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 次の手順では、Recovery Services コンテナーの作成について説明します。 Recovery Services コンテナーは Backup コンテナーとは異なります。
@@ -93,11 +92,13 @@ Azure ライブラリに含まれる **Az.RecoveryServices** [コマンドレッ
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
+
 2. [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault?view=azps-1.4.0) コマンドレットを使用して Recovery Services コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定してください。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
+
 3. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) を使用できます。 次に示す例では、testvault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
 
     ```powershell
@@ -130,7 +131,6 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 ## <a name="back-up-azure-vms"></a>Azure VM のバックアップ
 
 Recovery Services コンテナーを使用して仮想マシンを保護します。 保護を適用する前に、資格情報コンテナーのコンテキスト (資格情報コンテナーで保護されているデータの種類) を設定し、保護ポリシーを確認します。 保護ポリシーは、バックアップ ジョブが実行される時間と各バックアップ スナップショットの保持期間を設定するスケジュールです。
@@ -151,6 +151,7 @@ Get-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "Contoso-docs-r
 $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
 $targetVault.ID
 ```
+
 または
 
 ```powershell
@@ -193,10 +194,10 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 
 バックアップ保護ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられます。 アイテム保持ポリシーでは、復旧ポイントが削除される前に保持される期間を定義します。
 
-- 既定のアイテム保持ポリシーを表示するには、[Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) を使用します。
-- 同様に [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) を使用して、既定のスケジュール ポリシーを取得できます。
-- [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) コマンドレットは、バックアップ ポリシー情報を保持する PowerShell オブジェクトを作成します。
-- スケジュール ポリシーとアイテム保持ポリシー オブジェクトは、New-AzRecoveryServicesBackupProtectionPolicy コマンドレットへの入力として使用されます。
+* 既定のアイテム保持ポリシーを表示するには、[Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) を使用します。
+* 同様に [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) を使用して、既定のスケジュール ポリシーを取得できます。
+* [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) コマンドレットは、バックアップ ポリシー情報を保持する PowerShell オブジェクトを作成します。
+* スケジュール ポリシーとアイテム保持ポリシー オブジェクトは、New-AzRecoveryServicesBackupProtectionPolicy コマンドレットへの入力として使用されます。
 
 既定では、開始時刻はスケジュール ポリシー オブジェクトで定義されます。 開始時刻を希望の時刻に変更するには、次の例を使用します。 希望の開始時刻も、UTC で指定する必要があります。 次の例では、毎日のバックアップの希望の開始時刻が午前 01:00 UTC であるものとします。
 
@@ -473,7 +474,6 @@ $restorejob
 >
 >
 
-
 ```powershell
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
@@ -507,10 +507,9 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 ディスクと構成情報を置き換えるには、次の手順を行います。
 
-- 手順 1:[ディスクを復元する](backup-azure-vms-automation.md#restore-the-disks)
-- 手順 2:[PowerShell を使用してデータ ディスクをデタッチする](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
-- 手順 3:[PowerShell を使用してデータ ディスクを Windows VM にアタッチする](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
-
+* 手順 1:[ディスクを復元する](backup-azure-vms-automation.md#restore-the-disks)
+* 手順 2:[PowerShell を使用してデータ ディスクをデタッチする](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+* 手順 3:[PowerShell を使用してデータ ディスクを Windows VM にアタッチする](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
 
 ## <a name="create-a-vm-from-restored-disks"></a>復元されたディスクからの VM の作成
 
@@ -647,6 +646,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
       ```
+
    **キー/シークレットが使用できる**ようになり、暗号化の詳細が OS BLOB に設定されたら、次のスクリプトを使用してディスクをアタッチします。
 
     元の keyVault/キー/シークレットが利用できる場合、上記のスクリプトを実行する必要はありません。
@@ -747,9 +747,9 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 > [!NOTE]
 > 暗号化された VM のディスク復元プロセスの一部として作成された JASON ファイルを手動で削除してください。
-
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Azure VM バックアップからのファイルの復元
 

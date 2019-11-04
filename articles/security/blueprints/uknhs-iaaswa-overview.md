@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
 ms.openlocfilehash: 9b0478b3e72a759186d7d18ce6f7a885a1098d4b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71259503"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-uk-nhs"></a>Azure のセキュリティとコンプライアンスのブループリント:UK NHS のための IaaS Web アプリケーション
@@ -193,7 +193,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 
 この参照アーキテクチャのデータ フロー ダイアグラムを[ダウンロード](https://aka.ms/uknhs-iaaswa-tm)するか、下記を参照してください。 このモデルは、修正を行う際に、お客様がシステム インフラストラクチャの潜在的なリスクを理解するために役立ちます。
 
-![UK NHS 脅威モデルのための IaaS Web アプリケーション](images/uknhs-iaaswa-threat-model.png?raw=true "UK NHS 脅威モデルのための IaaS Web アプリケーション")
+![UK NHS のための IaaS Web アプリケーションの脅威モデル](images/uknhs-iaaswa-threat-model.png?raw=true "UK NHS のための IaaS Web アプリケーションの脅威モデル")
 
 ## <a name="compliance-documentation"></a>コンプライアンス ドキュメント
 

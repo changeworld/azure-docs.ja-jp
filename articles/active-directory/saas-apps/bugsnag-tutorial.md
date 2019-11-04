@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f08b8a14-ef69-42a7-ac9d-da95f2e36287
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 33d6ddb4434813e87e0fa1be3b5335795e9774cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ae95bbdb3136aade1278b026164c6c3b6e4bbe6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106040"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157548"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>チュートリアル:Azure Active Directory と Bugsnag の統合
 

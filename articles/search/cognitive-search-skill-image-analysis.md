@@ -9,12 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: luisca
-ms.openlocfilehash: 69e798601dc53ffb666aa9dcddd68980256fa3fc
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: e2c8f0519ffcbdbc2445d1fed2725b6f6b948cd1
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265448"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064072"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Image Analysis の認知スキル
 
@@ -35,7 +35,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| defaultLanguageCode   |  結果を返す言語を示す文字列｡ サービスは､指定された言語で認識結果を返します｡ このプロパティが指定されていない場合の既定値は "en" です｡ <br/><br/>サポートされている言語は以下の通りです｡ <br/>*en* - 英語 (既定) <br/> *zh* - 簡体字中国語|
+| defaultLanguageCode   |  結果を返す言語を示す文字列｡ サービスは､指定された言語で認識結果を返します｡ このプロパティが指定されていない場合の既定値は "en" です｡ <br/><br/>サポートされている言語は以下の通りです｡ <br/>*en* - 英語 (既定) <br/> *zh* - 簡体中国語|
 |visualFeatures |   結果として返すビジュアル フィーチャー型を示す文字列の並び｡ 有効なビジュアル フィーチャー型には以下があります｡  <ul><li> *categories* - Cognitive Services の[Computer Vision のドキュメント](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)に定義されている分類に従ったイメージ コンテンツの分類です。 </li><li> *tags* - イメージのコンテンツに関係する単語の詳細な一覧のタグです｡</li><li>*description* - 英文でのイメージのコンテンツの説明です｡</li><li>*faces* - 顔の有無を検出します｡ 存在する場合は､座標と性別､年齢を生成します｡</li><li>    *imageType* - 画像がクリップ アートか線画かを検出します｡</li><li>  *color* - アクセント カラー、主要カラー､白黒画像か否かを判定します｡</li><li>*adult* - イメージが事実上のポルノ (裸または性行為を表す) かどうかを検出します｡ セックスを連想されるコンテンツも検出されます｡</li></ul> ビジュアル フィーチャー名は大文字と小文字が区別されます｡|
 | details   | 結果として返すドメイン固有の詳細を示す文字列の並び. 有効なビジュアル フィーチャー型には以下があります｡ <ul><li>*celebrities* - イメージ内でセレブリティが検出された場合に、そのセレブリティを特定します｡</li><li>*landmarks* - イメージ内でランドマークが検出された場合に、そのランドマークを特定します｡ </li></ul> |
 
@@ -322,8 +322,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ```json
     "outputFieldMappings": [
         {
-            "sourceFieldName": /document/normalized_images/*/categories/details/landmarks/*",
-            "targetFieldName": "landmarks"
+            "sourceFieldName": "/document/normalized_images/*/categories/detail/celebrities/*",
+            "targetFieldName": "celebrities"
         }
 ```
 ##  <a name="sample-input"></a>サンプル入力

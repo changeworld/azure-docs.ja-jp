@@ -447,7 +447,11 @@
         - name: 高可用性
           href: manage-availability.md
         - name: 近接通信配置グループの作成
-          href: proximity-placement-groups.md
+          items:
+            - name: ポータル
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
         - name: 垂直方向にスケーリングする
           items:
             - name: PowerShell

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 928900c526ec0e77f84c621f630ac5894cdb2d23
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 619f1ea3bae001d25eb520f43da33ca94a3160c8
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125653"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880338"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルのシナリオを完了するための要件を次に示します。
 
 - **Azure AD Premium P2 エディションへのアクセス** - Azure AD Premium P1 の条件付きアクセス機能を使用する場合、P2 エディションが必要になります。これは、このクイック スタートのシナリオでは Identity Protection が必要になるためです。
-- **Identity Protection** - このクイック スタートのシナリオでは Identity Protection を有効にする必要があります。 Identity Protection を有効にする方法がわからない場合は、「[Azure Active Directory Identity Protection の有効化](../identity-protection/enable.md)」を参照してください。
+- **Identity Protection** - このクイック スタートのシナリオでは Identity Protection を有効にする必要があります。 Identity Protection を有効にする方法がわからない場合は、「[Azure Active Directory Identity Protection の有効化](../identity-protection/overview-identity-protection.md)」を参照してください。
 - **Tor Browser** - [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) は、オンラインでの自身のプライバシー保護に役立つことを目的としています。 Identity Protection は、Tor Browser からのサインインを、中程度のリスク レベルのある匿名 IP アドレスからのサインインとして検出します。 詳細については、「[Azure Active Directory リスク検出](../reports-monitoring/concept-risk-events.md)」を参照してください。  
 - **Alain Charon というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「[クラウドベースのユーザーを追加する](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)」を参照してください。
 

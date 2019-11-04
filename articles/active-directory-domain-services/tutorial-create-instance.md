@@ -7,27 +7,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336853"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786979"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンスを作成して構成する
 
 Azure Active Directory Domain Services (Azure AD DS) は、Windows Server Active Directory と完全に互換性のあるマネージド ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) を提供します。 ドメイン コントローラーのデプロイ、管理、パッチの適用を自分で行わなくても、これらのドメイン サービスを使用することができます。 Azure AD DS は、既存の Azure AD テナントと統合されます。 この統合により、ユーザーは、各自の会社の資格情報を使用してサインインすることができます。また管理者は、既存のグループとユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。
 
-このチュートリアルでは、Azure portal を使用した Azure AD DS インスタンスの作成と構成の方法について説明します。
+ネットワークと同期に関して既定の構成オプションを使用してマネージド ドメインを作成するか、[それらの設定を手動で定義][tutorial-create-instance-advanced]することができます。 このチュートリアルでは、Azure portal を使用し、既定のオプションを使用して Azure AD DS インスタンスを作成、構成する方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * マネージド ドメイン用に DNS と仮想ネットワークの設定を構成する
+> * マネージド ドメインの DNS の要件を理解する
 > * Azure AD DS インスタンスを作成する
-> * 管理ユーザーをドメイン管理に追加する
 > * パスワード ハッシュ同期を有効にする
 
 Azure サブスクリプションをお持ちでない場合は、始める前に[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
@@ -50,15 +49,17 @@ Azure AD DS では必須ではありませんが、Azure AD テナントには�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-このチュートリアルでは、Azure portal を使用して Azure AD DS インスタンスの作成と構成を行います。 最初に、[Azure portal](https://portal.azure.com) にサインインしてください。
+このチュートリアルでは、Azure portal を使用して Azure AD DS インスタンスの作成と構成を行います。 最初に、[Azure portal](https://portal.azure.com) にサインインします。
 
-## <a name="create-an-instance-and-configure-basic-settings"></a>インスタンスを作成して基本的な設定を構成する
+## <a name="create-an-instance"></a>インスタンスを作成する
 
 **[Azure AD Domain Services の有効化]** ウィザードを起動するには、次の手順を実行します。
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 1. 検索バーに「*Domain Services*」と入力し、検索候補から *[Azure AD Domain Services]* を選択します。
 1. [Azure AD Domain Services] ページで **[作成]** を選択します。 **[Azure AD Domain Services の有効化]** ウィザードが起動します。
+1. マネージド ドメインを作成する Azure **サブスクリプション**を選択します。
+1. マネージド ドメインが属する**リソース グループ**を選択します。 リソース グループを**新規作成**するか、既存のリソース グループを選択してください。
 
 Azure AD DS インスタンスを作成する際は、DNS 名を指定します。 この DNS 名を選ぶ際のいくつかの考慮事項を次に示します。
 
@@ -86,80 +87,28 @@ DNS 名には、次の制限も適用されます。
 Azure portal の *[基本]* ウィンドウのフィールドに必要事項を入力して Azure AD DS インスタンスを作成します。
 
 1. 前述のポイントを考慮しながらマネージド ドメインの **DNS ドメイン名**を入力します。
-1. マネージド ドメインを作成する Azure **サブスクリプション**を選択します。
-1. マネージド ドメインが属する**リソース グループ**を選択します。 リソース グループを**新規作成**するか、既存のリソース グループを選択してください。
 1. マネージド ドメインを作成する Azure の**場所**を選択します。
-1. **[OK]** をクリックして **[ネットワーク]** セクションに進みます。
 
-![Azure AD Domain Services インスタンスの基本的な設定を構成する](./media/tutorial-create-instance/basics-window.png)
+    ![Azure AD Domain Services インスタンスの基本的な設定を構成する](./media/tutorial-create-instance/basics-window.png)
 
-## <a name="create-and-configure-the-virtual-network"></a>仮想ネットワークを作成して構成する
+Azure AD DS のマネージド ドメインをすばやく作成するには、 **[確認および作成]** を選択して、追加となる既定の構成オプションをそのまま使用します。 この作成オプションを選択した場合は、次の既定値が構成されます。
 
-接続を提供するには、Azure 仮想ネットワークと専用サブネットが必要となります。 この仮想ネットワーク サブネットの中で Azure AD DS は有効になります。 このチュートリアルでは仮想ネットワークを作成しますが、既存の仮想ネットワークを使用することもできます。 どちらのアプローチも、Azure AD DS のための専用のサブネットは作成する必要があります。
+* IP アドレス範囲 *10.0.1.0/24* を使用する *aadds-vnet* という名前の仮想ネットワークを作成します。
+* IP アドレス範囲 *10.0.1.0/24* を使用して、*aadds-subnet* という名前のサブネットを作成します。
+* Azure AD の "*すべて*" のユーザーを Azure AD DS のマネージド ドメインに同期させます。
 
-この専用仮想ネットワーク サブネットに関するいくつかの考慮事項を次に示します。
+1. **[確認および作成]** を選択して、これらの既定の構成オプションをそのまま使用します。
 
-* Azure AD DS のリソースをサポートするために、サブネットのアドレス範囲には、使用できる IP アドレスが少なくとも 3 個から 5 個存在する必要があります。
-* Azure AD DS のデプロイ先として "*ゲートウェイ*" サブネットは選択しないでください。 Azure AD DS を "*ゲートウェイ*" サブネットにデプロイすることはサポートされません。
-* このサブネットに他の仮想マシンをデプロイしないでください。 アプリケーションと VM は、接続をセキュリティで保護するためにネットワーク セキュリティ グループを使用することがよくあります。 これらのワークロードを個別のサブネットで実行することによって、マネージド ドメインへの接続に支障をきたすことなく、それらのネットワーク セキュリティ グループを適用することができます。
-* Azure AD DS を有効にした後で、マネージド ドメインを別の仮想ネットワークに移動することはできません。
+## <a name="deploy-the-managed-domain"></a>マネージド ドメインをデプロイする
 
-仮想ネットワークを計画および構成する方法の詳細については、[Azure Active Directory Domain Services のネットワークに関する考慮事項][network-considerations]の記事を参照してください。
+ウィザードの **[概要]** ページで、マネージド ドメインの構成設定を確認します。 ウィザードの任意の手順に戻り、変更を加えることができます。 これらの構成オプションを使用し、Azure AD DS のマネージド ドメインを一貫した方法で別の Azure AD テナントに再デプロイしたければ、**Automation のテンプレートをダウンロードする**こともできます。
 
-*[ネットワーク]* ウィンドウのフィールドに次のように入力します。
-
-1. **[ネットワーク]** ウィンドウで **[仮想ネットワークの選択]** を選択します。
-1. このチュートリアルでは **[新規作成]** を選択して、Azure AD DS のデプロイ先となる仮想ネットワークを作成します。
-1. 仮想ネットワークの名前 (例: *myVnet*) を入力し、アドレスの範囲 (例: *10.1.0.0/16*) を指定します。
-1. わかりやすい名前 (例: *DomainServices*) で専用サブネットを作成します。 アドレス範囲 (例: *10.1.0.0/24*) を指定します。
-
-    ![Azure AD Domain Services で使用する仮想ネットワークとサブネットを作成する](./media/tutorial-create-instance/create-vnet.png)
-
-    必ずプライベート IP アドレスの範囲内にあるアドレスの範囲を選んでください。 ご自身が所有していないパブリック アドレス空間内の IP アドレス範囲を指定すると、Azure AD DS 内でエラーが発生します。
-
-    > [!TIP]
-    > **[仮想ネットワークの選択]** ページには、前に選択したリソース グループと Azure の場所に属している既存の仮想ネットワークが表示されます。 Azure AD DS をデプロイする前に[専用サブネットを作成][create-dedicated-subnet]しておく必要があります。
-
-1. 仮想ネットワークとサブネットが作成されていれば、そのサブネットが自動的に選択されます (例: *DomainServices*)。 代わりに、選択した仮想ネットワークに属している既存のサブネットを選択することもできます。
-
-    ![仮想ネットワーク内の専用サブネットを選択する](./media/tutorial-create-instance/choose-subnet.png)
-
-1. **[OK]** をクリックして仮想ネットワークの構成を確定します。
-
-## <a name="configure-an-administrative-group"></a>管理グループを構成する
-
-Azure AD DS ドメインの管理には、*AAD DC Administrators* という名前の特殊な管理グループを使用します。 このグループのメンバーには、マネージド ドメインに参加している VM の管理権限が付与されます。 ドメインに参加している VM では、このグループがローカル管理者グループに追加されます。 このグループのメンバーは、リモート デスクトップを使用して、ドメインに参加している VM にリモートで接続することもできます。
-
-Azure AD DS を使用するマネージド ドメインに対する "*ドメイン管理者*" または "*エンタープライズ管理者*" アクセス許可はありません。 これらのアクセス許可はサービスによって予約されており、テナント内でユーザーが使用することはできません。 特権を要する一部の操作については、代わりに *AAD DC Administrators* グループを使用して実行できます。 これらの操作には、ドメインへのコンピューターの参加、ドメインに参加している VM での管理グループへの所属、グループ ポリシーの構成などが含まれます。
-
-*AAD DC Administrators* グループは、ウィザードで Azure AD ディレクトリに自動的に作成されます。 Azure AD ディレクトリにこの名前のグループが既に存在している場合、ウィザードはこのグループを選択します。 この *AAD DC Administrators* グループには、デプロイ プロセス中、必要に応じてさらにユーザーを追加することもできます。 これらの手順は後から行うこともできます。
-
-1. この *AAD DC Administrators* グループにさらにユーザーを追加するには、 **[グループ メンバーシップの管理]** を選択します。
-1. **[メンバーの追加]** ボタンを選択し、Azure AD ディレクトリからユーザーを検索して選択します。 たとえば、ご自身のアカウントを検索して *AAD DC Administrators* グループに追加します。
-
-    ![AAD DC Administrators グループのメンバーシップを構成する](./media/tutorial-create-instance/admin-group.png)
-
-1. 終了したら、 **[OK]** を選択します。
-
-## <a name="configure-synchronization"></a>同期の構成
-
-Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーとグループを同期できるほか、特定のグループのみを "*範囲指定*" して同期することもできます。 "*すべて*" のユーザーとグループを同期することにした場合は、指定した範囲のみの同期を後から選択することはできません。 範囲指定された同期の詳細については、[Azure AD Domain Services の範囲指定された同期][scoped-sync]に関するページを参照してください。
-
-1. このチュートリアルでは、**すべて**のユーザーとグループを同期するように選択します。 この同期が既定のオプションとなります。
-
-    ![Azure AD のユーザーとグループの完全同期を実行する](./media/tutorial-create-instance/sync-all.png)
-
-1. **[OK]** を選択します。
-
-## <a name="deploy-your-managed-domain"></a>マネージド ドメインのデプロイ
-
-ウィザードの **[概要]** ページで、マネージド ドメインの構成設定を確認します。 ウィザードの任意の手順に戻り、変更を加えることができます。
-
-1. マネージド ドメインを作成するには、 **[OK]** を選択します。
+1. マネージド ドメインを作成するには、 **[作成]** を選択します。 Azure AD DS のマネージド ドメインの作成後は特定の構成オプション (DNS 名、仮想ネットワークなど) を変更できないという注意が表示されます。 続行するには、 **[OK]** を選択します。
 1. マネージド ドメインのプロビジョニングのプロセスは、最大で 1 時間かかることがあります。 Azure AD DS のデプロイの進行状況を示す通知がポータルに表示されます。 通知を選択すると、デプロイの詳細な進行状況が表示されます。
 
     ![デプロイが進行中であることを示す Azure portal の通知](./media/tutorial-create-instance/deployment-in-progress.png)
 
+1. ディレクトリに新しいリソースが作成されたなど、デプロイ プロセスに関する最新情報がページに読み込まれます。
 1. リソース グループ (例: *myResourceGroup*) を選択し、Azure リソースの一覧から Azure AD DS インスタンス (例: *contoso.com*) を選択します。 **[概要]** タブでは、マネージド ドメインが現在 "*デプロイ中*" であることが示されます。 完全にプロビジョニングされるまで、マネージド ドメインを構成することはできません。
 
     ![Domain Services の状態 (プロビジョニング中)](./media/tutorial-create-instance/provisioning-in-progress.png)
@@ -168,7 +117,7 @@ Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーと�
 
     ![Domain Services の状態 (プロビジョニングの正常完了後)](./media/tutorial-create-instance/successfully-provisioned.png)
 
-プロビジョニング プロセスの間に、Azure AD DS は、お使いのディレクトリに *Domain Controller Services* と *AzureActiveDirectoryDomainControllerServices* というエンタープライズ アプリケーションを作成します。 これらのエンタープライズ アプリケーションは、マネージド ドメインのサービスを提供するために使用されます。 どのような場合にも、これらのアプリケーションが削除されないことが不可欠です。
+ここでは、Azure Active Directory テナントに Azure AD Domain Services をプロビジョニングします。関連付けられている Azure サブスクリプション内にサービスの Azure AD Domain Services リソースが作成されます。 プロビジョニング プロセスの間に、Azure AD DS は、*Domain Controller Services* と *AzureActiveDirectoryDomainControllerServices* という 2 つのエンタープライズ アプリケーションを作成します。作成先は、Azure AD Domain Services が有効になった Azure Active Directory インスタンスです。 これらのエンタープライズ アプリケーションは、マネージド ドメインのサービスを提供するために使用されます。  どのような場合にも、これらのアプリケーションが削除されないことが不可欠です。
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Azure 仮想ネットワークの DNS 設定を更新する
 
@@ -219,17 +168,18 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * マネージド ドメイン用に DNS と仮想ネットワークの設定を構成する
+> * マネージド ドメインの DNS の要件を理解する
 > * Azure AD DS インスタンスを作成する
 > * 管理ユーザーをドメイン管理に追加する
 > * Azure AD DS のユーザー アカウントを有効にしてパスワード ハッシュを生成する
 
-このマネージド ドメインの動作を確認するために、仮想マシンを作成してドメインに参加させます。
+VM をドメインに参加させて、Azure AD DS のマネージド ドメインを使用するアプリケーションをデプロイする前に、アプリケーション ワークロード用の Azure 仮想ネットワークを構成します。
 
 > [!div class="nextstepaction"]
-> [Windows Server 仮想マシンをマネージド ドメインに参加させる](join-windows-vm.md)
+> [マネージド ドメインを使用するアプリケーション ワークロード用の Azure 仮想ネットワークを構成する](tutorial-configure-networking.md)
 
 <!-- INTERNAL LINKS -->
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [network-considerations]: network-considerations.md

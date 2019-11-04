@@ -1,49 +1,55 @@
 ---
 title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
-services: functions
-documentationcenter: ''
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 10/10/2019
 ms.author: glenga
-ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca7006bb842cbe235d2e982e611613e1fd74ed9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036273"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597432"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
- Azure Functions ランタイムには、次の 2 つのメジャー バージョンがあります:1.x と 2.x。 新機能が動作し、機能強化が行われている現在のバージョンは 2.x ですが、どちらも運用シナリオに対してサポートされています。  以下では、2 つのバージョンの違い、各バージョンを作成する方法、および 1.x から 2.x にアップグレードする方法について詳しく説明します。
+Azure Functions ランタイムのメジャー バージョンは、そのランタイムのベースとなる .NET のバージョンに関連しています。 次の表は、ランタイムの現在のバージョン、リリース レベル、および関連する .NET バージョンを示しています。 
 
-> [!NOTE]
-> この記事は、クラウド サービスの Azure Functions に関するものです。 オンプレミスで Azure Functions を実行できるプレビュー製品については、「[Azure Functions Runtime の概要 (プレビュー)](functions-runtime-overview.md)」をご覧ください。
+| ランタイム バージョン | リリース レベル<sup>1</sup> | .NET バージョン | 
+| --------------- | ------------- | ------------ |
+| 3.x  | preview | .NET Core 3.x | 
+| 2.x | GA | .NET Core 2.2 |
+| 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
 
-## <a name="cross-platform-development"></a>クロスプラットフォーム開発
+<sup>1</sup>GA リリースは運用環境シナリオでサポートされています。   
+<sup>2</sup>バージョン 1.x はメンテナンス モードにあります。 拡張機能は、それ以降のバージョンでのみ提供されます。   
+<sup>3</sup>Azure portal または Windows コンピューター上のローカルでの開発のみをサポートします。
 
-バージョン 2.x のランタイムは .NET Core 2 で実行され、ランタイム 2.x は、macOS や Linux など、.NET Core でサポートされるすべてのプラットフォームで実行できます。 .NET Core 上で実行されることで、クロスプラットフォーム開発とホスティング シナリオが可能になります。
+>[!NOTE]  
+> Functions ランタイムのバージョン 3.x はプレビュー段階にあり、運用環境ではサポートされていません。 バージョン 3.x の試行の詳細については、[このお知らせ](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm)を参照してください。
 
-比較すると、バージョン 1.x のランタイムは、Azure portal または Windows コンピューターでの開発とホスティングのみをサポートしています。
+この記事では、各種のバージョン間のいくつかの相違点、各バージョンを作成する方法、およびバージョンの変更方法について詳細に説明します。
 
 ## <a name="languages"></a>Languages
 
-バージョン2.x のランタイム では、新しい言語拡張モデルが使用されます。 バージョン 2.x では、関数アプリ内のすべての関数は同じ言語を共有する必要があります。 関数アプリ内の関数の言語は、アプリの作成時に選択されます。
+バージョン 2.x から、ランタイムでは言語拡張モデルが使用されており、関数アプリ内のすべての関数が同じ言語を共有する必要があります。 関数アプリ内の関数の言語はそのアプリの作成時に選択され、[FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) 設定に保持されます。 
 
-Azure Functions 1.x の試験段階の言語は、新しいモデルを使用するよう更新されていないため、2.x ではサポートされません。 次の表は、各ランタイム バージョンでどのプログラミング言語が現在サポートされているかを示しています。
+Azure Functions 1.x の試験段階の言語は新しいモデルを使用できないため、2.x ではサポートされません。 次の表は、各ランタイム バージョンでどのプログラミング言語が現在サポートされているかを示しています。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。
 
-## <a name="creating-1x-apps"></a>バージョン 1.x での実行
+## <a name="creating-1x-apps"></a>特定のバージョンで実行する
 
-既定では、Azure portal で作成された関数アプリはバージョン 2.x に設定されます。 新機能への投資が行われているので、可能であれば、このランタイム バージョンを使用するようにします。 必要に応じて、バージョン 1.x ランタイム上で関数アプリを実行することもできます。 ランタイムのバージョンを変更できるのは、関数アプリを作成してから関数を追加するまでの間のみです。 ランタイム バージョンを 1.x に固定する方法については、「[現在のランタイム バージョンの表示と更新](set-runtime-version.md#view-and-update-the-current-runtime-version)」を参照してください。
+既定では、Azure portal で Azure CLI によって作成された関数アプリはバージョン 2.x に設定されます。 可能な場合は、このランタイム バージョンを使用してください。 必要に応じて、バージョン 1.x ランタイム上で関数アプリを実行することもできます。 ランタイムのバージョンを変更できるのは、関数アプリを作成してから関数を追加するまでの間のみです。 ランタイム バージョンを 1.x に固定する方法については、「[現在のランタイム バージョンの表示と更新](set-runtime-version.md#view-and-update-the-current-runtime-version)」を参照してください。
 
-## <a name="migrating-from-1x-to-2x"></a>1\.x から 2.x への移行
+プレビュー段階にあるランタイムのバージョン 3.x にアップグレードすることもできます。 これは、関数を .NET Core 3.x で実行できる必要がある場合に行います。 3\.x にアップグレードする方法については、「[現在のランタイム バージョンの表示と更新](set-runtime-version.md#view-and-update-the-current-runtime-version)」を参照してください。
+
+## <a name="migrating-from-1x-to-later-versions"></a>1\.x からそれ以降のバージョンへの移行
 
 バージョン 2.x ではなくバージョン 1.x のランタイムを使用するように記述された既存のアプリを移行することができます。 必要な変更の大部分は、.NET Framework 4.7 と .NET Core 2 間の C# API の変更など、言語ランタイムの変更に関連する変更です。 また、コードとライブラリが、選択した言語ランタイムと互換性があることを確認する必要があります。 最後に、以下で示すトリガー、バインド、および機能での変更にも注意してください。 最適な移行結果を得るには、バージョン 2.x 用の新しい関数アプリを作成し、既存のバージョン 1.x の関数コードを新しいアプリに移植する必要があります。  
 
@@ -113,7 +119,7 @@ Azure の公開アプリから使用される Functions ランタイムのバー
 
 ## <a name="bindings"></a>バインド
 
-バージョン 2.x のランタイムで使用される新しい[バインド拡張モデル](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)の利点は、次のとおりです。
+バージョン 2.x から、ランタイムでは、次の利点を提供する新しい[バインド拡張モデル](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が使用されています。
 
 * サード パーティのバインド拡張のサポート。
 

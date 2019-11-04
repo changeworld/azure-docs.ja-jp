@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785458"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175289"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出す Web アプリ - Web API の呼び出し
 
-トークンを取得したので、保護された Web API を呼び出すことができます。
+トークンを取得すると、保護された Web API を呼び出せます。
 
-## <a name="aspnet-core"></a>ASP.NET Core
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 以下に、`HomeController` のアクションの簡略化されたコードを示します。 このコードは、Microsoft Graph を呼び出すトークンを取得します。 今回コードが追加されて、Microsoft Graph を REST API として呼び出す方法が示されています。 Graph API の URL は、`appsettings.json` ファイルで提供され、`webOptions` という名前の変数に読み取られます。
 
@@ -86,6 +86,49 @@ public async Task<IActionResult> Profile()
 > 同じ原則を使用するとどの web API も呼び出すことができます。
 >
 > ほとんどの Azure の Web API には、呼び出しを簡略化する SDK が用意されています。 これは、Microsoft Graph の場合も同じです。 次の記事では、これらの側面を示すチュートリアルの場所について説明します。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```Java
+private String getUserInfoFromGraph(String accessToken) throws Exception {
+    // Microsoft Graph user endpoint
+    URL url = new URL("https://graph.microsoft.com/v1.0/me");
+
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+    // Set the appropriate header fields in the request header.
+    conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+    conn.setRequestProperty("Accept", "application/json");
+
+    String response = HttpClientHelper.getResponseStringFromConn(conn);
+
+    int responseCode = conn.getResponseCode();
+    if(responseCode != HttpURLConnection.HTTP_OK) {
+        throw new IOException(response);
+    }
+
+    JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
+    return responseObject.toString();
+}
+
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
+
+---
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor でのリソース間のクエリ | Microsoft Docs
 description: この記事では、サブスクリプション内の複数のワークスペースや App Insights アプリのリソースに対してクエリを実行する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/05/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 06/05/2019
+ms.openlocfilehash: e74c81956ab0590b8b7237d3ecf60ae242a43b73
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650152"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894488"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Monitor でクロスリソース ログ クエリを実行する  
 

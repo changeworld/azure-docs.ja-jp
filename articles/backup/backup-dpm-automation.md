@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: dacurwin
-ms.openlocfilehash: 12c6df6b68ee0996b468ff1e7d929ce6bfa680c9
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: ef20de40433542c1ed0780f198b10d6a1fb78789
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210244"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162142"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -271,13 +271,13 @@ $MPG = Get-ModifiableProtectionGroup $PG
 DPM エージェントがインストールされており、DPM サーバーによって管理されるサーバーの一覧を、 [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) コマンドレットを使用して取得します。 この例では、フィルター処理をして *productionserver01* という名前を持つ PS のみをバックアップ用に構成します。
 
 ```powershell
-$server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains “productionserver01”}
+$server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
 [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) コマンドレットを使用して ```$server``` のデータソースの一覧を取得します。 この例では、バックアップ用に構成するボリューム *D:\\* をフィルター処理します。 次に、このデータソースを [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) コマンドレットを使用して保護グループに追加します。 "*変更可能な*" 保護グループ オブジェクト ```$MPG``` を使用して、忘れずに追加します。
 
 ```powershell
-$DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains “D:\” }
+$DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
 
 Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 ```
@@ -381,7 +381,7 @@ $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 * 復元元のバックアップ ポイントの選択。
 
 ```powershell
-$RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation “C:\VMRecovery”
+$RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation "C:\VMRecovery"
 
 $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
 $DS = Get-DPMDatasource -ProtectionGroup $PG[0]

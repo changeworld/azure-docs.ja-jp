@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d72e4da0-0123-409b-96c2-e613f3f83fb1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32eab48cbcdf4a8197e612e3efb24957c4d964
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e20bba9357c01107fafe13d1e8b0ba921588c140
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100296"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>チュートリアル:Azure Active Directory と Innoverse の統合
 

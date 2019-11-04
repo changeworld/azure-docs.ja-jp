@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor Log Analytics の使用を開始する | Microsoft Docs
 description: この記事では、Azure portal で Log Analytics を使用してクエリを記述する方法を説明します。
-services: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: tutorial
 author: bwren
-manager: carmonm
-ms.service: log-analytics
-ms.topic: conceptual
-ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 07/19/2019
+ms.openlocfilehash: 1117ebbb8d2c3b133156c6b63a0ab13185f9f4a5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076820"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933046"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor で Log Analytics の使用を開始する
 

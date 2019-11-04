@@ -1,23 +1,22 @@
 ---
-title: クイック スタート:REST API シリーズを使用して Node.js で Azure Search インデックスを作成する - Azure Search
-description: JavaScript で作成、データの読み込み、クエリを実行する方法を説明する Azure Search 用 Node.js サンプル。
+title: クイック スタート:REST API を使用して Node.js で検索インデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: JavaScript で作成、データの読み込み、クエリを実行する方法を説明する Azure Cognitive Search 用 Node.js サンプル。
 author: lobrien
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.devlang: nodejs
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: nodejs
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 20a5af5ac7163c182ea01a9a9442d3c99614442d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881503"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787443"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>クイック スタート:REST API シリーズを使用して Node.js で Azure Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>クイック スタート:REST API を使用して Node.js で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +25,7 @@ ms.locfileid: "70881503"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Azure Search インデックスの作成、読み込み、クエリを実行する Node.js アプリケーションを作成します。 本記事では、このアプリケーションの作成方法について詳しく説明します。 代わりに、[ソース コードとデータをダウンロード](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/)して、コマンド ラインでアプリケーションを実行することもできます。
+Azure Cognitive Search インデックスの作成、読み込み、クエリを実行する Node.js アプリケーションを作成します。 本記事では、このアプリケーションの作成方法について詳しく説明します。 代わりに、[ソース コードとデータをダウンロード](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/)して、コマンド ラインでアプリケーションを実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -37,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 + [Node.js](https://nodejs.org)。
 + [npm](https://www.npmjs.com) が Node.js によってインストールされている必要があります。
 + サンプルのインデックス構造と一致ドキュメントは、この記事で用意されます。または、[リポジトリの **quickstart** ディレクトリ](https://github.com/Azure-Samples/azure-search-javascript-samples/)から入手できます。
-+ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
 推奨:
 
@@ -47,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 <a name="get-service-info"></a>
 ## <a name="get-keys-and-urls"></a>キーと URL を取得する
 
-サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、自分の検索サービスの **[概要]** ページで、自分の検索サービスの名前を確認します。 エンドポイント URL を見ることで、自分のサービス名を確かめることができます。 エンドポイント URL が `https://mydemo.search.windows.net` だったら、自分のサービス名は `mydemo` になります。
 
@@ -85,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     {
       "name": "quickstart",
       "version": "1.0.0",
-      "description": "Azure Search Quickstart",
+      "description": "Azure Cognitive Search Quickstart",
       "main": "index.js",
       "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -124,7 +123,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="1---create-index"></a>1 - インデックスの作成 
 
-**hotels_quickstart_index.json** というファイルを作成します。  このファイルでは、次の手順で読み込むドキュメントに対する Azure Search の処理を定義します。 各フィールドは `name` によって識別されます。それぞれ、指定された `type` を備えています。 さらに各フィールドは、Azure Search がそのフィールドに対して検索、フィルター、並べ替え、およびファセットを実行できるかどうかを指定する、一連のインデックス属性も備えています。 ほとんどのフィールドは単純なデータ型ですが、`AddressType` のように、自分のインデックスでリッチなデータ構造を作成できる複合型もあります。  [サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)と[インデックス属性](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)について、詳細をお読みください。 
+**hotels_quickstart_index.json** というファイルを作成します。  このファイルでは、次の手順で読み込むドキュメントに対する Azure Cognitive Search の処理を定義します。 各フィールドは `name` によって識別されます。それぞれ、指定された `type` を備えています。 さらに各フィールドは、Azure Cognitive Search がそのフィールドに対して検索、フィルター、並べ替え、およびファセットを実行できるかどうかを指定する、一連のインデックス属性も備えています。 ほとんどのフィールドは単純なデータ型ですが、`AddressType` のように、自分のインデックスでリッチなデータ構造を作成できる複合型もあります。  [サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)と[インデックス属性](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)について、詳細をお読みください。 
 
 以下を **hotels_quickstart_index.json** に追加するか、[ファイルをダウンロードします](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json)。 
 
@@ -337,7 +336,7 @@ static throwOnHttpError(response) {
 }
 ```
 
-最後に、Azure Search インデックスの検出、削除、作成を行うメソッドを追加します。 これらのメソッドの構造はすべて同じです。
+最後に、Azure Cognitive Search インデックスの検出、削除、作成を行うメソッドを追加します。 これらのメソッドの構造はすべて同じです。
 
 * 要求の実行対象になるエンドポイントを取得します。
 * 適切なエンドポイント、HTTP 動詞、API キー、JSON 本文 (該当する場合) を使用して要求を生成します。 `indexExistsAsync()` と `deleteIndexAsync()` には JSON 本文がありませんが、`createIndexAsync(definition)` にはあります。
@@ -473,7 +472,7 @@ Azure portal で、自分の検索サービスの **[概要]** を開きます�
 
 ## <a name="2---load-documents"></a>2 - ドキュメントの読み込み 
 
-Azure Search では、ドキュメントにはインデックス作成の入力とクエリからの出力があり、どちらもデータ構造です。 こうしたデータは、インデックスに POST する必要があります。 これには、前の手順で操作を実行したのとは異なるエンドポイントを使用します。 **AzureSearchClient.js** を開いて、`getIndexUrl()` の後に次のメソッドを追加します。
+Azure Cognitive Search では、ドキュメントにはインデックス作成の入力とクエリからの出力があり、どちらもデータ構造です。 こうしたデータは、インデックスに POST する必要があります。 これには、前の手順で操作を実行したのとは異なるエンドポイントを使用します。 **AzureSearchClient.js** を開いて、`getIndexUrl()` の後に次のメソッドを追加します。
 
 ```javascript
  getPostDataUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
@@ -604,7 +603,7 @@ const run = async () => {
 
 ## <a name="3---search-an-index"></a>3 - インデックスの検索
 
-Azure portal で、自分の検索サービスの **[概要]** の **[インデックス]** タブに戻ります。 インデックスには現在 4 つのドキュメントが含まれており、一定量のストレージが消費されています (インデックスの基本状態が UI に適切に反映されるまで数分かかる場合があります)。 インデックス名をクリックすると、**Search エクスプローラー**が開きます。 このページでは、データ クエリを試すことができます。 `*&$count=true` というクエリ文字列を検索してみてください。自分のドキュメントと、結果の数がすべて返されます。 `historic&highlight=Description&$filter=Rating gt 4` というクエリ文字列を試してみてください。単語 "historic" が `<em></em>` タグで囲まれた単一のドキュメントが返されます。 詳しくは、「[Azure Search でのクエリを構成する方法](https://docs.microsoft.com/azure/search/search-query-overview)」をご覧ください。 
+Azure portal で、自分の検索サービスの **[概要]** の **[インデックス]** タブに戻ります。 インデックスには現在 4 つのドキュメントが含まれており、一定量のストレージが消費されています (インデックスの基本状態が UI に適切に反映されるまで数分かかる場合があります)。 インデックス名をクリックすると、**Search エクスプローラー**が開きます。 このページでは、データ クエリを試すことができます。 `*&$count=true` というクエリ文字列を検索してみてください。自分のドキュメントと、結果の数がすべて返されます。 `historic&highlight=Description&$filter=Rating gt 4` というクエリ文字列を試してみてください。単語 "historic" が `<em></em>` タグで囲まれた単一のドキュメントが返されます。 詳細については、[Azure Cognitive Search でのクエリを構成する方法](https://docs.microsoft.com/azure/search/search-query-overview)に関するページを参照してください。 
 
 **index.js** を開いて先頭付近にこのコードを追加して、これらのクエリをコードで再現します。
 
@@ -679,11 +678,11 @@ async queryAsync(searchTerm) {
 
 ### <a name="about-the-sample"></a>サンプルについて
 
-このサンプルでは、Azure Search インデックスの作成とクエリ実行の基礎を説明するうえで十分な、少量のホテル データを使用しています。
+このサンプルでは、Azure Cognitive Search インデックスの作成とクエリ実行の基礎を説明するうえで十分な、少量のホテル データを使用しています。
 
-検索サービスの構成、URL、基本的な HTTP 要求は、**AzureSearchClient** クラスによってカプセル化されています。 **index.js** ファイルでは、Azure Search サービスの構成データ、およびインデックス化のためにアップロードするホテル データを読み込んでいます。また、その `run` 関数でさまざまな操作を指示および実行しています。
+検索サービスの構成、URL、基本的な HTTP 要求は、**AzureSearchClient** クラスによってカプセル化されています。 **index.js** ファイルでは、Azure Cognitive Search サービスの構成データ、およびインデックス化のためにアップロードするホテル データを読み込んでいます。また、その `run` 関数でさまざまな操作を指示および実行しています。
 
-`run` 関数の全動作は、Azure Search インデックスを削除し (存在する場合)、インデックスを作成してデータを追加し、いくつかのクエリを実行することです。  
+`run` 関数の全動作は、Azure Cognitive Search インデックスを削除し (存在する場合)、インデックスを作成してデータを追加し、いくつかのクエリを実行することです。  
 
 ## <a name="clean-up"></a>クリーンアップ 
 
@@ -696,7 +695,7 @@ async queryAsync(searchTerm) {
 
 この Node.js クイックスタートでは、インデックスの作成、そこへのドキュメントの読み込み、およびクエリの実行という一連のタスクに取り組みました。 構成の読み取りやクエリの定義など、一部の手順についてはできる限り単純な方法で行っています。 実際のアプリケーションでは、これらは別のモジュールに配置することをお勧めします。そうすることで、柔軟性が高まり、カプセル化が可能になります。 
  
-Azure Search についての知識が既にある場合は、このサンプルを基にして、サジェスター (先行入力またはオートコンプリート クエリ)、フィルター、ファセット ナビゲーションなどを試すことができます。 Azure Search を初めて使用する場合は、他のチュートリアルも試して、作成できる内容について理解を深めることをお勧めします。 他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。 
+Azure Cognitive Search についての知識が既にある場合は、このサンプルを基にして、サジェスター (先行入力またはオートコンプリート クエリ)、フィルター、ファセット ナビゲーションなどを試すことができます。 Azure Cognitive Search を初めて使用する場合は、他のチュートリアルも試して、作成できる内容について理解を深めることをお勧めします。 他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。 
 
 > [!div class="nextstepaction"]
-> [Javascript を使用して Web ページから Azure Search を呼び出す](https://github.com/liamca/azure-search-javascript-samples)
+> [JavaScript を使用して Web ページから Azure Cognitive Search を呼び出す](https://github.com/liamca/azure-search-javascript-samples)

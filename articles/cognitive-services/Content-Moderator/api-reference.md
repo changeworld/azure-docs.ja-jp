@@ -3,19 +3,19 @@ title: API リファレンス - Content Moderator
 titleSuffix: Azure Cognitive Services
 description: さまざまなコンテンツ モデレーションについて学習し、Content Moderator の各種 API を確認します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 05/29/2019
-ms.author: sajagtap
-ms.openlocfilehash: 3ad911a95dbe6209fcf55adcac3cf2937b06d1ff
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 7fc46d06b68dca074da060b4866186a6242ffad2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565613"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757376"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API リファレンス
 
@@ -41,6 +41,6 @@ Review API には次のコンポーネントがあります。
 
 | 説明 | リファレンス |
 | -------------------- |-------------|
-| **ジョブ**<br /><br /> 画像コンテンツとテキスト コンテンツ両方のスキャンおよびレビュー モデレーション ワークフローを開始します。 モデレーション ジョブは、Image Moderation API および Text Moderation API を使用してコンテンツをスキャンします。 モデレーション ジョブは、定義済みのワークフローと既定のワークフローを使用してレビューを生成します。 <br /><br />ヒューマン モデレーターが自動割り当てタグと予測データを確認して、コンテンツ モデレーション意思決定を送信した後、Review API がすべての情報を API エンドポイントに送信します。<br /><br /> | [Job リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "Job リファレンス")   |
-| **レビュー**<br /><br />レビュー ツールを使用して、ヒューマン モデレーターのために画像またはテキストのレビューを直接作成します。<br /><br /> ヒューマン モデレーターが自動割り当てタグと予測データを確認して、コンテンツ モデレーション意思決定を送信した後、Review API がすべての情報を API エンドポイントに送信します。<br /><br /> | [Review リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "Review リファレンス")   |
-| **ワークフロー**<br /><br />自分のチームが作成するカスタム ワークフローに関する詳細を作成、更新、取得します。 レビュー ツールを使用してワークフローを定義します。 <br /> <br />通常、ワークフローは Content Moderator を使用しますが、レビュー ツールのコネクタとして利用可能なその他の特定の API も使用できます。<br /><br /> | [Workflow リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "Workflow リファレンス")   |
+| **ジョブ**<br /><br /> 画像コンテンツとテキスト コンテンツ両方のスキャンおよびレビュー モデレーション ワークフローを開始します。 モデレーション ジョブは、Image Moderation API および Text Moderation API を使用してコンテンツをスキャンします。 モデレーション ジョブは、定義済みのワークフローと既定のワークフローを使用してレビューを生成します。 <br /><br />ヒューマン モデレーターが自動割り当てタグと予測データを確認して、コンテンツ モデレーション意思決定を送信した後、Review API がすべての情報を API エンドポイントに送信します。<br /><br /> | [ジョブ リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "ジョブ リファレンス")   |
+| **Reviews**<br /><br />レビュー ツールを使用して、ヒューマン モデレーターのために画像またはテキストのレビューを直接作成します。<br /><br /> ヒューマン モデレーターが自動割り当てタグと予測データを確認して、コンテンツ モデレーション意思決定を送信した後、Review API がすべての情報を API エンドポイントに送信します。<br /><br /> | [レビュー リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "レビュー リファレンス")   |
+| **ワークフロー**<br /><br />自分のチームが作成するカスタム ワークフローに関する詳細を作成、更新、取得します。 レビュー ツールを使用してワークフローを定義します。 <br /> <br />通常、ワークフローは Content Moderator を使用しますが、レビュー ツールのコネクタとして利用可能なその他の特定の API も使用できます。<br /><br /> | [ワークフロー リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "ワークフロー リファレンス")   |

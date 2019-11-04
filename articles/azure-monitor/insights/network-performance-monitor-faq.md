@@ -1,23 +1,18 @@
 ---
 title: FAQ - Azure の Network Performance Monitor ソリューション | Microsoft Docs
 description: この記事では、Azure の Network Performance Monitor についてよく寄せられる質問について説明します。 Network Performance Monitor (NPM) は、ネットワークのパフォーマンスをほぼリアルタイムで監視し、ネットワーク パフォーマンスのボトルネックを検出して特定するのに役立ちます。
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: vinynigam
-manager: agummadi
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/12/2018
 ms.author: vinigam
-ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.date: 10/12/2018
+ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782123"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931314"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 

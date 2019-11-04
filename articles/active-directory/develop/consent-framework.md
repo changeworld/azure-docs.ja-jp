@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory 同意フレームワーク
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory の同意フレームワークと、それを使用してマルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションを簡単に開発できるしくみについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: af5b60901e57392aaea504f96572801a878d707c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482932"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803848"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意フレームワーク
 

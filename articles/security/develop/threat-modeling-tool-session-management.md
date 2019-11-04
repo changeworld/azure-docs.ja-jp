@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fd7a12dca92a4b84ecd3a2c9644509a1dc705c35
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727852"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161512"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | 記事 |
@@ -436,7 +436,7 @@ void Page_Init (object sender, EventArgs e) {
 ### <a name="example"></a>例
 また、ADFS サーバーで次の PowerShell コマンドを実行して、ADFS が発行した SAML 要求トークンの有効期間を 15 分に設定する必要があります。
 ```csharp
-Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProviderName @(“Active Directory”) -TokenLifetime 15 -AlwaysRequireAuthentication $true
+Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName @("Active Directory") -TokenLifetime 15 -AlwaysRequireAuthentication $true
 ```
 
 ## <a id="proper-app-logout"></a>アプリケーションから適切なログアウトを実装する

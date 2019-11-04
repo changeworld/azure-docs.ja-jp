@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor Logs の構造 | Microsoft Docs
 description: Azure Monitor からログ データを取得するにはログ クエリが必要です。  この記事では、Azure Monitor で新しいログ クエリを使用する方法と、ログ クエリを作成する前に理解しておく必要がある概念について説明します。
-services: log-analytics
-author: bwren
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/22/2019
+ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034870"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894245"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor Logs の構造
 [ログ クエリ](log-query-overview.md)を使用して迅速にデータの分析情報が得られるのは、Azure Monitor の強力な機能です。 効率的で便利なクエリを作成するには、目的のデータがどこにあり、どのように構造化されているかなど、いくつかの基本概念を理解する必要があります。 この記事では、作業を始めるために必要な基本概念を提供します。
@@ -76,7 +76,7 @@ Azure Monitor Logs の各テーブルには独自のスキーマがあります�
 | Log Analytics ワークスペース | Application Insights アプリケーション | 説明 |
 |:---|:---|:---|
 | TimeGenerated | timestamp  | レコードが作成された日付と時刻。 |
-| Type          | itemType   | レコードの取得元テーブルの名前。 |
+| 種類          | itemType   | レコードの取得元テーブルの名前。 |
 | _ResourceId   |            | レコードが関連付けられているリソースの一意識別子。 |
 | _IsBillable   |            | 取り込まれたデータが課金対象かどうかを指定します。 |
 | _BilledSize   |            | 課金対象となるデータのサイズをバイト単位で指定します。 |

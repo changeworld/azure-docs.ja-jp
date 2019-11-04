@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 09/17/2019
 ms.author: aahi
-ms.openlocfilehash: 320c690eb873f760af89b7514893f14ecc209323
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1932ac571c94f9dc96240bdb63b44fe53c626f1f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106792"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554738"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Anomaly Detector クライアント ライブラリ
 
@@ -26,7 +26,7 @@ Node.js. 用 Anomaly Detector クライアント ライブラリは、次の目�
 * バッチ要求として、時系列データセット全体で異常を検出する
 * 時系列で最新のデータ ポイントの異常状態を検出する
 
-[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [サンプル](https://github.com/Azure-Samples/anomalydetector)
+[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [コード サンプル](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,13 +37,8 @@ Node.js. 用 Anomaly Detector クライアント ライブラリは、次の目�
 
 ### <a name="create-an-anomaly-detector-azure-resource"></a>Anomaly Detector Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に Anomaly Detector のリソースを作成します。 さらに、以下を実行できます。
+[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
-* [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
-
-試用版のサブスクリプションまたはリソースからキーを取得した後、`ANOMALY_DETECTOR_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。 さらに、Azure エンドポイント用にも 1 つ作成します (`ANOMALY_DETECTOR_ENDPOINT`)。
- 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
 コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。 
@@ -62,9 +57,9 @@ npm init
 
 [!code-javascript[Import statements](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=imports)]
 
-自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。 後続の手順でダウンロードすることになるサンプル データ ファイル用にもう 1 つの変数を作成します。 その後、キーを保持する ApiKeyCredentials オブジェクトを作成します。
+自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。 後続の手順でダウンロードすることになるサンプル データ ファイル用にもう 1 つの変数を作成し、さらにデータ ポイント用に空のリストを作成します。 その後、キーを保持する `ApiKeyCredentials` オブジェクトを作成します。
 
-[!code-javascript[Initial variables](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=vars)]
+[!code-javascript[Initial endpoint and key variables](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=vars)]
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
@@ -94,9 +89,6 @@ Anomaly Detector の応答は、使用する方法に応じて、[LastDetectResp
 * [最新のデータ ポイントの異常状態を検出する](#detect-the-anomaly-status-of-the-latest-data-point)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
-
-> [!NOTE]
-> このクイックスタートでは、`ANOMALY_DETECTOR_KEY` という名前の Anomaly Detector キーの[環境変数が作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)されていることを前提とします。
 
 ご利用のエンドポイントと資格情報を使用して [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) オブジェクトをインスタンス化します。
 

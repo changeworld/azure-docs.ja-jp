@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9650389d8ec641af1db0652dd09fbd7f06223956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f3fdd1aa4fa655cfffb9e9a2f29d551133613a8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107353"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>チュートリアル:Azure Active Directory と Adobe Creative Cloud の統合
 
@@ -165,7 +166,7 @@ Adobe Creative Cloud で Azure AD のシングル サインオンを構成する
 
 2. 上部のナビゲーション バーの **[Settings]\(設定\)** に移動して、 **[Identity]\(ID\)** を選択します。 ドメインの一覧が開きます。 自分のドメインの **[Configure]\(構成\)** リンクをクリックします。 その後、 **[Single Sign On Configuration Required (シングル サインオンの構成が必要です)]** セクションで、次の手順を実行します。 詳細については、「[Setup a domain (ドメインの設定)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)」を参照してください。
 
-    ![設定](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "Settings")
+    ![設定](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "設定")
 
     a. **[Browse (参照)]** をクリックして、Azure AD からダウンロードした証明書を **[IDP Certificate (IDP 証明書)]** にアップロードします。
 

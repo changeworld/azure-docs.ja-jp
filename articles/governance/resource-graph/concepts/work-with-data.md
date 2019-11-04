@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 74a618606fa8f2bdc678e8afc90640b5be8315a7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752116"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800183"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -36,7 +36,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-[REST API](/rest/api/azureresourcegraph/resources/resources) でのコントロールは **$top** であり、**QueryRequestOptions** の一部です。
+[REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) でのコントロールは **$top** であり、**QueryRequestOptions** の一部です。
 
 "_最も制限の厳しい_" コントロールが選択されます。 たとえば、クエリに含まれる **top** または **limit** 演算子で指定されているレコード数が **First** より多い場合、返される最大レコード数は **First** と等しくなります。 同様に、**top** または **limit** が **First** より小さい場合は、返されるレコード セットは **top** または **limit** で構成されている小さい方の値になります。
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-[REST API](/rest/api/azureresourcegraph/resources/resources) でのコントロールは **$skip** であり、**QueryRequestOptions** の一部です。
+[REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) でのコントロールは **$skip** であり、**QueryRequestOptions** の一部です。
 
 ## <a name="paging-results"></a>ページングの結果
 
-処理のために、または結果セットが返されるレコード数の最大許容値 _1000_ を超えるために、結果セットを小さなレコード セットに分割する必要がある場合は、ページングを使用します。 [REST API](/rest/api/azureresourcegraph/resources/resources) の **QueryResponse** では、結果セットが分割されていることを示す値として、**resultTruncated** と **$skipToken** が提供されています。
+処理のために、または結果セットが返されるレコード数の最大許容値 _1000_ を超えるために、結果セットを小さなレコード セットに分割する必要がある場合は、ページングを使用します。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) の **QueryResponse** では、結果セットが分割されていることを示す値として、**resultTruncated** と **$skipToken** が提供されています。
 **resultTruncated** はブール値で、応答で返されていない追加のレコードがあるかどうかをコンシューマーに通知します。 この状態は、**count** プロパティが **totalRecords** プロパティより小さい場合も示されます。 **totalRecords** では、クエリに一致したレコード数が定義されています。
 
 **resultTruncated** が **true** のときは、応答で **$skipToken** プロパティが設定されます。 この値は、クエリに一致した次のレコード セットを取得するために、同じクエリ値とサブスクリプション値で使用されます。

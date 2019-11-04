@@ -1,23 +1,18 @@
 ---
 title: PowerShell を使用して Application Insights のアラートを設定する | Microsoft Docs
 description: Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/31/2016
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/31/2016
+ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130972"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819094"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 
@@ -132,7 +127,7 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 | remoteDependencyFailed |[依存関係](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | request、<br/>requestFailed |[サーバー要求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
-## <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>Webhooks
 [アラートへの対応を自動化](../../azure-monitor/platform/alerts-webhooks.md)できます。 アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
 
 ## <a name="see-also"></a>関連項目

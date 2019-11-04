@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: aa60305e6733b18aa563b77c19ca81bfc6eced57
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f615bfbc5de96cab7c5d8433c78bd25225bb113e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297668"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163480"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール マッピング
 

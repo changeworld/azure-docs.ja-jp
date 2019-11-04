@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bfe1f14e-74e4-4680-ac9e-f7355e1c94cc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b94d852ec5e0cba133fc1e141a5695e1c898f16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e73861f9ce6ff5cd5bfcd260a8865755ccc3ec71
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105341"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>チュートリアル:Azure Active Directory と CloudPassage の統合
 

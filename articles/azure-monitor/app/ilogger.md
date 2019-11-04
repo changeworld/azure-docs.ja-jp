@@ -1,20 +1,19 @@
 ---
 title: ILogger を使用して Azure Application Insights 内の .NET トレース ログを探索する | Microsoft Docs
 description: ASP.NET Core とコンソール アプリケーションで Azure Application Insights の ILogger プロバイダーを使用するサンプルです。
-services: application-insights
-author: cijothomas
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.author: cithomas
-ms.openlocfilehash: acc7a218d40ec7b752d9495bd48e5f37436d736d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0e93e2a98d96ca7f436f20e579ab625341024686
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169459"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819478"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core の ILogger ログ
 

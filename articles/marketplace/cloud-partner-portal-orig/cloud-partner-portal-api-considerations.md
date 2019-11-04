@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6bf27db27daee50f78552344ae1b2b116d48a5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 762c90b62ed2a9347ae88a50a11bfe02f3b23ba4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935573"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162672"
 ---
 # <a name="api-considerations"></a>API の考慮事項
 
@@ -28,7 +28,7 @@ API の複数のバージョンが同時に利用可能である可能性があ�
 
 ``` json
     {
-        "error”: { 
+        "error": { 
             "code":"InvalidAPIVersion",
             "message":"Invalid api version. Allowed values are [2016-08-01-preview]"
         }

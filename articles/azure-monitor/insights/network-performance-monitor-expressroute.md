@@ -1,24 +1,18 @@
 ---
 title: Azure Log Analytics のネットワーク パフォーマンス モニター ソリューション | Microsoft Docs
 description: Network Performance Monitor の ExpressRoute モニター機能を使用して、ブランチ オフィスと Azure の間のエンド ツー エンド接続とパフォーマンスを Azure ExpressRoute 経由で監視します。
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/27/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: 7f9c0d905a7b2bc81063e59229d78a1200894d47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/27/2018
+ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963703"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898893"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター
 

@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: bcde469ba4a376b278295d9c14c9ae12e434e3d5
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: f3b2a976dc6b2b9e91f046a7f69e3057a7af7d0e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244237"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816989"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>新しい Dynamics 365 for Operations オファーを作成する
 
@@ -102,7 +102,7 @@ Dynamics 365 for Operations オファーの作成を開始するには、確実�
 
 ### <a name="industry"></a>業界
 
-必要に応じて最大 2 つの業界を選択して、マーケットプレースでオファーを分類できます。 オファーが業界に固有でない場合は、このセクションは空白のままにします。 選択した業界にオファーがどのように対応しているかをオファーの説明に含めるようにします。 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>アプリのバージョン
 

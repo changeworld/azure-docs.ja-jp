@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 7de2978fee80cf3acd078ef8ee5f235fab21713e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128699"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693107"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 
@@ -28,7 +28,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
 クラスタリング モデルを作成するには、次の手順を実行します。
 
-* このモジュールを実験に追加します。
+* このモジュールをパイプラインに追加します。
 * データセットを接続します。
 * 予想するクラスターの数、クラスターの作成に使用する距離メトリックなどのパラメーターを設定します。 
   
@@ -54,7 +54,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
 ## <a name="configure-the-k-means-clustering-module"></a>K-Means クラスタリング モジュールを構成する
   
-1.  **K-Means Clustering (K-Means クラスタリング)** モジュールを自分の実験に追加します。  
+1.  **K-Means Clustering (K-Means クラスタリング)** モジュールを自分のパイプラインに追加します。  
   
 2.  モデルのトレーニング方法を指定するには、 **[Create trainer mode]\(トレーナー モードの作成\)** オプションを選択します。  
   
@@ -119,7 +119,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
 2. **[Trained model]\(トレーニング済みのモデル\)** を選択し、 **[Save as Trained Model]\(トレーニング済みのモデルとして保存する\)** を選択します。
 
-保存されるモデルは、モデルを保存した時点のトレーニング データを表します。 実験で使用したトレーニング データを後で更新しても、保存済みのモデルは更新されません。 
+保存されるモデルは、モデルを保存した時点のトレーニング データを表します。 パイプラインで使用したトレーニング データを後で更新しても、保存済みのモデルは更新されません。 
 
 #### <a name="see-the-clustering-result-dataset"></a>クラスタリングの結果のデータセットを表示する 
 

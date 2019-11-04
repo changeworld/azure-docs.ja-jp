@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 13ffa29f-d0a5-4b21-b296-cfd76f380940
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e005d794fa3c6c70edf3d3466b0f076e2007352
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8de94f83c260a86f313a2dd04cdd5a7ae8fc1cda
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099966"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73155316"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>チュートリアル:Azure Active Directory と InstaVR Viewer の統合
 

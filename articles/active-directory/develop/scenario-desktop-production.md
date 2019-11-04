@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a353b4577f8cfa9ba279ad2793e1a7ab8b27e55
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268335"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175553"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデスクトップ アプリ - 運用環境への移行
 
@@ -69,17 +69,17 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-### <a name="in-msal-for-ios-and-macos"></a>iOS と macOS での MSAL の場合
+### <a name="in-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL の場合
 
 Objective-C:
 
 ```objc
 NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
                                 @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
-    
+
 NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                               @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-    
+
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
 interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
@@ -90,10 +90,10 @@ Swift:
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
                             "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
-        
+
 let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                           "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-        
+
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
 interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })

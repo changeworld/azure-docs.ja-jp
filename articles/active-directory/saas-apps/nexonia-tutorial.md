@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a93b771a-9bc3-444a-bdc0-457f8bb7e780
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 36bffb73b1e04fd37fe05479a684f107b7679e99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73b166c5a6a39ca01f43dccc356536dad43dca38
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096192"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>チュートリアル:Azure Active Directory と Nexonia の統合
 

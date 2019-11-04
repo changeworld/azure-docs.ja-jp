@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 5f22c9e7b7f040a0e6b957cbc184720918ce9222
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: c55de6b437755f46df8d95a8ee461c0671a52cff
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274143"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791542"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Databricks で Spark ジョブを実行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "72274143"
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
-> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
+> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -67,7 +67,7 @@ ms.locfileid: "72274143"
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** をクリックします。
 
-   ![Azure の Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Azure の Databricks")
+   ![Azure での Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Azure での Databricks")
 
 3. **[New cluster]\(新しいクラスター\)** ページで、クラスターを作成するための値を指定します。
 
@@ -153,17 +153,17 @@ ms.locfileid: "72274143"
 
 6. 次のスクリーンショットのような表形式の出力が表示されます (一部の列のみ示してあります)。
 
-   ![サンプルの JSON データ](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "サンプルの JSON データ")
+   ![サンプル JSON データ](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "サンプル JSON データ")
 
    サンプルには、ラジオ チャンネルの視聴者の性別 (列名: **gender**) および登録が無料か有料か (列名: **level**) に関するデータが含まれます。
 
 7. このデータのビジュアル表現を作成し、各性別について、無料アカウント ユーザーの数と有料登録者の数がわかるようにします。 表形式の出力の下部で、 **[Bar chart]\(棒グラフ\)** アイコンをクリックした後、 **[Plot Options]\(プロット オプション\)** をクリックします。
 
-   ![棒グラフを作成する](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "棒グラフを作成する")
+   ![横棒グラフを作成する](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "横棒グラフを作成する")
 
 8. **[Customize Plot]\(プロットのカスタマイズ\)** で、スクリーンショットに示すように値をドラッグ アンド ドロップします。
 
-   ![棒グラフをカスタマイズする](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "棒グラフをカスタマイズする")
+   ![横棒グラフをカスタマイズする](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "横棒グラフをカスタマイズする")
 
    * **[Keys]\(キー\)** を **gender** に設定します。
    * **[Series groupings]\(系列グループ\)** を **level** に設定します。
@@ -174,7 +174,7 @@ ms.locfileid: "72274143"
 
 9. 出力は、次のスクリーンショットのようなビジュアル表現になります。
 
-   ![棒グラフをカスタマイズする](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "棒グラフをカスタマイズする")
+   ![横棒グラフをカスタマイズする](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "横棒グラフをカスタマイズする")
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

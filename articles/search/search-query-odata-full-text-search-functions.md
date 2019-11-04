@@ -1,13 +1,13 @@
 ---
-title: OData フルテキスト検索関数リファレンス - Azure Search
-description: 'Azure Search クエリでの OData フルテキスト検索関数: search.ismatch および search.ismatchscoring。'
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData フルテキスト検索関数リファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリにおける OData フルテキスト検索関数 (search.ismatch および search.ismatchscoring)。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c3b28c8799b09ddfe008df8539709c5a704ac6b4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648013"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793350"
 ---
-# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>Azure Search での OData フルテキスト検索関数 - `search.ismatch` および `search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Cognitive Search での OData フルテキスト検索関数 - `search.ismatch` および `search.ismatchscoring`
 
-Azure Search では、`search.ismatch` および `search.ismatchscoring` 関数を介して [OData フィルター式](query-odata-filter-orderby-syntax.md) のコンテキストでのフルテキスト検索がサポートされています。 これらの関数を使用すると、[Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents) の最上位の `search` パラメーターを使用しただけでは不可能な方法で、フルテキスト検索と厳密なブール値フィルタリングを組み合わせることができます。
+Azure Cognitive Search では、`search.ismatch` および `search.ismatchscoring` 関数を介して [OData フィルター式](query-odata-filter-orderby-syntax.md)のコンテキストでのフルテキスト検索がサポートされています。 これらの関数を使用すると、[Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents) の最上位の `search` パラメーターを使用しただけでは不可能な方法で、フルテキスト検索と厳密なブール値フィルタリングを組み合わせることができます。
 
 > [!NOTE]
 > `search.ismatch` および `search.ismatchscoring` 関数は、[Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents) のフィルター内でのみサポートされます。 これらは、[Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions) API または [Autocomplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API ではサポートされていません。
@@ -54,10 +54,10 @@ search_mode ::= "'any'" | "'all'"
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 ### <a name="searchismatch"></a>search.ismatch
 
@@ -69,7 +69,7 @@ search_mode ::= "'any'" | "'all'"
 
 次の表では、各パラメーターを定義しています。
 
-| パラメーター名 | Type | 説明 |
+| パラメーター名 | 種類 | 説明 |
 | --- | --- | --- |
 | `search` | `Edm.String` | 検索クエリ ([simple](query-simple-syntax.md) または [full](query-lucene-syntax.md) Lucene クエリ構文)。 |
 | `searchFields` | `Edm.String` | 検索する検索可能フィールドのコンマ区切りリスト。既定値はインデックスのすべての検索可能フィールドになります。 `search` パラメーター内で[フィールド検索](query-lucene-syntax.md#bkmk_fields)を使用すると、このパラメーターで指定したフィールドはいずれも Lucene クエリ内のフィールド指定子によってオーバーライドされます。 |
@@ -81,7 +81,7 @@ search_mode ::= "'any'" | "'all'"
 `search.ismatch` 関数からは `Edm.Boolean` 型の値が返されます。このため、ブール[論理演算子](search-query-odata-logical-operators.md)を使用して、それを他のフィルター サブ式と組み合わせることができます。
 
 > [!NOTE]
-> Azure Search では、ラムダ式内での `search.ismatch` または `search.ismatchscoring` の使用はサポートされていません。 つまり、フルテキスト検索の一致を、同じオブジェクトに対する厳密なフィルターの一致に関連付けることができるオブジェクトのコレクションに対してフィルターを記述することは不可能です。 この制限と例の詳細については、[Azure Search でのコレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)に関する記事をご覧ください。 この制限が存在する理由の詳細については、[Azure Search でのコレクション フィルター](search-query-understand-collection-filters.md)に関する記事をご覧ください。
+> Azure Cognitive Search では、ラムダ式内での `search.ismatch` または `search.ismatchscoring` の使用はサポートされていません。 つまり、フルテキスト検索の一致を、同じオブジェクトに対する厳密なフィルターの一致に関連付けることができるオブジェクトのコレクションに対してフィルターを記述することは不可能です。 この制限と例の詳細については、[Azure Cognitive Search でのコレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)に関する記事をご覧ください。 この制限が存在する理由の詳細については、[Azure Cognitive Search でのコレクション フィルターの概要](search-query-understand-collection-filters.md)に関する記事をご覧ください。
 
 
 ### <a name="searchismatchscoring"></a>search.ismatchscoring
@@ -120,7 +120,7 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

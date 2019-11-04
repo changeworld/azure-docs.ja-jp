@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb47d60f609e63e5a17fd8abd3efe420ea7fd187
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 75f0669a474c24647e71eae8b5e0e0830b7c0bef
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264106"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533099"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Check Point CloudGuard Dome9 Arc の統合
 
@@ -89,17 +89,25 @@ Check Point CloudGuard Dome9 Arc で Azure AD の SSO を構成してテスト�
 
     b. **[応答 URL]** ボックスに、`https://secure.dome9.com/sso/saml/<yourcompanyname>` のパターンを使用して URL を入力します
 
-    > [!NOTE]
-    > Dome9 管理ポータルで会社名の値を選択します。これについては、このチュートリアルの後の方で説明します。
-
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://secure.dome9.com/sso/saml/<yourcompanyname>` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Check Point CloudGuard Dome9 Arc クライアント サポート チーム](mailto:Dome9@checkpoint.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。 `<company name>` 値の値は、このチュートリアルで後述する「**Check Point CloudGuard Dome9 Arc SSO の構成**」セクションで取得します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Check Point CloudGuard Dome9 Arc では、Azure AD にロールが構成されている必要があります。 ロール要求はあらかじめ構成されているため、自分で構成する必要はありませんが、それらを Azure AD に作成する必要があります。こちらの[記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)に従ってください。
+1. Check Point CloudGuard Dome9 Arc アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+
+    ![image](common/edit-attribute.png)
+
+1. その他に、Check Point CloudGuard Dome9 Arc アプリケーションでは、以下に示したいくつかの属性が SAML 応答で返されることが想定されています。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+    
+    | 名前 |  ソース属性|
+    | ---------------| --------------- |
+    | memberof | user.assignedroles |
+
+    >[!NOTE]
+    >Azure AD でロールを作成する方法については、[ここ](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/apptio-tutorial)をクリックしてください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -163,7 +171,7 @@ Check Point CloudGuard Dome9 Arc で Azure AD の SSO を構成してテスト�
 
     ![Check Point CloudGuard Dome9 Arc の構成](./media/dome9arc-tutorial/configure3.png)
 
-    a. **[アカウント ID]** テキスト ボックスに会社名を入力します。 この値は、Azure portal の **[基本的な SAML 構成]** セクションで言及されている [応答 URL] に使用します。
+    a. **[アカウント ID]** テキスト ボックスに会社名を入力します。 この値は、Azure portal の **[基本的な SAML 構成]** セクションに記載されている**応答** URL と**サインオン** URL に使用されます。
 
     b. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
@@ -221,4 +229,3 @@ Azure AD ユーザーが Check Point CloudGuard Dome9 Arc にサインインで�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Check Point CloudGuard Dome9 Arc を試す](https://aad.portal.azure.com/)
-

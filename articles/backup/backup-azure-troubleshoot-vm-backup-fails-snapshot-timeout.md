@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268771"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533724"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -110,7 +110,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
 **エラー メッセージ**:The configured disk size(s) is currently not supported by Azure Backup. (構成されたディスク サイズは、現在、Azure Backup ではサポートされていません。) <br>
 
-VM をバックアップするときにディスク サイズが 30 TB よりも大きいと、バックアップ操作が失敗することがあります。 また、現時点では、4 TB のサイズを超える暗号化されたディスクのバックアップはサポートされていません。 ディスクを分割して、ディスクのサイズが、サポートされている制限以下になるようにしてください。
+VM をバックアップするときにディスク サイズが 32 TB よりも大きいと、バックアップ操作が失敗することがあります。 また、現時点では、4 TB のサイズを超える暗号化されたディスクのバックアップはサポートされていません。 ディスクを分割して、ディスクのサイズが、サポートされている制限以下になるようにしてください。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません
 

@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aa5c4747238b2f2427be3e57c3e84e03c81fd609
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c8cd6e2d13e252f9a7560b55eca58341e791db5a
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541766"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964937"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI を使用して Azure IoT Edge モジュールをデプロイする
 
@@ -28,7 +28,7 @@ ms.locfileid: "69541766"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。
-* IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device-cli.md)。
+* IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md#register-with-the-azure-cli)。
 * ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az --version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
 * [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
@@ -116,7 +116,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-device id パラメーターでは大文字と小文字が区別されます。 content パラメーターは、保存した配置マニフェスト ファイルを指します。
+device ID パラメーターでは大文字と小文字が区別されます。 content パラメーターは、保存した配置マニフェスト ファイルを指します。
 
    ![az iot edge set-modules の出力](./media/how-to-deploy-cli/set-modules.png)
 
@@ -130,7 +130,7 @@ IoT Edge デバイス上のモジュールを参照します。
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-device id パラメーターでは大文字と小文字が区別されます。
+device ID パラメーターでは大文字と小文字が区別されます。
 
    ![az iot hub module-identity list の出力](./media/how-to-deploy-cli/list-modules.png)
 

@@ -4,31 +4,31 @@ description: Privileged Identity Management (PIM) で Azure AD のカスタム �
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a3f6eb815677133f3d7fe6ce07d6abf23db1f04
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947518"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756360"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management (PIM) で Azure AD のカスタム ロールを割り当てる
 
 この記事では、Privileged Identity Management (PIM) を使用して Just-In-Time の割り当てと期間限定の割り当てを作成する方法について説明します。Azure Active Directory (Azure AD) の管理エクスペリエンスから、アプリケーション管理用に作成されたカスタム ロールへの割り当てを必要なときに作成したり期間限定で作成したりすることができます。
 
 - Azure AD でカスタム ロールを作成してアプリケーション管理を委任する方法について詳しくは、「[Azure Active Directory でのカスタム管理者ロール (プレビュー)](../users-groups-roles/roles-custom-overview.md)」を参照してください。
-- まだ Privileged Identity Management を使用したことがない方は、「[PIM の使用を開始する](pim-getting-started.md)」で詳しい情報をご覧いただけます。
-- Privileged Identity Management を管理するためのアクセス権を他の管理者に与える方法については、「[PIM を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
+- まだ Privileged Identity Management を使用したことがない方は、[Privileged Identity Management の使用を開始する](pim-getting-started.md)方法に関するページで詳しい情報をご覧いただけます。
+- Privileged Identity Management を管理するためのアクセス権を別の管理者に付与する方法については、「[Privileged Identity Management を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
 
 > [!NOTE]
 > プレビュー段階では、Azure AD のカスタム ロールがビルトイン ディレクトリ ロールと連携していません。 その機能の一般提供が開始されれば、ビルトイン ロールのエクスペリエンスでロールの管理が行えるようになります。

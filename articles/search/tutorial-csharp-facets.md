@@ -1,24 +1,25 @@
 ---
-title: ナビゲーションをサポートするファセットの使用に関する C# チュートリアル - Azure Search
-description: このチュートリアルでは、「検索結果のページング - Azure Search」プロジェクトにファセット ナビゲーションを追加します。 ファセットを使用すると、簡単に検索を絞り込めることについて説明します。
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: ファセットを使用してナビゲーションを支援する C# チュートリアル
+titleSuffix: Azure Cognitive Search
+description: このチュートリアルでは、「検索結果のページング - Azure Cognitive Search」プロジェクトにファセット ナビゲーションを追加します。 ファセットを使用して簡単に検索を絞り込む方法について説明します。
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/20/2019
-ms.openlocfilehash: 62326ad3bc5f2d740ce744819df559bce8658eb7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443777"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794092"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-search"></a>C# のチュートリアル: ナビゲーションをサポートするファセットの使用 - Azure Search
+# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# のチュートリアル: ファセットを使用してナビゲーションを支援する - Azure Cognitive Search
 
 ファセットを使用すると、絞り込み検索を行うことができる一連のリンクをユーザーに提供することで、ナビゲーションをサポートすることができます。 ファセットは、データの属性 (サンプル データでは、ホテルのカテゴリや具体的特徴など) です。
 
-このチュートリアルは、「[C# チュートリアル: 検索結果のページング- Azure Search](tutorial-csharp-paging.md)」チュートリアルで作成したページング プロジェクトを基にしています。
+このチュートリアルは、「[C# チュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」チュートリアルで作成した無限スクロール プロジェクトを基にしています。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -29,7 +30,7 @@ ms.locfileid: "67443777"
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-「[C# チュートリアル: 検索結果のページング- Azure Search](tutorial-csharp-paging.md)」プロジェクトを実行できるようにします。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでも構いません。
+「[C# チュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでも構いません。
 
 ## <a name="set-model-properties-as-isfacetable"></a>モデルのプロパティに IsFacetable を設定する
 
@@ -559,4 +560,4 @@ ms.locfileid: "67443777"
 次のチュートリアルでは、結果の並べ替えに注目します。 ここまでの結果は、単にデータベースに格納されている順番で表示されています。
 
 > [!div class="nextstepaction"]
-> [C# のチュートリアル: 結果の並び替え - Azure Search ](tutorial-csharp-orders.md)
+> [C# のチュートリアル: 結果の並べ替え - Azure Cognitive Search](tutorial-csharp-orders.md)

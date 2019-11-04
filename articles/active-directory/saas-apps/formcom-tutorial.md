@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: bf054cb3a965e94f7f18e39065d744b4376b6527
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa6585b981626d3752f2383db20f8e149a2ed007
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102188"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73156122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>チュートリアル:Azure Active Directory と Form.com の統合
 

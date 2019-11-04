@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: b16ad4fd08776312d318067b4bc84f79b9797e70
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e74d3328e1ed41a7184569d30cc46ae7cd29a5ba
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299163"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163517"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング
 

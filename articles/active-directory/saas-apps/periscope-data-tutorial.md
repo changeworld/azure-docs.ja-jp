@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3f378edb-9ac9-494d-a84a-03357b923ee1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: efde1f1dafc62576398c5225ad1c652438fc0c31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094500"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>チュートリアル:Azure Active Directory と Periscope Data の統合
 

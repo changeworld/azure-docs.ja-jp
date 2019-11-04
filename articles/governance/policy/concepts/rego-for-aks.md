@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254748"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176322"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes Service に対する Azure Policy の理解
 
@@ -164,7 +164,7 @@ AKS クラスターにアドオンをインストールする前に、プレビ�
 
 AKS を管理するための Azure Policy 言語構造は、既存のポリシーのものに従います。 _EnforceRegoPolicy_ 効果が AKS クラスターを管理するために使用され、OPA および GateKeeper の操作に固有の _details_ プロパティが使用されます。 詳細と例については、[EnforceRegoPolicy](effects.md#enforceregopolicy) 効果を参照してください。
 
-ポリシー定義の _details.policy_ プロパティの一部として、Azure Policy は rego ポリシーの URI をアドオンに渡します。 Rego は、Kubernetes クラスターへの要求を検証または変更するために OPA および GateKeeper がサポートする言語です。 Azure Policy は、Kubernetes 管理のための既存の標準をサポートすることによって、既存の規則を再利用し、これらを Azure Policy とペアにすることで、統合されたクラウド コンプライアンス レポート体験を実現します。 詳しくは、「[Rego とは](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)」を参照してください。
+ポリシー定義の _details.policy_ プロパティの一部として、Azure Policy は rego ポリシーの URI をアドオンに渡します。 Rego は、Kubernetes クラスターへの要求を検証または変更するために OPA および GateKeeper がサポートする言語です。 Azure Policy は、Kubernetes 管理のための既存の標準をサポートすることによって、既存の規則を再利用し、これらを Azure Policy とペアにすることで、統合されたクラウド コンプライアンス レポート体験を実現します。 詳しくは、「[Rego とは](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)」を参照してください。
 
 ## <a name="built-in-policies"></a>組み込みのポリシー
 

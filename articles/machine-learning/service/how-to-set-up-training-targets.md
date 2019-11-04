@@ -3,20 +3,20 @@ title: モデル トレーニング用のコンピューティング先を作成
 titleSuffix: Azure Machine Learning
 description: 機械学習モデル トレーニング用のトレーニング環境 (コンピューティング ターゲット) を構成します。 トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始します。 スケール アウトする必要がある場合は、クラウド ベースのコンピューティング先に切り替えます。
 services: machine-learning
-author: heatherbshapiro
-ms.author: hshapiro
+author: rastala
+ms.author: roastala
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 46a212719846eddc7d21f3aeb0815dfbf4119e15
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244431"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935368"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング先を設定して使用する 
 
@@ -499,7 +499,7 @@ runconfig の *arguments* セクションと HyperDrive 構成の *parameter spa
 
 ## <a name="git-tracking-and-integration"></a>Git の追跡と統合
 
-ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。
+ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 詳細については、「[Azure Machine Learning との Git 統合](concept-train-model-git-integration.md)」を参照してください。
 
 ## <a name="notebook-examples"></a>ノートブックの例
 

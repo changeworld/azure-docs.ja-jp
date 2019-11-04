@@ -1,35 +1,34 @@
 ---
-title: インデクサーを使用した自動インデックス作成用のフィールド マッピング - Azure Search
-description: フィールド名とデータ表現の間の違いを調整するよう Azure Search インデクサー フィールド マッピングを構成する。
-ms.date: 05/02/2019
-author: mgottein
+title: インデクサーを使用した自動インデックス作成用のフィールド マッピング
+titleSuffix: Azure Cognitive Search
+description: フィールド名とデータ表現の間の違いを調整するようにインデクサーでフィールド マッピングを構成します。
 manager: nitinme
+author: mgottein
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: b64f6dcecb26e35689ad6f569ade6c7862f06f1a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: cc863ee3dc7f2dc8049fcd22189acac94a855352
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648131"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786972"
 ---
-# <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Azure Search インデクサーを使用したフィールドのマッピングと変換
+# <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure コグニティブ検索インデクサーを使用したフィールドのマッピングと変換
 
-Azure Search インデクサーを使用すると、入力データがターゲット インデックスのスキーマと完全に一致しないことがあります。 そのような場合は、インデックス作成処理中に**フィールド マッピング**を使用してデータを変形できます。
+Azure コグニティブ検索インデクサーを使用すると、入力データがターゲット インデックスのスキーマと完全に一致しないことがあります。 そのような場合は、インデックス作成処理中に**フィールド マッピング**を使用してデータを変形できます。
 
 フィールド マッピングが役立つシナリオは次のとおりです。
 
-* データ ソースに `_id` というフィールドがあるが、Azure Search でアンダースコアで始まるフィールド名が許可されていない場合。 フィールド マッピングを使用すると、フィールドの名前を効果的に変更できます。
+* データ ソースに `_id` というフィールドがあるが、Azure コグニティブ検索でアンダースコアで始まるフィールド名が許可されていない場合。 フィールド マッピングを使用すると、フィールドの名前を効果的に変更できます。
 * 同じデータ ソース データからインデックス内のいくつかのフィールドにデータを入力します。 たとえば、このようなフィールドにさまざまなアナライザーを適用することができます。
 * インデックス フィールドに複数のデータ ソースのデータを入力し、データ ソースはそれぞれ異なるフィールド名が使用されています。
 * Base64 エンコードまたはデータのデコードが必要な場合。 フィールド マッピングは、Base64 エンコードおよびデコードの関数など、**マッピング関数**をいくつかサポートしています。
 
 > [!NOTE]
-> Azure Search インデクサーのフィールド マッピング機能には、データ変換のためのいくつかのオプションを使用して、データ フィールドをインデックス フィールドにマップする簡単な方法が用意されています。 より複雑なデータでは、インデックス付けが簡単な形式に変形する前処理が必要な場合があります。
+> Azure コグニティブ検索インデクサーのフィールド マッピング機能には、データ変換のためのいくつかのオプションを使用して、データ フィールドをインデックス フィールドにマップする簡単な方法が用意されています。 より複雑なデータでは、インデックス付けが簡単な形式に変形する前処理が必要な場合があります。
 >
 > Microsoft Azure Data Factory は、データをインポートおよび変換するための強力なクラウドベースのソリューションです。 インデックスを付ける前にソース データを変換するコードを書くこともできます。 コード例については、「[リレーショナル データをモデル化する](search-example-adventureworks-modeling.md)」と「[多層構造ファセットをモデル化する](search-example-adventureworks-multilevel-faceting.md)」を参照してください。
 >
@@ -73,7 +72,7 @@ api-key: [admin key]
 ```
 
 > [!NOTE]
-> Azure Search は、大文字と小文字は区別されない比較を使用してフィールド マッピングのフィールドと関数名を解決します。 これは便利ですが (大文字と小文字を区別する必要がないため)、同時に、データ ソースまたはインデックスが、大文字と小文字のみが異なるフィールドを持つことができないことを意味します。  
+> Azure コグニティブ検索では、大文字と小文字が区別されない比較を使用して、フィールド マッピングのフィールドと関数名を解決します。 これは便利ですが (大文字と小文字を区別する必要がないため)、同時に、データ ソースまたはインデックスが、大文字と小文字のみが異なるフィールドを持つことができないことを意味します。  
 >
 >
 
@@ -124,7 +123,7 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>例 - ドキュメント キーの検索
 
-Azure Search ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるようにする必要がある場合のため)。 URL の安全ではない文字がキーのソース フィールドに含まれている場合は、インデックス作成時に `base64Encode` 関数を使用して変換できます。
+Azure コグニティブ検索ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるようにする必要があるため)。 URL の安全ではない文字がキーのソース フィールドに含まれている場合は、インデックス作成時に `base64Encode` 関数を使用して変換できます。
 
 検索時にエンコードされたキーを取得すると、`base64Decode` 関数を使用して元のキー値を取得し、それを使用してソース ドキュメントを取得できます。
 
@@ -143,7 +142,7 @@ Azure Search ドキュメント キーには、URL で使用できる文字の�
 
 マッピング関数に parameters プロパティを含めない場合、既定で値 `{"useHttpServerUtilityUrlTokenEncode" : true}` になります。
 
-Azure Search は、2 つの異なる Base64 エンコードをサポートしています。 同じフィールドをエンコードおよびデコードするときは、同じパラメーターを使用する必要があります。 詳細については、[base64 エンコード オプション](#base64details)に関するページを参照して使用するパラメーターを決定します。
+Azure コグニティブ検索では、2 つの異なる Base64 エンコードがサポートされています。 同じフィールドをエンコードおよびデコードするときは、同じパラメーターを使用する必要があります。 詳細については、[base64 エンコード オプション](#base64details)に関するページを参照して使用するパラメーターを決定します。
 
 <a name="base64DecodeFunction"></a>
 
@@ -170,17 +169,17 @@ Azure Search は、2 つの異なる Base64 エンコードをサポートして
 
 parameters プロパティを含めない場合、既定で値 `{"useHttpServerUtilityUrlTokenEncode" : true}` になります。
 
-Azure Search は、2 つの異なる Base64 エンコードをサポートしています。 同じフィールドをエンコードおよびデコードするときは、同じパラメーターを使用する必要があります。 詳細については、「[base64 エンコード オプション](#base64details)」を参照して使用するパラメーターを決定します。
+Azure コグニティブ検索では、2 つの異なる Base64 エンコードがサポートされています。 同じフィールドをエンコードおよびデコードするときは、同じパラメーターを使用する必要があります。 詳細については、「[base64 エンコード オプション](#base64details)」を参照して使用するパラメーターを決定します。
 
 <a name="base64details"></a>
 
 #### <a name="base64-encoding-options"></a>base64 エンコード オプション
 
-Azure Search は、2 つの異なる Base64 エンコードをサポートしています。**HttpServerUtility URL トークン**と、**パディングなしの URL 対応 Base64 エンコード**です。 インデックス作成中に base64 でエンコードされた文字列は、後で同じエンコード オプションでデコードする必要があります。そうしないと、結果が元の文字列と一致しません。
+Azure コグニティブ検索では、2 つの異なる Base64 エンコードがサポートされています。**HttpServerUtility URL トークン**と、**パディングなしの URL 対応 Base64 エンコード**です。 インデックス作成中に base64 でエンコードされた文字列は、後で同じエンコード オプションでデコードする必要があります。そうしないと、結果が元の文字列と一致しません。
 
 それぞれがエンコードとデコードに対応する `useHttpServerUtilityUrlTokenEncode` パラメーターまたは `useHttpServerUtilityUrlTokenDecode` パラメーターが `true` に設定されると、`base64Encode` は [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) のように、`base64Decode` は [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) のように動作します。
 
-Azure Search の動作をエミュレートするキー値を生成するために、全面的に .NET Framework を使用していない (つまり、.NET Core またはその他のフレームワークを使用している) 場合は、`useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` を `false` に設定する必要があります。 使用するライブラリによっては、base64 のエンコードおよびデコード関数が Azure Search で使用されるものと異なる場合があります。
+Azure コグニティブ検索の動作をエミュレートするキー値を生成するために、全面的に .NET Framework を使用していない (つまり、.NET Core またはその他のフレームワークを使用している) 場合は、`useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` を `false` に設定する必要があります。 使用するライブラリによっては、base64 のエンコードおよびデコード関数が Azure コグニティブ検索で使用されるものと異なる場合があります。
 
 次の表では、文字列 `00>00?00` の異なる base64 エンコードを比較しています。 base64 関数に必要な追加処理 (ある場合) を判断するには、ライブラリ エンコード関数を文字列 `00>00?00` に適用し、出力を想定出力 `MDA-MDA_MDA` と比較します。
 
@@ -233,7 +232,7 @@ Azure Search の動作をエミュレートするキー値を生成するため�
 
 #### <a name="example---populate-collection-from-relational-data"></a>例 - リレーショナル データからコレクションを設定する
 
-Azure SQL Database には、Azure Search の `Collection(Edm.String)` のフィールドに自然にマップされる組み込みのデータ型がありません。 文字列収集フィールドを設定するには、ソース データを JSON 文字列配列として前処理してから、`jsonArrayToStringCollection` マッピング関数を使用することができます。
+Azure SQL Database には、Azure コグニティブ検索の `Collection(Edm.String)` のフィールドに自然にマップされる組み込みのデータ型がありません。 文字列収集フィールドを設定するには、ソース データを JSON 文字列配列として前処理してから、`jsonArrayToStringCollection` マッピング関数を使用することができます。
 
 ```JSON
 

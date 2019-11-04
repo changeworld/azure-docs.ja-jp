@@ -1,21 +1,19 @@
 ---
 title: Azure Monitor の Azure SQL Analytics ソリューション | Microsoft Docs
 description: Azure SQL Analytics ソリューションは、Azure SQL データベースの管理に役立ちます
-services: log-analytics
-ms.service: log-analytics
-ms.custom: ''
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: f27ea984e2c11be03d69295d206c1b99791a3f72
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.reviewer: carlrab
+ms.openlocfilehash: 75e8cffea08c7db4526c647a32ed92be2d1779f1
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693272"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899122"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 

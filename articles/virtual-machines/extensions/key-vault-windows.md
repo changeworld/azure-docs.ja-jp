@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 53daa634374c10d48c42f5985459db7e068f293d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 43c4b363f223c61bac3d3f7dbd272519a0cd014d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302192"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899039"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -168,7 +168,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
          az vm extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vm-name "<vmName>" `
+         --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
@@ -179,7 +179,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
         az vmss extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vm-name "<vmName>" `
+         --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 

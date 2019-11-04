@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2510195f-d5b1-4684-b3da-283fb8619df2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9c97ba19a680ece37ae4e3b4fa5257169f0842c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ada7092fa626987513416f7be0a52f6abeefaeb5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102674"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158197"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>チュートリアル:Azure Active Directory と Fieldglass の統合
 

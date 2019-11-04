@@ -1,13 +1,13 @@
 ---
-title: OData 論理演算子のリファレンス - Azure Search
-description: Azure Search クエリでの OData 論理演算子 (and、or、not)。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 論理演算子のリファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリでの OData 論理演算子 (and、or、not)。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bf4939a40a2fdf1c8fc6cf97beca0184b1604c98
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e016047d66e49f17c08d4b92a1c865f4b63e39b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647990"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793317"
 ---
-# <a name="odata-logical-operators-in-azure-search---and-or-not"></a>Azure Search クエリでの OData 論理演算子 - `and`、`or`、`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure Cognitive Search での OData 論理演算子 - `and`、`or`、`not`
 
-Azure Search での [OData フィルター式](query-odata-filter-orderby-syntax.md)は、`true` または `false` に評価されるブール式です。 一連の[よりシンプルなフィルター](search-query-odata-comparison-operators.md)を記述し、それらを[ブール代数](https://en.wikipedia.org/wiki/Boolean_algebra)の論理演算子を使って作成することで、複雑なフィルターを記述することができます。
+Azure Cognitive Search での [OData フィルター式](query-odata-filter-orderby-syntax.md)は、`true` または `false` に評価されるブール式です。 一連の[よりシンプルなフィルター](search-query-odata-comparison-operators.md)を記述し、それらを[ブール代数](https://en.wikipedia.org/wiki/Boolean_algebra)の論理演算子を使って作成することで、複雑なフィルターを記述することができます。
 
 - `and`:左と右のサブ式が両方とも `true` に評価された場合に `true` に評価される 2 項演算子です。
 - `or`:左または右のサブ式のいずれかが `true` に評価された場合に `true` に評価される 2 項演算子です。
@@ -51,10 +51,10 @@ logical_expression ::=
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 論理式には次の 2 つの形式があります。2 つのサブ式がある 2 項 (`and`/`or`) 形式と、サブ式が 1 つしかない単項 (`not`) 形式です。 サブ式は、次のような任意の種類のブール式とすることができます。
 
@@ -66,7 +66,7 @@ logical_expression ::=
 - `and`、`or`、および `not` を使用して構築されるその他の論理式。
 
 > [!IMPORTANT]
-> 状況によっては (特にラムダ式内では)、すべての種類のサブ式を `and`/`or` と一緒に使用できるとは限りません。 詳細については、[Azure Search での OData コレクション演算子](search-query-odata-collection-operators.md#limitations)に関するページを参照してください。
+> 状況によっては (特にラムダ式内では)、すべての種類のサブ式を `and`/`or` と一緒に使用できるとは限りません。 詳細については、[Azure Cognitive Search での OData コレクション演算子](search-query-odata-collection-operators.md#limitations)に関するページを参照してください。
 
 ### <a name="logical-operators-and-null"></a>論理演算子と `null`
 
@@ -109,7 +109,7 @@ logical_expression ::=
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

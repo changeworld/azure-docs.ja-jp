@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/22/2019
+ms.date: 10/21/2019
 ms.author: juliako
-ms.openlocfilehash: f9ca4b54db305a5c088b4dda27a6844c8439fa1a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055305"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750260"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -62,11 +62,9 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 ## <a name="configure-postman"></a>Postman を構成する
 
-このセクションでは、Postman を構成します。
-
 ### <a name="configure-the-environment"></a>環境の構成 
 
-1. **Postman** を開きます。
+1. **Postman** アプリを開きます。
 2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
@@ -96,18 +94,19 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 このセクションでは、ファイルをストリーム配信できるように、URL のエンコードと作成に関連する要求を送信します。 具体的には、次の要求が送信されます。
 
 1. サービス プリンシパルの認証のために Azure AD トークンを取得する
+1. ストリーミング エンドポイントを開始する
 2. 出力アセットを作成する
-3. **変換**を作成する
-4. **ジョブ**を作成する
-5. **ストリーミング ロケーター**を作成する
-6. **ストリーミング ロケーター**のパスを一覧表示する
+3. Transform を作成します。
+4. ジョブを作成する
+5. ストリーミング ロケーターを作成する
+6. ストリーミング ロケーターのパスを一覧表示する
 
 > [!Note]
 >  このチュートリアルでは、すべてのリソースを一意の名前で作成していることを前提としています。  
 
 ### <a name="get-azure-ad-token"></a>Azure AD トークンを取得する 
 
-1. Postman の左側のウィンドウで、[Step 1:Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Step 1: Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
 2. 次に、[Get Azure AD Token for Service Principal Authentication]\(\サービス プリンシパル認証のために Azure AD トークンを取得する) を選択します。
 3. **[送信]** をクリックします。
 
@@ -121,11 +120,38 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
     ![AAD トークンを取得する](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+
+### <a name="start-a-streaming-endpoint"></a>ストリーミング エンドポイントを開始する
+
+ストリーミングを有効にするには、最初にビデオをストリーミングする[ストリーミング エンドポイント](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept)を開始する必要があります。
+
+> [!NOTE]
+> ストリーミング エンドポイントが実行状態の場合のみ課金されます。
+
+1. Postman アプリの左側のウィンドウで、[Streaming and Live]\(ストリーミングとライブ\) を選択します。
+2. 次に、[Start StreamingEndpoint]\(StreamingEndpoint の開始\) を選択します。
+3. **[送信]** をクリックします。
+
+    * 次の **POST** 操作が送信されます。
+
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
+        ```
+    * 要求が成功すると、`Status: 202 Accepted` が返されます。
+
+        この状態は、要求は処理のために受け入れられているものの、未完了であることを意味します。 `Azure-AsyncOperation` 応答ヘッダーの値に基づいて、操作状態を照会できます。
+
+        たとえば、次の GET 操作は、対象の操作の状態を返します。
+        
+        `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
+
+        「[非同期 Azure 操作の追跡](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)」の記事では、応答で返される値を通じて非同期 Azure 操作の状態を追跡する方法について説明します。
+
 ### <a name="create-an-output-asset"></a>出力アセットを作成する
 
 出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。 
 
-1. Postman の左側のウィンドウで、[Assets]\(アセット\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Assets]\(アセット\) を選択します。
 2. 次に、[Create or update an Asset]\(アセットを作成または更新する\) を選択します。
 3. **[送信]** をクリックします。
 
@@ -156,7 +182,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 > [!Note]
 > [Transform](https://docs.microsoft.com/rest/api/media/transforms) を作成するときは、最初に **Get** メソッドを使って変換が既に存在するかどうかを確認する必要があります。 このチュートリアルでは、変換を一意の名前で作成していることを前提としています。
 
-1. Postman の左側のウィンドウで、[Encoding and Analysis]\(エンコードと分析\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Encoding and Analysis]\(エンコードと分析\) を選択します。
 2. [Create Transform]\(変換の作成\) を選択します。
 3. **[送信]** をクリックします。
 
@@ -191,7 +217,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 この例では、ジョブの入力は HTTPS URL ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") に基づいています。
 
-1. Postman の左側のウィンドウで、[Encoding and Analysis]\(エンコードと分析\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Encoding and Analysis]\(エンコードと分析\) を選択します。
 2. 次に、[Create or Update Job]\(ジョブを作成または更新する\) を選択します。
 3. **[送信]** をクリックします。
 
@@ -243,7 +269,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 Media Service アカウントには、**ストリーミング ポリシー** エントリの数に対するクォータがあります。 **ストリーミング ロケーター**ごとに新しい**ストリーミング ポリシー**を作成しないでください。
 
-1. Postman の左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
 2. 次に、[Create a Streaming Locator]\(ストリーミング ロケーターの作成\) を選択します。
 3. **[送信]** をクリックします。
 
@@ -269,7 +295,7 @@ Media Service アカウントには、**ストリーミング ポリシー** エ
 
 [ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。
 
-1. Postman の左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
 2. [List Paths]\(パスの一覧表示\) を選択します。
 3. **[送信]** をクリックします。
 

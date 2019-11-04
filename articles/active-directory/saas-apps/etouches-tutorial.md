@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 76cccaa8-859c-4c16-9d1d-8a6496fc7520
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee28d5a9ec3a8df694cd1971be8a73ff8e976cc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2fb9bdfad1480e47eba919d6884f2042f11a2b9c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103159"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158244"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>チュートリアル:Azure Active Directory と etouches の統合
 

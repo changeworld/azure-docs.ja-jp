@@ -1,24 +1,24 @@
 ---
-title: 'Python のチュートリアル: AI エンリッチメント パイプラインで Cognitive Services を呼び出す - Azure Search'
-description: Jupyter Python ノートブックを使用した Azure Search でのデータ抽出、自然言語、画像の AI 処理の例を順に確認します。 抽出されたデータにはインデックスが付けられ、クエリで簡単にアクセスできるようになります。
+title: 'Python のチュートリアル: AI エンリッチメント パイプラインで Cognitive Services を呼び出す'
+titleSuffix: Azure Cognitive Search
+description: Jupyter Python ノートブックを使用した Azure Cognitive Search でのデータ抽出、自然言語、画像の AI 処理の例を順に確認します。 抽出されたデータにはインデックスが付けられ、クエリで簡単にアクセスできるようになります。
 manager: nitinme
 author: LisaLeib
-services: search
-ms.service: search
+ms.author: v-lilei
+ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 06/04/2019
-ms.author: v-lilei
-ms.openlocfilehash: 606194e28ca4f058a647aeb5224de19e754de078
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.date: 11/04/2019
+ms.openlocfilehash: bb36ae551c48fc53756933e78ff0212f8ec1cdeb
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265718"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790202"
 ---
-# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python のチュートリアル: Azure Search のインデックス パイプラインで Cognitive Services API を呼び出す
+# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-enrichment-pipeline"></a>Python のチュートリアル: Azure Cognitive Search のエンリッチメント パイプラインで Cognitive Services APIs を呼び出す
 
-このチュートリアルでは、*コグニティブ スキル*を使用した Azure Search でのデータ エンリッチメントのプログラミングのしくみを学習します。 複数のスキルが、Cognitive Services の自然言語処理 (NLP) と画像分析機能によって支えられています。 スキルセットを複合および構成することで、画像やスキャンされたドキュメント ファイルのテキストとテキスト表現を抽出できます。 また、言語、エンティティ、キーフレーズなども検出できます。 結果として、インデックス パイプライン内に作成された AI エンリッチメントを備える豊富な追加コンテンツが、Azure Search インデックスに追加されます。 
+このチュートリアルでは、"*コグニティブ スキル*" を使用した Azure Cognitive Search でのデータ エンリッチメントのプログラミングのしくみを学習します。 複数のスキルが、Cognitive Services の自然言語処理 (NLP) と画像分析機能によって支えられています。 スキルセットを複合および構成することで、画像やスキャンされたドキュメント ファイルのテキストとテキスト表現を抽出できます。 また、言語、エンティティ、キーフレーズなども検出できます。 結果として、インデックス パイプライン内に作成された AI エンリッチメントを備える豊富な追加コンテンツが検索インデックスに追加されます。 
 
 このチュートリアルでは、Python を使用して以下のタスクを行います。
 
@@ -29,14 +29,14 @@ ms.locfileid: "71265718"
 > * 要求を実行し、結果を確認する
 > * 将来の開発のためにインデックスとインデクサーをリセットする
 
-出力は、Azure Search のフルテキスト検索可能なインデックスです。 インデックスは、[シノニム](search-synonyms.md)、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[アナライザー](search-analyzers.md)、および[フィルター](search-filters.md)などの他の標準的な機能を使って強化できます。 
+出力は、Azure Cognitive Search のフルテキスト検索可能なインデックスです。 インデックスは、[シノニム](search-synonyms.md)、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[アナライザー](search-analyzers.md)、および[フィルター](search-filters.md)などの他の標準的な機能を使って強化できます。 
 
 このチュートリアルは無料のサービスで実行されますが、無料のトランザクションの数は 1 日あたり 20 のドキュメントまでに制限されます。 このチュートリアルを同じ日に複数回実行する場合は、より小さなファイル セットを使用して、より多くの実行が制限内に収まるようにします。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -44,17 +44,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルでは、次のサービス、ツール、およびデータを使用します。 
 
-+ サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 ストレージ アカウントが Azure Search と同じリージョンにあることを確認します。
++ サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 ストレージ アカウントが Azure Cognitive Search と同じリージョンにあることを確認します。
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)。これによって、Python 3.x と Jupyter Notebooks が提供されます。
 
 + [サンプル データ](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)は、さまざまなタイプの小さいファイル セットで構成されています。 
 
-+ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-Azure Search サービスを使用するには、サービスの URL とアクセス キーが必要になります。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+自分の Azure Cognitive Search サービスを操作するには、サービスの URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
@@ -66,7 +66,7 @@ Azure Search サービスを使用するには、サービスの URL とアク�
 
 ## <a name="prepare-sample-data"></a>サンプル データの準備
 
-エンリッチメント パイプラインは、Azure データ ソースから取得されます。 ソース データは、サポートされているデータ ソースの種類の [Azure Search インデクサー](search-indexer-overview.md)から取得する必要があります。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
+エンリッチメント パイプラインは、Azure データ ソースから取得されます。 ソース データは、サポートされているデータ ソースの種類の [Azure Cognitive Search インデクサー](search-indexer-overview.md)から取得する必要があります。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
 
 1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 
@@ -91,7 +91,7 @@ Azure Search サービスを使用するには、サービスの URL とアク�
 
 Jupyter Notebook を起動して新しい Python 3 ノートブックを作成するには、Anaconda Navigator を使用します。
 
-## <a name="connect-to-azure-search"></a>Azure Search への接続
+## <a name="connect-to-azure-cognitive-search"></a>Azure Cognitive Search に接続する
 
 ノートブックでこのスクリプトを実行し、JSON を操作して HTTP 要求を作成するために使用するライブラリを読み込みます。
 
@@ -128,7 +128,7 @@ params = {
 
 ## <a name="create-a-data-source"></a>データ ソースを作成する
 
-これでサービスとソース ファイルの準備ができましたので、インデックス作成パイプラインのコンポーネントのアセンブルを開始します。 Azure Search に外部ソース データの取得方法を指示するデータ ソース オブジェクトから始めます。
+これでサービスとソース ファイルの準備ができましたので、インデックス作成パイプラインのコンポーネントのアセンブルを開始します。 Azure Cognitive Search に外部ソース データの取得方法を指示するデータ ソース オブジェクトから始めます。
 
 次のスクリプトで、YOUR-BLOB-RESOURCE-CONNECTION-STRING というプレースホルダーを、前の手順で作成した BLOB 用の接続文字列に置き換えます。 次に、スクリプトを実行して、`cogsrch-py-datasource` という名前のデータ ソースを作成します。
 
@@ -155,7 +155,7 @@ print(r.status_code)
 
 Azure portal 内の Search サービスのダッシュボード ページに戻り、cogsrch-py-datasource が **[データ ソース]** 一覧内に出現していることを確認します。 **[最新の情報に更新]** をクリックしてページを更新します。
 
-![Portal の [データ ソース] タイル](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Portal の [データ ソース] タイル")
+![ポータルの [データ ソース] タイル](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "ポータルの [データ ソース] タイル")
 
 ## <a name="create-a-skillset"></a>スキルセットを作成する
 
@@ -260,7 +260,7 @@ print(r.status_code)
 
 キー フレーズ抽出スキルは、各ページで適用されます。 コンテキストを `"document/pages/*"` に設定することで、ドキュメントまたはページの配列のメンバーごとに (ドキュメント内のページごとに) このエンリッチャーを実行します。
 
-各スキルは、ドキュメントのコンテンツで実行されます。 処理中に、Azure Search が各ドキュメントを解読して、さまざまなファイル形式からコンテンツを読み取ります。 ソース ファイルで見つかったテキストは、ドキュメントごとに 1 つずつ、`content` フィールドに配置されます。 そのため、入力を `"/document/content"` として設定します。
+各スキルは、ドキュメントのコンテンツで実行されます。 処理中に、Azure Cognitive Search が各ドキュメントを解析して、さまざまなファイル形式からコンテンツを読み取ります。 ソース ファイルで見つかったテキストは、ドキュメントごとに 1 つずつ、`content` フィールドに配置されます。 そのため、入力を `"/document/content"` として設定します。
 
 スキルセットのグラフィカル表示を以下に示します。
 
@@ -336,7 +336,7 @@ print(r.status_code)
 
 この要求に対し、成功を確認する状態コード 201 が返されます。
 
-インデックスの定義の詳細については、[インデックスの作成 (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。
+インデックスの定義の詳細については、[インデックスの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページを参照してください。
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>インデクサーを作成し、フィールドをマップし、変換を実行する
 
@@ -439,7 +439,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 ## <a name="query-your-index"></a>インデックスの照会
 
-インデックス作成が完了したら、個々 のフィールドの内容を返すクエリを実行します。 既定では、Azure Search によって上位 50 件の結果が返されます。 サンプル データは小さいため、既定値で問題なく動作します。 ただし、より大きなデータ セットを使用する場合は、より多くの結果が返されるよう、クエリ文字列にパラメーターを含める必要がある場合があります。 手順については、「[Azure Search でのページ検索結果の表示方法](search-pagination-page-layout.md)」をご覧ください。
+インデックス作成が完了したら、個々 のフィールドの内容を返すクエリを実行します。 既定では、Azure Cognitive Search によって上位 50 件の結果が返されます。 サンプル データは小さいため、既定値で問題なく動作します。 ただし、より大きなデータ セットを使用する場合は、より多くの結果が返されるよう、クエリ文字列にパラメーターを含める必要がある場合があります。 手順については、[Azure Cognitive Search における結果の改ページ位置の自動修正の方法](search-pagination-page-layout.md)に関するページを参照してください。
 
 検証手順として、すべてのフィールドのインデックスのクエリを実行します。
 
@@ -467,7 +467,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 結果は次の例のようになります。 スクリーンショットに表示されているのは、応答の一部のみです。
 
-![組織のコンテンツのインデックスの照会](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "組織のコンテンツのインデックスの照会")
+![組織のコンテンツを取得するクエリをインデックスに対して実行する](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "組織のコンテンツを取得するクエリをインデックスに対して実行する")
 
 その他のフィールド (この演習では、content、languageCode、keyPhrases、および organizations) でも同様に繰り返します。 コンマ区切りリストを使用して、`$select` を介して複数のフィールドを返すことができます。
 
@@ -477,7 +477,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 ## <a name="reset-and-rerun"></a>リセットして再実行する
 
-パイプライン開発の初期の実験的な段階では、設計反復のための最も実用的なアプローチは、Azure Search からオブジェクトを削除してリビルドできるようにすることです。 リソース名は一意です。 オブジェクトを削除すると、同じ名前を使用して再作成することができます。
+パイプライン開発の初期の実験的な段階では、設計反復のための最も実用的なアプローチは、Azure Cognitive Search からオブジェクトを削除してリビルドできるようにすることです。 リソース名は一意です。 オブジェクトを削除すると、同じ名前を使用して再作成することができます。
 
 新しい定義でドキュメントのインデックスを再作成するには、以下の操作を行います。
 
@@ -504,17 +504,17 @@ pprint(json.dumps(r.json(), indent=1))
 
 このチュートリアルでは、構成要素 (データ ソース、スキルセット、インデックス、およびインデクサー) の作成によってエンリッチされたインデックス作成パイプラインを作成するための、基本的な手順を示します。
 
-[定義済みのスキル](cognitive-search-predefined-skills.md)については、スキルセットの定義のほか、入力と出力を介したスキルの連結方法と共に説明しました。 また、Azure Search サービスでエンリッチされた値をパイプラインから検索可能なインデックス内にルーティングするには、インデクサーの定義に `outputFieldMappings` が必要であることも学習しました。
+[組み込みのスキル](cognitive-search-predefined-skills.md)については、スキルセットの定義のほか、入力と出力を介したスキルの連結方法と共に説明しました。 また、Azure Cognitive Search サービス上の検索可能なインデックスに対し、エンリッチされた値をパイプラインからルーティングするには、インデクサーの定義に `outputFieldMappings` が必要であることも学習しました。
 
 最後に、結果をテストし、今後のイテレーションのためにシステムをリセットする方法について学習しました。 インデックスに対するクエリを発行すると、エンリッチされたインデックス作成パイプラインによって作成された出力が返されることを学習しました。 このリリースには、内部構造 (システムによって作成されるエンリッチされたドキュメント) を表示するためのメカニズムがあります。 また、インデクサーの状態を確認する方法と、パイプラインを再実行する前に削除すべきオブジェクトについても学習しました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-チュートリアルの後で最も速くクリーンアップする方法は、Azure Search サービスと Azure BLOB サービスが含まれているリソース グループを削除することです。 両方のサービスを同じグループに配置している場合は、リソース グループを削除すると、このチュートリアル用に作成したサービスと保存されたコンテンツを含めた、そのリソース グループ内のすべてのものが完全に削除されます。 Portal では、リソース グループ名は各サービスの [概要] ページに表示されます。
+チュートリアルの後に最も短時間でクリーンアップする方法は、Azure Cognitive Search サービスと Azure Blob service が含まれているリソース グループを削除することです。 両方のサービスを同じグループに配置している場合は、リソース グループを削除すると、このチュートリアル用に作成したサービスと保存されたコンテンツを含めた、そのリソース グループ内のすべてのものが完全に削除されます。 Portal では、リソース グループ名は各サービスの [概要] ページに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
 カスタム スキルを使ってパイプラインをカスタマイズまたは拡張します。 カスタム スキルを作成してスキルセットに追加すると、自分で作成したテキストまたは画像分析をオンボードできます。
 
 > [!div class="nextstepaction"]
-> [例:コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
+> [例:AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)

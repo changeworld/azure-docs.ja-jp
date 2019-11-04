@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960570"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679862"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールして使用する
 
@@ -77,23 +77,29 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 ## <a name="interact-with-a-device"></a>デバイスと対話する
 
-**[デバイス]** 一覧ページで、 **[デバイス ID]** 列の値を選択して、登録されているデバイスの詳細ページを表示します。 デバイスの場合、次の 2 つのセクションがあります。 **[デバイス]** と **[Digital Twin]\(デジタル ツイン\)** です。
+**[デバイス]** 一覧ページで、 **[デバイス ID]** 列の値を選択して、登録されているデバイスの詳細ページを表示します。 デバイスごとに、次の 2 つのセクションがあります。 **[デバイス]** と **[Digital Twin]\(デジタル ツイン\)** です。
 
 ### <a name="device"></a>Device
 
-このセクションには、 **[デバイス ID]** 、 **[デバイス ツイン]** 、および **[テレメトリ]** のタブが含まれています。
+このセクションには、 **[デバイス ID]** 、 **[デバイス ツイン]** 、 **[テレメトリ]** 、 **[ダイレクト メソッド]** 、および **[cloud-to-device メッセージ]** のタブが含まれています。
 
 - [デバイス ID](../iot-hub/iot-hub-devguide-identity-registry.md) の情報は、 **[デバイス ID]** タブで表示および更新できます。
 - [デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)の情報には、 **[デバイス ツイン]** タブでアクセスできます。
 - デバイスが接続されており、データをアクティブに送信している場合には、 **[テレメトリ]** タブで[テレメトリ](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を表示できます。
+- **[ダイレクト メソッド]** タブで、デバイス上で[ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)を呼び出すことができます。
+- **[cloud-to-device メッセージ]** タブで [cloud-to-device メッセージ](../iot-hub/iot-hub-devguide-messages-c2d.md)を送信できます。
 
 ### <a name="digital-twin"></a>デジタル ツイン
 
-このツールを使用して、デバイスのデジタル ツイン インスタンスを表示できます。 IoT プラグ アンド プレイ デバイスに関しては、デバイス機能モデルに関連付けられているすべてのインターフェイスがこのアーティクルに表示されます。 対応する [IoT プラグ アンド プレイ プリミティブ](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)を展開するインターフェイスを選択します。
+このツールを使用して、デバイスのデジタル ツイン インスタンスを表示できます。 IoT プラグ アンド プレイ デバイスに関しては、デバイス機能モデルに関連付けられているすべてのインターフェイスが、ツールのこのセクションに表示されます。 対応する [IoT プラグ アンド プレイ プリミティブ](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)を展開するインターフェイスを選択します。
+
+### <a name="interface"></a>インターフェイス
+
+**[インターフェイス]** ページで、インターフェイスの JSON 定義を表示できます。
 
 #### <a name="properties"></a>properties
 
-**[プロパティ]** ページでは、インターフェイスで定義されている読み取り専用プロパティを表示できます。 **[Writeable properties]\(書き込み可能なプロパティ\)** ページでは、インターフェイスで定義されている書き込み可能なプロパティを更新できます。
+**[Non-writeable properties]\(書き込み不可のプロパティ\)** ページでは、インターフェイスで定義されている読み取り専用プロパティを表示できます。 **[Writeable properties]\(書き込み可能なプロパティ\)** ページでは、インターフェイスで定義されている書き込み可能なプロパティを更新できます。
 
 1. **[Writeable properties]\(書き込み可能なプロパティ\)** ページに移動します。
 1. 更新するプロパティをクリックします。

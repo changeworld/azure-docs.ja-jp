@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adf62a6edf0a53248ccde30c08aed709e60f1957
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5e54994d02dd1abbca1602952fbad058b3ad993d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559026"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72594258"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ScaleX Enterprise の統合
 
@@ -57,6 +57,7 @@ Azure AD への ScaleX Enterprise の統合を構成するには、ギャラリ�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ScaleX Enterprise**」と入力します。
 1. 結果のパネルから **[ScaleX Enterprise]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
+
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-scalex-enterprise"></a>ScaleX Enterprise の Azure AD シングル サインオンの構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、ScaleX Enterprise に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと ScaleX Enterprise の関連ユーザーとの間にリンク関係を確立する必要があります。
@@ -64,13 +65,13 @@ Azure AD への ScaleX Enterprise の統合を構成するには、ギャラリ�
 ScaleX Enterprise に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[ScaleX Enterprise の SSO の構成](#configure-scalex-enterprise-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[ScaleX Enterprise のテスト ユーザーの作成](#create-scalex-enterprise-test-user)** - ScaleX Enterprise で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[ScaleX Enterprise の SSO の構成](#configure-scalex-enterprise-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[ScaleX Enterprise のテスト ユーザーの作成](#create-scalex-enterprise-test-user)** - ScaleX Enterprise で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -105,9 +106,47 @@ ScaleX Enterprise に対する Azure AD SSO を構成してテストするには
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="configure-scalex-enterprise-sso"></a>ScaleX Enterprise の SSO の構成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-1. **ScaleX Enterprise** 側でシングル サインオンを構成するには、管理者として ScaleX Enterprise 社の Web サイトにサインインします。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に ScaleX Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で、 **[ScaleX Enterprise]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-scalex-enterprise-sso"></a>ScaleX Enterprise の SSO の構成
+
+1. ScaleX Enterprise 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **[My Apps Secure Sign-in browser extension]\(My Apps Secure Sign-in ブラウザー拡張機能\)** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[ScaleX Enterprise のセットアップ]** をクリックすると、ScaleX Enterprise アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して ScaleX Enterprise にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. ScaleX Enterprise を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として ScaleX Enterprise 企業サイトにサインインして、次の手順を実行します。
 
 1. 右上隅のメニューを選択し、 **[Contoso Administration (Contoso の管理)]** をクリックします。
 
@@ -140,41 +179,11 @@ ScaleX Enterprise に対する Azure AD SSO を構成してテストするには
 
     h. **[Update SSO Settings (SSO 設定を更新する)]** をクリックして設定を保存します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
-
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、B.Simon に ScaleX Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で、 **[ScaleX Enterprise]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
-
 ### <a name="create-scalex-enterprise-test-user"></a>ScaleX Enterprise のテスト ユーザーの作成
 
 Azure AD ユーザーが ScaleX Enterprise にサインインできるようにするには、ユーザーを ScaleX Enterprise にプロビジョニングする必要があります。 ScaleX Enterprise の場合、プロビジョニングは自動化されたタスクであり、手動の手順は必要ありません。 SSO 資格情報で正しく認証できるすべてのユーザーは、ScaleX 側で自動的にプロビジョニングされます。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -187,3 +196,5 @@ Azure AD ユーザーが ScaleX Enterprise にサインインできるように�
 - [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD で ScaleX Enterprise を試す](https://aad.portal.azure.com/)

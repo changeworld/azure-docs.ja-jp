@@ -1,60 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 安全な開発に関するドキュメント
+summary: Microsoft のサンプル アプリ、ベスト プラクティス、ガイダンスを使用して、セキュリティで保護されたアプリケーションを Azure で開発してデプロイする方法について説明します。
 metadata:
-  document_id: null
   title: Microsoft Azure での安全な開発に関するドキュメント
-  meta.description: Learn how to develop secure apps on Azure.
+  description: セキュリティで保護されたアプリを Azure で開発する方法について説明します。
   services: security
-  author: TerryLanfear
-  manager: rkarlin
   ms.service: security
   ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/30/2019
+  author: TerryLanfear
   ms.author: terrylan
-abstract:
-  description: Microsoft のサンプル アプリ、ベスト プラクティス、ガイダンスを使用して、セキュリティで保護されたアプリケーションを Azure で開発してデプロイする方法について説明します。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/security/develop/secure-dev-overview
-            html: <p>Azure でのセキュリティで保護された Web アプリケーションの開発</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
-            title: 作業開始
-          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
-            html: <p>Web アプリのセキュリティ項目の上位 5 つ</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
-            title: Microsoft Learn でスキルを身に付ける
-  - title: 安全なサンプル アプリ
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-web-app">Linux コンテナー内の Web アプリ</a>
-          - html: <a href="/azure/security/develop/secure-aad-app">Web アプリと Azure Active Directory</a>
-          - html: <a href="/azure/security/develop/secure-pci-web-app">ペイメント カード業界</a>
-  - title: 概念
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-dev-overview">安全な開発のベスト プラクティス</a>
-  - title: リソース
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/security-code-analysis-overview">Microsoft Security Code Analysis</a>
-          - html: <a href="/azure/security/develop/threat-modeling-tool">Threat Modeling Tool</a>
+  manager: rkarlin
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72934065"
+landingContent:
+- title: 安全なサンプル アプリの開発
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Linux コンテナー内の Web アプリ
+      url: secure-web-app.md
+    - text: Web アプリと Azure Active Directory
+      url: secure-aad-app.md
+    - text: ペイメント カード業界
+      url: secure-pci-web-app.md
+- title: 作業開始
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全な開発のベスト プラクティス
+      url: secure-dev-overview.md
+    - text: 設計フェーズ
+      url: secure-design.md
+    - text: 開発フェーズ
+      url: secure-develop.md
+    - text: デプロイ フェーズ
+      url: secure-deploy.md
+- title: セキュリティで保護された開発に分析ツールを追加する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティ コードの分析
+      url: security-code-analysis-overview.md
+    - text: 脅威モデリング
+      url: threat-modeling-tool.md
+- title: スキルアップする
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 上位 5 つのセキュリティ アイテム
+      url: https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider
+    - text: Azure でクラウド アプリケーションをセキュリティで保護する
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps

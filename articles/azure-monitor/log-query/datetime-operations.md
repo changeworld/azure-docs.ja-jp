@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor ログ クエリでの日時値の操作 | Microsoft Docs
 description: Azure Monitor ログ クエリで日時のデータを操作する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/16/2018
+ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62112359"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894210"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの日時値の操作
 

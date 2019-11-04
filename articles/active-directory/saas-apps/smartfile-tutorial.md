@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 25610bd7-8943-4e04-8cbb-5e90ff3c054d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1acecf15ca13b52ea5e087176ceeb92f7494b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10a7ff36fbfee3917478b11329f3591b5ce8d076
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090349"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartfile"></a>チュートリアル:Azure Active Directory と SmartFile の統合
 

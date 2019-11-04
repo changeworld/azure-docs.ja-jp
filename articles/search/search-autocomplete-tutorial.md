@@ -1,21 +1,21 @@
 ---
-title: 検索ボックスに検索候補とオートコンプリートを追加する - Azure Search
-description: suggester を作成し、検索ボックスに完成した用語や語句を入力する要求を作成することで、Azure Search における先行入力クエリのアクションを有効にします。
+title: 検索ボックスに候補とオートコンプリートを追加する
+titleSuffix: Azure Cognitive Search
+description: suggester を作成し、検索ボックスに完成した用語や語句を入力する要求を作成することで、Azure Cognitive Search における先行入力クエリのアクションを有効にします。
 manager: nitinme
 author: mrcarter8
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: mcarter
-ms.openlocfilehash: 1ec343228e32c9dd6fb126560a7a17b54c5e36cb
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183281"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792519"
 ---
-# <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Azure Search アプリケーションに提案やオートコンプリートを追加する
+# <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>お使いの Azure Cognitive Search アプリケーションに検索候補またはオートコンプリートを追加する
 
 この記事では、[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)および[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)を使用して、search-as-you-type (入力と並行して検索) の動作をサポートするパワフルな検索ボックスを作成します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "70183281"
 
 **DotNetHowToAutocomplete** のサンプル コードをダウンロードして実行し、これらの機能を評価できます。 サンプル コードは、[NYCJobs デモ データ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)を使用して設定される事前構築済みのインデックスをターゲットとします。 NYCJobs インデックスには、[Suggester の作成](index-add-suggesters.md)が含まれます。これは、検索候補またはオートコンプリートを使用する場合の要件です。 サンドボックス サービスでホストされる用意されたインデックスを使用するか、NYCJobs サンプル ソリューション内のデータ ローダーを使用して[独自のインデックスにデータを設定](#configure-app)できます。 
 
-**DotNetHowToAutocomplete** のサンプルでは、C# および JavaScript の両方の言語バージョンで、検索候補とオートコンプリートの両方を実行します。 C# 開発者は、[Azure Search .NET SDK](https://aka.ms/search-sdk) を使用する ASP.NET MVC ベースのアプリケーションを実行できます。 オートコンプリートまたは候補のクエリ呼び出しを実行するためのロジックは、HomeController.cs ファイルにあります。 JavaScript 開発者の場合、同等のクエリ ロジックが IndexJavaScript.cshtml にあります。これには、[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) への直接呼出しが含まれます。 
+**DotNetHowToAutocomplete** のサンプルでは、C# および JavaScript の両方の言語バージョンで、検索候補とオートコンプリートの両方を実行します。 C# 開発者は、[Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) を使用する ASP.NET MVC ベースのアプリケーションを実行できます。 オートコンプリートまたは候補のクエリ呼び出しを実行するためのロジックは、HomeController.cs ファイルにあります。 JavaScript 開発者の場合、同等のクエリ ロジックが IndexJavaScript.cshtml にあります。これには、[Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) への直接呼出しが含まれます。 
 
 どちらの言語バージョンでも、フロントエンドのユーザー エクスペリエンスは、[jQuery UI](https://jqueryui.com/autocomplete/) および [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) ライブラリに基づいています。 これらのライブラリを使用して、検索候補とオートコンプリートの両方をサポートする検索ボックスを作成します。 検索ボックスで収集された入力は、検索候補およびオートコンプリートのアクション (HomeController.cs または IndexJavaScript.cshtml で定義されているアクションなど) とペアになっています。
 
@@ -38,7 +38,7 @@ ms.locfileid: "70183281"
 
 ## <a name="prerequisites"></a>前提条件
 
-このソリューションでは、用意された NYCJobs デモ インデックスをホストするライブ サンドボックス サービス使用するため、この演習では Azure Search サービスはオプションです。 独自の検索サービスでこの例を実行する場合は、[NYC ジョブ インデックスを構成する](#configure-app)手順を参照してください。
+このソリューションでは、用意された NYCJobs デモ インデックスをホストするライブ サンドボックス サービス使用するため、この演習では Azure Cognitive Search サービスはオプションです。 独自の検索サービスでこの例を実行する場合は、[NYC ジョブ インデックスを構成する](#configure-app)手順を参照してください。
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
@@ -52,9 +52,9 @@ ms.locfileid: "70183281"
 
 2. F5 キーを押してプロジェクトを実行し、任意のブラウザーにページを読み込みます。
 
-上部に、C# または JavaScript を選択するためのオプションが表示されます。 C# オプションは、ブラウザーから HomeController を呼び出し、Azure Search .Net SDK を使用して結果を取得します。 
+上部に、C# または JavaScript を選択するためのオプションが表示されます。 C# オプションは、ブラウザーから HomeController を呼び出し、Azure Cognitive Search .NET SDK を使用して結果を取得します。 
 
-JavaScript オプションは、ブラウザーから直接 Azure Search REST API を呼び出します。 このオプションでは、コントローラーがフローから除外されるため、通常はパフォーマンスが大幅に向上します。 自分のニーズと言語設定に合ったオプションを選択できます。 オートコンプリートの例を示すさまざまなページがあり、それぞれにガイダンスが示されています。 それぞれの例に推奨するサンプル テキストがあり、そのテキストを使って試してみることができます。  
+JavaScript オプションは、ブラウザーから直接 Azure Cognitive Search REST API を呼び出します。 このオプションでは、コントローラーがフローから除外されるため、通常はパフォーマンスが大幅に向上します。 自分のニーズと言語設定に合ったオプションを選択できます。 オートコンプリートの例を示すさまざまなページがあり、それぞれにガイダンスが示されています。 それぞれの例に推奨するサンプル テキストがあり、そのテキストを使って試してみることができます。  
 
 検索ボックスに数文字を入力して、何が起こるかを観察してください。
 
@@ -70,7 +70,7 @@ C# と JavaScript の両方のバージョンで、検索ボックスの実装�
 
 この例は、スタイリング用のクラス、JavaScript によって参照される ID、およびプレースホルダー テキストがあるシンプルな入力テキスト ボックスです。  魔法は埋め込み JavaScript にあります。
 
-C# 言語のサンプルでは、Index.cshtml 内で JavaScript を使用して、[jQuery UI Autocomplete ライブラリ](https://jqueryui.com/autocomplete/)を利用します。 このライブラリでは、MVC コントローラーに対する非同期呼び出しを実行して検索候補を取得することで、検索ボックスにオートコンプリートの機能が追加されます。 JavaScript 言語バージョンは、IndexJavaScript.cshtml にあります。 これには、検索バー用の次のスクリプトに加えて、Azure Search に対する REST API 呼び出しが含まれます。
+C# 言語のサンプルでは、Index.cshtml 内で JavaScript を使用して、[jQuery UI Autocomplete ライブラリ](https://jqueryui.com/autocomplete/)を利用します。 このライブラリでは、MVC コントローラーに対する非同期呼び出しを実行して検索候補を取得することで、検索ボックスにオートコンプリートの機能が追加されます。 JavaScript 言語バージョンは、IndexJavaScript.cshtml にあります。 これには、検索バー用の次のスクリプトに加えて、Azure Cognitive Search に対する REST API 呼び出しが含まれます。
 
 最初の例の JavaScript コードを見てみましょう。このコードでは、jQuery UI Autocomplete 関数を呼び出し、検索候補の要求を渡します。
 
@@ -115,9 +115,9 @@ F5 キーを押してアプリケーションを起動します。
 
 "execative" と入力してみます。入力した文字と完全に一致していないにもかかわらず、"executive" という結果が返ってくることに注目してください。
 
-### <a name="jquery-autocomplete--backed-by-azure-search-autocomplete"></a>Azure Search オートコンプリートによってサポートされる jQuery オートコンプリート
+### <a name="jquery-autocomplete--backed-by-azure-cognitive-search-autocomplete"></a>Azure Cognitive Search のオートコンプリートをサポートする jQuery Autocomplete
 
-ここまでは、検索候補の中核として、検索 UX コードを使用しました。 次のコード ブロックでは、UI Autocomplete 関数 (index.cshtml の行 91) を示し、Azure Search オートコンプリートの要求を渡します。
+ここまでは、検索候補の中核として、検索 UX コードを使用しました。 次のコード ブロックでは、jQuery UI Autocomplete 関数 (index.cshtml の行 91) を示し、Azure Cognitive Search オートコンプリートの要求を渡します。
 
 ```javascript
 $(function () {
@@ -156,11 +156,11 @@ $(function () {
 
 ## <a name="c-example"></a>C# の例
 
-Web ページの JavaScript コードの見直しが終わったので、次は、Azure Search .NET SDK を使用して検索候補の一致を実際に取得するサーバー側の C# コントローラー コードを見ていきましょう。
+Web ページの JavaScript コードの見直しが終わったので、次は、Azure Cognitive Search .NET SDK を使用して検索候補の一致を実際に取得するサーバー側の C# コントローラー コードを見ていきましょう。
 
 Controllers ディレクトリ内の **HomeController.cs** ファイルを開きます。 
 
-最初に気付くのは、クラスの上部にある `InitSearch` と呼ばれるメソッドです。 このメソッドでは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。 詳細については、「[.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)」をご覧ください。
+最初に気付くのは、クラスの上部にある `InitSearch` と呼ばれるメソッドです。 このメソッドでは、Azure Cognitive Search サービスに対する認証済み HTTP インデックス クライアントを作成します。 詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)」を参照してください。
 
 行 41 の Suggest 関数に注目してください。 これは、[DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)に基づいています。
 
@@ -231,7 +231,7 @@ Autocomplete 関数は、検索用語の入力を取得します。 このメソ
 
 オートコンプリートと検索候補の JavaScript 実装により REST API が呼び出されます。その際、ソースとして URI が使用され、インデックスと操作が指定されます。 
 
-JavaScript 実装を確認するには、**IndexJavaScript.cshtml** を開きます。 検索ボックスに jQuery UI Autocomplete 関数も使用され、検索用語の入力を収集し、検索候補の一致または完成された用語を取得するために Azure Search に非同期呼び出しを実行します。 
+JavaScript 実装を確認するには、**IndexJavaScript.cshtml** を開きます。 検索ボックスに jQuery UI Autocomplete 関数も使用され、検索用語の入力を収集し、検索候補の一致または完成された用語を取得するために Azure Cognitive Search に非同期呼び出しを実行します。 
 
 最初の例の JavaScript コードを見てみましょう。
 
@@ -291,16 +291,16 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 
 これまでは、ホストされている NYCJobs デモ インデックスを使用してきました。 インデックスを含むコード全体を完全に使用する場合は、次の手順に従って独自の検索サービスにインデックスを作成して読み込みます。
 
-1. [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 この例では、無料のサービスを使用できます。 
+1. [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 この例では、無料のサービスを使用できます。 
 
    > [!Note]
-   > 無料の Azure Search サービスを使用している場合、インデックスは 3 つに制限されています。 NYCJobs データ ローダーは、2 つのインデックスを作成します。 ご利用のサービスに、新しいインデックスを受け入れる余地があることを確認してください。
+   > 無料の Azure Cognitive Search サービスを使用している場合、インデックスは 3 つに制限されています。 NYCJobs データ ローダーは、2 つのインデックスを作成します。 ご利用のサービスに、新しいインデックスを受け入れる余地があることを確認してください。
 
 1. [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル コードをダウンロードします。
 
 1. NYCJobs サンプル コードの DataLoader フォルダー内の **DataLoader.sln** を Visual Studio で開きます。
 
-1. Azure Search サービスの接続情報を追加します。 DataLoader プロジェクト内の App.config を開き、TargetSearchServiceName と TargetSearchServiceApiKey appSettings を、利用している Azure Search サービスと Azure Search Service API キーを反映するように更新します。 この情報は、Azure portal で確認できます。
+1. Azure Cognitive Search サービスの接続情報を追加します。 DataLoader プロジェクト内の App.config を開き、TargetSearchServiceName と TargetSearchServiceApiKey appSettings を、利用している Azure Cognitive Search サービスと Azure Cognitive Search Service API キーを反映するように更新します。 この情報は、Azure portal で確認できます。
 
 1. F5 キーを押してアプリケーションを起動し、2 つのインデックスを作成して NYCJob サンプル データをインポートします。
 
@@ -310,7 +310,7 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 
 ## <a name="next-steps"></a>次の手順
 
-この例では、オートコンプリートと検索候補をサポートする検索ボックスを作成するための基本的な手順について説明しています。 ASP.NET MVC アプリケーションをビルドし、Azure Search .NET SDK または REST API を使用して検索候補を取得する方法を確認しました。
+この例では、オートコンプリートと検索候補をサポートする検索ボックスを作成するための基本的な手順について説明しています。 ASP.NET MVC アプリケーションをビルドし、Azure Cognitive Search .Net SDK または REST API を使用して検索候補を取得する方法を確認しました。
 
 次の手順では、検索候補とオートコンプリートを検索エクスペリエンスに統合します。 次のリファレンス記事が役立ちます。
 

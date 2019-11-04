@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce7f40c300a86acd101d1b38cfef4b2af91c4085
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4238033f94fe8bfdc677c9eb623a2eab3cdf371c
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772670"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532922"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-surveymonkey-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SurveyMonkey Enterprise の統合
 
@@ -45,6 +45,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * SurveyMonkey Enterprise では、**IDP** Initiated SSO がサポートされます
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-surveymonkey-enterprise-from-the-gallery"></a>ギャラリーからの SurveyMonkey Enterprise の追加
 
@@ -81,6 +84,18 @@ SurveyMonkey Enterprise に対する Azure AD SSO を構成してテストする
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
+
+1. SurveyMonkey Enterprise アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+
+    ![image](common/edit-attribute.png)
+
+6. その他に、SurveyMonkey Enterprise アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+
+    | 名前 | ソース属性|
+    | ---------------| --------------- |
+    | Email | User.mail |
+    | FirstName | User.givenname |
+    | LastName | User.surname |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -126,7 +141,7 @@ SurveyMonkey Enterprise に対する Azure AD SSO を構成してテストする
 
 ### <a name="create-surveymonkey-enterprise-test-user"></a>SurveyMonkey Enterprise テスト ユーザーを作成する
 
-このセクションでは、SurveyMonkey Enterprise で B.Simon というユーザーを作成します。  [SurveyMonkey Enterprise サポート チーム](mailto:support@selerix.com)と連携し、SurveyMonkey Enterprise プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+SurveyMonkey Enterprise では、テスト ユーザーを作成する必要はありません。 ユーザーがアカウントの新規作成を選択すれば、SAML アサーションに基づいてユーザー アカウントがプロビジョニングされます。 Azure メタデータが SurveyMonkey Enterprise の構成に追加され、検証する準備が整った後、このプロセスを実施する手順が SurveyMonkey Enterprise Customer Success Manager から提供されます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

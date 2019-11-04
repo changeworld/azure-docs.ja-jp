@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 40d034ff-7394-4713-923d-1f8f2ed8bf36
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114d29d11e51209d5ac788ae25413b5b989b84f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d016782a7217aa2eae341e5f9af4f0e141df9c0f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106118"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>チュートリアル:Azure Active Directory と Boomi の統合
 
@@ -235,13 +236,13 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
 2. **[ユーザー管理]** 、 **[ユーザー]** の順に進みます。
 
-    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_001.png "Users")
+    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_001.png "ユーザー")
 
 3. **+** アイコンをクリックすると **[Add/Maintain User Roles]\(ユーザーの役割の追加と管理)** ダイアログが開きます。
 
-    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_002.png "Users")
+    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_002.png "ユーザー")
 
-    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_003.png "Users")
+    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_003.png "ユーザー")
 
     a. **[ユーザーのメール アドレス]** ボックスに、ユーザーのメール アドレスを入力します (この例では BrittaSimon@contoso.com)。
 

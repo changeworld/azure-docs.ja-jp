@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Amazon Marketplace Web Service からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,19 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 6396aa727abcb253f3fd728e924a066f1c22f16f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: cddb8eaf546760ad9d983c429424144ff131de11
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092158"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931193"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする (プレビュー)
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Amazon Marketplace Web Service からデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!IMPORTANT]
-> このコネクタは、現在プレビューの段階です。 実際にお試しいただき、フィードバックをお寄せください。 ソリューションでプレビュー版コネクタの依存関係を取得したい場合、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -159,9 +156,9 @@ Amazon Marketplace Web Service からデータをコピーするには、コピ�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

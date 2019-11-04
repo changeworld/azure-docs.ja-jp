@@ -10,15 +10,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 10/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6f9005b0e73e60bf479d0d3c059c301668f3b848
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071513"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787336"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows コンテナー (プレビュー) を使用して Azure App Service に ASP.NET アプリを移行する
 
@@ -90,6 +90,10 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 **CustomFontSample** プロジェクトには _InstallFont.ps1_ があります。 これはフォントをインストールする簡単なスクリプトです。 さらに複雑なバージョンのスクリプトが[スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133)にあります。
 
+> [!NOTE]
+> Windows コンテナーをローカルでテストするには、ローカル コンピューターで Docker が起動していることを確認します。
+>
+
 ## <a name="publish-to-azure-container-registry"></a>Azure Container Registry に発行する
 
 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) では、コンテナーの展開用にイメージを格納することができます。 Azure Container Registry でホストされているイメージを使用するように App Service を構成できます。
@@ -135,27 +139,34 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 左側のメニューから **[リソースの作成]**  >  **[Web]**  >  **[Web App for Containers]** を選択します。
 
-### <a name="configure-the-new-web-app"></a>新しい Web アプリを構成する
+### <a name="configure-app-basics"></a>アプリの基本情報を構成する
 
-作成インターフェイスで、次の表に従って設定を構成します。
+**[基本]** タブで、次の表に従って設定を構成し、 **[Next: Docker]\(次へ: Docker\)** をクリックします。
 
 | Setting  | 推奨値 | BLOB の詳細 |
 | ----------------- | ------------ | ----|
-|**アプリ名**| 一意の名前を入力します。 | Web アプリの URL は `http://<app_name>.azurewebsites.net` です。`<app_name>` には自分のアプリの名前を指定します。 |
-|**リソース グループ**| **[既存のものを使用]** を選択し、「**myResourceGroup**」と入力します。 |  |
-|**OS**| Windows (プレビュー) | |
+|**サブスクリプション**| 正しいサブスクリプションが選択されていることを確認します。 |  |
+|**リソース グループ**| **[新規作成]** を選択し、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
+|**Name**| 一意の名前を入力します。 | Web アプリの URL は `http://<app-name>.azurewebsites.net` です。`<app-name>` には自分のアプリの名前を指定します。 |
+|**[発行]**| Docker コンテナー | |
+|**オペレーティング システム**| Windows | |
+|**[リージョン]**| 西ヨーロッパ | |
+|**Windows プラン**| **[新規作成]** を選択し、「**myAppServicePlan**」と入力して、 **[OK]** をクリックします。 | |
 
-### <a name="configure-app-service-plan"></a>App Service プランを構成する
+**[基本]** タブは、次のように表示されます。
 
-**[App Service プラン/場所]**  >  **[新規作成]** の順にクリックします。 新しいプランの名前を指定し、場所として **[西ヨーロッパ]** を選択して、 **[OK]** をクリックします。
+![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-service-plan.png)
+### <a name="configure-windows-container"></a>Windows コンテナーを構成する
 
-### <a name="configure-container"></a>コンテナーを構成する
+**[Docker]** タブで、次の表に示したようにカスタム Windows コンテナーを構成し、 **[確認および作成]** を選択します。
 
-**[コンテナーの構成]**  >  **[Azure コンテナー レジストリ]** をクリックします。 レジストリ、イメージ、および前に「[Azure Container Registry に発行する](#publish-to-azure-container-registry)」で作成したタグを選択し、 **[OK]** をクリックします。
-
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-container.png)
+| Setting  | 推奨値 |
+| ----------------- | ------------ |
+|**イメージのソース**| Azure Container Register |
+|**レジストリ**| [以前に作成したレジストリ](#publish-to-azure-container-registry)を選択します。 |
+|**Image**| customfontsample |
+|**Tag**| latest |
 
 ### <a name="complete-app-creation"></a>アプリの作成を完了する
 
@@ -185,7 +196,7 @@ Azure の処理が完了すると、通知ボックスが表示されます。
 
 Windows コンテナーが読み込まれるまでにしばらく時間がかかる場合があります。 進行状況を確認するには、 *\<app_name>* をアプリの名前に置き換えて次の URL に移動します。
 ```
-https://<app_name>.scm.azurewebsites.net/api/logstream
+https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
 
 次のようなログがストリーム配信されます。

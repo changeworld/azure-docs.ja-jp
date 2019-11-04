@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3ab662a4f06b2d73ab0dab52f562398fee23686c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266512"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Azure Portal を使用してルートベースの VPN ゲートウェイをすばやく作成する
@@ -41,11 +41,11 @@ ms.locfileid: "71266512"
 
 1. ゲートウェイの作成後、ポータルで VNet1 に移動します。 VPN ゲートウェイは、接続されたデバイスとして [概要] ページに表示されます。
 
-   ![接続されたデバイス](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "接続されたデバイス")
+   ![接続されているデバイス](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "接続されているデバイス")
 
 2. デバイスの一覧で **[VNet1GW]** をクリックして詳細情報を表示します。
 
-   ![VPN ゲートウェイの表示](./media/create-routebased-vpn-gateway-portal/view-gateway.png "VPN ゲートウェイの表示")
+   ![VPN ゲートウェイを表示する](./media/create-routebased-vpn-gateway-portal/view-gateway.png "VPN ゲートウェイを表示する")
 
 ## <a name="next-steps"></a>次の手順
 

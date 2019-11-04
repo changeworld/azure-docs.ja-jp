@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7684acbd26848bbccb09416df44a9669965dcfe9
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f76a2eb098e2d96f617d19de089e56c7e8a497fd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720132"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162771"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -455,13 +455,13 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
     次に例を示します。`Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
   
-    次に例を示します。`New-AzureMediaServicesAccount -Name “MediaAccountName” -Location “Region” -StorageAccountName “StorageAccountName”`
+    次に例を示します。`New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
 * New-AzureMediaServicesKey 
   
-    次に例を示します。`New-AzureMediaServicesKey -Name “MediaAccountName” -KeyType Secondary -Force`
+    次に例を示します。`New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
 * Remove-AzureMediaServicesAccount 
   
-    次に例を示します。`Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`
+    次に例を示します。`Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
 
 ## <a id="june_changes_13"></a>2013 年 6 月のリリース
 ### <a name="june_13_general_changes"></a>Media Services の変更点

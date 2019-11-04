@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613250"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801944"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する  
 ## <a name="overview"></a>概要
@@ -79,6 +79,10 @@ Day 3 のビデオの内容は次のとおりです。
 > 
 > 
 
+## <a name="need-help"></a>お困りの際は、
+
+[[新しいサポート要求]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動することによってサポート チケットを開くことができます
+
 ## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
@@ -86,8 +90,6 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-ワークフロー デザイナー ツールでカスタム ワークフローを作成するとき、サポートが必要になりましたら、あるいはご質問がございましたら、mepd@microsoft.com までメールを送信してください。 電子メールを書く場合は英語を使用してください。
 
 ## <a name="see-also"></a>関連項目
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)

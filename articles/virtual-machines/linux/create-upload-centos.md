@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: cfbd687e59a9a852fe1bf01386dac221f040d0f4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6c3bb16e249d84f1da94b6b827bbaf6f8e9df1a1
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083624"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171249"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -171,7 +171,7 @@ CentOS ベースの Linux オペレーティング システムを格納した A
     sudo yum install microsoft-hyper-v
     ```
 
-    または、[LIS ダウンロード ページ](https://go.microsoft.com/fwlink/?linkid=403033)の手動インストール手順に従って、RPM を VM にインストールします。
+    または、[LIS ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=51612)の手動インストール手順に従って、RPM を VM にインストールします。
 
 12. Azure Linux エージェントと依存関係をインストールします。 waagent サービスを開始して有効にします。
 
@@ -355,7 +355,7 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
     `/etc/dracut.conf`を編集して、コンテンツを追加します。
 
     ```console
-    add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
     ```
 
     Initramfs を再構築します。

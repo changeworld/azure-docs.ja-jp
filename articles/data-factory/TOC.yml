@@ -82,7 +82,7 @@
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
     - name: マッピング データ フローを使用してデータを変換する
       href: tutorial-data-flow.md
-    - name: クラウドのデータを変換する
+    - name: 外部での変換
       items:
         - name: HDInsight Spark
           items:
@@ -94,7 +94,7 @@
           items:
             - name: ユーザー インターフェイス (UI)
               href: transform-data-using-databricks-notebook.md
-    - name: 仮想ネットワーク内のデータを変換する
+    - name: 仮想ネットワークでの Hive 変換
       items:
         - name: ユーザー インターフェイス (UI)
           href: tutorial-transform-data-hive-virtual-network-portal.md
@@ -622,6 +622,8 @@
       items:
         - name: 固定幅のテキスト ファイルを処理する
           href: how-to-fixed-width.md
+        - name: エラー行の処理
+          href: how-to-data-flow-error-rows.md
     - name: オンプレミスからの SSIS の移行
       items:
         - name: SSIS の移行の概要

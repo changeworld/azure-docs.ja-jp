@@ -1,31 +1,31 @@
 ---
-title: 組み込みのデータ抽出、自然言語、画像処理 - Azure Search
-description: データ抽出、自然言語、画像処理に関するコグニティブ スキルは、Azure Search パイプラインの生コンテンツにセマンティクスと構造を追加します。
+title: 組み込みのデータ抽出、自然言語、画像処理
+titleSuffix: Azure Cognitive Search
+description: データ抽出、自然言語、画像処理に関するコグニティブ スキルは、Azure Cognitive Search パイプラインの生コンテンツにセマンティクスと構造を追加します。
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 061d969269eb526b8f02f14de58e2da20c459a38
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 435635018dc25ed2af0aec3d542c0388af8ab885
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265488"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792102"
 ---
-# <a name="predefined-skills-for-content-enrichment-azure-search"></a>コンテンツ エンリッチメントのための定義済みスキル (Azure Search)
+# <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>コンテンツ エンリッチメントの組み込みのコグニティブ スキル (Azure Cognitive Search)
 
-この記事では、Azure Search で提供されるコグニティブ スキルについて説明します。 *コグニティブ スキル*は、何らかの方法でコンテンツを変換する操作です。 多くの場合、これはデータの抽出や構造の推論を行うコンポーネントであるため、入力データの解釈を強化することになります。 ほとんどの場合、出力はテキスト ベースです。 *スキルセット*は、エンリッチメント パイプラインを定義するスキルのコレクションです。 
+この記事では、Azure Cognitive Search で提供されるコグニティブ スキルについて説明します。 *コグニティブ スキル*は、何らかの方法でコンテンツを変換する操作です。 多くの場合、これはデータの抽出や構造の推論を行うコンポーネントであるため、入力データの解釈を強化することになります。 ほとんどの場合、出力はテキスト ベースです。 *スキルセット*は、エンリッチメント パイプラインを定義するスキルのコレクションです。 
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
 
 
-## <a name="predefined-skills"></a>定義済みのスキル
+## <a name="built-in-skills"></a>組み込みのスキル
 
 いくつかのスキルは、何を消費または生成するかに関して柔軟性があります。 通常、ほとんどのスキルはトレーニング済みモデルに基づいています。これは、独自のトレーニング データを使用したモデルのトレーニングはできないことを意味します。 次の表で、Microsoft が提供するスキルを列挙し、それらについて説明します。 
 
@@ -42,13 +42,13 @@ ms.locfileid: "71265488"
 | [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | 光学式文字認識。 |
 | [Microsoft.Skills.Util.ConditionalSkill](cognitive-search-skill-conditional.md) | 条件に基づくフィルター処理、既定値の割り当て、データのマージを行うことができます。|
 | [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | 出力を複合型 (フル ネーム、複数行の住所、または姓と個人識別子の組み合わせに使用される可能性があるマルチパート データ型) にマップします。 |
-| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | カスタム Web API に対して HTTP 呼び出しを行うことで、コグニティブ検索パイプラインを拡張することができます |
+| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | カスタム Web API に対して HTTP 呼び出しを行うことで、AI エンリッチメント パイプラインを拡張することができます |
 
 
-[カスタム スキル](cognitive-search-custom-skill-web-api.md)作成のガイダンスについては、[カスタム インターフェイスの定義方法](cognitive-search-custom-skill-interface.md)と[コグニティブ検索用のカスタム スキルの作成例](cognitive-search-create-custom-skill-example.md)に関するページを参照してください。
+[カスタム スキル](cognitive-search-custom-skill-web-api.md)作成のガイダンスについては、[カスタム インターフェイスの定義方法](cognitive-search-custom-skill-interface.md)と[AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)方法に関する記事を参照してください。
 
 ## <a name="see-also"></a>関連項目
 
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [カスタム スキルのインターフェイスの定義](cognitive-search-custom-skill-interface.md)
-+ [チュートリアル:コグニティブ検索によって強化されたインデックス作成](cognitive-search-tutorial-blob.md)
++ [チュートリアル:AI によるインデックスの強化](cognitive-search-tutorial-blob.md)

@@ -29,7 +29,7 @@
     - name: パスワードをリセットするためのサインアップ
       href: active-directory-passwords-reset-register.md
     - name: パスワードをリセットする
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
 - name: Microsoft Authenticator アプリのヘルプ
   items:
     - name: 概要
@@ -116,3 +116,13 @@
       href: my-apps-portal-end-user-access-reviews.md
     - name: 問題のトラブルシューティング
       href: my-apps-portal-end-user-troubleshoot.md
+- name: マイ アプリ (プレビュー) ポータルのヘルプ
+  items:
+    - name: 概要
+      href: my-applications-portal-overview.md
+    - name: マイ アプリ ポータルにアクセスして使用する
+      href: my-applications-portal-access.md
+    - name: ワークスペースにアクセスして使用する
+      href: my-applications-portal-workspaces.md
+    - name: アプリのアクセス許可の編集または取り消し
+      href: my-applications-portal-permissions-saved-accounts.md

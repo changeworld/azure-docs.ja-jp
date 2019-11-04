@@ -7,6 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60935778"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161197"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory 向け Atlassian Jira および Confluence 管理ガイド
 
@@ -180,7 +181,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 ### <a name="does-the-plug-in-work-on-cloud-versions"></a>このプラグインはクラウド バージョンで動作しますか。
 
-いいえ。 このプラグインはオンプレミス バージョンの Jira と Confluence のみサポートしています。
+No. このプラグインはオンプレミス バージョンの Jira と Confluence のみサポートしています。
 
 ### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>このプラグインはどのバージョンの Jira と Confluence をサポートしていますか。
 
@@ -224,7 +225,7 @@ Azure Portal チャネルを通じて Microsoft にサポート チケットを�
 
 ### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>このプラグインは Azure AD 以外の IdP で動作しますか。
 
-いいえ。 Azure AD でのみ動作します。
+No. Azure AD でのみ動作します。
 
 ### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>このプラグインはどのバージョンの SAML で動作しますか。
 
@@ -232,12 +233,12 @@ SAML 2.0 で動作します。
 
 ### <a name="does-the-plug-in-do-user-provisioning"></a>このプラグインはユーザー プロビジョニングを行いますか。
 
-いいえ。 このプラグインは SAML 2.0 ベースの SSO のみを提供します。 SSO サインイン前にアプリケーションでユーザーをプロビジョニングする必要があります。
+No. このプラグインは SAML 2.0 ベースの SSO のみを提供します。 SSO サインイン前にアプリケーションでユーザーをプロビジョニングする必要があります。
 
 ### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>このプラグインはクラスター バージョンの Jira と Confluence をサポートしていますか。
 
-いいえ。 このプラグインはオンプレミス バージョンの Jira と Confluence で動作します。
+No. このプラグインはオンプレミス バージョンの Jira と Confluence で動作します。
 
 ### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>このプラグインは HTTP バージョンの Jira と Confluence で動作しますか。
 
-いいえ。 このプラグインは、HTTPS 対応のインストールでのみ動作します。
+No. このプラグインは、HTTPS 対応のインストールでのみ動作します。

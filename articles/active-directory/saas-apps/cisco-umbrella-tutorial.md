@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 675dca98-f119-4463-8350-d6a45d5601e3
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 255af92dfecdf891568d7d57c17512bb178a51e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee91ca53e32bfdc387dc20054493d02d506a75da
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105559"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158627"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>チュートリアル:Azure Active Directory と Cisco Umbrella の統合
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170657"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690824"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -36,7 +36,7 @@ ms.locfileid: "70170657"
 |[受信 IP の制限とプライベート サイトへのアクセス](#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|
 |[仮想ネットワークの統合](#virtual-network-integration)|❌いいえ|✅はい (リージョン)|✅はい (リージョンとゲートウェイ)|✅はい|
 |[仮想ネットワーク トリガー (非 HTTP)](#virtual-network-triggers-non-http)|❌いいえ| ❌いいえ|✅はい|✅はい|
-|[VNet](#hybrid-connections)|❌いいえ|❌いいえ|✅はい|✅はい|
+|[VNet](#hybrid-connections)|❌いいえ|✅はい|✅はい|✅はい|
 |[送信 IP の制限](#outbound-ip-restrictions)|❌いいえ| ❌いいえ|❌いいえ|✅はい|
 
 
@@ -52,7 +52,7 @@ IP 制限を使用すると、アプリへのアクセスを許可または拒�
 ## <a name="private-site-access"></a>プライベート サイトへのアクセス
 
 プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 
-* プライベート サイトへは、**サービス エンドポイント**が構成されている場合に [Premium](./functions-premium-plan.md)、[従量課金プラン](functions-scale.md#consumption-plan)および [App Service プラン](functions-scale.md#app-service-plan)でアクセスできます。 
+* プライベート サイトへのアクセスは、**サービス エンドポイント**を構成するときに、[Premium](./functions-premium-plan.md)、[従量課金](functions-scale.md#consumption-plan)、[App Service プラン](functions-scale.md#app-service-plan)で使用できます。 
     * サービス エンドポイントは、[プラットフォーム機能]、[ネットワーク]、[アクセス制限を構成する]、[ルールの追加] からアプリごとに構成できます。 ルールの "種類" として、仮想ネットワークを選択できるようになりました。
     * 詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」を参照してください。
         * サービス エンドポイントがあれば、仮想ネットワーク統合が構成されていても、関数はインターネットへの完全な送信アクセスを引き続き持つことに注意してください。
@@ -102,12 +102,20 @@ Functions の仮想ネットワーク統合では、App Service Web アプリで
 
 仮想ネットワーク統合の使用について詳しくは、「[関数アプリを Azure 仮想ネットワークに統合する](functions-create-vnet.md)」を参照してください。
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する
+## <a name="connecting-to-service-endpoint-secured-resources"></a>サービス エンドポイントのセキュリティで保護されたリソースへの接続
 
 > [!note] 
-> お使いのストレージ アカウントにアクセス制限を構成後、お使いの関数アプリでそのストレージ アカウントが使用できるようになるには、当面、最大で 12 時間かかります。 この期間中、お使いのアプリケーションは完全にオフラインになります。
+> ダウンストリーム リソースにアクセス制限を構成すると、一時的に、新しいサービス エンドポイントが関数アプリで使用できるようになるまでに最大 12 時間かかる場合があります この期間中は、アプリでリソースを完全に使用できなくなります。
 
-お使いのアプリケーションのストレージ アカウントを仮想ネットワークに制限すると、より高いレベルのセキュリティを実現できます。 その後、お使いのサイトをその仮想ネットワークと統合して、お使いのストレージ アカウントにアクセスできるようにします。 この構成は、仮想ネットワークの統合をサポートするすべての計画でサポートされています。
+より高度なセキュリティを実現するために、サービス エンドポイントを使用して、仮想ネットワークに対する Azure サービス数を制限することができます。 次に、関数アプリをその仮想ネットワークと統合して、リソースにアクセスする必要があります。 この構成は、仮想ネットワークの統合をサポートするすべての計画でサポートされています。
+
+[仮想ネットワーク サービス エンドポイントの詳細を参照してください。](../virtual-network/virtual-network-service-endpoints-overview.md)
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する
+関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 現在、このアカウントに対して仮想ネットワークの制限を使用することはできません。 関数アプリに使用しているストレージ アカウントに仮想ネットワーク サービス エンドポイントを構成すると、アプリが中断されます。
+
+[ストレージ アカウントの要件の詳細を参照してください。](./functions-create-function-app-portal.md#storage-account-requirements
+) 
 
 ## <a name="virtual-network-triggers-non-http"></a>仮想ネットワーク トリガー (非 HTTP)
 
@@ -119,11 +127,11 @@ Functions の仮想ネットワーク統合では、App Service Web アプリで
 
 ## <a name="hybrid-connections"></a>ハイブリッド接続
 
-[ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、[App Service プラン](functions-scale.md#app-service-plan)および [App Service Environment](../app-service/environment/intro.md) で実行されている関数に使用できます。
+[ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、従量課金プラン以外で実行されている関数にも使用できます。
 
 Azure Functions で使用されるとき、各ハイブリッド接続は、単一の TCP ホストとポートの組み合わせに相互に関連付けられます。 つまり、TCP リッスン ポートにアクセスしている限り、任意のオペレーティング システムの任意のアプリケーションがハイブリッド接続エンドポイントになることができます。 ハイブリッド接続では、アプリケーション プロトコルやアクセス先は認識されません。 それは、ネットワーク アクセスを提供するだけです。
 
-詳細については、App Service プランで Functions をサポートする[ハイブリッド接続の App Service ドキュメント](../app-service/app-service-hybrid-connections.md)を参照してください。
+詳細については、[ハイブリッド接続に関する App Service のドキュメント](../app-service/app-service-hybrid-connections.md)を参照してください。これは、同じ構成手順による Functions をサポートしています。
 
 ## <a name="outbound-ip-restrictions"></a>送信 IP の制限
 

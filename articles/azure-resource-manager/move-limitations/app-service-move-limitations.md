@@ -1,17 +1,17 @@
 ---
-title: Azure App Service リソースを新しいサブスクリプションまたはリソース グループへ移動する
+title: Azure App Service リソースの移動
 description: Azure Resource Manager を使用して、App Service リソースを新しいリソース グループまたはサブスクリプションに移動します。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: c1a09ff4c29a2fedfea2c165a95c042985b3c83a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 04ddf644c58434531dde708ee3b6432b1fce8f91
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723375"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533521"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>App Service リソースの移動に関するガイダンス
 

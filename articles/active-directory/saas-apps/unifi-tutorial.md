@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e1f49ee4-d2d4-4a82-9baf-0587ca1f20f6
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67a26207e4b031cd93be8c7e5eec43c72582fcda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f7c5ee13f02c10441ca7852483e1299b6315309
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087695"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>チュートリアル:Azure Active Directory と UNIFI の統合
 

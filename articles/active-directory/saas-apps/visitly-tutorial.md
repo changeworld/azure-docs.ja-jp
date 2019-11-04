@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3ae085fb-ca60-4f41-96a0-068e5febf943
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18517f8f0022b8347d8a3bb8a978c513db5f6f85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82efc34bf580ef204a04268e861a0ff214d97572
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087371"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-visitly"></a>チュートリアル:Azure Active Directory と Visitly の統合
 
@@ -111,7 +112,7 @@ Visitly で Azure AD シングル サインオンを構成するには、次の�
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して**名前識別子の値**を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
     
-    | Name | ソース属性 | 
+    | 名前 | ソース属性 | 
     | ---------------| --------------- |
     | 名前識別子の値  | User.mail |
 

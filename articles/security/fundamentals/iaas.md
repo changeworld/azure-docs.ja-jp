@@ -4,7 +4,7 @@ description: " ワークロードを Azure IaaS に移行すると、設計を�
 services: security
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: rkarlin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/26/2019
+ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fc72c59721a6f244806bf229ebded1e66341a04d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262739"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177696"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -28,13 +28,6 @@ ms.locfileid: "71262739"
 これらのベスト プラクティスは、集約された意見に基づくものであり、Azure プラットフォームの最新の機能に対応しています。 人の考え方やテクノロジは時間の経過と共に変化する可能性があるため、この記事はそれらの変化に応じて更新されます。
 
 ほとんどの IaaS (サービスとしてのインフラストラクチャ) で、クラウド コンピューティングを使用している組織にとっての主要なワークロードは [Azure 仮想マシン (VM)](/azure/virtual-machines/) です。 この事実は、ワークロードを段階的にクラウドに移行する[ハイブリッド シナリオ](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx)で顕著となります。 [IaaS のセキュリティに関する一般的な考慮事項](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)に従い、セキュリティのベスト プラクティスをすべての VM に適用することになります。
-
-## <a name="shared-responsibility"></a>Shared responsibility
-お客様のセキュリティの責任は、クラウド サービスの種類に応じて決まります。 表は、Microsoft とお客様の責任の分担をまとめたものです。
-
-![責任の分担](./media/iaas/sec-cloudstack-new.png)
-
-セキュリティ要件は、さまざまな種類のワークロードを含む多くの要因によって異なります。 ここで説明するベスト プラクティスの 1 つだけを適用してシステムを保護できるわけではありません。 セキュリティの他の要素と同様、適切なオプションを選択しつつ、複数のソリューションが互いに不足した部分を補完し合う方法について検討する必要があります。
 
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>認証とアクセス制御を使用して VM を保護する
 VM 保護の第一歩は、承認されたユーザーのみが新しい VM を設定し、VM にアクセスできるようにすることです。
@@ -75,7 +68,7 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 可用性セットは、Azure で使用できる論理グループであり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されることが保証されます。 ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、顧客は引き続きアプリケーション全体を利用できます。 可用性セットは、信頼性の高いクラウド ソリューションを構築する際に不可欠な機能です。
 
 ## <a name="protect-against-malware"></a>マルウェアを防ぐ
-ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するために、マルウェア対策保護を導入する必要があります。 [Microsoft Antimalware](antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://www.microsoft.com/search/result.aspx?q=Windows+defender+endpoint+protection)、および[System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection)) をインストールします。
+ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するために、マルウェア対策保護を導入する必要があります。 [Microsoft Antimalware](antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://www.microsoft.com/en-us/search?q=Windows+defender+endpoint+protection&rtc=1)、および[System Center Endpoint Protection](https://www.microsoft.com/en-us/search?q=System+Center+endpoint+protection&rtc=1)) をインストールします。
 
 Microsoft Antimalware には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 運用環境とは別にホストされている環境では、マルウェア対策拡張機能を使用して、VM とクラウド サービスを保護できます。
 

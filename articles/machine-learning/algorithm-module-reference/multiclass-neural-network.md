@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 44d1e7606efd5bc6d2286254dc4863728e3edbfd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128593"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692723"
 ---
 # <a name="multiclass-neural-network-module"></a>Multiclass Neural Network (多クラス ニューラル ネットワーク) モジュール
 
@@ -40,7 +40,7 @@ ms.locfileid: "70128593"
 
 ## <a name="configure-multiclass-neural-network"></a>多クラス ニューラル ネットワークを構成する
 
-1. インターフェイス内のご利用の実験に**MultiClass Neural Network (多クラス ニューラル ネットワーク)** モジュールを追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[Initialize]\(初期化\)** の **[Classification]\(分類\)** カテゴリにあります。
+1. インターフェイス内のご利用のパイプラインに **MultiClass Neural Network (多クラス ニューラル ネットワーク)** モジュールを追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[Initialize]\(初期化\)** の **[Classification]\(分類\)** カテゴリにあります。
 
 2. **Create trainer mode (トレーナー モードの作成)** : このオプションを使用して、モデルのトレーニング方法を指定します。
 
@@ -73,11 +73,11 @@ ms.locfileid: "70128593"
   
 11. **Shuffle examples (例のシャッフル)** : イテレーションとイテレーションの間にケースをシャッフルするには、このオプションを選択します。
 
-    このオプションをオフにした場合、実験を実行するたびに、まったく同じ順序でケースが処理されます。
+    このオプションをオフにした場合、パイプラインを実行するたびに、まったく同じ順序でケースが処理されます。
 
-12. **Random number seed (乱数シード)** : 同じ実験を実行するたびに再現性を確保したい場合は、シードとして使用する値を指定します。
+12. **Random number seed (乱数シード)** : 同じパイプラインを実行するたびに再現性を確保したい場合は、シードとして使用する値を指定します。
 
-14. トレーニング データセットと次のいずれかの[トレーニング モジュール](module-reference.md)とを接続します。 
+14. トレーニング データセットといずれかの[トレーニング モジュール](module-reference.md)を接続します。 
 
     - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[[Train Model]\(モデルのトレーニング\)](train-model.md) を使用します。  
   
@@ -88,7 +88,7 @@ ms.locfileid: "70128593"
 
 - モデルのパラメーターとトレーニングから学習された特徴の重みなど、ニューラル ネットワークの各種パラメーターの概要を確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、 **[Visualize]\(可視化\)** を選択します。  
 
-- トレーニング済みのモデルのスナップショットを保存するために、 **[Trained model]\(トレーニング済みのモデル\)** 出力を右クリックし、 **[Save As Trained Model]\(トレーニング済みのモデルとして保存する\)** を選択します。 同じ実験を連続で実行しても、このモデルは更新されません。
+- トレーニング済みのモデルのスナップショットを保存するには、 **[トレーニング済みのモデル]** 出力を右クリックし、 **[トレーニング済みのモデルとして保存]** を選択します。 同じパイプラインを連続で実行しても、このモデルは更新されません。
 
 
 ## <a name="next-steps"></a>次の手順

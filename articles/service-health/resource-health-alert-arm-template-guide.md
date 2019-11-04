@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 10a940e43b2ab4dff1b7c90aa7d6d274ddef82d9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099005"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023915"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -180,12 +180,12 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
             "anyOf": [
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Compute/virtualMachines",
+                    "equals": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
                     "containsAny": null
                 },
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Storage/storageAccounts",
+                    "equals": "MICROSOFT.STORAGE/STORAGEACCOUNTS",
                     "containsAny": null
                 },
                 ...
@@ -198,7 +198,7 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
 ここでは、`anyOf` ラッパーを使用して、指定したいずれかの条件と一致する Resource Health アラートを定義し、アラートが特定のリソースの種類をターゲットにできるようにします。
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>アラートを生成する Resource Health イベントの調整
-リソースで正常性イベントが発生すると、正常性イベントの状態を表す一連の段階: `Active`、`InProgress`、`Updated`、および `Resolved` を経由する可能性があります。
+リソースで正常性イベントが発生すると、正常性イベントの状態を表す一連の段階: `Active`、`In Progress`、`Updated`、および `Resolved` を経由する可能性があります。
 
 リソースが異常になった場合にのみ通知を受け取るには、`status` が `Active` の際にのみ通知するようアラートを構成する必要があります。 一方、その他の段階でも通知を受け取るには、次のような詳細情報を追加します。
 
@@ -214,7 +214,7 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
                 {
                     "field": "status",
@@ -409,7 +409,7 @@ Resource Health イベントは、プラットフォームまたはユーザー�
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {

@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 10/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ef64a43cbed7f033a938351506b7f78142ff044c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0bac6f9105d505bdfc1492b6966c2352771e73b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097631"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791302"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのバージョン管理
 
@@ -24,11 +24,11 @@ ms.locfileid: "70097631"
 
 注意すべき重大な変更の例がいくつかあります。 この記事では、最も一般的なものについて説明します。 それらすべての背後にある主なテーマは、関数コードの変更によって新規と既存両方の関数オーケストレーションが影響を受けることです。
 
-### <a name="changing-activity-function-signatures"></a>アクティビティ関数シグネチャの変更
+### <a name="changing-activity-or-entity-function-signatures"></a>アクティビティ関数シグネチャまたはエンティティ関数シグネチャの変更
 
-シグネチャの変更とは、関数の名前、入力、または出力の変更のことを指します。 アクティビティ関数にこの種の変更を行うと、その関数に依存するオーケストレーター関数が中断される可能性があります。 この変更に対応してオーケストレーター関数を更新すると、処理中の既存のインスタンスが中断される可能性があります。
+シグネチャの変更とは、関数の名前、入力、または出力の変更のことを指します。 アクティビティ関数またはエンティティ関数にこの種の変更を行うと、それに依存するオーケストレーター関数が中断される可能性があります。 この変更に対応してオーケストレーター関数を更新すると、処理中の既存のインスタンスが中断される可能性があります。
 
-例として、次のような関数があるとします。
+例として、次のようなオーケストレーター関数があるとします。
 
 ```csharp
 [FunctionName("FooBar")]
@@ -85,7 +85,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-この変更では、**Foo** と **Bar** の間に **SendNotification** への新しい関数呼び出しを追加します。 シグネチャの変更はありません。 **Bar** の呼び出しから既存のインスタンスを再開すると、問題が発生します。 再生中に、元の **Foo** への呼び出しから `true` が返されると、オーケストレーターの再生で実行履歴にない **SendNotification** が呼び出されます。 その結果、**Bar** の呼び出しの実行が想定されるときに **SendNotification** の呼び出しが発生したことで、Durable Task フレームワークが `NonDeterministicOrchestrationException` で失敗します。
+この変更では、**Foo** と **Bar** の間に **SendNotification** への新しい関数呼び出しを追加します。 シグネチャの変更はありません。 **Bar** の呼び出しから既存のインスタンスを再開すると、問題が発生します。 再生中に、元の **Foo** への呼び出しから `true` が返されると、オーケストレーターの再生で実行履歴にない **SendNotification** が呼び出されます。 その結果、**Bar** の呼び出しの実行が想定されるときに **SendNotification** の呼び出しが発生したことで、Durable Task フレームワークが `NonDeterministicOrchestrationException` で失敗します。 `CreateTimer`、`WaitForExternalEvent` などの "持続性のある" API の呼び出しを追加すると、同じ種類の問題が発生する可能性があります。
 
 ## <a name="mitigation-strategies"></a>対応方法
 
@@ -112,9 +112,9 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 
 重大な変更が安全にデプロイされるようにする最も失敗のない方法は、古いバージョンと並行してデプロイすることです。 これを行うには、次のいずれかの手法を使用します。
 
-* すべての更新プログラムをまったく新しい機能として (新しい名前で) デプロイする。
+* 既存の関数のままにして、すべての更新プログラムをまったく新しい関数としてデプロイする。 これは、新しい関数のバージョンの呼び出し元を同じガイドラインに従って更新する必要があるため、複雑になる可能性があります。
 * 別のストレージ アカウントを使用して、すべての更新プログラムを新しい関数アプリとしてデプロイする。
-* 関数アプリの新しいコピーを、更新された名前 `TaskHub` でデプロイする。 これは推奨の方法です。
+* 関数アプリの新しいコピーを、同じストレージ アカウントですが、更新された名前 `taskHub` でデプロイする。 これは推奨の方法です。
 
 ### <a name="how-to-change-task-hub-name"></a>タスク ハブ名を変更する方法
 
@@ -125,18 +125,28 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 ```json
 {
     "durableTask": {
-        "HubName": "MyTaskHubV2"
+        "hubName": "MyTaskHubV2"
     }
 }
 ```
 
 #### <a name="functions-2x"></a>Functions 2.x
 
-既定値は `DurableFunctionsHub` です。
+```json
+{
+    "extensions": {
+        "durableTask": {
+            "hubName": "MyTaskHubV2"
+        }
+    }
+}
+```
 
-すべての Azure Storage エンティティは、`HubName` 構成値に基づいて名前が付けられます。 タスク ハブに新しい名前を付けることにより、新しいバージョンのアプリケーション用に別個のキューと履歴テーブルを作成できます。
+Durable Functions v1.x の既定値は `DurableFunctionsHub` です。 Durable Functions v2.0 以降では、既定のタスク ハブ名は、Azure の関数アプリ名と同じか、Azure の外部で実行されている場合は `TestHubName` になります。
 
-新しいバージョンの関数アプリは新しい[デプロイ スロット](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)にデプロイすることをお勧めします。 デプロイ スロットでは、複数のコピーの関数アプリを並行して実行し、そのうちの 1 つのみをアクティブな*運用*スロットとして実行できます。 既存のインフラストラクチャに新しいオーケストレーション ロジックを公開する準備ができている場合、新しいバージョンを運用スロットにスワップするのと同じくらい簡単です。
+すべての Azure Storage エンティティは、`hubName` 構成値に基づいて名前が付けられます。 タスク ハブに新しい名前を付けることにより、新しいバージョンのアプリケーション用に別個のキューと履歴テーブルを作成できます。 しかし、関数アプリでは、前のタスク ハブ名で作成されたオーケストレーションまたはエンティティのイベント処理は停止されます。
+
+新しいバージョンの関数アプリは新しい[デプロイ スロット](../functions-deployment-slots.md)にデプロイすることをお勧めします。 デプロイ スロットでは、複数のコピーの関数アプリを並行して実行し、そのうちの 1 つのみをアクティブな*運用*スロットとして実行できます。 既存のインフラストラクチャに新しいオーケストレーション ロジックを公開する準備ができている場合、新しいバージョンを運用スロットにスワップするのと同じくらい簡単です。
 
 > [!NOTE]
 > この方法は、オーケストレーター関数の HTTP トリガーや Webhook トリガーを使用する場合に最適です。 キューや Event Hubs などの HTTP 以外のトリガーの場合、トリガー定義は、スワップ操作の一環として更新された[アプリ設定を派生する](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings)必要があります。

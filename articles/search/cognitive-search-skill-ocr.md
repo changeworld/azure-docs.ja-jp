@@ -1,24 +1,23 @@
 ---
-title: OCR コグニティブ検索スキル - Azure Search
-description: Azure Search のエンリッチメント パイプラインで光学式文字認識 (OCR) を使用して、イメージ ファイルからテキストを抽出します。
-services: search
+title: OCR 認知スキル
+titleSuffix: Azure Cognitive Search
+description: Azure コグニティブ検索のエンリッチメント パイプラインで光学式文字認識 (OCR) を使用して、イメージ ファイルからテキストを抽出します。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265340"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791925"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
-光学式文字認識 (OCR) スキルは、画像ファイルに印字された手書きテキストを認識します。 このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
+**光学式文字認識 (OCR)** スキルでは、画像ファイルに印字された手書きテキストが認識されます。 このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
 
 + 英語以外の言語には ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API が使用されます。 
 + 英語には、新しい ["Read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API が使用されます。
@@ -33,9 +32,9 @@ ms.locfileid: "71265340"
 + .TIFF
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
@@ -206,7 +205,7 @@ Text Merger の一般的なユース ケースとしては､ドキュメント�
 ```
 
 ## <a name="see-also"></a>関連項目
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [TextMerger スキル](cognitive-search-skill-textmerger.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

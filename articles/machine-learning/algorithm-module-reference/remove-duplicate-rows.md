@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128535"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693676"
 ---
 # <a name="remove-duplicate-rows-module"></a>Remove Duplicate Rows (重複する行の削除) モジュール
 
@@ -51,7 +51,7 @@ ms.locfileid: "70128535"
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Remove Duplicate Rows の使用方法
 
-1. 実験にモジュールを追加します。 **Remove Duplicate Rows (重複行の削除)** モジュールは、 **[データ変換]** 、 **[操作]** にあります。  
+1. パイプラインにモジュールを追加します。 **Remove Duplicate Rows (重複行の削除)** モジュールは、 **[データ変換]** 、 **[操作]** にあります。  
 
 2. 重複する行をチェックするデータセットを接続します。
 
@@ -69,7 +69,7 @@ ms.locfileid: "70128535"
     + オンにすると、最初の行が返され、他の行は破棄されます。 
     + このオプションをオフにした場合は、最後の重複する行が結果で保持され、他の行は破棄されます。 
 
-5. 実験を実行します。
+5. パイプラインを実行します。
 
 6. 結果を確認するには、モジュールを右クリックし、 **[Results dataset]\(結果のデータセット\)** を選択してから **[可視化]** をクリックします。 
 

@@ -1,29 +1,29 @@
 ---
-title: Category 階層でファセット ナビゲーションを実装する方法 - Azure Search
-description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。
-author: HeidiSteen
+title: Category 階層でファセット ナビゲーションを実装する方法
+titleSuffix: Azure Cognitive Search
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Cognitive Search を統合するアプリケーションにファセット ナビゲーションを追加します。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: f1847eae1ee7db90f36072e2e832bd6fec9c2caa
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649893"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792934"
 ---
-# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Azure Search でファセット ナビゲーションを実装する方法
+# <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Cognitive Search へのファセット ナビゲーションの実装方法
+
 ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
 
- ![Azure Search Job Portal Demo](media/search-faceted-navigation/azure-search-faceting-example.png "Azure Search Job Portal Demo")
+ ![Azure Cognitive Search ジョブ ポータル デモ](media/search-faceted-navigation/azure-search-faceting-example.png "Azure Cognitive Search ジョブ ポータル デモ")
 
 ファセット ナビゲーションは、検索するための別のエントリ ポイントです。 複雑な検索式を手動で入力する代わりに使用できる便利な方法です。 ファセットを使用すると、探しているものが見つけやすくなり、検索結果がゼロ件になることはありません。 開発者は、ファセットを使用することで検索インデックスのナビゲーションに最も役立つ検索条件を公開できます。 オンライン小売アプリケーションでは、ブランド、カテゴリ (子ども用の靴など)、サイズ、価格、人気、評価などに対してファセット ナビゲーションが作成されることがよくあります。 
 
-ファセット ナビゲーションの実装方法は、検索テクノロジによって異なります。 Azure Search では、クエリ時にあらかじめスキーマに設定されている属性のフィールドを使ってファセット ナビゲーションが構築されます。
+ファセット ナビゲーションの実装方法は、検索テクノロジによって異なります。 Azure Cognitive Search でファセット ナビゲーションは、あらかじめお使いのスキーマに設定されている属性のフィールドを使ってクエリ時に構築します。
 
 -   アプリケーションで作成するクエリでは、 *ファセット クエリ パラメーター* を送信して、そのドキュメント結果セットに対して使用できるファセット フィルターの値を受け取る必要があります。
 
@@ -34,7 +34,7 @@ ms.locfileid: "69649893"
 ## <a name="sample-code-and-demo"></a>サンプル コードとデモ
 この記事では、例としてジョブ検索ポータルを使用します。 この例は、ASP.NET MVC アプリケーションとして実装されます。
 
--   「[Azure Search Job Portal Demo](https://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
+-   [Azure Cognitive Search ジョブ ポータル デモ](https://azjobsdemo.azurewebsites.net/)に関するページにある実際に使用可能なデモをオンラインで参照し、テストしてください。
 
 -   [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 
@@ -47,13 +47,13 @@ ms.locfileid: "69649893"
 
 起点となるのはファセット ナビゲーションを提供するアプリケーション ページであり、通常はページの周囲に配置されます。 ファセット ナビゲーションは、多くの場合、値ごとにチェック ボックスを備えた、またはクリック可能なテキストによる、ツリー構造をしています。 
 
-1. Azure Search に送信されるクエリでは、1 つまたは複数のファセット クエリ パラメーターによってファセット ナビゲーションの構造を指定します。 たとえば、クエリには `facet=Rating` が含まれ、おそらくは `:values` または `:sort` オプションによってプレゼンテーションがさらに指定されています。
+1. ファセット ナビゲーションの構造は、Azure Cognitive Search に送信されるクエリの 1 つ以上のファセット クエリ パラメーターで指定されます。 たとえば、クエリには `facet=Rating` が含まれ、おそらくは `:values` または `:sort` オプションによってプレゼンテーションがさらに指定されています。
 2. プレゼンテーション層は、要求で指定されているファセットを使用して、ファセット ナビゲーションを提供する検索ページを表示します。
 3. Rating を含むファセット ナビゲーション構造の場合、「4」をクリックすると、評価が 4 以上の商品のみを表示することを示します。 
 4. これに対して、アプリケーションは `$filter=Rating ge 4` 
 5. プレゼンテーション層はページを更新し、新しい条件を満たす項目だけを含む絞り込まれた結果セットを表示します (この場合は、評価が 4 以上の商品)。
 
-ファセットはクエリ パラメーターですが、クエリ入力と間違えないでください。 クエリでの選択条件としては使用されません。 ファセット クエリ パラメーターは、応答で返されるナビゲーション構造への入力と考えてください。 提供されるファセット クエリ パラメーターごとに、Azure Search は各ファセット値に対する部分的な結果に含まれるドキュメントの数を評価します。
+ファセットはクエリ パラメーターですが、クエリ入力と間違えないでください。 クエリでの選択条件としては使用されません。 ファセット クエリ パラメーターは、応答で返されるナビゲーション構造への入力と考えてください。 Azure Cognitive Search では、指定したファセット クエリ パラメーターで、各ファセット値に対応する部分結果がいくつあるかドキュメントの数を評価します。
 
 手順 4 の `$filter` に注意してください。 フィルターは、ファセット ナビゲーションの重要な側面です。 ファセットとフィルターは API では独立していますが、意図したエクスペリエンスを提供するには両方とも必要です。 
 
@@ -63,7 +63,7 @@ ms.locfileid: "69649893"
 
 ### <a name="query-basics"></a>クエリの基本
 
-Azure Search では、要求は 1 つまたは複数のクエリ パラメーターによって指定されます (個々の説明については「 [Search Documents (ドキュメントの検索)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 」を参照してください)。 どのクエリ パラメーターも必須ではありませんが、クエリが有効であるためには少なくとも 1 つのクエリ パラメーターが必要です。
+Azure Cognitive Search では、要求は 1 以上のクエリ パラメーターで指定されます (個々の説明については、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)に関するページを参照してください)。 どのクエリ パラメーターも必須ではありませんが、クエリが有効であるためには少なくとも 1 つのクエリ パラメーターが必要です。
 
 関係のないヒットを除外する能力として理解される正確さは、以下の式の一方または両方によって実現されます。
 
@@ -89,17 +89,17 @@ Azure Search では、要求は 1 つまたは複数のクエリ パラメータ
 <a name="howtobuildit"></a>
 
 ## <a name="build-a-faceted-navigation-app"></a>ファセット ナビゲーション アプリの作成
-検索要求を作成するアプリケーション コードの Azure Search でファセット ナビゲーションを実装します。 ファセット ナビゲーションは、以前に定義したスキーマの要素に依存します。
+ファセット ナビゲーションは、ご自身のアプリケーション コード内の検索要求を作成する Azure Cognitive Search で実装します。 ファセット ナビゲーションは、以前に定義したスキーマの要素に依存します。
 
 検索インデックスで定義されている `Facetable [true|false]` インデックス属性が選択されたフィールドで設定されて、ファセット ナビゲーション構造でのそのフィールドの使用を有効または無効にします。 `"Facetable" = true`が指定されていないフィールドは、ファセット ナビゲーションでは使用できません。
 
-コードのプレゼンテーション層は、ユーザー エクスペリエンスを提供します。 プレゼンテーション層では、ラベル、値、チェック ボックス、数など、ファセット ナビゲーションを構成する各部分を表示する必要があります。 Azure Search REST API はプラットフォームに依存しないので、好みの言語とプラットフォームを何でも使用できます。 重要なことは、新しいファセットが選択されて UI 状態が更新されたときの増分更新をサポートする UI 要素を含めるです。 
+コードのプレゼンテーション層は、ユーザー エクスペリエンスを提供します。 プレゼンテーション層では、ラベル、値、チェック ボックス、数など、ファセット ナビゲーションを構成する各部分を表示する必要があります。 Azure Cognitive Search の REST API はプラットフォームに依存しないので、好みの任意の言語とプラットフォームを使用できます。 重要なことは、新しいファセットが選択されて UI 状態が更新されたときの増分更新をサポートする UI 要素を含めるです。 
 
 クエリ時には、アプリケーションのコードで、ファセット処理を行うフィールドを提供する要求パラメーターである `facet=[string]`を含む要求を作成します。 1 つのクエリで複数のファセットを指定でき (`&facet=color&facet=category&facet=rating`)、各ファセットはアンパサンド (&) 文字で区切ります。
 
 アプリケーションのコードでは、 `$filter` 式を作成してファセット ナビゲーションでのクリック イベントを処理する必要もあります。 `$filter` は、ファセット値をフィルター条件として使用して、検索結果を減らします。
 
-Azure Search は、入力する 1 つまたは複数の語句に基づいた検索結果と共に、ファセット ナビゲーション構造への更新を返します。 Azure Search でのファセット ナビゲーションは、単一レベルの構造、ファセット値、そして各ファセット値に対して見つかった結果の数です。
+Azure Cognitive Search では、入力した 1 つ以上の語句に基づいて検索結果を返し、ファセット ナビゲーションの構造を更新します。 Azure Cognitive Search のファセット ナビゲーションの構造は単一レベルであり、ファセット値、そしてそれぞれに対して見つかった結果の数を含みます。
 
 以下のセクションでは、各部分の作成方法を詳しく見ていきます。
 
@@ -167,7 +167,7 @@ Brand または Price でファセットを行う場合は、各ドキュメン�
 
 ファセット ナビゲーションでは、Web ページまたはアプリケーション ページがファセット ナビゲーション構造を表示し、ページでのユーザー入力を検出し、変更された要素を挿入します。 
 
-Web アプリケーションの場合は、増分変更を更新できるので、一般に AJAX がプレゼンテーション層に使用されます。 また、ASP.NET MVC または HTTP 経由で Azure Search サービスに接続できる他の視覚化プラットフォームを使用することもできます。 この記事全体で参照されているサンプル アプリケーション **Azure Search Job Portal Demo** は、ASP.NET MVC アプリケーションです。
+Web アプリケーションの場合は、増分変更を更新できるので、一般に AJAX がプレゼンテーション層に使用されます。 また、ASP.NET MVC や他の任意の視覚化プラットフォームを使用して、HTTP を使用して Azure Cognitive Search サービスに接続することもできます。 この記事全体で参照されているサンプル アプリケーションの **Azure Cognitive Search ジョブ ポータル デモ**は、ASP.NET MVC アプリケーションです。
 
 サンプルでは、ファセット ナビゲーションは検索結果ページに組み込まれています。 サンプル アプリケーションの `index.cshtml` ファイルから抜粋した次の例では、検索結果ページにファセット ナビゲーションを表示するための静的な HTML 構造を示しています。 検索語句を送信するか、ファセットをオンまたはオフにすると、ファセットのリストが作成されたり、動的に再構築されたりします。
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-ファセット クエリ パラメーターはフィールドに対して設定され、データの種類によっては、`count:<integer>`、`sort:<>`、`interval:<integer>`、および `values:<list>` を含むコンマ区切りリストによってさらにパラメーター化できます。 値リストは、範囲を設定するときに数値データに対してサポートされます。 使用方法の詳細については、「 [Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API))](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 」を参照してください。
+ファセット クエリ パラメーターはフィールドに対して設定され、データの種類によっては、`count:<integer>`、`sort:<>`、`interval:<integer>`、および `values:<list>` を含むコンマ区切りリストによってさらにパラメーター化できます。 値リストは、範囲を設定するときに数値データに対してサポートされます。 使用方法の詳細については、[ドキュメントの検索 (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) に関するページを参照してください。
 
 アプリケーションで作成する要求では、ファセットだけでなく、ファセット値の選択に基づいて候補ドキュメントのセットを絞り込むフィルターも作成する必要があります。 自転車ストアの場合、ファセット ナビゲーションでは「*どのような色、製造元、および種類の自転車が手にはいるか*」のような質問への手掛かりが提供されます。 フィルター処理は、「*赤、マウンテン バイク、特定の価格範囲という条件を満たす自転車*」のような質問に回答します。 ユーザーが [Red] をクリックして赤い商品だけを表示するように指示すると、アプリケーションが送信する次のクエリには `$filter=Color eq ‘Red’` が含まれます。
 
@@ -260,7 +260,7 @@ if (businessTitleFacet != "")
 
 **既定では、ファセット ナビゲーションは 1 レベルのみとなります。** 
 
-前に説明したように、階層でのファセットの入れ子は直接サポートされません。 既定では、Azure Search のファセット ナビゲーションは 1 レベルのフィルターのみをサポートします。 ただし、回避策は存在します。 階層ごとに 1 つのエントリ ポイントを使用して、 `Collection(Edm.String)` に階層的なファセット構造をエンコードできます。 この回避策の実装は、この記事の範囲外です。 
+前に説明したように、階層でのファセットの入れ子は直接サポートされません。 既定では、Azure Cognitive Search のファセット ナビゲーションは 1 レベルのフィルターのみをサポートしています。 ただし、回避策は存在します。 階層ごとに 1 つのエントリ ポイントを使用して、 `Collection(Edm.String)` に階層的なファセット構造をエンコードできます。 この回避策の実装は、この記事の範囲外です。 
 
 ### <a name="querying-tips"></a>クエリ実行のヒント
 **フィールドの検証**
@@ -302,7 +302,7 @@ if (businessTitleFacet != "")
 ファセットの結果と検索結果の違いに注意してください。 検索結果は、クエリに一致するすべてのドキュメントです。 ファセットの結果は、各ファセットの値と一致するものです。 この例では、検索結果には、ファセット分類リスト (この例では 5) に含まれていない都市名が含まれます。 ファセット ナビゲーションによって除外された結果は、ファセットをクリアするか、または都市以外の他のファセットを選択することによって、表示されるようになります。 
 
 > [!NOTE]
-> 複数の種類があるときの `count` の説明は混乱する可能性があります。 Azure Search API、サンプル コード、ドキュメントで count が使用される方法についてのまとめを以下に示します。 
+> 複数の種類があるときの `count` の説明は混乱する可能性があります。 Azure Cognitive Search API、サンプル コード、ドキュメントでの count の使用方法についてのまとめを以下に示します。 
 
 * `@colorFacet.count`<br/>
   プレゼンテーション コードでは、ファセットの count パラメーターはファセット結果の数を表示するために使用されます。 ファセットの結果では、count はファセットの語句または範囲に一致するドキュメントの数を示します。
@@ -317,7 +317,7 @@ if (businessTitleFacet != "")
 
 **ファセットの数が正確に取得されたかどうかの確認**
 
-特定の状況では、ファセットの数が結果セットと一致しないことがあります (「 [Faceted navigation in Azure Search (Azure Search でのファセット ナビゲーション)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)」 (フォーラムの投稿) を参照)。
+特定の状況では、ファセットの数が結果セットと一致しないことがあります ([Azure Cognitive Search でのファセット ナビゲーションに関するフォーラムの投稿](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)に関する記事を参照)。
 
 シャーディング アーキテクチャのために、ファセットの数が正しくなくなる可能性があります。 すべての検索インデックスに複数のシャードがあり、それぞれのシャードがドキュメント数によって上位 N ファセットを報告すると、単一の結果に結合されます。 一部のシャードの一致値が多く、他のシャードは少ない場合、一部のファセットの値が結果に含まれないか、または数が少なくなる可能性があります。
 
@@ -326,14 +326,14 @@ if (businessTitleFacet != "")
 ### <a name="user-interface-tips"></a>ユーザー インターフェイスのヒント
 **ファセット ナビゲーションの各フィールドのラベルを追加する**
 
-通常、ラベルは HTML またはフォームで定義されます (サンプル アプリケーションでは `index.cshtml`)。 Azure Search には、ファセット ナビゲーションのラベル用または他のメタデータ用の API はありません。
+通常、ラベルは HTML またはフォームで定義されます (サンプル アプリケーションでは `index.cshtml`)。 Azure Cognitive Search には、ファセット ナビゲーションのラベル用または他のメタデータ用の API はありません。
 
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>範囲に基づくフィルター
-検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 範囲は、数値データおよび日時値に対してサポートされています。 各方法の詳細については、「 [Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API))](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。
+検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 範囲は、数値データおよび日時値に対してサポートされています。 各方法の詳細については、[ドキュメントの検索 (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) に関するページを参照してください。
 
-Azure Search では、範囲を計算する 2 つの方法が提供されており、簡単に範囲を作成できます。 どちらの方法でも、ユーザーが提供する入力に基づいて Azure Search が適切な範囲を作成します。 たとえば、範囲の値として 10|20|30 を指定すると、自動的に 0-10、10-20、20-30 という範囲が作成されます。 アプリケーションでは、空の間隔が必要に応じて削除されます。 
+Azure Cognitive Search には、範囲を計算する方法が 2 つあり、簡単に範囲を作成できます。 いずれの方法でも、Azure Cognitive Search は、ユーザーが指定した入力に基づいて適切な範囲を作成します。 たとえば、範囲の値として 10|20|30 を指定すると、自動的に 0-10、10-20、20-30 という範囲が作成されます。 アプリケーションでは、空の間隔が必要に応じて削除されます。 
 
 **方法 1:間隔パラメーターを使用する**  
 $10 刻みの価格ファセットを設定するには、`&facet=price,interval:10` と指定します
@@ -341,13 +341,13 @@ $10 刻みの価格ファセットを設定するには、`&facet=price,interval
 **方法 2:値のリストを使用する**  
 数値データの場合、値のリストを使用できます。  次のように表示される `listPrice` フィールドのファセット範囲について考えます。
 
-  ![値リストの例](media/search-faceted-navigation/Facet-5-Prices.PNG "値リストの例")
+  ![サンプル値のリスト](media/search-faceted-navigation/Facet-5-Prices.PNG "サンプルの値のリスト")
 
 上記のスクリーンショットのようなファセットの範囲を指定するには、値のリストを使用します。
 
     facet=listPrice,values:10|25|100|500|1000|2500
 
-各範囲は始点として 0 を、終点としてリストの値を使用して作成され、前の範囲を除くことによって個別の間隔が作成されます。 Azure Search は、ファセット ナビゲーションの一部としてこれらのことを行います。 各間隔を作成するためのコードを記述する必要はありません。
+各範囲は始点として 0 を、終点としてリストの値を使用して作成され、前の範囲を除くことによって個別の間隔が作成されます。 Azure Cognitive Search は、ファセット ナビゲーションの一部としてこれらのことを行います。 各間隔を作成するためのコードを記述する必要はありません。
 
 ### <a name="build-a-filter-for-a-range"></a>範囲のフィルターの作成
 選択した範囲に基づいてドキュメントをフィルター処理するには、範囲の終点を定義する 2 つの部分からなる式で `"ge"` および `"lt"` フィルター演算子を使用できます。 たとえば、ユーザーが `listPrice` フィールドの範囲 10 ～ 25 を選択した場合、フィルターは `$filter=listPrice ge 10 and listPrice lt 25` となります。 サンプル コードでは、フィルター式は **priceFrom** および **priceTo** パラメーターを使用して終点を設定しています。 
@@ -359,19 +359,19 @@ $10 刻みの価格ファセットを設定するには、`&facet=price,interval
 ## <a name="filter-based-on-distance"></a>距離に基づくフィルター
 現在の位置に近い店、レストラン、目的地を選択するのにフィルターが役立つことがよくあります。 この種のフィルターはファセット ナビゲーションのように見えますが、単なるフィルターです。 ここでは、この特定の設計上の問題に対する実装に関する助言を求めているユーザーのためにこれについて説明します。
 
-Azure Search には、**geo.distance** および **geo.intersects** という 2 つの地理空間関数があります。
+Azure Cognitive Search には、**geo.distance** および **geo.intersects** という 2 つの地理空間関数があります。
 
 * **geo.distance** 関数は、2 つの点の間の距離を、キロメートル単位で返します。 1 つはフィールドで、もう 1 つはフィルターの一部として定数で渡されます。 
 * **geo.intersects** 関数は、指定された点が指定された多角形の内部にある場合は true を返します。 点はフィールドとして、多角形は座標の定数リストとして指定されて、フィルターの一部として渡されます。
 
-フィルターの例については、「 [Azure Search の OData 式の構文](query-odata-filter-orderby-syntax.md)」を参照してください。
+フィルターの例については、[Azure Cognitive Search の OData 式の構文](query-odata-filter-orderby-syntax.md)に関するページを参照してください。
 
 <a name="tryitout"></a>
 
 ## <a name="try-the-demo"></a>デモの試用
-この記事で参照されている例は、Azure Search Job Portal Demo に含まれています。
+この記事で参照されている例は、Azure Cognitive Search ジョブ ポータル デモに含まれています。
 
--   「[Azure Search Job Portal Demo](https://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
+-   [Azure Cognitive Search ジョブ ポータル デモ](https://azjobsdemo.azurewebsites.net/)に関するページにある実際に使用可能なデモをオンラインで参照し、テストしてください。
 
 -   [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 
@@ -396,7 +396,7 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>詳細情報
-「[Azure Search Deep Dive (Azure Search の詳細)](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」を参照してください。 45:25 の部分に、ファセットの実装方法のデモがあります。
+[Azure Cognitive Search の詳細](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)に関するページを参照してください。 45:25 の部分に、ファセットの実装方法のデモがあります。
 
 ファセット ナビゲーションの設計の原則の詳細については、次のリンクをお勧めします。
 

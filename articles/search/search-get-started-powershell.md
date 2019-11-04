@@ -1,22 +1,22 @@
 ---
-title: クイック スタート:REST API シリーズを使用して PowerShell で検索インデックスを作成する - Azure Search
-description: PowerShell の Invoke-RestMethod と Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
-ms.date: 09/10/2019
-author: heidisteen
+title: クイック スタート:REST API を使用して PowerShell で検索インデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: PowerShell の Invoke-RestMethod と Azure Cognitive Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 manager: nitinme
+author: heidisteen
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: ab82406fa151f5889a563d8154e02da921f1c4e6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: e9b2b8e8b3585bc747efb5b2916ddf1fe07d3645
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881723"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792246"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>クイック スタート:REST API を使用して PowerShell に Azure Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>クイック スタート:REST API を使用して PowerShell に Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "70881723"
 > * [ポータル](search-create-index-portal.md)
 > 
 
-この記事では、PowerShell および [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Search のインデックスを作成、読み込み、クエリを実行するプロセスについて説明します。 この記事では、PowerShell コマンドを対話的に実行する方法について説明します。 または、同じ操作を実行する [PowerShell スクリプトをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)こともできます。
+この記事では、PowerShell および [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Cognitive Search のインデックスを作成、読み込み、クエリを実行するプロセスについて説明します。 この記事では、PowerShell コマンドを対話的に実行する方法について説明します。 または、同じ操作を実行する [PowerShell スクリプトをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -35,11 +35,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 + [PowerShell 5.1 以降](https://github.com/PowerShell/PowerShell) (シーケンシャルおよび対話型の手順で [Invoke-restmethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) を使用します)。
 
-+ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
@@ -49,7 +49,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-## <a name="connect-to-azure-search"></a>Azure Search への接続
+## <a name="connect-to-azure-cognitive-search"></a>Azure Cognitive Search に接続する
 
 1. PowerShell では、 **$headers** オブジェクトを作成して、コンテンツ タイプと API キーを格納します。 管理 API キー (YOUR-ADMIN-API-KEY) を検索サービスに有効なキーに置き換えます。 このヘッダーはセッション中に 1 度設定するだけで済みますが、すべての要求に追加されます。 
 
@@ -323,7 +323,7 @@ $url の検索では、必ず単一引用符を使用してください。 ク�
 
 1. *hotels-quickstart* ドキュメント コレクションへのエンドポイントを設定し、**search** パラメーターを追加してクエリ文字列を渡します。 
   
-   この文字列では、空の検索が実行され (search=*)、任意のドキュメントのランクなしの一覧 (search score = 1.0) が返されます。 既定では、Azure Search によって一度に 50 件の結果が返されます。 構造化されているので、このクエリではドキュメント全体の構造と値が返されます。 **$count=true** を追加して、結果に含まれるすべてのドキュメントの数を取得します。
+   この文字列では、空の検索が実行され (search=*)、任意のドキュメントのランクなしの一覧 (search score = 1.0) が返されます。 既定では、Azure Cognitive Search から一度に 50 個の一致が返されます。 構造化されているので、このクエリではドキュメント全体の構造と値が返されます。 **$count=true** を追加して、結果に含まれるすべてのドキュメントの数を取得します。
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
@@ -401,7 +401,7 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、PowerShell を使用して、Azure Search でコンテンツを作成してアクセスするための基本的なワークフローをステップ実行しました。 この概念を考慮に入れて、Azure データ ソースからインデックスを付けるなど、より高度なシナリオに進むことをお勧めします。
+このクイックスタートでは、PowerShell を使用して、Azure Cognitive Search でコンテンツを作成してアクセスするための基本的なワークフローをステップ実行しました。 この概念を考慮に入れて、Azure データ ソースからインデックスを付けるなど、より高度なシナリオに進むことをお勧めします。
 
 > [!div class="nextstepaction"]
-> [REST チュートリアル: Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索](search-semi-structured-data.md)
+> [REST チュートリアル: Azure Cognitive Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索](search-semi-structured-data.md)

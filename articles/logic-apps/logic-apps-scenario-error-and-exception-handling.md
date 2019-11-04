@@ -1,6 +1,6 @@
 ---
-title: 例外処理とエラー ロギングのシナリオ - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps の高度な例外処理とエラー ロギングに関する実際のユース ケースを紹介します
+title: 例外処理とエラーのログ記録のシナリオ - Azure Logic Apps
+description: Azure Logic Apps での高度な例外処理とエラーのログ記録に関する実際のユース ケースとシナリオ
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,12 +10,12 @@ ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385463"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680160"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジック アプリの例外処理とエラーのログ記録
 
@@ -40,9 +40,9 @@ ms.locfileid: "68385463"
 
 ## <a name="how-we-solved-the-problem"></a>問題の解決方法
 
-ここでは、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") をログとエラーのレコードを格納するリポジトリとして選びました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
+ここでは、ログおよびエラー レコードのリポジトリとして [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") を選択しました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
-もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
+もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には、レコードまたはコレクションごとに **Time to Live** 値を設定できる [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) と呼ばれるプロパティがあります。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
 
 > [!IMPORTANT]
 > このチュートリアルの作業を行うためには、Cosmos DB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。
@@ -479,7 +479,7 @@ Azure Cosmos DB 内の各ドキュメントには、一意 ID が割り当てら
 
 ### <a name="source-code"></a>ソース コード
 
-lLogic Apps 例外管理 API アプリケーションのソース コードは、こちらの [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")のサイトでプロジェクトの概要ビデオをご覧いただけます。
+Logic Apps 例外管理 API アプリケーションのソース コードは、この [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")で入手できます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 85905f97500848be0e17da7d8a65209878713fc2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516533"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900927"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C# でデバイス アプリケーションと通信する (プレビュー)
 
@@ -33,6 +33,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 * デバイス ストリームのプレビューは現在、以下のリージョンで作成された IoT ハブに対してのみサポートされています。
   * 米国中部
   * 米国中部 EUAP
+  * 北ヨーロッパ
+  * 東南アジア
 
 * このクイックスタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発マシン上に .NET Core SDK 2.1.0 以降が必要です。
   * [複数のプラットフォームに対応する .NET Core SDK を .NET から](https://www.microsoft.com/net/download/all)ダウンロードします。

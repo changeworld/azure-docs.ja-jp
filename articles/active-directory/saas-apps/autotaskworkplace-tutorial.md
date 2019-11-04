@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a9a7ff71-c389-4169-aafd-d7a505244797
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7be7d8b9fc9aa8b6c9c1d888744c25d710ca79a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97a68fd74449ea34438348cbc4c9d09c06d46d71
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106496"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>チュートリアル:Azure Active Directory と Autotask Workplace の統合
 

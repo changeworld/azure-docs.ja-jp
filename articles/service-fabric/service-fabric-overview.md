@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0226c9f1b90495cdfd47a5c5c7a415a36761753d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816098"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901588"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド ネイティブ アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Service Fabric は、コンテナーで実行するこれらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代プラットフォームの代表例です。
@@ -36,9 +36,7 @@ Service Fabric を使用すると、マシンの共有プール (クラスター
 
 現在、Service Fabric は、Azure SQL Database、Azure Cosmos DB、Cortana、Microsoft Power BI、Microsoft Intune、Azure Event Hubs、Azure IoT Hub、Dynamics 365、Skype for Business、などの Azure の核となる多くのサービスを含む、さまざまな Microsoft サービスで使用されています。
 
-Service Fabric は、クラウド ネイティブのサービスの作成用に調整されています。これらのサービスは、必要に応じて小規模で開始し、数百または数千ものコンピューターを含むとても大きなスケールまで拡張することができます。
-
-現在のインターネット規模のサービスは、マイクロサービスで構築されています。 マイクロサービスの例としては、プロトコル ゲートウェイ、ユーザー プロファイル、ショッピング カート、インベントリ処理、キュー、キャッシュなどが挙げられます。 Service Fabric は、すべてのマイクロサービス (またはコンテナー) にステートレスまたはステートフルな一意の名前を指定するマイクロサービス プラットフォームです。
+Service Fabric は、クラウド ネイティブのサービスの作成用に調整されています。これらのサービスは、必要に応じて小規模で開始し、数百または数千ものコンピューターを含むとても大きなスケールまで拡張することができます。 現在のインターネット規模のサービスは、マイクロサービスで構築されています。 マイクロサービスの例としては、プロトコル ゲートウェイ、ユーザー プロファイル、ショッピング カート、インベントリ処理、キュー、キャッシュなどが挙げられます。 
 
 Service Fabric は、これらのマイクロサービスで構成されたアプリケーションに対して、包括的なランタイムおよびライフサイクル管理機能を提供します。 Service Fabric クラスター間にわたってデプロイされアクティブ化されるマイクロサービスを、コンテナー内にホストします。 仮想マシンからコンテナーへの移行によって密度を 1 桁増やすことができます。 同様に、コンテナーからコンテナー内のマイクロサービスへの移行によっても、密度を 1 桁増やすことができます。 たとえば、単一の Azure SQL Database クラスターは、合計数十万のデータベースをホストする数万のコンテナーを実行する数百のマシンで構成されます。 各データベースは Service Fabric ステートフル マイクロサービスです。 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 37e833e5ba2fcbc9fcfe0a27d5b607a5c6cdd55b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079527"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898868"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM のテンプレートをダウンロードする
 Azure でポータルまたは PowerShell を使用して VM を作成する際に、Resource Manager テンプレートが自動的に作成されます。 このテンプレートを使用すると、デプロイを簡単に複製できます。 テンプレートには、リソース グループ内のすべてのリソースに関する情報が含まれています。 仮想マシンの場合、これはそのリソース グループ内の VM をサポートするために作成されたすべてのもの (ネットワーク リソースなど) がテンプレートに含まれていることを意味します。
@@ -32,10 +32,6 @@ Azure でポータルまたは PowerShell を使用して VM を作成する際�
 5. 上部のメニューから **[ダウンロード]** を選択して .zip ファイルをローカル コンピューターに保存します。
 6. .zip ファイルを開き、ファイルをフォルダーに展開します。 .zip ファイルには以下が含まれています。
    
-   * deploy.ps1
-   * deploy.sh 
-   * deployer.rb
-   * DeploymentHelper.cs
    * parameters.json
    * template.json
 

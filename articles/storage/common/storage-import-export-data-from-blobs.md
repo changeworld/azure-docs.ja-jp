@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e542ad59f6fd64b52aef9438ed0f646e9e36fc4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3166c1f97a81c12b75dd400f591fd92a705cadf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209621"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73178041"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Blob Storage から安全にエクスポートする手順について説明します。 このサービスを利用するには、Azure データセンターに空のドライブを送付する必要があります。 このサービスでは、ストレージ アカウントからドライブにデータをエクスポートし、ドライブを返送します。
@@ -127,7 +127,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 この*省略可能*な手順は、エクスポート ジョブに必要なドライブ数を決定するために役立ちます。 [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システム上でこの手順を実行します。
 
-1. Windows システムに [WAImportExport バージョン 1 をダウンロード](https://aka.ms/waiev1)します。 
+1. Windows システムに [WAImportExport バージョン 1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=42659)します。 
 2. 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
 3. 管理者特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
     

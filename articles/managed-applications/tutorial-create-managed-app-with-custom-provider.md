@@ -1,5 +1,5 @@
 ---
-title: カスタム アクションおよびリソースを備えた Azure マネージド アプリケーションを作成する
+title: カスタムのアクションとリソースを備えた Azure マネージド アプリケーション
 description: このチュートリアルでは、Azure カスタム プロバイダーを備えた Azure マネージド アプリケーションを作成する方法について説明します。
 services: managed-applications
 ms.service: managed-applications
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.openlocfilehash: 3dd0887114156956b55f554d0265e3ca2b9b10ab
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f70bb768dae3de80f85ffc49558b9ef51d2fce49
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336107"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529205"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>チュートリアル:カスタム アクションおよびリソースを備えたマネージド アプリケーションを作成する
 

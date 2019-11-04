@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119732"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243000"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -33,7 +33,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 | ディスクの空き領域 (リテンション ディスク) | 600 GB|
 | オペレーティング システム  | Windows Server 2012 R2 <br> Windows Server 2016 |
 | オペレーティング システムのロケール | 英語 (米国)|
-| VMware vSphere PowerCLI のバージョン | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
+| VMware vSphere PowerCLI のバージョン | 必要なし|
 | Windows Server の役割 | これらの役割を有効にしないでください。 <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V |
 | グループ ポリシー| これらのグループ ポリシーを有効にしないでください。 <br> - コマンド プロンプトへのアクセス禁止 <br> - レジストリ編集ツールへのアクセス禁止 <br> - ファイル添付の信頼ロジック <br> - スクリプト実行の有効化 <br> [詳細情報](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | - 既存の Web サイトが存在しない <br> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない<br>|
@@ -108,7 +108,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 
 ### <a name="parameters"></a>parameters
 
-|パラメーター名| Type | 説明| 値|
+|パラメーター名| 種類 | 説明| 値|
 |-|-|-|-|
 | /ServerMode|必須|構成サーバーとプロセス サーバーの両方をインストールするか、プロセス サーバーだけをインストールするかを指定します。|CS<br>PS|
 |/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|

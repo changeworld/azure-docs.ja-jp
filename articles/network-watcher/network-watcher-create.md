@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c97f6dff17896b8a58c17aed9063e0b2b5733503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd293c2815721295715c5e02846c55d4cdb74a32
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681572"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693483"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher のインスタンスの作成
 
@@ -101,6 +101,26 @@ $requestBody = @"
 "@
 
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
+```
+
+## <a name="delete-a-network-watcher-in-the-portal"></a>ポータル上で Network Watcher を削除する
+
+**[すべてのサービス]**  >  **[ネットワーク]**  >  **[Network Watcher]** の順に移動します。
+
+まだ選択されていない場合は、[概要] タブを選択します。 ドロップダウンを使用して、Network Watcher を無効にするサブスクリプションを選択します。
+矢印をクリックして、選択したサブスクリプションに対するリージョンの一覧を展開します。 いずれの場合でも、右側にある 3 つの点を使用してコンテキスト メニューにアクセスします。
+無効化を開始するには、[Network Watcher の無効化] をクリックします。 この手順を確定するように求められます。 [はい] をクリックして続行します。
+ポータル上で、すべてのサブスクリプションにおいてリージョンごとに個別にこれを行う必要があります。
+
+
+## <a name="delete-a-network-watcher-with-powershell"></a>PowerShell を使用して Network Watcher を削除する
+
+Network Watcher のインスタンスを削除するには、次の例を実行します。
+
+```powershell
+New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
+New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e84becde-64bf-4089-be06-7555616b0965
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 01ca2129ee31c1f51ee87995d550b6cf258fc49a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8ea503343f05f8b7ae5f121f3365f82794be2f3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103117"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73156778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>チュートリアル:Azure Active Directory と ExcelityGlobal の統合
 

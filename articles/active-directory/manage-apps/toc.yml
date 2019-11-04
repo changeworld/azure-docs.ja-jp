@@ -131,10 +131,14 @@
           items:
             - name: ユーザーの同意の構成
               href: configure-user-consent.md
+            - name: 管理者の同意ワークフローの構成 (プレビュー)
+              href: configure-admin-consent-workflow.md
             - name: ユーザーとグループをアプリに割り当てる方法
               href: methods-for-assigning-users-and-groups.md
             - name: アプリへのユーザーの割り当て
               href: assign-user-or-group-access-portal.md
+            - name: マイ アプリでのワークスペースの作成 (プレビュー)
+              href: access-panel-workspaces.md
             - name: セルフサービス アプリ アクセスの使用
               href: access-panel-manage-self-service-access.md
             - name: アプリへのユーザーのアクセスを削除する方法
@@ -155,6 +159,8 @@
               href: migration-resources.md
             - name: Azure への ADFS アプリの移行
               href: migrate-adfs-apps-to-azure.md
+            - name: AD FS アプリケーション アクティビティ レポートの使用 (プレビュー)
+              href: migrate-adfs-application-activity.md
         - name: トラブルシューティング
           items:
             - name: アプリの追加のトラブルシューティング

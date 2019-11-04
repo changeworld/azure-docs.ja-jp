@@ -40,8 +40,8 @@
               href: data-lake-analytics-manage-use-nodejs.md
         - name: Add users
           href: data-lake-analytics-add-users.md
-        - name: ポリシー
-          href: data-lake-analytics-policies.md
+        - name: アカウント ポリシー
+          href: data-lake-analytics-account-policies.md
         - name: ジョブ フォルダーをセキュリティ保護する
           href: data-lake-analytics-secure.md
         - name: 診断ログにアクセスする
@@ -118,6 +118,14 @@
           href: data-lake-analytics-cicd-test.md
         - name: U-SQL SDK
           href: data-lake-analytics-u-sql-sdk.md
+    - name: U-SQL 開発者向けの Apache Spark について
+      items:
+        - name: U-SQL 開発者向けの Apache Spark について
+          href: data-lake-analytics-understand-spark-for-usql-developers.md
+        - name: Apache Spark のデータ形式について
+          href: data-lake-analytics-understand-spark-data-formats.md
+        - name: Apache Spark のコードの概念ついて
+          href: data-lake-analytics-understand-spark-code-concepts.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

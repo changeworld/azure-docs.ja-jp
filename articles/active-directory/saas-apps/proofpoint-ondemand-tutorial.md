@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 773e7f7d-ec31-411b-860d-6a6633335d43
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa16f8b4ebe51a6adc9ea4ee32853715b641541
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34bdd8561b30358e3cb5c9a64ed4405ba8d94588
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094139"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>チュートリアル:Azure Active Directory と Proofpoint on Demand の統合
 

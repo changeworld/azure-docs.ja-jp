@@ -1,24 +1,18 @@
 ---
 title: Operations Manager を Azure Monitor に接続する | Microsoft Docs
 description: Operations Manager とワークスペースを統合することで、System Center Operations Manager への投資を維持しながら、Log Analytics で拡張機能を利用することができます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/13/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/13/2019
+ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035615"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162237"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -34,7 +28,7 @@ System Center Operations Manager と統合すると、Operations Manager から�
 
 Operations Manager の管理グループに報告するエージェントでは、ワークスペースで有効にされている [Log Analytics データ ソース](agent-data-sources.md)とソリューションに基づいてサーバーからデータが収集されます。 有効にされているソリューションに応じて、データは Operations Manager 管理サーバーからサービスに直接送信されるか、あるいはエージェント管理システムで収集されたデータ量を考慮して、エージェントから Log Analytics ワークスペースに直接送信されます。 管理サーバーはサービスにデータを直接に転送するため､運用データベースやデータ ウェアハウス データベースにデータが書き込まれることはありません｡ 管理サーバーでは、Azure Monitor との接続が失われると、通信が再度確立されるまで、データはローカル環境にキャッシュされます。 保守計画または突然の停電が原因で管理サーバーがオフラインになった場合は、管理グループの別の管理サーバーによって Azure Monitor との接続が再開されます。  
 
-次の図では､System Center Operations Manager 管理グループの管理サーバーおよびエージェントと、Azure Monitor の間の接続 (方向とポートを含む) が示されています。   
+次の図では､System Center Operations Manager 管理グループの管理サーバーおよびエージェントと、Azure Monitor の間の接続 (方向とポートを含む) が示されています。
 
 ![oms-operations-manager-integration-diagram](./media/om-agents/oms-operations-manager-connection.png)
 
@@ -65,7 +59,7 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 >[!NOTE]
 >Azure API の最近の変更により、初めて管理グループと Azure Monitor 間の統合を構成する場合、正常に構成できなくなります。 管理グループを既にサービスに統合しているお客様は、既存の接続を再構成する必要がない限り、影響を受けることはありません。  
 >Operations Manager の次のバージョン用に新しい管理パックがリリースされました。
-> - System Center Operations Manager 2019 の場合、Operations Manager ビルドで管理パックが提供されます。
+> - System Center Operations Manager 2019 の場合、この管理パックはソース メディアに含まれており、新しい管理グループの設定中またはアップグレード中にインストールされます。
 >- Operations Manager 1801 管理パックは Operations Manager 1807 にも適用できます。
 >- System Center Operations Manager 1801 の管理パックは[こちら](https://www.microsoft.com/download/details.aspx?id=57173)からダウンロードできます。
 >- System Center 2016 - Operations Manager の管理パックは[こちら](https://www.microsoft.com/download/details.aspx?id=57172)からダウンロードできます。  
@@ -74,9 +68,9 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 
 ### <a name="network"></a>ネットワーク
 
-以下の情報は、Operations Manager のエージェントと管理サーバー、Operations コンソールが Azure Monitor と通信するために必要なプロキシーとファイアウォールの構成情報の一覧です。 各コンポーネントからのトラフィックは、ネットワークから Azure Monitor への送信です。   
+以下の情報は、Operations Manager のエージェントと管理サーバー、Operations コンソールが Azure Monitor と通信するために必要なプロキシーとファイアウォールの構成情報の一覧です。 各コンポーネントからのトラフィックは、ネットワークから Azure Monitor への送信です。
 
-|Resource | ポート番号| バイパス HTTP 検査|  
+|リソース | ポート番号| バイパス HTTP 検査|  
 |---------|------|-----------------------|  
 |**エージェント**|||  
 |\*.ods.opinsights.azure.com| 443 |はい|  
@@ -233,7 +227,7 @@ Operations Manager との統合を有効にしたソリューションの管理�
     >
 
 1. コマンド シェル プロンプトで、「 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-1. 次に、「 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. 次に、「 `Get-SCOMManagementPack -name "*IntelligencePack*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. 他の System Center Advisor 管理パックに依存している残りの管理パックを削除するには、TechNet スクリプト センターからダウンロードしたスクリプト *RecursiveRemove.ps1* を使用します。  
 
     > [!NOTE]
@@ -259,8 +253,8 @@ Operations Manager との統合を有効にしたソリューションの管理�
 Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つのコネクタを削除するには、次の PowerShell スクリプトを自分のコンピューターに保存した後、次の例に従って実行します。
 
 ```
-    .\OM2012_DeleteConnectors.ps1 “Advisor Connector” <ManagementServerName>
-    .\OM2012_DeleteConnectors.ps1 “Microsoft.SystemCenter.Advisor.DataConnector” <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 "Advisor Connector" <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 "Microsoft.SystemCenter.Advisor.DataConnector" <ManagementServerName>
 ```
 
 > [!NOTE]

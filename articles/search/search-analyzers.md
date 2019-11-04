@@ -8,12 +8,12 @@ ms.date: 08/08/2019
 ms.author: heidist
 manager: nitinme
 author: HeidiSteen
-ms.openlocfilehash: 387248b2dac7c10ec0e96454f26964ca7f15c56e
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 85ebc75a22a4b27803df758d3f411a46a6206eb7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650007"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987619"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
 
@@ -312,7 +312,7 @@ Azure Search でサポートされているテキスト アナライザーを提
 
 カスタマイズまたは構成が必要な場合は、アナライザーのコンストラクトをインデックスに追加する必要があります。 定義したら、前の例で示したようにそれをフィールド定義に追加できます。
 
-[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) オブジェクトを作成します。 その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
+[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) オブジェクトを作成します。 その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
 
 ```csharp
 {

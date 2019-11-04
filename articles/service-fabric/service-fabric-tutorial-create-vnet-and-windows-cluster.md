@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598881"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177989"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Windows を実行する Service Fabric クラスターをデプロイする
 
@@ -112,7 +112,6 @@ ms.locfileid: "68598881"
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB: 445
 * ノード間通信: 1025、1026、1027
 * 一時的なポート範囲: 49152 から 65534 (256 ポート以上が必要)。
 * アプリケーション用のポート: 80 および 443

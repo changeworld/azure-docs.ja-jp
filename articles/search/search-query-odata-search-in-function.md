@@ -1,13 +1,13 @@
 ---
-title: OData の search.in 関数リファレンス - Azure Search
-description: Azure Search クエリにおける OData の search.in 関数。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData の search.in 関数リファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリにおける OData の search.in 関数。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8bac0205fa2de8378abaa4d9e8ba8e05ea69192e
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f641e50554e720d273735fd20032e60444cb198a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647937"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793292"
 ---
-# <a name="odata-searchin-function-in-azure-search"></a>Azure Search における OData の `search.in` 関数
+# <a name="odata-searchin-function-in-azure-cognitive-search"></a>Azure Cognitive Search における OData の `search.in` 関数
 
 [OData フィルター式](query-odata-filter-orderby-syntax.md)の一般的なシナリオは、各ドキュメントの 1 つのフィールドが多数の可能な値のいずれかと等しいかどうかを調べることです。 たとえば、一部のアプリケーションでは、1 つ以上のプリンシパル ID を含むフィールドを、クエリを発行するユーザーを表すプリンシパル ID のリストと照合することで、[セキュリティによるトリミング](search-security-trimming-for-azure-search.md)を実装しています。 このようなクエリを記述する 1 つの方法として、[`eq`](search-query-odata-comparison-operators.md) および [`or`](search-query-odata-logical-operators.md) 演算子を使用します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "69647937"
 > `search.in` を使用すると、より簡潔で読みやすくなるだけでなく、[パフォーマンス上の利点](#bkmk_performance)も得られます。また、フィルターに含める値が数百または数千になる場合に、[フィルターの特定のサイズ制限](search-query-odata-filter.md#bkmk_limits)を回避することもできます。 そのため、等値式のより複雑な論理和演算ではなく、`search.in` を使用することを強くお勧めします。
 
 > [!NOTE]
-> OData 標準のバージョン 4.01 では、Azure Search の `search.in` 関数と同様に動作する [`in` 演算子](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)が最近導入されました。 ただし、Azure Search ではこの演算子はサポートされていないので、代わりに `search.in` 関数を使用する必要があります。
+> OData 標準のバージョン 4.01 では、Azure Cognitive Search の `search.in` 関数と同様に動作する [`in` 演算子](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)が最近導入されました。 しかし、Azure Cognitive Search では、この演算子はサポートされていないので、代わりに `search.in` 関数を使用する必要があります。
 
 ## <a name="syntax"></a>構文
 
@@ -56,10 +56,10 @@ search_in_call ::=
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
 
 > [!NOTE]
-> 完全な EBNF については、「[OData expression syntax reference for Azure Search (Azure Search の OData 式構文リファレンス)](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 `search.in` 関数では、指定された文字列フィールドまたは範囲変数が、指定されたリストの値のいずれかと等しいかどうかをテストします。 変数とリストの各値が等しいかどうかは、`eq` 演算子の場合と同様に、大文字と小文字を区別して判断されます。 そのため、`search.in(myfield, 'a, b, c')` のような式は、`search.in` の方がパフォーマンスが良いという点を除き、`myfield eq 'a' or myfield eq 'b' or myfield eq 'c'` に等しくなります。
 
@@ -70,7 +70,7 @@ search_in_call ::=
 
 次の表では、各パラメーターを定義しています。
 
-| パラメーター名 | Type | 説明 |
+| パラメーター名 | 種類 | 説明 |
 | --- | --- | --- |
 | `variable` | `Edm.String` | 文字列フィールド参照 (`search.in` が `any` または `all` 式内で使用されている場合は、文字列コレクション フィールドの範囲変数)。 |
 | `valueList` | `Edm.String` | `variable` パラメーターと照合する値の区切りリストを含む文字列。 `delimiters` パラメーターが指定されていない場合、既定の区切り記号はスペースとコンマです。 |
@@ -106,7 +106,7 @@ search_in_call ::=
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

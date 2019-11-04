@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 4962070d69af98d0c7b10dc6f931612766529dce
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7b09dcbd474debc08b79599e9e2dfaaca52285a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515710"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754698"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの設定のカスタマイズ
 
@@ -63,6 +63,8 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 1. カスタム セットアップ スクリプトとその関連ファイル (たとえば、.bat、.cmd、.exe、.dll、.msi、または .ps1 ファイル) を準備します。
 
    1.  カスタム セットアップのエントリ ポイントである `main.cmd` という名前のスクリプト ファイルを保持している必要があります。
+
+   1.  スクリプトを自動的に実行できることを確認する必要があります。まずは、ローカル コンピューター上でスクリプトをテストすることをお勧めします。
 
    1.  他のツール (`msiexec.exe` など) で生成された追加ログをコンテナーにアップロードする場合は、事前定義された環境変数 `CUSTOM_SETUP_SCRIPT_LOG_DIR` をお使いのスクリプトのログ フォルダー として指定します (たとえば、`msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`)。
 

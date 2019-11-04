@@ -1,13 +1,13 @@
 ---
-title: OData 式構文リファレンス - Azure Search
-description: Azure Search クエリでの OData 式の正式な文法と構文仕様。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 式の構文リファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリにおける OData 式の正式な文法と構文仕様。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5d7e6456cd6a6648ff2ca38ecbb4f2de5479d7c9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647492"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793226"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>Azure Search の OData 式構文リファレンス
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure Cognitive Search の OData 式構文リファレンス
 
-Azure Search では、API 全体でパラメーターとして [OData 式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)を使用します。 `$orderby` および `$filter` パラメーターに OData 式を使用するのが最も一般的です。 これらの式は、複数の句、関数、および演算子を含む複合式になることがあります。 ただし、Azure Search REST API の多くの部分では、プロパティ パスのような単純な OData 式も使用されます。 たとえば、[suggester](index-add-suggesters.md) 内のサブフィールドの一覧表示、[スコアリング関数](index-add-scoring-profiles.md)、`$select` パラメーター、さらには [Lucene クエリのフィールド化検索](query-lucene-syntax.md)など、API のいたるところで、パス式を使用して複合フィールドのサブフィールドを参照します。
+Azure Cognitive Search では、API 全体でパラメーターとして [OData 式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)を使用します。 `$orderby` および `$filter` パラメーターに OData 式を使用するのが最も一般的です。 これらの式は、複数の句、関数、および演算子を含む複合式になることがあります。 ただし、Azure Cognitive Search REST API の多くの部分では、プロパティ パスのようなシンプルな OData 式も使用されます。 たとえば、[suggester](index-add-suggesters.md) 内のサブフィールドの一覧表示、[スコアリング関数](index-add-scoring-profiles.md)、`$select` パラメーター、さらには [Lucene クエリのフィールド化検索](query-lucene-syntax.md)など、API のいたるところで、パス式を使用して複合フィールドのサブフィールドを参照します。
 
 この記事では、これらすべての形式の OData 式について、正式な文法を使用して説明します。 文法を視覚的に調べるために役立つ[対話形式のダイアグラム](#syntax-diagram)もあります。
 
 ## <a name="formal-grammar"></a>正式な文法
 
-Azure Search でサポートされている OData 言語のサブセットは、EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 文法を使用して記述できます。 規則は "トップダウン" で列挙しています。最も複雑な式から始めて、よりプリミティブな式に分解していきます。 上部には、Azure Search REST API の特定のパラメーターに対応する文法規則があります。
+Azure Cognitive Search でサポートされている OData 言語のサブセットは、EBNF ([拡張バッカス・ナウア記法](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 文法を使用して記述できます。 規則は "トップダウン" で列挙しています。最も複雑な式から始めて、よりプリミティブな式に分解していきます。 上部には、Azure Cognitive Search REST API の特定のパラメーターに対応する文法規則があります。
 
 - [`$filter`](search-query-odata-filter.md)、`filter_expression` 規則によって定義。
 - [`$orderby`](search-query-odata-orderby.md)、`order_by_expression` 規則によって定義。
@@ -209,14 +209,14 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="syntax-diagram"></a>構文ダイアグラム
 
-Azure Search でサポートされている OData 言語の文法を視覚的に調べるには、対話形式の構文ダイアグラムを試してみてください。
+Azure Cognitive Search でサポートされている OData 言語の文法を視覚的に調べるには、対話形式の構文ダイアグラムを試してみてください。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>関連項目  
 
-- [Azure Search のフィルター](search-filters.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene クエリ構文](query-lucene-syntax.md)
-- [Azure Search の単純なクエリ構文](query-simple-syntax.md)
+- [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)

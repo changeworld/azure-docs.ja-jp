@@ -14,16 +14,16 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8e3187ba399ffa4d6c0ca863380205f7fbbfaae8
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 44bb0e615453450c401949f0ce76f15cb82fab67
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036116"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680545"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>受信ネットワーク セキュリティ グループ ルールの追加
 
-このサンプル スクリプトは、ポート 8081 で受信トラフィックを許可するネットワーク セキュリティ グループ ルールを作成します。  このスクリプトは、クラスターがある `Microsoft.Network/networkSecurityGroups` リソースを取得し、新しいネットワーク セキュリティ構成ルールを作成し、ネットワーク セキュリティ グループを更新します。 必要に応じてパラメーターをカスタマイズします。
+このサンプル スクリプトは、ポート 8081 で受信トラフィックを許可するネットワーク セキュリティ グループ ルールを作成します。  このスクリプトでは、ネットワーク セキュリティ グループを取得し、新しいネットワーク セキュリティ構成ルールを作成し、ネットワーク セキュリティ グループを更新します。 必要に応じてパラメーターをカスタマイズします。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

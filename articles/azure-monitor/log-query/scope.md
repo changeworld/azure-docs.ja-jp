@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor Log Analytics のログ クエリのスコープ | Microsoft Docs
 description: Azure Monitor Log Analytics のログ クエリのスコープと時間範囲について説明します。
-services: log-analytics
-author: bwren
-manager: carmonm
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/25/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e67dcb1236fd5ef113835dfe99de444fc2594481
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 06/25/2019
+ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405747"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900231"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics のログ クエリのスコープと時間範囲
 [Azure portal の [Log Analytics]](get-started-portal.md) で[ログ クエリ](log-query-overview.md)を実行するとき、クエリによって評価されるデータのセットは、選択したスコープと時間範囲によって異なります。 この記事では、スコープと時間範囲、および要件に応じてそれぞれを設定する方法について説明します。 さまざまな種類のスコープの動作についても説明します。

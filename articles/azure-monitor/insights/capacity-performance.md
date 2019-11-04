@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor の Capacity and Performance ソリューション | Microsoft Docs
 description: Monitor の Capacity and Performance ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/13/2017
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: fcf71bf144b559c4867303988d4c1f08b7aa5605
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/13/2017
+ms.openlocfilehash: 8b130b800b53afadc40e0c9b9a2b730f24da396e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101916"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899055"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Capacity and Performance ソリューション (非推奨) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -124,7 +118,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 以下の表は、容量とパフォーマンスに関してこのソリューションで収集および計算されるデータを取得するためのログ検索のサンプルを示したものです。
 
 
-| Query | 説明 |
+| クエリ | 説明 |
 |:--- |:--- |
 | ホストのメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | VM のメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |

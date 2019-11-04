@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 2aa8b413ff6489e9d893b17348f7a0760527dbda
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3ab412da9c8ec857db2c0758e19491898165728f
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299062"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200662"
 ---
 # <a name="overview-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 のブループリント サンプルの概要
 

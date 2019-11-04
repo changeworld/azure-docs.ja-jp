@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3df3d73e-80a4-4b35-bd3d-90bc4f6f6afd
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3474c576ccc08ae22ddee2955aacc4c72d25c4f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8261ab34398d8961faf0abda8df17db1be3bfdd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102739"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>チュートリアル:Azure Active Directory と Expiration Reminder の統合
 

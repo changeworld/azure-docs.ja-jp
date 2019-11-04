@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 10/28/2019
+ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091480"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162887"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight の Apache Hadoop アーキテクチャ
 
@@ -24,20 +24,20 @@ ms.locfileid: "71091480"
 
 この記事では、YARN と、それが HDInsight 上でのアプリケーションの実行をどのように調整するかを紹介します。
 
-## <a name="apache-hadoop-yarn-basics"></a>Apache Hadoop YARN の基本 
+## <a name="apache-hadoop-yarn-basics"></a>Apache Hadoop YARN の基本
 
-YARN は、Hadoop でのデータ処理を管理および調整します。 YARN には、クラスター内のノード上のプロセスとして実行される 2 つのコア サービスがあります。 
+YARN は、Hadoop でのデータ処理を管理および調整します。 YARN には、クラスター内のノード上のプロセスとして実行される 2 つのコア サービスがあります。
 
-* ResourceManager 
+* ResourceManager
 * NodeManager
 
-ResourceManager は、MapReduce ジョブなどのアプリケーションにクラスター コンピューティング リソースを付与します。 ResourceManager は、これらのリソースをコンテナーとして付与します。ここで、各コンテナーは CPU コアと RAM メモリの割り当てで構成されています。 クラスター内で使用可能なすべてのリソースを結合した後、コアとメモリをブロック単位で分散させた場合は、リソースの各ブロックがコンテナーになります。 クラスター内の各ノードには特定の数のコンテナー用の容量があるため、クラスターで使用可能なコンテナーの数には固定された制限があります。 コンテナー内のリソースの割り当ては構成可能です。 
+ResourceManager は、MapReduce ジョブなどのアプリケーションにクラスター コンピューティング リソースを付与します。 ResourceManager は、これらのリソースをコンテナーとして付与します。ここで、各コンテナーは CPU コアと RAM メモリの割り当てで構成されています。 クラスター内で使用可能なすべてのリソースを結合した後、コアとメモリをブロック単位で分散させた場合は、リソースの各ブロックがコンテナーになります。 クラスター内の各ノードには特定の数のコンテナー用の容量があるため、クラスターで使用可能なコンテナーの数には固定された制限があります。 コンテナー内のリソースの割り当ては構成可能です。
 
-MapReduce アプリケーションがクラスター上で実行されると、ResourceManager は、そのアプリケーションに実行するためのコンテナーを提供します。 ResourceManager は、実行中のアプリケーションの状態や使用可能なクラスター容量を追跡すると共に、アプリケーションが完了し、そのリソースを解放するのを追跡します。 
+MapReduce アプリケーションがクラスター上で実行されると、ResourceManager は、そのアプリケーションに実行するためのコンテナーを提供します。 ResourceManager は、実行中のアプリケーションの状態や使用可能なクラスター容量を追跡すると共に、アプリケーションが完了し、そのリソースを解放するのを追跡します。
 
 ResourceManager はまた、アプリケーションの状態を監視するために使用できる Web ユーザー インターフェイスを提供する Web サーバー プロセスも実行します。
 
-ユーザーがクラスター上で実行される MapReduce アプリケーションを送信すると、そのアプリケーションは ResourceManager に送信されます。 ResourceManager は次に、使用可能な NodeManager ノード上のコンテナーを割り当てます。 NodeManager ノードは、そのアプリケーションが実際に実行される場所です。 最初に割り当てられたコンテナーは、ApplicationMaster と呼ばれる特殊なアプリケーションを実行します。 この ApplicationMaster は、送信されたアプリケーションの実行に必要なリソースを (以降のコンテナーの形式で) 取得することに責任を負います。 ApplicationMaster は、アプリケーションの段階 (Map 段階、Reduce 段階など) や、処理する必要があるデータ量の要因を検証します。 ApplicationMaster はその後、アプリケーションの代わりに ResourceManager にリソースを要求 (*ネゴシエート*) します。 ResourceManager は次に、クラスター内の NodeManagers からのリソースを、アプリケーションの実行に使用できるように ApplicationMaster に付与します。 
+ユーザーがクラスター上で実行される MapReduce アプリケーションを送信すると、そのアプリケーションは ResourceManager に送信されます。 ResourceManager は次に、使用可能な NodeManager ノード上のコンテナーを割り当てます。 NodeManager ノードは、そのアプリケーションが実際に実行される場所です。 最初に割り当てられたコンテナーは、ApplicationMaster と呼ばれる特殊なアプリケーションを実行します。 この ApplicationMaster は、送信されたアプリケーションの実行に必要なリソースを (以降のコンテナーの形式で) 取得することに責任を負います。 ApplicationMaster は、アプリケーションの段階 (Map 段階、Reduce 段階など) や、処理する必要があるデータ量の要因を検証します。 ApplicationMaster はその後、アプリケーションの代わりに ResourceManager にリソースを要求 (*ネゴシエート*) します。 ResourceManager は次に、クラスター内の NodeManagers からのリソースを、アプリケーションの実行に使用できるように ApplicationMaster に付与します。
 
 NodeManagers は、アプリケーションを構成するタスクを実行した後、それらの進行状況と状態を元の ApplicationMaster に報告します。 ApplicationMaster は次に、アプリケーションの状態を元の ResourceManager に報告します。 ResourceManager は、結果をすべてクライアントに返します。
 

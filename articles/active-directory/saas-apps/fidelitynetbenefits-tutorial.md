@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 77dc8a98-c0e7-4129-ab88-28e7643e432a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ce37aea9e700907ebfda9aa181b7f0eb638af35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40c1e9d493b0fb7bbf1e484799d56e91da1d0833
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102729"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73156314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>チュートリアル:Azure Active Directory と Fidelity NetBenefits の統合
 

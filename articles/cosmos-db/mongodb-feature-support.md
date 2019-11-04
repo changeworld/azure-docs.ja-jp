@@ -1,30 +1,31 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API の機能のサポートを使用する
-description: MongoDB 3.4 に対して Azure Cosmos DB の MongoDB 用 API で提供される機能サポートについて説明します。
+title: 'Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文'
+description: Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API でサポートされる機能と構文について説明します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 05/21/2019
+ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 999b9ed88b6ff2c14defd3424c0fb541b7cf5d8e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050101"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755001"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB 用 API: サポートされる機能と構文
+# <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の MongoDB 用 API との通信は、オープン ソースで公開されている任意の MongoDB クライアント [ドライバー](https://docs.mongodb.org/ecosystem/drivers)を使って行うことができます。 Azure Cosmos DB の MongoDB 用 API では、MongoDB [ワイヤ プロトコル](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)に従うことにより、既存のクライアント ドライバーを利用できます。
 
 Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB API を活用できます。[グローバル配信](distribute-data-globally.md)、[自動シャーディング](partition-data.md)、可用性や待ち時間の保証、すべてのフィールドの自動インデックス作成、保存時の暗号化、バックアップを始めとする Cosmos DB のエンタープライズ機能も、すべて利用できます。
 
+> [!NOTE]
+> この記事では、Azure Cosmos DB の MongoDB 3.2 用 API を対象にしています。 MongoDB 3.6 バージョンについては、[MongoDB 3.6 でサポートされる機能と構文](mongodb-feature-support-36.md)に関するページを参照してください。
+
 ## <a name="protocol-support"></a>プロトコルのサポート
 
-Azure Cosmos DB の MongoDB 用 API は、既定で MongoDB サーバー バージョン **3.2** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 現在、MongoDB バージョン **3.4** で追加された機能やクエリ演算子は、プレビュー機能として使用できます。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。
-
-また、現在、[MongoDB 集計パイプライン](#aggregation-pipeline)も、別個のプレビュー機能として使用できます。
+Azure Cosmos DB の MongoDB 用 API のすべての新しいアカウントは、MongoDB サーバー バージョン **3.6** と互換性があります。 この記事では、MongoDB バージョン 3.2 について説明します。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。
 
 ## <a name="query-language-support"></a>クエリ言語のサポート
 
@@ -35,7 +36,8 @@ Azure Cosmos DB の MongoDB 用 API では、MongoDB クエリ言語のコンス
 Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマンドがサポートされています。
 
 ### <a name="query-and-write-operation-commands"></a>クエリおよび書き込み操作コマンド
-- 削除
+
+- delete
 - find
 - findAndModify
 - getLastError
@@ -44,11 +46,13 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 - update
 
 ### <a name="authentication-commands"></a>認証コマンド
+
 - logout
 - authenticate
 - getnonce
 
 ### <a name="administration-commands"></a>管理コマンド
+
 - dropDatabase
 - listCollections
 - drop
@@ -61,6 +65,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 - reIndex
 
 ### <a name="diagnostics-commands"></a>診断コマンド
+
 - buildInfo
 - collStats
 - dbStats
@@ -72,14 +77,16 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 ## <a name="aggregation-pipelinea"></a>集計パイプライン</a>
 
-Cosmos DB では、パブリック プレビューで集計パイプラインがサポートされています。 パブリック プレビューの利用を開始する手順については、[Azure ブログ](https://aka.ms/mongodb-aggregation)を参照してください。
+Cosmos DB では、パブリック プレビューで MongoDB 3.2 の集計パイプラインがサポートされています。 パブリック プレビューの利用を開始する手順については、[Azure ブログ](https://aka.ms/mongodb-aggregation)を参照してください。
 
 ### <a name="aggregation-commands"></a>集計コマンド
+
 - aggregate
 - count
 - distinct
 
 ### <a name="aggregation-stages"></a>集計ステージ
+
 - $project
 - $match
 - $limit
@@ -96,11 +103,13 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 ### <a name="aggregation-expressions"></a>集計式
 
 #### <a name="boolean-expressions"></a>ブール式
+
 - $and
 - $or
 - $not
 
 #### <a name="set-expressions"></a>設定式
+
 - $setEquals
 - $setIntersection
 - $setUnion
@@ -110,6 +119,7 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 - $allElementsTrue
 
 #### <a name="comparison-expressions"></a>比較式
+
 - $cmp
 - $eq
 - $gt
@@ -119,6 +129,7 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 - $ne
 
 #### <a name="arithmetic-expressions"></a>算術式
+
 - $abs
 - $add
 - $ceil
@@ -136,6 +147,7 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 - $trunc
 
 #### <a name="string-expressions"></a>文字列式
+
 - $concat
 - $indexOfBytes
 - $indexOfCP
@@ -150,6 +162,7 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 - $toUpper
 
 #### <a name="array-expressions"></a>配列式
+
 - $arrayElemAt
 - $concatArrays
 - $filter
@@ -162,6 +175,7 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 - $in
 
 #### <a name="date-expressions"></a>日付式
+
 - $dayOfYear
 - $dayOfMonth
 - $dayOfWeek
@@ -176,10 +190,12 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 - $isoWeek
 
 #### <a name="conditional-expressions"></a>条件式
+
 - $cond
 - $ifNull
 
 ## <a name="aggregation-accumulators"></a>集計アキュムレータ
+
 - $sum
 - $avg
 - $first
@@ -234,12 +250,15 @@ $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 ### <a name="notes"></a>メモ
 
 $regex クエリでは、左固定の式でインデックス検索が可能です。 ただし、'i' 修飾子 (大文字と小文字の区別なし) や 'm' 修飾子 (複数行) を使用すると、すべての式でコレクション スキャンが発生します。
-'$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。 たとえば、元のクエリとして ```find({x:{$regex: /^abc$/})``` がある場合、```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})``` のように変更する必要があります。
-最初の部分では、インデックスを使用して検索を ^ abc で始まるドキュメントに制限し、2 番目の部分で入力そのものを照合します。 バー演算子 '|' は "or" 関数として機能します。そのためクエリ ```find({x:{$regex: /^abc|^def/})``` は、フィールド 'x' の値が "abc" または "def" で始まるドキュメントに一致します。 インデックスを利用するには、```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })``` のように、クエリを 2 つの異なるクエリに分割し、$or 演算子で結合することをお勧めします。
+'$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。
+たとえば、元のクエリとして ```find({x:{$regex: /^abc$/})``` がある場合、```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})``` のように変更する必要があります。
+最初の部分では、インデックスを使用して検索を ^abc で始まるドキュメントに制限し、2 番目の部分で入力そのものを照合します。
+バー演算子 '|' は "or" 関数として機能します。そのためクエリ ```find({x:{$regex: /^abc|^def/})``` は、フィールド 'x' の値が "abc" または "def" で始まるドキュメントに一致します。 インデックスを利用するには、```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })``` のように、クエリを 2 つの異なるクエリに分割し、$or 演算子で結合することをお勧めします。
 
 ### <a name="update-operators"></a>更新演算子
 
 #### <a name="field-update-operators"></a>フィールド更新演算子
+
 - $inc
 - $mul
 - $rename
@@ -251,6 +270,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 - $currentDate
 
 #### <a name="array-update-operators"></a>配列更新演算子
+
 - $addToSet
 - $pop
 - $pullAll
@@ -263,6 +283,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 - $position
 
 #### <a name="bitwise-update-operator"></a>ビット単位更新演算子
+
 - $bit
 
 ### <a name="geospatial-operators"></a>地理空間演算子
@@ -282,16 +303,17 @@ $box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 4
 $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
 
 ## <a name="sort-operations"></a>並べ替え操作
+
 `findOneAndUpdate` 操作を使用する場合、単一フィールドに対する並べ替え操作はサポートされていますが、複数フィールドに対する並べ替え操作はサポートされていません。
 
 ## <a name="additional-operators"></a>その他の演算子
 
-operator | 例 | メモ 
+operator | 例 | メモ
 --- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` | 
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
+$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
+$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
+$size | ```{ "Location.coordinates": { $size: 2 } }``` |
+$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
 $text |  | サポートされていません。 代わりに $regex を使用してください。
 
 ## <a name="unsupported-operators"></a>サポートされていない演算子
@@ -304,13 +326,13 @@ $text |  | サポートされていません。 代わりに $regex を使用し
 
 #### <a name="cursor-methods"></a>カーソル メソッド
 
-方法 | 例 | メモ 
+方法 | 例 | メモ
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | 並べ替えキーを持たないドキュメントは返されない
 
 ## <a name="unique-indexes"></a>一意なインデックス
 
-Cosmos DB では、既定で、データベースに書き込まれるドキュメントのすべてのフィールドにインデックスが付けられます。 一意なインデックスによって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 "unique" 制約を含めて createIndex コマンドを使用すれば、Cosmos DB でカスタム インデックスを作成できます。
+Cosmos DB では、既定で、データベースに書き込まれるドキュメントのすべてのフィールドにインデックスが付けられます。 一意なインデックスによって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の `_id` キーで一意性が保持される方法と似ています。 "unique" 制約を含めて createIndex コマンドを使用すれば、Cosmos DB でカスタム インデックスを作成できます。
 
 Azure Cosmos DB の MongoDB 用 API を使用すると、すべての Cosmos アカウントで一意のインデックスを使用できます。
 

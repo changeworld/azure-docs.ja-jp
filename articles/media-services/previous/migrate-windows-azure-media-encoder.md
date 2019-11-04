@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2e9008d039f014c95d473f3197b48651bdaa5a45
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 1f4760713eccd612014f6b75a1623dd9ad0c8c0f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019323"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595499"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Windows Azure Media Encoder から Media Encoder Standard に移行する
 
@@ -64,7 +64,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>高度なシナリオ 
 
-WAME 用にそのスキーマを使用して独自のエンコード プリセットを作成済みの場合は、[Media Encoder Standard 用の同等のスキーマ](media-services-mes-schema.md)があります。 古い設定を新しいエンコーダーにマップする方法についてご質問がある場合は、[mailto:amshelp@microsoft.com](mailto:amshelp@microsoft.com) にお問い合わせください。  
+WAME 用にそのスキーマを使用して独自のエンコード プリセットを作成済みの場合は、[Media Encoder Standard 用の同等のスキーマ](media-services-mes-schema.md)があります。
 
 ## <a name="known-differences"></a>既知の相違点 
 
@@ -73,6 +73,10 @@ Media Encoder Standard は、従来の WAME エンコーダーよりも堅牢で
 * Media Encoder Standard で生成される出力ファイルでは、WAME とは異なる名前付け規則が使用されます。
 * Media Encoder Standard では、[入力ファイルのメタデータ](media-services-input-metadata-schema.md)と[出力ファイルのメタデータ](media-services-output-metadata-schema.md)を含むファイルなどの成果物が生成されます。
 * [価格のページ](https://azure.microsoft.com/pricing/details/media-services/#encoding) (特に FAQ セクション) に記載されているように、Media Encoder Standard を使用してビデオをエンコードしたときは、出力として生成されるファイルの時間に基づいて課金されます。 一方、WAME では、入力ビデオ ファイルと出力ビデオ ファイルのサイズに基づいて課金されます。
+
+## <a name="need-help"></a>お困りの際は、
+
+[[新しいサポート要求]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動することによってサポート チケットを開くことができます
 
 ## <a name="next-steps"></a>次の手順
 

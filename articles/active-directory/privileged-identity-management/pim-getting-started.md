@@ -14,49 +14,49 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 018cc54a770a0d18fa9af3d93fec2f5f720ce17b
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804519"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756310"
 ---
-# <a name="start-using-pim"></a>PIM の使用を開始する
+# <a name="start-using-privileged-identity-management"></a>Privileged Identity Management の使用開始
 
-組織内のアクセス権は、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して管理、制御、監視することができます。 その対象には、Azure リソース、Azure AD、Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) へのアクセスが含まれます。
+Privileged Identity Management (PIM) を使用すると、Azure Active Directory (Azure AD) 組織内のアクセス権を管理、制御、および監視できます。 この範囲には、Azure リソース、Azure AD のほか、Office 365 や Microsoft Intune などのその他の Microsoft オンライン サービスへのアクセスが含まれます。
 
-この記事では、PIM を有効にして使用を開始する方法について説明します。
+この記事では、Privileged Identity Management を有効にしてその使用を開始する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-PIM を使用するには、次のいずれかのライセンスが必要です。
+Privileged Identity Management を使用するには、次のライセンスのいずれかが必要です。
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
 
-詳細については、「[License requirements to use PIM (PIM を使用するためのライセンスの要件)](subscription-requirements.md)」を参照してください。
+詳細については、「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
 
 ## <a name="first-person-to-use-pim"></a>PIM を使用する最初のユーザー
 
-ディレクトリ内で PIM を使用する最初のユーザーには、そのディレクトリの[セキュリティ管理者](../users-groups-roles/directory-assign-admin-roles.md#security-administrator)ロールと[特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールが自動的に割り当てられます。 ユーザーの Azure AD ロールの割り当てを管理できるのは特権ロール管理者だけです。 さらに、初回の検出と割り当てを体験できる[セキュリティ ウィザード](pim-security-wizard.md)の実行を選択することもできます。
+ディレクトリ内で Privileged Identity Management を使用する最初のユーザーには、そのディレクトリ内の [[セキュリティ管理者]](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) および [[特権ロール管理者]](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ロールが自動的に割り当てられます。 ユーザーの Azure AD ロールの割り当てを管理できるのは特権ロール管理者だけです。 さらに、初回の検出と割り当てを体験できる[セキュリティ ウィザード](pim-security-wizard.md)の実行を選択することもできます。
 
 ## <a name="enable-pim"></a>PIM を有効にする
 
-ディレクトリで PIM の使用を開始するには、まず PIM を有効にする必要があります。
+ディレクトリ内で Privileged Identity Management の使用を開始するには、まず Privileged Identity Management を有効にする必要があります。
 
 1. ディレクトリのグローバル管理者として [Azure portal](https://portal.azure.com/) にサインインします。
 
-    ディレクトリで PIM を有効にする操作は、Microsoft アカウント (例: @outlook.com) ではなく組織アカウント (例: @yourdomain.com) を持つグローバル管理者が行う必要があります。
+    ディレクトリに対して Privileged Identity Management を有効にするには、Microsoft アカウント (@outlook.com など) ではなく、組織アカウント (@yourdomain.com など) を持つグローバル管理者である必要があります。
 
 1. **[すべてのサービス]** をクリックし、**Azure AD Privileged Identity Management** サービスを探します。
 
     ![[すべてのサービス] でのAzure AD Privileged Identity Management](./media/pim-getting-started/pim-all-services-find.png)
 
-1. PIM クイック スタートをクリックして開きます。
+1. [Privileged Identity Management Quickstart] (Privileged Identity Management のクイックスタート) をクリックして開きます。
 
 1. 一覧で、 **[PIM を承認する]** をクリックします。
 
-    ![PIM に同意して PIM を有効にする](./media/pim-getting-started/consent-pim.png)
+    ![Privileged Identity Management を有効にするために Privileged Identity Management に同意する](./media/pim-getting-started/consent-pim.png)
 
 1. **[ID を確認]** をクリックし、Azure MFA で ID を確認します。 アカウントの選択が求められます。
 
@@ -72,35 +72,35 @@ PIM を使用するには、次のいずれかのライセンスが必要です�
 
 1. 確認プロセスを完了したら、 **[同意]** ボタンをクリックします。
 
-1. 表示されたメッセージ内で、 **[はい]** をクリックして、PIM サービスに同意します。
+1. 表示されるメッセージで、 **[はい]** をクリックして Privileged Identity Management サービスに同意します。
 
-    ![PIM メッセージに同意して同意プロセスを完了する](./media/pim-getting-started/consent-pim-message.png)
+    ![同意プロセスを完了するために Privileged Identity Management のメッセージに同意する](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>Azure AD ロールを取得するために PIM にサインアップする
 
-ディレクトリに対して PIM を有効にしたら、Azure AD ロールを管理するために PIM をサインアップする必要があります。
+ディレクトリに対して Privileged Identity Management を有効にしたら、Azure AD ロールを管理するために Privileged Identity Management にサインアップする必要があります。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
 1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
-    ![Azure AD ロールを取得するために PIM にサインアップする](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+    ![Azure AD ロールを取得するために Privileged Identity Management にサインアップする](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
 
 1. **[サインアップ]** をクリックします。
 
-1. 表示されたメッセージ内で、 **[はい]** をクリックして PIM にサインアップして、Azure AD ロールを管理します。
+1. 表示されるメッセージで、 **[はい]** をクリックして、Azure AD ロールを管理するために Privileged Identity Management にサインアップします。
 
-    ![Azure AD ロール メッセージを取得するために PIM にサインアップする](./media/pim-getting-started/sign-up-pim-message.png)
+    ![Azure AD ロールのメッセージを取得するために Privileged Identity Management にサインアップする](./media/pim-getting-started/sign-up-pim-message.png)
 
     サインアップを完了すると、Azure AD オプションが有効になります。 場合によっては、ポータルを更新する必要があります。
 
-    PIM で保護する Azure リソースを検出して選択する方法については、「[PIM で管理する Azure リソースを検出する](pim-resource-roles-discover-resources.md)」を参照してください。
+    Privileged Identity Management で保護する Azure リソースを検出して選択する方法については、[Privileged Identity Management で管理する Azure リソースの検出](pim-resource-roles-discover-resources.md)に関するページを参照してください。
 
 ## <a name="navigate-to-your-tasks"></a>タスクへの移動
 
-PIM を設定すると、ID 管理タスクを実行できるようになります。
+Privileged Identity Management が設定されたら、ID 管理タスクを開始できます。
 
-![タスクと管理のオプションが表示されている PIM のナビゲーション ウィンドウ](./media/pim-getting-started/pim-quickstart-tasks.png)
+![[タスク] と [管理] のオプションを示す Privileged Identity Management のナビゲーション ウィンドウ](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | タスク + 管理 | 説明 |
 | --- | --- |
@@ -113,7 +113,7 @@ PIM を設定すると、ID 管理タスクを実行できるようになりま�
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>ダッシュボードに PIM タイルを追加する
 
-PIM を開きやすくするには、Azure portal のダッシュボードに PIM タイルを追加する必要があります。
+Privileged Identity Management を簡単に開けるようにするには、Azure portal ダッシュボードに [Privileged Identity Management] タイルを追加する必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -121,17 +121,17 @@ PIM を開きやすくするには、Azure portal のダッシュボードに PI
 
     ![[すべてのサービス] でのAzure AD Privileged Identity Management](./media/pim-getting-started/pim-all-services-find.png)
 
-1. PIM クイック スタートをクリックして開きます。
+1. [Privileged Identity Management Quickstart] (Privileged Identity Management のクイックスタート) をクリックして開きます。
 
-1. PIM クイック スタート ブレードをダッシュボードにピン留めするには、 **[ダッシュボードにブレードをピン留め]** をオンにします。
+1. [Privileged Identity Management Quickstart] (Privileged Identity Management のクイックスタート) ブレードをダッシュボードにピン留めするには、 **[ダッシュボードにブレードをピン留め]** をオンにします。
 
-    ![ダッシュボードに PIM ブレードをピン留めするための押しピン アイコン](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![[Privileged Identity Management] ブレードをダッシュボードにピン留めする画びょうアイコン](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Azure ダッシュボードでは、タイルが次のように表示されます。
 
-    ![ダッシュボードの PIM クイック スタート タイル](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![ダッシュボード上の [Privileged Identity Management Quickstart] (Privileged Identity Management のクイックスタート) タイル](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
-- [PIM で管理する Azure リソースを検出する](pim-resource-roles-discover-resources.md)
+- [Privileged Identity Management で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
+- [Privileged Identity Management で管理する Azure リソースを検出する](pim-resource-roles-discover-resources.md)

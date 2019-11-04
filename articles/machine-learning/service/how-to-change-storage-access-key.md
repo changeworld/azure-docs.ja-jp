@@ -1,7 +1,7 @@
 ---
 title: ストレージ アカウントのアクセス キーを変更する
 titleSuffix: Azure Machine Learning
-description: ご利用のワークスペースで使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning では、Azure ストレージ アカウントを使用してデータとモデルが格納されます。 ストレージ アカウントのアクセス キーを再生成した場合は、その新しいキーを使用するように Azure Machine Learning を更新する必要があります。
+description: ご利用のワークスペースで使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning では、Azure ストレージ アカウントを使用してデータとモデルが格納されます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 77cafceee35f00a81b2e07b59f0f4a13146fd906
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034964"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063321"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 

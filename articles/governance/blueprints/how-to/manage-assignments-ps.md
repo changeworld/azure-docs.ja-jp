@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 297c6a51c1f902cf7b5843b2dd47b658ebc705fd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ef9674165533ef3e4887bba68507344406ca128c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981000"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755939"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell を使用した割り当ての管理方法
 
@@ -42,7 +42,7 @@ PowerShell の Blueprints モジュールは **Az.Blueprint** です。
    > [!NOTE]
    > **Az.Accounts** が既にインストールされている場合は、`-AllowClobber` を使用して強制的にインストールすることが必要になる可能性があります。
 
-1. モジュールがインポートされていて、適切なバージョン (0.2.5) であることを確認します。
+1. モジュールがインポートされていて、適切なバージョン (0.2.6) であることを確認します。
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module

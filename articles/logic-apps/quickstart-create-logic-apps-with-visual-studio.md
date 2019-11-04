@@ -1,6 +1,6 @@
 ---
-title: Visual Studio を使用して自動化されたワークフローを作成する - Azure Logic Apps
-description: Azure Logic Apps と Visual Studio を使用して、エンタープライズ統合のためのタスク、ビジネス プロセス、およびワークフローを自動化します
+title: Visual Studio を使用してワークフローを自動化する - Azure Logic Apps
+description: Azure Logic Apps と Visual Studio を使用して、エンタープライズ統合のためのワークフローを作成、スケジュール設定、および実行します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,18 +8,17 @@ ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d02f0bf8cc880dd39f7bdf0c953fcb130df2e23a
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165925"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680567"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
+# <a name="quickstart-automate-tasks-processes-and-workflows-by-using-azure-logic-apps-and-visual-studio"></a>クイック スタート:Azure Logic Apps と Visual Studio を使用してタスク、プロセス、およびワークフローを自動化する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio を使用して、企業および組織の間でアプリ、データ、システム、サービスを統合するタスクとプロセスを自動化するワークフローを作成できます。 このクイック スタートでは、Visual Studio でロジック アプリを作成し、そのアプリを Azure にデプロイすることによってこれらのワークフローを設計および構築する方法を示します。 これらのタスクは Azure portal でも実行できます。しかし、Visual Studio を使用すれば、ロジック アプリをソース管理に追加したり、さまざまなバージョンを発行したり、異なるデプロイ環境用の Azure Resource Manager テンプレートを作成したりできます。
 

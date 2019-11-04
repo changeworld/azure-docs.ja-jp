@@ -4,7 +4,7 @@ description: この記事では、Azure 仮想マシンで使用できる Azure 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828553"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792618"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -45,22 +45,10 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 Azure の Microsoft マルウェア対策は、アプリケーションやテナント環境のための単一エージェント ソリューションです。 ユーザーの介入なしにバックグラウンドで実行するように設計されています。 アプリケーションのワークロードのニーズに基づいて、マルウェア対策監視など、基本的な既定のセキュリティまたは高度なカスタム構成で、保護をデプロイできます。
 
-Azure の Microsoft マルウェア対策を展開して有効にすると、次のコア機能を使用できるようになります。
-
-* **リアルタイム保護**:Cloud Services および Virtual Machines でのアクティビティを監視し、マルウェアの実行を検出してブロックします。
-* **スケジュールに基づくスキャン**:特定対象のスキャンを定期的に実行し、マルウェアや活動量の多いプログラムを検出します。
-* **マルウェアの駆除**:悪意のあるファイルの削除や検疫、悪意のあるレジストリ エントリのクリーンアップなど、検出されたマルウェアへの対処を自動的に行います。
-* **シグネチャの更新**:最新の保護シグネチャ (ウイルスの定義) を自動的にインストールし、事前に定義された頻度で保護を確実に最新の状態に更新します。
-* **マルウェア対策エンジンの更新**:Azure の Microsoft マルウェア対策エンジンを自動的に更新します。
-* **マルウェア対策プラットフォームの更新**:Azure の Microsoft マルウェア対策プラットフォームを自動的に更新します。
-* **アクティブな保護**:迅速に対応できるように、検出された脅威と疑わしいリソースに関するテレメトリ メタデータを Azure に報告します。 Microsoft Active Protection システム (MAPS) によりリアルタイムの同期署名配信を有効にします。
-* **サンプルのレポート**:Azure の Microsoft マルウェア対策サービスにサンプルを提供および報告し、サービスの調整およびトラブルシューティングを可能にします。
-* **除外**:パフォーマンスやその他の理由で、アプリケーションおよびサービスの管理者が特定のファイル、プロセス、ドライブを保護から除外できるようにします。
-* **マルウェア対策イベントの収集**:マルウェア対策サービスの状態、疑わしいアクティビティ、および実行された修復アクションをオペレーティング システムのイベント ログに記録し、ユーザーの Azure ストレージ アカウントにそれらを収集します。
+詳細については、[Azure 向け Microsoft Antimalware](antimalware.md) と利用可能なコア機能に関するページを参照してください。
 
 仮想マシンを保護するマルウェア対策ソフトウェアの詳細については、以下を参照してください。
 
-* [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](antimalware.md)
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-trend)
 * [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-symantec)
@@ -179,3 +167,7 @@ TEE によって、外部からは、デバッガーを使用しても内部の�
 
 * [Azure Confidential Computing の概要](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure Confidential Computing](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+
+## <a name="next-steps"></a>次の手順
+
+VM とオペレーティング システムの[セキュリティに関するベスト プラクティス](iaas.md)について説明します。

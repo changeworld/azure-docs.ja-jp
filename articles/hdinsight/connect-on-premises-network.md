@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/04/2019
-ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 10/16/2019
+ms.openlocfilehash: 97725099e82c5edb05447d97b47f352c440bd8e8
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034126"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529301"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -45,8 +45,8 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 ## <a name="prerequisites"></a>前提条件
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](./hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
-* Azure CLI を使用したい場合で、なおかつまだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
+* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-virtual-network-configuration"></a>仮想ネットワーク構成を作成する
 
@@ -79,7 +79,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     |リージョン | 前に作成した仮想ネットワークと同じリージョンを選択します。  すべてのリージョンですべての VM サイズを使用できるわけではありません。  |
     |可用性のオプション |  必要な可用性のレベルを選択します。  Azure は、アプリケーションの可用性と耐障害性を管理するためのさまざまなオプションを提供しています。  可用性ゾーンまたは可用性セット内のレプリケートされた VM を使用して、データセンターの障害やメンテナンス イベントからアプリやデータを保護するためのソリューションを設計します。 この例では、 **[インフラストラクチャ冗長は必要ありません]** を使用します。 |
     |Image | **[Ubuntu Server 18.04 LTS]** のままにしてください。 |
-    |認証の種類 | __パスワード__ または __SSH 公開キー__:SSH アカウントの認証方法。 安全性の高いパブリック キーを使用することをお勧めします。 この例では、 **[パスワード]** を使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
+    |認証の種類 | __パスワード__ または __SSH 公開キー__:SSH アカウントの認証方法。 より安全な公開キーを使用することをお勧めします。 この例では、 **[パスワード]** を使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
     |ユーザー名 |VM の管理者ユーザー名を入力します。  この例では、**sshuser** を使用します。|
     |[パスワード] または [SSH 公開キー] | 使用可能なフィールドは、 **[認証の種類]** として選択された内容によって決定されます。  適切な値を入力します。|
     |パブリック受信ポート|**[選択したポートを許可する]** を選択します。 次に、 **[受信ポートを選択]** ボックスの一覧から **[SSH (22)]** を選択します。|
@@ -103,6 +103,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 5. **[確認と作成]** タブで、 **[作成]** を選択して仮想マシンを作成します。
 
 ### <a name="review-ip-addresses"></a>IP アドレスの確認
+
 仮想マシンが作成されると、 **[リソースに移動]** ボタンが含まれている **[デプロイメントに成功しました]** という通知を受け取ります。  **[リソースに移動]** を選択して、新しい仮想マシンに移動します。  新しい仮想マシンの既定のビューで、次の手順に従って関連する IP アドレスを特定します。
 
 1. **[設定]** で **[プロパティ]** を選択します。
@@ -237,7 +238,7 @@ Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用
 
 3. 既定のビューの **[設定]** で、 **[DNS サーバー]** を選択します。  
 
-4. __[カスタム]__ を選択し、カスタム DNS サーバーの**プライベート IP アドレス** を入力します。   
+4. __[カスタム]__ を選択し、カスタム DNS サーバーの**プライベート IP アドレス** を入力します。
 
 5. __[保存]__ を選択します。  <br />  
 
@@ -297,9 +298,9 @@ Azure PowerShell または Azure CLI を使用して NSG を作成する例に�
 
 ## <a name="connecting-to-hdinsight"></a>HDInsight に接続する
 
-HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、`https://CLUSTERNAME.azurehdinsight.net` でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
+HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、`https://CLUSTERNAME.azurehdinsight.net` でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されています。これは、NSG または UDR を使用してインターネットからのアクセスを制限している場合は使用できません。
 
-一部のドキュメントは、SSH セッションからクラスターに接続するときに `headnodehost` も参照しています。 このアドレスは、クラスター内のノードからのみ使用可能であり、仮想ネットワーク経由で接続しているクライアントでは使用できません。
+一部のドキュメントは、SSH セッションからクラスターに接続するときに `headnodehost` も参照しています。 このアドレスはクラスター内のノードからのみ使用でき、仮想ネットワーク経由で接続されたクライアントでは使用できません。
 
 仮想ネットワーク経由で HDInsight に直接接続するには、次の手順を使用します。
 

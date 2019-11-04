@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676907"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177429"
 ---
 # <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 
@@ -43,7 +43,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 - [Awake Security](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [ExtraHop Reveal(x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
 - [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)

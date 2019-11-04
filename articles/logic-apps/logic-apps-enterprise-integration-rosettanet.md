@@ -1,5 +1,5 @@
 ---
-title: B2B エンタープライズ統合用の RosettaNet メッセージ - Azure Logic Apps
+title: B2B 統合用の RosettaNet メッセージ - Azure Logic Apps
 description: Enterprise Integration Pack を備えた Azure Logic Apps で RosettaNet メッセージを交換する
 services: logic-apps
 ms.service: logic-apps
@@ -9,14 +9,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 88e02f3fbbca8007fdf479bb973f50c42a878d6e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 570c7907f320b881e2db0bd45cdce311490f4f45
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332423"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680332"
 ---
-# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の RosettaNet メッセージを交換する 
+# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の RosettaNet メッセージを交換する
 
 [RosettaNet](https://resources.gs1us.org) は、ビジネス情報を共有するための標準プロセスを確立した非営利コンソーシアムです。 これらの標準は、サプライチェーン プロセスで一般的に使用されており、半導体、エレクトロニクス、および物流業界に広まっています。 RosettaNet コンソーシアムは、一般的なビジネス プロセス定義をすべての RosettaNet メッセージ交換に提供する Partner Interface Processes (PIP) の作成と管理を担っています。 RosettaNet は、XML に基づいており、メッセージ ガイドライン、ビジネス プロセスのインターフェイス、企業間通信の実装フレームワークを定義します。
 

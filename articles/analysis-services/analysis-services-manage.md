@@ -4,15 +4,15 @@ description: Azure で Analysis Services サーバーを管理する方法につ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 63591da8d7661f7f3a29b321c20a2e05351c71fd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6846eaedc7f20f5a7597ee889193e977e86a5ed6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298597"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146828"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services を管理する
 Azure に Analysis Services サーバーを作成した後は、すぐに、または後で、管理タスクを行うことが必要になる場合があります。 たとえば、データ更新処理の実行、サーバー上のモデルにアクセスできるユーザーの制御、サーバーの正常性の監視などです。 Azure Portal または SQL Server Management Studio (SSMS) のどちらかでしか実行できないもの、またはどちらでも実行できるものがあります。

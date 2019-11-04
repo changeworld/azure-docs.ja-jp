@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.openlocfilehash: d934568f09e62ad8c1b472583cbfee79d2c837f6
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71936855"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
@@ -46,7 +46,7 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 
 次の図は、Azure Storage を使う HDInsight のストレージ アーキテクチャを示しています。
 
-![Hadoop クラスターでは、HDFS API を使用してデータへのアクセスが行われ、BLOB ストレージに保存されます](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight のストレージ アーキテクチャ")
+![Hadoop クラスターは HDFS API を使用してデータにアクセスし、BLOB ストレージにデータを保存する](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight のストレージ アーキテクチャ")
 
 HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散ファイル システムにアクセスします。 このファイル システムには、完全修飾 URI を使用してアクセスできます。次に例を示します。
 

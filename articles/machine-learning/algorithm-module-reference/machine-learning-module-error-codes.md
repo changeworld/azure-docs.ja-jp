@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: dc383d302fb3e9920ee8ef2d7d908a5b406ea1da
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128662"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693070"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>アルゴリズムとモジュールに関する例外とエラー コードの参照
 
@@ -32,7 +32,7 @@ Azure Machine Learning Studio でモジュールを使用しているときに�
 ## <a name="error-0001"></a>エラー 0001  
  データ セットで指定した列のうち 1 つまたは複数が見つからない場合、例外が発生します。  
   
- モジュールで列を選択していても、選択された列が入力データ セットに存在しない場合、このエラーを受け取ります。 このエラーは、列名を手入力した場合、または実験を実行したときにデータセットに存在しない列が列セレクターによって提案された場合、発生する可能性があります。  
+ モジュールで列を選択していても、選択された列が入力データ セットに存在しない場合、このエラーを受け取ります。 このエラーは、列名を手入力した場合、またはパイプラインを実行したときにデータセットに存在しない列が列セレクターによって提案された場合、発生する可能性があります。  
   
 **解決策:** この例外がスローされているモジュールを見直し、列の名前 (1 つまたは複数) が正しいこと、および参照されているすべての列が存在することを確認します。  
   
@@ -215,7 +215,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
   
  特定の列 (ラベル列など) を選択する必要があるモジュールの場合、正しい列が選択されていることを確認します。  
   
- 不適切な列が選択されている場合は、それらを削除し、実験を再実行します。  
+ 不適切な列が選択されている場合は、それらを削除し、パイプラインを再実行します。  
   
 |例外メッセージ|  
 |------------------------|  
@@ -237,7 +237,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 ## <a name="error-0013"></a>エラー 0013  
  モジュールに渡された学習器が無効な種類の場合、例外が発生します。  
   
- このエラーは、トレーニング済みモデルと接続されたスコアリング モジュールとの間に互換性がないときに、常に発生します。 <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the experiment is run.  -->
+ このエラーは、トレーニング済みモデルと接続されたスコアリング モジュールとの間に互換性がないときに、常に発生します。 <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
   
 **解決策:**
 
@@ -969,7 +969,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 ## <a name="error-0057"></a>エラー 0057  
  既に存在しているファイルまたは BLOB を作成しようとすると、例外が発生します。  
   
- [データのエクスポート](export-data.md) モジュールまたは他のモジュールを使って Azure Machine Learning での実験の結果を Azure Blob Storage に保存するときに、既に存在しているファイルまたは BLOB を作成しようとすると、この例外が発生します。   
+ [データのエクスポート](export-data.md) モジュールまたは他のモジュールを使って Azure Machine Learning でのパイプラインの結果を Azure Blob Storage に保存するときに、既に存在しているファイルまたは BLOB を作成しようとすると、この例外が発生します。   
   
 **解決策:**
  
@@ -1066,7 +1066,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
-    + Messages from R marked as **warnings** typically do not cause the experiment to fail.
+    + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
 3. Resolve script issues.  
     + Check for R syntax errors. Check for variables that are defined but never populated.
     + Review the input data and the script to determine if either the data or variables in the script use characters not supported by Azure Machine Learning.
@@ -1074,11 +1074,11 @@ For general information about how the Matchbox recommendation algorithm works, a
     + Check whether your code loads required libraries that are not loaded by default.
     + Check whether the required packages are the correct version.
     + Make sure that any dataset that you want to output is converted to a data frame.  
-4.  Resubmit the experiment.
+4.  Resubmit the pipeline.
 
  <!--
 > [!NOTE]
-> These topics contains examples of R code that you can use, as well as links to experiments in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
+> These topics contains examples of R code that you can use, as well as links to pipelines in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
 > + [Execute R Script](execute-r-script.md)
 > + [Create R Model](create-r-model.md)
 -->  
@@ -1363,7 +1363,7 @@ Azure Machine Learning では、サポートされていない方法を使って
   
  Azure Machine Learning では、破壊的変更の結果として、保存されている機械学習モデルまたは変換を新しいバージョンの Azure Machine Learning ランタイムで読み込むことができない場合、このエラーが発生します。  
   
-**解決策:** モデルまたは変換を生成したトレーニング実験を再度実行して、モデルまたは変換を保存し直す必要があります。  
+**解決策:** モデルまたは変換を生成したトレーニング パイプラインを再度実行して、モデルまたは変換を保存し直す必要があります。  
   
 |例外メッセージ|  
 |------------------------|  

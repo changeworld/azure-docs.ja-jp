@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803380"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598121"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET を使用して BLOB コンテナーを一覧表示する
 
@@ -40,9 +40,9 @@ Azure Storage アカウント内のコンテナーをコードから一覧表示
 
 コンテナーの一覧をフィルター処理するには、 `prefix`パラメーターの文字列を指定します。 プレフィックス文字列には、1 つ以上の文字を含めることができます。 Azure Storage は、名前がそのプレフィックスで始まるコンテナーだけを返します。
 
-### <a name="return-container-metadata"></a>コンテナーのメタデータを返す
+### <a name="return-metadata"></a>メタデータを返す
 
-結果と共にコンテナーのメタデータを返すには、[ContainerListDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各コンテナーにメタデータを追加します。そのため、コンテナーのメタデータを取得するために、いずれかの **FetchAttributes** メソッドを呼び出す必要はありません。
+結果と共にコンテナーのメタデータを返すには、[ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各コンテナーにメタデータを追加します。そのため、コンテナーのメタデータを取得するために、いずれかの **FetchAttributes** メソッドを呼び出す必要はありません。
 
 ## <a name="example-list-containers"></a>例:コンテナーの一覧表示
 

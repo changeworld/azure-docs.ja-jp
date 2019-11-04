@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: c9dfd3bfcacc1f50bb9be04c927bf3cbb4895f6d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555264"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162295"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する
 
@@ -339,7 +339,7 @@ Azure portal から特定のアラート管理タスクを管理することは�
 2. 次のコマンドを入力して、特定の VM 上でアクティブなすべての正常性基準を取得し、*monitorId* プロパティの値を識別します。
 
     ```
-    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview"
     ```
 
     次の例は、*armclient GET* コマンドの出力を示しています。 *MonitorId* の値をメモします。 この値は次の手順に必要です。そこでは、正常性基準の ID を指定し、アラートを作成するためにそのプロパティを変更する必要があります。

@@ -1,27 +1,26 @@
 ---
-title: リソースへの同時書き込みを管理する方法 - Azure Search
-description: オプティミスティック コンカレンシーを使用して、Azure Search インデックス、インデクサー、データ ソースの更新または削除の競合を回避します。
-author: HeidiSteen
+title: リソースへの同時書き込みを管理する方法
+titleSuffix: Azure Cognitive Search
+description: オプティミスティック コンカレンシーを使用して、Azure Cognitive Search インデックス、インデクサー、データ ソースの更新または削除の競合を回避します。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/21/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656734"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792211"
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>Azure Search でコンカレンシーを管理する方法
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Cognitive Search でコンカレンシーを管理する方法
 
-インデックスやデータ ソースなどの Azure Search リソースを管理するときは、リソースを安全に更新することが重要であり、アプリケーションの異なるコンポーネントによってリソースが同時にアクセスされる場合は特にそうです。 2 つのクライアントが調整なしでリソースを同時に更新すると、競合状態になる可能性があります。 これを回避するために、Azure Search では*オプティミスティック コンカレンシーモデル*を提供します。 リソースのロックはありません。 代わりに、偶発的な上書きを避ける要求を作成できるよう、リソースのバージョンを識別する ETag がすべてのリソースに存在します。
+インデックスやデータ ソースなどの Azure Cognitive Search リソースを管理するときは、リソースを安全に更新することが重要であり、アプリケーションの異なるコンポーネントによってリソースが同時にアクセスされる場合は特にそうです。 2 つのクライアントが調整なしでリソースを同時に更新すると、競合状態になる可能性があります。 これを回避するために、Azure Cognitive Search では*オプティミスティック同時実行制御モデル*を提供します。 リソースのロックはありません。 代わりに、偶発的な上書きを避ける要求を作成できるよう、リソースのバージョンを識別する ETag がすべてのリソースに存在します。
 
 > [!Tip]
-> [サンプル C# ソリューション](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)の概念コードは、Azure Search でコンカレンシー制御がどのように機能するかを説明します。 コードでは、コンカレンシー制御を呼び出す条件を作成します。 [次のコード フラグメント](#samplecode)に目を通すだけでもほとんどの開発者にとっては十分と思われますが、コードを実行したい場合は、appsettings.json を編集してサービス名と管理者 API キーを追加します。 サービス URL を `http://myservice.search.windows.net` とした場合、サービス名は `myservice` です。
+> [サンプル C# ソリューション](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)の概念コードは、Azure Cognitive Search でコンカレンシー制御がどのように機能するかを説明します。 コードでは、コンカレンシー制御を呼び出す条件を作成します。 [次のコード フラグメント](#samplecode)に目を通すだけでもほとんどの開発者にとっては十分と思われますが、コードを実行したい場合は、appsettings.json を編集してサービス名と管理者 API キーを追加します。 サービス URL を `http://myservice.search.windows.net` とした場合、サービス名は `myservice` です。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -51,7 +50,7 @@ ms.locfileid: "69656734"
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
-        // on an Azure Search index.
+        // on an Azure Cognitive Search index.
         static void Main(string[] args)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -62,14 +61,14 @@ ms.locfileid: "69656734"
             Console.WriteLine("Deleting index...\n");
             DeleteTestIndexIfExists(serviceClient);
 
-            // Every top-level resource in Azure Search has an associated ETag that keeps track of which version
+            // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
             // of the resource you're working on. When you first create a resource such as an index, its ETag is
             // empty.
             Index index = DefineTestIndex();
             Console.WriteLine(
                 $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
 
-            // Once the resource exists in Azure Search, its ETag will be populated. Make sure to use the object
+            // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
             // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
             // blank ETag.
             Console.WriteLine("Creating index...\n");
@@ -129,9 +128,9 @@ ms.locfileid: "69656734"
             serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
 
             // This is slightly better than using the Exists method since it makes only one round trip to
-            // Azure Search instead of potentially two. It also avoids an extra Delete request in cases where
+            // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
             // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
-            // Azure Search is idempotent.
+            // Azure Cognitive Search is idempotent.
 
             // And we're done! Bye!
             Console.WriteLine("Complete.  Press any key to end application...\n");
@@ -170,7 +169,7 @@ ms.locfileid: "69656734"
 
 オプティミスティック コンカレンシーを実装するための設計パターンには、アクセス条件チェック、アクセス条件のテストを再試行し、変更の再適用を試みる前に更新済みリソースを必要に応じて取得するループを含めるようにします。
 
-このコード スニペットでは、既に存在するインデックスに synonymMap を追加する例を示します。 このコードは [Azure Search のシノニム C# の例](search-synonyms-tutorial-sdk.md)からの引用です。
+このコード スニペットでは、既に存在するインデックスに synonymMap を追加する例を示します。 このコードは [Azure Cognitive Search のシノニム C# の例](search-synonyms-tutorial-sdk.md)からの引用です。
 
 スニペットでは "hotels" インデックスを取得し、更新操作時にオブジェクトのバージョンをチェックし、条件に適合しない場合は例外をスローした後、操作を (最大 3 回) 再試行します。この際、最新バージョンを取得するために、まずサーバーからインデックスを取得します。
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 15ba026e-96fc-4ae8-b135-0169da810e99
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: c4a01c32bd033113d69f4fde6a47c494e2661e89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3f11de081444007eb5c70dbe62235ed43a5ea59
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097619"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>チュートリアル:Azure Active Directory と MaxxPoint の統合
 

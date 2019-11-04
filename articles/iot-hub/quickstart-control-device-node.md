@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 06/21/2019
-ms.openlocfilehash: db049064c35fbe6b940d39f97decc0281983cc0f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ed3946c40d8e3eff665e4454b81f408c2033c09a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515072"
+ms.locfileid: "72529631"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>クイック スタート:Node.js を使用して、Azure IoT ハブに接続されたデバイスを制御する
 
@@ -67,7 +67,7 @@ az extension add --name azure-cli-iot-ext
 
 1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
    **MyNodeDevice**: これは、登録するデバイスの名前です。 示されているように、**MyNodeDevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
@@ -78,7 +78,7 @@ az extension add --name azure-cli-iot-ext
 
 2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
-    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -128,7 +128,7 @@ az extension add --name azure-cli-iot-ext
 
     次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT Hub にテレメトリを送信したときの出力を示しています。
 
-    ![シミュレートされたデバイスを実行する](./media/quickstart-control-device-node/SimulatedDevice-1.png)
+    ![シミュレートされたデバイスを実行する](./media/quickstart-control-device-node/simulated-device-telemetry-iot-hub.png)
 
 ## <a name="call-the-direct-method"></a>ダイレクト メソッドを呼び出す
 
@@ -149,11 +149,11 @@ az extension add --name azure-cli-iot-ext
 
     次のスクリーンショットは、アプリケーションによりデバイスに対してダイレクト メソッド呼び出しが行われ、受信確認が受診されたときの出力を示します。
 
-    ![バックエンド アプリケーションを実行する](./media/quickstart-control-device-node/BackEndApplication.png)
+    ![アプリケーションがデバイスに対してダイレクト メソッドの呼び出しを行うときの出力](./media/quickstart-control-device-node/direct-method-device-call.png)
 
     バックエンド アプリケーションを実行した後、シミュレートされたデバイスを実行しているコンソール ウィンドウにメッセージが表示され、メッセージの送信速度が変わります。
 
-    ![シミュレートされたクライアントでの変更](./media/quickstart-control-device-node/SimulatedDevice-2.png)
+    ![シミュレートされたクライアントに変更があったときの出力](./media/quickstart-control-device-node/simulated-device-message-change.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

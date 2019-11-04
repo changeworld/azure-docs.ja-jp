@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4d7a21e8d9b660463f508513c158032be81a35c
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686980"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598422"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -316,15 +316,17 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Databricks ライブラリに適切な SDK をインストールする
 クラスターが実行されたら、[ライブラリを作成](https://docs.databricks.com/user-guide/libraries.html#create-a-library)して、適切な Azure Machine Learning SDK パッケージをクラスターにアタッチします。
 
+1. ライブラリを保存する現在のワークスペース フォルダーを右クリックします。 **[作成]**  >  **[ライブラリ]** の順に選択します。
+
 1. オプションを **1 つだけ**選択します (他の SDK インストールはサポート対象外)。
 
    |SDK&nbsp;パッケージ&nbsp;extras|source|PyPi&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Databricks 用| Python Egg または PyPI のアップロード | azureml-sdk[databricks]|
-   |Databricks 用 (<br> 自動化された ML 機能付)| Python Egg または PyPI のアップロード | azureml-sdk[automl_databricks]|
+   |Databricks 用 (<br> 自動化された ML 機能付)| Python Egg または PyPI のアップロード | azureml-sdk[automl]|
 
    > [!Warning]
-   > 他の SDK extras はインストールできません。 前述の [databricks] または [automl_databricks] オプションから、どちらか一方のみを選択します。
+   > 他の SDK extras はインストールできません。 前述の [databricks] または [automl] オプションのどちらか一方のみを選択します。
 
    * **[すべてのクラスターに自動的にアタッチする]** は選択しないでください。
    * クラスター名の横にある **[アタッチ]** を選択します。
@@ -351,8 +353,7 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 ### <a name="start-exploring"></a>実際に使ってみる
 
 実際に試してみましょう。
-+ Azure Databricks/Azure Machine Learning SDK 用の[ノートブック アーカイブ ファイル](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc)をダウンロードし、Databricks クラスターに[そのアーカイブ ファイルをインポート](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive)します。
-  サンプル ノートブックがたくさんありますが、**Azure Databricks で動作するのは[これらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)のみです。**
++ サンプル ノートブックがたくさんありますが、**Azure Databricks で動作するのは[これらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)のみです。**
 
 + [トレーニング コンピューティングとして Databricks を使用してパイプラインを作成](how-to-create-your-first-pipeline.md)する方法を確認します。
 

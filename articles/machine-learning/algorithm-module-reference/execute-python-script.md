@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 4bd3433db92767f2d0d733ab71e4298fc5e618f8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128820"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693788"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -79,7 +79,7 @@ os.system(f"pip install scikit-misc")
 
 **Python スクリプトの実行**モジュールには、出発点として利用できるサンプル Python コードが含まれています。 **Python スクリプトの実行**モジュールを構成するには、実行する Python コードと一連の入力を **[Python スクリプト]** ボックスに指定します。
 
-1. **Python スクリプトの実行**モジュールを実験に追加します。
+1. **Python スクリプトの実行**モジュールをパイプラインに追加します。
 
 2. インターフェイスから、入力に使用するデータセットを追加して **Dataset1** に接続します。 Python スクリプトでは、このデータセットを **DataFrame1** として参照します。
 
@@ -93,7 +93,7 @@ os.system(f"pip install scikit-misc")
 
 4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースを含んだ ZIP ファイルを**スクリプト バンドル**で追加します。 **スクリプト バンドル**への入力は、あらかじめワークスペースにアップロードされた ZIP ファイルであることが必要です。 
 
-    アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでも実験の実行中に使用できます。 アーカイブにディレクトリ構造が含まれていても、その構造は維持されます。ただしその場合は、**src** というディレクトリをパスの先頭に追加する必要があります。
+    アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでもパイプラインの実行中に使用できます。 アーカイブにディレクトリ構造が含まれていても、その構造は維持されます。ただしその場合は、**src** というディレクトリをパスの先頭に追加する必要があります。
 
 5. **[Python スクリプト]** ボックスに、有効な Python スクリプトを入力するか貼り付けます。
 
@@ -107,13 +107,13 @@ os.system(f"pip install scikit-misc")
 
     + インターフェイスには 2 つのデータセットを返すことができます。このとき、データセットは `pandas.DataFrame` 型のシーケンスになっている必要があります。 その他の出力は Python コードで作成し、直接 Azure Storage に書き込むことができます。
 
-6. 実験を実行します。Python スクリプトだけを実行する場合は、このモジュールを選択して **[Run selected]\(選択項目の実行\)** をクリックしてください。
+6. パイプラインを実行します。Python スクリプトだけを実行する場合は、このモジュールを選択して **[Run selected]\(選択項目の実行\)** をクリックしてください。
 
     すべてのデータおよびコードが仮想マシンに読み込まれ、指定した Python 環境を使用して実行されます。
 
 ## <a name="results"></a>結果
 
-埋め込み Python コードによって実行された計算の結果は pandas.DataFrame として返す必要があります。そうすることで自動的に Azure Machine Learning データセット形式に変換され、その結果を実験内の他のモジュールで使用できるようになります。
+埋め込み Python コードによって実行された計算の結果は pandas.DataFrame として返す必要があります。そうすることで自動的に Azure Machine Learning データセット形式に変換され、その結果をパイプライン内の他のモジュールで使用できるようになります。
 
 このモジュールからは、次の 2 つのデータセットが返されます。  
   

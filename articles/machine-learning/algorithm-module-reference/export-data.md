@@ -1,7 +1,7 @@
 ---
 title: 'データのエクスポート: モジュール リファレンス'
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service でデータのエクスポート モジュールを使用して、実験の結果や中間データ、作業データを Azure Machine Learning の外部のクラウド ストレージに保存する方法について説明します。
+description: Azure Machine Learning service でデータのエクスポート モジュールを使用して、パイプラインの結果や中間データ、作業データを Azure Machine Learning の外部のクラウド ストレージに保存する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: a4fb539f4c86d27813b60964794fc1f398d3f2a4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b7b4b9de1e91279243e35f1b71f1ef6d2244e9e0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128777"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693728"
 ---
 # <a name="export-data-module"></a>データのエクスポート モジュール
 
 この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
 
-実験の結果や中間データ、作業データを Azure Machine Learning の外部のクラウド ストレージに保存するには、このモジュールを使用します。
+パイプラインの結果や中間データ、作業データを Azure Machine Learning の外部のクラウド ストレージに保存するには、このモジュールを使用します。
 
 このモジュールは、次のクラウド データ サービスにデータをエクスポートまたは保存する作業を支援します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "70128777"
   
 ## <a name="how-to-configure-export-data"></a>データのエクスポートを構成する方法
 
-1. インターフェイスで、**データのエクスポート** モジュールを実験に追加します。 このモジュールは、 **[Input and Output]\(入力と出力\)** カテゴリにあります。
+1. インターフェイスで、**データのエクスポート** モジュールをパイプラインに追加します。 このモジュールは、 **[Input and Output]\(入力と出力\)** カテゴリにあります。
 
 2. エクスポートしたいデータがあるモジュールに **[Export Data]\(データのエクスポート\)** を接続します。
 
@@ -51,13 +51,13 @@ ms.locfileid: "70128777"
 
         ファイル形式は、CSV と TSV がサポートされます。
 
-    3. プライベート アカウントの場合は、 **[アカウント]** を選択し、アカウント名とアカウント キーを指定することにより、実験でストレージ アカウントへの書き込みができるようになります。
+    3. プライベート アカウントの場合は、 **[アカウント]** を選択し、アカウント名とアカウント キーを指定することにより、パイプラインでストレージ アカウントへの書き込みができるようになります。
 
          - **アカウント名**:データを保存するアカウントの名前を入力するか貼り付けます。 たとえば、ストレージ アカウントの完全 URL が `http://myshared.blob.core.windows.net` であれば、「`myshared`」と入力します。
 
         - **アカウント キー**: アカウントに関連付けられているストレージ アクセス キーを貼り付けます。
 
-        -  **コンテナー、ディレクトリ、BLOB のパス**: エクスポートしたデータの格納先となる BLOB の名前を入力します。 たとえば、**mymldata** という名前のアカウントのコンテナー **predictions** に格納される **results01.csv** という名前の新しい BLOB に実験の結果を保存する場合、BLOB の完全 URL は `http://mymldata.blob.core.windows.net/predictions/results01.csv` になります。
+        -  **コンテナー、ディレクトリ、BLOB のパス**: エクスポートしたデータの格納先となる BLOB の名前を入力します。 たとえば、**mymldata** という名前のアカウントのコンテナー **predictions** に格納される **results01.csv** という名前の新しい BLOB にパイプラインの結果を保存する場合、BLOB の完全 URL は `http://mymldata.blob.core.windows.net/predictions/results01.csv` になります。
 
             そのため、 **[コンテナー、ディレクトリ、BLOB のパス]** フィールドには、該当するコンテナーと BLOB の名前を「`predictions/results01.csv`」のように指定することになります。
 
@@ -73,9 +73,9 @@ ms.locfileid: "70128777"
         - **TSV**: タブ区切り値 (TSV) は、多くの機械学習ツールと互換性がある形式です。 データと一緒に列見出しをエクスポートする場合は、 **[Write blob header row]\(BLOB ヘッダー行を書き込む\)** を選択してください。  
 
  
-    5. **[Use cached results]\(キャッシュされた結果を使用する\)** : 実験を実行するたびに BLOB ファイルに結果が再書き込みされるのを防ぐには、このオプションをオンにします。 それ以外でモジュールのパラメーターに変更がなければ、実験結果が書き込まれるのは、モジュールの初回実行時と、データに変更が生じたときだけです。
+    5. **[Use cached results]\(キャッシュされた結果を使用する\)** : パイプラインを実行するたびに BLOB ファイルに結果が再書き込みされるのを防ぐには、このオプションをオンにします。 それ以外でモジュールのパラメーターに変更がなければ、パイプライン結果が書き込まれるのは、モジュールの初回実行時と、データに変更が生じたときだけです。
 
-    6. 実験を実行します。
+    6. パイプラインを実行します。
 
 ## <a name="next-steps"></a>次の手順
 

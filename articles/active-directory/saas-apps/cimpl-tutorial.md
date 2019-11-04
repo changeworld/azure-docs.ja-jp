@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 58ee5481-ae40-4e4a-a3c9-86343851fc9a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 098c305f507d57a7e34dcb33d9c6bb3a3392e23f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1ac5b25a6dcf8e3dd7bf7b2788f168cc11290a3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105634"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cimpl"></a>チュートリアル:Azure Active Directory と Cimpl の統合
 

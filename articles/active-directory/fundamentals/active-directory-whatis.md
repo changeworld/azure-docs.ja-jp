@@ -10,12 +10,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 8e0e028be6b4a507ba97f9126c791ee77c764c70
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942805"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880510"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -52,7 +52,7 @@ Azure AD の実装を強化するために、Azure Active Directory Premium P1 �
 
 - **Azure Active Directory Premium P1。** P1 では、Free の機能に加えて、ハイブリッド ユーザーがオンプレミスとクラウドの両方のリソースにアクセスすることもできます。 さらに、動的グループ、セルフサービス グループ管理、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート)、オンプレミス ユーザーによるセルフサービスのパスワード リセットを可能にするクラウドの書き戻し機能など、高度な管理機能もサポートしています。
 
-- **Azure Active Directory Premium P2。** P2 では、Free および P1 の機能に加えて、アプリや重要な企業データへのリスクベースの条件付きアクセスを提供するのに役立つ [Azure Active Directory Identity Protection](../identity-protection/enable.md) のほか、管理者と管理者によるリソースへのアクセスを検出、制限、監視するのに役立ち、必要に応じてジャストインタイム アクセスを提供できる [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) が提供されます。
+- **Azure Active Directory Premium P2。** P2 では、Free および P1 の機能に加えて、アプリや重要な企業データへのリスクベースの条件付きアクセスを提供するのに役立つ [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) のほか、管理者と管理者によるリソースへのアクセスを検出、制限、監視するのに役立ち、必要に応じてジャストインタイム アクセスを提供できる [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) が提供されます。
 
 - **"従量課金制" の機能ライセンス。** Azure Active Directory Business-to-Customer (B2C) などの機能ライセンスを別途取得することもできます。 B2C は、顧客向けアプリ用の ID およびアクセス管理ソリューションを提供するのに役立つ可能性があります。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。
 
@@ -86,7 +86,7 @@ Azure AD ライセンスを選択すると、組織向けの次の機能の一�
 |Category|説明|
 |-------|-----------|
 |アプリケーション管理|アプリケーション プロキシ、シングル サインオン、マイ アプリ ポータル (別称: アクセス パネル)、サービスとしてのソフトウェア (SaaS) アプリを使用して、クラウドおよびオンプレミスのアプリを管理します。 詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../manage-apps/application-proxy.md)」および「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」を参照してください。|
-|Authentication|Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタムの禁止パスワード リスト、スマート ロックアウトを管理します。 詳細については、「[Azure AD Authentication のドキュメント](../authentication/index.yml)」を参照してください。|
+|認証|Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタムの禁止パスワード リスト、スマート ロックアウトを管理します。 詳細については、「[Azure AD Authentication のドキュメント](../authentication/index.yml)」を参照してください。|
 |企業間 (B2B)|自社データの管理を続けながら、ゲスト ユーザーと外部パートナーを管理します。 詳細については、「[Azure Active Directory B2B のドキュメント](../b2b/index.yml)」を参照してください。|
 |企業-消費者間 (B2C)|アプリの使用時にユーザーがサインアップおよびサインインする方法や自分のプロファイルを管理する方法をカスタマイズして制御します。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。|
 |条件付きアクセス|クラウド アプリへのアクセスを管理します。 詳細については、「[Azure AD の条件付きアクセスのドキュメント](../conditional-access/index.yml)」を参照してください。|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168504"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756128"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -107,13 +107,13 @@ Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure は、リソースに対して[ロール ベースのアクセス制御](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) を利用します。 アクセス許可は、次の階層内の[スコープ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)に対して割り当てられます。サブスクリプション、管理グループ、リソース グループ、および個々のリソース。 階層について詳しくは、[リソースの整理](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 Azure 仮想ネットワークと、ピアリング、ネットワーク セキュリティ グループ、サービス エンドポイント、ルート テーブルなどの関連するすべての機能を使用するには、組織のメンバーを組み込みの[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロールに割り当ててから、ロールを適切なスコープに割り当てることができます。 仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てる場合は、[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成し、[仮想ネットワーク](manage-virtual-network.md#permissions)、[サブネットとサービス エンドポイント](virtual-network-manage-subnet.md#permissions)、[ネットワーク インターフェイス](virtual-network-network-interface.md#permissions)、[ピアリング](virtual-network-manage-peering.md#permissions)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md#permissions)、または[ルート テーブル](manage-route-table.md#permissions)に必要な特定のアクセス許可を、ロールに割り当てます。
+Azure は、リソースに対して[ロール ベースのアクセス制御](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) を利用します。 アクセス許可は、管理グループ、サブスクリプション、リソース グループ、および個々のリソースという階層内の[スコープ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)に割り当てられます。 階層について詳しくは、[リソースの整理](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 Azure 仮想ネットワークと、ピアリング、ネットワーク セキュリティ グループ、サービス エンドポイント、ルート テーブルなどの関連するすべての機能を使用するには、組織のメンバーを組み込みの[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロールに割り当ててから、ロールを適切なスコープに割り当てることができます。 仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てる場合は、[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成し、[仮想ネットワーク](manage-virtual-network.md#permissions)、[サブネットとサービス エンドポイント](virtual-network-manage-subnet.md#permissions)、[ネットワーク インターフェイス](virtual-network-network-interface.md#permissions)、[ピアリング](virtual-network-manage-peering.md#permissions)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md#permissions)、または[ルート テーブル](manage-route-table.md#permissions)に必要な特定のアクセス許可を、ロールに割り当てます。
 
 ## <a name="policy"></a>ポリシー
 
 Azure Policy を使って、ポリシーの定義の作成、割り当て、管理を行うことができます。 ポリシー定義は、リソースにさまざまな規則を適用し、組織の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 Azure Policy によって、リソースの評価が実行され、ユーザーのポリシー定義に準拠していないリソースがスキャンされます。 たとえば、特定のリソース グループまたはリージョン内でのみ仮想ネットワークの作成を許可するようなポリシーを定義して適用することができます。 または、すべてのサブネットにネットワーク セキュリティ グループが関連付けられていることを要求するポリシーを作成できます。 ポリシーは、リソースを作成および更新するときに評価されます。
 
-ポリシーは、次の階層に対して適用されます。サブスクリプション、管理グループ、およびリソース グループ。 詳しくは、[Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照するか、仮想ネットワーク [ポリシー テンプレート](policy-samples.md)のサンプルをデプロイしてください。
+ポリシーは、管理グループ、サブスクリプション、およびリソース グループという階層に適用されます。 詳しくは、[Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照するか、仮想ネットワーク [ポリシー テンプレート](policy-samples.md)のサンプルをデプロイしてください。
 
 ## <a name="next-steps"></a>次の手順
 

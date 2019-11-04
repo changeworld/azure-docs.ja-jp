@@ -3,7 +3,7 @@ title: Azure Time Series Insights で調整を監視し軽減する方法 | Micr
 description: この記事では、Azure Time Series Insights の待機時間と調整の原因になるパフォーマンスの問題を監視、診断、および緩和する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332947"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990143"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 

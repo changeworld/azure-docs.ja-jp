@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 0b36e020-175a-4534-b341-85260739f889
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64dbf6afc3ffa57bfa9add72955967d0c73e63bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f94e1ef064dd51668d8dd13e1efbe6d3f70a2e0e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105665"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157419"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>チュートリアル:Azure Active Directory と Certify の統合
 

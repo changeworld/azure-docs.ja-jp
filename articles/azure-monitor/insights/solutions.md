@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor での監視ソリューション | Microsoft Docs
 description: Azure Monitor の監視ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。  この記事では、監視ソリューションのインストールと使用について説明します。
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: 6932f9f302bf1816842d78a662f01ebaafed8686
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/13/2019
+ms.openlocfilehash: b5304f2f9af3f3dac5a1259669cdd78548c2e832
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989203"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933737"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 監視ソリューションでは、Azure のサービスを利用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報が提供されます。 この記事では、Azure の監視ソリューションの簡単な概要と、監視ソリューションの使用とインストールの詳細について説明します。

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: f75933940aa97606ca33ab6bfc18fe5871811eef
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 10/29/2019
+ms.openlocfilehash: 7eb1f7e1ce02a30f84cb520438f60fcbcfa3a965
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441968"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100145"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
@@ -25,14 +25,14 @@ Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 およ�
 
 * Azure HDInsight クラスター。 手順については、[Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)または [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 * 次の記事に関する知識
-
-    - [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)
-    - [HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)
-    - [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
+    * [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)
+    * [HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)
+    * [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Azure Storage へのデータのアップロード
 
 ## <a name="utilities"></a>Utilities
+
 Microsoft では、Azure Storage を操作する次のユーティリティを提供しています。
 
 | ツール | Linux | OS X | Windows |
@@ -43,12 +43,11 @@ Microsoft では、Azure Storage を操作する次のユーティリティを�
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 | [Hadoop コマンド](#commandline) |✔ |✔ |✔ |
 
-
 > [!NOTE]  
 > Hadoop コマンドは、HDInsight クラスター上でのみ使用できます。 このコマンドでは、ローカル ファイル システムのデータを Azure Storage 内に読み込むことのみが可能です。  
 
-
 ## <a id="commandline"></a>Hadoop コマンド ライン
+
 Hadoop コマンド ラインは、クラスターのヘッド ノードに既にデータが存在している場合に、Azure Storage BLOB にデータを格納する際にのみ役立ちます。
 
 Hadoop コマンドを使用するには、最初に [SSH または PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) を使用してヘッドノードに接続する必要があります。
@@ -75,6 +74,7 @@ or
 > Apache HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って 12 GB より大きいデータを書き込むとエラーになります。 詳細については、この記事の「[BLOB への書き込みに関するストレージ例外](#storageexception)」セクションをご覧ください。
 
 ## <a name="graphical-clients"></a>グラフィカル クライアント
+
 Azure Storage を操作するためのグラフィカル インターフェイスを提供するアプリケーションもいくつかあります。 これらのアプリケーションの一部を次の一覧表に示します。
 
 | Client | Linux | OS X | Windows |
@@ -86,12 +86,14 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 | [Microsoft Azure 用の CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
-
 ## <a name="mount-azure-storage-as-local-drive"></a>Azure Storage をローカル ドライブとしてマウントする
+
 「[Mount Azure Storage as Local Drive (Azure Storage をローカル ドライブとしてマウントする)](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx)」を参照してください。
 
 ## <a name="upload-using-services"></a>サービスを使用してアップロードする
+
 ### <a name="azure-data-factory"></a>Azure Data Factory
+
 Azure Data Factory はフル マネージドのサービスで、データの保存、データの処理、データの移動の各サービスを効率的かつスケーラブルで信頼性の高いデータ生成パイプラインとして構成します。
 
 |ストレージの種類|ドキュメント|
@@ -101,11 +103,13 @@ Azure Data Factory はフル マネージドのサービスで、データの保
 |Azure Data Lake Storage Gen2 |[Load data into Azure Data Lake Storage Gen2 with Azure Data Factory (Azure Data Factory を使用して Azure Data Lake Storage Gen2 内にデータを読み込む)](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 ### <a id="sqoop"></a>Apache Sqoop
+
 Sqoop は、Hadoop とリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換し、そのデータを RDBMS へ取り込んだりできます。
 
 詳細については、[HDInsight での Sqoop の使用](hadoop/hdinsight-use-sqoop.md)に関するページを参照してください。
 
 ### <a name="development-sdks"></a>開発 SDK
+
 Azure Storage には、次のプログラミング言語で Azure SDK を使用してアクセスすることもできます。
 
 * .NET
@@ -118,7 +122,9 @@ Azure Storage には、次のプログラミング言語で Azure SDK を使用�
 Azure SDK のインストールの詳細については、 [Azure のダウンロード](https://azure.microsoft.com/downloads/)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
 ### <a id="storageexception"></a>BLOB への書き込みに関するストレージ例外
+
 **現象**:`hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで 12 GB 以上のファイルを書き込むと、次のエラーが発生する可能性があります。
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
@@ -163,6 +169,7 @@ Apache Ambari を使うことで、`fs.azure.write.request.size` の値をグロ
 Ambari の使用について詳しくは、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
 ここでは、HDInsight にデータを取り込む方法を説明しました。次の記事でデータの分析方法を学習してください。
 
 * [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)

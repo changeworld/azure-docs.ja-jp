@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a37ded45-84c8-4e88-8d9b-c5b9443eb0d4
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce1505405de7bc90e53c032eaf2bba390d6abad0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6da895b0ab05fd4b82a2d427ecf035e1c3bb8c90
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104609"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159264"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>チュートリアル:Azure Active Directory と DATABASICS の統合
 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: dd8e4178-9a63-492a-bd48-782e94e404af
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 916b87bd4165e83594fafed6aa04b58fcf720ff5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b11ce4ba21a6fd4db047c75104729737956699c4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106126"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>チュートリアル:Azure Active Directory と BorrowBox の統合
 

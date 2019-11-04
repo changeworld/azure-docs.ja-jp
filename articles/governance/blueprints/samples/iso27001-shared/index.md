@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 8a7ad23fbe63943ffff5958d399ce8ae60a76622
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 970d8d27dd59d0e2839d41cdf22d88ea197527c5
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299117"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200715"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルの概要
 

@@ -5,25 +5,20 @@ author: bharathsreenivas
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648892"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880202"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>数百テラバイトのデータを Azure Cosmos DB に移行する 
 
 Azure Cosmos DB には、テラバイト単位のデータを格納できます。 大規模なデータ移行を実行して、運用ワークロードを Azure Cosmos DB に移動することができます。 この記事では、Azure Cosmos DB への大規模なデータの移行に伴う課題について説明し、それらの課題に対応して Azure Cosmos DB にデータを移行するツールについて説明します。 このケース スタディでは、顧客は Cosmos DB SQL API を使用しています。  
 
 ワークロード全体を Azure Cosmos DB に移行する前に、データのサブセットを移行して、パーティション キーの選択、クエリのパフォーマンス、データ モデリングなどのいくつかの側面を検証することができます。 概念実証を検証した後、ワークロード全体を Azure Cosmos DB に移動できます。  
-
-[Cosmos DB ブートストラップ プログラム](https://azurecosmosdb.github.io/CosmosBootstrap/)を使用して、Azure Cosmos DB を基盤とするアプリケーションの構築または移行を能率化することもできます。 このプログラムでは、皆さんのプロジェクトに Azure Cosmos DB チームのエンジニアが割り当てられ、その支援の下で、Azure Cosmos DB へのデータの移行を行うことができます。 Cosmos DB ブートストラップ プログラムにサインアップするには、下のボタンをクリックしてください。
-
-> [!div class="nextstepaction"]
-> [Cosmos DB ブートストラップ プログラム](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>データ移行のためのツール 
 
@@ -154,10 +149,7 @@ Azure Cosmos DB ではストレージは自動的にスケールアウトされ�
 
 
 ## <a name="next-steps"></a>次の手順
+
 * [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。 
 * Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](spark-connector.md)に関する記事をご覧ください。  
 * 大規模な移行に関して別途支援が必要な場合は、問題のタイプに "General Advisory (一般的な勧告)" を、問題のサブタイプに "Large (TB+) migrations (大規模な (TB 以上の) 移行)" を選択してサポート チケットを開き、Azure Cosmos DB 製品チームに連絡します。 
-* [Cosmos DB ブートストラップ プログラム](https://azurecosmosdb.github.io/CosmosBootstrap/)を使用して、Azure Cosmos DB を基盤とするアプリケーションの構築または移行を能率化します。
-
-> [!div class="nextstepaction"]
-> [Cosmos DB ブートストラップ プログラム](https://azurecosmosdb.github.io/CosmosBootstrap/)

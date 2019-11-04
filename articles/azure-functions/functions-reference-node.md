@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 86bacbe22ce23fc4b0355374d81a96310e59178a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fbecb1d02c2d262487683cb493db2d5a8f0d1c3e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255021"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898942"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -677,8 +677,9 @@ const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = async function (context) {
+    let data;
     try {
-        const data = await readFileAsync('./hello.txt');
+        data = await readFileAsync('./hello.txt');
     } catch (err) {
         context.log.error('ERROR', err);
         // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation

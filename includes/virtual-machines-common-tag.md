@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f6bd574c83d309ce6d6f54fdb1c7d23cb713420d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67181115"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182241"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>テンプレートを使用して仮想マシンにタグを付ける
 まず、テンプレートを使用してタグを付けてみましょう。 [このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags)は、次のリソースにタグを付けます。Compute (仮想マシン)、Storage (ストレージ アカウント)、Network (パブリック IP アドレス、Virtual Network、ネットワーク インターフェイス)。 このテンプレートは Windows VM のものですが、Linux VM 用に調整できます。
@@ -24,9 +24,9 @@ ms.locfileid: "67181115"
 
 上の例のように、タグはキーと値のペアとして定義され、コロン (:) で区切られています。 タグは次の形式で定義する必要があります。
 
-        “tags”: {
-            “Key1” : ”Value1”,
-            “Key2” : “Value2”
+        "tags": {
+            "Key1" : "Value1",
+            "Key2" : "Value2"
         }
 
 選択したタグの編集を完了したら、テンプレート ファイルを保存します。

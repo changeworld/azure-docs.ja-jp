@@ -1,5 +1,5 @@
 ---
-title: B2B エンタープライズ統合用の X12 メッセージ - Azure Logic Apps | Microsoft Docs
+title: B2B 統合用の X12 メッセージ - Azure Logic Apps
 description: Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の EDI 形式の X12 メッセージを交換する
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bc5c458240925af1fdd74ebc9b2d4c3db71fb05
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728746"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679994"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -36,7 +35,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 ## <a name="create-an-x12-agreement"></a>X12 契約の作成
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。 
+1. [Azure Portal](https://portal.azure.com "Azure ポータル") にサインインします。 
 
 2. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 
    検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。  
@@ -66,9 +65,9 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
     ![契約の詳細の指定](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
-    | プロパティ | 説明 |
+    | プロパティ | Description |
     | --- | --- |
-    | Name |契約の名前。 |
+    | 名前 |契約の名前。 |
     | 契約の種類 | X12 にする必要があります。 |
     | ホスト パートナー |契約には、ホストとゲストの両方のパートナーが必要です。 ホスト パートナーは、契約を構成している組織を表します。 |
     | ホスト ID |ホスト パートナーの ID。 |
@@ -122,7 +121,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 | プロパティ | 説明 |
 | --- | --- |
-| バージョン |X12 のバージョンを選択します |
+| Version |X12 のバージョンを選択します |
 | トランザクションの種類 (ST01) |トランザクションの種類を選択します |
 | Sender Application (GS02) (送信側アプリケーション (GS02)) |送信側のアプリケーションを選択します |
 | スキーマ |使用するスキーマ ファイルを選択します。 スキーマは統合アカウントに追加されます。 |
@@ -216,7 +215,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 | プロパティ | 説明 |
 | --- | --- |
-| バージョン |X12 のバージョンを選択します |
+| Version |X12 のバージョンを選択します |
 | トランザクションの種類 (ST01) |トランザクションの種類を選択します |
 | スキーマ |使用するスキーマを選択します。 スキーマは統合アカウント内にあります。 先にスキーマを選択すると、バージョンとトランザクションの種類が自動的に構成されます。  |
 
@@ -302,5 +301,5 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 [Swagger の詳細](/connectors/x12/)を参照してください。 
 
 ## <a name="learn-more"></a>詳細情報
-* [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
+* [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")  
 

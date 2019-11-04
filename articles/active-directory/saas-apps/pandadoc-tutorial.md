@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と PandaDoc の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と PandaDoc の統合 | Microsoft Docs
 description: Azure Active Directory と PandaDoc の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/13/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df0c8359e568fb8bbf134ec1ad3b105b061dc9d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c1dcc1103b3c5f77bd5df52d70d35442235e8ea
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112894"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532976"
 ---
-# <a name="tutorial-integrate-pandadoc-with-azure-active-directory"></a>チュートリアル:PandaDoc と Azure Active Directory の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pandadoc"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PandaDoc の統合
 
 このチュートリアルでは、PandaDoc と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と PandaDoc を統合すると、次のことができます。
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * PandaDoc でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -46,6 +46,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * PandaDoc では、**SP と IDP** によって開始される SSO がサポートされます。
 * PandaDoc では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-pandadoc-from-the-gallery"></a>ギャラリーからの PandaDoc の追加
 
@@ -58,75 +61,53 @@ Azure AD への PandaDoc の統合を構成するには、ギャラリーから�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**PandaDoc**」と入力します。
 1. 結果のパネルから **[PandaDoc]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on-for-pandadoc"></a>PandaDoc の Azure AD シングル サインオンの構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、PandaDoc に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと PandaDoc の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 PandaDoc に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[PandaDoc SSO の構成](#configure-pandadoc-sso)** - アプリケーション側で SSO 設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[PandaDoc のテスト ユーザーの作成](#create-pandadoc-test-user)** - PandaDoc で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[PandaDoc の SSO の構成](#configure-pandadoc-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[PandaDoc のテスト ユーザーの作成](#create-pandadoc-test-user)** - PandaDoc で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **PandaDoc** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
-
-    ![[PandaDoc のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[PandaDoc のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
-
     **[サインオン URL]** テキスト ボックスに URL として「`https://app.pandadoc.com/sso-login/`」と入力します。
 
-1. PandaDoc アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+1. PandaDoc アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/edit-attribute.png)
 
-1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+1. その他に、PandaDoc アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | 名前空間  |
+    | 名前 | 名前空間  |
     | ---------------| ---------|
     | FirstName | User.givenname |
     | LastName | User.surname |
 
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
-
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
-
-    c. **[名前空間]** は空白のままにします。
-
-    d. [ソース] として **[属性]** を選択します。
-
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
-
-    f. **[OK]** をクリックします。
-
-    g. **[Save]** をクリックします。
-
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-   ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
 1. **[PandaDoc のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-   ![構成 URL のコピー](common/copy-configuration-urls.png)
-
-### <a name="configure-pandadoc-sso"></a>PandaDoc SSO の構成
-
-**PandaDoc** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [PandaDoc サポート チーム](mailto:support@pandadoc.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -158,18 +139,27 @@ PandaDoc に対する Azure AD SSO を構成してテストするには、次の
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
+## <a name="configure-pandadoc-sso"></a>PandaDoc SSO の構成
+
+**PandaDoc** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [PandaDoc サポート チーム](mailto:support@pandadoc.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
 ### <a name="create-pandadoc-test-user"></a>PandaDoc テスト ユーザーの作成
 
 このセクションでは、B. Simon というユーザーを PandaDoc に作成します。 PandaDoc では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 PandaDoc にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト 
 
-アクセス パネルで [PandaDoc] タイルを選択すると、SSO を設定した PandaDoc に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+
+アクセス パネルで [PandaDoc] タイルをクリックすると、SSO を設定した PandaDoc に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD で PandaDoc を試す](https://aad.portal.azure.com/)
+

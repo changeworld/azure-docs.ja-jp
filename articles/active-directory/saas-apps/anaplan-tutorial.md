@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4a9c2914-6c8c-4a88-93e3-3753afb40e6b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed6762a1cce3afb3e22b15a63c68432fec121efe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe33dadae216e6f4b19033b6ac487df61839778c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107003"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73153008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>チュートリアル:Azure Active Directory と Anaplan の統合
 

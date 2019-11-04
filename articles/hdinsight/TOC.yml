@@ -41,6 +41,10 @@
           href: ./hdinsight-streaming-at-scale-overview.md
         - name: HDInsight の Apache Hadoop アーキテクチャ
           href: ./hdinsight-hadoop-architecture.md
+        - name: HDInsight でサポートされている VM サイズ
+          href: ./hdinsight-supported-node-configuration.md
+        - name: 適切な VM サイズの選択
+          href: ./hdinsight-selecting-vm-size.md
         - name: クラスターの容量計画
           href: ./hdinsight-capacity-planning.md
         - name: 高可用性と信頼性
@@ -137,6 +141,8 @@
               href: ./hdinsight-autoscale-clusters.md
             - name: 外部のメタデータ ストアを使用する
               href: ./hdinsight-use-external-metadata-stores.md
+            - name: カスタム Ambari DB
+              href: ./hdinsight-custom-ambari-db.md
             - name: HDInsight クラスターのログを管理する
               href: ./hdinsight-log-management.md
             - name: ストレージ アカウントを追加する

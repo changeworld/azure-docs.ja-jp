@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 87c438403934df34a02678c805d3622956654b4e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 5d2608d1c374fadac18cebc093ce50ef93f9656a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172053"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597367"
 ---
 この表は、Azure Functions の 2 つのメジャー バージョンのランタイムでサポートされているバインディングを示しています。
 
@@ -36,4 +36,4 @@ ms.locfileid: "71172053"
 | [Timer](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
-<sup>1</sup> 2.x では、HTTP と Timer を除くすべてのバインドを登録する必要があります。 「[バインディング拡張機能を登録する](../articles/azure-functions/functions-bindings-register.md)」を参照してください。
+<sup>1</sup> バージョン 2.x ランタイムでは、HTTP と Timer を除くすべてのバインドを登録する必要があります。 「[バインディング拡張機能を登録する](../articles/azure-functions/functions-bindings-register.md)」を参照してください。 特に記載がない限り、サポートされているすべての 2.x バインドがバージョン 3.x でもサポートされます。   

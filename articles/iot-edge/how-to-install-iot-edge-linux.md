@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 9bc4d60eab0dac80d1b2b524f32bc506a66dee18
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: aca417ebbc6f9af80058ddece32842f38918ce60
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516664"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964762"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
@@ -167,7 +167,7 @@ IoT Hub によって提供されるデバイス接続文字列を使用して、
 
 ### <a name="option-1-manual-provisioning"></a>オプション 1: 手動プロビジョニング
 
-デバイスを手動でプロビジョニングするには、[デバイス接続文字列](how-to-register-device-portal.md)をデバイスに提供する必要があります。この文字列は、新しいデバイスを IoT ハブに登録することで作成できます。
+デバイスを手動でプロビジョニングするには、[デバイス接続文字列](how-to-register-device.md#register-in-the-azure-portal)をデバイスに提供する必要があります。この文字列は、新しいデバイスを IoT ハブに登録することで作成できます。
 
 構成ファイルを開きます。
 

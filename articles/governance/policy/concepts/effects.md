@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592807"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176341"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -433,7 +433,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-この効果は、`Microsoft.ContainerService.Data` のポリシー定義*モード*で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) で定義されている受付制御規則を [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
+この効果は、`Microsoft.ContainerService.Data` のポリシー定義*モード*で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている受付制御規則を [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
 
 > [!NOTE]
 > [Kubernetes 用の Azure Policy](rego-for-aks.md) はパブリック プレビューで、組み込みのポリシー定義のみをサポートします。

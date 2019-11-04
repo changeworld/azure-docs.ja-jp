@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511006"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784827"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -416,7 +416,10 @@ Azure Web アプリケーションのエンドポイントが停止されると�
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>TCP 監視を使用する場合、エンドポイントからどのような応答が必要ですか。
 
-TCP 監視を使用すると、Traffic Manager は指定されたポートでエンドポイントに SYN 要求を送信して 3 方向の TCP ハンドシェイクを開始します。 Traffic Manager は、エンドポイントからの応答を一定期間 (タイムアウト設定で指定) 待機します。 エンドポイントが、監視設定で指定されたタイムアウト期間内に SYN-ACK 応答で SYN 要求に応答すると、そのエンドポイントは正常と見なされます。 SYN-ACK 応答を受信すると、Traffic Manager は RST で応答して接続をリセットします。
+TCP 監視を使用すると、Traffic Manager は指定されたポートでエンドポイントに SYN 要求を送信して 3 方向の TCP ハンドシェイクを開始します。 その後、エンドポイントからの SYN-ACK 応答が一定期間 (タイムアウト設定で指定) 待機されます。
+
+- 監視設定で指定されたタイムアウト期間内に SYN-ACK 応答が受信された場合、そのエンドポイントは正常と見なされます。 FIN または FIN-ACK は、Traffic Manager がソケットを定期的に終了するときに予想される応答です。
+- 指定されたタイムアウト後に SYN-ACK 応答が受信されると、Traffic Manager では RST で応答して接続をリセットします。
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Traffic Manager は、どの程度迅速に異常なエンドポイントからユーザーを移動させますか。
 
@@ -484,7 +487,7 @@ Traffic Manager の課金には、エンドポイントの正常性チェック�
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>入れ子になったプロファイルでは、パフォーマンスへの影響はありますか。
 
-いいえ。 入れ子になったプロファイルを使用しても、パフォーマンスに影響はありません。
+No. 入れ子になったプロファイルを使用しても、パフォーマンスに影響はありません。
 
 Traffic Manager のネーム サーバーは、各 DNS クエリを処理するときにプロファイル階層の内部をスキャンします。 親プロファイルに対する DNS クエリは、子プロファイルのエンドポイントを含む DNS 応答を受信できます。 使用するのが単一のプロファイルか入れ子になったプロファイルかに関係なく、単一の CNAME レコードが使用されます。 階層内のプロファイルごとに CNAME レコードを作成する必要はありません。
 

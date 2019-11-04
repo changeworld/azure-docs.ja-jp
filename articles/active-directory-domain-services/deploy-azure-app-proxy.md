@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services:Azure AD アプリケーション プロキシをデプロイする | Microsoft Docs
+title: Azure AD Domain Services 用の Azure AD アプリケーション プロキシをデプロイする | Microsoft Docs
 description: Azure Active Directory Domain Services マネージド ドメインで Azure AD アプリケーション プロキシを使用します
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613023"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754401"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。

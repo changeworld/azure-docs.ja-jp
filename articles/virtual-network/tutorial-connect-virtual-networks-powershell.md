@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f5c90b7d79b31c321b00869c90b0261c0b4730d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63584eedb0e51ddbca0d644bc17db3facd9225b5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727751"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164026"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>PowerShell を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -179,7 +179,7 @@ mstsc /v:<publicIpAddress>
 *myVm1* VM では、Windows ファイアウォールを介してインターネット制御メッセージ プロトコル (ICMP) を有効にして、後で PowerShell を使用して*myVm2* からこの VM に ping を実行できるようにします。
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 ```
 
 この記事では、VM 間の通信に ping を使用していますが、運用環境のデプロイでは Windows ファイアウォールで ICMP を許可することは推奨されません。

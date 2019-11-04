@@ -1,56 +1,56 @@
 ---
-title: .NET アプリケーションから Azure Search を使用する方法 - Azure Search
-description: C# と .NET SDK使用して、.NET アプリケーションで Azure Search を使用する方法について説明します。 コード ベースのタスクには、サービスへの接続、コンテンツのインデックス作成、およびインデックスの照会が含まれます。
-author: brjohnstmsft
+title: .NET アプリケーションから Azure Cognitive Search を使用する方法
+titleSuffix: Azure Cognitive Search
+description: C# と .NET SDK使用して、.NET アプリケーションで Azure Cognitive Search を使用する方法について説明します。 コード ベースのタスクには、サービスへの接続、コンテンツのインデックス作成、およびインデックスの照会が含まれます。
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 06/19/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.openlocfilehash: 3f167ee082b751f6bd686c0543db6a262615e486
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.devlang: dotnet
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e1903b3b33e1dde5178fadbc37feee191a2eaacd
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208247"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792134"
 ---
-# <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
+# <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET アプリケーションから Azure Cognitive Search を使用する方法
 
-この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用する手順について説明します。 .NET SDK を使用すると、Azure Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
+この記事では、[Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) を使用する手順について説明します。 .NET SDK を使用すると、Azure Cognitive Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
 
-## <a name="whats-in-the-azure-search-sdk"></a>Azure Search SDK の内容
+## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Azure Cognitive Search SDK の内容
 この SDK は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､シノニム マップの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています｡ これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
 
-メインの NuGet パッケージは `Microsoft.Azure.Search` です｡このパッケージは､依存関係がある他のすべてのパッケージを含むメタパッケージです｡ 初めて取り組む場合､あるいはアプリケーションに Azure Search の全機能が必要と分かっている場合は､このパッケージを使用します｡
+メインの NuGet パッケージは `Microsoft.Azure.Search` です｡このパッケージは､依存関係がある他のすべてのパッケージを含むメタパッケージです｡ 初めて取り組む場合、あるいはアプリケーションに Azure Cognitive Search の全機能が必要と分かっている場合は、このパッケージを使用します｡
 
 SDK のその他の NuGet パッケージとしては以下があります｡
  
-  - `Microsoft.Azure.Search.Data`:Azure Search を使用して .NET アプリケーションを開発していて、インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します。 インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
-  - `Microsoft.Azure.Search.Service`:.NET で、Azure Search インデックス、シノニム マップ、インデクサー、データ ソース、またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します。 インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
-  - `Microsoft.Azure.Search.Common`:Azure Search .NET ライブラリに必要な共通の型です。 このパッケージを直接アプリケーションで使用する必要はありません。 これは、依存関係としてのみ使用されるように考慮されています。
+  - `Microsoft.Azure.Search.Data`:Azure Cognitive Search を使用して .NET アプリケーションを開発していて、インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します。 インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+  - `Microsoft.Azure.Search.Service`:.NET で、Azure Cognitive Search インデックス、シノニム マップ、インデクサー、データ ソース、またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します。 インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Cognitive Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+  - `Microsoft.Azure.Search.Common`:Azure Cognitive Search .NET ライブラリに必要な共通の型です。 このパッケージを直接アプリケーションで使用する必要はありません。 これは、依存関係としてのみ使用されるように考慮されています。
 
 各種クライアント ライブラリには、`Index`、`Field`、`Document` などのクラスや、 `SearchServiceClient` や `SearchIndexClient` クラスに対する `Indexes.Create` や `Documents.Search` などの操作が定義されています。 これらのクラスは、次の名前空間にまとめられています。
 
 * [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
-SDK の今後の更新プログラムについてフィードバックを提供する場合は、[フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/) を参照するか、[GitHub](https://github.com/azure/azure-sdk-for-net/issues) でイシューを作成し、イシューのタイトルに "Azure Search" を含めます。
+SDK の今後の更新プログラムについてフィードバックを提供する場合は、[フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/) を参照するか、[GitHub](https://github.com/azure/azure-sdk-for-net/issues) でイシューを作成し、イシューのタイトルに "Azure Cognitive Search" を含めます。
 
-.NET SDK は、バージョン `2019-05-06` の [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンには、Azure BLOB にインデックスを付ける際の、[複合型](search-howto-complex-data-types.md)、[コグニティブ検索](cognitive-search-concept-intro.md)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、[JsonLines 分析モード](search-howto-index-json-blobs.md)に対するサポートが含まれます。 
+.NET SDK は、バージョン `2019-05-06` の [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンには、Azure BLOB にインデックスを付ける際の、[複合型](search-howto-complex-data-types.md)、[AI エンリッチメント](cognitive-search-concept-intro.md)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、[JsonLines 分析モード](search-howto-index-json-blobs.md)に対するサポートが含まれます。 
 
-この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
+この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Cognitive Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>最新バージョンの SDK へのアップグレード
-古いバージョンの Azure Search .NET SDK を既に使用しており、一般公開されている最新のバージョンにアップグレードする場合、[この記事](search-dotnet-sdk-migration-version-9.md)に方法が説明されています。
+古いバージョンの Azure Cognitive Search .NET SDK を既に使用しており、一般公開されている最新のバージョンにアップグレードする場合、[この記事](search-dotnet-sdk-migration-version-9.md)に方法が説明されています。
 
 ## <a name="requirements-for-the-sdk"></a>SDK の要件
 1. Visual Studio 2017 以降。
-2. 自分が所有する Azure Search サービス。 SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。 [ポータルでの Azure Search サービスの作成](search-create-service-portal.md) 」は、これらの手順の参考になります。
-3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Search .NET SDK の [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Search) をダウンロードします。 NuGet.org でパッケージ名 `Microsoft.Azure.Search` (あるいは機能の一部のみ必要な場合は､上記のうちの対応するパッケージ名) を検索します｡
+2. 自分が所有する Azure Cognitive Search サービス。 SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。 [ポータルでの Azure Search サービスの作成](search-create-service-portal.md) 」は、これらの手順の参考になります。
+3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Cognitive Search .NET SDK の [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Search) をダウンロードします。 NuGet.org でパッケージ名 `Microsoft.Azure.Search` (あるいは機能の一部のみ必要な場合は､上記のうちの対応するパッケージ名) を検索します｡
 
-Azure Search .NET SDK では、.NET Framework 4.5.2 以上と .NET Core 2.0 以上を対象とするアプリケーションがサポートされています。
+Azure Cognitive Search .NET SDK では、.NET Framework 4.5.2 以上と .NET Core 2.0 以上を対象とするアプリケーションがサポートされています。
 
 ## <a name="core-scenarios"></a>主要なシナリオ
 検索アプリケーションではいくつかの処理を実行する必要があります。 このチュートリアルではこれらの主要なシナリオについて説明します。
@@ -100,7 +100,7 @@ static void Main(string[] args)
 > 
 >
 
-このプログラムの手順を詳しく見ていきましょう。 最初に、新しい `SearchServiceClient`を作成する必要があります。 このオブジェクトを使用してインデックスを管理できます。 このオブジェクトを作成するには、Azure Search サービス名および管理 API キーを提供する必要があります。 この情報を、[サンプル アプリケーション](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)の `appsettings.json` ファイルに入力できます。
+このプログラムの手順を詳しく見ていきましょう。 最初に、新しい `SearchServiceClient`を作成する必要があります。 このオブジェクトを使用してインデックスを管理できます。 このオブジェクトを作成するには、Azure Cognitive Search サービス名および管理 API キーを提供する必要があります。 この情報を、[サンプル アプリケーション](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)の `appsettings.json` ファイルに入力できます。
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -232,7 +232,7 @@ private static void DeleteIndexIfExists(string indexName, SearchServiceClient se
 このメソッドは、指定された `SearchServiceClient` を使用してインデックスが存在するかどうかを確認し、存在する場合は、それを削除します。
 
 > [!NOTE]
-> この記事のコード例では、わかりやすくするため、Azure Search .NET SDK の同期メソッドを使用します。 実際のアプリケーションでは、高い拡張性と応答性を維持するため、非同期メソッドを使用することをお勧めします。 たとえば、上記のメソッドでは、`Exists` と `Delete` の代わりに、`ExistsAsync` および `DeleteAsync` を使用できます。
+> この記事のコード例では、わかりやすくするため、Azure Cognitive Search .NET SDK の同期メソッドを使用します。 実際のアプリケーションでは、高い拡張性と応答性を維持するため、非同期メソッドを使用することをお勧めします。 たとえば、上記のメソッドでは、`Exists` と `Delete` の代わりに、`ExistsAsync` および `DeleteAsync` を使用できます。
 > 
 > 
 
@@ -258,7 +258,7 @@ private static void CreateIndex(string indexName, SearchServiceClient serviceCli
 >
 > 
 
-フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションも Index に追加できます (簡潔にするために、これらのパラメーターはサンプルから省略されています)。 Index オブジェクトとその構成要素の詳細については、[SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)および [Azure Search REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)をご覧ください。
+フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションも Index に追加できます (簡潔にするために、これらのパラメーターはサンプルから省略されています)。 Index オブジェクトとその構成要素の詳細については、[SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)および [Azure Cognitive Search REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)をご覧ください。
 
 ### <a name="populating-the-index"></a>インデックスの設定
 `Main` の次の手順では、新しく作成したインデックスを設定します。 このインデックス設定は、次のメソッドで実行されます。(説明のため "..." で置き換えられた一部のコード。  完全なデータ生成コードに対する完全なサンプル ソリューションを参照してください。)
@@ -379,26 +379,26 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 
 このメソッドには 4 つの部分があります。 最初の部分では、インデックスにアップロードする入力データとして使用される、3 つの `Hotel` オブジェクトと、それぞれに含まれる 3 つの `Room` オブジェクトの配列を作成します。 このデータは、わかりやすくするためハードコーディングされています。 実際のアプリケーションでは、通常、データは SQL Database などの外部データ ソースから取得されます。
 
-2 番目の部分では、ドキュメントを含む `IndexBatch` を作成します。 この場合は `IndexBatch.Upload`を呼び出すことによって、作成時にバッチに適用する操作を指定します。 その後、バッチは `Documents.Index` メソッドによって Azure Search インデックスにアップロードされます。
+2 番目の部分では、ドキュメントを含む `IndexBatch` を作成します。 この場合は `IndexBatch.Upload`を呼び出すことによって、作成時にバッチに適用する操作を指定します。 その後、バッチは `Documents.Index` メソッドによって Azure Cognitive Search インデックスにアップロードされます。
 
 > [!NOTE]
-> この例では、単にドキュメントをアップロードします。 既存のドキュメントに変更をマージする、またはドキュメントを削除する場合は、代わりに `IndexBatch.Merge`、`IndexBatch.MergeOrUpload`、または `IndexBatch.Delete` を呼び出すことによってバッチを作成できます。 `IndexBatch.New` を呼び出すことによって 1 つのバッチでさまざまな操作を組み合わせることもできます。これによって、`IndexAction` オブジェクトのコレクションを受け取り、各オブジェクトがドキュメントで特定の操作を実行するよう Azure Search に指示します。 `IndexAction.Merge` や `IndexAction.Upload` などの対応するメソッドを呼び出すことによって、独自の操作を行う `IndexAction` を作成できます。
+> この例では、単にドキュメントをアップロードします。 既存のドキュメントに変更をマージする、またはドキュメントを削除する場合は、代わりに `IndexBatch.Merge`、`IndexBatch.MergeOrUpload`、または `IndexBatch.Delete` を呼び出すことによってバッチを作成できます。 `IndexBatch.New` を呼び出すことによって 1 つのバッチでさまざまな操作を組み合わせることもできます。これによって、`IndexAction` オブジェクトのコレクションを受け取り、各オブジェクトがドキュメントで特定の操作を実行するよう Azure Cognitive Search に指示します。 `IndexAction.Merge` や `IndexAction.Upload` などの対応するメソッドを呼び出すことによって、独自の操作を行う `IndexAction` を作成できます。
 > 
 > 
 
-このメソッドの 3 番目の部分は、インデックス作成の重要なエラー ケースを処理する catch ブロックです。 Azure Search がバッチ内の一部のドキュメントのインデックス作成に失敗した場合、`Documents.Index` は `IndexBatchException` をスローします。 この例外は、サービスの負荷が高いときにドキュメントのインデックスを作成していると発生する場合があります。 **コードでこのケースを明示的に処理することを強くお勧めします。** しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、アプリケーションのデータ整合性要件に応じて他の処理を行うこともできます。
+このメソッドの 3 番目の部分は、インデックス作成の重要なエラー ケースを処理する catch ブロックです。 Azure Cognitive Search がバッチ内の一部のドキュメントのインデックス作成に失敗した場合、`Documents.Index` は `IndexBatchException` をスローします。 この例外は、サービスの負荷が高いときにドキュメントのインデックスを作成していると発生する場合があります。 **コードでこのケースを明示的に処理することを強くお勧めします。** しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、アプリケーションのデータ整合性要件に応じて他の処理を行うこともできます。
 
 > [!NOTE]
 > [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) メソッドを使用して、`Index` の前回の呼び出しで失敗したアクションだけを含む新しいバッチを作成できます。 このメソッドの適切な使用方法については、[StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) をご覧ください。
 >
 >
 
-最後に、`UploadDocuments` メソッドは 2 秒間遅延します。 インデックスの作成は Azure Search サービスで非同期的に行われるので、サンプル アプリケーションは短い時間待機して、確実にドキュメントを検索に使用できるようにする必要があります。 通常、このような遅延は、デモ、テスト、およびサンプル アプリケーションでのみ必要です。
+最後に、`UploadDocuments` メソッドは 2 秒間遅延します。 インデックスの作成は Azure Cognitive Search サービスで非同期的に行われるので、サンプル アプリケーションは短い時間待機して、確実にドキュメントを検索に使用できるようにする必要があります。 通常、このような遅延は、デモ、テスト、およびサンプル アプリケーションでのみ必要です。
 
 <a name="how-dotnet-handles-documents"></a>
 
 #### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK がドキュメントを処理する方法
-Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのインスタンスをどのようにしてインデックスにアップロードできるのか不思議に思われるかもしれません。 その質問に答えるため、 `Hotel` クラスを見ていくことにします。
+Azure Cognitive Search .NET SDK が `Hotel` のようなユーザー定義クラスのインスタンスをどのようにしてインデックスにアップロードできるのか不思議に思われるかもしれません。 その質問に答えるため、 `Hotel` クラスを見ていくことにします。
 
 ```csharp
 using System;
@@ -458,13 +458,13 @@ public partial class Hotel
 最初に注目すべき点は、`Hotel` クラス内の各パブリック プロパティの名前がインデックス定義内の同じ名前でフィールドにマップされることです。 各フィールドを小文字で始める場合 ("camel case")、そのクラス上の `[SerializePropertyNamesAsCamelCase]` 属性を使用してプロパティ名を自動的に camel-case にマップするよう、SDK に指示することができます。 このシナリオは、ターゲット スキーマがアプリケーション開発者の制御外にあるときに、.NET の "パスカル ケース" 命名に関するガイドラインに違反することなくデータ バインドを実行する .NET アプリケーションでは一般的です。
 
 > [!NOTE]
-> Azure Search .NET SDK は、 [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「[JSON.NET 使用したシリアル化のカスタマイズ](#JsonDotNet)」をご覧ください。
+> Azure Cognitive Search .NET SDK は、[NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「[JSON.NET 使用したシリアル化のカスタマイズ](#JsonDotNet)」をご覧ください。
 > 
 > 
 
-次に注目すべき点は、各プロパティが `IsFilterable`、`IsSearchable`、`Key`、`Analyzer` などの属性で装飾されていることです。 これらの属性は、[Azure Search インデックス内の対応するフィールド属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)に直接マップされます。 `FieldBuilder` クラスは、これらのプロパティを使用してインデックスのフィールド定義を構築します。
+次に注目すべき点は、各プロパティが `IsFilterable`、`IsSearchable`、`Key`、`Analyzer` などの属性で装飾されていることです。 これらの属性は、[Azure Cognitive Search インデックス内の対応するフィールド属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)に直接マップされます。 `FieldBuilder` クラスは、これらのプロパティを使用してインデックスのフィールド定義を構築します。
 
-`Hotel` クラスに関する 3 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。 `bool?`、`Edm.Boolean`、`DateTimeOffset?`、`Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。 型のマッピングの具体的なルールについては、[Azure Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)で `Documents.Get` メソッドを参照してください。 `FieldBuilder` クラスは、このマッピングに自動的に対処しますが、シリアル化の問題のトラブルシューティングを行う必要がある場合に、マッピングを理解しておくと役立ちます。
+`Hotel` クラスに関する 3 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。 `bool?`、`Edm.Boolean`、`DateTimeOffset?`、`Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。 型のマッピングの具体的なルールについては、[Azure Cognitive Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)で `Documents.Get` メソッドを参照してください。 `FieldBuilder` クラスは、このマッピングに自動的に対処しますが、シリアル化の問題のトラブルシューティングを行う必要がある場合に、マッピングを理解しておくと役立ちます。
 
 `SmokingAllowed` プロパティを見つけてしまいましたか?
 
@@ -556,15 +556,15 @@ namespace AzureSearch.SDKHowTo
 インデックス内でドキュメントの操作を行うために独自のクラスを使用するこの機能は、次のセクションで説明するように、検索結果の取得、および SDK による任意の型への自動逆シリアル化という両方向で動作します。
 
 > [!NOTE]
-> Azure Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 このチュートリアルのサンプル コードでは、後者のみを使用しています。 [`Document` クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document)は `Dictionary<string, object>` から継承します。
+> Azure Cognitive Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 このチュートリアルのサンプル コードでは、後者のみを使用しています。 [`Document` クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document)は `Dictionary<string, object>` から継承します。
 > 
 >
 
 **null 許容のデータ型を使用する理由**
 
-Azure Search インデックスにマップする独自のモデル クラスを設計するときは、`bool` や `int` などの値型のプロパティを null 許容型として宣言することをお勧めします (たとえば、`bool` ではなく `bool?` を使用する)。 null 非許容プロパティを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が **保証する** 必要があります。 SDK または Azure Search サービスで、これを強制することはできません。
+Azure Cognitive Search インデックスにマップする独自のモデル クラスを設計するときは、`bool` や `int` などの値型のプロパティを null 許容型として宣言することをお勧めします (たとえば、`bool` ではなく `bool?` を使用する)。 null 非許容プロパティを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が **保証する** 必要があります。 SDK または Azure Cognitive Search サービスで、これを強制することはできません。
 
-これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
+これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Cognitive Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
@@ -573,13 +573,13 @@ Azure Search インデックスにマップする独自のモデル クラスを
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>JSON.NET 使用したシリアル化のカスタマイズ
-SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。 独自の `JsonConverter` または `IContractResolver` を定義することによって、必要に応じてシリアル化と逆シリアル化をカスタマイズできます。 詳細については、[JSON.NET のドキュメント](https://www.newtonsoft.com/json/help/html/Introduction.htm)を参照してください。 この機能は、アプリケーションの既存のモデル クラスを Azure Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。 たとえば、カスタム シリアル化を使用すると次のことが可能です。
+SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。 独自の `JsonConverter` または `IContractResolver` を定義することによって、必要に応じてシリアル化と逆シリアル化をカスタマイズできます。 詳細については、[JSON.NET のドキュメント](https://www.newtonsoft.com/json/help/html/Introduction.htm)を参照してください。 この機能は、アプリケーションの既存のモデル クラスを Azure Cognitive Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。 たとえば、カスタム シリアル化を使用すると次のことが可能です。
 
 * ドキュメント フィールドとして格納されるものに、モデル クラスの特定のプロパティを含める、または除外する。
 * コードのプロパティ名とインデックスのフィールド名をマップする。
 * ドキュメント フィールドへのプロパティのマッピングに使用できるカスタム属性を作成する。
 
-Azure Search .NET SDK のユニット テストにカスタム シリアル化を実装する例については、GitHub を参照してください。 手始めとしては、[このフォルダー](https://github.com/Azure/azure-sdk-for-net/tree/4f6f4e4c90200c1b0621c4cead302a91e89f2aba/sdk/search/Microsoft.Azure.Search/tests/Tests/Models)が適しています。 カスタム シリアル化のテストに使用されるクラスが含まれます。
+Azure Cognitive Search .NET SDK のユニット テストにカスタム シリアル化を実装する例については、GitHub を参照してください。 手始めとしては、[このフォルダー](https://github.com/Azure/azure-sdk-for-net/tree/4f6f4e4c90200c1b0621c4cead302a91e89f2aba/sdk/search/Microsoft.Azure.Search/tests/Tests/Models)が適しています。 カスタム シリアル化のテストに使用されるクラスが含まれます。
 
 ### <a name="searching-for-documents-in-the-index"></a>インデックス内のドキュメントの検索
 サンプル アプリケーションの最後の手順として、インデックス内のいくつかのドキュメントを検索します。
@@ -699,7 +699,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-このクエリでは、OData の `$filter` 式 (`Rooms/any(r: r/BaseRate lt 100)`) を使用して、インデックス内のドキュメントをフィルター処理します。 ここでは、[あらゆる演算子](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators)を使用して、'BaseRate lt 100' をルーム コレクションのすべての項目に適用します。 Azure Search がサポートする OData 構文の詳細については、 [こちら](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax)を参照してください。
+このクエリでは、OData の `$filter` 式 (`Rooms/any(r: r/BaseRate lt 100)`) を使用して、インデックス内のドキュメントをフィルター処理します。 ここでは、[あらゆる演算子](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators)を使用して、'BaseRate lt 100' をルーム コレクションのすべての項目に適用します。 Azure Cognitive Search がサポートする OData 構文の詳細については、[こちら](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax)を参照してください。
 
 クエリの結果は次のとおりです。
 
@@ -750,9 +750,9 @@ WriteDocuments(results);
     Name: Triple Landscape Hotel
     ...
 
-チュートリアルはここまでですが、ここで止めないでください。 **次のステップでは、Azure Search をさらに学習するための他のリソースを提供します。
+チュートリアルはここまでですが、ここで止めないでください。 **次のステップでは、Azure Cognitive Search をさらに学習するための他のリソースを提供します。
 
 ## <a name="next-steps"></a>次の手順
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンスを参照してください。
 * [名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) で、さまざまなオブジェクトに名前を付けるときの規則を学習してください。
-* Azure Search で [サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) を確認してください。
+* Azure Cognitive Search で[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)を確認してください。

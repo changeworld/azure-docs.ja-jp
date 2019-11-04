@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/04/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 04/04/2017
+ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795526"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817376"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信

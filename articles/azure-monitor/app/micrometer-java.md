@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights Java SDK で Micrometer を使用する方法 | Microsoft Docs
 description: 'Application Insights Spring Boot アプリケーションと非 Spring Boot アプリケーションで Micrometer を使用するステップ バイ ステップ ガイドです。 '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/01/2018
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/01/2018
+ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299571"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819305"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK で Micrometer を使用する方法
 Micrometer のアプリケーション監視では、JVM ベースのアプリケーション コードのメトリックが測定され、好みの監視システムにデータをエクスポートできます。 この記事では、Spring Boot アプリケーションと非 Spring Boot アプリケーションの両方に対して Application Insights で Micrometer を使用する方法を説明します。

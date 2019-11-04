@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 09/16/2019
-  ms.openlocfilehash: 2d310832d8d1f1aca2823ffd3be9c4636d60f4fa
-  ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+  ms.openlocfilehash: f360150a06bd7cf0d41ebb193ab91823ea815dfc
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2019
-  ms.locfileid: "72375000"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73466215"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -81,7 +81,7 @@ conceptualContent:
   - title: 音声
     summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
     links:
-    - url: ./speech-service/index.yml
+    - url: ./speech-service/index.md
       itemType: overview
       text: Speech Services
     - url: ./speaker-recognition/home.md

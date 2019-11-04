@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: f191a9f589f54bdd657c017060f501b176a8647d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: beeb5fa4f979ac457db8a779dd8f8f2e94ef87f5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596723"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163862"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 
@@ -153,7 +153,7 @@ ms.locfileid: "68596723"
    -ServerName <LogicalServerName> `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -DatabaseName <DatabaseName> `
-   -State "Disabled”
+   -State "Disabled"
    ```
  
 - サーバーに追加された Key Vault キーのリストを取得するには、[Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) コマンドレットを使用します。

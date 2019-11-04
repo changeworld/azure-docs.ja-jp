@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d7d72ec6-4a60-4524-8634-26d8fbbcc833
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a78252a48ba8e3d69c6931da688f6ad692d96f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a9cb7738a8983ca2f76866fa40d49cd6cc06f99
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101154"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>チュートリアル:Azure Active Directory と Heroku の統合
 

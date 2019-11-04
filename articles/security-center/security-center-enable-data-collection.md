@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6dcb7fd1ae2dc5ca3a950f5055e79d95f779b029
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8aa0adf03aef2085ed2374bcfc7ea774d002061c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300807"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162678"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、Log Analytics エージェントはクラッシュ ダンプ ファイルもワークスペースにコピーします。
@@ -283,7 +283,7 @@ Security Center がお使いの VM からセキュリティ データを収集�
            }
  
            $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>”
+               "workspaceKey"= "<Primary key value>"
            }
 
       - Windows VM にインストールする場合:

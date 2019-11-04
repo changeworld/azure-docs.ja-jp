@@ -81,6 +81,10 @@
           items:
             - name: ゾーン冗長仮想ネットワーク ゲートウェイの作成
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: ID
+          items:
+            - name: Azure Active Directory Domain Services インスタンスの作成
+              href: ../active-directory-domain-services/tutorial-create-instance.md
 - name: ディザスター リカバリー
   items:
     - name: Azure Site Recovery を使用する

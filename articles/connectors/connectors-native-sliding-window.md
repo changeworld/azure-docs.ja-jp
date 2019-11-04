@@ -1,6 +1,6 @@
 ---
-title: スライディング ウィンドウ トリガーを使用して定期的なタスクをスケジュールする - Azure Logic Apps
-description: Azure Logic Apps のスライディング ウィンドウ トリガーを使用した定期的な自動化タスクとワークフローのスケジュールと実行
+title: 連続したデータを処理するタスクのスケジュール設定 - Azure Logic Apps
+description: Azure Logic Apps のスライディング ウィンドウを使用して、連続したデータを処理する定期的なタスクを作成および実行する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 44944955019fcf81fb0d296592577e2b00a15928
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0312d9480d00d4430cd5d42dc22ef9dac005ee2e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299591"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679058"
 ---
-# <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-sliding-window-trigger-in-azure-logic-apps"></a>Azure Logic Apps のスライディング ウィンドウ トリガーを使用した定期的なタスクとワークフローの作成、スケジュール、実行
+# <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Azure Logic Apps のスライディング ウィンドウ トリガーを使用して、連続したデータに対するタスクをスケジュール設定して実行する
 
-連続したチャンクでデータを処理する必要があるタスク、プロセス、またはジョブを定期的に実行するには、**スライディング ウィンドウ - スケジュール** トリガーを使用してロジック アプリ ワークフローを開始します。 ワークフローを開始する日時とタイム ゾーンと、そのワークフローを反復処理するための繰り返しを設定できます。 何らかの理由で繰り返しが行われなかった場合、このトリガーによってその行われなかった繰り返しが処理されます。 たとえば、データベースとバックアップ ストレージ間でデータを同期するときは、スライディング ウィンドウ トリガーを使用して、ギャップを起こすことなくデータが同期されるようにします。 組み込みのスケジュール トリガーとアクションの詳細については、[Azure Logic Apps を使用した定期的な自動タスク、ワークフローのスケジュールと実行](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)に関するページを参照してください。
+連続したチャンクでデータを処理する必要があるタスク、プロセス、またはジョブを定期的に実行するには、**スライディング ウィンドウ** トリガーを使用してロジック アプリ ワークフローを開始します。 ワークフローを開始するための日付と時刻やタイム ゾーン、およびそのワークフローを反復処理するための繰り返しを設定できます。 何らかの理由で繰り返しが行われなかった場合、このトリガーによってその行われなかった繰り返しが処理されます。 たとえば、データベースとバックアップ ストレージ間でデータを同期するときは、スライディング ウィンドウ トリガーを使用して、ギャップを起こすことなくデータが同期されるようにします。 組み込みのスケジュール トリガーとアクションの詳細については、[Azure Logic Apps を使用した定期的な自動タスク、ワークフローのスケジュールと実行](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)に関するページを参照してください。
 
 このトリガーがサポートするパターンの一部を次に示します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "66299591"
 
    ![間隔と頻度の設定](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | プロパティ | 必須 | JSON での名前 | Type | 説明 |
+   | プロパティ | 必須 | JSON での名前 | 種類 | 説明 |
    |----------|----------|-----------|------|-------------|
    | **間隔** | はい | interval | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "Hour" である場合は、繰り返しは 6 時間ごとになります。 |
    | **頻度** | はい | frequency | string | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、または **[時間]** |
@@ -62,7 +62,7 @@ ms.locfileid: "66299591"
    その他の繰り返しのオプションについては、 **[新しいパラメーターの追加]** 一覧を開きます。 
    選択したオプションはすべて、選択後にトリガーに表示されます。
 
-   | プロパティ | 必須 | JSON での名前 | Type | 説明 |
+   | プロパティ | 必須 | JSON での名前 | 種類 | 説明 |
    |----------|----------|-----------|------|-------------|
    | **遅延** | いいえ | delay | string | [ISO 8601 の日時指定](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用して各繰り返しを遅らせる期間 |
    | **タイム ゾーン** | いいえ | timeZone | string | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |

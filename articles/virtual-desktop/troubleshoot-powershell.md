@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 021560f9538d2a95492ee04467e8733caa226eec
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 38d9a2dda945f3a9459aa8e3360012c6ef422608
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679418"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163305"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell
 
@@ -39,7 +39,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 ### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>エラー:Add-RdsAppGroupUser コマンド -- 指定された UserPrincipalName は、リモート デスクトップ テナントに関連付けられている Azure Active Directory に存在しません。
 
 ```PowerShell
-Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName “Desktop Application Group” -UserPrincipalName <UserPrincipalName>
+Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
 ```
 
 **原因:** -UserPrincipalName によって指定されるユーザーが、Windows Virtual Desktop テナントに関連付けられている Azure Active Directory で見つかりません。

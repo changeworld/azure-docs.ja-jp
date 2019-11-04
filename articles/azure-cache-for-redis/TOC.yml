@@ -89,8 +89,8 @@
           href: 'cache-administration.md#schedule-updates'
         - name: redis-cli.exe アクセスの構成
           href: cache-how-to-redis-cli-tool.md
-        - name: TLS 1.0 および 1.1 の使用の廃止
-          href: cache-deprecate-tls-10-11.md
+        - name: TLS 1.0 および 1.1 の削除
+          href: cache-remove-tls-10-11.md
     - name: 監視
       items:
         - name: Azure Portal での監視

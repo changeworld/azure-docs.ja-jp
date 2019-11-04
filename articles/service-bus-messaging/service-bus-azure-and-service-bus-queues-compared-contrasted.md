@@ -1,5 +1,5 @@
 ---
-title: Azure Storage キューと Service Bus キューの比較 | Microsoft Docs
+title: Azure Storage キューと Service Bus キューの比較
 description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 services: service-bus-messaging
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a1e75416db34514425436bc3ceae9f27b156b557
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376332"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792684"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。

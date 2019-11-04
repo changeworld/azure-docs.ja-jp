@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cd13b3a7a3bc4d5a80e44d146e08c14e81ffdb60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 986371e479f7718fff2e1699401987cb0ca8f623
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730063"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163995"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -275,7 +275,7 @@ mstsc /v:myVmPublic
 *myVmPublic* VM 上の PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 ```
 
 *myVmPublic* VM から *myVmPrivate* VM へのネットワーク トラフィックのルーティングをテストするには、*myVmPublic* VM 上の PowerShell から次のコマンドを入力します。

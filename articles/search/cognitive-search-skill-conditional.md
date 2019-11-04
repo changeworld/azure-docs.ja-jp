@@ -1,24 +1,23 @@
 ---
-title: 条件付きコグニティブ検索スキル (Azure Search) | Microsoft Docs
-description: 条件付きスキルを使用すると、フィルター処理、既定値の作成、値のマージを行うことができます。
-services: search
+title: 条件付きコグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search の条件付きスキルを使用すると、スキルセット定義でフィルター処理、既定値の作成、値のマージができます。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265814"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792045"
 ---
-#   <a name="conditional-skill"></a>条件付きスキル
+# <a name="conditional-cognitive-skill"></a>条件付きコグニティブ スキル
 
-"*条件付きスキル*" を使用すると、出力に割り当てるデータを決定するブール演算を必要とする Azure Search のシナリオが可能になります。 これらのシナリオには、条件に基づくフィルター処理、既定値の割り当て、データのマージなどがあります。
+**条件付きの**スキルを使用すると、出力に割り当てるデータを決定するブール演算を必要とする Azure Cognitive Search のシナリオが可能になります。 これらのシナリオには、条件に基づくフィルター処理、既定値の割り当て、データのマージなどがあります。
 
 次の擬似コードは、条件付きスキルで実現できる内容を示しています。
 
@@ -176,5 +175,5 @@ Microsoft.Skills.Util.ConditionalSkill
 
 ## <a name="next-steps"></a>次の手順
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
