@@ -1,24 +1,23 @@
 ---
-title: 一般的なエラーと警告 - Azure Search
-description: この記事では、Azure Search で AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
-services: search
-manager: heidist
+title: 一般的なエラーと警告
+titleSuffix: Azure Cognitive Search
+description: この記事では、Azure Cognitive Search で AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: b5a161e570489e6382f2226ab5dc9a1c34dc67df
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028326"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787972"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Azure Search の AI 強化パイプラインに関する一般的なエラーと警告
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search の AI 強化パイプラインに関する一般的なエラーと警告
 
-この記事では、Azure Search で AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
+この記事では、Azure Cognitive Search で AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
 
 ## <a name="errors"></a>Errors
 エラー数が ['maxFailedItems'](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures) を超えると、インデックス作成は停止します。 
@@ -59,38 +58,20 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 | フィールドにフィールドのマッピングを適用できませんでした | マッピング関数 `'functionName'` をフィールド `'fieldName'` に適用できませんでした。 配列を null にすることはできません。 パラメーター名: bytes | インデクサーに定義されている[フィールドのマッピング](search-indexer-field-mappings.md)を再確認し、失敗したドキュメントの指定したフィールドのデータと比較します。 フィールドのマッピングまたはドキュメント データの変更が必要になる可能性があります。 |
 | フィールド値を読み取れませんでした | インデックス `'fieldIndex'` の列 `'fieldName'` の値を読み取れませんでした。 サーバーから結果を受信しているときに、トランスポート レベルのエラーが発生しました。 (プロバイダー:TCP プロバイダー、エラー:0 - 既存の接続はリモート ホストに強制的に切断されました。) | 通常、データ ソースの基となるサービスで予期しない接続の問題が発生したことが原因で、これらのエラーが発生します。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 
-### <a name="could-not-index-document"></a>ドキュメントのインデックス作成ができませんでした
-ドキュメントは読み取りおよび処理されましたが、インデクサーによって検索インデックスに追加することができませんでした。 これは、次の理由で発生する可能性があります。
+### <a name="could-not-execute-skill"></a>スキルを実行できませんでした
+インデクサーがスキルセットでスキルを実行できませんでした。
 
 | 理由 | 例 | Action |
 | --- | --- | --- |
-| フィールドに大きすぎる用語が含まれています | ドキュメント内の用語が [32 KB の制限](search-limits-quotas-capacity.md#api-request-limits)を超えています | この制限を回避するには、フィールドがフィルター可能、ファセット可能、または並べ替え可能として構成されていないことを確実にします。
-| ドキュメントが大きすぎてインデックスを作成できません | ドキュメントが [API 要求の最大サイズ](search-limits-quotas-capacity.md#api-request-limits)を超えています | [大規模なデータ セットのインデックスを作成する方法](search-howto-large-index.md)
+| 一時的な接続に関する問題 | 一時的なエラーが発生しました。 後でもう一度やり直してください。 | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
+| 潜在的な製品バグ | 予期しないエラーが発生しました。 | これはエラーのクラスが不明であり、製品バグがある可能性があることを意味します。 サポートを受けるには、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。 |
+| スキルの実行中にエラーが発生しました | (マージ スキルから) 1 つ以上のオフセット値が無効なため、解析できませんでした。 項目がテキストの末尾に挿入されました | エラー メッセージに記載されている情報を参照して、問題を解決します。 この種のエラーを解決するには、対処が必要です。 |
 
-### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Skill input 'languageCode' has the following language codes 'X,Y,Z', at least one of which is invalid. (スキルの入力 'languageCode' に次の言語コード 'X,Y,Z' が含まれており、その少なくとも 1 つが無効です。)
-ダウンストリーム スキルの省略可能な `languageCode` の入力に渡された 1 つ以上の値がサポートされていません。 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) の出力を後続のスキルに渡し、それらのダウンストリーム スキルでサポートされているよりも多くの言語で出力が構成されている場合に、これが発生する可能性があります。
+### <a name="could-not-execute-skill-because-the-web-api-request-failed"></a>Web API 要求が失敗したため、スキルを実行できませんでした
+Web API の呼び出しに失敗したため、スキルを実行できませんでした。 このクラスのエラーは通常、カスタム スキルが使用されている場合に発生します。この場合は、カスタム コードをデバッグして問題を解決する必要があります。 これとは異なり、エラーが組み込みのスキルで発生した場合は、エラー メッセージを参照して問題を修正してください。
 
-データ セットがすべて 1 つの言語であることがわかっている場合は、[LanguageDetectionSkill](cognitive-search-skill-language-detection.md) および `languageCode` スキル入力を削除し、代わりにそのスキルに対して `defaultLanguageCode` スキル パラメーターを使用する必要があります (スキルに対してその言語がサポートされている場合)。
-
-データ セットに複数の言語が含まれていることがわかっており、そのため [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) および `languageCode` 入力が必要な場合は、[ConditionalSkill](cognitive-search-skill-conditional.md) を追加して、サポートされていない言語を含むテキストを除外してから、テキストをダウンストリーム スキルに渡すことを検討します。  EntityRecognitionSkill の場合の例を次に示します。
-
-```json
-{
-    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
-    "context": "/document",
-    "inputs": [
-        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
-        { "name": "whenTrue", "source": "/document/content" },
-        { "name": "whenFalse", "source": "= null" }
-    ],
-    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
-}
-```
-
-このエラー メッセージを生成する可能性のある各スキルについて、現在サポートされている言語の参考資料を次に示します。
-* [Text Analytics のサポートされる言語](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) ([KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、[EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、および [SentimentSkill](cognitive-search-skill-sentiment.md) の場合)
-* [Translator のサポートされる言語](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) ([Text TranslationSkill](cognitive-search-skill-text-translation.md) の場合)
-* [Text SplitSkill](cognitive-search-skill-textsplit.md) のサポートされる言語: `da, de, en, es, fi, fr, it, ko, pt`
+### <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>Web API のスキルの応答が無効であるため、スキルを実行できませんでした
+Web API の呼び出しに無効な応答が返されたため、スキルを実行できませんでした。 このクラスのエラーは通常、カスタム スキルが使用されている場合に発生します。この場合は、カスタム コードをデバッグして問題を解決する必要があります。 これとは異なり、エラーが組み込みのスキルで発生した場合、サポートを受けるには、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。
 
 ### <a name="skill-did-not-execute-within-the-time-limit"></a>Skill did not execute within the time limit (制限時間内にスキルが実行されませんでした)
 このエラー メッセージが表示される可能性のあるケースが 2 つあります。それぞれ異なる方法で処理する必要があります。 このエラーが返されたスキルに応じて、以下の手順を実行してください。
@@ -137,11 +118,77 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 | Search サービスは、サービスの更新に対して修正プログラムが適用されているか、トポロジの再構成中です。 | インデックスを更新するための接続を確立できませんでした。 Search サービスは現在ダウンしているか、Search サービスが移行中です。 | [SLA ドキュメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)による 99.9% の可用性を確保するために、少なくとも 3 つのレプリカでサービスを構成します
 | 基になるコンピューティング/ネットワーク リソースでエラーが発生しました (まれ) | インデックスを更新するための接続を確立できませんでした。 不明なエラーが発生しました。 | インデクサーを[スケジュールに従って実行](search-howto-schedule-indexers.md)し、失敗した状態から取得するように構成します。
 
+### <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>インデックスを作成するインデクサー データが無効なため、ドキュメントのインデックスを作成できませんでした
+
+ドキュメントが読み取られ、処理されましたが、インデックス フィールドの構成とインデクサーによって抽出されたデータの性質が一致していないため、検索インデックスに追加できませんでした。 これは、次の理由で発生する可能性があります。
+
+| 理由 | 例
+| --- | ---
+| インデクサーによって抽出されたフィールドのデータ型は、対応する対象のインデックス フィールドのデータ モデルと互換性がありません。 | '_data_' キーを持つドキュメントのデータ フィールド '_data_' に、''Edm.String' 型の ' 無効な値が含まれています。 想定されている型は 'Collection (Edm String)' です。 |
+| 文字列値から JSON エンティティを抽出できませんでした。 | フィールド '_data_' の 'Edm.String' 型 ' を JSON オブジェクトとして解析できませんでした。 エラー: '値を解析した後に、予期しない文字が見つかりました: ''。 パス '_path_'、行 1、位置 3162。' |
+| 文字列値から JSON エンティティのコレクションを抽出できませんでした。  | JSON 配列としてフィールド '_data_' ' の 'Edm.String' 型 ' を解析できませんでした。 エラー: '値を解析した後に、予期しない文字が見つかりました: ''。 パス '[0]'、行 1、位置 27。' |
+| ソース ドキュメントで不明な型が検出されました。 | 不明な型 '_unknown_' にインデックスを設定することはできません |
+| ソース ドキュメントで、地理ポイントに互換性のない表記が使用されました。 | WKT ポイント文字列リテラルはサポートされていません。 代わりに GeoJson ポイント リテラルを使用してください |
+
+これらのすべてのケースで、インデックス スキーマが正しく作成され、[インデクサー フィールド マッピング](search-indexer-field-mappings.md)が適切に設定されていることを確認するには、[サポートされているデータ型 (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)に関する記事、および [Azure Search のインデクサーデータ型マップ](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)に関する記事を参照してください。 エラー メッセージには、不一致の原因を突き止めるのに役立つ詳細が含まれます。
+
 ##  <a name="warnings"></a>警告
 警告でインデックス作成は停止されませんが、予期しない結果になる可能性がある条件を示しています。 アクションを実行するかどうかは、データとシナリオによって変わります。
 
+### <a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>スキルの入力が無効だったため、スキルを実行できませんでした
+スキルへの入力が存在しないか、正しくない型であるか、または無効であるため、インデクサーはスキルセットでスキルを実行できませんでした。
+
+コグニティブ スキルには、必須の入力と省略可能な入力があります。 たとえば、[キー フレーズ抽出スキル](cognitive-search-skill-keyphrases.md)には、必須の入力が 2 つ (`text`、`languageCode`) あり、省略可能な入力はありません。 必須の入力が無効な場合は、スキルがスキップされ、警告が生成されます。 スキップされたスキルは出力を生成しません。そのため、スキップされたスキルの出力を他のスキルが使用する場合は、警告がさらに生成される可能性があります。
+
+入力が欠落している場合に既定値を指定する場合は、[条件付きスキル](cognitive-search-skill-conditional.md)を使用して既定値を生成し、[条件付きスキル](cognitive-search-skill-conditional.md)の出力をスキル入力として使用できます。
+
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == null" },
+        { "name": "whenTrue", "source": "= 'en'" },
+        { "name": "whenFalse", "source": "= $(/document/language)" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "languageWithDefault" } ]
+}
+```
+
+| 理由 | 例 | Action |
+| --- | --- | --- |
+| スキルの入力タイプが正しくありません。 | 必須のスキルの入力 `X` が、予期された型 `String` ではありませんでした。 必須のスキルの入力 `X` が、予期された形式ではありませんでした。 | 特定のスキルでは、入力が特定の型であることを想定しています。たとえば[センチメント スキル](cognitive-search-skill-sentiment.md)では、`text` が文字列である必要があります。 入力に文字列以外の値が指定されている場合、そのスキルは実行されず、出力は生成されません。 データ セットの型が統一されていることを確認するか、[カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)を使用して入力を前処理します。 配列に対してスキルを反復する場合は、スキル コンテキストをチェックし、入力の正しい位置に `*` があることを確認します。 通常、コンテキストと入力ソースの両方が配列の `*` で終わる必要があります。 |
+| スキルの入力がありません | 必須のスキルの入力 `X` がありません。 | すべてのドキュメントでこの警告が表示される場合は、入力したパスに入力ミスがある可能性が高いので、プロパティ名の大文字と小文字の区別、パス内の `*` が余分に追加されているか欠落しているかを確認し、データ ソースのドキュメントで必要な入力を定義します。 |
+| スキル言語コードの入力が無効です | スキルの入力 `languageCode` に次の言語コード `X,Y,Z` が含まれており、その少なくとも 1 つが無効です。 | 詳しくは、[以下](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)をご覧ください |
+
+### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Skill input 'languageCode' has the following language codes 'X,Y,Z', at least one of which is invalid. (スキルの入力 'languageCode' に次の言語コード 'X,Y,Z' が含まれており、その少なくとも 1 つが無効です。)
+ダウンストリーム スキルの省略可能な `languageCode` の入力に渡された 1 つ以上の値がサポートされていません。 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) の出力を後続のスキルに渡し、それらのダウンストリーム スキルでサポートされているよりも多くの言語で出力が構成されている場合に、これが発生する可能性があります。
+
+データ セットがすべて 1 つの言語であることがわかっている場合は、[LanguageDetectionSkill](cognitive-search-skill-language-detection.md) および `languageCode` スキル入力を削除し、代わりにそのスキルに対して `defaultLanguageCode` スキル パラメーターを使用する必要があります (スキルに対してその言語がサポートされている場合)。
+
+データ セットに複数の言語が含まれていることがわかっており、そのため [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) および `languageCode` 入力が必要な場合は、[ConditionalSkill](cognitive-search-skill-conditional.md) を追加して、サポートされていない言語を含むテキストを除外してから、テキストをダウンストリーム スキルに渡すことを検討します。  EntityRecognitionSkill の場合の例を次に示します。
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
+        { "name": "whenTrue", "source": "/document/content" },
+        { "name": "whenFalse", "source": "= null" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
+}
+```
+
+このエラー メッセージを生成する可能性のある各スキルについて、現在サポートされている言語の参考資料を次に示します。
+* [Text Analytics のサポートされる言語](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) ([KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、[EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、および [SentimentSkill](cognitive-search-skill-sentiment.md) の場合)
+* [Translator のサポートされる言語](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) ([Text TranslationSkill](cognitive-search-skill-text-translation.md) の場合)
+* [Text SplitSkill](cognitive-search-skill-textsplit.md) のサポートされる言語: `da, de, en, es, fi, fr, it, ko, pt`
+
 ### <a name="skill-input-was-truncated"></a>Skill input was truncated (スキルの入力が切り捨てられました)
-認知技術には、一度に分析できるテキストの長さの制限があります。 これらのスキルのテキスト入力がこの制限を超えている場合は、その制限に合わせてテキストが切り捨てられ、その切り捨てられたテキストに対して強化が実行されます。 つまり、スキルは実行されますが、すべてのデータに対しては実行されません。
+コグニティブ スキルには、一度に分析できるテキストの長さの制限があります。 これらのスキルのテキスト入力がこの制限を超えている場合は、その制限に合わせてテキストが切り捨てられ、その切り捨てられたテキストに対して強化が実行されます。 つまり、スキルは実行されますが、すべてのデータに対しては実行されません。
 
 次の LanguageDetectionSkill の例では、`'text'` 入力フィールドが文字制限を超えている場合にこの警告がトリガーされることがあります。 スキルの入力制限については、[スキルのドキュメント](cognitive-search-predefined-skills.md)を参照してください。
 
@@ -159,3 +206,17 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 ```
 
 すべてのテキストが分析されるようにするには、[スキルの分割](cognitive-search-skill-textsplit.md)を使用することを検討してください。
+
+### <a name="web-api-skill-response-contains-warnings"></a>Web API のスキル応答に警告が含まれています
+インデクサーはスキル セットでスキルを実行できましたが、Web API 要求からの応答には、実行中に警告が発生したことが示されています。 警告を確認して、データがどのように影響を受けているか、およびアクションが必要かどうかを理解します。
+
+### <a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>現在のインデクサー構成は増分の進行状況をサポートしていません
+この警告は Cosmos DB データ ソースでのみ発生します。
+
+インデックスの作成中に増分の進行状況を利用すると、一時的な障害や実行の制限時間によってインデクサーの実行が中断された場合、次の実行時に、最初からコレクション全体のインデックスを再作成するのではなく、中断したところからインデックスを作成することができます。 大規模なコレクションのインデックスを作成する場合、この機能は特に重要です。
+
+完了していないインデックス作成ジョブを再開できるかどうかは、ドキュメントが `_ts` 列で並べ替えられているかに基づいています。 インデクサーは、タイムスタンプを使用して次にどのドキュメントを取得するかを決定します。 `_ts` 列が存在しない場合、またはインデクサーがカスタム クエリが並べ替えられているかどうかを判断できない場合は、インデクサーが最初に開始され、この警告が表示されます。
+
+この動作をオーバーライドして増分の進行状況を有効にし、`assumeOrderByHighWatermarkColumn` 構成プロパティを使用してこの警告を抑制することができます。
+
+[Cosmos DB 増分進行状況とカスタム クエリに関する詳細情報。](https://go.microsoft.com/fwlink/?linkid=2099593)

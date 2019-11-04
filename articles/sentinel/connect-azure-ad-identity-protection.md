@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: de8f31a02b62164a8a6b099a90297a207aefae80
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5dae8c4da46c750f69057f33d593f5bb7396a99e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240796"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882254"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Azure AD Identity Protection からデータを接続する
 
@@ -37,7 +37,7 @@ ms.locfileid: "71240796"
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Azure AD Identity Protection に接続する
 
-Azure AD Identity Protection が既にある場合は、[お使いのネットワーク上で有効](../active-directory/identity-protection/enable.md)になっていることを確認します。
+Azure AD Identity Protection が既にある場合は、[お使いのネットワーク上で有効](../active-directory/identity-protection/overview-identity-protection.md)になっていることを確認します。
 Azure AD Identity Protection がデプロイされ、データを取得している場合は、アラート データを Azure Sentinel に簡単にストリーミングできます。
 
 

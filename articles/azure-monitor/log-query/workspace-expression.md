@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor ログ クエリの workspace() 式 | Microsoft Docs
 description: workspace 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定のワークスペースからデータを取得するために、Azure Monitor ログ クエリで使用します。
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/10/2018
+ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60785678"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932849"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor ログ クエリの workspace() 式
 
@@ -37,7 +31,7 @@ ms.locfileid: "60785678"
 |:---|:---|:---|
 | リソース名 | 人間が判読できるワークスペースの名前 (別名 "コンポーネント名") | workspace("contosoretail") |
 | 修飾名 | "subscriptionName/resourceGroup/componentName" の形式のワークスペースのフルネーム | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID | ワークスペースの GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| id | ワークスペースの GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure リソース ID | Azure リソースの識別子 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 

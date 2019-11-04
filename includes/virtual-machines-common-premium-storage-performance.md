@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391697"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182245"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -298,12 +298,12 @@ Premium SSD では、次の Linux ディストリビューションが検証さ�
 | SUSE | SLES 12 以降| 3.12.36-38.1+ | suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
 | SUSE | SLES 11 SP4 以降| 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+ 以降| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5、6.6、6.7、7.0、またはそれ以降| &nbsp; | [LIS4 が必須](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> "*次のセクションの注を参照してください*" |
-| CentOS | 7.1+ 以降| 3.10.0-229.1.2.el7+ | [LIS4 が推奨](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> "*次のセクションの注を参照してください*" |
+| CentOS | 6.5、6.6、6.7、7.0、またはそれ以降| &nbsp; | [LIS4 が必須](https://www.microsoft.com/download/details.aspx?id=51612) <br> "*次のセクションの注を参照してください*" |
+| CentOS | 7.1+ 以降| 3.10.0-229.1.2.el7+ | [LIS4 が推奨](https://www.microsoft.com/download/details.aspx?id=51612) <br> "*次のセクションの注を参照してください*" |
 | Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+、またはそれ以降 | &nbsp; | &nbsp; |
 | Oracle | 6.0+、7.2+、またはそれ以降 | &nbsp; | UEK4 または RHCK |
-| Oracle | 7.0-7.1 以降 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 以降 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 以降 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
+| Oracle | 6.4-6.7 以降 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 用 LIS ドライバー
 

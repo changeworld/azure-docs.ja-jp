@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 64f79b3e72a8655f8d704ffd531d9e34485832b0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570614"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176037"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -40,7 +40,7 @@ Azure を使用して IaaS、PaaS、ハイブリッド ソリューションを�
 | 異なる仮想ネットワーク内の VM 間または異なるクラウドサービスのロール インスタンス間での名前解決。 |[Azure DNS Private Zones](../dns/private-dns-overview.md)、または Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | 仮想ネットワーク統合を使用した Azure App Service (Web App、Function、Bot など) から同じ仮想ネットワーク上のロール インスタンスまたは VM への名前解決。 |Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | App Service Web Apps から同じ仮想ネットワーク内の VM への名前解決。 |Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
-| ある仮想ネットワーク内の App Service Web Apps から異なる仮想ネットワーク内の VM への名前解決。 |Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「独自の DNS サーバーを使用する名前解決」を参照してください。 |FQDN のみ |
+| ある仮想ネットワーク内の App Service Web Apps から異なる仮想ネットワーク内の VM への名前解決。 |Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | Azure 内の VM またはロール インスタンスからのオンプレミスのコンピューターとサービスの名前解決。 |ユーザーが管理する DNS サーバー (オンプレミスのドメイン コントローラー、ローカルの読み取り専用ドメイン コントローラー、ゾーン転送を使用して同期する DNS セカンダリなど)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | オンプレミスのコンピューターからの Azure のホスト名の解決。 |対応する仮想ネットワーク内のユーザーが管理する DNS プロキシ サーバーにクエリを転送し、プロキシ サーバーが解決するために Azure にクエリを転送します。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | 内部 IP 用の逆引き DNS。 |[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)。 |適用不可 |

@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025636"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750197"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API シリーズを使用した開発
 
@@ -107,6 +107,8 @@ Media Services には、次のような長期操作があります。
 * [StreamingEndpoint のスケーリング](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
 長い操作の送信に成功すると、"202 Accepted" を受け取ります。返された操作 ID を使用して、操作の完了をポーリングする必要があります。
+
+「[非同期 Azure 操作の追跡](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)」の記事では、応答で返される値を通じて非同期 Azure 操作の状態を追跡する方法について説明します。
 
 実行時間の長い操作は、特定のライブ イベントまたはそれに関連付けられているライブ出力に対して 1 つだけサポートされます。 実行時間の長い操作が開始したら、それが完了してからでないと、同じ LiveEvent または関連付けられているライブ出力に対して、実行時間の長い操作を続けて開始できません。 複数のライブ出力があるライブ イベントの場合は、あるライブ出力に対して長時間実行されている操作の完了を待ってから、別のライブ出力に対して長時間実行される操作をトリガーする必要があります。 
 

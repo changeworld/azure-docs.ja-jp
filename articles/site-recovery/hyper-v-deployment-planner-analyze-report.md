@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aafeeb59446ac914bba25874f74871fc5f189498
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772893"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693586"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。
@@ -246,7 +246,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (VM あたり 80,000 IOPS) を超えている。
 
-* ソース VM の平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (平均 I/O サイズで 10 MB/秒) を超えている。
+* ソース VM の平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (平均 I/O サイズで 20 MB/秒) を超えている。
 
 * ソース VM の平均実効書き込み IOPS が、Site Recovery でサポートされる IOPS の上限 (840) を超えている。
 

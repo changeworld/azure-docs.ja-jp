@@ -3,20 +3,19 @@ title: パラメーター化 URL を使用して Azure Time Series Insights の�
 description: この記事では、パラメーター化した URL を Azure Time Series Insights で構築し、カスタマー ビューを簡単に共有できるようにする方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e862cd604263c5125259344baf2e990ad56a3291
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675826"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991108"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 

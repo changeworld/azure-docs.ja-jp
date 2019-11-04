@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154717"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161758"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -313,9 +313,9 @@ SNI バインドは、以下のようにクラウド サービス ロール イ�
 |値|意味|
 ------|------
 |0|SNI なし|
-|1|SNI が有効 |
-|2 |中央証明書ストアを使用する SNI 以外のバインド|
-|3|中央証明書ストアを使用する SNI バインド |
+|1|SNI が有効|
+|2|中央証明書ストアを使用する SNI 以外のバインド|
+|3|中央証明書ストアを使用する SNI バインド|
  
 **方法 2: コードを使用する**
 
@@ -325,8 +325,8 @@ SNI バインドは、こちらの[ブログ投稿](https://blogs.msdn.microsoft
     //<code snip> 
                     var serverManager = new ServerManager(); 
                     var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
-                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
                     serverManager.CommitChanges(); 
     //</code snip> 
     

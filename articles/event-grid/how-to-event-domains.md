@@ -1,18 +1,18 @@
 ---
-title: イベント ドメインを使用して Azure Event Grid で大規模なトピック セットを管理する
+title: Azure Event Grid を使用してイベント ドメインでイベントを発行する
 description: イベント ドメインを使用して、Azure Event Grid で大規模なトピック セットを管理し、それらにイベントを発行する方法を説明します。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 9d7cef35ef6d1138b037f7c520f21bee86567aa8
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 10/22/2019
+ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842567"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786550"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 

@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 650e45ca9092b9c81b2127eb995a0297745410a4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b452fccf2ae0915592420bdda3a47fef43eba9a8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244138"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788693"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute の暗号化
  
@@ -31,7 +31,7 @@ No. MACsec が構成されているとき、キーの不一致が発生した場
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>ExpressRoute Direct で MACsec を有効にすると、ネットワーク パフォーマンスが低下しますか。
 MACsec の暗号化と復号は、Microsoft が使用するルーターのハードウェアで行われます。 Microsoft 側では、パフォーマンスに影響はありません。 しかしながら、お使いのデバイスのネットワーク ベンダーに問い合わせ、MACsec にパフォーマンス上の影響が出るかどうかを確認してください。
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>暗号化にはどの暗号スイートがサポートされていますか。
-AES128(GCM–AES–128) と AES256(GCM–AES–256) をサポートしています。
+AES128 と AES256 がサポートされています。
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>IPsec によるエンドツーエンドの暗号化に関してよくあるご質問
 IPsec は [IETF 標準](https://tools.ietf.org/html/rfc6071)です。 インターネット プロトコル (IP) レベルまたはネットワーク レイヤー 3 でデータを暗号化します。 お使いのオンプレミス ネットワークと Azure でお使いの仮想ネットワーク (VNET) の間でエンドツーエンドの接続を暗号化する目的で IPsec を利用できます。 以下でその他のよくあるご質問をご覧ください。

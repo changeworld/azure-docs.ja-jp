@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 872a2daf30a2173c7cde93e534b8e7525c88a4d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 038520e662a205bc173035fd19656cbaf4800239
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096837"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>チュートリアル:Azure Active Directory と moconavi の統合
 

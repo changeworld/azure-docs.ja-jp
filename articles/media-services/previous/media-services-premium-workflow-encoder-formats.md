@@ -14,18 +14,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 9ec8e2df8befa28fc023edb30889f177b60939f9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015037"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792587"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>メディア エンコーダー プレミアム ワークフローの形式とコーデック
 
 > [!NOTE]
-> プレミアム エンコーダーに関するご質問は、電子メールで mepd@microsoft.com までお送りください。
-> 
 > このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。 
 
 このドキュメントには、以前のパブリック プレビュー バージョンの **メディア エンコーダー プレミアム ワークフロー** でサポートされる入力ファイルおよび出力ファイルの形式とコーデックの一覧が含まれています。
@@ -100,8 +98,6 @@ ms.locfileid: "69015037"
 * JPEG サムネール作成
 * HEVC (8 ビットおよび 10 ビットの H.265、メインおよびメイン 10 プロファイル)
 
-  HDR 10 のサポートは特定のシナリオでのみ提供されています。詳細については、mepd@microsoft.com にお問い合わせください
-
 
 ### <a name="output-audio-codecs"></a>出力オーディオ コーデック
 
@@ -141,6 +137,9 @@ ms.locfileid: "69015037"
 
 入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。 
 
+## <a name="need-help"></a>お困りの際は、
+
+[[新しいサポート要求]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) にアクセスしてサポート チケットを開くことができます
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

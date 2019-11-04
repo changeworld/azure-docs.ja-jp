@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
-ms.reviewer: GeneMi
-ms.date: 03/12/2019
-ms.openlocfilehash: 4f36dcc9953134ac5dd24d3d762ac0dde9949ab7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.reviewer: GeneMi, vanto
+ms.date: 10/11/2019
+ms.openlocfilehash: c55fa6d58109345a0c600bd0c1c76c5a229c03bc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561372"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554481"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する
 
@@ -59,7 +59,7 @@ Azure AD 認証を使用するには、C# プログラムで Azure AD アプリ�
 
 アプリケーションに必要なアクセス許可を登録して設定するには:
 
-1. Azure Portal で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新しいアプリケーションの登録]** の順に選びます。
+1. Azure portal で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** を選択します。
 
     ![アプリの登録](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -67,15 +67,15 @@ Azure AD 認証を使用するには、C# プログラムで Azure AD アプリ�
 
     ![表示されたアプリ ID](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. **[登録済みのアプリ]**  >  **[設定]**  >  **[必要なアクセス許可]**  >  **[追加]** を選択します。
+2. **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。
 
     ![登録済みのアプリのアクセス許可の設定](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. **[必要なアクセス許可]**  >  **[追加]**  >  **[API を選択します]**  >  **[Azure SQL Database]** を選択します。
+3. **[所属する組織で使用している API]** を選択し、検索ボックスに「**Azure SQL Database**」と入力して、 **[Azure SQL Database]** を選択します。
 
     ![Azure SQL Database の API へのアクセスの追加](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. **[API アクセス]**  >  **[アクセス許可の選択]**  >  **[委任されたアクセス許可]** を選択します。
+4. **[委任されたアクセス許可]**  >  **[user_impersonation]**  >  **[アクセス許可の追加]** を選択します。
 
     ![Azure SQL Database の API へのアクセス許可の委任](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 

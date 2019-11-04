@@ -4,23 +4,22 @@ description: 既にライブ サイトに割り当てられているカスタム
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
-editor: jimbe
+manager: gwallace
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 703a151f801f65b968ecf93eaa97640c22a71bd2
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073089"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679813"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -129,6 +128,12 @@ A レコードを再マップするには、 **[カスタム ドメイン]** ペ
 設定を保存します。
 
 DNS の伝播が始まるとすぐに、DNS クエリが App Service アプリの解決を開始します。
+
+## <a name="active-domain-in-azure"></a>Azure でのアクティブなドメイン
+
+Azure でのアクティブなカスタム ドメインは、サブスクリプション間または同じサブスクリプション内で移行できます。 ただし、ダウンタイムを伴わない移行にはソース アプリが必要であり、特定の時点で同じカスタム ドメインにターゲット アプリが割り当てられます。 そのため、2 つのアプリが同じ展開単位 (内部的には、Web スペースとして知られています) には展開されないようにする必要があります。 1 つのドメイン名は、展開単位ごとに 1 つのアプリにのみ割り当てできます。
+
+FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net` のドメイン名を確認することで、アプリの展開単位がわかります。 ソース アプリとターゲット アプリ間で展開単位が必ず異なることを確認してください。 アプリの展開単位は、それ自体が含まれている [App Service プラン](overview-hosting-plans.md)によって決まります。 プランを作成するときに Azure によってランダムに選択され、変更することはできません。 Azure では、[同じリソース グループ*かつ*同じリージョン内に作成する](app-service-plan-manage.md#create-an-app-service-plan)場合、2 つのプランが同じ展開単位内にあることだけを確認し、異なる展開単位にプランがあることを確認するロジックは用意されていません。 異なる展開単位にプランを作成する唯一の方法は、別の展開単位を取得するまで、新しいリソース グループまたはリージョン内にプランを作成し続けることです。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor の DNS Analytics ソリューション | Microsoft Docs
 description: Azure Monitor の DNS Analytics ソリューションをセットアップして使用し、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する分析情報を収集します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/20/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.date: 03/20/2018
+ms.openlocfilehash: a4123ed4633cbb8195639766e7b23e3ea9f14e71
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316180"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899087"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 

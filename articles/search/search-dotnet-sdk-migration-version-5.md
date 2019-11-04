@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK バージョン 5 へのアップグレード - Azure Search
+title: Azure Search .NET SDK バージョン 5 へのアップグレード
+titleSuffix: Azure Cognitive Search
 description: 以前のバージョンから Azure Search .NET SDK バージョン 5 にコードを移行します。 新機能と必要なコード変更について説明します。
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: c64d13e4bcad11ef729f34ee71b7c7461a507fc7
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183246"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793035"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK バージョン 5 へのアップグレード
+# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK バージョン 5 へのアップグレード
 
 バージョン 4.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 5 を使用するようにアプリケーションをアップグレードできます。
 

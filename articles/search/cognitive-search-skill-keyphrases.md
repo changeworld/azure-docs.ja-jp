@@ -1,20 +1,19 @@
 ---
-title: キー フレーズ抽出コグニティブ検索スキル - Azure Search
-description: 非構造化テキストを評価し、各レコードに対し、Azure Search のエンリッチメント パイプラインのキー フレーズのリストを返します。
-services: search
+title: キー フレーズ抽出コグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: 非構造化テキストを評価し、各レコードに対し、Azure コグニティブ検索の AI エンリッチメント パイプラインのキー フレーズのリストを返します。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: luisca
-ms.openlocfilehash: ffaa2afbfa12770168cb5a92b7022addc039f0fb
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265777"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791974"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>キー フレーズ抽出コグニティブ スキル
 
@@ -23,9 +22,9 @@ ms.locfileid: "71265777"
 この機能は、レコード内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、 "食べ物" と "すばらしいスタッフ" がサービスによって返されます。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -123,5 +122,5 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

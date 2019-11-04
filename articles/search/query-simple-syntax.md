@@ -1,13 +1,13 @@
 ---
-title: 単純なクエリ構文 - Azure Search
-description: Azure Search のフルテキスト検索クエリに使用する単純なクエリ構文のリファレンスです。
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
+title: 単純なクエリ構文
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のフルテキスト検索クエリに使用する単純なクエリ構文のリファレンスです。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,18 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e6c5ea86534001e0e5de2b02c4151af70631e4ef
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650011"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792549"
 ---
-# <a name="simple-query-syntax-in-azure-search"></a>Azure Search での単純なクエリ構文
-Azure Search は、2 つの Lucene ベースのクエリ言語を実装します。[Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) と [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) です。 Azure Search では、単純なクエリ構文では fuzzy/slop のオプションは除外されます。  
+# <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での単純なクエリ構文
+
+Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実装します。[Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) と [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) です。 Azure Cognitive Search では、単純なクエリ構文では fuzzy/slop のオプションは除外されます。  
 
 > [!NOTE]  
->  Azure Search では、より複雑なクエリには [Lucene クエリ構文](query-lucene-syntax.md)という代替方法が用意されています。 クエリ解析のアーキテクチャと各構文の利点の詳細については、「[Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。
+>  Azure Cognitive Search では、より複雑なクエリには [Lucene クエリ構文](query-lucene-syntax.md)という代替方法が用意されています。 クエリ解析のアーキテクチャと各構文の利点の詳細については、[Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関する記事を参照してください。
 
 ## <a name="how-to-invoke-simple-parsing"></a>単純な解析を呼び出す方法
 
@@ -38,9 +39,9 @@ Azure Search は、2 つの Lucene ベースのクエリ言語を実装します
 
 ## <a name="query-behavior-anomalies"></a>クエリの動作の異常
 
-1 つ以上の用語を含むテキストはすべて、クエリ実行の有効な開始ポイントと見なされます。 Azure Search は、テキストの分析中に検出されたバリエーションを含め、それらの用語の一部またはすべてを含むドキュメントをマッチングします。 
+1 つ以上の用語を含むテキストはすべて、クエリ実行の有効な開始ポイントと見なされます。 Azure Cognitive Search は、テキストの分析中に検出されたバリエーションを含め、それらの用語の一部またはすべてを含むドキュメントをマッチングします。 
 
-単純に思われるかもしれませんが、Azure Search でのクエリ実行には、入力文字列に追加される用語および演算子が増えるにつれて、検索結果が減るのではなく増えるという、予期しない結果を生み出す*可能性がある* 1 つの側面があります。 この拡張が実際に行われるかどうかは、NOT 演算子の組み込みと、AND または OR の動作の観点から NOT の解釈方法を決定する `searchMode` パラメーター設定の組み合わせで決まります。 既定値の `searchMode=Any` と NOT 演算子を指定すると、演算は OR アクションとして計算されます。たとえば、`"New York" NOT Seattle` を指定すると、Seattle 以外のすべての都市が返されます。  
+単純に思われるかもしれませんが、Azure Cognitive Search でのクエリ実行には、入力文字列に追加される用語および演算子が増えるにつれて、検索結果が減るのではなく増えるという、予期しない結果を生み出す*可能性がある* 1 つの側面があります。 この拡張が実際に行われるかどうかは、NOT 演算子の組み込みと、AND または OR の動作の観点から NOT の解釈方法を決定する `searchMode` パラメーター設定の組み合わせで決まります。 既定値の `searchMode=Any` と NOT 演算子を指定すると、演算は OR アクションとして計算されます。たとえば、`"New York" NOT Seattle` を指定すると、Seattle 以外のすべての都市が返されます。  
 
 通常、これらの動作は、コンテンツを検索するアプリケーションのユーザー対話パターンでよく見られます。そこでは、組み込みナビゲーション構造が多い e コマースのサイトとは対照的に、ユーザーがクエリに演算子を含める可能性が高くなります。 詳細については、「[NOT 演算子](#not-operator)」を参照してください。 
 
@@ -85,10 +86,10 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
 - サフィックス演算子 `*` のエスケープが必要なのは、この演算子が用語の真ん中に配置されているのではなく、空白の前の最後の文字の場合のみになります。 たとえば、`wi*fi` は 1 つのトークンとして扱われます。
 
 > [!NOTE]  
->  エスケープでトークンは一緒に保持されますが、分析モードによっては、テキスト分析で分割される可能性があります。 詳細については、「[言語サポート &#40;Azure Search Service REST API&#41;](index-add-language-analyzers.md)」を参照してください。  
+>  エスケープでトークンは一緒に保持されますが、分析モードによっては、テキスト分析で分割される可能性があります。 詳細については、[言語サポート &#40;Azure Cognitive Search REST API&#41;](index-add-language-analyzers.md) に関する記事を参照してください。  
 
 ## <a name="see-also"></a>関連項目  
 
-+ [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
++ [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Lucene クエリ構文](query-lucene-syntax.md)
 + [OData 式の構文](query-odata-filter-orderby-syntax.md) 

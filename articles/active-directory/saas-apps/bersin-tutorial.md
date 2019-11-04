@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bbc9d229-69fb-4ab5-b6c3-5f3d790ea13e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bc292be68879a608df6662418bb9f59c758f660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c6794baab00dbb59df89187c8ab91f1a42ab03e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106316"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>チュートリアル:Azure Active Directory と Bersin の統合
 

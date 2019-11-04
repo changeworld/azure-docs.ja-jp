@@ -4,15 +4,15 @@ description: サーバー管理者ロールに自動化サービス プリンシ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e4650d3be5ce21a49b419577eaf83225b1c0d4d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298722"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147404"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 

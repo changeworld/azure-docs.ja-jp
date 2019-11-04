@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 5de0fe47d8ca6372c35cc4f148f97b366a1a742c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971393"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754836"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -662,7 +662,7 @@ npm でプロジェクトの依存関係をインストールします。 次の
 
 * ```npm install``` 
 
-次に、```config.js``` ファイルで、config.endpoint と config.primaryKey の値を更新します。このとき、「[手順 3:アプリの構成を設定する](#Config)」の説明に従います。  
+次に、```config.js``` ファイルで、config.endpoint と config.key の値を更新します。このとき、「[手順 3:アプリの構成を設定する](#Config)」の説明に従います。  
 
 次に、ターミナルで ```app.js``` ファイルを見つけ、次のコマンドを実行します。  
 

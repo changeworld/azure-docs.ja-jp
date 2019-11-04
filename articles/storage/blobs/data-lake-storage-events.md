@@ -9,10 +9,10 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71326987"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>チュートリアル:Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する
@@ -88,11 +88,11 @@ ms.locfileid: "71326987"
 
 1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
-    ![Azure Portal の Databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure Portal の Databricks")
+    ![Azure portal での Databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure portal での Databricks")
 
 2. **[Azure Databricks サービス]** で値を指定して、Databricks ワークスペースを作成します。
 
-    ![Azure Databricks ワークスペースを作成する](./media/data-lake-storage-events/new-databricks-service.png "Azure Databricks ワークスペースを作成する")
+    ![Azure Databricks ワークスペースを作成します](./media/data-lake-storage-events/new-databricks-service.png "Azure Databricks ワークスペースを作成する")
 
     ワークスペースの作成には数分かかります。 操作の状態を監視するには、上部の進行状況バーを確認します。
 
@@ -102,7 +102,7 @@ ms.locfileid: "71326987"
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[新規]**  >  **[クラスター]** を選択します。
 
-    ![Azure の Databricks](./media/data-lake-storage-events/databricks-on-azure.png "Azure の Databricks")
+    ![Azure での Databricks](./media/data-lake-storage-events/databricks-on-azure.png "Azure での Databricks")
 
 3. **[New cluster]\(新しいクラスター\)** ページで、クラスターを作成するための値を指定します。
 
@@ -243,7 +243,7 @@ ms.locfileid: "71326987"
 
 3. ジョブの名前を指定し、`upsert-order-data` ワークブックを選択します。
 
-   ![[ジョブの作成]](./media/data-lake-storage-events/create-spark-job.png "[ジョブの作成]")
+   ![ジョブを作成する](./media/data-lake-storage-events/create-spark-job.png "ジョブを作成する")
 
 ## <a name="create-an-azure-function"></a>Azure Function の作成
 
@@ -251,7 +251,7 @@ ms.locfileid: "71326987"
 
 1. Databricks ワークスペースの上隅で、人のアイコンを選択し、 **[ユーザー設定]** を選択します。
 
-   ![アカウントの管理](./media/data-lake-storage-events/generate-token.png "[ユーザー設定]")
+   ![アカウントを管理する](./media/data-lake-storage-events/generate-token.png "ユーザー設定")
 
 2. **[新しいトークンの生成]** をクリックし、 **[生成]** をクリックします。
 
@@ -263,11 +263,11 @@ ms.locfileid: "71326987"
 
 4. Function App の **[作成]** ページで、必ずランタイム スタックに **.NET Core** を選択し、Application Insights インスタンスを構成してください。
 
-   ![関数アプリを構成する](./media/data-lake-storage-events/new-function-app.png "関数アプリを構成する")
+   ![関数アプリを構成する](./media/data-lake-storage-events/new-function-app.png "Function App を構成する")
 
 5. Function App の **[概要]** ページで、 **[構成]** をクリックします。
 
-   ![関数アプリを構成する](./media/data-lake-storage-events/configure-function-app.png "関数アプリを構成する")
+   ![関数アプリを構成する](./media/data-lake-storage-events/configure-function-app.png "Function App を構成する")
 
 6. **[アプリケーションの設定]** ページで、 **[新しいアプリケーション設定]** を選択して各設定を追加します。
 
@@ -282,7 +282,7 @@ ms.locfileid: "71326987"
    |**DBX_JOB_ID**|実行中のジョブの識別子。 ここでは、この値を `1` にします。|
 7. 関数アプリの概要ページで、 **[新しい関数]** をクリックします。
 
-   ![[新しい関数]](./media/data-lake-storage-events/new-function.png "[新しい関数]")
+   ![新しい関数](./media/data-lake-storage-events/new-function.png "新しい関数")
 
 8. **[Azure Event Grid Trigger]\(Azure Event Grid トリガー\)** を選択します。
 
@@ -344,11 +344,11 @@ ms.locfileid: "71326987"
 
 1. 関数コードのページで、 **[Event Grid サブスクリプションの追加]** をクリックします。
 
-   ![新しいイベント サブスクリプション](./media/data-lake-storage-events/new-event-subscription.png "新しいイベント サブスクリプション")
+   ![新しいイベント サブスクリプションを追加する](./media/data-lake-storage-events/new-event-subscription.png "新しいイベント サブスクリプションを追加する")
 
 2. **[イベント サブスクリプションの作成]** ページで、サブスクリプションに名前を指定し、ページ内のフィールドを使用してストレージ アカウントを選択します。
 
-   ![新しいイベント サブスクリプション](./media/data-lake-storage-events/new-event-subscription-2.png "新しいイベント サブスクリプション")
+   ![新しいイベント サブスクリプションを追加する](./media/data-lake-storage-events/new-event-subscription-2.png "新しいイベント サブスクリプションを追加する")
 
 3. **[イベントの種類のフィルター]** ボックスの一覧で、 **[Blob Created]\(BLOB の作成\)** および **[Blob Deleted]\(BLOB の削除\)** イベントを選択し、 **[作成]** をクリックします。
 
@@ -373,7 +373,7 @@ ms.locfileid: "71326987"
 
    ジョブが完了すると、完了状態が表示されます。
 
-   ![正常に完了したジョブ](./media/data-lake-storage-events/spark-job-completed.png "正常に完了したジョブ")
+   ![正常完了したジョブ](./media/data-lake-storage-events/spark-job-completed.png "正常完了したジョブ")
 
 5. 新しいワークブック セルで、セル内のこのクエリを実行して、更新された Delta テーブルを表示します。
 

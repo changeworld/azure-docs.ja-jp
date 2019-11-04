@@ -1,5 +1,5 @@
 ---
-title: Azure AD Domain Services をセキュリティで保護する | Microsoft Docs'
+title: Azure AD Domain Services をセキュリティで保護する | Microsoft Docs
 description: Azure Active Directory Domain Services のマネージド ドメインの弱い暗号、古いプロトコル、および NTLM パスワード ハッシュ同期を無効にする方法を説明します。
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: iainfou
-ms.openlocfilehash: db086c56c9f16f4691efaade03571bf8a36c6444
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6d60663e345f297246a423e1b4e7a4fb45f352a5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842625"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754335"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインをセキュリティで保護するために、弱い暗号およびパスワード ハッシュ同期を無効にします
 
@@ -36,8 +36,8 @@ ms.locfileid: "70842625"
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
 * Azure PowerShell のインストールおよび構成。
     * 必要であれば、手順に従って、[Azure PowerShell モジュールをインストールし、Azure サブスクリプションに接続](/powershell/azure/install-az-ps)します。
-    * 必ず、[Connect-AzAccount][Connect-AzAccount] コマンドレットを使用して、Azure サブスクリプションにサインインしてください。
-* Azure AD PowerShell をインストールおよび構成します。
+    * 必ず [Connect-AzAccount][Connect-AzAccount] コマンドレットを使用して Azure サブスクリプションにサインインしてください。
+* Azure AD PowerShell をインストールして構成します。
     * 必要であれば、手順に従って、[Azure AD PowerShell モジュールをインストールして Azure AD に接続](/powershell/azure/active-directory/install-adv2)します。
     * 必ず、[Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して、Azure AD テナントにサインインしてください。
 

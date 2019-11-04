@@ -3,19 +3,19 @@ title: C# でカスタム用語リストと照らしてテキストを確認す�
 titleSuffix: Azure Cognitive Services
 description: Content Moderator SDK for C# を使用し、カスタム用語リストと照らしてテキストをモデレートする方法。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: d1c2f8b06d333be23f25a2d150c23269bf84cd2e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 272063c3fcc77c76536dbd007b1ab0132a565e61
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242840"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757268"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>C# でカスタム用語リストと照らしてテキストを確認する
 
@@ -274,7 +274,7 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 - MIME の種類 ("text/html"、"text/xml"、"text/markdown"、"text/plain" のいずれか)。
 - スクリーニングするテキスト。
 - ブール値。 スクリーニングの前にテキストのオートコレクトを実行するには、このフィールドを **true** に設定します。
-- ブール値。 テキスト内の個人を特定できる情報 (PII) を検出するには、このフィールドを **true** に設定します。
+- ブール値。 テキスト内の個人データを検出するには、このフィールドを **true** に設定します。
 - 用語リスト ID。
 
 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)に関するページを参照してください。

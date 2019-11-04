@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 48095a2d446c8f85bab9d9268e924e29fe9a9f21
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003898"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242420"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>チュートリアル:Linux VM と Python アプリを使用してシークレットを Azure Key Vault に格納する
 
@@ -174,20 +174,20 @@ Sample.py を開き、次のコードが含まれるように編集します。
 
 ```python
 # importing the requests library
-  import requests
-  
+import requests
+
 # Step 1: Fetch an access token from an MSI-enabled Azure resource      
-  # Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
-  MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
-  r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"})
+# Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
+MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
+r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"})
 
 # Extracting data in JSON format 
-  # This request gets an access token from Azure Active Directory by using the local MSI endpoint
-  data = r.json()
+# This request gets an access token from Azure Active Directory by using the local MSI endpoint
+data = r.json()
 
 # Step 2: Pass the access token received from the previous HTTP GET call to the key vault
-  KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
-  kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
+KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
+kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
 
 print(kvSecret.json()["value"])
 ```

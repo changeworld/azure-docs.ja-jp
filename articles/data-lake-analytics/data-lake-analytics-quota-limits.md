@@ -9,22 +9,22 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d3601fd8c32c70cf828cd08fada71258ec8fa5d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0ccfb00c4b45a2a29ccab74362a4296cdcd7cae
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812679"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595712"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のクォータと 制限を調整します
 
-Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整する方法と引き上げる方法を説明します。 これらの制限について把握すれば、U-SQL ジョブの動作の理解に役立つ可能性があります。 すべてのクォータ制限は固定ではないため、Azure サポートに連絡して上限を引き上げることができます。
+Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整する方法と引き上げる方法を説明します。 これらの制限を認識していると、U-SQL ジョブの動作を理解するのに役立ちます。 すべてのクォータ制限は固定ではないため、Azure サポートに連絡して上限を引き上げることができます。
 
 ## <a name="azure-subscriptions-limits"></a>Azure サブスクリプションの制限
 
 **各リージョンのサブスクリプションあたりの ADLA アカウントの最大数:** 5
 
-6 番目の ADLA アカウントを作成しようとすると、エラー "サブスクリプション name のリージョンで許容される Data Lake Analytics アカウントの最大数 (5) に達しました。" が表示されます。 
+6 番目の ADLA アカウントを作成しようとすると、エラー "サブスクリプション name のリージョンで許容される Data Lake Analytics アカウントの最大数 (5) に達しました。" が表示されます。
 
 この制限を超える数にするには、次の方法を試すことができます。
 * 適切であれば、別のリージョンを作成する
@@ -32,16 +32,18 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 
 ## <a name="default-adla-account-limits"></a>既定の ADLA アカウントの制限
 
-**アカウントあたりの分析ユニット (AU) の最大数:** 32
+**アカウントあたりの分析ユニット (AU) の最大数:** 250 (既定では 32)
 
 これは、アカウントで同時に実行できる AU の最大数です。 すべてのジョブで実行されている AU の総数がこの制限を超えている場合は、新しいジョブが自動的にキューに挿入されます。 例:
 
 * 32 個の AU を使用する 1 つのジョブのみ実行されているときに 2 つ目のジョブを送信した場合、そのジョブは 1 つ目のジョブが完了するまでジョブ キューで待機します。
 * 実行しているジョブが既に 4 つあり、それぞれが 8 AU を使用している場合に、8 個の AU 必要とする 5 番目のジョブを送信すると、そのジョブは、8 個の AU が使用可能になるまでジョブ キューで待機します。
 
-**ジョブあたりの分析ユニット (AU) の最大数:** 32
+    ![Azure Data Lake Analytics の制限とクォータのページ](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
-これは、アカウントで個別ジョブを割り当てられる AU の既定最大数です。 ジョブあたりでさらに多くの AU を割り当てるコンピューティング ポリシー (ジョブ送信制限) が送信元に適用されない限り、この限度を超えて割り当てられたジョブは拒否されます。 この値の上限は、アカウントの AU の制限です。
+**ジョブあたりの分析ユニット (AU) の最大数:** 250 (既定では 32)
+
+これは、アカウントで個別のジョブを割り当てることができる AU の最大数です。 ジョブあたりでさらに多くの AU を割り当てるコンピューティング ポリシー (ジョブ送信制限) が送信元に適用されない限り、この限度を超えて割り当てられたジョブは拒否されます。 この値の上限は、アカウントの AU の制限です。
 
 **アカウントあたりの同時実行 U-SQL ジョブの最大数:** 20
 

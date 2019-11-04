@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/12/2019
-ms.openlocfilehash: e9837aaf538648fe24a762f83a2e855f432df2a5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0ca73d75751259eccd9e952c2d704a09fc081396
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555466"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162270"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -80,7 +80,7 @@ provisioningState       : Succeeded
 4. 次のコマンドを実行して、監視アドオンを有効にし、`--workspace-resource-id` パラメーターの値を置き換えます。 文字列値は二重引用符で囲む必要があります。
 
     ```azurecli
-    az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id  “/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>”
+    az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>"
     ```
 
     出力は次のようになります。

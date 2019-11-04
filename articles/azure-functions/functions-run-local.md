@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 45bc55141c9f338ae2f69cf4ccefae3d2492b239
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 28502c49c0eebce84ffd5aa376e7b20bd52213c0
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336930"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674984"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -441,7 +441,7 @@ Azure で ローカル コードを関数アプリに発行するには、`publi
 func azure functionapp publish <FunctionAppName>
 ```
 
-このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドによって、アプリがデプロイされ、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
+このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドでは[リモート ビルド](functions-deployment-technologies.md#remote-build)が使用され、アプリがデプロイされて、[デプロイ パッケージから実行](run-functions-from-deployment-package.md)されます。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
 
 >[!IMPORTANT]
 > Azure portal で関数アプリを作成すると、既定でバージョン 2.x の Function ランタイムが使用されます。 関数アプリにバージョン 1.x のランタイムを使用させるには、[バージョン 1.x での実行](functions-versions.md#creating-1x-apps)に関するページの説明に従ってください。
@@ -463,6 +463,7 @@ func azure functionapp publish <FunctionAppName>
 | **`--list-included-files`** | 発行されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
 | **`--nozip`** | 既定の `Run-From-Package` モードをオフにします。 |
 | **`--build-native-deps`** | Python 関数アプリを発行するときに、.wheels フォルダーの生成をスキップします。 |
+| **`--build [-b]`** | Linux 関数アプリにデプロイするときにビルド アクションを実行します。 (許可: remote、local) |
 | **`--additional-packages`** | ネイティブの依存関係を構築するときにインストールするパッケージの一覧。 (例: `python3-dev libevent-dev`)。 |
 | **`--force`** | 特定のシナリオで発行前の検証を無視します。 |
 | **`--csx`** | C# スクリプト (.csx) プロジェクトを発行します。 |

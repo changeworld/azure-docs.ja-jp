@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b0a23486d81ac6b48bf7bb256e3583973a338002
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515060"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900913"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C でデバイス アプリケーションと通信する (プレビュー)
 
@@ -56,9 +56,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 デバイス ストリームのプレビューは現在、以下のリージョンで作成された IoT ハブに対してのみサポートされています。
 
-* 米国中部
-
-* 米国中部 EUAP
+  * 米国中部
+  * 米国中部 EUAP
+  * 北ヨーロッパ
+  * 東南アジア
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 

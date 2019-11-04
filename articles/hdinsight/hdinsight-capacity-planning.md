@@ -2,18 +2,18 @@
 title: Azure HDInsight のクラスターの容量計画
 description: Azure HDInsight クラスターの容量とパフォーマンスの計画に関する重要な質問を特定します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: hrasheed
-ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/15/2019
+ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916570"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529152"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -31,13 +31,13 @@ HDInsight クラスターをデプロイする前に、必要なパフォーマ�
 
 Azure リージョンによって、クラスターを物理的にプロビジョニングする場所が決まります。 読み取りと書き込みの待機時間を最小限に抑えるには、クラスターをデータの近くに配置する必要があります。
 
-HDInsight は多数の Azure リージョンで利用できます。 最も近いリージョンを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」の「*分析*」の「*HDInsight*」エントリを参照してください。
+HDInsight は多数の Azure リージョンで利用できます。 最も近いリージョンを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/)」を参照してください。
 
 ## <a name="choose-storage-location-and-size"></a>ストレージの場所とサイズの選択
 
 ### <a name="location-of-default-storage"></a>既定のストレージの場所
 
-既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Storage) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Storage Gen1 は一部のリージョンで利用できます。Data Lake Storage の現在の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」の「*Storage*」を参照してください。
+既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Storage) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Storage Gen1 は一部のリージョンで利用できます。[Data Lake Storage の現在の提供状況](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage)を参照してください。
 
 ### <a name="location-of-existing-data"></a>既存のデータの場所
 
@@ -95,7 +95,6 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 ### <a name="isolate-cluster-job-errors"></a>クラスターのジョブ エラーの分離
 
 マルチノード クラスターで、複数の map および reduce コンポーネントの同時実行が原因でエラーが発生する場合があります。 この問題を分離するために、単一ワーカー ノード クラスターで複数の同時実行ジョブを実行して分散テストを試してみます。その後、この手法を拡大して、複数のノードを含むクラスターで複数のジョブを同時に実行します。 Azure で単一ノードの HDInsight クラスターを作成するには、 *[カスタム (サイズ、設定、アプリ )]* オプションを使用して、ポータルで新しいクラスターをプロビジョニングするときに **[クラスター サイズ]** セクションの *[Number of Worker nodes]\(ワーカー ノードの数\)* に 1 の値を使用します。
-
 
 ## <a name="quotas"></a>Quotas (クォータ)
 

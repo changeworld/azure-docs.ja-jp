@@ -1,26 +1,26 @@
 ---
-title: フルテキスト検索エンジン (Lucene) アーキテクチャ - Azure Search
-description: Azure Search に関して Lucene のフルテキスト検索に使用されるクエリ処理と文書検索の概念について説明します。
+title: フルテキスト クエリおよびインデックス作成エンジンのアーキテクチャ (Lucene)
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search に関して Lucene のフルテキスト検索に使用されるクエリ処理と文書検索の概念について説明します。
 manager: nitinme
 author: yahnoosh
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
 ms.author: jlembicz
-ms.openlocfilehash: d377d6180f3d2d64f183ed574add3e7307e34fc3
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186547"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793553"
 ---
-# <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
+# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure Cognitive Search でのフルテキスト検索のしくみ
 
-この記事は、Azure Search における Lucene のフルテキスト検索のしくみについて理解を深める必要がある開発者を対象としています。 テキスト クエリに関して、Azure Search はほとんどの状況で速やかに適切な結果を返します。しかし一見、間違っているのではないか、と思うような結果が返されることも皆無ではありません。 このような状況では、Lucene による 4 段階から成るクエリ実行 (クエリ解析、字句解析、文書のマッチング、スコア付け) についての背景知識があると、具体的にどのような変更をクエリ パラメーターやインデックス構成に加えれば目的の結果が得られるかが特定しやすくなります。 
+この記事は、Azure Cognitive Search における Lucene のフルテキスト検索のしくみについて理解を深める必要がある開発者を対象としています。 テキスト クエリに関して、Azure Cognitive Search はほとんどの状況で速やかに適切な結果を返します。しかし一見、間違っているのではないか、と思うような結果が返されることも皆無ではありません。 このような状況では、Lucene による 4 段階から成るクエリ実行 (クエリ解析、字句解析、文書のマッチング、スコア付け) についての背景知識があると、具体的にどのような変更をクエリ パラメーターやインデックス構成に加えれば目的の結果が得られるかが特定しやすくなります。 
 
 > [!Note] 
-> Azure Search では、フルテキスト検索に Lucene が使われていますが、Lucene の機能がそのままの形で統合されているわけではありません。 Microsoft は、Azure Search にとって重要なシナリオを実現する Lucene の機能を選んで公開、拡張しています。 
+> Azure Cognitive Search では、フルテキスト検索に Lucene が使われていますが、Lucene の機能がそのままの形で統合されているわけではありません。 Microsoft は、Azure Cognitive Search にとって重要なシナリオを実現する Lucene の機能を選んで公開、拡張しています。 
 
 ## <a name="architecture-overview-and-diagram"></a>アーキテクチャの概要と図
 
@@ -35,7 +35,7 @@ ms.locfileid: "70186547"
 
 以下の図は、検索要求の処理に使用されるコンポーネントを示しています。 
 
- ![Azure Search における Lucene クエリ アーキテクチャの図][1]
+ ![Azure Cognitive Search における Lucene クエリ アーキテクチャの図][1]
 
 
 | 主なコンポーネント | 機能の説明 | 
@@ -49,7 +49,7 @@ ms.locfileid: "70186547"
 
 検索要求は、結果セットで返すべき内容を詳細に規定した仕様です。 最も単純な形式では、どのような種類の条件も含まれていない空のクエリです。 しかしより現実的な例では、パラメーターや複数の検索語を伴うのが一般的です。場合によっては、検索範囲を特定のフィールドに限定したり、フィルター式や並べ替え規則が使われたりすることもあります。  
 
-次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して Azure Search に送信できる検索要求です。  
+次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して Azure Cognitive Search に送信できる検索要求です。  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2019-05-06
@@ -96,7 +96,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>サポートされるパーサー:シンプルかつ完全な Lucene 
 
- Azure Search では、`simple` (既定) と `full` の 2 種類のクエリ言語が使用されます。 どちらのクエリ言語を使うかは、検索要求で `queryType` パラメーターの設定で指定します。その指定に基づいて、クエリ パーサーが演算子と構文を解釈します。 [Simple クエリ言語](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)は直感的で安定しており、多くの場合、クライアント側の処理を行わなくてもユーザー入力をそのまま解釈するのに適しています。 Web 検索エンジンで多く使われているクエリ演算子がサポートされます。 [Full Lucene クエリ言語](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)は、`queryType=full` を設定することによって利用できます。より多くの演算子やクエリの種類 (ワイルドカード、あいまい一致、正規表現、フィールド指定検索など) がサポートされることで、既定の Simple クエリ言語が拡張されます。 たとえば、Simple クエリ構文で送信された正規表現は、式としてではなくクエリ文字列と解釈されます。 この記事で紹介している要求の例では、Full Lucene クエリ言語を使用しています。
+ Azure Cognitive Search では、`simple` (既定) と `full` の 2 種類のクエリ言語が使用されます。 どちらのクエリ言語を使うかは、検索要求で `queryType` パラメーターの設定で指定します。その指定に基づいて、クエリ パーサーが演算子と構文を解釈します。 [Simple クエリ言語](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)は直感的で安定しており、多くの場合、クライアント側の処理を行わなくてもユーザー入力をそのまま解釈するのに適しています。 Web 検索エンジンで多く使われているクエリ演算子がサポートされます。 [Full Lucene クエリ言語](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)は、`queryType=full` を設定することによって利用できます。より多くの演算子やクエリの種類 (ワイルドカード、あいまい一致、正規表現、フィールド指定検索など) がサポートされることで、既定の Simple クエリ言語が拡張されます。 たとえば、Simple クエリ構文で送信された正規表現は、式としてではなくクエリ文字列と解釈されます。 この記事で紹介している要求の例では、Full Lucene クエリ言語を使用しています。
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>searchMode がパーサーに及ぼす影響 
 
@@ -137,7 +137,7 @@ Spacious,||air-condition*+"Ocean view"
 * 複合語をその構成要素に分解します。 
 * 単語の大文字を小文字に変換します。 
 
-通常はこれらの操作をひととおり適用することで、ユーザーによって入力されたテキストと、インデックスに格納されている語句との相違点が取り除かれます。 こうした操作はテキスト処理の範囲を超えており、言語そのものに対する深い知識が必要となります。 この言語知識のレイヤーを追加するために、Azure Search は、Lucene と Microsoft から提供されているさまざまな[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)に対応しています。
+通常はこれらの操作をひととおり適用することで、ユーザーによって入力されたテキストと、インデックスに格納されている語句との相違点が取り除かれます。 こうした操作はテキスト処理の範囲を超えており、言語そのものに対する深い知識が必要となります。 この言語知識のレイヤーを追加するために、Azure Cognitive Search は、Lucene と Microsoft から提供されているさまざまな[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)に対応しています。
 
 > [!Note]
 > 解析要件は、実際のシナリオによって大きく異なります。ごく最低限で済む場合もあれば、膨大な作業が必要となる場合もあります。 字句解析の難易度は、あらかじめ定義されているいずれかのアナライザーを選択するか、[カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)を独自に作成するかによって決まります。 アナライザーは、検索可能なフィールドにその適用対象が限定されており、フィールド定義の一環として指定されます。 これにより、フィールドごとに多様な字句解析を行うことができます。 指定されなかった場合は、"*標準*" の Lucene アナライザーが使用されます。
@@ -245,7 +245,7 @@ Spacious,||air-condition*+"Ocean view"
 検索語の体裁をインデックスに登録されている語句の体裁と合わせるために、通常は検索操作とインデックス作成操作に同じアナライザーが使用されますが、必ずしも同じである必要はありません。
 
 > [!Note]
-> Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フィールド パラメーターを使用して、インデックス作成と検索に別々のアナライザーを指定することができます。 指定しなかった場合、`analyzer` プロパティで設定されたアナライザーが、インデックス作成と検索の両方に使用されます。  
+> Azure Cognitive Search では、追加の `indexAnalyzer` および `searchAnalyzer` フィールド パラメーターを使用して、インデックス作成と検索に別々のアナライザーを指定することができます。 指定しなかった場合、`analyzer` プロパティで設定されたアナライザーが、インデックス作成と検索の両方に使用されます。  
 
 **文書サンプルの転置インデックス**
 
@@ -309,7 +309,7 @@ title フィールドの場合、*hotel* だけが 2 つの文書 (1 と 3) に�
 + フレーズ検索 "ocean view" では、"ocean" と "view" という 2 つの語句が検索され、元の文書内で両者が近いかどうかがチェックされます。 文書 1、2、3 の description フィールドに、この検索との一致が見つかります。 文書 4 の title には ocean という語が存在しますが、一致とは見なされないことに注意してください。検索対象は "ocean view" というフレーズであって、個々の単語ではありません。 
 
 > [!Note]
-> 特定のフィールドを `searchFields` パラメーター (検索要求の例を参照) で指定しない限り、検索クエリは、Azure Search インデックス内の検索可能なすべてのフィールドに対して個別に実行されます。 選択したフィールドのいずれかで一致する文書が返されます。 
+> 特定のフィールドを `searchFields` パラメーター (検索要求の例を参照) で指定しない限り、検索クエリは、Azure Cognitive Search インデックス内の検索可能なすべてのフィールドに対して個別に実行されます。 選択したフィールドのいずれかで一致する文書が返されます。 
 
 全体として、この例のクエリの場合、一致する文書は 1、2、3 です。 
 
@@ -357,7 +357,7 @@ search=Spacious, air-condition* +"Ocean view"
 
 ### <a name="score-tuning"></a>スコアのチューニング
 
-Azure Search の関連度スコアは、次の 2 とおりの方法でチューニングできます。
+Azure Cognitive Search の関連度スコアは、次の 2 とおりの方法でチューニングできます。
 
 1. **スコアリング プロファイル**: ランク付けされた結果リストにおいて、一連のルールに基づく重みを文書に与えます。 このページの例では、title フィールドに一致の見つかった文書の方が、description フィールドに一致の見つかった文書よりも関連性が高いと見なすことができます。 加えて、仮にホテルごとの料金フィールドをインデックスに含めた場合、料金の低い方の文書に高い重みを与えることも可能です。 詳細については、[スコアリング プロファイルを検索インデックスに追加する方法](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
 2. **項目ブースト** (Full Lucene クエリ構文のみで使用可能): クエリ ツリーの任意の構成要素に適用できるブースト演算子 `^` が用意されています。 このページの例では、*air-condition*\* というプレフィックスで検索する代わりに、*air-condition^2||air-condition** のように単語検索にブーストを適用することもできます。そうすれば、*air-condition* で完全一致する語句と、プレフィックスで一致する語句との両方を検索したうえで、完全一致の語句で一致した文書の方に、より高いランクを与えることができます。 詳細については、[項目ブースト](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)に関するセクションを参照してください。
@@ -365,7 +365,7 @@ Azure Search の関連度スコアは、次の 2 とおりの方法でチュー�
 
 ### <a name="scoring-in-a-distributed-index"></a>分散されたインデックスにおけるスコア付け
 
-Azure Search のすべてのインデックスは自動的に複数のシャードに分割されます。これにより、Microsoft は、サービスのスケールアップまたはスケールダウンの間に、複数のノードにインデックスをすばやく分散することができます。 検索要求は送信されると、各シャードに対して別々に送られます。 その後、各シャードから得られた結果がマージされ、スコア順に並べ替えられます (他に並べ替えが定義されていない場合)。 重要なのは、スコア付け機能では、検索語の出現頻度に対する重み付けに、文書頻度 (document frequency) の逆数が使用されますが、その文書頻度の計算対象となる範囲は、すべてのシャード内の全文書ではなく、シャード内の全文書になることを理解することです。
+Azure Cognitive Search のすべてのインデックスは自動的に複数のシャードに分割されます。これにより、Microsoft は、サービスのスケールアップまたはスケールダウンの間に、複数のノードにインデックスをすばやく分散することができます。 検索要求は送信されると、各シャードに対して別々に送られます。 その後、各シャードから得られた結果がマージされ、スコア順に並べ替えられます (他に並べ替えが定義されていない場合)。 重要なのは、スコア付け機能では、検索語の出現頻度に対する重み付けに、文書頻度 (document frequency) の逆数が使用されますが、その文書頻度の計算対象となる範囲は、すべてのシャード内の全文書ではなく、シャード内の全文書になることを理解することです。
 
 つまり、まったく同じ文書でも、それらが異なるシャードに存在していれば、関連度スコアが異なる "*可能性がある*" ということです。 さいわい、インデックス内の文書数が増えるにつれて語句の分布が平準化され、そのような差異は総じて消失します。 文書がどのシャードに配置されるかを推測することは不可能です。 しかし文書は、そのキーが変化しなければ、常に同じシャードに割り当てられます。
 
@@ -377,7 +377,7 @@ Azure Search のすべてのインデックスは自動的に複数のシャー�
 
 技術的な観点でいえばフルテキスト検索はきわめて複雑で、洗練された言語分析と検索語の加工 (関連性の高い結果を得るために検索語を抽出、展開、変換する処理) への秩序立ったアプローチとが要求されます。 そうした本質的な複雑さもあって、検索結果はさまざまな要因によって左右されます。 フルテキスト検索のメカニズムをしっかり理解しておけば、予期しない結果に対処しようとする際に、はっきりとその効果を実感できるでしょう。  
 
-この記事では、Azure Search の観点からフルテキスト検索について詳しく見てきました。 ここで身に付けた知識が、検索時に遭遇しやすい問題の原因や解決策を判断するうえでの一助となればさいわいです。 
+この記事では、Azure Cognitive Search の観点からフルテキスト検索について詳しく見てきました。 ここで身に付けた知識が、検索時に遭遇しやすい問題の原因や解決策を判断するうえでの一助となればさいわいです。 
 
 ## <a name="next-steps"></a>次の手順
 

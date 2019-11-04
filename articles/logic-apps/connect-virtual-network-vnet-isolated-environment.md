@@ -1,6 +1,6 @@
 ---
-title: 統合サービス環境 (ISE) を介して Azure Logic Apps から Azure Virtual Network に接続する
-description: 統合サービス環境 (ISE) を作成して、ロジック アプリと統合アカウントが Azure 仮想ネットワーク (VNET) にアクセスできるが、同時にパブリックすなわち "グローバル" の Azure から分離されたプライベートな状態を維持できるようにします。
+title: ISE を使用して Azure 仮想ネットワークに接続する - Azure Logic Apps
+description: Azure Logic Apps から Azure 仮想ネットワーク (VNET) にアクセスできる統合サービス環境 (ISE) を作成します。
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 15e1f1c4c8757ca55ec27659a4ca11b1729aebc2
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 4c4eb5a6cb7527bcb3eb21beebb8063b0bd021d3
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71701941"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680467"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -49,6 +49,8 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
   * 仮想ネットワークには、ISE 内にリソースを作成およびデプロイするため、*空の*サブネットが 4 つ必要です。 このようなサブネットは、事前に作成するか、同時にサブネットを作成できる ISE を作成するまで待つことができます。 [サブネット要件](#create-subnet)の詳細を参照してください。
 
   * サブネット名の最初の文字はアルファベット文字かアンダースコアにする必要があります。`<`、`>`、`%`、`&`、`\\`、`?`、`/` はいずれも使用できません。 
+  
+  * Azure Resource Manager テンプレートを使用して ISE をデプロイする場合は、最初に空のサブネットを Microsoft.Logic/integrationServiceEnvironment に委任していることを確認します。 Azure portal を使用してデプロイする場合、この委任を行う必要はありません。
 
   * 仮想ネットワークで[これらのポートが利用可能になっており](#ports)、ISE が正常に動作し、アクセス可能な状態であることを確認します。
 
@@ -89,13 +91,13 @@ Azure 仮想ネットワークで ISE を使用した場合、一般的な設定
 | Intersubnet 通信 | 受信および送信 | 80、443 | VirtualNetwork | VirtualNetwork | サブネット間の通信用 |
 | Azure Logic Apps への通信 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**メモ**:これらのエンドポイントは、[ISE 作成時に選択](#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリ内に存在する任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの IP アドレス。 このポートを閉じるかブロックすると、要求トリガーでロジック アプリに HTTP 呼び出しできなくなります。 |
 | ロジック アプリの実行履歴 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**メモ**:これらのエンドポイントは、[ISE 作成時に選択](#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリの実行履歴を表示するコンピューターの IP アドレス。 このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
-| 接続管理 | 送信 | 443 | VirtualNetwork  | インターネット | |
+| 接続管理 | 送信 | 443 | VirtualNetwork  | AppService | |
 | 診断ログとメトリックの発行 | 送信 | 443 | VirtualNetwork  | AzureMonitor | |
 | Azure Traffic Manager からの通信 | 受信 | 443 | AzureTrafficManager | VirtualNetwork | |
 | Logic Apps デザイナー - 動的プロパティ | 受信 | 454 | インターネット | VirtualNetwork | 要求は、Logic Apps の[リージョン内のアクセス エンドポイント受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)から送信されます。 |
 | App Service の管理の依存関係 | 受信 | 454、455 | AppServiceManagement | VirtualNetwork | |
 | コネクタのデプロイ | 受信 | 454 | AzureConnectors | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
-| コネクタ ポリシーのデプロイ | 受信 | 3443 | インターネット | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
+| コネクタ ポリシーのデプロイ | 受信 | 3443 | AppService | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
 | Azure SQL 依存関係 | 送信 | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | 送信 | 1886 | VirtualNetwork | AzureMonitor | 正常性の状態を Resource Health に公開するために必要 |
 | API Management - 管理エンドポイント | 受信 | 3443 | APIManagement | VirtualNetwork | |

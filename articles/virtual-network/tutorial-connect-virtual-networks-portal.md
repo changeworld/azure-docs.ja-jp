@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515721"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164057"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -54,7 +54,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |Resource group| **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
     |リージョン| **[米国東部]** を選択します。|
     |名前|myVirtualNetwork1|
-    ![基本仮想ネットワーク設定の構成] (
+   
 4. **[IP アドレス]** ページで、 **[アドレス空間]** フィールドに「10.0.0.0/16」と入力します。 下の **[サブネットの追加]** ボタンをクリックし、 **[サブネット名]** に「Subnet1」と入力し、 **[サブネット アドレス範囲]** に「10.0.0.0/24」と入力します。
    
 5. 次のように値を変更して、手順 1. ～ 3. を繰り返します。
@@ -147,7 +147,7 @@ VM の作成には数分かかります。 両方の VM の作成が完了する
 6. 後の手順で、*myVm1* VM から *myVm2* VM への通信に ping を使用します。 ping は Internet Control Message Protocol (ICMP) を使用していますが、Windows ファイアウォール経由の既定では拒否されます。 *myVm1* VM で、Windows ファイアウォールを介して ICMP を有効にし、後で PowerShell を使って *myVm2* からこの VM に ping を実行できるようにします。
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
     
     このチュートリアルでは VM 間の通信に ping を使用していますが、運用環境のデプロイでは Windows ファイアウォールで ICMP を許可することは推奨されません。

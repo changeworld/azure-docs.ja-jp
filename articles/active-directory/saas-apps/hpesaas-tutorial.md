@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 314003d6-ca66-4456-88c3-934254d4a9a2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e12f532ca73824c50375fba8b5ca3ee6e256c202
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c881068fa97361176e4bef2bc156ea213a79c54
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100832"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159012"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>チュートリアル:Azure Active Directory と HPE SaaS の統合
 

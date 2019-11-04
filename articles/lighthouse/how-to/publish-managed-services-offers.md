@@ -4,15 +4,15 @@ description: Azure の委任されたリソース管理に顧客をオンボー�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300290"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595275"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -132,7 +132,7 @@ ms.locfileid: "72300290"
 
 ## <a name="the-customer-onboarding-process"></a>顧客オンボーディング プロセス
 
-顧客がオファーを追加すると、[1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになります。これらは、Azure の委任されたリソース管理のためにオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。
+顧客がオファーを追加すると、[1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになります。これらは、Azure の委任されたリソース管理のためにオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。 顧客のテナント内のユーザーがこの委任を実行できない場合、そのユーザーには、サブスクリプションの所有者ロールがないと考えられます。 ユーザーは、サブスクリプションを委任できるユーザーを探すために、Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開いて、[所有者ロールを持つすべてのユーザーを確認](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)できます。
 
 サブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードできるようにするには、**Microsoft.ManagedServices** リソースプロバイダーを手動で登録することで、オンボードのためにサブスクリプションを承認する必要があります。 共同作成者または所有者のロールを持つ、顧客のテナントのユーザーは、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」で概説されている手順に従って、この操作を行うことができます。
 

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 06/12/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122219"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597261"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -183,9 +183,11 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
     ```yaml
     steps:
-    - task: AzureResourceGroupDeployment@2
+    - task: AzureResourceManagerTemplateDeployment@3
       inputs:
-        azureSubscription: '[YourServiceConnectionName]'
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: '[EnterYourServiceConnectionName]'
+        subscriptionName: '[EnterTheTargetSubscriptionID]'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '[EnterANewResourceGroupName]'
         location: 'Central US'
@@ -200,14 +202,16 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
     次の変更を行います。
 
-    * **azureSubscription**: 前の手順で作成したサービス接続で値を更新します。
+    * **deloymentScope**: デプロイのスコープを、`Management Group`、`Subscription`、および `Resource Group` の中から選択します。 このチュートリアルでは、 **[リソース グループ]** を使用します。 スコープの詳細については、「[デプロイのスコープ](./resource-group-template-deploy-rest.md#deployment-scope)」を参照してください。
+    * **ConnectedServiceName**: 前に作成したサービス接続名を指定します。
+    * **SubscriptionName**: ターゲット サブスクリプション ID を指定します。
     * **action**: **Create Or Update Resource Group** アクションは、2 つのアクションを行います。1. 新しいリソース グループ名が提供されている場合は、リソース グループを作成します。2. 指定されたテンプレートをデプロイします。
     * **resourceGroupName**: 新しいリソース グループの名前を指定します。 たとえば、**AzureRmPipeline-rg** です。
     * **location**: リソース グループの場所を指定します。
     * **templateLocation**: **[Linked artifact] (リンクされた成果物)** が指定されている場合、タスクは接続されているリポジトリから直接テンプレート ファイルを探します。
     * **csmFile** は、テンプレート ファイルのパスです。 テンプレートで定義されているすべてのパラメーターに既定値があるので、テンプレート パラメーター ファイルを指定する必要はありません。
 
-    このタスクの詳細については、[Azure リソース グループの配置タスクについての記事](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)を参照してください。
+    このタスクの詳細については、「[Azure リソース グループの配置タスク](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)」と [Azure Resource Manager テンプレートのデプロイ タスク](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)に関するページを参照してください。
 1. **[保存および実行]** を選択します。
 1. もう一度 **[保存および実行]** を選択します。 YAML ファイルのコピーが接続されているリポジトリに保存されます。 リポジトリを参照すると、YAML ファイルを確認できます。
 1. パイプラインが正常に実行されることを確認します。

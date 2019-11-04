@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 2f9b7b148900e827f4bfb17de1ef3cf05d8bbf10
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8d40ed83d7f8234092ca6354642a76aaa83bc12
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169154"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173068"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell を使用してプライベート リンク サービスを作成する
 この記事では、Azure PowerShell を使用して Azure でプライベート リンク サービスを作成する方法について説明します。
@@ -128,7 +128,7 @@ $peSubnet = New-AzVirtualNetworkSubnetConfig `
 
 $vnetPE = New-AzVirtualNetwork `
 -Name $virtualNetworkNamePE `
--ResourceGroupName myResourceGroup `
+-ResourceGroupName $rgName `
 -Location $location `
 -AddressPrefix "11.0.0.0/16" `
 -Subnet $peSubnet 

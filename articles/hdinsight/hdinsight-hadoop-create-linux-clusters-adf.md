@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72264547"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
@@ -200,7 +200,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
     |Location | 場所は、リソース グループの作成時に指定した場所に自動的に設定されます。 このチュートリアルでは、場所は **[米国東部]** に設定されます。 |
     |Enable GIT|このボックスはオフにしてください。|
 
-    ![Azure Portal を使用して Azure Data Factory を作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Azure Portal を使用して Azure Data Factory を作成する")
+    ![Azure portal を使用して Azure Data Factory を作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Azure portal を使用して Azure Data Factory を作成する")
 
 4. **作成** を選択します。 データ ファクトリの作成には、2 ～ 4 分ほどかかることがあります。
 
@@ -229,7 +229,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 3. **[New Linked Service]\(新しいリンクされたサービス\)** ダイアログ ボックスで **[Azure Blob Storage]** を選択し、 **[続行]** をクリックします。
 
-    ![Data Factory の Azure Storage のリンクされたサービスを作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Data Factory の Azure Storage のリンクされたサービスを作成する")
+    ![Data Factory 用に Azure Storage のリンクされたサービスを作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Data Factory 用に Azure Storage のリンクされたサービスを作成する")
 
 4. ストレージのリンク サービスに次の値を指定します。
 
@@ -251,7 +251,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 3. **[Azure HDInsight]** を選択し、 **[続行]** を選択します。
 
-    ![Azure Data Factory の HDInsight のリンクされたサービスを作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "Azure Data Factory の HDInsight のリンクされたサービスを作成する")
+    ![Azure Data Factory 用に HDInsight のリンクされたサービスを作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "Azure Data Factory 用に HDInsight のリンクされたサービスを作成する")
 
 4. **[New Linked Service]** (新しいリンク サービス) ウィンドウで 次の値を入力し、残りは既定値のままにしておきます。
 
@@ -274,13 +274,13 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     **[作成]** を選択します。
 
-    ![HDInsight のリンクされたサービスの値を入力する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "HDInsight のリンクされたサービスの値を入力する")
+    ![HDInsight のリンクされたサービスの値を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "HDInsight のリンクされたサービスの値を指定する")
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する。
 
 1. **+** (正符号) ボタンを選択し、 **[パイプライン]** を選択します。
 
-    ![Azure Data Factory でパイプラインを作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Azure Data Factory でパイプラインを作成する")
+    ![Azure Data Factory にパイプラインを作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Azure Data Factory にパイプラインを作成する")
 
 2. **[アクティビティ]** ツールボックスで **[HDInsight]** を展開し、パイプライン デザイナー画面に **Hive** アクティビティをドラッグします。 **[全般]** タブで、アクティビティの名前を指定します。
 
@@ -328,7 +328,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 1. **[View Activity Runs]\(アクティビティの実行の表示\)** アイコンをクリックして、パイプラインに関連付けられているアクティビティの実行を表示することもできます。 作成したパイプラインにはアクティビティが 1 つしかないため、次のスクリーンショットでは、アクティビティの実行が 1 つしか表示されていません。 前のビューに戻るには、ページの上部にある **[パイプライン]** を選択します。
 
-    ![Azure Data Factory パイプラインのアクティビティを監視する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "Azure Data Factory パイプラインのアクティビティを監視する")
+    ![Azure Data Factory パイプライン アクティビティを監視する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "Azure Data Factory パイプライン アクティビティを監視する")
 
 ## <a name="verify-the-output"></a>出力を検証する
 
@@ -340,7 +340,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     - Azure Data Factory のジョブ ログがある **adfjobs** コンテナーが表示されます。  
 
-        ![Azure Data Factory パイプラインの出力を検証する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "Azure Data Factory パイプラインの出力を検証する")
+        ![Azure Data Factory パイプライン出力を検証する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "Azure Data Factory パイプライン出力を検証する")
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -356,7 +356,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 1. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、既定のストレージ アカウントとデータ ファクトリが表示されます。
 1. **[リソース グループの削除]** を選択します。 この操作を実行すると、ストレージ アカウントと、そのストレージ アカウントに格納されているデータが削除されます。
 
-    ![Azure portal でリソース グループを削除する](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "リソース グループを削除する")
+    ![Azure portal でのリソース グループの削除](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "リソース グループの削除")
 
 1. リソース グループ名を入力して削除を確認し、 **[削除]** をクリックします。
 

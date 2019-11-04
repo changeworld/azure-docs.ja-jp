@@ -1,29 +1,28 @@
 ---
-title: センチメント コグニティブ検索スキル - Azure Search
-description: Azure Search のエンリッチメント パイプラインのテキストから正と負のセンチメント スコアを抽出します。
-services: search
+title: センチメント コグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: Azure コグニティブ検索の AI エンリッチメント パイプラインのテキストから正と負のセンチメント スコアを抽出します。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 8610506b7d62542e9eb801b06dd49a5e130fa7fa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: cc3aab703b9c5ffcb5f3280060417ce32fcec2fc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265735"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791914"
 ---
-#   <a name="sentiment-cognitive-skill"></a>センチメント コグニティブ スキル
+# <a name="sentiment-cognitive-skill"></a>センチメント コグニティブ スキル
 
 **センチメント** スキルは、正と負の連続体に沿って非構造化テキストを評価し、各レコードに対して、0 から 1 の数値スコアを返します。 1 に近いスコアは正のセンチメント、0 に近いスコアは負のセンチメントを示します。 このスキルでは、Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) によって提供される機械学習モデルが使用されます。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -119,5 +118,5 @@ Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

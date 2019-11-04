@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 703b8b5732109faed1523c678af612e7fc8dab6d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 19f06ee2d254e927fde4ca087fdd46f596c7dcbd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244098"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819907"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成
 
@@ -101,7 +101,7 @@ Dynamics 365 for Customer Engagement & PowerApps オファーの作成を開始�
 
 ### <a name="industry"></a>業界
 
-必要に応じて最大 2 つの業界を選択して、マーケットプレースでオファーを分類できます。 オファーが業界に固有でない場合は、このセクションは空白のままにします。 選択した業界にオファーがどのように対応しているかをオファーの説明に含めるようにします。 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="applicable-dynamics-365-products"></a>該当する Dynamics 365 製品
 

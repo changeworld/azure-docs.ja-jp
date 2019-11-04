@@ -1,21 +1,19 @@
 ---
 title: Azure Application Insights のログベースのメトリックと事前に集計されたメトリック | Microsoft Docs
 description: Azure Application Insights でログベースのメトリックと事前に集計されたメトリックを使用する理由
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: vgorbenko
 ms.author: vitalyg
-ms.reviewer: mbullwin
 ms.date: 09/18/2018
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 9520cbb9973071bf1c52266d7718837607c1d10f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: mbullwin
+ms.openlocfilehash: e0a0784c6331bdf4575f5c044c67cf9b4df3152f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256130"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820678"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 

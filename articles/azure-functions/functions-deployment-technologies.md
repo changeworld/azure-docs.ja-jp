@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: f468b2afce1609de126859546a72544ba403424e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 4d32a652219d48a2cc101259ea6b76fbfa910821
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838880"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674961"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -63,7 +63,7 @@ Azure Functions でのデプロイの動作を理解するために重要な概�
 Azure Functions では、zip デプロイ後に受け取ったコードのビルドを自動的に実行できます。 これらのビルドの動作は、アプリが Windows と Linux のどちらで実行されているかによって若干異なります。 アプリが[パッケージから実行](run-functions-from-deployment-package.md)モードに設定されている場合、リモート ビルドは実行されません。 リモート ビルドの使用方法については、[「zip デプロイ](#zip-deploy)」を参照してください。
 
 > [!NOTE]
-> リモート ビルドで問題が発生している場合は、この機能が利用可能になった日 (2019 年8月1日) より前にアプリが作成されている可能性があります。 新しい関数アプリを作成してみてください。
+> リモート ビルドで問題が発生している場合は、この機能が利用可能になった日 (2019 年8月1日) より前にアプリが作成されている可能性があります。 新しい関数アプリを作成するか、`az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>` を実行して関数アプリを更新してみてください。 このコマンドを正常に実行するには、2 回試行することが必要な場合があります。
 
 #### <a name="remote-build-on-windows"></a>Windows でのリモート ビルド
 
@@ -71,19 +71,18 @@ Windows 上で実行されるすべての関数アプリには、小規模な管
 
 アプリが Windows にデプロイされると、`dotnet restore` (C#) や `npm install` (JavaScript) などの言語固有のコマンドが実行されます。
 
-#### <a name="remote-build-on-linux-preview"></a>Linux でのリモート ビルド (プレビュー)
+#### <a name="remote-build-on-linux"></a>Linux でのリモート ビルド
 
-Linux でリモート ビルドを有効にするには、次の[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)を設定する必要があります。
+Linux でリモート ビルドを有効にするには、次の[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)を行う必要があります。
 
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Linux 上でリモートでビルドされたアプリは、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。
+既定では、[Azure Functions Core Tools](functions-run-local.md) と [Visual Studio Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、Linux へのデプロイ時にリモート ビルドが実行されます。 このため、どちらのツールでも、これらの設定は Azure で自動的に作成されます。 
 
-> [!NOTE]
-> Linux 専用 (App Service) プランでのリモート ビルドは、現在、node.js と Python でのみサポートされています。
+Linux 上でリモートでビルドされたアプリは、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。 
 
-##### <a name="consumption-preview-plan"></a>従量課金 (プレビュー) プラン
+##### <a name="consumption-plan"></a>従量課金プラン
 
 従量課金プランで実行されている Linux 関数アプリには SCM/Kudu サイトがありません。これにより、デプロイ オプションが制限されます。 ただし、従量課金プランで実行されている Linux 上の関数アプリでは、リモート ビルドがサポートされます。
 
@@ -103,21 +102,13 @@ Azure Functions では、次のデプロイ方法が使用できます。
 >
 >Azure Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) を備えたプライベート コンテナーを使用して、Functions にパッケージへのアクセス権を付与します。 アプリケーションが再起動されるたびに、コンテンツのコピーがフェッチされます。 アプリケーションの有効期間中は、参照が有効である必要があります。
 
->__いつ使用するか:__ ユーザーがリモート ビルドの発生を特に望まない場合、従量課金プランの Linux 上で実行される Azure Functions でサポートされるデプロイ方法は、外部パッケージ URL のみになります。 関数アプリが参照しているパッケージ ファイルを更新する場合、Azure にアプリケーションが変更されたことを通知するために、[トリガーを手動で同期](#trigger-syncing)する必要があります。
+>__いつ使用するか:__ ユーザーが[リモート ビルド](#remote-build)の発生を望まない場合、従量課金プランの Linux 上で実行される Azure Functions でサポートされるデプロイ方法は、外部パッケージ URL のみになります。 関数アプリが参照しているパッケージ ファイルを更新する場合、Azure にアプリケーションが変更されたことを通知するために、[トリガーを手動で同期](#trigger-syncing)する必要があります。
 
 ### <a name="zip-deploy"></a>ZIP デプロイ
 
 ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイルを Azure にプッシュします。 必要に応じて、[パッケージから実行](run-functions-from-deployment-package.md)を開始するようにアプリを設定するか、[リモート ビルド](#remote-build)を実行するように指定することができます。
 
->__使用方法:__ 次のお気に入りのクライアント ツールを使用してデプロイします。[VS Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)、または [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure)。 .zip ファイルを関数アプリに手動でデプロイするには、[.zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)に関する記事の指示に従います。
-
-[リモート ビルド](#remote-build)を伴う zip デプロイを実行するには、次の[コア ツール](functions-run-local.md) コマンドを使用します。
-
-```bash
-func azure functionapp publish <app name> --build remote
-```
-
-または、デプロイ時に "azureFunctions.scmDoBuildDuringDeployment" フラグを追加することで、リモート ビルドを実行するように VS Code に指示できます。 VS Code にフラグを追加する方法については、[Azure Functions 拡張機能 Wiki](https://github.com/microsoft/vscode-azurefunctions/wiki) に記載されている手順を参照してください。
+>__使用方法:__ 次のお気に入りのクライアント ツールを使用してデプロイします。[Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)、[Azure Functions Core Tools](functions-run-local.md)、または [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure)。 既定では、これらのツールは zip デプロイを使用し、[パッケージから実行](run-functions-from-deployment-package.md)されます。 Core Tools と Visual Studio Code 拡張機能の両方で、Linux へのデプロイ時に[リモート ビルド](#remote-build)が有効になります。 .zip ファイルを関数アプリに手動でデプロイするには、[.zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)に関する記事の指示に従います。
 
 >zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。 
 

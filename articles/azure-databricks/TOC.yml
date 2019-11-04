@@ -37,6 +37,9 @@
         - name: Azure Databricks を使ってみる
           href: /azure/databricks/getting-started/quick-start
           maintainContext: true
+        - name: データの概要
+          href: /azure/databricks/getting-started/data
+          maintainContext: true
         - name: Azure Databricks の概念
           href: /azure/databricks/getting-started/concepts
           maintainContext: true
@@ -72,6 +75,425 @@
         - name: サポートされているブラウザー
           href: /azure/databricks/getting-started/supported-browsers
           maintainContext: true
+    - name: Databricks ランタイム
+      items:
+        - name: ランタイムの概要
+          href: /azure/databricks/runtime/index
+          maintainContext: true
+        - name: Databricks ランタイム
+          href: /azure/databricks/runtime/dbr
+          maintainContext: true
+        - name: Databricks Runtime with Conda
+          href: /azure/databricks/runtime/conda
+          maintainContext: true
+        - name: Databricks Runtime for Machine Learning
+          href: /azure/databricks/runtime/mlruntime
+          maintainContext: true
+        - name: Databricks Runtime for Genomics
+          href: /azure/databricks/runtime/genomicsruntime
+          maintainContext: true
+        - name: Databricks Light
+          href: /azure/databricks/runtime/light
+          maintainContext: true
+    - name: ワークスペース
+      items:
+        - name: Databricks ワークスペースを探索する
+          href: /azure/databricks/workspace/index
+          maintainContext: true
+        - name: ワークスペース アセット
+          href: /azure/databricks/workspace/workspace-assets
+          maintainContext: true
+        - name: ワークスペース オブジェクトを操作する
+          href: /azure/databricks/workspace/workspace-objects
+          maintainContext: true
+        - name: ワークスペース、クラスター、ノートブック、およびジョブの識別子を取得する
+          href: /azure/databricks/workspace/workspace-details
+          maintainContext: true
+    - name: クラスター
+      items:
+        - name: クラスターの概要
+          href: /azure/databricks/clusters/index
+          maintainContext: true
+        - name: クラスターの作成
+          href: /azure/databricks/clusters/create
+          maintainContext: true
+        - name: クラスターの管理
+          href: /azure/databricks/clusters/clusters-manage
+          maintainContext: true
+        - name: クラスターの構成
+          href: /azure/databricks/clusters/configure
+          maintainContext: true
+        - name: クラスター ノードを初期化する
+          href: /azure/databricks/clusters/init-scripts
+          maintainContext: true
+        - name: カスタム コンテナー
+          href: /azure/databricks/clusters/custom-containers
+          maintainContext: true
+        - name: GPU 対応クラスター
+          href: /azure/databricks/clusters/gpu
+          maintainContext: true
+        - name: プール
+          items:
+            - name: プールの概要
+              href: /azure/databricks/clusters/instance-pools/index
+              maintainContext: true
+            - name: プールを表示する
+              href: /azure/databricks/clusters/instance-pools/display
+              maintainContext: true
+            - name: プールを作成する
+              href: /azure/databricks/clusters/instance-pools/create
+              maintainContext: true
+            - name: プールを構成する
+              href: /azure/databricks/clusters/instance-pools/configure
+              maintainContext: true
+            - name: プールを編集する
+              href: /azure/databricks/clusters/instance-pools/edit
+              maintainContext: true
+            - name: プールを削除する
+              href: /azure/databricks/clusters/instance-pools/delete
+              maintainContext: true
+            - name: プールを使用する
+              href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
+              maintainContext: true
+    - name: Notebooks
+      items:
+        - name: Notebooks の概要
+          href: /azure/databricks/notebooks/index
+          maintainContext: true
+        - name: Notebooks を管理する
+          href: /azure/databricks/notebooks/notebooks-manage
+          maintainContext: true
+        - name: Notebooks を使用する
+          href: /azure/databricks/notebooks/notebooks-use
+          maintainContext: true
+        - name: バージョン コントロール
+          items:
+            - name: Azure DevOps を使用したバージョン管理
+              href: /azure/databricks/notebooks/azure-devops-services-version-control
+              maintainContext: true
+            - name: Bitbucket Cloud を使用したバージョン管理
+              href: /azure/databricks/notebooks/bitbucket-cloud-version-control
+              maintainContext: true
+            - name: GitHub を使用したバージョン管理
+              href: /azure/databricks/notebooks/github-version-control
+              maintainContext: true
+        - name: 視覚化
+          items:
+            - name: データの視覚化
+              href: /azure/databricks/notebooks/visualizations/index
+              maintainContext: true
+            - name: 非推奨の折れ線グラフを移行する
+              href: /azure/databricks/notebooks/visualizations/migrate-charts
+              maintainContext: true
+            - name: Python での視覚化の詳細
+              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-python
+              maintainContext: true
+            - name: Scala での視覚化の詳細
+              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-scala
+              maintainContext: true
+            - name: ノートブックの HTML、D3、および SVG
+              href: /azure/databricks/notebooks/visualizations/html-d3-and-svg
+              maintainContext: true
+            - name: Python ノートブックの Bokeh
+              href: /azure/databricks/notebooks/visualizations/bokeh
+              maintainContext: true
+            - name: Python ノートブック の Matplotlib と ggplot
+              href: /azure/databricks/notebooks/visualizations/matplotlib-and-ggplot
+              maintainContext: true
+            - name: R ノートブックの htmlwidgets
+              href: /azure/databricks/notebooks/visualizations/htmlwidgets
+              maintainContext: true
+            - name: Python ノートブックと R ノートブックの Plotly
+              href: /azure/databricks/notebooks/visualizations/plotly
+              maintainContext: true
+        - name: ダッシュボード
+          href: /azure/databricks/notebooks/dashboards
+          maintainContext: true
+        - name: Widgets (ウィジェット)
+          href: /azure/databricks/notebooks/widgets
+          maintainContext: true
+        - name: ノートブックのワークフロー
+          href: /azure/databricks/notebooks/notebook-workflows
+          maintainContext: true
+        - name: パッケージ セル
+          href: /azure/databricks/notebooks/package-cells
+          maintainContext: true
+    - name: '[ジョブ]'
+      href: /azure/databricks/jobs
+      maintainContext: true
+    - name: ライブラリ
+      href: /azure/databricks/libraries
+      maintainContext: true
+    - name: Data
+      items:
+        - name: Databricks ファイル システム
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
+        - name: データベースとテーブル
+          href: /azure/databricks/data/tables
+          maintainContext: true
+        - name: metastore
+          items:
+            - name: 外部の Hive metastore
+              href: /azure/databricks/data/metastores/external-hive-metastore
+              maintainContext: true
+        - name: データ ソース
+          items:
+            - name: JDBC を使用した SQL データベース
+              href: /azure/databricks/data/data-sources/sql-databases
+              maintainContext: true
+            - name: Apache Spark コネクタを使用した Azure SQL Database
+              href: /azure/databricks/data/data-sources/sql-databases-azure
+              maintainContext: true
+            - name: Azure BLOB ストレージ
+              href: /azure/databricks/data/data-sources/azure/azure-storage
+              maintainContext: true
+            - name: Azure Data Lake Storage Gen2
+              href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
+              maintainContext: true
+            - name: Azure Data Lake Storage
+              href: /azure/databricks/data/data-sources/azure/azure-datalake
+              maintainContext: true
+            - name: Azure Data Lake Storage のパススルー
+              href: /azure/databricks/data/data-sources/azure/adls-passthrough
+              maintainContext: true
+            - name: Cosmos DB
+              href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
+              maintainContext: true
+            - name: SQL Data Warehouse
+              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
+              maintainContext: true
+            - name: バイナリ ファイル
+              href: /azure/databricks/data/data-sources/binary-file
+              maintainContext: true
+            - name: Cassandra
+              href: /azure/databricks/data/data-sources/cassandra
+              maintainContext: true
+            - name: Couchbase
+              href: /azure/databricks/data/data-sources/couchbase
+              maintainContext: true
+            - name: ElasticSearch
+              href: /azure/databricks/data/data-sources/elasticsearch
+              maintainContext: true
+            - name: イメージ
+              href: /azure/databricks/data/data-sources/image
+              maintainContext: true
+            - name: Hive のテーブル
+              href: /azure/databricks/data/data-sources/hive-tables
+              maintainContext: true
+            - name: MLflow 実験
+              href: /azure/databricks/data/data-sources/mlflow-experiment
+              maintainContext: true
+            - name: MongoDb
+              href: /azure/databricks/data/data-sources/mongodb
+              maintainContext: true
+            - name: Neo4j
+              href: /azure/databricks/data/data-sources/neo4j
+              maintainContext: true
+            - name: Avro ファイル
+              href: /azure/databricks/data/data-sources/read-avro
+              maintainContext: true
+            - name: CSV ファイル
+              href: /azure/databricks/data/data-sources/read-csv
+              maintainContext: true
+            - name: JSON ファイル
+              href: /azure/databricks/data/data-sources/read-json
+              maintainContext: true
+            - name: LZO 圧縮ファイル
+              href: /azure/databricks/data/data-sources/read-lzo
+              maintainContext: true
+            - name: Parquet ファイル
+              href: /azure/databricks/data/data-sources/read-parquet
+              maintainContext: true
+            - name: Redis
+              href: /azure/databricks/data/data-sources/redis
+              maintainContext: true
+            - name: Riak Time Series
+              href: /azure/databricks/data/data-sources/riak-ts
+              maintainContext: true
+            - name: Snowflake
+              href: /azure/databricks/data/data-sources/snowflake
+              maintainContext: true
+            - name: ZIP ファイル
+              href: /azure/databricks/data/data-sources/zip-files
+              maintainContext: true
+        - name: FileStore
+          href: /azure/databricks/data/filestore
+          maintainContext: true
+    - name: ビジネス インテリジェンス ツール
+      items:
+        - name: BI ツールを接続する
+          href: /azure/databricks/bi/jdbc-odbc-bi
+          maintainContext: true
+        - name: Tableau
+          href: /azure/databricks/bi/tableau
+          maintainContext: true
+        - name: Power BI
+          href: /azure/databricks/bi/power-bi
+          maintainContext: true
+        - name: Alteryx
+          href: /azure/databricks/bi/alteryx
+          maintainContext: true
+        - name: Looker
+          href: /azure/databricks/bi/looker
+          maintainContext: true
+        - name: SQL Workbench/J
+          href: /azure/databricks/bi/workbenchj
+          maintainContext: true
+    - name: Delta Lake
+      items:
+        - name: Delta Lake の概要
+          href: /azure/databricks/delta/delta-intro
+          maintainContext: true
+        - name: Delta Lake を使ってみる
+          href: /azure/databricks/delta/quick-start
+          maintainContext: true
+        - name: 入門用ノートブック
+          href: /azure/databricks/delta/intro-notebooks
+          maintainContext: true
+        - name: テーブルのバッチ読み取りと書き込み
+          href: /azure/databricks/delta/delta-batch
+          maintainContext: true
+        - name: テーブルのストリーミング読み取りと書き込み
+          href: /azure/databricks/delta/delta-streaming
+          maintainContext: true
+        - name: テーブルの削除、更新、およびマージ
+          href: /azure/databricks/delta/delta-update
+          maintainContext: true
+        - name: テーブル ユーティリティ コマンド
+          href: /azure/databricks/delta/delta-utility
+          maintainContext: true
+        - name: Delta Lake API リファレンス
+          href: /azure/databricks/delta/delta-apidoc
+          maintainContext: true
+        - name: コンカレンシー制御
+          href: /azure/databricks/delta/concurrency-control
+          maintainContext: true
+        - name: 最適化
+          items:
+            - name: 最適化の概要
+              href: /azure/databricks/delta/optimizations/index
+              maintainContext: true
+            - name: ファイル管理を使用してパフォーマンスを最適化する
+              href: /azure/databricks/delta/optimizations/file-mgmt
+              maintainContext: true
+            - name: 自動最適化
+              href: /azure/databricks/delta/optimizations/auto-optimize
+              maintainContext: true
+            - name: キャッシュを使用してパフォーマンスを最適化する
+              href: /azure/databricks/delta/optimizations/delta-cache
+              maintainContext: true
+            - name: 分離レベル
+              href: /azure/databricks/delta/optimizations/isolation-level
+              maintainContext: true
+            - name: MySQL テーブルを Delta Lake テーブルにレプリケートする
+              href: /azure/databricks/delta/optimizations/mysql-delta
+              maintainContext: true
+            - name: 結合のパフォーマンスを最適化する
+              items:
+                - name: 結合のパフォーマンスの最適化の概要
+                  href: /azure/databricks/delta/join-performance/index
+                  maintainContext: true
+                - name: 範囲の結合の最適化
+                  href: /azure/databricks/delta/join-performance/range-join
+                  maintainContext: true
+                - name: スキューの結合の最適化
+                  href: /azure/databricks/delta/join-performance/skew-join
+                  maintainContext: true
+            - name: 最適化されたデータ変換
+              items:
+                - name: 最適化されたデータ変換の概要
+                  href: /azure/databricks/delta/data-transformation/index
+                  maintainContext: true
+                - name: 高階関数
+                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+                  maintainContext: true
+                - name: 複合データ型を変換する
+                  href: /azure/databricks/delta/data-transformation/complex-types
+                  maintainContext: true
+            - name: ベスト プラクティス
+              href: /azure/databricks/delta/best-practices
+              maintainContext: true
+            - name: テーブルのバージョン管理
+              href: /azure/databricks/delta/optimizations/versioning
+              maintainContext: true
+            - name: 最適化の例
+              href: /azure/databricks/delta/optimizations/optimization-examples
+              maintainContext: true
+        - name: よく寄せられる質問
+          href: /azure/databricks/delta/delta-faq
+          maintainContext: true
+        - name: Delta のその他のリソース
+          href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: DataFrames と Datasets
+      items:
+        - name: DataFrames と Datasets の概要
+          href: /azure/databricks/spark/latest/dataframes-datasets/index
+          maintainContext: true
+        - name: Python DataFrames の概要
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
+          maintainContext: true
+        - name: Scala Dataframes の概要
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
+          maintainContext: true
+        - name: Datasets の概要
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-datasets
+          maintainContext: true
+        - name: 複合データと入れ子になったデータ
+          href: /azure/databricks/spark/latest/dataframes-datasets/complex-nested-data
+          maintainContext: true
+        - name: アグリゲーター
+          href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
+          maintainContext: true
+    - name: 構造化ストリーミング
+      items:
+        - name: 構造化ストリーミングの概要
+          href: /azure/databricks/spark/latest/structured-streaming/index
+          maintainContext: true
+        - name: 入門用ノートブック
+          href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
+          maintainContext: true
+        - name: ストリーミング データのソースとシンク
+          items:
+            - name: ソースとシンクの概要
+              href: /azure/databricks/spark/latest/structured-streaming/data-sources
+              maintainContext: true
+            - name: Apache Kafka
+              href: /azure/databricks/spark/latest/structured-streaming/kafka
+              maintainContext: true
+            - name: Azure Event Hubs
+              href: /azure/databricks/spark/latest/structured-streaming/streaming-event-hubs
+              maintainContext: true
+            - name: Delta Lake のテーブル
+              href: /azure/databricks/spark/latest/structured-streaming/delta
+              maintainContext: true
+            - name: DataFrames 使用したストリーミング Avro データの読み取りと書き込み
+              href: /azure/databricks/spark/latest/structured-streaming/avro-dataframe
+              maintainContext: true
+            - name: 任意のデータ シンクに書き込む
+              href: /azure/databricks/spark/latest/structured-streaming/foreach
+              maintainContext: true
+            - name: Azure Queue storage を使用する最適化された Azure Blob Storage
+              href: /azure/databricks/spark/latest/structured-streaming/aqs
+              maintainContext: true
+        - name: 運用環境での構造化ストリーミング
+          href: /azure/databricks/spark/latest/structured-streaming/production
+          maintainContext: true
+        - name: ストリーミングの例
+          href: /azure/databricks/spark/latest/structured-streaming/examples
+          maintainContext: true
+        - name: Spark Streaming (レガシ)
+          items:
+            - name: Spark Streaming (レガシ) の概要
+              href: /azure/databricks/spark/latest/rdd-streaming/index
+              maintainContext: true
+            - name: Spark Streaming アプリケーションをデバッグする
+              href: /azure/databricks/spark/latest/rdd-streaming/debugging-streaming-applications
+              maintainContext: true
+            - name: ストリーミング アプリケーション開発のベスト プラクティス
+              href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
+              maintainContext: true
     - name: SQL
       items:
         - name: SQL の概要
@@ -273,422 +695,6 @@
         - name: Azure Databricks の RStudio
           href: /azure/databricks/spark/latest/sparkr/rstudio
           maintainContext: true
-    - name: Databricks ランタイム
-      items:
-        - name: ランタイムの概要
-          href: /azure/databricks/runtime/index
-          maintainContext: true
-        - name: Databricks ランタイム
-          href: /azure/databricks/runtime/dbr
-          maintainContext: true
-        - name: Databricks Runtime with Conda
-          href: /azure/databricks/runtime/conda
-          maintainContext: true
-        - name: Databricks Runtime for Machine Learning
-          href: /azure/databricks/runtime/mlruntime
-          maintainContext: true
-        - name: Databricks Runtime for Health and Life Sciences
-          href: /azure/databricks/runtime/hlsruntime
-          maintainContext: true
-        - name: Databricks Light
-          href: /azure/databricks/runtime/light
-          maintainContext: true
-    - name: ワークスペース
-      items:
-        - name: Databricks ワークスペースを探索する
-          href: /azure/databricks/workspace/index
-          maintainContext: true
-        - name: ワークスペース、クラスター、ノートブック、およびジョブの識別子を取得する
-          href: /azure/databricks/workspace/workspace-details
-          maintainContext: true
-        - name: ワークスペース オブジェクトを操作する
-          href: /azure/databricks/workspace/workspace-objects
-          maintainContext: true
-    - name: クラスター
-      items:
-        - name: クラスターの概要
-          href: /azure/databricks/clusters/index
-          maintainContext: true
-        - name: クラスターの管理
-          href: /azure/databricks/clusters/clusters-manage
-          maintainContext: true
-        - name: クラスターの作成
-          href: /azure/databricks/clusters/create
-          maintainContext: true
-        - name: クラスターの構成
-          href: /azure/databricks/clusters/configure
-          maintainContext: true
-        - name: クラスター ノードを初期化する
-          href: /azure/databricks/clusters/init-scripts
-          maintainContext: true
-        - name: カスタム コンテナー
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
-        - name: GPU 対応クラスター
-          href: /azure/databricks/clusters/gpu
-          maintainContext: true
-        - name: プール
-          items:
-            - name: プールの概要
-              href: /azure/databricks/clusters/instance-pools/index
-              maintainContext: true
-            - name: プールを表示する
-              href: /azure/databricks/clusters/instance-pools/display
-              maintainContext: true
-            - name: プールを作成する
-              href: /azure/databricks/clusters/instance-pools/create
-              maintainContext: true
-            - name: プールを構成する
-              href: /azure/databricks/clusters/instance-pools/configure
-              maintainContext: true
-            - name: プールを編集する
-              href: /azure/databricks/clusters/instance-pools/edit
-              maintainContext: true
-            - name: プールを削除する
-              href: /azure/databricks/clusters/instance-pools/delete
-              maintainContext: true
-            - name: プールを使用する
-              href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
-              maintainContext: true
-    - name: Notebooks
-      items:
-        - name: Notebooks の概要
-          href: /azure/databricks/notebooks/index
-          maintainContext: true
-        - name: Notebooks を使用する
-          href: /azure/databricks/notebooks/notebooks-use
-          maintainContext: true
-        - name: Notebooks を管理する
-          href: /azure/databricks/notebooks/notebooks-manage
-          maintainContext: true
-        - name: バージョン コントロール
-          items:
-            - name: Azure DevOps を使用したバージョン管理
-              href: /azure/databricks/notebooks/azure-devops-services-version-control
-              maintainContext: true
-            - name: Bitbucket Cloud を使用したバージョン管理
-              href: /azure/databricks/notebooks/bitbucket-cloud-version-control
-              maintainContext: true
-            - name: GitHub を使用したバージョン管理
-              href: /azure/databricks/notebooks/github-version-control
-              maintainContext: true
-        - name: 視覚化
-          items:
-            - name: データの視覚化
-              href: /azure/databricks/notebooks/visualizations/index
-              maintainContext: true
-            - name: 非推奨の折れ線グラフを移行する
-              href: /azure/databricks/notebooks/visualizations/migrate-charts
-              maintainContext: true
-            - name: Python での視覚化の詳細
-              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-python
-              maintainContext: true
-            - name: Scala での視覚化の詳細
-              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-scala
-              maintainContext: true
-            - name: ノートブックの HTML、D3、および SVG
-              href: /azure/databricks/notebooks/visualizations/html-d3-and-svg
-              maintainContext: true
-            - name: Python ノートブックの Bokeh
-              href: /azure/databricks/notebooks/visualizations/bokeh
-              maintainContext: true
-            - name: Python ノートブック の Matplotlib と ggplot
-              href: /azure/databricks/notebooks/visualizations/matplotlib-and-ggplot
-              maintainContext: true
-            - name: R ノートブックの htmlwidgets
-              href: /azure/databricks/notebooks/visualizations/htmlwidgets
-              maintainContext: true
-            - name: Python ノートブックと R ノートブックの Plotly
-              href: /azure/databricks/notebooks/visualizations/plotly
-              maintainContext: true
-        - name: ダッシュボード
-          href: /azure/databricks/notebooks/dashboards
-          maintainContext: true
-        - name: 入力ウィジェット
-          href: /azure/databricks/notebooks/widgets
-          maintainContext: true
-        - name: ノートブックのワークフローを実装する
-          href: /azure/databricks/notebooks/notebook-workflows
-          maintainContext: true
-        - name: パッケージ セル
-          href: /azure/databricks/notebooks/package-cells
-          maintainContext: true
-    - name: Azure Databricks ジョブを使用する
-      href: /azure/databricks/jobs
-      maintainContext: true
-    - name: Azure Databricks ライブラリを使用する
-      href: /azure/databricks/libraries
-      maintainContext: true
-    - name: Data
-      items:
-        - name: Databricks ファイル システム
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
-        - name: データにアクセスする
-          href: /azure/databricks/data/access-data
-          maintainContext: true
-        - name: データベースとテーブルを使用する
-          href: /azure/databricks/data/tables
-          maintainContext: true
-        - name: FileStore
-          href: /azure/databricks/data/filestore
-          maintainContext: true
-        - name: データ ソース
-          items:
-            - name: バイナリ ファイル
-              href: /azure/databricks/data/data-sources/binary-file
-              maintainContext: true
-            - name: Cassandra
-              href: /azure/databricks/data/data-sources/cassandra
-              maintainContext: true
-            - name: Couchbase
-              href: /azure/databricks/data/data-sources/couchbase
-              maintainContext: true
-            - name: ElasticSearch
-              href: /azure/databricks/data/data-sources/elasticsearch
-              maintainContext: true
-            - name: イメージ
-              href: /azure/databricks/data/data-sources/image
-              maintainContext: true
-            - name: Hive テーブルをインポートする
-              href: /azure/databricks/data/data-sources/importing-hive-tables
-              maintainContext: true
-            - name: MLflow 実験
-              href: /azure/databricks/data/data-sources/mlflow-experiment
-              maintainContext: true
-            - name: MongoDb
-              href: /azure/databricks/data/data-sources/mongodb
-              maintainContext: true
-            - name: Neo4j
-              href: /azure/databricks/data/data-sources/neo4j
-              maintainContext: true
-            - name: Avro ファイル
-              href: /azure/databricks/data/data-sources/read-avro
-              maintainContext: true
-            - name: CSV ファイル
-              href: /azure/databricks/data/data-sources/read-csv
-              maintainContext: true
-            - name: JSON ファイル
-              href: /azure/databricks/data/data-sources/read-json
-              maintainContext: true
-            - name: LZO 圧縮ファイル
-              href: /azure/databricks/data/data-sources/read-lzo
-              maintainContext: true
-            - name: Parquet ファイル
-              href: /azure/databricks/data/data-sources/read-parquet
-              maintainContext: true
-            - name: Redis
-              href: /azure/databricks/data/data-sources/redis
-              maintainContext: true
-            - name: Riak Time Series
-              href: /azure/databricks/data/data-sources/riak-ts
-              maintainContext: true
-            - name: Snowflake
-              href: /azure/databricks/data/data-sources/snowflake
-              maintainContext: true
-            - name: Azure SQL Database
-              href: /azure/databricks/data/data-sources/sql-databases-azure
-              maintainContext: true
-            - name: SQL データベース
-              href: /azure/databricks/data/data-sources/sql-databases
-              maintainContext: true
-            - name: ZIP ファイル
-              href: /azure/databricks/data/data-sources/zip-files
-              maintainContext: true
-            - name: Azure Data Lake Storage のパススルー
-              href: /azure/databricks/data/data-sources/azure/adls-passthrough
-              maintainContext: true
-            - name: Azure Data Lake Storage Gen2
-              href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
-              maintainContext: true
-            - name: Azure Data Lake Storage
-              href: /azure/databricks/data/data-sources/azure/azure-datalake
-              maintainContext: true
-            - name: Azure Storage
-              href: /azure/databricks/data/data-sources/azure/azure-storage
-              maintainContext: true
-            - name: Cosmos DB コネクタ
-              href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
-              maintainContext: true
-            - name: SQL Data Warehouse
-              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
-              maintainContext: true
-        - name: metastore
-          items:
-            - name: 外部の Hive metastore
-              href: /azure/databricks/data/metastores/external-hive-metastore
-              maintainContext: true
-    - name: ビジネス インテリジェンス ツール
-      items:
-        - name: BI ツールを接続する
-          href: /azure/databricks/bi/jdbc-odbc-bi
-          maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
-    - name: Delta Lake
-      items:
-        - name: Delta Lake の概要
-          href: /azure/databricks/delta/delta-intro
-          maintainContext: true
-        - name: Delta Lake を使ってみる
-          href: /azure/databricks/delta/quick-start
-          maintainContext: true
-        - name: 入門用ノートブック
-          href: /azure/databricks/delta/intro-notebooks
-          maintainContext: true
-        - name: テーブルのバッチ読み取りと書き込み
-          href: /azure/databricks/delta/delta-batch
-          maintainContext: true
-        - name: テーブルのストリーミング読み取りと書き込み
-          href: /azure/databricks/delta/delta-streaming
-          maintainContext: true
-        - name: テーブルの削除、更新、およびマージ
-          href: /azure/databricks/delta/delta-update
-          maintainContext: true
-        - name: テーブル ユーティリティ コマンド
-          href: /azure/databricks/delta/delta-utility
-          maintainContext: true
-        - name: Delta Lake API リファレンス
-          href: /azure/databricks/delta/delta-apidoc
-          maintainContext: true
-        - name: コンカレンシー制御
-          href: /azure/databricks/delta/concurrency-control
-          maintainContext: true
-        - name: 最適化
-          items:
-            - name: 最適化の概要
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: ファイル管理を使用してパフォーマンスを最適化する
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: 自動最適化
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: キャッシュを使用してパフォーマンスを最適化する
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: 分離レベル
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: MySQL テーブルを Delta Lake テーブルにレプリケートする
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: 結合のパフォーマンスを最適化する
-              items:
-                - name: 結合のパフォーマンスの最適化の概要
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: 範囲の結合の最適化
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: スキューの結合の最適化
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: 最適化されたデータ変換
-              items:
-                - name: 最適化されたデータ変換の概要
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: 高階関数
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: 複合データ型を変換する
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: テーブルのバージョン管理
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: 最適化の例
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
-        - name: よく寄せられる質問
-          href: /azure/databricks/delta/delta-faq
-          maintainContext: true
-        - name: Delta のその他のリソース
-          href: /azure/databricks/delta/delta-resources
-          maintainContext: true
-    - name: DataFrames と Datasets
-      items:
-        - name: DataFrames と Datasets の概要
-          href: /azure/databricks/spark/latest/dataframes-datasets/index
-          maintainContext: true
-        - name: Python DataFrames の概要
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
-          maintainContext: true
-        - name: Scala Dataframes の概要
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
-          maintainContext: true
-        - name: Datasets の概要
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-datasets
-          maintainContext: true
-        - name: 複合データと入れ子になったデータ
-          href: /azure/databricks/spark/latest/dataframes-datasets/complex-nested-data
-          maintainContext: true
-        - name: アグリゲーター
-          href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
-          maintainContext: true
-    - name: 構造化ストリーミング
-      items:
-        - name: 構造化ストリーミングの概要
-          href: /azure/databricks/spark/latest/structured-streaming/index
-          maintainContext: true
-        - name: 入門用ノートブック
-          href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
-          maintainContext: true
-        - name: ストリーミング データのソースとシンク
-          items:
-            - name: ソースとシンクの概要
-              href: /azure/databricks/spark/latest/structured-streaming/data-sources
-              maintainContext: true
-            - name: Apache Kafka
-              href: /azure/databricks/spark/latest/structured-streaming/kafka
-              maintainContext: true
-            - name: Azure Event Hubs
-              href: /azure/databricks/spark/latest/structured-streaming/streaming-event-hubs
-              maintainContext: true
-            - name: Delta Lake のテーブル
-              href: /azure/databricks/spark/latest/structured-streaming/delta
-              maintainContext: true
-            - name: DataFrames 使用したストリーミング Avro データの読み取りと書き込み
-              href: /azure/databricks/spark/latest/structured-streaming/avro-dataframe
-              maintainContext: true
-            - name: 任意のデータ シンクに書き込む
-              href: /azure/databricks/spark/latest/structured-streaming/foreach
-              maintainContext: true
-            - name: Azure Queue storage を使用する最適化された Azure Blob Storage
-              href: /azure/databricks/spark/latest/structured-streaming/aqs
-              maintainContext: true
-        - name: 運用環境での構造化ストリーミング
-          href: /azure/databricks/spark/latest/structured-streaming/production
-          maintainContext: true
-        - name: ストリーミングの例
-          href: /azure/databricks/spark/latest/structured-streaming/examples
-          maintainContext: true
-        - name: Spark Streaming (レガシ)
-          items:
-            - name: Spark Streaming (レガシ) の概要
-              href: /azure/databricks/spark/latest/rdd-streaming/index
-              maintainContext: true
-            - name: Spark Streaming アプリケーションをデバッグする
-              href: /azure/databricks/spark/latest/rdd-streaming/debugging-streaming-applications
-              maintainContext: true
-            - name: ストリーミング アプリケーション開発のベスト プラクティス
-              href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
-              maintainContext: true
     - name: 機械学習
       items:
         - name: Machine Learning の概要
@@ -708,7 +714,7 @@
             - name: 高度な MLib の例
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: AutoML
+        - name: 自動 ML
           items:
             - name: Hyperopt
               items:
@@ -823,21 +829,6 @@
         - name: MLflow を使ってみる
           href: /azure/databricks/applications/mlflow/quick-start
           maintainContext: true
-        - name: 機械学習のトレーニング実行を追跡する
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: 外部の追跡にアクセスする
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
-        - name: モデルの保存、読み込み、デプロイ
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: MLflow プロジェクトを使用して実行を再現する
-          href: /azure/databricks/applications/mlflow/projects
-          maintainContext: true
-        - name: MLflow モデルの例
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
         - name: MLflow Java および Scala を使ってみる
           href: /azure/databricks/applications/mlflow/quick-start-java-scala
           maintainContext: true
@@ -847,8 +838,23 @@
         - name: MLflow R を使ってみる
           href: /azure/databricks/applications/mlflow/quick-start-r
           maintainContext: true
+        - name: 機械学習のトレーニング実行を追跡する
+          href: /azure/databricks/applications/mlflow/tracking
+          maintainContext: true
         - name: MLflow Tracking の例
           href: /azure/databricks/applications/mlflow/tracking-examples
+          maintainContext: true
+        - name: 外部の追跡にアクセスする
+          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
+          maintainContext: true
+        - name: モデルの保存、読み込み、デプロイ
+          href: /azure/databricks/applications/mlflow/models
+          maintainContext: true
+        - name: MLflow モデルの例
+          href: /azure/databricks/applications/mlflow/model-examples
+          maintainContext: true
+        - name: MLflow プロジェクトを使用して実行を再現する
+          href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
     - name: グラフ分析
       items:
@@ -937,10 +943,13 @@
             - name: Python 統計ライブラリ
               href: /azure/databricks/applications/genomics/tertiary/pandas-udf
               maintainContext: true
+            - name: SAIGE
+              href: /azure/databricks/applications/genomics/tertiary/saige
+              maintainContext: true
             - name: Hail 0.2
               href: /azure/databricks/applications/genomics/tertiary/hail
               maintainContext: true
-    - name: 移行ガイド
+    - name: 移行
       items:
         - name: 運用ワークロードを移行する
           href: /azure/databricks/migration/production
@@ -951,7 +960,7 @@
         - name: ワークロードを Delta Lake に移行する
           href: /azure/databricks/delta/porting
           maintainContext: true
-    - name: セキュリティ
+    - name: セキュリティとプライバシー
       items:
         - name: セキュリティの概要
           href: /azure/databricks/security/index
@@ -976,9 +985,6 @@
             - name: シークレット ワークフローの例
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
-    - name: 認証をサードパーティのサービスに委任する
-      href: /azure/databricks/delegated-auth
-      maintainContext: true
     - name: 管理
       items:
         - name: 管理の概要
@@ -1136,6 +1142,9 @@
             - name: 予期しないクラスターの終了
               href: /azure/databricks/kb/clusters/termination-reasons
               maintainContext: true
+            - name: Apache Spark UI の表示がノードの合計メモリより小さい
+              href: /azure/databricks/kb/clusters/spark-shows-less-memory
+              maintainContext: true
         - name: データ管理
           items:
             - name: DataFrame に追加する
@@ -1227,6 +1236,9 @@
               maintainContext: true
             - name: Delta Lake のマネージド テーブルを削除する
               href: /azure/databricks/kb/delta/drop-delta-table
+              maintainContext: true
+            - name: UPDATE クエリが IllegalStateException で失敗する
+              href: /azure/databricks/kb/delta/update-query-fails
               maintainContext: true
         - name: 開発者用ツール
           items:
@@ -1358,6 +1370,14 @@
             - name: ストリーミング セルをキャンセルした後にノートブックを実行できない
               href: /azure/databricks/kb/notebooks/streaming-notebook-stuck
               maintainContext: true
+            - name: コマンドの取り消しのトラブルシューティング
+              href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
+              maintainContext: true
+        - name: セキュリティとアクセス許可
+          items:
+            - name: テーブルの作成がセキュリティの例外で失敗する
+              href: /azure/databricks/kb/security/table-create-security-exception
+              maintainContext: true
         - name: Python
           items:
             - name: Anaconda を使用してクラスターを作成する
@@ -1420,8 +1440,8 @@
             - name: テーブルまたはビューが見つからない
               href: /azure/databricks/kb/sql/global-temp-view-not-found
               maintainContext: true
-            - name: ストリーミング
-              items: null
+        - name: ストリーミング
+          items:
             - name: チェックポイントまたは出力ディレクトリの変更後の復旧
               href: /azure/databricks/kb/streaming/file-sink-streaming
               maintainContext: true
@@ -1436,7 +1456,7 @@
     - name: 開発者用ツール
       items:
         - name: Databricks Connect
-          href: /azure/databricks/dev-tools/db-connect
+          href: /azure/databricks/dev-tools/databricks-connect
           maintainContext: true
         - name: データ パイプラインの依存関係を管理する
           href: /azure/databricks/dev-tools/data-pipelines
@@ -1486,14 +1506,14 @@
             - name: ワークスペース
               href: /azure/databricks/dev-tools/api/latest/workspace
               maintainContext: true
-        - name: REST API 呼び出しのランタイム バージョン ストリング
-          href: /azure/databricks/dev-tools/api/latest/runtime-version-string
-          maintainContext: true
+            - name: REST API 呼び出しのランタイム バージョン ストリング
+              href: /azure/databricks/dev-tools/api/latest/runtime-version-string
+              maintainContext: true
         - name: REST API 1.2
           href: /azure/databricks/dev-tools/api/1.2/index
           maintainContext: true
     - name: Databricks ユーティリティ
-      href: /azure/databricks/dev-tools/dbutils
+      href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: Databricks CLI
       href: /azure/databricks/dev-tools/databricks-cli
@@ -1503,10 +1523,8 @@
       maintainContext: true
     - name: Azure Databricks REST API
       href: /azure/databricks//rest/api/databricks
-      maintainContext: true
     - name: Resource Manager テンプレート
       href: /azure/databricks//azure/templates/microsoft.databricks/workspaces
-      maintainContext: true
 - name: リソース
   items:
     - name: リリース ノート
@@ -1515,6 +1533,9 @@
           items:
             - name: プラットフォームのリリース ノート
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2019 年 10 月
+              href: /azure/databricks/release-notes/product/2019/october
               maintainContext: true
             - name: 2019 年 9 月
               href: /azure/databricks/release-notes/product/2019/september
@@ -1683,7 +1704,6 @@
           maintainContext: true
     - name: R 開発者ガイド
       href: /azure/machine-learning/r-developers-guide
-      maintainContext: true
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: 価格

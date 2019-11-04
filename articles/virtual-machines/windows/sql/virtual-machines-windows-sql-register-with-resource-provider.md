@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512364"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756160"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -203,7 +203,7 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
      $sqlvm.Properties.sqlManagement
   ```
 
-"*軽量*" の IaaS 拡張機能がインストールされている SQL Server VM の場合、Azure portal を使用してモードを "_フル_" にアップグレードできます。 _No-Agent_ モードの SQL Server VM は、OS が Windows 2008 R2 以降にアップグレードされ後で "_フル_" にアップグレードできます。 ダウングレードはできません。これを行うには、Azure portal を使用して SQL VM リソース プロバイダーのリソースを削除し、SQL VM リソース プロバイダーに再登録する必要があります。 
+"*軽量*" の IaaS 拡張機能がインストールされている SQL Server VM の場合、Azure portal を使用してモードを "_フル_" にアップグレードできます。 _No-Agent_ モードの SQL Server VM は、OS が Windows 2008 R2 以降にアップグレードされ後で "_フル_" にアップグレードできます。 ダウングレードはできません。これを行うには、SQL VM リソースを削除することで SQL VM リソース プロバイダーから SQL Server VM の[登録を解除](#unregister-vm-from-resource-provider)し、SQL VM リソース プロバイダーに再登録する必要があります。 
 
 エージェントのモードを "フル" にアップグレードするには: 
 
@@ -281,6 +281,49 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
 ---
 
+## <a name="unregister-vm-from-resource-provider"></a>リソース プロバイダーから VM を登録解除する 
+
+SQL VM リソースプロバイダーから SQL Server VM の登録を解除するには、Azure portal または Azure CLI を使用して、SQL 仮想マシン "*リソース*" を削除します。 SQL 仮想マシン "*リソース*" を削除しても、SQL Server VM は削除されません。 ただし、"*リソース*" を削除しようとしたときに仮想マシンが誤って削除される可能性があるため、注意して慎重に手順に従ってください。 
+
+SQL VM リソース プロバイダーから SQL VM の登録を解除するには、管理モードを完全からダウングレードする必要があります。 
+
+### <a name="azure-portal"></a>Azure ポータル
+
+Azure portal を使用してリソース プロバイダーから SQL Server VM の登録を解除するには、次の手順に従います。
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. SQL Server VM リソースに移動します。 
+  
+   ![SQL 仮想マシン リソース](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
+
+1. **[削除]** を選択します。 
+
+   ![SQL VM リソース プロバイダーの削除](media/virtual-machines-windows-sql-register-with-rp/delete-sql-vm-resource-provider.png)
+
+1. SQL 仮想マシンの名前を入力し、**仮想マシンの横にあるチェックボックスをオフにします**。
+
+   ![SQL VM リソース プロバイダーの削除](media/virtual-machines-windows-sql-register-with-rp/confirm-delete-of-resource-uncheck-box.png)
+
+   >[!WARNING]
+   > 仮想マシン名の横にあるチェックボックスをオフにしないと、仮想マシンが完全に "*削除*" されます。 リソース プロバイダーから SQL Server VM の登録を解除するが、"*実際の仮想マシンを削除しない*" 場合は、このチェックボックスをオフにしてください。 
+
+1. **[削除]** を選択して、SQL Server の仮想マシンではなく、SQL 仮想マシン "*リソース*" の削除を確認します。 
+
+
+### <a name="azure-cli"></a>Azure CLI 
+
+Azure CLI を使用してリソース プロバイダーから SQL Server 仮想マシンの登録を解除するには、[az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) コマンドを使用します。 これにより、SQL Server 仮想マシン "*リソース*" が削除されますが、仮想マシンは削除されません。 
+
+
+```azurecli-interactive
+   az sql vm delete 
+     --name <SQL VM resource name> |
+     --resource-group <Resource group name> |
+     --yes 
+```
+
+
+
 ## <a name="remarks"></a>解説
 
 - SQL VM リソースプロバイダーでサポートされているのは、Azure Resource Manager を介してデプロイされた SQL Server VM のみです。 クラシック モデルを介してデプロイされた SQL Server VM はサポートされません。 
@@ -353,7 +396,7 @@ No. エージェントなしモードでは、管理モードを完全または�
 
 No. SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 この管理モードは、完全モードから軽量またはエージェントなしモードにダウングレードできません。また、軽量モードからエージェントなしモードにダウングレードすることもできません。 
 
-管理モードを完全管理から変更するには、Microsoft.SqlVirtualMachine リソースを削除し、SQL Server VM を SQL VM リソース プロバイダーに再登録します。
+管理モードを完全管理から変更するには、SQL Server "*リソース*" を削除することで SQL Server リソース プロバイダーから SQL Server 仮想マシンの[登録を解除](#unregister-vm-from-resource-provider)し、別の管理モードでその SQL Server VM を SQL VM リソース プロバイダーに再登録します。
 
 **Azure portal から SQL VM リソースプロバイダーに登録できますか?**
 

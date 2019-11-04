@@ -1,23 +1,19 @@
 ---
 title: Application Insights Profiler に関する問題のトラブルシューティング | Microsoft Docs
 description: この記事では、Application Insights Profiler の有効化または使用で問題が発生している開発者に役立つ、トラブルシューティングの手順と情報を示します。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341672"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899975"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -111,7 +107,7 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 
 現在、同じサービス プランで実行されている最大 4 つの Azure Web アプリとデプロイ スロットで Profiler を有効にできます。 1 つの App Service プランで 4 つより多くの Web アプリが実行されている場合は、Profiler で *Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException* がスローされる可能性があります。 Profiler は Web アプリごとに個別に実行され、アプリごとに Event Trace for Windows (ETW) セッションの開始が試みられます。 ただし、一度にアクティブにできる ETW セッションの数には制限があります。 Profiler WebJob では、報告されているアクティブなプロファイリング セッションが多すぎる場合は、一部の Web アプリが別のサービス プランに移動されます。
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>配置エラー:ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>配置エラー:ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
 
 Profiler が有効になっている Web Apps リソースに Web アプリを再デプロイしている場合は、次のようなメッセージが表示されることがあります。
 

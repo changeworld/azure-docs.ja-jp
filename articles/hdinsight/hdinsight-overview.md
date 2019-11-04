@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: f950d273e16dc7fc25f443fda58f9d6582085129
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 1cea76bec3a1b8b698a604c0bac491ac0319a10e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076397"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791173"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight とは
 
@@ -62,7 +62,7 @@ HDInsight を使用して、あらゆる形式の構造化データや非構造�
 
 さまざまなデバイスからリアルタイムで受信したストリーミング データを HDInsight で処理することができます。 詳細については、[Azure マネージド ディスクを使用した HDInsight での Apache Kafka のパブリック プレビューを知らせる Azure のブログ記事を参照してください](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)。
 
-![HDInsight のアーキテクチャ:モノのインターネット](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT のアーキテクチャ") 
+![HDInsight のアーキテクチャ:モノのインターネット](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT アーキテクチャ") 
 
 ### <a name="data-science"></a>データ サイエンス
 
@@ -86,7 +86,7 @@ HDInsight には、特定のクラスターの種類のほか、コンポーネ�
 |[Apache Spark](https://spark.apache.org/)|ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 [HDInsight での Apache Spark の概要](./spark/apache-spark-overview.md)に関する記事を参照してください。|
 |[Apache HBase](https://hbase.apache.org/)|Hadoop 上に構築された NoSQL データベースです。数十億行 x 数百万列に達する可能性のある大量の非構造化データや半構造化データへのランダム アクセスと厳密な整合性を実現します。 [HDInsight での HBase の概要](./hbase/apache-hbase-overview.md)に関する記事を参照してください。|
 |[ML サービス](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|並列分散 R プロセスをホストおよび管理するためのサーバーです。 データ サイエンティスト、統計学者、R プログラマーは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。 [HDInsight の ML サービスの概要](./r-server/r-server-overview.md)に関するページを参照してください。|
-|[Apache Storm](https://storm.incubator.apache.org/)|大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。 Storm は、HDInsight で管理されるクラスターとして提供されます。 「 [HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](./storm/apache-storm-sensor-data-analysis.md)」を参照してください。|
+|[Apache Storm](https://storm.incubator.apache.org/)|大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。 Storm は、HDInsight で管理されるクラスターとして提供されます。 「 [HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](/azure/hdinsight/storm/apache-storm-overview)」を参照してください。|
 |[Apache 対話型クエリ](https://cwiki.apache.org/confluence/display/Hive/LLAP)|対話型で高速な Hive クエリのメモリ内キャッシュです。 [HDInsight での対話型クエリの使用](./interactive-query/apache-interactive-query-get-started.md)に関する記事を参照してください。|
 |[Apache Kafka](https://kafka.apache.org/)|ストリーミング データ パイプラインおよびアプリケーションを構築するために使用されるオープンソースのプラットフォームです。 Kafka には、データ ストリームの発行とサブスクライブを可能にするメッセージ キュー機能も用意されています。 「[HDInsight での Apache Kafka の概要](./kafka/apache-kafka-introduction.md)」を参照してください。|
 

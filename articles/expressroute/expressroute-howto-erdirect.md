@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9dcefb2d47b6862466b64b3568e1a530a2fdb8cb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964248"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161585"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 
@@ -26,7 +26,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    ```powershell
    Connect-AzAccount 
 
-   Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+   Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
 2. ExpressRoute Direct がサポートされるすべての場所を一覧表示します。
   
@@ -163,10 +163,10 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Links[0] はプライマリ ポート、Links[1] はセカンダリ ポートです。
 
    ```powershell
-   $ERDirect.Links[0].AdminState = “Enabled”
+   $ERDirect.Links[0].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
-   $ERDirect.Links[1].AdminState = “Enabled”
+   $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
    **出力例:**
@@ -218,7 +218,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Circuits                   : []
    ```
 
-   同じ手順を `AdminState = “Disabled”` について使用して、ポートを停止します。
+   同じ手順を `AdminState = "Disabled"` について使用して、ポートを停止します。
 
 ## <a name="circuit"></a>回線を作成する
 

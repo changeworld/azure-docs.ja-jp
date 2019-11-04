@@ -4,15 +4,15 @@ description: Azure の委任されたリソース管理によって、テナン�
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/11/2019
+ms.date: 10/18/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300988"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598445"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -123,6 +123,7 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 - Azure Resource Manager で処理される要求は、Azure の委任されたリソース管理を使用して実行できます。 これらの要求の操作 URI は、`https://management.azure.com` で始まります。 ただし、リソースの種類のインスタンス (KeyVault のシークレット アクセスやストレージのデータ アクセスなど) によって処理される要求は、Azure の委任されたリソース管理ではサポートされていません。 これらの要求の操作 URI は、通常、`https://myaccount.blob.core.windows.net` や `https://mykeyvault.vault.azure.net/` など、実際のインスタンスに固有のアドレスで始まります。 また、通常、後者は管理操作ではなくデータ操作です。 
 - ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理でサポートされています。ただし、所有者、ユーザー アクセス管理者、および [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) アクセス許可を持つ組み込みロールは除きます。 また、カスタムロールと[従来のサブスクリプション管理者ロール](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)はサポートされていません。
 - 現在、サブスクリプションで Azure Databricks が使用されている場合、Azure の委任されたリソース管理用にそのサブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードすることはできません。 同様に、サブスクリプションがオンボードのために **Microsoft.ManagedServices** リソースプロバイダーに登録されている場合、この時点ではそのサブスクリプション用に Databricks ワークスペースを作成することはできなくなります。
+- リソース ロックがある Azure の委任されたリソース管理のサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
 
 ## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>テナント間の管理で API や管理ツールを使用する
 

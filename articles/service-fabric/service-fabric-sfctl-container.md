@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl container | Microsoft Docs
 description: Service Fabric CLI sfctl container のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 0ce6cf7c627657cf757b0c1ef9aa22428c17a7e7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 13de6ff7b3e5a41eced5ca49a3af38fab60ba0a0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036474"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901311"
 ---
 # <a name="sfctl-container"></a>sfctl container
 クラスター ノード上でコンテナー関連のコマンドを実行します。
@@ -28,7 +29,7 @@ ms.locfileid: "69036474"
 |command|説明|
 | --- | --- |
 | invoke-api | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーでコンテナー API を呼び出します。 |
-| logs | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーのコンテナー ログを取得します。 |
+| logs | Service Fabric ノードに展開されているコンテナーのコンテナー ログを取得します。 |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーでコンテナー API を呼び出します。
@@ -46,7 +47,7 @@ ms.locfileid: "69036474"
 | --container-api-body | コンテナー REST API の HTTP 要求本文。 |
 | --container-api-content-type | コンテナー REST API のコンテンツの種類。既定値は "application/json" です。 |
 | --container-api-http-verb | コンテナー REST API の HTTP 動詞。既定値は GET です。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -59,7 +60,7 @@ ms.locfileid: "69036474"
 | --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-container-logs"></a>sfctl container logs
-特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーのコンテナー ログを取得します。
+Service Fabric ノードに展開されているコンテナーのコンテナー ログを取得します。
 
 ### <a name="arguments"></a>引数
 
@@ -71,7 +72,7 @@ ms.locfileid: "69036474"
 | --node-name                [必須] | ノード名。 |
 | --service-manifest-name    [必須] | Service Fabric クラスターでアプリケーションの種類の一部として登録されているサービス マニフェストの名前。 |
 | --tail | ログの末尾から表示する行数。 既定値は 100 です。 ログ全体を表示する場合は "all" です。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 

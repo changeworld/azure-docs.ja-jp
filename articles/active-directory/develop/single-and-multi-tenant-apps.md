@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory のシングルテナント アプリとマルチテナント アプリ
+titleSuffix: Microsoft identity platform
 description: Azure AD のシングルテナント アプリとマルチテナント アプリの機能と違いについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aa8f63b6e7355ae387a321acf77683fac22e028
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111081"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803652"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory のテナント
 

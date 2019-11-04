@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: kumud
-ms.openlocfilehash: 23e46290af6bdb4c217d8fa0cd836673652fc81d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24f4b7435c2736527d033aa5ca7a65ad35a3a705
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701369"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73022176"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>仮想マシンのネットワーク インターフェイスの追加と削除
 
@@ -122,7 +122,6 @@ VM にアタッチされているネットワーク インターフェイスを�
 - 同じ VM のネットワーク インターフェイスは仮想ネットワーク内の異なるサブネットに接続できますが、これらのネットワーク インターフェイスはすべて同じ仮想ネットワークに接続されている必要があります。
 - 任意のプライマリまたはセカンダリ ネットワーク インターフェイスの任意の IP 構成の任意の IP アドレスを Azure Load Balancer バックエンド プールに追加できます。 以前は、プライマリ ネットワーク インターフェイスのプライマリ IP アドレスのみをバックエンド プールに追加できました。 IP アドレスと IP 構成の詳細については、[IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)に関するページをご覧ください。
 - VM を削除しても VM にアタッチされたネットワーク インターフェイスは削除されません。 VM を削除すると、ネットワーク インターフェイスは VM からデタッチされます。 それらのネットワーク インターフェイスは、別の VM に追加することも削除することもできます。
-- ネットワーク インターフェイスにプライベート IPv6 アドレスが割り当てられている場合は、VM の作成時に VM に追加 (接続) する必要があります。 VM の作成後に、IPv6 アドレスが割り当てられているネットワーク インターフェイスを VM に追加することはできません。 仮想マシンの作成時に、プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを追加する場合、VM サイトがサポートしているネットワーク インターフェイス数にかかわらず、その仮想マシンに追加できるのはそのネットワーク インターフェイスのみです。 IP アドレスをネットワーク インターフェイスに割り当てる方法については、[ネットワーク インターフェイスの IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページを参照してください。
 - IPv6 と同様、VM の作成後、高速ネットワークが有効になっているネットワーク インターフェイスは、VM に接続できません。 また、高速ネットワークを利用するには、VM オペレーティング システムで手順を実行する必要もあります。 高速ネットワークの詳細、および使用時の他の制約については、[Windows](create-vm-accelerated-networking-powershell.md) または [Linux](create-vm-accelerated-networking-cli.md) 仮想マシンに関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順

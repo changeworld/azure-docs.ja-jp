@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a00ecf6e-917a-4284-b998-41506931585e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 241f1aa1ab9588802fab92bdfcc2258ec866d308
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2ce7b4dab18954d26b411948a6a436b16317f4f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103494"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158279"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>チュートリアル:Azure Active Directory と EmpCenter の統合
 

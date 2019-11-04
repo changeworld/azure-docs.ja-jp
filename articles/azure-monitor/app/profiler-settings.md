@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights Profiler の設定ウィンドウを使用する | Microsoft Docs
 description: Profiler の状態を確認して、プロファイリング セッションを開始します
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 12cb8e31617ee6b1e0c8515e66e265f4eccdf3df
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338047"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820478"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 

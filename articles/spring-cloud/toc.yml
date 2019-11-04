@@ -38,6 +38,8 @@
       href: spring-cloud-quotas.md
     - name: Azure Spring Cloud でのメトリックについて
       href: spring-cloud-concept-metrics.md
+    - name: ディザスター リカバリーを計画する
+      href: disaster-recovery.md
 - name: ハウツー ガイド
   items:
     - name: Azure Spring Cloud アプリケーションを開始、停止、削除する方法

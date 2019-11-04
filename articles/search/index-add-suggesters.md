@@ -1,13 +1,13 @@
 ---
-title: 先行入力クエリをインデックスに追加する - Azure Search
-description: suggester を作成し、オートコンプリートまたは自動候補クエリの用語を呼び出す要求を作成して、Azure Search における先行入力クエリのアクションを有効にします。
-ms.date: 09/30/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: 先行入力クエリをインデックスに追加する
+titleSuffix: Azure Cognitive Search
+description: suggester を作成し、オートコンプリートまたは自動候補クエリの用語を呼び出す要求を作成して、Azure Cognitive Search における先行入力クエリのアクションを有効にします。
+manager: nitinme
 author: Brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,24 +19,24 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d3f934bea5df821e51a4747170af4f7efd1eaacc
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828291"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790100"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Azure Search で先行入力のために suggester をインデックスに追加する
+# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Azure Cognitive Search で先行入力のために suggester をインデックスに追加する
 
-Azure Search の "入力と平行して検索を行う" 機能または先行入力機能は、[検索インデックス](search-what-is-an-index.md)に追加する **suggester** コンストラクトに基づいて行われます。 それは、先行入力を有効にする 1 つ以上のフィールドのリストです。
+Azure Cognitive Search の "入力と平行して検索を行う" 機能または先行入力機能は、[検索インデックス](search-what-is-an-index.md)に追加する **suggester** コンストラクトに基づいて行われます。 それは、先行入力を有効にする 1 つ以上のフィールドのリストです。
 
 suggester では、2 種類の先行入力がサポートされています。"*オートコンプリート*" では入力した語句が補完され、"*検索候補*" では一致するドキュメントの短いリストが返されます。  
 
 [C# での最初のアプリの作成](tutorial-csharp-type-ahead-and-suggestions.md)サンプルの次のスクリーンショットでは、先行入力が示されています。 オートコンプリートでは、ユーザーが検索ボックスに入力する内容が予測されます。 実際の入力は "tw" であり、オートコンプリートによってそれに "in" が補完されて、予想される検索用語が "twin" として解決されます。 検索候補は、ドロップダウン リストに表示されます。 検索候補には、結果を最もよく表現しているドキュメントの任意の一部を表示させることができます。 この例では、検索候補はホテル名です。 
 
-![オートコンプリートと検索候補クエリの表示の比較](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "オートコンプリートと検索候補クエリの表示の比較")
+![オートコンプリートされたクエリと提案されたクエリの視覚的な比較](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "オートコンプリートされたクエリと提案されたクエリの視覚的な比較")
 
-Azure Search でこれらの動作を実装するために、インデックスとクエリのコンポーネントがあります。 
+Azure Cognitive Search でこれらの動作を実装するために、インデックスとクエリのコンポーネントがあります。 
 
 + インデックスで、suggester をインデックスに追加します。 ポータル、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)、または [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet) を使用できます。 この記事の残りの部分では、suggester の作成に焦点を絞って説明します。 
 
@@ -54,7 +54,7 @@ suggester を作成するために、それを 1 つのインデックス スキ
 
 suggester の作成に最適なタイミングは、フィールド定義自体を作成するときです。
 
-既存のフィールドを使用して suggester を作成しようとすると、API ではそれは許可されません。 先行入力テキストは、インデックス作成の間に、2 つ以上の文字の組み合わせから成る部分的な用語が完全な用語と並行してトークン化されるときに作成されます。 既存のフィールドが既にトークン化されている場合、それらを suggester に追加するには、インデックスを再構築する必要があります。 インデックスの再作成について詳しくは、「[Azure Search インデックスを再構築する方法](search-howto-reindex.md)」をご覧ください。
+既存のフィールドを使用して suggester を作成しようとすると、API ではそれは許可されません。 先行入力テキストは、インデックス作成の間に、2 つ以上の文字の組み合わせから成る部分的な用語が完全な用語と並行してトークン化されるときに作成されます。 既存のフィールドが既にトークン化されている場合、それらを suggester に追加するには、インデックスを再構築する必要があります。 インデックスの再作成について詳しくは、[Azure Cognitive Search インデックスを再構築する方法](search-howto-reindex.md)に関する記事を参照してください。
 
 ### <a name="create-using-the-rest-api"></a>REST API を使用して作成する
 
@@ -113,7 +113,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>suggester でのソース フィールドに対するアナライザーの制限
 
-Azure Search では、個別の用語でクエリを実行できるようにフィールドの内容が分析されます。 suggester では、完全な用語に加えて、インデックスを作成するためのプレフィックスが必要です。このため、ソース フィールドに対して追加の分析が必要です。 カスタム アナライザーの構成では、さまざまなトークナイザーとフィルターを組み合わせることができるため、多くの場合、提案で必要なプレフィックスを生成することができません。 このため、Azure Search では、カスタム アナライザーを持つフィールドが suggester に含まれないようにします。
+Azure Cognitive Search では、個別の用語でクエリを実行できるようにフィールドの内容が分析されます。 suggester では、完全な用語に加えて、インデックスを作成するためのプレフィックスが必要です。このため、ソース フィールドに対して追加の分析が必要です。 カスタム アナライザーの構成では、さまざまなトークナイザーとフィルターを組み合わせることができるため、多くの場合、提案で必要なプレフィックスを生成することができません。 このため、Azure Cognitive Search では、カスタム アナライザーを持つフィールドが suggester に含まれないようにします。
 
 > [!NOTE] 
 >  上記の制限を回避する必要がある場合は、同じコンテンツに対して 2 つの異なるフィールドを使用します。 これにより、一方のフィールドで suggester を指定し、他方をカスタム アナライザーの構成で設定することができます。
@@ -140,7 +140,7 @@ api-key: [admin or query key]
 
 ## <a name="sample-code"></a>サンプル コード
 
-+ [C# での最初のアプリの作成](tutorial-csharp-type-ahead-and-suggestions.md)サンプルでは、suggester の構築、提案されたクエリ、オートコンプリート、ファセット ナビゲーションが示されています。 このコード サンプルはサンドボックスの Azure Search サービスで実行され、事前に読み込まれたホテルのインデックスが使用されるので、F5 キーを押すだけでアプリケーションを実行できます。 サブスクリプションやサインインは必要ありません。
++ [C# での最初のアプリの作成](tutorial-csharp-type-ahead-and-suggestions.md)サンプルでは、suggester の構築、提案されたクエリ、オートコンプリート、ファセット ナビゲーションが示されています。 このコード サンプルはサンドボックスの Azure Cognitive Search サービスで実行され、事前に読み込まれたホテルのインデックスが使用されるので、F5 キーを押すだけでアプリケーションを実行できます。 サブスクリプションやサインインは必要ありません。
 
 + [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) は、C# と Java 両方のコードが含まれる古いサンプルです。 それでも、suggester の構築、提案されたクエリ、オートコンプリート、ファセット ナビゲーションが示されています。 このコード サンプルでは、ホストされた [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル データが使用されます。 
 

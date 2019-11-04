@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c77ebbe8569ffd221fadb5b98a54fc26d0d70893
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128563"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692713"
 ---
 # <a name="normalize-data-module"></a>Normalize Data (データの正規化) モジュール
 
@@ -32,7 +32,7 @@ ms.locfileid: "70128563"
 
 - すべての値を 0-1 スケールに変換したり、絶対値ではなく、パーセンタイル順位として表すことで、値を変換したりすることができます。
 - 1 つの列、または同じデータセット内の複数の列に正規化を適用できます。
-- 実験を繰り返す必要があったり、同じ正規化の手順を他のデータに適用したりする場合は、正規化の変換として手順を保存し、同じスキーマを含む他のデータセットに適用することができます。
+- パイプラインを繰り返す必要があったり、同じ正規化の手順を他のデータに適用したりする場合は、正規化の変換として手順を保存し、同じスキーマを含む他のデータセットに適用することができます。
 
 > [!WARNING]
 > 一部のアルゴリズムでは、モデルをトレーニングする前に、データを正規化する必要があります。 他のアルゴリズムでは、独自のデータのスケーリングや正規化を実行します。 そのため、予測モデルのビルドで使用する機械学習アルゴリズムを選ぶ場合、トレーニング データに正規化を適用する前に、アルゴリズムのデータ要件を確認してください。
@@ -41,7 +41,7 @@ ms.locfileid: "70128563"
 
 このモジュールを使用するときは、1 つの正規化メソッドのみを適用できます。 そのため、同じ正規化メソッドが、選択したすべての列に適用されます。 異なる正規化メソッドを使用するには、**Normalize Data (データの正規化)** の 2 つ目のインスタンスを使用します。
 
-1. **Normalize Data (データの正規化)** モジュールを自分の実験に追加します。 Azure Machine Learning で、 **[Data Transformation]\(データ変換\)** の下の **[Scale and Reduce]\(拡大縮小\)** カテゴリでそのモジュールを見つけることができます。
+1. **Normalize Data (データの正規化)** モジュールを自分のパイプラインに追加します。 Azure Machine Learning で、 **[Data Transformation]\(データ変換\)** の下の **[Scale and Reduce]\(拡大縮小\)** カテゴリでそのモジュールを見つけることができます。
 
 2. すべての数値で少なくとも 1 列を含むデータセットに接続します。
 
@@ -72,7 +72,7 @@ ms.locfileid: "70128563"
       
       列の値は、次の数式を使用して変換されます。  
   
-      ![最小-最大を使用した正規化](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
+      ![最小最大関数を使用した正規化](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
   
     - **Logistic**: 列の値は、次の数式を使用して変換されます。
 
@@ -92,7 +92,7 @@ ms.locfileid: "70128563"
     
       ![tanh 関数を使用した正規化](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
 
-6. 実験を実行するか、**Normalize Data (データの正規化)** モジュールをダブルクリックして **[Run Selected]\(選択した項目を実行\)** を選択します。 
+6. パイプラインを実行するか、**Normalize Data (データの正規化)** モジュールをダブルクリックして **[Run Selected]\(選択した項目を実行\)** を選択します。 
 
 ## <a name="results"></a>結果
 

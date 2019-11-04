@@ -1,26 +1,25 @@
 ---
-title: Azure Search インデックスの再構築または検索可能なコンテンツの更新 - Azure Search
-description: 完全に再構築された、または一部増分インデックスに新しい要素を追加、既存の要素またはドキュメントを更新、または古いドキュメントを削除して、Azure Search インデックスを更新します。
-services: search
-author: HeidiSteen
+title: Azure Cognitive Search インデックスを再構築する
+titleSuffix: Azure Cognitive Search
+description: 完全に再構築された、または一部増分インデックスに新しい要素を追加、既存の要素またはドキュメントを更新、または古いドキュメントを削除して、Azure Cognitive Search インデックスを更新します。
 manager: nitinme
-ms.service: search
-ms.topic: conceptual
-ms.date: 02/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719844"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793705"
 ---
-# <a name="how-to-rebuild-an-azure-search-index"></a>Azure Search インデックスを再構築する方法
+# <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスを再構築する方法
 
-この記事では、Azure Search インデックスを再構築する方法、再構築が必要な状況、および実行中のクエリ要求に対する再構築の影響を軽減するための推奨事項について説明します。
+この記事では、Azure Cognitive Search インデックスを再構築する方法、再構築が必要な状況、および実行中のクエリ要求に対する再構築の影響を軽減するためのレコメンデーションについて説明します。
 
-"*再構築*" とは、フィールドに基づくすべての逆インデックスなど、インデックスに関連付けられている物理的なデータ構造を削除して作成しなおすことです。 Azure Search では、個々のフィールドを削除して再作成することはできません。 インデックスを再構築するには、すべてのフィールド ストレージを削除して、既存のインデックス スキーマまたは変更したインデックス スキーマに基づいて再作成した後、インデックスにプッシュされたデータまたは外部ソースからプルされたデータで再設定する必要があります。 インデックスの再構築は開発中に行うのが一般的ですが、構造の変更 (複合型の追加、サジェスターへのフィールドの追加など) に対応するために、運用レベルのインデックスの再構築が必要になることもあります。
+"*再構築*" とは、フィールドに基づくすべての逆インデックスなど、インデックスに関連付けられている物理的なデータ構造を削除して作成しなおすことです。 Azure Cognitive Search では、個々のフィールドを削除して再作成することはできません。 インデックスを再構築するには、すべてのフィールド ストレージを削除して、既存のインデックス スキーマまたは変更したインデックス スキーマに基づいて再作成した後、インデックスにプッシュされたデータまたは外部ソースからプルされたデータで再設定する必要があります。 インデックスの再構築は開発中に行うのが一般的ですが、構造の変更 (複合型の追加、サジェスターへのフィールドの追加など) に対応するために、運用レベルのインデックスの再構築が必要になることもあります。
 
 インデックスをオフラインにして行われる再構築とは対照的に、"*データの更新*" はバックグラウンド タスクとして実行されます。 クエリのワークロードに対する中断を最小限に抑えてドキュメントを追加、削除、置換できますが、通常、クエリが完了するまでの時間は長くなります。 インデックスの内容の更新に関して詳しくは、[ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)に関するページをご覧ください。
 
@@ -33,7 +32,7 @@ ms.locfileid: "71719844"
 | インデックス内のアナライザー定義を更新または削除する | インデックス全体を再構築しない限り、インデックス内の既存のアナライザー構成 (アナライザー、トークナイザー、トークン フィルター、文字フィルター) を削除または変更することはできません。 |
 | サジェスタにフィールドを追加する | フィールドが既に存在していて、それを [Suggesters](index-add-suggesters.md) コンストラクトに追加する場合は、インデックスを再構築する必要があります。 |
 | フィールドの削除 | フィールドのすべてのトレースを物理的に削除するには、インデックスを再構築する必要があります。 すぐに再構築できない場合は、"削除された" フィールドにアクセスしないようにアプリケーションのコードを変更することができます。 物理的には、そのフィールドを無視するスキーマを適用すると、次に再構築が行われるまでフィールドの定義と内容はインデックスに維持されます。 |
-| 階層を切り替える | より多くの容量が必要な場合、Azure portal にはインプレース アップグレードはありません。 新しいサービスを作成し、その新しいサービスで最初からインデックスを構築する必要があります。 このプロセスを自動化するには、こちらの [Azure Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)にある **index-backup-restore** サンプル コードを使用します。 このアプリは、一連の JSON ファイルにインデックスをバックアップし、指定した検索サービスでインデックスを再作成します。|
+| 階層を切り替える | より多くの容量が必要な場合、Azure portal にはインプレース アップグレードはありません。 新しいサービスを作成し、その新しいサービスで最初からインデックスを構築する必要があります。 このプロセスを自動化するには、こちらの [Azure Cognitive Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)にある **index-backup-restore** サンプル コードを使用します。 このアプリは、一連の JSON ファイルにインデックスをバックアップし、指定した検索サービスでインデックスを再作成します。|
 
 これら以外の変更は、既存の物理構造に影響を与えずに行うことができます。 具体的には、以下の変更では、インデックスの再構築を行う "*必要はありません*"。
 
@@ -45,11 +44,11 @@ ms.locfileid: "71719844"
 + CORS の設定を追加、更新、削除する
 + synonymMap を追加、更新、削除する
 
-新しいフィールドを追加すると、既存のインデックス付きドキュメントの新しいフィールドには null 値が設定されます。 将来のデータ更新において、Azure Search によって追加された null 値は、外部ソース データからの値に置き換えられます。 インデックスの内容の更新に関して詳しくは、[ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)に関するページをご覧ください。
+新しいフィールドを追加すると、既存のインデックス付きドキュメントの新しいフィールドには null 値が設定されます。 将来のデータ更新において、Azure Cognitive Search によって追加された null 値は、外部ソース データからの値に置き換えられます。 インデックスの内容の更新に関して詳しくは、[ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)に関するページをご覧ください。
 
 ## <a name="partial-or-incremental-indexing"></a>部分または増分インデックスの作成
 
-Azure Search では、フィールド単位でインデックスの作成を制御することはできません (特定のフィールドの削除または再作成)。 同様に、[条件に基づいてドキュメントのインデックスを作成する](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents)ための組み込みメカニズムはありません。 条件に基づいてインデックスを作成する必要がある場合は、カスタム コードで対応する必要があります。
+Azure Cognitive Search では、フィールド単位でインデックスの作成を制御することはできません (特定のフィールドの削除または再作成)。 同様に、[条件に基づいてドキュメントのインデックスを作成する](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents)ための組み込みメカニズムはありません。 条件に基づいてインデックスを作成する必要がある場合は、カスタム コードで対応する必要があります。
 
 一方、インデックスでの "*ドキュメントの更新*" は簡単に行うことができます。 多くの検索ソリューションでは、外部ソースのデータは揮発性であり、ソース データと検索インデックスを同期するのが一般的な方法です。 コードでは、[ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)操作または [.NET でそれに相当する機能](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexesoperationsextensions.createorupdate?view=azure-dotnet)を呼び出して、インデックスの内容を更新するか、新しいフィールドの値を追加します。
 
@@ -79,7 +78,7 @@ Azure Search では、フィールド単位でインデックスの作成を制�
 
 3. 要求の本文には、変更または修正されたフィールド定義を含むインデックス スキーマを指定します。 要求の本文には、インデックス スキーマと共に、スコアリング プロファイル、アナライザー、suggester、CORS オプションのための構造が含まれます。 スキーマの要件については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関するページをご覧ください。
 
-4. [インデックスの更新](https://docs.microsoft.com/rest/api/searchservice/update-index)要求を送信して、Azure Search でのインデックスの物理的な表現を再構築します。 
+4. [インデックスの更新](https://docs.microsoft.com/rest/api/searchservice/update-index)要求を送信して、Azure Cognitive Search でのインデックスの物理的な表現を再構築します。 
 
 5. 外部ソースから[ドキュメントでインデックスを読み込みます](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
 
@@ -88,7 +87,7 @@ Azure Search では、フィールド単位でインデックスの作成を制�
 インデックスを読み込むと、各ドキュメントからの一意のトークン化されたすべての単語と、対応するドキュメント ID へのマップで、各フィールドの逆インデックスが設定されます。 たとえば、ホテルのデータ セットのインデックスを作成すると、市フィールドに対して作成される逆インデックスには、シアトルやポートランドなどの語句が含まれる可能性があります。 市フィールドにシアトルまたはポートランドが含まれるドキュメントでは、語句と共にドキュメント ID がリストされます。 [追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)操作では、語句とドキュメント ID のリストが相応に更新されます。
 
 > [!NOTE]
-> 厳格な SLA 要件がある場合は、この作業専用に新しいサービスをプロビジョニングし、運用環境のインデックスから完全に切り離して開発とインデックス作成を行うことを検討する場合があります。 リソースが競合する可能性がないように、独立したサービスを専用のハードウェアで実行します。 開発が終わったら、新しいインデックスをそのままにして、新しいエンドポイントとインデックスにクエリをリダイレクトするか、または元の Azure Search サービス上で完成したコードを実行して変更後のインデックスを発行します。 現在、すぐに使用できる状態のインデックスを別のサービスに移動するためのメカニズムはありません。
+> 厳格な SLA 要件がある場合は、この作業専用に新しいサービスをプロビジョニングし、運用環境のインデックスから完全に切り離して開発とインデックス作成を行うことを検討する場合があります。 リソースが競合する可能性がないように、独立したサービスを専用のハードウェアで実行します。 開発が終わったら、新しいインデックスをそのままにして、新しいエンドポイントとインデックスにクエリをリダイレクトするか、または元の Azure Cognitive Search サービス上で完成したコードを実行して変更後のインデックスを発行します。 現在、すぐに使用できる状態のインデックスを別のサービスに移動するためのメカニズムはありません。
 
 ## <a name="view-updates"></a>ビューの更新
 
@@ -103,4 +102,4 @@ Azure Search では、フィールド単位でインデックスの作成を制�
 + [Azure Cosmos DB インデクサー](search-howto-index-cosmosdb.md)
 + [Azure Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)
 + [Azure Table Storage インデクサー](search-howto-indexing-azure-tables.md)
-+ [Azure Search のセキュリティ](search-security-overview.md)
++ [Azure Cognitive Search のセキュリティ](search-security-overview.md)

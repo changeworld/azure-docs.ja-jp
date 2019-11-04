@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2f95b226-1465-47f4-b8b7-de4b0772abbc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83124495b751b1e37ac23c7e9439e2dd8b78baa3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdc93cb5d04630307026c2786fda117e16f60f4e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107312"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73153993"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>チュートリアル:Azure Active Directory と Adobe Captivate Prime
 

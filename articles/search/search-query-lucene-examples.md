@@ -1,25 +1,24 @@
 ---
-title: 完全な Lucene クエリ構文の使用 - Azure Search
-description: Azure Search サービスでのあいまい検索、近接検索、用語ブースト、正規表現検索、およびワイルドカード検索の Lucene クエリ構文。
-author: HeidiSteen
+title: 完全な Lucene クエリ構文の使用
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search サービスでのあいまい検索、近接検索、用語ブースト、正規表現検索、ワイルドカード検索用の Lucene クエリ構文。
 manager: nitinme
-tags: Lucene query analyzer syntax
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+tags: Lucene query analyzer syntax
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178164"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793441"
 ---
-# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>"完全な" Lucene 検索構文の使用 (Azure Search での高度なクエリ)
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"完全な" Lucene 検索構文の使用 (Azure Cognitive Search での高度なクエリ)
 
-Azure Search のクエリを構築するときは、既定の[単純なクエリ パーサー](query-simple-syntax.md)をより拡張性の高い [Azure Search の Lucene Query Parser](query-lucene-syntax.md) に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
+Azure Cognitive Search のクエリを構築するときは、既定の[シンプルなクエリ パーサー](query-simple-syntax.md)をより拡張性の高い [Azure Cognitive Search の Lucene クエリ パーサー](query-lucene-syntax.md)に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
 
 Lucene パーサーは、フィールド スコープ クエリ、あいまい検索、プレフィックスのワイルドカード検索、近接検索、用語ブースト、正規表現検索など、より複雑なクエリ構文に対応しています。 機能が強力になるほど処理要件が増えるため、実行時間がやや長くなることを見込んでください。 この記事では、完全な構文を使用するときに、利用できるクエリ操作をデモンストレーションする例について詳しく説明します。
 
@@ -29,7 +28,7 @@ Lucene パーサーは、フィールド スコープ クエリ、あいまい�
 
 ## <a name="formulate-requests-in-postman"></a>Postman で要求を作成する
 
-次の例では、[City of New York OpenData](https://opendata.cityofnewyork.us/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Search は必要ありません。
+次の例では、[City of New York OpenData](https://opendata.cityofnewyork.us/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Cognitive Search は必要ありません。
 
 必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、[REST クライアントを使用した探索](search-get-started-postman.md)に関するページを参照してください。
 
@@ -45,13 +44,13 @@ Lucene パーサーは、フィールド スコープ クエリ、あいまい�
 
 ### <a name="set-the-request-url"></a>要求 URL を設定する
 
-要求は、Azure Search エンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
+要求は、Azure Cognitive Search のエンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
 
   ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL は、次の要素から構成されます。
 
-+ **`https://azs-playground.search.windows.net/`** は、Azure Search 開発チームによって管理されているサンドボックス検索サービスです。 
++ **`https://azs-playground.search.windows.net/`** は、Azure Cognitive Search の開発チームによって管理されているサンドボックス検索サービスです。 
 + **`indexes/nycjobs/`** は、そのサービスのインデックス コレクション内の NYC ジョブ インデックスです。 要求にはサービス名とインデックスの両方が必要です。
 + **`docs`** は、検索可能なすべてのコンテンツを含むドキュメント コレクションです。 要求ヘッダーに指定されたクエリ api-key は、ドキュメント コレクションを対象とする読み取り操作に対してのみ機能します。
 + **`api-version=2019-05-06`** は、すべての要求に必須のパラメーターである api-version を設定します。
@@ -148,7 +147,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 複数の文字列を 1 つのエンティティとして評価するのであれば、複数の文字列を引用符で囲ってください。この例では、`state` フィールドで 2 つの異なる場所を検索しています。 また、NOT や AND のように、演算子は大文字表記になります。
 
-**fieldName:searchExpression** に指定されたフィールドは検索可能フィールドである必要があります。 フィールド定義におけるインデックス属性の利用方法に関する詳細については、「 [Create Index (Azure Search Service REST API) (インデックスの作成 (Azure Search サービス REST API))](https://docs.microsoft.com/rest/api/searchservice/create-index) 」を参照してください。
+**fieldName:searchExpression** に指定されたフィールドは検索可能フィールドである必要があります。 フィールド定義におけるインデックス属性の使用方法に関する詳細については、「[インデックスの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)」を参照してください。
 
 > [!NOTE]
 > 上記の例では、クエリの各部分に明示的に指定されたフィールド名があるため、`searchFields` パラメーターを使用する必要がありませんでした。 ただし、いくつかの部分で特定のフィールドをスコープにし、他の部分は複数のフィールドに適用できるクエリを実行する場合は、`searchFields` パラメーターを引き続き使用できます。 たとえば、クエリ `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` は、`business_title` フィールドの `senior NOT junior` のみと一致し、`posting_type` フィールドの "external" と一致します。 **fieldName:searchExpression** に指定されたフィールド名は常に `searchFields` パラメーターに優先するため、この例では `searchFields` パラメーターに `business_title` を含める必要はありません。
@@ -285,12 +284,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="next-steps"></a>次の手順
 自分のコードに Lucene Query Parser を指定してみてください。 次のリンクでは、.NET と REST API の両方の検索クエリを設定する方法について説明しています。 これらのリンクでは、既定の単純な構文を使用しています。**queryType** を指定するには、この記事で学習したことを応用する必要があります。
 
-* [.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)
-* [REST API を使用した Azure Search インデックスの照会](search-create-index-rest-api.md)
+* [.NET SDK を使用したインデックスのクエリ実行](search-query-dotnet.md)
+* [REST API を使用したインデックスのクエリ実行](search-create-index-rest-api.md)
 
 追加の構文リファレンス、クエリ アーキテクチャ、およびサンプルについては、次のリンク先を参照してください。
 
 + [単純構文クエリの例](search-query-simple-examples.md)
-+ [Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)
++ [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Full Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

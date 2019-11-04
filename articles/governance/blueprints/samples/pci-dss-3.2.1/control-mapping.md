@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 8c8dbc8534720189c40624cfda97ce09a612e453
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297202"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163047"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 ブループリント サンプルのコントロール マッピング
 
@@ -134,7 +134,7 @@ PCI-DSS v3.2.1 のブループリントのコントロール マッピングを�
 > [PCI-DSS v3.2.1 ブループリント - 概要](./index.md)
 > [PCI-DSS v3.2.1 ブループリント - デプロイ手順](./deploy.md)
 
-## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>ブループリントとその使用方法に関するその他の記事:
+ブループリントとその使用方法に関するその他の記事:
 
 - [ブループリントのライフサイクル](../../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../../concepts/parameters.md)の使用方法を理解する。

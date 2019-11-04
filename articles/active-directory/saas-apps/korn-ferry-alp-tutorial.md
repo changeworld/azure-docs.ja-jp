@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 6f5b53b7-6d1d-4bed-a95a-127e2d4d8b3f
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41efce8eeb09e09af2473af6c16074d0fbcd45f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57801403f2d0e29fb32b6919a7078ae3fb895fdf
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098459"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>チュートリアル:Azure Active Directory と Korn Ferry ALP の統合
 

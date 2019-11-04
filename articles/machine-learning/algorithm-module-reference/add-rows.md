@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c8d8b6a873ee17d1658b0cb47de830848b215b89
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129004"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693252"
 ---
 # <a name="add-rows-module"></a>Add Rows (行の追加) モジュール
 
@@ -32,11 +32,11 @@ ms.locfileid: "70129004"
 
 2 つのデータセットの行を連結するには、それぞれの行のスキーマがまったく同じである必要があります。 つまり、列の数と列内のデータの型が同じである必要があります。
 
-1.  **Add Rows (行の追加)** モジュールを実験にドラッグします。これは **[Manipulate]\(操作\)** カテゴリの **[Data Transformation]\(データ変換\)** の下にあります。
+1.  **Add Rows (行の追加)** モジュールをパイプラインにドラッグします。これは **[Manipulate]\(操作\)** カテゴリの **[Data Transformation]\(データ変換\)** の下にあります。
 
 2. データセットを 2 つの入力ポートに接続します。 追加するデータセットは、2 番目 (右) のポートに接続する必要があります。 
   
-3.  実験を実行します。 出力データセットの行数は、両方の入力データセットの行の合計に等しくなければなりません。
+3.  パイプラインを実行します。 出力データセットの行数は、両方の入力データセットの行の合計に等しくなければなりません。
 
     **Add Rows (行の追加)** モジュールの両方の入力に同じデータセットを追加すると、データセットは複製されます。 
 

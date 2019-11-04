@@ -1,23 +1,19 @@
 ---
 title: Application Insights でライブ Azure Cloud Services をプロファイリングする | Microsoft Docs
 description: Azure Cloud Services に対して Application Insights Profiler を有効にします。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 93392e379cbb03508fefc1877d5d50e04436b79c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 682711d7681e3646ae14686b01542bc5d7432179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737230"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820501"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights でライブ Azure Cloud Services をプロファイリングする
 
@@ -29,7 +25,7 @@ Application Insights Profiler を次のサービスにデプロイすること�
 Application Insights Profiler は、Azure Diagnostics 拡張機能と共にインストールされています。 必要な作業は、Profiler をインストールして Application Insights リソースにプロファイルを送信するように、Azure Diagnostics を構成することだけです。
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>Azure Cloud Services に対して Profiler を有効にする
-1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降を使用していることを確認します。 OS ファミリ 4 を使用している場合は、[スタートアップ タスク](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-install-dotnet)を使用して、.NET Framework 4.6.1 以降をインストールする必要があります。 OS ファミリ 5 には、互換性のあるバージョンの .NET Framework が既定で含まれています。 
+1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降を使用していることを確認します。 OS ファミリ 4 を使用している場合は、[スタートアップ タスク](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet)を使用して、.NET Framework 4.6.1 以降をインストールする必要があります。 OS ファミリ 5 には、互換性のあるバージョンの .NET Framework が既定で含まれています。 
 
 1. [Application Insights SDK を Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) に追加します。
 

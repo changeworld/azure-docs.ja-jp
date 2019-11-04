@@ -1,10 +1,9 @@
 ---
-title: 既存の Azure Service Bus Standard 名前空間を Premium レベルに移行する | Microsoft Docs
+title: Azure Service Bus 名前空間の移行 - Standard から Premium
 description: 既存の Azure Service Bus Standard 名前空間を Premium に移行するためのガイドです
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
-manager: darosa
 editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611911"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790374"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>既存の Azure Service Bus Standard 名前空間を Premium レベルに移行する
 以前は、Azure Service Bus では Standard レベルでのみ名前空間が提供されていました。 名前空間は、低スループット環境と開発者環境用に最適化されたマルチテナントの設定です。 Premium レベルでは、名前空間ごとに専用のリソースが提供され、予測可能な待機時間と固定価格でのスループット向上が実現します。 Premium レベルは、追加のエンタープライズ機能が必要な高スループット環境および実稼働環境向けに最適化されています。

@@ -16,10 +16,10 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68825783"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル:Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
@@ -82,15 +82,15 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. Salesforce のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、 **[Settings]\(設定\)** をクリックします。
 
-    ![Enable automatic user provisioning](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
+    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
 
 7. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、 **[私のセキュリティ トークンのリセット]** をクリックします。
   
-    ![Enable automatic user provisioning](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
+    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
 
 8. **[Reset Security Token]\(セキュリティ トークンのリセット\)** ページで、 **[Reset Security Token]\(セキュリティ トークンのリセット\)** ボタンをクリックします。
 
-    ![Enable automatic user provisioning](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
+    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
 
 9. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce.com からの電子メールを探します。
 

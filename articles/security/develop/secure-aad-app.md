@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: v-fehase
-ms.openlocfilehash: 87df7824a182e68d849fdf967f96b2974b7e0c16
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148024"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159839"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD アプリ用のセキュリティで保護されたアプリの開発
 ## <a name="overview"></a>概要
@@ -235,7 +235,7 @@ $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1
 
 #Configure the HTTP settings for the application gateway back end
 
-$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name "setting01" -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
 
 #Create a load-balancer routing rule that configures the load balancer
 
@@ -443,7 +443,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 1.  Azure portal に戻ります。 左側のナビゲーション ウィンドウで、[Azure Active Directory] サービスを選択し、[アプリの登録] を選択します。
 2.  結果の画面で、WebApp-OpenIDConnect-DotNet-code-v2 アプリケーションを選択します。
 3.  [認証] タブの [リダイレクト URI] セクションで、コンボボックスの [Web] を選択し、次のリダイレクト URI を追加します。
-    [https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net](https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net ) https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc [詳細設定] セクションの [ログアウト URL] を「 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc 」に設定します。
+    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.nethttps://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc [詳細設定] セクションの [ログアウト URL] を「 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc 」に設定します。
 4.  [ブランド] タブで、ホーム ページの URL を App Service のアドレスに更新します (たとえば https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net )。
         構成を保存します。
 5.  アプリケーションで Web API を呼び出す場合、appsettings.json プロジェクトに必要な変更を適用し、localhost でなく公開された API の URL が呼び出されるようにしてください。

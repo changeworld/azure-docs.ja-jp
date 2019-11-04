@@ -1,20 +1,19 @@
 ---
 title: Azure Application Insights のスマート検出 – 既定の通知受信者に対する今後の変更 | Microsoft Docs
 description: トレースのテレメトリで異常なパターンを検出するために、Azure Application Insights でアプリケーション トレースを監視します。
-services: application-insights
-author: harelbr
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 03/13/2019
+author: harelbr
 ms.author: harelbr
-ms.openlocfilehash: f984a34be1c5d5fdd18a00812107318df8f5d9bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/13/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: fa1f98b5a9ee592a4c702e87e365eff7941194d4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61299003"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820614"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>スマート検出の電子メール通知に関する変更
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8af3c65b-8e15-4b28-9d46-98c75b11fe11
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: b194133bf1778e2edc826bae6c2dfecae65436f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e01fc292f2b04dc85066a19954104468e84e2ba
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098386"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159609"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lean"></a>チュートリアル:Azure Active Directory と Lean の統合
 

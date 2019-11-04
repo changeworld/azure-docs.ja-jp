@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8db80d6e-3275-419f-aa39-6115a7bc9800
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 580b96de401169caf767d1e965971495d68b09be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86e1c0487a33d8ca90cc8bf43ec53e2707a4d027
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098604"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>チュートリアル:Azure Active Directory と LCVista の統合
 

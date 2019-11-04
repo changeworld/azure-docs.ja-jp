@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 709428d420c7d5f725d1b7df85e4860aec765b48
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b1007080c907eecc940b57184954c793b85f5eec
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950660"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595621"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の Query Performance Insight
 
@@ -59,7 +59,7 @@ Azure Database for MariaDB サーバーのポータル ページで、メニュ�
 ### <a name="wait-statistics"></a>待機統計 
 
 > [!NOTE]
-> 待機統計は、クエリ パフォーマンスの問題をトラブルシューティングするためのものです。 トラブルシューティングの目的でのみ有効にすることをお勧めします。
+> 待機統計は、クエリ パフォーマンスの問題をトラブルシューティングするためのものです。 トラブルシューティングの目的でのみ有効にすることをお勧めします。 <br>待機統計の表示中に Azure portal で " *'Microsoft.DBforMariaDB' で問題が発生しました。要求に対処できません。この問題が解決しないか、予想外のものである場合、サポートにお問い合わせいただき、この情報をお知らせください。* " というエラー メッセージが表示された場合は、より短い期間を使用してください。
 
 待機統計では、特定のクエリの実行中に発生する待機イベントのビューが提供されます。 待機イベントの種類の詳細については、[MySQL エンジンに関するドキュメント](https://go.microsoft.com/fwlink/?linkid=2098206)をご覧ください。
 

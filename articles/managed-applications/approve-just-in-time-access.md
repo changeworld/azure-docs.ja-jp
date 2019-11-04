@@ -1,17 +1,17 @@
 ---
-title: Azure Managed Applications でジャストインタイム アクセスの構成と承認を行う
+title: ジャストインタイム アクセスを承認する - Azure Managed Application
 description: Azure Managed Applications のお客様が、マネージド アプリケーションへのジャストインタイム アクセス要求を承認する方法について説明します。
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 55fbf7292ab894cad3de3de9e96ddc96fe0b79b3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dd5c3f21b1a4b71d129ccbebeaa7ee66274a672f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482037"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529131"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Azure Managed Applications でジャストインタイム アクセスの構成と承認を行う
 

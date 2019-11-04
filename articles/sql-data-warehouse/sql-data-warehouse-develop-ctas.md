@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 1b4ccd7742f8a84eec2d63a86e1387733d4c1864
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e347287a6d77cdc947a79ca497fdb2ffe83ad1bc
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479693"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882480"
 ---
 # <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
 
@@ -46,13 +46,12 @@ SELECT...INTO では、操作の一部として分散方法とインデックス
 CREATE TABLE [dbo].[FactInternetSales_new]
 WITH
 (
-    DISTRIBUTION = ROUND_ROBIN
-   ,CLUSTERED COLUMNSTORE INDEX
+ DISTRIBUTION = ROUND_ROBIN
+ ,CLUSTERED COLUMNSTORE INDEX
 )
 AS
 SELECT  *
-FROM    [dbo].[FactInternetSales]
-;
+FROM    [dbo].[FactInternetSales];
 ```
 
 > [!NOTE]
@@ -89,8 +88,7 @@ CREATE TABLE FactInternetSales
     TaxAmt money NOT NULL,
     Freight money NOT NULL,
     CarrierTrackingNumber nvarchar(25),
-    CustomerPONumber nvarchar(25)
-);
+    CustomerPONumber nvarchar(25));
 ```
 
 ここで、クラスター化列ストア テーブルのパフォーマンスを活かせるように、`Clustered Columnstore Index` でこのテーブルの新しいコピーを作成したいとします。 また、このテーブルを `ProductKey` で分散させたいとします。この列での結合が予想され、`ProductKey` での結合中にデータを移動したくないためです。 さらに、`OrderDateKey` にパーティションを追加して、古いパーティションをドロップすることによって古いデータをすぐに削除できるようにしたいとします。 次に示すのが、古いテーブルを新しいテーブルにコピーする CTAS ステートメントです。
@@ -142,15 +140,14 @@ CTAS を使用して、下記のサポートされていない多くの機能を
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
-(    [EnglishProductCategoryName]    NVARCHAR(50)    NOT NULL
-,    [CalendarYear]                    SMALLINT        NOT NULL
-,    [TotalSalesAmount]                MONEY            NOT NULL
+( [EnglishProductCategoryName]    NVARCHAR(50)    NOT NULL
+, [CalendarYear]                    SMALLINT        NOT NULL
+, [TotalSalesAmount]                MONEY            NOT NULL
 )
 WITH
 (
     DISTRIBUTION = ROUND_ROBIN
-)
-;
+);
 ```
 
 元のクエリは次の例のようなものです。
@@ -160,9 +157,9 @@ UPDATE    acs
 SET        [TotalSalesAmount] = [fis].[TotalSalesAmount]
 FROM    [dbo].[AnnualCategorySales]     AS acs
 JOIN    (
-        SELECT    [EnglishProductCategoryName]
-        ,        [CalendarYear]
-        ,        SUM([SalesAmount])                AS [TotalSalesAmount]
+        SELECT [EnglishProductCategoryName]
+        , [CalendarYear]
+        , SUM([SalesAmount])                AS [TotalSalesAmount]
         FROM    [dbo].[FactInternetSales]        AS s
         JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
         JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
@@ -174,8 +171,7 @@ JOIN    (
         ,        [CalendarYear]
         ) AS fis
 ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
-AND    [acs].[CalendarYear]                = [fis].[CalendarYear]
-;
+AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
 SQL Data Warehouse では、`UPDATE` ステートメントの `FROM` 句での ANSI JOIN がサポートされていないため、前の例を変更しないで使用することはできません。
@@ -187,31 +183,27 @@ CTAS と暗黙的結合を組み合わせて使用することで、前の例を
 CREATE TABLE CTAS_acs
 WITH (DISTRIBUTION = ROUND_ROBIN)
 AS
-SELECT    ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0)    AS [EnglishProductCategoryName]
-,        ISNULL(CAST([CalendarYear] AS SMALLINT),0)                         AS [CalendarYear]
-,        ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)                        AS [TotalSalesAmount]
+SELECT    ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0) AS [EnglishProductCategoryName]
+, ISNULL(CAST([CalendarYear] AS SMALLINT),0)  AS [CalendarYear]
+, ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)  AS [TotalSalesAmount]
 FROM    [dbo].[FactInternetSales]        AS s
 JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
 JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
 JOIN    [dbo].[DimProductSubCategory]    AS u    ON p.[ProductSubcategoryKey]    = u.[ProductSubcategoryKey]
 JOIN    [dbo].[DimProductCategory]        AS c    ON u.[ProductCategoryKey]        = c.[ProductCategoryKey]
 WHERE     [CalendarYear] = 2004
-GROUP BY
-        [EnglishProductCategoryName]
-,        [CalendarYear]
-;
+GROUP BY [EnglishProductCategoryName]
+, [CalendarYear];
 
 -- Use an implicit join to perform the update
 UPDATE  AnnualCategorySales
 SET     AnnualCategorySales.TotalSalesAmount = CTAS_ACS.TotalSalesAmount
 FROM    CTAS_acs
 WHERE   CTAS_acs.[EnglishProductCategoryName] = AnnualCategorySales.[EnglishProductCategoryName]
-AND     CTAS_acs.[CalendarYear]               = AnnualCategorySales.[CalendarYear]
-;
+AND     CTAS_acs.[CalendarYear]  = AnnualCategorySales.[CalendarYear] ;
 
 --Drop the interim table
-DROP TABLE CTAS_acs
-;
+DROP TABLE CTAS_acs;
 ```
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>DELETE ステートメントの代わりに使用する ANSI JOIN
@@ -227,15 +219,14 @@ WITH
 ,   CLUSTERED INDEX (ProductKey)
 )
 AS -- Select Data you want to keep
-SELECT     p.ProductKey
-,          p.EnglishProductName
-,          p.Color
-FROM       dbo.DimProduct p
+SELECT p.ProductKey
+, p.EnglishProductName
+,  p.Color
+FROM  dbo.DimProduct p
 RIGHT JOIN dbo.stg_DimProduct s
-ON         p.ProductKey = s.ProductKey
-;
+ON p.ProductKey = s.ProductKey;
 
-RENAME OBJECT dbo.DimProduct        TO DimProduct_old;
+RENAME OBJECT dbo.DimProduct TO DimProduct_old;
 RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
@@ -253,22 +244,21 @@ WITH
 )
 AS
 -- New rows and new versions of rows
-SELECT      s.[ProductKey]
-,           s.[EnglishProductName]
-,           s.[Color]
+SELECT s.[ProductKey]
+, s.[EnglishProductName]
+, s.[Color]
 FROM      dbo.[stg_DimProduct] AS s
 UNION ALL  
 -- Keep rows that are not being touched
 SELECT      p.[ProductKey]
-,           p.[EnglishProductName]
-,           p.[Color]
+, p.[EnglishProductName]
+, p.[Color]
 FROM      dbo.[DimProduct] AS p
 WHERE NOT EXISTS
 (   SELECT  *
     FROM    [dbo].[stg_DimProduct] s
     WHERE   s.[ProductKey] = p.[ProductKey]
-)
-;
+);
 
 RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
 RENAME OBJECT dbo.[DimProduct_upsert]  TO [DimProduct];
@@ -288,8 +278,7 @@ CREATE TABLE result
 WITH (DISTRIBUTION = ROUND_ROBIN)
 
 INSERT INTO result
-SELECT @d*@f
-;
+SELECT @d*@f;
 ```
 
 このコードを CTAS に移行することが正しいと思われるかもしれません。 しかし、これには問題が潜んでいます。
@@ -298,14 +287,12 @@ SELECT @d*@f
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
-,       @f float(24)    = 85.455
-;
+, @f float(24)    = 85.455;
 
 CREATE TABLE ctas_r
 WITH (DISTRIBUTION = ROUND_ROBIN)
 AS
-SELECT @d*@f as result
-;
+SELECT @d*@f as result;
 ```
 
 「result」の列では、式のデータ型と null 値の許容が引き継がれます。 データ型を引き継ぐと、結果にわずかな差異が出る場合があります。
@@ -314,12 +301,10 @@ SELECT @d*@f as result
 
 ```sql
 SELECT result,result*@d
-from result
-;
+from result;
 
 SELECT result,result*@d
-from ctas_r
-;
+from ctas_r;
 ```
 
 結果 (result) に格納される値が異なります。 result 列の永続化された値が他の式で使用されるため、エラーの深刻度が増します。
@@ -337,7 +322,7 @@ from ctas_r
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
-,       @f float(24)    = 85.455
+, @f float(24)    = 85.455
 
 CREATE TABLE ctas_r
 WITH (DISTRIBUTION = ROUND_ROBIN)
@@ -361,11 +346,11 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 CREATE TABLE [dbo].[Sales]
 (
     [date]      INT     NOT NULL
-,   [product]   INT     NOT NULL
-,   [store]     INT     NOT NULL
-,   [quantity]  INT     NOT NULL
-,   [price]     MONEY   NOT NULL
-,   [amount]    MONEY   NOT NULL
+, [product]   INT     NOT NULL
+, [store]     INT     NOT NULL
+, [quantity]  INT     NOT NULL
+, [price]     MONEY   NOT NULL
+, [amount]    MONEY   NOT NULL
 )
 WITH
 (   DISTRIBUTION = HASH([product])
@@ -374,8 +359,7 @@ WITH
                     ,20030101,20040101,20050101
                     )
                 )
-)
-;
+);
 ```
 
 ただし、金額フィールドは計算式です。 ソース データの一部ではありません。
@@ -385,8 +369,8 @@ WITH
 ```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH
-(   DISTRIBUTION = HASH([product])
-,   PARTITION   (   [date] RANGE RIGHT FOR VALUES
+( DISTRIBUTION = HASH([product])
+, PARTITION   (   [date] RANGE RIGHT FOR VALUES
                     (20000101,20010101
                     )
                 )
@@ -400,8 +384,7 @@ SELECT
 ,   [price]
 ,   [quantity]*[price]  AS [amount]
 FROM [stg].[source]
-OPTION (LABEL = 'CTAS : Partition IN table : Create')
-;
+OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
 クエリは、問題なく実行されます。 問題が発生するのは、パーティションの切り替えを行うときです。 テーブルの定義が一致ません。 テーブルの定義を一致させるには、CTAS を変更して、`ISNULL` 関数を追加し、列の NULL 値の許容属性を保持します。
@@ -409,20 +392,20 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create')
 ```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH
-(   DISTRIBUTION = HASH([product])
-,   PARTITION   (   [date] RANGE RIGHT FOR VALUES
+( DISTRIBUTION = HASH([product])
+, PARTITION   (   [date] RANGE RIGHT FOR VALUES
                     (20000101,20010101
                     )
                 )
 )
 AS
 SELECT
-    [date]
-,   [product]
-,   [store]
-,   [quantity]
-,   [price]   
-,   ISNULL(CAST([quantity]*[price] AS MONEY),0) AS [amount]
+  [date]
+, [product]
+, [store]
+, [quantity]
+, [price]   
+, ISNULL(CAST([quantity]*[price] AS MONEY),0) AS [amount]
 FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3006ad6e-8831-41cd-94aa-7e7ae770ce7b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75339a03f94ad10446a5b5b1024a3f5fd1c7c432
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdd8daa5cb0d82a3bfdb97496c650e1ce1d21a81
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106650"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>チュートリアル:Azure Active Directory と Asset Bank の統合
 

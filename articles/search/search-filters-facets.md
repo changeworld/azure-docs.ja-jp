@@ -1,24 +1,23 @@
 ---
-title: アプリ内の検索ナビゲーション用ファセット フィルター - Azure Search
-description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。
-author: HeidiSteen
+title: アプリ内の検索ナビゲーション用ファセット フィルター
+titleSuffix: Azure Cognitive Search
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Cognitive Search で、ユーザーのセキュリティ ID、地理的な場所、または数値で条件をフィルター処理して、クエリの検索結果を減らします。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 5/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: a2fe29cf1d7c183aa62e6b86a4b29479d1f34ff8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649886"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792890"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Azure Search でファセット フィルターを作成する方法 
+# <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Cognitive Search でファセット フィルターを作成する方法 
 
-ファセット ナビゲーションは、検索アプリでクエリ結果の自律フィルター処理に使用されます。アプリケーションでドキュメントのグループ (カテゴリやブランドなど) を検索範囲として指定する UI コントロールを提供する場合、Azure Search はこのエクスペリエンスを支えるデータ構造を提供します。 この記事では、提供する検索エクスペリエンスを支えるファセット ナビゲーション構造の基本的な作成手順を簡単に説明します。 
+ファセット ナビゲーションは、検索アプリでクエリ結果をユーザー自身がフィルター処理するために使用されます。ご自身のアプリケーションに、(カテゴリやブランドなど) ドキュメントのグループを検索範囲として指定する UI コントロールがあり、Azure Cognitive Search にこのエクスペリエンスを支えるデータ構造があります。 この記事では、提供する検索エクスペリエンスを支えるファセット ナビゲーション構造の基本的な作成手順を簡単に説明します。 
 
 > [!div class="checklist"]
 > * フィルターとファセットに適したフィールドを選択する
@@ -31,7 +30,7 @@ ms.locfileid: "69649886"
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-ファセット ナビゲーションを初めて使用する場合、詳細については、 「[Azure Search でファセット ナビゲーションを実装する方法](search-faceted-navigation.md)」をご覧ください。
+ファセット ナビゲーションを初めて使用する場合、詳細については、 [Azure Cognitive Search へのファセット ナビゲーションの実装方法](search-faceted-navigation.md)に関するページを参照してください。
 
 ## <a name="choose-fields"></a>フィールドの選択
 
@@ -78,7 +77,7 @@ REST API を使用してインデックスを作成すると、ファセット �
 ```
 
 > [!Note]
-> このインデックス定義は、「[REST API を使用した Azure Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)」からコピーされたものです。 フィールド定義の表面的な違い以外は全く同じです。 `category`、`tags`、`parkingIncluded`、`smokingAllowed`、および `rating` フィールドに `filterable` および `facetable` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
+> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `category`、`tags`、`parkingIncluded`、`smokingAllowed`、および `rating` フィールドに `filterable` および `facetable` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
@@ -118,12 +117,12 @@ if (!String.IsNullOrEmpty(categoryFacet))
 
 ### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>フィルター処理された結果のファセット ナビゲーション構造を非同期に保持する
 
-Azure Search のファセット ナビゲーションの課題の 1 つは、現在の結果に対してのみファセットが存在することです。 実際には、手順を遡って検索コンテンツで代替パスを探索することで、ユーザーが逆方向にナビゲートできるようにファセットの静的なセットを保持するのが一般的です。 
+Azure Cognitive Search のファセット ナビゲーションの課題の 1 つは、現在の結果に対してのみファセットが存在することです。 実際には、手順を遡って検索コンテンツで代替パスを探索することで、ユーザーが逆方向にナビゲートできるようにファセットの静的なセットを保持するのが一般的です。 
 
 これは一般的なユース ケースですが、現時点ではファセット ナビゲーション構造ですぐに利用できるものではありません。 静的なファセットを必要とする開発者は、通常、結果に適用されるクエリと、ナビゲーションのためにファセットの静的リストの作成に使用されるクエリの 2 つのフィルター処理されたクエリを発行してこの制限に対処しています。
 
 ## <a name="see-also"></a>関連項目
 
-+ [Azure Search のフィルター](search-filters.md)
++ [Azure Cognitive Search のフィルター](search-filters.md)
 + [Index REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

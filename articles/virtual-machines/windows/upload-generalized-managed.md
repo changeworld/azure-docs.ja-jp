@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: be3ccfd0c562763d0968398ddb042dc5f07dbdcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6382a39e67805eb9bddb356a7b76205a82f3f7c2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101574"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553455"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>汎用化した VHD をアップロードして Azure で新しい VM を作成する
 
@@ -56,67 +56,14 @@ ms.locfileid: "70101574"
 6. Sysprep は完了時に仮想マシンをシャットダウンします。 VM は再起動しないでください。
 
 
-## <a name="get-a-storage-account"></a>ストレージ アカウントを取得する
-
-アップロードした VM イメージを格納するには、Azure にストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。 
-
-VHD を使用して VM のマネージド ディスクを作成する場合は、ストレージ アカウントの場所が VM を作成する場所と同じである必要があります。
-
-使用できるストレージ アカウントを表示するには、次のように入力します。
-
-```azurepowershell
-Get-AzStorageAccount | Format-Table
-```
-
 ## <a name="upload-the-vhd-to-your-storage-account"></a>ストレージ アカウントに VHD をアップロードする
 
-[Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーに VHD をアップロードします。 この例は、*myVHD.vhd* ファイルを *C:\Users\Public\Documents\Virtual hard disks\\* から *myResourceGroup* リソース グループの *mystorageaccount* というストレージ アカウントにアップロードします。 ファイルは *mycontainer* というコンテナーに配置され、新しいファイル名は *myUploadedVHD.vhd* になります。
-
-```powershell
-$rgName = "myResourceGroup"
-$urlOfUploadedImageVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
-    -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-成功した場合、次のような応答を取得します。
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-このコマンドは、ネットワーク接続や VHD ファイルのサイズによっては、完了に時間がかかることがあります。
-
-### <a name="other-options-for-uploading-a-vhd"></a>VHD をアップロードするためのその他のオプション
- 
-次のいずれかの方法を使用して、ストレージ アカウントに VHD をアップロードすることもできます。
-
-- [AzCopy](https://aka.ms/downloadazcopy)
-- [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-- [Azure ストレージ エクスプローラーでの BLOB のアップロード](https://azurestorageexplorer.codeplex.com/)
-- [Storage Import/Export Service REST API リファレンス](https://msdn.microsoft.com/library/dn529096.aspx)
--   推定アップロード時間が 7 日より長い場合は、Import/Export サービスを使うことをお勧めします。 [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) を使うと、データ サイズと転送単位から時間を推定できます。 
-    Import/Export は、Standard Storage アカウントへのコピーに使うことができます。 Standard Storage アカウントから Premium Storage アカウントにコピーするには、AzCopy などのツールを使用する必要があります。
-
-> [!IMPORTANT]
-> VHD を Azure にアップロードする際に AzCopy を使用する場合は、アップロード スクリプトを実行する前に、[ **/BlobType:page**](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) を設定してください。 宛先が BLOB で、このオプションが指定されていない場合、既定では AzCopy によってブロック BLOB が作成されます。
-> 
-> 
-
+VHD をマネージド ディスクに直接アップロードできるようになりました。 手順については、「[Azure PowerShell を使用して Azure に VHD をアップロードする](disks-upload-vhd-to-managed-disk-powershell.md)」を参照してください。
 
 
 ## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>アップロードした VHD から管理イメージを作成する 
 
-一般化済みの OS VHD から管理イメージを作成します。 次の値は実際の値に変更してください。
+一般化済みの OS マネージド ディスクから管理イメージを作成します。 次の値は実際の値に変更してください。
 
 
 まずいくつかのパラメーターを設定します。

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
 ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71257263"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure のセキュリティとコンプライアンスのブループリント:FFIEC 金融サービスの分析
@@ -41,7 +41,7 @@ Azure では、お客様向けのさまざまなレポートと分析サービ�
 
 Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由で管理されます。SSMS は、セキュアな VPN または ExpressRoute 接続経由で Azure SQL Database にアクセスするように構成されたローカル コンピューターから実行されます。 **Microsoft では参照アーキテクチャのリソース グループに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています**。
 
-![FFIEC に対する分析の参照アーキテクチャ ダイアグラム](images/ffiec-analytics-architecture.png "FFIEC に対する分析の参照アーキテクチャ ダイアグラム")
+![FFIEC 用の分析の参照アーキテクチャ図](images/ffiec-analytics-architecture.png "FFIEC 用の分析の参照アーキテクチャ図")
 
 このソリューションでは、次の Azure サービスを使用します。 デプロイ アーキテクチャの詳細については、「[デプロイ アーキテクチャ](#deployment-architecture)」セクションを参照してください。
 
@@ -167,7 +167,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 
 この参照アーキテクチャのデータ フロー ダイアグラムを[ダウンロード](https://aka.ms/ffiec-analytics-tm)するか、下記を参照してください。 このモデルは、修正を行う際に、お客様がシステム インフラストラクチャの潜在的なリスクを理解するために役立ちます。
 
-![FFIEC 脅威モデルの分析](images/ffiec-analytics-threat-model.png "FFIEC 脅威モデルの分析")
+![FFIEC 用の分析の脅威モデル](images/ffiec-analytics-threat-model.png "FFIEC 用の分析の脅威モデル")
 
 ## <a name="compliance-documentation"></a>コンプライアンス ドキュメント
 

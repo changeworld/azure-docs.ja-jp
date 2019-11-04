@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 6f3f0e0b8b5098784359e7703c4a165654ff9894
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179197"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808200"
 ---
 # <a name="create-a-simple-query-in-azure-search"></a>Azure Search で簡単なクエリを作成する
 
@@ -128,7 +128,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
-      "select": "select=job_id, business_title, agency, salary_range_from",
+      "select": "job_id, business_title, agency, salary_range_from",
       "count": "true"
     }
 ```

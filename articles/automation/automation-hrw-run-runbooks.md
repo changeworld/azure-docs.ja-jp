@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 83c185a6ba8f1c5e6edf095db5baf575f750fa3b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372846"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176469"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
 Azure Automation で実行される Runbook と、Hybrid Runbook Worker で実行される Runbook の構造に違いはありません。 それぞれで使用する Runbook は大きく異なる可能性があります。 この違いは、通常、Hybrid Runbook Worker をターゲットとする Runbook が、ローカル コンピューター自体のリソースを管理するか、またはデプロイ先のローカル環境のリソースに対して管理を行うことが原因です。 Azure Automation の Runbook は、通常、Azure クラウド内のリソースを管理します。
 
-Hybrid Runbook Worker で実行する Runbook を作成するときは、ハイブリッド worker をホストしているマシンで Runbook を編集し、テストする必要があります。 ホスト マシンには、ローカル リソースの管理とアクセスのために必要となる、すべての PowerShell モジュールとネットワーク アクセスがあります。 ハイブリッド worker マシンで Runbook をテストすると、ハイブリッド worker で実行するために使用できる Azure Automation 環境に Runbook をアップロードできるようになります。 ジョブが Windows ではローカル システム アカウントで実行され、Linux では特殊なユーザー アカウント `nxautomation` で実行されることを理解しておくことが重要です。 Linux では、これは、ご利用のモジュールを格納する場所に `nxautomation` アカウントがアクセスできるようにする必要があることを意味します。 [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときに、`-Scope` パラメーターに **AllUsers** を指定して、`naxautomation` アカウントが確実にアクセス権を持つようにします。
+Hybrid Runbook Worker で実行する Runbook を作成するときは、ハイブリッド worker をホストしているマシンで Runbook を編集し、テストする必要があります。 ホスト マシンには、ローカル リソースの管理とアクセスのために必要となる、すべての PowerShell モジュールとネットワーク アクセスがあります。 ハイブリッド worker マシンで Runbook をテストすると、ハイブリッド worker で実行するために使用できる Azure Automation 環境に Runbook をアップロードできるようになります。 ジョブが Windows ではローカル システム アカウントで実行され、Linux では特殊なユーザー アカウント `nxautomation` で実行されることを理解しておくことが重要です。 Linux では、これは、ご利用のモジュールを格納する場所に `nxautomation` アカウントがアクセスできるようにする必要があることを意味します。 [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときに、`-Scope` パラメーターに **AllUsers** を指定して、`nxautomation` アカウントが確実にアクセス権を持つようにします。
 
 Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)」を参照してください。
 

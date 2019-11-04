@@ -1,30 +1,29 @@
 ---
-title: REST チュートリアル:JSON BLOB で半構造化されたデータのインデックスを作成する - Azure Search
-description: Azure Search REST API と Postman を使用して、半構造化された Azure JSON BLOB のインデックスを作成し、検索する方法について説明します。
-author: HeidiSteen
+title: REST チュートリアル:JSON BLOB の半構造化データのインデックス作成
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search REST API と Postman を使用して、半構造化 Azure JSON BLOB のインデックスを作成し、検索する方法について説明します。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: cb9c97efd62a56ad0eac49956f11fb422a448194
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 569289a2d750f96423bd03ac82cb9e33f893ee15
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647855"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794289"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST チュートリアル:Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST チュートリアル:Azure Cognitive Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
 
-Azure Search は、半構造化データの読み取り方法を解している[インデクサー](search-indexer-overview.md)を使用して、Azure Blob Storage に格納されている JSON のドキュメントや配列のインデックスを作成することができます。 半構造化データには、データ内のコンテンツを区別するタグやマーキングが含まれます。 このデータは、非構造化データ (全体にインデックスを付ける必要がある) と正式に構造化されたデータ (フィールドごとにインデックス付け可能な、リレーショナル データベース スキーマなどのデータ モデルに準拠) を折衷するものです。
+Azure Cognitive Search は、半構造化データの読み取り方法を解している[インデクサー](search-indexer-overview.md)を使用して、Azure Blob Storage に格納されている JSON のドキュメントや配列のインデックスを作成することができます。 半構造化データには、データ内のコンテンツを区別するタグやマーキングが含まれます。 このデータは、非構造化データ (全体にインデックスを付ける必要がある) と正式に構造化されたデータ (フィールドごとにインデックス付け可能な、リレーショナル データベース スキーマなどのデータ モデルに準拠) を折衷するものです。
 
-このチュートリアルでは、[Azure Search の REST API](https://docs.microsoft.com/rest/api/searchservice/) と REST クライアントを使用して次のタスクを実行します。
+このチュートリアルでは、[Azure Cognitive Search の REST API](https://docs.microsoft.com/rest/api/searchservice/) と REST クライアントを使用して次のタスクを実行します。
 
 > [!div class="checklist"]
-> * Azure BLOB コンテナー用に Azure Search データ ソースを構成する
-> * 検索可能なコンテンツを格納する Azure Search インデックスを作成する
+> * Azure BLOB コンテナー用に Azure Cognitive Search データ ソースを構成する
+> * 検索可能なコンテンツを格納する Azure Cognitive Search インデックスを作成する
 > * コンテナーを読み取って検索可能なコンテンツを Azure Blob Storage から抽出するようにインデクサーを構成して実行する
 > * 作成したインデックスを検索する
 
@@ -32,17 +31,17 @@ Azure Search は、半構造化データの読み取り方法を解している[
 
 このクイック スタートでは、次のサービス、ツール、およびデータを使用します。 
 
-[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。 
+[Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。 
 
-サンプル データの格納に使用される [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
+サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
 
-Azure Search に要求を送信するための [Postman デスクトップ アプリ](https://www.getpostman.com/)。
+Azure Cognitive Search に要求を送信するための [Postman デスクトップ アプリ](https://www.getpostman.com/)。
 
 [Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) には、このチュートリアルで使用されるデータが含まれています。 このファイルをローカルのフォルダーにダウンロードし、展開します。 データの出典は [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) で、このチュートリアルで使用するために JSON に変換しています。
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
@@ -70,7 +69,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ## <a name="set-up-postman"></a>Postman の設定
 
-Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
+Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Cognitive Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
 
 このチュートリアルでの各呼び出しの要求メソッドは **POST** です。 ヘッダー キーは "Content-type" と "api-key" です。 ヘッダー キーの値は、それぞれ "application/json" と "管理者キー" (管理者キーは、検索の主キーを表すプレースホルダー) です。 本文は、呼び出しの実際のコンテンツを配置する場所です。 使用するクライアントによっては、クエリの作成方法にいくつかのバリエーションがありますが、それらは基本的な機能です。
 
@@ -84,7 +83,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="create-a-data-source"></a>データ ソースを作成する
 
-[データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) で、インデックス作成の対象データを指定する Azure Search オブジェクトが作成されます。
+[データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) で、インデックス作成の対象データを指定する Azure Cognitive Search オブジェクトが作成されます。
 
 この呼び出しのエンドポイントは `https://[service name].search.windows.net/datasources?api-version=2019-05-06` です。 `[service name]` を検索サービスの名前に置き換えます。 
 
@@ -127,7 +126,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="create-an-index"></a>インデックスを作成する
     
-2 つ目の呼び出しは[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-indexer) であり、検索可能なすべてのデータを格納する Azure Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
+2 つ目の呼び出しは[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-indexer) であり、検索可能なすべてのデータを格納する Azure Cognitive Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
 
 この呼び出しの URL は `https://[service name].search.windows.net/indexes?api-version=2019-05-06` です。 `[service name]` を検索サービスの名前に置き換えます。
 
@@ -286,11 +285,11 @@ Azure portal で、検索サービスの **[概要]** ページを開き、 **[�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-チュートリアルの後で最も速くクリーンアップする方法は、Azure Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Search サービスの [概要] ページに表示されます。
+チュートリアルの後で最も速くクリーンアップする方法は、Azure Cognitive Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Cognitive Search サービスの [概要] ページに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
 JSON BLOB のインデックス作成には、いくつかの方法と複数のオプションがあります。 次の手順では、さまざまなオプションの検討とテストを行い、自分のシナリオに最適なオプションを確認します。
 
 > [!div class="nextstepaction"]
-> [Azure Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法](search-howto-index-json-blobs.md)
+> [Azure Cognitive Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法](search-howto-index-json-blobs.md)

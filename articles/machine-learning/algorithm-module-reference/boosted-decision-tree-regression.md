@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 5f26dfbdd8d3ef094ed380b7bd00ab0169152502
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208154"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693835"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>ブースト デシジョン ツリー回帰モジュール
 
@@ -52,7 +52,7 @@ ms.locfileid: "70208154"
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>ブースト デシジョン ツリー回帰の構成方法
 
-1.  **ブースト デシジョン ツリー** モジュールを実験に追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[Initialize]\(初期化\)** の順に進み **[Regression]\(回帰\)** カテゴリにあります。 
+1.  **ブースト デシジョン ツリー** モジュールをパイプラインに追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[Initialize]\(初期化\)** の順に進み **[Regression]\(回帰\)** カテゴリにあります。 
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定し、モデルのトレーニング方法を指定します。  
   
@@ -73,7 +73,7 @@ ms.locfileid: "70208154"
 
     トレーニング済みのモデルを可視化したときに表示されるツリーの数も、この値によって制御されます。 ツリーを 1 つ表示または印刷する場合、値を 1 に設定できます。ただし、ツリーは 1 つだけ生成され (最初のパラメーター セットが与えられたツリー)、それ以上のイテレーションは実行されません。
 
-7. **[Random number seed]\(乱数シード\)** :乱数シード値として使用する負以外の任意の整数を入力します。 シードを指定することによって、同じデータとパラメーターで繰り返し実行したときの再現性が確保されます。
+7. **Random number seed (乱数シード)** : 乱数シード値として使用する負以外の任意の整数を入力します。 シードを指定することによって、同じデータとパラメーターで繰り返し実行したときの再現性が確保されます。
 
     ランダム シードは、既定では 0 に設定されます。これは、初期シード値がシステム クロックから取得されることを意味します。
   
@@ -85,7 +85,7 @@ ms.locfileid: "70208154"
   
     
 
-10. 実験を実行します。  
+10. パイプラインを実行します。  
   
 ## <a name="results"></a>結果
 
@@ -96,8 +96,6 @@ ms.locfileid: "70208154"
      それぞれのツリーをクリックして分割にドリルダウンすると、各ノードのルールが表示されます。  
 
 + スコアリングにモデルを使用するには、それを[モデルのスコア付け](./score-model.md)に接続し、新しい入力例の値を予測します。
-
-+ トレーニング済みのモデルのスナップショットを保存するために、トレーニング モジュールの **[Trained model]\(トレーニング済みのモデル\)** 出力を右クリックし、 **[Save As]\(名前を付けて保存\)** を選択します。 保存したトレーニング済みモデルのコピーは実験を連続して実行したとき、更新されません。
 
 ## <a name="next-steps"></a>次の手順
 

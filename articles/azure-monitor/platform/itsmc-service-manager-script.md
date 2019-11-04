@@ -1,24 +1,18 @@
 ---
 title: Azure の IT Service Management Connector に接続する自動スクリプトを使用して Service Manager Web アプリを作成する | Microsoft Docs
 description: Azure の IT Service Management Connector に接続する自動スクリプトを使用して Service Manager Web アプリを作成し、ITSM 作業項目を一元的に監視および管理します。
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: JYOTHIRMAISURI
 ms.author: v-jysur
-ms.openlocfilehash: 42adbf7a6f0e7bb462e6bc9b690c61d4ade0cae2
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 01/23/2018
+ms.openlocfilehash: 443fe6aa7e97e666075a2fbb985a9b8b00baf81a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479699"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932243"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>自動スクリプトを使用した Service Manager Web アプリの作成
 

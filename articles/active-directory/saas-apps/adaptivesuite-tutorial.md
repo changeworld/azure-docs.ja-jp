@@ -17,10 +17,10 @@ ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70213620"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>チュートリアル:Adaptive Insights を Azure Active Directory と統合する
@@ -104,15 +104,15 @@ Adaptive Insights で Azure AD SSO を構成してテストするには、次の
 
 2. **[Administration]** に移動します。
 
-    ![管理](./media/adaptivesuite-tutorial/ic805644.png "Admin")
+    ![管理者](./media/adaptivesuite-tutorial/ic805644.png "[Admin]")
 
 3. **[ユーザーとロール]** セクションで、 **[SAML SSO 設定]** をクリックします。
 
-    ![SAML SSO 設定の管理](./media/adaptivesuite-tutorial/ic805645.png "Manage SAML SSO Settings")
+    ![SAML SSO 設定の管理](./media/adaptivesuite-tutorial/ic805645.png "[SAML SSO 設定の管理]")
 
 4. **[SAML SSO 設定]** ページで、次の手順を実行します。
 
-    ![SAML SSO 設定](./media/adaptivesuite-tutorial/ic805646.png "SAML SSO Settings")
+    ![SAML SSO 設定](./media/adaptivesuite-tutorial/ic805646.png "[SAML SSO 設定]")
 
     a. **[ID プロバイダー名]** テキスト ボックスに、構成の名前を入力します。
 
@@ -178,15 +178,15 @@ Azure AD ユーザーが Adaptive Insights にサインインできるように�
 
 2. **[Administration]** に移動します。
 
-   ![管理](./media/adaptivesuite-tutorial/IC805644.png "Admin")
+   ![管理者](./media/adaptivesuite-tutorial/IC805644.png "[Admin]")
 
 3. **[ユーザーとロール]** セクションで **[ユーザー]** をクリックします。
 
-   ![ユーザーの追加](./media/adaptivesuite-tutorial/IC805648.png "Add User")
+   ![ユーザーの追加](./media/adaptivesuite-tutorial/IC805648.png "ユーザーの追加")
 
 4. **[新しいユーザー]** セクションで、次の手順に従います。
 
-   ![送信](./media/adaptivesuite-tutorial/IC805649.png "Submit")
+   ![[送信]](./media/adaptivesuite-tutorial/IC805649.png "[送信]")
 
    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの **[名前]** 、 **[ユーザー名]** 、 **[電子メール]** 、 **[パスワード]** を入力します。
 

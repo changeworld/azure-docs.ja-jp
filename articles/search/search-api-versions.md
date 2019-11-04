@@ -1,33 +1,33 @@
 ---
-title: .NET SDK と REST API の API のバージョン管理 - Azure Search
-description: Azure Search REST API のバージョン ポリシーと .NET SDK のクライアント ライブラリ
-author: brjohnstmsft
+title: .NET SDK と REST API の API のバージョン管理
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search の REST API のバージョン ポリシーと .NET SDK のクライアント ライブラリ。
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.openlocfilehash: f400c6fcb2b35e2adcf605c96bb802041cd9e0a9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a976655d0f634c7026f008d64516a629947e90c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182358"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793059"
 ---
-# <a name="api-versions-in-azure-search"></a>Azure Search の API バージョン
-Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンが必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
+# <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
-原則として、Azure Search チームでは、必要な場合にのみ新しい API バージョンを発行しています。お客様側で新しい API バージョンを使用するためにコードをアップグレードする作業が必要になる可能性があるからです。 下位互換性が保たれなくなる形で API の一部の要素が変更された場合に限り、新しいバージョンが必要です。 このような変更は、既存の機能に修正を加えたことや、新機能において既存の API のセキュリティ構成を変更したことが原因で発生することがあります。
+Azure Cognitive Search では、定期的に機能更新がロールアウトされています。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンが必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
 
-SDK 更新プログラムにも同じルールが適用されます。 Azure Search SDK は[セマンティック バージョニング](https://semver.org/) ルールに従います。そのため、バージョンにはメジャー、マイナー、およびビルド番号という 3 つの部分があります (たとえば、1.1.0)。 SDK の新しいメジャー バージョンは、下位互換性が保たれなくなる変更が生じた場合にのみリリースされます。 下位互換性が保たれる機能更新の場合はマイナー バージョンがインクリメントされ、バグ修正の場合はビルド バージョンのみがインクリメントされます。
+Azure Cognitive Search のチームでは、原則として必要な場合にのみ新しい API バージョンを公開しています。新しい API バージョンの使用には、お客様側でコードをアップグレードする作業が必要になる可能性があるためです。 下位互換性が保たれなくなる形で API の一部の要素が変更された場合に限り、新しいバージョンが必要です。 このような変更は、既存の機能に修正を加えたことや、新機能において既存の API のセキュリティ構成を変更したことが原因で発生することがあります。
+
+SDK 更新プログラムにも同じルールが適用されます。 Azure Cognitive Search SDK は[セマンティック バージョニング](https://semver.org/) ルールに従っています。つまり、バージョンにはメジャー、マイナー、およびビルド番号という 3 つの部分があります (たとえば、1.1.0)。 SDK の新しいメジャー バージョンは、下位互換性が保たれなくなる変更が生じた場合にのみリリースされます。 下位互換性が保たれる機能更新の場合はマイナー バージョンがインクリメントされ、バグ修正の場合はビルド バージョンのみがインクリメントされます。
 
 > [!NOTE]
-> Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
+> お使いの Azure Cognitive Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートしています。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
 
 ## <a name="snapshot-of-current-versions"></a>現在のバージョンのスナップショット
-Azure Search とのすべてのプログラミング インターフェイスの現行バージョンのスナップショットを次に示します。
+Azure Cognitive Search とのすべてのプログラミング インターフェイスの現行バージョンのスナップショットを次に示します。
 
 
 | インターフェイス | 最新のメジャー バージョン | Status |
@@ -51,7 +51,7 @@ REST API の場合は、各呼び出しに対して `api-version` を含める�
 一般公開 (またはGA) の API は、実稼働環境で使用でき、Azure サービス レベル アグリーメントの対象です。 プレビュー バージョンには、必ずしも GA バージョンに移行されるとは限らない実験用の機能が含まれています。 **運用アプリケーションではプレビュー API を使用しないことを強くお勧めします。**
 
 ## <a name="about-preview-and-generally-available-versions"></a>プレビュー バージョンと一般公開バージョンについて
-Azure Search の場合は常に、まず REST API によって、次に .NET SDK のプレリリース版によって実験機能を事前に公開します。
+Azure Cognitive Search では常に、まず REST API によって、次に .NET SDK のプレリリース版で実験機能を事前公開しています。
 
 プレビュー機能は、機能の設計と実装に関するフィードバックの収集を目的とするテストと実験のために提供されています。 このため、プレビュー機能は、下位互換性を損なう可能性のある形で、時間の経過と共に変更されることがあります。 これは、下位互換性のある小規模な修正プログラムと機能強化以外は変更される可能性が低い安定した GA バージョンの機能とは対照的です。 また、プレビュー機能は必ずしも GA リリースに反映されません。
 
@@ -59,4 +59,4 @@ Azure Search の場合は常に、まず REST API によって、次に .NET SDK
 
 .NET SDK の場合:コード移行のガイダンスについては、[.NET SDK のアップグレード](search-dotnet-sdk-migration-version-9.md)に関する記事を参照してください。
 
-一般的な可用性とは、Azure Search がサービス レベル アグリーメント (SLA) の下で稼働することを意味します。 SLA については、 [Azure Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関する記事を参照してください。
+一般提供とは、Azure Cognitive Search がサービス レベル アグリーメント (SLA) の下で使用されることを意味します。 SLA については、[Azure Cognitive Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関する記事を参照してください。

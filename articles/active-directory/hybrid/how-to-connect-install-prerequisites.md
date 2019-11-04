@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0392a40ef948d96e613da9127629f52b02deb97
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b2db8d5881b5847adca4fffb72c0a678e1ec550c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655815"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596320"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -151,7 +151,7 @@ Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存していま
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Azure AD Connect 用に TLS 1.2 を有効にする
 バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジン サーバーと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 これを変更するには、サーバー上で TLS 1.2 を既定で使用するように .NET アプリケーションを構成します。 TLS 1.2 の詳細については、「[Microsoft セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。
 
-1. Windows Server 2008 R2 以降よりも前のバージョンでは TLS 1.2 を有効化できません。 ご使用のオペレーティング システムに .NET 4.5.1 修正プログラムがインストールされていることを確認してください。詳細については、「[マイクロソフト セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。 既にこの修正プログラムやこれ以降のリリースをサーバーにインストールしている可能性があります。
+1. TLS 1.2 は、Windows Server 2008 R2 より前では有効にできません。 ご使用のオペレーティング システムに .NET 4.5.1 修正プログラムがインストールされていることを確認してください。詳細については、「[マイクロソフト セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。 既にこの修正プログラムやこれ以降のリリースをサーバーにインストールしている可能性があります。
 2. Windows Server 2008 R2 を使用している場合は、TLS 1.2 が有効になっていることを確認してください。 Windows Server 2012 以降のバージョンのサーバーでは、TLS 1.2 が既に有効になっています。
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]

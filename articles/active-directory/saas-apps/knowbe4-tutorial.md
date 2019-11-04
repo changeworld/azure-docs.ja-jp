@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: b80d2212-cc5f-4adb-836c-570640810c39
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa4badb1183170bd7265e95c90775675eccfc34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f774357dc2fd1e37466c2c338e8e8616ae599d12
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098605"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>チュートリアル:Azure Active Directory と KnowBe4 Security Awareness Training の統合
 

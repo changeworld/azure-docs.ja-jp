@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: f204cf86b0415520160b11e97c0994a2f7891964
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: faaa16cb69ec7aaeb88696b3094b426b208a9939
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297737"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161384"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルのコントロール マッピング
 

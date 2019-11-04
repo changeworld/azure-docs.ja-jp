@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 10/31/2019
 ms.locfileid: "72167348"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL

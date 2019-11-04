@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 10/29/2019
 ms.author: lahugh
-ms.openlocfilehash: 314056b6e55838d32c70d81570cdeaf7a84b6671
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c85e02b01e11b94d9e23e669bf2f6fcde7f2c1de
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300640"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064013"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure での第 2 世代 VM (プレビュー) のサポート
 
@@ -51,6 +51,9 @@ ms.locfileid: "72300640"
 * [ND シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
 * [NVv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
 
+> [!NOTE]
+> Mv2 シリーズは第 2 世代の VM イメージのみで動作するため、Mv2 シリーズ VM に対する第 2 世代 VM イメージの使用は一般提供されています。 第 1 世代の VM イメージは、Mv2 シリーズの VM ではサポートされていません。 
+
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
 
 第 2 世代 VM では、次の Marketplace イメージがサポートされています。
@@ -61,6 +64,8 @@ ms.locfileid: "72300640"
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
+* Ubuntu Server 16.04+
+
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 

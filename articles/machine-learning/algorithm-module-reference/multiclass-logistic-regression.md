@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: d51bc48944204b4c7c50790949927849869f26fc
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d31329d6d45fd9f137bd6d57a638915e0833ee4a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128637"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692748"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多クラスのロジスティック回帰モジュール
 
@@ -34,7 +34,7 @@ Azure Machine Learning には、[2 クラスのロジスティック回帰](./tw
 
 ## <a name="configure-a-multiclass-logistic-regression"></a>多クラスのロジスティック回帰を構成する
 
-1. **多クラスのロジスティック回帰**モジュールを実験に追加します。
+1. **多クラスのロジスティック回帰**モジュールをパイプラインに追加します。
 
 2. **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。
 
@@ -52,13 +52,13 @@ Azure Machine Learning には、[2 クラスのロジスティック回帰](./tw
 
      ロジスティック回帰モデルには、L1 項と L2 項に対するさまざまな線形結合が考案されてきました ([エラスティック ネット型の正則化](https://wikipedia.org/wiki/Elastic_net_regularization)など)。
 
-6. **Random number seed (乱数シード)** : 複数回実行した場合の結果に再現性を確保したい場合、アルゴリズムのシードとして使用する整数値を入力します。 それ以外の場合は、システム クロック値がシードとして使用され、同じ実験を複数回実行した場合に、わずかに違った結果が得られます。
+6. **Random number seed (乱数シード)** : 複数回実行した場合の結果に再現性を確保したい場合、アルゴリズムのシードとして使用する整数値を入力します。 それ以外の場合は、システム クロック値がシードとして使用され、同じパイプラインを複数回実行した場合に、わずかに違った結果が得られます。
 
 8. ラベル付けされたデータセットと、いずれかのトレーニング モジュールを接続します。
 
     + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](./train-model.md) モジュールを使用します。
 
-9. 実験を実行します。
+9. パイプラインを実行します。
 
 ## <a name="results"></a>結果
 

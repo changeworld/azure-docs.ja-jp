@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 173061e4-ac1d-458f-bb9b-e9a2493aab0e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5bcd0401e1806b958ad47297dccfe26093cf461
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f52259397acc04a5162aa31c9d3ef9dfb93c0ef
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101167"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158059"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>チュートリアル:Azure Active Directory と Hornbill の統合
 

@@ -1,10 +1,9 @@
 ---
-title: 'Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作 | Microsoft Docs'
+title: Azure Service Bus での AMQP 1.0 要求/応答操作
 description: Microsoft Azure Service Bus の要求/応答ベースの操作の一覧。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 4aea0a092ad836c020e23b81d38246ceead22ea0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b549aee197f35df29a982a1a86644c46b9061c63
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213298"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785275"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b809171549a8f3cbbbb6ccad1553608598afa345
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515261"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161704"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -510,7 +510,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 指定するマークアップでは、次の構文を使用します。
 
 ``` 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
 たとえば、"The word wordomatic is a dictionary entry." という英文を考えてみます。 単語 _wordomatic_ を翻訳内でそのまま使用するには、次の要求を送信します。
@@ -525,7 +525,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 [
     {
         "translations":[
-            {"text":"Das Wort "wordomatic" ist ein Wörterbucheintrag.","to":"de"}
+            {"text":"Das Wort \"wordomatic\" ist ein Wörterbucheintrag.","to":"de"}
         ]
     }
 ]

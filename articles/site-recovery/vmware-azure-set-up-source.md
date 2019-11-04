@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 075f86b24e2915d9689db8097889a830bade74c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723428"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791769"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Azure への VMware レプリケーションのソース環境を設定する
 
-この記事では、VMware VM を Azure にレプリケートするためのオンプレミスのソース環境を設定する方法について説明します。 これには、レプリケーション シナリオを選択するための手順、オンプレミス コンピューターを Site Recovery の構成サーバーとして設定するための手順、およびオンプレミスのVM を自動的に検出するための手順が含まれます。 
+この記事では、VMware VM を Azure にレプリケートするためのオンプレミスのソース環境を設定する方法について説明します。 この記事には、レプリケーション シナリオを選択するための手順、オンプレミス コンピューターを Site Recovery の構成サーバーとして設定するための手順、オンプレミスの VM を自動的に検出するための手順が含まれます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "60723428"
 Open Virtualization Application (OVA) テンプレートを使用し、構成サーバーをオンプレミスの VMware VM として設定できます。 VMware VM にインストールされるコンポーネントについては、[こちら](concepts-vmware-to-azure-architecture.md)をご覧ください。
 
 1. 構成サーバー デプロイの[前提条件](vmware-azure-deploy-configuration-server.md#prerequisites)を確認します。
-2. デプロイに必要な[容量を確認](vmware-azure-deploy-configuration-server.md#capacity-planning)します。
+2. デプロイに必要な[容量を確認](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements)します。
 3. OVA テンプレートを[ダウンロード](vmware-azure-deploy-configuration-server.md#download-the-template)して[インポート](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware)し、構成サーバーを実行するオンプレミス VMware VM を設定します。 テンプレートに付属するライセンスは評価版ライセンスとなり、180 日間有効です。 この期間が経過した後は、入手済みのライセンスを使用して Windows のライセンス認証をユーザーが行う必要があります。
 4. VMware VM を有効にし、Recovery Services コンテナーに[登録](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services)します。
 
@@ -69,7 +69,7 @@ Open Virtualization Application (OVA) テンプレートを使用し、構成サ
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
   - C:\inetpub
-  - ASR サーバー インストール ディレクトリ。 例: E:\Program Files (x86)\Microsoft Azure Site Recovery
+  - Site Recovery サーバーのインストール ディレクトリ。 例: E:\Program Files (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>ウイルス対策ソフトウェアがスケールアウト プロセス サーバー/マスター ターゲットでアクティブな場合
 
@@ -81,7 +81,7 @@ Open Virtualization Application (OVA) テンプレートを使用し、構成サ
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. ASR 負荷分散プロセス サーバーのインストール ディレクトリ。例: C:\Program Files (x86)\Microsoft Azure Site Recovery
+7. Azure Site Recovery 負荷分散プロセス サーバーのインストール ディレクトリ。例: C:\Program Files (x86)\Microsoft Azure Site Recovery
 
 
 ## <a name="next-steps"></a>次の手順

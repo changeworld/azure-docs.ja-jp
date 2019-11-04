@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a828d03093c73d5c65a92ccf899fbaa1ef622bd6
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016506"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598315"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
@@ -89,7 +89,9 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 以下に、一般的なライブ ストリーミング アプリケーションを作成する場合に関係する標準的な手順を示します。
 
 > [!NOTE]
-> 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amshelp@microsoft.com にお問い合わせください。 ライブ エンコードは課金に影響するため、ライブ エンコード チャネルを "実行中" 状態のままにしておくと時間料金が発生します。  余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。 
+> 現在、ライブ イベントの最大推奨時間は 8 時間です。
+>
+> ライブ エンコードは課金に影響するため、ライブ エンコード チャネルを "実行中" 状態のままにしておくと時間料金が発生します。 余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。 
 
 1. ビデオ カメラをコンピューターに接続します。 オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーでは、**シングル** ビットレート ストリームを次のいずれかのプロトコルで出力できます:RTMP またはスムーズ ストリーミング。 
 
@@ -211,8 +213,6 @@ ISO 639-2 に準拠している、オーディオ ストリームの言語識別
 ### <a id="preset"></a>システム プリセット
 このチャネル内のライブ エンコーダーが使用するプリセットを指定します。 現在、唯一の許容されている値は **Default720p** (既定値) です。
 
-カスタム プリセットが必要な場合は、amshelp@microsoft.com にお問い合わせください。
-
 **Default720p** では、次の 6 つのレイヤーにビデオがエンコードされます。
 
 #### <a name="output-video-stream"></a>出力ビデオ ストリーム
@@ -269,7 +269,6 @@ Live Encoding が有効なチャネルがある場合、パイプライン内の
 
 > [!NOTE] 
 > チャネルを作成する前に、次の制約があるスレート画像を専用資産としてアップロードする必要があります (他のファイルはこの資産に含めないでください)。 このイメージは、ライブ エンコーダーが広告中断のためにスレートを挿入する場合、またはスレートを挿入するように明示的に信号通知された場合にのみ使用されます。 現時点では、ライブ エンコーダーが '入力信号が見つからない' などの状態になったときにカスタム イメージを使用するオプションはありません。 [こちら](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel)でこの機能に投票することができます。
-
 
 * 最大解像度 1920x1080。
 * 最大サイズ 3 MB。
@@ -331,7 +330,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 * 既定では、Media Services アカウントに追加できるチャネル数は 5 つのみです。 これは、すべての新しいアカウントに関するソフト クォータです。 詳しくは、「 [クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
 * チャネルやチャネルに関連付けられたプログラムの実行中は、入力プロトコルを変更できません。 別のプロトコルが必要な場合は、入力プロトコルごとに別のチャネルを作成します。
 * チャネルが **実行中** 状態のときにのみ課金されます。 詳しくは、 [こちら](media-services-manage-live-encoder-enabled-channels.md#states) のセクションを参照してください。
-* 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amshelp@microsoft.com にお問い合わせください。
+* 現在、ライブ イベントの最大推奨時間は 8 時間です。 
 * コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
 * エンコードのプリセットでは、「最大フレーム レート」 30 fps の概念が使用されます。 したがって、入力が 60fps/59.94i の場合、入力フレームは 30/29.97 fps にドロップ/インターレース解除されます。 入力が 50fps/50i の場合は、入力フレームは 25 fps にドロップ/インターレース解除されます。 入力が 25 fps の場合は、出力は 25 fps のままです。
 * 終了したら、忘れずにチャネルを停止してください。 そうしないと、課金が続行されます。
@@ -341,7 +340,12 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 * スレート イメージは、 [こちら](media-services-manage-live-encoder-enabled-channels.md#default_slate)で説明した制限に準拠する必要があります。 1920 x 1080 を超える既定のスレートでチャネルを作成しようとすると、要求は最終的にエラーになります。
 * 繰り返しますが、ストリーミングを終えたら、忘れずにチャネルを停止してください。 そうしないと、課金が続行されます。
 
+## <a name="need-help"></a>お困りの際は、
+
+[[新しいサポート要求]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動することによってサポート チケットを開くことができます
+
 ## <a name="next-step"></a>次のステップ
+
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

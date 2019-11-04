@@ -1,31 +1,29 @@
 ---
-title: 検索結果を操作する方法 - Azure Search
-description: Azure Search において、検索結果の構成と並べ替え、ドキュメント数の取得、および検索結果へのコンテンツ ナビゲーションの追加を行います。
-author: HeidiSteen
+title: 検索結果の操作方法
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search において、検索結果の構成と並べ替え、ドキュメント数の取得、および検索結果へのコンテンツ ナビゲーションの追加を行います。
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: ''
-ms.topic: conceptual
-ms.date: 06/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647706"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793450"
 ---
-# <a name="how-to-work-with-search-results-in-azure-search"></a>Azure Search での検索結果の操作方法
-この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを実装する方法のガイダンスを提供します。 データまたは情報を検索結果に表示するためのページ関連オプションは、Azure Search サービスに送信される [検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)の要求によって指定します。 
+# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
+この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを実装する方法のガイダンスを提供します。 データまたは情報を検索結果に表示するためのページ関連オプションは、Azure Cognitive Search サービスに送信される[検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)の要求によって指定します。 
 
 REST API では、要求には GET コマンド、パス、要求内容をサービスに伝えるクエリ パラメーター、および応答の作成方法が含まれます。 .NET SDK では、同等の API は[DocumentSearchResult クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)です。
 
 複数のコード サンプルに Web フロントエンド インターフェイスが含まれており、次でも見つけることができます: [ニューヨーク市のジョブ デモ アプリ](https://azjobsdemo.azurewebsites.net/)および [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
-> 有効な要求には、サービス URL とパスや HTTP 動詞、`api-version` などがあります。 簡潔にまとめ、改ページに関連する構文だけに焦点を当てられるように例の記載を省きました。 要求の構文について詳しくは、[Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice) に関する記事をご覧ください。
+> 有効な要求には、サービス URL とパスや HTTP 動詞、`api-version` などがあります。 簡潔にまとめ、改ページに関連する構文だけに焦点を当てられるように例の記載を省きました。 要求の構文について詳しくは、[Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice) に関する記事をご覧ください。
 >
 
 ## <a name="total-hits-and-page-counts"></a>合計ヒット数とページ数
@@ -34,7 +32,7 @@ REST API では、要求には GET コマンド、パス、要求内容をサー
 
 ![][1]
 
-Azure Search では、`$count`、`$top`、および `$skip` のパラメーターを使用すると、これらの値が返されます。 次の例では、"online-catalog" というインデックス上での合計ヒット数のサンプル要求が `@odata.count` として返されていることがわかります。
+Azure Cognitive Search では、`$count`、`$top`、および `$skip` のパラメーターを使用すると、これらの値が返されます。 次の例では、"online-catalog" というインデックス上での合計ヒット数のサンプル要求が `@odata.count` として返されていることがわかります。
 
     GET /indexes/online-catalog/docs?$count=true
 
@@ -56,7 +54,7 @@ Azure Search では、`$count`、`$top`、および `$skip` のパラメータ�
 
  ![][2]
 
-Azure Search では、`$select` と [Search API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を使用してこれらを表示します。
+Azure Cognitive Search では、`$select` と [Search API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を使用してこれらを表示します。
 
 タイル化されたレイアウトになるようにフィールドのサブセットを返すには、次のように記述します。
 
@@ -74,7 +72,7 @@ Azure Search では、`$select` と [Search API 要求](https://docs.microsoft.c
 
  ![][3]
 
-Azure Search では、`"Sortable": true.` としてインデックス付けされたすべてのフィールドにおいて、並べ替えは `$orderby` 式に基づきます。`$orderby` 句は OData 式です。 構文について詳しくは、[filters 句と order-by 句のための OData 式の構文](query-odata-filter-orderby-syntax.md)に関する記事をご覧ください。
+Azure Cognitive Search では、`"Sortable": true.` としてインデックス付けされたすべてのフィールドにおいて、並べ替えは `$orderby` 式に基づきます。`$orderby` 句は OData 式です。 構文について詳しくは、[filters 句と order-by 句のための OData 式の構文](query-odata-filter-orderby-syntax.md)に関する記事をご覧ください。
 
 関連性は、スコアリング プロファイルに深くかかわっています。 既定のスコアリングを使用すると、すべての結果がテキスト分析と統計情報に基づいて順に並べられます。このとき、検索用語との一致内容が多い、あるいは一致レベルが高いドキュメントに高いスコアが付けられます。
 
@@ -92,7 +90,7 @@ Azure Search では、`"Sortable": true.` としてインデックス付けさ�
 
 ## <a name="faceted-navigation"></a>ファセット ナビゲーション
 
-検索ナビゲーションは結果ページによく使用され、ページの端または上部に表示される場合が多いです。 Azure Search では、ファセット ナビゲーションを使用すると、定義済みのフィルターに基づいた自動検索ができます。 詳細については、「 [Azure Search のファセット ナビゲーション](search-faceted-navigation.md) 」を参照してください。
+検索ナビゲーションは結果ページによく使用され、ページの端または上部に表示される場合が多いです。 Azure Cognitive Search では、ファセット ナビゲーションを使用すると、定義済みのフィルターに基づいた自動検索ができます。 詳細については、[Azure Cognitive Search のファセット ナビゲーション](search-faceted-navigation.md)に関する記事を参照してください。
 
 ## <a name="filters-at-the-page-level"></a>ページ レベルでのフィルター
 
@@ -102,14 +100,14 @@ Azure Search では、`"Sortable": true.` としてインデックス付けさ�
 
     GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
-`$filter`式の詳細については、「[ドキュメントの検索 (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。
+`$filter` 式について詳しくは、[ドキュメントの検索 (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) に関する記事をご覧ください。
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice)
+- [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice)
 - [インデックス操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
 - [ドキュメントの操作](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Azure Search のファセット ナビゲーション](search-faceted-navigation.md)
+- [Azure Cognitive Search のファセット ナビゲーション](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG

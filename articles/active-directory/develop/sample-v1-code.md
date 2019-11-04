@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41ff9bce6135936a4b23096fb18efecf7be1e1e2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a71eaebcc6345d6550d6ddd38350fe709706d740
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374111"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809285"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -81,7 +81,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET または ASP.NET Core 2.x Web API の呼び出し
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-デスクトップ (WPF)           | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo_NET.png)  | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) の一部 | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+デスクトップ (WPF)           | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo_NET.png)  | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) の一部 | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
 モバイル (UWP)            | 。![.NET/C#/UWP を示す画像](media/sample-v2-code/logo_Windows.png)   | Interactive | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> このサンプルでは、[ADAL.NET](https://aka.ms/adalnet) ではなく [WAM](/windows/uwp/security/web-account-manager) を使用します|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (ADAL.NET を使用してシングル テナント Web API を呼び出す UWP アプリケーション) </p> [dotnet-webapi-multitenant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (ADAL.NET を使用してマルチテナント Web API を呼び出す UWP アプリケーション)|
 モバイル (Android、iOS、UWP)   | ![.NET/C# (Xamarin) を示す画像](media/sample-v2-code/logo_xamarin.png) | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 モバイル (Android)           | ![Android のロゴを示す画像](media/sample-v2-code/logo_Android.png) | Interactive |   [android](https://github.com/Azure-Samples/active-directory-android) |

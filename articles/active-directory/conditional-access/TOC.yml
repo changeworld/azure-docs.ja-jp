@@ -31,6 +31,8 @@
       href: location-condition.md
     - name: コントロール
       href: controls.md
+    - name: レポート専用モード
+      href: concept-conditional-access-report-only.md
     - name: サービスの依存関係
       href: service-dependencies.md
     - name: What if ツール
@@ -50,6 +52,8 @@
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Azure 管理のために MFA を必須にする
           href: howto-conditional-access-policy-azure-management.md
+        - name: すべてのユーザーに対して MFA を必須にする
+          href: howto-conditional-access-policy-all-users-mfa.md
         - name: レガシ認証をブロックする
           href: howto-conditional-access-policy-block-legacy.md
         - name: リスクベースの条件付きアクセス
@@ -74,6 +78,8 @@
       href: untrusted-networks.md
     - name: 利用規約が必須
       href: terms-of-use.md
+    - name: レポート専用モードの構成
+      href: howto-conditional-access-report-only.md
     - name: サインインの頻度とブラウザーの永続性の制御
       href: howto-conditional-access-session-lifetime.md
     - name: クラシック ポリシーを移行する

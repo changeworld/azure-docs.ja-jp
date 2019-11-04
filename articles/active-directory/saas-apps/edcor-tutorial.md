@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5b06f2d8-9cd7-498d-bdd6-88570a0a0a15
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 084a045fda66087b657f26679ab1926fa3611cb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17913d4d2fae54c5efa03a6cf30c66071b01bf40
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103664"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>チュートリアル:Azure Active Directory と Edcor の統合
 

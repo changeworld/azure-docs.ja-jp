@@ -65,7 +65,7 @@
   items:
     - name: Personalizer の作成と構成
       href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
     - name: 分析
       items:
         - name: オフライン評価

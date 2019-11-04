@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 017266fd28fb31b4509957560a042abf74314453
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/24/2019
+ms.openlocfilehash: 823226da671671eaf6380d48a35c20298ec6bf9d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458840"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933633"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 
@@ -30,9 +30,7 @@ ms.locfileid: "61458840"
 
 3. 構成を保存する前に、IP アドレスを確認します。 場合によっては、Azure Portal で見られる IP アドレスは、インターネットおよび Azure サーバーにアクセスするときに使用する IP アドレスと異なることがあります。 そのため、開始 IP と終了 IP を変更してルール関数を予想どおりにする必要があります。
 
-   検索エンジンまたはその他のオンライン ツールを使用して、自分の IP アドレスを確認します (たとえば、「what is my IP」を検索します)。 
-
-   ![Bing での「What is my IP」](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
+   検索エンジンまたはその他のオンライン ツールを使用して、自分の IP アドレスを確認します (たとえば、「what is my IP」を検索します)。
 
 4. アドレス範囲を追加します。 Azure Database for MySQL のファイアウォール規則では、単一の IP アドレスまたはアドレスの範囲を指定できます。 規則を単一の IP アドレスに限定する場合は、[開始 IP] フィールドと [終了 IP] フィールドに同じアドレスを入力します。 ファイアウォールを開くと、管理者、ユーザー、およびアプリケーションは、有効な資格情報を持っている MySQL サーバー上の任意のデータベースにアクセスできます。
 

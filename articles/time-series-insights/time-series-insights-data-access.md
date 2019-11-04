@@ -3,7 +3,7 @@ title: Azure Time Series Insights へのアクセスおよび管理用のセキ�
 description: この記事では、管理アクセス ポリシーとデータ アクセス ポリシーとしてセキュリティとアクセス許可を構成し、Azure Time Series Insights プレビューを保護する方法を説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 670615980b7fd78441a08ba987073dc139b3792a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 3d835916ab1a9d99149800a50690876080a8c5fd
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274444"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990168"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 

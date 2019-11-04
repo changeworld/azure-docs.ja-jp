@@ -1,13 +1,13 @@
 ---
-title: Lucene クエリ構文 - Azure Search
-description: Azure Search で使用される完全な Lucene 構文のリファレンス。
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
+title: Lucene クエリ構文
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search で使用される完全な Lucene 構文のリファレンス。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,15 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d667588cea5902700c225dd7b597d8f03d93d200
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1b94a1bbab810345ab222be9e7aba2fef0f52549
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650057"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786286"
 ---
-# <a name="lucene-query-syntax-in-azure-search"></a>Azure Search での Lucence クエリ構文
-特殊なクエリ形式 (ワイルドカード、あいまい検索、近接検索、正規表現などその他多数) に対し、高度な [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 構文に基づいて Azure Search に対するクエリを作成できます。 Lucene Query Parser 構文の多くは、[Azure Search でそのまま実装](search-lucene-query-architecture.md)されています。ただし、*範囲検索*は例外で、これは Azure Search では `$filter` 式を介して構築されます。 
+# <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での Lucence クエリ構文
+
+特殊なクエリ形式 (ワイルドカード、あいまい検索、近接検索、正規表現などその他多数) に対し、高度な [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 構文に基づいて Azure Cognitive Search に対するクエリを作成できます。 Lucene Query Parser 構文の多くは、[Azure Cognitive Search でそのまま実装](search-lucene-query-architecture.md)されています。ただし、*範囲検索*は例外で、これは Azure Cognitive Search では `$filter` 式を介して構築されます。 
 
 ## <a name="how-to-invoke-full-parsing"></a>完全な解析を呼び出す方法
 
@@ -56,10 +57,10 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 }
 ```
 
-その他の例については、「[Azure Search でクエリを作成するための Lucene クエリ構文例](search-query-lucene-examples.md)」を参照してください。 すべての可能なクエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。
+その他の例については、[Azure Cognitive Search でクエリを作成するための Lucene クエリ構文例](search-query-lucene-examples.md)に関する記事を参照してください。 すべての可能なクエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。
 
 > [!NOTE]  
->  Azure Search では、簡潔なキーワード検索に使用できる単純で堅牢なクエリ言語である、[単純なクエリ構文](query-simple-syntax.md)もサポートされます。  
+>  Azure Cognitive Search では、簡潔なキーワード検索に使用できる単純で堅牢なクエリ言語である、[単純なクエリ構文](query-simple-syntax.md)もサポートされます。  
 
 ##  <a name="bkmk_syntax"></a> 構文の基礎  
  次の構文の基礎は、Lucene 構文を使用するすべてのクエリに適用されます。  
@@ -83,7 +84,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>URL での安全でない文字および予約文字のエンコード
 
- 安全でない文字および予約文字はすべて、URL でエンコードするようにしてください。 たとえば、'#' は、URL 内のフラグメント ID またはアンカー ID のため、安全でない文字です。 この文字を URL で使用する場合は、`%23` にエンコードする必要があります。 '&' と '=' は、予約文字の例です。これらの文字は、Azure Search でパラメーターを区切り、値を指定します。 詳細については、「[RFC1738: Uniform Resource Locators (URL)](https://www.ietf.org/rfc/rfc1738.txt)」を参照してください。
+ 安全でない文字および予約文字はすべて、URL でエンコードするようにしてください。 たとえば、'#' は、URL 内のフラグメント ID またはアンカー ID のため、安全でない文字です。 この文字を URL で使用する場合は、`%23` にエンコードする必要があります。 '&' と '=' は、予約文字の例です。これらの文字は、Azure Cognitive Search でパラメーターを区切り、値を指定します。 詳細については、「[RFC1738: Uniform Resource Locators (URL)](https://www.ietf.org/rfc/rfc1738.txt)」を参照してください。
 
  安全でない文字は ``" ` < > # % { } | \ ^ ~ [ ]`` です。 予約文字は `; / ? : @ = + &` です。
 
@@ -93,7 +94,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 フィールドのグループ化は似ていますが、グループ化のスコープを 1 つのフィールドに設定します。 たとえば、`hotelAmenities:(gym+(wifi||pool))` を指定すると、"hotelAmenities" のフィールドで "gym" と "wifi"、または "gym" と "pool" が検索されます。  
 
 ### <a name="searchmode-parameter-considerations"></a>SearchMode パラメーターに関する考慮事項  
- 「[Azure Search での単純なクエリ構文](query-simple-syntax.md)」で説明されているように、クエリに対する `searchMode` の影響は、Lucene クエリ構文にも同様に適用されます。 つまり、`searchMode` を NOT 演算子と組み合わせて使用した場合、パラメーターの設定による影響が明確でなければ異常と思えるクエリ結果になることがあります。 既定値の `searchMode=any` を保持して、NOT 演算子を使用すると、演算は OR アクションとして計算されます。たとえば、"New York" NOT "Seattle" を指定すると、Seattle 以外のすべての都市が返されます。  
+ 「[Azure Cognitive Search での単純なクエリ構文](query-simple-syntax.md)」で説明されているように、クエリに対する `searchMode` の影響は、Lucene クエリ構文にも同様に適用されます。 つまり、`searchMode` を NOT 演算子と組み合わせて使用した場合、パラメーターの設定による影響が明確でなければ異常と思えるクエリ結果になることがあります。 既定値の `searchMode=any` を保持して、NOT 演算子を使用すると、演算は OR アクションとして計算されます。たとえば、"New York" NOT "Seattle" を指定すると、Seattle 以外のすべての都市が返されます。  
 
 ##  <a name="bkmk_boolean"></a> ブール演算子 (AND、OR、NOT) 
  テキスト ブール演算子 (AND、OR、NOT) は、常に大文字で指定します。  
@@ -116,10 +117,10 @@ NOT 演算子は、感嘆符またはマイナス記号です。 たとえば、
 `searchMode=all` を使用すると、より少ない結果を含めることによりクエリの精度が上がり、既定で - は "AND NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含み、かつ `luxury` という用語を含まないドキュメントに一致します。 これはほぼ間違いなく、- 演算子にとってより直感的な動作です。 したがって、再現率ではなく精度で検索を最適化する場合、*そして*ユーザーが検索で `-` 演算子を頻繁に使用する場合は、`searchMode=any` よりも `searchMode=all` を選択することを検討してください。
 
 ##  <a name="bkmk_querysizelimits"></a> クエリ サイズの制限  
- Azure Search に送信できるクエリのサイズには制限があります。 具体的には、最大で 1024 句 (AND、OR、その他で区切られた式) を持つことができます。 クエリ内の個々の用語のサイズにも約 32 KB の制限があります。 アプリケーションがプログラムで検索クエリを生成する場合は、無制限のサイズのクエリが生成されないように設計することをお勧めします。  
+ Azure Cognitive Search に送信できるクエリのサイズには制限があります。 具体的には、最大で 1024 句 (AND、OR、その他で区切られた式) を持つことができます。 クエリ内の個々の用語のサイズにも約 32 KB の制限があります。 アプリケーションがプログラムで検索クエリを生成する場合は、無制限のサイズのクエリが生成されないように設計することをお勧めします。  
 
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> ワイルドカード クエリと正規表現クエリのスコアリング
- Azure Search は、テキスト クエリで、頻度に基づいたスコアリング ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) を使用します。 ただし、用語のスコープが広くなる可能性があるワイルドカード クエリと正規表現クエリでは、出現頻度が低い用語の一致に対する優先度付けに偏りが発生するのを避けるために、頻度の係数は無視されます。 すべての一致は、ワイルドカード検索と正規表現検索で同等に扱われます。
+ Azure Cognitive Search は、テキスト クエリで、頻度に基づいたスコアリング ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) を使用します。 ただし、用語のスコープが広くなる可能性があるワイルドカード クエリと正規表現クエリでは、出現頻度が低い用語の一致に対する優先度付けに偏りが発生するのを避けるために、頻度の係数は無視されます。 すべての一致は、ワイルドカード検索と正規表現検索で同等に扱われます。
 
 ##  <a name="bkmk_fields"></a> フィールド検索  
 `fieldName:searchExpression` 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます たとえば、次のようになります。  
@@ -172,4 +173,4 @@ NOT 演算子は、感嘆符またはマイナス記号です。 たとえば、
 
 + [ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [フィルターと並べ替えの OData 式の構文](query-odata-filter-orderby-syntax.md)   
-+ [Azure Search での単純なクエリ構文](query-simple-syntax.md)   
++ [Azure Cognitive Search での単純なクエリ構文](query-simple-syntax.md)   

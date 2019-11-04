@@ -1,22 +1,22 @@
 ---
-title: クイック スタート:REST API シリーズを使用して Postman で検索インデックスを作成する - Azure Search
-description: Postman、サンプル データ、および定義を使用して Azure Search REST API を呼び出す方法について説明します。
+title: クイック スタート:REST API を使用して Postman で検索インデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: Postman、サンプル データ、および定義を使用して Azure Cognitive Search REST API を呼び出す方法について説明します。
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: ffa20599ae57908f9b0ea848ab68f41a3d0e2a14
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: 00d1122a8b56237eeb20892ad05cdbbcbe247510
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176033"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792277"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>クイック スタート:REST API を使用して Postman に Azure Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>クイック スタート:REST API を使用して Postman で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "72176033"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) を調査するための最も簡単な方法の 1 つは、Postman または別の Web テスト ツールを使用して HTTP 要求を作成し、その応答を検査することです。 適切なツールと以下の手順を利用すると、コードを記述する前に要求を送信して応答を確認できます。
+[Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice) を調査するための最も簡単な方法の 1 つは、Postman または別の Web テスト ツールを使用して HTTP 要求を作成し、その応答を検査することです。 適切なツールと以下の手順を利用すると、コードを記述する前に要求を送信して応答を確認できます。
 
 この記事では、要求を対話形式で作成する方法について説明します。 または、[Postman コレクションをダウンロードしてインポート](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart)し、定義済みの要求を使用することもできます。
 
@@ -35,13 +35,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートでは、次のサービスとツールが必要です。 
 
-+ [Postman デスクトップ アプリ](https://www.getpostman.com/)は、Azure Search に要求を送信するために使用されます。
++ [Postman デスクトップ アプリ](https://www.getpostman.com/)は、Azure Cognitive Search に要求を送信するために使用されます。
 
-+ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
@@ -51,9 +51,9 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-## <a name="connect-to-azure-search"></a>Azure Search への接続
+## <a name="connect-to-azure-cognitive-search"></a>Azure Cognitive Search に接続する
 
-このセクションでは、任意の Web ツールを使用して、Azure Search への接続を設定します。 各ツールには、セッションの要求ヘッダー情報が保持されます。つまり、API キーとコンテンツタイプの入力は 1 度だけで済みます。
+このセクションでは、任意の Web ツールを使用して、Azure Cognitive Search への接続を設定します。 各ツールには、セッションの要求ヘッダー情報が保持されます。つまり、API キーとコンテンツタイプの入力は 1 度だけで済みます。
 
 いずれかのツールでコマンド (GET、POST、PUT など) を選択し、URL エンドポイントを指定し、一部のタスクでは要求の本文に JSON を入力する必要があります。 検索サービス名 (YOUR-SEARCH-SERVICE-NAME) を有効な値に置き換えます。 各インデックスの名前だけを返すには、`$select=name` を追加します。 
 
@@ -61,18 +61,18 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 HTTPS プレフィックス、サービスの名前、オブジェクト (この例では、インデックス コレクション) の名前、[API バージョン](search-api-versions.md)に注目してください。 API バージョンは必須の小文字の文字列で、最新バージョンの場合は `?api-version=2019-05-06` として指定します。 API バージョンは定期的に更新されます。 各要求に API バージョンを含めるので、使用するバージョンが完全に制御されます。  
 
-要求ヘッダーの構成には、コンテンツの種類に加えて、Azure Search への認証に使用される API キーの 2 つの要素が含まれます。 管理者 API キー (YOUR-AZURE-SEARCH-ADMIN-API-KEY) を有効な値に置き換えます。 
+要求ヘッダーの構成には、コンテンツの種類に加えて、Azure Cognitive Search への認証に使用される API キーの 2 つの要素が含まれます。 管理者 API キー (YOUR-AZURE-SEARCH-ADMIN-API-KEY) を有効な値に置き換えます。 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-Postman で、次のスクリーンショットのように要求を作成します。 動詞として **GET** を選択し、URL を入力し、 **[Send]\(送信\)** をクリックします。 このコマンドは Azure Search に接続し、インデックス コレクションを読み取り、接続が成功すると HTTP 状態コード 200 を返します。 ご使用のサービスにインデックスが既に作成されている場合、応答にはインデックスの定義も含まれます。
+Postman で、次のスクリーンショットのように要求を作成します。 動詞として **GET** を選択し、URL を入力し、 **[Send]\(送信\)** をクリックします。 このコマンドは Azure Cognitive Search に接続し、インデックス コレクションを読み取り、接続が成功すると HTTP 状態コード 200 を返します。 ご使用のサービスにインデックスが既に作成されている場合、応答にはインデックスの定義も含まれます。
 
 ![Postman の要求 URL とヘッダー](media/search-get-started-postman/postman-url.png "Postman の要求 URL とヘッダー")
 
 ## <a name="1---create-an-index"></a>1 - インデックスの作成
 
-Azure Search では、通常、データを読み込む前にインデックスを作成します。 このタスクには、[インデックスの作成 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) が使用されます。 
+Azure Cognitive Search では、通常、データを読み込む前にインデックスを作成します。 このタスクには、[インデックスの作成 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) が使用されます。 
 
 URL を拡張して、`hotels` インデックス名を含めます。
 
@@ -86,7 +86,7 @@ Postman でこれを行うには:
 
 4. **[送信]** をクリックします。
 
-![要求本文の JSON ドキュメントのインデックスを作成する](media/search-get-started-postman/postman-request.png "要求本文の JSON ドキュメントのインデックスを作成する")
+![要求本文内の JSON ドキュメントのインデックス作成](media/search-get-started-postman/postman-request.png "要求本文内の JSON ドキュメントのインデックス作成")
 
 ### <a name="index-definition"></a>インデックスの定義
 
@@ -126,7 +126,7 @@ Postman でこれを行うには:
 
 ## <a name="2---load-documents"></a>2 - ドキュメントを読み込む
 
-インデックスの作成とインデックスの設定は別の手順です。 Azure Search では、インデックスにはすべての検索可能なデータが含まれており、それを JSON ドキュメントとして提供できます。 このタスクには、[ドキュメントの追加、更新、または削除 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) が使用されます。 
+インデックスの作成とインデックスの設定は別の手順です。 Azure Cognitive Search では、インデックスにはすべての検索可能なデータが含まれており、それを JSON ドキュメントとして提供できます。 このタスクには、[ドキュメントの追加、更新、または削除 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) が使用されます。 
 
 URL を拡張して、`docs` コレクションと `index` 操作を含めます。
 
@@ -253,7 +253,7 @@ Postman でこれを行うには:
 
 このクエリは空であり、検索結果ではドキュメントの数が返されます。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーンショットのようになります。 状態コードは 200 になります。
 
- ![GET と URL の検索文字列](media/search-get-started-postman/postman-query.png "GET と URL の検索文字列")
+ ![URL の検索文字列を使用した GET](media/search-get-started-postman/postman-query.png "URL の検索文字列を使用した GET")
 
 構文について大まかに把握するため、その他のクエリ例をいくつか試してください。 文字列の検索、逐語的な $filter クエリの実行、結果セットの制限、特定のフィールドへの検索範囲の設定などを行うことができます。
 
@@ -284,7 +284,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/
 
 URL に `/stats` を追加すると、インデックスの情報が返されます。 Postman の場合、要求は次のようになります。また、応答にはドキュメント数とバイト単位の使用領域が含まれます。
 
- ![インデックス情報の取得](media/search-get-started-postman/postman-system-query.png "インデックス情報の取得")
+ ![インデックス情報を取得する](media/search-get-started-postman/postman-system-query.png "インデックス情報を取得する")
 
 API バージョンの構文が異なる点に注目してください。 この要求では、`?` を使用して API バージョンを付加しています。 `?` により、URL パスとクエリ文字列を区切り、& により、クエリ文字列内の各 "名前=値" ペアを区切ります。 このクエリのクエリ文字列では、API バージョンは最初で唯一の項目です。
 
@@ -301,4 +301,4 @@ API バージョンの構文が異なる点に注目してください。 この
 これで主要タスクを実行する方法がわかったため、インデクサーや[認知検索パイプラインの設定](cognitive-search-tutorial-blob.md)など、より高度な機能のための追加の REST API 呼び出しに進むことができます。 次のステップについては、以下のリンクをお勧めします。
 
 > [!div class="nextstepaction"]
-> [REST チュートリアル: Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索](search-semi-structured-data.md)
+> [REST チュートリアル: Azure Cognitive Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索](search-semi-structured-data.md)

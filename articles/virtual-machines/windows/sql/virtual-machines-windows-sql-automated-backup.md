@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 24863f00dcec78471cd187b64f6931b7b95124c9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0cfcbdaee5a39a947bd89c677f49214c8c3cb98a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100632"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162850"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 Virtual Machines の自動バックアップ (Resource Manager)
 
@@ -164,7 +164,7 @@ PowerShell を使用すると、自動バックアップを有効にできるほ
 最初に、バックアップ ファイル用のストレージ アカウントを選択または作成します。 次のスクリプトでは、ストレージ アカウントを選択し、ストレージ アカウントが存在しない場合は作成します。
 
 ```powershell
-$storage_accountname = “yourstorageaccount”
+$storage_accountname = "yourstorageaccount"
 $storage_resourcegroupname = $resourcegroupname
 
 $storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
@@ -228,8 +228,8 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 ```powershell
 $vmname = "yourvmname"
 $resourcegroupname = "vmresourcegroupname"
-$region = “Azure region name such as EASTUS2”
-$storage_accountname = “storageaccountname”
+$region = "Azure region name such as EASTUS2"
+$storage_accountname = "storageaccountname"
 $storage_resourcegroupname = $resourcegroupname
 $retentionperiod = 10
 

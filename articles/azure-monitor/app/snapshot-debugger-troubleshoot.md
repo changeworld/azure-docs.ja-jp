@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights Snapshot Debugger に関する問題のトラブルシューティング | Microsoft Docs
 description: この記事では、Application Insights Snapshot Debugger の有効化または使用で問題が発生している開発者に役立つ、トラブルシューティングの手順と情報を示します。
-services: application-insights
-documentationcenter: ''
-author: brahmnes
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 03/07/2019
+author: brahmnes
 ms.author: mbullwin
-ms.openlocfilehash: 25ccf20fc78a9ec00d4dfe23a60e824e96d12945
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 03/07/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: ec70f202a496ec368a483278994c7c5ccb24f40b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444545"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899821"
 ---
 # <a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。

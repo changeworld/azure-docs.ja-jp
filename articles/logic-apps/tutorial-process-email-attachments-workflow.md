@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - メールと添付ファイルの処理を自動化する - Azure Logic Apps
-description: チュートリアル - Azure Logic Apps、Azure Storage、Azure Functions を使ってメールと添付ファイルを処理する自動化されたワークフローを作成する
+title: Azure Functions を使用してワークフローを構築する - Azure Logic Apps
+description: チュートリアル - Azure Logic Apps、Azure Storage、および Azure Functions を使用して、メールと添付ファイルを処理するワークフローを自動化します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,14 +11,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: e7c27d284ef93d15c5ac9a6228205e79518f2ffa
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 2919816872fd73c8a50f404e857c9ec56eeab0f5
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051777"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679169"
 ---
-# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する
+# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する
 
 Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを初めとする各種の SaaS (サービスとしてのソフトウェア) アプリとオンプレミス システムの垣根を越えてワークフローを自動化したりデータを統合したりすることができます。 このチュートリアルでは、受信メールと添付ファイルを処理する[ロジック アプリ](../logic-apps/logic-apps-overview.md)の作成方法を紹介します。 このロジック アプリは、電子メールのコンテンツを分析し、そのコンテンツを Azure Storage に保存して、コンテンツの確認依頼通知を送信します。
 

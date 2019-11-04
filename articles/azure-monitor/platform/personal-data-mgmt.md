@@ -1,24 +1,18 @@
 ---
 title: Azure Log Analytics に格納された個人データに関するガイダンス | Microsoft Docs
 description: この記事では、Azure Log Analytics に格納された個人データを管理する方法と、それを特定して削除する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/18/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 05/18/2018
+ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617303"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932140"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 

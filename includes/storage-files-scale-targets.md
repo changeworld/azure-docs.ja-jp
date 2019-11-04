@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: d21709a231f97f1f1dc86837f79457df0cdb2263
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d76338ccd4dcdf7a9a9a96baa1fb47ed5272d5ff
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513296"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72822003"
 ---
 | リソース | Standard ファイル共有 | Premium ファイル共有 |
 |----------|---------------|------------------------------------------|

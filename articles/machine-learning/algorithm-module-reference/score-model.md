@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 43a398b091b282da6ede06796250cda17117dc18
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f046b41d02ac392d003a9ecd15f25b43e5449cd0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128512"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692665"
 ---
 # <a name="score-model-module"></a>スコア モデル モジュール
 
@@ -24,13 +24,13 @@ ms.locfileid: "70128512"
 
 ## <a name="how-to-use"></a>使用方法
 
-1. **モデルのスコア付け** モジュールを実験に追加します。
+1. **モデルのスコア付け**モジュールをパイプラインに追加します。
 
 2. トレーニング済みモデルと新しい入力データを含むデータセットを接続します。 
 
     データは、使用するトレーニング済みモデルの種類と互換性のある形式でなければなりません。 また、一般に、入力データセットのスキーマはモデルのトレーニングに使用されたデータのスキーマと一致している必要があります。
 
-3. 実験を実行します。
+3. パイプラインを実行します。
 
 ## <a name="results"></a>結果
 
@@ -48,7 +48,7 @@ ms.locfileid: "70128512"
 
 ## <a name="publish-scores-as-a-web-service"></a>Web サービスとしてスコアを公開する
 
-スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning での実験に基づいた Web サービスの作成方法に関する次のチュートリアルを参照してください。
+スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning でのパイプラインに基づいた Web サービスの作成方法に関する次のチュートリアルを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

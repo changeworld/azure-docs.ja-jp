@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: de7858be4ac4e392b4fb92cacf55882378ba9813
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568987"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177718"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL データ同期のデータ同期エージェント
 
@@ -115,7 +115,7 @@ SQL データ同期サービスは、クライアント エージェントを使
 - **解決策**。 次の 2 つの解決策を試してください。
 
     -   services.msc を使用してクライアント エージェントの資格情報を再入力します。
-    -   今のクライアント エージェントをアンインストールした後、新規にクライアント エージェントをインストールします。 [ダウンロード センター](https://go.microsoft.com/fwlink/?linkid=221479)から最新のクライアント エージェントをダウンロードしてインストールします。
+    -   今のクライアント エージェントをアンインストールした後、新規にクライアント エージェントをインストールします。 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=27693)から最新のクライアント エージェントをダウンロードしてインストールします。
 
 ### <a name="agent-list"></a> データベースがエージェントの一覧に表示されない
 

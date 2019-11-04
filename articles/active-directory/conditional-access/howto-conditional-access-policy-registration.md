@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f54ad6de21f05c76ca021e172a041563e3d688a8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 771e4e0ecbda4baf1f38aacd1f39397875bbd0dc
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575978"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150762"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>条件付きアクセス:信頼できる場所を MFA 登録で必須にする
 

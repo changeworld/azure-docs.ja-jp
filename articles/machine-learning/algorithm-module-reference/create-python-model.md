@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: c6d7aabd41e9d0e872926adbbcb2d18332cb7d5e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128915"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693890"
 ---
 # <a name="create-python-model"></a>Python モデルの作成
 
@@ -33,7 +33,7 @@ Azure Machine Learning 環境の Python パッケージに含まれる任意の�
 このモジュールを使用するには、Python の中級またはエキスパートの知識が必要です。 モジュールでは、Azure Machine Learning に既にインストールされている Python パッケージに含まれる任意の学習器の使用がサポートされています。 「[Execute Python Script (Python スクリプトの実行)](execute-python-script.md)」で事前にインストールされている Python パッケージの一覧をご覧ください。
   
 
-この記事では、簡単な実験で **Python モデルの作成**を使用する方法を示します。 実験のグラフを次に示します。
+この記事では、簡単なパイプラインで **Python モデルの作成**を使用する方法を示します。 パイプラインのグラフを次に示します。
 
 ![create-python-model](./media/module/aml-create-python-model.png)
 

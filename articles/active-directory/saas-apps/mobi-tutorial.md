@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a410cabf-a47b-43fb-8c88-d45f5911e148
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d86fd3afb5f64f03952fa70043d8913078d500a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 398c947e98486fa975f3f786fb64f45e9cae9287
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096863"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobi"></a>チュートリアル:Azure Active Directory と MOBI の統合
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7ff164b378ac6981fcb9686d6264b0bcf50cfafb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a01c95cbe9281c915e89572c07fcbc203193b962
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814695"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935498"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory での JSON 形式
 
@@ -181,8 +181,13 @@ Azure Blob Storage 上の JSON データセットの例を次に示します。
     ]
     ```
 
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+Mapping Data Flow の[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事で詳細を確認してください。
+
 ## <a name="next-steps"></a>次の手順
 
 - [コピー アクティビティの概要](copy-activity-overview.md)
+- [マッピング データ フロー](concepts-data-flow-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 - [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)

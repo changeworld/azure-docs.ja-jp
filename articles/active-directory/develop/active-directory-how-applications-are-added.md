@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory にアプリケーションを追加する方法と理由
+titleSuffix: Microsoft identity platform
 description: Azure AD にアプリケーションを追加する意味とその方法
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb3ef2a86c523d7cda5bc7da5d83ec4ac741abf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835388"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803439"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 

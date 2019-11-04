@@ -1,5 +1,5 @@
 ---
-title: サブスクリプション、リソース グループ、またはリージョン間でロジック アプリのリソースを移動する - Azure Logic Apps
+title: サブスクリプション、リソース グループ、またはリージョン間でロジック アプリを移動する - Azure Logic Apps
 description: ロジック アプリまたは統合アカウントを別の Azure サブスクリプション、リソース グループ、または場所 (リージョン) に移行する
 services: logic-apps
 ms.service: logic-apps
@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e7c201004be6c4d39f482cc288824cba74e302cb
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c3bad32943b83cbfe4c96087f3fef1c51f64bb1
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737301"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679105"
 ---
-# <a name="migrate-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>ロジック アプリのリソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移行する
+# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>ロジック アプリのリソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移動する
 
 ロジック アプリや関連リソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移動するタスクを完了する方法として、Azure portal、Azure PowerShell、Azure CLI、REST API など、さまざまな方法が用意されています。 リソースを移動する前に、次の考慮事項を確認してください。 
 

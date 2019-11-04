@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: a326a5b323999e97b4d015403e36eb97dfc8483f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8ef32a2cf385c052437c5e5cbd7c95077a262e83
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248825"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162996"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール マッピング
 

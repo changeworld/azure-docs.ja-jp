@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 641f9150d1135f4f214038150b95b6691a37ecc0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 555a8a823526a51b045b4a0314ef7610bf728e5b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393337"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242974"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -165,6 +165,15 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
                     "DefaultEvents": {
                     "eventDestination": "ServiceFabricSystemEventTable"
                     }
+                },
+                {
+                    "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                    "scheduledTransferLogLevelFilter": "Information",
+                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                    "scheduledTransferPeriod": "PT5M",
+                    "DefaultEvents": {
+                    "eventDestination": "ServiceFabricSystemEventTable"
+                    }
                 }
                 ]
             }
@@ -261,6 +270,15 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
                 "scheduledTransferPeriod": "PT5M",
                 "DefaultEvents": {
                   "eventDestination": "ServiceFabricSystemEventTable"
+                }
+              },
+              {
+                "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                "scheduledTransferLogLevelFilter": "Information",
+                "scheduledTransferKeywordFilter": "4611686018427387904",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                "eventDestination": "ServiceFabricSystemEventTable"
                 }
               }
             ]

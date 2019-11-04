@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4ae5f30d-113b-4261-b474-47ffbac08bf7
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ef49cb2e245e4af7b5d7f7d250194761cf0b375
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a09eda25e8c7cc087770210cdfbe7e2bc9832acf
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826358"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル:Azure Active Directory と Meta Networks Connector の統合
 

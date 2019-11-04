@@ -3,7 +3,7 @@ title: Azure Time Series Insights 環境のデータ保有について | Microso
 description: この記事では、Azure Time Series Insights 環境のデータ保有を制御する 2 つの設定について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9dd771d44452ddc36913caf04f3c3a2d15ff1f08
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330929"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990126"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights のデータ保有について
 

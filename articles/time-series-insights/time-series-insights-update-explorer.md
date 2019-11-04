@@ -1,21 +1,21 @@
 ---
 title: Azure Time Series Insights プレビュー エクスプローラーでデータを視覚化する | Microsoft Docs
 description: この記事では、Azure Time Series Insights プレビュー エクスプローラー Web アプリで使用できる機能とオプションについて説明します。
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a0d8f7cdace8d3e810dfcda6e54df5823840307c
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 3f6c03ace13b9b6cb1bda004799502e1f382051d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034331"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989952"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>エクスプローラー プレビューでデータを視覚化する
 

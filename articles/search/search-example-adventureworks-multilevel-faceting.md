@@ -1,27 +1,27 @@
 ---
-title: 例:多層構造ファセット - Azure Search
+title: 例:多層構造ファセット
+titleSuffix: Azure Cognitive Search
 description: 複数レベルの分類法を表すファセット構造を構築し、アプリケーション ページに含めることができる、入れ子になったナビゲーション構造を作成する方法について説明します。
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274078"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792938"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>例:Azure Search の多層構造ファセット
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>例:Azure Cognitive Search の多層構造ファセット
 
-Azure Search のスキーマでは、複数レベルの分類法によるカテゴリは明示的にサポートされていませんが、インデックス作成の前にコンテンツを操作し、その後、結果にいくつかの特殊な処理を適用することで、それに近づけることができます。 
+Azure Cognitive Search のスキーマでは、複数レベルの分類カテゴリは明示的にはサポートしていませんが、インデックス作成の前にコンテンツを操作し、その後、結果にいくつかの特殊な処理を適用することで、それに近づけることができます。 
 
 ## <a name="start-with-the-data"></a>データから開始する
 
-この記事の例は、[AdventureWorks の在庫データベースのモデル化](search-example-adventureworks-modeling.md)に関する前の例に基づいていて、Azure Search の多層構造ファセットの実例が示されます。
+この記事の例は、Azure Cognitive Search の多層構造ファセットをデモンストレーションする、前の [AdventureWorks の在庫データベースのモデル化](search-example-adventureworks-modeling.md)の例に基づいています。
 
 AdventureWorks には、親子関係のある単純な 2 レベルの分類があります。 この構造の固定長の分類の深さであれば、単純な SQL 結合クエリを使用して、分類をグループ化できます。
 
@@ -35,11 +35,11 @@ LEFT JOIN
   ON category.ParentProductCategoryId=parent.ProductCategoryId
 ```
 
-  ![クエリの結果](./media/search-example-adventureworks/prod-query-results.png "クエリの結果")
+  ![クエリの結果](./media/search-example-adventureworks/prod-query-results.png "Query results")
 
 ## <a name="indexing-to-a-collection-field"></a>コレクション フィールドへのインデックス付け
 
-この構造体を含むインデックス内に、このデータを格納するための Azure Search スキーマの **Collection(Edm.String)** フィールドを作成し、フィールドの属性に、検索可能、フィルター可能、ファセット可能、取得可能が含まれるようにします。
+この構造体を含むインデックス内に、このデータを格納する Azure Cognitive Search スキーマの **Collection(Edm.String)** フィールドを作成し、フィールドの属性に、検索可能、フィルター可能、ファセット可能、取得可能が含まれるようにします。
 
 ここで、特定の分類カテゴリを参照するコンテンツにインデックスを付けるときに、分類の各レベルから取得したテキストを含む配列として、分類を送信します。 たとえば、`ProductCategoryId = 5 (Mountain Bikes)` であるエンティティの場合、フィールドを `[ "Bikes", "Bikes|Mountain Bikes"]` として送信します
 
@@ -51,7 +51,7 @@ LEFT JOIN
 
 count は、考えられる分類の値をすべて返すのに十分大きい値にする必要があります。 AdventureWorks のデータには別個の分類値が 41 個含まれているので、`count:50` で十分です。
 
-  ![ファセットが適用されたフィルター](./media/search-example-adventureworks/facet-filter.png "ファセットが適用されたフィルター")
+  ![ファセット フィルター](./media/search-example-adventureworks/facet-filter.png "ファセット フィルター")
 
 ## <a name="build-the-structure-in-client-code"></a>クライアント コードで構造を作成する
 
@@ -84,7 +84,7 @@ categories.count = sum;
 
 これで、**categories** オブジェクトを使用して、正確な数の折りたたみ可能な分類ツリーを表示できるようになりました。
 
-  ![多層構造ファセットのフィルター](./media/search-example-adventureworks/multi-level-facet.png "多層構造ファセットのフィルター")
+  ![複数レベルのファセット フィルター](./media/search-example-adventureworks/multi-level-facet.png "複数レベルのファセット フィルター")
 
  
 ツリー内の各リンクでは、関連するフィルターが適用されるはずです。 例:
@@ -99,4 +99,4 @@ categories.count = sum;
 
 ## <a name="see-also"></a>関連項目
 
-[例:AdventureWorks の在庫データベースを Azure Search 用にモデル化する](search-example-adventureworks-modeling.md)
+[例:AdventureWorks の在庫データベースを Azure Cognitive Search 用にモデル化する](search-example-adventureworks-modeling.md)

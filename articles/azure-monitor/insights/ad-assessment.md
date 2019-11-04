@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor で Active Directory 環境を最適化する | Microsoft Docs
 description: Active Directory 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/10/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883073"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899203"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure Monitor で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 

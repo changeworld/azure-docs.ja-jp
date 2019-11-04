@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 76b70c742289ac98e49338b267660a30abba9557
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 2d81c407c17c50c34afd15a99d2f8ac2f8c5361e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210453"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692836"
 ---
 # <a name="algorithm--module-reference-overview"></a>アルゴリズムとモジュールのリファレンスの概要
 
@@ -23,7 +23,7 @@ ms.locfileid: "70210453"
 各モジュールは、個別に実行可能なコードのセットを表し、必要な入力を取得して機械学習タスクを実行します。 モジュールには、特定のアルゴリズムが含まれているものや、機械学習において重要なタスク (欠損値の置換、統計分析など) を実行するものがあります。
 
 > [!TIP]
-> ビジュアル インターフェイス内の実験では、特定のモジュールに関する情報を取得できます。 モジュールを選択し、 **[Quick Help]\(クイック ヘルプ\)** ウィンドウの **[more help]\(さらにヘルプを見る\)** リンクを選択します。
+> ビジュアル インターフェイス内のパイプラインでは、特定のモジュールに関する情報を取得できます。 モジュールを選択し、 **[Quick Help]\(クイック ヘルプ\)** ウィンドウの **[more help]\(さらにヘルプを見る\)** リンクを選択します。
 
 ## <a name="modules"></a>モジュール
 
@@ -33,7 +33,7 @@ ms.locfileid: "70210453"
 | --- |--- | ---- |
 | データ形式の変換 | 機械学習で使用されるさまざまなファイル形式にデータを変換します。 | [CSV への変換](convert-to-csv.md) |
 | データの入力と出力 | クラウド ソースのデータを実験に移動します。 実験の実行中に、結果や中間データを Azure Storage、SQL データベース、または Hive に書き込みます。また、クラウド ストレージを使用して、複数の実験間でデータを交換します。  | [データのインポート](import-data.md)<br/>[データのエクスポート](export-data.md)<br/>[データの手動入力](enter-data-manually.md) |
-| データの変換 | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、特徴選択、次元削減など)。| [データセット内の列の選択](select-columns-in-dataset.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/>  [特徴ハッシュ](feature-hashing.md) <br/>  [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [テキストの前処理](preprocess-text.md) <br/> [データの結合](join-data.md) <br/> [データの分割](split-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md) |
+| データの変換 | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、特徴選択、次元削減など)。| [データセット内の列の選択](select-columns-in-dataset.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/>  [特徴ハッシュ](feature-hashing.md) <br/>  [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [テキストの前処理](preprocess-text.md) <br/> [データの結合](join-data.md) <br/> [データの分割](split-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md) <br/> [クリップの値](clip-values.md) <br/> [SQL 変換の適用](apply-sql-transformation.md)|
 | Python および R モジュール | コードを記述し、それをモジュール内に埋め込み、Python および R と実験を統合します。 | [Python スクリプトの実行](execute-python-script.md)   <br/> [Python モデルの作成](create-python-model.md) <br/> [R スクリプトの実行](execute-r-script.md)
 |  | **機械学習のアルゴリズム**: | |
 | 分類 | クラスを予測します。  バイナリ (2 クラス) または多クラスのアルゴリズムを選択します。| [多クラス デシジョン フォレスト](multiclass-decision-forest.md) <br/> [多クラスの増幅デシジョン ツリー](multiclass-boosted-decision-tree.md) <br/> [多クラス ロジスティック回帰](multiclass-logistic-regression.md)  <br/> [多クラス ニューラル ネットワーク](multiclass-neural-network.md)  <br/>  [2 クラス ロジスティック回帰](two-class-logistic-regression.md)  <br/>[2 クラス平均化パーセプトロン](two-class-averaged-perceptron.md) <br/> [2 クラス &nbsp;ブースト &nbsp;デシジョン &nbsp;ツリー](two-class-boosted-decision-tree.md)  <br/> [2 クラス デシジョン フォレスト](two-class-decision-forest.md)  <br/> [2 クラス ニューラル ネットワーク](two-class-neural-network.md)  <br/> [2 クラス &nbsp;サポート &nbsp;ベクター &nbsp;マシン](two-class-support-vector-machine.md) 
@@ -43,6 +43,7 @@ ms.locfileid: "70210453"
 | トレーニング   | アルゴリズムを介してデータを実行します。 | [モデルのトレーニング](train-model.md)  <br/> [クラスタリング モデルのトレーニング](train-clustering-model.md)    |
 | モデルの評価 | トレーニング済みモデルの正確性を測定します。 |  [モデルの評価](evaluate-model.md)
 | Score | トレーニングしたモデルから予測を取得します。 | [変換の適用](apply-transformation.md)<br/>[クラスター&nbsp;への&nbsp;データの&nbsp;割り当て](assign-data-to-clusters.md) <br/>[モデルのスコア付け](score-model.md)
+| 統計関数 | データ サイエンスに関連するさまざまな数値的方法を提供します。 | [算術演算の適用](apply-math-operation.md) <br/> [データの集計](summarize-data.md)|
 
 ## <a name="error-messages"></a>エラー メッセージ
 

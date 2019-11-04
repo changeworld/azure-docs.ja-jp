@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 9f55319e-895b-4130-8460-71713f25ed04
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0b14138940c240dc674eb733bfe46b7f5d4c1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c9bad99d0ce39fb5f179043278ca4785d726744
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106615"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>チュートリアル:Azure Active Directory と Autotask Endpoint Backup の統合
 

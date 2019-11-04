@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba79bfc1-992e-4924-b76a-8eb0dfb97724
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 721e0c40ec2e02dabee0681e01fea4182b906183
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8589c366c029ab51c7cd740a1b63cff7c0481a51
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104642"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158473"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>チュートリアル:Azure Active Directory と Coralogix の統合
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 630f8f7d4561ed6e7e9f943f4b3b123daeee4d67
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cbb1249b529fde1368bfaff0c6c251c93fa6c309
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129021"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693858"
 ---
 # <a name="add-columns-module"></a>列の追加モジュール
 
@@ -25,7 +25,7 @@ ms.locfileid: "70129021"
 
 
 ## <a name="how-to-configure-add-columns"></a>列の追加の構成方法
-1. **列の追加**モジュールを実験に追加します。
+1. **Add Columns (列の追加)** モジュールをパイプラインに追加します。
 
 2. 連結する 2 つのデータセットを接続します。 3 つ以上のデータセットを結合したい場合は、**列の追加**の複数の組み合わせを連結できます。
 
@@ -33,10 +33,10 @@ ms.locfileid: "70129021"
 
     - 個々の列を選択して追加することはできません。 **列の追加**を使用すると、各データセットのすべての列が連結されます。 このため、列のサブセットのみを追加する場合は、"データセット内の列の選択" を使用して、必要な列でデータセットを作成します。
 
-3. 実験を実行します。
+3. パイプラインを実行します。
 
 ### <a name="results"></a>結果
-実験の実行後:
+パイプラインの実行後:
 
 - 新しいデータセットの最初の行を表示するには、**列の追加**の出力を右クリックして、[Visualize]\(視覚化\) を選択します。
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 617e9a40c253d98c32ae8b4c9426f3148c23d125
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176130"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935867"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>クイック スタート:Python 用 Face クライアント ライブラリ
 
@@ -29,7 +29,7 @@ Python 用 Face クライアント ライブラリを使用すると、次のこ
 * 顔を確認する
 * データ移行のためのスナップショットを作成する
 
-[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [サンプル](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
+[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [サンプル](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>前提条件
 

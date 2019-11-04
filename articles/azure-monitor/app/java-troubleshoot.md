@@ -1,23 +1,18 @@
 ---
 title: Java Web プロジェクトでの Application Insights のトラブルシューティング
 description: トラブルシューティング ガイド - Application Insights でライブ Java アプリケーションを監視します。
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: a26302b0c0b4361fe3e7aae6aba798f433c72ade
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 03/14/2019
+ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742194"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820811"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。

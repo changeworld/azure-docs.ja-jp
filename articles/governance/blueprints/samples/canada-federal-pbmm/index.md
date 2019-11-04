@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 3d53fbce8eab174a733f1aed34265f07376a3185
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 32573e4a2a046af069a6b51edd0636beabb9d9f6
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297823"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200443"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルの概要
 

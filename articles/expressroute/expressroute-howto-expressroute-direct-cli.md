@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a879344fddd6d12ae8a50e109dcaf4a4bb2c1b68
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965914"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161551"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
@@ -272,7 +272,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
    }
    ```
 
-   `AdminState = “Disabled”` を使用して、同じ手順でポートを停止させます。
+   `AdminState = "Disabled"` を使用して、同じ手順でポートを停止させます。
 
 ## <a name="circuit"></a>回線を作成する
 

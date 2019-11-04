@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 812fb8d312b165bd43f600da520f390f9c6399fe
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128414"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692630"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>2 クラス ブースト デシジョン ツリー モジュール
 
@@ -32,7 +32,7 @@ ms.locfileid: "70128414"
 
 このタイプのモデルは、"[モデルのトレーニング](././train-model.md)" を使用してトレーニングできます。 
 
-1.  Azure Machine Learning で、**ブースト デシジョン ツリー** モジュールを実験に追加します。
+1.  Azure Machine Learning で、**ブースト デシジョン ツリー** モジュールをパイプラインに追加します。
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。
   

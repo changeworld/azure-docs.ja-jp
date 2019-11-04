@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: d1ff58611278f02d74f064f0536e5f6f77195fb2
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a02228593a9d8efc9fb363232da1cede3c80a8b3
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828879"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592527"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -27,8 +27,11 @@ ms.locfileid: "71828879"
 > [!IMPORTANT]
 > 2019 年 4 月 30 日の時点で、パッチ オーケストレーション アプリケーション バージョン 1.2.* はサポートされなくなりました。 必ず最新バージョンにアップグレードしてください。
 
+> [!NOTE]
+> [仮想マシン スケール セットでの OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。
+>
 
-[仮想マシン スケール セットでの OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 パッチ オーケストレーション アプリケーション (POA) は、Azure Service Fabric Repair Manager サービスのラッパーであり、Azure 以外でホストされるクラスターに対して構成ベースの OS 修正プログラム スケジュールを有効にします。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、更新ドメインによる修正プログラムのインストールのスケジュール設定は、ダウンタイムを発生させることなく Service Fabric クラスター ホストに修正プログラムを適用するために必要です。
+ パッチ オーケストレーション アプリケーション (POA) は、Azure Service Fabric Repair Manager サービスのラッパーであり、Azure 以外でホストされるクラスターに対して構成ベースの OS 修正プログラム スケジュールを有効にします。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、更新ドメインによる修正プログラムのインストールのスケジュール設定は、ダウンタイムを発生させることなく Service Fabric クラスター ホストに修正プログラムを適用するために必要です。
 
 POA は、ダウンタイムを発生させることなく、Service Fabric クラスターでのオペレーティング システムへの修正プログラムの適用を自動化する Service Fabric アプリケーションです。
 

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: de8782edcc8b9c64621f1ca67d4bb810c926afaf
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 06415db201582f3e594173e9fe891ee9fdba4b18
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973382"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200396"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -192,7 +192,6 @@ public class HttpTrigger
 
     public HttpTrigger(IOptions<MyOptions> options)
     {
-        _service = service;
         _settings = options.Value;
     }
 }

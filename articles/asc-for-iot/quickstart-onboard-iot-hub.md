@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 3d9c5352a90d5bcacbaf27b7b62be61fc404e87a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 67361c402bdbc82d5df01709dc962b59671cb2aa
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299491"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991399"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>クイック スタート:IoT Hub で Azure Security Center for IoT サービスをオンボードする
 
@@ -28,7 +28,7 @@ ms.locfileid: "71299491"
 
 > [!NOTE]
 > Azure Security Center for IoT では、現在、Standard レベルの IoT Hub だけがサポートされています。
-> Azure Security Center for IoT は、単一ハブのソリューションです。 複数のハブが必要な場合は、複数の Azure Security Center for IoT ソリューションが必要になります。 
+
 
 ## <a name="prerequisites-for-enabling-the-service"></a>サービスを有効にするための前提条件
 
@@ -40,19 +40,40 @@ ms.locfileid: "71299491"
 
 ## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>IoT Hub 上で Azure Security Center for IoT を有効にする 
 
-IoT Hub でセキュリティを有効にするには、以下の手順を実行します。 
+IoT Hub でセキュリティを有効にするには、次の手順を実行します。 
 
 1. Azure portal で **[IoT Hub]** を開きます。 
-1. **[セキュリティ]** メニューの **[Secure your IoT solution]\(IoT ソリューションのセキュリティ保護\)** をクリックします。
-1. **[有効にする]** は既定のオンのままにします。 
-1. Log Analytics ワークスペースを選択します。
-1. Log Analytics ワークスペースの詳細を指定します。 
-   - **ツイン コレクション**のトグルを**オン**のままにして、**ツイン コレクション**を有効にすることを選択します。
-   - Log Analytics で **[Store raw device security events]\(生デバイス セキュリティ イベントの保存\)** を選択して、ストレージの既定の情報の種類に加えて**生イベント**を保存することを選択します。 **生イベント**のトグルは、**オン**のままにしておきます。 
-    
-1. **[Save]** をクリックします。 
+1. **[セキュリティ]** メニューの **[Secure your IoT solution]\(IoT ソリューションのセキュリティ保護\)** をクリックします。    
+
 
 お疲れさまでした。 IoT Hub 上で Azure Security Center for IoT を有効にすることができました。 
+
+### <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
+
+IoT ソリューションのセキュリティを確保するために、IoT デバイス、IoT Edge、IoT Hub を出入りする受信接続と送信接続の IP アドレスは既定で収集され、保存されます。 疑わしい IP ソースからの異常な接続を検出するためには、この情報が欠かせません。 たとえば、既知のボットネットの IP ソースやご利用の位置情報とは異なる外部の IP ソースから接続を確立しようとするケースが考えられます。 Azure Security Center for IoT サービスでは、一連の IP アドレス データをいつでも柔軟に有効にしたり無効にしたりすることができます。 
+
+一連の IP アドレス データを有効または無効にするには、次の手順に従います。 
+
+1. ご利用の IoT ハブを開き、 **[セキュリティ]** メニューから **[概要]** を選択します。 
+2. **[設定]** 画面を選択し、位置情報または IP 処理設定に適宜変更を加えます。
+
+### <a name="log-analytics-creation"></a>Log Analytics の作成
+
+Azure Security Center for IoT を有効にすると、IoT デバイス、IoT Edge、IoT ハブに関する生のセキュリティ イベント、アラート、推奨事項を格納するための既定の Azure Log Analytics ワークスペースが作成されます。 毎月 Azure Log Analytics サービスに取り込まれるデータのうち、お客様 1 人あたり最初の 5 GB は無料です。 Azure Log Analytics ワークスペースに取り込まれたすべてのデータ (GB) は、最初の 31 日間無料で保持されます。 [Log Analytics](https://azure.microsoft.com/pricing/details/monitor/) 価格の詳細情報。
+
+Log Analytics のワークスペースの構成を変更するには、次の手順に従います。
+
+1. ご利用の IoT ハブを開き、 **[セキュリティ]** メニューから **[概要]** を選択します。 
+2. **[設定]** 画面を選択し、Log Analytics 設定のワークスペース構成に適宜変更を加えます。
+
+### <a name="customize-your-iot-security-solution"></a>IoT セキュリティ ソリューションをカスタマイズする
+既定では、Azure Security Center for IoT ソリューションを有効にすると、ご利用の Azure サブスクリプションにあるすべての IoT ハブのセキュリティが自動的に確保されます。 
+
+特定の IoT ハブに対して Azure Security Center for IoT サービスを有効または無効にするには、次の手順に従います。 
+
+1. ご利用の IoT ハブを開き、 **[セキュリティ]** メニューから **[概要]** を選択します。 
+2. **[設定]** 画面を選択し、ご利用の Azure サブスクリプションに存在する IoT ハブのセキュリティ設定に適宜変更を加えます。
+
 
 ## <a name="next-steps"></a>次の手順
 

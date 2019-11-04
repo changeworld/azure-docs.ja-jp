@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.openlocfilehash: aa5329c6321866fd26e393b581702a392f510108
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936840"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177373"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight で Apache Spark ジョブを最適化する
 
@@ -74,7 +74,7 @@ Spark は、`.persist()`、`.cache()`、`CACHE TABLE` などのさまざまな�
     * パーティション分割では機能しない (Spark の将来の リリースで変更の可能性あり)。
 
 * ストレージ レベルのキャッシュ (推奨)
-    * [Alluxio](https://www.alluxio.org/) を使用して実装可能。
+    * [Alluxio](https://www.alluxio.io/) を使用して実装可能。
     * メモリ内と SSD のキャッシュを使用。
 
 * ローカルの HDFS (推奨)

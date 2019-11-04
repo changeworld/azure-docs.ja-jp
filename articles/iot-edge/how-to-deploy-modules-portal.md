@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f27484fd1d47a2e29aa5083a7d440e5c7dba11c1
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4c2adc8ef0d426617dc85dd507907d612bbdabaa
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839650"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964920"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 
@@ -26,7 +26,7 @@ ms.locfileid: "68839650"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。
-* IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device-portal.md)。
+* IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md#register-in-the-azure-portal)。
 
 ## <a name="select-your-device"></a>デバイスを選択する
 

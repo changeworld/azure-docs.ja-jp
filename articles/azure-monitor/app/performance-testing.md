@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights によるパフォーマンスとロード テスト | Microsoft Docs
 description: Azure Application Insights で、パフォーマンスとロード テストを設定します
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 55d743e32f6db0828317d3764a97bcb35b104dad
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 9c86b69239bed1a15c754ce28232b97e8439942b
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304796"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819112"
 ---
 # <a name="performance-testing"></a>パフォーマンス テスト
 

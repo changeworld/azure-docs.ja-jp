@@ -1,6 +1,6 @@
 ---
 title: Azure Notebooks で使用するユーザー プロファイルと ID
-description: Azure Notebooks でユーザー プロファイルとユーザー ID を作成して管理する方法
+description: Azure Notebooks でユーザー プロファイルとユーザー ID (共有ノートブックの URL の一部となる) を作成して管理する方法。
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 1fddefeb2a54ae775a9016799ffff1963eab247e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3985e3d5fbe6e24014694665557f13bcc9a35a25
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970161"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598210"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Azure Notebooks のプロファイルとユーザー ID
 

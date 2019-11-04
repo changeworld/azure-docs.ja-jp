@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 856e2859c778c9f23bc093c2283571a1440ef701
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68598772"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933923"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>チュートリアル:Azure Monitor ログを使用して Service Fabric で Windows コンテナーを監視する
 
@@ -186,7 +186,7 @@ ms.locfileid: "68598772"
     },
     ```
 
-サンプル テンプレートは[こちら](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)です (このチュートリアルの第 1 部で使用されました)。これらの変更がすべて加えられており、必要に応じて参照できます。 これらの変更で、Log Analytics ワークスペースがリソース グループに追加されます。 [Microsoft Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) エージェントで構成されたストレージ テーブルから、Service Fabric プラットフォーム イベントを選択するようにワークスペースが構成されます。 Log Analytics エージェント (Microsoft Monitoring Agent) も、仮想マシン拡張機能としてクラスターの各ノードに追加されます。つまり、クラスターを拡大縮小すると、各マシンのエージェントは自動的に構成され、同じワークスペースに接続されます。
+サンプル テンプレートは[こちら](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/d2ffa318581fc23ac7f1b0ab2b52db1a0d7b4ba7/5-VM-Windows-OMS-UnSecure/sfclusteroms.json)です (このチュートリアルの第 1 部で使用されました)。これらの変更がすべて加えられており、必要に応じて参照できます。 これらの変更で、Log Analytics ワークスペースがリソース グループに追加されます。 [Microsoft Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) エージェントで構成されたストレージ テーブルから、Service Fabric プラットフォーム イベントを選択するようにワークスペースが構成されます。 Log Analytics エージェント (Microsoft Monitoring Agent) も、仮想マシン拡張機能としてクラスターの各ノードに追加されます。つまり、クラスターを拡大縮小すると、各マシンのエージェントは自動的に構成され、同じワークスペースに接続されます。
 
 新しい変更を加えたテンプレートをデプロイして、現在のクラスターをアップグレードします。 処理が完了すると、リソース グループにログ分析リソースが表示されます。 クラスターの準備ができたら、コンテナー化されたアプリケーションをデプロイします。 次の手順では、コンテナーの監視を設定します。
 
@@ -242,7 +242,7 @@ Log Analytics ワークスペースに移動します。ここでは、ソリュ
 
 コンテナー化されたアプリケーションの監視を設定したので、以下を試してみましょう。
 
-* 上記と同様の手順で、Linux クラスター用に Azure Monitor ログを設定する。 [このテンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)を参照して、Resource Manager テンプレートを変更してみましょう。
+* 上記と同様の手順で、Linux クラスター用に Azure Monitor ログを設定する。 [このテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS)を参照して、Resource Manager テンプレートを変更してみましょう。
 * Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する。
 * Service Fabric の[推奨されるパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)の一覧を参照して、実際のクラスターに合わせて構成する。
 * Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる。

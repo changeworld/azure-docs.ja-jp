@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus でメッセージを送受信する - Azure Logic Apps
-description: Azure Logic Apps と Azure Service Bus を使用してエンタープライズ クラウド メッセージングを設定する
+title: Azure Service Bus を使用してメッセージを交換する - Azure Logic Apps
+description: Azure Logic Apps で Azure Service Bus を使用してメッセージを送受信する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,15 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 tags: connectors
-ms.openlocfilehash: f2034686e4a8de5e1ccc246f49337a6600bf441f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0cf5486e77e69f83973f7e62669e5ab45d1c94a2
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121101"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679202"
 ---
-# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-with-azure-service-bus"></a>Azure Logic Apps で Azure Service Bus を使用してクラウド内でメッセージを交換する
+# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) コネクタを使用すると、販売および発注書、仕訳帳、組織のアプリケーション間の在庫移動などのデータを転送する、自動化されたタスクとワークフローを作成することができます。 コネクタは、メッセージを監視、送信、および管理するだけでなく、たとえば次のような、キュー、セッション、トピック、サブスクリプションなどに対するアクションも実行します。
 

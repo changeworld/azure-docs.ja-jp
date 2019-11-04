@@ -1,22 +1,23 @@
 ---
-title: クイック スタート:REST API シリーズを使用して Python で検索インデックスを作成する - Azure Search
-description: Python、Jupyter Notebook、Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
-ms.date: 09/10/2019
+title: クイック スタート:REST API を使用して Python で検索インデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: Python、Jupyter Notebook、Azure Cognitive Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 author: heidisteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: 273cd690c56ef01b4fd38398aaef85570dd758a2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881558"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792259"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
+
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
@@ -25,7 +26,7 @@ ms.locfileid: "70881558"
 > * [ポータル](search-create-index-portal.md)
 > 
 
-Python と [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Search インデックスの作成、読み込み、およびクエリを実行する Jupyter ノートブックを作成します。 この記事では、ノートブックを作成する方法を順番に説明します。 または、[完成した Jupyter Python ノートブックをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-python-samples)こともできます。
+Python と [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリを実行する Jupyter ノートブックを作成します。 この記事では、ノートブックを作成する方法を順番に説明します。 または、[完成した Jupyter Python ノートブックをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-python-samples)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -35,11 +36,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)。これによって、Python 3.x と Jupyter Notebooks が提供されます。
 
-+ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、Free レベルを使用できます。 
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、Free レベルを使用できます。 
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
@@ -49,9 +50,9 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-## <a name="connect-to-azure-search"></a>Azure Search への接続
+## <a name="connect-to-azure-cognitive-search"></a>Azure Cognitive Search に接続する
 
-このタスクでは、Jupyter Notebook を起動し、Azure Search に接続できることを確認します。 これを行うには、サービスからのインデックスの一覧を要求します。 Windows と Anaconda 3 の組み合わせでは、Anaconda Navigator を使用してノートブックを起動できます。
+このタスクでは、Jupyter Notebook を起動し、Azure Cognitive Search に接続できることを確認します。 これを行うには、サービスからのインデックスの一覧を要求します。 Windows と Anaconda 3 の組み合わせでは、Anaconda Navigator を使用してノートブックを起動できます。
 
 1. 新しい Python3 ノートブックを作成します。
 
@@ -85,7 +86,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. 各手順を行います。 インデックスが存在する場合、応答にインデックス名のリストが含まれます。 次のスクリーンショットでは、サービスに既に azureblob-index と realestate-us-sample インデックスが含まれています。
 
-   ![Azure Search への HTTP 要求が含まれる Jupyter ノートブック内の Python スクリプト](media/search-get-started-python/connect-azure-search.png "Azure Search への HTTP 要求が含まれる Jupyter notebook の Python スクリプト")
+   ![Azure Cognitive Search に対する HTTP 要求を含む Jupyter Notebook の Python スクリプト](media/search-get-started-python/connect-azure-search.png "Azure Cognitive Search に対する HTTP 要求を含む Jupyter Notebook の Python スクリプト")
 
    一方、空のインデックス コレクションからは次の応答が返されます: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
@@ -138,7 +139,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
    応答には、スキーマの JSON 表現が含まれます。 次のスクリーンショットは、応答の一部だけを示しています。
 
-    ![インデックスを作成するための要求](media/search-get-started-python/create-index.png "インデックスを作成するための要求")
+    ![インデックスの作成要求](media/search-get-started-python/create-index.png "インデックスの作成要求")
 
 > [!Tip]
 > インデックス作成のもう 1 つの方法は、ポータルでインデックス リストを確認することです。
@@ -245,13 +246,13 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 3. 各手順を行って、ご利用の検索サービス内のインデックスにドキュメントをプッシュします。 結果は次の例のようになります。 
 
-    ![インデックスにドキュメントを送信](media/search-get-started-python/load-index.png "インデックスにドキュメントを送信")
+    ![ドキュメントをインデックスに送信する](media/search-get-started-python/load-index.png "ドキュメントをインデックスに送信する")
 
 ## <a name="3---search-an-index"></a>3 - インデックスの検索
 
 この手順では、[Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用してインデックスのクエリを実行する方法を示します。
 
-1. セルでは、空の検索が実行され (search=*)、任意のドキュメントのランクなしのリスト (search score = 1.0) が返されるクエリ式を指定します。 既定では、Azure Search によって一度に 50 件の結果が返されます。 構造化されているので、このクエリではドキュメント全体の構造と値が返されます。 $count=true を追加して、結果に含まれるすべてのドキュメントの数を取得します。
+1. セルでは、空の検索が実行され (search=*)、任意のドキュメントのランクなしのリスト (search score = 1.0) が返されるクエリ式を指定します。 既定では、Azure Cognitive Search から一度に 50 個の一致が返されます。 構造化されているので、このクエリではドキュメント全体の構造と値が返されます。 $count=true を追加して、結果に含まれるすべてのドキュメントの数を取得します。
 
    ```python
    searchstring = '&search=*&$count=true'
@@ -274,7 +275,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. 各手順を行います。 結果は次の出力のようになります。 
 
-    ![インデックスの検索](media/search-get-started-python/search-index.png "インデックスの検索")
+    ![インデックスの検索](media/search-get-started-python/search-index.png "インデックスを検索する")
 
 1. 構文について大まかに把握するため、その他のクエリ例をいくつか試してください。 `searchstring` を次の例に置き換えてから、検索要求を再実行することができます。 
 

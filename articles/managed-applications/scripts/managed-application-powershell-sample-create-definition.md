@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell スクリプトのサンプル - マネージド アプリケーション定義を作成する | Microsoft Docs
+title: マネージド アプリケーション定義を作成する - Azure PowerShell
 description: マネージド アプリケーションの定義を Azure サブスクリプションに作成する Azure PowerShell サンプル スクリプトを紹介します。
 services: managed-applications
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: f0491a5025886317faf7cb4601f8db3915527b80
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4c0b06ed0e103a88f3f99e1c242dbfe15ba8fd2a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332578"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527259"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>PowerShell を使用してマネージド アプリケーション定義を作成する
 

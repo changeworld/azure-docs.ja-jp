@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights の概要ダッシュボード | Microsoft Docs
 description: Azure の Application Insights と概要ダッシュボードの機能を使用してアプリケーションを監視します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 06/03/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.date: 06/03/2019
+ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497165"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819157"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード
 

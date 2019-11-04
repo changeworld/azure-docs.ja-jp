@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65cd59933fa31d870a507cbe80b454934c9008d0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 626f446c18acf1f07f458fb1b4238f182546e479
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265099"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596938"
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -205,6 +205,30 @@ Python Runbook を開始 ( **[テスト]** ページ上で、または発行済�
 ![パラメーター値を入力する](media/automation-first-runbook-textual-python/runbook-python-params.png)
 
 **[OK]** をクリックして Runbook を開始します。 Runbook が実行され、指定した VM を起動します。
+
+## <a name="error-handling-in-python"></a>Python でのエラー処理
+
+次の規則を使用して、Python Runbook からさまざまなストリーム (**WARNING**、**ERROR**、および **DEBUG** ストリームを含む) を取得することもできます。
+
+```python
+print("Hello World output") 
+print("ERROR: - Hello world error")
+print("WARNING: - Hello world warning")
+print("DEBUG: - Hello world debug")
+print("VERBOSE: - Hello world verbose")
+```
+
+次の例は、`try...except` ブロックで使用されるこの規則を示しています。
+
+```python
+try:
+    raise Exception('one', 'two')
+except Exception as detail:
+    print 'ERROR: Handling run-time error:', detail
+```
+
+> [!NOTE]
+> **sys.stderr** は、Azure Automation ではサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

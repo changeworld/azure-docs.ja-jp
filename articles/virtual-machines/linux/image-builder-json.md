@@ -7,14 +7,14 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 240e0dadaebde6725974604b578328ede0b20652
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 13392644ebe5e163e946deceeec5fcab8f5085cc
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129052"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159723"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>更新:Azure Image Builder テンプレートを作成する 
+# <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
 Azure Image Builder では、.json ファイルを使って Image Builder サービスに情報を渡します。 この記事では、独自のテンプレートを作成できるように、json ファイルの各セクションについて説明します。 完全な .json ファイルの例を確認するには、[Azure Image Builder の GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts) をご覧ください。
 
@@ -442,17 +442,18 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 
 ```json
 {
-     "type": "sharedImage",
-     "galleryImageId": “<resource ID>”,
-     "runOutputName": "<name>",
-     "artifactTags": {
-          "<name": "<value>",
-           "<name>": "<value>"
-             }
-     "replicationRegions": [
+    "type": "sharedImage",
+    "galleryImageId": "<resource ID>",
+    "runOutputName": "<name>",
+    "artifactTags": {
+        "<name>": "<value>",
+        "<name>": "<value>"
+    },
+    "replicationRegions": [
         "<region where the gallery is deployed>",
         "<region>"
-    ]}
+    ]
+}
 ``` 
 
 共有イメージ ギャラリーの配布プロパティ:
@@ -470,14 +471,14 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 VHD に出力することができます。 その後、VHD をコピーし、それを使って Azure MarketPlace に発行したり、Azure Stack で使ったりできます。  
 
 ```json
- { 
-     "type": "VHD",
-     "runOutputName": "<VHD name>",
-     "tags": {
-          "<name": "<value>",
-           "<name>": "<value>"
-             }
- }
+{ 
+    "type": "VHD",
+    "runOutputName": "<VHD name>",
+    "tags": {
+        "<name": "<value>",
+        "<name>": "<value>"
+    }
+}
 ```
  
 OS のサポート: Windows、Linux

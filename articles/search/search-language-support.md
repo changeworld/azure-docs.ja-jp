@@ -1,25 +1,25 @@
 ---
-title: 英語以外の検索クエリの多言語インデックス作成 - Azure Search
-description: Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。
-author: yahnoosh
+title: 英語以外の検索クエリの多言語インデックス作成
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
+author: yahnoosh
 ms.author: jlembicz
-ms.openlocfilehash: 9d2e6418eb925f0d113b7e9a91463951ca52031a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186557"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793587"
 ---
-# <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Azure Search で複数の言語のインデックスを作成する方法
+# <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Azure Cognitive Search で複数の言語のインデックスを作成する方法
 
 言語固有の文字列用に個別のフィールドを作成するなど、複数の言語のコンテンツを含むフィールドをインデックスに含めることができます。 インデックス作成およびクエリ中に最適な結果を得るには、適切な言語規則を提供する言語アナライザーを割り当てます。 
 
-Azure Search では、多彩な言語アナライザーが Lucene と Microsoft の両方から提供され、Analyzer プロパティを使用してこれらのアナライザーを個々のフィールドに割り当てることができます。 この記事で説明するように、ポータルで言語アナライザーを指定することもできます。
+Azure Cognitive Search では、多彩な言語アナライザーが Lucene と Microsoft の両方から提供され、Analyzer プロパティを使用してこれらのアナライザーを個々のフィールドに割り当てることができます。 この記事で説明するように、ポータルで言語アナライザーを指定することもできます。
 
 ## <a name="add-analyzers-to-fields"></a>フィールドにアナライザーを追加する
 
@@ -34,7 +34,7 @@ Azure Search では、多彩な言語アナライザーが Lucene と Microsoft 
 
 ![フィールド定義中に言語アナライザーを割り当てる](media/search-language-support/select-analyzer.png "フィールド定義中に言語アナライザーを割り当てる")
 
-既定では、検索可能なすべてのフィールドで、言語に依存しない [標準の Lucene アナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を使用します。 サポートされているアナライザーの詳細な一覧を参照するには、「[Azure Search のインデックスに言語アナライザーを追加する](index-add-language-analyzers.md)」を参照してください。
+既定では、検索可能なすべてのフィールドで、言語に依存しない [標準の Lucene アナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を使用します。 サポートされているアナライザーの詳細な一覧を参照するには、「[Azure Cognitive Search のインデックスに言語アナライザーを追加する](index-add-language-analyzers.md)」を参照してください。
 
 ポータルでは、アナライザーはそのままで使用することが意図されています。 カスタマイズや、フィルターとトークナイザーの特定の構成が必要な場合は、コードで[カスタム アナライザーを作成する](index-add-custom-analyzers.md)必要があります。 ポータルでは、カスタム アナライザーの選択や構成はサポートされていません。
 
@@ -65,4 +65,4 @@ Azure Search では、多彩な言語アナライザーが Lucene と Microsoft 
 
 ## <a name="next-steps"></a>次の手順
 
-.NET 開発者の場合は、[Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) と [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) プロパティを使用して言語アナライザーを構成できます。 
+.NET 開発者の場合は、[Azure Cognitive Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) と [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) プロパティを使用して言語アナライザーを構成できます。 

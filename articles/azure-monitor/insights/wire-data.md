@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor の Wire Data ソリューション | Microsoft Docs
 description: ワイヤー データは、Log Analytics エージェントを使用してコンピューターのネットワークとパフォーマンスのデータを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/03/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 4e1324bb90c0b92daf709b695a0a8b3af9161c2e
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 10/03/2018
+ms.openlocfilehash: 5e19c9bd47fe253f9a416b923ec0cb1748682842
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905423"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900590"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 

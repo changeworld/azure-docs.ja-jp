@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46b2ec4a790b5425d837d6a5530b8562ce85ca38
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: efe6946a3de2a95f15e017dbd65e2ec84cc2f2f3
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852773"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964082"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 

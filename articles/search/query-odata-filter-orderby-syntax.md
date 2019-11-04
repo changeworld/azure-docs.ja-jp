@@ -1,13 +1,13 @@
 ---
-title: OData 言語の概要 - Azure Search
-description: Azure Search クエリでの filter、select、および order-by 用の OData 言語の概要。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData 言語の概要
+titleSuffix: Azure Cognitive Search
+description: Azure コグニティブ検索クエリでの filter、select、および order-by 用の OData 言語の概要。
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0bd446b0ffa97a758f68a0f85889b13da6e3d8b0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650026"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786159"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>Azure Search での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure コグニティブ検索での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
 
-Azure Search では、 **$filter** 式、 **$orderby** 式、および **$select** 式で OData 式の構文のサブセットがサポートされています。 filter 式はクエリの構文解析中に評価され、検索が特定のフィールドに制約されるか、インデックス スキャン中に使用される一致条件が追加されます。 order-by 式は、返されたドキュメントを並べ替えるために、結果セットに対する後処理手順として適用されます。 select 式は、ドキュメントのどのフィールドが結果セットに含まれるかを決定します。 これらの式の構文は、**search** パラメーターで使用される[単純な](query-simple-syntax.md)または[完全な](query-lucene-syntax.md)クエリ構文とは異なりますが、参照フィールドの構文には多少の重複があります。
+Azure コグニティブ検索では、 **$filter** 式、 **$orderby** 式、および **$select** 式で OData 式の構文のサブセットがサポートされています。 filter 式はクエリの構文解析中に評価され、検索が特定のフィールドに制約されるか、インデックス スキャン中に使用される一致条件が追加されます。 order-by 式は、返されたドキュメントを並べ替えるために、結果セットに対する後処理手順として適用されます。 select 式は、ドキュメントのどのフィールドが結果セットに含まれるかを決定します。 これらの式の構文は、**search** パラメーターで使用される[単純な](query-simple-syntax.md)または[完全な](query-lucene-syntax.md)クエリ構文とは異なりますが、参照フィールドの構文には多少の重複があります。
 
 この記事では、filter 式、order-by 式、および select 式で使用される OData 式の言語の概要を示します。 この言語は "ボトムアップ" で提示され、最も基本的な要素から始まり、その上に構築されていきます。 各パラメーターの最上位レベルの構文は、別の記事で説明しています。
 
@@ -36,13 +36,13 @@ Azure Search では、 **$filter** 式、 **$orderby** 式、および **$select
 - [$orderby 構文](search-query-odata-orderby.md)
 - [$select 構文](search-query-odata-select.md)
 
-OData 式は単純なものから複雑なものまで幅がありますが、すべての式で共通の要素が共有されます。 Azure Search での OData 式の最も基本的な部分は次のとおりです。
+OData 式は単純なものから複雑なものまで幅がありますが、すべての式で共通の要素が共有されます。 Azure コグニティブ検索での OData 式の最も基本的な部分は次のとおりです。
 
 - **フィールド パス**: インデックスの特定のフィールドを参照します。
 - **定数**: 特定のデータ型のリテラル値です。
 
 > [!NOTE]
-> Azure Search の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure Search で**フィールド**と呼ばれているものは OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure Search での**ドキュメント**を含む**インデックス**は、OData での **エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure Search の用語が使用されます。
+> Azure コグニティブ検索の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure コグニティブ検索で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure コグニティブ検索での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure コグニティブ検索の用語が使用されます。
 
 ## <a name="field-paths"></a>フィールド パス
 
@@ -59,10 +59,10 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+> [Azure コグニティブ検索の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure コグニティブ検索の OData 式構文リファレンス](search-query-odata-syntax-reference.md)のページを参照してください。
 
 フィールド パスは、スラッシュで区切られた 1 つ以上の**識別子**で構成されます。 各識別子は、ASCII 文字またはアンダースコアで始まり、ASCII 文字、数字、またはアンダースコアのみを含む文字のシーケンスです。 文字には、大文字または小文字を指定できます。
 
@@ -89,7 +89,7 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 ### <a name="using-field-paths"></a>フィールド パスの使用
 
-フィールド パスは、[Azure Search API](https://docs.microsoft.com/rest/api/searchservice/) の多数のパラメーターの中で使用されます。 次の表に、これらを使用できるすべての場所とその使用に関する制限を示します。
+フィールド パスは、[Azure コグニティブ検索 REST API](https://docs.microsoft.com/rest/api/searchservice/) の多数のパラメーターの中で使用されます。 次の表に、これらを使用できるすべての場所とその使用に関する制限を示します。
 
 | API | パラメーター名 | 制限 |
 | --- | --- | --- |
@@ -107,9 +107,9 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 ## <a name="constants"></a>定数
 
-OData では、定数は特定の [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 型のリテラル値です。 Azure Search でサポートされる型の一覧については、「[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。 コレクション型の定数はサポートされていません。
+OData では、定数は特定の [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 型のリテラル値です。 Azure コグニティブ検索でサポートされる型の一覧については、「[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。 コレクション型の定数はサポートされていません。
 
-次の表に、Azure Search でサポートされている各データ型の定数の例を示します。
+次の表に、Azure コグニティブ検索でサポートされている各データ型の定数の例を示します。
 
 | データ型 | 定数の例 |
 | --- | --- |
@@ -122,7 +122,7 @@ OData では、定数は特定の [Entity Data Model](https://docs.microsoft.com
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
 
-次の EBNF ([拡張バッカスナウア記法フォーム](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) によって、上記の表に示されている定数の大部分に対する文法が定義されます。 地理空間型の文法については、[Azure Search での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関する記事を参照してください。
+次の EBNF ([拡張バッカスナウア記法フォーム](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) によって、上記の表に示されている定数の大部分に対する文法が定義されます。 地理空間型の文法については、[Azure コグニティブ検索での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関する記事を参照してください。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -187,14 +187,14 @@ boolean_literal ::= 'true' | 'false'
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+> [Azure コグニティブ検索の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#constant)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure コグニティブ検索の OData 式構文リファレンス](search-query-odata-syntax-reference.md)のページを参照してください。
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>フィールド パスと定数からの式の構築
 
-フィールド パスと定数は OData 式の最も基本的なパーツですが、それら自体が既に完全な式です。 実際、Azure Search での **$select** パラメーターは単なるフィールド パスのコンマ区切りの一覧であり、 **$orderby** が **$select** よりもはるかに複雑ということはありません。 インデックスに `Edm.Boolean` 型のフィールドが含まれている場合でも、そのフィールドのパスにすぎないフィルターを記述できます。 同様に、`true` 定数と `false` 定数も有効なフィルターです。
+フィールド パスと定数は OData 式の最も基本的なパーツですが、それら自体が既に完全な式です。 実際、Azure コグニティブ検索での **$select** パラメーターは単なるフィールド パスのコンマ区切りの一覧であり、 **$orderby** が **$select** よりもはるかに複雑ということはありません。 インデックスに `Edm.Boolean` 型のフィールドが含まれている場合でも、そのフィールドのパスにすぎないフィルターを記述できます。 同様に、`true` 定数と `false` 定数も有効なフィルターです。
 
 ただし、ほとんどの場合、複数のフィールドと定数を参照するより複雑な式が必要になります。 これらの式は、パラメーターに応じてさまざまな方法で構築されます。
 
@@ -213,23 +213,23 @@ select_expression ::= '*' | field_path(',' field_path)*
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
+> [Azure コグニティブ検索の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure コグニティブ検索の OData 式構文リファレンス](search-query-odata-syntax-reference.md)のページを参照してください。
 
 **$orderby** パラメーターと **$select** パラメーターは、どちらも単純な式のコンマ区切りの一覧です。 **$filter** パラメーターは、単純なサブ式で構成されるブール式です。 これらのサブ式が、[`and`、`or`、`not`](search-query-odata-logical-operators.md) などの論理演算子、[`eq`、`lt`、`gt` など](search-query-odata-comparison-operators.md)の比較演算子、[`any` や `all`](search-query-odata-collection-operators.md) などのコレクション演算子を使用して結合されます。
 
 **$filter**、 **$orderby**、および **$select** の各パラメーターの詳細を、次の記事で確認できます。
 
-- [Azure Search での OData $filter 構文](search-query-odata-filter.md)
-- [Azure Search での OData $orderby 構文](search-query-odata-orderby.md)
-- [Azure Search での OData $select 構文](search-query-odata-select.md)
+- [Azure コグニティブ検索での OData $filter 構文](search-query-odata-filter.md)
+- [Azure コグニティブ検索での OData $orderby 構文](search-query-odata-orderby.md)
+- [Azure コグニティブ検索での OData $select 構文](search-query-odata-select.md)
 
 ## <a name="see-also"></a>関連項目  
 
-- [Azure Search のファセット ナビゲーション](search-faceted-navigation.md)
-- [Azure Search のフィルター](search-filters.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure コグニティブ検索のファセット ナビゲーション](search-faceted-navigation.md)
+- [Azure コグニティブ検索のフィルター](search-filters.md)
+- [ドキュメントの検索 &#40;Azure コグニティブ検索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene クエリ構文](query-lucene-syntax.md)
-- [Azure Search の単純なクエリ構文](query-simple-syntax.md)
+- [Azure コグニティブ検索でのシンプルなクエリ構文](query-simple-syntax.md)

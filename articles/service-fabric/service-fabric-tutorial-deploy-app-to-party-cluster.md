@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598812"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553580"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric アプリケーションをクラスターにデプロイする
 
@@ -46,6 +46,9 @@ ms.locfileid: "68598812"
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 * [Visual Studio 2019 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
+
+> [!NOTE]
+> 無料アカウントは、仮想マシンを作成するための要件を満たさない可能性があります。 その場合は、チュートリアルを完遂できません。
 
 ## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
 

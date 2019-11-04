@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 41d12013ec7eaa4e2aae59e1b366cc511a41f749
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: seodec18, seo-javascript-october2019
+ms.openlocfilehash: eb4478a435fbfc899055a60e13b318be771652f7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535100"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527605"
 ---
 # <a name="try-speech-services-for-free"></a>Speech Services を無料で試す
 
@@ -36,15 +36,15 @@ Speech Services は、低コストで簡単に使い始めることができま�
 
 1. **[Speech API]** タブを選択します。
 
-   ![[Speech Services] タブ](media/index/try-speech-api-free-trial1.png)
+   ![Speech API - [Speech Services] タブ](media/index/cognitive-services-speech-api-tab.png)
 
 1. **[Speech Services]** で、 **[API キーの取得]** ボタンをクリックします。
 
-   ![API キー](media/index/try-speech-api-free-trial2.png)
+   ![Speech API - API キーの取得](media/index/speech-api-get-api-key.png)
 
 1. 使用条件に同意し、ドロップダウン メニューからロケールを選択します。
 
-   ![使用条件に同意する](media/index/try-speech-api-free-trial3.png)
+   ![Speech API - 使用条件に同意する](media/index/speech-api-agree-to-terms.png)
 
 1. Microsoft、Facebook、LinkedIn、または GitHub アカウントを使用してサインインします。
 
@@ -73,17 +73,17 @@ Speech Services リソース (無料または有料レベル) を Azure アカ�
 
 1. ポータルの左上にある **[Create a resource]\(リソースの作成\)** を選択します。
 
-    ![リソースの作成](media/index/try-speech-api-create-speech1.png)
+    ![Speech API - リソースの作成](media/index/speech-api-create-resource.png)
 
 1. **[New]\(新規\)** ウィンドウで、 **[speech]** を検索します。
 
 1. 検索結果で、 **[Speech]** を選択します。
 
-    ![[Speech] を選択](media/index/try-speech-api-create-speech2.png)
+    ![Speech API - [Speech] の選択](media/index/speech-api-select-speech.png)
 
 1. **[Speech]** で、 **[作成]** ボタンを選択します。
 
-    ![[作成] ボタンを選択](media/index/try-speech-api-create-speech3.png)
+    ![Speech API - [作成] ボタン](media/index/speech-api-create-button.png)
 
 1. **[作成]** で、次のものを入力します。
 
@@ -95,11 +95,11 @@ Speech Services リソース (無料または有料レベル) を Azure アカ�
    * 今後、サブスクリプションに簡単にアクセスできるように、 **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
    * **[作成]** を選択します。
 
-     ![[作成] ボタンを選択](media/index/try-speech-api-create-speech4.png)
+     ![Speech API - [作成] の選択](media/index/speech-api-select-create.png)
 
      新しい Speech リソースを作成して展開するまでに少し時間がかかります。 **[クイック スタート]** を選択すると、新しいリソースについての情報が表示されます。
 
-     ![クイック スタート パネル](media/index/try-speech-api-create-speech5.png)
+     ![Speech API - リソースのデプロイ](media/index/speech-api-deploy-resource.png)
 
 1. **[クイック スタート]** で、手順 1 の下の **[キー]** リンクを選択して、サブスクリプション キーを表示します。 各サブスクリプションには 2 つのキーがあります。アプリケーションでどちらのキーを使用しても構いません。 各キーの横のボタンを選択して、クリップボードにコピーし、コードに貼り付けます。
 

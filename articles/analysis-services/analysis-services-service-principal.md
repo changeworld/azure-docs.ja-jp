@@ -4,15 +4,15 @@ description: Azure Analysis Services タスクを自動化するためのサー�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 94f1313825b21b3adf7173b56798fce22736ea87
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a590590faa422d47306e697a7c90bb635ea8c6e9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294571"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146363"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1e761484-7a2f-4321-91f4-6d5d0b69344e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe57c0655cf01f8dfa0f9cd0d75584fd4f130c0a
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: e9ed129bccbd763bf4459fa7818e0dba4e7e65b5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976101"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73156525"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>チュートリアル:Expensify と Azure Active Directory の統合
 

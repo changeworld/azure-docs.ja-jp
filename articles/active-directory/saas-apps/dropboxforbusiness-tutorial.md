@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 63502412-758b-4b46-a580-0e8e130791a1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 591d8d28be5fc9322de8cf4886dc5924f53b1deb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 615c10357e099b547008b128ca5f5a773ff1aa14
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103778"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158313"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>チュートリアル:Dropbox for Business と Azure Active Directory の統合
 

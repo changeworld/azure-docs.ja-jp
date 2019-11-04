@@ -15,10 +15,10 @@ ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70127390"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
@@ -55,7 +55,7 @@ ms.locfileid: "70127390"
 - All
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- 認証
 - Authorization
 - Contact
 - Device

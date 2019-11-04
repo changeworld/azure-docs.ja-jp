@@ -1,24 +1,18 @@
 ---
 title: Log Analytics のスマート分析の例 | Microsoft Docs
 description: Log Analytics のスマート分析機能を使用してユーザー アクティビティの分析を実行する例。
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/15/2019
 ms.author: bwren
-ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/15/2019
+ms.openlocfilehash: 08a93c10a4214696d67f95cb862654d095899630
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61425844"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932964"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics のスマート分析の例
 この記事では、Log Analytics のスマート分析機能を使用してユーザー アクティビティの分析を実行する例を紹介しています。 これらの例を利用して、Application Insights によって監視されているお客様のアプリケーションを分析することができます。また、これらのクエリの概念を使用して、他のデータを同様に分析することもできます。 

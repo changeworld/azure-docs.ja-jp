@@ -1,5 +1,5 @@
 ---
-title: B2B エンタープライズ統合用の EDIFACT メッセージ - Azure Logic Apps | Microsoft Docs
+title: B2B 統合用の EDIFACT メッセージ - Azure Logic Apps
 description: Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の EDI 形式の EDIFACT メッセージを交換します
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.date: 07/26/2016
-ms.openlocfilehash: bbcdad7c5496cd08994a613b07e1bc7c611e4572
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 42197f8bf08ae1f36c531c220ebbf78484a5946e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684450"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680342"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の EDIFACT メッセージを交換する
 
@@ -38,7 +37,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
 ## <a name="create-an-edifact-agreement"></a>EDIFACT 契約の作成 
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。 
+1. [Azure Portal](https://portal.azure.com "Azure ポータル") にサインインします。 
 
 2. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
@@ -63,9 +62,9 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
    ![契約の詳細の指定](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-   | プロパティ | 説明 |
+   | プロパティ | Description |
    | --- | --- |
-   | Name |契約の名前。 |
+   | 名前 |契約の名前。 |
    | 契約の種類 | EDIFACT である必要があります |
    | ホスト パートナー |契約には、ホストとゲストの両方のパートナーが必要です。 ホスト パートナーは、契約を構成している組織を表します。 |
    | ホスト ID |ホスト パートナーの ID。 |
@@ -246,5 +245,5 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/connectors/edifact/)」を参照してください。
 
 ## <a name="learn-more"></a>詳細情報
-* [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
+* [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")  
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6799e604b9e5e2acc3af35e4038ea6f14271d5c8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e07136eed9c14eb4b6eda49ef635171aaf543445
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834717"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809271"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
@@ -122,7 +122,7 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティ保
 
 ## <a name="daemons-and-server-side-apps"></a>デーモンおよびサーバー側のアプリ
 
-長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。 アプリの ID は、クライアント シークレットまたは証明書を使用して証明することができます。 詳しくは、「[Authenticating to Microsoft identity platform in daemon apps with certificates (証明書を使用したデーモン アプリでの Microsoft ID プラットフォームへの認証)](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/)」をご覧ください。
+長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。 アプリの ID は、クライアント シークレットまたは証明書を使用して証明することができます。 詳しくは、「[Authenticating to Microsoft identity platform in daemon apps with certificates (証明書を使用したデーモン アプリでの Microsoft ID プラットフォームへの認証)](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/)」をご覧ください。
 
 このフローでは、アプリは `/token` エンドポイントと直接対話してアクセスを取得します。
 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1eda2d1c-b5e2-4c53-ad46-bbeb91cd119a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b58a315cc2eed91162f19edd5c175d71cc7c4f3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6b02fd3593036a6620d7eeec42dd6bae373ca53
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104283"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158423"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>チュートリアル:Azure Active Directory と Degreed の統合
 

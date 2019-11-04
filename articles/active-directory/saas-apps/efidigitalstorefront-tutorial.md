@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 33c148fc-d490-4bb9-90c1-d5933679ce4e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29bc057ac20f21fb552bd60d2b69f102c6201860
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 270b3e7059ffa1de6c53af2ece1ee5b44300af5a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103635"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>チュートリアル: Azure Active Directory と EFI Digital StoreFront の統合
 

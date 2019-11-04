@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor でのパフォーマンス カウンターの収集と分析 | Microsoft Docs
 description: Azure Monitor では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2018
+ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205748"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932435"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -206,7 +200,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 ## <a name="log-queries-with-performance-records"></a>パフォーマンス レコードに対するログ クエリ
 次の表は、パフォーマンス レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| Query | 説明 |
+| クエリ | 説明 |
 |:--- |:--- |
 | Perf |すべてのパフォーマンス データ |
 | Perf &#124; where Computer == "MyComputer" |特定のコンピューターからのすべてのパフォーマンス データ |

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 90fb3fe732889f3ba3965210cd8a681a0487f78e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d84a20a554308e1705c304a18062a4a1d762a72b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515022"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901444"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -53,6 +53,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
   * 米国中部
   * 米国中部 EUAP
+  * 東南アジア
+  * 北ヨーロッパ
 
 * このクイックスタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発マシン上に .NET Core SDK 2.1.0 以降が必要です。
 

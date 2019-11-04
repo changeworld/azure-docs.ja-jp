@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 2b8f235014efe440e518f1f9c4d0d454f6918955
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128912"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693196"
 ---
 # <a name="convert-to-csv-module"></a>CSV への変換モジュール
 
@@ -36,11 +36,11 @@ ms.locfileid: "70128912"
 
 ## <a name="how-to-configure-convert-to-csv"></a>CSV への変換を構成する方法
 
-1.  [CSV への変換](./convert-to-csv.md)モジュールを実験に追加します。 このモジュールは、インターフェイスの **[Data Format Conversions]\(データ形式の変換\)** グループにあります。 
+1.  [CSV への変換](./convert-to-csv.md)モジュールをパイプラインに追加します。 このモジュールは、インターフェイスの **[Data Format Conversions]\(データ形式の変換\)** グループにあります。 
 
 2. データセットを出力する任意のモジュールに、それを接続します。   
   
-3.  実験を実行します。
+3.  パイプラインを実行します。
 
 ### <a name="results"></a>結果
   

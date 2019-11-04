@@ -6,14 +6,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.author: normesta
+ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 7185d118c9f4419713ebe1291dd55c44635f0c56
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: afa4672d2a8f65b61d634b95b695d1c9814bf991
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844957"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053442"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする
 

@@ -1,35 +1,30 @@
 ---
 title: Azure Application Insights のアラートの設定 | Microsoft Docs
 description: Web アプリにおける長い応答時間、例外、パフォーマンスまたは使用状況のその他の変化について通知します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.reviewer: lagayhar
-ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/23/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/23/2019
+ms.reviewer: lagayhar
+ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60693380"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678405"
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights のアラートの設定
 [Azure Application Insights][start] では、Web アプリのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。 
 
-Application Insights は、[さまざまなプラットフォーム][platforms]で実行中のアプリケーションを監視して、パフォーマンスの問題の診断と使用パターンの把握を支援します。
+Application Insights では、[さまざまなプラットフォーム][platforms]上でライブ アプリを監視して、パフォーマンスの問題の診断と使用パターンの把握を支援します。
 
 アラートには、次のように複数の種類があります。
 
 * [**メトリック アラート**](../../azure-monitor/platform/alerts-metric-overview.md)は、一定の期間に、メトリックが応答時間、例外の数、CPU 使用率、ページ ビューなどのしきい値を超えたときに通知します。
 * [**ログ アラート**](../../azure-monitor/platform/alerts-unified-log.md)は、アラート シグナルがカスタムの Kusto クエリに基づくアラートを説明するために使用されます。
-* [**Web テスト**][availability]は、サイトがインターネットで使用できなくなったとき、または応答速度が低下したときに通知します。 [Learn more][availability].
+* [**Web テスト**][availability]では、サイトがインターネット上で使用できなくなったとき、または応答速度が低下したときに通知を行います。 [詳細情報][availability]。
 * [**プロアクティブ診断**](../../azure-monitor/app/proactive-diagnostics.md)は、通常と異なるパフォーマンス パターンについて通知するよう自動的に構成されます。
 
 ## <a name="set-a-metric-alert"></a>メトリック アラートの設定
@@ -47,7 +42,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 *[アラートの追加] ボタンが表示されません。*
 
-* 組織アカウントを使用していることを確認してください。 所有者または投稿者が、アプリケーションのリソースにアクセスする場合に、アラートを設定できます。 アクセス制御タブを確認します。[アクセス制御の詳細情報][roles]。
+* 組織アカウントを使用していることを確認してください。 所有者または投稿者が、アプリケーションのリソースにアクセスする場合に、アラートを設定できます。 アクセス制御タブを確認します。[アクセス制御の詳細を確認してください][roles]。
 
 > [!NOTE]
 > アラート ブレードで、アラートが既に設定されていることがわかります。[プロアクティブ診断](../../azure-monitor/app/proactive-failure-diagnostics.md)に関する記事を参照してください。 自動アラートにより、要求の失敗率というメトリックが監視されます。 プロアクティブ アラートを無効にしない限り、要求失敗率に独自のアラートを設定する必要はありません。
@@ -84,7 +79,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 次のような一般的なアラートがあります。
 
-* [ブラウザー メトリック][client]、特にブラウザー **ページの読み込み時間**は、Web アプリケーションに適しています。 ページに多数のスクリプトがある場合は、**ブラウザーの例外**を探してください。 これらのメトリックとアラートを取得するには、[Web ページの監視][client]を設定する必要があります。
+* [ブラウザー メトリック][client]、特にブラウザーの**ページの読み込み時間**は、Web アプリケーションに適しています。 ページに多数のスクリプトがある場合は、**ブラウザーの例外**を探してください。 これらのメトリックとアラートを取得するには、[Web ページの監視][client]を設定する必要があります。
 * Web アプリケーションのサーバー側の**サーバー応答時間**。 アラートの設定に加え、このメトリックを監視して、高い要求率でメトリックが過度に変動するかどうかを確認します。この変動は、アプリケーションでリソースが不足していることを示している可能性があります。 
 * **サーバー例外** - サーバー例外を表示するには、 [追加のセットアップ](../../azure-monitor/app/asp-net-exceptions.md)を実行する必要があります。
 

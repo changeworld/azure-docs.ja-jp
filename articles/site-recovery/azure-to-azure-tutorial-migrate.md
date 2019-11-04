@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376247"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933889"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 

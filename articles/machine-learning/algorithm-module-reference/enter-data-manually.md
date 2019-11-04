@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: d7e6cede12f5a348f59db83b31b19c89266dfdf7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128835"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693159"
 ---
 # <a name="enter-data-manually-module"></a>データの手動入力モジュール
 
@@ -32,7 +32,7 @@ ms.locfileid: "70128835"
 
 ## <a name="enter-data-manually"></a>データの手動入力 
   
-1.  [データの手動入力](./enter-data-manually.md)モジュールを実験に追加します。 このモジュールは、Azure Machine Learning の **[Data Input and Output]\(データの入力と出力\)** カテゴリにあります。 
+1.  [データの手動入力](./enter-data-manually.md)モジュールをパイプラインに追加します。 このモジュールは、Azure Machine Learning の **[Data Input and Output]\(データの入力と出力\)** カテゴリにあります。 
   
 2.  **[DataFormat]** で、次のいずれかのオプションを選択します。 指定したデータの解析方法は、これらのオプションによって決まります。 それぞれの形式で要件が大きく異なるため、関連するトピックに必ず目を通してください。  
   

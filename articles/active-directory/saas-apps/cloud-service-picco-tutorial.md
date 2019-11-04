@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 4808d390-a74e-4c98-8538-391a4a58aa62
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37597b010394ed6c0a3cfd75be85d58628fdbdfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0937fa513616a3774198d27aeb160de04aa8b83d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105245"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>チュートリアル:Azure Active Directory と Cloud Service PICCO の統合
 

@@ -1,13 +1,13 @@
 ---
-title: OData コレクション フィルターのトラブルシューティング - Azure Search
-description: Azure Search クエリでの OData コレクション フィルター エラーのトラブルシューティング。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData コレクション フィルターのトラブルシューティング
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search クエリでの OData コレクション フィルター エラーのトラブルシューティング。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fbd43cc13d3b7377668aad2fadc874ae47422ee1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 0af2525a15618c6bfd9022b4388c547209ee957b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647950"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793186"
 ---
-# <a name="troubleshooting-odata-collection-filters-in-azure-search"></a>Azure Search での OData コレクション フィルターのトラブルシューティング
+# <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターのトラブルシューティング
 
-Azure Search でコレクションのフィールドの[フィルター処理を行う](query-odata-filter-orderby-syntax.md)には、[`any` および `all` 演算子](search-query-odata-collection-operators.md)を**ラムダ式**と共に使用できます。 ラムダ式は、コレクションの各要素に適用されるサブフィルターです。
+Azure Cognitive Search でコレクションのフィールドの[フィルター処理を行う](query-odata-filter-orderby-syntax.md)には、[`any` および `all` 演算子](search-query-odata-collection-operators.md)を**ラムダ式**と共に使用します。 ラムダ式は、コレクションの各要素に適用されるサブフィルターです。
 
 フィルター式のすべての機能をラムダ式内で使用できるわけではありません。 使用できる機能は、フィルター処理するコレクション フィールドのデータ型によって異なります。 そのコンテキストでサポートされていないラムダ式の機能を使おうとした場合、エラーが発生する可能性があります。 コレクションのフィールドに対する複雑なフィルターを作成しようとしてそのようなエラーが発生した場合、この記事は問題のトラブルシューティングに役立ちます。
 
@@ -64,7 +64,7 @@ Azure Search でコレクションのフィールドの[フィルター処理を
 文字列コレクションに対するラムダ式の内部では、使用できる比較演算子は `eq` と `ne` だけです。
 
 > [!NOTE]
-> Azure Search では、ラムダ式の内部でも外部でも、文字列に対する `lt`/`le`/`gt`/`ge` 演算子はサポートされていません。
+> Azure Cognitive Search では、ラムダ式の内部でも外部でも、文字列での `lt`/`le`/`gt`/`ge` 演算子はサポートしていません。
 
 `any` の本体では等値のテストだけを行うことができ、`all` の本体では非等値のテストだけを行うことができます。
 
@@ -125,7 +125,7 @@ Azure Search でコレクションのフィールドの[フィルター処理を
 - `all` の本体では、`geo.intersects` 関数を否定する必要があります。 逆に、`any` の本体では、`geo.intersects` 関数を否定しないようにする必要があります。
 - `any` の本体では、`or` を使って地理空間式を組み合わせることができます。 `all` の本体では、`and` を使ってそのような式を組み合わせることができます。
 
-上記の制限は、文字列コレクションでの等値/非等値の制限と同様の理由で存在します。 これらの理由について詳しくは、「[Azure Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)」をご覧ください。
+上記の制限は、文字列コレクションでの等値/非等値の制限と同様の理由で存在します。 これらの理由について詳しくは、[Azure Cognitive Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)に関する記事をご覧ください。
 
 許可される `Edm.GeographyPoint` コレクションのフィルター処理の例を次に示します。
 
@@ -197,7 +197,7 @@ Azure Search でコレクションのフィールドの[フィルター処理を
 
 複雑なコレクションに対するラムダ式では、プリミティブ型のコレクションに対するラムダ式より、はるかに柔軟な構文がサポートされます。 そのようなラムダ式の内部では、ラムダ式の外部で使用できるフィルター構造のうち、2 つの例外を除くすべてを使用できます。
 
-第 1 に、関数 `search.ismatch` と `search.ismatchscoring` は、ラムダ式の内部ではサポートされていません。 詳しくは、「[Azure Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)」をご覧ください。
+第 1 に、関数 `search.ismatch` と `search.ismatchscoring` は、ラムダ式の内部ではサポートされていません。 詳細については、[Azure Cognitive Search での OData コレクション フィルター](search-query-understand-collection-filters.md)に関する記事をご覧ください。
 
 第 2 に、範囲変数に "*バインド*" されていない参照フィールド (いわゆる "*自由変数*") は、使用できません。 たとえば、次のような 2 つの同等の OData フィルター式について考えます。
 
@@ -217,16 +217,16 @@ Azure Search でコレクションのフィールドの[フィルター処理を
 
 次の表は、各コレクションのデータ型に対して有効なフィルターを作成するための規則をまとめたものです。
 
-[!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
+[!INCLUDE [Limitations on OData lambda expressions in Azure Cognitive Search](../../includes/search-query-odata-lambda-limitations.md)]
 
 各ケースについて有効なフィルターを作成する方法の例については、「[有効なコレクション フィルターを記述する方法](#bkmk_examples)」をご覧ください。
 
-フィルターを頻繁に作成し、単に憶えるより最初の原則から規則を理解する方が役に立つ場合は、「[Azure Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)」をご覧ください。
+フィルターを頻繁に作成し、単に憶えるより最初の原則から規則を理解する方が役に立つ場合は、[Azure Cognitive Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

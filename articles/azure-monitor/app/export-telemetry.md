@@ -1,23 +1,18 @@
 ---
 title: Application Insights からのテレメトリの連続エクスポート | Microsoft Docs
 description: 診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/25/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3238abcbcbc4d776e3736b13d5b32149c642649c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 07/25/2019
+ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516947"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819542"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -178,7 +173,7 @@ Where
     いいえ、できません。 現在のところ、エクスポート エンジンは、Azure Storage でのみ動作します。  
 * *ストアに格納できるデータの量に制限はありますか。*
 
-    いいえ。 データのプッシュ配信は、エクスポートが削除されるまで続行されます。 Blob Storage の制限に達した場合は配信が停止されますが、その制限には非常に大きな値が設定されています。 使用するストレージの量を管理するのはお客様です。  
+    No. データのプッシュ配信は、エクスポートが削除されるまで続行されます。 Blob Storage の制限に達した場合は配信が停止されますが、その制限には非常に大きな値が設定されています。 使用するストレージの量を管理するのはお客様です。  
 * *ストレージに表示される BLOB の数を教えてください。*
 
   * エクスポートに選択した各データの種類ごとに、1 つの新しい BLOB が 1 分ごとに作成されます (データを使用できる場合)。

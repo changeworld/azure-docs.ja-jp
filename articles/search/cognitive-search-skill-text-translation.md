@@ -1,20 +1,19 @@
 ---
-title: テキスト翻訳コグニティブ検索スキル - Azure Search
-description: テキストが評価され、レコードごとに、Azure Search エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。
-services: search
+title: テキスト翻訳コグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: テキストが評価され、レコードごとに、Azure コグニティブ検索の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。
 manager: nitinme
 author: careyjmac
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 06/25/2019
 ms.author: chalton
-ms.openlocfilehash: ddfb35cbfcfbc262f3eff0de67f5cedfc31ea27e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265706"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791850"
 ---
 #   <a name="text-translation-cognitive-skill"></a>テキスト翻訳コグニティブ スキル
 
@@ -22,12 +21,12 @@ ms.locfileid: "71265706"
 
 この機能は、ドキュメント全体が 1 つの言語ではないことが予想される場合に役に立ち、そのような場合、翻訳して検索用のインデックスを作成する前に、テキストを 1 つの言語に正規化することができます。  また、同じテキストのコピーを複数の言語で使用できるようにしたいローカライズのユース ケースにも役立ちます。
 
-[Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) は、リージョン対応の Cognitive Services ではないため、使用する Azure Search またはアタッチされた Cognitive Services リソースと同じリージョンにデータが保持される保証はありません。
+[Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) は、リージョン対応の Cognitive Services ではないため、使用する Azure コグニティブ検索またはアタッチされた Cognitive Services リソースと同じリージョンにデータが保持される保証はありません。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.TranslationSkill
@@ -151,5 +150,5 @@ Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 10/18/2019
 ms.author: spelluru
-ms.openlocfilehash: e2831191905da1b9e0ad55131be9eaa7aa13950e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 842392ab425628a1c82a39e25a65066064747211
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894362"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675749"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>チュートリアル:Azure Lab Services でラボの使用状況を追跡する
 このチュートリアルでは、ラボの作成者/所有者がラボの使用状況を追跡する方法について説明します。
@@ -37,7 +37,7 @@ ms.locfileid: "55894362"
 1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 
 2. **[サインイン]** を選択して、資格情報を入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。
 3. **[My labs]\(自分のラボ\)** ページで、使用状況を追跡するラボを選択します。 
-4. 左側のメニューまたは **[ユーザー]** タイルの **[ユーザー]** を選択します。 ラボに登録されている学生が表示されます。 まだラボに登録していない新しい学生がいる場合は、**[登録リンク]** を選択し、リンクをコピーして送信してください。 
+4. 左側のメニューまたは **[ユーザー]** タイルの **[ユーザー]** を選択します。 ラボに登録されている学生が表示されます。 まだラボに登録していない新しい学生がいる場合は、 **[登録リンク]** を選択し、リンクをコピーして送信してください。 
 
     ![登録されているユーザー](../media/tutorial-track-usage/registered-users.png)
 
@@ -49,18 +49,11 @@ ms.locfileid: "55894362"
     ![VM の使用状況](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>学生の VM を管理する 
-仮想マシン一覧の行にマウス カーソルを合わせると、次のタスクを実行するためのコントロールが表示されます (前セクションの画像を参照)。 
-
-- VM への接続
-- VM の起動
-- VM の停止
-- VM の削除
-
+このページでは、 **[状態]** 列のドロップダウン リストまたはツール バーのボタンを使用して、学生の VM を開始、停止、またはリセットできます。 
 
 ![VM のコントロール](../media/tutorial-track-usage/vm-controls.png)
 
 ツール バー ボタンを使用して、VM を起動、停止、または削除することもできます。 
-
 
 
 ## <a name="next-steps"></a>次の手順

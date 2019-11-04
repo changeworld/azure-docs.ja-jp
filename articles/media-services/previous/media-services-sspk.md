@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e7742e7035f3c4f4827a2edae1ad5a705aa221f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472697"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693409"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensing Microsoft® Smooth Streaming Client Porting Kit 
 ## <a name="overview"></a>概要
@@ -78,6 +78,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 中間製品契約と最終製品契約を締結済みの SSPK ライセンシーは、技術的な質問を [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)をクリックしてください。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming Client 中間製品契約ライセンシー
+
 * Adroit Business Solutions, Inc
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
@@ -141,6 +142,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Orange SA
 * Saffron Digital Limited
 * Sagemcom Broadband SAS
+* Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
 * Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd

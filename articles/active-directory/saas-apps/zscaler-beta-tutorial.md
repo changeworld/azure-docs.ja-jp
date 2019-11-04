@@ -17,10 +17,10 @@ ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68943283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>チュートリアル:Azure Active Directory と Zscaler Beta の統合
@@ -118,7 +118,7 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
 6. Zscaler Beta アプリケーションでは、いくつかの追加の属性が SAML 応答で返されることを予期しています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、次の手順を実行して、以下の表に示すように SAML トークン属性を追加します。
     
-    | EnableAdfsAuthentication | ソース属性 | 
+    | 名前 | ソース属性 | 
     | ---------------| --------------- |
     | memberOf  | user.assignedroles |
 
@@ -169,7 +169,7 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
 4. **[Administration]\(管理\)**  >  **[Authentication]\(認証\)**  >  **[Authentication Settings]\(認証設定\)** の順に選択し、次の手順を実行します。
    
-    ![Administration](./media/zscaler-beta-tutorial/ic800206.png "Administration")
+    ![管理](./media/zscaler-beta-tutorial/ic800206.png "管理")
 
     a. **[Authentication Type]\(認証の種類\)** で **[SAML]** を選択します。
 
@@ -177,7 +177,7 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
 5. **[Edit SAML]\(SAML の編集\)** ウィンドウで、次の手順に従います。 
             
-    ![ユーザーと認証の管理](./media/zscaler-beta-tutorial/ic800208.png "Manage Users & Authentication")
+    ![ユーザーと認証の管理](./media/zscaler-beta-tutorial/ic800208.png "[ユーザーと認証の管理]")
     
     a. **[SAML Portal URL]\(SAML ポータル URL\)** ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
 
@@ -214,13 +214,13 @@ Internet Explorer でプロキシ設定を構成するには、次の手順に�
 
 3. **[接続]** タブを選択します。 
   
-     ![[接続] タブ](./media/zscaler-beta-tutorial/ic769493.png "[接続]")
+     ![[接続] タブ](./media/zscaler-beta-tutorial/ic769493.png "Connections")
 
 4. **[LAN の設定]** を選択して **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログ ボックスを開きます。
 
 5. **[プロキシ サーバー]** セクションで、次の手順に従います。 
    
-    ![[プロキシ サーバー] セクション](./media/zscaler-beta-tutorial/ic769494.png "[プロキシ サーバー]")
+    ![[プロキシ サーバー] セクション](./media/zscaler-beta-tutorial/ic769494.png "プロキシ サーバー")
 
     a. **[LAN にプロキシ サーバーを使用する]** チェック ボックスを選択します。
 

@@ -1,23 +1,22 @@
 ---
-title: クイック スタート:.NET SDK を使用して C# で検索インデックスを作成する - Azure Search
-description: C# と Azure Search .NET SDK を使用して、インデックスの作成、データの読み込み、クエリの実行を行う方法について説明します。
-author: heidisteen
+title: クイック スタート:.NET SDK を使用して C# で検索インデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: C# と Azure Cognitive Search .NET SDK を使用して、インデックスの作成、データの読み込み、クエリの実行を行う方法について説明します。
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-tags: azure-portal
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: bda9c29fe3af0bd7d9a6ec61dd5fe40a8e9cc339
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 11/04/2019
+ms.openlocfilehash: cb52ebc4cfdb6f62e9e68bf007cadc20cd565fad
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881590"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792823"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>クイック スタート:.NET SDK を使用して C# で Azure Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>クイック スタート:.NET SDK を使用して C# で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [C#](search-get-started-dotnet.md)
 > * [ポータル](search-get-started-portal.md)
@@ -26,12 +25,12 @@ ms.locfileid: "70881590"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Visual Studio と [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用して Azure Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core C# コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成する方法について順を追って説明します。 代わりに、[完全なアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)こともできます。
+Visual Studio と [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core C# コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成する方法について順を追って説明します。 代わりに、[完全なアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> この記事のデモ コードでは、簡単にするため、Azure Search .NET SDK の同期メソッドを使用します。 ただし、運用環境シナリオの実際のアプリケーションでは、スケーラビリティと応答性を維持するため、非同期メソッドを使用することをお勧めします。 たとえば、`Create` と `Delete` の代わりに、`CreateAsync` および `DeleteAsync` を使用できます。
+> この記事のデモ コードでは、わかりやすくするため、Azure Cognitive Search .NET SDK の同期メソッドを使用します。 ただし、運用環境シナリオの実際のアプリケーションでは、スケーラビリティと応答性を維持するため、非同期メソッドを使用することをお勧めします。 たとえば、`Create` と `Delete` の代わりに、`CreateAsync` および `DeleteAsync` を使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,13 +38,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
-+ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
@@ -63,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-[Azure Search .NET SDK](https://aka.ms/search-sdk) は、NuGet パッケージとして配布されるいくつかのクライアント ライブラリで構成されています。
+[Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) は、NuGet パッケージとして配布されるいくつかのクライアント ライブラリで構成されています。
 
 このプロジェクトでは、バージョン 9 の `Microsoft.Azure.Search` NuGet パッケージと最新の `Microsoft.Extensions.Configuration.Json` NuGet パッケージを使用します。
 
@@ -78,7 +77,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. `Microsoft.Extensions.Configuration.Json` についても同じ手順を繰り返し、バージョン 2.2.0 以降を選択します。
 
 
-### <a name="add-azure-search-service-information"></a>Azure Search サービス情報の追加
+### <a name="add-azure-cognitive-search-service-information"></a>Azure Cognitive Search サービスの情報を追加する
 
 1. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[追加]**  >  **[新しい項目]** の順に選択します。 
 
@@ -204,7 +203,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Program.cs で、アプリケーションの構成ファイル (appsettings.json) に格納されている値を使用して、サービスに接続する [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) クラスのインスタンスを作成します。 
 
-   `SearchServiceClient` には、Azure Search インデックスの作成、一覧表示、更新、または削除に必要なすべてのメソッドを提供する [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) プロパティがあります。 
+   `SearchServiceClient` には、Azure Cognitive Search インデックスの作成、一覧表示、更新、または削除に必要なすべてのメソッドを提供する [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) プロパティがあります。 
 
     ```csharp
     using System;
@@ -302,9 +301,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="2---load-documents"></a>2 - ドキュメントを読み込む
 
-Azure Search では、ドキュメントにはインデックス作成の入力とクエリからの出力があり、どちらもデータ構造です。 外部データ ソースから取得するドキュメント入力には、データベース内の行、Blob storage 内の BLOB、ディスク上の JSON ドキュメントがあります。 この例では、手短な方法として、4 つのホテルの JSON ドキュメントをコード自体に埋め込みます。 
+Azure Cognitive Search では、ドキュメントにはインデックス作成の入力とクエリからの出力があり、どちらもデータ構造です。 外部データ ソースから取得するドキュメント入力には、データベース内の行、Blob storage 内の BLOB、ディスク上の JSON ドキュメントがあります。 この例では、手短な方法として、4 つのホテルの JSON ドキュメントをコード自体に埋め込みます。 
 
-ドキュメントをアップロードするときは、[`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) オブジェクトを使用する必要があります。 `IndexBatch` には [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) オブジェクトのコレクションが含まれています。各オブジェクトには、ドキュメント 1 つと、実行するアクション ([upload、merge、delete、mergeOrUpload](search-what-is-data-import.md#indexing-actions)) を Azure Search に指示するプロパティが 1 つ含まれています。
+ドキュメントをアップロードするときは、[`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) オブジェクトを使用する必要があります。 `IndexBatch` には [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) オブジェクトのコレクションが含まれています。各オブジェクトには、ドキュメント 1 つと、実行するアクション ([upload、merge、delete、mergeOrUpload](search-what-is-data-import.md#indexing-actions)) を Azure Cognitive Search に指示するプロパティが 1 つ含まれています。
 
 1. Program.cs で、ドキュメントとインデックス アクションの配列を作成し、その配列を `IndexBatch` に渡します。 以下のドキュメントは、Hotel と Address クラスで定義されている hotel-quickstart インデックスに準拠しています。
 

@@ -1,23 +1,23 @@
 ---
-title: 例:AdventureWorks の在庫データベースをモデル化する - Azure Search
-description: リレーショナル データをモデル化し、フラット化されたデータ セットに変換して、Azure Search のインデックス作成と全文検索に利用する方法について説明します。
+title: 例:AdventureWorks の在庫データベースをモデル化する
+titleSuffix: Azure Cognitive Search
+description: リレーショナル データをモデル化し、フラット化されたデータ セットに変換して、それを Azure Cognitive Search のインデックス作成と全文検索に利用する方法について説明します。
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
-ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274035"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792989"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>例:AdventureWorks の在庫データベースを Azure Search 用にモデル化する
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>例:AdventureWorks の在庫データベースを Azure Cognitive Search 用にモデル化する
 
-Azure Search では、フラット化された行セットを[インデックス作成 (データ インジェスト) パイプライン](search-what-is-an-index.md)への入力として受け入れます。 ソース データが SQL Server リレーショナル データベースから生成される場合、この記事では、AdventureWorks サンプル データベースを例として使用して、インデックス作成の前にフラット化された行セットを作成するための 1 つの方法を示します。
+Azure Cognitive Search では、フラット化された行セットを[インデックス作成 (データ インジェスト) パイプライン](search-what-is-an-index.md)への入力として受け入れます。 ソース データが SQL Server リレーショナル データベースから生成される場合、この記事では、AdventureWorks サンプル データベースを例として使用して、インデックス作成の前にフラット化された行セットを作成するための 1 つの方法を示します。
 
 ## <a name="about-adventureworks"></a>AdventureWorks について
 
@@ -35,7 +35,7 @@ SQL Server インスタンスがある場合は、[AdventureWorks サンプル �
 
 単純なアプローチとしては、(必要に応じて結合された) Product テーブルのすべての行にインデックスを付けます。これは、最も明確な情報が Product テーブルに含まれているためです。 ただし、このアプローチでは検索インデックスが結果セット内で認識された重複に公開されます。 たとえば、Road-650 モデルには 2 つの色と 6 つのサイズが用意されています。 "ロード バイク" に対するクエリは、サイズと色のみで区別される、同じモデルの 12 個のインスタンスで占められます。 他の 6 つのロード固有のモデルは、検索の地獄と言える 2 ページ目に格下げされます。
 
-  ![製品リスト](./media/search-example-adventureworks/products-list.png "製品リスト")
+  ![Product 一覧](./media/search-example-adventureworks/products-list.png "Product 一覧")
  
 Road-650 モデルには 12 個のオプションがあることに注意してください。 一対多のエンティティ行は、検索インデックスでは複数値フィールドまたは事前集計値フィールドとして表されます。
 
@@ -43,7 +43,7 @@ Road-650 モデルには 12 個のオプションがあることに注意して�
 
 ## <a name="use-a-collection-data-type"></a>Collection データ型を使用する
 
-"正しいアプローチ" は、データベース モデルに直接的な並列がない次の検索スキーマ機能を利用することです。**Collection(Edm.String)** 。 このコンストラクトは、Azure Search インデックス スキーマに定義されます。 Collection データ型は、非常に長い (単一の) 文字列ではなく個々の文字列の一覧を表示する必要がある場合に使用されます。 タグまたはキーワードがある場合は、Collection データ型をそのフィールドに使用します。
+"正しいアプローチ" は、データベース モデルに直接的な並列がない次の検索スキーマ機能を利用することです。**Collection(Edm.String)** 。 このコンストラクトは、Azure Cognitive Search のインデックス スキーマに定義されます。 Collection データ型は、非常に長い (単一の) 文字列ではなく個々の文字列の一覧を表示する必要がある場合に使用されます。 タグまたはキーワードがある場合は、Collection データ型をそのフィールドに使用します。
 
 "色"、"サイズ"、および "イメージ" に対して **Collection(Edm.String)** の複数値のインデックス フィールドを定義することで、重複エントリを含むインデックスを汚染せずにファセットとフィルターを行うための補助的な情報が保持されます。 同様に、集計関数を Product の数値フィールドに適用し、すべての製品の **listPrice** ではなく **minListPrice** にインデックスを付けます。
 
@@ -163,4 +163,4 @@ WHERE
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [例:Azure Search の多層構造ファセットの分類](search-example-adventureworks-multilevel-faceting.md)
+> [例:Azure Cognitive Search の多層構造ファセットの分類](search-example-adventureworks-multilevel-faceting.md)

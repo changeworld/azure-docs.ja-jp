@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 863f7340-b065-4f59-b092-daa67da6f703
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3405de31de48073e45e0c907ee918c2afd1e5b96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2426dfe95a40c7305df38412d624c898a532771
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103746"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>チュートリアル:Azure Active Directory と Dynamic Signal の統合
 

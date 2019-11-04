@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 814be49c972e444f2a4e4a703501e88fa1272b89
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4b4190ddabe90af135ea64a8ba3d5905f23c457e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391900"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808952"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>チュートリアル:Ansible を使用して Azure Shared Image Gallery から VM または仮想マシン スケール セットを作成する
 
@@ -110,7 +110,7 @@ ms.locfileid: "72391900"
 ansible-playbook 00-prerequisites.yml
 ```
 
-[Azure portal](https://portol.azure.com) で、`vars.yml` で指定したリソース グループをチェックして、作成した新しい仮想マシンとさまざまなリソースを確認します。
+[Azure portal](https://portal.azure.com) で、`vars.yml` で指定したリソース グループをチェックして、作成した新しい仮想マシンとさまざまなリソースを確認します。
 
 ## <a name="generalize-the-vm-and-create-a-custom-image"></a>VM を一般化してカスタム イメージを作成する
 

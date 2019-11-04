@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: juliako
-ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308464"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675724"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
 
@@ -47,11 +47,9 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 ## <a name="configure-postman"></a>Postman を構成する
 
-このセクションでは、Postman を構成します。
-
 ### <a name="configure-the-environment"></a>環境の構成 
 
-1. **Postman** を開きます。
+1. **Postman** アプリを開きます。
 2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +78,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 AMS v3 リソースの操作を開始する前に、サービス プリンシパル認証用の Azure AD トークンを取得して設定する必要があります。
 
-1. Postman の左側のウィンドウで、[Step 1:Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Step 1:Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
 2. 次に、[Get Azure AD Token for Service Principal Authentication]\(\サービス プリンシパル認証のために Azure AD トークンを取得する) を選択します。
 3. **[送信]** をクリックします。
 
