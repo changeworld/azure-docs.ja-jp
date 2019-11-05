@@ -87,7 +87,7 @@ ms.locfileid: "72595332"
 or
 
 - お使いのサブスクリプションでのリソース ID:
-  - https://portal.azure.com へ移動します。
+  - [https://portal.azure.com](https://portal.azure.com ) へ移動します。
   - 検索ボックス内で `Cognitive Services` を選択します。
   - 表示されたサービスから、コンカレンシーを引き上げる音声サービスを選択します。
   - このサービスのプロパティを表示します。
