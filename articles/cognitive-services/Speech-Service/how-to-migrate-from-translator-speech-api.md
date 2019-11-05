@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 7b61aef13b113d9b2502c24e3001da25fa186c76
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 841fa89f2e893052473bb1e2b7e634f1216ab505
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559565"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464596"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Speech API から Speech Service に移行する
 
-アプリケーションを Microsoft Translator Speech API から [Speech Service](index.yml) に移行するにあたっては､この記事を参考にしてください。 このガイドでは、Translator Speech API と Speech Service の違いを簡単に説明し、アプリケーションの移行方法を提案します。
+アプリケーションを Microsoft Translator Speech API から [Speech Service](index.md) に移行するにあたっては､この記事を参考にしてください。 このガイドでは、Translator Speech API と Speech Service の違いを簡単に説明し、アプリケーションの移行方法を提案します。
 
 > [!NOTE]
 > Speech Service によって Translator Speech API サブスクリプション キーが受け付けられることはありません。 新しい Speech Services サブスクリプションを作成する必要があります。
@@ -35,7 +35,7 @@ ms.locfileid: "68559565"
 | 接続時間の制限                             | 90 分                                               | SDK では無制限です。 WebSocket 接続で 10 分。                                                                                                                                                                                                                                                                                   |
 | ヘッダーに Auth キー                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 1 つの要求での複数言語への翻訳 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| SDK が使用可能                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 使用できる SDK については､[Speech Services のドキュメント](index.yml)をご覧ください。                                                                                                                                                    |
+| SDK が使用可能                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 使用できる SDK については､[Speech Services のドキュメント](index.md)をご覧ください。                                                                                                                                                    |
 | WebSocket 接続                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 言語 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Speech Services は、[Translator API の言語リファレンス](../translator-speech/languages-reference.md)記事に記載された同じ言語範囲をサポートしています。 |
 | 不適切な表現のフィルターとマーカー                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ ms.locfileid: "68559565"
 
 ## <a name="migration-strategies"></a>移行方法
 
-Translator Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､Speech Service を使用するように更新することをお勧めします。 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.yml) のドキュメントをご覧ください。 移行する際は、次を考慮してください。
+Translator Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､Speech Service を使用するように更新することをお勧めします。 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.md) のドキュメントをご覧ください。 移行する際は、次を考慮してください。
 
 * Speech Services では、グローバル エンドポイントは提供されません。 アプリケーションのすべてのトラフィックに単一のリージョン エンドポイントを使用しているときにアプリケーションが効率的に機能するかどうかを判断します。 効率的に機能しない場合は､geolocation を使って最も効率的なエンドポイントを探してください｡
 
@@ -62,7 +62,7 @@ Translator Speech API を使用しているアプリケーションを開発中�
 ## <a name="next-steps"></a>次の手順
 
 * [Speech Services を無料で試す](get-started.md)
-* [クイック スタート:UWP アプリで Speech SDK を使用して音声を認識する](quickstart-csharp-uwp.md)
+* [クイック スタート:UWP アプリで Speech SDK を使用して音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>関連項目
 

@@ -8,19 +8,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: gwallace
-ms.openlocfilehash: 9e7b7526f13fa6b9ae648c4ddb4004a627d85154
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359739"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469022"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。 この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
 > [!NOTE]
-> このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちら](../app-service/app-service-web-tutorial-custom-ssl.md)をご覧ください。
+> このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちら](../app-service/configure-ssl-bindings.md)をご覧ください。
 >
 
 このタスクでは、運用環境のデプロイを使用します。 ステージング環境のデプロイを使用する場合の情報については、このトピックの最後で紹介します。

@@ -5,22 +5,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a063d6c8891133126924bfb934770f7818db71a
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: a8c9cab825644fe797713c80d3a710c7a2d54850
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191254"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498054"
 ---
-# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion-preview"></a>VM セッションを全画面表示に変更する:Azure Bastion (プレビュー)
+# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>VM セッションを全画面表示に変更する:Azure Bastion
 
 この記事は、ブラウザーの仮想マシンのビューを全画面表示にしたり元に戻したりする際に役立ちます。 VM を操作する前に、[Azure Bastion ホストを作成する](bastion-create-host-portal.md)手順を実行済みであることを確認してください。 その後、[RDP](bastion-connect-vm-rdp.md) または [SSH](bastion-connect-vm-ssh.md) のいずれかを使用して、操作する VM に接続します。
-
-> [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
->
 
 ## <a name="launch-the-clipboard-tool"></a>クリップボード ツールを起動する
 

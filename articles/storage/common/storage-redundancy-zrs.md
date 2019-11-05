@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673106"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491976"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>高可用 Azure Storage アプリケーションを構築するためのゾーン冗長ストレージ (ZRS)
 
@@ -42,6 +42,7 @@ ZRS は、ブロック BLOB、非ディスク ページ BLOB、ファイル、�
 FileStorage アカウントの場合、ZRS は次のリージョンで一般公開されています。
 
 - 西ヨーロッパ
+- 米国東部
 
 Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予定です。 新しいリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
 

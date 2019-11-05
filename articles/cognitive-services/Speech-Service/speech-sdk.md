@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: ee505cc78c16d85640c7e13541272f1bafe30061
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799999"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468769"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
@@ -104,4 +104,4 @@ Java SDK は [Speech Devices SDK](speech-devices-sdk.md) の一部でもあり�
 ## <a name="next-steps"></a>次の手順
 
 * [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)
+* [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

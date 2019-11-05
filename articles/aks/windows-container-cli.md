@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: ff4367194f06a8a6895c9c16252b01c3b94995d3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241254"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472497"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>プレビュー - Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -77,9 +77,8 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="limitations"></a>制限事項
 
-複数のノード プールをサポートする AKS クラスターを作成および管理する際は、次の制限が適用されます。
+複数のノード プールをサポートする AKS クラスターを作成および管理する場合には、次の制限があります。
 
-* *WindowsPreview* が正常に登録された後に作成するクラスターには複数のノード プールを利用できます。 また、ご利用のサブスクリプションに対して *MultiAgentpoolPreview* 機能を登録した場合も、複数ノード プールを使用できます。 この機能が正常に登録される前に作成された既存の AKS クラスターでは、ノード プールを追加することも管理することもできません。
 * 最初のノード プールは削除できません。
 
 この機能がプレビュー段階にある間は、次の追加の制限事項が適用されます。
@@ -141,7 +140,8 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
+    --load-balancer-sku standard \
     --network-plugin azure
 ```
 

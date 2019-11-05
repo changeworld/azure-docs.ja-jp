@@ -10,15 +10,16 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 07/31/2019
-ms.openlocfilehash: 7ebbc7575ad52bbf7a399babb048113bc505a7f8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: 525fc8beafbdbe15435c59697d136ae06c91c135
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174537"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489705"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) と [Machine Learning CLI](reference-azure-machine-learning-cli.md) には、自分のトレーニングおよび実験の実行を、監視、整理、管理するさまざまな方法があります。
 

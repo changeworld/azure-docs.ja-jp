@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a2e43b72bda65c5f1e7515888ac33b0ac806e64c
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: a66835d605b9005b8f94eb79a3c266f735f0a3b6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803236"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467204"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>クイック スタート: Python を使用してテキストを音声に変換する
 
@@ -173,6 +173,6 @@ python tts.py
 ## <a name="see-also"></a>関連項目
 
 * [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [Python と Speech SDK を使用してテキストを音声に変換する](quickstart-text-to-speech-python.md)
+* [Python と Speech SDK を使用してテキストを音声に変換する](quickstarts/speech-to-text-from-microphone.md)
 * [カスタム音声フォントの作成](how-to-customize-voice-font.md)
 * [カスタム音声を作成するための音声サンプルを録音する](record-custom-voice-samples.md)

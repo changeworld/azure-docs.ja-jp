@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 1721f10f8950577080a89ba58a3eb4dd3a25c188
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c4a312654fb54660a229c334071d33a5d6bc172f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249182"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496363"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric の正常性レポートの確認
 Azure Service Fabric に正常性エンティティを使用する[正常性モデル](service-fabric-health-introduction.md)が導入されます。ここでは、システム コンポーネントやウォッチドッグで監視しているローカルの状態についてのレポートを確認できます。 すべての正常性データは[正常性ストア](service-fabric-health-introduction.md#health-store)によって集計され、エンティティが正常であるかどうかが判断されます。
@@ -32,7 +32,7 @@ Service Fabric には、エンティティの正常性の集計を取得する�
 * 正常性クエリ (PowerShell、API、または REST を使用)
 * 正常性をプロパティの 1 つとして取得するエンティティの一覧を返す一般クエリ (PowerShell、API、または REST を使用)
 
-これらのオプションについて、5 つのノードがあるローカル クラスターと [fabric:/WordCount アプリケーション](https://aka.ms/servicefabric-wordcountapp)を使用して説明します。 **fabric:/WordCount** アプリケーションには、既定のサービスとして `WordCountServiceType` というステートフル サービスと、`WordCountWebServiceType` というステートレス サービスの 2 つがあります。 ステートフル サービスと 1 つのパーティションについて、7 つのターゲット レプリカを必須にするように `ApplicationManifest.xml` を変更しました。 クラスターには 5 つのノードのみがあり、ターゲット数を下回っているため、システム コンポーネントからサービス パーティションについて警告が報告されます。
+これらのオプションについて、5 つのノードがあるローカル クラスターと [fabric:/WordCount アプリケーション](https://github.com/Azure-Samples/service-fabric-wordcount/raw/master/WordCountV1.sfpkg)を使用して説明します。 **fabric:/WordCount** アプリケーションには、既定のサービスとして `WordCountServiceType` というステートフル サービスと、`WordCountWebServiceType` というステートレス サービスの 2 つがあります。 ステートフル サービスと 1 つのパーティションについて、7 つのターゲット レプリカを必須にするように `ApplicationManifest.xml` を変更しました。 クラスターには 5 つのノードのみがあり、ターゲット数を下回っているため、システム コンポーネントからサービス パーティションについて警告が報告されます。
 
 ```xml
 <Service Name="WordCountService">

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202095"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520797"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)
  
@@ -83,8 +83,5 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
 
 Azure Security Center 上のセキュリティ ポリシーとデータ セキュリティについて詳しくは、次の記事をご覧ください。
  
-- [セキュリティ ポリシーの概要](security-center-policies-overview.md):Security Center 上のセキュリティ ポリシーの概要を示します
 - [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します
 - [Azure Security Center のデータ セキュリティ](security-center-data-security.md):Security Center でデータがどのように管理および保護されているかを説明しています
-
-

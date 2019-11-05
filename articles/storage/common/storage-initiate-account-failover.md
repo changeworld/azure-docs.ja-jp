@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521004"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>ストレージ アカウントのフェールオーバー (プレビュー) を開始する
 
@@ -44,7 +44,7 @@ ms.locfileid: "68985339"
 
 ストレージ アカウントの GRS を再度有効にすると、アカウント内のデータの新しいセカンダリ リージョンへのレプリケートが開始されます。 レプリケーションにかかる時間は、レプリケートされるデータの量に依存します。  
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal からアカウントのフェールオーバーを開始するには、次の手順のようにします。
 
@@ -60,7 +60,7 @@ Azure portal からアカウントのフェールオーバーを開始するに�
 
     ![アカウントのフェールオーバーの確認ダイアログを示すスクリーンショット](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してアカウントのフェールオーバーを開始するには、最初に 6.0.1 プレビュー モジュールをインストールする必要があります。 次の手順のようにしてモジュールをインストールします。
 
@@ -97,7 +97,7 @@ PowerShell からアカウントのフェールオーバーを開始するには
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用してアカウントのフェールオーバーを開始するには、次のコマンドを実行します。
 
@@ -105,6 +105,8 @@ Azure CLI を使用してアカウントのフェールオーバーを開始す�
 az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```
+
+---
 
 ## <a name="next-steps"></a>次の手順
 

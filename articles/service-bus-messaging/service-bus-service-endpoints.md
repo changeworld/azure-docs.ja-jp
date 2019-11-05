@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: f32a67dc6d3b3f869afaa532403c05b218588552
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7d31dd004c879fd3e689f4ba7a8ae58cb223ae70
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786376"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484933"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Azure Service Bus で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -36,7 +36,6 @@ Service Bus と[仮想ネットワーク (VNet) サービス エンドポイン�
 > - Azure Event Grid との統合
 > - Azure IoT Hub ルート
 > - Azure IoT Device Explorer
-> - Azure Data Explorer
 >
 > 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
 > - Azure App Service

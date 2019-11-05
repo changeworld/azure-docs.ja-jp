@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 633c5944f7d813b78f7a0c9b71266d4012fd72cf
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0c7e178d520084dbf963c4c7ebaf9b8873a36938
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673395"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521053"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に不変状態で保管する 
 
@@ -108,7 +108,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、および [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) の最新リリースでは、Azure Blob Storage の不変ストレージがサポートされます。 [クライアント ライブラリのサポート](#client-libraries)も提供されています。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
 1. 新しいコンテナーを作成するか、既存のコンテナーを選択して、不変状態に維持する必要がある BLOB を格納します。
  コンテナーは、GPv2 ストレージ アカウントまたは BLOB ストレージ アカウントに存在する必要があります。
@@ -144,11 +144,11 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 9. 訴訟ホールドをクリアするには、適用された訴訟ホールド ID タグを削除するだけです。
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 この機能は、`az storage container immutability-policy` および `az storage container legal-hold` コマンド グループに含まれています。 これらに対して `-h` を実行すると、コマンドが表示されます。
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az.Storage モジュールでは、不変ストレージがサポートされています。  この機能を有効にするには、次の手順を実行します。
 
@@ -157,6 +157,8 @@ Az.Storage モジュールでは、不変ストレージがサポートされて
 3. `Install-Module Az –Repository PSGallery –AllowClobber` を実行し、Azure PowerShell をインストールします。
 
 この機能の使用法については、後で「[PowerShell コードの例](#sample-powershell-code)」で説明します。
+
+---
 
 ## <a name="client-libraries"></a>クライアント ライブラリ
 

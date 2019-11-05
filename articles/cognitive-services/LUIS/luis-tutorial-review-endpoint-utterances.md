@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 04f30818e3c871d74d94bfd92bd3f73e4e6637a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387518"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499412"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。 
@@ -28,6 +28,8 @@ ms.locfileid: "70387518"
 * 定期的にレビューする必要がある。 
 
 エンドポイントの発話をレビューすることによって、その発話から予測される意図を確認または修正することになります。 また、予測されなかったか予測が誤っていたカスタム エンティティへのラベル付けも行います。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 

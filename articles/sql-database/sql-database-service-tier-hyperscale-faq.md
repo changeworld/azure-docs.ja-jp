@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044970"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496190"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 
@@ -127,7 +127,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列処理 
 
 ### <a name="can-i-provision-a-compute-replica-with-extra-ram-for-my-memory-intensive-workload"></a>メモリ集中型ワークロードのために RAM を増やして計算レプリカをプロビジョニングできるか
 
-No. RAM を増やすには、コンピューティング サイズをアップグレードして上げる必要があります。 詳しくは、[ハイパースケールのストレージ サイズおよびコンピューティング サイズ](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute)をご覧ください。
+No. RAM を増やすには、コンピューティング サイズをアップグレードして上げる必要があります。 詳しくは、[ハイパースケールのストレージ サイズおよびコンピューティング サイズ](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)をご覧ください。
 
 ### <a name="can-i-provision-multiple-compute-replicas-of-different-sizes"></a>サイズが違う複数の計算レプリカをプロビジョニングできるか
 

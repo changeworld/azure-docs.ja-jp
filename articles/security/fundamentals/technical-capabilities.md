@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129297"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468079"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つセキュリティ サービスの概要を提供します。
@@ -309,7 +309,7 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [アプリに対して Azure Active Directory 認証をセットアップする](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
-- [トランスポート層セキュリティ (TLS/SSL) - HTTPS を有効にして、アプリへのトラフィックをセキュリティで保護する](../../app-service/app-service-web-tutorial-custom-ssl.md)
+- [トランスポート層セキュリティ (TLS/SSL) - HTTPS を有効にして、アプリへのトラフィックをセキュリティで保護する](../../app-service/configure-ssl-bindings.md)
 
   - [すべての着信トラフィックに対して HTTPS 接続を経由することを強制する](http://microsoftazurewebsitescheatsheet.info/)
 

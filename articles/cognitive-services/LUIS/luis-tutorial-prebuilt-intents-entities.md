@@ -11,18 +11,20 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a59d9783eac122f96b1671f2dba5d0d708e1d83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757121"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499393"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>チュートリアル:一般的な意図とエンティティを識別する
 
 このチュートリアルでは、事前構築済みの意図とエンティティを Human Resources チュートリアル アプリに追加して、意図の予測の取得とデータの抽出を迅速化します。 エンティティは自動的に検出されるため、事前構築済みエンティティがある発話にはマークを付ける必要がありません。
 
 事前構築済みモデル (ドメイン、意図、およびエンティティ) を使用すると、モデルをすばやく構築できます。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 

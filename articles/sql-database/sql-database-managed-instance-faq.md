@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710147"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496283"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
@@ -179,7 +179,7 @@ DNS 構成は、最終的に次の場合に更新されます。
 はい。データベースを復号化しなくても、マネージド インスタンスに復元できます。 暗号化されたバックアップ ファイルからデータを読み取れるように、ソース システムで暗号化キーの保護機能として使用される証明書またはキーをマネージド インスタンスに提供する必要があります。 その方法は次の 2 つです。
 
 - *マネージド インスタンスに証明書の保護機能をアップロードする。* これを実行できるのは、PowerShell を使用した場合のみです。 この[サンプル スクリプト](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate)にプロセス全体が記述されています。
-- *非対称キーの保護機能を Azure Key Vault (AKV) にアップロードし、マネージド インスタンスがその保護機能を指すよう指定する。* この方法は、暗号化キーの格納にも AKV 統合を使用する Bring Your Own Key (BYOK) TDE のユース ケースに似ています。 キーを暗号化キーの保護機能として使用せず、マネージド インスタンスが暗号化されたデータベースを復元するためにキーを利用できるようにするだけの場合は、[BYOK TDE の設定](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal)手順を実行し、 *[選択したキーを既定の TDE 保護機能にします]* チェック ボックスはオフにしてください。
+- *非対称キーの保護機能を Azure Key Vault (AKV) にアップロードし、マネージド インスタンスがその保護機能を指すよう指定する。* この方法は、暗号化キーの格納にも AKV 統合を使用する Bring Your Own Key (BYOK) TDE のユース ケースに似ています。 キーを暗号化キーの保護機能として使用せず、マネージド インスタンスが暗号化されたデータベースを復元するためにキーを利用できるようにするだけの場合は、[BYOK TDE の設定](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)手順を実行し、 *[選択したキーを既定の TDE 保護機能にします]* チェック ボックスはオフにしてください。
 
 暗号化保護機能をマネージド インスタンスで利用できるようにしたら、標準データベース復元手順を進めることができます。
 

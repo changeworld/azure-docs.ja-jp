@@ -11,14 +11,15 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 087e1cd84aa182a0aae1bef6ba3dd38f369d5189
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb3b9504abcd453977d63a9bfccf77a33da6455a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755957"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489485"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning では、[RunConfiguration オブジェクト](how-to-set-up-training-targets.md#whats-a-run-configuration)と [ScriptRunConfig オブジェクト](how-to-set-up-training-targets.md#submit)を使用して、トレーニング スクリプトを[さまざまなコンピューティング先](how-to-set-up-training-targets.md#compute-targets-for-training)に簡単に送信できます。 このパターンを利用して、高い柔軟性と最大のコントロールを実現できます。
 

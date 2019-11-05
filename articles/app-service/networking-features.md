@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 950818d08cb654bad969deaede24231cab9bcbe2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098566"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470260"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -222,7 +222,7 @@ ASE があれば、専用のアプリを隔離したまま最適にホストで�
 別個のフロントエンド アプリで VNet 統合を使用し、サブネットで API アプリからサービス エンドポイントを使用することで、複数のフロントエンド アプリで同じ API アプリを使用できます。  
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
 [iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections

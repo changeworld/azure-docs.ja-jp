@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 1c6bb557c11cf32449b440b0007e1cef929a026f
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b4c0f88a1a21b0734c1652d19f74dc662d0a7ce1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259407"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496220"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>General Purpose サービス レベル - Azure SQL Database
 
@@ -48,7 +48,7 @@ General Purpose サービス レベルは、ほとんどの一般的なワーク
 
 ## <a name="next-steps"></a>次の手順
 
-- [Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) の General Purpose/Standard レベル、[仮想コア モデル](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute)または [DTU モデル](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)の単一データベース、[仮想コア モデル](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)および [DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)のエラスティック プールのリソース特性 (コア数、IO、メモリ) を確認します。
+- [Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) の General Purpose/Standard レベル、[仮想コア モデル](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4)または [DTU モデル](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)の単一データベース、[仮想コア モデル](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4)および [DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)のエラスティック プールのリソース特性 (コア数、IO、メモリ) を確認します。
 - [Business Critical](sql-database-service-tier-business-critical.md) レベルと [Hyperscale](sql-database-service-tier-hyperscale.md) レベルについて学びます。
 - [Service Fabric](../service-fabric/service-fabric-overview.md) について学びます。
 - 高可用性およびディザスター リカバリーのためのその他のオプションについては、[ビジネス継続性](sql-database-business-continuity.md)に関するページを参照してください。

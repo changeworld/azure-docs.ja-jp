@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: ed48a4e5bab807695000fe6cdbecf1c1b7b01e9b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5d852378812d8e69480ceb2c5dcea95f1d5f3770
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325607"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488616"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>チュートリアル:Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する
 
@@ -101,7 +101,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
    | プロパティ | 必須 | 値 | 説明 |
    | -------- | -------- | ----- | ----------- |
    | **サブスクリプション** | はい | <*イベント発行者の Azure サブスクリプション名*> | "*イベント発行者*" に関連付けられている Azure サブスクリプションの名前を選択します。 このチュートリアルでは、自分の仮想マシンの Azure サブスクリプション名を選択します。 |
-   | **リソースの種類** | はい | <*イベント発行者の Azure リソースの種類*> | イベント発行者の Azure リソースの種類を選択します。 Azure リソースの種類の詳細については、「[Azure リソースプロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください このチュートリアルでは、Azure リソース グループを監視するために `Microsoft.Resources.ResourceGroups` 値を選択します。 仮想マシンのみを監視したい場合は、  |
+   | **リソースの種類** | はい | <*イベント発行者の Azure リソースの種類*> | イベント発行者の Azure リソースの種類を選択します。 Azure リソースの種類の詳細については、「[Azure リソースプロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください このチュートリアルでは、Azure リソース グループを監視するために `Microsoft.Resources.ResourceGroups` 値を選択します。 |
    | **リソース名** |  はい | <*イベント発行者の Azure リソース名*> | イベント発行者の Azure リソース名を選択します。 この一覧は、選択したリソースの種類によって異なります。 このチュートリアルでは、自分の仮想マシンがある Azure リソース グループの名前を選択します。 |
    | **イベントの種類の項目** |  いいえ | <*イベントの種類*> | フィルター処理してイベント グリッドに送信する特定のイベントの種類を 1 つ以上選択します。 たとえば、リソースが変更または削除された場合にそれを検出するために、これらのイベントの種類を必要に応じて追加することができます。 <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>詳細については、以下のトピックを参照してください。 <p><p>- [Azure Event Grid のリソース グループ用のイベント スキーマ](../event-grid/event-schema-resource-groups.md) <br>- [イベントのフィルター処理について](../event-grid/event-filtering.md) <br>- [Event Grid のイベントのフィルター処理](../event-grid/how-to-filter-events.md) |
    | オプションのプロパティを追加するには、 **[新しいパラメーターの追加]** を選択して、目的のプロパティを選択します。 | いいえ | {説明を参照} | * **プレフィックス フィルター**:このチュートリアルでは、このプロパティは空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてプレフィックス文字列を指定できます。たとえば、特定のリソースのパスとパラメーターを指定できます。 <p>* **サフィックス フィルター**:このチュートリアルでは、このプロパティは空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてサフィックス文字列を指定できます。たとえば、特定の種類のファイルが必要なときは、ファイル名拡張子を指定できます。 <p>* **サブスクリプション名**:このチュートリアルでは、イベント サブスクリプションの一意の名前を指定します。 |

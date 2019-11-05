@@ -9,20 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1e170b86f573112cc5bc8dddd6f080921ef29d2d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ed6321963422cf17c858f43593092f8ffa4a1119
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932951"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467735"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>発話の例にエンティティを追加する 
 
 発話の例とは、ユーザーの質問や命令のサンプル テキストです。 Language Understanding (LUIS) に学習させるには、[意図](luis-concept-intent.md)に[発話の例](luis-concept-utterance.md)を追加する必要があります。
 
+
 通常は、まず、発話の例を意図に追加し、次に **[意図]** ページでエンティティを作成して発話にラベルを付けます。 先にエンティティを作成する場合、[エンティティの追加](luis-how-to-add-entities.md)に関するページを参照してください。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="marking-entities-in-example-utterances"></a>発話の例のエンティティにマークを付ける
 

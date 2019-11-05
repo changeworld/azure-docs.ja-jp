@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: e8bcaf1e55b042f8dfd8bba2e2113894a67e8b13
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 3bbd52615962c2cd187fb16282a373688175cf59
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035631"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476691"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
 
@@ -45,7 +45,7 @@ ms.locfileid: "72035631"
 | Microsoft.Cache | [Azure Cache for Redis](/azure/azure-cache-for-redis/) |
 | Microsoft.Capacity | core |
 | Microsoft.Cdn | [Content Delivery Network](../cdn/index.yml) |
-| Microsoft.CertificateRegistration | [App Service 証明書](../app-service/web-sites-purchase-ssl-web-site.md) |
+| Microsoft.CertificateRegistration | [App Service 証明書](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Microsoft.ChangeAnalysis | [Azure Monitor](../azure-monitor/index.yml) |
 | Microsoft.ClassicCompute | クラシック デプロイ モデルの仮想マシン |
 | Microsoft.ClassicInfrastructureMigrate | クラシック デプロイ モデルの移行 |

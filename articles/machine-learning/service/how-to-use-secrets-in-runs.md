@@ -11,14 +11,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4872ba8a707192cd61ec371fa982a076d410e918
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c0d696e3fc060a2779eba7d7e895397ea3245383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996568"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489284"
 ---
 # <a name="use-secrets-in-training-runs"></a>トレーニングの実行でシークレットを使用する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、トレーニングの実行でシークレットを安全に使用する方法について説明します。 たとえば、外部データベースに接続してトレーニング データのクエリを実行するには、リモート実行コンテキストにユーザー名とパスワードを渡す必要があります。 このような値をクリア テキストでトレーニング スクリプトにコーディングすると、シークレットが公開されるので安全ではありません。 
 

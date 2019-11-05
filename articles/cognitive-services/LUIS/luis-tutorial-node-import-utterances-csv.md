@@ -11,16 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 1bee26dc57fd844703e2c9c97b38b9a433227fbf
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ef5f6967b7ad9500672d00d93dd8acaca99e5948
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387953"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499459"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
 LUIS は、[LUIS](luis-reference-regions.md) Web サイトによって実行されるすべてのことを実行するプログラム API を提供します。 これにより、既存のデータがあり、情報を手動で入力するよりも、LUIS アプリをプログラムで作成する方が速い場合に時間を節約できます。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 5664bf1eaee85d2492601ef00968d9b17d857abb
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900479"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489086"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -22,7 +22,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
 <a id="portal" />
 
-## <a name="use-the-azure-portal"></a>Azure ポータルの使用
+## <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
 ステップ バイ ステップのチュートリアルについては、「[チュートリアル: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
 
@@ -38,7 +38,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
 <a id="cli" />
 
-## <a name="use-the-azure-cli"></a>Azure CLI の使用
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、静的な Web サイトのホスティングを有効にすることができます。
 
@@ -102,7 +102,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
 <a id="powershell" />
 
-## <a name="use-powershell"></a>PowerShell の使用
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Azure PowerShell モジュールを使用して、静的な Web サイトのホスティングを有効にできます。
 
@@ -184,6 +184,8 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
 <a id="metrics" />
+
+---
 
 ## <a name="enable-metrics-on-static-website-pages"></a>静的な Web サイトのページでメトリックを有効にする
 

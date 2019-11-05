@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: dfc137375e35d0d13a34ff45b0c6639bcf6784df
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561070"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73519149"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>クイック スタート:Custom Vision で分類子を構築する方法
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal で Custom Vision リソースを作成する
 
-Custom Vision サービスを使用するには、Azure portal で Custom Vision Training リソースと Prediction リソースを作成する必要があります。 [[Create Custom Vision]\(Custom Vision の作成\)](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) ページのダイアログ ウィンドウに入力し、Training リソースと Prediction リソースの両方を作成します。 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 

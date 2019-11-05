@@ -11,14 +11,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0ceb21d6f77fd9694f7cd564c2e89735cf2a774d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067705"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497427"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
+[!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning ワークスペースへのアクセスを管理する方法について説明します。 Azure リソースへのアクセスの管理には、[ロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) が使用されます。 Azure Active Directory のユーザーには、リソースへのアクセス権を付与する特定のロールが割り当てられます。 Azure には、組み込みロールと、カスタム ロールを作成する機能の両方が用意されています。
 

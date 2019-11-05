@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: eb4478a435fbfc899055a60e13b318be771652f7
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 46ada91060aa095b7c041ff75abb6256f3d05853
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527605"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464701"
 ---
 # <a name="try-speech-services-for-free"></a>Speech Services を無料で試す
 
@@ -123,5 +123,5 @@ Speech Services リソース (無料または有料レベル) を Azure アカ�
 10 分間のクイック スタートのいずれかを完了するか、SDK のサンプルを確認します:
 
 > [!div class="nextstepaction"]
-> [クイック スタート: C# で音声を認識する](quickstart-csharp-dotnet-windows.md)
+> [クイック スタート: C# で音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
 > [Speech SDK サンプル](speech-sdk.md#get-the-samples)

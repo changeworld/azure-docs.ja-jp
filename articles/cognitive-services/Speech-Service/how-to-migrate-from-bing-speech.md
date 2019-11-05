@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 5694894a78a46ad658ec18f210c6a82fb82df23f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 00a20ac2d7f05c42be9e955eeb8f47c302db7885
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559602"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464575"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 
@@ -61,7 +61,7 @@ Speech Services では､トランザクション ベースではなく時間ベ
 
 ## <a name="migration-strategies"></a>移行方法
 
-Bing Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､できるかぎり速やかに Speech Services を使用するように更新することをお勧めします。 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Services](index.yml) のドキュメントをご覧ください。
+Bing Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､できるかぎり速やかに Speech Services を使用するように更新することをお勧めします。 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Services](index.md) のドキュメントをご覧ください。
 
 Speech Services の [REST API](rest-apis.md) Bing Speech の API 互換性があります。 現在 Bing Speech REST API をご利用の場合は、REST エンドポイントのみを変更し、Speech Services サブスクリプション キーに切り替えるだけで済みます。
 
@@ -78,7 +78,7 @@ Speech Services では、グローバル エンドポイントは提供されま
 Speech SDK を使ってみる
 
 1. [Speech SDK](speech-sdk.md) をダウンロードします｡
-1. Speech Services [クイック スタート ガイド](quickstart-csharp-dotnet-windows.md)と[チュートリアル](how-to-recognize-intents-from-speech-csharp.md)に従って作業します。 また、[コード サンプル](samples.md)を見て、新しい API に関する経験を得ます。
+1. Speech Services [クイック スタート ガイド](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)と[チュートリアル](how-to-recognize-intents-from-speech-csharp.md)に従って作業します。 また、[コード サンプル](samples.md)を見て、新しい API に関する経験を得ます。
 1. Speech Services を使用するようにアプリケーションを更新します。
 
 ## <a name="support"></a>サポート
@@ -90,7 +90,7 @@ Speech Service､SDK､および API サポートについては､Speech Servic
 ## <a name="next-steps"></a>次の手順
 
 * [Speech Services を無料で試す](get-started.md)
-* [クイック スタート:UWP アプリで Speech SDK を使用して音声を認識する](quickstart-csharp-uwp.md)
+* [クイック スタート:UWP アプリで Speech SDK を使用して音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>関連項目
 * [Speech Services リリース ノート](releasenotes.md)
