@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ad87964216db72cfef447a18d4cd05b8a976491b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69636438"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476915"
 ---
 | リソース | [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service プラン](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
@@ -27,7 +27,7 @@ ms.locfileid: "69636438"
 | [App Service プラン](../articles/app-service/overview-hosting-plans.md) | [リージョン](https://azure.microsoft.com/global-infrastructure/regions/)あたり 100 |リソース グループあたり 100 |リソース グループあたり 100 |
 | ストレージ<sup>6</sup> |1 GB |250 GB |50 ～ 1000 GB |
 | アプリケーションごとのカスタム ドメイン数</a> |500<sup>7</sup> |500 |500 |
-| カスタム ドメインの [SSL サポート](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |無制限の SNI SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 
+| カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-bindings.md) |無制限の SNI SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 
 
 <sup>1</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../articles/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。  
 <sup>2</sup> 既定では、App Service プランでの Functions 1.x ランタイムのタイムアウトは無制限です。  
