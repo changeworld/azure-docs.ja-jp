@@ -6,6 +6,9 @@
     - name: Azure Machine Learning とは
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
+    - name: Azure Machine Learning と Studio
+      displayName: 'AML, Studio, designer'
+      href: ../compare-azure-ml-to-studio-classic.md
     - name: アーキテクチャと用語
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
@@ -32,15 +35,22 @@
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
         - name: Machine Learning パイプライン (上級)
-          href: tutorial-pipeline-batch-scoring-classification.md
-    - name: ビジュアル インターフェイス
+          items:
+            - name: 分類モデルのバッチ スコアリング
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
+    - name: R SDK
+      items:
+        - name: 初めての ML 実験を作成する (R)
+          href: tutorial-1st-r-experiment.md
+    - name: デザイナー
       items:
         - name: 1. 回帰モデルをトレーニングする
           displayName: studio
-          href: ui-tutorial-automobile-price-train-score.md
+          href: tutorial-designer-automobile-price-train-score.md
         - name: 2. 回帰モデルをデプロイする
           displayName: studio
-          href: ui-tutorial-automobile-price-deploy.md
+          href: tutorial-designer-automobile-price-deploy.md
     - name: 自動 ML (インターフェイス)
       displayName: 'automl, automated, auto ml, portal, ui'
       href: tutorial-first-experiment-automated-ml.md
@@ -57,42 +67,51 @@
   items:
     - name: ワークスペース
       href: concept-workspace.md
-    - name: コンピューティング ターゲット
-      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
-      href: concept-compute-target.md
     - name: モデル トレーニング
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
-    - name: ビジュアル インターフェイス
-      displayName: studio
-      href: ui-concept-visual-interface.md
-    - name: 自動化された機械学習
-      displayName: 'automl, auto ml'
-      href: concept-automated-ml.md
     - name: モデル管理 (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: 解釈可能性
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
+    - name: 'デザイナー: コード不要の ML'
+      displayName: studio
+      href: concept-designer.md
+    - name: アルゴリズム チート シート
+      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+    - name: 自動化された機械学習
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: コンピューティング インスタンス
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: コンピューティング ターゲット
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
     - name: ML パイプライン
       href: concept-ml-pipelines.md
-    - name: モデルの解釈可能性
-      displayName: explainability
-      href: machine-learning-interpretability-explainability.md
     - name: ONNX
       href: concept-onnx.md
-    - name: セキュリティ
+    - name: エンタープライズ対応とセキュリティ
       items:
-        - name: エンタープライズ セキュリティの概要
-          displayName: authorization authentication encryption aad azure active directory
-          href: concept-enterprise-security.md
-        - name: ユーザーとロールを管理する
-          href: how-to-assign-roles.md
-        - name: 仮想ネットワークの使用
-          displayName: vnet
-          href: how-to-enable-virtual-network.md
-        - name: SSL を使用して Web サービスをセキュリティで保護する
-          href: how-to-secure-web-service.md
-        - name: ストレージ アクセス キーの再生成
-          href: how-to-change-storage-access-key.md
+        - name: エンタープライズ セキュリティ
+          items:
+            - name: エンタープライズ セキュリティの概要
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: ユーザーとロールを管理する
+              href: how-to-assign-roles.md
+            - name: 仮想ネットワークの使用
+              displayName: vnet
+              href: how-to-enable-virtual-network.md
+            - name: SSL を使用して Web サービスをセキュリティで保護する
+              href: how-to-secure-web-service.md
+            - name: ストレージ アクセス キーの再生成
+              href: how-to-change-storage-access-key.md
+        - name: Azure Machine Learning の監視
+          href: monitor-azure-machine-learning.md
     - name: ディープ ラーニング
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
@@ -138,32 +157,38 @@
         - name: データセットを使用したトレーニング
           displayName: 'data, dataset'
           href: how-to-train-with-datasets.md
+        - name: データセットのドリフトを検出する
+          displayName: 'data, dataset'
+          href: how-to-monitor-datasets.md
         - name: データセットのバージョン管理と追跡
           displayName: 'data, data set'
           href: how-to-version-track-datasets.md
     - name: モデルをトレーニングする
       items:
-        - name: ビジュアル インターフェイスの使用
-          displayName: sample visual interface experiments
+        - name: デザイナーを使用する
+          displayName: sample designer experiments
           items:
             - name: 価格を予測する
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+              href: how-to-designer-sample-regression-automobile-price-basic.md
             - name: 価格を予測する (詳細設定)
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
-            - name: 信用リスクの予測
+              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
+            - name: 所得を予測する
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+              href: how-to-designer-sample-classification-predict-income.md
             - name: 信用リスクを予測する (詳細設定)
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
             - name: 顧客離れを予測する
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-churn.md
+              href: how-to-designer-sample-classification-churn.md
             - name: フライトの遅延を予測する
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-flight-delay.md
+              href: how-to-designer-sample-classification-flight-delay.md
+            - name: テキスト分類
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-text-classification.md
         - name: ML に Estimator を使用する
           items:
             - name: トレーニングでの推定器の作成
@@ -187,6 +212,15 @@
           href: how-to-train-pytorch.md
         - name: Chainer
           href: how-to-train-chainer.md
+    - name: モデルを解釈する
+      displayName: interpretability
+      items:
+        - name: ローカル モデルとリモート モデルを解釈する
+          displayName: 'SDK, interpret'
+          href: how-to-machine-learning-interpretability-aml.md
+        - name: 自動 ML モデルを解釈する
+          displayName: 'SDK, interpret, automl'
+          href: how-to-machine-learning-interpretability-automl.md
     - name: 機械学習の自動化
       displayName: 'automl, auto ml'
       items:
@@ -236,7 +270,7 @@
         - name: Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: ノートブック VM
+        - name: コンピューティング インスタンス
           href: how-to-deploy-local-container-notebook-vm.md
         - name: カスタム Docker イメージを使用する
           href: how-to-deploy-custom-docker-image.md
@@ -253,6 +287,9 @@
         - name: バッチ予測を実行する
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
+        - name: バッチ予測にデザイナーを使用する
+          displayName: score scoring asynchronous consume pipeline
+          href: how-to-run-batch-predictions-ui.md
     - name: モデルを監視する
       items:
         - name: モデルのデータを収集して評価する
@@ -262,18 +299,18 @@
           href: how-to-monitor-data-drift.md
         - name: Application Insights での監視
           href: how-to-enable-app-insights.md
-    - name: 再利用可能なワークフローを作成する
+    - name: ML パイプラインの作成と使用
       displayName: pipelines
       items:
-        - name: Python で ML パイプラインを作成する
+        - name: ML パイプラインを作成する (Python)
           href: how-to-create-your-first-pipeline.md
-        - name: ML パイプラインのデバッグとトラブルシューティング
+        - name: パイプラインのスケジュールを設定する (Python)
+          href: how-to-schedule-pipelines.md
+        - name: パイプラインのデバッグとトラブルシューティングを行う
           href: how-to-debug-pipelines.md
         - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Python で ML パイプラインをスケジュールする
-          href: how-to-schedule-pipelines.md
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md
@@ -282,15 +319,20 @@
       href: how-to-export-delete-data.md
 - name: リファレンス
   items:
-    - name: Machine Learning SDK
+    - name: ML SDK (Python)
       displayName: 'api, core, package, python, class'
       href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: ML SDK (R)
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
     - name: Machine Learning CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: データ参照を監視する
+      href: monitor-resource-reference.md
     - name: 機械学習パイプライン YAML のリファレンス
       href: reference-pipeline-yaml.md
-    - name: ビジュアル インターフェイス モジュール
+    - name: デザイナー モジュール
       displayName: 'module, reference, algorithm, studio'
       items:
         - name: モジュール リファレンスの概要
@@ -299,18 +341,14 @@
           items:
             - name: CSV への変換
               href: ../algorithm-module-reference/convert-to-csv.md
+            - name: データセットへの変換
+              href: ../algorithm-module-reference/convert-to-dataset.md
         - name: データの入力と出力
           items:
             - name: データのインポート
               items:
                 - name: データのインポート
                   href: ../algorithm-module-reference/import-data.md
-                - name: HTTP 経由の Web URL からのインポート
-                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
-                - name: '"Azure Blob Storage からのインポート" モジュール'
-                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
-                - name: Azure SQL Database からのインポート
-                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: データのエクスポート
               href: ../algorithm-module-reference/export-data.md
             - name: データの手動入力
@@ -319,12 +357,18 @@
           items:
             - name: データセット内の列の選択
               href: ../algorithm-module-reference/select-columns-in-dataset.md
+            - name: 列変換の選択
+              href: ../algorithm-module-reference/select-columns-transform.md
             - name: メタデータの編集
               href: ../algorithm-module-reference/edit-metadata.md
             - name: 見つからないデータのクリーンアップ
               href: ../algorithm-module-reference/clean-missing-data.md
             - name: 特徴ハッシュ
               href: ../algorithm-module-reference/feature-hashing.md
+            - name: 順列の特徴量の重要度
+              href: ../algorithm-module-reference/permutation-feature-importance.md
+            - name: フィルターに基づく特徴選択
+              href: ../algorithm-module-reference/filter-based-feature-selection.md
             - name: テキストからの N-gram 特徴抽出
               href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: 列の追加
@@ -341,6 +385,8 @@
               href: ../algorithm-module-reference/split-data.md
             - name: データの正規化
               href: ../algorithm-module-reference/normalize-data.md
+            - name: SMOTE
+              href: ../algorithm-module-reference/smote.md
             - name: パーティションとサンプル
               href: ../algorithm-module-reference/partition-and-sample.md
             - name: クリップの値
@@ -351,14 +397,24 @@
           items:
             - name: モデルのスコア付け
               href: ../algorithm-module-reference/score-model.md
+            - name: SVD レコメンダーのスコア付け
+              href: ../algorithm-module-reference/score-svd-recommender.md
             - name: クラスターへのデータの割り当て
               href: ../algorithm-module-reference/assign-data-to-clusters.md
             - name: モデルのトレーニング
               href: ../algorithm-module-reference/train-model.md
             - name: クラスタリング モデルのトレーニング
               href: ../algorithm-module-reference/train-clustering-model.md
+            - name: SVD レコメンダーのトレーニング
+              href: ../algorithm-module-reference/train-svd-recommender.md
+            - name: モデルのハイパーパラメーターの調整
+              href: ../algorithm-module-reference/tune-model-hyperparameters.md
+            - name: モデルのクロス検証
+              href: ../algorithm-module-reference/cross-validate-model.md
             - name: モデルの評価
               href: ../algorithm-module-reference/evaluate-model.md
+            - name: レコメンダーの評価
+              href: ../algorithm-module-reference/evaluate-recommender.md
             - name: 変換の適用
               href: ../algorithm-module-reference/apply-transformation.md
             - name: 線形回帰
@@ -379,8 +435,10 @@
               href: ../algorithm-module-reference/multiclass-neural-network.md
             - name: 多クラス デシジョン フォレスト
               href: ../algorithm-module-reference/multiclass-decision-forest.md
-            - name: 多クラスの増幅デシジョン ツリー
+            - name: 多クラスのブースト デシジョン ツリー
               href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
+            - name: 一対全多クラス
+              href: ../algorithm-module-reference/one-vs-all-multiclass.md
             - name: 2 クラス平均化パーセプトロン
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: 2 クラス デシジョン フォレスト

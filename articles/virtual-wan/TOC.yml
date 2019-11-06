@@ -8,6 +8,8 @@
   items:
     - name: サイト間接続を作成する
       href: virtual-wan-site-to-site-portal.md
+    - name: ポイント対サイト接続を作成する
+      href: virtual-wan-point-to-site-portal.md
     - name: ExpressRoute 接続を作成する
       href: virtual-wan-expressroute-portal.md
 - name: 概念
@@ -24,13 +26,27 @@
           href: virtual-wan-office365-overview.md
 - name: ハウツー ガイド
   items:
+    - name: Virtual WAN SKU をアップグレードする
+      href: upgrade-virtual-wan.md
+    - name: Virtual WAN に移行する
+      href: migrate-from-hub-spoke-topology.md
+    - name: ExpressRoute プライベート ピアリング経由の VPN 接続を作成する
+      href: vpn-over-expressroute.md
+    - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
+      href: connect-virtual-network-gateway-vwan.md
+    - name: カスタム IPsec ポリシーを構成する
+      href: virtual-wan-custom-ipsec-portal.md
+    - name: ユーザー VPN 用の証明書を構成する
+      href: certificates-point-to-site.md
     - name: 仮想ハブから NVA にトラフィックをルーティングする
       items:
         - name: Azure ポータル
           href: virtual-wan-route-table-portal.md
         - name: Azure PowerShell
           href: virtual-wan-route-table.md
-    - name: 仮想 WAN パートナー - 自動化
+    - name: 仮想ハブの有効なルートを表示する
+      href: effective-routes-virtual-hub.md
+    - name: Virtual WAN パートナーの自動化
       href: virtual-wan-configure-automation-providers.md
 - name: リファレンス
   items:

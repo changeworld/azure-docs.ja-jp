@@ -253,8 +253,8 @@
           href: functions-monitor-log-analytics.md
     - name: セキュリティ保護
       items:
-        - name: SSL 証明書の購入
-          href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: SSL 証明書の追加
+          href: ../app-service/configure-ssl-certificate.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: ユーザーを認証する
           items:
             - name: Azure AD による認証

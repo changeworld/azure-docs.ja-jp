@@ -124,6 +124,8 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: VPN クライアント構成ファイルの作成とインストール
               href: point-to-site-vpn-client-configuration-azure-cert.md
+            - name: クライアント VPN プロファイルのダウンロード ファイルについて
+              href: about-vpn-profile-download.md
         - name: RADIUS 認証
           items:
             - name: P2S VPN の構成
@@ -138,6 +140,14 @@
               href: vpn-gateway-howto-openvpn.md
             - name: OpenVPN クライアントを構成する
               href: vpn-gateway-howto-openvpn-clients.md
+            - name: Open VPN - Azure Active Directory 認証
+              items:
+                - name: Azure AD テナントの構成
+                  href: openvpn-azure-ad-tenant.md
+                - name: VPN クライアントの構成 - Azure AD
+                  href: openvpn-azure-ad-client.md
+        - name: P2S 用公開 CA ゲートウェイ証明書への移行
+          href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Always On VPN デバイス トンネルの構成
           href: vpn-gateway-howto-always-on-device-tunnel.md
         - name: Always On VPN ユーザー トンネルの構成
@@ -188,6 +198,10 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: 診断ログに基づいたアラートの設定
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
+    - name: パケット キャプチャの構成
+      href: packet-capture.md
+    - name: カスタム トラフィック セレクターの構成
+      href: custom-traffic-selectors.md
     - name: トラブルシューティング
       href: vpn-gateway-troubleshoot.md
       items:
@@ -203,6 +217,8 @@
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
             - name: ポイント対サイト接続の問題 - Mac OS X VPN クライアント
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
+            - name: ポイント対サイト - Azure AD 認証
+              href: troubleshoot-ad-vpn-client.md
         - name: サイト対サイト接続の問題
           items:
             - name: サイト間接続

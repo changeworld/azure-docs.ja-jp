@@ -45,7 +45,7 @@
           href: tutorial-deploy-function.md
         - name: Azure Stream Analytics を使用して平均値を見つける
           href: tutorial-deploy-stream-analytics.md
-        - name: Azure Machine Learning service を使用したデータへのスコア付け
+        - name: Azure Machine Learning を使用してデータをスコア付けする
           href: tutorial-deploy-machine-learning.md
         - name: Custom Vision を使用したイメージの分類
           href: tutorial-deploy-custom-vision.md

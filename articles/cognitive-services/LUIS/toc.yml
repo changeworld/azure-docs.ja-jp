@@ -36,17 +36,7 @@
         - name: 意図の取得
           href: luis-get-started-get-intent-from-rest.md
         - name: モデルの変更
-          items:
-            - name: 'C#'
-              href: luis-get-started-cs-add-utterance.md
-            - name: Go
-              href: luis-get-started-go-add-utterance.md
-            - name: Java
-              href: luis-get-started-java-add-utterance.md
-            - name: Node.js
-              href: luis-get-started-node-add-utterance.md
-            - name: Python
-              href: luis-get-started-python-add-utterance.md
+          href: get-started-get-model-rest-apis.md
 - name: チュートリアル
   items:
     - name: アプリのビルド
@@ -103,49 +93,47 @@
               href: luis-tutorial-bot-nodejs-appinsights.md
 - name: 概念
   items:
-    - name: ベスト プラクティス
-      href: luis-concept-best-practices.md
-      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
-    - name: LUIS と QnA Maker の使用
-      href: choose-natural-language-processing-service.md
-      displayName: 'nlp, qna maker'
+    - name: 開発ライフサイクル
+      href: luis-concept-app-iteration.md
     - name: アプリの計画
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: 作成キーとランタイム キー
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
-    - name: アプリのモデルの作成
+    - name: アプリ モデル
       items:
-        - name: 作成サイクル
-          href: luis-concept-app-iteration.md
-        - name: バージョン管理
-          href: luis-concept-version.md
-          displayName: import
-    - name: 設計モデル
-      items:
+        - name: 型
+          href: luis-concept-model.md
         - name: 意図
           href: luis-concept-intent.md
+        - name: 発話
+          href: luis-concept-utterance.md
         - name: エンティティ
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
-        - name: エンティティのロール
-          href: luis-concept-roles.md
-        - name: 発話
-          href: luis-concept-utterance.md
         - name: 事前構築済みのモデル
           href: luis-concept-prebuilt-model.md
-    - name: アプリのパフォーマンス向上
-      items:
-        - name: 予測スコア
-          href: luis-concept-prediction-score.md
-        - name: エンドポイントの発言の確認
-          href: luis-concept-review-endpoint-utterances.md
-        - name: フレーズ リスト
-          href: luis-concept-feature.md
         - name: パターン
           href: luis-concept-patterns.md
           displayName: roles
+        - name: 機能
+          href: luis-concept-feature.md
+    - name: 予測スコア
+      href: luis-concept-prediction-score.md
+    - name: ベスト プラクティス
+      href: luis-concept-best-practices.md
+      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
+    - name: アプリのパフォーマンス向上
+      items:
+        - name: エンドポイントの発言の確認
+          href: luis-concept-review-endpoint-utterances.md
+    - name: テスト
+      items:
+        - name: 対話型テスト
+          href: luis-concept-test.md
+        - name: バッチ テスト
+          href: luis-concept-batch-test.md
+    - name: オーサリング キーとランタイム キー
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
     - name: データ管理
       items:
         - name: データの変更
@@ -157,12 +145,9 @@
           displayName: roles
         - name: データ ストレージ
           href: luis-concept-data-storage.md
-    - name: テスト
-      items:
-        - name: 対話型テスト
-          href: luis-concept-test.md
-        - name: バッチ テスト
-          href: luis-concept-batch-test.md
+    - name: LUIS と QnA Maker の使用
+      href: choose-natural-language-processing-service.md
+      displayName: 'nlp, qna maker'
     - name: Enterprise
       items:
         - name: 設計戦略
@@ -183,13 +168,7 @@
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: 事前構築済みのモデルの使用
-          items:
-            - name: ドメインの使用
-              href: luis-prebuilt-domains.md
-            - name: 意図の使用
-              href: luis-prebuilt-intent.md
-            - name: エンティティの使用
-              href: luis-prebuilt-entities.md
+          href: howto-add-prebuilt-models.md
         - name: REST API を使用
           items:
             - name: Node.js を使ってプログラムによりアプリをビルドする
@@ -218,6 +197,7 @@
           href: luis-how-to-model-intent-pattern.md
     - name: トレーニング
       href: luis-how-to-train.md
+      displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
     - name: テスト
       items:
         - name: 対話型テスト
@@ -246,13 +226,17 @@
           diplayName: 'import, export, container'
         - name: Traffic Manager の利用
           href: luis-traffic-manager.md
-    - name: API の移行
+    - name: API の利用
       items:
-        - name: V2 REST API への移行
-          href: luis-migration-api-v1-to-v2.md
-        - name: V3 REST API への移行
+        - name: 開発者向け
+          href: developer-reference-resource.md
+        - name: API の作成
+          href: luis-migration-api-authoring.md
+        - name: V3 API への移行
           href: luis-migration-api-v3.md
           displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
+        - name: V2 API への移行
+          href: luis-migration-api-v1-to-v2.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行
@@ -262,6 +246,9 @@
           href: luis-container-configuration.md
         - name: Container Instances の使用
           href: deploy-luis-on-container-instances.md
+        - name: コンテナーの制限
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
 - name: リファレンス
   items:
     - name: ユーザーのプライバシー
@@ -325,6 +312,8 @@
           href: reference-entity-regular-expression.md
         - name: シンプル エンティティ
           href: reference-entity-simple.md
+    - name: センチメント
+      href: luis-reference-prebuilt-sentiment.md
     - name: 開発者リソース
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
@@ -334,9 +323,15 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
     - name: REST API
       items:
-        - name: オーサリング V2 REST API
+        - name: V3 オーサリング REST API (プレビュー)
+          href: 'https://aka.ms/luis-apim-v3-authoring'
+        - name: V3 予測 REST API
+          href: 'https://aka.ms/luis-apim-v3-prediction'
+        - name: V2 オーサリング REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
-        - name: エンドポイント V2 REST API
+        - name: V2 予測 REST API
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
+        - name: エンドポイント V3 REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: HTTP コード
           displayName: '400, 401, 403, 409, 410, 414, 429'
@@ -413,7 +408,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 言語とリージョンのサポート
       href: luis-language-support.md
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure のロードマップ
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: 用語集

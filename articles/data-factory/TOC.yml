@@ -80,8 +80,12 @@
           items:
             - name: データのコピー ツール
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: マッピング データ フローを使用してデータを変換する
-      href: tutorial-data-flow.md
+    - name: データ フローを使用してデータを変換、準備する
+      items:
+        - name: マッピング データ フローを使用してデータを変換する
+          href: tutorial-data-flow.md
+        - name: ラングリング データ フローを使用してデータを準備する
+          href: wrangling-data-flow-tutorial.md
     - name: 外部での変換
       items:
         - name: HDInsight Spark
@@ -143,28 +147,36 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: データ フローのマッピング
+    - name: データ フロー
       items:
-        - name: マッピング データ フローの概要
-          href: concepts-data-flow-overview.md
-        - name: デバッグ モード
-          href: concepts-data-flow-debug-mode.md
-        - name: JSON の処理
-          href: concepts-data-flow-json.md
-        - name: スキーマの誤差
-          href: concepts-data-flow-schema-drift.md
-        - name: 列パターン
-          href: concepts-data-flow-column-pattern.md
-        - name: データ フローの監視
-          href: concepts-data-flow-monitoring.md
-        - name: データ フローのパフォーマンス
-          href: concepts-data-flow-performance.md
-        - name: ノードの移動
-          href: concepts-data-flow-move-nodes.md
-        - name: 式ビルダー
-          href: concepts-data-flow-expression-builder.md
-        - name: 式言語
-          href: data-flow-expression-functions.md
+        - name: マッピング データ フローを使用してデータを変換する
+          items:
+            - name: マッピング データ フローの概要
+              href: concepts-data-flow-overview.md
+            - name: デバッグ モード
+              href: concepts-data-flow-debug-mode.md
+            - name: JSON の処理
+              href: concepts-data-flow-json.md
+            - name: スキーマの誤差
+              href: concepts-data-flow-schema-drift.md
+            - name: 列パターン
+              href: concepts-data-flow-column-pattern.md
+            - name: データ フローの監視
+              href: concepts-data-flow-monitoring.md
+            - name: データ フローのパフォーマンス
+              href: concepts-data-flow-performance.md
+            - name: ノードの移動
+              href: concepts-data-flow-move-nodes.md
+            - name: 式ビルダー
+              href: concepts-data-flow-expression-builder.md
+            - name: 式言語
+              href: data-flow-expression-functions.md
+        - name: ラングリング データ フローを使用してデータを準備する
+          items:
+            - name: ラングリング データ フローの概要
+              href: wrangling-data-flow-overview.md
+            - name: サポートされている関数
+              href: wrangling-data-flow-functions.md
     - name: ロールとアクセス許可
       href: concepts-roles-permissions.md
     - name: 価格について

@@ -37,6 +37,14 @@
       href: security-center-using-recommendations.md
     - name: テナント間の管理
       href: security-center-cross-tenant-management.md
+    - name: コンテナーのセキュリティ
+      items:
+        - name: コンテナーのセキュリティの概要
+          href: container-security.md
+        - name: Azure Container Registry との統合
+          href: azure-container-registry-integration.md
+        - name: Azure Kubernetes Service との統合
+          href: azure-kubernetes-service-integration.md
     - name: 脅威検出アラートとインシデント
       items:
         - name: セキュリティ アラートの概要
@@ -67,33 +75,47 @@
       href: security-center-secure-score.md
     - name: 高度なセキュリティへのアップグレード
       href: security-center-onboarding.md
-    - name: Microsoft Defender ATP でのサーバーの保護
+    - name: Microsoft Defender ATP を使用したサーバーの保護
       href: security-center-wdatp.md
-    - name: Azure VM 上の SQL 向けの Advanced Data Security (パブリック プレビュー)
+    - name: Azure VM 上の SQL 向けの Advanced Data Security の使用
       href: security-center-iaas-advanced-data.md
     - name: App Service を使用したアプリケーションの保護
       href: security-center-app-services.md
-    - name: セキュリティ ポリシーの操作
-      href: tutorial-security-policy.md
+    - name: セキュリティ ポリシーの使用
+      items:
+        - name: セキュリティ ポリシーの概要
+          href: tutorial-security-policy.md
+        - name: 組み込みのセキュリティ ポリシーの使用
+          href: security-center-policy-definitions.md
+        - name: カスタム セキュリティ ポリシーの作成
+          href: custom-security-policies.md
+        - name: Azure Policy REST API を使用したポリシーの管理
+          href: configure-security-policy-azure-policy.md
+    - name: 動的コンプライアンス パッケージの追加
+      href: update-regulatory-compliance-packages.md
     - name: 情報の保護ポリシーをカスタマイズする
       href: security-center-info-protection-policy.md
     - name: セキュリティ ソリューションの管理
       href: security-center-partner-integration.md
     - name: PowerShell を使用したオンボードの自動化
       href: security-center-powershell-onboarding.md
-    - name: Security Center の設定
-      href: security-center-policies-overview.md
+    - name: Windows Admin Center との統合
+      href: windows-admin-center-integration.md
     - name: ファイルの整合性の監視を使用してベースラインを比較する
       href: security-center-file-integrity-monitoring-baselines.md
-    - name: データ収集
+    - name: アラートや推奨事項に対する応答の自動化
+      href: workflow-automation.md
+    - name: アラートと推奨事項のエクスポート
+      href: continuous-export.md
+    - name: データ収集の構成
       href: security-center-enable-data-collection.md
-    - name: 組み込みのセキュリティ ポリシー
-      href: security-center-policy-definitions.md
-    - name: 電子メール通知
+    - name: Azure Key Vault 向けの Advanced Threat Protection の設定
+      href: advanced-threat-protection-key-vault.md
+    - name: メール通知の設定
       href: security-center-provide-security-contact-details.md
     - name: 価格
       href: security-center-pricing.md
-    - name: テナント全体の可視性
+    - name: テナント全体の可視性の確保
       href: security-center-management-groups.md
     - name: セキュリティの推奨事項を実装する
       items:
@@ -160,7 +182,7 @@
     - name: ユーザー データを管理する
       href: security-center-privacy.md
     - name: Azure Security Center for IoT のドキュメント
-      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
+      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: FAQ
       href: security-center-faq.md
     - name: Azure のセキュリティのドキュメント

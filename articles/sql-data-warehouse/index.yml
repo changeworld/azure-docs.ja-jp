@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure SQL Data Warehouse
-summary: SQL リレーショナル データベースに超並列処理 (MPP) を統合する Azure SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データ ウェアハウスを使ってデータを設計、読み込み、管理、分析する方法を紹介します。
+title: Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)
+summary: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
 metadata:
-  title: Azure SQL Data Warehouse
-  description: description
+  title: Azure Synapse Analytics
+  description: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
   services: sql-data-warehouse
   ms.service: sql-data-warehouse
   ms.subservice: design
@@ -12,38 +12,38 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 10/03/2019
-  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 2ad2e5b4d17c4642b42efd51de2b91308f49a101
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72245849"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73492210"
 landingContent:
-- title: SQL Data Warehouse について
+- title: Azure Synapse Analytics について
   linkLists:
   - linkListType: overview
     links:
-    - text: SQL Data Warehouse の概要
+    - text: Azure Synapse とは
       url: sql-data-warehouse-overview-what-is.md
   - linkListType: architecture
     links:
-    - text: SQL Data Warehouse - MPP アーキテクチャ
+    - text: Azure Synapse アーキテクチャ
       url: massively-parallel-processing-mpp-architecture.md
-    - text: データ ウェアハウスに関するヒントとベスト プラクティス
+    - text: ヒントとベスト プラクティス
       url: cheat-sheet.md
 - title: 使用の開始
   linkLists:
   - linkListType: deploy
     links:
-    - text: SQL Data Warehouse の作成
+    - text: SQL プール (データ ウェアハウス) を作成する
       url: create-data-warehouse-portal.md
 - title: データを読み込む
   linkLists:
   - linkListType: concept
     links:
-    - text: PolyBase データの読み込み戦略を設計する
+    - text: データの読み込み戦略を設計する
       url: design-elt-data-loading.md
-    - text: データの読み込みのベスト プラクティス
+    - text: ベスト プラクティス
       url: guidance-for-loading-data.md
   - linkListType: how-to-guide
     links:
@@ -57,7 +57,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: SQL Data Warehouse のベスト プラクティス
+    - text: ベスト プラクティス
       url: sql-data-warehouse-best-practices.md
     - text: 順序指定クラスター化列ストア インデックスのチューニング
       url: performance-tuning-ordered-cci.md
@@ -65,13 +65,13 @@ landingContent:
       url: performance-tuning-materialized-views.md
   - linkListType: how-to-guide
     links:
-    - text: ワークロードを分析する
+    - text: ワークロードの分析
       url: analyze-your-workload.md
-- title: SQL Data Warehouse の管理と監視
+- title: 管理および監視
   linkLists:
   - linkListType: overview
     links:
-    - text: SQL Data Warehouse の管理と監視について学ぶ
+    - text: データ ウェアハウスの管理と監視について学ぶ
       url: sql-data-warehouse-overview-manageability-monitoring.md
   - linkListType: how-to-guide
     links:
@@ -79,11 +79,11 @@ landingContent:
       url: sql-data-warehouse-manage-monitor.md
     - text: ワークロードの重要度の管理と監視
       url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
-- title: SQL Data Warehouse をセキュリティで保護します
+- title: データ ウェアハウスをセキュリティで保護する
   linkLists:
   - linkListType: overview
     links:
-    - text: SQL Data Warehouse のセキュリティ保護の基本を学ぶ
+    - text: データ ウェアハウスのセキュリティ保護の基本を学ぶ
       url: sql-data-warehouse-overview-manage-security.md
   - linkListType: how-to-guide
     links:
@@ -93,5 +93,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: Azure SQL Data Warehouse に関する最新のビデオを見る
+    - text: データ ウェアハウスに関する最新のビデオを見る
       url: sql-data-warehouse-videos.md

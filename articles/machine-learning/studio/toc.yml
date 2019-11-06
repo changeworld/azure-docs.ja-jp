@@ -1,9 +1,9 @@
-- name: Machine Learning Studio のドキュメント
+- name: Machine Learning Studio (クラシック) のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
   items:
-    - name: Machine Learning Studio
+    - name: Machine Learning Studio (クラシック)
       displayName: overview
       href: what-is-ml-studio.md
     - name: Microsoft の ML 製品の比較
@@ -48,7 +48,7 @@
   items:
     - name: ワークスペースを管理する
       items:
-        - name: Create
+        - name: 作成
           href: create-workspace.md
         - name: 管理
           href: manage-workspace.md
@@ -106,8 +106,6 @@
       items:
         - name: アルゴリズムを選択する
           href: algorithm-choice.md
-        - name: アルゴリズム チート シート
-          href: algorithm-cheat-sheet.md
         - name: アルゴリズムの使用例
           displayName: 'infographic, studio basics'
           href: basics-infographic-with-algorithm-examples.md
@@ -153,11 +151,11 @@
           href: azure-ml-customer-churn-scenario.md
         - name: センチメント分析
           href: text-analytics-module-tutorial.md
-        - name: Excel から Studio への分析の移行
+        - name: Excel から Studio への分析の移行 (クラシック)
           href: linear-regression-in-azure.md
     - name: 顧客データの削除とエクスポート
       items:
-        - name: Studio データ
+        - name: Studio (クラシック) データ
           displayName: export
           href: export-delete-personal-data-dsr.md
         - name: Gallery データ

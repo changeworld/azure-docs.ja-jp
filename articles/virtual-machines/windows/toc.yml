@@ -220,6 +220,8 @@
           href: disk-encryption.md
         - name: 高パフォーマンス用の設計
           href: premium-storage-performance.md
+        - name: ディスク バースト
+          href: disk-bursting.md
         - name: ディスクのスケーラビリティ ターゲット
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー

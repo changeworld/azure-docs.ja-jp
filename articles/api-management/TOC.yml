@@ -61,6 +61,8 @@
       href: api-management-error-handling-policies.md
     - name: API のインポートに関する制限事項
       href: api-management-api-import-restrictions.md
+    - name: セルフホステッド ゲートウェイの概要
+      href: self-hosted-gateway-overview.md
 - name: ハウツー ガイド
   items:
     - name: API の定義
@@ -93,6 +95,16 @@
           href: api-management-howto-autoscale.md
         - name: カスタム ドメインを構成する
           href: configure-custom-domain.md
+        - name: 複数の Azure リージョンにデプロイする
+          href: api-management-howto-deploy-multi-region.md
+        - name: セルフホステッド ゲートウェイをプロビジョニングする
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Kubernetes にセルフホステッド ゲートウェイをデプロイする
+          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+        - name: Docker にセルフホステッド ゲートウェイをデプロイする
+          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+        - name: セルフホステッド ゲートウェイのカスタム ドメインを構成する
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: キャッシュ
       items:
         - name: パフォーマンス向上のためにキャッシュを追加する
@@ -195,8 +207,6 @@
       items:
         - name: グループの管理
           href: api-management-howto-create-groups.md
-        - name: 複数の Azure リージョンにデプロイする
-          href: api-management-howto-deploy-multi-region.md
         - name: IP アドレスを取得する
           href: api-management-howto-ip-addresses.md
         - name: イベントを Azure Event Hubs にログ記録する

@@ -147,6 +147,10 @@
       href: limits.md
     - name: トラブルシューティング
       href: troubleshooting.md
+    - name: ファイル形式
+      items:
+        - name: TSV のバッチ テスト
+          href: reference-tsv-format-batch-testing.md
     - name: REST API リファレンス
       items:
         - name: API の作成

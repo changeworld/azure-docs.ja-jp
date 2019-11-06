@@ -1,0 +1,57 @@
+- name: Azure Firewall Manager のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Firewall Manager とは
+      href: overview.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: クラウド ネットワークのセキュリティ保護 - ポータル
+      href: secure-cloud-network.md
+- name: 概念
+  items:
+    - name: セキュリティ保護付き仮想ハブとは
+      href: secured-virtual-hub.md
+    - name: 一般的なデプロイ プロセス
+      href: deployment-overview.md
+    - name: 信頼されたセキュリティ パートナー
+      href: trusted-security-partners.md
+    - name: ルール処理ロジック
+      href: rule-processing.md
+- name: ハウツー ガイド
+  items:
+    - name: 信頼されたセキュリティ パートナーのデプロイ
+      href: deploy-trusted-security-partner.md
+    - name: ファイアウォール ポリシーへの移行
+      href: migrate-to-policy.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/azure-firewall/network/firewall
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: リソース
+  items:
+    - name: テンプレートの作成
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: コミュニティ テンプレート
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'

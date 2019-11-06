@@ -33,7 +33,7 @@
       href: search-get-started-python.md
 - name: チュートリアル
   items:
-    - name: 最初のアプリを作成する
+    - name: '最初の C# アプリを作成する'
       items:
         - name: 1 - 基本的な検索ページ
           href: tutorial-csharp-create-first-app.md
@@ -215,8 +215,6 @@
           href: search-howto-schedule-indexers.md
         - name: フィールドのマッピング
           href: search-indexer-field-mappings.md
-        - name: 増分インデックスの作成
-          href: search-howto-incremental-index.md
         - name: SQL Managed Instance への接続
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: SQL Server VM への接続
@@ -239,14 +237,14 @@
               href: cognitive-search-output-field-mapping.md
             - name: 画像の情報を処理し、抽出する
               href: cognitive-search-concept-image-scenarios.md
+            - name: 増分インデックス作成を設定する
+              href: search-howto-incremental-index.md
         - name: カスタム スキル
           items:
             - name: カスタム スキルを統合する
               href: cognitive-search-custom-skill-interface.md
             - name: 例 - Azure Functions
               href: cognitive-search-create-custom-skill-example.md
-            - name: 例 - パワー スキル
-              href: 'https://aka.ms/powerskills'
             - name: 例 - コンテナー
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: トラブルシューティングのヒント
@@ -378,6 +376,8 @@
           href: cognitive-search-skill-shaper.md
         - name: 条件付き
           href: cognitive-search-skill-conditional.md
+        - name: ドキュメント抽出
+          href: cognitive-search-skill-document-extraction.md
     - name: カスタム スキル
       items:
         - name: カスタム Web API

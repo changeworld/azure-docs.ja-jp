@@ -76,12 +76,26 @@
               href: connect-fortinet.md
             - name: F5 の接続
               href: connect-f5.md
+            - name: F5 BIG-IP の接続
+              href: connect-f5-big-ip.md
             - name: Syslog の接続
               href: connect-syslog.md
             - name: Symantec ICDX の接続
               href: connect-symantec.md
             - name: Cisco の接続
               href: connect-cisco.md
+            - name: Barracuda CloudGen Firewall の接続
+              href: connect-barracuda-cloudgen-firewall.md
+            - name: Citrix Analytics (セキュリティ) の接続
+              href: connect-citrix-analytics.md
+            - name: ExtraHop Reveal(x) の接続
+              href: connect-extrahop.md
+            - name: One Identity Safeguard
+              href: connect-one-identity.md
+            - name: Trend Micro Deep Security
+              href: connect-trend-micro.md
+            - name: Zscaler の接続
+              href: connect-zscaler.md
         - name: 脅威インテリジェンスの接続
           href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続
@@ -97,6 +111,8 @@
           href: notebooks.md
         - name: ブックマークを使用した検出
           href: bookmarks.md
+        - name: ライブストリームを使用した検出
+          href: livestream.md
     - name: Azure Sentinel の削除
       href: offboard.md
 - name: リソース
