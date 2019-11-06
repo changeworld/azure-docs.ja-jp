@@ -218,9 +218,6 @@
             - name: SQL Server レベルの監査設定の監査
               displayName: auditIfNotExists
               href: samples/audit-sql-server-audit-setting.md
-            - name: SQL Server バージョン 12.0 が必要
-              displayName: 'deny, builtin'
-              href: samples/require-sql-12.md
         - name: SQL データベース
           items:
             - name: 許可されている SQL DB の SKU

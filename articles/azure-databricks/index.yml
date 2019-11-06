@@ -11,12 +11,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/11/2019
-  ms.openlocfilehash: 40a023ee9498f8d5c487ab7317bc020260b98cce
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: 3d82583617ac5ee2efc7f19bd937a01d557eb5ba
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70933522"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73606055"
 landingContent:
 - title: Azure Databricks について
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: リリース ノート
-      url: https://docs.azuredatabricks.net/release-notes/index.html
+      url: /azure/databricks/release-notes/product/
   - linkListType: learn
     links:
     - text: Azure Databricks の概要
@@ -47,7 +47,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Apache Spark クラスターの作成
-      url: https://docs.azuredatabricks.net/user-guide/clusters/index.html
+      url: /azure/databricks/clusters/create
     - text: データ ソースへの接続
       url: databricks-connect-to-data-sources.md
     - text: Azure Cloud Shell からの Databricks CLI の使用
@@ -99,7 +99,7 @@ landingContent:
     - text: Event Hubs を使用したデータのストリーミング
       url: databricks-stream-from-eventhubs.md
     - text: HDInsight Kafka からのデータのストリーム配信
-      url: https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html
+      url: /azure/databricks/spark/latest/structured-streaming/kafka
 - title: 開発者向けガイド
   linkLists:
   - linkListType: learn
