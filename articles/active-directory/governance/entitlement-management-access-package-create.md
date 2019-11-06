@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 09/24/2019
+ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326339"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389362"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) で新しいアクセス パッケージを作成する
 
@@ -36,15 +36,31 @@ ms.locfileid: "71326339"
 
 すべてのアクセス パッケージは、カタログという名前のコンテナーに配置する必要があります。 カタログは、アクセス パッケージに追加できるリソースを定義します。 カタログを指定しない場合、アクセス パッケージは一般カタログに格納されます。 現時点では、既存のアクセス パッケージを別のカタログに移動することはできません。
 
-すべてのアクセス パッケージには、少なくとも 1 つのポリシーが必要です。 ポリシーは、アクセス パッケージを要求できるユーザーを指定するほか、承認と有効期限の設定も指定します。 新しいアクセス パッケージを作成するときに、ディレクトリ内のユーザー、ディレクトリ内にいないユーザー、および管理者直接割り当てのみに対する初期ポリシーを作成することも、後でポリシーを作成することもできます。
+アクセス パッケージ マネージャーの場合は、所有しているカタログにリソースを追加することはできません。 カタログで利用可能なリソースの使用に制限されます。 カタログにリソースを追加する必要がある場合は、カタログ所有者に問い合わせてください。
 
-次の図では、新しいアクセス パッケージを作成する手順の概要について説明します。
+すべてのアクセス パッケージには、少なくとも 1 つのポリシーが必要です。 ポリシーは、アクセス パッケージを要求できるユーザーを指定するほか、承認とライフサイクルの設定も指定します。 新しいアクセス パッケージを作成するときに、ディレクトリ内のユーザー、ディレクトリ内にいないユーザー、および管理者直接割り当てのみに対する初期ポリシーを作成することも、後でポリシーを作成することもできます。
 
-![アクセス パッケージの作成プロセス](./media/entitlement-management-access-package-create/access-package-process.png)
+![アクセス パッケージを作成します。](./media/entitlement-management-access-package-create/access-package-create.png)
+
+新しいアクセス パッケージを作成する手順の概要を次に示します。
+
+1. [Identity Governance] で、新しいアクセス パッケージを作成するプロセスを開始します。
+
+1. アクセス パッケージを作成するカタログを選択します。
+
+1. アクセス パッケージにカタログからリソースを追加します。
+
+1. リソースごとにリソースの役割を割り当てます。
+
+1. アクセスを要求できるユーザーを指定します。
+
+1. 承認設定を指定します。
+
+1. ライフサイクルの設定を指定します。
 
 ## <a name="start-new-access-package"></a>新しいアクセス パッケージを開始する
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、またはカタログ所有者
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -64,20 +80,19 @@ ms.locfileid: "71326339"
 
 1. **[カタログ]** ドロップダウン リストで、アクセス パッケージを作成するカタログを選択します。 たとえば、要求できるすべてのマーケティング リソースを管理するカタログ所有者が存在するとします。 この場合、マーケティング カタログを選択できます。
 
-    アクセス パッケージを作成する権限を持つカタログのみが表示されます。 アクセス パッケージを既存のカタログ内に作成するには、少なくともグローバル管理者、ユーザー管理者、そのカタログ内のカタログ所有者、またはそのカタログ内のアクセス パッケージ マネージャーである必要があります。
+    アクセス パッケージを作成する権限を持つカタログのみが表示されます。 アクセス パッケージを既存のカタログ内に作成するには、グローバル管理者またはユーザー管理者、あるいはそのカタログ内のカタログ所有者またはアクセス パッケージ マネージャーである必要があります。
 
     ![[アクセス パッケージ] - [基本]](./media/entitlement-management-access-package-create/basics.png)
 
-    グローバル管理者またはユーザー管理者が、一覧表示されていない新しいカタログにアクセス パッケージを作成する場合は、 **[新規作成]** をクリックします。 カタログの名前と説明を入力し、 **[作成]** をクリックします。
+    グローバル管理者、ユーザー管理者、カタログ作成者が、一覧表示されていない新しいカタログにアクセス パッケージを作成する場合は、 **[新規作成]** をクリックします。 カタログの名前と説明を入力し、 **[作成]** をクリックします。
 
     作成するアクセス パッケージとそれに含まれるすべてのリソースが、新しいカタログに追加されます。 後でカタログ所有者をさらに追加することもできます。
-
 
 1. **[次へ]** をクリックします。
 
 ## <a name="resource-roles"></a>リソース ロール
 
-**[リソース ロール]** タブでは、アクセス パッケージに含めるリソースを選択します。  アクセス パッケージを要求して受け取るユーザーは、そのアクセス パッケージ内のすべてのリソース ロールを受け取ります。
+**[リソース ロール]** タブでは、アクセス パッケージに含めるリソースを選択します。 アクセス パッケージを要求して受け取るユーザーは、そのアクセス パッケージ内のすべてのリソース ロールを受け取ります。
 
 1. 追加するリソースの種類をクリックします ( **[Groups and Teams]\(Groups と Teams\)** 、 **[アプリケーション]** 、または **[SharePoint サイト]** )。
 
@@ -97,19 +112,17 @@ ms.locfileid: "71326339"
 
 1. **[次へ]** をクリックします。
 
-## <a name="policy"></a>ポリシー
+## <a name="requests"></a>Requests
 
-**[ポリシー]** タブでは、アクセス パッケージを要求できるユーザーと、承認および有効期限の設定も指定する最初のポリシーを作成します。 後で追加のポリシーを作成して、追加のユーザーのグループが独自の承認と有効期限の設定でアクセス パッケージを要求できるようにすることができます。 ポリシーを後で作成することもできます。
+**[Requests]** タブで、アクセス パッケージと承認設定を要求できるユーザーを指定する最初のポリシーを作成します。 その後、要求ポリシーをさらに作成して、追加のユーザー グループがアクセス パッケージに独自の承認設定を要求できるようにすることができます。
 
-1. **[Create first policy]\(最初のポリシーを作成する\)** トグルを **[Now]\(今すぐ\)** または **[Later]\(後で\)** に設定します。
+![[アクセス パッケージ] - [Requests] タブ](./media/entitlement-management-access-package-create/requests.png)
 
-    ![[アクセス パッケージ] - [ポリシー]](./media/entitlement-management-access-package-create/policy.png)
+次のいずれかのセクションにある手順を実行します。
 
-1. **[Later]\(後で\)** を選択した場合、[[確認と作成]](#review--create) セクションにスキップし、アクセス パッケージを作成します。
+[!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-1. **[Now]\(今すぐ\)** を選択した場合、次のいずれかのポリシー セクションにある手順を実行します。
-
-[!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
+[!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="review--create"></a>確認と作成
 
@@ -125,6 +138,5 @@ ms.locfileid: "71326339"
 
 ## <a name="next-steps"></a>次の手順
 
-- [既存のアクセス パッケージの編集および管理](entitlement-management-access-package-edit.md)
-- [カタログ所有者またはアクセス パッケージ マネージャーを追加する](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [カタログを作成および管理する](entitlement-management-catalog-create.md)
+- [リンクを共有してアクセス パッケージを要求する](entitlement-management-access-package-settings.md)
+- [アクセス パッケージのリソースのロールを変更する](entitlement-management-access-package-resources.md)

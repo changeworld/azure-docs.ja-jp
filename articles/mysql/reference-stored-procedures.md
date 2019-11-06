@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL のストアド プロシージャ
-description: この記事では、Azure Database for MySQL 固有のストアド プロシージャについて説明します。
+title: Azure Database for MySQL の管理ストアド プロシージャ
+description: データイン レプリケーションの構成、タイムゾーンの設定、クエリの終了を行う場合に役立つ Azure Database for MySQL の有用なストアド プロシージャについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.openlocfilehash: f01a0bf68e510133058dc0075f27cfcf6241c7a8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 34598278ac7f432c5976de86eaf5dcf477c7e81a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156549"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970338"
 ---
-# <a name="azure-database-for-mysql-stored-procedures"></a>Azure Database for MySQL のストアド プロシージャ
+# <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL の管理ストアド プロシージャ
 
 ストアド プロシージャは、MySQL サーバーの管理に役立つ Azure Database for MySQL サーバーで使用できます。 これには、サーバーの接続管理、クエリ、データイン レプリケーションの設定が含まれます。  
 
@@ -39,10 +39,10 @@ Azure Database for MySQL では、以下のストアド プロシージャがサ
 
 |**ストアド プロシージャ名**|**入力パラメーター**|**出力パラメーター**|**使用上の注意**|
 |-----|-----|-----|-----|
-|*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html)コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連付けられている接続を終了します。|
-|*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html)コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
-|*mysql.az_load_timezone*|該当なし|該当なし|タイム ゾーン テーブルを読み込み、`time_zone` パラメーターを名前付きの値に設定できるようにします (例 "US/Pacific")。|
+|*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連する接続を終了します。|
+|*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
+|*mysql.az_load_timezone*|該当なし|該当なし|タイム ゾーン テーブルを読み込み、パラメーター `time_zone` を名前付きの値に設定できるようにします (例 "US/Pacific")。|
 
 ## <a name="next-steps"></a>次の手順
 - [データイン レプリケーション](howto-data-in-replication.md) を設定する方法について確認する
-- [タイム ゾーン テーブル](howto-server-parameters.md#working-with-the-time-zone-parameter)を使用する方法について確認する
+- [タイム ゾーン テーブル](howto-server-parameters.md#working-with-the-time-zone-parameter) を使用する方法について確認する

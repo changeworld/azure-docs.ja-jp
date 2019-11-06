@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262882"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756160"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -42,6 +42,11 @@ SQL VM リソースプロバイダーを利用するには、SQL VM リソース
 
   > [!NOTE]
   > リソース プロバイダーへの登録に関連する追加のライセンス要件はありません。 SQL VM リソース プロバイダーに登録すると、各リソースのライセンス登録フォームを管理する代わりに Azure ハイブリッド特典が有効にされたことを Microsoft に通知する要件を満たすための簡単な方法が提供されます。 
+
+SQL VM リソース プロバイダーを使用する利点の詳細については、次の [Channel 9](https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure?WT.mc_id=dataexposed-c9-niner) のビデオをご覧ください。 
+
+<iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Azure で SQL Server を自己インストールするときの SQL VM リソース プロバイダーの利点 - Microsoft Channel 9 のビデオ"></iframe>
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -198,7 +203,7 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
      $sqlvm.Properties.sqlManagement
   ```
 
-"*軽量*" の IaaS 拡張機能がインストールされている SQL Server VM の場合、Azure portal を使用してモードを "_フル_" にアップグレードできます。 _No-Agent_ モードの SQL Server VM は、OS が Windows 2008 R2 以降にアップグレードされ後で "_フル_" にアップグレードできます。 ダウングレードはできません。これを行うには、SQL IaaS 拡張機能を完全にアンインストールし、再度インストールする必要があります。 
+"*軽量*" の IaaS 拡張機能がインストールされている SQL Server VM の場合、Azure portal を使用してモードを "_フル_" にアップグレードできます。 _No-Agent_ モードの SQL Server VM は、OS が Windows 2008 R2 以降にアップグレードされ後で "_フル_" にアップグレードできます。 ダウングレードはできません。これを行うには、SQL VM リソースを削除することで SQL VM リソース プロバイダーから SQL Server VM の[登録を解除](#unregister-vm-from-resource-provider)し、SQL VM リソース プロバイダーに再登録する必要があります。 
 
 エージェントのモードを "フル" にアップグレードするには: 
 
@@ -276,6 +281,49 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
 ---
 
+## <a name="unregister-vm-from-resource-provider"></a>リソース プロバイダーから VM を登録解除する 
+
+SQL VM リソースプロバイダーから SQL Server VM の登録を解除するには、Azure portal または Azure CLI を使用して、SQL 仮想マシン "*リソース*" を削除します。 SQL 仮想マシン "*リソース*" を削除しても、SQL Server VM は削除されません。 ただし、"*リソース*" を削除しようとしたときに仮想マシンが誤って削除される可能性があるため、注意して慎重に手順に従ってください。 
+
+SQL VM リソース プロバイダーから SQL VM の登録を解除するには、管理モードを完全からダウングレードする必要があります。 
+
+### <a name="azure-portal"></a>Azure ポータル
+
+Azure portal を使用してリソース プロバイダーから SQL Server VM の登録を解除するには、次の手順に従います。
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. SQL Server VM リソースに移動します。 
+  
+   ![SQL 仮想マシン リソース](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
+
+1. **[削除]** を選択します。 
+
+   ![SQL VM リソース プロバイダーの削除](media/virtual-machines-windows-sql-register-with-rp/delete-sql-vm-resource-provider.png)
+
+1. SQL 仮想マシンの名前を入力し、**仮想マシンの横にあるチェックボックスをオフにします**。
+
+   ![SQL VM リソース プロバイダーの削除](media/virtual-machines-windows-sql-register-with-rp/confirm-delete-of-resource-uncheck-box.png)
+
+   >[!WARNING]
+   > 仮想マシン名の横にあるチェックボックスをオフにしないと、仮想マシンが完全に "*削除*" されます。 リソース プロバイダーから SQL Server VM の登録を解除するが、"*実際の仮想マシンを削除しない*" 場合は、このチェックボックスをオフにしてください。 
+
+1. **[削除]** を選択して、SQL Server の仮想マシンではなく、SQL 仮想マシン "*リソース*" の削除を確認します。 
+
+
+### <a name="azure-cli"></a>Azure CLI 
+
+Azure CLI を使用してリソース プロバイダーから SQL Server 仮想マシンの登録を解除するには、[az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) コマンドを使用します。 これにより、SQL Server 仮想マシン "*リソース*" が削除されますが、仮想マシンは削除されません。 
+
+
+```azurecli-interactive
+   az sql vm delete 
+     --name <SQL VM resource name> |
+     --resource-group <Resource group name> |
+     --yes 
+```
+
+
+
 ## <a name="remarks"></a>解説
 
 - SQL VM リソースプロバイダーでサポートされているのは、Azure Resource Manager を介してデプロイされた SQL Server VM のみです。 クラシック モデルを介してデプロイされた SQL Server VM はサポートされません。 
@@ -286,7 +334,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 **Azure Marketplace の SQL Server イメージからプロビジョニングされた SQL Server VM を登録する必要はありますか?**
 
-いいえ。 Azure Marketplace の SQL Server イメージからプロビジョニングされた VM は自動的に登録されます。 SQL VM リソースプロバイダーへの登録が必要になるのは、VM が Azure Marketplace の SQL Server イメージからプロビジョニングされて "*おらず*"、SQL Server を自分でインストールした場合のみです。
+No. Azure Marketplace の SQL Server イメージからプロビジョニングされた VM は自動的に登録されます。 SQL VM リソースプロバイダーへの登録が必要になるのは、VM が Azure Marketplace の SQL Server イメージからプロビジョニングされて "*おらず*"、SQL Server を自分でインストールした場合のみです。
 
 **SQL VM リソース プロバイダーは、すべての顧客が使用できますか。** 
 
@@ -312,13 +360,13 @@ SQL VM リソースプロバイダーへの登録時の既定の SQL 管理モ�
 
 **SQL VM リソースプロバイダーに登録すると、VM にエージェントがインストールされますか?**
 
-いいえ。 SQL VM リソースプロバイダーに登録した場合は、新しいメタデータ リソースのみが作成されます。 VM にエージェントがインストールされることはありません。
+No. SQL VM リソースプロバイダーに登録した場合は、新しいメタデータ リソースのみが作成されます。 VM にエージェントがインストールされることはありません。
 
 SQL Server IaaS 拡張機能は、完全管理を有効にする場合のみ必要です。 管理モードを軽量から完全にアップグレードすると、SQL Server IaaS 拡張機能がインストールされ、SQL Server が再起動されます。
 
 **SQL Server VM リソースプロバイダーに登録すると、VM 上の SQL Server は再起動されますか?**
 
-いいえ。 SQL VM リソースプロバイダーに登録した場合は、新しいメタデータ リソースのみが作成されます。 VM 上の SQL Server が再起動されることはありません。 
+No. SQL VM リソースプロバイダーに登録した場合は、新しいメタデータ リソースのみが作成されます。 VM 上の SQL Server が再起動されることはありません。 
 
 SQL Server の再起動は、SQL Server IaaS 拡張機能をインストールする場合にのみ必要です。 また、SQL Server IaaS 拡張機能は、完全管理を有効にする場合に必要になります。 管理モードを軽量から完全にアップグレードすると、SQL Server IaaS 拡張機能がインストールされ、SQL Server が再起動されます。
 
@@ -330,15 +378,15 @@ SQL Server の再起動は、SQL Server IaaS 拡張機能をインストール�
 
 **Azure CLI を使用することで、軽量モードまたはエージェントなしモードで SQL VM リソースプロバイダーに登録できますか?**
 
-いいえ。 この管理モード プロパティを使用できるのは、Azure PowerShell を使用して SQL VM リソースプロバイダーに登録する場合のみです。 Azure CLI では、SQL Server 管理プロパティの設定はサポートされていません。 常に、既定の完全管理モードで SQL VM リソースプロバイダーに登録します。
+No. この管理モード プロパティを使用できるのは、Azure PowerShell を使用して SQL VM リソースプロバイダーに登録する場合のみです。 Azure CLI では、SQL Server 管理プロパティの設定はサポートされていません。 常に、既定の完全管理モードで SQL VM リソースプロバイダーに登録します。
 
 **SQL Server のライセンスの種類を指定せずに SQL VM リソースプロバイダーに登録できますか?**
 
-いいえ。 SQL VM リソースプロバイダーに登録している場合、SQL Server のライセンスの種類は省略可能なプロパティではありません。 Azure CLI と PowerShell の両方を使用してすべての管理モード (エージェントなし、軽量、完全) で SQL VM リソースマネージャーに登録するときに、SQL Server のライセンスの種類を従量課金制または Azure ハイブリッド特典として設定する必要があります。
+No. SQL VM リソースプロバイダーに登録している場合、SQL Server のライセンスの種類は省略可能なプロパティではありません。 Azure CLI と PowerShell の両方を使用してすべての管理モード (エージェントなし、軽量、完全) で SQL VM リソースマネージャーに登録するときに、SQL Server のライセンスの種類を従量課金制または Azure ハイブリッド特典として設定する必要があります。
 
 **SQL Server IaaS 拡張機能をエージェントなしモードから完全モードにアップグレードできますか?**
 
-いいえ。 エージェントなしモードでは、管理モードを完全または軽量にアップグレードすることはできません。 これは Windows Server 2008 の技術的な制限です。
+No. エージェントなしモードでは、管理モードを完全または軽量にアップグレードすることはできません。 これは Windows Server 2008 の技術的な制限です。
 
 **SQL Server IaaS 拡張機能を軽量モードから完全モードにアップグレードできますか?**
 
@@ -346,17 +394,17 @@ SQL Server の再起動は、SQL Server IaaS 拡張機能をインストール�
 
 **SQL Server IaaS 拡張機能を完全モードからエージェントなしまたは軽量管理モードにダウングレードすることはできますか?**
 
-いいえ。 SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 この管理モードは、完全モードから軽量またはエージェントなしモードにダウングレードできません。また、軽量モードからエージェントなしモードにダウングレードすることもできません。 
+No. SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 この管理モードは、完全モードから軽量またはエージェントなしモードにダウングレードできません。また、軽量モードからエージェントなしモードにダウングレードすることもできません。 
 
-管理モードを完全管理から変更するには、SQL Server IaaS 拡張機能を削除してください。 その後、Microsoft.SqlVirtualMachine リソースをドロップし、SQL Server VM を SQL VM リソースプロバイダーに再登録します。
+管理モードを完全管理から変更するには、SQL Server "*リソース*" を削除することで SQL Server リソース プロバイダーから SQL Server 仮想マシンの[登録を解除](#unregister-vm-from-resource-provider)し、別の管理モードでその SQL Server VM を SQL VM リソース プロバイダーに再登録します。
 
 **Azure portal から SQL VM リソースプロバイダーに登録できますか?**
 
-いいえ。 Azure portal では SQL VM リソースプロバイダーへの登録を利用できません。 完全管理モードでの SQL VM リソースプロバイダーへの登録は、Azure CLI または PowerShell でサポートされています。 軽量またはエージェントなし管理モードでの SQL VM リソースプロバイダーへの登録は、Azure PowerShell API のみでサポートされています。
+No. Azure portal では SQL VM リソースプロバイダーへの登録を利用できません。 完全管理モードでの SQL VM リソースプロバイダーへの登録は、Azure CLI または PowerShell でサポートされています。 軽量またはエージェントなし管理モードでの SQL VM リソースプロバイダーへの登録は、Azure PowerShell API のみでサポートされています。
 
 **SQL Server をインストールする前に、VM を SQL VM リソースプロバイダーに登録できますか?**
 
-いいえ。 SQL VM リソースプロバイダーへの登録を成功させるには、VM に少なくとも 1 つの SQL Server インスタンスが必要です。 VM 上に SQL Server インスタンスが存在しない場合、新しい Microsoft.SqlVirtualMachine リソースはエラー状態になります。
+No. SQL VM リソースプロバイダーへの登録を成功させるには、VM に少なくとも 1 つの SQL Server インスタンスが必要です。 VM 上に SQL Server インスタンスが存在しない場合、新しい Microsoft.SqlVirtualMachine リソースはエラー状態になります。
 
 **複数の SQL Server インスタンスがある場合、VM を SQL VM リソースプロバイダーに登録できますか?**
 

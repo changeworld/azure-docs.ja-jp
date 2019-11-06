@@ -1,25 +1,20 @@
 ---
-title: Azure Status Monitor v2 - 概要 | Microsoft Docs
-description: Status Monitor v2 のクイックスタート ガイド。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights Agent - 概要 | Microsoft Docs
+description: Application Insights Agent のクイックスタート ガイド。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: d9c354edac3cbd3faccaa261654e56f858befdf6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 04/23/2019
+ms.openlocfilehash: 1ef354bc61d849a4d536bd26355ef21b0f1c0035
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058248"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899614"
 ---
-# <a name="get-started-with-status-monitor-v2"></a>Status Monitor v2 の概要
+# <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー向け Azure Monitor Application Insights Agent の概要
 
 この記事には、ほとんどの環境で動作するクイックスタート コマンドが含まれています。
 これらの手順では、更新の配布において PowerShell ギャラリーに依存します。
@@ -41,7 +36,7 @@ Install-Module -Name PowerShellGet -Force
 ``` 
 PowerShell を閉じます。
 
-### <a name="install-status-monitor-v2"></a>Status Monitor v2 をインストールする
+### <a name="install-application-insights-agent"></a>Application Insights Agent をインストールする
 PowerShell を管理者として実行します。
 ```powershell   
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -59,7 +54,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 ### <a name="download-the-module"></a>モジュールをダウンロードする
 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)からモジュールの最新バージョンを手動でダウンロードします。
 
-### <a name="unzip-and-install-status-monitor-v2"></a>Status Monitor v2 を解凍してインストールする
+### <a name="unzip-and-install-application-insights-agent"></a>Application Insights Agent のファイルを解凍してインストールする
 ```powershell
 $pathToNupkg = "C:\Users\t\Desktop\Az.ApplicationMonitor.0.3.0-alpha.nupkg"
 $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
@@ -89,7 +84,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 - Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
 - トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
 
-Status Monitor v2 の活用:
+Application Insights Agent をさらに活用する:
 
 - ここに記載されているコマンドの説明については、[詳細な手順](status-monitor-v2-detailed-instructions.md)に関する記事を参照してください。
-- ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。
+- Application Insights Agent の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行うには、このガイドを参照してください。

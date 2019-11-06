@@ -1,6 +1,6 @@
 ---
 title: マネージド ID を持つ Azure マネージド アプリケーション
-description: マネージド ID を持つマネージド アプリケーションを構成する方法について説明します。 マネージド ID を使用すると、既存のリソースにリンクされたマネージド アプリケーションをデプロイしたり、マネージド アプリケーションにマネージド リソース グループの外部にある Azure リソースの管理を付与したり、アクティビティ ログや Azure 内のその他のサービスのためのマネージド アプリケーションの運用 ID を提供したりできます。
+description: 既存のリソースへのリンク、Azure リソースの管理、およびアクティビティ ログの運用 ID の提供を行うために、マネージド アプリケーションをマネージド ID で構成します。
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9e1f5072921104c749a0acef95b7da09f1cbb662
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434859"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330225"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>マネージド ID を持つ Azure マネージド アプリケーション
 

@@ -2,18 +2,17 @@
 title: Azure Analysis Services でのサーバー管理者の管理 | Microsoft Docs
 description: Azure で Analysis Services サーバーのサーバー管理者を管理する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eb5248d374fa6212398ad652b4db1496833473ae
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f597bc9e34a606a6e40a57e5fc7af791d972c68e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696306"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146276"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 

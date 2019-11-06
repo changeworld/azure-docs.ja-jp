@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: c8517d4754d10b61f7ee4c8075830860e1d22864
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 10d300638f95fe275a23dfbc239f8f961f46b127
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172993"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598013"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics での時間の処理について
 
@@ -208,7 +208,7 @@ Azure Stream Analytics では、基準値の進行状況を唯一のトリガー
 
    4. 6 番目のイベント (device3) が処理されるとき、到着時間 (12:17) とイベント時間 (12:12) は基準値レベルを下回っています。 イベント時間が基準値レベル (12:17) に調整されます。
 
-   5. 9 番目のイベント (device3) が処理されるとき、到着時間 (12:27) はイベント時間 (12:21) よりも 6 分早くなっています。 到着遅延ポリシーが適用されます。 イベント時間が基準値 (12:21) を上回る (12:22) に調整されるため、さらなる調整は適用されません。
+   5. 12 番目のイベント (device3) が処理されるとき、到着時間 (12:27) はイベント時間 (12:21) よりも 6 分早くなっています。 到着遅延ポリシーが適用されます。 イベント時間が基準値 (12:21) を上回る (12:22) に調整されるため、さらなる調整は適用されません。
 
 2. 早期到着ポリシーなしで進行する基準値の 2 番目の図:
 

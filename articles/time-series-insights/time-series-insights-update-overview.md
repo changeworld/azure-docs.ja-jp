@@ -3,20 +3,19 @@ title: 概要:Azure Time Series Insights プレビュー | Microsoft Docs
 description: Azure Time Series Insights プレビューの概要です。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: dpalled
 ms.workload: big-data
 ms.topic: overview
-ms.date: 09/23/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 588d6dafd3703743f5f4c50bea4f27ef0225bbf7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978671"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989730"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューとは
 
@@ -45,7 +44,7 @@ IoT データは、CRM や ERP といったファースト パーティ ソー�
 
 IoT の一般的なデータ フローを次の図に示します。
 
-  ![IoT データ フロー][1]
+  [![IoT データ フロー](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>産業用 IoT の Azure Time Series Insights
 
@@ -70,7 +69,7 @@ Operational Insights およびデータ探索は、データ処理、ストレ�
 
 次の概要データ フロー図は更新を示したものです。
 
-  ![主な機能][2]
+  [![主な機能](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
 
 これらの重要な産業用 IoT 機能が導入された Time Series Insights でには、以下のような重要な利点があります。
 
@@ -94,7 +93,3 @@ Azure Time Series Insights プレビューの概要:
 
 > [!div class="nextstepaction"]
 > [Azure Time Series Insights プレビューのユース ケース](./time-series-insights-update-use-cases.md)
-
-<!-- Images -->
-[1]: media/v2-update-overview/overview-one.png
-[2]: media/v2-update-overview/overview-two.png

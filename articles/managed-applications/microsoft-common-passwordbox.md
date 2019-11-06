@@ -1,6 +1,6 @@
 ---
 title: Azure の PasswordBox UI 要素 | Microsoft Docs
-description: Azure Portal の Microsoft.Common.PasswordBox UI 要素について説明します。
+description: Azure Portal の Microsoft.Common.PasswordBox UI 要素について説明します。 管理対象アプリケーションをデプロイするとき、ユーザーがシークレット値を指定できるようにします。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 944f59da680c3a058a3cd245cca48d903e44ab87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a8b760d113e29efb0efacbd41dcaa7432ecdcfd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710930"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332799"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI 要素
 パスワードの提供と確認に使用できるコントロールです。

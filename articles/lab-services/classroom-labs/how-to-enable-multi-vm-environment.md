@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 10/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 6faf32232c42f863bff52fdfb3c0714aee8e9b88
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9a86ba803f899e78b2ba9640e6cc317966969e64
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60702414"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332375"
 ---
 # <a name="create-an-environment-with-multiple-vms-inside-a-template-vm-of-a-classroom-lab"></a>クラスルーム ラボのテンプレート VM 内に複数の VM を備えた環境を作成する
 現在、Azure Lab Services では、ラボ内に 1 つのテンプレート仮想マシンを設定し、各ユーザーが 1 つのコピーを使用できるようにすることができます。 ただし、ファイアウォールやサーバーの設定方法について IT クラスに講義する教授であれば、必要に応じて、複数の仮想マシンがネットワークを介して相互に通信できる環境を各学生に用意します。
@@ -43,59 +43,56 @@ ms.locfileid: "60702414"
 次に、その手順を詳しく説明します。 
 
 1. まだお持ちでない場合は、ラボ アカウントを作成します。 手順については、「[チュートリアル:Azure Lab Services でラボ アカウントを設定する](tutorial-setup-lab-account.md)」を参照してください。
-2. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 
-3. **[サインイン]** を選択して、資格情報を入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
+1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 Internet Explorer 11 はまだサポートされていないことに注意してください。 
+2. **[サインイン]** を選択して、資格情報を入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
+3. **[New lab]\(新しいラボ\)** を選択します。 
+    
+    ![クラスルーム ラボを作成する](../media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. ラボの**名前**を指定します。 
-    2. ラボでの**仮想マシンの数**の最大値を指定します。 ラボの作成後、または既存のラボで、VM の数を増やしたり減らしたりできます。 詳しくは、「[ラボ内の仮想マシンの数を更新する](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)」をご覧ください
-    6. **[保存]** を選択します。
+    2. **仮想マシン サイズ**として **[Large (Nested Virtualization)]\(大 (入れ子になった仮想化)\)** または **[Medium (Nested Virtualization)]\(中 (入れ子になった仮想化)\)** のサイズを選択します。
+    6. 使用する Windows **イメージ**を選択します。 入れ子になった仮想化は、Windows マシンでのみ使用できます。 
+    4. 次に、 **[次へ]** を選択します。 
 
-        ![クラスルーム ラボを作成する](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-4. **[Select virtual machine specifications]** \(仮想マシンの仕様の選択\) ページで、次の手順を実行します。
-    1. ラボで作成する仮想マシン (VM) のサイズに **[L]** を選択します。 現在、入れ子になった仮想化をサポートしているのは L サイズのみです。
-    2. **Windows イメージ**である仮想マシン イメージを選択します。 入れ子になった仮想化は、Windows マシンでのみ使用できます。 
-    3. **[次へ]** を選択します。
+        ![クラスルーム ラボを作成する](../media/how-to-enable-multi-vm-environment/new-lab-window.png)
+    1. **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページで、ラボ内のすべての VM 用の既定の資格情報を指定します。 ユーザーの**名前**と**パスワード**を指定し、 **[次へ]** を選択します。  
 
-        ![VM 仕様の指定](../media/how-to-enable-multi-vm-environment/large-windows-vm.png)    
-5. **[資格情報の設定]** ページで、ラボ内のすべての VM に使う既定の資格情報を指定します。 
-    1. ラボ内のすべての VM に使う**ユーザーの名前**を指定します。
-    2. ユーザーの**パスワード**を指定します。 
+        ![新しいラボのウィンドウ](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
         > [!IMPORTANT]
         > ユーザー名とパスワードはメモしておいてください。 これらは再表示されません。
-    3. **作成** を選択します。 
+    3. **[Lab policies]\(ラボのポリシー\)** ページで、ラボに対してスケジュールされた時間外で各ユーザーに割り当てられる時間数を入力し ( **[quota for each user]\(各ユーザーのクォータ\)** )、 **[完了]** を選択します。 
 
-        ![資格情報の設定](../media/tutorial-setup-classroom-lab/set-credentials.png)
-6. **[Configure template**]\(テンプレートの構成\) ページで、ラボの作成プロセスの状態を確認します。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 
+        ![[Quota for each user]\(各ユーザーのクォータ\)](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+5. テンプレート VM の作成の状態を示す次の画面が表示されます。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 
 
-    ![テンプレートの構成](../media/tutorial-setup-classroom-lab/configure-template.png)
-7. テンプレートの構成が完了すると、次のページが表示されます。 
+    ![テンプレート VM の作成の状態](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
+1. **[テンプレート]** ページで、ツール バーの **[Customize template]\(テンプレートのカスタマイズ\)** を選択します。 
 
-    ![完了後の [Configure template]\(テンプレートの構成\) ページ](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. **[Configure template]\(テンプレートの構成\)** ページで、 **[接続]** を選択してテンプレート VM に接続し、入れ子になった仮想化を構成します。 また、このウィザードの手順を完了した後で設定することもできます。 
+    ![[Customize template]\(テンプレートのカスタマイズ\) ボタン](../media/how-to-create-manage-template/customize-template-button.png)
+2. **[Customize template]\(テンプレートのカスタマイズ\)** ダイアログで **[続行]** を選択します。 テンプレートを開始し、変更を加えると、ユーザーに最後に公開された仮想マシンと同じ設定ではなくなります。 再び公開するまで、ユーザーの既存の仮想マシンにはテンプレートの変更が反映されません。
+
+    ![[カスタマイズ] ダイアログ ボックス](../media/how-to-create-manage-template/customize-template-dialog.png)
+1. ツール バーで **[Connect to template]\(テンプレートに接続する\)** を選択してテンプレート VM に接続し、入れ子になった仮想化を構成し、指示に従います。 Windows コンピューターの場合、RDP ファイルをダウンロードするオプションが表示されます。 
+
+    ![テンプレート VM に接続する](../media/how-to-create-manage-template/connect-template-vm.png) 
 9. テンプレート仮想マシン内で、入れ子になった仮想化を設定し、複数の仮想マシンがある仮想ネットワークを構成します。 詳細な手順については、「[Azure VM で入れ子になった仮想化を有効にする方法](../../virtual-machines/windows/nested-virtualization.md)」を参照してください。 手順の概要を次に示します。 
     1. テンプレート仮想マシンで Hyper-V 機能を有効にします。
     2. 入れ子になった仮想マシンにインターネット接続を使用して内部仮想ネットワークを設定します
     3. Hyper-V マネージャーで仮想マシンを作成します
     4. IP アドレスを仮想マシンに割り当てます
-10. [Configure template]\(テンプレートの構成\) ページの **[次へ]** を選択します。 
-11. **[Publish the template]** \(テンプレートの発行\) ページで、次の操作を行います。 
-    1. テンプレートをすぐに発行するには、 **[Publish]\(発行\)** を選択します。  
+10. **[テンプレート]** ページで、ツール バーの **[発行]** を選択します。 
 
-        > [!WARNING]
-        > 一度発行すると、再発行することはできません。 
-    2. 後で発行する場合は、 **[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「[テンプレートを発行する](how-to-create-manage-template.md#publish-the-template-vm)」セクションを参照してください。
+    ![テンプレートを発行するボタン](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
-        ![テンプレートを発行する](../media/how-to-enable-multi-vm-environment/publish-template-page.png)
-11. テンプレートの**発行に関する進行状況**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 
+    > [!WARNING]
+    > 一度発行すると、再発行することはできません。 
+8. **[Publish template]\(テンプレートの発行\)** ページで、ラボに作成する仮想マシンの数を入力し、 **[発行]** を選択します。 
+
+    ![テンプレートの発行 - VM の数](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+11. ページには、テンプレートの**発行の状態**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 
 
     ![テンプレートの発行 - 進行状況](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-12. テンプレートが正常に発行されると、次のページが表示されます。 **[完了]** を選択します。
-
-    ![テンプレートの発行 - 正常](../media/tutorial-setup-classroom-lab/publish-success.png)
-1. ラボの**ダッシュボード**が表示されます。 
-    
-    ![クラスルーム ラボのダッシュボード](../media/how-to-enable-multi-vm-environment/dashboard.png)
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,24 +1,22 @@
 ---
-title: B2B ソリューションの統合アカウントを作成および管理する - Azure Logic Apps
-description: Azure Logic Apps を使用して、エンタープライズ統合および B2B ソリューションの統合アカウントを作成、リンク、移動、削除します
+title: B2B 統合アカウントを作成または管理する - Azure Logic Apps
+description: Azure Logic Apps とのエンタープライズ統合のための統合アカウントを作成、リンク、および管理する
 services: logic-apps
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: carmonm
-ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: be0f534e6770cde561f18bfcb310524a7c506416
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 960733b7423ad1e22bd05a75d9b994cd85b1d30c
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801290"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680367"
 ---
-# <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>Azure Logic Apps を使用した B2B ソリューションの統合アカウントの作成と管理
+# <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して[エンタープライズ統合および B2B ソリューション](../logic-apps/logic-apps-enterprise-integration-overview.md)をビルドする前に、統合アカウントを作成する必要があります。これは、ロジック アプリ ワークフローで定義して使用する統合成果物のためのセキュリティで保護され、スケーラブルで管理可能なコンテナーを提供する個別の Azure リソースです。
 

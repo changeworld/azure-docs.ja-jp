@@ -4,14 +4,14 @@ description: Azure portal を使用して、サブスクリプション内のリ
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959698"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300405"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
 
@@ -48,39 +48,36 @@ Resource Manager では、テンプレートにエクスポートするリソー
 * 再利用しやすいテンプレートがほしい。
 * 元のデプロイ後に行った変更を含める必要はない。
 
-## <a name="export-template-from-resource-group"></a>リソース グループからテンプレートをエクスポートする
+## <a name="export-template-from-a-resource-group"></a>リソース グループからテンプレートをエクスポートする
 
 リソース グループから 1 つまたは複数のリソースをエクスポートするには:
 
 1. エクスポートするリソースを含むリソース グループを選択します。
 
-1. リソース グループ内のすべてのリソースをエクスポートするには、すべてを選択してから **[テンプレートのエクスポート]** を選択します。 **[テンプレートのエクスポート]** オプションを有効にするには、少なくとも 1 つのリソースを設定している必要があります。
+1. 該当するチェックボックスを選択して、1 つまたは複数のリソースを選択します。  すべてを選択するには、 **[名前]** の左側にあるチェックボックスをオンにします。 **[テンプレートのエクスポート]** メニュー項目を有効にするには、少なくとも 1 つのリソースを設定している必要があります。
 
    ![すべてのリソースをエクスポートする](./media/export-template-portal/select-all-resources.png)
 
-1. エクスポート対象として特定のリソースを選択するには、それらのリソースの横にあるチェック ボックスを選択します。 次に、 **[テンプレートのエクスポート]** を選択します。
+    スクリーンショットでは、ストレージ アカウントのみが選択されています。
+1. **[テンプレートのエクスポート]** を選択します。
 
-   ![エクスポートするリソースを選択する](./media/export-template-portal/select-resources.png)
-
-1. エクスポートされたテンプレートが表示され、ダウンロードできるようになります。
+1. エクスポートされたテンプレートが表示され、ダウンロードおよびデプロイできるようになります。
 
    ![テンプレートの表示](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>リソースからテンプレートをエクスポートする
+## <a name="export-template-from-a-resource"></a>リソースからテンプレートをエクスポートする
 
 1 つのリソースをエクスポートするには:
 
 1. エクスポートするリソースを含むリソース グループを選択します。
 
-1. エクスポートするリソースを選択します。
-
-   ![リソースの選択](./media/export-template-portal/select-link-resource.png)
+1. エクスポートするリソースを選択して、リソースを選択します。
 
 1. そのリソースについて、左側のウィンドウで **[テンプレートのエクスポート]** を選択します。
 
    ![リソースのエクスポート](./media/export-template-portal/export-single-resource.png)
 
-1. エクスポートされたテンプレートが表示され、ダウンロードできるようになります。 このテンプレートには、1 つのリソースのみが含まれています。
+1. エクスポートされたテンプレートが表示され、ダウンロードおよびデプロイできるようになります。 このテンプレートには、1 つのリソースのみが含まれています。
 
 ## <a name="export-template-before-deployment"></a>デプロイ前にテンプレートをエクスポートする
 
@@ -92,9 +89,8 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
    ![テンプレートのダウンロード](./media/export-template-portal/download-before-deployment.png)
 
-1. テンプレートが表示され、ダウンロードできるようになります。
+1. テンプレートが表示され、ダウンロードおよびデプロイできるようになります。
 
-   ![テンプレートの表示](./media/export-template-portal/show-template-before-deployment.png)
 
 ## <a name="export-template-after-deployment"></a>デプロイ後にテンプレートをエクスポートする
 

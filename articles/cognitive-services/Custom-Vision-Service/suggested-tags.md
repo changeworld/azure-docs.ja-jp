@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: pafarley
-ms.openlocfilehash: 31b8dfc234ac99d6f04061d6596e3dc8113e8d0f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 06735240729fb2bfd21b87f592e143e9ceabb390
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213829"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753482"
 ---
 # <a name="label-images-faster-with-suggested-tags"></a>推奨タグを使用して画像により早くラベルを付ける
 
@@ -28,7 +28,6 @@ ms.locfileid: "71213829"
 次の制限事項に注意してください。
 
 * コンテンツが既にトレーニングされている画像の推奨タグのみを要求してください。 トレーニングを開始したばかりの新しいタグについて提案を取得しないでください。
-* 推奨タグを使用できるのは、タグ付けされていない画像に対してのみです。既にタグ付けされた画像に対する追加のタグの提案を取得することはできません。
 
 > [!IMPORTANT]
 > 推奨タグ機能では、通常の予測と同じ[価格モデル](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)を使用します。 画像のセットに対して推奨タグを初めてトリガーするときは、予測呼び出しの場合と同じ料金が発生します。 その後、サービスでは選択した画像の結果が 30 日間データベースに格納され、その期間内はいつでも無料でそれらにアクセスできます。 30 日後に、推奨タグを再度要求すると、料金が発生します。

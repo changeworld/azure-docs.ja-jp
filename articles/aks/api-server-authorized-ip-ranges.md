@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058342"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241126"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -228,7 +228,7 @@ API サーバーの許可された IP 範囲を有効にするには、許可さ
 
 [az aks update][az-aks-update] コマンドを使用し、 *--api-server-authorized-ip-ranges* を指定して許可します。 これらの IP アドレス範囲は通常、オンプレミス ネットワークによって使用されるアドレス範囲です。 前の手順で取得された独自の Azure Firewall のパブリック IP アドレス (*20.42.25.196/32* など) を追加します。
 
-次の例では、*myResourceGroup* という名前のリソース グループ内の *myAKSCluster* という名前のクラスターで API サーバーの許可された IP 範囲を有効にします。 許可する IP アドレス範囲は、*20.42.25.196/32* (Azure ファイアウォールのパブリック IP アドレス)、次に *172.0.0.0/16* と *168.10.0.0/18* です。
+次の例では、*myResourceGroup* という名前のリソース グループ内の *myAKSCluster* という名前のクラスターで API サーバーの許可された IP 範囲を有効にします。 許可する IP アドレス範囲は、*20.42.25.196/32* (Azure ファイアウォールのパブリック IP アドレス)、次に *172.0.0.0/16* (ポッド/ノード アドレス範囲) と *168.10.0.0/18* (ServiceCidr) です。
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> 次の範囲を許可リストに追加してください。
+> - ファイアウォール パブリック IP アドレス
+> - サービス CIDR
+> - サブネットのアドレス範囲、ノード、ポッド
+> - クラスターを管理するネットワークを表すあらゆる範囲
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>許可された IP 範囲を更新するか、または無効にする
 

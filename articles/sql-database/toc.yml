@@ -20,29 +20,34 @@
           items:
             - name: 概要
               href: sql-database-purchase-models.md
-            - name: 仮想コアベースのモデル
-              href: sql-database-service-tiers-vcore.md
+            - name: 仮想コア モデル
               items:
-                - name: サーバーレス コンピューティング レベル
+                - name: 仮想コア モデルの概要
+                  href: sql-database-service-tiers-vcore.md
+                - name: サーバーレス
                   href: sql-database-serverless.md
-                - name: 予約容量の前払い
+                - name: Azure ハイブリッド特典
+                  href: sql-database-azure-hybrid-benefit.md
+                - name: 予約容量
                   href: sql-database-reserved-capacity.md
-            - name: DTU サービス レベル
+            - name: DTU モデルの概要
               href: sql-database-service-tiers-dtu.md
+            - name: DTU から仮想コアに移行する
+              href: sql-database-dtu-to-vcore.md
         - name: コンピューティングとストレージ
           items:
             - name: 概要
               href: sql-database-service-tiers-general-purpose-business-critical.md
               displayName: provisioned compute tier
-            - name: General Purpose / Standard サービス レベル
+            - name: General Purpose/Standard
               href: sql-database-service-tier-general-purpose.md
-            - name: Business Critical / Premium サービス レベル
+            - name: Business Critical/Premium
               href: sql-database-service-tier-business-critical.md
-            - name: ハイパースケール サービス レベル
+            - name: ハイパースケール
               href: sql-database-service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
               href: sql-database-service-tier-hyperscale-faq.md
-            - name: Premium RS サービス レベルから移行する
+            - name: Premium RS から移行する
               href: sql-database-service-tiers-prs.md
 - name: クイック スタート
   expanded: true
@@ -271,6 +276,8 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: 拡張イベント - リング バッファー
                   href: sql-database-xevent-code-ring-buffer.md
+        - name: Hyperscale パフォーマンス診断
+          href: sql-database-hyperscale-performance-diagnostics.md
     - name: スケーラビリティ
       items:
         - name: スケーラビリティのドキュメント
@@ -499,17 +506,17 @@
       items:
         - name: 単一データベースのリソース
           items:
-            - name: 仮想コアベースのリソース制限
+            - name: 仮想コア リソースの制限
               href: sql-database-vcore-resource-limits-single-databases.md
-            - name: DTU ベースのリソース制限
+            - name: DTU リソースの制限
               href: sql-database-dtu-resource-limits-single-databases.md
             - name: リソースのスケール
               href: sql-database-single-database-scale.md
         - name: エラスティック プールのリソース
           items:
-            - name: 仮想コアベースのリソース制限
+            - name: 仮想コア リソースの制限
               href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: DTU ベースのリソース制限
+            - name: DTU リソースの制限
               href: sql-database-dtu-resource-limits-elastic-pools.md
             - name: リソースのスケール
               href: sql-database-elastic-pool-scale.md
@@ -717,6 +724,8 @@
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: マネージド インスタンスをフェールオーバー グループに追加する
           href: sql-database-managed-instance-failover-group-tutorial.md
+        - name: オンプレミスのユーザーとグループの移行
+          href: tutorial-managed-instance-azure-active-directory-migration.md
     - name: 概念
       items:
         - name: Management API リファレンス

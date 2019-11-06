@@ -1,25 +1,20 @@
 ---
-title: Azure Status Monitor v2 の詳細な手順 | Microsoft Docs
-description: Status Monitor v2 を使い始めるための詳細な手順です。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights Agent の詳細な手順 | Microsoft Docs
+description: Application Insights Agent を使い始めるための詳細な手順です。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: 791db3de897231667d184f08ee152705c59a1e35
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 04/23/2019
+ms.openlocfilehash: 8a9ae2364b51c0c201f2efffb3a7433594f76c49
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057848"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899640"
 ---
-# <a name="status-monitor-v2-detailed-instructions"></a>Status Monitor v2:詳しい手順
+# <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
 この記事では、ApplicationMonitor モジュールを PowerShell ギャラリーにオンボードしてダウンロードする方法を詳しく説明します。
 始めるために必要になる最も一般的なパラメーターが含まれています。
@@ -245,6 +240,6 @@ Application Insights SDK では、アプリのテレメトリを Microsoft に�
 - Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
 - トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
 
-Status Monitor v2 の活用:
+Application Insights エージェントをさらに活用する:
 
-- ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。
+- Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。

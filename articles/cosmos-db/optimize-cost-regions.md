@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の複数リージョン デプロイにかかるコストを最適化する
 description: この記事では、Azure Cosmos DB の複数リージョン デプロイのコストを管理する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: rimman
-ms.openlocfilehash: 233eab1fc49d7ce4cbb1e5b98b67eda9a64aa195
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667595"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753315"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 

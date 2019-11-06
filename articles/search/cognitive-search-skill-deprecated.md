@@ -1,27 +1,26 @@
 ---
-title: 非推奨のコグニティブ スキル - Azure Search
-description: このページには、近い将来サポートされなくなり、非推奨と見なされるコグニティブ検索スキルの一覧が含まれています。
-services: search
+title: 非推奨のコグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: このページには、近い将来 Azure Cognitive Search スキルセットでサポートされなくなり、非推奨と見なされるコグニティブ スキルの一覧が含まれています。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e78852ec8b92f1a9e37a4dbcbbcb371c0ac0f97
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265436"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792034"
 ---
-# <a name="deprecated-cognitive-search-skills"></a>非推奨の認知検索スキル
+# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure Cognitive Search の非推奨のコグニティブ スキル
 
 このドキュメントでは、非推奨と見なされるコグニティブ スキルについて説明します。 以下の内容について、次のガイドを使用してください。
 
 * スキル名: 非推奨となるスキルの名前です。@odata.type 属性にマッピングされます。
-* 利用可能な最終 API バージョン: 対応する非推奨スキルを含むスキルセットを作成および更新できる Azure Search パブリック API の最終バージョンです。
+* 利用可能な最終 API バージョン: 対応する非推奨スキルを含むスキルセットを作成および更新できる Azure Cognitive Search パブリック API の最終バージョンです。
 * サポート終了: この日を過ぎると、対応するスキルはサポートされていないと見なされます。 以前に作成したスキルセットは引き続き機能するはずですが、ユーザーには非推奨のスキルから移行することが推奨されています。
 * 推奨事項:サポートされているスキルを使用するための移行パスです。 ユーザーは、引き続きサポートを受けるため、推奨事項に従うことをお勧めします。
 
@@ -148,6 +147,6 @@ ms.locfileid: "71265436"
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)

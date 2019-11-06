@@ -1,23 +1,23 @@
 ---
 title: HDInsight 上の Hadoop サービスで使用されるポート- Azure
-description: ここでは、Azure HDInsight で実行されている Apache Hadoop サービスによって使用されるポートの一覧を示します
+description: この記事では、Azure HDInsight で実行されている Apache Hadoop サービスによって使用されるポートの一覧を示します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 10/15/2019
+ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733419"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529552"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート
 
-このドキュメントでは、Linux ベースの HDInsight クラスターで実行されている Apache Hadoop サービスで使用されるポートの一覧を示します。 また、SSH を使用したクラスターへの接続に使用されるポートの情報も提供します。
+このドキュメントでは、HDInsight クラスター上で実行されている Apache Hadoop サービスによって使用されるポートの一覧を示します。 また、SSH を使用したクラスターへの接続に使用されるポートの情報も提供します。
 
 ## <a name="public-ports-vs-non-public-ports"></a>パブリック ポートと非パブリック ポート
 
@@ -26,13 +26,13 @@ Linux ベースの HDInsight クラスターでは、22、23、443 の 3 つの�
 内部的には、HDInsight は Azure Virtual Network 上で実行される複数の Azure Virtual Network (クラスター内のノード) によって実装されます。 仮想ネットワーク内から、インターネット経由で公開されていないポートにアクセスできます。 たとえば、SSH を使用してヘッド ノードのいずれかに接続すると、そのヘッド ノードから、クラスター ノードで実行されているサービスに直接アクセスできます。
 
 > [!IMPORTANT]  
-> HDInsight の構成オプションとして Azure Virtual Network を指定しないと、Azure Virtual Network が自動的に作成されます。 ただし、この仮想ネットワークに他のマシン (他の Azure Virtual Machine やクライアント開発用コンピューターなど) を参加させることはできません。
+> HDInsight の構成オプションとして Azure Virtual Network を指定しないと、Azure Virtual Network が自動的に作成されます。 ただし、この仮想ネットワークに他のコンピューター (他の Azure Virtual Machines やクライアント開発用コンピューターなど) を参加させることはできません。
 
 仮想ネットワークに他のマシンを参加させるには、まず仮想ネットワークを作成し、HDInsight クラスターの作成時にその仮想ネットワークを指定する必要があります。 詳細については、「[Plan a virtual network for HDInsight](hdinsight-plan-virtual-network-deployment.md)」 (HDInsight 用の仮想ネットワークの計画) を参照してください。
 
 ## <a name="public-ports"></a>パブリック ポート
 
-HDInsight クラスターのすべてのノードは Azure Virtual Network 内にあり、インターネットから直接アクセスすることはできません。 パブリック ゲートウェイにより、すべての HDInsight クラスターの種類に共通する次のポートへのインターネット アクセスが提供されます。
+HDInsight クラスター内のすべてのノードは Azure Virtual Network 内に配置されており、インターネットから直接アクセスすることはできません。 パブリック ゲートウェイにより、すべての HDInsight クラスターの種類に共通する次のポートへのインターネット アクセスが提供されます。
 
 | Service | Port | Protocol | 説明 |
 | --- | --- | --- | --- |
@@ -73,7 +73,7 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 ### <a name="ambari"></a>Ambari
 
-| Service | Nodes | Port | URL パス | Protocol | 
+| Service | Nodes | Port | URL パス | Protocol |
 | --- | --- | --- | --- | --- |
 | Ambari Web UI | ヘッド ノード | 8080 | / | HTTP |
 | Ambari REST API | ヘッド ノード | 8080 | /api/v1 | HTTP |

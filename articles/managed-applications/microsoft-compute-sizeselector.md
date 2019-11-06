@@ -1,6 +1,6 @@
 ---
 title: Azure の SizeSelector UI 要素 | Microsoft Docs
-description: Azure Portal の Microsoft.Compute.SizeSelector UI 要素について説明します。
+description: Azure Portal の Microsoft.Compute.SizeSelector UI 要素について説明します。 仮想マシンのサイズ選択に使用されます。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e5be5635964ebeedc7be4d1d1f5403e4d281b55c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 288ea7e887a170c8560b0126fa53c9132da35db6
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722348"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332667"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 要素
 1 つまたは複数の仮想マシン インスタンスのサイズを選択するコントロールです。

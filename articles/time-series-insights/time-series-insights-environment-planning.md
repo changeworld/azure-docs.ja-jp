@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828175"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332913"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA 環境の計画
 
@@ -31,17 +31,17 @@ ms.locfileid: "68828175"
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-Time Series Insights の使用を開始するには、分単位でプッシュすることが予想されるデータの量と、データを保存する必要がある期間を把握しておくことをお勧めします。  
+Azure Time Series Insights の使用を開始するには、分単位でプッシュすることが予想されるデータの量と、データを保存する必要がある期間を把握しておくことをお勧めします。  
 
 Time Series Insights の 2 つの SKU の容量とリテンション期間の詳細については、「[Time Series Insights の価格](https://azure.microsoft.com/pricing/details/time-series-insights/)」をご覧ください。
 
 長期的な成功に向けて Time Series Insights 環境を最善に計画するには、次の属性を検討します。
 
-- <a href="#storage-capacity">[ストレージ容量]</a>
-- <a href="#data-retention">データ リテンション期間</a>
-- <a href="#ingress-capacity">イングレス容量</a>
-- <a href="#shape-your-events">イベントの整形</a>
-- <a href="#ensure-that-you-have-reference-data">参照データが配置されていることを確認</a>
+- [[ストレージ容量]](#storage-capacity)
+- [データ リテンション期間](#data-retention)
+- [イングレス容量](#ingress-capacity)
+- [イベントの整形](#shape-your-events)
+- [参照データが配置されていることを確認](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>ストレージの容量
 
@@ -49,15 +49,17 @@ Time Series Insights の 2 つの SKU の容量とリテンション期間の詳
 
 ## <a name="data-retention"></a>データの保持
 
-お使いの Time Series Insights 環境内で **[データ リテンション期間]** 設定を変更できます。 リテンション期間は最大 400 日まで有効にできます。 
+お使いの Azure Time Series Insights 環境内で **[データ リテンション期間]** 設定を変更できます。 リテンション期間は最大 400 日まで有効にできます。 
 
-Time Series Insights には 2 つのモードがあります。 1 つのモードでは、環境内に最新のデータが確実に保持されるように最適化されます。 このモードは、既定でオンになっています。 
+Azure Time Series Insights には 2 つのモードがあります。
 
-もう 1 つのモードは、リテンション期間の上限が確実に守られるように最適化されます。 2 つ目のモードでは、その環境の全ストレージ容量に達すると、イングレスが一時停止されます。 
+* 1 つのモードでは、最新のデータに対して最適化されます。 **古いデータを消去する**ポリシーが強制され、最近のデータをインスタンスで利用できるように残します。 このモードは、既定でオンになっています。 
+* もう 1 つのモードでは、構成されているリテンション制限を下回るようにデータが最適化されます。 **[Pause ingress]\(イングレスを一時停止\)** により、**ストレージ上限の超過動作**として選択されているとき、新しいデータのイングレスが防止されます。 
 
 Azure portal 内の環境の構成ページ上で、リテンション期間を調整し、2 つのモードを切り替えることができます。
 
-Time Series Insights 環境では、最大 400 日のデータ リテンション期間を構成できます。
+> [!IMPORTANT]
+> Azure Time Series Insights GA 環境では、最大 400 日のデータ リテンション期間を構成できます。
 
 ### <a name="configure-data-retention"></a>データ リテンション期間の構成
 
@@ -74,7 +76,7 @@ Time Series Insights 環境では、最大 400 日のデータ リテンショ�
 
 ## <a name="ingress-capacity"></a>イングレス容量
 
-Time Series Insights 環境を計画する場合に注目すべき 2 つ目の分野は、イングレス容量です。 イングレス容量とは、分単位の割り当てから派生したものです。
+Time Series Insights 環境を計画するときに注目すべき 2 つ目の分野は、*イングレス容量*です。 イングレス容量とは、分単位の割り当てから派生したものです。
 
 調整の観点から、パケット サイズが 32 KB のイングレス データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは、32 KB です。 32 KB を超えるデータ パケットは切り捨てられます。
 

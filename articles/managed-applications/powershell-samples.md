@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル - Azure マネージド アプリケーション | Microsoft Docs
-description: Azure PowerShell のサンプル - Azure マネージド アプリケーション
+description: Azure マネージド アプリケーションを扱う際に使用する Azure PowerShell サンプル スクリプトを紹介します。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: c1a960077ed96bb395ade9a09f47b035e6ff4318
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b93abd774cf3145c485a294c009b00892a878509
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252148"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330209"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
 

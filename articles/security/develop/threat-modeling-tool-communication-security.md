@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c9562f413fa0ed52d61d0b38df358f1a2cd03f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828576"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498688"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信のセキュリティ | 軽減策 
 | 製品/サービス | 記事 |
@@ -102,7 +102,7 @@ ms.locfileid: "71828576"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
-| **参照**              | [アプリに対する HTTPS を Azure App Service で有効にする](../../app-service/app-service-web-tutorial-custom-ssl.md) |
+| **参照**              | [アプリに対する HTTPS を Azure App Service で有効にする](../../app-service/configure-ssl-bindings.md) |
 | **手順** | Azure の既定では、*.azurewebsites.net ドメインのワイルドカード証明書を使用するすべてアプリに対して、HTTPS を利用できます。 ただし、すべてのワイルドカード ドメインと同様に、カスタム ドメインに独自の証明書を使用する場合ほど安全ではありません ([こちら](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)を参照)。 デプロイされたアプリへのアクセスに使用するカスタム ドメインに対して、SSL を有効にすることをお勧めします|
 
 ## <a id="appservice-https"></a>Azure App Service へのすべてのトラフィックに HTTPS 接続を強制する
@@ -113,7 +113,7 @@ ms.locfileid: "71828576"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
-| **参照**              | [Azure App Service に HTTPS を適用する](../../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
+| **参照**              | [Azure App Service に HTTPS を適用する](../../app-service/configure-ssl-bindings.md#enforce-https) |
 | **手順** | <p>Azure では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Azure App Service に対して、HTTPS が既に有効になっていますが、適用されていません。 訪問者は引き続き HTTP を使用してアプリにアクセスするため、アプリのセキュリティが侵害される可能性があります。したがって HTTPS を明示的に適用する必要があります。 ASP.NET MVC アプリケーションは、セキュリティで保護されていない HTTP 要求が HTTPS 経由で再送信されるように強制する、[RequireHttps フィルター](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)を使用する必要があります。</p><p>また、Azure App Service に組み込まれている URL 書き換えモジュールを使用して、HTTPS を適用することもできます。 URL 書き換えモジュールを使用すると、アプリケーションに渡す前に受信要求に適用するルールを開発者が定義できます。 URL 書き換えルールは、アプリケーションのルートに格納されている web.config ファイルで定義されます</p>|
 
 ### <a name="example"></a>例

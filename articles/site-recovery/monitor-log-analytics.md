@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor ログ (Log Analytics) を使用して Azure Site Recovery を監視する
+title: Azure Monitor ログ (Log Analytics) を使用して Azure Site Recovery を監視する | Microsoft Docs
 description: Azure Monitor ログ (Log Analytics) を使用して Azure Site Recovery を監視する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/13/2019
 ms.author: raynew
-ms.openlocfilehash: 4eb88658437d3b29cc55d24bb83f73b660daea43
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718230"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331931"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
@@ -25,7 +25,11 @@ Site Recovery では、Azure Monitor ログを次の目的に使用できます�
 - **Site Recovery の正常性と状態を監視する**。 たとえば、レプリケーションの正常性、テスト フェールオーバーの状態、Site Recovery のイベント、保護対象マシンの RPO (目標復旧ポイント)、ディスク (またはデータ) の変更量を監視することができます。
 - **Site Recovery のアラートを設定する**。 たとえば、マシンの正常性、テスト フェールオーバーの状態、Site Recovery ジョブの状態に対するアラートを構成することができます。
 
-Site Recovery での Azure Monitor ログの使用は、Azure から Azure へのレプリケーションと VMware VM (または物理サーバー) から Azure へのレプリケーションでサポートされます。
+Site Recovery での Azure Monitor ログの使用は、**Azure から Azure への**レプリケーションと **VMware VM (または物理サーバー) から Azure への**レプリケーションでサポートされます。
+
+> [!NOTE]
+> チャーン データのログとアップロード率のログは、Azure VM がセカンダリ Azure リージョンにレプリケートする場合にのみ使用できます。
+
 ## <a name="before-you-start"></a>開始する前に
 
 次のものが必要です。
@@ -42,9 +46,10 @@ Site Recovery での Azure Monitor ログの使用は、Azure から Azure へ�
 
     ![診断ログを選択する](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. **[診断設定]** で、ログ アクションの名前を指定し、 **[Log Analytics への送信]** を選択します。
+2. **[診断設定]** で名前を指定し、 **[Log Analytics への送信]** ボックスをオンにします。
 3. Azure Monitor ログのサブスクリプションと Log Analytics ワークスペースを選択します。
-4. ログの一覧から、**AzureSiteRecovery** で始まるログをすべて選択します。 次に、 **[OK]** をクリックします
+4. トグルで **[Azure Diagnostics]** を選択します。
+5. ログの一覧から、**AzureSiteRecovery** で始まるログをすべて選択します。 次に、 **[OK]** をクリックします
 
     ![ワークスペースを選択](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -61,7 +66,7 @@ Site Recovery での Azure Monitor ログの使用は、Azure から Azure へ�
 
 ### <a name="query-replication-health"></a>レプリケーションの正常性を照会する
 
-このクエリは、保護対象のすべての Azure VM について、最新のレプリケーションの正常性をノーマル、警告、クリティカルの 3 つの状態に分けて円グラフにプロットします。
+このクエリは、保護対象のすべての Azure VM について、最新のレプリケーションの正常性を次の 3 つの状態に分けて円グラフにプロットします。ノーマル、警告、またはクリティカルです。
 
 ```
 AzureDiagnostics  
@@ -88,7 +93,7 @@ AzureDiagnostics 
 
 ### <a name="query-rpo-time"></a>RPO 時間を照会する
 
-このクエリは、Site Recovery を使ってレプリケートされた Azure VM を、目標復旧ポイント (RPO) (15 分未満、15 から 30 分、30 分超) ごとに分けて棒グラフにプロットします。
+このクエリは、Site Recovery を使ってレプリケートされた Azure VM を、回復ポイントの目標 (RPO) ごとに分けて棒グラフにプロットします。15 分未満、15 分から 30 分まで、30 分超です。
 
 ```
 AzureDiagnostics 
@@ -171,7 +176,10 @@ AzureDiagnostics  
 
 ### <a name="query-data-change-rate-churn-for-a-vm"></a>VM のデータの変更量 (変更頻度) を照会する
 
-このクエリは、特定の Azure VM (ContosoVM123) について、データの変更量 (1 秒あたりの書き込みバイト数) とデータのアップロード速度を追跡する傾向グラフをプロットします。 この情報が得られるのは、セカンダリ Azure リージョンにレプリケートされた Azure VM だけです。
+> [!NOTE] 
+> チャーン情報が得られるのは、セカンダリ Azure リージョンにレプリケートされた Azure VM だけです。
+
+このクエリは、特定の Azure VM (ContosoVM123) について、データの変更量 (1 秒あたりの書き込みバイト数) とデータのアップロード速度を追跡する傾向グラフをプロットします。 
 
 ```
 AzureDiagnostics   

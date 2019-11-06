@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 42819749b019b4b1db77942e22e09ea31a137fe7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 831d3a187a4388a429c6fabb1bb0e0ec6dd584cc
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813860"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800045"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm 用 Apache Storm トポロジとコンポーネントの例
 
@@ -26,7 +26,7 @@ HDInsight 上の [Apache Storm](https://storm.apache.org/) で使用するため
 | [HDInsight での Apache Storm の Java ベース トポロジの開発][5797064f] |Maven |Java |
 | [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][16fce2d1] |HDInsight Tools for Visual Studio |C#、Java |
 | [HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)][844d1d81] |Event Hubs |C#、Java |
-| [Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/) |Event Hubs |Java |
+| [Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) |Event Hubs |Java |
 | [HDInsight 上の Apache Storm を使用して Event Hubs からの車両センサー データを処理する][246ee964] |Event Hubs、Cosmos DB、Azure Storage Blob (WASB) |C#、Java |
 | [HDInsight 上の Apache Storm を使用した Azure Event Hubs から Apache HBase への抽出、変換、読み込み (ETL)][b4b68194] |Event Hubs、HBase |C# |
 | [HDInsight 上の Apache Storm から Azure サービスを使用するためのテンプレート C# Storm トポロジ プロジェクト][ce0c02a2] |Event Hubs、Cosmos DB、SQL Database、HBase、SignalR |C#、Java |

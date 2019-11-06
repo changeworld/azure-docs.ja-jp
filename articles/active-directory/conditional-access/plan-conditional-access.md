@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fca84a71e1ede572e3889f973248db158115bec
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655495"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880268"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>方法:Azure Active Directory の条件付きアクセスの展開を計画する
 
@@ -24,7 +24,7 @@ ms.locfileid: "67655495"
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
-条件付きアクセスは、スタンドアロンの機能ではなく、組織のアプリやリソースへのアクセスを制御できるようにするフレームワークと考えてください。 そのため、一部の条件付きアクセス設定では、追加機能を構成する必要があります。 たとえば、特定の[サインイン リスク レベル](../identity-protection/howto-sign-in-risk-policy.md#what-is-the-sign-in-risk-policy)に応答するポリシーを構成できます。 ただし、サインイン リスク レベルに基づくポリシーでは、[Azure Active Directory の ID 保護](../identity-protection/overview.md)を有効にする必要があります。
+条件付きアクセスは、スタンドアロンの機能ではなく、組織のアプリやリソースへのアクセスを制御できるようにするフレームワークと考えてください。 そのため、一部の条件付きアクセス設定では、追加機能を構成する必要があります。 たとえば、特定の[サインイン リスク レベル](../identity-protection/howto-identity-protection-configure-risk-policies.md)に応答するポリシーを構成できます。 ただし、サインイン リスク レベルに基づくポリシーでは、[Azure Active Directory の ID 保護](../identity-protection/overview-identity-protection.md)を有効にする必要があります。
 
 追加機能が必要な場合、関連するライセンスの取得が必要になることもあります。 たとえば、条件付きアクセスは Azure AD Premium P1 の機能ですが、ID 保護には Azure AD Premium P2 ライセンスが必要です。
 

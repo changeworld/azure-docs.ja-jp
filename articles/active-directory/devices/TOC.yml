@@ -49,6 +49,10 @@
       href: manage-stale-devices.md
     - name: Enterprise State Roaming を有効にする
       href: enterprise-state-roaming-enable.md
+    - name: Windows Azure VM と Azure AD
+      href: howto-vm-sign-in-azure-ad-windows.md
+    - name: 仮想デスクトップ インフラストラクチャ
+      href: howto-device-identity-virtual-desktop-infrastructure.md
     - name: Azure マネージド ワークステーションをデプロイする
       href: howto-azure-managed-workstation.md
     - name: デバイス ID のトラブルシューティング

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679484"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300903"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>チュートリアル:管理ツールをデプロイする
 
@@ -26,6 +26,12 @@ ms.locfileid: "71679484"
 このアプリでは Windows Virtual Desktop を操作するために同意が必要なため、このツールは企業間 (B2B) シナリオをサポートしていません。 Azure Active Directory (AAD) テナントの各サブスクリプションでは、それ専用として管理ツールを個別にデプロイする必要があります。
 
 この管理ツールはサンプルです。 Microsoft は、セキュリティと品質の重要な更新プログラムを提供します。 [ソース コードは GitHub から入手できます](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)。 お客様やパートナーには、各自のビジネス ニーズに合わせてツールをカスタマイズすることをお勧めします。
+
+管理ツールは、次のブラウザーに対応しています。
+- Google Chrome 68 以降
+- Microsoft Edge 40.15063 以降
+- Mozilla Firefox 52.0 以降
+- Safari 10 以降 (macOS のみ)
 
 ## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの実行に必要なもの
 

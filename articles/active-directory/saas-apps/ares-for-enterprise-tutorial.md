@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 002b941e-0345-43f8-a102-baab9bb1e1dd
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff0464ed5b223dc71d635ffceb15376716cc4291
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9a335b5567d605be1c029c9c7731adb281e240f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106669"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>チュートリアル:Azure Active Directory と ARES for Enterprise の統合
 

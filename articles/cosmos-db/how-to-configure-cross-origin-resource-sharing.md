@@ -4,20 +4,23 @@ description: この記事では、Azure portal と Azure Resource Manager テン
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 1269c4c2405e9b906b63c8a29c0de1ac217da1d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82c49854611e6c425b75f0830a1402c8f5a4694e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241902"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299178"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS) の構成 
 
-クロス オリジン リソース共有 (CORS) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーでは、Web ページから別のドメインの API を呼び出すことを防ぐために、同一オリジン ポリシーと呼ばれるセキュリティ制限が実装されています。 ただし、CORS を使用すれば、元のドメインから別のドメインの API を安全に呼び出すことができます。Azure Cosmos DB のコア SQL API では、"allowedOrigins" ヘッダーを使用することで、クロス オリジン リソース共有 (CORS) がサポートされるようになりました。 Azure Cosmos アカウントに対して CORS のサポートを有効すると、認証済みの要求だけが指定されたルールに従って評価され、それらが許可されるかどうかが判断されます。
+クロス オリジン リソース共有 (CORS) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーでは、Web ページから別のドメインの API を呼び出すことを防ぐために、同一オリジン ポリシーと呼ばれるセキュリティ制限が実装されています。 ただし、CORS を使用すれば、オリジン ドメインから他のドメイン内の API を安全に呼び出すことができます。 Azure Cosmos DB の Core (SQL) API では、"allowedOrigins" ヘッダーを使用してクロス オリジン リソース共有 (CORS) がサポートされるようになりました。 Azure Cosmos アカウントに対して CORS のサポートを有効すると、認証済みの要求だけが指定されたルールに従って評価され、それらが許可されるかどうかが判断されます。
 
-クロス オリジン リソース共有 (CORS) の設定は、Azure portal または Azure Resource Manager テンプレートから構成できます。 Azure Cosmos DB のコア SQL API では、Node.js とブラウザーベースの両方の環境で動作する JavaScript ライブラリがサポートされています。 このライブラリでは、ゲートウェイ モードの使用時に CORS サポートを利用できるようになりました。 この機能を利用するために、クライアント側で必要となる構成はありません。 CORS サポートを利用すると、ブラウザー側のリソースから、[JavaScript ライブラリ](https://www.npmjs.com/package/@azure/cosmos)を通じて Azure Cosmos DB に直接アクセスしたり、[REST API](https://docs.microsoft.com/rest/api/cosmos-db/) から直接アクセスできるようにして、操作を簡素化することができます。 
+クロス オリジン リソース共有 (CORS) の設定は、Azure portal または Azure Resource Manager テンプレートから構成できます。 Core (SQL) API を使用する Cosmos アカウントの場合、Azure Cosmos DB では、Node.js とブラウザーベースの両方の環境で動作する JavaScript ライブラリがサポートされています。 このライブラリでは、ゲートウェイ モードの使用時に CORS サポートを利用できるようになりました。 この機能を利用するために、クライアント側で必要となる構成はありません。 CORS サポートを利用すると、ブラウザー側のリソースから、[JavaScript ライブラリ](https://www.npmjs.com/package/@azure/cosmos)を通じて Azure Cosmos DB に直接アクセスしたり、[REST API](https://docs.microsoft.com/rest/api/cosmos-db/) から直接アクセスできるようにして、操作を簡素化することができます。 
+
+> [!NOTE]
+> CORS のサポートは、Azure Cosmos DB Core (SQL) API でのみ適用でき、サポートされています。 Cassandra、Gremlin、MongoDB には Azure Cosmos DB API を適用できません。これらのプロトコルでは、クライアントとサーバー間の通信に HTTP が使用されていません。 
 
 ## <a name="enable-cors-support-from-azure-portal"></a>Azure portal から CORS サポートを有効にする
 

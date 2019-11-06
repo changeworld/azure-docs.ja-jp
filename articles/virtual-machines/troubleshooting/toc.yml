@@ -65,12 +65,15 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: 一般的なエラー メッセージ
   href: error-messages.md
-- name: VM のパフォーマンスの問題
-  href: performance-diagnostics.md
-- name: Linux または Windows を実行する Azure 仮想マシンの汎用パフォーマンスのトラブルシューティング
-  href: troubleshoot-performance-virtual-machine-linux-windows.md
-- name: Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート
+- name: Azure VM のパフォーマンスに関する問題のトラブルシューティング
+  items:
+    - name: Linux または Windows のパフォーマンスに関する問題
+      href: troubleshoot-performance-virtual-machine-linux-windows.md
+    - name: パフォーマンス診断
+      href: performance-diagnostics.md
+- name: 32 ビット オペレーティング システムのサポート
   href: support-32-bit-operating-systems-virtual-machines.md
+- name: PerfInsights
   items:
     - name: Windows
       items:
@@ -126,12 +129,18 @@
   href: storage-resource-deletion-errors.md
 - name: クラシック ストレージ リソースの削除時のエラー
   href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: 接続された VHD による VM の予期しない再起動
-  href: unexpected-reboots-attached-vhds.md
-- name: Windows のライセンス認証に関する問題
-  href: troubleshoot-activation-problems.md
-- name: 強制トンネリングを使用したアクティブ化の問題
-  href: custom-routes-enable-kms-activation.md
+- name: VM の再起動に関する問題のトラブルシューティング
+  items:
+    - name: 接続された VHD による VM の予期しない再起動
+      href: unexpected-reboots-attached-vhds.md
+    - name: システムの再起動を理解する
+      href: understand-vm-reboot.md
+- name: Windows のライセンス認証
+  items:
+    - name: Windows のライセンス認証に関する問題
+      href: troubleshoot-activation-problems.md
+    - name: 強制トンネリングを使用したアクティブ化の問題
+      href: custom-routes-enable-kms-activation.md
 - name: アプリケーション アクセスに関する問題
   href: troubleshoot-app-connection.md
 - name: 新しい VM のデプロイ
@@ -187,8 +196,6 @@
   href: troubleshooting-throttling-errors.md
 - name: 入れ子になった仮想化の使用
   href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: システムの再起動を理解する
-  href: understand-vm-reboot.md
 - name: リモートのトラブルシューティング ツール
   href: remote-tools-troubleshoot-azure-vm-issues.md
 - name: 仮想マシンの修復

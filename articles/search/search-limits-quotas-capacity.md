@@ -1,22 +1,23 @@
 ---
-title: レベルおよび SKU のサービスの制限 - Azure Search
-description: 容量計画で使用されるサービス上限と、Azure Search の要求および応答の上限について説明します。
-author: HeidiSteen
+title: レベルおよび SKU のサービスの制限
+titleSuffix: Azure Cognitive Search
+description: 容量計画で使用されるサービスの制限と、Azure Cognitive Search の要求および応答の上限について説明します。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947775"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793573"
 ---
-# <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
-インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
+# <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
+
+インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Cognitive Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
 
 + **Free** は、Azure サブスクリプションに付属しているマルチテナント共有サービスです。 インデックス作成とクエリの要求は、他のテナントで使用されているレプリカおよびパーティションで実行されます。
 
@@ -68,11 +69,11 @@ ms.locfileid: "71947775"
 
   ![使用状況タイル](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-<sup>1</sup> SKU 固有のドキュメント制限はありませんが、すべてのインデックスは、サービスの安定性を確保するために、引き続き最大の安全制限の対象となります。 この制限は、Lucene に由来します。 各 Azure Search ドキュメントは、1 つ以上の Lucene ドキュメントとして、内部的にインデックスが付けられます。 Azure Search ドキュメントあたりの Lucene ドキュメントの数は、複合コレクション フィールド内の要素の合計数によって異なります。 各要素は、個別の Lucene ドキュメントとして、インデックスが付けられます。 たとえば、複合コレクション フィールドに 3 つの要素があるドキュメントでは、ドキュメント自体に対して 1 個、要素に対して 3 個、合計 4 個の Lucene ドキュメントとしてインデックスが付けられます。 Lucene ドキュメントの最大数は、インデックスあたり約 250 億です。
+<sup>1</sup> SKU 固有のドキュメント制限はありませんが、すべてのインデックスは、サービスの安定性を確保するために、引き続き最大の安全制限の対象となります。 この制限は、Lucene に由来します。 各 Azure Cognitive Search ドキュメントは、1 つ以上の Lucene ドキュメントとして、内部的にインデックスが付けられます。 検索ドキュメントあたりの Lucene ドキュメントの数は、複合コレクション フィールド内の要素の合計数によって異なります。 各要素は、個別の Lucene ドキュメントとして、インデックスが付けられます。 たとえば、複合コレクション フィールドに 3 つの要素があるドキュメントでは、ドキュメント自体に対して 1 個、要素に対して 3 個、合計 4 個の Lucene ドキュメントとしてインデックスが付けられます。 Lucene ドキュメントの最大数は、インデックスあたり約 250 億です。
 
 ### <a name="regions-previously-having-document-limits"></a>過去にドキュメントの制限があったリージョン
 
-ドキュメントの制限があることをポータルが示している場合、ご利用のサービスは 2017 年末の前に作成されたか、容量の小さなクラスターを使用して Azure Search サービスをホストしているデータ センターで作成されたものです。
+ドキュメントの制限があることをポータルが示している場合、ご利用のサービスは 2017 年末の前に作成されたか、容量の小さなクラスターを使用して Azure Cognitive Search サービスをホストしているデータ センターで作成されたものです。
 
 + オーストラリア東部
 + 東アジア
@@ -140,13 +141,13 @@ ms.locfileid: "71947775"
 
 QPS の見積もりは、すべての顧客ごとに個別に開発する必要があります。 インデックスのサイズと複雑さ、クエリのサイズと複雑さ、およびトラフィックの量が QPS を決定する主な要因です。 このような要因が不明な場合は、意義のある見積もりを用意する方法はありません。
 
-見積もりは、専用リソース (Basic および Standard レベル) 上で実行されるサービスに基づいて計算される場合、予測可能性がより高くなります。 より多くのパラメーターを制御できるため、さらに厳密に QPS を見積もることができます。 見積もりを行う方法のガイダンスについては、[Azure Search のパフォーマンスと最適化](search-performance-optimization.md)に関する記事を参照してください。
+見積もりは、専用リソース (Basic および Standard レベル) 上で実行されるサービスに基づいて計算される場合、予測可能性がより高くなります。 より多くのパラメーターを制御できるため、さらに厳密に QPS を見積もることができます。 見積もりを行う方法のガイダンスについては、[Azure Cognitive Search のパフォーマンスと最適化](search-performance-optimization.md)に関する記事を参照してください。
 
 ストレージ最適化レベルでは、Standard レベルよりもクエリ スループットが低く、待ち時間が長くなります。  ユーザーが体験するクエリ パフォーマンスを予測する方法は、Standard レベルと同じです。
 
-## <a name="data-limits-cognitive-search"></a>データの制限 (コグニティブ検索)
+## <a name="data-limits-ai-enrichment"></a>データの制限 (AI エンリッチメント)
 
-[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、および[言語検出](cognitive-search-skill-language-detection.md)の Text Analytics リソースに対して呼び出しを行う[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードの最大サイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) によって測定されるため、50,000 文字にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
+[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、および[言語検出](cognitive-search-skill-language-detection.md)の Text Analytics リソースに対して呼び出しを行う [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードのサイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
 
 ## <a name="throttling-limits"></a>スロットルの制限
 
@@ -167,7 +168,7 @@ QPS の見積もりは、すべての顧客ごとに個別に開発する必要�
 * $orderby 句の最大フィールド数: 32
 * 検索用語の最大サイズ: UTF-8 でエンコードされたテキストの 32,766 バイト (32 KB - 2 バイト)
 
-<sup>1</sup> Azure Search では、要求の本文は上限 16 MB に左右され、それ以外では理論的制限によって制約されない個々のフィールドまたはコレクションのコンテンツに実際的な制限が課せられます (フィールドの構成と制約の詳細については、[サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)に関するページをご覧ください)。
+<sup>1</sup> Azure Cognitive Search では、要求の本文は上限 16 MB に左右され、それ以外では理論的制限によって制約されない個々のフィールドまたはコレクションのコンテンツに実際的な制限が課せられます (フィールドの構成と制約の詳細については、[サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)に関するページをご覧ください)。
 
 ## <a name="api-response-limits"></a>API 応答の制限
 * 検索結果のページごとに返される最大ドキュメント数: 1,000

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a99481d9394229e77168e75c48f4110735578
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536932"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786728"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -38,10 +38,6 @@ ms.locfileid: "67536932"
 * パスワード リセットを試みる場合に、ユーザーまたは管理者が直面する一般的な問題
 * 自らのパスワードを頻繁にリセットしている管理者
 * パスワード リセットに関する不審なアクティビティの有無
-
-## <a name="power-bi-content-pack"></a>Power BI コンテンツ パック
-
-Power BI ユーザーには、使いやすい SSPR レポートを含む Azure AD 用のコンテンツ パックが用意されています。 コンテンツ パックを使用およびデプロイする方法の詳細については、「[Azure Active Directory Power BI コンテンツ パックの使用方法](../reports-monitoring/howto-power-bi-content-pack.md)」をご覧ください。 コンテンツ パックを使用すると、独自のダッシュボードを作成して組織内で共有できます。
 
 ## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Azure Portal でパスワード管理レポートを表示する方法
 

@@ -1,6 +1,6 @@
 ---
 title: azureml-datasets を使用したトレーニング
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: トレーニングでデータセットを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,14 +11,15 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 9ccc5f5721d1ddc8459918913a4f3ce707766dea
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 12c08a95cd43f9f988c98711141b1b1f879e8b3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316690"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489371"
 ---
 # <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning でデータセット (プレビュー) を作成してトレーニングする
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、接続文字列やデータ パスを気にせずに、リモート実験トレーニングの実行時に [Azure Machine Learning データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)を使用する 2 つの方法について説明します。
 
@@ -32,9 +33,9 @@ Azure Machine Learning データセットにより、[ScriptRun](https://docs.mi
 
 データセットを作成し、それを使用してトレーニングするには、以下が必要です。
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* [Azure Machine Learning service ワークスペース](how-to-manage-workspace.md)。
+* [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
 * [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) (これには azureml-datasets パッケージが含まれています)。
 

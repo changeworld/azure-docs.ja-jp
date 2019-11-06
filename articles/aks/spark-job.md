@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: ddaff590fd493b430a72c30dd35cb1b891b80d84
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 647cb0573922bb53232dbce3f3a7a2557553d47d
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205349"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263903"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
-[Apache Spark] [apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark は、Kubernetes クラスターとのネイティブな統合をサポートしています。 Azure Kubernetes Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Kubernetes Service (AKS) クラスターで 実行する方法を詳しく説明します。
+[Apache Spark][apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark では Kubernetes クラスターとのネイティブな統合がサポートされています。 Azure Kubernetes Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Kubernetes Service (AKS) クラスターで 実行する方法を詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "67205349"
 * Kubernetes と [Apache Spark][spark-quickstart] に関する基礎知識。
 * [Docker Hub][docker-hub] アカウント、または [Azure Container Registry][acr-create]。
 * 開発システムに[インストール][azure-cli]された Azure CLI。
-* システムにインストールされた [JDK 8][ java-install]。
+* システムにインストールされた [JDK 8][java-install]。
 * システムにインストールされた SBT ([Scala Build Tool][sbt-install])。
 * システムにインストールされた Git コマンド ライン ツール。
 
@@ -313,7 +313,7 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 ```
 
 > [!WARNING]
-> Spark [ドキュメント][spark-docs]から引用:"Kubernetes スケジューラは現在、試験段階です。 将来のバージョンで、構成、コンテナー イメージおよびエントリポイントに関する動作が変更される可能性があります。"
+> Spark [ドキュメント][spark-docs]から引用: "Kubernetes スケジューラは現在、試験段階です。 将来のバージョンで、構成、コンテナー イメージおよびエントリポイントに関する動作が変更される可能性があります。"
 
 ## <a name="next-steps"></a>次の手順
 
@@ -333,7 +333,7 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 
 
 <!-- LINKS - internal -->
-[acr-aks]: https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks
+[acr-aks]: cluster-container-registry-integration.md
 [acr-create]: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
 [aks-quickstart]: https://docs.microsoft.com/azure/aks/
 [azure-cli]: https://docs.microsoft.com/cli/azure/?view=azure-cli-latest

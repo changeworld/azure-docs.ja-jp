@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703252"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176067"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps を使用して Azure BLOB ストレージ内に BLOB を作成して管理する
 
@@ -24,10 +24,11 @@ ms.locfileid: "71703252"
 
 更新されるツールが Azure Web サイト上にあるとします。 それはロジック アプリのトリガーとして機能します。 そのイベントが発生したときに、BLOB ストレージ コンテナー内のいくつかのファイルをロジック アプリに更新させることができます。更新はロジック アプリで実行されるアクションです。
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> ロジック アプリでは、[ファイアウォール規則](../storage/common/storage-network-security.md)を持つ、同じリージョンに存在する Azure ストレージ アカウントに直接アクセスすることはできません。 ただし、ロジック アプリでは、異なるリージョンに存在する Azure ストレージ アカウントにアクセスできます。リージョン間の通信にパブリック IP アドレスが使用されるためです。 必ず、[お使いのリージョンで管理対象コネクタに送信 IP アドレスを許可](../logic-apps/logic-apps-limits-and-config.md#outbound)してください。 あるいは、ここで、より高度なオプションを使用できます。
->
+> ロジック アプリでは、[ファイアウォール規則](../storage/common/storage-network-security.md)を持つ、同じリージョンに存在する Azure ストレージ アカウントに直接アクセスすることはできません。 ただし、[ご利用のリージョンでマネージド コネクタに送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を許可する場合、Azure Table Storage コネクタまたは Azure Queue Storage コネクタの使用時を除き、ロジック アプリでは別のリージョンにあるストレージ アカウントにアクセスできます。 Table Storage または Queue Storage にアクセスするには、HTTP のトリガーとアクションを利用できます。 
+> それ以外では、もっと高度なオプションをここで利用できます。
+> 
 > * Azure 仮想ネットワーク内のリソースに接続できる[統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成します。
 >
 > * API Management に専用階層を使用する場合、API Management を使用し、ファイアウォールの通過をその IP アドレスに許可することで、ストレージ API に面することができます。 基本的には、API Management によって使用される Azure 仮想ネットワークをストレージ アカウントのファイアウォール設定に追加します。 その後、API Management アクションまたは HTTP アクションを使用し、Azure Storage API を呼び出すことができます。 ただし、このオプションを選択した場合、認証プロセスを自分で処理する必要があります。 詳細については、[単純なエンタープライズ統合アーキテクチャ](https://aka.ms/aisarch)を参照してください。

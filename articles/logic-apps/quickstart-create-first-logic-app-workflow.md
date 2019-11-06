@@ -1,6 +1,6 @@
 ---
-title: クイックスタート - Azure Logic Apps を使用した最初のワークフローの作成と自動化
-description: Azure Logic Apps を使用してタスク、プロセス、ワークフローを自動化する最初のロジック アプリを作成します。 お使いのシステムおよびクラウド サービスのシステム統合ソリューションと Enterprise Application Integration (EAI) ソリューション用のロジック アプリを作成します。
+title: ワークフローを初めて作成して自動化する - Azure Logic Apps
+description: クイックスタート - システム統合ソリューションと Enterprise Application Integration (EAI) ソリューション向けに Azure Logic Apps を使用して、初めての自動化されたタスクまたはワークフローを作成します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: c85b3e3ced661eb36d9cb1eb0ae443a5ab21a913
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029475"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679146"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して自動化されたワークフローを初めて作成する - Azure portal
 

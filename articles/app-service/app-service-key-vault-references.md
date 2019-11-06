@@ -8,20 +8,20 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686733"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274417"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
 > [!NOTE] 
-> Key Vault 参照は現在プレビューの段階です。
+> Key Vault 参照は現在、Linux 従量課金プランでは利用できません。
 
 このトピックでは、コードを変更せず、App Service または Azure Functions アプリケーションの Azure Key Vault のシークレットを使用する方法を紹介します。 [Azure Key Vault](../key-vault/key-vault-overview.md) は、アクセス ポリシーと監査履歴を完全制御する、一元化されたシークレット管理を提供するサービスです。
 
@@ -52,7 +52,7 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** は Key Vault リソースの名前になります。 **SecretName** はターゲット シークレットの名前になります。 **SecretVersion** は使用するシークレットのバージョンになります。 |
 
 > [!NOTE] 
-> 現在のプレビューでは、バージョンが必須です。 シークレットをローテーションするとき、アプリケーション構成でバージョンを更新する必要があります。
+> バージョンは現在必須項目です。 シークレットをローテーションするとき、アプリケーション構成でバージョンを更新する必要があります。
 
 たとえば、完全な参照は次のようになります。
 
@@ -192,7 +192,9 @@ Function App の擬似テンプレートの例は次のようになります。
 
 最も一般的な原因は、[Key Vault アクセス ポリシー](#granting-your-app-access-to-key-vault)が正しく構成されていないことです。 ただし、シークレットが既に存在していないか、参照自体の構文エラーが原因である可能性もあります。
 
-構文が正しい場合は、組み込みの検出機能を使用して現在の解決状態を確認して、エラーの他の原因を確認できます。
+構文が正しい場合は、ポータルで現在の解決状態を確認して、エラーの他の原因を確認できます。 [アプリケーションの設定] に移動し、該当する参照の [編集] を選択します。 設定の構成の下には、エラーなどの状態情報が表示されます。 表示されない場合は、参照構文が無効であることを意味します。
+
+組み込みの検出機能のいずれかを使用して、追加情報を取得することもできます。
 
 ### <a name="using-the-detector-for-app-service"></a>App Service の検出機能の使用
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a9446301cc4bb46c989223ad020c7a8e8b353ad3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b3382cffdc41685f8329a640aaf6c6c526375a83
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446182"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299842"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps でのローカライズのサポート
 
@@ -25,15 +25,15 @@ Azure Maps は、さまざまな言語および国/地域に基づくビュー�
 Azure Maps は、サービス全体にわたってさまざまな言語にローカライズされています。 次の表は、各サービスでサポートされている言語コードを示しています。  
   
 
-| id         | Name                   |  マップ | Search | ルーティング | トラフィック インシデント | JS マップ コントロール | タイム ゾーン |
+| id         | 名前                   |  マップ | Search | ルーティング | トラフィック インシデント | JS マップ コントロール | タイム ゾーン |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | アフリカーンス語              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | アラビア語                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | eu-ES      | バスク語                 |       |    ✓   |         |                   |                |     ✓     |
 | bg-BG      | ブルガリア語              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | ca-ES      | カタルニア語                |       |    ✓   |         |                   |                |     ✓     |
-| zh-HanS    | 中国語 (簡体字)   |       |  zh-CN |         |                   |                |     ✓     |
-| zh-HanT    | 中国語 (繁体字)  | zh-TW |  zh-TW |  zh-TW  |                   |      Zh-TW     |     ✓     |
+| zh-HanS    | 簡体中国語   |       |  zh-CN |         |                   |                |     ✓     |
+| zh-HanT    | 繁体中国語  | zh-TW |  zh-TW |  zh-TW  |                   |      Zh-TW     |     ✓     |
 | hr-HR      | クロアチア語               |       |    ✓   |         |                   |                |     ✓     |
 | cs-CZ      | チェコ語                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | da-DK      | デンマーク語                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -86,7 +86,7 @@ Azure Maps は、サービス全体にわたってさまざまな言語にロー
 ## <a name="azure-maps-supported-views"></a>Azure Maps でサポートされているビュー
 
 > [!Note]
-> Azure Maps は、2019 年 8 月 1 日に次の国/地域でリリースしています。
+> Azure Maps は、2019 年 8 月 1 日に次の国/リージョンでリリースされました。
 >  * アルゼンチン
 >  * インド
 >  * モロッコ

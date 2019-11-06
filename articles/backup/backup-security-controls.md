@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: f44be7556b6d741df93faeeab1dbdfc15bc8ebfd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8170022a3ee4b4b65e8da0d9e5a2f8464675d08f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211806"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528100"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure Backup のセキュリティ コントロール
 
-この記事では、Azure Backup に組み込まれているセキュリティ コントロールについて説明します。 
+この記事では、Azure Backup に組み込まれているセキュリティ コントロールについて説明します。
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "71211806"
 
 | セキュリティ コントロール | はい/いいえ | メモ| | ドキュメント
 |---|---|--|
-| Azure 監視サポート (Log analytics や App Insights など)| はい | Log Analytics は、診断ログを通じてサポートされます。 詳細については、[Log Analytics を使用した Azure Backup で保護されているワークロードの監視](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)に関するページを参照してください。 |  |
+| Azure 監視サポート (Log analytics や App Insights など)| はい | Log Analytics は、リソース ログを通じてサポートされます。 詳細については、[Log Analytics を使用した Azure Backup で保護されているワークロードの監視](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)に関するページを参照してください。 |  |
 | コントロールと管理プレーンのログ記録と監査| はい | Azure Portal からカスタマーがトリガーしたすべてのアクションがアクティビティ ログに記録されます。 |  |
 | データ プレーンのログ記録と監査| いいえ | Azure Backup データ プレーンには、直接アクセスできません。  |  |
 

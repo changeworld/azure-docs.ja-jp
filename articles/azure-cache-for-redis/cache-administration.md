@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: afb48c18f9690e77a5478956e1147acf850290ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827602"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756608"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure Cache for Redis を管理する方法
 このトピックでは、Azure Cache for Redis インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
@@ -48,17 +48,11 @@ ms.locfileid: "71827602"
 * **マスターとスレーブの両方** - 両方のキャッシュ ノードが再起動されると、キャッシュのデータすべてが失われ、プライマリ ノードがオンラインに戻るまでキャッシュに接続できません。 [データの永続化](cache-how-to-premium-persistence.md)を構成した場合、キャッシュがオンラインに戻ったときに最新のバックアップが復元されますが、最新のバックアップ後に発生したキャッシュへの書き込みは失われます。
 * **クラスタリングが有効になっている Premium キャッシュのノード** - クラスタリングが有効になっている Premium キャッシュのノードを 1 つ以上再起動したとき、選んだノードの動作は、非クラスター化キャッシュの対応するノードを再起動する場合と同じです。
 
-> [!IMPORTANT]
-> 再起動はすべての価格レベルで使用可能になりました。
-> 
-> 
-
 ## <a name="reboot-faq"></a>再起動に関する FAQ
 * [アプリケーションのテストでは、どのノードを再起動する必要がありますか。](#which-node-should-i-reboot-to-test-my-application)
 * [キャッシュを再起動することでクライアント接続を消去できますか。](#can-i-reboot-the-cache-to-clear-client-connections)
 * [再起動すると、キャッシュのデータは失われますか。](#will-i-lose-data-from-my-cache-if-i-do-a-reboot)
 * [PowerShell、CLI、またはその他の管理ツールを使用して、キャッシュを再起動できますか。](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
-* [どの価格レベルで再起動機能を使用できますか。](#what-pricing-tiers-can-use-the-reboot-functionality)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>アプリケーションのテストでは、どのノードを再起動する必要がありますか。
 キャッシュのプライマリ ノードの障害に対するアプリケーションの回復性をテストするには、 **マスター** ノードを再起動します。 セカンダリ ノードの障害に対するアプリケーションの回復性をテストするには、 **スレーブ** ノードを再起動します。 キャッシュの全体的な障害に対するアプリケーションの回復性をテストするには、 **両方** のノードを再起動します。
@@ -77,25 +71,20 @@ ms.locfileid: "71827602"
 ノードのいずれかを 1 つだけ再起動しても、通常、データが失われることはありませんが、失われる可能性もあります。 たとえば、マスター ノードが再起動されたときに、キャッシュの書き込みが実行中だと、そのキャッシュの書き込みのデータは失われます。 また、一方のノードを再起動した場合に、もう一方のノードが偶然同じタイミングで故障しダウンした場合もやはりデータが失われます。 データが失われるさまざまな原因について詳しくは、「[Redis のデータが正常ではない](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)」をご覧ください。
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>PowerShell、CLI、またはその他の管理ツールを使用して、キャッシュを再起動できますか。
-PowerShell での手順については、「[To reboot an Azure Cache for Redis](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis)」(Azure Cache for Redis を再起動するには) をご覧ください。
-
-### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>どの価格レベルで再起動機能を使用できますか。
-再起動はすべての価格レベルで使用可能です。
+PowerShell での手順については、「[To reboot an Azure Cache for Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis)」(Azure Cache for Redis を再起動するには) をご覧ください。
 
 ## <a name="schedule-updates"></a>更新のスケジュール
 **[更新のスケジュール]** ブレードでは、キャッシュ インスタンスのメンテナンス時間を指定できます。 メンテナンス時間を指定すると、その時間にすべての Redis サーバーの更新が実行されます。 
 
 > [!NOTE] 
 > このメンテナンス時間は、Redis サーバーの更新にのみ適用されます。Azure の更新や、キャッシュをホストする VM のオペレーティング システムへの更新には適用されません。
-> 
-> 
+>
 
 ![更新のスケジュール](./media/cache-administration/redis-schedule-updates.png)
 
 メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]** をクリックします。 メンテナンス時間の時刻は UTC 時間で指定します。 
 
 更新の既定の最小メンテナンス時間は 5 時間です。 この値は、Azure portal からは構成できませんが、PowerShell で [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳細については、「Can I manage scheduled updates using PowerShell, CLI, or other management tools? (PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか)」を参照してください。
-
 
 ## <a name="schedule-updates-faq"></a>更新のスケジュールに関する FAQ
 * [更新スケジュール機能を使用しない場合、更新はどのタイミングで実行されますか。](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

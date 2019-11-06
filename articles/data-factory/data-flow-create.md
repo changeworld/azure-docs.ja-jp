@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory の Mapping Data Flow を作成する
+title: Azure Data Factory のマッピング データ フローを作成する
 description: Azure Data Factory のマッピング データ フローを作成する方法
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: d8ebc026add9dfd85d7cbe312a8cfffd3e365f82
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 31528c0ac7796aafbde74a3814d971138ec4ba2e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026886"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387256"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory のデータ フローを作成する
 
@@ -21,15 +21,15 @@ ADF の Mapping Data Flow は、コーディングなしでデータを大規模
 
 Azure portal で新しい V2 データ ファクトリを作成することから始めます。 新しいファクトリを作成したら、[作成者と監視] タイルをクリックして、Data Factory UI を起動します。
 
-![Data Flow オプション](media/data-flow/v2portal.png "データフローの作成")
+![データ フローのオプション](media/data-flow/v2portal.png "データ フロー作成")
 
 Data Factory UI が表示されたら、サンプル データ フローを使用できます。 サンプルは、ADF テンプレート ギャラリーから入手できます。 ADF で、"テンプレートからパイプライン" を作成し、テンプレート ギャラリーから [データ フロー] カテゴリを選択します。
 
-![Data Flow オプション](media/data-flow/template.png "データフローの作成")
+![データ フローのオプション](media/data-flow/template.png "データ フロー作成")
 
 Azure Blob ストレージ アカウント情報の入力を求められます。
 
-![Data Flow オプション](media/data-flow/template2.png "データ フローの作成 2")
+![データ フローのオプション](media/data-flow/template2.png "データ フロー作成 2")
 
 [これらのサンプルで使用されるデータはこちらで見つけることができます](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata)。 サンプル データをダウンロードし、Azure Blob ストレージ アカウントにファイルを格納して、サンプルを実行できるようにします。
 
@@ -37,7 +37,7 @@ Azure Blob ストレージ アカウント情報の入力を求められます�
 
 ADF UI で、[+] ボタン (リソースの作成) を使用して、データ フローを作成します。
 
-![Data Flow オプション](media/data-flow/newresource.png "新しいリソース")
+![データ フローのオプション](media/data-flow/newresource.png "新しいリソース")
 
 ## <a name="next-steps"></a>次の手順
 

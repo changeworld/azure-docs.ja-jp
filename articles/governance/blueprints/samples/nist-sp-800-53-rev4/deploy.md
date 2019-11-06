@@ -1,17 +1,17 @@
 ---
-title: サンプル - NIST SP 800-53 R4 ブループリント - デプロイ手順
-description: NIST SP 800-53 R4 のブループリント サンプルのデプロイ手順。
+title: NIST SP 800-53 R4 ブループリント サンプル - デプロイ手順
+description: ブループリント アーティファクト パラメーターの詳細を含む NIST SP 800-53 R4 ブループリント サンプルのデプロイ手順です。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 204b689dd7da91cc1dacce0bba6d15b4acb0c0e5
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0cd13ab0c7bfa25911eaa4c0b0441ca0936b1e08
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981518"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163095"
 ---
 # <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 のブループリント サンプルのデプロイ
 

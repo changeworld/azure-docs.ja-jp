@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874937"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750321"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
@@ -54,13 +54,13 @@ VM の各サイズで想定される送信スループットとサポートさ�
 
 ## <a name="flow-limits-and-recommendations"></a>フローの制限と推奨事項
 
-現在、Azure のネットワーク スタックは、CPU コアが 8 個を超える VM での良好なパフォーマンスには 250K 個の合計ネットワーク フロー、および CPU コアが 8 個未満の VM での良好なパフォーマンスには 100K 個の合計フローをサポートしています。 この制限を超えると、ネットワーク パフォーマンスは、ハード制限である 1M 個の合計フロー (500K 個の受信と 500K 個の送信) まで追加フローに対して適切に低下し、それ以降は追加フローが破棄されます。
+現在、Azure のネットワーク スタックは、CPU コアが 8 個を超える VM での良好なパフォーマンスには 250K 個の合計ネットワーク フロー、および CPU コアが 8 個未満の VM での良好なパフォーマンスには 100K 個の合計フローをサポートしています。 この制限を超えると、ネットワーク パフォーマンスは、ハード制限である 500K 個の合計フロー (250K 個の受信と 250K 個の送信) まで追加フローに対して適切に低下し、それ以降は追加フローが破棄されます。
 
 ||CPU コアが 8 個未満の VM|CPU コアが 8 個を超える VM|
 |---|---|---|
 |<b>良好なパフォーマンス</b>|100K 個のフロー |250K 個のフロー|
 |<b>パフォーマンスの低下</b>|100K 個を超えるフロー|250K 個を超えるフロー|
-|<b>フローの制限</b>|1M 個のフロー|1M 個のフロー|
+|<b>フローの制限</b>|500K 個のフロー|500K 個のフロー|
 
 [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) では、ネットワーク フローの数や、VM または VMSS インスタンスでのフロー作成の頻度を追跡するためのメトリックを使用できます。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989083"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490784"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -69,7 +69,10 @@ Personalizer では、フィーチャーが名前空間で整理されます。 
 有効な JSON キーである限り、自分の命名規則でフィーチャーの名前空間に名前を付けることができます。 名前空間は、フィーチャーを個別のセットに整理したり、類似した名前のフィーチャーを明確にしたりするために使用されます。 名前空間は、フィーチャー名に追加される "接頭辞" と考えることができます。 名前空間を入れ子にすることはできません。
 
 
-次の JSON では、`user`、`state`、`device` がフィーチャーの名前空間です。 パブリック プレビューの注記:現在のところ、フィーチャー名前空間には、UTF-8 ベースであり、異なる文字で始まる名前の使用を強くお勧めします。 たとえば、`user`、`state`、`device` はそれぞれ、`u`、`s`、`d` で始まります。 現在のところ、名前空間の最初の文字が同じ場合、機械学習に使用されるインデックスで競合が発生することがあります。
+次の JSON では、`user`、`state`、`device` がフィーチャーの名前空間です。 
+
+> [!Note]
+> 現在のところ、フィーチャー名前空間には、UTF-8 ベースであり、異なる文字で始まる名前の使用を強くお勧めします。 たとえば、`user`、`state`、`device` はそれぞれ、`u`、`s`、`d` で始まります。 現在のところ、名前空間の最初の文字が同じ場合、機械学習に使用されるインデックスで競合が発生することがあります。
 
 JSON オブジェクトには、入れ子にした JSON オブジェクトと単純なプロパティ/値を含めることができます。 配列は、配列の項目が数値の場合にのみ含めることができます。 
 
@@ -97,6 +100,13 @@ JSON オブジェクトには、入れ子にした JSON オブジェクトと単
     ]
 }
 ```
+
+### <a name="restrictions-in-character-sets-for-namespaces"></a>名前空間での文字セットにおける制限事項
+
+名前空間に名前を付けるために使用する文字列は、いくつかの制限に従う必要があります。 
+* Unicode にすることはできません。
+* 名前空間の名前には、コード < 256 での印刷可能な記号の一部を使用できます。 
+* コード < 32 (印刷不可)、32 (スペース)、58 (コロン)、124 (パイプ)、および126 から 140 での記号は使用できません。
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Personalizer のためにフィーチャー セットをより効果的にする方法
 

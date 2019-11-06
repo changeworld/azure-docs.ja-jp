@@ -15,13 +15,13 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
+ms.openlocfilehash: 1ce33e90cab1c5172cbf14470f24345d0446b0de
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145655"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200287"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -74,7 +74,7 @@ ms.locfileid: "71145655"
 |---|---|
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | 最新の認証ソリューション (OAuth 2.0、[OpenID Connect](v2-protocols-oidc.md)) を使用して安全にユーザーのサインインを行います。 |
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) |  OAuth 2.0 や Open ID などのプロトコルに対して、直接プログラミングしないでください。 代わりに、[Microsoft Authentication Library (MSAL)](msal-overview.md) を活用してください。 MSAL ライブラリでは、使いやすいライブラリ内に安全にセキュリティ プロトコルがラップされており、[条件付きアクセス](/azure/active-directory/conditional-access/overview)のシナリオに対する組み込みのサポート、デバイス全体の[シングル サインオン (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on)、および組み込みのトークン キャッシュ サポートを利用できます。 詳細については、Microsoft がサポートする[クライアント ライブラリ](reference-v2-libraries.md#microsoft-supported-client-libraries)および[ミドルウェア ライブラリ](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)の一覧と、[互換性のあるサードパーティのクライアント ライブラリ](reference-v2-libraries.md#compatible-client-libraries)の一覧を参照してください。<br/><br/>認証プロトコル用に手作業でコーディングする必要がある場合は、[Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) などの手法に従う必要があります。 各プロトコルの標準仕様におけるセキュリティの考慮事項に十分注意してください。|
-| ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) |  [Azure Active Directory Authentication Library (ADAL)](active-directory-authentication-libraries.md) から [Microsoft Authentication Library](msal-overview.md) へ既存のアプリを移行します。 MSAL は、Microsoft の最新の ID プラットフォーム ソリューションであり、ADAL に適しています。 .NET と JavaScript 上で利用でき、Android、iOS、Python、および Java のパブリック プレビューにも対応しています。 [ADAL.NET](msal-net-migration.md)、[ADAL.js](msal-compare-msal-js-and-adal-js.md)、および [ADAL.NET と iOS ブローカー](msal-net-migration-ios-broker.md)アプリの移行に関する詳細を確認してください。|
+| ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) |  [Azure Active Directory Authentication Library (ADAL)](active-directory-authentication-libraries.md) から [Microsoft Authentication Library](msal-overview.md) へ既存のアプリを移行します。 MSAL は、Microsoft の最新の ID プラットフォーム ソリューションであり、ADAL に適しています。 .NET、JavaScript、Android、iOS、macOS で利用可能であり、Python と Java についてはパブリック プレビュー段階です。 [ADAL.NET](msal-net-migration.md)、[ADAL.js](msal-compare-msal-js-and-adal-js.md)、および [ADAL.NET と iOS ブローカー](msal-net-migration-ios-broker.md)アプリの移行に関する詳細を確認してください。|
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) |  モバイル アプリの場合、アプリケーションの登録エクスペリエンスを使用して、各プラットフォームを構成します。 アプリケーションでのシングル サインインに Microsoft Authenticator または Microsoft ポータル サイトを利用するためには、アプリに "ブローカー リダイレクト URI" が構成されている必要があります。 これにより、認証後に Microsoft からアプリケーションに制御を返すことができます。 各プラットフォームを構成するときに、アプリの登録エクスペリエンスにプロセスが表示されます。 クイックスタートを使用して、実際の例をダウンロードします。 iOS 上では、可能な限りブローカーと System Webview を使用します。|
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) |  Web アプリまたは Web API では、アカウントごとに1つのトークン キャッシュを保持します。  Web アプリの場合、トークン キャッシュは、アカウント ID によってキー指定されている必要があります。  Web API の場合、アカウントは、API の呼び出しに使用されるトークンのハッシュによって、キー指定されている必要があります。 MSAL.NET では、.NET Framework および .NET Core サブプラットフォーム上でカスタム トークン キャッシュのシリアル化が提供されます。 セキュリティとパフォーマンス上の理由から、ユーザーごとに1つのキャッシュをシリアル化することをお勧めします。 詳細については、[トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)に関するページを参照してください。|
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | アプリに必要なデータを [Microsoft Graph](https://developer.microsoft.com/graph) を介して入手できる場合は、個々の API ではなく Microsoft Graph エンドポイントを使用してこのデータに対するアクセス許可を要求します。 |

@@ -83,6 +83,8 @@
           href: azure-pim-resource-rbac.md
         - name: カスタム ロールを使用する
           href: pim-resource-roles-custom-role-policy.md
+    - name: PIM のトラブルシューティング
+      href: pim-troubleshoot.md
     - name: アクセス レビュー
       items:
         - name: Azure AD ロール

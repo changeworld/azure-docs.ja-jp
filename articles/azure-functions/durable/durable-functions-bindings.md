@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: f297c89d2c3ba5692a44fab631c0d46c75f48692
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1b056ce8afe86fcd6629aff23ac95acae02ed9ba
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033585"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299867"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -373,62 +373,62 @@ Azure Functions 用の Visual Studio ツールを使用する場合、エンテ�
 
 すべてのエンティティ関数は、`IDurableEntityContext` のパラメーター型を備え、それには次のメンバーが含まれています。
 
-* **EntityName**: 現在実行中のエンティティの名前を取得します。
-* **EntityKey**: 現在実行中のエンティティのキーを取得します。
-* **EntityId**: 現在実行中のエンティティの ID を取得します。
-* **OperationName**: 現在の操作の名前を取得します。
-* **IsNewlyConstructed**: 操作の前にエンティティが存在しなかった場合、`true` を返します。
-* **GetState\<TState>()** : エンティティの現在の状態を取得します。 `TState` パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。
-* **SetState(object)** : エンティティの状態を更新します。 `object` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
-* **GetInput\<TInput>()** : 現在操作に対する入力を取得します。 `TInput` 型のパラメーターは、プリミティブ型または JSON にシリアル化できる型を表す必要があります。
-* **Return(object)** : 操作を呼び出したオーケストレーションに値を返します。 `object` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
-* **DestructOnExit**: 現在の操作が完了したら、エンティティを削除します。
-* **SignalEntity(EntityId, string, object)** : エンティティに一方向のメッセージを送信します。 `object` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
+* **EntityName**: 現在実行中のエンティティの名前です。
+* **EntityKey**: 現在実行中のエンティティのキーです。
+* **EntityId**: 現在実行中のエンティティの ID です。
+* **OperationName**: 現在の操作の名前です。
+* **HasState**: エンティティが存在するかどうか、つまり、何らかの状態にあるかどうか。 
+* **GetState\<TState>()** : エンティティの現在の状態を取得します。 まだ存在しない場合は、作成されて、`default<TState>` に初期化されます。 `TState` パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。 
+* **GetState\<TState>(initfunction)** : エンティティの現在の状態を取得します。 まだ存在しない場合は、指定された `initfunction` パラメーターを呼び出して作成されます。 `TState` パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。 
+* **SetState(arg)** : エンティティの状態を作成または更新します。 `arg` パラメーターは、JSON にシリアル化できるオブジェクトまたはプリミティブにする必要があります。
+* **DeleteState()** : エンティティの状態を削除します。 
+* **GetInput\<TInput>()** : 現在操作に対する入力を取得します。 `TInput` 型パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。
+* **Return(arg)** : 操作を呼び出したオーケストレーションに値を返します。 `arg` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
+* **SignalEntity(EntityId, operation, input)** : エンティティに一方向のメッセージを送信します。 `operation` パラメーターは null 以外の文字列とし、`input` パラメーターはプリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトとする必要があります。
+* **CreateNewOrchestration(orchestratorFunctionName, input)** : 新しいオーケストレーションを開始します。 `input` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
 
-クラスベースのエンティティ プログラミング モードを使用する場合は、`Entity.Current` スレッド静的プロパティを使用して `IDurableEntityContext` オブジェクトを参照できます。
+エンティティ関数に渡される `IDurableEntityContext` オブジェクトには、`Entity.Current` 非同期ローカル プロパティを使用してアクセスできます。 この方法は、クラスベースのプログラミング モデルを使用する場合に便利です。
 
-### <a name="trigger-sample---entity-function"></a>トリガーのサンプル - エンティティ関数
+### <a name="trigger-sample-function-based-syntax"></a>トリガーのサンプル (関数ベースの構文)
 
-次のコードは、標準関数として実装されているシンプルな *Counter* エンティティの例です。 この関数では 3 つの "*操作*" `add`、`reset`、`get` が定義されており、いずれでも整数の状態値 `currentValue` が操作されます。
+次のコードは、永続関数として実装されているシンプルな *Counter* エンティティの例です。 この関数では 3 つの操作 `add`、`reset`、`get` が定義されており、いずれも整数の状態で動作します。
 
 ```csharp
-[FunctionName(nameof(Counter))]
+[FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
-    int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
-            int amount = ctx.GetInput<int>();
-            currentValue += operand;
+            ctx.SetState(ctx.GetState<int>() + ctx.GetInput<int>());
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
-            ctx.Return(currentValue);
+            ctx.Return(ctx.GetState<int>()));
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-### <a name="trigger-sample---entity-class"></a>トリガーのサンプル - エンティティ クラス
+関数ベースの構文と使用方法の詳細については、「[Function ベースの構文](durable-functions-dotnet-entities.md#function-based-syntax)」を参照してください。
 
-次の例は、.NET クラスおよびメソッドを使用した前の `Counter` エンティティの実装と同等です。
+### <a name="trigger-sample-class-based-syntax"></a>トリガーのサンプル (クラスベースの構文)
+
+次の例は、クラスとメソッドを使用した `Counter` エンティティの同等の実装です。
 
 ```csharp
+[JsonObject(MemberSerialization.OptIn)]
 public class Counter
 {
     [JsonProperty("value")]
     public int CurrentValue { get; set; }
 
     public void Add(int amount) => this.CurrentValue += amount;
-    
+
     public void Reset() => this.CurrentValue = 0;
-    
+
     public int Get() => this.CurrentValue;
 
     [FunctionName(nameof(Counter))]
@@ -437,10 +437,14 @@ public class Counter
 }
 ```
 
+このエンティティの状態は `Counter` 型のオブジェクトになっています。このオブジェクトには、カウンターの現在の値を格納するフィールドが含まれます。 このオブジェクトは、ストレージに保持するために、[Json.NET](https://www.newtonsoft.com/json) ライブラリによってシリアル化および逆シリアル化されます。 
+
+クラスベースの構文とその使用方法の詳細については、「[エンティティ クラスの定義](durable-functions-dotnet-entities.md#defining-entity-classes)」を参照してください。
+
 > [!NOTE]
 > エンティティ クラスを使用するときは、`[FunctionName]` 属性を持つ関数エントリ ポイント メソッドを、`static` と宣言する "*必要があります*"。 非静的なエントリ ポイント メソッドを使用すると、複数のオブジェクトが初期化されたり、他の未定義の動作が発生したりする可能性があります。
 
-エンティティ クラスには、バインディングおよび .NET 依存関係の挿入を対話処理するための特別なメカニズムがあります。 詳細については、[持続エンティティ](durable-functions-entities.md)に関する記事を参照してください。
+エンティティ クラスには、バインディングおよび .NET 依存関係の挿入を対話処理するための特別なメカニズムがあります。 詳細については、「[エンティティの構築](durable-functions-dotnet-entities.md#entity-construction)」をご覧ください。
 
 ## <a name="entity-client"></a>エンティティ クライアント
 
@@ -473,17 +477,15 @@ Visual Studio を使用する場合は、`DurableClientAttribute` .NET 属性を
 
 .NET 関数では、通常は、`IDurableEntityClient` にバインドします。これにより、持続エンティティによってサポートされるすべてのクライアント API にフル アクセスできます。 また、`IDurableClient` インターフェイスにバインドすることもできます。これにより、エンティティとオーケストレーションの両方のクライアント API にアクセスできるようになります。 クライアント オブジェクトの API には以下が含まれます。
 
-* **ReadEntityStateAsync\<T>** : エンティティの状態を読み取ります。
+* **ReadEntityStateAsync\<T>** : エンティティの状態を読み取ります。 ターゲット エンティティが存在するかどうかを示す応答が返されます。存在する場合は、その状態も返されます。
 * **SignalEntityAsync**: エンティティに一方向のメッセージを送信し、エンキューされるまで待機します。
-* **SignalEntityAsync\<TEntityInterface>** : `SignalEntityAsync` と同じですが、型 `TEntityInterface` の生成されたプロキシ オブジェクトを使用します。
-* **CreateEntityProxy\<TEntityInterface>** : 型 `TEntityInterface` の動的プロキシを動的に生成し、エンティティへのタイプセーフな呼び出しを行います。
+
+シグナルを送信する前にターゲット エンティティを作成する必要はありません。エンティティの状態は、シグナルを処理するエンティティ関数内で作成できます。
 
 > [!NOTE]
-> 前の "信号" 操作がすべて非同期であることを理解しておくことが重要です。 エンティティ関数を呼び出して、クライアントから戻り値を取得することはできません。 同様に、エンティティによって操作の実行が開始される前に、`SignalEntityAsync` が返される場合があります。 オーケストレーター関数のみがエンティティ関数を同期的に呼び出して、戻り値を処理することができます。
+> クライアントから送信された "シグナル" は、単にエンキューされ、後で非同期的に処理されることを理解しておくことが重要です。 特に、`SignalEntityAsync` は、通常、エンティティが操作を開始する前に戻ります。戻り値を取得したり、例外を監視したりすることはできません。 より強力な保証が必要な場合 (ワークフローの場合など)、*オーケストレーター関数*を使用する必要があります。これにより、エンティティ操作の完了を待機し、戻り値を処理して例外を監視することができます。
 
-`SignalEntityAsync` API では、`EntityId` としてエンティティの一意の識別子を指定する必要があります。 また、これらの API では、必要に応じて、エンティティ操作の名前を `string` として、操作のペイロードを JSON にシリアル化できる `object` として受け取ることもできます。 ターゲット エンティティが存在しない場合は、指定されたエンティティ ID を使用してそれが自動的に作成されます。
-
-### <a name="client-sample-untyped"></a>クライアントのサンプル (型指定なし)
+### <a name="example-client-signals-entity-directly"></a>例: クライアントがエンティティにシグナル通知を直接出す
 
 "Counter" エンティティを呼び出す、キューによってトリガーされる関数の例を次に示します。
 
@@ -500,16 +502,16 @@ public static Task Run(
 }
 ```
 
-### <a name="client-sample-typed"></a>クライアントのサンプル (型指定あり)
+### <a name="example-client-signals-entity-via-interface"></a>例: クライアントがインターフェイスを介してエンティティにシグナル通知を出す
 
-エンティティ操作へのタイプ セーフ アクセス用にプロキシ オブジェクトを生成することができます。 タイプ セーフなプロキシを生成するには、エンティティ型によってインターフェイスが実装される必要があります。 たとえば、前述の `Counter` エンティティによって、次のように定義された `ICounter` インターフェイスが実装されたとします。
+可能な場合は、より多くの型チェックが提供されるので、[インターフェイスを介してエンティティにアクセスする](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)ことをお勧めします。 たとえば、前述の `Counter` エンティティによって、次のように定義された `ICounter` インターフェイスが実装されたとします。
 
 ```csharp
 public interface ICounter
 {
     void Add(int amount);
     void Reset();
-    int Get();
+    Task<int> Get();
 }
 
 public class Counter : ICounter
@@ -518,7 +520,7 @@ public class Counter : ICounter
 }
 ```
 
-その後、クライアント コードで `SignalEntityAsync<TEntityInterface>` を使用し、`ICounter` インターフェイスを型パラメーターとして指定することで、タイプ セーフなプロキシを生成できます。 次のコード サンプルは、タイプ セーフなプロキシのこの使用方法を示しています。
+クライアント コードでは、`SignalEntityAsync<ICounter>` を使用してタイプセーフなプロキシを生成できます。
 
 ```csharp
 [FunctionName("UserDeleteAvailable")]
@@ -532,23 +534,14 @@ public static async Task AddValueClient(
 }
 ```
 
-前の例では、`proxy` パラメーターは動的に生成された `ICounter` のインスタンスであり、`Add` への呼び出しを、`SignalEntityAsync` への同等の (型指定されていない) 呼び出しに内部的に変換します。
-
-エンティティ インターフェイスの定義には、いくつかの規則があります。
-
-* `SignalEntityAsync<TEntityInterface>` 内の型パラメーター `TEntityInterface` は、インターフェイスとする必要があります。
-* エンティティ インターフェイスでは、メソッドのみを定義する必要があります。
-* エンティティ インターフェイス メソッドで、複数のパラメーターを定義することはできません。
-* エンティティ インターフェイス メソッドは、`void`、`Task`、または `Task<T>` を返す必要があります。ここで、`T` は戻り値です。
-* エンティティ インターフェイスには、同じアセンブリ (つまり、エンティティ クラス) 内に、具体的な実装クラスが 1 つだけ含まれている必要があります。
-
-これらの規則のいずれかに違反すると、実行時に `InvalidOperationException` がスローされます。 例外メッセージに、どの規則が破られたかが示されます。
+`proxy` パラメーターは動的に生成された `ICounter` のインスタンスであり、`Add` への呼び出しを、`SignalEntityAsync` への同等の (型指定されていない) 呼び出しに内部的に変換します。
 
 > [!NOTE]
 > `SignalEntityAsync` API は一方向の操作を表します。 エンティティ インターフェイスから `Task<T>` が返された場合、`T` パラメーターの値は常に null または `default` になります。
 
-<a name="host-json"></a>
+特に、値が返されないため、`Get` 操作にシグナル通知を出すことは意味がありません。 代わりに、クライアントは `ReadStateAsync` を使用してカウンターの状態に直接アクセスするか、`Get` 操作を呼び出すオーケストレーター関数を開始することができます。 
 
+<a name="host-json"></a>
 ## <a name="hostjson-settings"></a>host.json 設定
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]

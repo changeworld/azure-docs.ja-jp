@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c7b6abb9874c8b6bb2469595b9ce53541656834f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004106"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430133"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -183,7 +183,7 @@ Shared Access Signature と共に、ロジック アプリを呼び出すこと�
 
 ## <a name="access-to-run-history-data"></a>実行履歴データへのアクセス
 
-ロジック アプリの実行中、転送中のデータと[保存](../security/fundamentals/encryption-atrest.md)データはすべて暗号化されます。転送中のデータの暗号化には、[Transit Layer Security (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) が使用されます。 ロジック アプリの実行が完了したら、実行されたステップを含め、その実行の履歴を、各アクションの状態、期間、入力、出力と共に確認できます。 この豊富な詳細情報から、ロジック アプリがどのように実行されたか、発生した問題のトラブルシューティングをどこから始めるかに関する分析情報が得られます。
+ロジック アプリが実行されている間、すべてのデータの[暗号化が転送中](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) (トランスポート層セキュリティ (TLS) を使用) と[保存時](../security/fundamentals/encryption-atrest.md)に行われます。 ロジック アプリの実行が完了したら、実行されたステップを含め、その実行の履歴を、各アクションの状態、期間、入力、出力と共に確認できます。 この豊富な詳細情報から、ロジック アプリがどのように実行されたか、発生した問題のトラブルシューティングをどこから始めるかに関する分析情報が得られます。
 
 ロジック アプリの実行履歴にアクセスすると、そのアクセスの認証が Logic Apps によって行われ、ロジック アプリの実行における要求と応答の入力および出力へのリンクが提供されます。 ただし、パスワード、シークレット、キーなどの秘匿性の高い情報を処理するアクションについては、他のユーザーがそのデータを表示したり利用したりできないようにします。 たとえば、ロジックアプリが HTTP アクションの認証時に使用する [Azure Key Vault](../key-vault/key-vault-overview.md) のシークレットを取得する場合、そのシークレットが見えないようにする必要があります。
 

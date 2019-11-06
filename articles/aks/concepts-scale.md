@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097841"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472879"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -56,8 +56,6 @@ AKS でポッドの水平オートスケーラーを開始するには、「[ポ
 ![Kubernetes クラスター オートスケーラー](media/concepts-scale/cluster-autoscaler.png)
 
 クラスター オートスケーラーは通常、ポッドの水平オートスケーラーと一緒に使用されます。 組み合わせた場合、ポッドの水平オートスケーラーはアプリケーションの需要に基づいてポッド数を増減し、クラスター オートスケーラーはそれに応じて、これらの追加ポッドの実行に必要になるノードの数を調整します。
-
-クラスター オートスケーラーはプレビューで AKS クラスターでのみテストする必要があります。
 
 AKS でクラスター オートスケーラーを開始するには、「[Azure Kubernetes Service のクラスター オートスケーラー (AKS) - プレビュー][aks-cluster-autoscaler]」を参照してください。
 

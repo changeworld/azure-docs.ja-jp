@@ -1,5 +1,5 @@
 ---
-title: サンプル - CAF 基盤ブループリント - デプロイ手順
+title: CAF 基盤ブループリント サンプル - デプロイ手順
 description: CAF 基盤ブループリント サンプルのデプロイ手順。
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 8dab466c9d45f1c06ddce955c097af40fbba44d8
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a7daf460e65c294b464f9a5deb5d9676b762c5f7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243951"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163575"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルをデプロイする
 

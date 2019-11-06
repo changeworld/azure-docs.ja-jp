@@ -1,26 +1,26 @@
 ---
-title: Azure Data Factory の Mapping Data Flow のピボット解除変換
-description: Azure Data Factory の Mapping Data Flow のピボット解除変換
+title: Azure Data Factory のマッピング データ フローのピボット解除変換
+description: Azure Data Factory のマッピング データ フローのピボット解除変換
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 28fedf96ec178aae0615129421bdae7721a66105
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 41423f704c87f05ad3e31b253d4a80799a554849
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029936"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387745"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory のピボット解除変換
 
 
 
-ADF の Mapping Data Flow で、正規化されていないデータセットをより正規化されたバージョンに変換するための方法としてピボット解除を使用して、単一のレコード内の複数の列の値を、単一の列内に同じ値を持つ複数のレコードに展開します。
+ADF のマッピング データ フローで、正規化されていないデータセットをより正規化されたバージョンに変換するための方法としてピボット解除を使用して、単一のレコード内の複数の列の値を、単一の列内に同じ値を持つ複数のレコードに展開します。
 
-![ピボット解除変換](media/data-flow/unpivot1.png "ピボット解除オプション 1 ")
+![ピボット解除変換](media/data-flow/unpivot1.png "ピボット解除オプション 1")
 
 ## <a name="ungroup-by"></a>グループ化解除
 
@@ -46,7 +46,7 @@ ADF の Mapping Data Flow で、正規化されていないデータセットを
 
 <img src="media/data-flow/unpivot3.png" width="400">
 
-[Column Arrangement]\(列の配列\) を [Normal]\(標準\) に設定すると、すべてのピボットされた列がグループ化され、それらの値が集計されます。 [Column Arrangement]\(列の配列\) を [Lateral]\(水平\) に設定すると、列と値が入れ替わります。
+[Column Arrangement]\(列の配列\) を [Normal]\(標準\) に設定すると、すべてのピボットされた列がグループ化され、それらの値が集計されます。 [Column Arrangement]\(列の配置\) を [Lateral]\(水平\) に設定すると、列と値が入れ替わります。
 
 ![ピボット解除変換](media/data-flow//unpivot7.png "ピボット解除オプション 5")
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - Azure Container Instances への Docker コンテナーのデプロイ - CLI
+title: クイック スタート:Azure Container Instances への Docker コンテナーのデプロイ - Azure CLI
 description: このクイック スタートでは、Azure CLI を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
 services: container-instances
 author: dlepow
@@ -8,13 +8,16 @@ ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: b344e5fefdef6cd25dcafc0577b9fbbd7f0e398d
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.custom:
+- seo-python-october2019
+- seodec18
+- mvc
+ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050625"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429201"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してコンテナー インスタンスを Azure にデプロイする
 
@@ -69,7 +72,7 @@ aci-demo.eastus.azurecontainer.io  Succeeded
 
 コンテナーの `ProvisioningState` が **[Succeeded]\(成功\)** と表示されている場合は、ブラウザーでその FQDN に移動します。 次のような Web ページが表示されたら成功です。 Docker コンテナーで実行されているアプリケーションが Azure に正常にデプロイされました。
 
-![Azure コンテナー インスタンスで実行されているアプリケーションを示すブラウザー スクリーンショット][aci-app-browser]
+![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][aci-app-browser]
 
 最初にアプリケーションが表示されない場合は、DNS が反映されるまで数秒待った後、ブラウザーを更新してみてください。
 
@@ -155,7 +158,7 @@ az group delete --name myResourceGroup
 Azure のオーケストレーション システムでコンテナーを実行するためのオプションを試すには、[Azure Kubernetes Service (AKS)][container-service] のクイック スタートを参照してください。
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1df8199abbbc195db873ab3da515cb1dd5fe9761
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129960"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484076"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker コンテナーを構成する
 
@@ -106,13 +106,11 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 ## <a name="container-docker-examples"></a>コンテナーの Docker の例
 
-#### <a name="readtabread"></a>[読み取り](#tab/read)
-
 次の Docker の例は、読み取りコンテナーに関するものです。
 
 ### <a name="basic-example"></a>基本的な例
 
-  ```
+  ```docker
   docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
@@ -122,7 +120,7 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 ### <a name="logging-example"></a>ログの例 
 
-  ```
+  ```docker
   docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
@@ -130,33 +128,6 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
   ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
-
-#### <a name="recognize-texttabrecognize-text"></a>[Recognize Text](#tab/recognize-text)
-
-次の Docker の例は、テキスト認識コンテナーに関するものです。
-
-### <a name="basic-example"></a>基本的な例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>ログの例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} \
-  Logging:Console:LogLevel:Default=Information
-  ```
-
-***
 
 ## <a name="next-steps"></a>次の手順
 

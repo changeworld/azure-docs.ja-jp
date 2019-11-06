@@ -3,15 +3,15 @@ title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/06/2019
+ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: bf54f1a96c6be7bbfb19770472752b3f958695c4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976812"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755879"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
 
@@ -34,7 +34,7 @@ Azure Resource Graph は Azure 内のサービスであり、Azure Resource Mana
 
 Azure Resource Manager では現在、基本的なリソース フィールドに対するクエリがサポートされています。具体的には、リソース名、ID、種類、リソース グループ、サブスクリプション、および場所です。 Resource Manager には、一度に 1 つのリソースについて詳細なプロパティを得るために個別のリソース プロバイダーを呼び出す機能も用意されています。
 
-Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類については、[完全モード デプロイでのリソース](../../azure-resource-manager/complete-mode-deletion.md)に関する表で "**はい**" を探してください。 サポートされるリソースの種類は、[Azure Resource Graph エクスプローラーのスキーマ ブラウザー](./first-query-portal.md#schema-browser)を使用して確認することもできます。
+Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類については、[完全モード デプロイでのリソース](../../azure-resource-manager/complete-mode-deletion.md)に関する表で "**はい**" を探してください。 その他のリソースの種類については、関連する「[Resource Graph テーブル](./concepts/query-language.md#resource-graph-tables)」を参照してください。 サポートされるリソースの種類は、[Azure Resource Graph エクスプローラーのスキーマ ブラウザー](./first-query-portal.md#schema-browser)を使用して確認することもできます。
 
 Azure Resource Graph では、次のことができます。
 
@@ -45,6 +45,9 @@ Azure Resource Graph では、次のことができます。
 
 Azure リソースが更新されると、Resource Manager から Resource Graph に変更の通知が届きます。
 その後、Resource Graph によってそのデータベースが更新されます。 Resource Graph では、定期的な "_フル スキャン_" も行われます。 このスキャンにより、通知が届かなかった場合、またはリソースが Resource Manager の外部で更新されたときにも、Resource Graph が最新の状態に維持されます。
+
+> [!NOTE]
+> Resource Graph では、各リソースプロバイダーの最新の非プレビュー API に対して `GET` を使用して、プロパティと値を収集します。 その結果、想定されるプロパティを取得できない場合があります。 場合によっては、使用される API バージョンがオーバーライドされ、最新のプロパティまたは広く使用されているプロパティが結果に提供されます。 ご使用の環境での完全な一覧については、[各リソースの種類の API バージョンを表示する](./samples/advanced.md#apiversion)方法に関するサンプルを参照してください。
 
 ## <a name="the-query-language"></a>クエリ言語
 

@@ -1,13 +1,13 @@
 ---
-title: OData 比較演算子のリファレンス - Azure Search
-description: Azure Search クエリの OData 比較演算子 eq、ne、gt、lt、ge、le。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 比較演算子のリファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリでの OData 比較演算子 (eq、ne、gt、lt、ge、le)。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a8bd8b05fd874e05e5e59042d461f4a4286c81e4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 068e2ec822f0a292ac83b3e48049830eb77b49f6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648056"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793383"
 ---
-# <a name="odata-comparison-operators-in-azure-search---eq-ne-gt-lt-ge-and-le"></a>Azure Search の OData 比較演算子 - `eq`、 `ne`、 `gt`、 `lt`、`ge`、`le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure Cognitive Search の OData 比較演算子 - `eq`、`ne`、`gt`、`lt`、`ge`、`le`
 
-Azure Search の [OData フィルター式](query-odata-filter-orderby-syntax.md)で最も基本的な操作は、フィールドと特定の値との比較です。 等価比較と範囲比較の 2 種類の比較を行うことができます。 次の演算子を使用して、フィールドを定数値と比較できます。
+Azure Cognitive Search の [OData フィルター式](query-odata-filter-orderby-syntax.md)で最も基本的な操作は、フィールドと特定の値との比較です。 等価比較と範囲比較の 2 種類の比較を行うことができます。 次の演算子を使用して、フィールドを定数値と比較できます。
 
 等価演算子:
 
@@ -66,10 +66,10 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 比較式には 2 つの形式があります。 この 2 つの形式の唯一の違いは、定数が演算子の左側に示されるか右側に示されるかです。 演算子の反対側の式は、**変数**または関数呼び出しでなければなりません。 変数は、フィールド名、または範囲変数 ([ラムダ式](search-query-odata-collection-operators.md)の場合) のいずれかです。
 
@@ -89,7 +89,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 | `Edm.Int32` | `Edm.Int64` | 該当なし |
 | `Edm.Int32` | `Edm.Int32` | 該当なし |
 
-許可されていない比較 (たとえば、型 `Edm.Int64` のフィールドと `NaN` の比較) が行われた場合、Azure Search REST API は "HTTP 400: 無効な要求" のエラーを返します。
+許可されていない比較 (たとえば、型 `Edm.Int64` のフィールドと `NaN` の比較) の場合、Azure Cognitive Search REST API では、"HTTP 400: 無効な要求のエラー" が返されます。
 
 > [!IMPORTANT]
 > 数値型の比較は柔軟ですが、定数値が比較対象の変数または関数と同じデータ型になるように、フィルターで比較を記述することを強くお勧めします。 このことは、浮動小数点値と整数値が混在し、精度の低下が発生する暗黙的な変換が行われる可能性がある場合に特に重要です。
@@ -98,7 +98,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 ### <a name="special-cases-for-null-and-nan"></a>`null` と `NaN` の特殊なケース
 
-比較演算子を使用する場合、Azure Search のすべての非コレクション フィールドは `null` になる可能性があることを覚えておく必要があります。 次の表に、いずれかの側が `null` になる可能性がある比較式の考えられるすべての結果を示します。
+比較演算子を使用する場合、Azure Cognitive Search のすべての非コレクション フィールドは `null` になる可能性があることを覚えておくことが重要です。 次の表に、いずれかの側が `null` になる可能性がある比較式の考えられるすべての結果を示します。
 
 | Operator | フィールドまたは変数のみが `null` の場合の結果 | 定数のみが `null` の場合の結果 | フィールドまたは変数と定数の両方が `null` の場合の結果 |
 | --- | --- | --- | --- |
@@ -111,7 +111,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 要約すると、`null` はそれ自体にのみ等しく、他のどの値より小さくも大きくもありません。
 
-インデックスに型 `Edm.Double` のフィールドがあり、`NaN` の値をそれらのフィールドにアップロードする場合は、フィルターを作成するときにそのことを考慮する必要があります。 Azure Search では、`NaN` 値を処理するために IEEE 754 標準を実装しています。このような値との比較により、次の表に示すように、明らかではない結果が生じます。
+インデックスに型 `Edm.Double` のフィールドがあり、`NaN` の値をそれらのフィールドにアップロードする場合は、フィルターを作成するときにそのことを考慮する必要があります。 Azure Cognitive Search では、`NaN` 値を処理するために IEEE 754 標準を実装しています。このような値との比較により、次の表に示すように、明らかではない結果が生じます。
 
 | Operator | 少なくとも 1 つのオペランドが `NaN` の場合の結果 |
 | --- | --- |
@@ -156,7 +156,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

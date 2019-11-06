@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e08999798c72545f9fa1d1b5d362e23450ce16f5
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: aca417ebbc6f9af80058ddece32842f38918ce60
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695325"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964762"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
@@ -167,7 +167,7 @@ IoT Hub によって提供されるデバイス接続文字列を使用して、
 
 ### <a name="option-1-manual-provisioning"></a>オプション 1: 手動プロビジョニング
 
-デバイスを手動でプロビジョニングするには、[デバイス接続文字列](how-to-register-device-portal.md)をデバイスに提供する必要があります。この文字列は、新しいデバイスを IoT ハブに登録することで作成できます。
+デバイスを手動でプロビジョニングするには、[デバイス接続文字列](how-to-register-device.md#register-in-the-azure-portal)をデバイスに提供する必要があります。この文字列は、新しいデバイスを IoT ハブに登録することで作成できます。
 
 構成ファイルを開きます。
 
@@ -248,19 +248,25 @@ sudo systemctl restart iotedge
 
 前のセクションで**手動構成**手順を使用した場合、IoT Edge ランタイムがデバイス上で正常にプロビジョニングおよび実行されている必要があります。 **自動構成**手順を使用した場合は、ランタイムが IoT ハブにデバイスを登録できるように、追加の手順を完了する必要があります。 次の手順については、「[Linux 仮想マシンでのシミュレートされた TPM IoT Edge デバイスの作成とプロビジョニング](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm)」をご覧ください。
 
-以下を使用して、IoT Edge デーモンの状態を確認できます。
+以下により、IoT Edge デーモンの状態を確認できます。
 
 ```bash
 systemctl status iotedge
 ```
 
-以下を使用して、デーモンのログを確認します。
+デーモンのログを調べます:
 
 ```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
-また、以下を使用して、実行中のモジュールを一覧表示します。
+最も一般的な構成およびネットワーク エラーの自動チェックを実行します。 
+
+```bash
+sudo iotedge check
+```
+
+実行中のモジュールを一覧表示します:
 
 ```bash
 sudo iotedge list

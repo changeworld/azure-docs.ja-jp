@@ -1,18 +1,18 @@
 ---
 title: Azure Storage に大量のランダム データを並行でアップロードする | Microsoft Docs
-description: Azure SDK を使用して Azure Storage アカウントに大量のランダム データを並行でアップロードする方法を説明します。
+description: Azure Storage クライアント ライブラリを使用して Azure Storage アカウントに大量のランダム データを並列でアップロードする方法を説明します。
 author: roygara
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5b20686399db9537e5db8622a433b5e506939d19
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698966"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302982"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -28,7 +28,7 @@ ms.locfileid: "68698966"
 
 Azure BLOB Storage では、データを格納するためのスケーラブルなサービスを提供しています。 アプリケーションのパフォーマンスをできる限り高められるように、Blob ストレージの仕組みを理解することをお勧めします。 Azure BLOB の制限事項に関する知識が重要です。これらの制限事項の詳細については、[Blob Storage のスケーラビリティ ターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets)に関する記述をご覧ください。
 
-[パーティションの名前付け](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47)は、BLOB を使用して高パフォーマンスのアプリケーションを設計するときに、もう 1 つの重要な要素になる場合があります。 4 MiB 以上のブロック サイズの場合、[高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) が使用され、パーティションの名前付けはパフォーマンスに影響しません。 4 MiB 未満のブロック サイズの場合、Azure Storage では、範囲を基にしたパーティション構成を使用して、拡大縮小および負荷分散を行います。 この構成は、類似の名前付け規則またはプレフィックスを持つファイルが同じパーティションに含まれることを意味します。 このロジックには、ファイルのアップロード先となるコンテナーの名前が含まれます。 このチュートリアルでは、ランダムに生成されたコンテンツと名前に対して GUID を保持するファイルを使用します。 その後、それらのファイルは、ランダムな名前の異なる 5 つのコンテナーにアップロードされます。
+[パーティションの名前付け](../blobs/storage-performance-checklist.md#partitioning)は、BLOB を使用して高パフォーマンスのアプリケーションを設計するときに、もう 1 つの重要な要素になる場合があります。 4 MiB 以上のブロック サイズの場合、[高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) が使用され、パーティションの名前付けはパフォーマンスに影響しません。 4 MiB 未満のブロック サイズの場合、Azure Storage では、範囲を基にしたパーティション構成を使用して、拡大縮小および負荷分散を行います。 この構成は、類似の名前付け規則またはプレフィックスを持つファイルが同じパーティションに含まれることを意味します。 このロジックには、ファイルのアップロード先となるコンテナーの名前が含まれます。 このチュートリアルでは、ランダムに生成されたコンテンツと名前に対して GUID を保持するファイルを使用します。 その後、それらのファイルは、ランダムな名前の異なる 5 つのコンテナーにアップロードされます。
 
 ## <a name="prerequisites"></a>前提条件
 

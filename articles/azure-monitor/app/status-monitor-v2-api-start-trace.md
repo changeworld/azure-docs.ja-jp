@@ -1,6 +1,6 @@
 ---
-title: 'Azure Status Monitor v2 API リファレンス: トレースの開始 | Microsoft Docs'
-description: Status Monitor v2 API リファレンス。 トレースの開始。 Status Monitor と Application Insights SDK から ETW のログを収集します。
+title: Azure Application Insights エージェント API リファレンス:トレースの開始 | Microsoft Docs
+description: Application Insights エージェント API リファレンス。 トレースの開始。 Status Monitor と Application Insights SDK から ETW のログを収集します。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f4c43e6bdb70687606041c2f0859ab072db2b587
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b1c5aa34c46a20631b328abfb061dc2477150c72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200375"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389844"
 ---
-# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace"></a>Status Monitor v2 API:Start-ApplicationInsightsMonitoringTrace
+# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights エージェント API:Start-ApplicationInsightsMonitoringTrace
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -121,7 +121,7 @@ Timeout Reached. Stopping...
 
 
 
- Status Monitor v2 の活用:
- - ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。
+ Application Insights エージェントをさらに活用する:
+ - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
  - 設定が正しく記録されたことを確認するために[構成を取得](status-monitor-v2-api-get-config.md)します。
  - 監視を検査するために[状態を取得](status-monitor-v2-api-get-status.md)します。

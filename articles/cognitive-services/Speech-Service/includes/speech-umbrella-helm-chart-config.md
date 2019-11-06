@@ -11,17 +11,17 @@ ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
 ms.openlocfilehash: ed64412ccf9d192506fafe546b1ccee7941aa43a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67717220"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523297"
 ---
 ### <a name="speech-umbrella-chart"></a>音声 (アンブレラ チャート)
 
 最上位レベル「アンブレラ」チャートの値は、対応するサブチャートの値を上書きします。 そのため、オンプレミスでカスタマイズされたすべての値をここで追加する必要があります。
 
-|パラメーター|説明|既定値|
+|パラメーター|説明|Default|
 | -- | -- | -- | -- |
 | `speechToText.enabled` | **音声テキスト変換**サービスが有効かどうか。 | `true` |
 | `speechToText.verification.enabled` | **音声テキスト変換**サービス用の `helm test` 機能が有効かどうか。 | `true` |

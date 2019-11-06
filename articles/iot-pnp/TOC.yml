@@ -12,7 +12,7 @@
     - name: デバイスを IoT Hub に接続する
       href: quickstart-connect-pnp-device.md
     - name: デバイスを IoT Central に接続する
-      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: ソリューション内のデバイスに接続する
       href: quickstart-connect-pnp-device-solution.md
 - name: チュートリアル

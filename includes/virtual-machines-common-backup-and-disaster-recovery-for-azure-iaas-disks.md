@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181172"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72302326"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS ディスクのバックアップとディザスター リカバリー
 
@@ -130,7 +130,7 @@ IaaS アプリケーション データの問題も別の可能性として存�
 
 [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) では、Azure Recovery Services コンテナーに Windows または Linux を実行する VM をバックアップできます。 業務に不可欠なデータのバックアップと復元は、その生成元となるアプリケーションの実行中にバックアップを行う必要があるため、簡単ではありません。 
 
-この課題に対処するために、Azure Backup は、Microsoft のワークロードに対してアプリケーション整合性バックアップを提供します。 ボリューム シャドウ サービスを使用して、データがストレージに正しく書き込まれるようにします。 Linux にはボリューム シャドウ サービスに相当する機能がないため、Linux VM についてはファイル整合バックアップのみが可能です。
+この課題に対処するために、Azure Backup は、Microsoft のワークロードに対してアプリケーション整合性バックアップを提供します。 ボリューム シャドウ サービスを使用して、データがストレージに正しく書き込まれるようにします。 Linux には Windows のボリューム シャドウ サービスに相当する機能がないため、Linux VM では、既定のバックアップ整合性モードはファイル整合バックアップです。 Linux マシンについては、「[Azure Linux VM のアプリケーション整合性バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)」を参照してください。
 
 ![Azure Backup のフロー][1]
 

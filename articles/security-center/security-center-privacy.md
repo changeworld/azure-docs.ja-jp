@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: aab2535eb44ca5007859c71bf1f8142b26de7d14
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 0d05650ff349cb9e9750b0cefe0de217a986b32a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996740"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254598"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
 この記事では、Azure Security Center でユーザー データを管理する方法について説明します。 ユーザー データの管理には、データへのアクセス、削除、またはエクスポート機能が含まれます。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-閲覧者、所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Azure Security Center のユーザーは、ツール内の顧客データにアクセスできます。 閲覧者、所有者、共同作成者ロールの詳細については、「[Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。 アカウント管理者ロールの詳細については、[Azure サブスクリプション管理者](../billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
+閲覧者、所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Azure Security Center のユーザーは、ツール内の顧客データにアクセスできます。 アカウント管理者ロールの詳細については、「[Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md)」を参照して閲覧者、所有者、共同作成者ロールを参照してください。 「[Azure サブスクリプション管理者](../billing/billing-add-change-azure-subscription-administrator.md)」に関する記事を参照してください。
 
 ## <a name="searching-for-and-identifying-personal-data"></a>個人データの検索と識別
 Security Center のユーザーは、Azure portal から自分の個人データを表示できます。 Security Center では、メール アドレスや電話番号などのセキュリティ連絡先の詳細情報のみを保存します。 詳細については、「[Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md)」を参照してください。
 
-Azure portal で、ユーザーは、Security Center の Just In Time VM アクセス機能を使用して、許可されている IP 構成を表示できます。 詳しくは、「[Just In Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。
+Azure portal で、ユーザーは、Security Center の Just In Time VM アクセス機能を使用して、許可されている IP 構成を表示できます。 詳細については、「[Just-In-Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。
 
 Azure portal で、ユーザーは、IP アドレスや攻撃者の詳細など、Security Center から提供されるセキュリティ アラートを表示できます。 詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 
@@ -60,12 +60,12 @@ Security Center の [Just In Time](security-center-just-in-time.md) 機能で保
 
 所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Security Center のユーザーは、Azure portal を介して [Just In Time ポリシー](security-center-just-in-time.md)を削除できます。
 
-Security Center のユーザーは、アラート インシデントを削除できません。 セキュリティ上の必要性のため、[アラート インシデント](security-center-managing-and-responding-alerts.md)は読み取り専用データと見なされます。
+Security Center のユーザーは、アラート インシデントを削除できません。 セキュリティ上の理由により、[アラート インシデント](security-center-managing-and-responding-alerts.md)は読み取り専用データと見なされます。
 
 ## <a name="exporting-personal-data"></a>個人データのエクスポート
 閲覧者、所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Security Center のユーザーは、次の方法で[セキュリティ連絡先データ](security-center-provide-security-contact-details.md)をエクスポートできます。
 
-- Azure portal からコピーを実行する
+- Azure portal からコピーする
 - Azure REST API 呼び出しの GET HTTP: を実行する
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
@@ -73,7 +73,7 @@ Security Center のユーザーは、アラート インシデントを削除で
 
 アカウント管理者のロールが割り当てられている Security Center のユーザーは、IP アドレスを含む [Just In Time ポリシー](security-center-just-in-time.md)をエクスポートできます。
 
-- Azure portal からコピーを実行する
+- Azure portal からコピーする
 - Azure REST API 呼び出しの GET HTTP: を実行する
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
@@ -81,7 +81,7 @@ Security Center のユーザーは、アラート インシデントを削除で
 
 アカウント管理者は、次の方法でアラートの詳細をエクスポートできます。
 
-- Azure portal からコピーを実行する
+- Azure portal からコピーする
 - Azure REST API 呼び出しの GET HTTP: を実行する
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}

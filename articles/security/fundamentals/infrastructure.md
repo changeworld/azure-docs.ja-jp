@@ -4,7 +4,7 @@ description: この記事では、Microsoft による Azure データセンタ�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2018
+ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 3da9fef8c7de248f30100f94724cd5dcdb7db8e3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727077"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595403"
 ---
 # <a name="azure-infrastructure-security"></a>Azure インフラストラクチャのセキュリティ
 Microsoft Azure は、Microsoft によって管理および運用されているデータセンター内で実行されます。 これらの地理的に分散したデータセンターは、セキュリティおよび信頼性のための、ISO/IEC 27001:2013 や NIST SP 800-53 などの主要な業界標準に準拠しています。 これらのデータセンターは、Microsoft の運用担当者によって管理および監視されます。 これらの運用担当者には、世界最大のオンライン サービスを週 7 日 24 時間体制の継続性で提供することについての数年にわたる経験があります。
 
+## <a name="securing-the-azure-infrastructure"></a>Azure インフラストラクチャのセキュリティ保護
 この一連の記事では、Microsoft が Azure インフラストラクチャをセキュリティ保護するために行っていることに関する情報を提供します。 これらの記事では、次のことについて説明します。
 
 - [物理的なセキュリティ](physical-security.md)
@@ -38,32 +39,8 @@ Microsoft Azure は、Microsoft によって管理および運用されている
 - [整合性](infrastructure-integrity.md)
 - [データ保護](protection-customer-data.md)
 
-## <a name="shared-responsibility-model"></a>共同責任モデル
-お客様と Microsoft との責任の分担を理解することが重要です。 オンプレミスでは、お客様はスタック全体を所有しますが、クラウドに移行すると、責任の一部は Microsoft に移譲されます。 次の図は、スタックのデプロイの種類 (サービスとしてのソフトウェア [SaaS]、サービスとしてのプラットフォーム [PaaS]、サービスとしてのインフラストラクチャ [IaaS]、およびオンプレミス) に応じた責任の範囲を示しています。
-
-![責任を示しているグラフィック](./media/infrastructure/responsibility-zones.png)
-
-デプロイの種類に関係なく、お客様は常に以下に対する責任を負います。
-
-- Data
-- エンドポイント
-- Account
-- アクセス管理
-
-SaaS、PaaS、および IaaS のデプロイにおけるお客様と Microsoft の間の責任の分配を理解するようにしてください。 詳細については、[クラウド コンピューティングの共同責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)に関するページを参照してください。
-
 ## <a name="next-steps"></a>次の手順
-Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、以下を参照してください。
 
-- [Azure の施設、建物、および物理上のセキュリティ](physical-security.md)
-- [Azure インフラストラクチャの可用性](infrastructure-availability.md)
-- [Azure 情報システムのコンポーネントと境界](infrastructure-components.md)
-- [Azure ネットワーク アーキテクチャ](infrastructure-network.md)
-- [Azure 実稼働環境のネットワーク](production-network.md)
-- [Azure SQL Database のセキュリティ機能](infrastructure-sql.md)
-- [Azure の実稼働環境の運用と管理](infrastructure-operations.md)
-- [Azure インフラストラクチャの監視](infrastructure-monitoring.md)
-- [Azure インフラストラクチャの整合性](infrastructure-integrity.md)
-- [Azure での顧客データの保護](protection-customer-data.md)
+- [クラウドにおける共同責任](shared-responsibility.md)について理解します。
 
-
+- [Azure Security Center](https://azure.microsoft.com/services/security-center/) で、Azure リソースのセキュリティを高度に視覚化して制御することで、脅威の回避、検出、対応を支援する方法について確認します。

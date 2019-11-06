@@ -3,18 +3,18 @@ title: 用語集 - IoT プラグ アンド プレイ プレビュー | Microsoft
 description: 概念 - IoT プラグ アンド プレイ プレビューに関連する一般用語の用語集。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 08/29/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 0d132a46db39308911f472941c02f8bb04a44e0d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858832"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988787"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューの用語集
 
@@ -97,6 +97,7 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 
 - デバイス接続文字列を使用すると、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)は、IoT ハブ上のデバイス向けエンドポイントに接続できます。 デバイス上のクライアント コードでは、この接続文字列を使用して、IoT ハブとのセキュリティで保護された接続を確立します。
 - IoT Hub 接続文字列を使用すると、バックエンドのソリューションやツールは IoT ハブ上のサービス向けエンドポイントに安全に接続できます。 これらのソリューションやツールは、その IoT ハブと、それに接続されているデバイスを管理します。
+- 会社モデル リポジトリ接続文字列を使用すると、バックエンドのソリューションやツールで[会社モデル リポジトリ](#company-model-repository)に安全に接続できます。 これらのソリューションとツールは、リポジトリ内の[デバイス機能モデル](#device-capability-model)および[インターフェイス](#interface)を使用または管理します。
 
 ## <a name="device-capability-model"></a>デバイス機能モデル
 
@@ -116,7 +117,7 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 
 ## <a name="device-provisioning-service"></a>Device Provisioning Service
 
-[Azure IoT Central](#azure-iot-central) では、すべてのデバイスの登録と接続の管理に Device Provisioning Service が使用されます。 詳細については、[Azure IoT Central のデバイス接続機能](../iot-central/concepts-connectivity-pnp.md)に関するページを参照してください。 また、Device Provisioning Service を使用すると、お使いの IoT ハブベースの IoT ソリューションへのデバイスの登録と接続を管理することもできます。 詳細については、「[Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング](../iot-dps/about-iot-dps.md)」を参照してください。
+[Azure IoT Central](#azure-iot-central) では、すべてのデバイスの登録と接続の管理に Device Provisioning Service が使用されます。 詳細については、[Azure IoT Central のデバイス接続機能](../iot-central/core/overview-iot-central-get-connected-pnp.md)に関するページを参照してください。 また、Device Provisioning Service を使用すると、お使いの IoT ハブベースの IoT ソリューションへのデバイスの登録と接続を管理することもできます。 詳細については、「[Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング](../iot-dps/about-iot-dps.md)」を参照してください。
 
 ## <a name="device-registration"></a>デバイス登録
 

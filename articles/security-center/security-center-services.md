@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982838"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529487"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Security Center でサポートされている使用可能な機能
 
 > [!NOTE]
->一部の機能は、Standard レベルでのみ使用できます。 Security Center の Standard レベルにまだサインアップしていない場合は、無料試用期間を利用できます。 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」ページをご覧ください。
+>一部の機能は、Standard レベルでのみ使用できます。 Security Center の Standard レベルにまだサインアップしていない場合は、無料試用期間を利用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
 以下のセクションでは、[サポートされているプラットフォーム](security-center-os-coverage.md)で使用できる Security Center の機能を示します。
 
@@ -39,31 +39,31 @@ ms.locfileid: "71982838"
 |----|----|----|----|----|----|----|----|
 |**Environment**|**Azure**||**Azure 以外**|**Azure**||**Azure 以外**||
 ||**仮想マシン**|**Virtual Machine Scale Set**||**仮想マシン**|**Virtual Machine Scale Set**|
-|仮想マシン動作分析の脅威検出アラート|✔|✔|✔|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|推奨事項 (無料) 脅威の検出 (Standard)|
-|ネットワーク経由の脅威検出アラート|✔|✔|X|✔|✔|X|Standard|
-|Microsoft Defender ATP の統合|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|X|X|X|Standard|
-|不足しているパッチ|✔|✔|✔|✔|✔|✔|無料|
-|セキュリティ構成|✔|✔|✔|✔|✔|✔|無料|
-|エンドポイント保護の評価|✔|✔|✔|X|X|X|無料|
-|Just-In-Time VM アクセス|✔|X|X|✔|X|X|Standard|
-|アダプティブ アプリケーション制御|✔|X|✔|✔|X|✔|Standard|
-|ファイルの整合性の監視|✔|✔|✔|✔|✔|✔|Standard|
-|ディスク暗号化の評価|✔|✔|X|✔|✔|X|無料|
-|サード パーティ デプロイ|✔|X|X|✔|X|X|無料|
-|NSG の評価|✔|✔|X|✔|✔|X|無料|
-|ファイルレス脅威の検出|✔|✔|✔|X|X|X|Standard|
-|ネットワーク マップ|✔|✔|X|✔|✔|X|Standard|
-|アダプティブ ネットワークのセキュリティ強化機能|✔|X|X|✔|X|X|Standard|
+|[Microsoft Defender ATP の統合](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|X|X|X|Standard|
+|[仮想マシン動作分析の脅威検出アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|推奨事項 (無料) 脅威の検出 (Standard)|
+|[ファイルレス脅威の検出アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|Standard|
+|[ネットワーク経由の脅威検出アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|Standard|
+|[Just-In-Time VM アクセス](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|Standard|
+|[ファイルの整合性の監視](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Standard|
+|[アダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|Standard|
+|[ネットワーク マップ](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|Standard|
+|[アダプティブ ネットワークのセキュリティ強化機能](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|Standard|
 |アダプティブ ネットワーク制御|✔|✔|X|✔|✔|X|Standard|
-|規制へのコンプライアンス ダッシュボードおよびレポート|✔|✔|✔|✔|✔|✔|Standard|
+|[規制へのコンプライアンス ダッシュボードおよびレポート](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Standard|
 |Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の検出|X|X|X|✔|✔|✔|Standard|
+|足りない OS パッチの評価|✔|✔|✔|✔|✔|✔|無料|
+|セキュリティの誤った構成の評価|✔|✔|✔|✔|✔|✔|無料|
+|[エンドポイント保護の評価](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|無料|
+|ディスク暗号化の評価|✔|✔|X|✔|✔|X|無料|
+|サードパーティの脆弱性評価|✔|X|X|✔|X|X|無料|
+|[ネットワーク セキュリティ評価](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)|✔|✔|X|✔|✔|X|無料|
 
 ### サポートされているエンドポイント保護ソリューション <a name="endpoint-supported"></a>
 
 次の表に、次の項目のマトリックスを示します。
 
  - Azure Security Center を使用して、各ソリューションをインストールできるかどうか。
- - Security Center で検出できるエンドポイント保護ソリューションはどれか。 これらのエンドポイント保護ソリューションのいずれかが検出された場合、Security Center で 1 つをインストールすることが推奨されることはありません。
+ - Security Center で検出できるエンドポイント保護ソリューションはどれか。 この一覧からのエンドポイント保護ソリューションが検出された場合、Security Center で 1 つをインストールすることが推奨されることはありません。
 
 これらの各保護に対する推奨事項がいつ生成されるかの情報については、[エンドポイント保護の評価と推奨事項](security-center-endpoint-protection.md)に関するページを参照してください。
 
@@ -77,7 +77,7 @@ ms.locfileid: "71982838"
 | McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい **\*** |
 | Sophos V9+| Linux Server ファミリ  | いいえ | はい  **\***  |
 
- **\*** カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用でき、Azure Security Center ポータルには反映されません。
+ **\*** カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用できます。 Azure Security Center ポータルには反映されません。
 
 > [!NOTE]
 >
@@ -96,14 +96,14 @@ Azure Security Center では、次の PaaS リソースがサポートされて�
 |MySQL*|✔| ✔|
 |CosmosDB*|X| ✔|
 |BLOB ストレージ|✔| ✔|
-|ストレージ アカウント|✔| NA|
+|ストレージ アカウント|✔| X|
 |App Service|✔| ✔|
 |Function|✔| X|
 |クラウド サービス|✔| X|
-|VNet|✔| NA|
-|Subnet|✔| NA|
-|NIC|✔| NA|
-|NSG|✔| NA|
+|VNet|✔| X|
+|Subnet|✔| X|
+|NIC|✔| X|
+|NSG|✔| X|
 |Subscription|✔ **| ✔|
 |Batch アカウント|✔| X|
 |Service Fabric アカウント|✔| X|
@@ -114,7 +114,7 @@ Azure Security Center では、次の PaaS リソースがサポートされて�
 |Stream Analytics|✔| X|
 |イベント ハブの名前空間|✔| X|
 |ロジック アプリ|✔| X|
-|Redis|✔| NA|
+|Redis|✔| X|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
 |Key Vault|✔| X|

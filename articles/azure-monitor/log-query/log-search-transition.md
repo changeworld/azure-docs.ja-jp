@@ -1,23 +1,18 @@
 ---
 title: Azure Log Analytics におけるデータの表示と分析 | Microsoft Docs
 description: Log Analytics のログ検索から Azure Monitor のログ クエリ エクスペリエンスに移行するユーザー向けの情報。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/16/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: dc3a754bd1a9f689f4b24b9ee2c1e4cbc0611684
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/16/2019
+ms.openlocfilehash: b738d532cb458506ca50a07dea11687040f99e02
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519902"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900343"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics のログ検索から Azure Monitor のログに移行する
 最近、Log Analytics のログ検索の後継として、Azure Monitor のログを分析するための新しいエクスペリエンスが導入されました。 現在もログ検索ページには、Azure portal の **[Log Analytics ワークスペース]** ページにある **[ログ (クラシック)]** メニュー項目からアクセスできますが、このページは 2019 年 2 月 15 日をもって削除されます。 この記事では、ログ検索から円滑に移行できるよう、2 つのエクスペリエンスの違いについて説明しています。 

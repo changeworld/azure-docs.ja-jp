@@ -11,12 +11,12 @@ ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.devlang: powershell
-ms.openlocfilehash: cb175191cb080cffb6feb52b724c29568fd549a5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c9de4cec417625bb8451457652dacb61550c31b0
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706527"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248330"
 ---
 # <a name="create-your-first-powershell-function-in-azure-preview"></a>Azure で初めての PowerShell 関数を作成する (プレビュー)
 
@@ -96,7 +96,7 @@ Azure Functions プロジェクトをローカルで実行してデバッグす�
 
     ブラウザーから GET 要求を実行することもできます。
 
-    クエリ パラメーターとして、または本文で `name` パラメーターを渡さずに HttpTrigger エンドポイントを呼び出すと、関数は 500 エラーを返します。 run.ps1 でコードを確認すると、このエラーが仕様によって発生することがわかります。
+    クエリ パラメーターとして、または本文で `name` パラメーターを渡さずに HttpTrigger エンドポイントを呼び出すと、関数は [HttpStatusCode]::BadRequest エラーを返します。 run.ps1 でコードを確認すると、このエラーが仕様によって発生することがわかります。
 
 1. デバッグを停止するには、Shift キーを押しながら F5 キーを押します。
 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 649c4271b2786eca506460551cfad956eeadf3c5
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034201"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964408"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Windows で IoT Edge を使用し、Linux コンテナーを実行する
 
@@ -57,9 +57,9 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 1. 新しい IoT Edge デバイスを登録していない場合は登録し、接続文字列を取得します。 このセクションの後半で使用するため、接続文字列をコピーします。 この手順は次のツールで完了できます。
 
-   * [Azure Portal](how-to-register-device-portal.md)
-   * [Azure CLI](how-to-register-device-cli.md)
-   * [Visual Studio Code](how-to-register-device-vscode.md)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. PowerShell を管理者として実行します。
 
@@ -92,7 +92,7 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
-IoT Edge サービスの状態を確認します。 実行中として一覧表示されるはずです。  
+IoT Edge サービスの状態を確認します。 
 
 ```powershell
 Get-Service iotedge
@@ -104,8 +104,13 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。 
+最も一般的な構成およびネットワーク エラーの自動チェックを実行します。 
 
+```powershell
+iotedge check
+```
+
+実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。 
 
 ```powershell
 iotedge list

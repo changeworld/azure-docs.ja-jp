@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 30530f445941747c659f584d279261148b08825e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 15e4fc3ce412807908c75fe25acecac0fe86d261
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240800"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72262806"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Azure Cosmos DB の一般的なユース ケースを教えてください。
 
-Azure Cosmos DB は、新しい Web、モバイル、ゲーム、IoT の各アプリケーションに適しています。これらにおいては、パフォーマンス、ミリ秒レベルの高速応答時間、スキーマフリー データに対してクエリを実行できることが重要になります。 Azure Cosmos DB は迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。 ユーザーが生成したコンテンツとデータを管理するアプリケーションは、[Azure Cosmos DB の一般的なユース ケース](use-cases.md)です。
+Azure Cosmos DB は、自動スケール、予測可能なパフォーマンス、ミリ秒レベルの高速応答時間、スキーマフリー データに対してクエリを実行できることが重要である、新しい Web、モバイル、ゲーム、IoT の各アプリケーションに適しています。 Azure Cosmos DB は迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。 ユーザーが生成したコンテンツとデータを管理するアプリケーションは、[Azure Cosmos DB の一般的なユース ケース](use-cases.md)です。
 
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Azure Cosmos DB では、予測可能なパフォーマンスをどのようにして実現していますか?
 
@@ -28,7 +28,7 @@ Azure Cosmos DB は、新しい Web、モバイル、ゲーム、IoT の各ア�
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB は、キー/値、多桁式、ドキュメント、グラフなどのさまざまなデータ モデルをどのようにサポートしていますか?
 
-キー/値 (テーブル)、多桁式、ドキュメント、およびグラフ データ モデルは、Azure Cosmos DB のベースが ARS (アトム、レコード、およびシーケンス) 設計であるため、すべてネイティブにサポートされています。 アトム、レコード、およびシーケンスは、さまざまなデータ モデルに容易にマップしたり投影したりできます。 モデルのサブセット用の API は今すぐ使用でき (SQL、MongoDB、Table、Gremlin)、追加のデータ モデルに固有のその他の API は将来使用可能になります。
+キー/値 (テーブル)、多桁式、ドキュメント、およびグラフ データ モデルは、Azure Cosmos DB のベースである ARS (アトム、レコード、およびシーケンス) 設計のため、すべてネイティブにサポートされています。 アトム、レコード、およびシーケンスは、さまざまなデータ モデルに容易にマップしたり投影したりできます。 モデルのサブセット用の API は今すぐ使用でき (SQL、MongoDB、Table、Gremlin)、追加のデータ モデルに固有のその他の API は将来使用可能になります。
 
 Azure Cosmos DB は、開発者にスキーマやセカンダリ インデックスを要求することなく、取り込んだすべてのデータを自動的にインデックス作成できるスキーマ独立型インデックス作成エンジンを備えています。 このエンジンは、インデックスおよびクエリ処理サブシステムから記憶域のレイアウトを分離する一連の論理インデックス レイアウト (転置、多桁式、ツリー) に依存しています。 さらに Cosmos DB は、一連のワイヤ プロトコルと API を拡張可能な方法でサポートし、それらをコア データ モデル (1) と論理インデックス レイアウト (2) に効率的に変換することによって複数のデータ モデルをネイティブにサポートできるようにする独自の能力も備えています。
 
@@ -64,7 +64,7 @@ Azure Cosmos DB でコンテナーがサポートできるスループットの�
 
 Azure を初めてお使いの場合は、[Azure の無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。このアカウントには、Azure のすべてのサービスを試すための試用期間 (30 日) とクレジットが与えられます。 Visual Studio サブスクリプションを持っている場合は、[無料の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を利用して、すべての Azure サービスを使うこともできます。
 
-また、[Azure Cosmos DB Emulator](local-emulator.md) を使用すると、Azure サブスクリプションを作成しなくても、ローカルでのアプリケーションの開発とテストを無料で行うことができます。 Azure Cosmos DB Emulator でのアプリケーションの動作にご満足いただけたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
+また、[Azure Cosmos DB Emulator](local-emulator.md) を使用すると、Azure サブスクリプションを作成しなくても、ローカルでのアプリケーションの開発とテストを無料で行うことができます。 Azure Cosmos DB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Azure Cosmos DB に関するその他の支援を得るにはどうすればよいですか?
 
@@ -91,7 +91,7 @@ Try Azure Cosmos DB サブスクリプションには、次の条件が適用さ
 * MongoDB アカウントのサブスクリプションあたり最大 3 つの[プロビジョニング スループットのコレクション](./set-throughput.md#set-throughput-on-a-container)。
 * サブスクリプションあたり 1 つの[プロビジョニング スループットのデータベース](./set-throughput.md#set-throughput-on-a-database)。 プロビジョニング スループットのデータベースには、任意の数のコンテナーを含めることができます。
 * 10 GB のストレージ容量。
-* グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアの各 [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です
+* グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です
 * コンテナー レベルでプロビジョニングされている場合、最大 5 K RU/s のスループット。
 * データベース レベルでプロビジョニングされている場合、最大 20 K RU/s のスループット。
 * サブスクリプションの有効期限は 30 日後に切れます。これは合計で最大 31 日まで延長できます。
@@ -125,13 +125,17 @@ Azure Cosmos DB は、「[Azure リージョン](https://azure.microsoft.com/reg
 
 はい。Azure CosmosDB では、時系列分析がサポートされています。時系列パターンのサンプルについては、[こちら](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns)をご覧ください。 このサンプルでは、変更フィードを利用し、時系列データを集計したビューを構築する方法をご確認いただけます。 Spark Streaming やその他のストリーム データ プロセッサを使用することでこの手法を拡張できます。
 
+## <a name="what-are-the-azure-cosmos-db-service-quotas-and-throughput-limits"></a>Azure Cosmos DB にはどのようなサービス クォータとスループット制限がありますか?
+
+詳細については、Azure Cosmos DB の[サービス クォータ](concepts-limits.md)と[コンテナーおよびデータベースごとのスループット制限](set-throughput.md#comparison-of-models)に関する記事を参照してください。
+
 ## <a name="sql-api"></a>SQL API
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>SQL API に対する開発を開始するにはどうすればよいですか?
 
 まず、Azure サブスクリプションにサインアップする必要があります。 Azure サブスクリプションにサインアップしたら、SQL API コンテナーを Azure サブスクリプションに追加できます。 Azure Cosmos DB アカウントを追加する手順については、「[Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)」を参照してください。
 
-.NET、Python、Node.js、JavaScript、Java については、[SDK](sql-api-sdk-dotnet.md) が利用可能です。 開発者は、[RESTful HTTP API](/rest/api/cosmos-db/) を使用して、さまざまなプラットフォームや言語で Azure Cosmos DB リソースを操作することもできます。
+[SDK](sql-api-sdk-dotnet.md) が利用可能です。 開発者は、[RESTful HTTP API](/rest/api/cosmos-db/) を使用して、さまざまなプラットフォームや言語で Azure Cosmos DB リソースを操作することもできます。
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>開発作業を速やかに開始するために、既製のサンプルを利用できますか?
 
@@ -180,7 +184,7 @@ SQL API は、HTTP エンティティ タグ (ETag) によるオプティミス�
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>どのようにして SQL API のトランザクションを実行しますか?
 
-SQL API は、JavaScript のストアド プロシージャとトリガーによる、統合された言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コンテナーの場合は、コンテナーが実行対象となります。 コンテナーがパーティション分割されている場合は、コンテナー内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功した場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[Azure Cosmos DB のサーバー側プログラミング](stored-procedures-triggers-udfs.md)」を参照してください。
+SQL API は、JavaScript のストアド プロシージャとトリガーによる、統合された言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コンテナーの場合は、コンテナーが実行対象となります。 コンテナーがパーティション分割されている場合は、コンテナー内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[Azure Cosmos DB のサーバー側プログラミング](stored-procedures-triggers-udfs.md)」を参照してください。
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>ドキュメントを Cosmos DB に一括挿入するにはどうすればよいですか?
 
@@ -224,7 +228,7 @@ Azure Cosmos DB では、厳密なセキュリティ要件と基準が適用さ�
 
 Azure Cosmos DB の MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、次のような独自のエラー コードがあります。
 
-| エラー               | コード  | 説明  | 解決策  |
+| Error               | コード  | 説明  | 解決策  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用された要求ユニットの合計数が、コンテナーのプロビジョニング済みの要求ユニット レートを超えたために調整されました。 | Azure Portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングするか、再試行することを検討してください。 |
 | ExceededMemoryLimit | 16501 | マルチテナント サービスとしての操作が、クライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 <br><br>例: <em>&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name:"Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
@@ -311,7 +315,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>既存の Azure Table Storage SDK を使っている顧客に関する変更はありますか?
 
-ありません。 既存の Azure Table Storage SDK を使用する既存または新規のお客様を対象とする変更はありません。
+なし。 既存の Azure Table Storage SDK を使用する既存または新規のお客様を対象とする変更はありません。
 
 ### <a name="how-do-i-view-table-data-thats-stored-in-azure-cosmos-db-for-use-with-the-table-api"></a>Table API で使うために、Azure Cosmos DB に格納されているテーブル データを表示するにはどうすればよいですか?
 
@@ -353,7 +357,7 @@ Table API の **[メトリック]** ウィンドウを使って、要求とス�
 
 ### <a name="can-i-use-the-table-api-sdk-locally-with-the-emulator"></a>エミュレーターで Table API SDK をローカルに使うことができますか?
 
-現時点ではできません。
+現時点ではありません。
 
 ### <a name="can-my-existing-application-work-with-the-table-api"></a>既存のアプリケーションを Table API で動作させることはできますか?
 
@@ -472,7 +476,7 @@ Table API は Azure Table Storage と同じクエリ機能を提供します。 
 
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Azure Table Storage サービスの既存の顧客を対象とする価格の変更はありますか?
 
-ありません。 Azure Table Storage の既存のお客様を対象とする価格の変更はありません。
+なし。 Azure Table Storage の既存のお客様を対象とする価格の変更はありません。
 
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Table API の料金はどのように計算されますか?
 
@@ -490,7 +494,7 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 また、スループットの仕様により、スループットを弾力的に変更して、アプリケーションの季節性によるメリットを享受し、スループットのニーズを満たして、コストを削減できます。
 
-### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-havent-performed-a-single-transaction-or-stored-anything-can-you-explain"></a>データの保存にしか料金を支払っておらず、クエリを実行することはほとんどないため、Azure Table Storage は安価でした。 Azure Cosmos DB Table API では、トランザクションを 1 つも実行していない場合や何も保存していない場合でも課金されているようです。 説明してください。
+### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-havent-performed-a-single-transaction-or-stored-anything-can-you-explain"></a>データの保存にしか料金を支払っておらず、クエリを実行することはほとんどないため、Azure Table Storage は安価でした。 Azure Cosmos DB Table API では、トランザクションを 1 つも実行していない場合や何も保存していない場合でも課金されているようです。 説明できますか。
 
 Azure Cosmos DB は、可用性、待機時間、スループットが保証された、グローバル分散型の SLA ベースのシステムとして設計されています。 他のシステムのスループットとは異なり、Azure Cosmos DB でスループットを予約すると、そのスループットが保証されます。 Azure Cosmos DB には、セカンダリ インデックスやグローバル分散など、お客様から要望があった追加機能が用意されています。
 
@@ -504,7 +508,7 @@ Azure Cosmos DB は、待機時間、スループット、可用性、整合性�
 
 ### <a name="what-are-the-error-messages-for-the-table-api"></a>Table API のエラー メッセージはどのようなものですか?
 
-Azure Table Storage と Azure Cosmos DB Table API は同じ SDK を使っているので、ほとんどのエラーは同じものになります。
+Azure Table Storage と Azure Cosmos DB Table API は同じ SDK を使っているので、ほとんどのエラーは同じです。
 
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Table API で多数のテーブルを次々に作成しようとすると調整が行われるのはなぜですか?
 
@@ -649,7 +653,7 @@ Azure Cosmos DB は、テーブルの作成元 (ポータルまたは CQL) に�
 Azure Cosmos DB では、操作に上限を設定してパフォーマンスと待機時間を保証します。 この保証は、エンジンがテナントの操作にガバナンスを適用できる場合に可能になります。 スループットを設定すると、プラットフォームでこの容量が予約され、操作が正常に完了することが保証されるので、保証されたスループットと待機時間が確保されます。
 アプリケーションの季節性を利用し、コストを削減するためにスループットを柔軟に変更することができます。
 
-スループットの概念については、[「Azure Cosmos DB の要求ユニット」](request-units.md)の記事を参照してください。 テーブルのスループットは、基になる物理パーティション全体で均等に分散されます。
+スループットの概念については、「[Azure Cosmos DB の要求ユニット](request-units.md)」を参照してください。 テーブルのスループットは、基になる物理パーティション全体で均等に分散されます。
 
 ### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>CQL で作成したときのテーブルの既定の RU/秒を教えてください。 変更する必要がある場合はどうなりますか?
 
@@ -687,7 +691,7 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 ### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>パーティションが満杯であることを示す "クォータが上限に達した" 通知が表示された場合はどうなりますか?
 
-Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 この無制限のストレージは、主要概念としてパーティション分割を使用する、データの水平スケールアウトに基づいています。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。
+Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 この無制限のストレージは、主要概念としてパーティション分割を使用する、データの水平スケールアウトに基づいてします。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。
 
 論理パーティションあたりのエンティティ数または項目数に対する 10 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーに大量の (10&nbsp;GB を超える) データ が割り当てられている場合にのみ発生する可能性があります。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択し、データの分散を改善することをお勧めします。
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 80e1052cb7acbdcec2dcb94f1667cae3c554d18e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 54c9d79c62052daeee76de5dffb1099dc7d75180
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932932"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467726"
 ---
 # <a name="create-entities-without-utterances"></a>発話なしでエンティティを作成する
 
@@ -25,6 +25,8 @@ ms.locfileid: "68932932"
 LUIS アプリ内のエンティティは、 **[エンティティ]** ページの **[エンティティの一覧]** から追加、編集、削除できます。 LUIS で提供される主要なエンティティには、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)と、独自の[カスタム エンティティ](luis-concept-entity-types.md#types-of-entities)の 2 種類があります。
 
 機械学習済みエンティティが作成されたら、それが含まれているすべての意図のすべての発話例でそのエンティティをマークする必要があります。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="add-prebuilt-entity"></a>
 

@@ -1,24 +1,19 @@
 ---
 title: スマート検出 - パフォーマンスの異常 |Microsoft Docs
 description: Application Insights は、アプリのテレメトリの高度な分析を実行し、潜在的なパフォーマンスの問題について警告します。 この機能には設定は不要です。
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867708"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820573"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -69,7 +64,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 ## <a name="faq"></a>FAQ
 
 * *私のデータは Microsoft のスタッフに見られますか。*
-  * いいえ。 サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](../../azure-monitor/app/data-retention-privacy.md)です。
+  * No. サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](../../azure-monitor/app/data-retention-privacy.md)です。
 * *Application Insights によって収集されたすべてのデータが分析されるのですか。*
   * 現時点ではすべてではありません。 現在は、要求の応答時間、依存関係の応答時間、およびページの読み込み時間が分析されます。 その他のメトリックの分析も行われる予定です。
 
@@ -85,7 +80,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。
 * *これにより、[メトリック アラート](../../azure-monitor/app/alerts.md)が置き換えられるのですか。*
-  * いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
+  * No.  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
 
 
 * *通知に応答して何も行わない場合は、リマインダーが受信されますか*

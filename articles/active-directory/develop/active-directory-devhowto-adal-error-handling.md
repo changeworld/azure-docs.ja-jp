@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0c1bbbdf9b42dfe2b507f533ad1806e06991f33
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835420"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374201"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -212,9 +212,9 @@ AcquireToken エラーを処理する場合、エラー処理は、プラット�
 次のガイダンスは、以下を "*除く*" すべてのサイレントでない AcquireToken(…) ADAL メソッドと組み合わせたエラー処理の例を示しています。 
 
 - AcquireTokenAsync(…, IClientAssertionCertification, …)
-- AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
-- AcquireTokenAsync(…,UserAssertion,…)   
+- AcquireTokenAsync(…, ClientCredential, …)
+- AcquireTokenAsync(…, ClientAssertion, …)
+- AcquireTokenAsync(…, UserAssertion,…)   
 
 コードは次のように実装されます。
 
@@ -482,8 +482,8 @@ catch (AdalException e) {
 
 ## <a name="error-and-logging-reference"></a>エラーとログ記録のリファレンス
 
-### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>組織を特定できる情報 (OII) と個人を特定できる情報 (PII) のログ記録
-既定では、ADAL ログには PII や OII は取得または記録されません。 アプリ開発者はライブラリの Logger クラスの setter から、この設定をオンにできます。 PII または OII の設定をオンにすると、アプリは、規制の要件に準拠して、高度な機密データを安全に処理する責任を負います。
+### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>組織を特定できる情報と個人を特定できる情報のログ記録 
+既定では、ADAL ログ記録では個人を特定できる情報や組織を特定できる情報のキャプチャまたはログ記録は行われません。 アプリ開発者はライブラリの Logger クラスの setter から、この設定をオンにできます。 個人を特定できる情報や組織を特定できる情報をログに記録することにより、機密性の高いデータを安全に処理し、規制上の要件に準拠することがアプリに任されます。
 
 ### <a name="net"></a>.NET
 
@@ -590,7 +590,7 @@ Microsoft のコンテンツ改善のため、以下のコメント セクショ
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
-[AAD-Auth-Scenarios]:authentication-scenarios.md
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AZURE-portal]: https://portal.azure.com

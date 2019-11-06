@@ -1,20 +1,24 @@
 ---
-title: Azure のロールベースのアクセス制御 (RBAC) を使用してサポート要求を作成および管理するアクセス権を制御する | Microsoft Docs
+title: Azure でサポート リクエストを作成するためのアクセスの制御
 description: Azure のロールベースのアクセス制御 (RBAC) を使用してサポート要求を作成および管理するアクセス権を制御する
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 328f4928aff6a892849ce3e08fe794578b5e03a4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967802"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299260"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure のロールベースのアクセス制御 (RBAC) を使用してサポート要求を作成および管理するアクセス権を制御する
+
+> [!IMPORTANT]
+> Azure でのサポート リクエストに対するアクセス権を制御するためのこの手動のアプローチは、組み込みのロールに置き換えられました。 詳細については、[サポート リクエスト共同作成者](../role-based-access-control/built-in-roles.md#support-request-contributor)に関する記事を参照してください。 
 
 [ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を使用すると、Azure のアクセス権をきめ細かく管理できます。
 Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要求を作成するときは、Azure の RBAC モデルを使用して、サポート要求を作成および管理できるユーザーを定義します。

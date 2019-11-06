@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0c86f9ad134e9b640d33d1a391c5387af9f9afd
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236363"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965658"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -48,7 +48,7 @@ Azure リソース マネージャーで、 [パブリック IP](virtual-network
 
 ### <a name="ip-address-version"></a>IP アドレスのバージョン
 
-パブリック IP アドレスは、IPv4 または IPv6 アドレスを使用して作成されます。 パブリックの IPv6 アドレスは、インターネットに接続するロード バランサーにのみ割り当てることができます。
+パブリック IP アドレスは、IPv4 または IPv6 アドレスを使用して作成されます。 
 
 ### <a name="sku"></a>SKU
 
@@ -148,10 +148,6 @@ Azure Resource Manager デプロイ モデルでは、プライベート IP ア�
 * 仮想マシン ネットワーク インターフェイス
 * 内部ロード バランサー (ILB)
 * アプリケーション ゲートウェイ
-
-### <a name="ip-address-version"></a>IP アドレスのバージョン
-
-プライベート IP アドレスは、IPv4 または IPv6 アドレスで作成されます。 プライベート IPv6 アドレスは、動的な割り当て方法を使用してのみ割り当てることができます。 仮想ネットワーク上のプライベート IPv6 アドレス間で通信することはできません。 インターネットに接続するロード バランサーを経由すると、インターネットからプライベート IPv6 アドレスへ受信通信できます。 詳細については、[IPv6 を使用してインターネットに接続するロード バランサーを作成する](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。
 
 ### <a name="allocation-method"></a>割り当て方法
 

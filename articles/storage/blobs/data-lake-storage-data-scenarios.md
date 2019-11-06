@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9eb10260573978355a3b6996a6f06c0c612abe4c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350033"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300337"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -26,6 +26,8 @@ ms.locfileid: "71350033"
 > * データの視覚化
 
 最初に、ストレージ アカウントとコンテナーを作成します。 次に、データへのアクセス権を付与します。 この記事の最初の数セクションは、これらのタスクを実行するのに役立ちます。 残りのセクションでは、各処理フェーズのオプションとツールに注目します。
+
+Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な一覧については、「[Integrate Azure Data Lake Storage with Azure services](data-lake-store-integrate-with-azure-services.md)」 (Azure Data Lake Storage と Azure サービスを統合する) を参照してください
 
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2 アカウントを作成する
 

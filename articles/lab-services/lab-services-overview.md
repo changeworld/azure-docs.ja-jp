@@ -13,24 +13,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3c23cc4fc7647cffa98cff9310498f683fda6328
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 115320a8b4ee7afc6e420dcfa96612b91ea6d1a0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275720"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790769"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services の概要
-Azure Lab Services では、チーム用の環境 (例: 開発環境、テスト環境、教室ラボ環境) をクラウドに短時間で設定することができます。 ラボの所有者は、ラボを作成し、Windows または Linux の仮想マシンをプロビジョニングし、必要なソフトウェアとツールをインストールして、ラボのユーザーがそれらを利用できるようにします。 ラボのユーザーは、ラボ内の仮想マシン (VM) に接続して、日常の作業、短期的なプロジェクト、教室での演習などに利用します。 ユーザーがラボ内のリソースの利用を始めたら、ラボの管理者は、複数のラボについてコストと使用状況を分析し、全体的なポリシーを設定して、組織やチームのコストを最適化できます。
+Azure には、クラウドにラボ環境を設定することができるサービスが 2 つあります。 
 
-> [!IMPORTANT]
-> **Azure DevTest Labs** は、新しい種類のラボ (Azure Lab Services) で拡張されています。
->  
-> Azure Lab Services を使うと、クラスルーム ラボのようなマネージド ラボの種類を作成できます。 VM の作成から、エラーの処理やインフラストラクチャのスケーリングまで、マネージド ラボの種類用のインフラストラクチャの管理はすべて、サービス自体によって行われます。 現時点では、[DevTest Labs](https://azure.microsoft.com/services/devtest-lab/) と [Azure Lab Services](https://azure.microsoft.com/services/lab-services/) は引き続き Azure Portal での個別のサービスです。 
+- **Azure DevTest Labs** - このサービスでは、チーム用の環境 (クラウドでの開発環境、テスト環境など) を短時間で設定することができます。 ラボの所有者は、ラボを作成し、Windows または Linux の仮想マシンをプロビジョニングし、必要なソフトウェアとツールをインストールして、ラボのユーザーがそれらを利用できるようにします。 ラボのユーザーは、ラボ内の仮想マシン (VM) に接続して、日常の作業、短期的なプロジェクトなどに利用します。 ユーザーがラボ内のリソースの利用を始めたら、ラボの管理者は、複数のラボについてコストと使用状況を分析し、全体的なポリシーを設定して、組織やチームのコストを最適化できます。
+- **Azure Lab Services**  - このサービスを使うと、マネージド ラボの種類を作成できます。 現在、Azure Lab Services でサポートされるマネージド ラボの種類はクラスルーム ラボだけです。 VM の作成から、エラーの処理やインフラストラクチャのスケーリングまで、マネージド ラボの種類用のインフラストラクチャの管理はすべて、サービス自体によって行われます。 IT 管理者が Azure Lab Services にラボ アカウントを作成した後、インストラクターはすぐに自分が担当するクラスのラボを設定し、クラスでの演習に必要な VM の数と種類を指定して、そのクラスにユーザーを追加できます。 ユーザーは、クラスへの登録後、VM にアクセスしてクラスの演習を行うことができます。  
 
 ## <a name="key-capabilities"></a>主な機能
 
-Azure Lab Services がサポートする主要な機能は次のとおりです。
+これらのサービス (Azure DevTest Labs と Azure Lab Services) がサポートする主要な機能は次のとおりです。
 
 - **高速かつ柔軟なラボのセットアップ**。 Azure Lab Services を使うと、ラボ所有者はニーズに合ったラボをすばやく設定できます。 サービスでは、マネージド ラボの種類で Azure インフラストラクチャに関するすべての作業を行うオプション、またはラボ所有者が自分のサブスクリプション内でインフラストラクチャを自己管理およびカスタマイズできるようにするオプションが提供されます。 サービスによって提供されるラボ用インフラストラクチャの組み込みのスケーリングと回復性は、サービスが自動的に管理します。
 - **簡素化されたラボ ユーザー用のエクスペリエンス**。 クラスルーム ラボなどのマネージド ラボの種類では、ラボ ユーザーは登録コードでラボに登録し、いつでもラボにアクセスしてラボのリソースを使用できます。 DevTest Labs で作成されるラボでは、ラボの所有者が、ラボ ユーザーに対し、仮想マシンの作成とアクセス、データ ディスクの管理と再利用、および再利用可能なシークレットの設定を行うためのアクセス許可を付与できます。  
@@ -43,7 +41,7 @@ Azure Lab Services がサポートする主要な機能は次のとおりです�
 
 ## <a name="scenarios"></a>シナリオ
 
-Azure Lab Services がサポートするシナリオの一部を次に示します。
+Azure DevTest Labs と Azure Lab Services がサポートするシナリオの一部を次に示します。
 
 ### <a name="set-up-a-resizable-computer-lab-in-the-cloud-for-your-classroom"></a>クラスルーム用のクラウドにサイズ変更可能なコンピューター ラボを設定する  
 

@@ -1,13 +1,13 @@
 ---
-title: 言語アナライザーを追加する - Azure Search
-description: Azure Search での英語以外のクエリおよびインデックスのための多言語字句テキスト解析について説明します。
-ms.date: 02/14/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: 言語アナライザーをインデックスの文字列フィールドに追加する
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search での英語以外のクエリおよびインデックスのための多言語字句テキスト解析について説明します。
+manager: nitinme
 author: Yahnoosh
 ms.author: jlembicz
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e54fa449e0ed7f3208d9924b69946c6598a00444
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648808"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790135"
 ---
-# <a name="add-language-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスに言語アナライザーを追加する
+# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>Azure Cognitive Search のインデックスに言語アナライザーを追加する
 
 "*言語アナライザー*" は、[テキスト アナライザー](search-analyzers.md)の固有の種類であり、対象言語の言語規則を使用して字句解析を実行します。 すべての検索可能フィールドには、**analyzer** プロパティがあります。 インデックスに翻訳された文字列が含まれる場合 (英語と中国語のテキストが別のフィールドになっている場合など)、各フィールドで言語アナライザーを指定して、これらのアナライザーの豊富な言語機能にアクセスできます。  
 
-Azure Search では、Lucene によって提供される 35 個のアナライザーと、Office および Bing で使用されるマイクロソフト独自の自然言語処理技術によって提供される 50 個のアナライザーがサポートされています。
+Azure Cognitive Search では、Lucene によって提供される 35 個のアナライザーと、Office および Bing で使用されるマイクロソフト独自の自然言語処理技術によって提供される 50 個のアナライザーがサポートされています。
 
 ## <a name="comparing-analyzers"></a>アナライザーの比較
 
@@ -52,7 +52,7 @@ Azure Search では、Lucene によって提供される 35 個のアナライ�
 
 **searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)」で確認できます。 
 
-インデックス プロパティについて詳しくは、「[Create Index &#40;Azure Search Service REST API&#41; (インデックスの作成 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/create-index)」をご覧ください。 Azure Search での解析について詳しくは、[Azure Search でのアナライザー](https://docs.microsoft.com/azure/search/search-analyzers)に関する記事をご覧ください。
+インデックス プロパティについて詳しくは、「[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)」をご覧ください。 Azure Cognitive Search での解析について詳しくは、[Azure Cognitive Search でのアナライザー](https://docs.microsoft.com/azure/search/search-analyzers)に関する記事をご覧ください。
 
 <a name="language-analyzer-list"></a>
 
@@ -121,7 +121,8 @@ Azure Search では、Lucene によって提供される 35 個のアナライ�
  名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
 
 ## <a name="see-also"></a>関連項目  
- [インデックスを作成する &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
- [AnalyzerName クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
- [ビデオ: Azure Search MVA プレゼンテーションのモジュール 7](https://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps/07)。  
+
++ [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+
++ [AnalyzerName クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
 

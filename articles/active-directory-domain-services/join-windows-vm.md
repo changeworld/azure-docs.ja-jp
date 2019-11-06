@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 00e717202116cf9a48c2c2d889374d451b8e4d45
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172041"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754367"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>チュートリアル:Windows Server 仮想マシンのマネージド ドメインへの参加
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 ドメインに参加させる VM が既にある場合は、「[VM を Azure AD DS マネージド ドメインに参加させる](#join-the-vm-to-the-azure-ad-ds-managed-domain)」に進んでください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 このチュートリアルでは、Azure portal を使用して、Azure AD DS マネージド ドメインに参加させる Windows Server VM を作成します。 最初に、[Azure portal](https://portal.azure.com) にサインインします。
 
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     |----------------------|-------------------|
     | Resource group       | リソース グループを選択または作成します (*myResourceGroup* など) |
     | 仮想マシン名 | VM の名前を入力します (*myVM* など) |
-    | Region               | VM を作成するリージョンを選択します ("*米国東部*" など) |
+    | リージョン               | VM を作成するリージョンを選択します ("*米国東部*" など) |
     | ユーザー名             | VM 上に作成するローカル管理者アカウントのユーザー名を入力します (*azureuser* など) |
     | パスワード             | VM 上に作成するローカル管理者の安全なパスワードを入力し、確認します。 ドメイン ユーザー アカウントの資格情報は指定しないでください。 |
 

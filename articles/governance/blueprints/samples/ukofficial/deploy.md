@@ -1,18 +1,18 @@
 ---
-title: サンプル - UK OFFICIAL および UK NHS のブループリント - デプロイ手順
-description: UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ手順。
+title: UK OFFICIAL および UK NHS のブループリント サンプル - デプロイ手順
+description: ブループリント アーティファクトのパラメーターの詳細を含む、UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ手順。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: e2109c5b524c0b38886327bf4c1ea7087380b40f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978240"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162938"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ
 

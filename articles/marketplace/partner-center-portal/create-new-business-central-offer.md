@@ -6,13 +6,13 @@ manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/26/2019
-ms.openlocfilehash: 8c57fd2a2c9c5c059480f3d6ad48454724e5cc61
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.date: 10/04/2019
+ms.openlocfilehash: 16b75a98a5a42c9acf6d9a68330cbf8e005f7179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327636"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819805"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>新しい Dynamics 365 Business Central オファーの作成
 
@@ -21,6 +21,9 @@ ms.locfileid: "71327636"
 Dynamics 365 Business Central オファーの作成を開始するには、確実に、最初に[パートナー センター アカウントを作成](./create-account.md)し、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)を開いてください。
 
 ![パートナー センターの商業マーケットプレース ダッシュボード](./media/new-offer-overview.png)
+
+>[!Note]
+> オファーが発行されると、パートナー センターで行われたオファーへの編集は、再発行後はシステム内およびネットショップでのみ更新されます。 変更を行った後に、発行のために必ずオファーを送信してください。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
@@ -82,7 +85,7 @@ Dynamics 365 Business Central オファーの作成を開始するには、確�
 
 ## <a name="connect-lead-management"></a>リード管理の接続
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
 詳しくは、[リード管理の概要](./commercial-marketplace-get-customer-leads.md)に関する記事をご覧ください。
 
@@ -98,7 +101,7 @@ Dynamics 365 Business Central オファーの作成を開始するには、確�
 
 ### <a name="industry"></a>業界
 
-必要に応じて最大 2 つの業界を選択して、マーケットプレースでオファーを分類できます。 オファーが業界に固有でない場合は、このセクションは空白のままにします。 選択した業界にオファーがどのように対応しているかをオファーの説明に含めるようにします。 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>アプリのバージョン
 

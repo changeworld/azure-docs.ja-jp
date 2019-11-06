@@ -1,5 +1,6 @@
 ---
-title: キーチェーンの構成 | Microsoft ID プラットフォーム
+title: キーチェーンの構成
+titleSuffix: Microsoft identity platform
 description: キーチェーンを構成して、アプリでキーチェーン内のトークンをキャッシュできるようにする方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,16 +18,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e85fc5e6e907e32c0ad67af339c48cf84ef4764
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269381"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803809"
 ---
 # <a name="configure-keychain"></a>キーチェーンの構成
 
-[iOS および macOS 用の Microsoft Authentication Library](msal-overview.md) (MSAL) でユーザーのサインインまたはトークンの更新が行われるときに、キーチェーン内のトークンのキャッシュが試みられます。 MSAL ではキーチェーン内のトークンをキャッシュすることにより、同じ Apple の開発者によって配布された複数のアプリ間のサイレント シングル サインオン (SSO) の提供が可能となります。 SSO は、キーチェーン アクセス グループ機能を介して実現されます ([Apple のドキュメント](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)を参照してください)。
+[iOS および macOS 用の Microsoft Authentication Library](msal-overview.md) (MSAL) でユーザーのサインインまたはトークンの更新が行われるときに、キーチェーン内のトークンのキャッシュが試みられます。 キーチェーン内のトークンをキャッシュすることにより、MSAL は、同じ Apple 開発者によって配布された複数のアプリ間でサイレント シングル サインオン (SSO) を提供できます。 SSO は、キーチェーン アクセス グループ機能を介して実現されます。 詳細については、Apple の[キーチェーン項目に関する資料](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)を参照してください。
 
 この記事では、MSAL がキャッシュされたトークンを iOS と macOS のキーチェーンに書き込むことができるように、アプリのエンタイトルメントを構成する方法について説明します。
 

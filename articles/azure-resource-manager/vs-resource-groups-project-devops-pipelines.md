@@ -4,14 +4,14 @@ description: Visual Studio で Azure リソース グループのデプロイ �
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: ae896fa0820fbd25ed3f2d29c89fbcd56e7fd6f5
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982458"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597509"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Azure Pipelines を使用した Resource Manager テンプレートの統合
 
@@ -71,7 +71,7 @@ steps:
   inputs:
     azureSubscription: 'demo-deploy-sp'
     ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' 
+    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
     azurePowerShellVersion: LatestVersion
 ```
 
@@ -139,7 +139,7 @@ ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocati
 
 ## <a name="copy-and-deploy-tasks"></a>コピーとデプロイのタスク
 
-このセクションでは、成果物のステージとテンプレートのデプロイを行う 2 つのタスクを使用して、継続的デプロイを構成する方法を示します。 
+このセクションでは、成果物のステージとテンプレートのデプロイを行う 2 つのタスクを使用して、継続的デプロイを構成する方法を示します。
 
 次の YAML は、[Azure ファイル コピー タスク](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)を示しています。
 
@@ -176,33 +176,43 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-次の YAML は、[Azure リソース グループのデプロイ タスク](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops)を示しています。
+次の YAML は、[Azure Resource Manager テンプレートのデプロイ タスク](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)を示しています。
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
   displayName: 'Deploy template'
   inputs:
-    azureSubscription: 'demo-deploy-sp'
+    deploymentScope: 'Resource Group'
+    ConnectedServiceName: 'demo-deploy-sp'
+    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'centralus'
+    location: 'Central US'
     templateLocation: 'URL of the file'
     csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
     csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
     overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    deploymentMode: 'Incremental'
 ```
 
-お使いの環境に合わせて、このタスクの複数の部分を変更します。 `azureSubscription` には、作成したサービス接続の名前を指定します。
+お使いの環境に合わせて、このタスクの複数の部分を変更します。
 
-```yaml
-azureSubscription: '<your-connection-name>'
-```
+- `deploymentScope`:デプロイのスコープを、`Management Group`、`Subscription`、および `Resource Group` のオプションから選択します。 このチュートリアルでは、 **[リソース グループ]** を使用します。 スコープの詳細については、「[デプロイのスコープ](./resource-group-template-deploy-rest.md#deployment-scope)」を参照してください。
 
-`resourceGroupName` と `location` には、デプロイ先のリソース グループの名前と場所を指定します。 リソース グループがない場合は、タスクによって作成されます。
+- `ConnectedServiceName`:作成したサービス接続の名前を指定します。
 
-```yaml
-resourceGroupName: '<resource-group-name>'
-location: '<location>'
-```
+    ```yaml
+    ConnectedServiceName: '<your-connection-name>'
+    ```
+
+- `subscriptionName`:ターゲット サブスクリプション ID を指定します。 このプロパティは、リソース グループのデプロイ スコープとサブスクリプションのデプロイ スコープにのみ適用されます。
+
+- `resourceGroupName` および `location`: デプロイ先となるリソース グループの名前と場所を指定します。 リソース グループがない場合は、タスクによって作成されます。
+
+    ```yaml
+    resourceGroupName: '<resource-group-name>'
+    location: '<location>'
+    ```
 
 デプロイ タスクは、`WebSite.json` という名前のテンプレートと WebSite.parameters.json という名前のパラメーター ファイルにリンクしています。 ご自分のテンプレートとパラメーター ファイルの名前を使用します。
 
@@ -226,16 +236,20 @@ location: '<location>'
        outputStorageUri: 'artifactsLocation'
        outputStorageContainerSasToken: 'artifactsLocationSasToken'
        sasTokenTimeOutInMinutes: '240'
-   - task: AzureResourceGroupDeployment@2
-     displayName: 'Deploy template'
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       resourceGroupName: demogroup
-       location: 'centralus'
-       templateLocation: 'URL of the file'
-       csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-       csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-       overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Deploy template'
+      inputs:
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: 'demo-deploy-sp'
+        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'demogroup'
+        location: 'Central US'
+        templateLocation: 'URL of the file'
+        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
+        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
+        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+        deploymentMode: 'Incremental'
    ```
 
 1. **[保存]** を選択します。

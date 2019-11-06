@@ -1,29 +1,25 @@
 ---
 title: Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法 (プレビュー) | Microsoft Docs
 description: パフォーマンスは、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、VM 用 Azure Monitor の機能です。 この記事では、さまざまなシナリオでこの機能を使用する方法について詳しく説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: c83a862a37dbf28c6933877bf4a0aecc4364e6c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/15/2019
+ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522084"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555180"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法 (プレビュー)
+
 VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行されているかを判定するのに役立ついくつかの主要業績評価指標 (KPI) を対象とする一連のパフォーマンス グラフが含まれています。 グラフには一定期間にわたるリソース使用率が表示されるので、ボトルネックまたは異常を識別することができます。あるいは、各マシンを一覧表示するパースペクティブに切り替えて、選択したメトリックに基づくリソース使用率を表示することもできます。 パフォーマンスを扱うときに考慮すべき要素は数多くありますが、Azure Monitor for VMs では、プロセッサ、メモリ、ネットワーク アダプター、およびディスクの使用率に関連するオペレーティング システムの主要業績評価指標を監視します。 パフォーマンスによって正常性の監視機能が補完されます。さらに、システム コンポーネントに障害がある可能性を示す問題を明らかにしたり、効率化のためのチューニングや最適化をサポートしたり、容量計画をサポートしたりするのにパフォーマンスは役立ちます。  
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure Monitor からのマルチ VM のパースペクティブ
+
 Azure Monitor のパフォーマンス機能では、ご利用のサブスクリプションまたはご利用の環境内のワークグループにまたがってデプロイされているすべての監視対象 VM に関するビューが提供されます。 Azure Monitor からアクセスするには、次の手順を行います。 
 
 1. Azure portal で、 **[モニター]** を選択します。 
@@ -34,7 +30,7 @@ Azure Monitor のパフォーマンス機能では、ご利用のサブスクリ
 
 **[Top N Charts]\(上位 N グラフ\)** タブ上では、Log Analytics ワークスペースが複数ある場合、ページの上部にある **[ワークスペース]** セレクターから、ソリューションで有効になっているワークスペースを選択します。 **グループ** セレクターでは、選択したワークスペースに関連するコンピューターのサブスクリプション、リソース グループ、[コンピューター グループ](../platform/computer-groups.md)、仮想マシン スケール セットが返されます。これらを使用して、このページや他のページのグラフに表示される結果に対し、さらにフィルターを適用することができます。 この選択が適用されるのは、パフォーマンス機能のみで、正常性やマップには引き継がれません。  
 
-既定では、過去 24 時間がグラフに表示されます。 **TimeRange** セレクターを使用すると、過去の時間範囲 (最大で 30 日) に対してクエリを実行して、過去のパフォーマンスがどのような経過をたどっているかを確認できます。   
+既定では、過去 24 時間がグラフに表示されます。 **TimeRange** セレクターを使用すると、過去の時間範囲 (最大で 30 日) に対してクエリを実行して、過去のパフォーマンスがどのような経過をたどっているかを確認できます。
 
 ページ上に表示される 5 つの容量使用率のグラフは次のとおりです。
 
@@ -66,7 +62,7 @@ Azure Monitor のパフォーマンス機能では、ご利用のサブスクリ
 * 送信バイト数の比率 - 既定では平均送信バイト数が示されます。 
 * 受信バイト数の比率 - 既定では平均受信バイト数が示されます。
 
-パーセンタイル セレクターで "**Avg**"、"**Min**"、"**Max**"、"**50th**"、"**90th**"、"**95th**" を選択して、時間範囲内でグラフの細分性を変更することもできます。   
+パーセンタイル セレクターで "**Avg**"、"**Min**"、"**Max**"、"**50th**"、"**90th**"、"**95th**" を選択して、時間範囲内でグラフの細分性を変更することもできます。
 
 リスト ビュー内の VM ごとにリソース使用率を表示し、使用率が最も高い傾向を示しているマシンを確認するには、 **[Top N List]\(上位 N のリスト\)** タブを選択します。 **[Top N List]\(上位 N のリスト\)** ページには、上位 20 のマシンが表示されます。これは、メトリック *[CPU 使用率 %]* の 95 パーセンタイルによって使用率の高い順に並べ替えられたものです。  **[さらに読み込む]** を選択すると、より多くのマシンを表示することができ、その結果は上位 500 のマシンを表示するように拡張されます。 
 
@@ -83,6 +79,7 @@ Azure Monitor のパフォーマンス機能では、ご利用のサブスクリ
 リストから仮想マシンを選択すると、ページの右側に **[プロパティ]** パネルが開き、そこから **[Performance detail]\(パフォーマンス詳細\)** を選択することができます。  **仮想マシンの詳細**ページが開き、その VM にスコープが指定されます。Azure VM から直接、"VM Insights パフォーマンス" にアクセスするときとエクスペリエンスは類似しています。  
 
 ## <a name="view-performance-directly-from-an-azure-vm"></a>Azure VM から直接、パフォーマンスを確認する
+
 仮想マシンから直接アクセスするには、次の手順に従います。
 
 1. Azure Portal で、 **[仮想マシン]** を選択します。 
@@ -107,6 +104,7 @@ Azure Monitor のパフォーマンス機能では、ご利用のサブスクリ
 ![VM から直接表示した VM Insights パフォーマンスビュー](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
 ## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットから直接パフォーマンスを確認する
+
 Azure 仮想マシン スケール セットから直接アクセスするには、次の手順を実行します。
 
 1. Azure portal 上で、 **[仮想マシン スケール セット]** を選択します。
@@ -122,6 +120,7 @@ Azure 仮想マシン スケール セットから直接アクセスするには
 >お使いのスケール セット用のインスタンス ビューから、特定のインスタンスの詳細なパフォーマンス ビューにアクセスすることもできます。 **[設定]** セクション下の **[インスタンス]** に移動して、 **[インサイト (プレビュー)]** を選択します。
 
 ## <a name="alerts"></a>アラート  
+
 Azure Monitor for VMs の構成要素として有効にされたパフォーマンス メトリックには、事前構成済みのアラート ルールが含まれていません。 Azure VM 上で検出されたパフォーマンスの問題 (高い CPU 使用率、使用可能なメモリ不足、ディスク領域不足など) に対応する[正常性アラート](vminsights-health.md#alerts) があります。ただし、これらの正常性アラートは、Azure Monitor for VMs に対して有効になっている VM にのみ適用されます。 
 
 しかし、Log Analytics ワークスペースに収集して格納する可能性があるのは、必要なパフォーマンス メトリックの一部だけです。 実際の監視戦略上、仮想マシンの容量や正常性を有効に評価するために、他のパフォーマンス メトリックを含んだ分析またはアラートが必要な場合、あるいは独自のアラート基準やロジックを柔軟に指定する必要がある場合は、Log Analytics で[それらのパフォーマンス カウンターのコレクション](../platform/data-sources-performance-counters.md)を構成し、[ログ アラート](../platform/alerts-log.md)を定義することができます。 Log Analytics では、他の種類のデータを使った複雑な分析を実行でき、また、傾向分析をサポートするために保持期間もより長くなります。これに対して、メトリックは軽量であり、ほぼリアルタイムのシナリオに対応することができます。 これらは [Azure 診断エージェント](../../virtual-machines/windows/monitor.md)によって収集されて、Azure Monitor のメトリック ストアに格納されるため、アラート作成に伴う待ち時間が短縮され、コストも低くなります。
@@ -129,4 +128,7 @@ Azure Monitor for VMs の構成要素として有効にされたパフォーマ�
 こうした追加メトリックの収集やアラート ルールを構成する作業に入る前に、[Azure Monitor を使用したメトリックとログの収集](../platform/data-platform.md)について概説したページを参照して、基本的な相違とその他の考慮事項について理解を深めましょう。  
 
 ## <a name="next-steps"></a>次の手順
-正常性機能を使用する方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関するページを参照してください。検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs マップの表示](vminsights-maps.md)に関するページを参照してください。 
+
+- Azure Monitor for VMs に含まれている [Workbooks ](vminsights-workbooks.md) を使用して、パフォーマンスとネットワークのメトリックをさらに分析する方法について説明します。  
+
+- 検出されたアプリケーションの依存関係の詳細については、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関するページを参照してください。

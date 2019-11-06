@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 10/16/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab5ba4fde7469854954ed19d2e643f2b8a23f34f
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 375fe839c31062474994d329379b066049272f55
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193261"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527047"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft ID プラットフォームと暗黙的な許可のフロー
 
@@ -129,20 +129,6 @@ error=access_denied
 | --- | --- |
 | `error` |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
-
-## <a name="validate-the-id_token"></a>id_token を検証する
-
-id_token を受信するだけでは、ユーザーを認証するために十分ではありません。id_token の署名を検証し、トークン内の要求をアプリの要件に基づいて確認することも必要です。 Microsoft ID プラットフォーム エンドポイントは、[JSON Web トークン (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号化を使用してトークンに署名し、それらが有効であることを確認します。
-
-クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 id_token の署名を検証した後、確認する必要のある要求がいくつか存在します。 [トークンの検証](id-tokens.md#validating-an-id_token)と[署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md)などの詳細については、[`id_token` のリファレンス](id-tokens.md)を参照してください。 トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
-
-シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
-
-* ユーザー/組織がアプリにサインアップ済みであることを確認する。
-* 適切な承認/特権がユーザーにあることを確認する。
-* 多要素認証など特定の強度の認証が行われたことを確認する。
-
-id_token を検証したら、ユーザーとのセッションを開始し、id_token 内の要求を使用してアプリでそのユーザーに関する情報を取得することができます。 この情報は、表示、記録、パーソナル化などに使用できます。
 
 ## <a name="get-access-tokens"></a>アクセス トークンを取得する
 

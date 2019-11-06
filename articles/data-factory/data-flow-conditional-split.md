@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory Mapping Data Flow の条件分割変換
+title: Azure Data Factory マッピング データ フローの条件分割変換
 description: Azure Data Factory Data Flow の条件分割変換
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: fec2b09b9dc471135d9cdd00ac2465728a47bdbf
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d06b5b86737d0940930a3ccea3b6d65be0a802f9
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026920"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387903"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>データ フローの条件分割変換のマッピング
 
@@ -21,7 +21,7 @@ ms.locfileid: "72026920"
 
 条件分割変換では、データ行をデータの内容に応じた別のストリームにルーティングできます。 条件分割変換の実装は、プログラミング言語の CASE 決定構造と同様です。 この変換では式を評価し、その結果に基づいて、データ行を指定されたストリームに送ります。 この変換には既定の出力も用意されているので、行が式に一致しない場合は既定の出力に送られます。
 
-![条件分割](media/data-flow/conditionalsplit1.png "条件分割オプション")
+![条件分割](media/data-flow/conditionalsplit1.png "条件分割のオプション")
 
 ## <a name="multiple-paths"></a>複数のパス
 

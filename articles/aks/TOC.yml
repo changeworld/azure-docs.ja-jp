@@ -102,6 +102,8 @@
       href: supported-kubernetes-versions.md
     - name: ホスト OS でのセキュリティ強化
       href: security-hardened-vm-host-image.md
+    - name: Azure Kubernetes Service 診断の概要
+      href: concepts-diagnostics.md
 - name: ハウツー ガイド
   items:
     - name: クラスターの操作
@@ -128,11 +130,11 @@
               href: virtual-nodes-portal.md
         - name: Virtual Kubelet の使用
           href: virtual-kubelet.md
-        - name: クラスター オートスケーラーの使用 (プレビュー)
+        - name: クラスター オートスケーラーの使用
           href: cluster-autoscaler.md
-        - name: Availability Zones (プレビュー) の使用
+        - name: Availability Zones を使用する
           href: availability-zones.md
-        - name: 複数のノード プールの使用 (プレビュー)
+        - name: 複数のノード プールを使用する
           href: use-multiple-node-pools.md
         - name: Terraform を使用した AKS のデプロイ
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
@@ -199,7 +201,7 @@
           href: use-network-policies.md
         - name: ポッド セキュリティ ポリシーの使用 (プレビュー)
           href: use-pod-security-policies.md
-        - name: API サーバーの許可された IP 範囲の定義 (プレビュー)
+        - name: API サーバーの許可された IP 範囲の定義
           href: api-server-authorized-ip-ranges.md
         - name: Azure Policy を使用したデプロイの制御 (プレビュー)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
@@ -225,8 +227,8 @@
           href: view-master-logs.md
         - name: kubelet ログの表示
           href: kubelet-logs.md
-        - name: リアルタイムのコンテナー ログの表示 (プレビュー)
-          href: ../azure-monitor/insights/container-insights-live-logs.md
+        - name: コンテナー データをリアルタイムで表示する
+          href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
     - name: Windows Server コンテナーの使用 (プレビュー)
       items:
@@ -304,19 +306,33 @@
           href: spark-job.md
         - name: GPU の使用
           href: gpu-cluster.md
-        - name: Istio の使用
-          items:
-            - name: インストールと構成
-              href: istio-install.md
-            - name: インテリジェントなルーティングとカナリア リリース
-              href: istio-scenario-routing.md
-        - name: Hashicorp Consul Connect の使用
-          items:
-            - name: インストールと構成
-              href: consul-install.md
         - name: Azure Database for PostgreSQL の使用
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+    - name: サービス メッシュの選択とデプロイ
+      items:
+        - name: サービス メッシュについて
+          href: servicemesh-about.md
+        - name: Istio の使用
+          items:
+            - name: Istio について
+              href: servicemesh-istio-about.md
+            - name: インストールと構成
+              href: servicemesh-istio-install.md
+            - name: シナリオ - インテリジェントなルーティングとカナリア リリース
+              href: servicemesh-istio-scenario-routing.md
+        - name: Linkerd の使用
+          items:
+            - name: Linkerd について
+              href: servicemesh-linkerd-about.md
+            - name: インストールと構成
+              href: servicemesh-linkerd-install.md
+        - name: Consul の使用
+          items:
+            - name: Consul について
+              href: servicemesh-consul-about.md
+            - name: インストールと構成
+              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: Ansible を使用した AKS クラスターの作成

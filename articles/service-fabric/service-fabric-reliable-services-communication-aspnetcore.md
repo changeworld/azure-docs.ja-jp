@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 9648307bb7278f36686d8a53be90c2d9ef7159e1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 39e6273382133493a77321deed2baec4718bc912
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016706"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383666"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services での ASP.NET Core
 
@@ -200,7 +200,7 @@ HTTP.sys で動的に割り当てられたポートを使用するには、`Endp
 ## <a name="kestrel-in-reliable-services"></a>リライアブル サービスでの Kestrel
 **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet パッケージをインポートすることにより、Reliable Services で Kestrel を使用できます。 このパッケージには、`ICommunicationListener` の実装である `KestrelCommunicationListener` が含まれます。 `KestrelCommunicationListener` により、Web サーバーとして Kestrel を使って、リライアブル サービスの内部に ASP.NET Core WebHost を作成できます。
 
-Kestrel は、クロスプラットフォームの非同期 I/O ライブラリである libuv をベースにした ASP.NET Core 用のクロスプラットフォーム Web サーバーです。 HTTP.sys とは異なり、Kestrel では一元的なエンドポイント マネージャーは使用されません。 また、HTTP.sys とは異なり、Kestrel では複数のプロセス間のポート共有はサポートされません。 Kestrel の各インスタンスは、一意のポートを使用する必要があります。
+Kestrel は、ASP.NET Core 用のクロスプラットフォーム Web サーバーです。 HTTP.sys とは異なり、Kestrel では一元的なエンドポイント マネージャーは使用されません。 また、HTTP.sys とは異なり、Kestrel では複数のプロセス間のポート共有はサポートされません。 Kestrel の各インスタンスは、一意のポートを使用する必要があります。 Kestrel の詳細については、[実装の詳細 ](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)に関する記事を参照してください。
 
 ![Kestrel の図][4]
 

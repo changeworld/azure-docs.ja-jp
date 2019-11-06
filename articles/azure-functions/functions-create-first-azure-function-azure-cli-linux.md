@@ -1,24 +1,21 @@
 ---
 title: Azure の Linux で初めての関数を作成する
-description: Azure Functions Core Tools と Azure CLI を使用して、Azure の Linux でホストされる初めての関数を作成する方法について説明します。
-services: functions
-keywords: ''
+description: コマンド ライン ツール、Azure Functions Core Tools、および Azure CLI を使用して、Azure の Linux でホストされる初めての関数を作成する方法について説明します。
 author: ggailey777
 ms.author: glenga
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
-ms.devlang: javascript
-manager: jeconnoc
-ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 34f4dc4b36f4efd75c5a7cd14b3214886955a403
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562975"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329689"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>Core Tools と Azure CLI を使用して Linux でホストされる初めての関数を作成する
+# <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>クイック スタート:コマンド ライン ツールを使用して Linux でホストされる初めての関数を作成する
 
 Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.com/serverless)の Linux 環境でコードを実行できます。 Linux でのホストには、[Functions 2.x ランタイム](functions-versions.md)が必要です。 サーバーレス関数は[従量課金](functions-scale.md#consumption-plan)プランで実行されます。
 
@@ -30,7 +27,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 このサンプルを実行する前に、以下が必要です。
 
-- [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降をインストールします。
++ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降をインストールします。
 
 + [Azure CLI]( /cli/azure/install-azure-cli) をインストールします。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 [Azure Cloud Shell](https://shell.azure.com/bash) を使用することもできます。
 

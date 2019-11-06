@@ -1,22 +1,19 @@
 ---
-title: Azure Data Factory の Mapping Data Flow の参照変換
-description: Azure Data Factory の Mapping Data Flow の参照変換
+title: Azure Data Factory のマッピング データ フローの参照変換
+description: Azure Data Factory のマッピング データ フローの参照変換
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: ef72b7aed12afd1cee47b11bc7584d1e53bf2af5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/03/2019
+ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029345"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387870"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory の Mapping Data Flow の参照変換
-
-
+# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory のマッピング データ フローの参照変換
 
 参照を使用して、別のソースの参照データをデータ フローに追加します。 参照変換では、参照テーブルをポイントし、キー フィールドが一致する定義済みのソースが必要です。
 
@@ -24,7 +21,9 @@ ms.locfileid: "72029345"
 
 受信するストリームのフィールドと参照元のフィールドの間で一致させるキー フィールドを選択します。 データ フロー デザイン キャンバスで、参照の右側として使用する新しいソースを先に作成しておく必要があります。
 
-一致が見つかると、参照元から結果の行と列がデータ フローに追加されます。 データ フローの最後でシンクに書き込む、関心のあるフィールドを選択できます。
+一致が見つかると、参照元から結果の行と列がデータ フローに追加されます。 データ フローの最後でシンクに書き込む、関心のあるフィールドを選択できます。 または、参照の後に選択変換を使用して、保持する必要がある両方のストリームのフィールドのみが残るようにフィールド リストからフィールドを取り除きます。
+
+参照変換では、左外部結合と同等の操作が実行されます。 したがって、左側のソースのすべての行が、右側の一致と結合されていることがわかります。 参照に一致する値が複数ある場合、または参照式をカスタマイズする場合は、結合変換に切り替えてクロス結合を使用することをお勧めします。 これにより、実行時に発生する可能性のあるデカルト積エラーを回避できます。
 
 ## <a name="match--no-match"></a>一致 / 一致なし
 
@@ -38,7 +37,7 @@ Data Factory では、データ フローがスケールアウト Spark 環境�
 
 ### <a name="broadcast-join"></a>ブロードキャスト結合
 
-参照リレーションシップの左側または右側からデータセット全体をメモリにプッシュするよう ADF に要求するには、左側または右側のブロードキャスト結合を選択します。
+参照リレーションシップの左側または右側からデータセット全体をメモリにプッシュするよう ADF に要求するには、左側または右側のブロードキャスト結合を選択します。 データセットが小さい場合は、これによって参照のパフォーマンスを大幅に向上させることができます。
 
 ### <a name="data-partitioning"></a>データのパーティション分割
 
@@ -46,4 +45,4 @@ Data Factory では、データ フローがスケールアウト Spark 環境�
 
 ## <a name="next-steps"></a>次の手順
 
-[結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換は、ADF Mapping Data Flow で同様のタスクを実行します。 引き続き、これらの変換について見ていきましょう。
+[結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換は、ADF マッピング データ フローで同様のタスクを実行します。 引き続き、これらの変換について見ていきましょう。

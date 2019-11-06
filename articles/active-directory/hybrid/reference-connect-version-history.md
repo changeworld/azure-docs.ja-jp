@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/2/2019
+ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827098"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025837"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -45,6 +45,8 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 
 ## <a name="14250"></a>1.4.25.0
 
+
+
 ### <a name="release-status"></a>リリースの状態
 9/28/2019:一部のテナントを対象に自動アップグレード用がリリース。 ダウンロードでは利用できません。
 
@@ -56,12 +58,15 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 
 ## <a name="14180"></a>1.4.18.0
 
+>[!WARNING]
+>このバージョンの Azure AD Connect にアップグレードした後、既存の Hybrid Azure AD 参加済みデバイスで一部のお客様に問題が発生しているインシデントを調査しています。 Hybrid Azure AD 参加をデプロイしたお客様は、これらの問題の根本原因が完全に認識され軽減されるまで、このバージョンへのアップグレードを延期することをお勧めします。 詳細については、できるだけ早く提供します。
+
 >[!IMPORTANT]
 >このバージョンの Azure AD Connect をご利用のお客様に、Windows デバイスの一部または全部が Azure AD から消えるという現象が発生することがあります。 これらのデバイス ID が、条件付きアクセスの承認時に Azure AD によって使用されることはないため、これは問題ありません。 詳細については、[Azure AD Connect 1.4.xx.x デバイスが消える現象](reference-connect-device-disappearance.md)に関するページを参照してください。
 
 
 ### <a name="release-status"></a>リリースの状態
-9/25/2019:自動アップグレード用とダウンロード用がリリース。
+9/25/2019:インシデント調査が完了するまで手動ダウンロードから削除されました。
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 - 新しいトラブルシューティング ツールは、"ユーザーが同期していない"、"グループが同期していない"、"グループ メンバーが同期していない" という各シナリオのトラブルシューティングに役立ちます。

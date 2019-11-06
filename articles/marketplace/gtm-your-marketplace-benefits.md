@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962667"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752397"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -60,7 +60,10 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>トランザクション パートナーに対する Marketplace 報酬
 
-Azure Marketplace または Microsoft AppSource でトランザクション可能なオファーを発行すると、商用マーケットプレースで請求販売取引を拡大するときに、追加のベネフィットにアクセスできるようになります。 
+Azure Marketplace または Microsoft AppSource でトランザクション可能なオファーを発行すると、商用マーケットプレースで請求販売取引やチケットの収益を拡大するときに、追加のベネフィットにアクセスできるようになります。 
+
+>[!Note]
+>チケットの収益のしきい値は Microsoft 365 アプリのみ (Microsoft Teams、Office、Outlook、または SharePoint と統合された SaaS アプリケーション) に適用されます。また、ベネフィットは 2020 年 6 月 30 日までに完了する必要があります。
 
 これらのベネフィットは、マーケティング、販売、および技術アクティビティでのサポートを目的としています。これにより、より多くの訪問者を取得し、より多くの潜在顧客を獲得し、より多くのビジネスを変換することができます。
 
@@ -71,6 +74,8 @@ Azure Marketplace または Microsoft AppSource でトランザクション可�
 ![営業のベネフィット](./media/marketplace-publishers-guide/sales-benefit.png)
 
 ![技術上のメリット](./media/marketplace-publishers-guide/technical-benefit.png)
+
+\* チケットの収益のしきい値は Microsoft 365 アプリのみ (Microsoft Teams、Office、Outlook、または SharePoint と統合された SaaS アプリケーション) に適用されます。また、ベネフィットは 2020 年 6 月 30 日までに完了する必要があります。
 
 これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
 

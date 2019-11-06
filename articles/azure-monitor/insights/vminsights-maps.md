@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor for VMs (プレビュー) を使用してアプリの依存関係を表示する方法 | Microsoft Docs
 description: マップは、Azure Monitor for VMs の機能です。 Windows および Linux システム上のアプリケーション コンポーネントが自動的に検出されて、サービス間の通信がマップされます。 この記事では、さまざまなシナリオでマップ機能を使用する方法について詳しく説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f6273e9b6c7ed0c4685479976343497f01201b0b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 10/15/2019
+ms.openlocfilehash: f886ce4ed1b9396cf90bf98626e0cfd2424b2eac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206760"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553782"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Azure Monitor for VMs (プレビュー) のマップ機能を使用してアプリケーション コンポーネントを把握する
 Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 VM を確認する方法は 2 つあります。 VM から直接マップを表示するか、または Azure Monitor から、VM グループのコンポーネントを表すマップを表示します。 この記事は、これら 2 つの表示方法とマップ機能の使用方法を理解するうえで役立ちます。 
@@ -124,6 +118,7 @@ VM から直接 Azure Monitor for VMs にアクセスするには:
 >仮想マシン スケール セットの **[インスタンス]** ビューから、特定のインスタンスのマップにアクセスすることもできます。 **[設定]** セクションで **[インスタンス]**  >  **[Insights (プレビュー)]** に移動します。
 
 ## <a name="view-a-map-from-azure-monitor"></a>Azure Monitor からマップを表示する
+
 Azure Monitor では、マップ機能で VM とその依存関係の全体像を確認できます。 Azure Monitor でマップ機能にアクセスするには:
 
 1. Azure portal で、 **[モニター]** を選択します。 
@@ -139,5 +134,5 @@ Azure Monitor では、マップ機能で VM とその依存関係の全体像�
 既定では、マップには過去 30 分間の情報が表示されます。 過去の依存関係を表示する場合は、過去の時間範囲 (最大 1 時間) のクエリを実行できます。 クエリを実行するには、**時間範囲**セレクターを使用します。 たとえば、インシデントの発生中、または変更が行われる前の状態を確認するために、クエリを実行することがあります。  
 
 ## <a name="next-steps"></a>次の手順
-- 正常性機能の使用方法については、[Azure VM の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 
-- ボトルネックの特定、パフォーマンスの確認、VM の全体的な使用率の理解については、[Azure Monitor for VMs のパフォーマンス状態の表示](vminsights-performance.md)に関する記事をご覧ください。 
+
+ボトルネックの特定、パフォーマンスの確認、VM の全体的な使用率の理解については、[Azure Monitor for VMs のパフォーマンス状態の表示](vminsights-performance.md)に関する記事をご覧ください。 

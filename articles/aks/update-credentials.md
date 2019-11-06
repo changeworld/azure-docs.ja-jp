@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bda0ab50b829fa2e6d58e73b51e3a0a0f6c9e2af
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614122"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432919"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のサービス プリンシパル資格情報の更新またはローテーション
 
@@ -29,9 +29,7 @@ AKS クラスターの資格情報を更新する場合、以下の方法から�
 * クラスターで使用されている既存のサービス プリンシパルの資格情報を更新する。または、
 * サービス プリンシパルを作成し、それらの新しい資格情報を使用するようにクラスターを更新する。
 
-サービス プリンシパルを作成してから、AKS クラスターを更新する場合は、このセクションの残りのステップをスキップして、「[サービス プリンシパルの作成](#create-a-service-principal)」に進んでください。 AKS クラスターで使用されている既存のサービス プリンシパル資格情報を更新する場合は、このセクションのステップを続行してください。
-
-### <a name="get-the-service-principal-id"></a>サービス プリンシパル ID の取得
+### <a name="update-existing-service-principal-expiration"></a>既存のサービス プリンシパルの有効期限を更新する
 
 既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、*myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための *SP_ID* という名前の変数として設定されます。
 
@@ -40,17 +38,15 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
 ```
 
-### <a name="update-the-service-principal-credentials"></a>サービス プリンシパル資格情報の更新
-
 サービス プリンシパル ID を含む変数セットを指定し、[az ad sp credential reset][az-ad-sp-credential-reset] を使用して資格情報をリセットします。 以下の例では、Azure プラットフォームがサービス プリンシパルの新しいセキュア シークレットを生成できます。 この新しいセキュア シークレットは、変数としても保管されます。
 
 ```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-次に、「[新しい資格情報で AKS クラスターを更新](#update-aks-cluster-with-new-credentials)」に進みます。
+次に、「[新しい資格情報で AKS クラスターを更新](#update-aks-cluster-with-new-credentials)」に進みます。 このステップは、サービス プリンシパルの変更を AKS クラスターに反映させるために必要です。
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+### <a name="create-a-new-service-principal"></a>新しいサービス プリンシパルを作成する
 
 前のセクションで既存のサービス プリンシパル資格情報の更新を選択した場合は、このステップをスキップしてください。 「[新しい資格情報で AKS クラスターを更新](#update-aks-cluster-with-new-credentials)」に進みます。
 
@@ -77,6 +73,8 @@ az ad sp create-for-rbac --skip-assignment
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
+
+次に、「[新しい資格情報で AKS クラスターを更新](#update-aks-cluster-with-new-credentials)」に進みます。 このステップは、サービス プリンシパルの変更を AKS クラスターに反映させるために必要です。
 
 ## <a name="update-aks-cluster-with-new-credentials"></a>新しい資格情報で AKS クラスターを更新
 

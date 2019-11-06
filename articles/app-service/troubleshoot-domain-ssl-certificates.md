@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121993"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470133"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
@@ -70,7 +70,7 @@ SSL バインディングを追加するときに、次のエラー メッセー
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>App Service 証明書を購入できない 
 
 #### <a name="symptom"></a>症状
-Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-site.md)を購入できません。
+Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md#import-an-app-service-certificate)を購入できません。
 
 #### <a name="cause-and-solution"></a>原因と解決策
 この問題は、次のいずれかの理由で発生することがあります。

@@ -1,39 +1,76 @@
 ---
-title: Azure Data Factory Mapping Data Flow の存在変換
-description: データ ファクトリのマッピング データ フローと存在変換を使用して、既存の行を確認する方法
+title: Azure Data Factory マッピング データ フローでの存在変換 | Microsoft Docs
+description: Azure Data Factory マッピング データ フローでの存在変換を使用して、既存の行を確認します
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: 8b488a079b2da1bcf0dd064025ed251a1dc25213
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/16/2019
+ms.openlocfilehash: bfc2a810d34f03fc0f10c486344c6dccec548305
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029389"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515125"
 ---
 # <a name="mapping-data-flow-exists-transformation"></a>マッピング データ フローの存在変換
 
+存在変換は、ご利用のデータが別のソースまたはストリームに存在するかどうかを確認する行のフィルター変換です。 出力ストリームには、左側ストリームに存在するすべての行が含まれます。これらの行には、右側ストリームに存在する行も存在しない行もあります。 存在変換は ```SQL WHERE EXISTS``` および ```SQL WHERE NOT EXISTS``` と同様です。
 
+## <a name="configuration"></a>構成
 
-存在変換は、データ内の行のフローを停止または許可する行のフィルター変換です。 存在変換は ```SQL WHERE EXISTS``` および ```SQL WHERE NOT EXISTS``` と同様です。 存在変換の後、データ ストリームからの結果の行には、ソース 1 の列の値がソース 2 に存在するすべての行か、またはソース 1 の列の値がソース 2 に存在しないすべての行が含まれます。
+**[右側ストリーム]** ドロップダウンで、存在しているかどうかを確認するデータ ストリームを選択します。
 
-![存在の設定](media/data-flow/exists.png "存在 1")
+**[Exist type]\(存在の種類\)** 設定では存在するデータまたは存在しないデータを探すかどうかを指定します。
 
-Data Flow がストリーム 1 の値をストリーム 2 と比較できるように、存在の 2 番目のソースを選択します。
+存在条件として比較するキー列を選択します。 既定では、データフローは、1 つの列について各ストリームでの同等性を検索します。 計算値を介して比較するには、列のドロップダウン上にマウス ポインターを移動し、 **[計算列]** を選択します。
 
-ソース 1 とソース 2 から、存在の有無を調べる値を持つ列を選択します。
+![[存在] 設定](media/data-flow/exists.png "存在 1")
 
-## <a name="multiple-exists-conditions"></a>複数存在条件
+### <a name="multiple-exists-conditions"></a>複数存在条件
 
-存在の列条件の各行の横に、各行の上にカーソルと置くと + 記号が表示されます。 これによって、存在条件に対して複数の行を追加できます。 追加の各条件は、"And" です。
+各ストリームからの複数の列を比較するには、既存の行の横にある正符号アイコンをクリックして、新しい存在条件を追加します。 それぞれの追加の条件は、"and" ステートメントによって結合されます。 2 つの列を比較することは、次の式と同じです。
 
-## <a name="custom-expression"></a>カスタム式
+`source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
-![存在のカスタム設定](media/data-flow/exists1.png "存在のカスタム")
+### <a name="custom-expression"></a>カスタム式
 
-[カスタム式] をクリックして、存在の条件または非存在の条件として自由形式の式を作成することもできます。 このチェック ボックスをオンにすると、条件として独自の式を入力できます。
+"and" および "equals to" 以外の演算子を含む自由形式の式を作成するには、 **[カスタム式]** フィールドを選択します。 青いボックスをクリックすると、データ フロー式ビルダーを介してカスタム式を入力できます。
+
+![[存在] のカスタム設定](media/data-flow/exists1.png "存在のカスタム")
+
+## <a name="data-flow-script"></a>データ フローのスクリプト
+
+### <a name="syntax"></a>構文
+
+```
+<lefttream>, <rightStream>
+    exists(
+        <conditionalExpression>,
+        negate: true | <false>,
+        broadcast: 'none' | 'left' | 'right' | 'both'
+    ) ~> <existsTransformationName>
+```
+
+### <a name="example"></a>例
+
+以下の例は、左側ストリーム `NameNorm2` と右側ストリーム `TypeConversions` を取る `checkForChanges` という名前の存在変換です。  存在条件の式は `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` です。この式では、各ストリームで `EMPID` 列と `Region` 列の両方が一致する場合に true が返されます。 存在を確認している間、`negate` は false になります。 最適化タブでブロードキャストを有効にしていないので、`broadcast` の値は `'none'` になります。
+
+Data Factory UX でのこの変換は次の図のようになります。
+
+![存在の例](media/data-flow/exists-script.png "存在の例")
+
+この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
+
+```
+NameNorm2, TypeConversions
+    exists(
+        NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region,
+        negate:false,
+        broadcast: 'none'
+    ) ~> checkForChanges
+```
 
 ## <a name="next-steps"></a>次の手順
 

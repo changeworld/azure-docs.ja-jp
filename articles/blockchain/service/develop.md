@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/11/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6f27dd199cc054d128a4f46b222c7207d5975efb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2990917243507d93cb6a86da11cf771f3a42eebd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241003"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298434"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Azure Blockchain Service の開発の概要
 
@@ -57,7 +57,7 @@ Quorum は、トランザクションに加えてコントラクトのプライ�
 
 ブロック エクスプローラーはオンライン ブロックチェーン ブラウザーであり、個々のブロックの内容、トランザクション アドレス データ、履歴が表示されます。 ブロックの基本的な情報は Azure Blockchain Service 内の Azure Monitor によって入手できますが、開発時にさらに詳しい情報が必要な場合は、ブロック エクスプローラーが役に立ちます。  人気のあるオープンソースのブロック エクスプローラーを使用できます。 Azure Blockchain Service で動くブロック エクスプローラーの一覧を次に示します。
 
-* [Azure Blockchain Service Explorer](https://web3labs.com/azure-offer) (Web3 Labs)
+* [Epirus Azure Blockchain Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) (Web3 Labs)
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
 ## <a name="tps-measurement"></a>TPS の測定

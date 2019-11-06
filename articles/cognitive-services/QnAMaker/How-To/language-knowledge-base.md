@@ -1,5 +1,5 @@
 ---
-title: 英語以外のナレッジ ベース - QnA Maker
+title: 言語の概念 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker は、さまざまな言語のナレッジ ベース コンテンツをサポートしています。 ただし、1 つの言語につき 1 つ QnA Maker サービスを確保する必要があります。 特定の QnA Maker サービスの言語は、そのサービスを対象に作成された 1 つ目のナレッジ ベースによって設定されます。
 services: cognitive-services
@@ -8,34 +8,65 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 849c919950c57a1df3b0fb76021de6e10254c7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961500"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286380"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker のナレッジ ベース コンテンツの言語サポート
 
-QnA Maker は、さまざまな言語のナレッジ ベース コンテンツをサポートしています。 ただし、1 つの言語につき 1 つ QnA Maker サービスを確保する必要があります。 特定の QnA Maker サービスの言語は、そのサービスを対象に作成された 1 つ目のナレッジ ベースによって設定されます。 サポートされている言語の一覧については、[こちら](../Overview/languages-supported.md)を参照してください。
+サービスの言語は、リソースに最初のナレッジ ベースを作成するときに選択します。 そのリソースに追加するすべてのナレッジ ベースは、同じ言語である必要があります。 
 
-言語は、抽出の対象となるデータ ソースのコンテンツから自動的に認識されます。 言語が正しく設定されていることは、新しい QnA Maker サービスを作成して、そこに新しいナレッジ ベースを作成した後で確認できます。
+言語により、ユーザー クエリに対する応答で QnA Maker によって提供される結果の関連性が決まります。
 
-1. [Azure Portal](https://portal.azure.com/) に移動します。
+## <a name="one-language-for-all-knowledge-bases-in-resource"></a>リソース内のすべてのナレッジ ベースに対する 1 つの言語
 
-1. **[リソース グループ]** を選択し、QnA Maker サービスがデプロイされているリソース グループに移動して、 **[Azure Search]** リソースを選択します。
+QnA Maker では、最初のナレッジ ベースを作成するときに、QnA サービスの言語を選択できます。 QnA Maker リソース内のすべてのナレッジ ベースで、同じ言語が使用される必要があります。 言語を変更することはできません。
 
-    ![Azure Search リソースを選択](../media/qnamaker-how-to-language-kb/select-azsearch.png)
+1 つのリソースで異なる言語を使用してナレッジ ベースを作成すると、ユーザー クエリへの応答で QnA Maker によって提供される結果の関連性に悪影響を及ぼします。
 
-1. **[インデックス]** を選択し、**testkb** インデックスを選択します。 これは最初に作成される Azure Search インデックスであり、そのサービス内の全ナレッジ ベースの保存済みコンテンツを含んでいます。 
+[サポートされている言語](../overview/language-support.md#languages-supported)の一覧と、言語が[マッチングと関連性](#query-matching-and-relevance)に与える影響について、確認してください。 
 
-1. **[フィールド]** を選択すると、インデックス内のフィールドが表示されます。
+## <a name="select-language-when-creating-first-knowledge-base"></a>最初のナレッジ ベースを作成するときに言語を選択する
 
-1. `questions` フィールドと `answer` フィールドの _Analyzer_ 列は、特定の言語に設定されています。 この言語は、ナレッジ ベースの作成手順でインポートされたファイルおよび URL から自動的に検出されたものです。 リソースの作成後に、この言語を変更することはできません。
+言語の選択は、リソースに最初のナレッジ ベースを作成する手順の一部です。 
 
-    ![選択されたアナライザー](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
+![最初のナレッジ ベースの言語を選択する QnA Maker ポータルのスクリーンショット](../media/language-support/select-language-when-creating-knowledge-base.png)
+
+## <a name="query-matching-and-relevance"></a>クエリの一致と関連性
+QnA Maker による結果の提供は、[Azure Search の言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)に依存してします。 
+
+Azure Search の機能はサポートされている言語に従いますが、QnA Maker には Azure Search の結果より上位に追加のランカーがあります。 このランカー モデルでは、以下の言語においていくつかの特別なセマンティックとワード ベースの機能が使用されます。 
+
+|追加のランカーがある言語|
+|--|
+|中国語|
+|チェコ語|
+|オランダ語|
+|英語|
+|フランス語|
+|ドイツ語|
+|ハンガリー語|
+|イタリア語|
+|日本語|
+|韓国語|
+|ポーランド語|
+|ポルトガル語|
+|スペイン語|
+|スウェーデン語|
+
+この追加のランキングは、QnA Maker のランカーの内部処理です。
+
+## <a name="verify-language"></a>言語を検証する
+
+QnA Maker リソースの言語は、QnA Maker のサービス設定ページで確認できます。
+
+![QnA Maker ポータルのサービス設定ページのスクリーンショット](../media/language-support/language-knowledge-base.png) 
+
 
 ## <a name="next-steps"></a>次の手順
 

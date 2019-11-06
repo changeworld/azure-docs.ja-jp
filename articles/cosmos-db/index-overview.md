@@ -4,14 +4,14 @@ description: Azure Cosmos DB のインデックス作成のしくみを説明し
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914192"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299787"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 
@@ -66,13 +66,24 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 現在、Azure Cosmos DB では 3 種類のインデックスがサポートされています。
 
-**範囲**インデックスの種類は、以下のために使用されます。
+### <a name="range-index"></a>範囲インデックス
+
+**範囲**インデックスは、順序付けされたツリーのような構造に基づいています。 範囲インデックスの種類は、以下のために使用されます。
 
 - 等値クエリ:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
    ```
+
+   ```sql
+   SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
+   ```
+
+   配列要素の等値一致
+   ```sql
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    ```
 
 - 範囲クエリ:
 
@@ -81,9 +92,21 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
    ```
   (`>`、`<`、`>=`、`<=`、`!=` に適しています)
 
+- プロパティが存在するかどうかの確認:
+
+   ```sql
+   SELECT * FROM c WHERE IS_DEFINED(c.property)
+   ```
+
+- 文字列プレフィックスの一致 (CONTAINS キーワードでは範囲インデックスは使用されません):
+
+   ```sql
+   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   ```
+
 - `ORDER BY` クエリ:
 
-   ```sql 
+   ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
@@ -95,23 +118,33 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 範囲インデックスは、スカラー値 (文字列または数値) に使用できます。
 
-**空間**インデックスの種類は、以下のために使用されます。
+### <a name="spatial-index"></a>空間インデックス
 
-- 地理空間距離クエリ: 
+**空間**インデックスを使用すると、点、線、多角形、複数の多角形などの地理空間オブジェクトに対して、効率的なクエリを行うことができます。 これらのクエリでは、ST_DISTANCE、ST_WITHIN、ST_INTERSECTS の各キーワードを使用します。 空間インデックスの種類を使用するいくつかの例を次に示します。
+
+- 地理空間距離クエリ:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- クエリ内の地理空間: 
+- クエリ内の地理空間:
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
+- 地理空間交差クエリ:
+
+   ```sql
+   SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
+   ```
+
 空間インデックスは、正しい形式の [GeoJSON](geospatial.md) オブジェクトに対して使用できます。 現在、Points、LineStrings、Polygons、MultiPolygons がサポートされています。
 
-**複合**のインデックスの種類は、次のために使用されます。
+### <a name="composite-indexes"></a>複合インデックス
+
+**複合**インデックスを使用すると、複数のフィールドに対して操作を実行するときの効率が向上します。 複合のインデックスの種類は、次のために使用されます。
 
 - 複数のプロパティに対する `ORDER BY` クエリ:
 
@@ -130,6 +163,13 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
+
+1 つのフィルター述語でインデックスの種類の 1 つが使用されている限り、クエリ エンジンでは、残りの部分をスキャンする前に最初にそれが評価されます。 たとえば、次のような SQL クエリがあるとします: `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+
+* 上のクエリでは、最初にインデックスを使用して firstName = "Andrew" のエントリがフィルター処理されます。 次に、すべての firstName = "Andrew" エントリが後続のパイプラインを通過して、CONTAINS フィルター述語が評価されます。
+
+* インデックスを使用するフィルター述語を追加することによって、インデックスを使用しない関数 (CONTAINS など) を使用するときの、クエリを高速化し、完全なコンテナー スキャンを回避できます。 フィルター句の順序は重要ではありません。 クエリ エンジンでは、どの述語がより選択的であるかが判断され、それに応じてクエリが実行されます。
+
 
 ## <a name="querying-with-indexes"></a>インデックスを使用してクエリを実行する
 

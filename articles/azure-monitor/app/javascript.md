@@ -1,23 +1,18 @@
 ---
 title: JavaScript Web アプリのための Azure Application Insights | Microsoft Docs
 description: ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9b2cb9b16a91220db6fcc193fe64ea674b7103ab
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.date: 09/20/2019
+ms.openlocfilehash: 17765910b379bd4212d171cce6643de561db23ad
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937087"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819384"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -30,13 +25,13 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 1. まず Application Insights リソースが必要です。 リソースとインストルメンテーション キーがまだない場合は、[新しいリソースの作成手順](create-new-resource.md)に従います。
 2. JavaScript テレメトリの送信先となるリソースからインストルメンテーション キーをコピーします。
 3. 次の 2 つの方法のいずれかを使用して、Application Insights JavaScript SDK を Web ページまたはアプリに追加します。
-    * [NPM セットアップ](#npm-based-setup)
+    * [npm のセットアップ](#npm-based-setup)
     * [JavaScript スニペット](#snippet-based-setup)
 
 > [!IMPORTANT]
-> Application Insights JavaScript SDK をアプリケーションに追加するには、次のいずれか 1 つの方法のみを使用してください。 NPM ベースのセットアップを使用する場合は、スニペット ベースのセットアップを使用しないでください。 逆にスニペット ベースのアプローチを使用するシナリオでも同じことが言えます。NPM ベースのセットアップを使用しないでください。 
+> Application Insights JavaScript SDK をアプリケーションに追加するには、次のいずれか 1 つの方法のみを使用してください。 npm ベースのセットアップを使用する場合は、スニペット ベースのセットアップを使用しないでください。 逆にスニペット ベースのアプローチを使用するシナリオでも同じことが言え、npm ベースのセットアップは使用しないでください。 
 
-### <a name="npm-based-setup"></a>NPM ベースのセットアップ
+### <a name="npm-based-setup"></a>npm ベースのセットアップ
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -50,7 +45,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>スニペット ベースのセットアップ
 
-アプリで NPM が使用されない場合は、各ページの上部にこのスニペットを貼り付けることによって、Application Insights で Web ページを直接インストルメント化できます。 可能であれば、これを `<head>` セクションの最初のスクリプトとして指定すると、すべての依存関係に関する潜在的な問題を監視することができます。 Blazor サーバー アプリを使用している場合は、ファイル `_Host.cshtml` の先頭の `<head>` セクションにスニペットを追加します。
+アプリで npm が使用されていない場合は、各ページの上部にこのスニペットを貼り付けることによって、Application Insights で Web ページを直接インストルメント化できます。 可能であれば、これを `<head>` セクションの最初のスクリプトとして指定すると、すべての依存関係に関する潜在的な問題を監視することができます。 Blazor サーバー アプリを使用している場合は、ファイル `_Host.cshtml` の先頭の `<head>` セクションにスニペットを追加します。
 
 ```html
 <script type="text/javascript">
@@ -229,7 +224,7 @@ SDK V2 バージョンでの破壊的変更:
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- NPM のシナリオ:`downloadAndSetup` を呼び出して、完全な ApplicationInsights スクリプトを CDN からダウンロードし、インストルメンテーション キーを使用して初期化します。
+- npm のシナリオ:`downloadAndSetup` を呼び出して、完全な ApplicationInsights スクリプトを CDN からダウンロードし、インストルメンテーション キーを使用して初期化します。
 
    ```ts
    appInsights.downloadAndSetup({

@@ -46,6 +46,12 @@
           href: prevent-translation.md
         - name: 動的ディクショナリ機能を使用する
           href: dynamic-dictionary.md
+        - name: コンテナーの使用
+          items:
+            - name: コンテナーのインストールと実行
+              href: how-to-install-containers.md
+            - name: コンテナーを構成する
+              href: translator-text-container-config.md
         - name: ファイアウォールの内側で翻訳する
           href: firewalls.md
     - name: サンプル

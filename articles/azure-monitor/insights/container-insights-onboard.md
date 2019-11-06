@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor for containers を有効にする方法 | Microsoft Docs
 description: この記事では、コンテナーがどのように動作し、パフォーマンスに関してどのような問題が特定されているかを把握できるように、Azure Monitor for containers を有効にして構成する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 25be8f166fec8a311fdc2ed1fa3fca6339185e94
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 07/12/2019
+ms.openlocfilehash: 44cdc2d6b93ac9a62f96875ca6c679fbb97d85a9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867529"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555400"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 
@@ -36,7 +30,7 @@ ms.locfileid: "67867529"
 
 * **Log Analytics ワークスペース。**
 
-    Azure Monitor for containers は、**US Gov バージニア**を除き、Azure [のリージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンで Log Analytics ワークスペースをサポートします。
+    Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。
 
     新しい AKS クラスターの監視を有効にするときにワークスペースを作成すること、またはオンボード エクスペリエンスを使用して AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースを作成することができます。 自分でワークスペースを作成する場合は、[Azure Resource Manager](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。 既定のワークスペースに使用される、サポートされているマッピング ペアの一覧については、[Azure Monitor for containers のリージョンのマッピング](container-insights-region-mapping.md)に関するページを参照してください。
 
@@ -64,7 +58,7 @@ ms.locfileid: "67867529"
 
 以下の表で説明されている次の方法のいずれかを使用して、コンテナーの Azure Monitor を有効にします。
 
-| デプロイの状態 | Method | 説明 |
+| デプロイの状態 | 方法 | 説明 |
 |------------------|--------|-------------|
 | 新しい AKS クラスター | [Azure CLI を使用してクラスターを作成](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLI を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Terraform を使用してクラスターを作成](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |

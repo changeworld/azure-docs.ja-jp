@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: de581362371e28523c99f961dfdb5c2009901343
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446117"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900927"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C# でデバイス アプリケーションと通信する (プレビュー)
 
@@ -33,6 +33,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 * デバイス ストリームのプレビューは現在、以下のリージョンで作成された IoT ハブに対してのみサポートされています。
   * 米国中部
   * 米国中部 EUAP
+  * 北ヨーロッパ
+  * 東南アジア
 
 * このクイックスタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発マシン上に .NET Core SDK 2.1.0 以降が必要です。
   * [複数のプラットフォームに対応する .NET Core SDK を .NET から](https://www.microsoft.com/net/download/all)ダウンロードします。
@@ -56,16 +58,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このセクションでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    > [!NOTE]
    > * *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
-   > * 示されているように、*MyDevice* を使用します。 これは、登録済みデバイスに付けられた名前です。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
+   > * 登録しているデバイスの名前については、示されているように、*MyDevice* を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. 登録したデバイスの "*デバイス接続文字列*" を取得するには、Cloud Shell で次のコマンドを実行します。
@@ -74,10 +76,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    このクイックスタートの後の方で使用できるように、デバイス接続文字列を書き留めておきます。 次の例のようになります。
+    このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -87,10 +89,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    このクイックスタートの後の方で使用するために、返された値を書き留めておきます。 次の例のようになります。
+    このクイックスタートの後の方で使用できるように、返されたサービス接続文字列を書き留めておきます。 次の例のようになります。
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -100,14 +102,14 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-service-side-application"></a>サービス側アプリケーションの実行
 
-解凍したプロジェクト フォルダーの *iot-hub/Quickstarts/device-streams-echo/service* ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
+ローカル ターミナル ウィンドウで、解凍したプロジェクト フォルダーの `iot-hub/Quickstarts/device-streams-echo/service` ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
-| `ServiceConnectionString` | お使いの IoT ハブのサービス接続文字列を指定します。 |
-| `DeviceId` | 前に作成したデバイスの ID を指定します (例: *MyDevice*)。 |
+| `ServiceConnectionString` | IoT Hub のサービス接続文字列。 |
+| `MyDevice` | 前に作成したデバイスの識別子。 |
 
-次のようにコードをコンパイルして実行します。
+以下のコマンドを使用して、コードをコンパイルし、実行します。
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-echo/service/
@@ -117,24 +119,25 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run "<ServiceConnectionString>" "<MyDevice>"
+dotnet run "{ServiceConnectionString}" "MyDevice"
 
 # In Windows
-dotnet run <ServiceConnectionString> <MyDevice>
+dotnet run {ServiceConnectionString} MyDevice
 ```
+アプリケーションは、デバイス アプリケーションが使用可能になるまで待機します。
 
 > [!NOTE]
 > デバイス側のアプリケーションが時間内に応答しない場合、タイムアウトが発生します。
 
 ### <a name="run-the-device-side-application"></a>デバイス側アプリケーションの実行
 
-解凍したプロジェクト フォルダーの *iot-hub/Quickstarts/device-streams-echo/device* ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
+別のローカル ターミナル ウィンドウで、解凍したプロジェクト フォルダーの `iot-hub/Quickstarts/device-streams-echo/device` ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
-| `DeviceConnectionString` | お使いの IoT ハブのデバイス接続文字列を指定します。 |
+| `DeviceConnectionString` | IoT ハブのデバイス接続文字列。 |
 
-次のようにコードをコンパイルして実行します。
+以下のコマンドを使用して、コードをコンパイルし、実行します。
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-echo/device/
@@ -144,10 +147,10 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run "<DeviceConnectionString>"
+dotnet run "{DeviceConnectionString}"
 
 # In Windows
-dotnet run <DeviceConnectionString>
+dotnet run {DeviceConnectionString}
 ```
 
 最後の手順の最後で、サービス側のアプリケーションによってデバイスへのストリームが開始されます。 ストリームが確立された後、アプリケーションはストリーム経由でサービスに文字列バッファーを送信します。 このサンプルでは、​​サービス側アプリケーションは単に同じデータをデバイスにエコーバックします。これは、2 つのアプリケーション間の双方向通信が成功したことを示します。

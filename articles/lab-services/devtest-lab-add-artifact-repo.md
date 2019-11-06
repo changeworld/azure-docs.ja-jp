@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1555eb4e48a0cf43a38aa811e20ffbbed8ee87a9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311713"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755812"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
 
@@ -65,7 +65,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
    1. トークンの **説明** を入力します。
    2. **[期限切れまでの日数]** の一覧で、 **[180 日]** を選択します。
    3. **[アカウント]** の一覧で、 **[アクセス可能なすべてのアカウント]** を選択します。
-   4. **[すべてのスコープ]** を選択します。
+   4. **[読み取り専用]** オプションを選択します。
    5. **[トークンの作成]** を選択します。
 9. **[個人用アクセス トークン]** の一覧に新しいトークンが表示されます。 **[トークンのコピー]** を選択し、後ほど必要になるため、トークンの値を保存します。
 10. [ラボのレポジトリへの接続](#connect-your-lab-to-the-repository)のセクションに進みます。

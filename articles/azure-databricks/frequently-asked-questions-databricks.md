@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8707aa55c1126af6a7fb2812d4c7314f031209d0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60784709"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597471"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
@@ -27,14 +27,14 @@ ms.locfileid: "60784709"
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Databricks で Azure Virtual Network を使えますか。
 はい。 Azure Databricks で Azure Virtual Network (VNET) を使用することができます。 詳細については、「[Deploying Azure Databricks in your Azure Virtual Network (Azure Virtual Network に Azure Databricks をデプロイする)](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)」を参照してください。
 
-## <a name="how-do-i-access-azure-data-lake-store-from-a-notebook"></a>ノートブックから Azure Data Lake Store にアクセスするにはどうすればよいですか。 
+## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>ノートブックから Azure Data Lake Storage にアクセスするにはどうすればよいですか。 
 
 次の手順に従います。
 1. Azure Active Directory (Azure AD) でサービス プリンシパルをプロビジョニングし、そのキーを記録します。
-1. Data Lake Store のサービス プリンシパルに必要なアクセス許可を割り当てます。
-1. Data Lake Store 内のファイルにアクセスするには、Notebook でこのサービス プリンシパルの資格情報を使います。
+1. Data Lake Storage 内のサービス プリンシパルに必要なアクセス許可を割り当てます。
+1. Data Lake Storage 内のファイルにアクセスするには、Notebook でサービス プリンシパルの資格情報を使用します。
 
-詳細については、[Azure Databricks での Data Lake Store の使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)に関するページを参照してください。
+詳細については、[Azure Databricks での Azure Data Lake Storage の使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)に関するページを参照してください。
 
 ## <a name="fix-common-problems"></a>一般的な問題の修正
 

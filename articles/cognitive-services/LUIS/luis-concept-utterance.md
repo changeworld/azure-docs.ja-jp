@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 3c3c54faa882a38fb6c55c9fc0476a569f25cb98
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638329"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486629"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -135,6 +135,20 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 ## <a name="best-practices"></a>ベスト プラクティス
 
 [ベスト プラクティス](luis-concept-best-practices.md)を確認し、それらを通常の作成サイクルの一環として適用します。
+
+## <a name="label-for-word-meaning"></a>単語の意味のラベル
+
+単語の選択や配置は同じなのに同じものを意味しない場合は、そのエンティティでラベル付けしません。 
+
+次の発話で、単語 `fair` は、同形異義語です。 スペルは同じですが、意味が異なります。
+
+|発話|
+|--|
+|今年の夏、シアトル地区でどのような種類のカウンティー フェアが開催されますか?|
+|シアトル レビューの現在の評価は公正ですか?|
+
+イベント エンティティですべてのイベント データを検索する場合は、2 つ目ではなく最初の発話の単語 `fair` にラベルを付けます。
+
 
 ## <a name="next-steps"></a>次の手順
 ユーザーの発話を理解するための LUIS アプリのトレーニングについては、「[発話の例を追加する](luis-how-to-add-example-utterances.md)」を参照してください。

@@ -1,24 +1,23 @@
 ---
-title: カスタム コグニティブ検索スキル - Azure Search
-description: Web API を呼び出すことによって、コグニティブ検索スキルセットの機能を拡張します
-services: search
+title: 強化パイプラインのカスタム Web API スキル
+titleSuffix: Azure Cognitive Search
+description: Web API を呼び出すことによって、Azure コグニティブ検索スキルセットの機能を拡張します。 カスタム Web API スキルを使用してカスタム コードを統合します。
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 89539d42e9ac9456c7ee971f6ea607b6b2c6befa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266321"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784905"
 ---
-# <a name="custom-web-api-skill"></a>カスタム Web API スキル
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure コグニティブ検索の強化パイプラインのカスタム Web API スキル
 
-**カスタム Web API** スキルを使用すると、Web API エンドポイントを呼び出してカスタム操作を提供することで、Cognitive Search を拡張できます。 組み込みのスキルと同様、**カスタム Web API** スキルには入力と出力があります。 入力に応じて、Web API はインデクサーの実行時に JSON ペイロードを受信し、応答としての JSON ペイロードと成功の状態コードを出力します。 正常な応答には、カスタム スキルによって指定された出力が含まれます。 その他の応答はエラーと見なされ、エンリッチメントは実行されません。
+**カスタム Web API** スキルを使用すると、Web API エンドポイントを呼び出してカスタム操作を提供することで、AI 強化を拡張できます。 組み込みのスキルと同様、**カスタム Web API** スキルには入力と出力があります。 入力に応じて、Web API はインデクサーの実行時に JSON ペイロードを受信し、応答としての JSON ペイロードと成功の状態コードを出力します。 正常な応答には、カスタム スキルによって指定された出力が含まれます。 その他の応答はエラーと見なされ、エンリッチメントは実行されません。
 
 JSON ペイロードの構造については、このドキュメントの後のほうで説明します。
 
@@ -202,6 +201,7 @@ Web API が利用できないか、HTTP エラーが返された場合は、HTTP
 
 ## <a name="see-also"></a>関連項目
 
++ [Power Skills: カスタム スキルのリポジトリ](https://aka.ms/powerskills)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [コグニティブ検索にカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
-+ [例:コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
++ [AI 強化パイプラインにカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
++ 例:AI 強化のカスタム スキルを作成する(cognitive-search-create-custom-skill-example.md)

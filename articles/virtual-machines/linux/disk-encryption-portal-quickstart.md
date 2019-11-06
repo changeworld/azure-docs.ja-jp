@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 0249867a6af16505a692e7090639807ed3d239c9
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 83446d30de17973352e836d6107ad545b2da63e3
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030812"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550319"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシンを作成、暗号化する
 
@@ -27,8 +27,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure Portal の左上隅にある **[リソースの作成]** オプションを選択します
 1. 検索ボックスに「**Key Vault**」と入力します。
-1. 結果の一覧の **[Key Vault]** を選択します。
-1. Key Vault のセクションで、 **[作成]** を選択します。
+1. 結果の一覧から **[Key Vault]** を選択します。
+1. [Key Vault] セクションで **[作成]** を選択します。
 1. **[キー コンテナーの作成]** 画面で、新しいキー コンテナーの一意の名前を選択します。
 
     > [!Important]
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [アクセス ポリシー] を選択して、新しい画面に移動します。
 1. [ボリューム暗号化に対して Azure Disk Encryption へのアクセスを有効にする] の横にあるチェック ボックスをオンにします。
 
-    ![リソース グループの作成画面](./media/disk-encryption/portal-qs-keyvault-enable-encryption.png)
+    ![ResourceGroup の作成画面](./media/disk-encryption/portal-qs-keyvault-enable-encryption.png)
 
 1. [アクセス ポリシー] 画面下部の [確認および作成] をクリックします。
 1. 確認したら [作成] をクリックします。
@@ -60,8 +60,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[リージョン]** で、先ほどキー コンテナーを作成するときに使用したものと同じリージョンを選択します (例: **米国東部**)。
 1. **[サイズ]** が *[Standard D2s v3]* になっていることを確認します。
 1. **[管理者アカウント]** で **[パスワード]** を選択します。 ユーザー名とパスワードを入力します。
-    ![リソース グループの作成画面](./media/disk-encryption/portal-qs-vm-creation.png)
-1. [管理] タブを選択し、[診断ストレージ アカウント] が存在することを確認します。 ストレージ アカウントがない場合は、[新規作成] を選択して新しいアカウントに名前を付け、[OK] を選択します。![リソース グループの作成画面](./media/disk-encryption/portal-qs-vm-creation-storage.png)
+    ![ResourceGroup の作成画面](./media/disk-encryption/portal-qs-vm-creation.png)
+1. [管理] タブを選択し、[診断ストレージ アカウント] が存在することを確認します。 ストレージ アカウントがない場合は、[新規作成] を選択して新しいアカウントに名前を付け、[OK] を選択します。![ResourceGroup の作成画面](./media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. [Review + Create]\(レビュー + 作成\) をクリックします。
 1. **[仮想マシンの作成]** ページで、これから作成しようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
 
@@ -77,7 +77,7 @@ VM がデプロイされるまでに数分かかります。 デプロイが完�
 
 1. 暗号化画面の **[Disks to encrypt]\(暗号化するディスク\)** で **[OS とデータ ディスク]** を選択します。
 1. **[暗号化設定]** の [暗号化用のキー コンテナーとキーを選択する] をクリックします。
-1. 右側のサイド バーで、先ほど作成したキー コンテナーの名前を*キー コンテナー**の値として選択し、 **[選択]** をクリックします。
+1. 右側のサイド バーで、先ほど作成したキー コンテナーの名前を**キー コンテナー**の値として選択し、 **[選択]** をクリックします。
 
     ![ディスクと暗号化の選択](./media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. 暗号化画面の上部の [保存] をクリックします。 VM が再起動されることを示す警告がポップアップ表示されます。 **[はい]** をクリックします。

@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Azure Blockchain Tokens のドキュメント
+summary: ブロックチェーン トークンを作成、発行、管理する方法について説明します。
+metadata:
+  title: Azure Blockchain Tokens のドキュメント - チュートリアル、API リファレンス
+  description: ブロックチェーン トークンを発行、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Azure Blockchain Tokens を使用して Azure 上のブロックチェーン トークンを作成および管理する方法を紹介します。
+  services: azure-blockchain
+  ms.service: azure-blockchain
+  ms.topic: landing-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 6df625c2264db279e29c4ebcf5aab5695b335a0e
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508433"
+landingContent:
+- title: Azure Blockchain Tokens について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Blockchain Tokens とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: アカウント管理
+      url: account-management.md
+    - text: テンプレート
+      url: templates.md
+    - text: 構成可能性
+      url: composability.md
+- title: 作業開始
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: プレビュー アクセスへのサインアップ
+      url: https://aka.ms/PreviewForm
+  - linkListType: video
+    links:
+    - text: Azure Blockchain Tokens の概要
+      url: https://aka.ms/ABTokensPartI
+    - text: アカウントの管理
+      url: https://aka.ms/ABTokensPartII
+    - text: テンプレートと構成可能性
+      url: https://aka.ms/ABTokensPartIII
+    - text: トークンと Token Taxonomy Framework
+      url: https://aka.ms/TokenTaxFramework

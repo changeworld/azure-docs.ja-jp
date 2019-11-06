@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c665c65dcda2266a7acd7bc78726179d559f4d64
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61318390"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163918"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>環境を Azure DevOps CI/CD パイプラインに統合する
 Azure DevOps Services (旧称 Visual Studio Team Services) にインストールされている Azure DevTest Labs タスク拡張機能を使用して、継続的インテグレーション (CI)/継続的デリバリー (CD) のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 これらの拡張機能により、特定のテスト タスク用に[環境](devtest-lab-test-env.md)をすばやく展開し、テストの終了時に削除するのがより簡単になります。 
@@ -62,7 +62,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、[Azure De
 4. **[テンプレート名]** で、ソース コード リポジトリに保存した環境の名前を選択します*。 
 5. **[ラボ名]** 、 **[リポジトリ名]** 、 **[テンプレート名]** は、Azure リソース ID のわかりやすい表現です。 フレンドリ名を手動で入力するとエラーが発生します。ドロップダウン リストを使用して情報を選択してください。
 6. **[環境名]** で、ラボ内の環境のインスタンスを一意に識別する名前を入力します。  ラボ内で一意にする必要があります。
-7. **[パラメーター ファイル]** と **[パラメーター]** を使用すると、カスタム パラメーターを環境に渡すことができます。 どちらか一方を使用しても両方を使用してもパラメーター値を設定できます。 この例では、[パラメーター] セクションを使用します。 環境内に定義した変数の名前を使用します。次に例を示します。`-administratorLogin “$(administratorLogin)” -administratorLoginPassword “$(administratorLoginPassword)” -databaseName “$(databaseName)” -cacheSKUCapacity 1`
+7. **[パラメーター ファイル]** と **[パラメーター]** を使用すると、カスタム パラメーターを環境に渡すことができます。 どちらか一方を使用しても両方を使用してもパラメーター値を設定できます。 この例では、[パラメーター] セクションを使用します。 環境内に定義した変数の名前を使用します。次に例を示します。`-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
 8. 環境テンプレート内の情報は、テンプレートの出力セクションで渡すことができます。 「**Create output variables based on the environment template output**」(環境テンプレートの出力に基づいて出力変数を作成する) を確認し、他のタスクがデータを使用できるようにしてください。 `$(Reference name.Output Name)` は推奨されるパターンです。 たとえば、参照名が DTL で、テンプレート内の出力名が location の場合、変数は `$(DTL.location)` になります。
 
 ## <a name="delete-the-environment"></a>環境の削除

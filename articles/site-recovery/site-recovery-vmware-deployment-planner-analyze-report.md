@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/29/2019
+ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: f4b63cfc67e20158e434e1a401d47144c3e0f90c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618737"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690726"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する
 
@@ -276,7 +276,6 @@ Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 | 20 MB/秒 
 
 **ソース データ変更頻度** | **上限**
 ---|---
-VM あたりの平均データ変更頻度| 25 MB/秒
 VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/秒
 プロセス サーバーでサポートされる 1 日あたりのデータ変更頻度の上限 | 2 TB
 

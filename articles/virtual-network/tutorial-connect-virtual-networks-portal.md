@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720052"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164057"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -46,21 +46,18 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
 2. **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
-3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
+3. **[基本]** ページで次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用します。
 
     |Setting|値|
     |---|---|
-    |名前|myVirtualNetwork1|
-    |アドレス空間|10.0.0.0/16|
     |Subscription| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
-    |Location| **[米国東部]** を選択します。|
-    |サブネット名|Subnet1|
-    |サブネットのアドレス範囲|10.0.0.0/24|
-
-      ![仮想ネットワークの作成](./media/tutorial-connect-virtual-networks-portal/create-virtual-network.png)
-
-4. 次のように値を変更して、手順 1. ～ 3. を繰り返します。
+    |リージョン| **[米国東部]** を選択します。|
+    |名前|myVirtualNetwork1|
+   
+4. **[IP アドレス]** ページで、 **[アドレス空間]** フィールドに「10.0.0.0/16」と入力します。 下の **[サブネットの追加]** ボタンをクリックし、 **[サブネット名]** に「Subnet1」と入力し、 **[サブネット アドレス範囲]** に「10.0.0.0/24」と入力します。
+   
+5. 次のように値を変更して、手順 1. ～ 3. を繰り返します。
 
     |Setting|値|
     |---|---|
@@ -105,22 +102,26 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
     |Setting|値|
     |---|---|
+    |Resource group| **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。|
     |名前|myVm1|
+    |Location| **[米国東部]** を選択します。|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |Resource group| **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。|
-    |Location| **[米国東部]** を選択します。|
-4. **[サイズの選択]** で、VM サイズを選択します。
-5. **[設定]** に次の値を選択し、 **[OK]** を選択します。
+   
+4. **[サイズ]** オプションで VM サイズを選択します。
+5. **[ネットワーキング]** で以下の値を選択します。
 
     |Setting|値|
     |---|---|
-    |仮想ネットワーク| myVirtualNetwork1 - まだ選択されていない場合は、 **[仮想ネットワーク]** を選択し、 **[仮想ネットワークの選択]** で **[myVirtualNetwork1]** を選択します。|
-    |Subnet| Subnet1 - まだ選択されていない場合は、 **[サブネット]** を選択し、 **[サブネットの選択]** で **[Subnet1]** を選択します。|
+    |仮想ネットワーク| myVirtualNetwork1 - まだ選択されていない場合は、 **[仮想ネットワーク]** を選択し、 **[myVirtualNetwork1]** を選択します。|
+    |Subnet| Subnet1 - まだ選択されていない場合は、 **[サブネット]** を選択し、 **[Subnet1]** を選択します。|
     
+
     ![仮想マシンの設定](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
- 
-6. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。
+   
+6. **[ネットワーク]** を選択します。 **[パブリック受信ポート]** オプションで、 **[選択したポートを許可する]** を選択します。 この下の **[受信ポートを選択]** オプションで、 **[RDP]** を選択します。 
+
+7. 左下隅の **[確認と作成]** ボタンを選択して、VM のデプロイを開始します。
 
 ### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
 
@@ -146,7 +147,7 @@ VM の作成には数分かかります。 両方の VM の作成が完了する
 6. 後の手順で、*myVm1* VM から *myVm2* VM への通信に ping を使用します。 ping は Internet Control Message Protocol (ICMP) を使用していますが、Windows ファイアウォール経由の既定では拒否されます。 *myVm1* VM で、Windows ファイアウォールを介して ICMP を有効にし、後で PowerShell を使って *myVm2* からこの VM に ping を実行できるようにします。
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
     
     このチュートリアルでは VM 間の通信に ping を使用していますが、運用環境のデプロイでは Windows ファイアウォールで ICMP を許可することは推奨されません。

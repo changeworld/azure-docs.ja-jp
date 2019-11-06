@@ -1,24 +1,18 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う | Microsoft Docs
 description: Azure Resource Manager テンプレートを使用して、Log Analytics ワークスペースの作成と構成を実行できます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/11/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 10/22/2019
+ms.openlocfilehash: 5410d6ef11c3f95bb4f02dbd914a1aacbd068a1b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840910"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176382"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
@@ -190,7 +184,7 @@ ms.locfileid: "71840910"
     },
     "immediatePurgeDataOn30Days": {
       "type": "bool",
-      "defaultValue": "false",
+      "defaultValue": "[bool('false')]",
       "metadata": {
         "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
@@ -238,13 +232,13 @@ ms.locfileid: "71840910"
         "metadata": {
           "description": "The resource group name containing the storage account with Azure diagnostics output"
         }
-      }
     },
-    "customlogName": {
+    "customLogName": {
     "type": "string",
     "metadata": {
-      "description": "custom log name"
+      "description": "The custom log name"
       }
+     }
     },
     "variables": {
       "Updates": {
@@ -417,13 +411,13 @@ ms.locfileid: "71840910"
         {
           "apiVersion": "2015-11-01-preview",
           "type": "dataSources",
-          "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
+          "name": "[concat(parameters('workspaceName'), parameters('customLogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
-            "customLogName": "[parameters('customlogName')]",
+            "customLogName": "[parameters('customLogName')]",
             "description": "this is a description",
             "extractions": [
               {
@@ -448,7 +442,7 @@ ms.locfileid: "71840910"
                   "fileSystemLocations": {
                     "linuxFileTypeLogPaths": null,
                     "windowsFileTypeLogPaths": [
-                      "[concat('c:\\Windows\\Logs\\',parameters('customlogName'))]"
+                      "[concat('c:\\Windows\\Logs\\',parameters('customLogName'))]"
                     ]
                   }
                 },
@@ -462,7 +456,7 @@ ms.locfileid: "71840910"
               }
             ]
           }
-        }
+        },
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",
@@ -590,8 +584,8 @@ ms.locfileid: "71840910"
     }
   }
 }
-
 ```
+
 ### <a name="deploying-the-sample-template"></a>サンプル テンプレートのデプロイ
 
 上記のサンプル テンプレートをデプロイするには:

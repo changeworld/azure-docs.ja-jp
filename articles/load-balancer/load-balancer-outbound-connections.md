@@ -1,5 +1,5 @@
 ---
-title: Azure の送信接続
+title: Azure の アウトバウンド接続
 titlesuffix: Azure Load Balancer
 description: この記事では、Azure によって、パブリック インターネット サービスと VM がどのように通信するかを説明します。
 services: load-balancer
@@ -20,7 +20,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/09/2019
 ms.locfileid: "68881065"
 ---
-# <a name="outbound-connections-in-azure"></a>Azure の送信接続
+# <a name="outbound-connections-in-azure"></a>Azure の アウトバウンド接続
 
 Azure では、いくつかの異なるメカニズムを通じて顧客デプロイの送信接続を提供します。 この記事では、どのようなシナリオがあり、それらがいつ適用されるかについて説明するほか、それらのシナリオのしくみと管理方法について説明します。
 

@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 08/05/2019
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a70b1c9d3ac888f0f77cf0f6e9ca37bc6cd4324
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c845966c86659c0ff983bf33c492a67dd99275f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999934"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692958"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -38,9 +38,9 @@ Azure Machine Learning には、機械学習モデルのデータの準備、ト
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
-## <a name="what-can-i-do-with-azure-machine-learning"></a>Azure Machine Learning でできること
+## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Azure Machine Learning サービスでできること
 
-<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning Python SDK</a> とオープンソースの Python パッケージを使用するか、[ビジュアル インターフェイス (プレビュー)](ui-tutorial-automobile-price-train-score.md) を使用すると、Azure Machine Learning ワークスペースで、きわめて正確な機械学習およびディープ ラーニング モデルを自分で構築し、トレーニングすることができます。
+<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning Python SDK</a> とオープンソースの Python パッケージを使用するか、[ビジュアル インターフェイス (プレビュー)](ui-tutorial-automobile-price-train-score.md) を使用すると、Azure Machine Learning service ワークスペースで、きわめて正確な機械学習およびディープ ラーニング モデルを自分で構築し、トレーニングすることができます。
 
 オープンソースの Python パッケージで使用できる多くの機械学習コンポーネントの中から、いずれかを選択できます。たとえば、<a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>、<a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>、<a href="https://pytorch.org" target="_blank">PyTorch</a>、<a href="https://mxnet.io" target="_blank">MXNet</a> などがあります。
 
@@ -54,7 +54,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 ### <a name="ui-based-low-code-experience"></a>UI ベースのローコード エクスペリエンス
 
-コーディング不要のトレーニングの場合は、以下を試してください。
+コーディングなしのトレーニングとデプロイについては、以下を試してください。
 
 + 使いやすいインターフェイスで[自動化された ML 実験](tutorial-first-experiment-automated-ml.md)を作成する。
 + [ビジュアル インターフェイスでのドラッグ アンド ドロップの実験](ui-tutorial-automobile-price-train-score.md)。
@@ -90,10 +90,15 @@ Azure Machine Learning には、機械学習モデルのデータ準備、トレ
 || Machine Learning Studio | Azure Machine Learning:<br/>ビジュアル インターフェイス|
 |---| --- | --- |
 || 一般提供 (GA) | プレビュー段階|
+|ドラッグ アンド ドロップ インターフェイス| はい | はい|
+|実験| スケーリング (10 GB のトレーニング データの上限) | コンピューティング先に合わせてスケーリング|
 |インターフェイスのモジュール| 多数 | 人気のあるモジュールの初期セット|
-|コンピューティング ターゲットのトレーニング| 独自のコンピューティング ターゲット、CPU のサポートのみ| Azure Machine Learning コンピューティング、GPU または CPU をサポート。<br/>(他のコンピューティングは、SDK でサポート)|
-|デプロイのコンピューティング ターゲット| 独自の Web サービス形式 (カスタマイズ不可) | Enterprise セキュリティ オプションおよび Azure Kubernetes Service。 <br/>([他のコンピューティング](how-to-deploy-and-where.md)は SDK でサポート) |
-|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ | ビジュアル インターフェイスではまだサポート対象外。 <br/> (SDK と Azure portal またはワークスペース ランディング ページでサポート)。 |
+|コンピューティング ターゲットのトレーニング| 独自のコンピューティング先、CPU のみ|AML コンピューティング (GPU、CPU)<br/> ノートブック VM |
+|推論コンピューティング先| 独自の Web サービス形式 (カスタマイズ不可) | Azure Kubernetes Service (リアルタイム推論) <br/>AML コンピューティング (バッチ推論) |
+|ML パイプライン| サポートされていません | パイプラインの作成 <br/> 公開されたパイプライン <br/> パイプライン エンドポイント <br/> [ML パイプラインの詳細はこちら](concept-ml-pipelines.md)|
+|ML 操作| 基本的なモデル管理とデプロイ | 構成可能なデプロイ、モデル、およびパイプラインのバージョン管理|
+|モデル| 独自形式。 Studio の外部では使用できません | 標準形式。トレーニング ジョブに依存|
+|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ | ビジュアル インターフェイスではまだサポート対象外。 <br/> (Python SDK およびワークスペースのランディング ページでサポートされます)。 |
 
 ビジュアル インターフェイス (プレビュー) をお試しください ([チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)」を参照してください。
 

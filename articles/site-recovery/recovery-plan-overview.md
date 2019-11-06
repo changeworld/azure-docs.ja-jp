@@ -6,14 +6,14 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814429"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331917"
 ---
 # <a name="about-recovery-plans"></a>復旧計画について
 
@@ -33,6 +33,9 @@ ms.locfileid: "70814429"
 
 
 ## <a name="model-apps"></a>アプリを形成する
+
+> [!NOTE]
+> 最大 100 の保護インスタンスを 1 つの復旧計画に追加できます。
 
 復旧グループを計画および作成してアプリ固有のプロパティをキャプチャできます。 例として、SQL Server バックエンド、ミドルウェア、Web フロントエンドの典型的な 3 層のアプリケーションを考えてみましょう。 通常、フェールオーバー後に各層のマシンが正しい順序で起動するように、復旧計画をカスタマイズします。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844687"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674936"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -173,7 +173,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-この関数が呼び出されると、HTTP 要求は `req` として関数に渡されます。 エントリは、ルート URL 内の _ID_ に基づいて Azure Blob Storage から取得され、関数の本体で `obj` として使用できるようになります。  ここで、指定されるストレージ アカウントは、`AzureWebJobsStorage`で見つかる接続文字列であり、関数アプリケーションで使用されるストレージ アカウントと同じものです。
+この関数が呼び出されると、HTTP 要求は `req` として関数に渡されます。 エントリは、ルート URL 内の _ID_ に基づいて Azure Blob Storage から取得され、関数の本体で `obj` として使用できるようになります。  ここで、指定されるストレージ アカウントは、 で見つかる接続文字列であり、関数アプリケーションで使用されるストレージ アカウントと同じものです。
 
 
 ## <a name="outputs"></a>出力
@@ -281,28 +281,40 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 この関数では、`name` クエリ パラメーターの値は [HttpRequest] オブジェクトの `params` パラメーターから取得されます。 JSON でエンコードされたメッセージ本文は `get_json` メソッドを使用して読み取られます。 
 
 同様に、返される [HttpResponse] オブジェクトに応答メッセージの `status_code` および `headers` を設定できます。
-                                                              
-## <a name="async"></a>非同期
 
-`async def` ステートメントを使って非同期のコルーチンとして Azure 関数を記述することをお勧めします。
+## <a name="concurrency"></a>コンカレンシー
+
+既定では、Functions Python ランタイムで一度に処理できる関数の呼び出しは 1 つだけです。 このコンカレンシー レベルは、次の条件の 1 つ以上に当てはまる場合、十分ではない場合があります。
+
++ 多数の呼び出しを同時に処理しようとしている。
++ 大量の I/O イベントを処理している。
++ アプリケーションが I/O バインドされている。
+
+このような状況では、複数の言語ワーカー プロセスを使用して非同期的に実行することにより、パフォーマンスを向上させることができます。  
+
+### <a name="async"></a>非同期
+
+`async def` ステートメントを使用して、関数を非同期のコルーチンとして実行することをお勧めします。
 
 ```python
-# Will be run with asyncio directly
-
+# Runs with asyncio directly
 
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-main() 関数が同期 (修飾子が付いていない) の場合、関数は `asyncio` スレッド プール内で自動的に実行されます。
+`main()` 関数が同期 (`async` 修飾子が付いていない) の場合、関数は `asyncio` スレッド プール内で自動的に実行されます。
 
 ```python
-# Would be run in an asyncio thread-pool
-
+# Runs in an asyncio thread-pool
 
 def main():
     some_blocking_socket_io()
 ```
+
+### <a name="use-multiple-language-worker-processes"></a>複数の言語ワーカー プロセスを使用する
+
+既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 ただし、ホスト インスタンスあたり複数の言語ワーカー プロセスを作成することはサポートされています。 関数呼び出しは、これらの言語ワーカー プロセス間で均等に分散させることができます。 この値を変更するには、[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用します。 
 
 ## <a name="context"></a>Context
 
@@ -319,7 +331,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python) クラスには次のメソッドが含まれています。
+[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python) クラスには次の文字列属性が含まれています。
 
 `function_directory`  
 関数が実行されるディレクトリです。
@@ -386,22 +398,15 @@ pip install -r requirements.txt
 
 発行の準備ができたら、依存関係がすべて、プロジェクト ディレクトリのルートにある *requirements.txt* ファイル内にリストされていることを確認します。 Azure Functions では、これらの依存関係を[リモート ビルド](functions-deployment-technologies.md#remote-build)できます。
 
-発行から除外されたプロジェクト ファイルとフォルダー (仮想環境フォルダーなど) は、.funcignore ファイルに一覧表示されます。  
+発行から除外されたプロジェクト ファイルとフォルダー (仮想環境フォルダーなど) は、.funcignore ファイルに一覧表示されます。 
 
-Azure にデプロイし、リモート ビルドを実行するには、次のコマンドを使用します。
+既定では、[Azure Functions Core Tools](functions-run-local.md#v2) と [VS Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、リモート ビルドが実行されます。 たとえば、次のコマンドを使用します。
 
 ```bash
-func azure functionapp publish <app name> --build remote
+func azure functionapp publish <app name>
 ```
 
-リモート ビルドを使用しておらず、使用しているパッケージにおいてコンパイラが必要とされるが、PyPI からの manylinux 対応のホイールのインストールがサポートされていない場合、ローカルでビルドしない Azure への発行は失敗し、次のエラーが返されます。
-
-```
-There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
-The terminal process terminated with exit code: 1
-```
-
-必要なバイナリをローカルでビルドして構成するには、[Azure Functions Core Tools](functions-run-local.md#v2) (func) を使用することにより、ご利用のローカル マシン上に [Docker をインストール](https://docs.docker.com/install/)し、次のコマンドを実行して発行します。 `<app name>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
+ご自身のアプリを Azure ではなくローカルでビルドするには、[Azure Functions Core Tools](functions-run-local.md#v2) (func) を使用することにより、ご利用のローカル マシン上に [Docker をインストール](https://docs.docker.com/install/)し、次のコマンドを実行して発行します。 `<app name>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

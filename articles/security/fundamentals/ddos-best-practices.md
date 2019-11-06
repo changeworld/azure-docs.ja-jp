@@ -1,9 +1,9 @@
 ---
-title: Azure DDoS Protection のベスト プラクティスと参照アーキテクチャ | Microsoft Docs
+title: Azure DDoS Protection - 回復性の高いソリューションの設計 | Microsoft Docs
 description: ログ データを使用して、アプリケーションに関する深い洞察を得る方法について説明します。
 services: security
 author: barclayn
-manager: barbkess
+manager: RKarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -12,58 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
+ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: a5b4451a6d03cec8e100ed67c0ed9333e8a221de
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727486"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595418"
 ---
-# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection:ベスト プラクティスと参照アーキテクチャ
+# <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection - 回復性の高いソリューションの設計
 
 この記事は、IT の意思決定者およびセキュリティ担当者を対象に書かれています。 Azure、ネットワーク、およびセキュリティに関する知識があることを前提としています。
-
-分散型サービス拒否 (DDoS) に対する回復性を設計するときは、さまざまな障害モードに対応した計画と設計が必要です。 この記事では、DDoS 攻撃に対する回復性を備えたアプリケーションを Azure で設計するためのベスト プラクティスについて説明します。
-
-## <a name="types-of-attacks"></a>攻撃の種類
-
-DDoS は、アプリケーションのリソースを枯渇させようとする攻撃の種類です。 目的は、正当な要求を処理するアプリケーションの可用性と能力に影響を与えることです。 攻撃は、いっそう高度なものになり、規模と影響も大きくなっています。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
-
-Azure では、DDoS 攻撃に対する保護が継続的に提供されています。 この保護は、追加コストなしに、既定で Azure プラットフォームに統合されています。 
+DDoS は、アプリケーションのリソースを枯渇させようとする攻撃の種類です。 目的は、正当な要求を処理するアプリケーションの可用性と能力に影響を与えることです。 攻撃は、いっそう高度なものになり、規模と影響も大きくなっています。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。 分散型サービス拒否 (DDoS) に対する回復性を設計するときは、さまざまな障害モードに対応した計画と設計が必要です。 Azure では、DDoS 攻撃に対する保護が継続的に提供されています。 この保護は、追加コストなしに、既定で Azure プラットフォームに統合されています。
 
 プラットフォームに備わっている中核の DDoS 保護機能に加え、[Azure DDoS Protection Standard](https://azure.microsoft.com/services/ddos-protection/) を使用すれば、 ネットワーク攻撃に対する高度な DDoS 対策機能が提供されます。 この機能は、お客様固有の Azure リソースを保護するために自動的に調整されます。 保護は、新しい仮想ネットワークの作成時に簡単に有効にできます。 作成の後で行うこともでき、アプリケーションまたはリソースを変更する必要はありません。
 
 ![お客様と仮想ネットワークを攻撃者から保護するうえでの Azure DDoS Protection の役割](./media/ddos-best-practices/image1.png)
 
-DDoS 攻撃は、帯域幅消費型攻撃、プロトコル攻撃、リソース攻撃の 3 つのカテゴリに分類できます。
-
-### <a name="volumetric-attacks"></a>帯域幅消費型攻撃
-
-帯域幅消費型攻撃は、DDoS 攻撃の最も一般的な種類です。 帯域幅消費型攻撃は、ネットワーク層とトランスポート層を対象とするブルート フォース攻撃です。 これは、ネットワーク リンクなどのリソースを使い果たそうとするものです。 
-
-多くの場合、これらの攻撃は、複数の感染したシステムを使用して、一見正当なトラフィックでネットワーク層をあふれさせます。 これには、インターネット制御メッセージ プロトコル (ICMP)、ユーザー データグラム プロトコル (UDP)、伝送制御プロトコル (TCP) などのさまざまなネットワーク層プロトコルが使われます。
-
-最もよく使われるネットワーク層 DDoS 攻撃は、TCP SYN フラッド、ICMP エコー、UDP フラッド、DNS、および NTP 増幅攻撃です。 この種の攻撃は、サービスを中断するだけでなく、いっそう悪質で対象を絞ったネットワーク侵入に対する煙幕としても使われます。 最近の帯域幅消費型攻撃の例としては、GitHub に影響を与えた [Memcached エクスプロイト](https://www.wired.com/story/github-ddos-memcached/)があります。 この攻撃は UDP ポート 11211 を対象とし、1.35 Tb/秒の攻撃量が生成されました。
-
-### <a name="protocol-attacks"></a>プロトコル攻撃
-
-プロトコル攻撃の対象はアプリケーションのプロトコルです。 これらは、ファイアウォール、アプリケーション サーバー、ロード バランサーなどのインフラストラクチャ デバイスで利用可能なすべてのリソースを使用することを試みます。 プロトコル攻撃では、形式が正しくないパケットまたはプロトコル異常を含むパケットが使われます。 この攻撃は、多数のオープン要求を送信することによって行われ、サーバーと他の通信デバイスはそれに応答してパケット応答を待機します。 ターゲットはオープン要求への応答を試み、最終的にシステムはクラッシュします。
-
-プロトコル ベースの DDoS 攻撃の最も一般的な例は、TCP SYN フラッドです。 この攻撃は、TCP SYN 要求を連続させてターゲットに過剰な負荷をかけようとするものです。 目的は、ターゲットを応答不能にすることです。 2016 年の Dyn の停止は、アプリケーション層攻撃とは別に、Dyn の DNS サーバーのポート 53 を対象とした TCP SYN フラッドで構成されました。
-
-### <a name="resource-attacks"></a>リソース攻撃
-
-リソース攻撃の対象はアプリケーション レイヤーです。 リソース攻撃では、システムを過負荷にすることを目的としてバックエンド プロセスがトリガーされます。 リソース攻撃では、一見正常に見えますが、CPU を大量に消費するクエリをサーバーに渡すトラフィックが悪用されます。 リソースを使い尽くすために必要なトラフィックの量は、他の種類の攻撃より少なくて済みます。 リソース攻撃のトラフィックは正当なトラフィックと区別できないため、検出するのは困難です。 最も一般的なリソース攻撃は、HTTP/HTTPS サービスおよび DNS サービスに対して行われます。
-
-## <a name="shared-responsibility-in-the-cloud"></a>クラウドにおける共同責任
-
-攻撃の多様化と高度化に対抗するには、多層防御戦略が役立ちます。 セキュリティは、お客様と Microsoft の共同責任です。 Microsoft ではこれを[共同責任モデル](https://azure.microsoft.com/blog/microsoft-incident-response-and-shared-responsibility-for-cloud-computing/)と呼んでいます。 次の図は、この責任の分担を示したものです。
-
-![Azure 側の責任とお客様側の責任](./media/ddos-best-practices/image2.png)
-
-Azure のユーザーには、Microsoft のベスト プラクティスを確認し、障害に備えて設計およびテストされたグローバル分散アプリケーションを構築することによるメリットがあります。
 
 ## <a name="fundamental-best-practices"></a>基本的なベスト プラクティス
 
@@ -80,7 +46,7 @@ Microsoft Azure で実行されるサービスを保護するには、お客様�
 
 ### <a name="design-for-scalability"></a>スケーラビリティのための設計
 
-スケーラビリティとは、負荷の増大に対するシステムの対応能力のことです。 お客様は、[水平方向にスケーリングする](/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす必要があります (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。
+スケーラビリティとは、負荷の増大に対するシステムの対応能力のことです。 [水平方向にスケーリングする](/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。
 
 [Azure App Service](/azure/app-service/app-service-value-prop-what-is) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/overview-hosting-plans)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me)を使用するように各ロールを構成してください。 [Azure Virtual Machines](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、仮想マシン (VM) アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](/azure/virtual-machines/virtual-machines-windows-manage-availability)に各 VM が含まれていることを確認してください。 自動スケーリング機能には[仮想マシン スケール セット](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)を使うことをお勧めします。
 
@@ -161,7 +127,7 @@ Web アプリケーション ファイアウォールを構成しても、帯域
 
 DDoS Protection Standard を利用している場合は、インターネットに接続するエンドポイントの仮想ネットワークで同サービスが有効になっていることを確認する必要があります。 DDoS アラートを構成すると、インフラストラクチャに対する攻撃の可能性を常時監視するのに役立ちます。 
 
-お客様は、お使いのアプリケーションを独自に監視する必要があります。 アプリケーションの通常の動作を把握し、 DDoS 攻撃時にアプリケーションが想定の動作をしなくなった場合の対応を準備しましょう。
+お使いのアプリケーションを独自に監視してください。 アプリケーションの通常の動作を把握し、 DDoS 攻撃時にアプリケーションが想定の動作をしなくなった場合の対応を準備しましょう。
 
 #### <a name="testing-through-simulations"></a>シミュレーションを通じたテスト
 
@@ -193,7 +159,8 @@ Microsoft は、重要なインフラストラクチャ プロバイダーとし
 
 ### <a name="risk-evaluation-of-your-azure-resources"></a>Azure リソースのリスク評価
 
-継続的に DDoS 攻撃のリスクの範囲を把握することが不可欠です。 次のことを定期的に確認するようにしてください。 
+継続的に DDoS 攻撃のリスクの範囲を把握することが不可欠です。 次のことを定期的に確認するようにしてください。
+
 - パブリックに使用可能な新しい Azure リソースのうち、保護が必要なものはあるか。
 
 - サービスに単一障害点はあるか。 
@@ -226,7 +193,7 @@ Azure DDoS Protection Standard は、ユーザーの介入がなくても DDoS �
 
 - リソースに対して DDoS 攻撃を行うという脅迫が攻撃者からあった場合。
 
-- Azure DDoS Protection Standard の IP または IP 範囲をホワイトリストに登録する必要がある場合。 一般的なシナリオは、トラフィックが外部クラウドの WAF から Azure にルーティングされる場合に IP をホワイトリストに登録する場合です。 
+- Azure DDoS Protection Standard の IP または IP 範囲の一覧表示を許可する必要がある場合。 一般的なシナリオは、トラフィックが外部クラウドの WAF から Azure にルーティングされる場合に IP の一覧表示を許可する場合です。 
 
 ビジネスに重大な影響を及ぼす攻撃については、重大度 A の[サポート チケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成してください。
 
@@ -301,8 +268,8 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure DDoS Protection 製品のページ](https://azure.microsoft.com/services/ddos-protection/)
+* [クラウドにおける共同責任](shared-responsibility.md)
 
-* [Azure DDoS Protection のブログ](https://aka.ms/ddosblog)
+* [Azure DDoS Protection 製品のページ](https://azure.microsoft.com/services/ddos-protection/)
 
 * [Azure DDoS Protection のドキュメント](/azure/virtual-network/ddos-protection-overview)

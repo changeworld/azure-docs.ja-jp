@@ -1,15 +1,15 @@
 ---
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
-ms.author: tamram
-ms.openlocfilehash: 5be5cf6cd410874d870b351c209517e90fcf3848
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: rogarana
+ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699344"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391702"
 ---
 Azure File Sync エージェントは、新機能の追加や問題の解決を目的として定期的に更新されます。 Azure File Sync エージェントの更新プログラムを公開されしだい入手できるように Microsoft Update を構成しておくことをお勧めします。
 
@@ -37,18 +37,23 @@ Azure File Sync エージェントの更新プログラムのインストール�
 
 次の手順では、インストーラーの完了後に変更を行う必要がある場合に、設定を変更する方法について説明します。
 
-シェルを開き、同期エージェントをインストールしたディレクトリに移動して、サーバー コマンドレットをインポートします。既定では、次のようになります。
+PowerShell コンソールを開き、同期エージェントをインストールしたディレクトリに移動してから、サーバー コマンドレットをインポートします。 これは、既定ではこのようになります。
 ```powershell
-cd C:\Program Files\Azure\StorageSyncAgent
-
-ipmo .\StorageSync.Management.ServerCmdlets.dll
+cd 'C:\Program Files\Azure\StorageSyncAgent'
+Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
 ```
 
 `Get-StorageSyncAgentAutoUpdatePolicy` を実行して、現在のポリシー設定を確認し、変更するかどうかを判断できます。
 
-現在のポリシー設定を遅延更新追跡に変更するには、`Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration` を使用できます
+現在のポリシー設定を遅延更新追跡に変更する場合は、以下を使用できます。
+```powershell
+Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration
+```
 
-現在のポリシー設定を即時更新追跡に変更するには、`Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest` を使用できます
+現在のポリシー設定を即時更新追跡に変更する場合は、以下を使用できます
+```powershell
+Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest
+```
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>エージェントのライフサイクルと変更管理の保証
 Azure File Sync は、新機能および機能強化を継続的に導入するするクラウド サービスです。 つまり、Azure File Sync エージェントの特定のバージョンは、一定の期間のみサポートされます。 デプロイを容易にするために、次のルールによって、変更管理プロセス中にエージェントの更新/アップグレードに対応するための十分な時間と通知が保証されます。

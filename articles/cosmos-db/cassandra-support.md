@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 66a972e66c35cdd5b8dedceefbe3dbd008380da9
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155657"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327157"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -94,9 +94,9 @@ Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートさ�
   
 
 
-## <a name="cassandra-query-language-limits"></a>Cassandra クエリ言語の制限
+## <a name="cassandra-api-limits"></a>Cassandra API の制限
 
-Azure Cosmos DB の Cassandra API には、テーブルに格納されるデータのサイズに制限がありません。 パーティション キーの制限を確実に適用しながら、数百テラバイトまたはペタバイトのデータを格納することができます。 同様に、すべてのエンティティまたは同等の行に列数の制限はありませんが、エンティティの合計サイズが 2 MB を超えることはできません。
+Azure Cosmos DB の Cassandra API には、テーブルに格納されるデータのサイズに制限がありません。 パーティション キーの制限を確実に適用しながら、数百テラバイトまたはペタバイトのデータを格納することができます。 同様に、すべてのエンティティまたはまたは行に相当するものに列数の制限はありませんが、エンティティの合計サイズが 2 MB を超えることはできません。パーティション キーごとのデータは、他のすべての API の場合と同じように、10 GB を超えることはできません。
 
 ## <a name="tools"></a>ツール 
 
@@ -130,7 +130,7 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 
 Azure Cosmos DB は、Cassandra API アカウントで以下のデータベース コマンドをサポートしています。
 
-* CREATE KEYSPACE 
+* CREATE KEYSPACE (このコマンドのレプリケーション設定は無視されます)
 * CREATE TABLE 
 * ALTER TABLE 
 * USE 
@@ -140,7 +140,7 @@ Azure Cosmos DB は、Cassandra API アカウントで以下のデータベー�
 * BATCH - unlogged コマンドのみサポートされています 
 * DELETE
 
-CQLV4 互換の SDK から実行された場合のすべての CRUD 操作により、エラー、消費された要求の単位数、アクティビティ ID に関する追加情報が返されます。 コマンドの削除と更新は、プロビジョニングされたリソースの過剰使用を防ぐため、検討中のリソース ガバナンスで処理する必要があります。 
+CQLV4 互換の SDK から実行された場合のすべての CRUD 操作で、エラーと消費された要求の単位数に関する追加情報が返されます。 プロビジョニングされたスループットの適切な使用を防ぐために、削除および更新コマンドを取り扱う際にリソース ガバナンスを考慮する必要があります。 
 * gc_grace_seconds を指定する場合は値を 0 にする必要があることに注意してください。
 
 ```csharp
@@ -157,18 +157,32 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>一貫性のマッピング 
 
-Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping) に詳しく説明されています。
+Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping)に詳しく説明されています。
 
 ## <a name="permission-and-role-management"></a>アクセス許可とロールの管理
 
-Azure Cosmos DB は、プロビジョニングのためのロールベースのアクセス制御 (RBAC)、キーのローテーション、メトリックの表示、[Azure portal](https://portal.azure.com) から取得できる読み書きおよび読み取り専用のパスワードおよびキーをサポートしています。 Azure Cosmos DB では、CRUD アクティビティのためのユーザーとロールはまだサポートされていません。 
+Azure Cosmos DB は、プロビジョニングのためのロールベースのアクセス制御 (RBAC)、キーのローテーション、メトリックの表示、[Azure portal](https://portal.azure.com) から取得できる読み書きおよび読み取り専用のパスワードおよびキーをサポートしています。 Azure Cosmos DB では、CRUD アクティビティのためのロールはサポートされていません。
 
-## <a name="planned-support"></a>計画されているサポート 
-* create keyspace コマンドのリージョン名は現在無視されます。データのディストリビューションは、基礎となる Cosmos DB プラットフォームに実装され、アカウントのポータルまたは PowerShell を介して公開されます。 
+## <a name="keyspace-and-table-options"></a>キースペースとテーブルのオプション
+
+現在、"Create Keyspace" コマンドでのリージョン名、クラス、replication_factor、およびデータセンターのオプションは無視されます。 システムは、基になる Azure Cosmos DB の[グローバル分散](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood)レプリケーション方法を使用して、リージョンを追加します。 複数リージョンにまたがってデータが存在する必要がある場合は、PowerShell、CLI、またはポータルを使用して、アカウント レベルでこれを有効にすることができます。詳細については、[リージョンを追加する方法](how-to-manage-database-account.md#addremove-regions-from-your-database-account)に関する記事を参照してください。 Azure Cosmos DB ではすべての書き込みが持続的であることが保証されるため、Durable_writes を無効にすることはできません。 すべてのリージョンで、Azure Cosmos DB は 4 つのレプリカで構成されるレプリカ セット全体にデータをレプリケートします。このレプリカ セットの[構成](global-dist-under-the-hood.md)は変更できません。
+ 
+ゼロに設定する必要がある gc_grace_seconds を除き、テーブルの作成時にはすべてのオプションが無視されます。
+キースペースとテーブルには、最小値が 400 RU/秒の、"cosmosdb_provisioned_throughput" という名前の追加オプションがあります。 キースペースのスループットによって、複数のテーブル間でスループットを共有することが可能になります。これは、プロビジョニングされたスループットがすべてのテーブルで利用されていないシナリオに役立ちます。 Alter Table コマンドを使用すると、複数のリージョン間でプロビジョニングされたスループットを変更できます。 
+
+```
+CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  
+
+CREATE TABLE sampleks.t1(user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=2000; 
+
+ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
+
+```
 
 
+## <a name="usage-of-cassandra-retry-connection-policy"></a>Cassandra 再試行接続ポリシーの使用
 
-
+Azure Cosmos DB は、リソースによって管理されるシステムです。 これは、操作によって使用される要求単位に基づいて、1 秒間に特定の数の操作を実行できることを意味します。 アプリケーションが特定の秒においてその制限を超えると、要求はレート制限され、例外がスローされます。 Azure Cosmos DB の Cassandra API は、このような例外を Cassandra ネイティブ プロトコルの過負荷エラーに変換します。 レート制限時にアプリケーションが要求をインターセプトして再試行できるように、[spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) および [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) 拡張機能が提供されています。 他の SDK を使用して Azure Cosmos DB の Cassandra API にアクセスする場合は、これらの例外に対して再試行する接続ポリシーを作成します。
 
 ## <a name="next-steps"></a>次の手順
 

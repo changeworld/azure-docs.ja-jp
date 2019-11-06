@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 22c12d3233d85a02f6eef8d63e5a4494b4f0cdfa
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273704"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264480"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
 Azure Event Hubs は、拡張性の高いデータ ストリーミング プラットフォームです。 そのため、Event Hubs の使用は、多くの場合、サービスの利用開始後に増えます。 このような使用では、Event Hubs のスケーリングとより大きな転送率の処理を行うために、事前に定義された[スループット単位](event-hubs-scalability.md#throughput-units)を増やす必要があります。 Event Hubs の**自動インフレ**機能は、使用量のニーズに合わせてスループット単位の数を増やすことで、自動的にスケールアップします。 スループット単位を増やすことで、以下の状況で必要になる調整シナリオを防ぐことができます。
@@ -40,10 +40,13 @@ Event Hubs のトラフィックは [スループット単位](event-hubs-scalab
 
 ## <a name="enable-auto-inflate-on-a-namespace"></a>名前空間で自動インフレを有効にする
 
-Event Hubs 名前空間の自動インフレを有効または無効にするには、次のいずれかの方法を使用します。
+Standard レベルの Event Hubs 名前空間の自動インフレを有効または無効にするには、次のいずれかの方法を使用します。
 
 - [Azure ポータル](https://portal.azure.com)。
 - [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate)。
+
+> [!NOTE]
+> Basic レベルの Event Hubs 名前空間では、自動インフレはサポートされていません。
 
 ### <a name="enable-auto-inflate-through-the-portal"></a>ポータルで自動インフレを有効にする
 

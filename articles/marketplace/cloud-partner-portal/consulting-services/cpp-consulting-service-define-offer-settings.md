@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a89c1c548469b568a34521b240683af285c2342
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942786"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485184"
 ---
 # <a name="offer-settings-tab"></a>[プランの設定] タブ
 
@@ -59,7 +59,7 @@ ms.locfileid: "64942786"
 -   プロフェッショナル サービスの要点: 1 時間のブリーフィング
 -   クラウド移行プラットフォーム: 1 時間のブリーフィング
 -   PowerApps および Microsoft Flow: 1 日のワークショップ
--   Azure Machine Learning サービス: 3 週間の PoC
+-   Azure Machine Learning:3 週間の PoC
 -   ブリック アンド クリック小売りソリューション: 1 時間のブリーフィング
 -   データ持ち込み: 1 週間のワークショップ
 -   クラウド分析:3 日間のワークショップ

@@ -34,7 +34,7 @@
             - name: ASP .NET Core
               href: quickstart-v2-aspnet-core-webapp.md
             - name: NodeJS
-              href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
+              href: quickstart-v2-nodejs-webapp.md
             - name: Java
               href: quickstart-v2-java-webapp.md
             - name: Python
@@ -42,7 +42,7 @@
         - name: Web API
           items:
             - name: ASP .NET
-              href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
+              href: quickstart-v2-dotnet-native-aspnet.md
             - name: ASP .NET Core
               href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
         - name: モバイル アプリとデスクトップ アプリ
@@ -59,6 +59,8 @@
           items:
             - name: .NET Core コンソール (デーモン)
               href: quickstart-v2-netcore-daemon.md
+            - name: Python コンソール デーモン
+              href: quickstart-v2-python-daemon.md
             - name: ASP.NET デーモン Web アプリ
               href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
     - name: チュートリアル
@@ -345,6 +347,8 @@
               href: active-directory-how-applications-are-added.md
             - name: リダイレクト URI および応答 URL に関する制約と制限
               href: reply-url.md
+            - name: サポートされているアカウントの種類別の検証の相違点
+              href: supported-accounts-validation.md
             - name: 単一テナント アプリとマルチテナント アプリ
               href: single-and-multi-tenant-apps.md
         - name: アクセス許可と同意
@@ -518,7 +522,7 @@
           items:
             - name: Android
               href: quickstart-v1-android.md
-            - name: iOS と macOS
+            - name: iOS
               href: quickstart-v1-ios.md
             - name: Windows デスクトップ .NET
               href: quickstart-v1-dotnet.md

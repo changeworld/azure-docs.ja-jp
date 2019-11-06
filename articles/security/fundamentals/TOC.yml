@@ -1,13 +1,11 @@
 - name: 基礎のドキュメント
-  href: index.md
-- name: アーキテクチャと設計
-  href: overview.md
-  expanded: false
-  items: null
+  href: index.yml
 - name: アーキテクチャと設計
   href: overview.md
   expanded: false
   items:
+    - name: クラウドにおける共同責任
+      href: shared-responsibility.md
     - name: 高度な脅威検出
       displayName: 'vulnerability, virus, IDs, incident'
       href: threat-detection.md
@@ -42,49 +40,9 @@
           href: data-encryption-best-practices.md
         - name: 保存時のデータ暗号化
           href: encryption-atrest.md
-        - name: IaaS VM のディスク暗号化
-          items:
-            - name: Azure Disk Encryption について
-              displayName: 'BitLocker, bek'
-              href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: クイック スタート
-              items:
-                - name: Azure CLI を使用して Linux VM を暗号化する
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: Azure PowerShell を使用して Linux VM を暗号化する
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: Azure CLI を使用して Windows VM を暗号化する
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: Azure PowerShell を使用して Windows VM を暗号化する
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
-            - name: Azure Disk Encryption
-              items:
-                - name: ディスク暗号化の前提条件
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites'
-                - name: Windows VM のディスク暗号化
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows'
-                - name: Linux VM のディスク暗号化
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux'
-                - name: Disk Encryption を仮想マシン スケール セットの拡張機能のシーケンス処理と共に使用する
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-extension-sequencing'
-                - name: ディスク暗号化に関する付録
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-appendix'
-                - name: ディスク暗号化の FAQ
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq'
-                - name: トラブルシューティング
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg'
-                - name: Azure AD アプリを使用した Azure Disk Encryption (以前のリリース)
-                  displayName: active directory
-                  items:
-                    - name: Azure AD アプリによるディスク暗号化の前提条件
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad'
-                    - name: Azure AD アプリによるディスク暗号化 (Windows VM)
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows-aad'
-                    - name: Azure AD アプリによるディスク暗号化 (Linux VM)
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
+        - name: 仮想マシン用の Azure Disk Encryption
+          displayName: virtual machines and virtual machine scale sets
+          href: azure-disk-encryption-vms-vmss.md
     - name: Storage のセキュリティ ガイド
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: カスタマー ロックボックス
@@ -141,9 +99,6 @@
         - name: ベスト プラクティス
           displayName: 'password, identity, active directory'
           href: identity-management-best-practices.md
-        - name: サブスクリプション管理者に対する MFA の適用
-          displayName: identity
-          href: global-admin.md
     - name: ネットワークのセキュリティ
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, azure application gateway, application gateway, ips, waf'
       href: network-overview.md
@@ -152,8 +107,6 @@
           href: network-best-practices.md
         - name: DDoS Protection
           href: ddos-best-practices.md
-        - name: 境界のセキュリティ
-          href: network-best-practices.md
 - name: Application
   items:
     - name: PaaS
@@ -165,30 +118,13 @@
           href: paas-applications-using-storage.md
         - name: PaaS の DB ベスト プラクティス
           href: paas-applications-using-sql.md
-    - name: IoT
-      href: iot-overview.md
-      items:
-        - name: IoT セキュリティのベスト プラクティス
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-best-practices?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
-        - name: IoT のセキュリティ
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-architecture?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
-        - name: IoT デプロイのセキュリティ保護
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-security-deployment?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Azure Service Fabric のセキュリティ
-      href: service-fabric-overview.md
-      items:
-        - name: ベスト プラクティス
-          href: service-fabric-best-practices.md
-        - name: セキュリティ チェックリスト
-          href: service-fabric-checklist.md
+      href: service-fabric-best-practices.md
 - name: 監視、監査、および操作
   href: management-monitoring-overview.md
   items:
     - name: 監査とログ記録
       items:
-        - name: セキュリティ管理
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: リモート管理セキュリティ
           href: management.md
         - name: Azure ログ統合
@@ -200,9 +136,6 @@
             - name: Azure AD 監査ログの統合
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: Security Center のアラートの統合
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: Key Vault のログの統合
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md
@@ -292,20 +225,16 @@
           href: ../blueprints/ukofficial-iaaswa-overview.md
         - name: PaaS Web アプリケーション
           href: ../blueprints/ukofficial-paaswa-overview.md
-- name: ホワイト ペーパー
-  href: white-papers.md
+- name: セキュリティ ホワイト ペーパー
+  href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure セキュリティ サービス
   href: services-technologies.md
-- name: 技術的概要
-  href: overviews.md
 - name: ベスト プラクティス
   href: best-practices-and-patterns.md
 - name: リソース
   items:
     - name: 組み込みのセキュリティ制御
       href: security-controls.md
-    - name: Azure セキュリティの MVP プログラム
-      href: mvp.md
     - name: サイバーセキュリティに関する相談
       href: cyber-services.md
     - name: セキュリティ イベント サポート チケットのログ記録

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Open Datasets (プレビュー) のドキュメント
-summary: Azure Open Datasets では、ML モデルの強化に役立つ天気、国勢調査、休日などのデータを提供しています。データはキュレーションとクリーニングを済ませてあるので、最小限の準備で利用できます。
+title: Azure Open Datasets のドキュメント
+summary: Azure Open Datasets は、天気、国勢調査、休日など、ML モデルの強化のために最小限の準備で利用できる、キュレーションとクレンジングが済んだデータです。
 metadata:
-  title: Open Datasets (プレビュー) のドキュメント - Azure
-  description: Azure Open Datasets では、ML モデルの強化に役立つ天気、国勢調査、休日などのデータを提供しています。データはキュレーションとクリーニングを済ませてあるので、最小限の準備で利用できます。
+  title: Open Datasets のドキュメント - Azure
+  description: Azure Open Datasets は、天気、国勢調査、休日など、ML モデルの強化のために最小限の準備で利用できる、キュレーションとクレンジングが済んだデータです。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: data-science-vm
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
-  ms.date: 09/03/2019
-  ms.openlocfilehash: 44dea30e44e204664a5266a37c740b2eb23a49f7
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.date: 11/04/2019
+  ms.openlocfilehash: b6813c3fd521b12ec91eddb0176efedb8c5c120a
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70309363"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73496618"
 landingContent:
 - title: Open Datasets について
   linkLists:
@@ -32,7 +32,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 自動の機械学習により回帰モデルを構築する
-      url: tutorial-opendatasets-automl.md
+      url: /azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context
+    - text: Azure Machine Learning で画像分類モデルをエンリッチする
+      url: /azure/machine-learning/service/tutorial-train-models-with-aml?context=azure/open-datasets/context/open-datasets-context
 - title: リファレンス コンテンツの確認
   linkLists:
   - linkListType: reference

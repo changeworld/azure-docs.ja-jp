@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6edbd21eaf6f0a6f4f07263e006cc31fb1529511
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877834"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430708"
 ---
-# <a name="what-is-vmware-solution-on-azure-by-cloudsimple"></a>CloudSimple による Azure VMware ソリューションとは
+# <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>CloudSimple による Azure VMware ソリューションとは何ですか?
 
-**Azure VMware Solution by CloudSimple** は、VMware プラットフォームを Azure で実行できるようにするための完全に管理されたサービスです。 このソリューションには、vSphere、vCenter、vSAN、NSX T、および対応するツールが含まれています。 VMware 環境は、Azure ベア メタル インフラストラクチャ上の Azure クラウド上の場所でネイティブに実行されます。 サービスには、効率的かつ安全に VMware プラットフォームを使用するために必要なすべての機能が含まれています。
+**CloudSimple による Azure VMware ソリューション**は、VMware プラットフォームを Azure で実行できるようにするための完全に管理されたサービスです。 このソリューションには、vSphere、vCenter、vSAN、NSX T、および対応するツールが含まれています。 VMware 環境は、Azure ベア メタル インフラストラクチャ上の Azure クラウド上の場所でネイティブに実行されます。 サービスには、効率的かつ安全に VMware プラットフォームを使用するために必要なすべての機能が含まれています。
 
 ![CloudSimple による Azure VMware ソリューションの概要](media/azure-vmware-solution-by-cloudsimple.png)
 

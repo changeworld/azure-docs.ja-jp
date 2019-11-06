@@ -1,7 +1,7 @@
 ---
-title: Shared Access Signature を使用してワークフローを送信する - Microsoft Genomics
-titleSuffix: Azure
-description: この記事では、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
+title: Shared Access Signatures を使用したワークフロー
+titleSuffix: Microsoft Genomics
+description: この記事では、ストレージ アカウント キーの代わりに Shared Access Signature (SAS) を使用して Microsoft Genomics サービスにワークフローを送信する方法について説明します。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657108"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248580"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを Microsoft Genomics に送信する 
 
@@ -33,14 +33,14 @@ Microsoft Genomics に送信する SAS は、入力ファイルと出力ファ�
 Microsoft Genomics サービスに送信される各ワークフローには、入力ファイルごとに 1 つと出力コンテナーに 1 つという 2 つ以上の SAS トークンが必要です。
 
 入力ファイルの SAS には、次のプロパティが必要です。
-1.  範囲 (アカウント、コンテナー、BLOB): BLOB
-2.  有効期限: 今から 48 時間後
-3.  アクセス許可: 読み取り
+ - 範囲 (アカウント、コンテナー、BLOB): BLOB
+ - 有効期限: 今から 48 時間後
+ - アクセス許可: 読み取り
 
 出力コンテナーの SAS には、次のプロパティが必要です。
-1.  範囲 (アカウント、コンテナー、BLOB): コンテナー
-2.  有効期限: 今から 48 時間後
-3.  アクセス許可: 読み取り、書き込み、削除
+ - 範囲 (アカウント、コンテナー、BLOB): コンテナー
+ - 有効期限: 今から 48 時間後
+ - アクセス許可: 読み取り、書き込み、削除
 
 
 ## <a name="create-a-sas-for-the-input-files-and-the-output-container"></a>入力ファイルと出力コンテナー用の SAS を作成する

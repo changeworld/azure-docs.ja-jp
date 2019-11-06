@@ -2,18 +2,17 @@
 title: Azure Analysis Services のコード、プロジェクト、データベースのサンプル | Microsoft Docs
 description: Azure Analysis Services のコード、プロジェクト、データベースのサンプルについて説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d34da4e1b3d9c3131db1d9edd94f67a132dc564f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 17ce7de58afcf9ef2090371b897ff1bbbef824e3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932361"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146306"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル
 

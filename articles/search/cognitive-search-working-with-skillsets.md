@@ -1,27 +1,28 @@
 ---
-title: スキルセットを使用する - Azure Search
-description: スキルセットはコグニティブ検索において AI 強化パイプラインを作成する場所であり、いくつかの概念とスキルセットの動作原理を理解していれば、簡単なスキルセットや複雑なスキルセットを構築できます
-manager: eladz
+title: スキルセットを使用する
+titleSuffix: Azure Cognitive Search
+description: スキルセットは、Azure コグニティブ検索で AI エンリッチメント パイプラインを作成する場所です。 スキルセットの作成に関する重要な概念と詳細について説明します。
+manager: nitinme
 author: vkurpad
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/05/2019
 ms.author: vikurpad
-ms.openlocfilehash: f75e6dece376076d4aa5e33497aff7e4f9f56857
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265692"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790166"
 ---
-# <a name="working-with-skillsets"></a>スキルセットを使用する
-この記事の対象者は強化パイプラインの動作をより深く理解する必要がある開発者であり、コグニティブ検索プロセスの概念を理解していることが前提です。 コグニティブ検索を初めて使用する場合は、最初に次の記事をお読みください。
-+ [Azure Search での "コグニティブ検索" とは?](cognitive-search-concept-intro.md)
-+ [Azure Search 内のナレッジ ストアとは](knowledge-store-concept-intro.md)
+# <a name="working-with-skillsets-in-azure-cognitive-search"></a>Azure コグニティブ検索でスキルセットを使用する
+
+この記事の対象者は、エンリッチメント パイプラインの動作をより深く理解する必要がある開発者であり、AI エンリッチメント プロセスの概念を理解していることが前提です。 この概念を初めて知った場合は、次の方法で開始します。
++ [Azure コグニティブ検索における AI エンリッチメント](cognitive-search-concept-intro.md)
++ [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md)
 
 ## <a name="specify-the-skillset"></a>スキルセットを指定する
-スキルセットは Azure Search の再利用可能なリソースであり、スキルセットではインデックス作成時にテキストや画像の内容を分析、変換、および強化するために使用されるコグニティブ スキルのコレクションが指定されています。 スキルセットを作成すると、データ インジェスト フェーズでテキストや画像の強化をアタッチし、生コンテンツから新しい情報や構造を抽出して作成することができます。
+スキルセットは Azure コグニティブ検索の再利用可能なリソースであり、スキルセットではインデックス作成時にテキストや画像の内容を分析、変換、および強化するために使用されるコグニティブ スキルのコレクションが指定されています。 スキルセットを作成すると、データ インジェスト フェーズでテキストや画像の強化をアタッチし、生コンテンツから新しい情報や構造を抽出して作成することができます。
 
 スキルセットには、次の 3 つのプロパティがあります。
 
@@ -36,7 +37,7 @@ ms.locfileid: "71265692"
 ### <a name="enrichment-tree"></a>強化ツリー
 
 スキルセットによってドキュメントが徐々に強化される様子を見るため、強化前のドキュメントの内容から始めましょう。 ドキュメント解析の出力は、データ ソースと選択した特定の解析モードに依存します。 これは、検索インデックスにデータを追加するときに、[フィールド マッピング](search-indexer-field-mappings.md)によってコンテンツを取得できるドキュメントの状態でもあります。
-![パイプライン ダイアグラム内のナレッジ ストア](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "パイプライン ダイアグラム内のナレッジ ストア")
+![パイプラインにおけるナレッジ ストアの図](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Kパイプラインにおけるナレッジ ストアの図")
 
 強化パイプラインに入ったドキュメントは、コンテンツおよび関連付けられている強化のツリーとして表されます。 このツリーは、ドキュメント解析の出力としてインスタンス化されます。 強化ツリー形式により、強化パイプラインではメタデータをプリミティブ データ型にもアタッチできます。これは有効な JSON オブジェクトではありませんが、有効な JSON 形式に射影できます。 次の表では、強化パイプラインに入ったドキュメントの状態を示します。
 
@@ -70,7 +71,7 @@ ms.locfileid: "71265692"
 
 プロジェクションとは、ナレッジ ストアに保存するノードを強化ツリーから選択するプロセスです。 プロジェクションとは、テーブルのプロジェクションまたはオブジェクトのプロジェクションとして出力できるドキュメント (コンテンツと強化) のカスタム形状です。 プロジェクションの使用について詳しくは、[プロジェクションの操作](knowledge-store-projection-overview.md)に関する記事をご覧ください。
 
-![フィールド マッピング オプション](./media/cognitive-search-working-with-skillsets/field-mapping-options.png "強化パイプラインのフィールド マッピング オプション")
+![フィールド マッピング オプション](./media/cognitive-search-working-with-skillsets/field-mapping-options.png "エンリッチメント パイプラインのフィールド マッピング オプション")
 
 上の図は、強化パイプライン内の場所に基づいて使用するセレクターを示したものです。
 
@@ -86,7 +87,7 @@ ms.locfileid: "71265692"
 
 ### <a name="skill-1-split-skill"></a>スキル #1: 分割スキル 
 
-![ドキュメント解析後の強化ツリー](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "ドキュメント解析後で、スキル実行前の強化ツリー")
+![ドキュメント解析後の強化ツリー](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "ドキュメント解析後、スキル実行前の強化ツリー")
 
 ```"/document/reviews_text"``` のスキル コンテキストでは、このスキルは `reviews_text` に対して 1 回実行されます。 スキルの出力はリストであり、`reviews_text` が 5000 文字のセグメントに分割されています。 分割スキルからの出力は `pages` という名前で、強化ツリーに追加されます。 `targetName` 機能を使用することで、強化ツリーに追加される前に、スキル出力の名前を変更できます。
 
@@ -99,7 +100,7 @@ ms.locfileid: "71265692"
 
 ### <a name="skill-2-language-detection"></a>スキル #2: 言語検出
  言語検出スキルは、スキルセットで定義されている 3 番目のスキルですが (スキル #3)、次に実行されるスキルです。 入力要求によってブロックされないため、前のスキルと並列に実行されます。 先行する分割スキルと同様に、言語検出スキルもドキュメントごとに 1 回呼び出されます。 強化ツリーには言語用の新しいノードが追加されています。
- ![スキル #2 の後の強化ツリー](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "スキル #2 実行後の強化ツリー")
+ ![スキル #2 の後の強化ツリー](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Enスキル #2 実行後の強化ツリー")
  
  ### <a name="skill-3-key-phrases-skill"></a>スキル #3: キー フレーズ スキル 
 
@@ -113,7 +114,7 @@ ms.locfileid: "71265692"
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>ナレッジ ストアに強化を保存する 
 
-スキルセットでは、強化されたドキュメントをテーブルまたはオブジェクトとして射影できるナレッジ ストアも定義されています。 強化されたデータをナレッジ ストアに保存するには、強化されたドキュメントの一連のプロジェクションを定義します。 ナレッジ ストアについて詳しくは、「[Azure Search 内のナレッジ ストアとは](knowledge-store-concept-intro.md)」を参照してください。
+スキルセットでは、強化されたドキュメントをテーブルまたはオブジェクトとして射影できるナレッジ ストアも定義されています。 強化されたデータをナレッジ ストアに保存するには、強化されたドキュメントの一連のプロジェクションを定義します。 ナレッジ ストアの詳細については、[ナレッジ ストアの概要](knowledge-store-concept-intro.md)に関するページを参照してください。
 
 ### <a name="slicing-projections"></a>プロジェクションのスライス
 

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
 ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71066251"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL Database と Data Warehouse の Private Link (プレビュー)
@@ -27,11 +27,11 @@ Azure SQL Database におけるデータの流出とは、データベース管�
 
 SQL Database に接続している Azure VM 内で SQL Server Management Studio (SSMS) を実行しているユーザーのシナリオについて考えてみましょう。 この SQL Database は、米国西部のデータ センターにあります。 次の例では、ネットワーク アクセス制御を使用して SQL Database のパブリック エンドポイントでアクセスを制限する方法を示します。
 
-1. [Allow Azure Services]\(Azure サービスを許可する\) を <bpt id="p1">**</bpt>[オフ]<ept id="p1">**</ept> に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 サーバーおよびデータベース レベルのファイアウォール規則で IP アドレスが許可されていないことを確認してください。 詳細については、「[Azure SQL Database および Data Warehouse のネットワーク アクセスの制御](sql-database-networkaccess-overview.md)」を参照してください。
+1. [Allow Azure Services]\(Azure サービスを許可する\) を **[オフ]** に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 サーバーおよびデータベース レベルのファイアウォール規則で IP アドレスが許可されていないことを確認してください。 詳細については、「[Azure SQL Database および Data Warehouse のネットワーク アクセスの制御](sql-database-networkaccess-overview.md)」を参照してください。
 1. VM のプライベート IP アドレスを使用して SQL Database へのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)と [VNet ファイアウォール規則](sql-database-firewall-configure.md)に関する記事を参照してください。
 1. Azure VM で、次のように[ネットワーク セキュリティ グループ (NSG)](../virtual-network/manage-network-security-group.md) とサービス タグを使用して、送信接続の範囲を絞り込みます。
     - 米国西部にある SQL Database への接続のみを許可するように、サービス タグへのトラフィックを許可する NSG ルールを指定します (Service Tag = SQL.WestUs)
-    - すべてのリージョンで SQL Database への接続を拒否するように、サービス タグへのトラフィックを拒否する NSG ルールを (高い優先度で) 指定します (Service Tag = SQL)
+    - すべてのリージョンで SQL Database への接続を拒否するように、サービス タグへのトラフィックを拒否する NSG ルールを (**高い優先度**で) 指定します (Service Tag = SQL)
 
 この設定が終了すると、Azure VM は米国西部リージョンにある SQL Database にのみ接続できます。 ただし、接続は 1 つの SQL Database に限定されません。 この VM は、サブスクリプションに含まれていないデータベースも含め、米国西部リージョン内の任意の SQL データベースに引き続き接続できます。 上記のシナリオでは、データの流出が特定のリージョンに限定されていますが、完全には除外されていません。
 

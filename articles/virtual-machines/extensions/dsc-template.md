@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 59f8035aa69f21196a2134bf6bc1b12f3e5b34c4
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815708"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437971"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -193,7 +193,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 
 ## <a name="default-configuration-script"></a>既定の構成スクリプト
 
-次の値について詳しくは、[ローカル構成マネージャーの基本設定](/powershell/dsc/metaconfig#basic-settings)に関するページをご覧ください。
+次の値について詳しくは、[ローカル構成マネージャーの基本設定](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings)に関するページをご覧ください。
 DSC 拡張機能の既定の構成スクリプトは、次の表に記載されている LCM プロパティの構成にのみ使用できます。
 
 | プロパティ名 | 種類 | 説明 |
@@ -430,4 +430,4 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 - [仮想マシン スケール セットと Azure DSC 拡張機能の使用](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)について知る。
 - [DSC による安全な資格情報管理](dsc-credentials.md)の詳細を確認する。
 - [Azure DSC 拡張機能ハンドラーの概要](dsc-overview.md)を確認する。
-- PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/dsc/overview)を参照してください。
+- PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/scripting/dsc/overview/overview)を参照してください。

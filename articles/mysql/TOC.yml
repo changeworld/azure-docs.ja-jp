@@ -57,6 +57,8 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Java 接続プール
+      href: sample-scripts-java-connection-pooling.md
 - name: 概念
   items:
     - name: DB とサーバー
@@ -71,6 +73,8 @@
       items:
         - name: 価格レベル
           href: concepts-pricing-tiers.md
+        - name: 予約容量の前払い
+          href: concept-reserved-pricing.md
         - name: 制限
           href: concepts-limits.md
     - name: データ アクセスとセキュリティ

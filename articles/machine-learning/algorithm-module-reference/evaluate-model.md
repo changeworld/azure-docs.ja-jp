@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 17263c8e7300f427b7d82aea65e1f83edf6d6fc4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128848"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693798"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
@@ -44,7 +44,7 @@ ms.locfileid: "70128848"
 モデルを評価するには、入力列とスコアのセットを含むデータセットを接続する必要があります。  他に使用できるデータがない場合は、ご自分の元のデータセットを使用できます。
 
 1. [Score Model (モデルのスコア付け)](./score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
-2. **Evaluate Model (モデルの評価)** モジュールをクリックして、実験を実行して評価スコアを生成します。
+2. **Evaluate Model (モデルの評価)** モジュールをクリックして、パイプラインを実行して評価スコアを生成します。
 
 ## <a name="use-testing-data"></a>テスト データを使用する
 

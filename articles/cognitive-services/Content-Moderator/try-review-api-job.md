@@ -3,19 +3,19 @@ title: REST API コンソールでモデレーション ジョブを使用する
 titleSuffix: Azure Cognitive Services
 description: Review API のジョブ操作を使用して、Azure Content Moderator で画像コンテンツまたはテキスト コンテンツの徹底的なコンテンツ モデレーション ジョブを開始します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: af636deaafc05238c287d095e644588ed8c5f26d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 4eded22d5f7a8f19f286f9e90185d695b4c28fc6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880045"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755293"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>モデレーション ジョブ (REST) を定義して使用する
 

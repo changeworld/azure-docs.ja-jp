@@ -4,28 +4,28 @@ description: Azure AD Privileged Identity Management (PIM) で Azure リソー�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e1ed018f66d4f5eefd02d587504cf64969f47b
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 0c9a58fb6cd8591f571b4e65c3ab88cc59e38cda
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804049"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756322"
 ---
-# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクティビティおよび監査履歴を表示する
 
-組織内の Azure リソース ロールのアクティビティ、アクティブ化、および監査履歴を Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で表示できます。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure のロールベースのアクセス制御 (RBAC) 機能を利用する Azure portal 内のすべてのリソースで、PIM のセキュリティおよびライフサイクル管理機能を利用できます。
+組織内の Azure リソース ロールのアクティビティ、アクティブ化、および監査履歴を Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で表示できます。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure のロールベースのアクセス制御 (RBAC) 機能を利用する Azure portal 内のすべてのリソースで、Privileged Identity Management のセキュリティおよびライフサイクル管理機能を利用できます。
 
 ## <a name="view-activity-and-activations"></a>アクティビティとアクティブ化を表示する
 
@@ -51,7 +51,7 @@ ms.locfileid: "70804049"
 
 ## <a name="export-role-assignments-with-children"></a>子を含むロールの割り当てをエクスポートする
 
-コンプライアンス要件により、ロールの割り当ての完全な一覧を監査担当者に提供しなければならない場合があります。 PIM を使用すると、特定のリソースでロールの割り当て (すべての子リソースのロールの割り当てを含む) のクエリを実行することができます。 以前は、管理者がサブスクリプションに対するロールの割り当ての完全な一覧を取得するのは困難で、特定のリソースごとにロールの割り当てをエクスポートする必要がありました。 PIM を使用すると、サブスクリプション内のアクティブかつ対象となるすべてのロールの割り当て (すべてのリソース グループとリソースに対するロールの割り当てを含む) についてクエリを実行できます。
+コンプライアンス要件により、ロールの割り当ての完全な一覧を監査担当者に提供しなければならない場合があります。 Privileged Identity Management を使用すると、特定のリソースでロールの割り当て (すべての子リソースのロールの割り当てを含む) のクエリを実行できます。 以前は、管理者がサブスクリプションに対するロールの割り当ての完全な一覧を取得するのは困難で、特定のリソースごとにロールの割り当てをエクスポートする必要がありました。 Privileged Identity Management を使用すると、サブスクリプション内のアクティブかつ資格のあるすべてのロールの割り当て (すべてのリソース グループとリソースに対するロールの割り当てを含む) についてクエリを実行できます。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -111,6 +111,6 @@ ms.locfileid: "70804049"
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)
-- [PIM で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)
-- [PIM で Azure AD ロールの監査履歴を表示する](pim-how-to-use-audit-log.md)
+- [Privileged Identity Management で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)
+- [Privileged Identity Management で Azure リソース ロールに対する要求を承認または拒否する](pim-resource-roles-approval-workflow.md)
+- [Privileged Identity Management で Azure AD ロールの監査履歴を表示する](pim-how-to-use-audit-log.md)

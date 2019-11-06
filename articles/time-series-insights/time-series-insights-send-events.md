@@ -3,21 +3,20 @@ title: Azure Time Series Insights 環境へのイベントの送信 | Microsoft 
 description: イベント ハブを構成し、サンプル アプリケーションを実行して、Azure Time Series Insights で表示できるイベントをプッシュする方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 84eb0e230875b999218b67d47a66a3c92b494253
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2878a77918fdd1c1cd298ae536bcdd3bec065e91
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072797"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991124"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 
@@ -30,14 +29,14 @@ ms.locfileid: "70072797"
 1. 自分のイベント ハブを選択します。
 1. イベント ハブを作成すると、イベント ハブの名前空間が作成されます。 名前空間内にまだイベント ハブを作成していない場合は、メニューの **[エンティティ]** でイベント ハブを作成します。  
 
-    [![イベント ハブの一覧](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
+    [![イベント ハブの一覧](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
 
 1. イベント ハブを作成した後、イベント ハブの一覧でそれを選択します。
 1. メニューで、 **[エンティティ]** の **[イベント ハブ]** を選択します。
 1. イベント ハブの名前を選択して構成します。
 1. **[概要]** で **[コンシューマー グループ]** を選択し、 **[コンシューマー グループ]** を選択します。
 
-    [![コンシューマー グループを作成する](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
+    [![コンシューマー グループを作成する](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
 
 1. Time Series Insights のイベント ソースで排他的に使用されるコンシューマー グループを作成していることを確認します。
 
@@ -46,11 +45,11 @@ ms.locfileid: "70072797"
 
 1. メニューで、 **[設定]** の **[共有アクセス ポリシー]** を選択してから、 **[追加]** を選択します。
 
-    [![[共有アクセス ポリシー] を選んでから、[追加] ボタンを選択する](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox)
+    [![[共有アクセス ポリシー] を選んでから、[追加] ボタンを選択する](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
 
 1. **[新しい共有アクセス ポリシーの追加]** ウィンドウで、**MySendPolicy** という名前の共有アクセス ポリシーを作成します。 後で示す C# の例では、この共有アクセス ポリシーを使用してイベントを送信します。
 
-    [![[ポリシー名] ボックスに「MySendPolicy」と入力する](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox)
+    [![[ポリシー名] ボックスに「MySendPolicy」と入力する](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
 
 1. **[要求]** で、 **[送信]** チェック ボックスをオンにします。
 
@@ -64,7 +63,7 @@ Time Series Insights の更新では、インスタンスを使用して、受�
 
 1. `timeSeriesId` の値を設定します。 **タイム シリーズ ID** について詳しくは、「[タイム シリーズ モデル](./time-series-insights-update-tsm.md)」をご覧ください。
 
-### <a name="push-events"></a>イベントをプッシュする (風力発電サンプル)
+### <a name="push-events-to-windmills-sample"></a>風力発電のサンプルにイベントをプッシュする
 
 1. 検索バーで「**Event Hubs**」を検索します。 返された一覧で、 **[Event Hubs]** を選択します。
 
@@ -72,20 +71,20 @@ Time Series Insights の更新では、インスタンスを使用して、受�
 
 1. **[共有アクセス ポリシー]**  >  **[MySendPolicy]** にアクセスします。 **[接続文字列 - 主キー]** の値をコピーします。
 
-    [![主キーの接続文字列の値をコピーする](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
+    [![主キーの接続文字列の値をコピーする](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
 
-1. [https://aka.ms/MFASetup](https://tsiclientsample.azurewebsites.net/windFarmGen.html ) にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
-1. Web ページの **[Event Hub Connection String]\(イベント ハブ接続文字列\)** ボックスに、「[イベントをプッシュする](#push-events)」でコピーした接続文字列を貼り付けます。
+1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](https://tsiclientsample.azurewebsites.net/windFarmGen.html ) にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
+1. Web ページの **[イベント ハブ接続文字列]** ボックスに、[風力発電の入力フィールド](#push-events-to-windmills-sample)でコピーした接続文字列を貼り付けます。
   
-    [![[イベント ハブ接続文字列] ボックスに主キーの接続文字列を貼り付ける](media/send-events/updated_two.png)](media/send-events/updated_two.png#lightbox)
+    [![[イベント ハブ接続文字列] ボックスに主キーの接続文字列を貼り付ける](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
 
 1. **[Click to start]\(クリックして開始\)** を選択します。 シミュレーターで、直接使用できるインスタンスの JSON が生成されます。
 
 1. Azure portal でイベント ハブに戻ります。 **[概要]** ページに、イベント ハブによって受信された新しいイベントが表示されます。
 
-    [![イベント ハブのメトリックが表示されているイベント ハブの [概要] ページ](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
+    [![イベント ハブのメトリックが表示されているイベント ハブの [概要] ページ](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
 
-## <a name="json"></a>サポートされている JSON の形式
+## <a name="supported-json-shapes"></a>サポートされている JSON 構造
 
 ### <a name="example-one"></a>例 1
 
@@ -199,3 +198,5 @@ Time Series Insights の更新では、インスタンスを使用して、受�
 ## <a name="next-steps"></a>次の手順
 
 - Time Series Insights エクスプローラーで[自分の環境を表示](https://insights.timeseries.azure.com)します。
+
+- [IoT Hub デバイス メッセージ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)の詳細を参照してください。

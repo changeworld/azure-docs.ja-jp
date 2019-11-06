@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f23ef5506027a5de9f4189a11636d323679707f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883340"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488495"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database 用語集
 
 |Context|期間|詳細情報|
 |:---|:---|:---|
 |Azure サービス名|Azure SQL Database または SQL Database|[Azure SQL Database サービス](sql-database-technical-overview.md)|
-|コンピューティング レベル|サーバーレス (プレビュー)|[サーバーレス コンピューティング レベル](sql-database-serverless.md)
+|コンピューティング レベル|サーバーレス |[サーバーレス コンピューティング レベル](sql-database-serverless.md)
 ||プロビジョニング済み|[サーバーレス コンピューティング レベル](sql-database-serverless.md)
 |デプロイ オプション |単一データベース|[単一データベース](sql-database-single-database.md)|
 ||エラスティック プール|[エラスティック プール](sql-database-elastic-pool.md)|

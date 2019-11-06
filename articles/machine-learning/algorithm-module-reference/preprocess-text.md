@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 4ee5e90b36f7a8fb3bfb42cad425cbb272553b3a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210557"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692687"
 ---
 # <a name="preprocess-text"></a>Preprocess Text (テキストの前処理)
 

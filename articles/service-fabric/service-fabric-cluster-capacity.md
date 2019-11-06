@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167398"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333105"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -81,7 +81,7 @@ Azure Resource Manager テンプレートからは、プライマリ ノード �
 | ブロンズ           | 1                              | 少なくとも 50 GB のローカル SSD を搭載した VM                                              | Service Fabric クラスターにより延期されることはない           | 長時間の延期は不可                                                    |
 
 > [!WARNING]
-> Bronze の持続性で実行されているノード タイプには "_特権が与えられません_"。 つまり、ステートレス ワークロードに影響を与えるインフラストラクチャ ジョブは、停止または延期されません。これによりワークロードに影響を及ぼす場合があります。 ステートレス ワークロードのみを実行するノード タイプには、Bronze のみを使用します。 運用環境のワークロードの場合は、Silver 以上が実行されていることをお勧めします。 
+> Bronze の持続性で実行されているノード タイプには "_特権が与えられません_"。 つまり、ステートフル ワークロードに影響を与えるインフラストラクチャ ジョブは、停止または延期されません。これによりワークロードに影響を及ぼす場合があります。 ステートレス ワークロードのみを実行するノード タイプには、Bronze のみを使用します。 運用環境のワークロードの場合は、Silver 以上が実行されていることをお勧めします。 
 > 
 > 持続性レベルに関係なく、VM スケール セットに対する [Deallocation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) 操作を行うと、クラスターは破棄されます
 
@@ -123,7 +123,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 
 信頼性レベルは、以下のプランから選ぶことができます。
 
-* Platinum - ターゲットのレプリカ セット数が 7 つでシステム サービスを実行します
+* Platinum - ターゲットのレプリカ セット数が 9 つでシステム サービスを実行します
 * Gold - ターゲットのレプリカ セット数が 7 つでシステム サービスを実行します
 * Silver - ターゲットのレプリカ セット数が 5 つでシステム サービスを実行します 
 * Bronze - ターゲットのレプリカ セット数が 3 つでシステム サービスを実行します

@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
+author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 06/10/2019
-ms.openlocfilehash: 226b0c1cb11fc872cb7759e0d0e49275b9c2d9bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/14/2019
+ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568145"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390694"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 
@@ -39,7 +39,7 @@ Azure SQL Database は、最新の安定したバージョンの SQL Server デ�
 
 Standard 可用性モデルには、次の 2 つのレイヤーがあります。
 
-- ステートレス計算レイヤー。`sqlserver.exe` プロセスを実行しており、アタッチされている SSD 上に一時的なデータとキャッシュ データのみが含まれています (TempDB、モデル データベース、プラン キャッシュ、バッファー プール、列のストア プールなど)。 このステートレス ノードは、`sqlserver.exe` の初期化、ノードの正常性の制御、および他のノードへのフェールオーバーを必要に応じて実行する Azure Service Fabric によって操作されます。
+- ステートレス計算レイヤー。`sqlservr.exe` プロセスを実行しており、一時的なデータとキャッシュ データのみ (TempDB、アタッチされた SSD 上のモデル データベース、およびメモリ内のプラン キャッシュ、バッファー プール、列ストア プールなど) が含まれています。 このステートレス ノードは、`sqlservr.exe` の初期化、ノードの正常性の制御、および他のノードへのフェールオーバーを必要に応じて実行する Azure Service Fabric によって操作されます。
 - ステートフル データ レイヤー。データベース ファイル (.mdf/.ldf) は Azure BLOB ストレージに保存されています。 Azure BLOB ストレージには、組み込みのデータ可用性と冗長性の機能があります。 SQL Server プロセスがクラッシュした場合でも、ログ ファイル内のすべてのレコードまたはデータ ファイル内のすべてのページが保持されることを保証します。
 
 データベース エンジンまたはオペレーティング システムがアップグレードされた場合、あるいは障害が検出された場合、Azure Service Fabric は常に、ステートレス SQL Server プロセスを十分な空き容量がある別のステートレス計算ノードに移行します。 Azure BLOB ストレージ内のデータは移行による影響を受けず、データ/ログ ファイルは、新しく初期化された SQL Server プロセスにアタッチされます。 このプロセスでは 99.99% の可用性が保証されますが、新しい SQL Server インスタンスがコールド キャッシュを使用して起動されるため、負荷の高いワークロードによって移行中にパフォーマンスの低下が発生する可能性があります。
@@ -54,14 +54,32 @@ Premium および Business Critical サービス レベルでは、Premium 可�
 
 その他の利点としては、Premium 可用性モデルには、セカンダリ レプリカの 1 つに読み取り専用の SQL 接続をリダイレクトする機能が含まれています。 この機能は、[読み取りスケールアウト](sql-database-read-scale-out.md)と呼ばれます。追加料金なしで 100% の追加のコンピューティング容量を提供し、分析ワークロードなどの読み取り専用の操作をプライマリ レプリカからオフロードします。
 
+## <a name="hyperscale-service-tier-availability"></a>Hyperscale サービス レベルの可用性
+
+Hyperscale サービス レベルのアーキテクチャについては、「[分散機能アーキテクチャ](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture)」を参照してください。 
+
+![Hyperscale 機能のアーキテクチャ](./media/sql-database-hyperscale/hyperscale-architecture.png)
+
+Hyperscale の可用性モデルには、次の 4 つのレイヤーが含まれます。
+
+- ステートレス計算レイヤー。`sqlservr.exe` プロセスを実行しており、一時的なデータとキャッシュ データのみ (カバーしない RBPEX キャッシュ、TempDB、アタッチされた SSD 上のモデル データベースなど、およびメモリ内のプラン キャッシュ、バッファー プール、列ストア プールなど) が含まれています。 このステートレス レイヤーには、プライマリ計算レプリカと、必要に応じて、フェールオーバー ターゲットとして機能できる多くのセカンダリ計算レプリカが含まれています。
+- ページ サーバーによって形成されるステートレス ストレージ レイヤー。 このレイヤーは、計算レプリカで実行されている `sqlservr.exe` プロセス用の分散ストレージ エンジンです。 各ページ サーバーには、アタッチされた SSD 上のカバーする RBPEX キャッシュ、メモリにキャッシュされたデータ ページなど、一時的なデータとキャッシュされたデータのみが含まれます。 各ページ サーバーでは、負荷分散、冗長性、高可用性を提供するためのアクティブ/アクティブ構成にペアのページ サーバーがあります。
+- ステートフルなトランザクション ログのストレージ レイヤー。ログ サービス プロセス、トランザクション ログのランディング ゾーン、およびトランザクション ログの長期保存を実行する計算ノードによって形成されます。 ランディング ゾーンと長期保存では Azure Storage を使用します。これにより、トランザクション ログの可用性と[冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy)が提供され、コミットされたトランザクションのデータの持続性が確保されます。
+- ステートフルなデータ ストレージ レイヤー。Azure Storage に格納され、ページ サーバーによって更新される、データベース ファイル (.mdf/.ndf) が含まれます。 このレイヤーでは、Azure Storage のデータの可用性と[冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy)の機能を使用します。 これにより、Hyperscale アーキテクチャの他のレイヤーのプロセスがクラッシュした場合や、計算ノードで障害が発生した場合でも、データ ファイル内のすべてのページが保持されることが保証されます。
+
+すべての Hyperscale レイヤー内の計算ノードは、Azure Service Fabric で実行されます。これにより、各ノードの正常性が制御され、必要に応じて使用できる正常なノードへのフェールオーバーが行われます。
+
+Hyperscale の高可用性の詳細については、「[ハイパースケールでのデータベースの高可用性](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)」を参照してください。
+
 ## <a name="zone-redundant-configuration"></a>ゾーン冗長の構成
 
-既定では、Premium 可用性モデル用のノードのクラスターは、同じデータ センター内に作成されます。 [Azure Availability Zones](../availability-zones/az-overview.md) の導入によって、SQL Database では同じリージョン内のさまざまな可用性ゾーンに対する各種のレプリカを、クラスター内に配置できます。 単一障害点をなくすため、制御リングも複数のゾーンで 3 つのゲートウェイ リング (GW) として複製できます。 特定のゲートウェイ リングへのルーティングは [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) によって制御されます。 Premium または Business Critical サービス レベルでのゾーン冗長構成では、追加のデータベース冗長性を作成しないため、追加料金なしで使用できます。 ゾーン冗長構成を選択することで、アプリケーション ロジックにまったく変更を加えずに、データセンターの壊滅的な障害などの極めて大規模な障害に対して、Premium または Business Critical データベースが回復性を備えることができます。 また、既存の Premium または Business Critical データベース、あるいはプールをゾーン冗長構成に変換することもできます。
+既定では、Premium 可用性モデル用のノードのクラスターは、同じデータ センター内に作成されます。 [Azure Availability Zones](../availability-zones/az-overview.md) の導入によって、SQL Database では同じリージョン内のさまざまな可用性ゾーンに対する Business Critical データベースのさまざまなレプリカを配置できます。 単一障害点をなくすため、制御リングも複数のゾーンで 3 つのゲートウェイ リング (GW) として複製できます。 特定のゲートウェイ リングへのルーティングは [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) によって制御されます。 Premium または Business Critical サービス レベルでのゾーン冗長構成では、追加のデータベース冗長性を作成しないため、追加料金なしで使用できます。 ゾーン冗長構成を選択することで、アプリケーション ロジックにまったく変更を加えずに、データセンターの壊滅的な障害などの極めて大規模な障害に対して、Premium または Business Critical データベースが回復性を備えることができます。 また、既存の Premium または Business Critical データベース、あるいはプールをゾーン冗長構成に変換することもできます。
 
 ゾーン冗長データベースでは、離れた距離に位置するさまざまなデータセンターにレプリカがあるため、ネットワーク待機時間が長くなるとコミット時間が増大し、一部の OLTP ワークロードのパフォーマンスに影響を及ぼす可能性があります。 いつでもゾーン冗長設定を無効にして単一ゾーン構成に戻ることができます。 このプロセスはオンライン操作であり、通常のサービス レベル更新プログラムと似ています。 プロセスの最後に、データベースまたはプールがゾーン冗長リングから単一ゾーン リングに (または逆方向に) 移行されます。
 
 > [!IMPORTANT]
 > ゾーン冗長データベースとエラスティック プールは、現在、選択されたリージョンの Premium および Business Critical サービス レベルのみでサポートされています。 Business Critical レベルを使用している場合、ゾーン冗長構成は Gen5 コンピューティング ハードウェアが選択されている場合のみ利用できます。 ゾーン冗長データベースがサポートされているリージョンの最新情報については、「[リージョン別のサービスのサポート](../availability-zones/az-overview.md#services-support-by-region)」を参照してください。  
+> この機能は、Managed Instance では使用できません。
 
 ゾーン冗長による高可用性アーキテクチャを、次の図に示します。
 
@@ -70,6 +88,13 @@ Premium および Business Critical サービス レベルでは、Premium 可�
 ## <a name="accelerated-database-recovery-adr"></a>高速データベース復旧 (ADR)
 
 [高速データベース復旧 (ADR)](sql-database-accelerated-database-recovery.md) は、特に実行時間の長いトランザクションがある場合に、データベースの可用性を大幅に向上させる、新しい SQL データベース エンジン機能です。 ADR は現在、単一データベース、エラスティック プール、および Azure SQL Data Warehouse で使用できます。
+
+## <a name="testing-database-fault-resiliency"></a>データベース障害の回復性のテスト
+
+高可用性は Azure SQL Database プラットフォームの基礎となる部分であり、データベース アプリケーションに対して透過的に機能します。 しかし、計画済みまたは計画外のイベント時に開始された自動フェールオーバー操作がアプリケーションに与える影響をテストしてから、運用環境用にデプロイする必要があると弊社は認識しています。 特別な API を呼び出してデータベースまたはエラスティック プールを再起動することができ、これによりフェールオーバーがトリガーされます。 ゾーン冗長データベースまたはエラスティック プールの場合、API 呼び出しによって、クライアント接続が別の AZ の新しいプライマリにリダイレクトされます。 そのため、フェールオーバーが既存のデータベース セッションにどのように影響するかをテストするだけでなく、エンドツーエンドのパフォーマンスに影響するかどうかを確認することもできます。 再起動操作が影響を及ぼし、その多くがプラットフォームに負荷をかける可能性があるため、各データベースまたはエラスティック プールに対しては、30 分ごとに 1 つのフェールオーバー呼び出しのみが許可されます。 詳細については、[データベースのフェールオーバー](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover)と[エラスティック プールのフェールオーバー](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)に関するページを参照してください。       
+
+> [!IMPORTANT]
+> 現在、フェールオーバー コマンドは、Hypescale データベースと Managed Instance では使用できません。  
 
 ## <a name="conclusion"></a>まとめ
 

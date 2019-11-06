@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099539"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430090"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -289,7 +289,7 @@ NetApp アカウント内で、容量プールには各プールのディスク�
 
 ![作成された SAP LaMa NetApp 容量プール ](media/lama/sap-lama-capacitypool-list.png)
 
-これで NFS ボリュームを定義できるようになります。 1 つのプールに複数のシステムのボリュームがあるため、わかりやすい名前付けスキームを選択するようにします。 SID を追加すると、関連するボリュームをグループ化しやすくなります。 ASCS および AS インスタンスの場合、/sapmnt/\<SID\>、/usr/sap/\<SID\>、および /home/\<sid\>adm のマウントが必要です。 少なくとも 1 つのランドスケープのすべてのシステムで使用される一元的なトランスポート ディレクトリ用の省略可能な /usr/sap/trans。
+これで NFS ボリュームを定義できるようになります。 1 つのプールに複数のシステムのボリュームがあるため、わかりやすい名前付けスキームを選択するようにします。 SID を追加すると、関連するボリュームをグループ化しやすくなります。 ASCS および AS インスタンスの場合、 */sapmnt/\<SID\>* 、 */usr/sap/\<SID\>* 、および */home/\<sid\>adm* のマウントが必要です。 必要に応じて、一元的なトランスポート ディレクトリ用の */usr/sap/trans* が必要です。これは、少なくとも、1 つのランドスケープのすべてのシステムで使用されます。
 
 > [!NOTE]
 > ベータ段階では、ボリュームの名前はサブスクリプション内で一意にする必要があります。

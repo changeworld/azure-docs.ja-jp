@@ -1,6 +1,6 @@
 ---
 title: Azure の TextBlock UI 要素 | Microsoft Docs
-description: Azure Portal の Microsoft.Common.TextBlock UI 要素について説明します。
+description: Azure Portal の Microsoft.Common.TextBlock UI 要素について説明します。 インターフェイスにテキストを追加するために使用します。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0dcd8ba1b1bacd990c91ce90ef0013caac446cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da2453889f04352dbabe182772312d70deec4464
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722553"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331621"
 ---
 # <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock UI 要素
 ポータルのインターフェイスにテキストを追加するために使用できるコントロールです。

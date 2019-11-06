@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory の Mapping Data Flow 機能のシンク変換を設定する
-description: Mapping Data Flow のシンク変換を設定する方法について説明します。
+title: Azure Data Factory のマッピング データ フロー機能のシンク変換を設定する
+description: マッピング データ フローのシンク変換を設定する方法について説明します。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: be2ab5605f7fa60ebb78493f714648d458e82a6c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029239"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387771"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>データ フローのシンク変換
 
@@ -56,9 +56,9 @@ Azure BLOB ストレージまたは Data Lake Storage のシンクの種類の�
 ## <a name="rule-based-mapping"></a>ルール ベースのマッピング
 自動マッピングを無効にすると、列ベースのマッピング (固定マッピング) とルール ベースのマッピングのいずれかを追加するオプションを利用できます。 ルール ベースのマッピングでは、パターン マッチングを使用した式を作成できます。 
 
-![ルール ベースのマッピング](media/data-flow/rules4.png "ルール ベースのマッピング")
+![ルールベースのマッピング](media/data-flow/rules4.png "ルールベースのマッピング")
 
-ルール ベースのマッピングを選択すると、ADF に対して、受信パターン ルールに一致するように一致式を評価し、送信フィールド名を定義するように指示します。 フィールドとルールベースの両方のマッピングの任意の組み合わせを追加することもできます。 フィールド名は、ソースからの受信メタデータに基づいて、実行時に ADF によって生成されます。 生成されたフィールドの名前は、デバッグ中に表示することも、[データ プレビュー] ウィンドウを使用して表示することもできます。
+ルールベースのマッピングを選択することは、ADF に対して、受信パターン ルールに一致するように一致式を評価し、送信フィールド名を定義するように指示することになります。 フィールドとルールベースの両方のマッピングの任意の組み合わせを追加することもできます。 フィールド名は、ソースからの受信メタデータに基づいて、実行時に ADF によって生成されます。 生成されたフィールドの名前は、デバッグ中に表示することも、[データ プレビュー] ウィンドウを使用して表示することもできます。
 
 パターン マッチングの詳細については、[列パターンに関するドキュメント](concepts-data-flow-column-pattern.md)を参照してください。
 

@@ -1,26 +1,25 @@
 ---
-title: コグニティブ検索内の画像からテキストを処理して抽出する - Azure Search
-description: Azure Search のコグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出する方法について説明します。
-services: search
+title: エンリッチメント パイプライン内の画像からテキストを処理して抽出する
+titleSuffix: Azure Cognitive Search
+description: Azure コグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出します。
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265867"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787737"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
+# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
 
-コグニティブ検索では、画像や画像ファイルを操作するための複数の機能を利用できます。 ドキュメント クラッキングを行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
+Azure コグニティブ検索では、画像や画像ファイルを操作するための複数の機能を利用できます。 ドキュメント クラッキングを行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
 
-この記事では、画像の処理について詳しく説明すると共に、コグニティブ検索パイプラインでの画像の操作方法について、ガイダンスを提供します。
+この記事では、画像の処理について詳しく説明すると共に、AI エンリッチメント パイプラインでの画像の操作方法について、ガイダンスを提供します。
 
 <a name="get-normalized-images"></a>
 
@@ -37,7 +36,7 @@ ms.locfileid: "71265867"
 |  normalizedImageMaxHeight | 生成された正規化画像の最大の高さ (ピクセル単位)。 既定値は 2000 です。 許容される最大値は 10000 です。|
 
 > [!NOTE]
-> *imageAction* プロパティを "none" 以外の値に設定した場合、 *parsingMode* プロパティを "default" 以外に設定することはできなくなります。  インデクサー構成では、これら 2 つのプロパティのうち、いずれか 1 つだけを既定値以外の値に設定できます。
+> *imageAction* プロパティを "none" 以外に設定した場合、*parsingMode* プロパティを "default" 以外に設定することはできなくなります。  インデクサー構成では、これら 2 つのプロパティのうち、いずれか 1 つだけを既定値以外の値に設定できます。
 
 **parsingMode** パラメーターを `json` に設定するか (各 BLOB を 1 つのドキュメントとしてインデックスを付ける場合)、または `jsonArray` に設定します (BLOB に JSON 配列が含まれ、配列の各要素を個別のドキュメントとして扱う必要がある場合)。
 

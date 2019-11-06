@@ -1,6 +1,6 @@
 ---
-title: Symantec AWS データを Azure Sentinel に接続する | Microsoft Docs
-description: Symantec AWS データを Azure Sentinel に続する方法について説明します。
+title: AWS CloudTrail を Azure Sentinel に接続する | Microsoft Docs
+description: Azure Sentinel に AWS CloudTrail のデータを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 46ad8f6478e632cd57c009700de182993ce01be1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 61bee1618092788da33549ec322dc4ab7130de16
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240861"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244692"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する
 

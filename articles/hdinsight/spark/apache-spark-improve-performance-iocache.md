@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266178"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュを使用して Apache Spark のワークロードのパフォーマンスを改善する
@@ -41,7 +41,7 @@ Azure HDInsight IO キャッシュはプレビューでは既定で非アクテ�
 
 1. **[アクション]** を選択して **[アクティブ化]** を選択します。
 
-    ![Ambari で IO キャッシュ サービスを有効にする](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Ambari で IO キャッシュ サービスを有効にする")
+    ![Ambari での IO キャッシュ サービスの有効化](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Ambari での IO キャッシュ サービスの有効化")
 
 1. 影響を受けるクラスター上のすべてのサービスの再起動を確認します。
 
@@ -70,7 +70,7 @@ IO キャッシュを有効にした後に Spark のジョブを実行すると�
 
 1. **[Restart]\(再起動\)**  >  **[Restart All Affected]\(影響を受けるすべてを再起動\)** を選択します。
 
-    ![Apache Ambari、影響を受けるすべてを再起動する](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "影響を受けるすべてを再起動する")
+    ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "影響を受けるものをすべて再起動する")
 
 1. **[Confirm Restart All]\(すべて再起動\)** を選択します。
 

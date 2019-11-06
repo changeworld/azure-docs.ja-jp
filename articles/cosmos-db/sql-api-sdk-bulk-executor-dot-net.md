@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 11/19/2018
+ms.date: 10/11/2019
 ms.author: ramkris
-ms.openlocfilehash: 447f52a08c9e833808508852c4619f6ce1d947e1
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9da994550609b0be44362e0f0059844b288aabbd
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703365"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388060"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET Bulk Executor ライブラリ:ダウンロード情報 
 
@@ -42,6 +42,14 @@ ms.locfileid: "71703365"
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name241-preview241-preview"></a><a name="2.4.1-preview"/>2.4.1-プレビュー
+
+* BulkDelete の応答で TotalElapsedTime を修正し、再試行を含む合計時間を正しく測定できるようになりました。
+
+### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0-preview
+
+* SDK 依存関係を >= 2.5.1 に変更しました
+
 ### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
 
 * グラフの Bulk Executor で頂点とエッジに ttl を受け付けるためのサポートが追加されました。
@@ -61,6 +69,14 @@ ms.locfileid: "71703365"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
 
 * Bulk Executor ライブラリを .NET Core アプリケーションに対応させるため、サポートされているターゲット フレームワークの 1 つとして .NET Standard 2.0 が追加されました。
+
+### <a name="a-name184184"></a><a name="1.8.4"/>1.8.4
+
+* 数値を含む POCO オブジェクトのリストを使用して BulkImport を呼び出すときの識別子の処理を修正しました。
+
+### <a name="a-name183183"></a><a name="1.8.3"/>1.8.3
+
+* BulkDelete の応答で TotalElapsedTime を修正し、再試行を含む合計時間を正しく測定できるようになりました。
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 

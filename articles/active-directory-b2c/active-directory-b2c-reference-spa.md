@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3cc95c908ea81d21b6f32bed8b754feb5d724ff
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: ab8c8a582b90976ada20b1e970c9e9648d14b2a9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874162"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596436"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
@@ -53,7 +53,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | パラメーター | 必須 | 説明 |
 | --------- | -------- | ----------- |
 |{tenant}| はい | Azure AD B2C テナントの名前。|
-|{policy}| はい| 実行するユーザーフロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 たとえば、`b2c_1_sign_in`、`b2c_1_sign_up`、`b2c_1_edit_profile` などがあります。 |
+|{policy}| はい| 実行するユーザーフロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
 | response_type | はい | OpenID Connect サインインでは、 `id_token` を指定する必要があります。 応答の種類として `token` を含めることもできます。 `token` を使用する場合、アプリは承認エンドポイントへ 2 度目の要求を行うことなく、すぐに承認エンドポイントからアクセス トークンを受け取ることができます。  応答の種類 `token` を使用する場合は、`scope` パラメーターに、トークンを発行するリソースを示すスコープを含める必要があります。 |
 | redirect_uri | いいえ | アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
@@ -166,12 +166,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 |{tenant}| 必須 | Azure AD B2C テナントの名前。|
-{policy}| 必須| 実行するユーザーフロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
+{policy}| 必須| 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。  応答の種類として `token` を含めることもできます。 ここで `token` を使用する場合、アプリは承認エンドポイントへ 2 度目の要求を行うことなく、すぐに承認エンドポイントからアクセス トークンを受け取ることができます。 応答の種類 `token` を使用する場合は、`scope` パラメーターに、トークンを発行するリソースを示すスコープを含める必要があります。 |
 | redirect_uri |推奨 |アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
 | scope |必須 |スコープのスペース区切りリスト。  トークンを取得するには、意図したリソースに必要なすべてのスコープを含めます。 |
-| response_mode |推奨 |結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。  `query`、`form_post`、または `fragment` を指定できます。 |
+| response_mode |推奨 |結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 暗黙的フローの場合は `fragment` を使用します。 他の 2 つのモード (`query` と `form_post`) を指定することはできますが、暗黙的フローでは機能しません。 |
 | state |推奨 |要求に含まれ、トークンの応答として返される値。  使用したい任意の内容の文字列を指定できます。  通常、クロスサイト リクエスト フォージェリ攻撃を防ぐために、ランダムに生成された一意の値が使用されます。  この状態は、認証要求の前にアプリ内のユーザーの状態に関する情報をエンコードする目的にも使用されます。 たとえば、ユーザーがいるページまたはビューです。 |
 | nonce |必須 |要求に追加する (アプリによって生成された) 値。この値が、最終的な ID トークンに要求として追加されます。  アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値は、要求の送信元を特定する、ランダム化された一意の文字列です。 |
 | prompt |必須 |非表示の iframe のトークンを更新および取得するには、`prompt=none` を使用して、iframe がサインイン ページに停滞せずにすぐに応答できるようにします。 |

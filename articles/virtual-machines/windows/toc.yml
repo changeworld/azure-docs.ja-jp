@@ -216,8 +216,12 @@
           href: managed-disks-overview.md
         - name: IaaS VM 用のディスクの種類の選択
           href: disks-types.md
+        - name: 暗号化
+          href: disk-encryption.md
         - name: 高パフォーマンス用の設計
           href: premium-storage-performance.md
+        - name: ディスク バースト
+          href: disk-bursting.md
         - name: ディスクのスケーラビリティ ターゲット
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
@@ -445,7 +449,11 @@
         - name: 高可用性
           href: manage-availability.md
         - name: 近接通信配置グループの作成
-          href: proximity-placement-groups.md
+          items:
+            - name: ポータル
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
         - name: 垂直方向にスケーリングする
           items:
             - name: PowerShell

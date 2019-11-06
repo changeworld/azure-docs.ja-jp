@@ -3,20 +3,20 @@ title: Azure Time Series Insights 環境に参照データ セットを追加す
 description: この記事では、参照データ セットを追加して、Azure Time Series Insights 環境内のデータを増幅する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 138894f10a4865a5ea251caff6683ed70721c000
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3aca1f64d469ce228a4b2738c72c0b4bc1956051
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172919"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991290"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
 
@@ -36,13 +36,13 @@ ms.locfileid: "70172919"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
+1. 既存の Azure Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
 
 1. **[概要]** ページを選択します。 **[Time Series Insights エクスプローラーの URL]** を見つけ、リンクを開きます。  
 
-   TSI 環境のエクスプローラーを参照します。
+   お使いの Time Series Insights 環境に対するエクスプローラーを表示します。
 
-1. TSI エクスプローラーで、環境セレクターを展開します。 アクティブな環境を選択します。 エクスプローラー ページの右上にある参照データ アイコンを選択します。
+1. Time Series Insights エクスプローラーで環境セレクターを展開します。 アクティブな環境を選択します。 エクスプローラー ページの右上にある参照データ アイコンを選択します。
 
    [![参照データの追加](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
 
@@ -51,12 +51,14 @@ ms.locfileid: "70172919"
    [![データ セットの追加](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
 1. **[新しい参照データ セット]** ページで、データの形式を選択します。
+
    - **[CSV]** (コンマ区切りのデータ) を選択します。 最初の行は、ヘッダー行として扱われます。
-   - **[JSON 配列]** (javascript オブジェクト表記法 (JSON) 形式のデータ) を選択します。
+   - JavaScript オブジェクト表記法 (JSON) 形式のデータの場合は **[JSON 配列]** を選択します。
 
    [![データ形式を選択する。](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
 
 1. 次のいずれかの方法を使用して、データを指定します。
+
    - データをテキスト エディターに貼り付けます。 その後、 **[参照データの解析]** ボタンをクリックします。
    - **[ファイルの選択]** ボタンをクリックして、ローカル テキスト ファイルからデータを追加します。
 

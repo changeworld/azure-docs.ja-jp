@@ -43,6 +43,8 @@
       items:
         - name: MFA のしくみ
           href: concept-mfa-howitworks.md
+        - name: MFA の有効化
+          href: concept-mfa-get-started.md
         - name: ユーザーのライセンス
           href: concept-mfa-licensing.md
         - name: 認証プロバイダーの管理
@@ -131,8 +133,14 @@
       href: howto-password-smart-lockout.md
     - name: パスワードレス
       items:
+        - name: パスワードレスのデプロイ
+          href: howto-authentication-passwordless-deployment.md
         - name: パスワードレスのセキュリティ キー
           href: howto-authentication-passwordless-security-key.md
+        - name: パスワードレスの Windows 10
+          href: howto-authentication-passwordless-security-key-windows.md
+        - name: パスワードレスのオンプレミス
+          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: パスワードレスの電話によるサインイン
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business

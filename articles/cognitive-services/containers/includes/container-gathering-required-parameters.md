@@ -6,21 +6,18 @@ manager: nitinme
 description: すべての Cognitive Services のコンテナーのパラメーター
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/18/2019
+ms.date: 10/15/2019
 ms.author: dapine
-ms.openlocfilehash: 06f68d28d06dec7c9e738ad8cb50ca337fa840be
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: bf4e8f06642a4a764794a75e2b49f15958796c61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102000"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465910"
 ---
 ## <a name="gathering-required-parameters"></a>必須パラメーターの収集
 
 すべての Cognitive Services のコンテナーに対して必須である、3 つの主要なパラメーターがあります。 エンドユーザー使用許諾契約書 (EULA) は、`accept` の値と共に提示される必要があります。 さらに、エンドポイント URL と API キーの両方が必要です。
-
-> [!NOTE]
-> これら 3 つの必須パラメーターに対する唯一の例外は、コンテナーが "オフライン" コンテナーと見なされる場合です。 オフライン コンテナーでは使用状況の報告が行われず、従量制課金ではなく、別の課金方法に従います。
 
 ### <a name="endpoint-uri-endpoint_uri"></a>エンドポイント URL `{ENDPOINT_URI}`
 

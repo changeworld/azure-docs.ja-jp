@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a665f2ffe3ac2d27fb4e4403922c72520dfb37e8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e44c3e607f3d5a5ea8269b9885a4fec54000bb5f
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834882"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389575"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -48,7 +48,7 @@ Azure portal で、あるいは [REST API](https://docs.microsoft.com/previous-v
 > [!NOTE]
 > **[説明]** の後に **[値の例]** 列が表示されない場合は、ご利用のブラウザー ウィンドウを最大化し、 **[値の例]** 列が表示されるまでスクロール/スワイプします。
 
-| キー  | 値の型 | 説明  | 値の例 |
+| Key  | 値の型 | 説明  | 値の例 |
 |---------|---------|---------|---------|
 | `accessTokenAcceptedVersion` | Null 許容の Int32 | リソースで想定されているアクセス トークンのバージョンを指定します。 これにより、アクセス トークンを要求するために使用されたエンドポイントまたはクライアントとは関係なく、生成される JWT のバージョンと形式が変更されます。<br/><br/>使用されるエンドポイント (v1.0 または v2.0) はクライアントによって選択され、id_token のバージョンにのみ影響します。 リソースでは、サポートされるアクセス トークンの形式を明示的に示すように、`accesstokenAcceptedVersion` を構成する必要があります。<br/><br/>`accesstokenAcceptedVersion` に指定できる値は、1、2、または null です。 値が null の場合の既定値は 1 で、v1.0 のエンドポイントに対応します。 <br/><br/>`signInAudience` が `AzureADandPersonalMicrosoftAccount` の場合は、値は `2` である必要があります。  | `2` |
 | `addIns` | コレクション | 使用するサービスが特定のコンテキストでアプリの呼び出しに使用できるカスタム動作を定義します。 たとえば、ファイル ストリームをレンダリングできるアプリケーションでは、その "FileHandler" 機能の addIns プロパティを設定できます。 これにより、Office 365 などのサービスで、ユーザーが作業中のドキュメントのコンテキストでアプリケーションを呼び出すことができます。 | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
@@ -80,7 +80,7 @@ Azure portal で、あるいは [REST API](https://docs.microsoft.com/previous-v
 | `publicClient` | Boolean | このアプリケーションがパブリック クライアント (モバイル デバイス上で実行されているインストール済みのアプリケーションなど) であるかどうかを指定します。 <br><br> _注:これは、アプリの登録 (レガシ) エクスペリエンスでのみ使用できます。[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでは、`allowPublicClient` に置き換えられます。_ | |
 | `publisherDomain` | string | アプリケーションの確認された発行元のドメイン。 読み取り専用です。 | https://www.contoso.com |
 | `replyUrls` | 文字列配列 | この複数値プロパティは、Azure AD がトークンを返すときに宛先として受け入れる登録された redirect_uri 値の一覧を保持します。 <br><br> _注:これは、アプリの登録 (レガシ) エクスペリエンスでのみ使用できます。[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでは、`replyUrlsWithType` に置き換えられます。_ | |
-| `replyUrlsWithType` | コレクション | この複数値プロパティは、Azure AD がトークンを返すときに宛先として受け入れる登録された redirect_uri 値の一覧を保持します。 各 uri 値には、関連付けられているアプリの種類の値を含める必要があります。 サポートされる種類の値は `Web`、`InstalledClient` です。 | <code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> |
+| `replyUrlsWithType` | コレクション | この複数値プロパティは、Azure AD がトークンを返すときに宛先として受け入れる登録された redirect_uri 値の一覧を保持します。 各 URI 値には、関連付けられているアプリの種類の値を含める必要があります。 サポートされる種類の値は次のとおりです。 <ul><li>`Web`</li><li>`InstalledClient`</li></ul><br> replyUrl の制約と制限の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/reply-url)を参照してください。 | <code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> |
 | `requiredResourceAccess` | コレクション | 動的な同意では、静的な同意を使用しているユーザーに対する管理者の同意エクスペリエンスおよびユーザーの同意エクスペリエンスが `requiredResourceAccess` によって作動します。 ただし、一般的なケースでは、これによってユーザーの同意エクスペリエンスが作動することはありません。<br>`resourceAppId` は、アプリがアクセスする必要があるリソースの一意識別子です。 この値は、ターゲット リソース アプリで宣言された appId に等しくなるようにしてください。<br>`resourceAccess` は、指定されたリソースに対してアプリが必要とする OAuth2.0 アクセス許可スコープとアプリ ロールを格納する配列です。 指定されたリソースの `id` と `type` の値が格納されます。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> |
 | `samlMetadataUrl` | string | アプリの SAML メタデータへの URL。 | `https://MyRegisteredAppSAMLMetadata` |
 | `signInUrl` | string | アプリのホーム ページへの URL を指定します。 | `https://MyRegisteredApp` |

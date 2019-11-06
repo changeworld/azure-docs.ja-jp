@@ -1,24 +1,18 @@
 ---
 title: Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する | Microsoft Docs
 description: Azure Monitor のログに Azure アクティビティ ログを収集し、監視ソリューションを使用して、すべての Azure サブスクリプションにわたって Azure アクティビティ ログの分析や検索ができます。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/30/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: affefa96d6e38a88c994938115ddf44bcf8bd36d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.date: 09/30/2019
+ms.openlocfilehash: 514dcf05eaa37bd338ef6359977b9a5508838459
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695067"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932859"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 この記事では、アクティビティ ログを Log Analytics ワークスペースに収集する方法と、このデータを分析するためのログ クエリおよびビューを提供する Activity Log Analytics [監視ソリューション](../insights/solutions.md)の使用方法について説明します。 
@@ -31,7 +25,7 @@ ms.locfileid: "71695067"
 - [ログ クエリ](../log-query/log-query-overview.md)を使用して複雑な分析を実行し、アクティビティ ログのエントリから詳細な分析情報を得ます。
 
 ## <a name="connect-to-log-analytics-workspace"></a>Log Analytics ワークスペースに接続する
-アクティビティ ログは 1 つのワークスペースにしか接続できませんが、1 つのワークスペースを、同じ Azure テナント内の複数のサブスクリプションのアクティビティ ログに接続できます。 複数のテナントをまたいだ収集については、「[Azure アクティビティ ログを異なる Azure Active Directory テナント内のサブスクリプションにまたがる Log Analytics ワークスペースに収集する](activity-log-collect-tenants.md)」を参照してください。
+1 つのワークスペースを、同じ Azure テナント内の複数のサブスクリプションのアクティビティ ログに接続できます。 複数のテナントをまたいだ収集については、「[Azure アクティビティ ログを異なる Azure Active Directory テナント内のサブスクリプションにまたがる Log Analytics ワークスペースに収集する](activity-log-collect-tenants.md)」を参照してください。
 
 > [!IMPORTANT]
 > Microsoft.OperationalInsights と Microsoft.OperationsManagement リソース プロバイダーがサブスクリプションに登録されていない場合、次の手順でエラーが発生することがあります。 これらのプロバイダーの登録については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。

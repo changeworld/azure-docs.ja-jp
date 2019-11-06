@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 23f5c638146472b72078e76745e557b6babe7a49
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128304"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692604"
 ---
 # <a name="two-class-support-vector-machine-module"></a>2 クラス サポート ベクター マシン モジュール
 
@@ -38,7 +38,7 @@ ms.locfileid: "70128304"
 
 このタイプのモデルでは、データセットを正規化したうえで分類器のトレーニングに使用することをお勧めします。
   
-1.  **2 クラス サポート ベクター マシン** モジュールを実験に追加します。  
+1.  **2 クラス サポート ベクター マシン** モジュールをパイプラインに追加します。  
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
@@ -67,7 +67,7 @@ ms.locfileid: "70128304"
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。
   
 
-10. 実験を実行します。
+10. パイプラインを実行します。
 
 ## <a name="results"></a>結果
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps でイベントベースのタスクとワークフローを作成する
-description: Azure Logic Apps を使用して、エンドポイントで発生したイベントに基づいて、自動化されたタスク、プロセス、およびワークフローをトリガー、一時停止、再開します
+title: イベントを待機して応答する - Azure Logic Apps
+description: Azure Logic Apps を使用して、サービス エンドポイントでのイベントに基づいてトリガー、一時停止、および再開するワークフローを自動化します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,16 +8,16 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: c2658df185d4836210c496d2c46a00a3541257a2
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541331"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264341"
 ---
-# <a name="automate-event-based-tasks-and-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps で HTTP Webhook を使用してイベントベースのタスクとワークフローを自動化する
+# <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps で HTTP Webhook を使用して、自動化されたイベントベースのワークフローを作成して実行する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と組み込み HTTP Webhook コネクタを使用すると、ロジック アプリを構築することで、HTTP または HTTPS エンドポイントで発生する特定のイベントに基づいて待機したり実行されたりするワークフローを自動化できます。 たとえば、定期的にサービス エンドポイントを確認、つまり "*ポーリング*" するのではなく、特定のイベントを待ってからワークフローをトリガーし、指定されたアクションを実行することでそのエンドポイントを監視するロジック アプリを作成できます。
 
@@ -37,6 +37,9 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 * ロジック アプリがタイムアウトになる前
 
 たとえば、Office 365 Outlook コネクタの[**承認メールの送信**](connectors-create-api-office365-outlook.md)アクションは、このパターンに従う Webhook アクションの一例です。 Webhook アクションを使用することで、このパターンをあらゆるサービスに適用できます。
+
+> [!NOTE]
+> Logic Apps では、HTTP Webhook のトリガーまたはアクションに対するコールバックを受け取るときは、トランスポート層セキュリティ (TLS) 1.2 が適用されます。 SSL ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。
 
 詳細については、以下のトピックを参照してください。
 
@@ -120,7 +123,7 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 
 ここでは、以下の情報を返す HTTP Webhook トリガーまたはアクションからの出力の詳細情報を示します。
 
-| プロパティ名 | Type | 説明 |
+| プロパティ名 | 種類 | 説明 |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
 | body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
@@ -133,7 +136,7 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 | 202 | 承認済み |
 | 400 | 正しくない要求 |
 | 401 | 権限がありません |
-| 403 | 許可されていません |
+| 403 | Forbidden |
 | 404 | 見つかりません |
 | 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
 |||

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: rimman
+ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 80ee55ad6b0a8034e225f291b28ad478be82165a
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 0ee43fe0996c05f4e59f6107ba52fac19b83cdef
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806491"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756949"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aafec48f86ee032b112e9bb1100f82fbb3b363ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6368a36eaa2e6832f22a13f20bc35d66c4425b4b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170506"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311581"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -98,6 +98,8 @@ az vm generalize --resource-group myResourceGroup --name myVM
 VM を割り当て解除して汎用化するには数分かかることがあります。
 
 次に、[az image create](/cli//azure/image) を使用して VM のイメージを作成します。 次の例では、VM から *myImage* という名前のイメージを作成します。
+
+> [注] リソース グループと仮想マシンの場所が異なる場合は、以下のコマンドに `--location` パラメーターを追加することで、イメージの作成に使用するソース VM の場所を指定できます。 
 
 ```azurecli-interactive
 az image create \

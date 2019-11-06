@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB で SQL を使用してクエリを実行する方法
 description: Azure Cosmos DB で SQL を使用してクエリを実行する方法について説明します
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ffebdb0a46fdae981ca73a4569344365459dd7b8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932792"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756813"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル:SQL API を使って Azure Cosmos DB に対するクエリを実行する
 
@@ -65,7 +65,7 @@ SQL クエリについて詳しくは、次を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Azure Cosmos DB アカウントとコレクションがあると仮定しています。 どちらもない場合には、 [5 分でできるクイックスタート](create-mongodb-nodejs.md)を完了してください。
+このチュートリアルでは、Azure Cosmos DB アカウントとコレクションがあると仮定しています。 どちらもない場合には、 [5 分でできるクイックスタート](create-cosmosdb-resources-portal.md)を完了してください。
 
 ## <a name="example-query-1"></a>サンプル クエリ 1
 

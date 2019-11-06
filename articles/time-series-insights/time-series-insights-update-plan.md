@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b97db5fcebeea67cc593a4d2c1fd677a55ad8559
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300691"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550180"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する
 
@@ -54,7 +54,7 @@ Time Series Insights プレビュー環境をプロビジョニングする際�
 新しい Time Series Insights 環境を作成するには、タイム シリーズ ID を選択します。 そうすることで、データの論理パーティションとして機能します。 前述のように、タイム シリーズ ID の準備ができていることを確認します。
 
 > [!IMPORTANT]
-> タイム シリーズ ID は、*不変*で*後で変更することはできません*。 最終的な選択と初めて使用する前に、それぞれを確認してください。
+> 時系列 ID を "*後で変更することはできません*"。 最終的な選択と初めて使用する前に、それぞれを確認してください。
 
 リソースを一意に区別するために、最大 3 つのキーを選択できます。 詳細については、「[Best practices for choosing a Time Series ID](./time-series-insights-update-how-to-id.md)」(タイム シリーズ ID の選択のベスト プラクティス) および[ストレージとイングレス](./time-series-insights-update-storage-ingress.md)に関するページを参照してください。
 
@@ -82,7 +82,7 @@ Time Series Insights にイベントを送信する方法を確認できます�
 * タイム シリーズ モデルにメタデータを格納します。
 * タイム シリーズ モード、インスタンス フィールド、およびイベントには、必要な情報 (タイム シリーズ ID、タイムスタンプなど) のみを含めます。
 
-詳細については、[イベントの調整](./time-series-insights-send-events.md#json)に関するページを参照してください。
+詳細については、[イベントの調整](./time-series-insights-send-events.md#supported-json-shapes)に関するページを参照してください。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

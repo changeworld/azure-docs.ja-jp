@@ -62,22 +62,31 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Azure PowerShell の使用
           href: virtual-machines-windows-ps-sql-create.md
-    - name: リソース プロバイダーへの登録
-      href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: SQL VM のライセンス モデルの変更
-      href: virtual-machines-windows-sql-ahb.md
-    - name: SQL Server のエディションの変更
-      href: virtual-machines-windows-sql-change-edition.md
+    - name: SQL VM RP への登録
+      displayName: 'resource provider, registration'
+      items:
+        - name: 単一の VM
+          href: virtual-machines-windows-sql-register-with-resource-provider.md
+        - name: 複数の VM の一括登録
+          href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
+    - name: 管理
+      items:
+        - name: ライセンス モデル
+          displayName: 'ahb, ahub, payg, change, modify, update'
+          href: virtual-machines-windows-sql-ahb.md
+        - name: エディション
+          displayName: 'change, modify, update'
+          href: virtual-machines-windows-sql-change-edition.md
+        - name: バックアップと復元用の Azure Storage
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
     - name: 移行
       items:
-        - name: SQL Server データベースを移行する
+        - name: SQL Server データベースを VM へ
           href: virtual-machines-windows-migrate-sql.md
         - name: VM を新しいリージョンへ
           href: virtual-machines-windows-sql-move-different-region.md
     - name: 高可用性の構成
       items:
-        - name: Azure Storage を使用したバックアップと復元
-          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
         - name: Always On 可用性グループ
           items:
             - name: Azure SQL VM CLI
@@ -103,7 +112,7 @@
             - name: 記憶域スペース ダイレクトの使用
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
             - name: Premium ファイル共有の使用
-              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

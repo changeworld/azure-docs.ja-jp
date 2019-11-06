@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 10/2/2019
+ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827989"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330238"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace の FAQ
 
@@ -24,15 +24,15 @@ Azure Marketplace と Microsoft AppSource についての一般的な質問へ�
 
 **Azure Marketplace とは何ですか?**
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) は、Microsoft およびそのパートナーから入手できるソリューションやサービスに関するアクセスと情報を提供します。 お客様 (IT プロフェッショナルや開発者) は Azure 上に、または Azure 向けに構築されたクラウド ソフトウェア ソリューションを見つけ、試し、購入することができます。 当社の 8,000 を超える一覧から成るカタログは、Virtual Machines (VM)、API、Azure アプリ、ソリューション テンプレートとマネージド アプリケーション、SaaS アプリ、コンテナー、コンサルティング サービスなどの Azure の構成要素を提供します。 
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) は、Microsoft およびそのパートナーから入手できるソリューションやサービスに関するアクセスと情報を提供します。 お客様は Azure にある、または Azure 向けのクラウド ソフトウェア ソリューションを見つけ、試し、購入することができます。 当社の 8,000 を超える一覧から成るカタログは、Virtual Machines (VM)、API、Azure アプリ、ソリューション テンプレートとマネージド アプリケーション、SaaS アプリ、コンテナー、コンサルティング サービスなどの Azure の構成要素を提供します。
 
 **Azure Marketplace の対象顧客は?**
 
-Azure Marketplace は、商用の IT ソフトウェアおよびサービスに関心がある IT プロフェッショナルやクラウド開発者向けに設計されています。
+Azure Marketplace は、商用の IT ソフトウェアおよびサービスに関心がある IT プロフェッショナルおよびクラウド開発者向けに設計されています。
 
 **現在 Azure Marketplace で利用できるのはどのような製品ですか?**
 
-Azure Marketplace では、Azure の製品やサービスを拡張するために Microsoft やパートナー様によって構築された技術的なソリューションやサービスを取り扱っています。 ソリューション カタログのカテゴリには次のようなものがありますが、これに限定されるわけではありません。
+Azure Marketplace では、Azure の製品やサービスを拡張するために Microsoft やパートナー様によって構築された技術的なソリューションやサービスを取り扱っています。 ソリューション カタログのカテゴリには次のようなものがあります。
 
 * ベース オペレーティング システム
 * databases
@@ -41,9 +41,6 @@ Azure Marketplace では、Azure の製品やサービスを拡張するため�
 * networking
 * ブロックチェーン
 * 開発者ツール
-* その他
-
-Azure Marketplace には、SaaS アプリケーション、Virtual Machines、ソリューション テンプレート、Azure マネージド アプリケーション、およびコンサルティング サービスが用意されています。
 
 ### <a name="azure-marketplace-for-customers"></a>Azure Marketplace のお客様向け情報
 
@@ -159,7 +156,7 @@ BYOL ソリューションに対するライセンス資格情報の取得と適
 
 **Free レベルまたはライセンス持ち込み (BYOL) オファリングをデプロイするには、ファイル上に支払い方法 (クレジット カードなど) を指定する必要がありますか?**
 
-いいえ。 Free レベルまたは BYOL オファリングをデプロイするために支払い方法は必要ありません。 ただし、無料試用版オファリングには支払い方法が必要です。 **[今すぐ入手する]** または **[Free software trial] (無料試用版ソフトウェア)** ボタンを含む一覧が、選択された Azure サブスクリプションにデプロイされます。  これらの一覧は、選択されたアカウントの登録された支払い方法を使用して課金されます。 Azure 使用料金は、ソフトウェア ライセンス料とは別に課金されます。
+No. Free レベルまたは BYOL オファリングをデプロイするために支払い方法は必要ありません。 ただし、無料試用版オファリングには支払い方法が必要です。 **[今すぐ入手する]** または **[Free software trial] (無料試用版ソフトウェア)** ボタンを含む一覧が、選択された Azure サブスクリプションにデプロイされます。  これらの一覧は、選択されたアカウントの登録された支払い方法を使用して課金されます。 Azure 使用料金は、ソフトウェア ライセンス料とは別に課金されます。
 
 **Azure Marketplace で販売されるオファーの価格について質問がある場合、Enterprise Agreement (EA) インダイレクト カスタマーはだれに問い合わせればよいですか?**
 
@@ -171,7 +168,7 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 **商業マーケットプレースでの購入では、どのような支払い方法がサポートされていますか?**
 
-お客様は、クレジット カードを使用して Azure Marketplace と Microsoft AppSource からオファリングを購入できます。 既存の Azure サブスクリプションをお持ちの場合、Azure Marketplace からの購入では、アカウントに構成されている支払い方法が使用され、個別の品目として同じ請求書に表示されます。 一部のオファーでは Azure の年額コミットメントが使用されますが、ほとんどの商業マーケットプレースでの購入では、Azure インフラストラクチャの消費とは異なり、Enterprise Agreement コミットメントは使用されません。
+お客様は、クレジット カードを使用して Azure Marketplace と Microsoft AppSource からオファリングを購入できます。 既存の Azure サブスクリプションをお持ちの場合、Azure Marketplace からの購入では、アカウントに構成されている支払い方法が使用され、個別の品目として同じ請求書に表示されます。 一部のオファーでは Azure の年額コミットメントが使用されますが、商業マーケットプレースでのほとんどの購入では、Azure インフラストラクチャの消費とは異なり、Enterprise Agreement コミットメントは使用されません。
 
 **Azure Marketplace のオファーに対して、自分のアカウントの Azure サブスクリプション クレジットまたは年額コミットメント資金を適用できますか?**
 
@@ -179,7 +176,7 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 **Azure Marketplace での購入物にボリューム ライセンス割引は適用されますか?**
 
-いいえ。 Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
+No. Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
 
 **Azure Marketplace サブスクリプションの詳細や課金情報はどこで表示できますか?**
 
@@ -338,7 +335,7 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
 
 **リードの送信先の設定方法に関するヘルプはどこで入手できますか?**
 
-「[クラウド パートナー ポータル - 潜在顧客の獲得](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)」のドキュメントで詳細を確認するか、またはオファーの種類とリード管理を選択することによって [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) 経由でサポート チケットを送信します。
+[パートナー センター - 潜在顧客の獲得](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)に関するドキュメントで詳細を確認するか、またはオファーの種類とリード管理を選択することによって [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) 経由でサポート チケットを送信します。
 
 **Marketplace でオファーを発行するには、リードの宛先を構成する必要がありますか?**
 
@@ -346,7 +343,7 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
 
 **リード構成が正しいことを確認するにはどうすればよいですか?**
 
-オファーを完了し、リードの宛先を設定した後、[クラウド パートナー ポータル](https://cloudpartner.azure.com/)で一覧を正常に発行できます。 一覧の運用が開始される前に、リード構成が正しく機能しているかどうかを検証できます。  オファーで構成されたリードの宛先にテスト リードを送信します。
+オファーを完了し、リードの宛先を設定した後、[パートナー センター](https://cloudpartner.azure.com/)で一覧を正常に発行できます。 一覧の運用が開始される前に、リード構成が正しく機能しているかどうかを検証できます。  オファーで構成されたリードの宛先にテスト リードを送信します。
 
 **Azure Marketplace で発行元が販売できるのはどの国/地域ですか?**
 
@@ -356,7 +353,7 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
 
 "*仮想マシンおよび Azure アプリ*":
 
-1. [クラウド パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
+1. [パートナー センター](https://cloudpartner.azure.com/)にサインインします。
 1. **[All Offers]\(すべてのオファー\)** タブからオファーを選択します。
 1. 画面の左側にあるウィンドウで、 **[SKU]** タブをクリックします。
 1. 削除のための SKU を選択し、その SKU の **[削除]** ボタンをクリックします。
@@ -366,7 +363,7 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
 
 "*Web Apps (SaaS アプリ、アドオン) およびコンサルティング サービス*":
 
-1. Cloud パートナー ポータルで、疑問符アイコンを選択して **[サポート]** をクリックします。
+1. パートナー センターで、疑問符アイコンを選択して **[サポート]** をクリックします。
 1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](<https://go.microsoft.com/fwlink/?linkid=844975>) にアクセスします。
 1. サポート ページで、オファーの種類を選択します。
 1. 発行されたオファーの **[削除]** を選択します。
@@ -381,9 +378,9 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
     > [!NOTE]
     > アプリは 90 日後に既存の一覧に表示されなくなります。
 
-"*Power BI アプリ*":
+**変更がオファーに反映されないのはなぜですか?**
 
-問い合わせ先: [Anjana Sompur (Slalom Consulting LLC)](mailto:v-ansomp@microsoft.com)。
+パートナー センター内で行われた変更は、オファーを再発行した後でのみ、システムおよびネットショップで更新されます。 変更後に発行のためオファーを送信したことを確認してください。
 
 ### <a name="benefits-and-go-to-market-gtm-resources"></a>特典と Go-To-Market (GTM) リソース
 
@@ -419,19 +416,19 @@ Azure Marketplace では現在、Virtual Machines でのノード単位の課金
 
 **Azure Marketplace に関する一般的なサポートの問題については、だれに問い合わせればよいですか?**
 
-操作性やトラブルシューティングに関する一般的なアプリケーション サポートについては、[Cloud パートナー ポータル サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)に問い合わせてください。
+操作性やトラブルシューティングに関する一般的なアプリケーション サポートについては、[パートナー センター サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)に問い合わせてください。
 
 Azure Marketplace での購入物に関する課金やサブスクリプションの問題については、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)に問い合わせてください。
 
 **発行やオファーの管理に関する質問については、だれに問い合わせればよいですか?**
 
-よく寄せられる質問に関する最新のリソースおよびドキュメントについては、[Azure Marketplace 発行元ガイド](marketplace-publishers-guide.md)に関するページを参照してください。 さらに、[Cloud パートナー ポータルで Microsoft サポート](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953) チケットを記録できます。
+よく寄せられる質問に関する最新のリソースおよびドキュメントについては、[Azure Marketplace 発行元ガイド](marketplace-publishers-guide.md)に関するページを参照してください。 さらに、[パートナー センターで Microsoft サポート](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953) チケットを記録できます。
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace の発行元向け情報
 
 **さまざまな国/地域での販売を可能にするには、利用可能な地域どのように定義すればよいですか?**
 
-1.  Cloud パートナー ポータルで、新しい国/地域の追加先とする SKU に移動します。  **[SKU Details]\(SKU の詳細\)** 内で、 **[Country/Region availability]\(利用可能な国/リージョン\)** に移動し、 **[Select regions]\(リージョンの選択\)** をクリックします。
+1.  パートナー センターで、新しい国/地域の追加先とする SKU に移動します。  **[SKU Details]\(SKU の詳細\)** 内で、 **[Country/Region availability]\(利用可能な国/リージョン\)** に移動し、 **[Select regions]\(リージョンの選択\)** をクリックします。
 
     ![リージョンの選択](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
@@ -463,6 +460,16 @@ Azure Marketplace では、お客様の請求先住所で定義されている 1
 **Free レベルと無料試用版ソフトウェアの違いは何ですか?**
 
 Free レベルのサブスクリプションのオファリングは永続的に無料です。  無料試用版ソフトウェア (今すぐ試す) オファリングは、限定された期間だけ無料の有料サブスクリプションです。
+
+**エンドツーエンドの購入とプロビジョニングのフローを検証するプロセスはどのようなものですか?**
+
+発行プロセスの間に、オファーのプレビューへのアクセスが提供されます。 アクセスできるのは [プレビュー] タブで指定されているユーザーだけであり、これは他のユーザーには表示されないライブ オファーです。 これを購入して、プロセスをテストすることができます。ただし、オファーの構成に応じて全額料金が請求されます。
+
+購入を非常に低価格で行うため、Microsoft は、テストのコストとして受け入れることのできる価格で設定したプライベート プランを自分自身に発行することを提案します。 ゼロもサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されません。
+
+**標準ポリシー以外での返金は提供されますか?**
+
+はい。サポート チケットを通じて要求すると、適切であると思われる場合、Microsoft はお客様に対するクレジットを処理します。
 
 ## <a name="next-steps"></a>次の手順
 

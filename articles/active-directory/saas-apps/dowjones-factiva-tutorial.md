@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b36e97e8-37a6-4096-a894-530427ee1331
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 953ee8aae12c4c3359eca7a601aca5a86d243c75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d894a024f8847af806be526493d23d562410dc25
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103878"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>チュートリアル:Azure Active Directory と Dow Jones Factiva の統合
 

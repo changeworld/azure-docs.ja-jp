@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b018472f-c8b3-403d-ae66-9ed26a35f413
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a958c693699cb83274e840f7cf36efceadc2ce5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 641b3ee0dd2f6e232d2f36d08bda5b1f2cf80102
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106014"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157599"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>チュートリアル:Azure Active Directory と Bridgeline Unbound の統合
 

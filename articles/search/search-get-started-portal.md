@@ -1,45 +1,46 @@
 ---
-title: クイック スタート:Azure portal を使用して検索インデックスを作成する - Azure Search
-description: Azure portal のデータ インポート ウィザードを使用して、初めてのインデックスを Azure Search に作成して読み込み、クエリを実行します。
+title: Azure portal で検索インデックスを作成する
+titleSuffix: Azure Cognitive Search
+description: データ インポート ウィザードを使用して、初めての検索インデックスを Azure Cognitive Search に作成して読み込み、クエリを実行します。
 author: lobrien
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 502177519c0e66baa7ae9c1de18a7b41bceb054a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936980"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791252"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>クイック スタート:Azure portal を利用して Azure Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [ポータル](search-get-started-portal.md)
+> * [C#](search-get-started-dotnet.md)
+> * [Java](search-get-started-java.md)
+> * [Node.JS](search-get-started-nodejs.md)
 > * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [C#](search-get-started-dotnet.md)
 
-Azure Search の概念をすばやく把握するために、Azure portal のビルトイン ツールをお試しください。 ウィザードとエディターは .NET および REST API と完全には対応していませんが、コーディングなしの導入ですぐに開始でき、インデックスに対する興味深いクエリを数分以内に記述できます。
+ポータルを使用して概念を簡単に把握し、インデックスに対する興味深いクエリを数分で作成します。
 
 > [!div class="checklist"]
 > * Azure にホストされている無料のパブリック サンプル データセットから開始する
-> * Azure Search 内の**データのインポート** ウィザードを実行してデータを読み込み、インデックスを生成する
+> * Azure Cognitive Search 内の**データ インポート** ウィザードを実行してデータを読み込み、インデックスを生成する
 > * ポータル上でインデックス作成の進行状況を監視する
 > * 既存のインデックスとそれを変更するためのオプションを表示する
 > * **Search エクスプローラー**を使用して、フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索について確認する
 
-ツールに制限がありすぎる場合は、[.NET での Azure Search のプログラミングに関するコーディングを前提とした概要記事](search-howto-dotnet-sdk.md)を検討するか、または [REST API の呼び出しを行うために Postman](search-get-started-postman.md) を使います。 また、「[Azure Search Overview (Azure Search の概要)](https://channel9.msdn.com/Events/Connect/2016/138)」ビデオで、このチュートリアルの手順のデモをご覧いただけます (約 3 分目から 6 分間)。
+ツールに制限がありすぎる場合は、[.NET での Azure Cognitive Search のプログラミングに関するコーディングを前提とした概要記事](search-howto-dotnet-sdk.md)を検討するか、または [REST API の呼び出しを行うために Postman](search-get-started-postman.md) を使います。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
+[Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
 
 ### <a name="check-for-space"></a>領域の確認
 
@@ -57,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>手順 1 - データのインポート ウィザードを起動し、データ ソースを作成する
 
-1. Azure Search サービスのダッシュボード上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
+1. Azure Cognitive Search サービスのダッシュボード上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
 
    ![[データのインポート] コマンド](media/search-get-started-portal/import-data-cmd.png)
 
@@ -71,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="step-2---skip-cognitive-skills"></a>手順 2 - コグニティブ スキルをスキップする
 
-ウィザードでは、インデックス作成に Cognitive Services AI アルゴリズムを組み込むための[コグニティブ スキル パイプライン](cognitive-search-concept-intro.md)の作成がサポートされます。 
+ウィザードでは、インデックス作成に Cognitive Services AI アルゴリズムを組み込むための [AI エンリッチメント スキル パイプライン](cognitive-search-concept-intro.md)の作成がサポートされます。 
 
 今回はこの手順をスキップして、 **[対象インデックスをカスタマイズします]** に直接進みましょう。
 
@@ -125,13 +126,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="view-the-index"></a>インデックスの表示
 
-メイン サービス ページには、Azure Search サービスで作成されたリソースへのリンクがあります。  作成したインデックスを表示するには、リンクの一覧の **[インデックス]** をクリックします。 
+メイン サービス ページには、Azure Cognitive Search サービスで作成されたリソースへのリンクがあります。  作成したインデックスを表示するには、リンクの一覧の **[インデックス]** をクリックします。 
 
    ![サービスのダッシュボードのインデックスの一覧](media/search-get-started-portal/indexes-list.png)
 
 この一覧で、作成した *hotels-sample* インデックスをクリックすると、インデックスのスキーマが表示されます。 また、必要に応じて新しいフィールドを追加できます。 
 
-**[フィールド]** タブには、インデックス スキーマが表示されます。 一覧を下までスクロールし、新しいフィールドを入力します。 ほとんどの場合、既存のフィールドを変更することはできません。 既存のフィールドは、Azure Search における物理的表現を含んでいるため、コード内でも編集することはできません。 既存のフィールドを根本的に変えるには、インデックスを新たに作成して、元のインデックスは削除します。
+**[フィールド]** タブには、インデックス スキーマが表示されます。 一覧を下までスクロールし、新しいフィールドを入力します。 ほとんどの場合、既存のフィールドを変更することはできません。 既存のフィールドは、Azure Cognitive Search における物理的表現を含んでいるため、コード内でも編集することはできません。 既存のフィールドを根本的に変えるには、インデックスを新たに作成して、元のインデックスは削除します。
 
    ![サンプル インデックスの定義](media/search-get-started-portal/sample-index-def.png)
 
@@ -146,7 +147,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **Search エクスプローラー**は、[REST API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
 
 > [!TIP]
-> [Azure Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から 次の手順のデモをご覧いただけます。
+> [Azure Cognitive Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から次の手順のデモをご覧いただけます。
 >
 
 1. コマンド バーの **[Search エクスプローラー]** をクリックします。
@@ -181,7 +182,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * **$count=true** パラメーターでは、返されたすべてのドキュメントの合計数が返されます。 この値は、検索結果の最上部付近に表示されます。 **$count=true** で報告される数の変化を監視することで、フィルター クエリを確認できます。 カウントが小さいほど、指定したフィルターが効果的に作用していることを意味します。
 
-* **$top=10** では、全体の中から上位 10 件のドキュメントが返されます。 既定では、Azure Search によって上位 50 件が返されます。 **$top** を使用して、この数を増減できます。
+* **$top=10** では、全体の中から上位 10 件のドキュメントが返されます。 既定では、Azure Cognitive Search によって上位 50 件が返されます。 **$top** を使用して、この数を増減できます。
 
 ### <a name="filter-query"></a> クエリのフィルター処理
 
@@ -200,7 +201,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>例 (範囲の縮小によるファセット): `search=*&facet=Category&$top=2`
 
 * **search=** * は空の検索です。 空の検索は、すべてを検索します。 空のクエリを送信する理由の 1 つは、ドキュメントのすべてのセットをフィルターまたはファセットすることです。 たとえば、インデックス内のすべてのホテルから成るファセット ナビゲーション構造が必要な場合などです。
-* **facet** は、UI コントロールに渡せるナビゲーション構造を返します。 返されるのはカテゴリと数です。 この場合、カテゴリはちょうど *Category* という名前のフィールドに基づきます。 Azure Search には集計機能はありませんが、各カテゴリのドキュメントの数を示す `facet` により、大まかな集計を行うことができます。
+* **facet** は、UI コントロールに渡せるナビゲーション構造を返します。 返されるのはカテゴリと数です。 この場合、カテゴリはちょうど *Category* という名前のフィールドに基づきます。 Azure Cognitive Search には集計機能はありませんが、各カテゴリのドキュメントの数を示す `facet` により、大まかな集計を行うことができます。
 
 * **$top=2** では 2 件のドキュメントが返されます。つまり、`top` を使用すると、結果を減らすことも増やすこともできます。
 
@@ -210,7 +211,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * ファセットできるのは、フィルター可能なフィールドのみです。 結果として返されるのは、取得可能なフィールドのみです。
 
-* *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、「[Azure Search でファセット ナビゲーションを実装する方法](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)」をご覧ください。
+* *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[Azure Cognitive Search でファセット ナビゲーションを実装する方法](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)に関するページを参照してください。
 
 
 ### <a name="highlight-query"></a> 検索結果の強調表示
@@ -225,7 +226,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * フルテキスト検索では、単語の形式の基本的なバリエーションが認識されます。 この場合、"beaches" のキーワード検索に対する応答の検索結果には、検索可能フィールドにその単語が存在するホテルについて、"beach" が強調表示されたテキストが含まれます。 語形変化していても、言語分析により同じ単語として結果に表示できます。 
 
-* Azure Search では、Lucene と Microsoft の 56 個のアナライザーをサポートしています。 Azure Search で既定で使用されるのは、Lucene の標準アナライザーです。
+* Azure Cognitive Search では、Lucene と Microsoft の 56 個のアナライザーをサポートしています。 Azure Cognitive Search により既定で使用されるのは、Lucene の標準アナライザーです。
 
 ### <a name="fuzzy-search"></a> あいまい検索を試す
 
@@ -241,9 +242,9 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 **queryType** が指定されていない場合、既定の単純なクエリ パーサーが使用されます。 単純なクエリ パーサーの方が高速ですが、あいまい検索、正規表現、近接検索などの高度な種類のクエリが必要な場合は、完全な構文が必要になります。
 
-あいまい検索とワイルドカード検索は、検索の出力に影響を及ぼします。 これらのクエリ形式に対しては言語分析が実行されません。 あいまい検索とワイルドカード検索を使用する際は、あらかじめ「[Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md#stage-2-lexical-analysis)」で、字句解析の例外についてのセクションを参照してください。
+あいまい検索とワイルドカード検索は、検索の出力に影響を及ぼします。 これらのクエリ形式に対しては言語分析が実行されません。 あいまい検索とワイルドカード検索を使用する際は、あらかじめ [Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md#stage-2-lexical-analysis)に関するページで、字句解析の例外についてのセクションを参照してください。
 
-完全なクエリ パーサーによって有効になるクエリのシナリオの詳細については、「[Lucene query syntax in Azure Search (Azure Search での Lucene クエリ構文)](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)」を参照してください。
+完全なクエリ パーサーによって有効になるクエリのシナリオの詳細については、[Azure Cognitive Search での Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)に関するページを参照してください。
 
 ### <a name="geo-search"></a> 地理空間検索を試す
 
@@ -257,7 +258,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 ## <a name="takeaways"></a>重要なポイント
 
-このチュートリアルでは、Azure portal を使用した Azure Search について簡単に紹介しました。
+このチュートリアルでは、Azure portal を使用した Azure Cognitive Search について簡単に紹介しました。
 
 **データのインポート** ウィザードを使って検索インデックスを作成する方法について説明しました。 [インデクサー](search-indexer-overview.md)について取り上げると共に、インデックス設計の基本的なワークフローについて説明しました。その際、[公開済みのインデックスに対して行うことができる変更](https://docs.microsoft.com/rest/api/searchservice/update-index)についても触れています。
 
@@ -275,8 +276,8 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 ## <a name="next-steps"></a>次の手順
 
-次のプログラム ツールを使えば、Azure Search の可能性がさらに広がります。
+次のプログラム ツールを使えば、Azure Cognitive Search の可能性がさらに広がります。
 
 * [.NET SDK を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [REST API を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Postman または Fiddler と Azure Search REST API を使用してインデックスを作成する](search-get-started-postman.md)
+* [Postman または Fiddler と Azure Cognitive Search の REST API を使用してインデックスを作成する](search-get-started-postman.md)

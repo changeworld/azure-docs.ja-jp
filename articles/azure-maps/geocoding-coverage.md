@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a5e5f4ab286289e223a2fe10ff8cf45f43309f04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 999e545d49b11eef84d1a03401eb28cde36e82af
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785937"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991367"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 
@@ -31,7 +31,7 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | アンギラ                                            |                 |                |              |      ✓     |          ✓         |
 | 南極大陸                                          |                 |                |              |      ✓     |          ✓         |
-| アンティグア バーブーダ                                 |                 |                |       ✓      |      ✓     |          ✓         |
+| アンティグア・バーブーダ                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | アルゼンチン                                           |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | アルバ                                               |                 |                |              |      ✓     |          ✓         |
 | バハマ                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -127,7 +127,6 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 | パキスタン                                            |                 |                |              |      ✓     |          ✓         |
 | パラオ                                               |                 |                |              |      ✓     |          ✓         |
 | パプアニューギニア                                    |                 |                |              |      ✓     |          ✓         |
-| パラセル諸島                                     |                 |                |              |      ✓     |                    |
 | フィリピン                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ピトケアン                                            |                 |                |              |      ✓     |          ✓         |
 | サモア                                               |                 |                |              |      ✓     |          ✓         |
@@ -135,7 +134,6 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 | シンガポール                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ソロモン諸島                                     |                 |                |              |      ✓     |          ✓         |
 | 北方領土                                     |        ✓        |                |              |      ✓     |          ✓         |
-| スプラトリー諸島                                     |                 |                |              |      ✓     |                    |
 | スリランカ                                           |                 |                |              |      ✓     |          ✓         |
 | 台湾                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | タイ                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |

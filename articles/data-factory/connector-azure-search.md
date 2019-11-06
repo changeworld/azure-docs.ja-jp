@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: c2165d0ff16233766918f9e274324b02d1bf1ac8
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 703dcb5fee0c31328eee91c9673e62653d7aa698
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962112"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286343"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをコピーする
 
@@ -179,7 +179,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 | String Array | N |
 | GeographyPoint | N |
 
-現在、ComplexType などの他のデータ型はサポートされていません。 Azure Serach でサポートされているデータ型の完全な一覧については、「[サポートされているデータ型 (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。
+現在、ComplexType などの他のデータ型はサポートされていません。 Azure Search でサポートされているデータ型の完全な一覧については、「[サポートされているデータ型 (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

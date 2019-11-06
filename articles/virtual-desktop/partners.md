@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673014"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300172"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -33,9 +33,9 @@ Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度
 
 ![VMware のロゴ](./media/partners/vmware.png)
 
-組織は VMware Horizon Cloud on Microsoft Azure で、Microsoft Azure 上の自社のインスタンスを、仮想化された Windows アプリケーションおよびデスクトップを提供するシンプルで直観的な Horizon Cloud コントロール プレーンに接続して、安全で包括的なクラウド ホスト ソリューションを構築できます。 VMware は、Windows Virtual Desktop のリリースで Microsoft とパートナーシップを組み、Horizon Cloud on Microsoft Azure を使用し、お客様の Windows Virtual Desktop の機能を拡張しました。
-
-承認されたプロバイダーであるため、VMware Horizon Cloud on Microsoft Azure のお客様は、広範なエンドポイント サポート、グローバルにクラウド向けに最適化されたブローカリング、柔軟なデスクトップ オプションと構成、ユーザーの環境管理、ハイブリッド環境のサポートなどの Horizon Cloud の最新のエンタープライズ クラスのすべての機能に加え、Windows 10 Enterprise でのマルチセッション、Windows 7 のセキュリティ更新プログラムの最長 3 年間の無料延長、FSLogix 機能などの Windows Virtual Desktop のすべての利点を得ることができます。 
+組織は VMware Horizon Cloud on Microsoft Azure で、Microsoft Azure 上の自社のインスタンスを、仮想化された Windows アプリケーションおよびデスクトップを提供するシンプルで直観的な Horizon Cloud コントロール プレーンに接続して、安全で包括的なクラウド ホスト ソリューションを構築できます。 VMware は、Windows Virtual Desktop のリリースで Microsoft とパートナーシップを組み、Horizon Cloud on Microsoft Azure を使用し、お客様の Windows Virtual Desktop の機能を拡張しました。 この機能は、2019 の終わりまでにテクニカル プレビューで使用できるようになります。
+ 
+認定プロバイダーに対する Windows Virtual Desktop のベネフィットは、Microsoft Azure の顧客での VMware Horizon Cloud まで拡張されます。これには、マルチセッションに対する Windows 10 Enterprise、最大 3 年間の無料拡張セキュリティ更新プログラムを含む Windows 7、および FSLogix が含まれます。 さらに、幅広いエンドポイント サポート、グローバルなクラウド最適化ブローカー、柔軟なデスクトップ オプションと構成、ユーザー環境の管理、ハイブリッド環境のサポートなど、Horizon Cloud のエンタープライズ クラスの機能が顧客に提供されます。
 
 - [Horizon Cloud on Microsoft Azure のテクニカル プレビューに登録する。](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)
 - [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
@@ -62,6 +62,16 @@ ControlUp を Windows Virtual Desktop で使用すると、Windows Virtual Deskt
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)
 - [パートナーの Web サイトにアクセスする。](https://www.controlup.com/solutions/ms_wvd/)
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![deviceTRUST ロゴ](./media/partners/devicetrust.png)
+
+企業をコンテキスト化する Windows Virtual Desktop 付加価値サービス プロバイダーである deviceTRUST は、ガバナンス要件を満たすために必要な情報と制御を IT 部門に提供しながら、ユーザーが任意の場所、任意のデバイス、任意のネットワークから Windows Virtual Desktop に自由にアクセスできるようにします。 
+
+この deviceTRUST は、コンテキスト セキュリティ テクノロジによって Windows Virtual Desktop の価値を拡張します。 deviceTRUST により、セキュリティで保護された Windows Virtual Desktop アクセスのための条件付きアクセス、つまり Windows Virtual Desktop 内での条件付きアプリケーション アクセスが可能になり、追加のインフラストラクチャなしで、条件付き Windows Virtual Desktop ポリシーが適用できるようになります。 deviceTRUST を使用すると、セキュリティ、コンプライアンス、および規制に関するすべての要件を満たす柔軟なモバイル ワークスペースが実現します。 
+
+- [パートナーの Web サイトにアクセスする。](https://devicetrust.com/wvd)
+
 ## <a name="lakeside-software"></a>Lakeside Software
 
 ![Lakeside Software ロゴ](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ Liquidware Essentials により、Azure へのユーザー環境の移行を合�
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)
 - [パートナーの Web サイトにアクセスする。](https://www.liquidware.com/solutions/solutions-platform/microsoft)
 
+## <a name="login-vsi"></a>Login VSI
+
+![Login VSI ロゴ](./media/partners/loginvsi.png)
+
+Login VSI は、Windows Virtual Desktop 環境でアプリケーション パフォーマンス テスト用のソフトウェアを提供する Windows Virtual Desktop 付加価値サービスプロバイダーで、Microsoft パートナーでもあります。 Login VSI Enterprise Edition は、お客様がオンプレミスのビジネス サービスを Windows Virtual Desktop に移行するときに、ビジネス クリティカルなアプリケーションに対応する Windows 10 Enterprise マルチセッション、Windows 10 Enterprise、および Windows 7 のパフォーマンス、スケーラビリティ、および可用性を評価し、最適な維持する目的で使用します。
+
+- [パートナーの Web サイトにアクセスする。](https://www.loginvsi.com)
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio ロゴ](./media/partners/nerdio.png)
@@ -93,7 +111,27 @@ Nerdio は、Azure IT 自動化プラットフォームです。これにより�
 Nerdio により、Azure リソースのプロビジョニングが簡素化され、デプロイが合理化されることで、Windows Virtual Desktop の価値が拡大します。 IT 担当者は、Azure に対して Nerdio を使用することで、Windows Virtual Desktop を含む Azure 環境全体を 2 時間未満で自動的にデプロイし、管理できます。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
-- [パートナーの Web サイトにアクセスする。](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)
+- [パートナーの Web サイトにアクセスする。](https://getnerdio.com/windows-virtual-desktop/)
+
+## <a name="policypak"></a>PolicyPak
+
+![PolicyPak ロゴ](./media/partners/policypak.png)
+
+PolicyPak Software は、アプリケーション、デスクトップ、ブラウザー、Java、およびセキュリティ設定の全体的な設定管理を行う Windows Virtual Desktop パートナーです。 PolicyPak により、デスクトップ、システム、およびセキュリティ設定のコンプライアンスが確保されます。 また、一連のコンポーネントを追加することで Windows の組み込み管理が強化され、Windows Virtual Desktop の価値が高まります。 既存の Active Directory グループ ポリシーや Windows Intune を使って、PolicyPak の設定を提供し、Windows 10 マシンの管理者の能力を強化することもできます。 
+
+PolicyPak の主なユース ケースは、ローカル管理者権限の削除と UAC プロンプトの対処、ランサムウェアのブロック、複数のブラウザーの管理、Internet Explorer のエンタープライズ モードと互換性モードの管理、GPO 数の削減、Windows 10 ファイルの関連付けの管理、Windows 10 スタート メニューとタスク バーの管理、および Windows 10 機能とオプション機能の管理です。  
+
+- [パートナーの Web サイトにアクセスする。](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![PrinterLogic ロゴ](./media/partners/printerlogic.png)
+
+Windows Virtual Desktop 付加価値サービス プロバイダー プラットフォームである PrinterLogic は、IT プロフェッショナルが、すべてのプリント サーバーを排除し、可用性の高いサーバーレス印刷インフラストラクチャを提供できるようにします。 PrinterLogic は、プリンター オブジェクトの一元管理と、任意のプリンターまたはエンドポイント OS へのデプロイを容易に行えるようにすることで、Windows Virtual Desktop と Azure の価値を高めます。   
+
+SaaS として、または独自のプライベート クラウドで Web スタックとして利用できる PrinterLogic プラットフォームにより、仮想セッションで必要とする適切なプリンターが、ユーザー ID、デバイス名、または場所に基づいて確実に確保されます。 この機能は、印刷の追跡とレポート作成、モバイル印刷、安全なバッジ リリース印刷など、一連のエンタープライズ印刷管理機能によって補完されます。 
+
+- [パートナーの Web サイトにアクセスする。](https://www.printerlogic.com)
 
 ## <a name="thinprint"></a>ThinPrint
 

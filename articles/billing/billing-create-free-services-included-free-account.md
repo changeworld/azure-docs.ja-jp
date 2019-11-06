@@ -10,19 +10,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ed69775de71a371153a888749efc9069389e61d5
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 90fa6b0db180ca93d9b57178c32c5e156ecc3bb0
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709681"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375787"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Azure の無料アカウントに含まれるサービスを作成する
 
-Azure の無料アカウントでは、無料サービス (数に制限あり) を 12 か月間ご利用いただけます。 詳細については、[Azure の無料アカウント](https://azure.microsoft.com/free/free-account-faq/)に関するページを参照してください。 Azure ではお使いの各サービスの使用状況を追跡します。また、制限を超えない限り課金は発生しません。 Azure の無料アカウントでは、この制限の範囲内であれば、多彩なサービス構成をお客様のニーズに合わせて柔軟にご利用いただけます。
+Azure の無料アカウントでは、無料サービス (数に制限あり) を 12 か月間ご利用いただけます。 その制限内であれば、お客様のニーズに合わせてさまざまな構成で自由に無料のサービスをご利用いただけます。
 
 ## <a name="create-free-services-in-the-azure-portal"></a>Azure Portal で無料サービスを作成する
-[無料のサービス ページ](https://go.microsoft.com/fwlink/?linkid=859151)を使用して、新しいサービスを作成することをお勧めします。 または、[Azure portal](https://portal.azure.com) にサインインして、左側にある **[すべてのサービス]** を選択し、 **[無料サービス]** を検索できます。
+無料サービスの作成は、[無料サービス ページ](https://go.microsoft.com/fwlink/?linkid=859151)へのリンクを使用して行うことをお勧めします。 または、[Azure portal](https://portal.azure.com) にサインインして「**無料サービス**」を検索してください。 無料サービス ページからサービスを作成する場合、ほとんどのフィールドが事前に選択されており、無料で簡単にサービスを作成することができます。
+
+![無料サービス ページを示すスクリーンショット](./media/billing-create-free-services-included-free-account/billing-freeservices-grid.png)
 
 ## <a name="services-can-be-created-in-any-region"></a>サービスは任意の地域で作成可能
 制限の範囲内であれば、サービスが使用可能な任意の地域で無料サービスを作成できます。 たとえば、Azure の無料アカウントでは、B1S Windows 仮想マシンを毎月 750 時間、無料で使用できます。 この仮想マシンは、B シリーズの仮想マシンが使用可能な地域なら、どこでも作成できます。 750 時間を超えない限り、Azure で課金されることはありません。 たとえば、米国のお客様が、西ヨーロッパで B1S Windows 仮想マシンをプロビジョニングし、750 時間まで無料で使用する、ということが可能です。
@@ -37,5 +39,5 @@ Azure の無料アカウントでは、無料サービス (数に制限あり) �
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次の手順
-
+- [Azure 無料アカウントに含まれている無料サービスの使用状況を確認する](billing-check-free-service-usage.md)方法を学習します。
 - [Azure 無料アカウントの課金を回避](billing-avoid-charges-free-account.md)する方法を学習します。

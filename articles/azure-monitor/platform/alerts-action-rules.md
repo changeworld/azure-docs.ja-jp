@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor アラートのアクション ルール
 description: Azure Monitor におけるアクション ルールとはどのようなものか、およびそれを構成して管理する方法を説明します。
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 34997c130094b7e8b209b3ad3030038670d0a254
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 04/25/2019
+ms.openlocfilehash: a858388a11cfdf36bacb1e5840f00fc6ef097867
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702985"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555708"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -198,22 +197,22 @@ Contoso は、[1 つのサブスクリプション レベルで 1 つのメト�
 
 ### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>2 つの個別のアクション ルールで 1 つのリソースが監視されていると、どうなりますか? 受け取る通知は 1 つですか、2 つですか? ここでは、次のシナリオの **VM2** を例に説明します。
 
-      "action rule AR1 defined for VM1 and VM2 with action group AG1
-      action rule AR2 defined for VM2 and VM3 with action group AG1"
+      action rule AR1 defined for VM1 and VM2 with action group AG1
+      action rule AR2 defined for VM2 and VM3 with action group AG1
 
 VM1 と VM3 のすべてのアラートについては、アクション グループ AG1 が 1 回トリガーされます。 **VM2** のすべてのアラートについては、アクション グループ AG1 が 2 回トリガーされます。これは、アクション ルールではアクションは重複除去されないためです。 
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>2 つの個別のアクション ルールで監視されているリソースがあり、一方でアクションを呼び出し、もう一方で抑制すると、どうなりますか? ここでは、次のシナリオの **VM2** を例に説明します。
 
-      "action rule AR1 defined for VM1 and VM2 with action group AG1 
-      action rule AR2 defined for VM2 and VM3 with suppression"
+      action rule AR1 defined for VM1 and VM2 with action group AG1 
+      action rule AR2 defined for VM2 and VM3 with suppression
 
 VM1 のすべてのアラートについては、アクション グループ AG1 が 1 回トリガーされます。 VM2 と VM3 に対するすべてのアラートのアクションと通知は抑制されます。 
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>同じリソースに対して、異なるアクション グループを呼び出すアラート ルールとアクション ルールが定義されていると、どうなりますか? ここでは、次のシナリオの **VM1** を例に説明します。
 
-      "alert rule rule1 on VM1 with action group AG2
-      action rule AR1 defined for VM1 with action group AG1" 
+      alert rule rule1 on VM1 with action group AG2
+      action rule AR1 defined for VM1 with action group AG1 
  
 VM1 のすべてのアラートについては、アクション グループ AG1 が 1 回トリガーされます。 警告ルール "rule1" がトリガーされるときは常に、AG2 もさらにトリガーされます。 アクション ルールと警告ルール内で定義されるアクション グループは独立して動作し、重複は除去されません。 
 

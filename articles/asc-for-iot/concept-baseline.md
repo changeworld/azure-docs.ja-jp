@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: a9de9924b851024dd36c848203cc3ada2cde208c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71328725"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176619"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center for IoT のベースラインとカスタム チェック
 
@@ -32,7 +32,7 @@ ms.locfileid: "71328725"
 
 ## <a name="baseline-custom-checks"></a>ベースラインのカスタム チェック
 
-ベースラインのカスタム チェックでは、デバイスのモジュール ID ツインを使用して、各デバイスのベースラインに対するカスタム チェック リストが確立されます。 
+ベースラインのカスタム チェックでは、デバイスの**モジュール ID ツイン**を使用して、各デバイスのベースラインに対するカスタム チェック リストが確立されます。 
 
 ## <a name="setting-baseline-properties"></a>ベースライン プロパティの設定
 
@@ -55,7 +55,7 @@ ms.locfileid: "71328725"
         "baselineCustomChecksFilePath": {
           "value" : "/home/user/full_path.xml"
         },
-        "baselineCustomChecksFilePath": {
+        "baselineCustomChecksFileHash": {
           "value" : "#hashexample!"
         }
       }
@@ -67,8 +67,8 @@ ms.locfileid: "71328725"
 | 名前| Status | 有効な値| 既定値| 説明 |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|必須: true |有効な値: **Boolean** |既定値: **false** |優先度の高いメッセージが送信されるまでの最大時間間隔。|
-|baselineCustomChecksFilePath |必須: true|有効な値: **String**、**null** |既定値:**PT5H** |ベースラインの xml 構成の完全パス|
-|baselineCustomChecksFileHash |必須: true|有効な値: **String**、**null** |既定値:**PT5H** |xml 構成ファイルの `sha256sum`。 追加情報については [sha256sum リファレンス](https://linux.die.net/man/1/sha256sum)を使用してください。 |
+|baselineCustomChecksFilePath |必須: true|有効な値: **String**、**null** |既定値: **null** |ベースラインの xml 構成の完全パス|
+|baselineCustomChecksFileHash |必須: true|有効な値: **String**、**null** |既定値: **null** |xml 構成ファイルの `sha256sum`。 追加情報については [sha256sum リファレンス](https://linux.die.net/man/1/sha256sum)を使用してください。 |
 
 その他のベースラインの例を確認するには、[カスタム ベースラインの例 1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) と[カスタム ベースラインの例 2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml) を参照してください。
 

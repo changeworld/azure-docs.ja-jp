@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: bf2441d5c0947ec94cbee247bdc4634ff9e53bfd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 768e354281aeb5e2143ddb0e190b0f27bf4f4e24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070313"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470696"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
 ## <a name="overview"></a>概要
@@ -66,7 +66,7 @@ App Service Environment は、 [Azure リソース エクスプローラー](htt
 
 ## <a name="disable-tls-10-and-tls-11"></a>TLS 1.0 と TLS 1.1 の無効化
 
-TLS の設定をアプリごとに管理したい場合は、[TLS 設定の適用](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions)に関するドキュメントに記載されたガイダンスが参考になります。 
+TLS の設定をアプリごとに管理したい場合は、[TLS 設定の適用](../configure-ssl-bindings.md#enforce-tls-versions)に関するドキュメントに記載されたガイダンスが参考になります。 
 
 ASE のすべてのアプリについて、TLS 1.0 と TLS 1.1 のインバウンド トラフィックをすべて無効にしたい場合は、次の **clusterSettings** エントリを設定してください。
 

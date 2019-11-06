@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d261b776-b48e-45f0-9722-0297adefabb8
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 3eda3ad3339b6b5832625ac54531c395694f8197
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f1b00f0e9094cf92714cb2454ce04adf7a79dc54
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588080"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>チュートリアル:Azure Active Directory と Nomadesk の統合
 

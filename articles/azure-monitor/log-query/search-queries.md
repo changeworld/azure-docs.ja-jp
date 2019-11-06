@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor ログでの検索クエリ | Microsoft Docs
 description: この記事では、Azure Monitor ログ クエリで検索の使用を開始するためのチュートリアルを提供します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/06/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b118740f3a57e168c5dfb071c199bcf424bd5113
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 08/06/2018
+ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295558"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932996"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor ログでの検索クエリ
 Azure Monitor ログ クエリは、テーブル名または search コマンドで始めることができます。 このチュートリアルでは、検索ベースのクエリについて説明します。 それぞれの方法に利点があります。
@@ -50,7 +44,7 @@ search in (Event, SecurityEvent) "error"
 ```
 
 ### <a name="table-and-column-scoping"></a>テーブルと列の範囲指定
-既定で、**search** ではデータ セット内のすべての列が評価されます。 特定の列のみを検索するには、次の構文を使用します。
+既定で、**search** ではデータ セット内のすべての列が評価されます。 特定の列 (次の例では *Source*  という名前) のみを検索するには、次の構文を使用します。
 
 ```Kusto
 search in (Event) Source:"error"

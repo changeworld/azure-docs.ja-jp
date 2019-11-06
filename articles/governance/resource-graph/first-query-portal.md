@@ -3,15 +3,15 @@ title: Azure Resource Graph エクスプローラーを使用して初めての�
 description: この記事では、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行する手順を紹介します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981247"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752148"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -27,25 +27,28 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[Resource Graph エクスプローラー]** を探して選択します。
 
-1. ウィンドウの **[クエリ 1]** 部分に「`project name, type | limit 5`」というクエリを入力し、 **[クエリの実行]** を選択します。
+1. ウィンドウの **[クエリ 1]** 部分に「`Resources | project name, type | limit 5`」というクエリを入力し、 **[クエリの実行]** を選択します。
 
    > [!NOTE]
    > このクエリ例では、`order by` などの並べ替え修飾子を指定していません。そのため、このクエリを複数回実行すると、要求ごとに、得られる一連のリソースが異なる可能性があります。
 
 1. **[結果]** タブでクエリの応答を確認します。 **[メッセージ]** タブを選択すると、結果の件数やクエリの実行時間など、クエリの詳細が表示されます。 エラーがある場合は、このタブに表示されます。
 
-1. このクエリを更新して `order by` に **Name** プロパティを指定します (`project name, type | limit 5 | order by name asc`)。 その後、 **[クエリの実行]** を選択します。
+1. このクエリを更新して `order by` に **Name** プロパティを指定します (`Resources | project name, type | limit 5 | order by name asc`)。 その後、 **[クエリの実行]** を選択します。
 
    > [!NOTE]
    > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
 
-1. このクエリを更新して、最初に `order by` に **Name** プロパティを指定してから `limit` に上位 5 件の結果を指定します (`project name, type | order by name asc | limit 5`)。 その後、 **[クエリの実行]** を選択します。
+1. このクエリを更新して、最初に `order by` に **Name** プロパティを指定してから `limit` に上位 5 件の結果を指定します (`Resources | project name, type | order by name asc | limit 5`)。 その後、 **[クエリの実行]** を選択します。
 
 最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は **Name** プロパティで並べ替えられますが、上位 5 件に制限されます。
 
 ### <a name="schema-browser"></a>スキーマ ブラウザー
 
-スキーマ ブラウザーは、Resource Graph エクスプローラーの左側のウィンドウに配置されています。 このリソース一覧には、Azure Resource Graph でサポートされており、なおかつ自分がアクセス可能なテナントに存在する Azure リソースの "_リソースの種類_" がすべて表示されます。 リソースの種類またはサブプロパティを展開すると子プロパティが表示されます。その子プロパティを使用して、Resource Graph クエリを作成できます。 リソースの種類を選択すると、クエリ ボックスに `where type =="<resource type>"` が配置されます。 いずれかの子プロパティを選択すると、クエリ ボックスに `where <propertyName> == "INSERT_VALUE_HERE"` が追加されます。 スキーマ ブラウザーは、クエリに使用するプロパティを見つけるための優れた手段です。 _INSERT\_VALUE\_HERE_ は実際の値に置き換え、条件や演算子、関数を使いながら、意図した結果が得られるようにクエリを調整してください。
+スキーマ ブラウザーは、Resource Graph エクスプローラーの左側のウィンドウに配置されています。 このリソース一覧には、Azure Resource Graph でサポートされており、なおかつ自分がアクセス可能なテナントに存在する Azure リソースの "_リソースの種類_" がすべて表示されます。 リソースの種類またはサブプロパティを展開すると子プロパティが表示されます。その子プロパティを使用して、Resource Graph クエリを作成できます。
+
+リソースの種類を選択すると、クエリ ボックスに `where type =="<resource type>"` が配置されます。 いずれかの子プロパティを選択すると、クエリ ボックスに `where <propertyName> == "INSERT_VALUE_HERE"` が追加されます。
+スキーマ ブラウザーは、クエリに使用するプロパティを見つけるための優れた手段です。 _INSERT\_VALUE\_HERE_ は実際の値に置き換え、条件や演算子、関数を使いながら、意図した結果が得られるようにクエリを調整してください。
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Resource Graph クエリからグラフを作成する
 
@@ -54,7 +57,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. ウィンドウの **[クエリ 1]** 部分に次のクエリを入力し、 **[クエリの実行]** を選択します。
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 

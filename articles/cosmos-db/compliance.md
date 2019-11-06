@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB のコンプライアンス認
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/15/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 35c8841220c116cc34ba670eaa9ac7b36dc4cd7a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9ebec5498da8f7280179a48a6e3e3b10a9810e28
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615516"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881842"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 
@@ -36,7 +36,7 @@ Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時
 
 | **グローバルに適用可能** | **米国政府** | **業界に固有** | **地域/国に固有** |
 | --- | --- | --- | --- |
-| CSA STAR 認証 | DoD SRG Level 2 | HIPAA BAA | オーストラリアの IRAP Unclassified |
+| CSA STAR 認証 | DoD SRG Level 2 | HIPAA BAA | オーストラリアの IRAP |
 | CSA STAR 証明 | FedRAMP Moderate | HITRUST | ドイツの C5|
 | ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | シンガポールの MTCS Level 3 |
 | ISO 22301:2012 | | | スペインの ENS High|

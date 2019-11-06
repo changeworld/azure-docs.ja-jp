@@ -49,6 +49,14 @@
       href: manage-consortium-powershell.md
     - name: Logic Apps を使用する
       href: ethereum-logic-app.md
+- name: ブロックチェーン データ マネージャー
+  items:
+    - name: データ マネージャーの概要
+      href: data-manager.md
+    - name: データ マネージャーを構成する - ポータル
+      href: data-manager-portal.md
+    - name: データ マネージャーを構成する - CLI
+      href: data-manager-cli.md
 - name: リソース
   items:
     - name: Blockchain REST API

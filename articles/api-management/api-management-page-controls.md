@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
 ms.openlocfilehash: b720d64f5b0a5f66375083b7854658aa754db150
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072301"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management のページ コントロール
@@ -48,7 +48,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ##  <a name="app-actions"></a> app-actions  
  `app-actions` コントロールは、開発者ポータルのユーザー プロファイル ページでアプリケーションを操作するためのユーザー インターフェイスを提供します。  
   
- ![app&#45;actions control](./media/api-management-page-controls/APIM-app-actions-control.png "APIM app-actions control")  
+ ![app&#45;actions コントロール](./media/api-management-page-controls/APIM-app-actions-control.png "APIM app-actions コントロール")  
   
 ### <a name="usage"></a>使用法  
   
@@ -70,7 +70,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ##  <a name="basic-signin"></a> basic-signin  
  `basic-signin` コントロールは、開発者ポータルのサインイン ページでユーザーのサインイン情報を収集するコントロールを提供します。  
   
- ![basic&#45;signin control](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic-signin control")  
+ ![basic&#45;signin コントロール](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic-signin コントロール")  
   
 ### <a name="usage"></a>使用法  
   
@@ -89,7 +89,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ##  <a name="paging-control"></a> paging-control  
  `paging-control` は、項目の一覧を表示する開発者ポータル ページでページング機能を提供します。  
   
- ![paging control](./media/api-management-page-controls/APIM-paging-control.png "APIM paging control")  
+ ![paging コントロール](./media/api-management-page-controls/APIM-paging-control.png "APIM paging コントロール")  
   
 ### <a name="usage"></a>使用法  
   
@@ -112,7 +112,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ##  <a name="providers"></a> providers  
  `providers` コントロールは、開発者ポータルのサインイン ページで認証プロバイダーを選択するコントロールを提供します。  
   
- ![providers control](./media/api-management-page-controls/APIM-providers-control.png "APIM providers control")  
+ ![providers コントロール](./media/api-management-page-controls/APIM-providers-control.png "APIM providers コントロール")  
   
 ### <a name="usage"></a>使用法  
   
@@ -131,7 +131,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ##  <a name="search-control"></a> search-control  
  `search-control` は、項目の一覧を表示する開発者ポータル ページで検索機能を提供します。  
   
- ![search control](./media/api-management-page-controls/APIM-search-control.png "APIM search control")  
+ ![search コントロール](./media/api-management-page-controls/APIM-search-control.png "APIM search コントロール")  
   
 ### <a name="usage"></a>使用法  
   
@@ -152,7 +152,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ##  <a name="sign-up"></a> sign-up  
  `sign-up` コントロールは、開発者ポータルのサインアップ ページでユーザーのプロファイル情報を収集するコントロールを提供します。  
   
- ![sign&#45;up control](./media/api-management-page-controls/APIM-sign-up-control.png "APIM sign-up control")  
+ ![sign&#45;up コントロール](./media/api-management-page-controls/APIM-sign-up-control.png "APIM sign-up コントロール")  
   
 ### <a name="usage"></a>使用法  
   
@@ -171,7 +171,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ##  <a name="subscribe-button"></a> subscribe-button  
  `subscribe-button` は、ユーザーが成果物へのサブスクリプションを行うためのコントロールを提供します。  
   
- ![subscribe&#45;button control](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM subscribe-button control")  
+ ![subscribe&#45;button コントロール](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM subscribe-button コントロール")  
   
 ### <a name="usage"></a>使用法  
   
@@ -190,7 +190,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ##  <a name="subscription-cancel"></a> subscription-cancel  
  `subscription-cancel` コントロールは、開発者ポータルのユーザー プロファイル ページで成果物へのサブスクリプションを取り消すコントロールを提供します。  
   
- ![subscription&#45;cancel control](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM subscription-cancel control")  
+ ![subscription&#45;cancel コントロール](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM subscription-cancel コントロール")  
   
 ### <a name="usage"></a>使用法  
   

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266208"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>チュートリアル:HDInsight で Azure Event Hubs と Apache Spark を使用してツイートを処理する
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |[Enable Auto-Inflate] (自動インフレを有効にする) (省略可能) |自動インフレは、トラフィックがそれに割り当てられているスループット ユニットの容量を超えると、Event Hubs 名前空間に割り当てられたスループット ユニットの数を自動的にスケール調整します。  |
     |[Auto-Inflate Maximum Throughput Units] (自動インフレの最大スループット ユニット数) (省略可能)|このスライダーは、 **[Enable Auto-Inflate] (自動インフレを有効にする)** をオンにした場合にのみ表示されます。  |
 
-    ![Spark ストリーミング サンプルの Event Hub 名を指定](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark ストリーミング サンプルの Event Hub 名を指定")
+    ![Spark ストリーミング サンプルのイベント ハブの名前を指定する](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark ストリーミング サンプルのイベント ハブの名前を指定する")
 
 6. **[作成]** をクリックして、名前空間を作成します。  デプロイは数分で完了します。
 
@@ -112,7 +112,7 @@ Event Hubs 名前空間がデプロイされたら、イベント ハブを作�
 
     - **[メッセージの保持期間]** : 1.   
    
-      ![Spark ストリーミング サンプルの Event Hub 詳細を指定](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub 詳細を指定")
+      ![Spark ストリーミング サンプルのイベント ハブの詳細を指定する](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark ストリーミング サンプルのイベント ハブの詳細を指定する")
 
 1. **作成** を選択します。  デプロイは数秒で完了し、[Event Hubs 名前空間] ページに戻されます。
 
@@ -120,11 +120,11 @@ Event Hubs 名前空間がデプロイされたら、イベント ハブを作�
 
 1. **[RootManageSharedAccessKey]** を選択します。
     
-     ![Spark ストリーミング サンプルの Event Hub ポリシーを設定](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub ポリシーを設定")
+     ![Spark ストリーミング サンプルのイベント ハブのポリシーを設定する](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Spark ストリーミング サンプルのイベント ハブのポリシーを設定する")
 
 1. **[主キー]** と **[接続文字列 - プライマリ キー]** の値を、チュートリアルの後半で使用するために保存します。
 
-     ![Spark ストリーミング例の Event Hub ポリシー キーを表示](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Spark ストリーミング例の Event Hub ポリシー キーを表示")
+     ![Spark ストリーミング サンプルのイベント ハブのポリシー キーを表示する](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Spark ストリーミング サンプルのイベント ハブのポリシー キーを表示する")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>ツイートをイベント ハブに送信する

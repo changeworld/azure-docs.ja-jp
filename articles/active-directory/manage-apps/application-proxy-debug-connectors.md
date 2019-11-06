@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: c3088ae777fe1a64be218105d36fdb9e01d7b798
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145952"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311855"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>アプリケーション プロキシ コネクタの問題をデバッグする 
 
@@ -43,7 +43,7 @@ ms.locfileid: "66145952"
 |  | Action | 説明 | 
 |---------|---------|---------|
 |1 | アプリに割り当てられたコネクタ グループを検索する | 複数のサーバーにインストールされているコネクタがある場合があります。その場合、コネクタは[コネクタ グループに割り当てられている](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)必要があります。 コネクタ グループの詳細については、「[コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](application-proxy-connector-groups.md)」をご覧ください。 |
-|2 | コネクタをインストールして、グループを割り当てる | コネクタをインストールしていない場合は、「[コネクタのインストールと登録](application-proxy-add-on-premises-application.md#install-and-register-a-connector)」を参照してください。<br></br>コネクタがグループに割り当てられていない場合は、[コネクタをグループに割り当てる](application-proxy-connector-groups.md#create-connector-groups)に関するセクションを参照してください。<br></br>アプリケーションがコネクタ グループに割り当てられていない場合は、「[コネクタ グループにアプリケーションを割り当てる](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)」を参照してください。|
+|2 | コネクタをインストールして、グループを割り当てる | コネクタをインストールしていない場合は、「[コネクタのインストールと登録](application-proxy-add-on-premises-application.md#install-and-register-a-connector)」を参照してください。<br></br> コネクタをインストールできない場合、[コネクタのインストール問題](application-proxy-connector-installation-problem.md)ページを参照してください。<br></br> コネクタがグループに割り当てられていない場合は、[コネクタをグループに割り当てる](application-proxy-connector-groups.md#create-connector-groups)に関するセクションを参照してください。<br></br>アプリケーションがコネクタ グループに割り当てられていない場合は、「[コネクタ グループにアプリケーションを割り当てる](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)」を参照してください。|
 |3 | コネクタ サーバーでポートのテストを実行する | [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) またはその他のポート テスト ツールを使用して、コネクタ サーバーでポートのテストを実行して、ポート 443 と 80 が開いているかどうかを確認します。|
 |4 | ドメインとポートを構成する | [ドメインとポートが正しく構成されていることを確認](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)します。コネクタが正常に機能するには、特定のポートが開いている必要があり、サーバーが URL にアクセスできる必要があります。 |
 |5 | バックエンド プロキシが使用されているかどうかを確認する | コネクタがバックエンド プロキシ サーバーを使用しているか、またはそれらをバイパスしているかどうかを確認します。 詳細については、「[コネクタのプロキシの問題とサービスの接続の問題のトラブルシューティング](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues)」を参照してください。 |

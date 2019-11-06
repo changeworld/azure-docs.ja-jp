@@ -1,22 +1,23 @@
 ---
-title: REST を使用してナレッジ ストアを作成する - Azure Search
-description: REST API と Postman を使用して Azure Search のナレッジ ストアを作成し、コグニティブ検索パイプラインからのエンリッチメントを永続化します。
+title: REST を使用してナレッジ ストアを作成する
+titleSuffix: Azure Cognitive Search
+description: REST API と Postman を使用して Azure Cognitive Search のナレッジ ストアを作成し、AI エンリッチメント パイプラインのエンリッチメントを永続化します。
 author: lobrien
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 10/01/2019
+manager: nitinme
 ms.author: laobri
-ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 24b97374b032640afafde775e90f6db735d63c46
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244459"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790026"
 ---
-# <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>REST を使用して Azure Search のナレッジ ストアを作成する
+# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>REST を使用して Azure Cognitive Search のナレッジ ストアを作成する
 
-ナレッジ ストアは、Azure Search の機能の 1 つです。AI エンリッチメント パイプラインからの出力を、後から下流で行われる分析などの処理に使用できるよう永続化するものです。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Search を使用してそのインデックスを作成し、Azure Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure Storage 内のナレッジ ストアにその結果を保存します。 Azure portal で Power BI や Storage Explorer などのツールを使用して、ナレッジ ストアを調べることができます。
+ナレッジ ストアは、Azure Cognitive Search の機能の 1 つです。AI エンリッチメント パイプラインからの出力を、後から下流で行われる分析などの処理に使用できるよう永続化するものです。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Cognitive Search を使用してそのインデックスを作成し、Azure Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure Storage 内のナレッジ ストアにその結果を保存します。 Azure portal で Power BI や Storage Explorer などのツールを使用して、ナレッジ ストアを調べることができます。
 
 この記事では、REST API インターフェイスを使用して AI エンリッチメントを取り込み、インデックスを作成して、一連のホテルのレビューに適用します。 ホテルのレビューは、Azure Blob Storage にインポートされます。 結果は、Azure Table Storage にナレッジ ストアとして保存されます。
 
@@ -26,15 +27,15 @@ ms.locfileid: "72244459"
 
 次のサービスを作成します。
 
-- [Azure Search サービス](search-create-service-portal.md)を作成するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
+- [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
 
-- サンプル データとナレッジ ストアを格納するための [Azure ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成します。 ストレージ アカウントには、自分の Azure Search サービスと同じ場所 (米国西部など) を使用する必要があります。 "**アカウントの種類**" の値は、"**StorageV2 (汎用 V2)** " (既定) または "**Storage (汎用 V1)** " にする必要があります。
+- サンプル データとナレッジ ストアを格納するための [Azure ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成します。 ストレージ アカウントには、自分の Azure Cognitive Search サービスと同じ場所 (米国西部など) を使用する必要があります。 "**アカウントの種類**" の値は、"**StorageV2 (汎用 V2)** " (既定) または "**Storage (汎用 V1)** " にする必要があります。
 
-- 推奨:Azure Search に要求を送信するための [Postman デスクトップ アプリ](https://www.getpostman.com/)入手します。 REST API は、HTTP 要求および応答を操作できる任意のツールで使用できます。 Postman は、REST API を調べる場合に適しています。 この記事では Postman を使用します。 また、この記事の[ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json)には、Postman の要求のコレクションが含まれています。 
+- 推奨:Azure Cognitive Search に要求を送信するための [Postman デスクトップ アプリ](https://www.getpostman.com/)を入手します。 REST API は、HTTP 要求および応答を操作できる任意のツールで使用できます。 Postman は、REST API を調べる場合に適しています。 この記事では Postman を使用します。 また、この記事の[ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)には、Postman の要求のコレクションが含まれています。 
 
 ## <a name="store-the-data"></a>データを格納する
 
-Azure Search のインデクサーからホテルのレビューにアクセスして AI エンリッチメント パイプラインを通じて取り込むことができるよう、その CSV ファイルを Azure Blob Storage に読み込みます。
+Azure Cognitive Search のインデクサーからホテルのレビューにアクセスして AI エンリッチメント パイプラインを通じて取り込むことができるよう、その CSV ファイルを Azure Blob Storage に読み込みます。
 
 ### <a name="create-a-blob-container-by-using-the-data"></a>データを使用して BLOB コンテナーを作成する
 
@@ -50,7 +51,7 @@ Azure Search のインデクサーからホテルのレビューにアクセス�
 
 1. **[アップロード]** を選択して CSV ファイルを Azure Blob Storage にインポートします。 新しいコンテナーが表示されます。
 
-    ![BLOB コンテナーの作成](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "BLOB コンテナーの作成")
+    ![BLOB コンテナーを作成する](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "BLOB コンテナーを作成する")
 
 ## <a name="configure-postman"></a>Postman を構成する
 
@@ -63,26 +64,26 @@ Postman をインストールして設定します。
 1. **[Collections]\(コレクション\)** タブを選択し、 **[...]** (省略記号) ボタンを選択します。
 1. **[編集]** を選択します。 
    
-   ![ナビゲーションが表示される Postman アプリ](media/knowledge-store-create-rest/postman-edit-menu.png "Postman で [Edit]\(編集\) メニューに移動する")
+   ![ナビゲーションを示す Postman アプリ](media/knowledge-store-create-rest/postman-edit-menu.png "Postman の [Edit]\(編集\) メニューに移動する")
 1. **[Edit]\(編集\)** ダイアログ ボックスで、 **[Variables]\(変数\)** タブを選択します。 
 
 **[Variables]\(変数\)** タブには、二重中かっこ内で特定の変数が出現するたびに、Postman でスワップされる値を追加できます。 たとえば、Postman によって、記号 `{{admin-key}}` は `admin-key` に設定した現在の値に置き換えられます。 Postman では、URL、ヘッダー、要求本文などの置き換えが行われます。 
 
-`admin-key` の値を取得するには、Azure Search サービスに移動し、 **[キー]** タブを選択します。`search-service-name` および `storage-account-name` を「[サービスを作成する](#create-services)」で選択した値に変更します。 ストレージ アカウントの **[アクセス キー]** タブの値を使用して `storage-connection-string` を設定します。その他の値は既定値のままにしておくことができます。
+`admin-key` の値を取得するには、Azure Cognitive Search サービスに移動し、 **[キー]** タブを選択します。`search-service-name` および `storage-account-name` を「[サービスを作成する](#create-services)」で選択した値に変更します。 ストレージ アカウントの **[アクセス キー]** タブの値を使用して `storage-connection-string` を設定します。その他の値は既定値のままにしておくことができます。
 
-![Postman アプリの変数タブ](media/knowledge-store-create-rest/postman-variables-window.png "Postman の変数ウインドウ")
+![Postman アプリの [variables]\(変数\) タブ](media/knowledge-store-create-rest/postman-variables-window.png "Postman の [variables]\(変数\) ウィンドウ")
 
 
 | 変数    | 情報の入手元 |
 |-------------|-----------------|
-| `admin-key` | Azure Search サービスの **[キー]** タブにあります。  |
+| `admin-key` | Azure Cognitive Search サービスの **[キー]** ページ上。  |
 | `api-version` | **2019-05-06-Preview** のままにします。 |
 | `datasource-name` | **hotel-reviews-ds** のままにします。 | 
 | `indexer-name` | **hotel-reviews-ixr** のままにします。 | 
 | `index-name` | **hotel-reviews-ix** のままにします。 | 
-| `search-service-name` | Azure Search サービスの実際の名前。 URL は `https://{{search-service-name}}.search.windows.net` です。 | 
+| `search-service-name` | Azure Cognitive Search サービスの名前。 URL は `https://{{search-service-name}}.search.windows.net` です。 | 
 | `skillset-name` | **hotel-reviews-ss** のままにします。 | 
-| `storage-account-name` | ストレージ アカウントの実際の名前。 | 
+| `storage-account-name` | ストレージ アカウント名。 | 
 | `storage-connection-string` | ストレージ アカウントの **[アクセス キー]** タブで、 **[key1]**  >  **[接続文字列]** を選択します。 | 
 | `storage-container-name` | **hotel-reviews** のままにします。 | 
 
@@ -90,8 +91,8 @@ Postman をインストールして設定します。
 
 ナレッジ ストアを作成する場合は、次の 4 つの HTTP 要求を発行する必要があります。 
 
-- **インデックスを作成するための PUT 要求**:このインデックスでは、Azure Search で使用され、返されるデータが保持されます。
-- **データソースを作成するための POST 要求**:このデータソースによって、Azure Search の動作がデータとナレッジ ストアのストレージ アカウントに接続されます。 
+- **インデックスを作成するための PUT 要求**:このインデックスでは、Azure Cognitive Search で使用され、返されるデータが保持されます。
+- **データソースを作成するための POST 要求**:このデータソースによって、Azure Cognitive Search の動作がデータとナレッジ ストアのストレージ アカウントに接続されます。 
 - **スキルセットを作成するための PUT 要求**:スキルセットでは、自分のデータとナレッジ ストアの構造に適用されるエンリッチメントを指定します。
 - **インデクサーを作成するための PUT 要求**:インデクサーを実行すると、データの読み取り、スキルセットの適用、結果の格納が行われます。 この要求は最後に実行する必要があります。
 
@@ -103,11 +104,11 @@ Postman をインストールして設定します。
 > すべての要求で `api-key` および `Content-type` ヘッダーを設定する必要があります。 Postman で変数が認識されている場合、前のスクリーンショットの `{{admin-key}}` のように、変数はオレンジ色のテキストで表示されます。 変数のスペルが間違っている場合は、赤いテキストで表示されます。
 >
 
-## <a name="create-an-azure-search-index"></a>Azure Search インデックスの作成
+## <a name="create-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスを作成する
 
-強化の検索、フィルター処理、および適用時に関心のあるデータを表すために、Azure Search インデックスを作成します。 PUT 要求を `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` に発行して、インデックスを作成します。 Postman では、二重中かっこで囲まれた記号 (`{{search-service-name}}`、`{{index-name}}`、`{{api-version}}` など) は「[Postman を構成する](#configure-postman)」で設定した値に置き換えられます。 別のツールを使用して REST コマンドを発行する場合は、これらの変数を自分で置き換える必要があります。
+強化の検索、フィルター処理、および適用時に関心のあるデータを表すために、Azure Cognitive Search インデックスを作成します。 PUT 要求を `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` に発行して、インデックスを作成します。 Postman では、二重中かっこで囲まれた記号 (`{{search-service-name}}`、`{{index-name}}`、`{{api-version}}` など) は「[Postman を構成する](#configure-postman)」で設定した値に置き換えられます。 別のツールを使用して REST コマンドを発行する場合は、これらの変数を自分で置き換える必要があります。
 
-要求の本文で自分の Azure Search インデックスの構造を設定します。 Postman で、`api-key` および `Content-type` ヘッダーを設定した後、要求の **[本文]** ウィンドウに移動します。 次の JSON が表示されます。 そうでない場合は、 **[未加工]**  >  **[JSON (application/json)]** を選択し、本文として次のコードを貼り付けます。
+要求の本文で自分の Azure Cognitive Search インデックスの構造を設定します。 Postman で、`api-key` および `Content-type` ヘッダーを設定した後、要求の **[本文]** ウィンドウに移動します。 次の JSON が表示されます。 そうでない場合は、 **[未加工]**  >  **[JSON (application/json)]** を選択し、本文として次のコードを貼り付けます。
 
 ```JSON
 {
@@ -148,7 +149,7 @@ Postman をインストールして設定します。
 
 ## <a name="create-the-datasource"></a>データソースを作成する
 
-次に、「[データを格納する](#store-the-data)」で格納したホテル データに Azure Search 接続します。 データソースを作成するには、POST 要求を `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` に送信します。 前述のように、`api-key` および `Content-Type` ヘッダーを設定する必要があります。 
+次に、「[データを格納する](#store-the-data)」で格納したホテル データに Azure Cognitive Search 接続します。 データソースを作成するには、POST 要求を `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` に送信します。 前述のように、`api-key` および `Content-Type` ヘッダーを設定する必要があります。 
 
 Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 **[Body]\(本文\)** ウィンドウの順に移動します。 次のコードが表示されます。
 
@@ -306,7 +307,7 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
 
 `parameters/configuration` オブジェクトでは、インデクサーがデータを取り込む方法を制御します。 ここでは、入力データは、ヘッダー行とコンマ区切り値がある単一のドキュメントに含まれています。 ドキュメント キーは、ドキュメントの一意の識別子です。 エンコード前のドキュメント キーはソース ドキュメントの URL です。 最後に、スキルセットの出力値 (言語コード、センチメント、キー フレーズなど) は、ドキュメント内の場所にマップされます。 `Language` には 1 つの値がありますが、`Sentiment` は `pages` の配列の各要素に適用されます。 `Keyphrases` は、`pages` 配列の各要素にも適用される配列です。
 
-`api-key` および `Content-type` ヘッダーを設定し、要求の本文が次のソース コードのようになっていることを確認したら、Postman で **[Send]\(送信\)** を選択します。 Postman から `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` に PUT 要求が送信されます。 Azure Search でインデクサーが作成され、実行されます。 
+`api-key` および `Content-type` ヘッダーを設定し、要求の本文が次のソース コードのようになっていることを確認したら、Postman で **[Send]\(送信\)** を選択します。 Postman から `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` に PUT 要求が送信されます。 Azure Cognitive Search によってインデクサーが作成され、実行されます。 
 
 ```json
 {
@@ -339,7 +340,7 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
 
 ## <a name="run-the-indexer"></a>インデクサーを実行する 
 
-Azure portal で、Azure Search サービスの **[概要]** ページに移動します。 **[インデクサー]** タブを選択し、 **[hotels-reviews-ixr]** を選択します。 インデクサーがまだ実行されていない場合は、 **[実行]** を選択します。 インデックス作成タスクによって、言語認識に関連する警告が発生する場合があります。 このデータには、コグニティブ スキルでまだサポートされていない言語で記述されたレビューがいくつか含まれています。 
+Azure portal で、Azure Cognitive Search サービスの **[概要]** ページに移動します。 **[インデクサー]** タブを選択し、 **[hotels-reviews-ixr]** を選択します。 インデクサーがまだ実行されていない場合は、 **[実行]** を選択します。 インデックス作成タスクによって、言語認識に関連する警告が発生する場合があります。 このデータには、コグニティブ スキルでまだサポートされていない言語で記述されたレビューがいくつか含まれています。 
 
 ## <a name="next-steps"></a>次の手順
 

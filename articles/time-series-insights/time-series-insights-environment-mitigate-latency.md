@@ -3,21 +3,21 @@ title: Azure Time Series Insights で調整を監視し軽減する方法 | Micr
 description: この記事では、Azure Time Series Insights の待機時間と調整の原因になるパフォーマンスの問題を監視、診断、および緩和する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123758"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990143"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 
@@ -74,11 +74,11 @@ ms.locfileid: "70123758"
 
 ## <a name="throttling-and-ingress-management"></a>調整とイングレスの管理
 
-* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が表示され、メッセージがイベント ソースに届く実際の時間から TSI が何秒遅れているのかが通知されます (約 30 ～ 60 秒のインデックス作成時間を除きます)。  
+* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が表示され、メッセージがイベント ソースに届く実際の時間から Time Series Insights 環境が何秒遅れているのかが通知されます (約 30 ～ 60 秒のインデックス作成時間を除きます)。  
 
   *[Ingress Received Message Count Lag]\(受信メッセージの受信のカウント ラグ\)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
 
-  たとえば、シングル ユニット S1 の環境で 5,000,000 メッセージの遅れがある場合、環境のサイズを 6 ユニットまで増やせば 1 日がかりで追いつける可能性があります。  さらに増やせば、それだけ短時間で追いつくことができます。 このキャッチアップ期間は、環境に初めてプロビジョニングするときに一般的に発生します。特に、イベントが既に入っているイベント ソースに接続するときや、大量の履歴データを一括アップロードするときに発生します。
+  たとえば、S1 環境が 5,000,000 メッセージの遅れを示している場合、環境のサイズを 6 ユニットまで増やせば 1 日がかりで追いつける可能性があります。  さらに増やせば、それだけ短時間で追いつくことができます。 このキャッチアップ期間は、環境に初めてプロビジョニングするときに一般的に発生します。特に、イベントが既に入っているイベント ソースに接続するときや、大量の履歴データを一括アップロードするときに発生します。
 
 * 別の方法としては、2 時間の環境の合計容量より若干低いしきい値以上に**保存済みイベントの受信**アラートを設定することです。  このアラートは、頻繁に容量に達しているかどうかを理解するのに役立ちます。そのような状況は、待機時間が発生する可能性が高いことを示しています。 
 
@@ -94,6 +94,6 @@ ms.locfileid: "70123758"
 
 ## <a name="next-steps"></a>次の手順
 
-- 追加のトラブルシューティング手順は、「[Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)」を参照してください。
+- [Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)を確認します。
 
-- 追加の支援については、[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights) でメッセージの交換を始めてください。 サポート オプションについては、[Azure サポート](https://azure.microsoft.com/support/options/)までお問い合わせいただくこともできます。
+- [Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。

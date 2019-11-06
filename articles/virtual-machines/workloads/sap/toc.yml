@@ -102,6 +102,8 @@
           href: sap-hana-high-availability-rhel.md
         - name: SLES での SAP HANA スケールアウトと Pacemaker のトラブルシューティング
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+        - name: SLES で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
+          href: sap-hana-scale-out-standby-netapp-files-suse.md
     - name: SAP HANA のバックアップの概要
       href: sap-hana-backup-guide.md
     - name: SAP HANA のファイル レベルのバックアップ
@@ -186,6 +188,8 @@
               href: high-availability-guide-suse-pacemaker.md
             - name: RHEL における Pacemaker
               href: high-availability-guide-rhel-pacemaker.md
+            - name: SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した VM のパブリック エンドポイント接続
+              href: high-availability-guide-standard-load-balancer-outbound-connections.md
         - name: SAP のインストール
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows

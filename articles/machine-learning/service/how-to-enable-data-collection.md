@@ -11,17 +11,17 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c747f25b92d9f165bfeb4468a0e263f102976f9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350573"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330731"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
 >[!IMPORTANT]
-> この SDK は間もなく廃止され、[Application Insights による簡素化されたデータ監視](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)で置き換えられます。 
+> この SDK は間もなく廃止されます。 この SDK は、モデルにおけるデータのずれを監視する開発者には依然として適していますが、ほとんどの開発者は [Application Insights による簡略化されたデータ監視](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)を使用する必要があります。 
 
 この記事では、Azure Kubernetes Cluster (AKS) にデプロイした Azure Machine Learning から入力モデル データを収集し、Azure Blob ストレージに格納する方法について説明します。 
 
@@ -192,7 +192,7 @@ BLOB のデータにすばやくアクセスするには:
 
 1. クエリ エディターで、[名前] 列の下をクリックし、ストレージ アカウント 1. モデル パスをフィルターに追加します。 注: 特定の年または月のファイルだけを検索する場合は、そのフィルター パスだけを展開します。 たとえば、3 月のデータだけを検索する場合は、/modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/identifier>/year>/3 とします
 
-1. **名前**に基づいて関連するデータをフィルター処理します。 **予測**と**入力**を保存した場合、それごとにクエリを作成する必要があります。
+1. **名前**に基づいて関連するデータをフィルター処理します。 **予測**と**入力**を保存した場合、それぞれにクエリを作成する必要があります。
 
 1. **[コンテンツ]** 列の二重矢印をクリックして、ファイルを結合します。 
 
@@ -215,7 +215,7 @@ BLOB のデータにすばやくアクセスするには:
 
 1. Databricks ワークスペースに移動します。 
 
-1. Databricks ワークスペースで、 **[Upload Data]\(データのアップロード\)** を選択します。
+1. Databricks ワークスペースで、 **[データのアップロード]** を選択します。
 
     [![DB のアップロード](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 

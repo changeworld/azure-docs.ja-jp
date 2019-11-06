@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.author: dacurwin
-ms.openlocfilehash: dc7745c7c1110bf3635b1621cecfd5e61488b9f9
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1835c6968bfdfcc3f3ce4d8a624e8f6bd62e224c
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210396"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375946"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM のアプリケーション整合性バックアップ
 
@@ -42,7 +42,7 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 
    - **事後スクリプト ファイル**: アクセス許可 "700" を指定します。 たとえば、"root" ユーザーにのみ、このファイルに対する "読み取り"、"書き込み"、"実行" のすべてのアクセス許可を付与します。
 
-   > [!Important]
+   > [!IMPORTANT]
    > このフレームワークを使用すると、ユーザーはさまざまな機能を利用できるようになります。 フレームワークを保護し、“root” ユーザーのみが重要な JSON ファイルおよびスクリプト ファイルにアクセスできるようにしてください。
    > 要件が満たされない場合、スクリプトは実行されず、その結果ファイル システムのクラッシュやバックアップの不整合が発生します。
    >
@@ -68,6 +68,8 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 
     - **fsFreezeEnabled**:VM スナップショットの作成中、ファイル システム レベルの整合性を確保するために Linux fsfreeze を呼び出すかどうかを指定します。 アプリケーションの動作上、fsfreeze を無効にしなければならない場合を除いて、この設定は **true** にしておくことをお勧めします。
 
+    - **ScriptsExecutionPollTimeSeconds**: スクリプトを実行するための各ポーリング間で拡張機能がスリープする必要がある時間を設定します。 たとえば、値が 2 の場合、事前スクリプトまたは事後スクリプトの実行が完了したかどうかが、拡張機能によって 2 秒ごとにチェックされます。 使用できる最小値と最大値は、それぞれ 1 と 5 です。 値は、厳密に整数である必要があります。
+
 6. 以上でスクリプト フレームワークの構成は完了です。 VM のバックアップが構成済みの場合、次回のバックアップではスクリプトが呼び出され、アプリケーション整合バックアップがトリガーされます。 VM バックアップの構成が済んでいない場合は、「[Recovery Services コンテナーへの Azure 仮想マシンのバックアップ](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)」を参照して必要な構成を行ってください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -76,11 +78,11 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 
 | Error | エラー メッセージ | 推奨される操作 |
 | ------------------------ | -------------- | ------------------ |
-| Pre-ScriptExecutionFailed |Pre-Script returned an error so backup may not be application consistent. (事前スクリプトからエラーが返されました。バックアップのアプリケーション整合性は確保されていない可能性があります。)   | スクリプトのエラー ログを参照して問題を解決してください。|  
-|   Post-ScriptExecutionFailed |    The post-script returned an error that might impact application state. (アプリケーションの状態に影響する可能性のあるエラーが事後スクリプトから返されました。) |    スクリプトのエラー ログを参照して問題を解決し、アプリケーションの状態をチェックしてください。 |
-| Pre-ScriptNotFound |  The pre-script was not found at the location that's specified in the **VMSnapshotScriptPluginConfig.json** config file. (VMSnapshotScriptPluginConfig.json 構成ファイルで指定された場所に事前スクリプトが見つかりませんでした。) |   バックアップのアプリケーション整合性を確保するためには、構成ファイルで指定されているパスに事前スクリプトが存在することを確認してください。|
-| Post-ScriptNotFound | The post-script wasn't found at the location that's specified in the **VMSnapshotScriptPluginConfig.json** config file. (VMSnapshotScriptPluginConfig.json 構成ファイルで指定された場所に事後スクリプトが見つかりませんでした。) |   バックアップのアプリケーション整合性を確保するためには、構成ファイルで指定されているパスに事後スクリプトが存在することを確認してください。|
-| IncorrectPluginhostFile | The **Pluginhost** file, which comes with the VmSnapshotLinux extension, is corrupted, so pre-script and post-script cannot run and the backup won't be application-consistent. (VmSnapshotLinux 拡張機能に付属の Pluginhost ファイルが壊れているため、事前スクリプトと事後スクリプトを実行できません。バックアップのアプリケーション整合性は確保されません。) | **VmSnapshotLinux** 拡張機能をアンインストールしてください。次回のバックアップで自動的に再インストールされて問題が解決します。 |
+| Pre-ScriptExecutionFailed |Pre-Script returned an error so backup may not be application consistent. (事前スクリプトからエラーが返されました。バックアップのアプリケーション整合性は確保されていない可能性があります。)| スクリプトのエラー ログを参照して問題を解決してください。|  
+|Post-ScriptExecutionFailed |The post-script returned an error that might impact application state. (アプリケーションの状態に影響する可能性のあるエラーが事後スクリプトから返されました。) |スクリプトのエラー ログを参照して問題を解決し、アプリケーションの状態をチェックしてください。 |
+| Pre-ScriptNotFound |The pre-script was not found at the location that's specified in the **VMSnapshotScriptPluginConfig.json** config file. (VMSnapshotScriptPluginConfig.json 構成ファイルで指定された場所に事前スクリプトが見つかりませんでした。) |バックアップのアプリケーション整合性を確保するためには、構成ファイルで指定されているパスに事前スクリプトが存在することを確認してください。|
+| Post-ScriptNotFound |The post-script wasn't found at the location that's specified in the **VMSnapshotScriptPluginConfig.json** config file. (VMSnapshotScriptPluginConfig.json 構成ファイルで指定された場所に事後スクリプトが見つかりませんでした。) |バックアップのアプリケーション整合性を確保するためには、構成ファイルで指定されているパスに事後スクリプトが存在することを確認してください。|
+| IncorrectPluginhostFile |The **Pluginhost** file, which comes with the VmSnapshotLinux extension, is corrupted, so pre-script and post-script cannot run and the backup won't be application-consistent. (VmSnapshotLinux 拡張機能に付属の Pluginhost ファイルが壊れているため、事前スクリプトと事後スクリプトを実行できません。バックアップのアプリケーション整合性は確保されません。)| **VmSnapshotLinux** 拡張機能をアンインストールしてください。次回のバックアップで自動的に再インストールされて問題が解決します。 |
 | IncorrectJSONConfigFile | The **VMSnapshotScriptPluginConfig.json** file is incorrect, so pre-script and post-script cannot run and the backup won't be application-consistent. (VMSnapshotScriptPluginConfig.json ファイルが正しくないため、事前スクリプトと事後スクリプトを実行できません。バックアップのアプリケーション整合性は確保されません。) | [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) からコピーをダウンロードして再度構成してください。 |
 | InsufficientPermissionforPre-Script | For running scripts, "root" user should be the owner of the file and the file should have “700” permissions (that is, only "owner" should have “read”, “write”, and “execute” permissions). (スクリプトを実行するためには、root ユーザーがファイルの所有者であること、またファイルに "700" アクセス許可が設定されていることが必要です。つまり所有者だけが、"読み取り"、"書き込み"、"実行" のアクセス許可を持っている必要があります。) | "root" ユーザーがスクリプト ファイルの "所有者" であること、また所有者にのみ "読み取り"、"書き込み"、"実行" のアクセス許可が付与されていることを確認してください。 |
 | InsufficientPermissionforPost-Script | For running scripts, root user should be the owner of the file and the file should have “700” permissions (that is, only "owner" should have “read”, “write”, and “execute” permissions). (スクリプトを実行するためには、root ユーザーがファイルの所有者であること、またファイルに "700" アクセス許可が設定されていることが必要です。つまり所有者だけが、"読み取り"、"書き込み"、"実行" のアクセス許可を持っている必要があります。) | "root" ユーザーがスクリプト ファイルの "所有者" であること、また所有者にのみ "読み取り"、"書き込み"、"実行" のアクセス許可が付与されていることを確認してください。 |
@@ -88,4 +90,5 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 | Post-ScriptTimeout | The execution of the application-consistent backup post-script timed out. (アプリケーション整合性バックアップの事後スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、 **/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
 
 ## <a name="next-steps"></a>次の手順
+
 [Recovery Services コンテナーへの VM バックアップの構成](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

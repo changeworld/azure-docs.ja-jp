@@ -2,18 +2,17 @@
 title: Azure Cosmos DB のデータのモデル化
 titleSuffix: Azure Cosmos DB
 description: NoSQL データベースでのデータのモデル化、リレーショナル データベースのデータとドキュメント データベースのデータのモデル化の違いについて説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
-ms.custom: rimman
-ms.openlocfilehash: da119b2858c6b6c7bbc99b40d340f79964e0fae3
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467890"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755009"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB のデータ モデリング
 

@@ -10,14 +10,15 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b0d7286d96d2fbfa35eb7ce9079413dfd186288c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034592"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496968"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning から Web アプリとして Azure App Service にモデルをデプロイする方法について説明します。
 
@@ -28,7 +29,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 
 * セキュリティ強化を目的とした[高度な認証](/azure/app-service/configure-authentication-provider-aad)。 認証方法には、Azure Active Directory と多要素認証の両方が含まれます。
 * 再デプロイ不要の[自動スケーリング](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)。
-* クライアントとサービスの間のセキュリティで保護された通信のための [SSL サポート](/azure/app-service/app-service-web-ssl-cert-load)。
+* クライアントとサービスの間のセキュリティで保護された通信のための [SSL サポート](/azure/app-service/configure-ssl-certificate-in-code)。
 
 Azure App Service によって提供される機能の詳細については、[App Service の概要](/azure/app-service/overview)を参照してください。
 
@@ -267,6 +268,6 @@ print(response.json())
 
 * [App Service on Linux](/azure/app-service/containers/) のドキュメントで Web アプリを構成する方法を確認します。
 * 「[Azure での自動スケールの使用](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)」でスケールの詳細を確認します。
-* [Azure App Service で SSL 証明書を使用します](/azure/app-service/app-service-web-ssl-cert-load)。
+* [Azure App Service で SSL 証明書を使用します](/azure/app-service/configure-ssl-certificate-in-code)。
 * [Azure Active Directory サインインを使用するように App Service アプリを構成します](/azure/app-service/configure-authentication-provider-aad)。
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

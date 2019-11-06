@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c872b10d7819fb95d614664ed32831f410349760
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 88ff026ea56e5f41b3b124c2d5594822ffeb6830
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122904"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529279"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C# IoT Edge モジュールを開発する
 
@@ -36,7 +36,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 このチュートリアルでは、**Visual Studio 2019** を使用して **C#** でモジュールを開発し、それを **Windows デバイス**にデプロイする方法について説明します。 Linux デバイス用のモジュールを開発する場合は、「[Linux デバイス用の C# IoT Edge モジュールを開発する](tutorial-csharp-module.md)」を参照してください。 
 
-次の表を使用し、C モジュールを開発して Windows にデプロイする際のオプションをご確認ください。 
+次の表を使用し、C# モジュールを開発して Windows デバイスにデプロイする際のオプションをご確認ください。 
 
 | C# | Visual Studio Code | Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
@@ -84,7 +84,7 @@ Azure IoT Edge Tools は、Visual Studio でサポートされているすべて
 
    ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
-5. **[OK]** を選択して変更を適用します。 
+5. **[追加]** を選択してプロジェクトを作成します。 
 
 ### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
 

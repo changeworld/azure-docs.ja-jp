@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53b53fa5185ade87dfdd21f0805641657d49d676
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949794"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800210"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>API に接続して認証を行う
 
@@ -49,7 +49,7 @@ Azure AD でサポートされる [5 つの主要なアプリケーション シ
 
 1. この取得されたトークンは、認証と、On-Behalf-Of フローを使用するさらにダウンストリームである API の呼び出しに使用されます
 
-On-Behalf-Of フローを調整する方法については、[OAuth 2.0 の On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)に関するページを参照してください。 また、コード サンプルについては、[ダウンストリーム Web API の呼び出し](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/)に関するページを参照してください。
+On-Behalf-Of フローを調整する方法については、[OAuth 2.0 の On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)に関するページを参照してください。 また、コード サンプルについては、[ダウンストリーム Web API の呼び出し](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

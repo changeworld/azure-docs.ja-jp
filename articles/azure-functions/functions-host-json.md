@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 3ae75dc988ad70871efa45eb8c61db15804922ee
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176574"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596873"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
@@ -69,7 +69,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 5
+              "maxTelemetryItemsPerSecond" : 20
             }
         }
     },
@@ -104,7 +104,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
     "applicationInsights": {
         "samplingSettings": {
           "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
+          "maxTelemetryItemsPerSecond" : 20
         }
     }
 }
@@ -116,7 +116,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 |プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |isEnabled|true|サンプリングを有効または無効にします。| 
-|maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
+|maxTelemetryItemsPerSecond|20|サンプリングが開始されるしきい値。| 
 |EnableLiveMetrics |true|ライブ メトリックの収集を有効にします。|
 |EnableDependencyTracking|true|依存関係の追跡を有効にします。|
 |EnablePerformanceCountersCollection|true|Kudu パフォーマンス カウンターの収集を有効にします。|
@@ -187,6 +187,20 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 ## <a name="http"></a>http
 
 構成設定は、[HTTP トリガーとバインディング](functions-bindings-http-webhook.md)に関する記事に記載されています。
+
+```json
+{
+    "extensions": {
+        "http": {
+            "routePrefix": "api",
+            "maxOutstandingRequests": 200,
+            "maxConcurrentRequests": 100,
+            "dynamicThrottlesEnabled": true
+        }
+    }
+}
+```
+
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 依存リソースを含む Azure Resource Manager テンプレートを作成する | Microsoft Docs
+title: 依存リソースを含む Azure Resource Manager テンプレート
 description: 複数のリソースを含む Azure Resource Manager テンプレートを作成し、Azure Portal を使用してデプロイする方法を説明します。
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 486a13db9cf18cb44a063d37dde4a657f6dc625c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0eb4b29ffb8ae0269dbc7efd7e9ef6b720188bce
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103669"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533508"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む Azure Resource Manager テンプレートを作成する
 
@@ -53,14 +53,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
-1. Visual Studio Code から、**[ファイル]**>**[ファイルを開く]** を選択します。
+1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. **[開く]** を選択して、ファイルを開きます。
-4. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+4. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 
 ## <a name="explore-the-template"></a>テンプレートを調べる
 
@@ -119,7 +119,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 テンプレートをデプロイする方法は多数あります。  このチュートリアルでは、Azure Portal から Cloud Shell を使用します。
 
 1. [Cloud Shell](https://shell.azure.com) にサインインします。 
-2. Cloud Shell の左上隅から **[PowerShell]** を選択し、**[確認]** を選択します。  このチュートリアルでは、PowerShell を使用します。
+2. Cloud Shell の左上隅から **[PowerShell]** を選択し、 **[確認]** を選択します。  このチュートリアルでは、PowerShell を使用します。
 3. Cloud Shell から **[ファイルのアップロード]** を選択します。
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)

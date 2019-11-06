@@ -1,18 +1,18 @@
 ---
-title: Azure Data Factory Mapping Data Flow の新しい分岐変換
-description: Azure Data Factory Mapping Data Flow の新しい分岐変換
+title: Azure Data Factory マッピング データ フローの新しい分岐変換
+description: Azure Data Factory マッピング データ フローの新しい分岐変換
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 35d5b2250cb5f2f5bd5b3a0073dc2e3c655ceccb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4832cd2036f615d1e90d5e7a21c1a9832c2fa837
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029918"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387129"
 ---
 # <a name="mapping-data-flow-union-transformation"></a>Mapping Data Flow の和集合変換
 
@@ -30,7 +30,7 @@ ms.locfileid: "72029918"
 
 これを行うには、追加するすべてのソースを含めて、[Union Settings]\(和集合設定\) で行を追加します。 共通の参照や結合キーは必要ありません。
 
-![和集合変換の設定](media/data-flow/unionsettings.png "和集合設定")
+![和集合変換の設定](media/data-flow/unionsettings.png "和集合の設定")
 
 [Select transformation after your Union]\(和集合の後に変換を選択\) を設定すると、重複するフィールド、またはヘッダーのないソースからの名前のないフィールドを名前変更できます。 次の例では、[検査] をクリックして、 3 つの異なるソースからの合計 132 個の列を含む結合されたメタデータを表示します。
 

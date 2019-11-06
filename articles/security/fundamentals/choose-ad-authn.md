@@ -9,18 +9,14 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997816"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529401"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する 
-
-この記事は、組織が完全な Azure Active Directory (Azure AD) ハイブリッド ID ソリューションを実装するのに役立つ一連の記事の、最初のものです。 このソリューションは、[ハイブリッド ID デジタル変換フレームワーク](https://aka.ms/aadframework)として大枠が決められています。 堅牢かつ安全なハイブリッド ID ソリューションを実装するために組織が注力できる、ビジネスに関する成果と目標が扱われます。 
-
-フレームワークの最初のビジネス成果では、ユーザーがクラウド アプリにアクセスするときに組織が認証プロセスをセキュリティで保護するための要件が詳しく説明されています。 認証でセキュリティ保護されたビジネス成果の最初のビジネス目標は、ユーザーがオンプレミスのユーザー名とパスワードを使用してクラウド アプリにサインインできるようにすることです。 このサインインと認証プロセスにより、クラウド内でのすべてのことが可能になります。
 
 正しい認証方法の選択は、クラウドにアプリを移行しようとしている組織にとって最大の関心事です。 次の理由により、この決定を軽く考えてはなりません。
 
@@ -66,9 +62,6 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 次のセクションは、デシジョン ツリーを使用することで組織に適した認証方法を決定するのに役立ちます。 Azure AD ハイブリッド ID ソリューションにクラウド認証とフェデレーション認証のどちらを展開すればよいかを判断できます。
 
 ## <a name="decision-tree"></a>デシジョン ツリー
-
-> [!NOTE]
-> UserPrincipalName が Alternate ID として選択されている場合、PTA は Alternate ID でのみ機能します。 そうして初めて、オンプレミスの UserPrincipalName が AD から AAD に同期されます。 詳細については、「[パススルー認証では、"userPrincipalName" の代わりに "Alternate ID" がユーザー名としてサポートされますか](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)」を参照してください。
 
 ![Azure AD での認証のデシジョン ツリー](./media/choose-ad-authn/azure-ad-authn-image1.png)
 

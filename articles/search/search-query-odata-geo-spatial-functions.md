@@ -1,13 +1,13 @@
 ---
-title: OData 地理空間関数リファレンス - Azure Search
-description: 'Azure Search クエリでの OData 地理空間関数: geo.distance および geo.intersects。'
-ms.date: 09/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 地理空間関数リファレンス
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリにおける OData 地理空間関数 (geo.distance および geo.intersects)。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,21 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 09034423e16c652cf6994b38f8d92574abc0ce55
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003460"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793332"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Azure Search クエリでの OData 地理空間関数 - `geo.distance` および `geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure Cognitive Search の OData 地理空間関数 - `geo.distance` および `geo.intersects`
 
-Azure Search では、[OData フィルター式](query-odata-filter-orderby-syntax.md)で `geo.distance` および `geo.intersects` 関数を介した地理空間クエリがサポートされています。 `geo.distance` 関数では、フィルターの一部として渡される 2 つのポイント (1 つはフィールドまたは範囲変数、もう 1 つは定数) の間の距離がキロメートル単位で返されます。 `geo.intersects` 関数からは、指定されたポイントが指定された多角形の内部にある場合、`true` が返されます。ポイントはフィールドまたは範囲変数として、多角形は定数として指定されて、フィルターの一部として渡されます。
+Azure Cognitive Search では、[OData フィルター式](query-odata-filter-orderby-syntax.md)で `geo.distance` および `geo.intersects` 関数を介した地理空間クエリがサポートされています。 `geo.distance` 関数では、フィルターの一部として渡される 2 つのポイント (1 つはフィールドまたは範囲変数、もう 1 つは定数) の間の距離がキロメートル単位で返されます。 `geo.intersects` 関数からは、指定されたポイントが指定された多角形の内部にある場合、`true` が返されます。ポイントはフィールドまたは範囲変数として、多角形は定数として指定されて、フィルターの一部として渡されます。
 
 また、[ **$orderby** パラメーター](search-query-odata-orderby.md)内で `geo.distance` 関数を使用することで、指定されたポイントからの距離によって検索結果を並べ替えることもできます。 **$orderby** の `geo.distance` の構文は **$filter** の場合と同じになります。 **$orderby** で `geo.distance` を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また**並べ替え可能**である必要があります。
 
 > [!NOTE]
-> **$orderby** パラメーターで `geo.distance` を使用する場合、関数に渡すフィールドには 1 つの geo ポイントのみを含める必要があります。 言い換えると、`Collection(Edm.GeographyPoint)` ではなく `Edm.GeographyPoint` 型である必要があります。 Azure Search のコレクション フィールドに対して並べ替えることはできません。
+> **$orderby** パラメーターで `geo.distance` を使用する場合、関数に渡すフィールドには 1 つの geo ポイントのみを含める必要があります。 言い換えると、`Collection(Edm.GeographyPoint)` ではなく `Edm.GeographyPoint` 型である必要があります。 Azure Cognitive Search のコレクション フィールドに対して並べ替えることはできません。
 
 ## <a name="syntax"></a>構文
 
@@ -64,10 +64,10 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> 完全な EBNF については、「[Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)」をご覧ください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 ### <a name="geodistance"></a>geo.distance
 
@@ -90,11 +90,11 @@ geography ポイント定数の形式は `geography'POINT(<longitude> <latitude>
 
 180 度経線 (日付変更線の近く) を含むクエリを作成する多くの地理空間クエリ ライブラリは、使用禁止か、多角形を 2 つに分割して経線のそれぞれの側に 1 つずつ配置するなどの回避策が必要とします。
 
-Azure Search では、クエリの形状が長方形で、(`geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'` のように) 経度と緯度に沿ってグリッド レイアウトに合わせて座標の位置が調整される場合、180 度経線を含む地理空間クエリは予想どおり動作します。 それ以外の場合、長方形ではない形状や整列されていない形状については、多角形を分割する手法を検討してください。  
+Azure Cognitive Search では、クエリの形状が長方形で、(`geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'` のように) 経度と緯度に沿ってグリッド レイアウトに合わせて座標の位置が調整される場合、180 度経線を含む地理空間クエリは予想どおり動作します。 それ以外の場合、長方形ではない形状や整列されていない形状については、多角形を分割する手法を検討してください。  
 
 ### <a name="geo-spatial-functions-and-null"></a>地理空間関数と `null`
 
-Azure Search での他のコレクション以外のすべてのフィールドのように、`Edm.GeographyPoint` 型のフィールドには `null` 値を含めることができます。 `null` であるフィールドに対する `geo.intersects` が Azure Search によって評価されると、結果は常に `false` になります。 この場合の `geo.distance` の動作はコンテキストによって異なります。
+Azure Cognitive Search での他のコレクション以外のすべてのフィールドのように、`Edm.GeographyPoint` 型のフィールドには `null` 値を含めることができます。 `null` であるフィールドに対する `geo.intersects` が Azure Cognitive Search によって評価されると、結果は常に `false` になります。 この場合の `geo.distance` の動作はコンテキストによって異なります。
 
 - フィルターでは、`null` フィールドの `geo.distance` は結果として `null` になります。 つまり、`null` を null 以外の任意の値と比較すると `false` に評価されるため、ドキュメントは一致しません。
 - **$orderby** を使用して結果を並べ替える場合、`null` フィールドの `geo.distance` は結果として最大限の距離になります。 このようなフィールドを持つドキュメントは、`asc` の並べ替え方向が使用された場合 (既定値)、他のいずれのものよりも下位に並べ替えられ、方向が `desc` の場合は、他のいずれのものよりも上位に並べ替えられます。
@@ -123,7 +123,7 @@ Azure Search での他のコレクション以外のすべてのフィールド�
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203530"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249210"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -35,7 +35,7 @@ Azure Red Hat OpenShift がサポートされている世界中のリージョ�
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>既存の仮想ネットワークにクラスターをデプロイできますか?
 
-いいえ。 もっとも、ピアリングを使って Azure Red Hat OpenShift クラスターを既存の VNET に接続することはできます。 詳細については、[クラスターの仮想ネットワークを既存の仮想ネットワークに接続する方法](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)に関するセクションを参照してください。
+No. もっとも、ピアリングを使って Azure Red Hat OpenShift クラスターを既存の VNET に接続することはできます。 詳細については、[クラスターの仮想ネットワークを既存の仮想ネットワークに接続する方法](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)に関するセクションを参照してください。
 
 ## <a name="what-cluster-operations-are-available"></a>どのクラスター操作を使用できますか?
 
@@ -75,11 +75,11 @@ Docker レジストリは `https://docker-registry.apps.<clustername>.<region>.a
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>クラスターは複数の Azure リージョンにわたってコンピューティング ノードを持つことができますか?
 
-いいえ。 Azure Red Hat OpenShift クラスターのすべてのノードは、同じ Azure リージョンに基づく必要があります。
+No. Azure Red Hat OpenShift クラスターのすべてのノードは、同じ Azure リージョンに基づく必要があります。
 
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>マスターおよびインフラストラクチャ ノードは、Azure Kubernetes Service (AKS) の場合と同様に無視されますか?
 
-いいえ。 クラスター マスターを含めすべてのリソースは、顧客サブスクリプションで実行します。 これらの種類のリソースは、読み取り専用のリソース グループに置かれます。
+No. クラスター マスターを含めすべてのリソースは、顧客サブスクリプションで実行します。 これらの種類のリソースは、読み取り専用のリソース グループに置かれます。
 
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>Open Service Broker for Azure (OSBA) はサポートされていますか?
 
@@ -189,7 +189,7 @@ SDN は openshift-ovs-networkpolicy であり、構成することはできま�
 
 各 Azure Red Hat OpenShift クラスターは指定された顧客専用であり、その顧客のサブスクリプション内に存在します。 
 
-## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>いずれかの永続ストレージ ソリューションを OCS 用に選択できますか? 
+## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>任意の永続ストレージ ソリューション (OCSなど) を選ぶことはできますか。 
 
 2 つのストレージ クラスから選ぶことができます。Azure Disk と Azure File です。
 

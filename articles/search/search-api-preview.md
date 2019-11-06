@@ -1,26 +1,23 @@
 ---
-title: Azure Search 2019-05-06-Preview 向けの REST API のプレビュー - Azure Search
-description: Azure Search Service REST API バージョン 2019-05-06-Preview には、ナレッジ ストアや顧客管理の暗号化キーなどの試験的機能が含まれています。
-services: search
-author: HeidiSteen
+title: REST API バージョン 2019-05-06-Preview
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search サービス REST API バージョン 2019-05-06-Preview には、ナレッジ ストアや顧客管理の暗号化キーなどの試験的機能が含まれています。
 manager: nitinme
-ms.service: search
-ms.devlang: rest-api
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: search
-ms.date: 05/02/2019
-ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7fa280742556b7bc42d2c7fb30c880f836eef62b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649976"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792533"
 ---
-# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Azure Search Service REST API バージョン 2019-05-06-Preview
-この記事では、まだ一般公開されていない実験的機能を提供する Azure Search Service REST API の `api-version=2019-05-06-Preview` バージョンについて説明します。
+# <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Cognitive Search サービス REST API バージョン 2019-05-06-Preview
+
+この記事では、まだ一般公開されていない実験的機能を提供する Search サービス REST API の `api-version=2019-05-06-Preview` バージョンについて説明します。
 
 > [!NOTE]
 > プレビュー機能は、フィードバックの収集を目的とするテストと実験のために提供されており、変更される可能性があります。 運用アプリケーションではプレビュー API を使用しないことを強くお勧めします。
@@ -49,11 +46,11 @@ ms.locfileid: "69649976"
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
-Azure Search サービスは複数のバージョンで使用できます。 詳しくは、[API バージョン](search-api-versions.md)に関するページをご覧ください。
+Azure Cognitive Search サービスは複数のバージョンで使用できます。 詳しくは、[API バージョン](search-api-versions.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Search Service REST API リファレンス ドキュメントをレビューします。 問題が発生した場合は、[StackOverflow](https://stackoverflow.com/) または[サポートへの問い合わせ](https://azure.microsoft.com/support/community/?product=search)でサポートを依頼してください。
+Search REST API リファレンス ドキュメントをレビューします。 問題が発生した場合は、[StackOverflow](https://stackoverflow.com/) または[サポートへの問い合わせ](https://azure.microsoft.com/support/community/?product=search)でサポートを依頼してください。
 
 > [!div class="nextstepaction"]
 > [Search Service REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)

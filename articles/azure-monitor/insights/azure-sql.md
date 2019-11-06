@@ -1,21 +1,19 @@
 ---
 title: Azure Monitor の Azure SQL Analytics ソリューション | Microsoft Docs
 description: Azure SQL Analytics ソリューションは、Azure SQL データベースの管理に役立ちます
-services: log-analytics
-ms.service: log-analytics
-ms.custom: ''
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 60538145652f3539768e6deb591352a1765488fd
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.reviewer: carlrab
+ms.openlocfilehash: 75e8cffea08c7db4526c647a32ed92be2d1779f1
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019006"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899122"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -36,7 +34,7 @@ Azure SQL Analytics は、Azure SQL データベース (単一、プール、お
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| [Azure Diagnostics](../platform/collect-azure-metrics-logs.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
+| [診断設定](../platform/diagnostic-settings.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
 | [Azure Storage アカウント](../platform/collect-azure-metrics-logs.md) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
 | [Windows エージェント](../platform/agent-windows.md) | いいえ | このソリューションでは、直接の Windows エージェントは使用されません。 |
 | [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | このソリューションでは、直接の Linux エージェントは使用されません。 |

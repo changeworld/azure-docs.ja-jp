@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 09970468a277dcaf3f28b4f5065572568089a12e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038491"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592311"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -30,12 +30,10 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、Log Analytics �
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure Spring Cloud にはどのようなサービス プランがあるのでしょうか?
 
-Azure Spring Cloud は、プレビュー期間中は無料でご利用いただけます。
+プレビュー期間中は、Azure Spring Cloud で提供されるサービス プランは 1 つです。  Spring Cloud のデプロイには、16 個の vCPU コアと 32 GB のメモリが含まれています。  デプロイ内の各マイクロサービス インスタンスの上限は、8 GB のメモリを持つ 4 個の vCPU コアです。
 
 リソース | 金額
 ------- | -------
-vCPU | 4
-メモリ | 8 G バイト
 Spring アプリケーションあたりのアプリ インスタンスの数 | 20
 Azure Spring Cloud サービス インスタンスあたりのアプリ インスタンスの合計数 | 50*
 サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 2*

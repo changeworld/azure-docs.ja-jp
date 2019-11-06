@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: d1c7edc2973231607cade89df56906190c2abbcf
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671141"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495979"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -23,7 +23,7 @@ ms.locfileid: "71671141"
 > [!IMPORTANT]
 > 汎用 v1 または BLOB ストレージ アカウントから汎用 v2 へのアップグレードは永続的であり、元に戻すことはできません。
 
-## <a name="upgrade-using-the-azure-portal"></a>Azure portal を使用したアップグレード
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ストレージ アカウントに移動します。
@@ -34,7 +34,7 @@ ms.locfileid: "71671141"
 
     ![アカウントの種類をアップグレードする](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-## <a name="upgrade-with-powershell"></a>PowerShell を使用したアップグレード
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,8 +45,7 @@ PowerShell を使用して汎用 V1 アカウントを汎用 v2 アカウント�
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
-
-## <a name="upgrade-with-azure-cli"></a>Azure CLI を使用したアップグレード
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して汎用 V1 アカウントを汎用 v2 アカウントにアップグレードするには、まず最新バージョンの Azure CLI をインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
@@ -55,6 +54,8 @@ Azure CLI を使用して汎用 V1 アカウントを汎用 v2 アカウント�
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```
+
+---
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>BLOB データのアクセス層を指定する
 

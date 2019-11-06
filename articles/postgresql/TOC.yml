@@ -78,6 +78,8 @@
           items:
             - name: 価格レベル
               href: concepts-pricing-tiers.md
+            - name: 予約容量の前払い
+              href: concept-reserved-pricing.md
             - name: 制限
               href: concepts-limits.md
         - name: データ アクセスとセキュリティ
@@ -92,6 +94,8 @@
               href: concepts-data-access-and-security-vnet.md
             - name: 接続のアーキテクチャ
               href: concepts-connectivity-architecture.md
+            - name: Azure AD 認証
+              href: concepts-aad-authentication.md
         - name: ビジネス継続性
           items:
             - name: ビジネス継続性の概要
@@ -153,8 +157,14 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: SSL の構成
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: 監視と調整
+          items:
+            - name: 監視と調整
+              href: concepts-hyperscale-monitoring.md
         - name: PostgreSQL 拡張機能
           href: concepts-hyperscale-extensions.md
+        - name: 高可用性
+          href: concepts-hyperscale-high-availability.md
         - name: リソース
           items:
             - name: 構成オプション
@@ -163,8 +173,12 @@
   items:
     - name: 単一サーバー
       items:
-        - name: ユーザーの作成
-          href: howto-create-users.md
+        - name: 認証
+          items:
+            - name: ユーザーの作成
+              href: howto-create-users.md
+            - name: Azure AD の統合の構成
+              href: howto-configure-sign-in-aad-authentication.md
         - name: 最適化
           items:
             - name: 一括挿入
@@ -245,12 +259,24 @@
               href: howto-read-replicas-cli.md
     - name: Hyperscale (Citus)
       items:
-        - name: スケーリング
+        - name: ユーザーの作成
+          href: howto-hyperscale-create-users.md
+        - name: スケール
           href: howto-hyperscale-scaling.md
         - name: ファイアウォールの管理
           items:
             - name: Azure ポータル
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 高可用性
+          href: howto-hyperscale-high-availability.md
+        - name: 監視
+          items:
+            - name: メトリックに基づいたアラートの作成
+              href: howto-hyperscale-alert-on-metric.md
+        - name: トラブルシューティング
+          items:
+            - name: 接続エラーのトラブルシューティング
+              href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: リファレンス
   items:
     - name: Azure CLI

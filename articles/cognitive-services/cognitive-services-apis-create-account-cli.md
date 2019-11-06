@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972662"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595319"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
@@ -74,8 +74,15 @@ az group create \
 
 新しいリソースを作成するときには、必要な [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/) (つまり sku) と共に、使用するサービスの "種類" を把握する必要があります。 リソースを作成するときは、この情報と他の情報をパラメーターとして使用します。
 
+### <a name="multi-service"></a>マルチサービス
+
+| Service                    | 種類                      |
+|----------------------------|---------------------------|
+| 複数のサービス。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/)に関するページを参照してください。            | `CognitiveServices`     |
+
+
 > [!NOTE]
-> 多くの Cognitive サービスには、サービスを試すために使用できる無料レベルがあります。 無料レベルを使用するには、リソースの sku として `F0` を使用します。
+> 以下の Cognitive サービスの多くには、サービスを試すために使用できる無料レベルがあります。 無料レベルを使用するには、リソースの sku として `F0` を使用します。
 
 ### <a name="vision"></a>視覚
 

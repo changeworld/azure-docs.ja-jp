@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e7ef558ec75622b804aef96781b549f1a833e21
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202138"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73518863"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>ファイルの整合性の監視 (FIM) を使用してベースラインを比較する
 
@@ -60,7 +60,7 @@ FIM ベースラインは、オペレーティング システムとサポート
 |ネットワークのセキュリティ:NTLMP の制限:このドメインの NTLM 認証を監査します|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> さまざまなオペレーティング システムのバージョンでサポートされているレジストリ設定の詳細については、[グループ ポリシー設定リファレンスのスプレッドシート](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250)を参照してください。
+> さまざまなオペレーティング システムのバージョンでサポートされているレジストリ設定の詳細については、[グループ ポリシー設定リファレンスのスプレッドシート](https://www.microsoft.com/download/confirmation.aspx?id=25250)を参照してください。
 
 *レジストリのベースラインを監視するように FIM を構成するには、次の手順に従います。*
 

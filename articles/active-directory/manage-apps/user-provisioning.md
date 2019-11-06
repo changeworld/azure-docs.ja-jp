@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac78029ba2d1f45ef67ef0d858fdd2917bd4a97a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033332"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330020"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Azure AD の自動ユーザー プロビジョニングで利用できるアプリケーションとシステム
 
-Azure AD は、一般に普及している多くの SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、SCIM 2.0 標準の特定の領域を実装するアプリにも広く対応しています。
+Azure AD は、一般的な多くの SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、[SCIM 2.0 標準](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)の特定の領域を実装するアプリにも広く対応しています。
 
 ### <a name="pre-integrated-applications"></a>事前統合されたアプリケーション
 
@@ -102,7 +102,7 @@ Azure Active Directory ポータルを使用して、選択したアプリケー
 
 1. **[プロビジョニング モード]** で [自動] オプションを選択し、管理者の資格情報、マッピング、開始と停止、および同期の設定を指定します。
 
-   - **[管理者資格情報]** を展開し、Azure AD をアプリケーションのユーザー管理 API に接続するために必要な資格情報を入力します。 このセクションでは、資格情報でエラーが発生した場合、またはプロビジョニング ジョブが[検疫](#quarantine)に移行した場合の電子メール通知を有効にすることもできます。
+   - **[管理者資格情報]** を展開し、Azure AD をアプリケーションのユーザー管理 API に接続するために必要な資格情報を入力します。 このセクションでは、資格情報でエラーが発生した場合、またはプロビジョニング ジョブが[検疫](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)に移行した場合の電子メール通知を有効にすることもできます。
    - **[マッピング]** を展開し、ユーザー アカウントをプロビジョニングまたは更新する場合に、Azure AD とターゲット アプリケーションの間でフローするユーザー属性を表示および編集します。 ターゲット アプリケーションが対応していれば、必要に応じてグループのプロビジョニングとユーザー アカウントをこのセクションで構成することができます。 テーブルでマッピングを選択すると右側にマッピング エディターが開き、ユーザー属性を表示してカスタマイズできます。
 
      **スコープ フィルター**により、ターゲット システムへのプロビジョニングまたはプロビジョニング解除の対象となるソース システム内のユーザーとグループをプロビジョニング サービスに指定します。 **[属性マッピング]** ウィンドウで **[ソース オブジェクト スコープ]** を選択し、特定の属性値でフィルター処理します。 たとえば、"Department" 属性が "Sales" であるユーザーのみをプロビジョニングの対象として指定することができます。 詳細については、[スコープ フィルターの使用](define-conditional-rules-for-provisioning-user-accounts.md)に関するページをご覧ください。
@@ -176,7 +176,7 @@ ServiceNow、G Suite、Box など、アプリケーションの中には、ユ�
 
 検疫状態であると、増分サイクルの頻度は徐々に減少し、最終的には 1 日 1 回になります。
 
-問題を引き起こしているすべてのエラーが修正されたら、プロビジョニング ジョブは検疫から削除され、次の同期サイクルが開始します。 プロビジョニング ジョブが検疫にとどまっている期間が 4 週間を超えると、そのプロビジョニング ジョブは無効になります。
+問題を引き起こしているすべてのエラーが修正されたら、プロビジョニング ジョブは検疫から削除され、次の同期サイクルが開始します。 プロビジョニング ジョブが検疫にとどまっている期間が 4 週間を超えると、そのプロビジョニング ジョブは無効になります。 検疫の状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか。
 
@@ -218,7 +218,7 @@ Azure portal でプロビジョニング ログを確認する方法について
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>SaaS アプリへの自動ユーザー プロビジョニングは、Azure AD の入れ子になった動的グループに対応しますか。
 
-いいえ。 "割り当てられたユーザーとグループのみを同期する" ように構成されている場合、Azure AD ユーザー プロビジョニング サービスは、入れ子になったグループに含まれているユーザーを読み取ったりプロビジョニングしたりすることができません。 明示的に割り当てられたグループの直接のメンバーであるユーザーだけを読み取ってプロビジョニングできます。
+No. "割り当てられたユーザーとグループのみを同期する" ように構成されている場合、Azure AD ユーザー プロビジョニング サービスは、入れ子になったグループに含まれているユーザーを読み取ったりプロビジョニングしたりすることができません。 明示的に割り当てられたグループの直接のメンバーであるユーザーだけを読み取ってプロビジョニングできます。
 
 これは、「アプリケーションへのグループベースの割り当て」の制限であり、シングル サインオンにも影響し、「[SaaS アプリケーションへのアクセスをグループで管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps )」で説明しています。
 

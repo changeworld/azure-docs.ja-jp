@@ -1,5 +1,6 @@
 ---
-title: さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する | Microsoft ID プラットフォーム
+title: さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
+titleSuffix: Microsoft identity platform
 description: B2C、ソブリン クラウド、ゲスト ユーザーなどのさまざまな機関を、iOS および macOS 用 MSAL で使用する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114e67e2dca7ba304cb92b21a894e045cbe0c9e9
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269397"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473798"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>方法:さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
 
@@ -33,7 +34,7 @@ ms.locfileid: "71269397"
 `MSALPublicClientApplication` は `https://login.microsoftonline.com/common` の既定の機関 URL を使用して構成されています。これは、ほとんどの Azure Active Directory (AAD) シナリオに適しています。 各国のクラウドのような高度なシナリオを実装する場合や B2C を使用する場合を除いて、変更する必要はありません。
 
 > [!NOTE]
-> ID プロバイダーとしての Active Directory フェデレーション サービス (ADFS) を使用した先進認証はサポートされていません (詳細については、「[開発者向けの AD FS のシナリオ](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)」を参照してください)。 ADFS は、フェデレーションを通じてサポートされます。
+> ID プロバイダーとしての Active Directory フェデレーション サービス (ADFS) を使用した先進認証はサポートされていません (詳細については、「[開発者向けの AD FS のシナリオ](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)」を参照してください)。 ADFS は、フェデレーションを通じてサポートされます。
 
 ## <a name="change-the-default-authority"></a>既定の機関を変更する
 

@@ -1,24 +1,18 @@
 ---
 title: Windows コンピューターを Azure Monitor に接続する | Microsoft Docs
 description: この記事では、Windows 用 Log Analytics エージェントを使用して、他のクラウドやオンプレミス内にホストされている Windows コンピューターを Azure Monitor に接続する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/14/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.date: 10/07/2019
+ms.openlocfilehash: abe114a989c4ec672d391a7fd7d83341d4c52638
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073969"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932773"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -51,7 +45,11 @@ Windows 用 Log Analytics エージェントをインストールする前に、
 5. **ワークスペース ID**と**主キー**をコピーして、好みのエディターに貼り付けます。    
    
 ## <a name="configure-agent-to-use-tls-12"></a>TLS 1.2 を使用するようエージェントを構成する
-Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) プロトコルが使用されるようにするには、次の手順を実行して、仮想マシンにエージェントがインストールされる前または後に、それを有効にできます。   
+Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) プロトコルが使用されるようにするには、次の手順を実行して、仮想マシンにエージェントがインストールされる前または後に、それを有効にできます。
+
+>[!NOTE]
+>Windows Server 2008 SP2 x64 を実行している VM を、TLS 1.2 を使用するように構成する場合は、以下の手順を行う前に、次の [SHA-2 コード署名サポート更新プログラム](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update)をインストールする必要があります。 
+>
 
 1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. TLS 1.2 用に **Protocols** の下に **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2** のサブキーを作成します。

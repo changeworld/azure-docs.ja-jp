@@ -1,21 +1,21 @@
 ---
-title: Azure Cost Management のスコープを理解して使用する | Microsoft Docs
+title: Azure Cost Management のスコープを理解して使用する
 description: この記事では、Azure で使用できる課金スコープとリソース管理スコープの概要、およびこれらのスコープを Cost Management と API で使用する方法について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338632"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374479"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -128,7 +128,10 @@ Microsoft 顧客契約の課金アカウントには、次のスコープがあ�
 
     リソースの種類: `Microsoft.Billing/billingAccounts/invoiceSections`
 
+- **顧客**  - パートナーによって Microsoft 顧客契約にオンボードされる特定の顧客に関連付けられたサブスクリプションのグループを表します。 このスコープは CSP に固有のものです。
+
 EA の課金スコープとは異なり、顧客契約の課金アカウントは 1 つのディレクトリにバインドされ "_ます_"。複数の Azure AD ディレクトリにまたがるサブスクリプションを持つことはできません。
+
 
 顧客契約の課金スコープでは、次のロールがサポートされます。
 
@@ -149,7 +152,7 @@ AWS 統合が完了した後、「[AWS のコストと使用状況レポート�
 - **外部課金アカウント** - サードパーティ ベンダーとの顧客契約を表します。 これは EA 請求アカウントに似ています。
 
     リソースの種類: `Microsoft.CostManagement/externalBillingAccounts`
-    
+
 - **外部サブスクリプション** - サードパーティ ベンダーの顧客運用アカウントを表します。 これは、Azure サブスクリプションに似ています。
 
     リソースの種類: `Microsoft.CostManagement/externalSubscriptions`

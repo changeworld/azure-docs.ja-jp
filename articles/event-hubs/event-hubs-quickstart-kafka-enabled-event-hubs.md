@@ -2,18 +2,18 @@
 title: Kafka プロトコルを使用した Azure Event Hubs によるデータ ストリーミング | Microsoft Docs
 description: この記事では、Kafka のプロトコルおよび API を使用して、Azure Event Hubs にストリーム配信する方法に関する情報を示します。
 services: event-hubs
-author: basilhariri
-ms.author: bahariri
+author: ShubhaVijayasarathy
+ms.author: shvija
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 05/06/2019
-ms.openlocfilehash: a4e050fdef20cdc62ee92e6383c455ffcb9abc90
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebe3dc39cf135f09c084a8325d380b9bc9ef48dc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203920"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554973"
 ---
 # <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング
 このクイック スタートでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を示します。 プロデューサーとコンシューマーを使用して、アプリケーションの構成変更だけで Kafka 対応 Event Hubs と通信する方法を説明します。 Azure Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) がサポートされています。
@@ -44,7 +44,7 @@ ms.locfileid: "65203920"
     
     ![名前空間の作成](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
-4. 名前空間が作成されたら、**[設定]** タブで **[共有アクセス ポリシー]** をクリックして接続文字列を取得します。
+4. 名前空間が作成されたら、 **[設定]** タブで **[共有アクセス ポリシー]** をクリックして接続文字列を取得します。
 
     ![[共有アクセス ポリシー] をクリックする](./media/event-hubs-create/create-event-hub7.png)
 

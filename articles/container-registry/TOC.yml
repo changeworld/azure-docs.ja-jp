@@ -129,10 +129,16 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
         - name: Service Fabric
           href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+    - name: 監視
+      items:
+        - name: 診断と監査ログ (プレビュー)
+          href: container-registry-diagnostics-audit-logs.md
     - name: トラブルシューティング
       items:
-        - name: 一般的な問題の診断
+        - name: 一般的な問題の検出
           href: container-registry-check-health.md
+        - name: FAQ
+          href: container-registry-faq.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -176,5 +182,3 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
-    - name: FAQ
-      href: container-registry-faq.md

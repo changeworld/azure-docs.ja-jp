@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/29/2019
-ms.openlocfilehash: b01b83ab0e673254da19888210d9678e313acca2
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/27/2019
+ms.openlocfilehash: 5df8bb0ba0323692bddf94ae2888e8fcf1ad24a9
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949857"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063267"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Twins 管理 API の使用方法
 
@@ -66,7 +66,7 @@ Digital Twins API では、以下のパラメーターを使用して、空間�
    - 相対レベル *-1* は、指定されたスペースの親のスペースと同じレベルのスペースを表します。
 
 - **traverse**:指定したスペース ID から、次の値で指定するいずれかの方向に走査できます。
-   - **なし**:このデフォルト値では、指定したスペース ID でフィルター処理します。
+   - **なし**: このデフォルト値では、指定したスペース ID でフィルター処理します。
    - **Down**:指定したスペース ID とその子孫でフィルター処理します。 
    - **Up**:指定したスペース ID とその先祖でフィルター処理します。 
    - **Span**:指定したスペース ID と同じレベルで空間グラフの水平方向の部分をフィルター処理します。 **minRelative** または **maxRelative** のいずれかを true に設定する必要があります。 
@@ -104,11 +104,11 @@ Digital Twins API では、以下のパラメーターを使用して、空間�
 次の一覧は、有効な OData 構文を含むいくつかのクエリを示しています。
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
-- `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
-- `YOUR_MANAGEMENT_API_URL/propertykeys?$filter=Scope ne ‘Spaces’`
-- `YOUR_MANAGEMENT_API_URL/resources?$filter=Size gt ‘M’`
-- `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
-- `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
+- `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,'space')`
+- `YOUR_MANAGEMENT_API_URL/devices?$filter=TypeId eq 2`
+- `YOUR_MANAGEMENT_API_URL/resources?$filter=StatusId ne 1`
+- `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,'k')&$orderby=LastName`
+- `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor',Name)`
  
 ## <a name="next-steps"></a>次の手順
 

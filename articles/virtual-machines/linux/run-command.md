@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: abf0f69ea70bae4102806214f0ef0fcfc25aad3a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6550b6e3f59ff7e6bac39dfc1abcf829256122d4
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477041"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376351"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 
@@ -41,6 +41,19 @@ ms.locfileid: "67477041"
 > [!NOTE]
 > 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 拡張機能に、これらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行しても、結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して、Azure パブリック IP アドレスへのトラフィックを許可できます。
 
+## <a name="available-commands"></a>使用可能なコマンド
+
+この表は、Linux VM で使用可能なコマンドの一覧を示しています。 **RunShellScript** コマンドを使用すると、必要な任意のカスタム スクリプトを実行できます。 Azure CLI または PowerShell を使用してコマンドを実行する場合、`--command-id` または `-CommandId` パラメーターに指定する値は、以下に示すいずれかの値である必要があります。 使用可能なコマンドではない値を指定すると、エラーが表示されます。
+
+```error
+The entity was not found in this Azure location
+```
+
+|**Name**|**説明**|
+|---|---|
+|**RunShellScript**|Linux シェル スクリプトを実行します。|
+|**ifconfig**| すべてのネットワーク インターフェイスの構成を取得します。|
+
 ## <a name="azure-cli"></a>Azure CLI
 
 [az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) コマンドを使用して Azure Linux VM 上でシェル スクリプトを実行する例を次に示します。
@@ -67,14 +80,13 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ![実行コマンド スクリプトの出力](./media/run-command/run-command-script-output.png)
 
-## <a name="available-commands"></a>使用可能なコマンド
+### <a name="powershell"></a>PowerShell
 
-この表は、Linux VM で使用可能なコマンドの一覧を示しています。 **RunShellScript** コマンドを使用すると、必要な任意のカスタム スクリプトを実行できます。
+[Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して Azure VM 上で PowerShell スクリプトを実行する例を次に示します。 このコマンドレットは、`-ScriptPath` パラメーターで参照されるスクリプトが、このコマンドレットの実行場所に対してローカルであることを想定しています。
 
-|**Name**|**説明**|
-|---|---|
-|**RunShellScript**|Linux シェル スクリプトを実行します。|
-|**ifconfig**| すべてのネットワーク インターフェイスの構成を取得します。|
+```powershell-interactive
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+```
 
 ## <a name="limiting-access-to-run-command"></a>実行コマンドへのアクセスの制限
 

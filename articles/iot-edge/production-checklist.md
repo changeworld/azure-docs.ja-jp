@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899401"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529032"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -83,7 +83,7 @@ IoT Edge デバイスが接続されたら、必ず、以降のデプロイで�
 
 ### <a name="be-consistent-with-upstream-protocol"></a>アップストリーム プロトコルに合わせる
 
-既定の AMQP とは異なるプロトコルを使用するように IoT Edge デバイス上の IoT Edge エージェントを構成した場合は、今後のすべてのデプロイで同じプロトコルを宣言する必要があります。 たとえば、IoT Edge デバイスが、AMQP ポートをブロックするプロキシ サーバーの背後にある場合、WebSocket (AMQPWS) 経由の AMQP で接続するようにデバイスを構成したと考えられます。 デバイスにモジュールをデプロイするときは、IoT Edge エージェントと IoT Edge ハブに対して同じ APQPWS プロトコルを構成します。そうしない場合、既定の AMQP で設定がオーバーライドされ、再度接続することはできません。 
+既定の AMQP とは異なるプロトコルを使用するように IoT Edge デバイス上の IoT Edge エージェントを構成した場合は、今後のすべてのデプロイで同じプロトコルを宣言する必要があります。 たとえば、IoT Edge デバイスが、AMQP ポートをブロックするプロキシ サーバーの背後にある場合、WebSocket (AMQPWS) 経由の AMQP で接続するようにデバイスを構成したと考えられます。 デバイスにモジュールをデプロイするときは、IoT Edge エージェントと IoT Edge ハブに対して同じ AMQPWS プロトコルを構成します。そうしない場合、既定の AMQP で設定がオーバーライドされ、再度接続することはできません。 
 
 IoT Edge エージェントおよび IoT Edge ハブ モジュールには、UpstreamProtocol 環境変数のみを構成する必要があります。 追加モジュールではすべて、ランタイム モジュールに設定されている任意のプロトコルが採用されます。 
 
@@ -93,7 +93,7 @@ IoT Edge エージェントおよび IoT Edge ハブ モジュールには、Ups
 
 IoT Edge ハブおよびエージェント モジュールでは、ローカル ストレージの使用により状態が維持され、モジュール、デバイス、およびクラウド間のメッセージングが有効となります。 信頼性とパフォーマンスを向上させるために、ホスト ファイルシステム上のストレージを使用するようにシステム モジュールを構成します。
 
-詳細については、「[システム モジュール用のホスト ストレージ](offline-capabilities.md#host-storage-for-system-modules)」を参照してください。
+詳細については、「[システム モジュール用のホスト ストレージ](how-to-access-host-storage-from-module.md)」を参照してください。
 
 ### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>IoT Edge ハブで使用されるメモリ領域を減らす
 
@@ -177,9 +177,11 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
    | mcr.microsoft.com  | 443 | Microsoft コンテナー レジストリ |
    | global.azure-devices-provisioning.net  | 443 | DPS でのアクセス (任意指定) |
    | \*.azurecr.io | 443 | 個人やサード パーティのコンテナー レジストリ |
-   | \*.blob.core.windows.net | 443 | イメージ差分のダウンロード | 
+   | \*.blob.core.windows.net | 443 | BLOB ストレージから Azure Container Registry イメージの差分をダウンロードする  | 
    | \*.azure-devices.net | 5671、8883、443 | IoT Hub でのアクセス |
    | \*.docker.io  | 443 | Docker Hub でのアクセス (任意指定) |
+
+これらのファイアウォール規則の一部は Azure Container Registry から継承されます。 詳細については、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](../container-registry/container-registry-firewall-access-rules.md)」を参照してください。
 
 ### <a name="configure-communication-through-a-proxy"></a>プロキシを介した通信を構成する
 

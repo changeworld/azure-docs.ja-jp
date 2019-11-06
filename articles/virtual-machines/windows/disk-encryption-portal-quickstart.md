@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 240c0e157d7fcd8b76ee7f42f4c780361df6281d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245772"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553440"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>クイック スタート:Azure portal を使用した Windows 仮想マシンの作成と暗号化
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[管理者アカウント]** で **[パスワード]** を選択します。 ユーザー名とパスワードを入力します。
     ![ResourceGroup の作成画面](../media/disk-encryption/portal-qs-windows-vm-creation.png)
 1. [管理] タブを選択し、[診断ストレージ アカウント] が存在することを確認します。 ストレージ アカウントがない場合は、[新規作成] を選択して新しいアカウントに名前を付け、[OK] を選択します。![ResourceGroup の作成画面](../media/disk-encryption/portal-qs-vm-creation-storage.png)
-1. [確認および作成] をクリックします。
+1. [Review + Create]\(レビュー + 作成\) をクリックします。
 1. **[仮想マシンの作成]** ページで、これから作成しようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
 
 VM がデプロイされるまでに数分かかります。 デプロイが完了したら、次のセクションに移動してください。
@@ -77,7 +77,7 @@ VM がデプロイされるまでに数分かかります。 デプロイが完�
 
 1. 暗号化画面の **[Disks to encrypt]\(暗号化するディスク\)** で **[OS とデータ ディスク]** を選択します。
 1. **[暗号化設定]** の [暗号化用のキー コンテナーとキーを選択する] をクリックします。
-1. 右側のサイド バーで、先ほど作成したキー コンテナーの名前を*キー コンテナー**の値として選択し、 **[選択]** をクリックします。
+1. 右側のサイド バーで、先ほど作成したキー コンテナーの名前を**キー コンテナー**の値として選択し、 **[選択]** をクリックします。
 
     ![ディスクと暗号化の選択](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. 暗号化画面の上部の [保存] をクリックします。 VM が再起動されることを示す警告がポップアップ表示されます。 **[はい]** をクリックします。

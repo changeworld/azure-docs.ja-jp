@@ -23,6 +23,10 @@
               href: quickstarts/python-receipts.md
     - name: .NET SDK の使用
       href: quickstarts/dotnet-sdk.md
+- name: チュートリアル
+  items:
+    - name: Logic Apps で Form Recognizer を使用する
+      href: tutorial-form-recognizer-with-logic-apps.md
 - name: ハウツー ガイド
   items:
     - name: トレーニング データ セットの作成

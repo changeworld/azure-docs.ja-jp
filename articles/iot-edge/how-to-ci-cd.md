@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e14025a5a7a3e81404498638d6f6f9c5ff18ed58
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1dc4065540256c8af0856b0e156053f7c2097c1f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650731"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755842"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge に対する継続的インテグレーションと継続的配置
 
@@ -48,7 +48,7 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
 >1. Azure DevOps で、プロファイル アイコンを選択し、 **[プレビュー機能]** を選択します。
 >2. **[YAML パイプライン作成の新しいエクスペリエンス]** をオフにします。 
 >
->詳細については、「[ビルド パイプラインを作成する](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline)」を参照してください。
+>詳細については、「[ビルド パイプラインを作成する](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline)」を参照してください。
 
 1. ご自身の Azure DevOps 組織 (**https:\//dev.azure.com/{your organization}/** ) にサインインして、IoT Edge ソリューションのリポジトリが含まれているプロジェクトを開きます。
 

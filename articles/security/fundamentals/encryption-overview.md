@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003953"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804044"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -59,7 +59,7 @@ Azure では、サービスが管理するキー、Key Vault でユーザーが�
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Windows 仮想マシンと Linux 仮想マシンは [Azure Disk Encryption](/azure/security/azure-security-disk-encryption) を使用して保護できます。この暗号化サービスは、[Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) テクノロジと Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用してオペレーティング システム ディスクとデータ ディスクの両方をフル ボリューム暗号化で保護します。
+Windows 仮想マシンと Linux 仮想マシンは [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) を使用して保護できます。この暗号化サービスは、[Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) テクノロジと Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用してオペレーティング システム ディスクとデータ ディスクの両方をフル ボリューム暗号化で保護します。
 
 暗号化キーとシークレットは、[Azure Key Vault](../../key-vault/key-vault-overview.md) サブスクリプションで保護されます。 Azure Backup サービスを使うことにより、キー暗号化キー (KEK) 構成を使う暗号化された仮想マシン (VM) をバックアップしたり復元したりできます。
 

@@ -9,15 +9,15 @@ ms.author: estfan
 ms.reviewers: klam, LADocs
 manager: carmonm
 ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
-ms.topic: article
-ms.date: 09/06/2019
+ms.topic: conceptual
+ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122709"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264355"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する
 
@@ -27,7 +27,8 @@ ms.locfileid: "71122709"
 * 外部 Webhook イベントが発生したときにワークフローをトリガーする。
 * 別のロジック アプリからの HTTPS 呼び出しを受信して応答する。
 
-要求トリガーは HTTPS *のみ*をサポートします。 代わりに、HTTP または HTTPS の呼び出しを発信するには、組み込みの [HTTP トリガまたはアクション](../connectors/connectors-native-http.md)を使用します。
+> [!NOTE]
+> 要求トリガーでは、着信呼び出しに対してトランスポート層セキュリティ (TLS) 1.2 "*のみ*" がサポートされます。 発信呼び出しでは、引き続き TLS 1.0、1.1、1.2 がサポートされます。 SSL ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 

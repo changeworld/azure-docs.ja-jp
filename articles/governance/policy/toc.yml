@@ -28,6 +28,9 @@
     - name: カスタム ポリシー定義の作成
       displayName: 'disabled, parameters, rule, mode'
       href: ./tutorials/create-custom-policy-definition.md
+    - name: タグ ガバナンスの管理
+      displayName: 'modify, append, effects'
+      href: ./tutorials/govern-tags.md
     - name: ハンズオン ラボ - Azure Policy の探索
       displayName: 'create, policy, training, learn'
       href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
@@ -215,9 +218,6 @@
             - name: SQL Server レベルの監査設定の監査
               displayName: auditIfNotExists
               href: samples/audit-sql-server-audit-setting.md
-            - name: SQL Server バージョン 12.0 が必要
-              displayName: 'deny, builtin'
-              href: samples/require-sql-12.md
         - name: SQL データベース
           items:
             - name: 許可されている SQL DB の SKU
@@ -263,14 +263,25 @@
     - name: 新しいポリシーの影響の評価
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Policy as Code ワークフローの設計
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./concepts/policy-as-code.md
     - name: Kubernetes 用の Azure Policy
-      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
-      href: ./concepts/rego-for-aks.md
+      items:
+        - name: AKS のポリシー
+          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v2'
+          href: ./concepts/rego-for-aks.md
+        - name: AKS エンジンのポリシー
+          displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
+          href: ./concepts/aks-engine.md
     - name: ゲスト構成を使用した VM の監査
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
 - name: ハウツー ガイド
   items:
+    - name: VSCode 用 Azure Policy 拡張機能
+      displayName: visual studio code
+      href: ./how-to/extension-for-vscode.md
     - name: プログラムによるポリシーの作成
       displayName: 'assign, definition'
       href: ./how-to/programmatically-create.md

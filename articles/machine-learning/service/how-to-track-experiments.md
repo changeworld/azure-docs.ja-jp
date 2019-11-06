@@ -3,8 +3,8 @@ title: ML の実験とメトリックをログに記録する
 titleSuffix: Azure Machine Learning
 description: Azure ML の実験を監視し、実行のメトリックを監視することでモデルの作成プロセスを強化します。 トレーニング スクリプトにログ記録を追加し、記録された実行結果を表示します。  run.log、Run.start_logging、ScriptRunConfig を使用します。
 services: machine-learning
-author: heatherbshapiro
-ms.author: hshapiro
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002704"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045205"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML の実験の実行とメトリックを監視する
 

@@ -32,7 +32,7 @@
     - name: 8 - 複数のバージョンの追加
       href: api-management-get-started-publish-versions.md
     - name: 9 - 開発者ポータルのカスタマイズ
-      href: api-management-customize-styles.md
+      href: api-management-howto-developer-portal-customize.md
 - name: サンプル
   items:
     - name: ポリシー
@@ -61,6 +61,8 @@
       href: api-management-error-handling-policies.md
     - name: API のインポートに関する制限事項
       href: api-management-api-import-restrictions.md
+    - name: セルフホステッド ゲートウェイの概要
+      href: self-hosted-gateway-overview.md
 - name: ハウツー ガイド
   items:
     - name: API の定義
@@ -93,6 +95,16 @@
           href: api-management-howto-autoscale.md
         - name: カスタム ドメインを構成する
           href: configure-custom-domain.md
+        - name: 複数の Azure リージョンにデプロイする
+          href: api-management-howto-deploy-multi-region.md
+        - name: セルフホステッド ゲートウェイをプロビジョニングする
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Kubernetes にセルフホステッド ゲートウェイをデプロイする
+          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+        - name: Docker にセルフホステッド ゲートウェイをデプロイする
+          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+        - name: セルフホステッド ゲートウェイのカスタム ドメインを構成する
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: キャッシュ
       items:
         - name: パフォーマンス向上のためにキャッシュを追加する
@@ -121,14 +133,10 @@
           href: api-management-howto-ca-certificates.md
         - name: プロトコルと暗号を管理する
           href: api-management-howto-manage-protocols-ciphers.md
-    - name: 開発者エクスペリエンスをカスタマイズする
+    - name: 開発者エクスペリエンスのカスタマイズ
       items:
-        - name: 新しい開発者ポータルへのアクセスとカスタマイズ
+        - name: 開発者ポータルについて
           href: api-management-howto-developer-portal.md
-        - name: ページのコンテンツとレイアウトを変更する
-          href: api-management-modify-content-layout.md
-        - name: テンプレートを使用してシステム ページをカスタマイズする
-          href: api-management-developer-portal-templates.md
         - name: Azure AD による認証
           href: api-management-howto-aad.md
         - name: Azure AD B2C による認証
@@ -139,6 +147,34 @@
           href: api-management-howto-configure-notifications.md
         - name: コンソール OAuth サポートを有効にする
           href: api-management-howto-oauth2.md
+        - name: 従来のポータル - ポータルのカスタマイズ
+          href: api-management-customize-styles.md
+        - name: 従来のポータル - ページとレイアウトの変更
+          href: api-management-modify-content-layout.md
+        - name: 従来のポータル - テンプレートを使用したカスタマイズ
+          href: api-management-developer-portal-templates.md
+    - name: 従来のポータルのテンプレート
+      items:
+        - name: データ モデル リファレンス
+          href: api-management-template-data-model-reference.md
+        - name: ページ コントロール
+          href: api-management-page-controls.md
+        - name: テンプレート
+          href: api-management-developer-portal-templates-reference.md
+        - name: API
+          href: api-management-api-templates.md
+        - name: 成果物
+          href: api-management-product-templates.md
+        - name: アプリケーション
+          href: api-management-application-templates.md
+        - name: 発行
+          href: api-management-issue-templates.md
+        - name: User Profile
+          href: api-management-user-profile-templates.md
+        - name: ページ
+          href: api-management-page-templates.md
+        - name: Template resources
+          href: api-management-template-resources.md
     - name: ポリシーの定義
       items:
         - name: ポリシーの設定または編集
@@ -167,34 +203,10 @@
           href: api-management-cross-domain-policies.md
         - name: 変換ポリシー
           href: api-management-transformation-policies.md
-    - name: テンプレート リファレンス
-      items:
-        - name: テンプレート
-          href: api-management-developer-portal-templates-reference.md
-        - name: API
-          href: api-management-api-templates.md
-        - name: 成果物
-          href: api-management-product-templates.md
-        - name: アプリケーション
-          href: api-management-application-templates.md
-        - name: 発行
-          href: api-management-issue-templates.md
-        - name: User Profile
-          href: api-management-user-profile-templates.md
-        - name: ページ
-          href: api-management-page-templates.md
-        - name: Template resources
-          href: api-management-template-resources.md
-    - name: データ モデル リファレンス
-      href: api-management-template-data-model-reference.md
-    - name: ページ コントロール
-      href: api-management-page-controls.md
     - name: 運用環境でテストする
       items:
         - name: グループの管理
           href: api-management-howto-create-groups.md
-        - name: 複数の Azure リージョンにデプロイする
-          href: api-management-howto-deploy-multi-region.md
         - name: IP アドレスを取得する
           href: api-management-howto-ip-addresses.md
         - name: イベントを Azure Event Hubs にログ記録する

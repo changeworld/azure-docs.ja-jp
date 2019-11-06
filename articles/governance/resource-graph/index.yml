@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 09/01/2019
-  ms.openlocfilehash: 1f23338b7e894b2ff58b1a5bf9565f842b273465
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.openlocfilehash: e98ffdd41547b9c1f7cbfeebfd8dad798c382fc8
+  ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70239050"
+  ms.lasthandoff: 10/23/2019
+  ms.locfileid: "72821366"
 landingContent:
 - title: Azure Resource Graph について
   linkLists:
@@ -41,6 +41,8 @@ landingContent:
       url: ./first-query-powershell.md
     - text: 初めてのクエリ (CLI)
       url: ./first-query-azurecli.md
+    - text: クエリの共有 (ポータル)
+      url: ./tutorials/create-share-query.md
   - linkListType: concept
     links:
     - text: Resource Graph を使った調査
@@ -99,3 +101,5 @@ landingContent:
       url: /javascript/api/@azure/arm-resourcegraph
     - text: Python
       url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
+    - text: REST
+      url: /rest/api/azure-resourcegraph/

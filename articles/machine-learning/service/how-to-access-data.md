@@ -11,22 +11,23 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8c9b8489ded264a895d480ed180b411da079e883
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950123"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436701"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure ストレージ サービスのデータにアクセスする
 
-この記事では、Azure Machine Learning データストアを使用して Azure ストレージ サービスのデータに簡単にアクセスする方法について説明します。 データストアは、サブスクリプション ID やトークン承認など接続情報を格納する目的で使用されます。 データストアを使用すれば、ストレージにアクセスするために接続情報をスクリプトにハードコーディングする必要がなくなります。 データストアは、これらの [Azure Storage ソリューション](#matrix)から作成できます。
+この記事では、Azure Machine Learning データストアを使用して Azure ストレージ サービスのデータに簡単にアクセスする方法について説明します。 データストアは、サブスクリプション ID やトークン承認など接続情報を格納する目的で使用されます。 データストアを使用すれば、ストレージにアクセスするために接続情報をスクリプトにハードコーディングする必要がなくなります。 データストアは、これらの [Azure Storage ソリューション](#matrix)から作成できます。 サポートされていないストレージ ソリューションの場合、機械学習実験中のデータ エグレス コストを節約するため、サポートされている Azure Storage ソリューションにデータを移行することをお勧めします。 [データの移動方法に関する詳細情報](#move)。 
 
 ここでは、次のタスクの例を示します。
 * [データストアを登録する](#access)
 * [ワークスペースからデータストアを取得する](#get)
 * [データストアを使用してデータをアップロードおよびダウンロードする](#up-and-down)
 * [トレーニング中にデータにアクセスする](#train)
+* [Azure にデータを移動する](#move)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -276,6 +277,10 @@ Azure Machine Learning には、スコアリングにモデルを使用する方
 
 データストアへのアクセスが SDK から提供されない場合は、関連する Azure SDK を使用してデータにアクセスするカスタム コードを作成できる場合があります。 たとえば、BLOB またはファイルに格納されたデータには、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) というクライアント ライブラリを使用してアクセスすることができます。
 
+<a name="move"></a>
+## <a name="move-data-to-supported-azure-storage-solutions"></a>サポートされている Azure Storage ソリューションにデータを移動する
+
+Azure Machine Learning service では、Azure Blob、Azure File、Azure Data Lake Gen 1、Azure Data Lake Gen 2、Azure SQL、Azure PostgreSQL のデータのアクセスがサポートされています。 サポートされていないストレージの場合、機械学習実験中のデータ エグレス コストを節約するため、Azure Data Factory を使用するサポートされている Azure Storage ソリューションにデータを移行することをお勧めします。 Azure Data Factory では、事前構築済みの 80 を超えるコネクタ (Azure データ サービス、オンプレミスのデータ ソース、Amazon S3 と Redshift、Google BigQuery など) の拡大し続けるポートフォリオとの、効率的で回復力のあるデータ転送が、追加コストなしで提供されます。 [Azure Data Factory を使用してデータを移動するステップ バイ ステップ ガイドに従ってください](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool)。
 
 ## <a name="next-steps"></a>次の手順
 

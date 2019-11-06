@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128863"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693824"
 ---
 # <a name="edit-metadata-module"></a>Edit Metadata (メタデータの編集) モジュール
 
@@ -40,7 +40,7 @@ Edit Metadata (メタデータの編集) モジュールを使用して、デー
   
 ## <a name="configure-edit-metadata"></a>Edit Metadata (メタデータの編集) を構成する
   
-1. Azure Machine Learning で、Edit Metadata (メタデータの編集) モジュールを実験に追加し、更新するデータセットを接続します。 データセットは **[Manipulate]\(操作\)** カテゴリの **[Data Transformation]\(データ変換\)** の下にあります。
+1. Azure Machine Learning で、Edit Metadata (メタデータの編集) モジュールをパイプラインに追加し、更新するデータセットを接続します。 データセットは **[Manipulate]\(操作\)** カテゴリの **[Data Transformation]\(データ変換\)** の下にあります。
   
 1. **[Launch the column selector]\(列セレクターの起動\)** をクリックし、操作する列または列のセットを選択します。 名前またはインデックスで列を個別に選択することも、型で列のグループを選択することもできます。  
   
@@ -94,7 +94,7 @@ Edit Metadata (メタデータの編集) モジュールを使用して、デー
   
     + 選択したすべての列の名前を変更する必要があります。 列を省略したりスキップしたりすることはできません。  
   
-1. 実験を実行します。  
+1. パイプラインを実行します。  
 
 ## <a name="next-steps"></a>次の手順
 

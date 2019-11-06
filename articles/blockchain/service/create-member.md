@@ -1,21 +1,21 @@
 ---
-title: Azure portal を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する
+title: Azure portal を使用して Azure Blockchain Service メンバーを作成する
 description: Azure Blockchain Service を使用してブロックチェーン メンバーを作成します。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 9f58379acd88fd93a00edc11b73b41dc3d6226a5
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c87f9a044d6655b2062f2c2657d3b465699e0dd2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241041"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329256"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する
 
@@ -39,7 +39,7 @@ Azure Blockchain Service は、スマート コントラクト内でビジネス
     ブロックチェーン メンバー | Azure Blockchain Service のブロックチェーン メンバーを識別する一意の名前を選択します。 ブロックチェーン メンバー名に使用できるのは、小文字と数字のみです。 先頭の文字は英字にする必要があります。 値の長さは 2 から 20 文字にする必要があります。
     Subscription | サービスに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     Resource group | 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
-    Region | コンソーシアムの全メンバーの場所は同じにする必要があります。
+    リージョン | コンソーシアムの全メンバーの場所は同じにする必要があります。
     メンバー アカウントのパスワード | メンバー アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 メンバー アカウントとメンバー アカウントのパスワードをコンソーシアムの管理に使用します。
     コンソーシアム名 | 新しいコンソーシアムの一意の名前を入力します。 招待状を介してコンソーシアムに参加する場合、この値は参加しているコンソーシアムです。
     説明 | コンソーシアムの説明。

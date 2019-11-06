@@ -1,17 +1,17 @@
 ---
-title: サンプル - NIST SP 800-53 R4 ブループリント - コントロール マッピング
-description: NIST SP 800-53 R4 ブループリント サンプルの Azure Policy に対するコントロール マッピング。
+title: NIST SP 800-53 R4 ブループリント サンプル - コントロール マッピング
+description: NIST SP 800-53 R4 のブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: c4d8cd7996e45aafca37e68974d6250578ba9502
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 016d4a8e0f7bc71a7db01426eb514db32bd5624a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980957"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161427"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 のブループリント サンプルのコントロール マッピング
 

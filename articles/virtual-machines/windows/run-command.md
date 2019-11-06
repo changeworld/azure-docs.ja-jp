@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: de45f2fe6230e48c3cffc999e2c84d6ee0a60edc
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0a9a5e465e160da34a21f66fd7176a8fea5d1aac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476769"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376245"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -43,7 +43,41 @@ ms.locfileid: "67476769"
 > [!NOTE]
 > 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 拡張機能に、これらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行しても、結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して、Azure パブリック IP アドレスへのトラフィックを許可できます。
 
-## <a name="run-a-command"></a>コマンドの実行
+## <a name="available-commands"></a>使用可能なコマンド
+
+次の表に、Windows VM で使用可能なコマンドの一覧を示します。 **RunPowerShellScript** コマンドを使用すると、任意のカスタム スクリプトを実行できます。 Azure CLI または PowerShell を使用してコマンドを実行する場合、`--command-id` または `-CommandId` パラメーターに指定する値は、以下に示すいずれかの値である必要があります。 使用可能なコマンドではない値を指定すると、エラーが表示されます。
+
+```error
+The entity was not found in this Azure location
+```
+
+|**Name**|**説明**|
+|---|---|
+|**RunPowerShellScript**|PowerShell スクリプトを実行します。|
+|**EnableRemotePS**|コンピューターを構成してリモート PowerShell を有効にします。|
+|**EnableAdminAccount**|ローカル管理者アカウントが無効になっているかどうかを確認し、無効になっている場合は有効にします。|
+|**IPConfig**| TCP/IP にバインドされているアダプターごとに、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイの詳細な情報を表示します。|
+|**RDPSettings**|レジストリ設定およびドメインのポリシー設定を確認します。 コンピューターがドメインの一部である場合はポリシー アクションを提案します。または、設定を既定値に変更します。|
+|**ResetRDPCert**|RDP リスナーに関連付けられている SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。|
+|**SetRDPPort**|リモート デスクトップ接続のために既定値またはユーザー指定のポート番号を設定します。 ポートへの受信アクセスに対するファイアウォール規則を有効にします。|
+
+## <a name="azure-cli"></a>Azure CLI
+
+[az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) コマンドを使用して Azure Linux VM 上でシェル スクリプトを実行する例を次に示します。
+
+```azurecli-interactive
+# script.ps1
+#   param(
+#       [string]$arg1,
+#       [string]$arg2
+#   )
+#   Write-Host This is a sample script with parameters $arg1 and $arg2
+
+az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-resource-group \
+    --scripts @script.ps1 --parameters "arg1=somefoo" "arg2=somebar"
+```
+
+## <a name="azure-portal"></a>Azure ポータル
 
 [Azure](https://portal.azure.com) で VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
@@ -58,24 +92,9 @@ ms.locfileid: "67476769"
 
 ![実行コマンド スクリプトの出力](./media/run-command/run-command-script-output.png)
 
-## <a name="commands"></a>command
-
-次の表に、Windows VM で使用可能なコマンドの一覧を示します。 **RunPowerShellScript** コマンドを使用すると、任意のカスタム スクリプトを実行できます。
-
-|**Name**|**説明**|
-|---|---|
-|**RunPowerShellScript**|PowerShell スクリプトを実行します。|
-|**EnableRemotePS**|コンピューターを構成してリモート PowerShell を有効にします。|
-|**EnableAdminAccount**|ローカル管理者アカウントが無効になっているかどうかを確認し、無効になっている場合は有効にします。|
-|**IPConfig**| TCP/IP にバインドされているアダプターごとに、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイの詳細な情報を表示します。|
-|**RDPSettings**|レジストリ設定およびドメインのポリシー設定を確認します。 コンピューターがドメインの一部である場合はポリシー アクションを提案します。または、設定を既定値に変更します。|
-|**ResetRDPCert**|RDP リスナーに関連付けられている SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。|
-|**SetRDPPort**|リモート デスクトップ接続のために既定値またはユーザー指定のポート番号を設定します。 ポートへの受信アクセスに対するファイアウォール規則を有効にします。|
-
 ## <a name="powershell"></a>PowerShell
 
 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して Azure VM 上で PowerShell スクリプトを実行する例を次に示します。 このコマンドレットは、`-ScriptPath` パラメーターで参照されるスクリプトが、このコマンドレットの実行場所に対してローカルであることを想定しています。
-
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -91,4 +110,4 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="next-steps"></a>次の手順
 
-VM 内でリモートからスクリプトおよびコマンドを実行するその他の方法については、[Windows VM でスクリプトを実行する](run-scripts-in-vm.md)を参照してください。
+VM 内でリモートからスクリプトおよびコマンドを実行するその他の方法については、「[Windows VM でスクリプトを実行する](run-scripts-in-vm.md)」を参照してください。

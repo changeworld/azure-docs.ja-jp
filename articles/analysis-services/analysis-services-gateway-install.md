@@ -2,18 +2,17 @@
 title: Azure Analysis Services にオンプレミス データ ゲートウェイをインストールする | Microsoft Docs
 description: オンプレミスのデータ ゲートウェイをインストールして構成する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e87a8221a4db4dfab132a91a31a9ba5b5602a3db
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 99b5a0ff9cc0fd7fdc3b8a0e453ed287c45e1c60
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678423"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147132"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
@@ -96,7 +95,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
 2. **[接続ゲートウェイの作成]** で、次の設定を入力します。
 
-   * **[名前]** :お客様のゲートウェイ リソースの名前を入力します。 
+   * **Name**:お客様のゲートウェイ リソースの名前を入力します。 
 
    * **サブスクリプション**:お客様のゲートウェイ リソースに関連付ける Azure サブスクリプションを選択します。 
    

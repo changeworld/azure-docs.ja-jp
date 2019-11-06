@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991882"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299662"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス
 
-この記事では、Azure Data Lake Storage Gen2 の操作に関するベスト プラクティスと考慮事項について説明します。 この記事では、Data Lake Storage Gen2 のセキュリティ、パフォーマンス、回復性、監視に関連する情報を取り上げます。 Data Lake Storage Gen2 が登場するまで、Azure HDInsight などのサービスで大規模なビッグ データを取り扱うことは大変な作業でした。 ペタバイト クラスのストレージとそのスケールでの最適なパフォーマンスを達成できるように、複数の Blob Storage アカウント間でデータをシャードする必要がありました。 Data Lake Storage Gen2 では、サイズやパフォーマンスに関するほとんどのハード制限が取り除かれています。 ただし、Data Lake Storage Gen2 で最適なパフォーマンスを得るための考慮事項がまだいくつか残っています。この記事ではそれについて取り上げます。
+この記事では、Azure Data Lake Storage Gen2 の操作に関するベスト プラクティスと考慮事項について説明します。 この記事では、Data Lake Storage Gen2 のセキュリティ、パフォーマンス、回復性、監視に関連する情報を取り上げます。 Data Lake Storage Gen2 が登場するまで、Azure HDInsight などのサービスで大規模なビッグ データを取り扱うことは大変な作業でした。 ペタバイト クラスのストレージとそのスケールでの最適なパフォーマンスを達成できるように、複数の Blob Storage アカウント間でデータをシャードする必要がありました。 Data Lake Storage Gen2 では、最大 5 TB の個別ファイル サイズがサポートされており、パフォーマンスのハード制限のほとんどが削除されています。 ただし、Data Lake Storage Gen2 で最適なパフォーマンスを得るための考慮事項がまだいくつか残っています。この記事ではそれについて取り上げます。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 

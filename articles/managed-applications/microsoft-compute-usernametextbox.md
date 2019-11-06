@@ -1,6 +1,6 @@
 ---
 title: Azure UserNameTextBox UI 要素 | Microsoft Docs
-description: Azure Portal の Microsoft.Compute.UserNameTextBox UI 要素について説明します。
+description: Azure Portal の Microsoft.Compute.UserNameTextBox UI 要素について説明します。 ユーザーが Windows または Linux のユーザー名を指定できるようにします。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 88ab13329a719ba1e1b8a7b5fba2f7a2d381eca2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 875c73c546fa52642959e2593d41f9af82c13797
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700857"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331592"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI 要素
 Windows と Linux のユーザー名の検証が組み込まれているテキスト ボックス コントロールです。

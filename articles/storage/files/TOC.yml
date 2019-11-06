@@ -27,6 +27,8 @@
       href: storage-files-planning.md
     - name: Azure File Sync のデプロイの計画
       href: storage-sync-files-planning.md
+    - name: 直接アクセスに関するネットワークの考慮事項
+      href: storage-files-networking-overview.md
     - name: クラウドの階層化について
       href: storage-sync-cloud-tiering.md
     - name: ストレージ アカウントについて
@@ -57,6 +59,8 @@
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: SMB 経由の Azure AD 認証
           href: storage-files-active-directory-overview.md
+        - name: Azure プライベート エンドポイントの使用
+          href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: コンプライアンス認証
           href: ../common/storage-compliance-offerings.md
     - name: 開発
@@ -87,6 +91,8 @@
       items:
         - name: 標準ファイル共有を作成する
           href: storage-how-to-create-file-share.md
+        - name: 大型ファイル共有を有効にする
+          href: storage-files-how-to-create-large-file-share.md
         - name: Premium ファイル共有を作成する
           href: storage-how-to-create-premium-fileshare.md
     - name: デプロイ
@@ -97,6 +103,8 @@
           href: storage-sync-files-deployment-guide.md
         - name: File Sync のプロキシとファイアウォールの設定
           href: storage-sync-files-firewall-and-proxy.md
+        - name: Premium ファイル共有を使用した SQL Server FCI
+          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: マウントする
       items:
         - name: Windows で Azure Files を使用する
@@ -105,6 +113,14 @@
           href: storage-how-to-use-files-linux.md
         - name: macOS で Azure Files を使用する
           href: storage-how-to-use-files-mac.md
+    - name: ネットワーク
+      items:
+        - name: サイト間 VPN を構成する
+          href: storage-files-configure-s2s-vpn.md
+        - name: Windows でポイント対サイト VPN を構成する
+          href: storage-files-configure-p2s-vpn-windows.md
+        - name: Linux でポイント対サイト VPN を構成する
+          href: storage-files-configure-p2s-vpn-linux.md
     - name: 管理
       items:
         - name: Azure File Sync でのサーバーの登録
@@ -165,6 +181,8 @@
           href: storage-troubleshooting-files-performance.md
         - name: Azure File Sync のトラブルシューティング
           href: storage-sync-files-troubleshoot.md
+        - name: Azure Files の削除に関するトラブルシューティング
+          href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
@@ -212,33 +230,39 @@
     - name: AzCopy v10
       items:
         - name: azcopy
-          href: ../common/storage-ref-azcopy.md
+          href: ../common/storage-ref-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy bench
+          href: ../common/storage-ref-azcopy-bench.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy copy
-          href: ../common/storage-ref-azcopy-copy.md
+          href: ../common/storage-ref-azcopy-copy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy doc
-          href: ../common/storage-ref-azcopy-doc.md
+          href: ../common/storage-ref-azcopy-doc.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy env
-          href: ../common/storage-ref-azcopy-env.md
+          href: ../common/storage-ref-azcopy-env.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy jobs
-          href: ../common/storage-ref-azcopy-jobs.md
+          href: ../common/storage-ref-azcopy-jobs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy jobs clean
+          href: ../common/storage-ref-azcopy-jobs-clean.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy jobs list
-          href: ../common/storage-ref-azcopy-jobs-list.md
+          href: ../common/storage-ref-azcopy-jobs-list.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy jobs remove
+          href: ../common/storage-ref-azcopy-jobs-remove.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy jobs resume
-          href: ../common/storage-ref-azcopy-jobs-resume.md
+          href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy jobs show
-          href: ../common/storage-ref-azcopy-jobs-show.md
+          href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy list
-          href: ../common/storage-ref-azcopy-list.md
+          href: ../common/storage-ref-azcopy-list.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy login
-          href: ../common/storage-ref-azcopy-login.md
+          href: ../common/storage-ref-azcopy-login.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy logout
-          href: ../common/storage-ref-azcopy-logout.md
+          href: ../common/storage-ref-azcopy-logout.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy make
-          href: ../common/storage-ref-azcopy-make.md
+          href: ../common/storage-ref-azcopy-make.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy remove
-          href: ../common/storage-ref-azcopy-remove.md
+          href: ../common/storage-ref-azcopy-remove.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: azcopy sync
-          href: ../common/storage-ref-azcopy-sync.md
+          href: ../common/storage-ref-azcopy-sync.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Resource Manager テンプレート
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions

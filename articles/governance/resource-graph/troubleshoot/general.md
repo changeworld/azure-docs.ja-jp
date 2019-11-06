@@ -3,15 +3,15 @@ title: 一般的なエラーのトラブルシューティング
 description: Azure Resource Graph を使用して Azure リソースをクエリする際の問題をトラブルシューティングする方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976603"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389696"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Resource Graph 使用時のエラーのトラブルシューティング
 
@@ -39,7 +39,7 @@ Azure CLI と PowerShell は、最初の 1,000 サブスクリプションのみ
 
 ```azurepowershell-interactive
 # Replace this query with your own
-$query = 'project type'
+$query = 'Resources | project type'
 
 # Fetch the full array of subscription IDs
 $subscriptions = Get-AzSubscription
@@ -73,6 +73,7 @@ Azure Resource Graph REST API では、**application/json** の `Content-Type` �
 #### <a name="resolution"></a>解決策
 
 Azure Resource Graph のクエリに使用しているツールまたはエージェントの REST API ヘッダー `Content-Type` が **application/json** 用に構成されていることを検証します。
+
 ### <a name="rest-403"></a>シナリオ:リスト内のすべてのサブスクリプションに対する読み取りアクセス許可がない
 
 #### <a name="issue"></a>問題

@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bf8b2551390fa36736f678c756093a55d6ceb0c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a99b2e7097f2abf36f184368b3b4fdaba8f2730b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932869"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467414"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
  バッチ テストは、ご自身の現在のトレーニング済みモデルで実行する包括的なテストで、LUIS におけるそのモデルのパフォーマンスを測定します。 バッチ テストに使用されるデータ セットには、予測ランタイム エンドポイントから受信した意図または発話内の発話の例が含まれていてはいけません。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="batch-testing"></a>
 
@@ -52,7 +54,7 @@ ms.locfileid: "68932869"
 
 ダウンロード可能なデータセットは、バッチ テスト用にアップロードされたファイルと同じです。
 
-|状態|意味|
+|State|意味|
 |--|--|
 |![テストの成功を示す緑色の丸いアイコン](./media/luis-how-to-batch-test/batch-test-result-green.png)|すべての発話が成功しました。|
 |![テストの失敗を示す赤い x アイコン](./media/luis-how-to-batch-test/batch-test-result-red.png)|1 つ以上の発話の意図が予測と一致しませんでした。|

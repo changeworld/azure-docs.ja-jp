@@ -42,6 +42,8 @@
       items:
         - name: マイクロソフトのグローバル ネットワーク
           href: microsoft-global-network.md
+        - name: VM ネットワークの待ち時間のテスト
+          href: virtual-network-test-latency.md
         - name: 仮想ネットワーク
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: ネットワークの負荷分散

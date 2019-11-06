@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 930e482ab85113ac802932929fdbea358ee26035
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619480"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430856"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Veeam B&R を使用して CloudSimple プライベート クラウド上のワークロード VM をバックアップする
 
@@ -170,7 +170,7 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
 3. VM のネットワーク セキュリティ グループ (NSG) を構成します。 VM にパブリック IP アドレスがなく、パブリック インターネットから VM に到達できないことを確認します。
 4. ユーザー名とパスワードを使用するユーザー アカウントを新しい VM 用に作成します。 手順については、「[Azure portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)」を参照してください。
 5. 512 GiB Standard HDD を 1 個作成し、リポジトリ VM に接続します。  手順については、「[Azure portal を使用して Windows VM にマネージド データ ディスクを接続する](../virtual-machines/windows/attach-managed-disk-portal.md)」を参照してください。
-6. [マネージド ディスク上に XFS ボリュームを作成します](https://www.digitalocean.com/docs/volumes/how-to/format-and-mount)。 前述の資格情報を使用して VM にログインします。 次のスクリプトを実行して、論理ボリュームを作成し、そのボリュームにディスクを追加し、XFS ファイル システムのパーティションを作成し、そのパーティションを /backup1 パス下にマウントします。
+6. [マネージド ディスク上に XFS ボリュームを作成します](https://www.digitalocean.com/docs/volumes/how-to/)。 前述の資格情報を使用して VM にログインします。 次のスクリプトを実行して、論理ボリュームを作成し、それにディスクを追加し、XFS ファイル システムの[パーティション](https://www.digitalocean.com/docs/volumes/how-to/partition/)を作成して、そのパーティションを /backup1 パス下に[マウント](https://www.digitalocean.com/docs/volumes/how-to/mount/)します。
 
     スクリプトの例:
 

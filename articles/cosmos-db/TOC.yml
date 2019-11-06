@@ -12,7 +12,9 @@
       items:
         - name: Azure ポータル
           href: create-cosmosdb-resources-portal.md
-        - name: .NET アプリ
+        - name: .NET アプリ - V4 SDK
+          href: create-sql-api-dotnet-v4.md
+        - name: .NET アプリ - V3 SDK
           href: create-sql-api-dotnet.md
         - name: Java アプリ
           href: create-sql-api-java.md
@@ -47,8 +49,11 @@
             - name: Xamarin
               href: mobile-apps-with-xamarin.md
     - name: 2 - データの移行
-      displayName: import
-      href: import-data.md
+      items:
+        - name: データ移行ツールの使用
+          href: import-data.md
+        - name: .NET Bulk サポートの使用
+          href: tutorial-sql-api-dotnet-bulk-import.md
     - name: 3 - データのクエリ
       href: tutorial-query-sql-api.md
     - name: 4 - ノートブックの作成
@@ -122,6 +127,8 @@
         - name: コンテナーとデータベースのスループットのプロビジョニング
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
+        - name: スループットのプロビジョニング - オートパイロット モード
+          href: provision-throughput-autopilot.md
     - name: SQL クエリのリファレンス
       items:
         - name: 使用の開始
@@ -599,8 +606,10 @@
       items:
         - name: はじめに
           href: mongodb-introduction.md
-        - name: ワイヤ プロトコルのサポート
+        - name: ワイヤ プロトコルのサポート (3.2)
           href: mongodb-feature-support.md
+        - name: ワイヤ プロトコルのサポート (3.6)
+          href: mongodb-feature-support-36.md
         - name: クイック スタート
           items:
             - name: .NET
@@ -951,6 +960,11 @@
           href: how-to-configure-firewall.md
         - name: 仮想ネットワークからのアクセスの構成
           href: how-to-configure-vnet-service-endpoint.md
+        - name: プライベート エンドポイントからアクセスを構成する
+          href: how-to-configure-private-endpoints.md
+        - name: Cosmos DB アカウントに非公開で接続する
+          href: /azure/private-link/create-private-endpoint-cosmosdb-portal
+          maintainContext: true
         - name: クロス オリジン リソース共有 (CORS) の構成
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Key Vault を使用して Azure Cosmos キーをセキュリティ保護する

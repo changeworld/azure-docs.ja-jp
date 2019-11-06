@@ -8,35 +8,44 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: 6e9ac50f38b2cf7bc3531e58e87ff2a8768c0a45
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c30dbad9e2d433920ade6890eabd85f083f9d968
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650482"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596829"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
-関数アプリは、Azure Functions ランタイムの特定のバージョンで実行されます。 メジャー バージョンには、次の 2 つがあります:[1.x と 2.x](functions-versions.md)。 既定では、作成される関数アプリはバージョン 2.x のランタイムです。 この記事では、選択したバージョンで実行されるように Azure の関数アプリを構成する方法について説明します。 特定のバージョン用にローカル開発環境を構成する方法については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
+関数アプリは、Azure Functions ランタイムの特定のバージョンで実行されます。 メジャー バージョンには、次の 2 つがあります:[1.x および 2.x](functions-versions.md) (バージョン 3.x はプレビュー段階) 既定では、作成される関数アプリはバージョン 2.x のランタイムです。 この記事では、選択したバージョンで実行されるように Azure の関数アプリを構成する方法について説明します。 特定のバージョン用にローカル開発環境を構成する方法については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
 
 ## <a name="automatic-and-manual-version-updates"></a>自動および手動でのバージョンの更新
 
 Azure Functions を使用すると、関数アプリ内で `FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を使用することで、ランタイムの特定のバージョンをターゲットにすることができます。 関数アプリは、新しいバージョンへの移行を明示的に選択しない限り、指定されたメジャー バージョンに保持されます。
 
-メジャー バージョン (2.x の場合は "~2"、1.x の場合は "~1") のみを指定した場合、関数アプリは、ランタイムの新しいマイナー バージョンが利用可能になった時点で、自動的に新しいマイナー バージョンに更新されます。 新しいマイナー バージョンには、重大な変更は導入されません。 マイナー バージョン (たとえば "2.0.12345") を指定した場合、関数アプリは、明示的にバージョンを変更するまで、その特定のバージョンに固定されます。
+メジャー バージョンのみを指定した場合、関数アプリは、ランタイムの新しいマイナー バージョンが利用可能になった時点で、自動的に新しいマイナー バージョンに更新されます。 新しいマイナー バージョンには、重大な変更は導入されません。 マイナー バージョン (たとえば "2.0.12345") を指定した場合、関数アプリは、明示的にバージョンを変更するまで、その特定のバージョンに固定されます。
 
 > [!NOTE]
 > Azure Functions の特定のバージョンに固定された後で、Visual Studio を使用して Azure に発行しようとすると、最新のパ―ジョンへのアップロードまたは発行の取り消しを求めるダイアログ ウィンドウが表示されます。 これを回避するには、`.csproj` ファイルに `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` プロパティを追加します。
 
 新しいバージョンが公開されると、ポータルで確認のメッセージが表示され、そのバージョンに移行することができます。 新しいバージョンに移行した後は、`FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を使用して、いつでも以前のバージョンに戻すことができます。
 
-ランタイム バージョンを変更するたびに、関数アプリが再起動されます。
+次の表は、各メジャー バージョンの自動更新を有効にする `FUNCTIONS_EXTENSION_VERSION` 値を示しています。
 
-自動更新を有効にするために `FUNCTIONS_EXTENSION_VERSION` アプリ設定で設定できる値は、現在、1.x ランタイムでは "~1"、2.x では "~2" です。
+| メジャー バージョン | `FUNCTIONS_EXTENSION_VERSION` 値 |
+| ------------- | ----------------------------------- |
+| 3.x (プレビュー) | `~3` |
+| 2.x  | `~2` |
+| 1.x | `~1` |
+
+ランタイム バージョンを変更するたびに、関数アプリが再起動されます。
 
 ## <a name="view-and-update-the-current-runtime-version"></a>現在のランタイム バージョンの表示と更新
 
-関数アプリによって使用されるランタイム バージョンを変更できます。 破壊的変更の可能性があるため、ランタイム バージョンの変更は、関数アプリで関数を作成する前にのみ実行できます。 ランタイム バージョンは `FUNCTIONS_EXTENSION_VERSION` の設定によって決定されますが、この変更はその設定の直接の変更によってではなく、Azure Portal で行う必要があります。 これは、ポータルが変更を検証し、必要に応じてその他の関連する変更を行うためです。
+関数アプリによって使用されるランタイム バージョンを変更できます。 破壊的変更の可能性があるため、ランタイム バージョンの変更は、関数アプリで関数を作成する前にのみ実行できます。 
+
+> [!IMPORTANT]
+> ランタイム バージョンは `FUNCTIONS_EXTENSION_VERSION` の設定によって決定されますが、この変更はその設定の直接の変更によってではなく、Azure Portal で行う必要があります。 これは、ポータルが変更を検証し、必要に応じてその他の関連する変更を行うためです。
 
 ### <a name="from-the-azure-portal"></a>Azure portal から
 

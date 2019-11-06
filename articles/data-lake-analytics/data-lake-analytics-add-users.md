@@ -19,7 +19,7 @@ ms.locfileid: "71672722"
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portal でユーザーを追加する
 
 ## <a name="start-the-add-user-wizard"></a>ユーザーの追加ウィザードを開始する
-1. https://portal.azure.com で Azure Data Lake Analytics を開きます。
+1. [https://portal.azure.com](https://portal.azure.com ) で Azure Data Lake Analytics を開きます。
 2. **[ユーザーの追加ウィザード]** をクリックします。
 3. **[ユーザーを選択する]** 手順で、追加するユーザーを探します。 **[選択]** をクリックします。
 4. **[ロールを選択する]** 手順で、 **[Data Lake Analytics の開発者]** を選択します。 このロールには、U-SQL ジョブの送信/監視/管理に必要な最小限のアクセス許可が割り当てられています。 Azure サービスの管理を目的としていないグループの場合は、このロールに割り当てます。

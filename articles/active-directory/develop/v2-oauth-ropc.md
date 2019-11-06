@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/11/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d5324aba5202abb76f07d1eaf43fe214e690393
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2fb475a5d88547cc5f39cb269cc1cbf72fcd25b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193209"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295398"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
 
@@ -34,6 +34,7 @@ Microsoft ID プラットフォームでは、[リソース所有者のパスワ
 > * Azure AD テナントに招待された個人アカウントでは、ROPC を使用できません。
 > * パスワードがないアカウントでは、ROPC 経由でサインインできません。 このシナリオでは、代わりに、自分のアプリに対して別のフローを使用することをお勧めします。
 > * ユーザーが多要素認証 (MFA) を使用してアプリケーションにログインすると、ログインできずにブロックされます。
+> * ROPC は[ハイブリッド ID フェデレーション](/azure/active-directory/hybrid/whatis-fed) シナリオ (たとえば、オンプレミスのアカウントの認証に使用される Azure AD や ADFS) ではサポートされていません。 ユーザーがオンプレミスの ID プロバイダーに全ページ リダイレクトされる場合、Azure AD ではその ID プロバイダーに対してユーザー名とパスワードをテストできません。 ただし、ROPC では[パススルー認証](/azure/active-directory/hybrid/how-to-connect-pta)がサポートされています。
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 

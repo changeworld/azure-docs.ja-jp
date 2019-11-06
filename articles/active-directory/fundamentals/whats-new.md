@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/15/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 616a637df20e43c20faadaf3db9243c28f94de34
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174731"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373543"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -40,6 +40,16 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 ---
 
 ## <a name="september-2019"></a>2019 年 9 月
+
+### <a name="deprecation-of-the-power-bi-content-packs"></a>Power BI コンテンツ パックの廃止
+
+**種類:** 非推奨  
+**サービス カテゴリ:** レポート  
+**製品の機能:** 監視とレポート
+
+Power BI ではストアからコンテンツ パックを廃止しており、**2019 年 10 月 1 日**の時点で、Azure AD Power BI コンテンツ パックはサポートされなくなります。 現在コンテンツ パックを使用しているお客様は、基になる API が古いバージョンであっても、引き続き使用できます。 このコンテンツ パックに代わり、Azure AD ブック (Log Analytics 上に構築) を使用して、Azure AD 関連のサービスに関する分析情報を取得できます。
+
+ブックに関する詳細については、[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)に関する記事を参照してください。 コンテンツ パックの廃止に関する詳細は、「[Announcing Power BI template apps general availability](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/)」 (Power BI テンプレート アプリの一般提供に関する告知) というブログ投稿をご覧ください。
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>マイ プロファイルが名前が変更され、Microsoft Office アカウント ページに統合されます
 

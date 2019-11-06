@@ -1,17 +1,17 @@
 ---
-title: サンプル - ISO 27001 ブループリント - コントロール マッピング
-description: ISO 27001 ブループリント サンプルの Azure Policy へのコントロール マッピング。
+title: ISO 27001 ブループリント サンプル - コントロール マッピング
+description: ISO 27001 ブループリント サンプルのコントロール マッピングです。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 46dab6207fdb46fb7c6b9102ca91a12b2c411f6c
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: f187bf5a77f756bbc6293a14e1873d13788d3929
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978274"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162475"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 ブループリント サンプルのコントロール マッピング
 

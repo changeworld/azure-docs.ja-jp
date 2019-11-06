@@ -1,22 +1,23 @@
 ---
-title: オートコンプリートと検索候補に関する C# チュートリアル - Azure Search
-description: このチュートリアルは、"検索結果のページング - Azure Search" プロジェクトを基に作成されており、オートコンプリートと検索候補を追加するものです。 目標は、さらに優れたユーザー エクスペリエンスを実現することです。 検索候補のドロップダウン リストとインライン オートコンプリートを組み合わせる方法について説明します。
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: オートコンプリートと検索候補に関する C# チュートリアル
+titleSuffix: Azure Cognitive Search
+description: このチュートリアルは、"検索結果のページング - Azure Cognitive Search" プロジェクトを基に作成されており、オートコンプリートと検索候補を追加するものです。 目標は、さらに優れたユーザー エクスペリエンスを実現することです。 検索候補のドロップダウン リストとインライン オートコンプリートを組み合わせる方法について説明します。
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: 01c0819fd0bf525739675ad756031cafc1a51673
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 959ae749f9ab8a025ec9c78d75640e2108868372
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434748"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786501"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-search"></a>C# チュートリアル: オートコンプリートと検索候補を追加する - Azure Search
+# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# のチュートリアル: オートコンプリートと検索候補を追加する - Azure Cognitive Search
 
-ユーザーが検索ボックスへの入力を開始したときのオートコンプリート (先行入力と検索候補の提示) を実装する方法について説明します。 このチュートリアルでは、先行入力の結果と検索候補の結果を個別に示したうえで、さらに優れたユーザー エクスペリエンスを実現するために、それらを組み合わせる方法を示します。 ユーザーは、2 つまたは 3 つのキーを入力するだけで、使用可能なすべての結果を検索することができます。 このチュートリアルは、「[C# チュートリアル: 検索結果のページング - Azure Search](tutorial-csharp-paging.md)」チュートリアルで作成したページング プロジェクトを基にしています。
+ユーザーが検索ボックスへの入力を開始したときのオートコンプリート (先行入力と検索候補の提示) を実装する方法について説明します。 このチュートリアルでは、先行入力の結果と検索候補の結果を個別に示したうえで、さらに優れたユーザー エクスペリエンスを実現するために、それらを組み合わせる方法を示します。 ユーザーは、2 つまたは 3 つのキーを入力するだけで、使用可能なすべての結果を検索することができます。 このチュートリアルは、「[C# チュートリアル: 検索結果のページング- Azure Cognitive Search](tutorial-csharp-paging.md)」チュートリアルで作成したページング プロジェクトを基にしています。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -29,7 +30,7 @@ ms.locfileid: "67434748"
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-「[C# チュートリアル: 検索結果のページング - Azure Search](tutorial-csharp-paging.md)」のプロジェクトを実行できるようにします。 このプロジェクトは、前のチュートリアルで完成させた独自のバージョンでも、GitHub からインストールした [create-first-app](https://github.com/Azure-Samples/azure-search-dotnet-samples) でもかまいません。
+「[C# チュートリアル: 検索結果のページング- Azure Cognitive Search](tutorial-csharp-paging.md)」プロジェクトを実行できるようにします。 このプロジェクトは、前のチュートリアルで完成させた独自のバージョンでも、GitHub からインストールした [create-first-app](https://github.com/Azure-Samples/azure-search-dotnet-samples) でもかまいません。
 
 ## <a name="add-suggestions"></a>検索候補を追加する
 
@@ -146,7 +147,7 @@ ms.locfileid: "67434748"
  
     ![fuzzy を true に設定した状態で「pa」と入力する](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    関心をお持ちであれば、あいまい検索で使用されるロジックを詳細に説明している「[Azure Search での Lucence クエリ構文](https://docs.microsoft.com/azure/search/query-lucene-syntax)」を参照してください。
+    関心をお持ちであれば、あいまい検索で使用されるロジックを詳細に説明している [Azure Cognitive Search での Lucene クエリ構文](https://docs.microsoft.com/azure/search/query-lucene-syntax)に関するページを参照してください。
 
 ## <a name="add-highlighting-to-the-suggestions"></a>検索候補に強調表示を追加する
 
@@ -255,7 +256,7 @@ ms.locfileid: "67434748"
 
 ## <a name="combine-autocompletion-and-suggestions"></a>オートコンプリートと検索候補を組み合わせる
 
-オートコンプリートと検索候補を組み合わせる作業は、選択肢の中で最も複雑なものですが、ユーザー エクスペリエンスの質はおそらく最も高くなります。 目的は、入力中のテキストに、Azure Search がテキストをオートコンプリートする際の最初の選択肢をインラインで表示することです。 また、いくつかの検索候補をドロップダウン リストとして表示するという目的もあります。
+オートコンプリートと検索候補を組み合わせる作業は、選択肢の中で最も複雑なものですが、ユーザー エクスペリエンスの質はおそらく最も高くなります。 目的は、入力中のテキストに、Azure Cognitive Search がテキストをオートコンプリートする際の最初の選択肢をインラインで表示することです。 また、いくつかの検索候補をドロップダウン リストとして表示するという目的もあります。
 
 しばしば "インライン オートコンプリート" などの名前で呼ばれるこの機能を提供するライブラリはいくつか存在します。 ただし、ここでは、具体的な処理を確認できるように、この機能をネイティブに実装します。 この例では、最初にコントローラーから作業を開始します。
 
@@ -464,6 +465,6 @@ ms.locfileid: "67434748"
 次のチュートリアルでは、1 回のクリックで検索を絞り込めるファセットを使用して、ユーザー エクスペリエンスを向上させる別の方法を確認します。
 
 > [!div class="nextstepaction"]
-> [C# チュートリアル: ナビゲーションをサポートするファセットの使用 - Azure Search](tutorial-csharp-facets.md)
+> [C# チュートリアル: ナビゲーションをサポートするファセットの使用 - Azure Cognitive Search](tutorial-csharp-facets.md)
 
 

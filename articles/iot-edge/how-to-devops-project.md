@@ -4,17 +4,17 @@ description: Azure DevOps Projects を利用すると、Azure を使い始める
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 07/09/2019
+ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 109a7e327217a342f485dd61b53115569f2346cd
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: daa4bc7b1584dc2159d4128fa4b44056df347ecb
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722985"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72252999"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Azure DevOps Projects を使用して IoT Edge 用の CI/CD パイプラインを作成する
 
@@ -22,7 +22,7 @@ DevOps Projects を使用して、IoT Edge アプリケーション用に継続�
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 DevOps Projects によって、Azure DevOps に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
@@ -56,6 +56,8 @@ DevOps Projects によって、Azure DevOps に CI/CD パイプラインが作�
 
    4. プロジェクト名によって生成された IoT Hub 名を使用するか、または独自に指定します。
 
+   5. 既定の場所をそのまま使用するか、近くの名前を選択します。 
+
    5. **[追加設定]** を選択して、DevOps プロジェクトが自動的に作成する Azure リソースを構成します。
 
    6. **[完了]** を選択して、プロジェクトの作成を完了します。 
@@ -64,7 +66,7 @@ DevOps Projects によって、Azure DevOps に CI/CD パイプラインが作�
 
 数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 プロジェクト名を選択して、進行状況を表示します。 ページを更新する必要がある場合があります。 サンプルの IoT Edge アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが IoT Edge デバイスにデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
 
-   ![DevOps ポータルにアプリケーションを表示する](./media/how-to-devops-project/devops-portal.png)
+   ![Azure portal にアプリケーションを表示する](./media/how-to-devops-project/devops-portal.png)
 
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>コードの変更をコミットし、CI/CD を実行する
@@ -77,23 +79,16 @@ DevOps Projects によって、Azure Repos にプロジェクトの Git リポ�
 
 2. 次の手順では、Web ブラウザーを使用して、コードを変更します。 代わりにローカルにリポジトリを複製する場合は、ウィンドウの右上の **[複製]** を選択します。 指定された URL を使用し、Visual Studio Code またはお好みの開発ツールで、Git リポジトリを複製します。 
 
-3. リポジトリには、作成プロセスで選択したアプリケーションの言語に基づいて、**SampleModule** というモジュールに既にコードが含まれています。 **modules/SampleModule/module.json** ファイルを開きます。
+3. リポジトリには、作成プロセスで選択したアプリケーションの言語に基づいて、**FilterModule** というモジュールに既にコードが含まれています。 **modules/FilterModule/module.json** ファイルを開きます。
 
    ![Azure Repos 内の module.json ファイルを開く](./media/how-to-devops-project/open-module-json.png)
 
-4. **[編集]** を選択して、`"tag"` の下で `"version"` に変更を加えます。 たとえば、お使いの Azure IoT Edge モジュールのイメージ タグの一部として [Azure DevOps ビルド変数](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)を使用するように、`"version": "${BUILD_BUILDID}"` に更新することができます。
+4. このファイルの **version** パラメーターでは、[Azure DevOps ビルド変数](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。 
 
-   ![バージョンを編集してビルド変数を許可する](media/how-to-devops-project/update-module-json.png)
-
-5. **[コミット]** を選択し、変更を保存します。
-
-6. ブラウザーで、Azure portal の DevOps Projects ダッシュボードに戻ります。 ビルドが進行中であることが表示されます。 行った変更は、CI/CD パイプラインを介して自動的にビルドおよびデプロイされます。
-
-    ![進行中のステータスを表示する](media/how-to-devops-project/ci-cd-in-progress.png)
 
 ## <a name="examine-the-cicd-pipeline"></a>CI/CD パイプラインを確認する
 
-前のセクションで、Azure DevOps Projects によって、お使いの IoT Edge アプリケーション用の完全な CI/CD パイプラインが自動的に構成されました。 次に、いずれかのファイルに変更をコミットして、そのビルド パイプラインをテストしました。 ここで、パイプラインを調査し、必要に応じてカスタマイズします。 Azure DevOps のビルドおよびリリース パイプラインについて理解するには、次の手順を行います。
+前のセクションで、Azure DevOps Projects によって、お使いの IoT Edge アプリケーション用の完全な CI/CD パイプラインが自動的に構成されました。 ここで、パイプラインを調査し、必要に応じてカスタマイズします。 Azure DevOps のビルドおよびリリース パイプラインについて理解するには、次の手順を使用します。
 
 1. DevOps プロジェクトのビルド パイプラインを表示するには、プロジェクト ダッシュボードのメニューで、 **[ビルド パイプライン]** を選択します。 このリンクによって、ブラウザーのタブが開かれ、新しいプロジェクトの Azure DevOps ビルド パイプラインが表示されます。
 
@@ -111,7 +106,7 @@ DevOps Projects によって、Azure Repos にプロジェクトの Git リポ�
 
 5. **[保存してキューに登録]** を選択し、 **[保存]** を選択します。
 
-6. ビルド パイプラインのメニューで、 **[トリガー]** を選択します。 DevOps Projects では、CI トリガーが自動的に作成され、リポジトリに対してコミットするたびに新しいビルドが開始されます。  必要に応じて、CI プロセスのブランチを含めるか除外するかを選択できます。
+6. [ビルド パイプライン] メニューから **[トリガー]** を選択します。 DevOps Projects では、CI トリガーが自動的に作成され、リポジトリに対してコミットするたびに新しいビルドが開始されます。  必要に応じて、CI プロセスのブランチを含めるか除外するかを選択できます。
 
 7. **[保持]** を選択します。 シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
 

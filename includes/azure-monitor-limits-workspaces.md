@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 017c02a10137579e6e3497775e9e4a3ac0a5d72d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 0f55f3ce4856e7b6eccf665faaa1b1fa45b84b58
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350865"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72302323"
 ---
 **データの収集量と保持期間** 
 
@@ -62,7 +62,7 @@ ms.locfileid: "71350865"
 |:---|:---|:---|
 | テーブルの最大列数         | 500 | |
 | 列名の最大文字数 | 500 | |
-| 容量の上限に達しているリージョン | 米国中西部 | このリージョンは一時的な容量の上限に達しているため、現在新しいワークスペースを作成できません。 この制限は、2019 年 10 月末までに対処される予定です。 |
+| 容量の上限に達しているリージョン | 米国中西部 | このリージョンは一時的な容量の上限に達しているため、現在新しいワークスペースを作成できません。 この制限は、2019 年 11 月末までに対処される予定です。 |
 | データのエクスポート | 現在、利用できません | データの集計とエクスポートには Azure Function または Logic App を使用してください。 | 
 
 **データ インジェストのボリューム レート**

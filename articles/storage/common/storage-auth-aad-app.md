@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ff2d9b8c0ca891b25dfcd6bf1f19d1541fd1541
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ca6b055b5d3702cea4ca1986ad1c81b59f76cee3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673234"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299641"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>クライアント アプリケーションから Azure Active Directory を使用して BLOB およびキューへのアクセスを承認する
 
@@ -76,7 +76,7 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 
 アプリケーションを登録し、Azure Blob Storage や Queue Storage 内のデータにアクセスするためのアクセス許可をこれに付与したら、セキュリティ プリンシパルを認証して OAuth 2.0 トークンを取得するためのコードをアプリケーションに追加できます。 認証してトークンを取得するには、[Microsoft ID プラットフォームの認証ライブラリ](../../active-directory/develop/reference-v2-libraries.md)または OpenID Connect 1.0 をサポートする別のオープンソース ライブラリのいずれかを使用することができます。 その後、アプリケーションはアクセス トークンを使用して、Azure Blob Storage や Queue Storage に対する要求を承認することができます。
 
-トークンの取得がサポートされるシナリオの一覧は、[Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub リポジトリの[シナリオ](https://aka.ms/msal-net-scenarios)のセクションを参照してください。
+トークンの取得がサポートされているシナリオの一覧については、[Microsoft Authentication Library コンテンツ](/azure/active-directory/develop/msal-overview)の[認証フロー](/en-us/azure/active-directory/develop/msal-authentication-flows)に関するセクションを参照してください。
 
 ## <a name="well-known-values-for-authentication-with-azure-ad"></a>Azure AD による認証の既知の値
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 8d4e7b7056f4d5e53785366818fad05e24cfc605
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100047"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750379"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>クイック スタート:Azure Virtual Machines への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -69,7 +69,7 @@ SAP HANA でサポートされるオペレーティング システムの詳細�
 SAP HANA および各種の Linux オペレーティング システムに関する追加の SAP のマニュアルについては、以下を参照してください。
 
 * [SAP ノート 171356:Linux 上の SAP ソフトウェア:一般情報](https://launchpad.support.sap.com/#/notes/1984787)
-* [SAP ノート 1944799:SLES オペレーティング システムのインストールに関する SAP HANA ガイドライン](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+* [SAP ノート 1944799:SLES オペレーティング システムのインストールに関する SAP HANA ガイドライン](http://service.sap.com/sap/support/notes/1944799)
 * [SAP ノート 2205917:SAP HANA DB: 推奨される SLES 12 for SAP Applications 向け OS 設定](https://launchpad.support.sap.com/#/notes/2205917/E)
 * [SAP ノート 1391070:Linux UUID ソリューション](https://launchpad.support.sap.com/#/notes/1391070)
 * [SAP ノート 2009879:Red Hat Enterprise Linux (RHEL) オペレーティング システムに関する SAP HANA ガイドライン](https://launchpad.support.sap.com/#/notes/2009879)
@@ -219,7 +219,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 
 ゲスト OS として Linux を実行する Azure VM にディスクをアタッチする方法については、「[Linux VM へのディスクの追加](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-Azure Premium SSD をし王すると、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にします。 その他のボリューム (つまりディスク) では、キャッシュ モードを **ReadOnly** に設定します。
+Azure Premium SSD を使用すると、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にします。 その他のボリューム (つまりディスク) では、キャッシュ モードを **ReadOnly** に設定します。
 
 VM の作成に使用する JSON のサンプル テンプレートを検索するには、[Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates)に関するページをご覧ください。
 vm-simple-sles テンプレートは、基本的なテンプレートです。 追加 100 GB のデータ ディスクを使用する記憶域セクションが含まれています。 このテンプレートをベースとして使用します。 テンプレートは特定の構成に適用できます。

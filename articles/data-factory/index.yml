@@ -12,12 +12,12 @@ metadata:
   ms.author: maghan
   ms.date: 10/02/2019
   monikerRange: ''
-  ms.openlocfilehash: 2bd0c4f7230b47c38f8aa75ace0870ac9cd87737
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 570a549bc132b1126d904d52af3066e152687e72
+  ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72242253"
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72554861"
 landingContent:
 - title: Azure Data Factory について
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
     - text: データを増分コピーする
       url: /azure/data-factory/tutorial-create-azure-ssis-runtime-portal
     - text: ADLS Gen2 を読み込む
-      url: /azure/data-factory/continuous-integration-deployment
+      url: /azure/data-factory/load-azure-data-lake-storage-gen2
     - text: SQL DW を読み込む
       url: /azure/data-factory/load-azure-sql-data-warehouse
     - text: SAP BW を読み込む
@@ -89,7 +89,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: マッピング データ フローについて
+    - text: マッピング データ フローとは
       url: /azure/data-factory/concepts-data-flow-overview
   - linkListType: tutorial
     links:

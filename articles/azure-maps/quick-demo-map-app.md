@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6afe76aca388f1f6bd479f53eb4e18cc62c10584
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 092da53c3179d939ebf0472219338b8d8392fda6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268672"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554300"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Azure Maps を使用して対話形式の検索マップを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "59268672"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -36,14 +36,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. **[Azure Maps アカウントの作成]** ページで、次の値を入力します。
    - 新しいアカウントの "**名前**"。
    - このアカウントで使う "**サブスクリプション**"。
-   - このアカウントの "**リソース グループ**" です。 **[新規作成]** を選んで新しく作成することも、**[既存のものを使用]** を選んで既存のリソース グループを使うこともできます。
+   - このアカウントの "**リソース グループ**" です。 **[新規作成]** を選んで新しく作成することも、 **[既存のものを使用]** を選んで既存のリソース グループを使うこともできます。
    - 任意の **[価格レベル]** を選択します。
    - **ライセンス**と**プライバシーに関する声明**を読みます。 チェックボックスをオンにして利用規約に同意します。
    - 最後に **[作成]** ボタンを選択します。
 
      ![ポータルで Azure Maps アカウントを作成する](./media/quick-demo-map-app/create-account.png)
 
-5. アカウントが正常に作成されたら、アカウントを開いて、アカウント メニューの [設定] セクションに移動します。 **[キー]** を選択して Azure Maps アカウントのプライマリおよびセカンダリ キーを表示します。 次のセクションで使用する **[主キー]** の値をローカルのクリップボードにコピーします。
+5. アカウントが正常に作成されたら、アカウントを開いて、アカウント メニューの [設定] セクションに移動します。 **[認証]** を選択して Azure Maps アカウントのプライマリおよびセカンダリ キーを表示します。 次のセクションで使用する **[主キー]** の値をローカルのクリップボードにコピーします。
 
 ## <a name="download-the-application"></a>アプリケーションのダウンロード
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 チュートリアルでは、お使いのアカウントで Azure Maps を使用および構成する方法について詳しく説明します。 チュートリアルに進む場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 進まない場合は、次の手順に従ってリソースをクリーンアップしてください。
 
 1. **AzureMapDemo.html** Web アプリケーションを実行しているブラウザーを閉じます。
-2. Azure portal の左側のメニューから、**[すべてのリソース]** を選択します。 次に、Azure Maps アカウントを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** を選択します。
+2. Azure portal の左側のメニューから、 **[すべてのリソース]** を選択します。 次に、Azure Maps アカウントを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

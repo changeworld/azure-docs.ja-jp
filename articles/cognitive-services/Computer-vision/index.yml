@@ -2,7 +2,7 @@
 title: Computer Vision のドキュメント
 summary: クラウドベースの Computer Vision API を使用すると、開発者はイメージを処理し、情報を返すための高度なアルゴリズムにアクセスできます。 画像をアップロードするか、画像の URL を指定すると、Microsoft Computer Vision のアルゴリズムによって、入力とユーザーの選択に基づいてさまざまな方法でビジュアル コンテンツが分析されます。 クイック スタート、チュートリアル、サンプルを使用して、さまざまな方法でビジュアル コンテンツを分析する方法をご確認ください。
 metadata:
-  title: Computer Vision のドキュメント
+  title: Computer Vision のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   description: クラウドベースの Computer Vision API を使用すると、開発者はイメージを処理し、情報を返すための高度なアルゴリズムにアクセスできます。 画像をアップロードするか、画像の URL を指定すると、Microsoft Computer Vision のアルゴリズムによって、入力とユーザーの選択に基づいてさまざまな方法でビジュアル コンテンツが分析されます。 クイック スタート、チュートリアル、サンプルを使用して、さまざまな方法でビジュアル コンテンツを分析する方法をご確認ください。
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: 8c09125fde66c62ecbb1560d2327c6b9671accf8
-  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+  ms.openlocfilehash: b17796fe07f37931c4a4924c6d4daaa8399562d2
+  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72176276"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73647836"
 landingContent:
 - title: Computer Vision について
   linkLists:
@@ -44,6 +44,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: Node SDK の使用
       url: quickstarts-sdk/node-sdk.md
+    - text: Go SDK の使用
+      url: quickstarts-sdk/go-sdk.md
 - title: 画像内のオブジェクトを検出する
   linkLists:
   - linkListType: concept
@@ -60,6 +62,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: Node SDK の使用
       url: quickstarts-sdk/node-sdk.md
+    - text: Go SDK の使用
+      url: quickstarts-sdk/go-sdk.md
 - title: コンテンツ タグを画像に適用する
   linkLists:
   - linkListType: concept
@@ -76,6 +80,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: Node SDK の使用
       url: quickstarts-sdk/node-sdk.md
+    - text: Go SDK の使用
+      url: quickstarts-sdk/go-sdk.md
 - title: コンテナーの使用
   linkLists:
   - linkListType: get-started
@@ -108,6 +114,8 @@ landingContent:
       url: quickstarts-sdk/java-sdk.md
     - text: Node SDK の使用
       url: quickstarts-sdk/node-sdk.md
+    - text: Go SDK の使用
+      url: quickstarts-sdk/go-sdk.md
 - title: リファレンス
   linkLists:
   - linkListType: reference
@@ -125,10 +133,18 @@ landingContent:
     - text: Java SDK
       url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
     - text: Node.js SDK
-      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-computervision?view=azure-node-latest
+      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision
     - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/430309-computer-vision-api
+    - text: スタック オーバーフロー
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

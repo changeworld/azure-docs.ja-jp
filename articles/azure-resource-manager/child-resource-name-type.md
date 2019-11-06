@@ -1,17 +1,17 @@
 ---
-title: Azure Resource Manager テンプレートでの子リソースの名前と種類
+title: 子リソース - Azure Resource Manager テンプレート
 description: Azure Resource Manager テンプレートで子リソースの名前と種類を設定する方法について説明します。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd1c38547866c34eb5c4808ed5b185b50fa44a01
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3a90b2155b11d4c12bc1f571af3f15fdbceb12b9
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035563"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532286"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>子リソースの名前と種類の設定
 

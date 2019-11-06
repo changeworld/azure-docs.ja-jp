@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 6f5d865b5a12ce8989631deee7ebda49dbe1ab12
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/21/2019
+ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103195"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750471"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -148,6 +148,9 @@ ms.locfileid: "71103195"
 - **1 つまたは複数のフェールオーバー グループを使用して複数のデータベースのフェールオーバーを管理する**
 
   1 つまたは複数のフェールオーバー グループを異なるリージョンの 2 つのサーバー (プライマリおよびセカンダリ サーバー) 間に作成できます。 各グループには、プライマリ リージョンに発生した機能停止によりすべてまたは一部のプライマリ データベースが使用できなくなった際にユニットとして復元できる、1 つまたは複数のデータベースを含めることができます。 フェールオーバー グループは、プライマリと同じサービスの目的を共有する geo セカンダリ データベースを作成します。 既にある geo レプリケーションのリレーションシップをこのフェールオーバー グループに追加する場合は、その geo セカンダリが、プライマリと同じサービス レベルおよびコンピューティング サイズで構成されていることを確認してください。
+  
+  > [!IMPORTANT]
+  > 異なるサブスクリプションにある 2 つのサーバー間でのフェールオーバー グループの作成は、現在、単一データベースとエラスティック プールではサポートされていません。
 
 - **OLTP ワークロードに読み取り/書き込みのリスナーを使用する**
 
@@ -303,9 +306,6 @@ ms.locfileid: "71103195"
 
 > [!NOTE]
 > セカンダリ データベースをフェールオーバー グループ構成の一部として作成した場合、セカンダリ データベースをダウングレードすることは推奨されません。 これは、フェールオーバーがアクティブ化された後にデータ層に通常のワークロードを処理するのに十分な容量を確保するためです。
-
-> [!IMPORTANT]
-> フェールオーバー グループのメンバーである Managed Instance のアップグレードまたはダウングレードは、現在サポートされていません。
 
 ## <a name="preventing-the-loss-of-critical-data"></a>重要なデータの損失の防止
 

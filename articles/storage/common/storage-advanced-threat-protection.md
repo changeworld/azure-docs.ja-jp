@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673252"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495957"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -30,7 +30,7 @@ Advanced Threat Protection for Azure Storage では、脅威の検出のため�
 
 Advanced Threat Protection は既定では、ご利用のストレージ アカウントに対して有効になっています。 Advanced Threat Protection は、次のセクションで説明するいくつかの方法で構成することができます。
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
 1. [Azure ポータル](https://portal.azure.com/)を開きます。
 1. ご利用の Azure Storage アカウントに移動します。 **[設定]** で **[高度なセキュリティ]** を選択します。
@@ -40,7 +40,7 @@ Advanced Threat Protection は既定では、ご利用のストレージ アカ�
 
     ![Azure Storage Advanced Threat Protection をオンにする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="using-azure-security-center"></a>Azure Security Center の使用
+### <a name="azure-security-centertabazure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
 Azure Security Center で Standard レベルにサブスクライブすると、Advanced Threat Protection がご利用のすべてのストレージ アカウントで自動的に設定されます。 次のようにして、特定のサブスクリプションのストレージ アカウントで Advanced Threat Protection を有効または無効にすることができます。
 
@@ -56,11 +56,11 @@ Azure Security Center で Standard レベルにサブスクライブすると、
     ![Security Center で ATP を有効にする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. **[Save]** をクリックします。
 
-### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
+### <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
 
 Azure Resource Manager テンプレートを使用して、Advanced Threat Protection が有効になっている Azure Storage アカウントをデプロイします。 詳細については、[Advanced Threat Protection でのストレージ アカウント](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)に関するページを参照してください。
 
-### <a name="using-an-azure-policy"></a>Azure Policy の使用
+### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 特定のサブスクリプションまたはリソース グループ内のストレージ アカウント全体で Advanced Threat Protection を有効にするには、Azure Policy を使用します。
 
@@ -78,20 +78,22 @@ Azure Resource Manager テンプレートを使用して、Advanced Threat Prote
 
     ![[ポリシー定義] ページ](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-the-rest-api"></a>REST API の使用
+### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
 
 Rest API のコマンドを使用して、特定のストレージ アカウントの Advanced Threat Protection 設定を作成、更新、または取得します。
 
 * [Advanced Threat Protection - 作成](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Advanced Threat Protection - 取得](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="using-azure-powershell"></a>Azure PowerShell の使用
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の PowerShell コマンドレットを使用します。
 
 * [Advanced Threat Protection を有効にする](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
 * [Advanced Threat Protection を取得する](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [Advanced Threat Protection を無効にする](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+
+---
 
 ## <a name="explore-security-anomalies"></a>セキュリティ異常を調べる
 

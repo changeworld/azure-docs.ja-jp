@@ -1,23 +1,23 @@
 ---
-title: クエリの種類と構成 - Azure Search
-description: Azure Search で検索結果のフィルター処理、選択、並べ替えを行うためのパラメーターを使って検索クエリを作成するための基本的な事柄について説明します。
-author: HeidiSteen
+title: クエリの種類と構成
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search で結果のフィルター処理、選択、並べ替えを行うためのパラメーターを使って、検索クエリを作成するための基本。
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 4646cb30ef7602da990e24f923c8eceada4debd0
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.date: 11/04/2019
+ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178011"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793216"
 ---
-# <a name="query-types-and-composition-in-azure-search"></a>Azure Search でのクエリの種類と構成
+# <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのクエリの種類と構成
 
-Azure Search では、クエリにラウンドトリップ処理すべてが指定されます。 要求のパラメーターによって、インデックスでドキュメントを探すための一致条件、含めるまたは除外するフィールド、エンジンに渡される実行指示、応答を形成するための命令を指定します。 明示的に指定しなかった場合 (`search=*` とした場合) は、フルテキスト検索操作としてすべての検索可能フィールドを対象にクエリが実行され、スコア付けされていない結果セットが任意の順序で返されます。
+Azure Cognitive Search では、クエリにラウンドトリップ処理すべてが指定されます。 要求のパラメーターによって、インデックスでドキュメントを探すための一致条件、含めるまたは除外するフィールド、エンジンに渡される実行指示、応答を形成するための命令を指定します。 明示的に指定しなかった場合 (`search=*` とした場合) は、フルテキスト検索操作としてすべての検索可能フィールドを対象にクエリが実行され、スコア付けされていない結果セットが任意の順序で返されます。
 
 次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) で構成された代表的なクエリです。 この例では、[ホテルのデモ インデックス](search-get-started-portal.md)を対象とし、共通のパラメーターを使用しています。
 
@@ -41,7 +41,7 @@ Azure Search では、クエリにラウンドトリップ処理すべてが指�
 
 応答も、クエリに指定するパラメーターによって形成されます。 この例では、結果セットは **`select`** ステートメントに指定されたフィールドで構成されます。 $select ステートメントでは、"*取得可能*" とマークされたフィールドのみを使用できます。 また、このクエリでは **`top`** の 10 件の ヒットのみが返されます。 **`count`** では、全体での一致するドキュメント数が示されます。この数は、返される件数よりも大きくなる可能性があります。 このクエリでは、行が評価順に降順で並べ替えられます。
 
-Azure Search では、クエリ実行の対象となるのは常に、要求に含まれている API キーを使用して認証された 1 つのインデックスです。 REST では、両方が要求ヘッダーに指定されます。
+Azure Cognitive Search では、クエリ実行の対象となるのは常に、要求に含まれている API キーを使用して認証された 1 つのインデックスです。 REST では、両方が要求ヘッダーに指定されます。
 
 ### <a name="how-to-run-this-query"></a>このクエリを実行する方法
 
@@ -51,7 +51,7 @@ Azure Search では、クエリ実行の対象となるのは常に、要求に�
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>インデックスによってクエリ操作が有効になる仕組み
 
-Azure Search ではインデックスの設計とクエリの設計は密接に関連しています。 事前に知っておくべき基本的な事実は、各フィールドに属性が設定された*インデックス スキーマ* によって、構築できるクエリの種類が決まるということです。 
+Azure Cognitive Search では、インデックスの設計とクエリの設計は密接に関連しています。 事前に知っておくべき基本的な事実は、各フィールドに属性が設定された*インデックス スキーマ* によって、構築できるクエリの種類が決まるということです。 
 
 フィールドのインデックス属性によって、許可される操作が設定されます。フィールドがインデックス内で "*検索可能*" か、結果に "*取得可能*" か、"*ソート可能*" か、"*フィルター可能*" かなどです。 例のクエリ文字列で `"$orderby": "Rating"` が処理されるのは、Rating フィールドがインデックス スキーマで "*ソート可能*" とマークされているためです。 
 
@@ -74,7 +74,7 @@ Azure Search ではインデックスの設計とクエリの設計は密接に�
 + **`queryType`** (simple または full)。組み込まれている既定の単純構文を使用する場合は省略できます。
 + **`search`** または **`filter`** には一致条件を指定します。空の検索を実行する場合は、未指定にすることができます。 クエリの 2 つの種類については単純なパーサーに関して説明していますが、高度なクエリでも複雑なクエリ式を渡すために search パラメーターが必要です。
 
-その他の検索パラメーターはすべて省略可能です。 属性の完全な一覧は、[インデックス作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。 処理中にパラメーターがどのように使用されるかについて詳しくは、「[Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)」をご覧ください。
+その他の検索パラメーターはすべて省略可能です。 属性の完全な一覧は、[インデックス作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。 処理中にパラメーターがどのように使用されるかについて詳しくは、[Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関するページをご覧ください。
 
 ## <a name="choose-apis-and-tools"></a>API とツールの選択
 
@@ -83,13 +83,13 @@ Azure Search ではインデックスの設計とクエリの設計は密接に�
 | 手法 | 説明 |
 |-------------|-------------|
 | [Search エクスプローラー (ポータル)](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 探索、テスト、検証用に推奨されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
-| [Postman またはその他の REST ツール](search-get-started-postman.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Search で利用可能なすべての操作をサポートします。 この記事では、Azure Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について説明します。  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Search インデックスに対してクエリを実行する目的に使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Postman またはその他の REST ツール](search-get-started-postman.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Cognitive Search で利用可能なすべての操作をサポートします。 この記事では、Azure Cognitive Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について学習します。  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Cognitive Search のインデックスに対してクエリを実行するために使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
 
 ## <a name="choose-a-parser-simple--full"></a>パーサーの選択: simple | full
 
-Azure Search は、Apache Lucene を基盤としており、一般的なクエリと特殊なクエリの処理用に 2 つのクエリ パーサーが用意されています。 単純なパーサーを使用する要求は、[単純なクエリ構文](query-simple-syntax.md)を使用して形成されます。これは自由な形式のテキスト クエリにおける処理速度と有効性のために既定として選択されます。 この構文では、AND、OR、NOT、フレーズ、サフィックス、優先順位の演算子など、一般的な各種検索演算子がサポートされています。
+Azure Cognitive Search は、Apache Lucene を基盤としており、一般的なクエリと特殊なクエリの処理用に 2 つのクエリ パーサーが用意されています。 単純なパーサーを使用する要求は、[単純なクエリ構文](query-simple-syntax.md)を使用して形成されます。これは自由な形式のテキスト クエリにおける処理速度と有効性のために既定として選択されます。 この構文では、AND、OR、NOT、フレーズ、サフィックス、優先順位の演算子など、一般的な各種検索演算子がサポートされています。
 
 [完全な Lucene クエリ構文](query-Lucene-syntax.md#bkmk_syntax)は、要求に `queryType=full` を追加することで有効になります。これは、[Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) の一部として開発されたもので、広く採用されている表現性の高いクエリ言語です。 完全な構文は、単純な構文を拡張したものです。 単純な構文で記述するすべてのクエリは、完全な Lucene パーサーで実行できます。 
 
@@ -109,14 +109,14 @@ queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=Ho
 
 ## <a name="types-of-queries"></a>クエリの種類
 
-Azure Search では幅広いクエリの種類がサポートされます。 
+Azure Cognitive Search では、幅広いクエリの種類がサポートされます。 
 
 | クエリの種類 | 使用法 | 例と詳細 |
 |------------|--------|-------------------------------|
 | 自由形式のテキスト検索 | search パラメーターといずれかのパーサー| フルテキスト検索は、インデックスのすべての "*検索可能*" フィールドで 1 つ以上の語句をスキャンし、Google や Bing などの検索エンジンに期待するのと同様に機能します。 最初の例はフルテキスト検索です。<br/><br/>フルテキスト検索では、標準の Lucene アナライザーを使用したテキスト分析が行われ (既定)、すべての語句を小文字に変換し、"the" のようなストップワードを除去します。 テキスト分析を変更する[英語以外のアナライザー](index-add-language-analyzers.md#language-analyzer-list)や[言語に関係なく使える特別なアナライザー](index-add-custom-analyzers.md#AnalyzerTable)を使用して、既定値をオーバーライドできます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 | 
 | フィルター検索 | [OData フィルター式](query-odata-filter-orderby-syntax.md)といずれかのパーサー | フィルター クエリは、インデックスのすべての "*フィルター処理可能*" フィールドでブール式を評価します。 検索クエリと異なり、フィルター クエリはフィールドの内容を厳密に照合します。たとえば、文字列フィールドでは大文字と小文字が区別されます。 もう 1 つの違いは、フィルター クエリは OData 構文で表されることです。 <br/>[フィルター式の例](search-query-simple-examples.md#example-3-filter-queries) |
 | 地理空間検索 | フィールドの [Edm.GeographyPoint 型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)、フィルター式、いずれかのパーサー | Edm.GeographyPoint 型のフィールドに格納された座標が、"近くを探す" つまりマップに基づいた検索コントロールで使用されます。 <br/>[地理空間検索の例](search-query-simple-examples.md#example-5-geo-search)|
-| 範囲検索 | フィルター式と単純なパーサー | Azure Search では範囲クエリは filter パラメーターを使用して作成されます。 <br/>[範囲フィルターの例](search-query-simple-examples.md#example-4-range-filters) | 
+| 範囲検索 | フィルター式と単純なパーサー | Azure Cognitive Search では、範囲クエリは filter パラメーターを使用して作成されます。 <br/>[範囲フィルターの例](search-query-simple-examples.md#example-4-range-filters) | 
 | [フィールド検索](query-lucene-syntax.md#bkmk_fields) | search パラメーターと完全なパーサー | 1 つのフィールドを対象とする複合クエリ式を作成します。 <br/>[フィールド検索の例](search-query-lucene-examples.md#example-2-fielded-search) |
 | [あいまい検索](query-lucene-syntax.md#bkmk_fuzzy) | search パラメーターと完全なパーサー | 構造やスペリングが似ている語句を照合します。 <br/>[あいまい検索の例](search-query-lucene-examples.md#example-3-fuzzy-search) |
 | [近接検索](query-lucene-syntax.md#bkmk_proximity) | search パラメーターと完全なパーサー | ドキュメント内で近くにある語句を検索します。 <br/>[近接検索の例](search-query-lucene-examples.md#example-4-proximity-search) |
@@ -144,22 +144,22 @@ Azure Search では幅広いクエリの種類がサポートされます。
 + テキスト解析または字句解析が必要であるものの、クエリの種類が言語処理の妨げになっている場合は、クエリ手法を変更します。 フルテキスト検索では、スペル ミスや単語の単数形と複数形、不規則動詞、不規則名詞までもが、テキスト解析または字句解析によって自動的に修正されます。 ファジー検索やワイルドカード検索など、一部のクエリでは、クエリ解析パイプラインの過程でテキスト解析が行われません。 シナリオによっては、従来より正規表現が回避策として使用されています。 
 
 ### <a name="paging-results"></a>ページングの結果
-Azure Search では、検索結果のページングを簡単に実装できます。 **`top`** および **`skip`** パラメーターを使用すると、管理しやすい並べ替えられたサブセットとして検索結果一式を取得できるようにする検索要求をスムーズに発行できます。また、このような検索結果により、検索 UI の利便性を簡単に高めることができます。 こうした結果の少数のサブセットを取得する際には、検索結果一式に含まれるドキュメントの数を取得することもできます。
+Azure Cognitive Search では、検索結果のページングを簡単に実装できます。 **`top`** および **`skip`** パラメーターを使用すると、管理しやすい並べ替えられたサブセットとして検索結果一式を取得できるようにする検索要求をスムーズに発行できます。また、このような検索結果により、検索 UI の利便性を簡単に高めることができます。 こうした結果の少数のサブセットを取得する際には、検索結果一式に含まれるドキュメントの数を取得することもできます。
 
-検索結果のページングの詳細については、「 [Azure Search でのページ検索結果の表示方法](search-pagination-page-layout.md)」をご覧ください。
+検索結果のページングの詳細については、[Azure Cognitive Search での検索結果のページング方法](search-pagination-page-layout.md)に関する記事をご覧ください。
 
 ### <a name="ordering-results"></a>結果の並べ替え
-検索クエリに対する結果を受け取る際、Azure Search から指定のフィールドの値に基づいて並べ替えられた結果が返されるようにすることができます。 既定では、Azure Search では、 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)から派生する各ドキュメントの検索スコアのランクに基づいて検索結果を並べ替えます。
+検索クエリに対する結果を受け取るときに、Azure Cognitive Search から指定のフィールドの値に基づいて並べ替えられた結果が返されるように要求することができます。 既定では、Azure Cognitive Search では、[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) から派生する各ドキュメントの検索スコアのランクに基づいて検索結果を並べ替えます。
 
-検索スコア以外の値に基づいて並べ替えられた結果が Azure Search から返されるようにするには、 **`orderby`** 検索パラメーターを使います。 フィールド名を含める **`orderby`** パラメーターの値と、地理空間値の [ **`geo.distance()` 関数**](query-odata-filter-orderby-syntax.md)の呼び出しを指定できます。 結果を昇順で要求する場合は各式の後に `asc` を指定し、降順で要求する場合は **`desc`** を指定します。 既定のランクは昇順です。
+検索スコア以外の値に基づいて並べ替えられた結果が Azure Cognitive Search から返されるようにするには、 **`orderby`** 検索パラメーターを使います。 フィールド名を含める **`orderby`** パラメーターの値と、地理空間値の [ **`geo.distance()` 関数**](query-odata-filter-orderby-syntax.md)の呼び出しを指定できます。 結果を昇順で要求する場合は各式の後に `asc` を指定し、降順で要求する場合は **`desc`** を指定します。 既定のランクは昇順です。
 
 
 ### <a name="hit-highlighting"></a>検索結果の強調表示
-Azure Search では、検索クエリに一致する検索結果の特定の部分を正確に強調表示できます。これは、 **`highlight`** 、 **`highlightPreTag`** 、 **`highlightPostTag`** の各パラメーターを使用して簡単に行えます。 一致するテキストを強調表示する*検索可能*フィールドを指定できるほか、Azure Search から返される一致テキストの先頭と末尾に追加する文字列タグを正確に指定することもできます。
+Azure Cognitive Search では、検索クエリに一致する検索結果の特定の部分を正確に強調表示できます。これは、 **`highlight`** 、 **`highlightPreTag`** 、 **`highlightPostTag`** の各パラメーターを使用して簡単に行えます。 一致するテキストを強調表示する*検索可能*フィールドを指定できるほか、Azure Cognitive Search から返される一致テキストの先頭と末尾に追加する文字列タグを正確に指定することもできます。
 
 ## <a name="see-also"></a>関連項目
 
-+ [Azure Search のフルテキスト検索のしくみ (クエリ解析アーキテクチャ)](search-lucene-query-architecture.md)
++ [Azure Cognitive Search のフルテキスト検索のしくみ (クエリ解析アーキテクチャ)](search-lucene-query-architecture.md)
 + [Search エクスプローラー](search-explorer.md)
 + [.NET におけるクエリの実行方法](search-query-dotnet.md)
 + [REST におけるクエリの実行方法](search-create-index-rest-api.md)

@@ -1,24 +1,18 @@
 ---
 title: Azure Log Analytics エージェントを使用してログ データを収集する | Microsoft Docs
 description: このトピックは、Azure、オンプレミス、または他のクラウド環境でホストされているコンピューターで、Log Analytics を使用してデータの収集と監視を行う方法を理解するために役立ちます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/30/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 66f3a9ae1f29d863170dcb4bc43e38b648602eed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.date: 10/07/2019
+ms.openlocfilehash: 8070abad675acc69f5b1da232b60179078adbc57
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695023"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932241"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
@@ -53,7 +47,7 @@ Linux および Windows 用エージェントは、Azure Monitor に接続する
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
 * Windows Server 2019
-* Windows Server 2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
+* Windows Server 2008 SP2 (x64)、2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
 * Windows 7 SP1、Windows 8 Enterprise および Pro、Windows 10 Enterprise および Pro
 
 >[!NOTE]

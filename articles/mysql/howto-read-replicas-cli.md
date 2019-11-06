@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL の読み取りレプリカの作成と管理 - Azure CLI、REST API
-description: この記事では、Azure CLI と REST API を使用して Azure Database for MySQL の読み取りレプリカを設定して管理する方法について説明します
+title: 読み取りレプリカの作成と管理 - Azure Database for MySQL
+description: Azure CLI または REST API を使用して Azure Database for MySQL の読み取りレプリカを設定し、管理する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/14/2019
-ms.openlocfilehash: 5bec4e7284e78506372d395bf022055fa31998e3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 741b50bdb2ec9c8d29a9f759e46209856de3a49c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993549"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970303"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Azure CLI と REST API を使用して Azure Database for MySQL の読み取りレプリカを作成および管理する方法
 
@@ -114,7 +114,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 [Azure REST API](/rest/api/azure/) を使用して、読み取りレプリカを作成して管理できます。
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
-作成 API](/rest/api/mysql/servers/create) を使用して、読み取りレプリカを作成できます。
+[作成 API](/rest/api/mysql/servers/create) を使用して、読み取りレプリカを作成できます。
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{replicaName}?api-version=2017-12-01

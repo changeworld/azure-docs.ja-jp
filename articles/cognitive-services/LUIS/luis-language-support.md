@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949544"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500178"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -47,15 +47,9 @@ LUIS が理解する発話の言語を次に示します。
 | スペイン語 (メキシコ)|`es-MX` |-|  -   |✔|✔|
 | トルコ語 | `tr-TR` |✔|-|-|センチメントのみ|
 
-
 言語サポートは、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)および[事前構築済みのドメイン](luis-reference-prebuilt-domains.md)によって異なります。
 
-### <a name="chinese-support-notes"></a>*中国語サポートに関するメモ
-
- - `zh-cn` カルチャで LUIS に必要なのは、繁体字中国語ではなく簡体字中国語の文字セットです。
- - 意図、エンティティ、機能、および正規表現の名前には、中国語の文字またはローマ字を使用できます。
- - `zh-cn` カルチャでサポートされているあらかじめ構築されたドメインについては、[あらかじめ構築されたドメインのリファレンス](luis-reference-prebuilt-domains.md)を参照してください。
-<!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
+[!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
 ### <a name="japanese-support-notes"></a>*日本語サポートに関するメモ
 
@@ -63,8 +57,7 @@ LUIS が理解する発話の言語を次に示します。
      - "でございます" は、"です" と同じではありません。
      - "です" は、"だ" と同じではありません。
 
-### <a name="text-analytics-support-notes"></a>\*\*テキスト分析サポートに関するメモ
-テキスト分析には、keyPhrase 事前構築済みエンティティと感情分析が含まれます。 サブカルチャ `pt-PT` および `pt-BR` については、ポルトガル語のみがサポートされています。 その他のカルチャはすべて、プライマリ カルチャ レベルでサポートされています。 Text Analytics の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)の詳細を確認してください。
+[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Speech API のサポートされている言語
 Speech ディクテーション モードの言語については、Speech の「[Supported language (サポートされている言語)](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode)」を参照してください。

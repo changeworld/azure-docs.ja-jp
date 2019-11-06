@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用した Azure リソースの管理 | Microsoft Docs
-description: Azure portal と Azure Resource Manager を使用してリソースを管理します。
+description: Azure portal と Azure Resource Manager を使用してリソースを管理します。 リソースをデプロイおよび削除する方法について説明します。
 services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: a4ff94a98514041290518e72e1b13c76722b9d4f
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c52d54ca02436f7224346a65048244a5ec8d104c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205596"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390395"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal を使用した Azure リソース の管理
 

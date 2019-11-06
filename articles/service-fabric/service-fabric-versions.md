@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2019
+ms.date: 10/03/2019
 ms.author: atsenthi
-ms.openlocfilehash: ca7a3cfe62520ed82dcf494a33f3bd188dbebe76
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6b29eb31f5d425fc063c8c42e7911272e63167c8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279994"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331095"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
@@ -109,3 +109,4 @@ ms.locfileid: "70279994"
 | 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
 | 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |
+| 6.5 CU5 | 6.5.676.9590 | 6.5.467.1 |

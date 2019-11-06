@@ -21,6 +21,8 @@
   items:
     - name: 一般的な条件付きアクセス ポリシー
       href: concept-conditional-access-policy-common.md
+    - name: セキュリティの既定値
+      href: concept-conditional-access-security-defaults.md
     - name: 条件付きアクセス ポリシーのコンポーネント
       href: concept-conditional-access-policies.md
     - name: 条件
@@ -29,6 +31,8 @@
       href: location-condition.md
     - name: コントロール
       href: controls.md
+    - name: レポート専用モード
+      href: concept-conditional-access-report-only.md
     - name: サービスの依存関係
       href: service-dependencies.md
     - name: What if ツール
@@ -48,6 +52,8 @@
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Azure 管理のために MFA を必須にする
           href: howto-conditional-access-policy-azure-management.md
+        - name: すべてのユーザーに対して MFA を必須にする
+          href: howto-conditional-access-policy-all-users-mfa.md
         - name: レガシ認証をブロックする
           href: howto-conditional-access-policy-block-legacy.md
         - name: リスクベースの条件付きアクセス
@@ -72,20 +78,12 @@
       href: untrusted-networks.md
     - name: 利用規約が必須
       href: terms-of-use.md
+    - name: レポート専用モードの構成
+      href: howto-conditional-access-report-only.md
     - name: サインインの頻度とブラウザーの永続性の制御
       href: howto-conditional-access-session-lifetime.md
     - name: クラシック ポリシーを移行する
       href: policy-migration.md
-    - name: ベースライン ポリシー
-      items:
-        - name: Require MFA for admins \(管理者に MFA を要求する\)
-          href: howto-baseline-protect-administrators.md
-        - name: エンドユーザーの保護
-          href: howto-baseline-protect-end-users.md
-        - name: レガシ認証をブロックする
-          href: howto-baseline-protect-legacy-auth.md
-        - name: サービス管理のために MFA を要求する
-          href: howto-baseline-protect-azure.md
     - name: 条件付きアクセスの導入
       href: howto-conditional-access-adoption-kit.md
     - name: トラブルシューティング

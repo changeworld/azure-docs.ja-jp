@@ -1,5 +1,5 @@
 ---
-title: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する | Microsoft Docs
+title: Resource Manager テンプレートで Azure Key Vault を使用する
 description: Azure Key Vault を使用して Resource Manager テンプレートのデプロイ時にセキュリティで保護されたパラメーターの値を渡す方法について説明します
 services: azure-resource-manager
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b91a3488750795e8ee9df6602bb2b3df8a9b08ec
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5dfc186e5d047de76e16ec145f5f0afe94b8d2f4
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436576"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533601"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する
 

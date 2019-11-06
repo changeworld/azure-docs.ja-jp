@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 953699793d81485e3828b9fb46de8523d2b7674e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 846650fce6701bb7e382df049902f427390b3051
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130001"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931209"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Text Analytics API の言語と地域のサポート
 
@@ -33,7 +33,7 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 
 感情分析、キー フレーズ抽出、エンティティ認識設定については、追加言語の言語規則に対応する目的でアナライザーの精度が上げられるため、サポートされる言語の一覧は対象がさらにしぼられます。 [エンティティ型](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition)の完全なセットのサポートは、現在のところ次の言語に限定されています。 
 * 英語
-* 簡体字中国語
+* 簡体中国語
 * フランス語
 * ドイツ語
 * スペイン語
@@ -48,14 +48,14 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | アラビア語      | `ar`          |           |             | ✔ \*                     | |
 | チェコ語       | `cs`          |           |             | ✔ \*                     | |
-| 簡体字中国語 | `zh-hans`| ✔ \***     |             | ✔         |    |
+| 簡体中国語 | `zh-hans`| ✔ \***     |             | ✔         |    |
 | 繁体字中国語 | `zh-hant`| ✔ \***     |             |          |    |
 | デンマーク語      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
-| オランダ語       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
+| オランダ語       | `nl`          | ✔ \***     | ✔          |  ✔ \*           |     |
 | 英語     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | フィンランド語     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
 | フランス語      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
-| ドイツ語      | `de`          | ✔ \*     | ✔           |  ✔           |     |
+| ドイツ語      | `de`          | ✔ \***     | ✔           |  ✔           |     |
 | ギリシャ語       | `el`          | ✔ \*     |             |            |     |
 | ハンガリー語   | `hu`          |           |             |  ✔ \*          |     | 
 | イタリア語     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
@@ -63,10 +63,10 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 | 韓国語      | `ko`          |          | ✔           |  ✔ \*          |     |
 | ノルウェー語 (ブークモール) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | ポーランド語      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
-| ポルトガル語 (ポルトガル) | `pt-PT`| ✔        |  ✔          | ✔ \*      |`pt` も可能|
+| ポルトガル語 (ポルトガル) | `pt-PT`| ✔ \***        |  ✔          | ✔ \*      |`pt` も可能|
 | ポルトガル語 (ブラジル)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
 | ロシア語     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| スペイン語     | `es`          | ✔        | ✔           |   ✔ \*\*      |     | 
+| スペイン語     | `es`          | ✔ \***       | ✔           |   ✔ \*\*      |     | 
 | スウェーデン語     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
 | トルコ語     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
 

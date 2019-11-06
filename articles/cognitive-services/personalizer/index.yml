@@ -12,12 +12,12 @@ metadata:
   title: Personalizer のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
-  ms.openlocfilehash: f3ba5f5eef7885896d774fd8aab35784cfb6465e
-  ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+  ms.openlocfilehash: 19736d881400a311964920f5669a0e9423891f9e
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/04/2019
-  ms.locfileid: "71950039"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73604210"
 landingContent:
 - title: Personalizer について
   linkLists:
@@ -97,7 +97,7 @@ landingContent:
       url: concepts-exploration.md
     - text: 特徴、アクション、コンテキスト
       url: concepts-features.md
-    - text: アクティブ ラーニング
+    - text: アクティブなイベントと非アクティブなイベント
       url: concept-active-learning.md
     - text: 報酬
       url: concept-rewards.md
@@ -107,7 +107,7 @@ landingContent:
     links:
     - text: オフライン評価を使用したループの改善
       url: concepts-offline-evaluation.md
-    - text: アクティブ ラーニング
+    - text: アクティブなイベントと非アクティブなイベント
       url: concept-active-learning.md
     - text: スケーラビリティとパフォーマンス
       url: concepts-scalability-performance.md

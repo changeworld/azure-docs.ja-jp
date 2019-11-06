@@ -3,18 +3,18 @@ title: Hive ODBC ドライバーを使用して Excel を Apache Hadoop に接�
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
 keywords: hadoop excel,hive excel,hive odbc
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: c81c0de98442f576145f2c2e12f0b2053b80e83a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 10/08/2019
+ms.openlocfilehash: 7451eaf56a2466bbb02fa879008b4a9787f6c2f5
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033604"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264627"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -33,7 +33,7 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
 
-ODBC ドライバーを使用するアプリケーションのバージョンに合致した [Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698) のバージョンをダウンロードしてインストールします。  この記事では、Office Excel に対してこのドライバーを使用します。
+ODBC ドライバーを使用するアプリケーションのバージョンと一致した [Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698) のバージョンをダウンロードしてインストールします。  この記事では、Office Excel に対してこのドライバーを使用します。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC データ ソースを作成する
 
@@ -63,7 +63,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンに
 
    | パラメーター | 説明 |
    | --- | --- |
-   |  ネイティブ クエリの使用 |これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。 純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。 SQL Server または Azure SQL Database に接続している場合は、オフのままにします。 |
+   |  ネイティブ クエリの使用 |これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。 純粋な HiveQL ステートメントを送信していることが 100% 確実な場合にのみ、使用する必要があります。 SQL Server または Azure SQL Database に接続している場合は、オフのままにします。 |
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
    |  既定の文字列の列の長さ、バイナリ列の長さ、10 進数の列の桁数 |データ型の長さおよび精度は、データが返される方法に影響する可能性があります。 精度が失われたり、切り捨てられたりするために間違った情報が返されます。 |
 

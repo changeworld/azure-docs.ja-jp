@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 10/12/2019
 ms.author: diberry
-ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 8f00ffeff4eb353fa70aa7df60b14c97d4b8e724
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971806"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554863"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -82,7 +82,8 @@ JSON 本文の例は、次のようになります。
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
-    "scoreThreshold": 20,
+    "scoreThreshold": 30,
+    "rankerType": "" // values: QuestionOnly
     "strictFilters": [
     {
         "name": "category",
@@ -91,6 +92,10 @@ JSON 本文の例は、次のようになります。
     "userId": "sd53lsY="
 }
 ```
+
+[rankerType](../concepts/best-practices.md#choosing-ranker-type) の詳細について確認してください。
+
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。 
 
 <a name="generateanswer-response"></a>
 
@@ -102,7 +107,7 @@ JSON 本文の例は、次のようになります。
 {
     "answers": [
         {
-            "score": 28.54820341616869,
+            "score": 38.54820341616869,
             "Id": 20,
             "answer": "There is no direct integration of LUIS with QnA Maker. But, in your bot code, you can use LUIS and QnA Maker together. [View a sample bot](https://github.com/Microsoft/BotBuilder-CognitiveServices/tree/master/Node/samples/QnAMaker/QnAWithLUIS)",
             "source": "Custom Editorial",
@@ -120,9 +125,11 @@ JSON 本文の例は、次のようになります。
 }
 ```
 
+以前の JSON では、スコアが 38.5% の回答で応答しました。 
+
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>C# のボットで QnA Maker を使用する
 
-Bot Framework では、QnA Maker のプロパティへのアクセスを提供します。
+Bot Framework では、[getAnswer API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) を使用して QnA Maker のプロパティへのアクセスを提供します。
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -137,11 +144,13 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。 
+
 サポート ボットに、このコードを使用した[サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418)があります。
 
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Node.js のボットで QnA Maker を使用する
 
-Bot Framework では、QnA Maker のプロパティへのアクセスを提供します。
+Bot Framework では、[getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-) を使用して QnA Maker のプロパティへのアクセスを提供します。
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');
@@ -149,11 +158,13 @@ this.qnaMaker = new QnAMaker(endpoint);
 
 // Default QnAMakerOptions
 var qnaMakerOptions = {
-    ScoreThreshold: 0.03,
+    ScoreThreshold: 0.30,
     Top: 3
 };
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
+
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。 
 
 サポート ボットに、このコードを使用した[サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36)があります。
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827571"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034713"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
 このドキュメントでは、Azure App Service の仮想ネットワーク統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットでルーティングできないネットワークに配置できます。  
@@ -63,6 +63,10 @@ VNet 統合機能には、次の 2 つの形式があります。
 * NetBIOS
 
 ## <a name="regional-vnet-integration"></a>リージョン VNet 統合 
+
+> [!NOTE]
+> ピアリングは、Linux ベースの App Service ではまだ使用できません。
+>
 
 Vnet 統合がアプリと同じリージョン内の VNet で使用される場合は、少なくとも 32 個のアドレスを含む委任されたサブネットを使用する必要があります。 このサブネットは他のどの目的にも使用できません。 アプリから行われる送信呼び出しは、委任されたサブネット内のアドレスから行われます。 このバージョンの Vnet 統合を使用する場合、呼び出しは VNet 内のアドレスから行われます。 VNet 内のアドレスを使用すると、アプリは次のことが可能になります。
 

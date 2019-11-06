@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 182c93ea0b887242d142eda5aeb44b2749c7ac66
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937551"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333040"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>オンプレミスからフェールオーバー後に Azure VM に接続する 
 
@@ -52,7 +52,7 @@ Azure VM への接続を確保するには、フェールオーバー前にオ�
 
 オンプレミスの Linux マシンで、次の手順を実行します。
 
-1. Secure Shell サービスがシステム起動時に自動的に開始されるよう設定されていることを確認します。
+1. システム起動時に Secure Shell サービスが自動的に開始される設定になっていることを確認します。
 2. ファイアウォール規則で SSH 接続が許可されていることを確認します。
 
 
@@ -91,7 +91,7 @@ Site Recovery では、Azure へのフェールオーバー時に同じ IP ア�
 
 IP アドレスを維持するには、次の手順を実行する必要があります。
 
-- オンプレミスのマシンのプロパティで、ターゲット Azure VM のネットワークと IP アドレス指定を設定して、オンプレミスの設定をミラーリングします。
+- レプリケートされたアイテムの [コンピューティングとネットワーク] プロパティで、ターゲット Azure VM のネットワークと IP アドレス指定を設定して、オンプレミスの設定をミラーリングします。
 - サブネットは、ディザスター リカバリー プロセスの一部として管理される必要があります。 オンプレミスのネットワークと一致する Azure VNet が必要です。フェールオーバー後のネットワーク ルートは、サブネットの Azure への移動と新しい IP アドレスの場所を反映するように変更される必要があります。  
 
 ### <a name="failover-example"></a>フェールオーバーの例
@@ -120,7 +120,7 @@ IP アドレスを維持するには、次の手順を実行する必要があ�
     > アプリケーションの要件に応じて、フェールオーバー前に VNet 間接続を Site Recovery [復旧計画](site-recovery-create-recovery-plans.md)の手動の手順/スクリプト化した手順/Azure Automation Runbook として設定できます。または、フェールオーバーが完了した後に設定します。
 
 4. フェールオーバー前に、次の手順で説明するように、Site Recovery のマシン プロパティで、ターゲット IP アドレスをオンプレミスのマシンのアドレスに設定します。
-5. フェールオーバー後、Azure VM は同じ IP アドレスを使用して作成されます。 Woodgrove は、**Azure ネットワーク**から**復旧ネットワーク**の VNet に接続します。 
+5. フェールオーバー後、Azure VM は同じ IP アドレスを使用して作成されます。 Woodgrove は、VNet ピアリングを使用して (トランジット接続を有効にして) **Azure ネットワーク**から**復旧ネットワーク** VNet に接続します。
 6. オンプレミスで、Woodgrove はネットワークの変更を行う必要があります (192.168.1.0/24 が Azure に移動したことを反映するためのルートの変更など)。  
 
 **フェールオーバー前のインフラストラクチャ**

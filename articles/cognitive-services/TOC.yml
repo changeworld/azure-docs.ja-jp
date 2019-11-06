@@ -5,10 +5,12 @@
   items:
     - name: Cognitive Services とは
       href: Welcome.md
-    - name: Cognitive Services のカスタム サブドメイン
-      href: cognitive-services-custom-subdomains.md
     - name: Cognitive Services と機械学習
       href: cognitive-services-and-machine-learning.md
+    - name: Cognitive Services の仮想ネットワーク
+      href: cognitive-services-virtual-networks.md
+    - name: Cognitive Services のカスタム サブドメイン
+      href: cognitive-services-custom-subdomains.md
     - name: 言語のサポート
       href: language-support.md
 - name: コンテナー サポート

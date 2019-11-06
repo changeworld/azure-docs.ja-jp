@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c19b874e79e70349437c5d44a6eb946aeeefb5
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7149b9d871c43af083774ffb799255e0d1144113
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835048"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429949"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS と ADAL JS の相違点
 
@@ -65,7 +65,7 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
 
     任意のリソース API のスコープを要求するには、この API の URI を appidURI/scope の形式 (例: https:\//mytenant.onmicrosoft.com/myapi/api.read) で使用します
 
-    MS Graph API の場合のみ、スコープの値 `user.read` は https://graph.microsoft.com/User.Read にマップされ、区別なく使用できます。
+    MS Graph API の場合のみ、スコープの値 `user.read` は https:\//graph.microsoft.com/User.Read にマップされ、区別なく使用できます。
 
     ```javascript
     var request = {

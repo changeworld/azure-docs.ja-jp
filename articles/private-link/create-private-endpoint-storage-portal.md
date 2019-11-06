@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: bb0c6e9d20c12df3532a52df1fe4d9574344d4b3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 8a72f70fbc1ab6052587beb1d949dd73b1ad3559
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104728"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376149"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 仮想マシン (VM) などの Azure リソースとプライベート リンク リソースとの非公開での通信が可能になります。
@@ -114,10 +114,10 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | レプリケーション | **[読み取りアクセス geo 冗長ストレージ (RA-GRS)]** を選択します。 |
     |||
   
-3.  **[次へ: ネットワーク]** を選択します。
-4.  **[Create a storage account - Networking]\(ストレージ アカウントの作成 - ネットワーク\)** で、接続方法に **[プライベート エンドポイント]** を選択します。
-5.  **[Create a storage account - Networking]\(ストレージ アカウントの作成 - ネットワーク\)** で、 **[プライベート エンドポイントの追加]** を選択します。 
-6.  **[プライベート エンドポイントを作成する]** で、次の情報を入力または選択します。
+3. **[次へ:ネットワーク]** を選択します。
+4. **[ストレージ アカウントの作成] - [ネットワーク]** で、接続方法に **[プライベート エンドポイント]** を選択します。
+5. **[ストレージ アカウントの作成] - [ネットワーク]** で、 **[プライベート エンドポイントの追加]** を選択します。 
+6. **[プライベート エンドポイントの作成]** で、次の情報を入力または選択します。
 
     | Setting | 値 |
     | ------- | ----- |
@@ -126,19 +126,19 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     |Location|**[WestCentralUS]** を選択します。|
     |名前|「 *myPrivateEndpoint*」と入力します。  |
-    |ストレージ サブリソース|既定値  **[Blob]** のままにします。 |
+    |ストレージ サブリソース|既定値の **[BLOB]** のままにします。 |
     | **ネットワーク** |  |
     | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
     | Subnet |  *[mySubnet]* を選択します。 |
     | **プライベート DNS 統合**|  |
     | プライベート DNS ゾーンとの統合  | 既定値 **[はい]** のままにします。 |
-    | プライベート DNS ゾーン  | 既定値 ** [(New) privatelink.blob.core.windows.net]** のままにします。 |
+    | プライベート DNS ゾーン  | 既定値の **(新規) privatelink.blob.core.windows.net** のままにします。 |
     |||
-7.  **[OK]** を選択します。 
-8.  **[確認および作成]** を選択します。  **[確認および作成]**   ページが表示され、Azure によって構成が検証されます。 
-9. " **検証に成功しました**"  というメッセージが表示されたら、 **[作成]** を選択します。 
+7. **[OK]** を選択します。 
+8. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
+9. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
 10. 先ほど作成したストレージ アカウント リソースに移動します。
-11. 左側のコンテンツ メニューから、 **[アクセス キー]** を選択します。
+11. 左側のコンテンツ メニューから、 **[アクセス キー]** を選択します。
 12. key1 の接続文字列上で **[コピー]** を選択します。
  
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
@@ -182,29 +182,30 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     Name:    mystorageaccount123123.privatelink.blob.core.windows.net
     Address:  10.0.0.5
     Aliases:  mystorageaccount.blob.core.windows.net
-3. Install [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
-4. Select **Storage accounts** with the right-click.
-5. Select **Connect to an azure storage**.
-6. Select **Use a connection string**.
-7. Select **Next**.
-8. Enter the connection string by pasting the information previously copied.
-9. Select **Next**.
-10. Select **Connect**.
-11. Browse the Blob containers from mystorageaccount 
-12. (Optionally) Create folders and/or upload files to *mystorageaccount*. 
-13. Close the remote desktop connection to *myVM*. 
+    ```
+3. [Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)をインストールします。
+4. 右クリックで **[ストレージ アカウント]** を選択します。
+5. **[Connect to an azure storage]\(Azure ストレージに接続する\)** を選択します。
+6. **[Use a connection string]\(接続文字列を使用する\)** を選択します。
+7. **[次へ]** を選択します。
+8. 前にコピーした情報を貼り付けて、接続文字列を入力します。
+9. **[次へ]** を選択します。
+10. **[接続]** を選択します。
+11. mystorageaccount から BLOB コンテナーを参照する 
+12. (オプションで) フォルダーを作成するか、*mystorageaccount* にファイルをアップロードするか、またはその両方を行います。 
+13.  *myVM* へのリモート デスクトップ接続を閉じます。 
 
-Additional options to access the storage account:
-- Microsoft Azure Storage Explorer is a standalone free app from Microsoft that enables you to work visually with Azure storage data on Windows, macOS, and Linux. You can install the application to browse privately the storage account content. 
+ストレージ アカウントにアクセスするためのその他のオプション:
+- Microsoft Azure Storage Explorer は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料スタンドアロン アプリです。 そのアプリケーションをインストールすると、ストレージ アカウントの内容を非公開で参照できます。 
  
-- The AzCopy utility is another option for high-performance scriptable data transfer for Azure storage. Use AzCopy to transfer data to and from Blob, File, and Table storage. 
+- AzCopy ユーティリティは、Azure Storage 用のスクリプト可能な高性能データ転送のためのもう 1 つのオプションです。 AzCopy を使用して、Blob Storage、File Storage、および Table Storage との間でデータを転送します。 
 
 
-## Clean up resources 
-When you're done using the Private Endpoint, storage account and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
-2. Select **Delete resource group**. 
-3. Enter *myResourceGroup* for **TYPE THE RESOURCE GROUP NAME** and select **Delete**. 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+プライベート エンドポイント、ストレージ アカウント、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。 
+1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。 
+2. **[リソース グループの削除]** を選択します。 
+3. **[リソース グループ名を入力してください]**  に「 *myResourceGroup*」と入力し、 **[削除]** を選択します。 
 
-## Next steps
-In this Quickstart, you created a VM on a virtual network and storage account and a Private Endpoint. You connected to one VM from the internet and securely communicated to the storage account using Private Link. To learn more about Private Endpoint, see [What is Azure Private Endpoint?](private-endpoint-overview.md).
+## <a name="next-steps"></a>次の手順
+このクイックスタートでは、仮想ネットワーク上に VM を作成し、ストレージ アカウントとプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用してストレージ アカウントと安全に通信を行いました。 プライベート エンドポイントの詳細については、「 [Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。

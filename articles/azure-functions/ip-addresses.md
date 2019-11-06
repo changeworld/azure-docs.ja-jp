@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8b6a342dd32d430f7a40a1e0a0a17a482a0816d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035863"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469060"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -92,7 +92,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 - 関数アプリを削除した後、別のリソース グループ内で再作成する。
 - リソース グループとリージョンの組み合わせに含まれる最後の関数アプリを削除した後、再作成する。
-- [証明書の更新](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)時などに SSL バインドを削除する。
+- [証明書の更新](../app-service/configure-ssl-certificate.md#renew-certificate)時などに SSL バインドを削除する。
 
 関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、着信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
 

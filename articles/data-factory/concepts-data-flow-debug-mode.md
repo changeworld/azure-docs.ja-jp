@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory Mapping Data Flow のデバッグ モード
+title: Azure Data Factory マッピング データ フローのデバッグ モード
 description: データ フローの構築時に対話型デバッグ セッションを開始する
 author: kromerm
 ms.author: makromer
@@ -7,20 +7,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 925e52f9f62860d8cd0951b9e72af09cbb7800fc
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c65ed14abb86b3b434e46fbe857487b06e217aad
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027805"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387368"
 ---
-# <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow のデバッグ モード
+# <a name="mapping-data-flow-debug-mode"></a>マッピング データ フローのデバッグ モード
 
 
 
 ## <a name="overview"></a>概要
 
-Azure Data Factory Mapping Data Flow のデバッグ モードを使用すると、データ フローの構築およびデバッグ時にデータ シェイプの変換を対話的に監視できます。 デバッグ セッションは、Data Flow のデザイン セッションでも、データ フローのパイプライン デバッグ実行中でも使用できます。 デバッグ モードを有効にするには、デザイン サーフェスの上部にある [Data Flow Debug]\(データ フローのデバッグ\) ボタンを使用します。
+Azure Data Factory マッピング データ フローのデバッグ モードを使用すると、データ フローの構築およびデバッグ時にデータ シェイプの変換を対話的に監視できます。 デバッグ セッションは、Data Flow のデザイン セッションでも、データ フローのパイプライン デバッグ実行中でも使用できます。 デバッグ モードを有効にするには、デザイン サーフェスの上部にある [Data Flow Debug]\(データ フローのデバッグ\) ボタンを使用します。
 
 ![デバッグ スライダー](media/data-flow/debugbutton.png "デバッグ スライダー")
 
@@ -46,7 +46,7 @@ Azure Data Factory Mapping Data Flow のデバッグ モードを使用すると
 
 データフローまたは参照されているデータセットにパラメーターがある場合は、 **[パラメーター]** タブを選択して、デバッグ中に使用する値を指定できます。
 
-![デバッグ設定パラメーター](media/data-flow/debug-settings2.png "デバッグ設定パラメーター")
+![デバッグ設定のパラメーター](media/data-flow/debug-settings2.png "デバッグ設定のパラメーター")
 
 ## <a name="data-preview"></a>データのプレビュー
 

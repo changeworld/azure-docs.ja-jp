@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor ブックを使用した対話型レポートの作成 | Microsoft Docs
 description: Azure Monitor for VMs 用の定義済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポートの作成を簡単にします。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/05/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/15/2019
+ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61387296"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553738"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Monitor ブックを使用した対話型レポートの作成
 
@@ -166,7 +160,7 @@ VMConnection
 
 |                  |      |
 | ---------------- |:-----|
-| **テキスト**    | ユーザーはテキスト ボックスを編集します。必要に応じて、既定値を入力するためのクエリを提供できます。 |
+| **Text**    | ユーザーはテキスト ボックスを編集します。必要に応じて、既定値を入力するためのクエリを提供できます。 |
 | **ドロップダウン** | ユーザーが一連の値から選択できるようにします。 |
 | **時間の範囲の選択**| ユーザーは、時間の範囲の値の定義済みセットから選択するか、カスタムの時間の範囲から選択することができます。|
 | **リソースの選択** | ユーザーは、そのブック用に選択されたリソースの中から選択できます。|
@@ -252,4 +246,7 @@ Perf
 3. **[ダッシュボードにピン留め]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-正常性機能を使用する方法については、[VM の正常性の表示](vminsights-health.md)に関するページを参照してください。検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs マップの表示](vminsights-maps.md)に関するページを参照してください。 
+
+- 制限および全体的な VM のパフォーマンスを識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。
+
+- 検出されたアプリケーションの依存関係の詳細については、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関するページを参照してください。

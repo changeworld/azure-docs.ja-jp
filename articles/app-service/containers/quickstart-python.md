@@ -1,5 +1,5 @@
 ---
-title: Linux での Python アプリの作成 - Azure App Service | Microsoft Docs
+title: クイック スタート:Linux での Python アプリの作成 - Azure App Service
 description: Azure App Service on Linux で、初めての Python の Hello World アプリを数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
@@ -13,20 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
+ms.custom: seo-python-october2019
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e8ca84f233b3e6202a4647d15e07b36c2b8f1128
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242459"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433132"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Python アプリを作成する
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
-このクイック スタートでは、高度にスケーラブルな自己適用型の Web ホスティング サービスである [App Service on Linux](app-service-linux-intro.md) にシンプルな Python アプリをデプロイします。 インタラクティブなブラウザーベースの Azure Cloud Shell を通じて Azure のコマンド ライン インターフェイス ([Azure CLI](/cli/azure/install-azure-cli)) を使用するので、以下の手順は、Mac、Linux、Windows のどのコンピューターからでも使用できます。
+この記事では、高度にスケーラブルな自己適用型の Web ホスティング サービスである [App Service on Linux](app-service-linux-intro.md) にシンプルな Python アプリをデプロイします。 インタラクティブなブラウザーベースの Azure Cloud Shell を通じて Azure のコマンド ライン インターフェイス ([Azure CLI](/cli/azure/install-azure-cli)) を使用するので、以下の手順は、Mac、Linux、Windows のどのコンピューターからでも使用できます。
 
-![Azure で実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
+![Azure の App Service でサンプル Python アプリを実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -71,7 +72,7 @@ Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプ�
 
 サンプル アプリケーションから "**Hello World!** " というメッセージがページに表示されます。
 
-![ローカルで実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
+![サンプル Python アプリをローカルで実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 ターミナル ウィンドウで **Ctrl + C** キーを押して、Web サーバーを終了します。
 
@@ -154,7 +155,7 @@ http://<app-name>.azurewebsites.net
 
 App Service on Linux で組み込みのイメージを使用して Python サンプル コードが実行されています。
 
-![Azure で実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
+![サンプル Python アプリを Azure で実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 **お疲れさまでした。** App Service on Linux に初めての Python アプリをデプロイしました。
 
@@ -162,7 +163,7 @@ App Service on Linux で組み込みのイメージを使用して Python サン
 
 Cloud Shell で、「`code application.py`」と入力して Cloud Shell エディターを開きます。
 
-![Code application.py](media/quickstart-python/code-applicationpy.png)
+![Cloud Shell エディターで application.py を開く](./media/quickstart-python/open-application-py-in-the-cloud-shell-editor.png)
 
  `return` を呼び出すテキストに小さな変更を加えます。
 
@@ -180,7 +181,7 @@ az webapp up -n <app-name> -l <location-name>
 
 デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
 
-![Azure で実行される更新済みのサンプル アプリ](media/quickstart-python/hello-azure-in-browser.png)
+![更新したサンプル Python アプリを Azure で実行する](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
 ## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
@@ -188,11 +189,11 @@ az webapp up -n <app-name> -l <location-name>
 
 左側のメニューで、 **[App Services]** を選択し、お客様の Azure アプリの名前を選択します。
 
-![Azure アプリへのポータル ナビゲーション](./media/quickstart-python/app-service-list.png)
+![Azure portal で App Services の Python アプリに移動する](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
 お客様のアプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
 
-![Azure Portal の [App Service] ページ](media/quickstart-python/app-service-detail.png)
+![Azure portal の [概要] ページで Python アプリを管理する](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
 左側のメニューは、アプリを構成するためのさまざまなページを示しています。 
 

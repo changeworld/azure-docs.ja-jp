@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB のリージョン プレゼンス
 description: この記事では、Azure Cosmos DB のリージョン プレゼンスとさまざまなクラウド環境について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 775ca8c57a9a444df2f7d0a4df4224b7eba9d677
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 95b9a9804fe1a9473d226912f178284f701a1547
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384046"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753223"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB のリージョン プレゼンス
 

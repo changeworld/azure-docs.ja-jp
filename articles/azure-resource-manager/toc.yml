@@ -101,8 +101,8 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: resource-manager-deployment-model.md
-    - name: Azure の一般的なセキュリティ属性
-      href: azure-resource-manager-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: azure-resource-manager-security-controls.md
 - name: 方法
   items:
     - name: テンプレートの作成
@@ -170,6 +170,7 @@
       items:
         - name: パイプラインを使用した VS プロジェクト
           href: vs-resource-groups-project-devops-pipelines.md
+          displayName: DevOps
     - name: テンプレートをエクスポートする
       href: export-template-portal.md
     - name: Move
@@ -248,6 +249,8 @@
           href: resource-manager-common-deployment-errors.md
         - name: AccountNameInvalid
           href: resource-manager-storage-account-name-errors.md
+        - name: DeploymentQuotaExceeded
+          href: deployment-quota-exceeded.md
         - name: InvalidTemplate
           href: resource-manager-invalid-template-errors.md
         - name: Linux デプロイの問題
@@ -303,10 +306,14 @@
           href: resource-group-template-functions-resource.md
         - name: 文字列関数
           href: resource-group-template-functions-string.md
-    - name: 完全モードの削除
-      href: complete-mode-deletion.md
-    - name: リソース インスタンスの制限
-      href: resources-without-rg-limit.md
+    - name: リソースの機能
+      items:
+        - name: 完全モードの削除
+          href: complete-mode-deletion.md
+        - name: 拡張リソースの種類
+          href: extension-resource-types.md
+        - name: リソース インスタンスの制限
+          href: resources-without-rg-limit.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
     - name: REST - Resource Manager

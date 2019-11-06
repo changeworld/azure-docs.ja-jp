@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 600577ebf05a8bc89dbec35d3b3ee5162aa246e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7565ce24199dd8f86f756f01f66aa79e764a1a12
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64872729"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752136"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -69,6 +69,31 @@ CPU とメモリの使用は追跡され、次の理由で表示されます。
 - システム内部に透明性を提供する。
 - 購入したリソースの容量を把握する。
 - スケール アップ/スケール ダウンを判断するのに役立つ容量計画。
+
+## <a name="messaging-unit---how-many-are-needed"></a>メッセージング ユニット - 必要な数
+
+Azure Service Bus Premium 名前空間をプロビジョニングする場合は、割り当てられるメッセージング ユニット数を指定する必要があります。 これらのメッセージング ユニットは、名前空間に割り当てられる専用リソースです。
+
+Service Bus Premium 名前空間に割り当てられるメッセージング ユニット数は、ワークロードの変化 (増加または減少) を考慮して**動的に調整**できます。
+
+アーキテクチャのメッセージング ユニット数を決定する際には、いくつかの要素を考慮する必要があります。
+
+- 名前空間に割り当てられた ***1 つまたは 2 つのメッセージング ユニット***から始めます。
+- 名前空間の[リソース使用状況メトリック](service-bus-metrics-azure-monitor.md#resource-usage-metrics)内の CPU 使用率メトリックを調査します。
+    - CPU 使用率が ***20% を下回る***場合は、名前空間に割り当てられたメッセージング ユニット数を***スケールダウン***できる可能性があります。
+    - CPU 使用率が ***70% を超える***場合、名前空間に割り当てられるメッセージング ユニットを***スケールアップ***すると、アプリケーションにメリットがあります。
+
+Service Bus 名前空間に割り当てられたリソースのスケール プロセスは、[Azure Automation Runbook](../automation/automation-quickstart-create-runbook.md) を使用して自動化できます。
+
+> [!NOTE]
+> 名前空間に割り当てられたリソースの**スケール**は、プリエンティブまたはリアクティブにすることができます。
+>
+>  * **プリエンプティブ**:(季節性や傾向により) 追加のワークロードが予想される場合は、ワークロードが増える前に、さらに多くのメッセージング ユニットを名前空間に割り当てることができます。
+>
+>  * **リアクティブ**:リソース使用状況メトリックを調べて追加のワークロードが特定された場合、増加する需要を組み込むために追加のリソースを名前空間に割り当てることができます。
+>
+> Service Bus の課金メーターは時間単位です。 スケールアップの場合は、これらが使用された時間の追加リソースに対してのみ課金されます。
+>
 
 ## <a name="get-started-with-premium-messaging"></a>Premium メッセージングを使ってみる
 

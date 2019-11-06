@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: 3c42bf2b2acc2472741bd603ea9d653a314ecc40
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717263"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523300"
 ---
 ## <a name="create-a-speech-resource"></a>Speech リソースを作成する
 
@@ -23,8 +23,8 @@ ms.locfileid: "67717263"
 
     |Setting|値|
     |--|--|
-    |Name|任意の名前 (2 から 64 文字)|
-    |サブスクリプション|適切なサブスクリプションを選択します|
+    |名前|任意の名前 (2 から 64 文字)|
+    |Subscription|適切なサブスクリプションを選択します|
     |Location|近くにある任意の使用可能な場所を選択します|
     |価格レベル|`F0` -最小限の価格レベル|
     |リソース グループ|使用可能なリソース グループを選択します|

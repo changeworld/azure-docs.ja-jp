@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 887bda92a1165a3dd17e9105e921a5df9e0c5534
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61248166"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486022"
 ---
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>負荷分散された IoT ハブへのデバイスのプロビジョニング
 
@@ -40,17 +40,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 登録リストは、デバイスで使用する構成証明の方法 (デバイス ID を確認する方法) を Device Provisioning Service に指示します。 次の手順として、2 つ目のデバイスの登録リスト エントリを追加します。 
 
-1. Device Provisioning Service のページで、**[登録を管理します]** をクリックします。 **[Add enrollment list entry]\(登録リスト エントリの追加\)** ページが表示されます。 
+1. Device Provisioning Service のページで、 **[登録を管理します]** をクリックします。 **[Add enrollment list entry]\(登録リスト エントリの追加\)** ページが表示されます。 
 2. ページの上部にある **[追加]** をクリックします。
-2. 各フィールドに入力し、**[保存]** をクリックします。
+2. 各フィールドに入力し、 **[保存]** をクリックします。
 
 ## <a name="set-the-device-provisioning-service-allocation-policy"></a>Device Provisioning Service の割り当てポリシーを設定する
 
 割り当てポリシーは、デバイスを IoT ハブに割り当てる方法を決定する Device Provisioning Service 設定です。 次の 3 つの割り当てポリシーがサポートされています。 
 
-1. **[最短待機時間]**: デバイスに対する待ち時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
+1. **[最短待機時間]** : デバイスに対する待ち時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
 2. **[加重が均等に分布]** (既定): リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 これは、既定の設定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。 
-3. **[登録リストを経由する静的構成]**: 登録リストの目的の IoT ハブの仕様が、Device Provisioning Service レベルの割り当てポリシーよりも優先されます。
+3. **[登録リストを経由する静的構成]** : 登録リストの目的の IoT ハブの仕様が、Device Provisioning Service レベルの割り当てポリシーよりも優先されます。
 
 次の手順に従って割り当てポリシーを設定します。
 
@@ -63,9 +63,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Device Provisioning Service と IoT ハブをリンクして、Provisioning Service がデバイスをそのハブに登録できるようにします。
 
 1. **[すべてのリソース]** ページで、先ほど作成した Device Provisioning Service をクリックします。
-2. Device Provisioning Service ページで、**[Linked IoT hubs]\(リンクされた IoT ハブ\)** をクリックします。
+2. Device Provisioning Service ページで、 **[Linked IoT hubs]\(リンクされた IoT ハブ\)** をクリックします。
 3. **[追加]** をクリックします。
-4. **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ページで、ラジオ ボタンを使用して、リンク対象の IoT ハブが現在のサブスクリプションと別のサブスクリプションのどちらにあるかを指定します。 次に、**[IoT ハブ]** ボックスから IoT ハブの名前を選択します。
+4. **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ページで、ラジオ ボタンを使用して、リンク対象の IoT ハブが現在のサブスクリプションと別のサブスクリプションのどちらにあるかを指定します。 次に、 **[IoT ハブ]** ボックスから IoT ハブの名前を選択します。
 5. **[Save]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
@@ -81,5 +81,5 @@ Device Provisioning Service と IoT ハブをリンクして、Provisioning Serv
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md
 > [!div class="nextstepaction"]
-> [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Bind an existing custom SSL certificate to Azure Web Apps]()
 -->

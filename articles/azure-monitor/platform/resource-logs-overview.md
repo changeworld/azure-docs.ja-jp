@@ -1,19 +1,18 @@
 ---
 title: Azure リソース ログの概要 | Microsoft Docs
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: reference
-ms.date: 09/20/2019
-ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: bfcd2ded96c2679ba9177a760a8b11dc7d2c9a77
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.topic: reference
+author: rboucher
+ms.author: robb
+ms.date: 09/20/2019
+ms.openlocfilehash: a418e3d1a59379284422d1d24c1457ab61d84a4c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263034"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551759"
 ---
 # <a name="azure-resource-logs-overview"></a>Azure リソース ログの概要
 Azure リソース ログは、Azure リソースによって出力された [プラットフォーム ログ](platform-logs-overview.md) であり、内部操作を説明するものです。 すべてのリソース ログは共通の上位スキーマを共有し、各サービスで独自のイベントの一意のプロパティを出力する柔軟性を持ちます。

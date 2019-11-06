@@ -1,22 +1,19 @@
 ---
 title: Azure Functions の PowerShell 開発者向けリファレンス
 description: PowerShell を使用して関数を開発する方法について説明します。
-services: functions
-documentationcenter: na
-author: tylerleonhardt
-manager: jeconnoc
+author: eamonoreilly
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha
-ms.reviewer: glenga
-ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.author: glenga
+ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773044"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515672"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -403,13 +400,8 @@ Visual Studio Code や Azure Functions Core Tools などのツールを使用し
 
 ## <a name="dependency-management"></a>依存関係の管理
 
-PowerShell 関数では、サービスによる [PowerShell ギャラリー](https://www.powershellgallery.com) モジュールのダウンロードと管理がサポートされています。 host.json を変更し、managedDependency の enabled プロパティを true に設定すると、requirements.psd1 ファイルが処理されるようになります。 指定されているモジュールが自動的にダウンロードされて、関数で使用できるようになります。 
+Functions では、依存関係の管理に [PowerShell ギャラリー](https://www.powershellgallery.com)を使用できます。 依存関係の管理を有効になっていると、.psd1 ファイルを使って、必要なモジュールが自動的にダウンロードされます。 この動作を有効にするには、次の例のように、[host.json ](functions-host-json.md) ファイルのルートで `managedDependency` プロパティを `true` に設定します。
 
-現在サポートされているモジュールの最大数は 10 です。 サポートされている構文は、次に示すように、MajorNumber.* または厳密なモジュール バージョンです。 新しい PowerShell 関数アプリを作成すると、Azure Az モジュールが既定で組み込まれます。
-
-言語ワーカーによって、再起動時に更新されたモジュールが取得されます。
-
-host.json
 ```json
 {
   "managedDependency": {
@@ -418,7 +410,7 @@ host.json
 }
 ```
 
-requirements.psd1
+新しい PowerShell 関数プロジェクトを作成すると、依存関係の管理が既定で有効になり、[`Az` モジュール](/powershell/azure/new-azureps-module-az)が組み込まれます。 現在サポートされているモジュールの最大数は 10 です。 サポートされている構文は、次の requirements.psd1 に示すように、 _`MajorNumber`_ `.*` または厳密なモジュール バージョンです。
 
 ```powershell
 @{
@@ -427,21 +419,34 @@ requirements.psd1
 }
 ```
 
+requirements.psd1 ファイルを更新すると、更新されたモジュールは、再起動後にインストールされます。
+
+> [!NOTE]
+> 管理対象の依存関係では、モジュールをダウンロードするときに、 www.powershellgallery.com にアクセスする必要があります。 ローカルで実行する場合は、必要なファイアウォール規則を追加して、ランタイムがこの URL にアクセスできることを確認してください。 
+
+次のアプリケーション設定を使用して、管理対象の依存関係をダウンロードしてインストールする方法を変更できます。 アプリのアップグレードは `MDMaxBackgroundUpgradePeriod` 以内に開始され、アップグレード プロセスはほぼ `MDNewSnapshotCheckPeriod` 以内に完了します。
+
+| 関数アプリ設定              | 既定値             | 説明                                         |
+|   -----------------------------   |   -------------------     |  -----------------------------------------------    |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 日)     | 各 PowerShell ワーカー プロセスは、そのプロセスの開始時に PowerShell ギャラリーでモジュールのアップグレードのチェックを開始し、その後は `MDMaxBackgroundUpgradePeriod` ごとにチェックします。 PowerShell ギャラリーで利用可能になった新しいモジュール バージョンは、ファイル システムにインストールされ、PowerShell ワーカーが使用できるになります。 この値を小さくすると、関数アプリは新しいモジュール バージョンを早く取得できますが、アプリ リソースの使用量 (ネットワーク I/O、CPU、ストレージ) も増加します。 この値を大きくすると、アプリ リソースの使用量は減少しますが、アプリへの新しいモジュール バージョンの配信が遅れる可能性があります。 | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 時間)       | 新しいモジュール バージョンがファイル システムにインストールされたら、すべての PowerShell ワーカー プロセスを再起動する必要があります。 PowerShell ワーカーを再起動すると、現在の関数の実行が中断される可能性があるため、アプリの可用性がその影響を受けます。 すべての PowerShell ワーカー プロセスが再起動されるまで、関数呼び出しでは、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが使用される可能性があります。 すべての PowerShell ワーカーの再起動は `MDNewSnapshotCheckPeriod` 以内に完了します。 この値を大きくすると、中断の頻度は低くなりますが、関数呼び出しで、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが非決定的に使用される期間が長くなることもあります。 |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 日)     | ワーカーの頻繁な再起動によってモジュールのアップグレードが過剰にならないように、任意のワーカーで直近 `MDMinBackgroundUpgradePeriod` 以内にモジュールのアップグレード確認が開始されているときは、その確認は行われません。 |
+
 独自のカスタム モジュールを利用する方法が、通常の方法とは若干異なります。
 
-ローカル コンピューターにモジュールをインストールすると、`$env:PSModulePath` にあるグローバルに利用できるフォルダーのいずれかにそのモジュールが格納されます。 関数は Azure で実行されるため、ローカル コンピューターにインストールされたモジュールにアクセスできなくなります。 そのため、PowerShell 関数アプリの `$env:PSModulePath` は、通常の PowerShell スクリプトの `$env:PSModulePath` とは異なるようにする必要があります。
+ローカル コンピューターでは、モジュールは、`$env:PSModulePath` にあるグローバルに利用できるフォルダーのいずれかにインストールされます。 Azure で実行されているときは、お使いのマシンにインストールされたモジュールにアクセスできません。 つまり、PowerShell 関数アプリの `$env:PSModulePath` は、通常の PowerShell スクリプトの `$env:PSModulePath` とは異なります。
 
 Functions では、`PSModulePath` に次の 2 つのパスが存在します。
 
 * 関数アプリのルートに存在する `Modules` フォルダー。
-* PowerShell 言語ワーカー内に存在する `Modules` フォルダーのパス。
+* PowerShell 言語ワーカーによって制御される `Modules` フォルダーのパス。
 
 ### <a name="function-app-level-modules-folder"></a>関数アプリレベルの `Modules` フォルダー
 
 カスタム モジュールを使用するには、関数が依存しているモジュールを `Modules` フォルダーに置きます。 このフォルダーにあるモジュールは、自動的に Functions Runtime から利用できる状態になります。 関数アプリ内のどの関数でもこれらのモジュールを使用できます。 
 
 > [!NOTE]
-> requirements.psd1 ファイルで指定されているモジュールは、自動的にダウンロードされてパスに組み込まれるため、modules フォルダーに含める必要はありません。 これらは、ローカル環境の $env:LOCALAPPDATA/AzureFunctions フォルダーに格納され、クラウドで実行されるときは /data/ManagedDependencies フォルダーに格納されます。
+> requirements.psd1 ファイルで指定されているモジュールは、自動的にダウンロードされてパスに組み込まれるため、modules フォルダーに含める必要はありません。 これらは、ローカルでは `$env:LOCALAPPDATA/AzureFunctions` フォルダーに、クラウドで実行されるときは `/data/ManagedDependencies` フォルダーに格納されます。
 
 カスタム モジュール機能を利用するには、関数アプリのルートに `Modules` フォルダーを作成します。 関数で使用したいモジュールをこの場所にコピーします。
 
@@ -450,7 +455,7 @@ mkdir ./Modules
 Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Modules フォルダーでは、関数アプリのフォルダー構造が次のようになっている必要があります。
+`Modules` フォルダーでは、関数アプリのフォルダー構造が次のようになっている必要があります。
 
 ```
 PSFunctionApp
@@ -477,7 +482,7 @@ PSFunctionApp
 * [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): アーカイブ (`.zip`、`.nupkg` など) に使用されるモジュール。
 * **ThreadJob**: PowerShell ジョブ API のスレッドベースの実装です。
 
-Functions では、これらのモジュールの最新のバージョンが使用されます。 これらのモジュールの特定のバージョンを使用するには、関数アプリの `Modules` フォルダーにその特定のバージョンのモジュールを格納してください。
+既定では、Functions では、これらのモジュールの最新のバージョンが使用されます。 特定のバージョンを使用するには、関数アプリの `Modules` フォルダーにその特定のバージョンのモジュールを格納してください。
 
 ## <a name="environment-variables"></a>環境変数
 

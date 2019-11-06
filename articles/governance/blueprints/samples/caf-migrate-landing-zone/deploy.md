@@ -1,18 +1,18 @@
 ---
-title: サンプル - CAF 移行ランディング ゾーン ブループリント - デプロイ手順
-description: CAF 移行ランディング ゾーン ブループリント サンプルのデプロイ手順。
+title: CAF 移行ランディング ゾーン ブループリント サンプル - デプロイ手順
+description: ブループリント アーティファクト パラメーターの詳細を含む CAF 移行ランディング ゾーン ブループリント サンプルのデプロイ手順です。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: cec8d224e52de25fe026a17d57144da3cd53fc5b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4693959a2b4f0638caea57fb97796faf62aba9a0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981681"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163573"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 移行ランディング ゾーン ブループリント サンプルのデプロイ
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側の **[はじめに]** ページで、 _[ブループリントの作成]_ の下にある **[作成]** ボタンを選択します。
 
-1. _[その他のサンプル]_ の下にある **[CAF migration landing zone]\(CAF 移行ランディング ゾーン\)** ブループリント サンプルを見つけて、 **[このサンプルを使用する]** を選択します。
+1. _[その他のサンプル]_ の下にある **[CAF Migration landing zone]\(CAF 移行ランディング ゾーン\)** ブループリント サンプルを見つけて、 **[このサンプルを使用する]** を選択します。
 
 1. ブループリント サンプルの _[基本]_ を入力します。
    - **[ブループリントの名前]** CAF 移行ランディング ゾーン ブループリント サンプルのコピーの名前を指定します。
