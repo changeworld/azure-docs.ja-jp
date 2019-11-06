@@ -6,6 +6,8 @@
   items:
     - name: 音声サービスとは
       href: overview.md
+    - name: 言語とリージョンのサポート
+      href: language-support.md
 - name: 音声テキスト変換
   expanded: false
   items:
@@ -38,7 +40,7 @@
         - name: 圧縮音声入力形式を使用する
           href: how-to-use-codec-compressed-audio-input-streams.md
         - name: Docker コンテナーで音声認識を使用する
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=stt
     - name: リファレンス
       items:
         - name: Speech SDK API シリーズ
@@ -87,7 +89,7 @@
         - name: Long Audio API を使用して音声を合成する
           href: long-audio-api.md
         - name: Docker コンテナーで音声合成を使用する
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=tts
     - name: リファレンス
       items:
         - name: Speech SDK

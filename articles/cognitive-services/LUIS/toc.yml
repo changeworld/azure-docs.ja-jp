@@ -42,7 +42,7 @@
     - name: アプリのビルド
       items:
         - name: ユーザーの意図の識別
-          href: luis-quickstart-intents-only.md
+          href: tutorial-intents-only.md
         - name: 事前構築済みのモデルを使用して一般的なユーザー データを識別する
           href: luis-tutorial-prebuilt-intents-entities.md
         - name: ユーザーの発話からセンチメントを取得する
@@ -116,6 +116,7 @@
           displayName: roles
         - name: 機能
           href: luis-concept-feature.md
+          displayName: 'descriptor, phrase list'
     - name: 予測スコア
       href: luis-concept-prediction-score.md
     - name: ベスト プラクティス

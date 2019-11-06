@@ -73,6 +73,8 @@
       items:
         - name: 価格レベル
           href: concepts-pricing-tiers.md
+        - name: 予約容量の前払い
+          href: concept-reserved-pricing.md
         - name: 制限
           href: concepts-limits.md
     - name: データ アクセスとセキュリティ

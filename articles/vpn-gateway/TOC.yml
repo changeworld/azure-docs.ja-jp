@@ -200,8 +200,6 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: パケット キャプチャの構成
       href: packet-capture.md
-    - name: カスタム トラフィック セレクターの構成
-      href: custom-traffic-selectors.md
     - name: トラブルシューティング
       href: vpn-gateway-troubleshoot.md
       items:
