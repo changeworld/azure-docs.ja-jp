@@ -474,7 +474,9 @@ flask run
 
 ## <a name="analyze-sentiment"></a>感情を分析する
 
-[Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) を使用すると、感情分析を実行したり、テキストからキー フレーズを抽出したり、ソース言語を検出したりすることができます。 このアプリでは、入力されたテキストがポジティブかニュートラルかネガティブかを感情分析を使用して調べます。 この API は 0 から 1 までの数値スコアを返します。 1 に近いスコアは正の感情、0 に近いスコアは負の感情を示します。
+
+[Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) を使用すると、感情分析を実行したり、テキストからキー フレーズを抽出したり、ソース言語を検出したりすることができます。このアプリでは、入力されたテキストがポジティブかニュートラルかネガティブかを感情分析を使用して調べます。この API は 0 から 1 までの数値スコアを返します。1 に近いスコアは正の感情、0 に近いスコアは負の感情を示します。
+
 
 このセクションでは、次の作業を行います。
 
@@ -485,7 +487,9 @@ flask run
 
 ### <a name="call-the-text-analytics-api"></a>Text Analytics API を呼び出す
 
-Text Analytics API を呼び出す関数を記述しましょう。 この関数は、`input_text`、`input_language`、`output_text`、`output_language` の 4 つの引数を受け取ります。 ユーザーがアプリで感情分析の実行ボタンを押すたびに、この関数が呼び出されます。 テキスト領域と言語セレクターを通じてユーザーが入力したデータ、そして検出された言語と出力された翻訳が、それぞれの要求で渡されます。 応答オブジェクトには、原文と翻訳の感情スコアが含まれます。 以降のセクションでは、その応答を解析してアプリ内で使用するための JavaScript を記述していきます。 その前に、Text Analytics API の呼び出しに注目しましょう。
+
+Text Analytics API を呼び出す関数を記述しましょう。この関数は、`input_text`、`input_language`、`output_text`、`output_language` の 4 つの引数を受け取ります。ユーザーがアプリで感情分析の実行ボタンを押すたびに、この関数が呼び出されます。テキスト領域と言語セレクターを通じてユーザーが入力したデータ、そして検出された言語と出力された翻訳が、それぞれの要求で渡されます。応答オブジェクトには、原文と翻訳の感情スコアが含まれます。以降のセクションでは、その応答を解析してアプリ内で使用するための JavaScript を記述していきます。その前に、Text Analytics API の呼び出しに注目しましょう。
+
 
 1. 作業ディレクトリのルートに `sentiment.py` というファイルを作成します。
 2. さらに、次のコードを `sentiment.py` に追加します。
