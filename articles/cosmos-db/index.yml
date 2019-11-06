@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: e75a28b18dcf21980755d0888690907ce0436a67
-  ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+  ms.openlocfilehash: a023092c675c8a99285abfdf81c29a5163c3fadd
+  ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/25/2019
-  ms.locfileid: "71268806"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73681644"
 landingContent:
 - title: Azure Cosmos DB について
   linkLists:
@@ -302,8 +302,8 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Spark と Jupyter のノートブックのサポート
-      url: spark-api-introduction.md
+    - text: 分析のユース ケース
+      url: analytics-usecases.md
     - text: ラムダ アーキテクチャ
       url: lambda-architecture.md
   - linkListType: how-to-guide

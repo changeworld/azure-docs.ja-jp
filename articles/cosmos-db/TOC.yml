@@ -469,9 +469,6 @@
           href: change-feed-functions.md
     - name: グローバル分散分析と AI
       items:
-        - name: はじめに
-          displayName: 'Apache Spark, spark'
-          href: spark-api-introduction.md
         - name: 分析のユース ケース
           href: analytics-usecases.md
         - name: Analytics - ソリューション アーキテクチャ
