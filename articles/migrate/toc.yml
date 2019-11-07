@@ -32,16 +32,10 @@
           href: tutorial-migrate-hyper-v.md
     - name: 物理サーバーの評価と移行
       items:
-        - name: 物理サーバーの評価と移行の準備をする
+        - name: 移行のために物理サーバーを準備する
           href: tutorial-prepare-physical.md
-        - name: 物理サーバーを評価する
-          href: tutorial-assess-physical.md
         - name: 物理サーバーを移行する
           href: tutorial-migrate-physical-virtual-machines.md
-    - name: 移行の対象となるインポートされたサーバーを評価する
-      items:
-        - name: 移行の対象となるインポートされたサーバーを評価する
-          href: tutorial-assess-import.md
 - name: 概念
   items:
     - name: 一般的な質問
@@ -80,8 +74,6 @@
       href: how-to-set-up-appliance-hyper-v.md
     - name: 物理サーバー アプライアンスのデプロイ
       href: how-to-set-up-appliance-physical.md
-    - name: アプリ/ロール/機能の検出
-      href: how-to-discover-applications.md
     - name: ツールの初回追加
       href: how-to-add-tool-first-time.md
     - name: 評価ツールの追加
@@ -90,8 +82,6 @@
       href: how-to-create-a-group.md
     - name: 依存関係の視覚化を使用したマシンのグループ化
       href: how-to-create-group-machine-dependencies.md
-    - name: エージェントレス依存関係の視覚化を使用したマシンのグループ化
-      href: how-to-create-group-machine-dependencies-agentless.md
     - name: 評価を作成する
       href: how-to-create-assessment.md
     - name: SQL Server データベースにアクセスする

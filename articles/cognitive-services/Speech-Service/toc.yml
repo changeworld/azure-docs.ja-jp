@@ -65,6 +65,10 @@
               href: rest-speech-to-text.md
             - name: Batch Transcription REST API
               href: batch-transcription.md
+    - name: リソース
+      items:
+        - name: 音声テキスト変換のよくあるご質問
+          href: faq-stt.md
 - name: テキスト読み上げ
   exanded: false
   items:
@@ -112,6 +116,10 @@
           items:
             - name: Text to Speech REST API
               href: rest-text-to-speech.md
+    - name: リソース
+      items:
+        - name: 音声テキスト変換のよくあるご質問
+          href: faq-text-to-speech.md
 - name: 意図認識
   exanded: false
   items:
@@ -182,6 +190,10 @@
               href: 'https://aka.ms/csspeech/pythonref'
             - name: リリース ノート
               href: releasenotes.md
+    - name: リソース
+      items:
+        - name: 音声翻訳のよくあるご質問
+          href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: 会話の文字起こし
   expanded: false
   items:
@@ -254,7 +266,7 @@
       items:
         - name: Speech SDK を使用してボットを音声対応にする
           href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: リファレンス
+    - name: リソース
       items:
         - name: 音声アシスタントの FAQ
           href: faq-voice-assistants.md
@@ -368,6 +380,8 @@
           href: scenario-availability.md
     - name: クイック スタート
       items:
+        - name: プロジェクトの作成
+          href: quickstarts/create-project.md
         - name: 'C# で Speech SDK を設定する'
           href: quickstarts/setup-platform.md?pivots=programming-language-csharp
         - name: C++ で Speech SDK を設定する
