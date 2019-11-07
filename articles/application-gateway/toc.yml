@@ -17,8 +17,6 @@
       href: quick-create-cli.md
 - name: チュートリアル
   items:
-    - name: Web アプリケーション ファイアウォールを有効にする
-      href: application-gateway-web-application-firewall-portal.md
     - name: SSL でセキュリティ保護する
       href: create-ssl-portal.md
     - name: 複数のサイトをホストする
@@ -127,12 +125,6 @@
           items:
             - name: SSL ポリシーを構成する
               href: application-gateway-configure-ssl-policy-powershell.md
-    - name: Web アプリケーション ファイアウォールを構成する
-      items:
-        - name: Azure PowerShell
-          href: tutorial-restrict-web-traffic-powershell.md
-        - name: Azure CLI
-          href: tutorial-restrict-web-traffic-cli.md
     - name: AKS のイングレス
       items:
         - name: 既存の Application Gateway を使用して設定する
