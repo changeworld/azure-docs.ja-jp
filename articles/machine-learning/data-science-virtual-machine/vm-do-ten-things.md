@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75a685dc90db9133ee9bc5d52d046246270ea32a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497617"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824398"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -826,7 +826,7 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
 
 1. Azure Cosmos DB Python SDK は DSVM に既にインストールされています。 これを更新するには、コマンド プロンプトから ```pip install pydocumentdb --upgrade``` を実行します。
 2. [Azure portal](https://portal.azure.com) で Azure Cosmos DB アカウントとデータベースを作成します。
-3. [Microsoft ダウンロード センター](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)から Azure Cosmos DB データ移行ツールをダウンロードして、任意のディレクトリに展開します。
+3. [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=53595)から Azure Cosmos DB データ移行ツールをダウンロードして、任意のディレクトリに展開します。
 4. 移行ツールへの次のコマンド パラメーターを使用して、[パブリック BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) に格納されている JSON データ (火山に関するデータ) を Azure Cosmos DB にインポートします (Azure Cosmos DB データ移行ツールをインストールしたディレクトリから dtui.exe を使用します)。これらのパラメーターでインポート元とインポート先の場所を入力します。
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

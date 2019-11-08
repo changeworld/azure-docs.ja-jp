@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Office 365 からデータを読み込む | Microsoft Docs
+title: Azure Data Factory を使用して Office 365 からデータを読み込む
 description: Azure Data Factory を使用して Office 365 からデータをコピーする
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: da3d407b39ef00154b717b54213a3b40d2d110bb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754490"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672615"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 

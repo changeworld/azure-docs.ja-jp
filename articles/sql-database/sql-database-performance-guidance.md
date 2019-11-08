@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のパフォーマンス チューニング ガイダンス | Microsoft Docs
+title: パフォーマンス チューニング ガイダンス
 description: 推奨事項を使用して、Microsoft Azure SQL Database のクエリのパフォーマンスを手動でチューニングする方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567120"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821357"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Azure SQL Database でのクエリのパフォーマンスを手動でチューニングする
 

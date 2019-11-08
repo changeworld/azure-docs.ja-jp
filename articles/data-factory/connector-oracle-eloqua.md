@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Oracle Eloqua からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Oracle Eloqua からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Oracle Eloqua からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 3c29ec0283caa2b20d7974ed11748080b3dc0339
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: d939c807e988466a40e0ac97a468fbb5e2cb65da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089980"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680565"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Oracle Eloqua からデータをコピーする (プレビュー)
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 03ac9f878f0869ef33d22f50c6bdba4276bd4d3c
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048322"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824081"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -37,7 +37,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
 * [OpenSSL](https://www.openssl.org/) などのサードパーティ製ツールを使用して、独自の X.509 証明書を作成する。 この手法は、テストや開発の目的に適しています。 PowerShell または Bash を使用したテスト用 CA 証明書の生成については、「[Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理) を参照してください。 このチュートリアルの残りの部分では、「[Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理) の手順に従って生成したテスト用 CA 証明書を使用します。
 
-* 既存のルート CA 証明書によって署名された [X.509 中間 CA 証明書](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust)を生成して、ハブにアップロードします。 中間証明書がアップロードされて検証されると、以下に説明されているように、前述のルート CA 証明書の代わりに使用できます。 OpenSSL などのツール ([openssl req](https://www.openssl.org/docs/manmaster/man1/openssl-req.html) と [openssl ca](https://www.openssl.org/docs/manmaster/man1/openssl-ca.html)) は、中間 CA 証明書の生成と署名に使用することができます。
+* 既存のルート CA 証明書によって署名された [X.509 中間 CA 証明書](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust)を生成して、ハブにアップロードします。 中間証明書がアップロードされて検証されると、以下に説明されているように、前述のルート CA 証明書の代わりに使用できます。 OpenSSL などのツール ([openssl req](https://www.openssl.org/docs/man1.1.0/man1/req.html) と [openssl ca](https://www.openssl.org/docs/man1.1.0/man1/ca.html)) は、中間 CA 証明書の生成と署名に使用することができます。
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>IoT ハブに X.509 CA 証明書を登録する
 

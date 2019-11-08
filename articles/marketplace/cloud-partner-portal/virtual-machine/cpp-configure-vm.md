@@ -4,15 +4,16 @@ description: Azure でホストされている VM をサイズ指定、更新、
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880355"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824491"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure でホストされる VM を構成する
 

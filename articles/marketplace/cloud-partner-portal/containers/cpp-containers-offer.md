@@ -4,15 +4,16 @@ description: Azure Marketplace でコンテナー オファーを発行するプ
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: pabutler
-ms.openlocfilehash: 9617380822f5814d1cbd2bd2b69eac72722fe813
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0e71d8135a5dd691dc1f746ec54cfb6170e281d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942746"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823227"
 ---
 # <a name="containers"></a>Containers
 

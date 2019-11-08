@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory から Spark プログラムを呼び出す | Microsoft Docs
+title: Azure Data Factory から Spark プログラムを呼び出す
 description: MapReduce アクティビティを使用して Azure Data Factory から Spark プログラムを呼び出す方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 08aa1303aeaa0a80f0825f45e037109b98e9771e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d5f5da4811a9551f687fed6ab317bb3d33041622
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135335"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666176"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -344,7 +344,7 @@ Spark アクティビティでは、Pig および Hive アクティビティが�
 
 HDInsight のリンクされたサービスによって参照される Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、Python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Blob Storage のフォルダー構造を次に示します。 
 
-| Path | 説明 | 必須 | Type |
+| Path | 説明 | 必須 | 種類 |
 | ---- | ----------- | -------- | ---- |
 | 。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | はい | ファイル |

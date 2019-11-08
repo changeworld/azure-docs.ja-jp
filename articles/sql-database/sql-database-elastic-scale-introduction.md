@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database によるスケールアウト | Microsoft Docs
+title: スケールアウト
 description: これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3e30e54eb18eb5d487da6821d285109b1a22297f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568403"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823616"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケールアウト
 **Elastic Database** ツールを使用すると、Azure SQL データベースを簡単にスケールアウトできます。 これらのツールと機能では、**Azure SQL Database** のデータベースのリソースを使用して、トランザクションのワークロードに対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。

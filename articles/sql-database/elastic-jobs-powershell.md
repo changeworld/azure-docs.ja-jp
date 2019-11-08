@@ -1,22 +1,22 @@
 ---
-title: PowerShell を使用した Azure SQL Database エラスティック ジョブ エージェントの作成 | Microsoft Docs
+title: PowerShell を使用したエラスティック ジョブ エージェントの作成
 description: PowerShell を使用したエラスティック ジョブ エージェントの作成方法について学習します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 0d64bd150a43666679253f8244d80411e25dfdcd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9724e54b03e5de065b8b39cb57c6a9880cf37cc6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935050"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827200"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
@@ -72,7 +72,7 @@ Get-Module Az.Sql
 
 "*次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。さらに、このスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーも作成されます。* "
 
-エラスティック ジョブには特定の命名要件がないため、[Azure 要件](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に準拠している限り、任意の命名規則を使用できます。
+エラスティック ジョブには特定の命名要件がないため、[Azure 要件](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に準拠している限り、任意の命名規則を使用できます。
 
 ```powershell
 # Sign in to your Azure account
@@ -289,7 +289,7 @@ $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 
 可能なジョブの実行状態を次の表に示します。
 
-|状態|説明|
+|State|説明|
 |:---|:---|
 |**Created** | ジョブの実行は作成されたばかりで、まだ進行中ではありません。|
 |**InProgress** | ジョブの実行は現在進行中です。|

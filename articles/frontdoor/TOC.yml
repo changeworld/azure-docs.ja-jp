@@ -48,16 +48,6 @@
       href: front-door-url-rewrite.md
     - name: URL リダイレクト
       href: front-door-url-redirect.md
-    - name: WAF
-      items:
-        - name: 概要
-          href: waf-overview.md
-        - name: カスタム規則
-          href: waf-front-door-custom-rules.md
-        - name: ポリシー設定
-          href: waf-front-door-policy-settings.md
-        - name: 監視およびログ記録
-          href: waf-front-door-monitor.md
 - name: ハウツー ガイド
   items:
     - name: トラフィックのリダイレクト
@@ -74,26 +64,10 @@
           href: front-door-troubleshoot-routing.md
         - name: 許可された証明機関
           href: front-door-troubleshoot-allowed-ca.md
-    - name: WAF の構成
-      items:
-        - name: WAF ポリシーの構成 - ポータル
-          href: waf-front-door-create-portal.md
-        - name: WAF ポリシーの構成 - Azure PowerShell
-          href: waf-front-door-custom-rules-powershell.md
-        - name: ボット保護の構成
-          href: waf-front-door-policy-configure-bot-protection.md
-        - name: カスタム応答コードの構成
-          href: waf-front-door-configure-custom-response-code.md
-        - name: IP 制限の構成
-          href: waf-front-door-configure-ip-restriction.md
-        - name: 速度制限の構成 - Azure PowerShell
-          href: waf-front-door-rate-limit-powershell.md
 - name: FAQ
   items:
     - name: Front Door に関する FAQ
       href: front-door-faq.md
-    - name: WAF に関する FAQ
-      href: waf-faq.md
 - name: リファレンス
   items:
     - name: Azure CLI

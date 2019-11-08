@@ -4,15 +4,16 @@ description: Azure コンテナーのサポートの設定を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 71436d7ee82d9e5162780719d9a7a063fa903c6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 144512683e6afa643639ba12b071e2a3ed7e01bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942576"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823106"
 ---
 # <a name="container-support-tab"></a>[コンテナー サポート] タブ
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: d8e23188aa07b1b271c3adc7c5550b18c0c60977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104460"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827684"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -57,7 +57,7 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 1. **Create** をクリックしてください。
 1. **[ストレージ アカウントの作成]** 画面で次を実行します。
     1. 正しいサブスクリプションとリソース グループを選択します。
-    1. ご自分の Data Lake Storage Gen2 アカウントの名前を入力します。 ストレージ アカウントの命名規則の詳細については、「[Azure リソースの名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage)」を参照してください。
+    1. ご自分の Data Lake Storage Gen2 アカウントの名前を入力します。 ストレージ アカウントの命名規則の詳細については、「[Azure リソースの名前付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage)」を参照してください。
     1. **[詳細]** タブをクリックします。
     1. **[Data Lake Storage Gen2]** の下の **[階層構造の名前空間]** の横の **[有効]** をクリックします。
     1. **[Review + create]\(レビュー + 作成\)** をクリックします。

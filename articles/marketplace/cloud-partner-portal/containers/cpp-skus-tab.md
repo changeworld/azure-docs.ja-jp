@@ -4,15 +4,16 @@ description: Azure コンテナーの SKU を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 6953329bfabe99fc4bb28f2494cb412ba9cbbba0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b69eea8ad7fd4c62925b50434b653118890e280
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942900"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823142"
 ---
 # <a name="container-skus-tab"></a>コンテナーの SKU のタブ
 

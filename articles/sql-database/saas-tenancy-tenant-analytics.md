@@ -1,5 +1,5 @@
 ---
-title: 抽出されたデータを使用したクロステナント分析 | Microsoft Docs
+title: 抽出されたデータを使用したクロステナント分析
 description: シングル テナント アプリでの複数の Azure SQL Database データベースから抽出されたデータを使用した、クロステナント分析クエリ。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 12/18/2018
-ms.openlocfilehash: 2c24a87377eb4b893cbcae1b9a36522e586a6d56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c589d9619da8b5150d0fb4752625571c48393552
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570156"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826379"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
  

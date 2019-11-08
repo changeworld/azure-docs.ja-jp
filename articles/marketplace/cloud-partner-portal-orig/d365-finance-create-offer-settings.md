@@ -4,15 +4,16 @@ description: 'PC 記事へのリンクを提供する非推奨の記事。以前
 services: Azure, Marketplace, Cloud Partner Portal
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: 84932d693c9c74c74095eb78e750f8d3b1452068
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e52be51fd9c945f67044e8d807ce0a97beaf4487
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105544"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820051"
 ---
 # <a name="how-to-fill-out-the-offer-settings-form"></a>プラン設定フォームに記入する方法
 

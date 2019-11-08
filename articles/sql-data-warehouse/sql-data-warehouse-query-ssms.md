@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse への接続 (SSMS) | Microsoft Docs
+title: SSMS で接続する
 description: SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に接続し、クエリを実行します。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d5c903a24ea47cb152555330688dd0bc515c625b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575349"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692583"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) で SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]
@@ -32,7 +33,7 @@ SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL Data Warehouse。 その作成方法については、 [SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
+* 既存の SQL データ ウェアハウス。 その作成方法については、 [SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
 * SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をインストール][Install SSMS]していない場合はインストールします (無料)。
 * 完全修飾 SQL サーバー名。 これを特定するには、 [SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関するページを参照してください。
 

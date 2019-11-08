@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959114"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822266"
 ---
 # <a name="egress-and-endpoints"></a>エグレスとエンドポイント
 
@@ -61,7 +61,7 @@ Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブ
 Event Grid イベント スキーマの詳細については、
 
 - [Azure Event Grid イベント スキーマ リファレンス](../event-grid/event-schema.md)に関するページを参照してください。
-- [Azure EventGrid Node.js SDK EventGridEvent リファレンス](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest)に関するページをお読みください。
+- [Azure EventGrid Node.js SDK EventGridEvent リファレンス](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest)に関するページをお読みください。
 
 ## <a name="event-types"></a>イベントの種類
 

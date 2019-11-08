@@ -1,5 +1,5 @@
 ---
-title: SQL Database 用 Azure Resource Manager テンプレート | Microsoft Docs
+title: Azure Resource Manager のテンプレート
 description: Azure Resource Manager テンプレートを使用して、Azure SQL Database を作成および構成します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 16091286aecc6dfdbcfa833a76920ff4bc9c64de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037446"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821126"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL Database 用 Azure Resource Manager テンプレート
 

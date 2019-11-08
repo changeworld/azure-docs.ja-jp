@@ -4,15 +4,16 @@ description: Azure Marketplace の VM プランの作成で使用される [Mark
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938186"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824457"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>仮想マシンの [Marketplace] タブ
 

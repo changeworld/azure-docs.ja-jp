@@ -1,9 +1,10 @@
 ---
-title: Azure SQL Database と Data Warehouse に対する動的データ マスキング | Microsoft Docs
+title: 動的データ マスク
 description: 動的データ マスキングを使用し、SQL Database と Data Warehouse に対する権限を持たないユーザーに対して機密データをマスクすることにより、機密データの公開を制限します
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: e36e91330232a90ff51cf92ce8dc920b51e2d914
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 2ff2dfe6384acc8a56558e6e7ba0fc5cc05f7783
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430120"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819972"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse に対する動的データ マスキング
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database の長期的なバックアップ保有期間を管理する | Microsoft Docs
+title: 長期のバックアップ リテンション期間の管理
 description: 自動バックアップを SQL Azure ストレージに保存して復元する方法について説明します
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 08/21/2019
-ms.openlocfilehash: b90e364442e46269fc949ef4aecd9a756cff5595
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ea9a1da775a64f8ee405ced52df01d0824836c42
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904635"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820017"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 

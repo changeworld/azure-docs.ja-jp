@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database での JSON データの使用 | Microsoft Docs
+title: JSON データの使用
 description: Azure SQL Database では、JavaScript Object Notation (JSON) 表記法でデータを解析、照会および書式設定できます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 3a09fba3f01eec6c712bad67ef10b8b5c55fb33e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567843"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819936"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL Database の JSON 機能の概要
 Azure SQL Database では、JavaScript Object Notation [(JSON)](https://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。 Azure SQL Database では次の JSON のシナリオを使用できます。

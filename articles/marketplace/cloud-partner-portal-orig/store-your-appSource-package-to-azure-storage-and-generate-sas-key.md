@@ -4,15 +4,16 @@ description: AppSource パッケージをアップロードし、セキュリテ
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pabutler
-ms.openlocfilehash: ac77767aee2dcde33f4266e1d2d09c49dcf5f8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f1a09244697a6771ad1b499f3d7c36eb7297067
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943298"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827660"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>AppSource パッケージを Azure Storage に保存し、SAS キーで URL を生成する
 =============================================================================

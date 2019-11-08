@@ -1,5 +1,5 @@
 ---
-title: ワークロードを監視する - Azure portal | Microsoft Docs
+title: ワークロードを監視する - Azure portal
 description: Azure portal を使用して Azure SQL Data Warehouse を監視する
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 176762e0d1c007f924d779a1b77dd52c7ed56e01
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 73d837c34dd5a480cae08a41c89939414899052a
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981484"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645632"
 ---
 # <a name="monitor-workload---azure-portal"></a>ワークロードを監視する - Azure portal
 

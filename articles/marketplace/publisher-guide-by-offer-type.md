@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 43ca74faadf7890f1274afc4905af79237918f4a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308218"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827789"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 

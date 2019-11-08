@@ -4,15 +4,16 @@ description: VM イメージをテストし送信して､Azure Marketplace の�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: pabutler
-ms.openlocfilehash: 0dbf1abbb91f9e5c3bd2d042c57f87591d52c9cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4088864db4bf861d07821f5a0287336d8431f889
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938495"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826522"
 ---
 # <a name="certify-your-vm-image"></a>VM イメージを認定する
 

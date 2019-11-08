@@ -1,5 +1,5 @@
 ---
-title: Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする | Microsoft Docs
+title: 'Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする '
 description: この記事では、SSISDB のログをクリーンアップするためのストアド プロシージャを Azure エラスティック データベース ジョブを使ってトリガーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61345549"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674738"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 

@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 manager: evansma
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: blevens
-ms.openlocfilehash: 469268637db0b3118b2db8190e9eaf2043662dea
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: bb6abc616be98f85228c4f84f37b26110b48c2ed
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011480"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824015"
 ---
 # <a name="add-bank-and-tax-information"></a>銀行口座および税の情報を追加する  
 

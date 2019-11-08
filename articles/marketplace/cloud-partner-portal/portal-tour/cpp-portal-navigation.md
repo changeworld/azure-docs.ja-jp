@@ -4,15 +4,16 @@ description: Azure Marketplace の Cloud パートナー ポータル内のナ�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: pabutler
-ms.openlocfilehash: ef329bfef9dc4f98dfd975a33c190f0b1825df4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ccc7fb738dc23956e56e70c68405cc995a9a99
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942079"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821488"
 ---
 # <a name="cloud-partner-portal-navigation"></a>Cloud パートナー ポータルでのナビゲーション
 

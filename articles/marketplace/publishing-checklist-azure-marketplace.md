@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b1bf77b7c04374ee81b730600658462a6283dedf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa03444f78663874132df5f9148925bffa883f31
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937677"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827749"
 ---
 # <a name="publishing-checklist-for-azure-marketplace"></a>公開のためのチェックリスト (Azure Marketplace)    
 公開プロセスを開始する前に必要なコンポーネントを確認します。  

@@ -1,5 +1,5 @@
 ---
-title: ビデオ - Azure SQL Data Warehouse | Microsoft Docs
+title: ビデオ
 description: Azure SQL Data Warehouse のさまざまなビデオの再生リストへのリンク。
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 52f61f606ddf28c23eb3f72ff91c68a47b667ea1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595446"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692438"
 ---
 # <a name="azure-sql-data-warehouse---videos"></a>Azure SQL Data Warehouse - ビデオ
 

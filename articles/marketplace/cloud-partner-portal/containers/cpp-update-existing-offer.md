@@ -4,15 +4,16 @@ description: Azure Marketplace で既存のコンテナー オファーを更新
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 0e0db961dec69880eff6ef640e9210af6fcbc978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40cd375b11eb5b7ad5943fea9839b6339a7d002f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942594"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823080"
 ---
 # <a name="update-an-existing-container-offer"></a>既存のコンテナー オファーを更新する
 

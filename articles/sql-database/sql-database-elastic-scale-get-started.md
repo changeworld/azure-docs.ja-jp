@@ -1,5 +1,5 @@
 ---
-title: Elastic Database ツールの概要 - Azure | Microsoft Docs
+title: Elastic Database ツールの概要
 description: 実行が容易なサンプル アプリケーションを含む、Azure SQL Database の Elastic Database ツール機能の基本説明です。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: aa0827bdf6deb388123ed701013ee95f5493eee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568477"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823659"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 

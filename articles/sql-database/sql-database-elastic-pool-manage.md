@@ -1,5 +1,5 @@
 ---
-title: エラスティック プールの管理 - Azure SQL Database | Microsoft Docs
+title: エラスティック プールを管理する
 description: Azure SQL エラスティック プールを作成し、管理します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ca00326d5704d3dd26027d90a3e48bfc52ec5653
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 4ae2e84ab5f6108de4e8236c39371cf9658809d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744442"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823855"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの管理
 

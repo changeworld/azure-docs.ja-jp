@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091950"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820512"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory でのパスワードレスの環境
 

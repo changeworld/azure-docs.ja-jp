@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse リリース ノート | Microsoft Docs
+title: リリース ノート
 description: Azure SQL Data Warehouse のリリース ノート。
 services: sql-data-warehouse
 ms.service: sql-data-warehouse
@@ -10,12 +10,13 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: f4ee3f78159cb5d9b677f0d43492325754065841
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 967263bde459739482100524e5f85bed96cee6f9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300833"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824296"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 

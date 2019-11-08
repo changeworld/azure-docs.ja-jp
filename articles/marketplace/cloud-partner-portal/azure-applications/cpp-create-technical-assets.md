@@ -4,15 +4,16 @@ description: Azure アプリケーション オファー用の技術アセット
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pabutler
-ms.openlocfilehash: cbe1b8c8f1159d90fbf97eeae272c1c50ec9b9bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9abaab4597e9fea43a2f0dcabc0e4a527ed5a6a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942980"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827596"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Azure アプリケーションの技術アセットを準備する
 

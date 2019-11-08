@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 14e8eb625658eac7f65e976e79669dac4ea1bdbd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: fcc275b7534ebbfd65b28cbfce170dc6e1b926d9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076059"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823050"
 ---
 # <a name="co-sell-partner-engagement"></a>共同販売のパートナー エンゲージメント
 

@@ -1,5 +1,5 @@
 ---
-title: C と C++ を使用して SQL Database に接続する | Microsoft Docs
+title: C と C++ を使用して SQL Database に接続する
 description: このクイック スタートのコード サンプルを使用して、C++ で最新のアプリケーションを構築し、Azure SQL Database を使用してクラウドの強力なリレーショナル データベースでバックアップします。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: c06a16071b1e22e7aa788ff5f15ce8afbf17da04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568939"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690702"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
 

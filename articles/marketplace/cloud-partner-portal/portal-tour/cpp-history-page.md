@@ -4,15 +4,16 @@ description: Azure Marketplace の Cloud パートナー ポータルの [監査
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: a579008aa0954507a130bef65dc60254f9e12c03
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a09eca891c434a6bd836269908c3e2cf37fbd3f5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943484"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821559"
 ---
 # <a name="audit-history-page"></a>[監査履歴] ページ
 

@@ -4,15 +4,16 @@ description: Cloud パートナー ポータル API を使用するときの一�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: ddf3c9ce26a1538d91f1e6d6bcc04fd0d18e7936
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0990e9aedf17f6d4ad01e4911e47efd60001f3d7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935817"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827364"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>一般的な認証エラーのトラブルシューティング
 

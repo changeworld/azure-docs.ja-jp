@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する | Microsoft Docs
+title: Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
 description: Azure データ ファクトリで Hive アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hive クエリを実行する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 3852b2d18b48be63cbc612159facb6273f23dc2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c423192624ecc76e839f9fee434956f4d57aefdc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848103"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683900"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -58,7 +58,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 ## <a name="syntax-details"></a>構文の詳細
 | プロパティ            | 説明                                                  | 必須 |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| name                | アクティビティの名前                                         | はい      |
+| 名前                | アクティビティの名前                                         | はい      |
 | description         | アクティビティの用途を説明するテキストです。                | いいえ       |
 | type                | Hive アクティビティの場合、アクティビティの種類は HDinsightHive です        | はい      |
 | linkedServiceName   | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |

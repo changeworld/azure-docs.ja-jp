@@ -4,15 +4,16 @@ description: ご自身の SaaS オファーを Azure Marketplace に統合でき
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 7896ed77d9dbb3358ddb1c809ca342828280f66a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebfc278d09c244970df5807df1505295fe7016c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259353"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819121"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS Fulfillment API
 

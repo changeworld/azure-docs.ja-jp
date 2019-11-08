@@ -4,15 +4,16 @@ description: API によって、プランの現在の状態が取得されます
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 26ee8b5b1879c505f8200671558fe065ace068a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935458"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819661"
 ---
 <a name="retrieve-offer-status"></a>プランの状態の取得 
 =====================
@@ -35,7 +36,7 @@ ms.locfileid: "64935458"
 <a name="header"></a>ヘッダー
 ------
 
-|  Name           |  値               |
+|  名前           |  値               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  Authorization  | `Bearer YOUR_TOKEN`  |

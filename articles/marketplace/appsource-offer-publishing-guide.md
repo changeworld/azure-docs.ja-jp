@@ -4,15 +4,16 @@ description: Office 365、Dynamics 365、Power BI、Power Apps の AppSource ス
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 38175bd2365ee9ab7246f0d967c364912efda37d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a5d61d9434a73556d81010da7c7b3e96139a9e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935698"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824323"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365、Dynamics 365、Power BI、Power Apps 用のオファー発行ガイド
 
