@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554395"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474302"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -220,6 +220,7 @@ MFA やその他の制御がいつ必要になるかを決定する条件付き�
 1. グローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 1. **[Azure Active Directory]** 、 **[条件付きアクセス]** の順に移動します
 1. **[新しいポリシー]** を選択します。
+   ![パイロット グループ内の Azure portal ユーザーに対して MFA を有効にする条件付きアクセス ポリシーを作成する](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. ポリシーのわかりやすい名前を指定します。
 1. **[ユーザーとグループ]** で次の手順を実行します。
    * **[Include]\(追加\)** タブで、 **[All users]\(すべてのユーザー\)** ラジオ ボタンを選択します
@@ -237,8 +238,6 @@ MFA やその他の制御がいつ必要になるかを決定する条件付き�
 1. **[セッション]** セクションはスキップします
 1. **[ポリシーを有効にする]** トグルを **[オン]** に設定します。
 1. **Create** をクリックしてください。
-
-![パイロット グループ内の Azure Portal ユーザーに対して MFA を有効にする条件付きアクセス ポリシーを作成する](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
 ## <a name="plan-integration-with-on-premises-systems"></a>オンプレミスのシステムとの統合を計画する
 

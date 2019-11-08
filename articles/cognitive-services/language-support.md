@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d6519ad5a130eee25ab17135e26d7207047dcf7a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: f3030b6336ef9bd1274edd674b0d10f0c1b4cd3a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327256"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607275"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート
 
@@ -90,7 +90,7 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 
 次の Cognitive Services は言語に依存せず、言語に基づく制限はありません。
 
-* [Personalizer (プレビュー)](https://docs.microsoft.com/azure/cognitive-services/personalizer/)
+* [Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/)
 * [Anomaly Detector (プレビュー)](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/overview)
 
 

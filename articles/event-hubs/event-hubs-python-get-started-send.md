@@ -1,22 +1,22 @@
 ---
-title: Python を使用してイベントを送受信する - Azure Event Hubs
-description: このチュートリアルでは、Azure Event Hubs 間でイベントを送受信する Python スクリプトを作成して実行する方法について説明します。
+title: クイック スタート:Python を使用してイベントを送受信する - Azure Event Hubs
+description: クイック スタート:このチュートリアルでは、Azure Event Hubs 間でイベントを送受信する Python スクリプトを作成して実行する方法について説明します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.date: 10/11/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 330a7f5dc325c707b5be7ce9f9b3242a1d4c9547
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b6c3fb03f696f4142721284a14001eb51153a77
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428887"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720552"
 ---
-# <a name="send-and-receive-events-with-event-hubs-using-python"></a>Python を使用して Event Hubs 間でイベントを送受信する
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>クイック スタート:Python を使用して Event Hubs 間でイベントを送受信する
 
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアとデバイスからイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳細については、[Azure Event Hubs](event-hubs-about.md) に関するページと「[Azure Event Hubs の機能と用語](event-hubs-features.md)」を参照してください。
 

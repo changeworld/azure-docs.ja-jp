@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 83446d30de17973352e836d6107ad545b2da63e3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a480e459fdbbf135b00ee46d1513eddb0f36e09e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550319"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479607"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシンを作成、暗号化する
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [新規] ページの [人気順] で、 **[Ubuntu Server 18.04 LTS]** を選択します。
 1. **[基本]** タブの **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
 1. **[リソース グループ]** で、先ほどキー コンテナーを作成するときに作成したリソース グループを選択します (例: **myResourceGroup**)。
-1. **[仮想マシン名]** に「*MyVM*」と入力します。 
+1. **[仮想マシン名]** に「*MyVM*」と入力します。
 1. **[リージョン]** で、先ほどキー コンテナーを作成するときに使用したものと同じリージョンを選択します (例: **米国東部**)。
 1. **[サイズ]** が *[Standard D2s v3]* になっていることを確認します。
 1. **[管理者アカウント]** で **[パスワード]** を選択します。 ユーザー名とパスワードを入力します。

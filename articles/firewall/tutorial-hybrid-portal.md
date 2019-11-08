@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 11/02/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018975"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468472"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -107,14 +107,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 9. **[サブネット]** の下の **[名前]** に「**SN-Workload**」と入力します。
 10. **[アドレス範囲]** に「**10.6.0.0/24**」と入力します。
 11. 他の既定の設定をそのまま使用し、 **[作成]** を選択します。
-
-ここで、ゲートウェイ用に 2 つ目のサブネットを作成します。
-
-1. **[VNet-Spoke]** ページで、 **[サブネット]** を選択します。
-2. **[+サブネット]** を選択します。
-3. **[名前]** に「**GatewaySubnet**」と入力します。
-4. **[アドレス範囲 (CIDR ブロック)]** に「**10.6.1.0/24**」と入力します。
-5. **[OK]** を選択します。
 
 ## <a name="create-the-on-premises-virtual-network"></a>オンプレミス仮想ネットワークを作成する
 
@@ -341,7 +333,7 @@ SpoketoHub ピアリング上で **[転送されたトラフィックを許可�
 2. ルート テーブルが作成されたら、それを選択して、ルート テーブル ページを開きます。
 3. 左側の列で、 **[ルート]** を選択します。
 4. **[追加]** を選択します。
-5. ルート名として「**ToSpoke**」と入力します。
+5. ルート名として「**ToHub**」と入力します。
 6. アドレス プレフィックスとして「**0.0.0.0/0**」と入力します。
 7. 次ホップの種類として **[仮想アプライアンス]** を選択します。
 8. 次ホップ アドレスとして、前にメモしておいた、ファイアウォールのプライベート IP アドレスを入力します。
@@ -384,7 +376,7 @@ SpoketoHub ピアリング上で **[転送されたトラフィックを許可�
 ### <a name="install-iis"></a>IIS のインストール
 
 1. Azure portal で Cloud Shell を開き、**PowerShell** に設定されていることを確認します。
-2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。
+2. 次のコマンドを実行して、IIS を仮想マシンにインストールし、必要に応じて場所を変更します。
 
    ```azurepowershell-interactive
    Set-AzVMExtension `
@@ -420,7 +412,7 @@ SpoketoHub ピアリング上で **[転送されたトラフィックを許可�
 
 ## <a name="test-the-firewall"></a>ファイアウォールをテストする
 
-1. まず、**VM-spoke-01** 仮想マシンのプライベート IP アドレスを取得してメモします。
+1. まず、**VM-spoke-01** 仮想マシンのプライベート IP アドレスをメモします。
 
 2. Azure portal から、**VM-Onprem** 仮想マシンに接続します。
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.

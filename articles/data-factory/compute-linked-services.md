@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ae3350b14ca1073a5fbb1a353b9301c57e7f1ea4
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fd874776e5be94831322bce839a502ebc43e1958
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298328"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481190"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
@@ -28,11 +28,12 @@ ms.locfileid: "72298328"
 | [On-demand HDInsight クラスター](#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [カスタム](transform-data-using-dotnet-custom-activity.md)     |
 | [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) |
-| [Azure Machine Learning サービス](#azure-machine-learning-service-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
-
+| [Azure 関数](#azure-function-linked-service)         | [Azure 関数アクティビティ](control-flow-azure-function-activity.md)
 >  
 
 ## <a name="on-demand-hdinsight-compute-environment"></a>オンデマンドの HDInsight コンピューティング環境
@@ -309,11 +310,11 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 
 Azure Batch の「リンクされたサービス」を作成し、仮想マシン (VM) の Batch プールを Data Factory に登録できます。 Azure Batch を使用してカスタム アクティビティを実行することができます。
 
-Azure Batch サービスを初めて利用する場合は、次のトピックをご覧ください。
+Azure Batch サービスを初めて利用する場合は、次の記事をご覧ください。
 
 * [Azure Batch の基本](../batch/batch-technical-overview.md) 」をご覧ください。
-* Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレット。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md)。 このコマンドレットの使用方法の詳細については、 [PowerShell を使用した Azure Batch アカウントの管理](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) に関するトピックをご覧ください。
-* Azure Batch プールの作成方法については、[New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) コマンドレット。
+* Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレットをご覧ください。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md) をご覧ください。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)に関する記事をご覧ください。
+* Azure Batch プールの作成方法については、[New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) コマンドレットをご覧ください。
 
 ### <a name="example"></a>例
 
@@ -392,11 +393,11 @@ Azure Machine Learning Studio の「リンクされたサービス」を作成�
 | tenant                 | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | UpdateResourceEndpoint が指定されている場合は必須です |
 | connectVia             | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ                                       |
 
-## <a name="azure-machine-learning-service-linked-service"></a>Azure Machine Learning service のリンクされたサービス
-Azure Machine Learning service のリンクされたサービスを作成して、Azure Machine Learning service ワークスペースをデータ ファクトリに接続します。
+## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning のリンクされたサービス
+Azure Machine Learning のリンクされたサービスを作成して、Azure Machine Learning ワークスペースをデータ ファクトリに接続します。
 
 > [!NOTE]
-> 現在、Azure Machine Learning service のリンクされたサービスでは、サービス プリンシパル認証のみがサポートされています。
+> 現在、Azure Machine Learning のリンクされたサービスでは、サービス プリンシパル認証のみがサポートされています。
 
 ### <a name="example"></a>例
 
@@ -430,7 +431,7 @@ Azure Machine Learning service のリンクされたサービスを作成して�
 | 種類                   | type プロパティは次の値に設定されます。**AzureMLService**。 | はい                                      |
 | subscriptionId         | Azure サブスクリプション ID              | はい                                      |
 | resourceGroupName      | 名前 | はい                                      |
-| mlWorkspaceName        | Machine Learning Services service ワークスペースの名前 | はい  |
+| mlWorkspaceName        | Azure Machine Learning ワークスペースの名前 | はい  |
 | servicePrincipalId     | アプリケーションのクライアント ID を取得します。     | いいえ |
 | servicePrincipalKey    | アプリケーションのキーを取得します。           | いいえ |
 | tenant                 | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | UpdateResourceEndpoint が指定されている場合は必須です | いいえ |
@@ -533,14 +534,14 @@ Azure Machine Learning service のリンクされたサービスを作成して�
 | プロパティ             | 説明                              | 必須                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | 名前                 | リンクされたサービスの名前               | はい   |
-| type                 | type プロパティは次の値に設定されます。**AzureDatabricks**。 | はい                                      |
+| type                 | type プロパティは次の値に設定されます。**Azure Databricks**。 | はい                                      |
 | domain               | Databricks ワークスペースのリージョンに基づき Azure リージョンを指定します。 例: https://eastus.azuredatabricks.net | はい                                 |
 | accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)を参照してください。  | はい                                       |
 | existingClusterId    | このすべてのジョブを実行する既存のクラスターのクラスター ID。 これは作成済みの対話型クラスターでなければなりません。 応答が停止した場合は、クラスターの手動再起動が必要になることがあります。 Databricks では、信頼性を高めるために新しいクラスターでジョブを実行することをお勧めします。 対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [詳細](https://docs.databricks.com/user-guide/clusters/tags.html) | いいえ 
 | instancePoolId    | Databricks ワークスペース内の既存のプールのインスタンス プール ID。  | いいえ  |
 | newClusterVersion    | クラスターの Spark バージョン。 Databricks にジョブ クラスターを作成します。 | いいえ  |
-| newClusterNumOfWorker| このクラスターに属する worker ノードの数。 1 つのクラスターには 1 つの Spark ドライバーと num_workers Executor、全体では num_workers + 1 Spark ノードになります。 文字列は Int32 で設定されます。たとえば、“1” は、numOfWorker が 1 であること、“1:10” は、最小が 1 で最大が 10 の auto-scale を意味します。  | いいえ                |
-| newClusterNodeType   | このフィールドは、単一の値を通じて使用されるリソースをこのクラスターのそれぞれの Spark ノードにエンコードします。 たとえば、Spark ノードはメモリまたはコンピューティング集約型ワークロード用にプロビジョニングされ、最適化されます。このフィールドは、新しいクラスターに必要です                | いいえ               |
+| newClusterNumOfWorker| このクラスターに属する worker ノードの数。 1 つのクラスターには 1 つの Spark ドライバーと num_workers Executor、全体では num_workers + 1 Spark ノードになります。 文字列は Int32 で設定されます。たとえば、"1" は、numOfWorker が 1 であること、"1:10" は、最小が 1 で最大が 10 の自動スケーリングを意味します。  | いいえ                |
+| newClusterNodeType   | このフィールドは、単一の値を通じて使用されるリソースをこのクラスターのそれぞれの Spark ノードにエンコードします。 たとえば、Spark ノードはメモリまたはコンピューティング集約型ワークロード用にプロビジョニングされ、最適化されます。 このフィールドは、新しいクラスターに必須です。                | いいえ               |
 | newClusterSparkConf  | 省略可能なユーザー指定の Spark 構成キーと値のペアのセット。 ユーザーは、余分な JVM オプションの文字列をドライバーと Executor にそれぞれ spark.driver.extraJavaOptions および spark.executor.extraJavaOptions を介して渡すこともできます。 | いいえ  |
 | newClusterInitScripts| 新しいクラスター用のユーザーが定義した省略可能な初期化スクリプトのセット。 Init スクリプト DBFS への DBFS パスを指定します。 | いいえ  |
 
@@ -553,6 +554,16 @@ Azure SQL Data Warehouse のリンクされたサービスを作成し、 [ス�
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
 SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [SQL Server コネクタ](connector-sql-server.md#linked-service-properties) に関する記事をご覧ください。
+
+## <a name="azure-function-linked-service"></a>Azure 関数のリンクされたサービス
+Azure 関数のリンクされたサービスを作成し、それを [Azure 関数アクティビティ](control-flow-azure-function-activity.md)と共に使用して、Data Factory パイプラインで Azure 関数を実行します。 Azure 関数の戻り値の型は、有効な `JObject` である必要があります。 ([JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) は `JObject` では "*ない*" ことに留意してください。)`JObject`以外の戻り値の型が失敗し、ユーザー エラー*応答コンテンツは有効な JObject ではない*が発生します。
+
+| **プロパティ** | **説明** | **必須** |
+| --- | --- | --- |
+| type   | type プロパティは、次のように設定する必要があります:**AzureFunction** | はい |
+| function app url | Azure 関数アプリの URL。 形式は `https://<accountname>.azurewebsites.net` です。 この URL は、Azure portal で関数アプリを表示した際に **URL** セクションに表示される値です  | はい |
+| function key | Azure 関数のアクセス キーです。 それぞれの関数の **[管理]** セクションをクリックし、**ファンクション キー**または**ホスト キー**をコピーします。 詳しくは、次の記事をご覧ください:[Azure Functions の HTTP トリガーとバインド](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | はい |
+|   |   |   |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory でサポートされる変換アクティビティの一覧については、[データの変換](transform-data.md)に関する記事を参照してください。

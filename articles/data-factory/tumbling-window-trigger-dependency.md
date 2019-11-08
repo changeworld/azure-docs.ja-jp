@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: bf8534ce40460637141bea2b9582e63a2a5cd04a
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620635"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "73520602"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係の作成
 
@@ -30,7 +30,7 @@ ms.locfileid: "68620635"
 
 トリガーの依存関係を作成するには、 **[トリガー]、[詳細設定]、[新規]** の順に選択した後、適切なオフセットとサイズに依存するトリガーを選択します。 **[完了]** を選択して、依存関係に対するデータ ファクトリの変更を発行して有効にします。
 
-![依存関係の作成](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "の依存関係の作成")
+![依存関係の作成](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "依存関係の作成")
 
 ## <a name="tumbling-window-dependency-properties"></a>タンブリング ウィンドウの依存関係プロパティ
 
@@ -131,7 +131,7 @@ ms.locfileid: "68620635"
 
 ### <a name="dependency-size"></a>依存関係のサイズ
 
-![サイズの例](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "のサイズの例")
+![サイズの例](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "サイズの例")
 
 ### <a name="self-dependency"></a>自己依存関係
 
@@ -141,7 +141,7 @@ ms.locfileid: "68620635"
 
 過去 7 日間の出力を集計する別の日次ジョブに依存する日次テレメトリ処理ジョブで、7 日分のローリング ウィンドウ ストリームを生成するとします。
 
-![依存関係の例](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "の依存関係の例")
+![依存関係の例](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "依存関係の例")
 
 ### <a name="dependency-on-itself"></a>自己に対する依存関係
 
@@ -151,16 +151,18 @@ ms.locfileid: "68620635"
 
 ## <a name="monitor-dependencies"></a>依存関係を監視する
 
-[トリガーの実行] 監視ページで、依存関係チェーンと該当するウィンドウを監視できます。 **[監視]、[トリガーの実行]** の順に移動します。
+[トリガーの実行] 監視ページで、依存関係チェーンと該当するウィンドウを監視できます。 **[監視]、[トリガーの実行]** の順に移動します。 [アクション] 列で、トリガーを再実行したり、その依存関係を確認することができます。
 
-![トリガーの実行の監視](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "トリガーの実行の監視")
+![トリガーの実行を監視する](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "トリガーの実行を監視する")
 
-選択したウィンドウに依存するすべてのトリガーの実行を表示するには、アクション アイコンをクリックします。
+[View Trigger Dependencies]\(トリガーの依存関係の表示\) をクリックすると、依存関係の状態を確認できます。 依存関係トリガーのいずれかが失敗した場合は、正常に再実行して、依存するトリガーが稼働できるようにする必要があります。 タンブリング ウィンドウ トリガーは、依存関係を 7 日間待機してからタイムアウトします。
 
-![依存関係の監視](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "依存関係の監視")
+![依存関係を監視する](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "依存関係を監視する")
 
-上の例では、日単位のトリガーは、ウィンドウが定義されていない時間単位のトリガーと 3 時間のオフセットに依存しています。 その結果、このトリガーは、依存関係の実行が 24 回成功した後に実行されます。
+トリガーの依存関係のスケジュールを視覚的に表示するには、[ガント] ビューを選択します。
+
+![依存関係を監視する](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "依存関係を監視する")
 
 ## <a name="next-steps"></a>次の手順
 
-[タンブリング ウィンドウ トリガーの作成方法](how-to-create-tumbling-window-trigger.md)を確認します。
+* [タンブリング ウィンドウ トリガーの作成方法](how-to-create-tumbling-window-trigger.md)を確認します

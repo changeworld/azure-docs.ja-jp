@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: a700cc83c6bd34f5f726b9cc1c97bd7e1476963b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984902"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519291"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク セキュリティ グループでネットワーク トラフィックをフィルター処理する
 
@@ -41,7 +41,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 
 2. **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
 
@@ -59,7 +59,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 アプリケーション セキュリティ グループを使用すると、Web サーバーなど、同様の機能を持つサーバーをグループ化できます。
 
-1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 
 2. **[Marketplace を検索]** ボックスに、「*アプリケーション セキュリティ グループ*」と入力します。 検索結果に**アプリケーション セキュリティ グループ**が表示されたら、それを選択し、 **[すべて]** の下の**アプリケーション セキュリティ グループ** をもう一度選択します。次に、 **[作成]** を選択します。
 3. 以下の情報を入力するか選んだ後、 **[作成]** を選びます。
 
@@ -81,7 +81,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 
 2. **[ネットワーク]** を選び、 **[ネットワーク セキュリティ グループ]** を選びます。
 3. 以下の情報を入力するか選んだ後、 **[作成]** を選びます。
 
@@ -138,7 +138,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 
 2. **[コンピューティング]** 、 **[Windows Server 2016 Datacenter]** の順に選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用します。
 

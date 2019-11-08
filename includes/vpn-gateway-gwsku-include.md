@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/20/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b1a9d93d9fccf02ba1517e429625150736e539e9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 75152fabfc33dda0494d871fbdf9a388f4260c0d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181060"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495733"
 ---
 仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。 Azure Availability Zones における仮想ネットワーク ゲートウェイの SKU については、[Azure Availability Zones でのゲートウェイの SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md) に関するページを参照してください。
 
@@ -30,10 +30,10 @@ ms.locfileid: "67181060"
 | **SKU**| **機能**|
 | ---    | ---         |
 |**Basic** (\*\*)   | **ルートベースの VPN**: S2S/接続用に 10 個のトンネル。RADIUS 認証なし (P2S)、IKEv2 なし (P2S)<br>**ポリシーベースの VPN**: (IKEv1): 1 つの S2S/接続トンネル、P2S なし|
-| **VpnGw1、VpnGw2、および VpnGw3** | **ルートベース VPN**: 最大 30 トンネル ( * )、P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
+| **Basic を除くすべての Generation1 および Generation2 SKU** | **ルートベース VPN**: 最大 30 トンネル ( * )、P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
 |        |             |
 
-( * ) "PolicyBasedTrafficSelectors" を構成することによって、ルートベースの VPN ゲートウェイ (VpnGw1、VpnGw2、VpnGw3) を、オンプレミスにある複数のポリシーベース ファイアウォール デバイスに接続することができます。 詳細については、[PowerShell を使って複数のオンプレミス ポリシーベース VPN デバイスに VPN ゲートウェイを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
+( * ) "PolicyBasedTrafficSelectors" を構成することによって、ルートベースの VPN ゲートウェイを、オンプレミスにある複数のポリシーベース ファイアウォール デバイスに接続することができます。 詳細については、[PowerShell を使って複数のオンプレミス ポリシーベース VPN デバイスに VPN ゲートウェイを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
 
 (\*\*) Basic SKU はレガシ SKU とみなされます。 Basic SKU には一定の機能制限があります。 Basic SKU を使用するゲートウェイのサイズを変更し、新しいゲートウェイ SKU のいずれかにすることはできず、その代わり、新しい SKU に変更する必要があります。この場合、VPN ゲートウェイの削除と再作成が必要です。
 
@@ -43,7 +43,7 @@ SLA と機能セットに違いがあるため、運用環境と開発テスト�
 
 | **ワークロード**                       | **SKU**               |
 | ---                                | ---                    |
-| **運用環境での重要なワークロード** | VpnGw1、VpnGw2、VpnGw3 |
+| **運用環境での重要なワークロード** | Basic を除くすべての Generation1 および Generation2 SKU |
 | **開発テストまたは概念実証**   | Basic (\*\*)                 |
 |                                    |                        |
 

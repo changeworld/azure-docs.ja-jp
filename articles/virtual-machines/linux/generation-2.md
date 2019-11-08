@@ -1,5 +1,5 @@
 ---
-title: 第 2 世代 VM に対する Azure のサポート (プレビュー) | Microsoft Docs
+title: 第 2 世代 VM に対する Azure のサポート | Microsoft Docs
 description: 第 2 世代 VM に対する Azure のサポートの概要
 services: virtual-machines-linux
 documentationcenter: ''
@@ -11,31 +11,26 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: afec40216695ed19cddb4e93b6523cf30251f2e4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6d90075f866cb65e5428a1641ebd4cf77dd2a887
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063144"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479583"
 ---
-# <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure での第 2 世代 VM (プレビュー) のサポート
+# <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
-> [!IMPORTANT]
-> 第 2 世代 VM に対する Azure のサポートは現在、プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+第 2 世代仮想マシン (VM) が Azure でサポートされるようになりました。 仮想マシンを作成した後にその世代を変更することはできないため、世代を選択する前に、このページの考慮事項を確認してください。
 
-第 2 世代仮想マシン (VM) のサポートが、Azure でプレビューで使用できるようになりました。 仮想マシンを作成した後にその世代を変更することはできないため、世代を選択する前に、このページの考慮事項を確認してください。
-
-第 2 世代 VM では、第 1 世代 VM ではサポートされていない重要な機能がサポートされています。 これらの機能には、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。 また、第 2 世代 VM には、Azure ではまだサポートされていない機能もいくつか含まれています。 詳細については、「[特徴と機能](#features-and-capabilities)」セクションを参照してください。
+第 2 世代 VM では、第 1 世代 VM ではサポートされていない重要な機能がサポートされています。 これらの機能には、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。 オンプレミスで実行される第 2 世代 VM には、Azure ではまだサポートされていない機能がいくつかあります。 詳細については、「[特徴と機能](#features-and-capabilities)」セクションを参照してください。
 
 第 2 世代 VM では、第 1 世代 VM で使用されている BIOS ベースのアーキテクチャではなく、新しい UEFI ベースのブート アーキテクチャが使用されます。 第 1 世代 VM と比較して、第 2 世代 VM ではブート時間やインストール時間が改善されている可能性があります。 第 2 世代 VM の概要、および第 1 世代と第 2 世代のいくつかの違いについては、「[Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」(Hyper-V で第 1 世代または第 2 世代のどちらの仮想マシンを作成すべきか) をご覧ください。
 
 ## <a name="generation-2-vm-sizes"></a>第 2 世代 VM のサイズ
 
-第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure では現在、次の選択された VM シリーズに対して第 2 世代のプレビュー サポートが提供されています。
+第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 * [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [DC シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
@@ -50,7 +45,6 @@ ms.locfileid: "73063144"
 * [NCv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series)と [NCv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
 * [ND シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
 * [NVv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
-
 
 > [!NOTE]
 > Mv2 シリーズは第 2 世代の VM イメージのみで動作するため、Mv2 シリーズ VM に対する第 2 世代 VM イメージの使用は一般提供されています。 第 1 世代の VM イメージは、Mv2 シリーズの VM ではサポートされていません。 

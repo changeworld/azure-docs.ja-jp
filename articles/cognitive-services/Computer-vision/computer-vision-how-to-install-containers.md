@@ -8,24 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 7c137572fadd07254343b7b4c34b5a63534b9d88
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 2b6918e9b334ee8a906a477ee1c3e7e4d86e8551
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936991"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481789"
 ---
-# <a name="install-and-run-computer-vision-containers"></a>Computer Vision コンテナーをインストールして実行する
+# <a name="install-and-run-read-containers"></a>Read コンテナーのインストールと実行
 
 コンテナーを使用すると、独自の環境で Computer Vision API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Computer Vision コンテナーをダウンロード、インストール、実行する方法について説明します。
 
-Computer Vision では、次の 2 つの Docker コンテナーを使用できます: "*テキスト認識*" と "*読み取り*"。 "*テキスト認識*" コンテナーを使用すると、レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトの画像から、"*印刷されたテキスト*" を検出して、抽出することができます。 一方、"*読み取り*" コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF/TIFF/複数ページのサポートが提供されます。 詳しくは、「[Read API](concept-recognizing-text.md#read-api)」のドキュメントをご覧ください。
-
-> [!IMPORTANT]
-> テキスト認識コンテナーは非推奨であり、読み取りコンテナーが優先されます。 読み取りコンテナーは、その前身であるテキスト認識コンテナーのスーパーセットであり、コンシューマーは読み取りコンテナーの使用に移行する必要があります。 どちらのコンテナーも英語でのみ動作します。
+Computer Vision では、単一の Docker コンテナー *Read* を使用できます。 *Read* コンテナーを使用すると、レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトの画像から、"*印刷されたテキスト*" を検出して、抽出することができます。 さらに、*Read* コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF、TIFF、複数ページ ファイルがサポートされます。 詳しくは、「[Read API](concept-recognizing-text.md#read-api)」のドキュメントをご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -37,13 +34,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。|
+|Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
-
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
@@ -55,43 +48,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
-# <a name="readtabread"></a>[読み取り](#tab/read)
-
 読み取りのコンテナー イメージを入手できます。
 
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
 | 読み取り | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
-# <a name="recognize-texttabrecognize-text"></a>[Recognize Text](#tab/recognize-text)
-
-テキスト認識のコンテナー イメージを利用できます。
-
-| コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
-|-----------|------------|
-| テキスト認識 | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
-
-***
-
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
-
-# <a name="readtabread"></a>[読み取り](#tab/read)
 
 ### <a name="docker-pull-for-the-read-container"></a>読み取りコンテナー用の Docker pull
 
 ```bash
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 ```
-
-# <a name="recognize-texttabrecognize-text"></a>[Recognize Text](#tab/recognize-text)
-
-### <a name="docker-pull-for-the-recognize-text-container"></a>テキスト認識コンテナー用の Docker pull
-
-```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
-
-***
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -108,8 +77,6 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 `docker run` コマンドの[例](computer-vision-resource-container-config.md#example-docker-run-commands)を利用できます。
 
-# <a name="readtabread"></a>[読み取り](#tab/read)
-
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
 containerpreview.azurecr.io/microsoft/cognitive-services-read \
@@ -124,25 +91,6 @@ ApiKey={API_KEY}
 * 8 つの CPU コアと 16 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
-
-# <a name="recognize-texttabrecognize-text"></a>[Recognize Text](#tab/recognize-text)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-このコマンドは、次の操作を行います。
-
-* コンテナー イメージからテキスト認識コンテナーを実行します。
-* 8 つの CPU コアと 16 ギガバイト (GB) のメモリを割り当てます。
-* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
-* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
-
-***
 
 `docker run` コマンドの他の[例](./computer-vision-resource-container-config.md#example-docker-run-commands)もご覧いただけます。 
 
@@ -160,8 +108,6 @@ ApiKey={API_KEY}
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
 コンテナーの API のホストとしては `http://localhost:5000` を使用します。
-
-# <a name="readtabread"></a>[読み取り](#tab/read)
 
 ### <a name="asynchronous-read"></a>非同期読み取り
 
@@ -314,26 +260,19 @@ export interface Line {
     words?: Word[] | null;
 }
 
+export enum Confidence {
+    High = 0,
+    Low = 1
+}
+
 export interface Word {
   boundingBox?: number[] | null;
   text: string;
-  confidence?: string | null;
+  confidence?: Confidence | null;
 }
 ```
 
-ユースケースの例については、[こちらの TypeScript サンドボックス](https://aka.ms/ts-read-api-types)を参照し、[Run]\(実行\) を選択してその使いやすさを確認してください。
-
-# <a name="recognize-texttabrecognize-text"></a>[Recognize Text](#tab/recognize-text)
-
-### <a name="asynchronous-text-recognition"></a>非同期のテキスト認識
-
-Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v2.0/recognizeText` 操作と `GET /vision/v2.0/textOperations/*{id}*` 操作を同時に使用し、イメージ内の印刷テキストを非同期認識できます。 テキスト認識コンテナーでは現在のところ、印刷されたテキストのみ認識され、手書きのテキストは認識されません。そのため、Computer Vision サービス操作に通常指定される `mode` パラメーターはテキスト認識コンテナーで無視されます。
-
-### <a name="synchronous-text-recognition"></a>同期のテキスト認識
-
-`POST /vision/v2.0/recognizeTextDirect` 操作を使用し、イメージ内の印刷されたテキストが同期認識されます。 この操作は同期のため、この操作の要求本文は `POST /vision/v2.0/recognizeText` 操作と同じになりますが、この操作の応答本文は `GET /vision/v2.0/textOperations/*{id}*` 操作によって返されるそれと同じになります。
-
-***
+ユースケースの例については、<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">こちらの TypeScript サンドボックス<span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照し、 **[Run]\(実行\)** を選択してその使いやすさを確認してください。
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 
@@ -361,10 +300,10 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 
 この記事では、Computer Vision コンテナーの概念とそのダウンロード、インストール、実行のワークフローについて説明しました。 要約すると:
 
-* Computer Vision では、テキスト認識と読み取りの両方がカプセル化された、Docker 用の Linux コンテナーが提供されます。
+* Computer Vision では、読み取りがカプセル化された、Docker 用の Linux コンテナーが提供されます。
 * コンテナー イメージは、Azure の "コンテナー プレビュー" コンテナー レジストリからダウンロードされます。
 * コンテナー イメージを Docker で実行します。
-* REST API または SDK を使用して、コンテナーのホスト URI を指定することにより、テキスト認識コンテナーまたは読み取りコンテナーの操作を呼び出すことができます。
+* REST API または SDK を使用して、コンテナーのホスト URI を指定することによって、Read コンテナーの操作を呼び出すことができます。
 * コンテナーをインスタンス化するときは、課金情報を指定する必要があります。
 
 > [!IMPORTANT]

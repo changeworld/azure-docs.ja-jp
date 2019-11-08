@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8b585a47d3950d232eb3e8047c12ee8949030c95
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 19b8a73835e8ac5ecaac7b42793140325964d17c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "68780217"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523230"
 ---
 Azure Portal を使用して Resource Manager デプロイ モデルで VNet を作成するには、次の手順に従います。 これらの手順をチュートリアルとして使用する場合は、**例として示されている値**を使用してください。 これらの手順をチュートリアルとして使用しない場合は、必ず独自の値に置き換えてください。 仮想ネットワークの操作の詳細については、「 [仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
 
@@ -21,8 +21,10 @@ Azure Portal を使用して Resource Manager デプロイ モデルで VNet を
 >この VNet をオンプレミスの場所に接続するには、オンプレミスのネットワーク管理者と調整を行って、この仮想ネットワーク専用に使用できる IP アドレスの範囲を見つけ出す必要があります。 VPN 接続の両側に重複するアドレス範囲が存在する場合、トラフィックが期待どおりにルーティングされない可能性があります。 また、この VNet を別の VNet に接続する場合、アドレス空間を他の VNet と重複させることはできません。 したがって、慎重にネットワーク構成を計画してください。
 >
 
-1. ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
-2. **[リソースの作成]** をクリックします。 **[Marketplace を検索]** フィールドに「仮想ネットワーク」と入力します。 検索結果の一覧から **[仮想ネットワーク]** を探してクリックし、 **[仮想ネットワーク]** ページを開きます。
+1. [Azure portal](https://portal.azure.com) メニューから **[リソースの作成]** を選択します。 
+
+   ![Azure portal でリソースを作成する](./media/vpn-gateway-create-virtual-network-portal-include/azure-portal-create-resource.png)
+2. **[Marketplace を検索]** フィールドに「仮想ネットワーク」と入力します。 検索結果の一覧から **[仮想ネットワーク]** を探してクリックし、 **[仮想ネットワーク]** ページを開きます。
 3. **Create** をクリックしてください。 **[仮想ネットワークの作成]** ページが開きます。
 4. **[仮想ネットワークの作成]** ページで、VNet の設定を構成します。 フィールドへの入力時、入力された文字が有効であれば、赤色の感嘆符が緑色のチェック マークに変わります。 次の値を使用します。
 

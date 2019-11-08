@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a82f2a7b5ff0160e1bf37e48faca836e5665e2d4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b3a32c03ecc78ab0b350d6d0b0d4a1df5419dcfe
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081124"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748804"
 ---
 # <a name="create-an-nginx-vm-with-powershell"></a>PowerShell で NGINX VM を作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "70081124"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

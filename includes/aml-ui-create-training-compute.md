@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f7cdfb8b9edbce5ef2b094cf6a603904d39a7404
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792654"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493623"
 ---
 パイプラインはコンピューティング先 (ワークスペースにアタッチされているコンピューティング リソース) で実行されます。 コンピューティング先を作成すると、将来の実行でそれを再利用できます。
 
@@ -25,7 +25,7 @@ ms.locfileid: "72792654"
     使用できるコンピューティング先が既にある場合は、それを選択してこのパイプラインを実行できます。
 
     > [!NOTE]
-    > ビジュアル インターフェイスでは、Machine Learning コンピューティング先でのみ実験を実行できます。 その他のコンピューティング先は表示されません。
+    > デザイナーでは、Machine Learning コンピューティング先でのみ実験を実行できます。 その他のコンピューティング先は表示されません。
 
 1. コンピューティング リソースの名前を指定します。
 

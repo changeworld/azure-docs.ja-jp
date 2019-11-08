@@ -1,6 +1,6 @@
 ---
-title: Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する | Microsoft Docs
-description: WCF Relay を使用してクライアントとサービス アプリケーションを構築します。
+title: チュートリアル:Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
+description: チュートリアル:WCF Relay を使用してクライアントとサービス アプリケーションを構築します。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
 ms.service: service-bus-relay
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 4707e56a09c257c9e03e6db070083c81ffde07b6
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212905"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718849"
 ---
-# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
+# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>チュートリアル:Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
 
 このチュートリアルでは、Azure Relay を使用して WCF Relay クライアント アプリケーションとサービスを構築する方法について説明します。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 

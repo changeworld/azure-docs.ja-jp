@@ -1,20 +1,20 @@
 ---
-title: Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
-description: Azure Cosmos DB を使用して Xamarin iOS、Android、またはフォーム アプリケーションを作成するチュートリアル。 Azure Cosmos DB は、モバイル アプリ向けの高速な世界規模のクラウド データベースです。
+title: チュートリアル:Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
+description: チュートリアル:Azure Cosmos DB を使用して Xamarin iOS、Android、またはフォーム アプリケーションを作成するチュートリアル。 Azure Cosmos DB は、モバイル アプリ向けの高速な世界規模のクラウド データベースです。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 4a9c0fe09bee553f53c90c9833922746aad35d14
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615080"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720894"
 ---
-# <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
+# <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>チュートリアル:Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)

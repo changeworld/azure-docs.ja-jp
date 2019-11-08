@@ -1,20 +1,17 @@
 ---
 title: Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする | Microsoft Docs
 description: Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする方法について説明します
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d051fd431180e9cb86f1df4642fb5e947103c007
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 76a2b9f305f041a19b8d7ace8234a804825f6a0e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038670"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607130"
 ---
 # <a name="tutorial-bind-an-azure-cosmos-db-to-your-azure-spring-cloud-application"></a>チュートリアル:Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f2819dd2194193ffa8171034fdbe01ac4cb26174
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 243072477c7d249d7066a7a448061c51a0bd2f34
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558929"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468724"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Speech Devices SDK について
 
@@ -29,9 +29,9 @@ Speech Devices SDK は、次の場合に役立ちます。
 
 Speech Devices SDK は、[Speech SDK](speech-sdk.md) を利用しています。 Speech SDK を使って、Microsoft の先進の音声処理アルゴリズムによって処理された音声をデバイスのマイク配列から [Speech Services](overview.md) に送信します。 マルチチャンネル オーディオを使用して、ノイズの抑制、エコー キャンセレーション、ビームフォーミング、残響除去によってより正確な遠距離[音声認識](speech-to-text.md)が実現されます。
 
-Speech Devices SDK を使用すると、[ウェイク ワードを自由にカスタマイズ](speech-devices-sdk-create-kws.md)してアンビエント デバイスを構築できるため、ユーザー操作を開始するキューがブランド固有のものになります。
+また、Speech Devices SDK を使用して、独自の[カスタマイズされたキーワード](speech-devices-sdk-create-kws.md)を持つアンビエント デバイスを構築することで、ユーザー操作を開始するキューをブランド固有のものにすることができます。
 
-Speech Devices SDK を使用すると、[カスタムの音声優先仮想アシスタント](https://aka.ms/bots/speech/va)、ドライブスルー注文システム、[会話の文字起こし](conversation-transcription-service.md)、スマート スピーカーなど、さまざまな音声対応シナリオが容易になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](how-to-customize-voice-font.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
+Speech Devices SDK を使用すると、[音声アシスタント](https://aka.ms/bots/speech/va)、ドライブスルー注文システム、[会話の文字起こし](conversation-transcription-service.md)、スマート スピーカーなど、さまざまな音声対応シナリオが容易になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](how-to-customize-voice-font.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
 
 ## <a name="get-the-speech-devices-sdk"></a>Speech Devices SDK を取得する
 

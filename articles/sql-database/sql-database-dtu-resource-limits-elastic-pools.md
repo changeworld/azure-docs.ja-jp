@@ -1,6 +1,6 @@
 ---
-title: 'Azure SQL Database の DTU ベースのリソース制限: エラスティック プール | Microsoft Docs'
-description: このページでは、Azure SQL Database のエラスティック プールに対するいくつかの一般的な DTU ベースのリソース制限について説明します。
+title: Azure SQL Database の DTU のリソース制限 (エラスティック プール) | Microsoft Docs
+description: このページでは、Azure SQL Database のエラスティック プールに対するいくつかの一般的な DTU のリソース制限について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 2bd193c53ee85a1423dc63bf669021de954231c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 08e6c27b359e8fcf48caed6faf21c0aed8fad224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568814"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521017"
 ---
-# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルを使用したエラスティック プールのリソース制限
+# <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用したエラスティック プールのリソース制限
 
-この記事では、DTU ベースの購入モデルを使用した、Azure SQL Database のエラスティック プールとプールされたデータベースに対する詳細なリソース制限について説明します。
+この記事では、DTU 購入モデルを使用した、Azure SQL Database のエラスティック プールとプールされたデータベースに対するリソース制限について、詳しく説明します。
 
-単一データベースに対する DTU ベースの購入モデルのリソース制限については、[単一データベースに対する DTU ベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。 [単一データベースに対する仮想コアベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)および[エラスティック プールに対する仮想コアベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。
+単一データベースに対する DTU 購入モデルのリソース制限については、[単一データベースに対する DTU のリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。 仮想コア リソースの制限については、[単一データベースに対する仮想コア リソースの制限](sql-database-vcore-resource-limits-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>エラスティック プール: ストレージ サイズとコンピューティング サイズ
 
@@ -129,9 +129,9 @@ ms.locfileid: "68568814"
 
 ## <a name="next-steps"></a>次の手順
 
-- 単一データベースに対する仮想コア リソースの制限については、[仮想コアベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください
-- 単一データベースに対する DTU リソースの制限については、[DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)に関するページを参照してください
-- エラスティック プールに対する仮想コア リソースの制限については、「[仮想コアベースの購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)」を参照してください
+- 単一データベースに対する仮想コア リソースの制限については、[仮想コア購入モデルを使用した単一データベースに対するリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください
+- 単一データベースに対する DTU のリソース制限については、[DTU 購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)に関するページを参照してください
+- エラスティック プールに対する仮想コア リソースの制限については、[仮想コア購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください
 - マネージド インスタンスに対するリソース制限については、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md)に関するページを参照してください。
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 - データベース サーバーでのリソース制限については、サーバーおよびサブスクリプション レベルの制限に関する情報が記載された、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関するページを参照してください。

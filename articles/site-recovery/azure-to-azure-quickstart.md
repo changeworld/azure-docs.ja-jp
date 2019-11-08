@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d23d16d1315eeaf224a5291641ab088212fcdc77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b06cae5bcb07831ba79b805802a7851c2b6ad2b3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146956"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467968"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定        
 
@@ -32,11 +32,11 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Azure VM のレプリケーションの有効化
 
-1. Azure Portal で **[仮想マシン]** をクリックし、レプリケートする VM を選択します。
-2. **[操作]** で、 **[ディザスター リカバリー]** をクリックします。
+1. Azure portal のメニューで **[仮想マシン]** を選択するか、任意のページ上で "*仮想*" マシンを検索して選択します。 レプリケーションする VM を選択します。
+2. **[操作]** で、 **[ディザスター リカバリー]** を選択します。
 3. **[Configure disaster recovery]\(ディザスター リカバリーを構成する\)**  >  **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。
 4. このクイック スタートでは、その他は既定の設定をそのまま使用します。
-5. **[レプリケーションを有効にする]** をクリックします。 これにより VM レプリケーションを有効にするジョブが開始されます。
+5. **[レプリケーションを確認して開始する]** を選択します。 次に、 **[レプリケーションの開始]** を選択して、VM のレプリケーションを有効にするジョブを開始します。
 
     ![レプリケーションの有効化](media/azure-to-azure-quickstart/enable-replication1.png)
 
@@ -44,8 +44,10 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 レプリケーション ジョブの完了後、レプリケーションの状態を確認し、レプリケーションの設定を変更して、デプロイをテストできます。
 
-1. **[操作]** で、 **[ディザスター リカバリー]** をクリックします。
-2. レプリケーションの正常性、作成された復旧ポイント、およびマップ上のソース リージョンとターゲット リージョンを確認できます。
+1. Azure portal のメニューで **[仮想マシン]** を選択するか、任意のページ上で "*仮想*" マシンを検索して選択します。 確認したい VM を選択します。
+2. **[操作]** で、 **[ディザスター リカバリー]** を選択します。
+
+   レプリケーションの正常性、作成された復旧ポイント、およびマップ上のソース リージョンとターゲット リージョンを確認できます。
 
    ![レプリケーションの状態](media/azure-to-azure-quickstart/replication-status.png)
 
@@ -58,8 +60,8 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 次の手順でレプリケーションを停止します
 
-1. VM を選択します。
-2. **[ディザスター リカバリー]** で、 **[レプリケーションを無効にする]** をクリックします。
+1. Azure portal のメニューで **[仮想マシン]** を選択するか、任意のページ上で "*仮想*" マシンを検索して選択します。 変更したい VM を選択します。
+2. **[ディザスター リカバリー]** で、 **[レプリケーションの無効化]** を選択します。
 
    ![レプリケーションを無効にする](media/azure-to-azure-quickstart/disable2-replication.png)
 

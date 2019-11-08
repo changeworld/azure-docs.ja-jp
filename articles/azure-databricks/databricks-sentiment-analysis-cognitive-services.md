@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 9070c19c668529fac5edea5b4d233361043de16d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 12e6d292779d497d907bb68eece3fc2338f072fd
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469552"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602063"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データに対する感情分析
 
@@ -640,4 +640,5 @@ streamingDataFrame.writeStream.outputMode("append").format("console").option("tr
 次のチュートリアルに進み、Azure Databricks を使用して機械学習タスクを実行する方法について学習してください。
 
 > [!div class="nextstepaction"]
->[Azure Databricks を使用した機械学習](https://docs.azuredatabricks.net/applications/machine-learning/index.html)
+>[Azure Databricks を使用した機械学習](/azure/databricks/applications/machine-learning/mllib/decision-trees)
+

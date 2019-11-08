@@ -7,65 +7,24 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: e8ffb9051220cc80aa12adaa9dc9b1fcc6ddfc20
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472833"
 ---
-# <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>プレビュー - 可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
+# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
 Azure Kubernetes Service (AKS) クラスターは、ノードやストレージなどのリソースを、基になる Azure コンピューティング インフラストラクチャの複数の論理セクションに分散させます。 このデプロイ モデルを使用すると、単一の Azure データセンター内の個別の更新ドメインと障害ドメインでノードを確実に実行できます。 この既定の動作でデプロイされる AKS クラスターは、ハードウェア障害または計画メンテナンス イベントから保護するための高レベルの可用性を提供します。
 
 アプリケーションに高レベルの可用性を提供するために、AKS クラスターを複数の可用性ゾーンに分散させることができます。 これらのゾーンは、特定のリージョン内の物理的に分離されたデータセンターです。 クラスター コンポーネントが複数のゾーンに分散されている場合、AKS クラスターは、それらのゾーンのいずれかで障害が発生しても許容できます。 アプリケーションと管理操作は、1 つのデータセンター全体に問題がある場合でも継続して利用できます。
 
-この記事では、AKS クラスターを作成し、複数の可用性ゾーンにノード コンポーネントを分散させる方法について説明します。 現在、この機能はプレビュー段階にあります。
-
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー][aks-support-policies]
-> * [Azure サポートに関する FAQ][aks-faq]
+この記事では、AKS クラスターを作成し、複数の可用性ゾーンにノード コンポーネントを分散させる方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.66 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-可用性ゾーンを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.12 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-### <a name="register-the-availabilityzonepreview-feature-flag-for-your-subscription"></a>サブスクリプションの AvailabilityZonePreview 機能フラグを登録する
-
-可用性ゾーンを使用する AKS クラスターを作成するには、最初にご使用のサブスクリプションで *AvailabilityZonePreview* 機能フラグを有効にします。 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、*AvailabilityZonePreview* 機能フラグを登録します。
-
-> [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
-
-```azurecli-interactive
-az feature register --name AvailabilityZonePreview --namespace Microsoft.ContainerService
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AvailabilityZonePreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+Azure CLI バージョン 2.0.76 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="limitations-and-region-availability"></a>制限事項とリージョンの可用性
 
@@ -91,7 +50,7 @@ az provider register --namespace Microsoft.ContainerService
 * 可用性ゾーンが有効になっているクラスターでは、複数のゾーンへの分散のために Azure Standard Load Balancer を使用する必要があります。
 * Standard Load Balancer をデプロイするために、Kubernetes バージョン 1.13.5 以降を使用する必要があります。
 
-可用性ゾーンを使用する AKS クラスターでは、Azure Load Balancer *Standard* SKU を使用する必要があります。 Azure Load Balancer の既定の *Basic* SKU は、複数の可用性ゾーンへの分散をサポートしていません。 Standard Load Balancer の詳細と制限事項については、[Azure Load Balancer Standard SKU の制限事項][standard-lb-limitations]に関する記事をご覧ください。
+可用性ゾーンを使用する AKS クラスターでは、Azure Load Balancer *Standard* SKU を使用する必要があります。これはロード バランサーの種類の既定値です。 このロード バランサーの種類は、クラスターの作成時にのみ定義できます。 Standard Load Balancer の詳細と制限事項については、[Azure Load Balancer Standard SKU の制限事項][standard-lb-limitations]に関する記事をご覧ください。
 
 ### <a name="azure-disks-limitations"></a>Azure ディスクの制限事項
 
@@ -113,9 +72,9 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>複数の可用性ゾーンでの AKS クラスターの作成
 
-[az aks create][az-aks-create] コマンドを使用してクラスターを作成する場合、`--node-zones` パラメーターで、エージェント ノードをデプロイする先のゾーンを定義します。 また、`--node-zones` パラメーターを指定してクラスターを作成すると、クラスターの AKS コントロール プレーンのコンポーネントは、最高の可用性構成の複数のゾーンに分散されます。
+[az aks create][az-aks-create] コマンドを使用してクラスターを作成する場合、`--zones` パラメーターで、エージェント ノードをデプロイする先のゾーンを定義します。 また、`--zones` パラメーターを指定してクラスターを作成すると、クラスターの AKS コントロール プレーンのコンポーネントは、最高の可用性構成の複数のゾーンに分散されます。
 
-AKS クラスターの作成時に既定のエージェント プールのゾーンを定義しない場合、クラスターの AKS コントロール プレーン コンポーネントは可用性ゾーンを使用しません。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して追加のノード プール (AKS で現在プレビュー段階) を追加し、それらの新しいエージェント ノードに対して `--node-zones` を指定できますが、コントロール プレーン コンポーネントは可用性ゾーンを認識しません。 ノード プールまたは AKS コントロール プレーン コンポーネントがデプロイされた後、それらのゾーン認識は変更できません。
+AKS クラスターの作成時に既定のエージェント プールのゾーンを定義しない場合、クラスターの AKS コントロール プレーン コンポーネントは可用性ゾーンを使用しません。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して追加のノード プールを追加し、それらの新しいエージェント ノードに対して `--zones` を指定できますが、コントロール プレーン コンポーネントは可用性ゾーンを認識しません。 ノード プールまたは AKS コントロール プレーン コンポーネントがデプロイされた後、それらのゾーン認識は変更できません。
 
 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の AKS クラスターを作成しています。 合計 *3* つのノードが作成されます (ゾーン *1* にエージェント 1 つ、ゾーン *2* にエージェント 1 つ、ゾーン *3* にエージェント 1 つ)。 また、AKS コントロール プレーンのコンポーネントは、クラスターの作成プロセスの一部として定義されるため、最高の可用性構成の複数のゾーンに分散されます。
 
@@ -129,7 +88,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --load-balancer-sku standard \
     --node-count 3 \
-    --node-zones 1 2 3
+    --zones 1 2 3
 ```
 
 AKS クラスターの作成には数分かかります。

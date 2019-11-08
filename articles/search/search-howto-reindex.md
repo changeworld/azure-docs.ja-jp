@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793705"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466444"
 ---
 # <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスを再構築する方法
 
@@ -46,7 +46,7 @@ ms.locfileid: "72793705"
 
 新しいフィールドを追加すると、既存のインデックス付きドキュメントの新しいフィールドには null 値が設定されます。 将来のデータ更新において、Azure Cognitive Search によって追加された null 値は、外部ソース データからの値に置き換えられます。 インデックスの内容の更新に関して詳しくは、[ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)に関するページをご覧ください。
 
-## <a name="partial-or-incremental-indexing"></a>部分または増分インデックスの作成
+## <a name="partial-indexing"></a>部分的なインデックス作成
 
 Azure Cognitive Search では、フィールド単位でインデックスの作成を制御することはできません (特定のフィールドの削除または再作成)。 同様に、[条件に基づいてドキュメントのインデックスを作成する](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents)ための組み込みメカニズムはありません。 条件に基づいてインデックスを作成する必要がある場合は、カスタム コードで対応する必要があります。
 

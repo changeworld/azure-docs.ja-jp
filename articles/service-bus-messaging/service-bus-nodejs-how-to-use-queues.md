@@ -1,6 +1,6 @@
 ---
-title: Node.js で Azure Service Bus キューを使用する
-description: Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
+title: クイック スタート:Node.js で Azure Service Bus キューを使用する
+description: クイック スタート:Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,18 +11,19 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1aba29f8ed7cacb8f2911ae2d37358869e6a7730
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 404163ed93549b55ceadad10825a9cf682de470b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001126"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719227"
 ---
-# <a name="use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Azure の Service Bus キューを Node.js および azure-sb パッケージで使用する
+# <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>クイック スタート:Azure の Service Bus キューを Node.js および azure-sb パッケージで使用する
+
 > [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)

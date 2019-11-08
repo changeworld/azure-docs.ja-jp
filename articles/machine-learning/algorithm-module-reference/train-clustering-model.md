@@ -1,7 +1,7 @@
 ---
 title: クラスタリング モデルのトレーニング:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Train Clustering Model (クラスタリング モデルのトレーニング) モジュールを使用して、クラスタリング モデルをトレーニングする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Train Clustering Model (クラスタリング モデルのトレーニング) モジュールを使用して、クラスタリング モデルをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: fc6d889fb9be40c98e1a2a0de6fddb29939f3b5d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1b26fc251aeb527041b1e648f19f9dd67f7701b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693651"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490395"
 ---
 # <a name="train-clustering-model"></a>クラスタリング モデルのトレーニング
 
-この記事では、Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 このモジュールを使用してクラスタリング モデルをトレーニングします。
 
@@ -28,8 +28,8 @@ ms.locfileid: "72693651"
 > 機械学習モデルをトレーニングするための汎用モジュールである [Train Model (モデルのトレーニング)](train-model.md) モジュールを使用して、クラスタリング モデルをトレーニングすることはできません。 これは、[Train Model (モデルのトレーニング)](train-model.md) が教師あり学習アルゴリズムでのみ動作するためです。 K 平均法と他のクラスタリング アルゴリズムは教師なし学習を可能にします。これは、アルゴリズムがラベルなしデータから学習できることを意味します。  
   
 ## <a name="how-to-use-train-clustering-model"></a>クラスタリング モデルのトレーニングの使用方法  
-  
-1.  **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールを Studio の自分のパイプラインに追加します。 このモジュールは、**Machine Learning モジュール**の **[トレーニング]** カテゴリにあります。  
+
+1.  **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールをデザイナーの自分のパイプラインに追加します。 このモジュールは、**Machine Learning モジュール**の **[トレーニング]** カテゴリにあります。  
   
 2. [K-Means Clustering (K-Means クラスタリング)](k-means-clustering.md) モジュール、または互換性のあるクラスタリング モデルを作成する別のカスタム モジュールを追加し、クラスタリング モデルのパラメーターを設定します。  
     
@@ -39,7 +39,7 @@ ms.locfileid: "72693651"
 
     ラベルが使用可能な場合は、特徴として使用することも、除外することもできます。  
   
-6. トレーニング データを新しいクラスター ラベルとともに出力する場合は、 **[Check for Append or Uncheck for Result Only]\(追加をチェックまたは結果のみをチェック解除\)** オプションを選択します。
+6. トレーニング データを新しいクラスター ラベルとともに出力する場合は、 **[Check for append or uncheck for result only]\(追加をチェックまたは結果のみをチェック解除\)** オプションを選択します。
 
     このオプションの選択を解除すると、クラスターの割り当てだけが出力されます。 
 
@@ -60,4 +60,4 @@ ms.locfileid: "72693651"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

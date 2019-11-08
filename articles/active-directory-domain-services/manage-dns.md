@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9279f97d5260eae698d5dbee10e077b71ab01992
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c225be5a1123c89d8a470a8dea48b3c57eb893b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474580"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメインで DNS を管理する
 
@@ -23,7 +23,9 @@ Azure Active Directory Domain Services (Azure AD DS) の重要な構成要素の
 
 独自のアプリケーションやサービスを実行するとき、ドメインに参加していないコンピューターの DNS レコードを作成したり、ロード バランサーの仮想 IP アドレスを構成したり、外部 DNS フォワーダーを設定したりすることが必要になる場合があります。 "*AAD DC 管理者*" グループに属するユーザーには、Azure AD DS マネージド ドメインの DNS 管理者権限が付与され、カスタムの DNS レコードを作成、編集できます。
 
-この記事では、DNS サーバー ツールをインストールしてから、DNS コンソールを使用してレコードを管理する方法について説明します。
+ハイブリッド環境では、オンプレミスの AD DS 環境内で構成されている DNS ゾーンとレコードは、Azure AD DS に同期されません。 独自の DNS エントリを定義して使用するには、Azure AD DS DNS サーバーにレコードを作成するか、環境内の既存の DNS サーバーを指す条件付きフォワーダーを使用します。
+
+この記事では、DNS サーバー ツールをインストールしてから、DNS コンソールを使用して Azure AD DS のレコードを管理する方法について説明します。
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -33,22 +35,22 @@ Azure Active Directory Domain Services (Azure AD DS) の重要な構成要素の
 
 * 有効な Azure サブスクリプション
     * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
-* ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリと同期されているか、クラウド専用ディレクトリ)。
+* ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了してください。
+    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
 * Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
-    * 必要に応じて、[Windows Server VM を作成してマネージド ドメインに参加させる][create-join-windows-vm]チュートリアルを完了してください。
+    * 必要に応じて、[Windows Server VM を作成してマネージド ドメインに参加させる][create-join-windows-vm]チュートリアルを完了します。
 * Azure AD テナントの "*Azure AD DC 管理者*" グループのメンバーであるユーザー アカウント。
 
 ## <a name="install-dns-server-tools"></a>DNS サーバー ツールのインストール
 
-DNS を作成して変更するには、DNS サーバー ツールをインストールする必要があります。 これらのツールは、Windows Server の機能としてインストールできます。 Windows クライアントに管理ツールをインストールする方法の詳細については、[リモート サーバー管理ツール (RSAT)][install-rsat] のインストールに関するページを参照してください。
+Azure AD DS に DNS レコードを作成して変更するには、DNS サーバー ツールをインストールする必要があります。 これらのツールは、Windows Server の機能としてインストールできます。 Windows クライアントに管理ツールをインストールする方法の詳細については、[リモート サーバー管理ツール (RSAT)][install-rsat] のインストールに関するページを参照してください。
 
 1. 管理 VM にサインインします。 Azure portal を使用した接続方法については、「[Windows Server VM に接続する][connect-windows-server-vm]」を参照してください。
-1. VM にサインインすると、既定で**サーバー マネージャー**が表示されるはずです。 そうならない場合は、 **[スタート]** メニューの **[サーバー マネージャー]** を選択します。
+1. VM にサインインしたときに**サーバー マネージャー**が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
 1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
-1. *[役割と機能の追加ウィザード]* の **[開始する前に]** ページで **[次へ]** を選択します。
+1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
 1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.contoso.com*) を選択し、 **[次へ]** を選択します。
 1. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。
@@ -56,7 +58,7 @@ DNS を作成して変更するには、DNS サーバー ツールをインス�
 
     ![利用できるロール管理ツールの一覧から DNS サーバー ツールのインストールを選択する](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
 
-1. **[確認]** ページで **[インストール]** を選択します。 グループ ポリシー管理ツールをインストールするには、1、2 分かかることがあります。
+1. **[確認]** ページで **[インストール]** を選択します。 グループ ポリシーの管理ツールのインストールには、1、2 分かかることがあります。
 1. 機能のインストールが完了したら、 **[閉じる]** を選択して **[役割と機能の追加ウィザード]** を終了します。
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>DNS 管理コンソールを起動して DNS を管理する

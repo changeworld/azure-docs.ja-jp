@@ -8,14 +8,14 @@ manager: xdh
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959021"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491352"
 ---
 # <a name="scenario-availability"></a>シナリオの利用可否
 
@@ -31,13 +31,13 @@ Speech service SDK には、さまざまなプログラミング言語と環境�
   - Swift
   - Objective-C
   - TTS REST API は他のすべての状況で使用できます。
-- **ウェイク ワード (Keyword Spotter/KWS)**
+- **キーワード認識 (KWS)**
   - C++/Windows および Linux
   - C#/Windows および Linux
   - Python/Windows および Linux
   - Java/Windows および Linux および Android (Speech Devices SDK)
-  - ウェイク ワード (Keyword Spotter/KWS) の機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています。
-- **音声優先仮想アシスタント**
+  - キーワード認識 (KWS) 機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています
+- **音声アシスタント**
   - C++/Windows、Linux、および macOS
   - C#/Windows
   - Java/Windows、Linux、macOS、および Android (Speech Devices SDK)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b9e910f24503f6bbf86e8ed8cdcb6f422d2490d9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073991"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470129"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[Azure portal](https://portal.azure.com) 上で Web アプリ、モバイル バック エンド、API アプリに対する組み込みの監視機能が提供されます。
@@ -70,7 +70,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 
 | メトリック | 説明 |
 | --- | --- |
-| **平均応答時間** | アプリが要求に応答するのに要した平均時間 (ミリ秒)。 |
+| **平均応答時間** | アプリが要求に応答するのに要した平均時間 (秒単位)。 |
 | **平均メモリ ワーキング セット** | アプリで使用された平均メモリ量 (メガバイト (MiB))。 |
 | **接続** | サンドボックス内に存在するバインドされたソケットの数 (w3wp.exe とその子プロセス)。  バインドされたソケットは、bind()/connect() API の呼び出しによって作成され、対象のソケットが CloseHandle()/closesocket() で閉じられるまで残っています。 |
 | **CPU 時間** | アプリで消費された CPU の量 (秒)。 このメトリックについて詳しくは、「[CPU 時間と CPU の割合](#cpu-time-vs-cpu-percentage)」をご覧ください。 |

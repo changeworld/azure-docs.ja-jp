@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: f7f8c94504eef1023939ed41aa6124baef354e39
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 16de2054864a42d978d149353a89d65e8de7d155
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "72791581"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605683"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Databricks 上で Spark ジョブを実行する
 
@@ -85,7 +85,7 @@ ms.locfileid: "72791581"
     
      **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
-クラスターの作成について詳しくは、[Azure Databricks での Spark クラスターの作成に関するページ](https://docs.azuredatabricks.net/user-guide/clusters/create.html)をご覧ください。
+クラスターの作成について詳しくは、[Azure Databricks での Spark クラスターの作成に関するページ](/azure/databricks/clusters/create)をご覧ください。
 
 ## <a name="run-a-spark-sql-job"></a>Spark SQL ジョブを実行する
 
@@ -164,7 +164,7 @@ ms.locfileid: "72791581"
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Databricks で Spark クラスターを作成し、Azure オープン データセットからのデータを使用して Spark ジョブを実行しました。 [Spark のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)を見て、他のデータ ソースから Azure Databricks にデータをインポートする方法を学習することもできます。 次の記事に進んで、Azure Databricks を使った ETL (データの抽出、変換、読み込み) 操作の実行方法について学びましょう。
+この記事では、Azure Databricks で Spark クラスターを作成し、Azure オープン データセットからのデータを使用して Spark ジョブを実行しました。 [Spark のデータ ソース](/azure/databricks/data/data-sources/index.html)を見て、他のデータ ソースから Azure Databricks にデータをインポートする方法を学習することもできます。 次の記事に進んで、Azure Databricks を使った ETL (データの抽出、変換、読み込み) 操作の実行方法について学びましょう。
 
 > [!div class="nextstepaction"]
 >[Azure Databricks を使ったデータの抽出、変換、読み込み](databricks-extract-load-sql-data-warehouse.md)

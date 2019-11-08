@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 0c48b8ba28f67ac7f38d6f636728abe7c5a6bd4e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 97072f1a17f2b0adbe96afae3263dc84aff0f30f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204020"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497625"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>リファレンス: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -238,9 +238,9 @@ VM には、次の Azure ツールがインストールされています。
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning は、予測分析ソリューションを構築、デプロイ、共有できる、フル マネージドのクラウド サービスです。 実験やモデルは、Azure Machine Learning Studio で作成します。 Azure Machine Learning Studio にアクセスするには、Data Science Virtual Machine 上の Web ブラウザーから [Microsoft Azure Machine Learning](https://studio.azureml.net) にアクセスします。
+Azure Machine Learning は、予測分析ソリューションを構築、デプロイ、共有できる、フル マネージドのクラウド サービスです。 実験やモデルは、Azure Machine Learning Studio (クラシック) で作成できます。 Azure Machine Learning Studio にアクセスするには、Data Science Virtual Machine 上の Web ブラウザーから [Microsoft Azure Machine Learning](https://studio.azureml.net) にアクセスします。
 
-Azure Machine Learning Studio にサインインしたら、実験キャンバスを使用して機械学習アルゴリズムの論理フローを作成することができます。 また、Azure Machine Learning でホストされている Jupyter Notebook にアクセスし、Machine Learning Studio 内の実験をシームレスに操作することもできます。 
+Azure Machine Learning Studio (クラシック) にサインインしたら、実験キャンバスを使用して機械学習アルゴリズムの論理フローを作成することができます。 また、Azure Machine Learning でホストされている Jupyter Notebook にアクセスし、Azure Machine Learning Studio (クラシック) 内の実験をシームレスに操作することもできます。 
 
 作成した機械学習モデルを Web サービス インターフェイスにラップすることで、モデルを運用可能な状態にすることができます。 機械学習モデルを運用可能な状態にすると、任意の言語で記述されたクライアントで、機械学習モデルから予測を呼び出すことができます。 詳細については、[Machine Learning のドキュメント](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 

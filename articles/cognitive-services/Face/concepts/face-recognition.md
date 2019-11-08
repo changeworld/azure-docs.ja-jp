@@ -1,7 +1,7 @@
 ---
 title: 顔認識の概念
 titleSuffix: Azure Cognitive Services
-description: 顔認識に関する概念について説明します。
+description: この記事では、顔認識操作の確認、類似検索、グループ化、識別の概念と基になるデータ構造について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: fa38c492530cb8938e49bc15e13fdd39ed5b6f1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65890886"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743077"
 ---
 # <a name="face-recognition-concepts"></a>顔認識の概念
 
@@ -25,7 +25,7 @@ ms.locfileid: "65890886"
 
 認識操作では、主に次のデータ構造を使用します。 これらのオブジェクトはクラウドに格納され、その ID 文字列によって表すことができます。 ID 文字列は、サブスクリプション内で常に一意です。 名前フィールドは重複している可能性があります。
 
-|Name|説明|
+|名前|説明|
 |:--|:--|
 |DetectedFace| この 1 つの顔の表現は、[顔検出](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)操作によって取得されます。 その ID は作成後 24 時間で期限が切れます。|
 |PersistedFace| DetectedFace オブジェクトがグループ (FaceList または Person) に追加されると、これらは PersistedFace オブジェクトになります。 これらはいつでも[取得](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)することができ、期限が切れることはありません。|

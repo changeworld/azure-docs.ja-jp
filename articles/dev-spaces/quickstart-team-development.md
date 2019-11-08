@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用したチーム Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 15833294e1dd5b75251ad54fa1f33bc4ed5e2c20
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 9bdd52f2c120d338859259b046f7f4b97bbc4eed
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035163"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585195"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用した Kubernetes 上でのチーム開発
 
@@ -31,7 +31,7 @@ ms.locfileid: "72035163"
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 - [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- [Helm 2.13 以上がインストールされていること](https://github.com/helm/helm/blob/master/docs/install.md)。
+- [Helm 2.13 以上がインストールされていること][helm-installed]。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
@@ -239,5 +239,5 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 > [!div class="nextstepaction"]
 > [複数のコンテナーの操作とチーム開発](multi-service-nodejs.md)
 
-
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [supported-regions]: about.md#supported-regions-and-configurations

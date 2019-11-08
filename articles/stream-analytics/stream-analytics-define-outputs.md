@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: 20da8abff943e71deb5d5ec8b7bd6411c176e2e3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6f04ccf216edb4e6a654c83c6220451bfccfe6ac
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244546"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488514"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -69,11 +69,11 @@ Stream Analytics からの Azure Data Lake Storage 出力は現在、Azure China
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>BLOB ストレージと Azure Data Lake Gen2
 
-Azure Data Lake Gen2 へのエグレスは、世界中の限られたリージョンでパブリック プレビュー機能として提供されています。 [要求フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)に追加の詳細情報を入力することで、プレビューへのアクセスを要求することができます。
+Data Lake Storage Gen2 によって、Azure Storage は、Azure 上にエンタープライズ データ レイクを構築するための基盤となります。 Data Lake Storage Gen2 は、当初から、何百ものギガビット単位のスループットを維持しつつ、複数のペタバイト単位の情報を利用可能にする目的で設計されているため、大量のデータを簡単に管理することができます。Data Lake Storage Gen2 の基礎部分は、BLOB ストレージに階層型名前空間を追加したものです。
 
 Azure Blob Storage を使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効果の高いスケーラブルなソリューションを実現できます。 BLOB ストレージとその使用法の概要については、[Azure Portal を使用した BLOB のアップロード、ダウンロード、および一覧表示](../storage/blobs/storage-quickstart-blobs-portal.md)に関するページを参照してください。
 
-次の表に、BLOB 出力を作成するためのプロパティの名前とその説明を示します。
+次の表に、BLOB または ADLS Gen2 出力を作成するためのプロパティの名前とその説明を示します。
 
 | プロパティ名       | 説明                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|

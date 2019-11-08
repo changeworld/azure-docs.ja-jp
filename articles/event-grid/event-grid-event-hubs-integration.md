@@ -1,19 +1,19 @@
 ---
-title: Event Hubs データをデータ ウェアハウスに送信する - Event Grid
-description: Azure Event Grid と Event Hubs を使用して、SQL データ ウェアハウスにデータを移行する方法について説明します。 ここでは、Capture ファイルを取得するために Azure 関数が使用されます。
+title: チュートリアル:Event Hubs データをデータ ウェアハウスに送信する - Event Grid
+description: チュートリアル:Azure Event Grid と Event Hubs を使用して、SQL データ ウェアハウスにデータを移行する方法について説明します。 ここでは、Capture ファイルを取得するために Azure 関数が使用されます。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/13/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603444"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718187"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから SQL データ ウェアハウスにシームレスに移行する方法を説明しています。

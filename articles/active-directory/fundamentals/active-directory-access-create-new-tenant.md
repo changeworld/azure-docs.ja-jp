@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bc3e3bb178efbbc8f4cee6d81417ce70bd7a662
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c8310b6fc33f1d03e1ccc9ccddfcd7b9e6c35d37
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562064"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473374"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
@@ -26,22 +26,24 @@ Azure Active Directory (Azure AD) ポータルを使用して、組織の新し�
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
-全体管理者アカウントを使用して、組織の [Azure portal](https://portal.azure.com/) にサインインします。
-
-![Azure AD オプションを含む Azure portal 画面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
-
 ## <a name="create-a-new-tenant-for-your-organization"></a>組織の新しいテナントを作成する
 Azure portal にサインインすると、組織の新しいテナントを作成できます。 新しいテナントは組織を表し、社内外のユーザー向けに特定インスタンスの Microsoft クラウド サービスを管理するために役立ちます。
 
 ### <a name="to-create-a-new-tenant"></a>新しいテナントを作成するには
-1. **[リソースの作成]** 、 **[ID]** 、 **[Azure Active Directory]** の順に選択します。
+
+1. 全体管理者アカウントを使用して、組織の [Azure portal](https://portal.azure.com/) にサインインします。
+
+1. Azure portal メニューから **[リソースの作成]** を選択します。  
+
+    ![Azure Active Directory の [リソースの作成] ページ](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+
+1. **[ID]** を選択してから、 **[Azure Active Directory]** を選択します。
 
     **[ディレクトリの作成]** ページが表示されます。
 
     ![Azure Active Directory の作成ページ](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
 
-2.  **[ディレクトリの作成]** ページで、次の情報を入力します。
+1.  **[ディレクトリの作成]** ページで、次の情報を入力します。
     
     - **[組織名]** ボックスに「_Contoso_」と入力します。
 
@@ -49,7 +51,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
     - **[国またはリージョン]** ボックスは _[米国]_ オプションのままにします。
 
-3. **作成** を選択します。
+1. **作成** を選択します。
 
 新しいテナントは、ドメイン contoso.onmicrosoft.com で作成されます。
 

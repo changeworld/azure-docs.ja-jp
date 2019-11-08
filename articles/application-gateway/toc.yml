@@ -147,6 +147,8 @@
           href: ingress-controller-letsencrypt-certificate-application-gateway.md
         - name: WebSocket を Application Gateway に公開する
           href: ingress-controller-expose-websocket-server.md
+        - name: Application Gateway のメトリックを使用した AKS ポッドの自動スケーリング
+          href: ingress-controller-autoscale-pods.md
     - name: URL に基づいてルーティングする
       items:
         - name: Azure PowerShell
