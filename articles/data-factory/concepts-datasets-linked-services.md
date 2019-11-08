@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory でのデータセット | Microsoft Docs
+title: Azure Data Factory のデータセット
 description: Data factory のデータセットについて説明します。 データセットは、入力/出力データを表します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: c4daa5989013ba8d5c5a7136fe0878fae64f0357
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 74c35d5de74fbf8ecc04cfec336bfeb4a8e669fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030565"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681525"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]

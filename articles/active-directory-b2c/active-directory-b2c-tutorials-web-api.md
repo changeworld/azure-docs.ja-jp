@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bb33f7f2ec917e9ae168a013a8775ec4f551848d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cd2eff7e3fafc1a6f3418a1f86629cfb1584e89
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475017"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641747"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して ASP.NET Web API へのアクセスを許可する
 
@@ -39,7 +39,7 @@ ms.locfileid: "73475017"
 
 アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
 
-アプリケーションをお使いの Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [プレビュー エクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 

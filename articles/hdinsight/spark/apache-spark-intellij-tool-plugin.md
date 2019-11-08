@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Toolkit for IntelliJ:HDInsight クラスター向けの Spark アプリケーション
+title: チュートリアル - Azure Toolkit for IntelliJ:Spark アプリ - HDInsight
 description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: ff08d3ffde958a8e64dce911ace83cec87201117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b2705f209b2acf1198ea555a5de2f79987a4d0e3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327282"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494241"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>チュートリアル:Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -448,7 +448,7 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 
 1. **[削除]** を選択します。 **[はい]** を選択します。
 
-![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターを削除する")
+![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
 
 ## <a name="next-steps"></a>次の手順
 

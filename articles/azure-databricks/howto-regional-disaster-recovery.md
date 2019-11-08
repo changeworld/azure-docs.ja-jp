@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596892"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601756"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks クラスターに対するリージョンのディザスター リカバリー
 
@@ -47,7 +47,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
    このコマンド ライン インターフェイスには、Azure Databricks REST API が使いやすいようラップされています。そのためこの記事では、自動化された手順の大半でコマンド ライン インターフェイスを使用したコード例が多くなっています。
 
-   移行手順を実施する前に、実際に作業を行う予定のデスクトップ コンピューターまたは仮想マシンに databricks-cli をインストールしてください。 詳しくは、[Databricks CLI のインストール](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)に関するページをご覧ください。
+   移行手順を実施する前に、実際に作業を行う予定のデスクトップ コンピューターまたは仮想マシンに databricks-cli をインストールしてください。 詳しくは、[Databricks CLI のインストール](/azure/databricks/dev-tools/databricks-cli)に関するページをご覧ください。
 
    ```bash
    pip install databricks-cli
@@ -286,7 +286,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
 8. **Azure Blob Storage と Azure Data Lake Storage のマウントを移行する**
 
-   Notebook ベースのソリューションを使って、[Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) と [Azure Data Lake Storage (Gen 2)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) のマウント ポイントをすべて手動で再マウントします。 プライマリ ワークスペースにはストレージ リソースがマウント済みかと思いますので、それをセカンダリ ワークスペースについても行う必要があります。 マウントのための外部 API は存在しません。
+   Notebook ベースのソリューションを使って、[Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html) と [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) のマウント ポイントをすべて手動で再マウントします。 プライマリ ワークスペースにはストレージ リソースがマウント済みかと思いますので、それをセカンダリ ワークスペースについても行う必要があります。 マウントのための外部 API は存在しません。
 
 9. **クラスター初期化スクリプトを移行する**
 
@@ -302,7 +302,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
 10. **アクセスの制御を手動で再構成して再適用する**
 
-    既存のプライマリ ワークスペースが Premium レベル (SKU) を使用するように構成されている場合、高い確率で [Access Control 機能](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)も使用していることが考えられます。
+    既存のプライマリ ワークスペースが Premium レベル (SKU) を使用するように構成されている場合、高い確率で [Access Control 機能](/azure/databricks/administration-guide/access-control/index)も使用していることが考えられます。
 
     Access Control 機能をご利用の場合は、アクセスの制御を各種リソース (ノートブック、クラスター、ジョブ、テーブル) に手動で再適用してください。
 
@@ -312,4 +312,4 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
 ## <a name="next-steps"></a>次の手順
 
-詳しくは、[Azure Databricks のドキュメント](https://docs.azuredatabricks.net/user-guide/index.html)をご覧ください。
+詳しくは、[Azure Databricks のドキュメント](index.yml)をご覧ください。

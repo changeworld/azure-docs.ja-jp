@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Salesforce Marketing Cloud からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Salesforce Marketing Cloud からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Salesforce Marketing Cloud からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 93d875fa67e9954268cec26f7413b6a4a4131f9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d66341507b9237e4d41c31997fd59b8a038cb433
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931026"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680373"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce Marketing Cloud からデータをコピーする
 

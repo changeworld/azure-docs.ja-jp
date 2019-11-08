@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e633c5742b8a7882149a347ced46e55440cb6913
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398640"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492442"
 ---
 # <a name="feature-engineering-in-data-science"></a>データ サイエンスにおける特徴エンジニアリング
 この記事では、特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。 このプロセスの説明に使用されている例は、Azure Machine Learning Studio から引用しています。 
@@ -37,8 +37,6 @@ ms.locfileid: "60398640"
 * [SQL Server のデータの特徴を作成する](create-features-sql-server.md)
 * [Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する](create-features-hive.md)
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 ## <a name="create-features-from-your-data---feature-engineering"></a>データから特徴を作成する - 特徴エンジニアリング
 トレーニング データは、例 (行に格納されているレコードや観測) からなるマトリックスで構成され、それぞれが特徴のセット (列に格納されている変数やフィールド) を持っています。 実験計画で指定された特徴は、データ内のパターンを特徴付けることが期待されます。 生のデータ フィールドの多くは、モデルのトレーニングに使用される、選択された特徴セットに直接含めることができますが、多くの場合、追加の (エンジニアリングされた) 特徴は、強化されたトレーニング データセットを生成するために生データの特徴から構築される必要があります。
 
@@ -50,7 +48,7 @@ ms.locfileid: "60398640"
 * [特徴ハッシュ](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>例 1:回帰モデルに時間的な特徴を追加する
-Azure Machine Learning Studio で ”自転車の需要予測” の実験を使用して、回帰タスクの特徴をエンジニアリングする方法を見てみましょう。 この実験の目的は、自転車の需要、つまり特定の月 / 日 / 時間内でのレンタル自転車の数を予測することです。 データセットの "Bike Rental UCI データセット" は、生の入力データとして使用します。 このデータセットは、米国のワシントン D.C. で自転車のレンタル ネットワークを管理している Capital Bikeshare 社の実際のデータに基づいています。 データセットは、2011 年と 2012 年の 1 日の特定の時間帯のレンタル自転車の数を表し、17379 行と 17 列が含まれています。 生の特徴セットには、気象条件 (温度 / 湿度 / 風速) やその日の種類 (休日 / 平日) が含まれます。 予測するフィールドは "cnt" カウントです。これは、特定の時間帯のレンタル自転車数を 1 ～ 977 の範囲内で表しています。
+Azure Machine Learning Studio (クラシック) で "自転車の需要予測" 実験を使用して、回帰タスクの特徴をエンジニアリングする方法を見てみましょう。 この実験の目的は、自転車の需要、つまり特定の月 / 日 / 時間内でのレンタル自転車の数を予測することです。 データセットの "Bike Rental UCI データセット" は、生の入力データとして使用します。 このデータセットは、米国のワシントン D.C. で自転車のレンタル ネットワークを管理している Capital Bikeshare 社の実際のデータに基づいています。 データセットは、2011 年と 2012 年の 1 日の特定の時間帯のレンタル自転車の数を表し、17379 行と 17 列が含まれています。 生の特徴セットには、気象条件 (温度 / 湿度 / 風速) やその日の種類 (休日 / 平日) が含まれます。 予測するフィールドは "cnt" カウントです。これは、特定の時間帯のレンタル自転車数を 1 ～ 977 の範囲内で表しています。
 
 トレーニング データに効果的な特徴を構築することを目標として、4 つの回帰モデルは同じアルゴリズムを使用して構築されましたが、トレーニング データセットはそれぞれ異なります。 次の 4 つのデータセットは同じ生の入力データを表しますが、特徴セットの数は増加しています。 これらの特徴は、次の 4 つのカテゴリに分類されます。
 

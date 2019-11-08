@@ -1,24 +1,19 @@
 ---
 title: Azure Application Insights の使用量とコストを管理する | Microsoft Docs
 description: Application Insights でテレメトリの量を管理し、コストを監視します。
-services: application-insights
-documentationcenter: ''
-author: DaleKoetke
-manager: carmonm
-ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 10/03/2019
+author: DaleKoetke
 ms.author: dalek
-ms.openlocfilehash: f9d92f03b1f55ad9d1f1e272886095ae48033266
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 10/28/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: eedb9d811e35d606f4d3e1df55d9303d68678b3c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750398"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478742"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -27,7 +22,7 @@ ms.locfileid: "72750398"
 
 Application Insights は、Azure とオンプレミスのどちらでホストされているかに関係なく、Web アプリケーションの可用性、パフォーマンス、使用状況の監視に必要なものすべてを使えるように設計されています。 Application Insights では、.NET、Java、Node.js など、一般的な言語とフレームワークがサポートされています。また、Azure DevOps、Jira、PagerDuty などの DevOps プロセスおよびツールと統合できます。 アプリケーションの監視コストがどのように決まるかを把握することが重要です。 この記事では、アプリケーションの監視コストを発生させるものを確認し、それらを予防的に監視および制御する方法について説明します。
 
-Application Insights の課金のしくみについてご質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)に投稿してください。
+Application Insights の課金のしくみについてご質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)に投稿してください。
 
 ## <a name="pricing-model"></a>価格モデル
 
@@ -39,7 +34,7 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 Application Insights をまだ使用していない場合は、[Azure Monitor 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=monitor)を使用して、Application Insights の使用コストを見積もることができます。 まず、[検索] ボックスに「Azure Monitor」と入力し、結果として表示される Azure Monitor タイルをクリックします。 ページを下にスクロールして Azure Monitor に移動し、[種類] ドロップダウンから [Application Insights] を選択します。  知りたいことは Application Insights によるアプリケーションの監視で収集されるデータの量なので、ここでは 1 か月間に収集することが予想されるデータの GB 数を入力できます。 
 
-これに対応する方法は 2 つあります。1 つは、ASP.NET SDK で利用できる既定の監視とアダプティブ サンプリングを使用する方法で、もう 1 つは他の似た顧客の実績に基づいてデータ インジェストを推定する方法です。 
+これに対応する方法は 2 つあります。1 つは、ASP.NET SDK で利用できる既定の監視とアダプティブ サンプリングを使用する方法で、もう 1 つは他の似た顧客の実績に基づいてデータ インジェストを推定する方法です。
 
 ### <a name="data-collection-when-using-sampling"></a>サンプリングを使用する場合のデータ収集
 
@@ -49,7 +44,7 @@ ASP.NET SDK の[アダプティブ サンプリング](https://docs.microsoft.co
 
 ### <a name="learn-from-what-similar-customers-collect"></a>似た顧客の収集を参考にする
 
-Application Insights 用の Azure Monitoring 料金計算ツールでは、"アプリケーションのアクティビティに基づいてデータ量を見積もる" 機能を有効にした場合、アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーセンタイル量が表示されます。 もちろん、これらのアプリケーションでの Application Insights の構成は範囲が広いので (既定の[サンプリング](../../azure-monitor/app/sampling.md)を使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 しかし、これは、他の似た顧客が行っていることを理解するための出発点となります。 
+Application Insights 用の Azure Monitoring 料金計算ツールでは、"アプリケーションのアクティビティに基づいてデータ量を見積もる" 機能を有効にした場合、アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーセンタイル量が表示されます。 これらのアプリケーションでの Application Insights の構成は範囲が広いので (既定の[サンプリング](../../azure-monitor/app/sampling.md)を使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 しかし、これは、他の似た顧客が行っていることを理解するための出発点となります。 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>ご自分の使用量を理解してコストを見積もる
 
@@ -71,30 +66,68 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 ![左側のメニューで [課金] を選択します](./media/pricing/02-billing.png)
 
-## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Azure の請求書での Application Insights の使用状況の表示 
+### <a name="using-data-volume-metrics"></a>データ ボリューム メトリックの使用
+<a id="understanding-ingested-data-volume"></a>
 
-Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 リソースの種類 (Application Insights の場合は microsoft.insights/components) でフィルターを追加すると、支出を追跡できます。
+データ ボリュームについてさらに詳しく把握するには、Application Insights リソースの **[メトリック]** を選択して、新しいグラフを追加します。 グラフのメトリックとして、 **[ログ ベースのメトリック]** の **[データ ポイントの量]** を選択します。 **[Apply splitting]\(分割の適用\)** をクリックし、 **[Telemetryitem type]\(Telemetryitem 型\)** でグループを選択します。
 
-[Azure portal から使用状況をダウンロード](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)することで、ご自分の使用状況をさらに詳しく理解できます。 ダウンロードしたスプレッドシートでは、Azure リソースごとに、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Application Insights のリソースからの使用量を検索することができます。それには、まず、[測定カテゴリ] 列でフィルター処理を行って "Application Insights" と "Log Analytics" を表示し、次に [インスタンス ID] 列に対するフィルター ("contains microsoft.insights/components") を追加します。  すべての Azure Monitor コンポーネントに対して 1 つのログ バックエンドがあるため、ほとんどの Application Insights の使用量は、メーターでは Log Analytics の測定カテゴリで報告されます。  Application Insights の測定カテゴリで報告されるのは、従来の価格レベルおよび複数ステップ Web テストでの Application Insights リソースのみです。  使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)」を参照してください。 
+![メトリックを使用してデータ ボリュームを確認する](./media/pricing/10-billing.png)
 
-## <a name="managing-your-data-volume"></a>データ ボリュームの管理 
+### <a name="queries-to-understand-data-volume-details"></a>クエリを実行してデータ ボリュームの詳細を理解する
 
-アプリから送信されるデータの量を把握するには、次の操作を行います。
-
-* **[使用量と推定コスト]** ウィンドウに移動し、毎日のデータ ボリュームのグラフを確認します。 
-* メトリックス エクスプローラーで、新しいグラフを追加します。 グラフ メトリックについては、 **[データ ポイントの量]** を選択します。 **[グループ化]** を有効にし、 **[データの種類]** を選択してグループ化します。
-* `systemEvents` データ型を使用します。 たとえば、過去 1 日に取り込まれたデータ ボリュームを表示するためのクエリは、次のようになります。
+たとえば、次のクエリを実行すると、`systemEvents` テーブルを使用して、過去 24 時間に取り込まれたデータ ボリュームを確認できます。
 
 ```kusto
 systemEvents 
-| where timestamp >= ago(1d)
+| where timestamp >= ago(24h)
 | where type == "Billing" 
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes)
 ```
 
-このクエリは、データ ボリュームに対するアラートを設定するために、[Azure ログ アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)で使用できます。 
+または、過去 30 日間のデータ量 (バイト単位) のデータ種類別グラフを表示するには、次のようにします。
+
+```kusto
+systemEvents 
+| where timestamp >= startofday(ago(30d))
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
+```
+
+このクエリは、データ ボリュームに対するアラートを設定するために、[Azure ログ アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)で使用できることに注意してください。  
+
+テレメトリ データの変化についてさらに詳しく調べるため、次のクエリを使用して、種類別のイベント数を確認してみましょう。
+
+```kusto
+systemEvents 
+| where timestamp >= startofday(ago(30d))
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| summarize count() by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
+```
+
+バイト単位のボリュームで示されているのと同様の変化が数にも見られる場合は、数が増えているイベントのデータの種類に焦点を当てることができます。  たとえば、依存関係の数が増加したことがわかった場合は、次のクエリを使用して、増加の原因となっている操作を把握します。
+
+```kusto
+dependencies 
+| where timestamp >= startofday(ago(30d))
+| summarize count() by operation_Name, bin(timestamp, 1d)  
+| render barchart  
+```
+
+
+## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Azure の請求書での Application Insights の使用状況の表示 
+
+Azure では、[Azure Cost Management と課金](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 リソースの種類 (Application Insights の場合は microsoft.insights/components) でフィルターを追加すると、支出を追跡できます。
+
+[Azure portal から使用状況をダウンロード](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)することで、使用状況をさらに詳しく理解できます。
+ダウンロードしたスプレッドシートでは、Azure リソースごとに、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Application Insights のリソースからの使用量を検索することができます。それには、まず、[測定カテゴリ] 列でフィルター処理を行って "Application Insights" と "Log Analytics" を表示し、次に [インスタンス ID] 列に対するフィルター ("contains microsoft.insights/components") を追加します。  すべての Azure Monitor コンポーネントに対して 1 つのログ バックエンドがあるため、ほとんどの Application Insights の使用量は、メーターでは Log Analytics の測定カテゴリで報告されます。  Application Insights の測定カテゴリで報告されるのは、従来の価格レベルおよび複数ステップ Web テストでの Application Insights リソースのみです。  使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)」を参照してください。 
+
+
+## <a name="managing-your-data-volume"></a>データ ボリュームの管理 
 
 送信するデータの量は、次の手法で管理できます。
 
@@ -172,8 +205,6 @@ Application Insights リソースの既定の保持期間は 90 日です。 App
 
 この保持期間は `retentionInDays` パラメーターを使用して [PowerShell でプログラムによって設定](powershell.md#set-the-data-retention)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この消去機能は、Azure Resource Manager 経由でのみ公開されます。また、使用するときは細心の注意を払う必要があります。 
 
-2019 年 12 月の初めに長期の保持期間に対する課金が開始する場合、90 日を超えて保持されているデータには、Azure Log Analytics のデータ保持期間に対して現在請求されているのと同じ料金で課金されます。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。 [この提案に投票する](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ことによって、可変の保持期間の進捗に関する最新情報を把握してください。 
-
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights の使用でのデータ転送料金
 
 Application Insights にデータを転送する場合、データ帯域幅の料金が発生する場合があります。 [Azure 帯域幅の価格ページ](https://azure.microsoft.com/pricing/details/bandwidth/)で説明されているように、2 つのリージョンに存在する Azure サービス間のデータ転送は、通常の料金で送信データ転送として課金されます。 受信データ転送は無料です。 ただし、この料金は、Application Insights のデータ インジェストのコストと比へると非常に小さい (数パーセント) ものです。 そのため、Log Analytics のコスト管理では、ご自分で取り込まれたデータ ボリュームに注目する必要があり、それについて理解するためのガイダンスが[こちら](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)に用意されています。   
@@ -198,7 +229,7 @@ Per Node (旧 Enterprise) レベルは、料金がノード単位となってお
 お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 > [!NOTE]
-> 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)する方法、[新しいモデルを有効にする方法](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)をご確認ください。
+> 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#understanding-your-azure-monitor-costs)する方法、[新しいモデルを有効にする方法](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#azure-monitor-pricing-model)をご確認ください。
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Per Node レベルと Operations Management Suite のサブスクリプションの権利
 
@@ -236,7 +267,7 @@ Per Node (旧 Enterprise) レベルは、料金がノード単位となってお
   * SDK バージョン 2.2 以降では、Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) と [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の両方が、各アプリケーション ホストをノードとして報告します。 例としては、物理サーバーと VM ホストのコンピューター名やクラウド サービスのインスタンス名があります。  唯一の例外は、[.NET Core](https://dotnet.github.io/) と Application Insights Core SDK のみを使用するアプリケーションです。 その場合は、ホスト名が使用できないためすべてのホストに対して 1 つのノードが報告されます。 
   * 以前のバージョンの SDK では、[Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく 1 つのノードのみ報告します。 
   * アプリケーションで SDK を使用して**ロール インスタンス**をカスタム値に設定すると、既定ではノード カウントの決定に同じ値が使用されます。 
-  * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、ノード カウントが (クライアント コンピューターやモバイル デバイスの数が多いため) 非常に大きい数値を返す可能性があります。 
+  * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、(クライアント コンピューターやモバイル デバイスの数が多いため) ノード カウントで大きい値が返される可能性があります。 
 
 ## <a name="automation"></a>Automation
 
@@ -250,4 +281,5 @@ Azure Resource Management を使用して、価格レベルを設定するスク
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: ../../azure-monitor/app/app-insights-overview.md
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/

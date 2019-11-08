@@ -6,6 +6,7 @@ documentationcenter: na
 author: v-miegge
 manager: dcscontentpm
 editor: ''
+tags: virtual-network
 ms.assetid: 1a3d1e84-f793-41b4-aa04-774a7e8f7719
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219244"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796232"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
 

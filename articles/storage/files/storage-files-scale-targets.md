@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 766dacb69a3f1857197684f552d05a1376e94509
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514869"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615770"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -98,7 +98,7 @@ Azure File Sync の場合、2 つのステージで重要です。
 | 同期されるオブジェクトの数| 125,000 オブジェクト (約 1 % のチャーン) |
 | データセットのサイズ| 50 GiB |
 | 平均ファイル サイズ | ～ 500 KiB |
-| アップロードのスループット | 30 オブジェクト/秒 |
+| アップロードのスループット | 20 オブジェクト/秒 |
 | 完全なダウンロードのスループット* | 60 オブジェクト/秒 |
 
 \* クラウド階層化が有効になっている場合、ファイル データの一部のみがダウンロードされるため、パフォーマンスが向上する可能性があります。 Azure File Sync は、いずれかのエンドポイントで変更されたときにのみ、キャッシュされたファイルのデータをダウンロードします。 階層化されたファイルまたは新しく作成されたファイルについては、エージェントはファイル データをダウンロードせず、代わりにすべてのサーバー エンドポイントへの名前空間の同期のみを行います。 また、エージェントは、ユーザーがアクセスした階層化されたファイルの部分的なダウンロードもサポートします。 

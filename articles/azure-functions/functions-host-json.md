@@ -1,20 +1,18 @@
 ---
 title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596873"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469204"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
@@ -73,6 +71,9 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
             }
         }
     },
+    "managedDependency": {
+        "enabled": true
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -80,10 +81,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ],
-    "managedDependency": {
-        "enabled": true
-    }
+    "watchDirectories": [ "Shared", "Test" ]
 }
 ```
 
@@ -150,9 +148,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 ## <a name="functiontimeout"></a>functionTimeout
 
 すべての関数のタイムアウト期間を示します。 これは、期間文字列形式に従います。 サーバーレス従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。  
-専用の (App Service) プランでは、全体的な制限はなく、既定値はランタイムのバージョンによって異なります。 
-+ バージョン 1.x: 既定値は *null* であり、タイムアウトしないことを示します。   
-+ バージョン 2.x: 既定値は 30 分です。 値 `-1` は、無制限の実行を示します。
+専用 (App Service) プランでは、全体的な制限はなく、既定値は 30 分です。 値 `-1` は、無制限の実行を示します。
 
 ```json
 {
@@ -251,6 +247,18 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |---------|---------|---------| 
 |isEnabled|false|コンソール ログ記録を有効または無効にします。| 
 
+## <a name="manageddependency"></a>managedDependency
+
+マネージド依存関係は、現在 PowerShell ベースの関数でのみサポートされている機能です。 この機能を使用すると、サービスによって依存関係を自動的に管理できます。 `enabled` プロパティが `true` に設定されている場合は、`requirements.psd1` ファイルが処理されます。 いずれかのマイナー バージョンがリリースされると、依存関係が更新されます。 詳細については、PowerShell の記事の[マネージド依存関係](functions-reference-powershell.md#dependency-management)に関する記事をご覧ください。
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
+}
+```
+
 ## <a name="queues"></a>queues
 
 構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md#host-json)に関する記事に記載されています。  
@@ -298,18 +306,6 @@ v2 ランタイムを対象とする関数アプリでは、バージョン文�
 ```json
 {
     "watchDirectories": [ "Shared" ]
-}
-```
-
-## <a name="manageddependency"></a>managedDependency
-
-マネージド依存関係は、現在 PowerShell ベースの関数でのみサポートされているプレビュー機能です。 この機能を使用すると、サービスによって依存関係を自動的に管理できます。 enabled プロパティが true に設定されている場合、[requirements.psd1](functions-reference-powershell.md#dependency-management) ファイルが処理されます。 いずれかのマイナー バージョンがリリースされると、依存関係が更新されます。
-
-```json
-{
-    "managedDependency": {
-        "enabled": true
-    }
 }
 ```
 

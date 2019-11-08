@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958557"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474530"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでグループ ポリシーを管理する
 
 Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジェクトとコンピューター オブジェクトの設定は、多くの場合、グループ ポリシー オブジェクト (GPO) を使用して管理されます。 Azure AD DS には、*AADDC Users* コンテナーと *AADDC Computers* コンテナー用の組み込みの GPO が用意されています。 これらの組み込みの GPO をカスタマイズして、環境のニーズに合わせてグループ ポリシーを構成できます。 *Azure AD DC 管理者*グループのメンバーは、Azure AD DS ドメイン内でグループ ポリシー管理特権を持っています。また、カスタムの GPO と組織単位 (OU) を作成することもできます。 グループ ポリシーとそのしくみの詳細については、「[グループ ポリシーの概要][group-policy-overview]」を参照してください。
+
+ハイブリッド環境では、オンプレミスの AD DS 環境内で構成されているグループ ポリシーは、Azure AD DS に同期されません。 Azure AD DS のユーザーまたはコンピューターの構成設定を定義するには、既定のいずれかの Gpo を編集するか、カスタム GPO を作成します。
 
 この記事では、グループ ポリシーの管理ツールをインストールし、組み込みの GPO を編集して、カスタム GPO を作成する方法について説明します。
 

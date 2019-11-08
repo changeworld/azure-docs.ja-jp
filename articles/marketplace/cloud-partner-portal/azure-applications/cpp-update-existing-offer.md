@@ -4,15 +4,16 @@ description: Azure Marketplace にある既存の Azure アプリケーション
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pabutler
-ms.openlocfilehash: a36df757e3a2682af641101ed82583a0cd293e0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6854e445ea63639866e9e39a6afc725237bbc8fe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942813"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826110"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>既存の Azure アプリケーション プランを更新する
 

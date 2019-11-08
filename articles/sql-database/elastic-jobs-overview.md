@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Elastic Database ジョブ (プレビュー) | Microsoft Docs
+title: Elastic Database ジョブ (プレビュー)
 description: Elastic Database ジョブ (プレビュー) を構成すると、いくつかの Azure SQL データベースに一括して Transact-SQL (T-SQL) スクリプトを実行できます
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3a0aa6e28ea4c40d5cad5ba99edec344c7979acf
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f5eaed807e69dcc1a0b7ad426bab91abd2f8309a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935092"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827264"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>エラスティック ジョブの作成、構成、および管理
 

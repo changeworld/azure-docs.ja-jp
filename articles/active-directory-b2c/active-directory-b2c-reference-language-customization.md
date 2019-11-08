@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bced7a4b994172a1a2076149d6f25adb39c99b54
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 62d75267421d1f7587f136ea1e76f7c4b4341a37
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015560"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742646"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
 
@@ -203,56 +203,56 @@ Azure AD B2C では、以下の言語がサポートされています。 ユー
 
 | 言語              | 言語コード | ユーザー フロー         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| アラビア語                | ar            | :x:                | :heavy_check_mark: |
-| ブルガリア語             | bg            | :x:                | :heavy_check_mark: |
-| ベンガル語                | bn            | :heavy_check_mark: | :x:                |
-| カタルニア語               | ca            | :x:                | :heavy_check_mark: |
-| チェコ語                 | cs            | :heavy_check_mark: | :heavy_check_mark: |
-| デンマーク語                | da            | :heavy_check_mark: | :heavy_check_mark: |
-| ドイツ語                | de            | :heavy_check_mark: | :heavy_check_mark: |
-| ギリシャ語                 | el            | :heavy_check_mark: | :heavy_check_mark: |
-| 英語               | en            | :heavy_check_mark: | :heavy_check_mark: |
-| スペイン語               | es            | :heavy_check_mark: | :heavy_check_mark: |
-| エストニア語              | et            | :x:                | :heavy_check_mark: |
-| バスク語                | eu            | :x:                | :heavy_check_mark: |
-| フィンランド語               | fi            | :heavy_check_mark: | :heavy_check_mark: |
-| フランス語                | fr            | :heavy_check_mark: | :heavy_check_mark: |
-| ガリシア語              | gl            | :x:                | :heavy_check_mark: |
-| グジャラート語              | gu            | :heavy_check_mark: | :x:                |
-| ヘブライ語                | he            | :x:                | :heavy_check_mark: |
-| ヒンディー語                 | hi            | :heavy_check_mark: | :heavy_check_mark: |
-| クロアチア語              | hr            | :heavy_check_mark: | :heavy_check_mark: |
-| ハンガリー語             | hu            | :heavy_check_mark: | :heavy_check_mark: |
-| インドネシア語            | id            | :x:                | :heavy_check_mark: |
-| イタリア語               | it            | :heavy_check_mark: | :heavy_check_mark: |
-| 日本語              | ja            | :heavy_check_mark: | :heavy_check_mark: |
-| カザフ語                | kk            | :x:                | :heavy_check_mark: |
-| カンナダ語               | kn            | :heavy_check_mark: | :x:                |
-| 韓国語                | ko            | :heavy_check_mark: | :heavy_check_mark: |
-| リトアニア語            | lt            | :x:                | :heavy_check_mark: |
-| ラトビア語               | lv            | :x:                | :heavy_check_mark: |
-| マラヤーラム語             | ml            | :heavy_check_mark: | :x:                |
-| マラーティー語               | mr            | :heavy_check_mark: | :x:                |
-| マレー語                 | ms            | :heavy_check_mark: | :heavy_check_mark: |
-| ノルウェー語 - ブークモール      | nb            | :heavy_check_mark: | :x:                |
-| オランダ語                 | nl            | :heavy_check_mark: | :heavy_check_mark: |
-| ノルウェー語             | ×            | :x:                | :heavy_check_mark: |
-| パンジャーブ語               | pa            | :heavy_check_mark: | :x:                |
-| ポーランド語                | pl            | :heavy_check_mark: | :heavy_check_mark: |
-| ポルトガル語 - ブラジル   | pt-br         | :heavy_check_mark: | :heavy_check_mark: |
-| ポルトガル語 - ポルトガル | pt-pt         | :heavy_check_mark: | :heavy_check_mark: |
-| ルーマニア語              | ro            | :heavy_check_mark: | :heavy_check_mark: |
-| ロシア語               | ru            | :heavy_check_mark: | :heavy_check_mark: |
-| スロバキア語                | sk            | :heavy_check_mark: | :heavy_check_mark: |
-| スロベニア語             | sl            | :x:                | :heavy_check_mark: |
-| セルビア語 - キリル    | sr-cryl-cs    | :x:                | :heavy_check_mark: |
-| セルビア語 - ラテン       | sr-latn-cs    | :x:                | :heavy_check_mark: |
-| スウェーデン語               | sv            | :heavy_check_mark: | :heavy_check_mark: |
-| タミル語                 | ta            | :heavy_check_mark: | :x:                |
-| テルグ語                | te            | :heavy_check_mark: | :x:                |
-| タイ語                  | th            | :heavy_check_mark: | :heavy_check_mark: |
-| トルコ語               | tr            | :heavy_check_mark: | :heavy_check_mark: |
-| ウクライナ語             | uk            | :x:                | :heavy_check_mark: |
-| ベトナム語            | vi            | :x:                | :heavy_check_mark: |
-| 中国語 - 簡体字  | zh-hans       | :heavy_check_mark: | :heavy_check_mark: |
-| 中国語 - 繁体字 | zh-hant       | :heavy_check_mark: | :heavy_check_mark: |
+| アラビア語                | ar            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ブルガリア語             | bg            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ベンガル語                | bn            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| カタルニア語               | ca            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| チェコ語                 | cs            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| デンマーク語                | da            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ドイツ語                | de            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ギリシャ語                 | el            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| 英語               | en            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| スペイン語               | es            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| エストニア語              | et            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| バスク語                | eu            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| フィンランド語               | fi            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| フランス語                | fr            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ガリシア語              | gl            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| グジャラート語              | gu            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| ヘブライ語                | he            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ヒンディー語                 | hi            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| クロアチア語              | hr            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ハンガリー語             | hu            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| インドネシア語            | id            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| イタリア語               | it            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| 日本語              | ja            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| カザフ語                | kk            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| カンナダ語               | kn            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| 韓国語                | ko            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| リトアニア語            | lt            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ラトビア語               | lv            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| マラヤーラム語             | ml            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| マラーティー語               | mr            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| マレー語                 | ms            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ノルウェー語 - ブークモール      | nb            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| オランダ語                 | nl            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ノルウェー語             | ×            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| パンジャーブ語               | pa            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| ポーランド語                | pl            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ポルトガル語 - ブラジル   | pt-br         | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ポルトガル語 - ポルトガル | pt-pt         | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ルーマニア語              | ro            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ロシア語               | ru            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| スロバキア語                | sk            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| スロベニア語             | sl            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| セルビア語 - キリル    | sr-cryl-cs    | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| セルビア語 - ラテン       | sr-latn-cs    | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| スウェーデン語               | sv            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| タミル語                 | ta            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| テルグ語                | te            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![×](media/active-directory-b2c-reference-language-customization/no.png) |
+| タイ語                  | th            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| トルコ語               | tr            | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ウクライナ語             | uk            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ベトナム語            | vi            | ![×](media/active-directory-b2c-reference-language-customization/no.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| 中国語 - 簡体字  | zh-hans       | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |
+| 中国語 - 繁体字 | zh-hant       | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) | ![はい](media/active-directory-b2c-reference-language-customization/yes.png) |

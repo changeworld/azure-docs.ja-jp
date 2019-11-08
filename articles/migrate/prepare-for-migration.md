@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d2eeada500de0f174178234ab92b51bcf16b3502
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176727"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480121"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
-この記事では、[Azure Migrate Server Migration](migrate-services-overview.md#azure-migrate-server-migration) を使用してオンプレミスのマシンとクラウドベースのマシンを Azure に移行する前にマシンに対して必要になる準備作業の手順を紹介します。
+この記事では、[Azure Migrate Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) を使用してオンプレミスのマシンを Azure に移行する前にマシンに対して必要になる準備作業の手順を紹介します。
 
 
 この記事では、次の内容について説明します。

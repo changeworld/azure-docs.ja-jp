@@ -12,18 +12,23 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b0fab51e002ecb431bf68f58984290889296b2a9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097556"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470113"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
 Azure では、組み込みの診断機能により、 [App Service アプリ](overview.md)のデバッグを容易に行うことができます。 この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
 この記事では、[Azure portal](https://portal.azure.com) と Azure CLI を使用して診断ログを操作します。 Visual Studio で診断ログを使用する方法の詳細については、「 [Visual Studio での Azure のトラブルシューティング](troubleshoot-dotnet-visual-studio.md)」を参照してください。
+
+> [!NOTE]
+> この記事のログ記録の手順に加えて、Azure Monitoring による新しい統合ログ機能があります。 この機能については、[[ログ] ページと [診断設定 (プレビュー)] ページ](https://aka.ms/appsvcblog-azmon)で確認できます。 
+>
+>
 
 |種類|プラットフォーム|Location|説明|
 |-|-|-|-|

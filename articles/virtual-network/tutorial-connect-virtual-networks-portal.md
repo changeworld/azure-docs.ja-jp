@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164057"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499864"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -44,7 +44,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 ## <a name="create-virtual-networks"></a>仮想ネットワークを作成する
 
-1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
 2. **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
 3. **[基本]** ページで次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用します。
 
@@ -54,7 +54,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |Resource group| **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
     |リージョン| **[米国東部]** を選択します。|
     |名前|myVirtualNetwork1|
-   
+
 4. **[IP アドレス]** ページで、 **[アドレス空間]** フィールドに「10.0.0.0/16」と入力します。 下の **[サブネットの追加]** ボタンをクリックし、 **[サブネット名]** に「Subnet1」と入力し、 **[サブネット アドレス範囲]** に「10.0.0.0/24」と入力します。
    
 5. 次のように値を変更して、手順 1. ～ 3. を繰り返します。
@@ -69,7 +69,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 ## <a name="peer-virtual-networks"></a>仮想ネットワークをピアリングする
 
 1. Azure Portal の上部にある [検索] ボックスで、「*MyVirtualNetwork1*」の入力を開始します。 検索結果に **[myVirtualNetwork1]** が表示されたら、それを選択します。
-2. 次の図に示すように、 **[設定]** で **[ピアリング]** を選択し、 **[+ 追加]** を選択します。
+2. 次の図に示すように、 **[設定]** で **[ピアリング]** を選択してから **[追加]** を選択します。
 
     ![ピアリングを作成する](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -96,7 +96,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
 2. **[コンピューティング]** 、 **[Windows Server 2016 Datacenter]** の順に選択します。 別のオペレーティング システムを選択することもできますが、以降の手順では、 **[Windows Server 2016 Datacenter]** を選択したという前提で説明します。 
 3. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
 

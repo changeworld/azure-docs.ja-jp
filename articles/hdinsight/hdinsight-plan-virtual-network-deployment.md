@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2647a8c33bf777cb2d97dcfe89799097ad719ac3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077023"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498169"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
@@ -248,6 +248,10 @@ HDInsight クラスターからの送信トラフィックを制御する方法�
 特定のサービスのポート一覧については、「[HDInsight 上の Apache Hadoop サービスで使用されるポート](hdinsight-hadoop-port-settings-for-services.md)」をご覧ください。
 
 仮想アプライアンスのファイアウォール ルールの詳細については、「[virtual appliance scenario (仮想アプライアンス シナリオ)](../virtual-network/virtual-network-scenario-udr-gw-nva.md)」をご覧ください。
+
+## <a name="load-balancing"></a>負荷分散
+
+HDInsight クラスターを作成すると、ロード バランサーも作成されます。 このロード バランサーの種類は [Basic SKU レベル](../load-balancer/load-balancer-overview.md#skus)にあり、一定の制約があります。 これらの制約の 1 つは、異なるリージョンに 2 つの仮想ネットワークがある場合、基本的なロード バランサーに接続できないことです。 詳細については、[仮想ネットワークに関する FAQ: グローバル vnet ピアリングでの制約](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c6b78e62afb43562910c872d31e2c9f564040da
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935641"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806096"
 ---
 # <a name="appsource-package-preparation"></a>AppSource パッケージの準備
 
@@ -80,7 +81,7 @@ AppSource パッケージには、いくつかの追加ファイルが必要で�
 1. jpg (32 x 32 の解像度)
 2. html (HTML 形式のファイル)
 3. **Content_Types.xml** (上記と同じ)
-4. Xml
+4. xml
 
 input.xml のコード例を次に示します。 下の表の定義を参照してください。
 
@@ -127,7 +128,7 @@ input.xml のコード例を次に示します。 下の表の定義を参照し
 
 1. zip (先ほど作成)
 2. **Content_Types.xml**
-3. Xml
+3. xml
 4. png
 5. html
 

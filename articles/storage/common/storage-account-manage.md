@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
-ms.openlocfilehash: 60104496006e790887dd9c4b3e4c3196e0ef6444
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671373"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748995"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Azure portal でストレージ アカウント設定を管理する
 

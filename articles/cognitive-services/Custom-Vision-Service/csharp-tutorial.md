@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: anroth
-ms.openlocfilehash: 7faad2c432e15ed363bd1caf290e03dc75e9d298
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ca21bbd77b269e3034fd69cc4685311e91295f36
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141063"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "73519120"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>クイック スタート:Custom Vision .NET SDK を使って画像分類プロジェクトを作成する
 
@@ -24,6 +24,7 @@ ms.locfileid: "70141063"
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
 
@@ -40,13 +41,13 @@ Custom Vision を使用する .NET アプリを作成するには、Custom Visio
 
 ## <a name="understand-the-code"></a>コードの理解
 
-_Program.cs_ ファイルを開いて、コードを詳しく調べます。 **Main** メソッド内の該当する各定義にサブスクリプション キーを挿入してください。
+_Program.cs_ ファイルを開いて、コードを詳しく調べます。 トレーニング キーと予測キーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `CUSTOM_VISION_TRAINING_KEY`、`CUSTOM_VISION_PREDICTION_KEY` という名前を付けます。 スクリプトによってこれらが検索されます。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=21-30)]
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
 
-Endpoint パラメーターは、Custom Vision リソースを含む Azure リソース グループが作成されたリージョンを指す必要があります。 この例では、米国中南部リージョンであると想定して、以下を使用しています。
+また、Custom Vision Web サイトの [設定] ページからエンドポイント URL を取得します。 それを `CUSTOM_VISION_ENDPOINT` という環境変数に保存します。 スクリプトによって、この環境変数への参照がクラスのルートに保存されます。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=14-14)]
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_endpoint)]
 
 このプロジェクトの主な機能は、以下のコード行によって実行されます。
 
@@ -54,68 +55,35 @@ Endpoint パラメーターは、Custom Vision リソースを含む Azure リ�
 
 作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) メソッドを参照してください ([分類子の構築](getting-started-build-a-classifier.md)に関する Web ポータル ガイドで説明されています)。   
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=32-34)]
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
 
 ### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=36-38)]
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_tags)]
 
 ### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
 このプロジェクトの画像を追加します。 これらは、_Program.cs_ の **LoadImagesFromDisk** メソッドで参照します。 1 回のバッチで最大 64 個の画像をアップロードできます。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=40-55)]
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 
 ### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
 
 このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
-```csharp
-var iteration = trainingApi.TrainProject(project.Id);
-// The returned iteration will be in progress, and can be queried periodically to see when it has completed
-while (iteration.Status == "Training")
-{
-        Thread.Sleep(1000);
-
-        // Re-query the iteration to get it's updated status
-        iteration = trainingApi.GetIteration(project.Id, iteration.Id);
-}
-
-// The iteration is now trained. Publish it to the prediction end point.
-var publishedModelName = "treeClassModel";
-var predictionResourceId = "<target prediction resource ID>";
-trainingApi.PublishIteration(project.Id, iteration.Id, publishedModelName, predictionResourceId);
-Console.WriteLine("Done!\n");
-```
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 
 ### <a name="set-the-prediction-endpoint"></a>予測エンドポイントを設定する
 
 予測エンドポイントは、現在のモデルに画像を送信して分類予測を取得する際に使用できる参照です。
 
-```csharp
-// Create a prediction endpoint, passing in obtained prediction key
-CustomVisionPredictionClient endpoint = new CustomVisionPredictionClient()
-{
-        ApiKey = predictionKey,
-        Endpoint = SouthCentralUsEndpoint
-};
-```
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction_endpoint)]
 
 ### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>既定の予測エンドポイントに画像を送信する
 
 このスクリプトでは、**LoadImagesFromDisk** メソッドでテスト画像が読み込まれ、モデルの予測出力がコンソールに表示されます。 publishedModelName 変数の値は、Custom Vision ポータルの **[パフォーマンス]** タブにある "として発行される" の値に対応している必要があります。 
 
-```csharp
-// Make a prediction against the new project
-Console.WriteLine("Making a prediction:");
-var result = endpoint.ClassifyImage(project.Id, publishedModelName, testImage);
-
-// Loop over each prediction and write out the results
-foreach (var c in result.Predictions)
-{
-        Console.WriteLine($"\t{c.TagName}: {c.Probability:P1}");
-}
-```
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction)]
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 

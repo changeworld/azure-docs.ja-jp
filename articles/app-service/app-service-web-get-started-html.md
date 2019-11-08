@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ac0fe7a77496a0dae8606e4599bcb262a191196c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 12c034e6521a1afd25e2390502faec39461bf5b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067321"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471484"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的 HTML Web アプリを作成する
 
@@ -117,9 +117,11 @@ az webapp up --location westeurope --name <app_name>
 
 ## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
+作成した Web アプリを管理するには、[Azure portal](https://portal.azure.com) で **[App Services]** を検索して選択します。 
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+![Azure portal で [App Services] を選択する](./media/app-service-web-get-started-html/portal0.png)
+
+**[App Services]** ページで、Azure アプリの名前を選択します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-html/portal1.png)
 

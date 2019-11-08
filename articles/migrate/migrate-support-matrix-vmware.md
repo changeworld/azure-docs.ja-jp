@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 949595b35c6d989be62dbda43a3b8ccb1608a23d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 2a8a19dfd2cdc7a64a5ea90b96808963b19f73bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937573"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498655"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware の評価と移行のサポート マトリックス
 
@@ -36,7 +36,7 @@ ms.locfileid: "71937573"
 --- | ---
 **Azure のアクセス許可** | Azure Migrate プロジェクトを作成するには、サブスクリプションに共同作成者または所有者アクセス許可が必要です。
 **VMware の制限事項**  | 1 つのプロジェクトで最大 35,000 台の VMware VM を評価できます。 1 つの Azure サブスクリプションで複数のプロジェクトを作成できます。 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
-**地理的な場所** | Azure Migrate プロジェクトは、いくつかの地域で作成できます。 プロジェクトを作成できるのはこれらの地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+**地理的な場所** | サポートされている地域を[確認](migrate-support-matrix.md#supported-geographies)します。
 
 **地理的な場所** | **メタデータ ストレージの場所**
 --- | ---
@@ -57,6 +57,17 @@ Azure Government | 米国政府バージニア州
  > [!NOTE]
  > Azure Government は現在、[古いバージョン](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)の Azure Migrate でのみサポートされます。
 
+
+## <a name="application-discovery"></a>アプリケーションの検出
+
+Azure Migrate: サーバー評価により、アプリ、役割、および機能を検出できます。 アプリ インベントリを検出することで、オンプレミスのワークロードに合わせて調整された移行パスを特定し、計画することができます。 Azure Migrate: サーバー評価により、マシンのゲスト資格情報を使用し、WMI と SSH 呼び出しを使用してマシンにリモート アクセスする、エージェントレス検出が提供されます。
+
+**サポート** | **詳細**
+--- | ---
+サポートされているマシン | オンプレミスの VMware VM
+マシンのオペレーティング システム | Windows と Linux のすべてのバージョン
+資格情報 | 現在、すべての Windows サーバーに対して 1 つの資格情報と、すべての Linux サーバーに対して 1 つの資格情報を使用することがサポートされています。 Windows VM 用にゲスト ユーザー アカウントを作成し、すべての Linux VM 用に通常/標準ユーザー アカウント (非 sudo アクセス) を作成します。
+アプリ検出でのマシンの制限 | アプライアンスあたり 10000。 プロジェクトあたり 35000
 
 ## <a name="assessment-vcenter-server-requirements"></a>評価 - vCenter Server サーバーの要件
 
@@ -109,6 +120,22 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 --- | ---
 アプライアンス | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ```https://<appliance-ip-or-name>:44368``` <br/><br/>ポート 443、5671、5672 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
 vCenter サーバー | TCP ポート 443 で、アプライアンスが評価用に構成およびパフォーマンスのメタデータを収集できるようにするインバウンド接続。 <br/><br/> 既定では、アプライアンスはポート 443 で vCenter に接続します。 vCenter Server が別のポートでリッスンする場合、検出の設定時にポートを変更できます。
+
+## <a name="assessment-dependency-visualization"></a>評価の依存関係の視覚化
+
+依存関係の視覚化は、評価および移行するマシン間の依存関係を視覚化するのに役立ちます。 一般的に依存関係マッピングは、より高い信頼度でマシンを評価したい場合に使用します。 VMware VM の場合、依存関係の視覚化は次のようにサポートされます。
+
+- **エージェントレスの依存関係の視覚化**:このオプションは現在プレビューの段階です。 マシンにエージェントをインストールする必要はありません。
+    - これが有効になっているマシンから TCP 接続データをキャプチャすることで機能します。 依存関係の検出が開始された後、アプライアンスでは 5 分間のポーリング間隔でマシンからデータが収集されます。
+    - 収集されるデータは次のとおりです。
+        - TCP 接続
+        - アクティブな接続を含むプロセスの名前
+        - 上記のプロセスを実行するインストール済みのアプリケーションの名前
+        - No. ポーリング間隔ごとに検出される接続の数
+- **エージェントベースの依存関係の視覚化**:エージェントベースの依存関係の視覚化を使用するには、分析するオンプレミスの各マシンに次のエージェントをダウンロードしてインストールする必要があります。
+    - 各マシンに Microsoft Monitoring Agent (MMA) をインストールする必要があります。 MMA エージェントのインストール方法の詳細については、[こちら](how-to-create-group-machine-dependencies.md#install-the-mma)をご覧ください。
+    - 各マシンに依存関係エージェントをインストールする必要があります。 依存関係エージェントのインストール方法の詳細については、[こちら](how-to-create-group-machine-dependencies.md#install-the-dependency-agent)をご覧ください。
+    - また、インターネットに接続されていないマシンの場合、それらに Log Analytics ゲートウェイをダウンロードしてインストールする必要があります。
 
 ## <a name="migration---limitations"></a>移行 - 制限
 レプリケーションでは、一度に最大 10 個の VM を選択できます。 より多くのマシンを移行する場合は、10 個単位のグループでレプリケートします。 VMware のエージェントレス移行では、最大 100 個のレプリケーションを同時に実行できます。

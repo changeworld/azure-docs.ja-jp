@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 268def74a354b19427849738549fbc0c6b197746
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813390"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488459"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -158,7 +158,7 @@ ms.locfileid: "70813390"
 
 ## <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
 
-1. [Azure Portal](https://portal.azure.com) を開いて **[すべてのリソース]** を選択します。
+1. [Azure Portal](https://portal.azure.com)を開きます。 **[Recovery Services コンテナー]** を検索して選択します。
 2. Recovery Services コンテナー (このチュートリアルでは **ContosoVMVault**) を選択します
 3. レプリケーション ポリシーを作成するには、 **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]**  >  **[+ レプリケーション ポリシー]** の順に選択します。
 4. **[レプリケーション ポリシーの作成]** で、ポリシー名を入力します。 **VMwareRepPolicy** を使用しています。

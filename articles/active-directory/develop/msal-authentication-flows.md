@@ -1,5 +1,6 @@
 ---
-title: 認証フロー (Microsoft Authentication Library) | Azure
+title: 認証フロー (Microsoft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library (MSAL) で使用される認証フローと許可について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41e011fd58c20cbe6d2dc8d9029e645f8851bd9
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513035"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473806"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
@@ -202,7 +203,7 @@ IWA はサイレント フローであるため、次のいずれかが当ては
 - ユーザーがアプリケーションに同意する方法を指定しておきます (「[個々のユーザーの同意を要求する](v2-permissions-and-consent.md#requesting-individual-user-consent)」を参照)。
 - テナント管理者がアプリケーションに同意する方法を指定しておきます ([管理者の同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)に関するセクションを参照)。
 
-IWA フローは、.NET デスクトップ、.NET Core、および Windows ユニバーサル プラットフォームの各アプリに対して有効です。 .NET Core では、ユーザー名を受け取るオーバーロードだけが使用できます。 .NET Core プラットフォームは、ユーザー名をオペレーティング システムに問い合わせることはできません。
+IWA フローは、.NET デスクトップ、.NET Core、および Windows ユニバーサル プラットフォームの各アプリに対して有効です。 .Net Core では、オペレーティングシステムからユーザー名を取得できないため、ユーザー名を IWA に指定する必要があります。
   
 同意の詳細については、[v2.0 のアクセス許可と同意](v2-permissions-and-consent.md)に関するページを参照してください。
 
@@ -230,7 +231,7 @@ Windows ドメイン参加済みマシン上でトークンを自動的に取得
 
 [統合 Windows 認証の制約](#integrated-windows-authentication)以外に、次の制約も適用されます。
 
-- ユーザー名/パスワードのフローは、条件付きアクセスおよび多要素認証との互換性がありません。 その結果、テナント管理者が多要素認証を必要とする Azure AD テナントでアプリを実行する場合は、このフローを使用できません。 これは多くの組織に該当します。
+- ユーザー名/パスワードのフローは、条件付きアクセスと多要素認証との互換性がありません。 その結果、テナント管理者が多要素認証を必要とする Azure AD テナントでアプリを実行する場合は、このフローを使用できません。 これは多くの組織に該当します。
 - 職場および学校アカウント (Microsoft アカウントではありません) にのみ有効です。
 - そのフローは、.NET デスクトップと .NET Core では使用できますが、ユニバーサル Windows プラットフォームでは使用できません。
 

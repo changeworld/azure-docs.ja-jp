@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 0e09d541cb84ef7857e4d68f776b92f845488771
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329884"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472673"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -31,27 +31,29 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
-Azure portal の左上隅で、 **+ [リソースの作成]**  >  **[コンテナー]**  >   **[Kubernetes サービス]** の順に選択します。
-
 AKS クラスターを作成するには、次の手順を実行します。
 
-1. **[基本]** ページで、次のオプションを構成します。
-   - *プロジェクトの詳細*:サブスクリプションを選択し、Azure リソース グループ (たとえば、*myResourceGroup*) を選択または作成します。 **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。
-   - *クラスターの詳細*:AKS クラスターのリージョン、Kubernetes バージョン、および DNS 名プレフィックスを選択します。
-   - **プライマリ ノード プール**: AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは**できません**。 
-       - クラスターにデプロイするノードの数を選択します。 このクイック スタートでは、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整**できます**。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
+
+2. **コンテナー** >  **Kubernetes Service** を選択します。
+
+3. **[基本]** ページで、次のオプションを構成します。
+    - **プロジェクトの詳細**:Azure **サブスクリプション**を選択し、Azure **リソース グループ** (たとえば、*myResourceGroup*) を選択または作成します。
+    - **クラスターの詳細**:**Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。 AKS クラスターの**リージョン**、**Kubernetes バージョン**、および **DNS 名プレフィックス**を選択します。
+    - **プライマリ ノード プール**:AKS ノードの VM **ノード サイズ**を選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは*できません*。 
+            - クラスターにデプロイするノードの数を選択します。 このクイック スタートでは、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整*できます*。
     
-     ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+    ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-     **[次へ:スケール]** を完了後に選択します。
+    **[次へ:スケール]** を完了後に選択します。
 
-2. **[スケール]** ページで、既定のオプションを維持します。 画面の下部にある **[次へ: 認証]** をクリックします。
-> [!CAUTION]
-> 新しい AAD サービス プリンシパルの作成は、伝達されて使用可能になるまでに数分かかる場合があり、それが原因でサービス プリンシパルが見つからないエラーや検証エラーが Azure portal で生じることがあります。 そのような場合の軽減策については、[こちら](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one)をご覧ください。
+4. **[スケール]** ページで、既定のオプションを維持します。 ページの下部にある **[Next:Authentication] (次: 認証)** をクリックします。
+    > [!CAUTION]
+    > 新しい AAD サービス プリンシパルの作成は、伝達されて使用可能になるまでに数分かかる場合があり、それが原因でサービス プリンシパルが見つからないエラーや検証エラーが Azure portal で生じることがあります。 そのような場合の軽減策については、[こちら](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one)をご覧ください。
 
-3. **[認証]** ページで、次のオプションを構成します。
-   - **[サービス プリンシパル]** フィールドを **[(新規) 既定のサービス プリンシパル]** のままにして、新しいサービス プリンシパルを作成します。 または、 *[サービス プリンシパルを構成します]* を選択して、既存のものを使用することもできます。 既存のものを使用する場合、SPN クライアント ID とシークレットを指定する必要があります。
-   - Kubernetes のロールベースのアクセス制御 (RBAC) のオプションを有効にします。 これを使用すると、自分の AKS クラスターにデプロイされた Kubernetes リソースへのアクセスをより詳細に制御できます。
+5. **[認証]** ページで、次のオプションを構成します。
+    - **[サービス プリンシパル]** フィールドを **[(新規) 既定のサービス プリンシパル]** のままにして、新しいサービス プリンシパルを作成します。 または、 *[サービス プリンシパルを構成します]* を選択して、既存のものを使用することもできます。 既存のものを使用する場合、SPN クライアント ID とシークレットを指定する必要があります。
+    - Kubernetes のロールベースのアクセス制御 (RBAC) のオプションを有効にします。 これを使用すると、自分の AKS クラスターにデプロイされた Kubernetes リソースへのアクセスをより詳細に制御できます。
 
 既定では、"*基本*" ネットワークが使用され、コンテナーに対する Azure Monitor が有効になります。 検証が完了したら、 **[確認および作成]** 、 **[作成]** の順にクリックします。
 

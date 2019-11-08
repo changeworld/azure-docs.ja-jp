@@ -3,15 +3,15 @@ title: ポリシー定義の構造の詳細
 description: Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングとその効果を示すことで、組織でのリソースの規則を確立する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fe0f16fd4c07eac92ab3c1ae2c6f78b0bd1595eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053493"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464029"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -81,12 +81,17 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/tag-support.md)」を参照してください。
 
-### <a name="resource-provider-modes"></a>リソース プロバイダーのモード
+### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />リソース プロバイダーのモード (プレビュー)
 
-現在サポートされている唯一のリソース プロバイダーのモードは、[Azure Kubernetes Service](../../../aks/intro-kubernetes.md) のアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data` です。
+現在、プレビューの間は、次のリソース プロバイダー モードがサポートされています。
+
+- [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用するポリシーでは、[EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する**必要があります**。
+- Azure で自己管理型 AKS エンジン Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。
+  このリソース プロバイダー モードを使用するポリシーでは、[EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果を使用する**必要があります**。
+- [Azure Key Vault](../../../key-vault/key-vault-overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。
 
 > [!NOTE]
-> [Kubernetes 用の Azure Policy](rego-for-aks.md) はパブリック プレビューで、組み込みのポリシー定義のみをサポートします。
+> プレビュー期間中のリソース プロバイダー モードでは、組み込みポリシー定義のみがサポートされ、イニシアティブはサポートされません。
 
 ## <a name="parameters"></a>parameters
 
@@ -134,7 +139,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ### <a name="using-a-parameter-value"></a>パラメーター値の使用
 
-ポリシー規則では、次に示す `parameters` 関数とデプロイ値の構文でパラメーターを参照します。
+ポリシー規則では、次の `parameters` 関数構文でパラメーターを参照します。
 
 ```json
 {
@@ -272,7 +277,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `tags['''<tagName>''']`
   - この角かっこ構文では、2 個のアポストロフィでエスケープすることにより、アポストロフィが含まれるタグ名がサポートされます。
   - **'\<tagName\>'** は、条件を検証するタグの名前です。
-  - 例: `tags['''My.Apostrophe.Tag''']` ( **'\<tagName\>'** がタグの名前)。
+  - 例: `tags['''My.Apostrophe.Tag''']`。 **'My.Apostrophe.Tag'** はタグの名前です。
 - プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
 
 > [!NOTE]
@@ -282,7 +287,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 パラメーター値をタグ フィールドに渡すことができます。 タグ フィールドにパラメーターを渡すと、ポリシー割り当ての間のポリシー定義の柔軟性が向上します。
 
-次の例では、`concat` を使用して、**tagName** パラメーターの値で指定されているタグのタグ フィールド参照が作成されています。 そのタグが存在しない場合、**append** 効果が使用され、`resourcegroup()` 参照関数を使用することにより監査対象のリソースの親リソース グループで設定されている同じ名前付きタグの値を使用してタグが追加されます。
+次の例では、`concat` を使用して、**tagName** パラメーターの値で指定されているタグのタグ フィールド参照が作成されています。 そのタグが存在しない場合は、**modify** 効果が使用され、`resourcegroup()` 参照関数を使用することにより監査対象のリソースの親リソース グループで設定されている同じ名前付きタグの値を使用してタグが追加されます。
 
 ```json
 {
@@ -291,11 +296,17 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
         "exists": "false"
     },
     "then": {
-        "effect": "append",
-        "details": [{
-            "field": "[concat('tags[', parameters('tagName'), ']')]",
-            "value": "[resourcegroup().tags[parameters('tagName')]]"
-        }]
+        "effect": "modify",
+        "details": {
+            "operations": [{
+                "operation": "add",
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "value": "[resourcegroup().tags[parameters('tagName')]]"
+            }],
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+        }
     }
 }
 ```
@@ -390,42 +401,15 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 Azure Policy では、次の種類の効果をサポートしています。
 
-- **Deny** はアクティビティ ログでイベントを生成し、要求は失敗します
-- **Audit**: アクティビティ ログ内に警告イベントを生成しますが、要求は失敗しません。
 - **append** は定義済みのフィールド セットを要求に追加します。
-- **AuditIfNotExists**: リソースが存在しない場合に監査を有効にします。
-- **DeployIfNotExists**: リソースが存在しない場合にリソースをデプロイします。
+- **Audit**: アクティビティ ログ内に警告イベントを生成しますが、要求は失敗しません。
+- **AuditIfNotExists**: 関連するリソースが存在しない場合、アクティビティ ログに警告イベントを生成します
+- **Deny** はアクティビティ ログでイベントを生成し、要求は失敗します
+- **DeployIfNotExists**: 関連するリソースが存在しない場合、リソースをデプロイします
 - **Disabled**: リソースがポリシー規則に準拠しているかどうかを評価しません。
-- **EnforceRegoPolicy**: Azure Kubernetes Service の Open Policy Agent アドミッション コントローラーを構成します (プレビュー)
+- **EnforceOPAConstraint** (プレビュー): Azure 上の自己管理型 Kubernetes クラスター用に、Gatekeeper v3 を使用して Open Policy Agent アドミッション コントローラーを構成します (プレビュー)
+- **EnforceRegoPolicy** (プレビュー): Azure Kubernetes Service で Gatekeeper v2 を使用して Open Policy Agent アドミッション コントローラーを構成します
 - **Modify**: リソースで定義されているタグを追加、更新、または削除します。
-
-**append** の場合、次のように詳細を指定する必要があります。
-
-```json
-"effect": "append",
-"details": [{
-    "field": "field name",
-    "value": "value of the field"
-}]
-```
-
-値には文字列または JSON 形式オブジェクトを指定できます。
-
-**AuditIfNotExists** と **DeployIfNotExists** では、関連するリソースの存在が評価された後、規則が適用されます。 リソースが規則と一致しない場合に効果が実装されます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。 詳細については、「[拡張機能が存在しない場合の監査](../samples/audit-ext-not-exist.md)」の例を参照してください。
-
-**DeployIfNotExists** 効果を使用する場合は、ポリシー規則の **details** 部分に **roleDefinitionId** プロパティが指定されている必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
-
-```json
-"details": {
-    ...
-    "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-    ]
-}
-```
-
-同様に、**Modify** では、[修復タスク](../how-to/remediate-resources.md)のポリシー規則の **details** 部分に **roleDefinitionId** プロパティが必要です。 **Modify** では、リソース タグに対して実行するアクションを定義する **operations** 配列も必要です。
 
 各効果の詳細、評価の順序、プロパティ、例については、「[Azure Policy の効果について](effects.md)」を参照してください。
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 30e7059605ef86e6afd86251db0e416c9143a9ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374247"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475106"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションから ASP.NET Core Web API へのアクセスを許可する
 
@@ -46,7 +46,7 @@ ms.locfileid: "72374247"
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-後の手順でシングルページ アプリケーションを構成するときに使用できるように、`demo.read` スコープの**完全なスコープ値**をメモしておきます。 完全なスコープ値は `https://yourtenant.onmicrosoft.com/api/demo.read` のようになります。
+`demo.read` スコープの **[スコープ]** に示されている値を記録しておきます。これは、後の手順でシングルページ アプリケーションを構成するときに使用します。 完全なスコープ値は `https://contosob2c.onmicrosoft.com/api/demo.read` のようになります。
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する
 
@@ -133,8 +133,8 @@ SPA 内の設定を変更するには:
 
 1. 前のチュートリアルでダウンロードまたは複製した [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] プロジェクト内にある *index.html* ファイルを開きます。
 1. 先ほど作成した *demo.read* スコープの URI と Web API の URL を使用してサンプルを構成します。
-    1. `appConfig` 定義内で、`b2cScopes` の値をスコープの完全な URI に置き換えます (前に記録した**完全なスコープ値**です)。
-    1. `webApi` の値を、前のセクションで指定した `applicationURL` の値に変更します。
+    1. `appConfig` 定義内で、`b2cScopes` 値を、スコープの完全な URI (前に記録した**スコープ**値) に置き換えます。
+    1. `webApi` 値をリダイレクト URI に変更します。この URI は、前の手順で Web API アプリケーションを登録したときに追加しました。
 
     `appConfig` の定義は次のコード ブロックのようになります (`<your-tenant-name>` にはテナント名が入力されます)。
 

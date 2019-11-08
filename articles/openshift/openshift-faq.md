@@ -7,27 +7,17 @@ ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/04/2019
+ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249210"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582399"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
 この記事では、Microsoft Azure Red Hat OpenShift に関してよく寄せられる質問 (FAQ) を説明します。
-
-## <a name="how-do-i-get-started"></a>開始するには?
-
-Azure Red Hat OpenShift を使用する前に、Azure Red Hat OpenShift の予約アプリケーション ノードを 4 個以上購入する必要があります。
-
-Azure をご利用の場合は、Azure portal から [Azure Red Hat OpenShift 予約インスタンスを購入](https://aka.ms/openshift/buy)します。 購入後、24 時間以内にサブスクリプションはアクティブ化され、その後はクラスターをプロビジョニングできるようになります。
-
-Azure をご利用のお客様でない場合は、[営業担当者に問い合わせて](https://aka.ms/openshift/contact-sales)、ページの下部にある販売フォームに入力してプロセスを開始してください。
-
-詳細については、[Azure Red Hat OpenShift の価格ページ](https://aka.ms/openshift/pricing)を参照してください。
 
 ## <a name="which-azure-regions-are-supported"></a>どの Azure リージョンがサポートされていますか?
 

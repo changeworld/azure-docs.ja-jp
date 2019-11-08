@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: b324d3b9dca710dca6f5f99ad50ce4d973a42d2a
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 2f8aa41604ac176181252fb7b30cdeb2f039d10f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869334"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822871"
 ---
 # <a name="saas-fulfillment-apis---faq"></a>SaaS Fulfillment API - FAQ
 

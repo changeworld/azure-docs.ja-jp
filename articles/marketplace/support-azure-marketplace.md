@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 manager: evansma
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 525bcc0ba148c4cb3e679dee1209953e4a3d87b6
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b036f7f7455d265849db3c0b82a21471ed1a902c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501284"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822621"
 ---
 # <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
 Marketplace のサポート オプションの一覧です。  

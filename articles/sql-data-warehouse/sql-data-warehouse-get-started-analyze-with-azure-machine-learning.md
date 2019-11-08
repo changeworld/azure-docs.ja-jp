@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning を使用したデータの分析 | Microsoft Docs
+title: Azure Machine Learning を使用したデータの分析
 description: Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f91960eaac92047e76275e63b1feaf471de3bac3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "65860843"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692790"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 > [!div class="op_single_selector"]

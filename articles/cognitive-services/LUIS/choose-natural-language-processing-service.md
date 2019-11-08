@@ -1,6 +1,6 @@
 ---
 title: NLP Cognitive Services を使用して会話を強化する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Cognitive Services には、Language Understanding と QnA Maker という 2 つの自然言語処理サービスが用意されており、それぞれ異なる目的があります。 各サービスをどのようなときに使用し、それぞれのサービスがどのように補完されるかについて説明します。
 author: diberry
 ms.author: diberry
@@ -8,12 +8,12 @@ manager: nitinme
 ms.topic: conceptual
 ms.service: cognitive-services
 ms.date: 08/01/2019
-ms.openlocfilehash: f293f57f4a98e822aa1c3950614ba5a186f9751d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 32159b37d3d1a8609181d81dc1a73f27177adb85
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816838"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818211"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>自然言語処理 (NLP) で Cognitive Services を使用してボットの会話を強化する
 

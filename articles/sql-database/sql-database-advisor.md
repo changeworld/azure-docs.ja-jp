@@ -1,5 +1,5 @@
 ---
-title: パフォーマンスに関する推奨事項 - Azure SQL Database | Microsoft Docs
+title: パフォーマンスに関する推奨事項
 description: Azure SQL Database は、現在のクエリのパフォーマンスを向上できる、SQL Database 向けの推奨事項を提供します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 08def3ac2fd94f01586bc690d867c04758b8856b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569523"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811378"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL Database のパフォーマンスに関する推奨事項
 

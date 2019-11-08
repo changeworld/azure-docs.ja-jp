@@ -4,15 +4,16 @@ description: Business Applications ISV コネクト プログラムにオンボ�
 services: Azure Marketplace, Cloud Partner Portal
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: evansma
-ms.openlocfilehash: 349998b53378d00b6524f94578aa11642321d691
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 4a47886176b704cc3bc36cc9fa85d1d3faee4c58
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182563"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819162"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 

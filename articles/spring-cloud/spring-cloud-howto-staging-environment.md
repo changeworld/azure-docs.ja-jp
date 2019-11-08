@@ -1,20 +1,17 @@
 ---
 title: Azure Spring Cloud でステージング環境を設定する | Microsoft Docs
 description: Azure Spring Cloud でブルーグリーン デプロイを使用する方法について説明します
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 454eeaa2568891ec35fe698cdb20c5448e10887e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: conceptual
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 24ce4dee04e4daf3eaee4144f8dc56de5867bbca
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038301"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607221"
 ---
 # <a name="how-to-set-up-a-staging-environment"></a>ステージング環境を設定する方法
 
@@ -26,26 +23,18 @@ ms.locfileid: "72038301"
 
 この例に別のアプリケーションを使用したい場合は、そのアプリケーションの公開部分に簡単な変更を加える必要があります。  その変更により、ステージング環境のデプロイが運用環境と区別されます。
 
->[!NOTE]
-> このクイックスタートを開始する前に、自分の Azure サブスクリプションで Azure Spring Cloud にアクセスできることを確認してください。  プレビュー サービスとして、Microsoft がお客様のサブスクリプションを許可リストに追加できるよう、ご連絡をお願いしています。  Azure Spring Cloud の機能をお試しになりたい場合は、メールで azure-spring-cloud@service.microsoft.com までお問い合わせください。
-
 >[!TIP]
 > Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。  最新バージョンの Git、JDK、Maven、Azure CLI など、一般的な Azure ツールがプレインストールされています。 Azure サブスクリプションにログインしている場合は、shell.azure.com から [Azure Cloud Shell](https://shell.azure.com) を起動します。  Azure Cloud Shell の詳細については、[ドキュメントを参照](../cloud-shell/overview.md)してください
 
 この記事を完了するには:
 
-1. [Git をインストールする](https://git-scm.com/)
-1. [JDK 8 をインストールする](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-1. [Maven 3.0 以上をインストールする](https://maven.apache.org/download.cgi)
-1. [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-1. [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
 
 次のコマンドを使用して、Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします
 
 ```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
     
 ## <a name="view-all-deployments"></a>すべてのデプロイを表示する

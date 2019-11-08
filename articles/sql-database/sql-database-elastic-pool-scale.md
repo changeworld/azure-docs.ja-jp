@@ -1,5 +1,5 @@
 ---
-title: エラスティック プールのリソースをスケーリングする - Azure SQL Database | Microsoft Docs
+title: エラスティック プール リソースのスケーリング
 description: このページでは、Azure SQL Database のエラスティック プールのリソースをスケーリングする方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: c96be7930a33185077134d051b49cba0695327e3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568635"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823814"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL Database でエラスティック プールのリソースをスケーリングする
 

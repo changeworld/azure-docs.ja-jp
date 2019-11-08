@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 37acd88dbfe8ed1790f1bfa68d5e9762a861ddc7
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: a73308274c9aedf6a85745c17c14637e2ef3d27d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626401"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492479"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
@@ -70,7 +70,7 @@ HDInsight を使用して、(Azure Data Factory によって調整される) [Hi
 
 ## <a name="data-publishing"></a>データの公開
 ### <a name="azure-sql-database"></a>Azure SQL Database
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) を使用して、Azure Machine Learning サービスが受け取った予測を格納します。予測は次に [Power BI](https://powerbi.microsoft.com) ダッシュボードで使用されます。
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) を使用して、Azure Machine Learning が受け取った予測を格納します。それらは後で [Power BI](https://powerbi.microsoft.com) ダッシュボードで使用されます。
 
 ## <a name="data-consumption"></a>データの使用
 ### <a name="power-bi"></a>Power BI

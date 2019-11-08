@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: ab543ee8e379b89aaa9a1133bb75387ed9904002
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598392"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604009"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MariaDB のパフォーマンスの監視
 
 **適用対象:** Azure Database for MariaDB 10.2
-
-> [!IMPORTANT]
-> クエリ ストアはプレビュー段階にあります。
 
 Azure Database for MariaDB のクエリ ストア機能を使用すると、クエリ パフォーマンスを経時的に追跡できます。 クエリ ストアを使用すると、実行時間が最長のクエリおよびリソースを最も消費しているクエリを迅速に特定できるので、パフォーマンスのトラブルシューティングが簡単になります。 クエリ ストアでは、クエリおよびランタイム統計の履歴が自動的にキャプチャされて保持されるので、それらを確認できます。 データベースの使用パターンを確認できるように、データが時間枠で区切られます。 すべてのユーザー、データベース、クエリに関するデータが、Azure Database for MariaDB インスタンス内の **mysql** スキーマ データベースに格納されます。
 

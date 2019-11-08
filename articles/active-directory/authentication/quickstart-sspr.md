@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a863c8fe81a08f00385cb267bf360994918fe82
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9adf083f8e4c8c269b895dac87b4e4613ec1b023
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212112"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474366"
 ---
 # <a name="quickstart-self-service-password-reset"></a>クイック スタート: セルフサービスのパスワード リセット
 
@@ -33,7 +33,7 @@ ms.locfileid: "71212112"
 
 [このプロセスを YouTube のビデオとして表示する](https://youtu.be/Pa0eyqjEjvQ)
 
-1. 既存の Azure AD テナントから、**Azure portal** の **[Azure Active Directory]** で **[パスワードのリセット]** を選択します。
+1. 既存の Azure AD テナント、Azure portal メニュー、または **[ホーム]** ページから、 **[Azure Active Directory]** を選択します。 次に、 **[パスワード リセット]** を選択します。
 
 2. **[プロパティ]** ページの **[セルフ サービスによるパスワードのリセットが有効]** オプションの下で、 **[選択済み]** を選択します。
     * **[グループの選択]** で、この記事の前提条件セクションで作成したパイロット グループを選択します。

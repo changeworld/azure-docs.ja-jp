@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 05/06/2019
-ms.openlocfilehash: 5194cf51fd7f1debeba76edb48e8377919ae448a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 9d4389ed2c0cc5d7b632380fba691ae2e9a6b257
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177965"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466758"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
-Azure Database for PostgreSQL は、開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。 これは、コミュニティ バージョンのオープンソースの [PostgreSQL](https://www.postgresql.org/) データベース エンジンに基づいており、2 つのデプロイ オプション: Single Server と Hyperscale (Citus) (プレビュー) で利用できます。
+Azure Database for PostgreSQL は、開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。 これは、コミュニティ バージョンのオープンソースの [PostgreSQL](https://www.postgresql.org/) データベース エンジンに基づいており、2 つのデプロイ オプション: Single Server と Hyperscale (Citus) で使用できます。
 
 ## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server
 Single Server デプロイ オプションでは、次のことを実現できます。
@@ -32,7 +32,7 @@ Single Server デプロイ オプションでは、次のことを実現でき�
 
 Single Server デプロイ オプションでは、次の 3 つの価格レベルが提供されます。Basic、汎用、メモリ最適化。 使用しているデータベースのワークロードをサポートするために、各レベルでは異なるリソース機能が提供されています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
 
-## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー)
+## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus)
 Hyperscale (Citus) オプションでは、シャーディングを使用して複数のマシン間でクエリを水平にスケーリングします。 そのクエリ エンジンにより、大規模なデータセットに対する応答を高速化するために、これらのサーバー間で受信 SQL クエリが並列処理されます。 より大きいスケールとパフォーマンスを必要とするアプリケーション (通常は、100 GB のデータに近づいているか、または既に超えているワークロード) に対して、サービスを提供します。
 
 Hyperscale (Citus) デプロイ オプションでは、次のことを実現できます。
@@ -42,8 +42,6 @@ Hyperscale (Citus) デプロイ オプションでは、次のことを実現で
 - マルチテナント アプリケーション、リアルタイムの運用分析、および高スループットのトランザクション ワークロードに対する優れたサポート
 
 PostgreSQL 向けにビルドされたアプリケーションでは、標準の[接続ライブラリ](./concepts-connection-libraries.md)と最小限の変更により、Hyperscale (Citus) に対して分散クエリを実行できます。
-
-Hyperscale (Citus) はパブリック プレビュー段階であるため、SLA はまだ提供されていない点に注意してください。
 
 ## <a name="data-security"></a>データのセキュリティ
 Azure Database for PostgreSQL では、Azure データベース サービスの従来のデータ セキュリティが維持されています。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えいます。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://azure.microsoft.com/overview/trusted-cloud/)をご覧ください。
@@ -59,5 +57,5 @@ Azure Database for PostgreSQL についての質問やご提案は、Azure Datab
 
 ## <a name="next-steps"></a>次の手順
 - コストの比較と計算については、[価格のページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。
-- 実際に初めての Azure Database for PostgreSQL [Single Server](./quickstart-create-server-database-portal.md) または [Hyperscale (Citus) (プレビュー)](./quickstart-create-hyperscale-portal.md) を作成してみましょう。
+- まず、最初の Azure Database for PostgreSQL [Single Server](./quickstart-create-server-database-portal.md) または [Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md) を作成してください。
 - 初めてのアプリを Python、PHP、Ruby、C\#、Java、Node.js で作成します:[接続ライブラリ](./concepts-connection-libraries.md)

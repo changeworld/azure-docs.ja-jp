@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 408ee11b318143b3128833a741e04dd68f3816ed
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d78904fde53da0e800a69d2148a9c4e3acf57307
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343230"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494418"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB での結合
 
@@ -103,7 +103,7 @@ ms.locfileid: "67343230"
   
 ## <a name="examples"></a>例
 
-JOIN 句の動作を示す例をいくつか紹介します。 次の例では、ソースの各項目と空集合のクロス積が空になるため、結果は空となります。
+JOIN 句の動作を示す例をいくつか紹介します。 これらの例を実行する前に、サンプルの[ファミリデータ](sql-query-getting-started.md#upload-sample-data)をアップロードしてください。 次の例では、ソースの各項目と空集合のクロス積が空になるため、結果は空となります。
 
 ```sql
     SELECT f.id

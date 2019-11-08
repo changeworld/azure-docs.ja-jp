@@ -4,15 +4,16 @@ description: ユーザー VM イメージを作成するために必要な手順
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 0005ab517d38903b87889b67449569495e396265
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e63f09dc538c5e66b244826cf3b5f92ac388b6a9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938327"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818692"
 ---
 # <a name="create-a-user-vm-image"></a>ユーザー VM イメージの作成
 

@@ -2,14 +2,14 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/19/2019
+ms.date: 11/06/2019
 ms.author: larryfr
-ms.openlocfilehash: 055909d51fcd1228e8eb26189ba682e09aee6a1a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ab31d45808a8c77c53b895643eec63952201d9e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390682"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799948"
 ---
 `inferenceconfig.json` ドキュメント内のエントリは、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) クラスのパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
 

@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf89f94d91e0d809428cf8098db0fb37afdb47a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943539"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814679"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>発行ポータルでのアプリケーションのセットアップ
 
@@ -53,7 +54,7 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 このドロップダウンでは、このプランを発行するためのパブリッシャー プロファイルを選択することができます。 このフィールドは、プランの運用が開始されるとロックされます。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名前
 
 これは、プランの表示名です。 [AppSource](https://appsource.microsoft.com/) ではこの名前が表示されます。 最大で 50 文字の長さにできます。
 

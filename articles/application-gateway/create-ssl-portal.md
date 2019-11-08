@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: victorh
-ms.openlocfilehash: 53a4fca0c05cd54bae6d01d07e72e1033a247a05
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327362"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470040"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL ターミネーションでアプリケーション ゲートウェイを構成する
 
@@ -62,7 +62,7 @@ E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 > .pfx ファイルのパスワードに特殊文字は一切使用しないでください。 サポートされるのは英数字のみです。
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +150,7 @@ Export-PfxCertificate `
 
    - **[PFX 証明書ファイル]** - 前に作成した c:\appgwcert.pfx ファイルを参照して選択します。
    - **[証明書名]** - 証明書の名前として「*mycert1*」と入力します。
-   - **[パスワード]** - 「*Azure123456!* 」と 入力します。
+   - **[パスワード]** - パスワードとして「*Azure123456*」と入力します。
   
         **[リスナー]** タブで他の設定の既定値をそのまま使用し、 **[バックエンド ターゲット]** タブを選択して、ルーティング規則の残りの部分を構成します。
 
@@ -194,7 +194,7 @@ Export-PfxCertificate `
     - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
     - **[仮想マシン名]** : 仮想マシンの名前として「*myVM*」と入力します。
     - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
-    - **Password**:管理者パスワードとして「*Azure123456!* 」と入力します 。
+    - **Password**:管理者パスワードとして「*Azure123456*」と入力します。
 4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
 5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。

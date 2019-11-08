@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: a7e9acbe78ffdca2e615873cc4c33f86b250a429
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dccf1550052910269efe156b999882234669d7dc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551516"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815704"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造
 このドキュメントでは、次のダッシュボードを例として、Azure のダッシュボードの構造を説明します。
@@ -295,7 +295,7 @@ JSON の関連するセクションを分割してみましょう。  最上位�
 
 ### <a name="the-id-property"></a>ID プロパティ
 
-Azure のリソース ID は、[Azure リソースの名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に従います。 ポータルでダッシュボードが作成されるときは一般的に guid の形式の ID が選択されますが、プログラムで作成する場合は、任意の有効な名前を自由に使用できます。 
+Azure のリソース ID は、[Azure リソースの名前付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に従います。 ポータルでダッシュボードが作成されるときは一般的に guid の形式の ID が選択されますが、プログラムで作成する場合は、任意の有効な名前を自由に使用できます。 
 
 ### <a name="the-name-property"></a>名前プロパティ
 名前は、サブスクリプション、リソースの種類またはリソース グループの情報が含まれていない リソース ID のセグメントです。 基本的に、リソース ID の最後のセグメントです。

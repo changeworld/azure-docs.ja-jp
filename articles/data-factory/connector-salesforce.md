@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Salesforce からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Salesforce にデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 08d1afb4175a61b70d8e04b19db187bcc87dd129
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 1bcfc0386925d142fd765547ff60e1f2a3bd9101
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010509"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680331"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -344,7 +344,7 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

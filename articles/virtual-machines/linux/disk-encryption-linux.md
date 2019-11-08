@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2e7646d2f84696d0b04183d8d06b96405909de87
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174710"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750044"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -42,7 +42,7 @@ Azure Disk Encryption は、[Azure CLI](/cli/azure) と [Azure PowerShell](/powe
 
 [Azure CLI 2.0](/cli/azure) は、Azure リソースを管理するためのコマンドライン ツールです。 CLI は、データのクエリを柔軟に実行し、長時間実行される操作を非ブロッキング プロセスとしてサポートし、スクリプトが簡単になるように設計されています。 「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」の手順に従って、これをローカルにインストールすることができます。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 [Azure CLI を使用して Azure アカウントにログインする](/cli/azure/authenticate-azure-cli)には、[az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) コマンドを使用します。
 

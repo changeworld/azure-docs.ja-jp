@@ -10,14 +10,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 4d4d83e12d284ce760b8a7e87fd42e6c8ebb4850
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001217"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489312"
 ---
 # <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Azure Machine Learning を使用してトレーニングとデプロイのための再利用可能な環境を作成および管理します。
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning の[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)を作成および管理し、プロジェクトのソフトウェア依存関係の変化を追跡して再現できるようにする方法について説明します。
 
@@ -260,7 +261,7 @@ myenv.docker.enabled = True
 
 ビルドされた Docker イメージは既定で、ワークスペースに関連付けられている Azure Container Registry に表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 一意識別子 (*uuid*) の部分は、環境構成から計算されたハッシュに対応します。 これにより、サービスは、特定の環境に対応するイメージが既に存在していて再利用できるかどうかを判断できます。
 
-さらに、サービスは、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)の 1 つを自動的に使用し、指定された Python パッケージをインストールします。 基本イメージには、CPU と GPU のバージョンが含まれます。 Azure Machine Learning サービスでは、使用するバージョンが自動的に検出されます。
+さらに、サービスは、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)の 1 つを自動的に使用し、指定された Python パッケージをインストールします。 基本イメージには、CPU と GPU のバージョンが含まれます。 Azure Machine Learning では、使用するバージョンが自動的に検出されます。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults

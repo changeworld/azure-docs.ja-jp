@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: ffc2e5fb588ce6861f5df6cefdf810c1a015c043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7b71a6aa17e8eeae55fd6c8c6e9a5aa9e0ce524
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61441017"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498886"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 
@@ -45,7 +45,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
-- Azure Machine Learning Studio アカウント。 ([Machine Learning Studio の無料試用版](https://studio.azureml.net/))。
+- [Azure Machine Learning Studio](https://studio.azureml.net/) アカウント。
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>天気予報モデルを Web サービスとしてデプロイする
 

@@ -9,12 +9,12 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム traefik イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 50908bde65b69cb475391cd30bca758dd571f114
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037299"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582317"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>カスタム traefik イングレス コントローラーの使用と HTTPS の構成
 
@@ -288,7 +288,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

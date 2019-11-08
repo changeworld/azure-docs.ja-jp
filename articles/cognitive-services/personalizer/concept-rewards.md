@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154664"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490882"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>報酬スコアは、パーソナル化の成功を示します
 
@@ -71,9 +71,9 @@ Rank 呼び出し以降の期間である[報酬の待機時間](#reward-wait-ti
 
 ## <a name="calling-the-reward-api-multiple-times"></a>複数回の Reward API の呼び出し
 
-同じイベント ID を使用する Reward API を呼び出し、さまざまな報酬スコアを送信することもできます。 Personalizer は、これらの報酬を取得すると、Personalizer 設定の指定に従ってこれらを集計することにより、そのイベントの最終的な報酬を決定します。
+同じイベント ID を使用する Reward API を呼び出し、さまざまな報酬スコアを送信することもできます。 Personalizer は、これらの報酬を取得すると、Personalizer 構成内の指定に従ってこれらを集計することにより、そのイベントの最終的な報酬を決定します。
 
-集計の設定:
+集計値:
 
 *  **First**:イベントについて最初に受信した報酬スコアを受け入れ、残りを破棄します。
 * **Sum**:eventId について収集されたすべての報酬スコアを受け入れ、それらを一緒に追加します。
@@ -81,10 +81,6 @@ Rank 呼び出し以降の期間である[報酬の待機時間](#reward-wait-ti
 **報酬の待機時間**後に受信されたイベントのすべての報酬は破棄され、モデルのトレーニングには影響しません。
 
 報酬スコアを加算した結果、最終的な報酬が想定されるスコアの範囲外になる場合があります。 これによりサービスが失敗することはありません。
-
-<!--
-@edjez - is the number ignored if it is outside the acceptable range?
--->
 
 ## <a name="best-practices-for-calculating-reward-score"></a>報酬スコアを計算するためのベスト プラクティス
 
@@ -106,13 +102,11 @@ Personalizer は、Rank 呼び出しの情報を、モデルをトレーニン�
 
 **報酬の待機時間**の有効期限が切れ、報酬情報が存在していない場合、既定の報酬がトレーニングのためにそのイベントに適用されます。 最大待機時間は、6 日です。
 
-## <a name="best-practices-for-setting-reward-wait-time"></a>報酬の待機時間を設定するためのベスト プラクティス
+## <a name="best-practices-for-reward-wait-time"></a>報酬の待機時間のためのベスト プラクティス
 
 より優れた結果を得るために、以下の推奨事項に従ってください。
 
 * 報酬の待機時間はできるだけ短くしますが、ユーザーのフィードバックを得るための時間は十分に取っておきます。 
-
-<!--@Edjez - storage quota? -->
 
 * フィードバックの取得に必要な時間よりも短い期間を選択しないでください。 たとえば、ユーザーが 1 分間ビデオを観た後でいくつかの報酬が到着した場合、実験の長さは少なくともその 2 倍にする必要があります。
 

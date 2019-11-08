@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1b2ff6b64661010136d43b8d1f10abb58a88102a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2a49cf406dea045302f84e95318eca1557fc3e22
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677729"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465094"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの age 作成済みエンティティ
 作成済みの age エンティティは、数値と、年数、月数、週数、日数の両方で、年齢の値をキャプチャします。 このエンティティは既にトレーニングされているので、年齢を含む発話の例をアプリケーション意図に追加する必要はありません。 age エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされます。 
@@ -26,17 +26,52 @@ age は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>作成済み age エンティティの解決
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+
+
+#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+
+```json
+"entities": {
+    "age": [
+        {
+            "number": 90,
+            "unit": "Day"
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
+次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
+
+```json
+"entities": {
+    "age": [
+        {
+            "number": 90,
+            "unit": "Day"
+        }
+    ],
+    "$instance": {
+        "age": [
+            {
+                "type": "builtin.age",
+                "text": "90 day old",
+                "startIndex": 2,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor"
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
 
 次の例では、**builtin.age** エンティティの解決を示します。
 
 ```json
-{
-  "query": "A 90 day old utilities bill is quite late.",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8236133
-  },
   "entities": [
     {
       "entity": "90 day old",
@@ -48,74 +83,7 @@ age は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
         "value": "90"
       }
     }
-  ]
-}
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
-
-次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
-
-```json
-{
-    "query": "A 90 day old utilities bill is quite late.",
-    "prediction": {
-        "normalizedQuery": "a 90 day old utilities bill is quite late.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.558252
-            }
-        },
-        "entities": {
-            "age": [
-                {
-                    "number": 90,
-                    "unit": "Day"
-                }
-            ]
-        }
-    }
-}
-```
-
-次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
-
-```json
-{
-    "query": "A 90 day old utilities bill is quite late.",
-    "prediction": {
-        "normalizedQuery": "a 90 day old utilities bill is quite late.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.558252
-            }
-        },
-        "entities": {
-            "age": [
-                {
-                    "number": 90,
-                    "unit": "Day"
-                }
-            ],
-            "$instance": {
-                "age": [
-                    {
-                        "type": "builtin.age",
-                        "text": "90 day old",
-                        "startIndex": 2,
-                        "length": 10,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>次の手順

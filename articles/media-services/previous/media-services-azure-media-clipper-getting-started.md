@@ -3,18 +3,18 @@ title: Azure Media Clipper の概要 | Microsoft Docs
 description: AMS アセットからビデオ クリップを作成するためのツールである Azure Media Clipper の概要
 services: media-services
 keywords: クリップ;サブクリップ;エンコード;メディア
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ecc81967d6a95f817b10bce7f8396d9379bc94
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466274"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685082"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Azure Media Clipper を使用したクリップの作成
 このセクションでは、Azure Media Clipper の使用を開始する基本的な手順を示します。 以降のセクションで、Azure Media Clipper の構成方法の詳細を提供します。

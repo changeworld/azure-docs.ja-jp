@@ -1,25 +1,25 @@
 ---
-title: Azure Data Share プレビューでの共有サブスクリプションの取り消し
-description: Azure Data Share プレビューを利用し、受信者から共有サブスクリプションを取り消す方法について説明します。
+title: Azure Data Share での共有サブスクリプションの取り消し
+description: Azure Data Share を利用し、受信者から共有サブスクリプションを取り消す方法について説明します。
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: bd8ef23ead500acb9e403b38fd52a2d980d12bf4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 97f672b266c2df6956282aea6dec8d5207944943
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169048"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476376"
 ---
-# <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share-preview"></a>Azure Data Share プレビューでコンシューマーの共有サブスクリプションを取り消す方法
+# <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>Azure Data Share でコンシューマーの共有サブスクリプションを取り消す方法
 
-この記事では、Azure Data Share プレビューを使用して、お客様の 1 人または複数のコンシューマーから共有サブスクリプションを取り消す方法について説明します。 これにより、コンシューマーはスナップショットをこれ以上トリガーできなくなります。 コンシューマーがスナップショットをまだトリガーしていない場合、共有サブスクリプションが取り消されると、コンシューマーはデータを受信しなくなります。 コンシューマーがスナップショットを以前にトリガーしている場合、コンシューマーが所有する最新データはコンシューマーのアカウントに残ります。
+この記事では、Azure Data Share を使用して、お客様の 1 人または複数のコンシューマーから共有サブスクリプションを取り消す方法について説明します。 これにより、コンシューマーはスナップショットをこれ以上トリガーできなくなります。 コンシューマーがスナップショットをまだトリガーしていない場合、共有サブスクリプションが取り消されると、コンシューマーはデータを受信しなくなります。 コンシューマーがスナップショットを以前にトリガーしている場合、コンシューマーが所有する最新データはコンシューマーのアカウントに残ります。
 
-## <a name="navigate-to-a-sent-data-share"></a>送信したデータ共有に移動する
+## <a name="navigate-to-a-sent-data-share"></a>送信されたデータ共有に移動する
 
-Azure Data Share プレビューで、送信した共有に移動し、 **[Share Subscriptions]\(サブスクリプションの共有\)** タブを選択します。
+Azure Data Share で、送信した共有に移動し、 **[Share Subscriptions]\(サブスクリプションの共有\)** タブを選択します。
 
 ![共有サブスクリプションの取り消し](./media/how-to/how-to-revoke-share-subscription/revoke-share-subscription.png) 
 

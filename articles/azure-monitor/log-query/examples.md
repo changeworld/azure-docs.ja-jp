@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: a5a19910d101f3f30afcafa049056c78cd976f75
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8850aef8b5d45f236385551a1455e6fe7b540340
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933074"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614443"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
 この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
@@ -175,7 +175,6 @@ let EndTime = now()-4d;
 Perf
 | where CounterName == "% Processor Time"  
 | where TimeGenerated > StartTime and TimeGenerated < EndTime
-and TimeGenerated < EndTime
 | project TimeGenerated, Computer, cpu=CounterValue 
 | join kind= inner (
    Perf

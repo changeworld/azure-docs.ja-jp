@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 2f24f5cacb8b6e115d7fe91c6ef0a7a333676ae1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827349"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472851"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -33,7 +33,7 @@ ms.locfileid: "71827349"
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kubernetes API サーバーにアクセスできるユーザーを制限できますか?
 
-はい、現在プレビュー中の [API サーバーの許可された IP 範囲][api-server-authorized-ip-ranges]を使用して、Kubernetes API サーバーへのアクセスを制限できます。
+はい。[[API Server Authorized IP Ranges]\(API サーバーの許可された IP 範囲\)][api-server-authorized-ip-ranges] を使用して Kubernetes API サーバーへのアクセスを制限できます。
 
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kubernetes API サーバーを仮想ネットワーク内でのみアクセスできるようにできますか?
 
@@ -41,7 +41,7 @@ ms.locfileid: "71827349"
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>1 つのクラスター内で、異なる VM サイズを設定できますか?
 
-はい、現在プレビュー中の[複数のノード プール][multi-node-pools]を作成することで、AKS クラスター内で異なる仮想マシン サイズを使用できます。
+はい。[複数のノード プール][multi-node-pools]を作成することにより、AKS クラスターで異なる仮想マシン サイズを使用できます。
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>AKS エージェント ノードにセキュリティ更新プログラムは適用されますか?
 
@@ -118,7 +118,7 @@ Windows Server によるノード プールのサポートには、Kubernetes �
 
 サービス レベル アグリーメント (SLA) では、プロバイダーは、公開されたサービス レベルが満たされない場合に、サービスの費用を顧客に払い戻すことに同意します。 AKS は無料であり、払い戻す費用がないため、AKS には正式な SLA はありません。 ただし、AKS では、Kubernetes API サーバーの 99.5 パーセント以上の可用性を維持できるようにしています。
 
-Kubernetes コントロール プレーンのアップタイムを意味する AKS サービスの可用性と、Azure Virtual Machines 上で実行されている特定のワークロードの可用性の違いを把握することが重要です。 コントロール プレーンの準備ができていない場合はコントロール プレーンを使用できない場合がありますが、Azure VM 上で実行されているクラスターのワークロードは引き続き機能します。 すべての Azure VM は、財務 SLA でサポートされる有料リソースです。 Azure VM の SLA と、[可用性ゾーン][availability-zones]などの機能を使用して可用性を向上させる方法の[詳細についてはこちら](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/)を参照してください。
+Kubernetes コントロール プレーンのアップタイムを意味する AKS サービスの可用性と、Azure Virtual Machines 上で実行されている特定のワークロードの可用性の違いを把握することが重要です。 コントロール プレーンの準備ができていない場合はコントロール プレーンを使用できない場合がありますが、Azure VM 上で実行されているクラスターのワークロードは引き続き機能します。 すべての Azure VM は、財務 SLA でサポートされる有料リソースです。 Azure VM の SLA と、[可用性ゾーン][availability-zones]などの機能を使用して可用性を向上させる方法の[詳細についてはこちら](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)を参照してください。
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>maxPods を 30 未満に設定できないのはなぜですか?
 

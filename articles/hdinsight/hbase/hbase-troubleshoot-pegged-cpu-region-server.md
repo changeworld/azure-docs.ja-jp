@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight の Apache HBase クラスターのリージョン サーバーの固定 CPU
+title: Apache HBase クラスターの固定 CPU - Azure HDInsight
 description: Azure HDInsight の Apache HBase クラスター内のリージョン サーバー上にある固定 CPU のトラブルシューティング
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
-ms.openlocfilehash: 0712e6e8e9fe6db370d913d04e562c19b72d69a7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 845307f24495090891812b4e945e202cdad47e71
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091660"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468325"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>シナリオ: Azure HDInsight の Apache HBase クラスターのリージョン サーバーの固定 CPU
 

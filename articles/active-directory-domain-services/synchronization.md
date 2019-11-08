@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 7d4546a6d2de01575825154ab30a909b76b3fc89
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171940"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474475"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
-Azure Active Directory Domain Services (AD DS) のマネージド ドメイン内のオブジェクトと資格情報は、ドメイン内でローカルに作成するか、Azure Active Directory (AD) テナントから同期することができます。 Azure AD DS を初めてデプロイするときに、一方向の自動同期が構成され、Azure AD からオブジェクトがレプリケートされます。 この一方向の同期は引き続きバックグラウンドで実行され、Azure AD からの変更を反映して Azure AD DS マネージド ドメインを最新の状態に保ちます。
+Azure Active Directory Domain Services (AD DS) のマネージド ドメイン内のオブジェクトと資格情報は、ドメイン内でローカルに作成するか、Azure Active Directory (Azure AD) テナントから同期することができます。 Azure AD DS を初めてデプロイするときに、一方向の自動同期が構成され、Azure AD からオブジェクトがレプリケートされます。 この一方向の同期は引き続きバックグラウンドで実行され、Azure AD からの変更を反映して Azure AD DS マネージド ドメインを最新の状態に保ちます。 Azure AD DS から Azure AD への同期は行われません。
 
 ハイブリッド環境では、Azure AD Connect を使用して、オンプレミスの AD DS ドメインのオブジェクトと資格情報を Azure AD に同期できます。 これらのオブジェクトが Azure AD に正常に同期されると、自動バックグラウンド同期によって、Azure AD DS マネージド ドメインを使用するアプリケーションでそれらのオブジェクトと資格情報を使用できるようになります。
 
@@ -47,7 +47,9 @@ Azure Active Directory Domain Services (AD DS) のマネージド ドメイン�
 | ユーザーとグループの SID 履歴 | オンプレミスのプライマリ ユーザーおよびグループの SID | Azure AD DS 内のユーザーおよびグループの *SidHistory* 属性は、オンプレミスの AD DS 環境内の対応するプライマリ ユーザーまたはグループの SID と一致するように設定されています。 この機能により、リソースを再度 ACL 処理する必要がなくなるため、オンプレミスのアプリケーションを Azure AD DS にリフトアンドシフトすることが簡単になります。 |
 
 > [!TIP]
-> **UPN 形式を使用したマネージド ドメインへのサインイン** Azure AD DS マネージド ドメイン内の一部ユーザー アカウントに対して `CONTOSO\driley` などの *SAMAccountName* 属性が自動生成される場合があります。 ユーザーの自動生成された *SAMAccountName* が、UPN プレフィックスとは異なる場合があるため、常に信頼できるサインイン方法ではありません。 たとえば、複数のユーザーで *mailNickname* 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーの *SAMAccountName* が自動生成されることがあります。 Azure AD DS マネージド ドメインに確実にサインインするには、`driley@contoso.com` などの UPN 形式を使用します。
+> **UPN 形式を使用したマネージド ドメインへのサインイン** Azure AD DS マネージド ドメイン内の一部ユーザー アカウントに対して `CONTOSO\driley` などの *SAMAccountName* 属性が自動生成される場合があります。 ユーザーの自動生成された *SAMAccountName* が、UPN プレフィックスとは異なる場合があるため、常に信頼できるサインイン方法ではありません。
+>
+> たとえば、複数のユーザーで *mailNickname* 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーの *SAMAccountName* が自動生成されることがあります。 Azure AD DS マネージド ドメインに確実にサインインするには、`driley@contoso.com` などの UPN 形式を使用します。
 
 ### <a name="attribute-mapping-for-user-accounts"></a>ユーザー アカウントの属性のマッピング
 
@@ -112,7 +114,7 @@ Azure AD には、はるかに単純なフラット型名前空間がありま�
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Azure AD DS に同期されないもの
 
-次のオブジェクトまたは属性は、Azure AD または Azure AD DS に同期されません。
+次のオブジェクトまたは属性は、オンプレミスの AD DS 環境から Azure AD または Azure AD DS には同期されません。
 
 * **除外対象の属性:** Azure AD Connect を使用して、オンプレミスの AD DS 環境から Azure AD への同期から、特定の属性を除外することを選択できます。 これらの除外された属性は、Azure AD DS では使用できません。
 * **グループ ポリシー:** オンプレミスの AD DS 環境内で構成されているグループ ポリシーは、Azure AD DS に同期されません。

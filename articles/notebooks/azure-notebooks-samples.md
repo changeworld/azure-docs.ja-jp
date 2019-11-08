@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 8e4c817437c22d15e60cf48d5976c30433e83d75
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 715db36921427dc0ac5dcdad24c2c026b1ea1326
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970021"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496695"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>サンプル ノートブックを検索して使用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "71970021"
 
 ## <a name="great-sample-notebooks"></a>優れたサンプル ノートブック
 
-- [Azure Notebooks スターター セット](https://notebooks.azure.com/#sample-redirect)には、データ アクセス、Azure Machine Learning Services、いくつかのデータ サイエンス エクスペリエンスを示すノートブックと共に、Python、R、および F# の紹介が含まれています。
+- [Azure Notebooks スターター セット](https://notebooks.azure.com/#sample-redirect)には、データ アクセス、Azure Machine Learning、いくつかのデータ サイエンス エクスペリエンスを示すノートブックと共に、Python、R、および F# の紹介が含まれています。
 - [Jupyter Notebooks の概要](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
 - [データ サイエンスの概要](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) (Jake Vanderplas 氏)
 - [便利なノートブックのギャラリー](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (GitHub 上の Jupyter プロジェクト)
@@ -43,4 +43,4 @@ ms.locfileid: "71970021"
 - [方法: プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
 - [方法: データ ファイルの操作](work-with-project-data-files.md)
 - [方法: データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [方法: Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [方法: Azure Machine Learning の使用](use-machine-learning-services-jupyter-notebooks.md)

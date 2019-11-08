@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 262880997c6b065dc5293a18d9a07c52ac836f37
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68702998"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73591050"
 ---
 > [!IMPORTANT]
 > 現在、専用ホストはパブリック プレビュー段階にあります。

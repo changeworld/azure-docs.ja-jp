@@ -1,19 +1,20 @@
 ---
-title: Microsoft Azure SQL Database の接続に関する問題のトラブルシューティング | Microsoft Docs
+title: 接続の問題のトラブルシューティング
 description: Azure SQL Database の接続に関する問題をトラブルシューティングする方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
+ms.custom: seo-lt-2019
 author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 9de6d85e1fc54d60f999cfa18665067b3998a432
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390675"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807272"
 ---
 # <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>Microsoft Azure SQL Database の接続に関する問題のトラブルシューティング
 
@@ -28,9 +29,9 @@ Azure SQL Database への接続に失敗すると、エラー メッセージが
 この問題を解決するには:
 
 1. 既知の障害について、[Microsoft Azure サービスのダッシュボード](https://status.azure.com/status)を確認してください。 
-2. 既知の障害がない場合は、[Microsoft Azure のサポート Web サイト](http://azure.microsoft.com/support/options)に移動して、サポート ケースを開きます。
+2. 既知の障害がない場合は、[Microsoft Azure のサポート Web サイト](https://azure.microsoft.com/support/options)に移動して、サポート ケースを開きます。
 
-詳細については、["サーバーのデータベースが現在利用できない" エラーのトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors)に関するページを参照してください。
+詳細については、["サーバーのデータベースが現在利用できない" エラーのトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors)に関するページを参照してください。
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました
 
@@ -197,7 +198,7 @@ Azure SQL Database への接続に失敗すると、エラー メッセージが
   2. ヘッド ブロッカーの**入力バッファー**を特定します。
   3. ヘッド ブロッカー クエリを調整します。
 
-    詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
+    詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
 
 * ブロックしているクエリや実行時間の長いクエリに対応しているにもかかわらず、データベースが常に制限に達する場合は、新しいプレビュー エディションのいずれか ([Standard エディションや Premium エディションなど](https://azure.microsoft.com/pricing/details/sql-database/)) にアップグレードすることを検討してください。
 
@@ -275,7 +276,7 @@ SQL Database 価格オプションの詳細については、「[Azure SQL Datab
 
 また、クエリのバッチ処理も検討してください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance)」を参照してください。
 
-詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
+詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>エラー 40551:TEMPDB の使用量が多すぎるため、セッションを終了しました
 
@@ -311,7 +312,7 @@ SQL Database 価格オプションの詳細については、「[Azure SQL Datab
 
 この問題を回避するには、クエリを最適化してみてください。
 
-詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
+詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
 
 
 ### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>このログインで要求されたデータベース "master" を開けません。 ログインに失敗しました。
@@ -336,7 +337,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-クエリの問題によって例外がトリガーされた場合、次のような呼び出し履歴が表示されます (**SqlCommand** クラスへの参照に注意)。 このような場合は、[クエリを調整](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)します。
+クエリの問題によって例外がトリガーされた場合、次のような呼び出し履歴が表示されます (**SqlCommand** クラスへの参照に注意)。 このような場合は、[クエリを調整](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)します。
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -364,7 +365,7 @@ ClientConnectionId:<Client connection ID>
 
 5. ベスト プラクティスとして、再試行ロジックが実施されていることを確認します。 再試行ロジックの詳細については、[SQL Database に関する一時的な障害と接続エラーのトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues)についての記事を参照してください。
 
-これらの手順で問題が解決しない場合は、さらにデータを収集してから、サポートに連絡してみてください。 アプリケーションがクラウド サービスの場合は、ログ記録を有効にします。 この手順により、エラーの UTC タイムスタンプが返されます。 さらに、SQL Azure によりトレース ID が返されます。 [Microsoft カスタマー サポート サービス](http://azure.microsoft.com/support/options/)はこの情報を使用できます。 
+これらの手順で問題が解決しない場合は、さらにデータを収集してから、サポートに連絡してみてください。 アプリケーションがクラウド サービスの場合は、ログ記録を有効にします。 この手順により、エラーの UTC タイムスタンプが返されます。 さらに、SQL Azure によりトレース ID が返されます。 [Microsoft カスタマー サポート サービス](https://azure.microsoft.com/support/options/)はこの情報を使用できます。 
 
 ログ記録を有効にする方法の詳細については、「[Azure App Service でのアプリの診断ログの有効化](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)」を参照してください。
 

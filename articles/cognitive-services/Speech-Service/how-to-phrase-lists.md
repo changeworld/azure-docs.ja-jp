@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562779"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464549"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト
 
-Speech Services にフレーズ リストを提供することにより、音声認識の精度を向上させることができます。 フレーズ リストは、音声データ内で、人物の名前や特定の場所などの既知のフレーズを識別するために使用されます。
+Speech Services にフレーズのリストを提供することにより、音声認識の精度を向上させることができます。 フレーズ リストは、音声データ内で、人物の名前や特定の場所などの既知のフレーズを識別するために使用されます。
 
 例として、"Move to" という指示があり、会話で考えられる目的地として "Ward" がある場合、"Move to Ward" というエントリーを追加できます。 フレーズを追加すると、音声認識の実行時に、"Move toward" ではなく "Move to Ward" が認識される可能性が高くなります。
 
-フレーズ リストには、単一の単語または完全なフレーズを追加できます。 認識時に音声に完全一致が含まれる場合、フレーズ リスト内のエントリーが使用されます。 前述の例の場合、フレーズ リストに "Move to Ward" が含まれており、"Move toward slowly" というフレーズがキャプチャされた場合、認識結果は "Move to Ward slowly" となります。
+フレーズ リストには、単一の単語または完全なフレーズを追加できます。 認識時に音声に完全一致が含まれる場合、フレーズ リスト内のエントリーが使用されます。 前述の例の場合、フレーズ リストに "Move to Ward" が含まれており、自動キャプチャされた音声が、"Move toward" と "Move to Ward" の両方に十分に類似している場合、認識結果は "Move to Ward slowly" と認識される可能性が高くなります。
 
 >[!Note]
 > 現時点では、フレーズ リストの音声テキスト変換では英語のみサポートされています。

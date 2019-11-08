@@ -1,24 +1,24 @@
 ---
 title: Clean Missing Data (見つからないデータの消去):モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Clean Missing Data (見つからないデータの消去) モジュールを使用して、欠損値を削除、置換、または推測する方法について学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Clean Missing Data (見つからないデータの消去) モジュールを使用して、欠損値を削除、置換、または推測する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693210"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493816"
 ---
 # <a name="clean-missing-data-module"></a>Clean Missing Data (見つからないデータの消去) モジュール
 
-この記事では、Azure Machine Learning service に使用されるビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 このモジュールを使用して、欠損値を削除、置換、または推測します。 
 
@@ -133,8 +133,8 @@ ms.locfileid: "72693210"
   
 2.  消去するデータセットを追加し、データセットを右側の入力ポートに接続します。  
   
-3.  インターフェイスの左側のウィンドウで **Transforms (変換)** グループを展開します。 保存した変換を見つけ、それをパイプラインにドラッグします。  
-  
+3.  デザイナーの左側のウィンドウで **Transforms (変換)** グループを展開します。 保存した変換を見つけ、それをパイプラインにドラッグします。  
+
 4.  保存した変換を [Apply Transformation (変換の適用)](./apply-transformation.md) の左側の入力ポートに接続します。 
 
     保存した変換を適用するときに、変換を適用する列を選択することはできません。 これは、変換が既に定義されていて、元の操作で指定された列に自動的に適用されるからです。
@@ -145,4 +145,4 @@ ms.locfileid: "72693210"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

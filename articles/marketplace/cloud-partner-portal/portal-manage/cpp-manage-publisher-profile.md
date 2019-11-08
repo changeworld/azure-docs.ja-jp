@@ -5,15 +5,16 @@ services: Azure, Marketplace, AppSource, Cloud Partner Portal
 author: v-miclar
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: pabutler
-ms.openlocfilehash: c97bf10daa8f062cc833c7d7c5f7b0ca4835ca6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1cd50a0e68f88d39be4b6d43a098844688d7fc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257536"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826682"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Azure Marketplace と AppSource の発行元プロファイルを管理する
 

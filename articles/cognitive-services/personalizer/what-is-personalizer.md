@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203791"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467197"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
-Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウド ベースの API サービスです。
+Azure Personalizer は、ユーザーのリアルタイムの集団動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
 
 * ユーザーに関する情報とコンテンツを提供し、ユーザーに表示する最上位のアクションを受信します。 
 * Personalizer を使用する前に、データのクリーンアップやラベル付けを行う必要はありません。
 * 都合の良い時に Personalizer にフィードバックを提供します。 
 * リアルタイム分析を表示します。 
-* 既存の実験を検証するための大規模なデータ サイエンスの取り組みの一環として、Personalizer を使用します。
+
+[Personalizer のしくみ](https://personalizercontentdemo.azurewebsites.net/)のデモを見る
 
 ## <a name="how-does-personalizer-work"></a>Personalizer のしくみ
 
@@ -37,9 +38,9 @@ Personalizer は、機械学習モデルを使用して、コンテキスト内�
 
 1. アプリで個人用に設定するエクスペリエンスを選択します。
 1. Azure portal で個人用設定サービスのインスタンスを作成して構成します。 各インスタンスは、Personalizer ループです。
-1. SDK を使用して、ユーザーに関する情報 (_特徴_) とコンテンツ (_アクション_) で Personalizer を呼び出します。 Personalizer を使用する前にクリーンアップやラベル付けされたデータを提供する必要はありません。 
+1. [Rank API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) を使用して、ユーザーに関する情報 (_特徴_) とコンテンツ (_アクション_) で Personalizer を呼び出します。 Personalizer を使用する前にクリーンアップやラベル付けされたデータを提供する必要はありません。 API は、直接呼び出すことも、さまざまなプログラミング言語で使用可能な SDK を使用して呼び出すこともできます。
 1. クライアント アプリケーションで、Personalizer によって選択されたアクションをユーザーに表示します。
-1. SDK を使用して、ユーザーが Personalizer のアクションを選択したかどうかを示すフィードバックを Personalizer に提供します。 これは " _[報酬スコア](concept-rewards.md)_ " です。
+1. [Reward API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) を使用して、ユーザーが Personalizer のアクションを選択したかどうかを示すフィードバックを Personalizer に提供します。 これは " _[報酬スコア](concept-rewards.md)_ " です。
 1. Azure portal で分析を表示し、システムの動作方法とデータが個人設定に役立っているかを評価します。
 
 ## <a name="where-can-i-use-personalizer"></a>Personalizer を使用できる状況

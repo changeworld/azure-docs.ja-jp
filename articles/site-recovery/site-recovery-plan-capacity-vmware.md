@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924845"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747906"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する
 
@@ -41,7 +41,7 @@ CPU | メモリ | キャッシュ ディスク サイズ | データ変化率 | 
 8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz) | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシンのレプリケートに使用する。
 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz) | 18 GB | 600 GB | 501 GB ～ 1 TB | 100 ～ 150 台のマシンのレプリケートに使用する。
 16 vCPU (2 ソケット * 8 コア \@ 2.5 GHz) | 32 GB | 1 TB (テラバイト) | 1 TB ～ 2 TB | 151 ～ 200 台のマシンのレプリケートに使用する。
-[OVF テンプレート](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template)を使用して別の構成サーバーをデプロイする。 | | | | レプリケートするマシンが 200 台より多い場合は、新しい構成サーバーをデプロイする。
+[OVF テンプレート](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)を使用して別の構成サーバーをデプロイする。 | | | | レプリケートするマシンが 200 台より多い場合は、新しい構成サーバーをデプロイする。
 別の[プロセス サーバー](vmware-azure-set-up-process-server-scale.md#download-installation-file)をデプロイする。 | | | > 2 TB| データ全体の日次変化率が 2 TB を超える場合は、新しいスケールアウト プロセス サーバーをデプロイする。
 
 これらの構成は次のようなものです。
@@ -53,7 +53,7 @@ CPU | メモリ | キャッシュ ディスク サイズ | データ変化率 | 
 
 プロセス サーバーは、Azure Site Recovery でデータのレプリケーションを処理するコンポーネントです。 日次変更率が 2 TB を超える場合は、レプリケーションの負荷を処理するスケールアウト プロセス サーバーを追加する必要があります。 スケールアウトするには、次の方法があります。
 
-* [OVF テンプレート](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template)を使ってデプロイすることで、構成サーバーの数を増やします。 たとえば、2 つの構成サーバーを使用すると最大 400 台のマシンを保護できます。
+* [OVF テンプレート](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)を使ってデプロイすることで、構成サーバーの数を増やします。 たとえば、2 つの構成サーバーを使用すると最大 400 台のマシンを保護できます。
 * [スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md#download-installation-file)を追加します。 スケールアウト プロセス サーバーを使用して、構成サーバーの代わりに (または構成サーバーに加えて) レプリケーション トラフィックを処理します。
 
 次の表で、このシナリオについて説明します。

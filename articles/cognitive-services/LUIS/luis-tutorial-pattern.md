@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 4e4f1787db86378eaeff9df196cc061c42d0ab1e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390336"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499006"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加する
 
 このチュートリアルでは、パターンを使用して意図とエンティティの予測を改善しますが、提供する発話の例は減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。 パターンは、式の照合と機械学習の組み合わせです。  テンプレート発話の例は、意図の発話と共に、どのような発話が意図に適合するかを LUIS がより適切に解釈できるようにします。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -69,7 +71,7 @@ ms.locfileid: "70390336"
     |Jill Jones は誰に直接報告しますか?|
     |Jill Jones の監督者は誰ですか?|
 
-    [![LUIS での意図への新規発話追加のスクリーンショット](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "LUIS での意図への新規発話追加のスクリーンショット")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![意図に新しい発話を追加している LUIS のスクリーンショット](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "意図に新しい発話を追加している LUIS のスクリーンショット")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     意図の発話で従業員エンティティの代わりに keyPhrase エンティティにラベルが付いているかどうかは気にしないでください。 どちらも [テスト] ウィンドウとエンドポイントで正しく予測されます。 
 

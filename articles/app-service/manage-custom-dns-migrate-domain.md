@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679813"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470369"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -140,4 +140,4 @@ FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net` のドメイン名�
 カスタム SSL 証明書を App Service にバインドする方法を確認します。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)
+> [SSL 証明書を Azure App Service にバインドする](configure-ssl-bindings.md)

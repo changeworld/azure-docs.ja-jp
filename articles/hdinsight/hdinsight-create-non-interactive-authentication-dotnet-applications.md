@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight で非対話型認証 .NET アプリケーションを作成する
+title: 非対話型認証 .NET アプリケーション - Azure HDInsight
 description: Azure HDInsight で非対話型認証 Microsoft .NET アプリケーションを作成する方法について説明します。
 ms.reviewer: jasonh
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9eb83c0c42bb1ba3de1aa81ab3d5f339f4d40233
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0781d9fd58e079517b3f3dc8fba06fb448a8fa19
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433678"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494920"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、Microsoft .NET Azure HDInsight アプリケーションを実行できます。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」をご覧ください。 

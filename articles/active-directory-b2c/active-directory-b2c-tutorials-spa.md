@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 07/24/2019
+ms.date: 10/14/2019
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9b3d18a7f59415b27b1a70067c9a8a610140ca25
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: f6a417e33ac9c60c978d8638539a1e5a0772a034
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672935"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475067"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>チュートリアル:Azure Active Directory B2C (Azure AD B2C) を使用してシングルページ アプリケーションで認証を有効にする
 
@@ -48,6 +48,10 @@ ms.locfileid: "71672935"
 
 前提条件の一環として完了した 2 番目のチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 チュートリアルのサンプルとの通信を有効にするには、Azure AD B2C のアプリケーションにリダイレクト URI を 追加する必要があります。
 
+現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーションを更新できます。 [プレビュー エクスペリエンスの詳細を参照してください](http://aka.ms/b2cappregintro)。
+
+#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
@@ -55,6 +59,19 @@ ms.locfileid: "71672935"
 1. **[応答 URL]** に「`http://localhost:6420`」を追加します。
 1. **[保存]** を選択します。
 1. プロパティ ページで、**アプリケーション ID** をメモします。 このアプリ ID は、後の手順でシングル ページ Web アプリケーションのコードを更新する際に使用します。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録 (プレビュー)]** 、 **[所有しているアプリケーション]** タブ、 *[webapp1]* アプリケーションの順に選択します。
+1. **[認証]** 、 **[新しいエクスペリエンスを試す]** (表示されている場合) の順に選択します。
+1. **[Web]** で **[URI の追加]** リンクを選択し、「`http://localhost:6420`」と入力して、 **[保存]** を選択します。
+1. **[概要]** を選択します。
+1. 単一ページの Web アプリケーションでコードを更新する場合は、後の手順で使用するために**アプリケーション (クライアント) ID** をメモしておきます。
+
+* * *
 
 ## <a name="get-the-sample-code"></a>サンプル コードの取得
 
@@ -115,13 +132,16 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
+> [!WARNING]
+> サインアップまたはサインインすると、["アクセス許可が不十分です" というエラー](#error-insufficient-permissions)が表示されることがあります。 コード サンプルの現在の実装では、このエラーが発生する可能性があります。 この問題は、今後のバージョンのコード サンプルで解決される予定であり、その際にこの警告は削除されます。
+
 1. **[Login]\(ログイン\)** を選択して、前の手順で指定した *B2C_1_signupsignin1* ユーザー フローを開始します。
 1. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[Sign up now]\(今すぐサインアップ\)** リンクを選択します。
 1. サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
 
     有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。
 
-    ![サインインまたはサインアップ ユーザー フローによって表示されるサインアップ ページ](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
+    ![サインインまたはサインアップ ユーザー フローによって表示されるサインアップ ページ](./media/active-directory-b2c-tutorials-spa/azure-ad-b2c-sign-up-workflow.png)
 
 1. **[作成]** を選択して、Azure AD B2C ディレクトリにローカル アカウントを作成します。
 
@@ -131,7 +151,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="error-insufficient-permissions"></a>エラー: アクセス許可が不十分です
 
-サインイン後、このアプリでは、アクセス許可が不十分であることを示すエラーが表示されます - これには次のことが**予想されます**。
+サインインした後、アプリケーションから "アクセス許可が不十分です" というエラーが返されることがあります。
 
 ```Output
 ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.

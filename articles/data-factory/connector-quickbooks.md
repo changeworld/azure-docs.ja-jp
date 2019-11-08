@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して QuickBooks Online からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して QuickBooks Online からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、QuickBooks Online からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 44bfae58badd6aa6b05763dff094475f82fb2e18
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: dd8044c6c2e87262f80a53eaa52114c82b71de50
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089687"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680415"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Data Factory を使用して QuickBooks Online からデータをコピーする (プレビュー)
 
@@ -167,7 +167,7 @@ Azure Data Factory のコピー アクティビティでは、Quickbooks Desktop
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

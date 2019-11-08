@@ -1,5 +1,5 @@
 ---
-title: 拡張された Spark History Server による Spark アプリケーションのデバッグ - Azure HDInsight
+title: 拡張された Spark History Server によるアプリのデバッグ - Azure HDInsight
 description: 拡張された Spark History Server を使用して Spark アプリケーションのデバッグと診断を行う - Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9398745cb240e7b7dff45ff5d6d9cdf064239bfd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130348"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494738"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>拡張された Apache Spark History Server を使用して Apache Spark アプリケーションのデバッグと診断を行う
 
@@ -28,7 +28,7 @@ Apache Spark History Server は、完了および実行中の Spark アプリケ
 1. [Azure Portal](https://portal.azure.com/) で Spark クラスターを開きます。 詳細については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。
 2. **クイック リンク**の **[クラスター ダッシュボード]** をクリックし、 **[Spark History Server]** をクリックします。 入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
-    ![ポータルでの Spark History Server の起動](./media/apache-azure-spark-history-server/launch-history-server.png "Spark History Server")
+    ![ポータルで Spark History Server を起動する](./media/apache-azure-spark-history-server/launch-history-server.png "[Spark History Server]")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Spark History Server Web UI を URL で開く
 

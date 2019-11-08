@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Azure Database for PostgreSQL との間でデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Azure Database for PostgreSQL との間でデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Database for PostgreSQL との間で双方向にデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: b92177b162f4649f253bf74372b175fc16130af6
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7443ab3abb12451619e77d925912b4bfc118cfaa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300384"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681221"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for PostgreSQL との間でデータをコピーする
 
@@ -219,7 +219,7 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
 プロパティの詳細については、「[Azure Data Factory でのルックアップ アクティビティ](control-flow-lookup-activity.md)」を参照してください。
 

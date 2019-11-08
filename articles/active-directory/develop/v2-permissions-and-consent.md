@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0fcb748262b20fd4550d08d74056c0219dbc09
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: edb6d96dfdca63f1bacf45ab0af01d18aafcf302
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693999"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667871"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -186,29 +186,26 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 
 ```
 // Line breaks are for legibility only.
-
-GET https://login.microsoftonline.com/{tenant}/adminconsent?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&state=12345
-&redirect_uri=http://localhost/myapp/permissions
+    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+  &state=12345
+  &redirect_uri=http://localhost/myapp/permissions
+    &scope=
+    https://graph.microsoft.com/calendars.read 
+    https://graph.microsoft.com/mail.send
 ```
 
-```
-// Pro tip: Try pasting the below request in a browser!
-```
 
-```
-https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
-```
-
-| パラメーター | 条件 | 説明 |
-| --- | --- | --- |
+| パラメーター     | 条件     | 説明                                                                               |
+|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
 | `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように `common` で総称的に参照できます。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
 | `redirect_uri` | 必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
 | `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |
+|`scope`        | 必須      | アプリケーションによって要求されるアクセス許可のセットを定義します。 これは静的スコープ (/.default を使用) か動的スコープになります。  これには OIDC スコープ (`openid`、`profile`、`email`) が含まれることもあります。 | 
 
-現在 Azure AD では、テナント管理者がサインインして、要求を完了する必要があります。 管理者はユーザーがアプリケーション登録ポータルで要求したすべてのアクセス許可への承認を求められます。
+
+現在 Azure AD では、テナント管理者がサインインして、要求を完了する必要があります。 管理者は、ユーザーが `scope` パラメーターで要求したすべてのアクセス許可を承認するように求められます。  静的な (`/.default`) 値を使用した場合、それは v1.0 管理者の同意エンドポイントのように機能し、アプリに必要なアクセス許可で見つかったすべてのスコープに対する同意を要求します。
 
 #### <a name="successful-response"></a>成功応答
 

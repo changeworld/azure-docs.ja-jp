@@ -9,15 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/03/2019
-ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173300"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476177"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 前のチュートリアルでは、[ワークスペースを作成し、開発環境を選択](tutorial-1st-experiment-sdk-setup.md)しました。 このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、SDK の実用的な知識が得られます。
 
@@ -37,7 +39,7 @@ ms.locfileid: "72173300"
 
 ## <a name="open-the-notebook"></a>ノートブックを開く
 
-1. [ワークスペース ランディング ページ](https://ml.azure.com/)にサインインします。
+1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
 
 1. [パート 1](tutorial-1st-experiment-sdk-setup.md#open) に示すように、フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** を開きます。
 
@@ -62,7 +64,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-次に、自分のワークスペース内に実験を作成します。 実験は、試行 (個々のモデルの実行) のコレクションを表すもう 1 つの基本的なクラウド リソースです。 このチュートリアルでは、実験を使用して実行を作成し、Azure portal で自分のモデルのトレーニングを追跡します。 パラメーターには、自分のワークスペース参照と、実験の文字列名が含まれます。
+次に、自分のワークスペース内に実験を作成します。 実験は、試行 (個々のモデルの実行) のコレクションを表すもう 1 つの基本的なクラウド リソースです。 このチュートリアルでは、実験を使用して実行を作成し、Azure Machine Learning Studio で自分のモデルのトレーニングを追跡します。 パラメーターには、自分のワークスペース参照と、実験の文字列名が含まれます。
 
 
 ```python
@@ -72,15 +74,17 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>データを読み込み、トレーニングを準備する
 
-このチュートリアルでは、糖尿病データ セットを使用します。これは、scikit-learn に含まれている、あらかじめ正規化済みのデータ セットです。 このデータ セットでは、年齢、性別、BMI などの特徴を使用して、糖尿病疾患の進行を予測します。 `load_diabetes()` 静的関数からデータを読み込み、それを `train_test_split()` を使用してトレーニングとテストのセットに分割します。 この関数により、データが分離され、モデルのトレーニング後のテストに未知のデータが使用されるようになります。
+このチュートリアルで使用する糖尿病データ セットは、年齢、性別、BMI などの特徴を使用して、糖尿病疾患の進行を予測します。 [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) クラスからデータを読み込み、それを `train_test_split()` を使用してトレーニングとテストのセットに分割します。 この関数により、データが分離され、モデルのトレーニング後のテストに未知のデータが使用されるようになります。
 
 
 ```python
-from sklearn.datasets import load_diabetes
+from azureml.opendatasets import Diabetes
 from sklearn.model_selection import train_test_split
 
-X, y = load_diabetes(return_X_y = True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=66)
+x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
+y_df = x_df.pop("Y")
+
+X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
 ## <a name="train-a-model"></a>モデルをトレーニングする
@@ -193,19 +197,9 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 Azure Machine Learning の他のチュートリアルを実行する予定の場合、このセクションを実行しないでください。
 
-### <a name="stop-the-notebook-vm"></a>ノートブック VM を停止する
+### <a name="stop-the-compute-instance"></a>コンピューティング インスタンスの停止
 
-クラウド ノートブック サーバーを使用していた場合は、使用していない VM を停止してコストを削減します。
-
-1. ワークスペースで、 **[ノートブック VM]** を選択します。
-
-   ![VM サーバーを停止する](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. 一覧から VM を選択します。
-
-1. **[停止]** を選択します。
-
-1. サーバーを再び使用する準備が整ったら、 **[開始]** を選択します。
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>すべてを削除する
 

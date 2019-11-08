@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して SAP テーブルからデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して SAP テーブルからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP テーブルからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 87f97d674b1dd4334ac0ca07648baa1e7cc6607a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 9c4e22e997b4ad8c36d8aaf84d1bb8aacb5c5529
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089553"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680240"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -301,7 +301,7 @@ SAP テーブルからデータをコピーするとき、SAP テーブルのデ
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

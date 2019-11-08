@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache プレビューのデータ取り込み - 手動コピー
+title: Azure HPC Cache のデータ取り込み - 手動コピー
 description: cp コマンドを使用して Azure HPC Cache の Blob Storage ターゲットにデータを移動する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b2514eaaf70d13d3be63963f24ea7be99c4fbcce
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254468"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582285"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC Cache (プレビュー) のデータ取り込み - 手動コピーを使用した方法
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache のデータ取り込み - 手動でコピーする方法
 
 この記事では、Azure HPC Cache で使用する Blob Storage コンテナーに対し、データを手動でコピーする手順を詳しく説明します。 コピー速度を最適化するために、マルチスレッドの並列処理を使用します。
 

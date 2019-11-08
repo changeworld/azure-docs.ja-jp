@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5d807f185a8cdb181093d37dac35ee2e467fdba9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8ce35156cd772487c4787f2f5fb99feb1225826f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328091"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794205"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -67,7 +67,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 1. "_マークダウン_" で書式設定された回答を追加します。
 
-    ` * Azure QnA Maker service\n* Azure Search\n* Azure web app\n* Azure app plan`
+    ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
     ![ 質問をテキストとして追加し、回答をマークダウンで書式設定して追加します。](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
 

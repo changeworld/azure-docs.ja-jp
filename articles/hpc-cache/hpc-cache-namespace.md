@@ -1,21 +1,21 @@
 ---
-title: Azure HPC Cache (プレビュー) を作成する
+title: Azure HPC キャッシュを作成する
 description: Azure HPC Cache インスタンスを作成する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255268"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582188"
 ---
 # <a name="plan-the-aggregated-namespace"></a>集約された名前空間を計画する
 
-Azure HPC Cache (プレビュー) を使用すると、バックエンド ストレージ システムの細部が見えないようにする仮想名前空間を通じて、クライアントはさまざまなストレージ システムにアクセスすることができます。
+Azure HPC Cache を使用すると、バックエンド ストレージ システムの細部が見えないようにする仮想名前空間を通じて、クライアントはさまざまなストレージ システムにアクセスすることができます。
 
 ストレージ ターゲットを追加するときに、クライアント側のファイル パスを設定します。 クライアント コンピューターでは、このファイル パスをマウントし、ストレージ システムを直接マウントするのではなく、キャッシュに対してファイル読み取り要求を行うことができます。
 

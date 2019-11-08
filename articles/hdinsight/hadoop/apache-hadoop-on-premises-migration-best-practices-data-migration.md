@@ -1,5 +1,5 @@
 ---
-title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - データ移行
+title: データの移行:オンプレミスの Apache Hadoop から Azure HDInsight
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのデータ移行のベスト プラクティスについて説明します。
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 567edca422237c71f0d69c862a17fbc0d2a72795
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735927"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494987"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - データ移行のベスト プラクティス
 

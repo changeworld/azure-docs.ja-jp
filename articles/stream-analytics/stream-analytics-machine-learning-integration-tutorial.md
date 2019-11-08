@@ -9,15 +9,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab510f7ee2f95a2c3373c0514c31554598451b27
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: b078c92d02c55080cb84c386b7bbdabf3e1f85bf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173327"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467884"
 ---
-# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Azure Stream Analytics と Azure Machine Learning Studio (プレビュー) を使用した感情分析の実行
-この記事では、Azure Machine Learning Studio を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic-preview"></a>Azure Stream Analytics と Azure Machine Learning Studio (クラシック) を使用して感情分析を実行する (プレビュー)
+この記事では、Azure Machine Learning Studio (クラシック) を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
 
 この記事で学ぶ内容は、次のようなシナリオに適用できます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "70173327"
 大まかに言えば、この記事で説明するタスクを完了するには、以下の手順を実行します。
 
 1. Azure ストレージ アカウントと BLOB ストレージ コンテナーを作成し、そのコンテナーに CSV 形式の入力ファイルをアップロードします。
-3. Cortana Intelligence ギャラリーの感情分析モデルを Azure Machine Learning Studio ワークスペースに追加し、このモデルを Web サービスとして Machine Learning ワークスペースにデプロイします。
+3. Cortana Intelligence ギャラリーの感情分析モデルを Azure Machine Learning Studio (クラシック) ワークスペースに追加し、このモデルを Web サービスとして Machine Learning ワークスペースにデプロイします。
 5. この Web サービスを、テキスト入力のセンチメントを決定するための関数として呼び出す Stream Analytics ジョブを作成します。
 6. Stream Analytics ジョブを開始し、出力をチェックします。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Oracle Responsys からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Oracle Responsys からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Oracle Responsys からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 40a6c81008c7e4edefff94101022338590fe971b
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 9fdf031b5cd215cee5ed7d76e4fc320c824f3755
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089877"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680547"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Oracle Responsys からデータをコピーする (プレビュー)
 

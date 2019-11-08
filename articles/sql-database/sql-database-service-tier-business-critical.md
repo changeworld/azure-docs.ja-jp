@@ -1,5 +1,5 @@
 ---
-title: Business Critical レベル - Azure SQL Database サービス | Microsoft Docs
+title: Business Critical サービス レベル
 description: Azure SQL Database Business Critical レベルについて説明します
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: ef1f420e4c4dbd38ad703eb0573fae36af078edb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496236"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818244"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Business Critical レベル - Azure SQL Database
 

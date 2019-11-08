@@ -1,5 +1,5 @@
 ---
-title: Data Management Gateway のリリース ノート | Microsoft Docs
+title: Data Management Gateway のリリース ノート
 description: Data Management Gateway のリリース ノート
 services: data-factory
 author: nabhishek
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb89ed08b05f9a8f271ceee400bc609881e7048d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486466"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682585"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8e858869d742120138e7997ce21d9e4cca93ed9b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b8ce4565a2df3ad5f144508010265c1029a6856d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264358"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468851"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -67,9 +67,15 @@ ms.locfileid: "71264358"
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework アプリケーションを登録する
 
-Azure AD B2C では、ユーザーのサインアップとサインインのために使用される 2 つのアプリケーションを登録する必要があります。IdentityExperienceFramework (Web アプリ) と、IdentityExperienceFramework アプリからアクセス許可を委任された ProxyIdentityExperienceFramework (ネイティブ アプリ) です。 ローカル アカウントは、テナント内にのみ存在します。 ユーザーは電子メール アドレスとパスワードの一意の組み合わせを使用してサインアップし、テナントに登録されたアプリケーションにアクセスします。
+Azure AD B2C では、ローカル アカウントでのユーザーのサインアップとサインインのために使用する 2 つのアプリケーションを登録する必要があります。*IdentityExperienceFramework* (Web API) と、IdentityExperienceFramework アプリへのアクセス許可が委任された *ProxyIdentityExperienceFramework* (ネイティブ アプリ) です。 ユーザーはメール アドレスまたはユーザー名、およびパスワードを使用してサインアップし、テナントに登録されたアプリケーションにアクセスできます。これにより "ローカル アカウント" が作成されます。 ローカル アカウントは、Azure AD B2C テナント内にのみ存在します。
+
+この 2 つのアプリケーションを Azure AD B2C テナントに 1 回だけ登録する必要があります。
 
 ### <a name="register-the-identityexperienceframework-application"></a>IdentityExperienceFramework アプリケーションを登録します
+
+アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [プレビュー エクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+
+#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
 1. Azure portal の左上隅の **[すべてのサービス]** を選択します。
 1. 検索ボックスに「 `Azure Active Directory`」と入力します。
@@ -81,7 +87,31 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 1. **サインオン URL** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は、Azure AD B2C テナント ドメイン名です。 ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
 1. **作成** を選択します。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
 
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+
+1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
+1. **名前**には、`IdentityExperienceFramework`を入力します。
+1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
+1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`」と入力します。`your-tenant-name` は、Azure AD B2C テナント ドメイン名です。
+1. **[アクセス許可]** で、 *[openid と offline_access アクセス許可に対して管理者の同意を付与します]* チェック ボックスをオンにします。
+1. **[登録]** を選択します。
+1. 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
+
+次に、スコープを追加して API を公開します。
+
+1. **[管理]** の **[API の公開]** を選択します。
+1. **[スコープの追加]** 、 **[保存して続行]** の順に選択し、既定のアプリケーション ID URI をそのまま使用します。
+1. 次の値を入力して、ご自身の Azure AD B2C テナントでカスタム ポリシーの実行を許可するスコープを作成します。
+    * **スコープ名**: `user_impersonation`
+    * **管理者の同意の表示名**: `Access IdentityExperienceFramework`
+    * **管理者の同意の説明**: `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+1. **[スコープの追加]** を選択します
+
+* * *
+
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを登録する
+
+#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
 1. **[アプリの登録 (レガシ)]** で、 **[新しいアプリケーションの登録]** を選択します。
 1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
@@ -92,6 +122,38 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 1. **[API を選択します]** を選択し、**IdentityExperienceFramework** を検索して選択してから、 **[選択]** をクリックします。
 1. **[IdentityExperienceFramework にアクセスする]** の横のチェックボックスにチェックを入れて、 **[選択する]** をクリックし、 **[完了]** をクリックします。
 1. **[アクセス許可を付与する]** を選択したら、 **[はい]** を選択して確定します。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+
+1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
+1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
+1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
+1. **[リダイレクト URI]** で、ドロップダウンを使用して **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択します。
+1. **リダイレクト URI** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は Azure AD B2C テナントです。
+1. **[アクセス許可]** で、 *[openid と offline_access アクセス許可に対して管理者の同意を付与します]* チェック ボックスをオンにします。
+1. **[登録]** を選択します。
+1. 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
+
+次に、アプリケーションをパブリック クライアントとして扱うよう指定します。
+
+1. **[管理]** で **[認証]** を選択します。
+1. **[新しいエクスペリエンスを試す]** を選択します (表示されている場合)。
+1. **[詳細設定]** で、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします ( **[はい]** を選択します)。
+1. **[保存]** を選択します。
+
+次に、*IdentityExperienceFramework* 登録で前に公開した API スコープに、アクセス許可を付与します。
+
+1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
+1. **[構成されたアクセス許可]** で **[アクセス許可の追加]** を選択します。
+1. **[自分の API]** タブ、**IdentityExperienceFramework** アプリケーションの順に選択します。
+1. **[アクセス許可]** で、前に定義した **[user_impersonation]** スコープを選択します。
+1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
+1. **[(ご自身のテナント名) に管理者の同意を与えます]** を選択します。
+1. 現在サインインしている管理者アカウントを選択するか、"*クラウド アプリケーション管理者*" ロール以上が割り当てられている Azure AD B2C テナントのアカウントでサインインします。
+1. **[Accept]\(承認\)** を選択します。
+1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
+
+* * *
 
 ## <a name="custom-policy-starter-pack"></a>カスタム ポリシー スターター パック
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の Webhook アクティビティ | Microsoft Docs
+title: Azure Data Factory の Webhook アクティビティ
 description: Webhook アクティビティは、ユーザーが指定する特定の条件でアタッチされたデータセットを検証するまで、パイプラインの実行を継続しません。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: c11fb800dba06ab5566647489f020f727860a7ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3734472d9026d4e355c08b36d5ba58974288daac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142402"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678224"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory の Webhook アクティビティ
 Webhook アクティビティを使用すると、カスタム コードを使用してパイプラインの実行を制御できます。 Webhook アクティビティを使用すると、顧客は、エンドポイントを呼び出し、コールバック URL を渡ことができます。 パイプラインの実行は、コールバックが呼び出されるのを待ってから、次のアクティビティに進みます。

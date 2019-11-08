@@ -2,20 +2,20 @@
 title: Azure Blockchain の制限事項
 description: Azure Blockchain Service でのサービスと機能の制限に関する概要です
 services: azure-blockchain
-keywords: ブロックチェーン
+keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: aeed84f19da3843d043eafef9d7444661901c53e
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20c26db9453220270d17801b74d904384c74cb36
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147139"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577214"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure Blockchain Service での制限事項
 

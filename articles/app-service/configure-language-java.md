@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 91f0c059d22fb921aeb0c65f7d4eba95debd530d
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 75632d4fcdbf27f70b1b84f08f7295212dbac6a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097727"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471101"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 
@@ -53,7 +53,7 @@ FTP を使用して .war をデプロイしないでください。 FTP ツー�
 
 ### <a name="app-logging"></a>アプリのログ記録
 
-Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */LogFiles/Application/* ディレクトリにあります。
+Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */LogFiles/Application/* ディレクトリにあります。
 
 アプリケーションで [Logback](https://logback.qos.ch/) または [Log4j](https://logging.apache.org/log4j) をトレースに使用している場合は、「[Application Insights を使用した Java トレース ログの探索](/azure/application-insights/app-insights-java-trace-logs)」にあるログ記録フレームワークの構成手順に従って、これらのトレースを確認のために Azure Application Insights に転送することができます。
 
@@ -62,15 +62,15 @@ Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) �
 
 Azure App Service では、Azure portal および CLI を使用したチューニングとカスタマイズが追加設定なしでサポートされています。 Java 以外の特定の Web アプリの構成については、次の記事を確認してください。
 
-- [アプリケーションの設定の構成](configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
-- [カスタム ドメインの設定](app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [SSL の有効化](app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [CDN の追加](../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [アプリケーションの設定の構成](configure-common.md#configure-app-settings)
+- [カスタム ドメインの設定](app-service-web-tutorial-custom-domain.md)
+- [SSL バインドの構成](configure-ssl-bindings.md)
+- [CDN の追加](../cdn/cdn-add-to-web-app.md)
 - [Kudu サイトを構成する](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
 ### <a name="set-java-runtime-options"></a>Java ランタイム オプションを設定する
 
-割り当てられたメモリまたはその他の JVM ランタイムのオプションを設定するには、[アプリ設定](configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を作成して `JAVA_OPTS` と名付け、オプションを指定します。 App Service では、開始時にこの設定が環境変数として Java ランタイムに渡されます。
+割り当てられたメモリまたはその他の JVM ランタイムのオプションを設定するには、[アプリ設定](configure-common.md#configure-app-settings)を作成して `JAVA_OPTS` と名付け、オプションを指定します。 App Service では、開始時にこの設定が環境変数として Java ランタイムに渡されます。
 
 Azure portal の Web アプリ用の **[アプリケーション設定]** で、`-Xms512m -Xmx1204m` などの追加の設定を含む、`JAVA_OPTS` という名前の新しいアプリ設定を作成します。
 
@@ -135,7 +135,7 @@ App Service で実行される Java アプリケーションは、他のアプ�
 
 ### <a name="authenticate-users-easy-auth"></a>ユーザーを認証する (Easy Auth)
 
-**[認証/承認]** オプションを使用して、Azure portal でアプリ認証を設定します。 そこから、Azure Active Directory、または Facebook、Google、GitHub などのソーシャル ログインを使用して、認証を有効にすることができます。 Azure portal の構成は、1 つの認証プロバイダーを構成するときにのみ機能します。 詳細については、「[Azure Active Directory ログインを使用するよう App Service アプリを構成する](configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)」と、他の ID プロバイダーの関連記事を参照してください。 複数のサインイン プロバイダーを有効にする必要がある場合は、[App Service 認証のカスタマイズ](app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関する記事の手順に従います。
+**[認証/承認]** オプションを使用して、Azure portal でアプリ認証を設定します。 そこから、Azure Active Directory、または Facebook、Google、GitHub などのソーシャル ログインを使用して、認証を有効にすることができます。 Azure portal の構成は、1 つの認証プロバイダーを構成するときにのみ機能します。 詳細については、「[Azure Active Directory ログインを使用するよう App Service アプリを構成する](configure-authentication-provider-aad.md)」と、他の ID プロバイダーの関連記事を参照してください。 複数のサインイン プロバイダーを有効にする必要がある場合は、[App Service 認証のカスタマイズ](app-service-authentication-how-to.md)に関する記事の手順に従います。
 
 #### <a name="tomcat-and-wildfly"></a>Tomcat と Wildfly
 
@@ -173,7 +173,7 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>TLS/SSL を構成する
 
-[既存のカスタム SSL 証明書のバインド](app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関する記事の手順に従って、既存の SSL 証明書をアップロードし、アプリケーションのドメイン名にバインドします。 既定では、アプリケーションで引き続き HTTP 接続が許可されます。チュートリアルの特定の手順に従って、SSL と TLS を適用します。
+「[Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」の手順に従って、既存の SSL 証明書をアップロードし、アプリケーションのドメイン名にバインドします。 既定では、アプリケーションで引き続き HTTP 接続が許可されます。チュートリアルの特定の手順に従って、SSL と TLS を適用します。
 
 ### <a name="use-keyvault-references"></a>KeyVault 参照を使用する
 
@@ -285,7 +285,7 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 3. SFTP クライアントを使用してローカルのトンネル ポートに接続し、ファイルを */home/tomcat/lib* フォルダーにアップロードします。
 
-あるいは、FTP クライアントを使用して JDBC ドライバーをアップロードできます。 [FTP 資格情報を取得するための手順](deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に従ってください。
+あるいは、FTP クライアントを使用して JDBC ドライバーをアップロードできます。 [FTP 資格情報を取得するための手順](deploy-configure-credentials.md)に従ってください。
 
 ## <a name="configuring-tomcat"></a>Tomcat の構成
 

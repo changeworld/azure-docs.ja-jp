@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse でのワークロードの重要度の構成 | Microsoft Docs
+title: ワークロードの重要度の構成
 description: 要求レベルの重要度を設定する方法について説明します。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e4d410f32068b4d3035dcab0c61b7b9205103690
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 59ba4b936f6098b0d0b3f5e571f107af088206e0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588680"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692696"
 ---
 # <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのワークロードの重要度の構成
 

@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592379"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475914"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
-Azure プライベート エンドポイントは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスは、Azure Storage や SQL などの Azure サービスであっても、独自の [Private Link サービス](private-link-service-overview.md)であってもかまいません。
+Azure プライベート エンドポイントは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスは、Azure Storage、Azure Cosmos DB、SQL などの Azure サービスであっても、独自の [Private Link サービス](private-link-service-overview.md)であってもかまいません。
   
 ## <a name="private-endpoint-properties"></a>プライベート エンドポイントのプロパティ 
  プライベート エンドポイントでは、次のプロパティを指定します。 
@@ -57,7 +57,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (blob、blob_secondary)<BR> Table (table、table_secondary)<BR> Queue (queue、queue_secondary)<BR> File (file、file_secondary)<BR> Web (web、web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (blob、blob_secondary)       |
- 
+|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql、MongoDB、Cassandra、Gremlin、Table|
  
 ## <a name="network-security-of-private-endpoints"></a>プライベート エンドポイントのネットワーク セキュリティ 
 Azure サービスでプライベート エンドポイントを使用する場合、トラフィックは特定のプライベート リンク リソースに対してセキュリティで保護されます。 プラットフォームによってアクセス制御が実行され、指定されたプライベート リンク リソースのみに到達するネットワーク接続が検証されます。 同じ Azure サービス内の追加のリソースにアクセスするには、追加のプライベート エンドポイントが必要です。 
@@ -81,7 +81,7 @@ Azure サービスでプライベート エンドポイントを使用する場�
 > 承認済み状態のプライベート エンドポイントのみが、指定されたプライベート リンク リソースにトラフィックを送信できます。 
 
 ### <a name="connecting-using-alias"></a>別名を使用した接続
-別名は、サービスの所有者が標準のロード バランサーの背後にプライベート リンク サービスを作成したときに生成される一意のモニカーです。 サービスの所有者は、この別名をオフラインでコンシューマーと共有できます。 コンシューマーは、リソース URI と別名のいずれかを使用して、プライベート リンク サービスへの接続を要求できます。 別名を使用して接続する場合は、手動の接続承認方法を使用してプライベート エンドポイントを作成する必要があります。 手動の接続承認方法を使用するには、プライベート エンドポイント作成フロー中に手動要求パラメーターを true に設定します。 詳細については、「[New-AzPrivateEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0)」および「[az network private-endpoint create](https://docs.microsoft.com/en-us/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)」を参照してください。 
+別名は、サービスの所有者が標準のロード バランサーの背後にプライベート リンク サービスを作成したときに生成される一意のモニカーです。 サービスの所有者は、この別名をオフラインでコンシューマーと共有できます。 コンシューマーは、リソース URI と別名のいずれかを使用して、プライベート リンク サービスへの接続を要求できます。 別名を使用して接続する場合は、手動の接続承認方法を使用してプライベート エンドポイントを作成する必要があります。 手動の接続承認方法を使用するには、プライベート エンドポイント作成フロー中に手動要求パラメーターを true に設定します。 詳細については、「[New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0)」および「[az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)」を参照してください。 
 
 ## <a name="dns-configuration"></a>DNS の構成 
 接続文字列の一部として完全修飾ドメイン名 (FQDN) を使用してプライベート リンク リソースに接続する場合は、割り当てられたプライベート IP アドレスに解決されるように DNS 設定を正しく構成することが重要です。 既存の Azure サービスには、パブリック エンドポイント経由で接続するときに使用する DNS 構成が既に存在している場合があります。 プライベート エンドポイントを使用して接続するには、これをオーバーライドする必要があります。 
@@ -91,7 +91,7 @@ Azure サービスでプライベート エンドポイントを使用する場�
 次のオプションを使用して、プライベート エンドポイントの DNS 設定を構成できます。 
 - **ホスト ファイルを使用する (テストにのみ推奨)** 。 仮想マシン上のホスト ファイルを使用して、DNS をオーバーライドすることができます。  
 - **プライベート DNS ゾーンを使用する**。 プライベート DNS ゾーンを使用して、特定のプライベート エンドポイントの DNS 解決をオーバーライドすることができます。 プライベート DNS ゾーンを自分の仮想ネットワークにリンクして、特定のドメインを解決することができます。
-- **カスタム DNS サーバーを使用する**。 独自の DNS サーバーを使用して、特定のプライベート リンク リソースの DNS 解決をオーバーライドすることができます。 自分の DNS サーバーが仮想ネットワーク上にホストされている場合は、プライベート DNS ゾーンを使用する DNS 転送規則を作成して、すべてのプライベート リンク リソースの構成を簡略化することができます。
+- **カスタム DNS サーバーを使用する**。 独自の DNS サーバーを使用して、特定のプライベート リンク リソースの DNS 解決をオーバーライドすることができます。 お使いの [DNS サーバー](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)が仮想ネットワーク上にホストされている場合は、プライベート DNS ゾーンを使用する DNS 転送規則を作成して、すべてのプライベート リンク リソースの構成を簡略化することができます。
  
 > [!IMPORTANT]
 > パブリック エンドポイントを解決する目的でアクティブに使用されているゾーンをオーバーライドすることはお勧めしません。 リソースへの接続は、パブリック DNS への DNS 転送なしでは正しく解決できません。 問題を回避するには、別のドメイン名を作成するか、次の各サービスの推奨される名前に従ってください。 
@@ -107,9 +107,12 @@ Azure サービスについては、次の表に示すように、推奨され�
 |Storage アカウント (Microsoft.Storage/storageAccounts)   |    File (file、file_secondary)      |    privatelink.file.core.windows.net      |
 |Storage アカウント (Microsoft.Storage/storageAccounts)     |  Web (web、web_secondary)        |    privatelink.web.core.windows.net      |
 |Data Lake ファイル システム Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake ファイル システム Gen2 (dfs、dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-||||
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|テーブル|privatelink.table.cosmos.azure.com|
  
-
 提案されたドメイン名に解決をリダイレクトするために、Azure によってパブリック DNS に正規名の DNS レコード (CNAME) が作成されます。 この解決は、プライベート エンドポイントのプライベート IP アドレスでオーバーライドすることができます。 
  
 アプリケーションで接続 URL を変更する必要はありません。 パブリック DNS を使用して解決を試みると、DNS サーバーはプライベート エンドポイントに解決するようになります。 このプロセスはアプリケーションに影響しません。 
@@ -122,8 +125,6 @@ Azure サービスについては、次の表に示すように、推奨され�
 |制限事項 |説明 |対応策  |
 |---------|---------|---------|
 |ネットワーク セキュリティ グループ (NSG) 規則とユーザー定義のルーツは、プライベート エンドポイントには適用されない    |NSG は、プライベート エンドポイントではサポートされません。 プライベート エンドポイントを含むサブネットに NSG を関連付けることはできますが、プライベート エンドポイントによって処理されるトラフィックに対して規則は有効ではありません。 サブネットにプライベート エンドポイントをデプロイするには、[ネットワーク ポリシーの適用を無効にする](disable-private-endpoint-network-policy.md)必要があります。 NSG は、同じサブネット上にホストされている他のワークロードにも適用されます。 クライアント サブネット上のルートは /32 プレフィックスを使用するため、既定のルーティング動作を変更するには同様の UDR が必要です  | ソース クライアントにおけるアウトバウンド トラフィックに対して NSG 規則を使用して、トラフィックを制御します。 /32 プレフィックスを持つ個々のルートをデプロイして、プライベート エンドポイント ルートをオーバーライドする        |
-|プライベート エンドポイントは、サービス エンドポイントまたは専用ワークロードに対応するサブネットには作成できない    |プライベート エンドポイントは、専用ワークロードに委任されるサービス エンドポイントまたはサブネットに対応するサブネット上でデプロイできません|  プライベート エンドポイントをデプロイするサブネットを別個に作成します。        |
-|プライベート エンドポイントは、同じリージョン内の (顧客が所有する) プライベート リンク サービスにしかマップできない    |   別のリージョンから (独自の) プライベート リンク サービスに接続することはできません       |  プレビュー期間中は、対象の Private Link サービスを同じリージョン内にデプロイする必要があります。        |
 |  プライベート エンドポイントのみを使用するピアリングされた仮想ネットワークはサポートされない   |   他のワークロードがないピアリングされた仮想ネットワーク上のプライベート エンドポイントに接続することはサポートされていません       | ピアリングされた仮想ネットワークに単一の VM をデプロイして接続を有効にします |
 |専用ワークロードはプライベート エンドポイントにアクセスできない    |   自分の仮想ネットワークにデプロイされた次のサービスは、プライベート エンドポイントを使用してプライベート リンク リソースにアクセスすることはできません。<br>App Service プラン</br>Azure Container Instances</br>Azure NetApp Files</br>Azure の専用 HSM<br>       |   プレビュー期間中は軽減策はありません。       |
 
@@ -133,4 +134,5 @@ Azure サービスについては、次の表に示すように、推奨され�
 - [PowerShell を使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
 - [CLI を使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)
 - [ポータルを使用してストレージ アカウント用のプライベート エンドポイントを作成する](create-private-endpoint-storage-portal.md)
+- [ポータルを使用して Azure Cosmos アカウントのプライベート エンドポイントを作成する](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell を使用して独自の Private Link サービスを作成する](create-private-link-service-powershell.md)

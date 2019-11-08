@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 02b2715c813f7814cf8bf5d23414bc14d5ff5a30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 177b4bd804ad878c8f983eefcd54399d1a72ba19
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939976"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824539"
 ---
 <a name="test-drive-marketing-and-best-practices"></a>体験版のマーケティングとベスト プラクティス
 =======================================

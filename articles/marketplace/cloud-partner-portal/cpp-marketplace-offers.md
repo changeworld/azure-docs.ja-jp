@@ -4,15 +4,16 @@ description: Azure Marketplace と AppSource Marketplace のオファーの作�
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f1e561e84daed6c24ca0d9b7832af3d975082e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962855"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818771"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure Marketplace と AppSource Marketplace のオファー
 

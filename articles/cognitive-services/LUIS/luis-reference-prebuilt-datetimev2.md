@@ -9,24 +9,89 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 4f46efaeddb0bfe789ef752abdd133c14da514da
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4c16953d3c708516edbe0b3c13b091dc3181b187
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677687"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465061"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 
 **datetimeV2** 作成済みエンティティは、日付と時刻の値を抽出します。 これらの値は、クライアント プログラムで使用できるように標準化された形式に解決されます。 発話に完全ではない日付または時刻が含まれる場合、LUIS は "_過去と未来両方の値_" をエンドポイントの応答に含めます。 このエンティティは既にトレーニングされているので、datetimeV2 を含む発話の例をアプリケーション意図に追加する必要はありません。 
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 のタイプ
-datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub リポジトリから管理されます。
+DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub リポジトリから管理されます。
 
 ## <a name="example-json"></a>JSON の例 
-次の例の JSON 応答には、`datetimeV2` エンティティとサブタイプ `datetime` が含まれます。 他のタイプの datetimeV2 エンティティの例については、「[datetimeV2 のサブタイプ](#subtypes-of-datetimev2)</a>」をご覧ください。
+
+次に示す発話とその部分的な JSON 応答を次に示します。
+
+`8am on may 2nd 2019`
+
+#### <a name="v3-responsetab1-1"></a>[V3 の応答](#tab/1-1)
+
+```json
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "datetime",
+            "values": [
+                {
+                    "timex": "2019-05-02T08",
+                    "resolution": [
+                        {
+                            "value": "2019-05-02 08:00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+#### <a name="v3-verbose-responsetab1-2"></a>[V3 の詳細な応答](#tab/1-2)
+
+```json
+
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "datetime",
+            "values": [
+                {
+                    "timex": "2019-05-02T08",
+                    "resolution": [
+                        {
+                            "value": "2019-05-02 08:00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$instance": {
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.datetime",
+                "text": "8am on may 2nd 2019",
+                "startIndex": 0,
+                "length": 19,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+#### <a name="v2-responsetab1-3"></a>[V2 の応答](#tab/1-3)
 
 ```json
 "entities": [
@@ -46,9 +111,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
     }
   }
 ]
-  ```
-
-## <a name="json-property-descriptions"></a>JSON のプロパティの説明
+ ```
 
 |プロパティ名 |プロパティの型と説明|
 |---|---|
@@ -59,6 +122,8 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 |resolution|1、2、または 4 つの[解決の値](#values-of-resolution)を持つ `values` 配列。|
 |end|時刻範囲または日付範囲の終わりの値。`value` と同じ形式です。 `type` が `daterange`、`timerange`、または `datetimerange` の場合にのみ使用されます。|
 
+* * * 
+
 ## <a name="subtypes-of-datetimev2"></a>datetimeV2 のサブタイプ
 
 **datetimeV2** 作成済みエンティティには、以下のサブタイプがあります。後の表ではそれぞれの例を示します。
@@ -67,8 +132,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 * `daterange`
 * `timerange`
 * `datetimerange`
-* `duration`
-* `set`
+
 
 ## <a name="values-of-resolution"></a>解決の値
 * 発話内の日付または時刻が完全に指定され、あいまいではない場合、配列の要素は 1 つです。
@@ -97,12 +161,89 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 日付が過去または未来のどちらでもありうる場合、LUIS は両方の値を提供します。 たとえば、月と日だけで、年が含まれない発話などです。  
 
-たとえば、"5 月 2 日" という発話について考えます。
+たとえば、次の発話があるとします。
+
+`May 2nd`
+
 * 今日の日付が 2017 年 5 月 3 日の場合、LUIS は値として "2017-05-02" と "2018-05-02" の両方を提供します。 
 * 今日の日付が 2017 年 5 月 1 日のときは、LUIS は値として "2016-05-02" と "2017-05-02" の両方を提供します。
 
 次の例では、エンティティ "5 月 2 日" の解決を示します。 この解決では、今日の日付が 2017 年 5 月 2 日から 2018 年 5 月 1 日の間の日付であるものと仮定します。
 `timex` フィールド内の `X` が付いたフィールドは、発話で明示的に指定されていない日付の部分です。
+
+## <a name="date-resolution-example"></a>日付の解決の例
+
+
+次に示す発話とその部分的な JSON 応答を次に示します。
+
+`May 2nd`
+
+#### <a name="v3-responsetab2-1"></a>[V3 の応答](#tab/2-1)
+
+```json
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "XXXX-05-02",
+                    "resolution": [
+                        {
+                            "value": "2019-05-02"
+                        },
+                        {
+                            "value": "2020-05-02"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+#### <a name="v3-verbose-responsetab2-2"></a>[V3 の詳細な応答](#tab/2-2)
+
+```json
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "XXXX-05-02",
+                    "resolution": [
+                        {
+                            "value": "2019-05-02"
+                        },
+                        {
+                            "value": "2020-05-02"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$instance": {
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.date",
+                "text": "May 2nd",
+                "startIndex": 0,
+                "length": 7,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+#### <a name="v2-responsetab2-3"></a>[V2 の応答](#tab/2-3)
 
 ```json
   "entities": [
@@ -128,10 +269,89 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
     }
   ]
 ```
+* * * 
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>数字の日付に対する日付範囲の解決の例
 
-`datetimeV2` エンティティは、日付と時刻の範囲を抽出します。 `start` および `end` フィールドは、範囲の開始と終了を指定します。 発話が "5 月 2 日から 5 月 5 日" の場合、LUIS は今年と翌年の両方に対して **daterange** 値を提供します。 `timex` フィールドで、`XXXX` の値は年のあいまいさを示します。 `P3D` は、時刻の期間が 3 日の長さであることを示します。
+`datetimeV2` エンティティは、日付と時刻の範囲を抽出します。 `start` および `end` フィールドは、範囲の開始と終了を指定します。 発話が `May 2nd to May 5th` の場合、LUIS は、現在の年と次の年の両方に対して **daterange** 値を提供します。 `timex` フィールドで、`XXXX` の値は年のあいまいさを示します。 `P3D` は、時刻の期間が 3 日の長さであることを示します。
+
+次に示す発話とその部分的な JSON 応答を次に示します。
+
+`May 2nd to May 5th`
+
+#### <a name="v3-responsetab3-1"></a>[V3 の応答](#tab/3-1)
+
+```json
+
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "daterange",
+            "values": [
+                {
+                    "timex": "(XXXX-05-02,XXXX-05-05,P3D)",
+                    "resolution": [
+                        {
+                            "start": "2019-05-02",
+                            "end": "2019-05-05"
+                        },
+                        {
+                            "start": "2020-05-02",
+                            "end": "2020-05-05"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+#### <a name="v3-verbose-responsetab3-2"></a>[V3 の詳細な応答](#tab/3-2)
+
+```json
+
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "daterange",
+            "values": [
+                {
+                    "timex": "(XXXX-05-02,XXXX-05-05,P3D)",
+                    "resolution": [
+                        {
+                            "start": "2019-05-02",
+                            "end": "2019-05-05"
+                        },
+                        {
+                            "start": "2020-05-02",
+                            "end": "2020-05-05"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$instance": {
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.daterange",
+                "text": "May 2nd to May 5th",
+                "startIndex": 0,
+                "length": 18,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+#### <a name="v2-responsetab3-3"></a>[V2 の応答](#tab/3-3)
 
 ```json
 "entities": [
@@ -153,10 +373,86 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
     }
   ]
 ```
+* * * 
 
 ## <a name="date-range-resolution-examples-for-day-of-week"></a>曜日に対する日付範囲の解決の例
 
-次の例では、"火曜日から木曜日" という発話の解決に LUIS が **datetimeV2** を使用する方法を示します。 この例では、現在の日付は 6 月 19 日です。 LUIS は、現在の日付より前と後の両方の日付範囲に対する **daterange** 値を含めます。
+次の例は、LUIS が **datetimeV2** を使用して発話 `Tuesday to Thursday` を解決する方法を示しています。 この例では、現在の日付は 6 月 19 日です。 LUIS は、現在の日付より前と後の両方の日付範囲に対する **daterange** 値を含めます。
+
+次に示す発話とその部分的な JSON 応答を次に示します。
+
+`Tuesday to Thursday`
+
+#### <a name="v3-responsetab4-1"></a>[V3 の応答](#tab/4-1)
+
+```json
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "daterange",
+            "values": [
+                {
+                    "timex": "(XXXX-WXX-2,XXXX-WXX-4,P2D)",
+                    "resolution": [
+                        {
+                            "start": "2019-10-08",
+                            "end": "2019-10-10"
+                        },
+                        {
+                            "start": "2019-10-15",
+                            "end": "2019-10-17"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+#### <a name="v3-verbose-responsetab4-2"></a>[V3 の詳細な応答](#tab/4-2)
+
+```json
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "daterange",
+            "values": [
+                {
+                    "timex": "(XXXX-WXX-2,XXXX-WXX-4,P2D)",
+                    "resolution": [
+                        {
+                            "start": "2019-10-08",
+                            "end": "2019-10-10"
+                        },
+                        {
+                            "start": "2019-10-15",
+                            "end": "2019-10-17"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$instance": {
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.daterange",
+                "text": "Tuesday to Thursday",
+                "startIndex": 0,
+                "length": 19,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+#### <a name="v2-responsetab4-3"></a>[V2 の応答](#tab/4-3)
 
 ```json
   "entities": [
@@ -178,14 +474,89 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
     }
   ]
 ```
+* * * 
+
 ## <a name="ambiguous-time"></a>あいまいな時刻
 時刻または時刻範囲があいまいな場合、値の配列には 2 つの時刻要素が含まれます。 あいまいな時刻がある場合は、値には午前の時刻と 午後の時刻の 両方の値が含まれます。
 
 ## <a name="time-range-resolution-example"></a>時刻範囲の解決の例
 
-次の例では、時刻の範囲を含む発話の解決に LUIS が **datetimeV2** を使用する方法を示します。
+DatetimeV2 JSON 応答は API V3 で変更されました。 次の例では、時刻の範囲を含む発話の解決に LUIS が **datetimeV2** を使用する方法を示します。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+API V2 からの変更点:
+* `datetimeV2.timex.type` プロパティは、親レベル `datetimev2.type` で返されるため、返されなくなりました。 
+* `datetimeV2.value` プロパティは `datetimeV2.timex` に名前が変更されました。
+
+次に示す発話とその部分的な JSON 応答を次に示します。
+
+`from 6pm to 7pm`
+
+#### <a name="v3-responsetab5-1"></a>[V3 の応答](#tab/5-1)
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+
+```JSON
+
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "timerange",
+            "values": [
+                {
+                    "timex": "(T18,T19,PT1H)",
+                    "resolution": [
+                        {
+                            "start": "18:00:00",
+                            "end": "19:00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-responsetab5-2"></a>[V3 の詳細な応答](#tab/5-2)
+
+次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
+
+```json
+
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "timerange",
+            "values": [
+                {
+                    "timex": "(T18,T19,PT1H)",
+                    "resolution": [
+                        {
+                            "start": "18:00:00",
+                            "end": "19:00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "$instance": {
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.timerange",
+                "text": "from 6pm to 7pm",
+                "startIndex": 0,
+                "length": 15,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-responsetab5-3"></a>[V2 の応答](#tab/5-3)
 
 ```json
   "entities": [
@@ -208,89 +579,92 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+* * * 
 
-DatetimeV2 JSON 応答は API V3 で変更されました。 
+## <a name="time-resolution-example"></a>時刻の解決の例
 
-API V2 からの変更点:
-* `datetimeV2.timex.type` プロパティは、親レベル `datetimev2.type` で返されるため、返されなくなりました。 
-* `datetimeV2.timex` プロパティは `datetimeV2.value` に名前が変更されました。
+次に示す発話とその部分的な JSON 応答を次に示します。
 
-発話 `8am on may 2nd 2017` の場合、V3 バージョンの DatetimeV2 は次のとおりです。
+`8am`
 
-```JSON
-{
-    "query": "8am on may 2nd 2017",
-    "prediction": {
-        "normalizedQuery": "8am on may 2nd 2017",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.6826963
-            }
-        },
-        "entities": {
-            "datetimeV2": [
+#### <a name="v3-responsetab6-1"></a>[V3 の応答](#tab/6-1)
+
+```json
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "time",
+            "values": [
                 {
-                    "type": "datetime",
-                    "values": [
+                    "timex": "T08",
+                    "resolution": [
                         {
-                            "timex": "2017-05-02T08",
-                            "value": "2017-05-02 08:00:00"
+                            "value": "08:00:00"
                         }
                     ]
                 }
             ]
         }
-    }
+    ]
 }
 ```
-
-次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+#### <a name="v3-verbose-responsetab6-2"></a>[V3 の詳細な応答](#tab/6-2)
 
 ```json
-{
-    "query": "8am on may 2nd 2017",
-    "prediction": {
-        "normalizedQuery": "8am on may 2nd 2017",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.6826963
-            }
-        },
-        "entities": {
-            "datetimeV2": [
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "time",
+            "values": [
                 {
-                    "type": "datetime",
-                    "values": [
+                    "timex": "T08",
+                    "resolution": [
                         {
-                            "timex": "2017-05-02T08",
-                            "value": "2017-05-02 08:00:00"
+                            "value": "08:00:00"
                         }
                     ]
                 }
-            ],
-            "$instance": {
-                "datetimeV2": [
-                    {
-                        "type": "builtin.datetimeV2.datetime",
-                        "text": "8am on may 2nd 2017",
-                        "startIndex": 0,
-                        "length": 19,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    }
+            ]
+        }
+    ],
+    "$instance": {
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.time",
+                "text": "8am",
+                "startIndex": 0,
+                "length": 3,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetab6-3"></a>[V2 の応答](#tab/6-3)
 
+```json
+"entities": [
+  {
+    "entity": "8am",
+    "type": "builtin.datetimeV2.time",
+    "startIndex": 0,
+    "endIndex": 2,
+    "resolution": {
+      "values": [
+        {
+          "timex": "T08",
+          "type": "time",
+          "value": "08:00:00"
+        }
+      ]
+    }
+  }
+]
+```
 
 * * * 
 

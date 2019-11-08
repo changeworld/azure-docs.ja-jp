@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a917176cb06e833745996326520341c1f819c5bf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376265"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465407"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>チュートリアル:Simple エンティティとフレーズ リストを使用して名前を抽出する
 
 このチュートリアルでは、**Simple** エンティティを使用して発話から雇用ジョブ名の機械学習データを抽出します。 抽出精度を向上させるために、Simple エンティティに固有の用語のフレーズ リストを追加します。
 
 Simple エンティティは、単語または語句に含まれている単一のデータ概念を検出します。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -93,7 +95,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
 
 1. 発話 `I want to apply for the new accounting job` で、`accounting` を選択し、ポップアップ メニューの一番上のフィールドに「`Job`」と入力して、 **[新しいエンティティの作成]** を選択します。 
 
-    [![エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![エンティティの作成手順が強調表示されている 'ApplyForJob' 意図を含む LUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "エンティティの作成手順が強調表示されている 'ApplyForJob' 意図を含む LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 1. ポップアップ ウィンドウでエンティティ名と型を確認し、 **[Done]\(完了\)**  を選択します。
 
@@ -101,7 +103,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
 
 1. 残りの発話で、ジョブに関連する単語を **Job** エンティティでマークします。これを行うには、単語またはフレーズを選択してから、ポップアップ メニューで **Job** を選択します。 
 
-    [![ジョブ エンティティのラベル付けが強調表示されたLUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "ジョブ エンティティのラベル付けが強調表示されたLUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Job エンティティのラベル付けが強調表示されている LUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Job エンティティのラベル付けが強調表示されている LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
 ## <a name="add-more-example-utterances-and-mark-entity"></a>発話例をさらに追加してエンティティにマークを付ける
@@ -239,7 +241,7 @@ Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://gi
 
 1. **[完了]** を選択して、フレーズ リストをアクティブにします。
 
-    [![フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![フレーズ リストの値ボックスに単語が入力されている新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が入力されている新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 1. フレーズ リストが使用されるように、アプリを再度トレーニングして発行します。
 

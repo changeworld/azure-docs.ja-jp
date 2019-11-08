@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704583"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496335"
 ---
 # <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
 
@@ -51,7 +51,6 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > - Azure Event Grid との統合
 > - Azure IoT Hub ルート
 > - Azure IoT Device Explorer
-> - Azure データ エクスプローラー
 >
 > 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
 > - Azure App Service

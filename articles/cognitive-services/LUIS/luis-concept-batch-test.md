@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639291"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487744"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUIS ポータルで 1000 件の発話をバッチ テストする
 
-バッチ テストによって、[アクティブ](luis-concept-version.md#active-version)なトレーニング済みモデルを検証し、その予測精度を測定します。 バッチ テストは、結果をグラフで表示することで、現在のトレーニング済みモデルに含まれるそれぞれの意図とエンティティの精度を確認することに役立ちます。 バッチ テストの結果を確認して、精度を向上させるために適切なアクションを実行します。アプリが頻繁に失敗する場合は意図に発話の例をより多く追加し、正しい意図を明らかにする、といったアクションです。
+バッチ テストでは、アクティブなトレーニング済みバージョンを検証して、その予測精度を測定します。 バッチ テストは、アクティブなバージョンに含まれる各意図やエンティティの精度を表示するのに役立ち、結果がグラフで表示されます。 バッチ テストの結果を確認して、アプリが正しい意図の識別に頻繁に失敗する場合は意図により多くの発話の例を追加したり、発話内のエンティティをラベル付けしたりするなど、精度を向上させるための適切なアクションを実行します。
 
 ## <a name="group-data-for-batch-test"></a>バッチ テスト用のグループ データ
 

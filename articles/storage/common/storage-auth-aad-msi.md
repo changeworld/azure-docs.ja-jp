@@ -9,12 +9,12 @@ ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 833aa7dcce5c429b3005a378e93e2177df1eb0d4
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d77ab142e227cfaa6533395cc256d992e698dd17
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595176"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495922"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB とキューへのアクセスを承認する
 
@@ -42,7 +42,7 @@ Azure リソースのマネージド ID を使用して VM から BLOB および
 
 他の開発ツールでは、Web ブラウザー経由でログインするように求められる場合があります。 また、サービス プリンシパルを使用して、開発環境から認証することもできます。 詳細については、[ポータルでの Azure アプリ用の ID 作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
 
-認証後、Azure ID クライアント ライブラリでは、トークン資格情報を取得します。 このトークン資格情報は、Azure Storage に対して操作を実行するために作成するサービス クライアント オブジェクトにカプセル化されます。 ライブラリでは、適切なトークン資格情報を取得することで、これをシームレスに処理します。
+認証後、Azure ID クライアント ライブラリでは、トークン資格情報を取得します。 このトークン資格情報は、Azure Storage に対して操作を実行するために作成するサービス クライアント オブジェクトにカプセル化されます。 このライブラリは、適切なトークン資格情報を取得することにより、これをユーザーに代わってシームレスに処理します。
 
 Azure ID クライアント ライブラリの詳細については、「[.NET 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)」を参照してください。
 

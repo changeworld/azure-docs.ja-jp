@@ -1,5 +1,6 @@
 ---
 title: フルテキスト検索のために Azure Blob インデクサーから 1 つの BLOB を多くの検索インデックス ドキュメントにインデックスを付ける
+titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search Blob インデクサーを使用してテキスト コンテンツのために Azure BLOB をクロールします。 各 BLOB は、1 つまたは複数の Search インデックス ドキュメントを中断させる場合があります。
 manager: nitinme
 author: arv100kri
@@ -8,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ec7796f19df8d58831b442adeae02b54223799c1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 863d38f6ea0f071a1c1a6678d025ec5b37a306dc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793728"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466430"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>BLOB のインデックス作成して複数の検索ドキュメントを生成する
 既定では、BLOB インデクサーで BLOB のコンテンツが単一の検索ドキュメントとして扱われます。 特定の **parsingMode** 値では、個々の BLOB で複数の検索ドキュメントが生成される可能性のあるシナリオがサポートされます。 インデクサーで BLOB から複数の検索ドキュメントを抽出できるようにする、さまざまな種類の **parsingMode** を以下に示します。
@@ -98,7 +99,7 @@ _Blob2.json_
 
 ## <a name="next-steps"></a>次の手順
 
-BLOB のインデックス作成の基本構造とワークフローについてまだよく理解していない場合は、まず [Azure Congitive Search で Azure Blob Storage のインデックスを作成する](search-howto-index-json-blobs.md)方法に関する記事を確認してください。 さまざまな種類の BLOB コンテンツ タイプ の解析モードに関する詳細については、次の記事を参照してください。
+BLOB のインデックス作成の基本構造とワークフローについてまだよく理解していない場合は、[Azure Search を使用した Azure Blob Storage のインデックス作成](search-howto-index-json-blobs.md)に関する記事を先に確認してください。 さまざまな種類の BLOB コンテンツ タイプ の解析モードに関する詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)

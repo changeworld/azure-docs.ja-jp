@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b4be715bd910326b3d06837508e7a07ac853189f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 78f29bacaadac5f01e4a8dd26bf03b2bda84f2bf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322643"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577575"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -56,7 +56,7 @@ VNet を作成し、それにサブネットを割り当てたら、その VNet 
 
 強制トンネリングが有効になっている VNet で Azure Batch プールの計算ノードが機能することを確認するには、そのサブネットに次の[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md)を追加する必要があります。
 
-* Batch サービスは、タスクをスケジュールする目的でプールの計算ノードと通信する必要があります。 この通信を有効にするには、Batch アカウントが存在するリージョンで Batch サービスによって利用される IP アドレスごとにユーザー定義ルートを追加します。 Batch サービスの IP アドレスの一覧を取得する方法については、「[オンプレミスのサービス タグ](../virtual-network/security-overview.md#service-tags-in-on-premises)」をご覧ください
+* Batch サービスは、タスクをスケジュールする目的でプールの計算ノードと通信する必要があります。 この通信を有効にするには、Batch アカウントが存在するリージョンで Batch サービスによって利用される IP アドレスごとにユーザー定義ルートを追加します。 Batch サービスの IP アドレスの一覧を取得する方法については、「[オンプレミスのサービス タグ](../virtual-network/service-tags-overview.md)」をご覧ください
 
 * オンプレミス ネットワーク アプライアンス経由の Azure Storage への送信トラフィック (具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL) がブロックされないようにしてください。
 

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 90f83e3e6fa1910641b3e384460cf4aa14016c1a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 386229bc272a520ec8093c95bc861704ce9ea7eb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067325"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471402"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -182,17 +182,19 @@ git push azure master
 
 ## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
+1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。 **App Services** を検索して選択します。
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+    ![App Services の検索、Azure portal、PHP Web アプリの作成](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+2. Azure アプリの名前を選択します。
 
-Web アプリの [概要] ページが表示されます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
+    ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-![Azure Portal の [App Service] ページ](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+    Web アプリの **[概要]** ページが表示されます。 ここでは、**参照**、**停止**、**再開**、**削除**のような基本的な管理タスクを行うことができます。
 
-左側のメニューは、アプリを構成するためのさまざまなオプションを示しています。 
+    ![Azure Portal の [App Service] ページ](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+
+    Web アプリ メニューに、アプリを構成するためのさまざまなオプションが示されます。 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

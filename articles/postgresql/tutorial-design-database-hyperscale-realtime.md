@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用したリアルタイム ダッシュボードの設計のチュートリアル
-description: このチュートリアルでは、Azure Database for PostgreSQL Hyperscale (Citus) (プレビュー) で分散テーブルの作成、設定、クエリを行う方法について説明します。
+title: Azure Database for PostgreSQL - Hyperscale (Citus) を使用したリアルタイム ダッシュボードの設計
+description: このチュートリアルでは、Azure Database for PostgreSQL Hyperscale (Citus) で分散テーブルを作成、設定、クエリする方法を説明します。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791334"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482872"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>チュートリアル:Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用したリアルタイム分析ダッシュボードの設計
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル:Azure Database for PostgreSQL - Hyperscale (Citus) を使用したリアルタイム分析ダッシュボードの設計
 
-このチュートリアルでは、Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用して、次の作業を実行する方法を説明します。
+このチュートリアルでは、Azure Database for PostgreSQL - Hyperscale (Citus) を使用して、次の作業を実行する方法を説明します。
 
 > [!div class="checklist"]
 > * Hyperscale (Citus) サーバー グループを作成する
@@ -34,7 +34,7 @@ ms.locfileid: "65791334"
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>psql ユーティリティを使用してスキーマを作成する
 
-psql を使用して Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) に接続すると、いくつかの基本的なタスクを完了することができます。 このチュートリアルでは、Web 分析からトラフィック データを取り込んでから、データをロールアップし、そのデータに基づいてリアルタイムのダッシュボードを提供する方法について説明します。
+psql を使用して Azure Database for PostgreSQL - Hyperscale (Citus) に接続すると、いくつかの基本的なタスクを完了することができます。 このチュートリアルでは、Web 分析からトラフィック データを取り込んでから、データをロールアップし、そのデータに基づいてリアルタイムのダッシュボードを提供する方法について説明します。
 
 生の Web トラフィック データをすべて使用するテーブルを作成しましょう。 psql ターミナルで次のコマンドを実行します。
 
@@ -128,7 +128,7 @@ END $$;
    > データ生成クエリを実行したままにして、このチュートリアルのその他のコマンド用に 2 つ目の psql 接続を開きます。
    >
 
-## <a name="query"></a>Query
+## <a name="query"></a>クエリ
 
 ハイパースケール ホスティング オプションを使用すると、複数のノードでクエリを並行処理して速度を上げることができます。 たとえば、データベースではワーカー ノード上で SUM や COUNT などの集計が計算され、その結果が最終的な回答にまとめられます。
 

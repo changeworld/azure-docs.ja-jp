@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 58c520ecbaf764140748167e458c301ab56de375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4230e2aac8d386c759a403b9008029d68049569c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708061"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749395"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 用の Azure Diagnostics 拡張機能
 
@@ -61,7 +61,7 @@ az vm extension set \
 
 `Set-AzVMDiagnosticsExtension` コマンドを使用して、Azure Diagnostics 拡張機能を既存の仮想マシンに追加することができます。 また、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](ps-extensions-diagnostics.md)」も参照してください。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ```powershell

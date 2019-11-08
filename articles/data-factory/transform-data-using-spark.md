@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory で Spark アクティビティを使用してデータを変換する | Microsoft Docs
+title: Azure Data Factory での Spark アクティビティを使用したデータの変換
 description: Spark アクティビティを使用して、Azure Data Factory パイプラインから Spark プログラムを実行することによってデータを変換する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: c493dbc99edc794dd5a261dfc004c2c8c1cb6d52
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 5f3bb88d3a2e43abe1776a4b46e4ab35490db8ec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312087"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683754"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -78,7 +78,7 @@ Spark ジョブは、Pig/Hive ジョブよりも拡張性に優れています�
 
 HDInsight のリンクされたサービスによって参照される Azure Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Azure Blob Storage のフォルダー構造を次に示します。     
 
-| Path                  | 説明                              | 必須 | Type   |
+| Path                  | 説明                              | 必須 | 種類   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (ルート)            | ストレージのリンクされたサービスにおける Spark ジョブのルート パス | はい      | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス | はい      | ファイル   |

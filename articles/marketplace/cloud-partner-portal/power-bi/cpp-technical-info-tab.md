@@ -4,15 +4,16 @@ description: Microsoft AppSource Marketplace 用に Power BI アプリ オファ
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 15f4e2a76724a70c15411dea767cc9bc433e4d4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02c98e38f26fff73d02dc4c2b838ad3428cd2996
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943231"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819040"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI アプリの [技術的情報] タブ
 

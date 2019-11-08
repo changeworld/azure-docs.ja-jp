@@ -4,15 +4,16 @@ description: Azure Marketplace に VM オファーを発行するために必要
 services: Azure, Marketplace, Cloud Partner Portal
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 258d21eae5af50b5dc0bed6887618e2999cae45a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a657ceaacf3680de54dc0d639a3f1a0aff6a6a03
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257394"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824430"
 ---
 # <a name="virtual-machine-prerequisites"></a>仮想マシンの前提条件
 

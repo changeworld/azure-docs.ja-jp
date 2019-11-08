@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database の単一データベースまたはプールされたデータベースをセキュリティで保護する | Microsoft Docs
+title: 単一データベースまたはプールされたデータベースをセキュリティで保護する
 description: Azure SQL Database の単一データベースまたはプールされたデータベースをセキュリティで保護するための手法と機能について説明するチュートリアルです。
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231192"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818034"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>チュートリアル:単一データベースまたはプールされたデータベースをセキュリティで保護する
 
@@ -52,7 +52,7 @@ Azure SQL Database では、次の操作を行うことで、単一データベ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 このチュートリアルのすべての手順は、[Azure portal](https://portal.azure.com/) にサインインして行います
 

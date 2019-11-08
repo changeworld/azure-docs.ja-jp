@@ -4,15 +4,16 @@ description: クラウド パートナー ポータルの概要。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 9d2c64479f65995c0eca756b86bd0a96a752867d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6065f0485b03a53fa55ae700831869998d9453cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935724"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818369"
 ---
 # <a name="getting-started-with-the-cloud-partner-portal"></a>クラウド パートナー ポータルの概要
 

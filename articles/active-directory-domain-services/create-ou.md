@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: a3f9ad20e4bfba6e0bb858c82ccce73bb687a826
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7d651849f5c8d930d99e87931eed5b823e90113c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613110"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474773"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに組織単位 (OU) を作成する
 
@@ -24,13 +24,15 @@ Active Directory Domain Services (AD DS) の組織単位 (OU) を使用すると
 
 Azure AD DS マネージド ドメインには、*AADDC Computers* と *AADDC Users* の 2 つの組み込みの OU が含まれています。 *AADDC Computers* OU には、マネージド ドメインに参加しているすべてのコンピューターに関するコンピューター オブジェクトが含まれています。 *AADDC Users* OU には、Azure AD テナントから同期されたユーザーとグループが含まれています。 Azure AD DS を使用するワークロードを作成して実行するときは、各アプリケーションが自身を認証するためのサービス アカウントを作成することが必要になる場合があります。 これらのサービス アカウントを整理するために、多くの場合は、Azure AD DS マネージド ドメインにカスタム OU を作成した後、その OU 内にサービス アカウントを作成します。
 
+ハイブリッド環境では、オンプレミスの AD DS 環境で作成された OU は、Azure AD DS に同期されません。 Azure AD DS マネージド ドメインでは、フラットな OU 構造が使用されています。 そこで階層的な OU 構造を構成した場合、ユーザー アカウントとグループは、異なるオンプレミス ドメインまたはフォレストから同期されても、すべて *AADDC Users* コンテナー内に格納されます。
+
 この記事では、Azure AD DS マネージド ドメインに OU を作成する方法について説明します。
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事を完了するには、次のリソースと特権が必要です。
+この記事を完了するには、以下のリソースと特権が必要です。
 
 * 有効な Azure サブスクリプション
     * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
@@ -49,7 +51,7 @@ Azure AD DS マネージド ドメインにカスタム OU を作成すると、
 * カスタム OU を作成するには、ユーザーが *AAD DC 管理者*グループのメンバーである必要があります。
 * カスタム OU を作成するユーザーにはその OU に対する管理者特権 (フル コントロール) が付与され、そのユーザーがリソース所有者になります。
     * 既定では、*AAD DC 管理者*グループにもカスタム OU のフル コントロールが与えられます。
-* Azure AD テナントから同期されたユーザー アカウントが含まれている、*AADDC Users* の既定の OU が作成されます。
+* Azure AD テナントから同期されたすべてのユーザー アカウントが含まれている、*AADDC Users* の既定の OU が作成されます。
     * *AADDC Users* OU から、作成したカスタム OU にユーザーまたはグループを移動することはできません。 カスタム OU に移動できるのは、Azure AD DS マネージド ドメインに作成されたユーザー アカウントまたはリソースだけです。
 * カスタム OU に作成したユーザー アカウント、グループ、サービス アカウント、およびコンピューター オブジェクトは Azure AD テナントでは使用できません。
     * これらのオブジェクトは Azure AD Graph API を使用した場合も、あるいは Azure AD UI にも表示されず、Azure AD DS マネージド ドメインでのみ使用できます。
@@ -61,7 +63,8 @@ Azure AD DS マネージド ドメインにカスタム OU を作成すると、
 > [!NOTE]
 > Azure AD DS マネージド ドメインにカスタム OU を作成するには、*AAD DC 管理者*グループのメンバーであるユーザー アカウントにサインインしている必要があります。
 
-1. スタート画面から、 **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
+1. 管理 VM にサインインします。 Azure portal を使用した接続方法については、「[Windows Server VM に接続する][connect-windows-server-vm]」を参照してください。
+1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
 1. OU を作成して管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
 1. 左側のウィンドウで、Azure AD DS マネージド ドメイン (*contoso.com* など) を選択します。 既存の OU とリソースの一覧が表示されます。
 
@@ -91,3 +94,4 @@ Azure AD DS マネージド ドメインにカスタム OU を作成すると、
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm

@@ -1,5 +1,5 @@
 ---
-title: Advanced Threat Protection - Azure SQL Database | Microsoft Docs
+title: 高度な脅威保護
 description: Advanced Threat Protection では、Azure SQL Database での潜在的なセキュリティ脅威を示す異常なデータベース アクティビティが検出されます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 03/31/2019
-ms.openlocfilehash: de802d17f57077e2b4df195e04f35cbf9665f6b3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d09cc202c3f7e18358ec693d1cfe4bd2648811ba
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566349"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820694"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Database の Advanced Threat Protection
 

@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 22d7ef90ee0cf4d09467516b7bb0664327b7dabe
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 4eb19a5b344cc5bda5ecad724daaddf9b0000d7e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509691"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580900"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics の機能の比較
 
@@ -59,7 +59,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 |サンプル ファイルを使用したクエリのテスト     |はい         |はい         |いいえ         |
 |複数のクエリでの入力と出力の共有     |いいえ         |はい         |いいえ         |
 |C# UDF     |いいえ         |はい         |いいえ         |
-|ジョブの送信、開始、停止     |はい         |はい         |いいえ         |
+|ジョブの送信     |はい         |はい         |いいえ         |
 |ジョブを一覧表示してジョブ エンティティを表示する     |はい         |はい         |いいえ         |
 |ジョブ メトリックとジョブ ダイアグラムの表示     |はい         |部分的         |いいえ         |
 |ジョブの実行時エラーの表示     |はい         |部分的         |いいえ         |

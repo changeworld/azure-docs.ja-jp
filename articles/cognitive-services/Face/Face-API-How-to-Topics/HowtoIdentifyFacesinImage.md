@@ -1,7 +1,7 @@
 ---
 title: 例:画像内の顔を識別する - Face API
 titleSuffix: Azure Cognitive Services
-description: Face API を使用して画像内の顔を識別します。
+description: このガイドでは、既知のユーザーから事前に作成される PersonGroups オブジェクトを使用して不明な顔を識別する方法を示します。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: c21647e3fbbc38e905a6d6ec116551004da20d5c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 10ab11669569b16293ccf9b8777190cf271e5795
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300532"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744310"
 ---
 # <a name="example-identify-faces-in-images"></a>例:画像内の顔を識別する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse の Data Warehouse ユニット (DWU、cDWU) | Microsoft Docs
+title: Azure Synapse Analytics (旧称 SQL DW) での Data Warehouse ユニット (DWU、cDWU) | Microsoft Docs
 description: 最適な Data Warehouse ユニット (DWU、cDWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 05/30/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036055"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475752"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 
@@ -24,11 +24,11 @@ ms.locfileid: "69036055"
 
 ## <a name="what-are-data-warehouse-units"></a>Data Warehouse ユニットとは
 
-Azure SQL Data Warehouse の CPU、メモリ、および IO は、Data Warehouse ユニット (DWU) と呼ばれるコンピューティング スケールの単位にバンドルされます。 DWU は、コンピューティング リソースとパフォーマンスの抽象的な正規化された単位を表します。 サービス レベルを変更すると、システムで使用できる DWU の数が変更され、それによってさらにシステムのパフォーマンスやコストが調整されます。
+SQL プールは、[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) を使用しているときにプロビジョニングされる分析リソースのコレクションを表します。 分析リソースは、CPU、メモリ、および IO の組み合わせとして定義されます。 これらの 3 つのリソースは、Data Warehouse ユニット (DWU) と呼ばれるコンピューティング スケールのユニットにバンドルされます。 DWU は、コンピューティング リソースとパフォーマンスの抽象的な正規化された単位を表します。 サービス レベルを変更すると、システムで使用できる DWU の数が変更され、それによってさらにシステムのパフォーマンスやコストが調整されます。
 
 パフォーマンス向上のために、Data Warehouse ユニットの数を増やすことができます。 パフォーマンスを低下させるには、Data Warehouse ユニットの数を減らします。 ストレージのコストとコンピューティングのコストは、別々に請求されます。したがって、Data Warehouse ユニットの数を変更してもストレージ コストには影響しません。
 
-Data Warehouse ユニットのパフォーマンスは、次のようなデータ ウェアハウスのワークロードのメトリックに基づいています。
+Data Warehouse ユニットのパフォーマンスは、次のワークロード メトリックに基づいています。
 
 - 標準的なデータ ウェアハウス クエリがどれだけ速く多数の行をスキャンし、次に複雑な集計を実行できるか。 これは I/O と CPU を集中的に使用する操作です。
 - データ ウェアハウスがどれだけ速く Azure Storage BLOB または Azure Data Lake からデータを取り込むことができるか。 これはネットワークと CPU を集中的に使用する操作です。
@@ -42,11 +42,11 @@ DWU の数を増やすと、次のメリットが得られます。
 
 ## <a name="service-level-objective"></a>サービス レベル目標
 
-サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 用のサービス レベルは、コンピューティング データ ウェアハウス単位 (cDWU) で測定されます (例: DW2000c)。 Gen1 サービス レベルは DWU の単位で計測されます (例: DW2000)。
+サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 SQL プールのサービス レベルは、コンピューティング Data Warehouse ユニット (cDWU) で測定されます (DW2000c など)。 Gen1 SQL プールのサービス レベルは、DWU で測定されます (DW2000 など)。
   > [!NOTE]
-  > Azure SQL Data Warehouse Gen2 には、最近、最低 100 cDWU のコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用していて小さいコンピューティング レベルを必要とする既存のデータ ウェアハウスでは、現在追加コストなしで利用可能なリージョンで Gen2 にアップグレードできます。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](upgrade-to-latest-generation.md)に関するページを参照してください。
+  > Gen 2 SQL プールでは最近、100 cDWU という低いコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用している、より低いコンピューティング レベルを必要とする既存の SQL プールは、現在追加コストなしで使用できるリージョン内で Gen2 にアップグレードできるようになりました。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](upgrade-to-latest-generation.md)に関するページを参照してください。
 
-T-SQL では、SERVICE_OBJECTIVE の設定によってデータ ウェアハウスのサービス レベルとパフォーマンス レベルが決定されます。
+T-SQL では、SERVICE_OBJECTIVE 設定によって SQL プールのサービス レベルとパフォーマンス レベルが決定されます。
 
 ```sql
 --Gen1
@@ -68,10 +68,10 @@ CREATE DATABASE myComputeSQLDW
 
 各パフォーマンス レベルで、Data Warehouse ユニットの測定単位は若干異なります。 スケールの単位は課金に直接つながるため、この違いは請求書に反映されます。
 
-- Gen1 データ ウェアハウスは、データ ウェアハウス単位 (DWU) で測定されます。
-- Gen2 データ ウェアハウスは、コンピューティング データ ウェアハウス単位 (cDWU) で測定されます。
+- Gen1 SQL プールは、Data Warehouse ユニット (DWU) で測定されます。
+- Gen2 SQL プールは、コンピューティング Data Warehouse ユニット (cDWU) で測定されます。
 
-DWU と cDWU はいずれも、コンピューティングのスケール アップとスケール ダウン、データ ウェアハウスの使用が不要になった場合のコンピューティングの一時停止をサポートしています。 これらの操作はすべて、オンデマンドで実行できます。 Gen2 では、パフォーマンス向上のためにコンピューティング ノードでのローカル ディスク ベースのキャッシュを使用します。 スケール操作やシステムの一時停止を行うと、このキャッシュが無効化されるため、最適なパフォーマンスを実現する前にキャッシュの準備期間が必要となります。  
+DWU と cDWU はどちらも、コンピューティングのスケールアップまたはスケールダウンと、SQL プールを使用する必要がない場合のコンピューティングの一時停止をサポートしています。 これらの操作はすべて、オンデマンドで実行できます。 Gen2 では、パフォーマンス向上のためにコンピューティング ノードでのローカル ディスク ベースのキャッシュを使用します。 スケール操作やシステムの一時停止を行うと、このキャッシュが無効化されるため、最適なパフォーマンスを実現する前にキャッシュの準備期間が必要となります。  
 
 Data Warehouse ユニットを増やすと、コンピューティング リソースが直線的に増加します。 Gen2 は最適なクエリ パフォーマンスと最大のスケールを提供します。 Gen2 システムは、キャッシュも最大限に活用します。
 
@@ -89,7 +89,7 @@ Data Warehouse ユニットを増やすと、コンピューティング リソ�
 2. システムへのデータの読み込みをテストする際に、アプリケーションのパフォーマンスを監視し、選択した DWU の数に対するパフォーマンスの変化を観察します。
 3. 定期的なピーク アクティビティ期間のための追加要件があれば識別します。 アクティビティに顕著なピークと谷があることを示すワークロードには、頻繁なスケーリングが必要になる場合があります。
 
-SQL Data Warehouse は、膨大な量のコンピューティングをプロビジョニングし、相当な量のデータのクエリを実行することができるスケールアウト システムです。 特に大規模な DWU での実際のスケール機能を確認する場合は、CPU に十分なデータをフィードできるように、スケール時のデータ セットのスケールを決定してください。 スケールのテストでは、少なくとも 1 TB を使用することをお勧めします。
+SQL Analytics は、大量のコンピューティングをプロビジョニングし、相当な量のデータにクエリを実行できるスケールアウト システムです。 特に大規模な DWU での実際のスケール機能を確認する場合は、CPU に十分なデータをフィードできるように、スケール時のデータ セットのスケールを決定してください。 スケールのテストでは、少なくとも 1 TB を使用することをお勧めします。
 
 > [!NOTE]
 >
@@ -185,25 +185,26 @@ Azure Portal でスケールアウト操作のデータベースの状態を確�
 DWU の変更の状態を確認するには、次の手順に従います。
 
 1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
-2. 次のクエリを送信して、データベースの状態を確認します。
 
-```sql
-SELECT    *
-FROM      sys.databases
-;
-```
+1. 次のクエリを送信して、データベースの状態を確認します。
 
+    ```sql
+    SELECT    *
+    FROM      sys.databases
+    ;
+    ```
+    
 1. 次のクエリを送信して、操作の状態を確認します。
 
-```sql
-SELECT    *
-FROM      sys.dm_operation_status
-WHERE     resource_type_desc = 'Database'
-AND       major_resource_id = 'MySQLDW'
-;
-```
-
-この DMV は、SQL Data Warehouse 上の操作や操作の状態 (IN_PROGRESS または COMPLETED のどちらか) などのさまざまな管理操作に関する情報を返します。
+    ```sql
+    SELECT    *
+    FROM      sys.dm_operation_status
+    WHERE     resource_type_desc = 'Database'
+    AND       major_resource_id = 'MySQLDW'
+    ;
+    ```
+    
+この DMV は、操作や操作の状態 (IN_PROGRESS または COMPLETED のどちらか) などの SQL プールに対するさまざまな管理操作に関する情報を返します。
 
 ## <a name="the-scaling-workflow"></a>スケーリングのワークフロー
 

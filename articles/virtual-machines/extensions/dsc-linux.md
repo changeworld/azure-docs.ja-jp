@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1825f9f0f5d525c0129341d800ca5949136ae633
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176681"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750077"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -35,7 +35,7 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 - カスタム DSC モジュールを Linux VM にインストールする (Install ExtensionAction)
 - カスタム DSC モジュールを Linux VM から削除する (Remove ExtensionAction)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: de98f972a43f3845d2a01b928d90283732ef4843
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 26033192ee841262345b0fc7f6aec76872379070
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329789"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470170"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -32,7 +32,7 @@ ms.locfileid: "72329789"
 
 - アプリを削除した後、別のリソース グループ内に再作成する。
 - リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する。
-- 証明書の更新中などに既存の SSL バインドを削除する ([証明書の更新](app-service-web-tutorial-custom-ssl.md#renew-certificates)に関する記事を参照してください)。
+- 証明書の更新中などに既存の SSL バインドを削除する ([証明書の更新](configure-ssl-certificate.md#renew-certificate)に関する記事を参照してください)。
 
 ## <a name="find-the-inbound-ip"></a>受信 IP を検索する
 
@@ -44,7 +44,7 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>静的な受信 IP を取得する
 
-専用の静的 IP アドレスをアプリで使用したい場合があります。 静的な受信 IP アドレスを取得するには、[IP ベースの SSL バインド](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain)を構成する必要があります。 アプリをセキュリティで保護するための SSL 機能を実質的に必要としない場合は、このバインドのために自己署名証明書をアップロードすることもできます。 IP ベースの SSL バインドでは、証明書は IP アドレス自体にバインドされるため、App Service は、静的な IP アドレスをプロビジョニングすることで、これを実現できます。 
+専用の静的 IP アドレスをアプリで使用したい場合があります。 静的な受信 IP アドレスを取得するには、[IP ベースの SSL バインド](configure-ssl-bindings.md#secure-a-custom-domain)を構成する必要があります。 アプリをセキュリティで保護するための SSL 機能を実質的に必要としない場合は、このバインドのために自己署名証明書をアップロードすることもできます。 IP ベースの SSL バインドでは、証明書は IP アドレス自体にバインドされるため、App Service は、静的な IP アドレスをプロビジョニングすることで、これを実現できます。 
 
 ## <a name="when-outbound-ips-change"></a>送信 IP はいつ変更されるか
 

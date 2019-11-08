@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory での Parquet 形式 | Microsoft Docs
+title: Azure Data Factory での Parquet 形式
 description: このトピックでは、Azure Data Factory で Parquet 形式を処理する方法について説明します。
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 92950a79be43bc656d50e2ced106a2fdb47f53bf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9047e82713b709027275c75b17eb955877c62f08
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387702"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674783"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 

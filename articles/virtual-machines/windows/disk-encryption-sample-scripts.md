@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6874372d64fdbb667a23f2ded37a68cd68e32993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 50addbec1717c7bb76a248053dd889b09441f6f6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245956"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749467"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption のサンプル スクリプト 
 
 この記事では、事前に暗号化された VHD の準備およびその他のタスクのためのサンプル スクリプトを提供します。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="list-vms-and-secrets"></a>VM とシークレットを一覧する
 

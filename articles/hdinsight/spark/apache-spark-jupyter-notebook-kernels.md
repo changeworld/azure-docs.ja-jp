@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 371ba46b477b5dba245a116d2ea9d21d2b732a97
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337672"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494128"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル
 
@@ -36,7 +36,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 2. **[概要]** ビューから、 **[クラスター ダッシュボード]** ボックスの **[Jupyter Notebook]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-    ![Apache Spark 上の Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上の Jupyter Notebook")
+    ![Azure Spark 上の Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上の Jupyter Notebook")
   
    > [!NOTE]  
    > ブラウザーで次の URL を開き、Spark クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
@@ -45,7 +45,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 3. **[新規]** を選択し、 **[Pyspark]** 、 **[PySpark3]** 、または **[Spark]** を選択して、Notebook を作成します。 Scala アプリケーションには Spark カーネルを、Python2 アプリケーションには PySpark カーネルを、Python3 アプリケーションには PySpark3 カーネルを使用します。
 
-    ![Spark 上の Jupyter Notebook のカーネル](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook のカーネル")
+    ![Spark 上の Jupyter Notebook 用のカーネル](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook 用のカーネル")
 
 4. Notebook が、選択したカーネルで開きます。
 
@@ -53,13 +53,13 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネルを使用する利点は次のとおりです。
 
-- **コンテキストのプリセット**。 **PySpark**、**PySpark3**、または **Spark** カーネルでは、アプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。 これらは既定で利用できます。 各コンテキストは次のとおりです。
+- **コンテキストのプリセット**。 **PySpark**、**PySpark3**、または **Spark** カーネルでは、アプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要はありません。 これらは既定で利用できます。 各コンテキストは次のとおりです。
 
-  * **sc** : Spark コンテキスト用
-  * **sqlContext** : Hive コンテキスト用
-   
+  - **sc** : Spark コンテキスト用
+  - **sqlContext** : Hive コンテキスト用
+
     そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
-   
+
          sc = SparkContext('yarn-client')
          sqlContext = HiveContext(sc)
 
@@ -95,7 +95,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 | パラメーター |`-q` |セルの視覚化をオフにするには、これを使用します。 セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。 (たとえば、`CREATE TABLE` ステートメントのような、SQL クエリを実行するために) 結果をキャプチャせずに視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
 | -m |`-m <METHOD>` |ここで **METHOD** は **take** または **sample** です (既定値は **take**)。 メソッドが **take**の場合、カーネルによって、MAXROWS (この表で後述) で指定された結果のデータ セットの先頭から要素が取得されます。 メソッドが **sample** の場合、カーネルによって、この表の次に説明する `-r` パラメーターに従って、データ セットの要素がランダムにサンプリングされます。 |
 | -r |`-r <FRACTION>` |ここで **FRACTION** は、0.0 ～ 1.0 の浮動小数点数です。 SQL クエリのサンプル メソッドが `sample` の場合、カーネルは、結果セットの指定された割合の要素をランダムにサンプリングします。 たとえば、`-m sample -r 0.01` 引数を使用して SQL クエリを実行した場合、結果の行の 1% がランダムにサンプリングされます。 |
-| -n |`-n <MAXROWS>` |**MAXROWS** は整数値です。 カーネルによって、出力行の数が **MAXROWS** に制限されます。 **MAXROWS** が **-1** など、負の数の場合は、結果セット内の行数は制限されません。 |
+| -n |`-n <MAXROWS>` |**MAXROWS** は整数値です。 カーネルによって、出力行の数が **MAXROWS** に制限されます。 **MAXROWS** が **-1** などの負数の場合は、結果セット内の行数は制限されません。 |
 
 **例:**
 
@@ -104,10 +104,10 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 
 上記のステートメントによって、次のことが行われます。
 
-* **hivesampletable**からすべてのレコードを選択します。
-* -q を使用しているため、自動視覚化がオフになります。
-* `-m sample -r 0.1 -n 500` を使用しているため、hivesampletable 内の行の 10% がランダムにサンプリングされ、結果セットのサイズが 500 行に制限されます。
-* 最後に、 `-o query2` を使用しているため、 **query2**という名前のデータフレームにも、その出力が保存されます。
+- **hivesampletable**からすべてのレコードを選択します。
+- -q を使用しているため、自動視覚化がオフになります。
+- `-m sample -r 0.1 -n 500` を使用しているため、hivesampletable 内の行の 10% がランダムにサンプリングされ、結果セットのサイズが 500 行に制限されます。
+- 最後に、 `-o query2` を使用しているため、 **query2**という名前のデータフレームにも、その出力が保存されます。
 
 ## <a name="considerations-while-using-the-new-kernels"></a>新しいカーネルを使用する場合の考慮事項
 
@@ -138,29 +138,29 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 
 ## <a name="seealso"></a>関連項目
 
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+- [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
+- [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
+- [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+- [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+- [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
 
-* [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
-* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
+- [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
+- [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](apache-spark-intellij-tool-plugin.md)
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
-* [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
+- [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](apache-spark-intellij-tool-plugin.md)
+- [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+- [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
+- [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
+- [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>リソースの管理
 
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
-* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)
+- [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
+- [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)

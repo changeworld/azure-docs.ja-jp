@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1fb57a7c6cc694c56667d589eae39442ee9e82ac
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 957b12ad00f53a5aed7ff2a1ecd4afd21e58eb93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984377"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467448"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>オーサリングおよびランタイム リソース キーの使用
 
 オーサリングおよびランタイム リソースによって、LUIS アプリと予測エンドポイントに認証が提供されます。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
@@ -28,7 +30,7 @@ ms.locfileid: "70984377"
 LUIS ポータルにサインインすると、進む手順を選択できます。
 
 * 無料[試用版キー](#trial-key) - 作成といくつかの予測エンドポイント クエリが用意されています。
-* 新しい Azure LUIS オーサリング リソース - 新しいリソースを作成します。 これは、予測エンドポイント リソースと同じではありません。 
+* Azure [LUIS オーサリング](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) リソース。 
 
 
 <a name="starter-key"></a>
@@ -52,10 +54,7 @@ LUIS ポータルにサインインすると、進む手順を選択できます
 
 ## <a name="create-resources-in-the-azure-portal"></a>Azure portal でリソースを作成する
 
-1. [Azure Portal](https://azure.microsoft.com/free/) にサインインします。 
-1. **[+ リソースの作成]** を選択します。
-1. 検索ボックスに「 `Language understanding`」と入力します。
-1. **[作成]** を選択して、作成プロセスを開始します。 
+1. [このリンク](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)使用して、リソース作成用に Azure portal を開きます。
 1. オーサリングおよび予測エンドポイント ランタイム キーを作成するには **[両方]** を選択します。 
 1. リソースを作成するために必要な情報を入力し、 **[作成]** を選択してプロセスを終了します。
 

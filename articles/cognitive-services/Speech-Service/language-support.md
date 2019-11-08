@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/15/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: af8bb24862c05b232b7bb5d831b1eb3b1add3a7f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970381"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468811"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート
 
@@ -24,11 +24,15 @@ ms.locfileid: "69970381"
 
 ## <a name="speech-to-text"></a>音声テキスト変換
 
-Microsoft 音声認識 SDK と REST API は、どちらも以下の言語 (ロケール) をサポートしています。 精度を高めるために、"オーディオ + 人間" というラベルが付いたトランスクリプトまたは関連テキスト (文) をアップロードすることにより、言語のサブセットに対してカスタマイズが提供されます。  現在、発音のカスタマイズは en-US と de-DE だけで使用できます。 カスタマイズの詳細については、[こちら](how-to-custom-speech.md)を参照してください。
+Microsoft Speech SDK と REST API は、どちらも以下の言語 (ロケール) をサポートしています。 精度を高めるために、"オーディオ + 人間" というラベルが付いたトランスクリプトまたは関連テキスト (文) をアップロードすることにより、言語のサブセットに対してカスタマイズが提供されます。  現在、発音のカスタマイズは en-US と de-DE だけで使用できます。 カスタマイズの詳細については、[こちら](how-to-custom-speech.md)を参照してください。
 
-  コード | 言語 | サポートされています | カスタマイズ可能
+  Locale | 言語 | サポートされています | カスタマイズ可能
  ------|----------|---------------------|---------------------
  ar-EG | アラビア語 (エジプト)、現代標準 | はい | はい
+ ar-SA | アラビア語 (サウジアラビア) | はい | はい
+ ar-AE | アラビア語 (UAE) | はい | はい
+ ar-KW | アラビア語 (クウェート) | はい | はい
+ ar-QA | アラビア語 (カタール) | はい | はい
  ca-ES | カタルニア語 | はい | いいえ
  da-DK | デンマーク語 (デンマーク) | はい | いいえ
  de-DE | ドイツ語 (ドイツ) | はい | はい
@@ -43,10 +47,12 @@ Microsoft 音声認識 SDK と REST API は、どちらも以下の言語 (ロ�
  fi-FI | フィンランド語 (フィンランド) | はい | いいえ
  fr-CA | フランス語 (カナダ) | はい | はい
  fr-FR | フランス語 (フランス) | はい | はい
+ gu-IN | グジャラート語 (インド) | はい | はい
  hi-IN | ヒンディー語 (インド) | はい | はい
  it-IT | イタリア語 (イタリア) | はい | はい
  ja-JP | 日本語 (日本) | はい | はい
  ko-KR | 韓国語 (韓国) | はい | はい
+ mr-IN | マラーティー語 (インド) | はい | はい
  nb-NO | ノルウェー語 (ブークモール) (ノルウェー) | はい | いいえ
  nl-NL | オランダ語 (オランダ) | はい | はい
  pl-PL | ポーランド語 (ポーランド) | はい | いいえ
@@ -54,15 +60,18 @@ Microsoft 音声認識 SDK と REST API は、どちらも以下の言語 (ロ�
  pt-PT | ポルトガル語 (ポルトガル) | はい | はい
  ru-RU | ロシア語 (ロシア) | はい | はい
  sv-SE | スウェーデン語 (スウェーデン) | はい | いいえ
+ ta-IN | タミール語 (インド) | はい | はい
+ te-IN | テルグ語 (インド) | はい | はい
  zh-CN | 中国語 (標準、簡体字) | はい | はい
  zh-HK | 広東語 (繁体字) | はい | はい
  zh-TW | 中国語 (台湾標準中国語) | はい | はい
- th-TH | タイ語 (タイ) | はい | いいえ 
+ th-TH | タイ語 (タイ) | はい | いいえ
+ tr-TR | トルコ | はい | はい |
 
 
 ## <a name="text-to-speech"></a>テキスト読み上げ
 
-Text to Speech REST API ではこれらの音声がサポートされ、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
+Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポートされ、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
 
 > [!IMPORTANT]
 > 価格は、標準音声、カスタム音声、ニューラル音声ごとに異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)のページを参照してください。
@@ -71,7 +80,7 @@ Text to Speech REST API ではこれらの音声がサポートされ、その�
 
 ニューラル テキスト読み上げは、ディープ ニューラル ネットワークを利用した新しい種類の音声合成です。 ニューラル音声を使用した場合、合成音声は人間の録音とほとんど区別がつきません。
 
-ニューラル音声を使用すると、チャットボットや仮想アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムと対話する際のリスニング疲労が大幅に軽減されます。
+ニューラル音声を使用すると、チャットボットや音声アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムと対話する際のリスニング疲労が大幅に軽減されます。
 
 ニューラル音声の完全な一覧とリージョン別の提供状況については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
@@ -261,4 +270,4 @@ zh-TW | 中国語 (台湾) | 女性 | "Microsoft Server Speech Text to Speech Vo
 ## <a name="next-steps"></a>次の手順
 
 * [Speech Services 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)
+* [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

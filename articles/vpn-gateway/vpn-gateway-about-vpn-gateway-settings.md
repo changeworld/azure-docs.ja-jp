@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa08ea44722b2def684c269c3f9a0a30a4890a12
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970905"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495747"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -79,9 +79,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 VPN ゲートウェイがあり、別のゲートウェイ SKU を使用する場合、使用可能なオプションは、ゲートウェイ SKU のサイズを変更するか、別の SKU に変更することです。 別のゲートウェイ SKU に変更する場合、既存のゲートウェイを完全に削除して、新しいゲートウェイを作成します。 ゲートウェイの作成には、最大で 45 分かかる場合があります。 これと比較して、ゲートウェイ SKU のサイズを変更する場合は、ゲートウェイを削除して再構築する必要がないため、ダウンタイムはあまりありません。 ゲートウェイ SKU を変更する代わりにサイズを変更するオプションが利用できる場合は、そのオプションを利用するようにしてください。 ただし、サイズ変更に関する以下の規則があります。
 
-1. VpnGw1、VpnGw2、VpnGw3 SKU の間でサイズ変更できます。
+1. Basic SKU を除き、同じ世代 (Generation1 または Generation2) 内で VPN ゲートウェイ SKU を別の VPN ゲートウェイ SKU にサイズ変更することができます。 たとえば、Generation1 の VpnGw1 は Generation1 の VpnGw2 にサイズ変更できますが、Generation2 の VpnGw2 にはサイズ変更できません。
 2. 古いゲートウェイ SKU では、Basic、Standard、HighPerformance SKU の間でサイズ変更できます。
-3. Basic/Standard/HighPerformance SKU から新しい VpnGw1/VpnGw2/VpnGw3 SKU にサイズ変更することは**できません**。 代わりに新しい SKU に[変更](#change)する必要があります。
+3. Basic/Standard/HighPerformance SKU から VpnGw SKU にサイズ変更することは**できません**。 代わりに新しい SKU に[変更](#change)する必要があります。
 
 #### <a name="resizegwsku"></a>ゲートウェイのサイズを変更する
 

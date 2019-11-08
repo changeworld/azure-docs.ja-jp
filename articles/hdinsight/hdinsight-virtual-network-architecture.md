@@ -2,17 +2,17 @@
 title: Azure HDInsight 仮想ネットワーク アーキテクチャ
 description: Azure Virtual Network に HDInsight クラスターを作成するときに使用可能なリソースについて説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 10/31/2019
+ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960619"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665316"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 仮想ネットワーク アーキテクチャ
 
@@ -74,4 +74,4 @@ HDInsight クラスターには次の 3 つの方法でアクセスできます�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Secure incoming traffic to HDInsight clusters in a virtual network with private endpoint](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/) (プライベート エンドポイントを使用した、仮想ネットワーク内の HDInsight クラスターへのセキュリティで保護された着信トラフィック)
+- [Secure incoming traffic to HDInsight clusters in a virtual network with private endpoint](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/) (プライベート エンドポイントを使用した、仮想ネットワーク内の HDInsight クラスターへのセキュリティで保護された着信トラフィック)

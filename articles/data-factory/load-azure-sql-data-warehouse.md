@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み | Microsoft Docs
+title: Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み
 description: Azure Data Factory を使用して Azure SQL Data Warehouse にデータをコピーします
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 6a7e0a27d3cda4193a04467d541f851a9e57fa46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 538751b1e93dfec66c35ea3768bde603c198df32
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60548780"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672761"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み
 
@@ -43,7 +43,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 * Azure SQL Database:このチュートリアルでは、Adventure Works LT サンプル データを使って Azure SQL データベースからデータをコピーします。 SQL データベースを作成するには、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事の手順に従います。 
 * Azure ストレージ アカウント:Azure Storage は、一括コピー操作の_ステージング_ BLOB として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」の手順をご覧ください。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。 
    

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Greenplum からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Greenplum からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Greenplum からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f23a8784044ddb362f5872ee19e9ca723b0cd456
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 92d07cd4783838c1e9167d5cc1863aedfe6cc464
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092075"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680898"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Azure Data Factory を使用して Greenplum からデータをコピーする
 
@@ -179,9 +179,9 @@ Greenplum からデータをコピーするには、コピー アクティビテ
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

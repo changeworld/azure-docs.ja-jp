@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory で Hadoop Pig アクティビティを使用してデータを変換する | Microsoft Docs
+title: Azure Data Factory で Hadoop Pig アクティビティを使用してデータを変換する
 description: Azure データ ファクトリで Pig アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Pig スクリプトを実行する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 914bc37552a80886df16ed69fba4e31b3f22ac22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85478c128e2a61ed6a3f4da5cacdcb425038c639
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61399524"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683838"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Pig アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -58,7 +58,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 
 | プロパティ            | 説明                              | 必須 |
 | ------------------- | ---------------------------------------- | -------- |
-| name                | アクティビティの名前                     | はい      |
+| 名前                | アクティビティの名前                     | はい      |
 | description         | アクティビティの用途を説明するテキストです。 | いいえ       |
 | type                | Hive アクティビティの場合、アクティビティの種類は HDinsightPig です | はい      |
 | linkedServiceName   | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |

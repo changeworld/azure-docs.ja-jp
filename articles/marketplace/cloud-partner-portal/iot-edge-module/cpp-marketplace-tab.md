@@ -4,15 +4,16 @@ description: IoT Edge モジュール用のマーケットプレースの説明�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: aa0c908e18233926965d8dc3cd1b474f876b8dda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942426"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814600"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge モジュールの [Marketplace] タブ
 

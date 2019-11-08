@@ -4,15 +4,16 @@ description: アプリとサービスのパブリッシャー向けに Azure Mar
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fba9c481ad9b3da1eb0dd5d8a4ff2499240a8cfa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962618"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826474"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace と AppSource の公開ガイド
 

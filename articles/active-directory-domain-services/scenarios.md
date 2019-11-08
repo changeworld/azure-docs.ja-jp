@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6f81bc2ccf11cbcc3621dc1149879864c88cf0cf
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980513"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474437"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なユースケースとシナリオ
 
-Azure Active Directory Domain Services (Azure AD DS) では、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証) が提供されます。 Azure AD DS は既存の Azure AD テナントと統合されるので、ユーザーは既存の資格情報を使用してサインインできるようになります。 これらのドメイン サービスを使用すれば、クラウド内でドメイン コントローラーのデプロイ、管理、および修正プログラムの適用を行う必要がなく、オンプレミスのリソースから Azure への円滑なリフトアンドシフトを実現できます。
+Azure Active Directory Domain Services (Azure AD DS) では、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、ライトウェイト ディレクトリ アクセス プロトコル (LDAP)、Kerberos/NTLM 認証など) が提供されます。 Azure AD DS は既存の Azure AD テナントと統合されるので、ユーザーは既存の資格情報を使用してサインインできるようになります。 これらのドメイン サービスを使用すれば、クラウド内でドメイン コントローラーのデプロイ、管理、および修正プログラムの適用を行う必要がなく、オンプレミスのリソースから Azure への円滑なリフトアンドシフトを実現できます。
 
 この記事では、Azure AD DS が価値を提供し、ビジネス ニーズを満たすいくつかの一般的なビジネス シナリオについて概説します。
 
@@ -32,7 +32,7 @@ Azure AD DS マネージド ドメインに参加している VM は、グルー
 
 ![Azure 仮想マシンの効率的な管理](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-一般的なシナリオの例を見てみましょう。 サーバーおよびその他のインフラストラクチャが寿命に達するので、Contoso では現在オンプレミスでホストされているアプリケーションをクラウドに移行する必要があります。 Contoso における現在の IT 標準では、企業アプリケーションをホストするサーバーをドメインに参加させ、グループ ポリシーを使用して管理する必要があると定められています。 Contoso の IT 管理者は、Azure にデプロイされた VM をドメインに参加させたいと考えています。これにより、ユーザーが会社の資格情報を使用してサインインできるようになるので、管理はより容易になります。 VM をドメインに参加させたら、グループ ポリシーを使用して、必要なセキュリティ基準に準拠するようにその VM を構成することもできます。 Contoso では、Azure 内で独自のドメイン コントローラーをデプロイ、監視、および管理しなくても済むようにしたいと考えています。
+一般的なシナリオの例を見てみましょう。 サーバーおよびその他のインフラストラクチャが寿命に達するので、Contoso では現在オンプレミスでホストされているアプリケーションをクラウドに移行する必要があります。 Contoso における現在の IT 標準では、企業アプリケーションをホストするサーバーをドメインに参加させ、グループ ポリシーを使用して管理する必要があると定められています。 Contoso の IT 管理者は、Azure にデプロイされた VM をドメインに参加させたいと考えています。これにより、ユーザーが会社の資格情報を使用してサインインできるようになるので、管理はより容易になります。 VM をドメインに参加させたら、グループ ポリシー オブジェクト (GPO) を使用して、必要なセキュリティ基準に準拠するようにその VM を構成することもできます。 Contoso では、Azure 内で独自のドメイン コントローラーをデプロイ、監視、および管理しなくても済むようにしたいと考えています。
 
 Azure AD DS は、このユースケースに適しています。 Azure AD DS マネージド ドメインを使用すれば、VM をドメインに参加させ、単一の資格情報セットを使用し、グループ ポリシーを適用することができます。 マネージド ドメインとして、ドメイン コントローラーを自分で構成および保守する必要はありません。
 
@@ -63,7 +63,7 @@ Contoso では、このアプリケーションを Azure に移行したいと�
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>LDAP 読み取りを使用してディレクトリにアクセスするオンプレミスのアプリケーションをリフトアンドシフトする
 
-前のシナリオの例と同様に、Contoso には、約 10 年前に開発されたオンプレミスの基幹業務 (LOB) アプリケーションがあると仮定します。 このアプリケーションはディレクトリ対応のアプリケーションであり、ライトウェイト ディレクトリ アクセス プロトコル (LDAP) を使用して、ユーザーに関する情報や属性を AD DS から読み取るように設計されています。 アプリケーションでは属性の変更もディレクトリへの書き込みも行われません。
+前のシナリオの例と同様に、Contoso には、約 10 年前に開発されたオンプレミスの基幹業務 (LOB) アプリケーションがあると仮定します。 このアプリケーションはディレクトリ対応であり、LDAP を使用して、ユーザーに関する情報や属性を AD DS から読み取るように設計されています。 アプリケーションでは属性の変更もディレクトリへの書き込みも行われません。
 
 Contoso では、このアプリケーションを Azure に移行し、現在このアプリケーションをホストしている古いオンプレミスのハードウェアを廃止したいと考えています。 REST ベースの Azure AD Graph API など、最新のディレクトリ API を使用するためにアプリケーションを書き直すことはできません。 コードの変更またはアプリケーションの書き直しを行うことなく、クラウドで実行されるようにアプリケーションを移行するには、リフトアンドシフト オプションが必要となります。
 
@@ -99,7 +99,7 @@ Azure AD DS を使用して、Azure にデプロイされているリモート �
 
 ## <a name="domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスター (プレビュー)
 
-Azure AD DS のマネージド ドメインに Apache Ranger が有効な状態で参加する Azure HDInsight クラスターを設定できます。 現在、この機能はプレビュー段階にあります。 Apache Ranger を使用して Hive ポリシーを作成して適用することができます。さらに、データ サイエンティストなどのユーザーが ODBC ベースのツール (Excel や Tableau など) を使用して Hive に接続できるようにすることができます。 Microsoft では、HBase、Spark、Storm などの他のワークロードもドメイン参加済み HDInsight に追加できるように作業を進めています。
+Azure AD DS のマネージド ドメインに Apache Ranger が有効な状態で参加する Azure HDInsight クラスターを設定できます。 Apache Ranger を使用して Hive ポリシーを作成して適用することができます。さらに、データ サイエンティストなどのユーザーが ODBC ベースのツール (Excel や Tableau など) を使用して Hive に接続できるようにすることができます。 Microsoft では、HBase、Spark、Storm などの他のワークロードもドメイン参加済み HDInsight に追加できるように作業を進めています。
 
 このデプロイ シナリオの詳細については、[ドメイン参加済み HDInsight クラスターを構成する方法][hdinsight]に関するページを参照してください。
 

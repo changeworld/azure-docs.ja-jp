@@ -1,5 +1,5 @@
 ---
-title: Azure SQL データ同期の設定 | Microsoft Docs
+title: データ同期の設定
 description: このチュートリアルでは、Azure SQL データ同期をセットアップする方法を示します
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568169"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807521"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>チュートリアル:Azure SQL Database とオンプレミスの SQL Server 間の SQL データ同期を設定する
 

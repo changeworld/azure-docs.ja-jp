@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 9e237b09bd2b0ecc3e91e10697f6c025f73057da
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 1cc7469bf6b29ed864fac3955dc8770aa879f84d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677432"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499527"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの電話番号の事前構築済みエンティティ
 `phonenumber` エンティティは、国番号を含むさまざまな電話番号を抽出します。 このエンティティは既にトレーニングされているので、発話の例をアプリケーションに追加する必要はありません。 `phonenumber` エンティティは、`en-us` カルチャでのみサポートされます。 
@@ -26,24 +26,54 @@ ms.locfileid: "71677432"
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>この事前構築済みエンティティのための解決
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+次のエンティティ オブジェクトがクエリに対して返されます。
+
+`my mobile is 1 (800) 642-7676`
+
+#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
+次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ],
+    "$instance": {
+
+        "phonenumber": [
+            {
+                "type": "builtin.phonenumber",
+                "text": "1 (800) 642-7676",
+                "startIndex": 13,
+                "length": 16,
+                "score": 1.0,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
 
 次の例では、**builtin.phonenumber** エンティティの解決を示します。
 
 ```json
-{
-  "query": "my mobile is 1 (800) 642-7676",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8448457
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.8448457
-    }
-  ],
-  "entities": [
+"entities": [
     {
         "entity": "1 (800) 642-7676",
         "type": "builtin.phonenumber",
@@ -54,69 +84,8 @@ ms.locfileid: "71677432"
             "value": "1 (800) 642-7676"
         }
     }
-  ]
-}
+]
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
-
-次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ]
-        }
-    }
-}
-```
-
-次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ],
-            "$instance": {
-                "phonenumber": [
-                    {
-                        "type": "builtin.phonenumber",
-                        "text": "1 (800) 642-7676",
-                        "startIndex": 13,
-                        "length": 16,
-                        "score": 1,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>次の手順

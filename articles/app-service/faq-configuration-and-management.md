@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 111ee6cda46677b3b0fc39f5a84268e6ac192da9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121330"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470532"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -43,12 +43,12 @@ App Service Web アプリのカスタム ドメインを購入して設定する
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Web アプリに既存の SSL 証明書をアップロードして構成するにはどうすればよいですか?
 
-既存のカスタム SSL 証明書をアップロードして設定する方法については、「[Bind an existing custom SSL certificate to an Azure web app](app-service-web-tutorial-custom-ssl.md#upload)」(Azure Web アプリに既存のカスタム SSL 証明書をバインドする) を参照してください。
+既存のカスタム SSL 証明書をアップロードして設定する方法については、[App Service アプリへの SSL 証明書の追加](configure-ssl-certificate.md)に関する記事を参照してください。
 
 
 ## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Web アプリ用に Azure の新しい SSL 証明書を購入して構成するにはどうすれば良いですか?
 
-App Service Web アプリの SSL 証明書を購入して設定する方法については、「[Add an SSL certificate to your App Service app」](web-sites-purchase-ssl-web-site.md)(App Service アプリに SSL 証明書を追加する) を参照してください。
+App Service Web アプリの SSL 証明書を購入して設定する方法については、「[Add an SSL certificate to your App Service app」](configure-ssl-certificate.md)(App Service アプリに SSL 証明書を追加する) を参照してください。
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Application Insights のリソースを移動するにはどうすればよいですか?

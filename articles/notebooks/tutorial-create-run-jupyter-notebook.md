@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 827338c299b19d04245d7114a99d946d0332c82f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 42072894b99ebf1cfcbb5e622c2a9c3a4321a944
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973042"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496660"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
 
@@ -430,4 +430,4 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 - [スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [データ ファイルの操作](work-with-project-data-files.md)
 - [データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [Azure Machine Learning の使用](use-machine-learning-services-jupyter-notebooks.md)

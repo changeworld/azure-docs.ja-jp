@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory における構成可能なトークンの有効期間 | Microsoft Docs
+title: Azure Active Directory における構成可能なトークンの有効期間
+titleSuffix: Microsoft identity platform
 description: Azure AD によって発行されたトークンの有効期間を設定する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be2e9d7657d621a285f7177dc6cdd3a01b83470d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024444"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473945"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (プレビュー)
 
@@ -44,11 +45,19 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 
 ## <a name="token-types"></a>トークンの種類
 
-更新トークン、アクセス トークン、セッション トークン、および ID トークンにトークンの有効期間ポリシーを設定できます。
+更新トークン、アクセス トークン、SAML トークン、セッション トークン、および ID トークンにトークンの有効期間ポリシーを設定できます。
 
 ### <a name="access-tokens"></a>アクセス トークン
 
 クライアントは保護されたリソースにアクセスするためにアクセス トークンを使用します。 アクセス トークンは、ユーザー、クライアント、およびリソースの特定の組み合わせに対してのみ使用できます。 アクセス トークンは取り消すことはできず、有効期限まで有効です。 悪意のあるアクターがアクセス トークンを取得した場合は、その有効期間にわたって使用される可能性があります。 アクセス トークンの有効期間の調整は、システム パフォーマンスの向上と、ユーザーのアカウントが無効になった後にクライアントがアクセスを保持する時間の増加との間で、トレードオフとなります。 システム パフォーマンスの向上は、クライアントが新しいアクセス トークンを取得しなければならない回数を減らすことで実現されます。  既定値は 1 時間です。この場合、クライアントは 1 時間後に更新トークンを使用して、新しい更新トークンとアクセス トークンを (通常は自動で) 取得する必要があります。 
+
+### <a name="saml-tokens"></a>SAML トークン
+
+SAML トークンは、Web ベースの SAAS アプリケーションの多くで使用され、Azure Active Directory の SAML2 プロトコル エンドポイントを使用して取得されます。  また、WS-Federation を使用するアプリケーションでも使用されます。    トークンの既定の有効期間は 1 時間です。 "以後" およびアプリケーションの観点から見た場合、トークンの有効期間は、トークンの <conditions …> 要素の NotOnOrAfter 値によって指定されています。  トークンの有効期間が過ぎたら、クライアントは新しい認証要求を開始する必要があります。これは、多くの場合、シングル サインオン (SSO) セッション トークンの結果として、対話型サインインを行わずに実施されます。
+
+NotOnOrAfter の値を変更するには、TokenLifetimePolicy の AccessTokenLifetime パラメーターを使用します。  この値は、ポリシーで構成されている有効期間に設定され (構成されている場合)、クロック スキュー係数が 5 分になります。
+
+<SubjectConfirmationData> 要素で指定されているサブジェクト確認 NotOnOrAfter は、トークンの有効期間の構成には影響されないことに注意してください。 
 
 ### <a name="refresh-tokens"></a>更新トークン
 
@@ -62,6 +71,9 @@ Confidential クライアントは、クライアント パスワード (シー�
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>パブリック クライアントの更新トークンの有効期間
 
 パブリック クライアントは、クライアントのパスワード (シークレット) を安全に格納できません。 たとえば、iOS や Android アプリは、リソース所有者のシークレットを難読化できないため、パブリック クライアントとみなされます。 リソースにポリシーを設定して、指定した期間よりも古いパブリック クライアントの更新トークンが、新しいアクセス トークンと更新トークン ペアを取得しないようにできます (これを行うには、Refresh Token Max Inactive Time プロパティ (`MaxInactiveTime`) を使用します)。それを超えると更新トークンを受け付けなくなる期間を設定するポリシーを使用することもできます (これを行うには、Refresh Token Max Age プロパティを使用します)。更新トークンの有効期間を調整して、パブリック クライアント アプリケーションの使用時に、ユーザーが自動的に再認証されるのではなく、資格情報を再入力する必要があるタイミングと頻度を制御できます。
+
+> [!NOTE]
+> Max Age プロパティは、1 つのトークンを使用できる期間です。 
 
 ### <a name="id-tokens"></a>ID トークン
 ID トークンは、Web サイトとネイティブ クライアントに渡されます。 ID トークンは、ユーザーに関するプロファイル情報を格納します。 ID トークンは、ユーザーとクライアントの特定の組み合わせにバインドされます。 ID トークンは、それらの有効期限まで有効とみなされます。 通常、Web アプリケーションは、アプリケーションにおけるユーザーのセッションの有効期間と、ユーザーに対して発行された ID トークンの有効期間を照合します。 ID トークンの有効期間を調整して、Web アプリケーションがアプリケーション セッションを期限切れにする頻度、および Azure AD でユーザーを再認証する (自動的にまたは対話形式で) ように要求する頻度を制御できます。
@@ -89,7 +101,7 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 | 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>これらの属性に対して明示的に設定できる最大期間は 365 日です。
-* <sup>2</sup>Microsoft Teams Web クライアントを機能させるには、Microsoft Teams に対して AccessTokenLifetime を 15 分より大きい値に設定することをお勧めします。
+* <sup>2</sup>Microsoft Teams Web クライアントを確実に機能させるには、Microsoft Teams に対して AccessTokenLifetime が常に 15 分より大きい値に維持されるようにしておくことをお勧めします。
 
 ### <a name="exceptions"></a>例外
 | プロパティ | 影響 | 既定値 |
@@ -139,7 +151,7 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 ### <a name="access-token-lifetime"></a>アクセス トークンの有効期間
 **文字列:** AccessTokenLifetime
 
-**影響:** アクセス トークン、ID トークン
+**影響:** アクセス トークン、ID トークン、SAML トークン
 
 **概要:** このポリシーは、このリソースのアクセス トークンと ID トークンが有効とみなされる期間を制御します。 Access Token Lifetime プロパティを減らすと、悪意のあるアクターによって、長時間にわたってアクセス トークンや ID トークンが使用されるリスクが軽減します (これらのトークンは取り消しできません)。このトレードオフは、トークンを頻繁に交換する必要があるため、パフォーマンスが影響を受けることです。
 

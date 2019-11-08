@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: mlearned
-ms.openlocfilehash: 3010973c7d0af784938e9295bb80fc22b7f718f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: cfef8ff79f62eca9946dcbb49cafc253f36ab7bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018639"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472746"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -58,6 +58,7 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 * API サーバーに直接アクセスするポッドがある場合は、DNS に対する UDP ポート *53* も必要です。
 
 次の FQDN/アプリケーション規則が必要です。
+- Azure Global
 
 | FQDN                       | Port      | 用途      |
 |----------------------------|-----------|----------|
@@ -72,7 +73,34 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 | ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
 | packages.microsoft.com     | HTTPS: 443 | このアドレスは、キャッシュされた *apt-get* 操作に使用される Microsoft パッケージ リポジトリです。  パッケージの例としては、Moby、PowerShell、Azure CLI などがあります。 |
 | acs-mirror.azureedge.net   | HTTPS: 443 | このアドレスは、kubernet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ用です。 |
+- Azure China
 
+| FQDN                       | Port      | 用途      |
+|----------------------------|-----------|----------|
+| *.hcp.\<location\>.cx.prod.service.azk8s.cn | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.tun.\<location\>.cx.prod.service.azk8s.cn | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.azk8s.cn        | HTTPS: 443 | このアドレスは、必要なバイナリと画像をダウンロードするために必要です|
+| mcr.microsoft.com          | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、クラスターのアップグレード時およびスケール時にクラスターの機能に必要なファーストパーティのイメージ/グラフ (moby など) が含まれています。 |
+| *.cdn.mscr.io              | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| management.chinacloudapi.cn       | HTTPS: 443 | このアドレスは、Kubernetes の GET/PUT 操作に必要です。 |
+| login.chinacloudapi.cn  | HTTPS: 443 | このアドレスは Azure Active Directory 認証に必要です。 |
+| ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
+| packages.microsoft.com     | HTTPS: 443 | このアドレスは、キャッシュされた *apt-get* 操作に使用される Microsoft パッケージ リポジトリです。  パッケージの例としては、Moby、PowerShell、Azure CLI などがあります。 |
+- Azure Government
+
+| FQDN                       | Port      | 用途      |
+|----------------------------|-----------|----------|
+| *.hcp.\<location\>.cx.aks.containerservice.azure.us | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.tun.\<location\>.cx.aks.containerservice.azure.us | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| aksrepos.azurecr.io        | HTTPS: 443 | このアドレスは、Azure Container Registry (ACR) 内のイメージにアクセスするために必要です。 このレジストリには、クラスターのアップグレード時およびスケール時にクラスターの機能に必要なサードパーティのイメージ/グラフ (メトリックサーバー、コア DNS など) が含まれています。|
+| *.blob.core.windows.net    | HTTPS: 443 | このアドレスは ACR に保存されているイメージのバックエンド ストアです。 |
+| mcr.microsoft.com          | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、クラスターのアップグレード時およびスケール時にクラスターの機能に必要なファーストパーティのイメージ/グラフ (moby など) が含まれています。 |
+| *.cdn.mscr.io              | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| management.usgovcloudapi.net       | HTTPS: 443 | このアドレスは、Kubernetes の GET/PUT 操作に必要です。 |
+| login.microsoftonline.us  | HTTPS: 443 | このアドレスは Azure Active Directory 認証に必要です。 |
+| ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
+| packages.microsoft.com     | HTTPS: 443 | このアドレスは、キャッシュされた *apt-get* 操作に使用される Microsoft パッケージ リポジトリです。  パッケージの例としては、Moby、PowerShell、Azure CLI などがあります。 |
+| acs-mirror.azureedge.net   | HTTPS: 443 | このアドレスは、kubernet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ用です。 |
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>AKS クラスターの省略可能な推奨されるアドレスとポート
 
 AKS クラスターの場合、次の送信ポート/ネットワーク規則は任意です。

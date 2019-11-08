@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: b30b96e6ae931e0df41b60e16f04127e82a068ad
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146618"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469752"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -52,6 +52,13 @@ Web アプリケーション ファイアウォール (WAF) は、一般的な�
 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの多数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
 
 詳細については、[Application Gateway の Web アプリケーション ファイアウォール (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview) に関する記事を参照してください。
+
+## <a name="ingress-controller-for-aks"></a>AKS のイングレス コントローラー
+Application Gateway イングレス コントローラー (AGIC) を使うと、[Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) クラスターに対するイングレスとして Application Gateway を使用できます。 
+
+イングレス コントローラーは AKS クラスター内でポッドとして実行され、[Kubernetes イングレス リソース](https://kubernetes.io/docs/concepts/services-networking/ingress/)を消費し、そのリソースを Application Gateway 構成に変換します。これにより、ゲートウェイは、Kubernetes ポッドへのトラフィックを負荷分散できます。 イングレス コントローラーでは、Application Gateway V2 SKU のみがサポートされています。 
+
+詳細については、[Application Gateway イングレス コントローラー (AGIC)](ingress-controller-overview.md) に関するページをご覧ください。
 
 ## <a name="url-based-routing"></a>URL ベースのルーティング
 
@@ -96,12 +103,6 @@ Application Gateway は、WebSocket および HTTP/2 プロトコルをネイテ
 WebSocket および HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でサーバーとクライアント間の全二重通信が可能になります。 この機能により、HTTP ベースの実装では必須だったポーリングを使用することなく、Web サーバーとクライアントの間により対話的な双方向通信が可能になります。 これらのプロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 これらのプロトコルは、従来の HTTP ポート 80 および 443 上で動作するよう設計されています。
 
 詳細については、[WebSocket のサポート](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket)と [HTTP/2 のサポート](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)に関するページを参照してください。
-
-## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Azure Kubernetes Service (AKS) のイングレス コントローラー (プレビュー) 
-
-Application Gateway イングレス コントローラーは、AKS クラスター内のポッドとして実行され、Application Gateway が AKS クラスターに対する入り口として機能できるようにします。 これは、Application Gateway v2 でのみサポートされます。
-
-詳細については、「[Azure Application Gateway Ingress Controller (Azure Application Gateway イングレス コントローラー)](https://azure.github.io/application-gateway-kubernetes-ingress/)」を参照してください。
 
 ## <a name="connection-draining"></a>接続のドレイン
 

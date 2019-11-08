@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 29f1fc2a6fd23ef3a770f58fd78d5067672136dd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 28b1c3622ca449b0ce539937369fe43bd1d508ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326300"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468966"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で Android アプリケーションを使用してサインインする
 
@@ -38,7 +38,9 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-後の手順で使用するために、**アプリケーション ID** を記録しておきます。 次に、一覧からアプリケーションを選択し、**カスタム リダイレクト URI** を記録しておきます。これも後の手順で使用します。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。
+後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
+
+また、後の手順で使用するためにカスタム リダイレクト URI も記録します。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。
 
 ## <a name="create-your-user-flows"></a>ユーザー フローを作成する
 

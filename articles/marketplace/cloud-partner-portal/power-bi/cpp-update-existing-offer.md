@@ -4,15 +4,16 @@ description: Power BI アプリ プランが Microsoft AppSource Marketplace で
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pabutler
-ms.openlocfilehash: aaeb347c5b8ba6cd992054cd6ab5464f44b3a08c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e535b89ad370e42857a466aa772c1e13eeff11b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942038"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818708"
 ---
 # <a name="update-a-power-bi-app-offer"></a>Power BI アプリ オファーの更新
 

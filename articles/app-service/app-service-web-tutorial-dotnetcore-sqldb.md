@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9a4d4f84626eafdfbc5cc21eef1968a9ed64fcad
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a52a842bbd8ba9d8b22cdcf6792ec7e45a06e964
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "71055617"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471107"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
@@ -408,13 +408,15 @@ ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NE
 
 ## <a name="manage-your-azure-app"></a>Azure アプリを管理する
 
-[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを表示します。
+作成したアプリを確認するには、[Azure portal](https://portal.azure.com) で **[App Services]** を検索して選択します。
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+![Azure portal で App Services を選択する](./media/app-service-web-tutorial-dotnetcore-sqldb/app-services.png)
+
+**[App Services]** ページで、Azure アプリの名前を選択します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
-既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
+既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側には、開くことができるさまざまな構成ページが表示されます。
 
 ![Azure Portal の [App Service] ページ](./media/app-service-web-tutorial-dotnetcore-sqldb/web-app-blade.png)
 

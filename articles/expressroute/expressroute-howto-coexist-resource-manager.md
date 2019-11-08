@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: fdd267937db589156aa5eddc7608323b143266de
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 8a89c5121d5010245ce16cade921bb96346fcbf5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508840"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748305"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -77,7 +77,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [working with cloud shell](../../includes/expressroute-cloudshell-powershell-about.md)]
 

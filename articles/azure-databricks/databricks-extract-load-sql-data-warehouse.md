@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 39f71e109b0d9d7b3b0375c0ec2c4d1e4a657994
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ceb9e940584ae4c41484fe31ce5cb1832bb3400
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469492"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605698"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -156,7 +156,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    ```scala
    val appID = "<appID>"
    val password = "<password>"
-   val fileSystemName = "<file-system-name>"
    val tenantID = "<tenant-id>"
 
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
@@ -165,8 +164,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
-   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
    **アカウントの構成**

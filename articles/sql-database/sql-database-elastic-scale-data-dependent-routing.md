@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database でのデータ依存ルーティング | Microsoft Docs
+title: データ依存ルーティング
 description: データ依存ルーティング (Azure SQL Database のシャード化されたデータベースの機能) のために .NET アプリで ShardMapManager クラスを使う方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5212ba7ed349f3596047fc0c027829b8667ddc5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568496"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823684"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>データ依存ルーティングを使用して、クエリを適切なデータベースにルーティングする
 

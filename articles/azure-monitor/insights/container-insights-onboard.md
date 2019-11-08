@@ -6,17 +6,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: 44cdc2d6b93ac9a62f96875ca6c679fbb97d85a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555400"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477122"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 
-この記事では、Kubernetes 環境にデプロイされ、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) 上でホストされているワークロードのパフォーマンスを監視するために、コンテナーに対して Azure Monitor を設定するために使用できるオプションの概要について説明します。
+この記事では、Kubernetes 環境にデプロイされ、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)、[Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) 上の AKS エンジン、またはオンプレミスに展開された Kubernetes でホストされるワークロードのパフォーマンスをコンテナーで監視する場合に、Azure Monitor の設定に使用できるオプションの概要について説明します。
 
 次のサポートされている方法を使用して、新規または 1 つ以上の既存の AKS のデプロイに対してコンテナー用の Azure Monitor 有効にできます。
 
@@ -26,6 +26,7 @@ ms.locfileid: "72555400"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
+
 始める前に、必ず以下のものを用意してください。
 
 * **Log Analytics ワークスペース。**
@@ -40,7 +41,41 @@ ms.locfileid: "72555400"
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-* 既定では、Prometheus のメトリックは収集されません。 [エージェントを構成](container-insights-agent-config.md)してそれらを収集する前に、Prometheus の[ドキュメント](https://prometheus.io/)を確認して、定義できる内容を理解しておくことが重要です。
+* 既定では、Prometheus のメトリックは収集されません。 [エージェントを構成](container-insights-prometheus-integration.md)してそれらを収集する前に、Prometheus の[ドキュメント](https://prometheus.io/)を確認して、定義できる内容を理解しておくことが重要です。
+
+## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
+
+次の表の情報は、コンテナー化されたエージェントがコンテナーの Azure Monitor と通信するために必要なプロキシおよびファイアウォールの構成情報をまとめたものです。 エージェントからのすべてのネットワーク トラフィックは、Azure Monitor に送信されます。
+
+|エージェントのリソース|Port |
+|--------------|------|
+| *.ods.opinsights.azure.com | 443 |  
+| *.oms.opinsights.azure.com | 443 | 
+| *.blob.core.windows.net | 443 |
+| dc.services.visualstudio.com | 443 |
+| *.microsoftonline.com | 443 |
+| *.monitoring.azure.com | 443 |
+| login.microsoftonline.com | 443 |
+
+次の表の情報は、Azure China のプロキシとファイアウォールの構成情報をまとめたものです。
+
+|エージェントのリソース|Port |説明 | 
+|--------------|------|-------------|
+| *.ods.opinsights.azure.cn | 443 | データの取り込み |
+| *.oms.opinsights.azure.cn | 443 | OMS のオンボード |
+| *.blob.core.windows.net | 443 | 送信接続の監視に使用されます。 |
+| microsoft.com | 80 | ネットワーク接続に使用されます。 エージェント イメージのバージョンが ciprod09262019 以前の場合にのみ必要です。 |
+| dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用したエージェント テレメトリの場合。 |
+
+次の表の情報は、Azure US Government のプロキシとファイアウォールの構成情報をまとめたものです。
+
+|エージェントのリソース|Port |説明 | 
+|--------------|------|-------------|
+| *.ods.opinsights.azure.us | 443 | データの取り込み |
+| *.oms.opinsights.azure.us | 443 | OMS のオンボード |
+| *.blob.core.windows.net | 443 | 送信接続の監視に使用されます。 |
+| microsoft.com | 80 | ネットワーク接続に使用されます。 エージェント イメージのバージョンが ciprod09262019 以前の場合にのみ必要です。 |
+| dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用したエージェント テレメトリの場合。 |
 
 ## <a name="components"></a>コンポーネント
 
@@ -67,6 +102,7 @@ ms.locfileid: "72555400"
 | | [Azure Monitor から有効にする](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Monitor の AKS マルチクラスター ページから既にデプロイされている 1 つまたは複数の AKS クラスターの監視を有効にできます。 |
 | | [AKS クラスターから有効にする](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| Azure portal の AKS クラスターから直接監視を有効にできます。 |
 | | [Azure Resource Manager テンプレートを使用して有効にする](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| 事前構成済みの Azure Resource Manager テンプレートを使用して AKS クラスターの監視を有効にできます。 |
+| | [ハイブリッド Kubernetes クラスターの場合に有効にする](container-insights-hybrid-setup.md) | Azure Stack でホストされている AKS エンジン、またはオンプレミスでホストされている Kubernetes の監視を有効にすることができます。 |
 
 ## <a name="next-steps"></a>次の手順
 

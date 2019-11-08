@@ -4,15 +4,16 @@ description: Azure Marketplace 向けの新しい仮想マシン (VM) オファ�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 4cd635c6f664a5260b79e62ea72bbb86fc4e1e4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e10bd22b91b51fb811601e49fad06d8f8b30127
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938355"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817102"
 ---
 # <a name="create-virtual-machine-offer"></a>仮想マシン オファーを作成する
 

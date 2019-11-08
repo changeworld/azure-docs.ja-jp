@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: ed49d5763db4c9ffcb11d24dfa835c899d76aeec
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7f78230028b66fb12e52f7d5e96cbecbfe8b99a3
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946204"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "73519482"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>クイック スタート:Custom Vision Go SDK を使って画像分類プロジェクトを作成する
 
@@ -24,6 +24,7 @@ ms.locfileid: "68946204"
 ## <a name="prerequisites"></a>前提条件
 
 - [Go 1.8+](https://golang.org/doc/install)
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
 
@@ -48,7 +49,9 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) メソッドを参照してください ([分類子の構築](getting-started-build-a-classifier.md)に関する Web ポータル ガイドで説明されています)。
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 また、Custom Vision Web サイトの [設定] ページからエンドポイント URL を取得します。
+
+プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) メソッドを参照してください ([分類子の構築](getting-started-build-a-classifier.md)に関する Web ポータル ガイドで説明されています)。
 
 ```go
 import(
@@ -67,7 +70,7 @@ var (
     training_key string = "<your training key>"
     prediction_key string = "<your prediction key>"
     prediction_resource_id = "<your prediction resource id>"
-    endpoint string = "https://southcentralus.api.cognitive.microsoft.com"
+    endpoint string = "<your endpoint URL>"
     project_name string = "Go Sample Project"
     iteration_publish_name = "classifyModel"
     sampleDataDirectory = "<path to sample images>"

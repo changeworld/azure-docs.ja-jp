@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfa8e8c570b47eb6437ed6ca6a53f6c8188e18a2
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 5e2328bcd2b2d9fe957df82c46730091ffdf9366
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314987"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474294"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -65,6 +65,8 @@ ms.locfileid: "71314987"
   Microsoft Azure AD Connect エージェント アップデーター サービスは、Azure AD パスワード保護プロキシ サービスとサイド バイ サイドでインストールされます。 Microsoft Azure AD Connect エージェント アップデーター サービスを機能させるには、追加の構成が必要です。
 
   お使いの環境で http プロキシ サーバーを使用している場合は、「[既存のオンプレミス プロキシ サーバーと連携する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)」で指定されているガイドラインに従う必要があります。
+
+  Microsoft Azure AD Connect Agent Updater サービスでは、[TLS 要件](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements)で指定されている TLS 1.2 の手順も必要です。
 
   「[アプリケーション プロキシ環境の設定手順](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)」で指定されている一連のポートと URL に対し、ネットワーク アクセスを有効にする必要があります。
 

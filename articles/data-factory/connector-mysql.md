@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して MySQL からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して MySQL からデータをコピーする
 description: MySQL データベースからシンクとしてサポートされているデータ ストアに データをコピーできる Azure Data Factory の MySQL コネクタについて説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 433160054dd653e1389c3d8c13faadb93782d7c0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ecc6bdb9f46b5dbc544f5a9c74bdec4a58c1fd72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090032"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680618"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]

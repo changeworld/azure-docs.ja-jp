@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory のパイプラインとアクティビティ | Microsoft Docs
+title: Azure Data Factory のパイプラインとアクティビティ
 description: Azure Data Factory のパイプラインとアクティビティについて。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: cb776b28a8c06784a2aa41e42429a3f183254138
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: bed81633b27d5d0f89cb7e3d7a6e0975de4b6772
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984218"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681459"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -171,10 +171,10 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 
 JSON での名前 | 説明 | 使用できる値 | 必須
 --------- | ----------- | -------------- | --------
-timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | いいえ。 既定のタイムアウトは 7 日間です。
-retry | 最大再試行回数 | 整数 | いいえ。 既定値は 0 です
-retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | いいえ。 既定値は 30 秒です
-secureOutput | true に設定すると、アクティビティからの出力が安全と見なされ、ログが監視に記録されません。 | Boolean | いいえ。 既定値は false です。
+timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | No. 既定のタイムアウトは 7 日間です。
+retry | 最大再試行回数 | 整数 | No. 既定値は 0 です
+retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | No. 既定値は 30 秒です
+secureOutput | true に設定すると、アクティビティからの出力が安全と見なされ、ログが監視に記録されません。 | Boolean | No. 既定値は false です。
 
 ### <a name="control-activity"></a>制御アクティビティ
 制御アクティビティには、次のような最上位構造があります。

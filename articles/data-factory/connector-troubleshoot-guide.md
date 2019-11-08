@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory コネクタのトラブルシューティング | Microsoft Docs
+title: Azure Data Factory コネクタのトラブルシューティング
 description: Azure Data Factory でのコネクタに関する問題のトラブルシューティングを行う方法について説明します。
 services: data-factory
 author: linda33wj
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 08/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: bea5191063cf673f6b1395d46a15536e80b0aa30
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8cabc1031f9d0be772ba087109ae1dfc881ce163
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143222"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680083"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 

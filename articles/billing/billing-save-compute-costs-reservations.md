@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390159"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499234"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -125,7 +125,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 ## <a name="when-the-reservation-term-expires"></a>予約期間が終了したとき
 
-予約期間が満了した時点で、課金割引の有効期限が切れます。 仮想マシン、SQL Database、Azure Cosmos DB、または他のリソースは、従量課金料金で請求されます。 Azure の予約は自動更新されません。 引き続き課金割引の適用を受けるためには、予約対象のサービスとソフトウェア向けの新しい予約を購入する必要があります。
+予約期間が満了した時点で、割引の有効期限は切れ、従量課金料金がリソースに適用されます。 既定では、予約の自動更新は設定されていません。 予約の自動更新を有効にするには、更新設定でオプションを選択します。 自動更新を有効にすると、既存の予約の有効期限が切れたときに置換予約が購入されます。 既定では、置換予約の属性は期限切れになる予約の属性と同じです。更新設定では、必要に応じて請求頻度、期間、または数量を変更することもできます。 予約に対する所有者アクセス権を持つユーザーと、課金に使用されるサブスクリプションは、更新を設定できます。  
 
 ## <a name="discount-applies-to-different-sizes"></a>さまざまなサイズに割引が適用される
 

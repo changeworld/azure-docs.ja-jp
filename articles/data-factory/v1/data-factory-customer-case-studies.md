@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory - お客様導入事例 | Microsoft Docs
+title: Azure Data Factory - お客様導入事例
 description: お客様がどのように Azure Data Factory を使用しているかについて、いくつか紹介します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4944a870d27fd9ca0b64234b303906739bdc0d04
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9b0318cf293428f0d2ce125b190b0b8625c9df97
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139965"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682680"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory - お客様導入事例
 Data Factory は、データの移動や変換を自動化するクラウド ベースの情報管理サービスです。 さまざまな業種のお客様が、Data Factory をはじめとする Azure のサービスを利用して分析パイプラインを構築し、ビジネス上の問題を解決しています。  Data Factory を使用する方法と理由について、お客様の生の声をご覧ください。

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database サービスとは | Microsoft Docs
+title: Azure SQL Database サービスとは
 description: 'SQL Database の概要: クラウド内の Microsoft のリレーショナル データベース管理システム (RDBMS) の技術の詳細と機能について説明します。'
 keywords: sql の概要,sql の紹介,sql database とは
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e5782ba016cf58335de17cdacabbcca95914f59a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066276"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820740"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
@@ -221,7 +221,7 @@ SQL Database の現在のバージョンは V12 です。 バージョン V11 �
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>いつ修正プログラムの適用によるダウンタイムを発生させるかを制御できますか?
 
-いいえ。 修正プログラムの適用の影響は、アプリに[再試行ロジックを採用](sql-database-develop-overview.md#resiliency)していれば、通常は顕著なものではありません。 詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
+No. 修正プログラムの適用の影響は、アプリに[再試行ロジックを採用](sql-database-develop-overview.md#resiliency)していれば、通常は顕著なものではありません。 詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
 
 ### <a name="azure-hybrid-benefit-questions"></a>Azure ハイブリッド特典に関する質問
 

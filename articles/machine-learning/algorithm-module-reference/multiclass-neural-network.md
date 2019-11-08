@@ -1,24 +1,24 @@
 ---
 title: 'Multiclass Neural Network (多クラス ニューラル ネットワーク): モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の多クラス ニューラル ネットワーク モジュールを使用して、複数の値を持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の多クラス ニューラル ネットワーク モジュールを使用して、複数の値を持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692723"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466033"
 ---
 # <a name="multiclass-neural-network-module"></a>Multiclass Neural Network (多クラス ニューラル ネットワーク) モジュール
 
-この記事では、Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用すると、複数の値を持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成できます。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "72692723"
 
 ## <a name="configure-multiclass-neural-network"></a>多クラス ニューラル ネットワークを構成する
 
-1. インターフェイス内のご利用のパイプラインに **MultiClass Neural Network (多クラス ニューラル ネットワーク)** モジュールを追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[Initialize]\(初期化\)** の **[Classification]\(分類\)** カテゴリにあります。
+1. デザイナー内のご利用のパイプラインに、**多クラス ニューラル ネットワーク** モジュールを追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[Initialize]\(初期化\)** の **[Classification]\(分類\)** カテゴリにあります。
 
 2. **Create trainer mode (トレーナー モードの作成)** : このオプションを使用して、モデルのトレーニング方法を指定します。
 
@@ -93,4 +93,4 @@ ms.locfileid: "72692723"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

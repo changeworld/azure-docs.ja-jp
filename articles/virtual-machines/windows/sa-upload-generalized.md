@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac1572a75a3310afb9d0e0a34c6751ed12d839f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102434"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749181"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>一般化した VHD を Azure にアップロードして新しい VM を作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "70102434"
 
 このトピックではストレージ アカウントの使用について説明していますが、代わりに Managed Disks の使用をお勧めします。 マネージド ディスクを使用する新しい VM の準備、アップロード、作成を行う方法の詳しいチュートリアルについては、[Azure にアップロードされた一般化した VHD から Managed Disks を使用した新しい VM の作成](upload-generalized-managed.md)に関するページをご覧ください。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prepare-the-vm"></a>VM を準備する
 

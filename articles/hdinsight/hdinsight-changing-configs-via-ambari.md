@@ -1,5 +1,5 @@
 ---
-title: Apache Ambari を使用したクラスター構成の最適化 - Azure HDInsight
+title: クラスター構成を最適化するための Apache Ambari - Azure HDInsight
 description: Apache Ambari Web UI を使用して、Azure HDInsight クラスターを構成および最適化します。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7261aad8f42168449f2c892fe8aaaa6667964654
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: e0d94a41febdba1bea6818309e05d287bef6d3a1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076957"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492500"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari を使用して HDInsight クラスター構成を最適化する
 
@@ -51,7 +51,7 @@ NameNode の Java ヒープ サイズを変更するには、次の手順を実�
 
     ![Ambari の NameNode の Java ヒープ サイズ 1 の編集](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
-1. The NameNode Java heap size is changed to 1 GB from 2 GB.
+1. NameNode の Java ヒープ サイズが 2 GB から 1 GB に変更されます。
 
     ![編集された NameNode の Java ヒープ サイズ 2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 

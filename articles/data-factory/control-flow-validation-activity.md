@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の検証アクティビティ | Microsoft Docs
+title: Azure Data Factory の検証アクティビティ
 description: 検証アクティビティは、ユーザーが指定する特定の条件でアタッチされたデータセットを検証するまで、パイプラインの実行を継続しません。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 77fdab04e03429d135875cb2ef223e8c23d312a2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f63c78c59d7d6be3c66ea0785389eff73e3bff60
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141602"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678362"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure Data Factory の検証アクティビティ
 パイプラインで検証を使用すると、アタッチされたデータセット参照が存在していて、指定された条件を満たしていること、またはタイムアウトに達していることを検証した後でのみ、パイプラインが実行を継続することを確認できます。

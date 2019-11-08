@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory のリンクされたサービスのパラメーター化 | Microsoft Docs
+title: Azure Data Factory のリンクされたサービスのパラメーター化
 description: Azure Data Factory のリンクされたサービスをパラメーター化し、実行時に動的な値を渡す方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 285b7c182fc218a590b7a3980e43175c76555106
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 46ea65c09ec9567bb03a524470a3550c9cdfd00e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140957"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684564"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 

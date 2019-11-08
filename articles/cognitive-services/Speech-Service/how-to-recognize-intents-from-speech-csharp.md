@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: cf5bf3dfd7b6a408179bb267156433168e562a8e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326833"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464627"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル:C# 用の Speech SDK を使用して音声の意図を認識する
 
@@ -45,11 +45,12 @@ Cognitive Services [Speech SDK](speech-sdk.md) は [Language Understanding サ�
 
 LUIS は音声から意図を認識するために Speech Services と統合しています。 Speech Services のサブスクリプションは不要で、LUIS だけでかまいません。
 
-LUIS では 2 種類のキーを使用します。
+LUIS は、次の 3 種類のキーを使用します。
 
 |キーの種類|目的|
 |--------|-------|
 |Authoring|LUIS アプリをプログラムで作成および変更できる|
+|スターター|テキストのみを使用して LUIS アプリケーションをテストできる|
 |エンドポイント |特定の LUIS アプリへのアクセスを承認する|
 
 このチュートリアルには、エンドポイント タイプのキーが必要です。 このチュートリアルでは、[事前構築済みホーム オートメーション アプリの使用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)に関するクイックスタートに従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそれを使用することができます。
@@ -195,4 +196,4 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [音声を認識する方法](quickstart-csharp-dotnetcore-windows.md)
+> [音声を認識する方法](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

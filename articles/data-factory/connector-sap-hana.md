@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して SAP HANA からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して SAP HANA からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP HANA からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a5592c0c5fa06d8319b91c6d624a74c83bdeb1f
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 6b7f41f53ea743f8e3914512b40d3f69f595b7c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010428"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680252"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -185,7 +185,7 @@ SAP HANA からデータをコピーするために、コピー アクティビ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SapHanaSource** | はい |
 | query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | はい |
-| packetSize | データを複数のブロックに分割するためのネットワーク パケット サイズ (KB 単位) を指定します。 大量のデータをコピーする場合、パケット サイズを大きくすると、ほとんどの場合、SAP HANA からの読み取り速度が向上する可能性があります。 パケット サイズを調整する場合は、パフォーマンス テストを行うことをお勧めします。 | いいえ。<br>既定値は 2,048 (2 MB)です。 |
+| packetSize | データを複数のブロックに分割するためのネットワーク パケット サイズ (KB 単位) を指定します。 大量のデータをコピーする場合、パケット サイズを大きくすると、ほとんどの場合、SAP HANA からの読み取り速度が向上する可能性があります。 パケット サイズを調整する場合は、パフォーマンス テストを行うことをお勧めします。 | No.<br>既定値は 2,048 (2 MB)です。 |
 
 **例:**
 
@@ -255,9 +255,9 @@ SAP HANA からデータをコピーするとき、次の SAP HANAのデータ�
 | TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
-## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

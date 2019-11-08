@@ -1,28 +1,28 @@
 ---
 title: デシジョン フォレスト回帰:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service でデシジョン フォレスト回帰モジュールを使用し、デシジョン ツリーの集団に基づく回帰モデルを作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning でデシジョン フォレスト回帰モジュールを使用し、デシジョン ツリーの集団に基づく回帰モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693184"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497960"
 ---
 # <a name="decision-forest-regression-module"></a>デシジョン フォレスト回帰モジュール
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 デシジョン ツリーの集団に基づく回帰モデルを作成するには、このモジュールを使用します。
 
-モデルの構成後、ラベル付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを使用してそのモデルをトレーニングする必要があります。  その後、トレーニング済みのモデルは、予測に使用できます。 
+モデルの構成後、ラベル付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを使用してそのモデルをトレーニングする必要があります。 その後、トレーニング済みのモデルは、予測に使用できます。 
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -42,11 +42,11 @@ ms.locfileid: "72693184"
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>デシジョン フォレスト回帰モデルを構成する方法
 
-1. **デシジョン フォレスト回帰**モジュールをパイプラインに追加します。 このモジュールは、インターフェイスの **[Machine Learning]\(機械学習\)** 、 **[Initialize Model]\(モデルの初期化\)** 、 **[Regression]\(回帰\)** にあります。
+1. **デシジョン フォレスト回帰**モジュールをパイプラインに追加します。 このモジュールは、デザイナーの **[Machine Learning]** 、 **[Initialize Model]\(モデルの初期化\)** 、 **[回帰]** にあります。
 
 2. モジュールのプロパティを開き、 **[Resampling method]\(再サンプリング方法\)** で、個々のツリーの作成に使用する方法を選択します。  **[Bagging]\(バギング\)** または **[レプリケート]** から選択できます。
 
-    - **[Bagging]\(バギング\)** : バギングは、"*ブートストラップ アグリゲーティング*" とも呼ばれます。 回帰デシジョン フォレストに含まれる各ツリーからは、予測の手段としてガウス分布が出力されます。 アグリゲーションとは、個々のツリーから返された全ガウス分布の組み合わせによって得られるガウス分布の融合体のモーメントと最初の 2 つのモーメントが一致するガウス分布を見つけ出すことです。
+    - **[Bagging]\(バギング\)** : バギングは、"*ブートストラップ アグリゲーティング*" とも呼ばれます。 回帰デシジョン フォレストに含まれる各ツリーからは、予測の手段としてガウス分布が出力されます。 アグリゲーションとは、個々のツリーから返された全分布の組み合わせによって得られるガウス分布の融合体のモーメントと最初の 2 つのモーメントが一致するガウス分布を見つけ出すことです。
 
          詳細については、Wikipedia で[ブートストラップ アグリゲーティング](https://wikipedia.org/wiki/Bootstrap_aggregating)に関する項目を参照してください。
 
@@ -96,4 +96,4 @@ ms.locfileid: "72693184"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

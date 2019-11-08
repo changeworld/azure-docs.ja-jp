@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 902bf84ebf090cf9f0f886ad1e774ff7bdfeca93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002886"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490750"
 ---
 # <a name="how-personalizer-works"></a>Personalizer のしくみ
 
@@ -33,7 +33,7 @@ Personalizer は、機械学習を使用して、コンテキスト内で使用�
 **Reward** API:
 
 * 各 Rank 呼び出しの特徴と報酬スコアを記録することによってモデルをトレーニングするためのデータを収集します。
-* そのデータを使用して、"_学習ポリシー_" に指定された設定に基づいてモデルを更新します。
+* そのデータを使用して、"_学習ポリシー_" に指定された構成に基づいてモデルを更新します。
 
 ## <a name="architecture"></a>アーキテクチャ
 

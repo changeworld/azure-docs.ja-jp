@@ -1,24 +1,24 @@
 ---
 title: ブースト デシジョン ツリー回帰:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning サービスのブースト デシジョン ツリー回帰モジュールを使用し、ブーストで回帰ツリーのアンサンブルを作成する方法を学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning のブースト デシジョン ツリー回帰モジュールを使用して、ブーストで回帰ツリーのアンサンブルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693835"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493880"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>ブースト デシジョン ツリー回帰モジュール
 
-この記事では、Azure Machine Learning service に使用されるビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用し、ブーストで回帰ツリーのアンサンブルを作成します。 *ブースティング*は、各ツリーが前のツリーに依存していることを意味します。 このアルゴリズムは、それに先行するツリーの残差をフィッティングにより学習します。 したがって、デシジョン ツリー アンサンブルのブースティングは、適用範囲が狭いという小さなリスクがありますが、精度を上げる傾向があります。  
   
@@ -97,6 +97,8 @@ ms.locfileid: "72693835"
 
 + スコアリングにモデルを使用するには、それを[モデルのスコア付け](./score-model.md)に接続し、新しい入力例の値を予測します。
 
++ トレーニング済みのモデルのスナップショットを保存するために、トレーニング モジュールの **[Trained model]\(トレーニング済みのモデル\)** 出力を右クリックし、 **[Save As]\(名前を付けて保存\)** を選択します。 保存したトレーニング済みモデルのコピーは、パイプラインの連続実行で更新されることはありません。
+
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

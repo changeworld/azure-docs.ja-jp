@@ -1,5 +1,6 @@
 ---
-title: Azure AD での証明書資格情報 | Microsoft Docs
+title: Azure AD での証明書資格情報
+titleSuffix: Microsoft identity platform
 description: この記事では、アプリケーションを認証するための証明書資格情報の登録と使用について説明します
 services: active-directory
 documentationcenter: .net
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa63a8f06b71455b7f00d2ce5842f0da851789b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835475"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473971"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 
@@ -132,5 +133,8 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
    `keyCredentials` プロパティは複数値であるため、複数の証明書をアップロードして、高度なキー管理を行うこともできます。
    
 ## <a name="code-sample"></a>サンプル コード
+
+> [!NOTE]
+> 証明書のハッシュを使用し、それを Base64 文字列に変換することによって、X5T ヘッダーを計算する必要があります。 C# では、次のようになります。`System.Convert.ToBase64String(cert.GetCertHash());`
 
 [証明書を使用したデーモン アプリでの Azure AD の認証](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)に関する記事のコード サンプルは、アプリケーションが独自の資格情報を認証でどのように使用するかを示しています。 それは、`New-SelfSignedCertificate` Powershell コマンドを使用した[自己証明書の作成](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。

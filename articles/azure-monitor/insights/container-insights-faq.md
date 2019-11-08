@@ -6,17 +6,21 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 08/14/2019
-ms.openlocfilehash: bda64dd555f1970b70878d827f6be1dab3f1e2d5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555435"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477417"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>コンテナーの Azure Monitor についてよく寄せられる質問
 
 この Microsoft FAQ では、コンテナーの Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+
+## <a name="can-i-view-metrics-collected-in-grafana"></a>Grafana で収集されたメトリックを表示できますか?
+
+Azure Monitor for Containers では、Grafana ダッシュボードの Log Analytics ワークスペースに格納されているメトリックの表示をサポートしています。 Grafana の[ダッシュボード リポジトリ](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)からダウンロードできるテンプレートが用意されています。作業を開始し、参照して、監視対象クラスターから追加データをクエリし、カスタム Grafana ダッシュボードで視覚化する方法を知るために役立ちます。 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Azure Monitor for containers で AKS エンジンのクラスターを監視できますか?
 
@@ -72,20 +76,15 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>ライブ ログを有効にしたときの Azure AD のエラーを解決するにはどうすればよいですか 
 
-次のエラーがに表示される場合があります。**要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません ('<application ID\>'** )。 解決方法については、「[コンテナー用 Azure Monitor でコンテナー ログをリアルタイムで表示する方法](container-insights-live-logs.md#configure-aks-with-azure-active-directory)」をご覧ください。 
+次のエラーがに表示される場合があります。**要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません ('<application ID\>'** )。 それを解決するためのソリューションについては、[Azure Monitor for containers を使用して、コンテナー データをリアルタイムで表示する方法](container-insights-livedata-setup.md#configure-ad-integrated-authentication)に関する記事をご覧ください。 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>オンボード後にクラスターをアップグレードできないのはなぜですか
 
 AKS クラスターに対して Azure Monitor for containers を有効にした後、クラスターがデータを送信していた Log Analytics ワークスペースを削除する場合、クラスターをアップグレードしようとすると失敗します。 これを回避するには、監視を無効にしてから、サブスクリプション内の別の有効なワークスペースを参照して、監視を再度有効にする必要があります。 クラスターのアップグレードをもう一度実行しようとすると、正常に処理され、完了するはずです。  
 
 ## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>エージェントに対して、どのポートとドメインを開くまたはホワイトリスト登録する必要がありますか
-- *.ods.opinsights.azure.com   443
-- *.oms.opinsights.azure.com   443
-- *.blob.core.windows.net      443
-- dc.services.visualstudio.com 443
-- *.microsoftonline.com        443
-- *.monitoring.azure.com       443
-- login.microsoftonline.com    443
+
+Azure、Azure US Government、および Azure China クラウドでコンテナー化されたエージェントに必要なプロキシとファイアウォールの構成情報については、「[Network firewall requirements](container-insights-onboard.md#network-firewall-requirements)」(ネットワーク ファイアウォールの要件) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

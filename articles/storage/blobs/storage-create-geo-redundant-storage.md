@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 3302402ae791ac17b8ac09ab91b061a558eb7c75
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: c010b1acbf1b8f0a05ffda05bddfd8a9145dee8d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390358"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825420"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
@@ -79,7 +79,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | **パフォーマンス** | Standard | このサンプル シナリオでは、標準で十分です。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
    |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページを参照してください。 |
-   |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+   |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 |
    |**Location** | East US | 場所を選択します。 |
 
 ![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/createragrsstracct.png)

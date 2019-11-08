@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した Sybase からのデータ コピー | Microsoft Docs
+title: Azure Data Factory を使用して Sybase からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Sybase からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f6fcdddb2da005d563ee0a10381e7aa4f26487d0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4877706c487f389539e8e5c73bb984b01d200f38
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089252"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680116"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -177,7 +177,7 @@ Sybase では、T-SQL 型をサポートします。 SQL 型から Azure Data Fa
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 

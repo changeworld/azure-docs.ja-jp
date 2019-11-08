@@ -4,15 +4,16 @@ description: オファーの新規作成または既存オファーの更新を�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 55f6aa60c836d55333e1c5b02a44114b91df822d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935517"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819710"
 ---
 <a name="create-or-modify-an-offer"></a>オファーを作成または変更する
 =========================

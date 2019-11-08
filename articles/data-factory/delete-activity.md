@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の Delete アクティビティ | Microsoft Docs
+title: Azure Data Factory の Delete アクティビティ
 description: Azure Data Factory の Delete アクティビティを使用して、さまざまなファイル ストア内のファイルを削除する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8efbf5cd6003781450afe70b8019b39d75290546
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996320"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675618"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
 
@@ -84,8 +84,8 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | dataset | 削除するファイルまたはフォルダーを決定するデータセット参照を指定します。 | はい |
-| recursive | ファイルをサブフォルダーから再帰的に削除するか、指定したフォルダーからのみ削除するかを指定します。  | いいえ。 既定では、 `false`です。 |
-| maxConcurrentConnections | フォルダーまたはファイルを削除するために同時にストレージ ストアに接続する接続の数。   |  いいえ。 既定では、 `1`です。 |
+| recursive | ファイルをサブフォルダーから再帰的に削除するか、指定したフォルダーからのみ削除するかを指定します。  | No. 既定では、 `false`です。 |
+| maxConcurrentConnections | フォルダーまたはファイルを削除するために同時にストレージ ストアに接続する接続の数。   |  No. 既定では、 `1`です。 |
 | enablelogging | 削除されたフォルダーまたはファイルの名前を記録する必要があるかどうかを示します。 true の場合は、さらに、ログ ファイルを保存するストレージ アカウントを指定する必要があります。それにより、ログ ファイルを読み取って Delete アクティビティの動作を追跡することができます。 | いいえ |
 | logStorageSettings | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルの保存場所を指定できるストレージ プロパティのグループ。 | いいえ |
 | linkedServiceName | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルを格納するための [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)、または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービス。 ファイルを削除するには、delete アクティビティによって使用されるものと同じ種類の Integration Runtime で構成する必要があることに注意してください。 | いいえ |

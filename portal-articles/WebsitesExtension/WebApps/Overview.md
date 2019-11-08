@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60530874"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488419"
 ---
 # <a name="app-service-documentation"></a>App Service のドキュメント
 Azure App Service を使用すると、インフラストラクチャ、言語、または Web フレームワーク ランタイムを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Azure DevOps Services、または任意の Git リポジトリからの自動デプロイが可能になります。 クイック スタート、チュートリアル、およびサンプルを使用して、Azure App Service の使用方法を学習してください。
@@ -26,7 +26,7 @@ Azure App Service を使用すると、インフラストラクチャ、言語�
 Web Apps 用 App Service を使用してクラウドに最初のアプリケーションをデプロイする方法について説明します。
 
 - [.NET](/azure/app-service/app-service-web-get-started-dotnet)
-- [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
+- [Node.JS](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
 - [Python](/azure/app-service/containers/quickstart-python)
@@ -42,7 +42,7 @@ Azure でセキュリティ保護された Web アプリケーションをデプ
   - [Java と MySQL](/app-service/app-service-web-tutorial-java-mysql)
   - [Python と PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
 - [既存のカスタム ドメインをアプリケーションにマップする](/azure/app-service/app-service-web-tutorial-custom-domain)
-- [既存の SSL 証明書をアプリケーションにバインドする](/azure/app-service/app-service-web-tutorial-custom-SSL)
+- [SSL 証明書をアプリケーションにバインドする](/azure/app-service/configure-ssl-bindings)
 
 ## <a name="free-pluralsight-video-training"></a>無料の Pluralsight ビデオ トレーニング
 

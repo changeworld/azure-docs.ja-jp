@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure PowerShell を使用して HDInsight 内に Spark クラスターを作成する
+title: クイック スタート:Azure PowerShell を使用して HDInsight Spark クラスターを作成する
 description: このクイック スタートでは、Azure PowerShell を使って、Azure HDInsight に Apache Spark クラスターを作成し、単純な Spark SQL クエリを実行する方法を示します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc
-ms.openlocfilehash: f4f876c6a0e208c949f8aec2781dda39ba66fb00
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d2ab605d3532df1623ff087dbf1f93dad35445f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337607"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494514"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
@@ -27,6 +27,8 @@ Azure HDInsight で [Apache Spark](https://spark.apache.org/) クラスターを
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisite"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -147,7 +149,7 @@ HDInsight クラスターを作成する際に問題が発生した場合は、�
 
 1. **[新規]**  >  **[PySpark]** を選んで、ノートブックを作成します。
 
-   ![対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する")
+   ![Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する")
 
    Untitled(Untitled.pynb) という名前の新しい Notebook が作成されて開かれます。
 
@@ -182,7 +184,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
     画面が更新され、クエリ出力が表示されます。
 
-    ![HDInsight Spark での Hive クエリ出力](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "HDInsight Spark での Hive クエリ出力")
+    ![HDInsight Spark での Hive クエリの出力](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "HDInsight Spark での Hive クエリの出力")
 
 1. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンすると、クラスターのリソースが解放されます。
 
@@ -192,7 +194,7 @@ HDInsight はデータを Azure Storage または Azure Data Lake Storage に格
 
 Azure portal に戻り、 **[削除]** を選びます。
 
-![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターを削除する")
+![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
 
 リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight Spark クラスターと既定のストレージ アカウントの両方が削除されます。
 

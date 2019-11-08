@@ -1,5 +1,5 @@
 ---
-title: コピー アクティビティでのスキーマ マッピング | Microsoft Docs
+title: コピー アクティビティでのスキーマ マッピング
 description: Azure Data Factory のコピー アクティビティが、データのコピー時にスキーマとデータ型をソース データからシンク データにどのようにマッピングするかについて説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b705123dc6492466c30b3c1ddaf4b330b0d684a1
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed0823930b819661baf384d51478547cb2e0eccf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272259"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678135"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマ マッピング
 

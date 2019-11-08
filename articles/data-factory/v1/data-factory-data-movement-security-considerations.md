@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項 | Microsoft Docs
+title: Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 description: Azure Data Factory におけるデータ移動の保護について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b425db761375c705d3c810002234a937bac46d78
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610170"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682635"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -127,7 +127,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとゲートウェイの構成の推奨事項がまとめてあります。
 
-| source | 宛先 | ネットワーク構成 | ゲートウェイの設定 |
+| source | Destination | ネットワーク構成 | ゲートウェイの設定 |
 | ------ | ----------- | --------------------- | ------------- | 
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | ゲートウェイはオンプレミスまたは VNet の Azure 仮想マシン (VM) にインストールできます | 
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング) | ゲートウェイはオンプレミスまたは VNet の Azure VM にインストールできます | 

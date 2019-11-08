@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307612"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492705"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>チュートリアル:発話から完全なテキスト一致データを取得する
 
 このチュートリアルでは、事前に定義された項目の一覧に一致するエンティティ データを取得する方法について説明します。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -78,7 +80,7 @@ ms.locfileid: "70307612"
     |Steve Standish to 1234 (Steve Standish を 1234 へ)|
     |Tanner Thompson to 3456 (Tanner Thompson を 3456 に)|
 
-    [![発話例での意図のスクリーンショット](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "発話例での意図のスクリーンショット ショット")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
+    [![発話例付きの意図のスクリーンショット](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "発話例付きの意図のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
@@ -104,7 +106,7 @@ ms.locfileid: "70307612"
 
 1. エンティティ ポップアップ ダイアログで、エンティティ名として「`Department`」を入力し、エンティティ型として **[リスト]** を指定します。 **[完了]** を選択します。  
 
-    [![新しいエンティティ作成のポップアップ ダイアログのスクリーンショット](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "新しいエンティティ作成のポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
+    [![新しいエンティティの作成ポップアップ ダイアログのスクリーンショット](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "新しいエンティティの作成ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
 1. 部門エンティティ ページで、新しい値として「`Accounting`」と入力します。
 

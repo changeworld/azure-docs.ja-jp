@@ -7,12 +7,12 @@ ms.date: 07/05/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d5247454fe65e5539a2401330192f1db9a65114
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879235"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581622"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド
 
@@ -84,7 +84,7 @@ DTDL では、インターフェイスを使用してデバイスの機能を記
       "schema": "double"
     }
   ],
-  "@context": "http://azureiot.com/v1/contexts/Interface.json"
+  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
 }
 ```
 

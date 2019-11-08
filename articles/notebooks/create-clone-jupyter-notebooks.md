@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 13615d319af600234dcc23e04f82ce46b8f97780
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3e0c49d1141d976558ece325baaa99fc9981275e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970082"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496711"
 ---
 # <a name="create-and-clone-projects"></a>プロジェクトの作成と複製
 
@@ -125,4 +125,4 @@ GitHub からリポジトリをインポートすると、その履歴もイン�
 - [方法:スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [方法:データ ファイルの操作](work-with-project-data-files.md)
 - [方法: データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [方法: Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [方法: Azure Machine Learning の使用](use-machine-learning-services-jupyter-notebooks.md)

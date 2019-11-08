@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して HubSpot からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して HubSpot からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、HubSpot のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 066c80f7791bb9699494a09dec12f43dfb383ac6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e59d281ee492a1e926acc25cd812054f84c11f72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090196"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680807"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Azure Data Factory を使用して HubSpot からデータをコピーする (プレビュー)
 
@@ -160,7 +160,7 @@ HubSpot からデータをコピーするは、コピー アクティビティ�
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

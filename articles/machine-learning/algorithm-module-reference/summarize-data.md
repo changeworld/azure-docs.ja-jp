@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 54d7235ef56a94c9c0e7b780c53cbd9791bf4f53
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694291"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492581"
 ---
 # <a name="summarize-data"></a>データの集計
 
-この記事では、Azure Machine Learning ビジュアル インターフェイスのモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 Summarize Data (データの要約) モジュールを使用して、入力テーブル内の各列を記述する一連の標準的な統計的尺度を作成します。
 
@@ -32,7 +32,7 @@ Summarize Data (データの要約) モジュールを使用して、入力テ�
 
 ## <a name="how-to-configure-summarize-data"></a>Summarize Data (データの要約) を構成する方法  
 
-1. **Summarize Data (データの要約)** モジュールをパイプラインに追加します。 このモジュールは、ビジュアル インターフェイスの **[Statistical Functions]\(統計関数\)** カテゴリにあります。
+1. **Summarize Data (データの要約)** モジュールをパイプラインに追加します。 このモジュールは、デザイナーの **[Statistical Functions]\(統計関数\)** カテゴリにあります。
 
 1. レポートを生成する対象のデータセットを接続します。
 

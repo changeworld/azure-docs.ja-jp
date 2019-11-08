@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database の Query Performance Insight | Microsoft Docs
+title: Query Performance Insight
 description: クエリのパフォーマンスを監視して、Azure SQL データベースの CPU 消費量が最も多いクエリを識別します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/03/2019
-ms.openlocfilehash: 659022f625604fe31c2ce47978d1132b20b7ffc8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567029"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821249"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database の Query Performance Insight
 
@@ -243,7 +243,7 @@ Query Performance Insight を使用しているときに、次のようなクエ
 
 * **すべて**:クエリ ストアですべてのクエリがキャプチャされます。
 * **自動**:クエリ ストアでは、低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。 実行回数、コンパイル期間、実行期間のしきい値は内部的に決定されます。 これが既定のオプションです。
-* **なし**:クエリ ストアでは新しいクエリのキャプチャが停止されます。しかし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
+* **なし**: クエリ ストアでは新しいクエリのキャプチャが停止されます。しかし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
 
 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から以下のコマンドを実行して、すべてのポリシーを **AUTO** に設定し、クリーンアップ ポリシーを 30 日に設定することをお勧めします (`YourDB` はデータベース名に置き換えてください)。
 

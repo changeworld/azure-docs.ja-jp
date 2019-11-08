@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の Until アクティビティ | Microsoft Docs
+title: Azure Data Factory の Until アクティビティ
 description: Until アクティビティでは、関連付けられている条件が true に評価されるか、アクティビティがタイムアウトになるまで、一連のアクティビティがループ実行されます。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142463"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679352"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory の Until アクティビティ
 Until アクティビティは、プログラミング言語における do-until ループ構文と同じ働きを持ちます。 Until アクティビティでは、そこに関連付けられている条件が true に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory でのバイナリ形式 | Microsoft Docs
+title: Azure Data Factory でのバイナリ形式
 description: このトピックでは、Azure Data Factory でバイナリ形式を処理する方法について説明します。
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: a3b3e4e873497b3b0f726d815a798919ace4f931
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 82f7c380c66dc6b42f4ca5c67c13524428c78221
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841954"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674809"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure Data Factory でのバイナリ形式
 

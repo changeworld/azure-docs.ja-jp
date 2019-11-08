@@ -14,22 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: b6b1292e4c8874da826740d303cd0de26f9f46ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b2a86ffab0286559cfcce89252c889c530f00871
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092770"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750106"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Windows 用 Azure Monitor Dependency 仮想マシン拡張機能
 
 Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent からデータが取得されます。 Windows 用 Azure VM Dependency Agent 仮想マシン拡張機能は、Microsoft が公開し、サポートを行っています。 この拡張機能によって、Azure 仮想マシンに Dependency Agent がインストールされます。 このドキュメントでは、Windows 用 Azure VM Dependency Agent 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-### <a name="operating-system"></a>オペレーティング システム
+## <a name="operating-system"></a>オペレーティング システム
 
 Windows 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs のデプロイに関する記事の「[サポートされているオペレーティング システム](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)」セクションに記載されたサポート対象オペレーティング システムに対して実行できます。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う | Microsoft Docs
+title: 'Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う '
 description: この記事では、SSIS Integration Runtime (SSIS IR) の管理に関する問題のトラブルシューティング ガイダンスを提供します
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: d16267e104d753770dc40ce99b0f56e5c749b2d0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752166"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684028"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 
@@ -105,7 +105,7 @@ IR が実行中の状態の場合は、まず IR を停止し、新しいカス�
 
 ### <a name="customsetupscripttimeout"></a>CustomSetupScriptTimeout
 
-このエラーは、カスタム セットアップ スクリプトの実行のタイムアウトを示します。 スクリプトを自動的に実行でき、対話型の入力を必要としないこと、また、Blob コンテナーに必要なカスタム セットアップ ファイルのみが含まれていることを確認してください。 まずは、ローカル コンピューター上でスクリプトをテストすることをお勧めします。 また、BLOB コンテナー内のカスタム セットアップ実行ログも確認する必要があります。 カスタム セットアップの最大期間は 45 分で、これを経過するとタイムアウトになります。この最大期間には、コンテナーからすべてのファイルをダウンロードし、SSIS IR のインストールにかかる時間が含まれます。 さらに長い期間が必要な場合は、サポート チケットを発行してください。
+このエラーは、カスタム セットアップ スクリプトの実行のタイムアウトを示します。 スクリプトを自動的に実行でき、対話型の入力を必要としないこと、また、BLOB コンテナーに必要なカスタム セットアップ ファイルのみが含まれていることを確認してください。 まずは、ローカル コンピューター上でスクリプトをテストすることをお勧めします。 また、BLOB コンテナー内のカスタム セットアップ実行ログも確認する必要があります。 カスタム セットアップの最大期間は 45 分で、これを経過するとタイムアウトになります。この最大期間には、コンテナーからすべてのファイルをダウンロードし、SSIS IR のインストールにかかる時間が含まれます。 さらに長い期間が必要な場合は、サポート チケットを発行してください。
 
 ### <a name="customsetupscriptloguploadfailure"></a>CustomSetupScriptLogUploadFailure
 

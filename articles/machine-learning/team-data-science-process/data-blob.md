@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a91c4d9f5dcdcee436f2dbf012eb5485b7a92192
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d056226ce8ade93e63d7bca49b975a6983dc126a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398547"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492413"
 ---
 # <a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
 このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 
@@ -131,7 +131,7 @@ ms.locfileid: "60398547"
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
 ## <a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
-データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio でも、追加の特徴を作成できます。 
+データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio (クラシック) でも、追加の特徴を作成できることに注意してください。 
 
 1. ローカル ファイルへのデータ フレームの書き込み
    
@@ -157,7 +157,7 @@ ms.locfileid: "60398547"
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. これで、次の画面に示すように、Azure Machine Learning の[データのインポート][import-data] モジュールを使用して BLOB からデータを読み取ることができます。
+3. これで、次の画面に示すように、Azure Machine Learning の [データのインポート][import-data] モジュールを使用して BLOB からデータを読み取ることができます。
 
 ![リーダー BLOB][1]
 

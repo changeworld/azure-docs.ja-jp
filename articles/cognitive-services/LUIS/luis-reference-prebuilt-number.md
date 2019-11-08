@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: cb97cc5b0004442e00b970202dd01f76aa971a2a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 6a59cf83b3912e31b8aae67319902ce516519af8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677573"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491299"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの number 作成済みエンティティ
 情報の定量化、表現、説明に数値を使用する方法はたくさんあります。 この記事では、可能な例の一部についてのみ説明します。 LUIS はユーザーの発話のバリエーションを解釈し、一貫性のある数値を返します。 このエンティティは既にトレーニングされているので、数値を含む発話の例をアプリケーション意図に追加する必要はありません。 
@@ -42,105 +42,65 @@ LUIS が返す JSON 応答の `resolution` フィールドには、 **`builtin.n
 
 ## <a name="resolution-for-prebuilt-number"></a>作成済みの number の解決
 
+次のエンティティ オブジェクトがクエリに対して返されます。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+`order two dozen eggs`
 
-次の例では、"two dozen" (2 ダース) という発話に対する解決である 24 という値を含む LUIS からの JSON 応答を示します。
-
-```json
-{
-  "query": "order two dozen eggs",
-  "topScoringIntent": {
-    "intent": "OrderFood",
-    "score": 0.105443209
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.105443209
-    },
-    {
-      "intent": "OrderFood",
-      "score": 0.9468431361
-    },
-    {
-      "intent": "Help",
-      "score": 0.000399122015
-    },
-  ],
-  "entities": [
-    {
-      "entity": "two dozen",
-      "type": "builtin.number",
-      "startIndex": 6,
-      "endIndex": 14,
-      "resolution": {
-        "subtype": "integer",
-        "value": "24"
-      }
-    }
-  ]
-}
-```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
 ```json
-{
-    "query": "order two dozen eggs",
-    "prediction": {
-        "normalizedQuery": "order two dozen eggs",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "number": [
-                24
-            ]
-        }
-    }
+"entities": {
+    "number": [
+        24
+    ]
 }
 ```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
 
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
 ```json
-{
-    "query": "order two dozen eggs",
-    "prediction": {
-        "normalizedQuery": "order two dozen eggs",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "number": [
-                24
-            ],
-            "$instance": {
-                "number": [
-                    {
-                        "type": "builtin.number",
-                        "text": "two dozen",
-                        "startIndex": 6,
-                        "length": 9,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "number": [
+        24
+    ],
+    "$instance": {
+        "number": [
+            {
+                "type": "builtin.number",
+                "text": "two dozen",
+                "startIndex": 6,
+                "length": 9,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
 
+次の例では、"two dozen" (2 ダース) という発話に対する解決である 24 という値を含む LUIS からの JSON 応答を示します。
+
+```json
+"entities": [
+  {
+    "entity": "two dozen",
+    "type": "builtin.number",
+    "startIndex": 6,
+    "endIndex": 14,
+    "resolution": {
+      "subtype": "integer",
+      "value": "24"
+    }
+  }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>次の手順

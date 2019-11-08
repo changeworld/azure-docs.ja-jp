@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933561"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614981"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 
@@ -51,7 +51,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
     ```json
     {
       "dependencies": {
-        "durable-functions": "^1.1.2"
+        "durable-functions": "^1.3.1"
       }
     }
     ```

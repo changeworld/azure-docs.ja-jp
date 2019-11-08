@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792068"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466724"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search の AI エンリッチメントのドキュメント リソース
 
@@ -22,8 +22,8 @@ AI エンリッチメントは、Azure Cognitive Search のインデックス作
 以下の記事では AI エンリッチメントについて詳しく説明しています。
 
 ## <a name="getting-started"></a>使用の開始
-+ [Azure Cognitive Search での AI エンリッチメントの概要](cognitive-search-concept-intro.md)
-+ [クイック スタート:ポータルで AI エンリッチメントを試す](cognitive-search-quickstart-blob.md)
++ [Azure Cognitive Search における AI の概要](cognitive-search-concept-intro.md)
++ [クイック スタート:Azure portal でコグニティブ スキルセットを作成する](cognitive-search-quickstart-blob.md)
 + [チュートリアル:AI によるインデックスのエンリッチ](cognitive-search-tutorial-blob.md)
 + [例:AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
 
@@ -49,6 +49,7 @@ AI エンリッチメントは、Azure Cognitive Search のインデックス作
   + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft.Skills.Util.ConditionalSkill](cognitive-search-skill-conditional.md)
+  + [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
 + カスタム スキル

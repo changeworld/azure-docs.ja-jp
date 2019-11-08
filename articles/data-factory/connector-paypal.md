@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して PayPal からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して PayPal からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、PayPal のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 9c15f942d10b0535540bdd03ec6d64aa4d99f528
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 106fa42fc7c9feb51ab6bf7f1be5a13a08d234a0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089810"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680485"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Azure Data Factory を使用して PayPal からデータをコピーする (プレビュー)
 

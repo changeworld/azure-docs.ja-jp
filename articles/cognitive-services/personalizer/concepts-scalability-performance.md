@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: d116f6bd389b1404ea723c965111cd05880e6c30
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 5ac9a870cb05328f040febd0f8161a97f0982e09
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662814"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490777"
 ---
 # <a name="scalability-and-performance"></a>スケーラビリティとパフォーマンス
 
@@ -24,28 +24,15 @@ ms.locfileid: "68662814"
 * Rank API 呼び出しを行うときに低待機時間を維持する
 * トレーニングのスループットがイベント入力に追いついていることを確認する
 
-パーソナル化からは非常に高速に順位が返され、呼び出し時間のほとんどを REST API を介した通信が占めます。 Azure では、要求に迅速に対応するために、機能が自動スケーリングされます。
+パーソナル化からは高速に順位が返され、呼び出し時間のほとんどを REST API を介した通信が占めます。 Azure では、要求に迅速に対応するために、機能が自動スケーリングされます。
 
 ##  <a name="low-latency-scenarios"></a>低待機時間シナリオ
 
-一部のアプリケーションでは、順位を返すときに低待機時間を必要とします。 これは次のために必要です。
+一部のアプリケーションでは、順位を返すときに低待機時間を必要とします。 低待機時間は次のために必要です。
 
 * 優先度付けされたコンテンツが表示されるまでに、ユーザーが長時間待機しないようにする。
 * 極端なトラフィックが発生しているサーバーによって、十分ではないコンピューティング時間とネットワーク接続が妨害されないように防ぐ。
 
-<!--
-
-If your web site is scaled on your infrastructure, you can avoid making HTTP calls by hosting the Personalizer API in your own servers running a Docker container.
-
-This change would be transparent to your application, other than using an endpoint URL referring to the running docker instances as opposed to an online service in the cloud.
-
-
-
-### Extreme Low Latency Scenarios
-
-If you require latencies under a millisecond, and have already tested using Personalizer via containers, please contact our support team so we can assess your scenario and provide guidance suited to your needs.
-
--->
 
 ## <a name="scalability-and-training-throughput"></a>スケーラビリティとトレーニングのスループット
 

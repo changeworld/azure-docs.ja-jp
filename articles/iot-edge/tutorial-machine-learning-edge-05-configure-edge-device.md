@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 6d8f67cf94e143cd67a525fa2cc675650fb59e65
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965388"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494021"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -73,11 +73,11 @@ ms.locfileid: "72965388"
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Azure Key Vault に証明書をアップロードする
 
-証明書を安全に保存し、複数のデバイスからアクセスできるようにするために、証明書を Azure Key Vault にアップロードします。 上記の一覧からわかるように、2 種類の証明書ファイルがあります: PFX と PEM。 PFX は、Key Vault にアップロードされる Key Vault 証明書として扱います。 PEM ファイルはプレーンテキストであり、Key Vault シークレットとして扱います。 [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks) を実行して作成した、Azure Machine Learning service ワークスペースに関連付けられている Key Vault を使用します。
+証明書を安全に保存し、複数のデバイスからアクセスできるようにするために、証明書を Azure Key Vault にアップロードします。 上記の一覧からわかるように、2 種類の証明書ファイルがあります: PFX と PEM。 PFX は、Key Vault にアップロードされる Key Vault 証明書として扱います。 PEM ファイルはプレーンテキストであり、Key Vault シークレットとして扱います。 [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks) を実行して作成した、Azure Machine Learning ワークスペースに関連付けられているキー コンテナーを使用します。
 
-1. [Azure portal](https://portal.azure.com) から、Azure Machine Learning service ワークスペースに移動します。
+1. [Azure portal](https://portal.azure.com) から、Azure Machine Learning ワークスペースに移動します。
 
-2. Azure Machine Learning service ワークスペースの概要ページから、**Key Vault** の名前を探します。
+2. Azure Machine Learning ワークスペースの概要ページで、**キー コンテナー**の名前を探します。
 
     ![キー コンテナー名をコピーする](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 

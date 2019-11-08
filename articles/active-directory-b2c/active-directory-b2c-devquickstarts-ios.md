@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326596"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469159"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C:iOS アプリケーションを使用してサインインする
 
@@ -37,7 +37,9 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-後の手順で使用するために、**アプリケーション ID** を記録しておきます。 次に、一覧からアプリケーションを選択し、**カスタム リダイレクト URI** を記録しておきます。これも後の手順で使用します。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。
+後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
+
+また、後の手順で使用するためにカスタム リダイレクト URI も記録します。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。
 
 ## <a name="create-your-user-flows"></a>ユーザー フローを作成する
 Azure AD B2C では、すべてのユーザー エクスペリエンスが[ユーザー フロー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリケーションには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 ユーザー フローを作成するときは、必ず次のようにします。

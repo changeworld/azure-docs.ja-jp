@@ -1,22 +1,22 @@
 ---
-title: Azure Data Share プレビューのトラブルシューティング
-description: Azure Data Share プレビューでデータ共有を作成または受信するときに発生する、招待の問題やエラーを解決する方法について説明します。
+title: Azure Data Share のトラブルシューティング
+description: Azure Data Share でデータ共有を作成または受信するときに発生する、招待の問題やエラーを解決する方法について説明します。
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169219"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490567"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Azure Data Share プレビューでの一般的な問題のトラブルシューティング
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Data Share での一般的な問題のトラブルシューティング 
 
-この記事では、Azure Data Share プレビューの一般的な問題のトラブルシューティングを行う方法を示します。 
+この記事では、Azure Data Share の一般的な問題のトラブルシューティングを行う方法を示します。 
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share の招待 
 
@@ -55,6 +55,20 @@ ms.locfileid: "72169219"
 1. **[アクセス制御 (IAM)]** を選択します
 1. **[追加]** をクリックします。
 1. 自分自身を所有者として追加します。
+
+## <a name="troubleshooting-sql-based-sharing"></a>SQL ベースの共有のトラブルシューティング
+
+"Error: x datasets were not added because you do not have the required permissions to share." (共有するために必要なアクセス許可がないため、x 個のデータセットが追加されませんでした。)
+
+SQL ベースのソースからデータセットを追加するときにこのエラーが発生する場合は、SQL Server で Azure Data Share MSI のユーザーを作成しなかったことが原因である可能性があります。  この問題を解決するには、次のスクリプトを実行します。
+
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```      
+*<share_acc_name>* は、Data Share アカウントの名前であることに注意してください。 Data Share アカウントをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。         
+
+[データの共有](share-your-data.md)チュートリアルに記載されているすべての前提条件に従っていることを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して SAP ECC からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して SAP ECC からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP ECC からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c2b9fcc3f75b8f310532978061c887776f007ff0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 526f85ca4b8854a36232c75a55847a73a8d372cc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089548"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680306"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 
@@ -208,7 +208,7 @@ SAP ECC からデータをコピーするとき、次の SAP ECC データの OD
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

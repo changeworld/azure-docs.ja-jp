@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a70400a1d0c710b939b4dd6d157cb06e729f53cb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972139"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747824"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Recovery のコンポーネント (構成、プロセス、およびマスター ターゲット) について
 
@@ -27,7 +27,7 @@ ms.locfileid: "69972139"
 **コンポーネント**  | 構成サーバー マシンでは、構成サーバー、プロセス サーバー、マスター ターゲット サーバーなど、オンプレミスのすべての Site Recovery コンポーネントを実行します。<br/><br/> 構成サーバーを設定するときに、すべてのコンポーネントが自動的にインストールされます。 | 構成サーバーに関する FAQ を[確認する](vmware-azure-common-questions.md#configuration-server)。
 **ロール** | 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。 | Azure への [VMware](vmware-azure-architecture.md) および[物理サーバー](physical-azure-architecture.md)のディザスター リカバリーのアーキテクチャの詳細を確認する。
 **VMware の要件** | オンプレミスの VMware VM のディザスター リカバリーを行うには、オンプレミスの高可用性 VMware VM として構成サーバーをインストールして実行する必要があります。 | 前提条件を[確認する](vmware-azure-deploy-configuration-server.md#prerequisites)。
-**VMware の展開** | ダウンロードした OVA テンプレートを使用して構成サーバーを展開することをお勧めします。 この方法を使用すると、すべての要件と前提条件に準拠した構成サーバーを簡単に設定できます。<br/><br/> OVA テンプレートを使用して VMware VM を展開することが何らかの理由でできない場合は、物理マシンによってディザスター リカバリーを行うための以下の説明に従って、手動で構成サーバー マシンを設定できます。 | OVA テンプレートを使用して[展開する](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template)。
+**VMware の展開** | ダウンロードした OVA テンプレートを使用して構成サーバーを展開することをお勧めします。 この方法を使用すると、すべての要件と前提条件に準拠した構成サーバーを簡単に設定できます。<br/><br/> OVA テンプレートを使用して VMware VM を展開することが何らかの理由でできない場合は、物理マシンによってディザスター リカバリーを行うための以下の説明に従って、手動で構成サーバー マシンを設定できます。 | OVA テンプレートを使用して[展開する](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)。
 **物理サーバーの要件** | オンプレミスの物理サーバーでディザスター リカバリーを行う場合は、構成サーバーを手動で設定します。 | 前提条件を[確認する](physical-azure-set-up-source.md#prerequisites)。
 **物理サーバーの展開** | 構成サーバーを VMware VM としてインストールできない場合は、物理サーバーにインストールすることができます。 | 構成サーバーを手動で[展開する](physical-azure-set-up-source.md#set-up-the-source-environment)。
 

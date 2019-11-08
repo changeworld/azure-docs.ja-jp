@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 858ca114ca4c4b469ce4a5dd5275c9ac9874feb5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516768"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465001"
 ---
 # <a name="speech-services-for-telephony-data"></a>電話データのための Speech Services
 
@@ -38,7 +38,7 @@ ms.locfileid: "72516768"
 
 * 通話後の分析。つまり、通話記録のバッチ処理です。
 * リアルタイム分析。通話が行われている間に音声信号を処理し、さまざまな分析情報を抽出します。重要なユース ケースにセンチメントがあります。
-* 仮想アシスタント (ボット)。顧客とボットの間の対話を進め、エージェントが関与することなく顧客の問題の解決を試みるか、AI プロトコルのアプリケーションとしてエージェントを支援します。
+* 音声アシスタント (ボット)。顧客とボットの間の対話を進め、エージェントが関与することなく顧客の問題の解決を試みるか、AI プロトコルのアプリケーションとしてエージェントを支援します。
 
 バッチ シナリオを実装するときの一般的なアーキテクチャ図は下の画像のようになります ![コール センターの文字起こしアーキテクチャ](media/scenarios/call-center-transcription-architecture.png)
 

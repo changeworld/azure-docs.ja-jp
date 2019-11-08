@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.date: 11/05/2019
+ms.openlocfilehash: 65e9e6235fd974a7731fa5e86322793f1b680ad9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372613"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721327"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する
 

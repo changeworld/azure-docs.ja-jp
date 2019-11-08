@@ -1,7 +1,7 @@
 ---
 title: R スクリプトの実行:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で R スクリプトの実行モジュールを使用し、R コードを実行する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で R スクリプトの実行モジュールを使用し、R コードを実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f9aae1302f0d83c27d5d8f01745ddecbaeea9467
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693765"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497883"
 ---
 # <a name="execute-r-script"></a>R スクリプトの実行
 
-この記事では、**R スクリプトの実行**モジュールを使用して、ビジュアル インターフェイスのパイプラインで R コードを実行する方法について説明します。
+この記事では、**R スクリプトの実行**モジュールを使用して、Azure Machine Learning デザイナー (プレビュー) のパイプラインで R コードを実行する方法について説明します。
 
 R を使用すると、既存のモジュールでは現在サポートされていない次のようなタスクを実行できます。 
 - カスタム データ変換を作成する
 - 独自のメトリックを使用して予測を評価する
-- ビジュアル インターフェイスでスタンドアロン モジュールとして実装されていないアルゴリズムを使用してモデルをビルドする
+- デザイナーでスタンドアロン モジュールとして実装されていないアルゴリズムを使用してモデルをビルドする
 
 ## <a name="r-version-support"></a>R バージョンのサポート
 
-Azure Machine Learning service のビジュアル インターフェイスでは、R の CRAN (包括的な R アーカイブ ネットワーク) ディストリビューションが使用されます。現在使用されているバージョンは CRAN 3.5.1 です。
+Azure Machine Learning デザイナーでは、R の CRAN (包括的な R アーカイブ ネットワーク) ディストリビューションが使用されます。現在使用されているバージョンは CRAN 3.5.1 です。
 
 ## <a name="supported-r-packages"></a>サポートされる R パッケージ
 
@@ -73,7 +73,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ![R モジュール](media/module/execute-r-script.png)
 
-ビジュアル インターフェイスに保存されたデータセットは、このモジュールで読み込まれると自動的に R データ フレームに変換されます。
+デザイナーに保存されたデータセットは、このモジュールで読み込まれると自動的に R データ フレームに変換されます。
 
 1.  **R スクリプトの実行**モジュールをパイプラインに追加します。
 
@@ -116,10 +116,10 @@ azureml_main <- function(dataframe1, dataframe2){
  * エントリ ポイント関数には、最大 2 つの入力引数を含めることができます (`Param<dataframe1>` および `Param<dataframe2>`)。
  
    > [!NOTE]
-    > **[R スクリプトの実行]** モジュールに渡されるデータは、`dataframe1` および `dataframe2` として参照されます。これは、Azure Machine Learning Studio とは異なります (Studio では `dataset1`、`dataset2` として参照されます)。 スクリプトで入力データが正しく参照されていることを確認してください。  
+    > **[R スクリプトの実行]** モジュールに渡されるデータは、`dataframe1` および `dataframe2` として参照されます。これは、Azure Machine Learning デザイナーとは異なります (デザイナーでは `dataset1`、`dataset2` として参照されます)。 スクリプトで入力データが正しく参照されていることを確認してください。  
  
     > [!NOTE]
-    >  既存の R コードは、ビジュアル インターフェイスのパイプラインで実行するには、多少の変更が必要な場合があります。 たとえば、CSV 形式で指定した入力データは、コードで使用する前に、データセットに明示的に変換する必要があります。 また、R 言語で使用されるデータ型および列型は、ビジュアル インターフェイスで使用されるデータ型および列型とはいくつかの点で異なります。
+    >  既存の R コードは、デザイナー パイプラインで実行するために、多少の変更が必要な場合があります。 たとえば、CSV 形式で指定した入力データは、コードで使用する前に、データセットに明示的に変換する必要があります。 また、R 言語で使用されるデータ型および列型は、デザイナーで使用されるデータ型および列型とはいくつかの点で異なります。
 
 1.  **Random seed (ランダム シード)** : ランダム シード値として R 環境内で使用する値を入力します。 このパラメーターは、R コードで `set.seed(value)` を呼び出すのと同じです。  
 
@@ -127,7 +127,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>結果
 
-**R スクリプトの実行**モジュールは複数の出力を返すことができますが、それらは R データ フレームとして提供する必要があります。 データ フレームは、他のモジュールとの互換性のために、自動的にビジュアル インターフェイスのデータセットに変換されます。
+**R スクリプトの実行**モジュールは複数の出力を返すことができますが、それらは R データ フレームとして提供する必要があります。 データ フレームは、他のモジュールとの互換性のために、自動的にデザイナーのデータセットに変換されます。
 
 R からの標準メッセージとエラーはモジュールのログに返されます。
 
@@ -235,7 +235,7 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
-    整数型への明示的な変換が実行されるのは、シリアル化関数により、ビジュアル インターフェイスではサポートされない R `Raw` 形式でデータが出力されるためです。
+    整数型への明示的な変換が実行されるのは、シリアル化関数により、デザイナーではサポートされない R `Raw` 形式でデータが出力されるためです。
 
 1. **R スクリプトの実行**モジュールの 2 番目のインスタンスを追加し、それを前のモジュールの出力ポートに接続します。
 
@@ -402,4 +402,4 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

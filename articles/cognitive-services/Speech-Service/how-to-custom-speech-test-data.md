@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802518"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464565"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -94,7 +94,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 > [!NOTE]
 > 文字起こしは、UTF-8 バイト オーダー マーク (BOM) としてエンコードされている必要があります。
 
-文字起こしに対しては、システムによって処理できるように、テキストの正規化が行われます。 ただし、Custom Speech Service にデータをアップロードする "_前_" に、ユーザーが行う必要があるいくつかの重要な正規化があります。 文字起こしを準備する際に使用する適切な言語については、「[How to create a human-labeled transcription](how-to-custom-speech-human-labeled-transcriptions.md)」(人間とラベル付けされた文字起こしの作成方法) を参照してください。
+文字起こしに対しては、システムによって処理できるように、テキストの正規化が行われます。 ただし、Speech Studio にデータをアップロードする "_前_" に、ユーザーが行う必要がある重要な正規化がいくつかあります。 文字起こしを準備する際に使用する適切な言語については、「[How to create a human-labeled transcription](how-to-custom-speech-human-labeled-transcriptions.md)」(人間とラベル付けされた文字起こしの作成方法) を参照してください。
 
 オーディオ ファイルと、対応する文字起こしを収集したら、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)にアップロードする前に、それらを 1 つの .ZIP ファイルにパッケージ化する必要があります。 これは、3 つのオーディオ ファイルと人間とラベル付けされた文字起こしファイルが含まれたデータセットの例です。
 

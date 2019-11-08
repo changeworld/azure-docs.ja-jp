@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/10/2019
+ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0ceb21d6f77fd9694f7cd564c2e89735cf2a774d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 07191245c08e26fe884ba237a9e3ef1a080aa069
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497427"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671491"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 [!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku.md)]

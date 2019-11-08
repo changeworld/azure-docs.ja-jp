@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62cbe68bcf191c7ee6fc906bc8ba8ea66e3efb31
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233878"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474164"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>B2B ユーザーに対する特定組織からの招待を許可またはブロックする
 
@@ -81,6 +81,9 @@ B2B ユーザーに対する特定組織からの招待を許可またはブロ�
 ## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>PowerShell を使用して許可リストまたは拒否リストのポリシーを設定する
 
 ### <a name="prerequisite"></a>前提条件
+
+> [!Note]
+> AzureADPreview モジュールはプレビュー段階であるため、完全にはサポートされていません。 
 
 PowerShell を使用して許可リストまたは拒否リストを設定するには、Windows PowerShell 用 Azure Active Directory モジュールのプレビュー バージョンをインストールする必要があります。 具体的には、AzureADPreview モジュール バージョン 2.0.0.98 またはそれ以降をインストールします。
 

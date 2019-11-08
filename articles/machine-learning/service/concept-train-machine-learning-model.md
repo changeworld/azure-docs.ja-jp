@@ -9,16 +9,16 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: a755fe1607e581cb0a25eb9bd90c2ba223829a46
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ac7ae0d7933e1d1b4d716eb157bf74152155a969
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350601"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497335"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
-Azure Machine Learning には、SDK を使用したコード ファースト ソリューションから、自動機械学習やビジュアル インターフェイスなどのコーディングの少ないソリューションまで、モデルをトレーニングするためのいくつかの方法が用意されています。 次の一覧を使用して、ご自身にどのトレーニング方法が適しているかを判断してください。
+Azure Machine Learning には、SDK を使用したコード ファースト ソリューションから、自動機械学習やビジュアル デザイナーなどのコーディングの少ないソリューションまで、モデルをトレーニングするためのいくつかの方法が用意されています。 次の一覧を使用して、ご自身にどのトレーニング方法が適しているかを判断してください。
 
 + [Azure Machine Learning SDK for Python](#python-sdk):Python SDK には、モデルをトレーニングするためのいくつかの方法が用意されており、それぞれに異なる機能があります。
 
@@ -29,7 +29,7 @@ Azure Machine Learning には、SDK を使用したコード ファースト ソ
     | [Estimator](#estimators) | Estimator クラスを使用すると、**広く使われている機械学習フレームワークに基づいてモデルのトレーニングを簡単に行う**ことができます。 **Scikit-learn**、**PyTorch**、**TensorFlow**、**Chainer** 用の Estimator クラスがあります。 また、専用の Estimator クラスがまだないフレームワークで使用できる汎用 Estimator もあります。 Estimator を使用する場合、実行構成の定義について心配する必要はありません。 |
     | [機械学習パイプライン](#machine-learning-pipeline) | パイプラインは別のトレーニング方法ではなく、**モジュール型の再利用可能な手順を使用してワークフローを定義する方法**であり、トレーニングをワークフローの一部として含めることができます。 機械学習パイプラインでは、自動機械学習、Estimator、および実行構成を使用したモデルのトレーニングがサポートされています。 パイプラインはトレーニングに明示的に重点を置いていないため、パイプラインを使用する理由は、他のトレーニング方法と大きく異なります。 一般に、以下の場合にパイプラインを使用できます。<br>* 実行時間の長いトレーニング ジョブやデータ準備など、**無人プロセスをスケジュール設定する**。<br>* 異種コンピューティング リソースとストレージの場所全体で調整された**複数の手順**を使用する。<br>* 再トレーニングやバッチ スコアリングなどの特定のシナリオ向けにパイプラインを**再利用可能なテンプレート**として使用する。<br>* ワークフローの**データソース、入力、出力を追跡してバージョン管理する**。<br>* ワークフローが、**特定の手順で個別に作業するさまざまなチームによって実装される**。 その後、手順をパイプラインに結合して、ワークフローを実装できます。 |
 
-+ **ビジュアル インターフェイス**:Azure Machine Learning __ビジュアル インターフェイス__では、概念実証を構築するため、またはコーディングの経験がほとんどないないユーザーのための簡単なエントリポイントが機械学習に提供されます。 これにより、ドラッグ アンド ドロップ Web ベース UI を使用してモデルをトレーニングできます。 Python コードを設計の一部として使用したり、コードを記述せずにモデルをトレーニングしたりすることができます。
++ **デザイナー**: Azure Machine Learning デザイナー (プレビュー) では、概念実証を構築するため、またはコーディングの経験がほとんどないないユーザーのための簡単なエントリポイントが機械学習に提供されます。 これにより、ドラッグ アンド ドロップ Web ベース UI を使用してモデルをトレーニングできます。 Python コードを設計の一部として使用したり、コードを記述せずにモデルをトレーニングしたりすることができます。
 
 + **CLI**:機械学習 CLI には Azure Machine Learning を使用した一般的なタスク用のコマンドが用意されており、多くの場合、**スクリプト作成とタスクの自動化**に使用されます。 たとえば、トレーニング スクリプトまたはパイプラインを作成した後、スケジュールに基づいて、またはトレーニングに使用するデータ ファイルが更新されたときに、CLI を使用してトレーニングの実行を開始することができます。 トレーニング モデルの場合は、トレーニング ジョブを送信するコマンドが用意されています。 実行構成またはパイプラインを使用してジョブを送信できます。
 
@@ -59,7 +59,7 @@ Azure Machine Learning の汎用トレーニング ジョブは、[RunConfigurat
 イテレーション、ハイパーパラメーターの設定、特徴付け、その他の設定を定義します。 トレーニング中、Azure Machine Learning では、さまざまなアルゴリズムとパラメーターが並列に試行されます。 トレーニングは、定義した終了基準が満たされると終了します。 Estimator を使用する場合、実行構成の定義について心配する必要はありません。
 
 > [!TIP]
-> Python SDK に加えて、[ワークスペース ランディング ページ (プレビュー)](https://ml.azure.com) を通じて自動 ML を使用することもできます。
+> Python SDK に加えて、[Azure Machine Learning Studio](https://ml.azure.com) を通じて自動 ML を使用することもできます。
 
 * [自動機械学習とは](concept-automated-ml.md)
 * [チュートリアル:自動機械学習を使用して最初の分類モデルを作成する](tutorial-first-experiment-automated-ml.md)
@@ -67,7 +67,7 @@ Azure Machine Learning の汎用トレーニング ジョブは、[RunConfigurat
 * [例:自動機械学習の場合の Jupyter Notebook の例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [方法: Python で自動 ML の実験を構成する](how-to-configure-auto-train.md)
 * [方法: 時系列予測モデルを自動トレーニングする](how-to-auto-train-forecast.md)
-* [方法: Azure Machine Learning のワークスペース ランディング ページ (プレビュー) を使用して自動化された機械学習の実験を作成、参照、およびデプロイする](how-to-create-portal-experiments.md)
+* 方法: [Azure Machine Learning Studio](how-to-create-portal-experiments.md) で自動化された機械学習の実験を作成、調査、およびデプロイする
 
 ### <a name="estimators"></a>Estimator
 
@@ -89,15 +89,17 @@ Estimator を使用すると、広く使われている ML フレームワーク
 * [例:自動機械学習を使用したパイプライン](https://aka.ms/pl-automl)
 * [例:Estimator を使用したパイプライン](https://aka.ms/pl-estimator)
 
-## <a name="visual-interface"></a>ビジュアル インターフェイス
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー
 
-ビジュアル インターフェイス (プレビュー) を使用すると、Web ブラウザーでドラッグ アンド ドロップ インターフェイスを使用してモデルをトレーニングできます。
+デザイナーを使用すると、Web ブラウザーでドラッグ アンド ドロップ インターフェイスを使用してモデルをトレーニングできます。
 
-+ [ビジュアル インターフェイスとは](ui-concept-visual-interface.md)
-+ [チュートリアル:自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)
-+ [回帰:価格を予測する](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-+ [分類:信用リスクを予測する](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-+ [分類:顧客離れ、強い欲求、アップセルを予測する](how-to-ui-sample-classification-predict-churn.md)
++ [デザイナーとは](concept-designer.md)
++ [チュートリアル:自動車価格を予測する](tutorial-designer-automobile-price-train-score.md)
++ [回帰:価格を予測する](how-to-designer-sample-regression-automobile-price-basic.md)
++ [分類:所得を予測する](how-to-designer-sample-classification-predict-income.md)
++ [分類:顧客離れ、強い欲求、アップセルを予測する](how-to-designer-sample-classification-churn.md)
++ [カスタム R スクリプトを使用した分類: フライトの遅延を予測する](how-to-designer-sample-classification-flight-delay.md)
++ [テキスト分類: Wikipedia SP 500 データセット](how-to-designer-sample-text-classification.md)
 
 ## <a name="cli"></a>CLI
 

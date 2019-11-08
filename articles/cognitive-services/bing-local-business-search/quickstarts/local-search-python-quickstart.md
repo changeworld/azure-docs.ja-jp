@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 11/06/2019
 ms.author: aahi
-ms.openlocfilehash: 2ed4ba5081ba91318b56fdc65027664640542ca0
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: ec13555b478404c7e2169af5bcb33f37d8afc5bb
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994375"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796153"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>クイック スタート:Python で Bing Local Business Search API にクエリを送信する
 
@@ -48,8 +48,8 @@ import json
 # Replace the subscriptionKey string value with your valid subscription key.
 subscriptionKey = 'YOUR-SUBSCRIPTION-KEY'
 
-host = 'api.cognitive.microsoft.com/bing'
-path = '/v7.0/localbusinesses/search'
+host = 'api.cognitive.microsoft.com'
+path = '/bing/v7.0/localbusinesses/search'
 
 query = 'restaurant in Bellevue'
 

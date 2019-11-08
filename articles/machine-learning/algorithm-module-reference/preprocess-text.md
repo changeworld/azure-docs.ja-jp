@@ -1,7 +1,7 @@
 ---
 title: Preprocess Text (テキストの前処理):モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Preprocess Text (テキストの前処理) モジュールを使用して、テキストをクリーンアップして簡素化する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning 内で Preprocess Text (テキストの前処理) モジュールを使用して、テキストをクリーンアップして簡素化する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9bf81b4e4c305c864592c32a8737d1a5eeb18651
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692687"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497679"
 ---
 # <a name="preprocess-text"></a>Preprocess Text (テキストの前処理)
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 **Preprocess Text (テキストの前処理)** モジュールを使用して、テキストをクリーンアップして簡素化します。 次の一般的なテキスト処理操作がサポートされています。
 
@@ -33,7 +33,7 @@ ms.locfileid: "72692687"
 
 ## <a name="configure-text-preprocessing"></a>テキストの前処理を構成する  
 
-1.  Azure Machine Learning Service で実験に **Preprocess Text (テキストの前処理)** モジュールを追加します。 このモジュールは、**Text Analytics** にあります。
+1.  Azure Machine Learning 内で **Preprocess Text (テキストの前処理)** モジュールをパイプラインに追加します。 このモジュールは、**Text Analytics** にあります。
 
 1. テキストを含む列が少なくとも 1 列あるデータセットを接続します。
 
@@ -83,8 +83,8 @@ ms.locfileid: "72692687"
 
     たとえば、文字列 `MS---WORD` は、3 つのトークン `MS`、`-`、`WORD` に分割されます。
 
-1. 実験を実行します。
+1. パイプラインを実行します。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

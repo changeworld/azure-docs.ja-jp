@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074114"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470084"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
@@ -40,16 +40,20 @@ Azure のインフラストラクチャとプラットフォームのセキュ�
 
 ## <a name="https-and-certificates"></a>HTTPS と証明書
 
-App Service を使用すると、[HTTPS](https://wikipedia.org/wiki/HTTPS) でアプリをセキュリティで保護できます。 アプリを作成すると、HTTPS を使用して既定のドメイン名 (\<app_name>.azurewebsites.net) にアクセスできます。 [アプリのカスタム ドメインを構成する](app-service-web-tutorial-custom-domain.md)場合は、クライアント ブラウザーがカスタム ドメインに対して安全な HTTPS 接続を実行できるように、[カスタム証明書を使用してセキュリティで保護する](app-service-web-tutorial-custom-ssl.md)必要があります。 それには 2 つの方法があります。
+App Service を使用すると、[HTTPS](https://wikipedia.org/wiki/HTTPS) でアプリをセキュリティで保護できます。 アプリを作成すると、HTTPS を使用して既定のドメイン名 (\<app_name>.azurewebsites.net) にアクセスできます。 [アプリのカスタム ドメインを構成する](app-service-web-tutorial-custom-domain.md)場合は、クライアント ブラウザーがカスタム ドメインに対して安全な HTTPS 接続を実行できるように、[SSL 証明書を使用してセキュリティで保護する](configure-ssl-bindings.md)必要があります。 App Service では、いくつかの種類の証明書がサポートされています。
 
-- **App Service 証明書** - Azure で証明書を直接作成します。 証明書は [Azure Key Vault](/azure/key-vault/) でセキュリティで保護され、App Service アプリにインポートできます。 詳細については、「[Azure App Service の SSL 証明書を購入して構成する](web-sites-purchase-ssl-web-site.md)」を参照してください。
-- **サードパーティ証明書** - 信頼できる証明機関から購入したカスタム SSL 証明書をアップロードして、App Service アプリにバインドします。 App Service は、単一ドメイン証明書とワイルドカード証明書の両方をサポートしています。 また、テスト目的の自己署名証明書もサポートしています。 詳細については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+- Free App Service マネージド証明書
+- App Service 証明書
+- サードパーティの証明書
+- Azure Key Vault からインポートされた証明書
+
+詳細については、[Azure App Service への SSL 証明書の追加](configure-ssl-certificate.md)に関する記事をご覧ください。
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>セキュリティで保護されていないプロトコル (HTTP、TLS 1.0、FTP)
 
-すべての暗号化されていない (HTTP) 接続からアプリをセキュリティで保護するために、App Service には 1 クリックで HTTPS を適用できる構成が用意されています。 セキュリティで保護されていない要求は、アプリケーション コードに到達する前に拒否されます。 詳細については、「[HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)」を参照してください。
+すべての暗号化されていない (HTTP) 接続からアプリをセキュリティで保護するために、App Service には 1 クリックで HTTPS を適用できる構成が用意されています。 セキュリティで保護されていない要求は、アプリケーション コードに到達する前に拒否されます。 詳細については、「[HTTPS の適用](configure-ssl-bindings.md#enforce-https)」を参照してください。
 
-[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 は、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準によって安全であると見なされなくなっています。 App Service で [TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions) を適用することで、古いプロトコルを無効にすることができます。
+[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 は、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準によって安全であると見なされなくなっています。 App Service で [TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions) を適用することで、古いプロトコルを無効にすることができます。
 
 App Service は、ファイルの展開に FTP と FTPS の両方をサポートしています。 ただし、可能な限り FTP ではなく FTPS を使用することをお勧めします。 これらのプロトコルの 1 つまたは両方が使用されていない場合は、[無効にする](deploy-ftp.md#enforce-ftps)ことをお勧めします。
 

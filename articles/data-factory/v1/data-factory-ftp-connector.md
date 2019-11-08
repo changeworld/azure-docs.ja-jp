@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した FTP サーバーからのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して FTP サーバーからデータを移動する
 description: Azure Data Factory を使用して FTP サーバーからデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5d043072244ede5b1d7bd28d4628ffe3cf4961d8
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e5a6485e93e8f617883a7dfef511709ec857b411
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836323"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682593"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -63,7 +63,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、FTP リンク サービスに固有の JSON 要素について説明しています。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | type |FtpServer に設定します。 |はい |&nbsp; |
 | host |FTP サーバーの名前または IP アドレスを指定します。 |はい |&nbsp; |

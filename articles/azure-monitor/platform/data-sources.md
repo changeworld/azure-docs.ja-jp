@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/23/2019
-ms.openlocfilehash: 7c03c0c649876143eaa75c98fa0c9001f2b24fbd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b93bf4f67c2581b7cac476b83fc130bf344cfa83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932379"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476736"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -173,14 +173,14 @@ Azure Monitor における詳しいアプリケーションの監視は、さま
 | Azure Monitor ログ | 監視ソリューションは、データを Azure Monitor ログに収集します。そこで、クエリ言語や、通常はソリューションに含まれている[ビュー](view-designer.md)を使用して、そのデータを分析できます。 | [Azure における監視ソリューションのデータ収集の詳細](../insights/solutions-inventory.md) |
 
 
-### <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
-[Azure Monitor for Containers](../insights/container-insights-overview.md) は、[Azure Kubernetes Service (AKS)](/azure/aks/) 用にカスタマイズされた監視エクスペリエンスを備えています。 次の表に示すリソースについての追加データが収集されます。
+### <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
+[Azure Monitor for Containers](../insights/container-insights-overview.md) では、[Azure Kubernetes Service (AKS)](/azure/aks/) 用にカスタマイズされた監視エクスペリエンスを提供します。 次の表に示すリソースについての追加データが収集されます。
 
 | Destination | 説明 | リファレンス |
 |:---|:---|:---|
 | Azure Monitor ログ | インベントリ、ログ、イベントといった AKS の監視データを格納します。 ポータルでログの分析機能を活用するために、メトリック データはログにも格納されます。 | [コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する](../insights/container-insights-analyze.md) |
 | Azure Monitor メトリック | メトリック データはメトリック データベースに格納されて、可視化とアラートの源泉となります。 | [メトリックス エクスプローラーでコンテナーのメトリックを表示する](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
-| Azure Kubernetes Service | ほぼリアルタイムのエクスペリエンスを実現するために、Azure Monitor for Containers は、Azure Kubernetes Service から直接 Azure portal にデータを提示します。 | [コンテナー用 Azure Monitor でコンテナー ログをリアルタイムで表示する方法 (プレビュー)](../insights/container-insights-live-logs.md) |
+| Azure Kubernetes Service | ポータルの Azure Kubernetes Service (AKS) コンテナー ログ (stdout/stderror)、イベント、ポッド メトリックに直接アクセスできるようになります。 | [Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法](../insights/container-insights-livedata-overview.md) |
 
 ### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
 [Azure Monitor for VMs](../insights/vminsights-overview.md) は、仮想マシンの監視用にカスタマイズされたエクスペリエンスを備えています。 Azure Monitor for VMs によって収集されるデータについては、前出の「[オペレーティング システム (ゲスト)](#operating-system-guest)」セクションで説明しています。

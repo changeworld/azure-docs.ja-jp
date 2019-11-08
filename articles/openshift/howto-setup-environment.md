@@ -5,22 +5,21 @@ services: openshift
 keywords: red hat openshift セットアップ設定
 author: jimzim
 ms.author: jzim
-ms.date: 05/10/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 manager: jeconnoc
-ms.openlocfilehash: a31655e8c8805505bdcc5e90bf25191590d35c18
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672513"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581611"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
 
 Microsoft Azure Red Hat OpenShift アプリケーションをビルドして実行するには、次のことを行う必要があります。
 
-* Azure 仮想マシンの予約インスタンスを購入します。
 * Azure CLI のバージョン 2.0.65 (またはそれ以降) をインストールします (または、Azure Cloud Shell を使用します)。
 * `AROGA` 機能および関連付けられているリソース プロバイダーに登録します。
 * Azure Active Directory (Azure AD) テナントを作成します。
@@ -28,16 +27,6 @@ Microsoft Azure Red Hat OpenShift アプリケーションをビルドして実�
 * Azure AD ユーザーを作成します。
 
 次の手順ではこれらの前提条件のすべてを説明します。
-
-## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>Azure Red Hat OpenShift アプリケーション ノードの予約インスタンスを購入する
-
-Azure Red Hat OpenShift を使用する前に、Azure Red Hat OpenShift の予約アプリケーション ノードを 4 個以上購入する必要があります。その後に、クラスターをプロビジョニングできるようになります。
-
-Azure をご利用の場合は、Azure portal から [Azure Red Hat OpenShift 予約インスタンスを購入](https://aka.ms/openshift/buy)します。 購入後、24 時間以内にサブスクリプションが有効になります。
-
-Azure をご利用のお客様でない場合は、[営業担当者に問い合わせて](https://aka.ms/openshift/contact-sales)、ページの下部にある販売フォームに入力してプロセスを開始してください。
-
-詳細については、[Azure Red Hat OpenShift の価格ページ](https://aka.ms/openshift/pricing)を参照してください。
 
 ## <a name="install-the-azure-cli"></a>Azure CLI のインストール
 

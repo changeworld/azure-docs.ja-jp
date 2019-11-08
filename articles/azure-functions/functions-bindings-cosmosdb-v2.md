@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 419241bf1e8511dd6015cd3f791099d6959c3e34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8aee88f6ef3f6a73beadfdf242d79d9b361de0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086756"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469397"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
@@ -274,7 +274,7 @@ Python コードを次に示します。
 |**leaseExpirationInterval**| **LeaseExpirationInterval**| (省略可能) 設定すると、パーティションを表すリースでリースを取得する間隔がミリ秒単位で定義されます。 この間隔内にリースが更新されない場合、リースは期限切れとなり、パーティションの所有権は別のインスタンスに移動します。 既定値は 60,000 (60 秒) です。
 |**leaseRenewInterval**| **LeaseRenewInterval**| (省略可能) 設定すると、インスタンスが現在保持しているパーティションのすべてのリースの更新間隔がミリ秒単位で定義されます。 既定値は 17,000 (17 秒) です。
 |**checkpointFrequency**| **CheckpointFrequency**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に各関数呼び出しの後です。
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (省略可能) 設定すると、関数呼び出しごとに受信するアイテムの最大量がカスタマイズされます。
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (省略可能) 設定すると、関数呼び出しごとに、受信するアイテムの最大量がこのプロパティによって設定されます。 監視対象のコレクションでストアド プロシージャによって操作が実行されると、変更フィードから項目が読み取られるとき、[トランザクション スコープ](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)が保持されます。 その結果、受信した項目の量は、指定された値を上回る可能性があります。このため、同じトランザクションによって変更された項目は 1 つのアトミック バッチの一部として返されます。
 |**startFromBeginning**| **StartFromBeginning**| (省略可能) 設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、トリガーが指示されます。 これは、初めてトリガーが起動される場合にのみ機能します。その後の実行では、チェックポイントが既に格納されているためです。 既にリースが作成されているときにこれを `true` に設定しても効果はありません。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

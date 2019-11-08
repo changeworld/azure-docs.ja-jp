@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccab7e59eaa925df4ba46447cef458111dc7e60a
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c4f51adbcaa5e5b750169f53a1333544365fd4f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869342"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825496"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Marketplace の測定サービス API - FAQ
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する | Microsoft Docs
+title: Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
 description: Azure Data Factory から Azure HDInsight クラスター上の Hadoop MapReduce プログラムを実行してデータを処理する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49e00d9a47f92fb30a29e7051cba35f54bde3700
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60611498"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683852"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -62,7 +62,7 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | アクティビティの名前                     | はい      |
+| 名前              | アクティビティの名前                     | はい      |
 | description       | アクティビティの用途を説明するテキストです。 | いいえ       |
 | type              | MapReduce アクティビティの場合、アクティビティの種類は HDinsightMapReduce です | はい      |
 | linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |

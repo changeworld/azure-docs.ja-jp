@@ -11,117 +11,90 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e55c0453c117c51e5a8e4986631516d3e61ed10b
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 51d1bd515651824545d486207ad4a74476aa7092
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677593"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491283"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの keyPhrase 作成済みエンティティ
 keyPhrase エンティティは、発話からさまざまなキー フレーズを抽出します。 keyPhrase が含まれている発話例をアプリケーションに追加する必要はありません。 keyPhrase エンティティは、[テキスト分析](../text-analytics/overview.md)フィーチャーの一環として[多くのカルチャ](luis-language-support.md#languages-supported)でサポートされています。 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>作成済み keyPhrase エンティティの解決
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+次のエンティティ オブジェクトがクエリに対して返されます。
 
-次の例では、**builtin.keyPhrase** エンティティの解決を示します。
+`where is the educational requirements form for the development and engineering group`
 
-```json
-{
-  "query": "where is the educational requirements form for the development and engineering group",
-  "topScoringIntent": {
-    "intent": "GetJobInformation",
-    "score": 0.182757929
-  },
-  "entities": [
-    {
-      "entity": "development",
-      "type": "builtin.keyPhrase",
-      "startIndex": 51,
-      "endIndex": 61
-    },
-    {
-      "entity": "educational requirements",
-      "type": "builtin.keyPhrase",
-      "startIndex": 13,
-      "endIndex": 36
-    }
-  ]
-}
-```
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
 ```json
-{
-    "query": "where is the educational requirements form for the development and engineering group",
-    "prediction": {
-        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
-        "topIntent": "GetJobInformation",
-        "intents": {
-            "GetJobInformation": {
-                "score": 0.157861546
-            }
-        },
-        "entities": {
-            "keyPhrase": [
-                "educational requirements",
-                "development"
-            ]
-        }
-    }
+"entities": {
+    "keyPhrase": [
+        "educational requirements",
+        "development"
+    ]
 }
 ```
-
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
 ```json
-{
-    "query": "where is the educational requirements form for the development and engineering group",
-    "prediction": {
-        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
-        "topIntent": "GetJobInformation",
-        "intents": {
-            "GetJobInformation": {
-                "score": 0.157861546
-            }
-        },
-        "entities": {
-            "keyPhrase": [
-                "educational requirements",
-                "development"
-            ],
-            "$instance": {
-                "keyPhrase": [
-                    {
-                        "type": "builtin.keyPhrase",
-                        "text": "educational requirements",
-                        "startIndex": 13,
-                        "length": 24,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    },
-                    {
-                        "type": "builtin.keyPhrase",
-                        "text": "development",
-                        "startIndex": 51,
-                        "length": 11,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    }
+"entities": {
+    "keyPhrase": [
+        "educational requirements",
+        "development"
+    ],
+    "$instance": {
+        "keyPhrase": [
+            {
+                "type": "builtin.keyPhrase",
+                "text": "educational requirements",
+                "startIndex": 13,
+                "length": 24,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.keyPhrase",
+                "text": "development",
+                "startIndex": 51,
+                "length": 11,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
+```
+#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
+
+次の例では、**builtin.keyPhrase** エンティティの解決を示します。
+
+```json
+"entities": [
+    {
+        "entity": "development",
+        "type": "builtin.keyPhrase",
+        "startIndex": 51,
+        "endIndex": 61
+    },
+    {
+        "entity": "educational requirements",
+        "type": "builtin.keyPhrase",
+        "startIndex": 13,
+        "endIndex": 36
+    }
+]
 ```
 * * * 
 

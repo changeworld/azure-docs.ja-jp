@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d12b952d298b41c8d06f0fcac141a45749de9051
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d3d4777d54e3ef6b20ab0ac0f0890da958411297
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799956"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468667"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
 Azure Speech Services のテキスト読み上げは、アプリケーション、ツール、またはデバイスがテキストを人間のような自然な合成音声に変換できるようにするサービスです。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 詳細については、[サポートされる言語](language-support.md#text-to-speech)に関するページを参照してください。
 
-テキスト読み上げテクノロジを使用すると、コンテンツ作成者は、ユーザーとさまざまな方法で対話できます。 テキスト読み上げでは、ユーザーが音声を使ってコンテンツと対話できるため、アクセシビリティが向上します。 視覚障碍や学習障碍をお持ちの方も、車の運転中にナビゲーション情報が必要な方も、テキスト読み上げを使用することにより、これまでのエクスペリエンスを向上させることができます。 テキスト読み上げは、音声ボットや仮想アシスタントにも役立つアドオンです。
+テキスト読み上げテクノロジを使用すると、コンテンツ作成者は、ユーザーとさまざまな方法で対話できます。 テキスト読み上げでは、ユーザーが音声を使ってコンテンツと対話できるため、アクセシビリティが向上します。 視覚障碍や学習障碍をお持ちの方も、車の運転中にナビゲーション情報が必要な方も、テキスト読み上げを使用することにより、これまでのエクスペリエンスを向上させることができます。 テキスト読み上げは、音声ボットや音声アシスタントにも役立つアドオンです。
 
 
 音声合成マークアップ言語 (SSML) (XML ベースのマークアップ言語) を活用することにより、テキスト読み上げサービスを使用する開発者は、入力テキストを合成音声に変換する方法を指定できます。 SSML では、ピッチ、読み方、読み上げ速度、音量などを調整できます。 詳細については、[SSML](#speech-synthesis-markup-language-ssml) に関する記事を参照してください。
@@ -34,7 +34,7 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 
 ニューラル音声は、話し言葉のアクセントとイントネーションのパターンを照合し、音声の単位をコンピューターの音声に合成する際に、ディープ ニューラル ネットワークを使用して従来のテキスト読み上げシステムの限界を克服しています。 標準のテキスト読み上げでは、独立したモデルによって管理される別々の言語分析と音響予測の手順に韻律が分解されます。これにより、こもった音声合成になることがあります。 ニューラル機能では韻律予測と音声合成が同時に行われ、その結果、より滑らかで自然に聞こえる音声になります。
 
-ニューラル音声を使用すると、チャットボットや仮想アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムとやりとりする際のリスニング疲労が大幅に軽減されます。
+ニューラル音声を使用すると、チャットボットや音声アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムとやりとりする際のリスニング疲労が大幅に軽減されます。
 
 ニューラル音声は、ニュートラルや陽気な雰囲気など、さまざまなスタイルをサポートしています。 たとえば、Jessa (en-US) の声は陽気な雰囲気を表現でき、温かみのある楽しい会話に最適化されています。 トーン、ピッチ、速度などの音声出力は、[音声合成マークアップ言語](speech-synthesis-markup.md)を使用して調整できます。 利用可能なすべての音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)に関するページを参照してください。
 
@@ -87,25 +87,25 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 
 | クイック スタート (SDK) | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| [C#、.NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、.NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、Unity](quickstart-text-to-speech-csharp-unity.md) | Windows、Android | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Browse](https://aka.ms/csspeech/cppref) |
-| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
-| [Java](quickstart-text-to-speech-java-jre.md) | Windows、Linux、macOS | [Browse](https://aka.ms/csspeech/javaref) |
-| [Java](quickstart-text-to-speech-java-android.md) | Android | [Browse](https://aka.ms/csspeech/javaref) |
-| [Objective-C](quickstart-text-to-speech-objectivec-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Objective-C](quickstart-text-to-speech-objectivec-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Swift](quickstart-text-to-speech-swift-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Swift](quickstart-text-to-speech-swift-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Python](quickstart-text-to-speech-python.md) | Window、Linux、macOS | [Browse](https://aka.ms/csspeech/pythonref) |
+| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows、Android | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Browse](https://aka.ms/csspeech/cppref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows、Linux、macOS | [Browse](https://aka.ms/csspeech/javaref) |
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Browse](https://aka.ms/csspeech/javaref) |
+| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
+| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
+| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
+| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
+| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window、Linux、macOS | [Browse](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>REST クイック スタート
 
 | クイック スタート (REST) | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| [C#、.NET Core](quickstart-dotnet-text-to-speech.md) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.JS](quickstart-nodejs-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Python](quickstart-python-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 

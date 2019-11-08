@@ -1,21 +1,22 @@
 ---
-title: Azure SQL Data Warehouse の列レベルのセキュリティ | Microsoft Docs
+title: 列レベルのセキュリティ
 description: 列レベルのセキュリティ (CLS) では、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、データベース テーブルの列へのアクセスを制御できます。 CLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 CLS を使用すると、列のアクセスに対して制限を実装できます。
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: aa91bd586e064239d0e05c754427947963c9ee3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082812"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693091"
 ---
 # <a name="column-level-security"></a>列レベルのセキュリティ
 列レベルのセキュリティ (CLS) では、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、データベース テーブルの列へのアクセスを制御できます。

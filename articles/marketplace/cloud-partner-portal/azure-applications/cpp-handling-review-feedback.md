@@ -4,15 +4,16 @@ description: Azure DevOps を使用して、Azure Marketplace の Azure アプ�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pabutler
-ms.openlocfilehash: 1a45af2cb5eed8daa4b50bb6f0b504f9653c827a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef4aff57948034fb369bd74564306b7b8674b377
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068955"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827583"
 ---
 # <a name="handling-review-feedback"></a>レビュー フィードバックの処理
 

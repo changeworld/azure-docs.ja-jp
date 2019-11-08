@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 上の Spark にある Jupyter でのカスタム Maven パッケージの使用
+title: Spark 上で Jupyter でのカスタム Maven パッケージを使用する - Azure HDInsight
 description: HDInsight Spark クラスター内の Jupyter Notebook でカスタム Maven パッケージを使用するための構成手順を説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: cd88c85c927c635269d814c20b15f574212e1a6d
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 0cdd962e5d027b5576a0556ca5decb976af45ff1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337687"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494547"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
 
@@ -46,11 +46,11 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
 
 1. 新しい Notebook を作成します。 **[新規]** をクリックし、 **[Spark]** をクリックします。
    
-    ![新しい Spark Jupyter Notebook の作成](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "新しい Jupyter Notebook の作成")
+    ![新しい Spark Jupyter Notebook を作成する](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "新しい Jupyter Notebook を作成します")
 
 1. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
    
-    ![Notebook の名前を指定](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Notebook の名前を指定")
+    ![Notebook の名前を指定する](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Notebook の名前を指定します")
 
 1. 外部のパッケージを使用するようにノートブックを構成するには `%%configure` マジックを使用します。 外部のパッケージを使用するノートブックでは必ず、最初のコード セルで `%%configure` マジックを呼び出すようにしてください。 そうすることでセッションが開始される前に、指定のパッケージを使用するようにカーネルが構成されます。
 
@@ -68,7 +68,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
    
     b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。 収集した値が、クラスターに一致することを確認します。 この例では、Scala 2.10 と Spark 1.4.0 パッケージを使用していますが、クラスター内の適切な Scala または Spark のバージョンに対して別のバージョンを選択しなければならないことがあります。 クラスター上の Scala のバージョンを確認するには、Spark Jupyter カーネルまたは Spark 送信に対して `scala.util.Properties.versionString` を実行します。 クラスター上の Spark のバージョンを確認するには、Jupyter Notebook に対して `sc.version` を実行します。
    
-    ![Jupyter Notebook で外部パッケージを使用する](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Notebook で外部パッケージを使用する")
+    ![Jupyter Notebook で外部のパッケージを使用する](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Use external packages with Jupyter notebook")
    
     c. 3 つの値をコロン ( **:** ) で区切って連結します。
    

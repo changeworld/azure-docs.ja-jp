@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: b7395a8ab71e860c2e584339dcd581077a4f4020
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 38299a8ffd72722c2d2c1dda9227b7fbf76c0386
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595496"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603122"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL の Query Performance Insight
 
 **適用対象:** Azure Database for MySQL 5.7
-
-> [!IMPORTANT]
-> Query Performance Insight はプレビュー段階にあります。
 
 Query Performance Insight では、実行時間が最長のクエリ、クエリの経時変化､影響を受けている待機状態を素早く特定することができます。
 

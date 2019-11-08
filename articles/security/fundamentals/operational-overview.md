@@ -4,7 +4,7 @@ description: この記事では、Azure で運用可能なセキュリティの�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: barbkess
+manager: rkarlin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899817"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643785"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -34,7 +34,7 @@ IT 運用チームは、データセンター インフラストラクチャ、�
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor](/azure/azure-monitor/overview) では、マネージド ソースから中央のデータ ストアへのデータの収集が行われます。 このデータには、API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 収集されたデータは、アラート、分析、エクスポートに使用できます。 
+[Azure Monitor](/azure/azure-monitor/overview) では、マネージド ソースから中央のデータ ストアへのデータの収集が行われます。 このデータには、API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 収集されたデータは、アラート、分析、エクスポートに使用できます。
 
 さまざまなソースからのデータを統合し、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、Azure Monitor ログではデータの収集とそのデータに対して実行される操作が明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
@@ -44,9 +44,9 @@ IT 運用チームは、データセンター インフラストラクチャ、�
 
 ### <a name="backup"></a>バックアップ
 
-[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 
+[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。
 
-Azure Backup には複数のコンポーネントが用意されており、お客様はそれらを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Azure Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 
+Azure Backup には複数のコンポーネントが用意されており、お客様はそれらを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Azure Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。
 
 詳しくは、[Azure Backup コンポーネントの表](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)をご覧ください。
 
@@ -102,7 +102,7 @@ Security Center では、Microsoft Monitoring Agent が使用されます。 こ
 
 [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) は、Azure 上で実行されているサービスを監視するための基本的なツールです。 サービスのスループットと周辺環境に関するインフラストラクチャ レベルのデータが示されます。 アプリをすべて Azure で管理しているのであれば、リソースのスケールアップやスケールダウンを検討する際、Azure Monitor が役立ちます。
 
-またこのツールでは、監視データを使用して、アプリケーションに関する詳細なインサイトを取得することもできます。 そのような知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。 
+またこのツールでは、監視データを使用して、アプリケーションに関する詳細なインサイトを取得することもできます。 そのような知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
 
 Azure Monitor には、次のコンポーネントが含まれています。
 
@@ -154,13 +154,15 @@ Network Watcher を使用すると、Azure ネットワークの監視と診断�
 
 ## <a name="cloud-service-provider-access-transparency"></a>クラウド サービス プロバイダーのアクセスの透過性
 
-[Microsoft Azure 用のカスタマー ロックボックス](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/)は Azure portal に統合されたサービスです。このサービスを使用することでお客様は、Microsoft サポート エンジニアが問題解決のためにご利用のデータにアクセスするとこを必要とする可能性があるまれな事例で明示的な制御を行うことができます。 リモート アクセスの問題をデバッグするなどの事例は、非常にまれであり、Microsoft サポート エンジニアは問題解決のために管理者特権のアクセス許可を必要とします。 そのようなケースでは、Microsoft サポート エンジニアは、Just-In-Time アクセス サービスを使用し、それによってアクセスがそのサービスに制限された、期限付きの制限された承認を取得します。  
+[Microsoft Azure 用のカスタマー ロックボックス](customer-lockbox-overview.md)は Azure portal に統合されたサービスです。このサービスを使用することでお客様は、Microsoft サポート エンジニアが問題解決のためにご利用のデータにアクセスするとこを必要とする可能性があるまれな事例で明示的な制御を行うことができます。
+リモート アクセスの問題をデバッグするなどの事例は、非常にまれであり、Microsoft サポート エンジニアは問題解決のために管理者特権のアクセス許可を必要とします。 そのようなケースでは、Microsoft サポート エンジニアは、Just-In-Time アクセス サービスを使用し、それによってアクセスがそのサービスに制限された、期限付きの制限された承認を取得します。  
 Microsoft ではアクセスするにあたり、常にお客様の同意を得てきましたが、カスタマー ロックボックスによってお客様は Azure portal からそのような要求を確認し、承認または拒否することができるようになりました。 お客様が要求を承認するまで、Microsoft サポート エンジニアにはアクセス権は付与されません。
 
 ## <a name="standardized-and-compliant-deployments"></a>標準化されたデプロイおよび準拠しているデプロイ
 
 [Azure Blueprint](/azure/governance/blueprints/overview) によってクラウド アーキテクトや中央の情報技術部門は、組織の標準、パターン、要件を実装および順守した反復可能な一連の Azure リソースを定義できます。  
-これにより、DevOps チームは新しい環境を迅速に構築して立ち上げると共に、自分達が組織のコンプライアンスを維持するインフラストラクチャを使用して新しい環境を構築していることを確信することができます。 ブループリントは、さまざまなリソース テンプレートやその他のアーティファクトのデプロイを宣言によって調整する手法です。 
+これにより、DevOps チームは新しい環境を迅速に構築して立ち上げると共に、自分達が組織のコンプライアンスを維持するインフラストラクチャを使用して新しい環境を構築していることを確信することができます。
+ブループリントは、さまざまなリソース テンプレートやその他のアーティファクトのデプロイを宣言によって調整する手法です。
 
 - ロールの割り当て
 - ポリシーの割り当て
@@ -189,6 +191,6 @@ Microsoft Azure などのクラウド プラットフォームでは、従来の
 
 セキュリティおよび監査ソリューションの詳細については、次の記事をご覧ください。
 
-- [セキュリティとコンプライアンス](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [セキュリティとコンプライアンス](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure Security Center](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)

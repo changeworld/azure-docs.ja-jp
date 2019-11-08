@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044413"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469731"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM の更新プログラムとパッチの管理
 
@@ -47,8 +47,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 まず、このチュートリアル用に VM の Update Management を有効にします。
 
-1. Azure Portal の左側のメニューで **[Virtual Machines]** を選択します。 一覧から VM を選択します。
-2. VM のページで、 **[操作]** 、 **[更新の管理]** を選択します。 **[更新管理の有効化]** ウィンドウが開きます。
+1. [[Azure portal]](https://portal.azure.com) メニューで **[仮想マシン]** を選択するか、 **[ホーム]** ページから **[仮想マシン]** を検索して選択します。
+1. Update Management を有効にする VM を選択します。
+1. VM のページで、 **[操作]** 、 **[更新の管理]** を選択します。 **[更新管理の有効化]** ウィンドウが開きます。
 
 この VM で Update Management が有効になっているかどうかを確認する検証が行われます。 この検証では、Azure Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、Update Management ソリューションがワークスペースにあるかどうかの確認が行われます。
 

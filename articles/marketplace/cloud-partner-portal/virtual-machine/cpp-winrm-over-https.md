@@ -4,15 +4,16 @@ description: PowerShell を使用してリモートで管理できるように�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: fb661a2705d437d1f40ceebcad7e759c2a78540f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938221"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808424"
 ---
 # <a name="windows-remote-management-over-https"></a>HTTPS 経由での Windows リモート管理
 

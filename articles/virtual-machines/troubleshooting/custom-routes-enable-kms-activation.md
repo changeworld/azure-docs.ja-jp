@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058189"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748636"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制トンネリングを使用したライセンス認証の問題
 
@@ -50,7 +50,7 @@ Azure Global クラウドの KMS サーバーの IP アドレスは、23.102.135
 
 ### <a name="for-resource-manager-vms"></a>Resource Manager VM の場合
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 > [!NOTE] 
 > アクティブ化ではパブリック IP アドレスが使用され、Standard SKU の Load Balancer の構成による影響を受けます。 要件については、「[Azure の送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)」を慎重に確認してください。

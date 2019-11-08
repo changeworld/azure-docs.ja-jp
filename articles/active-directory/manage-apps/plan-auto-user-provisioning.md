@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1caeb59cf7fc0a6baef5ba0001e734a75fccd2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757838"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473335"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -55,7 +55,7 @@ Azure AD は、アプリケーション ギャラリー メニューに用意さ
 
 この記事では、次の用語を使用しています。
 
-* CRUD 操作 - ユーザー アカウントに対して実行されるアクション:作成、読み取り、更新、削除。
+* CRUD 操作 - ユーザー アカウントに対して実行されるアクション: 作成、読み取り、更新、削除。
 
 * シングル サインオン (SSO) - ユーザーが一度のサインオンですべての SSO 対応アプリケーションにアクセスできるようにする機能。 ユーザー プロビジョニングのコンテキストにおいて、SSO は、自動ユーザー プロビジョニングを使用するすべてのシステムにアクセスするための単一アカウントをユーザーが持つことの結果です。
 
@@ -63,14 +63,14 @@ Azure AD は、アプリケーション ギャラリー メニューに用意さ
 
 * ターゲット システム - Azure AD のプロビジョニング先である、ユーザーのリポジトリ。 ターゲット システムは、通常、ServiceNow、Zscaler、Slack などの SaaS アプリケーションです。 ターゲット システムは、AD などのオンプレミス システムにすることもできます。
 
-* [System for Cross-domain Identity Management (SCIM)](http://www.simplecloud.info/) -  ユーザー プロビジョニングの自動化を可能にするオープン スタンダード。 SCIM は、Microsoft などの ID プロバイダーと、ユーザー ID 情報を必要とする Salesforce やその他の SaaS アプリのようなサービス プロバイダーとの間で、ユーザー ID データをやりとりします。
+* [System for Cross-domain Identity Management (SCIM)](https://aka.ms/scimoverview) -  ユーザー プロビジョニングの自動化を可能にするオープン スタンダード。 SCIM は、Microsoft などの ID プロバイダーと、ユーザー ID 情報を必要とする Salesforce やその他の SaaS アプリのようなサービス プロバイダーとの間で、ユーザー ID データをやりとりします。
 
 ### <a name="training-resources"></a>トレーニング リソース
 
 | リソース| リンクと説明 |
 | - | - |
 | オンデマンド ウェビナー| [Azure AD を使用したエンタープライズ アプリケーションの管理](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>‎Azure AD を利用してエンタープライズ SaaS アプリケーションへの SSO を実現する方法と、アクセスを制御するためのベスト プラクティスについて学習します。 |
-| ビデオ| [Azure Active Directory でのユーザー プロビジョニングとは](https://youtu.be/_ZjARPpI6NI) <br> [Azure Active Directory でユーザー プロビジョニングをデプロイする方法](https://youtu.be/pKzyts6kfrw) <br> [Salesforce と Azure AD の統合:ユーザー プロビジョニングを自動化する方法](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| ビデオ| [Azure Active Directory でのユーザー プロビジョニングとは](https://youtu.be/_ZjARPpI6NI) <br> [Azure Active Directory でユーザー プロビジョニングをデプロイする方法](https://youtu.be/pKzyts6kfrw) <br> [Salesforce と Azure AD の統合: ユーザー プロビジョニングを自動化する方法](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | オンライン コース| SkillUp オンライン:[ID の管理](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Azure AD を多くの SaaS アプリケーションと統合し、それらのアプリケーションへのユーザー アクセスをセキュリティで保護する方法について学習します。 |
 | 書籍| [Modern Authentication with Azure Active Directory for Web Applications (Developer Reference) 1st Edition](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> ‎これは、これらの新しい環境向けに Active Directory 認証ソリューションを構築するための、信頼性の高い詳細なガイドです。 |
 | チュートリアル| [SaaS アプリと Azure AD を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)を参照します。 |
@@ -121,7 +121,7 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 1. Azure AD Connect がデータを Azure AD に同期します
 1. メールとユーザー名の属性をクラウド HR アプリケーションに書き戻すことができます。
 
-ソリューションのアーキテクチャとデプロイの詳細については、「[チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)」を参照してください。
+ソリューションのアーキテクチャとデプロイの詳細については、「[チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)」を参照してください。
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
@@ -281,6 +281,8 @@ Azure AD ユーザー プロビジョニング サービスは、[Microsoft Grap
 * 高いエラー率によりプロビジョニング プロセスが検疫に移行し、そのまま、自動的に無効になる 4 週間を超えて検疫にとどまっている。
 
 これらのイベントと、プロビジョニング サービスによって実行されるその他のすべてのアクティビティを確認するには、Azure AD の[プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)を参照してください。
+
+プロビジョニング サイクルの所要時間を把握し、プロビジョニング ジョブの進行状況を監視するために、[ユーザー プロビジョニングの状態を確認する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)ことができます。
 
 ### <a name="gain-insights-from-reports"></a>レポートから分析情報を得る
 

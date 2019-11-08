@@ -1,26 +1,21 @@
 ---
-title: Azure Functions で初めての PowerShell 関数を作成する
+title: Azure で初めての PowerShell 関数を作成する
 description: Visual Studio Code を使用して Azure で初めての PowerShell 関数を作成する方法について説明します。
-services: functions
-keywords: ''
 author: joeyaiello
-manager: jeconnoc
+manager: gwallace
 ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.devlang: powershell
-ms.openlocfilehash: c9de4cec417625bb8451457652dacb61550c31b0
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 1d6d641e141862b12fed40b800589aad70af2789
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248330"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469414"
 ---
-# <a name="create-your-first-powershell-function-in-azure-preview"></a>Azure で初めての PowerShell 関数を作成する (プレビュー)
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
+# <a name="create-your-first-powershell-function-in-azure"></a>Azure で初めての PowerShell 関数を作成する
 
 このクイック スタート記事では、Visual Studio Code を使用して初めての[サーバーレス](https://azure.com/serverless) PowerShell 関数を作成する方法について説明します。
 
@@ -66,7 +61,7 @@ Visual Studio Code の Azure Functions プロジェクト テンプレートで�
     > [!NOTE]
     > この記事は、ワークスペースの外部で実行するように設計されています。 ここでは、ワークスペースに含まれるプロジェクト フォルダーは選択しないでください。
 
-1. 関数アプリ プロジェクトの言語として **[Powershell (プレビュー)]** を選択し、 **[Azure Functions v2]** を選択します。
+1. 関数アプリ プロジェクトの言語として **[Powershell]** を選択し、 **[Azure Functions v2]** を選択します。
 
 1. 初めての関数のテンプレートとして **[HTTP Trigger]\(HTTP トリガー\)** を選択し、関数名として `HTTPTrigger` を使用します。次に、承認レベルとして **[Function]\(関数\)** を選択します。
 
@@ -104,9 +99,9 @@ Azure Functions プロジェクトをローカルで実行してデバッグす�
 
 > [!NOTE]
 > 関数を Azure に公開する前に、`Wait-Debugger` への呼び出しを必ず削除してください。 
-
-> [!NOTE]
-> Azure で Function App を作成すると、Function App 名のみを求められます。 他のすべての値を求めるようにするには、azureFunctions.advancedCreation を true に設定します。
+>
+> Azure で関数アプリを作成すると、関数アプリ名の入力のみが求められます。 他の値は自動的に定義されます。
+> 他のすべての値の入力が求められるようにするには、`azureFunctions.advancedCreation` を `true` に設定します。
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 

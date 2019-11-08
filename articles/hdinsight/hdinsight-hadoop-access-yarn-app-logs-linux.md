@@ -1,5 +1,5 @@
 ---
-title: Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする - Azure
+title: Apache Hadoop YARN アプリケーション ログにアクセスする - Azure HDInsight
 description: コマンド ラインと Web ブラウザーの両方を使用して、Linux ベースの HDInsight (Apache Hadoop) クラスターで YARN アプリケーション ログにアクセスする方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091521"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494882"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする
 

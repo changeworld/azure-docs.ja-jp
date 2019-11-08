@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: e45346ce8bd23ea8431faf8a123d57ecdee71606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9a2e8b37f746eb86b2e0fe6a7304cd888a293e1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937890"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823030"
 ---
 # <a name="requirements-by-listing-type"></a>登録リストの要件  
 技術要件とマーケティング コンテンツ要件は、ネットショップ、オファーの種類、登録リストの種類によって異なります。 次の仕様を再確認して、要件を満たしているか確認してください。  

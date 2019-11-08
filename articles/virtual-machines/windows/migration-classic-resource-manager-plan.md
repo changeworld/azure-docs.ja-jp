@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: aa36051f65936f25e4f2cc3bf03619b0f66ce5a6
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 840d7b9534124a4fcc93962e8329dc6ce2bdf1a4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165313"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749348"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -131,7 +131,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
     最新バージョンの Azure PowerShell で次のコマンドを使用すると、現在の Azure Resource Manager のクォータを確認できます。
     
-    [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+     
 
     **コンピューティング** *(コア、可用性セット)*
 

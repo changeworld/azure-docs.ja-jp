@@ -1,20 +1,20 @@
 ---
 title: 'ニューラル ネットワーク回帰: モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service のニューラル ネットワーク回帰モジュールとカスタマイズ可能なニューラル ネットワーク アルゴリズムを使用して回帰モデルを作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning のニューラル ネットワーク回帰モジュールとカスタマイズ可能なニューラル ネットワーク アルゴリズムを使用して回帰モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d5cc0f06e9fb95894df30af1322d47337f51e314
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692737"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465997"
 ---
 # <a name="neural-network-regression-module"></a>ニューラル ネットワーク回帰モジュール
 
@@ -24,7 +24,7 @@ ms.locfileid: "72692737"
   
 ## <a name="module-overview"></a>モジュールの概要  
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 カスタマイズ可能なニューラル ネットワーク アルゴリズムを使用して回帰モデルを作成するには、このモジュールを使用します。
   
@@ -51,8 +51,8 @@ ms.locfileid: "72692737"
     この方法は、既にニューラル ネットワークについてある程度の知識がある方に最適です。 Net# 言語を使用してネットワーク アーキテクチャを定義します。  
 
 ##  <a name="bkmk_DefaultArchitecture"></a> 既定のアーキテクチャを使用してニューラル ネットワーク モデルを作成する
-  
-1.  インターフェイスで**ニューラル ネットワーク回帰**モジュールをパイプラインに追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[初期化]** の **[回帰]** カテゴリにあります。 
+
+1.  デザイナーで**ニューラル ネットワーク回帰**モジュールをパイプラインに追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[初期化]** の **[回帰]** カテゴリにあります。 
   
 2. **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
@@ -98,4 +98,4 @@ ms.locfileid: "72692737"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

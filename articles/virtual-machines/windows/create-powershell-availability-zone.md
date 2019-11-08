@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8e850de9314ba2de678ebe1aa25b4ffc251bf59f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: dac283275e66ed114a9886cf3a698a38530397ad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173843"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749520"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "71173843"
 
 可用性ゾーンを使用するには、[サポートされている Azure リージョン](../../availability-zones/az-overview.md#services-support-by-region)に仮想マシンを作成します。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

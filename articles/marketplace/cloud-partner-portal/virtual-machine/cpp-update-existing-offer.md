@@ -4,15 +4,16 @@ description: Azure Marketplace で既存の VM プランを更新する方法に
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: ansud
-ms.openlocfilehash: e6099caf949d93abf8c665f61cd9b91d545dd0f4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612553"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823984"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Azure Marketplace で既存の VM プランを更新する
 

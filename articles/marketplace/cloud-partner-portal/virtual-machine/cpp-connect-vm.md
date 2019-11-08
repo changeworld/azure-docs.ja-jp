@@ -4,15 +4,16 @@ description: Azure に作成された新しい仮想マシンに接続する方�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: ca002a77fd7252466f604b995af949b54694bc8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 256952d06e8b417be9ab2bc3c6c8c6857d50e2ea
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938574"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817365"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Azure ベースの仮想マシンに接続する
 

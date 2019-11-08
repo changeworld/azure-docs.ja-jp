@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997057"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476068"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
 
@@ -24,7 +24,7 @@ ms.locfileid: "70997057"
 
 この記事では、次の環境からこのリポジトリにアクセスする方法を示します。
 
-- [Azure Machine Learning Notebook VM](#notebookvm)
+- [Azure Machine Learning コンピューティング インスタンス](#notebookvm)
 - [独自の Notebook サーバーを使用する](#byo)
 - [データ サイエンス仮想マシン](#dsvm)
 
@@ -32,7 +32,7 @@ ms.locfileid: "70997057"
 > リポジトリを複製すると、**tutorials** フォルダー内にチュートリアル ノートブック、**how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Azure Machine Learning Notebook VM 上でサンプルを入手する
+## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスでサンプルを取得する
 
 サンプルを開始する最も簡単な方法は、「[チュートリアル:環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。 完了すると、SDK とサンプル リポジトリが事前に読み込まれた専用の Notebook サーバーが用意されます。 ダウンロードやインストールは必要ありません。
 

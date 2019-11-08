@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389620"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473699"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>クイック スタート:Web API にアクセスするためのクライアント アプリケーションの構成
 
@@ -57,7 +57,8 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]** を選択します。
+1. **Azure Active Directory** を検索して選択します。 
+1. 左ウィンドウで、 **[アプリの登録]** を選択します。
 1. 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** またはメイン登録ページが表示されます。
 1. Web API にアクセスするようにアプリケーションを構成するには、以下の手順を実行します。
     * [リダイレクト URI をアプリケーションに追加する](#add-redirect-uris-to-your-application)

@@ -5,19 +5,19 @@ services: expressroute
 author: rambk
 ms.service: expressroute
 ms.topic: article
-ms.date: 8/17/2018
+ms.date: 11/1/2018
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a24e021c34fe1ad315ca7f75f9bfdb29d94b253a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367671"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494998"
 ---
 # <a name="configure-bfd-over-expressroute"></a>ExpressRoute 経由の BFD の構成
 
-ExpressRoute では、プライベート ピアリング経由の Bidirectional Forwarding Detection (BFD) をサポートしています。 ExpressRoute 経由の BFD を有効にすると、Microsoft Enterprise Edge (MSEE) デバイスと ExpressRoute 回線が終端するルーター (PE) の間のリンク障害の検出を迅速化できます。 顧客のエッジ ルーティング デバイスまたはパートナーのエッジ ルーティング デバイス経由の ExpressRoute を終端できます (マネージド レイヤー 3 接続サービスを選択した場合)。 このドキュメントでは、BFD の必要性と、ExpressRoute 経由の BFD を有効にする方法について説明します。
+ExpressRoute は、プライベート ピアリングと Microsoft ピアリングの両方で BFD (Bidirectional Forwarding Detection) をサポートしています。 ExpressRoute 経由の BFD を有効にすることにより、Microsoft Enterprise Edge (MSEE) デバイスと ExpressRoute 回線を終端するルーター (CE/PE) の間のリンク障害の検出を速めることができます。 顧客のエッジ ルーティング デバイスまたはパートナーのエッジ ルーティング デバイス経由の ExpressRoute を終端できます (マネージド レイヤー 3 接続サービスを選択した場合)。 このドキュメントでは、BFD の必要性と、ExpressRoute 経由の BFD を有効にする方法について説明します。
 
 ## <a name="need-for-bfd"></a>BFD の必要性
 
@@ -27,16 +27,16 @@ ExpressRoute 回線は、レイヤー 2 接続またはマネージド レイヤ
 
 MSEE デバイスでは、通常、BGP のキープアライブとホールド時間はそれぞれ 60 秒と 180 秒に設定されています。 したがって、リンク障害が発生してから、リンク障害が検出され、トラフィックが別の接続に切り替わるまでの時間は最大で 3 分です。
 
-BGP タイマーを制御するには、顧客のエッジ ピアリング デバイスで BGP のキープアライブとホールド時間を低く設定します。 2 つのピアリング デバイス間で BGP タイマーが一致しない場合、ピア間の BGP セッションでは、低い方のタイマー値が使用されます。 設定できる BGP キープアライブの最短時間は 3 秒で、ホールド時間は数十秒です。 ただし、プロトコルで大量のプロセスが集中的に消費されるため、BGP タイマーを強引に低く設定することはお勧めしません。
+BGP タイマーを制御するには、顧客のエッジ ピアリング デバイスで BGP のキープアライブとホールド時間を低く設定します。 2 つのピアリング デバイス間で BGP タイマーが一致しない場合、ピア間の BGP セッションでは、低い方のタイマー値が使用されます。 設定できる BGP キープアライブの最短時間は 3 秒で、ホールド時間は数十秒です。 ただし、プロトコルの処理負荷が高くなるため、BGP タイマーを積極的に設定することはお勧めできません。
 
 このシナリオでは、BFD が役立ちます。 BFD では、1 秒未満の時間間隔で低オーバーヘッドのリンク障害検出が可能です。 
 
 
 ## <a name="enabling-bfd"></a>BFD の有効化
 
-MSEE では、新しく作成されたすべての ExpressRoute プライベート ピアリング インターフェイスで、BFD が既定で構成されています。 したがって、BFD を有効にするには、お使いの PE で BFD を構成するだけです。 BFD は 2 段階のプロセスで構成します。つまり、最初にインターフェイス上で構成し、次に、それを BGP セッションにリンクします。
+MSEE では、新しく作成されたすべての ExpressRoute プライベート ピアリング インターフェイスで、BFD が既定で構成されています。 そのため、BFD を有効にするには、CE/PE (両方がプライマリおよびセカンダリ デバイスにあります) で BFD を構成するだけで済みます。 BFD の構成は、2 つの手順から成るプロセスです。インターフェイス上で BFD を構成した後、それを BGP セッションにリンクする必要があります。
 
-(Cisco IOS XE を使用した) PE 構成の例を次に示します。 
+CE/PE (Cisco IOS XE を使用) の構成の例を次に示します。 
 
     interface TenGigabitEthernet2/0/0.150
       description private peering to Azure
@@ -56,7 +56,7 @@ MSEE では、新しく作成されたすべての ExpressRoute プライベー�
       exit-address-family
 
 >[!NOTE]
->既にある既存のプライベート ピアリングで BFD を有効にするには、そのピアリングをリセットする必要があります。 「[Reset ExpressRoute peerings (ExpressRoute ピアリングのリセット)][ResetPeering]」を参照してください
+>既にある既存のプライベート ピアリングで BFD を有効にするには、そのピアリングをリセットする必要があります。 「[ExpressRoute 回線のピアリングをリセットする][ResetPeering]」を参照してください。
 >
 
 ## <a name="bfd-timer-negotiation"></a>BFD タイマー ネゴシエーション
@@ -64,7 +64,7 @@ MSEE では、新しく作成されたすべての ExpressRoute プライベー�
 BFD ピア間では、2 つのピアのうち遅い方のピアによって送信レートが決まります。 MSEE の BFD 送信/受信間隔は、300 ミリ秒に設定されています。 特定のシナリオでは、間隔に 750 ミリ秒という大きな値を設定できます。 大きな値を設定すると、これらの間隔を強制的に大きくできますが、短くすることはできません。
 
 >[!NOTE]
->geo 冗長 ExpressRoute プライベート ピアリング回線を構成した場合、またはサイト間 IPSec VPN 接続を ExpressRoute プライベート ピアリング用のバックアップとして使用する場合は、プライベート ピアリング経由の BFD を有効にすると、ExpressRoute 接続エラー後のフェールオーバーをより迅速に行うことができます。 
+>geo 冗長 ExpressRoute 回線を構成しているか、またはサイト間 IPSec VPN 接続をバックアップとして使用している場合は、BFD を有効にすると ExpressRoute 接続障害の後のフェールオーバーがより迅速になります。 
 >
 
 ## <a name="next-steps"></a>次の手順

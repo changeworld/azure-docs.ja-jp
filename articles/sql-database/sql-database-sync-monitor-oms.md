@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ログによる Azure SQL データ同期の監視 | Microsoft Docs
+title: Azure Monitor ログによる SQL データ同期の監視
 description: Azure Monitor ログを使用して Azure SQL データ同期を監視する方法について説明します
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 031482fc0b87e095fcb19046564e15642050f261
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791755"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820811"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Monitor ログによる SQL データ同期の監視 
 

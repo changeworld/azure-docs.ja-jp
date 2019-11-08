@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 09/19/2019
+ms.date: 10/14/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b42634aa86f210382adb1ae224c847a92d89109b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 587848c6718a003bf781f81d0298c73ef1549bb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103304"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474892"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Web アプリケーションで認証を有効にする
 
@@ -35,9 +35,15 @@ ms.locfileid: "71103304"
 * [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。
 * **[ASP.NET および Web の開発]** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする。
 
-## <a name="update-the-application"></a>アプリケーションの更新
+## <a name="update-the-application-registration"></a>アプリケーションの登録を更新する
 
-前提条件の一環として完了したチュートリアルで、Azure AD B2C に Web アプリケーションを追加しました。 このチュートリアルのサンプルとの通信を可能にするには、Azure AD B2C 内のそのアプリケーションにリダイレクト URI を追加する必要があります。
+前提条件の一環として完了したチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 このチュートリアルのサンプルとの通信を可能にするには、登録済みアプリケーション用のリダイレクト URI を追加し、クライアント シークレット (キー) を作成する必要があります。
+
+### <a name="add-a-redirect-uri-reply-url"></a>リダイレクト URI (応答 URL) を追加する
+
+現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーションを更新できます。 [プレビュー エクスペリエンスの詳細を参照してください](http://aka.ms/b2cappregintro)。
+
+#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
@@ -45,8 +51,26 @@ ms.locfileid: "71103304"
 1. **[アプリケーション]** を選択し、*webapp1* アプリケーションを選択します。
 1. **[応答 URL]** に「`https://localhost:44316`」を追加します。
 1. **[保存]** を選択します。
-1. プロパティ ページで、アプリケーション ID を記録しておきます。これは、Web アプリケーションを構成するときに使用します。
-1. **[キー]** 、 **[キーの生成]** 、 **[保存]** の順に選択します。 Web アプリケーションの構成時に使用するキーを書き留めておきます。
+1. プロパティ ページで、アプリケーション ID を記録しておきます。これは、後の手順で Web アプリケーションを構成するときに使用します。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録 (プレビュー)]** 、 **[所有しているアプリケーション]** タブ、 *[webapp1]* アプリケーションの順に選択します。
+1. **[認証]** 、 **[新しいエクスペリエンスを試す]** (表示されている場合) の順に選択します。
+1. **[Web]** で **[URI の追加]** リンクを選択し、「`https://localhost:44316`」と入力して、 **[保存]** を選択します。
+1. **[概要]** を選択します。
+1. **アプリケーション (クライアント) ID** を記録しておきます。これは、後の手順で Web アプリケーションを構成するときに使用します。
+
+* * *
+
+### <a name="create-a-client-secret"></a>クライアント シークレットの作成
+
+次に、登録済み Web アプリケーションに対してクライアント シークレットを作成します。 Web アプリケーションのコード サンプルでは、トークンを要求するときに、これを使って ID を証明します。
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
@@ -91,7 +115,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 これで、アプリケーションのユーザーは各自メールアドレスを使用してサインインし、Web アプリケーションを使用できるようになりました。
 
-ただし、このシリーズの次のチュートリアル ([ Azure AD B2C を使用して ASP.NET Web API を保護する方法のチュートリアル](active-directory-b2c-tutorials-web-api.md)) を終了するまで、**To Do リスト**機能は正しく動作しません。
+ただし、**To Do リスト**機能は、このシリーズの次の [Azure Active Directory B2C を使用した ASP.NET Web API の保護に関するチュートリアル](active-directory-b2c-tutorials-web-api.md)を終了するまで正しく動作しません。
 
 ## <a name="next-steps"></a>次の手順
 

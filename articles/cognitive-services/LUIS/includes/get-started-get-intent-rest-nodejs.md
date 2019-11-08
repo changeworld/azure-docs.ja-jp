@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: a6dfe21cd92c5bf5580d7b121f33f68fb4e135fa
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 5d8ed625e13d31e148ef1e54d8028fc7d13a6ede
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838541"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499660"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -21,45 +21,136 @@ ms.locfileid: "71838541"
 * [Visual Studio Code](https://code.visualstudio.com/)
 * パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
-
-> [!NOTE] 
-> 完成した Node.js ソリューションは、[**Azure-Samples** の GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node)から入手できます。
-
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
-Node.js を使用して、前の手順でブラウザー ウィンドウに表示されたものと同じ結果にアクセスできます。
+Node.js を使用して、予測エンドポイント GET [API](https://aka.ms/luis-apim-v3-prediction) にクエリを実行し、予測結果を取得します。
 
-1. 次のコード スニペットをコピーします。
+1. `predict.js` という名前のファイルに次のコード スニペットをコピーします。
 
-   [!code-nodejs[Console app code that calls a LUIS endpoint for Node.js](~/samples-luis/documentation-samples/quickstarts/analyze-text/node/call-endpoint.js)]
-
-2. 次のテキストを含んだ `.env` ファイルを作成するか、システム環境内でこれらの変数を設定します。
-
-    ```CMD
-    LUIS_APP_ID=df67dcdb-c37d-46af-88e1-8b97951ca1c2
-    LUIS_ENDPOINT_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ```javascript
+    var request = require('request');
+    var requestpromise = require('request-promise');
+    var querystring = require('querystring');
+    
+    // Analyze text
+    //
+    getPrediction = async () => {
+    
+        // YOUR-KEY - Language Understanding starter key
+        var endpointKey = "YOUR-KEY";
+    
+        // YOUR-ENDPOINT Language Understanding endpoint URL, an example is westus2.api.cognitive.microsoft.com
+        var endpoint = "YOUR-ENDPOINT";
+    
+        // Set the LUIS_APP_ID environment variable 
+        // to df67dcdb-c37d-46af-88e1-8b97951ca1c2, which is the ID
+        // of a public sample application.    
+        var appId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
+    
+        var utterance = "turn on all lights";
+    
+        // Create query string 
+        var queryParams = {
+            "show-all-intents": true,
+            "verbose":  true,
+            "query": utterance,
+            "subscription-key": endpointKey
+        }
+    
+        // append query string to endpoint URL
+        var URI = `https://${endpoint}/luis/prediction/v3.0/apps/${appId}/slots/production/predict?${querystring.stringify(queryParams)}`
+    
+        // HTTP Request
+        const response = await requestpromise(URI);
+    
+        // HTTP Response
+        console.log(response);
+    
+    }
+    
+    // Pass an utterance to the sample LUIS app
+    getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-3. `LUIS_ENDPOINT_KEY` 環境変数を実際のキーに設定します。
+1. 次の値を設定します。
 
-4. コマンド ラインから `npm install` コマンドを実行して依存関係をインストールします。
+    * `YOUR-KEY` をスターター キーに
+    * `YOUR-ENDPOINT` をエンドポイント URL に
 
-5. `npm start` でコードを実行します。 前の手順でブラウザー ウィンドウに表示されたものと同じ値が表示されます。
+1. コマンド ラインから次のコマンドを実行して依存関係をインストールします。 
 
+    ```console
+    npm install request request-promise querystring
+    ```
+
+1. 次のコマンドを使用して、コードを実行します。
+
+    ```console
+    node predict.js
+    ```
+
+ 1. JSON 形式の予測応答を確認します。   
+    
+    ```console
+    {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
+    ```
+
+    読みやすくするために書式設定された JSON 応答: 
+
+    ```JSON
+    {
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
 
 ## <a name="luis-keys"></a>LUIS キー
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイック スタートを完了したら、Visual Studio プロジェクトを閉じ、ファイル システムからプロジェクトのディレクトリを削除します。 
+このクイックスタートを完了したら、ファイル システムからファイルを削除します。 
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Node.js を使った発話の追加とトレーニング](../luis-get-started-node-add-utterance.md)
+> [発話の追加とトレーニング](../luis-get-started-node-add-utterance.md)

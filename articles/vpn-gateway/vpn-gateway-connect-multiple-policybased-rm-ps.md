@@ -6,14 +6,14 @@ documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: 9085d5ee21b1e955b7d9416a379ee730ba26ad3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c753320b8d525e0c3ac031777bee15ba2050fcc0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150087"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495672"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 
@@ -39,12 +39,12 @@ ms.locfileid: "66150087"
 ### <a name="azure-support-for-policy-based-vpn"></a>ポリシー ベース VPN の Azure のサポート
 現在、Azure では、ルート ベース VPN ゲートウェイとポリシー ベース VPN ゲートウェイの両方の VPN ゲートウェイ モードをサポートしています。 これらは、異なる内部プラットフォームに基づいて構築され、結果として異なる仕様になります。
 
-|                          | **PolicyBased VPN ゲートウェイ** | **RouteBased VPN ゲートウェイ**               |
-| ---                      | ---                         | ---                                      |
-| **Azure ゲートウェイ SKU**    | Basic                       | Basic、Standard、HighPerformance、VpnGw1、VpnGw2、VpnGw3 |
-| **IKE バージョン**          | IKEv1                       | IKEv2                                    |
-| **最大S2S 接続** | **1**                       | Basic/Standard:10<br> HighPerformance:30 |
-|                          |                             |                                          |
+|                          | **PolicyBased VPN ゲートウェイ** | **RouteBased VPN ゲートウェイ**       |**RouteBased VPN ゲートウェイ**                          |
+| ---                      | ---                         | ---                              |---                                                 |
+| **Azure ゲートウェイ SKU**    | Basic                       | Basic                            | Standard、HighPerformance、VpnGw1、VpnGw2、VpnGw3  |
+| **IKE バージョン**          | IKEv1                       | IKEv2                            | IKEv1 および IKEv2                                    |
+| **最大S2S 接続** | **1**                       | 10                               |標準: 10<br> その他の SKU:30                     |
+|                          |                             |                                  |                                                    |
 
 カスタムの IPsec/IKE ポリシーでは、Azure ルート ベース VPN ゲートウェイを構成し、オプション "**PolicyBasedTrafficSelectors**" を指定してプレフィクス ベースのトラフィック セレクターを使用し、オンプレミス ポリシー ベース VPN デバイスに接続できるようになりました。 この機能では、Azure 仮想ネットワークおよび VPN ゲートウェイから複数のオンプレミス ポリシー ベース VPN/ファイアウォール デバイスに接続し、現在の Azure ポリシー ベース VPN ゲートウェイから単一の接続制限をなくすことができます。
 

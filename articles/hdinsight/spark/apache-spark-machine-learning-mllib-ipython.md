@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: bdc645bf8de95265158c3bb7ebf71952369e4ab2
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190906"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494080"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 
@@ -176,7 +176,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
 
     出力は次のようになります。
 
-    ![SQL クエリ出力](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL クエリ出力")
+    ![SQL クエリの出力](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL クエリ出力")
 
 
 3. データの視覚効果の構築に使用するライブラリ、[Matplotlib](https://en.wikipedia.org/wiki/Matplotlib) を使用して、プロットを作成することもできます。 プロットはローカルに保存された **countResultsdf** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 これにより、コードは Jupyter サーバーでローカルに実行されます。
@@ -195,7 +195,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
 
     出力は次のようになります。
 
-    ![Spark Machine Learning アプリケーションの出力 - 5 つの異なる検査結果が含まれる円グラフ](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark Machine Learning の結果の出力")
+    ![Spark 機械学習アプリケーションの出力 - 5 つの個別の検査結果を含む円グラフ](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark 機械学習の結果の出力")
 
     食品検査の結果を予測するには、違反に基づくモデルを開発する必要があります。 ロジスティック回帰は二項分類メソッドであるため、結果データを**Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。
 
@@ -352,7 +352,7 @@ model = pipeline.fit(labeledData)
 
     次の出力が表示されます。
 
-    ![Spark Machine Learning アプリケーションの出力 - 不合格の食品検査の割合を示す円グラフ。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark Machine Learning の結果の出力")
+    ![Spark 機械学習アプリケーションの出力 - 不合格の食品検査の割合を示す円グラフ。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark 機械学習の結果の出力")
 
     このグラフでは、「positive」の結果は食品検査の不合格を指し、「negative」の結果は、食品検査の合格を指します。
 

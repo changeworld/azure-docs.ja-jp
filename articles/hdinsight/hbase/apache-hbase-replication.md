@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する - Azure HDInsight
+title: 仮想ネットワークでの HBase クラスターのレプリケーション - Azure HDInsight
 description: 負荷分散、高可用性、ダウンタイムなしの移行と更新、およびディザスター リカバリーを実現するために、ある HDInsight バージョンから別のバージョンへの HBase レプリケーションを設定する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 34b9993482d1036570805af7caba29361b231426
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077179"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468419"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory をプログラムで監視する | Microsoft Docs
+title: Azure Data Factory をプログラムで監視する
 description: さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f9e85a2660ffe1088a9897e9936b6fd0360f87d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141053"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684602"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 この記事では、さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法について説明します。 

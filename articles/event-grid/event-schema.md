@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785846"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607606"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
@@ -83,7 +83,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 すべてのイベントには、次の同じ最上位レベルのデータが含まれています。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -105,6 +105,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 * [リソース グループ (管理操作)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
 * [Azure SignalR](event-schema-azure-signalr.md)
+* [Azure Machine Learning](event-schema-machine-learning.md)
 
 カスタム トピックの場合、イベントの発行元がデータ オブジェクトを決定します。 最上位レベルのデータには、リソースによって定義された標準のイベントと同じフィールドを含める必要があります。
 

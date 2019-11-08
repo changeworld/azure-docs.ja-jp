@@ -10,20 +10,20 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a93c71a97cdb1f6296919a248cf7ef545f7b307f
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: df23c41629dfe86058f0f2fb6602e85fd5a6d494
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269233"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489287"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code の使用を開始する
 
 この記事では、**Azure Machine Learning for Visual Studio Code** 拡張機能を使用して機械学習モデルのトレーニングとデプロイを行う方法について説明します。
 
-[Azure Machine Learning service](overview-what-is-azure-ml.md) は、機械学習モデルの構築、トレーニング、デプロイを合理化します。
+[Azure Machine Learning](overview-what-is-azure-ml.md) は、機械学習モデルの構築、トレーニング、およびデプロイを合理化します。
 + トレーニングに関しては、ローカルまたはリモートでの実験の実行をサポートします。 すべての実験では、複数の実行のカスタム メトリックをログに記録し、ハイパーパラメーターを微調整できます。
-+ また、Azure Machine Learning service を使用すると、テストと運用のニーズに合わせて機械学習モデルを簡単にデプロイすることもできます。
++ さらに、Azure Machine Learning を使用すると、テストと運用のニーズに合わせて機械学習モデルを簡単にデプロイできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,7 +58,7 @@ Azure Machine Learning 拡張機能をインストールするには:
 > 拡張機能のインストーラーは、[Azure Machine Learning for Visual Studio Code 拡張機能 (プレビュー)](https://aka.ms/vscodetoolsforai) に関するページから直接ダウンロードすることもできます。
 
 ## <a name="quickstart-with-azure-machine-learning"></a>Azure Machine Learning を使用したクイックスタート
-Azure Machine Learning service を使用してトレーニング スクリプトを実行する方法は複数あります。 使い始めたばかりの場合は、まず、Azure で実行するためにトレーニング スクリプトをすばやく送信する方法を確認しましょう。
+Azure Machine Learning を使用してトレーニング スクリプトを実行する方法は複数あります。 使い始めたばかりの場合は、まず、Azure で実行するためにトレーニング スクリプトをすばやく送信する方法を確認しましょう。
 
 Azure Machine Learning の概念を既にある程度理解していて、拡張機能を使用してそれを管理および使用する方法についてより詳しく知りたい場合は、以下の「[VS Code を使用した Azure Machine Learning の詳細](./how-to-vscode-tools.md#azure-machine-learning-in-depth-with-vs-code)」を参照してください。
 
@@ -147,7 +147,7 @@ Azure Machine Learning の概念を既にある程度理解していて、拡張
 1. "*新しい*" Azure ML ワークスペースの作成を選択します。
 1. あらかじめ構成されている一連のテンプレートから選択し、実行用の Python 環境を初期化します。 テンプレートは出発点を提供するほか、次に関する設定が含まれています。
     1. **PyTorch**、**TensorFlow**、または **Scikit-learn**
-    1. ************************************************************************************
+    1. **単一**または**分散型**のコンピューティング トレーニング
     1. カスタム環境の **[全般]**
 1. テンプレートに含まれていないパッケージを追加することで、お使いのスクリプトに合うように pip パッケージと conda パッケージのリストを完成させます。
 1. 実験の実行の既定の名前と仕様を確認し、json ファイル内の **Submit Experiment** リンクをクリックします。 この json ファイルは、実験の設定を送信前に確認または変更するためだけに存在するため、保存されません。
@@ -155,9 +155,9 @@ Azure Machine Learning の概念を既にある程度理解していて、拡張
 
     [![クラウドでトレーニングする](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
 
-数秒後に、実験が Azure に送信されたことが通知されます。その時点で、その進行状況は、VS Code 通知内の **[View Experiment Run]\(実験の実行を表示する\)** リンクをクリックして Azure portal で確認することも、[Azure] タブの更新ボタンをクリックして VS Code 内で確認することもできます。
+数秒後に、実験が Azure に送信されたことが通知されます。その時点で、その進行状況を、VS Code 通知内の **[View Experiment Run]\(実験の実行を表示する\)** リンクをクリックして Azure Machine Learning Studio で確認することも、VS Code 内で [Azure] タブの更新ボタンをクリックして確認することもできます。
 
-現在、実行メトリックの表示は Azure portal でのみサポートされています。 前述の **[View Experiment Run]\(実験の実行を表示する\)** リンクを使用すると、実行に移動し、記録したメトリックが表示されます。
+現在、実行メトリックの表示は Studio でのみサポートされています。 前述の **[View Experiment Run]\(実験の実行を表示する\)** リンクを使用すると、実行に移動し、記録したメトリックが表示されます。
 [![ポータルでの実験の実行](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
 
 ## <a name="azure-machine-learning-in-depth-with-vs-code"></a>VS Code を使用した Azure Machine Learning の詳細
@@ -219,7 +219,7 @@ Azure Machine Learning for Visual Studio Code を使用すると、データを�
 
 1. 名前を入力すると、既定のパラメーターを使用してコンピューティングが作成されます。 パラメーターを変更するには、新しいコンピューティングを右クリックして、 **[Edit Compute]\(コンピューティングの編集\)** を選択します。
 
-1. 表示された json で必要な変更を行い、CodeLens の "Save and continue" をクリックします (キーボードを使用する場合は **Ctrl + Shift + P** キーを押してコマンド パレットを呼び出し、**Azure ML: Save and Continue** コマンドを実行できます)。
+1. 表示された json で必要な変更を行い、CodeLens の [保存して続行] をクリックします (キーボードを使用する場合は **Ctrl + Shift + P** キーを押してコマンド パレットを呼び出し、 **[Azure ML: 保存して続行]** コマンドを実行します)。
 
 Azure Machine Learning コンピューティング (AMLCompute) の作成および編集方法の例を次に示します。
 

@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4475f6aecb0fe80cd20138eb885b79b6e7e82208
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938691"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818685"
 ---
 # <a name="enable-lead-sharing"></a>リードの共有を有効にする
 [Azure Marketplace](https://azuremarketplace.microsoft.com) または [Microsoft AppSource](https://appsource.microsoft.com) の登録情報でリード管理を有効にしておくと、次の対象ユーザーの連絡先情報が入手しやすくなります。

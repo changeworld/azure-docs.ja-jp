@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用したマルチテナント データベースの設計に関するチュートリアル
-description: このチュートリアルでは、Azure Database for PostgreSQL Hyperscale (Citus) (プレビュー) で分散テーブルを作成、設定、クエリする方法を説明します。
+title: Azure Database for PostgreSQL - Hyperscale (Citus) を使用したマルチテナント データベースの設計に関するチュートリアル
+description: このチュートリアルでは、Azure Database for PostgreSQL Hyperscale (Citus) で分散テーブルを作成、設定、クエリする方法を説明します。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 130c3e9f5abb24ffcc4e0c4ad6b96af5fca62090
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70163984"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496546"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>チュートリアル: Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用して、マルチテナント データベースを設計する
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル: Azure Database for PostgreSQL - Hyperscale (Citus) を使用して、マルチテナント データベースを設計する
 
-このチュートリアルでは、Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用して、次の作業を実行する方法を説明します。
+このチュートリアルでは、Azure Database for PostgreSQL - Hyperscale (Citus) を使用して、次の作業を実行する方法を説明します。
 
 > [!div class="checklist"]
 > * Hyperscale (Citus) サーバー グループを作成する
@@ -35,7 +35,7 @@ ms.locfileid: "70163984"
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>psql ユーティリティを使用してスキーマを作成する
 
-psql を使用して Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) に接続すると、いくつかの基本的なタスクを完了することができます。 このチュートリアルでは、広告主が自分のキャンペーンを追跡できるようにする Web アプリを作成する方法について説明します。
+psql を使用して Azure Database for PostgreSQL - Hyperscale (Citus) に接続すると、いくつかの基本的なタスクを完了することができます。 このチュートリアルでは、広告主が自分のキャンペーンを追跡できるようにする Web アプリを作成する方法について説明します。
 
 複数の会社でこのアプリを使用できます。それでは、会社を保持するテーブルと会社のキャンペーンを保持する別のテーブルを作成しましょう。 psql コンソールで、次のコマンドを実行します。
 

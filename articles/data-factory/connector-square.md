@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Square からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Square からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Square からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 84091a91321f3d42c5c75aa11d12abf10c5545d7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: b7f83e8e7690180dbed04572f2e2699f02d5fed7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089301"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680129"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Square からデータをコピーする (プレビュー)
 
@@ -154,7 +154,7 @@ Square からデータをコピーするには、コピー アクティビティ
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

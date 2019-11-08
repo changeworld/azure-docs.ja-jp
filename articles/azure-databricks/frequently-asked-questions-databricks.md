@@ -9,23 +9,23 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 8707aa55c1126af6a7fb2812d4c7314f031209d0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597471"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601803"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
 この記事には、Azure Databricks に関してよく寄せられる質問が記載されています。 また、Databricks の使用中に発生する可能性がある一般的な問題の一覧も示します。 詳しくは、「[Azure Databricks とは](what-is-azure-databricks.md)」をご覧ください。 
 
 ## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Azure Databricks で使うキー/シークレットを Azure Key Vault を使用して格納することはできますか。
-はい。 Azure Databricks で使うキー/シークレットは、Azure Key Vault を使用して格納できます。 詳細については、「[Azure Key Vault-backed scopes (Azure Key Vault を実体とするスコープ)](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss)」を参照してください。
+はい。 Azure Databricks で使うキー/シークレットは、Azure Key Vault を使用して格納できます。 詳細については、「[Azure Key Vault-backed scopes (Azure Key Vault を実体とするスコープ)](/azure/databricks/security/secrets/secret-scopes)」を参照してください。
 
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Databricks で Azure Virtual Network を使えますか。
-はい。 Azure Databricks で Azure Virtual Network (VNET) を使用することができます。 詳細については、「[Deploying Azure Databricks in your Azure Virtual Network (Azure Virtual Network に Azure Databricks をデプロイする)](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)」を参照してください。
+はい。 Azure Databricks で Azure Virtual Network (VNET) を使用することができます。 詳細については、「[Deploying Azure Databricks in your Azure Virtual Network (Azure Virtual Network に Azure Databricks をデプロイする)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)」を参照してください。
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>ノートブックから Azure Data Lake Storage にアクセスするにはどうすればよいですか。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "72597471"
 1. Data Lake Storage 内のサービス プリンシパルに必要なアクセス許可を割り当てます。
 1. Data Lake Storage 内のファイルにアクセスするには、Notebook でサービス プリンシパルの資格情報を使用します。
 
-詳細については、[Azure Databricks での Azure Data Lake Storage の使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)に関するページを参照してください。
+詳細については、[Azure Databricks での Azure Data Lake Storage の使用](/azure/databricks/data/data-sources/azure/azure-datalake.html)に関するページを参照してください。
 
 ## <a name="fix-common-problems"></a>一般的な問題の修正
 
@@ -82,7 +82,7 @@ ms.locfileid: "72597471"
 
 #### <a name="solution"></a>解決策
 
-自分でワークスペースを作成していなくて、ユーザーとして追加された場合は、ワークスペースを作成した担当者に問い合わせてください。 そのユーザーに、Azure Databricks 管理者コンソールを使って追加してもらいます。 手順については、「[Adding and managing users (ユーザーの追加と管理)](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html)」を参照してください。 自分が作成したワークスペースでこのエラーが引き続き表示される場合は、Azure Portal で **[ワークスペースの初期化]** を再度選びます。
+自分でワークスペースを作成していなくて、ユーザーとして追加された場合は、ワークスペースを作成した担当者に問い合わせてください。 そのユーザーに、Azure Databricks 管理者コンソールを使って追加してもらいます。 手順については、「[Adding and managing users (ユーザーの追加と管理)](/azure/databricks/administration-guide/users-groups/users)」を参照してください。 自分が作成したワークスペースでこのエラーが引き続き表示される場合は、Azure Portal で **[ワークスペースの初期化]** を再度選びます。
 
 ### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>問題: クラスターのセットアップ中にクラウド プロバイダー起動エラーが発生する (PublicIPCountLimitReached)
 

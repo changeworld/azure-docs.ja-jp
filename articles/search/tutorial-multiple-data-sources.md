@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786485"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795637"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C# のチュートリアル: 複数のデータ ソースのデータを 1 つの Azure Cognitive Search インデックスに結合する
 
@@ -36,7 +36,7 @@ Azure Cognitive Search では、複数のデータ ソースから 1 つの結�
 
 - [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
 
-- サンプルのホテルのデータを格納するための [Azure Cosmos DB アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
+- サンプルのホテルのデータを格納するための [Azure Cosmos DB アカウントを作成](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)します。
 
 - サンプルの JSON BLOB データを格納するための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
 

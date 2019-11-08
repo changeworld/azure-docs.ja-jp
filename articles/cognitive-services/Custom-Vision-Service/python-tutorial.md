@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 87c504fa936d89707020f1bf3ac9a0ccd4f81946
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6a626c2e27bf26ed98dd3244c52671a4dfa4aa76
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946089"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "73519375"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>クイック スタート:Custom Vision Python SDK を使用して画像分類プロジェクトを作成する
 
@@ -25,6 +25,7 @@ ms.locfileid: "68946089"
 
 - [Python 2.7 以降または 3.5 以降](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) ツール
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
 
@@ -38,20 +39,21 @@ pip install azure-cognitiveservices-vision-customvision
 
 [!INCLUDE [python-get-images](includes/python-get-images.md)]
 
-
 ## <a name="add-the-code"></a>コードの追加
 
 目的のプロジェクト ディレクトリに、*sample.py* という新しいファイルを作成します。
 
 ### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 プロジェクトを作成するときに他のオプションを指定するには、[create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) メソッドを参照してください ([分類子の構築](getting-started-build-a-classifier.md)に関する Web ポータル ガイドで説明されています)。   
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 また、Custom Vision Web サイトの [設定] ページからエンドポイント URL を取得します。
+
+プロジェクトを作成するときに他のオプションを指定するには、[create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) メソッドを参照してください ([分類子の構築](getting-started-build-a-classifier.md)に関する Web ポータル ガイドで説明されています)。  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
 
-ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
+ENDPOINT = "<your API endpoint>"
 
 # Replace with a valid key
 training_key = "<your training key>"

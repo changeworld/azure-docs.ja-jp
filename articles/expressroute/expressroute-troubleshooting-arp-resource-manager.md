@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e35020923405ec072ac9c42093752ec5a9290824
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151582"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748149"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "66151582"
 > 
 > 
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>アドレス解決プロトコル (ARP) と ARP テーブル
 アドレス解決プロトコル (ARP) は、 [RFC 826](https://tools.ietf.org/html/rfc826)で定義されたレイヤー 2 のプロトコルです。 Ethernet アドレス (MAC アドレス) と IP アドレスとを対応付けるために、ARP が使用されます。

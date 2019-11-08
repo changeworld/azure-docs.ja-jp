@@ -4,15 +4,16 @@ description: Marketplace 内の推奨ソリューションの概要と選出基�
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 225ed171599e3f822fc869c97a1c7d91f9107b1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c481d7781ff35623655b472dbcfae6d50ada40a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779807"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827825"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketplace と AppSource の推奨ソリューション
 

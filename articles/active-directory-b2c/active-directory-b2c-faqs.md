@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 577dc6d4344cd6d7a38c4d538218c9dd89e883aa
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302549"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643635"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -132,13 +132,18 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 
 Azure AD B2C テナントを削除するには、次の手順に従います。
 
+現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+
+#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+
+1. *サブスクリプション管理者*として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. ご使用の Azure AD B2C テナントの**ユーザー フロー (ポリシー)** をすべて削除します。
 1. ご使用の Azure AD B2C テナントに登録したすべての**アプリケーション**を削除します。
-1. 次に、サブスクリプション管理者として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
-1. 削除する Azure AD B2C テナントに切り替えます。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. **[管理]** にある **[ユーザー]** を選択します。
-1. 各ユーザーを順に選択します (ただし、現在サインインに使用しているサブスクリプション管理者ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
+1. 各ユーザーを順に選択します (ただし、現在サインインに使用している*サブスクリプション管理者*ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
 1. **[管理]** の下で **[アプリの登録]** (または **[アプリの登録 (レガシー)]** ) を選択します。
 1. **[アプリケーションをすべて表示]** を選択します。
 1. **b2c-extensions-app** という名前のアプリケーションを選択し、 **[削除]** を選択した後、確認を求められたら **[はい]** を選択します。
@@ -149,6 +154,28 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. **[概要]** ページで **[ディレクトリの削除]** を選択します。 画面の指示に従って、プロセスを完了します。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+
+1. *サブスクリプション管理者*として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. Azure AD B2C テナント内のすべての**ユーザー フロー (ポリシー)** を削除します。
+1. **[アプリの登録 (プレビュー)]** を選択してから、 **[すべてのアプリケーション]** タブを選択します。
+1. 登録したすべてのアプリケーションを削除します。
+1. **b2c-extensions-app** を削除します。
+1. **[管理]** にある **[ユーザー]** を選択します。
+1. 各ユーザーを順に選択します (ただし、現在サインインに使用している*サブスクリプション管理者*ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
+1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
+1. **[管理]** の下で **[ユーザー設定]** を選択します。
+1. 表示される場合は、 **[LinkedIn アカウント接続]** の下で **[いいえ]** を選択した後、 **[保存]** を選択します。
+1. **[管理]** の下で、 **[プロパティ]** を選択します。
+1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。
+1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。
+1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
+1. **[概要]** ページで **[ディレクトリの削除]** を選択します。 画面の指示に従って、プロセスを完了します。
+
+* * *
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Enterprise Mobility Suite の一部として Azure AD B2C を取得できますか。
 

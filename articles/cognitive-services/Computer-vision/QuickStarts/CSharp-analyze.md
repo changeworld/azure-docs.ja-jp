@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6eec066cffd4fa9f9acc1dcc901e994671e25cbe
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8e984c76544d2c9a56a2ec93de50593c746bb18e
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177344"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647936"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用してローカル画像を分析する
 
@@ -59,7 +59,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the Analyze method endpoint
-        const string uriBase = endpoint + "vision/v2.1/analyze";
+        static string uriBase = endpoint + "vision/v2.1/analyze";
 
         static void Main()
         {

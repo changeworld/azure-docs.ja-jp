@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad0c510244c78fa3bdba41690c2284d0650c4b55
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: c82cad30fcc2aa80eea52ab13f60fc0c4da33cd1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019329"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471331"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -218,29 +218,31 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>バックエンド アプリの認証と承認を有効にする
 
-[Azure portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]**  > **myAuthResourceGroup** >  **_\<back-end-app-name>_** の順にクリックして、バックエンド アプリの管理ページを開きます。
+1. [[Azure portal]](https://portal.azure.com) メニューで **[リソース グループ]** を選択するか、または任意のページから *[リソース グループ]* を検索して選択します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
+1. **[リソース グループ]** でリソース グループを検索して選択します。 **[概要]** でバックエンド アプリの管理ページを選択します。
 
-バックエンド アプリの左側のメニューで **[認証/承認]** をクリックし、 **[オン]** をクリックして App Service 認証を有効にします。
+   ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
-**[要求が認証されない場合に実行するアクション]** で、 **[Azure Active Directory でのログイン]** を選択します。
+1. バックエンド アプリの左側のメニューで **[認証/承認]** を選択し、 **[オン]** を選択して App Service 認証を有効にします。
 
-**[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。 
+1. **[要求が認証されない場合に実行するアクション]** で、 **[Azure Active Directory でのログイン]** を選択します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/configure-auth-back-end.png)
+1. **[認証プロバイダー]** で **[Azure Active Directory]** を選択します。 
 
-**[簡易]** をクリックし、既定の設定のままで新しい AD アプリを作成して、 **[OK]** をクリックします。
+   ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/configure-auth-back-end.png)
 
-**[認証/承認]** ページで、 **[保存]** をクリックします。 
+1. **[簡易]** を選択し、既定の設定のままで新しい AD アプリを作成して、 **[OK]** を選択します。
 
-`Successfully saved the Auth Settings for <back-end-app-name> App` というメッセージの通知が表示されたら、ページを更新します。
+1. **[認証/承認]** ページで、 **[保存]** を選択します。
 
-**[Azure Active Directory]** を再度クリックし、 **[Azure AD アプリ]** をクリックします。
+   `Successfully saved the Auth Settings for <back-end-app-name> App` というメッセージの通知が表示されたら、ページを更新します。
 
-Azure AD アプリケーションの**クライアント ID** をメモ帳にコピーします。 この値は、後で必要になります。
+1. **[Azure Active Directory]** を再度選択し、 **[Azure AD アプリ]** を選択します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
+1. Azure AD アプリケーションの**クライアント ID** をメモ帳にコピーします。 この値は、後で必要になります。
+
+   ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>フロントエンド アプリの認証と承認を有効にする
 
@@ -259,15 +261,17 @@ Azure AD アプリケーションの**クライアント ID** をメモ帳にコ
 
 両方のアプリに対する認証と承認を有効にしたので、それぞれのアプリは AD アプリケーションによってサポートされています。 この手順では、ユーザーの代わりにバックエンドにアクセスするアクセス許可をフロントエンド アプリに付与します (技術的には、ユーザーの代わりにバックエンドの "_AD アプリケーション_" にアクセスするためのアクセス許可をフロントエンドの "_AD アプリケーション_" に付与します)。
 
-ポータルの左側のメニューから、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[所有しているアプリケーション]**  >  **\<front-end-app-name>**  >  **[API のアクセス許可]** の順に選択します。
+1. [[Azure portal]](https://portal.azure.com) メニューで **[Azure Active Directory]** を選択するか、任意のページから *[Azure Active Directory]* を検索して選択します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
+1. **[アプリの登録]**  >  **[所有しているアプリケーション]** を選択します。 フロントエンド アプリ名を選択し、 **[API のアクセス許可]** を選択します。
 
-**[アクセス許可の追加]** を選択し、 **[自分の API]**  >  **\<back-end-app-name>** を選択します。
+   ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-バックエンド アプリの **[API アクセス許可の要求]** ページで、 **[委任されたアクセス許可]** と **[user_impersonation]** を選択し、次に **[アクセス許可の追加]** を選択します。
+1. **[アクセス許可の追加]** を選択し、 **[自分の API]**  >  **\<back-end-app-name>** を選択します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
+1. バックエンド アプリの **[API アクセス許可の要求]** ページで、 **[委任されたアクセス許可]** と **[user_impersonation]** を選択し、次に **[アクセス許可の追加]** を選択します。
+
+   ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>使用可能なアクセス トークンを返すように App Service を構成する
 

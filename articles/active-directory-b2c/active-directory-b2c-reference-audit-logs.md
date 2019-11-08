@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: bf87b1709c355faf6f06ff2d23b2c819f88750cd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802106"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475190"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -89,8 +89,7 @@ Azure portal は、Azure AD B2C テナントの監査ログ イベントへの�
 
 Azure AD Reporting API へのスクリプトベースまたはアプリケーションベースのアクセスを許可するには、次の API アクセス許可を持つ、Azure AD B2C テナントに登録された Azure Active Directory アプリケーションが必要です。
 
-* Microsoft Graph
-  * アプリケーション: すべての監査ログ データの読み取り
+* Microsoft Graph > アプリケーションのアクセス許可 > AuditLog.Read.All
 
 B2C テナント内の既存の Azure Active Directory アプリケーションの登録でこれらのアクセス許可を有効にすることも、監査ログの自動化専用に新しく作成することもできます。
 
@@ -102,6 +101,8 @@ B2C テナント内の既存の Azure Active Directory アプリケーション�
 
 ### <a name="assign-api-access-permissions"></a>API アクセス許可を割り当てる
 
+#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+
 1. **[登録済みのアプリ]** 概要ページで、 **[設定]** を選択します。
 1. **[API アクセス]** の下の、 **[必要なアクセス許可]** を選択します。
 1. **[追加]** を選択し、 **[API を選択します]** を選択します。
@@ -109,6 +110,22 @@ B2C テナント内の既存の Azure Active Directory アプリケーション�
 1. **[アプリケーションのアクセス許可]** で、 **[すべての監査ログ データの読み取り]** を選択します。
 1. **[選択]** ボタンを選択し、 **[完了]** を選択します。
 1. **[アクセス許可の付与]** を選択し、 **[はい]** を選択します。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+
+1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
+1. **[構成されたアクセス許可]** の下で **[アクセス許可の追加]** を選択します。
+1. **[Microsoft API]** タブを選択します。
+1. **[Microsoft Graph]** を選択します。
+1. **[アプリケーションのアクセス許可]** を選択します。
+1. **[AuditLog]** を展開し、 **[AuditLog.Read.All]** チェック ボックスをオンにします。
+1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
+1. **[<テナント名> に管理者の同意を与えます]** を選択します。
+1. 現在サインインしているアカウントに "*グローバル管理者*" ロールが割り当てられている場合はそれを選択し、そうでない場合は "*グローバル管理者*" ロールが割り当てられている Azure AD B2C テナントのアカウントでサインインします。
+1. **[Accept]\(承認\)** を選択します。
+1. **[最新の情報に更新]** を選択し、*AuditLog.Read.All* アクセス許可の **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
+
+* * *
 
 ### <a name="create-client-secret"></a>クライアント シークレットを作成する
 
@@ -128,15 +145,15 @@ https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByServi
 
 次の PowerShell スクリプトは、Azure AD Reporting API に対してクエリを実行する方法の例を示しています。 API に対してクエリを実行すると、ログに記録されたイベントが標準出力に出力され、JSON 出力がファイルに書き込まれます。
 
-このスクリプトは、[Azure Cloud Shell](../cloud-shell/overview.md) で試すことができます。 必ず、アプリケーション ID、キー、Azure AD B2C テナントの名前で更新してください。
+このスクリプトは、[Azure Cloud Shell](../cloud-shell/overview.md) で試すことができます。 必ず、自分のアプリケーション ID、クライアント シークレット、Azure AD B2C テナントの名前で更新してください。
 
 ```powershell
 # This script requires the registration of a Web Application in Azure Active Directory:
 # https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a GUID (registered by Global Admin)
-$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client secret/key
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
 $tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI

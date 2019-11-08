@@ -1,6 +1,6 @@
 ---
-title: Azure Notebooks で Azure Machine Learning Services を使用する
-description: Azure Notebooks で使用できる Azure Machine Learning Services 用のサンプル ノートブックの概要。
+title: Azure Notebooks 内で Azure Machine Learning を使用する
+description: Azure Notebooks で使用できる Azure Machine Learning 用のサンプル ノートブックの概要。
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: f591758fa6e51c420a090aa62d5160320fe15fe8
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 6eac5d77404c85d5481ded7e58b0cd9fab0de083
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973029"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496634"
 ---
-# <a name="use-azure-machine-learning-service-in-a-notebook"></a>ノートブックで Azure Machine Learning service を使用する
+# <a name="use-azure-machine-learning-in-a-notebook"></a>ノートブック内で Azure Machine Learning を使用する
 
-Azure Notebooks は、[Azure Machine Learning service](/azure/machine-learning/service/) と連動するために必要な環境で事前構築されています。 サンプル プロジェクトを自分の Notebooks アカウントに複製し、さまざまな機械学習シナリオを試すことが簡単にできます。
+Azure Notebooks は、[Azure Machine Learning](/azure/machine-learning/service/) と連動するために必要な環境で事前構築されています。 サンプル プロジェクトを自分の Notebooks アカウントに複製し、さまざまな機械学習シナリオを試すことが簡単にできます。
 
 ## <a name="clone-the-sample-into-your-account"></a>サンプルを自分のアカウントに複製する
 
 1. [Azure Notebooks](https://notebooks.azure.com/) にサインインします。
 1. **[マイ プロジェクト]** を選択し、プロジェクト ダッシュボードに移動します。
 1. **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** (上向き矢印) ボタンを選択し、 **[Upload GitHub Repository]\(GitHub リポジトリのアップロード\)** ポップアップを開きます。
-1. このポップアップで、 **[GitHub リポジトリ]** に「`Azure/MachineLearningNotebooks`」と入力し、 **[プロジェクト名]** でプロジェクトの名前を指定し ("Azure Machine Learning service" など)、 **[プロジェクト ID]** で識別子を指定し、必要であれば **[公開]** を選択解除して、 **[インポート]** を選択します。
+1. このポップアップで、 **[GitHub リポジトリ]** に「`Azure/MachineLearningNotebooks`」と入力し、 **[プロジェクト名]** でプロジェクトの名前を指定し ("Azure Machine Learning" など)、 **[プロジェクト ID]** で識別子を指定し、必要であれば **[公開]** を選択解除して、 **[インポート]** を選択します。
 
     ![Azure Machine Learning Notebook サンプルを自分の Notebooks アカウントにインポートする](media/azureml-import-project.png)
 
@@ -44,11 +44,11 @@ Azure Notebooks は、[Azure Machine Learning service](/azure/machine-learning/s
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning Services ドキュメントにはその他の各種リソースが含まれています。このリソースによって、ノートブック内で Machine Learning Service を段階的に進めることができます。
+Azure Machine Learning ドキュメントにはその他の各種リソースが含まれています。このリソースによって、ノートブック内で Machine Learning を段階的に進めることができます。
 
-- [クイック スタート: Python を使用して Azure Machine Learning の利用を開始する](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [チュートリアル 1: Azure Machine Learning サービスでイメージ分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
+- [クイック スタート:Python を使用して Azure Machine Learning の利用を開始する](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
+- [チュートリアル 1: Azure Machine Learning でイメージ分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)」を参照してください
 - [チュートリアル #2: Azure Container Instances (ACI) に画像分類モデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [チュートリアル: Azure Machine Learning サービスにおいて、自動機械学習で分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [チュートリアル:Azure Machine Learning において、自動機械学習で分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
 [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 用のドキュメントも参照してください。

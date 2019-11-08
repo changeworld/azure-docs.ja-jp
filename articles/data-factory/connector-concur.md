@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Concur からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Concur のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 89c497286b8fcb7650bac2ed9c4eff6a2a500c1d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 403373324d32024c5559358563ee4025b3a3e1db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092151"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681086"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 

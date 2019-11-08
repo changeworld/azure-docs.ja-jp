@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f96c25dbb85ed92141636487f10d861a8c5e5f28
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821677"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468425"
 ---
 # <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
 
@@ -24,7 +24,7 @@ Azure Event Hubs が特定の既知のサイトからのみアクセスできる
 
 ## <a name="when-to-use"></a>いつ使用するか
 
-指定した IP アドレス範囲のみからトラフィックを受信し、それ以外のすべてを拒否するように、Event Hubs 名前空間を設定する必要がある場合は、*ファイアウォール ルール*を利用して Event Hub エンドポイントを他の IP アドレスからブロックすることができます。 たとえば、[Azure Express Route][express-route] で Event Hubs を使用する場合、*ファイアウォール ルール*を作成して、オンプレミス インフラストラクチャ IP アドレスからのトラフィックを制限できます。
+指定した IP アドレス範囲のみからトラフィックを受信し、それ以外のすべてを拒否するように、Event Hubs 名前空間を設定する必要がある場合は、*ファイアウォール ルール*を利用して Event Hub エンドポイントを他の IP アドレスからブロックすることができます。 たとえば、[Azure Express Route][express-route] で Event Hubs を使用する場合は、オンプレミス インフラストラクチャ IP アドレスからのトラフィックを制限するための*ファイアウォール規則*を作成できます。
 
 ## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
 
@@ -51,7 +51,6 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > - Azure Event Grid との統合
 > - Azure IoT Hub ルート
 > - Azure IoT Device Explorer
-> - Azure データ エクスプローラー
 >
 > 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
 > - Azure Web Apps

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した Sybase からのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して Sybase からデータを移動する
 description: Azure Data Factory を使用して Sybase データベースからデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 43bd21673c6619541f68e282d708bdbf54cd6f48
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e6d2acbb848a03d950e830458963ecc4f26dff98
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839871"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682405"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -67,7 +67,7 @@ SAP Sybase SQL Anywhere (ASA) バージョン 16 以降がサポートされま�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesSybase** |はい |
-| サーバー |Sybase サーバーの名前です。 |はい |
+| server |Sybase サーバーの名前です。 |はい |
 | database |Sybase データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ |
 | authenticationType |Sybase データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |

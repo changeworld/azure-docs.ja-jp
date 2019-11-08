@@ -1,5 +1,5 @@
 ---
-title: コピー アクティビティを使用したデータの移動 | Microsoft Docs
+title: コピー アクティビティを使用したデータの移動
 description: Data Factory パイプラインでのデータの移動 (クラウド ストア間、およびオンプレミスのストアとクラウド ストアの間でのデータ移行) について説明します。 コピー アクティビティの使用。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 0f7771c55bfdc837921fb731b29e88c970b5d283
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839316"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682646"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

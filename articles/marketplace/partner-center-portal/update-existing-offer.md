@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f2cb1907557c2440a5a94c0f4799eac95a8cf507
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191767"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827854"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Commercial Marketplace で既存のオファーを更新する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の統合ランタイム | Microsoft Docs
+title: Azure Data Factory の統合ランタイム
 description: Azure Data Factory の統合ランタイムについて。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: ab82055d99401b0e7bc8aedf247fdf0d779f9f07
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7475d660fd2fa64ce69e7c23e0bad518fffddd26
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875271"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681505"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。

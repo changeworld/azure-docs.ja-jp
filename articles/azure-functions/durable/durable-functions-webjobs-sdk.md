@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 930a0c6e854823189bc3bf561bd42027e56f5600
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 06f2019dbaff390e88c73d1aae7a635a34a64721
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086928"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614621"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
@@ -63,7 +63,7 @@ Visual Studio には、WebJob プロジェクト テンプレートも用意さ�
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
 Install-Package Microsoft.Extensions.Logging -version 2.0.1
-Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.4.0
+Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
 ```
 
 ログ プロバイダーも必要です。 次に示すのは、Azure Application Insights プロバイダーと `ConfigurationManager` をインストールするコマンドです。 `ConfigurationManager` では、Application Insights のインストルメンテーション キーをアプリ設定から取得できます。

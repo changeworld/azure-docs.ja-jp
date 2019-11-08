@@ -9,12 +9,12 @@ ms.date: 02/20/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 2ff22a3c0087ff7e24517f792ba9abacbae76e3a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 9d0df2d9eda861a06e2952ff1623fb4ad5160e81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846638"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748328"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "67846638"
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 

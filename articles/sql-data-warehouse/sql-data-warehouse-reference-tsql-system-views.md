@@ -1,5 +1,5 @@
 ---
-title: システム ビュー - Azure SQL Data Warehouse | Microsoft Docs
+title: システム ビュー
 description: Azure SQL Data Warehouse でサポートされるシステム ビューのドキュメントにリンクします。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: adb82d035d69003abada1685d64255eace6e9d88
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a8073084007d3174b92995c16785c3f8bc82b642
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543633"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692542"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされるシステム ビュー
 Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。

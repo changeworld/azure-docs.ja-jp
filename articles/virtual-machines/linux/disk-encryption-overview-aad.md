@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b0e3e683b2c103bc7f9b6812115e2e7a5d871034
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5f3de0f877186daa8f6add7fcd1546f91d6ce3d2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829996"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748923"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD での Azure Disk Encryption (以前のリリース)
 
@@ -26,7 +26,7 @@ ms.locfileid: "71829996"
 - [追加の VM 要件](disk-encryption-overview.md#additional-vm-requirements)
 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="networking-and-group-policy"></a>ネットワークとグループ ポリシー
 
@@ -53,7 +53,7 @@ ms.locfileid: "71829996"
 
 ## <a name="encryption-key-storage-requirements"></a>暗号化キーのストレージ要件  
 
-Azure Disk Encryption では、ディスク暗号化キーとシークレットを制御および管理するために、Azure Key Vault が必要です。 お使いのキー コンテナーと VM は、同じ Azure リージョンおよびサブスクリプションに存在している必要があります。
+Azure Disk Encryption では、ディスク暗号化キーとシークレットを制御および管理するために、Azure Key Vault が必要です。 ご利用のキー コンテナーと VM は、同じ Azure リージョンおよびサブスクリプションに存在している必要があります。
 
 詳細については、「[Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)](disk-encryption-key-vault-aad.md)」を参照してください。
  

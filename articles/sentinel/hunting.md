@@ -16,16 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372407"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489186"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Azure Sentinel での脅威の検出
-
-
+# <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel で脅威を検出する
 
 セキュリティ上の脅威を事前に探索しようとしている調査担当者である場合、Azure Sentinel の強力な検出用検索およびクエリ ツールは、組織のデータ ソース全体からセキュリティ上の脅威を検出します。 ただし、システムとセキュリティ アプライアンスから山のようなデータが生成されますが、これらを解析したり、意味のあるイベントにフィルター処理したりすることが難しい場合があります。 セキュリティ アプリで検出されなかった新しい異常をセキュリティ アナリストが事前に探すときに役立つように、Azure Sentinel には検出クエリが組み込まれており、これを通じて、ネットワーク上で既に保有しているデータ内の問題を見つけるために適切な質問を行うことができます。 
 

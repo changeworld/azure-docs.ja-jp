@@ -1,25 +1,25 @@
 ---
-title: チュートリアル:データの受け入れと受信 - Azure Data Share プレビュー
-description: チュートリアル - Azure Data Share プレビューを使用したデータの受け入れと受信
+title: チュートリアル:データの受け入れと受信 - Azure Data Share
+description: チュートリアル - Azure Data Share を使用したデータの受け入れと受信
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 235ef25b2d655c4388dee5bdcf88d179f3373697
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 9c24f54fe846459187488b0a65b2582914e25e2a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327393"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499342"
 ---
-# <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>チュートリアル:Azure Data Share プレビューを使用したデータの受け入れと受信
+# <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの受け入れと受信  
 
-このチュートリアルでは、Azure Data Share プレビューを使用してデータ共有の招待を受け入れる方法を学習します。 自分が共有しているデータを受信する方法と、自分が共有しているデータのスナップショットを常に最新に保つために通常の更新間隔を有効にする方法を学習します。 
+このチュートリアルでは、Azure Data Share を使用してデータ共有の招待を受け入れる方法を学習します。 自分が共有しているデータを受信する方法と、自分が共有しているデータのスナップショットを常に最新に保つために通常の更新間隔を有効にする方法を学習します。 
 
 > [!div class="checklist"]
-> * Azure Data Share プレビューの招待を受け入れる方法
-> * Azure Data Share プレビュー アカウントを作成する
+> * Azure Data Share の招待を受け入れる方法
+> * Azure Data Share アカウントを作成する
 > * 自分のデータの受信先を指定する
 > * スケジュールされた更新のため、自分のデータ共有のサブスクリプションを作成する
 
@@ -29,13 +29,33 @@ ms.locfileid: "71327393"
 データ共有の招待を受け入れる前に、すべての前提条件を満たしていることを確認します。 
 
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* Azure Storage アカウント:[Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)をまだお持ちでない場合は、作成できます。 
 * Data Share の招待:" **<yourdataprovider@domain.com>** からの Azure Data Share の招待" という件名の Microsoft Azure からの招待。
+
+### <a name="receive-data-into-a-storage-account"></a>ストレージ アカウントへのデータの受信: 
+
+* Azure Storage アカウント: [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)をまだお持ちでない場合は、作成できます。 
 * ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* 権限に含まれています。 この権限は、所有者ロール内に存在します。 
 * Microsoft.DataShare のリソースプロバイダーの登録。 この手順の詳細については、[Azure リソースプロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)のドキュメントを参照してください。 
 
 > [!IMPORTANT]
-> Azure Data Share を受け入れて受信するには、まず Microsoft.DataShare リソース プロバイダーを登録し、データを受け入れるストレージ アカウントの所有者になる必要があります。 「[Azure Data Share プレビューのトラブルシューティング](data-share-troubleshoot.md)」に記載されている指示に従って、データ共有リソース プロバイダーを登録し、自分自身をストレージ アカウントの所有者として追加します。 
+> Azure Data Share を受け入れて受信するには、まず Microsoft.DataShare リソース プロバイダーを登録し、データを受け入れるストレージ アカウントの所有者になる必要があります。 「[Azure Data Share のトラブルシューティング](data-share-troubleshoot.md)」に記載されている指示に従って、データ共有リソース プロバイダーを登録し、自分自身をストレージ アカウントの所有者として追加します。 
+
+### <a name="receive-data-into-a-sql-based-source"></a>SQL ベースのソースへのデータの受信:
+
+* データ共有 MSI が Azure SQL Database または Azure SQL Data Warehouse にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+    1. 自分自身をサーバーの Azure Active Directory 管理者として設定します。
+    1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
+    1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share MSI を db_owner として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
+
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```      
+*< share_acc_name >* は、Data Share アカウントの名前であることに注意してください。 Data Share アカウントをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。         
+
+* クライアント IP SQL Server のファイアウォール アクセス:この操作を行うには、以下の手順を実行します。1. *ファイアウォールと仮想ネットワーク*に移動します 1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。 
+
+これらの前提条件が完了すると、SQL Server にデータを受信する準備ができます。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -79,9 +99,12 @@ ms.locfileid: "71327393"
 
 自分のデータの定期的な更新を受信するには、スナップショットの設定が有効になっていることを確認します。 スナップショットの設定スケジュールは、ご利用のデータ プロバイダーでそれがデータ共有内に含まれている場合にのみ表示されることに注意してください。 
 
-![スナップショットの設定](./media/snapshot-settings.png "スナップショットの設定") 
+![スナップショット設定](./media/snapshot-settings.png "スナップショット設定") 
 
 *[保存]* を選択します。 
+
+> [!IMPORTANT]
+> SQL ベースのデータを受信しており、そのデータを SQL ベースのソースに受信したいと考える場合、SQL Server をデータセットの宛先として構成する方法について、[データセットのマッピングを構成する](how-to-configure-mapping.md)方法ガイドを参照してください。 
 
 ## <a name="trigger-a-snapshot"></a>スナップショットをトリガーする
 

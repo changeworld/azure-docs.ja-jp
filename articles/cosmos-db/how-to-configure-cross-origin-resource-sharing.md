@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 82c49854611e6c425b75f0830a1402c8f5a4694e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 2823ae22c8128f52ae67cf283a9a619a03abd719
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299178"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580669"
 ---
-# <a name="configure-cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS) の構成 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS) の構成
 
 クロス オリジン リソース共有 (CORS) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーでは、Web ページから別のドメインの API を呼び出すことを防ぐために、同一オリジン ポリシーと呼ばれるセキュリティ制限が実装されています。 ただし、CORS を使用すれば、オリジン ドメインから他のドメイン内の API を安全に呼び出すことができます。 Azure Cosmos DB の Core (SQL) API では、"allowedOrigins" ヘッダーを使用してクロス オリジン リソース共有 (CORS) がサポートされるようになりました。 Azure Cosmos アカウントに対して CORS のサポートを有効すると、認証済みの要求だけが指定されたルールに従って評価され、それらが許可されるかどうかが判断されます。
 
-クロス オリジン リソース共有 (CORS) の設定は、Azure portal または Azure Resource Manager テンプレートから構成できます。 Core (SQL) API を使用する Cosmos アカウントの場合、Azure Cosmos DB では、Node.js とブラウザーベースの両方の環境で動作する JavaScript ライブラリがサポートされています。 このライブラリでは、ゲートウェイ モードの使用時に CORS サポートを利用できるようになりました。 この機能を利用するために、クライアント側で必要となる構成はありません。 CORS サポートを利用すると、ブラウザー側のリソースから、[JavaScript ライブラリ](https://www.npmjs.com/package/@azure/cosmos)を通じて Azure Cosmos DB に直接アクセスしたり、[REST API](https://docs.microsoft.com/rest/api/cosmos-db/) から直接アクセスできるようにして、操作を簡素化することができます。 
+クロス オリジン リソース共有 (CORS) の設定は、Azure portal または Azure Resource Manager テンプレートから構成できます。 Core (SQL) API を使用する Cosmos アカウントの場合、Azure Cosmos DB では、Node.js とブラウザーベースの両方の環境で動作する JavaScript ライブラリがサポートされています。 このライブラリでは、ゲートウェイ モードの使用時に CORS サポートを利用できるようになりました。 この機能を利用するために、クライアント側で必要となる構成はありません。 CORS サポートを利用すると、ブラウザー側のリソースから、[JavaScript ライブラリ](https://www.npmjs.com/package/@azure/cosmos)を通じて Azure Cosmos DB に直接アクセスしたり、[REST API](https://docs.microsoft.com/rest/api/cosmos-db/) から直接アクセスできるようにして、操作を簡素化することができます。
 
 > [!NOTE]
-> CORS のサポートは、Azure Cosmos DB Core (SQL) API でのみ適用でき、サポートされています。 Cassandra、Gremlin、MongoDB には Azure Cosmos DB API を適用できません。これらのプロトコルでは、クライアントとサーバー間の通信に HTTP が使用されていません。 
+> CORS のサポートは、Azure Cosmos DB Core (SQL) API でのみ適用でき、サポートされています。 Cassandra、Gremlin、MongoDB には Azure Cosmos DB API を適用できません。これらのプロトコルでは、クライアントとサーバー間の通信に HTTP が使用されていません。
 
 ## <a name="enable-cors-support-from-azure-portal"></a>Azure portal から CORS サポートを有効にする
 
@@ -32,49 +32,32 @@ Azure portal を使用してクロス オリジン リソース共有を有効�
 
    > [!NOTE]
    > 現在、ドメイン名の一部にワイルドカードを使用することはできません。 たとえば、`https://*.mydomain.net` のような形式はまだサポートされていません。 
-   
+
    ![Azure portal を使用してクロス オリジン リソース共有を有効にする](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
- 
+
 ## <a name="enable-cors-support-from-resource-manager-template"></a>Resource Manager テンプレートから CORS サポートを有効にする
 
 Resource Manager テンプレートを使用して CORS を有効にするには、既存のテンプレートに、"allowedOrigins" プロパティを含んだ "cors" セクションを追加します。 次の JSON は、cors を有効にした新しい Azure Cosmos アカウントを作成するテンプレートの例です。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "name": "test",
-            "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "2015-04-08",
-            "location": "East US 2",
-            "properties": {
-                "databaseAccountOfferType": "Standard",
-                "consistencyPolicy": {
-                    "defaultConsistencyLevel": "Session",
-                    "maxIntervalInSeconds": 5,
-                    "maxStalenessPrefix": 100
-                },
-                "locations": [
-                    {
-                        "id": "test-eastus2",
-                        "failoverPriority": 0,
-                        "locationName": "East US 2"
-                    }
-                ],
-                "cors": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('accountName')]",
+      "apiVersion": "2019-08-01",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+        "locations": "[variables('locations')]",
+        "databaseAccountOfferType": "Standard",
+        "cors": [
                     {
                         "allowedOrigins": "*"
                     }
                 ]
-            },
-            "dependsOn": [
-            ]
         }
-    ]
+    }
 }
 ```
 
@@ -109,5 +92,3 @@ Azure Cosmos アカウントを保護するその他の方法については、�
 * [Azure Cosmos DB 用のファイアウォールの作成](how-to-configure-firewall.md)に関する記事。
 
 * [Azure Cosmos DB アカウント用の仮想ネットワークとサブネット ベースのアクセスを構成する](how-to-configure-vnet-service-endpoint.md)
-    
-

@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afc026ccb602538b0749fa294cee763efa3d27d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331766"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483232"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>クイック スタート:Windows 用データ サイエンス仮想マシンを設定する
 
@@ -34,7 +34,7 @@ DSVM インスタンスを作成するには:
 
 1. 下部にある **[作成]** ボタンを選択します。
 
-    [![](media/provision-vm/create-windows.png "Windows マシンを作成するボタン")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows.png "Button to create a Windows machine")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. [仮想マシンの作成] ブレードにリダイレクトされます。
    ![Windows 仮想マシンに対応する [基本] タブ](./media/provision-vm/review-create-windows.png)
@@ -72,7 +72,7 @@ VM にインストールされて構成されたツールを使い始めるこ�
 ## <a name="next-steps"></a>次の手順
 
 * **[スタート]** メニューを開いて DSVM 上のツールを調べます。
-* Azure Machine Learning service については、「[Azure Machine Learning サービスの概要](../service/overview-what-is-azure-ml.md)」を参照し、[チュートリアル](../index.yml)をお試しください。
+* Azure Machine Learning については、「[Azure Machine Learning とは](../service/overview-what-is-azure-ml.md)」を参照し、[チュートリアル](../index.yml)をお試しください。
 * エクスプローラーで C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts に移動し、エンタープライズ規模でのデータ分析をサポートする RevoScaleR ライブラリを R で使用するサンプルを入手します。 
 * [Data Science Virtual Machine でできる 10 のこと](https://aka.ms/dsvmtenthings)に関する記事を読みます。
 * [Team Data Science Process](../team-data-science-process/index.yml)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。

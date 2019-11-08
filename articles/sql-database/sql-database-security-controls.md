@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のセキュリティ コントロール
+title: セキュリティ コントロール
 description: Azure SQL Database を評価するためのセキュリティ コントロールのチェックリスト
 services: sql-database
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77ff55389bac53d8719d86b4ac77f281415af49f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886229"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802843"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Azure SQL Database のセキュリティ コントロール
 

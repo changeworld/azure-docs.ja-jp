@@ -4,15 +4,16 @@ description: Cloud パートナー ポータルでリードを構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: c3e483a33d986eff767b3529e30208319ad90b23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935002"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818808"
 ---
 <a name="get-customer-leads"></a>潜在顧客の獲得
 ==================

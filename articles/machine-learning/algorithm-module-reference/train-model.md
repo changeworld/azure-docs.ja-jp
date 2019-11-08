@@ -1,26 +1,26 @@
 ---
 title: 'モデルのトレーニング: モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で**モデルのトレーニング** モジュールを使用して、分類モデルまたは回帰モデルをトレーニングする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で**モデルのトレーニング** モジュールを使用して、分類または回帰モデルをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: f9717c39388c85ced889744722899b78a5df8453
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693683"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490382"
 ---
 # <a name="train-model-module"></a>モデルのトレーニング モジュール
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
-分類モデルまたは回帰モデルをトレーニングするには、このモジュールを使用します。 トレーニングは、モデルを定義してそのパラメーターを設定した後に行います。トレーニングには、タグ付けされたデータが必要です。 **モデルのトレーニング**を使用して、既存のモデルを新しいデータで再トレーニングすることもできます。 
+分類または回帰モデルをトレーニングするには、このモジュールを使用します。 トレーニングは、モデルを定義してそのパラメーターを設定した後に行います。トレーニングには、タグ付けされたデータが必要です。 **モデルのトレーニング**を使用して、既存のモデルを新しいデータで再トレーニングすることもできます。 
 
 ## <a name="how-the-training-process-works"></a>トレーニング プロセスのしくみ
 
@@ -77,4 +77,4 @@ ms.locfileid: "72693683"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802188"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498693"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 
@@ -35,26 +35,7 @@ ms.locfileid: "72802188"
 --- | ---
 Azure のアクセス許可 | Azure Migrate プロジェクトを作成するには、サブスクリプションの共同作成者または所有者のアクセス許可が必要です。
 Hyper-V VM | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価します。 1 つの Azure サブスクリプションに複数のプロジェクトを含めることができます。 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
-[地理的な場所] | Azure Migrate プロジェクトは、いくつかの地域で作成できます。 プロジェクトを作成できるのは特定の地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
-
-  **地理的な場所** | **メタデータ ストレージの場所**
-  --- | ---
-  Azure Government | 米国政府バージニア州
-  アジア太平洋 | 東アジアまたは東南アジア
-  オーストラリア | オーストラリア東部またはオーストラリア南東部
-  ブラジル | ブラジル南部
-  カナダ | カナダ中部またはカナダ東部
-  ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
-  フランス | フランス中部
-  インド | インド中部またはインド南部
-  日本 |  東日本または西日本
-  韓国 | 韓国中部または韓国南部
-  イギリス | 英国南部または英国西部
-  米国 | 米国中部または米国西部 2
-
-
- > [!NOTE]
- > Azure Government は現在、[古いバージョン](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)の Azure Migrate でのみサポートされます。
+[地理的な場所] | サポートされている地域を[確認](migrate-support-matrix.md#supported-geographies)します。
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>評価 - Hyper-V ホストの要件

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: aabcb0b0d01d821c529803927dacec448c923745
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 41edcc40bae7915e321a278592dd2f73621aae05
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998014"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482410"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での PostgreSQL 拡張機能
 
@@ -22,7 +22,7 @@ PostgreSQL では拡張機能を使用してデータベースの機能を拡張
 
 PostgreSQL 拡張機能を使用するには、その拡張機能がデータベースにインストールされている必要があります。 特定の拡張機能をインストールするには、psql ツールから  [CREATE EXTENSION](https://www.postgresql.org/docs/9.6/static/sql-createextension.html)  コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
 
-Azure Database for PostgreSQL - Hyperscale (Citus) プレビューで現在サポートされている主要な拡張機能のサブセットを以下に記載しています。 リストされているもの以外の拡張機能はサポートされていません。 Azure Database for PostgreSQL では、独自の拡張機能を作成することはできません。
+Azure Database for PostgreSQL - Hyperscale (Citus) で現在サポートされている主要な拡張機能のサブセットを以下に記載しています。 リストされているもの以外の拡張機能はサポートされていません。 Azure Database for PostgreSQL では、独自の拡張機能を作成することはできません。
 
 ## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でサポートされる拡張機能
 

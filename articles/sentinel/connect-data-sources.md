@@ -13,20 +13,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: d4605ad448916d788fd0a7089835a9ad3828697e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980415"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496394"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
-
-
-
-
 
 Azure Sentinel をオンボードするには、まずデータ ソースに接続する必要があります。 Azure Sentinel には、Microsoft Threat Protection ソリューションや Microsoft 365 ソース (Office 365、Azure AD、Azure ATP、Microsoft Cloud App Security) など、すぐに使用できるリアルタイム統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。  
 
@@ -62,7 +58,9 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 - **API による外部ソリューション**:一部のデータ ソースは、接続されるデータ ソースによって提供される API を使用して接続されます。 通常、ほとんどのセキュリティ テクノロジでは、イベント ログの取得に使用できる API のセットが提供されています。API を使用して、Azure Sentinel に接続し、特定の種類のデータを収集して、Azure Log Analytics に送信します。 API を使用して接続されるアプライアンスは次のとおりです。
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **エージェントによる外部ソリューション**:Azure Sentinel は、Syslog プロトコルを使用してリアルタイムのログ ストリーミングを実行できる他のすべてのデータ ソースに対し、エージェントを使用して接続できます。 <br>ほとんどのアプライアンスでは、Syslog プロトコルを使用して、ログ自体とログに関するデータが含まれるイベント メッセージが送信されます。 ログの形式は異なりますが、ほとんどのアプライアンスで 共通イベント形式 (CEF) 標準がサポートされています。 <br>Log Analytics エージェントに基づく Azure Sentinel エージェントでは、CEF 形式のログが、Log Analytics で取り込むことのできる形式に変換されます。 アプライアンスの種類により、エージェントは、アプライアンス上に直接、または専用の Linux サーバー上にインストールされます。 Linux 用エージェントは、UDP 経由で Syslog デーモンからイベントを受信しますが、Linux マシンで大量の Syslog イベントを収集することが予想される場合は、イベントは TCP 経由で Syslog デーモンからエージェントに送信され、そこから Log Analytics に送信されます。
+    - [Citrix Analytics (セキュリティ)](connect-citrix-analytics.md)
+
+- **エージェントによる外部ソリューション**:Azure Sentinel は、Syslog プロトコルを使用してリアルタイムのログ ストリーミングを実行できる他のすべてのデータ ソースに対し、エージェントを使用して接続できます。 <br>ほとんどのアプライアンスでは、Syslog プロトコルを使用して、ログ自体とログに関するデータが含まれるイベント メッセージが送信されます。 ログの形式は異なりますが、ほとんどのアプライアンスでは、Common Event Format (CEF) に基づくログ データの書式設定がサポートされています。 <br>Log Analytics エージェントに基づく Azure Sentinel エージェントでは、CEF 形式のログが、Log Analytics で取り込むことのできる形式に変換されます。 アプライアンスの種類により、エージェントは、アプライアンス上に直接、または専用の Linux サーバー上にインストールされます。 Linux 用エージェントは、UDP 経由で Syslog デーモンからイベントを受信しますが、Linux マシンで大量の Syslog イベントを収集することが予想される場合は、イベントは TCP 経由で Syslog デーモンからエージェントに送信され、そこから Log Analytics に送信されます。
     - ファイアウォール、プロキシ、エンドポイント:
         - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
@@ -71,6 +69,10 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Palo Alto](connect-paloalto.md)
         - [その他の CEF アプライアンス](connect-common-event-format.md)
         - [その他の Syslog アプライアンス](connect-syslog.md)
+        - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
+        - [ExtraHop Reveal(x)](connect-extrahop.md)
+        - [One Identity Safeguard](connect-one-identity.md)
+        - [Trend Micro Deep Security](connect-trend-micro.md)
     - DLP ソリューション
     - [脅威インテリジェンス プロバイダー](connect-threat-intelligence.md)
     - [DNS マシン](connect-dns.md) - DNS マシンに直接インストールされたエージェント

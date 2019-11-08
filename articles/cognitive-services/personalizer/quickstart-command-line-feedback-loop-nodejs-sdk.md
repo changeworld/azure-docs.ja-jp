@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: ee647668e8b5826706e8d9bb8a82acaf53fd3d8c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515212"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494450"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Personalizer クライアント ライブラリ
 
@@ -39,7 +39,7 @@ Node.js 用 Personalizer クライアント ライブラリの概要 以下の�
 このクイックスタートを使用するには、次のようないくつかの手順があります。
 
 * Azure portal で、Personalizer リソースを作成する
-* Azure portal の Personalizer リソースの **[設定]** ページで、モデルの更新頻度を変更する
+* Azure portal で、Personalizer リソースの **[構成]** ページで、モデルの更新頻度を変更する
 * コード エディターで、コード ファイルを作成し、コード ファイルを編集する
 * コマンド ラインまたはターミナルで、コマンド ラインから SDK をインストールする
 * コマンド ラインまたはターミナルで、コード ファイルを実行する
@@ -90,7 +90,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
-Azure portal の Personalizer リソースの **[設定]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+Azure portal で、Personalizer リソースの **[構成]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
 ![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 

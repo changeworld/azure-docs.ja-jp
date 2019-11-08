@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse の分類 | Microsoft Docs
+title: ワークロード分類
 description: Azure SQL Data Warehouse で分類を使用してクエリのコンカレンシー、重要度、コンピューティング リソースを管理するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,13 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4988d284bed46a918f85eec8d7b4a5b89fc6549e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588485"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685389"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse のワークロード分類
 

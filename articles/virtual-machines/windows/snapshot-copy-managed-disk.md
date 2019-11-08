@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 76110fa04441540875e65c8bc056fc21555c5db6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102278"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749148"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 
@@ -43,7 +43,7 @@ ms.locfileid: "70102278"
 
 次の手順では、VHD ディスクのコピー方法、スナップショット構成の作成方法、[New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用したディスクのスナップショットの取得方法を示します。 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 1. パラメーターを設定します。 
 

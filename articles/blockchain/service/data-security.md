@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608527"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579916"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain Service のセキュリティ
 
@@ -31,7 +31,7 @@ Azure Blockchain Service のリソースは、プライベート仮想ネット�
 
 ユーザー データは Azure Storage に格納されます。 ユーザー データは、セキュリティと機密保持のため、移動時および保存時に暗号化されます。 詳細については、次を参照してください。[Azure Storage のセキュリティ ガイド](../../storage/common/storage-security-guide.md)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 トランザクションは、RPC エンドポイント経由でブロックチェーン ノードに送信できます。 クライアントは、ユーザーの認証を処理し SSL 経由でデータを暗号化するリバース プロキシ サーバーを使用して、トランザクション ノードを通信します。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory でのルックアップ アクティビティ | Microsoft Docs
+title: Azure Data Factory でのルックアップ アクティビティ
 description: ルックアップ アクティビティを使用して外部ソースから値を検索する方法を説明します。 この出力は、後続のアクティビティによってさらに参照できます。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 9658987092027b38ab0cab1feb3df4be0a91e350
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 04285de6fa7ef678e36767b7336f732ed9b45329
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141660"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679703"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 
@@ -53,11 +53,11 @@ ms.locfileid: "70141660"
 
 ## <a name="type-properties"></a>型のプロパティ
 
-名前 | 説明 | Type | 必須
+名前 | 説明 | 種類 | 必須
 ---- | ----------- | ---- | --------
 dataset | ルックアップ用のデータセット参照を提供します。 対応する各コネクタの記事の 「**データセットのプロパティ**」セクションから詳細を取得します。 | キーと値のペア | はい
 source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「**コピー アクティビティのプロパティ**」セクションから詳細を取得します。 | キーと値のペア | はい
-firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | Boolean | いいえ。 既定では、 `true`です。
+firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | Boolean | No. 既定では、 `true`です。
 
 > [!NOTE]
 > 

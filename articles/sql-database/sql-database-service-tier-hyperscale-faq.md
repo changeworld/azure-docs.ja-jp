@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database ハイパースケールに関する FAQ | Microsoft Docs
+title: ハイパースケールに関する FAQ
 description: ハイパースケール サービス レベルの Azure SQL データベース (通常はハイパースケール データベースと呼ばれる) に関する顧客からの一般的な質問への回答。
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 89316811f39b4cab918b913b45ae5945686e6b15
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496190"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818223"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 

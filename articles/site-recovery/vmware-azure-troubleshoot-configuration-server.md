@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725569"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748555"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -122,7 +122,7 @@ Setting | 詳細
 
 構成サーバーは専用のサーバーである必要があります。共有サーバーとしての使用はサポートされません。 
 
-詳細については、[構成サーバーのデプロイ](vmware-azure-deploy-configuration-server.md#faq)に関するページの構成 FAQ を参照してください。 
+詳細については、[構成サーバーのデプロイ](vmware-azure-deploy-configuration-server.md#faqs)に関するページの構成 FAQ を参照してください。 
 
 ## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>構成サーバー データベースから保護項目の古いエントリを削除する 
 
@@ -185,7 +185,7 @@ Setting | 詳細
 
 ## <a name="azure-active-directory-application-creation-failure"></a>Azure Active Directory アプリケーションの作成が失敗する
 
-[Open Virtualization Application (OVA)](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template
+[Open Virtualization Application (OVA)](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template
 ) テンプレートを使用して Azure Active Directory (AAD) でアプリケーションを作成するためのアクセス許可が不十分です。
 
 この問題を解決するには、Azure portal にサインインし、次のいずれかを行います。

@@ -140,78 +140,20 @@
   items:
     - name: 保護された AU
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: IaaS Web アプリケーション
-          href: ../blueprints/au-protected-iaaswa-overview.md
-        - name: PaaS Web アプリケーション
-          href: ../blueprints/au-protected-paaswa-overview.md
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: データ分析
-          href: ../blueprints/fedramp-analytics-overview.md
-        - name: データ ウェアハウス
-          href: ../blueprints/fedramp-datawarehouse-overview.md
-        - name: IaaS Web アプリケーション
-          href: ../blueprints/fedramp-iaaswa-overview.md
-        - name: PaaS Web アプリケーション
-          href: ../blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: データ分析
-          href: ../blueprints/ffiec-analytics-overview.md
-        - name: データ ウェアハウス
-          href: ../blueprints/ffiec-dw-overview.md
-        - name: IaaS Web アプリケーション
-          href: ../blueprints/ffiec-iaaswa-overview.md
-        - name: PaaS Web アプリケーション
-          href: ../blueprints/ffiec-paaswa-overview.md
     - name: HIPAA/HITRUST
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: 正常性データと AI
-          href: ../blueprints/azure-health.md
     - name: NIST SP 800-171
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: データ分析
-          href: ../blueprints/nist171-analytics-overview.md
-        - name: データ ウェアハウス
-          href: ../blueprints/nist171-datawarehouse-overview.md
-        - name: IaaS Web アプリケーション
-          href: ../blueprints/nist171-iaaswa-overview.md
-        - name: PaaS Web アプリケーション
-          href: ../blueprints/nist171-paaswa-overview.md
     - name: PCI DSS
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: データ分析
-          href: ../blueprints/pcidss-analytics-overview.md
-        - name: データ ウェアハウス
-          href: ../blueprints/pcidss-dw-overview.md
-        - name: IaaS Web アプリケーション
-          href: ../blueprints/pcidss-iaaswa-overview.md
-        - name: PaaS Web アプリケーション
-          href: ../blueprints/pcidss-paaswa-overview.md
     - name: UK NHS
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: データ分析
-          href: ../blueprints/uknhs-analytics-overview.md
-        - name: データ ウェアハウス
-          href: ../blueprints/uknhs-datawarehouse-overview.md
-        - name: IaaS Web アプリケーション
-          href: ../blueprints/uknhs-iaaswa-overview.md
-        - name: PaaS Web アプリケーション
-          href: ../blueprints/uknhs-paaswa-overview.md
     - name: UK OFFICIAL
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: IaaS Web アプリケーション
-          href: ../blueprints/ukofficial-iaaswa-overview.md
-        - name: PaaS Web アプリケーション
-          href: ../blueprints/ukofficial-paaswa-overview.md
 - name: セキュリティ ホワイト ペーパー
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure セキュリティ サービス

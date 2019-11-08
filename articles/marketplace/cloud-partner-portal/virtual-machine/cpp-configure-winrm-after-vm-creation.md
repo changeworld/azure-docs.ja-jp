@@ -4,15 +4,16 @@ description: Azure でホストされる仮想マシンを作成した後で Win
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: 4a4248efcfda76dfd8907069e167fdfa144d0365
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938515"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817947"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>仮想マシンの作成後に WinRM を構成する
 

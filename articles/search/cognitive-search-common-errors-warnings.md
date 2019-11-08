@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787972"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466761"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search の AI 強化パイプラインに関する一般的なエラーと警告
 
@@ -117,6 +117,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 | サービスにその他の負荷 (クエリやインデックスの作成など) がかかっているため、ターゲット インデックス (再試行後も保持されます) に接続できません。 | インデックスを更新するための接続を確立できませんでした。 Search サービスの負荷が高くなっています。 | [検索サービスをスケールアップする](search-capacity-planning.md)
 | Search サービスは、サービスの更新に対して修正プログラムが適用されているか、トポロジの再構成中です。 | インデックスを更新するための接続を確立できませんでした。 Search サービスは現在ダウンしているか、Search サービスが移行中です。 | [SLA ドキュメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)による 99.9% の可用性を確保するために、少なくとも 3 つのレプリカでサービスを構成します
 | 基になるコンピューティング/ネットワーク リソースでエラーが発生しました (まれ) | インデックスを更新するための接続を確立できませんでした。 不明なエラーが発生しました。 | インデクサーを[スケジュールに従って実行](search-howto-schedule-indexers.md)し、失敗した状態から取得するように構成します。
+| ターゲット インデックスに対して行われたインデックス作成要求は、ネットワークの問題により、タイムアウト期間内に受信確認されませんでした。 | 検索インデックスへの接続を時間内に確立できませんでした。 | インデクサーを[スケジュールに従って実行](search-howto-schedule-indexers.md)し、失敗した状態から取得するように構成します。 また、このエラー状況が解決しない場合は、インデクサーの[バッチ サイズ](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters)を小さくしてみてください。
 
 ### <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>インデックスを作成するインデクサー データが無効なため、ドキュメントのインデックスを作成できませんでした
 
@@ -130,7 +131,11 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 | ソース ドキュメントで不明な型が検出されました。 | 不明な型 '_unknown_' にインデックスを設定することはできません |
 | ソース ドキュメントで、地理ポイントに互換性のない表記が使用されました。 | WKT ポイント文字列リテラルはサポートされていません。 代わりに GeoJson ポイント リテラルを使用してください |
 
-これらのすべてのケースで、インデックス スキーマが正しく作成され、[インデクサー フィールド マッピング](search-indexer-field-mappings.md)が適切に設定されていることを確認するには、[サポートされているデータ型 (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)に関する記事、および [Azure Search のインデクサーデータ型マップ](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)に関する記事を参照してください。 エラー メッセージには、不一致の原因を突き止めるのに役立つ詳細が含まれます。
+これらのすべてのケースで、インデックス スキーマが正しく作成され、[インデクサー フィールド マッピング](search-indexer-field-mappings.md)が適切に設定されていることを確認するには、[サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)および[インデクサーのデータ型マップ](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)に関する記事を参照してください。 エラー メッセージには、不一致の原因を突き止めるのに役立つ詳細が含まれます。
+
+### <a name="could-not-process-document-within-indexer-max-run-time"></a>インデクサーの最大実行時間内にドキュメントを処理できませんでした
+
+このエラーは、許可された実行時間内にインデクサーがデータ ソースからの 1 つのドキュメントの処理を完了できない場合に発生します。 スキルセットが使用されていると、[最大実行時間](search-limits-quotas-capacity.md#indexer-limits)は短くなります。 このエラーが発生したとき、maxFailedItems が 0 以外の値に設定されていると、インデクサーは将来の実行時にドキュメントをバイパスして、インデックス作成を継続できるようにします。 ドキュメントをスキップする余裕がない場合、またはこのエラーが常に表示される場合は、1 回のインデクサー実行内で部分的にでも処理を進められるよう、ドキュメントを小さなドキュメントに分割することを検討してください。
 
 ##  <a name="warnings"></a>警告
 警告でインデックス作成は停止されませんが、予期しない結果になる可能性がある条件を示しています。 アクションを実行するかどうかは、データとシナリオによって変わります。
@@ -220,3 +225,8 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 この動作をオーバーライドして増分の進行状況を有効にし、`assumeOrderByHighWatermarkColumn` 構成プロパティを使用してこの警告を抑制することができます。
 
 [Cosmos DB 増分進行状況とカスタム クエリに関する詳細情報。](https://go.microsoft.com/fwlink/?linkid=2099593)
+
+### <a name="could-not-map-output-field-x-to-search-index"></a>出力フィールド "X" を検索インデックスにマップできませんでした
+存在しないデータや null のデータを参照する出力フィールド マッピングがあると、ドキュメントごとに警告が発生し、結果は空のインデックス フィールドになります。 この問題を回避するには、出力フィールド マッピングのソース パスに誤りがないことを再確認するか、[条件付きスキル](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)を使用して既定値を設定します。
+
+インデクサーはスキル セットでスキルを実行できましたが、Web API 要求からの応答には、実行中に警告が発生したことが示されています。 警告を確認して、データがどのように影響を受けているか、およびアクションが必要かどうかを理解します。

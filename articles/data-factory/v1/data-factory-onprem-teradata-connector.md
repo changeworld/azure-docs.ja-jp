@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した Teradata からのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して Teradata からデータを移動する
 description: Teradata データベースからデータを移動できる Data Factory サービスの Teradata コネクタについて学習する
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8e7fcff6fa4dcea1af15efa2cb4ed3a743c9c402
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 645dcde949c8f5a6b48a5c02892d4cb2c6c5be0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836128"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666092"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -65,7 +65,7 @@ Data Management Gateway で Teradata データベースに接続するには、[
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesTeradata** |はい |
-| サーバー |Teradata のサーバーの名前です。 |はい |
+| server |Teradata のサーバーの名前です。 |はい |
 | authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |

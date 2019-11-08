@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 60d5b8197e142306a51922ce0e042ed2463457d6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5991d3d2197822b239b946de66f020dd258f835a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301988"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584379"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -72,7 +72,7 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 | publisher | Microsoft.Azure.KeyVault.Edp | 文字列 |
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | int |
+| pollingIntervalInS | 3600 | string |
 | certificateStoreName | MY | string |
 | linkOnRenewal | false | ブール値 |
 | certificateStoreLocation  | LocalMachine | string |

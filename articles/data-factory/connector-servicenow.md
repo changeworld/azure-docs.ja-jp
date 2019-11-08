@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して ServiceNow からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して ServiceNow からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ServiceNow からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: a76baf65b2dc7d0cdb444b79e697930188417748
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 933b12f852fcbcc20e50f3c89d597bbe6b84bd8e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089487"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680212"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Data Factory を使用して ServiceNow からデータをコピーする
 
@@ -172,7 +172,7 @@ ServiceNow のテーブル インデックスは、クエリのパフォーマ�
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache (プレビュー) のデータの取り込み - msrsync
+title: Azure HPC Cache のデータ取り込み - msrsync
 description: msrsync を使用して Azure HPC Cache の Blob Storage ターゲットにデータを移動する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6eac6c367be42021a4654f85c8f4ec980c9f6925
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3e5937a036763fab57f9e37494ace33e8452b1f2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255285"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582269"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC Cache (プレビュー) のデータの取り込み - msrsync の方法
+# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache のデータ取り込み - msrsync を使用した方法
 
 この記事では、Azure HPC Cache で使用する Azure Blob Storage コンテナーに対し、``msrsync`` ユーティリティを使用してデータをコピーする手順を詳しく説明します。
 

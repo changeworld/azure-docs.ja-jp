@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648314"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474361"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)
 
@@ -46,7 +46,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>パスワードなしの電話によるサインインの認証方法を有効にする
 
 1. [Azure ポータル](https://portal.azure.com)
-1. **[Azure Active Directory]**  >  **[認証方法]**  >  **[認証方法ポリシー (プレビュー)]** の順に移動します
+1. **[Azure AD のセキュリティ]**  >  **[認証方法]**  >  **[認証方法ポリシー (プレビュー)]** の順に移動します
 1. **[Passwordless phone sign-in]\(パスワードなしの電話によるサインイン\)** で、次のオプションを選択します。
    1. **有効にする** - [はい] または [いいえ]
    1. **ターゲット** - [すべてのユーザー] または [ユーザーの選択]

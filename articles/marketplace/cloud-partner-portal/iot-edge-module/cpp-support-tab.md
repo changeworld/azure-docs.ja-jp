@@ -4,15 +4,16 @@ description: IoT Edge モジュールのサポート オプションです。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: fba5ac7669f7e2b1cfd3320e813891b5f99551d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe8ff895990471107cfaa229f7b4ced28b477afa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943168"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813520"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge モジュールの [サポート] タブ
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122173"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494332"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>チュートリアル:ODBC と PowerShell による Apache Hive のクエリの実行
 
@@ -36,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
 
-[Microsoft Hive ODBC ドライバー](https://go.microsoft.com/fwlink/?LinkID=286698)をダウンロードしてインストールします。
+[Microsoft Hive ODBC ドライバー](https://www.microsoft.com/download/details.aspx?id=40886)をダウンロードしてインストールします。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC データ ソースを作成する
 
@@ -44,7 +44,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Windows で、 **[スタート]**  >  **[Windows 管理ツール]**  >  **[ODBC データ ソース (32 ビット)/(64 ビット)]** の順に移動します。  **[ODBC データ ソース アドミニストレーター]** ウィンドウが開きます。
 
-    ![OBDC データ ソース アドミニストレーター](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC データ ソース アドミニストレーターを使用して DSN を構成")
+    ![ODBC データ ソース アドミニストレーター](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC データ ソース アドミニストレーターを使用して DSN を構成する")
 
 1. **[ユーザー DSN]** タブで、 **[追加]** を選択して **[データ ソースの新規作成]** ウィンドウを開きます。
 
@@ -70,7 +70,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
    |  既定の文字列の列の長さ、バイナリ列の長さ、10 進数の列の桁数 |データ型の長さおよび精度は、データが返される方法に影響する可能性があります。 精度が失われたり、切り捨てられたりするために間違った情報が返されます。 |
 
-    ![DSN の詳細構成オプション](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "DSN の詳細構成オプション")
+    ![DSN 詳細構成オプション](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "DSN 詳細構成オプション")
 
 1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に "**成功**" と表示されます。  
 

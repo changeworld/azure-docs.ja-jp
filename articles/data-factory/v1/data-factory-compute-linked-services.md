@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory でサポートされるコンピューティング環境 | Microsoft Docs
+title: Azure Data Factory でサポートされるコンピューティング環境
 description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使うことができるコンピューティング環境について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 12d12e96616d94360e5d193cf2b778a9ae389062
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140243"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667763"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 > [!NOTE]
@@ -332,7 +332,7 @@ Machine Learning のリンクされたサービスを作成して、Machine Lear
 ### <a name="properties"></a>properties
 | プロパティ   | 説明                              | 必須 |
 | ---------- | ---------------------------------------- | -------- |
-| Type       | type プロパティを **AzureML** に設定します。 | はい      |
+| 種類       | type プロパティを **AzureML** に設定します。 | はい      |
 | mlEndpoint | バッチ スコアリング URL です。                   | はい      |
 | apiKey     | 公開されたワークスペース モデルの API です。     | はい      |
 

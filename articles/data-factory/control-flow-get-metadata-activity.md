@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory のメタデータの取得アクティビティ | Microsoft Docs
+title: Azure Data Factory のメタデータの取得アクティビティ
 description: Data Factory パイプライン内でメタデータの取得アクティビティを使用する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 081d7219407decac5dd36a06f289436aa0da627b
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: e891f6675920e7bb90d2a6d007676cdd65f19917
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061533"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679901"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ
 

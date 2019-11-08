@@ -4,15 +4,16 @@ description: PC 記事にリンクされている、非推奨の CPP 記事。�
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Dynamics 365 for Customer Engagement
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: v-chjen
-ms.openlocfilehash: c1f38b046b9bd9bc9e7972656caf51d0ad1d8acc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: cf2961f5def6933b46cdca099a176d952fb940b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033926"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824709"
 ---
 # <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>Dynamics 365 for Customer Engagement プランを発行する
 

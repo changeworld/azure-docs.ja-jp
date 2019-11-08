@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Shopify からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Shopify からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Shopify からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 57b3918aba6ec43561e891e39bc1d767be57046d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 00d1550e53dccc04240a622d3aaa8634537e6802
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089331"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680190"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Shopify からデータをコピーする (プレビュー)
 
@@ -149,7 +149,7 @@ Shopify からデータをコピーするには、コピー アクティビテ�
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

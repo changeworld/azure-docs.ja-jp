@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 62ec5d4e85a6e72982b49872af59e7b579c4fd77
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249386"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496260"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
@@ -26,6 +26,7 @@ ms.locfileid: "72249386"
 
 | 機能 | 詳細 |
 | ---| --- |
+| 新しい Fsv2 シリーズおよび M シリーズ ハードウェア世代| 詳細については、「[Hardware generations](sql-database-service-tiers-vcore.md#hardware-generations)」(ハードウェアの世代) を参照してください。|
 | [Azure プライベート リンク](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Private Link を使用すると、ネットワーク アーキテクチャが簡素化されると共に、データが Azure ネットワーク上に保存されてインターネットへの公開が行われないことから、Azure 内でのエンドポイント間の接続がセキュリティ保護されます。 また、Private Link を利用すると、ご自身のサービスを Azure 上に作成してレンダリングすることもできます。 |
 | 単一データベースとエラスティック プールでの高速データベース復旧 | 詳しくは、「[高速データベース復旧](sql-database-accelerated-database-recovery.md)」をご覧ください。|
 |個別の概算数|詳しくは、[個別の概算数](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)に関する記事をご覧ください。|
@@ -37,7 +38,6 @@ ms.locfileid: "72249386"
 |メモリ許可フィードバック (行モード) (互換性レベル 150)|詳しくは、「[行モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)」をご覧ください。|
 | Azure portal のクエリ エディター |詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](sql-database-connect-query-portal.md)」をご覧ください。|
 | 単一データベースとエラスティック プールでの R サービス/機械学習 |詳しくは、「[Machine Learning Services in Azure SQL Database (Azure SQL Database での Machine Learning Services)](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)」をご覧ください。|
-| サーバーレス コンピューティング レベル | 詳細については、「[SQL Database serverless (preview) (SQL Database サーバーレス (プレビュー))](sql-database-serverless.md)」を参照してください。|
 |SQL Analytics|詳細については、[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) に関するページをご覧ください。|
 |テーブル変数の遅延コンパイル (互換性レベル 150)|詳しくは、「[テーブル変数の遅延コンパイル](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)」をご覧ください。|
 | &nbsp; |

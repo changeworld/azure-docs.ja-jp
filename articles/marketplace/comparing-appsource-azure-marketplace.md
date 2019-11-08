@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b44d3b7a50de04900d47708ca76ca36092b5ad2e
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1e1ce36fa29000b5d8dd82a31278f390144384e2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066790"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825990"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>AppSource と Azure Marketplace の比較
 [Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップは、固有の顧客要件に対応します。 ネットショップを使用してロール単位で顧客をターゲティングします。 顧客に基づいて、適切なソリューションまたはサービスを提供できます。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ac627907e3f595ef59edc606f34fd27353e4c577
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eca19b3774ad285cb143ffc2b6c53360bec85fa4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60305921"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492361"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
@@ -65,7 +65,7 @@ HDInsight クラスターを使用して予測分析ソリューションを構�
 
    * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
    * 作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にする必要があります。 ここで指定するリモート アクセス資格情報を覚えておいてください (作成時にクラスターに指定したものとは異なります)。以下の手順を実行するために必要です。
-3. [Azure Machine Learning Studio ワークスペースの作成](../studio/create-workspace.md):この Azure Machine Learning ワークスペースは、HDInsight クラスターでの初期データの探索とダウンサンプリング後に、機械学習モデルを構築するために使用します。
+3. [Azure Machine Learning Studio (クラシック) ワークスペースを作成する](../studio/create-workspace.md)この Azure Machine Learning ワークスペースは、HDInsight クラスターでの初期データの探索とダウンサンプリング後に、機械学習モデルを構築するために使用します。
 
 ## <a name="getdata"></a>公開されているソースからデータを取得して使用する
 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットにアクセスするには、リンクをクリックし、使用条件に同意して名前を入力します。 この画面のスナップショットを以下に示します。
@@ -459,7 +459,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 >
 
 ### <a name="step2"></a> 手順 2:Azure Machine Learning Studio で簡単な実験を作成して、クリックする/クリックしないを予測します
-Azure Machine Learning Studio の実験は、次のようになります。
+Azure Machine Learning Studio (クラシック) の実験は、次のようになります。
 
 ![Machine Learning の実験](./media/hive-criteo-walkthrough/xRpVfrY.png)
 

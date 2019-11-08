@@ -4,15 +4,16 @@ description: IoT Edge モジュールの SKU を作成します。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pabutler
-ms.openlocfilehash: bf8957c315909785112dea947f2e2e0f7b26349f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 230f3d6438d44c4e1e1721c0cb1453c85958e282
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942192"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813857"
 ---
 # <a name="iot-edge-module-skus-tab"></a>[IoT Edge モジュール SKU] タブ
 

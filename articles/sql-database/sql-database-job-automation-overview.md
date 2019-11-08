@@ -1,5 +1,5 @@
 ---
-title: Azure SQL ジョブの自動化 | Microsoft Docs
+title: ジョブの自動化
 description: ジョブの自動化を使用して、一連の Azure SQL データベース全体に Transact-SQL (T-SQL) スクリプトを実行します。
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113596"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810088"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>データベース ジョブを使用して管理タスクを自動化する
 

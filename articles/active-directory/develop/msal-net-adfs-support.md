@@ -1,5 +1,6 @@
 ---
-title: .NET 用 Microsoft Authentication Library での AD FS サポート | Azure
+title: .NET 用 Microsoft Authentication Library での AD FS サポート
+titleSuffix: Microsoft identity platform
 description: .NET 用 Microsoft Authentication Library (MSAL.NET) での Active Directory フェデレーション サービス (AD FS) サポートについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,15 +18,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb1bcc4599a891b8748b63c5e7c5c09f5acdac7
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 273a8b06b3bd3bf299b47a1cc52fd4660353cec3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532674"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473747"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET での Active Directory フェデレーション サービスのサポート
-Windows Server で Active Directory フェデレーション サービス (AD FS) を使用して、自分が開発しているアプリケーションに OpenID Connect と OAuth 2.0 ベースの認証と承認を追加できます。 その後、これらのアプリケーションで、AD FS に対して直接ユーザーを認証することができます。 詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)」をご覧ください。
+Windows Server で Active Directory フェデレーション サービス (AD FS) を使用して、自分が開発しているアプリケーションに OpenID Connect と OAuth 2.0 ベースの認証と承認を追加できます。 その後、これらのアプリケーションで、AD FS に対して直接ユーザーを認証することができます。 詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)」をご覧ください。
 
 .NET 用 Microsoft Authentication Library (MSAL.NET) では、AD FS に対する認証について 2 つのシナリオがサポートされています。
 

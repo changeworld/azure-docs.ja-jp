@@ -3,26 +3,27 @@ title: モデル トレーニング用のコンピューティング先を作成
 titleSuffix: Azure Machine Learning
 description: 機械学習モデル トレーニング用のトレーニング環境 (コンピューティング ターゲット) を構成します。 トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始します。 スケール アウトする必要がある場合は、クラウド ベースのコンピューティング先に切り替えます。
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46a212719846eddc7d21f3aeb0815dfbf4119e15
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935368"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489576"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング先を設定して使用する 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning では、さまざまなリソースまたは環境でご利用のモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-targets)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
 
-Azure Machine Learning SDK、Azure portal、ワークスペースのランディング ページ (プレビュー)、Azure CLI、または Azure Machine Learning VS Code 拡張機能を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング先がある場合、それらを Azure Machine Learning ワークスペースに接続して使用できます。
+Azure Machine Learning SDK、Azure Machine Learning Studio、Azure CLI、または Azure Machine Learning VS Code 拡張機能を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング先がある場合、それらを Azure Machine Learning ワークスペースに接続して使用できます。
  
 この記事では、モデル トレーニング用にさまざまなコンピューティング先を使用する方法について説明します。  すべてのコンピューティング先の手順が、同じワークフローに従います。
 1. まだない場合は、コンピューティング先を __作成__ します。
@@ -132,7 +133,7 @@ Azure Machine Learning コンピューティング環境は、実行をスケジ
    Azure Machine Learning コンピューティングを作成するときに、いくつかの詳細プロパティも設定できます。 これらのプロパティを使用すると、永続的なクラスターを固定サイズで、またはサブスクリプションの既存の Azure 仮想ネットワーク内に作成できます。  詳しくは、「[AmlCompute クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     )」をご覧ください。
     
-   または、[Azure portal で](#portal-create)永続的な Azure Machine Learning コンピューティング リソースを作成してアタッチすることもできます。
+   または、[Azure Machine Learning Studio](#portal-create) で、永続的な Azure Machine Learning コンピューティング リソースを作成してアタッチすることもできます。
 
 1. **構成する**:永続的なコンピューティング先の実行構成を作成します。
 
@@ -179,7 +180,7 @@ Azure Machine Learning では、独自のコンピューティング リソー�
    compute.wait_for_completion(show_output=True)
    ```
 
-   または、[Azure portal を使用して](#portal-reuse)ワークスペースに DSVM をアタッチすることもできます。
+   または、[Azure Machine Learning Studio を使用して](#portal-reuse)、DSVM をワークスペースにアタッチすることもできます。
 
 1. **構成する**:DSVM コンピューティング先用の実行構成を作成します。 Docker と conda は、DSVM でトレーニング環境を作成および構成するために使用されます。
 
@@ -220,7 +221,7 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
    hdi_compute.wait_for_completion(show_output=True)
    ```
 
-   または、[Azure portal を使用して](#portal-reuse)ワークスペースに HDInsight クラスターをアタッチすることもできます。
+   または、[Azure Machine Learning Studio を使用して](#portal-reuse)、HDInsight クラスターをワークスペースにアタッチすることもできます。
 
 1. **構成する**:HDI コンピューティング先用の実行構成を作成します。 
 
@@ -270,9 +271,9 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-in-azure-portal"></a>Azure Portal での設定
+## <a name="set-up-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で設定する
 
-Azure portal でワークスペースに関連付けられたコンピューティング先にアクセスできます。  ポータルを使用すると以下のことができます。
+Azure Machine Learning Studio で、ワークスペースに関連付けられているコンピューティング ターゲットにアクセスできます。  Studio を使用すると、次のことが可能になります。
 
 * ワークスペースにアタッチされている[コンピューティング先を表示する](#portal-view)
 * ワークスペースに[コンピューティング先を作成する](#portal-create)
@@ -291,7 +292,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ワークスペースのコンピューティング先を表示するには、次の手順を使用します。
 
-1. [Azure portal](https://portal.azure.com) に移動し、ワークスペースを開きます。 次の画像は Azure portal ですが、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) でも同じ手順にアクセスできます。
+1. [Azure Machine Learning Studio](https://ml.azure.com) に移動します。
  
 1. __[アプリケーション]__ で __[Compute]__ を選択します。
 
@@ -310,7 +311,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. __[トレーニング]__ に使用するコンピューティングの種類として **[Machine Learning コンピューティング]** を選択します。 
 
     >[!NOTE]
-    >Azure portal で作成できるマネージド コンピューティング リソースは、Azure Machine Learning コンピューティングだけです。  他のすべてのコンピューティング リソースは、作成した後でアタッチできます。
+    >Azure Machine Learning コンピューティングは、Azure Machine Learning Studio で作成できる唯一のマネージド コンピューティング リソースです。  他のすべてのコンピューティング リソースは、作成した後でアタッチできます。
 
 1. フォームに入力します。 必須のプロパティの値を指定します。特に、コンピューティングの起動に使用する **[VM ファミリ]** と **[最大ノード数]** を指定します。  
 
@@ -336,7 +337,7 @@ Azure Machine Learning ワークスペースの外部に作成されたコンピ
 1. __トレーニング__ に接続するコンピューティングの種類を選択します。
 
     > [!IMPORTANT]
-    > Azure portal からすべてのコンピューティングの種類を接続できるわけではありません。 現在トレーニング用に接続できるコンピューティングの種類は次のとおりです。
+    > Azure Machine Learning Studio から、すべてのコンピューティングの種類をアタッチできるわけではありません。 現在トレーニング用に接続できるコンピューティングの種類は次のとおりです。
     >
     > * リモート VM
     > * Azure Databricks (機械学習パイプラインで使用)
@@ -446,6 +447,8 @@ az ml folder attach
  * 選択されたフレームワークに固有の構成の詳細。
  * データ参照とデータ ストアの詳細。
  * 新しいクラスターを作成するための Machine Learning コンピューティングに固有の構成の詳細。
+
+完全な runconfig のスキーマについては、[JSON ファイル](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)の例を参照してください。
 
 ### <a name="create-an-experiment"></a>実験の作成
 

@@ -1,17 +1,17 @@
 ---
-title: Azure HPC Cache (プレビュー) クラウド コンテナーにデータを移動する
+title: Azure HPC Cache クラウド コンテナーにデータを移動する
 description: Azure HPC Cache で使用する Azure Blob Storage にデータを事前設定する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6c505e6918071b61a4152b0b421ed7cee3282206
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024503"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582241"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Azure Blob Storage にデータを移動する
 

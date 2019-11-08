@@ -9,122 +9,87 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 15ba8ad4d3bcf00024a0c7b14b004de08d37621a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 6699b1617ccd1fef9a507e71fdd73a02b0e98bea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465041"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの dimension 作成済みエンティティ
 作成済みの dimension エンティティは、LUIS アプリのカルチャに関係なく、さまざまな種類の寸法を検出します。 このエンティティは既にトレーニングされているので、寸法を含む発話の例をアプリケーション意図に追加する必要はありません。 dimension エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 
 
 ## <a name="types-of-dimension"></a>dimension のタイプ
 
-dimension は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub リポジトリから管理されます
-
+dimension は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub リポジトリから管理されます。
 
 ## <a name="resolution-for-dimension-entity"></a>dimension エンティティの解決
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+次のエンティティ オブジェクトがクエリに対して返されます。
+
+`10 1/2 miles of cable`
+
+#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+
+```json
+"entities": {
+    "dimension": [
+        {
+            "number": 10.5,
+            "units": "Mile"
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
+次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
+
+```json
+"entities": {
+    "dimension": [
+        {
+            "number": 10.5,
+            "units": "Mile"
+        }
+    ],
+    "$instance": {
+        "dimension": [
+            {
+                "type": "builtin.dimension",
+                "text": "10 1/2 miles",
+                "startIndex": 0,
+                "length": 12,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
 
 次の例では、**builtin.dimension** エンティティの解決を示します。
 
 ```json
 {
-  "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.762141049
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.762141049
-    }
-  ],
-  "entities": [
-    {
-      "entity": "10 1/2 miles",
-      "type": "builtin.dimension",
-      "startIndex": 19,
-      "endIndex": 30,
-      "resolution": {
-        "unit": "Mile",
-        "value": "10.5"
-      }
-    }
-  ]
-}
-```
-
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
-
-次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
-
-```json
-{
-    "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-    "prediction": {
-        "normalizedQuery": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.400049
-            }
-        },
-        "entities": {
-            "dimension": [
-                {
-                    "number": 10.5,
-                    "unit": "Mile"
-                }
-            ]
-        }
+    "entity": "10 1/2 miles",
+    "type": "builtin.dimension",
+    "startIndex": 0,
+    "endIndex": 11,
+    "resolution": {
+    "unit": "Mile",
+    "value": "10.5"
     }
 }
 ```
-
-次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
-
-```json
-{
-    "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-    "prediction": {
-        "normalizedQuery": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.400049
-            }
-        },
-        "entities": {
-            "dimension": [
-                {
-                    "number": 10.5,
-                    "unit": "Mile"
-                }
-            ],
-            "$instance": {
-                "dimension": [
-                    {
-                        "type": "builtin.dimension",
-                        "text": "10 1/2 miles",
-                        "startIndex": 19,
-                        "length": 12,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>次の手順

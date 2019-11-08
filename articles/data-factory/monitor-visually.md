@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を視覚的に監視する | Microsoft Docs
+title: Azure Data Factory を視覚的に監視する
 description: Azure Data Factory を視覚的に監視する方法について説明します
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029145"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684644"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
 Azure Data Factory は、クラウドベースのデータ統合サービスです。 これを使用して、データ移動とデータ変換を調整し、自動化するためのデータ主導型ワークフローをクラウド内に作成できます。 Azure Data Factory を使用して、以下を実行できます。

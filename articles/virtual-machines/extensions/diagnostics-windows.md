@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 771064774371e71c0664918790b296c156ed1c1f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 547de4862081b56bf627c3a00564ce6564f2ad09
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084790"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750090"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする
 
 Azure Diagnostics は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 診断拡張機能を使用して、Windows を実行している Azure 仮想マシン (VM) から、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルを使用している場合の診断拡張機能の有効化
 Azure Resource Manager デプロイ モデルを使用して Windows VM を作成するときに、リソース マネージャー テンプレートに拡張機能構成を追加することで、診断拡張機能を有効にすることができます。 「[Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](diagnostics-template.md)」をご覧ください。

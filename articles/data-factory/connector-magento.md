@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Magento からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Magento からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Magento のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: a1c3d36ba008e44bca748a1d366f0c78be99f090
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6e303ce4a797029f5001676d9d49457fcc408c9d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090116"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680759"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Magento からデータをコピーする (プレビュー)
 
@@ -152,7 +152,7 @@ Magento からデータをコピーするには、コピー アクティビテ�
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

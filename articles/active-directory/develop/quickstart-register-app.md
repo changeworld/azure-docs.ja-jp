@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b0adc75d2da1a8ef053edf0078746df8f36ed5e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 329e4b262731ae1b23fb94da7b937c9c1549185f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430326"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473643"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -34,7 +34,7 @@ ms.locfileid: "72430326"
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録] > [新規登録]** を選択します。
+1. **Azure Active Directory** を検索して選択します。 **[Active Directory]** ページで、 **[アプリの登録]** を選択し、 **[新しい登録]** を選択します。
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 
    - **[名前]** - アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。

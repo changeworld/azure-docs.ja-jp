@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784905"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466737"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure コグニティブ検索の強化パイプラインのカスタム Web API スキル
 
@@ -41,6 +41,7 @@ Microsoft.Skills.Custom.WebApiSkill
 | httpHeaders | キー/値ペアのコレクションです。キーはヘッダーの名前と値を表し、値はペイロードと共に Web API に送信されるヘッダー値を表します。 次のヘッダーは、このコレクションに含めることはできません: `Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
 | timeout | (省略可能) 指定した場合は、API 呼び出しを行う http クライアントのタイムアウト値を示します。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 たとえば、60 秒の場合は `PT60S` とします。 設定しなかった場合は、既定値の 30 秒が選択されます。 タイムアウトは、最大で 230 秒、最小で 1 秒に設定できます。 |
 | batchSize | (省略可能) 1 回の API 呼び出しにつき、どれだけの "データ レコード" が送信されるかを示します (後述の _JSON_ ペイロードの構造を参照してください)。 設定しなかった場合は、既定値の 1000 が選択されます。 このパラメーターを使用して、インデックス作成のスループットと API への負荷の適切なトレードオフを確保することをお勧めします |
+| degreeOfParallelism | (省略可能) 指定した場合は、指定したエンドポイントに対してインデクサーが並列で行う呼び出しの数を示します。 エンドポイントが要求の負荷が高すぎるために失敗する場合は、この値を小さくできます。エンドポイントがより多くの要求を受け入れることができるため、インデクサーのパフォーマンスを向上させたい場合は、この値を上げることができます。  設定しない場合は、既定値の 5 が使用されます。 degreeOfParallelism には、最大値として 10、最小値として 1 を設定できます。 |
 
 ## <a name="skill-inputs"></a>スキルの入力
 
@@ -56,7 +57,7 @@ Microsoft.Skills.Custom.WebApiSkill
 ```json
   {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "A custom skill that can count the number of words or characters or lines in text",
+        "description": "A custom skill that can identify positions of different phrases in the source text",
         "uri": "https://contoso.count-things.com",
         "batchSize": 4,
         "context": "/document",
@@ -70,14 +71,13 @@ Microsoft.Skills.Custom.WebApiSkill
             "source": "/document/languageCode"
           },
           {
-            "name": "countOf",
-            "source": "/document/propertyToCount"
+            "name": "phraseList",
+            "source": "/document/keyphrases"
           }
         ],
         "outputs": [
           {
-            "name": "count",
-            "targetName": "countOfThings"
+            "name": "hitPositions"
           }
         ]
       }
@@ -101,7 +101,7 @@ Microsoft.Skills.Custom.WebApiSkill
            {
              "text": "Este es un contrato en Inglés",
              "language": "es",
-             "countOf": "words"
+             "phraseList": ["Este", "Inglés"]
            }
       },
       {
@@ -110,16 +110,16 @@ Microsoft.Skills.Custom.WebApiSkill
            {
              "text": "Hello world",
              "language": "en",
-             "countOf": "characters"
+             "phraseList": ["Hi"]
            }
       },
       {
         "recordId": "2",
         "data":
            {
-             "text": "Hello world \r\n Hi World",
+             "text": "Hello world, Hi world",
              "language": "en",
-             "countOf": "lines"
+             "phraseList": ["world"]
            }
       },
       {
@@ -128,7 +128,7 @@ Microsoft.Skills.Custom.WebApiSkill
            {
              "text": "Test",
              "language": "es",
-             "countOf": null
+             "phraseList": []
            }
       }
     ]
@@ -157,7 +157,7 @@ Microsoft.Skills.Custom.WebApiSkill
             },
             "errors": [
               {
-                "message" : "Cannot understand what needs to be counted"
+                "message" : "'phraseList' should not be null or empty"
               }
             ],
             "warnings": null
@@ -165,7 +165,7 @@ Microsoft.Skills.Custom.WebApiSkill
         {
             "recordId": "2",
             "data": {
-                "count": 2
+                "hitPositions": [6, 16]
             },
             "errors": null,
             "warnings": null
@@ -173,7 +173,7 @@ Microsoft.Skills.Custom.WebApiSkill
         {
             "recordId": "0",
             "data": {
-                "count": 6
+                "hitPositions": [0, 23]
             },
             "errors": null,
             "warnings": null
@@ -181,10 +181,12 @@ Microsoft.Skills.Custom.WebApiSkill
         {
             "recordId": "1",
             "data": {
-                "count": 11
+                "hitPositions": []
             },
             "errors": null,
-            "warnings": null
+            "warnings": {
+                "message": "No occurrences of 'Hi' were found in the input text"
+            }
         },
     ]
 }
@@ -201,7 +203,6 @@ Web API が利用できないか、HTTP エラーが返された場合は、HTTP
 
 ## <a name="see-also"></a>関連項目
 
-+ [Power Skills: カスタム スキルのリポジトリ](https://aka.ms/powerskills)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [AI 強化パイプラインにカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
 + 例:AI 強化のカスタム スキルを作成する(cognitive-search-create-custom-skill-example.md)

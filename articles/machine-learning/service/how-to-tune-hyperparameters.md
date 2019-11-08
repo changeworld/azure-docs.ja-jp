@@ -9,16 +9,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a7b0276ca41e1b9342b3602a67dea0517c60f66a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999388"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489344"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning でモデルのハイパーパラメーターを調整する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning を使用してモデルのハイパーパラメーターを効率的に調整します。  ハイパーパラメーターの調整には、次の手順が含まれます。
 
@@ -95,6 +96,12 @@ Azure Machine Learning では、ハイパーパラメーター探索を効率的
 ### <a name="sampling-the-hyperparameter-space"></a>ハイパーパラメーター空間のサンプリング
 
 ユーザーは、ハイパーパラメーター空間定義に対して使用するパラメーター サンプリング方法も指定できます。 Azure Machine Learning では、ランダム サンプリング、グリッド サンプリング、およびベイジアン サンプリングがサポートされています。
+
+#### <a name="picking-a-sampling-method"></a>サンプリング方法の選択
+
+* グリッド サンプリングは、ハイパーパラメーター空間を不連続値の選択肢として定義できる場合や、定義された検索領域内のすべての値を徹底的に検索するのに十分な予算がある場合に使用できます。 さらに、パフォーマンスが低い実行の自動化された早期終了を使用して、リソースの無駄を減らすことができます。
+* ランダム サンプリングを使用すると、ハイパーパラメーター空間に不連続ハイパーパラメーターと連続ハイパーパラメーターの両方を含めることができます。 実際、ほとんどの場合、適切な結果が得られ、パフォーマンスが低い実行の自動化された早期終了を使用することもできます。 一部のユーザーは、ランダム サンプリングを使用して最初の検索を実行した後、検索スペースを繰り返し調整して、結果を改善します。
+* ベイジアン サンプリングでは、ハイパーパラメーター値を選択するときに以前のサンプルの知識が活用され、報告された主要メトリックの効果的な改善が試行されます。 ベイジアン サンプリングは、ハイパーパラメーター空間を探索するための十分な予算がある場合に推奨されます。ベイジアン サンプリングで最良の結果を得るために、調整対象であるハイパーパラメーターの数の 20 倍以上の最大実行数を使用することをお勧めします。 現在、ベイジアン サンプリングでは、早期終了ポリシーはサポートされていません。
 
 #### <a name="random-sampling"></a>ランダム サンプリング
 
@@ -248,8 +255,10 @@ policy=None
 
 ポリシーを指定しないと、ハイパーパラメーター調整サービスでは、すべてのトレーニング実行が完了まで実行されます。
 
->[!NOTE] 
->先のジョブまで終了せずに節約する保守的なポリシーが望ましい場合は、`evaluation_interval` 1 および `delay_evaluation` 5 を指定して中央値の停止ポリシーを使用できます。 これらは保守的な設定であり、(評価データに基づいて) 主要メトリックに関する損失なしで約 25% から 35% の節約を実現できます。
+### <a name="picking-an-early-termination-policy"></a>早期終了ポリシーを選択する
+
+* 先のジョブまで終了せずに節約する保守的なポリシーが望ましい場合は、`evaluation_interval` 1 および `delay_evaluation` 5 を指定して中央値の停止ポリシーを使用できます。 これらは保守的な設定であり、(評価データに基づいて) 主要メトリックに関する損失なしで約 25% から 35% の節約を実現できます。
+* 早期終了を上回る積極的な節約方法を探している場合は、バンディット ポリシーをより厳格な (小さい) 許容される Slack で使用するか、切り捨て選択ポリシーをより大きな切り捨て率で使用することができます。
 
 ## <a name="allocate-resources"></a>リソースを割り当てる
 
@@ -305,6 +314,46 @@ hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
 `experiment_name` はハイパーパラメーター調整実験に割り当てる名前、`workspace` は実験を作成するワークスペースです (実験について詳しくは、「[Azure Machine Learning のしくみ](concept-azure-machine-learning-architecture.md)」をご覧ください)。
+
+## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>ハイパーパラメーター調整実験をウォーム スタートする (省略可能)
+
+多くの場合、モデルに最適なハイパーパラメーター値の検出は、以前のハイパーパラメーター調整の実行から学習する複数回の調整の実行を必要とする反復的なプロセスになる可能性があります。 これらの以前の実行から得た知識を再利用することでハイパーパラメーター調整プロセスが高速化され、それによってモデルのチューニング コストが削減され、結果モデルの主要メトリックが改善される可能性があります。 ベイジアン サンプリングを使用してハイパーパラメーター調整実験をウォーム スタートすると、前回の実行での試行が新しいサンプルをインテリジェントに選択するための重要な知識として使用され、主要メトリックが改善されます。 さらに、ランダムまたはグリッド サンプリングを使用している場合は、早期終了の決定によって以前の実行のメトリックが活用され、パフォーマンスの低いトレーニング実行が特定されます。 
+
+Azure Machine Learning では、最大 5 回の以前に完了した/取り消されたハイパーパラメーター調整の親実行から得た知識を活用することで、ハイパーパラメーター調整の実行をウォーム スタートできます。 次のスニペットを使用して、ウォーム スタートを開始する親実行の一覧を指定できます。
+
+```Python
+from azureml.train.hyperdrive import HyperDriveRun
+
+warmstart_parent_1 = HyperDriveRun(experiment, "warmstart_parent_run_ID_1")
+warmstart_parent_2 = HyperDriveRun(experiment, "warmstart_parent_run_ID_2")
+warmstart_parents_to_resume_from = [warmstart_parent_1, warmstart_parent_2]
+```
+
+さらに、予算の制約やその他の理由による失敗によって、ハイパーパラメーター調整実験の個々のトレーニングの実行が取り消される場合があります。 そのような個々のトレーニングの実行を、最後のチェックポイントから再開できるようになりました (トレーニング スクリプトでチェックポイントが処理されることを前提としています)。 個々のトレーニングの実行を再開すると、同じハイパーパラメーター構成が使用され、その実行で使用されていた出力フォルダーがマウントされます。 トレーニング スクリプトでは、`resume-from` 引数を受け入れる必要があります。これには、そこからトレーニングの実行を再開するチェックポイントまたはモデル ファイルが含まれます。 次のスニペットを使用して、個々のトレーニングの実行を再開できます。
+
+```Python
+from azureml.core.run import Run
+
+resume_child_run_1 = Run(experiment, "resume_child_run_ID_1")
+resume_child_run_2 = Run(experiment, "resume_child_run_ID_2")
+child_runs_to_resume = [resume_child_run_1, resume_child_run_2]
+```
+
+ハイパーパラメーター調整実験は、前回の実験からウォーム スタートするか、オプション パラメーターである `resume_from` と `resume_child_runs` を構成内で使用して個々のトレーニングの実行を再開するように構成できます。
+
+```Python
+from azureml.train.hyperdrive import HyperDriveConfig
+
+hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
+                          hyperparameter_sampling=param_sampling, 
+                          policy=early_termination_policy,
+                          resume_from=warmstart_parents_to_resume_from, 
+                          resume_child_runs=child_runs_to_resume,
+                          primary_metric_name="accuracy", 
+                          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                          max_total_runs=100,
+                          max_concurrent_runs=4)
+```
 
 ## <a name="visualize-experiment"></a>実験を視覚化する
 
