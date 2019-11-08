@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 08e9656e3b899cbb6d4de733696175e8f31b0e66
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792006"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479740"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
 
@@ -39,9 +39,8 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 |--------------------|-------------|
 | categories    | 抽出する必要があるカテゴリの配列。  可能なカテゴリの型は、`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` です。 カテゴリが指定されていない場合、すべての型が返されます。|
 |defaultLanguageCode |  入力テキストの言語コード。 次の言語がサポートされます。`de, en, es, fr, it`|
-|minimumPrecision | 未使用。 将来利用するために予約されています。 |
-|includeTypelessEntities | true に設定されている場合、テキストに既知のエンティティが含まれるが、サポートされているカテゴリのいずれかに分類できないとき、`"entities"` 複合出力フィールドの一部として返されます。 
-これらは、よく知られているものの、現在サポートされている "カテゴリ" の一部として分類されていないエンティティです。 たとえば、"Windows 10" はよく知られているエンティティ (製品) ですが、"製品" は現在サポートされているカテゴリではありません。 既定値は `false` です。 |
+|minimumPrecision | 0 から 1 の値。 (`namedEntities` 出力の) 信頼度スコアがこの値よりも小さい場合は、エンティティは返されません。 既定値は 0 です。 |
+|includeTypelessEntities | 現在のカテゴリに当てはまらない既知のエンティティを認識するには、`true` に設定します。 認識されたエンティティは、`entities` 複合出力フィールドに返されます。 たとえば、"Windows 10" は既知のエンティティ (製品) ですが、"製品" はサポートされているカテゴリではないため、このエンティティはエンティティ出力フィールドに含まれます。 既定値は `false` です。 |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -65,7 +64,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | dateTimes  | 各文字列が DateTime (テキストに表示される) 値を表す文字列の配列。 |
 | urls | 各文字列が URL を表す文字列の配列。 |
 | emails | 各文字列が電子メールを表す文字列の配列。 |
-| namedEntities | 次のフィールドが含まれる複合型の配列。 <ul><li>category</li> <li>value (実際のエンティティ名)</li><li>offset (テキスト内で見つかった場所)</li><li>confidence (ここでは使用しません。 値 -1 に設定されます。)</li></ul> |
+| namedEntities | 次のフィールドが含まれる複合型の配列。 <ul><li>category</li> <li>value (実際のエンティティ名)</li><li>offset (テキスト内で見つかった場所)</li><li>confidence (値が高いほど、実際のエンティティに近づきます)</li></ul> |
 | entities | 複合型の配列。テキストから抽出されたエンティティに関する豊富な情報と次のフィールドが含まれます。 <ul><li> name (実際のエンティティ名。 これは "正規化" フォームです)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (エンティティの Wikipedia ページのリンク)</li><li>bingId</li><li>type (認識されたエンティティのカテゴリ)</li><li>subType (特定のカテゴリのみで利用可能。エンティティ型がより詳しく表示されます)</li><li> matches (次を含む複合コレクション)<ul><li>text (エンティティの未加工テキスト)</li><li>offset (それが見つかった場所)</li><li>length (未加工エンティティ テキストの長さ)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>定義例
@@ -76,6 +75,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
     "categories": [ "Person", "Email"],
     "defaultLanguageCode": "en",
     "includeTypelessEntities": true,
+    "minimumPrecision": 0.5,
     "inputs": [
       {
         "name": "text",
@@ -131,7 +131,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
             "category":"Person",
             "value": "John Smith",
             "offset": 35,
-            "confidence": -1
+            "confidence": 0.98
           }
         ],
         "entities":  
