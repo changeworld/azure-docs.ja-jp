@@ -1,6 +1,6 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Bing Autosuggest のドキュメント
+summary: Bing Autosuggest API を使用すると、部分的な検索クエリを Bing に送信し、ユーザーの意図や過去の検索に基づいて候補の一覧を取得できます。 この API を呼び出して、ユーザーの入力に合わせて、アプリの検索ボックスとドロップダウン リストに候補を取り込みます。
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: Bing Autosuggest のドキュメント - チュートリアル、クイックスタート、API リファレンス
@@ -12,80 +12,58 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.topic: landing-page
-  ms.date: 07/25/2019
+  ms.date: 10/28/2019
   ms.author: aahi
-abstract:
-  description: Bing Autosuggest API によって、部分検索のクエリ用語を Bing に送信すると、他のユーザーがそれに基づいて検索を実行するクエリ候補の一覧が返されます。  たとえば、ユーザーが検索語の各文字を入力すると、この API を呼び出して、検索ボックスのドロップダウン リストに候補を設定できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Autosuggest API の使用方法を確認してください。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
-            html: <p>Bing Autosuggest API について説明します</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Bing Autosuggest API とは
-          - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
-            html: <p>リアルタイムで検索候補を取得する方法について説明します</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Bing Autosuggest API からの候補の取得
-          - href: /azure/cognitive-services/bing-autosuggest/language-support
-            html: <p>この API でサポートされている言語を確認します。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: サポートされている言語
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: クエリを作成して JSON 応答を表示することで、Bing Autosuggest API の使用を開始します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            href: quickstarts/csharp
-            text: 'C&#35;'
-          - image:
-              src: media/index/logo_java.svg
-            href: quickstarts/java
-            text: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            href: quickstarts/nodejs
-            text: Node.js
-          - image:
-              src: media/index/logo_php.svg
-            href: quickstarts/php
-            text: PHP
-          - image:
-              src: media/index/logo_python.svg
-            href: quickstarts/python
-            text: Python
-          - image:
-              src: media/index/logo_ruby.svg
-            href: quickstarts/ruby
-            text: Ruby
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Bing Autosuggest API を使用してアプリケーションを開発する方法について説明します。
-      - type: paragraph
-        text: <a href="tutorials/autosuggest.md">単一ページの Web アプリ</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference">Bing Autosuggest API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Bing Autosuggest API v5</p>'
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable">Java</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.openlocfilehash: b0618f5bd0ed9deb1241dd3ff752a49686ca9073
+  ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73746141"
+landingContent:
+- title: Bing Autosuggest API について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Bing Autosuggest API とは
+      url: get-suggested-search-terms.md
+    - text: Bing Search API を比較する
+      url: ../bing-web-search/bing-api-comparison.md
+- title: 検索語句候補の取得
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# の使用
+      url: quickstarts/csharp.md
+    - text: Python の使用
+      url: quickstarts/python.md
+    - text: Java の使用
+      url: quickstarts/java.md
+    - text: Node.js の使用
+      url: quickstarts/nodejs.md
+  - linkListType: tutorial
+    links:
+    - text: シングルページ Web アプリの作成
+      url: tutorials/autosuggest.md
+  - linkListType: how-to-guide
+    links:
+    - text: 候補の用語を使用する
+      url: concepts/get-suggestions.md
+    - text: API 要求の送信
+      url: concepts/sending-requests.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Autosuggest REST API v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference
+    - text: Autosuggest REST API v5
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v5-reference
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet
+    - text: Java SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest

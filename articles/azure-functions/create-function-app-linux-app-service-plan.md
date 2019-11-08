@@ -1,21 +1,18 @@
 ---
 title: Linux 上で Azure portal から関数アプリを作成する | Microsoft Docs
 description: Azure Portal を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: glenga
-ms.custom: ''
-ms.openlocfilehash: a612505acdc37591377eebf290365b65cc3836cd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 89755e8b70a490f1c5746b23e0d36c5d90b624c1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098284"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571664"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service プランで Linux 上に関数アプリを作成する
 
@@ -50,7 +47,7 @@ Linux での関数の実行をホストするための関数アプリが必要�
     | **[発行]** | コード | **ランタイム スタック**の既定の Linux コンテナーが使用されます。 用意する必要があるのは関数アプリ プロジェクトのコードのみです。 もう 1 つの選択肢は、カスタムの [Docker イメージ](functions-create-function-linux-custom-image.md)を公開することです。 |
     | **[ホスティング プラン](functions-scale.md)** | App Service プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 App Service プランで実行する場合は、[関数アプリのスケーリング](functions-scale.md)を制御できます。  |
     | **App Service プラン/場所** | プランの作成 | **[新規作成]** を選択し、 **[App Service プラン]** の名前を指定します。 最寄りの[リージョン](https://azure.microsoft.com/regions/)または関数がアクセスする他のサービスの近くのリージョン内の **[場所]** を選択します。 目的の **[[価格レベル]](https://azure.microsoft.com/pricing/details/app-service/linux/)** を選択します。 <br/>同じ App Service プランで Linux と Windows の両方の関数アプリを実行することはできません。 |
-    | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 [Python のサポート](functions-reference-python.md)は現時点でプレビュー段階です |
+    | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 |
     | **[Storage](../storage/common/storage-quickstart-create-account.md)** |  グローバルに一意の名前 |  関数アプリで使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
     | **[Application Insights](functions-monitoring.md)** | 有効 | Application Insights は、既定で無効です。 今すぐ Application Insights 統合を有効にして、App Service プランの場所に近いホスティング場所を選択することをお勧めします。 これを後で行う場合は、「[Azure 関数を監視する](functions-monitoring.md)」を参照してください。  |
 
