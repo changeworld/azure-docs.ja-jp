@@ -1,19 +1,19 @@
 ---
-title: チュートリアル:組織の外部と共有する - Azure Data Share プレビュー
-description: チュートリアル - Azure Data Share プレビューを使用して顧客やパートナーとデータを共有する
+title: チュートリアル:組織の外部と共有する - Azure Data Share
+description: チュートリアル - Azure Data Share を使用して顧客やパートナーとデータを共有する
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327413"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499325"
 ---
-# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>チュートリアル:Azure Data Share プレビューを使用してデータを共有する
+# <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
 
 このチュートリアルでは、新しい Azure Data Share を設定して、Azure 組織の外部の顧客やパートナーとのデータの共有を開始する方法を学習します。 
 
@@ -28,9 +28,28 @@ ms.locfileid: "71327413"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション: Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* 受信者の Azure ログイン用メール アドレス (メール エイリアスは無効です)。
+
+### <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有:
+
 * Azure Storage アカウント: まだお持ちでない場合は、[Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成できます。
 * ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* 権限に含まれています。 この権限は、所有者ロール内に存在します。 
-* 受信者の Azure ログイン用メール アドレス (メール エイリアスは無効です)。
+
+### <a name="share-from-a-sql-based-source"></a>SQL ベースのソースからの共有:
+
+* 共有するテーブルとビューを含む Azure SQL Database または Azure SQL Data Warehouse。
+* データ共有からデータ ウェアハウスにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+    1. 自分自身をサーバーの Azure Active Directory 管理者として設定します。
+    1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
+    1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share MSI を db_owner として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
+    
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```                   
+*<share_acc_name>* は、Data Share アカウントの名前であることに注意してください。 Data Share アカウントをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。  
+
+* クライアント IP SQL Server のファイアウォール アクセス:この操作を行うには、以下の手順を実行します。1. *ファイアウォールと仮想ネットワーク*に移動します 1. Azure サービスへのアクセスを許可するには、**オン**トグルをクリックします。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -44,7 +63,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. *Data Share* を検索します。
 
-1. Data Share (プレビュー) を選択し、 **[作成]** を選択します。
+1. Data Share を選択し、 **[作成]** を選択します。
 
 1. Azure Data Share リソースの基本的な詳細に、次の情報を入力します。 
 
@@ -90,13 +109,13 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. [Recipients]\(受信者\) タブで、[+ Add Recipient]\(+ 受信者の追加\) を選択して、データ コンシューマーのメール アドレスを入力します。 
 
-    ![AddRecipients](./media/add-recipient.png "受信者を追加する") 
+    ![AddRecipients](./media/add-recipient.png "受信者の追加") 
 
 1. **[続行]** を選択します
 
 1. データ コンシューマーがデータの増分更新を取得できるようにする場合は、スナップショットのスケジュールを有効にします。 
 
-    ![EnableSnapshots](./media/enable-snapshots.png "スナップショットを有効にする") 
+    ![EnableSnapshots](./media/enable-snapshots.png "スナップショットを有効化する") 
 
 1. 開始時刻と繰り返しの間隔を選択します。 
 

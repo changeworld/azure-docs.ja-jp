@@ -9,20 +9,39 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813285"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498916"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
-サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。  
+サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。  
 
 ## <a name="release-notes"></a>リリース ノート 
+
+### <a name="november-4-2019---ignite"></a>2019 年 11 月 4 日 - Ignite
+
+* 開発者の生産性の向上
+    * [予測エンドポイント V3](luis-migration-api-v3.md) の一般提供。 
+    * .lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 形式のアプリをインポートおよびエクスポートする機能。 これにより、有効な CI/CD プロセスが可能になります。 
+* 言語の増加
+    * [アラビア語とヒンディー語](luis-language-support.md) (パブリック プレビュー)。
+* 事前構築済みモデル
+    * [事前構築済みドメイン](luis-reference-prebuilt-domains.md)の一般提供 (GA)
+    * 日本語の[事前構築済みエンティティ](luis-reference-prebuilt-entities.md#japanese-entity-support) - 年齢、通貨、数値、割合は、V3 ではサポートされていません。
+    * イタリア語の[事前構築済みエンティティ](luis-reference-prebuilt-entities.md#italian-entity-support) - 年齢、通貨、ディメンション、数値、割合、解像度が V2 から変更されました。
+* [preview.luis.ai ポータル](https://preview.luis.ai)でのユーザー エクスペリエンスの強化 - 複雑なモデルの構築とデバッグを可能にするため、ラベル付けエクスペリエンスが改良されました。
+* 高度な言語理解機能 - 少ない労力で[洗練された言語モデルを構築](luis-concept-entity-types.md)します。 
+* モデル レベルで機械学習機能を定義し、モデルを他のモデルへの信号として使用できるようにします。たとえば、エンティティを機能として、意図やその他のエンティティに使用します。
+* 新しい、拡張された[制限](luis-boundaries.md) - フレーズ リストおよびフレーズの合計の最大値、機能制限としての新しいモデル
+* 深い階層構造の形式でテキストから情報を抽出することで、メッセージ交換アプリケーションをより強力にします。
+
+    ![機械学習したエンティティの画像](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>2019 年 9 月 3 日
 

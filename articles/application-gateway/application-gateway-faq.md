@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858533"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470077"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -72,7 +73,7 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>アプリケーション ゲートウェイの有効期間内に IP や DNS 名が変わることはありますか?
 
-アプリケーション ゲートウェイを停止して起動すると、VIP が変わることがあります。 これに対して、アプリケーション ゲートウェイに関連付けられている DNS 名は、そのゲートウェイの有効期間全体を通して変わりません。 DNS 名が変わることはないので、CNAME エイリアスを使用し、その参照先をアプリケーション ゲートウェイの DNS アドレスにするようにしてください。
+Application Gateway V1 SKU では、アプリケーション ゲートウェイを停止して起動すると、VIP が変わることがあります。 これに対して、アプリケーション ゲートウェイに関連付けられている DNS 名は、そのゲートウェイの有効期間全体を通して変わりません。 DNS 名が変わることはないので、CNAME エイリアスを使用し、その参照先をアプリケーション ゲートウェイの DNS アドレスにするようにしてください。 Application Gateway V2 SKU では、IP アドレスを静的として設定できるため、アプリケーション ゲートウェイの有効期間中、IP および DNS 名が変更されることはありません。 
 
 ### <a name="does-application-gateway-support-static-ip"></a>Application Gateway は静的 IP をサポートしますか?
 
@@ -104,7 +105,7 @@ v2 SKU を使用するデプロイのほとんどは、プロビジョニング�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Application Gateway で Exchange Server をバックエンドとして使用することはできますか?
 
-いいえ。 Application Gateway は SMTP、IMAP、POP3 などの電子メール プロトコルをサポートしていません。 
+No. Application Gateway は SMTP、IMAP、POP3 などの電子メール プロトコルをサポートしていません。 
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -124,7 +125,7 @@ Traffic Manager を使用すると、異なるデータ センターにある複
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>手動でのスケールアップまたはスケールダウンによってダウンタイムが発生することはありますか?
 
-いいえ。 インスタンスはアップグレード ドメインと障害ドメインに分散されます。
+No. インスタンスはアップグレード ドメインと障害ドメインに分散されます。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Application Gateway は接続のドレインに対応していますか?
 
@@ -146,7 +147,7 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネット内に何か他にデプロイできるものはありますか?
 
-いいえ。 もっとも、サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできます。
+No. もっとも、サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできます。
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでネットワーク セキュリティ グループはサポートされていますか?
 
@@ -178,7 +179,7 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>カスタム プローブは応答データ上のワイルドカードや正規表現をサポートしていますか?
 
-いいえ。 
+No. 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Application Gateway ではルーティング規則がどのように処理されるのでしょうか?
 
@@ -194,7 +195,7 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>パブリック側のリスナーとプライベート側のリスナーの両方に同じポートを使用することはできますか?
 
-いいえ。
+No.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。
 
@@ -269,7 +270,7 @@ Application Gateway は、SSL 証明書を 100 件までサポートしていま
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Application Gateway は、バックエンドの再暗号化用の認証証明書をいくつサポートしていますか?
 
-Application Gateway は、認証証明書を 10 件までサポートしています。 既定値は 5 です。
+Application Gateway は、認証証明書を 100 件までサポートしています。
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway は Azure Key Vault とネイティブに統合されていますか?
 
@@ -299,7 +300,7 @@ WAF の監視には、診断ログを使用します。 詳細については、
 
 ### <a name="does-detection-mode-block-traffic"></a>検出モードではトラフィックがブロックされますか?
 
-いいえ。 検出モードでは、WAF 規則をトリガーするトラフィックをログに記録するにとどまります。
+No. 検出モードでは、WAF 規則をトリガーするトラフィックをログに記録するにとどまります。
 
 ### <a name="can-i-customize-waf-rules"></a>WAF ルールはカスタマイズできますか?
 
@@ -326,6 +327,19 @@ WAF が現在サポートしているのは CRS [2.2.9](application-gateway-crs-
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。
 
 はい。 詳しくは、「[Migrate Azure Application Gateway and Web Application Firewall from v1 to v2 (Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する)](migrate-v1-v2.md)」をご覧ください。
+
+## <a name="configuration---ingress-controller-for-aks"></a>構成 - AKS のイングレス コントローラー
+
+### <a name="what-is-an-ingress-controller"></a>イングレス コントローラーとは何ですか?
+
+Kubernetes を使用すると、`deployment` リソースおよび `service` リソースを作成して、クラスター内のポッドのグループを内部で公開できます。 同じサービスを外部で公開するには、[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) リソースを定義します。これは、負荷分散、SSL 終了、および名前ベースの仮想ホスティングを提供します。
+この `Ingress` リソースを満たすには、`Ingress` リソースの変更をリスンし、ロード バランサー ポリシーを構成するイングレス コントローラーが必要です。
+
+Application Gateway のイングレス コントローラーを使用すると、AKS クラスターとも呼ばれる [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) に対するイングレスとして [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) を使用できます。
+
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>イングレス コントローラーの単一のインスタンスで複数の Application Gateway を管理できますか?
+
+現在、イングレス コントローラーの 1 つのインスタンスは、1 つの Application Gateway にのみ関連付けることができます。
 
 ## <a name="diagnostics-and-logging"></a>診断とログ記録
 

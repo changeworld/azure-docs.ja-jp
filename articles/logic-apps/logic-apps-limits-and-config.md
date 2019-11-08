@@ -1,6 +1,6 @@
 ---
 title: 制限と構成 - Azure Logic Apps
-description: Azure Logic Apps のサービスの制限と構成値
+description: Azure Logic Apps に対応するサービスの制限 (期間、スループット、容量など)、および構成値 (可能な IP アドレスなど)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 7483d31b5e4d375d817019b1f81de98a05ef7530
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e2b866ddd888261e7d8817c73952d4830a4f8147
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550251"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464009"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -146,7 +146,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 | 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | メッセージ サイズ | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 |
-| チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p>統合サービス環境の場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。[Azure Blob Storage コネクタ](/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいサイズのメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
+| チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p>統合サービス環境の場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。例については、[Azure Blob Storage コネクタの API リファレンス](https://docs.microsoft.com/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいサイズのメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
 | 式評価の制限 | 131,072 文字 | 131,072 文字 | `@concat()`、`@base64()`、`@string()` 式をこの制限より長くすることはできません。 |
 |||||
 
@@ -177,7 +177,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 | 名前 | 制限 |
 | ---- | ----- |
-| マネージド ID が自動割り当てされているロジック アプリの数 (Azure サブスクリプションあたり) | 100 |
+| リージョンごとに Azure サブスクリプションにシステムで割り当てられた ID を持つロジック アプリの数 | 100 |
 |||
 
 <a name="integration-account-limits"></a>
@@ -273,13 +273,11 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 * [Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。 
 
-* 統合サービス環境 (ISE) 内で実行されるロジック アプリの場合は、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)ことを確認してください。
+* 統合サービス環境 (ISE) 内で実行されるロジック アプリの通信を有効にするため、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)ことを確認してください。
 
-* ロジック アプリでは、[ファイアウォール規則](../storage/common/storage-network-security.md)を持つ、同じリージョンに存在する Azure ストレージ アカウントに直接アクセスすることはできません。 ただし、[ご利用のリージョンでマネージド コネクタに送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を許可する場合、Azure Table Storage コネクタまたは Azure Queue Storage コネクタの使用時を除き、ロジック アプリでは別のリージョンにあるストレージ アカウントにアクセスできます。 Table Storage または Queue Storage にアクセスするには、HTTP のトリガーとアクションを利用できます。 それ以外では、もっと高度なオプションをここで利用できます。
+* [ファイアウォールとファイアウォール規則](../storage/common/storage-network-security.md)を使用する Azure ストレージアカウントへのアクセスに関する問題がロジック アプリにある場合は、[アクセスを有効にするためのさまざまなオプション](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)があります。
 
-  * Azure 仮想ネットワーク内のリソースに接続できる[統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成します。
-
-  * API Management に専用階層を使用する場合、API Management を使用し、ファイアウォールの通過をその IP アドレスに許可することで、ストレージ API に面することができます。 基本的には、API Management によって使用される Azure 仮想ネットワークをストレージ アカウントのファイアウォール設定に追加します。 その後、API Management アクションまたは HTTP アクションを使用し、Azure Storage API を呼び出すことができます。 ただし、このオプションを選択した場合、認証プロセスを自分で処理する必要があります。 詳細については、[単純なエンタープライズ統合アーキテクチャ](https://aka.ms/aisarch)を参照してください。
+  たとえば、ロジック アプリは、ファイアウォール規則を使用し、同じリージョンに存在するストレージ アカウントに直接アクセスすることはできません。 ただし、[ご利用のリージョンでマネージド コネクタに送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を許可する場合、Azure Table Storage または Azure Queue Storage コネクタの使用時を除き、ロジック アプリでは別のリージョンにあるストレージ アカウントにアクセスできます。 Table Storage または Queue Storage にアクセスするには、代わりに HTTP のトリガーとアクションを利用できます。 その他のオプションについては、[ファイアウォールの内側でストレージ アカウントにアクセスする](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)方法に関する記事を参照してください。
 
 * カスタム コネクタ、[Azure Government](../azure-government/documentation-government-overview.md)、[Azure China 21Vianet](https://docs.microsoft.com/azure/china/) の場合、固定 IP アドレスまたは予約済み IP アドレスは使用できません。
 

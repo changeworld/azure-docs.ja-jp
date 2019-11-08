@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959407"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464519"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -36,6 +36,13 @@ Custom Voice を開始する前に、Azure アカウントと Speech Services �
 3.  [モデルをトレーニングする](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) - 自分のデータを使用して、カスタム テキスト読み上げ音声モデルを作成します。 モデルはさまざまな言語でトレーニングできます。 トレーニング後にモデルをテストし、結果に満足したら、モデルをデプロイできます。
 
 4.  [モデルをデプロイする](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) - 自分のテキスト読み上げ音声モデルのカスタム エンドポイントを作成して、自分の製品、ツール、アプリケーションの音声合成にそれを使用します。
+
+## <a name="custom-neural-voices"></a>カスタム ニューラル音声
+
+ニューラル音声のカスタマイズ機能は、現在、パブリック プレビュー段階にあり、一部のお客様に限定されています。 使用を開始するには、この[申請フォーム](https://go.microsoft.com/fwlink/?linkid=2108737)に入力してください。
+
+> [!NOTE]
+> 信頼のおける AI の設計に対するマイクロソフトの取り組みの一環として、個人および社会の権利を保護し、人とコンピューターとの透明性のあるやり取りを促進することを目的としています。 このため、カスタム ニューラル音声は、すべてのお客様が一般に利用できるわけではありません。 このテクノロジにアクセスできるのは、アプリケーションの審査を受け、弊社の倫理原則に沿ってアプリケーションを使用することを確約した場合のみです。 アプリケーションの制限プロセスの詳細については、[こちら](https://aka.ms/custom-neural-gating-overview)を参照してください。
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 

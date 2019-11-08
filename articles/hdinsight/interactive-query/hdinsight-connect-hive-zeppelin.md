@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure HDInsight で Apache Hive クエリを実行する - Apache Zeppelin
+title: クイック スタート:Azure HDInsight での Apache Zeppelin を使用した Apache Hive
 description: このクイックスタートでは、Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。
 keywords: hdinsight,hadoop,hive,対話型クエリ,LLAP
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1642c64b0b14c2e290aad689399b59d896660a28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 36d9e9b34deb4bc6cd5f599cfe2d09a12f680730
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056685"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494283"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>クイック スタート:Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する
 

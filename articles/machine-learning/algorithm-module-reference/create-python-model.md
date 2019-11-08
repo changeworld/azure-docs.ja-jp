@@ -1,7 +1,7 @@
 ---
 title: 'Python モデルの作成: モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Python モデルの作成モジュールを使用して、カスタム モデルまたはデータ処理モジュールを作成する方法について学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Python モデルの作成モジュールを使用して、カスタム モデルまたはデータ処理モジュールを作成する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 33e15055958ac99f2aa9eb160f9e5cf3c5b0cd41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693890"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493790"
 ---
 # <a name="create-python-model"></a>Python モデルの作成
 
 この記事では、**Python モデルの作成**モジュールを使用して Python スクリプトから未トレーニング モデルを作成する方法をについて説明します。 
 
-Azure Machine Learning 環境の Python パッケージに含まれる任意の学習器を基にしたモデルを作成できます。 
+Azure Machine Learning デザイナー環境の Python パッケージに含まれる任意の学習器を基にしたモデルを作成できます。 
 
 モデルを作成した後は、Azure Machine Learning の他の学習器と同じように、[モデルのトレーニング](train-model.md)を使用してデータセットでモデルをトレーニングできます。 トレーニング済みのモデルを[モデルのスコア付け](score-model.md)に渡し、予測を行うために使用できます。 その後、トレーニング済みモデルは保存でき、スコアリング ワークフローは Web サービスとして発行できます。
 

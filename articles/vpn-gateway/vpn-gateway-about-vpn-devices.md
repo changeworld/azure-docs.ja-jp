@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: 1d80c30e3573d76aabcf854b2d97ea849197577c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c945fa7e2e8eccb12cc105610adee3d25a5e5316
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173037"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495791"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -128,7 +128,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 | **プロパティ**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
-| IKE のバージョン           |IKEv1              |IKEv2              |
+| IKE のバージョン           |IKEv1              |IKEv1 および IKEv2    |
 | Diffie-hellman グループ  |グループ 2 (1024 ビット) |グループ 2 (1024 ビット) |
 | 認証方法 |事前共有キー     |事前共有キー     |
 | 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>手順 3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
@@ -138,9 +138,9 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 | **プロパティ**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
-| IKE のバージョン                   |IKEv1          |IKEv2                                        |
+| IKE のバージョン                   |IKEv1          |IKEv1 および IKEv2                              |
 | 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
-| SA の有効期間 (時間)            |3,600 秒  |27,000 秒                                |
+| SA の有効期間 (時間)            |3,600 秒  |27,000 秒                               |
 | SA の有効期間 (バイト)           |102,400,000 KB | -                                           |
 | Perfect Forward Secrecy (PFS) |いいえ             |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | Dead Peer Detection (DPD)     |サポートされていません  |サポートされています                                    |

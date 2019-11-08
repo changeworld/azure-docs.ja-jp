@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 25b08bf78de61e556bab790869b45131a01ce6b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "64926182"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495100"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 
@@ -46,7 +46,7 @@ ms.locfileid: "64926182"
 -->
 
 ## <a name="api-deployment"></a>API のデプロイ
-API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出のある異常検出と季節性検出のない異常検出という、2 つの Azure Machine Learning Studio Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[Azure Machine Learning Studio Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
+API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出を含む異常検出と季節性検出を含まない異常検出という、2 つの Azure Machine Learning Studio (クラシック) Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[Azure Machine Learning Studio (クラシック) Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
 
 ## <a name="scaling-the-api"></a>API のスケーリング
 既定では、デプロイは、1,000 件のトランザクション/月と 2 時間のコンピューティング時間/月が含まれる開発/テスト無料プランで実行されます。  ニーズに応じて別のプランにアップグレードできます。  さまざまなプランの料金の詳細については、[こちらの](https://azure.microsoft.com/pricing/details/machine-learning/)「実稼働 Web API の価格」を参照してください。
@@ -58,7 +58,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 この Web サービスは、REST ベースの API を HTTPS 経由で提供しますが、これは Web アプリケーションやモバイル アプリケーション、R、Python、Excel などを含むさまざまな方法で使用できます。時系列データを REST API 呼び出しによってこのサービスに送信することができ、後述する 3 つの異常の種類の組み合わせを実行します。
 
 ## <a name="calling-the-api"></a>API の呼び出し
-この API を呼び出すには、エンドポイントの場所と API キーを知っている必要があります。  [Azure Machine Learning Studio Web サービス](https://services.azureml.net/webservices/) ページから、これらの両方と API を呼び出すためのサンプル コードを入手できます。  目的の API に移動し、[使用] タブをクリックして検索します。  API は、`format=swagger` URL パラメーターを付けて Swagger API として呼び出すことも、`format` URL パラメーターを付けずに非 Swagger API として呼び出すこともできます。  サンプル コードでは、Swagger 形式を使用します。  非 Swagger 形式の要求と応答例を次に示します。  これらの例は、季節性エンドポイントに対するものですが、  非季節性エンドポイントも同様です。
+この API を呼び出すには、エンドポイントの場所と API キーを知っている必要があります。  [Azure Machine Learning Studio (クラシック) Web サービス](https://services.azureml.net/webservices/) ページから、これらの両方と API 呼び出しのサンプル コードを入手できます。  目的の API に移動し、[使用] タブをクリックして検索します。  API は、`format=swagger` URL パラメーターを付けて Swagger API として呼び出すことも、`format` URL パラメーターを付けずに非 Swagger API として呼び出すこともできます。  サンプル コードでは、Swagger 形式を使用します。  非 Swagger 形式の要求と応答例を次に示します。  これらの例は、季節性エンドポイントに対するものですが、  非季節性エンドポイントも同様です。
 
 ### <a name="sample-request-body"></a>要求本文のサンプル
 要求には、`Inputs` と `GlobalParameters` という 2 つのオブジェクトが含まれます。  次の要求例では、一部のパラメーターは明示的に送信され、一部は明示的に送信されていません (一覧を下にスクロールして各エンドポイントのパラメーターを確認してください)。  明示的に送信されない要求のパラメーターでは、後述する既定値が使用されます。
@@ -121,7 +121,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 ### <a name="parameters"></a>parameters
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | 説明 | 既定の設定 | Type | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | 説明 | 既定の設定 | 種類 | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |integer |10 ～ 2000 |時系列に依存 |
 | detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |Both |enumerated |Both、Spikes、Dips |両方 |
@@ -157,7 +157,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | 説明 | 既定の設定 | Type | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | 説明 | 既定の設定 | 種類 | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |入力時系列の集計間隔 (秒単位) |0 (集計は実行されません) |integer |集計をスキップする場合は 0、それ以外の場合は 0 より大きい値 |5 分 ～ 1 日 (時系列に依存) |
 | preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |該当なし |

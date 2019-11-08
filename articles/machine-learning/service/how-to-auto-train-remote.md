@@ -3,22 +3,24 @@ title: 自動 ML リモート コンピューティング ターゲット
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning リモート コンピューティング先上の自動機械学習と、Azure Machine Learning を使用して、モデルを構築する方法について学習します
 services: machine-learning
-author: nacharya1
-ms.author: nilesha
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 7/12/2019
-ms.openlocfilehash: 9eab21fe6b5269229de186a7553e11a147c1033e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034983"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497321"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
+
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning では、管理しているさまざまな種類のコンピューティング リソースに対してモデルをトレーニングします。 ローカル コンピューターまたはクラウド内のリソースをコンピューティング ターゲットにすることができます。
 
@@ -278,7 +280,7 @@ print(per_class_imp)
 
 ![モデル説明コンソール出力](./media/how-to-auto-train-remote/expl-print.png)
 
-また、ウィジェット UI、Azure portal 上の Web UI、または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) を介して、機能の重要度を視覚化することもできます。 
+また、ウィジェット UI を介して、または [Azure Machine Learning studio](https://ml.azure.com) のワークスペース内で、特徴の重要度を視覚化することもできます。 
 
 ![モデル説明 UI](./media/how-to-auto-train-remote/model-exp.png)
 

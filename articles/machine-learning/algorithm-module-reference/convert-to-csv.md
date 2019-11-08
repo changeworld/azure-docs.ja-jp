@@ -1,24 +1,24 @@
 ---
 title: 'CSV への変換: モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の CSV への変換モジュールを使用して、R または Python スクリプトのモジュールでダウンロード、エクスポート、または共有できる CSV 形式にデータセットを変換する方法について学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の CSV への変換モジュールを使用して、R または Python スクリプトのモジュールでダウンロード、エクスポート、または共有できる CSV 形式にデータセットを変換する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693196"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493855"
 ---
 # <a name="convert-to-csv-module"></a>CSV への変換モジュール
 
-この記事では、Azure Machine Learning service に使用されるビジュアル インターフェイスのモジュール (プレビュー) について説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 このモジュールは、R または Python スクリプトのモジュールでダウンロード、エクスポート、または共有できる CSV 形式にデータセットを変換するために使用します。
 
@@ -36,7 +36,8 @@ ms.locfileid: "72693196"
 
 ## <a name="how-to-configure-convert-to-csv"></a>CSV への変換を構成する方法
 
-1.  [CSV への変換](./convert-to-csv.md)モジュールをパイプラインに追加します。 このモジュールは、インターフェイスの **[Data Format Conversions]\(データ形式の変換\)** グループにあります。 
+
+1.  [CSV への変換](./convert-to-csv.md)モジュールをパイプラインに追加します。 このモジュールは、デザイナーの **[Data Format Conversions]\(データ形式の変換\)** グループにあります。 
 
 2. データセットを出力する任意のモジュールに、それを接続します。   
   
@@ -56,4 +57,4 @@ ms.locfileid: "72693196"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

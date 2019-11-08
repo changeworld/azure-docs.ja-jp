@@ -1,40 +1,40 @@
 ---
 title: ランタイムでデバイスを管理する方法について - Azure IoT Edge | Microsoft Docs
-description: デバイス上のモジュール、セキュリティ、通信、およびレポートを Azure IoT Edge ランタイムで管理する方法について説明します
+description: デバイス上のモジュール、セキュリティ、通信、およびレポートを IoT Edge ランタイムで管理する方法について説明します
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/06/2019
+ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 49abd9e5ecee8637d830604028463650071c0198
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 94e33c855327e70f486746bcd781491823324dec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163149"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490429"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
 IoT Edge ランタイムは、デバイスを IoT Edge デバイスに変えるプログラムのコレクションです。 これらの IoT Edge ランタイム コンポーネントを使用することにより、IoT Edge デバイスは、エッジで実行するコードを受信し、結果を通信できます。 
 
-IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行します。
+IoT Edge ランタイムは、IoT Edge デバイスで次の機能の実行を担当します。
 
 * デバイスにワークロードをインストールし、更新する。
 * デバイス上の Azure IoT Edge のセキュリティ標準を維持する。
 * [IoT Edge モジュール](iot-edge-modules.md)の実行状態を絶えず確保する。
 * モジュールの正常性をクラウドにレポートしてリモート監視を可能にする。
-* ダウンストリームのリーフ デバイスと IoT Edge デバイス間の通信を円滑化する。
-* IoT Edge デバイス上のモジュール間の通信を円滑化する。
-* IoT Edge デバイスとクラウド間の通信を円滑化する。
+* ダウンストリーム デバイスと IoT Edge デバイス間の通信を管理する。
+* IoT Edge デバイス上のモジュール間の通信を管理する。
+* IoT Edge デバイスとクラウド間の通信を管理する。
 
 ![ランタイムによる分析情報とモジュールの正常性の IoT Hub への通信](./media/iot-edge-runtime/Pipeline.png)
 
 IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムの部品である 2 つのコンポーネントによって実行されます。 *IoT Edge ハブ*は通信を担当し、*IoT Edge エージェント*は、モジュールを展開し、監視します。 
 
-IoT Edge ハブと IoT Edge エージェントはどちらも、IoT Edge デバイスで実行される他のモジュールと同様のモジュールです。 
+IoT Edge ハブと IoT Edge エージェントはどちらも、IoT Edge デバイスで実行される他のモジュールと同様のモジュールです。 これらは、*ランタイム モジュール*と呼ばれる場合もあります。 
 
 ## <a name="iot-edge-hub"></a>IoT Edge ハブ
 
@@ -45,7 +45,7 @@ IoT Edge ハブは、Azure IoT Edge ランタイムを構成する 2 つのモ�
 
 IoT Edge ハブは、ローカルで実行される完全バージョンの IoT Hub ではありません。 IoT Edge ハブは、いくつかの機能を IoT Hub を自動的に委任します。 たとえば、IoT Edge ハブは、デバイスが初めて接続を試みたときに認証要求を IoT Hub に送信します。 初回の接続確立後、セキュリティ情報は IoT Edge ハブによってローカルにキャッシュされます。 そのデバイスからのその後の接続は、クラウドへの認証なしに許可されます。 
 
-IoT Edge ソリューションが使用する帯域幅を減らすために、IoT Edge ハブは、クラウドに対して作成される実際の接続数を最適化します。 IoT Edge ハブは、モジュールやリーフ デバイスなどのクライアントからの論理接続を取得し、それらをクラウドへの 1 つの物理接続に統合します。 ソリューションの他の部分は、このプロセスの詳細を認識する必要がありません。 クライアントは、すべて、共通の接続を使って接続しているにもかかわらず、クラウドにそれぞれ独自に接続していると認識します。 
+IoT Edge ソリューションが使用する帯域幅を減らすために、IoT Edge ハブは、クラウドに対して作成される実際の接続数を最適化します。 IoT Edge ハブは、モジュールやダウンストリーム デバイスなどのクライアントからの論理接続を取得し、それらをクラウドへの 1 つの物理接続に統合します。 ソリューションの他の部分は、このプロセスの詳細を認識する必要がありません。 クライアントは、すべて、共通の接続を使って接続しているにもかかわらず、クラウドにそれぞれ独自に接続していると認識します。 
 
 ![IoT Edge ハブは物理デバイスと IoT Hub との間のゲートウェイです](./media/iot-edge-runtime/Gateway.png)
 
@@ -73,13 +73,13 @@ IoT Edge ハブを使用することで、モジュール間の通信が容易�
 
 ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)、または [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスを参照してください。
 
-IoT Edge ハブがモジュール間でメッセージを渡す方法を決定するルールを指定するのはソリューション開発者です。 ルーティング規則はクラウドで定義され、そのデバイス ツインの中で IoT Edge ハブにプッシュ ダウンされます。 IoT Hub ルートと同じ構文を使用して、Azure IoT Edge のモジュール間のルートが定義されます。 詳細については、[モジュールのデプロイと IoT Edge へのルートの確立の方法の学習](module-composition.md)に関する記事をご覧ください。   
+IoT Edge ハブがモジュール間でメッセージを渡す方法を決定するルールを指定するのはソリューション開発者です。 ルーティング規則はクラウドで定義され、そのモジュール ツインの中で IoT Edge ハブにプッシュ ダウンされます。 IoT Hub ルートと同じ構文を使用して、Azure IoT Edge のモジュール間のルートが定義されます。 詳細については、[モジュールのデプロイと IoT Edge へのルートの確立の方法の学習](module-composition.md)に関する記事をご覧ください。   
 
 ![モジュール間のルートは IoT Edge ハブを経由します](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
 ## <a name="iot-edge-agent"></a>IoT Edge エージェント
 
-IoT Edge エージェントは、Azure IoT Edge ランタイムを構成するもう 1 つのモジュールです。 このモジュールは、モジュールをインスタンス化し、モジュールの実行を継続し、IoT Hub にモジュールのステータスを報告します。 IoT Edge エージェントは、他のモジュールと同様に、そのモジュール ツインを使用してこの構成データを格納します。 
+IoT Edge エージェントは、Azure IoT Edge ランタイムを構成するもう 1 つのモジュールです。 このモジュールは、モジュールをインスタンス化し、モジュールの実行を継続し、IoT Hub にモジュールのステータスを報告します。 この構成データは、IoT Edge エージェント モジュール ツインのプロパティとして書き込まれます。 
 
 デバイスの起動時に、[IoT Edge セキュリティ デーモン](iot-edge-security-manager.md)が IoT Edge エージェントを開始します。 エージェントは IoT Hub からそのモジュール ツインを取得し、配置マニフェストを検査します。 配置マニフェストとは、開始する必要があるモジュールを宣言する JSON ファイルです。 
 

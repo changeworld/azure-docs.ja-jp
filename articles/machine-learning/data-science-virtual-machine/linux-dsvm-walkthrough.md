@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170684"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485385"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -32,7 +32,7 @@ Linux DSVM を使用する前に、以下の前提条件を満たしている必
 * [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 仮想マシンのプロビジョニングについては、[Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
 * お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#x2go)」をご覧ください。
 * スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細情報](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細情報](https://support.mozilla.org/questions/981140)。
-* **Azure Machine Learning アカウント**。 まだお持ちでない場合は、 [Azure Machine Learning のホームページ](https://studio.azureml.net/)で新しいアカウントにサインアップしてください。 使用開始のために無料で試すことができます。
+* **Azure Machine Learning アカウント**。 まだお持ちでない場合は、 [Azure Machine Learning のホームページ](https://azure.microsoft.com/free/services/machine-learning//)で新しいアカウントにサインアップしてください。
 
 ## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする
 
@@ -172,11 +172,11 @@ R を使用して、データを確認し、基本的な機械学習を実行し
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Azure Machine Learning Studio にモデルをデプロイする
+## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) にモデルをデプロイする
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 Azure Machine Learning Studio の便利な機能に、任意の R 関数を Web サービスとして発行する機能があります。 Azure Machine Learning Studio R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
+[Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 Azure Machine Learning Studio のクラシック バージョンの便利な機能に、任意の R 関数を Web サービスとして発行する機能があります。 Azure Machine Learning Studio R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
 
-前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインします。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらで Azure Machine Learning の変数を初期化するには、次の手順を実行します。
+前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio (クラシック) にサインインします。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらで Azure Machine Learning の変数を初期化するには、次の手順を実行します。
 
 1. 左側のメニューで **[設定]** を選択します。 **[ワークスペース ID]** の値をメモします。
 

@@ -1,7 +1,7 @@
 ---
 title: 一般的な質問 - FAQ
 titleSuffix: Microsoft Genomics
-description: Microsoft Genomics についてよく寄せられる質問に回答します。
+description: 技術情報、SLA、料金など、Microsoft Genomics サービスの使用に関連する一般的な質問の回答を得ることができます。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 80a656ee687b71fcaf09a02d70d0a5a4300186bc
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249224"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476432"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics:一般的な質問
 

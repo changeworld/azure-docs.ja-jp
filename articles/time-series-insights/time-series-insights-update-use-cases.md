@@ -1,21 +1,21 @@
 ---
 title: Azure Time Series Insights プレビューのユース ケース | Microsoft Docs
 description: Azure Time Series Insights プレビューのユース ケースについて説明します。
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 437f93e35040a93fb0c3098d6ec53883c3f856a7
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553292"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492057"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 
@@ -43,12 +43,12 @@ Azure Time Series Insights は、エンドツーエンドの、サービスと�
 分析情報を最短時間で取得できることが Time Series Insights の特筆すべき機能の 1 つであることに、ほとんどのお客様が納得します。
 
 * Time Series Insights では、事前のデータ準備が不要です。 
-* 高速に動作し、Azure IoT Hub や Azure Event Hubs の数十億件ものイベントに数分で接続します。 
+* 高速に動作し、Azure IoT Hub や Azure Event Hubs インスタンスの数十億件ものイベントに数分で接続します。 
 * 接続したら、数十億件のイベントを視覚化して分析し、データの異常を特定し、潜んでいる傾向を明らかにします。
 
 Time Series Insights は、直感的で使い方は簡単です。 コードを全く記述しなくてもデータを操作できます。 新しい言語を学ぶ必要もありません。Time Series Insights は、SQL を熟知した、詳しい知識があるユーザー向けの、詳細なテキストベースのクエリ言語を備えています。 初心者向けに、選択してクリックの探索も用意されています。
 
-お客様は、スピードを活かして、資産関連の問題をすばやく診断できます。 DevOps 分析を実行して、IoT ソリューションのバグの根本原因を把握できます。 また、データ サイエンス イニシアティブの一貫として、さらなる調査に向け、フラグを設定する領域を特定することもできます。  
+お客様は、スピードを活かして、資産関連の問題をすばやく診断できます。 DevOps 分析を実行して、IoT ソリューションのバグの根本原因を把握できます。 また、データ サイエンス イニシアティブの一貫として、さらなる調査に向け、フラグを設定する領域を特定することもできます。 
 
 Time Series Insights に格納されたデータと対話する方法は主に 3 つあります。
 
@@ -96,7 +96,7 @@ Time Series Insights では、2 つの簡単なコスト効率の高い方法で
 
     Time Series Insights は、組織全体のすべてのデータの信頼できるソースとして使用できます。 使用するダウンストリーム分析ワークロード用の中央リポジトリを作成します。 Time Series Insights は、ほぼリアルタイムのストレージ サービスであるため、高度な分析モデルが、受信する IoT テレメトリ データから継続的に学習できます。 そのため、モデルはより正確な予測ができます。
 
-- 2 つ目に、機械学習と予測モデルの出力を Time Series Insights に取り込めば、その結果を視覚化して格納できます。 この手順により、組織はモデルを最適化し、調整できます。 Time Series Insights により、トレーニング済みモデルの出力と同じ平面上にストリーミング テレメトリ データを簡単に視覚化できます。 このように、データ サイエンス チームが異常を特定し、パターンを識別するために役立ちます。  
+- 2 つ目に、機械学習と予測モデルの出力を Time Series Insights に取り込めば、その結果を視覚化して格納できます。 この手順により、組織はモデルを最適化し、調整できます。 Time Series Insights により、トレーニング済みモデルの出力と同じ平面上にストリーミング テレメトリ データを簡単に視覚化できます。 このように、データ サイエンス チームが異常を特定し、パターンを識別するために役立ちます。 
 
 ## <a name="next-steps"></a>次の手順
 

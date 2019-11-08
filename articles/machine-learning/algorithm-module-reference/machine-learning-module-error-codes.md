@@ -1,6 +1,6 @@
 ---
 title: モジュール エラーのトラブルシューティング
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: エラー コードを使用した Azure Machine Learning Studio でのモジュール例外のトラブルシューティング
 services: machine-learning
 ms.service: machine-learning
@@ -8,25 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b07b1fc14ac7ac72a30f75a098b4aab35f2de713
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693070"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497724"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>アルゴリズムとモジュールに関する例外とエラー コードの参照
 
-Azure Machine Learning Studio でモジュールを使用しているときに発生する可能性のあるエラー メッセージと例外コードについて説明します。 
+Azure Machine Learning デザイナー (プレビュー) でモジュールを使用しているときに発生する可能性のあるエラー メッセージと例外コードについて説明します。 
 
-問題を解決するには、この記事でエラーを探して、一般的な原因について確認します。 Studio でエラー メッセージの完全なテキストを取得するには 2 つの方法があります。  
+問題を解決するには、この記事でエラーを探して、一般的な原因について確認します。 デザイナーでエラー メッセージの完全なテキストを取得するには 2 つの方法があります。  
  
 - 右側のウィンドウの **[View Output Log]\(出力ログの表示\)** リンクをクリックして、一番下までスクロールします。 ウィンドウの最後の 2 行に、詳細なエラー メッセージが表示されます。  
   
 - エラーのあるモジュールを選択し、赤い X をクリックします。関連するエラー テキストのみが表示されます。  
   
-エラー メッセージのテキストが役に立たない場合は、コンテキストおよび必要な追加または変更に関する情報をお送りください。 エラー トピックについてのフィードバックをお送りいただくか、[Azure Machine Learning STUDIO フォーラム](https://aka.ms/aml-forum-studio)にアクセスして質問を投稿していただくことができます。  
+エラー メッセージのテキストが役に立たない場合は、フィードバックの送信を使用して、コンテキストや必要な追加または変更に関する情報をお送りください。
 
 
 ## <a name="error-0001"></a>エラー 0001  
@@ -163,9 +163,9 @@ Azure Machine Learning Studio でモジュールを使用しているときに�
 ## <a name="error-0009"></a>エラー 0009  
  Azure ストレージ アカウント名またはコンテナー名が正しく指定されていない場合、例外が発生します。  
   
-Azure Machine Learning Studio では、Azure ストレージ アカウントのパラメーターを指定していても、名前またはパスワードを解決できない場合、このエラーが発生します。 パスワードまたはアカウント名に関するエラーは、多くの理由で発生する可能性があります。
+Azure Machine Learning デザイナーでは、Azure ストレージ アカウントのパラメーターを指定していても、名前またはパスワードを解決できない場合、このエラーが発生します。 パスワードまたはアカウント名に関するエラーは、多くの理由で発生する可能性があります。
  
- + アカウントの種類が正しくありません。 一部の新しいアカウントの種類は、Machine Learning Studio での使用がサポートされていません。 詳しくは、「[Import Data (データのインポート)](import-data.md)」をご覧ください。
+ + アカウントの種類が正しくありません。 一部の新しいアカウントの種類では、Machine Learning デザイナーでの使用がサポートされていません。 詳しくは、「[Import Data (データのインポート)](import-data.md)」をご覧ください。
  + 正しくないアカウント名を入力しました
  + アカウントはもう存在しません
  + ストレージ アカウントのパスワードが間違っているか、変更されています
@@ -1063,7 +1063,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
 **Resolution:**
 
-1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
+1. In Azure Machine Learning designer, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
     + Messages from R marked as **warnings** typically do not cause the pipeline to fail.

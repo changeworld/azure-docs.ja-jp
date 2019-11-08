@@ -1,23 +1,23 @@
 ---
-title: SQL Data Warehouse 用に Visual Studio 2019 をインストールする | Microsoft Docs
+title: Visual Studio 2019 をインストールする
 description: Azure SQL Data Warehouse 用に Visual Studio と SQL Server Development Tools (SSDT) をインストールします
 services: sql-data-warehouse
-ms.custom: vs-azure
+ms.custom: seo-lt-2019
 ms.workload: azure-vs
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 10/17/2019
+ms.date: 11/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 81c709e7705e16484438ab684a6b1591e5e624ba
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 96d66e6190732d88ba9a33094b6c27bbadfd4aae
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553504"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747792"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>SQL Data Warehouse 用の Visual Studio 2019 を始める
 Visual Studio **2019** SQL Server Data Tools (SSDT) は次のことを可能にする単一ツールです。
@@ -26,17 +26,11 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) は次のことを可能に�
 - オブジェクト エクスプローラーを活用し、テーブル、ビュー、ストアド プロシージャなど、データ モデル内のあらゆるオブジェクトを視覚的に調べます。
 - オブジェクトの T-SQL データ定義言語 (DDL) スクリプトを生成する
 - 状態に基づく手法と SSDT データベース プロジェクトを利用し、データ ウェアハウスを開発する
-- Git と Azure DevOps Repos のように、データベース プロジェクトとソース システムを統合する
+- Git と Azure Repos など、データベース プロジェクトをソース管理システムと統合する
 - Azure DevOps など、自動化サーバーを利用し、継続的インテグレーション/デプロイのパイプラインを設定する
 
-> [!NOTE]
-> 現在、Visual Studio SSDT データベース プロジェクトはプレビュー段階にあります。 この機能の定期的な更新を受け取りたい場合、[UserVoice] で投票してください。
-
-## <a name="install-visual-studio-2019-preview"></a>Visual Studio 2019 Preview をインストールする
+## <a name="install-visual-studio-2019"></a>Visual Studio 2019 をインストールする
 Visual Studio **16.3 以上**をダウンロードし、インストールする方法については、[Visual Studio 2019 をダウンロードする][] ページをご覧ください。 インストール中、データ ストレージと処理ワークロードを選択します。 スタンドアロン SSDT インストールは Visual Studio 2019 では必須でなくなりました。
-
-## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>SSDT Visual Studio 2019 の問題を報告する (プレビュー)
-SQL Data Warehouse で SSDT を使用しているときに発生した問題を報告するには、電子メール配信リスト <sqldwssdtpreview@service.microsoft.com> に電子メールで送信します。
 
 ## <a name="next-steps"></a>次の手順
 これで、最新バージョンの SSDT がインストールされたので、SQL Data Warehouse に[接続][connect]できるようになりました。

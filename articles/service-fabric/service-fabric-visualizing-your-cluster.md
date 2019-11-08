@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 88fe73988f6a90fd5041445a561c0f77f25eddc1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75568cf3c88c02968b3e3e95971f81cf1b9285d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060503"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496353"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -128,7 +128,16 @@ Image Store Viewer は、Native Image Store を使用している場合に提供
 
 ![Service Fabric Explorer のクラスター マップ][sfx-imagestore]
 
+## <a name="backup-and-restore"></a>バックアップと復元
+Service Fabric Explorer には、[バックアップと復元](./service-fabric-reliable-services-backup-restore.md)とのインターフェイスを提供する機能が用意されています。 次の操作を実行できます。
 
+* バックアップ ポリシーを作成、編集、削除します。
+* アプリケーション、サービス、またはパーティションのバックアップを有効または無効にします。
+* アプリケーション、サービス、またはパーティションのバックアップを中断および再開します。
+* パーティションのバックアップをトリガーして追跡します。
+* パーティションの復元をトリガーして追跡します。
+
+バックアップと復元サービスの詳細については、[REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)に関するページを参照してください。
 ## <a name="next-steps"></a>次の手順
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 * [PowerShell を使用した Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)

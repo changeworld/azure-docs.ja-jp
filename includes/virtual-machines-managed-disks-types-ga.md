@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a355307eef9f5ce1f833cfd7924f5efa234a0cd7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133732"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523227"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
@@ -25,6 +25,12 @@ Premium Storage に互換性のあるサイズなど、Windows 用の Azure 内�
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。 Premium SSD ディスクは、1 桁のミリ秒の低遅延と、前出の表に示した目標 IOPS とスループットを 99.9% の時間で提供するように設計されています。
+
+## <a name="bursting-preview"></a>バースティング (プレビュー)
+
+P30 より小さいサイズの Premium SSD では、ディスク バースティング (プレビュー) を提供しており、ディスクあたり IOPS を最高 3500 まで、帯域幅を最高 170 Mbps までバーストできます。 バーストは自動化され、クレジット システムに基づいて動作します。 ディスク トラフィックがプロビジョニングされたパフォーマンス ターゲットを下回る場合、クレジットはバースト バケットに自動的に蓄積されます。また、トラフィック バーストがターゲットを超えた場合、最大バースト制限まで自動的にクレジットが消費されます。 最大バースト制限は、消費されるバースト クレジットがある場合でも、ディスク IOPS および帯域幅の上限を定義します。 ディスク バースティングは、IO パターンの予測できない変更に対して優れた耐性を示します。 これは、OS ディスクの起動や激しいトラフィックを含むアプリケーションにおいて、最大限に活用できます。    
+
+既定では、ディスク バースティング サポートは[プレビュー領域](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability)の適用可能なディスク サイズを新しくデプロイする際に有効になります。ユーザーの操作は必要ありません。 既存の適用可能なサイズのディスクの場合、ディスクのデタッチと再アタッチまたは接続済み VM の停止と再起動という、2 つのオプションのいずれかを使用してバースティングを有効にすることができます。 バーストが適用可能なすべてのディスク サイズは、ディスクが 30 分のピーク バースト制限での最大期間をサポートする仮想マシンに接続されている場合、最大のバースト クレジット バケットを使用して起動されます。 Azure ディスクでのバースティングの動作の詳細については、[Premium SSD バースティング](../articles/virtual-machines/linux/disk-bursting.md)に関する記事を参照してください。 
 
 ### <a name="transactions"></a>トランザクション
 
@@ -45,7 +51,7 @@ Standard SSD では、スループットが 256 KiB 以下の I/O 操作は、�
 
 ## <a name="standard-hdd"></a>Standard HDD
 
-Azure Standard HDD では、遅延の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポートが提供されます。 Standard Storage では、データはハード ディスク ドライブ (HDD) に格納されます。 Standard HDD ディスクの遅延、IOPS、スループットは、SSD ベースのディスクと比較してより大きく異なる可能性があります。 Standard HDD ディスクは、ほとんどの IO 操作で 10 ミリ秒未満の書き込み遅延と 20 ミリ秒未満の読み取り遅延を実現するように設計されていますが、実際のパフォーマンスは IO サイズやワークロードのパターンによって異なる可能性があります。 VM を使用するとき、開発/テスト シナリオや重要度の低いワークロードには Standard HDD ディスクを使用できます。 Standard HDD はすべての Azure リージョンで使用可能であり、すべての Azure VM で使用できます。
+Azure Standard HDD では、遅延の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポートが提供されます。 Standard Storage では、データはハード ディスク ドライブ (HDD) に格納されます。 Standard HDD ディスクの遅延、IOPS、およびスループットは、SSD ベースのディスクと比較してより大きく異なる可能性があります。 Standard HDD ディスクは、ほとんどの IO 操作で 10 ミリ秒未満の書き込み待機時間と 20 ミリ秒未満の読み取り待機時間を実現するように設計されていますが、実際のパフォーマンスは IO サイズやワークロードのパターンによって異なる可能性があります。 VM を使用するとき、開発/テスト シナリオや重要度の低いワークロードには Standard HDD ディスクを使用できます。 Standard HDD はすべての Azure リージョンで使用可能であり、すべての Azure VM で使用できます。
 
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

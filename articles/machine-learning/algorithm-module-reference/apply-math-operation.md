@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 49bab338f559b1b43389e12d98c75bbffbb25a85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694307"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493938"
 ---
 # <a name="apply-math-operation"></a>算術演算の適用
 
-この記事では、Azure Machine Learning ビジュアル インターフェイスのモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 Apply Math Operation を使用して、入力データセットの数値列に適用される計算を作成します。 
 
@@ -95,7 +95,7 @@ Apply Math Operation を使用して、入力データセットの数値列に�
 -   **Equals(Col2_Col1)** 。Col1 に対して Col2 をテストしたことを示しています。  
 -   **Equals(Col2_$10)** 。列 2 と定数 10 を比較したことを示しています。  
 
-**Inplace** オプションを使用しても、ソース データは削除も変更もされず、元のデータセットの列が引き続きビジュアル インターフェイスに表示されます。 元のデータを表示するには、[Add Columns](add-columns.md) (列の追加) モジュールを接続し、それを **Apply Math Operation** の出力に結合します。  
+**Inplace** オプションを使用しても、ソース データは削除も変更もされず、元のデータセットの列が引き続きデザイナーに表示されます。 元のデータを表示するには、[Add Columns](add-columns.md) (列の追加) モジュールを接続し、それを **Apply Math Operation** の出力に結合します。  
     
 ## <a name="basic-math-operations"></a>基本の算術演算 
 
@@ -208,7 +208,7 @@ y = x * 2<sup>t</sup> の値を求め、2 を底とする引数の指数を返�
 
 ## <a name="comparison-operations"></a>比較演算  
 
-2 つの値セットを互いに比較してテストする必要がある場合は常に、Azure Machine Learning のビジュアル インターフェイスの比較関数を使用します。 たとえば、パイプラインでは、次の比較演算を実行する必要がある場合があります。  
+2 つの値セットを互いに比較してテストする必要がある場合は常に、Azure Machine Learning デザイナーの比較関数を使用します。 たとえば、パイプラインでは、次の比較演算を実行する必要がある場合があります。  
 
 - 確率スコア モデルの列をしきい値と比較して評価する。
 - 2 つの結果セットが同一かどうかを判断する。 異なる行ごとに FALSE フラグを追加します。これは、追加の処理やフィルター処理に使用できます。  
@@ -280,7 +280,7 @@ Operation|Num1|Num2|結果列|結果の値|
 
 ##  <a name="rounding-operations"></a>丸めの演算 
 
-Azure Machine Learning ビジュアル インターフェイスでは、さまざまな丸めの演算がサポートされます。 多くの演算では、丸めを行うときに使用する精度を指定する必要があります。 定数として指定される静的な精度を指定することも、値の列から取得した動的な精度の値を適用することもできます。  
+Azure Machine Learning デザイナーでは、さまざまな丸めの演算がサポートされます。 多くの演算では、丸めを行うときに使用する精度を指定する必要があります。 定数として指定される静的な精度を指定することも、値の列から取得した動的な精度の値を適用することもできます。  
 
 - 定数を使用する場合は、 **[Precision Type]\(精度の型\)** を **[Constant]\(定数\)** に設定し、 **[Constant Precision]\(定数の精度\)** テキスト ボックスに整数で桁数を入力します。 整数以外の値を入力してもモジュールはエラーを生成しませんが、予期しない結果になる可能性があります。  
 

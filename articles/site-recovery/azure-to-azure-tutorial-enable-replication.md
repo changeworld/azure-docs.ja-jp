@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6987c6f1191b0dfc7b78b14e77a5d6a0ab369f57
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782605"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468035"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM のディザスター リカバリーを設定する
 
@@ -43,7 +43,7 @@ ms.locfileid: "68782605"
 任意のリージョン (ソース リージョンを除く) にコンテナーを作成します。
 
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-2. **[リソースの作成]**  >  **[管理ツール]**  >  **[バックアップおよびサイトの回復]** の順にクリックします。
+2. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 **[管理ツール]**  >  **[Backup and Site Recovery]\(バックアップおよびサイトの回復\)** の順に選択します。
 3. **[名前]** に、コンテナーを識別するフレンドリ名を入力します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 4. リソース グループを作成するか、既存のリソース グループを選択します。 Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。
 5. ダッシュボードからコンテナーにすばやくアクセスするには、 **[ダッシュボードにピン留めする]** 、 **[作成]** の順にクリックします。

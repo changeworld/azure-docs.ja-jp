@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 08a18dc115990ad7d44a8b20412e07995c9af390
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 07b47374484cf954b1fc4279c93dddcc6cec7e61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069508"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470561"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
 
@@ -31,7 +31,7 @@ Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内の
 
 ## <a name="overview"></a>概要 
 
-ASE は、インターネットにアクセスできるエンドポイント、または VNet の IP アドレスを使用してデプロイできます。 IP アドレスを VNet のアドレスに設定するには、ASE を ILB でデプロイする必要があります。 ASE を ILB でデプロイする際は、使用する ASE の名前を指定する必要があります。 ASE の名前は、ASE 内のアプリのドメイン サフィックスで使用されます。  ILB ASE のドメイン サフィックスは &lt;ASE 名&gt;.appservicewebsites.net です。 ILB ASE 内で作成されるアプリは、パブリック DNS 内には配置されません。 
+ASE は、インターネットにアクセスできるエンドポイント、または VNet の IP アドレスを使用してデプロイできます。 IP アドレスを VNet のアドレスに設定するには、ASE を ILB でデプロイする必要があります。 ASE を ILB でデプロイする際は、使用する ASE の名前を指定する必要があります。 ASE の名前は、ASE 内のアプリのドメイン サフィックスで使用されます。  ILB ASE のドメイン サフィックスは &lt;ASE 名&gt;.appserviceenvironment.net です。 ILB ASE 内で作成されるアプリは、パブリック DNS 内には配置されません。 
 
 以前のバージョンの ILB ASE では、ドメイン サフィックスと既定の証明書を HTTPS 接続用に指定する必要がありました。 ドメイン サフィックスは ILB ASE の作成時に収集されなくなり、既定の証明書も収集されなくなっています。 現在 ILB ASE を作成する際は、Microsoft が提供する、ブラウザーによって信頼された証明書が既定で使用されます。 ASE でアプリにカスタム ドメイン名を設定し、それらのカスタム ドメイン名に証明書を設定することは、まだ可能です。 
 
@@ -107,9 +107,10 @@ ILB ASE を作成する方法は次のとおりです。
 DNS を構成するには、次の手順に従います。
 
 - " *&lt;ASE 名&gt;.appserviceenvironment.net*" 用のゾーンを作成する
-- そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する 
+- そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+- そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
 - " *&lt;ASE 名&gt;.appserviceenvironment.net*" に scm という名前のゾーンを作成する
-- ILB の IP アドレスを指す A レコードを scm ゾーンに作成する
+- scm ゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE で発行する
 
@@ -156,7 +157,7 @@ WAF デバイスを使用して ILB ASE を構成する方法の詳細につい�
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

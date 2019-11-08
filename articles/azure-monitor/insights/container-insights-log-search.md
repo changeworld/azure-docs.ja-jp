@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: c3a034776b32db57f70ddee960c1cd5fc96b170b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 787e9e6d0ae86568e1af74b4d67fb716841a02df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555414"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477084"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログを照会する方法
 
@@ -46,7 +46,7 @@ Azure Monitor for containers では、コンテナー ホストおよびコン�
 
 Azure Monitor ログを使用することにより、傾向の特定、ボトルネックの診断、予想を行ったり、データを関連付けて現在のクラスター構成のパフォーマンスが最適化されているかどうかを判断したりできます。 すぐに使用できる事前定義のログ検索が提供されています。また、検索結果として返される情報の表示方法をカスタマイズすることもできます。
 
-プレビュー ウィンドウで **[View Kubernetes event logs]\(Kubernetes イベント ログの表示\)** または **[コンテナー ログの表示]** オプションを選択することにより、ワークスペース内のデータを対話式に分析できます。 **[ログ検索]** ページは、元の Azure portal ページの右側に表示されます。
+**[分析で表示する]** ドロップダウン リストからプレビュー ウィンドウの **[Kubernetes イベント ログの表示]** または **[コンテナー ログの表示]** オプションを選択することにより、ワークスペース内のデータの分析を対話式に実行できます。 **[ログ検索]** ページは、元の Azure portal ページの右側に表示されます。
 
 ![Log Analytics でデータを解析する](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -65,37 +65,57 @@ Azure Monitor ログを使用することにより、傾向の特定、ボトル
 | **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー メモリ |
 | InsightsMetrics<br> &#124; where Name == "requests_count"<br> &#124; summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)<br> &#124; sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated <br> &#124; render barchart  | カスタム メトリックでの 1 分あたりの要求数 |
 
-次の例は、Prometheus メトリックのクエリです。 収集されるメトリックはカウントであり、特定の期間内に発生したエラーの数を判断するために、カウントから減算する必要があります。 データセットは *partitionKey* によってパーティション分割されます。つまり、*Name*、*HostName*、*OperationType* の固有のセットごとに、レートを判断するため、*TimeGenerated* ごとにログを並べ替えるセットにサブクエリ (前の *TimeGenerated* とその時間に記録されたカウントを見つけることができるようにするプロセス) を実行することを意味します。
+## <a name="query-prometheus-metrics-data"></a>Prometheus メトリック データのクエリを実行する
+
+次の例は、ノードごとのディスクごとの 1 秒あたりのディスク読み取り数を示す Prometheus メトリック クエリです。
 
 ```
-let data = InsightsMetrics 
-| where Namespace contains 'prometheus' 
-| where Name == 'kubelet_docker_operations' or Name == 'kubelet_docker_operations_errors'    
-| extend Tags = todynamic(Tags) 
-| extend OperationType = tostring(Tags['operation_type']), HostName = tostring(Tags.hostName) 
-| extend partitionKey = strcat(HostName, '/' , Name, '/', OperationType) 
-| partition by partitionKey ( 
-    order by TimeGenerated asc 
-    | extend PrevVal = prev(Val, 1), PrevTimeGenerated = prev(TimeGenerated, 1) 
-    | extend Rate = iif(TimeGenerated == PrevTimeGenerated, 0.0, Val - PrevVal) 
-    | where isnull(Rate) == false 
-) 
-| project TimeGenerated, Name, HostName, OperationType, Rate; 
-let operationData = data 
-| where Name == 'kubelet_docker_operations' 
-| project-rename OperationCount = Rate; 
-let errorData = data 
-| where Name == 'kubelet_docker_operations_errors' 
-| project-rename ErrorCount = Rate; 
-operationData 
-| join kind = inner ( errorData ) on TimeGenerated, HostName, OperationType 
-| project-away TimeGenerated1, Name1, HostName1, OperationType1 
-| extend SuccessPercentage = iif(OperationCount == 0, 1.0, 1 - (ErrorCount / OperationCount))
+InsightsMetrics
+| where Namespace == 'container.azm.ms/diskio'
+| where TimeGenerated > ago(1h)
+| where Name == 'reads'
+| extend Tags = todynamic(Tags)
+| extend HostName = tostring(Tags.hostName), Device = Tags.name
+| extend NodeDisk = strcat(Device, "/", HostName)
+| order by NodeDisk asc, TimeGenerated asc
+| serialize
+| extend PrevVal = iif(prev(NodeDisk) != NodeDisk, 0.0, prev(Val)), PrevTimeGenerated = iif(prev(NodeDisk) != NodeDisk, datetime(null), prev(TimeGenerated))
+| where isnotnull(PrevTimeGenerated) and PrevTimeGenerated != TimeGenerated
+| extend Rate = iif(PrevVal > Val, Val / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1), iif(PrevVal == Val, 0.0, (Val - PrevVal) / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1)))
+| where isnotnull(Rate)
+| project TimeGenerated, NodeDisk, Rate
+| render timechart
+
 ```
 
-出力には、次のような結果が示されます。
+Azure Monitor によって収集された Prometheus メトリックを名前空間でフィルター処理して表示するには、"prometheus" を指定します。 `default` kubernetes 名前空間から Prometheus メトリックを表示するクエリの例を次に示します。
 
-![データ インジェスト ボリュームのクエリ結果をログに記録する](./media/container-insights-log-search/log-query-example-prometheus-metrics.png)
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| extend tags=parse_json(Tags)
+| summarize count() by Name
+```
+
+prometheus のデータは、名前で直接照会することもできます。
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| where Name contains "some_prometheus_metric"
+```
+
+### <a name="query-config-or-scraping-errors"></a>クエリ構成エラーまたはスクラップ エラー
+
+構成エラーまたはスクラップ エラーを調査するために、次のクエリの例では、`KubeMonAgentEvents` テーブルから情報イベントが返されます。
+
+```
+KubeMonAgentEvents | where Level != "Info" 
+```
+
+出力では、次のような結果が示されます。
+
+![エージェントからの情報イベントのクエリ結果をログに記録する](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
 ## <a name="next-steps"></a>次の手順
 

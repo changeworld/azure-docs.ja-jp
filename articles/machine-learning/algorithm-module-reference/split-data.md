@@ -1,24 +1,24 @@
 ---
 title: 'Split Data (データの分割): モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Split Data (データの分割) モジュールを使用して、データセットを 2 つの異なるセットに分割する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Split Data (データの分割) モジュールを使用して、データセットを 2 つの異なるセットに分割する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692649"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492648"
 ---
 # <a name="split-data-module"></a>Split Data (データの分割) モジュール
 
-この記事では、Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 このモジュールを使用して、データセットを 2 つの異なるセットに分割します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "72692649"
 > 分割モードを選択する前に、すべてのオプションに目を通して、ご自分で必要とする分割の種類を決定してください。
 > 分割モードを変更すると、その他のすべてのオプションがリセットされる可能性があります。
 
-1. インターフェイスで、**Split Data (データの分割)** モジュールをパイプラインに追加します。 このモジュールは、 **[Data Transformation]\(データ変換\)** の **[Sample and Split]\(サンプルおよび分割\)** カテゴリにあります。
+1. デザイナーで、**Split Data (データの分割)** モジュールをパイプラインに追加します。 このモジュールは、 **[Data Transformation]\(データ変換\)** の **[Sample and Split]\(サンプルおよび分割\)** カテゴリにあります。
 
 2. **Splitting mode (分割モード)** : 用意しているデータの種類と、そのデータを分割する方法に応じて、次のモードのいずれかを選択します。 各分割モードには、さまざまなオプションがあります。 詳細な手順と例については、次のトピックをクリックしてください。 
 
@@ -45,7 +45,8 @@ ms.locfileid: "72692649"
     - **Relative Expression Split (相対表現分割)** : 数値の列に条件を適用する場合は常に、このオプションを使用します。 数値は日付/時刻フィールドや、年齢または金額を含む列、または割合にもなることがあります。 たとえば、アイテムのコスト、年齢の範囲別のグループ ユーザー、またはカレンダー日付別に異なるデータに応じて、データ セットを分割する場合があります。
 
 ### <a name="split-rows"></a>Split Rows (行の分割)
-1.  インターフェイス内のご利用のパイプラインに [Split Data (データの分割)](./split-data.md) モジュールを追加して、分割するデータセットを接続します。
+
+1.  デザイナー内のご利用のパイプラインに [Split Data (データの分割)](./split-data.md) モジュールを追加して、分割するデータセットを接続します。
   
 2.  **[Splitting mode]\(分割モード\)** として、 **[Split rows]\(行の分割\)** を選択します。 
 
@@ -114,4 +115,4 @@ ms.locfileid: "72692649"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 10/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798989"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495703"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 
@@ -21,11 +21,13 @@ VPN ゲートウェイは、特定の種類の仮想ネットワーク ゲート
 
 ## <a name="whatis"></a>仮想ネットワーク ゲートウェイとは
 
-仮想ネットワーク ゲートウェイは、作成する特定のサブネットにデプロイされる 2 台以上の仮想マシンで構成され、"*ゲートウェイ サブネット*" と呼ばれます。 ゲートウェイ サブネットに配置される VM は、仮想ネットワーク ゲートウェイの作成時に作成されます。 仮想ネットワーク ゲートウェイの VM は、ゲートウェイ固有のルーティング テーブルとゲートウェイ サービスを含むように構成されます。 仮想ネットワーク ゲートウェイの一部である VM を直接構成することはできません。また、ゲートウェイ サブネットに、その他のリソースをデプロイすべきではありません。
+仮想ネットワーク ゲートウェイは、"*ゲートウェイ サブネット*" と呼ばれる、作成する特定のサブネットにデプロイされる 2 台以上の VM で構成されます。 仮想ネットワーク ゲートウェイ VM には、ルーティング テーブルが含まれ、特定のゲートウェイ サービスが実行されます。 これらの VM は、仮想ネットワーク ゲートウェイを作成するときに作成されます。 仮想ネットワーク ゲートウェイの一部である VM を直接構成することはできません。
+
+仮想ネットワーク ゲートウェイに対して構成する設定の 1 つが、ゲートウェイの種類です。 ゲートウェイの種類では、仮想ネットワーク ゲートウェイの使用方法と、ゲートウェイによって実行されるアクションを指定します。 ゲートウェイの種類 "Vpn" は、作成される仮想ネットワーク ゲートウェイの種類が、ExpressRoute ゲートウェイではなく、"VPN ゲートウェイ" であることを示します。 仮想ネットワークには、[共存](#coexisting)する接続構成のように、VPN ゲートウェイと ExpressRoute ゲートウェイの 2 つの仮想ネットワーク ゲートウェイを含めることができます。 詳細については、「[ゲートウェイの種類](vpn-gateway-about-vpn-gateway-settings.md#gwtype)」を参照してください。
 
 VPN ゲートウェイを Azure Availability Zones にデプロイすることができます。 これにより、仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、高可用性が提供されます。 Azure Availability Zones にゲートウェイをデプロイすると、オンプレミス ネットワークの Azure への接続をゾーン レベルの障害から保護しながら、ゲートウェイを 1 つのリージョン内に物理的かつ論理的に分離できます。 「[Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて](about-zone-redundant-vnet-gateways.md)」を参照してください。
 
-仮想ネットワーク ゲートウェイの作成は、完了するまでに最大で 45 分かかる場合があります。 仮想ネットワーク ゲートウェイを作成すると、ゲートウェイ VM はゲートウェイ サブネットにデプロイされ、指定した設定で構成されます。 構成する設定の 1 つは、ゲートウェイの種類です。 ゲートウェイの種類 "vpn" は、作成される仮想ネットワーク ゲートウェイの種類が VPN ゲートウェイであることを示します。 VPN ゲートウェイを作成した後、その VPN ゲートウェイと別の VPN ゲートウェイ間に IPsec/IKE VPN トンネル接続を作成するか (VNet 間)、VPN ゲートウェイとオンプレミスの VPN デバイス間にクロスプレミス IPsec/IKE VPN トンネル接続を作成できます (サイト間)。 また、ポイント対サイト VPN 接続 (OpenVPN、IKEv2、または SSTP 経由の VPN) を作成することもできます。これにより、会議や自宅などの遠隔地から仮想ネットワークに接続できます。
+仮想ネットワーク ゲートウェイの作成は、完了するまでに最大で 45 分かかる場合があります。 仮想ネットワーク ゲートウェイを作成すると、ゲートウェイ VM はゲートウェイ サブネットにデプロイされ、指定した設定で構成されます。 VPN ゲートウェイを作成した後、その VPN ゲートウェイと別の VPN ゲートウェイ間に IPsec/IKE VPN トンネル接続を作成するか (VNet 間)、VPN ゲートウェイとオンプレミスの VPN デバイス間にクロスプレミス IPsec/IKE VPN トンネル接続を作成できます (サイト間)。 また、ポイント対サイト VPN 接続 (OpenVPN、IKEv2、または SSTP 経由の VPN) を作成することもできます。これにより、会議や自宅などの遠隔地から仮想ネットワークに接続できます。
 
 ## <a name="configuring"></a>VPN ゲートウェイの構成
 

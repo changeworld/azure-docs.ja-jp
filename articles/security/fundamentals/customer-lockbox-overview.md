@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 06/20/2019
-ms.openlocfilehash: 7ca5c890b1f3161923cd808c5ecec0ccf0165d64
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727506"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466410"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 
@@ -91,7 +91,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
 ![Azure カスタマー ロックボックス - アクティビティ ログ](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios"></a>サポートされるサービスとシナリオ
+## <a name="supported-services-and-scenarios-in-general-availability"></a>一般提供でサポートされるサービスとシナリオ
 
 次のサービスとシナリオは、現在、カスタマー ロックボックスで一般提供されています。
 
@@ -108,6 +108,23 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 #### <a name="detailed-audit-logs"></a>詳細な監査ログ
 
 リモート デスクトップ アクセスが関係するシナリオでは、Windows イベント ログを使用して Microsoft のエンジニアが行ったアクションを確認できます。 Azure Security Center を使用してイベント ログを収集し、データをワークスペースにコピーして分析することを検討してください。 詳細については、「[Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)」を参照してください。
+
+## <a name="supported-services-and-scenarios-in-preview"></a>プレビューでサポートされるサービスとシナリオ
+
+カスタマー ロックボックスのプレビューで現在提供されているサービスは次のとおりです。
+
+- Azure Storage 
+
+- Azure SQL DB 
+
+- Azure Data Explorer 
+
+- 仮想マシン (現在、メモリ ダンプとマネージド ディスクへのアクセスも含まれます) 
+
+- Azure サブスクリプションの譲渡
+
+組織でこれらのプレビュー オファリングのカスタマー ロックボックスを有効にするには、[Azure パブリック プレビュー用カスタマー ロックボックス](https://aka.ms/customerlockbox/insiderprogram)にサインアップします。
+
 
 ## <a name="exclusions"></a>除外
 

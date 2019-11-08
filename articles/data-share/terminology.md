@@ -1,21 +1,21 @@
 ---
-title: Azure Data Share プレビューの用語
-description: Azure Data Share プレビューで使用されるリソースの説明に使用される一般的な用語 (データ プロバイダー、デー タコンシューマー、データ共有、共有サブスクリプション、スナップショット、招待、受信者) について説明します。
+title: Azure Data Share の用語
+description: Azure Data Share で使用されるリソースの説明に使用される一般的な用語 (データ プロバイダー、データ コンシューマー、データ共有、共有サブスクリプション、スナップショット、招待、受信者) について説明します。
+ms.service: data-share
 author: joannapea
 ms.author: joanpo
-ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166271"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468544"
 ---
-# <a name="azure-data-share-preview-concepts"></a>Azure Data Share プレビューの概念 
+# <a name="azure-data-share-concepts"></a>Azure Data Share の概念 
 
-Azure Data Share プレビューでは、データ共有に関連するいくつかの新しい用語が導入されています。 この記事では、サービス全般でよく使用される用語について説明します。 
+Azure Data Share では、データ共有に関連するいくつかの新しい用語が導入されています。 この記事では、サービス全般でよく使用される用語について説明します。 
 
 ## <a name="data-provider"></a>データ プロバイダー
 
@@ -64,4 +64,3 @@ Azure Data Share プレビューでは、データ共有に関連するいくつ
 ## <a name="next-steps"></a>次の手順
 
 データの共有を始める方法については、[データの共有](share-your-data.md)に関するチュートリアルをご覧ください。
-

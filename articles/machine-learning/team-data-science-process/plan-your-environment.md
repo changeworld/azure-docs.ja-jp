@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d8eed4f2425cdbfec7d3addad11ddaba57e5370e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46d0e8aa1fa934f778e950f0187a853ba46772d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704484"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495040"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 
@@ -30,8 +30,6 @@ ms.locfileid: "64704484"
 * データの特性
 * データセットの品質
 * 推奨されるツールと言語
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="logistic-questions-data-locations-and-movement"></a>ロジスティックの確認事項: データの場所と移動
 
@@ -68,7 +66,7 @@ ms.locfileid: "64704484"
 データをさまざまなストレージや処理環境に取り込んだり読み込んだりするために使用する手順とリソースについては、以下をご覧ください。
 
 * [分析用のストレージ環境にデータを読み込む](ingest-data.md)
-* [さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする](../studio/import-data.md)
+* [さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする](../studio/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>データを定期的なスケジュールで移動したり移行中に変更したりする必要がありますか。
 
@@ -81,7 +79,7 @@ ms.locfileid: "64704484"
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>どのくらいの量のデータが Azure に移動されますか。
 
-非常に大きいデータセットの場合、特定の環境のストレージ容量を超える可能性があります。 たとえば、次のセクションで、Machine Learning Studio のサイズ制限の説明を参照してください。 このような場合、分析中はデータのサンプルを使用できます。 さまざまな Azure 環境でデータセットをダウンサンプリングする方法の詳細については、 [Team Data Science Process のデータのサンプリング](sample-data.md)に関するページをご覧ください。
+非常に大きいデータセットの場合、特定の環境のストレージ容量を超える可能性があります。 たとえば、次のセクションで、Machine Learning Studio (クラシック) のサイズ制限の説明を参照してください。 このような場合、分析中はデータのサンプルを使用できます。 さまざまな Azure 環境でデータセットをダウンサンプリングする方法の詳細については、 [Team Data Science Process のデータのサンプリング](sample-data.md)に関するページをご覧ください。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>データの特性の確認事項: 型、形式、およびサイズ
 
@@ -108,7 +106,7 @@ ms.locfileid: "64704484"
 * 中程度:2 GB から 10 GB
 * 大きい:10 GB 超
 
-Azure Machine Learning 環境を例とします。
+たとえば Azure Machine Learning Studio (クラシック) 環境を使用します。
 
 * Azure Machine Learning Studio でサポートされているデータ形式および型の一覧については、「 [サポートされるデータ形式とデータ型](../studio/import-data.md#supported-data-formats-and-data-types) 」セクションを参照してください。
 * 分析プロセスで使用されるその他の Azure サービスの制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)」を参照してください。

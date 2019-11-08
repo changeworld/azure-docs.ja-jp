@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663396"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490820"
 ---
 # <a name="exploration-and-exploitation"></a>探索とエクスプロイト
 
@@ -25,22 +25,15 @@ Personalizer は Rank 呼び出しを受信すると、次のどちらかの Rew
 * 現在の機械学習モデルに基づいて最も可能性の高いユーザー動作を照合するためにエクスプロイトを使用する。
 * ランクで最も可能性が高いアクションを照合しない検索を使用する。
 
-<!--
-Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
--->
 Personalizer は現在、*epsilon greedy* と呼ばれる検索アルゴリズムを使用しています。 
 
 ## <a name="choosing-an-exploration-setting"></a>探索設定の選択
 
-Azure portal の Personalizer 用 **[設定]** ページで、探索に使用するトラフィックの割合を構成します。 この設定は、探索を実行する Rank 呼び出しの割合を決定します。 
+Azure portal の Personalizer 用の **[構成]** ページで、探索に使用するトラフィックの割合を構成します。 この設定は、探索を実行する Rank 呼び出しの割合を決定します。 
 
 Personalizer は、Rank 呼び出しごとに、この確率で探索するかエクスプロイトするかを判断します。 これは、特定のユーザー ID の取り扱いをロックする一部の A/B フレームワークにおける動作とは異なります。
 
 ## <a name="best-practices-for-choosing-an-exploration-setting"></a>探索設定の選択のベストプラクティス
-
-<!--
-@edjez - you say what not to do, but make no recommendations of what **to** do. 
--->
 
 探索設定の選択は、モデルを改善するために、探索に使用するユーザー操作の比率に関するビジネス上の意思決定です。 
 

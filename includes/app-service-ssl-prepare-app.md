@@ -8,26 +8,30 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ecdd419331c88e712644851f9213861f882cf0f6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a44dc35c27cd084e6589482f180b13b258f0b24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181335"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471011"
 ---
 ## <a name="prepare-your-web-app"></a>Web アプリの準備
 
 カスタム SSL 証明書 (サードパーティ証明書または App Service 証明書) を Web アプリにバインドするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard**、**Premium**、**Isolated** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
 
-### <a name="log-in-to-azure"></a>Azure にログインする
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 [Azure Portal](https://portal.azure.com)を開きます。
 
 ### <a name="navigate-to-your-web-app"></a>Web アプリに移動する
 
-左側のメニューで **[App Services]** をクリックした後、Web アプリの名前をクリックします。
+**[App Services]** を検索して選択します。
 
-![Web アプリの選択](./media/app-service-ssl-prepare-app/select-app.png)
+![[App Services] を選択します](./media/app-service-ssl-prepare-app/app-services.png)
+
+**[App Services]** ページで、Azure アプリの名前を選択します。
+
+![Azure アプリへのポータル ナビゲーション](./media/app-service-ssl-prepare-app/select-app.png)
 
 Web アプリの管理ページが表示されます。  
 

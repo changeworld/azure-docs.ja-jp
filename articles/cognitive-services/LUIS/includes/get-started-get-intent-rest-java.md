@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: 7199dfaaa476e4be27929010b76a6e0544857bdb
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: afa2dc950efe4c03b41afbd6090d9bf29ac5a798
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838520"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499701"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -21,37 +21,164 @@ ms.locfileid: "71838520"
 * [Visual Studio Code](https://code.visualstudio.com/) または任意の IDE。
 * パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
-
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
-Java を使用して、前の手順でブラウザー ウィンドウに表示されたものと同じ結果にアクセスできます。 プロジェクトには、必ず Apache ライブラリを追加してください。
+Java を使用して、予測エンドポイント GET [API](https://aka.ms/luis-apim-v3-prediction) にクエリを実行し、予測結果を取得します。
 
-1. `LuisGetRequest.java` という名前のファイルに次のコードをコピーしてクラスを作成します。
+1. `lib` という名前のサブディレクトリを作成し、次の Java ライブラリにコピーします。
 
-   [!code-java[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/java/call-endpoint.java)]
+    * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
-2. `YOUR-KEY` 変数の値は、実際の LUIS キーに置き換えます。
+1. `Predict.java` という名前のファイルに次のコードをコピーしてクラスを作成します。
 
-3. コマンド ラインから「`javac -cp .;<FILE_PATH>\* LuisGetRequest.java`」と入力して、java プログラムをコンパイルします。ファイル パスは、実際のパスに置き換えてください。
 
-4. コマンド ラインから「`java -cp .;<FILE_PATH>\* LuisGetRequest.java`」と入力して、アプリケーションを実行します。ファイル パスは、実際のパスに置き換えてください。 前の手順でブラウザー ウィンドウに表示されたものと同じ JSON が表示されます。
-
-    ![コンソール ウィンドウに LUIS の JSON の結果が表示される](../media/luis-get-started-java-get-intent/console-turn-on.png)
+    ```java
+    import java.io.*;
+    import java.net.URI;
+    import org.apache.http.HttpEntity;
+    import org.apache.http.HttpResponse;
+    import org.apache.http.client.HttpClient;
+    import org.apache.http.client.methods.HttpGet;
+    import org.apache.http.client.utils.URIBuilder;
+    import org.apache.http.impl.client.HttpClients;
+    import org.apache.http.util.EntityUtils;
     
+    public class Predict {
+    
+        public static void main(String[] args) 
+        {
+            HttpClient httpclient = HttpClients.createDefault();
+    
+            try
+            {
+    
+                // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
+                String AppId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
+                
+                // Add your endpoint key 
+                String Key = "YOUR-KEY";
+    
+                // Add your endpoint, example is westus.api.cognitive.microsoft.com
+                String Endpoint = "YOUR-ENDPOINT";
+    
+                String Utterance = "turn on all lights";
+    
+                // Begin endpoint URL string building
+                URIBuilder endpointURLbuilder = new URIBuilder("https://" + Endpoint + "/luis/prediction/v3.0/apps/" + AppId + "/slots/production/predict?");
+    
+                // query string params
+                endpointURLbuilder.setParameter("query", Utterance);
+                endpointURLbuilder.setParameter("subscription-key", Key);
+                endpointURLbuilder.setParameter("show-all-intents", "true");
+                endpointURLbuilder.setParameter("verbose", "true");
+    
+                // create URL from string
+                URI endpointURL = endpointURLbuilder.build();
+    
+                // create HTTP object from URL
+                HttpGet request = new HttpGet(endpointURL);
+    
+                // access LUIS endpoint - analyze text
+                HttpResponse response = httpclient.execute(request);
+    
+                // get response
+                HttpEntity entity = response.getEntity();
+    
+    
+                if (entity != null) 
+                {
+                    System.out.println(EntityUtils.toString(entity));
+                }
+            }
+    
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }   
+    }    
+    ```
 
+1. 次の値を置き換えます。
+
+    * `YOUR-KEY` (スターター キーを使用)
+    * `YOUR-ENDPOINT` (エンドポイントを使用) (例、`westus2.api.cognitive.microsoft.com`)
+
+
+1. Java プログラムをコマンド ラインからコンパイルします。 
+
+    ```console
+    javac -cp ":lib/*" Predict.java
+    ```
+
+1. コマンド ラインから Java プログラムを実行します。
+
+    ```console
+    java -cp ":lib/*" Predict
+    ```
+
+1. JSON 形式の予測応答を確認します。
+
+    ```console
+    {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
+    ```
+
+    読みやすくするために書式設定された JSON 応答: 
+
+    ```JSON
+    {
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
 
 ## <a name="luis-keys"></a>LUIS キー
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイック スタートを完了したら、Visual Studio プロジェクトを閉じ、ファイル システムからプロジェクトのディレクトリを削除します。 
+このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。 
 
 ## <a name="next-steps"></a>次の手順
 

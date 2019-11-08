@@ -1,7 +1,7 @@
 ---
 title: テキストからの N gram 特徴抽出モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で N-gram の抽出モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で N-gram の抽出モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 0803627b8d2e9fb3db2c7c96d7dd74e9b275f5d8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 71c1afd294b880f68849b283ea1a4b058d744801
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171005"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497851"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>テキストからの N gram 特徴抽出モジュール リファレンス
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。 テキストからの N-gram 特徴抽出モジュールを使用して、非構造化テキスト データの "*特徴を抽出*" します。 
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。 テキストからの N-gram 特徴抽出モジュールを使用して、非構造化テキスト データの "*特徴を抽出*" します。 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>テキストからの N-gram 特徴抽出モジュールの構成
 
@@ -32,7 +32,7 @@ ms.locfileid: "71171005"
 
 ### <a name="create-a-new-n-gram-dictionary"></a>新しい N-gram 辞書を作成する
 
-1.  テキストからの N-gram 特徴抽出モジュールを実験に追加し、処理するテキストが含まれているデータセットを接続します。
+1.  テキストからの N-gram 特徴抽出モジュールをパイプラインに追加し、処理するテキストが含まれているデータセットを接続します。
 
 1.  **テキスト列**を使用して、抽出するテキストを含む string 型の列を選択します。 結果は詳細であるため、一度に処理できるのは 1 列だけです。
 
@@ -73,11 +73,11 @@ ms.locfileid: "71171005"
 
 1. 特徴ベクトルを正規化するには、 **[Normalize n-gram feature vectors]\(N-gram の特徴ベクトルの正規化\)** を選択します。 このオプションが有効になっている場合、各 N-gram の特徴ベクトルは L2 ノルムで除算されます。
 
-1. 実験を実行します。
+1. パイプラインを実行します。
 
 ### <a name="use-an-existing-n-gram-dictionary"></a>既存の N-gram 辞書を使用する
 
-1.  テキストからの N-gram 特徴抽出モジュールを実験に追加し、処理するテキストが含まれているデータセットを **[Dataset]\(データセット\)** ポートに接続します。
+1.  テキストからの N-gram 特徴抽出モジュールをパイプラインに追加し、処理するテキストが含まれているデータセットを **[データセット]** ポートに接続します。
 
 1.  **[Text column]\(テキスト列\)** を使用して、特徴を抽出するテキストを含むテキスト列を選択します。 既定では、モジュールでは **string** 型のすべての列が選択されます。 最良の結果を得るためには、一度に 1 列ずつ処理します。
 
@@ -92,7 +92,7 @@ ms.locfileid: "71171005"
 
 1.  他のすべてのオプションについては、[前のセクション](#create-a-new-n-gram-dictionary)にあるプロパティの説明を参照してください。
 
-1.  実験を実行します。
+1.  パイプラインを実行します。
 
 ### <a name="score-or-publish-a-model-that-uses-n-grams"></a>N-gram を使用するモデルのスコア付けまたは発行を行う
 
@@ -102,7 +102,7 @@ ms.locfileid: "71171005"
 
 1.  スコアリング ワークフローで、テキストからの N-gram 特徴抽出モジュールを変更し、 **[Vocabulary mode]\(ボキャブラリ モード\)** パラメーターを **[ReadOnly]\(読み取り専用\)** に設定します。 それ以外はすべて同じままにします。
 
-1.  実験を発行するには、 **[Result Vocabulary]\(結果のボキャブラリ\)** をデータセットとして保存します。
+1.  パイプラインを発行するには、 **[結果のボキャブラリ]** をデータセットとして保存します。
 
 1.  スコアリング グラフで、保存したデータセットをテキストからの N-gram 特徴抽出モジュールに接続します。
 
@@ -137,4 +137,4 @@ ms.locfileid: "71171005"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

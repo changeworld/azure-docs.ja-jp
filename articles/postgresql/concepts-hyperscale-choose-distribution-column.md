@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 0b29567dcd22c79c30e70594066f7ff87c18fdb0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: a61c52773c4c6036a76d7b233988c713c1da861f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947589"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482855"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL でディストリビューション列を選択する - Hyperscale (Citus)
 
-各テーブルのディストリビューション列を選択することは、モデリングに関する決定事項の中でも最も重要なものの 1 つです。 Azure Database for PostgreSQL – Hyperscale (Citus) プレビューは、行のディストリビューション列の値に基づいて、行をシャードに格納します。
+各テーブルのディストリビューション列を選択することは、モデリングに関する決定事項の中でも最も重要なものの 1 つです。 Azure Database for PostgreSQL – Hyperscale (Citus) では、行のディストリビューション列の値に基づいて、行をシャードに格納します。
 
 適切な選択では、同じ物理ノード上の関連データがまとめてグループ化され、クエリが高速になり、すべての SQL 機能のサポートが追加されます。 不適切な選択では、システムの動作が遅くなり、ノード全体ですべての SQL 機能をサポートできなくなります。
 

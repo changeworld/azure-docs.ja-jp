@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: dc648b30dc1236080be06044f510557ae0ce9476
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: b5e5df111b81cb60b6d194be190421bdb5ce2683
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638317"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467700"
 ---
-# <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>主題の領域、意図、エンティティによって LUIS アプリを計画します
+# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>サブジェクト ドメインとデータ抽出を使用して LUIS アプリ スキーマを計画する
 
-アプリを計画するには、主題領域ドメインを特定します。 これには、アプリケーションに関連する可能性のある意図やエンティティが含まれます。  
+LUIS アプリ スキーマには、サブジェクト ドメインに関連する意図とエンティティが含まれています。 意図はユーザーの発話を分類し、エンティティはユーザー発話からデータを抽出します。 
 
 ## <a name="identify-your-domain"></a>ドメインの特定
 
@@ -32,10 +32,16 @@ LUIS アプリは、ドメイン固有のトピックを中心としています
 
 ## <a name="identify-your-intents"></a>意図の特定
 
-ご自身のアプリケーションのタスクにとって重要な[意図](luis-concept-intent.md)について考えます。 たとえば、フライトを予約し、目的地の天気を確認する機能を備えた旅行アプリの例で見てみましょう。 これらのアクションに対しては "BookFlight" 意図と "GetWeather" 意図を定義できます。 さらに多くの機能を備えたより複雑なアプリでは、意図がさらに多くなるため、意図を定義するときは、細かくなりすぎないように気を付ける必要があります。 たとえば、"BookFlight" と "BookHotel" はそれぞれ別の意図にする必要がありますが、"BookInternationalFlight" と "BookDomesticFlight" は非常に似ています。
+ご自身のアプリケーションのタスクにとって重要な[意図](luis-concept-intent.md)について考えます。 
+
+たとえば、フライトを予約し、目的地の天気を確認する機能を備えた旅行アプリの例で見てみましょう。 これらのアクションの `BookFlight` と `GetWeather` 意図を定義できます。 
+
+さらに多くの機能を備えたより複雑なアプリでは、意図がさらに多くなるため、意図を定義するときは、意図が細かくなりすぎないように気を付ける必要があります。 たとえば、`BookFlight` と `BookHotel` は別の意図である必要がありますが、`BookInternationalFlight` と `BookDomesticFlight` は似すぎているかもしれません。
 
 > [!NOTE]
-> 使用する意図の数は、ご自身のアプリで実行する必要がある機能の数に合わせることをお勧めします。 定義する意図が多すぎると、LUIS で発話を正しく分類するのが難しくなります。 少なすぎると、一般的になりすぎて、重複が発生する可能性があります。
+> 使用する意図の数は、ご自身のアプリで実行する必要がある機能の数に合わせることをお勧めします。 定義する意図が多すぎると、LUIS で発話を正しく分類するのが難しくなります。 少なすぎると、一般的になりすぎて、重複する可能性があります。
+
+全体的なユーザーの意図を特定する必要がない場合は、すべてのユーザーの発話例を意図「なし」に追加します。 アプリで必要な意図が増えた場合は、後で作成できます。 
 
 ## <a name="create-example-utterances-for-each-intent"></a>各意図の発話の例の作成
 
@@ -51,7 +57,4 @@ LUIS アプリは、ドメイン固有のトピックを中心としています
 
 ## <a name="next-steps"></a>次の手順
 
-アプリをトレーニングして発行し、アプリによってエンドポイント発話が取得されたら、[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)、[フレーズ リスト](luis-concept-feature.md)、[パターン](luis-concept-patterns.md)を使用した予測機能強化の実装を計画します。 
-
-
-* LUIS アプリを作成するための簡単なチュートリアルについては、[最初の Language Understanding Intelligent Service (LUIS) アプリの作成](luis-get-started-create-app.md)に関するページをご覧ください。
+一般的な[開発サイクル](luis-concept-app-iteration.md)について学習します。  

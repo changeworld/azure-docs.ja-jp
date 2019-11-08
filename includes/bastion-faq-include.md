@@ -5,29 +5,19 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 06/17/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 29ab9b3c33aae6005510c34b207c7f87714149e5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4f49220da5d996615c9f8ef7cad2b6c6793866b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608251"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466253"
 ---
-### <a name="preview"></a>パブリック プレビューに参加するにはどうすればよいですか?
-
-パブリック プレビューに参加するには、オンボードする必要があります。 [この記事](../articles/bastion/bastion-create-host-portal.md)内の手順を使用して、新しい Azure Bastion リソースを作成します。 現時点で、このサービスにアクセスして使用するには、通常の Azure portal ではなく、[Azure portal - プレビュー](https://aka.ms/BastionHost)を使用する必要があります。
-
-### <a name="regions"></a>プレビュー期間に利用できるのはどのリージョンですか?
-
-Bastion リソースは、[Azure portal - プレビュー リンク](https://aka.ms/BastionHost)経由でこれらのプレビュー リージョンのいずれかにデプロイして使用することができます。
+### <a name="regions"></a>利用可能なリージョン
 
 [!INCLUDE [region](bastion-regions-include.md)]
-
-### <a name="portal"></a>Azure portal 内で Bastion リソースが見つかりません。 どうすればよいですか。
-
-通常の Azure portal ではなく、[Azure portal - プレビュー リンク](https://aka.ms/BastionHost)を使用していることを確認してください。
 
 ### <a name="publicip"></a>自分の仮想マシンにはパブリック IP が必要ですか?
 
@@ -35,7 +25,7 @@ Azure Bastion サービスを使用して接続する Azure 仮想マシンに�
 
 ### <a name="rdpssh"></a>RDP または SSH クライアントは必要ですか?
 
-ご使用の Azure portal 内でお客様の Azure 仮想マシンに RDP または SSH アクセスするために RDP または SSH クライアントは必要ありません。 ポータルのプレビュー フライトにアクセスするには、[Azure portal - プレビュー リンク](https://aka.ms/BastionHost)を使用します。 これにより、ブラウザー内で直接お客様の仮想マシンに RDP または SSH アクセスすることができます。
+ご使用の Azure portal 内でお客様の Azure 仮想マシンに RDP または SSH アクセスするために RDP または SSH クライアントは必要ありません。 [Azure portal](https://portal.azure.com) を使用して、ブラウザー内で仮想マシンに直接 RDP または SSH アクセスすることができます。
 
 ### <a name="agent"></a>Azure 仮想マシン内で実行するエージェントは必要ですか?
 
@@ -43,7 +33,7 @@ Azure Bastion サービスを使用して接続する Azure 仮想マシンに�
 
 ### <a name="browsers"></a>どのブラウザーがサポートされていますか?
 
-パブリック プレビュー期間は、Windows 上で Microsoft Edge ブラウザーまたは Google Chrome をご使用ください。 Apple Mac では、Google Chrome ブラウザーをご使用ください。 Microsoft Edge Chromium も Windows と Mac の両方でサポートされます。
+Windows では Microsoft Edge ブラウザーまたは Google Chrome をご使用ください。 Apple Mac では、Google Chrome ブラウザーをご使用ください。 Microsoft Edge Chromium も Windows と Mac の両方でサポートされます。
 
 ### <a name="roles"></a>仮想マシンにアクセスするには、なんらかのロールが必要ですか?
 
@@ -53,10 +43,10 @@ Azure Bastion サービスを使用して接続する Azure 仮想マシンに�
 * 仮想マシンのプライベート IP を使用する NIC に対する閲覧者ロール
 * Azure Bastion リソースに対する閲覧者ロール
 
-### <a name="previewbill"></a>価格 - このプレビューへの参加に対しては課金されますか?
+### <a name="pricingpage"></a>料金はどのようになっていますか?
 
-パブリック プレビュー期間中は、一部のみ課金されます。 しかし、お客様のデプロイに適用される SLA はありません。 詳細については、 [価格に関するページ](https://aka.ms/BastionHostPricing)を参照してください。
+詳細については、 [価格に関するページ](https://aka.ms/BastionHostPricing)を参照してください。
 
-### <a name="previewbill"></a>Bastion セッションの開始前に "セッションの有効期限が切れています" というエラー メッセージを受け取るのはなぜですか?
+### <a name="session"></a>Bastion セッションの開始前に "セッションの有効期限が切れています" というエラー メッセージを受け取るのはなぜですか?
 
 セッションは Azure portal からのみ開始される必要があります。 もう一度 Azure portal にサインインして、自分のセッションを開始してください。 別のブラウザー セッションまたはタブから直接 URL に移動する場合に、このエラーが発生します。 これは、自分のセッションがより安全で、セッションが Azure portal からのみアクセスできることを確保するのに役立ちます。

@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 27578e50c56a9c7dac3d74b88e14d0f8fbe9d402
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784986"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466874"
 ---
-# <a name="introduction-to-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントの概要
+# <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure Cognitive Search における AI の概要
 
-AI エンリッチメントは、Azure Cognitive Search のインデックス作成の機能で、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツをエンリッチメントすることによって、インデックスまたはナレッジ ストアから検索しやすくします。 抽出とエンリッチメントは、インデックス作成パイプラインにアタッチされた*コグニティブ スキル*によって実装されています。 コグニティブ スキルは、以下のカテゴリに分類されます。 
+AI エンリッチメントは、Azure Cognitive Search のインデックス作成の機能で、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツをエンリッチメントすることによって、インデックスまたはナレッジ ストアから検索しやすくします。 抽出とエンリッチメントは、インデックス作成パイプラインにアタッチされた*コグニティブ スキル*によって実装されています。 サービスに組み込まれたコグニティブ スキルは、次のカテゴリに分類されます。 
 
 + **自然言語処理**スキルには、[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[言語検出](cognitive-search-skill-language-detection.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、テキスト操作、および[センチメント検出](cognitive-search-skill-sentiment.md)が含まれます。 これらのスキルによって、構造化されていないテキストが、インデックス内の検索とフィルターが可能なフィールドにマップされた新しい形式を想定できます。
 
@@ -30,11 +30,17 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
 自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Cognitive Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。 アーキテクチャは拡張可能なため、組み込みのスキルでは不十分な場合は、[カスタム スキル](cognitive-search-create-custom-skill-example.md)を作成して追加し、カスタム処理を統合できます。 例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
 > 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
 
 ## <a name="when-to-use-cognitive-skills"></a>いつコグニティブ スキルを使用するか
+
+生コンテンツが、テキスト、画像コンテンツ、または言語検出と翻訳を必要とするコンテンツである場合、組み込みのコグニティブ スキルの使用を検討する必要があります。 組み込みのコグニティブ スキルを通じて AI を適用することで、このコンテンツのロックを解除して、検索およびデータ サイエンス アプリの価値と有用性を向上させることができます。 
+
+さらに、パイプラインに統合したいオープンソース コード、サードパーティ製コード、またはファースト パーティ製コードの追加を検討することもできます。 さまざまなドキュメントの種類の顕著な特徴を識別する分類モデルはこのカテゴリに分類されますが、コンテンツの価値を高めるパッケージを使用することもできます。
+
+### <a name="more-about-built-in-skills"></a>組み込みのスキルの詳細
 
 組み込みのスキルを使用して作られたスキルセットは、次のアプリケーション シナリオに適しています。
 
@@ -49,6 +55,8 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
   多くの場合、BLOB には、単一の "フィールド" にパックされた大規模なコンテンツが含まれています。 画像と自然言語処理のスキルをインデクサーにアタッチすることによって、生のコンテンツに現存するが、それ以外に個別のフィールドとして表示されない新しい情報を作成することができます。 キー フレーズ抽出、感情分析、エンティティ認識 (人、組織、場所) などの、すぐに使用できる組み込みのコグニティブなスキルが役立ちます。
 
   また、組み込みのスキルのテキスト分割、マージ、シェイプ操作を通じて、コンテンツを再構築することもできます。
+
+### <a name="more-about-custom-skills"></a>カスタム スキルの詳細
 
 カスタム スキルは、フォームの認識や、[カスタム スキル Web インターフェイス](cognitive-search-custom-skill-interface.md)で指定してラップするモデルを使用するカスタム エンティティ検出などの、より複雑なシナリオに対応できます。 カスタム スキルの例としては、[Forms Recognizer](/azure/cognitive-services/form-recognizer/overview)、[Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) の統合、[カスタム エンティティ認識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)などがあります。
 

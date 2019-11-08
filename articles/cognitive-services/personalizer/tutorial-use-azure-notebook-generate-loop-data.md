@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515175"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467247"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
 
@@ -81,7 +81,7 @@ Personalizer サービスに対するこの数千もの呼び出しそれぞれ�
 
 ## <a name="configure-personalizer-resource"></a>Personalizer リソースを構成する
 
-Azure portal で、 **[モデルの更新頻度]** が 15 秒に設定され、 **[報酬の待機時間]** が 15 秒に設定された [Personalizer リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)を構成します。 これらの設定は、 **[[設定]](how-to-settings.md#configure-service-settings-in-the-azure-portal)** ページで見つかります。 
+Azure portal で、 **[モデルの更新頻度]** が 15 秒に設定され、 **[報酬の待機時間]** が 15 秒に設定された [Personalizer リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)を構成します。 これらの値は、 **[[構成]](how-to-settings.md#configure-service-settings-in-the-azure-portal)** ページで確認できます。 
 
 |Setting|値|
 |--|--|
@@ -574,11 +574,11 @@ createChart(count,rewards)
 ![このグラフには、テスト期間中に現在の学習ポリシーが成功したことが示されています。](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-理想的な目標は、テストが終了するまでに、このループの平均成功率が 100% から探索を差し引いた割合に近くなることです。 探索の既定の設定は 20% です。 
+理想的な目標は、テストが終了するまでに、このループの平均成功率が 100% から探索を差し引いた割合に近くなることです。 探索の既定値は 20% です。 
 
 `100-20=80`
 
-この探索の設定は、Azure portal の Personalizer リソースの **[設定]** ページで確認できます。 
+この探索値は、Azure portal の Personalizer リソースの **[構成]** ページで確認できます。 
 
 より適切な学習ポリシーを見つけるには、Rank API へのデータに基づいて、ポータルで Personalizer ループに対して[オフライン評価](how-to-offline-evaluation.md)を実行します。
 
@@ -598,7 +598,7 @@ createChart(count,rewards)
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>モデルの更新頻度を 5 分に変更する
 
-1. Azure portal で、引き続き Personalizer リソースで **[設定]** ページを選択します。 
+1. Azure portal で、引き続き Personalizer リソースで **[構成]** ページを選択します。 
 1. **[モデルの更新頻度]** と **[報酬の待機時間]** を 5 分に変更し、 **[保存]** を選択します。
 
 [報酬の待機時間](concept-rewards.md#reward-wait-time)と[モデルの更新頻度](how-to-settings.md#model-update-frequency)の詳細を確認してください。

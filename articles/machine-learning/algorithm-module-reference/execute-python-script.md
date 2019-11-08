@@ -1,24 +1,24 @@
 ---
 title: 'Python スクリプトの実行: モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Python スクリプトの実行モジュールを使用し、Python コードを実行する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Python スクリプトの実行モジュールを使用し、Python コードを実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693788"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497869"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 Python コードを実行するには、このモジュールを使用します。 Python のアーキテクチャと設計原則の詳細については、[次の記事](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)を参照してください。
 
@@ -81,7 +81,7 @@ os.system(f"pip install scikit-misc")
 
 1. **Python スクリプトの実行**モジュールをパイプラインに追加します。
 
-2. インターフェイスから、入力に使用するデータセットを追加して **Dataset1** に接続します。 Python スクリプトでは、このデータセットを **DataFrame1** として参照します。
+2. デザイナーから、入力に使用するデータセットを追加して **Dataset1** に接続します。 Python スクリプトでは、このデータセットを **DataFrame1** として参照します。
 
     Python を使用してデータを生成したい場合や、Python コードを使用してデータを直接モジュールにインポートしたい場合、必ずしもデータセットを使用する必要はありません。
 
@@ -97,7 +97,7 @@ os.system(f"pip install scikit-misc")
 
 5. **[Python スクリプト]** ボックスに、有効な Python スクリプトを入力するか貼り付けます。
 
-    **[Python スクリプト]** ボックスには、データへのアクセスと出力に使用するサンプル コードと共に、いくつかの指示がコメントとして事前に入力されています。 **このコードを編集するか置き換える必要があります。** 大文字と小文字の区別およびインデントに関する Python の規則に必ず従ってください。
+    **[Python スクリプト]** ボックスには、データへのアクセスと出力に使用するサンプル コードと共に、いくつかの指示がコメントとして事前に入力されています。 このコードを編集するか置き換える必要があります。 大文字と小文字の区別およびインデントに関する Python の規則に必ず従ってください。
 
     + スクリプトには、このモジュールのエントリ ポイントとして、`azureml_main` という名前の関数が含まれている必要があります。
     + エントリ ポイント関数には、最大 2 つの入力引数を含めることができます (`Param<dataframe1>` および `Param<dataframe2>`)。
@@ -105,7 +105,7 @@ os.system(f"pip install scikit-misc")
 
     そのため、ZIP ファイルに `mymodule.py` が含まれている場合は、`import mymodule` を使用してインポートすることになります。
 
-    + インターフェイスには 2 つのデータセットを返すことができます。このとき、データセットは `pandas.DataFrame` 型のシーケンスになっている必要があります。 その他の出力は Python コードで作成し、直接 Azure Storage に書き込むことができます。
+    + デザイナーに対しては 2 つのデータセットを返すことができます。このとき、データセットは `pandas.DataFrame` 型のシーケンスになっている必要があります。 その他の出力は Python コードで作成し、直接 Azure Storage に書き込むことができます。
 
 6. パイプラインを実行します。Python スクリプトだけを実行する場合は、このモジュールを選択して **[Run selected]\(選択項目の実行\)** をクリックしてください。
 
@@ -124,4 +124,4 @@ os.system(f"pip install scikit-misc")
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

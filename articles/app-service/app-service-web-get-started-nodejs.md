@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 380e587fc8c921b395d63d1dbca10e2f5fb1b9ba
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433193"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471462"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する 
 
@@ -124,13 +124,13 @@ code .
 1. デプロイ先のオペレーティング システムに基づいて、作成オプションを選択します。
 
     - Linux: **[Create new Web App]\(新しい Web アプリを作成する\)** を選択します。
-    - Windows: **[Create new Web App]\(新しい Web アプリの作成\)、[詳細設定]** の順に選択します。
+    - Windows: **[Create new Web App]\(新しい Web アプリを作成する\)** を選択し、 **[詳細設定]** オプションを選択します。
 
 1. 自分の Web アプリ用にグローバルに一意な名前を入力し、Enter キーを押します。 アプリ名に使用できる有効な文字は "a-z"、"0-9"、"-" です。
 
 1. Linux を対象とする場合は、メッセージが表示されたら Node.js バージョンを選択します。 **LTS** バージョンが推奨されます。
 
-1. *[詳細設定]* * オプションを使用して Windows を対象とする場合は、追加のプロンプトに従います。
+1. **[詳細設定]** オプションを使用して Windows を対象とする場合は、追加のプロンプトに従います。
     1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択し、リソース グループの名前を入力します。
     1. オペレーティング システムとして **[Windows]** を選択します。
     1. 既存の App Service プランを選択するか、新しいプランを作成します。 新しいプランを作成するときに価格レベルを選択できます。

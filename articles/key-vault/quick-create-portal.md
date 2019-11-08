@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3c0b9ad774d336da9bc60d2ef9f7ff2645602b6c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2530fb0bd27cd98b702d804b0cb5a1dc60419f2f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259216"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490414"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -29,14 +29,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
-1. Azure Portal の左上隅にある **[リソースの作成]** オプションを選択します
-
-    ![Key Vault の作成が完了した後の出力](./media/quick-create-portal/search-services.png)
+1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 2. 検索ボックスに「**Key Vault**」と入力します。
 3. 結果の一覧の **[Key Vault]** を選択します。
 4. Key Vault のセクションで、 **[作成]** を選択します。
 5. **[キー コンテナーの作成]** セクションで、次の情報を入力します。
-    - **[名前]** :一意の名前が必要です。 このクイック スタートでは、**Contoso-vault2** を使用します。 
+    - **Name**:一意の名前が必要です。 このクイックスタートでは、**Contoso-vault2** を使用します。 
     - **サブスクリプション**:サブスクリプションを選択します。
     - **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループ名を入力します。
     - **[場所]** プルダウン メニューで場所を選択します。
@@ -60,7 +58,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 2. **[Generate/Import]\(生成/インポート\)** をクリックします。
 3. **[シークレットの作成]** 画面で、次の値を選択します。
     - **[アップロード オプション]** :手動。
-    - **[名前]** :ExamplePassword。
+    - **Name**:ExamplePassword。
     - **[値]** : hVFkk965BuUv
     - 他の値は既定値のままにしておきます。 **Create** をクリックしてください。
 

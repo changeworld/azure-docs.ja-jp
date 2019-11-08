@@ -3,14 +3,14 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.author: mathoma
-ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099154"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496170"
 ---
 この手順では、Azure SQL Database の単一データベースを作成します。 
 
@@ -23,7 +23,7 @@ ms.locfileid: "70099154"
 
 Azure portal を使用して、リソース グループと単一データベースを作成します。
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択してから、検索ボックスに「*Azure SQL*」と入力します。 (オプション) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
+1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。 (オプション) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
 2. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[データベース]** タイルで **[詳細の表示]** を選択すると、さまざまなデータベースに関する追加情報を表示できます。
 3. **[作成]** を選択します。
 
@@ -55,12 +55,12 @@ Azure portal を使用して、リソース グループと単一データベー
 
      ![SQL データベースの詳細](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - **[プロビジョニング済み]** と **[第 5 世代]** を選択します。
+   - **[プロビジョニング済み]** を選択します。
 
      ![プロビジョニング済みの第 4 世代](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - **[最大 vCores]** 、 **[最小 vCores]** 、 **[自動一時停止の遅延]** 、および **[データの最大サイズ]** の設定を確認します。 必要に応じて、これらを変更します。
-   - プレビューの使用条件に同意し、 **[OK]** をクリックします。
+   - **仮想コア**、**データの最大サイズ**の設定を確認します。 必要に応じて、これらを変更します。 
+     - 必要に応じて、 **[構成の変更]** を選択して、ハードウェアの世代を変更することもできます。
    - **[適用]** を選択します。
 
 5. **[追加設定]** タブを選択します。 
@@ -142,6 +142,15 @@ PowerShell を使用して、リソース グループと単一データベー�
    $database
    ```
 
+この記事のこの部分では、次の PowerShell コマンドレットを使用します。
+
+| command | メモ |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 論理サーバー用のファイアウォール規則を作成します。 | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Azure SQL Database の新しい単一データベースを作成します。 | 
+
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 AZ CLI を使用して、リソース グループと単一データベースを作成します。
@@ -207,5 +216,16 @@ AZ CLI を使用して、リソース グループと単一データベースを
       --family Gen5 \
       --capacity 2
    ```
+
+このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+
+| command | メモ |
+|---|---|
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 | 
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | サーバーのファイアウォール規則を作成します。 | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | データベースを作成します。 | 
+
 
 ---

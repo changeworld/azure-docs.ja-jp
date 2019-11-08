@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: b36e967e960ec6a2b39409ea7be5f3f98f69b9c8
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 04e7f582920c4b328de39bda3d37e886e26f8bae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838551"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499605"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -21,66 +21,149 @@ ms.locfileid: "71838551"
 * [Visual Studio Code](https://code.visualstudio.com/)
 * パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
-
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
-Go を使用して、前の手順でブラウザー ウィンドウに表示されたものと同じ結果にアクセスできます。 
+Go を使用して、予測エンドポイント GET [API](https://aka.ms/luis-apim-v3-prediction) にクエリを実行し、予測結果を取得します。
 
-1. `endpoint.go` という名前で新しいファイルを作成します。 次のコードを追加します。
+1. `predict.go` という名前で新しいファイルを作成します。 次のコードを追加します。
     
-   [!code-go[Go code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/go/endpoint.go?range=36-98)]
-
-2. このファイルを作成したディレクトリからコマンド プロンプトで「`go build endpoint.go`」と入力し、Go ファイルをコンパイルします。 このコマンド プロンプトから、ビルドの成功に関する情報は一切返されません。
-
-3. コマンド プロンプトに次のテキストを入力して、コマンド ラインから Go アプリケーションを実行します。 
-
-    ```CMD
-    go run endpoint.go -appID df67dcdb-c37d-46af-88e1-8b97951ca1c2 -endpointKey <add-your-key> -region westus
+    ```go
+    package main
+    
+    /* Do dependencies */
+    import (
+        "fmt"
+        "net/http"
+        "net/url"
+        "io/ioutil"
+        "log"
+    )
+    func main() {
+        
+        // public app
+        var appID = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
+        
+        // utterance for public app
+        var utterance = "turn on all lights"
+        
+        // YOUR-KEY - your starter or prediction key
+        var endpointKey = "YOUR-KEY"
+        
+        // YOUR-ENDPOINT - example is westus2.api.cognitive.microsoft.com
+        var endpoint = "YOUR-ENDPOINT"
+    
+        endpointPrediction(appID, endpointKey, endpoint, utterance)
+    }
+    func endpointPrediction(appID string, endpointKey string, endpoint string, utterance string) {
+    
+        var endpointUrl = fmt.Sprintf("https://%s/luis/prediction/v3.0/apps/%s/slots/production/predict?subscription-key=%s&verbose=true&show-all-intents=true&query=%s", endpoint, appID, endpointKey, url.QueryEscape(utterance))
+        
+        response, err := http.Get(endpointUrl)
+    
+        if err!=nil {
+            // handle error
+            fmt.Println("error from Get")
+            log.Fatal(err)
+        }
+        
+        response2, err2 := ioutil.ReadAll(response.Body)
+    
+        if err2!=nil {
+            // handle error
+            fmt.Println("error from ReadAll")
+            log.Fatal(err2)
+        }
+    
+        fmt.Println("response")
+        fmt.Println(string(response2))
+    }
     ```
-    
-    `<add-your-key>` は、実際のキーの値に置き換えてください。  
+
+1. 次の値を置き換えます。
+
+    * `YOUR-KEY` をご自分のスターター キーに
+    * `YOUR-ENDPOINT` をご使用のエンドポイント (`westus2.api.cognitive.microsoft.com` など) に
+
+1. このファイルを作成したのと同じディレクトリからコマンド プロンプトで次のコマンドを入力し、Go ファイルをコンパイルします。
+
+    ```console
+    go build predict.go
+    ```  
+
+1. コマンド プロンプトに次のテキストを入力して、コマンド ラインから Go アプリケーションを実行します。 
+
+    ```console
+    go run predict.go
+    ```
     
     コマンド プロンプトから次のような応答が返されます。 
     
-    ```CMD
+    ```console
     appID has value df67dcdb-c37d-46af-88e1-8b97951ca1c2
-    endpointKey has value xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    region has value westus
-    utterance has value turn on the bedroom light
+    endpointKey has value a7b206911f714e71a1ddae36928a61cc
+    endpoint has value westus2.api.cognitive.microsoft.com
+    utterance has value turn on all lights
     response
+    {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
+    ```
+
+    読みやすくするために書式設定された JSON:
+
+    ```json
     {
-        "query": "turn on the bedroom light",
-        "topScoringIntent": {
-            "intent": "HomeAutomation.TurnOn",
-            "score": 0.809439957
-        },
-        "entities": [
-            {
-            "entity": "bedroom",
-            "type": "HomeAutomation.Room",
-            "startIndex": 12,
-            "endIndex": 18,
-            "score": 0.8065475
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
-        ]
+        }
     }
     ```
 
 
 ## <a name="luis-keys"></a>LUIS キー
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイック スタートを完了したら、Visual Studio プロジェクトを閉じ、ファイル システムからプロジェクトのディレクトリを削除します。 
+このクイックスタートを完了したら、ファイル システムからファイルを削除します。 
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Go を使った発話の追加とトレーニング](../luis-get-started-go-add-utterance.md)
+> [発話の追加とトレーニング](../luis-get-started-go-add-utterance.md)

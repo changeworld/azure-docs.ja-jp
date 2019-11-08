@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084876"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473313"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -56,7 +56,7 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
-**Q:Azure AD Connect では、2 つのドメインから Azure AD への同期がサポートされていますか。**  
+**Q:Azure AD Connect では、2 つのドメインからの Azure AD への同期はサポートしていますか。**  
 はい、このシナリオはサポートされています。 [複数のドメイン](how-to-connect-install-multiple-domains.md)に関するページを参照してください。
  
 **Q:Azure AD Connect では同じ Active Directory ドメインに対して複数のコネクタを使用できますか。**  
@@ -117,7 +117,7 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 - Azure AD Connect サーバー間でのバージョンの一貫性を可能な限り保持します。 
 
 **Q:ワークグループ コンピューター上に Azure AD Connector アカウントを作成することを Azure AD Connect に許可することができますか?**
-いいえ。  Azure AD Connector アカウントの自動作成を Azure AD Connect に許可するには、該当するコンピューターがドメインに参加している必要があります。  
+No.  Azure AD Connector アカウントの自動作成を Azure AD Connect に許可するには、該当するコンピューターがドメインに参加している必要があります。  
 
 ## <a name="network"></a>ネットワーク
 **Q:ファイアウォールやネットワーク デバイスなど、ネットワーク上で接続を開いたままにすることができる時間を制限するものがあります。Azure AD Connect を使用する場合、クライアント側のタイムアウトしきい値はどのくらいにすればいいでしょうか。**  
@@ -147,10 +147,10 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 
 ## <a name="environment"></a>環境
 **Q:Azure AD Connect のインストール後のサーバー名の変更はサポートされていますか。**  
-いいえ。 サーバー名を変更すると、同期エンジンは SQL データベース インスタンスに接続できなくなり、サービスを開始できなくなります。
+No. サーバー名を変更すると、同期エンジンは SQL データベース インスタンスに接続できなくなり、サービスを開始できなくなります。
 
 **Q:FIPS 対応のコンピューター上で次世代暗号化 (NGC) 同期規則はサポートされていますか?**  
-いいえ。  それらはサポートされていません。
+No.  それらはサポートされていません。
 
 **Q.Azure portal で同期されているデバイス (たとえば HAADJ) を無効にしても、再び有効になるのはなぜですか?**<br>
 同期されているデバイスは、オンプレミスで作成または管理されている場合があります。 同期されているデバイスがオンプレミスで有効になっているときは、前に管理者によって無効になった場合でも、Azure portal で再び有効になることがあります。 同期されているデバイスを無効にするには、オンプレミスの Active Directory を使用して、コンピューター アカウントを無効にします。
@@ -178,7 +178,7 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
 
 **Q:Synchronization Service Manager の [サーバーのエクスポート/インポート] オプションを使用して、サーバー間で構成を移動できますか。**  
-いいえ。 このオプションはすべての構成設定を取得しないため、使用すべきではありません。 代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。 詳細については、「[スウィング移行](how-to-upgrade-previous-version.md#swing-migration)」を参照してください。
+No. このオプションはすべての構成設定を取得しないため、使用すべきではありません。 代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。 詳細については、「[スウィング移行](how-to-upgrade-previous-version.md#swing-migration)」を参照してください。
 
 **Q:Azure サインイン ページではパスワードがキャッシュされますか。また、パスワード入力要素の *autocomplete 属性を "false"* に設定することで、このキャッシュを防ぐことはできますか。**  
 現在、オートコンプリート タグを含め、 **[パスワード]** フィールドの HTML 属性を変更することはできません。 現在、 **[パスワード]** フィールドに属性を追加できるようカスタム Javascript を許可する機能の開発に取り組んでいます。
@@ -187,7 +187,7 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 現在、オートコンプリート タグを含め、 **[パスワード]** 入力フィールドの HTML 属性を変更することはできません。 現在、 **[パスワード]** フィールドに属性を追加できるようカスタム Javascript を許可する機能の開発に取り組んでいます。
 
 **Q:同時セッションを防ぐ方法はありますか。**  
-いいえ。
+No.
 
 ## <a name="auto-upgrade"></a>自動アップグレード
 

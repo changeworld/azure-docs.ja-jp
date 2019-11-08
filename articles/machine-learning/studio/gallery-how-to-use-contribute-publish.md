@@ -1,6 +1,6 @@
 ---
 title: Azure AI ギャラリー
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: Azure AI ギャラリーで分析リソースなどを共有し、発見します。 他のユーザーを参考にしてコミュニティに投稿を行います。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f02c7377242dc031cd2d21d2b57bbd5f839eec3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811553"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619139"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 
@@ -26,10 +26,10 @@ ms.locfileid: "60811553"
 
 Azure AI ギャラリーには、Microsoft とデータ サイエンス コミュニティのメンバーから投稿された多数のさまざまなリソースが含まれています。 チェックの内容は次のとおりです
 
-* **実験** - ギャラリーには、Azure Machine Learning Studio で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
+* **実験** - ギャラリーには、Azure Machine Learning Studio (クラシック) で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
 * **チュートリアル** - 機械学習のテクノロジと概念の紹介や、機械学習に関するさまざまな問題を解決するための高度な手法の説明を行うさまざまなチュートリアルを使用できます。
 * **コレクション** - コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー リソースをグループ化できます。
-* **カスタム モジュール** - 独自の実験で使用する Studio ワークスペースにカスタム モジュールをダウンロードできます。
+* **カスタム モジュール** - Studio (クラシック) ワークスペースにカスタム モジュールをダウンロードして、独自の実験で使用できます。
 * **Jupyter Notebook** - Jupyter Notebook には、単一の対話型のキャンバスにコード、データ視覚化、およびドキュメントが含まれています。 ギャラリーの Notebook は、高度な機械学習手法とソリューションのチュートリアルと詳細な説明を提供します。
 
 ## <a name="discover-and-contribute"></a>検出と投稿
@@ -50,7 +50,7 @@ LinkedIn や Twitter の共有機能を使用するか、またはリンクを�
 
 ## <a name="download-experiments-modules-notebooks"></a>実験、モジュール、ノートブックのダウンロード
 
-**実験**、**カスタム モジュール**、および **Jupyter Notebook** をご自身の固有の Machine Learning Studio ワークスペースにダウンロードして、独自のソリューションの開発に使用できます。
+独自の Machine Learning Studio (クラシック) ワークスペースに**実験**、**カスタム モジュール**、および **Jupyter Notebook** をダウンロードして、独自のソリューションの開発に使用できます。
 
 AI ギャラリー内からリソースをダウンロードするには:
 
@@ -59,15 +59,15 @@ AI ギャラリー内からリソースをダウンロードするには:
 
 ![AI ギャラリーから項目を開く](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-Studio 内からリソースをダウンロードするには:
+クラシック バージョンの Studio 内からリソースをダウンロードするには:
 
-1. Studio 内で、 **[新規]** をクリックします。
+1. クラシック バージョンの Studio で、 **[新規]** を選択します。
 1. **[モジュール]** 、 **[実験]** 、または **[ノートブック]** を選択します。
 1. 参照または検索して、ギャラリー リソースを見つけます。
 1. リソースをマウスでポイントし、 **[Studio で開く]** を選択します。
-    ![Machine Learning Studio 内からギャラリー実験を開く](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
+    ![Machine Learning Studio (クラシック) から内ギャラリー実験を開く](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-ワークスペース内にリソースがあれば、Studio 内で作成した場合と同様に、そのリソースをカスタマイズして使用することが可能です。
+リソースがワークスペースに入力されたら、クラシック バージョンの Studio で作成した場合と同様に、そのリソースをカスタマイズして使用できます。
 
 インポートしたカスタム モジュールを使用するには:
 
@@ -77,12 +77,12 @@ Studio 内からリソースをダウンロードするには:
 
 ## <a name="contribute-experiments"></a>実験を投稿する
 
-分析手法を例示するためや、他のユーザーがソリューション上へジャンプ スタートできるようにするために、Studio 内で開発した**実験**を投稿できます。
+分析手法を示したり、他のユーザーが各自のソリューションをすぐに使用開始できるようにしたりするために、クラシック バージョンの Studio で開発した**実験**を投稿できます。
 ギャラリーではあなたの投稿は他のユーザーから見られるので、投稿のビュー数とダウンロード数を確認できます。
 ユーザーがコメントを追加したり、投稿をデータ サイエンス コミュニティの他のメンバーと共有したりすることもできます。
 また、Disqus などのディスカッション ツールを使ってログインすると、投稿へのコメントに関する通知を受け取ることができます。
 
-1. Studio 内で実験を開きます。
+1. クラシック バージョンの Studio で実験を開きます。
 
 1. 実験キャンバスの下にあるアクションの一覧から、 **[ギャラリーに公開する]** を選択します。
 
@@ -114,7 +114,7 @@ Studio 内からリソースをダウンロードするには:
 
 ### <a name="update-your-experiment"></a>実験を更新する
 
-必要がある場合は、ギャラリーに発行した実験のワークフロー (モジュールやパラメーターなど) に変更を加えることができます。 Machine Learning Studio で、実験に必要な変更を加えたら、もう一度発行します。 発行済みの実験は、ユーザーの変更によって更新されます。
+必要がある場合は、ギャラリーに発行した実験のワークフロー (モジュールやパラメーターなど) に変更を加えることができます。 Machine Learning Studio (クラシック) で、実験に対して必要なすべての変更を加えた後、もう一度発行します。 発行済みの実験は、ユーザーの変更によって更新されます。
 
 ギャラリーでは、実験について次の情報を直接変更できます。
 

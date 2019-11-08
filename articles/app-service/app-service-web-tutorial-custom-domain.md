@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bbb064c358eba2dd64ba9ae86540a30cb56adb66
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 52394eb150a4206b7fb31cdf4b801762511e1a8c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595024"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471349"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -60,9 +60,13 @@ Web アプリにカスタム DNS 名をマップするには、Web アプリの 
 
 [Azure Portal](https://portal.azure.com) を開き、Azure アカウントでサインインします。
 
-### <a name="navigate-to-the-app-in-the-azure-portal"></a>Azure Portal でアプリに移動する
+### <a name="select-the-app-in-the-azure-portal"></a>Azure portal でアプリを選択します
 
-左側のメニューで、 **[App Services]** を選択し、アプリの名前をクリックします。
+**[App Services]** を検索して選択します。
+
+![[App Services] を選択します](./media/app-service-web-tutorial-custom-domain/app-services.png)
+
+**[App Services]** ページで、Azure アプリの名前を選択します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
@@ -156,7 +160,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+> カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 SSL バインドを構成するには、「[Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
 
 手順を飛ばしていたり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
 
@@ -240,7 +244,7 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 ![追加された A レコード](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+> カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 SSL バインドを構成するには、「[Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
 
 手順を飛ばしていたり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
 
@@ -295,7 +299,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> カスタム ドメインの **[安全ではない]\(Not Secure\)** ラベルは、それがまだ SSL 証明書にバインドされておらず、ブラウザーからカスタム ドメインへの HTTPS 要求は、ブラウザーによってはエラーまたは警告を受け取る可能性があることを意味します。 SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+> カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ SSL 証明書にバインドされておらず、ブラウザーからカスタム ドメインへの HTTPS 要求は、ブラウザーによってはエラーまたは警告を受け取る可能性があることを意味します。 SSL バインドを構成するには、「[Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
 
 ## <a name="test-in-browser"></a>ブラウザーでテストする
 
@@ -374,4 +378,4 @@ Set-AzWebApp `
 次のチュートリアルに進み、カスタム SSL 証明書を Web アプリにバインドする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)
+> [Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)

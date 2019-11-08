@@ -1,7 +1,7 @@
 ---
-title: Machine Learning Studio 用 PowerShell モジュール
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio のワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
+title: PowerShell モジュール
+titleSuffix: ML Studio (classic) Azure
+description: Azure Machine Learning Studio (クラシック) のワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: bee42f8a9582908963c0eef95a2fd04742cd425e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7de760e9bdaaf9a00cf170b3383e0e93e8806a87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205662"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670846"
 ---
-# <a name="powershell-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用 PowerShell モジュール
+# <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用 PowerShell モジュール
 
-PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio のリソースと資産をプログラムで管理できます。
+PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio (クラシック) のリソースと資産をプログラムで管理できます。
 
-次の 3 つの Powershell モジュールを使用して Studio リソースとやり取りすることができます。
+次の 3 つの Powershell モジュールを使用して Studio リソースのクラシック バージョンとやり取りすることができます。
 
 * 2018 年にリリースされた [Azure PowerShell Az](#az-rm)。AzureRM のすべての機能が含まれていますが、コマンドレット名は異なります
 * 2016 年にリリースされた [AzureRM](#az-rm)。PowerShell Az に置き換えられます
@@ -32,7 +32,7 @@ PowerShell モジュールを使用すると、ワークスペース、データ
 
 ## <a name="az-rm"></a> Azure PowerShell Az および AzureRM
 
-Az は、現在、Azure とやり取りすることを目的とした PowerShell モジュールであり、AzureRM の以前のすべての機能が含まれています。 AzureRM は引き続きバグ修正プログラムを受信しますが、新しいコマンドレットや機能は受信しなくなります。  Az と AzureRM は、両方とも、**Azure Resource Manager** デプロイ モデルを使ってソリューションを管理します。 これらのリソースには、Studio ワークスペースと Studio の "新しい" Web サービスが含まれます。 
+Az は、現在、Azure とやり取りすることを目的とした PowerShell モジュールであり、AzureRM の以前のすべての機能が含まれています。 AzureRM は引き続きバグ修正プログラムを受信しますが、新しいコマンドレットや機能は受信しなくなります。  Az と AzureRM は、両方とも、**Azure Resource Manager** デプロイ モデルを使ってソリューションを管理します。 これらのリソースには、Studio (クラシック) ワークスペースと Studio (クラシック) の "新しい" Web サービスが含まれます。 
 
 PowerShell クラシックを Az または AzureRM と共にインストールし、"新規" と "クラシック" 両方のリソースの種類をカバーすることができます。 ただし、Az と AzureRM が同時にインストールされていることは推奨されません。 Az と AzureRM の間で決定する場合、Microsoft では今後のすべてのデプロイ用に Az をお勧めします。  Az と AzureRM の比較および移行パスについて詳しくは、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)」をご覧ください。
 
@@ -40,7 +40,7 @@ Az の使用を開始するには、[Azure Az のインストール手順](https
 
 ## <a name="classic"></a> PowerShell クラシック
 
-Studio の [PowerShell クラシック モジュール](https://aka.ms/amlps)を使用すると、**クラシック デプロイ モデル**を使用してデプロイされたリソースを管理することができます。 これらのリソースには、Studio ユーザーの資産、"従来の" Web サービス、および "従来の" Web サービス エンドポイントが含まれます。
+Studio (クラシック) の [PowerShell クラシック モジュール](https://aka.ms/amlps)を使用すると、**クラシック デプロイ モデル**を使用してデプロイされたリソースを管理することができます。 これらのリソースには、Studio (クラシック) ユーザーの資産、"従来の" Web サービス、および "従来の" Web サービス エンドポイントが含まれます。
 
 ただし、Microsoft では、リソースのデプロイと管理を簡素化するために、将来のすべてのリソースに対して Resource Manager デプロイ モデルを使用することをお勧めします。 デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
 

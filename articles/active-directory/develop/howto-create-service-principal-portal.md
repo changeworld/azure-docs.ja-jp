@@ -1,5 +1,6 @@
 ---
-title: ポータルでの Azure アプリ ID の作成 | Microsoft Docs
+title: ポータルで Azure アプリの ID を作成する
+titleSuffix: Microsoft identity platform
 description: Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しい Azure Active Directory のアプリケーションとサービス プリンシパルを作成する方法について説明します。
 services: active-directory
 documentationcenter: na
@@ -16,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324718"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473867"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -50,7 +51,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます。
 
-1. アプリケーションを割り当てるスコープのレベルに移動します。 たとえば、サブスクリプション スコープでロールを割り当てるには、 **[すべてのサービス]** および **[サブスクリプション]** を選択します。
+1. Azure portal で、アプリケーションを割り当てるスコープのレベルを選択します。 たとえば、サブスクリプションのスコープでロールを割り当てるには、 **[サブスクリプション]** を検索して選択するか、 **[ホーム]** ページで **[サブスクリプション]** を選択します。
 
    ![たとえば、サブスクリプションのスコープでロールを割り当て](./media/howto-create-service-principal-portal/select-subscription.png)
 

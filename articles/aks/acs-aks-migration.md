@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 84e0af89e2b3247bc922ab84286a79a0934323a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097894"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472989"
 ---
 # <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Azure Container Service (ACS) から Azure Kubernetes Service (AKS) に移行する
 
@@ -28,7 +28,7 @@ ACS と AKS では、移行に影響を与える重要な部分に違いがあ�
     * アンマネージド ディスクは、AKS ノードにアタッチする前に変換する必要があります。
     * Azure ディスクのカスタム `StorageClass` オブジェクトは、`unmanaged` から `managed` に変更する必要があります
     * すべての `PersistentVolumes` は `kind: Managed` を使用する必要があります。
-* AKS では、[複数のノード プール](https://docs.microsoft.com/azure/aks/use-multiple-node-pools) (現在プレビュー段階) がサポートされます。
+* AKS では、[複数のノード プール](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)がサポートされています。
 * Windows Server に基づくノードは、現在 [AKS でプレビュー段階](https://azure.microsoft.com/blog/kubernetes-on-azure/)です。
 * AKS では、制限された[リージョン](https://docs.microsoft.com/azure/aks/quotas-skus-regions) セットがサポートされます。
 * AKS は、ホストされた Kubernetes コントロール プレーンを使用するマネージド サービスです。 以前に ACS マスターの構成を変更した場合は、アプリケーションの変更が必要になる場合があります

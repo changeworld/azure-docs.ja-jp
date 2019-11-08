@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9ab828daa009f7204abb1c64291d937a1f0dba2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784929"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466822"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例:Bing Entity Search API を使用してカスタム スキルを作成する
 
@@ -313,7 +313,7 @@ namespace SampleSkills
 
 Bing Entity Search API にサインアップしたときに取得したキーに基づいて、`key` 定数の独自の *key* 値を確実に入力します。
 
-このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 [power skills リポジトリ](https://aka.ms/entity-search-power-skill)には、同じスキルをさらに構造化したバージョンや、カスタム スキルの他の例があります。
+このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 それと同じスキルでもう少し構造化されたバージョンが、[power skills リポジトリ](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)にあります。
 
 もちろん、ファイル名を `Function1.cs` から `BingEntitySearch.cs` に変更できます。
 
@@ -476,10 +476,10 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 ```
 
 ## <a name="next-steps"></a>次の手順
-お疲れさまでした。 最初のカスタム エンリッチャーが作成されました。 これで同じパターンに従って、独自のカスタム機能を追加できます。 
+お疲れさまでした。 最初のカスタム スキルが作成されました。 これで同じパターンに従って、独自のカスタム機能を追加できます。 詳細については、以下のリンクをクリックしてください。
 
-+ [Power Skills: カスタム スキルのリポジトリ](https://aka.ms/powerskills)
-+ [コグニティブ検索パイプラインにカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
++ [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
++ [AI エンリッチメント パイプラインにカスタム スキルを追加する方法](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316770"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795796"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -260,10 +260,10 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 
 |                                  |                    | **暗号化モデルとキーの管理** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **サービス管理キーを使用したサーバー側**     | **顧客管理キーを使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
+|                                  | **サービス管理キーを使用したサーバー側**     | **顧客管理キーを使用したサーバー側**             | **クライアント管理キーを使用したクライアント側**      |
 | **AI と機械学習**      |                    |                    |                    |
-| Azure Search                     | はい                | プレビュー            | -                  |
-| Azure Machine Learning サービス   | はい                | -                  | -                  |
+| Azure Cognitive Search                     | はい                | プレビュー            | -                  |
+| Azure Machine Learning   | はい                | -                  | -                  |
 | Azure Machine Learning Studio    | はい                | プレビュー、RSA 2048 ビット | -               |
 | Power BI                         | はい                | プレビュー、RSA 2048 ビット | -                  |
 | **Analytics**                    |                    |                    |                    |

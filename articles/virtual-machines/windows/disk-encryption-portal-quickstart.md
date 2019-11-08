@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2590b9851b654990795f111e76f6cc5ea6c96723
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553440"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491943"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>クイック スタート:Azure portal を使用した Windows 仮想マシンの作成と暗号化
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [新規] ページの [人気順] で、 **[Windows Server 2016 Datacenter]** を選択します。
 1. **[基本]** タブの **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
 1. **[リソース グループ]** で、先ほどキー コンテナーを作成するときに作成したリソース グループを選択します (例: **myResourceGroup**)。
-1. **[仮想マシン名]** に「*MyVM*」と入力します。 
+1. **[仮想マシン名]** に「*MyVM*」と入力します。
 1. **[リージョン]** で、先ほどキー コンテナーを作成するときに使用したものと同じリージョンを選択します (例: **米国東部**)。
 1. **[サイズ]** が *[Standard D2s v3]* になっていることを確認します。
 1. **[管理者アカウント]** で **[パスワード]** を選択します。 ユーザー名とパスワードを入力します。

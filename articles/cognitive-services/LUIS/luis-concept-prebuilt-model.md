@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: b88801ded3dea7c7514ff117361feba3e95444ed
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: d9cb86c1c19649052e4796fd0a8909ce08381d55
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264393"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487587"
 ---
-# <a name="prebuilt-domain-intent-and-entity-models"></a>事前構築済みのドメイン、意図、エンティティ モデル
+# <a name="prebuilt-models"></a>事前構築済みのモデル
 
-事前構築済みモデルでは、ドメイン、意図、発話、およびエンティティが提供されます。 事前構築済みドメインでアプリを始めることも、後でアプリに関連するドメインを追加することもできます。 
+事前構築済みモデルでは、ドメイン、意図、発話、およびエンティティが提供されます。 事前構築済みモデルでアプリを始めることも、後でアプリに関連するモデルを追加することもできます。 
 
 ## <a name="types-of-prebuilt-models"></a>事前構築済みモデルの種類
 
@@ -28,17 +28,15 @@ LUIS では、3 種類の事前構築済みモデルが提供されています�
 
 |モデルの種類|内容|
 |--|--|
-|Domain|意図、発話、エンティティ|
+|[ドメイン](luis-reference-prebuilt-domains.md)|意図、発話、エンティティ|
 |意図|意図、発話|
-|エンティティ|エンティティのみ| 
+|[エンティティ](luis-reference-prebuilt-entities.md)|エンティティのみ| 
 
 ## <a name="prebuilt-domains"></a>事前構築済みドメイン
 
-Language Understanding (LUIS) には*事前構築済みのドメイン*が用意されています。これは事前構築済みの一連の[意図](luis-how-to-add-intents.md)と[エンティティ](luis-concept-entity-types.md)で、クライアント アプリケーションのドメインまたは共通のカテゴリに対して連携して動作します。 
+Language Understanding (LUIS) には、*事前構築済みのドメイン*が用意されています。これは[意図](luis-how-to-add-intents.md)と[エンティティ](luis-concept-entity-types.md)の事前構築済みモデルで、クライアント アプリケーションのドメインまたは共通のカテゴリに対して連携して動作します。 
 
 事前構築済みドメインはトレーニングされており、LUIS アプリに追加できる状態になっています。 アプリに追加した後、事前構築済みドメイン内の意図とエンティティは完全にカスタマイズ可能です。 
-
-事前構築済みのドメイン全体からカスタマイズを開始する場合は、アプリに不要な意図とエンティティを削除します。 事前構築済みのドメインに既に用意されているセットに、意図またはエンティティをいくつか追加することもできます。 たとえば、スポーツ イベント アプリに対して**イベント**事前構築済みドメインを使用する場合は、スポーツ チームのエンティティを追加できます。 LUIS への[発話の提供](luis-how-to-add-example-utterances.md)を開始するときに、ご自身のアプリに固有の用語を追加します。 LUIS はその用語を認識して学習することで、事前構築済みのドメインの意図およびエンティティを、ご自身のアプリのニーズに合わせて調整します。 
 
 > [!TIP]
 > 事前構築済みのドメインの意図とエンティティは、組み合わせて使ったときに最も効果的に機能します。 意図とエンティティは、できるだけ同じドメインのものを組み合わせることをお勧めします。
@@ -46,13 +44,13 @@ Language Understanding (LUIS) には*事前構築済みのドメイン*が用意
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>事前構築済みドメインの意図の動作変更
 
-事前構築済みのドメインに含まれる意図の動作を変えて、LUIS アプリで使用したい場合があります。 たとえば、**場所**事前構築済みドメインに用意されている、レストランを予約するための `MakeReservation` 意図を、ご自身のアプリでは、ホテルを予約をする目的で使いたいと考えています。 この場合、その意図の動作を変更するには、ホテル予約に関する発話を LUIS に提供し、`MakeReservation` 意図を使用してその発話にラベルを付けます。これにより、ホテル予約の要求で `MakeReservation` 意図が認識されるように LUIS を再トレーニングできます。
+事前構築済みのドメインに含まれる意図の動作を変えて、LUIS アプリで使用したい場合があります。 たとえば、**場所**の事前構築済みドメインに用意されている、レストランを予約するための `MakeReservation` 意図を、ご自分のアプリでは、ホテルに予約をする意図で使いたいと考えています。 そのような場合は、ホテルの予約に関する意図に発話例を追加することで、その意図の動作を変更できます。 次に、アプリを再トレーニングします。 
 
 [[Prebuilt domains reference]\(事前構築済みのドメインのリファレンス\)](./luis-reference-prebuilt-domains.md) では、事前構築済みのドメインの完全な一覧を確認できます。
 
 ## <a name="prebuilt-intents"></a>事前構築済み意図
 
-LUIS では、事前構築済みの意図とその発話が提供されています。 ドメイン全体を追加することなく、意図を追加できます。 意図の追加は、意図とその発話を追加するプロセスです。 意図名と発話リストの両方を変更できます。  
+LUIS では、事前構築済みドメインからの事前構築済み意図とその発話が提供されています。 ドメイン全体を追加することなく、意図を追加できます。 意図の追加は、意図とその発話をご利用のアプリに追加するプロセスです。 意図名と発話リストの両方を変更できます。  
 
 ## <a name="prebuilt-entities"></a>事前構築済みのエンティティ
 

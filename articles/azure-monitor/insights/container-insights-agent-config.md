@@ -6,30 +6,26 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/08/2019
-ms.openlocfilehash: 2b72252c5c85679c1c65fa2dcf9c5acc6c54003c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: deab16f3b80ada12a7167e90922dc38f3012be91
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554206"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478684"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する
 
-コンテナーの Azure Monitor では、コンテナー化されたエージェントにより、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスターにデプロイされたコンテナー ワークロードからの stdout、stderr、および環境変数が収集されます。 また、このエージェントでは、コンテナー化されたエージェントを使って Prometheus から時系列データ (メトリックとも呼ばれます) を収集することもできます。Prometheus サーバーとデータベースを設定して管理する必要はありません。 このエクスペリエンスを制御するためのカスタム Kubernetes ConfigMaps を作成することにより、エージェントのデータ収集の設定を構成できます。 
+コンテナーの Azure Monitor では、コンテナー化されたエージェントにより、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスターにデプロイされたコンテナー ワークロードからの stdout、stderr、および環境変数が収集されます。 このエクスペリエンスを制御するためのカスタム Kubernetes ConfigMaps を作成することにより、エージェントのデータ収集の設定を構成できます。 
 
 この記事では、ConfigMap を作成し、要件に基づいてデータの収集を構成する方法を示します。
-
->[!NOTE]
->現時点では、Prometheus のサポートはパブリック プレビューの機能です。
->
 
 ## <a name="configmap-file-settings-overview"></a>ConfigMap ファイル設定の概要
 
 最初から作成する必要がなく、ご自分のカスタマイズで簡単に編集できる、テンプレート ConfigMap ファイルが提供されています。 始める前に、[ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) についての Kubernetes のドキュメントを確認し、ConfigMaps を作成、構成、デプロイする方法をよく理解しておく必要があります。 そうすることで、名前空間ごとまたはクラスター全体の stderr と stdout、およびクラスター内のすべてのポッド/ノードで実行されている任意のコンテナーに対する環境変数を、フィルター処理できます。
 
 >[!IMPORTANT]
->コンテナー ワークロードからの stdout、stderr、環境変数の収集をサポートされているエージェントの最小バージョンは、ciprod06142019 以降です。 Prometheus メトリックの収集をサポートされているエージェントの最小バージョンは、ciprod07092019 以降です。 お使いのエージェントのバージョンを確認するには、 **[ノード]** タブでノードを選択し、プロパティ ウィンドウで **[エージェント イメージ タグ]** プロパティの値に注目します。  
+>コンテナー ワークロードからの stdout、stderr、環境変数の収集をサポートされているエージェントの最小バージョンは、ciprod06142019 以降です。 お使いのエージェントのバージョンを確認するには、 **[ノード]** タブでノードを選択し、プロパティ ウィンドウで **[エージェント イメージ タグ]** プロパティの値に注目します。 エージェント バージョンおよび各リリースに含まれている内容の追加情報については、[エージェントのリリース ノート](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)を参照してください。
 
 ### <a name="data-collection-settings"></a>データ収集の設定
 
@@ -44,39 +40,6 @@ ms.locfileid: "72554206"
 |`[log_collection_settings.stderr] enabled =` |Boolean | true または false |stderr コンテナーのログ収集が有効かどうかを制御します。 `true` に設定した場合、stdout のログ収集に対して名前空間を除外しないと (`log_collection_settings.stderr.exclude_namespaces` 設定)、クラスター内のすべてのポッド/ノードのすべてのコンテナーから、stderr ログが収集されます。 ConfigMap で指定しない場合、既定値は `enabled = true` です。 |
 |`[log_collection_settings.stderr] exclude_namespaces =` |string |コンマ区切りの配列 |stderr のログを収集しない Kubernetes 名前空間の配列。 この設定は、`log_collection_settings.stdout.enabled` を `true` に設定した場合にのみ有効です。 ConfigMap で指定しない場合、既定値は `exclude_namespaces = ["kube-system"]` です。 |
 | `[log_collection_settings.env_var] enabled =` |Boolean | true または false | この設定により、クラスター内のすべてのポッド/ノードにわたる環境変数コレクションが制御されます。ConfigMap で指定されていない場合、既定値は `enabled = true` になります。 環境変数のコレクションがグローバルに有効になっている場合は、特定のコンテナーに対してそのコレクションを無効にすることができます。そのためには、Dockerfile 設定を使用して、または[ポッドの構成ファイル](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)の **env:** セクションで、環境変数 `AZMON_COLLECT_ENV` を **False** に設定します。 環境変数のコレクションがグローバルに無効になっている場合、特定のコンテナーに対してコレクションを有効にすることはできません (つまり、コンテナー レベルで適用できる唯一のオーバーライドは、既にグローバルに有効になっている場合にコレクションを無効にすることです)。 |
-
-### <a name="prometheus-scraping-settings"></a>Prometheus のスクレーピングの設定
-
-![Prometheus のコンテナー監視アーキテクチャ](./media/container-insights-agent-config/monitoring-kubernetes-architecture.png)
-
-コンテナー用の Azure Monitor では、この後の表に示すように、次のメカニズムを使用した複数のスクレーピングによる Prometheus メトリックの収集を有効にするシームレスなエクスペリエンスが提供されます。 メトリックは、1 つの ConfigMap ファイルに指定された一連の設定を介して収集されます。これは、stdout、stderr、およびコンテナー ワークロードの環境変数の構成に使用されるのと同じファイルです。 
-
-Prometheus からのメトリックのアクティブなスクレーピングは、次の 2 つの観点から実行されます。
-
-* クラスター全体 - リストされたサービスのエンドポイントからの HTTP URL と検出ターゲット、kube-dns や kube-state-metrics などの k8s サービス、アプリケーションに固有のポッド注釈。 このコンテキストで収集されるメトリックは、ConfigMap のセクション *[Prometheus data_collection_settings.cluster]* で定義されています。
-* ノード全体 - リストされたサービスのエンドポイントからの HTTP URL と検出ターゲット。 このコンテキストで収集されるメトリックは、ConfigMap のセクション *[Prometheus_data_collection_settings.node]* で定義されています。
-
-| エンドポイント | Scope (スコープ) | 例 |
-|----------|-------|---------|
-| ポッド注釈 | クラスター全体 | 注釈: <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
-| Kubernetes サービス | クラスター全体 | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
-| URL/エンドポイント | ノードごと、またはクラスター全体 (あるいは両方) | `http://myurl:9101/metrics` |
-
-URL が指定されると、コンテナー用 Azure Monitor はエンドポイントのみをスクレーピングします。 Kubernetes サービスが指定されると、クラスター DNS サーバーを使用してサービス名が解決されて IP アドレスが取得された後で、解決されたサービスがスクレーピングされます。
-
-|Scope (スコープ) | Key | データ型 | 値 | 説明 |
-|------|-----|-----------|-------|-------------|
-| クラスター全体 | | | | メトリックのエンドポイントを収集するには、次の 3 つの方法のいずれかを指定します。 |
-| | `urls` | string | コンマ区切りの配列 | HTTP エンドポイント (指定された IP アドレスまたは有効な URL パス)。 (例: `urls=[$NODE_IP/metrics]`)。 ($NODE_IP は、コンテナーの Azure Monitor の特定のパラメーターであり、ノードの IP アドレスの代わりに使用できます。 すべて大文字である必要があります。) |
-| | `kubernetes_services` | string | コンマ区切りの配列 | kube-state-metrics からメトリックを収集する Kubernetes サービスの配列。 例: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`。|
-| | `monitor_kubernetes_pods` | Boolean | true または false | クラスター全体の設定で `true` に設定すると、コンテナーの Azure Monitor エージェントでは、次の Prometheus 注釈についてクラスター全体の Kubernetes ポッドが収集されます。<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | true または false | ポッドの収集を有効にします。 `monitor_kubernetes_pods` は `true` に設定する必要があります。 |
-| | `prometheus.io/scheme` | string | http または https | 既定値は HTTP 経由での収集です。 必要であれば、`https`に設定します。 | 
-| | `prometheus.io/path` | string | コンマ区切りの配列 | メトリックのフェッチ元の HTTP リソース パス。 メトリック パスが `/metrics` ではない場合は、この注釈でそれを定義します。 |
-| | `prometheus.io/port` | string | 9102 | 収集するポートを指定します。 ポートが設定されていない場合、既定値は 9102 になります。 |
-| ノード全体 | `urls` | string | コンマ区切りの配列 | HTTP エンドポイント (指定された IP アドレスまたは有効な URL パス)。 (例: `urls=[$NODE_IP/metrics]`)。 ($NODE_IP は、コンテナーの Azure Monitor の特定のパラメーターであり、ノードの IP アドレスの代わりに使用できます。 すべて大文字である必要があります。) |
-| ノード全体またはクラスター全体 | `interval` | string | 60s | 収集間隔の既定値は 1 分 (60 秒) です。 *[prometheus_data_collection_settings.node]* または *[prometheus_data_collection_settings.cluster]* に対する収集を、s、m、h などの時間単位に変更できます。 |
-| ノード全体またはクラスター全体 | `fieldpass`<br> `fielddrop`| string | コンマ区切りの配列 | リスティングの許可 (`fieldpass`) および禁止 (`fielddrop`) を設定することにより、エンドポイントから特定のメトリックを収集する、または収集しないように指定できます。 許可リストを最初に設定する必要があります。 |
 
 ConfigMaps はグローバル リストであり、エージェントに適用できる ConfigMap は 1 つだけです。 別の ConfigMaps でコレクションを上書きすることはできません。
 
@@ -93,72 +56,20 @@ ConfigMap 構成ファイルを構成してクラスターにデプロイする�
     - 特定のコンテナーからの環境変数の収集を無効にするには、キー/値 `[log_collection_settings.env_var] enabled = true` を設定して変数の収集をグローバルに有効にした後、[こちら](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container)の手順に従って特定のコンテナーの構成を完了します。
     
     - クラスター全体で stderr のログ収集を無効にするには、次の例を使ってキー/値を構成します: `[log_collection_settings.stderr] enabled = false`。
-    
-3. Kubernetes サービス クラスター全体の収集を構成するには、次の例を使用して ConfigMap ファイルを構成します。
 
-    ```
-    prometheus-data-collection-settings: |- 
-    # Custom Prometheus metrics data collection settings
-    [prometheus_data_collection_settings.cluster] 
-    interval = "1m"  ## Valid time units are s, m, h.
-    fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
-    fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
-    kubernetes_services = ["http://my-service-dns.my-namespace:9102/metrics"]
-    ```
-
-4. クラスター全体で特定の URL からの Prometheus メトリックの収集を構成するには、次の例を使用して ConfigMap ファイルを構成します。
-
-    ```
-    prometheus-data-collection-settings: |- 
-    # Custom Prometheus metrics data collection settings
-    [prometheus_data_collection_settings.cluster] 
-    interval = "1m"  ## Valid time units are s, m, h.
-    fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
-    fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
-    urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
-    ```
-
-5. クラスター内のすべての個別ノードに対するエージェントの DaemonSet からの Prometheus メトリックの収集を構成するには、ConfigMap で次のように構成します。
-    
-    ```
-    prometheus-data-collection-settings: |- 
-    # Custom Prometheus metrics data collection settings 
-    [prometheus_data_collection_settings.node] 
-    interval = "1m"  ## Valid time units are s, m, h. 
-    urls = ["http://$NODE_IP:9103/metrics"] 
-    fieldpass = ["metric_to_pass1", "metric_to_pass2"] 
-    fielddrop = ["metric_to_drop"] 
-    ```
-
-    >[!NOTE]
-    >$NODE_IP は、コンテナーの Azure Monitor の特定のパラメーターであり、ノードの IP アドレスの代わりに使用できます。 すべて大文字にする必要があります。 
-
-6. ポッドの注釈を指定して Prometheus メトリックの収集を構成するには、次の手順のようにします。
-
-    1. ConfigMap で、次のように指定します。
-
-        ```
-         prometheus-data-collection-settings: |- 
-         # Custom Prometheus metrics data collection settings
-         [prometheus_data_collection_settings.cluster] 
-         interval = "1m"  ## Valid time units are s, m, h
-         monitor_kubernetes_pods = true 
-        ```
-
-    2. ポッドの注釈に対して次の構成を指定します。
-
-        ```
-         - prometheus.io/scrape:"true" #Enable scraping for this pod 
-         - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
-         - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
-         - prometheus.io/port:"8000" #If port is not 9102 use this annotation
-        ```
-
-7. 次の kubectl コマンドを実行して、ConfigMap を作成します: `kubectl apply -f <configmap_yaml_file.yaml>`。
+3. 次の kubectl コマンドを実行して、ConfigMap を作成します: `kubectl apply -f <configmap_yaml_file.yaml>`。
     
     例: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
     
     構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
+
+4. 次の kubectl コマンドを実行して、ConfigMap を作成します: `kubectl apply -f <configmap_yaml_file.yaml>`。
+    
+    例: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
+    
+    構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
+
+## <a name="verify-configuration"></a>構成の確認 
 
 構成が正常に適用されたことを検証するには、次のコマンドを使って、エージェント ポッドからのログを確認します: `kubectl logs omsagent-fdf58 -n=kube-system`。 omsagent ポッドからの構成エラーがある場合は、出力で次のようなエラーが示されます。
 
@@ -167,11 +78,17 @@ ConfigMap 構成ファイルを構成してクラスターにデプロイする�
 config::unsupported/missing config schema version - 'v21' , using defaults
 ```
 
-Prometheus に対する構成変更の適用に関連するエラーは、確認することもできます。  同じ `kubectl logs` コマンドを使用するエージェント ポッドからのログから、またはライブ ログからです。 ライブ ログでは、次のようなエラーが示されます。
+構成変更の適用に関連するエラーも確認できます。 構成変更の追加のトラブルシューティングを実行するには、次のオプションを使用できます。
 
-```
-2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
-```
+- エージェント ポッド ログから。同じ `kubectl logs` コマンドを使用。 
+
+- ライブ ログから。 ライブ ログでは、次のようなエラーが示されます。
+
+    ```
+    config::error::Exception while parsing config map for log collection/env variable settings: \nparse error on value \"$\" ($end), using defaults, please check config map for errors
+    ```
+
+- Log Analytics ワークスペースの **KubeMonAgentEvents** テーブルから。 データは、構成エラーに関する*エラー*の重大度と共に、1 時間ごとに送信されます。 エラーがない場合、テーブルのエントリには*情報*の重大度を含むデータがあり、エラーは報告されません。 **Tags** プロパティには、エラーが発生したポッドとコンテナーの ID に関する詳細情報のほか、過去 1 時間の最初の発生時刻、最後の発生時刻、発生回数も含まれます。
 
 エラーがあると omsagent でファイルを解析できず、再起動されて、既定の構成が使用されます。 ConfigMap でエラーを修正した後、yaml ファイルを保存し、次のコマンドを実行して更新された ConfigMap を適用します: `kubectl apply -f <configmap_yaml_file.yaml`。
 
@@ -200,62 +117,10 @@ Prometheus に対する構成変更の適用に関連するエラーは、確認
                     schema-versions=v1 
 ```
 
-## <a name="query-prometheus-metrics-data"></a>Prometheus メトリック データのクエリを実行する
-
-Azure Monitor によって収集された prometheus メトリックを表示するには、名前空間として "prometheus" を指定します。 `default` kubernetes 名前空間から prometheus メトリックを表示するクエリの例を次に示します。
-
-```
-InsightsMetrics 
-| where Namespace == "prometheus"
-| extend tags=parse_json(Tags)
-| summarize count() by Name
-```
-
-prometheus のデータは、名前で直接照会することもできます。
-
-```
-InsightsMetrics 
-| where Namespace == "prometheus"
-| where Name contains "some_prometheus_metric"
-```
-
-## <a name="review-prometheus-data-usage"></a>Prometheus のデータ使用状況を確認する
-
-各メトリック サイズのインジェスト ボリューム (1 日あたりの GB) を取得して、高いかどうかを把握できるよう、次のクエリが用意されています。
-
-```
-InsightsMetrics 
-| where Namespace == "prometheus"
-| where TimeGenerated > ago(24h)
-| summarize VolumeInGB = (sum(_BilledSize) / (1024 * 1024 * 1024)) by Name
-| order by VolumeInGB desc
-| render barchart
-```
-出力では、次のような結果が示されます。
-
-![データ インジェスト ボリュームのログ クエリの結果](./media/container-insights-agent-config/log-query-example-usage-03.png)
-
-1 か月間の各メトリック サイズ (GB 単位) を推定し、ワークスペースで受け取る取り込まれたデータの量が多いかどうかを把握するため、次のクエリが用意されています。
-
-```
-InsightsMetrics 
-| where Namespace contains "prometheus"
-| where TimeGenerated > ago(24h)
-| summarize EstimatedGBPer30dayMonth = (sum(_BilledSize) / (1024 * 1024 * 1024)) * 30 by Name
-| order by EstimatedGBPer30dayMonth desc
-| render barchart
-```
-
-出力では、次のような結果が示されます。
-
-![データ インジェスト ボリュームのログ クエリの結果](./media/container-insights-agent-config/log-query-example-usage-02.png)
-
-データの使用状況を監視する方法およびコストを分析する方法について詳しくは、「[Azure Monitor ログで使用量とコストを管理する](../platform/manage-cost-storage.md)」をご覧ください。
-
 ## <a name="next-steps"></a>次の手順
 
-Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。
+- Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。
 
-- Azure Monitor を使用して、AKS クラスターの他の側面を監視する方法を引き続き学習するには、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。
+- AKS またはハイブリッド クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、コンテナーの Azure Monitor を[使用する方法](container-insights-analyze.md)について学習します。
 
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。

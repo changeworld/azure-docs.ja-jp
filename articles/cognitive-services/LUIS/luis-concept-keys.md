@@ -9,108 +9,65 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 973a8dd56437506d907159f212164ff147ba975c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703180"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487506"
 ---
 # <a name="authoring-and-runtime-keys"></a>オーサリング キーとランタイム キー
 
+Language Understanding (LUIS) には、次の 2 つのサービスと API セットがあります。 
 
->[!NOTE]
->続行する前に、Azure オーサリング リソースを使用していないすべてのアプリを[移行](luis-migration-authoring.md)してください。
+* オーサリング (以前は_プログラム_と呼ばれていました)
+* 予測ランタイム
 
-LUIS では、次の 2 種類の Azure リソースが使用されます。各種類には次のキーがあります。 
+使用するサービスとその操作方法に応じて、いくつかのキーの種類があります。
+
+## <a name="non-azure-resources-for-luis"></a>LUIS 用の Azure 以外のリソース
+
+### <a name="starter-key"></a>スターター キー
+
+最初に LUIS の使用を開始すると、**スターター キー**が自動的に作成されます。 このリソースでは次のものが提供されます。
+
+* LUIS ポータルまたは API (SDK を含む) を使用した無料のオーサリング サービスの要求
+* ブラウザー、API、または SDK を使用して 1 か月あたり 1000 件の無料の予測エンドポイント要求
+
+## <a name="azure-resources-for-luis"></a>LUIS 用の Azure リソース
+
+<a name="programmatic-key" ></a>
+<a name="endpoint-key"></a>
+<a name="authoring-key"></a>
+
+LUIS では、次の 3 種類の Azure リソースを使用できます。 
  
-* 意図とエンティティの作成、発話のラベル付け、トレーニング、および発行を行う[オーサリング](#programmatic-key)。 LUIS アプリを発行する準備ができたら、アプリに割り当てられた[ランタイムの予測エンドポイント キー](luis-how-to-azure-subscription.md)が必要になります。
-* [ランタイムの予測エンドポイント キー](#prediction-endpoint-runtime-key)。 チャットボットなどのクライアントアプリケーションでは、このキーを使用してランタイムの**クエリ予測エンドポイント**にアクセスする必要があります。 
-
 |Key|目的|コグニティブ サービス `kind`|コグニティブ サービス `type`|
 |--|--|--|--|
-|[オーサリング キー](#programmatic-key)|作成、トレーニング、発行、テスト。|`LUIS.Authoring`|`Cognitive Services`|
-|[予測エンドポイントのランタイム キー](#prediction-endpoint-runtime-key)| 意図とエンティティを決定するためにユーザーの発話を使用するクエリ予測エンドポイント ランタイム。|`LUIS`|`Cognitive Services`|
+|[オーサリング キー](#programmatic-key)|作成、トレーニング、発行、テストを使用して、アプリケーションのデータにアクセスして管理します。 プログラムを使用して LUIS アプリを作成する場合は、LUIS オーサリング キーを作成します。<br><br>`LUIS.Authoring` キーの目的は、次のことを可能にすることです。<br>* トレーニングや発行など、Language Understanding のアプリとモデルをプログラムで管理する<br> * [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御する|`LUIS.Authoring`|`Cognitive Services`|
+|[予測キー](#prediction-endpoint-runtime-key)| 予測エンドポイント要求に対してクエリを実行します。 クライアント アプリでスターター リソースによって提供される 1000 件を超えて予測を要求する前に、LUIS 予測キーを作成します。 |`LUIS`|`Cognitive Services`|
+|[Cognitive Service マルチサービスのリソース キー](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUIS およびその他のサポートされている Cognitive Services と共有される予測エンドポイント要求に対するクエリを実行します。|`CognitiveServices`|`Cognitive Services`|
 
-LUIS には、1 か月あたり 1000 トランザクションの予測エンドポイント クォータがある[スターター キー](luis-how-to-azure-subscription.md#starter-key)も用意されています。 
-
-両方のキーを同時に作成する必要はありませんが、その方がはるかに簡単です。
+リソースの作成プロセスが完了したら、LUIS ポータルでアプリに[キーを割り当てます](luis-how-to-azure-subscription.md)。
 
 発行およびクエリを行う[リージョン](luis-reference-regions.md#publishing-regions)内で LUIS アプリを作成することが重要です。
 
-<a name="programmatic-key" ></a>
-
-## <a name="authoring-key"></a>オーサリング キー
-
-オーサリング キーは、LUIS アカウントの作成時に自動的に作成され、無料です。 LUIS を使い始めると、各オーサリング [リージョン](luis-reference-regions.md)ごとに、すべての LUIS アプリに対して 1 つのスターター キーが作成されます。 オーサリング キーの目的は、LUIS アプリを管理したり、予測エンドポイントのクエリをテストしたりするための認証を提供することです。 
-
-Azure portal でオーサリング キーを作成すると、[共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てて、オーサリング リソースへのアクセス許可を制御できるようになります。 共同作成者を追加するには、Azure サブスクリプション レベルのアクセス許可が必要です。 
-
-オーサリング キーを見つけるには、[LUIS](luis-reference-regions.md#luis-website) にサインインし、右上のナビゲーション バーにあるアカウント名をクリックして **[アカウント設定]** を開きます。
-
-![オーサリング キー](./media/luis-concept-keys/authoring-key.png)
-
-**ランタイム クエリ**を作成する場合は、Azure [LUIS リソース](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)を作成します。 
-
 > [!CAUTION]
-> 便宜上、サンプルの多くでは[スターター キー](#starter-prediction-endpoint-runtime-key)が使用されますが、これは、いくつかの無料エンドポイント呼び出しが[クォータ](luis-boundaries.md#key-limits)に提供されるためです。  
+> 便宜上、サンプルの多くでは[スターター キー](#starter-key)が使用されますが、これは、いくつかの無料エンドポイント呼び出しが[クォータ](luis-boundaries.md#key-limits)に提供されるためです。  
 
-<a name="endpoint-key"></a>
 
-## <a name="prediction-endpoint-runtime-key"></a>予測エンドポイントのランタイム キー 
-
-**ランタイム エンドポイント クエリ**が必要な場合は、Language Understanding (LUIS) リソースを作成し、LUIS アプリに割り当てます。 
-
-[!INCLUDE [Azure runtime resource creation for Language Understanding and Cognitive Service resources](../../../includes/cognitive-services-luis-azure-resource-instructions.md)]
-
-リソースの作成プロセスが完了したら、アプリに[キーを割り当て](luis-how-to-azure-subscription.md)ます。 
-
-* ランタイム (クエリ予測エンドポイント) キーを使用すると、ランタイム キーの作成時に指定した使用状況プランに基づいてエンドポイントのヒット数のクォータが許可されます。 価格情報については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h)」を参照してください。
+### <a name="query-prediction-resources"></a>予測リソースに対するクエリの実行
 
 * ランタイム キーは、ご使用のすべての LUIS アプリまたは特定の LUIS アプリで使用できます。 
 * LUIS アプリの作成にはランタイム キーを使用しないでください。 
 
-### <a name="starter-prediction-endpoint-runtime-key"></a>スターター予測エンドポイントのランタイム キー
-
-**スターター**予測エンドポイント キーは無料で提供されており、1000 個の予測エンドポイント クエリが含まれています。 これらのクエリを使用した後は、Language Understanding 用に独自の予測エンドポイント リソースを作成する必要があります。  
-
-これは、お客様のために作成される特殊なリソースです。 これは、一時的な開始キーとして使用されるものなので、Azure リソースの一覧には表示されません。 
-
-<a name="use-endpoint-key-in-query"></a>
-
-### <a name="use-runtime-key-in-query"></a>クエリでランタイム キーを使用する
 LUIS ランタイム エンドポイントには、2 つのクエリ スタイルを使用できます。いずれも予測エンドポイントのランタイム キーを使用しますが、場所は異なります。
 
 ランタイムにアクセスするために使用されるエンドポイントでは、次の表の `{region}` で示すように、リソースの領域に固有のサブドメインを使用します。 
 
-
-#### <a name="v2-prediction-endpointtabv2"></a>[V2 予測エンドポイント](#tab/V2)
-
-|動詞|URL とキーの場所の例|
-|--|--|
-|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
-|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
-
-#### <a name="v3-prediction-endpointtabv3"></a>[V3 予測エンドポイント](#tab/V3)
-
-|動詞|URL とキーの場所の例|
-|--|--|
-|[GET](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
-|[POST](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
-
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
-
-* * * 
-
-**GET**:LUIS エンドポイント キーのクォータ レートを使用するために、`runtime-key` のエンドポイント クエリ値をオーサリング (スターター) キーから新しいエンドポイント キーに変更します。 キーを作成する場合、キーを割り当てるが、`runtime-key` のエンドポイント クエリ値を変更しないときは、エンドポイント キー クォータは使用しません。
-
-**POST**: `Ocp-Apim-Subscription-Key` のヘッダー値を変更します。<br>ランタイム キーを作成し、ランタイム キーを割り当てても、`Ocp-Apim-Subscription-Key` のエンドポイント クエリ値を変更しない場合は、ランタイム キーを使用していません。
-
-前の URL `df67dcdb-c37d-46af-88e1-8b97951ca1c2` で使用されたアプリ ID は、[対話型デモ](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)に使用されるパブリック IoT アプリです。 
-
-## <a name="assignment-of-the-runtime-key"></a>ランタイム キーの割り当て
+## <a name="assignment-of-the-key"></a>キーの割り当て
 
 ランタイム キーは、[LUIS ポータル](https://www.luis.ai)または対応する API を介して[割り当てる](luis-how-to-azure-subscription.md)ことができます。 
 
@@ -127,19 +84,11 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 ## <a name="contributions-from-other-authors"></a>他の作成者からの投稿
 
-
-
-コラボレーターからの投稿の管理は、アプリの現在の状態によって異なります。
-
 **[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合**: オーサリング リソースの "_共同作成者_" は、 **[アクセス制御 (IAM)]** ページを使用して、Azure portal で管理されます。 コラボレーターのメール アドレスと "_共同作成者_" ロールを使用して、[ユーザーを追加する方法](luis-how-to-collaborate.md)を参照してください。 
 
 **まだ移行されていないアプリの場合**: すべての "_コラボレーター_" は、LUIS ポータルの **[管理] -> [コラボレーター]** ページから管理されます。
 
-### <a name="contributor-roles-vs-entity-roles"></a>共同作成者ロールとエンティティ ロール
-
-[エンティティのロール](luis-concept-roles.md)は、LUIS アプリのデータ モデルに適用されます。 コラボレーター/共同作成者ロールは、オーサリング アクセスのレベルで適用されます。 
-
-## <a name="moving-or-changing-ownership"></a>所有権の譲渡または変更
+## <a name="move-transfer-or-change-ownership"></a>所有権の移動、移転、または変更
 
 アプリは、Azure リソースによって定義され、所有者のサブスクリプションによって決まります。 
 
@@ -148,7 +97,12 @@ LUIS アプリを移行できます。 Azure portal または Azure CLI では�
 * [LUIS のオーサリング リソース間でアプリを移行する](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
 * [新しいリソース グループまたはサブスクリプションにリソースを移行する](../../azure-resource-manager/resource-group-move-resources.md)
 * [同じサブスクリプション内またはサブスクリプション間でリソースを移行する](../../azure-resource-manager/move-limitations/app-service-move-limitations.md)
-* サブスクリプションの[所有権の譲渡](../../billing/billing-subscription-transfer.md) 
+
+サブスクリプションの[所有権](../../billing/billing-subscription-transfer.md)を移転するには 
+
+**移行したユーザーの場合 - [移行されたオーサリング リソース](luis-migration-authoring.md) アプリ**: リソースの所有者として、`contributor` を追加できます。
+
+**まだ移行していないユーザーの場合**: アプリを JSON ファイルとしてエクスポートします。 別の LUIS ユーザーがアプリをインポートすると、アプリの所有者になります。 新しいアプリには別のアプリ ID が割り当てられます。  
 
 ## <a name="access-for-private-and-public-apps"></a>プライベート アプリとパブリック アプリのアクセス
 
@@ -173,11 +127,11 @@ LUIS アプリを移行できます。 Azure portal または Azure CLI では�
 |[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)のためのエンドポイントの発話の確認|
 |トレーニング|
 
+<a name="prediction-endpoint-runtime-key"></a>
+
 ### <a name="prediction-endpoint-runtime-access"></a>予測エンドポイントのランタイム アクセス
 
 予測エンドポイントをクエリするためのアクセスは、 **[管理]** セクションの **[アプリケーション情報]** ページの設定によってによって制御されます。 
-
-![アプリをパブリックに設定する](./media/luis-concept-security/set-application-as-public.png)
 
 |[プライベート エンドポイント](#runtime-security-for-private-apps)|[パブリック エンドポイント](#runtime-security-for-public-apps)|
 |:--|:--|
@@ -205,9 +159,7 @@ LUIS ランタイム キーを表示できるユーザーを制御するには�
 
 ## <a name="transfer-of-ownership"></a>所有権の移転
 
-**[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合**:リソースの所有者として、`contributor` を追加できます。
-
-**まだ移行されていないアプリの場合**:アプリを JSON ファイルとしてエクスポートします。 別の LUIS ユーザーがアプリをインポートすると、アプリの所有者になります。 新しいアプリには別のアプリ ID が割り当てられます。  
+LUIS には、リソースの所有権を移転するという概念はありません。 
 
 ## <a name="securing-the-endpoint"></a>エンドポイントのセキュリティ保護 
 

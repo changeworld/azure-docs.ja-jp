@@ -1,7 +1,7 @@
 ---
 title: 特徴ハッシュ モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で特徴ハッシュ モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で特徴ハッシュ モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170881"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497831"
 ---
 # <a name="feature-hashing-module-reference"></a>特徴ハッシュ モジュール リファレンス
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) に含まれるモジュールについて説明します。
 
 特徴ハッシュ モジュールを使用して、英語テキストのストリームを整数の特徴セットに変換します。 その後、このハッシュされた特徴セットを機械学習アルゴリズムに渡して、テキスト分析モデルをトレーニングすることができます。
 
@@ -73,7 +73,7 @@ N-gram のサイズは、**N-gram** プロパティを使用して制御でき�
 
 ## <a name="configure-the-feature-hashing-module"></a>特徴ハッシュ モジュールを構成する
 
-1.  ビジュアル インターフェイスで特徴ハッシュ モジュールを実験に追加します。
+1.  特徴ハッシュ モジュールをデザイナーのパイプラインに追加します。
 
 1. 分析するテキストが含まれているデータセットを接続します。
 
@@ -94,7 +94,7 @@ N-gram のサイズは、**N-gram** プロパティを使用して制御でき�
 
     たとえば、3 を入力すると、unigram、bigram、trigram が作成されます。
 
-1. 実験を実行します。
+1. パイプラインを実行します。
 
 ## <a name="results"></a>結果
 
@@ -127,8 +127,8 @@ N-gram のサイズは、**N-gram** プロパティを使用して制御でき�
     * 句読点と特殊文字の削除
     * 語幹検索  
 
-ソリューションに適用される最適な前処理方法のセットは、ドメイン、ボキャブラリ、およびビジネス ニーズによって異なります。 お使いのデータで実験して、どのテキスト処理方法が最も効果的かを確認してください。
+ソリューションに適用される最適な前処理方法のセットは、ドメイン、ボキャブラリ、およびビジネス ニーズによって異なります。 お使いのデータを使用してパイプラインを作成し、どのテキスト処理方法が最も効果的かを確認します。
 
 ## <a name="next-steps"></a>次の手順
             
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください 

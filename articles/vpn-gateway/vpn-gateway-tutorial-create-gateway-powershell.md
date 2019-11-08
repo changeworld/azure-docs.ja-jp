@@ -5,15 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.custom: mvc
-ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489545"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495654"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>チュートリアル:PowerShell を使用した VPN ゲートウェイの作成と管理
 
@@ -128,7 +127,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 主なパラメーター値は次のとおりです。
 * GatewayType: サイト間接続と VNet 対 VNet 接続には、**Vpn** を使用します。
 * VpnType: より広範な VPN デバイスやより多くのルーティング機能と対話するには、**RouteBased** を使用します。
-* GatewaySku: 既定値は **VpnGw1** です。より高いスループットやより多くの接続が必要な場合は、VpnGw2 または VpnGw3 に変更してください。 詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
+* GatewaySku: 既定値は **VpnGw1** です。より高いスループットやより多くの接続が必要な場合は別の VpnGw SKU に変更してください。 詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
 
 [使ってみる] を使用している場合、セッションはタイムアウトする可能性があります。問題ありません。 ゲートウェイは引き続き作成されます。
 

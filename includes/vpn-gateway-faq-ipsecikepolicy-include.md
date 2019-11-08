@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 57e8905fd9722d5b8a8b0ab76dbcea5b91c6d30a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180998"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495832"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>カスタム IPsec/IKE ポリシーはすべての Azure VPN Gateway SKU でサポートされていますか。
-カスタム IPsec/IKE ポリシーは、Azure の **VpnGw1、VpnGw2、VpnGw3、Standard** および **HighPerformance** VPN ゲートウェイでサポートされています。 **Basic** SKU はサポート**されていません**。
+カスタム IPsec/IKE ポリシーは、**Basic SKU を除くすべての Azure SKU** でサポートされています。
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>1 つの接続に対してポリシーはいくつ指定できますか。
 ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ***だけです。
@@ -101,7 +101,7 @@ SA の有効期間は、ローカルの指定のみとなります。一致し�
 はい。 VNet 間トンネルは、Azure 内の 2 つの接続リソースで構成されます (1 方向につき 1 つ)。 両方の接続リソースに同じポリシーを適用する必要があります。それ以外の場合、VNet 間接続は確立されません。
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>ExpressRoute 接続でカスタム IPsec/IKE ポリシーは機能しますか。
-いいえ。 IPsec/IKE ポリシーは、Azure VPN ゲートウェイを介した VNet 間接続と S2S VPN 接続でのみ機能します。
+No. IPsec/IKE ポリシーは、Azure VPN ゲートウェイを介した VNet 間接続と S2S VPN 接続でのみ機能します。
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>IPsec の詳細な構成情報はどこで入手できますか。
 [S2S または VNet-to-VNet 接続の IPsec/IKE ポリシーの構成](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページを参照してください

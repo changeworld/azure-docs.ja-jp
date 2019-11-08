@@ -8,19 +8,19 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: acf0b1984eb3e68858be6ed68731612448e672f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6e1ee1fda658ef0884975e4055891f705c4f5058
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432699"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493982"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>チュートリアル:Azure Machine Learning モデルをトレーニングしてデプロイする
 
 > [!NOTE]
 > この記事は、IoT Edge 上での Azure Machine Learning の使用に関するチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、効果を最大限に高めるために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)から始めることをお勧めします。
 
-この記事では、最初に Azure Notebooks で Azure Machine Learning を使用して機械学習モデルをトレーニングし、そのモデルを、Azure IoT Edge モジュールとしてデプロイできるコンテナー イメージにパッケージ化します。 Azure Notebooks では、機械学習モデルの実験、トレーニング、およびデプロイに使用される基本ブロックである Azure Machine Learning service ワークスペースを利用します。
+この記事では、最初に Azure Notebooks で Azure Machine Learning を使用して機械学習モデルをトレーニングし、そのモデルを、Azure IoT Edge モジュールとしてデプロイできるコンテナー イメージにパッケージ化します。 Azure Notebooks では、機械学習モデルの実験、トレーニング、およびデプロイに使用される基本ブロックである Azure Machine Learning ワークスペースを利用します。
 
 チュートリアルのこの部分のアクティビティは、2 つのノートブックに分割されています。
 
@@ -72,7 +72,7 @@ Azure Notebook アカウントは、Azure サブスクリプションから独�
 
 * **01-turbofan\_regression.ipynb**: この Jupyter ノートブック ファイルでは、デバイス ハーネスによって生成されたデータを Azure ストレージ アカウントからダウンロードする、分類子をトレーニングするためのデータを探索および準備する、モデルをトレーニングする、Test\_FD003.txt ファイルにあるテスト データセットを使用してデータをテストする、最後に分類子モデルを Machine Learning service ワークスペースに保存するというプロセスを実行します。
 
-* **02-turbofan\_deploy\_model.ipynb:** この Jupyter ノートブックでは、Machine Learning service ワークスペースに保存されている分類子モデルを使用してコンテナー イメージを生成するプロセスを実行します。 イメージが作成されると、イメージを Web サービスとしてデプロイするプロセスがノートブックによって実行されるため、イメージが期待どおりに機能していることを検証できます。 検証済みのイメージは、このチュートリアルの「[カスタム IoT Edge モジュールの作成とデプロイ](tutorial-machine-learning-edge-06-custom-modules.md)」の部分で Edge デバイスにデプロイします。
+* **02-turbofan\_deploy\_model.ipynb:** この Jupyter ノートブックでは、Machine Learning service ワークスペースに保存されている分類子モデルを使用してコンテナー イメージを生成するプロセスを実行します。 イメージが作成されると、イメージを Web サービスとしてデプロイするプロセスがノートブックによって実行されるため、イメージが期待どおりに機能していることを検証できます。 検証済みのイメージは、このチュートリアルの「[カスタム IoT Edge モジュールの作成とデプロイ](tutorial-machine-learning-edge-06-custom-modules.md)」の部分で IoT Edge デバイスにデプロイします。
 
 * **Test\_FD003.txt:** このファイルには、トレーニング済み分類子を検証するときにテスト セットとして使用するデータが含まれています。 例を簡単にするために、元のコンテストで提供されたテスト データをテスト セットとして使用することにしました。
 

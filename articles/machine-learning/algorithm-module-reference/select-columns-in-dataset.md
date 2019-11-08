@@ -1,24 +1,24 @@
 ---
 title: データセット内の列の選択:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning サービスのデータセット内の列の選択モジュールを使用し、ダウンストリーム演算で使用する列のサブセットを選択する方法を学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning のデータセット内の列の選択モジュールを使用し、ダウンストリーム演算で使用する列のサブセットを選択する方法を学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.date: 10/22/2019
+ms.openlocfilehash: 3511c448298aa96c95dc970d1d192869c127eb0d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128492"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497665"
 ---
 # <a name="select-columns-in-dataset-module"></a>データセット内の列の選択モジュール
 
-この記事では、Azure Machine Learning service に使用されるビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 このモジュールを使用し、ダウンストリーム演算で使用する列のサブセットを選択します。 このモジュールでは、列がソース データセットから物理的に削除されることはありません。その代わりに、データベースの*ビュー*や*プロジェクション*のように、列のサブセットが作成されます。
 
@@ -112,4 +112,4 @@ ms.locfileid: "70128492"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

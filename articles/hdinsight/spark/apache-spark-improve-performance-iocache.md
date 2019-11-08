@@ -1,18 +1,18 @@
 ---
-title: Azure HDInsight IO キャッシュ (プレビュー) を使用した場合の Apache Spark のワークロード パフォーマンス
+title: Apache Spark のパフォーマンス - Azure HDInsight IO キャッシュ (プレビュー)
 description: Azure HDInsight IO キャッシュについて、およびそれを使用して Apache Spark のパフォーマンスを向上させる方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/15/2018
-ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/29/2019
+ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71266178"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494642"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュを使用して Apache Spark のワークロードのパフォーマンスを改善する
 
@@ -22,6 +22,7 @@ IO キャッシュは、Apache Spark のジョブのパフォーマンスを改�
 
 > [!Note]  
 > 現在、IO キャッシュは RubiX をキャッシュ コンポーネントとして使用しますが、将来のバージョンのサービスでは変わる可能性があります。 IO キャッシュのインターフェイスを使用し、RubiX の実装に直接依存することはしないでください。
+>現時点では、IO キャッシュは Azure Blob Storage でのみサポートされています。 
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュの利点
 

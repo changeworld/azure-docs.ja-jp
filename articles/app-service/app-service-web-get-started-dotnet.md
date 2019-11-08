@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 82a1dc293a019e4a48760ccbce830d067f2d620d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240935"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471548"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure に ASP.NET Core Web アプリを作成する
 
@@ -139,17 +139,19 @@ Visual Studio 2019 を既にインストールしている場合:
 
 ## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動して、Web アプリを管理します。
+Web アプリを管理するには、[Azure portal](https://portal.azure.com) にアクセスし、「**App Services**」を検索して選択します。
 
-1. 左側のメニューで、 **[App Services]** を選択し、お客様の Azure アプリの名前を選択します。
+![[App Services] を選択します](./media/app-service-web-get-started-dotnet/app-services.png)
 
-   ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
+**[App Services]** ページで、Web アプリの名前を選択します。
 
-   Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理を行うことができます。
+![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
 
-   ![Azure portal の App Service](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理を行うことができます。
 
-   左側のメニューは、アプリを構成するためのさまざまなページを示しています。
+![Azure portal の App Service](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+
+左側のメニューは、アプリを構成するためのさまざまなページを示しています。
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

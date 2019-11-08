@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345555"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476937"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -56,7 +56,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Azure Firewall](#azure-firewall-limits)
 * [Azure Functions](#functions-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
-* [Azure Machine Learning サービス](#azure-machine-learning-service-limits)
+* [Azure Machine Learning](#azure-machine-learning-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
@@ -84,6 +84,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Multi-Factor Authentication](#multi-factor-authentication-limits)
 * [ネットワーク](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
+  * [Azure Bastion](#azure-bastion-limits)
   * [Azure DNS](#azure-dns-limits)
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
@@ -154,7 +155,7 @@ Resource Manager API の読み取りと書き込みの制限については、�
 ### <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes Service の制限
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
-### <a name="azure-machine-learning-service-limits"></a>Azure Machine Learning サービスの制限
+### <a name="azure-machine-learning-limits"></a>Azure Machine Learning の制限
 Azure Machine Learning コンピューティング クォータの最新の値については、[Azure Machine Learning クォータ ページ](../articles/machine-learning/service/how-to-manage-quotas.md)をご覧ください。
 
 ### <a name="networking-limits"></a>ネットワークの制限
@@ -179,6 +180,9 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager の制限
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
+
+#### <a name="azure-bastion-limits"></a>Azure Bastion の制限
+[!INCLUDE [Azure Bastion limits](../includes/bastion-limits.md)]
 
 #### <a name="azure-dns-limits"></a>Azure DNS の制限
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]

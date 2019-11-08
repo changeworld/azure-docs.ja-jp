@@ -1,21 +1,21 @@
 ---
-title: Azure Data Share プレビューの監視方法
-description: Azure Data Share プレビューで招待の状態、共有サブスクリプション、スナップショット履歴を監視する方法について説明します。
+title: Azure Data Share の監視方法
+description: Azure Data Share で招待の状態、共有サブスクリプション、スナップショット履歴を監視する方法について説明します。
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 22c95f1ac541e1288494ed85cc9654d42780ea60
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169120"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490508"
 ---
-# <a name="monitor-azure-data-share-preview"></a>Azure Data Share プレビューを監視する 
+# <a name="monitor-azure-data-share"></a>Azure Data Share の監視  
 
-この記事では、Azure Data Share プレビューを使用してデータ共有を監視する方法について説明します。 データ プロバイダーは、データ共有リレーションシップのさまざまな側面を監視することができます。 データ コンシューマーがデータ共有の招待を承諾したかどうか、共有サブスクリプションを作成してデータの使用を開始したかどうかなど、すべての詳細を監視できます。 
+この記事では、Azure Data Share を使用してデータ共有を監視する方法について説明します。 データ プロバイダーは、データ共有リレーションシップのさまざまな側面を監視することができます。 データ コンシューマーがデータ共有の招待を承諾したかどうか、共有サブスクリプションを作成してデータの使用を開始したかどうかなど、すべての詳細を監視できます。 
 
 データ コンシューマーは、Azure サブスクリプションにトリガーされるスナップショットを監視できます。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "72169120"
 
 既定では、最大 30 日分のスナップショット履歴が表示されます。 30 日を超える履歴を表示する必要がある場合、[監視]、[診断設定] の順に移動し、 **[診断設定の追加]** を選択します。 これらのログの格納先となるストレージ アカウントの選択が求められます。 
 
-![スナップショット履歴](./media/diagnostic-settings.png "診断設定") 
+![スナップショットの履歴](./media/diagnostic-settings.png "診断設定") 
 
 ## <a name="next-steps"></a>次の手順 
 

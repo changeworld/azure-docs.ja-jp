@@ -1,43 +1,56 @@
 ---
-title: Azure SQL Data Warehouse - MPP アーキテクチャ | Microsoft Docs
-description: Azure SQL Data Warehouse が超並列処理 (MPP) と Azure ストレージを結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。
+title: Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ |Microsoft Docs
+description: Azure Synapse Analytics (旧称 SQL DW) が並列処理 (MPP) と Azure Storage を結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 25dc469c9f50dee7d088fccd214020791ff73def
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b463b0806d39ba20ae714c8785e5c0d227ce481b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515811"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466385"
 ---
-# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse - 超並列処理 (MPP) アーキテクチャ
-Azure SQL Data Warehouse が超並列処理 (MPP) と Azure ストレージを結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。 
+# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ 
+
+Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析を 1 つにした無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。
+
+ Azure Synapse には、次の 4 つのコンポーネントがあります。
+- SQL Analytics : 完全な T-SQL ベースの分析 
+    - SQL プール (プロビジョニング済み DWU での従量課金) – 一般公開
+    - SQL オンデマンド (処理された TB 単位の課金) – (プレビュー)
+- Spark : 緊密に統合された Apache Spark (プレビュー) 
+- データ統合 : ハイブリッド データ統合 (プレビュー)
+- Studio: 統一ユーザー エクスペリエンス  (プレビュー)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
-## <a name="mpp-architecture-components"></a>MPP アーキテクチャ コンポーネント
-SQL Data Warehouse では、スケールアウト アーキテクチャを活用して、複数のノードにデータの演算処理を分散します。 スケール単位は、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)と呼ばれるコンピューティング能力の抽象化です。 SQL Data Warehouse がコンピューティングをストレージから切り離すことで、システム内のデータとは無関係に、コンピューティングをスケーリングできるようになります。
+## <a name="sql-analytics-mpp-architecture-components"></a>SQL Analytics MPP アーキテクチャ コンポーネント
 
-![SQL Data Warehouse のアーキテクチャ](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) では、スケールアウト アーキテクチャを活用して、複数のノードにデータの演算処理を分散します。 スケール単位は、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)と呼ばれるコンピューティング能力の抽象化です。 コンピューティングをストレージから切り離すことで、システム内のデータとは無関係に、コンピューティングをスケーリングできるようになります。
 
-SQL Data Warehouse では、ノードベースのアーキテクチャを使用します。 アプリケーションは T-SQL コマンドに接続し、これをデータ ウェアハウスの単一のポイントである制御ノードに発行します。 制御ノードは、並列処理のためにクエリを最適化する MPP エンジンを実行し、操作をコンピューティング ノードに渡して作業を並行して行います。 コンピューティング ノードはすべてのユーザー データを Azure Storage に保存し、並行クエリを実行します。 Data Movement Service (DMS) はシステム レベルの内部サービスで、必要に応じて複数のノードにデータを移動し、クエリを並列に実行して、正確な結果を返します。 
+![SQL Analytics アーキテクチャ](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-ストレージとコンピューティングを分離することで、SQL Data Warehouse は次のことができます。
+SQL Analytics では、ノードベースのアーキテクチャを使用します。 アプリケーションでは T-SQL コマンドに接続し、これを SQL Analytics の単一のエントリ ポイントである制御ノードに発行します。 制御ノードは、並列処理のためにクエリを最適化する MPP エンジンを実行し、操作をコンピューティング ノードに渡して作業を並行して行います。 
+
+コンピューティング ノードはすべてのユーザー データを Azure Storage に保存し、並行クエリを実行します。 Data Movement Service (DMS) はシステム レベルの内部サービスで、必要に応じて複数のノードにデータを移動し、クエリを並列に実行して、正確な結果を返します。 
+
+分離されたストレージとコンピューティングでは、SQL Analytics を使用する場合、次のことが可能です。
 
 * 記憶域のニーズに関係なく、コンピューティング能力を計算する。
-* データを移動せずに、コンピューティング能力を拡大または縮小する。
+* データを移動せずに、SQL プール (データ ウェアハウス) 内のコンピューティング能力を拡大または縮小します。
 * データをそのままの状態で保持しながら、コンピューティング能力を一時停止するため、支払いをストレージの分だけにする。
 * 稼働時間中にコンピューティング能力を再開する。
 
 ### <a name="azure-storage"></a>Azure Storage
-SQL Data Warehouse では、ユーザー データを安全に保つために Azure ストレージを使用します。  データは Azure ストレージによって保存、管理されるため、SQL Data Warehouse によってストレージの使用量が別途課金されます。 データ自体は、システムのパフォーマンスの最適化のため、**ディストリビューション**にシャードされます。 どのシャーディング パターンを使用して、テーブルを定義するときにデータを分散するかを選択できます。 SQL Data Warehouse でサポートされているシャーディング パターンは次のとおりです。
+
+SQL Analytics では、ユーザー データを安全に保つために Azure Storage を使用します。  データは Azure Storage によって保存、管理されるため、ストレージの使用量が別途課金されます。 データ自体は、システムのパフォーマンスの最適化のため、**ディストリビューション**にシャードされます。 どのシャーディング パターンを使用して、テーブルを定義するときにデータを分散するかを選択できます。 次の 2 つのシャーディング パターンがサポートされています。
 
 * Hash
 * ラウンド ロビン
@@ -45,11 +58,11 @@ SQL Data Warehouse では、ユーザー データを安全に保つために Az
 
 ### <a name="control-node"></a>制御ノード
 
-制御ノードは、データ ウェアハウスの脳です。 すべてのアプリケーションおよび接続と対話するフロントエンドです。 MPP エンジンは制御ノードで実行され、並列クエリを最適化および調整します。 SQL Data Warehouse に T-SQL クエリを送信すると、制御ノードはそれを、各ディストリビューションに対して並列で実行されるクエリに変換します。
+制御ノードは、アーキテクチャの脳です。 すべてのアプリケーションおよび接続と対話するフロントエンドです。 MPP エンジンは制御ノードで実行され、並列クエリを最適化および調整します。 SQL Analytics に T-SQL クエリを送信すると、それが制御ノードによって、各ディストリビューションに対して並列で実行されるクエリに変換されます。
 
 ### <a name="compute-nodes"></a>コンピューティング ノード
 
-コンピューティング ノードは計算能力を提供します。 ディストリビューションは、処理のためにコンピューティング ノードにマップされます。 追加のコンピューティング リソースの料金を支払うと、SQL Data Warehouse はディストリビューションを使用可能なコンピューティング ノードに再マップします。 コンピューティング ノード数の範囲は 1 ～ 60 で、データ ウェアハウスのサービス レベルによって決定されます。
+コンピューティング ノードは計算能力を提供します。 ディストリビューションは、処理のためにコンピューティング ノードにマップされます。 追加のコンピューティング リソースの料金を支払うと、ディストリビューションが SQL Analytics によって、使用可能なコンピューティング ノードに再マップされます。 コンピューティング ノード数の範囲は 1 から 60 までで、SQL Analytics のサービス レベルによって決定されます。
 
 各コンピューティング ノードにはノード ID があり、システム ビューで確認できます。 名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノード ID を見ることができます。 これらのシステム ビューの一覧については、[MPP のシステム ビューに関する記事](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7)をご覧ください。
 
@@ -58,12 +71,14 @@ SQL Data Warehouse では、ユーザー データを安全に保つために Az
 
 ## <a name="distributions"></a>ディストリビューション
 
-ディストリビューションは、分散データで実行される並列クエリの保存および処理の基本的な単位です。 SQL Data Warehouse によるクエリの実行時に、作業は並列で実行される 60 の小さいクエリに分割されます。 60 の小さいクエリそれぞれは、いずれかのデータ ディストリビューションで実行されます。 各コンピューティング ノードでは、60 ディストリビューションの 1 つまたは複数が管理されます。 最大コンピューティング リソース数を持つ1 つのデータ ウェアハウスは、1 コンピューティング ノードあたり 1 ディストリビューションを持ちます。 最小コンピューティング リソース数を持つ 1 つのデータ ウェアハウスは、1 コンピューティング ノードあたりすべてのディストリビューションを持ちます。  
+ディストリビューションは、分散データで実行される並列クエリの保存および処理の基本的な単位です。 SQL Analytics によるクエリの実行時に、作業は並列で実行される 60 の小さいクエリに分割されます。 
+
+60 の小さいクエリそれぞれは、いずれかのデータ ディストリビューションで実行されます。 各コンピューティング ノードでは、60 ディストリビューションの 1 つまたは複数が管理されます。 最大コンピューティング リソース数を持つ 1 つの SQL プールでは、1 コンピューティング ノードあたりのディストリビューション数は 1 です。 最小コンピューティング リソース数を持つ 1 つの SQL プールでは、1 つのコンピューティング ノードにすべてのディストリビューションがあります。  
 
 ## <a name="hash-distributed-tables"></a>ハッシュ分散テーブル
 ハッシュ分散テーブルでは、大きなテーブルでの結合と集計用に最高のクエリ パフォーマンスを実現できます。 
 
-ハッシュ分散テーブルにデータをシャードするために、SQL Data Warehouse はハッシュ関数を使用して各行を 1 つのディストリビューションに確実に割り当てます。 テーブルの定義では、1 つの列をディストリビューション列として指定します。 ハッシュ関数は、ディストリビューション列の値を使用してディストリビューションに各行を割り当てます。
+ハッシュ分散テーブルにデータをシャードするために、SQL Analytics ではハッシュ関数を使用して各行が 1 つのディストリビューションに確実に割り当てられます。 テーブルの定義では、1 つの列をディストリビューション列として指定します。 ハッシュ関数は、ディストリビューション列の値を使用してディストリビューションに各行を割り当てます。
 
 次の図は、完全な (分散していない) テーブルがハッシュ分散テーブルとして保存されるしくみを示したものです。 
 
@@ -86,12 +101,12 @@ SQL Data Warehouse では、ユーザー データを安全に保つために Az
 
 レプリケートされたテーブルは、各コンピューティング ノードにテーブルの完全なコピーをキャッシュします。 その結果、テーブルをレプリケートすると、結合または集計の前に、コンピューティング ノード間にデータを転送する必要がなくなります。 レプリケート テーブルは小さいテーブルに最適です。 大きいテーブルの使用が非現実的なデータを書き込む際には、追加ストレージが必要になり、追加のオーバーヘッドが発生します。  
 
-次の図に、レプリケート テーブルを示します。 SQL Data Warehouse の場合は、レプリケート テーブルは各コンピューティング ノードの最初のディストリビューションにキャッシュされます。  
+次の図は、各コンピューティング ノードの最初のディストリビューションにキャッシュされたレプリケート テーブルを示しています。  
 
 ![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "レプリケート テーブル") 
 
 ## <a name="next-steps"></a>次の手順
-SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][create a SQL Data Warehouse]し、[サンプル データを読み込む][load sample data]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
+Azure Synapse の概要について学習したので、次はすばやく [SQL プールを作成][create a SQL pool]し、[サンプル データを読み込む][load sample data]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集][Azure glossary] が役立ちます。 または、次の Azure Synapse リソースも確認できます。  
 
 * [顧客の成功事例]
 * [ブログ]
@@ -109,9 +124,9 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 <!--Article references-->
 [サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
 [Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[Azure Synapse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
 [Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
 [Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
 [Azure glossary]: ../azure-glossary-cloud-terminology.md
@@ -127,6 +142,6 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
+[SLA for Azure Synapse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

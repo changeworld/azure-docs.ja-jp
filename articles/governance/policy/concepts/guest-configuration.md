@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255853"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464065"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -122,6 +122,29 @@ Azure Policy は、ゲスト構成リソースプロバイダーの **compliance
 > **AuditIfNotExists** ポリシーから結果を返すには、**DeployIfNotExists** ポリシーが必要です。 **DeployIfNotExists** がない場合、**AuditIfNotExists** ポリシーは状態として"0 of 0" のリソースを示します。
 
 割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows マシン内のパスワードのセキュリティ設定の監査*" という名前の組み込みイニシアティブには、18 のポリシーが含まれています。 Windows のために **DeployIfNotExists** と **AuditIfNotExists** の 6  つのペアがあって、Linux 用に 3 つのペアがあります。 [ポリシー定義](definition-structure.md#policy-rule)のロジックでは、対象のオペレーティング システムのみが評価されることが検証されます。
+
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>業界の基準に従ってオペレーティング システムの設定を監査する
+
+Azure Policy で利用できるイニシアチブの 1 つは、Microsoft の "ベースライン" に従って、仮想マシン内のオペレーティング システムの設定を監査する機能を提供します。  *[プレビュー]:Azure セキュリティ ベースライン設定と一致しない Windows VM を監査する*という定義には、Active Directory グループ ポリシーからの設定に基づく監査規則の完全なセットが含まれています。
+
+ほとんどの設定は、パラメーターとして使用できます。  この機能を使用すると、監査対象をカスタマイズして、組織の要件に合わせてポリシーを調整したり、業界の規制標準などのサードパーティの情報にポリシーをマップしたりすることができます。
+
+一部のパラメーターは、整数の値範囲をサポートしています。  たとえば、[パスワードの有効期間] パラメーターを範囲演算子を使用して設定し、コンピューターの所有者に柔軟に割り当てることができます。  ユーザーにパスワードの変更を要求する有効なグループ ポリシー設定は、70 日以内である必要がありますが、1 日未満にすることはできません。  パラメーターの情報バブルで説明されているように、これを有効な監査値にするには、値を「1, 70」に設定します。
+
+Azure Resource Manager デプロイ テンプレートを使用してポリシーを割り当てる場合は、パラメーター ファイルを使用して、ソース管理からこれらの設定を管理できます。
+Git などのツールを使用して、チェックインのたびにコメントを含む監査ポリシーへの変更を管理すると、その割り当てが予期される値に対して例外となってしまう理由の証拠がドキュメントに記録されます。
+
+#### <a name="applying-configurations-using-guest-configuration"></a>ゲスト構成を使用して構成を適用する
+
+Azure Policy の最新の機能によって、コンピューター内の設定が構成されます。
+*[Windows コンピューターでタイムゾーンを構成]* する定義は、タイムゾーンを構成することによって、コンピューターに変更を加えます。
+
+*[構成]* で始まる定義を割り当てるとき、 *[前提条件を展開して Windows VM でゲスト構成ポリシーを有効にする]* 定義も割り当てる必要があります。
+必要に応じて、これらの定義をイニシアチブで結合させることができます。
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Azure 外部のコンピューターにポリシーを割り当てる
+
+ゲスト構成に使用できる監査ポリシーには、**Microsoft.HybridCompute/machines** という種類のリソースが含まれます。  割り当てのスコープ内にある Azure Arc にオンボードされているすべてのコンピューターが自動的に追加されます。
 
 ### <a name="multiple-assignments"></a>複数の割り当て
 

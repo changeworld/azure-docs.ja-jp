@@ -1,22 +1,22 @@
 ---
-title: Az.Search モジュールを使用した PowerShell スクリプト - Azure Search
-description: PowerShell を使用して Azure Search サービスを作成および構成します。 サービスをスケールアップまたはスケールダウンしたり、管理者とクエリの API キーを管理したり、システム情報のクエリを実行したりできます。
-author: HeidiSteen
+title: Az.Search モジュールを使用した PowerShell スクリプト
+titleSuffix: Azure Cognitive Search
+description: PowerShell を使用して Azure Cognitive Search サービスを作成および構成します。 サービスのスケールアップまたはスケールダウン、管理者およびクエリの API キーの管理、システム情報のクエリを実行できます。
 manager: nitinme
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: heidist
-ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331243"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466521"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>PowerShell を使用して Azure Search サービスを管理する
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>PowerShell を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
 > * [ポータル](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "72331243"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行して、Azure Search を作成および構成できます。 **Az.Search** モジュールは、完全なパリティを含む Azure PowerShell を [Azure Search 管理 REST API シリーズ](https://docs.microsoft.com/rest/api/searchmanagement)に拡張します。 Azure PowerShell と **Az.Search** を使用すると、次のタスクを実行できます。
+Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行して、Azure Cognitive Search を作成および構成できます。 **Az.Search** モジュールは、完全なパリティを含む Azure PowerShell を [Azure Cognitive Search 管理 REST API シリーズ](https://docs.microsoft.com/rest/api/searchmanagement)に拡張します。 Azure PowerShell と **Az.Search** を使用すると、次のタスクを実行できます。
 
 > [!div class="checklist"]
 > * [サブスクリプションのすべての検索サービスを一覧表示する](#list-search-services)
@@ -40,7 +40,7 @@ PowerShell は、サービスの名前、リージョン、またはレベルの
 
 PowerShell やその他の API (ポータルのみ) の使用がサポートされていないその他のタスクは、次のとおりです。
 + [AI によって強化されたインデックス作成](cognitive-search-concept-intro.md)のための [Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)。 Cognitive Service は、サブスクリプションやサービスではなく、スキルにアタッチされます。
-+ Azure Search を監視するための[アドオン監視ソリューション](search-monitor-usage.md#add-on-monitoring-solutions)。
++ Azure Cognitive Search を監視するための[アドオン監視ソリューション](search-monitor-usage.md#add-on-monitoring-solutions)。
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-search-services-in-your-subscription"></a>サブスクリプションのすべての Azure Search サービスを一覧表示する
+## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>サブスクリプションのすべての Azure Cognitive Search サービスを一覧表示する
 
 次のコマンドは、[**Az.Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources) から、サブスクリプションで既にプロビジョニングされている既存のリソースとサービスに関する情報を返します。 既に作成されている検索サービスの数がわからない場合は、これらのコマンドがその情報を返して、ポータルに移動する手間を省きます。
 
@@ -201,7 +201,7 @@ Tags
 
 ご想像のとおり、クライアント コードを更新せずにキーを再生成すると、古いキーを使用する要求は失敗します。 すべての新しいキーを再生成しても完全サービスを利用できなくなるわけではなく、ポータルで引き続きサービスにアクセスできます。 プライマリ キーとセカンダリ キーを再生成した後、新しいキーを使用するようにクライアント コードを更新することができ、操作がそれに応じて再開されます。
 
-API キーの値は、サービスによって生成されます。 Azure Search で使用するためのカスタム キーを指定することはできません。 同様に、管理者 API キーにユーザー定義の名前はありません。 キーへの参照は、`primary` または `secondary` のいずれかの文字列に固定されます。 
+API キーの値は、サービスによって生成されます。 Azure Cognitive Search で使用するためのカスタム キーを指定することはできません。 同様に、管理者 API キーにユーザー定義の名前はありません。 キーへの参照は、`primary` または `secondary` のいずれかの文字列に固定されます。 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,9 +217,9 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>クエリ キーの作成または削除
 
-[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) は、クライアント アプリから Azure Search インデックスへの読み取り専用アクセスのためのクエリ [API キー](search-security-api-keys.md)を作成するために使用します。 クエリ キーは、検索結果を取得する目的で特定のインデックスを認証するために使用します。 クエリ キーは、インデックス、データ ソース、インデクサーなど、サービス上の他の項目への読み取り専用アクセスを付与しません。
+[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) は、クライアント アプリから Azure Cognitive Search インデックスへの読み取り専用アクセスのためのクエリ [API キー](search-security-api-keys.md)を作成するために使用します。 クエリ キーは、検索結果を取得する目的で特定のインデックスを認証するために使用します。 クエリ キーは、インデックス、データ ソース、インデクサーなど、サービス上の他の項目への読み取り専用アクセスを付与しません。
 
-Azure Search で使用するためのキーを指定することはできません。 API キーは、サービスによって生成されます。
+Azure Cognitive Search で使用するキーを指定することはできません。 API キーは、サービスによって生成されます。
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -257,7 +257,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 ポータル、REST API、または .NET SDK を使用して、[インデックス](search-what-is-an-index.md)を作成し、[インデックスのクエリを実行](search-query-overview.md)します。
 
-* [Azure ポータルでの Azure Search インデックスの作成](search-create-index-portal.md)
+* [Azure portal で Azure Cognitive Search インデックスを作成する](search-create-index-portal.md)
 * [インデクサーをセットアップして他のサービスからデータを読み込む](search-indexer-overview.md)
-* [Azure Portal の Search エクスプローラーを使用して Azure Search インデックスを照会する](search-explorer.md)
-* [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)
+* [Azure Portal の Search エクスプローラーを使用して Azure Cognitive Search インデックスを照会する](search-explorer.md)
+* [.NET での Azure Cognitive Search の使用方法](search-howto-dotnet-sdk.md)

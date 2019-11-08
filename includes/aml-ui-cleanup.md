@@ -7,16 +7,16 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 10/16/2019
-ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5a66212122745d0f4426e48e9487e9d674cec53f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692353"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489917"
 ---
 >[!IMPORTANT]
->作成したリソースは、Azure Machine Learning service のその他のチュートリアルおよびハウツー記事の前提条件として使用できます。
+>作成したリソースは、Azure Machine Learning のその他のチュートリアルおよびハウツー記事の前提条件として使用できます。
 
 ### <a name="delete-everything"></a>すべてを削除する
 
@@ -32,7 +32,7 @@ ms.locfileid: "72692353"
 
 1. **[リソース グループの削除]** を選択します。
 
-リソース グループを削除すると、ビジュアル インターフェイスで作成したすべてのリソースも削除されます。  
+リソース グループを削除すると、デザイナーで作成したすべてのリソースも削除されます。  
 
 ### <a name="delete-only-the-compute-target"></a>コンピューティング ターゲットのみを削除する
 
@@ -48,6 +48,12 @@ ms.locfileid: "72692353"
 
 ### <a name="delete-individual-assets"></a>個々の資産を削除する
 
-実験を作成したビジュアル インターフェイスで、個々の資産を選択し、 **[削除]** ボタンを選択してそれらを削除します。 ワークスペースからデータセットを登録解除するには、各データセットを選択し、 **[登録解除]** を選択します。
+実験を作成したデザイナーで、個々の資産を選択し、 **[削除]** ボタンを選択してそれらを削除します。
 
 ![アセットを削除する](./media/aml-ui-cleanup/delete-asset.png)
+
+ワークスペースからデータセットを登録解除するには、各データセットを選択し、 **[登録解除]** を選択します。
+
+![データセットの登録解除](./media/aml-ui-cleanup/unregister-dataset.png)
+
+

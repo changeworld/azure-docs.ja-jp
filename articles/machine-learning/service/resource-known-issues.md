@@ -9,29 +9,34 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.custom: seodec18
-ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286552"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476074"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
 この記事は、Azure Machine Learning の使用時に発生したエラーや障害を見つけて修正するのに役立ちます。
 
-## <a name="visual-interface-issues"></a>ビジュアル インターフェイスの問題
+## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>停止:AmlCompute の NCv3 マシンに対する SR-IOV のアップグレード
 
-機械学習サービスのビジュアル インターフェースの問題。
+Azure コンピューティングでは、2019 年 11 月の上旬より、MPI のすべての実装とバージョン、および InfiniBand が搭載された仮想マシンでの RDMA 動詞がサポートされるよう、NCv3 SKU が更新されます。 これには、ダウンタイムが短時間必要になります。[SR-IOV のアップグレード](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku)に関する記事を参照してください。
+
+Azure Machine Learning のマネージド コンピューティング オファリング (AmlCompute) のお客様は、現時点で変更を行う必要はありません。 [更新スケジュールに基づいて](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku)、ご自分のトレーニングに小休止を入れる計画をする必要があります。 このサービスでは、お使いのクラスター ノード上の VM イメージの更新と、お使いのクラスターの自動スケールアップも行います。 アップグレードが完了すると、InfiniBand の帯域幅が増加したり、待機時間が短くなったり、分散アプリケーションのパフォーマンスが向上したりするほか、展開されている他のすべての MPI ディストリビューション (Pytorch での OpenMPI など) を使用できるようになります。
+
+## <a name="azure-machine-learning-designer-issues"></a>Azure Machine Learning デザイナーの問題
+
+デザイナーの既知の問題。
 
 ### <a name="long-compute-preparation-time"></a>計算の準備時間が長い
 
 新しい計算の作成や計算の終了に、数分またはそれ以上の時間がかかる場合があります。 現在、担当チームが最適化に取り組んでいます。
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>データセットのみを含む実験を実行できない 
+### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>データセットのみを含む実験を実行できない 
 
 データセットのみを含む実験を実行して、データセットを視覚化したい場合があります。 しかし、現在、データセットのみを含む実験は実行できません。 現在、この問題の解決に積極的に取り組んでいます。
  
@@ -80,6 +85,16 @@ Tensor Flow の自動化された機械学習は現在、Tensor Flow バージ�
 ### <a name="experiment-charts"></a>実験グラフ
 
 自動化された ML の実験のイテレーションで示される二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は、4/12 以降のユーザー インターフェイスでは正しくレンダリングされません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
+
+## <a name="datasets-and-data-preparation"></a>データセットとデータの準備
+
+### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>HTTP または ADLS Gen 2 から Parquet ファイルを読み取ることができない
+
+AzureML DataPrep SDK バージョン 1.1.25 には、HTTP または ADLS Gen 2 から Parquet ファイルを読み込んでデータセットを作成するときにエラーが発生する既知の問題があります。 この問題を解決するには、1.1.26 よりも上のバージョンにアップグレードするか、1.1.24 よりも下のバージョンにダウングレードしてください。
+
+```python
+pip install --upgrade azureml-dataprep
+```
 
 ## <a name="databricks"></a>Databricks
 
@@ -130,17 +145,24 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 Azure Databricks クラスター上のデータの読み取り時に `FailToSendFeather` エラーが表示された場合は、次の解決策を参照してください。
 
-* `azureml-sdk[automl_databricks]` パッケージを最新バージョンにアップグレードします。
+* `azureml-sdk[automl]` パッケージを最新バージョンにアップグレードします。
 * `azure-dataprep` バージョン 1.1.8 以降を追加します。
 * `pyarrow` バージョン 0.11 以降を追加します。
 
+
+## <a name="datasets"></a>データセット
+
+これらは、Azure Machine Learning のデータセットの既知の問題です。
+
++ **Azure Data Lake Storage Gen2 の parquet ファイルを読み込めない** Azure Data Lake Storage Gen2 データストアからの parquet ファイルの読み込みは、`azureml-dataprep==1.1.25` がインストールされている場合、行えません。 `Cannot seek once reading started.` のエラーが発生します。 このエラーが発生した場合は、`azureml-dataprep<=1.1.24` をインストールするか、`azureml-dataprep>=1.1.26` をインストールしてください。
+
 ## <a name="azure-portal"></a>Azure ポータル
 
-SDK またはポータルで共有リンクからワークスペースを直接表示した場合、拡張機能のサブスクリプション情報を含む通常の概要ページを表示できません。 また、別のワークスペースに切り替えることもできません。 別のワークスペースを表示する必要がある場合の回避策としては、[Azure portal](https://portal.azure.com) に直接移動し、ワークスペース名を検索してください。
+SDK またはポータルで共有リンクからワークスペースを直接表示した場合、拡張機能のサブスクリプション情報を含む通常の概要ページを表示できません。 また、別のワークスペースに切り替えることもできません。 別のワークスペースを表示する必要がある場合の回避策としては、[Azure Machine Learning Studio](https://ml.azure.com) に直接移動し、ワークスペース名を検索してください。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 
-サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 いくつかのログを確認するには、[Azure portal](https://portal.azure.com) にアクセスし、自分のワークスペースに移動して、 **[ワークスペース]、[実験]、[実行]、[ログ]** の順に選択します。  この情報は、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) の **[実験]** セクションでも確認できます。
+サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 いくつかのログを確認するには、[Azure Machine Learning Studio](https://ml.azure.com) にアクセスし、自分のワークスペースに移動して、 **[ワークスペース]、[実験]、[実行]、[ログ]** の順に選択します。  
 
 > [!NOTE]
 > Azure Machine Learning では、AutoML やトレーニング ジョブを実行する Docker コンテナーなど、トレーニング中にさまざまなソースからの情報がログに記録すされます。 これらのログの多くについては、ドキュメントに記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
@@ -226,12 +248,12 @@ kubectl get secret/azuremlfessl -o yaml
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (モジュール名が指定されていない)
 Azure ML で実験を送信する際に ModuleErrors が発生した場合、トレーニング スクリプトではパッケージがインストールされていることを期待しているのに、それが追加されていないことを意味します。 パッケージ名を指定すると、Azure ML では、トレーニングに使用される環境にパッケージがインストールされます。 
 
-[Estimator](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) を使用して実験を送信する場合は、パッケージのインストール元に基づく Estimator 内の `pip_packages` または `conda_packages` パラメータ―を使って、パッケージ名を指定できます。 また、`conda_dependencies_file` を使用してすべての依存関係を含む yml ファイルを指定したり、`pip_requirements_file` パラメーターを使用して txt ファイル内のすべての pip 要件を一覧表示したりすることも可能です。
+[Estimator](concept-azure-machine-learning-architecture.md#estimators) を使用して実験を送信する場合は、パッケージのインストール元に基づく Estimator 内の `pip_packages` または `conda_packages` パラメータ―を使って、パッケージ名を指定できます。 また、`conda_dependencies_file` を使用してすべての依存関係を含む yml ファイルを指定したり、`pip_requirements_file` パラメーターを使用して txt ファイル内のすべての pip 要件を一覧表示したりすることも可能です。
 
 Azure ML では、Tensorflow、PyTorch、Chainer、および SKLearn に対応するフレームワーク固有の Estimator も提供されています。 これらの Estimator を使用すると、ユーザーに代わって、トレーニングに使用される環境にフレームワークの依存関係が確実にインストールされます。 前述のように、追加の依存関係を指定することもできます。 
  
  Azure ML によって保守される docker イメージとそのコンテンツは、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)内で確認できます。
-フレームワーク固有の依存関係は、それぞれのフレームワークのドキュメント ([Chainer](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、[PyTorch](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、[TensorFlow](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、[SKLearn](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)) に示されています。
+フレームワーク固有の依存関係は、それぞれのフレームワークのドキュメント ([Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)) に示されています。
 
 >[注意!] 特定のパッケージが Azure ML によって保守されるイメージと環境に追加できるほど十分に一般的だと考えられる場合は、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)に関するページで、GitHub の問題を作成してください。 
  

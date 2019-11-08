@@ -1,24 +1,24 @@
 ---
 title: モデルのスコア付け:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service でモデルのスコア付けモジュールを使用して、トレーニングされた分類または回帰モデルにより予測を生成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning でモデルのスコア付けモジュールを使用して、トレーニングされた分類または回帰モデルにより予測を生成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: f046b41d02ac392d003a9ecd15f25b43e5449cd0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: e7ab953a7ac0907244ebaab70b3b86cbe6f0f4d9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692665"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497650"
 ---
 # <a name="score-model-module"></a>スコア モデル モジュール
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 トレーニングされた分類または回帰モデルを使用して予測を生成するには、このモデルを使用します。
 
@@ -50,7 +50,6 @@ ms.locfileid: "72692665"
 
 スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning でのパイプラインに基づいた Web サービスの作成方法に関する次のチュートリアルを参照してください。
 
-
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

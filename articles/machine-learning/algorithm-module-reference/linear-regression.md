@@ -1,23 +1,23 @@
 ---
 title: Linear regression (線形回帰):モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Linear Regression (線形回帰) モジュールを使用して、パイプラインで使用するために線形回帰モデルを作成する方法について学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で線形回帰モジュールを使用して、パイプラインで使用するために線形回帰モデルを作成する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693710"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497749"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 このモジュールを使用して、パイプラインで使用するために、線形回帰モデルを作成します。  線形回帰では、1 つまたは複数の独立変数と数値の結果、または属性変数との間の線形関係を確立しようとします。 
 
@@ -63,7 +63,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a>通常の最小二乗法を使用して回帰モデルを作成する
 
-1. インターフェイスから **Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
+1. インターフェイスから**Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
 
     **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、 **[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分のパイプラインにドラッグします。
 
@@ -97,7 +97,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 ## <a name="bkmk_GradientDescent"></a>オンライン勾配降下を使用して回帰モデルを作成する
 
-1. インターフェイスから **Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
+1. インターフェイスから**Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
 
     **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、 **[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分のパイプラインにドラッグします
 
@@ -143,4 +143,4 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

@@ -1,7 +1,6 @@
 ---
-title: Python Machine Learning スクリプトを実行する
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio での Python の使用方法を学習します。
+title: Python スクリプトを実行する
+description: Python スクリプトの実行モジュールを使用して、Machine Learning Studio (クラシック) の実験や Web サービスで Python コードを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,22 +9,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: dea8fd7971f0572350306ea11ee1f9d897438d11
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308876"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684867"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Python Machine Learning スクリプトの実行
+# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で Python Machine Learning スクリプトを実行する
 
 Python は、多くのデータ サイエンティストにとって貴重なツールです。 これは、データの探索、特徴の抽出、モデルのトレーニングと検証、デプロイなど、一般的な機械学習ワークフローのすべての段階で使用されます。
 
-この記事では、Azure Machine Learning Studio の実験と Web サービスで Python コードを使用するために、Python スクリプトの実行モジュールを使用する方法について説明します。
+この記事では、Python スクリプトの実行モジュールを使用して、Azure Machine Learning Studio (クラシック) の実験や Web サービスで Python コードを使用する方法について説明します。
 
 ## <a name="using-the-execute-python-script-module"></a>Python スクリプトの実行モジュールの使用
 
-Studio での Python に対する主要なインターフェイスは、[Python スクリプトの実行][execute-python-script]モジュールを経由します。 [R スクリプトの実行][execute-r-script]モジュールと同様に、最大 3 つの入力が受け付けられて、最大 2 つの出力が生成されます。 Python コードは、`azureml_main` という特別に指定されたエントリポイント関数によってパラメーター ボックスに入力されます。
+Studio (クラシック) での Python への主要なインターフェイスは、[Python スクリプトの実行][execute-python-script]モジュールを経由します。 [R スクリプトの実行][execute-r-script]モジュールと同様に、最大 3 つの入力が受け付けられて、最大 2 つの出力が生成されます。 Python コードは、`azureml_main` という特別に指定されたエントリポイント関数によってパラメーター ボックスに入力されます。
 
 ![Python スクリプトの実行モジュール](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -53,7 +52,7 @@ Python モジュールへの入力は、Pandas DataFrames として公開され�
 
 ## <a name="translation-of-input-and-output-data-types"></a>入力と出力のデータ型の変換
 
-Studio データセットは Panda DataFrames と同じではありません。 結果として、Studio の入力データセットは Pandas DataFrames に変換され、出力の DataFrames は Studio データセットに変換し直されます。 この変換プロセス中には、次の変換も実行されます。
+Studio データセットは Panda DataFrames と同じではありません。 そのため、クラシック バージョンの Studio の入力データセットは Pandas DataFrame に変換され、出力の DataFrame は元の Studio (クラシック) データセットに変換されます。 この変換プロセス中には、次の変換も実行されます。
 
  **Python データ型** | **Studio 変換手順** |
 | --- | --- |
@@ -67,9 +66,9 @@ Studio データセットは Panda DataFrames と同じではありません。 
 
 ## <a id="import-modules"></a>既存の Python スクリプト モジュールをインポートする
 
-Python の実行に使用されるバックエンドは、広く使用されている科学的な Python ディストリビューションである [Anaconda](https://www.anaconda.com/distribution/) に基づいています。 データ中心のワークロードで最もよく使用される Python パッケージが 200 個近く付属しています。 Studio は、外部ライブラリのインストールと管理のための Pip や Conda などのパッケージ管理システムの使用を、現時点ではサポートしていません。  追加のライブラリを組み込む必要がある場合は、ガイドとして次のシナリオを使用してください。
+Python の実行に使用されるバックエンドは、広く使用されている科学的な Python ディストリビューションである [Anaconda](https://www.anaconda.com/distribution/) に基づいています。 データ中心のワークロードで最もよく使用される Python パッケージが 200 個近く付属しています。 クラシック バージョンの Studio は現在、Pip や Conda などのパッケージ管理システムを使用した外部ライブラリのインストールや管理をサポートしていません。  追加のライブラリを組み込む必要がある場合は、ガイドとして次のシナリオを使用してください。
 
-一般的な使用例は、既存の Python スクリプトを Studio の実験に組み込むことです。 [Python スクリプトの実行][execute-python-script]モジュールは、3 番目の入力ポートでの Python モジュールを含む zip ファイルを受け取ります。 このファイルは実行時に実行フレームワークによって解凍され、その内容が Python インタープリターのライブラリ パスに追加されます。 `azureml_main` エントリ ポイント関数がこれらのモジュールを直接インポートできます。 
+一般的なユースケースは、クラシック バージョンの Studio の実験への既存の Python スクリプトの組み込みです。 [Python スクリプトの実行][execute-python-script]モジュールは、3 番目の入力ポートでの Python モジュールを含む zip ファイルを受け取ります。 このファイルは実行時に実行フレームワークによって解凍され、その内容が Python インタープリターのライブラリ パスに追加されます。 `azureml_main` エントリ ポイント関数がこれらのモジュールを直接インポートできます。 
 
 たとえば、単純な “Hello, World” 関数を含む Hello.py ファイルについて考えてみます。
 
@@ -79,7 +78,7 @@ Python の実行に使用されるバックエンドは、広く使用されて�
 
 ![ユーザー定義の Python コードを含む zip ファイル](./media/execute-python-scripts/figure5.png)
 
-この zip ファイルをデータセットとして Studio にアップロードします。 次にそれを、次の図に示すように、**Python スクリプトの実行**モジュールの 3 番目の入力ポートに追加することで、Hello.zip ファイルで Python コードを使用する実験を作成し、実行します。
+この zip ファイルをクラシック バージョンの Studio にデータセットとしてアップロードします。 次にそれを、次の図に示すように、**Python スクリプトの実行**モジュールの 3 番目の入力ポートに追加することで、Hello.zip ファイルで Python コードを使用する実験を作成し、実行します。
 
 ![Hello.zip を Python スクリプトの実行モジュールへの入力として使用した実験のサンプル](./media/execute-python-scripts/figure6a.png)
 
@@ -94,7 +93,7 @@ Python の実行に使用されるバックエンドは、広く使用されて�
 Azure BLOB Storage アカウントに保存されているデータには、次の手順を使用してアクセスできます。
 
 1. [Python 用 Azure Blob Storage パッケージ](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip)をローカルでダウンロードします。
-1. この zip ファイルをデータセットとして Studio ワークスペースにアップロードします。
+1. この zip ファイルを Studio (クラシック) ワークスペースにデータセットとしてアップロードします。
 1. `protocol='http'` を使用して BlobService オブジェクトを作成する
 
 ```
@@ -141,11 +140,11 @@ MatplotLib からイメージを生成するには、次の手順を実行する
 
 ![Python コードを使用したサンプル実験のプロットの視覚化](./media/execute-python-scripts/figure-v2-9b.png)
 
-さまざまなイメージに保存することで複数の図を返すことができます。 Studio ランタイムは、すべてのイメージを取得して、視覚化のために連結します。
+さまざまなイメージに保存することで複数の図を返すことができます。 クラシック バージョンの Studio ランタイムはすべてのイメージを取得し、それらを視覚化のために連結します。
 
 ## <a name="advanced-examples"></a>高度な例
 
-Studio にインストールされた Anaconda 環境には、NumPy、SciPy、Scikits-Learn などの共通のパッケージが含まれています。 これらのパッケージは、機械学習パイプラインでのデータ処理のために効果的に使用できます。
+クラシック バージョンの Studio にインストールされた Anaconda 環境には、NumPy、SciPy、Scikits-Learn などの一般的なパッケージが含まれています。 これらのパッケージは、機械学習パイプラインでのデータ処理のために効果的に使用できます。
 
 たとえば、次の実験とスクリプトは、データセットの特徴の重要度スコアを計算する、Scikits-Learn のアンサンブル学習者の使い方を示しています。 このスコアは、別のモデルに供給する前に、監視対象の特徴の選択を実行するために使用できます。
 
@@ -153,7 +152,7 @@ Studio にインストールされた Anaconda 環境には、NumPy、SciPy、Sc
 
 ![スコアによって特徴を順位付ける関数](./media/execute-python-scripts/figure8.png)
 
-次の実験では、Azure Machine Learning Studio の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
+次の実験は次に、クラシック バージョンの Azure Machine Learning Studio の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
 
 ![Python を使用したピマ インディアン糖尿病の特徴の順位付けの実験](./media/execute-python-scripts/figure9a.png)
 
@@ -173,7 +172,7 @@ Python モジュールは、現在、Intellisense やデバッグなどの IDE �
 
 ### <a name="single-data-frame-output"></a>1 つのデータ フレームの出力
 
-Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。 現時点では、Studio ランタイムに直接戻されたトレーニング済みのモデルなどの任意の Python オブジェクトを返すことはできません。 同じ制限がある [R スクリプトの実行][execute-r-script]と同様に、多くの場合、バイト配列にオブジェクトを変換され、データ フレーム内のその部分を返されます。
+Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。 トレーニング済みのモデルなどの任意の Python オブジェクトを元の Studio (クラシック) ランタイムに直接返すことは現在できません。 同じ制限がある [R スクリプトの実行][execute-r-script]と同様に、多くの場合、バイト配列にオブジェクトを変換され、データ フレーム内のその部分を返されます。
 
 ### <a name="inability-to-customize-python-installation"></a>Python のインストールをカスタマイズできない
 

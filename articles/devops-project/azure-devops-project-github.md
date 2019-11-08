@@ -16,12 +16,12 @@ ms.date: 06/27/2019
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4a48b5c413f6dfb58a1ba3f896ded49250cde306
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15ac201a078864717d8e0079801507cf5fc0fe3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286332"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481081"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して既存のコードの CI/CD パイプラインを作成する
 
@@ -48,7 +48,11 @@ Azure DevOps Projects によって、Azure Pipelines に CI/CD パイプライ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. 左側のウィンドウで **[+ リソースの作成]** を選択し、**DevOps Projects** を検索して **[作成]** を選択します。
+2. Azure portal メニューから **[リソースの作成]** を選択します。
+
+   ![Azure portal メニュー - リソースの作成](_img/azure-devops-project-github/createaresource.png)
+
+3. **[DevOps]、[DevOps プロジェクト]** の順に選択します。
 
    ![DevOps Projects ダッシュボード](_img/azure-devops-project-github/azuredashboard.png)
 

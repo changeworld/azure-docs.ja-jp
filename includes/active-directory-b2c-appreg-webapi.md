@@ -1,17 +1,22 @@
 ---
 author: mmacy
 ms.service: active-directory-b2c
+ms.subservice: B2C
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: 4ac69b51e69031a1a4ce83a2c09dc6cc010ccd62
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: da92c40b051a3dc34e61d056c63f3207d4f42f1b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720268"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475099"
 ---
 アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
+
+アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [プレビュー エクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+
+#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
@@ -24,3 +29,21 @@ ms.locfileid: "71720268"
 1. **[アプリケーション ID/URI]** には、表示されている URI に対する API エンドポイント識別子を追加します。 このチュートリアルでは、完全な URI が `https://contosob2c.onmicrosoft.com/api` のような形になるように、「`api`」と入力します。
 1. **作成** を選択します。
 1. 後の手順で使用するために、**アプリケーション ID** を記録しておきます。
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録 (プレビュー)]** を選択し、 **[新規登録]** を選択します。
+1. アプリケーションの**名前**を入力します。 たとえば、*webapi1* とします。
+1. **[リダイレクト URI]** で、 **[Web]** を選択し、お使いのアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、`http://localhost:5000` でリッスンします。
+1. **[登録]** を選択します。
+1. 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
+
+次に、暗黙的な許可のフローを有効にします。
+
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[新しいエクスペリエンスを試す]** (表示されている場合) を選択します。
+1. **[暗黙的な許可]** で、 **[アクセス トークン]** と **[ID トークン]** の両方のチェック ボックスをオンにします。
+1. **[保存]** を選択します。

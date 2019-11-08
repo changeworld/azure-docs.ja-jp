@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5533e35a632f2d58bd8af8f52aafa11d1b677cb9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 877a17327f13e407f86cb3a1a21f051572f74343
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168389"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499720"
 ---
 # <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>IPsec 接続のための Virtual WAN の既定のポリシー
 
@@ -28,4 +28,5 @@ ms.locfileid: "72168389"
 
 ## <a name="next-steps"></a>次の手順
 
+カスタム IPsec ポリシーを構成する手順については、[Virtual WAN 用にカスタム IPsec ポリシーを構成する](virtual-wan-custom-ipsec-portal.md)に関するページを参照してください。
 仮想 WAN の詳細については、「[About Azure Virtual WAN](virtual-wan-about.md)」(Azure Virtual WAN について) および「[Azure Virtual WAN FAQ](virtual-wan-faq.md)」(Azure Virtual WAN のよくあるご質問) を参照してください。

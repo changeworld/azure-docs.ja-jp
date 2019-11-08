@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842570"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499165"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services コンテナーのセキュリティ
 
-アプリケーションを開発するときは常にセキュリティを重視する必要があります。 セキュリティの重要性は成功の指標です。 Cognitive Services コンテナーを含むソフトウェア ソリューションを設計する場合は、制限と使用できる機能を理解しておくことが重要です。 詳細については、[Azure Security][az-security] に関する記事を参照してください。
+アプリケーションを開発するときは常にセキュリティを重視する必要があります。 セキュリティの重要性は成功の指標です。 Cognitive Services コンテナーを含むソフトウェア ソリューションを設計する場合は、制限と使用できる機能を理解しておくことが重要です。 ネットワーク セキュリティの詳細については、「[Azure Cognitive Services 仮想ネットワークを構成する][az-security]」を参照してください。
 
 > [!IMPORTANT]
 > 既定では、Cognitive Services コンテナー API に "*セキュリティはありません*"。 この理由は、ほとんどの場合、ネットワーク ブリッジによって外部から保護されるポッドの一部としてコンテナーが実行されるためです。 ただし、[クラウドベースの Cognitive Services][request-authentication] にアクセスするときに使用する認証と同じように動作する認証を有効にすることができます。
@@ -51,4 +51,4 @@ Cognitive Services コンテナーによって Microsoft サーバーに作成�
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com
 [request-authentication]: ../../authentication.md
-[az-security]: ../../../security/fundamentals/overview.md
+[az-security]: ../../cognitive-services-virtual-networks.md

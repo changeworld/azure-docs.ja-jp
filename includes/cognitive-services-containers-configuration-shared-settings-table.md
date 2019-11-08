@@ -1,15 +1,15 @@
 ---
 author: IEvangelist
 ms.author: dapine
-ms.date: 06/25/2019
+ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 46376477aae9f94c1c8f6e1dd6bc718d213cc373
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7ccbc6c06419d22add7c52829069bb858cb35cf7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712452"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484089"
 ---
 このコンテナーには、次の構成設定があります。
 
@@ -20,6 +20,6 @@ ms.locfileid: "67712452"
 |はい|[Billing](#billing-configuration-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
-|いいえ|Http Proxy|送信要求を行うために、HTTP プロキシを構成します。|
+|いいえ|HTTP Proxy|送信要求を行うために、HTTP プロキシを構成します。|
 |いいえ|[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
 |いいえ|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|

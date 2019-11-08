@@ -10,14 +10,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002750"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489887"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Azure Machine Learning でログ記録を有効にする
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning Python SDK を使用すると、既定の Python ロギング パッケージと SDK 固有の機能の両方を使用して、ローカルなログ記録と、ポータルのワークスペースへのログ記録の両方のログ記録を有効にすることができます。 ログでは、アプリケーションの状態に関するリアルタイムの情報が開発者に提供され、エラーまたは警告の診断に役立ちます。 この記事では、次の領域でログ記録を有効にするさまざまな方法について説明します。
 
@@ -117,7 +118,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-Azure portal で Application Insights を使用する方法について詳しくは、[ハウツー](how-to-enable-app-insights.md)記事をご覧ください。
+Azure Machine Learning Studio で Application Insights を使用する方法の詳細については、[ハウツー ガイド](how-to-enable-app-insights.md)を参照してください。
 
 ## <a name="python-native-logging-settings"></a>Python のネイティブ ログ記録の設定
 

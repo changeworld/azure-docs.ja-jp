@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9a66e4ecf2230caad233a4eff12c0fadc95409d5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45b45c6c9afd43b711fc548f470ce0f0acd04a0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803792"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464283"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>iOS で Speech SDK を使用してコーデック圧縮オーディオ入力を使用する
 
@@ -46,7 +46,7 @@ Xcode プロジェクトに次の設定を適用してこれを完了します�
 
 1. 構築した `GStreamerWrapper.framework` および[ここ](https://aka.ms/csspeech/iosbinary)からダウンロードできる Cognitive Services Speech SDK のフレームワークの両方を、サンプル プロジェクトを含むディレクトリにコピーします。
 1. *[プロジェクトの設定]* で、フレームワークへのパスを調整します。
-    1. **[Embedded Binaries]\(埋め込みバイナリ\)** ヘッダーの下の **[全般]** タブで、フレームワークとして SDK ライブラリを追加します **[Add embedded binaries]\(埋め込みバイナリの追加\)**  >  **[その他の追加]** > [移動] で選択したディレクトリに移動し、両方のフレームワークを選択します。
+    1. **[Embedded Binaries]\(埋め込みバイナリ\)** ヘッダーの下の **[全般]** タブで、フレームワークとして SDK ライブラリを追加します **[Add embedded binaries]/(埋め込みバイナリの追加/)**  >  **[その他の追加]** に移動し、選択したディレクトリに移動して、両方のフレームワークを選択します。
     1. **[Build Settings]** タブに移動し、 **[All]** の設定をアクティブにします。
 1. ディレクトリ `$(SRCROOT)/..` を、 **[Search Paths]** 見出しの下にある *[Framework Search Paths]* に追加します。
 
@@ -64,4 +64,4 @@ Xcode プロジェクトに次の設定を適用してこれを完了します�
 ## <a name="next-steps"></a>次の手順
 
 - [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-- [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)
+* [Java で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

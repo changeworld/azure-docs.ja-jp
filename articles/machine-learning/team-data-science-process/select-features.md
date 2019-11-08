@@ -11,17 +11,15 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a74f2c21746deb16372174d4a769f9abb825a1cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da5da64538ceaf906388c49963c0d5115e1b5ab9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809639"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480221"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) の特徴選択
-この記事では、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおける特徴選択の役割の例を示します。 例は、Azure Machine Learning Studio で描画しています。 
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+この記事では、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおける特徴選択の役割の例を示します。 例は、Azure Machine Learning Studio で描画しています。
 
 特徴のエンジニアリングと選択は Team Data Science Process (TDSP) の一部です。TDSP の概要については、「[Team Data Science Process とは](overview.md)」を参照してください。 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
 
@@ -44,7 +42,7 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 
 ![特徴選択モジュール](./media/select-features/feature-Selection.png)
 
-たとえば、[フィルターに基づく特徴選択][filter-based-feature-selection]モジュールを考えてみます。 便宜上、テキスト マイニングの例を引き続き使用します。 [特徴ハッシュ][feature-hashing] モジュールから 256 の特徴セットが作成された後、回帰モデルを作成する場合を想定します。応答変数は "Col1" で、これには書籍レビューの評価 1 ～ 5 が含まれます。 応答変数は "Col1" で、書籍レビューの評価を 1 ～ 5 で表すこととします。 [フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールに、"Col1" というターゲット属性を持つ 50 の特徴を含むデータセットが生成されます。 次の図に、この実験のフローと入力パラメーターを示します。
+たとえば、[フィルターに基づく特徴選択][filter-based-feature-selection]モジュールの使用を考えてみます。 便宜上、テキスト マイニングの例を引き続き使用します。 [特徴ハッシュ][feature-hashing] モジュールから 256 の特徴セットが作成された後、回帰モデルを構築する必要があり、応答変数は "Col1" で、これには書籍レビューの評価 1 から 5 が含まれると想定します。 応答変数は "Col1" で、書籍レビューの評価を 1 ～ 5 で表すこととします。 [フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールによって、"Col1" というターゲット属性を持つ 50 の特徴を含むデータセットが生成されます。 次の図に、この実験のフローと入力パラメーターを示します。
 
 ![フィルターに基づく特徴選択モジュールのプロパティ](./media/select-features/feature-Selection1.png)
 
@@ -58,7 +56,7 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 
 ![フィルターに基づく特徴選択モジュールのスコア](./media/select-features/feature-Selection3.png)
 
-この[フィルターに基づく特徴選択][filter-based-feature-selection]を適用すると、256 のうち 50 の特徴が選択されます。これらの特性は、"ピアソンの相関関係" スコアリング メソッドに基づいて、対象の属性 "Col1" を持つ最も関連性が高い特徴であるためです。
+この[フィルターに基づく特徴選択][filter-based-feature-selection]モジュールを適用すると、256 のうち 50 の特徴が選択されます。これらは、"ピアソンの相関関係" スコアリング メソッドに基づいて、対象の属性 "Col1" を持つ最も関連性が高い特徴であるためです。
 
 ## <a name="conclusion"></a>まとめ
 特徴エンジニアリングと特徴選択は、2 つの一般的にエンジニアリングされ、選択された特徴です。データに含まれるキー情報の抽出を試みるトレーニング プロセスの効率を高めます。 また、入力データを正確に分類して、関心のある結果をより確実に予測するために、これらのモデルのパワーを向上させます。 特徴エンジニアリングと特徴選択は、学習を計算的により扱いやすくするために組み合わせることもできます。 これは、強化した後、モデルの調整やトレーニングに必要な特徴の数を減らすことによって行われます。 数学的に言うと、モデルのトレーニングに選択される特徴は、データのパターンを説明し、正常に結果を予測する独立変数の最小セットです。

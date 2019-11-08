@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b86a8df86b7f9b8a5936752a5f0413aa863ae85f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515601"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490795"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>クイック スタート:.NET 用 Personalizer クライアント ライブラリ
 
@@ -38,19 +38,18 @@ Personalizer サービスを使用するこの C# クイック スタートで�
 このクイックスタートを使用するには、次のようないくつかの手順があります。
 
 * Azure portal で、Personalizer リソースを作成する
-* Azure portal の Personalizer リソースの **[設定]** ページで、モデルの更新頻度を変更する
+* Azure portal の Personalizer リソースの **[構成]** ページで、モデルの更新頻度を変更する
 * コード エディターで、コード ファイルを作成し、コード ファイルを編集する
 * コマンド ラインまたはターミナルで、コマンド ラインから SDK をインストールする
 * コマンド ラインまたはターミナルで、コード ファイルを実行する
 
 ## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 さらに、以下を実行できます。
+[Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 さらに、以下を実行できます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
 
-<!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 試用版のサブスクリプションまたはリソースからキーを取得した後、[環境変数](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)を 2 つ作成します。
 
 * `PERSONALIZER_RESOURCE_KEY` (リソース キー)。
@@ -60,7 +59,7 @@ Azure portal では、キーとエンドポイントのどちらの値も **[ク
 
 ## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
-Azure portal の Personalizer リソースの **[設定]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+Azure portal の Personalizer リソースの **[構成]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 この短い時間でサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
 ![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -110,11 +109,11 @@ Personalizer クライアントは、自分のキーが含まれている Micros
 
 Personalizer に報酬を送信するには、[RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview) を作成し、それを [client.Reward](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) メソッドに渡します。 
 
-このクイックスタートでは、報酬を決定するにあたって大きな問題はありません。 実稼働システムでは、何がどの程度まで[報酬スコア](concept-rewards.md)に影響を及ぼすかを特定するのは複雑なプロセスとなる場合があり、そのプロセスはやがて変更することになる場合もあります。 実際の Personalizer アーキテクチャでは、その点を設計上の主要な意思決定に含めるようにしてください。 
+このクイックスタートでは、報酬を決定するにあたって大きな問題はありません。 実稼働システムでは、何がどの程度まで[報酬スコア](concept-rewards.md)に影響を及ぼすかを特定するのは複雑なプロセスとなる場合があり、そのプロセスはやがて変更することになる場合もあります。 実際の Personalizer アーキテクチャでは、この設計上の意思決定を主要な意思決定に含めるようにしてください。 
 
 ## <a name="code-examples"></a>コード例
 
-以下のコード スニペットは、.NET 用 Personalizer クライアント ライブラリを使用して次のことを実行する方法を示します。
+以下のコード スニペットは、.NET 用 Personalizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 
 * [Personalizer クライアントを作成する](#create-a-personalizer-client)
 * [ランクを要求する](#request-a-rank)

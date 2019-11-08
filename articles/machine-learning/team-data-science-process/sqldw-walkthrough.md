@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f9da031fd4b35c2fa9126f545eecacf6143b18a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478856"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480334"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -376,7 +376,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** クエリによって、13,369 のメダリオン (タクシー) と 2013 年に完了した乗車回数を示す行で構成されるテーブルが返されます。 最後の列には、完了した乗車回数が含まれます。
 
-### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>探索:medallion および hack_license ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>探索:medallion および hack_license ごとの乗車回数の分布
 この例では、指定した期間内で乗車回数が 100 を超えた medallion (タクシー番号) と hack_license 番号 (運転) を識別します。
 
     SELECT medallion, hack_license, COUNT(*)
@@ -615,7 +615,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-### <a name="report-number-of-rows-and-columns-in-table-nyctaxitrip"></a>テーブル <nyctaxi_trip> の行数と列数を報告する
+### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>テーブル <nyctaxi_trip> の行数と列数を報告する
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
@@ -633,7 +633,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 * 行数の合計 = 173179759
 * 列数の合計 = 14
 
-### <a name="report-number-of-rows-and-columns-in-table-nyctaxifare"></a>テーブル <nyctaxi_fare> の行数と列数を報告する
+### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_fare"></a>テーブル <nyctaxi_fare> の行数と列数を報告する
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_fare>')
@@ -809,7 +809,7 @@ and
 2. **多クラス分類**:あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
 3. **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
-モデリングの演習を開始するには、 **Azure Machine Learning ワークスペース** にログインします。 Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning Studio ワークスペースの作成](../studio/create-workspace.md)に関する記事をご覧ください。
+モデリングの演習を開始するには、**Azure Machine Learning (クラシック)** ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning Studio (クラシック) ワークスペースの作成](../studio/create-workspace.md)に関するページを参照してください。
 
 1. Azure Machine Learning の使用を開始するには、「 [Azure Machine Learning Studio とは](../studio/what-is-ml-studio.md)
 2. [Azure Machine Learning Studio](https://studio.azureml.net)にログインします。
@@ -830,7 +830,7 @@ and
 
 この演習では、既に SQL Data Warehouse でデータの探索とエンジニアリングを実行し、Azure Machine Learning Studio に取り込むサンプルのサイズを決定しました。 1 つ以上の予測モデルを作成する手順を以下に示します。
 
-1. **[データの入力と出力]** セクションにある [[データのインポート]][import-data] モジュール を使用して、Azure Machine Learning Studio にデータを取り込みます。 詳細については、 [データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
+1. **[データの入力と出力]** セクションで利用できる[データのインポート][import-data] モジュールを使用して、Azure Machine Learning Studio (クラシック) にデータを取り込みます。 詳細については、[データのインポート][import-data] モジュールのリファレンス ページを参照してください。
 
     ![Azure ML データのインポート][17]
 2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
@@ -846,7 +846,7 @@ SQL Data Warehouse データベースから直接データを読み取る、二�
 > [!IMPORTANT]
 > 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 >
-> 不要な列またはターゲット リークを除外するために、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページをご覧ください。
+> 不要な列またはターゲット リークを除外するには、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページを参照してください。
 >
 >
 

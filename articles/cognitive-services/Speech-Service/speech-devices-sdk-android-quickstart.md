@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f7039b525cf0d52670b8d76a24d8ec3ea5115772
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: acb041ce29d0340686a09764158063ad8d000c7c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559111"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491309"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>クイック スタート:Android 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -102,14 +102,14 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. 既定のウェイク ワード (キーワード) は "Computer" です。 用意されている別のウェイク ワード ("Machine"、"Assistant" など) を試すこともできます。 これらの代替ウェイク ワード用のリソース ファイルは、Speech Devices SDK の keyword フォルダーにあります。 たとえば、C:\SDSDK\Android-Sample-Release\keyword\Computer には、ウェイク ワード "Computer" に使用されるファイルが含まれています。
+1. 既定のキーワードは "Computer" です。 用意されている別のキーワード ("Machine"、"Assistant" など) を試すこともできます。 これらの代替キーワード用のリソース ファイルは、Speech Devices SDK の keyword フォルダーにあります。 たとえば、C:\SDSDK\Android-Sample-Release\keyword\Computer には、キーワード "Computer" に使用されるファイルが含まれています。
 
    > [!TIP]
-   > [カスタム ウェイク ワードを作成する](speech-devices-sdk-create-kws.md)こともできます。
+   > [カスタム キーワードを作成する](speech-devices-sdk-create-kws.md)こともできます。
 
-    新しいウェイク ワードを使用するには、`MainActivity.java` で下記の 2 行を更新し、ウェイク ワード パッケージをお使いのアプリにコピーします。 たとえば、ウェイク ワード パッケージ kws-machine.zip からウェイク ワード "Machine" を使用するには、次の操作を行います。
+    新しいキーワードを使用するには、`MainActivity.java` で下記の 2 行を更新し、キーワード パッケージをお使いのアプリにコピーします。 たとえば、キーワード パッケージ kws-machine.zip からキーワード "Machine" を使用するには:
 
-   * ウェイク ワード パッケージを、"C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" フォルダーにコピーします。
+   * キーワード パッケージを、"C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" フォルダーにコピーします。
    * 次に示すように、`MainActivity.java` でキーワードとパッケージ名を更新します。
 
      ```java
