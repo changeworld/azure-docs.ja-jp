@@ -12,43 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/14/2019
 ms.author: rkarlin
-ms.openlocfilehash: e74dd54403ed599aa95e8fc8a94c2bd7a3ca41d8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 92beb61125c9c6a41bafb9a0c477d81c34a2f5de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719106"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520667"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 
-Azure Sentinel と外部ソリューションを接続できます。これにより、ログ ファイルを Syslog に保存できるようになります。 ご利用のアプライアンスでログを Syslog 共通イベント形式 (CEF) として保存できる場合、Azure Sentinel との統合によってデータ全体で簡単に分析とクエリを実行できます。
+
+
+この記事では、外部セキュリティ ソリューションで Azure Sentinel を接続し、Syslog の上部に Common Event Format (CEF) メッセージを送信する方法について説明します。 
 
 > [!NOTE] 
 > データは、Azure Sentinel を実行しているワークスペースの地域に保存されます。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-Azure Sentinel とご利用の CEF アプライアンスとの間の接続では、次の 3 つの手順が行われます。
-
-1. アプライアンスが、Microsoft Monitoring Agent に基づいて、必要な形式で必要なログを Azure Sentinel Syslog エージェントに送信できるように、アプライアンスで次の値を設定する必要があります。 Azure Sentinel エージェントの Syslog デーモンでこれらのパラメーターを変更できれば、ご利用のアプライアンスでもこれらのパラメーターを変更することができます。
-    - プロトコル = UDP
-    - ポート = 514
-    - ファシリティ = Local4
-    - 形式 = CEF
-2. Syslog エージェントでは、データを収集して Log Analytics に安全に送信します。ここでデータが解析および改良されます。
-3. エージェントによってデータが Log Analytics ワークスペースに保存されるため、分析、相関ルール、ダッシュボードを使用して、必要に応じてクエリできます。
-
-> [!NOTE]
-> エージェントは、複数のソースからログを収集できますが、専用のコンピューターにインストールする必要があります。
-
+エージェントを専用の Linux マシン (VM またはオンプレミス) に展開して、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 次の図は、Azure での Linux VM の場合の設定を示しています。
 
  ![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
 
-これ以外の場合は、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントを展開します。 
+または、別のクラウド内の VM、またはオンプレミスのマシンを使用する場合にも、この設定が存在します。 
 
  ![オンプレミスの CEF](./media/connect-cef/cef-syslog-onprem.png)
+
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -56,92 +47,84 @@ Azure Sentinel とご利用の CEF アプライアンスとの間の接続では
 
 セキュリティ ソリューションと Syslog コンピューターの間で TLS 通信を使用するには、TLS で通信するように Syslog デーモン (rsyslog または syslog-ng) を構成する必要があります。[TLS -rsyslog で Syslog トラフィックを暗号化する](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)方法に関するページと [TLS –syslog-ng でログ メッセージを暗号化する](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)方法に関するページをご覧ください。
 
+ 
+## <a name="prerequisites"></a>前提条件
+プロキシとして使用する Linux マシンで、次のいずれかのオペレーティング システムが実行されていることを確認します。
 
-## <a name="step-1-configure-your-syslog-vm"></a>手順 1:Syslog VM の構成
+- 64 ビット
+  - CentOS 6 および 7
+  - Amazon Linux 2017.09
+  - Oracle Linux 6 および 7
+  - Red Hat Enterprise Linux Server 6 および 7
+  - Debian GNU/Linux 8 および 9
+  - Ubuntu Linux 14.04 LTS、16.04 LTS、および 18.04 LTS
+  - SUSE Linux Enterprise Server 12
+- 32 ビット
+   - CentOS 6
+   - Oracle Linux 6
+   - Red Hat Enterprise Linux Server 6
+   - Debian GNU/Linux 8 および 9
+   - Ubuntu Linux 14.04 LTS および 16.04 LTS
+ 
+ - デーモンのバージョン
+   - Syslog-ng: 2.1 から 3.22.1
+   - Rsyslog: v8
+  
+ - サポートされている Syslog RFC
+   - Syslog RFC 3164
+   - Syslog RFC 5424
+ 
+コンピューターが次の要件も満たしていることを確認します。 
+- アクセス許可
+    - コンピューターに対する管理者特権のアクセス許可 (sudo) が必要です。 
+- ソフトウェア要件
+    - コンピューターで Python が実行されていることを確認します
+## <a name="step-1-deploy-the-agent"></a>手順 1: エージェントをデプロイする
 
-エージェントを専用の Linux マシン (VM またはオンプレミス) に展開して、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 
-
-> [!NOTE]
-> 組織のセキュリティ ポリシーに従って、コンピューターのセキュリティを構成してください。 たとえば、企業のネットワーク セキュリティ ポリシーに合わせてネットワークを構成し、デーモンのポートとプロトコルを要件に合わせて変更することができます。 
-
-
+この手順では、Azure Sentinel とセキュリティ ソリューションの間のプロキシとして機能する Linux マシンを選択する必要があります。 プロキシ マシンで次のスクリプトを実行する必要があります。
+- Log Analytics エージェントをインストールし、必要に応じて、TCP 経由のポート 514 で Syslog メッセージをリッスンし、Azure Sentinel ワークスペースに CEF メッセージを送信するように構成します。
+- ポート 25226 を使用して、CEF メッセージを Log Analytics エージェントに転送するように Syslog デーモンを構成します。
+- データを収集しそれを Log Analytics に安全に送信するように Syslog エージェントを設定します。ここで、データが解析および改良されます。
+ 
+ 
 1. Azure Sentinel ポータルで、 **[Data connectors]\(データ コネクタ\)** をクリックし、 **[Common Event Format (CEF)]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。 
 
-1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** で、マシンの種類として Azure またはオンプレミスを選択します。 
-1. 開いた **[仮想マシン]** 画面で、使用するマシンを選択し、 **[接続]** をクリックします。
-1. **[Download and install agent for Azure Linux virtual machines]\(Azure Linux 仮想マシン用のエージェントをダウンロードしてインストールする\)** を選択した場合は、マシンを選択し、 **[接続]** をクリックします。 **[Download and install agent for non-Azure Linux virtual machines]\(Azure Linux 以外の仮想マシン用のエージェントをダウンロードしてインストールする\)** を選択した場合は、 **[ダイレクトエージェント]** 画面で、 **[Linux 用エージェントのダウンロードとオンボード]** の下にあるスクリプトを実行します。
-1. CEF コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
-1. これらのコマンドをコピーし、アプライアンス上で実行します。
-    - rsyslog.d を選択した場合:
-              
-       1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            
-       2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
-            
-       1. syslog デーモン `sudo service rsyslog restart` を再起動します。<br> 詳細については、[rsyslog に関するドキュメント](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)を参照してください
-           
-    - syslog-ng を選択した場合:
-       1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-       2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
+1. **[Install and configure the Syslog agent]\(Syslog エージェントのインストールと構成\)** で、マシンの種類として Azure、他のクラウド、またはオンプレミスのいずれかを選択します。 
+   > [!NOTE]
+   > 次の手順のスクリプトでは Log Analytics エージェントをインストールし、マシンを Azure Sentinel ワークスペースに接続するため、このマシンが他のワークスペースに接続されていないことを確認します。
+1. コンピューターに対する管理者特権のアクセス許可 (sudo) が必要です。 次のコマンド `python –version` を使用して、マシンに Python が備わっていることを確認します。
 
-        3. syslog デーモン `sudo service syslog-ng restart` を再起動します。 <br>詳細については、[syslog-ng に関するドキュメント](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/mutual-authentication-using-tls/2)を参照してください。
-1. 次のコマンドを使用して、Syslog エージェントを再起動します: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します。`tail /var/opt/microsoft/omsagent/log/omsagent.log`
+1. プロキシ マシンで次のスクリプトを実行します。
+   `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+1. スクリプトの実行中に、エラーまたは警告メッセージが表示されないことを確認してください。
 
-Log Analytics で CEF イベントに関連するスキーマを使用するために、`CommonSecurityLog` を検索します。
 
-## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>手順 2:Common Event Format (CEF) ログを Syslog エージェントに転送する
+## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>手順 2: CEF メッセージを送信するように、セキュリティ ソリューションを構成する
 
-CEF 形式の Syslog メッセージを Syslog エージェントに送信するように、セキュリティ ソリューションを設定します。 エージェント構成に表示されているパラメーターと同じものを使用していることを確認します。 通常、これらは次のようになります。
+1. アプライアンスでこれらの値を設定して、このアプライアンスが Log Analytics エージェントに基づいて、必要な形式で必要なログを Azure Sentinel Syslog エージェントに送信するようにします。 Azure Sentinel エージェントの Syslog デーモンでこれらのパラメーターを変更できれば、ご利用のアプライアンスでもこれらのパラメーターを変更することができます。
+    - プロトコル = TCP
+    - ポート = 514
+    - 形式 = CEF
+    - IP アドレス - CEF メッセージを、この目的専用の仮想マシンの IP アドレスに送信していることを確認します。
 
-- ポート 514
-- ファシリティ local4
+   > [!NOTE]
+   > このソリューションでは、Syslog RFC 3164 または RFC 5424 をサポートしています。
 
-## <a name="step-3-validate-connectivity"></a>手順 3:接続の検証
 
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
+1. Log Analytics で CEF イベントに関連するスキーマを使用するために、`CommonSecurityLog` を検索します。
 
-1. 必ず正しいファシリティを使用してください。 ファシリティは、アプライアンスと Azure Sentinel で同じである必要があります。 どのファシリティ ファイルを Azure Sentinel で使用しているかをチェックし、ファイル `security-config-omsagent.conf` でそれを修正することができます。 
+## <a name="step-3-validate-connectivity"></a>手順 3: 接続の検証
 
-2. Syslog エージェントで、自分のログが正しいポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します。`tcpdump -A -ni any  port 514 -vv` このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。 正しいポートと正しい機能でソース アプライアンスからログを受信していることを確認してください。
+1. Log Analytics を開いて、CommonSecurityLog スキーマを使用してログを受信していることを確認します。<br> ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
 
-3. 送信するログが [RFC 3164](https://tools.ietf.org/html/rfc3164) に準拠していることを確認します。
-
-4. Syslog エージェントを実行しているコンピューターで、コマンド `netstat -a -n:` を使用して、これらのポート 514、25226 が開いており、リッスンしていることを確認します。 このコマンドの詳しい使用方法については、[netstat(8) - Linux man ページ](https://linux.die.net/man/8/netstat)を参照してください。 正しくリッスンしている場合、次のように表示されます。
-
-   ![Azure Sentinel ポート](./media/connect-cef/ports.png) 
-
-5. ログを送信しているポート 514 をリッスンするように、デーモンが設定されていることを確認します。
-    - rsyslog の場合:<br>ファイル `/etc/rsyslog.conf` に次の構成が含まれていることを確認します。
-
-           # provides UDP syslog reception
-           module(load="imudp")
-           input(type="imudp" port="514")
-        
-           # provides TCP syslog reception
-           module(load="imtcp")
-           input(type="imtcp" port="514")
-
-      詳細については、[imudp:UDP Syslog Input Module](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) および [imtcp:TCP Syslog Input Module](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module) に関するページを参照してください
-
-   - syslog-ng の場合:<br>ファイル `/etc/syslog-ng/syslog-ng.conf` に次の構成が含まれていることを確認します。
-
-           # source s_network {
-            network( transport(UDP) port(514));
-             };
-     詳細については、「[syslog-ng Open Source Edition 3.16 - Administration Guide](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455)」 (syslog-ng オープンソース エディション 3.16 - 管理者ガイド) を参照してください。
-
-1. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します。`tcpdump -A -ni any  port 25226 -vv` このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。 エージェントでログが受信されていることを確認します。
-
-6. これらの両方のコマンドで正常な結果が表示された場合は、Log Analytics を調べて自分のログが到着しているかどうかを確認してください。 これらのアプライアンスからストリーミングされるすべてのイベントは、Log Analytics で `CommonSecurityLog` 型の下に未加工の形式で表示されます。
-
-7. エラーがあるかどうか、またはログが到着しているかどうかを確認するには、`tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log` を調べます。 ログ形式の不一致エラーがある場合は、`/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` に移動してファイル `security_events.conf` を調べ、ログの正規表現形式がこのファイルのものと一致していることを確認します。
-
-8. Syslog メッセージの既定のサイズが 2,048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します: `message_length_limit 4096`
+1. スクリプトを実行する前に、セキュリティ ソリューションからメッセージを送信して、構成した Syslog プロキシ マシンにそれらが転送されていることを確認することをお勧めします。 
+1. コンピューターに対する管理者特権のアクセス許可 (sudo) が必要です。 次のコマンド `python –version` を使用して、マシンに Python が備わっていることを確認します。
+1. 次のスクリプトを実行して、エージェント、Azure Sentinel、セキュリティ ソリューション間の接続を確認します。 デーモンの転送が正しく構成されていること、正しいポートでリッスンしていること、デーモンと Log Analytics エージェント間の通信がブロックされていないことを確認します。 また、このスクリプトでは、モック メッセージ "TestCommonEventFormat" を送信して、エンドツーエンドの接続も確認されます。 <br>
+ `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

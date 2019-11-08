@@ -9,15 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 11/04/2019
+ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436632"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580701"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning で自動化された機械学習を使用して、時系列予測回帰モデルをトレーニングする方法について説明します。 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 次の例では、以下の方法について説明します。
 
@@ -34,6 +35,27 @@ ms.locfileid: "72436632"
 将来の予測をどこまで行うか (予測期間) の他に、ラグなども[構成](#config)できます。 自動化された ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
 
 トレーニング データから抽出されたフィーチャーが重要な役割を果たします。 さらに、自動化された ML では、標準的な前処理手順が実行され、追加の時系列フィーチャーが生成されて季節的影響がキャプチャされ、予測の精度が最大化されます。
+
+## <a name="time-series-and-deep-learning-models"></a>時系列モデルとディープ ラーニング モデル
+
+
+自動 ML では、レコメンデーション システムの一部として、ネイティブな時系列モデルとディープ ラーニング モデルの両方をユーザーに提供します。 これらの学習器には、以下が含まれます。
++ Prophet
++ 自動 ARIMA
++ ForecastTCN
+
+自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
+
+ディープ ラーニング モデルには、3 つの組み込み機能があります。
+1. 入力から出力への任意のマッピングから学習できる
+1. 複数の入力と出力をサポートする
+1. 長いシーケンスにまたがる入力データのパターンを自動的に抽出できる
+
+大きなデータを指定すると、Microsoft の ForecastTCN などのディープ ラーニング モデルは、結果として得られるモデルのスコアを向上させることができます。 
+
+ネイティブな時系列の学習器も、自動 ML の一部として提供されます。 Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 Prophet は、正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。 
+
+自己回帰和分移動平均 (ARIMA) は、時系列予測に使用される一般的な統計手法です。 この予測手法は、データによってサイクルなどの傾向の証拠が示される短期予測シナリオでよく使用されます。これは予測不可能でモデル化や予測が困難な場合があります。 自動 ARIMA は、一貫性のある信頼性の高い結果を得るために、データを定常データに変換します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -98,6 +120,7 @@ test_labels = test_data.pop(label).values
 |`max_horizon`|時系列頻度を単位にした目的の最大予測期間を定義します。 単位は、月ごとや週ごとなどの予測を実行する必要があるトレーニング データの時間間隔に基づきます。|✓|
 |`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 これは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 たとえば、製品の需要を予測しようとする場合、任意の月の需要は、3 か月前の特定の商品の価格によって異なる可能性があります。 この例では、モデルが正しいリレーションシップでトレーニングされるように、目標 (要求) を 3 か月間遅延させてください。||
 |`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。||
+|`enable_dnn`|予測 DNN を有効にします。||
 
 詳しくは、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)をご覧ください。
 
@@ -129,7 +152,8 @@ import logging
 
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=15,
+                             enable_early_stopping=True,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -149,6 +173,17 @@ best_run, fitted_model = local_run.get_output()
 * ローリング オリジン クロス検証
 * 構成可能なラグ
 * ローリング ウィンドウの集計機能
+
+### <a name="configure-a-dnn-enable-forecasting-experiment"></a>DNN が有効な予測実験を構成する
+
+> [!NOTE]
+> 自動機械学習での予測における DNN サポートはプレビュー段階です。
+
+DNN を活用して予測を行うためには、AutoMLConfig の `enable_dnn` パラメーターを true に設定する必要があります。 
+
+DNN を使用するために、GPU SKU の AML コンピューティング クラスターと少なくとも 2 つのノードをコンピューティング ターゲットとして使用することをお勧めします。 詳細については、[AML コンピューティングのドキュメント](how-to-set-up-training-targets.md#amlcompute)をご覧ください。 GPU を含む VM サイズの詳細については、「[GPU 最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)」をご覧ください。
+
+DNN トレーニングが完了するのに十分な時間を確保するために、実験のタイムアウトを少なくとも数時間に設定することをお勧めします。
 
 ### <a name="view-feature-engineering-summary"></a>特徴エンジニアリングの概要を確認する
 

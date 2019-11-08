@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf0e679ab46752d71ba4f5ef2b014e0cb2b4c6ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e9daf1be1f931bb13cda446cbb9d6e37acce3bcf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593877"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498099"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -27,8 +27,6 @@ Microsoft Azure Machine Learning Python クライアント ライブラリのプ
 * ローカルの Python 環境から Azure Machine Learning データセットへのアクセス認証を取得するなど、データ セットにアクセスしてアップロードする
 * 実験から中間データセットにアクセスする
 * Python クライアント ライブラリを使用してデータ セットを列挙、メタデータにアクセス、データ セットのコンテンツを読み込み、新しいデータ セットを作成して既存のデータ セットを更新する
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="prerequisites"></a>前提条件
 Python クライアント ライブラリは、次の環境でテストされています。
@@ -66,7 +64,7 @@ Studio Web インターフェイスから、ローカル マシンでデータ �
 ### <a name="security"></a>データ アクセスのためのセキュリティ
 Python クライアント ライブラリで使用するために Studio で提供されるコード スニペットには、ワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
 
-セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio で **[設定]** の下の **[ユーザー]** ページに表示されます。
+セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio (クラシック) で **[設定]** の下の **[ユーザー]** ページに表示されます。
 
 ![セキュリティ][security]
 
@@ -124,7 +122,7 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
 
 1. 新しい実験を作成する
 2. **[米国国勢調査局提供の、成人収入に関する二項分類データセット]** モジュールを挿入します。
-3. [[分割]][split] モジュールを挿入して、その入力値をデータ セット モジュール出力に接続します。
+3. [[分割]][split] モジュールを挿入して、その入力値をデータセット モジュール出力に接続します。
 4. [[CSV に変換]][convert-to-csv] モジュールを挿入して、その入力値を [[分割]][split] モジュール出力の 1 つに接続します。
 5. 実験を保存して実行し、実行が完了するまで待機します。
 6. [[CSV に変換]][convert-to-csv] モジュールで出力ノードをクリックします。
@@ -193,7 +191,7 @@ Azure ML によって割り当てられるその他の値には次のものが�
 使用できるメタデータの詳細については、 `SourceDataset` クラスをご覧ください。
 
 ### <a name="read-contents"></a>コンテンツを読み込む
-Machine Learning Studio で提供されるコード スニペットは、データ セットを自動的にダウンロードして pandas DataFrame オブジェクトに逆シリアル化します。 これは次の `to_dataframe` メソッドで実行されます。
+Machine Learning Studio (クラシック) で提供されるコード スニペットにより、データセットが自動的にダウンロードされ、pandas DataFrame オブジェクトに逆シリアル化されます。 これは次の `to_dataframe` メソッドで実行されます。
 
     frame = ds.to_dataframe()
 

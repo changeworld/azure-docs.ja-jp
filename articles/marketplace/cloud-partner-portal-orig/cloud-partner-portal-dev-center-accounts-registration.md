@@ -4,15 +4,16 @@ description: Microsoft 開発者アカウントの作成の要件と手順を説
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 522caa53123ad5ccb8076839d2dfa7dc1236b022
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935860"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818425"
 ---
 <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 ====================================

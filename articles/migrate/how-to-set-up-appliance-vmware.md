@@ -4,14 +4,14 @@ description: Azure Migrate Server Assessment/Migration を使用する VMware VM
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: fe190381df346278e75a3e6fd9876b80c33bd86b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 77bf9a0f73519aa979da49614475daf70f582a9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810198"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467130"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM のアプライアンスを設定する
 
@@ -29,7 +29,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 アプライアンスを設定するには、次のようにします。
 - OVA テンプレート ファイルをダウンロードし、それを vCenter Server にインポートします。
-- アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。 
+- アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
 - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
 
 ## <a name="download-the-ova-template"></a>OVA テンプレートをダウンロードする
@@ -48,7 +48,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. アプライアンス バージョン 1.0.0.5 の場合、生成されたハッシュはこれらの設定と一致する必要があります。 
+3. アプライアンス バージョン 1.0.0.5 の場合、生成されたハッシュはこれらの設定と一致する必要があります。
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
@@ -98,7 +98,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 ## <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
 1. **[ログイン]** をクリックします。 表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。 
+2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。
     - 自分のユーザー名とパスワードを使用してサインインします。
     - PIN を使用したサインインはサポートされていません。
 3. 正常にサインインした後、Web アプリに戻ります。
@@ -107,18 +107,30 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 4. **[登録]** をクリックします。
 
 
-## <a name="start-continuous-discovery"></a>継続的な検出を開始する
+## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>vCenter Server と VM の資格情報を指定して継続的な検出を開始する
 
-次に、アプライアンスから vCenter Server に接続し、VM の検出を開始します。 
+VM の構成データとパフォーマンス データを検出するには、アプライアンスを vCenter Server に接続する必要があります。
 
+### <a name="specify-vcenter-server-details"></a>vCenter Server の詳細を指定する
 1. **[vCenter Server の詳細を指定する]** で、vCenter Server の名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
-2. **[ユーザー名]** と **[パスワード]** で、アプライアンスで vCenter Server の VM の検出に使用される読み取り専用の資格情報を指定します。 [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)がアカウントにあることを確認します。
+2. **[ユーザー名]** と **[パスワード]** で、アプライアンスで vCenter Server の VM の検出に使用される読み取り専用の資格情報を指定します。 [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)がアカウントにあることを確認します。必要に応じて、vCenter アカウントへのアクセスを制限することで、検出のスコープを絞り込むことができます。検出のスコープ設定について詳しくは、[こちら](tutorial-assess-vmware.md#scoping-discovery)をご覧ください。
 3. **[接続の検証]** をクリックし、アプライアンスが vCenter Server に接続できることを確認します。
-4. 接続が確立された後、 **[保存して検出を開始]** をクリックします。
 
+### <a name="specify-vm-credentials"></a>VM の資格情報を指定する
+アプリケーション、ロール、機能を検出し、VM 間の依存関係を視覚化するには、VMware VM にアクセスできる VM 資格情報を指定できます。 Windows VM 用に資格情報を 1 つ、Linux VM 用に資格情報を 1 つ追加できます。 必要なアクセス特権の詳細については、[こちらを参照](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions)してください。
 
-これで検出が開始されます。 検出された VM のメタデータがポータルに表示されるまでに、約 15 分かかります。 
+> [!NOTE]
+> この入力は省略可能ですが、アプリケーションの検出とエージェントレスな依存関係の視覚化を有効にする際に必要になります。
 
+1. **[VM でのアプリケーションと依存関係の検出]** で、 **[資格情報の追加]** をクリックします。
+2. **[オペレーティング システム]** を選択します。
+3. 資格情報のフレンドリ名を指定します。
+4. **[ユーザー名]** と **[パスワード]** に、その VM に対するゲスト アクセス権を少なくとも持っているアカウントを指定します。
+5. **[追加]** をクリックします。
+
+vCenter Server の資格情報と VM の資格情報 (オプション) を指定したら、 **[保存して検出を開始]** をクリックすると、オンプレミス環境の検出が開始されます。
+
+検出された VM のメタデータがポータルに表示されるまでに、約 15 分かかります。 インストールされているアプリケーション、ロール、機能の検出にはいくらか時間がかかります。所要時間は、検出する VM の数によって異なります。 500 台の VM がある場合、アプリケーション インベントリが Azure Migrate ポータルに表示されるまでに約 1 時間かかります。
 
 ## <a name="next-steps"></a>次の手順
 

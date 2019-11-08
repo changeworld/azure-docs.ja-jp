@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ユーザーをクラスターに同期する - Azure HDInsight
+title: Azure Active Directory ユーザーを HDInsight クラスターに同期する
 description: Azure Active Directory の認証されたユーザーを HDInsight クラスターに同期します。
 ms.service: hdinsight
 author: ashishthaps
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9767bccc754d5ccf8c0e7cbb66c8e9c3d5eaf7d0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b6252e99e69f849e2e988819f38dcccc5a7a73e0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105364"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498153"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 

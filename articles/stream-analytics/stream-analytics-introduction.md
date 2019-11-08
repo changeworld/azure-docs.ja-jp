@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: c50ad2b045f32daf53033318123b68e4b2d58db5
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 0982cc90d26c9f04e8d547c7d634e09280d7fca2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329318"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467898"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 
@@ -61,7 +61,7 @@ Azure Stream Analytics では、移動中のデータを分析するための強
 
 Stream Analytics クエリ言語には、ストリーミング データを分析および処理するための幅広い関数が用意されています。 このクエリ言語は、単純なデータ操作、集計関数、および複雑な地理空間関数をサポートしています。 ポータルでクエリを編集し、ライブ ストリームから抽出されたサンプル データを使用してそれをテストできます。
 
-クエリ言語の機能は、別の関数を定義したり呼び出したりすることで拡張することができます。 Azure Machine Learning ソリューションを利用するために Azure Machine Learning service で関数呼び出しを定義したり、Stream Analytics クエリの一部として複雑な計算を実行するために JavaScript または C# のユーザー定義関数 (UDF) またはユーザー定義集計を統合したりすることができます。
+クエリ言語の機能は、別の関数を定義したり呼び出したりすることで拡張することができます。 Azure Machine Learning ソリューションを利用するために Azure 機械学習で関数呼び出しを定義したり、Stream Analytics クエリの一部として複雑な計算を実行するために JavaScript または C# のユーザー定義関数 (UDF) またはユーザー定義集計を統合したりすることができます。
 
 ## <a name="fully-managed"></a>フル マネージド
 

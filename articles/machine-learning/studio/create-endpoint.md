@@ -1,7 +1,7 @@
 ---
 title: Web サービスのエンドポイントを作成する
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio で Web サービスのエンドポイントを作成します。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。
+titleSuffix: ML Studio (classic) Azure
+description: Azure Machine Learning Studio (クラシック) で Web サービスのエンドポイントを作成します。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,14 +10,14 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca7061171eb68b7473f3bf72423e481f6c5dfee1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751180"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619568"
 ---
-# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>デプロイされた Azure Machine Learning Studio Web サービスのエンドポイントを作成する
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>デプロイされた Azure Machine Learning Studio (クラシック) Web サービス用のエンドポイントを作成する
 
 > [!NOTE]
 > このトピックでは、**従来**の Machine Learning Web サービスに適用できる手法について説明します。
@@ -32,14 +32,14 @@ Azure Machine Learning Web サービス ポータルを使用して、Web サー
 > [!NOTE]
 > Web サービスにエンドポイントを追加した場合、既定のエンドポイントを削除することはできません。
 
-1. Machine Learning Studio の左側のナビゲーション列で [Web サービス] をクリックします。
+1. Machine Learning Studio (クラシック) の左側のナビゲーション列で [Web サービス] をクリックします。
 2. Web サービス ダッシュボードの下部で、 **[Manage endpoints]\(エンドポイントの管理\)** をクリックします。 Azure Machine Learning Web サービス ポータルが Web サービスのエンドポイント ページに表示されます。
 3. **[新規]** をクリックします。
 4. 新しいエンドポイントの名前と説明を入力します。 エンドポイントの名前は、長さが 24 文字以内で、小文字のアルファベットまたは数字で構成されている必要があります。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
 
 ## <a id="scaling"></a> 新しいエンドポイントを追加して Web サービスをスケーリングする
 
-既定では、発行される Web サービスはそれぞれ、20 件の同時実行要求をサポートするように構成されますが、200 件までの同時実行要求をサポートするように構成できます。 Azure Machine Learning Studio では、Web サービスで最大限のパフォーマンスを実現するために、設定が自動的に最適化され、ポータルの値は無視されます。
+既定では、発行される Web サービスはそれぞれ、20 件の同時実行要求をサポートするように構成されますが、200 件までの同時実行要求をサポートするように構成できます。 クラシック バージョンの Azure Machine Learning Studio を使用すると、Web サービスで最大限のパフォーマンスを実現するように設定が自動的に最適化され、ポータルの値は無視されます。
 
 同時呼び出しの最大数 200 件でサポートされる内容を上回る負荷の API を呼び出す場合は、同じ Web サービスに複数のエンドポイントを作成する必要があります。 その後、それら全体に負荷を無作為に分配できます。
 

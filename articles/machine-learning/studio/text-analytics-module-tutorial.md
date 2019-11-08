@@ -1,7 +1,7 @@
 ---
 title: 感情分析モデルを作成する
-titleSuffix: Azure Machine Learning Studio
-description: テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法
+titleSuffix: Azure Machine Learning Studio (classic)
+description: テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio (クラシック) でテキスト分析モデルを作成する方法
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 08d62e7a6c9503d415fe144da57eee72ce3bfafd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d24e4f98e987cb911a8bc0ffcd1b49e1bed8b920
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636616"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467150"
 ---
-# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で感情分析モデルを作成する
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で感情分析モデルを作成する
 
-Azure Machine Learning Studio を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
+Azure Machine Learning Studio (クラシック) を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
 
 通常のテキスト分析の実験では、次の作業を行います。
 
@@ -66,7 +66,7 @@ N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハ�
 ## <a name="step-3-train-classification-or-regression-model"></a>手順 3: 分類モデルまたは回帰モデルのトレーニング
 テキストが数値の特徴列に変換されました。 データセットにはまだ前の段階からの文字列があるため、データセット内の列選択を使ってこれらを除外します。
 
-その後、 [2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) を使ってターゲット、つまりレビュー スコアの高低を予測します。 この時点で、テキスト分析の問題は、通常の分類問題に変換されています。 Azure Machine Learning Studio で使用できるツールを使って、モデルを改良できます。 たとえば、実験の精度を確認するために異なる分類子を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
+その後、 [2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) を使ってターゲット、つまりレビュー スコアの高低を予測します。 この時点で、テキスト分析の問題は、通常の分類問題に変換されています。 クラシック バージョンの Azure Machine Learning Studio で使用できるツールを使って、モデルを改良できます。 たとえば、実験の精度を確認するために異なる分類子を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
 
 ![トレーニングとスコア付け](./media/text-analytics-module-tutorial/scoring-text.png)
 

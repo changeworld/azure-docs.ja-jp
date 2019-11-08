@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949728"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523226"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -51,11 +51,11 @@ ms.locfileid: "71949728"
 
 ## <a name="encryption"></a>暗号化
 
-マネージド ディスクには、2 種類の暗号化が用意されています。 1 つ目は、ストレージ サービスによって実行される Storage Service Encryption (SSE) です。 2 つ目は、OS と VM 用データ ディスクで有効にできる Azure Disk Encryption (ADE) です。
+マネージド ディスクには、2 種類の暗号化が用意されています。 1 つ目は、ストレージ サービスによって実行されるサーバー側暗号化 (SSE) です。 2 つ目は、OS と VM 用データ ディスクで有効にできる Azure Disk Encryption (ADE) です。
 
-### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
+### <a name="server-side-encryption"></a>サーバー側暗号化
 
-[Azure Storage Service Encryption](../articles/storage/common/storage-service-encryption.md) は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 SSE は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+[Azure サーバー側暗号化](../articles/storage/common/storage-service-encryption.md)は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -85,12 +85,12 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 マネージド ディスクのスナップショットは、マネージド ディスクの読み取り専用のクラッシュ整合性の完全なコピーであり、既定で Standard マネージド ディスクとして格納されます。 スナップショットを使用すると、任意の時点のマネージド ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しいマネージド ディスクの作成に使用できます。 
 
-スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、利用状況レポートには、使用量として 10 GiB/(31 日 x 24 時間) = 0.013441 GiB が表示されます。
+スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、**毎日**の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
 
 マネージド ディスクでスナップショットを作成する方法の詳細については、次のリソースを参照してください。
 
-* [Windows のスナップショットを使用してマネージド ディスクとして格納された VHD のコピーを作成する](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Linux のスナップショットを使用してマネージド ディスクとして格納された VHD のコピーを作成する](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Windows でマネージド ディスクのスナップショットを作成する](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Linux でマネージド ディスクのスナップショットを作成する](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>イメージ
 

@@ -1,6 +1,6 @@
 ---
 title: API Management を使用して Web サービスを管理する
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。 ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,26 +10,26 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 5b6ece20f67258391e31b941edfc1ec0aa5db98f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279260"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671573"
 ---
-# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio Web サービスを管理する
+# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する
 ## <a name="overview"></a>概要
-このガイドでは、API Management を使用して Azure Machine Learning Studio Web サービスを管理する方法について簡単に説明します。
+このガイドでは、API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する方法について簡単に説明します。
 
 ## <a name="what-is-azure-api-management"></a>Azure API Management とは
-Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 [ここ](https://azure.microsoft.com/services/api-management/) をクリックして、Azure API Management の詳細についてご覧ください。 [ここ](/azure/api-management/import-and-publish) をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
+Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 詳細については、[API Management のサイト](https://azure.microsoft.com/services/api-management/)をご覧ください。 Azure API Management の使用を開始するには、[インポートと発行のガイド](/azure/api-management/import-and-publish)を参照してください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 このガイドを完了するには、以下が必要です。
 
-* Azure アカウント。 Azure アカウントを持っていない場合は、 [ここ](https://azure.microsoft.com/pricing/free-trial/) をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
-* AzureML アカウント。 AzureML アカウントを持っていない場合は、 [ここ](https://studio.azureml.net/) をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
-* Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api_key。 [ここ](create-experiment.md) をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。 [ここ](publish-a-machine-learning-web-service.md) をクリックして、Web サービスとして AzureML 実験をデプロイする方法の詳細についてご覧ください。 また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
+* Azure アカウント。
+* AzureML アカウント。
+* Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api_key。 AzureML 実験の作成方法の詳細については、[Studio のクイックスタート](create-experiment.md)をご覧ください。 Studio (クラシック) の実験を Web サービスとしてデプロイする方法の詳細については、[Studio のデプロイ方法](deploy-a-machine-learning-web-service.md) で、AzureML 実験を Web サービスとしてデプロイする方法の詳細を参照してください。 また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
 
 ## <a name="create-an-api-management-instance"></a>API Management インスタンスの作成
 
@@ -55,7 +55,7 @@ Azure Machine Learning Web サービスは、API Management インスタンス�
 
 API を作成するには、次の手順に従います。
 
-1. 先ほど作成したサービス インスタンスを Azure Portal で開きます。
+1. Azure portal で、先ほど作成したサービス インスタンスを開きます。
 2. 左側のナビゲーション ウィンドウで **[API]** を選択します。
 
    ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)

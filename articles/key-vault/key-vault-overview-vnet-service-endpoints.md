@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 7ccf6d93419b981203067e28f8c85ef8445ab0c2
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6e85e33cf0488cf688303c590c2bbaf5d671d9b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595283"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467109"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -74,6 +74,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービス](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API Management|[MSI を使用してキー コンテナーからカスタムドメイン用の証明書をデプロイする](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure Data Factory|[データ ファクトリからキー コンテナー内のデータ ストア資格情報を取得する](https://go.microsoft.com/fwlink/?linkid=2109491)|
 
 
 

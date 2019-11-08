@@ -1,5 +1,5 @@
 ---
-title: 単一データベースを作成する - Azure SQL Database | Microsoft Docs
+title: 単一データベースを作成する
 description: Azure portal、PowerShell、Azure CLI を使用して Azure SQL Database で単一データベースを作成してクエリを実行します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845299"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821008"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>クイック スタート:Azure portal、PowerShell、Azure CLI を使用して Azure SQL Database で単一データベースを作成します
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="create-a-single-database"></a>単一データベースを作成する
 
-単一データベースは、プロビジョニング済みコンピューティング レベルでも、サーバーレス コンピューティング レベル (プレビュー) でも作成できます。
+単一データベースは、プロビジョニング済みコンピューティング レベルでも、サーバーレス コンピューティング レベルでも作成できます。
 
 - プロビジョニング済みコンピューティング レベルの単一データベースには、2 つの[購入モデル](sql-database-purchase-models.md)のうちの 1 つを使用して、一定量のコンピューティング リソース (CPU およびメモリを含む) が事前に割り当てられています。
 - サーバーレス コンピューティング レベルの単一データベースは、自動スケーリングされる一定範囲のコンピューティング リソース (CPU およびメモリを含む) を備え、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみで使用できます。

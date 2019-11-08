@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する
+title: Azure HDInsight の Power BI で対話型クエリの Hive データを参照する
 description: Microsoft Power BI を使用して、Azure HDInsight からの対話型クエリの Hive データを視覚化する方法
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0f273f75c33362bc99efbd7ac6bc46c3778ae88b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123016"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467139"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Apache Hive データを視覚化する
 

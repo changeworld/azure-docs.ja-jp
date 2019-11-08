@@ -1,7 +1,7 @@
 ---
 title: モデルが Web サービスになるまでの過程
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio モデルが開発中の実験から Web サービスになるまでにたどる過程の概要。
+titleSuffix: ML Studio (classic) Azure
+description: Azure Machine Learning Studio (クラシック) モデルが開発中の実験から Web サービスになるまでにたどる過程の概要。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,15 +10,15 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 28bb96099acb800d9095325b8c7b46a6b5124b4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24a2c31271d123d6378732bd9f85f6341a78d65c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61066055"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671249"
 ---
-# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio モデルが実験から Web サービスになるまでの過程
-Azure Machine Learning Studio によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
+# <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (クラシック) モデルが実験から Web サービスになるまでの過程
+Azure Machine Learning Studio (クラシック) によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
 
 * 実験にデータを入力
 * データを操作します。
@@ -32,24 +32,24 @@ Azure Machine Learning Studio によって提供される対話形式のキャ�
 この記事では、Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程について、概要を説明します。
 
 > [!NOTE]
-> 機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio を使用する方法に焦点を当てています。 たとえば、R を使用して従来の予測 Web サービスを作成する方法については、[RStudio と Azure Machine Learning Studio を使用した予測 Web Apps の開発とデプロイ](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
+> 機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio (クラシック) を使用する方法に焦点を当てています。 たとえば、R を使用して従来の予測 Web サービスを作成する方法については、[RStudio と Azure Machine Learning Studio を使用した予測 Web Apps の開発とデプロイ](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
 >
 >
 
-Azure Machine Learning Studio は "*予測分析モデル*" の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に使用することもできます。 たとえば、データを入力して操作し、結果を出力するだけの実験などです。 この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。 これは Studio の一般的な使用方法ではありません。一般的な使用方法についてこれから説明し、Studio の機能を網羅することにします。
+Azure Machine Learning Studio (クラシック) は "*予測分析モデル*" の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に Studio (クラシック) を使用することもできます。 たとえば、データを入力して操作し、結果を出力するだけの実験などです。 この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。 これは Studio (クラシック) の一般的な使用方法ではありません。一般的な使用方法についてこれから説明し、Studio (クラシック) の機能を網羅することにします。
 
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>予測 Web サービスの開発とデプロイ
-Machine Learning Studio を使用して予測 Web サービスを開発し、デプロイする場合、一般的なソリューションがたどる段階は次のようになります。
+Machine Learning Studio (クラシック) を使用して予測 Web サービスを開発し、デプロイする場合、一般的なソリューションがたどる段階は次のようになります。
 
 ![デプロイ フロー](./media/model-progression-experiment-to-web-service/model-stages-from-experiment-to-web-service.png)
 
 *図 1 - 一般的な予測分析モデルの段階*
 
 ### <a name="the-training-experiment"></a>トレーニング実験
-"***トレーニング実験***" は、Machine Learning Studio で Web サービスを開発する最初のフェーズです。 トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。 最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。 予測分析実験の開発の例については、[Azure Machine Learning Studio での信用リスク評価のための予測分析ソリューション開発](tutorial-part1-credit-risk.md)に関する記事を参照してください。
+"***トレーニング実験***" は、Machine Learning Studio (クラシック) で Web サービスを開発する最初のフェーズです。 トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。 最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。 予測分析実験の開発の例については、[Azure Machine Learning Studio (クラシック) での信用リスク評価のための予測分析ソリューション開発](tutorial-part1-credit-risk.md)に関する記事を参照してください。
 
 ### <a name="the-predictive-experiment"></a>予測実験
-トレーニング実験でモデルをトレーニングした後で、Machine Learning Studio で **[Web サービスの設定]** をクリックし、 **[Predictive Web Service (予測 Web サービス)]** を選択すると、トレーニング実験を "***予測実験***" に変換する処理が開始します。 予測実験の目的は、トレーニング済みのモデルを使用して新しいデータにスコアを付け、最終的に Azure Web サービスとして運用できる状態にすることです。
+トレーニング実験でモデルをトレーニングした後で、Machine Learning Studio (クラシック) で **[Web サービスの設定]** をクリックし、 **[Predictive Web Service (予測 Web サービス)]** を選択すると、トレーニング実験を "***予測実験***" に変換する処理が開始します。 予測実験の目的は、トレーニング済みのモデルを使用して新しいデータにスコアを付け、最終的に Azure Web サービスとして運用できる状態にすることです。
 
 この変換は、次の手順で行われます。
 
@@ -59,10 +59,10 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 予測実験を Web サービスとしてデプロイできる状態にするには、さらに変更が必要になることがあります。 たとえば、Web サービスから結果のサブセットのみを出力するには、出力ポートの前にフィルター処理モジュールを追加します。
 
-この変換プロセスでは、トレーニング実験は破棄されません。 このプロセスが完了すると、2 つのタブが Studio に表示されます。1 つがトレーニング実験用で、もう 1 つが予測実験用です。 このように、トレーニング実験に変更を加えてから、Web サービスをデプロイして、予測実験を再構築できます。 また、トレーニング実験のコピーを保存しておいて、新たに別の実験を始めることもできます。
+この変換プロセスでは、トレーニング実験は破棄されません。 このプロセスが完了すると、2 つのタブが Studio (クラシック) に表示されます。1 つがトレーニング実験用で、もう 1 つが予測実験用です。 このように、トレーニング実験に変更を加えてから、Web サービスをデプロイして、予測実験を再構築できます。 また、トレーニング実験のコピーを保存しておいて、新たに別の実験を始めることもできます。
 
 > [!NOTE]
-> **[Predictive Web Service (予測 Web サービス)]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。 トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。 詳細については、[Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法](convert-training-experiment-to-scoring-experiment.md)に関するページを参照してください。
+> **[Predictive Web Service (予測 Web サービス)]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。 トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。 詳細については、[Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](convert-training-experiment-to-scoring-experiment.md)に関するページを参照してください。
 >
 >
 
@@ -70,7 +70,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 予測実験の準備が問題なくできたら、Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとしてサービスをデプロイできます。 "*従来の Machine Learning Web サービス*" としてデプロイすることでモデルを運用可能にするには、 **[Web サービスのデプロイ]** をクリックして、 **[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** を選択します。 "*新しい Machine Learning Web サービス*" としてデプロイするには、 **[Web サービスのデプロイ]** をクリックして、 **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択します。 ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」をご覧ください。
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>一般的でないケース: 非予測 Web サービスの作成
-実験で予測分析モデルをトレーニングしない場合、トレーニング実験とスコア付け実験の両方を作成する必要はありません。実験は 1 つのみになり、この実験を Web サービスとしてデプロイすることができます。 Machine Learning Studio は、使用したモジュールを分析することで、実験に予測モデルが含まれるかどうかを検出します。
+実験で予測分析モデルをトレーニングしない場合、トレーニング実験とスコア付け実験の両方を作成する必要はありません。実験は 1 つのみになり、この実験を Web サービスとしてデプロイすることができます。 Machine Learning Studio (クラシック) は、使用したモジュールを分析することで、実験に予測モデルが含まれるかどうかを検出します。
 
 実験を反復処理して問題がなければ、次の手順に従います。
 
@@ -107,12 +107,12 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 ## <a name="next-steps"></a>次の手順
 開発および実験のプロセスの詳細については、次の記事をご覧ください。
 
-* 実験の変換 - [Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法](convert-training-experiment-to-scoring-experiment.md)
-* Web サービスのデプロイ: [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)
+* 実験の変換 - [Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](convert-training-experiment-to-scoring-experiment.md)
+* Web サービスのデプロイ: [Azure Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)
 * モデルの再トレーニング: [プログラムによる Machine Learning のモデルの再トレーニング](/azure/machine-learning/studio/retrain-machine-learning-model)
 
 プロセス全体の例については、以下を参照してください。
 
-* [Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](create-experiment.md)
-* [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](tutorial-part1-credit-risk.md)
+* [Machine Learning のチュートリアル: Azure Machine Learning Studio (クラシック) で初めての実験を作成する](create-experiment.md)
+* [チュートリアル:信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](tutorial-part1-credit-risk.md)
 

@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f66508a4794b8009523cc2820efe0156b4a9e2f6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756850"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498303"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL) 
 
 Azure Cosmos DB は、**Time to Live** (TTL) を使用して、一定の期間が経過したらアイテムをコンテナーから自動的に削除する機能を提供します。 既定では、コンテナー レベルで Time to Live を設定し、項目ごとに値をオーバーライドできます。 コンテナー レベルまたは項目レベルで TTL を設定すると、項目が最後に変更されてからその期間が経過した後で、Azure Cosmos DB によってそれらの項目が自動的に削除されます。 Time to Live 値は秒数で構成します。 TTL を構成すると、TTL 値に基づいてシステムが自動的に期限切れアイテムを削除します。クライアント アプリケーションが明示的に発行する削除操作は必要ありません。
 
-期限切れアイテムの削除は、残っている[要求ユニット](request-units.md)、つまりユーザー要求によってまだ消費されていない要求ユニットを消費するバックグラウンド タスクです。 コンテナーの負荷が高い状態で、メンテナンス タスク用の要求ユニットが残っていない場合、有効期限が遅延することがあります。
+期限切れアイテムの削除は、残っている[要求ユニット](request-units.md)、つまりユーザー要求によってまだ消費されていない要求ユニットを消費するバックグラウンド タスクです。 TTL の期限が切れた後であっても、要求のためにコンテナーが過負荷の状態で、使用できる RU が十分にない場合、データの削除は遅延します。 削除操作を実行するのに十分な RU が利用可能になると、データは削除されます。 たとえデータの削除が遅延しても、TTL の期限が切れた後は、どんなクエリによっても (どんな API によっても) データが返されることはありません。
 
 ## <a name="time-to-live-for-containers-and-items"></a>コンテナーおよび項目の Time to Live
 

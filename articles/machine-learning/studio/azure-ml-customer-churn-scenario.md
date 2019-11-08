@@ -1,7 +1,7 @@
 ---
 title: 顧客離れを分析する
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio を使用した顧客離れの分析とスコア付けのための統合モデルを作成するケース スタディ。
+titleSuffix: ML Studio (classic) Azure
+description: Azure Machine Learning Studio (クラシック) を使用した顧客離れの分析とスコア付けのための統合モデルを作成するケース スタディ。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,19 +10,19 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 063b745bbf1c5e8453e0f6abe3cefdc76a60b5f9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699438"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619749"
 ---
-# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用して顧客離れを分析する
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio を使用して顧客離れを分析する (クラシック)
 ## <a name="overview"></a>概要
-この記事では、Azure Machine Learning Studio を使用して構築された顧客離れ分析プロジェクトのリファレンス実装を紹介します。 また、産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。 さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。  
+この記事では、Azure Machine Learning Studio (クラシック) を使用して構築された顧客離れ分析プロジェクトのリファレンス実装を紹介します。 また、産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。 さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。  
 
 ### <a name="acknowledgements"></a>謝辞
-この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning Studio の前プロダクト マネージャー) によって開発およびテストされました。 Azure ドキュメント チームは、このホワイト ペーパーに情報と知識をご提供いただいたこの 2 人に感謝いたします。
+この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning Studio (クラシック) の前プロダクト マネージャー) によって開発およびテストされました。 Azure ドキュメント チームは、このホワイト ペーパーに情報と知識をご提供いただいたこの 2 人に感謝いたします。
 
 > [!NOTE]
 > この実験のデータは公開されていません。 顧客離れ分析の機械学習モデルを構築する方法の例については、「[Azure AI Gallery](https://gallery.azure.ai/)」(Azure AI ギャラリー) の「[Retail churn model template](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)」(小売業の顧客離れモデルのテンプレート) を参照してください
@@ -70,29 +70,29 @@ ms.locfileid: "64699438"
 
  
 
-## <a name="implementing-the-modeling-archetype-in-machine-learning-studio"></a>Machine Learning Studio でのモデリング アーキタイプの実装
-説明した問題を踏まえると、モデリングとスコア付けの統合アプローチを実装する最適な方法は何でしょうか。 このセクションでは、Microsoft Azure Cloud ML Studio を使用してこれを実現する方法を紹介します。  
+## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でのモデリング アーキタイプの実装
+説明した問題を踏まえると、モデリングとスコア付けの統合アプローチを実装する最適な方法は何でしょうか。 このセクションでは、クラシック バージョンの Azure Machine Learning Studio を使用してこれを実現する方法を紹介します。  
 
 マルチモデルのアプローチは、離反のグローバル アーキタイプを設計するうえで欠かすことができないものです。 このアプローチのスコア付け (予測) の部分さえもマルチモデルである必要があります。  
 
-次の図は、こちらで作成したプロトタイプです。離反を予測するための Cloud ML Studio の 4 種類のスコア付けアルゴリズムを採用しています。 マルチモデルのアプローチを採用したのは、正確度を高めるためのアンサンブル分類子を作成するためだけではなく、過学習を防ぎ、予測特徴選択を強化するためでもあります。  
+次の図は、こちらで作成したプロトタイプです。離反を予測するための Machine Learning Studio (クラシック) の 4 種類のスコア付けアルゴリズムを採用しています。 マルチモデルのアプローチを採用したのは、正確度を高めるためのアンサンブル分類子を作成するためだけではなく、過学習を防ぎ、予測特徴選択を強化するためでもあります。  
 
-![多くの相互接続されたモジュールが含まれる複雑な Studio ワークスペースを示すスクリーンショット](./media/azure-ml-customer-churn-scenario/churn-3.png)
+![多くの相互接続されたモジュールが含まれる複雑な Studio (クラシック) ワークスペースを示すスクリーンショット](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
 *図 5:離反モデリング アプローチのプロトタイプ*  
 
-次のセクションでは、Cloud ML Studio を使用して実装したプロトタイプのスコア付けモデルについて詳しく説明します。  
+次のセクションでは、Machine Learning Studio (クラシック) を使用して実装したプロトタイプのスコア付けモデルについて詳しく説明します。  
 
 ### <a name="data-selection-and-preparation"></a>データの選択と準備
 モデルを構築し、顧客のスコアを計算するために使用したデータは、CRM バーティカル ソリューションから取得しました。顧客のプライバシーを保護するために、データは難読化されています。 データ自体には米国における 8,000 件のサブスクリプションに関する情報が含まれ、プロビジョニング データ (サブスクリプション メタデータ)、アクティビティ データ (システムの使用量)、カスタマー サポート データの 3 つのソースが組み合わされています。 データには、顧客に関するビジネス関連情報は一切含まれていません。たとえば、ロイヤルティ メタデータやクレジット スコアは含まれていません。  
 
 説明を簡略化するために、データの準備は他の場所で既に行われているものとし、ETL とデータ クレンジング プロセスについては取り上げません。
 
-モデリング機能の選択は、暫定的な有意性を予測子をランダムなフォレストのモジュールを使用するプロセスに含まれる一連のスコアに基づきます。 Cloud ML Studio での実装では、典型的な特徴に対して平均、中央値、範囲を計算しました。 たとえば、ユーザー アクティビティの最小値と最大値など、定性的データの集計を追加しました。
+モデリング機能の選択は、暫定的な有意性を予測子をランダムなフォレストのモジュールを使用するプロセスに含まれる一連のスコアに基づきます。 Machine Learning Studio (クラシック) での実装では、典型的な特徴に対して平均、中央値、範囲を計算しました。 たとえば、ユーザー アクティビティの最小値と最大値など、定性的データの集計を追加しました。
 
 また、ここ 6 か月間の時間的情報も収集しました。 1 年間のデータを分析した結果、統計的に有意なトレンドが存在したとしても、離反に対する影響は、6 か月経過した後では大幅に小さくなることがわかりました。  
 
-最も重要なのは、ETL、特徴選択、モデリングを含めたプロセス全体が、Microsoft Azure のデータ ソースを使用して Cloud ML Studio で実装されたという点です。   
+最も重要なのは、ETL、特徴選択、モデリングを含めたプロセス全体が、Microsoft Azure のデータ ソースを使用して Machine Learning Studio (クラシック) で実装されたという点です。   
 
 次の図に、使用したデータを示します。  
 
@@ -124,18 +124,18 @@ ms.locfileid: "64699438"
 
 ![Studio 実験キャンバスの小さなセクションのスクリーンショット](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
-*図 8:Machine Learning Studio でモデルを作成する*  
+*図 8:Machine Learning Studio (クラシック) でモデルを作成する*  
 
 ### <a name="scoring-methods"></a>スコア付けの手法
 ラベル付けされたトレーニング データセットを使用して、4 つのモデルのスコアを計算しました。  
 
-SAS Enterprise Miner 12 のデスクトップのエディションを使用して構築された同等のモデルには、スコアのデータセットを提出しました。 SAS モデルと 4 つのすべてのマシン ラーニング Studio モデルの精度を測定しました。  
+SAS Enterprise Miner 12 のデスクトップのエディションを使用して構築された同等のモデルには、スコアのデータセットを提出しました。 SAS モデルと 4 つのすべての Machine Learning Studio (クラシック) モデルの精度を測定しました。  
 
 ## <a name="results"></a>結果
 このセクションでは、スコア付けデータセットに基づいて、モデルの正確度に関してわかったことを紹介します。  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>スコア付けの正確度と精度
-一般に、Azure Machine Learning Studio での実装は、正確度の点で SAS よりも約 10 ～ 15% 劣っていました (AUC)。  
+一般に、クラシック バージョンの Azure Machine Learning Studio での実装は、正確度の点で SAS よりも約 10 から 15% 劣っていました (AUC)。  
 
 ただし、離反で最も重要なメトリックは、誤分類率です。つまり、分類子によって予測された上位の離反者のうち、実際には**離反しておらず**、特別な扱いを受けている人々です。 次の図では、すべてのモデルでこの誤分類を比較しています。  
 
@@ -152,9 +152,9 @@ AUC は、異なるアルゴリズム (または異なるシステム) の価値
 およそ 8,000 件のサブスクリプションが含まれる CRM データを使用して、問題のデータセットの誤分類率を比較しました。  
 
 * SAS の誤分類率は 10 ～ 15% でした。
-* Machine Learning Studio の誤分類率は、上位 200 ～ 300 名の離反者については 15 ～ 20% でした。  
+* Machine Learning Studio (クラシック) の誤分類率は、上位 200 から 300 名の離反者については 15 から 20% でした。  
 
-電気通信業界では、離反のリスクが最も高い顧客のみにコンセルジュ サービスや優待を提供して対処することが重要です。 その点で、Azure Cloud ML を使用した実装は、SAS モデルに匹敵する結果を出しています。  
+電気通信業界では、離反のリスクが最も高い顧客のみにコンセルジュ サービスや優待を提供して対処することが重要です。 その点で、Machine Learning Studio (クラシック) を使用した実装は、SAS モデルに匹敵する結果を出しています。  
 
 同様に、正確度は精度よりもさらに重要です。離反の可能性のある顧客を正しく分類することが最大の目的であるためです。  
 
@@ -172,7 +172,7 @@ Wikipedia から引用した次の図には、わかりやすいグラフィッ�
 *図 11:ブースト デシジョン ツリー モデルの特性*
 
 ## <a name="performance-comparison"></a>パフォーマンスの比較
-Machine Learning Studio モデルと、SAS Enterprise Miner 12.1 のデスクトップ エディションを使用して作成した同等のモデルを使用して、データのスコア付けの速度を比較しました。  
+Machine Learning Studio (クラシック) モデルと、SAS Enterprise Miner 12.1 のデスクトップ エディションを使用して作成した同等のモデルを使用して、データのスコア付けの速度を比較しました。  
 
 次の表に、各アルゴリズムのパフォーマンスをまとめます。  
 
@@ -182,7 +182,7 @@ Machine Learning Studio モデルと、SAS Enterprise Miner 12.1 のデスクト
 | --- | --- | --- | --- |
 | 平均的なモデル |最高のモデル |平均未満 |平均的なモデル |
 
-Machine Learning Studio でホストされたモデルは、実行速度の点で SAS を 15 ～ 25% 上回っていたものの、正確度にほとんど違いはありませんでした。  
+Machine Learning Studio (クラシック) でホストされたモデルは、実行速度の点で SAS を 15 から 25% 上回っていたものの、正確度にほとんど違いはありませんでした。  
 
 ## <a name="discussion-and-recommendations"></a>考察と推奨事項
 電気通信業界では、離反の分析用に、いくつかのプラクティスが登場しています。  
@@ -198,15 +198,15 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
 
 この重要な考えは実務では見逃されがちで、一般には BI 指向の分析アプローチが好まれています。その方が販売しやすく、単純な自動化が可能であるというのが、その主な理由です。  
 
-しかし、Machine Learning Studio を使用したセルフサービス分析なら、部門または部署別に分けられた情報の 4 つのカテゴリが離反に関する機械学習の貴重なソースとなるという見込みがあります。  
+しかしながら、Machine Learning Studio (クラシック) を使用したセルフサービス分析なら、部門または部署別に分けられた情報の 4 つのカテゴリが離反に関する機械学習の貴重なソースとなるという見込みがあります。  
 
-Azure Machine Learning Studio にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。 この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。 これは、市場で Azure Machine Learning Studio を差別化している重要な機能です。  
+クラシック バージョンの Azure Machine Learning Studio にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。 この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。 これは、市場でクラシック バージョンの Azure Machine Learning Studio を差別化している重要な機能です。  
 
 このトピックについては、いずれ、ビッグ データ分析との絡みで説明できればと考えています。
   
 
 ## <a name="conclusion"></a>まとめ
-このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。 スコア付けモデルのプロトタイプについて検討し、それを Azure Machine Learning Studio を使って実装しました。 最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。  
+このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。 スコア付けモデルのプロトタイプについて検討し、それをクラシック バージョンの Azure Machine Learning Studio を使って実装しました。 最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。  
 
  
 

@@ -1,7 +1,7 @@
 ---
 title: サポートとトレーニングを利用する
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio のサポートとトレーニングを利用してフィードバックを提供する
+titleSuffix: ML Studio (classic) Azure
+description: Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用してフィードバックを提供する
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: f7e5881b5b046379b4c79252489a4b3dd8eb1cad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c9a502afb89623ae2f7765d874355b22a78f336
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502101"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73618795"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio のサポートとトレーニングを利用する
+# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用する
 
-この記事では、Azure Machine Learning Studio の詳細と、お客様の問題や疑問点を解決するためのサポートを受ける方法について説明します。
+この記事では、Azure Machine Learning Studio (クラシック) の詳細と、お客様の問題や疑問点を解決するためのサポートを受ける方法について説明します。
 
-## <a name="learn-more-about-studio"></a>Studio の詳細
+## <a name="learn-more-about-studio-classic"></a>Studio (クラシック) の詳細
 
 以下の学習リソースを参照してください。
 + [チュートリアルと使い方の記事](../studio/index.yml) 
@@ -37,7 +37,7 @@ ms.locfileid: "60502101"
 
 + **Azure ユーザー向けテクニカル サポート**:Azure portal による[サポート要求の作成と管理](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)
 
-+ **ユーザー フォーラム**:[MSDN の Azure Machine Learning Studio サポート フォーラム](https://aka.ms/aml-forum-studio)では、質問したり質問に回答したりして他のユーザーとつながることができます。
++ **ユーザー フォーラム**:[MSDN の Azure Machine Learning Studio (クラシック) サポート フォーラム](https://aka.ms/aml-forum-studio)では、質問したり質問に回答したりして他のユーザーとつながることができます。
 
 + **Stack Overflow**:"Azure-Machine-Learning" タグが付いた [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) の Machine Learning コミュニティをご利用ください。
 

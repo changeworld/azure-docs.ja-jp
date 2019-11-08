@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cc06df5d2a66ede18af52c13201c731c12e2049
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 719f45aeeb5c7aa7e9b5e597ed461808c9d2b005
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614501"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472581"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする
 
@@ -74,7 +74,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、AKS クラスターを手動でスケールしてノード数を増減しました。 [クラスターの自動スケーラー][cluster-autoscaler] (現在、AKS ではプレビュー段階) を使用してクラスターを自動的にスケールすることもできます。
+この記事では、AKS クラスターを手動でスケールしてノード数を増減しました。 [クラスターの自動スケーラー][cluster-autoscaler]を使用してクラスターを自動的にスケーリングすることもできます。
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

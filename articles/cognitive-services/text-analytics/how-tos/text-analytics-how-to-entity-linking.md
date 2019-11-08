@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984279"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488654"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -29,15 +29,75 @@ Text Analytics の `entities` エンドポイントは、名前付きエンテ�
 エンティティ リンク設定は、テキスト内で見つかったエンティティの個性を識別してあいまいさを解消する機能です (例: "Mars" が惑星として使用されているか、古代ローマの戦争の神様として使用されているかを判定する)。 このプロセスのためには、認識されたエンティティがリンクされているナレッジ ベースが存在している必要があります。`entities` エンドポイントの Text Analytics には、Wikipedia がナレッジ ベースとして使用されます。
 
 ### <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
-名前付きエンティティの認識 (NER) は、テキスト形式のさまざまなエンティティを識別して、事前に定義したクラスに分類する機能です。 サポートされているエンティティのクラスを以下に示します。
+名前付きエンティティの認識 (NER) は、テキスト形式のさまざまなエンティティを識別して、事前に定義したクラスまたは種類に分類する機能です。 
 
-Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) では、さまざまな言語でエンティティ リンク設定と名前付きエンティティ認識 (NER) の両方を利用できます。 詳細については、[言語のサポート](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)に関する記事を参照してください。
+## <a name="named-entity-recognition-v3-public-preview"></a>名前付きエンティティの認識 v3 パブリック プレビュー
 
-### <a name="language-support"></a>言語のサポート
+[次期バージョンの名前付きエンティティの認識](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console)がパブリック プレビューで使用できるようになりました。 エンティティ リンク設定と名前付きエンティティの認識の両方が更新されています。 
 
-さまざまな言語でエンティティ リンク設定を使用するには、各言語で、対応するナレッジ ベースを使用する必要があります。 Text Analytics でのエンティティ リンク設定の場合、これは、`entities` エンドポイントによってサポートされている各言語は、その言語の対応する Wikipedia コーパスにリンクすることを意味します。 コーパスのサイズは言語によって異なるため、エンティティ リンク設定の機能の再現度もさまざまであると考えられています。
+:::row:::
+    :::column span="":::
+        **機能**
+    :::column-end:::
+    ::: column span="":::
+        **説明** 
+    :::column-end:::
+:::row-end:::
+<!-- expanded types and subtypes row-->
+:::row:::
+    :::column span="":::
+        拡張されたエンティティの種類とサブタイプ
+    :::column-end:::
+    :::column span="":::
+     名前付きエンティティの複数の種類で分類と検出が拡張されました。
+    :::column-end:::
+:::row-end:::
+<!-- separate endpoints row-->
+:::row:::
+    :::column span="":::
+        別個の要求エンドポイント 
+    :::column-end:::
+    :::column span="":::
+        エンティティ リンク設定と NER 要求の送信のためのエンドポイントが分けられました。
+    :::column-end:::
+:::row-end:::
+<!-- model-version row -->
+:::row:::
+    :::column span="":::
+        `model-version` パラメーター
+    :::column-end:::
+    :::column span="":::
+        Text Analytics モデルのバージョンを選択するための、オプションのパラメーターです。 現在は既定のモデルのみを使用できます。
+    :::column-end:::
+:::row-end:::
 
-## <a name="supported-types-for-named-entity-recognition"></a>名前付きエンティティ認識でサポートされている型
+### <a name="entity-types"></a>エンティティの種類
+
+名前付きエンティティの認識 v3 では、複数の種類に対応する拡張された検出が提供されます。 現在、NER v3 は次のカテゴリのエンティティを認識できます。 サポートされているエンティティと言語の詳しいリストについては、[名前付きエンティティの種類](../named-entity-types.md)に関する記事を参照してください。
+
+* 全般
+* 個人情報 
+
+### <a name="request-endpoints"></a>要求エンドポイント
+
+名前付きエンティティの認識 v3 では、NER とエンティティ リンク設定の要求に別個のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
+
+NER
+* 一般的なエンティティ- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* 個人情報エンティティ - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+エンティティ リンク設定
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>モデルのバージョン管理
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+## <a name="supported-types-for-named-entity-recognition-v2"></a>名前付きエンティティの認識 v2 でサポートされている種類
+
+> [!NOTE]
+> 名前付きエンティティの認識 (NER) バージョン 2 では、次のエンティティがサポートされています。 [NER v3](#named-entity-recognition-v3-public-preview) はパブリック プレビュー段階ですが、テキスト内で認識されるエンティティの数と深さが大幅に拡張されています。   
 
 | 種類  | SubType | 例 |
 |:-----------   |:------------- |:---------|
@@ -61,9 +121,11 @@ Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microso
 | URL           | 該当なし\*         | "https:\//www.bing.com"    |
 | Email         | 該当なし\*         | "support@contoso.com" |
 
-\* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。  一覧に含まれているすべてのサポートされているエンティティ型は、英語、簡体中国語、フランス語、ドイツ語、およびスペイン語でのみ使用できます。
+\* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。  一覧に含まれているすべてのサポートされているエンティティの種類は、英語、簡体中国語、フランス語、ドイツ語、スペイン語でのみ使用できます。
 
+### <a name="language-support"></a>言語のサポート
 
+さまざまな言語でエンティティ リンク設定を使用するには、各言語で、対応するナレッジ ベースを使用する必要があります。 Text Analytics でのエンティティ リンク設定の場合、これは、`entities` エンドポイントによってサポートされている各言語は、その言語の対応する Wikipedia コーパスにリンクすることを意味します。 コーパスのサイズは言語によって異なるため、エンティティ リンク設定の機能の再現度もさまざまであると考えられています。 詳細については、[言語のサポート](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)に関する記事を参照してください。
 
 ## <a name="preparation"></a>準備
 

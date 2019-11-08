@@ -1,6 +1,6 @@
 ---
 title: アプリケーション ライフサイクル管理
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio のクラシック バージョンでのアプリケーション ライフサイクル管理のベスト プラクティスの適用
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ce1a398939a65bb47c74f00159b667c3659f5a93
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d5e2ee72c30933305356cd2a7792d1972fa938da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467007"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684742"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でのアプリケーション ライフサイクル管理
 Azure Machine Learning Studio (クラシック) は、Azure クラウド プラットフォームで運用できる機械学習の実験を開発するツールです。 Visual Studio IDE に似ており、1 つのプラットフォームにマージされているスケーラブルなクラウド サービスです。 さまざまな資産のバージョン管理から、自動化された実行とデプロイまで、標準的なアプリケーション ライフサイクル管理 (ALM) プラクティスを Azure Machine Learning Studio のクラシック バージョンに組み込むことができます。 この記事では、一部のオプションとアプローチについて説明します。
@@ -96,4 +96,4 @@ ALM の重要な側面は、アプリケーションの実行とデプロイの�
 ## <a name="next-steps"></a>次の手順
 * [Azure Machine Learning Studio (クラシック) PowerShell](https://aka.ms/amlps) モジュールをダウンロードし、ALM タスクの自動化を開始します。
 * PowerShell と再トレーニング API を通じて、[1 つの実験を使用して多数の ML モデルを作成、管理](create-models-and-endpoints-with-powershell.md)する方法を説明します。
-* [Azure Machine Learning Web サービスのデプロイ](publish-a-machine-learning-web-service.md)の詳細について説明します。
+* [Azure Machine Learning Web サービスのデプロイ](deploy-a-machine-learning-web-service.md)の詳細について説明します。

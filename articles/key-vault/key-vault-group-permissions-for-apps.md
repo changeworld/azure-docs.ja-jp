@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b472d36f17853549f2bfc773bdcb65faf0421b3f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719001"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467182"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>アクセス制御ポリシーを使用して Key Vault の認証を提供する
 
@@ -24,7 +24,7 @@ Key Vault に対してクラウドベースのアプリケーションを認証�
 
 キー コンテナーでは、最大 1,024 個のアクセス ポリシー エントリがサポートされており、各エントリでは、"プリンシパル" に対して異なるアクセス許可セットを付与します。 たとえば、これは、[.NET 用 Azure Key Vault クライアント ライブラリのクイックスタート](quick-create-net.md)のコンソール アプリがキー コンテナーにアクセスするしくみです。
 
-Key Vault のアクセス制御の詳細については、「[「Azure Key Vault セキュリティ」の「ID 管理とアクセス管理」](overview-security.md#identity-and-access-management)を参照してください。 [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)のアクセス制御の詳細については、以下を参照してください。 
+Key Vault のアクセス制御の詳細については、「[Azure Key Vault セキュリティ:ID 管理とアクセス管理](overview-security.md#identity-and-access-management)」を参照してください。 [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)のアクセス制御の詳細については、以下を参照してください。 
 
 - [キーのアクセス制御](about-keys-secrets-and-certificates.md#key-access-control)
 - [シークレットのアクセス制御](about-keys-secrets-and-certificates.md#secret-access-control)
@@ -46,7 +46,7 @@ Key Vault のアクセス制御の詳細については、「[「Azure Key Vault
 
 - **アプリケーション** アプリケーションがクラウドベースの場合は、可能な限り、代わりに[マネージド ID を使用して Azure Key Vault にアクセスする](managed-identity.md)必要があります。
 - **Azure AD グループ** キー コンテナーでは 1,024 個のアクセス ポリシー エントリしかサポートされていませんが、1 つの Azure AD グループに複数のアプリケーションとユーザーを追加し、そのグループを 1 つのエントリとしてアクセス制御ポリシーに追加することができます。
-- **ユーザー** ユーザーにキー コンテナーへの直接アクセスを許可することは、**お勧めできません**。 ユーザーは、Azure AD グループに追加し、さらにそのグループにキー コンテナーへのアクセス権を付与することをお勧めします。 [「Azure Key Vault セキュリティ」の「ID 管理とアクセス管理」](overview-security.md#identity-and-access-management)を参照してください。
+- **ユーザー** ユーザーにキー コンテナーへの直接アクセスを許可することは、**お勧めできません**。 ユーザーは、Azure AD グループに追加し、さらにそのグループにキー コンテナーへのアクセス権を付与することをお勧めします。 「[Azure Key Vault セキュリティ:ID 管理とアクセス管理](overview-security.md#identity-and-access-management)」を参照してください。
 
 
 ### <a name="get-the-objectid"></a>objectID を取得する
@@ -83,7 +83,7 @@ New-AzADServicePrincipal -DisplayName mySP
 Azure CLI を使用して Azure AD グループの objectId を確認するには、[az ad group list](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) コマンドを使用します。 組織内に多数のグループが存在する可能性があるため、`--display-name` パラメーターに検索文字列を指定する必要もあります。
 
 ```azurecli-interactive
-az ad group list --displayname <search-string>
+az ad group list --display-name <search-string>
 ```
 objectId は JSON 形式で返されます。
 
@@ -162,7 +162,7 @@ Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys
 
 Azure AD グループを作成し、そのグループにアプリケーションとユーザーを追加して、キー コンテナーへのアクセス権をそのグループに付与できます。  これにより、多数のアプリケーションを 1 つのアクセス ポリシー エントリとしてキー コンテナーに追加できるため、キー コンテナーに対する直接アクセス権をユーザーに付与する (非推奨) 必要がなくなります。 詳細については、「[Azure Active Directory グループを使用したアプリとリソース アクセスの管理](../active-directory/fundamentals/active-directory-manage-groups.md)」を参照してください。
 
-### <a name="addition-prerequisites"></a>追加の前提条件
+### <a name="additional-prerequisites"></a>追加の前提条件
 
 [上記の前提条件](#prerequisites)に加えて、Azure Active Directory テナント内でグループを作成または編集するためのアクセス許可が必要になります。 アクセス許可を持っていない場合は、Azure Active Directory 管理者に連絡する必要があります。
 

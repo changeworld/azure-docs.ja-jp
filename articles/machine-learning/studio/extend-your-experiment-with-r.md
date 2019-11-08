@@ -1,7 +1,7 @@
 ---
 title: R を使用した実験の拡張
-titleSuffix: Azure Machine Learning Studio
-description: R スクリプトの実行モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張する方法。
+titleSuffix: ML Studio (classic) Azure
+description: R スクリプトの実行モジュールを使用して、R 言語によって Azure Machine Learning Studio (クラシック) 機能を拡張する方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,15 +10,15 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 8c1292d0d36874892a286d91b1e367c7336b99aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a64303702ffa5ccff9c79e0946d5df45eac9479
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811429"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621647"
 ---
-# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure Machine Learning Studio:R を使用した実験の拡張 
-[R スクリプトの実行][execute-r-script]モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張できます。
+# <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure Machine Learning Studio (クラシック):R を使用した実験の拡張 
+[R スクリプトの実行][execute-r-script]モジュール使用して、R 言語によって Azure Machine Learning Studio (クラシック) 機能を拡張できます。
 
 このモジュールは、複数の入力データセットを受け取り、1 つのデータセットを出力として生成します。 [R スクリプトの実行][execute-r-script]モジュールの **R Script** パラメーターに、R スクリプトを入力できます。
 
@@ -27,7 +27,7 @@ ms.locfileid: "60811429"
     dataset1 <- maml.mapInputPort(1)
 
 ## <a name="listing-all-currently-installed-packages"></a>現在インストールされているすべてのパッケージを一覧表示する
-インストールされているパッケージの一覧を変更できます。 現在インストールされているパッケージの一覧については、「[R Packages Supported by Azure Machine Learning Studio](https://msdn.microsoft.com/library/azure/mt741980.aspx)」(Azure Machine Learning Studio でサポートされている R パッケージ) を参照してください。
+インストールされているパッケージの一覧を変更できます。 現在インストールされているパッケージの一覧については、「[Azure Machine Learning Studio でサポートされている R パッケージ (クラシック)](https://msdn.microsoft.com/library/azure/mt741980.aspx)」を参照してください。
 
 また、[R スクリプトの実行][execute-r-script]モジュールに次のコードを入力して、現在インストールされているパッケージの完全な一覧を取得することもできます。
 

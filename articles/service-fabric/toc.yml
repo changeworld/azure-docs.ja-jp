@@ -487,6 +487,8 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Linux での暗号化証明書の設定とシークレットの暗号化
                   href: service-fabric-application-secret-management-linux.md
+                - name: KeyVaultReference を使用して安全にシークレットを保存する (プレビュー)
+                  href: service-fabric-keyvault-references.md
             - name: セキュリティで保護された通信用のリバース プロキシの構成
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する

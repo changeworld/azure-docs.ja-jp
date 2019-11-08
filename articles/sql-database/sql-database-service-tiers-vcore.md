@@ -1,141 +1,183 @@
 ---
-title: Azure SQL Database サービス - 仮想コア | Microsoft Docs
-description: 仮想コアベースの購入モデルでは、コンピューティング リソースとストレージ リソースを独立にスケーリングし、オンプレミスのパフォーマンスと一致させて、価格を最適化することができます。
+title: 仮想コア モデルの概要
+description: 仮想コア購入モデルでは、コンピューティング リソースとストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスと一致させて、価格を最適化することができます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 11/04/2019
+ms.openlocfilehash: b9de02bf0836727ac88b78194641238621e87a79
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034986"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821051"
 ---
-# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>仮想コア サービス レベルの中から選択し、DTU サービス レベルから移行する
+# <a name="vcore-model-overview"></a>仮想コア モデルの概要
 
-仮想コア (vCore) ベースの購入モデルでは、コンピューティング リソースとストレージ リソースを独立にスケーリングし、オンプレミスのパフォーマンスと一致させて、価格を最適化することができます。 また、ハードウェアの世代を選択することもできます。
+仮想コア (vCore) モデルには、いくつかの利点があります。
 
-- **Gen4**: Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/仮想コア、接続されている SSD
-- **Gen5**: Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、プロビジョニングされたコンピューティングに 5.1 GB/仮想コア、サーバーレス コンピューティングに最大 24 GB/仮想コア、高速 eNVM SSD
+- コンピューティング、メモリ、IO、およびストレージの上限が高くなります。
+- ワークロードのコンピューティング要件とメモリ要件をより満たすようにハードウェアの世代を制御します。
+- [Azure ハイブリッド特典 (AHB)](sql-database-azure-hybrid-benefit.md) および[予約インスタンス (RI)](sql-database-reserved-capacity.md) に対する料金割引。
+- コンピューティングを強化するハードウェア詳細における透明性の向上。オンプレミスのデプロイからの移行計画を容易にします。
 
-Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティング リソースをはるかに高くまでスケールアップできます。
+## <a name="service-tiers"></a>サービス階層
 
-> [!IMPORTANT]
-> 新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。
-> [!NOTE]
-> DTU ベースのサービス レベルについては、[DTU ベースの購入モデルのサービス レベル](sql-database-service-tiers-dtu.md)に関するページを参照してください。 DTU ベースの購入モデルと仮想コアベースの購入モデルのサービス レベルの違いについては、[Azure SQL Database の購入モデル](sql-database-purchase-models.md)に関するページを参照してください。
-
-## <a name="service-tier-characteristics"></a>サービス レベルの特性
-
-仮想コアベースの購入モデルには、General Purpose、Hyperscale、および Business Critical の 3 つのサービス レベルが用意されています。 これらのサービス レベルは、さまざまなコンピューティング サイズ、高可用性の設計、障害分離の方法、ストレージの種類とサイズ、および I/O 範囲によって区別されます。
-
-バックアップ用に必要なストレージと保有期間を個別に構成する必要があります。 バックアップの保有期間を設定するには、Azure Portal を開いて (データベースではなく) サーバーに移動した後、 **[Manage Backups] (バックアップの管理)**  >  **[ポリシーの構成]**  >  **[Point In Time Restore Configuration] (ポイントインタイム リストア構成)**  >  **[7 ～ 35 日]** に移動します。
-
-次の表は、これらの 3 つのレベルの違いについて説明しています。
+仮想コア モデルのサービス レベルのオプションには、General Purpose、Business Critical、および Hyperscale があります。 サービス レベルでは、一般に、可用性とディザスター リカバリーに関連するストレージ アーキテクチャ、容量と IO の制限、およびビジネス継続性のオプションが定義されています。
 
 ||**汎用**|**Business Critical**|**Hyperscale**|
 |---|---|---|---|
-|最適な用途|予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。|トランザクション レートが高く IO 待ち時間が低い OLTP アプリケーション。 同期的に更新された複数のレプリカを使用して、最高の耐障害性と高速フェールオーバーを提供します。|ほとんどのビジネス ワークロード。 最大 100 TB までのストレージ サイズの自動スケーリング、垂直および水平方向へのなめらかなコンピューティング スケーリング、データベースの高速復元。|
-|Compute|**プロビジョニングされるコンピューティング**:<br/>Gen4:1 ～ 24 の仮想コア<br/>Gen5:2 ～ 80 の仮想コア<br/>**サーバーレス コンピューティング**:<br/>Gen5:0.5 - 16 の仮想コア|**プロビジョニングされるコンピューティング**:<br/>Gen4:1 ～ 24 の仮想コア<br/>Gen5:2 ～ 80 の仮想コア|**プロビジョニングされるコンピューティング**:<br/>Gen4:1 ～ 24 の仮想コア<br/>Gen5:2 ～ 80 の仮想コア|
-|メモリ|**プロビジョニングされるコンピューティング**:<br/>Gen4:仮想コアあたり 7 GB<br/>Gen5:仮想コアあたり 5.1 GB<br/>**サーバーレス コンピューティング**:<br/>Gen5:仮想コアあたり最大 24 GB|**プロビジョニングされるコンピューティング**:<br/>Gen4:仮想コアあたり 7 GB<br/>Gen5:仮想コアあたり 5.1 GB |**プロビジョニングされるコンピューティング**:<br/>Gen4:仮想コアあたり 7 GB<br/>Gen5:仮想コアあたり 5.1 GB|
-|Storage|リモート ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**マネージド インスタンス**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**マネージド インスタンス**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
-|I/O スループット (概算)|**単一データベースとエラスティック プール**:仮想コアあたり 500 IOPS (最大 40000 IOPS)。<br/>**マネージド インスタンス**:[ファイルのサイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存します。|コアあたり 5000 IOPS (最大 200,000 IOPS)。|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。|
+|最適な用途|ほとんどのビジネス ワークロード。 予算重視で、バランスのとれた、スケーラブルなコンピューティングおよびストレージ オプションを提供します。 |複数の分離されたレプリカを使用して、障害に対する最大の回復性をビジネス アプリケーションに提供し、データベース レプリカあたりの最大の I/O パフォーマンスを実現します。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード。  複数の分離されたデータベース レプリカを構成できるようにして、障害に対するより高い回復性を提供します。 |
+|Storage|リモート ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**マネージド インスタンス**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB から 8 TB<br/>**マネージド インスタンス**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
+|I/O スループット (概算)|**単一データベースとエラスティック プール**:仮想コアあたり 500 IOPS (最大 40000 IOPS)。<br/>**マネージド インスタンス**:[ファイルのサイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存します。|仮想コアあたり 5000 IOPS (最大 320,000 IOPS)|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。|
 |可用性|1 レプリカ、読み取りスケール レプリカなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長高可用性 (HA)|1 読み取り/書き込みレプリカ、および 0 ～ 4 [ 読み取りスケール レプリカ ](sql-database-read-scale-out.md)|
 |バックアップ|[ 読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージでのスナップショット ベースのバックアップ。 このようなスナップショットを使用して復元することで、高速復元が可能になります。 バックアップは瞬時であり、コンピューティング I/O パフォーマンスには影響を与えません。 復元は高速であり、データ サイズに左右される操作ではありません (数時間または数日ではなく、数分で完了)。|
 |メモリ内|サポートされていません|サポートされています|サポートされていません|
 |||
 
-> [!NOTE]
-> Azure 無料アカウントと組み合わせて Basic サービス レベルで無料の Azure SQL データベースを取得できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」を参照してください。
 
-- 仮想コアのリソース制限の詳細については、[単一データベースでの仮想コアのリソース制限](sql-database-vcore-resource-limits-single-databases.md)および[マネージド インスタンスでの仮想コアのリソース制限](sql-database-managed-instance.md#vcore-based-purchasing-model)に関するページを参照してください。
-- General Purpose および Business Critical サービス レベルの詳細については、[General Purpose および Business Critical サービス レベル](sql-database-service-tiers-general-purpose-business-critical.md)に関するページを参照してください。
-- 仮想コアベースの購入モデルでの Hyperscale サービス レベルの詳細については、[Hyperscale サービス レベル](sql-database-service-tier-hyperscale.md)に関するページを参照してください。  
+### <a name="choosing-a-service-tier"></a>サービス階層の選択
 
-## <a name="azure-hybrid-benefit"></a>Azure ハイブリッド特典
+特定のワークロードに対してサービス レベルを選択する方法については、次の記事を参照してください。
 
-仮想コアベースの購入モデルのプロビジョニングされたコンピューティング レベルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、既存のライセンスを SQL Database の割引料金で交換できます。 この Azure 特典では、ソフトウェア アシュアランスを含むオンプレミスの SQL Server ライセンスを使用して、Azure SQL Database について最大 30 % 節約できます。
+- [General Purpose サービス レベルを選択する場合](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Business Critical サービス レベルを選択する場合](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [Hyperscale サービス レベルを選択する場合](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
-![価格](./media/sql-database-service-tiers/pricing.png)
 
-Azure ハイブリッド特典では、SQL データベース エンジン自体には既存の SQL Server ライセンスを使用して、基になる Azure インフラストラクチャに対してのみ支払うか (基本コンピューティングの価格)、または基になるインフラストラクチャと SQL Server ライセンスの両方に対して支払うか (ライセンス込みの価格) を選択できます。
+## <a name="compute-tiers"></a>コンピューティング レベル
 
-Azure Portal または次のいずれかの API を使用して、ライセンス モデルを選択または変更できます。
+仮想コア モデルのコンピューティング レベル オプションには、プロビジョニングおよびサーバーレスのコンピューティング レベルが含まれます。
 
-- PowerShell を使用してライセンスの種類を設定または更新するには:
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+### <a name="provisioned-compute"></a>プロビジョニング済みコンピューティング
 
-- Azure CLI を使用してライセンスの種類を設定または更新するには:
+プロビジョニング済みコンピューティング レベルでは、ワークロード アクティビティとは無関係に、継続的にプロビジョニングされる特定の量のコンピューティング リソースを提供し、時間あたりの固定価格でプロビジョニングされたコンピューティング使用量に対して請求します。
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
-- REST API を使用してライセンスの種類を設定または更新するには:
+### <a name="serverless-compute"></a>サーバーレス コンピューティング
 
-  - [データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Managed Instances - Create Or Update](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Managed Instances - Update](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+[サーバーレス コンピューティング レベル](sql-database-serverless.md)では、ワークロード アクティビティに基づいてコンピューティング リソースを自動スケールし、1 秒あたりのコンピューティング使用量に対して請求します。
 
-## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU ベースのモデルから仮想コア ベースのモデルに移行する
 
-### <a name="migrate-a-database"></a>データベースの移行
 
-DTU ベースの購入モデルから仮想コアベースの購入モデルへのデータベースの移行は、DTU ベースの購入モデルでの Standard および Premium サービス レベル間のアップグレードまたはダウングレードに似ています。
+## <a name="hardware-generations"></a>ハードウェアの世代
 
-### <a name="migrate-databases-with-geo-replication-links"></a>geo レプリケーション リンクを含むデータベースを移行する
+仮想コア モデルのハードウェアの世代オプションには、Gen 4/5、M シリーズ (プレビュー)、Fsv2 シリーズ (プレビュー) があります。 ハードウェアの世代では、一般に、ワークロードのパフォーマンスに影響を与えるコンピューティングおよびメモリの制限とその他の特性を定義します。
 
-DTU ベースのモデルから仮想コアベースの購入モデルへの移行は、Standard および Premium サービス レベルでのデータベース間の geo レプリケーションのリレーションシップのアップグレードまたはダウングレードに似ています。 移行中に geo レプリケーションを停止する必要はありませんが、次のシーケンス処理のルールに従う必要があります。
+### <a name="gen4gen5"></a>Gen4/Gen5
 
-- アップグレードの場合は、最初にセカンダリ データベースをアップグレードしてから、プライマリをアップグレードする必要があります。
-- ダウングレードは逆の順序で行います。つまり、最初にプライマリ データベースをダウングレードしてから、セカンダリをダウングレードします。
+- Gen4/Gen5 ハードウェアでは、バランスの取れたコンピューティング リソースとメモリ リソースを提供し、Fsv2 シリーズや M シリーズで提供されるような、メモリの増加、仮想コアの増加、またはより高速な単一の仮想コア要件を持たないほとんどのデータベース ワークロードに適しています。
 
-2 つのエラスティック プール間で geo レプリケーションを使用している場合は、1 つのプールをプライマリとして、もう一方をセカンダリとして指定することをお勧めします。 その場合、エラスティック プールを移行するときは、同じシーケンス処理のガイダンスを使用する必要があります。 ただし、プライマリ データベースとセカンダリ データベースの両方を含むエラスティック プールがある場合は、使用率が高い方のプールをプライマリとして扱い、それに応じてシーケンス処理のルールに従ってください。  
+Gen4/Gen5 が利用可能なリージョンについては、[Gen4/Gen5 の可用性](#gen4gen5-1)に関するセクションを参照してください。
 
-次の表は、特定の移行シナリオのためのガイダンスを示しています。
+### <a name="fsv2-seriespreview"></a>Fsv2 シリーズ (プレビュー)
 
-|現在のサービス レベル|移行先のサービス レベル|移行の種類|ユーザー操作|
-|---|---|---|---|
-|標準|汎用|ラテラル|任意の順序で移行できますが、適切な仮想コア サイズを確保する必要があります*|
-|Premium|Business Critical|ラテラル|任意の順序で移行できますが、適切な仮想コア サイズを確保する必要があります*|
-|Standard|Business Critical|アップグレード|セカンダリを最初に移行する必要があります|
-|Business Critical|Standard|ダウングレード|プライマリを最初に移行する必要があります|
-|Premium|汎用|ダウングレード|プライマリを最初に移行する必要があります|
-|汎用|Premium|アップグレード|セカンダリを最初に移行する必要があります|
-|Business Critical|汎用|ダウングレード|プライマリを最初に移行する必要があります|
-|汎用|Business Critical|アップグレード|セカンダリを最初に移行する必要があります|
-||||
+- Fsv2 シリーズは、CPU を大量に要求するワークロードに対して、CPU の低待機時間と高クロック速度を実現するコンピューティング最適化のハードウェア オプションです。
+- ワークロードによっては、Fsv2 シリーズは Gen5 よりも仮想コアあたりの CPU パフォーマンスを向上させることができます。72 vCore サイズでは、Gen5 の 80 仮想コアと比較して、より高い CPU パフォーマンスを実現し、コストを削減できます。 
+- Fsv2 を使用すると、他のハードウェアよりも仮想コアあたりのメモリと tempdb が少なくなります。そのため、これらの制限の影響を受けるワークロードでは、Gen5 または M シリーズを代わりに検討する必要があります。  
 
-\* Standard レベルでは 100 DTU ごとに少なくとも 1 つの仮想コアが必要であり、Premium レベルでは 125 DTU ごとに少なくとも 1 つの仮想コアが必要です。
+Fsv2 シリーズが利用可能なリージョンについては、[Fsv2 シリーズの可用性](#fsv2-series)に関するセクションを参照してください。
 
-### <a name="migrate-failover-groups"></a>フェールオーバー グループを移行する
 
-複数のデータベースが含まれるフェールオーバー グループの移行では、プライマリ データベースとセカンダリ データベースを個別に移行する必要があります。 その処理中は、同じ考慮事項とシーケンス処理ルールが適用されます。 データベースが仮想コアベースの購入モデルに変換された後も、フェールオーバー グループでは同じポリシー設定が引き続き有効です。
+### <a name="m-seriespreview"></a>M シリーズ (プレビュー)
 
-### <a name="create-a-geo-replication-secondary-database"></a>geo レプリケーションのセカンダリ データベースを作成する
+- M シリーズは、Gen5 で提供されるよりも多くのメモリと高いコンピューティング制限を要求するワークロードのためのメモリ最適化のハードウェア オプションです。
+- M シリーズでは、仮想コアあたり 29 GB と 128 個の仮想コアを提供し、Gen5 に比べて、メモリ制限が 8 倍の 4 TB 近くまで増加します。
 
-geo レプリケーションのセカンダリ データベース (geo セカンダリ) は、プライマリ データベースに対して使用したのと同じサービス レベルを使用してのみ作成できます。 ログ生成速度が速いデータベースの場合は、プライマリと同じコンピューティング サイズを持つ geo セカンダリを作成することをお勧めします。
+サブスクリプションとリージョンで M シリーズ ハードウェアを有効にするには、サポート リクエストを開く必要があります。 サポート リクエストが承認されると、M シリーズの選択とプロビジョニングのエクスペリエンスは、他のハードウェアの世代と同じパターンに従います。 M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
 
-geo セカンダリを単一プライマリ データベースのエラスティック プール内に作成している場合は、そのプールの `maxVCore` 設定がプライマリ データベースのコンピューティング サイズに一致していることを確認してください。 プライマリの geo セカンダリを別のエラスティック プール内に作成している場合は、そのプールに同じ `maxVCore` 設定を割り当てることをお勧めします。
 
-### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>データベースのコピーを使用して DTU ベースのデータベースを仮想コア ベースのデータベースに変換する
+### <a name="compute-and-memory-specifications"></a>コンピューティングとメモリの仕様
 
-DTU ベース コンピューティング サイズのデータベースを、仮想コアベース コンピューティング サイズのデータベースにコピーする場合、コピー先のコンピューティング サイズが、コピー元データベースの最大データベース サイズをサポートしている限り、制限や特別なシーケンス処理は伴いません。 データベースのコピーでは、コピー操作が開始された時点のデータのスナップショットが作成され、ソースとターゲットの間でデータは同期されません。
+
+|ハードウェアの世代  |Compute  |メモリ  |
+|:---------|:---------|:---------|
+|Gen4     |- Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ<br>- 最大 24 個の仮想コアをプロビジョニング (1 仮想コア = 1 物理コア)  |- 仮想コアあたり 7 GB<br>- 最大 168 GB のプロビジョニング|
+|第 5 世代     |**プロビジョニング済みコンピューティング**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサ<br>- 最大 80 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)<br><br>**サーバーレス コンピューティング**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサ<br>- 最大 16 個の仮想コアを自動スケール (1 仮想コア = 1 ハイパースレッド)|**プロビジョニング済みコンピューティング**<br>- 仮想コアあたり 5.1 GB<br>- 最大 408 GB をプロビジョニング<br><br>**サーバーレス コンピューティング**<br>- 仮想コアあたり最大 24 GB を自動スケール<br>- 最大 48 GB を自動スケール|
+|Fsv2 シリーズ     |- Intel Xeon Platinum 8168 (SkyLake) プロセッサ<br>- すべての主要なターボ クロック速度 (3.4 GHz) と、最大 1 コアのターボ クロック速度 (3.7 GHz) を実現します。<br>- 最大 72 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 1.9 GB<br>- 136 GB をプロビジョニング|
+|M シリーズ     |- Intel Xeon E7-8890 v3 2.5 GHz プロセッサ<br>- 128 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 29 GB<br>- 3.7 TB をプロビジョニング|
+
+
+リソース制限の詳細については、[単一データベースに対するリソース制限 (仮想コア)](sql-database-vcore-resource-limits-single-databases.md) に関するページ、または[エラスティック プールに対するリソース制限 (仮想コア)](sql-database-vcore-resource-limits-elastic-pools.md) に関するページを参照してください。
+
+### <a name="selecting-a-hardware-generation"></a>ハードウェアの世代を選択する
+
+Azure portal では、作成時に SQL データベースまたはプールのハードウェアの世代を選択できます。また、既存の SQL データベースまたはプールのハードウェアの世代を変更することもできます。
+
+**SQL データベースまたはプールを作成するときにハードウェアの世代を選択するには**
+
+詳細については、[SQL データベースの作成](sql-database-single-database-get-started.md)に関するページを参照してください。
+
+**[基本]** タブで、 **[Compute + storage]\(コンピューティングとストレージ\)** セクションの **[データベースの構成]** リンクを選択し、 **[構成の変更]** リンクを選択します。
+
+  ![configure database](media/sql-database-service-tiers-vcore/configure-sql-database.png)
+
+目的のハードウェアの世代を選択します。
+
+  ![ハードウェアの選択](media/sql-database-service-tiers-vcore/select-hardware.png)
+
+
+**既存の SQL データベースまたはプールのハードウェアの世代を変更するには**
+
+データベースの場合は、[概要] ページで、 **[価格レベル]** リンクを選択します。
+
+  ![ハードウェアの変更](media/sql-database-service-tiers-vcore/change-hardware.png)
+
+プールの場合は、[概要] ページで **[構成]** を選択します。
+
+手順に従って構成を変更し、前の手順で説明したようにハードウェアの世代を選択します。
+
+### <a name="hardware-availability"></a>ハードウェアの可用性
+
+#### <a name="gen4gen5"></a>Gen4/Gen5
+
+新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。 
+
+Gen5 は、世界中のほとんどのリージョンで使用できます。
+
+#### <a name="fsv2-series"></a>Fsv2 シリーズ
+
+Fsv2 シリーズは、次のリージョンで使用できます: オーストラリア中部、オーストラリア中部 2、オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、東アジア、米国東部、フランス中部、インド中部、インド西部、韓国中部、韓国南部、北ヨーロッパ、南アフリカ北部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部 2。
+
+
+#### <a name="m-series"></a>M シリーズ
+
+M シリーズは、次のリージョンで使用できます: 米国東部、北ヨーロッパ、西ヨーロッパ、米国西部 2。
+また、M シリーズは、追加のリージョンでの使用が制限される場合があります。 ここに記載されているものとは別のリージョンを要求できますが、別のリージョンでのフルフィルメントができない場合があります。
+
+サブスクリプションで M シリーズの可用性を有効にするには、[新しいサポート リクエストをファイリング](#create-a-support-request-to-enable-m-series)してアクセスを要求する必要があります。
+
+
+##### <a name="create-a-support-request-to-enable-m-series"></a>M シリーズを有効にするサポート リクエストを作成します。 
+
+1. ポータルで **[ヘルプとサポート]** を選択します。
+2. **[新しいサポート リクエスト]** を選択します。
+
+**[基本]** ページで、以下を設定します。
+
+1. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
+2. **[サブスクリプション]** で、M シリーズを有効にするサブスクリプションを選択します。
+3. **[クォータの種類]** で、 **[SQL データベース]** を選択します。
+4. **[次へ]** を選択して、 **[詳細]** ページに移動します。
+
+**[詳細]** ページで、以下を設定します。
+
+5. **[問題の詳細]** セクションで、 **[詳細の指定]** リンクを選択します。 
+6. **[SQL Database のクォータの種類]** で、 **[M シリーズ]** を選択します。
+7. **[リージョン]** で、M シリーズを有効にするリージョンを選択します。
+    M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
+
+承認されたサポート リクエストは、通常、5 営業日以内に完了します。
+
 
 ## <a name="next-steps"></a>次の手順
 
+- SQL データベースを作成するには、[Azure portal を使用して SQL データベースを作成する方法](sql-database-single-database-get-started.md)に関するページを参照してください。
 - 単一データベースに対して使用できる特定のコンピューティング サイズとストレージ サイズの選択については、[単一データベースに対する SQL Database の仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください。
-- エラスティック プールに対して使用できる特定のコンピューティング サイズとストレージ サイズの選択については、[エラスティック プールに対する SQL Database の仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)に関するページを参照してください。
+- エラスティック プールに対して使用できる特定のコンピューティング サイズとストレージ サイズの選択については、[エラスティック プールに対する SQL Database の仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。
+- 価格設定の詳細については、[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)に関するページを参照してください。

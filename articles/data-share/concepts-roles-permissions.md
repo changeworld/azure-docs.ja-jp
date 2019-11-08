@@ -1,27 +1,29 @@
 ---
-title: Azure Data Share プレビューのロールおよび要件
-description: Azure Data Share プレビューでデータ プロバイダーとデータ コンシューマーがデータを共有するためのアクセス制御の役割と要件について説明します。
+title: Azure Data Share のロールと要件
+description: Azure Data Share でデータ プロバイダーとデータ コンシューマーがデータを共有するためのアクセス制御のロールと要件について説明します。
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 34c73a6bd400da076c68f308a2100a0f4569bd04
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166371"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490574"
 ---
-# <a name="roles-and-requirements-for-azure-data-share-preview"></a>Azure Data Share プレビューのロールおよび要件
+# <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share のロールと要件 
 
-この記事では、Azure Data Share プレビューを使用してデータを共有する、または Azure Data Share プレビューを使用して承諾およびデータの受信を行う際に必要となるロールについて説明します。 
+この記事では、Azure Data Share を使用してデータを共有する、または Azure Data Share を使用して承諾およびデータの受信を行う際に必要となるロールについて説明します。 
 
 ## <a name="roles-and-requirements"></a>ロールと要件
 
 Azure Data Share では、データ プロバイダーによって共有されるデータの読み取りと、データ コンシューマーとして共有されるデータの受信を可能にするために、Azure サービス用マネージド ID (旧称 MSI) を使用して、基になるストレージ アカウントに対する認証が行われます。 結果として、データ プロバイダーとデータ コンシューマーの間で資格情報が交換されることはありません。 
 
-マネージド サービス ID には、基になるストレージ アカウントへのアクセス権が付与されている必要があります。 Azure Data Share サービスでは、Azure Data Share リソースのマネージド サービス ID を使用して、データの読み取りと書き込みが行われます。 Azure Data Share のユーザーは、データの共有元または共有先であるストレージ アカウントに対して、マネージド サービス ID のロール割り当てを作成できる必要があります。 ロール割り当てを作成するアクセス許可を保持しているのは、**所有者**ロール、管理者ロール、または Microsoft.Authorization/ロール割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールです。 
+マネージド サービス ID には、基になるストレージ アカウントや SQL データベースへのアクセス権が付与されている必要があります。 Azure Data Share サービスでは、Azure Data Share リソースのマネージド サービス ID を使用して、データの読み取りと書き込みが行われます。 Azure Data Share のユーザーは、データの共有元または共有先であるストレージ アカウントや SQL データベースに対して、マネージド サービス ID のロール割り当てを作成できる必要があります。 
+
+ストレージの場合、ロール割り当てを作成するアクセス許可を保持しているのは、**所有者**ロール、ユーザー アクセス管理者ロール、または Microsoft.Authorization/ロール割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールです。 
 
 対象のストレージ アカウントの所有者ではなく、Azure Data Share リソースのマネージド ID に対するロール割り当てを自分で作成できない場合は、自分の代わりにロール割り当てを作成するよう Azure 管理者に依頼できます。 
 
@@ -29,11 +31,13 @@ Data Share リソースのマネージド ID に割り当てられているロ�
 
 | |  |  |
 |---|---|---|
-|**ストレージの種類**|**データ プロバイダーのソース ストレージ アカウント**|**データ コンシューマーのターゲット ストレージ アカウント**|
+|**ストレージの種類**|**データ プロバイダー ストア**|**データ コンシューマー ターゲット ストア**|
 |Azure Blob Storage| ストレージ BLOB データ閲覧者 | ストレージ BLOB データ共同作成者
 |Azure Data Lake Gen1 | Owner | サポートされていません
 |Azure Data Lake Gen2 | ストレージ BLOB データ閲覧者 | ストレージ BLOB データ共同作成者
+|Azure SQL | dbo | dbo 
 |
+
 ### <a name="data-providers"></a>データ プロバイダー 
 データセットを Azure データ共有に追加するには、データ プロバイダー データ共有リソースのマネージド ID をストレージ BLOB データ閲覧者ロールに追加する必要があります。 これは Azure Data Share サービスによって自動的に実行されます (ただし、ユーザーが Azure を使用してデータセットを追加しようとしており、かつ、ストレージ アカウントの所有者であるか、Microsoft.Authorization/ロール割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールのメンバーである場合)。 
 
@@ -50,8 +54,12 @@ Data Share リソースのマネージド ID に対してロール割り当て�
 1. *[選択]* で、Azure Data Share アカウントの名前を入力します。
 1. [ *Save*] をクリックします。
 
+SQL ベースのソースの場合、ユーザーは、データの共有元の SQL データベースに、Azure Data Share アカウントと同じ名前で、外部プロバイダーから作成される必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[データの共有](share-your-data.md)」のチュートリアルを参照してください。 
+
 ### <a name="data-consumers"></a>データ コンシューマー
-データを受信するには、データ コンシューマー データ共有リソースのマネージド ID をストレージ BLOB データ共同作成者ロールに追加する必要があります。 このロールは、Azure Data Share サービスでストレージ アカウントに書き込むことができるようにするために必要です。 これは Azure Data Share サービスによって自動的に実行されます (ただし、ユーザーが Azure を使用してデータセットを追加しようとしており、かつ、ストレージ アカウントの所有者であるか、Microsoft.Authorization/ロール割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールのメンバーである場合)。 
+データを受信するには、データ コンシューマー データ共有リソースのマネージド ID をストレージ BLOB データ共同作成者ロールに追加する必要があります。また、データを SQL データベースに受信するには、SQL データベースの dbo ロールに追加する必要があります。 
+
+ストレージの場合、これは Azure Data Share サービスによって自動的に実行されます (ただし、ユーザーが Azure を使用してデータセットを追加しようとしており、かつ、ストレージ アカウントの所有者であるか、Microsoft.Authorization/ロール割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールのメンバーである場合)。 
 
 または、ユーザーは Azure 管理者に依頼して、データ共有リソースのマネージド ID をストレージ BLOB データ共同作成者ロールに手動で追加してもらうこともできます。 このロール割り当てを管理者が手動で作成すると、ストレージ アカウントの所有者であるか、カスタム ロールが割り当てられている必要はなくなります。 これは、Azure Storage または Azure Data Lake Gen2 に共有されているデータに適用されることに注意してください。 Azure Data Lake Gen1 へのデータの受信はサポートされていません。 
 
@@ -66,9 +74,11 @@ Data Share リソースのマネージド ID に対してロール割り当て�
 
 REST API を使用してデータを共有する場合は、データ共有アカウントを適切なロールに追加することによって、これらのロール割り当てを手動で作成する必要があります。 
 
+データを SQL ベースのソースに受信する場合は、新規のユーザーが、お客様の Azure Data Share アカウントと同じ名前で、外部プロバイダーから作成されるようにしてください。 「[データの受け入れと受信](subscribe-to-data-share.md)」チュートリアルの前提条件を参照してください。 
+
 ロール割り当てを追加する方法の詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)を参照してください。Azure リソースにロール割り当てを追加する方法を説明しています。 
 
-## <a name="resource-provider-registration"></a>リソース プロバイダーの再登録 
+## <a name="resource-provider-registration"></a>リソース プロバイダーの登録 
 
 Azure Data Share の招待を承諾するときは、サブスクリプションに Microsoft.DataShare リソース プロバイダーを手動で登録する必要があります。 Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに登録するには、次の手順に従います。 
 

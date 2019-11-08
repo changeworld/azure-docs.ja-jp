@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory で Azure-SSIS 統合ランタイムを作成する | Microsoft Docs
+title: Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 description: Azure 上で SSIS パッケージをデプロイして実行できるように、Azure-SSIS 統合ランタイムを Azure Data Factory に作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,18 +12,18 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ddc91a3317d362f6b56e486556f2edf6cdb85131
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ce688248a205981f4a4c60ad01231c0b8f6bae3d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326690"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73677356"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 
 この記事では、Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 Azure-SSIS IR では、次の方法がサポートされます。
 
-- Azure SQL Database サーバーまたはマネージド インスタンスをホストとする SSIS カタログ (SSISDB) にデプロイされたパッケージを実行する (プロジェクト デプロイ モデル)。
+- Azure SQL Database サーバーまたはマネージド インスタンスでホストされる SSIS カタログ (SSISDB) にデプロイされたパッケージを実行する (プロジェクト デプロイ モデル)。
 - ファイル システム、ファイル共有、Azure Files のいずれかにデプロイされたパッケージを実行する (パッケージ デプロイ モデル)。 
 
 Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使用して、Azure にパッケージをデプロイして実行することができます。 そのようなツールの例としては、SQL Server Data Tools、SQL Server Management Studio、コマンドライン ツール (`dtinstall`、`dtutil`、`dtexec` など) があります。
@@ -49,7 +49,7 @@ Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使
 
   次の点に留意してください。
 
-  - SSISDB インスタンスは、選択したデータベース サーバーに基づいて、単一データベースやエラスティック プールの一部として、またはマネージド インスタンス上に自動的に作成できます。 パブリック ネットワークからアクセスできるほか、仮想ネットワークに参加させることでアクセスすることもできます。 SSISDB をホストするデータベース サーバーの種類を選択するときのガイダンスについては、この記事の [Azure SQL Database の単一データベース、エラスティック プール、マネージド インスタンスの比較](#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)に関するセクションを参照してください。 
+  - SSISDB インスタンスは、選択したデータベース サーバーに基づいて、単一データベースやエラスティック プールの一部として、またはマネージド インスタンス上に自動的に作成できます。 パブリック ネットワークからアクセスできるほか、仮想ネットワークに参加させてアクセスすることもできます。 SSISDB をホストするデータベース サーバーの種類を選択するときのガイダンスについては、この記事の [Azure SQL Database の単一データベース、エラスティック プール、マネージド インスタンスの比較](#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)に関するセクションを参照してください。 
   
     仮想ネットワーク サービス エンドポイントを利用する Azure SQL Database サーバーまたはプライベート エンドポイントを利用するマネージド インスタンスを使用して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミス データにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。
   - データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定が有効になっていることを確認します。 この設定は、仮想ネットワーク サービス エンドポイントを利用する Azure SQL Database サーバー、またはプライベート エンドポイントを利用するマネージド インスタンスを使用して SSISDB をホストする場合は該当しません。 詳細については、「[Azure SQL データベースのセキュリティ保護](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)」を参照してください。
@@ -108,7 +108,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
     e. **[Node Number]\(ノード数\)** で、統合ランタイム クラスター内のノードの数を選択します。 サポートされているノード数のみが表示されます。 多くのパッケージを並列で実行する場合は、ノード数が多い大規模なクラスターを選択します (スケールアウト)。
 
-    f. **[Edition/License]\(エディション/ライセンス)** で、統合ランタイムの SQL Server エディション ([Standard] または [Enterprise]) を選択します。 統合ランタイムで高度な機能を使用する場合は、[Enterprise] を選択します。
+    f. **[Edition/License]\(エディション/ライセンス\)** で、統合ランタイムの SQL Server エディション ([Standard] または [Enterprise]) を選択します。 統合ランタイムで高度な機能を使用する場合は、[Enterprise] を選択します。
 
     g. **[お金を節約]** で、統合ランタイムの Azure ハイブリッド特典オプション ( **[はい]** または **[いいえ]** ) を選択します。 ソフトウェア アシュアランス付き SQL Server ライセンスを移行して、ハイブリッド使用によるコスト節約の利点を得るには、 **[はい]** を選択します。
 
@@ -118,7 +118,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
    ![SQL の設定](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
 
-   a. Azure-SSIS IR 上でパッケージを実行するためのデプロイ モデルとして、次のいずれかを **[Create SSIS catalog]\(SSIS カタログの作成\)** チェック ボックスで選択します。 データベース サーバーによってホストされている SSISDB にパッケージがデプロイされるプロジェクト デプロイ モデルか、ファイル システム、ファイル共有、Azure Files のいずれかにパッケージがデプロイされるパッケージ デプロイ モデルを選択することになります。 
+   a. Azure-SSIS IR 上でパッケージを実行するためのデプロイ モデルを選択するために **[Create SSIS catalog...]\(...SSIS カタログを作成する\)** チェック ボックスをオンにします。 データベース サーバーによってホストされている SSISDB にパッケージがデプロイされるプロジェクト デプロイ モデルか、ファイル システム、ファイル共有、Azure Files のいずれかにパッケージがデプロイされるパッケージ デプロイ モデルを選択することになります。 
     
    このチェック ボックスをオンにした場合、自動的に作成および管理される SSISDB インスタンスのホストとなるデータベース サーバーを用意する必要があります。
    
@@ -132,7 +132,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
     
    仮想ネットワーク サービス エンドポイントを利用する Azure SQL Database サーバーまたはプライベート エンドポイントを利用するマネージド インスタンスを SSISDB のホストに選んだ場合、またはセルフホステッド IR を構成せずにオンプレミス データにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。 
 
-   e. SSISDB をホストするデータベース サーバーの認証方法として AAD 認証を選択するには、 **[Use AAD authentication with the managed identity for your ADF]\(ADF のマネージド ID で AAD 認証を使用する\)** チェック ボックスをオンにします。 SQL 認証を選択するか、またはデータ ファクトリのマネージド ID を使用した Azure AD 認証を選択することになります。 
+   e. **[Use AAD authentication with the managed identity for your ADF]\(ADF のマネージド ID で AAD 認証を使用する\)** チェック ボックスをオンにして、SSISDB をホストするためのデータベース サーバーの認証方法を選択します。 SQL 認証を選択するか、またはデータ ファクトリのマネージド ID を使用した Azure AD 認証を選択することになります。 
     
    このチェック ボックスをオンにした場合は、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加する必要があります。 詳細については、「[Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)」を参照してください。 
 
@@ -187,7 +187,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 8. **[Summary]\(概要\)** ページで、すべてのプロビジョニング設定を確認し、推奨されるドキュメントのリンクをブックマークに登録します。その後 **[完了]** を選択すると、統合ランタイムの作成が開始されます。
 
     > [!NOTE]
-    > この処理は、カスタムのセットアップ時間があればそれを除いて、5 分以内で完了するはずです。 ただし、Azure-SSIS IR が仮想ネットワークに参加するには 20 分から 30 分かかることがあります。
+    > この処理は、カスタムのセットアップ時間があればそれを除いて、5 分以内で完了するはずです。 ただし、Azure-SSIS IR を仮想ネットワークに参加させるには 20 分から 30 分かかることがあります。
     >
     > SSISDB を使用する場合、Data Factory サービスは、SSISDB を準備するためにデータベース サーバーに接続します。 また、仮想ネットワーク (指定されている場合) に必要なアクセス許可と設定を構成し、Azure-SSIS IR を仮想ネットワークに参加させます。
     > 
@@ -664,11 +664,11 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
 SSISDB を使用する場合は、そこにパッケージをデプロイし、SQL Server Data Tools または SQL Server Management Studio ツールを使用して、Azure-SSIS IR でそれらのパッケージを実行できます。 これらのツールは、ご利用のデータベース サーバーに対し、そのサーバーのエンドポイントを介して接続します。 
 
-- プライベート エンドポイントを持つ Azure SQL Database サーバーの場合、サーバーのエンドポイントの形式は `<server name>.database.windows.net` です。
-- プライベート エンドポイントを持つマネージド インスタンスの場合、サーバーのエンドポイントの形式は `<server name>.<dns prefix>.database.windows.net` です。
-- パブリック エンドポイントを持つマネージド インスタンスの場合、サーバーのエンドポイントの形式は `<server name>.public.<dns prefix>.database.windows.net,3342` です。 
+- プライベート エンドポイントを利用する Azure SQL Database サーバーの場合、サーバーのエンドポイントの形式は `<server name>.database.windows.net` です。
+- プライベート エンドポイントを利用するマネージド インスタンスの場合、サーバーのエンドポイントの形式は `<server name>.<dns prefix>.database.windows.net` です。
+- パブリック エンドポイントを利用するマネージド インスタンスの場合、サーバーのエンドポイントの形式は `<server name>.public.<dns prefix>.database.windows.net,3342` です。 
 
-SSISDB を使用しない場合は、ファイル システム、ファイル共有、Azure Files のいずれかにパッケージをデプロイしてください。 `dtinstall`、`dtutil`、`dtexec` の各コマンド ライン ユーティリティを使用して、Azure-SSIS IR でそれらを実行できます。 詳しくは、[SSIS パッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)に関する記事を参照してください。 
+SSISDB を使用しない場合は、ファイル システム、ファイル共有、Azure Files のいずれかにパッケージをデプロイしてください。 その後、`dtinstall`、`dtutil`、`dtexec` の各コマンドライン ユーティリティを使用して、Azure-SSIS IR でそれらを実行できます。 詳しくは、[SSIS パッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)に関する記事を参照してください。 
 
 どちらの場合も、デプロイしたパッケージは、Data Factory パイプラインの SSIS パッケージの実行アクティビティを使用して、Azure-SSIS IR で実行することもできます。 詳細については、[ファーストクラスの Data Factory アクティビティとして SSIS パッケージの実行を呼び出す方法](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関するページを参照してください。
 

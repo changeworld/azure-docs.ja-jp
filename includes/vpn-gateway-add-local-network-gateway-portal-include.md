@@ -8,17 +8,19 @@ ms.topic: include
 ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6c59513c2c84b5f280e8200411b53848768eaf29
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970840"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523233"
 ---
-1. ポータルで **+ [リソースの作成]** をクリックします。
-2. 検索ボックスに「**ローカル ネットワーク ゲートウェイ**」と入力し、**Enter** キーを押して検索します。 これにより、結果の一覧が返されます。 **[ローカル ネットワーク ゲートウェイ]** をクリックし、 **[作成]** ボタンをクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。
+1. [Azure portal](https://portal.azure.com) メニューから **[リソースの作成]** を選択します。 
 
-   ![ローカル ネットワーク ゲートウェイの作成](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "ローカル ネットワーク ゲートウェイの作成")
+   ![Azure portal でリソースを作成する](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+2. **[マーケットプレースを検索]** フィールドに「**ローカル ネットワーク ゲートウェイ**」と入力し、**Enter** キーを押して、検索します。 これにより、結果の一覧が返されます。 **[ローカル ネットワーク ゲートウェイ]** をクリックし、 **[作成]** ボタンをクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。
+
+   ![ローカル ネットワーク ゲートウェイを作成する](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "ローカル ネットワーク ゲートウェイを作成する")
 
 3. **[ローカル ネットワーク ゲートウェイの作成]** ページで、ローカル ネットワーク ゲートウェイの値を指定します。
 

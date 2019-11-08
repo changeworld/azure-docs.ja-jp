@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 22e8fa8fb6999828076ea5f8f34b1f601b920013
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638292"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499565"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
@@ -39,16 +39,20 @@ Language Understanding (LUIS) 用語集では、LUIS API サービスの使用�
 関連項目: 
 * [概念](luis-concept-batch-test.md)
 * [方法](luis-how-to-batch-test.md)
-* [Tutorial]luis-tutorial-batch-testing.md)
+* [チュートリアル](luis-tutorial-batch-testing.md)
 
 
 ## <a name="collaborator"></a>コラボレーター
 
-コラボレーターはアプリの[所有者](#owner)ではありませんが、意図を追加、編集、および削除するための同様のアクセス許可を持っています。
+コラボレーターまたは共同作成者はアプリの[所有者](#owner)ではありませんが、意図、エンティティ、発話を追加、編集、削除するための同じアクセス許可を持っています。
 
-## <a name="currently-editing"></a>現在編集中
+## <a name="contributor"></a>共同作成者
 
-[アクティブなバージョン](#active-version)と同じ
+共同作成者は、[コラボレーター](#collaborator)と同じです。
+
+## <a name="descriptor"></a>記述子
+
+記述子は、[語句リスト](#phrase-list)や[エンティティ](#entity)など、トレーニング時にモデルに適用される[特徴量](#features)です。 
 
 ## <a name="domain"></a>ドメイン
 
@@ -57,18 +61,6 @@ LUIS のコンテキストでは、**ドメイン**はナレッジの一領域�
 ## <a name="endpoint"></a>エンドポイント
 
 [LUIS エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) URL は、[LUIS アプリ](#luis-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリとアプリ ID のリージョンが含まれています。 エンドポイントは、お使いのアプリの **[[Keys and endpoints]\(キーとエンドポイント\)](luis-how-to-azure-subscription.md)** ページにあります。また、[Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API からエンドポイント URL を取得することもできます。
-
-たとえば、エンドポイントは次のようになります。
-
-`https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscriptionID>&verbose=true&timezoneOffset=0&q=<utterance>`
-
-|Querystring パラメーター|description|
-|--|--|
-|region| [公開されたリージョン](luis-reference-regions.md#publishing-regions) |
-|appID | LUIS アプリ ID |
-|subscriptionID | Azure Portal で作成された LUIS エンドポイント (サブスクリプション) キー |
-|q | 発話 |
-|timezoneOffset| minutes|
 
 ## <a name="entity"></a>エンティティ
 
@@ -100,7 +92,7 @@ LUIS のコンテキストでは、**ドメイン**はナレッジの一領域�
 
 ## <a name="luis-app"></a>LUIS アプリ
 
-LUIS アプリは、[意図](#intent)、[エンティティ](#entity)、ラベル付き[発話](#utterance)など、自然言語処理のトレーニング済みデータ モデルです。
+LUIS アプリは、[意図](#intent)、[エンティティ](#entity)、ラベル付き[発話](#utterance)など、自然言語処理のための言語モデルのコレクションです。
 
 ## <a name="owner"></a>所有者
 
@@ -111,7 +103,7 @@ LUIS アプリは、[意図](#intent)、[エンティティ](#entity)、ラベ�
 
 ## <a name="phrase-list"></a>フレーズ リスト
 
-[フレーズ リスト](luis-concept-feature.md#what-is-a-phrase-list-feature)には、同じように処理する必要がある、同じクラスに属している値 (単語またはフレーズ) のグループが含まれています (都市名、製品名など)。 交換可能な一覧は、シノニムとして扱われます。
+[フレーズ リスト](luis-concept-feature.md)には、同じように処理する必要がある、同じクラスに属している値 (単語またはフレーズ) のグループが含まれています (都市名、製品名など)。 交換可能な一覧は、シノニムとして扱われます。
 
 ## <a name="prebuilt-domains"></a>事前構築済みのドメイン
 
@@ -130,7 +122,7 @@ LUIS アプリは、[意図](#intent)、[エンティティ](#entity)、ラベ�
 
 ## <a name="publish"></a>公開
 
-公開とは、LUIS の[アクティブ バージョン](#active-version)を、ステージングまたは運用[エンドポイント](#endpoint)のいずれかで使用できるようにすることです。  
+公開とは、LUIS のアクティブ バージョンを、ステージングまたは運用[エンドポイント](#endpoint)のいずれかで使用できるようにすることです。  
 
 ## <a name="quota"></a>クォータ
 
@@ -155,11 +147,15 @@ LUIS クォータとは、[Azure サブスクリプション レベル](https://
 
 ## <a name="starter-key"></a>スターター キー
 
-[プログラム キー](#programmatic-key)と同じです。オーサリング キーに名前が変更されました。
+初めて LUIS の使用を開始するときに使用する無料のキー。
+
+## <a name="structure"></a>構造体
+
+機械学習エンティティに構造体を追加して、サブコンポーネントに記述子 (特徴量) と制約 (正規表現またはリスト エンティティ) を指定します。
 
 ## <a name="subscription-key"></a>サブスクリプション キー
 
-サブスクリプション キーは、[ユーザーが Azure で作成した](luis-how-to-azure-subscription.md) LUIS サービスに関連付けられた**エンドポイント** キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS](luis-reference-regions.md) Web サイトの [ **[Keys and endpoints]\(キーとエンドポイント\)** ページ](luis-how-to-azure-subscription.md)の一番下にあるエンドポイント URL の中で確認できます。 これは、**subscription-key** の名前/値ペアの値です。
+サブスクリプション キーは、[Azure で作成した](luis-how-to-azure-subscription.md) LUIS サービスに関連付けられた**予測エンドポイント** キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS](luis-reference-regions.md) Web サイトの [ **[Keys and endpoints]\(キーとエンドポイント\)** ページ](luis-how-to-azure-subscription.md)の一番下にあるエンドポイント URL の中で確認できます。 これは、**subscription-key** の名前/値ペアの値です。
 
 ## <a name="test"></a>テスト
 
@@ -176,7 +172,7 @@ LUIS アプリの[テスト](luis-interactive-test.md#test-your-app)とは、発
 
 ## <a name="train"></a>トレーニング
 
-トレーニングは、前回のトレーニング以降に行われた[アクティブなバージョン](#active-version)に対する変更を LUIS に教えるプロセスです。
+トレーニングは、前回のトレーニング以降に行われたアクティブなバージョンに対する変更を LUIS に教えるプロセスです。
 
 ## <a name="true-negative"></a>真陰性 (TN)
 

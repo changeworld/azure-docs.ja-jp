@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8a6bc8b71f5f8edda76faa1a8d1b20417dfba1d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478657"
+ms.locfileid: "73575653"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
@@ -49,7 +49,7 @@ Azure Maps では、Azure Maps アカウントごとに*一意の識別子 (ク�
 | Azure Government    | https://login.microsoftonline.us |
 
 
-Azure AD を構成して Azure Maps のトークンを要求する方法について詳しくは、「[Azure Maps での認証の管理](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)」をご覧ください。
+Azure AD を構成して Azure Maps のトークンを要求する方法について詳しくは、「[Azure Maps での認証の管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)」をご覧ください。
 
 Azure AD からのトークンの要求について詳しくは、「[認証とは](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)」をご覧ください。
 
@@ -92,6 +92,6 @@ RBAC 設定を確認する方法については、[Azure Maps RBAC を構成す�
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure AD と Azure Maps を使用してアプリケーションを認証する方法について詳しく確認するには、「[Azure Maps での認証の管理](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)」をご覧ください。
+* Azure AD と Azure Maps を使用してアプリケーションを認証する方法について詳しく確認するには、「[Azure Maps での認証の管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)」をご覧ください。
 
 * Azure Maps マップ コントロールおよび Azure AD の認証について詳しく確認するには、「[Azure Maps のマップ コントロールを使用する](https://aka.ms/amaadmc)」をご覧ください。

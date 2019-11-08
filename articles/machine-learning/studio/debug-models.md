@@ -1,7 +1,7 @@
 ---
 title: モデルをデバッグする
-titleSuffix: Azure Machine Learning Studio
-description: モデルのトレーニングとモデルのスコア付け モジュールによって生成されたエラーを Azure Machine Learning Studio でデバッグする方法。
+titleSuffix: ML Studio (classic) Azure
+description: モデルのトレーニングとモデルのスコア付け モジュールによって生成されたエラーを Azure Machine Learning Studio (クラシック) でデバッグする方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,14 +10,14 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 9c505262030e5b5aa13b8d221cf1e39c4a9c7833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ab7f041da63731706742547a53df47462bc584a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751123"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619437"
 ---
-# <a name="debug-your-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でモデルをデバッグする
+# <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデルをデバッグする
 
 モデルを実行しているときに、次のエラーが発生する場合があります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "60751123"
 
 [[モデルのトレーニング]][train-model] モジュールでは、次の 2 つを入力する必要があります。
 
-1. Azure Machine Learning Studio によって提供されるモデルのコレクションからの機械学習モデルの種類。
+1. Azure Machine Learning Studio (クラシック) によって提供されるモデルのコレクションからの機械学習モデルの種類。
 2. 指定したラベル列のあるトレーニング データ。[ラベル] 列は予測変数を示します (データに含まれる残りの列は、[特徴] と見なされます)。
 
 このモジュールは、次のような場合にエラーを発生します。
@@ -63,7 +63,7 @@ ms.locfileid: "60751123"
 
 3. スコア付け用のデータセットに、モデルのトレーニングに使用した特徴の一部しか含まれていない場合は、[[モデルのスコア付け]][score-model] モジュールがエラーを生成します。
 
-4. スコア付け用のデータセットの行に欠落値やいずれかの特徴について無限の値が含まれている場合、[[モデルのスコア付け] ][score-model]モジュールは、その行に対する出力を生成しません。
+4. スコア付け用のデータセットの行に欠落値やいずれかの特徴について無限の値が含まれている場合、[[モデルのスコア付け]][score-model] モジュールは、その行に対する出力を生成しません。
 
 5. [[モデルのスコア付け]][score-model] モジュールは、スコア付け用のデータセットのすべての行に対して同一の出力を生成することがあります。 これが発生するのは、たとえば、デシジョン フォレストを使用して分類を行おうとする場合に、リーフ ノードあたりのサンプルの最低数が、利用できるトレーニング例の数より多い場合です。
 

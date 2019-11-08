@@ -3,15 +3,15 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/17/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176341"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464049"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -25,6 +25,7 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled)
+- [EnforceOPAConstraint](#enforceopaconstraint) (プレビュー)
 - [EnforceRegoPolicy](#enforceregopolicy) (プレビュー)
 - [Modify](#modify)
 
@@ -39,7 +40,7 @@ Azure Resource Manager を通したリソースの作成または更新の要求
 
 リソース プロバイダーによって成功コードが返された後、**AuditIfNotExists** と **DeployIfNotExists** が評価され、追加のコンプライアンスのログ記録またはアクションが必要かどうかが判断されます。
 
-現在のところ、**EnforceRegoPolicy** 効果の評価順序はありません。
+現在のところ、**EnforceOPAConstraint** または **EnforceRegoPolicy** 効果の評価順序はありません。
 
 ## <a name="disabled"></a>無効
 
@@ -431,12 +432,68 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 }
 ```
 
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-この効果は、`Microsoft.ContainerService.Data` のポリシー定義*モード*で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている受付制御規則を [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
+この効果は、`Microsoft.Kubernetes.Data` のポリシー定義*モード*で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に定義された Gatekeeper v3 受付制御ルールを、Azure 上のセルフマネージド Kubernetes クラスターに渡すために使用されます。
 
 > [!NOTE]
-> [Kubernetes 用の Azure Policy](rego-for-aks.md) はパブリック プレビューで、組み込みのポリシー定義のみをサポートします。
+> [AKS Engine 用の Azure Policy](aks-engine.md) はパブリック プレビューであり、組み込みのポリシー定義のみをサポートします。
+
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint の評価
+
+Open Policy Agent アドミッション コントローラーは、クラスター上の新しい要求をリアルタイムで評価します。
+5 分ごとにクラスターのフル スキャンが完了し、結果が Azure Policy に報告されます。
+
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint のプロパティ
+
+EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3 受付制御ルールを記述するサブプロパティがあります。
+
+- **constraintTemplate** [必須]
+  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
+- **constraint** [必須]
+  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例では、`{{ .Values.cpuLimit }}` および `{{ .Values.memoryLimit }}` となっています。
+- **values** [オプション]
+  - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy の例
+
+例:AKS エンジンでコンテナーの CPU とメモリのリソース上限を設定する、Gatekeeper v3 の受付制御ルールです。
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+この効果は、`Microsoft.ContainerService.Data` のポリシー定義*モード*で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
+
+> [!NOTE]
+> [AKS 用の Azure Policy](rego-for-aks.md) は限定プレビューで、組み込みのポリシー定義のみをサポートします
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy の評価
 
@@ -445,7 +502,7 @@ Open Policy Agent アドミッション コントローラーは、クラスタ�
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy のプロパティ
 
-EnforceRegoPolicy 効果の **details** プロパティには、Rego 受付制御規則を記述するサブプロパティがあります。
+EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 受付制御ルールを記述するサブプロパティがあります。
 
 - **policyId** [必須]
   - Rego 受付制御規則にパラメーターとして渡される一意の名前。
@@ -456,7 +513,7 @@ EnforceRegoPolicy 効果の **details** プロパティには、Rego 受付制�
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy の例
 
-例:AKS で指定されたコンテナー イメージのみを許可する Rego 受付制御規則。
+例:AKS で指定されたコンテナー イメージのみを許可する Gatekeeper v2 受付制御ルール。
 
 ```json
 "if": {

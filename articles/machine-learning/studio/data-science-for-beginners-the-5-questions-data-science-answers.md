@@ -1,6 +1,6 @@
 ---
 title: 初心者向けデータ サイエンス解説
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: 初心者向けデータ サイエンス解説では、「データ サイエンスが回答する 5 つの質問」から始まる 5 つのショート ビデオで基本的な概念を説明します。 Azure Machine Learning。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d89a701f1d4528e1f3dff08daf31873891778f07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2a91f3df3bab6a2ba10090719d0e614b9d652a3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751394"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621775"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>初心者向けデータ サイエンス解説ビデオ 1:データ サイエンスが回答する 5 つの質問
 トップ データ サイエンティストによる "*初心者向けデータ サイエンス*" の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。 基本的な内容を扱っているビデオですが、データ サイエンスの実行に関心を持っている場合や、データ サイエンティストと共に作業する場合に便利です。
@@ -135,5 +135,5 @@ ms.locfileid: "60751394"
 以上がデータ サイエンスで回答できる 5 つの質問です。
 
 ## <a name="next-steps"></a>次の手順
-* [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
+* [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

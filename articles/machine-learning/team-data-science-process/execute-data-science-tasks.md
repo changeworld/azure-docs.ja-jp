@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: eb792034e49b0f8f663eb9ee968ea6fac1372373
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a6b463c4a1d0e640cc6c2a380ee978fcafa2877e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278608"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670340"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>データ サイエンス タスクの実行: 探索、モデリング、およびデプロイ
 
@@ -30,7 +30,7 @@ ms.locfileid: "70278608"
 
 データ サイエンティストは、Python で利用可能なライブラリとパッケージ (matplotlib など) の使用や、R (ggplot や lattice など) の使用など、さまざまな方法で探索およびレポート作成を実行できます。 データ サイエンティストは、特定のシナリオでのデータ探索のニーズに合うように、これらのコードをカスタマイズできます。 構造化データを処理する場合のニーズは、テキストやイメージなどの非構造化データの場合とは異なります。 
 
-Azure Machine Learning サービスなどの製品では、機能作成を含め、データ論争や探索のための[高度なデータ準備](../service/how-to-transform-data.md)も提供しています。 ユーザーは、最もニーズに合うツール、ライブラリ、およびパッケージを決定する必要があります。 
+Azure Machine Learning などの製品では、機能作成を含め、データ論争や探索のための[高度なデータ準備](../service/how-to-transform-data.md)も提供しています。 ユーザーは、最もニーズに合うツール、ライブラリ、およびパッケージを決定する必要があります。 
 
 このフェーズの最後には、データ探索レポートが完成します。 レポートでは、モデリングに使用されるデータを総括したビューと、モデリングの手順を進めるうえでそのデータが適しているかどうかの査定を提供します。 以降のセクションで説明する半自動探索、モデリング、レポート作成のための Team Data Science Process (TDSP) ユーティリティでは、標準的なデータ探索やモデリング レポートも提供します。 
 
@@ -86,7 +86,7 @@ YAML ファイルを使用して以下を指定します。
 モデルを運用環境にデプロイするには、さまざまな方法とプラットフォームがあります。 いくつかの選択肢を次に示します。
 
 
-- [Azure Machine Learning サービスでのモデルのデプロイ](../service/how-to-deploy-and-where.md)
+- [Azure Machine Learning でのモデルのデプロイ](../service/how-to-deploy-and-where.md)
 - [SQL server でのモデルのデプロイ](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
@@ -98,7 +98,7 @@ YAML ファイルを使用して以下を指定します。
 **特定のシナリオ**のプロセスの全手順を示したチュートリアルで、他の例も入手できます。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。
 
 > [!NOTE]
-> Azure Machine Learning Studio を使用したデプロイについては、「[Azure Machine Learning Web サービスをデプロイする](../studio/publish-a-machine-learning-web-service.md)」をご覧ください。
+> Azure Machine Learning Studio を使用したデプロイについては、「[Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」をご覧ください。
 >
 >
 

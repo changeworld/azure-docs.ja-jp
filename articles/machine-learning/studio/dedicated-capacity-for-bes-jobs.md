@@ -1,23 +1,23 @@
 ---
 title: Azure Batch サービス ジョブ
-titleSuffix: Azure Machine Learning Studio
-description: Machine Learning Studio ジョブ用の Azure Batch サービスの概要。 Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。
+titleSuffix: ML Studio (classic) Azure
+description: Machine Learning Studio (クラシック) ジョブ用の Azure Batch サービスの概要。 Batch プール処理では、バッチ ジョブを送信できるプールを作成できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
-ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 24efa3caba3918a38c09b1c921c600b117dedbc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751170"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684799"
 ---
-# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Azure Machine Learning Studio ジョブ用の Azure Batch サービス
+# <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Machine Learning Studio (クラシック) ジョブ用の Azure Batch サービス
 
 Machine Learning の Batch プール処理では、Azure Machine Learning バッチ実行サービスのスケールをユーザーが管理できるようにしています。 Machine Learning のクラシック バッチ処理はマルチ テナント環境で実行され、送信できる同時実行ジョブの数が制限されており、ジョブは先入れ先出しベースでキューに配置されます。 この不確定性により、ユーザーはジョブがいつ実行されるかを正確に予測することはできません。
 
@@ -43,7 +43,7 @@ Batch プール処理では、バッチ ジョブを送信できるプールを�
 
 新しい Resource Manager ベースの Web サービスを使用できますが、ジョブの料金はそのサービスに関連付けられている料金プランに基づいて課金される点に注意してください。 Batch プール ジョブの実行専用の Web サービスと新しい料金プランを作成できます。
 
-Web サービスの作成の詳細については、「[Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」を参照してください。
+Web サービスの作成の詳細については、「[Azure Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)」を参照してください。
 
 プールを作成したら、Web サービスのバッチ要求 URL を使用して BES ジョブを送信します。 プールに送信するか、クラシック バッチ処理に送信するかを選択できます。 Batch プール処理にジョブを送信するには、ジョブの送信要求本文に次のパラメーターを追加します。
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 5a65ee27d5175887b7bf0d9146afa025e665657c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844803"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488412"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
 LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。 
@@ -36,10 +36,11 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 | [意図][intents]|アプリケーションあたり 500:499 のカスタムの意図、および必須の意図 _なし_。<br>[ディスパッチ ベース](https://aka.ms/dispatch-tool) アプリケーションには対応するディスパッチ ソースが 500。|
 | [リスト エンティティ](./luis-concept-entity-types.md) | 親: 50、子: 20,000 項目。 Canonical 名は *既定の最大文字数。シノニム値は長さ制限なし。 |
 | [機械学習エンティティ + ロール](./luis-concept-entity-types.md):<br> 複合、<br>シンプル、<br>エンティティのロール|100 個の親エンティティの制限または 330 個のエンティティの制限のどちらかの、ユーザーが最初に達した制限。 ロールは、この境界の目的のためのエンティティとしてカウントされます。 例として、次のような 2 つのロールを持つシンプル エンティティで構成された複合があります。1 つの複合 + 1 つのシンプル + 2 つのロール = 330 エンティティのうちの 4 つ。|
+|特徴量としてのモデル| 特定のモデルに対して記述子 (特徴量) として使用できるモデルの最大数は、10 です。 特定のモデルに対して記述子 (特徴量) として使用できるフレーズ リストの最大数は、10 です。|
 | [プレビュー - 動的なリスト エンティティ](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|クエリ予測エンドポイント要求あたり最大 1K のうちの 2 つのリスト|
 | [パターン](luis-concept-patterns.md)|アプリケーションあたり 500 パターン。<br>パターンの最大文字数: 400 文字。<br>パターンあたり 3 Pattern.any エンティティ<br>パターン内の入れ子になった省略可能なテキストの最大数: 2|
 | [Pattern.any](./luis-concept-entity-types.md)|アプリケーションあたり 100、パターンあたり 3 Pattern.any エンティティ |
-| [フレーズ リスト][phrase-list]|10 フレーズ リスト、リストあたり 5,000 項目|
+| [フレーズ リスト][phrase-list]|500 個のフレーズ リスト。 交換不可能なフレーズ リストの最大フレーズ数は 5,000 です。 交換可能なフレーズ リストの最大フレーズ数は 50,000 です。 アプリケーションごとの合計フレーズの最大数は、500,000 フレーズです。|
 | [事前構築済みのエンティティ](./luis-prebuilt-entities.md) | 制限なし|
 | [正規表現エンティティ](./luis-concept-entity-types.md)|20 エンティティ<br>最大文字数: 500 文字/ 正規表現エンティティ パターンあたり|
 | [ロール](luis-concept-roles.md)|アプリケーションあたり 300 の役割。 エンティティあたりの 10 の役割|
@@ -51,6 +52,21 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 \* 既定の最大文字数: 50 文字。 
 
 <a name="intent-and-entity-naming"></a>
+
+## <a name="name-uniqueness"></a>名前の一意性
+
+名前の一意性に関する次のルールがあります。
+
+LUIS アプリでは、次のものが一意である必要があります。
+
+* バージョン名
+* 意図
+* エンティティ
+* roles
+
+次のものは、適用されるスコープ内で一意である必要があります。
+
+* フレーズ リスト 
 
 ## <a name="object-naming"></a>オブジェクト名の規則
 

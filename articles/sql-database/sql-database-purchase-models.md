@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database の購入モデル | Microsoft Docs
+title: モデルの購入
 description: Azure SQL Database で利用できる購入モデルについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567003"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821262"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>仮想コアと DTU の購入モデルから選択する
 
 Azure SQL Database を利用すると、パフォーマンスとコストのニーズに合ったフル マネージドのサービスとしてのプラットフォーム (PaaS) データベース エンジンを簡単に購入できます。 Azure SQL Database 用に選択したデプロイ モデルに応じて、目的に沿った購入モデルを選択できます。
 
-- [仮想コア (vCore) ベースの購入モデル](sql-database-service-tiers-vcore.md) (推奨)。 この購入モデルでは、プロビジョニングされたコンピューティング レベルとサーバーレス (プレビュー) コンピューティング レベルのいずれかを選択できます。 プロビジョニングされたコンピューティング レベルでは、お使いのワークロードに対して常にプロビジョニングされる正確なコンピューティング リソース量を選択します。 サーバーレス コンピューティング レベルでは、構成可能なコンピューティングの範囲で、コンピューティング リソースの自動スケーリングを指定します。 このコンピューティング レベルでは、ワークロード アクティビティに基づいてデータベースを自動的に一時停止および再開することもできます。 時間単位あたりの仮想コアの単価は、プロビジョニングされたコンピューティング レベルの方がサーバーレス コンピューティング レベルよりも低くなります。
+- [仮想コア (vCore) ベースの購入モデル](sql-database-service-tiers-vcore.md) (推奨)。 この購入モデルでは、プロビジョニングされたコンピューティング レベルとサーバーレス コンピューティング レベルのいずれかを選択できます。 プロビジョニングされたコンピューティング レベルでは、お使いのワークロードに対して常にプロビジョニングされる正確なコンピューティング リソース量を選択します。 サーバーレス コンピューティング レベルでは、構成可能なコンピューティングの範囲で、コンピューティング リソースの自動スケーリングを指定します。 このコンピューティング レベルでは、ワークロード アクティビティに基づいてデータベースを自動的に一時停止および再開することもできます。 時間単位あたりの仮想コアの単価は、プロビジョニングされたコンピューティング レベルの方がサーバーレス コンピューティング レベルよりも低くなります。
 - [データベース トランザクション ユニット (DTU) ベースの購入モデル](sql-database-service-tiers-dtu.md)。 この購入モデルでは、一般的なワークロード向けに配分されたコンピューティングとストレージのバンドル パッケージが提供されます。
 
 各種の Azure SQL Database デプロイ モデルには、さまざまな購入モデルが利用できます。
@@ -53,7 +53,7 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 ### <a name="serverless-compute-costs"></a>サーバーレス コンピューティング コスト
 
-サーバーレス コンピューティング レベルでの処理能力の定義方法とコストの計算方法については、「[SQL Database サーバーレス (プレビュー)](sql-database-serverless.md)」をご覧ください。
+サーバーレス コンピューティング レベルでのコンピューティング容量の定義方法とコストの計算方法については、「[SQL Database サーバーレス](sql-database-serverless.md)」をご覧ください。
 
 ## <a name="storage-costs"></a>ストレージ コスト
 
@@ -135,7 +135,7 @@ DTU ベースの購入モデルでは、[単一データベース](sql-database-
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>DTU ベースのサービス レベルから仮想コア ベースのサービス レベルに変換するには、アプリケーションをオフラインにする必要がありますか。
 
-いいえ。 アプリケーションをオフラインにする必要はありません。 新しいサービス レベルでは、Standard と Premium のサービス レベル間でデータベースを切り替える既存のプロセスとほぼ同じ、シンプルなオンラインの変換方法を提供しています。 この変換は、Azure portal、PowerShell、Azure CLI、T-SQL、または REST API を使用して開始できます。 [単一データベースの管理](sql-database-single-database-scale.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
+No. アプリケーションをオフラインにする必要はありません。 新しいサービス レベルでは、Standard と Premium のサービス レベル間でデータベースを切り替える既存のプロセスとほぼ同じ、シンプルなオンラインの変換方法を提供しています。 この変換は、Azure portal、PowerShell、Azure CLI、T-SQL、または REST API を使用して開始できます。 [単一データベースの管理](sql-database-single-database-scale.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>仮想コア ベース購入モデルでのサービス レベルから DTU ベース購入モデルでのサービス レベルへ、データベースを変換することはできますか。
 

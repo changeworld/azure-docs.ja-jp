@@ -1,20 +1,20 @@
 ---
 title: ディープ ラーニングと機械学習
-titleSuffix: Azure Machine Learning
-description: ディープ ラーニングと機械学習について、および両方の概念が人工知能とどのように関連しているかについて説明します。 ディープ ラーニングは、不正行為の検出、音声と顔の認識、感情分析、時系列予測などのシナリオに適用できます。
+titleSuffix: Azure
+description: ディープ ラーニングが機械学習と人工知能にどのように関連しているかについて説明します。 ディープ ラーニングは、不正行為の検出、音声と顔の認識、感情分析、時系列予測などのシナリオに使用されます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 08/07/2019
-ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 11/04/2019
+ms.openlocfilehash: 2ed9f933e790aa70b257e27fa2bbbc04f6a2e077
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123140"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73648010"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習
 
@@ -113,6 +113,11 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 次の記事では、[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri) でディープ ラーニング テクノロジを使用する方法について説明されています。
 
 - [TensorFlow モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+
 - [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+
 - [Pytorch モデルを使用して画像を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+
 - [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+
+また、[機械学習アルゴリズムのクイック ガイド](../algorithm-cheat-sheet.md)を使用して、モデルのアルゴリズムを選択します。

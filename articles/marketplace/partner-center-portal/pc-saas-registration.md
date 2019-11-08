@@ -4,15 +4,16 @@ description: Azure portal を使用して SaaS アプリケーションを登録
 services: Azure, Marketplace, Cloud Partner Portal, Azure portal
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 1f644dca7a057667fb37f5a79a4683c592059e7a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: b2e02e42ab63f893574ca5217fd2f36c7481aabd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331597"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827939"
 ---
 # <a name="register-a-saas-application"></a>SaaS アプリケーションを登録する
 
@@ -39,7 +40,7 @@ Azure では、SaaS サービスがそのエンド ユーザーに公開する�
     ![SaaS AD のアプリ登録](./media/saas-offer-app-registration-v1.png)
 
 4.  作成\' ページで、アプリケーションの登録情報を入力します。
-    -   **[名前]** :わかりやすいアプリケーション名を入力します
+    -   **Name**:わかりやすいアプリケーション名を入力します
     -   **アプリケーションの種類**: 
         - デバイスのローカルにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)については、 **[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)の場合には、この設定を使用します。
         - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)と[リソース/API アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)については、 **[Web アプリ/API]** を選択します。 OAuth のコンフィデンシャル [Web クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)と、パブリック [ユーザーエージェントベース クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)の場合には、この設定を使用します。

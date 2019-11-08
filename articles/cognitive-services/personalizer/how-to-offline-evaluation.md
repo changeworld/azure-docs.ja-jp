@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515218"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490721"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>オフライン評価で学習ループを分析する
 
 オフライン評価を完了し、その結果を理解する方法について説明します。
 
-オフライン評価を使用すると、アプリケーションの既定の動作と比較した場合の Personalizer の効果を測定し、どの特徴が最もパーソナル化に寄与しているかを学習し、新しい機械学習設定を自動的に検出できます。
+オフライン評価を使用すると、アプリケーションの既定の動作と比較した場合の Personalizer の効果を測定し、どの特徴が最もパーソナル化に寄与しているかを学習し、新しい機械学習の値を自動的に検出できます。
 
 詳細については、「[オフライン評価](concepts-offline-evaluation.md)」を参照してください。
 
@@ -36,10 +36,10 @@ ms.locfileid: "72515218"
 1. [Azure portal](https://azure.microsoft.com/free/) で、Personalization リソースを見つけます。
 1. Azure portal で、 **[評価]** セクションに移動し、 **[評価の作成]** を選択します。
     ![Azure portal で、**[評価]** セクションに移動し、**[評価の作成]** を選択します。](./media/offline-evaluation/create-new-offline-evaluation.png)
-1. 次の設定を選択します。
+1. 次の値を構成します。
 
     * 評価名
-    * 開始日と終了日 - これらは過去の日付であり、評価で使用するデータの範囲を指定します。 このデータは、[[Data Retention]\(データ保有期間\)](how-to-settings.md) 設定で指定したとおりにログに存在する必要があります。
+    * 開始日と終了日 - これらは過去の日付であり、評価で使用するデータの範囲を指定します。 このデータは、[[Data Retention]\(データ保有期間\)](how-to-settings.md) 値で指定したとおりにログに存在する必要があります。
     * **[はい]** に設定された [最適化の検出]
 
     ![オフライン評価設定を選択する](./media/offline-evaluation/create-an-evaluation-form.png)

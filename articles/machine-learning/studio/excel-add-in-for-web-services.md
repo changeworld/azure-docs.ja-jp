@@ -1,6 +1,6 @@
 ---
 title: Web サービス用の Excel アドイン
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 9e801e0d7a26cd4d6c43118959aee1dec7216b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff3e8933b839a2b70e23e91afe8ffde156906e33
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750250"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619384"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスの Excel アドイン
+# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスの Excel アドイン
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>ブックで既存の Web サービスを使用する手順
@@ -43,7 +43,7 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 
 **クラシック Web サービスを使用する** 
 
-1. Machine Learning Studio の左側の **[Web サービス]** セクションをクリックして、Web サービスを選択します。
+1. Machine Learning Studio (クラシック) の左側の **[Web サービス]** セクションをクリックして、Web サービスを選択します。
    
     ![Studio での Web サービスの選択](./media/excel-add-in-for-web-services/image4.png)
 2. Web サービスの API キーをコピーします。

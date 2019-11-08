@@ -1,6 +1,6 @@
 ---
 title: 回帰モデルで回答を予測する
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: 初心者向けデータ サイエン ビデオ 4 で、単純な回帰モデルを作成して価格を予測する方法。 線形回帰とターゲット データが含まれます。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 9165e51d07cf97756408c7f73720931abe067bb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2148938323ed3f819f14be88590723da40462453
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751581"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619529"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
 ## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4:初心者向けデータ サイエンス シリーズ
@@ -124,8 +124,8 @@ ms.locfileid: "60751581"
 
 ここでは、線形回帰を実行する方法について説明し、データを使用して予測しました。
 
-Microsoft Azure Machine Learning Studio の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
+Microsoft Azure Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-* [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
+* [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

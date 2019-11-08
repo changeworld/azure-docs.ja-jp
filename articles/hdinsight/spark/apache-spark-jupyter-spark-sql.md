@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:テンプレートを使用した HDInsight での Spark クラスターの作成
+title: クイック スタート:テンプレートを使用した Spark クラスターの作成 - Azure HDInsight
 description: このクイックスタートでは、Resource Manager テンプレートを使用して、Azure HDInsight に Apache Spark クラスターを作成し、単純な Spark SQL クエリを実行する方法を示します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc
-ms.openlocfilehash: e3e8a61e07f3d61bd69bd9bb12db72a613eeff99
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 3d4c3b92139a5d1ba90c58cb998cbba99c8a5746
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337577"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494111"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
@@ -77,7 +77,7 @@ Azure HDInsight Tools for Visual Studio Code (VSCode) を使用して、Hive バ
 
 4. **[新規]**  >  **[PySpark]** を選んで、ノートブックを作成します。
 
-   ![対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する")
+   ![Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する")
 
    Untitled(Untitled.pynb) という名前の新しい Notebook が作成されて開かれます。
 
@@ -112,7 +112,7 @@ SQL (構造化照会言語) は、データ照会とデータ変換のための�
 
     画面が更新され、クエリ出力が表示されます。
 
-    ![HDInsight Spark での Hive クエリ出力](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "HDInsight Spark での Hive クエリ出力")
+    ![HDInsight Spark での Hive クエリ出力](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "HDInsight Spark での Hive クエリの出力")
 
 1. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンすると、クラスターのリソース (Spark アプリケーションを含む) が解放されます。
 
@@ -122,7 +122,7 @@ HDInsight では、データと Jupyter Notebook が Azure Storage または Azu
 
 Azure portal に戻り、 **[削除]** を選びます。
 
-![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターを削除する")
+![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
 
 リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight Spark クラスターと既定のストレージ アカウントの両方が削除されます。
 

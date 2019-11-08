@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 07/05/2019
+ms.date: 11/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 993064a36bd12c95e83ffb7c9635c3e4dfcec0f0
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 46e9182d9660729dbf65367f52483d96428760ff
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467388"
 ---
 # <a name="what-are-the-speech-services"></a>Speech Service とは
 
@@ -35,7 +35,7 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 | [Text-to-Speech](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、[音声合成マークアップ言語 (SSML)](text-to-speech.md#speech-synthesis-markup-language-ssml) が使用され、入力テキストが人間のような合成音声に変換されます。 標準音声とニューラル音声から選択できます (「[言語のサポート](language-support.md)」を参照)。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [カスタム音声の作成](#customize-your-speech-experience) | ブランドや製品に固有のカスタム音声フォントを作成します。 | いいえ | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [音声翻訳](speech-translation.md) | 音声翻訳 | 音声翻訳を使用すると、音声のリアルタイムの多言語翻訳がアプリケーション、ツール、デバイスで可能になります。 音声間翻訳や音声テキスト翻訳にはこのサービスを使用します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | いいえ |
-| [音声優先仮想アシスタント](voice-first-virtual-assistants.md) | 音声優先仮想アシスタント | 開発者が Azure Speech Services を使用したカスタムの仮想アシスタントを使用すると、アプリケーションとエクスペリエンスに合わせて自然で人間のような会話型インターフェイスを作成できます。 Bot Framework の Direct Line Speech チャネルには、低待機時間と高信頼性で音声入力、音声出力の対話を可能にする、互換性のあるボットへの調整され、編成されたエントリ ポイントが用意されており、これらの機能が強化されます。 | [はい](voice-first-virtual-assistants.md) | いいえ |
+| [音声アシスタント](voice-assistants.md) | 音声アシスタント | Azure Speech Services を使用した音声アシスタントにより、開発者は、そのアプリケーションとエクスペリエンスのための自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、Bot Framework の Direct Line Speech チャネルまたは統合カスタム コマンド (プレビュー) サービスを使用してタスクを遂行するアシスタントの実装とデバイスとの間に、高速で信頼性の高い対話を実現します。 | [はい](voice-assistants.md) | いいえ |
 
 ## <a name="news-and-updates"></a>新機能と更新
 
@@ -48,7 +48,7 @@ Azure Speech Services の新機能について説明します。
   * `en-US-JessaNeural` 音声の新しい話し方である [`chat`](speech-synthesis-markup.md#adjust-speaking-styles) を追加しました。 
 * 2019 年 6 月
   * Speech SDK 1.6.0 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
-* 2019 年 5 月 - [会話の文字起こし](conversation-transcription-service.md)、[コール センター文字起こし](call-center-transcription.md)、[音声優先仮想アシスタント](voice-first-virtual-assistants.md)のドキュメントの公開を開始しました。
+* 2019 年 5 月 - [会話の文字起こし](conversation-transcription-service.md)、[コール センター文字起こし](call-center-transcription.md)、[音声アシスタント](voice-assistants.md)のドキュメントの公開を開始しました。
 * 2019 年 5 月
   * Speech SDK 1.5.1 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
   * Speech SDK 1.5.0 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
@@ -59,10 +59,9 @@ Azure Speech Services の新機能について説明します。
 
 | 音声テキスト変換 (SDK) | テキスト読み上げ (SDK) | 翻訳 (SDK) |
 |----------------------|----------------------|-------------------|
-| [C#、.NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [C#、.NET Framework (Windows)](quickstart-text-to-speech-dotnet-windows.md) | [Java (Windows、Linux)](quickstart-translate-speech-java-jre.md) |
-| [JavaScript (ブラウザー)](quickstart-js-browser.md) | [C++ (Windows)](quickstart-text-to-speech-cpp-windows.md) | [C#、.NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) |
-| [Python (Windows、Linux、macOS)](quickstart-python.md) | [C++ (Linux)](quickstart-text-to-speech-cpp-linux.md) | [C#、.NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) |
-| [Java (Windows、Linux)](quickstart-java-jre.md) | | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) |
+| [オーディオ ファイルから音声を認識する](quickstarts/speech-to-text-from-file.md) | [オーディオ ファイルに音声を合成する](quickstarts/text-to-speech-audio-file.md) | [音声をテキストに変換する](quickstarts/translate-speech-to-text.md) |
+| [マイクを使用して音声を認識する](quickstarts/speech-to-text-from-microphone.md) | [スピーカーに音声を合成する](quickstarts/text-to-speech.md) | [音声を複数のターゲット言語に翻訳する](quickstarts/translate-speech-to-text-multiple-languages.md) |
+| [BLOB ストレージに格納された音声を認識する](quickstarts/from-blob.md) | [長い形式の音声の非同期合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [音声間翻訳](quickstarts/translate-speech-to-speech.md) |
 
 > [!NOTE]
 > 音声テキスト変換とテキスト読み上げには、REST エンドポイントとクイックスタートも用意されています。
@@ -80,7 +79,7 @@ Speech Services を使ってみた後、Speech SDK と LUIS を使用して音�
 * [音声変換、テキスト読み上げ、および音声翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [バッチ文字起こしのサンプル (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
-* [音声優先仮想アシスタントのサンプル (SDK)](https://aka.ms/csspeech/samples)
+* [音声アシスタントのサンプル (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>音声エクスペリエンスをカスタマイズする
 

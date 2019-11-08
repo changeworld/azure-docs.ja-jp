@@ -9,25 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b3841c9d60cf275e423024fc66c15582f95c0a10
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 259ea23c05f0c0a138ad54b6efd11aad2061cf7a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932758"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500232"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUIS アプリのアクティブなバージョンをトレーニングする 
 
 トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリを教えるプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。 
 
-<!--
-When you train a LUIS app by example, LUIS generalizes from the examples you have labeled, and it learns to recognize the relevant intents and entities. This teaches LUIS to improve classification accuracy in the future. -->
-
 アプリのトレーニングと[テスト](luis-concept-test.md)は反復処理です。 LUIS アプリをトレーニングした後で、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。 
 
 トレーニングは、LUIS ポータルでのアクティブなバージョンに適用されます。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="how-to-train-interactively"></a>対話的にトレーニングする方法
 
@@ -50,7 +49,24 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 ## <a name="train-with-all-data"></a>すべてのデータでトレーニングする
 
-トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 少数のネガティブ サンプリングではなく、すべてのデータを使用したい場合は、`UseAllTrainingData` を True に設定した状態で[バージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を使用し、この機能をオフにします。 
+トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 
+
+小規模なネガティブ サンプリングではなくすべてのデータを使用する場合は、[API](#version-settings-api-use-of-usealltrainingdata) を使用します。
+
+<!--
+
+ or the [LUIS portal setting](#luis-portal-setting-to-use-all-training-data)
+
+### LUIS portal setting to use all training data
+
+!!!IGNITE
+
+
+-->
+
+### <a name="version-settings-api-use-of-usealltrainingdata"></a>バージョン設定 API の UseAllTrainingData の使用
+
+`UseAllTrainingData` を true に設定してこの機能を無効にし、[バージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を使用します。 
 
 ## <a name="unnecessary-training"></a>不要なトレーニング
 

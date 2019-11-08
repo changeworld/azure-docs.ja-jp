@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 04c09c60a8b633c9ddb51fbe97ac02a319472448
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 28e5e09ea64f7ac1272e8ed126d5b4153b952c1d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434682"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494039"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル:Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
 Azure Notebooks を使用して、機械学習モジュールを開発し、Azure IoT Edge を実行している Linux デバイスにデプロイします。 
 
-IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure Machine Learning service の詳細については、[Azure Machine Learning に関するドキュメント](../machine-learning/service/how-to-deploy-to-iot.md)を参照してください。
+IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure Machine Learning の詳細については、[Azure Machine Learning に関するドキュメント](../machine-learning/service/how-to-deploy-to-iot.md)を参照してください。
 
 このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成された環境データを読み取り、メッセージに異常か否かのラベル付けを行います。
 
@@ -55,10 +55,10 @@ Azure IoT Edge デバイス:
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Azure Machine Learning モジュールを作成してデプロイする
 
-このセクションでは、トレーニング済みの機械学習モデル ファイルを Azure Machine Learning service コンテナーに変換します。 Docker イメージに必要なすべてのコンポーネントは、[Azure IoT Edge 用 AI ツールキットの Git リポジトリ](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)にあります。 以下の手順に従って、そのリポジトリを Microsoft Azure Notebooks にアップロードしてコンテナーを作成し、それを Azure Container Registry にプッシュします。
+このセクションでは、トレーニング済みの機械学習モデル ファイルを Azure Machine Learning コンテナーに変換します。 Docker イメージに必要なすべてのコンポーネントは、[Azure IoT Edge 用 AI ツールキットの Git リポジトリ](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)にあります。 以下の手順に従って、そのリポジトリを Microsoft Azure Notebooks にアップロードしてコンテナーを作成し、それを Azure Container Registry にプッシュします。
 
 
-1. Azure Notebooks プロジェクトに移動します。 [Azure portal](https://portal.azure.com) の Azure Machine Learning service ワークスペースから、またはご自分の Azure アカウントを使用して [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) にサインインすることで、そこに移動できます。
+1. Azure Notebooks プロジェクトに移動します。 [Azure portal](https://portal.azure.com) の Azure Machine Learning ワークスペースから、またはご自分の Azure アカウントを使用して [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) にサインインすることで、そこに移動できます。
 
 2. **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** を選択します。
 
@@ -72,7 +72,7 @@ Azure IoT Edge デバイス:
 
 6. **aml_config/config.json** ファイルを開きます。
 
-7. 構成ファイルを編集し、Azure サブスクリプション ID、サブスクリプション内のリソース グループ、ご利用の Azure Machine Learning service ワークスペース名の値が含まれるようにします。 これらすべての値は、Azure のワークスペースの **[概要]** セクションから取得できます。 
+7. 構成ファイルを編集し、Azure サブスクリプション ID、サブスクリプション内のリソース グループ、ご利用の Azure Machine Learning ワークスペース名の値が含まれるようにします。 これらすべての値は、Azure のワークスペースの **[概要]** セクションから取得できます。 
 
 8. 構成ファイルを保存します。
 
@@ -149,7 +149,7 @@ IoT Edge デバイスでは、すべてのモジュールそれぞれから送�
 
 5. 5 秒ごとに tempSensor から送られるメッセージを確認します。 メッセージ本文には、machinelearningmodule によって true または false 値が提供される **anomaly** というプロパティが含まれています。 **AzureMLResponse** プロパティには、モジュールの実行に成功した場合、"OK" という値が含まれます。
 
-   ![メッセージ本文内の Azure Machine Learning service の応答](./media/tutorial-deploy-machine-learning/ml-output.png)
+   ![メッセージ本文内の Azure Machine Learning の応答](./media/tutorial-deploy-machine-learning/ml-output.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

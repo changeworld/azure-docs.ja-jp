@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse でワークロードを分析する | Microsoft Docs
+title: ワークロードの分析
 description: Azure SQL Data Warehouse でのワークロードに対するクエリの優先順位付けを分析するための手法。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,13 @@ ms.subservice: workload-management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54652ba573fb2ec2d064b7a85ad5728b73e71db3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588751"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693116"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の ワークロードの分析 | Microsoft Docs
 
@@ -125,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-ph x="1" /&gt; DMV を使用して、許可されたコンカレンシー スロットの数を計算することもできます。
+`sys.dm_pdw_resource_waits` DMV を使用して、許可されたコンカレンシー スロットの数を計算することもできます。
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots

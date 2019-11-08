@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066743"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470244"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
@@ -95,7 +95,7 @@ App Service でアプリを作成すると、App Service プランに入れら�
 
 App Service プランは、いつでもスケールアップまたはスケールダウンできます。 プランの価格レベルを変更するだけなのでシンプルです。 最初に低い価格レベルを選び、後で App Service 機能がさらに必要になったときにスケールアップできます。
 
-たとえば、**Free** App Service プランで Web アプリのテストを無料で開始できます。 [カスタム DNS 名](app-service-web-tutorial-custom-domain.md)を Web アプリに追加する場合は、プランを **Shared** レベルにスケーリングします。 その後、[カスタム SSL 証明書](app-service-web-tutorial-custom-ssl.md)を追加するときに、プランを **Basic** レベルにスケーリングします。 [ステージング環境](deploy-staging-slots.md)が必要な場合は、**Standard** レベルにスケールアップします。 さらに多くのコア、メモリ、ストレージが必要になった場合は、同じレベルのより大きな VM サイズにスケールアップします。
+たとえば、**Free** App Service プランで Web アプリのテストを無料で開始できます。 [カスタム DNS 名](app-service-web-tutorial-custom-domain.md)を Web アプリに追加する場合は、プランを **Shared** レベルにスケーリングします。 後で[SSL バインドを作成](configure-ssl-bindings.md)するときに、プランを **Basic** レベルにスケールアップします。 [ステージング環境](deploy-staging-slots.md)が必要な場合は、**Standard** レベルにスケールアップします。 さらに多くのコア、メモリ、ストレージが必要になった場合は、同じレベルのより大きな VM サイズにスケールアップします。
 
 逆も同じように動作します。 上位レベルの能力や機能が不要になったと感じる場合は、下位レベルにスケールダウンして、コストを節約できます。
 

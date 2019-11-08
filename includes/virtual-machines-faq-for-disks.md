@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973010"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523225"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -144,6 +144,30 @@ GPT パーティション分割は OS ディスクではなく、データ デ�
 **どのような種類のディスクでスナップショットがサポートされますか。**
 
 Premium SSD、Standard SSD、および Standard HDD でスナップショットがサポートされます。 これらの 3 つのディスクの種類では、すべてのディスク サイズでスナップショットがサポートされます (最大 32 TiB のサイズのディスクを含みます)。 Ultra ディスクでは、スナップショットはサポートされません。
+
+### <a name="disk-reservation"></a>ディスク予約
+
+**Azure ディスク予約とは何ですか?**
+ディスク予約は、1 年分のディスク ストレージを事前に購入し、総コストを削減するオプションです。
+
+**Azure ディスク予約にはどのようなオプションがありますか?**
+Azure ディスク予約には、指定された SKU の Premium SSD を P30 (1 TiB) から最大 P80 (32 TiB) まで 1 年間購入するオプションがあります。 ディスク予約を購入するために必要なディスクの最小量に制限はありません。 また、1 回の前払いまたは毎月の支払いを選択できます。 Premium SSD Managed Disks に適用される追加のトランザクション コストはありません。
+
+予約は、容量ではなくディスクの形式で行われます。 つまり、P80 (32 TiB) ディスクを予約すると、1 個の P80 ディスクが取得され、その特定の予約を 2 つの小さな P70 (16 TiB) ディスクに分割することはできません。 もちろん、2 つの個別の P70 (16 TiB) ディスクなど、任意の数のディスクを予約することができます。
+
+**Azure ディスク予約はどのように課金されますか?**
+- Enterprise Agreement (EA) のお客様の場合、Azure ディスク予約の購入には Azure の年額コミットメントが最初に使用されます。 EA のお客様がご自分の年額コミットメントをすべて使用済みの場合でも、ディスク予約は引き続きご購入いただけます。また、この場合の購入については、一括前払いまたは次回の超過分請求で請求されます。
+
+- Azure.com を介して購入したお客様の場合、購入時に、Azure ディスク予約の全額前払い (または毎月の固定支払い) がご登録のクレジット カードに請求されます。
+
+**Azure ディスク予約はどのように適用されますか?**
+ディスク予約は、予約済み仮想マシン (VM) インスタンスと似たモデルに従います。 違いは、ディスク予約を異なる SKU に適用することはできませんが、VM インスタンスでは可能である点です。 VM インスタンスの詳細については、「[Azure Reserved VM Instances を使用してコストを削減する](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md)」を参照してください。 
+
+**Azure ディスク予約を介して購入したデータ ストレージは、複数のリージョンで使用できますか?**
+Azure ディスク予約は、特定のリージョンと SKU (米国東部 2 の P30 など) 用に購入されるため、こうした構成要素以外では使用できません。 他のリージョンまたは SKU のディスク ストレージのニーズに合わせて、いつでも追加の Azure ディスク予約を購入できます。
+
+**Azure ディスク予約の有効期限が切れるとどうなりますか?**
+有効期限の 30 日前と有効期限当日に通知メールが送信されます。 予約の期限が切れると、デプロイされたディスクは引き続き実行され、最新の[従量課金制料金](https://azure.microsoft.com/pricing/details/managed-disks/)で課金されます。
 
 ## <a name="ultra-disks"></a>Ultra ディスク
 
@@ -334,6 +358,18 @@ Azure Portal、Azure CLI、および PowerShell で、マネージド ディス�
 No. ただし、暗号化されたマネージド ディスクまたはスナップショットから暗号化されたストレージ アカウントに VHD をエクスポートした場合は、暗号化されます。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium ディスク: マネージドとアンマネージド
+
+**適用可能な Premium SSD ディスク サイズに対してバースト機能をサポートしているリージョンを教えてください。**
+
+バースト機能は、現在、Azure 米国中西部でサポートされています。
+
+**4/8/16 GiB のマネージド ディスク サイズ (P1/P2/P3、E1/E2/E3) はどのリージョンでサポートされていますか?**
+
+これらの新しいディスク サイズは、現在 Azure 米国中西部でサポートされています。
+
+**アンマネージド ディスクまたはページ BLOB では、P1/P2/P3 ディスク サイズはサポートされていますか?**
+
+いいえ、Premium SSD マネージド ディスクでのみサポートされています。 
 
 **VM が使用するサイズ シリーズが Premium SSD ディスク (DSv2 など) をサポートしている場合、Premium データ ディスクと Standard データ ディスクの両方をアタッチできますか?** 
 

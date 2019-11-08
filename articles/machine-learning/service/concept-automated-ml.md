@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: nacharya1
-ms.author: nilesha
-ms.date: 06/20/2019
-ms.custom: seodec18
-ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+author: cartacioS
+ms.author: sacartac
+ms.date: 11/04/2019
+ms.openlocfilehash: 5c8ce6a588fd630f69d8ffc682b611baba3afdd4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929333"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497552"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -54,7 +53,9 @@ ms.locfileid: "72929333"
 
 1. [ローカル コンピューター、Azure Machine Learning コンピューティング、リモート VM、Azure Databricks](how-to-set-up-training-targets.md) など、**モデル トレーニングのためのコンピューティング先を構成します**。  リモート リソースでの自動トレーニングに関する詳細は[こちら](how-to-auto-train-remote.md)にあります。
 
-1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する**自動化された機械学習のパラメーターを構成します**。  自動トレーニング実験の設定は [Azure portal](how-to-create-portal-experiments.md)、[ワークスペース ランディング ページ (プレビュー)](https://ml.azure.com) または [SDK](how-to-configure-auto-train.md) で構成できます。 
+1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する**自動化された機械学習のパラメーターを構成します**。  自動トレーニング実験の設定は [Azure Machine Learning Studio](https://ml.azure.com) または [SDK](how-to-configure-auto-train.md) で構成できます。 
+
+    [!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 1. **トレーニング実行を送信します。**
 
@@ -94,6 +95,8 @@ ms.locfileid: "72929333"
 ### <a name="advanced-preprocessing-optional-featurization"></a>高度な前処理: 任意の特徴付け
 
 不足値の代入、エンコード、変換など、高度な前処理と特徴付けも追加で利用できます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#preprocess)から参照してください。 この設定は次の方法で有効にできます。
+
++ Azure Machine Learning Studio:[これらの手順](how-to-create-portal-experiments.md)に従って、 **[Configuration Run]\(構成の実行\)** セクションの **[View featurization settings]\(特徴付け設定の確認\)** を選択します。
 
 + Python SDK:[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) に `"feauturization": auto' / 'off' / FeaturizationConfig` を指定します。
 
@@ -175,7 +178,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 + 次のチュートリアルを修了してください。[チュートリアル:Azure Automated Machine Learning で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)
 
 + 自動トレーニング実験の設定を構成してください。
-  + Azure portal インターフェイスまたはワークスペースのランディング ページ (プレビュー) で、[次の手順](how-to-create-portal-experiments.md)を使用します。
+  + Azure Machine Learning Studio で、[こちらの手順](how-to-create-portal-experiments.md)を使用します。
   + Python SDK で、[こちらの手順](how-to-configure-auto-train.md)を使用します。
 
 + [こちらの手順](how-to-auto-train-forecast.md)を使用し、時系列データを使用して自動トレーニングする方法について学習してください。
