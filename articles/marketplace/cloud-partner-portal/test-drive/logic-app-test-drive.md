@@ -4,15 +4,16 @@ description: Dynamics AX/CRM インスタンスまたは Azure 以外の他の�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 3dc5642541f411acc93301f6bb9828e901aba449
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87170344f7467770829cbd8ba7d8936a9e39c0cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64940005"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824597"
 ---
 <a name="logic-app-test-drive"></a>ロジック アプリの体験版
 ====================

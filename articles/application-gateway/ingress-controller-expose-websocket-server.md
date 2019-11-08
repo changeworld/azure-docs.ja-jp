@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 08a12a2de0c4912913058291206772bbcb2c4a44
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510468"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795966"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>WebSocket サーバーを Application Gateway に公開する
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523225"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612115"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -170,15 +170,6 @@ Azure ディスク予約は、特定のリージョンと SKU (米国東部 2 �
 有効期限の 30 日前と有効期限当日に通知メールが送信されます。 予約の期限が切れると、デプロイされたディスクは引き続き実行され、最新の[従量課金制料金](https://azure.microsoft.com/pricing/details/managed-disks/)で課金されます。
 
 ## <a name="ultra-disks"></a>Ultra ディスク
-
-**Ultra ディスクは現在、どのリージョンでサポートされていますか?**
-- 米国東部 2
-- 東南アジア
-- 北ヨーロッパ
-
-**Ultra ディスクは現在、どの VM シリーズでサポートされていますか?**
-- ESv3
-- DSv3
 
 **Ultra ディスクのスループットを何に設定したらよいですか?**
 ディスクのスループットを何に設定したらよいかがわからない場合は、まず 16 KiB の IO サイズを想定し、アプリケーションを監視してそこからパフォーマンスを調整することをお勧めします。 数式は次のとおりです:MBps 単位のスループット = IOPS の数 * 16 / 1000。

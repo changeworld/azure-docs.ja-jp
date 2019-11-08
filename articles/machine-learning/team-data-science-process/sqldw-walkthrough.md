@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480334"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669404"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -851,7 +851,7 @@ SQL Data Warehouse データベースから直接データを読み取る、二�
 >
 
 ## <a name="mldeploy"></a>Azure Machine Learning にモデルをデプロイする
-モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure ML Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/publish-a-machine-learning-web-service.md)」を参照してください。
+モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure ML Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」を参照してください。
 
 新しい Web サービスをデプロイするには以下のことを実行する必要があります。
 

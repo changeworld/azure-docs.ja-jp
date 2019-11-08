@@ -1,7 +1,7 @@
 ---
 title: デプロイのためにモデルを準備する
-titleSuffix: Azure Machine Learning Studio
-description: Machine Learning Studio のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。
+titleSuffix: ML Studio (classic) Azure
+description: Machine Learning Studio (クラシック) のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 2a318edada5cdc4124e221fdc8c441ab323a9289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e24393783dac0f918009f3138f31bdda98bbd22e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751972"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684863"
 ---
-# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
+# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法
 
-Azure Machine Learning Studio が提供するツールは、予測分析モデルを作成し、Azure Web サービスとしてデプロイすることでそのモデルを操作できるようにするために必要です。
+Azure Machine Learning Studio (クラシック) が提供するツールは、予測分析モデルを作成し、Azure Web サービスとしてデプロイすることでそのモデルを操作できるようにするために必要です。
 
-これを実行するには、Studio を使用して*トレーニング実験*と呼ばれる実験を作成します。トレーニング実験では、モデルのトレーニング、スコア付け、編集を行います。 満足したら、トレーニング実験をユーザー データがスコア付けされるように構成した*予測実験*に変換することによって、モデルをデプロイする準備を行います。
+これを実行するには、クラシック バージョンの Studio を使用して*トレーニング実験*と呼ばれる実験を作成します。トレーニング実験では、モデルのトレーニング、スコア付け、編集を行います。 満足したら、トレーニング実験をユーザー データがスコア付けされるように構成した*予測実験*に変換することによって、モデルをデプロイする準備を行います。
 
 このプロセスの例は、[チュートリアル 1: 信用リスクの予測](tutorial-part1-credit-risk.md)から開始してください。
 
@@ -66,7 +66,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 * **トレーニング** - これらのモジュールは、モデルのトレーニングに使用します。 **[Web サービスの設定]** をクリックすると、これらのモジュールはトレーニング済みのモデルを含む 1 つのモジュールに置き換えられます。 この新しいモジュールは、モジュール パレットの **[Trained Models (トレーニング済みのモデル)]** セクションに保存されます。
 
-* **スコア** - この例では、データ ストリームをテスト データとトレーニング データに分割するために、[データの分割][split] モジュールが使用されます。 予測実験ではもうトレーニングを行わないため、[データの分割][split] を削除できます。 同様に、2 番目の[モデルのスコア付け][score-model]モジュールと[モデルの評価][evaluate-model]モジュールは、テスト データの結果を比較するために使用されるため、これらのモジュールも予測実験では不要です。 ただし、残りの[モデルのスコア付け][score-model]モジュールは、Web サービスを通じてスコア結果を返すために必要です。
+* **スコア** - この例では、データ ストリームをテスト データとトレーニング データに分割するために、[データの分割][split]モジュールが使用されます。 予測実験ではもうトレーニングを行わないため、[データの分割][split]を削除できます。 同様に、2 番目の[モデルのスコア付け][score-model]モジュールと[モデルの評価][evaluate-model]モジュールは、テスト データの結果を比較するために使用されるため、これらのモジュールも予測実験では不要です。 ただし、残りの[モデルのスコア付け][score-model]モジュールは、Web サービスを通じてスコア結果を返すために必要です。
 
 **[Web サービスの設定]** をクリックした後で、この例がどのようになるのかを次に示します。
 
@@ -113,9 +113,9 @@ Web サービス パラメーターとその使用方法の詳細については
 ## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Web サービスとして予測実験をデプロイする
 予測実験の準備を十分に実行したので、Azure Web サービスとしてデプロイできます。 Web サービスを使用してユーザーはデータをモデルに送信でき、モデルは予測を返します。
 
-完全なデプロイ プロセスの詳細については、「[Azure Machine Learning Web サービスをデプロイする][deploy]」を参照してください。
+完全なデプロイ プロセスの詳細については、「[Azure Machine Learning Web サービスをデプロイする][deploy]」を参照してください
 
-[deploy]: publish-a-machine-learning-web-service.md
+[deploy]: deploy-a-machine-learning-web-service.md
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

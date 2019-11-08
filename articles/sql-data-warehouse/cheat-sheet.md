@@ -1,24 +1,25 @@
 ---
-title: Azure SQL Data Warehouse のチート シート | Microsoft Docs
-description: Azure SQL Data Warehouse ソリューションをすばやく構築するためのリンクとベスト プラクティスが見つかります。
+title: Azure Synapse Analytics (旧称 SQL DW) のチート シート
+description: Azure Synapse Analytics (旧称 SQL DW) ソリューションをすばやく構築するためのリンクとベスト プラクティスを見つけてください。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 08/23/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9355ae1522c653924574b94594e894fdaf3f764e
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195064"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646645"
 ---
-# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のチート シート
-このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
+# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) のチート シート
+
+このチート シートは、Azure Synapse ソリューションを構築するための役立つヒントとベスト プラクティスを提供します。 
 
 次の図は、データ ウェアハウスを設計するプロセスを示しています。
 
@@ -35,7 +36,7 @@ ms.locfileid: "70195064"
 
 ## <a name="data-migration"></a>データ移行
 
-まず、データを [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) または Azure Blob Storage に読み込みます。 次に、PolyBase を使って SQL Data Warehouse のステージング テーブルにデータを読み込みます。 次の構成を使用します。
+まず、データを [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) または Azure Blob Storage に読み込みます。 次に、PolyBase を使用してデータをステージング テーブルに読み込みます。 次の構成を使用します。
 
 | 設計 | 推奨 |
 |:--- |:--- |
@@ -50,7 +51,7 @@ ms.locfileid: "70195064"
 
 テーブルのプロパティに応じて、次の方法を使用します。
 
-| Type | 適しているプロパティ| 条件|
+| 種類 | 適しているプロパティ| 条件|
 |:--- |:--- |:--- |
 | レプリケート | • 圧縮 (最大 5 倍の圧縮) 後のストレージが 2 GB 未満である、スター スキーマの小さいディメンション テーブル |• テーブルに対して多くの書き込みトランザクション (挿入、アップサート、削除、更新など) が行われる<br></br>• Data Warehouse ユニット (DWU) のプロビジョニングを頻繁に変更する<br></br>• 使うのは 2 - 3 列だけであるがテーブルには多くの列がある<br></br>• レプリケート テーブルにインデックスを作成する |
 | ラウンド ロビン (既定) | • 一時/ステージング テーブル<br></br> • 明白な結合キーまたは適切な候補列がない |• データ移動のためにパフォーマンスが低い |
@@ -70,7 +71,7 @@ ms.locfileid: "70195064"
 
 インデックスは、テーブルを迅速に読み取るために役立ちます。 ニーズに応じて、独自のテクノロジのセットを使うことができます。
 
-| Type | 適しているプロパティ | 条件|
+| 種類 | 適しているプロパティ | 条件|
 |:--- |:--- |:--- |
 | ヒープ | • ステージング/一時テーブル<br></br>• 小さいテーブルと小さい参照 |• すべての参照がテーブル全体をスキャンします |
 | クラスター化インデックス | • 最大 1 億行を含むテーブル<br></br>• 1 - 2 列のみが頻繁に使われる大規模なテーブル (1 億行以上) |• レプリケート テーブルで使われます<br></br>• 複数の結合および Group By 操作を含む複雑なクエリがあります<br></br>• インデックス付き列の更新を行います。これはメモリを消費します |
@@ -98,28 +99,28 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 データを段階的に読み込む場合、まず、データの読み込みに大きいリソース クラスを割り当てていることを確認します。  これは特に、クラスター化列ストア インデックスを使用してテーブルへの読み込みを行う際に重要となります。  詳細については、[リソース クラス](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management)に関するページを参照してください。  
 
-SQL Data Warehouse への ELT パイプラインを自動化するために PolyBase および ADF V2 を使うことをお勧めします。
+データ ウェアハウスへの ELT パイプラインを自動化するために PolyBase と ADF V2 を使用することをお勧めします。
 
 履歴データ内の大きなバッチを更新する場合、テーブルに保持したいデータは、INSERT、UPDATE、DELETE を使用する代わりに、[CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) を使用して書き込むことを検討してください。
 
 ## <a name="maintain-statistics"></a>統計を管理する
- 自動統計が一般公開されるまで、SQL Data Warehouse では、手動の統計のメンテナンスが必要です。 データに*大幅な*変更が発生したときに統計を更新することが重要です。 これにより、クエリ プランを最適化できます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。 
+ 自動統計が一般公開されるまで、統計の手動のメンテナンスが必要です。 データに*大幅な*変更が発生したときに統計を更新することが重要です。 これにより、クエリ プランを最適化できます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。 
 
 更新の頻度を定義することもできます。 たとえば、毎日新しい値が追加される可能性がある日付列を更新する場合があります。 結合に含まれる列、WHERE 句で使われている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。
 
 詳しくは、[統計]に関するページをご覧ください。
 
 ## <a name="resource-class"></a>リソース クラス
-SQL Data Warehouse では、クエリにメモリを割り当てる方法としてリソース グループを使用します。 クエリまたは読み込みの速度を向上させるために、より多くのメモリが必要な場合は、さらに高いリソース クラスを割り当てる必要があります。 その一方で、使うリソース クラスを大きくするとコンカレンシーに影響があります。 すべてのユーザーを大きいリソース クラスに移行する前に、そのことを考慮する必要があります。
+リソース グループは、クエリにメモリを割り当てるための方法として使用されます。 クエリまたは読み込みの速度を向上させるために、より多くのメモリが必要な場合は、さらに高いリソース クラスを割り当てる必要があります。 その一方で、使うリソース クラスを大きくするとコンカレンシーに影響があります。 すべてのユーザーを大きいリソース クラスに移行する前に、そのことを考慮する必要があります。
 
 クエリに時間がかかりすぎる場合は、ユーザーが大きいリソース クラスで実行していないことを確認します。 大きいリソース クラスは、多くのコンカレンシー スロットを消費します。 それにより、他のクエリが待機する可能性があります。
 
-最後に、SQL Data Warehouse の Gen2 を使うことにより、各リソース クラスは Gen1 より 2.5 倍多いメモリを取得します。
+最後に、Gen2 の [SQL プール](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
 
 詳しくは、[リソース クラスとコンカレンシー]の操作方法に関するページをご覧ください。
 
 ## <a name="lower-your-cost"></a>コストの削減
-SQL Data Warehouse の重要な機能は、[コンピューティング リソースを管理](sql-data-warehouse-manage-compute-overview.md)する機能です。 データ ウェアハウスを使用していないときは一時停止できます。そうすると、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure Portal](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
+Azure Synapse の重要な機能は、[コンピューティング リソースを管理する](sql-data-warehouse-manage-compute-overview.md)能力です。 使用していない SQL プールは一時停止できます。それにより、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure Portal](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
 
 Azure Functions では自動スケールを利用できます。
 
@@ -131,9 +132,9 @@ Azure Functions では自動スケールを利用できます。
 
 SQL Database と Azure Analysis Services はハブとスポークのアーキテクチャにすることを検討するようお勧めします。 このソリューションは、異なるユーザー グループ間のワークロードを分離しながら、SQL Database と Azure Analysis Services の高度なセキュリティ機能も使用できます。 また、無制限のコンカレンシーをユーザーに提供することもできます。
 
-詳しくは、[SQL Data Warehouse を利用する一般的なアーキテクチャ](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)に関するページをご覧ください。
+詳細については、[Azure Synapse を利用する一般的なアーキテクチャ](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)に関するページを参照してください。
 
-1 クリックで、SQL Data Warehouse から SQL Database にスポークをデプロイします。
+SQL プールから SQL データベースにスポークを 1 回のクリックでデプロイします。
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>

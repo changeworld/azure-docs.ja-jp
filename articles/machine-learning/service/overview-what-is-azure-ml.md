@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: f0f9a2e59e0e231c956e9f1c36bb6a54bcbaca24
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476305"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824075"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -44,7 +44,7 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 + Jupyter Notebook: [サンプル ノートブック](https://aka.ms/aml-notebooks)を使用するか、独自のノートブックを作成して、<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
 
-+ R スクリプトまたはノートブックでは、<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html on" target="_blank">SDK for R</a> を使用して独自のコードを書いたり、デザイナーで R モジュールを使用したりします。
++ R スクリプトまたはノートブックでは、<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK for R</a> を使用して独自のコードを書いたり、デザイナーで R モジュールを使用したりします。
 
 + [Visual Studio Code 拡張機能](how-to-vscode-tools.md)
 
@@ -73,7 +73,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
   詳細については、[Azure Machine Learning デザイナーの概要に関する記事](concept-designer.md)を参照してください。 
 
-  ![Azure Machine Learning デザイナーの例](/media/concept-ml-pipelines/visual-design-surface.gif)
+  ![Azure Machine Learning デザイナーの例](media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 + **自動化された機械学習の UI**
 
