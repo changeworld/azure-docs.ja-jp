@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 51d7cf270a0df665fdcf5bc90cae283c85ae5d22
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1df8bb293834fca123b2573f02871410754a6bdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794172"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479639"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 
@@ -67,8 +67,8 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 |-------------------|----------|
 | プロトタイピングと検査のためのツール | ポータルでは、[**データのインポート ウィザード**](search-import-data-portal.md)を使用してインデクサーを構成したり、インデックス デザイナーを使用してインデックスを設定したりできます。また、[**Search エクスプローラー**](search-explorer.md)を使用してクエリをテストしたり、スコアリング プロファイルを調整したりできます。 また、任意のインデックスを開いてスキーマを表示することもできます。 |
 | 監視と診断 | [**監視機能を有効にして**](search-monitor-usage.md)、ポータルに常に表示される、ひとめで確認できるメトリックの先に進みます。 1 秒あたりのクエリ数、待ち時間、スロットルに関するメトリックが取得され、ポータル ページで報告されます。追加の構成は必要ありません。|
-| サーバー側暗号化 | [**Microsoft によって管理される保存中の暗号化**](search-security-overview.md#encrypted-transmission-and-storage)は内部ストレージ レイヤーに組み込まれており、取り消しはできません。 必要に応じて、[**顧客管理の暗号化キー (プレビュー)** ](search-security-manage-encryption-keys.md) を使用して既定の暗号化を補完することができます。 Azure Key Vault 内で作成して管理するキーは、Azure Search 内でインデックスとシノニム マップの暗号化に使用されます。 |
-| インフラストラクチャ | **可用性の高いプラットフォーム**により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。 適切に拡張された場合に、 [Azure Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。<br/><br/> エンド ツー エンドのソリューションとして**完全に管理され、スケーラブルな** Azure Search では、インフラストラクチャ管理をまったく必要としません。 サービスは 2 次元での拡張によって、ニーズに合わせてカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。<br/><br/>|
+| サーバー側暗号化 | [**Microsoft によって管理される保存中の暗号化**](search-security-overview.md#encrypted-transmission-and-storage)は内部ストレージ レイヤーに組み込まれており、取り消しはできません。 必要に応じて、[**顧客管理の暗号化キー (プレビュー)** ](search-security-manage-encryption-keys.md) を使用して既定の暗号化を補完することができます。 Azure Key Vault 内で作成して管理するキーは、Azure Cognitive Search 内でインデックスとシノニム マップの暗号化に使用されます。 |
+| インフラストラクチャ | **可用性の高いプラットフォーム**により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。 適切に拡張された場合に、[Azure Cognitive Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。<br/><br/> エンド ツー エンドのソリューションとして**完全に管理され、スケーラブルな** Azure Cognitive Search では、インフラストラクチャ管理をまったく必要としません。 サービスは 2 次元での拡張によって、ニーズに合わせてカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Azure Cognitive Search の使用方法
 ### <a name="step-1-provision-service"></a>手順 1:サービスのプロビジョニング

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784841"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479664"
 ---
 # <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
 
@@ -33,7 +33,7 @@ Microsoft.Skills.Text.SplitSkill
 |--------------------|-------------|
 | textSplitMode      | "pages" または "sentences" のいずれか | 
 | maximumPageLength | textSplitMode が "pages" に設定されている場合、`String.Length` で測定されるため、これは ページの最大長を指します。 最小値は 100 です。  textSplitMode が "pages" に設定されている場合、アルゴリズムは、最大でも "maximumPageLength" のサイズであるチャンクにテキストを分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは "maximumPageLength" よりも少し小さくなることがあります。 | 
-| defaultLanguageCode   | (省略可能) 次の言語コードのいずれか: `da, de, en, es, fi, fr, it, ko, pt`。 既定値は英語 (en) です。 次の考慮事項があります。<ul><li>languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。</li><li>上記のリストに言語がない場合は、分割スキルによってテキストが文字境界で分割されます。</li><li>言語コードを指定することで、中国語、日本語、韓国語などのスペースのない言語で、単語が途中で分割されるのを避けることができます。</li></ul>  |
+| defaultLanguageCode   | (省略可能) 次の言語コードのいずれか: `da, de, en, es, fi, fr, it, ko, pt`。 既定値は英語 (en) です。 次の考慮事項があります。<ul><li>languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。</li><li>上記のリストに言語がない場合は、分割スキルによってテキストが文字境界で分割されます。</li><li>言語コードを指定することで、中国語、日本語、韓国語などの空白スペースのない言語で、単語が途中で分割されるのを避けることができます。</li><li>言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、既定の英語 (en) で十分です。 </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -41,7 +41,7 @@ Microsoft.Skills.Text.SplitSkill
 | パラメーター名       | 説明      |
 |----------------------|------------------|
 | text  | 部分文字列に分割するテキスト。 |
-| languageCode  | (省略可能) ドキュメントの言語コード。  |
+| languageCode  | (省略可能) ドキュメントの言語コード。 言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、この入力を削除すると安全です。  |
 
 ## <a name="skill-outputs"></a>スキルの出力 
 

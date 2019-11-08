@@ -1,7 +1,7 @@
 ---
 title: 従来の Web サービスの再トレーニングとデプロイ
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio でモデルの再トレーニングをして従来の Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Azure Machine Learning Studio (クラシック) でモデルの再トレーニングをして従来の Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: b636883ee1f08fa0fb6d080b6980cd07553dde1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 477e099bb759e09402a245b693d95f3b3980699e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234045"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480200"
 ---
-# <a name="retrain-and-deploy-a-classic-studio-web-service"></a>従来の Studio Web サービスの再トレーニングとデプロイ
+# <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>従来の Studio (クラシック) Web サービスの再トレーニングとデプロイ
 
-機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio Web サービスを再トレーニングする方法を示します。 新しい Studio Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。
+機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio (クラシック) Web サービスを再トレーニングする方法を示します。 新しい Studio (クラシック) Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ ms.locfileid: "65234045"
 
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>Azure Web サービス ポータルを使用してエンドポイントを追加する
 
-1. Machine Learning Studio の左側のナビゲーション列で [Web サービス] をクリックします。
+1. Machine Learning Studio (クラシック) の左側のナビゲーション列で [Web サービス] をクリックします。
 1. Web サービス ダッシュボードの下部で、 **[Manage endpoints preview (エンドポイント プレビューの管理)]** をクリックします。
 1. **[追加]** をクリックします。
 1. 新しいエンドポイントの名前と説明を入力します。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
