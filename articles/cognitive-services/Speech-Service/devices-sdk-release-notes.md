@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: wellsi
-ms.openlocfilehash: 1ca6b5265cf97ef551ec0b13b46ac934a372d2c7
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: ba1db1ccba6a1849756e75c9b9f7078371da5bfb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797923"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464750"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK のリリース ノート
 以下のセクションでは、最新リリースでの変更点の一覧を示します。
@@ -34,12 +34,12 @@ ms.locfileid: "67797923"
 
 *   Speech Devices SDK の一般提供が開始され、限定的なプレビューではなくなりました。
 *   [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.5.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。
-*   新しいウェイク ワード テクノロジにより、品質が大幅に改善されました。「重大な変更」を参照してください。
+*   新しいキーワード テクノロジにより、品質が大幅に改善されました。「重大な変更」を参照してください。
 *   新しいオーディオ処理パイプラインにより、遠距離の認識が向上されました。
 
 **重大な変更**
 
-*   新しいウェイク ワード テクノロジにより、改良されたウェイク ワード ポータルですべてのウェイク ワードを作成し直す必要があります。 デバイスから古いキーワードを完全に削除するには、古いアプリをアンインストールしてください。
+*   新しいキーワード テクノロジに伴い、改良されたキーワード ポータルですべてのキーワードを作成し直す必要があります。 デバイスから古いキーワードを完全に削除するには、古いアプリをアンインストールしてください。
     - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
 
 ## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Cognitive Services Speech Devices SDK 1.4.0: 2019-Apr リリース
@@ -49,13 +49,13 @@ ms.locfileid: "67797923"
 ## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Cognitive Services Speech Devices SDK 1.3.1:2019 年 3 月リリース
 
 * [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.3.1 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。
-*   ウェイク ワードの処理が更新されました (「重大な変更」を参照してください)。
+*   キーワードの処理が更新されました (「重大な変更」を参照)。
 *   サンプル アプリケーションでは、音声認識と翻訳の両方について、言語の選択肢が追加されました。
 
 **重大な変更**
 
-*   [ウェイク ワードのインストール](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)が簡素化されました。アプリの一部になったので、デバイスに個別にインストールする必要がなくなりました。
-*   ウェイク ワードの認識が変更され、2 つのイベントがサポートされました。
+*   [キーワードのインストール](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)が簡素化され、アプリに含まれるようになったため、デバイス上に個別にインストールする必要がなくなりました。
+*   キーワードの認識が変更され、2 つのイベントがサポートされるようになりました。
     - RecognizingKeyword は、音声認識の結果に (未確認の) キーワード テキストが含まれていることを示します。
     - RecognizedKeyword は、キーワード認識が完了し、特定のキーワードが認識されたことを示します。
 
@@ -75,7 +75,7 @@ ms.locfileid: "67797923"
 **重大な変更**
 
 * このリリースでは、重大な変更がいくつか行われています。 API に関して詳しくは、[こちらのページ](https://aka.ms/csspeech/breakingchanges_1_0_0)をご覧ください。
-* KWS モデル ファイルは、Speech Devices SDK 1.0.1 と互換性がありません。 既存のウェイク ワード ファイルは、新しいウェイク ワード ファイルがデバイスに書き込まれた後で削除されます。
+* KWS モデル ファイルは、Speech Devices SDK 1.0.1 と互換性がありません。 既存のキーワード ファイルは、新しいキーワード ファイルがデバイスに書き込まれると削除されます。
 
 ## <a name="cognitive-services-speech-devices-sdk-050-2018-aug-release"></a>Cognitive Services Speech Devices SDK 0.5.0: 2018-Aug リリース
 

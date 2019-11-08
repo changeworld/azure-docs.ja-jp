@@ -1,5 +1,6 @@
 ---
-title: Microsoft Authentication Library (MSAL) に関する詳細 | Azure
+title: Microsoft Authentication Library (MSAL) に関する詳細
+titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者はセキュリティで保護された Web API を呼び出すためにトークンを取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API があります。 MSAL は、複数のアプリケーション アーキテクチャとプラットフォームをサポートします。
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/4/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bec22381d1961c47ce257666177b5faf918cea56
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dedd9f3458118117546a900aa1a2c8c5aa627100
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554413"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473727"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
 Microsoft Authentication Library (MSAL) を利用すると、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォーム エンドポイントから[トークン](developer-glossary.md#security-token)を取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API があります。 MSAL は .NET、JavaScript、Android、iOS で利用でき、さまざまなアプリケーション アーキテクチャとアプリケーション プラットフォームをサポートします。
@@ -37,11 +38,11 @@ MSAL では、多くのプラットフォームで API に一貫性があり、�
 * アクション可能な例外、ログ記録、テレメトリを公開することでアプリの問題解決を支援します。
 
 ## <a name="application-types-and-scenarios"></a>アプリケーションの種類とシナリオ
-MSAL を使用し、Web アプリケーション、Web API、シングルページ アプリ (JavaScript)、モバイル アプリケーション、ネイティブ アプリケーション、デーモン、サーバー側アプリケーションといった多くの種類のアプリケーションからトークンを取得できます。 
+MSAL を使用し、Web アプリケーション、Web API、シングルページ アプリ (JavaScript)、モバイル アプリケーション、ネイティブ アプリケーション、デーモン、サーバー側アプリケーションといった多くの種類のアプリケーションからトークンを取得できます。
 
 MSAL は次のような多くのアプリケーション シナリオで使用できます。
 
-* [シングルページ アプリケーション (JavaScript)](scenario-spa-overview.md) 
+* [シングルページ アプリケーション (JavaScript)](scenario-spa-overview.md)
 * [Web アプリのユーザーのサインイン](scenario-web-app-sign-user-overview.md)
 * [Web アプリケーションのユーザーのサインインとユーザーの代理としての Web API の呼び出し](scenario-web-app-call-api-overview.md)
 * [認証されたユーザーのみアクセスできるようにする Web API の保護](scenario-protected-web-api-overview.md)
@@ -53,12 +54,13 @@ MSAL は次のような多くのアプリケーション シナリオで使用�
 ## <a name="languages-and-frameworks"></a>言語とフレームワーク
 
 | ライブラリ | サポートされているプラットフォームとフレームワーク|
-| --- | --- | 
+| --- | --- |
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework、.NET Core、Xamarin Android、Xamarin iOS、ユニバーサル Windows プラットフォーム|
 | [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS、Ember.js、Durandal.js など、JavaScript/TypeScript フレームワーク|
 | [MSAL for Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [iOS および macOS 用の MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS と macOS|
-| [MSAL4J プレビュー](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
+| [MSAL Java (プレビュー)](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
+| [MSAL Python (プレビュー)](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Python|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL と MSAL の違い
 

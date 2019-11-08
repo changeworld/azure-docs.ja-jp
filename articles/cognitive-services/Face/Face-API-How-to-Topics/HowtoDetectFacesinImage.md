@@ -1,7 +1,7 @@
 ---
 title: 画像の中にある顔を検出する - Face API
 titleSuffix: Azure Cognitive Services
-description: 顔検出機能によって返されるさまざまなデータの使用方法について説明します。
+description: このガイドでは、顔検出を使用して、特定の画像から性別、年齢、姿勢などの属性を抽出する方法について説明します。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306627"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744285"
 ---
 # <a name="get-face-detection-data"></a>顔検出データの取得
 

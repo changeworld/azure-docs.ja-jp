@@ -1,24 +1,24 @@
 ---
 title: 2 クラス ニューラル ネットワーク:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の 2 クラス ニューラル ネットワーク モジュールを使用して、2 つの値だけを持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の 2 クラス ニューラル ネットワーク モジュールを使用して、2 つの値だけを持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8f38a7b7086e5023eb63e94363301ac5277f7e7c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d8e27d13de6b1ac6940972022f66811eb75c8986
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693609"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485886"
 ---
 # <a name="two-class-neural-network-module"></a>2 クラス ニューラル ネットワーク モジュール
 
-この記事では、Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 このモジュールを使用して、2 つの値だけを持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成します。
 
@@ -89,4 +89,4 @@ ms.locfileid: "72693609"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

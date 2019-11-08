@@ -1,7 +1,7 @@
 ---
 title: 'K-Means Clustering (K-Means クラスタリング): モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の K-Means クラスタリング モジュールを使用して、クラスタリング モデルをトレーニングする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の K-Means クラスタリング モジュールを使用して、クラスタリング モデルをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693107"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497765"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 
-この記事では、Azure Machine Learning Studio で *K-Means Clustering (K-Means クラスタリング)* モジュールを使用して、トレーニングされていない K-Means クラスタリング モデルを作成する方法について説明します。 
+この記事では、Azure Machine Learning デザイナー (プレビュー) で *K-Means クラスタリング* モジュールを使用して、トレーニングされていない K-Means クラスタリング モデルを作成する方法について説明します。 
  
 K-Means は、最も単純であり、よく知られている "*教師なし*" 学習アルゴリズムの 1 つです。 以下のようなさまざまな機械学習タスクにこのアルゴリズムを使用できます。 
 
@@ -60,7 +60,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
     -   **Single Parameter (単一パラメーター)** : クラスタリング モデルで使用する正確なパラメーターを把握している場合は、特定の値のセットを引数として指定できます。  
   
-3.  **[Number of Centroids]\(重心の数\)** には、アルゴリズムを開始するクラスターの数を入力します。  
+3.  **[Number of centroids]\(重心の数\)** には、アルゴリズムを開始するクラスターの数を入力します。  
   
      このモデルは、この数のクラスターを正確に生成することが保証されていません。 このアルゴリズムは、この数のデータ ポイントから開始し、反復処理で最適な構成を見つけます。  
   

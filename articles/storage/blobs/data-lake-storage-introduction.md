@@ -8,12 +8,12 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d843e288297db656cca6e2a07f2e1f3322ebfa89
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99863f68c20a2f95dfc744e13a977bf3ccbbf639
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299655"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580424"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -83,7 +83,7 @@ Data Lake Storage Gen2 は、Azure Blob ストレージに基づいて構築さ�
 
 ## <a name="supported-azure-services"></a>サポート対象の Azure サービス
 
-Data Lake Storage gen2 は、データの取り込み、分析の実行、およびビジュアル表現の作成に使用できるいくつかの Azure サービスをサポートしています。 サポートされている Azure サービスの一覧については、「[Azure Data Lake Storage と Azure サービスを統合する](data-lake-store-integrate-with-azure-services.md)」を参照してください。
+Data Lake Storage gen2 は、データの取り込み、分析の実行、およびビジュアル表現の作成に使用できるいくつかの Azure サービスをサポートしています。 サポートされている Azure サービスの一覧については、「[Azure Data Lake Storage と Azure サービスを統合する](data-lake-storage-integrate-with-azure-services.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -92,4 +92,4 @@ Data Lake Storage gen2 は、データの取り込み、分析の実行、およ
 - [階層構造の名前空間](data-lake-storage-namespace.md)
 - [ストレージ アカウントの作成](data-lake-storage-quickstart-create-account.md)
 - [Azure Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)
-- [Azure Data Lake Storage と Azure サービスを統合する](data-lake-store-integrate-with-azure-services.md)。
+- [Azure Data Lake Storage と Azure サービスを統合する](data-lake-storage-integrate-with-azure-services.md)。

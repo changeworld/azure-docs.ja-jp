@@ -6,16 +6,16 @@ keywords: ブロックチェーン
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: e370916d420a7bc4cd16d021c69a2f8609093d30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fcf75a07d1caf7b411c315d11ce984cbe35df75
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544702"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577181"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 

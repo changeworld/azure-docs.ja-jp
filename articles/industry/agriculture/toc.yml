@@ -1,0 +1,40 @@
+- name: 概要
+  items:
+    - name: FarmBeats とは
+      href: overview.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 土壌水分マップの生成
+      href: generate-soil-moisture-map.md
+    - name: 過去のテレメトリ データの取り込み
+      href: ingest-historical-telemetry-data.md
+- name: 概念
+  items:
+    - name: 統合のパターン
+      href: integration-patterns.md
+    - name: センサー パートナーの統合
+      href: sensor-partner-integration.md
+    - name: 画像パートナーの統合
+      href: imagery-partner-integration.md
+- name: ハウツー ガイド
+  items:
+    - name: FarmBeats のデプロイ
+      href: prepare-for-deployment.md
+    - name: ファームの管理
+      href: manage-farms.md
+    - name: センサー データの取得
+      href: get-sensor-data-from-sensor-partner.md
+    - name: マップの生成
+      href: generate-maps.md
+    - name: ルールの構成とアラートの管理
+      href: configure-rules-alerts.md
+    - name: ドローンの画像を取得する
+      href: get-drone-imagery.md
+- name: トラブルシューティング
+  items:
+    - name: FarmBeats のトラブルシューティング
+      href: troubleshoot-project-farmbeats.md
+- name: リファレンス
+  items: null
+  href: references-for-farmbeats.md

@@ -8,25 +8,25 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 08/14/2019
-ms.openlocfilehash: 1da2afc6c0dfa0571d6e7ccbf358bb574aa736c5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: d49a84f26453a6a7b2ff6d7f419fbc53ad8b98ba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71830121"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475996"
 ---
-1. 使用する Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。 
+1. ご利用の Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。
 
 1. Azure portal の左上隅にある **[+ リソースの作成]** を選択します。
 
       ![新しいリソースを作成](media/aml-create-in-portal/portal-create-resource.png)
 
-1. 検索バーを使用して、**Machine Learning service ワークスペース**を見つけます。
+1. 検索バーを使用して、**Machine Learning** を見つけます。
 
-1. **[Machine Learning service ワークスペース]** を選択します。
+1. **[Machine Learning]** を選択します。
 
-1. **[Machine Learning サービス ワークスペース]** ウィンドウで、 **[作成]** を選択して開始します。
+1. **[Machine Learning]** ウィンドウで、 **[作成]** を選択して開始します。
 
 1. 新しいワークスペースを構成するには、次の情報を指定します。
 
@@ -36,8 +36,9 @@ ms.locfileid: "71830121"
    Subscription |使用する Azure サブスクリプションを選択します。
    Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 
    Location | ユーザーとデータ リソースに最も近い場所を選択し、ワークスペースを作成します。
+   ワークスペースのエディション | このチュートリアルでは、ワークスペースの種類として **[Basic]** を選択します。 利用できる機能と価格は、ワークスペースの種類 (Basic および Enterprise) によって決まります。 このチュートリアルの内容はすべて、Basic と Enterprise のどちらのワークスペースでも実行できます。
 
-1. ワークスペースの構成が完了したら、 **[作成]** を選択します。 
+1. ワークスペースの構成が完了したら、 **[確認および作成]** を選択します。 
 
    > [!Warning] 
    > クラウドへのワークスペースの作成には数分かかる場合があります。

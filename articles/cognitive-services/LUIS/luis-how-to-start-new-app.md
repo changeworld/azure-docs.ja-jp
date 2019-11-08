@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258530"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500306"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 [LUIS](https://www.luis.ai) ポータル内または LUIS オーサリング[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用して LUIS アプリを作成できます。
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="using-the-luis-portal"></a>LUIS ポータルを使用する
 
@@ -45,7 +47,7 @@ LUIS ポータルでは、新しいアプリをいくつかの方法で作成で
 
 ## <a name="create-new-app-in-luis"></a>LUIS で新しいアプリを作成する
 
-1. **[マイ アプリ]** ページで、 **[新しいアプリの作成]** を選択します。
+1. **[マイ アプリ]** ページで **[+ 作成]** を選択します。
 
     ![LUIS アプリの一覧](./media/luis-create-new-app/apps-list.png)
 

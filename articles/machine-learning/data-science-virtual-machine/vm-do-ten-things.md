@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6af9f2c80915745f995144c24ae1649fb02a31ae
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 75a685dc90db9133ee9bc5d52d046246270ea32a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192280"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497617"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -85,12 +85,7 @@ Jupyter を開始すると、DSVM にあらかじめパッケージ化されて�
 ## <a name="train-and-deploy-models-by-using-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングおよびデプロイする
 モデルを構築して検証したら、通常、次の手順として、それを運用環境にデプロイします。 この手順では、クライアント アプリケーションを使用して、リアルタイムまたはバッチ モードでモデルの予測を呼び出すことができます。 R または Python で構築されたモデルを運用可能な状態にするためのメカニズムは、Azure Machine Learning によって提供されます。
 
-Azure Machine Learning でモデルを運用化すると、Web サービスが公開されます。 これにより、クライアントは、入力パラメーターを渡して、出力としてモデルから予測を受け取る REST 呼び出しを実行することができます。   
-
-> [!NOTE]
-> Azure Machine Learning にまだサインアップしていない場合は、[Azure Machine Learning Studio](https://studio.azureml.net/) のホーム ページにアクセスして **[作業の開始]** を選択すると、無料のワークスペースまたは Standard ワークスペースを利用できます。   
-> 
-> 
+Azure Machine Learning でモデルを運用化すると、Web サービスが公開されます。 これにより、クライアントは、入力パラメーターを渡して、出力としてモデルから予測を受け取る REST 呼び出しを実行することができます。
 
 ### <a name="build-and-operationalize-python-models"></a>Python モデルを構築して運用可能な状態にする
 Python Jupyter ノートブックで開発された、Scikit-learn ライブラリを使用してシンプルなモデルを作成するコード スニペットを次に示します。
@@ -809,9 +804,9 @@ pd.read_sql(queryString, connection)
 
 ![テーブルのデータの上位の行](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-#### <a name="read-data-from-hdi-by-using-machine-learning-reader-module"></a>Machine Learning のリーダー モジュールを使用して HDI からのデータを読み取る
+#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Azure Machine Learning Studio (クラシック) のリーダー モジュールを使用して HDI からデータを読み取る
 
-Machine Learning Studio のリーダー モジュールを使用して、Hadoop クラスター内のデータベースにアクセスすることもできます。 ご利用の HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
+Azure Machine Learning Studio (クラシック) のリーダー モジュールを使用して、Hadoop クラスター内のデータベースにアクセスすることもできます。 ご利用の HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
 
 ![リーダー モジュールのプロパティ](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
 
