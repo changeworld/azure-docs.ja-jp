@@ -1,6 +1,6 @@
 ---
-title: Service Bus キューの使用方法 (PHP) | Microsoft Docs
-description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは PHP で記述されています。
+title: クイック スタート:PHP で Service Bus キューを使用する方法
+description: クイック スタート:Azure での Service Bus キューの使用方法を学習します。 コード サンプルは PHP で記述されています。
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: d958202ee42b1edec5e1b65c120536c656823ecf
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147237"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719191"
 ---
-# <a name="how-to-use-service-bus-queues-with-php"></a>PHP で Service Bus キューを使用する方法
+# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>クイック スタート:PHP で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 このチュートリアルでは、PHP アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。 

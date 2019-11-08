@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: 9eff4deca3caf5cef08a9075d9f994f7a6cd3a37
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: babf7bf9de46e1657f94d19fe13bb0e328831ce0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081418"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748891"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>PowerShell でマネージド ディスクを同じサブスクリプションまたは別のサブスクリプションにコピーする
 
@@ -29,7 +29,7 @@ ms.locfileid: "70081418"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

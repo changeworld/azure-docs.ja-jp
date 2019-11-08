@@ -11,117 +11,84 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 48dcbd51190e747859f0172473c94b0caa296071
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 02bc6657126cb1cf241c2ca4668e62bd49608d4b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677565"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491256"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの事前作成済み ordinal V2 エンティティ
 ordinal V2 (序数) では、[ordinal](luis-reference-prebuilt-ordinal.md) を拡張して、`next`、`last`、`previous` などの相対参照を提供します。 事前作成済み ordinal エンティティを使用しても、これらは抽出されません。
 
 ## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>事前作成済み ordinal V2 エンティティの解決
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+次のエンティティ オブジェクトがクエリに対して返されます。
 
-次の例は、**builtin.ordinalV2** エンティティの解決を示しています。
+`what is the second to last choice in the list`
+
+#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
 ```json
-{
-    "query": "what is the second to last choice in the list",
-    "topScoringIntent": {
-        "intent": "None",
-        "score": 0.823669851
-    },
-    "intents": [
+"entities": {
+    "ordinalV2": [
         {
-            "intent": "None",
-            "score": 0.823669851
-        }
-    ],
-    "entities": [
-        {
-            "entity": "the second to last",
-            "type": "builtin.ordinalV2.relative",
-            "startIndex": 8,
-            "endIndex": 25,
-            "resolution": {
-                "offset": "-1",
-                "relativeTo": "end"
-            }
+            "offset": -1,
+            "relativeTo": "end"
         }
     ]
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
-
-次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
-
-```json
-{
-    "query": "what is the second to last choice in the list",
-    "prediction": {
-        "normalizedQuery": "what is the second to last choice in the list",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.823669851
-            }
-        },
-        "entities": {
-            "ordinalV2": [
-                {
-                    "offset": -1,
-                    "relativeTo": "end"
-                }
-            ]
-        }
-    }
-}
-```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
 
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
 ```json
-{
-    "query": "what is the second to last choice in the list",
-    "prediction": {
-        "normalizedQuery": "what is the second to last choice in the list",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.823669851
-            }
-        },
-        "entities": {
-            "ordinalV2": [
-                {
-                    "offset": -1,
-                    "relativeTo": "end"
-                }
-            ],
-            "$instance": {
-                "ordinalV2": [
-                    {
-                        "type": "builtin.ordinalV2.relative",
-                        "text": "the second to last",
-                        "startIndex": 8,
-                        "length": 18,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    }
+"entities": {
+    "ordinalV2": [
+        {
+            "offset": -1,
+            "relativeTo": "end"
+        }
+    ],
+    "$instance": {
+        "ordinalV2": [
+            {
+                "type": "builtin.ordinalV2.relative",
+                "text": "the second to last",
+                "startIndex": 8,
+                "length": 18,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
 
+次の例は、**builtin.ordinalV2** エンティティの解決を示しています。
+
+```json
+"entities": [
+    {
+        "entity": "the second to last",
+        "type": "builtin.ordinalV2.relative",
+        "startIndex": 8,
+        "endIndex": 25,
+        "resolution": {
+            "offset": "-1",
+            "relativeTo": "end"
+        }
+    }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>次の手順

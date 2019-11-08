@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998060"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482761"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Hyperscale (Citus) でのテーブル コロケーション
 
@@ -20,7 +20,7 @@ ms.locfileid: "69998060"
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>ハッシュ分散テーブルへのデータ コロケーション
 
-Azure Database for PostgreSQL – Hyperscale (Citus) プレビューでは、ディストリビューション列の値のハッシュが、シャードのハッシュ範囲に収まる場合、行がシャードに格納されます。 同じハッシュ範囲のシャードは常に同じノードに配置されます。 ディストリビューション列の値が同じ行は、テーブル全体で常に同じノードに置かれます。
+Azure Database for PostgreSQL - Hyperscale (Citus) では、ディストリビューション列の値のハッシュが、シャードのハッシュ範囲に収まる場合、行がシャードに格納されます。 同じハッシュ範囲のシャードは常に同じノードに配置されます。 ディストリビューション列の値が同じ行は、テーブル全体で常に同じノードに置かれます。
 
 ![シャード](media/concepts-hyperscale-colocation/colocation-shards.png)
 

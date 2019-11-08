@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 28502c49c0eebce84ffd5aa376e7b20bd52213c0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674984"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469062"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -156,8 +156,8 @@ func init MyFunctionProj
 Select a worker runtime:
 dotnet
 node
-python (preview)
-powershell (preview)
+python 
+powershell
 ```
 
 上/下方向キーを使用して言語を選択し、Enter キーを押します。 JavaScript または TypeScript 関数の開発を計画している場合は、**ノード**を選択し、言語を選択します。 TypeScript には[いくつかの追加要件](functions-reference-node.md#typescript)があります。 
@@ -208,11 +208,13 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 開発のためにストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-create-storage-account.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
 
-+ [Azure ポータル]から設定。 ストレージ アカウントに移動し、**設定**の**アクセス キー**を選択してから、いずれかの**接続文字列**の値をコピーします。
+- [Azure ポータル] から、 **[ストレージ アカウント]** を検索して選択します。 
+  ![Azure portal から [ストレージ アカウント] を選択する](./media/functions-run-local/select-storage-accounts.png)
+  
+  使用するストレージ アカウントを選択し、 **[設定]** の **[アクセス キー]** を選択してから、 **[接続文字列]** の値のいずれかをコピーします。
+  ![Azure portal から接続文字列をコピーする](./media/functions-run-local/copy-storage-connection-portal.png)
 
-  ![Azure Portal から接続文字列をコピーする](./media/functions-run-local/copy-storage-connection-portal.png)
-
-+ [Azure Storage Explorer](https://storageexplorer.com/) を使用して、Azure アカウントに接続します。 **Explorer** でサブスクリプションを展開し、ストレージ アカウントを選択して、プライマリまたはセカンダリの接続文字列をコピーします。
+- [Azure Storage Explorer](https://storageexplorer.com/) を使用して、Azure アカウントに接続します。 **Explorer** でサブスクリプションを展開し、ストレージ アカウントを選択して、プライマリまたはセカンダリの接続文字列をコピーします。
 
   ![Storage Explorer から接続文字列をコピーする](./media/functions-run-local/storage-explorer.png)
 

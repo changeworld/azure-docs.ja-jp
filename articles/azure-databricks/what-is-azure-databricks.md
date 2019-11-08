@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 149b83b9aacf23cde06a2b35aed06c164afe9647
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1e86658422e444cb7104c3e3428a74d31d453a72
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243324"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605972"
 ---
 # <a name="what-is-azure-databricks"></a>Azure Databricks とは
 
@@ -31,7 +31,7 @@ Azure Databricks は、高速で使いやすい、コラボレーション対応
 
 Azure Databricks は、完全なオープン ソースの Apache Spark クラスター テクノロジと機能から構成されています。 Azure Databricks の Spark には、次のコンポーネントが含まれています。
 
-![Azure Databricks での Apache Spark](./media/what-is-azure-databricks/apache-spark-ecosystem-databricks.png "Azure Databricks での Apache Spark")
+![Azure Databricks における Apache Spark](./media/what-is-azure-databricks/apache-spark-ecosystem-databricks.png "Azure Databricks における Apache Spark")
 
 * **Spark SQL と DataFrame**: Spark SQL は構造化データを処理するための Spark モジュールです。 DataFrame は、名前付きの列に編成されたデータの分散型コレクションです。 概念的には、リレーショナル データベースのテーブルまたは R/Python のデータ フレームと同等のものです。
 
@@ -96,9 +96,9 @@ Power BI とのリッチな統合により、Azure Databricks は大きな影響
 ## <a name="next-steps"></a>次の手順
 
 * [クイック スタート:Azure Databricks で Spark ジョブを実行する](quickstart-create-databricks-workspace-portal.md)
-* [Spark クラスターを使用する](https://docs.azuredatabricks.net/user-guide/clusters/index.html)
-* [Notebook を使用する](https://docs.azuredatabricks.net/user-guide/notebooks/index.html)
-* [Spark ジョブを作成する](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Spark クラスターを使用する](/azure/databricks/clusters/index)
+* [Notebook を使用する](/azure/databricks/notebooks/index)
+* [Spark ジョブを作成する](/azure/databricks/jobs)
 
  
 

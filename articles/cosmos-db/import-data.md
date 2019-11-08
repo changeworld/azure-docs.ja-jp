@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB のデータベース移行ツール
-description: オープン ソースの Azure Cosmos DB データ移行ツールを使用して、MongoDB、SQL Server、Table Storage、Amazon DynamoDB、CSV、JSON ファイルなどのさまざまなソースからデータを Azure Cosmos DB にインポートする方法について説明します。 CSV から JSON への変換についても説明します。
+title: チュートリアル:Azure Cosmos DB のデータベース移行ツール
+description: チュートリアル:オープン ソースの Azure Cosmos DB データ移行ツールを使用して、MongoDB、SQL Server、Table Storage、Amazon DynamoDB、CSV、JSON ファイルなどのさまざまなソースからデータを Azure Cosmos DB にインポートする方法について説明します。 CSV から JSON への変換についても説明します。
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 11/05/2019
 ms.author: dech
-ms.openlocfilehash: 0981a0810ee64f78443512d794d172a69fb54494
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617023"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721146"
 ---
-# <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>データ移行ツールを使用して Azure Cosmos DB にデータを移行する
+# <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>チュートリアル:データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 
 このチュートリアルでは、Azure Cosmos DB データ移行ツールを使用して、さまざまなソースからデータを Azure Cosmos コンテナーおよびテーブルにインポートする方法について説明します。 JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、さらには Azure Cosmos DB SQL API コレクションからインポートすることができます。 Azure Cosmos DB で使用するためには、そのデータをコレクションやテーブルに移行します。 データ移行ツールは、SQL API の 1 つの単一パーティション コレクションから複数パーティション コレクションに移行する場合にも使用できます。
 

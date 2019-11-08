@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center クイックスタート - Windows コンピューターでの Security Center の利用開始 | Microsoft Docs
+title: Windows コンピューターでの Azure Security Center の利用開始
 description: このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングする方法を示します。
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 46fffc40b315109c348247ac09f02f9bb8dbb3b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202799"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686502"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイック スタート:Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
@@ -64,7 +64,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 4. **[インストール先フォルダー]** ページで、既定のインストール フォルダーを変更するか、そのまま使用して、 **[次へ]** を選択します。
 5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics を選択し、 **[次へ]** を選択します。
 6. **[Azure Log Analytics]** ページで、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けます。
-7. コンピューターが Azure Government クラウド内の Log Analytics ワークスペースにレポートする必要がある場合は、 **[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。  コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、 **[詳細]** を選択し、プロキシ サーバーの URL とポート番号を指定します。
+7. コンピューターが Azure Government クラウド内の Log Analytics ワークスペースにレポートする必要がある場合は、 **[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。 コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、 **[詳細]** を選択し、プロキシ サーバーの URL とポート番号を指定します。
 8. 必要な構成設定が完了したら、 **[次へ]** を選択します。
 
    ![エージェントをインストールする][5]

@@ -1,0 +1,53 @@
+### YamlMime:Hub
+title: 業界向け Azure のドキュメント
+summary: Azure を使って、一般的な業界のユース ケースに対応するソリューションを構築する方法を説明します。
+brand: azure
+metadata:
+  title: 業界向け Azure のドキュメント
+  description: Azure を使って、一般的な業界のユース ケースに対応するソリューションを構築する方法を説明します。
+  ms.service: azure-industry
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 2777093db7486f17cf19b45db08bbd0168a4e2a8
+  ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73797076"
+highlightedContent:
+  items:
+  - title: Azure FarmBeats
+    itemType: overview
+    url: ./agriculture/overview.md
+  - title: コミュニティ フォーラム
+    itemType: concept
+    url: https://aka.ms/FarmBeatsMSDN
+  - title: UserVoice (フィードバック)
+    itemType: get-started
+    url: https://aka.ms/FarmBeatsForum
+productDirectory:
+  title: 業界ソリューションの分野
+  items:
+  - title: Azure FarmBeats
+    imageSrc: ../media/index/industry-agriculture-farmbeats.svg
+    summary: デジタル農業ソリューションをクラウドに迅速に構築します。
+    url: ./agriculture/overview.md
+  - title: 金融サービス
+    imageSrc: ../media/index/industry-financial.png
+    summary: 金融サービス業界向けのソリューションとユース ケース。
+    url: /azure/industry-marketing/financial/
+  - title: ヘルス + ライフ サイエンス
+    imageSrc: ../media/index/industry-health.png
+    summary: 医療とライフ サイエンス業界向けのソリューションとユース ケース。
+    url: /azure/industry-marketing/health/
+  - title: 製造
+    imageSrc: ../media/index/industry-manufacturing.png
+    summary: 製造業界向けのソリューションとユース ケース。
+    url: /azure/industry-marketing/manufacturing/
+  - title: 小売
+    imageSrc: ../media/index/industry-retail.png
+    summary: 小売業界向けのソリューションとユース ケース。
+    url: /azure/industry-marketing/retail/

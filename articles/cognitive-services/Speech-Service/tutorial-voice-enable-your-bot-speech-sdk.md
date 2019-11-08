@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: 3c57200591f3b7de9a1f9ab4198e55ed844b4d07
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 89bf4a3a6b8ea0cb04f3a1a663cc2365fa4fefc3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932049"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468692"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -28,10 +28,10 @@ Speech Services の機能を使用して、チャット ボットを音声で簡
 この演習の最後に、次のように動作するシステムが設定されています。
 
 1. サンプル クライアント アプリケーションが Direct Line Speech チャネルとエコー ボットに接続するように構成されている
-2. オーディオは、ボタンを押すと既定のマイクから録音される (またはカスタム ウェイク ワードがアクティブになっている場合は継続的に記録される)
-3. 必要に応じて、カスタム ウェイク ワードの検出が行われ、オーディオ ストリーミングがクラウドに転送される
+2. オーディオは、ボタンを押すと既定のマイクから録音される (またはカスタム キーワードがアクティブになっている場合は継続的に記録される)
+3. 必要に応じて、カスタムキーワードの検出が行われ、オーディオ ストリーミングがクラウドに転送される
 4. Speech SDK を使用して、アプリが Direct Line Speech チャネルに接続され、オーディオがストリーミングされる
-5. 必要に応じて、サービス上でより高い精度のウェイク ワード検証が行われる
+5. 必要に応じて、サービス上でより高い精度のキーワード検証が行われる
 6. オーディオが音声認識サービスに渡され、テキストに変換される
 7. 認識されたテキストが Bot Framework アクティビティとしてエコー ボットに渡される 
 8. 応答テキストがテキスト読み上げ (TTS) サービスによってオーディオに変換され、再生のためにクライアント アプリケーションにストリーミングで返される
@@ -47,7 +47,7 @@ Speech Services の機能を使用して、チャット ボットを音声で簡
 > * エコー ボットのサンプルを構築、テストして Azure App Service にデプロイする
 > * ボットを Direct Line Speech チャネルに登録する
 > * Direct Line Speech クライアントを構築して実行し、エコー ボットと対話する
-> * カスタム ウェイク ワードのアクティブ化を追加する
+> * カスタム キーワードのアクティブ化を追加する
 > * 認識および発声された音声の言語を変更する方法を学習する
 
 ## <a name="prerequisites"></a>前提条件
@@ -79,7 +79,7 @@ Speech Services の機能を使用して、チャット ボットを音声で簡
 
 このチュートリアルで別のリージョンを使用する場合は、次の要因によって選択肢が制限される可能性があります。
 
-* Direct Line Speech チャネルはプレビュー サービスです。 そのため、特定の Azure リージョンに限定される場合があります。 使用可能なリージョンについて詳しくは、「[音声優先仮想アシスタント](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#voice-first-virtual-assistants)」をご覧ください。
+* [サポートされている Azure リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#voice-assistants)を使用してください。
 * Direct Line Speech チャネルでは、標準音声とニューラル音声を持つテキスト読み上げサービスが使用されます。 ニューラル音声は、[特定の Azure リージョンに限定](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)されています。
 * 無料試用版のキーは、特定のリージョンに限定される場合があります。
 
@@ -257,7 +257,7 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 1. [Azure portal](https://portal.azure.com) 内で、**SpeechEchoBotTutorial-BotRegistration** リソースを特定して開きます。
 2. 左側のナビゲーションから **[チャネル]** を選択します。
    * **[その他のチャネル]** を検索し、 **[Direct Line Speech]** を特定してクリックします。
-   * **[Configure Direct line Speech (Preview)]\(Direct line Speech (プレビュー) の構成\)** というページのテキストを確認し、 **[保存]** をクリックします。
+   * **[Configure Direct line Speech]\(Direct line Speech の構成\)** というページのテキストを確認し、 **[保存]** をクリックします。
    * 作成の一環として、2 つの**秘密キー**が生成されました。 これらのキーはボットに固有です。 [SpeechSDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/) を使用してクライアント アプリを作成する場合は、これらのキーのいずれかを指定して、クライアント アプリ、Direct Line Speech チャネル、ボット サービスの間の接続を確立します。 このチュートリアルでは、Direct Line Speech クライアント (WPF、C#) を使用します。
    * **[表示]** をクリックし、いずれかのキーをコピーすると、簡単にアクセスできるようになります。 いつでも Azure portal からキーにアクセスできるので心配しないでください。
 3. 左側のナビゲーションで、 **[設定]** をクリックします。
@@ -265,13 +265,13 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
    * **[Save]** をクリックします。
 
 > [!TIP]
-> 詳しくは、「[ボットを Direct Line Speech に接続する (プレビュー)](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)」をご覧ください。 このページには、追加情報と既知の問題が記載されています。
+> 詳細については、「[ボットを Direct Line Speech に接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)」をご覧ください。 このページには、追加情報と既知の問題が記載されています。
 
 ## <a name="build-the-direct-line-speech-client"></a>Direct Line Speech クライアントを構築する
 
 この手順では、Direct Line Speech クライアントを構築します。 クライアントは、C# で作成された Windows Presentation Foundation (WPF) アプリであり、[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) を使用して、Direct Line Speech チャネルを使用したボットとの通信を管理します。 これを使用して、カスタム クライアント アプリを作成する前にボットと対話し、テストします。
 
-Direct Line Speech クライアントには、ボットへの接続の構成、テキストでの会話の表示、JSON 形式での Bot-Framework アクティビティの表示、およびアダプティブカードの表示を行える単純な UI が用意されています。 カスタム ウェイク ワードの使用もサポートされます。 このクライアントを使用して、ボットとの対話を行い、音声応答を受信します。
+Direct Line Speech クライアントには、ボットへの接続の構成、テキストでの会話の表示、JSON 形式での Bot-Framework アクティビティの表示、およびアダプティブカードの表示を行える単純な UI が用意されています。 カスタム キーワードの使用もサポートされます。 このクライアントを使用して、ボットとの対話を行い、音声応答を受信します。
 
 先に進む前に、マイクとスピーカーが有効で動作していることを確認してください。
 
@@ -293,11 +293,11 @@ Direct Line Speech クライアントには、ボットへの接続の構成、�
 |エラー ConnectionFailure:Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:応答状態コードは成功を示していません:500 (InternalServerError)| ボットによって、出力アクティビティ [[音声入力]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドにニューラル音声が指定されましたが、Speech サブスクリプション キーに関連付けられている Azure リージョンではニューラル音声がサポートされていません。 「[標準およびニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)」をご覧ください。|
 |エラー ConnectionFailure:Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1000。 エラーの詳細:Exceeded maximum web socket connection idle duration(> 300000 ms) (Web ソケット接続アイドル期間の最大値 (> 30 万ミリ秒) を超えました)| これは、チャネルへの接続が開いたまま、5 分より長く非アクティブになっている場合に予期されるエラーです。 |
 
-発生している問題が表に記載されていない場合は、「[音声優先仮想アシスタントのプレビュー:よく寄せられる質問](https://docs.microsoft.com/azure/cognitive-services/speech-service/faq-voice-first-virtual-assistants)」をご覧ください。
+発生している問題が表に記載されていない場合は、「[音声アシスタント: よく寄せられる質問](faq-voice-assistants.md)」をご覧ください。
 
 ### <a name="view-bot-activities"></a>ボット アクティビティの表示
 
-すべてのボットでは、**アクティビティ** メッセージが送受信されます。 Direct Line Speech クライアントの **[アクティビティ ログ]** ウィンドウには、クライアントがボットから受信した各アクティビティのタイムスタンプ付きログが表示されます。 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) メソッドを使用して、クライアントからボットに送信されたアクティビティを確認することもできます。 ログ項目を選択すると、関連付けられているアクティビティの詳細が JSON として表示されます。
+すべてのボットでは、**アクティビティ** メッセージが送受信されます。 Direct Line Speech クライアントの **[アクティビティ ログ]** ウィンドウには、クライアントがボットから受信した各アクティビティのタイムスタンプ付きログが表示されます。 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) メソッドを使用して、クライアントからボットに送信されたアクティビティを確認することもできます。 ログ項目を選択すると、関連付けられているアクティビティの詳細が JSON として表示されます。
 
 クライアントで受信されたアクティビティの json のサンプルを次に示します。
 ```json
@@ -342,37 +342,37 @@ Direct Line Speech クライアントでは、Speech SDK を含む NuGet パッ�
 - [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) -構成設定 (Speech サブスクリプション キー、キーのリージョン、ボット シークレット) 用
 - [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor) - 認識された音声とボットの応答を処理するためのチャネル接続イベントとクライアント サブスクリプション イベントの管理用。
 
-## <a name="add-custom-wake-word-activation"></a>カスタム ウェイク ワードのアクティブ化を追加する
+## <a name="add-custom-keyword-activation"></a>カスタム キーワードのアクティブ化を追加する
 
-Speech SDK では、カスタム ウェイク ワードのアクティブ化がサポートされます。 Microsoft のアシスタントの "コルタナさん" と同様に、選択したウェイク ワードを継続的にリッスンするアプリを作成できます。 ウェイク ワードは、1 つの単語または複数の単語から成る語句であることにご注意ください。
+Speech SDK では、カスタム キーワードのアクティブ化がサポートされます。 Microsoft のアシスタントの "コルタナさん" と同様に、選択したキーワードを継続的にリッスンするアプリを作成できます。 キーワードは、1 つの単語または複数の単語から成る語句であることにご注意ください。
 
 > [!NOTE]
-> "*ウェイク ワード*" という用語は、多くの場合、"*キーワード*" と同じ意味で使用され、Microsoft のドキュメントでは両方とも使用されている可能性があります。
+> "*キーワード*" という用語は、多くの場合、"*ウェイク ワード*" と同じ意味で使用され、Microsoft のドキュメントでは両方とも使用されている場合があります。
 
-ウェイク ワードの検出はクライアント アプリ上で行われます。 ウェイク ワードを使用している場合、オーディオは、ウェイク ワードが検出された場合にのみ、Direct Line Speech チャネルにストリーミングされます。 Direct Line Speech チャネルには、"*キーワード検証 (KWV)* " と呼ばれるコンポーネントが含まれています。これにより、クラウド内でより複雑な処理が実行されて、選択したウェイク ワードがオーディオ ストリームの先頭にあることが確認されます。 キー ワードの検証に成功すると、チャネルがボットと通信します。
+キーワードの検出はクライアント アプリ上で行われます。 キーワードを使用している場合、キーワードが検出された場合にのみ、オーディオが Direct Line Speech チャネルにストリーミングされます。 Direct Line Speech チャネルには、"*キーワード検証 (KWV)* " と呼ばれるコンポーネントが含まれています。これにより、クラウド内でより複雑な処理が実行されて、選択したキーワードがオーディオ ストリームの先頭にあることが確認されます。 キー ワードの検証に成功すると、チャネルがボットと通信します。
 
-これらの手順に従って、ウェイク ワード モデルを作成し、このモデルを使用するように Direct Line Speech クライアントを構成して、最後にボットを使用してテストします。
+これらの手順に従って、キーワード モデルを作成し、このモデルを使用するように Direct Line Speech クライアントを構成して、最後にボットを使用してテストします。
 
-1. これらの手順に従い、[Speech Service を使用してカスタム ウェイク ワードを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)します。
-2. 前の手順でダウンロードしたモデル ファイルを解凍します。 これには、ウェイク ワードに由来する名前が付けられています。 `kws.table` という名前のファイルを探しています。
+1. これらの手順に従い、[Speech Service を使用してキーワードを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)します。
+2. 前の手順でダウンロードしたモデル ファイルを解凍します。 これには、キーワードに由来する名前が付けられています。 `kws.table` という名前のファイルを探しています。
 3. Direct Line Speech クライアント内で、 **[設定]** メニューを見つけます (右上にある歯車アイコンを探します)。 **[Model file path]\(モデル ファイルのパス\)** を特定して、手順 2. の `kws.table` ファイルの完全なパス名を入力します。
-4. **[有効]** というラベルの付いたボックスをオンにしてください。 チェック ボックスの横に、次のメッセージが表示されます:"Will listen for the wake word upon next connection" (次の接続時にウェイク ワードをリッスンする)。 間違ったファイルまたは無効なパスを指定した場合は、エラー メッセージが表示されます。
+4. **[有効]** というラベルの付いたボックスをオンにしてください。 チェック ボックスの横に、次のメッセージが表示されます:"Will listen for the keyword upon next connection" (次の接続時にキーワードをリッスンする)。 間違ったファイルまたは無効なパスを指定した場合は、エラー メッセージが表示されます。
 5. Speech **サブスクリプション キー**、**サブスクリプション キーのリージョン**を入力し、 **[OK]** をクリックして **[設定]** メニューを閉じます。
-6. **[Bot Secret]\(ボット シークレット\)** を選択し、 **[再接続]** をクリックします。 次のようなメッセージが表示されます:"New conversation started - type, press the microphone button, or say the wake word" (新しい会話が開始しました - 入力するか、マイク ボタンを押すか、ウェイク ワードを話してください)。 これで、アプリは継続的にリッスンします。
-7. ウェイク ワードで始まる任意の語句を発声します。 たとえば、" **{自分のウェイクワード}** 、今何時?" などです。 ウェイク ワードを発声した後に一時停止する必要はありません。 完了すると、次の 2 つの処理が行われます。
+6. **[Bot Secret]\(ボット シークレット\)** を選択し、 **[再接続]** をクリックします。 次のようなメッセージが表示されます:"New conversation started - type, press the microphone button, or say the keyword" (新しい会話が開始しました - 入力するか、マイク ボタンを押すか、キーワードを話してください)。 これで、アプリは継続的にリッスンします。
+7. キーワードで始まる任意の語句を発声します。 たとえば、" **{自分のキーワード}** 、今何時?" などです。 キーワードを発した後に間を置く必要はありません。 完了すると、次の 2 つの処理が行われます。
    * 話した内容についての音声テキストが表示されます
    * すぐ後に、ボットの応答が聞こえます
 8. ボットでサポートされている 3 種類の入力を使用した実験に進みます。
    * 下部のバーに入力されたテキスト
    * マイク アイコンを押して発声
-   * ウェイク ワードで始まる任意の語句の発声
+   * キーワードで始まる任意の語句の発声
 
-### <a name="view-the-source-code-that-enables-wake-word"></a>ウェイク ワードを有効にするソース コードの表示
+### <a name="view-the-source-code-that-enables-keyword"></a>キーワードを有効にするソース コードの表示
 
-Direct Line Client のソース コード内で、これらのファイルを調べて、ウェイク ワード検出を有効にするために使用されているコードを確認します。
+Direct Line Client のソース コード内で、これらのファイルを調べて、キーワード検出を有効にするために使用されているコードを確認します。
 
-1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/en-us/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) の呼び出しが含まれています。
-1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) には、継続的なウェイク ワード検出をアクティブにする Speech SDK メソッド [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) の呼び出しが含まれています。
+1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) の呼び出しが含まれています。
+1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) には、継続的なキーワード検出をアクティブにする Speech SDK メソッド [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) の呼び出しが含まれています。
 
 ## <a name="optional-change-the-language-and-redeploy-your-bot"></a>(省略可能) 言語を変更し、ボットを再デプロイする
 
@@ -409,7 +409,7 @@ Direct Line Client のソース コード内で、これらのファイルを調
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Speech SDK を使用して独自のクライアント アプリを構築する](quickstart-virtual-assistant-csharp-uwp.md)
+> [Speech SDK を使用して独自のクライアント アプリを構築する](quickstart-voice-assistant-csharp-uwp.md)
 
 ## <a name="see-also"></a>関連項目
 
@@ -419,5 +419,5 @@ Direct Line Client のソース コード内で、これらのファイルを調
   * [Bot Service pricing (Bot Service の価格)](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * 独自の音声対応ボットの構築とデプロイ:
-    * [Bot-Framework ボット](https://dev.botframework.com/)を構築します。 [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)に登録し、[音声用にボットをカスタマイズ](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)します
-    * 既存の [Bot-Framework ソリューション](https://github.com/microsoft/botframework-solutions)を調べます:[カスタムの音声優先仮想アシスタント](https://docs.microsoft.com/azure/cognitive-services/speech-service/voice-first-virtual-assistants)を構築し、[音声で有効にします](https://github.com/microsoft/botframework-solutions/blob/master/docs/howto/assistant/csharp/speechenablement.md)
+  * [Bot-Framework ボット](https://dev.botframework.com/)を構築します。 [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)に登録し、[音声用にボットをカスタマイズ](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)します
+  * 既存の [Bot-Framework ソリューション](https://github.com/microsoft/botframework-solutions)を調べます:[カスタムの音声アシスタント](https://docs.microsoft.com/azure/cognitive-services/speech-service/voice-assistants)を構築し、[音声対応にします](https://github.com/microsoft/botframework-solutions/blob/master/docs/howto/assistant/csharp/speechenablement.md)

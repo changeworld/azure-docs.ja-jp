@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 06b16af941004f6506b43fb36b4d79297b403595
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695142"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486906"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -42,12 +42,10 @@ ms.locfileid: "71695142"
 
 ユーザーがオプション (#3) を選ぶと、調整のための次のオプション (#4) が表示されます。 このシーケンスは、正しい最終応答 (#6) をユーザーが決定するまで続きます (#5)。
 
-> [!NOTE]
-> 上の画像では、プロンプトが確実に表示されるよう、 **[Enable multi-turn]\(複数ターンの有効化\)** チェック ボックスがオンになっています。 
 
 ### <a name="use-multi-turn-in-a-bot"></a>ボットで複数ターンを使用する
 
-コンテキスト会話を管理するには、[コードをボットに追加](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting)してクライアント アプリケーションを変更します。 コードを追加すると、ユーザーにプロンプトが見えるようになります。  
+KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選択して、QnA Maker ボットを Azure Bot Service にデプロイできます。 ボットで有効にしたチャット クライアントにプロンプトが表示されます。
 
 ## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>ドキュメントの構造から複数ターン会話を作成する
 
@@ -55,25 +53,25 @@ ms.locfileid: "71695142"
 
 ![複数ターン抽出の有効化チェック ボックス](../media/conversational-context/enable-multi-turn.png)
 
-このオプションを選択すると、複数ターン会話をドキュメントの構造から暗黙に示すことができます。 その構造が存在する場合、QnA Maker はインポート プロセスの一環として、質問と応答をペアにしたフォローアップ プロンプトを作成します。 
+このオプションを選択すると、QnA Maker でドキュメント構造内に存在する階層が抽出されます。 その階層はフォローアップ プロンプトに変換されて、階層のルートが親 QnA として機能します。 ドキュメントによっては、階層のルートに応答として機能する可能性のあるコンテンツが含まれていないため、代替の回答テキストとして使用する "既定の回答テキスト" を指定して、そのような階層を抽出できます。   
 
-複数ターン構造は、URL、PDF ファイル、または DOCX ファイルからのみ推論できます。 構造の例として、[Microsoft Surface ユーザー マニュアル PDF ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)の画像を表示します。 この PDF ファイルのサイズのために、QnA Maker リソースには、**B** (15 インデックス) 以上の **Search の価格レベル**が必要です。 
+複数ターン構造は、URL、PDF ファイル、または DOCX ファイルからのみ推論できます。 構造の例として、[Microsoft Surface ユーザー マニュアル PDF ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)の画像を表示します。 
 
 ![![ユーザー マニュアル内の構造の例](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-### <a name="determine-multi-turn-structure-from-format"></a>形式からの複数ターン構造の指定
+### <a name="building-your-own-multi-turn-document"></a>独自の複数ターンのドキュメントのビルド
 
-QnA Maker によって、以下から複数ターン構造を決定します。
+複数ターンのドキュメントを作成する場合は、次のガイドラインに留意してください。
 
-* 見出しのフォント サイズ - スタイル、色、またはその他のメカニズムを使用して、ドキュメント内の構造を暗黙に示す場合、QnA Maker では複数ターンのプロンプトが抽出されることはありません。 
-
-見出しのルールは次のとおりです。
+* 階層を示すには、見出しとサブ見出しを使用する。 たとえば、親 QnA を示すために h1、プロンプトとして使用する必要がある QnA を示すために h2 を使用できます。 後続の階層を示すには、小さい見出しサイズを使用する。 スタイル、色、その他のメカニズムを、ドキュメント内の構造を暗黙に示すために使用しないでください。QnA Maker では複数ターンのプロンプトが抽出されることはありません。 
 
 * 見出しの末尾に疑問符 `?` を付けないでください。 
 
-### <a name="add-file-with-multi-turn-prompts"></a>複数ターンのプロンプトを含むファイルを追加する
+* [サンプル ドキュメント](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)を独自の複数ターンのドキュメントを作成する参考として使用できます。
 
-複数ターンのドキュメントを追加すると、QnA Maker では構造からフォローアップ プロンプトを決定し、会話フローを作成します。 
+### <a name="adding-files-to-a-multi-turn-kb"></a>複数ターンの KB へのファイルの追加
+
+階層ドキュメントを追加すると、QnA Maker ではその構造からフォローアップ プロンプトを決定し、会話フローを作成します。 
 
 1. QnA Maker で、 **[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL や .pdf または .docx ファイルからの複数ターン抽出を有効にする\)** を有効にして作成された既存のナレッジ ベースを選択します 。 
 1. **[設定]** ページにアクセスし、追加するファイルまたは URL を選択します。 
@@ -91,7 +89,7 @@ QnA Maker によって、以下から複数ターン構造を決定します。
 
 表示される質問と応答のペアを減らして、コンテキスト会話の質問と応答のみにします。 
 
-**[オプションの表示]** を選択し、 **[Show context (PREVIEW)]\(コンテキストを表示 (プレビュー)\)** を選択します。 一覧には、フォローアップ プロンプトを含む質問と応答のペアが表示されます。 
+**[オプションの表示]** を選択し、 **[コンテキストを表示]** を選択します。 一覧には、フォローアップ プロンプトを含む質問と応答のペアが表示されます。 
 
 ![コンテキスト会話による質問と応答のペアのフィルター処理](../media/conversational-context/filter-question-and-answers-by-context.png)
 
@@ -111,7 +109,7 @@ QnA Maker によって、以下から複数ターン構造を決定します。
 
 1. 既存の質問と応答のペアをフォローアップ プロンプトとしてリンクするには、質問と応答のペアの行を選択します。 Surface マニュアルの場合、**Sign out** を検索して一覧を減らします。
 1. **Signout** の行の **[応答]** 列で、 **[Add follow-up prompt]\(フォローアップ プロンプトの追加\)** を選択します。
-1. **[Follow-up prompt (PREVIEW)]\(フォローアップ プロンプト (プレビュー)\)** ポップアップ ウィンドウのフィールドに、次の値を入力します。
+1. **[Follow-up prompt]\(フォローアップ プロンプト\)** ポップアップ ウィンドウのフィールドに、次の値を入力します。
 
     |フィールド|値|
     |--|--|
@@ -355,11 +353,8 @@ QnA Maker _GenerateAnswer_ JSON 応答は、`answers`オブジェクトの最初
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>QnA Maker ID でナレッジ ベースをクエリする
 
-最初の質問の応答で、フォローアップ プロンプトとそれに関連付けられた `qnaId` が返されます。 ID が付与されたので、フォローアップ プロンプトの要求本文でこれを渡すことができます。 要求本文に `qnaId` とコンテキスト オブジェクト (これには以前の QnA Maker プロパティが含まれます) が含まれる場合、GenerateAnswer は、ランキング アルゴリズムを使用して質問テキストによる応答を見つけるのではなく、ID により正確な質問を返します。 
+複数ターン機能を使用してカスタム アプリケーションをビルドする場合。 最初の質問の応答で、フォローアップ プロンプトとそれに関連付けられた `qnaId` が返されます。 ID が付与されたので、フォローアップ プロンプトの要求本文でこれを渡すことができます。 要求本文に `qnaId` とコンテキスト オブジェクト (これには以前の QnA Maker プロパティが含まれます) が含まれる場合、GenerateAnswer は、ランキング アルゴリズムを使用して質問テキストによる応答を見つけるのではなく、ID により正確な質問を返します。 
 
-## <a name="display-prompts-and-send-context-in-the-client-application"></a>クライアント アプリケーションでプロンプトを表示しコンテキストを送信する 
-
-ナレッジ ベースにプロンプトを追加し、テスト ウィンドウでフローをテストしました。 次にクライアント アプリケーションでこれらのプロンプトを使用する必要があります。 Bot Framework の場合、プロンプトは自動的にクライアント アプリケーションに表示されません。 この [Bot Framework のサンプル](https://aka.ms/qnamakermultiturnsample)をコードに含めることによって、クライアント アプリケーション内のユーザーのクエリへの応答の一部として、推奨されるアクションまたはボタンとしてプロンプトを表示できます。 クライアント アプリケーションは、現在の QnA Maker ID およびユーザー クエリを格納し、次回のユーザー クエリのために [GenerateAnswer API のコンテキスト オブジェクト](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts)に渡す必要があります。 
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>更新 API では表示の順序がサポートされている
 
