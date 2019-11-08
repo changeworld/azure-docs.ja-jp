@@ -1,6 +1,6 @@
 ---
 title: モデル結果の解釈
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: モデルのスコア付け出力を使用して視覚化し、アルゴリズムに最適なパラメーター セットを選択する方法。
 services: machine-learning
 ms.service: machine-learning
@@ -10,19 +10,19 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdeded35e1afb9313f2dd2c5842aef511ea0dd61
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60867303"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621664"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 内でモデル結果を解釈する
-このトピックでは、Azure Machine Learning Studio で予測結果を視覚化し、解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
+# <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデル結果を解釈する
+このトピックでは、Azure Machine Learning Studio (クラシック) で予測結果を視覚化および解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
 
 
 
-Azure Machine Learning Studio には、主に次の 4 種類の機械学習モデルがあります。
+クラシック バージョンの Azure Machine Learning Studio には、主に次の 4 種類の機械学習モデルがあります。
 
 * 分類
 * クラスタリング
@@ -31,15 +31,15 @@ Azure Machine Learning Studio には、主に次の 4 種類の機械学習モ�
 
 これらのモデルに基づく予測には、次のモジュールが使用されます。
 
-* [モデルのスコア付け][score-model]モジュールは分類と回帰に使用します。
-* [クラスターへの割り当て][assign-to-clusters]モジュールはクラスタリングに使用します。
-* [スコア マッチ ボックス レコメンダー][score-matchbox-recommender]は推奨システムに使用します。
+* 分類と回帰のための[モデルのスコア付け][score-model]モジュール
+* クラスタリングのための[クラスターへの割り当て][assign-to-clusters]モジュール
+* 推奨システムのための[マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]
 
-このドキュメントでは、これらのモジュールの各予測結果を解釈する方法について説明します。 これらのモデルの概要については、[Azure Machine Learning Studio でアルゴリズムを最適化するためにパラメーターを選択する方法](algorithm-parameters-optimize.md)に関するページをご覧ください。
+このドキュメントでは、これらのモジュールの各予測結果を解釈する方法について説明します。 これらのモジュールの概要については、[Azure Machine Learning Studio (クラシック) でアルゴリズムを最適化するためのパラメーターを選択する方法](algorithm-parameters-optimize.md)に関するページを参照してください。
 
-このトピックでは、モデルの評価ではなく、予測の解釈について説明します。 モデルを評価する方法の詳細については、「[Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法](evaluate-model-performance.md)」をご覧ください。
+このトピックでは、モデルの評価ではなく、予測の解釈について説明します。 モデルを評価する方法の詳細については、[Azure Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する方法](evaluate-model-performance.md)に関するページを参照してください。
 
-Azure Machine Learning Studio を初めて使用する場合は、手始めとして単純な実験を作成する方法について、[Azure Machine Learning Studio での簡単な実験の作成](create-experiment.md)に関するページをご覧ください。
+クラシック バージョンの Azure Machine Learning Studio が初めてであり、最初に単純な実験を作成するための支援が必要な場合は、[Azure Machine Learning Studio (クラシック) で単純な実験を作成する方法](create-experiment.md)に関するページを参照してください。
 
 ## <a name="classification"></a>分類
 分類問題には 2 つのサブ カテゴリがあります。
@@ -47,18 +47,18 @@ Azure Machine Learning Studio を初めて使用する場合は、手始めと�
 * 2 つのクラス (2 クラスまたは二項分類) のみに関する問題
 * 3 つ以上のクラス (多クラス分類) に関する問題
 
-Azure Machine Learning Studio には、これらの分類を処理するモジュールがそれぞれ用意されていますが、予測結果を解釈する方法に違いはほとんどありません。
+Azure Machine Learning Studio (クラシック) には、これらの各種類の分類に対処するためのさまざまなモジュールが含まれていますが、それらの予測結果を解釈するための方法はほぼ同じです。
 
 ### <a name="two-class-classification"></a>2 クラス分類
 **実験例**
 
-2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 Azure Machine Learning Studio に用意されているあやめのデータセットは、最もよく利用されている[あやめデータセット](https://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。これに含まれているインスタンスは、2 種類の花の品種 (クラス 0 とクラス 1) のみです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
+2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 クラシック バージョンの Azure Machine Learning Studio で提供されるあやめのデータ セットは、2 つの花の種 (クラス 0 と 1) のみのインスタンスが含まれた一般的な[あやめのデータ セット](https://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
 
 ![あやめの実験のスクリーンショット](./media/interpret-model-results/1.png)
 
 図 1. あやめの 2 クラス分類問題の実験
 
-この問題を解決するために、図 1 に示すとおり実験が実行されました。 2 クラスのブースト デシジョン ツリー モデルがトレーニングされ、スコア付けされました。 これで、[モデルのスコア付け][score-model]モジュールの出力ポートをクリックし、 **[視覚化]** をクリックすると、[モデルのスコア付け][score-model]モジュールから予測結果を視覚化できます。
+この問題を解決するために、図 1 に示すとおり実験が実行されました。 2 クラスのブースト デシジョン ツリー モデルがトレーニングされ、スコア付けされました。 これで、[モデルのスコア付け][score-model]モジュールの出力ポートをクリックしてから **[視覚化]** をクリックすることによって、[モデルのスコア付け][score-model]モジュールの予測結果を視覚化できるようになりました。
 
 ![モデルのスコア付けモジュール](./media/interpret-model-results/1_1.png)
 
@@ -80,7 +80,7 @@ Azure Machine Learning Studio には、これらの分類を処理するモジ�
 
 図 3: あやめの 2 クラス分類問題のスコア付け実験
 
-次は、Web サービスの入力と出力を設定する必要があります。 入力は、[モデルのスコア付け][score-model]の右の入力ポートです。これは、あやめの特徴の入力です。 どの出力を選択するかは、予測されたクラス (スコア付けラベル)、スコア付け確率、その両方のどれを使用するかによって異なります。 この例では両方を使用します。 目的の出力列を選ぶには、[データセット内の列の選択][select-columns]モジュールを使用します。 [データセット内の列の選択][select-columns]モジュールをクリックし、 **[列セレクターの起動]** をクリックしたら、 **[スコア付けラベル]** と **[スコア付け確率]** を選択します。 [データセット内の列の選択][select-columns]モジュールの出力ポートを設定し、もう一度実行して、 **[Web サービスの発行]** をクリックすれば、スコア付け実験を Web サービスとして発行する準備が完了します。 最終的な実験は、図 4 のようになります。
+次は、Web サービスの入力と出力を設定する必要があります。 この入力は、[モデルのスコア付け][score-model]の右の入力ポート (あやめの特徴の入力) です。 どの出力を選択するかは、予測されたクラス (スコア付けラベル)、スコア付け確率、その両方のどれを使用するかによって異なります。 この例では両方を使用します。 目的の出力列を選択するには、[データセット内の列の選択][select-columns]モジュールを使用します。 [[データセット内の列の選択]][select-columns]、 **[列セレクターの起動]** の順にクリックし、 **[スコア付けラベル]** と **[スコア付け確率]** を選択します。 [データセット内の列の選択][select-columns]の出力ポートを設定し、それを再度実行したら、 **[Web サービスの発行]** をクリックすることによりスコア付け実験を Web サービスとして発行する準備ができました。 最終的な実験は、図 4 のようになります。
 
 ![あやめの 2 クラス分類の実験](./media/interpret-model-results/4.png)
 
@@ -107,7 +107,7 @@ Web サービスを実行し、テスト インスタンスの特徴の値を入
 
 図 6: 文字認識の多クラス分類問題の実験
 
-[モデルのスコア付け][score-model]モジュールの出力ポートをクリックしてから **[視覚化]** をクリックし、[モデルのスコア付け][score-model]モジュールから得られた結果を視覚化すると、図 7 に示す内容が表示されます。
+[モデルのスコア付け][score-model]モジュールの出力ポートをクリックしてから **[視覚化]** をクリックすることによって、[モデルのスコア付け][score-model]モジュールの結果を視覚化すると、図 7 に示す内容が表示されます。
 
 ![モデルのスコア付けの結果](./media/interpret-model-results/7.png)
 
@@ -119,7 +119,7 @@ Web サービスを実行し、テスト インスタンスの特徴の値を入
 
 **Web サービスの発行**
 
-各エントリのスコア付けラベルと、そのスコア付けラベルの確率を取得することもできます。 基本的なロジックは、すべてのスコア付け確率の中から最も高い確率を見つけることです。 そのためには、[R スクリプトの実行][execute-r-script]モジュールを使用する必要があります。 図 8 に R コードを、図 9 に実験の結果を示します。
+各エントリのスコア付けラベルと、そのスコア付けラベルの確率を取得することもできます。 基本的なロジックは、すべてのスコア付け確率の中から最も高い確率を見つけることです。 これを行うには、[R スクリプトの実行][execute-r-script]モジュールを使用する必要があります。 図 8 に R コードを、図 9 に実験の結果を示します。
 
 ![R コード例](./media/interpret-model-results/8.png)
 
@@ -185,7 +185,7 @@ Web サービスを実行して返された結果は、図 14 のようになり
 
 クラスタリングは、トレーニング データセットがグランドトルースのラベルを単独で持たない点で、分類とは異なります。 クラスタリングでは、トレーニング データセットのインスタンスを個別のクラスターにグループ化します。 トレーニング プロセス中に、モデルは特徴ごとの違いを学習してエントリにラベルを付けます。 その後、トレーニング済みモデルを使用して、後続のエントリをさらに分類できます。 クラスタリング問題で使用する結果には 2 つのパートがあります。 最初のパートでは、トレーニング データセットにラベルを付け、2 つ目のパートでは、トレーニング済みモデルを使用して新しいデータセットを分類します。
 
-結果の最初のパートは、[トレーニング クラスタリング モデル][train-clustering-model] モジュールの左側の出力ポートをクリックし、 **[視覚化]** をクリックすると視覚化できます。 図 16 は、その視覚化を示しています。
+結果の最初のパートは、[クラスタリング モデルのトレーニング][train-clustering-model]の左の出力ポートをクリックしてから **[視覚化]** をクリックすることによって視覚化できます。 図 16 は、その視覚化を示しています。
 
 ![クラスタリング結果](./media/interpret-model-results/16.png)
 
@@ -226,7 +226,7 @@ Web サービスを実行して返された結果は、図 19 のようになり
 * 顧客の特徴データ
 * レストラン特徴データ
 
-Azure Machine Learning Studio の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用し、次のようなことを処理できます。
+クラシック バージョンの Azure Machine Learning Studio の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用すると、次のいくつかのことを実行できます。
 
 * 特定のユーザーと項目の評価を予測する
 * 特定のユーザーに項目を推奨する
@@ -237,7 +237,7 @@ Azure Machine Learning Studio の[マッチボックス レコメンダーのト
 
 ![マッチボックス レコメンダー](./media/interpret-model-results/19_1.png)
 
-レコメンダー システム用の一般的な Azure Machine Learning Studio の実験は、図 20 のようになります。 これらのレコメンダー システム モジュールの使用方法については、「[Train Matchbox Recommender (マッチボックス レコメンダーのトレーニング)][train-matchbox-recommender]」と「[Score Matchbox Recommender (スコア マッチボックス レコメンダーのスコア付け)][score-matchbox-recommender]」をご覧ください。
+レコメンダー システム用の一般的な Azure Machine Learning Studio (クラシック) の実験は図 20 のようになります。 これらのレコメンダー システム モジュールを使用する方法については、[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender]および[マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]に関するページを参照してください。
 
 ![レコメンダー システムの実験](./media/interpret-model-results/20.png)
 
@@ -247,7 +247,7 @@ Azure Machine Learning Studio の[マッチボックス レコメンダーのト
 
 **特定のユーザーと項目の評価を予測する**
 
-**[Recommender prediction kind]** で **[Rating Prediction]** を選択し、レコメンダー システムで特定のユーザーと項目に対する評価を予測するよう指定します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 21 のようになります。
+**[Recommender prediction kind]** で **[Rating Prediction]** を選択し、レコメンダー システムで特定のユーザーと項目に対する評価を予測するよう指定します。 [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]の出力の視覚化は図 21 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 評価予測](./media/interpret-model-results/21.png)
 
@@ -257,7 +257,7 @@ Azure Machine Learning Studio の[マッチボックス レコメンダーのト
 
 **特定のユーザーに項目を推奨する**
 
-**[Recommender prediction kind]** メニューで **[Item Recommendation]** を選択し、レコメンダー システムで特定のユーザーに対して項目を勧めるよう指定します。 このシナリオでは、最後に *Recommended item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]** を選択します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 22 のようになります。
+**[Recommender prediction kind]** メニューで **[Item Recommendation]** を選択し、レコメンダー システムで特定のユーザーに対して項目を勧めるよう指定します。 このシナリオでは、最後に *Recommended item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]** を選択します。 [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]の出力の視覚化は図 22 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 項目の推奨](./media/interpret-model-results/22.png)
 
@@ -267,7 +267,7 @@ Azure Machine Learning Studio の[マッチボックス レコメンダーのト
 
 **特定のユーザーに関連するユーザーを検索する**
 
-**[Recommender prediction kind]** メニューで **[Related Users]** を選択し、レコメンダー システムで特定のユーザーに関連するユーザーを検索するよう指定します。 関連するユーザーとは、類似する嗜好を持つユーザーのことです。 このシナリオでは、最後に *Related user selection* パラメーターも選ぶ必要があります。 オプション **[From Users That Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Users]** を選択します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 23 のようになります。
+**[Recommender prediction kind]** メニューで **[Related Users]** を選択し、レコメンダー システムで特定のユーザーに関連するユーザーを検索するよう指定します。 関連するユーザーとは、類似する嗜好を持つユーザーのことです。 このシナリオでは、最後に *Related user selection* パラメーターも選ぶ必要があります。 オプション **[From Users That Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Users]** を選択します。 [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]の出力の視覚化は図 23 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 関連ユーザー](./media/interpret-model-results/23.png)
 
@@ -277,7 +277,7 @@ Azure Machine Learning Studio の[マッチボックス レコメンダーのト
 
 **特定のユーザーに関連する項目を検索する**
 
-**[Recommender prediction kind]** で **[Related Items]** を選択し、レコメンダー システムで特定の項目に関連する項目を検索するよう指定します。 関連アイテムとは、同じユーザーが満足する可能性が最も高い項目です。 このシナリオでは、最後に *Related item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]** を選択します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 24 のようになります。
+**[Recommender prediction kind]** で **[Related Items]** を選択し、レコメンダー システムで特定の項目に関連する項目を検索するよう指定します。 関連アイテムとは、同じユーザーが満足する可能性が最も高い項目です。 このシナリオでは、最後に *Related item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]** を選択します。 [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]の出力の視覚化は図 24 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 関連項目](./media/interpret-model-results/24.png)
 

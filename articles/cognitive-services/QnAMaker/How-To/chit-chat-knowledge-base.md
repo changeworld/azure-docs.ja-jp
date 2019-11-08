@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a8ebd0b36c6ee8bf6762a70af9f4a7c09f6b118d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 418324ea0d50cb2f8ff4a30018a31e7807d52eac
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955145"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602597"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>ナレッジ ベースにおしゃべりを追加する
 
@@ -38,13 +38,26 @@ ms.locfileid: "68955145"
 |Enthusiastic (熱心)|"I'm a bot, so I don't have an age." (私はボットですから、年齢はありません。)|
 ||
 
-> [!NOTE]
-> おしゃべりのサポートは、現時点では英語でのみ提供されています。 
+
+## <a name="language-support"></a>言語のサポート
+
+おしゃべりデータ セットは、次の言語でサポートされています。
+
+|言語|
+|--|
+|中国語|
+|英語|
+|フランス語|
+|ドイツ|
+|イタリア語|
+|日本語|
+|韓国語|
+|ポルトガル語|
+|スペイン語|
+
 
 ## <a name="add-chit-chat-during-kb-creation"></a>KB 作成時におしゃべりを追加する
 ナレッジ ベースの作成中に、ソース URL とファイルを追加した後で、おしゃべりの追加を選択することができます。 おしゃべりのベースとして使用するパーソナリティを選択します。 おしゃべりを追加しない場合、またはデータ ソース内におしゃべりのサポートが既にある場合は、 **[なし]** を選択します。 
-   
-![作成時におしゃべりを追加する](../media/qnamaker-how-to-chit-chat/create-kb-chit-chat.png)
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>既存の KB におしゃべりを追加する
 KB を選択し、 **[設定]** ページに移動します。 適切な **.tsv** 形式のすべてのおしゃべりデータセットへのリンクがあります。 目的のパーソナリティをダウンロードして、ファイル ソースとしてアップロードします。 ファイルをダウンロードおよびアップロードするときは、形式またはメタデータを編集しないでください。 

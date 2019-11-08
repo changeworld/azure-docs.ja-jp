@@ -264,7 +264,7 @@
       displayName: ARM
       href: 'https://azure.microsoft.com/documentation/templates'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+      href: 'https://azure.microsoft.com/pricing/details/application-gateway/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: スタック オーバーフロー
