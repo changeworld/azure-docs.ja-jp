@@ -16,4 +16,4 @@ ms.lasthandoff: 11/04/2019
 ms.locfileid: "73492632"
 ---
 > [!TIP]
-> 現在 Machine Learning Studio (クラシック) をご利用 (または評価中) のお客様は、ML モジュールのドラッグアンドドロップ対応__に加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティを備えた [Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/service/ui-concept-visual-interface) (プレビュー) をぜひお試しください。
+> 現在 Machine Learning Studio (クラシック) をご利用 (または評価中) のお客様は、ML モジュールのドラッグアンドドロップ対応 __に加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティを備えた [Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/service/ui-concept-visual-interface) (プレビュー) をぜひお試しください。
