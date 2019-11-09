@@ -6,14 +6,14 @@ author: bandersmsft
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b1cc034b4d397f170b57e873cb9a5d74c91f83f4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806924"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746451"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>月払いで予約を購入する
 
@@ -24,6 +24,7 @@ ms.locfileid: "70806924"
 月払いの対象となるのは次のとおりです。
 
 - 仮想マシン
+- Azure Storage
 - SQL Database
 - SQL Data Warehouse
 - Cosmos DB
@@ -60,20 +61,6 @@ ms.locfileid: "70806924"
 月払いの予約が取り消された場合、将来支払われることになっていた金額の取り消しに対して、Microsoft はキャンセル料を適用する可能性があります。 確定済み支払い残金の上限は、払戻の上限である 50,000 米国ドルとなります。
 
 交換と払戻の詳細については、「[Azure の予約のセルフサービスによる交換と払戻](billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
-
-## <a name="faq"></a>FAQ
-
-Q. Azure で "一部支払いによる前払い予約" は利用できますか?<br>
-A. いいえ。 予約のコストは前払いも月払いも同じであるため、Microsoft では一部前払いをサポートしていません。
-
-Q. Microsoft クラウド ソリューション プロバイダー (CSP) プログラムで月払いを利用することはできますか?<br>
-A. はい。パートナー様は、その CSP 顧客向けの予約を Azure portal で購入することができます。 パートナー センターで月払いで予約を購入することはできません。
-
-Q. 米国の Azure Government を利用しているのですが、予約を月払いで購入することはできますか?<br>
-A. 現時点では連携しません。
-
-Q. サポート チケットを作成せずに自分で Azure portal で交換または払戻を行いたいのですが、いつできますか?<br>
-A. 現時点では連携しません。 月払いで購入された予約の交換と払戻のリクエストは、Azure サポートにて対応させていただきます。
 
 ## <a name="next-steps"></a>次の手順
 
