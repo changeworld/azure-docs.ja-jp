@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: ea7add9277dde79d0dd2bf960d287f3aba0c3df9
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 8767340ffc749381a932c51f926376be66f8b4e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375425"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850412"
 ---
 契約の種類を確認して、Microsoft 顧客契約の請求先アカウントへのアクセスがあるかどうかを判断します。
  
-1. [Azure Portal]( http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
  
 2. **[コストの管理と請求]** で検索します。
  

@@ -12,12 +12,12 @@ metadata:
   title: Personalizer のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
-  ms.openlocfilehash: 19736d881400a311964920f5669a0e9423891f9e
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: d71f5f673a3008f13f7bb762fc48a687c0cf0ddb
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73604210"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73889263"
 landingContent:
 - title: Personalizer について
   linkLists:
@@ -66,7 +66,7 @@ landingContent:
     - text: NuGet パッケージ
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet のリファレンス ドキュメント
-      url: https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
   - linkListType: get-started
     links:
     - text: Node.js を使用した Personalizer ループの開発

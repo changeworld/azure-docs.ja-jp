@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 015803c50aab06cadd290783afca6a41673f8be3
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 42e52ac964ec78e12be64d1bda63d7d04ff9beca
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376809"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850411"
 ---
 契約の種類を確認して、Microsoft Partner Agreement の課金アカウントにアクセスできるかどうかを判断します。
  
-1. [Azure Portal]( http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
  
 2. **[コストの管理と請求]** で検索します。
  
