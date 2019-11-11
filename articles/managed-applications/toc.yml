@@ -31,6 +31,8 @@
       href: publish-marketplace-app.md
     - name: カスタム プロバイダーを使用してマネージド アプリケーションを作成する
       href: tutorial-create-managed-app-with-custom-provider.md
+    - name: カスタム プロバイダーを使用したリソースのオンボード
+      href: tutorial-custom-providers-resource-onboarding.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -45,6 +47,10 @@
       href: custom-providers-overview.md
     - name: ビュー定義アーティファクト
       href: concepts-view-definition.md
+    - name: ロール定義のアーティファクト
+      href: concepts-custom-role-definition.md
+    - name: デバイスのオンボード
+      href: concepts-custom-providers-resourceonboarding.md
 - name: ハウツー ガイド
   items:
     - name: カスタム プロバイダー

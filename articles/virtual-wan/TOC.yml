@@ -34,6 +34,8 @@
       href: vpn-over-expressroute.md
     - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
       href: connect-virtual-network-gateway-vwan.md
+    - name: グローバル VNet ピアリングを構成する
+      href: global-peering-vnet.md
     - name: カスタム IPsec ポリシーを構成する
       href: virtual-wan-custom-ipsec-portal.md
     - name: ユーザー VPN 用の証明書を構成する

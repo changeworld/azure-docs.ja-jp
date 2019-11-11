@@ -39,12 +39,15 @@
           href: get-started-get-model-rest-apis.md
 - name: チュートリアル
   items:
+    - name: 分解可能なアプリの作成
+      items:
+        - name: 1. ユーザーの意図の識別
+          href: tutorial-intents-only.md
+        - name: 2. ユーザー データの抽出
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
     - name: アプリのビルド
       items:
-        - name: ユーザーの意図の識別
-          href: tutorial-intents-only.md
-        - name: 事前構築済みのモデルを使用して一般的なユーザー データを識別する
-          href: luis-tutorial-prebuilt-intents-entities.md
         - name: ユーザーの発話からセンチメントを取得する
           href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: 正規表現を使用して適切な形式のデータを取得する

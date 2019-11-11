@@ -1,39 +1,74 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: IoT プラグ アンド プレイのプレビューのドキュメント
+summary: IoT プラグ アンド プレイのプレビューを使用すると、デバイス モデルを定義することができます。デバイス モデルを使用すると、デバイス コードを記述することなく、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。
 metadata:
-  title: IoT プラグ アンド プレイのプレビューのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: チュートリアル、API リファレンス、ビデオ、その他のドキュメントを参照しながら、IoT プラグ アンド プレイを使用する方法について説明します。
-  author: dominicbetts
-  manager: philmea
-  ms.service: iot-pnp
+  title: IoT プラグ アンド プレイのプレビューのドキュメント
+  description: IoT プラグ アンド プレイのプレビューを使用すると、デバイス モデルを定義することができます。デバイス モデルを使用すると、デバイス コードを記述することなく、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。
   services: iot-pnp
+  ms.service: iot-pnp
   ms.topic: landing-page
-  ms.date: 07/23/2019
+  author: dominicbetts
   ms.author: dobett
-abstract:
-  description: IoT プラグ アンド プレイのプレビューを使用してデバイス モデルを定義する方法を説明します。デバイス モデルを使用すると、デバイス コードを記述することなく、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。 チュートリアル、API リファレンス、ビデオ、その他のドキュメントは、Azure IoT Central やパートナー アプリケーションなどのクラウド ソリューションにデバイスを接続するのに役立ちます。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video-thumb-pnp-introduction.png
-      width: 250
-    title: 'IoT プラグ アンド プレイの概要 (11:54)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: <a href="quickstart-create-pnp-device">デバイス機能モデルを使用してデバイスを作成する</a>方法を説明します。
-      - type: paragraph
-        text: <a href="quickstart-connect-pnp-device-solution">デバイスをソリューションに接続する</a>方法を説明します。
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-pnp-visual-studio-code">Visual Studio Code を使用してデバイスを作成する</a>
-          - html: <a href="tutorial-build-device-certification">認定に対応したデバイスを構築する</a>
-          - html: <a href="tutorial-certification-test">デバイスの認定を受ける</a>
+  manager: philmea
+  ms.date: 10/31/2019
+  ms.openlocfilehash: 442b9c5028ef899329912fa9d21ce780437d7970
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73570185"
+landingContent:
+- title: IoT プラグ アンド プレイ
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: IoT プラグ アンド プレイとは
+      url: overview-iot-plug-and-play.md
+  - linkListType: video
+    links:
+    - text: IoT プラグ アンド プレイの概要
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
+- title: デバイスの開発
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: IoT Hub にサンプル デバイスを接続する
+      url: quickstart-connect-pnp-device.md
+    - text: IoT Central にサンプル デバイスを接続する
+      url: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: デバイス機能モデルを使用してデバイスを作成する
+      url: quickstart-create-pnp-device.md
+  - linkListType: tutorial
+    links:
+    - text: Visual Studio Code を使用してデバイス機能モデルを作成し、テストする
+      url: tutorial-pnp-visual-studio-code.md
+    - text: 認定の準備が整ったデバイスを構築する
+      url: tutorial-build-device-certification.md
+    - text: デバイスの認定を受ける
+      url: tutorial-certification-test.md
+  - linkListType: how-to-guide
+    links:
+    - text: Visual Studio Code 用 Azure IoT Tools を使用する
+      url: howto-develop-with-vs-vscode.md
+    - text: Azure Certified for IoT ポータルにオンボードする
+      url: howto-onboard-portal.md
+  - linkListType: concept
+    links:
+    - text: 共通インターフェイス
+      url: concepts-common-interfaces.md
+- title: ソリューションを構築する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ご利用のソリューションに接続されているデバイスを操作する
+      url: quickstart-connect-pnp-device-solution.md
+  - linkListType: concept
+    links:
+    - text: モデル検出
+      url: concepts-model-discovery.md
+    - text: 共通インターフェイス
+      url: concepts-common-interfaces.md
+  - linkListType: how-to-guide
+    links:
+    - text: ソリューションからデバイスに接続する
+      url: howto-develop-solution.md

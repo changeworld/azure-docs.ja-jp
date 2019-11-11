@@ -434,9 +434,9 @@
                   href: msal-js-pass-custom-state-authentication-request.md
                 - name: プロンプトの動作
                   href: msal-js-prompt-behavior.md
-            - name: iOS と macOS での MSAL
+            - name: iOS および macOS 用の MSAL
               items:
-                - name: iOS 用と macOS 用の Microsoft Authentication Library の違い
+                - name: iOS および macOS 用の MSAL の違い
                   href: msal-differences-ios-macos.md
                 - name: キーチェーンの構成
                   href: howto-v2-keychain-objc.md

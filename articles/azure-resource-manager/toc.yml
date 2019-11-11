@@ -138,6 +138,8 @@
           href: resource-group-create-multiple.md
         - name: サブスクリプション レベルのリソース
           href: deploy-to-subscription.md
+        - name: 管理グループ レベルのリソース
+          href: deploy-to-management-group.md
     - name: テンプレートのデプロイ
       items:
         - name: デプロイ - ポータル

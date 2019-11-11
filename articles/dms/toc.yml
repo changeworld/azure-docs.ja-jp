@@ -8,6 +8,8 @@
   items:
     - name: サービスの作成 - ポータル
       href: quickstart-create-data-migration-service-portal.md
+    - name: ハイブリッド モードでのサービスの作成 - ポータル
+      href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: チュートリアル
   items:
     - name: オフラインで SQL Server から Azure SQL DB 単一データベースに移行する

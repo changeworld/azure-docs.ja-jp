@@ -141,6 +141,8 @@
       href: how-to-legacy-device-symm-key.md
     - name: 開発での SDK ツールの使用
       href: how-to-use-sdk-tools.md
+    - name: デバイスから追加データを送信する方法
+      href: how-to-send-additional-data.md
     - name: トラブルシューティング
       href: how-to-troubleshoot-dps.md
 - name: リファレンス

@@ -26,15 +26,31 @@
         - name: BLOB を使用した開発
           items:
             - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
+              items:
+                - name: .NET (v12 SDK)
+                  href: storage-quickstart-blobs-dotnet.md
+                - name: .NET (v11 SDK)
+                  href: storage-quickstart-blobs-dotnet-legacy.md
             - name: Java
-              href: storage-quickstart-blobs-java.md
+              items:
+                - name: Java (v12 SDK)
+                  href: storage-quickstart-blobs-java.md
+                - name: Java (v8 SDK)
+                  href: storage-quickstart-blobs-java-legacy.md
             - name: Python
-              href: storage-quickstart-blobs-python.md
-            - name: JavaScript (Node.js)
-              href: storage-quickstart-blobs-nodejs-v10.md
-            - name: JavaScript (ブラウザー)
-              href: storage-quickstart-blobs-javascript-client-libraries-v10.md
+              items:
+                - name: Python (v12 SDK)
+                  href: storage-quickstart-blobs-python.md
+                - name: Python (v2.1 SDK)
+                  href: storage-quickstart-blobs-python-legacy.md
+            - name: JavaScript
+              items:
+                - name: JavaScript (Node.js 用 v12 SDK)
+                  href: storage-quickstart-blobs-nodejs.md
+                - name: JavaScript (Node.js 用 v10 SDK)
+                  href: storage-quickstart-blobs-nodejs-v10.md
+                - name: JavaScript (ブラウザー用 v10 SDK)
+                  href: storage-quickstart-blobs-javascript-client-libraries-v10.md
             - name: Go
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -147,7 +163,7 @@
               href: storage-blob-performance-tiers.md
             - name: Azure Blob Storage のライフサイクルを管理する
               href: storage-lifecycle-management-concepts.md
-        - name: パフォーマンスとスケーリング
+        - name: パフォーマンス、スケーリング、コストの最適化
           items:
             - name: スケーラビリティとパフォーマンスのターゲット
               href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -155,8 +171,16 @@
               href: storage-performance-checklist.md
             - name: Blob Storage での待ち時間
               href: storage-blobs-latency.md
+            - name: Azure Storage の予約容量
+              href: storage-blob-reserved-capacity.md
         - name: コンカレンシー
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: BLOB データを検索して理解する
+          items:
+            - name: AI を使用して BLOB データを理解する
+              href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: BLOB データに対するフルテキスト検索
+              href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: データ移行
           items:
             - name: データ転送ソリューションの比較
@@ -223,6 +247,8 @@
                   href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: イベント処理
           href: storage-blob-event-overview.md
+        - name: Change Feed
+          href: storage-blob-change-feed.md
         - name: ページ BLOB の機能
           href: storage-blob-pageblob-overview.md
         - name: 静的な Web サイト
@@ -350,6 +376,8 @@
           href: storage-custom-domain-name.md
         - name: カスタム エンドポイントへのイベントのルーティング
           href: storage-blob-event-quickstart.md
+        - name: 変更フィード ログの処理
+          href: storage-blob-change-feed-how-to.md
         - name: Azure Search を使用した Blob Storage の検索
           href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: データの転送
@@ -385,7 +413,7 @@
             - name: 以前の SDK バージョン
               items:
                 - name: JavaScript (Node.js) (Storage SDK v2)
-                  href: storage-quickstart-blobs-nodejs.md
+                  href: storage-quickstart-blobs-nodejs-legacy.md
                 - name: JavaScript (ブラウザー) (Storage SDK v2)
                   href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: BLOB の管理
@@ -408,24 +436,24 @@
           href: /cli/azure/storage
         - name: .NET
           items:
-            - name: BLOB、キュー、ファイル
-              href: /dotnet/api/overview/azure/storage/client
+            - name: BLOB (バージョン 12.x)
+              href: /dotnet/api/azure.storage.blobs
             - name: データの移動
               href: /dotnet/api/microsoft.azure.storage.datamovement
             - name: ストレージ リソース プロバイダー
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: BLOB、キュー、ファイル (バージョン 12.x - プレビュー)
-              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-            - name: BLOB、キュー、ファイル (バージョン 8)
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: BLOB (バージョン 12.x)
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
+            - name: BLOB (バージョン 8.x)
+              href: /java/api/com.microsoft.azure.storage.blob
             - name: ストレージ リソース プロバイダー
               href: /java/api/overview/azure/storage/management
-        - name: Node.js
-          href: /javascript/api/overview/azure/storage
-        - name: Python
-          href: /python/api/overview/azure/storage
+        - name: JavaScript (バージョン 12.x)
+          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+        - name: Python (バージョン 12.x)
+          href: /python/api/azure-storage-blob/
         - name: REST
           items:
             - name: BLOB、キュー、テーブル、ファイル
@@ -600,7 +628,7 @@
         - name: ビッグ データの処理
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure サービスとの統合
-          href: ../blobs/data-lake-store-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure BLOB ファイル システムの URI
@@ -713,20 +741,24 @@
           href: /cli/azure/storage
         - name: .NET
           items:
-            - name: BLOB、キュー、テーブル、ファイル
-              href: /dotnet/api/overview/azure/storage/client
+            - name: BLOB (バージョン 12.x)
+              href: /dotnet/api/azure.storage.blobs
             - name: データの移動
               href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: リソース マネージャー
+            - name: ストレージ リソース プロバイダー
               href: /dotnet/api/overview/azure/storage/management
         - name: Java
           items:
-            - name: BLOB、キュー、ファイル (バージョン 12.x - プレビュー)
-              href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-            - name: BLOB、キュー、ファイル (バージョン 8)
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: BLOB (バージョン 12.x)
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
+            - name: BLOB (バージョン 8.x)
+              href: /java/api/com.microsoft.azure.storage.blob
             - name: ストレージ リソース プロバイダー
               href: /java/api/overview/azure/storage/management
+        - name: JavaScript (バージョン 12.x)
+          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+        - name: Python (バージョン 12.x)
+          href: /python/api/azure-storage-blob/
         - name: REST
           items:
             - name: BLOB、キュー、テーブル、ファイル

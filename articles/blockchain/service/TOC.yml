@@ -57,6 +57,8 @@
       href: data-manager-portal.md
     - name: データ マネージャーを構成する - CLI
       href: data-manager-cli.md
+    - name: Cosmos DB にデータを発行する
+      href: data-manager-cosmosdb.md
 - name: リソース
   items:
     - name: Blockchain REST API

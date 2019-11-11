@@ -295,7 +295,7 @@
                 - name: 例外
                   href: app/asp-net-exceptions.md
                 - name: ログ トレース
-                  href: app/java-trace-logs.md
+                  href: app/asp-net-trace-logs.md
                 - name: Unix メトリック
                   href: app/java-collectd.md
                 - name: 依存関係
@@ -318,6 +318,8 @@
                   href: app/opencensus-python.md
                 - name: 依存関係
                   href: app/opencensus-python-dependency.md
+                - name: Requests
+                  href: app/opencensus-python-request.md
             - name: Web ページ
               items:
                 - name: クライアント側の JavaScript
@@ -593,26 +595,39 @@
         - name: リソース ログ
           items:
             - name: 概要
+              displayname: Resource logs
               href: platform/resource-logs-overview.md
             - name: Azure Monitor ログの収集
+              displayname: Resource logs
               href: platform/resource-logs-collect-workspace.md
             - name: ストレージへのアーカイブ
+              displayname: Resource logs
               href: platform/resource-logs-collect-storage.md
             - name: Event Hubs へのストリーム
+              displayname: Resource logs
               href: platform/resource-logs-stream-event-hubs.md
         - name: アクティビティ ログ
           items:
             - name: 概要
+              displayname: Activity log
               href: platform/activity-logs-overview.md
+            - name: 診断設定を使用した収集
+              displayname: Activity log
+              href: platform/diagnostic-settings-subscription.md
             - name: 表示と取得
+              displayname: Activity log
               href: platform/activity-log-view.md
             - name: 収集と分析
+              displayname: Activity log
               href: platform/activity-log-collect.md
             - name: テナントをまたいだ収集
+              displayname: Activity log
               href: platform/activity-log-collect-tenants.md
             - name: エクスポート
+              displayname: Activity log
               href: platform/activity-log-export.md
             - name: スキーマ
+              displayname: Activity log
               href: platform/activity-log-schema.md
         - name: 診断設定
           items:
@@ -621,6 +636,7 @@
             - name: Resource Manager での診断設定の作成
               href: platform/diagnostic-settings-template.md
             - name: BLOB ストレージのフォーマットの変更
+              displayname: Diagnostic settings
               href: platform/resource-logs-blob-format.md
         - name: Event Hubs へのデータのストリーム配信
           href: platform/stream-monitoring-data-event-hubs.md

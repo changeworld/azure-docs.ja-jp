@@ -5,7 +5,7 @@
   items:
     - name: クラウド アプリの管理とシングル サインオンとは
       href: what-is-application-management.md
-    - name: 自動ユーザー プロビジョニングとは
+    - name: アプリケーションのプロビジョニングとは
       href: user-provisioning.md
     - name: オンプレミス アプリ用のアプリケーション プロキシとは
       href: what-is-application-proxy.md
@@ -17,7 +17,7 @@
       href: view-applications-portal.md
 - name: チュートリアル
   items:
-    - name: SaaS アプリのチュートリアル
+    - name: 統合されたギャラリー アプリ (ServiceNow、Salesforce、Dropbox など)
       href: /azure/active-directory/saas-apps/
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
       href: application-proxy-add-on-premises-application.md
@@ -66,12 +66,12 @@
               href: howto-saml-token-encryption.md
             - name: エンドユーザーのポータル
               href: end-user-experiences.md
-    - name: 自動ユーザー プロビジョニング
+    - name: アプリケーションのプロビジョニング (SCIM)
       items:
-        - name: 自動ユーザー プロビジョニングのデプロイの計画
-          href: plan-auto-user-provisioning.md
         - name: SCIM 対応アプリに対する自動プロビジョニング
           href: use-scim-to-provision-users-and-groups.md
+        - name: 自動ユーザー プロビジョニングのデプロイを計画する
+          href: plan-auto-user-provisioning.md
     - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: アプリケーション プロキシ
@@ -223,23 +223,21 @@
                   href: access-panel-extension-problem-installing.md
                 - name: セルフサービス アプリ アクセスの使用時のエラー
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: 自動ユーザー プロビジョニング
+    - name: アプリケーションのプロビジョニング (SCIM)
       items:
         - name: '[ユーザー プロビジョニングの構成]'
           items:
-            - name: ギャラリー アプリに対するユーザー プロビジョニング
+            - name: 手動プロビジョニングと自動プロビジョニングの比較
               href: application-provisioning-config-how-to.md
-            - name: マルチテナント アプリの自動ユーザー プロビジョニングの有効化
-              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: 自動ユーザー プロビジョニングの構成
               href: configure-automatic-user-provisioning-portal.md
-            - name: アプリケーション属性のカスタマイズ
+            - name: 属性マッピングのカスタマイズ
               href: Customize-application-attributes.md
-            - name: スコープ フィルター
+            - name: プロビジョニングするユーザーまたはグループの範囲指定
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: スコープ外のユーザーの削除のスキップ
               href: skip-out-of-scope-deletions.md
-            - name: プロビジョニング状態の確認
+            - name: プロビジョニングの状態とパフォーマンスの監視
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: 自動ユーザー プロビジョニングについてのレポート
               href: check-status-user-account-provisioning.md
@@ -249,20 +247,20 @@
           items:
             - name: ユーザー プロビジョニングのトラブルシューティング
               href: application-provisioning-config-problem.md
-            - name: 検疫の状態
+            - name: 承認の問題 (管理者の資格情報を保存できない)
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: ユーザーがプロビジョニングされない
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: 間違ったユーザーがプロビジョニングされている
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+            - name: プロビジョニング ジョブが検疫状態になる
               href: application-provisioning-quarantine-status.md
+            - name: ソース属性が存在しない
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: プロビジョニング ジョブが遅い
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: プロビジョニング ログ
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: マッピングするための属性の同期 - ギャラリー アプリ
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: 長時間かかる - ギャラリー アプリ
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: ギャラリー アプリケーションへのユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: ユーザーがプロビジョニングされない - ギャラリー アプリ
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: 間違ったユーザーがプロビジョニングされている - ギャラリー アプリ
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
     - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: コネクタの構成
@@ -357,10 +355,12 @@
               href: application-proxy-understand-cors-issues.md
 - name: リファレンス
   items:
-    - name: 自動ユーザー プロビジョニング
+    - name: アプリケーションのプロビジョニング (SCIM)
       items:
         - name: 属性マッピングの式の書き方
           href: functions-for-customizing-application-data.md
+        - name: プロビジョニング方法の選択
+          href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Azure AD Connect プロビジョニング エージェント
       items:
         - name: プロビジョニング エージェントのバージョン履歴

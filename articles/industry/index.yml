@@ -11,12 +11,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2777093db7486f17cf19b45db08bbd0168a4e2a8
-  ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+  ms.openlocfilehash: bd0cfb1cf181cabec83c65d6cece139685c286ec
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/07/2019
-  ms.locfileid: "73797076"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73809842"
 highlightedContent:
   items:
   - title: Azure FarmBeats

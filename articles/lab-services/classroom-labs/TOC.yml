@@ -52,6 +52,8 @@
       items:
         - name: クラスルーム ラボを作成して管理する
           href: how-to-manage-classroom-labs.md
+        - name: ダッシュボードを使用する
+          href: use-dashboard.md
         - name: テンプレートを設定、カスタマイズ、公開する
           href: how-to-create-manage-template.md
         - name: 仮想マシン プールを設定および管理する
@@ -80,6 +82,8 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/labservices/'
+    - name: Az.LabServices PowerShell モジュール (プレビュー)
+      href: reference-powershell-module.md
 - name: リソース
   items:
     - name: Azure の更新情報

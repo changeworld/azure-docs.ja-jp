@@ -174,7 +174,7 @@
 - name: ブート エラー
   href: boot-error-troubleshoot.md
   items:
-    - name: Azure 仮想マシンの起動エラー
+    - name: Grub の復旧
       href: troubleshoot-vm-boot-error.md
     - name: ブート診断
       href: boot-diagnostics.md

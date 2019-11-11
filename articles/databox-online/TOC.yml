@@ -1,4 +1,4 @@
-- name: Azure Data Box のドキュメント - オンライン転送
+- name: Azure Stack Edge と Data Box Gateway のドキュメント
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
@@ -57,11 +57,11 @@
           href: data-box-gateway-1905-release-notes.md
         - name: 一般公開 (GA)
           href: data-box-gateway-release-notes.md
-- name: Data Box Edge
+- name: Azure Stack Edge
   items:
     - name: 概要
       items:
-        - name: Azure Data Box Edge とは
+        - name: Azure Stack Edge とは
           href: data-box-edge-overview.md
     - name: チュートリアル
       items:
@@ -125,9 +125,9 @@
           href: data-box-gateway-release-notes.md
 - name: リソース
   items:
-    - name: 'Data Box Edge C# モジュールのサンプル (.NET)'
+    - name: 'Azure Stack Edge C# モジュールのサンプル (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Data Box Edge/Gateway 製品
+    - name: Azure Stack Edge/Data Box Gateway の製品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

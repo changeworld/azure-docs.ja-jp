@@ -121,11 +121,17 @@
     - name: U-SQL 開発者向けの Apache Spark について
       items:
         - name: U-SQL 開発者向けの Apache Spark について
-          href: data-lake-analytics-understand-spark-for-usql-developers.md
+          href: understand-spark-for-usql-developers.md
         - name: Apache Spark のデータ形式について
-          href: data-lake-analytics-understand-spark-data-formats.md
+          href: understand-spark-data-formats.md
         - name: Apache Spark のコードの概念ついて
-          href: data-lake-analytics-understand-spark-code-concepts.md
+          href: understand-spark-code-concepts.md
+    - name: U-SQL ジョブのトラブルシューティング
+      items:
+        - name: U-SQL ランタイム エラーのトラブルシューティング
+          href: runtime-troubleshoot.md
+        - name: .NET アップグレードのトラブルシューティング
+          href: dotnet-upgrade-troubleshoot.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

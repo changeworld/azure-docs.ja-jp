@@ -88,10 +88,6 @@
           href: ingest-data-logstash.md
         - name: Azure Data Factory を使用してデータをコピーする
           href: data-factory-load-data.md
-    - name: デプロイ
-      items:
-        - name: DevOps タスク
-          href: devops.md
     - name: データのクエリを実行する
       items:
         - name: クエリを作成する
@@ -136,6 +132,8 @@
           href: tableau.md
         - name: SiSense
           href: sisense.md
+        - name: Redash
+          href: redash.md
     - name: 管理
       items:
         - name: クラスター
@@ -166,6 +164,10 @@
               href: delete-data.md
             - name: 重複したデータを処理する
               href: dealing-with-duplicates.md
+    - name: デプロイ
+      items:
+        - name: クラスターを VNet にデプロイする
+          href: vnet-deployment.md
     - name: 監視
       items:
         - name: 診断ログを使用してインジェストを監視する
@@ -186,6 +188,8 @@
           href: connect-from-databricks.md
         - name: Jupyter Notebook と Kqlmagic でデータを分析する
           href: kqlmagic.md
+        - name: Azure Pipelines
+          href: devops.md
     - name: トラブルシューティング
       items:
         - name: クラスターを作成する
@@ -220,9 +224,13 @@
           href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
     - name: 製品フィードバック
       href: 'https://aka.ms/adefeedback'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: Cost Estimator
-      href: 'https://aka.ms/adecostestimator'
+    - name: 価格と課金
+      items:
+        - name: 価格ページ
+          href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+        - name: Cost Estimator
+          href: 'https://aka.ms/adecostestimator'
+        - name: 予約容量
+          href: pricing-reserved-capacity.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=data-explorer'

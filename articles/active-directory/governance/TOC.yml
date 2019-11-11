@@ -84,6 +84,14 @@
               href: entitlement-management-request-access.md
     - name: アクセス レビュー
       items:
+        - name: アクセス パッケージ
+          items:
+            - name: アクセス レビューの作成
+              href: entitlement-management-access-reviews-create.md
+            - name: アクセスのレビュー
+              href: entitlement-management-access-reviews-review-access.md
+            - name: 自分のアクセス権のレビュー
+              href: entitlement-management-access-reviews-self-review.md
         - name: グループとアプリ
           items:
             - name: アクセス レビューの作成

@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure HPC Cache プレビューのドキュメント
+title: Azure HPC Cache のドキュメント
 summary: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) ワークロードのファイル アクセスを高速化するには、Azure HPC Cache を使用します。
 metadata:
   title: Microsoft Azure HPC Cache
@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: ekpgh
   ms.author: rohogue
-  ms.date: 10/21/2019
-  ms.openlocfilehash: 28e120f271fd6d700649125f86d5d8569cccd7df
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.date: 10/30/2019
+  ms.openlocfilehash: 5bccf917762845df962e5bbb35b597739bae6d2e
+  ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72930860"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73620174"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:
@@ -49,6 +49,8 @@ landingContent:
     links:
     - text: サポート チケットを開く
       url: hpc-cache-support-ticket.md
+    - text: ストレージ ターゲットを編集する
+      url: hpc-cache-edit-storage.md
   - linkListType: concept
     links:
     - text: リージョンの障害から復旧する

@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 67d8421b2e545c951dcbc3280a306514e4b14897
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2ce43402fb283cce09687bc7226770731f1bae0d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030054"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827511"
 ---
 # <a name="hosted-test-drive"></a>ホストされた体験版
 
@@ -25,9 +26,9 @@ ms.locfileid: "72030054"
 
 サイド メニューから、[体験版] オプションを選択します。
 
-[Enable a Test Drive]\(体験版を有効にする\) オプションで、[はい] を選択します。
+\'Enable a Test Drive\'(体験版を有効にする\) オプションで、\'はい\' を選択します。
 
-[詳細] セクションで次のフィールドを指定します。
+\'詳細\' セクションで次のフィールドを指定します。
 
 - **説明**:体験版の概要を説明します。 このテキストは、体験版のプロビジョニング中にユーザーに表示されます。 書式設定された内容を提供したい場合、このフィールドでは HTML を使用できます。
 - **[User Manual]\(ユーザー マニュアル\)** :体験版のユーザーがアプリの使用方法を理解するのに役立つ、詳細なユーザー マニュアル (.pdf 形式のファイル) をアップロードします。

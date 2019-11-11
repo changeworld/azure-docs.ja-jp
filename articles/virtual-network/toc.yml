@@ -39,6 +39,8 @@
       href: security-overview.md
     - name: ルーティング
       href: virtual-networks-udr-overview.md
+    - name: サービス タグ
+      href: service-tags-overview.md
     - name: サービス エンドポイント
       href: virtual-network-service-endpoints-overview.md
     - name: サービス エンドポイント ポリシー
@@ -65,6 +67,8 @@
       href: ipv6-public-ip-address-prefix.md
     - name: DDoS 保護
       href: ddos-protection-overview.md
+    - name: サブネットの拡張
+      href: subnet-extension.md
     - name: バックエンド接続の相互運用性
       items:
         - name: 前書きとテスト セットアップ
@@ -297,6 +301,8 @@
           href: diagnose-network-routing-problem.md
         - name: スループットのテスト
           href: virtual-network-bandwidth-testing.md
+        - name: VM ネットワークの待ち時間のテスト
+          href: virtual-network-test-latency.md
         - name: 仮想ネットワークを削除できない
           href: virtual-network-troubleshoot-cannot-delete-vnet.md
         - name: VM 間の接続に関する問題

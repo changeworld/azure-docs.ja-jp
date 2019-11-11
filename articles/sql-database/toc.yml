@@ -502,6 +502,8 @@
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: セキュリティを構成する
           href: sql-database-security-tutorial.md
+        - name: Stream Analytics でデータをストリーム配信する
+          href: sql-database-stream-analytics.md
     - name: 概念
       items:
         - name: 単一データベースのリソース

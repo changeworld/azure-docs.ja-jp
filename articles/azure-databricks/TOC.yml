@@ -260,7 +260,7 @@
             - name: Cosmos DB
               href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
               maintainContext: true
-            - name: SQL Data Warehouse
+            - name: Azure SQL Data Warehouse
               href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
               maintainContext: true
             - name: バイナリ ファイル
@@ -434,7 +434,7 @@
         - name: Python DataFrames の概要
           href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
           maintainContext: true
-        - name: Scala Dataframes の概要
+        - name: Scala DataFrames の概要
           href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
           maintainContext: true
         - name: Datasets の概要
@@ -708,14 +708,17 @@
             - name: デシジョン ツリーの例
               href: /azure/databricks/applications/machine-learning/mllib/decision-trees
               maintainContext: true
-            - name: MLib パイプラインと構造化ストリーミング
+            - name: MLlib パイプラインと構造化ストリーミング
               href: /azure/databricks/applications/machine-learning/mllib/mllib-pipelines-and-stuctured-streaming
               maintainContext: true
-            - name: 高度な MLib の例
+            - name: 高度な MLlib の例
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
         - name: 自動 ML
           items:
+            - name: 自動 ML の概要
+              href: /azure/databricks/applications/machine-learning/automl/index
+              maintainContext: true
             - name: Hyperopt
               items:
                 - name: Hyperopt の概要
@@ -730,8 +733,16 @@
                 - name: 分散 Hyperopt を使用したモデル検索
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
-            - name: MLib と自動化された MLflow Tracking
+            - name: MLlib と自動化された MLflow の追跡
               href: /azure/databricks/applications/machine-learning/automl/mllib-mlflow-integration
+              maintainContext: true
+        - name: ML モデルのエクスポートとインポート
+          items:
+            - name: エクスポートとインポートの概要
+              href: /azure/databricks/applications/machine-learning/model-export-import/index
+              maintainContext: true
+            - name: MLeap ML モデルのエクスポート
+              href: /azure/databricks/applications/machine-learning/model-export-import/mleap-model-export
               maintainContext: true
         - name: サードパーティの機械学習の統合
           href: /azure/databricks/applications/machine-learning/third-party/index
@@ -826,33 +837,39 @@
         - name: MLflow の概要
           href: /azure/databricks/applications/mlflow/index
           maintainContext: true
-        - name: MLflow を使ってみる
-          href: /azure/databricks/applications/mlflow/quick-start
-          maintainContext: true
-        - name: MLflow Java および Scala を使ってみる
-          href: /azure/databricks/applications/mlflow/quick-start-java-scala
-          maintainContext: true
-        - name: MLflow Python を使ってみる
-          href: /azure/databricks/applications/mlflow/quick-start-python
-          maintainContext: true
-        - name: MLflow R を使ってみる
-          href: /azure/databricks/applications/mlflow/quick-start-r
-          maintainContext: true
+        - name: 使用の開始
+          items:
+            - name: MLflow を使ってみる
+              href: /azure/databricks/applications/mlflow/quick-start
+              maintainContext: true
+            - name: MLflow Java および Scala を使ってみる
+              href: /azure/databricks/applications/mlflow/  quick-start-java-scala
+              maintainContext: true
+            - name: MLflow Python を使ってみる
+              href: /azure/databricks/applications/mlflow/  quick-start-python
+              maintainContext: true
+            - name: MLflow R を使ってみる
+              href: /azure/databricks/applications/mlflow/quick-start-r
+              maintainContext: true
         - name: 機械学習のトレーニング実行を追跡する
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: MLflow Tracking の例
-          href: /azure/databricks/applications/mlflow/tracking-examples
-          maintainContext: true
-        - name: 外部の追跡にアクセスする
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
+          items:
+            - name: 追跡の概要
+              href: /azure/databricks/applications/mlflow/tracking
+              maintainContext: true
+            - name: MLflow Tracking の例
+              href: /azure/databricks/applications/mlflow/  tracking-examples
+              maintainContext: true
+            - name: 外部の追跡にアクセスする
+              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              maintainContext: true
         - name: モデルの保存、読み込み、デプロイ
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: MLflow モデルの例
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
+          items:
+            - name: 保存、読み込み、デプロイの概要
+              href: /azure/databricks/applications/mlflow/models
+              maintainContext: true
+            - name: MLflow モデルの例
+              href: /azure/databricks/applications/mlflow/  model-examples
+              maintainContext: true
         - name: MLflow プロジェクトを使用して実行を再現する
           href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
@@ -880,9 +897,6 @@
         - name: Genomics の概要
           href: /azure/databricks/applications/genomics/index
           maintainContext: true
-        - name: Genomics ETL の概要
-          href: /azure/databricks/applications/genomics/etl/index
-          maintainContext: true
         - name: 2 次解析
           items:
             - name: 2 次解析の概要
@@ -908,6 +922,9 @@
               maintainContext: true
         - name: ETL
           items:
+            - name: Genomics ETL の概要
+              href: /azure/databricks/applications/genomics/etl/index
+              maintainContext: true
             - name: Apache Spark SQL を使用したバリアント IO
               href: /azure/databricks/applications/genomics/etl/variant-data
               maintainContext: true
@@ -1211,10 +1228,7 @@
               maintainContext: true
             - name: JSON でエンコードを検出できない
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true
-            - name: JDBC クエリ オプションが Oracle Database で機能しない
-              href: /azure/databricks/kb/data-sources/query-option-not-work-oracle
-              maintainContext: true
+              maintainContext: true j
         - name: DBFS
           items:
             - name: DBFS ルートに格納されているオブジェクトを読み取ることができない
@@ -1293,6 +1307,9 @@
               maintainContext: true
             - name: ジョブの失敗 - maxresultsize
               href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
+              maintainContext: true
+            - name: べき等性を保証する
+              href: /azure/databricks/kb/jobs/jobs-idempotency
               maintainContext: true
         - name: ライブラリ
           items:

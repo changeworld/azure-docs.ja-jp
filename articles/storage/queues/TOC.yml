@@ -204,22 +204,20 @@
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: BLOB、キュー、ファイル
-          href: /dotnet/api/overview/azure/storage/client
+        - name: キュー (バージョン 11.x)
+          href: /dotnet/api/microsoft.azure.storage.queue
         - name: ストレージ リソース プロバイダー
           href: /dotnet/api/overview/azure/storage/management
     - name: Java
       items:
-        - name: BLOB、キュー、ファイル (バージョン 12.x - プレビュー)
-          href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-        - name: BLOB、キュー、ファイル (バージョン 8)
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+        - name: キュー (バージョン 8.x)
+          href: /java/api/com.microsoft.azure.storage.queue
         - name: ストレージ リソース プロバイダー
           href: /java/api/overview/azure/storage/management
-    - name: Node.js
-      href: /javascript/api/overview/azure/storage
-    - name: Python
-      href: /python/api/overview/azure/storage
+    - name: JavaScript (バージョン 10.x)
+      href: /javascript/api/@azure/storage-queue
+    - name: Python (バージョン 2.x)
+      href: /python/api/azure-storage-queue/?view=azure-python
     - name: REST
       items:
         - name: BLOB、キュー、テーブル、ファイル

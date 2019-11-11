@@ -7,17 +7,21 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: シークレットの設定と取得 - CLI
+    - name: CLI
       href: quick-create-cli.md
-    - name: シークレットの設定と取得 - PowerShell
+    - name: PowerShell
       href: quick-create-powershell.md
-    - name: シークレットの設定と取得 - ポータル
+    - name: ポータル
       href: quick-create-portal.md
-    - name: シークレットの設定と取得 - .NET
+    - name: Python
+      href: quick-create-python.md
+    - name: .NET (SDK v4)
       href: quick-create-net.md
-    - name: シークレットの設定と取得 - Node.js
+    - name: .NET (SDK v3)
+      href: quick-create-net-v3.md
+    - name: Node.js
       href: quick-create-node.md
-    - name: シークレットの設定と取得 - テンプレート
+    - name: Azure Resource Manager テンプレート
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: チュートリアル

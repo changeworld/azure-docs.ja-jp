@@ -91,6 +91,8 @@
       href: iot-hub-scaling.md
     - name: 高可用性と障害復旧
       href: iot-hub-ha-dr.md
+    - name: IoT ハブを別のリージョンに複製する方法
+      href: iot-hub-how-to-clone.md
     - name: IoT Hub IP アドレスについて
       href: iot-hub-understand-ip-address.md
     - name: その他のプロトコルのサポート

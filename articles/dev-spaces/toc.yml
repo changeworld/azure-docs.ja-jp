@@ -91,7 +91,7 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: カスタム イングレスと HTTPS に traefik を使用する
           href: how-to/ingress-https-traefik.md
-        - name: Azure Dev Spaces Connect を使用する (プレビュー)
+        - name: 開発用マシンを AKS クラスターに接続する (プレビュー)
           href: how-to/connect.md
     - name: トラブルシューティング
       href: troubleshooting.md

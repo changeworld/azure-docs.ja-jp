@@ -18,6 +18,9 @@
     - name: テナント間の管理エクスペリエンス
       displayName: scenarios
       href: ./concepts/cross-tenant-management-experience.md
+    - name: テナント、ロール、ユーザー
+      displayName: 'Azure AD, Azure Active Directory'
+      href: ./concepts/tenants-users-roles.md
     - name: Azure Marketplace のマネージド サービス オファー
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md

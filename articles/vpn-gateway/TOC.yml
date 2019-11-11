@@ -134,18 +134,18 @@
               href: point-to-site-vpn-client-configuration-radius.md
             - name: P2S VPN RADIUS 認証と NPS サーバーの統合
               href: vpn-gateway-radiuis-mfa-nsp.md
+        - name: Azure AD 認証
+          items:
+            - name: テナントの構成
+              href: openvpn-azure-ad-tenant.md
+            - name: VPN クライアントの構成
+              href: openvpn-azure-ad-client.md
         - name: OpenVPN
           items:
             - name: ポイント対サイト接続用に OpenVPN を構成する
               href: vpn-gateway-howto-openvpn.md
             - name: OpenVPN クライアントを構成する
               href: vpn-gateway-howto-openvpn-clients.md
-            - name: Open VPN - Azure Active Directory 認証
-              items:
-                - name: Azure AD テナントの構成
-                  href: openvpn-azure-ad-tenant.md
-                - name: VPN クライアントの構成 - Azure AD
-                  href: openvpn-azure-ad-client.md
         - name: P2S 用公開 CA ゲートウェイ証明書への移行
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Always On VPN デバイス トンネルの構成

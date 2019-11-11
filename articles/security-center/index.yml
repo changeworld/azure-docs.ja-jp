@@ -6,18 +6,17 @@ metadata:
   description: Microsoft が提供するクイックスタートとチュートリアルを使用して、Security Center の利用開始、ワークロードをセキュリティで保護する方法の確認、リスクの抑制、攻撃の検出および対応を行えます。
   services: security-center
   ms.service: security-center
-  ms.subservice: subservice
   ms.topic: landing-page
   ms.collection: collection
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 48140c014492383fd4c714669b070df1fa6214e6
-  ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+  ms.openlocfilehash: 33c2d287219f8005063af746f0b6d6448b1a4ef7
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73521163"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73824796"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -27,6 +26,22 @@ landingContent:
       url: security-center-intro.md
     - text: サポートされる Windows サーバーおよび Linux のバージョン
       url: security-center-os-coverage.md
+- title: 最新情報
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: コンテンツの保護
+      url: container-security.md
+    - text: 動的コンプライアンス パッケージの追加
+      url: update-regulatory-compliance-packages.md
+    - text: Windows Admin Center との統合
+      url: windows-admin-center-integration.md
+    - text: アラートや推奨事項に対する応答の自動化
+      url: workflow-automation.md
+    - text: セキュリティ アラートと推奨事項のエクスポート
+      url: continuous-export.md
+    - text: Azure Key Vault 向けの Advanced Threat Protection の設定
+      url: advanced-threat-protection-key-vault.md
 - title: 作業開始
   linkLists:
   - linkListType: get-started

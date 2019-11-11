@@ -518,6 +518,8 @@
           href: data-movement-security-considerations.md
         - name: Azure Key Vault への資格情報の格納
           href: store-credentials-in-key-vault.md
+        - name: パイプライン アクティビティでの Azure Key Vault シークレットの使用
+          href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: 自己ホスト型統合ランタイムの資格情報の暗号化
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Data Factory のマネージド ID

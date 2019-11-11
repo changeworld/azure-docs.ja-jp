@@ -56,7 +56,7 @@
       href: getting-started-improving-your-classifier.md
     - name: 予測 API の使用
       href: use-prediction-api.md
-    - name: 推奨タグを使用する
+    - name: Smart Labeler の使用
       href: suggested-tags.md
     - name: モデルをエクスポートする
       items:

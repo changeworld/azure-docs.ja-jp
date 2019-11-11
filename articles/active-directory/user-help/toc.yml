@@ -54,18 +54,22 @@
       href: user-help-auth-app-backup-recovery.md
     - name: FAQ
       href: user-help-auth-app-faq.md
-- name: マイ プロファイル ポータル (プレビュー) のヘルプ
+- name: マイ アカウント ポータルのヘルプ
   items:
     - name: 概要
-      href: myprofile-portal-overview.md
+      href: my-account-portal-overview.md
     - name: セキュリティ情報の管理
       href: user-help-security-info-overview.md
-    - name: 組織の管理
-      href: myprofile-portal-organizations-page.md
     - name: 接続されているデバイスの管理
-      href: myprofile-portal-devices-page.md
-    - name: プライバシーに関連する情報の表示
-      href: myprofile-portal-privacy-page.md
+      href: my-account-portal-devices-page.md
+    - name: パスワードを変更する
+      href: my-account-change-password-page.md
+    - name: 組織の管理
+      href: my-account-portal-organizations-page.md
+    - name: プライバシー関連情報を表示する
+      href: my-account-portal-privacy-page.md
+    - name: 最近のサインイン アクティビティを表示する
+      href: my-account-portal-sign-ins-page.md
 - name: セキュリティ情報 (プレビュー) のヘルプ
   items:
     - name: 概要

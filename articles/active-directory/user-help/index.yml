@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 96fd0f6612b6c91ce4021b50ffe121b571a5032b
-  ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+  ms.openlocfilehash: c60b536c43b8a82a46ef9176eb077b212da529c0
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73160996"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73574208"
 landingContent:
 - title: Microsoft Authenticator アプリの設定と使用
   linkLists:
@@ -73,18 +73,20 @@ landingContent:
       url: security-info-add-update-methods-overview.md
     - text: サインイン プロンプトでの情報の追加
       url: security-info-setup-signin.md
-- title: マイ プロファイル ポータル (プレビュー) での情報の管理
+- title: マイ アカウント ポータルでの自分の情報の管理
   linkLists:
   - linkListType: overview
     links:
-    - text: マイ プロファイル (プレビュー) ポータルとは
-      url: myprofile-portal-overview.md
+    - text: マイ アカウント ポータルとは
+      url: my-account-portal-overview.md
   - linkListType: how-to-guide
     links:
-    - text: 組織の管理
-      url: myprofile-portal-organizations-page.md
     - text: 接続されているデバイスの管理
-      url: myprofile-portal-devices-page.md
+      url: my-account-portal-devices-page.md
+    - text: 組織の管理
+      url: my-account-portal-organizations-page.md
+    - text: 最近のサインイン アクティビティを表示する
+      url: my-account-portal-sign-ins-page.md
 - title: 自分のパスワードのリセット
   linkLists:
   - linkListType: overview

@@ -30,6 +30,8 @@
                   href: hpc-cache-ingest-msrsync.md
                 - name: 手動によるファイル コピーを使用してキャッシュを設定する
                   href: hpc-cache-ingest-manual.md
+        - name: ストレージ ターゲットを編集する
+          href: hpc-cache-edit-storage.md
     - name: キャッシュに接続する
       href: hpc-cache-mount.md
     - name: キャッシュを管理する

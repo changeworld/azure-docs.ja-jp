@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 0c33c0832590fdfd4fe78a1645ef1b0e3e391163
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: bf4b79dbb3da15605dc4362b5f0578a457886316
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200568"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581365"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの概要
 
@@ -19,8 +19,7 @@ CIS Microsoft Azure Foundations Benchmark ブループリント サンプルで�
 
 ## <a name="recommendation-mapping"></a>推奨マッピング
 
-「推奨マッピング」セクションでは、このブループリント内に含まれるポリシーとこれらのポリシーが CIS Microsoft Azure Foundations Benchmark のさまざまな推奨事項にどのように対処しているかについて詳しく説明します。
-リソースはアーキテクチャに割り当てられると、割り当て済みのポリシーに違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../../policy/overview.md) に関するページをご覧ください。
+「推奨マッピング」セクションでは、このブループリント内に含まれるポリシーとこれらのポリシーが CIS Microsoft Azure Foundations Benchmark v1.1.0 のさまざまな推奨事項にどのように対処しているかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシーに違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../../policy/overview.md) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -29,6 +28,7 @@ CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの�
 
 > [!div class="nextstepaction"]
 > [CIS Microsoft Azure Foundations Benchmark ブループリント サンプル - 推奨マッピング](./control-mapping.md)
+> [CIS Microsoft Azure Foundations Benchmark ブループリント - デプロイ手順](./deploy.md)
 
 ブループリントとその使用方法に関するその他の記事:
 

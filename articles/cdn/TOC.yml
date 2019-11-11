@@ -26,6 +26,8 @@
       href: cdn-custom-ssl.md
     - name: キャッシュ規則の設定
       href: cdn-caching-rules-tutorial.md
+    - name: 標準ルール エンジンを使用して HTTPS を適用する
+      href: cdn-standard-rules-engine.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -134,6 +136,13 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: リファレンス
   items:
+    - name: Microsoft 標準ルール エンジンのリファレンス
+      href: cdn-standard-rules-engine-reference.md
+      items:
+        - name: 標準ルール エンジンの一致条件
+          href: cdn-standard-rules-engine-match-conditions.md
+        - name: 標準ルール エンジンのアクション
+          href: cdn-standard-rules-engine-actions.md
     - name: Verizon Premium ルール エンジンのリファレンス
       href: cdn-verizon-premium-rules-engine-reference.md
       items:
