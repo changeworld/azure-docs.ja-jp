@@ -307,9 +307,9 @@
               href: concepts-gating-overview.md
             - name: 合成テクノロジのデプロイ
               href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: カスタム音声の透明性に関する注意
-              href: 'https://aka.ms/neural-tts-transparency-note'
-            - name: 設計ガイドラインを開示する
+            - name: ボイス タレント向けの開示
+              href: 'https://aka.ms/disclosure-voice-talent'
+            - name: 開示設計のガイドライン
               href: concepts-disclosure-guidelines.md
             - name: 設計パターンを開示する
               href: concepts-disclosure-patterns.md

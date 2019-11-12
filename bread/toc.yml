@@ -184,9 +184,12 @@
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
           items:
-            - name: IoT Central コア
+            - name: IoT Central
               tocHref: /azure/iot-central/core/
               topicHref: /azure/iot-central/core/
+            - name: IoT Central (プレビュー)
+              tocHref: /azure/iot-central/preview/
+              topicHref: /azure/iot-central/preview/
             - name: エネルギー産業向けの IoT Central
               tocHref: /azure/iot-central/energy/
               topicHref: /azure/iot-central/energy/
@@ -262,6 +265,9 @@
     - name: Cloud Services
       tocHref: /azure/cloud-services/
       topicHref: /azure/cloud-services/
+    - name: Cognitive Search
+      tocHref: /azure/search/
+      topicHref: /azure/search/
     - name: Cognitive Services
       tocHref: /azure/cognitive-services/
       topicHref: /azure/cognitive-services/
@@ -516,6 +522,13 @@
     - name: FHIR 用の Azure API
       tocHref: /azure/healthcare-apis
       topicHref: /azure/healthcare-apis
+    - name: 業界向け Azure
+      tocHref: /azure/industry
+      topicHref: /azure/industry
+      items:
+        - name: Azure FarmBeats
+          tocHref: /azure/industry/agriculture
+          topicHref: /azure/industry/agriculture
     - name: Jenkins
       tocHref: /azure/jenkins/
       topicHref: /azure/jenkins/
@@ -640,9 +653,6 @@
     - name: Scheduler
       tocHref: /azure/scheduler/
       topicHref: /azure/scheduler/
-    - name: Search
-      tocHref: /azure/search/
-      topicHref: /azure/search/
     - name: セキュリティ
       tocHref: /azure/security/
       topicHref: /azure/security/

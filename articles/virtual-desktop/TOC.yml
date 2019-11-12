@@ -96,6 +96,8 @@
       href: troubleshoot-vm-configuration.md
     - name: Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う
       href: troubleshoot-windows-7-vm.md
+    - name: Windows Virtual Desktop 管理ツールのトラブルシューティング
+      href: troubleshoot-management-tool.md
     - name: リモート デスクトップ クライアントの接続
       href: troubleshoot-client-connection.md
     - name: Windows Virtual Desktop PowerShell

@@ -150,6 +150,8 @@
               href: check-cluster-health.md
         - name: Database
           items:
+            - name: フォロワー データベース
+              href: follower.md
             - name: データベースのアクセス許可を管理する
               href: manage-database-permissions.md
             - name: ポリシー

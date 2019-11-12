@@ -91,6 +91,8 @@
       items:
         - name: liveness probe の構成
           href: container-instances-liveness-probe.md
+        - name: readiness probe の構成
+          href: container-instances-readiness-probe.md
         - name: コンテナーの停止と開始
           href: container-instances-stop-start.md
         - name: 実行中のコンテナーの更新

@@ -326,7 +326,7 @@
               href: shared-images.md
             - name: ポータル
               href: shared-images-portal.md
-            - name: テナントをまたいでイメージを共有する
+            - name: 共有のためのアプリの登録
               href: share-images-across-tenants.md
             - name: 共有イメージのトラブルシューティングを行う
               href: troubleshooting-shared-images.md

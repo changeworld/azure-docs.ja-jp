@@ -13,10 +13,10 @@
 - name: 概念
   items:
     - name: Azure の委任されたリソース管理
-      displayName: delegation
+      displayName: 'delegation, projection'
       href: ./concepts/azure-delegated-resource-management.md
     - name: テナント間の管理エクスペリエンス
-      displayName: scenarios
+      displayName: 'scenarios, supported, enhanced, services, limitations, current'
       href: ./concepts/cross-tenant-management-experience.md
     - name: テナント、ロール、ユーザー
       displayName: 'Azure AD, Azure Active Directory'
@@ -39,16 +39,22 @@
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Azure Marketplace にマネージド サービス オファーを公開する
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: 顧客を表示し、管理する
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: サービス プロバイダーを表示し、管理する
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'customer, update'
       href: ./how-to/view-manage-service-providers.md
-    - name: 修復できるポリシーをデプロイする
-      href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Policy の統合
+      items:
+        - name: 大規模なポリシーのデプロイ
+          displayName: storage
+          href: ./how-to/policy-at-scale.md
+        - name: 修復できるポリシーをデプロイする
+          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+          href: ./how-to/deploy-policy-remediation.md
 - name: リファレンス
   items:
     - name: Azure CLI

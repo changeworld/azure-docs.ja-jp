@@ -106,12 +106,16 @@
 - name: リソース
   items:
     - name: 価格
-      href: 'https://azure.microsoft.com/en-us/pricing/details/app-configuration/'
+      href: 'https://azure.microsoft.com/pricing/details/app-configuration/'
     - name: ビデオ
       items:
         - name: 使用の開始
           href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
         - name: 機能の管理
           href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
+        - name: 構成の一元管理を容易にする
+          href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
+        - name: Cloud Native Show の Azure App Configuration
+          href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
     - name: 製品フィードバックの提供
       href: 'https://github.com/Azure/AppConfiguration/issues'
