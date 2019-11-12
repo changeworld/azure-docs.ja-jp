@@ -361,7 +361,7 @@
               href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/sql-database/toc.json
             - name: Spark コネクタの使用
               href: sql-database-spark-connector.md
-            - name: Azure Search によるインデックス作成
+            - name: Azure Cognitive Search を使用してインデックスを付ける
               href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/sql-database/toc.json
             - name: 一時的なリテンション ポリシーの構成方法
               href: sql-database-temporal-tables-retention-policy.md
