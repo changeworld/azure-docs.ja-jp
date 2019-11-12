@@ -134,6 +134,8 @@
               href: azure-expressroute-connection.md
             - name: DNS 名前解決の構成
               href: on-premises-dns-setup.md
+            - name: 高可用性のサイト間 VPN 接続を構成する
+              href: high-availability-vpn-connection.md
         - name: VMware プラットフォーム
           items:
             - name: プライベート クラウドのアクセス許可モデルについて
