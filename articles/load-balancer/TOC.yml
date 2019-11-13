@@ -141,27 +141,6 @@
       items:
         - name: Azure Load Balancer のトラブルシューティング
           href: load-balancer-troubleshoot.md
-    - name: クラシック デプロイ モデルに関する記事
-      items:
-        - name: 送信接続 (クラシック)
-          href: load-balancer-outbound-connections-classic.md
-        - name: クラウド サービスの複数 VIP を構成する
-          href: load-balancer-multivip.md
-          items:
-            - name: Cloud Services の内部ロード バランサーを構成する
-              href: load-balancer-get-started-ilb-classic-cloud.md
-              items:
-                - name: Cloud Services の内部ロード バランサーを構成する (PowerShell)
-                  href: load-balancer-get-started-ilb-classic-ps.md
-                - name: Cloud Services の内部ロード バランサーを構成する (CLI)
-                  href: load-balancer-get-started-ilb-classic-cli.md
-            - name: パブリック ロード バランサーを構成する (クラシック PowerShell)
-              href: load-balancer-get-started-internet-classic-ps.md
-              items:
-                - name: パブリック ロード バランサーを構成する (クラシック クラウド)
-                  href: load-balancer-get-started-internet-classic-cloud.md
-                - name: パブリック ロード バランサーを構成する (クラシック CLI)
-                  href: load-balancer-get-started-internet-classic-cli.md
 - name: リファレンス
   items:
     - name: コード サンプル

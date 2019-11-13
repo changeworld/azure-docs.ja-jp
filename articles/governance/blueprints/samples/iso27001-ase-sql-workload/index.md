@@ -1,17 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL ワークロード ブループリント サンプル - 概要
 description: ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要とアーキテクチャ
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: cf2c78cddc4355f23f086c8c25dc721e545d05eb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1b5a86bcc655d0ee7afdb612d76450c4b9dbad7c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163439"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031909"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要。
 
