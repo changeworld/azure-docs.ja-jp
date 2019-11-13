@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: ed466b072a771c3aa288a96fa4a0037c31b875f9
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091988"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748364"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 
@@ -22,6 +22,7 @@ ms.locfileid: "71091988"
 ## <a name="connector-and-copy-activity"></a>コネクタとコピー アクティビティ
 
 コピー アクティビティの使用時にエラーが発生したなど、コネクタに関する問題については、「[Azure Data Factory コネクタの問題を解決する](connector-troubleshoot-guide.md)」を参照してください。
+  
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -42,15 +43,15 @@ ms.locfileid: "71091988"
 
 - **推奨事項**:Databricks アクティビティに Notebook のパスを指定してください。
 
-<br/>
-
+<br/>    
+              
 - **メッセージ**: `Cluster   ... does not exist.`
 
 - **原因**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
 - **推奨事項**:Databricks クラスターが存在することを確認してください。
 
-<br/>
+<br/>  
 
 - **メッセージ**: `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
 
@@ -58,7 +59,7 @@ ms.locfileid: "71091988"
 
 - **推奨事項**:ワークスペース アドレス指定スキームの絶対パス (Databricks ファイル システムに格納されているファイルの場合は `dbfs:/folder/subfolder/foo.py`) を指定してください。
 
-<br/>
+<br/>  
 
 - **メッセージ**: `{0} LinkedService should have domain and accessToken as required properties.`
 
@@ -66,7 +67,7 @@ ms.locfileid: "71091988"
 
 - **推奨事項**:[リンクされたサービスの定義](compute-linked-services.md#azure-databricks-linked-service)を確認してください。
 
-<br/>
+<br/>  
 
 - **メッセージ**: `{0} LinkedService should specify either existing cluster ID or new cluster information for creation.`
 
@@ -74,13 +75,13 @@ ms.locfileid: "71091988"
 
 - **推奨事項**:[リンクされたサービスの定義](compute-linked-services.md#azure-databricks-linked-service)を確認してください。
 
-<br/>
+<br/>  
 
 - **メッセージ**: `Node type Standard_D16S_v3 is not supported. Supported node types:   Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3,   Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2,   Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3,   Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2,   Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2,   Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3,   Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s,   Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2,   Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2,   Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3,   Standard_NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2,   Standard_L64s_v2, Standard_L80s_v2.`
 
 - **原因**: `Bad authoring.`
 
-- **推奨事項**:エラー メッセージを参照してください。 
+- **推奨事項**:エラー メッセージを参照してください。
 
 <br/>
 
@@ -92,7 +93,7 @@ ms.locfileid: "71091988"
 
 - **推奨事項**:この Databricks ワークスペースを使用しているすべてのパイプラインでジョブの作成速度を確認します。  パイプラインで起動された Databricks の実行数が全体として多すぎる場合は、一部のパイプラインを新しいワークスペースに移行してください。
 
-<br/>
+<br/>  
 
 - **メッセージ**: `Could not parse request object: Expected 'key' and 'value' to be set for JSON map field base_parameters, got 'key: "..."' instead.`
 
@@ -100,7 +101,7 @@ ms.locfileid: "71091988"
 
 - **推奨事項**:パイプラインの JSON を検査して、baseParameters ノートブックのすべてのパラメーターに空以外の値が指定されていることを確認してください。
 
-<br/>
+<br/>  
 
 - **メッセージ**:`User: `SimpleUserContext{userId=..., name=user@company.com, orgId=...}` is not   authorized to access cluster.`
 
@@ -122,16 +123,15 @@ ms.locfileid: "71091988"
 
 - **メッセージ**: `Job execution failed.`
 
-- **原因**:エラー メッセージは、予期しないクラスター状態や特定のアクティビティなど、さまざまな問題を示します。 ほとんどの場合、エラー メッセージがまったく表示されません。 
+- **原因**:エラー メッセージは、予期しないクラスター状態や特定のアクティビティなど、さまざまな問題を示します。 ほとんどの場合、エラー メッセージがまったく表示されません。
 
 - **推奨事項**:該当なし
-
+            
 
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
 次の表は、U-SQL について記載したものです。
-
-
+      
 ### <a name="error-code--2709"></a>エラー コード:2709
 
 - **メッセージ**: `The access token is from the wrong tenant.`
@@ -148,18 +148,18 @@ ms.locfileid: "71091988"
 
 - **推奨事項**:アクティビティに対する Data Factory のトリガーとコンカレンシーの設定を変更して、Data Lake Analytics に送信されるジョブの数を減らしてください。 または、Data Lake Analytics の上限を引き上げます。
 
-<br/>
+<br/>  
 
 - **メッセージ**: `This job was rejected because it requires 24 AUs. This account's administrator-defined policy prevents a job from using more than 5 AUs.`
 
-- **原因**:このエラーは、Data Lake Analytics のスロットリングに起因しています。 
+- **原因**:このエラーは、Data Lake Analytics のスロットリングに起因しています。
 
 - **推奨事項**:アクティビティに対する Data Factory のトリガーとコンカレンシーの設定を変更して、Data Lake Analytics に送信されるジョブの数を減らしてください。 または、Data Lake Analytics の上限を引き上げます。
 
 
 ### <a name="error-code--2705"></a>エラー コード:2705
 
-- **メッセージ**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+- **メッセージ**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
 - **原因**:サービス プリンシパルまたは証明書には、ストレージ内のファイルへのアクセス権がありません。
 
@@ -168,13 +168,13 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--2711"></a>エラー コード:2711
 
-- **メッセージ**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+- **メッセージ**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
 - **原因**:サービス プリンシパルまたは証明書には、ストレージ内のファイルへのアクセス権がありません。
 
 - **推奨事項**:Data Lake Analytics ジョブ用にユーザーが指定したサービス プリンシパルまたは証明書が、Data Lake Analytics アカウントにアクセスできること、また、ルート フォルダーから既定の Data Lake Storage インスタンスにアクセスできることを確認します。
 
-<br/>
+<br/>  
 
 - **メッセージ**: `Cannot find the 'Azure Data Lake Store' file or folder.`
 
@@ -185,7 +185,7 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--2704"></a>エラー コード:2704
 
-- **メッセージ**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+- **メッセージ**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
 - **原因**:サービス プリンシパルまたは証明書には、ストレージ内のファイルへのアクセス権がありません。
 
@@ -205,37 +205,36 @@ ms.locfileid: "71091988"
 
 - **メッセージ**: `Error Id: E_CQO_SYSTEM_INTERNAL_ERROR (or any error that starts with "Error   Id:").`
 
-- **原因**:Data Lake Analytics からのエラーです。 
+- **原因**:Data Lake Analytics からのエラーです。
 
 - **推奨事項**:この例のようなエラーは、Data Lake Analytics にジョブが送信されたものの、そこでスクリプトが失敗したことを意味します。 Data Lake Analytics 内を調査してください。 ポータルから Data Lake Analytics アカウントに移動し、Data Factory の (パイプラインの実行 ID ではなく) アクティビティの実行 IDを使用して該当するジョブを探します。 見つかったジョブから、エラーに関する詳細な情報を入手し、トラブルシューティングに役立てることができます。 解決方法が明確でない場合は、Data Lake Analytics サポート チームに連絡し、お使いのアカウント名とジョブ ID を含むジョブの URL を伝えてください。
-
-
+          
 
 ## <a name="azure-functions"></a>Azure 関数
 
 ### <a name="error-code--3602"></a>エラー コード:3602
 
-- **メッセージ**: `Invalid HttpMethod: {method}.`
+- **メッセージ**: `Invalid HttpMethod: '%method;'.`
 
-- **原因**:アクティビティのペイロードに指定された HTTP メソッドが Azure 関数アクティビティでサポートされていません。 
+- **原因**:アクティビティのペイロードに指定された HTTP メソッドが Azure 関数アクティビティでサポートされていません。
 
 - **推奨事項**:サポートされている HTTP メソッドは、PUT、POST、GET、DELETE、OPTIONS、HEAD、TRACE です。
 
 
 ### <a name="error-code--3603"></a>エラー コード:3603
 
-- **メッセージ**: `Response content is not a valid JObject.`
+- **メッセージ**: `Response Content is not a valid JObject.`
 
-- **原因**:呼び出した Azure 関数の応答で JSON ペイロードが返されませんでした。 Data Factory の Azure 関数アクティビティでサポートされるのは JSON 応答コンテンツだけです。 
+- **原因**:呼び出した Azure 関数の応答で JSON ペイロードが返されませんでした。 ADF Azure 関数アクティビティでは、JSON 応答コンテンツのみがサポートされます。
 
-- **推奨事項**:有効な JSON ペイロードを返すように Azure 関数を更新してください。 たとえば、C# の関数から `(ActionResult)new<OkObjectResult("{`\"Id\":\"123\"`}");` を返すことが考えられます。
+- **推奨事項**:有効な JSON ペイロードを返すように Azure 関数を更新します。たとえば、C# 関数は (ActionResult)new OkObjectResult("{\"Id\":\"123\"}"); を返すことができます
 
 
 ### <a name="error-code--3606"></a>エラー コード:3606
 
-- **メッセージ**: `Azure function activity missing function key.`
+- **メッセージ**:Azure 関数アクティビティに関数キーがありません。
 
-- **原因**:Azure 関数アクティビティの定義が完全ではありません。 
+- **原因**:Azure 関数アクティビティの定義が完全ではありません。
 
 - **推奨事項**:入力 AzureFunction アクティビティの JSON 定義に、"functionKey" という名前のプロパティがあることを確認してください。
 
@@ -244,25 +243,25 @@ ms.locfileid: "71091988"
 
 - **メッセージ**: `Azure function activity missing function name.`
 
-- **原因**:Azure 関数アクティビティの定義が完全ではありません。 
+- **原因**:Azure 関数アクティビティの定義が完全ではありません。
 
 - **推奨事項**:入力 AzureFunction アクティビティの JSON 定義に、"functionName" という名前のプロパティがあることを確認してください。
 
 
 ### <a name="error-code--3608"></a>エラー コード:3608
 
-- **メッセージ**: `Call to provided Azure function '{FunctionName}' failed with status-'{statusCode}' and message - '{message}'.` 
+- **メッセージ**: `Call to provided Azure function '%FunctionName;' failed with status-'%statusCode;' and message - '%message;'.`
 
-- **原因**:アクティビティ定義での Azure 関数の詳細が正しくない可能性があります。 
+- **原因**:アクティビティ定義での Azure 関数の詳細が正しくない可能性があります。
 
 - **推奨事項**:Azure 関数の詳細を修正してから、もう一度やり直してください。
 
 
 ### <a name="error-code--3609"></a>エラー コード:3609
 
-- **メッセージ**: `Azure function activity missing functionAppUrl.` 
+- **メッセージ**: `Azure function activity missing functionAppUrl.`
 
-- **原因**:Azure 関数アクティビティの定義が完全ではありません。 
+- **原因**:Azure 関数アクティビティの定義が完全ではありません。
 
 - **推奨事項**:入力 AzureFunction アクティビティの JSON 定義に、"functionAppUrl" という名前のプロパティがあることを確認してください。
 
@@ -278,7 +277,7 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--3611"></a>エラー コード:3611
 
-- **メッセージ**: `Azure function activity missing Method in JSON.` 
+- **メッセージ**: `Azure function activity missing Method in JSON.`
 
 - **原因**:Azure 関数アクティビティの定義が完全ではありません。
 
@@ -289,26 +288,26 @@ ms.locfileid: "71091988"
 
 - **メッセージ**: `Azure function activity missing LinkedService definition in JSON.`
 
-- **原因**:Azure 関数アクティビティの定義が完全ではない可能性があります。
+- **原因**:Azure 関数アクティビティの定義が完全ではありません。
 
 - **推奨事項**:入力 AzureFunction アクティビティの JSON 定義に、リンクされたサービスの詳細があることを確認してください。
 
 
-## <a name="azure-machine-learning"></a>Azure Machine Learning
 
+## <a name="azure-machine-learning"></a>Azure Machine Learning
 
 ### <a name="error-code--4101"></a>エラー コード:4101
 
 - **メッセージ**: `AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
 
-- **原因**:プロパティの形式が正しくないか、定義がありません。
+- **原因**:プロパティ '%propertyName;' の形式が正しくないか、定義がありません。
 
-- **推奨事項**:正しいデータを使用してアクティビティが定義されているかどうかを確認してください。
+- **推奨事項**:アクティビティ '%activityName;' の '%propertyName;' が正しいデータで定義されていることを確認してください。
 
 
 ### <a name="error-code--4110"></a>エラー コード:4110
 
-- **メッセージ**:JSON の AzureMLExecutePipeline アクティビティに LinkedService の定義がありません。
+- **メッセージ**: `AzureMLExecutePipeline activity missing LinkedService definition in JSON.`
 
 - **原因**:AzureMLExecutePipeline アクティビティの定義が完全ではありません。
 
@@ -328,14 +327,14 @@ ms.locfileid: "71091988"
 
 - **メッセージ**: `AzureMLService linked service has invalid value for property '%propertyName;'.`
 
-- **原因**:プロパティの形式が正しくないか、定義がありません。
+- **原因**:プロパティ '%propertyName;' の形式が正しくないか、定義がありません。
 
-- **推奨事項**:リンクされたサービスの定義に正しいデータがあるかどうかを確認してください。
+- **推奨事項**:リンクされたサービスのプロパティ '%propertyName;' が正しいデータで定義されていることを確認してください。
 
 
 ### <a name="error-code--4121"></a>エラー コード:4121
 
-- **メッセージ**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
 - **原因**:Azure ML サービスへのアクセスに使用された資格情報の有効期限が切れています。
 
@@ -344,16 +343,16 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--4122"></a>エラー コード:4122
 
-- **メッセージ**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
-- **原因**:AzureML サービスのリンクされたサービスで指定された資格情報が無効であるか、操作に対するアクセス許可がありません。
+- **原因**:Azure ML サービスのリンクされたサービスで指定された資格情報が無効であるか、操作に対するアクセス許可がありません。
 
-- **推奨事項**:リンクされたサービスの資格情報が有効で、AzureML サービスにアクセスするためのアクセス許可があることを確認してください。
+- **推奨事項**:リンクされたサービスの資格情報が有効で、Azure ML サービスにアクセスするためのアクセス許可があることを確認してください。
 
 
 ### <a name="error-code--4123"></a>エラー コード:4123
 
-- **メッセージ**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
 - **原因**: `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
 
@@ -362,7 +361,7 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--4124"></a>エラー コード:4124
 
-- **メッセージ**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
 - **原因**:公開された Azure ML パイプライン エンドポイントが存在しません。
 
@@ -371,7 +370,7 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--4125"></a>エラー コード:4125
 
-- **メッセージ**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
 - **原因**:Azure ML サービスでサーバー エラーが発生しています。
 
@@ -380,18 +379,102 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--4126"></a>エラー コード:4126
 
-- **メッセージ**: `AzureML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in AzureMLService for more error loggings.`
+- **メッセージ**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
 
-- **原因**:AzureML パイプラインを実行できませんでした。
+- **原因**:Azure ML パイプラインを実行できませんでした。
 
-- **推奨事項**:AzureMLService でエラー ログの詳細を確認し、ML パイプラインを修正してください
+- **推奨事項**:Azure ML サービスでエラー ログの詳細を確認し、ML パイプラインを修正してください
+
+
+
+## <a name="common"></a>一般
+
+### <a name="error-code--2103"></a>エラー コード:2103
+
+- **メッセージ**: `Please provide value for the required property '%propertyName;'.`
+
+- **原因**:プロパティの値が指定されていませんが、これはこのシナリオで必須です。
+
+- **推奨事項**:メッセージの値を指定してから、再試行してください。
+
+
+### <a name="error-code--2104"></a>エラー コード:2104
+
+- **メッセージ**: `The type of the property '%propertyName;' is incorrect.`
+
+- **原因**:指定されたプロパティの型が正しくありません。
+
+- **推奨事項**:プロパティの型を変更してから、再試行してください。
+
+
+### <a name="error-code--2105"></a>エラー コード:2105
+
+- **メッセージ**: `An invalid json is provided for property '%propertyName;'. Encountered an error while trying to parse: '%message;'.`
+
+- **原因**:プロパティの値が無効であるか、正しい形式ではありません。
+
+- **推奨事項**:プロパティのドキュメントを調べ、指定された値の形式と型が正しいことを確認してください。
+
+
+### <a name="error-code--2106"></a>エラー コード:2106
+
+- **メッセージ**: `The storage connection string is invalid. %errorMessage;`
+
+- **原因**:ストレージの接続文字列が無効であるか、その形式が間違っています。
+
+- **推奨事項**:Azure portal に進み、自分のストレージを見つけ、接続文字列をコピーしてリンクされたサービスに貼り付けてから再試行してください。
+
+
+### <a name="error-code--2108"></a>エラー コード:2108
+
+- **メッセージ**: `Error calling the endpoint '%url;'. Response status code: '%code;'`
+
+- **原因**:ネットワーク接続、DNS エラー、サーバー証明書の検証、タイムアウトなどの根本的な問題が原因で要求が失敗しました。
+
+- **推奨事項**:Fiddler/Postman を使用して要求を検証してください。
+
+
+### <a name="error-code--2110"></a>エラー コード:2110
+
+- **メッセージ**: `The linked service type '%linkedServiceType;' is not supported for '%executorType;' activities.`
+
+- **原因**:アクティビティに指定されているリンクされたサービスが間違っていました。
+
+- **推奨事項**:リンクされたサービスの種類がアクティビティでサポートされているいずれかの種類であることを確認してください。 たとえば、HDI アクティビティの場合、リンクされたサービスの種類は HDInsight または HDInsightOnDemand になります。
+
+
+### <a name="error-code--2111"></a>エラー コード:2111
+
+- **メッセージ**: `The type of the property '%propertyName;' is incorrect. The expected type is %expectedType;.`
+
+- **原因**:指定されたプロパティの型が正しくありません。
+
+- **推奨事項**:プロパティの型を変更してから、再試行してください。
+
+
+### <a name="error-code--2112"></a>エラー コード:2112
+
+- **メッセージ**: `The cloud type is unsupported or could not be determined for storage from the EndpointSuffix '%endpointSuffix;'.`
+
+- **原因**:クラウドの種類がサポートされていないか、EndpointSuffix からストレージ用のものを決定できませんでした。
+
+- **推奨事項**:別のクラウドのストレージを使用し、再試行してください。
+
+
+### <a name="error-code--2128"></a>エラー コード:2128
+
+- **メッセージ**: `No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+
+- **原因**:ネットワーク接続、DNS エラー、サーバー証明書の検証、またはタイムアウト。
+
+- **推奨事項**:要求を試しているエンドポイントが要求に応答していることを確認します。 Fiddler/Postman などのツールを使用できます。
+
 
 
 ## <a name="custom"></a>カスタム
 
 次の表は、Azure Batch に当てはまります。
-
-
+      
 ### <a name="error-code--2500"></a>エラー コード:2500
 
 - **メッセージ**: `Hit unexpected exception and execution failed.`
@@ -421,7 +504,7 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--2504"></a>エラー コード:2504
 
-- **メッセージ**: `Operation returned an invalid status code 'BadRequest'.` 
+- **メッセージ**: `Operation returned an invalid status code 'BadRequest'.`
 
 - **原因**:カスタム アクティビティの folderPath に含まれるファイルが多すぎます。 resourceFiles の合計サイズは 32,768 文字を超えないようにします。
 
@@ -457,7 +540,7 @@ ms.locfileid: "71091988"
 
 ### <a name="error-code--2509"></a>エラー コード:2509
 
-- **メッセージ**: `Batch   url ... is invalid; it must be in Uri format.` 
+- **メッセージ**: `Batch   url ... is invalid; it must be in Uri format.`
 
 - **原因**:Batch URL は次のようになります: `https://mybatchaccount.eastus.batch.azure.com`
 
@@ -468,225 +551,474 @@ ms.locfileid: "71091988"
 
 - **メッセージ**: `An   error occurred while sending the request.`
 
-- **原因**:Batch URL が無効です。 
+- **原因**:Batch URL が無効です。
 
 - **推奨事項**:Batch URL を確認してください。
-
+            
 
 ## <a name="hdinsight"></a>HDInsight
 
-次の表は、Spark、Hive、MapReduce、Pig、Hadoop Streaming に当てはまります。
+### <a name="error-code--200"></a>エラー コード:200
+
+- **メッセージ**: `Unexpected error happened: '%error;'.`
+
+- **原因**:内部サービスに問題があります。
+
+- **推奨事項**:さらに支援が必要であれば、ADF サポートにお問い合わせください。
+
+
+### <a name="error-code--201"></a>エラー コード:201
+
+- **メッセージ**: `JobType %jobType; is not found.`
+
+- **原因**:ADF でサポートされていない新しい種類のジョブがあります。
+
+- **推奨事項**:さらに支援が必要であれば、ADF サポート チームにお問い合わせください。
+
+
+### <a name="error-code--202"></a>エラー コード:202
+
+- **メッセージ**: `Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
+
+- **原因**:エラー メッセージに、発生した問題の詳細が表示されているはずです。
+
+- **推奨事項**:エラー メッセージは、問題の解決に役立ちます。 十分な情報がない場合、詳細については ADF サポートにお問い合わせください。
+
+
+### <a name="error-code--203"></a>エラー コード:203
+
+- **メッセージ**: `Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
+
+- **原因**:エラー メッセージに、発生した問題の詳細が表示されているはずです。
+
+- **推奨事項**:エラー メッセージは、問題の解決に役立ちます。 十分な情報がない場合、詳細については ADF サポートにお問い合わせください。
+
+
+### <a name="error-code--204"></a>エラー コード:204
+
+- **メッセージ**: `The resumption token is missing for runId '%runId;'.`
+
+- **原因**:内部サービスに問題があります。
+
+- **推奨事項**:さらに支援が必要であれば、ADF サポートにお問い合わせください。
+
+
+### <a name="error-code--205"></a>エラー コード:205
+
+- **メッセージ**: `Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
+
+- **原因**:オンデマンド クラスターで HDI 作成中にエラーが発生しました。
+
+- **推奨事項**:さらに支援が必要であれば、ADF サポートにお問い合わせください。
+
+
+### <a name="error-code--206"></a>エラー コード:206
+
+- **メッセージ**: `The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+
+- **原因**:この原因となったサービスに内部的な問題がありました。
+
+- **推奨事項**:これは一時的な問題である可能性があります。 ジョブを再試行してください。問題が解決しない場合は、ADF サポートにお問い合わせください。
+
+
+### <a name="error-code--207"></a>エラー コード:207
+
+- **メッセージ**: `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+
+- **原因**:プライマリ ストレージ アカウントからリージョンを特定しているときに内部エラーが発生しました。
+
+- **推奨事項**:別のストレージを試してください。 その解決策を受け入れられない場合、ADF サポート チームにお問い合わせください。
+
+
+### <a name="error-code--208"></a>エラー コード:208
+
+- **メッセージ**: `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+
+- **原因**:サービス プリンシパルを読み取ろうとしたときか MSI 認証をインスタンス化しようとしたとき、内部エラーが発生しました。
+
+- **推奨事項**:指定のサブスクリプションで HDInsight クラスターを作成するアクセス許可を持っているサービス プリンシパルの指定を検討し、再試行してください。 その解決策を受け入れられない場合、ADF サポート チームにお問い合わせください。
 
 
 ### <a name="error-code--2300"></a>エラー コード:2300
 
-- **メッセージ**: `Hadoop job submission failed. Error: The remote name could not be resolved. <br/><br/>The cluster is not found.`
+- **メッセージ**: `Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
-- **原因**:指定されたクラスター URI が無効です。 
+<br>
 
-- **推奨事項**:クラスターが削除されていないことと指定した URI が正しいことを確認してください。 ブラウザーでこの URI を開くと、Ambari UI が表示されます。 クラスターが仮想ネットワークに存在する場合、この URI はプライベート URI になります。 それを開くには、同じ仮想ネットワークに属している VM を使用します。 詳細については、「[Apache Hadoop サービスへの直接接続](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)」を参照してください。
+- **原因**:エラー メッセージに "リモート名を解決できませんでした" のようなメッセージが含まれているとき、指定されたクラスター URI が無効であることを意味します。
 
-<br/>
 
-- **メッセージ**: `Hadoop job submission failed. Job: …, Cluster: …/. Error: A task was canceled.`
+- **推奨事項**:クラスターが削除されていないことと指定した URI が正しいことを確認してください。 ブラウザーでこの URI を開くと、Ambari UI が表示されます。 クラスターが仮想ネットワークに存在する場合、この URI はプライベート URI になります。 それを開くには、同じ仮想ネットワークに属している VM を使用します。 詳細については、[こちら](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services)をご覧ください。
+                  
 
-- **原因**:ジョブの送信がタイムアウトしました。 
+<br>
+
+- **原因**:エラー メッセージに "タスクが取り消されました" のようなメッセージが含まれているとき、ジョブ送信がタイムアウトになったことを意味します。
 
 - **推奨事項**:一般的な HDInsight の接続またはネットワーク接続の問題が考えられます。 まず、HDInsight Ambari UI がどのブラウザーからも使用可能であることを確認します。 ご自分の資格情報がまだ有効であることを確認してください。 セルフホステッド統合ランタイム (IR) を使用している場合は、必ずセルフホステッド IR がインストールされている VM またはマシンからこれを実行してください。 その後、Data Factory から再びジョブの送信を試みてください。 それでも失敗する場合は、Data Factory チームに連絡してサポートを依頼してください。
 
+<br>
 
-- **メッセージ**: `Unauthorized: Ambari user name or password is incorrect  <br/><br/>Unauthorized: User admin is locked out in Ambari.   <br/><br/>403 - Forbidden: Access is denied.`
-
-- **原因**:HDInsight の資格情報が正しくないか、有効期限が切れています。
+- **原因**:エラー メッセージに "ユーザー管理者が Ambari でロックアウトされています" または "許可されていません: Ambari のユーザー名またはパスワードが正しくありません" のようなメッセージが含まれているとき、HDInsight の資格情報が間違っているか、期限切れになっていることを意味します。
 
 - **推奨事項**:資格情報を訂正して、リンクされたサービスを再デプロイしてください。 任意のブラウザーでクラスター URI を開いてサインインを試行することで、まず HDInsight で資格情報が機能することを確認します。 資格情報が機能しない場合は、Azure portal からリセットできます。
 
-<br/>
+<br>
 
-- **メッセージ**: `502 - Web server received an invalid response while acting as a gateway or proxy server. <br/>Bad gateway.`
+- **原因**:エラー メッセージに "502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました" のようなメッセージが含まれているとき、このエラーは HDInsight サービスにより返されています。
 
-- **原因**:HDInsight からのエラーです。
 
-- **推奨事項**:このエラーは HDInsight クラスターからのものです。 詳細については、「[Ambari UI 502 エラー](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)」、[Spark Thrift サーバーへの接続時の 502 エラー](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)に関するページ、[Spark Thrift サーバーへの接続時の 502 エラー](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)に関するページ、「[Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)」を参照してください。
+- **推奨事項**: https://hdinsight.github.io/ambari/ambari-ui-502-error.html 、 https://hdinsight.github.io/spark/spark-thriftserver-errors.html 、 https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502 など、Azure HDInsight トラブルシューティング ドキュメントを参照してください。
+                  
 
-<br/>
+<br>
 
-- **メッセージ**: `Hadoop job submission failed. Job: …, Cluster: ... Error:   {\"error\":\"Unable to service the submit job request as   templeton service is busy with too many submit job requests. Please wait for some time before retrying the operation. Please refer to the config   templeton.parallellism.job.submit to configure concurrent requests. <br/><br/>Hadoop job submission failed. Job: xx, Cluster: name.   Error: {\"error\":\"java.io.IOException:   org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit   application_1561147195099_3730 to YARN :   org.apache.hadoop.security.AccessControlException: Queue root.joblauncher already has 500 applications, cannot accept submission of application:   application_1561147195099_3730\`
+- **原因**:エラー メッセージに "ジョブの送信要求が多すぎて Templetion サービスがビジー状態となっており、ジョブの送信要求にサービスを提供できません" や "キュー root.joblauncher のアプリケーションが既に 500 に達しており、アプリケーションの送信を受け付けられません" のようなメッセージが含まれているとき、HDInsight に同時に送信されているジョブの数が多すぎることを意味します。
 
-- **原因**:HDInsight に同時に送信されているジョブの数が多すぎます。
+- **推奨事項**:HDInsight に送信されているコンカレント ジョブの数を制限することを検討してください。 ジョブが同じアクティビティによって送信されている場合は、Data Factory アクティビティのコンカレンシーを参照してください。 同時実行のパイプラインが時間を分散して実行されるようにトリガーを変更してください。 また、エラーで示されているように templeton.parallellism.job.submit を調整するために HDInsight のドキュメントを参照してください。
 
-- **推奨事項**:HDInsight に送信されているコンカレント ジョブの数を制限することを検討してください。 ジョブが同じアクティビティによって送信されている場合は、Data Factory アクティビティのコンカレンシーを参照してください。 同時実行のパイプラインが時間を分散して実行されるようにトリガーを変更してください。 HDInsight のドキュメントを参照し、エラーの提案に従って `templeton.parallellism.job.submit` を調整してください。
+
+### <a name="error-code--2301"></a>エラー コード:2301
+
+- **メッセージ**: `Could not get the status of the application '%physicalJobId;' from the HDInsight service. Received the following error: %message;. Please refer to HDInsight troubleshooting documentation or contact their support for further assistance.`
+
+- **原因**:HDInsight のクラスターまたはサービスに問題があります。
+
+
+- **推奨事項**:このエラーは、実行中のジョブのステータスを取得しようとして ADF が HDInsight クラスターから応答を取得しないときに発生します。 クラスター自体の問題で発生するか、HDInsight サービスが停止した可能性があります。 https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide で HDInsight のトラブルシューティング ドキュメントを参照するか、サポートにお問い合わせください。
+                
+
+
+### <a name="error-code--2302"></a>エラー コード:2302
+
+- **メッセージ**: `Hadoop job failed with exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Contact HDInsight team for further support.`
+
+- **原因**:ジョブは HDI クラスターに送信されましたが、そこでエラーが発生しました。
+
+- **推奨事項**:アクティビティ実行 Output の Yarn ログ リンクにアクセスし、HDI 出力でエラーを探します。 必要であれば、HDInsight チームに連絡してサポートを依頼してください。
 
 
 ### <a name="error-code--2303"></a>エラー コード:2303
 
-- **メッセージ**: `Hadoop job failed with exit code '5'. See   'wasbs://adfjobs@xx.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' for more details. <br/><br/>Hive execution failed with error code 'UserErrorHiveOdbcCommandExecutionFailure'.   See 'wasbs://adfjobs@xx.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' for more details.`
+- **メッセージ**: `Hadoop job failed with transient exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Try again or contact HDInsight team for further support.`
 
-- **原因**:ジョブが HDInsight に送信され、HDInsight で失敗しました。
+- **原因**:ジョブは HDI クラスターに送信されましたが、そこでエラーが発生しました。
 
-- **推奨事項**:ジョブは HDInsight に正常に送信されました。 クラスターで失敗しました。 HDInsight Ambari UI でジョブとログを開くか、エラー メッセージに示されているファイルをストレージから開いてください。 そのファイルにエラーの詳細が表示されます。
+- **推奨事項**:アクティビティ実行 Output の Yarn ログ リンクにアクセスし、HDI 出力でエラーを探します。 必要であれば、再試行するか、HDInsight チームに連絡してサポートを依頼してください。
+
+
+### <a name="error-code--2304"></a>エラー コード:2304
+
+- **メッセージ**: `MSI authentication is not supported on storages for HDI activities.`
+
+- **原因**:HDI のリンクされたサービスまたは HDI のアクティビティで使用されているストレージのリンクされたサービスが、サポートされていない MSI 認証で構成されています。
+
+- **推奨事項**:HDI のリンクされたサービスまたは HDI のアクティビティで使用されているストレージ アカウントの完全接続文字列を指定してください。
+
+
+### <a name="error-code--2305"></a>エラー コード:2305
+
+- **メッセージ**: `Failed to initialize the HDInsight client for the cluster '%cluster;'. Error: '%message;'`
+
+- **原因**:HDI クラスターの接続情報が間違っているか、指定されたユーザーに必要なアクションを実行するアクセス許可がないか、HDInsight サービスに問題があり、ADF からの要求に応答できなかったことが原因です。
+
+- **推奨事項**:ユーザー情報が正確であることを確認してください。 HDI クラスターの Ambari UI を、セルフホステッド IR の場合、IR がインストールされている VM から、Azure IR の場合、あらゆるコンピューターから開けることも確認します。
+
+
+### <a name="error-code--2306"></a>エラー コード:2306
+
+- **メッセージ**: `An invalid json is provided for script action '%scriptActionName;'. Error: '%message;'`
+
+- **原因**:スクリプト アクションに指定された json が無効です。
+
+
+- **推奨事項**:エラー メッセージは、問題の特定に役立ちます。 json 構成を修正し、再試行してください。 詳細については https://docs.microsoft.com/azure/data-factory/compute-linked-services#azure-hdinsight-on-demand-linked-service を確認してください。
+                
 
 
 ### <a name="error-code--2310"></a>エラー コード:2310
 
-- **メッセージ**: `Hadoop job submission failed. Error: The remote name could not be resolved. <br/><br/>The cluster is not found.`
+- **メッセージ**: `Failed to submit Spark job. Error: '%message;'`
 
-- **原因**:指定されたクラスター URI が無効です。 
+- **原因**:ADF で、Livy API (livy/batch) を使用して Spark クラスターにバッチを作成しようとしましたが、エラーが表示されました。
 
-- **推奨事項**:クラスターが削除されていないことと指定した URI が正しいことを確認してください。 ブラウザーでこの URI を開くと、Ambari UI が表示されます。 クラスターが仮想ネットワークに存在する場合、この URI はプライベート URI になります。 それを開くには、同じ仮想ネットワークに属している VM を使用します。 詳細については、「[Apache Hadoop サービスへの直接接続](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)」を参照してください。
-
-<br/>
-
-- **メッセージ**: `502 - Web server received an invalid response while acting as a gateway or proxy server. <br/>Bad gateway.`
-
-- **原因**:HDInsight からのエラーです。
-
-- **推奨事項**:このエラーは HDInsight クラスターからのものです。 詳細については、「[Ambari UI 502 エラー](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)」、[Spark Thrift サーバーへの接続時の 502 エラー](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)に関するページ、[Spark Thrift サーバーへの接続時の 502 エラー](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)に関するページ、「[Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)」を参照してください。
-
-<br/>
-
-- **メッセージ**: `java.lang.NullPointerException`
-
-- **原因**:このエラーは、Spark クラスターにジョブが送信されたときに発生します。 
-
-- **推奨事項**:この例外は HDInsight から発生します。 実際の問題が隠されています。 HDInsight チームに連絡してサポートを依頼してください。 クラスター名とアクティビティの実行時間の範囲を伝えてください。
+- **推奨事項**:エラー メッセージに従い、問題を解決してください。 これを解決できる十分な情報がない場合、HDI チームに連絡し、バッチ ID とジョブ ID を伝えてください。ID は ADF 監視ページのアクティビティ実行 Output で見つかります。
 
 
-### <a name="error-code--2347"></a>エラー コード:2347
+### <a name="error-code--2312"></a>エラー コード:2312
 
-- **メッセージ**: `Hadoop job failed with exit code '5'. See 'wasbs://adfjobs@xx.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' for more details. <br/><br/>Hive execution failed with error code 'UserErrorHiveOdbcCommandExecutionFailure'.   See 'wasbs://adfjobs@xx.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' for more details.`
+- **メッセージ**: `Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from ADF Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
 
-- **原因**:ジョブが HDInsight に送信され、HDInsight で失敗しました。
+- **原因**:HDInsight Spark クラスターでジョブが失敗しました。
 
-- **推奨事項**:ジョブは HDInsight に正常に送信されました。 クラスターで失敗しました。 HDInsight Ambari UI でジョブとログを開くか、エラー メッセージに示されているファイルをストレージから開いてください。 そのファイルにエラーの詳細が表示されます。
+- **推奨事項**:ADF 監視ページのアクティビティ実行 Output にあるリンクにアクセスし、HDInsight Spark クラスターでの実行をトラブルシューティングしてください。 さらに支援が必要であれば、HDInsight サポート チームにお問い合わせください。
+
+
+### <a name="error-code--2313"></a>エラー コード:2313
+
+- **メッセージ**: `The batch with ID '%batchId;' was not found on Spark cluster. Open the Spark History UI and try to find it there. Contact HDInsight support for further assistance.`
+
+- **原因**:HDInsight Spark クラスターでバッチが削除されました。
+
+- **推奨事項**:HDInsight Spark クラスターでのバッチをトラブルシューティングしてください。 さらに支援が必要であれば、HDInsight サポートにお問い合わせください。 
 
 
 ### <a name="error-code--2328"></a>エラー コード:2328
 
-- **メッセージ**: `Internal server error occurred while processing the request. Please retry the request or contact support. `
+- **メッセージ**: `Failed to create the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
 
-- **原因**:このエラーは、HDInsight のオンデマンドで発生します。
+- **原因**: `The error message should show the details of what went wrong.`
 
-- **推奨事項**:このエラーは、HDInsight のプロビジョニングが失敗したときに HDInsight サービスによって生成されます。 HDInsight チームに連絡して、オンデマンド クラスターの名前を伝えてください。
+- **推奨事項**:エラー メッセージは、問題の解決に役立ちます。
+
+
+### <a name="error-code--2329"></a>エラー コード:2329
+
+- **メッセージ**: `Failed to delete the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
+
+- **原因**:エラー メッセージに、発生した問題の詳細が表示されているはずです。
+
+- **推奨事項**:エラー メッセージは、問題の解決に役立ちます。
+
+
+### <a name="error-code--2331"></a>エラー コード:2331
+
+- **メッセージ**: `The file path should not be null or empty.`
+
+- **原因**:指定されたファイル パスが空です。
+
+- **推奨事項**:存在するファイルのパスを指定してください。
+
+
+### <a name="error-code--2340"></a>エラー コード:2340
+
+- **メッセージ**: `HDInsightOnDemand linked service does not support execution via SelfHosted IR. Your IR name is '%IRName;'. Please select an Azure IR instead.`
+
+- **原因**:HDInsightOnDemand のリンクされたサービスでは、セルフホステッド IR 経由の実行がサポートされていません。
+
+- **推奨事項**:Azure IR を選択してから、再試行してください。
+
+
+### <a name="error-code--2341"></a>エラー コード:2341
+
+- **メッセージ**: `HDInsight cluster URL '%clusterUrl;' is incorrect, it must be in URI format and the scheme must be 'https'.`
+
+- **原因**:指定した URL の形式が正しくありません。
+
+- **推奨事項**:クラスター URL を修正し、再試行してください。
+
+
+### <a name="error-code--2342"></a>エラー コード:2342
+
+- **メッセージ**: `Failed to connect to HDInsight cluster: '%errorMessage;'.`
+
+- **原因**:クラスターに指定された資格情報が間違っているか、ネットワークの構成または接続に問題があるか、または IR とクラスターの接続に問題があります。
+
+- **推奨事項**:  
+      1. ブラウザーで HDInsight クラスターの Ambari UI を開いて、資格情報が正しいことを確認します。
+      2. クラスターが VNet 内にあり、セルフホステッド IR が使用されている場合、HDI URL は VNet のプライベート URL である必要があります。つまり、クラスター名の後に '-int ' が含まれている必要があります。 たとえば、"https://mycluster.azurehdinsight.net/ " を "https://mycluster-int.azurehdinsight.net/ " に変更する必要があります。
+      2. クラスターが VNet 内にあり、セルフホステッド IR を使用し、プライベート URL を使用しても接続に失敗する場合、IR がインストールされている VM に、HDI に接続できない問題があります。 IR がインストールされている VM に接続し、ブラウザーで Ambari UI を開きます。 クラスターにプライベート URL を使用します。 この接続はブラウザーから動作するはずです。 動作しない場合、HDInsight サポートにお問い合わせください。
+      3. セルフホステッド IR が使用されていない場合、HDI クラスターにパブリック アクセスできるはずです。 ブラウザーで Ambari UI を開き、それが開いていることを確認します。 クラスターやクラスター上のサービスに問題がある場合、HDInsight サポート チームに連絡して支援を求めてください。
+      そのため、一般的に、テスト接続に合格し、実行が機能するには、ADF のリンクされたサービスで使用されている HDI クラスター URL に ADF IR (セルフホステッドまたは Azure) でアクセスできる必要があります。 これは、VM または任意のパブリック コンピューターでブラウザーからその URL を開くことで簡単に確認できます。
+    
+
+
+### <a name="error-code--2343"></a>エラー コード:2343
+
+- **メッセージ**: `User name and password cannot be null or empty to connect to the HDInsight cluster.`
+
+- **原因**:ユーザー名またはパスワードが空です。
+
+- **推奨事項**:HDI に接続するための正しい資格情報を指定し、再試行してください。
+
+
+### <a name="error-code--2345"></a>エラー コード:2345
+
+- **メッセージ**: `Failed to read the content of the hive script. Error: '%message;'`
+
+- **原因**:スクリプト ファイルが存在しないか、ADF でスクリプトの場所に接続できませんでした。
+
+- **推奨事項**:スクリプトが存在し、関連するリンクされたサービスに接続のための適切な資格情報があることを確認してください。
+
+
+### <a name="error-code--2346"></a>エラー コード:2346
+
+- **メッセージ**: `Failed to create ODBC connection to the HDI cluster with error message '%message;'.`
+
+- **原因**:ADF で HDI クラスターへの ODBC 接続を確立しようとしましたが、エラーが発生して失敗しました。
+
+- **推奨事項**:エラー メッセージとエラー コードは、ODBC 接続エラーのトラブルシューティングに役立ちます。 問題を解決するのに十分でない場合は、Azure HDInsight チームに支援を求めてください。
+
+
+### <a name="error-code--2347"></a>エラー コード:2347
+
+- **メッセージ**: `Hive execution through ODBC failed with error message '%message;'.`
+
+- **原因**:ADF から ODBC 接続経由で HDI クラスターに実行のための hive スクリプトが送信され、そのスクリプトが HDI 上で失敗しました。
+
+- **推奨事項**:HDI クラスターで hive スクリプトを実行できませんでした。エラー メッセージとエラー コードはトラブルシューティングで役立ちます。 問題を解決するのに十分でない場合は、Azure HDInsight チームに支援を求めてください。
+
+
+### <a name="error-code--2348"></a>エラー コード:2348
+
+- **メッセージ**: `The main storage has not been initialized. Please check the properties of the storage linked service in the HDI linked service.`
+
+- **原因**:ストレージのリンクされたサービスのプロパティが正しく設定されていません。
+
+- **推奨事項**:HDI アクティビティのメイン ストレージのリンクされたサービスでは、完全接続文字列のみサポートされています。 MSI 認証またはアプリケーションを使用していないことを確認してください。
+
+
+### <a name="error-code--2350"></a>エラー コード:2350
+
+- **メッセージ**: `Failed to prepare the files for the run '%jobId;'. HDI cluster: '%cluster;', Error: '%errorMessage;'`
+
+- **原因**:ファイルがあるはずのストレージに接続するための資格情報が間違っているか、ファイルがそこにありません。
+
+- **推奨事項**:このエラーは、HDI アクティビティの準備手順を ADF で行うときに発生します。 メイン ストレージへのファイルのコピーは、ジョブを HDI に送信する前に試行されます。 指定の場所にファイルが存在すること、ストレージ接続が正しいことを確認してください。 ADF HDI アクティビティでは、HDI アクティビティに関連付けられているストレージ アカウントの MSI 認証がサポートされていません。そのため、これらのリンクされたサービスに完全なキーが指定されていること、あるいは Azure Key Vault が使用されていることを確認してください。
+
+
+### <a name="error-code--2351"></a>エラー コード:2351
+
+- **メッセージ**: `Could not open the file '%filePath;' in container/fileSystem '%container;'.`
+
+- **原因**:指定されたパスにファイルが存在しません。
+
+- **推奨事項**:ファイルが実際に存在するかどうかを確認し、このファイルを指す接続情報を含むリンクされたサービスに正しい資格情報が指定されていることを確認してください。
+
+
+### <a name="error-code--2352"></a>エラー コード:2352
+
+- **メッセージ**: `The file storage has not been initialized. Please check the properties of the file storage linked service in the HDI activity.`
+
+- **原因**:ファイル ストレージのリンクされたサービスのプロパティが正しく設定されていません。
+
+- **推奨事項**:ファイル ストレージのリンクされたサービスのプロパティが正しく構成されていることを確認してください。
+
+
+### <a name="error-code--2353"></a>エラー コード:2353
+
+- **メッセージ**: `The script storage has not been initialized. Please check the properties of the script storage linked service in the HDI activity.`
+
+- **原因**:スクリプト ストレージのリンクされたサービスのプロパティが正しく設定されていません。
+
+- **推奨事項**:スクリプト ストレージのリンクされたサービスのプロパティが正しく構成されていることを確認してください。
+
+
+### <a name="error-code--2354"></a>エラー コード:2354
+
+- **メッセージ**: `The storage linked service type '%linkedServiceType;' is not supported for '%executorType;' activities for property '%linkedServicePropertyName;'.`
+
+- **原因**:ストレージのリンクされたサービスの種類は、このアクティビティではサポートされていません。
+
+- **推奨事項**:選択したリンクされたサービスがアクティビティでサポートされているいずれかの種類であることを確認してください。 HDI アクティビティでは、AzureBlobStorage と AzureBlobFSStorage のリンクされたサービスがサポートされています。
+
+
+### <a name="error-code--2355"></a>エラー コード:2355
+
+- **メッセージ**: `The '%value' provided for commandEnvironment is incorrect. The expected value should be an array of strings where each string has the format CmdEnvVarName=CmdEnvVarValue.`
+
+- **原因**:commandEnvironment に指定された情報が間違っています。
+
+- **推奨事項**:  
+      指定された値が \"commandEnvironment\": [ \"variableName=variableValue\" ] のようになっていることを確認してください。各変数は一覧に 1 回だけ表示されます。
+    
+
+
+### <a name="error-code--2356"></a>エラー コード:2356
+
+- **メッセージ**: `The commandEnvironment already contains a variable named '%variableName;'.`
+
+- **原因**:commandEnvironment で変数が 2 回指定されました。
+
+- **推奨事項**:  
+      指定された値が \"commandEnvironment\": [ \"variableName=variableValue\" ] のようになっていることを確認してください。各変数は一覧に 1 回だけ表示されます。
+    
+
+
+### <a name="error-code--2357"></a>エラー コード:2357
+
+- **メッセージ**: `The certificate or password is wrong for ADLS Gen 1 storage.`
+
+- **原因**:指定された資格情報が間違っています。
+
+- **推奨事項**:ADLS Gen 1 のリンクされたサービスの接続情報を確認し、テスト接続に成功することを確認してください。
+
+
+### <a name="error-code--2358"></a>エラー コード:2358
+
+- **メッセージ**: `The value '%value;' for the required property 'TimeToLive' in the on demand HDInsight linked service '%linkedServiceName;' has invalid format. It should be a timespan between '00:05:00' and '24:00:00'.`
+
+- **原因**:必須プロパティ "TimeToLive" に指定された値の形式が無効です。 
+
+- **推奨事項**:推奨範囲に収まる値に変更し、再試行してください。
+
+
+### <a name="error-code--2359"></a>エラー コード:2359
+
+- **メッセージ**: `The value '%value;' for the property 'roles' is invalid. Expected types are 'zookeeper', 'headnode', and 'workernode'.`
+
+- **原因**:プロパティ "roles" に指定された値が無効です。
+
+- **推奨事項**:いずれかの推奨値に変更し、再試行してください。
+
+
+### <a name="error-code--2360"></a>エラー コード:2360
+
+- **メッセージ**: `The connection string in HCatalogLinkedService is invalid. Encountered an error while trying to parse: '%message;'.`
+
+- **原因**:HCatalogLinkedService に指定された接続文字列が無効です。
+
+- **推奨事項**:正しい Azure SQL 接続文字列に値を更新し、再試行してください。
+
+
+### <a name="error-code--2361"></a>エラー コード:2361
+
+- **メッセージ**: `Failed to create on demand HDI cluster. Cluster name is '%clusterName;'.`
+
+- **原因**:クラスター作成に失敗したが、ADF には HDInsight サービスからエラーが返されませんでした。
+
+- **推奨事項**:Azure Portal を開き、指定の名前で HDI リソースを見つけてください。また、プロビジョニング状態を確認してください。 さらに支援が必要であれば、HDInsight サポート チームにお問い合わせください。
+
+
+### <a name="error-code--2362"></a>エラー コード:2362
+
+- **メッセージ**: `Only Azure Blob storage accounts are supported as additional storages for HDInsight on demand linked service.`
+
+- **原因**:指定された追加のストレージは Azure Blob Storage ではありませんでした。
+
+- **推奨事項**:HDInsight オンデマンドのリンクされたサービスの追加ストレージとして Azure Blob Storage アカウントを指定してください。
 
 
 
 ## <a name="web-activity"></a>Web アクティビティ
 
-### <a name="error-code--2108"></a>エラー コード:2108
-
-- **メッセージ**: `Invalid HttpMethod: '...'.`
-
-- **原因**:アクティビティのペイロードで指定された HTTP メソッドが Web アクティビティでサポートされていません。
-
-- **推奨事項**:サポート対象の HTTP メソッドは PUT、POST、GET、DELETE です。
-
-<br/>
-
-- **メッセージ**: `Invalid Server Error 500.`
-
-- **原因**:エンドポイントの内部エラー。
-
-- **推奨事項**:該当 URL に対する機能を Fiddler または Postman を使用してチェックしてください。
-
-<br/>
-
-- **メッセージ**: `Unauthorized 401.`
-
-- **原因**:有効な認証が要求にありません。
-
-- **推奨事項**:トークンの有効期限が切れている可能性があります。 有効な認証方法を指定してください。 該当 URL に対する機能を Fiddler または Postman を使用してチェックしてください。
-
-<br/>
-
-- **メッセージ**: `Forbidden 403.`
-
-- **原因**:必要なアクセス許可がありません。
-
-- **推奨事項**:アクセスしたリソースでユーザーのアクセス許可を確認してください。 該当 URL に対する機能を Fiddler または Postman を使用してチェックしてください。
-
-<br/>
-
-- **メッセージ**: `Bad Request 400.`
-
-- **原因**:HTTP 要求が無効です。
-
-- **推奨事項**: 要求の URL、動詞、本文を確認してください。 Fiddler または Postman を使って要求を確認してください。
-
-<br/>
-
-- **メッセージ**: `Not found 404.` 
-
-- **原因**:リソースが見つかりませんでした。   
-
-- **推奨事項**:Fiddler または Postman を使って要求を確認してください。
-
-<br/>
-
-- **メッセージ**: `Service unavailable.`
-
-- **原因**:サービスを利用できません。
-
-- **推奨事項**:Fiddler または Postman を使って要求を確認してください。
-
-<br/>
-
-- **メッセージ**: `Unsupported Media Type.`
-
-- **原因**:コンテンツ タイプと Web アクティビティの本文が一致していません。
-
-- **推奨事項**:ペイロードの形式と一致するコンテンツ タイプを指定してください。 Fiddler または Postman を使って要求を確認してください。
-
-<br/>
-
-- **メッセージ**: `The resource you are looking for has been removed, has had its name changed, or is temporarily unavailable.`
-
-- **原因**:このリソースは利用できません。 
-
-- **推奨事項**:Fiddler または Postman を使ってエンドポイントを確認してください。
-
-<br/>
-
-- **メッセージ**: `The page you are looking for cannot be displayed because an invalid method (HTTP verb) is being used.`
-
-- **原因**:誤った Web アクティビティ メソッドが要求に指定されました。
-
-- **推奨事項**:Fiddler または Postman を使ってエンドポイントを確認してください。
-
-<br/>
-
-- **メッセージ**: `invalid_payload`
-
-- **原因**:Web アクティビティの本文が正しくありません。
-
-- **推奨事項**:Fiddler または Postman を使ってエンドポイントを確認してください。
-
-
-### <a name="error-code--2208"></a>エラー コード:2208
-
-- **メッセージ**: `Invoking Web Activity failed with HttpStatusCode - {0}.`
-
-- **原因**:ターゲット サービスからエラー状態が返されました。
-
-- **推奨事項**:Fiddler/Postman を使用して要求を検証してください。
-
-
-### <a name="error-code--2308"></a>エラー コード:2308
+### <a name="error-code--2128"></a>エラー コード:2128
 
 - **メッセージ**: `No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
 
-- **原因**:ネットワーク接続、DNS エラー、サーバー証明書の検証、タイムアウトなど、このエラーには複数の理由が考えられます。
+- **原因**:ネットワーク接続、DNS エラー、サーバー証明書の検証、またはタイムアウト。
+
+- **推奨事項**:要求を試しているエンドポイントが要求に応答していることを確認します。 Fiddler/Postman などのツールを使用できます。
+
+
+### <a name="error-code--2108"></a>エラー コード:2108
+
+- **メッセージ**: `Error calling the endpoint '%url;'. Response status code: '%code;'`
+
+- **原因**:ネットワーク接続、DNS エラー、サーバー証明書の検証、タイムアウトなどの根本的な問題が原因で要求が失敗しました。
 
 - **推奨事項**:Fiddler/Postman を使用して要求を検証してください。
+<br>
 
 
+#### <a name="more-details"></a>詳細
 Fiddler を使用して監視対象 Web アプリケーションの HTTP セッションを作成するには:
 
 1. [Fiddler](https://www.telerik.com/download/fiddler) をダウンロードし、インストールして開きます。
 
-1. Web アプリケーションで HTTPS が使用されている場合は、 **[Tools]\(ツール\)**  >  **[Fiddler Options]\(Fiddler オプション\)**  >  **[HTTPS]** の順に選択します。 **[Capture HTTPS CONNECTs]\(HTTPS 接続をキャプチャする\)** と **[Decrypt HTTPS traffic]\(HTTPS トラフィックの暗号化を解除する\)** をオンにします。 
-   
-   ![Fiddler オプション](media/data-factory-troubleshoot-guide/fiddler-options.png)
+1. Web アプリケーションで HTTPS が使用されている場合は、 **[Tools]\(ツール\)**  >  **[Fiddler Options]\(Fiddler オプション\)**  >  **[HTTPS]** の順に選択します。 **[Capture HTTPS CONNECTs]\(HTTPS 接続をキャプチャする\)** と **[Decrypt HTTPS traffic]\(HTTPS トラフィックの暗号化を解除する\)** をオンにします。
+
+![Fiddler オプション](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. お使いのアプリケーションで SSL 証明書が使用されている場合は、Fiddler の証明書をデバイスに追加します。 **[Tools]\(ツール\)**  >  **[Fiddler Options]\(Fiddler オプション\)**  >  **[HTTPS]**  >  **[Actions]\(アクション\)**  >  **[Export Root Certificate to Desktop]\(ルート証明書をデスクトップにエクスポート\)** に移動します。
 
@@ -694,15 +1026,15 @@ Fiddler を使用して監視対象 Web アプリケーションの HTTP セッ�
 
 1. キャッシュされたすべての項目が削除されて、再ダウンロードが必要になるように、ブラウザーのキャッシュをクリアします。
 
-1. 要求を作成します。 
+1. 要求を作成します。
 
-   a. **[Composer]\(コンポーザー\)** タブを選択します。
+a. **[Composer]\(コンポーザー\)** タブを選択します。
 
-   b. HTTP メソッドと URL を設定します。
+b. HTTP メソッドと URL を設定します。
 
-   c. 必要に応じてヘッダーと要求本文を追加します。
+c. 必要に応じてヘッダーと要求本文を追加します。
 
-   d. **[実行]** を選択します。
+d. **[実行]** を選択します。
 
 9. トラフィックのキャプチャを再び有効にし、ページで問題のあるトランザクションを完了します。
 
@@ -722,4 +1054,4 @@ Fiddler を使用して監視対象 Web アプリケーションの HTTP セッ�
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
 
 
-
+            
