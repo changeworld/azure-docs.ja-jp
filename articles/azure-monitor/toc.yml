@@ -1183,19 +1183,17 @@
               href: platform/autoscale-webhook-email.md
         - name: PowerShell
           items:
-            - name: Azure PowerShell のサンプル
+            - name: PowerShell による管理
               href: platform/powershell-quickstart-samples.md
-            - name: PowerShell コマンドレット
+            - name: アラートを作成する
+              href: app/powershell-alerts.md
+            - name: Log Analytics の管理
               href: platform/powershell-workspace-configuration.md
-            - name: アプリケーション
+            - name: Application Insights
               items:
-                - name: Application Insights リソースの作成
+                - name: Application Insights の管理
                   href: app/powershell.md
-                - name: リソースを作成する
-                  href: app/powershell-script-create-resource.md
-                - name: アラートの設定
-                  href: app/powershell-alerts.md
-                - name: Azure Diagnostics の取得
+                - name: Azure Cloud Services の管理
                   href: app/powershell-azure-diagnostics.md
         - name: Azure CLI のサンプル
           href: platform/cli-samples.md
