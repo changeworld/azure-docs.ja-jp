@@ -20,6 +20,8 @@
   items:
     - name: Azure VM の大規模なバックアップ
       href: tutorial-backup-vm-at-scale.md
+    - name: PowerShell を使用して Azure VM をバックアップする
+      href: tutorial-backup-azure-vm.md
     - name: ディスクの復元
       href: tutorial-restore-disk.md
     - name: 個々のファイルの復元

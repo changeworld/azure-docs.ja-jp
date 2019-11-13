@@ -3,7 +3,7 @@ title: Azure Digital Twins プレビューのドキュメント
 summary: Azure Digital Twins を使って、人、場所、物を繋ぎ、空間インテリジェンスにより IoT ソリューションを構築します。 クイック スタートとチュートリアルを通じて、仮想スマート ビルディングを監視し、概要の詳細について学び、物理環境をモデル化する次世代の IoT ソリューションを作成します。
 metadata:
   title: Azure Digital Twins プレビューのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: Azure Digital Twins を使用してスマートな空間ソリューションを作成します。
+  description: Azure Digital Twins を使って、人、場所、物を繋ぎ、空間インテリジェンスにより IoT ソリューションを構築します。
   services: digital-twins
   ms.service: digital-twins
   ms.subservice: digital-twins
@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/03/2019
-  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 3d55dcfc4b57d0179ca6e02bae50bf3d37dc70f3
+  ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71219732"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74009310"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:

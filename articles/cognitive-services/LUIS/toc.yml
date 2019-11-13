@@ -166,9 +166,7 @@
       items:
         - name: 意図の追加
           href: luis-how-to-add-intents.md
-        - name: 発話に対するエンティティの追加
-          href: luis-how-to-add-example-utterances.md
-        - name: 発話のないエンティティの追加
+        - name: データを抽出するためのエンティティを追加する
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: 事前構築済みのモデルの使用
@@ -306,6 +304,8 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: カスタム エンティティのリファレンス
       items:
+        - name: 機械学習エンティティ
+          href: reference-entity-machine-learned-entity.md
         - name: 複合エンティティ
           href: reference-entity-composite.md
         - name: リスト エンティティ
@@ -316,6 +316,8 @@
           href: reference-entity-regular-expression.md
         - name: シンプル エンティティ
           href: reference-entity-simple.md
+    - name: パターンの構文
+      href: reference-pattern-syntax.md
     - name: センチメント
       href: luis-reference-prebuilt-sentiment.md
     - name: 開発者リソース

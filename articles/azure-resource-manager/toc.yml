@@ -154,6 +154,8 @@
         - name: デプロイ - REST API
           displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: what-if のデプロイ
+          href: template-deploy-what-if.md
         - name: エラー発生時の再デプロイ
           displayName: rollback
           href: rollback-on-error.md

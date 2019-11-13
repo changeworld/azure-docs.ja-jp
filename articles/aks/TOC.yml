@@ -128,8 +128,6 @@
               href: virtual-nodes-cli.md
             - name: Azure ポータルの使用
               href: virtual-nodes-portal.md
-        - name: Virtual Kubelet の使用
-          href: virtual-kubelet.md
         - name: クラスター オートスケーラーの使用
           href: cluster-autoscaler.md
         - name: Availability Zones を使用する

@@ -392,9 +392,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: アプリケーションの構成
           items:
-            - name: Azure portal のアプリ登録に関するトレーニング ガイド (レガシ)
+            - name: アプリの登録 (レガシ) から Azure portal の新しいアプリの登録エクスペリエンスへの移行
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: アプリケーション登録ポータルのアプリ登録ガイド
+            - name: アプリケーションの登録ポータルから Azure portal の新しいアプリの登録エクスペリエンスへの移行
               href: app-registration-portal-training-guide.md
             - name: シングルテナント アプリをマルチテナント アプリに変換する
               href: howto-convert-app-to-be-multi-tenant.md

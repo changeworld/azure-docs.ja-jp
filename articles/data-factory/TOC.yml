@@ -165,8 +165,8 @@
               href: concepts-data-flow-monitoring.md
             - name: データ フローのパフォーマンス
               href: concepts-data-flow-performance.md
-            - name: ノードの移動
-              href: concepts-data-flow-move-nodes.md
+            - name: グラフの管理
+              href: concepts-data-flow-manage-graph.md
             - name: 式ビルダー
               href: concepts-data-flow-expression-builder.md
             - name: 式言語
@@ -648,6 +648,8 @@
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: リファレンス
   items:
+    - name: データ フローのスクリプト
+      href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
     - name: PowerShell

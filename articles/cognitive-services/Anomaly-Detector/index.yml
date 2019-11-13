@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: d073adfbc1b05bbd4d92f5cfb500184653444f4b
-  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.openlocfilehash: 4f7eca51cd4ec6995618b68bd376fa5f4f6268e4
+  ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/18/2019
-  ms.locfileid: "71086778"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74013600"
 landingContent:
 - title: Anomaly Detector API について
   linkLists:
@@ -39,7 +39,11 @@ landingContent:
       url: https://www.youtube.com/embed/ERTaAnwCarM
   - linkListType: reference
     links:
-    - text: 異常検出で使用されるアルゴリズム (ホワイトペーパー)
+    - text: Azure Anomaly Detector API の概要
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162
+    - text: SR-CNN アルゴリズムの概要
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798
+    - text: 異常検出で使用されるアルゴリズム (KDD ペーパー)
       url: https://arxiv.org/abs/1906.03821
 - title: データの異常を検出する
   linkLists:
@@ -54,7 +58,7 @@ landingContent:
     - text: バッチ検出と Power BI を使用して異常を視覚化する
       url: tutorials/batch-anomaly-detection-powerbi.md
     - text: Azure Databricks を使用してストリーミング データの異常を検出する
-      url: tutorials/batch-anomaly-detection-powerbi.md
+      url: tutorials/anomaly-detection-streaming-databricks.md
   - linkListType: video
     links:
     - text: Azure Databricks を使用した、ストリーミング データの異常検出
