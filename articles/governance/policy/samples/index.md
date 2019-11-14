@@ -1,17 +1,14 @@
 ---
 title: ポリシーのサンプルのインデックス
 description: Azure Policy のサンプルのインデックス。 カテゴリには、名前付け、タグ、Key Vault、ネットワーク、ストレージなどがあります。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 03/19/2019
-ms.author: dacoulte
-ms.openlocfilehash: 7d44e313f4f8dbb675d2c711bfec6a21ecdbb94e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 54e77a83a03d9a8f5cedd59f010569d7ecef7d90
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980570"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74070101"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 

@@ -4,16 +4,16 @@ description: この記事では、Azure EA のお客様が Azure EA ポータル
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 11/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 1882b283f376a1bb8706132263c83e1a24ec0705
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 567beb9de0c0a8039d774270bdf61a7db437091e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900932"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888372"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Azure EA ポータルを使ってみる
 
@@ -205,7 +205,8 @@ EA 管理者が支援できない場合は、[Azure EA ポータルのサポー�
 アカウントの所有権を確認するには:
 
 1. Azure EA ポータルにサインインします。
-2. 状態を表示して、アカウントの所有権を確認します。 状態は、 **[保留中]** から **[開始日/終了日]** に変わるはずです。 開始日/終了日は、ユーザーが最初にサインインした日付と契約終了日です。
+1. 状態を表示して、アカウントの所有権を確認します。 状態は、 **[保留中]** から **[開始日/終了日]** に変わるはずです。 開始日/終了日は、ユーザーが最初にサインインした日付と契約終了日です。
+1. Azure EA ポータルに初めてサインインするときに "警告" メッセージが表示されたら、アカウント所有者は **[続行]** をクリックしてアカウントをアクティブ化する必要があります。
 
 
 ## <a name="change-account-owner"></a>アカウント所有者を変更する
@@ -220,7 +221,7 @@ EA 管理者が支援できない場合は、[Azure EA ポータルのサポー�
 - Microsoft アカウントから別の Microsoft アカウントへの転送はサポートされています。 ターゲット アカウントは、転送の有効なターゲットとなる有効な Azure コマース アカウントである必要があります。 新しいアカウントの場合は、Azure EA ポータルにサインインするときに Azure コマース アカウントを作成するよう求められます。 既存のアカウントの場合は、最初に新しい Azure サブスクリプションを作成してから、アカウントが対象となるようにする必要があります。
 - サブスクリプションの転送が完了すると、Microsoft によってアカウント所有者が更新されます。
 
-RBAC ポリシー:
+ロールベースのアクセス制御ポリシー:
 
 - 既存の Azure ロールベースのアクセス制御 (RBAC) ポリシー、サービス管理者ロールの割り当て、および共同管理者ロールの割り当てが保持されるのは、同じテナント内の 2 つの組織 ID 間での Azure サブスクリプション転送のみです。 その他のサブスクリプション転送では、RBAC ポリシーとサービス管理者および共同管理者ロールの割り当てが失われます。 ポリシーと管理者ロールが、異なるディレクトリ間で転送されることはありません。 サービス管理者は、ターゲット アカウントの所有者に更新されます。
 - 同じテナント内の 2 つの組織 ID 間でサブスクリプション転送を行う場合は、RBAC ポリシーと既存のサービス管理者および共同管理者ロールが保持されます。
@@ -284,16 +285,64 @@ Azure EA ポータルのユーザー管理を示すビデオを次に示しま�
 - [サブスクリプションの詳細を編集する](https://account.azure.com/Subscriptions)
 - [サブスクリプション サービスを管理する](https://portal.azure.com/#home)
 
-## <a name="transfer-pay-as-you-go-subscription-to-ea-subscription"></a>EA サブスクリプションに従量課金制サブスクリプションを転送する
+## <a name="transfer-ea-subscription-to-pay-as-you-go-subscription"></a>従量課金制サブスクリプションに EA サブスクリプションを転送する
 
-従量課金制料金の個々のサブスクリプションを EA サブスクリプションに転送するには、Azure portal で新しいサポート リクエストを作成する必要があります。 サポート リクエストを作成するには、[ヘルプとサポート] 領域の **[+ 新しいサポート リクエスト]** をクリックします。
+従量課金制料金の個々のサブスクリプションに EA サブスクリプションを転送するには、Azure EA Portal で新しいサポート リクエストを作成する必要があります。 サポート リクエストを作成するには、[ヘルプとサポート] 領域の **[+ 新しいサポート リクエスト]** をクリックします。
 
+## <a name="associate-an-existing-account-with-your-pay-as-you-go-subscription"></a>既存のアカウントを従量課金制サブスクリプションに関連付ける
+
+Microsoft Azure portal に既存の Microsoft Azure アカウントが既にある場合は、Enterprise Agreement 加入契約と関連付けるために、関連する Microsoft アカウントか、職場または学校アカウントを入力します。
+
+### <a name="associate-an-existing-account"></a>既存のアカウントを関連付ける
+
+1. Enterprise Portal で、 **[管理]** をクリックします。
+1. **[アカウント]** タブをクリックします。
+1. **[+ アカウントの追加]** をクリックします。
+1. 既存のアカウントに関連付けられている Microsoft アカウントか、職場または学校アカウントを入力します。
+1. 既存のアカウントに関連付けられている Microsoft アカウントか、職場または学校アカウントを確認します。
+1. レポートでこのアカウントを識別するために使用する名前を指定します。
+1. **[追加]** をクリックします。
+1. **[+ アカウントの追加]** オプションをもう一度選択してさらにアカウントを追加するか、 **[管理者]** ボタンを選択してホーム ページに戻ります。
+1. **[アカウント]** ページをクリックして表示すると、新しく追加したアカウントが **[保留中]** 状態で表示されます。
+
+### <a name="confirm-account-ownership"></a>アカウントの所有権を確認する
+
+1. 指定した Microsoft アカウントか、職場または学校アカウントに関連付けられている電子メール アカウントにログインします。
+1. "_Invitation to Activate your Account on the Microsoft Azure Service from Microsoft Volume Licensing_" (Microsoft ボリューム ライセンスから Microsoft Azure Service でアカウントをアクティブ化するための招待) という件名の電子メール通知を開きます。
+1. 招待の **[Log into the Microsoft Azure Enterprise Portal]\(Microsoft Azure Enterprise Portal にログイン\)** リンクをクリックします。
+1. **[サインイン]** をクリックします。
+1. Microsoft アカウントか、職場または学校アカウントおよびパスワードを入力してサインインし、アカウントの所有権を確認します。
+
+### <a name="azure-marketplace"></a>Azure Marketplace
+
+ほとんどのサブスクリプションは従量課金制環境からエンタープライズ Azure に移行できますが、Azure Marketplace サービスはできません。 すべてのサブスクリプションと料金を 1 つのビューで表示するために、Azure Marketplace サービスを Enterprise Portal に追加することをお勧めします。
+
+1. 左側のナビゲーションで **[管理]** をクリックします。
+1. **[加入契約]** タブをクリックします。
+1. [加入契約の詳細] セクションを表示します。
+1. [Azure Marketplace] フィールドの右側にある鉛筆アイコンをクリックして有効にし、 **[保存]** をクリックします。
+
+これで、アカウント所有者は、以前に従量課金制で所有していた Azure Marketplace サブスクリプションを購入できるようになりました。
+
+新しい Azure Marketplace サブスクリプションが加入契約でアクティブ化されたら、従量課金制環境で作成された Marketplace サブスクリプションをキャンセルします。 この手順は、従量課金制の支払い方法の期限が切れた場合に、Marketplace サブスクリプションが無効な状態にならないようにするために重要です。
+
+### <a name="msdn"></a>MSDN
+
+MSDN サブスクリプションは MSDN 開発/テストに自動的に移行され、EA オファーの既存の金融クレジットは失われます。
+
+### <a name="azure-in-open"></a>Azure イン オープン プラン
+
+Azure イン オープン プランのサブスクリプションを EA に関連付けると、未使用分の Azure イン オープン プランのクレジットは失われます。 クレジットの失効の可能性を防ぐため、アカウントを EA に追加する前に、Azure イン オープン プランのサブスクリプションのクレジットをすべて使用することをお勧めします。  
+
+### <a name="accounts-with-support-subscriptions"></a>サポート サブスクリプションを持つアカウント
+
+サポート サブスクリプションを持つ (ただし、EA サポート サブスクリプションを持たない) 既存のアカウントを Enterprise Portal に追加する場合は、MOSA サポート サブスクリプションは自動的には転送されず、EA でサポートの再購入が必要になることにご注意ください。 サポートを再注文するための時間を考慮して、サポート範囲の猶予期間が翌月末まで設けられます。
 
 ## <a name="view-usage-summary-and-download-reports"></a>使用状況の概要を表示してレポートをダウンロードする
 
 エンタープライズ管理者は、Azure EA ポータルで使用状況データ、消費された年額コミットメント、および追加使用量に関する料金の概要を表示できます。 料金は、すべてのアカウントとサブスクリプションにわたって概要レベルで示されます。
 
-特定のアカウントの詳細な使用状況を表示するには
+特定のアカウントの詳細な使用状況を表示するには:
 
 使用状況の詳細レポートをダウンロードします。 **[レポート]** をクリックし、 **[使用状況のダウンロード]** タブをクリックします。レポートのリストで、取得する月次レポートの **[ダウンロード]** をクリックします。
 
@@ -302,10 +351,10 @@ Azure EA ポータルのユーザー管理を示すビデオを次に示しま�
 使用状況の概要レポートとグラフを表示するには:
 
 1. Azure EA ポータルの左側のナビゲーション領域で、 **[レポート]** をクリックし、 **[使用状況の概要]** タブを表示します。  
-  ![](./media/billing-ea-portal-get-started/create-ea-view usage-summary-and-download-reports.png)
+  ![使用状況の概要を作成および表示してレポートをダウンロードする](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports.png)
 2. コミットメント期間を選択します。
 3. ページの右上にある **[M]** (月単位) と **[C]** (カスタム) を切り替えて、 **[使用状況の概要]** をカスタムの開始日と終了日を指定して表示します。  
-  ![](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+  ![カスタム ビューで使用状況の概要を作成および表示してレポートをダウンロードする](./media/billing-ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
 4. グラフ上の期間または月を選択すると、追加の詳細が表示されます。
 5. グラフには、使用済み量の内訳、サービスの過剰請求、個別請求の料金、およびマーケットプレースの料金と共に、前月比の使用状況が示されます。
 6. 選択された月について、グラフの下にある部門、アカウント、サブスクリプションでフィルター処理します。
@@ -346,10 +395,151 @@ Safari で CSV ファイルを Excel にダウンロードするユーザーの�
 
 >[!VIDEO https://www.youtube.com/embed/eY797htT1qg]
 
-## <a name="schedule-an-onboarding-call"></a>オンボード呼び出しをスケジュールする
+### <a name="advanced-report-download"></a>詳細なレポートのダウンロード
 
-対面式の顧客オンボード セッションをスケジュールする場合は、[Azure EA ポータルのサポート](https://support.microsoft.com/supportrequestform/e114582c-4e51-af46-10b1-1f0cc141e133)でサポート リクエストを作成します。 **[問題のカテゴリ]** として **[オンボーディング]** を選択します。
+特定の日付範囲またはアカウントのレポートの場合は、詳細なレポートのダウンロードを使用できます。 2016 年 8 月 30 日の時点で、出力ファイルの形式は、より大きなレコード セットに対応するように .xlsx から .csv に変更されています。
+
+1. **[詳細なレポートのダウンロード]** を選択します。
+1. **[Appropriate Date Range]\(適切な日付範囲\)** を選択します。
+1. **[Appropriate Accounts]\(適切なアカウント\)** を選択します。
+1. **Request Usage Data\(使用状況データのリクエスト\)** を選択します。
+1. レポートの状態が **[ダウンロード]** に更新されるまで、 **[最新の情報に更新]** を選択します。
+1. レポートをダウンロードします。
+
+## <a name="ea-term-glossary"></a>EA 用語集
+
+- **アカウント**:Azure EA Portal 上の組織単位。サブスクリプションの管理とレポートのために使用されます。
+- **アカウント所有者**:Microsoft Azure でサブスクリプションとサービス管理者を管理するために指定されたユーザー。 このアカウントとそれに関連付けられているサブスクリプションの使用状況データを表示できます。
+- **変更契約サブスクリプション**:加入契約変更契約書における 1 年間または同時終了サブスクリプション。
+- **コミットメント**:この前払いに対する使用状況の割引コミットメント料金での Microsoft Azure サービスの年額コミットメント。
+- **部門管理者**:部署の管理、新しいアカウントとアカウント所有者の作成、管理対象部門の使用状況の詳細の表示、コストの表示 (アクセス許可が付与された場合) を行うために指定されたユーザー。
+- **加入契約番号**:Enterprise Agreement に関連付けられている特定の加入契約を識別するために Microsoft によって提供される一意の識別子。
+- **エンタープライズ管理者**:Microsoft Azure で部門、部門所有者、アカウント、およびアカウント所有者を管理するために指定されたユーザー。 エンタープライズ加入契約に関連付けられているすべてのアカウントとサブスクリプションの使用状況データ、請求数量、および未請求料金を表示できるだけでなく、エンタープライズ管理者を管理することもできます。
+- **Enterprise Agreement**:Microsoft テクノロジで組織全体を標準化し、Microsoft のソフトウェア標準において情報技術を維持することを希望する、一元的な購入を行う顧客向けの Microsoft ライセンス契約。
+- **Enterprise Agreement 加入契約**:Microsoft 製品を割引料金で大量に提供する、Enterprise Agreement プログラムの加入契約。
+- **Microsoft アカウント**:複数のサイトにアクセスするときに、単一の資格情報を使用してユーザーを認証できるようにする Web ベース サービス。
+- **Microsoft Azure エンタープライズ加入契約変更契約書 (加入契約変更契約書)** :エンタープライズ加入契約の一部として Microsoft Azure へのアクセスを提供する、企業によって署名される変更契約書。
+- **Azure EA Portal**:Microsoft Azure アカウントとその関連サブスクリプションを管理するために企業のお客様によって使用されるポータル。
+- **消費済みリソース数量**:1 か月間に使用された個別の Microsoft Azure サービスの数量。
+- **サービス管理者**:Azure EA Portal でサブスクリプションと開発者プロジェクトにアクセスして管理するために指定されたユーザー。
+- **サブスクリプション**:Azure EA Portal サブスクリプションを表します。これは、同じサービス管理者によって管理される Microsoft Azure サービスのコンテナーです。
+- **職場または学校アカウント**:クラウドへのフェデレーションを使用して Active Directory を設定しており、1 つのテナントにすべてのアカウントが存在する組織。
+
+### <a name="enrollment-statuses"></a>加入契約の状態:
+
+- **Pending**: 加入契約管理者は Azure EA Portal にログインする必要があります。 ログインすると、加入契約がアクティブな状態に切り替わります。
+- **アクティブ**:加入契約はアクティブであり、Azure EA Portal でアカウントとサブスクリプションを作成できます。 加入契約は、Enterprise Agreement の終了日までアクティブな状態が維持されます。
+- **無期限の延長期間**:Enterprise Agreement の終了日に達した後、無期限の延長期間の状態になります。 これにより、拡張期間にオプトインした EA のお客様は、Enterprise Agreement の終了後に、Azure を引き続き無期限に使用できます。 EA 加入契約が Enterprise Agreement の終了日に達する前に、加入契約管理者は、年額コミットメントを追加して加入契約を更新するか、新しい加入契約に転送するか、マイクロソフト オンライン サブスクリプション プログラム (MOSP) に移行するか、または加入契約に関連付けられているすべてのサービスが無効になることを確認するかを決定する必要があります。
+- **期限切れ**:EA のお客様が拡張期間からオプトアウトし、EA 加入契約が Enterprise Agreement の終了日に達しています。加入登録が期限切れになり、関連付けられていたすべてのサービスが無効になります。
+- **転送済み**:関連付けられているすべてのアカウントとサービスが新しい加入契約に転送された加入契約は、転送済みの状態で表示されます。 更新時に新しい加入契約番号が生成された場合、加入契約は自動的には転送されないことに注意してください。 自動的に転送されるようにするには、以前の加入契約番号を、お客様の更新事務処理に含める必要があります。
+
+## <a name="get-started-on-azure-ea-faq"></a>Azure EA に関してよく寄せられる質問の確認
+
+このドキュメントでは、オンボード プロセス中にお客様から寄せられる一般的な質問について詳しく説明します。  
+
+### <a name="can-i-associate-my-existing-azure-account-to-enterprise-enrollment"></a>既存の Azure アカウントをエンタープライズ加入契約に関連付けることはできますか?
+
+はい、できます。 注意すべき重要な点は、自分がアカウント所有者であるすべての Azure サブスクリプションが Enterprise Agreement に移行されることです。 これには、月単位のクレジットを利用するサブスクリプション (Visual Studio、AzurePass、MPN、BizSpark など) が含まれ、これにより、月単位のクレジットが失われます。
+
+### <a name="i-accidentally-associated-my-existing-azure-account-with-enterprise-enrollment-as-a-result-i-lost-my-monthly-credit-is-it-possible-to-get-my-monthly-credit-back"></a>既存の Azure アカウントをエンタープライズ加入契約に誤って関連付けてしまいました。 その結果、月単位のクレジットが失われました。 月単位のクレジットを元に戻すことはできますか?
+
+EA アカウント所有者として認証された後、Visual Studio サブスクリプションの個別の Azure 特典を回復するには、Visual Studio サブスクリプションと同じサインインを EA に使用した後、次のいずれかを行う必要があります。
+1. 所有する Azure サブスクリプションを削除または移動した後、このアカウント所有者を EA Portal から削除し、Visual Studio の個別の Azure 特典に新たにサインアップします。
+ または
+1. VLSC の管理サイトから Visual Studio サブスクライバーを削除し、サブスクリプションを再割り当てして、今度は別のサインインを使用するようにします。その後、Visual Studio の個別の Azure 特典に新たにサインアップできます。
+
+### <a name="what-type-of-subscription-should-i-create"></a>どのような種類のサブスクリプションを作成する必要がありますか?
+
+EA Portal には、企業のお客様向けに 2 種類のサブスクリプションが用意されています。
+
+- Microsoft Azure Enterprise - 最適なシナリオ:
+  - すべての運用環境での使用
+  - インフラストラクチャへの支出に基づく最適な料金
+  - 詳細については、次のページをご覧ください: https://azure.microsoft.com/pricing/enterprise-agreement/
+- Enterprise Dev/Test - 最適なシナリオ:
+  - チームによるすべての開発/テスト ワークロード
+  - 中規模から大規模の個別の開発/テスト ワークロード
+  - 特別な MSDN イメージと優先サービス レートへのアクセス
+  - 詳細については、次のページをご覧ください: https://azure.microsoft.com/offers/ms-azr-0148p/
+
+### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡できますか?
+
+はい、サブスクリプションの所有権は別のアカウントに譲渡できます。 たとえば、アカウント A に 3 つのサブスクリプションがある場合、エンタープライズ管理者は、アカウント B、アカウント C、アカウント D にそれぞれ 1 つのサブスクリプションを譲渡するか、アカウント E にすべて譲渡できます。
+
+EA に移動して、[管理] > [アカウント] をクリックし、 **[アカウント]** (右端) の上にカーソルを置くと、所有権の譲渡 (顔アイコン) とサブスクリプションの譲渡 (リスト アイコン) のオプションが表示されます。
+
+このオプションは、アクティブなアカウントに対してのみ表示されます。
+
+### <a name="i-see-subscription-name-defaults-to-offer-name-should-i-change-the-subscription-name-to-something-meaningful-to-my-organization"></a>サブスクリプション名が既定でオファー名になっています。サブスクリプション名を組織にとって意味のあるものに変更する必要がありますか?
+
+作成されたサブスクリプションは、選択したオファーの種類に既定で設定されます。 サブスクリプション名を変更して、サブスクリプションを簡単に追跡できるようなものにすることをお勧めします。
+
+**名前を変更するには:**
+1. [https://account.windowsazure.com](https://account.windowsazure.com) にサインインします。
+1. サブスクリプション リストをクリックします。
+1. サブスクリプションを選択します。
+1. **[サブスクリプションの管理]** アイコンをクリックします。
+1. サブスクリプションの詳細を編集します。
+
+### <a name="how-can-i-track-cost-incurred-by-cost-center"></a>発生したコストをコスト センター別に追跡するにはどうすればよいですか?
+
+コスト センター別にコストを追跡するには、次のいずれかのレベルでコスト センターを定義する必要があります。
+- 部署
+- Account
+- Subscription
+
+ニーズに応じて、同じコスト センターを使用して、特定のコスト センターに関連付けられた使用状況とコストを追跡できます。
+
+たとえば、複数の部門が関与する特別なプロジェクトのコストを追跡するには、サブスクリプション レベルでコスト センターを使用して、使用状況とコストを追跡できます。
+
+コスト センターをサービス レベルで定義することはできません。サービス レベルで使用状況を追跡する場合は、サービス レベルで利用可能な "タグ" 機能を使用できます。
+
+### <a name="how-do-i-track-usage-and-spend-by-different-departments-in-my-organization"></a>組織内のさまざまな部門ごとの使用状況と支出を追跡するにはどうすればよいですか?
+
+EA 加入契約において、必要な数の部門を作成できます。 使用状況を正しく追跡するには、サブスクリプションが部門間で共有されないようにする必要があります。
+
+部門とサブスクリプションを作成したら、使用状況レポートに情報が取り込まれ、部門レベルでの使用状況の追跡とコスト/支出の管理が行えるようになります。
+
+API を使用して使用状況にアクセスすることもできます。詳細情報とサンプル コードは次のページでご覧ください: [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI)
+
+### <a name="can-i-set-the-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>利用量クォータを設定して、制限に近づいたらアラートを受け取ることはできますか?
+
+部門レベルで利用量クォータを設定できます。これにより、使用制限が、定義したクォータの 50%、75%、90%、および 100% に達すると通知されます。
+
+利用量クォータを定義するには、使用制限を追加する部門をクリックして編集アイコンをクリックします。 **[保存]** をクリックして詳細を保存します。
+
+### <a name="i-used-resource-groups-rgs-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>RBAC を実装して使用状況を追跡するために、リソース グループ (RG) を使用しました。関連する使用状況の詳細を表示するにはどうすればよいですか?
+
+"リソース グループ" や "タグ" (使用した場合) などの情報は、サービス レベルで追跡され、その情報は詳細な使用状況のダウンロード (CSV) ファイルで確認できます。これは、Azure EA Portal ([https://ea.azure.com/report/downloadusage](https://ea.azure.com/report/downloadusage)) からダウンロードできます。
+
+API を使用して使用状況にアクセスすることもできます。詳細情報とサンプル コードは次のページでご覧ください: [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI)
+
+タグを適用できるのは、Resource Manager の操作をサポートするリソースのみです。 仮想マシン、仮想ネットワーク、またはストレージをクラシック デプロイ モデル (クラシック ポータルなど) を使用して作成した場合、そのリソースにタグを適用することはできません。 タグ付けをサポートするには、Resource Manager を介してこれらのリソースを再デプロイする必要があります。 その他のすべてのリソースでは、タグ付けがサポートされています。
+
+### <a name="can-i-perform-analyses-using-power-bi"></a>Power BI を使用して分析を実行できますか?
+
+はい。 Power BI 用 Microsoft Azure Enterprise コンテンツ パックを使用すると、お客様のエンタープライズ加入契約に関して、Azure の使用状況をすばやくインポートして分析できます。最も使用量の高い部署、アカウント、サブスクリプションの確認や、組織で最も使用されているサービスの確認ができるほか、使用状況の傾向を追跡することもできます。
+
+**Power BI Web サイト**に移動:
+
+ 1. 有効な職場または学校アカウントでサインインします。
+    - 職場または学校アカウントは、Azure EA Portal を介して加入契約にアクセスするときに使用したものと同じ場合と、異なる場合があります。
+ 1. サービスのダッシュボードで、次を選択します。
+    - Microsoft Azure エンタープライズ タイル。
+    - **[接続]** をクリックします。
+ 1. [Azure エンタープライズに接続] 画面で、次のように選択します。
+    - Azure 環境 URL: [https://ea.azure.com](https://ea.azure.com)。
+    - 月数: 1 から 36 の値を選択します。
+    - 加入契約番号: 加入契約番号を入力します。
+    - **[次へ]** をクリックします。
+ 1. 認証キー ボックスに、API キーを入力します。 Azure EA Portal の [Download Usage]\(使用状況のダウンロード\) タブで、 **[API アクセス キー]** をクリックして、API キーを取得できます。
+    - キーをコピーし、[アカウント キー] ボックスに貼り付けます。
+    - データセットのサイズに応じて、Power BI でのデータの読み込みには約 5 分 から 30 分かかります。
+
+Power BI レポートは、課金情報を表示するアクセス権がある、EA ダイレクト、パートナー、およびインダイレクトのお客様にご利用いただけます。
 
 ## <a name="next-steps"></a>次の手順
-- Azure EA ポータルの管理者は「[Azure EA ポータルの管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。
-- Azure EA ポータルの問題のトラブルシューティングに関するヘルプが必要な場合は、「[Azure EA ポータルへのアクセスのトラブルシューティング](billing-ea-portal-troubleshoot.md)」を参照してください。
+
+- Azure EA Portal の管理者は「[Azure EA Portal の管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。
+- Azure EA Portal の問題のトラブルシューティングに関するヘルプが必要な場合は、「[Troubleshoot Azure EA portal access (Azure EA Portal へのアクセスのトラブルシューティング)](billing-ea-portal-troubleshoot.md)」を参照してください。
+- Azure EA オンボード ガイドについては、[Azure EA オンボード ガイド](https://ea.azure.com/api/v3Help/v2AzureEAOnboardingGuide)を参照してください。

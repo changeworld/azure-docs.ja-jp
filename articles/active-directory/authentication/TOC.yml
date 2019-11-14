@@ -139,8 +139,6 @@
           href: howto-authentication-passwordless-security-key.md
         - name: パスワードレスの Windows 10
           href: howto-authentication-passwordless-security-key-windows.md
-        - name: パスワードレスのオンプレミス
-          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: パスワードレスの電話によるサインイン
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business

@@ -5,7 +5,7 @@ metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: Bing Image Search API のドキュメント - チュートリアル、クイックスタート、API リファレンス
   titleSuffix: Azure Cognitive Services
-  description: Bing Image Search API を使用して Web で画像を検索する方法について説明します。
+  description: Bing Image Search API を使用すると、アプリケーションに Bing の画像検索機能を統合できます。
   services: cognitive-services
   author: nitinme
   manager: nitinme
