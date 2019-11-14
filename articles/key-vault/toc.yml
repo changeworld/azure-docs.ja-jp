@@ -114,6 +114,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: Event Grid を使用したキー コンテナー通知のルーティング
       href: event-grid-tutorial.md
+    - name: Azure Policy との統合
+      href: azure-policy.md
     - name: Azure Key Vault のログ記録
       href: key-vault-logging.md
     - name: ファイアウォールの内側にアクセスする

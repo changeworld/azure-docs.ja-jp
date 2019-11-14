@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 08/28/2019
-  ms.openlocfilehash: 2c5922eb7ca13e6b22000890f6825d3d29ae3455
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.date: 11/13/2019
+  ms.openlocfilehash: f004b965901f161d16034f0cea91a99c50cc2575
+  ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71327073"
+  ms.lasthandoff: 11/14/2019
+  ms.locfileid: "74072229"
 landingContent:
 - title: Virtual WAN について
   linkLists:
@@ -37,6 +37,8 @@ landingContent:
       url: virtual-wan-site-to-site-portal.md
     - text: ExpressRoute の関連付けを作成する
       url: virtual-wan-expressroute-portal.md
+    - text: ユーザー VPN (ポイント対サイト) 接続を作成する
+      url: virtual-wan-point-to-site-portal.md
   - linkListType: how-to-guide
     links:
     - text: 仮想ハブから NVA にトラフィックをルーティングする
@@ -53,8 +55,8 @@ landingContent:
     links:
     - text: グローバル転送ネットワーク アーキテクチャ
       url: virtual-wan-global-transit-network-architecture.md
-    - text: Office 365 コントロール プレーン
-      url: virtual-wan-office365-overview.md
+    - text: Virtual WAN に移行する
+      url: migrate-from-hub-spoke-topology.md
 - title: リファレンス
   linkLists:
   - linkListType: reference

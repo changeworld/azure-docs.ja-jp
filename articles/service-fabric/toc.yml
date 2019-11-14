@@ -482,6 +482,8 @@
               href: service-fabric-tutorial-deploy-api-management.md
             - name: アプリケーション シークレットの管理
               href: service-fabric-application-secret-management.md
+            - name: Service Fabric シークレット ストアの使用
+              href: service-fabric-application-secret-store.md
               items:
                 - name: Windows での暗号化証明書の設定とシークレットの暗号化
                   href: service-fabric-application-secret-management-windows.md

@@ -856,11 +856,20 @@
             - name: 追跡の概要
               href: /azure/databricks/applications/mlflow/tracking
               maintainContext: true
-            - name: MLflow Tracking の例
-              href: /azure/databricks/applications/mlflow/  tracking-examples
+            - name: scikit-learn モデルをトレーニングする
+              href: /azure/databricks/applications/mlflow/tracking-ex-scikit
+              maintainContext: true
+            - name: PyTorch モデルをトレーニングする
+              href: /azure/databricks/applications/mlflow/tracking-ex-pytorch
+              maintainContext: true
+            - name: PySpark モデルをトレーニングし、MLeap 形式で保存する
+              href: /azure/databricks/applications/mlflow/tracking-ex-pyspark
+              maintainContext: true
+            - name: Delta Lake を使用した ML モデルのトレーニング データの追跡
+              href: /azure/databricks/applications/mlflow/tracking-ex-delta
               maintainContext: true
             - name: 外部の追跡にアクセスする
-              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
         - name: モデルの保存、読み込み、デプロイ
           items:
@@ -911,6 +920,9 @@
             - name: Tumor/Normal パイプライン
               href: /azure/databricks/applications/genomics/secondary/tumor-normal-pipeline
               maintainContext: true
+            - name: パイプ トランスフォーマーを使用したバリアントの注釈
+              href: /azure/databricks/applications/genomics/secondary/variant-annotation-pipe
+              maintainContext: true
             - name: バリアントの注釈メソッド
               href: /azure/databricks/applications/genomics/secondary/annotate-variants
               maintainContext: true
@@ -920,26 +932,6 @@
             - name: Vep パイプライン
               href: /azure/databricks/applications/genomics/secondary/vep-pipeline
               maintainContext: true
-        - name: ETL
-          items:
-            - name: Genomics ETL の概要
-              href: /azure/databricks/applications/genomics/etl/index
-              maintainContext: true
-            - name: Apache Spark SQL を使用したバリアント IO
-              href: /azure/databricks/applications/genomics/etl/variant-data
-              maintainContext: true
-            - name: Genomics Delta Lake を作成する
-              href: /azure/databricks/applications/genomics/etl/vcf2delta
-              maintainContext: true
-            - name: バリアント品質管理
-              href: /azure/databricks/applications/genomics/etl/variant-qc
-              maintainContext: true
-            - name: サンプル品質管理
-              href: /azure/databricks/applications/genomics/etl/sample-qc
-              maintainContext: true
-            - name: リフトオーバー
-              href: /azure/databricks/applications/genomics/etl/lift-over
-              maintainContext: true
         - name: 3 次解析
           items:
             - name: 3 次解析の概要
@@ -947,18 +939,6 @@
               maintainContext: true
             - name: 結合ジェノタイピング パイプライン
               href: /azure/databricks/applications/genomics/tertiary/joint-genotyping-pipeline
-              maintainContext: true
-            - name: Pipe Transformer を使用してコマンドライン ツールを並列化する
-              href: /azure/databricks/applications/genomics/tertiary/pipe-transformer
-              maintainContext: true
-            - name: バリアントの正規化
-              href: /azure/databricks/applications/genomics/tertiary/variant-normalization
-              maintainContext: true
-            - name: 回帰テスト
-              href: /azure/databricks/applications/genomics/tertiary/regression-tests
-              maintainContext: true
-            - name: Python 統計ライブラリ
-              href: /azure/databricks/applications/genomics/tertiary/pandas-udf
               maintainContext: true
             - name: SAIGE
               href: /azure/databricks/applications/genomics/tertiary/saige
@@ -1228,7 +1208,10 @@
               maintainContext: true
             - name: JSON でエンコードを検出できない
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true j
+              maintainContext: true
+            - name: WASB でファイルを読み取ることができない
+              href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
         - name: DBFS
           items:
             - name: DBFS ルートに格納されているオブジェクトを読み取ることができない
@@ -1550,6 +1533,9 @@
           items:
             - name: プラットフォームのリリース ノート
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2019 年 11 月
+              href: /azure/databricks/release-notes/product/2019/november
               maintainContext: true
             - name: 2019 年 10 月
               href: /azure/databricks/release-notes/product/2019/october

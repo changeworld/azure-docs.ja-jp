@@ -166,6 +166,8 @@
               href: sap-high-availability-guide-wsfc-shared-disk.md
             - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows の HA
               href: sap-high-availability-guide-wsfc-file-share.md
+            - name: Azure NetApp Files (SMB) を使用した Windows での SAP NetWeaver の HA
+              href: high-availability-guide-windows-netapp-files-smb.md
             - name: (A)SCS インスタンス用の SUSE Linux の HA
               href: high-availability-guide-suse.md
             - name: Azure NetApp Files を使用した (A)SCS インスタンス用の SUSE Linux の HA

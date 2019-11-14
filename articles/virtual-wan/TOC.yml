@@ -8,7 +8,7 @@
   items:
     - name: サイト間接続を作成する
       href: virtual-wan-site-to-site-portal.md
-    - name: ポイント対サイト接続を作成する
+    - name: ユーザー VPN (ポイント対サイト) 接続を作成する
       href: virtual-wan-point-to-site-portal.md
     - name: ExpressRoute 接続を作成する
       href: virtual-wan-expressroute-portal.md
@@ -20,36 +20,38 @@
       href: virtual-wan-ipsec.md
     - name: アーキテクチャ
       items:
+        - name: Virtual WAN に移行する
+          href: migrate-from-hub-spoke-topology.md
         - name: グローバル転送ネットワーク アーキテクチャ
           href: virtual-wan-global-transit-network-architecture.md
         - name: Virtual WAN の Office 365 コントロール プレーン
           href: virtual-wan-office365-overview.md
 - name: ハウツー ガイド
   items:
-    - name: Virtual WAN SKU をアップグレードする
-      href: upgrade-virtual-wan.md
-    - name: Virtual WAN に移行する
-      href: migrate-from-hub-spoke-topology.md
-    - name: ExpressRoute プライベート ピアリング経由の VPN 接続を作成する
-      href: vpn-over-expressroute.md
     - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
       href: connect-virtual-network-gateway-vwan.md
     - name: グローバル VNet ピアリングを構成する
       href: global-peering-vnet.md
+    - name: ExpressRoute 経由の VPN 接続を作成する
+      href: vpn-over-expressroute.md
+    - name: Virtual WAN SKU をアップグレードする
+      href: upgrade-virtual-wan.md
     - name: カスタム IPsec ポリシーを構成する
       href: virtual-wan-custom-ipsec-portal.md
-    - name: ユーザー VPN 用の証明書を構成する
+    - name: ユーザー VPN 用の証明書を構成する (ポイント対サイト)
       href: certificates-point-to-site.md
-    - name: 仮想ハブから NVA にトラフィックをルーティングする
-      items:
-        - name: Azure ポータル
-          href: virtual-wan-route-table-portal.md
-        - name: Azure PowerShell
-          href: virtual-wan-route-table.md
-    - name: 仮想ハブの有効なルートを表示する
-      href: effective-routes-virtual-hub.md
-    - name: Virtual WAN パートナーの自動化
+    - name: 自動化を構成する (Virtual WAN パートナー)
       href: virtual-wan-configure-automation-providers.md
+    - name: ルーティングを構成する
+      items:
+        - name: 仮想ハブから NVA にトラフィックをルーティングする
+          items:
+            - name: Azure ポータル
+              href: virtual-wan-route-table-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table.md
+        - name: 仮想ハブの有効なルートを表示する
+          href: effective-routes-virtual-hub.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
