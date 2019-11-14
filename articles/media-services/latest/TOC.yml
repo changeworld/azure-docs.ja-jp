@@ -109,7 +109,7 @@
     - name: コンテンツ保護
       items:
         - name: 動的暗号化とキー配信
-          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
+          displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
         - name: マルチ DRM システムの設計
           displayName: 'drm, access control'
