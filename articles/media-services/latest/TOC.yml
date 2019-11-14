@@ -138,6 +138,8 @@
         - name: タイムシフトとライブツー VOD
           displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
+        - name: ライブ文字起こし
+          href: live-transcription.md
         - name: 機能の比較
           href: live-event-types-comparison.md
         - name: 状態と課金

@@ -361,8 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: 管理
           items:
-            - name: ASR での SCVMM 構成のサポートにおける今後の非推奨に関する詳細
-              href: scvmm-site-recovery-deprecation.md
+            - name: 顧客が所有するサイト間の DR の廃止
+              href: site-to-site-deprecation.md
             - name: Site Recovery で構成されている Windows サーバーをアップグレードする
               href: upgrade-2012R2-to-2016.md
             - name: サーバーの削除と保護の無効化
