@@ -1,22 +1,22 @@
 ---
-title: Transact-SQL (T-SQL) を使用して Azure SQL Elastic Database ジョブを作成および管理する | Microsoft Docs
+title: Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 description: Transact-SQL (T-SQL) を使用する Elastic Database ジョブ エージェントでは多くのデータベース間でスクリプトを実行します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: deefc1cc1d8fe82eab9ec0085b3a11ccd2fe7840
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641046"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820592"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 

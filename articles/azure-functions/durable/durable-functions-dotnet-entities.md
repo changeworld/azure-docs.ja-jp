@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5738161e88c42f4d4033fab091d8e8c8d7162042
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302140"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614888"
 ---
-# <a name="developers-guide-to-durable-entities-in-net-preview"></a>.NET での持続エンティティに関する開発者ガイド (プレビュー)
+# <a name="developers-guide-to-durable-entities-in-net"></a>.NET での持続エンティティに関する開発者ガイド
 
 この記事では、例と一般的な助言を含め、.NET で持続エンティティを開発するために使用できるインターフェイスについて詳しく説明します。 
 
@@ -120,7 +120,7 @@ public class Counter
 クラスベースのエンティティには、エンティティの明示的な文字列名とその操作を使用して直接アクセスできます。 次に例をいくつか示します。基になる概念 (シグナルや呼び出しなど) の詳細については、「[エンティティへのアクセス](durable-functions-entities.md#accessing-entities)」の説明を参照してください。 
 
 > [!NOTE]
-> 可能な場合は、より多くの型チェックが提供されるので、[インターフェイスを介してエンティティにアクセスする]()ことをお勧めします。
+> 可能な場合は、より多くの型チェックが提供されるので、[インターフェイスを介してエンティティにアクセスする](#accessing-entities-through-interfaces)ことをお勧めします。
 
 ### <a name="example-client-signals-entity"></a>例: クライアントがエンティティにシグナル通知を出す
 
@@ -130,7 +130,7 @@ public class Counter
 [FunctionName("DeleteCounter")]
 public static async Task<HttpResponseMessage> DeleteCounter(
     [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -147,7 +147,7 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 [FunctionName("GetCounter")]
 public static async Task<HttpResponseMessage> GetCounter(
     [HttpTrigger(AuthorizationLevel.Function, "get", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -194,6 +194,7 @@ public interface ICounter
     Task<int> Get();
     void Delete();
 }
+
 public class Counter : ICounter
 {
     ...
@@ -212,7 +213,7 @@ public class Counter : ICounter
 [FunctionName("DeleteCounter")]
 public static async Task<HttpResponseMessage> DeleteCounter(
     [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -451,6 +452,9 @@ public class HttpEntity
 
 > [!NOTE]
 > シリアル化に関する問題を回避するには、挿入された値を格納するためのフィールドをシリアル化から除外するようにしてください。
+
+> [!NOTE]
+> 通常の .NET Azure Functions でコンストラクターの挿入を使用する場合とは異なり、クラスベースのエンティティに対する関数のエントリ ポイント メソッドは、`static` と宣言する "*必要があります*"。 非静的な関数エントリ ポイントを宣言すると、通常の Azure Functions オブジェクト初期化子と永続エンティティ オブジェクト初期化子との間で競合が発生する可能性があります。
 
 ## <a name="function-based-syntax"></a>関数ベースの構文
 

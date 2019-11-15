@@ -4,15 +4,16 @@ description: Azure テーブル用にリード管理を構成します。
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 7151be3ac9f55825fd2e9dde35c9afda6a30726a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901539"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812334"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Azure テーブルを使用してリード管理を構成する
 
@@ -66,7 +67,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
    ![[マイ フロー] **[+ スケジュール済み - 空白から作成]**](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  *[繰り返し間隔]* の下の " *[スケジュールされたフローをビルド]* " ウィンドウで、間隔に "1" を、頻度に "時間" を選択します。 また、必要に応じて、フローに名前を付けます。 **作成** を選択します。
+5.  *[スケジュールされたフローをビルド]* ウィンドウの *[繰り返し間隔]* で、間隔に "1" を、頻度に "時間" を選択します。 また、必要に応じて、フローに名前を付けます。 **作成** を選択します。
 
     >[!Note]
     >この例では 1 時間の間隔を使用していますが、ビジネス ニーズに最適な間隔と頻度を選択できます。
@@ -74,7 +75,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
     ![スケジュールされたフローをビルドします。](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. **[+ New step (+ 新しいステップ)]** を選択します。
-7. " *[アクションを選択してください]* " ウィンドウで "過去の時間を取得" を検索し、[アクション] の下の **[過去の時間を取得]** を選択します。
+7. *[アクションを選択してください]* ウィンドウで "過去の時間を取得" を検索し、[アクション] で **[過去の時間を取得]** を選択します。
 
    ![アクションを選択します。](./media/commercial-marketplace-lead-management-instructions-azure-table/choose-an-action.png)
 
@@ -90,23 +91,23 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
 次の一連のステップでは、Azure テーブルに接続し、新しい潜在顧客を処理するための処理ロジックを設定します。
 
-9. [過去の時間の取得] ステップの後で、 **[+ 新しいステップ]** を選択し、" *[アクションの選択]* " ウィンドウで "過去の時間の取得" を検索します。
+9. [過去の時間の取得] ステップの後で、 **[+ 新しいステップ]** を選択し、 *[アクションの選択]* ウィンドウで "エンティティの取得" を検索します。
 10. **[アクション]** で、 **[エンティティの取得 (Azure Table Storage)]** を選択します。
 11. **[Azure Table Storage]** ウィンドウで、次のフィールドに情報を指定し、 **[作成]** を選択します。
 
-    * "*接続名*" – このフローと Azure テーブルの間に確立する接続のわかりやすい名前を指定します。
-    * "*ストレージ アカウント名*" – ご自身の Azure テーブルのストレージ アカウントの名前を選択します。 これは、ストレージ アカウントの **[アクセス キー]** ページで確認できます。
-    * "*共有ストレージ キー*" – ご自身の Azure テーブルのストア アカウントのキー値を指定します。 これは、ストレージ アカウントの **[アクセス キー]** ページで確認できます。
+    * *[接続名]* – このフローと Azure テーブルの間に確立しようとしている接続に、わかりやすい名前を指定します。
+    * *[ストレージ アカウント名]* – お使いの Azure テーブルのストレージ アカウントの名前を指定します。 これは、ストレージ アカウントの **[アクセス キー]** ページで確認できます。
+    * *[共有ストレージ キー]* – お使いの Azure テーブルのストア アカウントのキー値を指定します。 これは、ストレージ アカウントの **[アクセス キー]** ページで確認できます。
 
         ![Azure Table Storage。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
     [作成] をクリックすると、" *[エンティティの取得]* " ウィンドウが表示されます。 ここで、 **[詳細オプションの表示]** を選択し、次のフィールドに情報を指定します。
 
-       * "*テーブル*" – Azure Table Storage の名前を選択します (手順 6. の Azure テーブルの構成方法に関する説明を参照)。 次の画面キャプチャは、この例で "marketplaceleads" テーブルが選択されたときのプロンプトを示しています。
+       * *[テーブル]* – お使いの Azure Table Storage の名前を選択します (手順 6. の Azure テーブルの構成方法に関する説明を参照)。 次の画面キャプチャは、この例で "marketplaceleads" テーブルが選択されたときのプロンプトを示しています。
 
             ![Azure テーブルのエンティティの取得。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        * "*フィルター クエリ*" – このフィールドを選択し、次の関数をフィールドに貼り付けます: `Timestamp gt datetime'@{body('Get_past_time')}'`
+        * *[フィルター クエリ]* – このフィールドを選択し、次の関数をフィールドに貼り付けます: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
             ![Azure テーブルのエンティティの取得 - [フィルター クエリ]。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -145,7 +146,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 19. **[Office 365 Outlook]** ウィンドウで、以下のフィールドの情報を指定します。
 
     1. **[宛先]** - この通知を受信するすべてのユーザーの電子メール アドレスを入力します。
-    1. **[件名]** – 電子メールの件名を指定します。 例: 新しい潜在顧客
+    1. **[件名]** - 電子メールの件名を指定します。 例: 新しい潜在顧客
     1. **[本文]** - 各電子メールに含めるテキストを追加し (省略可能)、body `body('Get_entities')?['value']` を貼り付けます。
 
     >[!Note]
@@ -153,7 +154,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
     ![Azure テーブル - [条件]、**[はいの場合]**、[Office 365 Outlook] ウィンドウ。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes-outlook.png)
 
-20. **[保存]** を選択してフローを保存します。 Microsoft Flow は、フローにエラーがないかどうか自動的にテストします。 エラーがない場合は、保存された後、フローが実行を開始します。
+20. **[保存]** を選択してフローを保存します。 Microsoft Flow は、フローにエラーがないかどうか自動的にテストします。 エラーがない場合、保存された後にフローが実行を開始します。
 
 次の画面キャプチャは、最終的なフローがどのようになるかの例を示しています。
 
@@ -161,13 +162,13 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
 ### <a name="manage-your-flow"></a>フローを管理する
 
-実行された後のフローの管理は簡単です。 そのフローを完全に制御できます。 たとえば、停止、編集、実行履歴の表示、分析の取得などが可能です。 次の画面キャプチャは、フローを管理するために使用できるオプションを示しています。 
+フロー実行後の管理は簡単です。 そのフローを完全に制御できます。 たとえば、停止、編集、実行履歴の表示、分析の取得などが可能です。 次の画面キャプチャは、フローを管理するために使用できるオプションを示しています。 
 
  ![フローの管理](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-manage-completed.png)
 
 フローは、 **[Turn flow off] (フローを停止)** オプションを使用して停止するまで実行状態を維持します。
 
-潜在顧客の電子メール通知を何も受信していない場合、それは Azure テーブルに新しい潜在顧客が追加されていないことを示しています。 フローに何かエラーがある場合は、次の画面キャプチャにある例のような電子メールを受信します。
+リードの電子メール通知を何も受信していない場合、それは Azure テーブルに新しいリードが追加されていないことを示しています。 フローに何かエラーがある場合は、次の画面キャプチャに示した例のような電子メールを受信します。
 
  ![フローのエラーの電子メール通知](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-failure-note.png)
 

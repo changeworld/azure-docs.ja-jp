@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300172"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646883"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -24,7 +24,7 @@ ms.locfileid: "72300172"
 
 Citrix は、企業のオンプレミスに展開されているものと、Azure 上の仮想アプリとデスクトップ ワークロードのハイブリッド環境の一元管理を提供する、認定プロバイダーです。 Citrix Workspace と Virtual Apps and Desktops サービスを使用するユーザーには、高精度なエクスペリエンスを提供する Citrix の高度な HDX プロトコルが使用され、場所を問わずに、任意のデバイスからのアプリやデスクトップへのアクセスが許可されます。
 
-Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度およびパフォーマンスの改善、オンデマンドでのワークロードのプロビジョニング、画像およびアプリケーションの管理の単純化など、Windows Virtual Desktop の価値を広げます。 IT は、インテリジェントなスケーリング ツールでコストを最適化する一方で、さまざまな業種で一番厳しいアプリケーションに対して実地テストされたすばらしいエクスペリエンスをエンドユーザーに提供できます。
+Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度およびパフォーマンスの改善、オンデマンドでのワークロードのプロビジョニング、画像およびアプリケーションの管理の単純化など、Windows Virtual Desktop の価値を広げます。 IT は、インテリジェントなスケーリング ツールでコストを最適化する一方で、さまざまな業種で一番厳しいアプリケーションに対して実地テストされたすばらしいエクスペリエンスをユーザーに提供できます。 さらに、Citrix Managed Desktop は、Windows Virtual Desktop 対応のデスクトップ対応のサービスとしてのデスクトップ プログラムであり、仮想アプリとデスクトップを任意のデバイスに配信するためのシンプルなクラウドベースの管理ソリューションを提供します。
 
 - [パートナーの Web サイトにアクセスする。](https://more.citrix.com/wvd)
 
@@ -66,11 +66,31 @@ ControlUp を Windows Virtual Desktop で使用すると、Windows Virtual Deskt
 
 ![deviceTRUST ロゴ](./media/partners/devicetrust.png)
 
-企業をコンテキスト化する Windows Virtual Desktop 付加価値サービス プロバイダーである deviceTRUST は、ガバナンス要件を満たすために必要な情報と制御を IT 部門に提供しながら、ユーザーが任意の場所、任意のデバイス、任意のネットワークから Windows Virtual Desktop に自由にアクセスできるようにします。 
+deviceTRUST は、企業をコンテキスト化する Windows Virtual Desktop 付加価値サービス プロバイダーです。 これにより、ガバナンス要件を満たすために必要な情報と制御を IT 部門に提供しながら、ユーザーが任意の場所、任意のデバイス、任意のネットワークから Windows Virtual Desktop に自由にアクセスすることができます。 
 
 この deviceTRUST は、コンテキスト セキュリティ テクノロジによって Windows Virtual Desktop の価値を拡張します。 deviceTRUST により、セキュリティで保護された Windows Virtual Desktop アクセスのための条件付きアクセス、つまり Windows Virtual Desktop 内での条件付きアプリケーション アクセスが可能になり、追加のインフラストラクチャなしで、条件付き Windows Virtual Desktop ポリシーが適用できるようになります。 deviceTRUST を使用すると、セキュリティ、コンプライアンス、および規制に関するすべての要件を満たす柔軟なモバイル ワークスペースが実現します。 
 
 - [パートナーの Web サイトにアクセスする。](https://devicetrust.com/wvd)
+
+## <a name="igel"></a>IGEL
+
+![IGEL ロゴ](./media/partners/igel.png)
+
+IGEL は、Microsoft Azure および Windows Virtual Desktop サービスの承認および検証済みパートナーです。 IGEL は、軽量でシンプルで安全な Linux ベースのエンドポイントを使用して 1 つ以上のユーザー デバイスから仮想アプリ、デスクトップ、クラウド ワークスペースにアクセスするように設計された、クラウド ワークスペース向けの次世代エッジ OS である IGEL OS を提供します。 プラットフォームに依存しないソフトウェア ソリューションである IGEL OS と、そのサーバー ベースの管理と制御のソフトウェアである Azure Management Suite (UMS) は、エンドポイントの管理および制御ソリューションを構成します。このソリューションは、企業が Azure ベースのクラウド インスタンスと経済的なマルチセッションの Windows Virtual Desktop を含む Windows Virtual Desktop デスクトップを最大限に活用しながら、エンドポイントのハードウェアおよびエンドポイントのデバイス管理と操作のコストを削減できるようにします。
+ 
+IGEL OS は、Citrix、Microsoft、VMware のすべての一般的な仮想アプリ、デスクトップ、およびクラウド ワークスペース クライアントのプロトコルをサポートしています。 これには、周辺機器、インターフェイス、およびプロトコルの 85 件のパートナーからの統合テクノロジが含まれており、組織が Windows Virtual Desktop サービスを独自の独自のユーザー環境にすばやく導入するのに役立ちます。 IGEL OS は、読み取り専用のモジュール型エンドポイント OS であり、改ざんからの保護に役立ちます。 また、エンドポイント ハードウェア (一部の選択されたモデル) または UEFI プロセスから Azure クラウドおよび Windows Virtual Desktop サービスに至るまで、エンドポイントで実行されるすべての重要な主要プロセスの整合性を検証する完全な "信頼チェーン" も含まれるようになりました。 IGEL OS を使用すると、企業は、ユーザーのエンドポイント デバイスの整合性、セキュリティ、および管理性を完全に信頼して、Azure クラウドから Windows Virtual Desktop にサブスクライブすることができます。
+
+- [パートナーの Web サイトにアクセスする。](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+
+## <a name="ivanti"></a>Ivanti
+
+![Ivanti ロゴ](./media/partners/ivanti.png)
+
+Ivanti User Workspace Manager は、デスクトップからユーザー データを分離してシームレスな移植性を実現することでデスクトップのデプロイと管理を容易にする、Windows Virtual Desktop の付加価値サービスです。 Ivanti を使用すると、ユーザーは、Windows 10 への移行、Office 365 の導入、クラウドへのサービスの迅速な移動などの複雑なプロジェクトを実現できます。 
+
+Windows Virtual Desktop で Ivanti User Workspace Manager を使用すると、ユーザーはデスクトップ エクスペリエンスのコンテキストを簡単に管理できるため、サインインに時間がかかることがなくなり、グループ ポリシーに関する悩みの種がなくなります。 Ivanti User Workspace Manager のすぐに使えるテンプレートを使用すると、エージェントや既存のコンソールを使用してユーザーが簡単にインストールを行えます。 Ivanti User Workspace Manager は、ユーザーの期待にかなう応答性とセキュリティで保護されたデスクトップを提供するため、サーバーのコストを節約し、ユーザーをより効果的に管理し、エンドポイントのセキュリティ リスクを軽減できます。 
+
+- [パートナーの Web サイトにアクセスする。](https://www.ivanti.com/products/user-workspace-manager)
 
 ## <a name="lakeside-software"></a>Lakeside Software
 
@@ -127,11 +147,31 @@ PolicyPak の主なユース ケースは、ローカル管理者権限の削除
 
 ![PrinterLogic ロゴ](./media/partners/printerlogic.png)
 
-Windows Virtual Desktop 付加価値サービス プロバイダー プラットフォームである PrinterLogic は、IT プロフェッショナルが、すべてのプリント サーバーを排除し、可用性の高いサーバーレス印刷インフラストラクチャを提供できるようにします。 PrinterLogic は、プリンター オブジェクトの一元管理と、任意のプリンターまたはエンドポイント OS へのデプロイを容易に行えるようにすることで、Windows Virtual Desktop と Azure の価値を高めます。   
+Windows Virtual Desktop の付加価値サービス プロバイダー プラットフォームである PrinterLogic は、IT プロフェッショナルが、すべてのプリント サーバーを排除し、可用性の高いサーバーレス印刷インフラストラクチャを提供できるようにします。 PrinterLogic は、プリンター オブジェクトの一元管理と、任意のプリンターまたはエンドポイント OS へのデプロイを容易に行えるようにすることで、Windows Virtual Desktop と Azure の価値を高めます。   
 
 SaaS として、または独自のプライベート クラウドで Web スタックとして利用できる PrinterLogic プラットフォームにより、仮想セッションで必要とする適切なプリンターが、ユーザー ID、デバイス名、または場所に基づいて確実に確保されます。 この機能は、印刷の追跡とレポート作成、モバイル印刷、安全なバッジ リリース印刷など、一連のエンタープライズ印刷管理機能によって補完されます。 
 
 - [パートナーの Web サイトにアクセスする。](https://www.printerlogic.com)
+
+## <a name="numecent"></a>Numecent
+
+![Numecent ロゴ](./media/partners/numecent.png)
+
+Numecent は Windows Virtual Desktop の付加価値サービス プロバイダーであり、Windows Virtual Desktop 環境における複雑な Windows アプリや互換性のない Windows アプリの迅速なオンボードと移行によって、総運用コストを大幅に削減します。 また、Numecent は、ユーザーが行う必要がある構成の量を最小限に抑え、アプリケーションの更新を減らし、複雑なプロセスを簡略化します。 Numecent Cloudpaging は他のアプリケーション配信ツールよりも多くのアプリケーションをシームレスにサポートしているため、さまざまなアプリケーションのセットを使用する環境で時間と IT ワークロードを削減できます。 
+
+Windows Virtual Desktop で Cloudpaging を使用すると、デプロイからアプリケーションのアップグレード、測定、および削除までのソフトウェア資産のライフサイクルを完了することで、さらにコストが削減されます。 Cloudpaging は、必要に応じてリアルタイムで Windows Virtual Desktop のデプロイにアプリを動的にプロビジョニングすることで、イメージの管理を簡略化します。 Cloudpaging を使用すると、Windows 10 の定期的な更新プログラムによる管理や操作を行わなくてもアプリケーションを実行できます。 また、Cloudpaging により、これらのアプリケーションのより効率的なデプロイと使用を可能にすることで、コストの高いアプリケーションのライセンス コストが削減されます。 
+
+- [パートナーの Web サイトにアクセスする。](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/)
+
+## <a name="rdpsoft"></a>RDPSoft
+
+![RDPSoft ロゴ](./media/partners/rdpsoft.png)
+
+RDPSoft は、強力で安価な監視、管理、およびレポートのソリューションを提供する Windows Virtual Desktop パートナーです。 その Remote Desktop Commander オファリングにより、IT プロフェッショナルは、Windows Virtual Desktop のデプロイの正常性、パフォーマンス、ユーザー アクティビティ、ライセンス、およびセキュリティに関する分析情報を得ることができます。 
+ 
+RDPSoft の Remote Desktop Commander ソリューションにより、Windows Virtual Desktop の管理機能が強化されます。 Premium Management 機能を利用すると、リモート アシスタンス、ユーザー セッション、プロセス管理を実現することで、デスク スタッフをサポートするための Windows Virtual Desktop 管理タスクの委任が簡略化されます。 同時に、Remote Desktop Commander Suite は、ユーザーごとのパフォーマンスと負荷、ユーザーのアクティビティと監査、Windows Virtual Desktop の接続品質 (待機時間と帯域幅)、ライセンス、およびセキュリティに関する豊富なメトリックを、確認用の中央の Azure SQL データベース インスタンス内に収集します。 RDPSoft を使用すれば、豊富な履歴レポートと包括的なダッシュボードをクリックするだけで済みます。
+
+- [パートナーの Web サイトにアクセスする](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -143,6 +183,16 @@ ThinPrint の ezeep ソリューションにより、企業の既存の印刷イ
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
 - [パートナーの Web サイトにアクセスする。](https://www.ezeep.com/wvd-printing)
+
+## <a name="tricerat"></a>Tricerat
+
+![Tricerat ロゴ](./media/partners/tricerat.png)
+
+Tricerat は、Windows Virtual Desktop などのデスクトップ プラットフォーム向けの優れた印刷管理ソリューションを提供します。 Tricerat ソフトウェアには、ユーザーと管理者の両方にとって優れたエクスペリエンスを提供する堅牢な機能があります。 管理者は、完全なドライバー管理、印刷キューのデプロイの簡略化、およびハイブリッド プラットフォーム間での一貫した管理により、効率を向上させることができます。 ユーザー エクスペリエンスは、サインイン時間の短縮、ユーザー、デバイス、およびネットワークの場所に基づいたインテリジェントな印刷キュー、プリンターをすばやく選択できるセルフサービス オプションにより向上します。 
+
+Tricerat を使用すると、Windows Virtual Desktop よりもさらに印刷がシームレスになります。 Tricerat ソフトウェアを使用すると、管理者は、オンプレミスのプリンターをクラウドに簡単に接続できるため、従来の環境から新しい最新のワークスペースにエンタープライズの印刷管理を拡張することができます。
+
+- [パートナーの Web サイトにアクセスする。](https://www.tricerat.com/solutions/wvd-microsoft/)
 
 ## <a name="workspot"></a>Workspot
 

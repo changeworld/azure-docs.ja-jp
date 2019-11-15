@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション - Azure
+title: Storage FSLogix プロファイル コンテナー Windows Virtual Desktop - Azure
 description: Azure Storage で Windows Virtual Desktop FSLogix プロファイルを保存するためのオプション
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: fc869bc0c52a54044cbc095cd20f0395e590c852
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3577b459a1b6612d24346428512cfbc509515f52
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332827"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607422"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 

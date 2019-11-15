@@ -1,6 +1,6 @@
 ---
 title: Azure Backup Server を使用してワークロードを Azure にバックアップする
-description: Azure Backup Server を使用してワークロードを保護し、Azure Portal にバックアップします。
+description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,16 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982849"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747429"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
 > [!div class="op_single_selector"]
+>
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
@@ -60,16 +61,16 @@ Azure Backup Server を使用したワークロードの保護には、数多く
 | Windows Server 2019 |64 ビット |Standard、Datacenter、Essentials |
 | Windows Server 2016 と最新 SP |64 ビット |Standard、Datacenter、Essentials  |
 
-
 Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。 Hyper-V VM にデプロイするときは、 [DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx) が連携するしくみの詳細を確認してください。
 
 > [!NOTE]
 > Azure Backup Server は、単一目的の専用サーバーで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
-> - ドメイン コントローラーとして実行されているコンピューター
-> - アプリケーション サーバー ロールがインストールされているコンピューター
-> - System Center Operations Manager 管理サーバーであるコンピューター
-> - Exchange Server が実行されているコンピューター
-> - クラスターのノードであるコンピューター
+>
+> * ドメイン コントローラーとして実行されているコンピューター
+> * アプリケーション サーバー ロールがインストールされているコンピューター
+> * System Center Operations Manager 管理サーバーであるコンピューター
+> * Exchange Server が実行されているコンピューター
+> * クラスターのノードであるコンピューター
 
 Azure Backup Server は、常にドメインに参加させる必要があります。 サーバーを別のドメインに移動する予定がある場合は、まず Azure Backup Server をインストールし、次にそのサーバーを新しいドメインに参加させます。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
 
@@ -182,11 +183,11 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     SQL 2017 の独自のインスタンスを使用するときは、手動で SSRS を構成する必要があります。 SSRS の構成の後で、SSRS の *IsInitialized* プロパティが *True* に設定されていることを確認します。 これが True に設定されていると、MABS は SSRS が既に構成されていると見なして SSRS 構成をスキップします。
 
-    SSRS 構成では次の値を使用します。 
-    - サービス アカウント:‘組み込みアカウントの使用’ はネットワーク サービスにする必要があります
-    - Web サービスの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
-    - データベース: DatabaseName は ReportServer$<SQLInstanceName> にする必要があります
-    - Web ポータルの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
+    SSRS 構成では次の値を使用します。
+    * サービス アカウント:‘組み込みアカウントの使用’ はネットワーク サービスにする必要があります
+    * Web サービスの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
+    * データベース: DatabaseName は ReportServer$<SQLInstanceName> にする必要があります
+    * Web ポータルの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
 
     SSRS の構成について詳しくは、[こちら](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
 
@@ -257,10 +258,10 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 
 記憶域を維持したまま MABS を新しいサーバーに移動する必要がある場合はこの後の手順に従います。 これを実行できるのは、すべてのデータが Modern Backup Storage にある場合のみです。
 
-
   > [!IMPORTANT]
-  > - 新しいサーバー名は元の Azure Backup Server インスタンスと同じ名前にする必要があります。 以前の記憶域プールと MABS Database (DPMDB) を使用して復旧ポイントを保持する場合は、新しい Azure Backup Server インスタンスの名前を変更することはできません。
-  > - MABS Database (DPMDB) のバックアップを用意する必要があります。 後でデータベースを復元する必要があるためです。
+  >
+  > * 新しいサーバー名は元の Azure Backup Server インスタンスと同じ名前にする必要があります。 以前の記憶域プールと MABS Database (DPMDB) を使用して復旧ポイントを保持する場合は、新しい Azure Backup Server インスタンスの名前を変更することはできません。
+  > * MABS Database (DPMDB) のバックアップを用意する必要があります。 後でデータベースを復元する必要があるためです。
 
 1. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
 2. 元の Azure Backup Server をシャットダウンするか、ネットワークから切り離します。

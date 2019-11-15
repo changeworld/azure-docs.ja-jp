@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631418"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796640"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Azure Portal で StorSimple Data Manager サービスを管理する
 
-この記事では、StorSimple Data Manager UI を使って、StorSimple 8000 シリーズ デバイス上にあるデータを変換する方法について説明します。 変換されたデータは、Azure Media Services、Azure HDInsight、Azure Machine Learning、Azure Search など、他の Azure サービスが使用できます。
+この記事では、StorSimple Data Manager UI を使って、StorSimple 8000 シリーズ デバイス上にあるデータを変換する方法について説明します。 変換されたデータは、Azure Media Services、Azure HDInsight、Azure Machine Learning、Azure Cognitive Search など、他の Azure サービスが使用できます。
 
 
 ## <a name="use-storsimple-data-transformation"></a>StorSimple データ変換を使用する

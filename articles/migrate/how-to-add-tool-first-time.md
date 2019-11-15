@@ -4,19 +4,19 @@ description: Azure Migrate プロジェクトを作成し、評価/移行ツー�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934170"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720252"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>評価/移行ツールの初回追加
 
 この記事では、評価ツールまたは移行ツールを [Azure Migrate](migrate-overview.md) プロジェクトに初めて追加する方法について説明します。  
-Azure Migrate は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、および Azure への移行を追跡するための中央ハブとなります。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) の[オファリング](migrate-services-overview.md#isv-integration)が用意されています。 
+Azure Migrate は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、および Azure への移行を追跡するための中央ハブとなります。 このハブには、評価および移行のための Azure Migrate ツールのほか、他のツールや独立系ソフトウェア ベンダー (ISV) の[オファリング](migrate-services-overview.md#isv-integration)が用意されています。 
 
 ## <a name="create-a-project-and-add-a-tool"></a>プロジェクトの作成とツールの追加
 

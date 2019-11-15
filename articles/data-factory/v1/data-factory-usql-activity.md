@@ -1,5 +1,5 @@
 ---
-title: U-SQL スクリプトを使用したデータ変換 - Azure | Microsoft Docs
+title: U-SQL スクリプトを使用したデータ変換 - Azure
 description: Azure Data Lake Analytics コンピューティング サービスで、U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7608719c4e0c2b9e23f1982efda9789d25f50224
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248149"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665963"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]

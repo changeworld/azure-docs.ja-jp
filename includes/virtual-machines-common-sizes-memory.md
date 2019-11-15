@@ -5,23 +5,23 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/08/2019
-ms.author: azcspmt;jonbeck;cynthn;joelpell
+ms.date: 10/17/2019
+ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 55f82344956af7d6096fce7dbc3d7023589daa69
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: da47a471ddcf2c083ed127b79e4d3da9713d2ed4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428026"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719056"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
 * Ev3 シリーズは、ハイパースレッド構成の Intel® Xeon® 8171M 2.1 GHz (Skylake) または Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) プロセッサを備えることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。  Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
 
-* Eav3 シリーズと Easv3 シリーズのプレビュー サイズでは、最大 256 MB の L3 キャッシュを備えたマルチスレッド構成で AMD の 2.35Ghz EPYC<sup>TM</sup> 7452 プロセッサを利用しており、ほとんどのメモリ最適化されたワークロードを実行するためのオプションが増えています。  Eav3 シリーズと Easv3 シリーズは、Ev3 および Esv3 シリーズと同じメモリおよびディスク構成を備えています。
+* Eav4 シリーズと Easv4 シリーズでは、最大 256 MB の L3 キャッシュを備えたマルチスレッド構成で AMD の 2.35 Ghz EPYC<sup>TM</sup> 7452 プロセッサを利用しており、ほとんどのメモリ最適化されたワークロードを実行するためのオプションが増えています。  Eav4 シリーズと Easv4 シリーズは、Ev3 および Esv3 シリーズと同じメモリおよびディスク構成を備えています。
 
-* Mv2 シリーズは、クラウドの VM で最大の vCPU 数 (最大 208 個の vCPU) と最大のメモリ (最大 5.7 TiB) を提供します。 非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用することができます。
+* Mv2 シリーズは、クラウドの VM で最大の vCPU 数 (最大 416 個の vCPU) と最大のメモリ (最大 8.19 TiB) を提供します。 非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用することができます。
 
 * M シリーズは、多数の vCPU (最大 128 個の vCPU) と大量のメモリ (最大 3.8 TiB) を提供します。 このシリーズも非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用できます。
 
@@ -61,25 +61,29 @@ ESv3 シリーズのインスタンスには、Intel® Xeon® 8171M 2.1 GHz (Sky
 
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
-## <a name="easv3-series-preview"></a>Easv3 シリーズ (プレビュー)
+## <a name="easv4-series"></a>Easv4 シリーズ
+
+ACU: 230 ～ 260
 
 Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-Easv3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Easv3 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
+Easv4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成し、Premium SSD を使用できます。 Easv4 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 
-[プレビュー用にサインアップするには、こちらをクリックしてください](http://aka.ms/azureamdpreview)。
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
+|-----|-----|-----|-----|-----|-----|-----|-----|
+| Standard_E2as_v4|2|16|32|4|4000 / 32 (50)|3200 / 48|2/1,000 |
+| Standard_E4as_v4|4|32|64|8|8000 / 64 (100)|6400 / 96|2/2,000 |
+| Standard_E8as_v4|8|64|128|16|16000 / 128 (200)|12800 / 192|4/4,000 |
+| Standard_E16as_v4|16|128|256|32|32000 / 255 (400)|25600 / 384|8/8,000 |
+| Standard_E20as_v4|20|160|320|32|40000 / 320 (500)|32000 / 480|8/10000 |
+| Standard_E32as_v4|32|256|512|32|64000 / 510 (800)|51200 / 768|8/1,6000 |
+| Standard_E48as_v4 <sup>**</sup> |48|384|768|32|  | | 
+| Standard_E64as_v4 <sup>**</sup> |64|512|1024|32| | | 
+| Standard_E96as_v4 <sup>**</sup> |96|672|1344|32| | |  
 
-| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
-|---|---|---|---|
-| Standard_E2as_v3  | 2  | 16  | 32  |
-| Standard_E4as_v3  | 4  | 32  | 64  |
-| Standard_E8as_v3  | 8  | 64  | 128 |
-| Standard_E16as_v3 | 16 | 128 | 256 |
-| Standard_E32as_v3 | 32 | 256 | 512 |
-| Standard_E48as_v3 | 48 | 384 | 768 |
-| Standard_E64as_v3 | 64 | 432 | 864 |
+<sup>**</sup>  これらのサイズはプレビュー段階です。 これらのより大きなサイズをお試しになりたい場合は、[https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview) でサインアップしてください。
 
 ## <a name="ev3-series"></a>Ev3 シリーズ 
 
@@ -112,27 +116,33 @@ Ev3 シリーズのインスタンスには、Intel® Xeon® 8171M 2.1 GHz (Skyl
 
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
-## <a name="eav3-series-preview"></a>Eav3 シリーズ (プレビュー)
+## <a name="eav4-series"></a>Eav4 シリーズ
+
+ACU: 230 ～ 260
 
 Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-Eav3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Eav3 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Easv3 シリーズのサイズを使用してください。 Easv3 サイズの料金および課金の計算方法は、Eav3 シリーズと同じです。
+Eav4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成し、Premium SSD を使用できます。 Eav4 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium SSD を使用するには、Easv4 シリーズのサイズを使用します。 Easv4 サイズの料金および課金の計算方法は、Eav3 シリーズと同じです。
 
-[プレビュー用にサインアップするには、こちらをクリックしてください](http://aka.ms/azureamdpreview)。
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
+| -----|-----|-----|-----|-----|-----|-----|
+| Standard\_E2a\_v4|2|16|50|4|3000/46/23|2/1,000 |
+| Standard\_E4a\_v4|4|32|100|8|6000/93/46|2/2,000 |
+| Standard\_E8a\_v4|8|64|200|16|12000/187/93|4/4,000 |
+| Standard\_E16a\_v4|16|128|400|32|24000/375/187|8/8,000 |
+| Standard\_E20a\_v4|20|160|500|32|30000 / 468 / 234|8/10000 |
+| Standard\_E32a\_v4|32|256|800|32|48000/750/375|8/1,6000 |
+| Standard\_E48a\_v4 <sup>**</sup> |48|384|1200|32| | |
+| Standard\_E64a\_v4 <sup>**</sup> |64|512|1600|32| | |
+| Standard\_E96a\_v4 <sup>**</sup> |96|672|2400|32| | |
 
-| Size             | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
-|------------------|------|-------------|-------------------------|
-| Standard_E2a_v3  | 2    | 16          | 50                      |
-| Standard_E4a_v3  | 4    | 32          | 100                     |
-| Standard_E8a_v3  | 8    | 64          | 200                     |
-| Standard_E16a_v3 | 16   | 128         | 400                     |
-| Standard_E32a_v3 | 32   | 256         | 800                     |
-| Standard_E48a_v3 | 48   | 384         | 1200                    |
-| Standard_E64a_v3 | 64   | 432         | 1600                    |
+<sup>**</sup>  これらのサイズはプレビュー段階です。  これらのより大きなサイズをお試しになりたい場合は、[https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview) でサインアップしてください。
 
 ## <a name="mv2-series"></a>Mv2 シリーズ
+
+ACU: 188 ～ 280<sup>1</sup>
 
 Premium Storage: サポートされています
 
@@ -140,57 +150,20 @@ Premium Storage キャッシュ:サポートされています
 
 書き込みアクセラレータ:[サポートされています](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-Mv2 シリーズは、直接マッピングを使用した、高スループットで低待機時間のローカル NVMe ストレージを特長としています。このストレージは、全コア ベース周波数 2.5 GHz、最大ターボ周波数 3.8 GHz を備えたハイパースレッド Intel® Xeon® Platinum 8180 M 2.5 GHz (Skylake) プロセッサで実行されています。 すべての Mv2 シリーズ仮想マシンで、標準またはプレミアムの永続ディスクを使用できます。 Mv2 シリーズ インスタンスはメモリ最適化済み VM サイズで、非常に優れたコンピューティング性能によって大規模なメモリ内データベースとワークロードをサポートし、リレーショナル データベース サーバー、大規模キャッシュ、インメモリ分析に適した高いメモリ対 CPU 比率を提供します。 
+Mv2 シリーズは、高スループットで低待機時間のプラットフォームを特長としています。このプラットフォームは、全コア ベース周波数 2.5 GHz、最大ターボ周波数 3.8 GHz を備えたハイパースレッド Intel® Xeon® Platinum 8180 M 2.5 GHz (Skylake) プロセッサで実行されています。 すべての Mv2 シリーズ仮想マシンで、標準またはプレミアムの永続ディスクを使用できます。 Mv2 シリーズ インスタンスはメモリ最適化済み VM サイズで、非常に優れたコンピューティング性能によって大規模なメモリ内データベースとワークロードをサポートし、リレーショナル データベース サーバー、大規模キャッシュ、インメモリ分析に適した高いメモリ対 CPU 比率を提供します。
 
 |Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M208ms_v2<sup>1、2</sup> | 208 | 5700 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8/1,6000 |
-| Standard_M208s_v2<sup>1、2</sup> | 208 | 2850 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8/1,6000 |
+| Standard_M208ms_v2<sup>2</sup> | 208 | 5700 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8/1,6000 |
+| Standard_M208s_v2<sup>2</sup> | 208 | 2850 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8/1,6000 |
+| Standard_M416ms_v2<sup>2, 3</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M416s_v2<sup>2, 3</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 
-Mv2 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています  
+<sup>1</sup> Mv2 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
 
-<sup>1</sup> これらの大規模 VM には、サポートされている ゲスト OS (Windows Server 2016、Windows Server 2019、SLES 12 SP4、SLES 15 ) のいずれかが必要です。
+<sup>2</sup> Mv2-シリーズは第 2 世代のみです。 Linux を使用している場合、イメージを検索して選択する方法については、[Azure での第 2 世代 VM のサポート](../articles/virtual-machines/linux/generation-2.md)に関するページを参照してください。
 
-<sup>2</sup> Mv2-シリーズは第 2 世代のみです。 Linux を使用している場合は、次のセクションで、SUSE Linux イメージを見つけて選択する方法をご確認ください。
-
-#### <a name="find-a-suse-image"></a>SUSE イメージを見つける
-
-Azure portal で適切な SUSE Linux イメージを選択するには: 
-
-1. Azure portal で **[リソースの作成]** を選択します 
-1. "SUSE SAP" を検索します 
-1. SLES for SAP の第 2 世代のイメージは、従量課金制またはサブスクリプション持ち込み (BYOS) のいずれかで使用できます。 検索結果で、必要なイメージ カテゴリを展開します。
-
-    * SUSE Linux Enterprise Server (SLES) for SAP
-    * SUSE Linux Enterprise Server (SLES) for SAP (BYOS)
-    
-1. Mv2 シリーズ対応 SUSE イメージには、名前の先頭に `GEN2:` が付きます。 次の SUSE イメージは Mv2 シリーズ VM で使用できます。
-
-    * GEN2:SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP Applications
-    * GEN2:SUSE Linux Enterprise Server (SLES) 15 for SAP Applications
-    * GEN2:SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP Applications (BYOS)
-    * GEN2:SUSE Linux Enterprise Server (SLES) 15 for SAP Applications (BYOS)
-
-#### <a name="select-a-suse-image-via-azure-cli"></a>Azure CLI を使用して SUSE イメージを選択する
-
-現在使用できる Mv2 シリーズ VM 用 SLES for SAP SLES for SAP イメージの一覧を表示するには、次の [`az vm image list`](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list) コマンドを使用します。
-
-```azurecli
-az vm image list --output table --publisher SUSE --sku gen2 --all
-```
-
-このコマンドにより、Mv2 シリーズ VM 用 SUSE から現在使用できる第 2 世代 VM が出力されます。 
-
-出力例:
-
-```
-Offer          Publisher  Sku          Urn                                        Version
--------------  ---------  -----------  -----------------------------------------  ----------
-SLES-SAP       SUSE       gen2-12-sp4  SUSE:SLES-SAP:gen2-12-sp4:2019.05.13       2019.05.13
-SLES-SAP       SUSE       gen2-15      SUSE:SLES-SAP:gen2-15:2019.05.13           2019.05.13
-SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13  2019.05.13
-SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
-```
+<sup>3</sup> M416ms_v2 および M416s_v2 サイズについては、次のイメージの初期サポートしかないことに注意してください:"GEN2:SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP Applications"
 
 ## <a name="m-series"></a>M シリーズ 
 
@@ -225,7 +198,7 @@ M シリーズのサイズは Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz に基�
 
 <sup>1</sup> M シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
 
-<sup>2</sup> 64 個を超える vCPU では、Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 が付属する Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3 の、サポートされているゲスト OS のいずれかが必要です。
+<sup>2</sup> vCPU が 64 個を超える場合、次のサポートされているゲスト オペレーティング システムのいずれかが必要です。Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 が付属する Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3 の、サポートされているゲスト OS のいずれかが必要です。
 
 <sup>3</sup> コア数を制限したサイズも提供しています。
 

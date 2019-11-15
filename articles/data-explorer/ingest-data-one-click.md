@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: b1ce2d9efe44021b4e3191739bd2f922e34c44cb
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 10/31/2019
+ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519830"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73644594"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>ワンクリックでのインジェストを使用して Azure Data Explorer にデータを取り込む
 
@@ -23,45 +23,54 @@ ms.locfileid: "69519830"
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * [アプリケーション](https://dataexplorer.azure.com/)にサインインします。
 * [Azure Data Explorer クラスターとデータベース](create-cluster-database-portal.md)を作成する
+* [Web UI](https://dataexplorer.azure.com/) にサインインし、クラスターへの接続を追加[する](/azure/data-explorer/web-query-data#add-clusters)
 * Azure Storage 内のデータのソース。
 
 ## <a name="ingest-new-data"></a>新しいデータを取り込む
 
-1. "*データベース名*" を右クリックし、 **[Ingest new data (Preview)]\(新しいデータの取り込み (プレビュー)\)** を選択します
+1. Web UI の左側のメニューで*データベース*または*テーブル*の行を右クリックし、 **[Ingest new data (Preview)] (新しいデータの取り込み (プレビュー))** を選択します
 
     ![Web UI でワンクリックでのインジェストを選択する](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
  
-1. **[データ インジェスト (プレビュー)]** ウィンドウの **[ソース]** タブで、 **[プロジェクトの詳細]** を入力します。
+1. **[Ingest new data (preview)] (新しいデータの取り込み (プレビュー))** ウィンドウの **[ソース]** タブで、 **[プロジェクトの詳細]** を入力します。
 
-    * 新しい **[テーブル名]** を入力します。 
-    * **[Ingestion type]\(インジェストの種類\)**  > [ストレージから] **の順に選択します**。
-    * **[ストレージへのリンク]** を入力します。ストレージへの URL を追加します。 プライベート ストレージ アカウントには BLOB SAS URL を使用します。 
-    * **[スキーマの編集]** を選択します。
+    * **テーブル**:ドロップダウンから既存のテーブル名を選択するか、 **[新規作成]** を選択して新しいテーブルを作成します。
+    * **[Ingestion type] (インジェストの種類)**  >  として、 **[ストレージから]** または **[ファイルから]** を選択します。
+        * **[ストレージから]** を選択した場合は、 **[ストレージへのリンク]** を入力してストレージへの URL を追加します。 プライベート ストレージ アカウントには [BLOB SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) を使用します。 
+        * **[ファイルから]** を選択した場合は、 **[参照]** を選択し、ファイルをボックスにドラッグします。
+    * テーブル列の構成を表示および編集するには、 **[スキーマの編集]** を選択します。
  
     ![ワンクリックでのインジェスト ソースの詳細](media/ingest-data-one-click/one-click-ingestion-source.png) 
 
-1. **[スキーマ]** タブの **[データ形式]** で、ドロップダウンから **[JSON]** または **[CSV]** を選択します。 
-   
-   **[CSV]** を選択した場合:
-    * **[Ignore headline]\(見出しを無視する\)** チェックボックスをオンにすると、csv ファイルの見出し行が無視されます。    
+    > [!TIP]
+    > *テーブル*の行で **[Ingest new data (Preview)] (新しいデータの取り込み (プレビュー))** を選択した場合は、選択したテーブル名が **[プロジェクトの詳細]** に表示されます。
+
+1. 既存のテーブルを選択した場合は、ソース データの列をターゲット テーブルの列にマップする **[Map columns] (マップ列)** ウィンドウが開きます。 
+    * テーブルからターゲット列を削除するには、 **[Omit column] (列の省略)** を使用します。 
+    * テーブルに新しい列を追加するには、 **[新しい列]** を使用します。 
+
+    ![[Map columns] (マップ列) ウィンドウ](media/ingest-data-one-click/one-click-map-columns-window.png)
+
+1. **[スキーマ]** タブで次のようにします。
+
+    * **[圧縮の種類]** ドロップダウンから、 **[非圧縮]** または **[GZip]** を選択します。
+    * **データ形式** ドロップダウンから **JSON**、**CSV**、**TSV**、**SCSV**、**SOHSV**、**TSVE**、または **PSV** を選択します。 
+        * **[JSON]** 形式を選択した場合は、**JSON レベル**を選択します。1 ～ 10 です。 このレベルは、テーブル列でのデータ表現に影響します。 
+        * JSON 以外の形式を選択した場合、 **[Include column names] (列名を含める)** を選択すると、ファイルの見出し行が無視されます。    
     * **[マッピング名]** は自動的に設定されますが、編集できます。
+    * 既存のテーブルを選択した場合は、 **[Map columns] (マップ列)** をクリックして **[Map columns] (マップ列)** ウィンドウを開くことができます。
 
     ![ワンクリックでのインジェスト csv 形式スキーマ.png](media/ingest-data-one-click/one-click-csv-format.png)
 
-   **[JSON]** を選択した場合:
-    * **[JSON レベル]** を選択します。ドロップダウンで 1 - 10 を選択します。 Json ファイルのレベルは、右下の表に表示されます。 
-    * **[マッピング名]** は自動的に設定されますが、編集できます。
-
-    ![ワンクリックでのインジェスト json 形式スキーマ](media/ingest-data-one-click/one-click-json-format.png)  
-
 1. **[エディター]** で、右側の **[V]** を選択してエディターを開きます。 エディターでは、ご自分の入力から生成された自動クエリを表示およびコピーできます。 
 
-1.  右下にあるテーブルでは、次の操作を行います。 
-    * **[列名の変更]** 、 **[列の削除]** 、 **[昇順で並べ替え]** 、 **[降順で並べ替え]** を行うには列の右側にある **[V]** を選択します
-    * 編集するには列名をダブルクリックします。
-    * データ型を変更するには、列名の左側にあるアイコンを選択します。 
+1.  テーブル内で: 
+    * 新しい列ヘッダーを右クリックして、 **[データ型の変更]** 、 **[列名の変更]** 、 **[列の削除]** 、 **[昇順で並べ替え]** 、または　 **[降順で並べ替え]** を選択します。 既存の列で選択できるのはデータの並べ替えのみです。 
+    * 編集するには、新しい列の名前をダブルクリックします。
 
 1. テーブルの作成、マッピングの作成、およびデータ インジェストを行うには、 **[Start ingestion]\(インジェストの開始\)** を選択します。
+
+    ![ワンクリックでのインジェスト json 形式スキーマ](media/ingest-data-one-click/one-click-json-format.png) 
  
 ## <a name="query-data"></a>データのクエリを実行する
 

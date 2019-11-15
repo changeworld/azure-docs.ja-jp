@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372717"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748060"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -41,15 +41,15 @@ IoT ハブには、Event Hubs との互換性がある、既定の組み込み�
 
 標準的な [Event Hubs 統合と SDK](iot-hub-devguide-messages-read-builtin.md) を使用して、組み込みのエンドポイント (**messages/events**) から device-to-cloud メッセージを受信することができます。 ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。
 
-### <a name="azure-blob-storage"></a>Azure Blob Storage
+### <a name="azure-storage"></a>Azure Storage
 
-IoT Hub では、[Apache Avro](https://avro.apache.org/) 形式と JSON 形式での Azure Blob Storage へのデータの書き込みをサポートしています。 JSON 形式にエンコードする機能は一般に、IoT Hub が提供されているすべてのリージョンで使用できます。 既定値は AVRO です。 エンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。 既存のエンドポイントに対して形式を編集することはできません。 JSON エンコードを使用する場合は、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのどちらの値でも大文字と小文字は区別されません。 コンテンツのエンコードが設定されていない場合、IoT Hub では Base 64 エンコード形式でメッセージが書き込まれます。 エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0) を使用して選択できます。 次の図は、Azure portal でエンコード形式を選択する方法を示しています。
+IoT Hub がメッセージをルーティングできるストレージ サービスとして、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) アカウントと [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2) アカウントの 2 つがあります。 Azure Data Lake Storage アカウントは、BLOB ストレージ上に構築された、[階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)に対応したストレージ アカウントです。 これらはどちらも、そのストレージとして BLOB を使用します。
+
+IoT Hub は JSON 形式だけでなく、[Apache Avro](https://avro.apache.org/) 形式での Azure Storage へのデータの書き込みをサポートしています。 既定値は AVRO です。 エンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。 既存のエンドポイントに対して形式を編集することはできません。 JSON エンコードを使用する場合は、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのどちらの値でも大文字と小文字は区別されません。 コンテンツのエンコードが設定されていない場合、IoT Hub では Base 64 エンコード形式でメッセージが書き込まれます。 エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0) を使用して選択できます。 次の図は、Azure portal でエンコード形式を選択する方法を示しています。
 
 ![Blob Storage エンドポイントのエンコード](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub は、[Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) (ADLS) Gen2 アカウントへのメッセージのルーティングもサポートしています。これは、BLOB ストレージ上に構築された[階層的な名前空間](../storage/blobs/data-lake-storage-namespace.md)対応のストレージ アカウントです。 この機能はパブリック プレビュー段階であり、米国西部 2 と米国中西部で新しい ADLS Gen2 アカウントに使用できます。 これをプレビューするには、[サインアップ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)してください。 この機能は、近日中にすべてのクラウド リージョンにデプロイする予定です。 
-
-IoT Hub は、バッチが特定のサイズに達するか、一定の時間が経過した時点で、メッセージを一括処理して BLOB にデータを書き込みます。 IoT Hub の既定のファイル名前付け規則は次のとおりです。 
+IoT Hub は、バッチが特定のサイズに達するか、または一定の時間が経過すると常に、メッセージを一括処理してストレージにデータを書き込みます。 IoT Hub の既定のファイル名前付け規則は次のとおりです。 
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -57,23 +57,28 @@ IoT Hub は、バッチが特定のサイズに達するか、一定の時間が
 
 任意のファイル名前付け規則を使用可能ですが、一覧で示されているすべてのトークンを使う必要があります。 書き込むデータがない場合、IoT ハブは空の BLOB に書き込みます。
 
-Blob Storage にルーティングするときは、パーティションを想定せずにすべてのコンテナーを確実に読み取るために、BLOB を確保したうえでそれらを反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover)中にパーティションの範囲が変わる可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用して、BLOB のリストを列挙できます。 ガイダンスとして次のサンプルを参照してください。
+パーティションを前提にすることなくすべての BLOB またはファイルが確実に読み取られるようにするために、BLOB またはファイルは一覧表示してから反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover)中にパーティションの範囲が変わる可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 ガイダンスとして次のサンプルを参照してください。
 
-   ```csharp
-        public void ListBlobsInContainer(string containerName, string iothub)
+```csharp
+public void ListBlobsInContainer(string containerName, string iothub)
+{
+    var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
+    var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
+    if (cloudBlobContainer.Exists())
+    {
+        var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
+        foreach (IListBlobItem item in results)
         {
-            var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
-            var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
-            if (cloudBlobContainer.Exists())
-            {
-                var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
-                foreach (IListBlobItem item in results)
-                {
-                    Console.WriteLine(item.Uri);
-                }
-            }
+            Console.WriteLine(item.Uri);
         }
-   ```
+    }
+}
+```
+
+Azure Data Lake Gen2 と互換性のあるストレージ アカウントを作成するには、次の図に示すように、新しい V2 ストレージ アカウントを作成し、 **[詳細]** タブで *[階層型名前空間]* フィールドの *[有効]* を選択します。
+
+![Azure Data Lake Storage Gen2 を選択する](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
+
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus キューと Service Bus トピック
 

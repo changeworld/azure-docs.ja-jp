@@ -8,16 +8,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755379"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576867"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
-マイクロ サービスの世界では、すべての論理操作において、サービスのさまざまなコンポーネント内での作業の実行が必要になります。 これらの各コンポーネントを、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) によって個別に監視できます。 Web アプリ コンポーネントは、ユーザーの資格情報を検証するために認証プロバイダー コンポーネントと通信し、視覚化するためのデータを取得するために API コンポーネントと通信します。 API コンポーネントは、他のサービスに対してデータのクエリを実行し、キャッシュ プロバイダー コンポーネントを使用して、課金コンポーネントにこの呼び出しについて通知することができます。 Application Insights では、分散しているテレメトリの関連付けがサポートされています。これを使用して、エラーやパフォーマンス低下の原因になっているコンポーネントを検出できます。
+マイクロ サービスの世界では、すべての論理操作において、サービスのさまざまなコンポーネント内での作業の実行が必要になります。 これらの各コンポーネントを、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) によって個別に監視できます。 Application Insights では、分散しているテレメトリの関連付けがサポートされています。これを使用して、エラーやパフォーマンス低下の原因になっているコンポーネントを検出できます。
 
 この記事では、複数のコンポーネントから送信されるテレメトリを関連付けるために Application Insights によって使用されるデータ モデルについて説明します。 これにはコンテキストの伝達方法とプロトコルが含まれます。 また、さまざまな言語とプラットフォームにおける関連付けの概念の実装も含まれます。
 
@@ -221,7 +221,7 @@ OpenCensus Python は、前述の `OpenTracing` データモデル仕様に従�
 
 ### <a name="incoming-request-correlation"></a>着信要求の相関付け
 
-OpenCensus Python は、着信要求の W3C Trace Context ヘッダーを、要求自体から生成された範囲に関連付けます。 OpenCensus はこれを、`flask`、`django`、`pyramid` などの一般的な Web アプリケーション フレームワークの統合によって自動的に実行します。 W3C Trace Context ヘッダーは、[正しい形式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)で入力し、要求と共に送信するだけで済みます。 これを示す `flask` アプリケーションの例を次に示します。
+OpenCensus Python は、着信要求の W3C Trace Context ヘッダーを、要求自体から生成された範囲に関連付けます。 OpenCensus は、一般的な Web アプリケーション フレームワーク (`flask`、`django`、および `pyramid`) の統合によってこれを自動的に実行します。 W3C Trace Context ヘッダーは、[正しい形式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)で入力し、要求と共に送信するだけで済みます。 これを示す `flask` アプリケーションの例を次に示します。
 
 ```python
 from flask import Flask
@@ -253,7 +253,7 @@ curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7
 `parent-id/span-id`: `00f067aa0ba902b7`
 `trace-flags`: `01`
 
-Azure Monitor に送信された要求エントリを確認すると、トレース ヘッダー情報が入力されたフィールドを確認できます。
+Azure Monitor に送信された要求エントリを確認すると、トレース ヘッダー情報が入力されたフィールドを確認できます。 このデータは、Azure Monitor Application Insights リソースの [ログ (Analytics)] の下にあります。
 
 ![トレース ヘッダーのフィールドが赤色の枠線で強調表示されている、ログ (分析) の要求テレメトリのスクリーンショット](./media/opencensus-python/0011-correlation.png)
 
@@ -290,6 +290,8 @@ logger.warning('After the span')
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
 スパン内にあるログ メッセージの spanId が存在していることを確認します。これは、`hello` という名前のスパンに属する spanId と同じです。
+
+`AzureLogHandler` を使用して、ログ データをエクスポートできます。 詳細については、 [こちら](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)
 
 ## <a name="telemetry-correlation-in-net"></a>.NET におけるテレメトリの相関付け
 
@@ -332,25 +334,22 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 
 [アプリケーション マップ](../../azure-monitor/app/app-map.md)にコンポーネント名を表示する方法をカスタマイズすることが必要な場合があります。 そのためには、次のいずれかを実行して `cloud_RoleName` を手動で設定します。
 
+- Application Insights Java SDK 2.5.0 以降では、`ApplicationInsights.xml` ファイルに `<RoleName>` を追加することで、クラウド ロール名を指定できます。例:
+
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
 - Application Insights Spring Boot スターターで Spring Boot を使用する場合、必要な変更は application.properties ファイルにアプリケーションのカスタム名を設定することだけです。
 
   `spring.application.name=<name-of-app>`
 
   Spring Boot スターターによって、`spring.application.name` プロパティに入力した値に対して `cloudRoleName` が自動的に割り当てられます。
-
-- `WebRequestTrackingFilter` を使用している場合、`WebAppNameContextInitializer` によってアプリケーション名が自動的に設定されます。 次を構成ファイル (ApplicationInsights.xml) に追加します。
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- クラウドのコンテキスト クラスを使用する場合、次のようにします。
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
 
 ## <a name="next-steps"></a>次の手順
 

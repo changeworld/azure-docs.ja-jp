@@ -1,5 +1,5 @@
 ---
-title: SQL Database マネージド インスタンス - ポイントインタイム リストア | Microsoft Docs
+title: マネージド インスタンス - ポイントインタイム リストア
 description: マネージド インスタンス内の SQL データベースを以前の特定の時点に復元します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 61249d8ac21c3bb698deb92e5f46a8998205ced9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: ad96d0a04b03e070a7108832370749377d723826
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529662"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821756"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>マネージド インスタンス内の SQL データベースを以前の特定の時点に復元する
 

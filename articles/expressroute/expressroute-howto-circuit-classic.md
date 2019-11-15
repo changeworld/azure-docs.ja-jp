@@ -2,19 +2,17 @@
 title: ExpressRoute 回線を変更する:PowerShell:Azure クラシック| Microsoft Docs
 description: この記事では、ExpressRoute クラシック デプロイ モデル回線の状態確認、更新、または削除とプロビジョニング解除を行う手順について説明します。
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: ganesr
-ms.reviewer: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 7468338e7bc39128564e71831abe61bb1714ff72
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.date: 11/05/2019
+ms.author: cherylmc
+ms.openlocfilehash: 9f1c05b85fac6dd0168d9c2b2944326800e90493
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849236"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643682"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)
 
@@ -35,39 +33,18 @@ ms.locfileid: "67849236"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="before-you-begin"></a>開始する前に
 
-最新バージョンの Azure Service Management (SM) PowerShell モジュールと ExpressRoute モジュールをインストールします。  次の例を使用する場合は、コマンドレットの新しいバージョンがリリースされると、バージョン番号 (この例では、5.1.1) が変わることに注意してください。
+最新バージョンの Azure Service Management (SM) PowerShell モジュールと ExpressRoute モジュールをインストールします。 Azure CloudShell 環境を使用して SM モジュールを実行することはできません。
 
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)」を参照してください。
-
-Azure アカウントにサインインするには、次の例を使用します。
-
-1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
+1. [Service Management モジュールのインストール](/powershell/azure/servicemanagement/install-azure-ps)に関する記事の手順を使用して、Azure Service Management モジュールをインストールします。 Az または RM モジュールが既にインストールされている場合は、必ず '-AllowClobber' を使用してください。
+2. インストールされているモジュールをインポートします。 次の例を使用している場合は、インストールされている PowerShell モジュールの場所が反映されるようにパスを調整します。
 
    ```powershell
-   Connect-AzAccount
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
    ```
-2. アカウントのサブスクリプションを確認します。
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. 次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
+3. Azure アカウントにサインインするには、管理者特権で PowerShell コンソールを開き、アカウントに接続します。 次の例を使用すると、Service Management モジュールを使用した接続に役立ちます。
 
    ```powershell
    Add-AzureAccount

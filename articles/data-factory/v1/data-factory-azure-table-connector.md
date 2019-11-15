@@ -1,5 +1,5 @@
 ---
-title: Azure テーブルとの間でのデータの移動 | Microsoft Docs
+title: Azure Table との間でデータを移動する
 description: Azure Data Factory を使用して Azure Table Storage に、または Azure Table Storage からデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0c4f961dda273c7f3885159818dabf228abced42
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 83f3a34a9b902b3a0e3b3ded34e36c8cbf50ed89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839481"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683071"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -82,7 +82,7 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |いいえ。 azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
+| azureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |No. azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。 |TRUE<br/>FALSE |いいえ |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery の例
@@ -535,7 +535,7 @@ Azure テーブル OData 型から .NET 型への型マッピングを所与と�
 
 **Azure テーブル スキーマ:**
 
-| 列名 | Type |
+| 列名 | 種類 |
 | --- | --- |
 | userid |Edm.Int64 |
 | 名前 |Edm.String |

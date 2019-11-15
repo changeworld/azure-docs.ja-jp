@@ -3,17 +3,17 @@ title: Azure デバイス プロビジョニングにおけるデバイスの概
 description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のデバイス プロビジョニングの概念を説明します。
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173383"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720535"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub デバイス プロビジョニング サービスのデバイスの概念
 
@@ -44,14 +44,14 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 ## <a name="registration-id"></a>登録 ID
 
-登録 ID は、デバイス プロビジョニング サービスでデバイスを一意に識別するために使用されます。 登録 ID は、プロビジョニング サービスの [ID スコープ](#id-scope)内で一意である必要があります。 各デバイスに登録 ID が必要です。 登録 ID には、英数字、小文字と、必要に応じてハイフンを含めます。
+登録 ID は、デバイス プロビジョニング サービスでデバイスを一意に識別するために使用されます。 デバイス ID は、プロビジョニング サービスの[ ID スコープ](#id-scope)内で一意である必要があります。 各デバイスに登録 ID が必要です。 登録 ID は大文字と小文字が区別されない英数字であり、コロン、ピリオド、アンダースコア、ハイフンなどの特殊文字を含めることができます。
 
 * TPM の場合、登録 ID は TPM 自身によって提供されます。
 * X.509 ベースの構成証明の場合、登録 ID は、証明書のサブジェクト名として提供されます。
 
 ## <a name="device-id"></a>Device ID
 
-デバイス ID は、IoT Hub に表示される ID です。 加入契約エントリに目的のデバイス ID を設定できますが、設定は必須ではありません。 加入契約リストに目的のデバイス ID が指定されていない場合、デバイスの登録時の登録 ID がデバイス ID として使用されます。 詳細については、[IoT Hub のデバイス ID](../iot-hub/iot-hub-devguide-identity-registry.md) に関する記事をご覧ください。
+デバイス ID は、IoT Hub に表示される ID です。 加入契約エントリに目的のデバイス ID を設定できますが、設定は必須ではありません。 希望するデバイス ID の設定は、個別の登録でのみサポートされています。 加入契約リストに目的のデバイス ID が指定されていない場合、デバイスの登録時の登録 ID がデバイス ID として使用されます。 詳細については、[IoT Hub のデバイス ID](../iot-hub/iot-hub-devguide-identity-registry.md) に関する記事をご覧ください。
 
 ## <a name="id-scope"></a>ID スコープ
 

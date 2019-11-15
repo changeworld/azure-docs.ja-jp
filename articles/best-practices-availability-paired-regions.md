@@ -1,5 +1,5 @@
 ---
-title: ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン | Microsoft Docs
+title: ビジネス継続性とディザスター リカバリー - Azure のペアになっているリージョン
 description: データセンターでの障害発生時にアプリケーションの耐障害性を確保するための Azure のリージョン ペアについて説明します。
 author: rayne-wiselman
 manager: carmon
@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 81ba993e6cbe55b45d34325545754bec561ce479
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514468"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718755"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン
 
@@ -75,7 +75,7 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 ## <a name="cross-region-activities"></a>リージョン間アクティビティ
 図 2 を参照してください。
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – 災害発生中に別のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](resiliency/resiliency-technical-guidance.md)」をご覧ください。
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – 災害発生中に別のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)」をご覧ください。
 
 ![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - マネージド ディスクを使用している場合は、Azure Backup を使用した[リージョン間のバックアップ](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)、および Azure Site Recovery を使用したリージョン間での [VM のレプリケーション](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)について確認してください。 ストレージ アカウントを使用している場合は、Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
 

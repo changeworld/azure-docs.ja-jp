@@ -1,21 +1,21 @@
 ---
-title: Azure HDInsight クラスターを自動的にスケーリングする (プレビュー)
+title: Azure HDInsight クラスターを自動的にスケール調整する
 description: Azure HDInsight の自動スケーリング機能を使用して Apache Hadoop クラスターを自動的にスケーリングする
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: hrasheed
-ms.openlocfilehash: 9071b41ab39c62f639b62a439e4d2530a7d7e11b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 10/22/2019
+ms.openlocfilehash: fff5ad379aa11a0aae14b33f9f82f6da9c794517
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880069"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643713"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight クラスターを自動的にスケーリングする (プレビュー)
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 
 > [!Important]
 > 自動スケーリング機能は、2019年 5月 8日より後に作成された Spark、Hive、および MapReduce のクラスターでのみ機能します。 
@@ -74,28 +74,28 @@ HDInsight サービスによって、現在の CPU とメモリの要件を満�
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>負荷ベースの自動スケーリングでクラスターを作成する
 
+クラスターで自動スケーリングを使用するには、クラスターを作成するときに、 **[自動スケーリングの有効化]** オプションを有効にする必要があり ます。 
+
 負荷ベースのスケーリングで自動スケーリング機能を有効にするには、通常のクラスターの作成プロセスの一部として、次の手順を行います。
 
-1. **[簡易作成]** ではなく、 **[カスタム (サイズ、設定、アプリ)]** を選択します。
-1. **カスタム**の手順 5 (**クラスター サイズ**) で、 **[ワーカー ノードの自動スケーリング]** チェック ボックスをオンにします。
-1. **[Autoscale type]\(自動スケーリングの種類\)** で、 **[Load-based]\(負荷ベース\)** オプションを選択ます。
+1. **[Configuration + pricing]\(構成と価格\)** タブで、 **[自動スケーリングの有効化]** チェックボックスをオンにします。
+1. **[Autoscale type]\(自動スケーリングの種類\)** で、 **[Load-based]\(負荷ベース\)** を選択します。
 1. 次のプロパティに希望する値を入力します。  
 
-    * **ワーカー ノードの初期の数**  
-    * ワーカー ノードの**最小**数  
-    * ワーカー ノードの**最大**数  
+    * **[ワーカー ノード]** の初期の **[Number of nodes]\(ノードの数\)** 。
+    * ワーカー ノードの **[最小]** の数。
+    * ワーカー ノードの **[最大]** の数。
 
-    ![ワーカー ノードの負荷ベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/hdinsight-using-autoscale.png)
+    ![ワーカー ノードの負荷ベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
-ワーカー ノードの初期の数には、最小数から最大数までの数を指定する必要があります。 この値によって、クラスターが作成されるときのその初期サイズが定義されます。 ワーカー ノードの最小数は 1 以上である必要があります。
+ワーカー ノードの初期の数には、最小数から最大数までの数を指定する必要があります。 この値によって、クラスターが作成されるときのその初期サイズが定義されます。 ワーカー ノードの最小数は、3 以上に設定する必要があります 。 クラスターを 3 つのノード未満にスケーリングすると、ファイル レプリケーションが不十分なためにセーフ モードでスタックする場合があります。 詳細については、「[セーフ モードでスタックする]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)」を参照してください。
 
 ### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>スケジュール ベースの自動スケーリングでクラスターを作成する
 
 スケジュール ベースのスケーリングで自動スケーリング機能を有効にするには、通常のクラスターの作成プロセスの一部として、次の手順を行います。
 
-1. **[簡易作成]** ではなく、 **[カスタム (サイズ、設定、アプリ)]** を選択します。
-1. **カスタム**の手順 5 (**クラスター サイズ**) で、 **[ワーカー ノードの自動スケーリング]** チェック ボックスをオンにします。
-1. クラスターのスケールアップの制限を制御する **[Number of Worker nodes]\(ワーカー ノードの数\)** を入力します。
+1. **[Configuration + pricing]\(構成と価格\)** タブで、 **[自動スケーリングの有効化]** チェックボックスをオンにします。
+1. **[ワーカー ノード]** の **[Number of nodes]\(ノードの数\)** を入力します。これは、クラスターのスケールアップの制限を制御します。
 1. **[Autoscale type]\(自動スケーリングの種類\)** で、 **[Schedule-based]\(スケジュール ベース\)** オプションを選択ます。
 1. **[構成]** をクリックして **[Autoscale configuration]\(自動スケーリングの構成\)** ウィンドウを開きます。
 1. タイムゾーンを選択し、 **[+ Add condition]\(+ 条件の追加\)** をクリックします
@@ -105,13 +105,13 @@ HDInsight サービスによって、現在の CPU とメモリの要件を満�
 
     ![ワーカー ノードのスケジュールベースの作成を有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
-ノードの数は、1 から条件追加前に入力したワーカー ノードの数の間である必要があります。
+ノードの数は、3 から条件追加前に入力したワーカー ノードの最大数の間にする必要があります。
 
 ### <a name="final-creation-steps"></a>最後の作成手順
 
-負荷ベースとスケジュール ベースの両方のスケーリングで、 **[ワーカー ノードのサイズ]** と **[ヘッド ノードのサイズ]** をクリックして、ワーカー ノードの VM の種類を選択します。 ノードの種類ごとに VM の種類を選択すると、クラスター全体の概算のコスト範囲を表示できるようになります。 予算に合わせて VM の種類を調整します。
+負荷ベースとスケジュール ベースの両方のスケーリングに対して、 **[ノード サイズ]** の下のドロップダウン リストから VM を選択して、ワーカー ノードの VM の種類を選択します。 ノードの種類ごとに VM の種類を選択すると、クラスター全体の概算のコスト範囲を表示できるようになります。 予算に合わせて VM の種類を調整します。
 
-![ワーカー ノードのノード サイズに対するスケジュールベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![ワーカー ノードのノード サイズに対するスケジュールベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
 サブスクリプションには、リージョンごとに容量のクォータがあります。 ヘッド ノードのコアの総数とワーカー ノードの最大数の合計が容量のクォータを超えることはできません。 ただし、このクォータはソフト制限です。それを簡単に増やすためのサポート チケットをいつでも作成できます。
 
@@ -132,7 +132,7 @@ Azure portal を使用した HDInsight クラスターの作成に関する詳�
   "targetInstanceCount": 4,
   "autoscale": {
       "capacity": {
-          "minInstanceCount": 2,
+          "minInstanceCount": 3,
           "maxInstanceCount": 10
       }
   },
@@ -187,11 +187,13 @@ Resource Manager テンプレートを使用してクラスターを作成する
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>実行中のクラスターの自動スケーリングの有効化および無効化
 
 #### <a name="using-the-azure-portal"></a>Azure ポータルの使用
+
 実行中のクラスターで自動スケーリングを有効にするには、 **[設定]** の **[クラスター サイズ]** を選択します。 **[自動スケーリングの有効化]** をクリックします。 使用する自動スケーリングの種類を選択し、負荷ベースまたはスケジュール ベースのスケーリングのオプションを入力します。 最後に、 **[保存]** をクリックします。
 
 ![ワーカー ノードの実行中のクラスターに対するスケジュールベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
 #### <a name="using-the-rest-api"></a>REST API の使用
+
 REST API を使用して、実行中のクラスターでの自動スケーリングを有効または無効にするには、下のコード スニペットに示すように、自動スケーリング エンドポイントへの POST 要求を作成します。
 
 ```
@@ -201,7 +203,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 要求ペイロードでは適切なパラメーターを使用します。 自動スケーリングを有効にするには、下の json ペイロードを使用できます。 自動スケーリングを無効にするには、ペイロード `{autoscale: null}` を使用します。
 
 ```json
-{ autoscale: { capacity: { minInstanceCount: 1, maxInstanceCount: 2 } } }
+{ autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
 ```
 
 すべてのペイロード パラメーターの完全な説明については、前のセクションの[負荷ベースの自動スケーリングの有効化](#load-based-autoscaling)を参照してください。
@@ -212,6 +214,8 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 どちらのモードを選択するかを決定する前に、次の要因を検討してください。
 
+* クラスターの作成時に自動スケーリングを有効にします。
+* ノードの最小数は、少なくとも 3 つにする必要があります。
 * 負荷変動: クラスターの負荷は、特定の日の特定の時刻に一貫性のあるパターンに従っていますか。 そうでない場合、負荷ベースのスケジューリングが適切な選択肢になります。
 * SLA 要件:自動スケーリングは、予測型ではなく反応型です。 負荷が増加し始めるタイミングと、クラスターがそのターゲット サイズに達している必要があるタイミングとの間に十分な遅延がありますか。 厳密な SLA 要件があり、負荷が、固定した既知のパターンである場合は、「スケジュール ベース」が適切な選択肢になります。
 
@@ -221,9 +225,13 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 ### <a name="preparation-for-scaling-down"></a>スケール ダウンの準備
 
-クラスターのスケール ダウン プロセス中、自動スケーリングはターゲット サイズを満たすためにノードを使用停止にします。 これらのノードに実行中のタスクがある場合、自動スケーリングはそれらのタスクが完了するまで待機します。 各ワーカー ノードは HDFS でのロールも果たすため、一時データは残りのノードに移動されます。 したがって、残りのノードに、すべての一時データをホストするのに十分なスペースがあることを確認する必要があります。 
+クラスターのスケール ダウン プロセス中、自動スケーリングはターゲット サイズを満たすためにノードを使用停止にします。 これらのノードに実行中のタスクがある場合、自動スケーリングはそれらのタスクが完了するまで待機します。 各ワーカー ノードは HDFS でのロールも果たすため、一時データは残りのノードに移動されます。 したがって、残りのノードに、すべての一時データをホストするのに十分なスペースがあることを確認する必要があります。
 
 実行中のジョブは引き続き実行されて終了します。 保留中のジョブは、少ない数の使用可能ワーカー ノードで通常どおりにスケジュールされるのを待ちます。
+
+### <a name="minimum-cluster-size"></a>クラスターの最小サイズ
+
+クラスターを 3 つ未満のノードにスケールダウンしないでください。 クラスターを 3 つ未満のノードにスケーリングすると、ファイル レプリケーションが不十分なためにセーフ モードでスタックする場合があります。 詳細については、「[セーフ モードでスタックする]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)」を参照してください。
 
 ## <a name="monitoring"></a>監視
 
@@ -241,7 +249,7 @@ Azure portal に表示されるクラスターの状態は、自動スケーリ�
 | 更新中  | クラスターの自動スケーリング構成は更新されています。  |
 | HDInsight 構成  | クラスターのスケールアップまたはスケールダウン操作が進行中です。  |
 | 更新エラー  | 自動スケーリング構成の更新中に HDInsight で問題が発生しました。 お客様は、更新の再試行または自動スケーリングの無効化を選択できます。  |
-| Error  | クラスターには何らかの問題があり、使用できません。 このクラスターを削除し、新しいクラスターを作成してください。  |
+| Error  | クラスターに何らかの問題があり、使用できません。 このクラスターを削除し、新しいクラスターを作成してください。  |
 
 クラスターの現在のノード数を見るには、クラスターの **[概要]** ページの **[クラスター サイズ]** グラフに移動するか、または **[設定]** の **[クラスター サイズ]** をクリックします。
 
@@ -252,7 +260,6 @@ Azure portal に表示されるクラスターの状態は、自動スケーリ�
 **[監視]** で **[メトリック]** を選択します。 その後、 **[メトリック]** ドロップダウン ボックスから **[メトリックの追加]** と **[Number of Active Workers]\(アクティブなワーカーの数\)** をクリックします。 右上にあるボタンをクリックして、時間範囲を変更します。
 
 ![ワーカー ノードのスケジュールベースの自動スケーリング メトリックを有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
-
 
 ## <a name="next-steps"></a>次の手順
 

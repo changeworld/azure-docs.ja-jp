@@ -1,7 +1,7 @@
 ---
-title: プロジェクトを 3.0 API に移行する方法
+title: プロジェクトを 3.0 API に更新する方法
 titleSuffix: Azure Cognitive Services
-description: 以前のバージョンの API から 3.0 API に Custom Vision のプロジェクトを移行する方法について説明します。
+description: 以前のバージョンの API から 3.0 API に Custom Vision のプロジェクトを更新する方法について説明します。
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
-ms.openlocfilehash: 353fc0a2d8396def17b8e23d9a1c685c755349c5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c134f30b124113a23df0e73cd1bbc8209e335183
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560900"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647498"
 ---
-# <a name="migrate-to-the-30-api"></a>3\.0 API への移行
+# <a name="update-to-the-30-api"></a>3\.0 API に更新する
 
 Custom Vision の一般提供が開始され、API が更新されました。
 この更新には、いくつかの新機能と重要な変更が含まれています。
@@ -52,13 +52,6 @@ Custom Vision の一般提供が開始され、API が更新されました。
 > この情報を [Azure Portal](https://portal.azure.com) から取得するには、[Custom Vision Prediction] リソースに移動して、 **[プロパティ]** を選択します。
 
 イテレーションが発行されると、アプリでは、Prediction API 呼び出し内にその名前を指定することにより、イテレーションを使用して予測を行うことができます。 イテレーションを予測呼び出しで使用できないようにするには、 **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** API を使用します。
-
-## <a name="additional-export-options"></a>その他のエクスポート オプション
-
-3\.0 API では、その他のエクスポート ターゲットとして、ARM アーキテクチャと Vision AI Developer Kit の 2 つが公開されています。
-
-* ARM を使用するには、[コンパクト] ドメインを選択し、[DockerFile] を選択してから、エクスポート オプションとして [ARM] を選択する必要があります。
-* Vision AI Dev Kit の場合は、 __[General (Compact)]\(全般 (コンパクト)\)__ ドメインを使用してプロジェクトを作成し、ターゲット エクスポート プラットフォームの引数に VAIDK を指定する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2247b7678573594c4929bd33747fffb91203f457
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d071ff071c13637b15479d86a699d0b368119196
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561796"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742551"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる
 組織内のユーザーが Azure Active Directory (Azure AD) のリソースを管理するためのアクセス許可を必要としている場合は、ユーザーが実行するアクションに基づいて、Azure AD で適切なロールをユーザーに割り当てる必要があります。
@@ -33,15 +33,17 @@ Privileged Identity Management (PIM) を使用してロールを割り当てる�
 ### <a name="to-assign-a-role-to-a-user"></a>ユーザーにロールを割り当てるには
 1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ロールを割り当てるユーザーを検索して選択します。 たとえば、_Alain Charon_ にします。
+2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ロールを割り当てるユーザーを検索して選択します。 たとえば、_Alain Charon_ を選びます。
 
-3. **[Alain Charon - プロファイル]** ページで、 **[ディレクトリ ロール]** を選択します。
+      ![[すべてのユーザー] ページ - ユーザーの選択](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
+
+3. **[Alain Charon - プロファイル]** ページで、 **[Assigned roles]\(割り当てられているロール\)** を選択します。
 
     **[Alain Charon - ディレクトリ ロール]** ページが表示されます。
 
-4. **[ロールの追加]** を選択し、Alain に割り当てるロールを選択して (たとえば _[アプリケーション管理者]_ )、 **[選択]** を選択します。
+4. **[割り当ての追加]** を選択し、Alain に割り当てるロールを選択して (たとえば _[アプリケーション管理者]_ )、 **[選択]** を選択します。
 
-    ![選択されたロールが示されているディレクトリ ロール ページ](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+    ![[Assigned roles] (割り当てられているロール) ページ - 選択されたロールを表示中](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
     アプリケーション管理者ロールが Alain Charon に割り当てられて、 **[Alain Charon - ディレクトリ ロール]** ページに表示されます。
 
@@ -52,9 +54,9 @@ Privileged Identity Management (PIM) を使用してロールを割り当てる�
 
 1. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ロールの割り当てを削除するユーザーを検索して選択します。 たとえば、_Alain Charon_ を選びます。
 
-2. **[ディレクトリ ロール]** 、 **[アプリケーション管理者]** 、 **[ロールを削除します]** の順に選択します。
+2. **[Assigned roles]\(割り当てられているロール\)** を選択し、 **[アプリケーション管理者]** を選択して、 **[Remove assignment]\(割り当ての削除\)** を選択します。
 
-    ![選択されたロールと削除オプションが示されているディレクトリ ロール ページ](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+    ![選択されたロールと削除オプションが表示された [Assigned roles] (割り当てられているロール) ページ](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
     アプリケーション管理者ロールが Alain Charon から削除されて、 **[Alain Charon - ディレクトリ ロール]** ページに表示されなくなります。
 

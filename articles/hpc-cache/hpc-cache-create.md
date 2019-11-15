@@ -1,19 +1,19 @@
 ---
-title: Azure HPC キャッシュを作成する (プレビュー)
+title: Azure HPC キャッシュを作成する
 description: Azure HPC Cache インスタンスを作成する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7052b88a24ff5353656a71a7bfb044922ae1415c
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582704"
 ---
-# <a name="create-an-azure-hpc-cache-preview"></a>Azure HPC キャッシュを作成する (プレビュー)
+# <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
 Azure portal を使用してキャッシュを作成します。
 
@@ -23,7 +23,7 @@ Azure portal を使用してキャッシュを作成します。
 
 ![Azure portal のプロジェクト詳細ページのスクリーンショット](media/hpc-cache-create-basics.png)
 
-**[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。 [プレビュー アクセス](hpc-cache-prereqs.md#azure-subscription) リストにサブスクリプションが登録されていることを確認してください。
+**[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。 サブスクリプションが[アクセス](hpc-cache-prereqs.md#azure-subscription)一覧にあることを確認します。
 
 **[サービスの詳細]** で、キャッシュの名前と、これらのその他の属性を設定します。
 

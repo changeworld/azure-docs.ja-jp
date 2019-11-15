@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955868"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601375"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -26,7 +26,7 @@ ms.locfileid: "71955868"
 |   | Ultra Disk   | Premium SSD   | Standard SSD   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |ディスクの種類   |SSD   |SSD   |SSD   |HDD   |
-|シナリオ   |SAP HANA やトップ レベルのデータベース (たとえば SQL や Oracle) などの I/O 集約型のワークロードと、その他のトランザクションが多いワークロード。   |運用環境のワークロードやパフォーマンスに影響されやすいワークロード   |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト   |バックアップ、重要ではない、不定期に起こるアクセス   |
+|シナリオ   |[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md) やトップ レベルのデータベース (たとえば SQL や Oracle) などの I/O 集約型のワークロードと、その他のトランザクションが多いワークロード。   |運用環境のワークロードやパフォーマンスに影響されやすいワークロード   |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト   |バックアップ、重要ではない、不定期に起こるアクセス   |
 |最大ディスク サイズ   |65,536 ギビバイト (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
 |最大スループット   |2,000 MiB/秒    |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
 |最大 IOPS   |160,000    |20,000   |6,000   |2,000   |
@@ -62,13 +62,4 @@ Ultra Disk の主な機能は次のとおりです。
 
 ### <a name="ga-scope-and-limitations"></a>GA の範囲と制限事項
 
-現時点では、Ultra Disk には次のような追加の制限があります。
-
-- 米国東部 2、東南アジア、および北ヨーロッパでサポートされており、リージョンごとに 2 つの可用性ゾーンがあります。  
-- 可用性ゾーンでのみ使用できます (ゾーン外の可用性セットと単一の VM デプロイでは、Ultra ディスクを接続できません)
-- ES/DS v3 VM でのみサポートされています
-- データ ディスクとしてのみ使用可能であり、4k 物理セクター サイズのみをサポートしています  
-- 空のディスクとしてのみ作成できます  
-- ディスク スナップショット、VM イメージ、可用性セット、仮想マシン スケール セット、Azure Disk Encryption はサポートされていません。
-- Azure Backup または Azure Site Recovery との統合はまだサポートされていません。
-- GA VM での IOPS の現在の上限は 80,000 です。
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]

@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services のスケールアウト | Microsoft Docs
-description: Azure Analysis Services サーバーをスケールアウトによってレプリケートします
+description: Azure Analysis Services サーバーをスケールアウトによってレプリケートします。その後、クライアント クエリは、スケールアウト クエリ プール内の複数のクエリ レプリカに分散できます。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301174"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572635"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -138,7 +138,7 @@ PowerShell を使用する前に、[最新の Azure PowerShell モジュール�
 
 Power BI Desktop、Excel、カスタム アプリなどのエンドユーザー クライアントの接続については、 **[サーバー名]** を使用します。 
 
-SSMS、SSDT、および PowerShell、Azure 関数アプリ、AMO の接続文字列については、 **[管理サーバー名]** を使用します。 管理サーバー名は特殊な `:rw` (読み取り/書き込み) 修飾子を含みます。 すべての処理操作は (プライマリ) 管理サーバーで発生します。
+SSMS、Visual Studio、および PowerShell、Azure 関数アプリ、AMO の接続文字列については、 **[管理サーバー名]** を使用します。 管理サーバー名は特殊な `:rw` (読み取り/書き込み) 修飾子を含みます。 すべての処理操作は (プライマリ) 管理サーバーで発生します。
 
 ![サーバー名](media/analysis-services-scale-out/aas-scale-out-name.png)
 

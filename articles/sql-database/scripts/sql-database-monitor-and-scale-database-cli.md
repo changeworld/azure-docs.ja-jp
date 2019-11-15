@@ -1,5 +1,5 @@
 ---
-title: CLI サンプル - モニター - スケーリング - 単一 Azure SQL データベース | Microsoft Docs
+title: CLI の例 - 単一の Azure SQL データベースを監視してスケーリングする
 description: 単一 Azure SQL データベースを監視し、スケーリングするための Azure CLI サンプル スクリプト
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 9468f5d631dd713c9e131c63de824c5e552178e3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 96a27d5bfc76c78688d6b6b2a02c988dde764248
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569923"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691610"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>CLI を使用して単一の SQL データベースを監視し、スケーリングする
 

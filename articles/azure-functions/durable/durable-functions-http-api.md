@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: ad2b1b9236f88f99542f8705372af664cc299ee0
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033965"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614820"
 ---
 # <a name="http-api-reference"></a>HTTP API リファレンス
 
@@ -617,7 +617,7 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 一方向の操作メッセージを [Durable Entity](durable-functions-types-features-overview.md#entity-functions) に送信します。 エンティティが存在しない場合、自動的に作成されます。
 
 > [!NOTE]
-> Durable Entity は Durable Functions 2.0 以降で使用できます。
+> 持続エンティティは、Durable Functions 2.0 以降で使用できます。
 
 ### <a name="request"></a>Request
 

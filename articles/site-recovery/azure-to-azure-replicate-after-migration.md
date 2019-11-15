@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 081e1db4df0d77fa600e132a5585172d44f1196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814538"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663026"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
@@ -29,8 +29,8 @@ ms.locfileid: "70814538"
 
 各 Azure VM には、[Azure VM エージェント](../virtual-machines/extensions/agent-windows.md)がインストールされている必要があります。 Azure VM をレプリケートするため、Site Recovery によってエージェントに拡張機能がインストールされます。
 
-- マシンがバージョン 9.7.0.0 以降の Site Recovery モビリティ サービスを実行している場合、モビリティ サービスによって Azure VM エージェントが Windows VM に自動的にインストールされます。 以前のバージョンのモビリティ サービスでは、エージェントを自動的にインストールする必要があります。
-- Linux VM の場合は、Azure VM エージェントを手動でインストールする必要があります。Azure VM エージェントをインストールする必要があるのは、移行済みのマシンにインストールされているモビリティ サービスが v9.6 以前の場合のみです。
+- マシンがバージョン 9.7.0.0 以降の Site Recovery モビリティ サービスを実行している場合、モビリティ サービスによって Azure VM エージェントが Windows VM に自動的にインストールされます。 以前のバージョンのモビリティ サービスでは、エージェントを手動でインストールする必要があります。
+- Linux VM の場合は、Azure VM エージェントを手動でインストールする必要があります。 Azure VM エージェントをインストールする必要があるのは、移行済みのマシンにインストールされているモビリティ サービスが v9.6 以前の場合のみです。
 
 
 ### <a name="install-the-agent-on-windows-vms"></a>Windows VM にエージェントをインストールする

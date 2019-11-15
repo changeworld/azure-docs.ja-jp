@@ -4,16 +4,16 @@ description: この記事では、Azure Enterprise Agreement (EA) に関して A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: troubleshooting
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: a2214ef0dd3b7c4f706ebbb529b6c44e956f9242
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1b0be54eea063399cc9ed2c3005808d5189e2663
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900881"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888334"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング
 
@@ -62,6 +62,8 @@ Azure EA Portal にサインインしようとしたときにエラー メッセ
 - InPrivate または Incognito のブラウザー セッションを使用してサインインします。これにより、以前のセッションまたは既存セッションの Cookie やキャッシュされた情報は保持されません。 ブラウザーのキャッシュを消去し、InPrivate または Incognito ウィンドウを使用して https://ea.azure.com を開きます。
 - Microsoft アカウントの使用時に "_無効なユーザー_" エラーが発生する場合、複数の Microsoft アカウントを持っていることが原因である可能性があります。 サインインに使用しているアドレスが、プライマリ電子メール アドレスではありません。
 また、"_無効なユーザー_" エラーが発生する場合、ユーザーを登録に追加したときに、間違ったアカウントの種類を使用したことが原因である可能性があります。 たとえば、Microsoft アカウントの代わりに職場または学校アカウントを使用した場合です。 この場合、別の EA 管理者に適切なアカウントを追加してもらうか、[サポート](https://support.microsoft.com/supportforbusiness/productselection?sapId=cf791efa-485b-95a3-6fad-3daf9cd4027c)に連絡する必要があります。
+  - プライマリ エイリアスを確認する必要がある場合は、[https://account.live.com](https://account.live.com) にアクセスしてください。 次に、 **[ユーザーの情報]** をクリックし、 **[Manage how to sign in to Microsoft] (Microsoft にサインインする方法の管理)** をクリックします。 画面の指示に従って連絡用メール アドレスを確認し、機密情報にアクセスするためのコードを取得します。 セキュリティ コードを入力します。 2 要素認証を設定しない場合は、 **[後で設定する]** を選択します。
+  - **[Microsoft にサインインする方法の管理]** ページが表示され、ご自分のアカウント エイリアスを確認できます。 プライマリ エイリアスが、Azure EA Portal へのサインインに使用しているエイリアスであることを確認します。 そうでない場合は、これをプライマリ エイリアスにすることができます。 また、代わりに Azure EA Portal のプライマリ エイリアスを使用することもできます。
 
 ## <a name="no-activation-email-received"></a>アクティブ化メールが届かない
 
@@ -69,9 +71,98 @@ Azure EA Portal からのアクティブ化メールは、 *waep@microsoft.com* 
 
 EA 管理者として設定されていることがわかっている場合は、Azure EA Portal にサインインするためにアクティブ化メールが届くまで待つ必要はありません。 代わりに、電子メールアドレス (職場、学校、または Microsoft アカウント) とパスワードを使用して、 https://ea.azure.com にアクセスしてサインインできます。
 
-プライマリ エイリアスを確認する必要がある場合は、[https://account.live.com](https://account.live.com) にアクセスしてください。 次に、 **[ユーザーの情報]** をクリックし、 **[Microsoft にサインインする方法の管理]** をクリックします。 画面の指示に従って連絡用メール アドレスを確認し、機密情報にアクセスするためのコードを取得します。 セキュリティ コードを入力します。 2 要素認証を設定しない場合は、 **[後で設定する]** を選択します。
+## <a name="azure-ea-activation-faq"></a>Azure EA のアクティブ化に関する FAQ
 
-**[Microsoft にサインインする方法の管理]** ページが表示されます。ここには、所有するアカウント エイリアスが表示されます。 プライマリ エイリアスが、Azure EA Portal へのサインインに使用しているエイリアスであることを確認します。 そうでない場合は、こちらをプライマリ エイリアスにすることができます。 また、代わりに Azure EA Portal のプライマリ エイリアスを使用することもできます。
+記事のこのセクションでは、Azure EA のアクティブ化に関する一般的な問題の解決策について説明します。
+
+### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>登録に新しい EA 管理者を追加したい
+
+既存のエンタープライズ管理者は、新しいエンタープライズ管理者を追加できます。 ご自分が EA 管理者である場合は、EA Portal にサインインし、 **[管理]** をクリックし、右上隅にある **[+ 管理者の追加]** をクリックして、新しい EA 管理者を追加してください。 ユーザーを追加できるように、ユーザーのメール アドレスと推奨されるサインイン方法 (職場または学校の認証や Microsoft Live ID など) を確認してください。
+
+ご自分が EA 管理者でない場合は、社内の EA 管理者に連絡して、自分を登録に追加するように依頼してください。 登録に追加された後、アクティブ化メールを受け取ります。
+
+ただし、EA 管理者の支援を受けることができない場合は、次の情報を提供すれば、自分を追加してもらうことができます。
+- 登録番号。
+- 追加するメール アドレスと認証の種類 (職場、学校、MS)。
+- EA 管理者からのメールによる承認。
+
+必要な情報をすべて指定したら、[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) で要求を送信してください。
+
+### <a name="i-would-like-to-update-the-first-ea-admin-on-the-enrollment"></a>登録の最初の EA 管理者を更新したい
+
+ボリューム ライセンス サービス センターで最初の EA 管理者を更新するには、ポータルで通知連絡先とオンライン管理者を更新します。 EA Portal が更新されるまでに約 24 時間かかります。 更新された後、新しい EA 管理者はアクティブ化メールを受け取ります。
+
+VLSC ポータルにアクセスできない場合、または最初の EA 管理者が登録を管理できなくなり、EA Portal にアクセスできない場合は、[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) で要求を送信して更新を要求し、次の情報を提供してください。
+- 加入契約番号
+- 追加するメール アドレスと認証の種類 (職場、学校、MS)
+- 最初の EA 管理者を変更する理由
+- 最初の EA 管理者からのメールによる承認
+
+### <a name="my-current-ea-admin-is-no-longer-with-the-company"></a>現在の EA 管理者が退職した
+
+EA 登録には複数の EA 管理者を含めることができます。別の EA 管理者に連絡して、新しい EA 管理者、アカウント所有者、部門管理者を追加してもらうことができます。 ただし、社内の EA 管理者が誰かわからない場合や、連絡可能な他の EA 管理者が登録に含まれていない場合は、次の情報を用意してお問い合わせください。
+- 加入契約番号
+- 追加するメール アドレスと認証の種類 (職場、学校、MS)
+- 退職した現在の EA 管理者に関する情報
+
+他の EA 管理者が登録に含まれている場合は、その EA 管理者に連絡して、登録の管理上の変更に対する承認を求めるので注意してください。
+
+### <a name="my-enrollment-is-showing-in-pending-status-how-do-i-activate-my-enrollment"></a>登録が保留中の状態で表示されます。 登録をアクティブ化するにはどうすればよいですか?
+
+最初の EA 管理者が登録にまだログオンしていない場合、登録は保留中の状態になります。 ご自分が EA 管理者である場合は、Azure EA Portal にサインインしてください。 すべての登録番号を含むランディング ページには、保留中の登録が表示されない場合があります。 EA Portal の右上隅にある [アクティブ] ボックスをオフにしてください。このアクションにより、保留中の登録が表示されます。 登録をクリックして情報にアクセスしてください。登録の [管理] ページに移動すると、状態が [保留中] から [アクティブ] に更新されます。
+
+### <a name="why-is-my-account-stuck-in-pending-status"></a>アカウントが保留中のままになっているのはなぜですか?
+
+登録に初めて追加された新しいアカウント所有者 (AO) は、常に "保留中" の状態で表示されます。 アクティブ化のウェルカム メールを受け取った AO は、サインインして自分のアカウントをアクティブ化できます。 サインインすることで、アカウントの状態が "保留中" から "アクティブ" に更新されます。
+
+### <a name="i-received-an-error-when-signing-in-to-azure-ea-portal"></a>Azure EA Portal へのサインイン時にエラーが発生した
+
+サインイン時に Azure EA Portal にエラー メッセージが表示される理由はいくつかあります。次のトラブルシューティングのステップに従ってください。
+
+ 1. [https://ea.azure.com](https://ea.azure.com) で正しい EA Portal URL を使用していることを確認してください。
+ 1. Azure EA Portal へのアクセス権が職場または学校アカウントあるいは Microsoft Live ID として追加されているかどうかを確認します。 職場のアカウントを使用する場合は、職場のメール アドレスとパスワードを入力してください。 Microsoft Live ID を使用する場合は、Microsoft Live ID のメール アドレスとパスワードを入力してください。 Microsoft Live ID のパスワードを忘れた場合は、[https://account.live.com/password/reset](https://account.live.com/password/reset) でパスワードをリセットしてください。
+ 1. プライベート ブラウザーを使用してサインインすることをお勧めします。これにより、以前のセッションや既存のセッションの Cookie やキャッシュが保持されなくなります。 キャッシュをクリアし、プライベート ブラウズ モードまたは Incognito ウィンドウを使用して [https://ea.azure.com](https://ea.azure.com) を開きます。
+ 1. Microsoft アカウントの使用時に無効なユーザー エラーが発生する場合は、複数の Microsoft アカウントがあり、サインインしようとしているアカウントがプライマリ エイリアスではないことが原因である可能性があります。 プライマリ エイリアスを確認するには、account.live.com にアクセスします。
+    - [Your Info] (あなたの情報) > [Manage your sign-in email or phone number] (サインイン用のメール アドレスまたは電話番号を管理) に移動します。
+    - 画面の指示に従って連絡用メール アドレスを確認し、機密情報にアクセスするためのコードを取得します。
+    - セキュリティ コードを入力します。
+    - 2 段階認証を後で設定する場合は、[後で設定する] を選択します。
+    - [アカウント エイリアスの管理] ページに移動し、設定されているアカウント エイリアスが表示されます。 プライマリ エイリアスが Azure EA Portal へのログインに使用しているエイリアスであることを再確認します。 そうでない場合は、使用中のエイリアスをプライマリ エイリアスにするか、EA Portal のプライマリ エイリアスを代わりに使用できます。
+
+上記のトラブルシューティングのステップで問題が解決しない場合は、次のような情報を用意して [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) でリクエストを送信してください。
+- 使用しているブラウザーとバージョン。
+- エラー メッセージのスクリーンショット。
+- エラーを表示しているページの URL。  
+- エラーが発生した日付、時刻、タイム ゾーン。
+- さらに、ログ ファイルを取得しておくと役に立ちます。 以下の情報を使用してネットワーク トレースをキャプチャするステップは次のとおりです。
+  1. Internet Explorer を起動します。
+  1. F12 キーを押します。IE の下部にボックスが開きます。
+  1. **[ネットワーク]** タブを選択します。
+  1. **[キャプチャの開始]** をクリックします。
+  1. エラーの原因となっているアクションを実行します。
+  1. エラーが表示されたら、 **[キャプチャの停止]** をクリックします。
+  1. ファイルを保存し、その情報をサポート リクエストに含めます。
+  1. サポート リクエストには、必ず登録番号とメール アドレスを含めるようにしてください。
+
+### <a name="what-is-the-difference-between-a-workschool-account-and-microsoft-account"></a>職場または学校アカウントと Microsoft アカウントの違いは何ですか?
+
+**Microsoft アカウント:** [https://signup.live.com](https://signup.live.com) の Live ID に関連付けられているアカウント。
+
+**職場または学校アカウント:** クラウドへのフェデレーションを使用して Active Directory を設定しており、1 つのテナントにすべてのアカウントが存在する会社のみが使用できます。 社内の Active Directory がクラウドにフェデレーションされている場合は、職場または学校の認証の種類を使用してユーザーを追加できます。
+
+  2016 年 9 月以降、職場または学校のメール アドレスは Microsoft アカウントとして登録できなくなりました。 詳細については、以下の資料を参照してください。[https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/)
+
+  組織がクラウドにフェデレーションされていない場合は、職場または学校のメール アドレスを使用できません。 代わりに、新しいメール アドレスを登録または作成し、それを Microsoft アカウントとして登録してください。
+
+### <a name="i-forgot-my-password-to-azure-ea-portal"></a>Azure EA Portal にアクセスするためのパスワードを忘れた
+
+Microsoft Live ID のパスワードを忘れた場合は、[https://account.live.com/password/reset](https://account.live.com/password/reset) でパスワードをリセットしてください。
+
+職場のパスワードを忘れた場合は、社内の IT 管理者にお問い合わせください。
+
+### <a name="i-have-a-valid-work-or-school-account-but-i-cant-add-it-to-the-ea-portal"></a>有効な職場または学校アカウントを持っているが、EA Portal に追加できない
+
+別のテナントに職場または学校アカウントがある場合は、登録の詳細ページで承認レベルを "テナント間の職場または学校アカウント" に変更すると、そのアカウントを追加できるようになります。
 
 ## <a name="next-steps"></a>次の手順
 

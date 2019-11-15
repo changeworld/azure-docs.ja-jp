@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure SQL データ ウェアハウスの作成とクエリ - Azure portal | Microsoft Docs
+title: クイック スタート:データ ウェアハウスの作成および照会 - Azure portal
 description: Azure Portal で Azure SQL Data Warehouse を使用してデータ ウェアハウスを作成し、クエリを実行します。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: sqlfreshmay19
-ms.openlocfilehash: 83475af3cfdd83e718243d80b84599d53716a5d5
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 46b413d3fb2a27e724bcb2faa3306416e7f5abc7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375836"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824845"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure SQL Data Warehouse を作成し、クエリを実行する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
 
-Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソース](memory-and-concurrency-limits.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-logical-servers.md)内に作成されます。 
+Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソース](memory-concurrency-limits.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-logical-servers.md)内に作成されます。 
 
 以下の手順で AdventureWorksDW サンプル データを含む SQL Data Warehouse を作成します。 
 
@@ -53,7 +53,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
     | :------ | :-------------- | :---------- |
     | **データベース名** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 データ ウェアハウスはデータベースの一種です。|
     | **サブスクリプション** | 該当するサブスクリプション | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-    | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+    | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 |
     | **ソースの選択** | サンプル | サンプル データベースの読み込みを指定します。 データ ウェアハウスはデータベースの一種です。 |
     | **[サンプルの選択]** | AdventureWorksDW | AdventureWorksDW サンプル データベースの読み込みを指定します。 |
     ||||
@@ -64,7 +64,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
     | Setting | 推奨値 | 説明 |
     | :------ | :-------------- | :---------- |
-    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
     | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |

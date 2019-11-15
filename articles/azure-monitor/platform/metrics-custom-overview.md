@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: d52cb4d7b8e29838338baddd45a175661801b19b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844665"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669164"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
 
@@ -58,7 +58,7 @@ Azure Monitor にカスタム メトリックを送信するには、メトリ�
 Azure Monitor に送信されるデータ ポイントには、それぞれタイムスタンプが記録されている必要があります。 このタイムスタンプはメトリック値が測定または収集された日時を表します。 Azure Monitor は、現在から 20 分前までの、および現在から 5 分後までのタイムスタンプが付いたメトリック データを受け付けます。 タイムスタンプは、ISO 8601 形式である必要があります。
 
 ### <a name="namespace"></a>名前空間
-名前空間は類似のメトリックを分類またはグループ化する方法です。 名前空間を使用すると、収集する情報またはパフォーマンス指標に基づいてメトリックのグループを分離できます。 たとえば、**ContosoMemoryMetrics** という名前空間では、アプリをプロファイリングするメモリ使用量メトリックを追跡し、 **ContosoAppTransaction** という別の名前空間では、アプリケーション内のユーザー トランザクションに関するすべてのメトリックを追跡するといったことが可能です。
+名前空間は類似のメトリックを分類またはグループ化する方法です。 名前空間を使用すると、収集する情報またはパフォーマンス指標に基づいてメトリックのグループを分離できます。 たとえば、**contosomemorymetrics** という名前空間では、アプリをプロファイリングするメモリ使用量メトリックを追跡し、 **contosoapptransaction** という別の名前空間では、アプリケーション内のユーザー トランザクションに関するすべてのメトリックを追跡するといったことが可能です。
 
 ### <a name="name"></a>名前
 **Name** は、報告されるメトリックの名前です。 通常は、測定内容を識別するのに十分なほど説明的な名前です。 たとえば、特定の VM で使用されるメモリのバイト数を測定するメトリックの場合は、 **Memory Bytes In Use** などのようなメトリック名になります。

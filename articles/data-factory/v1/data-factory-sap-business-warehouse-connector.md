@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した SAP Business Warehouse からのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して SAP Business Warehouse からデータを移動する
 description: Azure Data Factory を使用して SAP Business Warehouse データベースからデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c928ad1fc9a8d6206c1b7e47591b17b6ae05ee4b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 47bc2db8730ebdedd180646d2fb86b642bbc631d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839885"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666032"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]

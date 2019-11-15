@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う - Azure
+title: Windows Virtual Desktop 上の Windows 7 仮想マシン - Azure
 description: Windows Virtual Desktop 環境で Windows 7 仮想マシン (VM) の問題を解決する方法。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ee641a694371ffd3fbc691a05edac707e37e959d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374261"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607340"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う
 

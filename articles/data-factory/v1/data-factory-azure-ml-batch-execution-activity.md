@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使って予測データ パイプラインを作成する | Microsoft Docs
+title: Azure Data Factory を使って予測データ パイプラインを作成する
 description: Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: e7c48c1d91ae08be29531f4a99ea75ab7a928f34
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140480"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683138"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 

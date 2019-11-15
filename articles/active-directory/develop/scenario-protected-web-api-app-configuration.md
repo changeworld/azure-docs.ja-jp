@@ -1,5 +1,6 @@
 ---
-title: 保護された Web API - アプリ コードの構成 | Azure
+title: 保護された Web API - アプリ コードの構成
+titleSuffix: Microsoft identity platform
 description: 保護された Web API をビルドして、アプリケーションのコードを構成する方法について学習します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8cc02831fa00a3974da1b74b07daf581f50dd22
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562317"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569627"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API:コード構成
 
@@ -123,9 +124,11 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
     // Instead of using the default validation (validating against a single tenant,
     // as we do in line-of-business apps),
     // we inject our own multitenant validation logic (which even accepts both v1 and v2 tokens).
-    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.ValidateAadIssuer;
+    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.GetIssuerValidator(options.Authority).Validate;;
 });
 ```
+
+このコード スニペットは、[Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63) にある ASP.NET Core Web API の増分チュートリアルから引用されています。 `AddProtectedWebApi` メソッドは、さらに多くのことを行い、Startup.cs から呼び出されます
 
 ## <a name="token-validation"></a>トークンの検証
 

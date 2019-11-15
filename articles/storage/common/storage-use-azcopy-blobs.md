@@ -4,16 +4,16 @@ description: この記事には、コンテナーの作成、ファイルのコ�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f1b18601629db12d4f9e75f180488e91b6a6857a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 78e3f1d4f457e041d386ac7754d089b8b3635b08
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274860"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686642"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
@@ -32,6 +32,9 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
+> [!TIP]
+> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
+
 [azcopy make](storage-ref-azcopy-make.md) コマンドを使用し、コンテナーを作成できます。 このセクションの例では、`mycontainer` という名前のコンテナーが作成されます。
 
 |    |     |
@@ -44,7 +47,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 ## <a name="upload-files"></a>ファイルをアップロードする
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用して、ローカル コンピューターからファイルやディレクトリをアップロードすることができます。
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用して、ローカル コンピューターからファイルやディレクトリをアップロードできます。
 
 このセクションには、次の例が含まれています。
 
@@ -54,10 +57,10 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > * ディレクトリの内容をアップロードする 
 > * 特定のファイルをアップロードする
 
-> [!NOTE]
-> AzCopy では、ファイルの md5 ハッシュ コードが自動的に計算されたり、保存されたりすることはありません。 AzCopy にそれを行わせる場合、各コピー コマンドの先頭に `--put-md5` フラグを追加します。 そうすることで、BLOB がダウンロードされたとき、AzCopy では、ダウンロードするデータの MD5 ハッシュが計算され、BLOB の `Content-md5` プロパティに格納されている MD5 ハッシュが計算されたハッシュに一致するかどうかが検証されます。
-
 詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
+
+> [!TIP]
+> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ### <a name="upload-a-file"></a>ファイルをアップロードする
 
@@ -110,7 +113,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 #### <a name="specify-multiple-complete-file-names"></a>複数の完全なファイル名を指定する
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-path` オプションと共に使用します。 個々のファイル名を区切るには、セミコロン (`;`) を使用します。
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-path` オプションと共に使用します。 セミコロン (`;`) を使用して、個々のファイル名を区切ります。
 
 |    |     |
 |--------|-----------|
@@ -120,8 +123,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 この例では、AzCopy によって `C:\myDirectory\photos` ディレクトリと `C:\myDirectory\documents\myFile.txt` ファイルが転送されます。 `C:\myDirectory\photos` ディレクトリ内のすべてのファイルを転送するには、`--recursive` オプションを含める必要があります。
 
-`--exclude-path` オプションを使用してファイルを除外することもできます。 詳細については、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
-
+`--exclude-path` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
 #### <a name="use-wildcard-characters"></a>ワイルドカード文字を使用する
 
@@ -133,9 +135,9 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 | **例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 | **例** (階層型名前空間) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-`--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
+`--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
-`--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキス トファイルを取得します。
+`--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
 
 ## <a name="download-files"></a>ファイルをダウンロードする
 
@@ -153,6 +155,9 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > BLOB の `Content-md5` プロパティ値にハッシュが含まれる場合、AzCopy では、ダウンロードするデータの MD5 ハッシュが計算され、BLOB の `Content-md5` プロパティに格納されている MD5 ハッシュが計算されたハッシュに一致するかどうかが検証されます。 これらの値が一致しない場合、`--check-md5=NoCheck` または `--check-md5=LogOnly` をコピー コマンドに追加してこの動作をオーバーライドしない限り、ダウンロードは失敗します。
 
 詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
+
+> [!TIP]
+> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ### <a name="download-a-file"></a>ファイルをダウンロードする
 
@@ -193,7 +198,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 #### <a name="specify-multiple-complete-file-names"></a>複数の完全なファイル名を指定する
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-path` オプションと共に使用します。 個々のファイル名を区切るには、セミコロン (`;`) を使用します。
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-path` オプションと共に使用します。 セミコロン (`;`) を使用して、個々のファイル名を区切ります。
 
 |    |     |
 |--------|-----------|
@@ -203,7 +208,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 この例では、AzCopy によって `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` ディレクトリと `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` ファイルが転送されます。 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` ディレクトリ内のすべてのファイルを転送するには、`--recursive` オプションを含める必要があります。
 
-`--exclude-path` オプションを使用してファイルを除外することもできます。 詳細については、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
+`--exclude-path` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
 #### <a name="use-wildcard-characters"></a>ワイルドカード文字を使用する
 
@@ -215,7 +220,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 | **例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **例** (階層型名前空間) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-`--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
+`--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキス トファイルを取得します。
 
@@ -241,6 +246,9 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 > * すべてのコンテナー、ディレクトリ、ファイルを別のストレージ アカウントにコピーする
 
 詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
+
+> [!TIP]
+> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>別のストレージ アカウントに BLOB をコピーする
 
@@ -272,7 +280,7 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 
 ## <a name="synchronize-files"></a>ファイルを同期する
 
-ローカル ファイル システムのコンテンツを BLOB コンテナーに同期できます。 同期は一方向です。 言い換えると、2 つのエンドポイントのいずれかを同期元として、いずれかを同期先として選択します。 同期にもサーバー間 API が使用されます。
+ローカル ファイル システムのコンテンツを BLOB コンテナーに同期できます。 また、コンテナーと仮想ディレクトリを相互に同期することもできます。 同期は一方向です。 言い換えると、2 つのエンドポイントのいずれかを同期元として、いずれかを同期先として選択します。 同期にもサーバー間 API が使用されます。
 
 > [!NOTE]
 > 現在のところ、このシナリオは、階層型名前空間のないアカウントでのみサポートされています。 現行版の AzCopy では、他のコピー元とコピー先の間では同期されません (例:ファイル ストレージまたはアマゾン ウェブ サービス (AWS) S3 バケット)。
@@ -285,6 +293,9 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 > 誤削除を防ぐために、`--delete-destination=prompt|true` フラグを使用する前に[論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)機能を有効にしてください。
 
 詳細なリファレンス ドキュメントについては、「[azcopy sync](storage-ref-azcopy-sync.md)」を参照してください。
+
+> [!TIP]
+> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>ローカル ファイル システムへの変更を使用してコンテナーを更新する
 
@@ -304,6 +315,24 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 | **構文** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
 | **例** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
 |
+
+### <a name="update-a-container-with-changes-in-another-container"></a>別のコンテナーへの変更を使用してコンテナーを更新する
+
+このコマンドに表示される最初のコンテナーがソースです。 2 つ目が宛先です。
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>別のファイル共有内のディレクトリへの変更を使用してディレクトリを更新する
+
+このコマンドに表示される最初のディレクトリがソースです。 2 つ目が宛先です。
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
+| **例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>次の手順
 

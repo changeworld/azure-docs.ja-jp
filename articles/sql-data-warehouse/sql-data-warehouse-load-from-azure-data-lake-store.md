@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Data Lake Storage から Azure SQL Data Warehouse に読み込む | Microsoft Docs'
+title: 'チュートリアル: Azure Data Lake Storage からデータを読み込む'
 description: PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込みます。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3db355cf5782620bda3a9e04afbee073c8929856
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935111"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685695"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage から Azure SQL Data Warehouse へのデータの読み込み
 PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込みます。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、最高のパフォーマンスを得るには、SQL Data Warehouse にデータをインポートすることをお勧めします。

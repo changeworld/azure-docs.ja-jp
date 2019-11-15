@@ -1,20 +1,20 @@
 ---
-title: Azure Storage v10 SDK for JavaScript を使用して BLOB のアップロード、ダウンロード、一覧表示、削除を行う
-description: Azure Storage を使用して Node.js で BLOB とコンテナーを作成、アップロード、削除します
+title: クイック スタート:JavaScript 用 Azure Blob Storage クライアント ライブラリ v10
+description: JavaScript 用 Azure Storage クライアント ライブラリ v10 を使用して Node.js で BLOB とコンテナーを作成、アップロード、削除します
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: b909da5da0d7352d4086222fe0411ac37668bd92
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240438"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825318"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>クイック スタート:Azure Storage v10 SDK for JavaScript を使用して BLOB のアップロード、ダウンロード、一覧表示、削除を行う
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>クイック スタート:JavaScript 用 Azure Blob Storage クライアント ライブラリ v10
 
 このクイック スタートでは、Node.js で [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js) を使用して BLOB のアップロード、ダウンロード、一覧表示、削除およびコンテナーの管理を行う方法を学習します。
 

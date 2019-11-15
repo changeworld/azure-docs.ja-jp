@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: overview
-ms.date: 08/31/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 62ca71e1b42e000f7528a2963793f9bf40663bf3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312145"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818517"
 ---
-# <a name="entity-functions-preview"></a>エンティティ関数 (プレビュー)
+# <a name="entity-functions"></a>エンティティ関数
 
 エンティティ関数では、"*持続エンティティ*" と呼ばれる小さい状態の読み取りと更新のための操作が定義されています。 オーケストレーター関数と同様、エンティティ関数は特殊なトリガー型である "*エンティティ トリガー*" を含む関数です。 オーケストレーター関数とは異なり、エンティティ関数では、制御フローを介して状態を暗黙的に表すのではなく、エンティティの状態を明示的に管理します。
 エンティティは、それぞれが適度なサイズの状態を備えた多数のエンティティ全体に作業を分散することにより、アプリケーションをスケールアウトする手段を提供します。
 
 > [!NOTE]
-> エンティティ関数と関連する機能は Durable Functions 2.0 以降でのみ使用できます。 エンティティ関数は現在、パブリック プレビューの段階にあります。
+> エンティティ関数と関連する機能は Durable Functions 2.0 以降でのみ使用できます。
 
 ## <a name="general-concepts"></a>一般的な概念
 
@@ -58,7 +58,7 @@ ms.locfileid: "72312145"
 
 **クラスベースの構文**: エンティティおよび操作はクラスおよびメソッドによって表されます。 この構文では、より読みやすいコードが生成され、タイプ セーフな方法で操作を呼び出すことができます。 クラスベースの構文は、関数ベースの構文の上にあるシン レイヤーにすぎないため、同じアプリケーションで両方のバリアントを同じ意味で使用できます。
 
-### <a name="example-function-based-syntax"></a>例:関数ベースの構文
+### <a name="example-function-based-syntax---c"></a>例:関数ベースの構文 - C#
 
 次のコードは、持続的関数として実装されているシンプルな *Counter* エンティティの例です。 この関数では 3 つの操作 `add`、`reset`、`get` が定義されていて、いずれも整数の状態に対して動作します。
 
@@ -75,7 +75,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
             ctx.SetState(0);
             break;
         case "get":
-            ctx.Return(ctx.GetState<int>()));
+            ctx.Return(ctx.GetState<int>());
             break;
     }
 }
@@ -83,7 +83,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 関数ベースの構文と使用方法の詳細については、「[関数ベースの構文](durable-functions-dotnet-entities.md#function-based-syntax)」を参照してください。
 
-### <a name="example-class-based-syntax"></a>例:クラスベースの構文
+### <a name="example-class-based-syntax---c"></a>例:クラス ベースの構文 - C#
 
 次の例は、クラスとメソッドを使用した `Counter` エンティティの同等の実装です。
 
@@ -109,6 +109,45 @@ public class Counter
 このエンティティの状態は `Counter` 型のオブジェクトになっています。これには、カウンターの現在の値を格納するフィールドが含まれます。 このオブジェクトは、ストレージに保持するために、[Json.NET](https://www.newtonsoft.com/json) ライブラリによってシリアル化および逆シリアル化されます。 
 
 クラスベースの構文とその使用方法の詳細については、「[エンティティ クラスの定義](durable-functions-dotnet-entities.md#defining-entity-classes)」を参照してください。
+
+### <a name="example-javascript-entity"></a>例:JavaScript のエンティティ
+
+`durable-functions` npm パッケージのバージョン **1.3.0** 以降では、JavaScript で持続エンティティが利用できます。 以下のコードは、JavaScript で記述されている持続的関数として実装された *Counter* エンティティです。
+
+**function.json**
+```json
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+**index.js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
 
 ## <a name="accessing-entities"></a>エンティティへのアクセス
 
@@ -145,6 +184,16 @@ public static Task Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
 "*シグナル通知*" とは、エンティティの API 呼び出しが一方向で非同期であることを意味します。 "*クライアント関数*" は、エンティティが操作をいつ処理したかを認識できません。 また、クライアント関数は、結果の値または例外を確認することはできません。 
 
 ### <a name="example-client-reads-an-entity-state"></a>例: クライアントがエンティティの状態を読み取る
@@ -163,6 +212,16 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    return context.df.readEntityState(entityId);
+};
+```
+
 エンティティ状態のクエリは永続性追跡ストアに送信され、エンティティの最後に "*保存された*" 状態が返されます。 この状態は、常に "コミット済み" 状態です。つまり、操作の実行中に想定される一時的な中間状態ではありません。 ただし、この状態は、エンティティのメモリ内の状態より古い可能性があります。 次のセクションで説明するように、エンティティのメモリ内の状態を読み取ることができるのはオーケストレーションだけです。
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>例: オーケストレーションがエンティティにシグナル通知を出し、エンティティを呼び出す
@@ -176,7 +235,7 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-   // Two-way call to the entity which returns a value - awaits the response
+    // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
@@ -184,6 +243,21 @@ public static async Task Run(
         context.SignalEntity(entityId, "Add", 1);
     }
 }
+```
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const entityId = new df.EntityId("Counter", "myCounter");
+
+    // Two-way call to the entity which returns a value - awaits the response
+    currentValue = yield context.df.callEntity(entityId, "get");
+    if (currentValue < 10) {
+        // One-way signal to the entity which updates the value - does not await a response
+        yield context.df.signalEntity(entityId, "add", 1);
+    }
+});
 ```
 
 エンティティを呼び出して応答 (戻り値または例外) を取得できるのは、オーケストレーションだけです。 [クライアント バインド](durable-functions-bindings.md#entity-client)を使用するクライアント関数は、エンティティに対する "*シグナル通知*" だけが可能です。
@@ -198,82 +272,33 @@ public static async Task Run(
 
 ```csharp
    case "add":
+        var currentValue = ctx.GetState<int>();
         var amount = ctx.GetInput<int>();
         if (currentValue < 100 && currentValue + amount >= 100)
         {
             ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-        currentValue += amount;
+
+        ctx.SetState(currentValue + amount);
         break;
 ```
 
-次のスニペットでは、挿入されたサービスをエンティティ クラスに組み込む方法を示します。
-
-```csharp
-public class HttpEntity
-{
-    private readonly HttpClient client;
-
-    public HttpEntity(IHttpClientFactory factory)
-    {
-        this.client = factory.CreateClient();
-    }
-
-    public async Task<int> GetAsync(string url)
-    {
-        using (var response = await this.client.GetAsync(url))
-        {
-            return (int)response.StatusCode;
+```javascript
+    case "add":
+        const amount = context.df.getInput();
+        if (currentValue < 100 && currentValue + amount >= 100) {
+            const entityId = new df.EntityId("MonitorEntity", "");
+            context.df.signalEntity(entityId, "milestone-reached", context.df.instanceId);
         }
-    }
-
-    // The function entry point must be declared static
-    [FunctionName(nameof(HttpEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<HttpEntity>();
-}
+        context.df.setState(currentValue + amount);
+        break;
 ```
-
-> [!NOTE]
-> 通常の .NET Azure Functions でコンストラクターの挿入を使用する場合とは異なり、クラスベースのエンティティに対する関数のエントリ ポイント メソッドは、`static` と宣言する "*必要があります*"。 非静的な関数エントリ ポイントを宣言すると、通常の Azure Functions オブジェクト初期化子と永続エンティティ オブジェクト初期化子との間で競合が発生する可能性があります。
-
-### <a name="bindings-in-entity-classes-net"></a>エンティティ クラスでのバインド (.NET)
-
-通常の関数とは異なり、エンティティ クラスのメソッドでは、入力と出力のバインドに直接アクセスできません。 代わりに、エントリ ポイント関数の宣言でバインド データをキャプチャした後、`DispatchAsync<T>` メソッドに渡す必要があります。 `DispatchAsync<T>`に渡されたオブジェクトは、エンティティ クラスのコンストラクターに引数として自動的に渡されます。
-
-次の例では、[BLOB 入力バインド](../functions-bindings-storage-blob.md#input)からの `CloudBlobContainer` 参照をクラス ベースのエンティティで使用できるようにする方法を示します。
-
-```csharp
-public class BlobBackedEntity
-{
-    private readonly CloudBlobContainer container;
-
-    public BlobBackedEntity(CloudBlobContainer container)
-    {
-        this.container = container;
-    }
-
-    // ... entity methods can use this.container in their implementations ...
-    
-    [FunctionName(nameof(BlobBackedEntity))]
-    public static Task Run(
-        [EntityTrigger] IDurableEntityContext context,
-        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
-    {
-        // passing the binding object as a parameter makes it available to the
-        // entity class constructor
-        return context.DispatchAsync<BlobBackedEntity>(container);
-    }
-}
-```
-
-Azure Functions でのバインドについて詳しくは、[Azure Functions のトリガーとバインド](../functions-triggers-bindings.md)に関するドキュメントをご覧ください。
 
 ## <a name="entity-coordination"></a>エンティティの調整
 
 複数のエンティティ間で操作を調整することが必要になる場合があります。 たとえば、銀行のアプリケーションでは、個々の銀行口座を表すエンティティがある場合があります。 口座間で送金を行う場合は、"_送金元_" 口座に十分な資金があること、および "_送金元_" 口座と "_送金先_" 口座の両方に対する更新がトランザクション的に一貫した方法で実行されされることを確保する必要があります。
 
-### <a name="example-transfer-funds"></a>例:送金する
+### <a name="example-transfer-funds-c"></a>例:送金 (C#)
 
 次のコード例では、オーケストレーター関数を使用して、2 つの "_口座_" エンティティ間で送金を行います。 エンティティの更新を調整するには、`LockAsync` メソッドを使用して、オーケストレーション内に "_クリティカル セクション_" を作成する必要があります。
 
@@ -322,7 +347,7 @@ public static async Task<bool> TransferFundsAsync(
 
 .NET の `LockAsync` では、破棄されるとクリティカル セクションが終了される `IDisposable` が返されます。 この `IDisposable` の結果を `using` ブロックと共に使用して、クリティカル セクションの構文表現を取得できます。
 
-前の例では、オーケストレーター関数を使用して、"_送金元_" エンティティから "_送金先_" エンティティに送金を行いました。 `LockAsync` メソッドにより、"_送金元_" と "_送金先_" の両方の口座エンティティがロックされました。 このロックにより、オーケストレーションのロジックが `using` ステートメントの最後で "_クリティカル セクション_" を終了するまで、他のクライアントによってどちらの口座の状態も照会または変更されないことが保証されました。 これにより、"_送金元_" 口座からの過剰な送金の可能性を防ぐことができました。
+前の例では、オーケストレーター関数を使用して、"_送金元_" エンティティから "_送金先_" エンティティに送金を行いました。 `LockAsync` メソッドにより、"_送金元_" と "_送金先_" の両方の口座エンティティがロックされました。 このロックにより、オーケストレーションのロジックが `using` ステートメントの最後で "_クリティカル セクション_" を終了するまで、他のクライアントによってどちらの口座の状態も照会または変更されないことが保証されました。 この動作により、"_送金元_" 口座からの過剰な送金の可能性を防ぐことができます。
 
 > [!NOTE] 
 > オーケストレーションが (正常に、またはエラーで) 終了すると、進行中のすべてのクリティカル セクションが暗黙的に終了し、すべてのロックが解除されます。

@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse ビジネス インテリジェンス パートナー | Microsoft Docs
-description: SQL Data Warehouse をサポートするソリューションを提供するサードパーティのビジネス インテリジェンス パートナーの一覧。
+title: ビジネス インテリジェンス パートナー
+description: Azure SQL Data Warehouse をサポートするソリューションを提供するサードパーティのビジネス インテリジェンス パートナーの一覧。
 services: sql-data-warehouse
 author: mabasile-MSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 87379631cc7f7b9e31def157ba38336e41b693d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873809"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685615"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse ビジネス インテリジェンス パートナー
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。  この記事では、Azure SQL Data Warehouse をサポートする公式のビジネス インテリジェンス (BI) ソリューションを提供している Microsoft パートナー企業について説明しています。

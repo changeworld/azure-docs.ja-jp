@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database マネージド インスタンスの監査 | Microsoft Docs
+title: マネージド インスタンスの監査
 description: T-SQL を使って Azure SQL Database マネージド インスタンスの監査を始める方法について説明します
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958501"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819006"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database マネージド インスタンスの監査の概要
 
@@ -153,7 +153,7 @@ ms.locfileid: "70958501"
 
 以下の追加情報をご覧ください。
 
-- [Azure SQL Database での単一データベース、エラスティック プール、マネージド インスタンスと、SQL Server でのデータベースの監査の相違点](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [Azure SQL Database における単一データベース、エラスティック プール、マネージド インスタンスと SQL Server におけるデータベース間での監査の相違点](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -225,7 +225,6 @@ Azure Monitor ログにより、統合された検索とカスタム ダッシ�
 Azure SQL Database のデータベースと SQL Server のデータベースにおける監査の主な相違点は、次のとおりです。
 
 - Azure SQL Database でマネージド インスタンスのデプロイ オプションを使用すると、監査はサーバー レベルで機能し、`.xel` ログ ファイルを Azure Blob Storage に格納します。
-- Azure SQL Database で単一データベースとエラスティック プールのデプロイ オプションを使用すると、監査はデータベース レベルで機能します。
 - オンプレミス/仮想マシンの SQL Server では、監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。
 
 マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは**サポートされていません**。

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse のトランザクションの最適化 | Microsoft Docs
+title: トランザクションの最適化
 description: ロールバックに長時間かかるリスクを最小限に抑えながら、Azure SQL Data Warehouse でトランザクション コードのパフォーマンスを最適化する方法について説明します。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479672"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692861"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのトランザクションの最適化
 ロールバックに長時間かかるリスクを最小限に抑えながら、Azure SQL Data Warehouse でトランザクション コードのパフォーマンスを最適化する方法について説明します。
@@ -67,7 +68,7 @@ CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 た
 
 | プライマリ インデックス | 読み込みシナリオ | ログ モード |
 | --- | --- | --- |
-| ヒープ |任意 |**最小** |
+| ヒープ |Any |**最小** |
 | クラスター化インデックス |空のターゲット テーブル |**最小** |
 | クラスター化インデックス |読み込まれる行がターゲットの既存のページと重複しない |**最小** |
 | クラスター化インデックス |読み込まれる行がターゲットの既存のページと重複する |完全 |

@@ -1,10 +1,10 @@
 ---
-title: Azure 仮想マシンの起動エラー
+title: Grub の復旧への Linux VM の起動
 description: 仮想マシンが復旧コンソールに入ったため、起動できませんでした
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
-manager: ''
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 9995b9049378a0ab4f3450ec577d034598d171e9
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 29242b802dbbff4218506422293082a495c4d21e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984833"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685134"
 ---
-# <a name="vm-boot-error"></a>VM の起動エラー
+# <a name="linux-vm-boots-to-grub-rescue"></a>Grub の復旧への Linux VM の起動
 
 仮想マシン (VM) が復旧コンソールに入ったことを確認しました。 この問題は、Linux VM で最近、カーネルのアップグレードなど、カーネルの変更が適用され、起動プロセス中にカーネル エラーが発生するため、正しく起動しなくなったときに発生します。 起動プロセス中、ブート ローダーは Linux カーネルの位置を見つけ、それに起動制御を渡そうとするとき、それに失敗すると、VM は復旧コンソールに入ります。
 

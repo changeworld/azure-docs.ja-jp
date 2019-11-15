@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: f0fc1e143ce7d271d5faaa8dda0eb40cdfc9e006
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332738"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584868"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボ テンプレートを作成し、管理する
 ラボ内のテンプレートは仮想マシンの基本イメージで、すべてのユーザーの仮想マシンがこのイメージに基づいて作成されます。 テンプレート仮想マシンを設定して、ラボ ユーザーに提供する正しい仮想マシンが構成されるようにします。 ラボ ユーザーに表示されるテンプレートの名前と説明を指定できます。 その後、テンプレートを発行し、ラボ ユーザーがテンプレート VM のインスタンスを利用できるようにします。 テンプレートを発行すると、Azure Lab Services がそのテンプレートを使用してラボ内に VM を作成します。 このプロセスで作成される VM の数は、ラボ内で許可されるユーザーの最大数 (ラボの利用ポリシーに設定) と同じです。 すべての仮想マシンの構成は、テンプレートと同じになります。
@@ -40,12 +40,10 @@ ms.locfileid: "72332738"
 テンプレート VM は次の手順で更新します。  
 
 1. **[テンプレート]** ページで、ツール バーの **[Customize template]\(テンプレートのカスタマイズ\)** を選択します。 
-
-    ![[Customize template]\(テンプレートのカスタマイズ\) ボタン](../media/how-to-create-manage-template/customize-template-button.png)
 2. **[Customize template]\(テンプレートのカスタマイズ\)** ダイアログで **[続行]** を選択します。 テンプレートを開始し、変更を加えると、ユーザーに最後に公開された仮想マシンと同じ設定ではなくなります。 再び公開するまで、ユーザーの既存の仮想マシンにはテンプレートの変更が反映されません。
 
     ![[カスタマイズ] ダイアログ ボックス](../media/how-to-create-manage-template/customize-template-dialog.png)
-1. ツール バーで **[Connect to template]\(テンプレートに接続する\)** を選択してテンプレート VM に接続し、指示に従います。 Windows コンピューターの場合、RDP ファイルをダウンロードするオプションが表示されます。 
+1. テンプレート VM が起動するまで待ってから、ツール バーで **[Connect to template]\(テンプレートに接続する\)** を選択してテンプレート VM に接続し、指示に従います。 Windows コンピューターの場合、RDP ファイルをダウンロードするオプションが表示されます。 
 
     ![テンプレート VM に接続する](../media/how-to-create-manage-template/connect-template-vm.png)
 1. 学生がラボの作業を行うために必要なソフトウェア (Visual Studio、Azure Storage Explorer など) をインストールします。 

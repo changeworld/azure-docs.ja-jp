@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database (単一) を構成する方法 | Microsoft Docs
+title: 単一のデータベースの構成方法
 description: Azure SQL Database (単一データベース) を構成して管理する方法について説明します
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 02/08/2019
-ms.openlocfilehash: 2117a811f977230dd9c9eecf6ea09b9b7deda3be
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568042"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811217"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースを使用する方法
 

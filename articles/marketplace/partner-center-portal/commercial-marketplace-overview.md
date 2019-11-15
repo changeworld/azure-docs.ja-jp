@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: b0900dbfee81952ed014d976cc8d7136ea65f8fc
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191710"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812071"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>パートナー センターでの商業マーケットプレース ポータルの概要
 
@@ -22,13 +23,13 @@ Microsoft パートナー センターの商業マーケットプレース ポ�
 
 ## <a name="about-microsofts-commercial-marketplace"></a>Microsoft の商業マーケットプレースについて
 
-エンタープライズ、政府機関、あらゆる規模の組織が、ビジネス ソリューション、革新的なテクノロジ、および [Azure Marketplace](https://azuremarketplace.microsoft.com/) や [AppSource](https://appsource.microsoft.com/) Web ストア、[Azure portal の製品内エクスペリエンス](https://portal.azure.com)、[クラウド ソリューション プロバイダー](https://partner.microsoft.com/cloud-solution-provider)、Microsoft Sales チームからの有効化サービスを見つけることができます。 
+あらゆる規模の企業、政府、および組織が、[Azure Marketplace](https://azuremarketplace.microsoft.com/) と [AppSource](https://appsource.microsoft.com/) の Web ストア、[Azure portal の製品内エクスペリエンス](https://portal.azure.com)、[クラウド ソリューション プロバイダー](https://partner.microsoft.com/cloud-solution-provider)、Microsoft のセールス チームを通じて、ビジネス ソリューション、革新的テクノロジ、およびイネーブルメント サービスを見つけます。 
 
 パートナー センターは、Microsoft パートナーのエクスペリエンスのハブです。 Microsoft を使って市場に参入し、マーケットプレースを活用する組織の場合、パートナー センターは、パブリッシャーがオファーを作成および管理し、体験版のデモを提供し、オファー パフォーマンスの分析を表示するポータルです。 
 
 ## <a name="migration-from-cloud-partner-portal"></a>Cloud パートナー ポータルからの移行
 
-パートナー センターは、Microsoft のリレーションシップのすべての側面をソフトウェア パブリッシャーとうまく統合するために進化しています。 この進化の一部として Microsoft は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)の関数をパートナー センターに移行します。 
+パートナー センターは、Microsoft とソフトウェア パブリッシャーとの関係のあらゆる側面をより適切に統合するように進化しています。 この進化の一部として Microsoft は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)の関数をパートナー センターに移行します。 
 
 **現在、パートナー センターでは、サービスとしてのソフトウェア (SaaS) オファーの作成と管理のみをサポートしています。**
 

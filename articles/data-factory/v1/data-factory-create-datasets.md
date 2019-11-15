@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory でのデータセットの作成 | Microsoft Docs
+title: Azure Data Factory でデータセットを作成する
 description: Azure Data Factory でデータセットを作成する方法について説明し、offset、anchorDateTime などのプロパティを使用する例を紹介します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: af5de469b4c4ca57979b80e691e9a5d12b573bec
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 18a5e11d2341fb020fc442d2f9ce7c1d44de9d0a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140134"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682742"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]

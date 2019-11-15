@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/18/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 842392ab425628a1c82a39e25a65066064747211
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 315ebfa1460f9d9bc041925cec2451f63ac5be16
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675749"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580232"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>チュートリアル:Azure Lab Services でラボの使用状況を追跡する
 このチュートリアルでは、ラボの作成者/所有者がラボの使用状況を追跡する方法について説明します。
@@ -41,6 +41,8 @@ ms.locfileid: "72675749"
 
     ![登録されているユーザー](../media/tutorial-track-usage/registered-users.png)
 
+    ラボのユーザーの追加と管理の詳細については、「[ラボ ユーザーを追加および管理する](how-to-configure-student-usage.md)」を参照してください。
+
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>ラボの VM の使用状況を確認する 
 
 1. 左側のメニューから **[仮想マシン]** を選択します。 
@@ -49,12 +51,11 @@ ms.locfileid: "72675749"
     ![VM の使用状況](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>学生の VM を管理する 
-このページでは、 **[状態]** 列のドロップダウン リストまたはツール バーのボタンを使用して、学生の VM を開始、停止、またはリセットできます。 
+このページでは、 **[状態]** 列またはツール バーのコントロールを使用して、学生の VM を起動、停止、またはリセットできます。
 
 ![VM のコントロール](../media/tutorial-track-usage/vm-controls.png)
 
-ツール バー ボタンを使用して、VM を起動、停止、または削除することもできます。 
-
+ラボの仮想マシン プールの管理の詳細については、「[仮想マシン プールを設定および管理する](how-to-set-virtual-machine-passwords.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 クラスルーム ラボの詳細については、[攻略ガイド](how-to-manage-lab-accounts.md)の各記事を参照してください。

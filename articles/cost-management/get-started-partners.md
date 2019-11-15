@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9d95e23cf92c7ee98291831d60088d610c3e5c52
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377432"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720757"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
-Azure Cost Management は、Microsoft 顧客契約に顧客をオンボードしたパートナーがネイティブで利用できます。 この記事では、パートナーが [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) の機能を使用する方法について説明します。 また、パートナーが顧客のために Cost Management アクセスを有効にする方法についても説明します。 CSP のお客様は、CSP パートナーによって有効化された場合は Cost Management の機能を使用できます。
+Azure Cost Management は、Microsoft 顧客契約に顧客をオンボードしたパートナーがネイティブで利用できます。 この記事では、パートナーが [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) の機能を使用する方法について説明します。 また、パートナーが顧客のために Cost Management アクセスを有効にする方法についても説明します。 顧客は、CSP パートナーによって有効化された場合、Cost Management の機能を使用できます。
 
 CSP パートナーは、次の目的に Cost Management を使用します。
 
@@ -29,11 +29,19 @@ CSP パートナーは、次の目的に Cost Management を使用します。
 - プログラムによる[予算](tutorial-acm-create-budgets.md)と、コストが予算を超過したときのアラートを使用して、通知と自動化を設定します。
 - Cost Management データへのアクセスを顧客に提供する Azure Resource Manager ポリシーを有効にします。 顧客はその後、[従量課金制料金](https://azure.microsoft.com/pricing/calculator/)を使用するサブスクリプションの使用量コスト データを表示できます。
 
+すべての顧客のコストを示す例を次に示します。
+![すべての顧客のコストを示す例](./media/get-started-partners/customer-costs1.png)
+
+1 人の顧客のコストを示す例を次に示します。
+![1 人の顧客のコストを示す例](./media/get-started-partners/customer-costs2.png)
+
 Azure Cost Management で使用できるすべての機能は、REST API でも使用できます。 API を使用してコスト管理タスクを自動化します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Cost Management には、課金アカウントまたはサブスクリプションへの読み取りアクセスが必要です。 課金アカウントまたは管理グループから、アプリを管理する個々のリソース グループまで、リソースよりも上の任意のレベルでアクセスを許可できます。 サブスクリプション ユーザーが価格とコストを確認するためには、料金を表示するためのアクセス権を課金アカウントに対して有効にする必要があります。 Azure Cost Management に対するアクセス権の有効化と割り当ての詳細については、[データへのアクセスの割り当て](assign-access-acm-data.md)に関するページを参照してください。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
+Azure Cost Management には、課金アカウントまたはサブスクリプションへの読み取りアクセスが必要です。 課金アカウントまたは管理グループから、アプリを管理する個々のリソース グループまで、リソースよりも上の任意のレベルでアクセスを許可できます。 課金アカウントでの Azure Cost Management へのアクセスの有効化と割り当ての詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。 **全体管理者**ロールと**管理エージェント** ロールは、課金アカウントのコストを管理できます。
+
+サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
 
 
 ## <a name="how-cost-management-uses-scopes"></a>Cost Management でのスコープの使用方法
@@ -48,9 +56,9 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 ### <a name="billing-account-scope"></a>課金アカウントのスコープ
 
-課金アカウントのスコープを使用して、すべての顧客および課金プロファイルの課税前コストを表示します。 また、Microsoft 顧客契約にある、使用量に基づいた顧客向け製品の請求書コストを表示することもできます。 請求書コストは、Microsoft 顧客契約および CSP オファーにある、購入に基づいた顧客向け製品についても表示されます。 現在、スコープ内のコストを表示する既定の通貨は米ドルです。 スコープに対して設定される予算も米ドル単位です。
+課金アカウントのスコープを使用して、すべての顧客および課金プロファイルの課税前コストを表示します。 請求書コストは、Microsoft 顧客契約にある、顧客の使用量に基づいた製品についてのみ表示されます。 ただし、請求書コストは、Microsoft 顧客契約と CSP オファーの両方にある、購入に基づいた顧客向け製品について表示されます。 現在、スコープ内のコストを表示する既定の通貨は米ドルです。 スコープに対して設定される予算も米ドル単位です。
 
-顧客の請求通貨にかかわらず、パートナーはスコープを使用して、顧客、サブスクリプション、リソース、リソース グループにまたがって、米ドルで予算を設定し、コストを管理します。
+さまざまな顧客の請求通貨に関係なく、パートナーは課金アカウント スコープを使用して、米ドルで顧客、サブスクリプション、リソース、リソース グループ全体の予算の設定とコストの管理を行います。
 
 またパートナーはコスト分析ビューで、顧客全体を対象に、特定の請求通貨でコストをフィルター処理します。 **[Actual cost]\(実際のコスト\)** リストを選択して、サポートされている顧客請求通貨でコストを表示します。
 
@@ -62,17 +70,17 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 請求書に含まれるすべての製品およびサブスクリプションのすべての顧客にわたって請求通貨で課税前コストを表示するには、課金プロファイル スコープを使用します。 **InvoiceID** フィルターを使用して、特定の請求書の課金プロファイルでコストをフィルター処理できます。 このフィルターは、特定の請求書の使用量コストと製品購入コストを示します。 請求書で特定の顧客のコストをフィルター処理して、課税前コストを確認することもできます。
 
-Microsoft 顧客契約に顧客をオンボードした後、パートナーは、SaaS、Azure Marketplace、予約などのエンタイトルメントおよび購入済み製品の料金を示す顧客請求書を受け取ります。 同じ請求通貨で請求される場合、新しい Microsoft 顧客契約に含まれていない顧客料金も請求書に示されます。
+顧客を Microsoft 顧客契約にオンボードすると、Microsoft 顧客契約にある、それらの顧客向けの全製品 (消費、購入、エンタイトルメント) のすべての料金を含む請求書を受け取ります。 同じ通貨で請求される場合、これらの請求書には、引き続き CSP オファーに含まれている顧客のエンタイトルメントと購入済み製品 (SaaS、Azure Marketplace、予約など) の料金も含まれます。
 
 顧客請求書に対する料金の調整に役立つよう、課金プロファイル スコープを使用して、顧客に対する請求書で発生するすべてのコストを確認できます。 請求書と同様に、スコープは、新しい Microsoft 顧客契約のすべての顧客に対するコストを示します。 スコープは、現在の CSP オファーに残っている顧客エンタイトルメント製品に対するすべての料金も示します。
 
-エンタイトルメントおよび購入ベースの製品の料金を示すスコープは、課金プロファイル スコープと課金アカウント スコープだけです。
+課金プロファイルと課金アカウントのスコープは、Azure Marketplace や予約の購入など、エンタイトルメントと購入ベースの製品の料金を示す、唯一適用可能なスコープです。
 
-課金プロファイルは、請求書に含まれるサブスクリプションを定義します。 課金プロファイルは、エンタープライズ契約の加入契約に相当する機能です。 加入契約は、請求書が生成されるスコープです。 同様に、Azure Marketplace や予約など、使用量ベースではない購入は課金プロファイル スコープでのみ表示されます。
+課金プロファイルは、請求書に含まれるサブスクリプションを定義します。 課金プロファイルは、エンタープライズ契約の加入契約に相当する機能です。 課金プロファイルは、請求書が生成されるスコープです。
 
-現在、課金プロファイル スコープでコストを表示するとき、顧客の請求通貨が既定の通貨です。 課金プロファイル スコープで設定される予算の単位は請求通貨です。
+現在、課金プロファイル スコープでコストを表示するとき、顧客の請求通貨が既定の通貨です。 課金プロファイル スコープで設定される予算は請求通貨になります。
 
-パートナーはスコープを使用して請求書との照合を実行できます。 また、スコープを使用して、請求通貨で次の予算を設定します。
+パートナーはスコープを使用して請求書との照合を実行できます。 また、スコープを使用して、請求通貨で次の項目の予算を設定します。
 
 - 特定のフィルター処理された請求書
 - 顧客
@@ -87,13 +95,13 @@ Microsoft 顧客契約に顧客をオンボードした後、パートナーは�
 
 パートナーはスコープを使用して、Microsoft 顧客契約にオンボードされている顧客に関連付けられたコストを管理します。 スコープにより、パートナーは特定の顧客の課税前コストを表示できます。 特定のサブスクリプション、リソース グループ、またはリソースの課税前コストをフィルター処理することもできます。
 
-顧客スコープには、現在の CSP オファーに載っている顧客は含まれません。 現在の CSP オファー顧客のエンタイトルメント コスト (Azure 使用量ではない) は、顧客フィルターを適用したときに課金アカウント スコープと課金プロファイル スコープで確認できます。
+顧客スコープには、現在の CSP オファーに載っている顧客は含まれません。 このスコープには、Microsoft 顧客契約がある顧客のみが含まれます。 現在の CSP オファー顧客のエンタイトルメント コスト (Azure 使用量ではない) は、顧客フィルターを適用したときに課金アカウント スコープと課金プロファイル スコープで確認できます。
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Cost Management での課金スコープへのパートナー アクセス
 
 **グローバル管理者**および**管理エージェント**のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
 
-### <a name="enable-cost-management-in-the-customer-tenant"></a>顧客テナントでコスト管理を有効にする
+## <a name="enable-cost-management-in-the-customer-tenant"></a>顧客テナントでコスト管理を有効にする
 
 顧客が Microsoft 顧客契約にオンボードされた後、Cost Management へのアクセスをパートナーが有効化できます。 パートナーはその後、従量課金制の小売料金で計算された顧客コストを顧客が表示することを許可するポリシーを有効化できます。 コストは顧客の請求通貨で、RBAC サブスクリプションおよびリソース グループのスコープで顧客が使用した分量に対して示されます。
 
@@ -131,32 +139,33 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 ![Azure サブスクリプションの顧客を選択する](./media/get-started-partners/subscriptions-select-customer.png)
 
 **[コスト分析]** をクリックして、コストの確認を開始します。
-サブスクリプションとリソース グループの RBAC スコープに対して、従量課金制の料金に基づいたコストで、コスト分析、予算、アラートが使用できるようになりました。
+コスト分析、予算、アラートは、従量課金制の料金に基づいたコストで、サブスクリプションとリソース グループの RBAC スコープで利用できます。
 
 ![顧客としてコスト分析を表示する ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
 RBAC スコープの予約インスタンスの償却ビューおよび実際のコストでは、料金がゼロと表示されます。 予約インスタンスのコストは、購入が行われた課金スコープでのみ表示されます。
 
-## <a name="analyze-costs-in-cost-analysis"></a>Cost Analysis でコストを分析する
+## <a name="analyze-costs-in-cost-analysis"></a>コスト分析でコストを分析する
 
-パートナーは顧客間コスト分析で、特定の顧客または請求書についてコストを調査および分析できます。 フィルターとグループ化の機能を使用すると、次のような複数のフィールドによってコストを分析できます。
+パートナーは顧客間コスト分析で、特定の顧客または請求書についてコストを調査および分析できます。
 
-| **フィールド** | **説明** | **パートナー センターで相当する列** |
-| --- | --- | --- |
-| PartnerTenantID | パートナーの Azure Active Directory テナントの識別子 | パートナー ID と呼ばれるパートナーの Azure Active Directory TenantID。 GUID 形式。 |
-| PartnerName | パートナーの Azure Active Directory テナントの名前 | パートナー名 |
-| CustomerTenantID | 顧客のサブスクリプションの Azure Active Directory テナントの識別子 | 顧客の組織 ID。 たとえば、顧客の Azure Active Directory TenantID。 |
-| CustomerName | 顧客のサブスクリプションを含む Azure Active Directory テナントの名前 | パートナー センターで報告される顧客の組織名。 システムの情報を使って請求書を調整するために重要です。 |
-| ResellerMPNID | サブスクリプションに関連付けられているリセラーの MPNID | サブスクリプションの登録のあるリセラーの MPN ID。 現在のアクティビティでは使用できません。 |
-| サブスクリプション ID | Microsoft が生成する、Azure サブスクリプションの一意識別子 | 該当なし |
-| subscriptionName | Azure サブスクリプションの名前 | 該当なし |
-| billingProfileID | 課金プロファイルの識別子。 請求書全体で、顧客全体の 1 つの請求通貨でコストをグループ化します。 | MCAPI パートナー課金グループ ID。 API 要求で使用しますが、応答には含まれません。 |
-| invoiceID | 特定の取引が含まれる請求書の請求書 ID | 指定されたトランザクションが含まれている請求書番号。 |
-| resourceGroup | Azure リソース グループの名前。 リソースのライフサイクル管理に使用されます。 | リソース グループの名前。 |
-| partnerEarnedCreditRate | パートナー管理者リンク アクセスに基づいたパートナー獲得クレジット (PEC) がある場合に適用される割引率。 | パートナー獲得クレジット (PEC) の割合。 たとえば、0% または 15%。 |
-| partnerEarnedCreditApplied | パートナー獲得クレジットが適用されたかどうかを示します。 | 該当なし |
+使用状況の詳細ファイルと Cost Management API には、次のフィールドがあります。 コスト分析でフィルターとグループ化の機能を使用して、複数のフィールドでコストを分析できます。 フィールドの完全な一覧を表示するには、「[Cost Management のデータ フィールド](understand-cost-mgt-data.md#cost-management-data-fields)」を参照してください。
 
-[コスト分析](quick-acm-cost-analysis.md)ビューでは、[ビューを保存](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)したり、データを [CSV および PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis) ファイルにエクスポートすることもできます。
+| フィールド名 | 説明 |
+| --- | --- |
+| CustomerTenantID | 顧客のサブスクリプションの Azure Active Directory テナントの識別子。 |
+| CustomerName | 顧客のサブスクリプションの Azure Active Directory テナントの名前。 |
+| CustomerTenantDomainName | 顧客のサブスクリプションの Azure Active Directory テナントのドメイン名。 |
+| PartnerTenantID | パートナーの Azure Active Directory テナントの識別子。 |
+| PartnerName | パートナーの Azure Active Directory テナントの名前。 |
+| ResellerMPNID | サブスクリプションに関連付けられているリセラーの MPNID。 |
+| costinUSD | 税引き前の、予測される ExtendedCost またはブレンド コスト (米国ドル単位)。 |
+| paygCostInBillingCurrency | 価格が小売価格の場合のコストを表示します。 請求通貨で従量課金制の料金を表示します。 RBAC スコープでのみ使用できます。 |
+| paygCostInUSD | 価格が小売価格の場合のコストを表示します。 従量課金制の料金を米国ドルで表示します。 RBAC スコープでのみ使用できます。 |
+| partnerEarnedCreditRate | パートナー管理者リンク アクセスに基づいたパートナー獲得クレジット (PEC) がある場合に適用される割引率。 |
+| partnerEarnedCreditApplied | パートナー獲得クレジットが適用されているかどうかを示します。 |
+
+[コスト分析](quick-acm-cost-analysis.md)ビューでは、[ビューを保存](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)したり、[CSV および PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis) のファイルにデータをエクスポートしたりすることもできます。
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>パートナー獲得クレジット (PEC) リソースのコストを表示する
 
@@ -183,126 +192,133 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 ## <a name="cost-management-rest-apis"></a>Cost Management REST API
 
-パートナー、間接プロバイダー、および顧客は、以下のセクションで説明する Cost Management API を一般的なタスクに使用できます。
+パートナーと顧客は、次のセクションに記載されている Cost Management API を一般的なタスクに対して使用できます。
 
-### <a name="azure-cost-management-apis-for-partners"></a>パートナー向けの Azure Cost Management API
+### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management API - 直接プロバイダーと間接プロバイダー
 
-パートナー テナントの課金スコープにアクセスできるパートナーおよびユーザーは、次の API を使用できます。
+パートナー テナントの課金スコープにアクセスできるパートナーは、次の API を使用して請求されたコストを表示できます。
+
+パートナーは、サブスクリプションにアクセスできる場合、コスト ポリシーに関係なく、サブスクリプション スコープの API を呼び出すことができます。 サブスクリプションにアクセスできる他のユーザー (顧客やリセラーなど) は、パートナーが顧客テナントのコスト ポリシーを有効にした後でのみ、API を呼び出すことができます。
+
 
 #### <a name="to-get-a-list-of-billing-accounts"></a>課金アカウントの一覧を取得するには
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-a-list-of-customers"></a>顧客の一覧を取得するには
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers?api-version=2019-10-01-preview
 ```
+
 #### <a name="to-get-a-list-of-subscriptions"></a>サブスクリプションの一覧を取得するには
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/billingSubscriptions?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-create-new-subscription"></a>新しいサブスクリプションを作成するには
+#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>一定期間の請求書の一覧を取得するには
 
 ```
-armclient post "/providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview" @createsub.json -verbose
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices?api-version=2019-10-01-preview&periodStartDate={periodStartDate}&periodEndDate={periodEndDate}
 ```
 
-#### <a name="to-get-or-download-usage-for-azure-services"></a>Azure サービスの使用状況を取得またはダウンロードするには
+この API 呼び出しは、次の JSON コードのような要素を持つ一連の請求書を返します。
 
 ```
-armclient GET /providers/Microsoft.Billing/BillingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/{billingAccountID}/billingProfiles/{BillingProfileID}/invoices/{InvoiceID}",
+      "name": "{InvoiceID}",
+      "properties": {
+        "amountDue": {
+          "currency": "USD",
+          "value": x.xx
+        },
+        ...
+    }
 ```
 
-#### <a name="to-get-a-list-of-billing-profiles"></a>課金プロファイルの一覧を取得するには
+返された前の ID フィールドの値を使用し、次の例で使用状況の詳細のクエリを実行するためのスコープとして置き換えます。
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/billingProfiles?api-version=2019-10-01-preview
+GET https://management.azure.com/{id}/providers/Microsoft.Consumption/UsageDetails?api-version=2019-10-01
 ```
 
-#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>使用された Azure サービスの価格シートを取得またはダウンロードするには
+この例は、特定の請求書に関連付けられた使用状況レコードを返します。
 
-```
-armclient post "/providers/Microsoft.Billing/BillingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/BillingProfiles/JUT6-EU3Q-BG7-TGB/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
-```
-
-#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>過去 2 か月間の顧客コストを月別に並べ替えて取得するには
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
-```
-
-#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>過去 2 か月間の Azure サブスクリプションを月別に並べ替えて取得するには
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
-```
-
-#### <a name="to-get-daily-costs-for-the-current-month"></a>当月の日次コストを取得するには
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
-```
 
 #### <a name="to-get-the-policy-for-customers-to-view-costs"></a>顧客がコストを表示するためのポリシーを取得するには
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/policies/default?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-set-the-policy-for-customers-to-view-costs"></a>顧客がコストを表示するためのポリシーを設定するには
 
 ```
-armclient put "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/policies/default?api-version=2019-10-01-preview" @policy.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
-### <a name="azure-cost-management-apis-for-indirect-providers"></a>間接プロバイダー向けの Azure Cost Management API
-
-顧客テナントの RBAC スコープにアクセスできる間接プロバイダーは、次の API を使用できます。 開始するには、ユーザーとして、またはサービス プリンシパルを使用してログインします。
-
-#### <a name="to-get-the-billing-account-information"></a>課金アカウント情報を取得するには
+#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>課金アカウントの Azure サービスの使用状況を取得するには
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
-#### <a name="to-get-a-list-of-customers"></a>顧客の一覧を取得するには
+#### <a name="to-download-a-customers-azure-service-usage"></a>顧客の Azure サービスの使用状況をダウンロードするには
+
+次の GET 呼び出しは非同期操作です。
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers?api-version=2019-10-01-preview"
+GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
-#### <a name="to-get-a-list-of-resellers-associated-with-the-customer"></a>顧客に関連付けられているリセラーの一覧を取得するには
+応答で返された `Location` URI を呼び出して、操作の状態を確認します。 状態が *[完了]* の場合、`downloadUrl` プロパティには、生成されたレポートをダウンロードするために使用できるリンクが含まれています。
+
+
+#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>使用された Azure サービスの価格シートを取得またはダウンロードするには
+
+まず、次の POST を使用します。
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db?api-version=2019-10-01-preview&$expand=resellers
+POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-#### <a name="to-get-a-list-of-subscriptions-with-reseller-information"></a>リセラー情報と共にサブスクリプションの一覧を取得するには
+次に、非同期操作プロパティの値を呼び出します。 例:
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db/billingSubscriptions?api-version=2019-10-01-preview
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview
 ```
+前の GET 呼び出しでは、価格シートを含むダウンロード リンクが返されます。
 
-#### <a name="to-create-a-subscription"></a>サブスクリプションを作成するには
 
-```
-armclient post "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview" @createsub_reseller.json
-```
-
-### <a name="azure-cost-management-apis-for-customers"></a>顧客向けの Azure Cost Management API
-
-顧客は次の情報を使用して API にアクセスします。 開始するには、ユーザーとしてログインします。
-
-#### <a name="to-get-or-download-azure-consumption-usage-information-with-retail-rates"></a>Azure 使用量情報を小売料金と共に取得またはダウンロードするには
+#### <a name="to-get-aggregated-costs"></a>集計コストを取得するには
 
 ```
-armclient post /subscriptions/66bada28-271e-4b7a-aaf5-c0ead63923d7/providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+POST https://management.azure.com/providers/microsoft.billing/billingAccounts/{billingAccountName}/providers/microsoft.costmanagement/query?api-version=2019-10-01
 ```
+
+#### <a name="create-a-budget-for-a-partner"></a>パートナーの予算を作成する
+
+```
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
+```
+
+#### <a name="create-a-budget-for-a-customer"></a>顧客の予算を作成する
+
+```
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2019-10-01
+```
+
+#### <a name="delete-a-budget"></a>予算を削除する
+
+```
+PUT
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/budgets/{budgetName}?api-version=2019-10-01
+```
+
 
 ## <a name="next-steps"></a>次の手順
 - Cost Management で[コストの分析を開始する](quick-acm-cost-analysis.md)

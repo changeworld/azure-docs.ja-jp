@@ -10,16 +10,18 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ac292f020bb64c7c70ce3ea5c7f66fe9e9ed1bb7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057738"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604655"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
-このチュートリアルでは、Azure Computer Vision サービスを Web アプリに統合して、アップロードされた画像のメタデータを生成する方法について学習します。 完全なアプリ ガイドは、GitHub 上の [Azure Storage と Cognitive Services のラボ](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md)に関するページにあります。このチュートリアルでは、基本的にラボの演習 5 を取り扱います。 すべての手順に従ってエンドツーエンドのアプリケーションを作成することをお勧めします。ただし、Computer Vision を既存の Web アプリに統合する方法についてだけ知りたい場合は、こちらをお読みください。
+このチュートリアルでは、Azure Computer Vision サービスを Web アプリに統合して、アップロードされた画像のメタデータを生成する方法について学習します。 これは[デジタル資産管理 (DAM)](../Home.md#computer-vision-for-digital-asset-management) のシナリオに役立ちます。たとえば、企業がすべての画像についてわかりやすいキャプションや検索可能なキーワードをすばやく生成する場合などです。
+
+完全なアプリ ガイドは、GitHub 上の [Azure Storage と Cognitive Services のラボ](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md)に関するページにあります。このチュートリアルでは、基本的にラボの演習 5 を取り扱います。 すべての手順に従ってエンドツーエンドのアプリケーションを作成することをお勧めします。ただし、Computer Vision を既存の Web アプリに統合する方法についてだけ知りたい場合は、こちらをお読みください。
 
 このチュートリアルでは、次の操作方法について説明します。
 

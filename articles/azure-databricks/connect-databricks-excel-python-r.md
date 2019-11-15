@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: 1805f04d7833dea180847defadd865cb23e9df62
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340854"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601945"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel、Python、R から Azure Databricks に接続する
 
@@ -26,7 +26,7 @@ ms.locfileid: "67340854"
 
 * Databricks ODBC ドライバーを [Databricks ドライバー ダウンロード ページ](https://databricks.com/spark/odbc-driver-download)からダウンロードします。 Azure Databricks への接続元のアプリケーションに応じて、32 ビットまたは 64 ビット バージョンをインストールします。 たとえば、Excel から接続する場合は 32 ビット バージョンのドライバーをインストールします。 R や Python から接続するには、64 ビット バージョンのドライバーをインストールします。
 
-* Databricks に個人用アクセス トークンを設定します。 手順については、[トークンの管理](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management)に関するページをご覧ください。
+* Databricks に個人用アクセス トークンを設定します。 手順については、[トークンの管理](/azure/databricks/dev-tools/api/latest/authentication)に関するページをご覧ください。
 
 ## <a name="set-up-a-dsn"></a>DSN のセットアップ
 
@@ -38,15 +38,15 @@ ms.locfileid: "67340854"
 
 2. **[構成]** タブの下で、 **[JDBC/ODBC]\(JDBC/ODBC\)** タブをクリックし、 **[Server Hostname]\(サーバー ホスト名\)** と **[HTTP Path]\(HTTP パス\)** の値をコピーします。 この記事の手順を完了するにはこれらの値が必要です。
 
-    ![Databricks 構成を取得する](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks 構成を取得する")
+    ![Databricks の構成を取得する](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks の構成を取得する")
 
 3. 自分のコンピューターで、アプリケーションに応じた **[ODBC データ ソース]** アプリケーション (32 ビットまたは 64 ビット) を起動します。 Excel から接続するには 32 ビット バージョンを使用します。 R や Python から接続するには 64 ビット バージョンを使用します。
 
-    ![ODBC を起動する](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC アプリを起動する")
+    ![ODBC を起動する](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC を起動する")
 
 4. **[ユーザー DSN]** タブの **[追加]** をクリックします。 **[新規データ ソースの作成]** ダイアログ ボックスで、 **[Simba Spark ODBC Driver]\(Simba Spark ODBC ドライバー\)** を選択し、 **[完了]** をクリックします。
 
-    ![ODBC を起動する](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC アプリを起動する")
+    ![ODBC を起動する](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC を起動する")
 
 5. **[Simba Spark ODBC Driver]\(Simba Spark ODBC ドライバー\)** ダイアログ ボックスに次の値を入力します。
 
@@ -90,14 +90,14 @@ ms.locfileid: "67340854"
 
 4. [ナビゲーター] ウィンドウで、Excel に読み込む Databricks のテーブルを選択し、 **[読み込む]** をクリックします。 
 
-    ![Excel にデータを読み込む](./media/connect-databricks-excel-python-r/excel-load-data.png "Excel にデータを読み込む")
+    ![dta を Excel に読み込む](./media/connect-databricks-excel-python-r/excel-load-data.png "dta を Excel に読み込む")
 
 Excel のブックにデータを取得したら、分析操作を実行できます。
 
 ## <a name="connect-from-r"></a>R からの接続
 
 > [!NOTE]
-> このセクションでは、デスクトップ上で稼働している R Studio クライアントを Azure Databricks に統合する方法について説明します。 Azure Databricks クラスター自体の上で R Studio を使用する方法については、「[R Studio on Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html)」(Azure Databricks 上での R Studio) を参照してください。
+> このセクションでは、デスクトップ上で稼働している R Studio クライアントを Azure Databricks に統合する方法について説明します。 Azure Databricks クラスター自体の上で R Studio を使用する方法については、「[R Studio on Azure Databricks](/azure/databricks/spark/latest/sparkr/rstudio)」(Azure Databricks 上での R Studio) を参照してください。
 
 このセクションでは、R 言語 IDE を使用して Azure Databricks にあるデータを参照します。 開始する前に、ご使用のコンピューターに以下がインストールされている必要があります。
 
@@ -165,6 +165,6 @@ for row in cursor.fetchall():
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure Databricks にデータをインポートできるソースについては、[Azure Databricks のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#)に関するページをご覧ください。
+* Azure Databricks にデータをインポートできるソースについては、[Azure Databricks のデータ ソース](/azure/databricks/data/data-sources/index)に関するページをご覧ください。
 
 

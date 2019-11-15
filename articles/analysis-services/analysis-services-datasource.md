@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services でサポートされるデータ ソース | Microsoft Docs
-description: Azure Analysis Services のデータ モデルでサポートされるデータ ソースについて説明します。
+description: Azure Analysis Services の表形式 1200 以上のデータ モデルでサポートされるデータ ソースとコネクタについて説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512447"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572958"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -97,12 +97,12 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 
 **プロバイダーを指定するには**
 
-1. SSDT > **表形式モデル エクスプローラー** >  **[データ ソース]** で、データ ソース接続を右クリックし、 **[データ ソースの編集]** をクリックします。
+1. Visual Studio > **[表形式モデル エクスプローラー]**  >  **[データ ソース]** で、データ ソース接続を右クリックし、 **[データ ソースの編集]** をクリックします。
 2. **[接続の編集]** で、 **[詳細]** をクリックして詳細プロパティ ウィンドウを開きます。
 3. **[詳細プロパティの設定]**  >  **[プロバイダー]** で、適切なプロバイダーを選びます。
 
 ## <a name="impersonation"></a>権限の借用
-場合によっては、異なる権限借用アカウントの指定が必要になることがあります。 権限借用アカウントは、Visual Studio (SSDT) または SSMS で指定できます。
+場合によっては、異なる権限借用アカウントの指定が必要になることがあります。 権限借用アカウントは、Visual Studio または SSMS で指定できます。
 
 オンプレミスのデータ ソースの場合:
 

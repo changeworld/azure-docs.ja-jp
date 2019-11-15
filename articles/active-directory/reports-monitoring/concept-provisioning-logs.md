@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/29/2019
+ms.date: 11/04/2019
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70983494"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612795"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -205,6 +205,29 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - ログの分析は、現時点ではサポートされていません。
 
 - アプリのコンテキストからプロビジョニング ログにアクセスしても、監査ログのように、イベントが特定のアプリに自動的にフィルター処理されることはありません。
+
+## <a name="error-codes"></a>エラー コード
+
+次の表を利用し、プロビジョニング ログに記録されていることがあるエラーの解決方法をより深く理解してください。 記載されていないエラー コードがあった場合は、このページの下部にあるリンクを使用してフィードバックを提供してください。 
+
+|エラー コード|説明|
+|---|---|
+|Conflict、EntryConflict|Azure AD またはアプリケーションで、競合している属性値を修正します。または、競合しているユーザー アカウントが一致し、取って代わられたと思われるかどうか、一致する属性の構成を確認します。 一致する属性の構成の詳細については、次の[ドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を確認してください。|
+|TooManyRequests|ターゲット アプリは過負荷になり多すぎる要求を受け取っているため、ユーザーを更新するこの試行を拒否しました。 することはありません。 この試行は自動的に中止されます。 Microsoft もこの問題について通知されています。|
+|InternalServerError |ターゲット アプリから予期しないエラーが返されました。 ターゲット アプリケーションに、その動作を妨げているサービスの問題がある可能性があります。 この試行は 40 分で自動的に中止されます。|
+|InsufficientRights、MethodNotAllowed、NotPermitted、Unauthorized| Azure AD はターゲット アプリケーションによって認証できましたが、更新を実行する権限がありませんでした。 ターゲット アプリケーションによって提供された手順と、それぞれのアプリケーションの[チュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)を確認してください。|
+|UnprocessableEntity|ターゲット アプリケーションが予期しない応答を返しました。 ターゲット アプリケーションの構成が正しくないか、ターゲット アプリケーションに、その動作を妨げているサービスの問題がある可能性があります。|
+|WebExceptionProtocolError |ターゲット アプリケーションへの接続中に HTTP プロトコル エラーが発生しました。 することはありません。 この試行は 40 分で自動的に中止されます。|
+|InvalidAnchor|プロビジョニング サービスによって以前作成または照合されたユーザーは存在しなくなりました。 そのユーザーが存在することを確認してください。 すべてのユーザーを強制的に再照合するには、MS Graph API を使用して[ジョブを再開](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)します。 プロビジョニングを再開すると初期サイクルがトリガーされ、完了するまで時間がかかる場合があることに注意してください。 また、プロビジョニング サービスが操作に使用するキャッシュが削除されます。これは、テナント内のすべてのユーザーとグループが再度評価される必要があり、特定のプロビジョニング イベントが削除される可能性があることを意味します。|
+|NotImplemented | ターゲット アプリから予期しない応答が返されました。 アプリの構成が正しくないか、ターゲット アプリに、その動作を妨げているサービスの問題がある可能性があります。 ターゲット アプリケーションによって提供された手順と、それぞれのアプリケーションの[チュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)を確認してください。 |
+|MandatoryFieldsMissing、MissingValues |必須の値がないため、ユーザーを作成できませんでした。 ソース レコード内の不足している属性値を修正するか、一致する属性の構成を調べて、必須フィールドが省略されていないことを確認します。 一致する属性の構成に関する[詳細を確認](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)してください。|
+|SchemaAttributeNotFound |ターゲット アプリケーションに存在しない属性が指定されたため、操作を実行できませんでした。 属性のカスタマイズに関する[ドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を参照し、構成が正しいことを確認してください。|
+|InternalError |Azure AD プロビジョニング サービス内で内部サービス エラーが発生しました。 することはありません。 この試行は 40 分で自動的に再試行されます。|
+|InvalidDomain |無効なドメイン名を含む属性値が原因で操作を実行できませんでした。 ユーザーのドメイン名を更新するか、ターゲット アプリケーションの許可リストにそのドメイン名を追加します。 |
+|タイムアウト |ターゲット アプリケーションが応答するのに時間がかかりすぎたため、操作を完了できませんでした。 することはありません。 この試行は 40 分で自動的に再試行されます。|
+|LicenseLimitExceeded|このユーザーが使用できるライセンスがないため、ターゲット アプリケーションでユーザーを作成できませんでした。 ターゲット アプリケーションの追加ライセンスを購入するか、ユーザーの割り当てと属性マッピングの構成を調べて、正しい属性で正しいユーザーが割り当てられていることを確認します。|
+|DuplicateTargetEntries  |ターゲット アプリケーションの複数のユーザーに、構成済みの一致する属性があると検出されたため、操作を完了できませんでした。 重複しているユーザーをターゲット アプリケーションから削除するか、[ここ](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)で説明されているように、属性マッピングを再構成します。|
+|DuplicateSourceEntries | 複数のユーザーに、構成済みの一致する属性があると検出されたため、操作を完了できませんでした。 重複しているユーザーを削除するか、[ここ](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)で説明されているように、属性マッピングを再構成します。|
 
 ## <a name="next-steps"></a>次の手順
 

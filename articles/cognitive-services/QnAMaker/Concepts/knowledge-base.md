@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 78fc9fe34eb3463021dae69990fe1d30668d453f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 355556e98300ecad6aa3141f0f4ab14b834cd91e
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300505"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794897"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースとは
 
@@ -53,9 +53,9 @@ QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペ�
 |1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) に送信します。|
 |2|QnA Maker が、言語検出、スペル チェック プログラム、およびワード ブレーカーを使用してユーザー クエリを前処理します。|
 |3|この前処理は、最適な検索結果が得られるようユーザー クエリを変更するために行われます。|
-|4|この変更されたクエリが Azure Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。|
-|5|QnA Maker は、高度な特徴抽出を適用して、ユーザー クエリに対して取得された Azure Search の結果の正確性を判別します。 |
-|6|トレーニング済みのランカー モデルにより、手順 5 からの特徴スコアを使用して、Azure Search の結果にランクが付けられます。|
+|4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。|
+|5|QnA Maker は、高度な特徴抽出を適用して、ユーザー クエリに対してフェッチされた検索結果の正確性を判別します。 |
+|6|トレーニング済みのランカー モデルにより、手順 5 からの特徴スコアを使用して、Azure Cognitive Search の結果にランクが付けられます。|
 |7|新しい結果が、ランク順にクライアント アプリケーションに返されます。|
 |||
 
@@ -136,9 +136,9 @@ HTTP 応答は、特定のユーザー クエリの最適な一致に基づい�
 [QnA Maker の概要](../Overview/overview.md)
 
 次を使用してナレッジ ベースを作成、編集します。 
-* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
-* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
 次を使用して回答を生成します。 
-* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
-* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

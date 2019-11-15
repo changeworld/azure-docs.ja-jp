@@ -1,5 +1,5 @@
 ---
-title: PowerShell の例 - Azure SQL Database にマネージド インスタンスを作成する | Microsoft Docs
+title: PowerShell の例 - Azure SQL Database にマネージド インスタンスを作成する
 description: Azure SQL Database にマネージド インスタンスを作成する Azure PowerShell スクリプトの例です
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 32b3c3b45c627d8dfdb42642228a7f9d9786111e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3e72a2f6754ad8e9c5bcfabe7eeee299468fa8f3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569967"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691646"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>PowerShell を使用して Azure SQL Database マネージド インスタンスを作成する
 

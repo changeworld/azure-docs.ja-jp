@@ -5,25 +5,22 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a60d7c29fc7e482e32233aa86d65a801e3f55c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194049"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582247"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure Firewall の脅威インテリジェンスベースのフィルター処理 - パブリック プレビュー
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall の脅威インテリジェンスベースのフィルター処理
 
 ファイアウォール用に脅威インテリジェンスベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/en-us/security/operations/intelligence)は、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。
 
 ![ファイアウォールの脅威インテリジェンス](media/threat-intel/firewall-threat.png)
 
-> [!IMPORTANT]
-> 脅威インテリジェンス ベースのフィルター処理は、現在パブリック プレビュー段階であり、プレビューのサービス レベル契約が付属します。 特定の機能はサポート対象ではなく、機能が制限されることがあります。  詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
-
-脅威インテリジェンスベースのフィルター処理を有効にすると、NAT ルール、ネットワーク ルール、またはアプリケーション ルールの前に、関連付けられているルールが処理されます。 プレビュー中は、信頼度の高いレコードのみが含まれます。
+脅威インテリジェンスベースのフィルター処理が有効になっている場合は、NAT ルール、ネットワーク ルール、またはアプリケーション ルールの前に、関連付けられているルールが処理されます。
 
 ルールがトリガーされるときのアラートのみを記録するかどうかと、アラートおよび拒否モードを選択できます。
 

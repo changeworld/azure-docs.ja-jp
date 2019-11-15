@@ -7,21 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 725a9d67e6a6412fc48a4278b5a8a163272e5133
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000982"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571974"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>Key Vault 証明書での SSL 終了
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) はプラットフォームで管理されるシークレット ストアです。シークレット、キー、SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) をサポートします。 このサポートは、Application Gateway の v2 SKU に制限されます。
+[Azure Key Vault](../key-vault/key-vault-overview.md) はプラットフォームマネージド シークレット ストアです。シークレット、キー、SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 このサポートは、Application Gateway の v2 SKU に制限されます。
 
-> [!IMPORTANT]
-> Application Gateway と Key Vault の統合は、現在パブリック プレビューの段階です。 このプレビュー版はサービス レベル アグリーメント (SLA) なしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-このパブリック プレビューでは、SSL 終了に次の 2 つのモデルが提供されています。
+Key Vault 統合では、SSL 終了に次の 2 つのモデルが提供されています。
 
 - リスナーにアタッチされている SSL 証明書を明示的に提供できます。 このモデルは、SSL 終了のために SSL 証明書を Application Gateway に渡す従来の方法を示しています。
 - HTTPS 対応リスナーの作成時に、必要に応じて、既存の Key Vault 証明書またはシークレットへの参照を指定できます。

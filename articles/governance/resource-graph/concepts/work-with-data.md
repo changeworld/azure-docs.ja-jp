@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 44f31a8c9e5b47fdcc62c87f6181a3812697aa4b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800183"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622625"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -171,4 +171,4 @@ response = client.resources(request)
 
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。
-- [リソースの探索](explore-resources.md)について学習します。
+- [リソースを探索する](explore-resources.md)方法の詳細を確認します。

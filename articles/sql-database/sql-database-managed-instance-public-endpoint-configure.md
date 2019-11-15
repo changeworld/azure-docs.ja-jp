@@ -1,5 +1,5 @@
 ---
-title: パブリック エンドポイントの構成 - Azure SQL Database マネージド インスタンス | Microsoft Docs
+title: パブリック エンドポイントの構成 - マネージド インスタンス
 description: マネージド インスタンスのパブリック エンドポイントの構成方法について説明します
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567402"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828027"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスのパブリック エンドポイントの構成
 

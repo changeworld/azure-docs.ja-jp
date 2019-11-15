@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c8e4027bd8892ff3bf5c598573b7736aea42953f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802092"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602573"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C:ユーザー移行
 
@@ -177,12 +177,12 @@ JSON ファイルを編集するには、`AADB2C.UserMigration.sln` Visual Studi
    1. **Azure AD B2C** を開き、 **[ユーザー]** を選択します。
    1. 検索ボックスにユーザーの表示名を入力して、ユーザーのプロファイルを表示します。
 
-- サインインのメール アドレスを使用してユーザーを取得するには、このサンプル アプリケーションを使用します。
+- サインイン メール アドレスでユーザーを取得するには、サンプル アプリケーションを使用します。
 
    1. 次のコマンドを実行します。
 
       ```Console
-          UserMigration.exe 3 {email address}
+          UserMigration.exe 3 {email address} > UserProfile.json
       ```
 
       > [!TIP]

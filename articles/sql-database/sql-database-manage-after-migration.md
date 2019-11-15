@@ -1,5 +1,5 @@
 ---
-title: 移行後に単一データベースとプールされたデータベースを管理する - Azure SQL Database | Microsoft Docs
+title: 移行後に単一データベースとプールされたデータベースを管理する
 description: Azure SQL Database への移行後のデータベースの管理方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028260"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818966"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 
@@ -39,7 +39,7 @@ ms.locfileid: "72028260"
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
 
-[Azure Portal](https://portal.azure.com/) で、ご利用のデータベースを選択し、 **[監視]** グラフをクリックすることによって、個々のデータベースの使用率を監視できます。 これにより、 **[メトリック]** ウィンドウが表示されます。 **[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
+[Azure portal](https://portal.azure.com/) で、ご利用のデータベースを選択し、 **[監視]** グラフをクリックすることによって、個々のデータベースの使用率を監視できます。 これにより、 **[メトリック]** ウィンドウが表示されます。 **[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
 
 - CPU の割合
 - DTU の割合

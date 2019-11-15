@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750260"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685112"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -258,34 +258,36 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ### <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 
-エンコード ジョブが完了したら、次に、出力**アセット**内のビデオをクライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
+エンコード ジョブが完了したら、次に、出力**アセット**内のビデオをクライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
 
-**ストリーミング ロケーター** を作成するプロセスは発行と呼ばれます。 既定では、**ストリーミング ロケーター** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
+ストリーミング ロケーターを作成するプロセスは発行と呼ばれます。 既定では、ストリーミング ロケーターは API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存在し続けます。 
 
 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアな (暗号化されていない) コンテンツをストリーム配信するので、定義済みのクリア ストリーミング ポリシー "Predefined_ClearStreamingOnly" が使用されます。
 
 > [!IMPORTANT]
 > カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 
 
-Media Service アカウントには、**ストリーミング ポリシー** エントリの数に対するクォータがあります。 **ストリーミング ロケーター**ごとに新しい**ストリーミング ポリシー**を作成しないでください。
+Media Service アカウントには、**ストリーミング ポリシー** エントリの数に対するクォータがあります。 ストリーミング ロケーターごとに新しい**ストリーミング ポリシー**を作成しないでください。
 
-1. Postman アプリの左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
-2. 次に、[Create a Streaming Locator]\(ストリーミング ロケーターの作成\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Streaming Policies and Locators]\(ストリーミング ポリシーとロケーター\) を選択します。
+2. 次に、[Create a Streaming Locator (clear)]\(ストリーミング ロケーターの作成 \(クリア\)\) を選択します。
 3. **[送信]** をクリックします。
 
     * 次の **PUT** 操作が送信されます。
 
         ```
-        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * 操作の本文は次のとおりです。
 
         ```json
         {
-            "properties":{
-            "assetName": "{{assetName}}",
-            "streamingPolicyName": "{{streamingPolicyName}}"
-            }
+          "properties": {
+            "streamingPolicyName": "Predefined_ClearStreamingOnly",
+            "assetName": "testAsset1",
+            "contentKeys": [],
+            "filters": []
+         }
         }
         ```
 

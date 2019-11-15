@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell スクリプト: Azure Data Factory を使ってデータを一括コピーする | Microsoft Docs'
+title: 'PowerShell スクリプト: Azure Data Factory を使用してデータを一括コピーする '
 description: この PowerShell スクリプトでは、Azure Data Factory を使い、ソース データ ストアからコピー先データ ストアにデータを一括コピーする方法について説明します。
 services: data-factory
 author: linda33wj
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: d2db5bced78a00c8acabc150752fe65e9515dff1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ab373d049e34a6a5528a4e0a3418a3304835d4b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480640"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684431"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使って複数のテーブルを一括コピーする
 

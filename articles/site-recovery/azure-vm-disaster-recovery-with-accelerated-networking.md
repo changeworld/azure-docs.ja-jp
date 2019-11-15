@@ -1,5 +1,5 @@
 ---
-title: 高速ネットワークと Azure 仮想マシンのディザスター リカバリー | Microsoft Docs
+title: Azure Site Recovery を使用した Azure VM ディザスター リカバリーのための高速ネットワークを有効にする
 description: Azure 仮想マシンのディザスター リカバリーを行う Azure Site Recovery で高速ネットワークを有効にする方法を説明します
 services: site-recovery
 documentationcenter: ''
@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: c7edc7979636ced8697aa5ad724f9c6600d840bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772482"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622426"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>高速ネットワークと Azure 仮想マシンのディザスター リカバリー
 

@@ -1,40 +1,40 @@
 ---
-title: 推奨タグを使用して画像により早くラベルを付ける
+title: Smart Labeler を使用して画像により早くラベルを付ける
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、Custom Vision モデルをトレーニングするときに、推奨タグを使用してより迅速に多数の画像にラベルを付ける方法について説明します。
+description: このガイドでは、Smart Labeler を使用して画像に対する推奨タグを生成する方法について説明します。 これにより、Custom Vision モデルをトレーニングするときに、多数の画像にすばやくラベルを付けることができます。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 10/29/2019
 ms.author: pafarley
-ms.openlocfilehash: 06735240729fb2bfd21b87f592e143e9ceabb390
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753482"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647761"
 ---
-# <a name="label-images-faster-with-suggested-tags"></a>推奨タグを使用して画像により早くラベルを付ける
+# <a name="label-images-faster-with-smart-labeler"></a>Smart Labeler を使用して画像により早くラベルを付ける
 
-このガイドでは、Custom Vision モデルをトレーニングするときに、推奨タグ機能を使用してより迅速に多数の画像にラベルを付ける方法について説明します。 
+このガイドでは、Smart Labeler を使用して画像に対する推奨タグを生成する方法について説明します。 これにより、Custom Vision モデルをトレーニングするときに、多数の画像にすばやくラベルを付けることができます。
 
 ユーザーが Custom Vision モデルの画像にタグを付けるとき、サービスではモデルの最新のトレーニング済みイテレーションを使用して、タグなし画像のラベルを予測します。 次に、選択した信頼度しきい値と予測不確実性に基づいて、これらの予測が推奨タグとして表示されます。 その後、ユーザーは提案を確認または変更し、トレーニング用の画像を手動でタグ付けする処理を高速化できます。
 
-## <a name="when-to-use-suggested-tags"></a>推奨タグを使用する場合
+## <a name="when-to-use-smart-labeler"></a>Smart Labeler を使用する場合
 
 次の制限事項に注意してください。
 
 * コンテンツが既にトレーニングされている画像の推奨タグのみを要求してください。 トレーニングを開始したばかりの新しいタグについて提案を取得しないでください。
 
 > [!IMPORTANT]
-> 推奨タグ機能では、通常の予測と同じ[価格モデル](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)を使用します。 画像のセットに対して推奨タグを初めてトリガーするときは、予測呼び出しの場合と同じ料金が発生します。 その後、サービスでは選択した画像の結果が 30 日間データベースに格納され、その期間内はいつでも無料でそれらにアクセスできます。 30 日後に、推奨タグを再度要求すると、料金が発生します。
+> Smart Labeler 機能では、通常の予測と同じ[価格モデル](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)が使用されます。 画像のセットに対して推奨タグを初めてトリガーするときは、予測呼び出しの場合と同じ料金が発生します。 その後、サービスでは選択した画像の結果が 30 日間データベースに格納され、その期間内はいつでも無料でそれらにアクセスできます。 30 日後に、推奨タグを再度要求すると、料金が発生します。
 
-## <a name="suggested-tags-workflow"></a>推奨タグのワークフロー
+## <a name="smart-labeler-workflow"></a>Smart Labeler のワークフロー
 
-次の手順で、推奨タグ機能の使用方法を示します。
+次の手順では、Smart Labeler の使用方法について説明します。
 
 1. すべてのトレーニング画像を Custom Vision プロジェクトにアップロードします。
 1. データ セットの一部にラベルを付け、タグごとに同じ数の画像を選択します。
@@ -44,7 +44,7 @@ ms.locfileid: "72753482"
 1. トレーニングが完了したら、 **[タグなし]** ビューに移動し、左側のウィンドウの **[Get suggested tags]\(推奨タグを取得\)** ボタンを選択します。
     > [!div class="mx-imgBorder"]
     > ![推奨タグのボタンはタグなし画像のタブの下に表示されます。](./media/suggested-tags/suggested-tags-button.png)
-1. 提案を必要とする画像のセットを選択します。 タグなし画像の一部に対する最初のタグの提案のみを取得する必要があります。 このプロセスを反復処理するにつれて、タグの提案が改善されます。
+1. 表示されるポップアップ ウィンドウで、候補として表示する画像の数を設定します。 タグなし画像の一部に対する最初のタグの提案のみを取得する必要があります。 このプロセスを反復処理するにつれて、タグの提案が改善されます。
 1. 推奨タグを確認し、正しくないものがあれば修正します。
     > [!TIP]
     > 推奨タグ付きの画像は、予測不確実性によって並べ替えられます (低い値は信頼度が高いことを示します)。 並べ替え順序は、 **[Sort by uncertainty]\(不確実性で並べ替え\)** オプションを使用して変更できます。 順序を **[high to low]\(高から低\)** に設定すると、まず、不確実性の高い予測を修正してから、不確実性の低いものをすばやく確認できます。

@@ -1,22 +1,20 @@
 ---
-title: Azure Functions の Premium プラン (プレビュー) | Microsoft Docs
+title: Azure Functions の Premium プラン
 description: Azure Functions の Premium プランの詳細と構成オプション (VNet、コールド スタートなし、無制限の実行期間)。
-services: functions
 author: jeffhollan
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 4/11/2019
+ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755414"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719041"
 ---
-# <a name="azure-functions-premium-plan-preview"></a>Azure Functions の Premium プラン (プレビュー)
+# <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
 Azure Functions の Premium プランは、関数アプリのホスティング オプションです。 Premium プランでは、VNet 接続、コールド スタートなし、プレミアム ハードウェアなどの機能が提供されます。  複数の関数アプリを同じ Premium プランにデプロイできます。プランでは、コンピューティング インスタンス サイズ、基本プラン サイズ、および最大プラン サイズを構成できます。  Premium プランと、他のプランおよびホスティング タイプの比較については、[関数のスケールとホスティング オプション](functions-scale.md)に関するページを参照してください。
 
@@ -59,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Premium プランにデプロイされた Azure Functions では、[Web アプリ向けの新しい VNet 統合](../app-service/web-sites-integrate-with-vnet.md)を利用します。  構成すると、アプリを VNet 内のリソースと通信させる、またはサービス エンドポイントを介してセキュリティで保護することができます。  受信トラフィックを制限するための IP 制限もアプリで利用できます。
 
-Premium プランで関数アプリにサブネットを割り当てるときは、個々の潜在的インスタンスのための十分な IP アドレスがあるサブネットが必要です。 プレビュー期間中にインスタンスの最大数が変わる可能性がありますが、少なくとも 100 個の利用可能なアドレスがある IP ブロックが必要です。
+Premium プランで関数アプリにサブネットを割り当てるときは、個々の潜在的インスタンスのための十分な IP アドレスがあるサブネットが必要です。 使用可能なアドレスが 100 以上の IP ブロックが必要です。
 
 詳細については、[関数アプリと VNet の統合](functions-create-vnet.md)に関するページを参照してください。
 
@@ -71,11 +69,9 @@ Premium プランで関数アプリにサブネットを割り当てるときは
 
 Azure Functions の従量課金プランでは、1 回の実行が 10 分までに制限されています。  Premium プランでは、実行中の暴走を防ぐために、実行継続時間の既定値が 30 分になっています。 ただし、[host.json 構成を変更](./functions-host-json.md#functiontimeout)して、Premium プランのアプリでこれを無制限にすることができます。
 
-プレビューでは、継続時間が過去 12 分間という保証はなく、アプリがその最小ワーカー数を超えてスケーリングされていない場合は、30 分を超えて実行される可能性が最も高くなります。
-
 ## <a name="plan-and-sku-settings"></a>プランと SKU の設定
 
-プランを作成するときに、2 つの設定を構成します。インスタンスの最小数 (またはプラン サイズ) と最大バースト制限です。  Premium プランの最小インスタンス数は 1 であり、プレビュー中の最大バーストは 20 です。  最小インスタンスは予約されており、常に実行されています。
+プランを作成するときに、2 つの設定を構成します。インスタンスの最小数 (またはプラン サイズ) と最大バースト制限です。  最小インスタンスは予約されており、常に実行されています。
 
 > [!IMPORTANT]
 > 関数が実行されているかどうかにかかわらず、最小インスタンスで割り当てられているインスタンスごとに課金されます。
@@ -102,15 +98,15 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ## <a name="regions"></a>リージョン
 
-以下に、パブリック プレビューで現在サポートされているリージョンを OS ごとに示します。
+各 OS で現在サポートされているリージョンは次のとおりです。
 
 |リージョン| Windows | Linux |
 |--| -- | -- |
-|オーストラリア中部| ✔* | |
-|オーストラリア中部 2| ✔* | |
+|オーストラリア中部| ✔<sup>1</sup> | |
+|オーストラリア中部 2| ✔<sup>1</sup> | |
 |オーストラリア東部| ✔ | |
 |オーストラリア南東部 | ✔ | ✔ |
-|ブラジル南部| ✔** |  |
+|ブラジル南部| ✔<sup>2</sup> |  |
 |カナダ中部| ✔ |  |
 |米国中部| ✔ |  |
 |東アジア| ✔ |  |
@@ -130,14 +126,11 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |西ヨーロッパ| ✔ | ✔ |
 |インド西部| ✔ |  |
 |米国西部| ✔ | ✔ |
+|米国西部 2| ✔ |  |
 
-\* 最大スケールアウトは 20 個のインスタンスに制限されます
+<sup>1</sup>最大スケールアウトは 20 個のインスタンスに制限されます。  
+<sup>2</sup>最大スケールアウトは 60 個のインスタンスに制限されます。
 
-\** 最大スケールアウトは 60 個のインスタンスに制限されます
-
-## <a name="known-issues"></a>既知の問題
-
-パブリック プレビューの既知の問題のステータスは [GitHub](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues) で追跡できます。
 
 ## <a name="next-steps"></a>次の手順
 

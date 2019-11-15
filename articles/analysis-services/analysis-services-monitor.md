@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services でのサーバー メトリックの監視 | Microsoft Docs
-description: Azure Portal で、Analysis Services のサーバー メトリックを監視する方法を説明します。
+description: Analysis Services が Azure メトリックス エクスプローラー (ポータル内の無料のツール) を使用して、サーバーのパフォーマンスと正常性の監視にどのように役立つかについて説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a66089d01ed9eabdb78975eb1738b87c99fbf311
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294874"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572726"
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 
@@ -27,7 +27,7 @@ Analysis Services は、ポータルの無料ツールの Azure メトリック�
 
     ![Azure Portal での監視](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. **[利用可能なメトリック]** で、お使いのグラフに含めるメトリックを選択します。 
+2. **[メトリック]** で、グラフに含めるメトリックを選択します。 
 
     ![監視グラフ](./media/analysis-services-monitor/aas-monitor-chart.png)
 

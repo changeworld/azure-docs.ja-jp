@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した SAP HANA からのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用した SAP HANA からのデータ移動
 description: Azure Data Factory を使用して SAP HANA からデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 159e10354726e86ff04cb12bff33b6a83bd1fa70
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ebd1cf22bffc6a136845672cedcefa7936eeece5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836098"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682351"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用した SAP HANA からのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]

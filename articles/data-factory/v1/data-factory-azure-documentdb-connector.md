@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB との間でのデータの移動 | Microsoft Docs
+title: Azure Cosmos DB との間でデータを移動する
 description: Azure Data Factory を使って Azure Cosmos DB コレクションに、または Azure Cosmos DB コレクションからデータを移動する方法を説明します
 services: data-factory, cosmosdb
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1016a7800ddcfd4066ec3f6d6dce00d01ad83471
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: c0ff1b9164f0e631bf148af88bd9efaaaa61f431
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839484"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683152"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -484,16 +484,16 @@ Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ
 ## <a name="appendix"></a>付録
 1. **質問:** コピー アクティビティは、既存のレコードの更新をサポートしていますか?
 
-    **回答:** いいえ。
+    **回答:** No.
 2. **質問:** Azure Cosmos DB へのコピーを再試行すると、既にコピーしたレコードはどのように扱われますか?
 
     **回答:** レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。
 3. **質問:** Data Factory では、[範囲またはハッシュ ベースのデータのパーティション分割](../../cosmos-db/sql-api-partition-data.md)はサポートされていますか?
 
-    **回答:** いいえ。
+    **回答:** No.
 4. **質問:** 1 つのテーブルに複数の Azure Cosmos DB コレクションを指定できますか?
 
-    **回答:** いいえ。 現時点では、1 つのコレクションだけを指定できます。
+    **回答:** No. 現時点では、1 つのコレクションだけを指定できます。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: e7c63d3b52a57a952c311937036f0f7da15ebefc
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ab28203a240cf360fb990ac42fdbc2d83864f68b
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299601"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604784"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -71,10 +71,12 @@ AKS クラスターのノードごとの最大ポッド数は 250 です。 ノ�
 
 ノードごとの最大ポッド数を構成できるのは*クラスターのデプロイ時のみ*です。 Azure CLI または Resource Manager テンプレートを使用してデプロイする場合、ノードごとの最大ポッド数の値を最大 250 に設定できます。
 
+ノードあたりの最大ポッドの最小値は、クラスターの正常性にとって重要なシステム ポッド用の領域を保証するために適用されます。 ノードごとの最大ポッドに対して設定できる最小値は、各ノード プールの構成に最低 30 個のポッド用の領域がある場合に限り、10 です。 たとえば、ノードあたりの最大ポッドを 10 以上に設定するには、個々のノード プールに少なくとも 3 つのノードが必要です。 この要件は、新しく作成された各ノード プールにも適用されます。したがって、ノードあたりの最大ポッドとして 10 が定義されている場合は、追加された以降の各ノード プールには少なくとも 3 つのノードが必要です。
+
 | ネットワーク | 最小値 | 最大値 |
 | -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
-| Kubenet | 30 | 110 |
+| Azure CNI | 10 | 250 |
+| Kubenet | 10 | 110 |
 
 > [!NOTE]
 > 上記の表の最小値は、AKS サービスによって厳密に強制されます。 示されている最小値より小さい maxPods 値を設定することはできません。そうすると、クラスターが起動できなくなることがあります。
@@ -149,7 +151,7 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 
 * *クラスター サブネットに VM を展開できますか。*
 
-  いいえ。 Kubernetes クラスターで使用されているサブネットに VM を展開することはできません。 VM を同じ仮想ネットワークにデプロイできますが、異なるサブネットにデプロイする必要があります。
+  No. Kubernetes クラスターで使用されているサブネットに VM を展開することはできません。 VM を同じ仮想ネットワークにデプロイできますが、異なるサブネットにデプロイする必要があります。
 
 * *ポッドごとのネットワーク ポリシーを構成できますか。*
 

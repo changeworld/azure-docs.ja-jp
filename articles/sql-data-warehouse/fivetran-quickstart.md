@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse の Fivetran クイック スタート | Microsoft Docs
+title: Fivetran クイックスタート
 description: Fivetran と Azure SQL Data Warehouse の使用をすぐに開始します。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d829ee67d516892283fa31d9180336d768170ac1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 250df3e106ae65cafc84a412c155e3a27c535c79
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65857014"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686123"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Fivetran と Azure SQL Data Warehouse の使用をすぐに開始する
 
@@ -70,7 +71,7 @@ ms.locfileid: "65857014"
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
-    詳細については、[メモリとコンカレンシーの制限](memory-and-concurrency-limits.md)と[リソース クラス](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)のドキュメントをご覧ください。
+    詳細については、[メモリとコンカレンシーの制限]memory-concurrency-limits.md)と[リソース クラス](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)のドキュメントをご覧ください。
 
 
 ## <a name="sign-in-to-fivetran"></a>Fivetran にサインインする

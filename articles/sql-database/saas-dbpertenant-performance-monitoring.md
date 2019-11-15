@@ -1,22 +1,22 @@
 ---
-title: Saas アプリ:多くの Azure SQL データベースのパフォーマンスを監視する | Microsoft Docs
+title: Saas アプリ:多くのデータベースのパフォーマンスを監視する
 description: マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 322cc2fd53972c7c084da76ac0c80b757d0d2297
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570415"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822229"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 

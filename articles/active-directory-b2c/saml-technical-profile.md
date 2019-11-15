@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C 内のカスタム ポリシーで SAML 技術プロファイルを定義する |Microsoft Docs
+title: Azure Active Directory B2C 内のカスタム ポリシーで SAML 技術プロファイルを定義する
 description: Azure Active Directory B2C 内のカスタム ポリシーで SAML 技術プロファイルを定義します。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/21/2018
+ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 38215ef49bdc5788e43e4ea0fedef2efd32d8213
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: b75367a90ce557f055ff4a9b1ff85f5b1f8f9637
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063783"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603058"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML 技術プロファイルを定義する
 
@@ -57,7 +57,6 @@ Azure AD B2C と SAML ID プロバイダー間の信頼関係をビルドする�
 次の図は、メタデータと証明書の交換を示しています。
 
 ![メタデータおよび証明書の交換](media/saml-technical-profile/technical-profile-idp-saml-metadata.png)
-
 
 ## <a name="digital-encryption"></a>デジタル暗号化
 
@@ -133,7 +132,7 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 | NameIdPolicyFormat | いいえ | 要求されたサブジェクトを表すために使用する名前識別子に対する制約を指定します。 省略した場合、要求されたサブジェクトに対して ID プロバイダーがサポートするあらゆる種類の識別子を使用できます。 たとえば、`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` を使用します。 **NameIdPolicyFormat** は **NameIdPolicyAllowCreate** とともに使用できます。 サポートされている名前 ID ポリシーに関するガイダンスについては、ID プロバイダーのドキュメントを参照してください。 |
 | NameIdPolicyAllowCreate | いいえ | **NameIdPolicyFormat** を使用するときに、**NameIDPolicy** の `AllowCreate` プロパティも指定できます。 このメタデータの値は `true` または `false` で、ID プロバイダーがサインイン フロー中に新しいアカウントを作成できるかどうかを示します。 この詳しい手順については、ID プロバイダーのドキュメントを参照してください。 |
 | AuthenticationRequestExtensions | いいえ | Azure AD BC と ID プロバイダー間で同意される省略可能なプロトコル メッセージ拡張機能要素。 拡張機能は、XML 形式で表示されます。 CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内部に XML データを追加します。 拡張機能要素がサポートされているかどうかは、ID プロバイダーのドキュメントを確認してください。 |
-| IncludeAuthnContextClassReferences | いいえ | 認証コンテキスト クラスを識別する URI 参照を 1 つ以上指定します。 たとえば、ユーザーがユーザー名とパスワードのみでサインインできるようにするには、値を `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` に設定します。 保護されたセッション (SSL/TLS) でユーザー名とパスワードを使用してサインインできるようにするには、`PasswordProtectedTransport` を指定します。 サポートされている **AuthnContextClassRef** URI に関するガイダンスについては、ID プロバイダーのドキュメントを参照してください。 |
+| IncludeAuthnContextClassReferences | いいえ | 認証コンテキスト クラスを識別する URI 参照を 1 つ以上指定します。 たとえば、ユーザーがユーザー名とパスワードのみでサインインできるようにするには、値を `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` に設定します。 保護されたセッション (SSL/TLS) でユーザー名とパスワードを使用してサインインできるようにするには、`PasswordProtectedTransport` を指定します。 サポートされている **AuthnContextClassRef** URI に関するガイダンスについては、ID プロバイダーのドキュメントを参照してください。 複数の URI をコンマ区切りのリストで指定します。 |
 | IncludeKeyInfo | いいえ | バインディングが `HTTP-POST` に設定されているときに、証明書の公開キーが SAML 認証要求に含まれるかどうかを示します。 指定できる値: `true` または `false`。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
@@ -146,20 +145,9 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 | SamlAssertionDecryption |はい | SAML メッセージを復号化するために使用する X509 証明書 (RSA キー セット)。 この証明書は、ID プロバイダーによって提供される必要があります。 Azure AD B2C では、この証明書を使用して、ID プロバイダーによって送信されるデータを復号化します。 |
 | MetadataSigning |いいえ | SAML データを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、メタデータに署名します。  |
 
-## <a name="examples"></a>例
+## <a name="next-steps"></a>次の手順
+
+Azure AD B2C での SAML ID プロバイダーの使用例については、次の記事を参照してください。
 
 - [カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する](active-directory-b2c-custom-setup-adfs2016-idp.md)
 - [SAML を利用した、Salesforce アカウントでのサインイン](active-directory-b2c-setup-sf-app-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

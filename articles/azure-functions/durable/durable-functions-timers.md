@@ -7,28 +7,28 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/08/2018
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11edfc11fc1e54684a99774c21517d4c322348b1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a24d6e96df3abf385b0a64ec4bc7e1f1c248998b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087042"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614631"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) には、遅延を実装したり、非同期アクションでタイムアウトを設定したりできるように、オーケストレーター関数で使用する "*持続的タイマー*" が用意されています。 持続的タイマーは、`Thread.Sleep` および `Task.Delay` (C#)、または `setTimeout()` および `setInterval()` (JavaScript) の代わりに、オーケストレーター関数で使用されます。
 
-持続的タイマーは、.NET の [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) の [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) メソッド、または JavaScript の `DurableOrchestrationContext` の `createTimer` メソッドを呼び出すことによって作成します。 メソッドは、指定した日時に再開するタスクを返します。
+[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の `CreateTimer` (.NET) メソッドまたは `createTimer` (JavaScript) メソッドを呼び出すことによって、持続的タイマーを作成します。 メソッドは、指定した日時に完了するタスクを返します。
 
 ## <a name="timer-limitations"></a>タイマーの制限事項
 
-午後 4 時 30 分に期限切れになるタイマーを作成すると、基になる Durable Task Framework は、午後 4 時 30分にのみ表示されるメッセージをエンキューします。 Azure Functions 従量課金プランで実行されている場合、新しく表示されるタイマー メッセージにより、適切な VM で関数アプリが確実にアクティブになります。
+午後 4 時 30 分に期限切れになるタイマーを作成すると、基になる Durable Task Framework は、午後 4 時 30 分にのみ表示されるメッセージをエンキューします。 Azure Functions 従量課金プランで実行されている場合、新しく表示されるタイマー メッセージにより、適切な VM で関数アプリが確実にアクティブになります。
 
 > [!NOTE]
-> * Azure Storage の制限のため、持続的タイマーは 7 日を超えて使用することができません。 マイクロソフトでは、[タイマー延長 (7 日超) に対する機能要求](https://github.com/Azure/azure-functions-durable-extension/issues/14)に取り組んでいます。
-> * 持続的タイマーの相対的な期限を計算する場合は、下の例に示すように、常に .NET では `DateTime.UtcNow` の代わりに [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) を、JavaScript では `Date.now` または `Date.UTC` の代わりに `currentUtcDateTime` を使用します。
+> * 現在、持続的タイマーは 7 日間に制限されています。 これよりも長い遅延が必要な場合、`while` ループでタイマー API を使用してシミュレートできます。
+> * 持続的タイマーの起動時間を計算するときは、.NET では `DateTime.UtcNow` ではなく `CurrentUtcDateTime` を、JavaScript では `Date.now` または `Date.UTC` ではなく `currentUtcDateTime` を常に使用します。 詳細については、「[オーケストレーター関数コードの制約](durable-functions-code-constraints.md)」の記事を参照してください。
 
 ## <a name="usage-for-delay"></a>遅延の使用
 
@@ -39,7 +39,7 @@ ms.locfileid: "70087042"
 ```csharp
 [FunctionName("BillingIssuer")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     for (int i = 0; i < 10; i++)
     {
@@ -50,7 +50,10 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前記の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```js
 const df = require("durable-functions");
@@ -78,7 +81,7 @@ module.exports = df.orchestrator(function*(context) {
 ```csharp
 [FunctionName("TryGetQuote")]
 public static async Task<bool> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     TimeSpan timeout = TimeSpan.FromSeconds(30);
     DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
@@ -104,7 +107,10 @@ public static async Task<bool> Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前記の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```js
 const df = require("durable-functions");
@@ -131,11 +137,11 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> コードでタイマーの完了を待たない場合は、`CancellationTokenSource` を使用して持続的タイマーをキャンセルするか (C#)、返された `TimerTask` に対して `cancel()` を呼び出します (JavaScript)。 Durable Task Framework では、未処理のタスクすべてが完了するかキャンセルされるまで、オーケストレーションの状態は "完了" に変更されません。
+> コードでタイマーの完了を待たない場合は、`CancellationTokenSource` を使用して持続的タイマーをキャンセルするか (.NET)、返された `TimerTask` に対して `cancel()` を呼び出します (JavaScript)。 Durable Task Framework では、未処理のタスクすべてが完了するかキャンセルされるまで、オーケストレーションの状態は "完了" に変更されません。
 
-このメカニズムは、実際には、進行中のアクティビティ関数の実行を終了するのではなく、 オーケストレーター関数が、単に結果を無視して、次に進めるようにするだけです。 関数アプリが従量課金プランを使用している場合は、アクティビティ関数を破棄しても、その関数によって消費される時間とメモリはすべて課金対象となります。 既定では、従量課金プランで実行されている関数のタイムアウトは、5 分に設定されています。 この制限を超えると、Azure Functions ホストは、すべての実行を停止し、ランナウェイ課金状況を回避するために、リサイクルされます。 [関数のタイムアウトは構成可能](../functions-host-json.md#functiontimeout)です。
+このキャンセル メカニズムは、進行中のアクティビティ関数またはサブオーケストレーションの実行は終了させません。 オーケストレーター関数が、単に結果を無視して、次に進めるようにするだけです。 関数アプリが従量課金プランを使用している場合は、アクティビティ関数を破棄しても、その関数によって消費される時間とメモリはすべて課金対象となります。 既定では、従量課金プランで実行されている関数のタイムアウトは、5 分に設定されています。 この制限を超えると、Azure Functions ホストは、すべての実行を停止し、ランナウェイ課金状況を回避するために、リサイクルされます。 [関数のタイムアウトは構成可能](../functions-host-json.md#functiontimeout)です。
 
-オーケストレーター関数でタイムアウトを実装する方法の詳細な例については、[人による操作とタイムアウト - 電話検証](durable-functions-phone-verification.md)のチュートリアルをご覧ください。
+オーケストレーター関数でタイムアウトを実装する方法の詳細な例については、[人による操作とタイムアウト - 電話検証](durable-functions-phone-verification.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

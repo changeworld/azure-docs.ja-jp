@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse でのトランザクションの使用 | Microsoft Docs
+title: トランザクションの使用
 description: ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479603"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692775"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>SQL Data Warehouse でのトランザクションの使用
 ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。
@@ -175,7 +176,7 @@ SELECT @xact_state AS TransactionState;
 
 変更点をまとめると、CATCH ブロック内でエラー情報の読み取り前にトランザクションの ROLLBACK が発生するようになりました。
 
-## <a name="errorline-function"></a>Error_Line() 関数
+## <a name="error_line-function"></a>Error_Line() 関数
 SQL Data Warehouse では、ERROR_LINE() 関数を実装およびサポートしていないことにも注意してください。 この関数がコードに含まれている場合は、SQL Data Warehouse に準拠するために削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 詳しくは、[ラベル](sql-data-warehouse-develop-label.md)に関する記事をご覧ください。
 
 ## <a name="using-throw-and-raiserror"></a>THROW と RAISERROR の使用

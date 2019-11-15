@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse のワークロード管理用のリソース クラス | Microsoft Docs
+title: ワークロード管理用のリソース クラス
 description: Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、コンカレンシーとコンピューティング リソース を管理するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 11/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035086"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685934"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のリソース クラスでのワークロード管理
 
@@ -35,7 +36,7 @@ Azure SQL Data Warehouse のクエリで、リソース クラスを使用して
 
 リソース クラスでは、リソースの消費を測定するのにコンカレンシー スロットを使用します。  [コンカレンシー スロット](#concurrency-slots)については、この記事で後述します。
 
-- リソース クラスのリソース使用率を表示するには、「[Memory and concurrency limits](memory-and-concurrency-limits.md#concurrency-maximums)」 (メモリとコンカレンシーの制限) を参照してください。
+- リソース クラスのリソース使用率を表示するには、メモリおよびコンカレンシーの制限に関する記事 (memory-concurrency-limits.md) を参照してください。
 - リソース クラスを調整するには、別のユーザーとしてクエリを実行するか、[現在のユーザーのリソース クラス](#change-a-users-resource-class) メンバーシップを変更します。
 
 ### <a name="static-resource-classes"></a>静的リソース クラス
@@ -331,7 +332,7 @@ SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_
     SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
+,map  
 AS
 (
   SELECT CONVERT(varchar(20), 'SloDWGroupSmall') AS wg_name, slots_used_smallrc AS slots_used FROM alloc WHERE DWU = @DWU
@@ -580,7 +581,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 データベース ユーザーの管理とセキュリティの詳細については、「[SQL Data Warehouse でのデータベース保護][Secure a database in SQL Data Warehouse]」を参照してください。 大規模なリソース クラスを使用してクラスター化列ストア インデックスの品質を向上させる方法については、[列ストアを圧縮するためのメモリの最適化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事を参照してください。
 

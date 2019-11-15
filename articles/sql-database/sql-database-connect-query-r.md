@@ -1,5 +1,5 @@
 ---
-title: Machine Learning service で R を使用して Azure SQL Database にクエリを実行する
+title: Machine Learning service で R を使用してクエリを実行する
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: このトピックでは、Azure SQL Database Machine Learning service で R スクリプトを使用して、Azure SQL データベースに接続し、Transact-SQL ステートメントを使用してデータベースに照会する方法について説明します。
 services: sql-database
@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514854"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826974"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>クイック スタート:Machine Learning service で R を使用して Azure SQL データベースにクエリを実行する (プレビュー)
 
@@ -47,7 +47,7 @@ ms.locfileid: "68514854"
 
   || 単一データベース |
   |:--- |:--- |
-  | Create| [ポータル](sql-database-single-database-get-started.md) |
+  | 作成| [ポータル](sql-database-single-database-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md) |

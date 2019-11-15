@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240989"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641499"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -77,6 +77,16 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
   - **常に** - このマッピングをユーザーの作成と更新の両方のアクションに適用します。
   - **作成中のみ** - このマッピングをユーザーの作成アクションのみに適用します。
 
+## <a name="matching-users-in-the-source-and-target--systems"></a>ソース システムとターゲット システムで一致するユーザー
+Azure AD プロビジョニング サービスは、"未開発" (ユーザーがターゲット システムに存在しない) シナリオと "再開発" (ユーザーが既にターゲット システムに存在する) シナリオのどちらでもデプロイできます。 両方のシナリオをサポートするために、プロビジョニング サービスでは、一致する属性の概念を使用します。 一致する属性を利用すると、ソースのユーザーを一意に識別してターゲットのユーザーとの一致を判定する方法を任意に決定できます。 デプロイの計画の一環として、ソース システムとターゲット システムのユーザーを一意に識別するために使用できる属性を特定します。 注意する点:
+
+- **一致する属性は一意であることが望ましい:** 顧客は多くの場合、userPrincipalName、mail、オブジェクト ID などの属性を一致する属性として使用します。
+- **複数の属性を一致する属性として使用できる:** ユーザーを一致するときに評価される複数の属性と、それらの属性が評価される順序 (UI では一致の優先順位として定義されます) を定義することができます。 たとえば、一致する属性として 3 つの属性を定義し、最初の 2 つの属性を評価した後にユーザーが一意に一致する場合、サービスは 3 番目の属性を評価しません。 サービスは、指定された順序で一致する属性を評価し、一致が見つかったら評価を停止します。  
+- **ソースとターゲットの値が厳密に一致している必要はない:** ターゲットの値は、ソースの値の単純な関数である可能性があります。 したがって、ソースに emailAddress 属性、ターゲットに userPrincipalName がある場合に、emailAddress 属性の関数で一部の文字を何らかの定数値に置き換えることによって一致を判定できる場合があります。  
+- **属性の組み合わせに基づいた一致はサポートされていない:** 2 つのプロパティに基づいたクエリはほとんどのアプリケーションでサポートされていないため、属性の組み合わせに基づいて一致を判定することはできません。 プロパティを 1 つずつ順番に評価することは可能です。
+- **少なくとも 1 つの一致する属性の値をすべてのユーザーが持っていることが必要:** 1 つの一致する属性を定義する場合、ソース システムですべてのユーザーがその属性の値を持っている必要があります。 たとえば、userPrincipalName を一致する属性として定義する場合、すべてのユーザーが userPrincipalName を持っている必要があります。 複数の一致する属性 (例: extensionAttribute1 と mail) を定義する場合、すべてのユーザーが同じ一致する属性を持っている必要はありません。 あるユーザーが extensionAttribute1 を持っていて mail は持っていない一方、別のユーザーが mail を持っていて extensionAttribute1 は持っていなくても問題ありません。 
+- **ターゲット アプリケーションは一致する属性のフィルター処理をサポートする必要がある:** アプリケーション開発者が、ユーザーまたはグループ API で属性のサブセットに対するフィルター処理を許可します。 ギャラリー内のアプリケーションの場合、既定の属性マッピングは、ターゲット アプリケーションの API でフィルター処理がサポートされている属性に対するものであることが保証されています。 ターゲット アプリケーションの既定の一致する属性を変更するときは、サードパーティの API ドキュメントを参照して、その属性がフィルター処理可能であることを確認してください。  
+
 ## <a name="editing-group-attribute-mappings"></a>グループ属性マッピングの編集
 
 ServiceNow、Box、G Suite などいくつかのアプリケーションでは、グループ オブジェクトとユーザー オブジェクトをプロビジョニングする機能がサポートされています。 グループ オブジェクトには、グループ メンバーと共に表示名や電子メール別名などのグループ プロパティを含めることができます。
@@ -125,6 +135,113 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
 新しい属性を追加するには、サポートされる属性一覧の最後までスクロールしてから、提供された入力値を使用して上のフィールドを設定し、 **[属性の追加]** を選択します。 属性の追加が終了したら、 **[保存]** を選択します。 新しい属性を属性マッピング エディターで使用できるようにするには、 **[プロビジョニング]** タブをリロードする必要があります。
+## <a name="provisioning-a-role-to-a-scim-app"></a>SCIM アプリへのロールのプロビジョニング
+ユーザーのロールをアプリケーションにプロビジョニングするには、次の手順を使用します。 下記の説明は、カスタム SCIM アプリケーションに固有のものであることに注意してください。 Salesforce や ServiceNow などのギャラリー アプリケーションの場合、事前定義済みのロール マッピングを使用します。 下記の項目は、アプリケーションで想定されている形式に AppRoleAssignments 属性を変換する方法を説明しています。
+
+- Azure AD の appRoleAssignment をアプリケーションのロールにマップするには、[式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)を使用して属性を変換する必要があります。 ロールの詳細を解析するための式を使用せずに、appRoleAssignment 属性をロール属性に**直接マップしないでください**。 
+
+- **SingleAppRoleAssignment** 
+  - **使用する場合:** ユーザーの 1 つのロールをプロビジョニングする、またプライマリ ロールを指定するには、SingleAppRoleAssignment 式を使用します。 
+  - **構成方法:** 上記の手順を使用して、属性マッピング ページに移動し、SingleAppRoleAssignment 式を使用してロール属性にマップします。 roles[primary eq "True"].display、roles[primary eq "True].type、roles[primary eq "True"].value の 3 つのロール属性から選択します。 ロール属性の一部または全部をマッピングに含めることを選択できます。 複数を含める場合は、新しいマッピングを追加し、それをターゲット属性として含めるだけです。  
+  
+  ![SingleAppRoleAssignment を追加する](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  - **考慮事項**
+    - 複数のロールが 1 人のユーザーに割り当てられていないことを確認してください。 どのロールがプロビジョニングされるかを保証することはできません。
+    
+  - **出力例** 
+
+   ```json
+    {
+      "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": true,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "value": "Admin"
+         }
+      ]
+   }
+   ```
+  
+- **AppRoleAssignmentsComplex** 
+  - **使用する場合:** 1 人のユーザーに複数のロールをプロビジョニングするには、AppRoleAssignmentsComplex 式を使用します。 
+  - **構成方法:** ロールの新しい属性を含めるには、上記のサポートされている属性の一覧を編集します。 
+  
+    ![ロールを追加する](./media/customize-application-attributes/add-roles.png)<br>
+
+    その後、次の画像に示すように、AppRoleAssignmentsComplex 式を使用してカスタムのロール属性にマップします。
+
+    ![AppRoleAssignmentsComplex を追加する](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+  - **考慮事項**
+    - すべてのロールは primary = false としてプロビジョニングされます。
+    - POST にはロールの種類が含まれます。 PATCH 要求には種類は含まれません。 POST 要求と PATCH 要求の両方で種類を送信できるよう、作業を進めています。
+    
+  - **出力例** 
+  
+   ```json
+   {
+       "schemas": [
+           "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "Admin",
+               "value": "Admin"
+         },
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "User",
+             "value": "User"
+         }
+      ]
+   }
+   ```
+
+  
+
+
+## <a name="provisioning-a-multi-value-attribute"></a>複数の値を持つ属性のプロビジョニング
+phoneNumbers や emails のように、一部の属性は複数の値を持ち、異なる種類の電話番号やメール アドレスを指定することが必要な場合もあります。 複数の値を持つ属性には、次の式を使用します。 この式では、属性の種類を指定し、値に対応する Azure AD のユーザー属性にその種類をマップすることができます。 
+
+* phoneNumbers[type eq "work"].value
+* phoneNumbers[type eq "mobile"].value
+* phoneNumbers[type eq "fax"].value
+
+   ```json
+   "phoneNumbers": [
+       {
+         "value": "555-555-5555",
+         "type": "work"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "mobile"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "fax"
+      }
+   ]
+   ```
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>既定の属性と属性マッピングの復元
 

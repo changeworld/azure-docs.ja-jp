@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric Mesh アプリのスケーラビリティ | Microsoft Docs
-description: Azure Service Fabric Mesh のサービスの拡大縮小について説明します。
+description: Service Fabric Mesh にアプリケーションをデプロイすることの利点の 1 つは、手動でも自動スケールのポリシーを使用した場合でも、サービスを簡単にスケーリングできることです。
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,12 +9,12 @@ ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 1688cac35ea9de43bac529a4994bd4ea55eb0ab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811090"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662992"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric Mesh アプリケーションの拡大縮小
 

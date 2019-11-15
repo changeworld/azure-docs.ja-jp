@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984359"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794208"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -52,8 +52,8 @@ QnA Maker サービスでは、**サブスクリプション キー**と**エン
     * QnA Maker 管理サービス (ポータルおよび Management API) の**価格レベル**を選択します。 [詳細については、SKU の価格](https://aka.ms/qnamaker-pricing)に関するページをご覧ください。
     * この QnA Maker リソースのデプロイ先として、新しい**リソース グループ**を作成する (推奨) か、既存のリソース グループを使用します。 QnA Maker はいくつかの Azure リソースを作成します。 これらのリソースを保持するリソース グループを作成すると、リソースの検索、管理、および削除を、リソース グループ名によって簡単に実行できます。
     * **リソース グループの場所**を選択します。
-    * Azure Search サービスの**検索価格レベル**を選択します。 Free レベル オプションを利用できない (灰色表示されている) 場合、それは、ご利用のサブスクリプションで Free Azure Search レベルが既にデプロイされていることを意味します。 その場合は、Basic Azure Search レベルから開始する必要があります。 [Azure Search の価格の詳細](https://azure.microsoft.com/pricing/details/search/)をご覧ください。
-    * Azure Search データのデプロイ先となる**検索場所**を選択します。 顧客データをどの場所に格納する必要があるかの制限に基づいて、Azure Search で使用する場所を選択できます。
+    * Azure Cognitive Search サービスの**検索価格レベル**を選択します。 Free レベル オプションを利用できない (灰色表示されている) 場合、それは、ご利用のサブスクリプションで Free サービスが既にデプロイされていることを意味します。 その場合は、Basic レベルから開始する必要があります。 [Azure Cognitive Search の価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページを参照してください。
+    * Azure Cognitive Search インデックスのデプロイ先となる**検索場所**を選択します。 顧客データをどの場所に格納する必要があるかの制限に基づいて、Azure Cognitive Search で使用する場所を選択できます。
     * **[アプリ名]** フィールドに、Azure App Service インスタンスの名前を入力します。
     * App Service の既定のレベルは Standard (S1) になります。 このプランは、作成後に変更することができます。 詳細については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
     * App Service のデプロイ先となる **Web サイトの場所**を選択します。
@@ -128,7 +128,7 @@ Azure Resource Manager テンプレートを使用して QnA サービスを作�
 |--|--|
 |QnA Maker 管理 SKU の[アップグレード](#upgrade-qna-maker-sku)|ナレッジ ベースにより多くの質問と回答を含めたい。|
 |App Service SKU の[アップグレード](#upgrade-app-service)|ナレッジ ベースでクライアント アプリ (チャット ボットなど) からのより多くの要求に対応する必要がある。|
-|Azure Search サービスの[アップグレード](#upgrade-the-azure-search-service)|多数のナレッジ ベースを使用する予定である。|
+|Azure Cognitive Search サービスの[アップグレード](#upgrade-the-azure-cognitive-search-service)|多数のナレッジ ベースを使用する予定である。|
 
 
 ### <a name="upgrade-qna-maker-sku"></a>QnA Maker の SKU をアップグレードする
@@ -155,9 +155,9 @@ Azure portal で App Service リソースに移動し、必要に応じて **[�
 
 ![QnA Maker App Service のスケーリング](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-search-service"></a>Azure Search サービスをアップグレードする
+### <a name="upgrade-the-azure-cognitive-search-service"></a>Azure Cognitive Search サービスのアップグレード
 
-多数のナレッジ ベースを使用する予定の場合は、Azure Search サービスの価格レベルをアップグレードします。
+多数のナレッジ ベースを使用する予定の場合は、Azure Cognitive Search サービスの価格レベルをアップグレードします。
 
 現在、Azure Search SKU のインプレース アップグレードを実行することはできません。 ただし、必要な SKU で新しい Azure Search リソースを作成し、その新しいリソースにデータを復元して、QnA Maker スタックにリンクすることはできます。 そのためには、次の手順に従います。
 

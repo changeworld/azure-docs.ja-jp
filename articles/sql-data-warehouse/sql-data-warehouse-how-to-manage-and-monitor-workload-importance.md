@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Data Warehouse でのワークロードの重要度の管理と監視 |Microsoft Docs
-description: 要求レベルの重要度を管理および監視する方法について説明します。
+title: ワークロードの重要度の管理と監視
+description: Azure SQL Data Warehouse で要求レベルの重要度を管理および監視する方法について説明します。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 30afe1805748012b0a137c865c799580f79d31d8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: ee9acb873c5118733de142045457028c3f4d5f61
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588641"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692715"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのワークロードの重要度の管理と監視
 

@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6cce859aa26935f0b6007fe8e5ff2c2239b210
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109445"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721033"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -165,7 +165,8 @@ Azure AD Connect Health ポータルでは、アラート、パフォーマン�
 * **[Active Directory Domain Services]** : このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD DS フォレストが表示されます。 フォレストを選択すると、ブレードが開いてそのフォレストに関する情報が表示されます。 この情報には、重要度のきわめて高い情報、ドメイン コントローラーのダッシュボード、レプリケーションの状態のダッシュボード、アラート、監視の概要が含まれます。 「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」で各種機能を参照してください。
 * **構成する**:このセクションには、次の機能をオンまたはオフに切り替えるオプションがあります。
 
-  - **[設定]** エントリには、エージェントの基本的な構成が含まれています。 自動アップグレード設定は、Azure AD Connect Health エージェントの最新バージョンへの自動更新を可能にします。Azure AD Connect Health Agent の最新バージョンが利用可能になると、自動的に更新されます。 この機能は、既定では有効になっています。 Microsoft がトラブルシューティングの目的でのみ Azure AD ディレクトリの正常性データにアクセスすることを許可する: この機能が有効になっていると、ユーザーに表示されているのと同じデータを Microsoft でも表示できます。 この情報は問題のトラブルシューティングと支援に役立ちます。 この機能は、既定では無効になっています。
+   - Azure AD Connect Health エージェントの最新バージョンへの**自動更新**: 新しいバージョンが利用可能になるたびに、Azure AD Connect Health エージェントが自動的に更新されます。 このオプションは、既定で有効です。
+   - トラブルシューティングの目的限定での Microsoft による Azure AD ディレクトリ整合性からの**データへのアクセス**: このオプションが有効になっている場合、Microsoft は、ユーザーが表示したデータと同じものにアクセスできます。 この情報は、トラブルシューティングや、必要なサポートの提供に役立ちます。 このオプションは、既定で無効です。
 * **[ロール ベースのアクセス制御 (IAM)]** は、ロール ベースの Connect Health データへのアクセスを管理するためのセクションです。 
 
 ## <a name="next-steps"></a>次の手順

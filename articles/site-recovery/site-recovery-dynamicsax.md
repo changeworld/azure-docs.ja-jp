@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して多層 Dynamics AX デプロイのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用した多層 Dynamics AX デプロイのディザスター リカバリー | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して Dynamics AX のディザスター リカバリーを設定する方法について説明します
 author: asgang
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61281487"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620753"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定   
 

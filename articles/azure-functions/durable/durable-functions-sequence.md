@@ -9,16 +9,18 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ee5b18ddc734335ddac2a7d3352de0e4388f445d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 133169c659328fa4f713eb4b75bc460dee7a3f76
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933269"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614684"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
 関数チェーンとは、特定の順序で一連の関数を実行するパターンです。 ある関数の出力が、別の関数の入力に適用される必要がある、ということがよくあります。 この記事では、Durable Functions のクイックスタート ([C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md)) を実行するときに作成するチェーンのシーケンスについて説明します。 Durable Functions について詳しくは、「[Durable Functions overview](durable-functions-overview.md)」(Durable Functions の概要) をご覧ください。
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -32,7 +34,7 @@ ms.locfileid: "70933269"
 以下のセクションでは、C# スクリプトと JavaScript で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
 
 > [!NOTE]
-> JavaScript Durable Functions は、Functions 2.x ランタイムでのみ利用できます。
+> JavaScript Durable Functions は、Functions 2.0 ランタイムでのみ利用できます。
 
 ## <a name="e1_hellosequence"></a>E1_HelloSequence
 
@@ -45,7 +47,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 重要な点は、`orchestrationTrigger` というバインドの種類です。 すべての orchestrator 機能は、このトリガーの種類を使用する必要があります。
 
 > [!WARNING]
-> Orchestrator 機能の "I/O なし" の規則に従うには、`orchestrationTrigger` トリガー バインドを使用する場合に、入力または出力バインドを使用しないでください。  他の入力または出力バインドが必要な場合は、`activityTrigger` 関数のコンテキストで使用する必要があります。それらがオーケストレーターによって呼び出されます。
+> Orchestrator 機能の "I/O なし" の規則に従うには、`orchestrationTrigger` トリガー バインドを使用する場合に、入力または出力バインドを使用しないでください。  他の入力または出力バインドが必要な場合は、`activityTrigger` 関数のコンテキストで使用する必要があります。それらがオーケストレーターによって呼び出されます。 詳細については、「[オーケストレーター関数コードの制約](durable-functions-code-constraints.md)」の記事を参照してください。
 
 ### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# スクリプト (Visual Studio Code と Azure Portal のサンプル コード)
 
@@ -53,7 +55,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-すべての C# オーケストレーション関数は、`Microsoft.Azure.WebJobs.Extensions.DurableTask` アセンブリにある `DurableOrchestrationContext` 型のパラメーターを持つ必要があります。 C# スクリプトを使用している場合、アセンブリは `#r` 表記を使用して参照できます。 このコンテキスト オブジェクトでは、他の*アクティビティ*関数を呼び出し、その [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) メソッドを使用して入力パラメーターを渡すことができます。
+すべての C# オーケストレーション関数は、`Microsoft.Azure.WebJobs.Extensions.DurableTask` アセンブリにある `DurableOrchestrationContext` 型のパラメーターを持つ必要があります。 C# スクリプトを使用している場合、アセンブリは `#r` 表記を使用して参照できます。 このコンテキスト オブジェクトでは、他の*アクティビティ*関数を呼び出し、その `CallActivityAsync` メソッドを使用して入力パラメーターを渡すことができます。
 
 このコードでは、`E1_SayHello` を異なるパラメーター値で 3 回続けて呼び出します。 各呼び出しの戻り値が `outputs` 一覧に追加され、それが関数の末尾に返されます。
 
@@ -63,7 +65,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-すべての JavaScript オーケストレーション関数に、[`durable-functions` module](https://www.npmjs.com/package/durable-functions) モジュールが含まれている必要があります。 これは、Durable Functions を JavaScript で記述することができるライブラリです。 オーケストレーション関数と他の JavaScript 関数には、次の 3 つの大きな違いがあります。
+すべての JavaScript オーケストレーション関数に、[`durable-functions` module](https://www.npmjs.com/package/durable-functions) モジュールが含まれている必要があります。 それは、Durable Functions を JavaScript で記述することができるライブラリです。 オーケストレーション関数と他の JavaScript 関数には、次の 3 つの大きな違いがあります。
 
 1. この関数は[ジェネレーター関数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)です。
 2. この関数は、`durable-functions` モジュールの `orchestrator` メソッドの呼び出しにラップされます (ここでは `df`)。
@@ -88,7 +90,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-この関数は [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) 型のパラメーターを持ち、オーケストレーター関数の [`CallActivityAsync<T>`](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) への呼び出しによって渡された入力を取得するのに使用されます。
+この関数は `DurableActivityContext` 型のパラメーターを持ち、オーケストレーター関数の `CallActivityAsync<T>` への呼び出しによって渡された入力を取得するのに使用されます。
 
 ### <a name="javascript"></a>JavaScript
 
@@ -115,7 +117,7 @@ POST http://{host}/orchestrators/E1_HelloSequence
 HTTP/1.1 202 Accepted
 Content-Length: 719
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
 (...trimmed...)
 ```
@@ -123,7 +125,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/96924899
 この時点で、オーケストレーションはキューに登録され、すぐに実行を開始します。 `Location` ヘッダー内の URL は、実行状態を確認するのに使用できます。
 
 ```
-GET http://{host}/admin/extensions/DurableTaskExtension/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+GET http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
 この結果がオーケストレーションの状態です。 迅速に実行して完了し、次のような応答で*完了*状態にあることがわかります(簡潔にするため省略しています)。

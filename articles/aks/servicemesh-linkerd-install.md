@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ec8250f6cdb44af3c99c1d34d1f14fbd2209aac0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529739"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747716"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Linkerd をインストールする
 
@@ -248,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > 実行中のシステムから Linkerd を削除すると、サービス間のトラフィックに関連する問題が発生することがあります。 進める前に、Linkerd なしでもシステムが正しく動作するようにプロビジョニングを作成することをお勧めします。
 
-まず、データ プレーンのプロキシを削除する必要があります。 ワークロードの名前空間から自動プロキシ挿入の[注釈][linkerd-automatic-proxy-injection]をすべて削除し、ワークロードのデプロイをロールします。 ワークロードには、関連付けられているデータ プレーン コンポーネントがなくなります。
+まず、データ プレーンのプロキシを削除する必要があります。 ワークロードの名前空間から自動プロキシ挿入の[注釈][linkerd-automatic-proxy-injection]をすべて削除し、ワークロードのデプロイをロールアウトします。 ワークロードには、関連付けられているデータ プレーン コンポーネントがなくなります。
 
 最後に、コントロール プレーンを次のように削除します。
 

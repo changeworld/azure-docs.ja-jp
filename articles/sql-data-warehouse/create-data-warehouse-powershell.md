@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure SQL データ ウェアハウスを作成する - Azure PowerShell | Microsoft Docs
+title: クイック スタート:ウェアハウスの作成 - Azure Powershell
 description: Azure PowerShell を使用して、SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、データ ウェアハウスをすばやく作成します。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cfc427b11944cb81d8bc3d12d13668d53be698b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574893"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693104"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure SQL Data Warehouse を作成し、クエリを実行する
 
@@ -119,7 +120,7 @@ New-AzSqlDatabase `
 
 必要なパラメーターは以下のとおりです。
 
-* **RequestedServiceObjectiveName**:要求する[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)の量。 この量を増やすと、コンピューティング コストが増加します。 サポートされている値の一覧については、[メモリとコンカレンシーの制限](memory-and-concurrency-limits.md)に関する記事をご覧ください。
+* **RequestedServiceObjectiveName**:要求する[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)の量。 この量を増やすと、コンピューティング コストが増加します。 サポートされている値の一覧については、[メモリとコンカレンシーの制限]memory-concurrency-limits.md)に関する記事をご覧ください。
 * **DatabaseName**:作成する SQL Data Warehouse の名前。
 * **ServerName**:作成の際に使用するサーバーの名前。
 * **ResourceGroupName**:使用するリソース グループ。 サブスクリプションで使用可能なリソース グループを調べるには Get-AzureResource を使用します。

@@ -1,23 +1,20 @@
 ---
 title: Azure Functions の関数アプリのリソース デプロイを自動化 | Microsoft Docs
 description: 関数アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。
-services: Functions
-documtationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 関数, サーバーレス アーキテクチャ, コードとしてのインフラストラクチャ, Azure Resource Manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.service: azure-functions
-ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: ff5b104c9fa1bedf1f710c06761b6449b20bbf05
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 8435aab65d26627de26fb8b5ad0510fcd7c57c33
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263200"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575951"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -28,9 +25,6 @@ Azure Resource Manager テンプレートを使用して、関数アプリをデ
 サンプル テンプレートについては、以下を参照してください。
 - [従量課金プランの関数アプリ]
 - [Azure App Service プランの関数アプリ]
-
-> [!NOTE]
-> Azure Functions のホスティング用の Premium プランは現在、プレビュー段階です。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。
 
 ## <a name="required-resources"></a>必要なリソース
 
@@ -314,7 +308,7 @@ Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定さ
 
 ## <a name="deploy-on-premium-plan"></a>Premium プランでデプロイする
 
-Premium プランでは、従量課金プランと同じスケーリングが提供されますが、専用リソースと追加の機能が含まれています。 詳細については、「[Azure Functions の Premium プラン (プレビュー)](./functions-premium-plan.md)」を参照してください。
+Premium プランでは、従量課金プランと同じスケーリングが提供されますが、専用リソースと追加の機能が含まれています。 詳細については、「[Azure Functions の Premium プラン](./functions-premium-plan.md)」を参照してください。
 
 ### <a name="create-a-premium-plan"></a>Premium プランを作成する
 

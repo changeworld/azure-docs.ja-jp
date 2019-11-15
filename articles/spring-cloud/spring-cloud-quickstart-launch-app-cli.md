@@ -1,20 +1,17 @@
 ---
-title: Azure CLI を使用して Java Spring アプリケーションを起動する
+title: クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 description: このクイックスタートでは、Azure CLI でサンプル アプリケーションを Azure Spring Cloud にデプロイします。
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 6d399f04015140477af17f718c3e2205b8c3855f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 3bc1bfcf58d622151f0af9c6da693c5533bcf966
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170558"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721613"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 
@@ -34,8 +31,7 @@ Azure Spring Cloud では、Spring Boot ベースのマイクロサービス ア
 ## <a name="prerequisites"></a>前提条件
 
 >[!Note]
-> このクイックスタートを開始する前に、自分の Azure サブスクリプションで Azure Spring Cloud にアクセスできることを確認してください。  プレビュー サービスとして、Microsoft がお客様のサブスクリプションを許可リストに追加できるよう、ご連絡をお願いしています。  Azure Spring Cloud の機能を試してみたい場合は、[このフォームに記入](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-)してください。
+> Azure Spring Cloud は現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー期間中のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) のページを確認するか、詳細について[サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を提出してください。
 
 >[!TIP]
 > Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。  最新バージョンの Git、JDK、Maven、Azure CLI など、一般的な Azure ツールがプレインストールされています。 Azure サブスクリプションにログインしている場合は、shell.azure.com から [Azure Cloud Shell](https://shell.azure.com) を起動します。  Azure Cloud Shell の詳細については、[ドキュメントを参照](../cloud-shell/overview.md)してください
@@ -44,8 +40,8 @@ Azure Spring Cloud では、Spring Boot ベースのマイクロサービス ア
 
 1. [Git をインストールする](https://git-scm.com/)
 2. [JDK 8 をインストールする](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-3. [Maven 3.0 以降をインストールする](https://maven.apache.org/download.cgi)
-4. [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+3. [Maven 3.0 以上をインストールする](https://maven.apache.org/download.cgi)
+4. [Azure CLI バージョン 2.0.67 以上をインストールする](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
@@ -53,7 +49,7 @@ Azure Spring Cloud では、Spring Boot ベースのマイクロサービス ア
 次のコマンドを使用して、Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします
 
 ```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-cli"></a>Azure CLI でサービス インスタンスをプロビジョニングする
@@ -110,7 +106,7 @@ az spring-cloud config-server git set -n <your-service-name> --uri https://githu
 2. ディレクトリを変更し、プロジェクトをビルドします。
 
     ```azurecli
-        cd PiggyMetrics
+        cd piggymetrics
         mvn clean package -D skipTests
     ```
 
@@ -125,9 +121,6 @@ az spring-cloud app create --name gateway
 az spring-cloud app create --name auth-service
 az spring-cloud app create --name account-service
 ```
-
->[!NOTE]
-> 指定した構成サーバーが正常に動作するには、アプリケーション名が JAR の名前と正確に一致している必要があります。
 
 ## <a name="deploy-applications-and-set-environment-variables"></a>アプリケーションをデプロイし、環境変数を設定する
 

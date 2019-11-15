@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus のトピックとサブスクリプションを Node.js で使用する方法 | Microsoft Docs
-description: Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
+title: クイック スタート:Node.js で Azure Service Bus のトピックとサブスクリプションを使用する方法
+description: クイック スタート:Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 3dbec81237edd7cbf51e4812e83da068b9a366e0
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 40543f55dc0cb56f6bc575f926456faf2d0ae5a3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540994"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719214"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Service Bus のトピックとサブスクリプションを Node.js および azure-sb パッケージで使用する方法
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>クイック スタート:Service Bus のトピックとサブスクリプションを Node.js および azure-sb パッケージで使用する方法
 > [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)

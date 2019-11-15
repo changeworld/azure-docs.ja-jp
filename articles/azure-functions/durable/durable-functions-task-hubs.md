@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b42294fdcf60add8496116bd1f83bf64f54a5f63
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734317"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614701"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
@@ -33,24 +33,15 @@ ms.locfileid: "70734317"
 * 1 つの履歴テーブル。
 * 1 つのインスタンス テーブル。
 * Lease Blob を少なくとも 1 つ含んだ 1 つのストレージ コンテナー。
+* サイズの大きいメッセージ ペイロードを含むストレージ コンテナー (該当する場合)。
 
-これらすべてのリソースは、オーケストレーター関数またはアクティビティ関数の実行時 (またはスケジュール時) に、既定の Azure ストレージ アカウントに自動的に作成されます。 これらのリソースがどのように使用されるかについては、[パフォーマンスとスケーリング](durable-functions-perf-and-scale.md)に関する記事で説明しています。
+これらすべてのリソースは、オーケストレーター、エンティティ、またはアクティビティ関数の実行時 (またはスケジュール時) に、既定の Azure Storage アカウントに自動的に作成されます。 これらのリソースがどのように使用されるかについては、[パフォーマンスとスケーリング](durable-functions-perf-and-scale.md)に関する記事で説明しています。
 
 ## <a name="task-hub-names"></a>タスク ハブ名
 
 次の例に示すように、タスク ハブは *host.json* ファイルに宣言されている名前で識別されます。
 
-### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
-
-```json
-{
-  "durableTask": {
-    "hubName": "MyTaskHub"
-  }
-}
-```
-
-### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 
 ```json
 {
@@ -63,9 +54,19 @@ ms.locfileid: "70734317"
 }
 ```
 
-次の *host.json* ファイルの例に示すように、タスク ハブはアプリの設定を使用して構成することもできます。
-
 ### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
+```json
+{
+  "durableTask": {
+    "hubName": "MyTaskHub"
+  }
+}
+```
+
+次の `host.json` ファイルの例に示すように、タスク ハブはアプリの設定を使用して構成することもできます。
+
+### <a name="hostjson-functions-10"></a>host.json (Functions 1.0)
 
 ```json
 {
@@ -75,7 +76,7 @@ ms.locfileid: "70734317"
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 
 ```json
 {
@@ -99,7 +100,7 @@ ms.locfileid: "70734317"
 }
 ```
 
-以下は、アプリ設定として構成されているタスク ハブを操作するために [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) を使用する関数を記述する方法の、プリコンパイル済み C# の場合の例を示しています。
+次のコードはプリコンパイル済みの C# の例であり、アプリ設定として構成されているタスク ハブを操作するために[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client)を使用する関数の記述方法を示しています。
 
 ### <a name="c"></a>C#
 
@@ -107,7 +108,7 @@ ms.locfileid: "70734317"
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-    [OrchestrationClient(TaskHub = "%MyTaskHub%")] DurableOrchestrationClientBase starter,
+    [OrchestrationClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
@@ -121,9 +122,13 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+> [!NOTE]
+> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
 ### <a name="javascript"></a>JavaScript
 
 `function.json` ファイルのタスク ハブ プロパティは、アプリ設定を通じて設定されます。
+
 ```json
 {
     "name": "input",
@@ -133,12 +138,19 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定されていない場合、既定の名前は **DurableFunctionsHub** です。
+タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、次の表に示すように、既定のタスク ハブ名が使用されます。
+
+| Durable の拡張機能のバージョン | 既定のタスク ハブ名 |
+| - | - |
+| 2.x | Azure にデプロイする場合、タスク ハブ名は_関数アプリ_の名前から派生します。 Azure の外部で実行する場合、既定のタスク ハブ名は `TestHubName` です。 |
+| 1.x | すべての環境で、既定のタスク ハブ名は `DurableFunctionsHub` です。 |
+
+拡張機能のバージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 > [!NOTE]
-> この名前は共有ストレージ アカウント内に複数のタスク ハブがある場合に、それぞれのタスク ハブを区別するものです。 共有ストレージ アカウントを共有する関数アプリが複数ある場合、*host.json* ファイルでタスク ハブごとに異なる名前を明示的に構成する必要があります。 このようにしないと、複数の関数アプリで他の関数アプリとのメッセージに関する競合が発生し、それが原因で未定義の動作が発生する可能性があります。
+> この名前は共有ストレージ アカウント内に複数のタスク ハブがある場合に、それぞれのタスク ハブを区別するものです。 共有ストレージ アカウントを共有する関数アプリが複数ある場合、*host.json* ファイルでタスク ハブごとに異なる名前を明示的に構成する必要があります。 このようにしないと、複数の関数アプリがメッセージをめぐって互いに競合し、その結果、オーケストレーションが `Pending` または `Running` 状態で予期せず "スタック" するなど、未定義の動作が発生する可能性があります。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [バージョン管理の方法](durable-functions-versioning.md)
+> [オーケストレーションのバージョン管理を処理する方法の詳細](durable-functions-versioning.md)

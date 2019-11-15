@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery を使用したオンプレミス マシンと Azure VM の移行について
-description: この記事では、Azure Site Recovery サービスを使用して、オンプレミスおよび Azure IaaS の VM を Azure に移行する方法について説明します。
+title: Azure Site Recovery を使用してサーバーと VM を Azure に移行する
+description: Azure Site Recovery サービスを使用して、オンプレミスおよび Azure IaaS の VM を Azure に移行する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: c043950de9565f96d52c848f96efac80385f2321
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814490"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620614"
 ---
 # <a name="about-migration"></a>移行について
 

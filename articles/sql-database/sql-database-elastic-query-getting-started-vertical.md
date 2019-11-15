@@ -1,5 +1,5 @@
 ---
-title: クロスデータベース クエリの概要 (列方向のパーティション分割) | Microsoft Docs
+title: クロスデータベース クエリの概要
 description: 垂直にパーティション分割されたデータベースでエラスティック データベース クエリを使用する方法
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a6a87f90586dc4392dc1304a83349bc386590ee4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af93035766eaf1afa12d124b8379ee55c5567260
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568594"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823795"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 

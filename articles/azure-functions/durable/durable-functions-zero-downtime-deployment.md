@@ -8,17 +8,21 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e6e51d2a058f89a04a81800b81f3c316be4eab7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302068"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614499"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロ ダウンタイムのデプロイ
+
 Durable Functions の[信頼性の高い実行モデル](durable-functions-checkpointing-and-replay.md)には、オーケストレーションが決定論的であることが必要です。これにより、更新プログラムをデプロイするときに考慮する必要がある追加の課題が発生します。 アクティビティ関数のシグネチャまたはオーケストレーター ロジックに対する変更がデプロイに含まれている場合、実行中のオーケストレーション インスタンスが失敗します。 この状況は、数時間または数日間にわたる作業を表す可能性がある、長時間実行されているオーケストレーションのインスタンスの場合に特に問題があります。
 
 これらの問題が発生しないようにするには、実行中のすべてのオーケストレーション インスタンスが完了するまでデプロイを延ばすか、または実行中のすべてのオーケストレーション インスタンスで関数の既存のバージョンが使用されるようにする必要があります。 バージョン管理について詳しくは、[Durable Functions でのバージョン管理](durable-functions-versioning.md)に関するページを参照してください。
+
+> [!NOTE]
+> この記事では、Durable Functions 1.x をターゲットにした関数アプリに関するガイダンスを提供します。 ただし、Durable Functions 2.x で導入された変更については、まだ反映されていません。 拡張機能のバージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 次の表では、Durable Functions のゼロ ダウンタイム デプロイを実現するための 3 つの主な戦略を比較します。 
 
@@ -29,6 +33,7 @@ Durable Functions の[信頼性の高い実行モデル](durable-functions-check
 | **[アプリケーション ルーティング](#application-routing)** | 24 時間以上続くオーケストレーションや、頻繁に重複するオーケストレーションなどの、オーケストレーションが実行されていない期間がないシステム。 | 破壊的変更を伴うオーケストレーションが継続的に実行されている新しいバージョンのシステムを処理する。 | インテリジェントなアプリケーション ルーターが必要。<br/>サブスクリプションで許可されている関数アプリの最大数を超える可能性 (既定値は 100)。 |
 
 ## <a name="versioning"></a>バージョン管理
+
 関数の新しいバージョンを定義し、関数アプリでは古いバージョンのままにします。 図を見るとわかるように、関数のバージョンが名前の一部になります。 以前のバージョンの関数が保持されるため、実行中のオーケストレーション インスタンスは引き続きそれらを参照できます。 一方で、新しいオーケストレーション インスタンスに対する要求では最新バージョンが呼び出され、オーケストレーション クライアント関数はアプリ設定から参照できます。
 
 ![バージョン管理の戦略](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
@@ -62,7 +67,7 @@ Durable Functions の[信頼性の高い実行モデル](durable-functions-check
 
 次の JSON フラグメントは、host.json ファイルでの接続文字列の設定の例です。
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {

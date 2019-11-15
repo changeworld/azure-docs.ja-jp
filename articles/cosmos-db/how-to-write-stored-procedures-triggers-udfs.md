@@ -4,14 +4,14 @@ description: Azure Cosmos DB でストアド プロシージャ、トリガー�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092839"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606258"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -21,6 +21,9 @@ Azure Cosmos DB では、統合された JavaScript 言語によるトランザ�
 
 > [!NOTE]
 > パーティション分割されたコンテナーの場合、ストアド プロシージャを実行するとき、要求オプションにパーティション キー値を指定する必要があります。 ストアド プロシージャは常に 1 つのパーティション キーに範囲設定されます。 別のパーティション キー値を持つ項目は、ストアド プロシージャから認識できません。 このことはトリガーにも該当します。
+
+> [!Tip]
+> Cosmos は、ストアド プロシージャ、トリガー、およびユーザー定義関数を使用したコンテナーのデプロイをサポートしています。 詳細については、「[サーバー側機能を使用して Azure Cosmos DB コンテナーを作成する](manage-sql-with-resource-manager.md#create-sproc)」を参照してください。
 
 ## <a id="stored-procedures"></a>ストアド プロシージャを記述する方法
 

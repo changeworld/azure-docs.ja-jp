@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: bc37c7cb11b973f89695b5631ec9569ff6b94608
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 11/05/2019
+ms.openlocfilehash: ecd2750926fd04c84d2d6b48f5fde06363dd15df
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803912"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606752"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Oracle から Azure DB for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -26,7 +26,7 @@ ms.locfileid: "71803912"
 
 Azure Database Migration Service では、以下への接続がサポートされています。
 
-- Oracle バージョン 10g、11c および 12c。
+- Oracle バージョン 10g、11g および 12c。
 - Oracle Enterprise、Standard、Express、および Personal Edition。
 
 Azure Database Migration Service では、マルチテナント コンテナー データベース (CDB) への接続はサポートされていません。
@@ -63,7 +63,7 @@ Azure Database Migration Service では、Azure Database for PostgreSQL-Single S
 
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限
 
-- 顧客の Oracle への接続には、SYSDB を使用する必要があります。
+- お客様が Oracle に接続するには SYSDBA を使用する必要があります。
 - パーティション/サブパーティションに対する操作 (ADD、DROP、EXCHANGE、および TRUNCATE) の結果のデータ変更は移行されず、次のエラーが発生する可能性があります。
   - ADD 操作で、追加されたデータを更新および削除した場合、"0 行が処理されました" の警告が返される場合があります。
   - DROP および TRUNCATE 操作で、新しい挿入によって "重複" エラーが発生する場合があります。

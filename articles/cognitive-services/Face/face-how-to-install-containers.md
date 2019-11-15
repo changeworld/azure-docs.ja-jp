@@ -1,7 +1,7 @@
 ---
 title: コンテナーのインストールと実行 - FACE API
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、Face のコンテナーをダウンロード、インストール、および実行します。
+description: この記事では、このチュートリアルで Face のコンテナーをダウンロード、インストール、および実行する方法を示します。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: f2bf5766dc09b85f276349a5e72f1bc3b8ba23b3
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: b3c064ae2dbc37858ca6fe89742161e0dda1784f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316369"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743276"
 ---
 # <a name="install-and-run-face-containers"></a>Face コンテナーのインストールと実行
 

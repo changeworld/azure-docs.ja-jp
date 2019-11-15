@@ -1,18 +1,18 @@
 ---
 title: PowerShell で Azure Analysis Services を管理する | Microsoft Docs
-description: PowerShell を使用した Azure Analysis Services 管理。
+description: サーバーの作成、操作の中断、サービス レベルの変更などの一般的な管理タスクのための Azure Analysis Services PowerShell コマンドレットについて説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: reference
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 329ea51895c45c8cdf50a323328fac3c580ffc16
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2c8f4c0541d97a189087af692658cfe794eaaf7e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146226"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572691"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>PowerShell で Azure Analysis Services を管理する
 

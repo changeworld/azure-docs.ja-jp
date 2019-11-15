@@ -1,5 +1,5 @@
 ---
-title: マルチテナント SaaS パターン - Azure SQL Database | Microsoft Docs
+title: マルチテナント SaaS パターン
 description: Azure クラウド環境で実行されるマルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの要件と一般的なデータ アーキテクチャ パターンについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8cbf0e45ac368f0d2dd1678984bd14392452e63a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ad7bd660ee685b490fb79c7e63fd3c5fce557977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570197"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822054"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>マルチテナント SaaS データベース テナント パターン
 

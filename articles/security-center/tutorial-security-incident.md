@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center チュートリアル - セキュリティ インシデントへの対応 | Microsoft Docs
+title: インシデント対応チュートリアル - Azure Security Center
 description: Azure Security Center チュートリアル - セキュリティ インシデントへの対応
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 11c2543de2b5456d253e7e905065eea14810877a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200609"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663641"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>チュートリアル:セキュリティ インシデントへの対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合し、独自のインジケーターまたはインテリジェンス ソースに基づいたカスタム アラートを作成できます。 アラートが生成されたら、調査と修復を行うために迅速なアクションが必要になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -66,7 +66,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 
 1. Security Center のメイン メニューの **[検出]** で、 **[セキュリティ アラート]** を選択します。
 
-   ![セキュリティのアラート](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![セキュリティのアラート](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
 2. アラートの一覧でセキュリティ インシデント (アラートのコレクション) をクリックして、そのインシデントについて詳しく確認します。 **[Security incident detected]\(セキュリティ インシデントが検出されました\)** が開きます。
 

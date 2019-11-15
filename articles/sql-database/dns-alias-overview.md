@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Database の DNS エイリアス | Microsoft Docs
+title: DNS エイリアス
 description: アプリケーションは Azure SQL Database サーバー名のエイリアスに接続することができます。 エイリアスは参照する SQL Database をいつでも変更できるため、テストのスムーズな実施などに役立ちます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 05fa542a0ad1c72f73148eefd304a9771798598d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058560"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820622"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 

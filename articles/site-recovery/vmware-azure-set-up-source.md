@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用した Azure への VMware レプリケーションのソース環境を設定する | Microsoft Docs
+title: Azure Site Recovery を使用した Azure への VMware ディザスター リカバリーのソースを設定する
 description: この記事では、Azure Site Recovery を使用して VMware VM を Azure にレプリケートするためのオンプレミスの環境を設定する方法について説明します。
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791769"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622208"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Azure への VMware レプリケーションのソース環境を設定する
 

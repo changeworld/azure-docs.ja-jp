@@ -1,20 +1,17 @@
 ---
 title: Azure Spring Cloud のトラブルシューティング ガイド | Microsoft Docs
 description: Azure Spring Cloud のトラブルシューティング ガイド
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.topic: troubleshooting
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 9603f4a687b55f45be2875ccaa7b801c0c5589c9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592478"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607620"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>よくある問題に関するトラブルシューティング ガイド
 
@@ -165,7 +162,7 @@ Azure Spring Cloud フレームワークに環境変数が伝えられること�
             </dependency>
         ```
 
-1. Spring Boot Actuator エンドポイントが有効になったら、Azure portal に移動してアプリケーションの構成ページを見つけます。  `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value `*` という名前で環境変数を追加します。 
+1. Spring Boot Actuator エンドポイントが有効になったら、Azure portal に移動してアプリケーションの構成ページを見つけます。  名前は `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`、値は `*` として、環境変数を追加します。 
 
 1. アプリケーションを再起動します。
 

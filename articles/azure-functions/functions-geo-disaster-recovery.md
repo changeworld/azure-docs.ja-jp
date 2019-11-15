@@ -1,6 +1,6 @@
 ---
-title: Azure Functions geo ディザスター リカバリー | Microsoft Docs
-description: Azure Functions でリージョンを使用してフェールオーバーし、ディザスター リカバリーを利用する方法。
+title: Azure Functions の geo ディザスター リカバリーと高可用性 | Microsoft Docs
+description: Azure Functions で冗長性のために地理的リージョンを使用してフェールオーバーする方法。
 services: functions
 documentationcenter: na
 author: wesmc7777
@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: 87f8b2fac3a123f2b92f77a70535f952b25557e0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 1d75d58a6df622ffb1b277f75ceedc2c2a66369d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309257"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576247"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo ディザスター リカバリー
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse で T-SQL のループを使う | Microsoft Docs
+title: T-SQL ループの使用
 description: ソリューションを開発するための、Azure SQL Data Warehouse での T-SQL のループの使用とカーソルの置換に関するヒントです。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e27edcc1383a235fbdb9513066e69e2f680ea2f9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b57358e32bda83ef51fe67aa1057411d51773fa6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479620"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685832"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>SDL Data Warehouse での T-SQL のループの使用
 ソリューションを開発するための、Azure SQL Data Warehouse での T-SQL のループの使用とカーソルの置換に関するヒントです。

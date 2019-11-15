@@ -1,6 +1,6 @@
 ---
 title: 式に含まれる関数のリファレンス ガイド- Azure Logic Apps
-description: Azure Logic Apps および Microsoft Flow の式に含まれる関数のリファレンス ガイド
+description: Azure Logic Apps および Power Automate の式に含まれる関数のリファレンス ガイド
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: d16df46ada2254f5bfc671db55e82fc89ef450b6
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: db33708fb96ff3e1982579c11a3928750a076f65
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679041"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582683"
 ---
-# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps および Microsoft Flow の式での関数の使用に関するリファレンス ガイド
+# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Microsoft Flow](https://docs.microsoft.com/flow/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Power Automate](https://docs.microsoft.com/flow/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。 
 
 > [!NOTE]
-> このリファレンス ページは、Azure Logic Apps と Microsoft Flow の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリについて参照されていますが、これらの関数はフローとロジック アプリの両方で動作します。 Microsoft Flow での関数と式について詳しくは、[条件での式の使用](https://docs.microsoft.com/flow/use-expressions-in-conditions)に関する記事をご覧ください。
+> このリファレンス ページは、Azure Logic Apps と Power Automate の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリについて参照されていますが、これらの関数はフローとロジック アプリの両方で動作します。 Power Automate での関数と式について詳しくは、[条件での式の使用](https://docs.microsoft.com/flow/use-expressions-in-conditions)に関する記事をご覧ください。
 
 たとえば、整数や浮動小数点数の合計が必要なときは、[add() 関数](../logic-apps/workflow-definition-language-functions-reference.md#add)などの数学関数を使って値を計算できます。 関数を使用して実行できるタスクの他の例を示します。
 
@@ -1237,7 +1237,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
-| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 タイム ゾーン名の詳細については、[Microsoft タイム ゾーン インデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)に関するページを参照してください。 |
+| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
 | <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
@@ -1279,8 +1279,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
-| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 タイム ゾーン名の詳細については、[Microsoft タイム ゾーン インデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)に関するページを参照してください。 |
-| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 タイム ゾーン名の詳細については、[Microsoft タイム ゾーン インデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)に関するページを参照してください。 |
+| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
 | <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
@@ -1322,7 +1322,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
-| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 タイム ゾーン名の詳細については、[Microsoft タイム ゾーン インデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)に関するページを参照してください。 |
+| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
 | <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
@@ -2019,7 +2019,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*interval*> | はい | 整数 | 減算する指定した時間単位の数 |
+| <*interval*> | はい | 整数 | 追加する指定した時間単位の数 |
 | <*timeUnit*> | はい | string | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
 | <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||

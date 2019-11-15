@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 85a3a9f7afac8250b225d42462f6b29042e34a2a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 91469f27e1ca86650cf94fde5cff5d1864300183
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330459"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606345"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -28,7 +28,7 @@ ms.locfileid: "72330459"
 
 ## <a name="create-a-classroom-lab"></a>クラスルーム ラボを作成する
 
-1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 Internet Explorer 11 はまだサポートされていないことに注意してください。 
+1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 Internet Explorer 11 はまだサポートされていません。 
 2. **[サインイン]** を選択して、資格情報を入力します。 ラボ アカウントに**ラボの作成者**のメンバーである**ユーザー ID** を入力または作成し、パスワードを入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
 3. **[New lab]\(新しいラボ\)** を選択します。 
     
@@ -70,7 +70,7 @@ ms.locfileid: "72330459"
     1. テンプレートの**説明**を入力します。
 10. **[テンプレート]** ページで、ツール バーの **[発行]** を選択します。 
 
-    ![テンプレートを発行するボタン](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
+    ![テンプレートの発行ボタン](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > 一度発行すると、再発行することはできません。 
@@ -80,7 +80,7 @@ ms.locfileid: "72330459"
 11. ページには、テンプレートの**発行の状態**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 
 
     ![テンプレートの発行 - 進行状況](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. 左側のメニューで [仮想マシン] を選択するか、[仮想マシン] タイルを選択して、 **[Virtual machines pool]\(仮想マシン プール\)** ページに切り替えます。 **[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
+4. 左側のメニューで [仮想マシン] を選択するか、[仮想マシン] タイルを選択して、 **[仮想マシン プール]** ページに切り替えます。 **[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
 
     ![仮想マシンが停止済み状態](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -123,6 +123,10 @@ ms.locfileid: "72330459"
 
 このドロップダウン リストで **[New lab]\(新しいラボ\)** を使用して新しいラボを作成することもできます。 
 
+> [!NOTE]
+> Az.LabServices PowerShell モジュール (プレビュー) を使用して、ラボを管理することもできます。 詳しくは、[GitHub の Az.LabServices ホーム ページ](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)をご覧ください。
+
+別のラボ アカウントに切り替えるには、ラボ アカウントの横にあるドロップダウンを選択し、他の ラボアカウントを選択します。 
 
 ## <a name="next-steps"></a>次の手順
 次の記事を参照してください。

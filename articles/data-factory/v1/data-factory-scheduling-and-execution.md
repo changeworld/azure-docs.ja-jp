@@ -1,5 +1,5 @@
 ---
-title: Data Factory を使用したスケジュール設定と実行 | Microsoft Docs
+title: Data Factory を使用したスケジュール設定と実行
 description: Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6ea8a03f45a3655c5761e0011876c6232b5bf36b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135306"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666130"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 > [!NOTE]

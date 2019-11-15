@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center クイックスタート - Azure サブスクリプションでの Security Center Standard の利用開始 | Microsoft Docs
+title: Standard レベルにアップグレードする - Azure Security Center
 description: このクイックスタートでは、セキュリティを強化するために Security Center の Standard 価格レベルにアップグレードする方法を示します。
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 689949b2b6fea1dcd06741fd3fc19c9371a96784
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676391"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664281"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。

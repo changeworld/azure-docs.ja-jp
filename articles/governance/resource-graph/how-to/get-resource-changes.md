@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274209"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622573"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -292,4 +292,4 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。
-- [リソースの探索](../concepts/explore-resources.md)について学習します。
+- [リソースを探索する](../concepts/explore-resources.md)方法の詳細を確認します。

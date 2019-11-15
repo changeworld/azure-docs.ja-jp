@@ -11,14 +11,17 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ba0003de0d14827d7bd96298ba591eb3b1e95f44
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: a45335d89bfd43c75bc8afca9e68995a905645db
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177322"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647856"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用して印刷されたテキスト (OCR) を抽出する
+
+> [!NOTE]
+> 英語のテキストを抽出する場合は、新しい[読み取り操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)の使用を検討してください。 [C# のクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)を使用できます。 
 
 このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 機能を使って画像内の印字されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
@@ -59,7 +62,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the OCR method endpoint
-        const string uriBase = endpoint + "vision/v2.1/ocr";
+        static string uriBase = endpoint + "vision/v2.1/ocr";
 
         static void Main()
         {

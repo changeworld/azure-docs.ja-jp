@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse の一時テーブル | Microsoft Docs
-description: セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。
+title: 一時テーブル
+description: セッション レベルの一時テーブルの原則を中心に、Azure SQL Data Warehouse での一時テーブルの基本的な利用方法について説明します。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e43e52e56ec7abbf5d8eb879defef54bd7d50658
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 23a5825a32c602f70aff1d9f577ce13d3e9f2260
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479828"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685434"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse の一時テーブル
 この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 この記事の情報に従うとコードをモジュール化できるため、コードの再利用性が向上し、保守が容易になります。

@@ -5,31 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 11/1/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b26679542753d5fb429c33e4220c23a3937c5cb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430440"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603589"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する (プレビュー)
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
-|     |
-| --- |
-| Google フェデレーションは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウント (MSA) を作成することなく、独自の Gmail アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。 
 
-Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウント (MSA) または Azure AD アカウントを作成することなく、独自の Gmail アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。 Google フェデレーションは Gmail ユーザー専用に設計されています。 G Suite ドメインとのフェデレーションを行うには、代わりに[直接フェデレーション機能](direct-federation.md)を使用します。
 > [!NOTE]
-> Google ゲスト ユーザーは、テナント コンテキストが含まれたリンク (例: `https://myapps.microsoft.com/?tenantid=<tenant id>` または `https://portal.azure.com/<tenant id>`、または検証済みのドメインの場合は `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`) を使用してサインインする必要があります。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com`、`https://portal.azure.com`、またはチームの共有エンドポイントを使用すると、エラーが発生します。
- 
+> Google フェデレーションは Gmail ユーザー専用に設計されています。 G Suite ドメインとのフェデレーションを行うには、[直接フェデレーション機能](direct-federation.md)を使用します。
+
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google ユーザーのエクスペリエンスの内容
 Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザーは、テナント コンテキストが含まれているリンクを使用して共有アプリまたはリソースにアクセスする必要があります。 Google に既にサインインしているかどうかによって、エクスペリエンスが異なります。
   - ゲスト ユーザーが Google にサインインしていない場合、Google にサインインするよう求められます。
@@ -38,6 +34,19 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 "ヘッダーが長すぎる" エラーが発生したら、ゲスト ユーザーは Cookie のクリアを試すことができます。または、プライベートまたは匿名のウィンドウを開いて、もう一度サインインを試すことができます。
 
 ![Google のサインイン ページを示すスクリーンショット](media/google-federation/google-sign-in.png)
+
+## <a name="limitations"></a>制限事項
+
+Teams では、すべてのデバイスで Google ゲスト ユーザーを完全にサポートしています。 Google ユーザーは、`https://teams.microsoft.com` などの一般的なエンドポイントから Teams にサインインできます。
+
+他のアプリケーションの一般的なエンドポイントは、Google ユーザーをサポートしていない場合があります。 Google ゲスト ユーザーは、テナント情報が含まれたリンクを使用してサインインする必要があります。 次に例を示します。
+  * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
+  * `https://portal.azure.com/<your tenant id>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+
+   `https://myapps.microsoft.com` や `https://portal.azure.com` のようなリンクを Google ゲスト ユーザーが使おうとすると、エラーになります。
+
+`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` のように、テナント情報がこのリンクに含まれている限り、アプリケーションまたはリソースへの直接リンクを Google ゲスト ユーザーに提供することもできます。 
 
 ## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure AD に後で追加するクライアント ID とクライアント シークレットを取得します。 

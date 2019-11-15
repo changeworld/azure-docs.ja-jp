@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 71f2b111c0291bc9563b12a1cdbd88ea7e9f5b5b
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cf070e91d6f15e80f51242722a59918d1bc70696
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376138"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615553"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -131,14 +131,14 @@ ms.locfileid: "72376138"
 |AppEtwTraceDeletionAgeInDays |int、既定値は 3 | 動的 |アプリケーションの ETW トレースが含まれた古い ETL ファイルを削除するまでの日数。 |
 |ApplicationLogsFormatVersion |int、既定値は 0 | 動的 |アプリケーション ログの形式のバージョン。 サポートされる値は 0 と 1 です。 バージョン 1 には、バージョン 0 よりも多くの ETW イベント レコードのフィールドが含まれます。 |
 |AuditHttpRequests |ブール値、既定値は false | 動的 | HTTP 監査をオンまたはオフにします。 監査の目的は、要求を開始したユーザーを含め、クラスターに対して実行されたアクティビティを確認することです。 これはログ記録の最適な試行であり、トレースの損失が発生する可能性があることに注意してください。 "ユーザー" 認証を使用した HTTP 要求は記録されません。 |
-|CaptureHttpTelemetry|ブール値、既定値は false | 動的 | HTTP テレメトリをオンまたはオフにします。 テレメトリの目的は、Service Fabric でテレメトリ データをキャプチャして将来の作業を計画し、問題のある領域を特定できるようにすることです。 テレメトリには、個人データや要求の本文は記録されません。 特に構成されていない限り、テレメトリにはすべての HTTP 要求がキャプチャされます。 |
+|CaptureHttpTelemetry|ブール値、既定値は true | 動的 | HTTP テレメトリをオンまたはオフにします。 テレメトリの目的は、Service Fabric でテレメトリ データをキャプチャして将来の作業を計画し、問題のある領域を特定できるようにすることです。 テレメトリには、個人データや要求の本文は記録されません。 特に構成されていない限り、テレメトリにはすべての HTTP 要求がキャプチャされます。 |
 |ClusterId |string | 動的 |クラスターの一意の ID。 これはクラスターの作成時に生成されます。 |
 |ConsumerInstances |string | 動的 |DCA コンシューマー インスタンスのリスト。 |
 |DiskFullSafetySpaceInMB |int、既定値は 1024 | 動的 |DCA によって使用されないようにする残りのディスク領域 (MB)。 |
 |EnableCircularTraceSession |ブール値、既定値は false | 静的 |循環トレース セッションを使用する必要があるかどうかを示すフラグ。 |
 |EnablePlatformEventsFileSink |ブール値、既定値は false | 静的 |ディスクに書き込まれるプラットフォーム イベントを有効または無効にします |
 |EnableTelemetry |ブール値、既定値は true | 動的 |テレメトリを有効または無効にします。 |
-|FailuresOnlyHttpTelemetry | ブール値、既定値は true | 動的 | HTTP テレメトリのキャプチャが有効な場合、失敗した要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
+|FailuresOnlyHttpTelemetry | ブール値、既定値は false | 動的 | HTTP テレメトリのキャプチャが有効な場合、失敗した要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
 |HttpTelemetryCapturePercentage | int、既定値は 50 | 動的 | HTTP テレメトリのキャプチャが有効な場合、ランダムな割合の要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
 |MaxDiskQuotaInMB |int、既定値は 65536 | 動的 |Windows Fabric のログ ファイルのディスク クォータ (MB)。 |
 |ProducerInstances |string | 動的 |DCA プロデューサー インスタンスのリスト。 |
@@ -185,6 +185,9 @@ ms.locfileid: "72376138"
 |EnableRestartManagement |ブール値、既定値は false |動的|サーバーの再起動を有効します。 |
 |EnableServiceFabricAutomaticUpdates |ブール値、既定値は false |動的|Windows Update によるファブリックの自動更新を有効にします。 |
 |EnableServiceFabricBaseUpgrade |ブール値、既定値は false |動的|サーバーの基本的な更新を有効にします。 |
+|FailureReportingExpeditedReportingIntervalEnabled | ブール値、既定値は true | 静的 | FabricHost がエラー報告モードのときに、DCA でのアップロード高速化を有効にします。 |
+|FailureReportingTimeout | TimeSpan、既定値は Common::TimeSpan::FromSeconds(60) | 静的 |timespan を秒単位で指定します。 FabricHost で初期段階の起動エラーが発生した場合の DCA エラー報告のタイムアウト。 | 
+|RunDCAOnStartupFailure | ブール値、既定値は true | 静的 |FabricHost で起動の問題が発生したときに DCA を起動してログをアップロードするかどうかを決定します。 | 
 |StartTimeout |秒単位。既定値は 300 |動的|timespan を秒単位で指定します。 fabricactivationmanager の起動のタイムアウト。 |
 |StopTimeout |秒単位。既定値は 300 |動的|timespan を秒単位で指定します。 ホストされるサービスのアクティブ化、非アクティブ化、アップグレードのタイムアウト。 |
 
@@ -231,13 +234,12 @@ ms.locfileid: "72376138"
 |QuorumLossWaitDuration |時間 (秒単位)、既定値は MaxValue |動的|timespan を秒単位で指定します。 パーティションがクォーラム損失の状態であることを許可する最長期間。 この期間を過ぎてもパーティションが引き続きクォーラム損失の状態である場合、ダウンしたレプリカは失われたと見なされ、パーティションをクォーラム損失から回復させます。 この場合、データ損失が発生する可能性があります。 |
 |ReconfigurationTimeLimit|TimeSpan、既定値は Common::TimeSpan::FromSeconds(300)|動的|timespan を秒単位で指定します。 再構成の制限時間。この時間が経過した後、警告の正常性レポートが開始されます |
 |ReplicaRestartWaitDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 \* 30)|禁止|timespan を秒単位で指定します。 これは FMService の ReplicaRestartWaitDuration です |
+| SeedNodeQuorumAdditionalBufferNodes | int、既定値は 0 | 動的 | (シード ノードのクォーラムと共に) 起動している必要があるシード ノードのバッファー。FM は、最大 (totalNumSeedNodes - (seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) 個のシード ノードがダウンすることを許可する必要があります。 |
 |StandByReplicaKeepDuration|Timespan、既定値は Common::TimeSpan::FromSeconds(3600.0 \* 24 \* 7)|禁止|timespan を秒単位で指定します。 これは FMService の StandByReplicaKeepDuration です |
 |TargetReplicaSetSize|int、既定値は 7|禁止|これは、Windows Fabric によって保持されるターゲット FM レプリカ数です。 値が大きいほど、小さなパフォーマンスのトレードオフで FM データの信頼性が向上します。 |
 |UserMaxStandByReplicaCount |int、既定値は 1 |動的|ユーザー サービス用にシステムが保持するスタンバイ レプリカの既定の最大数。 |
 |UserReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60.0 \* 30 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウンすると、Windows Fabric はレプリカが復帰するまでこの期間待機します。この期間が過ぎると、(状態のコピーを必要とする) 新しい代替レプリカが作成されます。 |
 |UserStandByReplicaKeepDuration |時間 (秒単位)、既定値は 3600.0 \* 24 \* 7 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウン状態から復帰したときに、既に置き換えられている場合があります。 このタイマーは、FM がスタンバイ レプリカを破棄するまでに保持する時間を決定します。 |
-|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60 * 10)|動的|timespan を秒単位で指定します。 オプションの WaitForInBuildReplica 安全性チェック タイムアウトに対する構成エントリ。 この構成では、ノードの非アクティブ化とアップグレードに関する WaitForInBuildReplica 安全性チェックのタイムアウトが定義されます。 次のいずれかに該当する場合、この安全性チェックは失敗します。- プライマリが作成されていて、ft ターゲット レプリカ セットのサイズが 1 より大きい。- 現在のレプリカがビルド中であり、永続化されている。- これは現在のプライマリであり、新しいレプリカがビルドされている。前のいずれかの条件が満たされている場合でも、タイムアウトが経過した場合は、この安全性チェックはスキップされます。 |
-|WaitForReconfigurationSafetyCheckTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 * 10)|動的|timespan を秒単位で指定します。 オプションの WaitForReconfiguration 安全性チェック タイムアウトに対する構成エントリ。 この構成では、ノードの非アクティブ化とアップグレードに関する WaitForReconfiguration 安全性チェックのタイムアウトが定義されます。 チェックされているレプリカが再構成されているパーティションの一部である場合、この安全性チェックは失敗します。 パーティションが再構成中であっても、このタイムアウトが経過すると、安全性チェックはスキップされます。|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -337,6 +339,8 @@ ms.locfileid: "72376138"
 |ActivationRetryBackoffInterval |秒単位。既定値は 5 |動的|アクティブ化失敗のバックオフ間隔。アクティブ化が連続して失敗するたびに、MaxActivationFailureCount で指定された回数までアクティブ化が再試行されます。 各試行の再試行間隔は、継続的なアクティブ化失敗とアクティブ化バックオフ間隔の積になります。 |
 |ActivationTimeout| TimeSpan、既定値は Common::TimeSpan::FromSeconds(180)|動的| timespan を秒単位で指定します。 アプリケーションのアクティブ化、非アクティブ化、アップグレードのタイムアウト。 |
 |ApplicationHostCloseTimeout| TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的| timespan を秒単位で指定します。 セルフ アクティブ化されたプロセスで Fabric の終了が検出された場合、FabricRuntime は、ユーザーのホスト (applicationhost) プロセスですべてのレプリカを閉じます。 これは、閉じる操作のタイムアウトです。 |
+| CnsNetworkPluginCnmUrlPort | wstring、既定値は L"48080" | 静的 | Azure cnm API URL ポート |
+| CnsNetworkPluginCnsUrlPort | wstring、既定値は L"10090" | 静的 | Azure cns URL ポート |
 |ContainerServiceArguments|string、既定値は "-H localhost:2375 -H npipe://"|静的|Service Fabric (SF) が Docker デーモンを管理します (Win10 のような Windows クライアント コンピューターを除く)。 この構成により、ユーザーは Docker デーモンの起動時に渡す必要があるカスタム引数を指定できます。 カスタム引数が指定された場合、Service Fabric は、他の引数を一切 Docker エンジンに渡しませんが、'--pidfile' 引数は例外です。 そのため、ユーザーはカスタム引数の一部として '--pidfile' 引数を指定することはできません。 また、Service Fabric が Docker デーモンと通信できるようにするために、Docker デーモンに既定の名前付きパイプ (Windows の場合) または UNIX ドメイン ソケット (Linux の場合) でリッスンさせるようにカスタム引数で指定する必要があります。|
 |ContainerServiceLogFileMaxSizeInKb|int、既定値は 32768|静的|Docker コンテナーで生成されるログ ファイルの最大ファイル サイズ。  Windows のみ。|
 |ContainerImageDownloadTimeout|int、秒数、既定値は 1,200 (20 分)|動的|イメージのダウンロードがタイムアウトするまでの秒数。|
@@ -353,6 +357,8 @@ ms.locfileid: "72376138"
 |DeploymentRetryBackoffInterval| TimeSpan、既定値は Common::TimeSpan::FromSeconds(10)|動的|timespan を秒単位で指定します。 デプロイ エラーのバックオフ間隔。 継続的なデプロイ エラーのたびに、システムによってデプロイが最大 MaxDeploymentFailureCount 回、再試行されます。 再試行間隔は、継続的なデプロイ エラーとデプロイ バックオフ間隔の積です。 |
 |DisableContainers|ブール値、既定値は FALSE|静的|コンテナーを無効にするための構成 - 使用されなくなった構成である DisableContainerServiceStartOnContainerActivatorOpen の代わりに使用します |
 |DisableDockerRequestRetry|ブール値、既定値は FALSE |動的| 既定では、SF は、送信される各 http 要求のタイムアウトを "DockerRequestTimeout" として DD (docker デーモン) と通信します。 DD がこの期間内に応答しない場合、SF は、最上位レベルの操作にまだ残り時間があれば要求を再送信します。  hyperv コンテナーと共に使用します。DD がコンテナーを起動または非アクティブ化するのに時間がかかることがあります。 そのような場合、DD 要求が SF パースペクティブからタイムアウトし、SF は操作を再試行します。 これは DD にさらに圧力をかけるように見えることがあります。 この構成により、この再試行が無効になり、DD が応答するまで待機します。 |
+|DnsServerListTwoIps | ブール値、既定値は FALSE | 静的 | このフラグは、断続的な解決の問題を軽減するために、ローカル DNS サーバーを 2 回追加します。 |
+| DoNotInjectLocalDnsServer | ブール値、既定値は FALSE | 静的 | ランタイムがコンテナーの DNS サーバーとしてローカル IP を挿入しないようにします。 |
 |EnableActivateNoWindow| ブール値、既定値は FALSE|動的| アクティブ化されたプロセスは、コンソールを使用せずに、バックグラウンドで作成されます。 |
 |EnableContainerServiceDebugMode|ブール値、既定値は TRUE|静的|Docker コンテナーのログを有効または無効にします。  Windows のみ。|
 |EnableDockerHealthCheckIntegration|ブール値、既定値は TRUE|静的|Docker HEALTHCHECK イベントと Service Fabric システム正常性レポートの統合を有効にする |
@@ -673,6 +679,7 @@ ms.locfileid: "72376138"
 |DisableFirewallRuleForDomainProfile| ブール値、既定値は TRUE |静的| ドメイン プロファイルに対して、ファイアウォール規則を有効にするべきではないかどうかを示します |
 |DisableFirewallRuleForPrivateProfile| ブール値、既定値は TRUE |静的| プライベート プロファイルに対して、ファイアウォール規則を有効にするべきではないかどうかを示します | 
 |DisableFirewallRuleForPublicProfile| ブール値、既定値は TRUE | 静的|パブリック プロファイルに対して、ファイアウォール規則を有効にするべきではないかどうかを示します |
+| EnforceLinuxMinTlsVersion | ブール値、既定値は FALSE | 動的 | true に設定した場合、TLS バージョン 1.2 以降のみがサポートされます。  false の場合、それよりも前の TLS バージョンをサポートします。 Linux のみに適用されます |
 |FabricHostSpn| string、既定値は "" |静的| ファブリックが 1 人のドメイン ユーザー (gMSA/ドメイン ユーザー アカウント) として実行され、FabricHost がマシン アカウントで実行されているときの、FabricHost のサービス プリンシパル名。 これは FabricHost の IPC リスナーの SPN です。FabricHost がマシン アカウントで実行されているため、既定では空のままです |
 |IgnoreCrlOfflineError|ブール値、既定値は FALSE|動的|サーバー側が受信クライアント証明書を確認するとき、CRL オフライン エラーを無視するかどうか |
 |IgnoreSvrCrlOfflineError|ブール値、既定値は TRUE|動的|クライアント側が受信サーバー証明書を確認するとき、CRL オフライン エラーを無視するかどうか。既定値は true です。 失効したサーバー証明書で攻撃するには DNS を侵害する必要があります。これは、失効したクライアント証明書による攻撃よりも困難です。 |

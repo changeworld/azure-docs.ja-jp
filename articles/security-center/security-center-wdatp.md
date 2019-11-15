@@ -1,5 +1,5 @@
 ---
-title: Microsoft Defender Advanced Threat Protection と Azure Security Center
+title: Microsoft Defender Advanced Threat Protection - Azure Security Center
 description: このドキュメントでは、Azure Security Center と Microsoft Defender Advanced Threat Protection の統合について説明します。
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028089"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663605"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center
 
@@ -50,7 +50,7 @@ Microsoft Defender ATP を使用すると、次の機能が得られます。
 
 ## <a name="platform-support"></a>プラットフォームのサポート
 
-Security Center の Microsoft Defender ATP では、Standard サービス サブスクリプションの Windows Server 2016、2012 R2、および 2008 R2 SP1 オペレーティング システムでの検出がサポートされています。
+Security Center の Microsoft Defender ATP は、Windows Server 2016、2012 R2、および 2008 R2 SP1 での検出をサポートしています。Azure VM では Standard レベルのサブスクリプションが必要であり、Azure 以外の VM ではワークスペース レベルでのみ Standard レベルが必要です。
 
 > [!NOTE]
 > Azure Security Center を使用してサーバーを監視すると、Microsoft Defender ATP テナントが自動的に作成され、Microsoft Defender ATP データが既定ではヨーロッパに格納されます。 データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットする必要があります。 この統合を利用したサーバー エンドポイントの監視は、Office 365 GCC のお客様に対して無効になっています。
@@ -95,7 +95,7 @@ Microsoft Defender ATP の統合が有効になっているかどうかを確認
 
 Microsoft Defender ATP で無害なテスト アラートを生成するには:
 
-1. リモート デスクトップを使用して、Windows Server 2012 R2 VM または Windows Server 2016 VM にアクセスします。  コマンド プロンプト ウィンドウを開きます。
+1. リモート デスクトップを使用して、Windows Server 2012 R2 VM または Windows Server 2016 VM にアクセスします。 コマンド プロンプト ウィンドウを開きます。
 
 2. 次のコマンドをコピーし、プロンプトで実行します。 コマンド プロンプト ウィンドウは自動的に閉じます。
 
@@ -107,7 +107,7 @@ Microsoft Defender ATP で無害なテスト アラートを生成するには:
 
 3. コマンドが成功した場合、Azure Security Center ダッシュボードと Microsoft Defender ATP ポータルに新しいアラートが表示されます。 このアラートは、表示されるまでに数分かかることがあります。
 
-4. Security Center でアラートを確認するには、 **[セキュリティ通知]**  >   **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。
+4. Security Center でアラートを確認するには、 **[セキュリティ通知]**  >  **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。
 
 5. 調査ウィンドウで、リンクを選択して Microsoft Defender ATP ポータルに移動します。
 

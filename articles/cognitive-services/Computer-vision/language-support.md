@@ -1,7 +1,7 @@
 ---
 title: 言語サポート - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision 機能でサポートされる自然言語の一覧。
+description: この記事では、Computer Vision の機能 (OCR、テキスト認識、読み取り) でサポートされる自然言語の一覧を示します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 516d21bc69bbc20f924a3bdf39eda7245fc08a28
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882966"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718615"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -60,7 +60,7 @@ OCR は入力素材の言語を自動的に検出するため、API 呼び出し
 
 [Analyze - Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API の一部のアクションは、`language` クエリ パラメーターで指定された他の言語で結果を返すことができます。 他のアクションは、どの言語が指定されていても英語で結果を返し、その他のアクションはサポートされていない言語に対して例外をスローします。 アクションは `visualFeatures` および `details` クエリ パラメーターで指定されます。画像分析で実行できるすべてのアクションの一覧については、[概要](home.md)に関するページを参照してください。
 
-|言語 | 言語コード | Categories | Tags | 説明 | 成人向けコンテンツ | ブランド | 色 | 顔 | ImageType | Objects | 有名人 | ランドマーク |
+|言語 | 言語コード | Categories | Tags | 説明 | 成人向けコンテンツ | ブランド | Color | 顔 | ImageType | Objects | 有名人 | ランドマーク |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中国語 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英語 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

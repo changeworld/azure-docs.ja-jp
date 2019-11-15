@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のテスト結果 | Microsoft Docs
+title: Azure Site Recovery を使用した VMM によるセカンダリ サイトへの Hyper-V VM レプリケーションをテストする
 description: この記事では、Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のパフォーマンス テストについて説明します。
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: a7413b2dcb24a42092eb2af9816b1d29a8306e19
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68377214"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663168"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V レプリケーションのテスト結果
 

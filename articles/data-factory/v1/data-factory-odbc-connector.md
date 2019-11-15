@@ -1,5 +1,5 @@
 ---
-title: ODBC データ ストアからデータを移動する | Microsoft Docs
+title: ODBC データ ストアからデータを移動する
 description: Azure Data Factory を使用して ODBC データ ストアからデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 885fb18e6f582caba2e90bbe3f535b9c763aff85
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 62847746ddf6f2f2f244df34ac340f54d271ff7a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839340"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666839"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

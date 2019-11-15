@@ -1,7 +1,7 @@
 ---
 title: モデルをモバイルにエクスポートする - Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: モバイル アプリケーションの作成で利用する目的でモデルをエクスポートする方法について説明します。
+description: この記事では、モバイル アプリケーションの作成に使用するため、またはローカルで実行してリアルタイム分類を行うために、モデルをエクスポートする方法について説明します。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,23 +10,26 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 554a392a7f815a6e646927f137b1e6c2856099bd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f734f4f1a11f57b759615e7a9ce2cd2f7f8028fb
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561078"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718953"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>モバイル デバイスで使用するためにモデルをエクスポートする
 
 Custom Vision Service では、分類子をエクスポートし、オフラインで実行できます。 エクスポートした分類子をアプリケーションに組み込み、デバイス上でローカル実行すると、リアルタイムの分類が可能になります。
+
+## <a name="export-options"></a>エクスポート オプション
 
 Custom Vision Service は次のエクスポートに対応しています。
 
 * __Android__ 向け __Tensorflow__。
 * __iOS11__ 向け __CoreML__。
 * __Windows ML__ 向け __ONNX__。
-* Windows または Linux __コンテナー__。 コンテナーには、Tensorflow モデルと、Custom Vision Service API を使用するためのサービス コードが含まれています。 
+* __[Vision AI Developer Kit](https://azure.github.io/Vision-AI-DevKit-Pages/)__ 。
+* Windows、Linux、または ARM アーキテクチャ用の __Docker コンテナー__。 コンテナーには、Tensorflow モデルと、Custom Vision API を使用するためのサービス コードが含まれています。
 
 > [!IMPORTANT]
 > Custom Vision Service は __コンパクト__ ドメインのみをエクスポートします。 コンパクト ドメインで生成されたモデルは、モバイル デバイスのリアルタイム分類の制約に合わせて最適化されています。 コンパクト ドメインでビルドされた分類子は、トレーニング データの量が同じ標準ドメインより、わずかに正確性に欠けることがあります。
@@ -36,23 +39,26 @@ Custom Vision Service は次のエクスポートに対応しています。
 ## <a name="convert-to-a-compact-domain"></a>コンパクト ドメインに変換する
 
 > [!NOTE]
-> このセクションの手順は、既存の分類子がコンパクト ドメインに設定されていない場合にのみ適用されます。
+> このセクションの手順は、コンパクト ドメインに設定されていない既存のモデルがある場合にのみ適用されます。
 
-既存の分類子のドメインは次の手順で変換します。
+既存のモデルのドメインは次の手順で変換します。
 
-1. [[Custom Vision]](https://customvision.ai) ページから、 __[ホーム]__ アイコンを選択し、プロジェクトを一覧表示します。 [https://customvision.ai/projects](https://customvision.ai/projects) を使用してプロジェクトを表示することもできます。
+1. [Custom Vision の Web サイト](https://customvision.ai)で、 __[ホーム]__ アイコンを選択し、プロジェクトを一覧表示します。
 
     ![ホーム アイコンとプロジェクト一覧の画像](./media/export-your-model/projects-list.png)
 
-2. プロジェクトを選択し、ページ右上にある __歯車__ アイコンを選択します。
+1. プロジェクトを選択し、ページ右上にある __歯車__ アイコンを選択します。
 
     ![歯車アイコンの画像](./media/export-your-model/gear-icon.png)
 
-3. __[ドメイン]__ セクションで、__コンパクト__ ドメインを選択します。 __[変更の保存]__ を選択して変更を保存します。
+1. __[ドメイン]__ セクションで、__コンパクト__ ドメインの 1 つを選択します。 __[変更の保存]__ を選択して変更を保存します。 
+
+    > [!NOTE]
+    > Vision AI Dev Kit の場合は、プロジェクトを __[General (Compact)]\(汎用 (コンパクト)\)__ ドメインで作成する必要があります。また、 **[Export Capabilities]\(エクスポート機能\)** セクションの **[Vision AI Dev Kit]** オプションを指定する必要があります。
 
     ![ドメイン選択の画像](./media/export-your-model/domains.png)
 
-4. ページの上部から、 __[Train]\(トレーニングする\)__ を選択し、新しいドメインを使用して再トレーニングします。
+1. ページの上部から、 __[Train]\(トレーニングする\)__ を選択し、新しいドメインを使用して再トレーニングします。
 
 ## <a name="export-your-model"></a>モデルをエクスポートする
 
@@ -65,7 +71,7 @@ Custom Vision Service は次のエクスポートに対応しています。
     > [!TIP]
     > __[エクスポート]__ エントリがない場合、選択されているイテレーションでコンパクト ドメインが使用されていません。 このページの __[イテレーション]__ セクションを利用し、コンパクト ドメインを使用しているイテレーションを選択し、 __[エクスポート]__ を選択してください。
 
-2. エクスポート形式を選択し、 __[エクスポート]__ を選択してモデルをダウンロードします。
+1. 目的のエクスポート形式を選択し、 __[エクスポート]__ を選択してモデルをダウンロードします。
 
 ## <a name="next-steps"></a>次の手順
 

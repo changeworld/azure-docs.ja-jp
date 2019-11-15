@@ -1,7 +1,8 @@
 ---
-title: Azure SQL を参照する DNS エイリアス用の PowerShell | Microsoft Docs
+title: DNS エイリアス用の PowerShell
 description: New-AzSqlServerDNSAlias などの PowerShell コマンドレットを使用すると、クライアントの構成を手動で変更することなく、新しいクライアント接続を別の Azure SQL Database サーバーにリダイレクトできます。
 keywords: DNS SQL Database
+ms.custom: seo-lt-2019
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: 47afd905b1fa28ce65163203b9d43781f434233d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cb1854c27a3722bc9c3c682c4787395c680d6241
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058548"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808470"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Azure SQL Database を参照する DNS エイリアス用の PowerShell
 

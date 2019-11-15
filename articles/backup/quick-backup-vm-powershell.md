@@ -1,6 +1,6 @@
 ---
 title: Azure クイック スタート - PowerShell で VM をバックアップする
-description: Azure PowerShell を使用して仮想マシンをバックアップする方法
+description: このクイック スタートでは、Azure PowerShell モジュールを使用して Azure 仮想マシンをバックアップする方法について説明します。
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: ea4f982409f339487cd570230ebbb75682f409ec
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874598"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747083"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Azure PowerShell を使用した Azure の仮想マシンのバックアップ
 
-[Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) モジュールは、コマンド ラインやスクリプトから Azure リソースを作成および管理するために使用します。 
+[Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) モジュールは、コマンド ラインやスクリプトから Azure リソースを作成および管理するために使用します。
 
 [Azure Backup](backup-overview.md) では、オンプレミスのマシンとアプリ、および Azure VM をバックアップします。 この記事では、AZ モジュールを使用して Azure VM をバックアップする方法を説明します。 代わりに [Azure CLI](quick-backup-vm-cli.md) または [Azure portal](quick-backup-vm-portal.md) を使用して VM をバックアップすることもできます。
 
@@ -30,17 +30,17 @@ ms.locfileid: "69874598"
 
 ## <a name="sign-in-and-register"></a>サインインして登録する
 
-1. `Connect-AzAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+1. `Connect-AzAccount` コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。
 
     ```powershell
     Connect-AzAccount
     ```
+
 2. Azure Backup を最初に使用するときは、次のように、[Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider) を使ってサブスクリプション内で Azure Recovery Service プロバイダーを登録する必要があります。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -53,7 +53,6 @@ ms.locfileid: "69874598"
 - Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
 
 それでは、コンテナーを作成します。
-
 
 1. [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) を使用して、コンテナーを作成します。
 
@@ -72,11 +71,12 @@ ms.locfileid: "69874598"
     ```
 
 3. [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty)を使用して、コンテナーの記憶域冗長構成 (LRS/GRS) を次のように変更します。
-    
+
     ```powershell
     Get-AzRecoveryServicesVault `
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesBackupProperty -BackupStorageRedundancy LocallyRedundant/GeoRedundant
     ```
+
     > [!NOTE]
     > 記憶域冗長は、コンテナーに保護されているバックアップ項目がない場合にのみ変更できます。
 
@@ -85,7 +85,7 @@ ms.locfileid: "69874598"
 Azure VM のバックアップを有効にし、バックアップ ポリシーを指定します。
 
 - ポリシーでは、バックアップを実行するタイミングと、バックアップによって作成された復旧ポイントを保持する期間を定義します。
-- 既定の保護ポリシーでは、1 日 1 回 VM のバックアップが実行され、作成された復旧ポイントは 30 日間保持されます。 この既定のポリシーを使用して、VM をすぐに保護できます。 
+- 既定の保護ポリシーでは、1 日 1 回 VM のバックアップが実行され、作成された復旧ポイントは 30 日間保持されます。 この既定のポリシーを使用して、VM をすぐに保護できます。
 
 次のようにバックアップを有効にします。
 
@@ -112,7 +112,8 @@ Azure VM のバックアップを有効にし、バックアップ ポリシー�
 - 初回バックアップ後の各バックアップ ジョブでは、増分復旧ポイントが作成されます。
 - 増分復元ポイントでは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
 
-アドホック バックアップを実行するには、[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) を使用します。 
+アドホック バックアップを実行するには、[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) を使用します。
+
 - [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) を使用して、バックアップ データを保持するコンテナー内のコンテナーを指定します。
 - バックアップする各 VM は、項目として扱われます。 バックアップ ジョブを開始するには、[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) を使用して、VM に関する情報を取得します。
 
@@ -134,7 +135,6 @@ Azure VM のバックアップを有効にし、バックアップ ポリシー�
 
 2. 最初のバックアップ ジョブでは完全な復旧ポイントが作成されるため、最大 20 分かかる場合があります。 次の手順の説明に従って、ジョブを監視します。
 
-
 ## <a name="monitor-the-backup-job"></a>バックアップ ジョブを監視する
 
 1. [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) を実行して、ジョブの状態を監視します。
@@ -142,6 +142,7 @@ Azure VM のバックアップを有効にし、バックアップ ポリシー�
     ```powershell
     Get-AzRecoveryservicesBackupJob
     ```
+
     出力は次の例のようになります。ジョブが **InProgress** であることが示されています。
 
     ```output
@@ -153,10 +154,10 @@ Azure VM のバックアップを有効にし、バックアップ ポリシー�
 
 2. ジョブの状態が **Completed** の場合、VM が保護されていて、完全な復旧ポイントが格納されています。
 
-
 ## <a name="clean-up-the-deployment"></a>デプロイをクリーンアップする
 
 VM をバックアップする必要がなくなった場合は、クリーンアップできます。
+
 - VM の復元を試す場合は、クリーンアップをスキップします。
 - 既存の VM を使用した場合は、最後の [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを省略すると、リソース グループと VM をそのままの状態にしておくことができます。
 
@@ -169,10 +170,9 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Recovery Services コンテナーを作成し、VM の保護を有効にし、最初の復元ポイントを作成しました。 
+このクイック スタートでは、Recovery Services コンテナーを作成し、VM の保護を有効にし、最初の復元ポイントを作成しました。
 
 - Azure portal 内で VM をバックアップする[方法の詳細](tutorial-backup-vm-at-scale.md)
 - VM をすばやく復元する[方法の詳細](tutorial-restore-disk.md)

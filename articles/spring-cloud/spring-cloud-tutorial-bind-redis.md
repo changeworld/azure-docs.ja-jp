@@ -1,20 +1,17 @@
 ---
 title: Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする方法 | Microsoft Docs
 description: Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする方法について説明します
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d8fa31207baecc80674fb11b492927800676b8a2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: tutorial
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038241"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607568"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>チュートリアル:Azure サービスを Azure Spring Cloud アプリケーションにバインドする: Azure Cache for Redis
 
@@ -26,14 +23,7 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
 * Azure Cache for Redis サービス インスタンス
 * Azure CLI 用の Azure Spring Cloud 拡張機能
 
-必要な場合は、次のコマンドを使用して Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします。
-
-```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
-```
-
->[!TIP]
-> Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。  最新バージョンの Git、JDK、Maven、Azure CLI など、一般的な Azure ツールがプレインストールされています。 Azure サブスクリプションにログインしている場合は、shell.azure.com から [Azure Cloud Shell](https://shell.azure.com) を起動します。  Azure Cloud Shell の詳細については、[ドキュメントを参照](../cloud-shell/overview.md)してください
+Azure Spring Cloud インスタンスをデプロイしていない場合は、この[クイックスタート](spring-cloud-quickstart-launch-app-portal.md)の手順に従って最初の Spring Cloud アプリをデプロイします。
 
 ## <a name="bind-azure-cache-for-redis"></a>Azure Cache for Redis をバインドする
 

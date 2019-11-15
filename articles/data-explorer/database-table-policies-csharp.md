@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: fa2dd4993dbf70bcbc6ea97726f8cd7254123429
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 8a5ea692bfdec7f676a80cc670f686af66152e6f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71997276"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606597"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-using-c"></a>C# を使用して Azure Data Explorer のデータベースとテーブルのポリシーを作成する
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>C# を使用して Azure Data Explorer のデータベースとテーブルのポリシーを作成する
 
 > [!div class="op_single_selector"]
 > * [C#](database-table-policies-csharp.md)
@@ -25,32 +25,32 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ## <a name="prerequisites"></a>前提条件
 
-* Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+* Visual Studio 2019。 Visual Studio 2019 をお持ちでない場合は、*無料*の [Visual Studio Community 2019](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を選択してください。
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+* Azure サブスクリプション。 必要に応じて、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成できます。
 
-* [テスト用のクラスターとデータベース](create-cluster-database-csharp.md)
+* [テスト用のクラスターとデータベース](create-cluster-database-csharp.md)。
 
-* [テスト用のテーブル](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* [テスト用のテーブル](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)。
 
-## <a name="install-c-nuget"></a>C# Nuget をインストールする
+## <a name="install-c-nuget"></a>C# NuGet をインストールする
 
 * [Azure Data Explorer (Kusto) NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)をインストールします。
 
-* [Microsoft.Azure.Kusto.Data.NETStandard NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/)をインストールします (省略可能。テーブルのポリシー変更用)。
+* [Microsoft.Azure.Kusto.Data.NETStandard NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/)をインストールします。 (省略可能。テーブルのポリシー変更用。)
 
-* 認証用に [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)をインストールします。
+* 認証用に、[Microsoft.IdentityModel.Clients.ActiveDirectory NuGet パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)をインストールします。
 
 ## <a name="authentication"></a>認証
-この記事の例を実行するには、リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルが必要です。 [テスト用のクラスターとデータベース](create-cluster-database-csharp.md#authentication)と同じ Azure AD アプリケーションを認証用に使用できます。 別の Azure AD アプリケーションを使用する場合は、[Azure AD アプリケーションの作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関するページを参照して、無料の Azure AD アプリケーションを作成し、サブスクリプション スコープでロールの割り当てを追加します。 `Directory (tenant) ID`、`Application ID`、および `Client Secret` を取得する方法も示されています。 新しい Azure AD アプリケーションをプリンシパルとしてデータベースに追加することが必要になる場合があります。詳細については、「[Azure Data Explorer のデータベースのアクセス許可を管理する](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)」を参照してください。   
+この記事の例を実行するには、リソースにアクセスできる Azure Active Directory (Azure AD) アプリケーションとサービス プリンシパルが必要です。 認証用に、[テスト用のクラスターとデータベース](create-cluster-database-csharp.md#authentication)と同じ Azure AD アプリケーションを使用できます。 別の Azure AD アプリケーションを使用する場合は、[Azure AD アプリケーションの作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関するページを参照して、無料の Azure AD アプリケーションを作成し、サブスクリプション スコープでロールの割り当てを追加します。 この記事では、`Directory (tenant) ID`、`Application ID`、および `Client secret` を取得する方法も示しています。 新しい Azure AD アプリケーションを、プリンシパルとしてデータベースに追加する必要が生じる場合があります。 詳細については、「[Azure Data Explorer のデータベース アクセス許可を管理する](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)」を参照してください。
 
 ## <a name="alter-database-retention-policy"></a>データベースの保持ポリシーを変更する
-10 日間の論理的な削除期間で保持ポリシーを設定します。
+論理的な削除期間を 10 日間として、保持ポリシーを設定します。
     
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -64,19 +64,19 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(softDeletePeriod: TimeSpan.FromDays(10)));
 ```
 
 ## <a name="alter-database-cache-policy"></a>データベースのキャッシュ ポリシーを変更する
-過去 5 日間のデータがクラスター SSD に保持されるように、データベースのキャッシュ ポリシーを設定します。
+データベースのキャッシュ ポリシーを設定します。 前の 5 日間のデータがクラスターの SSD に置かれます。
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -90,21 +90,21 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(hotCachePeriod: TimeSpan.FromDays(5)));
 ```
 
 ## <a name="alter-table-cache-policy"></a>テーブルのキャッシュ ポリシーを変更する
-過去 5 日間のデータがクラスター SSD に保持されるように、テーブルのキャッシュ ポリシーを設定します。
+テーブルのキャッシュ ポリシーを設定します。 前の 5 日間のデータがクラスターの SSD に置かれます。
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
 var databaseName = "<DatabaseName>";
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var tableName = "<TableName>"
 
 var kustoConnectionStringBuilder =
@@ -128,7 +128,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
-## <a name="add-a-new-principal-for-database"></a>データベースの新しいプリンシパルを追加する
+## <a name="add-a-new-principal-for-the-database"></a>データベース用の新しいプリンシパルを追加する
 新しい Azure AD アプリケーションをデータベースの管理者プリンシパルとして追加します。
 
 ```csharp
@@ -149,7 +149,7 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clusterName, databaseName,

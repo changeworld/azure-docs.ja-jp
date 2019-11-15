@@ -1,20 +1,20 @@
 ---
-title: クイック スタート - Azure portal を使用して Analysis Services サーバーを作成する | Microsoft Docs
-description: Azure で Analysis Services サーバーのインスタンスを作成する方法について説明します。
+title: クイックスタート - Azure portal を使用して Analysis Services サーバーを作成する | Microsoft Docs
+description: Azure portal を使用して、Azure Analysis Services サーバー インスタンスをすばやく作成する方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cfd624ce49add0f8fd04bfccca9d6b7c3f1f71bd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295044"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573063"
 ---
-# <a name="quickstart-create-a-server---portal"></a>クイック スタート: サーバーの作成 - ポータル
+# <a name="quickstart-create-a-server---portal"></a>クイック スタート:サーバーの作成 - ポータル
 
 このクイック スタートでは、ポータルを使って、Azure サブスクリプションに Analysis Services サーバー リソースを作成する方法について説明します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "72295044"
    * **バックアップ ストレージの設定**: 省略可能。 [ストレージ アカウント](../storage/common/storage-introduction.md)が既に存在する場合、モデル データベースのバックアップの既定値として指定することができます。 後で[バックアップと復元](analysis-services-backup.md)の設定を指定することもできます。
    * **ストレージ キーの有効期限**: 省略可能。 ストレージ キーの有効期限を指定します。
 
-通常、サーバーの作成にかかる時間は 1 分以下です。 **[Add to Portal]** (ポータルに追加) を選んだ場合は、ポータルに移動して新しいサーバーを確認します。 または、 **[すべてのサービス]**  >  **[Analysis Services]** に移動して、サーバーの準備ができていることを確認します。 サーバーは、互換性レベル 1200 以降の表形式モデルをサポートします。 モデルの互換性レベルは、SSDT または SSMS で指定されます。
+通常、サーバーの作成にかかる時間は 1 分以下です。 **[Add to Portal]** (ポータルに追加) を選んだ場合は、ポータルに移動して新しいサーバーを確認します。 または、 **[すべてのサービス]**  >  **[Analysis Services]** に移動して、サーバーの準備ができていることを確認します。 サーバーは、互換性レベル 1200 以降の表形式モデルをサポートします。 モデルの互換性レベルは、Visual Studio または SSMS で指定します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

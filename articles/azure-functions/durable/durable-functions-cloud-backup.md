@@ -7,18 +7,20 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 81c1279670e786ddaa03946869773121a859d3b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: e2f1042fe1210fe51ae79b1152e51191e7fb066a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735233"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615025"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
 "*ファンアウト/ファンイン*" は、複数の関数を同時に実行した後、その結果に対して集計を行うパターンを指します。 この記事では、[Durable Functions](durable-functions-overview.md) を使用してファンイン/ファンアウト シナリオを実装するサンプルについて説明します。 このサンプルは、アプリのサイトのコンテンツの一部またはすべてを Azure Storage にバックアップする永続関数です。
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -28,7 +30,7 @@ ms.locfileid: "70735233"
 
 すべてを管理する単一の関数を記述できます。 その際に発生する最大の問題は**スケーラビリティ**です。 単一の関数は、単一の VM でのみ実行できるため、スループットは単一の VM のスループットによって制限されます。 別の問題として、**信頼性**があります。 途中でエラーが発生した場合、またはプロセス全体が 5 分以上かかる場合、バックアップは部分的に完了した状態で失敗する可能性があります。 これにより、再起動が必要になることがあります。
 
-もっと堅牢な方法は、2 つの標準的な関数 (ファイルを列挙し、ファイル名をキューに追加する関数と、キューからファイルを読み取り、そのファイルを BLOB ストレージにアップロードする関数) を記述することです。 これにより、スループットと信頼性は向上しますが、キューのプロビジョニングと管理を行う必要があります。 さらに重要なのは、アップロードされた合計バイト数の報告などを行うと、**状態管理**と**調整**が非常に複雑になることです。
+もっと堅牢な方法は、2 つの標準的な関数 (ファイルを列挙し、ファイル名をキューに追加する関数と、キューからファイルを読み取り、そのファイルを BLOB ストレージにアップロードする関数) を記述することです。 このアプローチにより、スループットと信頼性は向上しますが、キューのプロビジョニングと管理を行う必要があります。 さらに重要なのは、アップロードされた合計バイト数の報告などを行うと、**状態管理**と**調整**が非常に複雑になることです。
 
 Durable Functions を使用する方法は、上記の利点を非常に少ないオーバーヘッドで実現できます。
 
@@ -54,7 +56,7 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
@@ -66,7 +68,7 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 4. すべてのアップロードが完了するまで待機します。
 5. Azure Blob ストレージにアップロードされたバイト数の合計を返します。
 
-`await Task.WhenAll(tasks);` (C#) および `yield context.df.Task.all(tasks);` (JavaScript) の行に注意してください。 `E2_CopyFileToBlob` 関数への個々の呼び出しがすべて待機されている*わけではありません*。 これは、呼び出しを同時に実行できるようにするための意図的な設定です。 このタスクの配列を `Task.WhenAll` (C#) または `context.df.Task.all` (JavaScript) に渡すと、*すべてのコピー操作が完了するまで*完了しないタスクが返されます。 .NET のタスク並列ライブラリ (TPL) または JavaScript の [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) に精通していれば、これは目新しいものではありません。 違いは、これらのタスクは複数の VM で同時に実行される可能性があり、エンド ツー エンドの実行がプロセスのリサイクルに柔軟に対応することが Durable Functions 拡張機能によって保証されることです。
+`await Task.WhenAll(tasks);` (C#) および `yield context.df.Task.all(tasks);` (JavaScript) の行に注意してください。 `E2_CopyFileToBlob` 関数への個々の呼び出しがすべて待機されていて並列実行が可能な*わけではありません*。 このタスクの配列を `Task.WhenAll` (C#) または `context.df.Task.all` (JavaScript) に渡すと、*すべてのコピー操作が完了するまで*完了しないタスクが返されます。 .NET のタスク並列ライブラリ (TPL) または JavaScript の [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) に精通していれば、これは目新しいものではありません。 違いは、これらのタスクは複数の VM で同時に実行される可能性があり、エンド ツー エンドの実行がプロセスのリサイクルに柔軟に対応することが Durable Functions 拡張機能によって保証されることです。
 
 > [!NOTE]
 > タスクは概念的には JavaScript の Promise に似ていますが、タスクの並列化を管理するために、オーケストレーター関数は `Promise.all` と `Promise.race` の代わりに `context.df.Task.all` と `context.df.Task.any` を使用する必要があります。
@@ -85,7 +87,7 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
@@ -98,13 +100,13 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-C# 実装も非常に簡単です。 Azure Functions のバインドの高度な機能を使用します (`Binder` パラメーターを使用します) が、このチュートリアルでは、詳細を気にする必要はありません。
+C# 実装も簡単です。 Azure Functions のバインドの高度な機能を使用します (`Binder` パラメーターを使用します) が、このチュートリアルでは、詳細を気にする必要はありません。
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 JavaScript 実装では Azure Functions の `Binder` 機能にアクセスできないため、[Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) が代わりに使用されます。
 
@@ -136,7 +138,7 @@ Content-Length: 20
 HTTP/1.1 202 Accepted
 Content-Length: 719
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
 (...trimmed...)
 ```
@@ -144,16 +146,16 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 この操作は、関数アプリ内のログ ファイルの数によっては、完了するまで数分かかる場合があります。 前の HTTP 202 応答の `Location` ヘッダー内の URL をクエリすることで、最新の状態を取得できます。
 
 ```
-GET http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+GET http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 148
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
-{"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:16Z"}
+{"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:16Z"}
 ```
 
 ここでは、関数はまだ実行中です。 オーケストレーターの状態と最終更新時間に保存された入力を確認できます。 `Location` ヘッダーの値を引き続き使用して、完了するまでポーリングできます。 状態が "Completed" になると、次のような HTTP 応答値が表示されます。
@@ -163,7 +165,7 @@ HTTP/1.1 200 OK
 Content-Length: 152
 Content-Type: application/json; charset=utf-8
 
-{"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:26Z"}
+{"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:26Z"}
 ```
 
 これで、オーケストレーションが完了したこと、完了までにかかったおおよその時間を確認できます。 `output` フィールドの値から、約 450 KB のログがアップロードされたことも確認できます。
@@ -173,7 +175,7 @@ Content-Type: application/json; charset=utf-8
 Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
 
 > [!NOTE]
-> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Storage` Nuget パッケージをインストールする必要があります。
+> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Storage` NuGet パッケージをインストールする必要があります。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 

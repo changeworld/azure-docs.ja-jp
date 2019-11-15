@@ -1,22 +1,22 @@
 ---
-title: Azure Virtual Network データソースに対してオンプレミス データ ゲートウェイを使用する | Microsoft Docs
-description: VNet 上のデータソースに対してゲートウェイを使用するようにサーバーを構成する方法を説明します。
+title: VNet データソース用に Azure Analysis Services を構成する | Microsoft Docs
+description: Azure Virtual Network (VNet) 上のデータソースに対してゲートウェイを使用するように Azure Analysis Services サーバーを構成する方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d1993996c0f982624d6976b50871fa8c4592e2f6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 384f4c2ee3021678c530aa5c98eaf4dbfd661e95
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301218"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572277"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Azure Virtual Network (VNet) 上のデータソースに対してゲートウェイを使用する
 
-この記事では、データソースが [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md) 上に存在する場合に使用する **AlwaysUseGateway** サーバー プロパティについて説明します。
+この記事では、データソースが [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md) 上に存在する場合に使用する Azure Analysis Services の **AlwaysUseGateway** サーバー プロパティについて説明します。
 
 ## <a name="server-access-to-vnet-data-sources"></a>VNet データソースへのサーバー アクセス
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982338"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795829"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -117,9 +117,9 @@ Cognitive Services は次の場合に使用します。
  
 このサービスは、REST API または SDK 呼び出しを行うことができるアプリケーションで使用されます。 たとえば、Web サイト、ボット、仮想現実や複合現実、デスクトップ アプリケーション、モバイル アプリケーションなどです。 
 
-## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>コグニティブ検索とコグニティブ サービスの関連性
+## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Azure Cognitive Search と Cognitive Search の関連性
 
-[Azure Search](../search/search-what-is-azure-search.md) では、コグニティブ サービスを利用してこの機能を提供しています。 コグニティブ サービスは、個々の API をラップする[組み込みのスキル](../search/cognitive-search-predefined-skills.md)を通じて Azure Search で公開されます。 チュートリアルには無料のリソースを使用できますが、ボリュームが大きい場合は[課金対象のリソース](../search/cognitive-search-attach-cognitive-services.md)を作成して接続するようにしてください。
+[Azure Cognitive Search](../search/search-what-is-azure-search.md) は独立したクラウド検索サービスであり、必要に応じて Cognitive Services を使用して、イメージと自然言語の処理をインデックス作成ワークロードに追加します。 Cognitive Services は、個々の API をラップする[組み込みのスキル](../search/cognitive-search-predefined-skills.md)を通じて Azure Cognitive Search で公開されます。 チュートリアルには無料のリソースを使用できますが、ボリュームが大きい場合は[課金対象のリソース](../search/cognitive-search-attach-cognitive-services.md)を作成して接続するようにしてください。
 
 ## <a name="how-can-you-use-cognitive-services"></a>コグニティブ サービスの用途
 

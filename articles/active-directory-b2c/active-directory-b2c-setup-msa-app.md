@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 134ca92671a41eb53201101a3622215466a60c09
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a921d6110fd0294012e2e59542ba2c82d63ffcde
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065093"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73642073"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Microsoft アカウントでのサインアップおよびサインインを設定する
 
@@ -37,7 +37,7 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](active-dir
 1. **[証明書とシークレット]** を選択します
 1. **[新しいクライアント シークレット]** をクリックします
 1. シークレットの **[説明]** を「*アプリケーション パスワード 1*」のように入力して、 **[追加]** をクリックします。
-1. **[値]** 列に表示されているアプリケーション パスワードを記録します。 これは、次のセクションで ID プロバイダーを構成するときに必要です。
+1. **[値]** 列に示されているアプリケーション パスワードを記録します。 これは、次のセクションで ID プロバイダーを構成するときに必要です。
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>ID プロバイダーとして Microsoft account アカウントを構成する
 

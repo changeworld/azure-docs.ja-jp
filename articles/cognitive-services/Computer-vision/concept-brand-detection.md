@@ -1,7 +1,7 @@
 ---
 title: ブランド検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用したブランド/ロゴの検出に関連する概念。
+description: この記事では、特殊なオブジェクト検出モードである、Computer Vision API を使用したブランドやロゴの検出について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967086"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718623"
 ---
 # <a name="detect-popular-brands-in-images"></a>画像内の人気のブランドの検出
 

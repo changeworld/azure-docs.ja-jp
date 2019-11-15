@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 25b0c14fb94cba611dfa9fa9bece1b728f39a905
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296388"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585203"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus に関する Resource Manager での例外
 
@@ -71,4 +71,21 @@ HTTP の場合と同様に、"エラー コード 429" は "要求が多すぎ�
 | 見つかりません | なし | Entity *'entity name'* was not found. (エンティティ '<エンティティ名>' が見つかりませんでした。) | 操作の対象のエンティティが見つかりませんでした。 | エンティティが存在するかどうかを確認してから、操作を再試行してください。 |
 | 見つかりません | なし | Not Found. (見つかりませんでした。) The Operation doesn't exist. (操作が存在しません。) | 実行しようとしている操作は存在しません。 | 操作を確認してから、やり直してください。 |
 | 見つかりません | なし | The incoming request is not recognized as a namespace policy put request. (受信した要求は名前空間ポリシーの PUT 要求として認識されません。) | 受信した要求の本文が null であるため、PUT 要求として実行できません。 | 要求の本文が null でないことを確認してください。 | 
-| 見つかりません | なし | The messaging entity *'entity name'* could not be found. (メッセージング エンティティ '< エンティティ名>' が見つかりませんでした。) | 操作を実行しようとしているエンティティが見つかりませんでした。 | エンティティが存在するかどうかを確認してから、操作を再試行してください。 |
+| 見つかりません | なし | The messaging entity *'entity name'* could not be found. (メッセージング エンティティ '< エンティティ名>' が見つかりませんでした。) | 操作を実行しようとしているエンティティが見つかりませんでした。 | エンティティが存在するかどうかを確認し、操作を再試行してください。 |
+
+## <a name="error-code-internal-server-error"></a>エラー コード:内部サーバー エラー
+
+このクラスのエラーは、内部サーバー エラーがあったことを示しています
+
+| エラー コード | エラー サブコード | エラー メッセージ | 説明 | 推奨 |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| 内部サーバー エラー | 50000 | サブコード=50000。 内部サーバー エラー| さまざまな理由で発生する可能性があります。 症状の一部は以下のようなものです。 <ul> <li> クライアントの要求/本文が破損していてエラーに至る。 </li> <li> サービスでの処理の問題のため、クライアント要求がタイムアウトする。 </li> </ul> | これを解決するには、次のようにします <ul> <li> 要求のパラメーターが null でないことや、形式が正しくないことを確認します。 </li> <li> 要求をやり直してください。 </li> </ul> |
+
+## <a name="error-code-unauthorized"></a>エラー コード:権限がありません
+
+このクラスのエラーは、コマンドを実行する権限がないことを示しています。
+
+| エラー コード | エラー サブコード | エラー メッセージ | 説明 | 推奨 |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| 権限がありません | なし | Invalid operation on the Secondary namespace. (セカンダリ名前空間での操作が無効です。) Secondary namespace is read-only. (セカンダリ名前空間は読み取り専用です。) | 操作はセカンダリ名前空間に対して実行されました。この名前空間は読み取り専用の名前空間として設定されています。 | プライマリ名前空間に対してコマンドを再試行してください。 [セカンダリ名前空間](service-bus-geo-dr.md)についての詳細を確認してください |
+| 権限がありません | なし | MissingToken (トークンがありません):The authorization header was not found. (Authorization ヘッダーが見つかりませんでした。) | このエラーは、承認に null または正しくない値が含まれているときに発生します。 | Authorization ヘッダーに記載されているトークン値が正しく、null でないことを確認します。 |

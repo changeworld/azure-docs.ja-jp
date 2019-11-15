@@ -1,34 +1,36 @@
 ---
 title: チュートリアル:Azure Time Series Insights プレビューの環境を設定する | Microsoft Docs
 description: Azure Time Series Insights プレビューで環境を設定する方法について説明します。
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 10/02/2019
+ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e42f6d7c5e3deff3eb5851f3ea192b4756d2fe04
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 25571dbd87e4d01645a3a7a991588a3a943b3e4d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553477"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719461"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
-このチュートリアルでは、Azure Time Series Insights プレビューの従量課金制 (PAYG) 環境を作成する手順について説明します。 
+このチュートリアルでは、Azure Time Series Insights プレビューの従量課金制 (PAYG) 環境を作成する手順について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * Azure Time Series Insights プレビューの環境を作成する。
-> * Azure Time Series Insights プレビュー環境を Azure Event Hubs のイベント ハブに接続する。
+> * Azure Time Series Insights プレビュー環境を IoT ハブに接続する。
 > * ソリューション アクセラレータのサンプルを実行して、Azure Time Series Insights プレビュー環境にデータをストリーム配信する。
 > * データの基本的な分析を実行する。
 > * 時系列モデルの種類と階層を定義して、インスタンスに関連付ける。
+> * Power BI コネクタを使用し、Power BI 内でデータを視覚化する。
 
 >[!TIP]
 > [IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators)によって、カスタム IoT ソリューションの開発を高速化するために使用できる、エンタープライズ レベルのあらかじめ構成されたソリューションが提供されます。
@@ -37,7 +39,7 @@ ms.locfileid: "72553477"
 
 ## <a name="prerequisites"></a>前提条件
 
-* また、Azure のサインイン アカウントは、サブスクリプションの**所有者**ロールのメンバーである必要があります。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
+* 少なくとも、Azure サブスクリプションに対する**共同作成者**ロールが必要です。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
 ## <a name="create-a-device-simulation"></a>デバイス シミュレーションを作成する
 
@@ -47,20 +49,25 @@ ms.locfileid: "72553477"
 
    [![Azure IoT ソリューション アクセラレータのページ](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
 
-   **[今すぐ試してみる]** をクリックします。
+1. 次のページで **[今すぐ試す]** を選択します。
+
+   [![[デバイス シミュレーション] ページ](media/v2-update-provision/device-two-try.png)](media/v2-update-provision/device-two-try.png#lightbox)
 
 1. **[デバイス シミュレーション ソリューションの作成]** ページで、次のパラメーターを設定します。
 
     | パラメーター | Action |
     | --- | --- |
     | **デプロイ名** | 新しいリソース グループに一意の値を入力します。 一覧の Azure リソースが作成され、リソース グループに割り当てられます。 |
-    | **Azure サブスクリプション** | Time Series Insights 環境の作成に使用したサブスクリプションを選択します。 |
-    | **Azure の場所** | Time Series Insights 環境の作成に使用したリージョンを選択します。 |
+    | **Azure サブスクリプション** | Time Series Insights 環境の作成に使用するサブスクリプションを選択します。 |
+    | **Azure の場所** | Time Series Insights 環境を格納するリージョンを選択します。 デバイス シミュレーターは限られた数のリージョンでのみ提供されるため、目的のリージョンが表示されない場合は、チュートリアルの目的でのみ使用する場所を選択し、オンボーディングの次のフェーズに進む準備ができたら新しい TSI 環境を作成することができます。  |
     | **デプロイ オプション** | **[Provision new IoT Hub]\(新しい IoT ハブをプロビジョニングする\)** を選択します。 |
- 
-    **[ソリューションの作成]** を選択します。 ソリューションのデプロイが完了するのに最大で 20 分かかる場合があります。
 
-    [![[ソリューションの作成 Device Simulation] ページ](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+    1. **作成** を選択します。
+    [![[デバイス シミュレーション] ページ](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+
+1. 約 20 分後に、ソリューション アクセラレータの準備が完了します。
+
+    [![[デバイス シミュレーション] ページ](media/v2-update-provision/device-two-ready.png)](media/v2-update-provision/device-two-ready.png#lightbox)
 
 ## <a name="create-a-preview-payg-environment"></a>プレビュー PAYG 環境を作成する
 
@@ -79,14 +86,17 @@ ms.locfileid: "72553477"
     | **環境名** | Azure Time Series Insights プレビュー環境の一意名を入力します。 |
     | **サブスクリプション** | Azure Time Series Insights プレビュー環境を作成するサブスクリプションを入力します。 ベスト プラクティスとしては、デバイス シミュレーターによって作成される他の IoT リソースと同じサブスクリプションを使用します。 |
     | **リソース グループ** | Azure Time Series Insights プレビュー環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。 リソース グループとは、Azure リソース用のコンテナーです。 ベスト プラクティスとしては、デバイス シミュレーターによって作成される他の IoT リソースと同じリソース グループを使用します。 |
-    | **Location** | Azure Time Series Insights プレビュー環境のデータセンター リージョンを選択します。 待ち時間の増加を防ぐために、お使いの他の IoT リソースと同じリージョン内に Azure Time Series Insights プレビュー環境を作成することをお勧めします。 |
+    | **Location** | Azure Time Series Insights プレビュー環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、デバイス シミュレーターによって作成された IoT ハブと同じリージョン内に Azure Time Series Insights プレビュー環境を作成することをお勧めします。 |
     | **レベル** |  **[PAYG]** (*従量課金制*) を選択します。 これは、Azure Time Series Insights プレビュー製品の SKU です。 |
-    | **プロパティ ID** | ご自分の時系列インスタンスを一意に識別できる値を入力します。 **[プロパティ ID]** ボックスに入力する値は変更不可です。 これは後で変更することはできません。 このチュートリアルでは、「**iothub-connection-device-id**」と入力します。Time Series ID の詳細については、[時系列 ID の選択のベスト プラクティス](./time-series-insights-update-how-to-id.md)に関するページを参照してください。 |
-    | **Storage account name \(ストレージ アカウント名\)** | 作成する新しいストレージ アカウントのグローバルな一意名を入力します。 |
-   
-   **[次へ:Event Source]\(次へ: イベント ソース\)** をクリックします。
+    | **プロパティ ID** | ご自分の時系列インスタンスを一意に識別できる値を入力します。 **[プロパティ ID]** ボックスに入力する値は後で変更できません。 このチュートリアルでは、「**iothub-connection-device-id**」と入力します。Time Series ID の詳細については、[時系列 ID の選択のベスト プラクティス](./time-series-insights-update-how-to-id.md)に関するページを参照してください。 |
+    | **Storage account name \(ストレージ アカウント名\)** | 新しいストレージ アカウント用のグローバルな一意名を入力します。|
+    |**Enable warm store (\ウォーム ストアを有効にする\)**|**[はい]** を選択して、ウォーム ストアを有効にします。|
+    |**Data retention (in days) \(データ保有期間 (日数)\)**|既定のオプションである 7 日を選択します。 |
 
-   [![Time Series Insights 環境の作成ウィンドウ](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
+    **[次へ:Event Source]\(次へ: イベント ソース\)** をクリックします。
+
+   [![Time Series Insights 環境を作成するためのペイン](media/v2-update-provision/payg-two-1-create.png)](media/v2-update-provision/payg-two-1-create.png#lightbox)
+   [![Time Series Insights 環境を作成するためのペイン](media/v2-update-provision/payg-two-2-create.png)](media/v2-update-provision/payg-two-2-create.png#lightbox)
 
 1. **[Event Source]\(イベント ソース\)** タブで、次のパラメーターを設定します。
 
@@ -106,7 +116,7 @@ ms.locfileid: "72553477"
 
    [![イベント ソースを構成する](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
 
-1. **[Review + create]\(確認と作成\)** タブで選択項目を確認し、 **[Create]\(作成\)** を選択します。
+1. **作成** を選択します。
 
     [![[Review + create]\(確認と作成\) ページと [Create]\(作成\) ボタン](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
 
@@ -114,29 +124,30 @@ ms.locfileid: "72553477"
 
     [![デプロイが完了したことを示す通知](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
 
-1. テナントを所有している場合は、Azure Time Series Insights プレビュー環境にアクセスできます。 アクセスがあることを確認するには:
+1. Azure サブスクリプションの所有者である場合、既定では Azure Time Series Insights プレビュー環境にアクセスできます。 アクセス権があることを確認してください。
 
-   1. 自分のリソース グループを検索し、Azure Time Series Insights プレビュー環境を選択します。
-
+   1. ご自分のリソース グループを検索し、新規に作成した Azure Time Series Insights プレビュー環境を選択します。 
       [![選択されている環境](media/v2-update-provision/payg-eight-environment.png)](media/v2-update-provision/payg-eight-environment.png#lightbox)
 
-   1. Azure Time Series Insights プレビュー ページで、 **[データ アクセス ポリシー]** を選択します。
-
-      [![データ アクセス ポリシー](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
+   1. Azure Time Series Insights プレビュー ページで、 **[データ アクセス ポリシー]** を選択します。[![データ アクセス ポリシー](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
 
    1. ご自分の資格情報が表示されることを確認します。
 
       [![表示された資格情報](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
-   ご自分の資格情報が表示されない場合は、環境にアクセスするためのアクセス許可を自分自身に付与する必要があります。 アクセス許可の設定について詳しくは、「[データ アクセスの許可](./time-series-insights-data-access.md)」を参照してください。
+   ご自分の資格情報が表示されない場合は、[追加] を選択し、資格情報を検索することにより、環境にアクセスするためのアクセス許可を自分自身に付与する必要があります。 アクセス許可の設定について詳しくは、「[データ アクセスの許可](./time-series-insights-data-access.md)」を参照してください。
 
 ## <a name="stream-data"></a>データをストリーム配信する
 
-Time Series Insights 環境をデプロイできたので、分析のために、そこへデータをストリーム配信します。
+Time Series Insights 環境をデプロイできたので、分析のためにデータのストリーム配信を開始します。
 
-1. [Azure IoT ソリューション アクセラレータのページ](https://www.azureiotsolutions.com/Accelerators)に戻ります。 ソリューション アクセラレータ ダッシュボードで、対象のソリューションを見つけます。 次に **[起動]** を選択します。
+1. [Azure IoT ソリューション アクセラレータのページ](https://www.azureiotsolutions.com/Accelerators)に戻ります。 ソリューション アクセラレータ ダッシュボードで、対象のソリューションを見つけ、 **[起動]** を選択します。
 
     [![デバイス シミュレーション ソリューションを起動する](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+
+1. **[Go to your solution accelerator]\(ソリューション アクセラレータに移動\)** を選択します。
+
+    [![デバイス シミュレーション ソリューションを起動する](media/v2-update-provision/device-accelerator.png)](media/v2-update-provision/device-accelerator.png#lightbox)
 
 1. **Microsoft Azure IoT デバイス シミュレーション**のページにリダイレクトされます。 ページの右上隅にある **[New simulation]\(新しいシミュレーション\)** を選択します。
 
@@ -149,14 +160,14 @@ Time Series Insights 環境をデプロイできたので、分析のために�
     | **Name** | シミュレーターの一意名を入力します。 |
     | **説明** | 定義を入力します。 |
     | **[Simulation duration]\(シミュレーション期間\)** | **[Run indefinitely]\(無期限に実行する\)** に設定します。 |
-    | **[デバイス モデル]** | **Name**:「**Chiller**」と入力します。 <br />**[Amount]\(量\)** :「**3**」と入力します。 |
+    | **[デバイス モデル]** | **[+ Add a device type]\(+ デバイスの種類の追加\)** をクリックします <br />**Name**:「**Elevator**」と入力します。 <br />**[Amount]\(量\)** :「**3**」と入力します。 <br /> 他の既定値はそのまま使用します |
     | **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | **[Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\)** に設定します。 |
 
     [![設定するパラメーター](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
 
     **[シミュレーションの開始]** を選択します。
 
-    デバイス シミュレーション ダッシュボードで、 **[Active devices]\(アクティブなデバイス\)** と **[Messages per second]\(1 秒あたりのメッセージ数\)** に表示される情報を確認します。
+    デバイス シミュレーション ダッシュボードで、 **[アクティブなデバイス]** と **[Total messages]\(メッセージの総数\)** を確認します。
 
     [![Azure IoT シミュレーション ダッシュボード](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
@@ -168,7 +179,10 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     [![Time Series Insights プレビュー エクスプローラーの URL](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
 
-1. エクスプローラーで、 **[Time Series Instances]\(Time Series インスタンス\)** ノードを選択して、環境内のすべての Azure Time Series Insights プレビュー インスタンスを表示します。
+1. Time Series Insights エクスプローラーで、画面の上部にバーが表示されます。 これは、可用性ピッカーです。 少なくとも 2 つの 2m が選択されていることを確認し、必要に応じて、ピッカー ハンドルを選択して左右にドラッグすることで時間枠を広げます。
+
+1. **[Time Series Instances]\(時系列インスタンス\)** が左側に表示されます。
+
 
     [![親のないインスタンスの一覧](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
 
@@ -176,17 +190,21 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     [![選択されている時系列インスタンスと、平均気圧を表示するメニュー コマンド](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
 
-    時系列グラフが表示されます。 **[Interval]\(間隔\)** を **[15 秒間]** に変更します。
+    時系列グラフが表示されます。 **[間隔]** を **[30s]\(30 秒\)** に変更します。
 
     [![時系列グラフ](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
 
-1. 他の 2 つの時系列インスタンスで、手順 3 を繰り返します。 次のグラフに示すように、すべての時系列インスタンスを表示できます。
+1. 次の図に示すように、他の 2 つの時系列インスタンスについて手順 3. を繰り返して、3 つすべてが表示されるようにします。
 
     [![すべての時系列のグラフ](media/v2-update-provision/analyze-five-chart.png)](media/v2-update-provision/analyze-five-chart.png#lightbox)
 
-1. **[Timeframe]\(期間\)** オプション ボックスで時間の範囲を変更して、過去 1 時間の時系列の傾向を確認します。
+1. 右上にある時間範囲ピッカーを選択します。 ここでは、特定の開始時刻と終了時刻をミリ秒単位で選択したり、過去 1 時間などの事前構成済みオプションから選択したりできます。 既定のタイム ゾーンを変更することもできます。
 
     [![時間範囲を 1 時間に設定する](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
+
+    次に示すのは、シミュレーションを 1 時間実行した後のグラフ ペインの画面キャプチャです。
+
+    [![グラフ ウィンドウ](media/v2-update-provision/analyze-seven-time.png)](media/v2-update-provision/analyze-seven-time.png#lightbox)
 
 ## <a name="define-and-apply-a-model"></a>モデルを定義して適用する
 
@@ -196,58 +214,68 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
    [![エクスプローラーの [Model]\(モデル\) タブ](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
 
-1. **[Add]\(追加\)** を選択してタイプを追加します。
+1. **[タイプ]** タブで、 **[追加]** を選択します。
 
    [![タイプの [Add]\(追加\) ボタン](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
 
-1. 次に、そのタイプの 3 つの変数 (*気圧*、*気温*、*湿度*) を定義します。 **[Add a Type]\(タイプの追加\)** ウィンドウで、次のパラメーターを設定します。
+1. 次のパラメーターを入力します。
 
     | パラメーター | Action |
     | --- | ---|
-    | **Name** | 「**Chiller**」と入力します。 |
-    | **説明** | 「**This is a type definition of Chiller**」と入力します。 |
+    | **Name** | 「**Elevator**」と入力します |
+    | **説明** | 「**This is a type definition for Elevator (これはエレベーターのタイプ定義です)** 」と入力します |
 
-   * *圧力*を定義するには、 **[Variables]\(変数\)** で次のパラメーターを設定します。
+    [![タイプの [Add]\(追加\) ボタン](media/v2-update-provision/define-three-properties.png)](media/v2-update-provision/define-three-properties.png#lightbox)
 
-     | パラメーター | Action |
-     | --- | ---|
-     | **Name** | 「**Avg Pressure**」と入力します。 |
-     | **値** | **[pressure (Double)]\(圧力 (Double)\)** を選択します。 Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。 |
-     | **Aggregation Operation (集計操作)** | **[AVG]** を選択します。 |
+1. 次に、 **[変数]** タブを選択します。[![[変数] タブの選択](media/v2-update-provision/define-four-variables.png)](media/v2-update-provision/define-four-variables.png#lightbox)
 
-      [![圧力を定義するための選択](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
+1. **[+ 変数の追加]** を選択し、Elevator タイプの最初の変数に次の値を入力します。 合計 3 つの変数を作成します。
 
-      次の変数を追加するには、 **[Add Variable]\(変数の追加\)** を選択します。
+    | パラメーター | Action |
+    | --- | --- |
+    | **Name** | 「**Avg Temperature**」と入力します。 |
+    | **種類** | **[数値]** を選択します |
+    | **値** | プリセットから選択します。 **[temperature (Double)]\(温度 (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
+    | **Aggregation Operation (集計操作)** | **[詳細オプション]** を展開します。 <br /> **[AVG]** を選択します。 |
 
-   * *温度*を定義します。
+    [![気温を定義するための選択](media/v2-update-provision/define-five-variable.png)](media/v2-update-provision/define-five-variable.png#lightbox)
 
-     | パラメーター | Action |
-     | --- | ---|
-     | **Name** | 「**Avg Temperature**」と入力します。 |
-     | **値** | **[temperature (Double)]\(温度 (Double)\)** を選択します。 Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。 |
-     | **Aggregation Operation (集計操作)** | **[AVG]** を選択します。|
+    **[適用]** を選択します。
 
-      [![気温を定義するための選択](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
+    もう一度 **[+ 変数の追加]** を選択し、次の値を設定します。
 
-      次の変数を追加するには、 **[Add Variable]\(変数の追加\)** を選択します。
+    | パラメーター | Action |
+    | --- | --- |
+    | **Name** | 「**Avg Vibration**」と入力します。 |
+    | **種類** | **[数値]** を選択します |
+    | **値** | プリセットから選択します。 **[vibration (Double)]\(振動 (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
+    | **Aggregation Operation (集計操作)** | **[詳細オプション]** を展開します。 <br /> **[AVG]** を選択します。 |
 
-   * *湿度*を定義します。
+    [![振動を定義するための選択](media/v2-update-provision/define-five-vibration.png)](media/v2-update-provision/define-five-vibration.png#lightbox)
 
-      | | |
-      | --- | ---|
-      | **Name** | 「**Max Humidity**」と入力する |
-      | **値** | **[humidity (Double)]\(湿度 (Double)\)** を選択します。 Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。 |
-      | **Aggregation Operation (集計操作)** | **[MAX]** を選択します。|
+    **[適用]** を選択します。
 
-      [![気温を定義するための選択](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
+    もう一度 **[+ 変数の追加]** を選択し、3 つ目の最後の変数に次の値を設定します。
 
-    **作成** を選択します。
+    | パラメーター | Action |
+    | --- | --- |
+    | **Name** | 「**Floor**」と入力します。 |
+    | **種類** | **[カテゴリ別]** を選択します |
+    | **値** | プリセットから選択します。 **[Floor (Double)]\(フロア (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
+    | **Categories (カテゴリ)** | <span style="text-decoration: underline">ラベル</span>  - <span style="text-decoration: underline">値</span> <br /> Lower:1,2,3,4 <br /> Middle:5,6,7,8,9 <br /> Upper:10,11,12,13,14,15 |
+    | **既定のカテゴリ** | 「**Unknown**」と入力します |
 
-    追加したタイプを確認できます。
+    [![振動を定義するための選択](media/v2-update-provision/define-five-floor.png)](media/v2-update-provision/define-five-floor.png#lightbox)
 
-    [![追加したタイプに関する情報](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
+    **[適用]** を選択します。 3 つの変数が作成されたことがわかります。
 
-1. 次の手順では、階層を追加します。 **[Hierarchies]\(階層\)** で、 **[Add]\(追加\)** を選択します。
+    [![振動を定義するための選択](media/v2-update-provision/define-five-floor2.png)](media/v2-update-provision/define-five-floor2.png#lightbox)
+
+   **[保存]** を選択します。 作成された **[タイプ]** が表示されます。
+
+    [![振動を定義するための選択](media/v2-update-provision/define-five-floor3.png)](media/v2-update-provision/define-five-floor3.png#lightbox)
+
+1. **[階層]** タブを選択します。 **[+追加]** を選択します。
 
     [![[Hierarchies]\(階層\) タブと [Add]\(追加\) ボタン](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
 
@@ -256,9 +284,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
    | パラメーター | Action |
    | --- | ---|
    | **Name** | 「**Location Hierarchy**」と入力します。 |
-   | **Level 1 (レベル 1)** | 「**Country**」と入力します。 |
-   | **Level 2 (レベル 2)** | 「**City**」と入力します。 |
-   | **Level 3 (レベル 3)** | 「**Building**」と入力します。 |
+   |**レベル**| 最初のレベルの名前として「**Country**」を入力します <br> **[+ レベルの追加]** を選択します <br> 2 つ目のレベルとして「**City**」を入力し、 **[+ レベルの追加]** を選択します <br> 3 つ目の最後のレベルの名前として「**Building**」を入力します |
 
    **[保存]** を選択します。
 
@@ -268,69 +294,68 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     [![階層に関する情報](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
 
-1. **[Instances]\(インスタンス\)** を選択します。 最初のインスタンスを選択し、 **[Edit]\(編集\)** を選択します。
-
-    [![インスタンスの [Edit]\(編集\) ボタンの選択](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
-
-1. **[Edit instances]\(インスタンスの編集\)** ウィンドウで、次のパラメーターを設定します。
+1. **[インスタンス]** に移動します。 右端の **[操作]** にある鉛筆アイコンを選択し、次の値を使用して最初のインスタンスを編集します。
 
     | パラメーター | Action |
     | --- | --- |
-    | **Type** | **[Chiller]** を選択します。 |
-    | **説明** | 「**Instance for Chiller-01.1**」と入力します。 |
-    | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します。 |
-    | **Country (国)** | 「**USA**」と入力します。 |
-    | **City (市)** | 「**Seattle**」と入力します。 |
-    | **Building (建物)** | 「**Space Needle**」と入力します。 |
+    | **Type** | **[Elevator]** を選択します。 |
+    | **Name** | 「**Elevator 1**」と入力します|
+    | **説明** | 「**Instance for Elevator 1**」と入力します |
 
-    [![[保存] ボタンがある [インスタンス] フィールド](media/v2-update-provision/define-eleven-chiller.png)](media/v2-update-provision/define-eleven-chiller.png#lightbox)
+    [![インスタンスの [Edit]\(編集\) ボタンの選択](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
 
-   **[保存]** を選択します。
+    **[インスタンス フィールド]** に移動し、以下を入力します。
 
-1. 他のセンサーについて前の手順を繰り返します。 次の値を更新します。
+    | パラメーター | Action |
+    | --- | --- |
+    | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します |
+    | **Country (国)** | 「**USA**」と入力します |
+    | **City (市)** | 「**Seattle**」と入力します |
+    | **Building (建物)** | 「**Space Needle**」と入力します |
 
-   * Chiller 01.2 の場合:
+    [![インスタンスの [Edit]\(編集\) ボタンの選択](media/v2-update-provision/define-ten2-edit.png)](media/v2-update-provision/define-ten2-edit.png#lightbox)
 
-     | パラメーター | Action |
-     | --- | --- |
-     | **Type** | **[Chiller]** を選択します。 |
-     | **説明** | 「**Instance for Chiller-01.2**」と入力します。 |
-     | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します。 |
-     | **Country (国)** | 「**USA**」と入力します。 |
-     | **City (市)** | 「**Seattle**」と入力します。 |
-     | **Building (建物)** | 「**Pacific Science Center**」と入力します。 |
+    **[保存]** を選択します。
 
-   * Chiller 01.3 の場合:
+1. 次の値を使用して、他の 2 つのインスタンスについて手順 8. を繰り返します。
 
-     | パラメーター | Action |
-     | --- | --- |
-     | **Type** | **[Chiller]** を選択します。 |
-     | **説明** | 「**Instance for Chiller-01.3**」と入力します。 |
-     | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します。 |
-     | **Country (国)** | 「**USA**」と入力します。 |
-     | **City (市)** | 「**New York**」と入力します。 |
-     | **Building (建物)** | 「**Empire State Building**」と入力します。 |
+    <span style="text-decoration: underline;">Elevator 2 の場合</span>:
 
-1. **[Analyze]\(分析\)** タブを選択し、ページを更新します。 **[Location Hierarchy]\(場所の階層\)** で、すべての階層レベルを展開して時系列インスタンスを表示します。
+    | パラメーター | Action |
+    | --- | --- |
+    | **Type** | **[Elevator]** を選択します。 |
+    | **Name** | 「**Elevator 2**」と入力します|
+    | **説明** | 「**Instance for Elevator 2**」と入力します |
+    | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します |
+    | **Country (国)** | 「**USA**」と入力します |
+    | **City (市)** | 「**Seattle**」と入力します |
+    | **Building (建物)** | 「**Pacific Science Center**」と入力します |
+
+    <span style="text-decoration: underline;">Elevator 3 の場合</span>:
+
+    | パラメーター | Action |
+    | --- | --- |
+    | **Type** | **[Elevator]** を選択します。 |
+    | **Name** | 「**Elevator 3**」と入力します|
+    | **説明** | 「**Instance for Elevator 3**」と入力します |
+    | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します |
+    | **Country (国)** | 「**USA**」と入力します |
+    | **City (市)** | 「**New York**」と入力します |
+    | **Building (建物)** | 「**Empire State Building**」と入力します |
+
+1. **[分析]** タブに戻り、グラフ ペインを表示します。 **[Location Hierarchy]\(場所の階層\)** で、すべての階層レベルを展開して時系列インスタンスを表示します。
 
    [![[Analyze]\(分析\) タブ](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
 
-1. 過去 1 時間の時系列インスタンスを調べるには、 **[Quick Times]\(クイック タイム\)** を **[Last Hour]\(過去 1 時間\)** に設定します。
+1. **Pacific Science Center** で時系列インスタンス **[Elevator 2]** を選択してから、 **[Show Average Temperature]\(平均温度の表示\)** を選択します。
 
-    [![[Quick Times]\(クイック タイム\) ボックスと、[Last Hour]\(過去 1 時間\) の選択](media/v2-update-provision/define-thirteen-explore.png)](media/v2-update-provision/define-thirteen-explore.png#lightbox)
+    [![時系列インスタンスに平均温度が表示される](media/v2-update-provision/define-eleven-temperature.png)](media/v2-update-provision/define-eleven-temperature.png#lightbox)
 
-1. **Pacific Science Center** の時系列インスタンスを選択し、 **[Show Max Humidity]\(最大湿度の表示\)** を選択します。
+1. 同じインスタンス **[Elevator 2]** について、 **[Show Floor]\(Floor の表示\)** を選択します。
 
-    [![選択された時系列インスタンスと、[Show Max Humidity]\(最大湿度の表示\) メニューの選択](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
+    [![時系列インスタンスの [Show Floor]\(Floor の表示\)](media/v2-update-provision/define-twelve-floor.png)](media/v2-update-provision/define-twelve-floor.png#lightbox)
 
-1. **最大湿度**の時系列が **1 分**の間隔サイズで開きます。 リージョンをフィルター処理するには、リージョンを選択します。 時間枠内のイベントを分析するには、グラフを右クリックし、 **[Zoom]\(拡大\)** を選択します。
-
-   [![選択された範囲と、ショートカット メニューの [Zoom]\(拡大\) コマンド](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
-
-1. イベントの詳細を表示するには、リージョンを選択してからグラフを右クリックします。
-
-   [![イベントの詳細なリスト](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
-
+    カテゴリ変数を使用すると、エレベーターが上方、下方、および中間のフロアで費やした時間を調べることができます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -343,13 +368,12 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
 このチュートリアルでは、以下の内容を学習しました。  
 
-> [!div class="checklist"]
-> * デバイス シミュレーション アクセラレータを作成して使用する。
-> * Azure Time Series Insights プレビューの PAYG 環境を作成する。
-> * Azure Time Series Insights プレビュー環境をイベント ハブに接続する。
-> * ソリューション アクセラレータのサンプルを実行して、Azure Time Series Insights プレビュー環境にデータをストリーム配信する。
-> * データの基本的な分析を実行する。
-> * 時系列モデルの種類と階層を定義して、インスタンスに関連付ける。
+* デバイス シミュレーション アクセラレータを作成して使用する。
+* Azure Time Series Insights プレビューの PAYG 環境を作成する。
+* Azure Time Series Insights プレビュー環境を IoT ハブに接続する。
+* ソリューション アクセラレータのサンプルを実行して、Azure Time Series Insights プレビュー環境にデータをストリーム配信する。
+* データの基本的な分析を実行する。
+* 時系列モデルの種類と階層を定義して、インスタンスに関連付ける。
 
 Azure Time Series Insights プレビュー環境を自分で作成する方法がわかったので、Azure Time Series Insights の主要な概念について詳しく学習してください。
 

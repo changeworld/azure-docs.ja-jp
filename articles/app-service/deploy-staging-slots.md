@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720126"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669093"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -219,7 +219,7 @@ ms.locfileid: "71720126"
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`:ウォーム アップ操作の有効な HTTP 応答コード。 HTTP コードのコンマ区切りの一覧で、このアプリ設定を追加します。 たとえば `200,202` とします。 返された状態コードが一覧にない場合、ウォームアップとスワップの操作が停止されます。 既定で、すべての応答コードは有効です。
 
 > [!NOTE]
-> `<applicationInitialization>` は、各アプリの起動に含まれますが、2 つのアプリ設定はスロット スワップにのみ適用されます。
+> `<applicationInitialization>` 構成要素は各アプリの起動に含まれますが、2 つのウォームアップの動作を行うアプリの設定はスロット スワップにのみ適用されます。
 
 問題がある場合は、「[スワップのトラブルシューティングを行う](#troubleshoot-swaps)」を参照してください。
 
@@ -334,7 +334,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-arm-templates"></a>ARM テンプレートで自動化する
 
-[ARM テンプレート](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 ARM テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
+[ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 ARM テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
 
 - `buildVersion`: これは、スロットにデプロイされているアプリの現在のバージョンを表す文字列プロパティです。 たとえば、"v1"、"1.0.0.1"、または "2019-09-20T11:53:25.2887393-07:00" のようになります。
 - `targetBuildVersion`: これは、スロットに必要な `buildVersion` を指定する文字列プロパティです。 targetBuildVersion が現在の `buildVersion` と等しくない場合は、指定された `buildVersion` を持つスロットを検索することによってスワップ操作がトリガーされます。

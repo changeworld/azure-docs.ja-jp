@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse への接続 (sqlcmd) | Microsoft Docs
+title: sqlcmd を使用して接続する
 description: sqlcmd コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に接続し、クエリを実行します。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e4b432e0be0cdded5089965b9d272aa82e31bd36
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479507"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685735"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>sqlcmd で SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]
@@ -62,7 +63,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2.Query
+## <a name="2-query"></a>2.クエリ
 接続後、インスタンスに対してサポートされているすべての Transact-SQL ステートメントを発行できます。  この例では、クエリは対話モードで送信されます。
 
 ```sql

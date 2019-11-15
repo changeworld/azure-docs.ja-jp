@@ -1,5 +1,5 @@
 ---
-title: PowerShell サンプル - コピー - Azure SQL データベース - 新しいサーバー | Microsoft Docs
+title: PowerShell の例 - 新しいサーバーに Azure SQL データベースをコピーする
 description: 新しいサーバーに SQL データベースをコピーするための Azure PowerShell サンプル スクリプト
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: dad2364e64d9a30c5cc4f8af11146ad21ec71a2d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: adb832f9f5fb44c5fa4216cb50862d8fc6e48207
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570012"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691723"
 ---
 # <a name="use-powershell-to-copy-a-sql-database-to-a-new-server"></a>PowerShell を使用して新しいサーバーに SQL データベースをコピーする
 

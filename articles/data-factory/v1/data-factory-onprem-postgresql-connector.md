@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した PostgreSQL からのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して PostgreSQL からデータを移動する
 description: Azure Data Factory を使用して PostgreSQL Databases からデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a652e157ec0e7e33c8dce7be2f4af2c240edac9e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 6d8c63551bd6bcc7a7e00dffa6c2b6d9e0e644db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839911"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666067"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -74,7 +74,7 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesPostgreSql** |はい |
-| サーバー |PostgreSQL サーバーの名前です。 |はい |
+| server |PostgreSQL サーバーの名前です。 |はい |
 | database |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ |
 | authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |

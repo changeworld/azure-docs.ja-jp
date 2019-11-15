@@ -1,17 +1,17 @@
 ---
-title: Azure HPC Cache (プレビュー) にストレージを追加する
+title: Azure HPC Cache にストレージを追加する
 description: Azure HPC Cache で長期的なファイルの保管にオンプレミス NFS システムまたは Azure BLOB コンテナーを使用できるようにストレージ ターゲットを定義する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024561"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621462"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -74,7 +74,7 @@ RBAC ロールを追加する手順:
 1. **[選択]** フィールドで、"hpc" を検索します。  この文字列は "HPC Cache リソース プロバイダー" という名前の 1 つのセキュリティ プリンシパルと一致するはずです。 そのプリンシパルをクリックして選択します。
 
    > [!NOTE]
-   > "hpc" の検索が機能しない場合は、代わりに文字列 "storagecache" を使用してみてください。 早期にプレビューに参加したユーザーは、サービス プリンシパルに以前の名前を使用する必要がある可能性があります。
+   > "hpc" の検索が機能しない場合は、代わりに文字列 "storagecache" を使用してみてください。 (一般提供開始前に) プレビューに参加したユーザーは、サービス プリンシパルに以前の名前を使用しなければならない可能性があります。
 
 1. **[保存]** ボタンをクリックして、ロールの割り当てをストレージ アカウントに追加します。
 
@@ -134,3 +134,5 @@ NFS ストレージ システムを指すストレージ ターゲットを作�
 
 * [Azure HPC Cache をマウントする](hpc-cache-mount.md)
 * [Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)
+
+ストレージ ターゲットを変更する必要がある場合は、「[ストレージ ターゲットを編集する](hpc-cache-edit-storage.md)」を読んでその方法を確認してください。

@@ -1,5 +1,5 @@
 ---
-title: Data Factory での Resource Manager テンプレートの使用 | Microsoft Docs
+title: Data Factory で Resource Manager テンプレートを使用する
 description: Azure Resource Manager テンプレートを作成および使用して Data Factory エンティティを作成する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d2360efe71327f02d5cb7d16cb8141f47c304b0c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d9ee060b7d1f7a443357c7116c01e8aaf972e666
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164678"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682534"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]

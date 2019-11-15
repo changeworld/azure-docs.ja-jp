@@ -1,24 +1,24 @@
 ---
 title: Log Analytics についてよく寄せられる質問 | Microsoft Docs
-description: Azure Log Analytics サービスについてよく寄せられる質問とその回答
+description: Azure Monitor Log Analytics サービスについてよく寄せられる質問とその回答
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 11/13/2018
-ms.openlocfilehash: e3ebb87a7a5f6200d860c1c79591719c32313e11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/01/2019
+ms.openlocfilehash: 9eb921fc8ea19486db0fc3311764931f09e11464
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932211"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579309"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+この Microsoft FAQ は、Azure Monitor Log Analytics ワークスペースについてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 
 ## <a name="new-logs-experience"></a>新しいログ エクスペリエンス
@@ -62,10 +62,12 @@ A:VM ログを表示するには、VM ログを格納するワークスペース
 
 A:Azure でワークスペースにアクセスするには、Azure のアクセス許可が割り当てられている必要があります。 場合によっては、適切なアクセス許可がないことがあります。 このような場合は、管理者が Azure のアクセス許可を付与する必要があります。詳細については、「[OMS ポータルの Azure への移行](oms-portal-transition.md)」を参照してください。
 
-### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>Q. ログでビュー デザイナー エントリを表示できないのはなぜですか? 
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>Q. ログでビュー デザイナー エントリを表示できないのはなぜですか?
+
 A:ビュー デザイナーは、共同作成者以上のアクセス許可が割り当てられているユーザーのみがログで使用できます。
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>Q. Azure の外部で引き続き Analytics ポータルを使用できますか?
+
 A. できます。Azure でのログのページと、高度な分析ポータルは同じコードに基づいています。 Log Analytics は Azure Monitor の機能として統合され、より統一した監視エクスペリエンスが提供されます。 次の URL を使用して引き続き Analytics ポータルにアクセスできます: https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
 
 
@@ -105,29 +107,6 @@ A:使用している Operations Manager の更新プログラム ロールアッ
 
 A:No. Log Analytics は、大量のデータを処理および格納するスケーラブルなクラウド サービスです。 
 
-### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>Q. Log Analytics がデータを収集しなくなった場合にトラブルシューティングするにはどうすればよいですか?
-
-A:2018 年 4 月 2 日より前に作成された、*Free* 価格レベルのサブスクリプションとワークスペースの場合、1 日のデータ送信量が 500 MB を超えると、その日はそれ以上データが収集されなくなります。 1 日の制限に達したことが、Log Analytics がデータの収集を停止したり、データがないように見えたりする一般的な原因です。  
-
-Log Analytics は*ハートビート*の種類のイベントを作成し、データ収集が停止するかどうかを判定するために使用できます。 
-
-1 日の制限に達し、データがなくなっているかどうかを確認するには、検索で `Heartbeat | summarize max(TimeGenerated)` のクエリを実行します。
-
-特定のコンピューターを確認するには、クエリ `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)` を実行します。
-
-データ収集が停止したとき、選択された時間の範囲によっては、レコードが何も返されません。   
-
-次の表は、データ収集が停止する原因と、データ収集を再開するための推奨されるアクションを示しています。
-
-| データ収集が停止する原因                       | データ収集を再開するには |
-| -------------------------------------------------- | ----------------  |
-| 無料のデータの制限に達した<sup>1</sup>       | 収集が自動的に再開される次の月まで待つか、または<br> 有料の価格レベルに変更する |
-| 次のために、Azure サブスクリプションが中断された状態にある <br> 無料試用版が終了した <br> Azure パスの期限が切れた <br> 1 月の使用制限に達した (たとえば、MSDN または Visual Studio サブスクリプションで)                          | 有料のサブスクリプションに変換する <br> 有料のサブスクリプションに変換する <br> 制限を削除するか、または制限がリセットされるまで待つ |
-
-<sup>1</sup> ワークスペースで *Free* 価格レベルを使用している場合、サービスへの 1 日あたりのデータ送信は 500 MB に制限されます。 1 日の制限に達した場合、データ収集は翌日まで停止します。 データ収集が停止されている間に送信されたデータはインデックスが作成されず、検索には使用できません。 データ収集が再開されたとき、処理は送信された新しいデータに対してのみ実行されます。 
-
-Log Analytics は UTC 時間を使用し、各日は UTC 午前 0 時に開始されます。 ワークスペースが 1 日の制限に達した場合、処理は次の UTC 日の最初の 1 時間の間に再開されます。
-
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Q. データ収集が停止したときに通知を受けるにはどうすればよいですか?
 
 A:データ収集が停止したときに通知を受けるには、[新しいログ アラートの作成](../../azure-monitor/platform/alerts-metric.md)に関する記事で説明されている手順を使用します。
@@ -147,6 +126,7 @@ A:データ収集が停止したときに通知を受けるには、[新しい�
 既存の[アクション グループ](../../azure-monitor/platform/action-groups.md)を指定するか、アクション グループを新たに作成して、ログ アラートが条件に一致する場合に、ハートビートが 15 分以上なければ通知が送られるようにします。
 
 ## <a name="configuration"></a>構成
+
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Azure Diagnostics (WAD) からの読み取りに使用されるテーブル/BLOB コンテナーの名前は変更できますか?
 
 A. いいえ。Azure ストレージ内の任意のテーブルまたはコンテナーから読み取ることは現在不可能です。
@@ -180,7 +160,7 @@ A:最新の更新プログラム ロールアップに更新し、管理パッ�
 
 ### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>Q:エージェントが Log Analytics と通信できることを確認するにはどうすればよいですか?
 
-A:エージェントが OMS と通信できることを確認するには、[コントロール パネル]、[システムとセキュリティ]、 **[Microsoft Monitoring Agent]** の順に選択します。
+A:エージェントが Log Analytics ワークスペースと通信できることを確認するには、次のようにします。[コントロール パネル]、[システムとセキュリティ]、 **[Microsoft Monitoring Agent]** の順に選択します。
 
 **[Azure Log Analytics (OMS)]** タブの緑色のチェック マークを確認します。 緑色のチェック マーク アイコンは、エージェントが Azure サービスと通信できることを示します。
 
@@ -188,7 +168,7 @@ A:エージェントが OMS と通信できることを確認するには、[コ
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Q:エージェントの Log Analytics との通信を停止するにはどうすればよいですか?
 
-A:System Center Operations Manager では、OMS マネージド コンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、次の手順でエージェントの通信を停止できます。[コントロール パネル]、[システムとセキュリティ]、 **[Microsoft Monitoring Agent]** の順に選択します。
+A:System Center Operations Manager では、Log Analytics マネージド コンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、次の手順でエージェントの通信を停止できます。[コントロール パネル]、[システムとセキュリティ]、 **[Microsoft Monitoring Agent]** の順に選択します。
 **[Azure Log Analytics (OMS)]** に表示されているすべてのワークスペースを削除します。
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Q:ワークスペースを Azure サブスクリプション間で移動しようとするとエラーが表示されるのはなぜですか?
@@ -212,11 +192,11 @@ A:API の本文、または Azure Resource Manager テンプレートのプロ�
 
 ## <a name="agent-data"></a>エージェント データ
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>Q. エージェント経由で Log Analytics に送信できるデータ量はどのくらいですか? 顧客ごとの最大データ量はありますか?
-A. 無料プランには、1 つのワークスペースにつき 1 日 500 MB という上限があります。 Standard プランと Premium プランの場合、アップロードされるデータ量に上限はありません。 Log Analytics はクラウド サービスとして、顧客から送信される量が 1 日あたり数 TB であったとしても、それを処理するように自動的にスケールアップするように設計されています。
+A. アップロードされるデータの量に制限はなく、お客様が選択した価格オプション (容量予約または従量課金制) に基づきます。 Log Analytics ワークスペースは、お客様から送信される量が 1 日あたり数 TB であったとしても、それを処理するように自動的にスケールアップするように設計されています。 詳細については、[価格の詳細](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。
 
 Log Analytics エージェントは、小さなフットプリントを保証するように設計されました。 データ量は、有効にしているソリューションによって異なります。 [[使用状況]](../../azure-monitor/platform/data-usage.md) ページでデータ量に関する詳細情報を見つけたり、ソリューションごとの内訳を確認したりできます。
 
-詳しくは、OMS エージェントのリソース使用率 (フットプリント) の評価結果が示されている[お客様のブログ](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)をご覧ください。
+詳しくは、Log Analytics エージェントのリソース使用率 (フットプリント) の評価結果が示されている[お客様のブログ](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)をご覧ください。
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>Q. データを Log Analytics に送信するときに、どれくらいのネットワーク帯域幅が Microsoft Management Agent (MMA) によって使用されますか?
 
@@ -230,7 +210,7 @@ A. エージェントごとに送信されるデータ量は、次のものに�
 * 収集されているログとパフォーマンス カウンターの数
 * ログ内のデータ量
 
-いくつかのサーバーをデプロイし、一般的なデータ量を計測する場合は、無料価格レベルがお勧めします。 全体的な使用状況は [[使用状況]](../../azure-monitor/platform/data-usage.md) ページに表示されます。
+全体的な使用状況は [[使用状況]](../../azure-monitor/platform/data-usage.md) ページに表示されます。
 
 WireData エージェントを実行できるコンピューターの場合、どれくらいのデータが送信されているかを確認するには次のクエリを使用します。
 
@@ -239,4 +219,5 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics の起動と開始](../../azure-monitor/overview.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
+
+「[Azure Monitor の概要](../../azure-monitor/overview.md)」で Log Analytics の詳細を確認し、すぐに起動して実行してみることができます。

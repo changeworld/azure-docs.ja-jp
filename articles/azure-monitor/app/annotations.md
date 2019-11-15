@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/01/2019
-ms.openlocfilehash: 9dbdd683a8545e0f8c573dfba60daa96ef5ff08d
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f9ab1f1ef2b64c07a3b0c8ddf93d6ef4293517db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677867"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668111"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
@@ -53,6 +53,9 @@ Azure Pipelines のリリース テンプレートごとに個別の API キー�
 1. **[タスクの追加]** を選択した後、メニューから **[Application Insights Release Annotation]\(Application Insights リリース注釈\)** タスクを選択します。
    
    ![[タスクの追加] をクリックし、[Application Insights Release Annotation]\(Application Insights リリース注釈\) を選択する。](./media/annotations/3-add-task.png)
+
+   > [!NOTE]
+   > リリース注釈タスクは、現在、Windows ベースのエージェントのみをサポートしています。Linux、macOS、または他の種類のエージェントでは実行されません。
    
 1. **[アプリケーション ID]** に、 **[API アクセス]** タブからコピーした Application Insights ID を貼り付けます。
    

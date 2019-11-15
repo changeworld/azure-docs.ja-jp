@@ -6,24 +6,24 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: d176e6276d69cd3465aa4943efa86ea1e6b0736d
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8d13222ec05fc97fa591ac67d636a1f8c5c88845
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810174"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715855"
 ---
 # <a name="add-assessment-tools"></a>評価ツールの追加
 
 この記事では、[Azure Migrate](migrate-overview.md) で評価ツールを追加する方法について説明します。
 
-Azure Migrate には、評価と Azure への移行のためのツールのハブが用意されています。 これには、ネイティブなツール、他の Azure サービスによって提供されるツール、およびサードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが含まれます。
+Azure Migrate には、評価と Azure への移行のためのツールのハブが用意されています。 これには、Azure Migrate ツールと、その他のツールや独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。
 
 評価ツールを追加したいが、まだ Azure Migrate プロジェクトを用意していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
 
-## <a name="selecting-an-isv-tool"></a>ISV ツールの選択
+## <a name="select-a-tool"></a>ツールの選択
 
-評価のために [ISV ツール](migrate-services-overview.md#isv-integration)を選択する場合は、ISV のポリシーに従って、ライセンスを取得するか、または無料試用版にサインアップすることから開始できます。 各ツールには、Azure Migrate に接続するためのオプションがあります。 ツールの手順やドキュメントに従って、ツール ワークスペースを Azure Migrate に接続します。 
+評価のために Azure Migrate 以外のツールを選択する場合は、ツールのポリシーに従って、ライセンスを取得するか、または無料試用版にサインアップすることから開始します。 ツールには、Azure Migrate に接続するためのオプションがあります。 指示とドキュメントに従って、ツールを Azure Migrate に接続します。 ツールの詳細については、[こちら](migrate-services-overview.md)をご覧ください。
 
 
 ## <a name="select-an-assessment-scenario"></a>評価シナリオを選択する
@@ -47,11 +47,8 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 
 3. **[Azure Migrate]** で、使用する評価ツールを選択します。
 
-    
-    ![評価用ツール](./media/how-to-assess/assess-tool.png)
-
     - Azure Migrate Server Assessment を使用する場合は、Azure Migrate プロジェクトで直接評価を設定、実行、および表示できます。
-    - サードパーティの評価ツールを使用する場合は、そのサイトに用意されているリンクに移動し、提供されている手順に従って評価を実行します。
+    - 別の評価ツールを使用する場合は、そのサイトに用意されているリンクに移動し、提供されている手順に従って評価を実行します。
 
 
 ## <a name="select-a-database-assessment-tool"></a>データベース評価ツールを選択する
@@ -72,4 +69,4 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 
 ## <a name="next-steps"></a>次の手順
 
-[Hyper-V](tutorial-prepare-hyper-v.md) または [VMware](tutorial-prepare-vmware.md) VM の Azure Migrate Server Assessment を使用した評価を試みます。
+[VMware](tutorial-prepare-vmware.md) VM、[Hyper-V](tutorial-prepare-hyper-v.md)、または[物理サーバー](tutorial-prepare-physical.md)の Azure Migrate Server Assessment を使用した評価を試みます

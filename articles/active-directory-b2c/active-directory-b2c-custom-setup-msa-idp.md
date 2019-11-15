@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c04f578e73b81000fa605283a4afa4103655bcf4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1f068b624b5a8f580f61e9eb2ed0d197f05aa1b0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826975"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643657"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Microsoft アカウントでのサインインを設定する
 
@@ -44,7 +44,7 @@ Microsoft アカウントを使用したユーザーのサインインを有効�
 1. **[証明書とシークレット]** を選択します。
 1. **[新しいクライアント シークレット]** をクリックします
 1. シークレットの **[説明]** を「*MSA アプリケーション クライアント シークレット*」のように入力して、 **[追加]** をクリックします。
-1. **[値]** 列に表示されているアプリケーション パスワードを記録します。 次のセクションでこの値を使用します。
+1. **[値]** 列に示されているアプリケーション パスワードを記録します。 次のセクションでこの値を使用します。
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 

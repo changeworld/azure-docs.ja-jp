@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1a3d917775f6ba5b0b7f62d19de2b970a8b36838
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029736"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571216"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
@@ -32,7 +32,7 @@ ms.locfileid: "72029736"
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
-## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
+## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -79,7 +79,7 @@ ms.locfileid: "72029736"
 
 1. ファイルを保存します。
 
-## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
+## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 
 1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` パッケージと `Microsoft.FeatureManagement.AspNetCore` NuGet パッケージへの参照を追加します。
 
@@ -115,6 +115,11 @@ ms.locfileid: "72029736"
     ```
 
 1. `config.AddAzureAppConfiguration()` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
+    
+    > [!IMPORTANT]
+    > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>.NET Core 2.x 用に `CreateWebHostBuilder` を更新する
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -124,11 +129,27 @@ ms.locfileid: "72029736"
                 var settings = config.Build();
                 config.AddAzureAppConfiguration(options => {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .UseFeatureFlags();
+                            .UseFeatureFlags();
                 });
             })
             .UseStartup<Startup>();
     ```
+
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3.x 用に `CreateHostBuilder` を更新する
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"])
+                .UseFeatureFlags();
+        })
+        .UseStartup<Startup>());
+    ```
+
 
 1. *Startup.cs* を開き、.NET Core 機能マネージャーへの参照を追加します。
 

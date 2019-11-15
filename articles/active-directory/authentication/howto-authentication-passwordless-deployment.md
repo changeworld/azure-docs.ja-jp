@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4b8ea98365ec13f7f027215a75b9d79ea5c54e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452953"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603451"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>パスワードなしの認証のデプロイを行う
 
@@ -104,9 +104,9 @@ Windows Hello の前提条件は、オンプレミス、ハイブリッド、ク
 
 FIDO2 セキュリティ キーを使用して Windows 10 のサインインを有効にするには、Windows 10 で資格情報プロバイダー機能を有効にする必要があります。 有効にするには次の 2 つの方法があります。
 
-- [特定対象の Intune デプロイを使用して資格情報プロバイダーを有効にする](howto-authentication-passwordless-security-key.md#enable-targeted-intune-deployment)
-   - Azure Active Directory に参加しているコンピューターの場合は、Intune のデプロイが推奨されるオプションです。
-- [プロビジョニング パッケージを使用して資格情報プロバイダーを有効にする](howto-authentication-passwordless-security-key.md#enable-credential-provider-via-provisioning-package)
+- [Intune を使用して資格情報プロバイダーを有効にする](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
+   - Intune のデプロイが推奨されるオプションです。
+- [プロビジョニング パッケージを使用して資格情報プロバイダーを有効にする](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Intune のデプロイを使用できない場合は、管理者が各コンピューターにパッケージをデプロイして、資格情報プロバイダー機能を有効にする必要があります。 パッケージのインストールは、次のいずれかのオプションを使用して実行できます。
       - グループ ポリシーまたは System Center Configuration Manager (SCCM)
       - Windows 10 コンピューターへのローカル インストール
@@ -115,7 +115,7 @@ FIDO2 セキュリティ キーを使用して Windows 10 のサインインを�
 
 ユーザーは、Azure Active Directory に参加している各 Windows 10 マシンにセキュリティ キーを登録する必要があります。
 
-詳細については、「[FIDO2 セキュリティ キーのユーザー登録と管理](howto-authentication-passwordless-security-key.md)」を参照してください。
+詳細については、「[FIDO2 セキュリティ キーのユーザー登録と管理](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys)」を参照してください。
 
 ### <a name="licensing-for-passwordless-authentication"></a>パスワードなしの認証のライセンス
 
@@ -185,7 +185,7 @@ Microsoft では、伝達方法の原案として役立つ MFA [通信テンプ�
 | ユーザーは FIDO2 デバイス (1809) を使用してサインインできる | ユーザーはサインイン ウィンドウからセキュリティ キーを選択し、正常にサインインできます。 |
 | ユーザーは FIDO2 デバイス (1903) を登録できる | ユーザーは、[設定] > [アカウント] > サインイン オプション > [セキュリティ キー] で、FIDO2 デバイスを登録できます |
 | ユーザーは FIDO2 デバイス (1903) をリセットできる | ユーザーは、[設定] > [アカウント] > サインイン オプション > [セキュリティ キー] で、FIDO2 デバイスをリセットできます |
-| ユーザーは FIDO2 デバイス (1809) を使用してサインインできる | ユーザーはサインイン ウィンドウからセキュリティ キーを選択し、正常にサインインできます。 |
+| ユーザーは FIDO2 デバイス (1903) を使用してサインインできる | ユーザーはサインイン ウィンドウからセキュリティ キーを選択し、正常にサインインできます。 |
 
 **Azure AD Web アプリへのパスワードなしの FIDO サインイン**
 
@@ -257,7 +257,7 @@ FIDO2 セキュリティ デバイスを既に登録しているユーザーに�
 ### <a name="deploy-fido2-security-key-sign-in"></a>FIDO2 セキュリティ キーのサインインをデプロイする
 
 記事「[Azure AD へのパスワードなしのセキュリティ キー サインインを有効にする](howto-authentication-passwordless-security-key.md)」の手順に従って、組織でのパスワードなしの認証方法として FIDO2 セキュリティ キーを有効にします。
- 
+
 ### <a name="troubleshoot-phone-sign-in"></a>電話でのサインインのトラブルシューティング
 
 | シナリオ | 解決策 |

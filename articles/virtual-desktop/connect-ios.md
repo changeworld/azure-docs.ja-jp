@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: bfc7efa6e8ead3b53704e3c9bd189b18cb787618
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338685"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605831"
 ---
 # <a name="connect-with-the-ios-client"></a>iOS クライアントに接続する
 
@@ -44,7 +44,7 @@ iOS Beta クライアントをインストールするには:
 3. **[Next]\(次へ\)** をタップします。
 4. メッセージが表示されたら、資格情報を入力します。
    - **[User name]\(ユーザー名\)** 。リソースへのアクセス許可を持つユーザー名を指定します。
-   - **[Password]\(パスワード\)** 。ユーザー名に関連付けられているパスワードを指定します。
+   - **[パスワード]** には、ユーザー名に関連付けられているパスワードを指定します。
    - 管理者が追加の要素を指定するように認証を構成した場合、そのように求められることもあります。
 5. **[保存]** をタップします。
 

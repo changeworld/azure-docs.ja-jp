@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1b056ce8afe86fcd6629aff23ac95acae02ed9ba
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d7e77907e2d394d2a4c1679ec50af8d4f72fa6f1
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299867"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615044"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -24,7 +24,7 @@ ms.locfileid: "72299867"
 
 オーケストレーション トリガーを使用して、[永続的なオーケストレーター関数](durable-functions-types-features-overview.md#orchestrator-functions)を作成できます。 このトリガーは、新しいオーケストレーター関数インスタンスの開始と、タスクのために "待機している" 既存のオーケストレーター関数インスタンスの再開をサポートします。
 
-Azure Functions 用の Visual Studio ツールを使用する場合、オーケストレーション トリガーは、[OrchestrationTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) .NET 属性を使用して構成されます。
+Azure Functions 用の Visual Studio ツールを使用する場合、オーケストレーション トリガーは、[OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .NET 属性を使用して構成されます。
 
 オーケストレーター関数を (JavaScript や C# スクリプトなどの) スクリプト言語で記述する場合、オーケストレーション トリガーは、*function.json* ファイルの `bindings` 配列の次の JSON オブジェクトによって定義されます。
 
@@ -37,7 +37,7 @@ Azure Functions 用の Visual Studio ツールを使用する場合、オーケ�
 }
 ```
 
-* `orchestration` はオーケストレーションの名前です。 これは、クライアントがこのオーケストレーター関数の新しいインスタンスを開始するときに使用する必要がある値です。 このプロパティは省略可能です。 指定されない場合は関数の名前が使用されます。
+* `orchestration` は、クライアントがこのオーケストレーター関数の新しいインスタンスを開始するときに使用する必要がある、オーケストレーションの名前です。 このプロパティは省略可能です。 指定されない場合は関数の名前が使用されます。
 
 内部的には、このトリガーのバインドは、関数アプリの既定のストレージ アカウントで一連のキューをポーリングします。 これらのキューは拡張機能の内部実装の詳細であるため、バインド プロパティに明示的に構成されることはありません。
 
@@ -60,7 +60,7 @@ Azure Functions 用の Visual Studio ツールを使用する場合、オーケ�
 
 オーケストレーション トリガーのバインドは、入力と出力の両方をサポートします。 入力と出力の処理に関する注意事項を次に示します。
 
-* **入力** - .NET オーケストレーション関数は、パラメーター型として [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) のみをサポートします。 関数シグネチャ内で入力を直接逆シリアル化することはサポートされていません。 コードでは、[GetInput\<T>](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) または `getInput` (JavaScript) メソッドを使用してオーケストレーター関数の入力をフェッチする必要があります。 これらの入力は、JSON にシリアル化できる型にする必要があります。
+* **入力** - .NET オーケストレーション関数は、パラメーター型として `DurableOrchestrationContext` のみをサポートします。 関数シグネチャ内で入力を直接逆シリアル化することはサポートされていません。 コードでは、`GetInput<T>` (.NET) または `getInput` (JavaScript) メソッドを使用してオーケストレーター関数の入力をフェッチする必要があります。 これらの入力は、JSON にシリアル化できる型にする必要があります。
 * **出力** - オーケストレーション トリガーは、入力と同じように出力値をサポートします。 関数の戻り値は、出力値を割り当てるために使用され、JSON にシリアル化できる必要があります。 .NET 関数が `Task` または `void` を返した場合は、出力として `null` 値が保存されます。
 
 ### <a name="trigger-sample"></a>トリガー サンプル
@@ -71,14 +71,16 @@ Azure Functions 用の Visual Studio ツールを使用する場合、オーケ�
 
 ```csharp
 [FunctionName("HelloWorld")]
-public static string Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static string Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string name = context.GetInput<string>();
     return $"Hello {name}!";
 }
 ```
+> [!NOTE]
+> 前記のコードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -102,7 +104,7 @@ module.exports = df.orchestrator(function*(context) {
 ```csharp
 [FunctionName("HelloWorld")]
 public static async Task<string> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string name = context.GetInput<string>();
     string result = await context.CallActivityAsync<string>("SayHello", name);
@@ -110,7 +112,10 @@ public static async Task<string> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前記のコードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -126,7 +131,7 @@ module.exports = df.orchestrator(function*(context) {
 
 アクティビティ トリガーを使用すると、オーケストレーター関数によって呼び出される関数 ([アクティビティ関数](durable-functions-types-features-overview.md#activity-functions)と呼ばれる) を作成できます。
 
-Visual Studio を使用している場合、アクティビティ トリガーは [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET 属性を使用して構成されます。
+Visual Studio を使用する場合、アクティビティ トリガーは `ActivityTriggerAttribute` .NET 属性を使用して構成されます。
 
 VS Code または Azure portal を使用して開発する場合、アクティビティ トリガーは *function.json* の `bindings` 配列で次の JSON オブジェクトによって定義されます。
 
@@ -159,7 +164,7 @@ VS Code または Azure portal を使用して開発する場合、アクティ�
 
 アクティビティ トリガーのバインドは、オーケストレーション トリガーと同じように、入力と出力の両方をサポートします。 入力と出力の処理に関する注意事項を次に示します。
 
-* **入力** - .NET アクティビティ関数は、パラメーター型として [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) をネイティブに使用します。 別の方法として、JSON にシリアル化できるパラメーター型を使用してアクティビティ関数を宣言できます。 `DurableActivityContext` を使用する場合は、[GetInput\<T>](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) を呼び出して、アクティビティ関数の入力をフェッチして逆シリアル化できます。
+* **入力** - .NET アクティビティ関数は、パラメーター型として `DurableActivityContext` をネイティブに使用します。 別の方法として、JSON にシリアル化できるパラメーター型を使用してアクティビティ関数を宣言できます。 `DurableActivityContext` を使用する場合は、`GetInput<T>` を呼び出して、アクティビティ関数の入力をフェッチして逆シリアル化できます。
 * **出力** - アクティビティ関数は、入力と同じように出力値をサポートします。 関数の戻り値は、出力値を割り当てるために使用され、JSON にシリアル化できる必要があります。 .NET 関数が `Task` または `void` を返した場合は、出力として `null` 値が保存されます。
 * **メタデータ** - .NET アクティビティ関数を `string instanceId` パラメーターにバインドして、親オーケストレーションのインスタンス ID を取得できます。
 
@@ -171,14 +176,17 @@ VS Code または Azure portal を使用して開発する場合、アクティ�
 
 ```csharp
 [FunctionName("SayHello")]
-public static string SayHello([ActivityTrigger] DurableActivityContext helloContext)
+public static string SayHello([ActivityTrigger] IDurableActivityContext helloContext)
 {
     string name = helloContext.GetInput<string>();
     return $"Hello {name}!";
 }
 ```
 
-.NET `ActivityTriggerAttribute` バインドの既定のパラメーター型は `DurableActivityContext` です。 ただし、.NET アクティビティ トリガーは、JSON にシリアル化できる型 (プリミティブ型を含む) への直接的なバインドもサポートしているため、同じ関数を次のように単純化できます。
+> [!NOTE]
+> 前記のコードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableActivityContext` の代わりに `DurableActivityContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+.NET `ActivityTriggerAttribute` バインドの既定のパラメーター型は `IDurableActivityContext` です。 ただし、.NET アクティビティ トリガーは、JSON にシリアル化できる型 (プリミティブ型を含む) への直接的なバインドもサポートしているため、同じ関数を次のように単純化できます。
 
 ```csharp
 [FunctionName("SayHello")]
@@ -188,7 +196,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 module.exports = async function(context) {
@@ -244,7 +252,7 @@ module.exports = async function (context) {
 * インスタンスの実行中にイベントを送信する。
 * インスタンスの履歴を消去します。
 
-Visual Studio を使用する場合は、Durable Functions 1.0 用の [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET 属性を使用してオーケストレーション クライアントにバインドできます。 Durable Functions 2.0 プレビュー以降では、`DurableClientAttribute` .NET 属性を使用してオーケストレーション クライアントにバインドできます。
+Visual Studio を使用する場合は、Durable Functions 1.0 用の `OrchestrationClientAttribute` .NET 属性を使用してオーケストレーション クライアントにバインドできます。 Durable Functions 2.0 以降では、`DurableClientAttribute` .NET 属性を使用してオーケストレーション クライアントにバインドできます。
 
 スクリプト言語 ( *.csx* ファイル、 *.js* ファイルなど) を使用して開発する場合、オーケストレーション トリガーは、*function.json* の `bindings` 配列で次の JSON オブジェクトによって定義されます。
 
@@ -266,19 +274,19 @@ Visual Studio を使用する場合は、Durable Functions 1.0 用の [Orchestra
 
 ### <a name="client-usage"></a>クライアントの使用
 
-.NET 関数では、通常は、`DurableOrchestrationClient` にバインドします。これにより、Durable Functions によってサポートされるすべてのクライアント API にフル アクセスできます。 Durable Functions 2.0 以降では、代わりに `IDurableOrchestrationClient` インターフェイスにバインドします。 JavaScript では、同じ API が、`getClient` から返されるオブジェクトによって公開されます。 クライアント オブジェクトの API には以下が含まれます。
+.NET 関数では、通常は、`IDurableOrchestrationClient` にバインドします。これにより、Durable Functions によってサポートされるすべてのオーケストレーション クライアント API にフル アクセスできます。 古い Durable Functions 2.x リリースでは、代わりに `DurableOrchestrationClient` クラスにバインドします。 JavaScript では、同じ API が、`getClient` から返されるオブジェクトによって公開されます。 クライアント オブジェクトの API には以下が含まれます。
 
-* [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)
-* [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)
-* [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_)
-* [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)
-* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_)
-* [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_)
-* [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_)
+* `StartNewAsync`
+* `GetStatusAsync`
+* `TerminateAsync`
+* `RaiseEventAsync`
+* `PurgeInstanceHistoryAsync`
+* `CreateCheckStatusResponse`
+* `CreateHttpManagementPayload`
 
-.NET 関数は `IAsyncCollector<T>` にバインドすることもできます。`T` は [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) または `JObject` です。
+.NET 関数は `IAsyncCollector<T>` にバインドすることもできます。`T` は `StartOrchestrationArgs` または `JObject` です。
 
-これらの操作の詳細については、[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) の API ドキュメントを参照してください。
+これらの操作の詳細については、`IDurableOrchestrationClient` API のドキュメントを参照してください。
 
 ### <a name="client-sample-visual-studio-development"></a>クライアントのサンプル (Visual Studio での開発)
 
@@ -288,12 +296,15 @@ Visual Studio を使用する場合は、Durable Functions 1.0 用の [Orchestra
 [FunctionName("QueueStart")]
 public static Task Run(
     [QueueTrigger("durable-function-trigger")] string input,
-    [OrchestrationClient] DurableOrchestrationClient starter)
+    [DurableClient] IDurableOrchestrationClient starter)
 {
     // Orchestration input comes from the queue message content.
     return starter.StartNewAsync("HelloWorld", input);
 }
 ```
+
+> [!NOTE]
+> 前記の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 ### <a name="client-sample-not-visual-studio"></a>クライアントのサンプル (Visual Studio 以外)
 
@@ -310,27 +321,35 @@ public static Task Run(
     },
     {
       "name": "starter",
-      "type": "orchestrationClient",
+      "type": "durableClient",
       "direction": "in"
     }
   ]
 }
 ```
 
+> [!NOTE]
+> 前記の JSON は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、トリガー型として `durableClient` の代わりに `orchestrationClient` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
 新しいオーケストレーター関数のインスタンスを開始する言語固有のサンプルを次に示します。
 
-#### <a name="c-sample"></a>C# のサンプル
+#### <a name="c-script-sample"></a>C# スクリプトのサンプル
 
-次の例は、永続的なオーケストレーション クライアントのバインドを使用して、C# スクリプト関数から新しい関数インスタンスを開始する方法を示しています。
+次の例は、永続的なオーケストレーション クライアントのバインドを使用して、キューによってトリガーされる C# 関数から新しい関数インスタンスを開始する方法を示しています。
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
 
-public static Task<string> Run(string input, DurableOrchestrationClient starter)
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
+
+public static Task Run(string input, IDurableOrchestrationClient starter)
 {
     return starter.StartNewAsync("HelloWorld", input);
 }
 ```
+
+> [!NOTE]
+> 前記のコードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationClient` の代わりに `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 #### <a name="javascript-sample"></a>JavaScript のサンプル
 
@@ -354,7 +373,7 @@ module.exports = async function (context) {
 Azure Functions 用の Visual Studio ツールを使用する場合、エンティティ トリガーは、`EntityTriggerAttribute` .NET 属性を使用して構成されます。
 
 > [!NOTE]
-> エンティティ トリガーは、Durable Functions 2.0 以降で使用できます。 エンティティ トリガーは、JavaScript ではまだ使用できません。
+> エンティティ トリガーは、Durable Functions 2.x 以降で使用できます。
 
 内部的には、このトリガーのバインドは、関数アプリの既定のストレージ アカウントで一連のキューをポーリングします。 これらのキューは拡張機能の内部実装の詳細であるため、バインド プロパティに明示的に構成されることはありません。
 
@@ -389,9 +408,9 @@ Azure Functions 用の Visual Studio ツールを使用する場合、エンテ�
 
 エンティティ関数に渡される `IDurableEntityContext` オブジェクトには、`Entity.Current` 非同期ローカル プロパティを使用してアクセスできます。 この方法は、クラスベースのプログラミング モデルを使用する場合に便利です。
 
-### <a name="trigger-sample-function-based-syntax"></a>トリガーのサンプル (関数ベースの構文)
+### <a name="trigger-sample-c-function-based-syntax"></a>トリガーのサンプル (C# 関数ベースの構文)
 
-次のコードは、永続関数として実装されているシンプルな *Counter* エンティティの例です。 この関数では 3 つの操作 `add`、`reset`、`get` が定義されており、いずれも整数の状態で動作します。
+次のコードは、持続的関数として実装されているシンプルな *Counter* エンティティの例です。 この関数では 3 つの操作 `add`、`reset`、`get` が定義されていて、いずれも整数の状態に対して動作します。
 
 ```csharp
 [FunctionName("Counter")]
@@ -414,7 +433,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 関数ベースの構文と使用方法の詳細については、「[Function ベースの構文](durable-functions-dotnet-entities.md#function-based-syntax)」を参照してください。
 
-### <a name="trigger-sample-class-based-syntax"></a>トリガーのサンプル (クラスベースの構文)
+### <a name="trigger-sample-c-class-based-syntax"></a>トリガーのサンプル (C# クラスベースの構文)
 
 次の例は、クラスとメソッドを使用した `Counter` エンティティの同等の実装です。
 
@@ -437,7 +456,7 @@ public class Counter
 }
 ```
 
-このエンティティの状態は `Counter` 型のオブジェクトになっています。このオブジェクトには、カウンターの現在の値を格納するフィールドが含まれます。 このオブジェクトは、ストレージに保持するために、[Json.NET](https://www.newtonsoft.com/json) ライブラリによってシリアル化および逆シリアル化されます。 
+このエンティティの状態は `Counter` 型のオブジェクトになっています。これには、カウンターの現在の値を格納するフィールドが含まれます。 このオブジェクトは、ストレージに保持するために、[Json.NET](https://www.newtonsoft.com/json) ライブラリによってシリアル化および逆シリアル化されます。 
 
 クラスベースの構文とその使用方法の詳細については、「[エンティティ クラスの定義](durable-functions-dotnet-entities.md#defining-entity-classes)」を参照してください。
 
@@ -445,6 +464,48 @@ public class Counter
 > エンティティ クラスを使用するときは、`[FunctionName]` 属性を持つ関数エントリ ポイント メソッドを、`static` と宣言する "*必要があります*"。 非静的なエントリ ポイント メソッドを使用すると、複数のオブジェクトが初期化されたり、他の未定義の動作が発生したりする可能性があります。
 
 エンティティ クラスには、バインディングおよび .NET 依存関係の挿入を対話処理するための特別なメカニズムがあります。 詳細については、「[エンティティの構築](durable-functions-dotnet-entities.md#entity-construction)」をご覧ください。
+
+### <a name="trigger-sample-javascript"></a>トリガーのサンプル (JavaScript)
+
+次のコードは、JavaScript で記述した持続的関数として実装されているシンプルな *Counter* エンティティの例です。 この関数では 3 つの操作 `add`、`reset`、`get` が定義されていて、いずれも整数の状態に対して動作します。
+
+**function.json**
+```json
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+**index.js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+> [!NOTE]
+> `durable-functions` npm パッケージのバージョン **1.3.0** 以降では、JavaScript で持続エンティティが利用できます。
 
 ## <a name="entity-client"></a>エンティティ クライアント
 
@@ -475,7 +536,7 @@ Visual Studio を使用する場合は、`DurableClientAttribute` .NET 属性を
 
 ### <a name="entity-client-usage"></a>エンティティ クライアントの使用
 
-.NET 関数では、通常は、`IDurableEntityClient` にバインドします。これにより、持続エンティティによってサポートされるすべてのクライアント API にフル アクセスできます。 また、`IDurableClient` インターフェイスにバインドすることもできます。これにより、エンティティとオーケストレーションの両方のクライアント API にアクセスできるようになります。 クライアント オブジェクトの API には以下が含まれます。
+.NET 関数では、通常は、`IDurableEntityClient` にバインドします。これにより、持続エンティティによってサポートされるすべてのクライアント API にフル アクセスできます。 また、`IDurableOrchestrationClient` インターフェイスにバインドすることもできます。これにより、エンティティとオーケストレーションの両方のクライアント API にアクセスできるようになります。 クライアント オブジェクトの API には以下が含まれます。
 
 * **ReadEntityStateAsync\<T>** : エンティティの状態を読み取ります。 ターゲット エンティティが存在するかどうかを示す応答が返されます。存在する場合は、その状態も返されます。
 * **SignalEntityAsync**: エンティティに一方向のメッセージを送信し、エンキューされるまで待機します。
@@ -485,7 +546,7 @@ Visual Studio を使用する場合は、`DurableClientAttribute` .NET 属性を
 > [!NOTE]
 > クライアントから送信された "シグナル" は、単にエンキューされ、後で非同期的に処理されることを理解しておくことが重要です。 特に、`SignalEntityAsync` は、通常、エンティティが操作を開始する前に戻ります。戻り値を取得したり、例外を監視したりすることはできません。 より強力な保証が必要な場合 (ワークフローの場合など)、*オーケストレーター関数*を使用する必要があります。これにより、エンティティ操作の完了を待機し、戻り値を処理して例外を監視することができます。
 
-### <a name="example-client-signals-entity-directly"></a>例: クライアントがエンティティにシグナル通知を直接出す
+### <a name="example-client-signals-entity-directly---c"></a>例: クライアントがエンティティにシグナル通知を直接出す - C#
 
 "Counter" エンティティを呼び出す、キューによってトリガーされる関数の例を次に示します。
 
@@ -502,7 +563,7 @@ public static Task Run(
 }
 ```
 
-### <a name="example-client-signals-entity-via-interface"></a>例: クライアントがインターフェイスを介してエンティティにシグナル通知を出す
+### <a name="example-client-signals-entity-via-interface---c"></a>例: クライアントがインターフェイスを介してエンティティにシグナル通知を出す - C#
 
 可能な場合は、より多くの型チェックが提供されるので、[インターフェイスを介してエンティティにアクセスする](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)ことをお勧めします。 たとえば、前述の `Counter` エンティティによって、次のように定義された `ICounter` インターフェイスが実装されたとします。
 
@@ -539,7 +600,45 @@ public static async Task AddValueClient(
 > [!NOTE]
 > `SignalEntityAsync` API は一方向の操作を表します。 エンティティ インターフェイスから `Task<T>` が返された場合、`T` パラメーターの値は常に null または `default` になります。
 
-特に、値が返されないため、`Get` 操作にシグナル通知を出すことは意味がありません。 代わりに、クライアントは `ReadStateAsync` を使用してカウンターの状態に直接アクセスするか、`Get` 操作を呼び出すオーケストレーター関数を開始することができます。 
+特に、値が返されないため、`Get` 操作にシグナル通知を出すことは意味がありません。 代わりに、クライアントは `ReadStateAsync` を使用してカウンターの状態に直接アクセスするか、`Get` 操作を呼び出すオーケストレーター関数を開始できます。
+
+### <a name="example-client-signals-entity---javascript"></a>例: クライアントがエンティティにシグナル通知を出す - JavaScript
+
+次に示すのは、キューによってトリガーされ "Counter" エンティティにシグナル通知を出す JavaScript 関数の例です。
+
+**function.json**
+```json
+{
+    "bindings": [
+      {
+        "name": "input",
+        "type": "queueTrigger",
+        "queueName": "durable-entity-trigger",
+        "direction": "in",
+      },
+      {
+        "name": "starter",
+        "type": "durableClient",
+        "direction": "in"
+      }
+    ],
+    "disabled": false
+  }
+```
+
+**index.js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
+> [!NOTE]
+> `durable-functions` npm パッケージのバージョン **1.3.0** 以降では、JavaScript で持続エンティティが利用できます。
 
 <a name="host-json"></a>
 ## <a name="hostjson-settings"></a>host.json 設定

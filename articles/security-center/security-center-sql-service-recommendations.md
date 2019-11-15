@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center で Azure データと記憶域サービスを保護する | Microsoft Docs
+title: データとストレージに関する推奨事項 - Azure Security Center
 description: このドキュメントでは、Azure Security Center での推奨事項に従ってデータと Azure SQL サービスを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: memildin
-ms.openlocfilehash: 80611fe0c37af7dfd27b561186f3e967ad3159b4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21da7c49b158345894ee7fdc164d205bcefe1640
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201043"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663889"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Security Center で Azure データと記憶域サービスを保護する
 このトピックでは、データと記憶域リソースのセキュリティに関する推奨事項を表示および実装する方法を示します。 Azure Security Center は、Azure リソースのセキュリティ状態を分析する際に、セキュリティに関する推奨事項を検出します。
@@ -27,16 +27,16 @@ ms.locfileid: "71201043"
 
 1. **[リソース セキュリティの検疫]** セクションで、 **[Data and storage resources] (データと記憶域のリソース)** をクリックします。
 
-   ![データと記憶域のリソース](./media/security-center-monitoring/click-data.png)
+    ![データと記憶域のリソース](./media/security-center-monitoring/click-data.png)
 
     **[Data security] (データ セキュリティ)** ページとデータ リソースの推奨事項が開きます。
 
-     ![データ リソース](./media/security-center-monitoring/sql-overview.png)
+    ![データ リソース](./media/security-center-monitoring/sql-overview.png)
 
-このページからは、次のことを行うことができます。
+    このページからは、次のことを行うことができます。
 
-* **[概要]** タブをクリックすると、修復するすべてのデータ リソースの推奨事項が一覧表示されます。 
-* 各タブをクリックし、リソースの種類ごとに推奨事項を表示します。
+    * **[概要]** タブをクリックすると、修復するすべてのデータ リソースの推奨事項が一覧表示されます。 
+    * 各タブをクリックし、リソースの種類ごとに推奨事項を表示します。
 
     > [!NOTE]
     > ストレージの暗号化の詳細については、「[保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)」を参照してください。

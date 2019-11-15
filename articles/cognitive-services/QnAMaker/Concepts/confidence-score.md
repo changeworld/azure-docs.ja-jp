@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 14339a61e48866d51089db9a0008a3de982b1710
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a80c61efbcbff569f5fed53734def3979ed70616
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277108"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820777"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。 
@@ -72,9 +72,9 @@ ms.locfileid: "70277108"
 
 
 ## <a name="confidence-score-differences"></a>信頼度スコアの違い
-コンテンツが同じ場合でも、ナレッジ ベースのテスト バージョンと公開バージョンの間で、回答の信頼度スコアが、無視できるほどですが、変化する場合があります。 これは、ナレッジ ベースのテスト バージョンと公開バージョンのコンテンツが、異なる Azure Search インデックスに配置されるためです。 ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)のしくみを確認してください。
+コンテンツが同じ場合でも、ナレッジ ベースのテスト バージョンと公開バージョンの間で、回答の信頼度スコアが、無視できるほどですが、変化する場合があります。 これは、テストのコンテンツと公開されているナレッジ ベースが、別の Azure Cognitive Search インデックスに配置されているためです。 ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)のしくみを確認してください。
 
-異なるリージョンにナレッジ ベースがある場合は、各リージョンが独自の Azure Search インデックスを使用しています。 異なるインデックスが使用されるため、スコアはまったく同じにはなりません。 
+異なるリージョンにナレッジ ベースがある場合は、各リージョンによって独自の Azure Cognitive Search インデックスが使用されます。 異なるインデックスが使用されるため、スコアはまったく同じにはなりません。 
 
 
 ## <a name="no-match-found"></a>一致が見つからない

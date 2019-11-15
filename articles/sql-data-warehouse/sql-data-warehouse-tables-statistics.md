@@ -1,5 +1,5 @@
 ---
-title: 統計の作成と更新 - Azure SQL Data Warehouse | Microsoft Docs
+title: 統計の作成と更新
 description: Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c995358fc0135a1f9b504b57b23ecb3f6b41d6da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479163"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692399"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの統計
 
@@ -465,7 +465,7 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS() の例
+## <a name="dbcc-show_statistics-examples"></a>DBCC SHOW_STATISTICS() の例
 
 DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されているデータを表示します。 このデータは 3 つの部分で提供されます。
 
@@ -489,7 +489,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>DBCC SHOW_STATISTICS() の 1 つ以上の部分の表示
+### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>DBCC SHOW_STATISTICS() の 1 つ以上の部分の表示
 
 特定の部分だけを表示する場合は、`WITH` 句を使用して表示する部分を指定します。
 
@@ -503,7 +503,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS() の相違点
+## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() の相違点
 
 SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がより厳密に実装されています。
 

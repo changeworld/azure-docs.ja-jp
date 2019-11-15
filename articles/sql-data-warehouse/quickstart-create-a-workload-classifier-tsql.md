@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:ワークロード分類子の作成 - T-SQL | Microsoft Docs
+title: 'クイック スタート:ワークロード分類子を作成する - T-SQL '
 description: T-SQL を使用して重要度の高いワークロード分類子を作成します。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574870"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646286"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロード分類子を作成する
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートは、SQL Data Warehouse が既に用意されていて、CONTROL データベース権限を持っていることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 

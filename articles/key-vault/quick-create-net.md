@@ -1,19 +1,19 @@
 ---
-title: クイックスタート -  .NET 用 Azure Key Vault クライアント ライブラリ
-description: Azure SDK クライアント ライブラリのクイックスタートを作成するための形式とコンテンツの基準を示します。
+title: クイックスタート -  .NET 用 Azure Key Vault クライアント ライブラリ (v4)
+description: .NET クライアント ライブラリ (v4) を使用して Azure キー コンテナーからシークレットを作成、取得、および削除する方法について説明します
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 4faf889755b6f3e5f8fc6ef08cb69b4265fec355
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c789d48656173721432779aeaba0530950527fa1
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755793"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646921"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-net"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ
+# <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ (SDK v4)
 
 .NET 用 Azure Key Vault クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
 
@@ -25,7 +25,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 - SSL または TLS 証明書のタスクを簡略化および自動化する。
 - FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
 
-[API リファレンスのドキュメント](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
+[API リファレンスのドキュメント](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 
 ```console
-dotnet new console -n akvdotnet
+dotnet new console -n key-vault-console-app
 ```
 
 新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
@@ -67,15 +67,13 @@ Build succeeded.
 コンソール ウィンドウから、.NET 用 Azure Key Vault クライアント ライブラリをインストールします。
 
 ```console
-dotnet add package Microsoft.Azure.KeyVault
+dotnet add package Azure.Security.KeyVault.Secrets --version 4.0.0
 ```
 
 このクイックスタートでは、次のパッケージもインストールする必要があります。
 
 ```console
-dotnet add package System.Threading.Tasks
-dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory
-dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
+dotnet add package Azure.Identity --version 1.0.0
 ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
@@ -118,7 +116,7 @@ az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 }
 ```
 
-clientId および clientSecret を書き留めておきます。これらは、下記の手順「[キー コンテナーに対する認証](#authenticate-to-your-key-vault)」で使用します。
+次の手順で使用するため、clientId、clientSecret、および tenantId を記録しておきます。
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
 
@@ -128,11 +126,29 @@ clientId および clientSecret を書き留めておきます。これらは、
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
+#### <a name="set-environmental-variables"></a>環境変数の設定
+
+アプリケーションの DefaultAzureCredential メソッドは、3 つの環境変数 (`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET`、`AZURE_TENANT_ID`) に依存しています。 これらの変数を、上の「[サービス プリンシパルの作成](#create-a-service-principal)」ステップで記録した clientId、clientSecret、tenantId の値に設定します。
+
+また、キー コンテナーの名前を `KEY_VAULT_NAME` という環境変数として保存する必要もあります。
+
+```console
+setx AZURE_CLIENT_ID <your-clientID>
+
+setx AZURE_CLIENT_SECRET <your-clientSecret>
+
+setx AZURE_TENANT_ID <your-tenantId>
+
+setx KEY_VAULT_NAME <your-key-vault-name>
+````
+
+`setx` を呼び出すたびに、"成功: 指定した値は保存されました。" という応答が返されます。
+
 ## <a name="object-model"></a>オブジェクト モデル
 
-.NET 用 Azure Key Vault クライアント ライブラリを使用すると、キーおよび関連するアセット (証明書、シークレットなど) を管理できます。 以下のコード サンプルでは、シークレットの設定やシークレットの取得に関する方法を紹介しています。
+.NET 用 Azure Key Vault クライアント ライブラリを使用すると、キーおよび関連するアセット (証明書、シークレットなど) を管理できます。 以下のコード サンプルでは、クライアントの作成、シークレットの設定、シークレットの取得、シークレットの削除を行う方法を示します。
 
-コンソール アプリ全体は https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet から入手できます。
+コンソール アプリ全体は https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app から入手できます。
 
 ## <a name="code-examples"></a>コード例
 
@@ -140,31 +156,19 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 コードの先頭に次のディレクティブを追加します。
 
-[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=directives)]
+[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 
-### <a name="authenticate-to-your-key-vault"></a>キー コンテナーに対する認証
+### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-この .NET クイックスタートでは、環境変数を使用して、コードに記述すべきでない資格情報を格納します。 
+キー コンテナーに対する認証とキー コンテナー クライアントの作成は、上記の「[環境変数の設定](#set-environmental-variables)」の手順にある環境変数によって異なります。 キー コンテナーの名前は、"https://<your-key-vault-name>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。
 
-アプリを作成して実行する前に、`setx` コマンドを使用して、`akvClientId`、`akvClientSecret`、`akvTenantId`、`akvSubscriptionId` の各環境変数を、先ほど書き留めた値に設定します。
-
-```console
-setx akvClientId <your-clientID>
-
-setx akvClientSecret <your-clientSecret>
-````
-
-`setx` を呼び出すたびに、"成功: 指定した値は保存されました。" という応答が返されます。
-
-これらの環境変数をコード内の文字列に代入した後、それらを [KeyVaultClient クラス](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)に渡してアプリケーションを認証します。
-
-[!code-csharp[Authentication](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=authentication)]
+[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 
 ### <a name="save-a-secret"></a>シークレットを保存する
 
-アプリケーションが認証されたら、[SetSecretAsync メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)を使用して、キー コンテナーにシークレットを設定できます。これには、キー コンテナーの URL (`https://<your-unique-keyvault-name>.vault.azure.net/secrets/` 形式) が必要です。 また、シークレットの名前も必要です。ここでは "mySecret" という名前を使用します。  再利用のために、これらの文字列を変数に代入してもかまいません。
+アプリケーションが認証されたら、[client.SetSecret メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)を使用して、キー コンテナーにシークレットを設定できます。これには、シークレットの名前が必要です (この例では、"mySecret" を使用します)。  
 
-[!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
+[!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=setsecret)]
 
 シークレットが設定されたことは、[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して確認できます。
 
@@ -174,11 +178,23 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>シークレットを取得する
 
-先ほど設定した値は、[GetSecretAsync メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)を使用して取得できます。
+先ほど設定した値は、[client.GetSecret メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)を使用して取得できます。
 
-[!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=getsecret)]
+[!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=getsecret)]
 
-これで、シークレットが `keyvaultSecret.Value;` として保存されました。
+これで、シークレットが `secret.Value` として保存されました。
+
+### <a name="delete-a-secret"></a>シークレットを削除します
+
+最後に、[client.DeleteSecret メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)を使用して、キー コンテナーからシークレットを削除してみましょう。
+
+[!code-csharp[Delete secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=deletesecret)]
+
+[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して、シークレットがなくなったことを確認できます。
+
+```azurecli
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -192,9 +208,61 @@ az group delete -g "myResourceGroup" -l "EastUS"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
+## <a name="sample-code"></a>サンプル コード
+
+```csharp
+using System;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace key_vault_console_app
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string secretName = "mySecret";
+
+            string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
+
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+
+            Console.Write("Input the value of your secret > ");
+            string secretValue = Console.ReadLine();
+
+            Console.Write("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+
+            client.SetSecret(secretName, secretValue);
+
+            Console.WriteLine(" done.");
+
+            Console.WriteLine("Forgetting your secret.");
+            secretValue = "";
+            Console.WriteLine("Your secret is '" + secretValue + "'.");
+
+            Console.WriteLine("Retrieving your secret from " + keyVaultName + ".");
+
+            KeyVaultSecret secret = client.GetSecret(secretName);
+
+            Console.WriteLine("Your secret is '" + secret.Value + "'.");
+
+            Console.Write("Deleting your secret from " + keyVaultName + " ...");
+
+            client.StartDeleteSecret(secretName);
+
+            System.Threading.Thread.Sleep(5000);
+            Console.WriteLine(" done.");
+
+        }
+    }
+}
+```
+
+
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、キー コンテナーを作成し、シークレットを格納して、そのシークレットを取得しました。 [コンソール アプリ全体は GitHub](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet) で確認してください。
+このクイックスタートでは、キー コンテナーを作成し、シークレットを格納して、そのシークレットを取得しました。 [コンソール アプリ全体は GitHub](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app) で確認してください。
 
 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 

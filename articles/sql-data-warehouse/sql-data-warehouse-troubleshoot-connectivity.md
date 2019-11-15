@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Data Warehouse のトラブルシューティング | Microsoft Docs
-description: Azure SQL Data Warehouse のトラブルシューティングを行います。
+title: 接続性のトラブルシューティング
+description: Azure SQL Data Warehouse の接続性のトラブルシューティング。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859231"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692428"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>接続の問題のトラブルシューティング
 

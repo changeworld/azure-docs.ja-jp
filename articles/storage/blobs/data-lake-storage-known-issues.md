@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f635360c5a6da19d60f3992878a8950b03c5f748
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 95f2dbdbb34ff349d14be430b4e5a4fa84df0f5a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513882"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581486"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -21,52 +21,17 @@ ms.locfileid: "72513882"
 
 <a id="blob-apis-disabled" />
 
-## <a name="blob-storage-apis"></a>Blob Storage API
+## <a name="issues-and-limitations-with-using-blob-apis"></a>BLOB API の使用に関する問題と制限事項
 
-BLOB Storage API と Azure Data Lake Gen2 API 間の相互運用性がまだ不十分なために発生する可能性のある機能の運用性の問題を防ぐために、BLOB Storage API は無効になっています。
-
-> [!NOTE]
-> Data Lake Storage のマルチプロトコル アクセスのパブリック プレビューでは、BLOB API と Data Lake Storage Gen2 API で同じデータを操作できます。 詳細については、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)に関する記事を参照してください。
-
-### <a name="what-to-do-with-existing-tools-applications-and-services"></a>既存のツール、アプリケーション、サービスがある場合の対処方法
-
-これらのいずれかで BLOB API が使用されているときに、それらを使用してお使いのアカウント内のすべてのコンテンツを操作する場合は、2 つのオプションがあります。
-
-* **オプション 1**:[Data Lake Storage へのマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)が一般提供され、BLOB API が Azure Data Lake Gen2 API と相互運用できるようになるまで、お使いの BLOB ストレージ アカウントで階層型名前空間を有効にしません。 [Data Lake Storage 上のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)は、現在、パブリック プレビュー段階です。  階層型名前空間**なし**でストレージ アカウントを使用すると、ディレクトリやコンテナーのアクセス制御リストなど、Data Lake Storage Gen2 固有の機能にアクセスできなくなります。
-
-* **オプション 2**:階層型名前空間を有効にします。 [Data Lake Storage 上のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のパブリック プレビューでは、診断ログなどの BLOB ストレージ機能に加え、BLOB API を呼び出すツールとアプリケーションで、階層型名前空間があるアカウントを操作できます。 既知の問題と制限事項については、この記事を確認してください。
-
-### <a name="what-to-do-if-you-used-blob-apis-to-load-data-before-blob-apis-were-disabled"></a>BLOB API が無効にされる前に BLOB API を使ってデータを読み込んでいた場合の対処方法
-
-これらの API を使用して、データが無効にされる前に、データを読み込んでおり、そのデータにアクセスする運用上の要件がある場合は、次の情報を用意して Microsoft サポートにお問い合わせください。
-
-> [!div class="checklist"]
-> * サブスクリプション ID (名前ではなく GUID)。
-> * ストレージ アカウント名。
-> * 運用に大きな影響があるかどうか。その場合は、どのストレージ アカウントか。
-> * 運用に大きな影響がない場合でも、何らかの理由でこのデータを別のストレージ アカウントにコピーする必要があるかどうか、ある場合はその理由をお伝えください。
-
-このような状況では、階層型名前空間機能が有効にされていないストレージ アカウントにこのデータをコピーできるように、一定の期間 BLOB API へのアクセスを復元できます。
-
-### <a name="issues-and-limitations-with-using-blob-apis-on-accounts-that-have-a-hierarchical-namespace"></a>階層型名前空間があるアカウントでの BLOB API の使用に関する問題と制限事項
-
-Data Lake Storage のマルチプロトコル アクセスのパブリック プレビューでは、BLOB API と Data Lake Storage Gen2 API で同じデータを操作できます。
+BLOB API と Data Lake Storage Gen2 API では、同じデータを処理できます。
 
 このセクションでは、BLOB API と Data Lake Storage Gen2 API を使用して同じデータを操作する場合の問題と制限事項について説明します。
 
-* BLOB API と Data Lake Storage API の両方を使用して、ファイルの同じインスタンスに書き込むことはできません。
+* BLOB API と Data Lake Storage API の両方を使用して、ファイルの同じインスタンスに書き込むことはできません。 Data Lake Storage Gen2 API を使用してファイルに書き込むと、そのファイルのブロックは、[Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) BLOB API への呼び出しで認識されなくなります。 Data Lake Storage Gen2 API または BLOB API のいずれかを使用して、ファイルを上書きできます。 これはファイルのプロパティには影響しません。
 
-* Data Lake Storage Gen2 API を使用してファイルに書き込むと、そのファイルのブロックは、[Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) BLOB API への呼び出しで認識されなくなります。
+* 区切り記号を指定せずに [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作を使用した場合、結果にはディレクトリと BLOB の両方が含まれます。 区切り記号を使用する場合は、スラッシュ (`/`) のみを使用してください。 サポートされている区切り記号はこれだけです。
 
-* Data Lake Storage Gen2 API または BLOB API のいずれかを使用して、ファイルを上書きできます。 これはファイルのプロパティには影響しません。
-
-* 区切り記号を指定せずに [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作を使用した場合、結果にはディレクトリと BLOB の両方が含まれます。
-
-  区切り記号を使用する場合は、スラッシュ (`/`) のみを使用してください。 サポートされている区切り記号はこれだけです。
-
-* [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API を使用してディレクトリを削除した場合、そのディレクトリは空の場合にのみ削除されます。
-
-  これは、Blob API を使用してディレクトリを再帰的に削除することはできないことを意味します。
+* [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API を使用してディレクトリを削除した場合、そのディレクトリは空の場合にのみ削除されます。 これは、Blob API を使用してディレクトリを再帰的に削除することはできないことを意味します。
 
 次の BLOB REST API はサポートされていません。
 
@@ -79,10 +44,7 @@ Data Lake Storage のマルチプロトコル アクセスのパブリック プ
 * [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
 * [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-## <a name="issues-with-unmanaged-virtual-machine-vm-disks"></a>アンマネージド仮想マシン (VM) ディスクに関する問題
-
 アンマネージド VM ディスクは、階層型名前空間があるアカウントではサポートされていません。 ストレージ アカウントで階層型名前空間を有効にする場合は、階層型名前空間機能が有効ではないストレージ アカウントにアンマネージド VM ディスクを配置してください。
-
 
 ## <a name="support-for-other-blob-storage-features"></a>その他の BLOB ストレージ機能のサポート
 
@@ -90,22 +52,22 @@ Data Lake Storage のマルチプロトコル アクセスのパブリック プ
 
 | 機能 / ツール    | 詳細情報    |
 |--------|-----------|
-| **Data Lake Storage Gen2 ストレージ アカウントの API** | 部分的にサポート <br><br>Data Lake Storage 上のマルチプロトコル アクセスは、現在、パブリック プレビュー段階です。 このプレビューでは、階層型名前空間があるアカウントで、.NET、Java、Python SDK の BLOB API を使用できます。  これらの SDK には、ディレクトリの操作やアクセス制御リスト (ACL) の設定を可能にする API はまだ含まれていません。 これらの機能を実行するには、Data Lake Storage Gen2 **REST** API を使用できます。 |
+| **Data Lake Storage Gen2 API** | 部分的にサポート <br><br>現在のリリースでは、Data Lake Storage Gen2 **REST** API を使用して、ディレクトリとの対話やアクセス制御リスト (Acl) の設定を行うことができますが、これらのタスクを実行する他の SDK (.NET、Java、Python など) はありません。 ファイルのアップロードやダウンロードなどの他のタスクを実行するには、BLOB SDK を使用できます。  |
 | **AzCopy** | バージョン固有のサポート <br><br>AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用します。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。|
-| **Azure Blob Storage ライフサイクル管理ポリシー** | [Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューによってサポートされます。 クール アクセス レベルとアーカイブ アクセス レベルは、プレビューでのみサポートされています。 BLOB スナップショットの削除は、まだサポートされていません。 |
+| **Azure Blob Storage ライフサイクル管理ポリシー** | すべてのアクセス層がサポートされています。 アーカイブ アクセス層は、現在プレビュー段階です。 BLOB スナップショットの削除は、まだサポートされていません。 |
 | **Azure Content Delivery Network (CDN)** | まだサポートされていません|
-| **Azure Search** |[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューによってサポートされます。|
+| **Azure Search** |サポート (プレビュー)|
 | **Azure Storage Explorer** | バージョン固有のサポート <br><br>バージョン `1.6.0` 以降のみを使用します。 <br>バージョン `1.6.0` は[無料のダウンロード](https://azure.microsoft.com/features/storage-explorer/)として提供されています。|
 | **BLOB コンテナーの ACL** |まだサポートされていません|
 | **Blobfuse** |まだサポートされていません|
 | **カスタム ドメイン** |まだサポートされていません|
-| **ファイル システム エクスプローラー** | 制限付きサポート |
-| **診断ログ** |診断ログは、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューによってサポートされます。 <br><br>Azure portal でのログの有効化は現在サポートされていません。 PowerShell を使用してログを有効にする方法の例を次に示します。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` <br><br>この例に示すように、`-ServiceType` パラメーターの値として `Blob` を指定してください。 <br><br>現時点では、診断ログの表示に Azure Storage Explorer を使用できません。 ログを表示するには、AzCopy または SDK を使用してください。
+| **Azure portal での Storage Explorer** | 制限付きサポート。 ACL はまだサポートされていません。 |
+| **診断ログ** |診断ログがサポートされています (プレビュー)。<br><br>Azure portal でのログの有効化は現在サポートされていません。 PowerShell を使用してログを有効にする方法の例を次に示します。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` <br><br>この例に示すように、`-ServiceType` パラメーターの値として `Blob` を指定してください。 <br><br>現時点では、診断ログの表示に Azure Storage Explorer を使用できません。 ログを表示するには、AzCopy または SDK を使用してください。
 | **不変ストレージ** |まだサポートされていません <br><br>不変ストレージでは、[WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) 状態でデータを格納できます。|
-| **オブジェクト レベルの階層** |クールおよびアーカイブ層は、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューによってサポートされます。 <br><br> その他のすべてのアクセス層は、まだサポートされていません。|
-| **Powershell と CLI のサポート** | 機能の制限あり <br><br>アカウントの作成などの管理操作がサポートされています。 ファイルのアップロードやダウンロードなどのデータ プレーン操作は、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)の一部として、パブリック プレビュー段階にあります。 ディレクトリの操作とアクセス制御リスト (ACL) の設定は、まだサポートされていません。 |
+| **オブジェクト レベルの階層** |クール層とアーカイブ層がサポートされています。 アーカイブ層はプレビュー段階です。 その他のすべてのアクセス層は、まだサポートされていません。|
+| **Powershell と CLI のサポート** | 機能の制限あり <br><br>BLOB の操作がサポートされています。 ディレクトリの操作とアクセス制御リスト (ACL) の設定は、まだサポートされていません。 |
 | **静的な Web サイト** |まだサポートされていません <br><br>具体的には、[静的な Web サイト](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)にファイルを提供する機能です。|
-| **サード パーティ製アプリケーション** | 制限付きサポート <br><br>REST API を使用して動作するサード パーティ製アプリケーションは、Data Lake Storage Gen2 と使用しても引き続き機能します。 <br>[Data Lake Storage 上のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のパブリック プレビューでは、BLOB API を呼び出すアプリケーションが機能する可能性があります。 |
+| **サード パーティ製アプリケーション** | 制限付きサポート <br><br>REST API を使用して動作するサード パーティ製アプリケーションは、Data Lake Storage Gen2 と使用しても引き続き機能します。 <br>Blob API を呼び出すアプリケーションは動作する可能性があります。|
 |**論理的な削除** |まだサポートされていません|
 | **バージョン管理機能** |まだサポートされていません <br><br>これには、[論理削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)や、[スナップショット](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)などのその他のバージョン管理機能が含まれます。|
 

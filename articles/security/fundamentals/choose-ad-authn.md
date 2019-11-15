@@ -4,23 +4,23 @@ description: このガイドは、CEO、CIO、CISO、チーフ ID アーキテ�
 keywords: ''
 author: martincoetzer
 ms.author: martinco
-ms.date: 04/12/2018
+ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529401"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820553"
 ---
-# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する 
+# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する
 
 正しい認証方法の選択は、クラウドにアプリを移行しようとしている組織にとって最大の関心事です。 次の理由により、この決定を軽く考えてはなりません。
 
-1. クラウドに移行する必要がある組織が最初に決定することです。 
+1. クラウドに移行する必要がある組織が最初に決定することです。
 
 2. 認証方法は、クラウドにおける組織のプレゼンスの重要なコンポーネントです。 これによって、クラウドのすべてのデータとリソースへのアクセスが制御されます。
 
@@ -36,21 +36,21 @@ ID は IT セキュリティの新しいコントロール プレーンです。
 ## <a name="authentication-methods"></a>認証方法
 新しいコントロール プレーンとして Azure AD ハイブリッド ID ソリューションを採用する場合、認証がクラウド アクセスの基盤です。 正しい認証方法の選択は、Azure AD ハイブリッド ID ソリューションのセットアップにおける最初の重要な決定です。 Azure AD Connect (クラウドでのユーザーのプロビジョニングも行います) を使用することで構成される認証方法を実装します。
 
-認証方法を選ぶには、時間、既存のインフラストラクチャ、複雑さ、および選んだ方法の実装にかかるコストを考慮する必要があります。 これらの要因は組織ごとに異なり、時間の経過とともに変化する場合があります。 
+認証方法を選ぶには、時間、既存のインフラストラクチャ、複雑さ、および選んだ方法の実装にかかるコストを考慮する必要があります。 これらの要因は組織ごとに異なり、時間の経過とともに変化する場合があります。
 
 >[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
 Azure AD は、ハイブリッド ID ソリューションに対して次の認証方法をサポートします。
 
 ### <a name="cloud-authentication"></a>クラウド認証
-この認証方法を選ぶと、Azure AD がユーザーのサインイン プロセスを処理します。 シームレスなシングル サインオン (SSO) と組み合わせることで、ユーザーは資格情報を再入力しなくてもクラウド アプリにサインインできます。 クラウド認証では、2 つのオプションから選ぶことができます。 
+この認証方法を選ぶと、Azure AD がユーザーのサインイン プロセスを処理します。 シームレスなシングル サインオン (SSO) と組み合わせることで、ユーザーは資格情報を再入力しなくてもクラウド アプリにサインインできます。 クラウド認証では、2 つのオプションから選ぶことができます。
 
 **Azure AD のパスワード ハッシュ同期**。 Azure AD でオンプレミスのディレクトリ オブジェクトの認証を有効にする最も簡単な方法です。 ユーザーはオンプレミスで使用しているものと同じユーザー名とパスワードを使用でき、追加のインフラストラクチャを展開する必要はありません。 Identity Protection および[Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)など、Azure AD の一部のプレミアム機能には、認証方法の選択に関係なく、パスワード ハッシュ同期が必要です。
 
-> [!NOTE] 
-> パスワードがクリア テキストで保存されたり、Azure AD の復元可能なアルゴリズムで暗号化されたりすることはありません。 パスワード ハッシュ同期の実際のプロセスについて詳しくは、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)」をご覧ください。 
+> [!NOTE]
+> パスワードがクリア テキストで保存されたり、Azure AD の復元可能なアルゴリズムで暗号化されたりすることはありません。 パスワード ハッシュ同期の実際のプロセスについて詳しくは、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)」をご覧ください。
 
-**Azure AD パススルー認証**。 1 つ以上のオンプレミス サーバーで実行されているソフトウェア エージェントを使用して、Azure AD 認証サービスに簡単なパスワード検証を提供します。 オンプレミスの Active Directory を使用してサーバーで直接ユーザーが検証され、クラウドでパスワードの検証が行われることはありません。 
+**Azure AD パススルー認証**。 1 つ以上のオンプレミス サーバーで実行されているソフトウェア エージェントを使用して、Azure AD 認証サービスに簡単なパスワード検証を提供します。 オンプレミスの Active Directory を使用してサーバーで直接ユーザーが検証され、クラウドでパスワードの検証が行われることはありません。
 
 オンプレミスのユーザー アカウントの状態、パスワード ポリシー、およびサインイン時間をすぐに適用するセキュリティ要件のある企業は、この認証方法を使用します。 パススルー認証の実際のプロセスについて詳しくは、「[Azure Active Directory パススルー認証によるユーザー サインイン](../../active-directory/hybrid/how-to-connect-pta.md)」をご覧ください。
 
@@ -88,7 +88,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **ユーザー エクスペリエンス**。 ユーザーのサインイン エクスペリエンスを向上させるには、パスワード ハッシュ同期と共にシームレス SSO を展開します。 シームレス SSO によって、ユーザーのサインイン時に不要なプロンプトが表示されないようになります。
 
-* **高度なシナリオ**。 組織は、Azure AD Premium P2 で Azure AD Identity Protection のレポートを使用して ID からの分析情報を使用することを選択できます。 その 1 つの例が漏洩した資格情報レポートです。 Windows Hello for Business には、[パスワード ハッシュ同期を使用するときの特定の要件](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)があります。 [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) では、ユーザーが会社の資格情報を使用してマネージド ドメインでプロビジョニングできるよう、パスワードのハッシュ同期を求めます。
+* **高度なシナリオ**。 組織は、Azure AD Premium P2 で Azure AD Identity Protection のレポートを使用して ID からの分析情報を使用することを選択できます。 その 1 つの例が漏洩した資格情報レポートです。 Windows Hello for Business には、[パスワード ハッシュ同期を使用するときの特定の要件](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)があります。 [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) では、ユーザーが会社の資格情報を使用してマネージド ドメインでプロビジョニングできるよう、パスワードのハッシュ同期が必要です。
 
     パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure AD の多要素認証または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
 
@@ -106,21 +106,21 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 ### <a name="cloud-authentication-pass-through-authentication"></a>クラウド認証: パススルー認証  
 
-* **作業量**。 パススルー認証の場合、既存のサーバーに、1 つまたは複数 (推奨は 3 つ) の軽量のエージェントをインストールする必要があります。 これらのエージェントは、オンプレミスの AD ドメイン コントローラーなど、オンプレミスの Active Directory Domain Services にアクセスできる必要があります。 これらは、インターネットへの発信アクセスと、ドメイン コントローラーへのアクセスが必要です。 このため、境界ネットワーク内にエージェントを展開することはできません。 
+* **作業量**。 パススルー認証の場合、既存のサーバーに、1 つまたは複数 (推奨は 3 つ) の軽量のエージェントをインストールする必要があります。 これらのエージェントは、オンプレミスの AD ドメイン コントローラーなど、オンプレミスの Active Directory Domain Services にアクセスできる必要があります。 これらは、インターネットへの発信アクセスと、ドメイン コントローラーへのアクセスが必要です。 このため、境界ネットワーク内にエージェントを展開することはできません。
 
     パススルー認証には、ドメイン コントローラーへの制約なしのネットワーク アクセスが必要です。 すべてのネットワーク トラフィックは暗号化され、認証要求に制限されます。 このプロセスの詳細については、パススルー認証での[セキュリティの詳細](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md)に関する記事をご覧ください。
 
 * **ユーザー エクスペリエンス**。 ユーザーのサインイン エクスペリエンスを向上させるには、パススルー認証と共にシームレス SSO を展開します。 シームレス SSO によって、ユーザーのサインイン後に不要なプロンプトが表示されないようになります。
 
-* **高度なシナリオ**。 パススルー認証では、サインインの時点でオンプレミスのアカウント ポリシーが適用されます。 たとえば、オンプレミスのユーザーのアカウントの状態が、無効、ロックアウト、[パスワード期限切れ](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)、またはユーザーに許可されているサインイン時間の超過の場合、アクセスは拒否されます。 
+* **高度なシナリオ**。 パススルー認証では、サインインの時点でオンプレミスのアカウント ポリシーが適用されます。 たとえば、オンプレミスのユーザーのアカウントの状態が、無効、ロックアウト、[パスワード期限切れ](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)、またはユーザーに許可されているサインイン時間の超過の場合、アクセスは拒否されます。
 
     パススルー認証を使用する多要素認証が必要な組織は、Azure Multi-Factor Authentication (MFA) または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。 高度な機能では、パススルー認証を選択するかどうかにかかわらず、パスワード ハッシュ同期が必要になります。 たとえば、Identity Protection の漏洩した資格情報のレポートです。
 
-* **ビジネス継続性**。 2 つの追加パススルー認証エージェントを展開することをお勧めします。 Azure AD Connect サーバー上の最初のエージェントに加えて、これらを追加します。 この追加の展開によって、認証要求の高可用性が保証されます。 3 つのエージェントを展開すると、メンテナンスのために 1 つのエージェントを停止しても、まだ 1 つのエージェントの障害に対応できます。 
+* **ビジネス継続性**。 2 つの追加パススルー認証エージェントを展開することをお勧めします。 Azure AD Connect サーバー上の最初のエージェントに加えて、これらを追加します。 この追加の展開によって、認証要求の高可用性が保証されます。 3 つのエージェントを展開すると、メンテナンスのために 1 つのエージェントを停止しても、まだ 1 つのエージェントの障害に対応できます。
 
     パススルー認証だけでなくパスワード ハッシュ同期も展開することの利点は、もう 1 つあります。 それは、プライマリ認証方法を利用できなくなった場合に、バックアップの認証方法として機能することです。
 
-* **考慮事項**。 エージェントがオンプレミスで発生した重大な障害によってユーザーの資格情報を検証できない場合は、パススルー認証のバックアップの認証方法としてパスワード ハッシュ同期を使用できます。 パスワードハッシュ同期へのフェールオーバーは自動的には行われないため、Azure AD Connect を使用してサインイン方法を手動で切り替える必要があります。 
+* **考慮事項**。 エージェントがオンプレミスで発生した重大な障害によってユーザーの資格情報を検証できない場合は、パススルー認証のバックアップの認証方法としてパスワード ハッシュ同期を使用できます。 パスワードハッシュ同期へのフェールオーバーは自動的には行われないため、Azure AD Connect を使用してサインイン方法を手動で切り替える必要があります。
 
     代替 ID のサポートなど、パススルー認証におけるその他の考慮事項については、[よく寄せられる質問](../../active-directory/hybrid/how-to-connect-pta-faq.md)をご覧ください。
 
@@ -128,7 +128,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 ### <a name="federated-authentication"></a>フェデレーション認証
 
-* **作業量**。 フェデレーション認証システムでは、信頼できる外部システムを利用してユーザーを認証します。 フェデレーション システムへの既存の投資を Azure AD ハイブリッド ID ソリューションで再利用したい会社もあります。 フェデレーション システムの管理とメンテナンスは、Azure AD のコントロールの範囲外です。 フェデレーション システムが安全に展開されていて、認証の負荷を処理できるかどうかを確認するのは、フェデレーション システムを使用している組織の責任です。 
+* **作業量**。 フェデレーション認証システムでは、信頼できる外部システムを利用してユーザーを認証します。 フェデレーション システムへの既存の投資を Azure AD ハイブリッド ID ソリューションで再利用したい会社もあります。 フェデレーション システムの管理とメンテナンスは、Azure AD のコントロールの範囲外です。 フェデレーション システムが安全に展開されていて、認証の負荷を処理できるかどうかを確認するのは、フェデレーション システムを使用している組織の責任です。
 
 * **ユーザー エクスペリエンス**。 フェデレーション認証のユーザー エクスペリエンスは、機能、トポロジ、およびフェデレーション ファーム構成の実装に依存します。 組織によっては、セキュリティ要件に合わせてフェデレーション ファームへのアクセスを調整したり構成したりするために、この柔軟性が必要になります。 たとえば、内部的に接続されているユーザーとデバイスを構成して、資格情報の入力を要求することなく、自動的にユーザーをサインインさせることができます。 この構成が機能するのは、ユーザーが既にデバイスにサインインしているためです。 必要な場合は、高度なセキュリティ機能を利用してユーザーのサインイン プロセスをさらに困難にすることもできます。
 
@@ -149,7 +149,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 
 展開手順については、「[Deploying Federation Servers](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers)」(フェデレーション サーバーの展開) をご覧ください。
 
-> [!NOTE] 
+> [!NOTE]
 > Azure AD ハイブリッド ID ソリューションを展開するときは、Azure AD Connect のサポートされているトポロジの 1 つを実装する必要があります。 サポートされている構成とサポートされていない構成について詳しくは、「[Azure AD Connect のトポロジ](../../active-directory/hybrid/plan-connect-topologies.md)」をご覧ください。
 
 ## <a name="architecture-diagrams"></a>アーキテクチャの図
@@ -187,7 +187,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 |サインイン ページのロゴ、イメージ、説明のカスタマイズ可能性|[Azure AD Premium を使用して可能](../../active-directory/fundamentals/customize-branding.md)|[Azure AD Premium を使用して可能](../../active-directory/fundamentals/customize-branding.md)|[はい](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |サポートされる高度なシナリオ|[Smart Password Lockout](../../active-directory/authentication/concept-sspr-howitworks.md)<br><br>[漏洩した資格情報レポート、Azure AD Premium P2 を使用](../../active-directory/reports-monitoring/concept-risk-events.md)|[Smart Password Lockout](../../active-directory/authentication/howto-password-smart-lockout.md)|複数サイトの低待機時間の認証システム<br><br>[AD FS エクストラネットのロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[サード パーティの ID システムとの統合](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
-> [!NOTE] 
+> [!NOTE]
 > Azure AD の条件付きアクセスでのカスタム コントロールは、現時点ではデバイスの登録をサポートしていません。
 
 ## <a name="recommendations"></a>Recommendations
@@ -195,7 +195,7 @@ ID システムによって、クラウドに移行して利用できるよう�
 
 どの認証方法を選択する場合でも、次の理由により、パスワード ハッシュ同期を使用するか有効にします。
 
-1. **高可用性とディザスター リカバリー**。 パススルー認証とフェデレーションは、オンプレミスのインフラストラクチャに依存します。 パススルー認証の場合、オンプレミスのフットプリントには、パススルー認証エージェントに必要なサーバー ハードウェアとネットワークが含まれます。 フェデレーションの場合、オンプレミスのフットプリントはさらに大きくなります。 認証要求と内部フェデレーション サーバーをプロキシするために、境界ネットワーク内にサーバーが必要になるためです。 
+1. **高可用性とディザスター リカバリー**。 パススルー認証とフェデレーションは、オンプレミスのインフラストラクチャに依存します。 パススルー認証の場合、オンプレミスのフットプリントには、パススルー認証エージェントに必要なサーバー ハードウェアとネットワークが含まれます。 フェデレーションの場合、オンプレミスのフットプリントはさらに大きくなります。 認証要求と内部フェデレーション サーバーをプロキシするために、境界ネットワーク内にサーバーが必要になるためです。
 
     単一障害点を回避するには、冗長サーバーを展開します。 これにより、いずれかのコンポーネントで障害が発生しても、認証要求サービスが常に提供されるようにします。 また、パススルー認証とフェデレーションは、認証要求に応答するために、両方ともドメイン コントローラーにも依存しますが、ここでも障害が発生する可能性があります。 これらのコンポーネントの多くは、正常性を保つためにメンテナンスが必要です。 メンテナンスの計画や実装が適切でない場合は、システムが停止する可能性が高くなります。 Microsoft の Azure AD クラウド認証サービスはグローバルにスケーリングして常に利用できるため、パスワード ハッシュ同期を使うことで停止を回避してください。
 
@@ -207,11 +207,9 @@ ID システムによって、クラウドに移行して利用できるよう�
 
 3. **ID 保護**。 クラウド内のユーザーを保護するための最適な方法の 1 つは、Azure AD Premium P2 を使用した Azure AD Identity Protection です。 Microsoft は常にインターネットを精査して、闇サイトで販売され利用されているユーザーやパスワードのリストを入手しています。 Azure AD はこの情報を使って、組織のユーザー名やパスワードのいずれかが侵害されているかどうかを確認します。 したがって、使用している認証方法がフェデレーション認証かパススルー認証かに関係なく、パスワード ハッシュ同期を有効にすることが重要になります。 漏洩した資格情報は、レポートとして示されます。 ユーザーが漏洩したパスワードでのサインインを試みた場合、この情報を使用してユーザーをブロックするか、パスワードの変更を強制します。
 
-最後に、[Gartner](https://info.microsoft.com/landingIAMGartnerreportregistration.html) によると、Microsoft は最も完備した ID およびアクセス管理機能セットを持っています。 Microsoft は、毎月 [4500 億の認証要求](https://www.microsoft.com/en-us/security/intelligence-report)を処理して、ほぼすべてのデバイスから Office 365 のような何千もの SaaS アプリケーションにアクセスできるようにしています。 
-
 ## <a name="conclusion"></a>まとめ
 
-この記事では、組織がクラウド アプリへのアクセスをサポートするために構成して展開できるさまざまな認証オプションの概要を説明しました。 ビジネス、セキュリティ、テクノロジに関するさまざまな要件を満たすため、組織は、パスワード ハッシュ同期、パススルー認証、およびフェデレーション認証のいずれかを選択できます。 
+この記事では、組織がクラウド アプリへのアクセスをサポートするために構成して展開できるさまざまな認証オプションの概要を説明しました。 ビジネス、セキュリティ、テクノロジに関するさまざまな要件を満たすため、組織は、パスワード ハッシュ同期、パススルー認証、およびフェデレーション認証のいずれかを選択できます。
 
 各認証方法を検討してください。 ソリューションを展開するための作業量や、サインイン プロセスでのユーザーのエクスペリエンスは、ビジネス要件に合っているでしょうか。 各認証方法において、組織が高度なシナリオとビジネス継続性機能を必要とするかどうかを評価してください。 最後に、各認証方法の考慮事項を評価してください。 選択した方法を実装する妨げになる項目はありませんか。
 
@@ -221,4 +219,4 @@ ID システムによって、クラウドに移行して利用できるよう�
 
 [Azure AD を利用して](../../active-directory/fundamentals/get-started-azure-ad.md)、組織に適した認証ソリューションを展開してください。
 
-フェデレーション認証からクラウド認証への移行を検討している場合は、[サインイン方法の変更](../../active-directory/hybrid/plan-connect-user-signin.md)についてさらに学習してください。 移行を計画して実施するときは、[これらのプロジェクト展開計画](https://aka.ms/deploymentplans)が役に立ちます。
+フェデレーション認証からクラウド認証への移行を検討している場合は、[サインイン方法の変更](../../active-directory/hybrid/plan-connect-user-signin.md)についてさらに学習してください。 移行の計画と実装の助けになるように、[これらのプロジェクトのデプロイ計画](https://aka.ms/deploymentplans)を利用するか、段階的な方法でクラウド認証を使用するようにフェデレーション ユーザーを移行する新しい[段階的なロールアウト](../../active-directory/hybrid/how-to-connect-staged-rollout.md)の機能を使用することを検討してください。

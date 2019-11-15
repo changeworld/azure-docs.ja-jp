@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932672"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569634"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築
 
@@ -111,26 +111,17 @@ Azure CLI を使用して**デバイス情報**インターフェイスを表示
 
 1. 言語として、 **[ANSI C]** を選択します。
 
-1. 使用するプロジェクトの種類として、 **[CMake プロジェクト]** を選択します。
-
 1. 接続方法として、 **[Via DPS (Device Provisioning Service) symmetric key]\(DPS (デバイス プロビジョニング サービス) の対称キーを使用する\)** を選択します。
+
+1. デバイスの OS に応じて、プロジェクト テンプレートとして **[CMake Project on Windows]\(Windows 上の CMake プロジェクト\)** または **[CMake Project on Linux]\(Linux 上の CMake プロジェクト\)** を選択します。
 
 1. VS Code で新しいウィンドウが開き、生成されたデバイス コード スタブ ファイルが表示されます。
 
-1. `main.c` を開き、準備した **dpsIdScope**、**sasKey**、および **registrationId** を入力します。 この情報は、認定ポータルから取得できます。 詳細については、[IoT プラグ アンド プレイ デバイスの接続とテスト](tutorial-certification-test.md#connect-and-discover-interfaces)に関するページを参照してください。
+1. コードをビルドした後、アプリケーションのパラメーターとして DPS の資格情報 ( **[DPS ID Scope]\(DPS ID のスコープ\)** 、 **[DPS Symmetric Key]\(DPS 対象キー\)** 、 **[Device Id]\(デバイス ID\)** ) を入力します。 証明書ポータルから資格情報を取得するには、[IoT プラグ アンド プレイ デバイスへの接続とテスト](tutorial-certification-test.md#connect-and-discover-interfaces)に関する記事を参照してください。
 
-    ```c
-    // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-    static const char *dpsIdScope = "[DPS Id Scope]";
-    
-    // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-    static const char *sasKey = "[DPS symmetric key]";
-    
-    // TODO: specify your device registration ID
-    static const char *registrationId = "[device registration Id]";
+    ```cmd/sh
+    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
     ```
-
-1. ファイルを保存します。
 
 ### <a name="implement-standard-interfaces"></a>標準インターフェイスを実装する
 

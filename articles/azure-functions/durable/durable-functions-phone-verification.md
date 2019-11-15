@@ -9,18 +9,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4d8955517450ce3b4efdf30e2790e4be678dfc7b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0c1c92dde2d698fb2c92fb3680ab05393a25573d
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735195"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614732"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
 このサンプルでは、人による操作を含む [Durable Functions](durable-functions-overview.md) オーケストレーションを構築する方法を示します。 自動プロセスに実際の人が関与する場合、プロセスは人への通知の送信と応答の受信を非同期に行うことができる必要があります。 また、人がいない可能性にも対応する必要があります (この最後の部分では、タイムアウトが重要になります)。
 
-このサンプルでは、SMS ベースの電話確認システムを実装します。 この種のフローは、顧客の電話番号を確認するとき、または多要素認証 (MFA) に、よく使われます。 これは、実装全体が 2 つの小さい関数を使って行われる強力な例です。 データベースなどの外部データ ストアは必要ありません。
+このサンプルでは、SMS ベースの電話確認システムを実装します。 この種のフローは、顧客の電話番号を確認するとき、または多要素認証 (MFA) に、よく使われます。 それは、実装全体が 2 つの小さい関数を使って行われる強力な例です。 データベースなどの外部データ ストアは必要ありません。
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -28,7 +30,7 @@ ms.locfileid: "70735195"
 
 電話確認は、アプリケーションのエンド ユーザーがスパマーではなく本人であることを確認するために使われます。 多要素認証は、ハッカーからユーザー アカウントを保護するための一般的なユース ケースです。 独自の電話確認を実装する場合の課題は、人間との**ステートフルな相互作用**が必要になることです。 通常、エンド ユーザーは何らかのコード (4 桁の数字など) を提供されて、**一定の時間内に**応答する必要があります。
 
-通常の Azure Functions は (他のプラットフォームの他の多くのクラウド エンドポイントと同様) ステートレスなので、この種の相互作用には、外部のデータベースまたは他の永続的なストアで状態を明示的に管理する必要があります。 さらの、連携できる複数の関数に相互作用を分割する必要があります。 たとえば、コードを決定し、それをどこかに永続化して、ユーザーの電話に送信するために、少なくとも 1 つの関数が必要です。 さらに、ユーザーからの応答を受信し、コードの検証を行うために何らかの方法で元の関数呼び出しにマップするために、他に少なくとも 1 つの関数が必要です。 また、セキュリティを確保するためにはタイムアウトも重要な側面です。 これは非常に複雑になる可能性があります。
+通常の Azure Functions は (他のプラットフォームの他の多くのクラウド エンドポイントと同様) ステートレスなので、この種の相互作用には、外部のデータベースまたは他の永続的なストアで状態を明示的に管理する必要があります。 さらの、連携できる複数の関数に相互作用を分割する必要があります。 たとえば、コードを決定し、それをどこかに永続化して、ユーザーの電話に送信するために、少なくとも 1 つの関数が必要です。 さらに、ユーザーからの応答を受信し、コードの検証を行うために何らかの方法で元の関数呼び出しにマップするために、他に少なくとも 1 つの関数が必要です。 また、セキュリティを確保するためにはタイムアウトも重要な側面です。 それは非常に複雑になる可能性があります。
 
 このシナリオの複雑さは、Durable Functions を使うと大幅に軽減できます。 このサンプルを見るとわかるように、オーケストレーター関数は、外部データ ストアを必要とすることなく、簡単にステートフルな相互作用を管理できます。 オーケストレーター関数は "*永続的*" であるため、これらの対話型フローは高信頼性でもあります。
 
@@ -57,7 +59,7 @@ ms.locfileid: "70735195"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
@@ -71,7 +73,7 @@ ms.locfileid: "70735195"
 ユーザーは、4 桁のコードで SMS メッセージを受け取ります。 ユーザーが同じ 4 桁のコードをオーケストレーター関数のインスタンスに返送して確認プロセスを完了するまでに、90 秒の猶予があります。 正しくないコードを送信した場合、(同じ 90 秒の間に) さらに 3 回 正しいコードの送信を試みることができます。
 
 > [!NOTE]
-> 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 これは、タイマーの期限切れ日時を計算するために `CurrentUtcDateTime` (.NET) および `currentUtcDateTime` (JavaScript) プロパティが使用され、これらのプロパティが、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 これは、`Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) への呼び出しが繰り返されるたびに、確実に同じ `winner` が得られるようにするために重要です。
+> 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 それが決定論的なのは、タイマーの期限切れ日時を計算するために `CurrentUtcDateTime` (.NET) および `currentUtcDateTime` (JavaScript) プロパティが使用され、これらのプロパティが、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作は、`Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) への呼び出しが繰り返されるたびに、確実に同じ `winner` が得られるようにするために重要です。
 
 > [!WARNING]
 > タイマーが期限切れになる必要がなくなった場合は (上の例でチャレンジ応答を受け取った場合)、[タイマーをキャンセルする](durable-functions-timers.md)ことが重要です。
@@ -88,7 +90,7 @@ ms.locfileid: "70735195"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
@@ -110,9 +112,9 @@ Content-Type: application/json
 HTTP/1.1 202 Accepted
 Content-Length: 695
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
-{"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
+{"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
 オーケストレーター関数は、指定された電話番号を受け取ると、すぐにランダムに生成された 4 桁の確認コード (*2168* など) を含む SMS メッセージをその番号に送信します。 その後、関数は 90 秒間応答を待機します。
@@ -120,7 +122,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 このコードに応答するには、別の関数内で [`RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript)](durable-functions-instance-management.md) を使用するか、または上の 202 応答で参照されている **sendEventUrl** HTTP POST webhook を呼び出して `{eventName}` をイベントの名前 `SmsChallengeResponse` に置き換えることができます。
 
 ```
-POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 Content-Length: 4
 Content-Type: application/json
 
@@ -130,7 +132,7 @@ Content-Type: application/json
 タイマーの期限が切れる前にこれを送信すると、オーケストレーションが完了し、`output` フィールドに確認成功を示す `true` が設定されます。
 
 ```
-GET http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+GET http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
 ```
@@ -162,7 +164,7 @@ Visual Studio プロジェクトの単一の C# ファイルとしてのオー�
 
 ## <a name="next-steps"></a>次の手順
 
-このサンプルでは、Durable Functions の高度な機能のいくつか、特に `WaitForExternalEvent` と `CreateTimer` について説明しました。 これらを `Task.WaitAny` と組み合わせて、信頼性の高いタイムアウト システムを実装する方法を示しました。これは、実際の人と対話する場合に役に立つことがよくあります。 Durable Functions の使用方法の詳細については、特定のトピックについて詳しく解説している一連の記事をご覧ください。
+このサンプルでは、Durable Functions の高度な機能のいくつか、特に `WaitForExternalEvent` API と `CreateTimer` API について説明しました。 これらを `Task.WaitAny` と組み合わせて、信頼性の高いタイムアウト システムを実装する方法を示しました。これは、実際の人と対話する場合に役に立つことがよくあります。 Durable Functions の使用方法の詳細については、特定のトピックについて詳しく解説している一連の記事をご覧ください。
 
 > [!div class="nextstepaction"]
 > [シリーズの最初の記事に移動する](durable-functions-bindings.md)

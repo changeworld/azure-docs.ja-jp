@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 620eff5468d7d3b4bf8ddeea62fa67b39609fce6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4b746a245fc1ee2b0d3532bfabc973f513c7661
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65950372"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748293"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続する
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.locfileid: "65950372"
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -177,7 +177,7 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 *RoutingWeight* の範囲は 0 ～ 32000 です。 既定値は 0 です。
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath を構成する 
-ExpressRoute 回線が [ExpressRoute Direct](expressroute-erdirect-about.md) 上にあり、仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ の場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効することができます。 FastPath を使用すると、オンプレミス ネットワークと仮想ネットワーク間における 1 秒あたりのパケット数や 1 秒あたりの接続数など、データ パスのパフォーマンスが向上します。 
+ExpressRoute 回線が [ExpressRoute Direct](expressroute-erdirect-about.md) 上にあり、仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ である場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効にすることができます。 FastPath により、オンプレミス ネットワークと仮想ネットワークの間の 1 秒あたりのパケット数や 1 秒あたりの接続数などのデータ パスのパフォーマンスが向上します。 
 
 > [!NOTE] 
 > 仮想ネットワーク接続が既にあっても FastPath を有効にしていない場合は、仮想ネットワーク接続の削除と新規作成を行う必要があります。 

@@ -1,5 +1,5 @@
 ---
-title: Go を使用して Azure SQL Database に照会する | Microsoft Docs
+title: Go を使用してクエリを実行する
 description: Go を使用して Azure SQL Database に接続し Transact-SQL ステートメントによりデータを照会、変更するプログラムを作成します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: David-Engel
 ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: baa43a93ff0c1e814478bdc195b2fd525d4dbbf3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b85b1bfb8935b5e311bb7d9503c17261a210127
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569252"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827079"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>クイック スタート:Golang を使用して Azure SQL データベースに照会する
 
@@ -30,7 +30,7 @@ ms.locfileid: "68569252"
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|
-  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  | 作成| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|

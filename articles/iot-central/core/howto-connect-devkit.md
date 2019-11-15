@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 24ce6de63d06402e24abdeb33996a3853175ce91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942784"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582932"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -119,7 +119,7 @@ DevKit デバイスが再起動すると、デバイスの画面に次のもの�
 
 Azure IoT Central でテレメトリ測定や報告されるプロパティの値を表示したり、設定を構成したりできます。
 
-1. **Device Explorer** を使用して、追加した MXChip 実デバイスの **[Measurements] (測定)** ページに移動します。
+1. **[デバイス]** を使用して、追加した MXChip 実デバイスの **[Measurements] (測定)** ページに移動します。
 
     ![実デバイスに移動する](media/howto-connect-devkit/realdevicenew.png)
 

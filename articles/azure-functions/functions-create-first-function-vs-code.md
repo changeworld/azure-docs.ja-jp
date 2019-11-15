@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 52f682f7c7f06056be122b33d27592a55a01be94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: fbde3c939a23e4023c0403c27433717a11762b08
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70744075"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622055"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Visual Studio Code を使用した初めての関数の作成
 
@@ -26,7 +26,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ![Visual Studio プロジェクトの Azure Functions コード](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-現在、この拡張機能では、C#、JavaScript、Java、Python の関数がサポートされています。 この記事と次の記事の手順では、JavaScript と C# の関数のみをサポートしています。 Visual Studio Code を使用して Python 関数を作成および発行する方法については、「[Deploy Python to Azure Functions (Azure Functions に Python をデプロイする)](https://code.visualstudio.com/docs/python/tutorial-azure-functions)」を参照してください。 Visual Studio Code を使用して PowerShell 関数を作成および発行する方法については、「[Azure で初めての PowerShell 関数を作成する](functions-create-first-function-powershell.md)」を参照してください。 
+現在、この拡張機能では、C#、JavaScript、Java、Python の関数がサポートされています。 この記事と次の記事の手順では、JavaScript と C# の関数のみをサポートしています。 Visual Studio Code を使用して Python 関数を作成および発行する方法については、「[Visual Studio Code を使用して Python でサーバーレスの Azure Functions を作成してデプロイする](/azure/python/tutorial-vs-code-serverless-python-01)」を参照してください。 Visual Studio Code を使用して PowerShell 関数を作成および発行する方法については、「[Azure で初めての PowerShell 関数を作成する](functions-create-first-function-powershell.md)」を参照してください。 
 
 この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
 

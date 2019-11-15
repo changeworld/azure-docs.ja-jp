@@ -1,6 +1,6 @@
 ---
-title: Ruby で Azure Service Bus キューを使用する方法 | Microsoft Docs
-description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。
+title: クイック スタート:Ruby で Azure Service Bus キューを使用する方法
+description: クイック スタート:Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 48f60b7c07cc16b4d9994d5644069fdcb4881e0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991875"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718757"
 ---
-# <a name="how-to-use-service-bus-queues-with-ruby"></a>Ruby で Service Bus キューを使用する方法
+# <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>クイック スタート:Ruby で Service Bus キューを使用する方法
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 

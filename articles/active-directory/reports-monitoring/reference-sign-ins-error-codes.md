@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード | Microsoft Docs
+title: Azure Active Directory ポータルのエラー コード | Microsoft Docs
 description: サインイン アクティビティ レポートのエラー コードのリファレンス。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383170"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809817"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 
@@ -127,6 +127,7 @@ ms.locfileid: "70383170"
 |50177|外部のチャレンジは、パススルー ユーザーに対してサポートされていません。|
 |50178|セッション制御は、パススルー ユーザーに対してサポートされていません。|
 |50180|Windows 統合認証が必要です。 シームレス SSO に対してテナントを有効にしてください。|
+|50181|サインイン中に OTP 関連のエラーが発生しました。 |
 |50201|このメッセージ プロンプトの割り込みは、ログイン中、追加の情報をユーザーに提供する必要があるときにユーザーに表示されます。|
 |51001|オンプレミスのセキュリティ識別子 - オンプレミスの UPN に関してドメイン ヒントが存在しません。|
 |51004|ユーザー アカウントがディレクトリ内に存在しません。|

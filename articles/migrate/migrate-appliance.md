@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231132"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685097"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -129,7 +129,7 @@ IPv6 アドレス | vm.Guest.Net
 > [!NOTE]
 > Azure Migrate アプライアンスによって検出されたメタデータは、アプリケーションを Azure に移行し、Azure 適合性分析、アプリケーション依存関係分析、およびコスト計画を実行するときに、アプリケーションを適切なサイズにするのに役立ちます。 Microsoft では、ライセンスのコンプライアンス監査に関してこのデータを使用しません。
 
-アプライアンスが収集して Azure に送信する VMware VM のパフォーマンス データを次に示します。
+アプライアンスが収集して Azure に送信する Hyper VM のパフォーマンス データを次に示します。
 
 **パフォーマンス カウンター クラス** | **カウンター** | **評価の影響**
 --- | --- | ---
@@ -162,7 +162,7 @@ VM が使用できる最大メモリ | Msvm_MemorySettingData | 制限
 VM の電源状態 | Msvm_ComputerSystem | EnabledState
 **各ディスクの詳細** | 
 ディスク識別子 | Msvm_VirtualHardDiskSettingData | VirtualDiskId
-仮想ハード ディスクの種類 | Msvm_VirtualHardDiskSettingData | Type
+仮想ハード ディスクの種類 | Msvm_VirtualHardDiskSettingData | 種類
 仮想ハード ディスクのサイズ | Msvm_VirtualHardDiskSettingData | MaxInternalSize
 仮想ハード ディスクの親 | Msvm_VirtualHardDiskSettingData | ParentPath
 **各 NIC の詳細** | 

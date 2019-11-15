@@ -1,5 +1,5 @@
 ---
-title: PowerShell サンプル - Azure SQL Database で単一のデータベースを作成する | Microsoft Docs
+title: PowerShell の例 - Azure SQL Database で単一のデータベースを作成する
 description: Azure SQL Database で単一のデータベースを作成する Azure PowerShell サンプル スクリプト
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 7aa38f61d74a5418b4c33fef550f70ba4254e00d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1311c14e95e709ef522fe13ce30786ce0d8fb0a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569997"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691668"
 ---
 # <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>PowerShell を使用して単一の Azure SQL データベースを作成し、SQL Database サーバーのファイアウォール規則を構成する
 

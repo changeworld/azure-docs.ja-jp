@@ -1,7 +1,7 @@
 ---
 title: データをエクスポートまたは削除する Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Custom Vision Service のデータをエクスポートまたは削除する方法について説明します。
+description: データの完全な制御を維持します。 この記事では、Custom Vision Service 内のデータを表示、エクスポートまたは削除する方法について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: b885f359d9416fbc5f778b094610260342a75f65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82d9f4508db376ebbe69ef772c15fb732391a31d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564222"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718977"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>Custom Vision のユーザー データをエクスポートまたは削除する
 
@@ -25,7 +25,7 @@ Custom Vision は、サービスを運用するためにユーザー データ�
 
 Custom Vision のユーザー データをエクスポートおよび削除する方法については、次の表を参照してください。
 
-| データ | エクスポート操作 | 削除操作。 |
+| Data | エクスポート操作 | 削除操作。 |
 | ---- | ---------------- | ---------------- |
 | アカウントの情報 (サブスクリプション キー) | [GetAccountInfo](https://go.microsoft.com/fwlink/?linkid=865446) | Azure Portal を使用して削除します (Azure サブスクリプション)。 または、CustomVision.ai 設定ページ (Microsoft アカウント サブスクリプション) の [アカウントの削除] ボタンを使用します。 | 
 | イテレーションの詳細 | [GetIteration](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |

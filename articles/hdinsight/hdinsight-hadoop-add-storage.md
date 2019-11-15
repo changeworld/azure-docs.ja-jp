@@ -2,24 +2,24 @@
 title: HDInsight に Azure ストレージ アカウントを追加する
 description: 既存の HDInsight クラスターに Azure ストレージ アカウントを追加する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/31/2019
+ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433512"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665474"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
 HDInsight に Azure ストレージ *アカウント*を追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の Linux ベースの HDInsight クラスターにストレージ *アカウント*を追加します。 この記事は、ストレージ *アカウント* (既定のクラスター ストレージ アカウントではなく) に適用されます。[Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) および [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) などの追加ストレージには適用されません。
 
 > [!IMPORTANT]  
-> このドキュメントでは、クラスターの作成後に、そのクラスターにストレージを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Apache Hadoop、Apache Spark、Apache Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
+> このドキュメントでは、クラスターの作成後に、そのクラスターにストレージ アカウントを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Apache Hadoop、Apache Spark、Apache Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -112,7 +112,7 @@ az hdinsight script-action execute ^
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>ストレージ アカウントが Azure Portal またはツールに表示されない
 
-Azure Portal で HDInsight クラスターを表示しているときに、 __[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントは表示されません。
+Azure portal で HDInsight クラスターを表示しているときに、 __[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントは表示されません。
 
 ストレージ情報が表示されないのは、スクリプトがクラスターの core-site.xml 構成を変更するだけだからです。 この情報は、Azure 管理 API を使用してクラスター情報を取得するときには使用されません。
 
@@ -120,49 +120,43 @@ Azure Portal で HDInsight クラスターを表示しているときに、 __[�
 
 ### <a name="powershell"></a>PowerShell
 
-`CLUSTERNAME` を大文字と小文字が正しく区別されたクラスター名に置き換えます。 最初に以下のコマンドを入力して、使われているサービス構成バージョンを識別します。
-
-```powershell
-# getting service_config_version
-$clusterName = "CLUSTERNAME"
-
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
-    -Credential $creds -UseBasicParsing
-$respObj = ConvertFrom-Json $resp.Content
-$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
-```
-
-`ACCOUNTNAME` を実際の名前に置き換えます。 次に、`4` を実際のサービス構成バージョンに置き換え、コマンドを入力します。 入力を求められたら、クラスター ログイン パスワードを入力します。
+`CLUSTERNAME` を大文字と小文字が正しく区別されたクラスター名に置き換えます。 `ACCOUNTNAME` を実際の名前に置き換えます。 入力を求められたら、クラスター ログイン パスワードを入力します。
 
 ```powershell
 # Update values
+$clusterName = "CLUSTERNAME"
 $accountName = "ACCOUNTNAME"
-$version = 4
 
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$version" `
+
+# getting service_config_version
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+
+$configVersion=$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
+
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.windows.net"
 ```
 
 ### <a name="bash"></a>Bash
-`myCluster` を大文字と小文字が正しく区別されたクラスター名に置き換えます。
+
+`CLUSTERNAME` を大文字と小文字が正しく区別されたクラスター名に置き換えます。 `PASSWORD` をクラスター管理者パスワードに置き換えます。 `STORAGEACCOUNT` を実際のストレージ アカウント名に置き換えます。
 
 ```bash
-export CLUSTERNAME='myCluster'
+export clusterName="CLUSTERNAME"
+export password='PASSWORD'
+export storageAccount="STORAGEACCOUNT"
 
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" \
-| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
-```
+export ACCOUNTNAME='"'fs.azure.account.key.$storageAccount.blob.core.windows.net'"'
 
-`myAccount` を実際のストレージ アカウント名に置き換えます。 次に、`4` を実際のサービス構成バージョンに置き換え、コマンドを入力します。
+export configVersion=$(curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName?fields=Clusters/desired_service_config_versions/HDFS" \
+| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version")
 
-```bash
-export ACCOUNTNAME='"fs.azure.account.key.myAccount.blob.core.windows.net"'
-export VERSION='4'
-
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=$VERSION" \
+curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" \
 | jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
 ```
 
@@ -172,7 +166,7 @@ curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/cluste
 
 ```cmd
 curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" | ^
-jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
+jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version"
 ```
 
 `ACCOUNTNAME` を実際のストレージ アカウント名に置き換えます。 次に、`4` を実際のサービス構成バージョンに置き換え、コマンドを入力します。
@@ -181,9 +175,10 @@ jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_versio
 curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=4" | ^
 jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNAME.blob.core.windows.net"""] | select(. != null)"
 ```
+
 ---
 
- このコマンドから返される情報は、次のテキストに似たものとなります。
+このコマンドから返される情報は、次のテキストに似たものとなります。
 
     "MIIB+gYJKoZIhvcNAQcDoIIB6zCCAecCAQAxggFaMIIBVgIBADA+MCoxKDAmBgNVBAMTH2RiZW5jcnlwdGlvbi5henVyZWhkaW5zaWdodC5uZXQCEA6GDZMW1oiESKFHFOOEgjcwDQYJKoZIhvcNAQEBBQAEggEATIuO8MJ45KEQAYBQld7WaRkJOWqaCLwFub9zNpscrquA2f3o0emy9Vr6vu5cD3GTt7PmaAF0pvssbKVMf/Z8yRpHmeezSco2y7e9Qd7xJKRLYtRHm80fsjiBHSW9CYkQwxHaOqdR7DBhZyhnj+DHhODsIO2FGM8MxWk4fgBRVO6CZ5eTmZ6KVR8wYbFLi8YZXb7GkUEeSn2PsjrKGiQjtpXw1RAyanCagr5vlg8CicZg1HuhCHWf/RYFWM3EBbVz+uFZPR3BqTgbvBhWYXRJaISwssvxotppe0ikevnEgaBYrflB2P+PVrwPTZ7f36HQcn4ifY1WRJQ4qRaUxdYEfzCBgwYJKoZIhvcNAQcBMBQGCCqGSIb3DQMHBAhRdscgRV3wmYBg3j/T1aEnO3wLWCRpgZa16MWqmfQPuansKHjLwbZjTpeirqUAQpZVyXdK/w4gKlK+t1heNsNo1Wwqu+Y47bSAX1k9Ud7+Ed2oETDI7724IJ213YeGxvu4Ngcf2eHW+FRK"
 

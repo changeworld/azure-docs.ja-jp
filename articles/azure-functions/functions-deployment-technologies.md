@@ -1,21 +1,19 @@
 ---
 title: Azure Functions のデプロイ テクノロジ | Microsoft Docs
 description: Azure Functions にコードをデプロイするさまざまな方法について学習します。
-services: functions
-documentationcenter: .net
 author: ColbyTresness
-manager: dariac
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 4d32a652219d48a2cc101259ea6b76fbfa910821
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: ce8287626b390d6eac4a3461d928c24f515f4023
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674961"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576137"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -31,7 +29,7 @@ Azure Functions は、クロス プラットフォームのローカル開発と
 
 各プランの動作は異なります。 各種の Azure Functions に対してすべてのデプロイ テクノロジが使用できるわけではありません。 次の表は、オペレーティング システムとホスティング プランの各組み合わせでサポートされるデプロイ テクノロジを示しています。
 
-| デプロイ テクノロジ | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated  | Linux Consumption | Linux Premium (プレビュー) | Linux Dedicated |
+| デプロイ テクノロジ | Windows Consumption | Windows Premium | Windows Dedicated  | Linux Consumption | Linux Premium | Linux Dedicated |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | 外部パッケージ URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | ZIP デプロイ |✔|✔|✔|✔|✔|✔|
@@ -86,7 +84,7 @@ Linux 上でリモートでビルドされたアプリは、[デプロイ パッ
 
 従量課金プランで実行されている Linux 関数アプリには SCM/Kudu サイトがありません。これにより、デプロイ オプションが制限されます。 ただし、従量課金プランで実行されている Linux 上の関数アプリでは、リモート ビルドがサポートされます。
 
-##### <a name="dedicated-and-premium-preview-plans"></a>専用プランと Premium (プレビュー) プラン
+##### <a name="dedicated-and-premium-plans"></a>専用プランと Premium プラン
 
 [専用 (App Service) プラン](functions-scale.md#app-service-plan)と [Premium プラン](functions-scale.md#premium-plan)で実行されている Linux 上の関数アプリには、制限された SCM/Kudu サイトがあります。
 
@@ -183,8 +181,8 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 次の表に、ポータルでの編集をサポートしているオペレーティング システムと言語を示します。
 
-| | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated | Linux Consumption | Linux Premium (プレビュー)| Linux Dedicated |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
+| | Windows Consumption | Windows Premium | Windows Dedicated | Linux Consumption | Linux Premium | Linux Dedicated |
+|-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C# スクリプト |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |

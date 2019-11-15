@@ -1,5 +1,5 @@
 ---
-title: Azure Automation を使用した Azure SQL データベースの管理 | Microsoft Docs
+title: Azure Automation を使用してデータベースを管理する
 description: Azure Automation サービスを使用して、規模に応じて Azure SQL データベースを管理する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: bb195d5809ef0e2af2a4975a263a9739db1cdfa6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9d826a75f05cf2031565f89e21d7f3667ecc8f17
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567748"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822804"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure Automation を使用した Azure SQL データベースの管理
 

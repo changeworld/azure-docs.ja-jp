@@ -1,5 +1,5 @@
 ---
-title: テラバイトのデータを SQL Data Warehouse に読み込む | Microsoft Docs
+title: テラバイトのデータを SQL Data Warehouse に読み込む
 description: 1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法を示します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 50a653648f3ae4b40e0bfe2c6f168cfb890bcc59
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 05dcff2276a799b1debc76e4f85fbbac6606eb59
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839101"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682545"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]

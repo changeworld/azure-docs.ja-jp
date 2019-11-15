@@ -1,37 +1,35 @@
 ---
-title: Azure AD ドメイン サービスでセキュリティ監査を有効にする | Microsoft Docs
-description: Azure AD ドメイン サービスでセキュリティ監査を有効にする
+title: Azure Active Directory Domain Services でセキュリティ監査を有効にする | Microsoft Docs
+description: セキュリティ監査を有効にして、Azure AD Domain Services で分析とアラートのイベントのログ記録を一元化する方法について説明します
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 3105296b3c670d3d44789c93878fa1fc6076973b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566706"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569802"
 ---
-# <a name="enable-security-audits-for-azure-ad-domain-services-preview"></a>Azure AD ドメイン サービスでセキュリティ監査を有効にする (プレビュー)
-Azure AD ドメイン サービス セキュリティ監査では、Azure AD ドメイン サービス ポータルを使用して対象のリソースにセキュリティ監査イベントをストリームできます。 これらのイベントを受け取ることができるリソースには、Azure Storage、Azure Log Analytics ワークスペース、または Azure Event Hub が含まれます。 セキュリティ監査イベントを有効にすると、その直後に、Azure AD ドメイン サービスは、選択されたカテゴリのすべての監査対象イベントを対象のリソースに送信します。 セキュリティ監査イベントによって、監査されたイベントを Azure ストレージにアーカイブできるようになります。 さらに、イベント ハブを使用してセキュリティ情報およびイベント管理 (SIEM) ソフトウェア (または同等のもの) にイベントのストリームしたり、Azure portal から Azure Log Analytics を使用して独自の分析を行ったりすることができます。 
+# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする (プレビュー)
+
+Azure Active Directory Domain Services (Azure AD DS) セキュリティ監査を使用すると、Azure でセキュリティ イベントを対象のリソースにストリーミングできます。 これらのリソースには、Azure Storage、Azure Log Analytics ワークスペース、または Azure Event Hub が含まれます。 セキュリティ監査イベントを有効にすると、Azure AD DS は、選択されたカテゴリのすべての監査対象イベントを対象のリソースに送信します。 Azure ストレージ内にイベントをアーカイブし、Azure Event Hubs を使用してセキュリティ情報およびイベント管理 (SIEM) ソフトウェア (または同等のもの) にイベントをストリーム配信したり、Azure portal から Azure Log Analytics ワークスペースを使用して独自の分析を行ったりすることができます。
 
 > [!IMPORTANT]
-> Azure AD ドメイン サービスのセキュリティ監査は、Azure AD ドメイン サービスの Azure Resource Manager ベースのインスタンスでのみ使用できます。
->
->
+> Azure AD DS セキュリティ監査は、Azure Resource Manager ベースのインスタンスでのみ使用できます。 移行方法の詳細については、「[クラシック仮想ネットワーク モデルから Resource Manager への Azure AD DS の移行][migrate-azure-adds]」を参照してください。
 
-## <a name="auditing-event-categories"></a>イベント カテゴリを監査する
-Azure AD ドメイン サービスのセキュリティ監査は、従来の Active Directory ドメイン サービス ドメイン コントローラーの監査と一致しています。 既存の監査のパターンを再利用することにより、イベントを分析するときに、同じロジックを使用できるようにしています。 Azure AD ドメイン サービスのセキュリティ監査には、次のイベント カテゴリが含まれています。
+## <a name="audit-event-categories"></a>監査イベントのカテゴリ
+
+Azure AD DS セキュリティ監査は、従来の AD DS ドメイン コントローラーの従来の監査に沿っています。 ハイブリッド環境では、既存の監査パターンを再利用できるため、イベントを分析するときに同じロジックを使用することができます。 トラブルシューティングまたは分析が必要なシナリオに応じて、さまざまな監査イベントのカテゴリを対象にする必要があります。
+
+次の監査イベントのカテゴリを利用できます。
 
 | 監査のカテゴリ名 | 説明 |
 |:---|:---|
@@ -46,7 +44,8 @@ Azure AD ドメイン サービスのセキュリティ監査は、従来の Act
 |システム| 他のカテゴリに含まれておらず、セキュリティに影響を及ぼす可能性があるコンピューターへのシステム レベルの変更を監査します。 このカテゴリには、次のサブカテゴリが含まれます。<ul><li>[IPsec ドライバーの監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[その他のシステム イベントの監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[セキュリティ状態の変更の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[セキュリティ システム拡張機能の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[システムの整合性の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
 
 ## <a name="event-ids-per-category"></a>カテゴリごとのイベント ID
- Azure AD ドメイン サービスのセキュリティ監査は、特定のアクションによって監査可能なイベントがトリガーされた際に、次のイベント ID を記録します。
+
+ Azure AD DS セキュリティ監査は、特定のアクションによって監査可能なイベントがトリガーされた際に、次のイベント ID を記録します。
 
 | イベント カテゴリ名 | イベント ID |
 |:---|:---|
@@ -60,123 +59,130 @@ Azure AD ドメイン サービスのセキュリティ監査は、従来の Act
 |特権の使用セキュリティ|4985|
 |システム セキュリティ|4612、4621|
 
-## <a name="enable-security-audit-events"></a>セキュリティ監査イベントを有効にする
-以下のガイダンスは、Azure AD ドメイン サービスのセキュリティ監査イベントを正常にサブスクライブするために役立ちます。
+## <a name="security-audit-destinations"></a>セキュリティ監査の出力先
+
+Azure AD DS セキュリティ監査のターゲット リソースには、Azure Storage、Azure Event Hubs、Azure Log Analytics ワークスペースの任意の組み合わせを使用できます。 Azure Storage はセキュリティ監査イベントをアーカイブするために使用できますが、Azure Log Analytics ワークスペースでは、短期の情報を分析してレポートを作成できます。
+
+次の表は、対象となるリソースの種類ごとのシナリオの概要を示しています。
 
 > [!IMPORTANT]
-> Azure AD ドメイン サービスのセキュリティ監査は、さかのぼって適用されません。 過去のイベントを取得する、または過去のイベントを再生することはできません。 サービスを有効にした後に発生するイベントのみが送信されます。
->
-
-### <a name="choose-the-target-resource"></a>ターゲット リソースを選択する
-セキュリティ監査のターゲット リソースには、Azure Storage、Azure Event Hubs、Azure Log Analytics ワークスペースの任意の組み合わせを使用できます。 使用状況に合う最適なリソースについては、次の表を検討してください。
-
-> [!IMPORTANT]
-> Azure AD ドメイン サービスのセキュリティ監査を有効にする前に、ターゲット リソースを作成する必要があります。
->
+> Azure AD ドメイン サービスのセキュリティ監査を有効にする前に、ターゲット リソースを作成する必要があります。 これらのリソースは、Azure portal、Azure PowerShell、または Azure CLI を使用して作成することができます。
 
 | ターゲット リソース | シナリオ |
 |:---|:---|
-|Azure Storage|主なニーズがセキュリティ監査イベントをアーカイブ用に格納することである場合、このターゲットの使用を検討します。 その他のターゲットもアーカイブの目的で使用できますが、主なニーズがアーカイブ以上である機能を提供しています。 Azure Storage アカウントの作成については、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1)」を参照してください。|
-|Azure Event Hubs|主なニーズがデータ分析ソフトウェアやセキュリティ情報およびイベント管理 (SIEM) ソフトウェアなどの追加ソフトウェアとセキュリティ監査イベントを共有することである場合は、このターゲットの使用を検討します。 イベント ハブを作成するには、「[クイックスタート: Azure portal を使用したイベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)」を参照してください。|
-|Azure Log Analytics ワークスペース|主なニーズが Azure portal でセキュリティ監査を直接分析して確認することである場合は、このターゲットの使用を検討します。  Log Analytics ワークスペースを作成するには、「[Azure portal で Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)」を参照してください。|
+|Azure Storage| 主なニーズがセキュリティ監査イベントをアーカイブ用に格納することである場合は、このターゲットを使用してください。 その他のターゲットもアーカイブの目的で使用できますが、主なニーズがアーカイブ以上である機能を提供しています。 Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure ストレージ アカウントを作成してください](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1)。|
+|Azure Event Hubs| 主なニーズがデータ分析ソフトウェアやセキュリティ情報およびイベント管理 (SIEM) ソフトウェアなどの追加ソフトウェアとセキュリティ監査イベントを共有することである場合は、このターゲットを使用してください。 Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal を使用してイベント ハブを作成してください](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Log Analytics ワークスペース| 主なニーズが Azure portal でセキュリティ監査を直接分析して確認することである場合は、このターゲットを使用してください。 Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal で Log Analytics ワークスペースを作成してください](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。|
 
-## <a name="using-the-azure-portal-to-enable-security-audit-events"></a>Azure portal を使用してセキュリティ監査イベントを有効にする 
-1. Azure Portal ( https://portal.azure.com ) にサインインします。  Azure portal で、[すべてのサービス] をクリックします。 リソースの一覧で「**Domain**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure AD ドメイン サービス]** をクリックします。
-2. 一覧から Azure AD ドメイン サービス インスタンスをクリックします。
-3. 左のアクションの一覧から、 **[診断設定 (プレビュー)]** をクリックします。</p>
-![診断設定アクション](./media/security-audit-events/diagnostic-settings-action.png)
-4. 診断構成の名前を入力します (**aadds-auditing** など)。</p>
-![診断設定ページ](./media/security-audit-events/diagnostic-settings-page.png)
-5. セキュリティ監査イベントで使用する、対象のリソースの横にある適切なチェックボックスを選択します。
-    > [!NOTE]
-    > このページから、ターゲット リソースを作成することはできません。
-    >
-    
-    **Azure Storage:**</p>
-    **[ストレージ アカウントへのアーカイブ]** を選択します。 **[構成]** をクリックします。 セキュリティ監査イベントのアーカイブに使用する **[サブスクリプション]** と **[ストレージ アカウント]** を選択します。 Click **OK**.</p>
-    
-    ![診断ストレージ設定](./media/security-audit-events/diag-settings-storage.png)
-    
-    **Azure イベント ハブ:**</p>
-    **[イベント ハブへのストリーム]** を選択します。 **[構成]** をクリックします。 **[イベント ハブの選択]** ページで、イベント ハブを作成するために使用する **[サブスクリプション]** を選択します。 次に、 **[イベント ハブの名前空間]** 、 **[イベント ハブ名]** 、および **[イベント ハブ ポリシー名]** を選択します。 Click **OK**.</p>
-    ![診断イベント ハブ設定](./media/security-audit-events/diag-settings-eventhub.png)
-    
-    **Azure Log Analytics ワークスペース:**</p>
-    **[Log Analytics への送信]** を選択します。 セキュリティ監査イベントを格納するために使用する **[サブスクリプション]** と **[Log Analytics ワークスペース]** を選択します。</p>
-    ![診断ワークスペースの設定](./media/security-audit-events/diag-settings-log-analytics.png)
+## <a name="enable-security-audit-events-using-the-azure-portal"></a>Azure portal を使用してセキュリティ監査イベントを有効にする
 
-6. 特定のターゲット リソースに含めるログのカテゴリを選択します。 ストレージ アカウントを使用する場合は、保持ポリシーを構成できます。
+Azure portal を使用して Azure AD DS のセキュリティ監査イベントを有効にするには、次の手順を完了します。
 
-    > [!NOTE]
-    > 1 つの構成内の各ターゲット リソースについて、さまざまなログ カテゴリを選択することができます。 これにより、Log Analytics で保持するログのカテゴリや、アーカイブするログのカテゴリを選択することができます。
-    >
+> [!IMPORTANT]
+> Azure AD DS のセキュリティ監査は、さかのぼって適用されません。 過去のイベントを取得する、または過去のイベントを再生することはできません。 Azure AD DS を有効にした後に発生するイベントのみが送信されます。
 
-7. **[保存]** をクリックして変更を確定します。 構成を保存すると、その直後に、ターゲット リソースが Azure AD ドメイン サービス セキュリティ監査イベントを受信します。
+1. Azure Portal ( https://portal.azure.com ) にサインインします。
+1. Azure portal の上部で、**Azure AD Domain Services** を検索して選択します。 目的のマネージド ドメインを選択します (例: *contoso.com*)。
+1. Azure AD DS ウィンドウで、左側にある **[診断設定 (プレビュー)]** を選択します。
+1. 診断は、既定では構成されていません。 作業を開始するには、 **[診断設定の追加]** を選択します。
 
-## <a name="using-azure-powershell-to-enable-security-audit-events"></a>Azure PowerShell を使用してセキュリティ監査イベントを有効にする
- 
-### <a name="prerequisites"></a>前提条件
+    ![Azure AD Domain Services の診断設定を追加する](./media/security-audit-events/add-diagnostic-settings.png)
 
-記事の指示に従って、 [Azure PowerShell モジュールをインストールして Azure サブスクリプションに接続します](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)。
+1. 診断構成の名前を入力します (*aadds-auditing* など)。
 
-### <a name="enable-security-audits"></a>セキュリティ監査を有効にする
+    目的のセキュリティ監査の出力先のチェックボックスをオンにします。 Azure Storage アカウント、Azure イベントハブ、または Log Analytics ワークスペースから選択できます。 これらの出力先リソースは、Azure サブスクリプションに既に存在している必要があります。 このウィザードでは、出力先リソースを作成できません。
 
-1. **Connect AzAccount** Azure PowerShell コマンドレットを使用して、適切なテナントとサブスクリプションの Azure Resource Manager による認証を受けます。
-2. セキュリティ監査イベントのターゲット リソースを作成します。</p>
-    **Azure Storage:**</p>
-    [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell)に従ってストレージ アカウントを作成します。</p>
-    **Azure イベント ハブ:**</p>
-    [クイック スタート: Azure PowerShell を使用したイベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-quickstart-powershell)に従ってイベント ハブを作成します。 [New-AzEventHubAuthorizationRule](https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule?view=azps-2.3.2) Azure PowerShell コマンドレットを使用して Active Directory AD ドメイン サービスのイベント ハブ**名前空間**へのアクセスを許可する承認規則を作成しなければならない場合があります。 承認規則には、**管理**、**リッスン**、および**送信**権限を含める必要があります。
-    > [!IMPORTANT]
-    > イベント ハブではなく、イベント ハブ名前空間に承認規則を設定していることを確認します。
-       
-    </p>
-    
-    **Azure Log Analytics ワークスペース:**</p>
-    ワークスペースを作成するには、[Azure PowerShell を使用して Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace-posh)に従います。
-3. Azure AD ドメイン サービス インスタンスのリソース ID を取得します。 開かれている認証済みの Windows PowerShell コンソールに、次のコマンドを入力します。 今後のコマンドレットの Azure AD ドメイン サービス リソース ID パラメーターには、 **$aadds.ResourceId** 変数を使用します。
-    ```powershell
+    ![キャプチャする必要がある監査イベントの出力先と種類を有効にする](./media/security-audit-events/diagnostic-settings-page.png)
+
+    * **Azure Storage**
+        * **[ストレージ アカウントへのアーカイブ]** を選択し、 **[構成]** を選択します。
+        * セキュリティ監査イベントのアーカイブに使用する **[サブスクリプション]** と **[ストレージ アカウント]** を選択します。
+        * 準備ができたら、 **[OK]** を選択します。
+    * **Azure Event Hubs**
+        * **[イベント ハブへのストリーム]** を選択し、 **[構成]** をクリックします。
+        * **[サブスクリプション]** および **[イベント ハブ名前空間]** を選択します。 必要に応じて、 **[イベント ハブ名]** を選択してから、 **[イベント ハブ ポリシー名]** を選択します。
+        * 準備ができたら、 **[OK]** を選択します。
+    * **Azure Log Analytics ワークスペース**
+        * **[Log Analytics への送信]** を選択してから、セキュリティ監査イベントを格納するために使用する **[サブスクリプション]** と **[Log Analytics ワークスペース]** を選択します。
+
+1. 特定のターゲット リソースに含めるログのカテゴリを選択します。 監査イベントを Azure Storage アカウントに送信する場合は、データを保持する日数を定義する保持ポリシーを構成することもできます。 既定の設定である *0* では、すべてのデータが保持され、一定期間後にイベントがローテーションされることはありません。
+
+    1 つの構成内の各ターゲット リソースについて、さまざまなログ カテゴリを選択することができます。 この機能により、Log Analytics で保持するログのカテゴリや、アーカイブするログのカテゴリなどを選択することができます。
+
+1. 完了したら、 **[保存]** を選択して変更をコミットします。 構成が保存されるとすぐに、ターゲット リソースが Azure AD DS のセキュリティ監査イベントの受信を開始します。
+
+## <a name="enable-security-audit-events-using-azure-powershell"></a>Azure PowerShell を使用してセキュリティ監査イベントを有効にする
+
+Azure PowerShell を使用して Azure AD DS のセキュリティ監査イベントを有効にするには、次の手順を完了します。 必要に応じて、最初に [Azure PowerShell モジュールをインストールし、Azure サブスクリプションに接続](/powershell/azure/install-az-ps)します。
+
+> [!IMPORTANT]
+> Azure AD DS のセキュリティ監査は、さかのぼって適用されません。 過去のイベントを取得する、または過去のイベントを再生することはできません。 Azure AD DS を有効にした後に発生するイベントのみが送信されます。
+
+1. [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) コマンドレットを使用して、Azure サブスクリプションに対して認証します。 メッセージが表示されたら、アカウント資格情報を入力します。
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. セキュリティ監査イベントのターゲット リソースを作成します。
+
+    * **Azure ストレージ** - [Azure PowerShell を使用してストレージ アカウントを作成します](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)
+    * **Azure イベント ハブ** - [Azure PowerShell を使用してイベント ハブを作成します](../event-hubs/event-hubs-quickstart-powershell.md)。 また、[New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) コマンドレットを使用して、イベント ハブ*名前空間*に Azure AD DS のアクセス許可を付与する承認規則を作成しなければならない場合もあります。 承認規則には、**管理**、**リッスン**、および**送信**権限を含める必要があります。
+
+        > [!IMPORTANT]
+        > イベント ハブ自体ではなく、イベント ハブ名前空間に承認規則を設定していることを確認します。
+
+    * **Azure Log Analytics ワークスペース** - [Azure PowerShell を使用して Log Analytics ワークスペースを作成します](../azure-monitor/learn/quick-create-workspace-posh.md)。
+
+1. [Get AzResource](/powershell/module/Az.Resources/Get-AzResource) コマンドレットを使用して、Azure AD DS 管理対象ドメインのリソース ID を取得します。 *$aadds.ResourceId* という名前の変数を作成して、値を保持します。
+
+    ```azurepowershell
     $aadds = Get-AzResource -name aaddsDomainName
-    ``` 
-4. **Set-AzDiagnosticSetting** コマンドレットを使用し、Azure AD ドメイン サービスのセキュリティ監査イベントのターゲット リソースを使用するように Azure 診断設定を構成します。 下の例では、変数 $aadds.ResourceId が Azure AD ドメイン サービス インスタンスのリソース ID を表しています (手順 3 を参照してください)。</p>
-    **Azure Storage:**
-    ```powershell
-    Set-AzDiagnosticSetting `
-    -ResourceId $aadds.ResourceId` 
-    -StorageAccountId storageAccountId `
-    -Enabled $true
     ```
-    *storageAccountId* を自分のストレージ アカウント ID に置き換えます。</p>
-    
-    **Azure イベント ハブ:**
-    ```powershell
-    Set-AzDiagnosticSetting -ResourceId $aadds.ResourceId ` 
-    -EventHubName eventHubName `
-    -EventHubAuthorizationRuleId eventHubRuleId `
-    -Enabled $true
-    ```
-    *eventHubName* をイベント ハブの名前に置き換えます。 *eventHubRuleId* を以前に作成した承認規則 ID に置き換えます。</p>
-    
-    **Azure Log Analytics ワークスペース:**
-    ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId $aadds.ResourceId ` 
-    -WorkspaceID workspaceId `
-    -Enabled $true
-    ```
-    *workspaceId* を以前に作成した Log Analytics ワークスペースの ID に置き換えます。 
 
-## <a name="view-security-audit-events-using-azure-monitor"></a>Azure Monitor を使用してセキュリティ監査イベントを表示する
-Log Analytic ワークスペースを使用すると、Azure Monitor と Kusto クエリ言語を使用して、セキュリティ監査イベントを表示および分析できます。 このクエリ言語は、読みやすい構文で強力な分析機能を提供する読み取り専用の用途向けに設計されています。
-Kusto クエリ言語の開始に役立つリソースをこちらでご覧ください。
+1. [Set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) コマンドレットを使用して、Azure AD Domain Services のセキュリティ監査イベントのターゲット リソースを使用するように Azure 診断設定を構成します。 次の例で、変数 *$aadds.ResourceId* は前の手順から使用しているものです。
+
+    * **Azure storage** - *storageAccountId* を自分のストレージ アカウント名に置き換えます。
+
+        ```powershell
+        Set-AzDiagnosticSetting `
+            -ResourceId $aadds.ResourceId `
+            -StorageAccountId storageAccountId `
+            -Enabled $true
+        ```
+
+    * **Azure イベント ハブ** - *eventHubName* をお使いのイベント ハブの名前に置き換え、*eventHubRuleId* を承認規則 ID に置き換えます。
+
+        ```powershell
+        Set-AzDiagnosticSetting -ResourceId $aadds.ResourceId `
+            -EventHubName eventHubName `
+            -EventHubAuthorizationRuleId eventHubRuleId `
+            -Enabled $true
+        ```
+
+    * **Azure Log Analytic ワークスペース** - *workspaceId* を Log Analytics ワークスペースの ID に置き換えます。
+
+        ```powershell
+        Set-AzureRmDiagnosticSetting -ResourceId $aadds.ResourceId `
+            -WorkspaceID workspaceId `
+            -Enabled $true
+        ```
+
+## <a name="query-and-view-security-audit-events-using-azure-monitor"></a>Azure Monitor を使用してセキュリティ監査イベントをクエリおよび表示する
+
+Log Analytic ワークスペースを使用すると、Azure Monitor と Kusto クエリ言語を使用して、セキュリティ監査イベントを表示および分析できます。 このクエリ言語は、読みやすい構文で強力な分析機能を提供する読み取り専用の用途向けに設計されています。 Kusto クエリ言語の使用を開始する方法の詳細については、次の記事を参照してください。
+
 * [Azure Monitor のドキュメント](https://docs.microsoft.com/azure/azure-monitor/)
-* [Azure Monitor で Log Analytics の使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-* [Azure Monitor でログ クエリの使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
-* [Log Analytics データのダッシュボードを作成して共有する](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)
+* [Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)
+* [Log Analytics データのダッシュボードを作成して共有する](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
-## <a name="sample-queries"></a>サンプル クエリ
+次のサンプル クエリを使用すると、Azure AD DS からのセキュリティ監査イベントの分析を開始できます。
 
 ### <a name="sample-query-1"></a>サンプル クエリ 1
-直近 7 日間のすべてのアカウント ロックアウト イベント。
+
+直近 7 日間のすべてのアカウント ロックアウト イベントを表示します。
+
 ```Kusto
 AADDomainServicesAccountManagement
 | where TimeGenerated >= ago(7d)
@@ -184,16 +190,20 @@ AADDomainServicesAccountManagement
 ```
 
 ### <a name="sample-query-2"></a>サンプル クエリ 2
-2019 年 6 月 26 日午前 9 時から 2019 年 7 月 1 日午前 0 時までのすべてのアカウント ロックアウト イベント (4740) を日時の昇順でソート。
+
+2019 年 6 月 26 日午前 9 時からのすべてのアカウントのロックアウト イベント (*4740*) を表示します。 から 2019 年 7 月 1 日午前 0 時までのすべてのアカウント ロックアウト イベントを表示します。
+
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01) 
+| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
 
 ### <a name="sample-query-3"></a>サンプル クエリ 3
-7 日前まで (今から) の user という名前のアカウントのログオン イベント。
+
+7 日前まで (今から) の user という名前のアカウントのサインイン イベントを表示します。
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -201,7 +211,9 @@ AADDomainServicesAccountLogon
 ```
 
 ### <a name="sample-query-4"></a>サンプル クエリ 4
-今から 7 日前までの user という名前のアカウントのログオン イベントで、正しくないパスワードを使用してサインインしようとしたもの (0xC0000006a)。
+
+今から 7 日前までの user という名前のアカウントのサインイン イベントで、正しくないパスワードを使用してサインインしようとしたもの (*0xC0000006a*) を表示します。
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -210,7 +222,9 @@ AADDomainServicesAccountLogon
 ```
 
 ### <a name="sample-query-5"></a>サンプル クエリ 5
-今から 7 日前までの user という名前のアカウントのログオン イベントで、ロックアウトされたアカウントにサインインしようとしたもの (0xC0000234)。
+
+今から 7 日前までの user という名前のアカウントのサインイン イベントで、ロックアウトされたアカウントにサインインしようとしたもの (*0xC0000234*) を表示します。
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -219,7 +233,9 @@ AADDomainServicesAccountLogon
 ```
 
 ### <a name="sample-query-6"></a>サンプル クエリ 6
-今から 7 日前までに、すべてのロックアウトされたユーザーに対してサインインしようとしたアカウント ログオン イベントの数。
+
+今から 7 日前までに、すべてのロックアウトされたユーザーに対してサインインしようとしたアカウント サインイン イベントの数を表示します。
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -227,23 +243,14 @@ AADDomainServicesAccountLogon
 | summarize count()
 ```
 
-## <a name="related-content"></a>関連コンテンツ
-* Kusto クエリ言語の[概要](https://docs.microsoft.com/azure/kusto/query/)
-* クエリの基本を理解するための [Kusto チュートリアル](https://docs.microsoft.com/azure/kusto/query/tutorial)
-* データを表示する新しい方法を学習する際に役立つ[サンプル クエリ](https://docs.microsoft.com/azure/kusto/query/samples)
-* Kusto [ベスト プラクティス](https://docs.microsoft.com/azure/kusto/query/best-practices) – 成功のためにクエリを最適化する
+## <a name="next-steps"></a>次の手順
 
+Kusto の具体的な情報については、次の記事を参照してください。
 
+* Kusto クエリ言語の[概要](/azure/kusto/query/)
+* クエリの基本を理解するための [Kusto チュートリアル](/azure/kusto/query/tutorial)
+* データを表示する新しい方法を学習する際に役立つ[サンプル クエリ](/azure/kusto/query/samples)
+* 成功のためにクエリを最適化する Kusto [ベスト プラクティス](/azure/kusto/query/best-practices)。
 
-
-
-
-
-
-
-
-
-
-
-
- 
+<!-- LINKS - Internal -->
+[migrate-azure-adds]: migrate-from-classic-vnet.md

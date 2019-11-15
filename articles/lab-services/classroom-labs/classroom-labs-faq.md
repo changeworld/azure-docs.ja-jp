@@ -1,5 +1,5 @@
 ---
-title: Azure Lab Services のクラスルーム ラボ - FAQ | Microsoft Docs
+title: Azure Lab Services のクラスルーム ラボ — FAQ | Microsoft Docs
 description: Azure Lab Services のクラスルーム ラボについてよく寄せられる質問の回答を見つけます。
 services: lab-services
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 411037dd97350d877aff4e2d094c3408f168f9fd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 91c5c1480669829bad7f8d89ce360bb806d6c997
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648576"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646847"
 ---
-# <a name="classroom-labs-in-azure-lab-services---frequently-asked-questions-faq"></a>Azure Lab Services のクラスルーム ラボ - よく寄せられる質問 (FAQ)
+# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services のクラスルーム ラボ — よく寄せられる質問 (FAQ)
 Azure Lab Services のクラスルーム ラボについて特に多く寄せられる質問にお答えします。 
 
 ## <a name="quotas"></a>Quotas (クォータ)
@@ -31,7 +31,7 @@ Azure Lab Services のクラスルーム ラボについて特に多く寄せら
 ## <a name="schedules"></a>スケジュール
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>スケジュールを設定すると、ラボ内のすべての VM が自動的に開始されますか。 
-いいえ。 すべての VM ではありません。 スケジュールに基づいてユーザーに割り当てられている VM のみです。 ユーザーに割り当てられていない VM は自動的に開始されません。 これは仕様です。 
+No. すべての VM ではありません。 スケジュールに基づいてユーザーに割り当てられている VM のみです。 ユーザーに割り当てられていない VM は自動的に開始されません。 これは仕様です。 
 
 ## <a name="lab-accounts"></a>ラボ アカウント
 
@@ -39,6 +39,13 @@ Azure Lab Services のクラスルーム ラボについて特に多く寄せら
 クラスルーム ラボでは、Azure portal でラボ アカウントを作成するときに指定する IP アドレス範囲内にラボ VM を作成できます。 アドレス範囲が指定されている場合、各ラボは、ラボ VM 用に 512 個の IP アドレスが割り当てられた後に作成されます。 ラボ アカウントのアドレス範囲は、ラボ アカウントで作成するすべてのラボを格納するのに十分な大きさである必要があります。 
 
 たとえば、/19 - 10.0.0.0/19 のブロックがある場合、このアドレス範囲は、8192 個の IP アドレスと 16 個のラボ (8192/512 = 16 個のラボ) に対応します。 この場合、ラボの作成は 17 個目のラボの作成で失敗します。
+
+### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>RDP/SSH 経由でラボ仮想マシンに接続するために組織のファイアウォール設定で開く必要があるのは、どのポート範囲ですか。
+
+ポートは、49152 ～ 65535 です。 クラスルーム ラボはロード バランサーの背後に配置されるため、ラボ内のすべての仮想マシンには単一の IP アドレスが割り当てられていて、ラボ内の各仮想マシンには一意のポートがあります。 ポート番号とパブリック IP アドレスは、ラボが再公開されるたびに変更される可能性があります。
+
+### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>RDP/SSH 経由でラボ仮想マシンに接続するために組織のファイアウォール設定で開く必要があるのは、どのパブリック IP アドレス範囲ですか。
+「[Azure IP Ranges and Service Tags — Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519)」を参照してください。Azure のデータセンターのパブリック IP アドレス範囲が記載されています。 ラボ アカウントが存在するリージョンの IP アドレスを開くことができます。
 
 ## <a name="blog-post"></a>ブログ記事
 [Azure Lab Services ブログ](https://azure.microsoft.com/blog/tag/azure-lab-services/)に登録してください。
@@ -51,6 +58,6 @@ Lab Services の新機能について最新情報を入手するには、[Lab Se
 ご自分の質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
 - この FAQ の末尾で質問を投稿してください。 
-- さらに多くの人々と交流するには、[Azure Lab Services - Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-lab-services)に質問を投稿してください。 
+- さらに多くの人々と交流するには、[Azure Lab Services — Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-lab-services)に質問を投稿してください。 
 - 機能を要求する場合は、要求とアイデアを [Azure Lab Services のユーザーの声](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)に送信してください。
 

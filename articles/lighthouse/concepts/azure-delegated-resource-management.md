@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8cc75fde348d070a19d1987d1403c63e8e6d2278
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c2aa393f04a8db470dd8b739c0ed003477df0221
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286636"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615410"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
 
@@ -23,7 +23,7 @@ Azure の委任されたリソース管理は、Azure Lighthouse の主要なコ
 Azure の委任されたリソース管理を使用すると、あるテナントから別のテナントにリソースを論理的に投影できます。 これにより、1 つの Azure Active Directory (Azure AD) テナントの承認されたユーザーは、顧客に属するさまざまな Azure AD テナントで管理操作を実行できるようになります。 サービス プロバイダーは、独自の Azure AD テナントにサインインし、委任された顧客のサブスクリプションとリソース グループに対して承認を行うことができます。 これにより、個々の顧客テナントにサインインしなくても、顧客に代わって管理操作を実行できます。
 
 > [!NOTE]
-> Azure の委任されたリソース管理は、独自の Azure AD テナントを複数所有する企業内で、テナント間の管理を簡略化するためにも使用できます。
+> Azure の委任されたリソース管理は、[独自の Azure AD テナントを複数所有する企業内](enterprise.md)で、テナント間の管理を簡略化するためにも使用できます。
 
 Azure の委任されたリソース管理を使用すると、承認されたユーザーは、顧客のテナントにアカウントを持っていない場合や、顧客のテナントの共同所有者でない場合でも、顧客のサブスクリプションのコンテキストで直接作業できます。 また、Azure portal の[新しい **[マイ カスタマー]** ページで、すべての委任された顧客サブスクリプションを表示および管理する](../how-to/view-manage-customers.md)こともできます。
 

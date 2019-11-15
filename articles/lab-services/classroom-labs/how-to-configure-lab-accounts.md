@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: ba469c038f04a31a57e798b97b5120bec573feae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65414035"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583922"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントを構成する 
 Azure Lab Services では、ラボ アカウントは、クラスルーム ラボなどのマネージド ラボ型のコンテナーです。 管理者は、Azure Lab Services を使用してラボ アカウントを設定し、アカウントにラボを作成できるラボ所有者にアクセスを提供します。 この記事では、ラボ アカウントの作成、すべてのラボ アカウントの表示、またはラボ アカウントの削除を行う方法について説明します。
@@ -76,6 +76,9 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
 
     ![ラボ作成者の追加](../media/tutorial-setup-lab-account/add-lab-creator.png)
 
+    > [!NOTE]
+    > Microsoft 以外のアカウント ユーザーをラボ作成者として追加する場合は、「[Microsoft 以外のアカウント ユーザーをラボ作成者として追加する](#add-a-non-microsoft-account-user-as-a-lab-creator)」セクションを参照してください。 
+
 ## <a name="specify-marketplace-images-available-to-lab-creators"></a>ラボ作成者が利用できる Marketplace イメージを指定する
 ラボ アカウント所有者は、ラボ作成者がラボ アカウントにラボを作成するために使用できる Marketplace イメージを指定できます。 
 
@@ -99,7 +102,36 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
     1. 最後の列で **[...] (省略記号)** を選択し、 **[Enable image]\(イメージの有効化\)** を選択します。 
     2. 一覧内のイメージ名の前のチェック ボックスをオンにして、一覧から 1 つ以上のイメージを選択し、 **[Enable selected images]\(選択したイメージの有効化\)** を選択します。 
 
+## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Microsoft 以外のアカウント ユーザーをラボ作成者として追加する
+ユーザーをラボ作成者として追加するには、そのユーザーのメール アカウントを使用します。 次の種類のメール アカウントを使用できます。
 
+- 大学の Office 365 Azure Active Directory (AAD) によって提供されるメール アカウント。 
+- Microsoft のメール アカウント (`@outlook.com`、`@hotmail.com`、`@msn.com`、`@live.com` など)。
+- Microsoft 以外のメール アカウント (Yahoo または Google によって提供されるものなど)。 ただし、これらの種類のアカウントは、Microsoft アカウントとリンクされている必要があります。
+- GitHub アカウント。 このアカウントは、Microsoft アカウントとリンクされている必要があります。
+
+### <a name="using-a-non-microsoft-email-account"></a>Microsoft 以外のメール アカウントの使用
+ラボ作成者/講師は、Microsoft 以外のメール アカウントを使用して、クラスルーム ラボに登録してサインインすることができます。  ただし、Lab Services ポータルへのサインインには、講師が最初に、Microsoft 以外のメール アドレスにリンクされている Microsoft アカウントを作成する必要があります。
+
+多くの講師は、Microsoft 以外のメール アドレスにリンクされた Microsoft アカウントを既に持っている可能性があります。 たとえば、講師が Microsoft の他の製品やサービス (Office、Skype、OneDrive、Windows など) でメール アドレスを使用したことがある場合は、既に Microsoft アカウントを持っています。  
+
+講師が Lab Services ポータルにサインインするときは、メール アドレスとパスワードの入力を求められます。 講師が、Microsoft アカウントがリンクされていない Microsoft 以外のアカウントでサインインしようとすると、講師は次のエラー メッセージを受け取ります。 
+
+![エラー メッセージ](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Microsoft アカウントにサインアップするには、講師は [http://signup.live.com](http://signup.live.com) にアクセスする必要があります。  
+
+
+### <a name="using-a-github-account"></a>GitHub アカウントの使用
+講師は、既存の GitHub アカウントを使用して、クラスルーム ラボに登録してサインインすることもできます。 講師が GitHub アカウントにリンクされている Microsoft アカウントを既に持っている場合は、前のセクションで示したように、サインインしてパスワードを入力できます。 まだ GitHub アカウントを Microsoft アカウントにリンクしていない場合は、 **[サインイン オプション]** を選択する必要があります。
+
+![サインイン オプションのリンク](../media/how-to-configure-student-usage/signin-options.png)
+
+**[サインイン オプション]** ページで、 **[GitHub でサインイン]** を選択します。
+
+![GitHub リンクを使用してサインインする](../media/how-to-configure-student-usage/signin-github.png)
+
+最後に、GitHub アカウントにリンクされている Microsoft アカウントを作成するように求められます。 これは、講師が **[次へ]** を選択したときに自動的に行われます。  講師はすぐにサインインし、クラスルーム ラボに接続されます。
 
 
 ## <a name="next-steps"></a>次の手順

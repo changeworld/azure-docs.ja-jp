@@ -1,20 +1,21 @@
 ---
-title: Advanced Threat Protection - Azure SQL Database | Microsoft Docs
+title: Advanced Threat Protection の構成
 description: Advanced Threat Protection では、単一データベースまたはエラスティック プール内のデータベースに対する潜在的なセキュリティの脅威を示す異常なデータベース アクティビティが検出されます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-dt-2019
 ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 755a3b391cb7b4909169b034cc8d89892ec2ed05
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8eb8e4fccc17fe31def671cf6e8edb19d867b244
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816553"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822502"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>単一データベースまたはプールされたデータベースに対する Azure SQL Database の Advanced Threat Protection
 

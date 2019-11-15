@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7290e2b09c316a97bfb88744307e185aef72852a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480767"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668978"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service のカスタム Linux コンテナーを構成する
 
@@ -165,6 +165,10 @@ wordpress:
 
 > [!NOTE]
 > パブリック プレビューでは、ここで明示的に示されていないその他のオプションが無視されます。
+
+## <a name="configure-vnet-integration"></a>VNet 統合の構成
+
+VNet 統合でカスタム コンテナーを使用する場合は、追加のコンテナー構成が必要になることがあります。 「[アプリを Azure 仮想ネットワークに統合する](../web-sites-integrate-with-vnet.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

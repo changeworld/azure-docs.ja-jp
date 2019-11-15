@@ -1,6 +1,6 @@
 ---
 title: REST を使用した Azure Media Services アカウントへのファイルのアップロード | Microsoft Docs
-description: 資産を作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。
+description: アセットを作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b7583a0fda2fca0d8ff80879389b824a7b352a84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9563def1a7b510c403cf299a66066def0b03b59a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752878"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796780"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする  
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 > * すべてのアップロード操作向けに Postman を設定する
 > * Media Services への接続 
 > * 書き込みのアクセス許可を持つアクセス ポリシーを作成する
-> * 資産を作成する
+> * アセットを作成する
 > * SAS ロケーターを作成してアップロード URL を作成する
 > * アップロード URL を使用して BLOB ストレージにファイルをアップロードする
 > * アップロードしたメディア ファイル用の資産にメタデータを作成する
@@ -45,6 +45,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 - [Azure Portal を使用して Azure Media Services アカウントを作成](media-services-portal-create-account.md)します。
 - [AAD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
+- また、詳細については、「[Azure AD 認証を使用して REST で Media Services API にアクセスする](https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-rest-connect-with-aad)」の記事を確認してください。
 - 「[Configure Postman for Media Services REST API calls](media-rest-apis-with-postman.md)」 (Media Services REST API 呼び出しの Postman の構成) に説明されているように、**Postman** を構成してください。
 
 ## <a name="considerations"></a>考慮事項
@@ -116,7 +117,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
     "test" スクリプトは AccessPolicy Id を取得し、適切な環境変数を設定します。
 
-## <a name="create-an-asset"></a>資産を作成する
+## <a name="create-an-asset"></a>アセットを作成する
 
 ### <a name="overview"></a>概要
 
@@ -128,7 +129,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 この例では、暗号化されていない資産を作成しています。 
 
-### <a name="create-an-asset"></a>資産を作成する
+### <a name="create-an-asset"></a>アセットを作成する
 
 1. **[資産]**  ->  **[資産の作成]** の順に選択します。
 2. **[送信]** をクリックします。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: aecbaab1ed29a1acfdcb4eec53b88fc266bbab09
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 07e91abc1130505abc84f6687be7edd04522fa76
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309406"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720177"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -424,7 +424,19 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 ## <a name="post-migration-best-practices"></a>移行後のベスト プラクティス
 
-- 復元性の向上:
+- オンプレミス
+    - 移行後の Azure VM インスタンスで実行するアプリに、アプリ トラフィックを移動します。
+    - ローカル VM インベントリからオンプレミスの VM を削除します。
+    - ローカル バックアップからオンプレミスの VM を削除します。
+    - Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。
+- 移行後の Azure VM の設定の調整:
+    - [Azure VM エージェント](../virtual-machines/extensions/agent-windows.md)では、Azure ファブリック コントローラーと VM の対話を管理します。 Azure Backup、Site Recovery、および Azure Security など、一部の Azure サービスでは必須です。 VMare VM をエージェントベースの移行で移行する場合、モビリティ サービスのインストーラーによって Windows マシンに Azure VM エージェントがインストールされます。 Linux VM 上で、以降後にエージェントをインストールすることをお勧めします。
+    - 移行後に、Azure VM からモビリティ サービスを手動でアンインストールします。
+    - 移行後に、VMware ツールを手動でアンインストールします。
+- Azure の場合:
+    - データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
+    - Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
+- ビジネス継続性/ディザスター リカバリー
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細情報](../backup/quick-backup-vm-portal.md)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細情報](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
@@ -433,9 +445,11 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
     - [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
--  [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) をデプロイして、リソースの使用率と消費量を監視します。
+    - [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) をデプロイして、リソースの使用率と消費量を監視します。
 
 
-## <a name="next-steps"></a>次の手順
+
+
+ ## <a name="next-steps"></a>次の手順
 
 Azure クラウド導入フレームワークでの[クラウド移行の工程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)を調査します。

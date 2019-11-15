@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートを使用して、Azure Co
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4a32b0497d2457a740e9c082f990bb9112208bfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969181"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582809"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure Resource Manager テンプレート
 
@@ -20,10 +20,9 @@ ms.locfileid: "65969181"
 ## <a name="sql-core-api"></a>SQL (Core) API
 
 |**テンプレート**|**説明**|
-|---| ---|
-|[Azure Cosmos アカウント、データベース、コンテナーを作成する](manage-sql-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで SQL (Core) API アカウントを作成します。 Azure Cosmos アカウントには、データベース レベルのスループットを共有する 2 つのコンテナーがあります。 |
-|[データベースのスループット (RU/秒) を更新する](manage-sql-with-resource-manager.md#database-ru-update) | このテンプレートは、SQL (Core) API アカウント内のデータベースのスループットを更新します。 |
-|[コンテナーのスループット (RU/秒) を更新する](manage-sql-with-resource-manager.md#container-ru-update) | このテンプレートは、SQL (Core) API アカウント内のコンテナーのスループットを更新します。 |
+|---|---|
+|[Azure Cosmos アカウント、データベース、コンテナーを作成する](manage-sql-with-resource-manager.md#create-resource) | このテンプレートでは、共有データベースのスループットを使用する 2 つのコンテナーと専用スループットを使用する 1 つのコンテナーのある 2 つのリージョンに、SQL (Core) API アカウントを作成します。 スループットは、スループットのプロパティ値が更新されたテンプレートを再送信することで更新できます。 |
+|[ストアド プロシージャ、トリガー、および UDF を使用して Azure Cosmos アカウント、データベース、およびコンテナーを作成する](manage-sql-with-resource-manager.md#create-sproc) | このテンプレートは、コンテナーのストアド プロシージャ、トリガー、および UDF を使用して、2 つのリージョンに SQL (Core) API アカウントを作成します。 |
 
 ## <a name="mongodb-api"></a>MongoDB API
 

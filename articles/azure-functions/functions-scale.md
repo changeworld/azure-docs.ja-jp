@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550644"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576059"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -47,8 +47,8 @@ App Service プランでは、お客様が管理している専用のインフ�
 
 | | 従量課金プラン | Premium プラン | 専用プラン |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | GA | preview | GA |
-| Linux | GA | preview | GA |
+| Windows | GA | GA | GA |
+| Linux | GA | GA | GA |
 
 ## <a name="consumption-plan"></a>従量課金プラン
 
@@ -65,7 +65,7 @@ App Service プランでは、お客様が管理している専用のインフ�
 
 従量課金プランで実行しているときのコストを見積もる方法の詳細については、[従量課金プランのコストの概要](functions-consumption-costs.md)に関するページを参照してください。
 
-## <a name="premium-plan"></a>Premium プラン (プレビュー)
+## <a name="premium-plan"></a>Premium プラン
 
 Premium プランを使用すると、従量課金プランと同じように、Azure Functions ホストのインスタンスが、受信イベントの数に基づいて追加および削除されます。  Premium プランは次の機能をサポートします。
 

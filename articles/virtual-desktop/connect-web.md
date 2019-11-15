@@ -1,5 +1,5 @@
 ---
-title: Web ブラウザーから Windows Virtual Desktop に接続する - Azure
+title: Windows Virtual Desktop Web クライアントの接続 - Azure
 description: Web クライアントを使用して Windows Virtual Desktop に接続する方法。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: e7fa1d2b21bfde6495a63676bc2aa1faa07e6bc5
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676766"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605825"
 ---
 # <a name="connect-with-the-web-client"></a>Web クライアントに接続する
 

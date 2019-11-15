@@ -1,6 +1,6 @@
 ---
 title: Azure Stack での SQL Server ワークロードのバックアップ
-description: Azure Stack 上の SQL Server ワークロードの保護には Azure Backup Server を使用します。
+description: この記事では、Azure Stack 上の SQL Server データベースを保護するように Microsoft Azure Backup Server (MABS) を構成する方法について説明します。
 ms.reviewer: adigan
 author: dcurwin
 manager: carmonm
@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: ab65a1bf371ff8581f347403b49fafed6697374c
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210231"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747227"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack での SQL Server のバックアップ
+
 この記事では、Azure Stack 上の SQL Server データベースを保護するための Microsoft Azure Backup Server (MABS) の構成について説明します。
 
 SQL Server データベースの Azure へのバックアップと Azure からの回復の管理には、次の 3 つの手順が含まれます。
@@ -29,6 +30,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 [Azure Backup Server をインストールして準備します](backup-mabs-install-azure-stack.md)。
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>SQL Server データベースを保護するための Azure へのバックアップ ポリシーの作成
+
 1. Azure Backup Server の UI で **[保護]** ワークスペースをクリックします。
 
 2. ツール リボンで、 **[新規]** をクリックし、新しい保護グループを作成します。
@@ -112,6 +114,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     ![Creation of Protection Group In-Progress](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>SQL Server データベースのオンデマンド バックアップ
+
 前の手順でバックアップ ポリシーを作成しましたが、"回復ポイント" は最初のバックアップ実行時にのみ作成されます。 次の手順は、スケジューラが開始するのを待つ代わりに、回復ポイントの作成を手動でトリガーします。
 
 1. データベースの保護グループの状態に " **OK** " と表示されるのを待ってから、回復ポイントを作成します。
@@ -128,6 +131,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     ![Monitoring console](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Azure からの SQL Server データベースの回復
+
 保護されているエンティティ (SQL Server データベース) を Azure から回復するには、次の手順が必要です。
 
 1. Azure Backup Server の管理コンソールを開きます。 **[回復]** ワークスペースに移動すると、保護されているサーバーを確認できます。 目的のデータベース (この場合は ReportServer$MSDPM2012) を参照します。 **オンライン** ポイントとして指定される時刻を **[回復元]** で選択します。

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 40cdd0adf7bf100e1dbca64dbba68db3bc59a4fe
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583630"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 
 この記事では、次のタスクの手順について説明します。
@@ -35,7 +35,7 @@ ms.locfileid: "72331404"
 3. 次に、 **[保存]** を選択します。 
 
     ![[Start all]\(すべて開始\) ボタン](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
-4. 容量を増やした場合は、1 台以上の VM が作成されているのを確認できます。 
+4. 容量を増やした場合は、1 台以上の VM が作成されているのを確認できます。 一覧に新しい VM が表示されない場合は、ページを更新してください。 
 
     ![VM が作成されている](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
 
@@ -51,11 +51,13 @@ ms.locfileid: "72331404"
     ![[Stop all]\(すべて停止\) ボタン](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
 
 ### <a name="start-selected-vms"></a>選択した VM を開始する
-選択した (1 台以上の) VM を開始するには 2 つの方法があります。 最初の方法では、一覧から 1 台以上の VM を選択し、ツールバーの **[Start]\(開始\)** を選択します。 2 番目の方法では、一覧から 1 台以上の VM を選択し、いずれかの行の **[State]\(状態\)** 列でドロップダウンを選択し、 **[Start]\(開始\)** を選択します。 
+選択した (1 台以上の) VM を開始するには 2 つの方法があります。 最初の方法では、一覧から 1 台以上の VM を選択し、ツールバーの **[Start]\(開始\)** を選択します。 
+
+2 番目の方法では、一覧から 1 つ以上の VM を選択し、 **[状態]** 列のボタンを切り替えます。 
 
 ![選択した VM を開始する](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
-同様に、 **[State]\(状態\)** 列のドロップダウン リスト、またはツールバーの **[Stop]\(停止\)** を使用して、1 台以上の VM を停止することができます。 
+同様に、 **[状態]** 列のボタンを切り替えるか、ツールバーの **[停止]** を選択して、1 つ以上の VM を停止することができます。 
 
 ## <a name="reset-vms"></a>VM をリセットする
 1 台以上の VM をリセットするには、一覧からそれらを選択し、次にツールバーの **[Reset]\(リセット\)** を選択します。 
@@ -81,11 +83,19 @@ ms.locfileid: "72331404"
 ### <a name="reset-password-later"></a>パスワードを後からリセットする
 
 1. ラボの **[テンプレート]** ページで、ツールバーの **[パスワードのリセット]** を選択します。 
-
-    ![ホーム ページのパスワードのリセット メニュー](../media/how-to-set-virtual-machine-passwords/reset-password-menu-dashboard.png)
 1. **[パスワードのリセット]** ダイアログ ボックスでパスワードを入力し、 **[パスワードのリセット]** を選択します。
     
     ![[Set password]\(パスワードの設定\) ダイアログ ボックス](../media/how-to-set-virtual-machine-passwords/set-password.png)
+
+## <a name="connect-to-student-vms"></a>学生用 VM に接続する
+ラボ作成者 (講師/教授) は、次の条件が満たされている場合に学生用 VM に接続できます。 
+
+- ラボの作成時に、 **[Use same password for all virtual machines]\(すべての仮想マシンに同じパスワードを使用する\)** オプションを選択した場合
+- VM が実行されている場合 
+
+ 学生用 VM に接続するには、一覧で VM 上にマウス ポインターを置いて、コンピューター ボタンを選択します。  
+
+![学生用 VM への接続ボタン](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 ## <a name="next-steps"></a>次の手順
 (ラボ所有者として) 構成できる他の学生の使用オプションの詳細については、次の記事を参照してください。[学生の使用の構成](how-to-configure-student-usage.md)

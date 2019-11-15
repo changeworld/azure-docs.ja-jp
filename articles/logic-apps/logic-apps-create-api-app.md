@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: e5dc913d682088296f84fb6bd7595a09d9d3fe7b
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 0d73f40c77c1b73a52522eafdb3c093b691d3e14
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609857"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583451"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
@@ -53,7 +53,7 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 * Logic Apps デザイナーで Microsoft が管理するコネクタに並んでアイコンと共に表示されます。
 * ロジック アプリがデプロイされているリージョンで同じ Azure Active Directory テナントと Azure サブスクリプションを所有しているコネクタの作成者とロジック アプリ ユーザーのみが利用できます。
 
-また、登録されたコネクタの Microsoft 認定を申請することもできます。 このプロセスは、登録されたコネクタが一般的な使用基準を満たしていることを確認し、Microsoft Flow および Microsoft PowerApps のユーザーがそれらのコネクタを利用できるようにします。
+また、登録されたコネクタの Microsoft 認定を申請することもできます。 このプロセスは、登録されたコネクタが一般的な使用基準を満たしていることを確認し、Power Automate および Microsoft Power Apps のユーザーがそれらのコネクタを利用できるようにします。
 
 カスタム コネクタの詳細については、次のトピックを参照してください 
 
@@ -222,7 +222,7 @@ webhook トリガーはこのトピックの前半で説明した [webhook ア�
 
 カスタム API を Azure の他の Logic Apps ユーザーが使用できるようにするには、セキュリティを追加したうえで Logic Apps コネクタとして登録する必要があります。 詳細については、「[Custom connectors overview (カスタム コネクタの概要)](../logic-apps/custom-connector-overview.md)」を参照してください。 
 
-Logic Apps、Microsoft Flow、および Microsoft PowerApps のすべてのユーザーがカスタム API を使用できるようにするには、セキュリティを追加したうえで API を Logic Apps コネクタとして登録し、[Microsoft Azure 認定プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)にコネクタを申請する必要があります。 
+Logic Apps、Power Automate、および Microsoft Power Apps のすべてのユーザーがカスタム API を使用できるようにするには、セキュリティを追加したうえで API を Logic Apps コネクタとして登録し、[Microsoft Azure 認定プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)にコネクタを申請する必要があります。 
 
 ## <a name="get-support"></a>サポートを受ける
 

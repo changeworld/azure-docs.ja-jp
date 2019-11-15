@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858868"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569896"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>チュートリアル:Visual Studio Code を使用してデバイス機能モデルを作成し、テストする
 
@@ -43,14 +43,9 @@ ms.locfileid: "70858868"
 
 このチュートリアルで生成した C コードを Windows 上でビルドするには、次のものが必要です。
 
-* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/): Visual Studio のインストール時に、**NuGet パッケージ マネージャー** コンポーネントと **C++ によるデスクトップ開発**ワークロードを必ず含めるようにしてください。
+* **C++ ビルド ツール**と **NuGet パッケージ マネージャー コンポーネント**のワークロードを利用して、[Visual Studio 用のビルド ツール](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)。 または、同じワークロードを利用する [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019、2017、2015 が既にインストールされている。
 * [Git](https://git-scm.com/download)
 * [CMake](https://cmake.org/download/)
-* Azure IoT C SDK のローカル コピー:
-
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-    ```
 
 このチュートリアルでデバイス コードのテストを行うには、次のものが必要です。
 
@@ -176,7 +171,7 @@ IoT デバイスの機能を定義したインターフェイス ファイルを
           "commandType": "synchronous"
         }
       ],
-      "@context": "http://azureiot.com/v1/contexts/Interface.json"
+      "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
     }
     ```
 
@@ -310,9 +305,11 @@ VS Code で会社リポジトリを開くには:
 
 1. 言語として、 **[ANSI C]** を選択します。
 
-1. ターゲットとして、 **[CMake プロジェクト]** を選択します。
-
 1. 接続方法として、 **[Via IoT Hub device connection string]\(IoT Hub デバイス接続文字列による\)** を選択します。
+
+1. プロジェクト テンプレートとして **[CMake Project on Windows]\(Windows 上での CMake プロジェクト\)** を選択します。
+
+1. デバイス SDK を含める方法として、 **[Via Vcpkg]\(Vcpkg 経由\)** を選択します。
 
 VS Code によってスケルトン C コードが生成され、**modelcode** フォルダー内の **sensorbox_app** フォルダーにファイルが保存されます。 VS Code によって新しいウィンドウが開かれ、生成されたコード ファイルが表示されます。
 

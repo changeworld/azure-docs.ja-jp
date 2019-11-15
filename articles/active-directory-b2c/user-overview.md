@@ -1,31 +1,34 @@
 ---
-title: Azure Active Directory B2C のユーザー アカウントの概要 | Microsoft Docs
-description: Azure Active Directory B2C のユーザー アカウントについて説明します。
+title: Azure Active Directory B2C のユーザー アカウントの概要
+description: Azure Active Directory B2C で使用できるユーザー アカウントの種類について説明します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063135"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620451"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
-Azure Active Directory B2C (Azure AD B2C) では、さまざまな種類のアカウントを使用できます。 Azure Active Directory、Azure Active Directory B2B、および Azure Active Directory B2C は、使用できるユーザー アカウントの種類を共有します。
+Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウントの種類がいくつかあります。 Azure Active Directory、Active Directory B2B、および Active Directory B2C は、使用できるユーザー アカウントの種類を共有します。
 
 次の種類のアカウントを使用できます。
 
 - **職場アカウント** - 職場アカウントは、テナントのリソースにアクセスでき、管理者ロールを使用してテナントを管理できます。
 - **ゲスト アカウント** - ゲスト アカウントは、Microsoft アカウント、またはアプリケーションにアクセスするかテナントを管理するために使用できる Azure Active Directory ユーザーのみが可能です。
-- **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C アプリケーションのサインアップ ユーザー フローまたは Azure AD Graph API を使用して作成され、Azure AD B2C に登録されているアプリケーションのユーザーによって使用されます。
+- **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C に登録したアプリケーションのユーザーによって使用されます。 コンシューマー アカウントは、次によって作成できます。
+  - Azure AD B2C アプリケーションでサインアップ ユーザー フローを実行するユーザー
+  - Azure AD Graph API の使用
+  - Azure ポータルの使用
 
 ## <a name="work-account"></a>職場アカウント
 
@@ -73,7 +76,7 @@ Azure Active Directory B2C (Azure AD B2C) では、さまざまな種類のア�
 
 ## <a name="consumer-user"></a>コンシューマー ユーザー
 
-コンシューマー ユーザーは、Azure AD B2C によってセキュリティで保護されているアプリケーションにサインインできますが、Azure portal などの Azure リソースにはアクセスできません。  コンシューマー ユーザーは、ローカル アカウントまたは Facebook や Twitter などのフェデレーション アカウントを使用できます。 コンシューマー アカウントは、[サインアップまたはサインイン ユーザー フロー](../active-directory-b2c/active-directory-b2c-reference-policies.md)を使用して作成されます。
+コンシューマー ユーザーは、Azure AD B2C によってセキュリティで保護されているアプリケーションにサインインできますが、Azure portal などの Azure リソースにはアクセスできません。 コンシューマー ユーザーは、ローカル アカウントまたは Facebook や Twitter などのフェデレーション アカウントを使用できます。 コンシューマー アカウントは、[サインアップ ユーザー フローまたはサインイン ユーザー フロー](../active-directory-b2c/active-directory-b2c-reference-policies.md)を使用するか、Azure AD Graph API を使用するか、あるいは Azure portal を使用して作成されます。
 
 コンシューマー ユーザー アカウントを作成するときに、カスタム ユーザー属性を使用して、収集されるデータを指定できます。 詳細については、「[Azure Active Directory B2C でカスタム属性を定義する](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)」を参照してください。
 

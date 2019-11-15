@@ -1,5 +1,5 @@
 ---
-title: Data Factory を使用して Oracle との間でデータをコピーする | Microsoft Docs
+title: Data Factory を使用して Oracle との間でデータをコピーする
 description: Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 822713d67790906c972ad77a748ef8d52b871bc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839928"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682419"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 

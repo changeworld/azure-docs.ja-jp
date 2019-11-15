@@ -1,6 +1,6 @@
 ---
-title: Azure Relay を使用した REST のチュートリアル | Microsoft Docs
-description: REST ベースのインターフェイスを表示する Azure Service Bus Relay ホスト アプリケーションを構築します。
+title: チュートリアル:Azure Relay を使用した REST のチュートリアル
+description: チュートリアル:REST ベースのインターフェイスを表示する Azure Service Bus Relay ホスト アプリケーションを構築します。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
 ms.service: service-bus-relay
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: a3daa7847ef037f0276792bf8173ad55aba0a944
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 229ed2b00582f2c73ce68c47406d68325abda736
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212926"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718838"
 ---
-# <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST のチュートリアル
+# <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>チュートリアル:Azure WCF Relay REST のチュートリアル
 
 このチュートリアルでは、REST ベースのインターフェイスを表示する Azure Relay ホスト アプリケーションを構築する方法について説明します。 REST を使用すると、Web ブラウザーなどの Web クライアントから HTTP 要求を介して Service Bus API にアクセスできるようになります。
 

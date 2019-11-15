@@ -1,5 +1,5 @@
 ---
-title: Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する - Azure
+title: Azure HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する
 description: Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,59 +8,49 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 06111ec35a127cf17fdcc77ff717de7a4bc7299f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a97a03f7ef20ae56cec04341fe76b79ee657547b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076855"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748484"
 ---
-# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する 
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する
 
 > [!IMPORTANT]
 > Ubuntu イメージは、公開から 3 か月以内に入手できるようになり、新しい Azure HDInsight クラスターの作成に使用できます。 2019 年 1 月時点で、実行中のクラスターに修正プログラムは自動適用されません。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。 新しく作成されたクラスターには、利用可能な最新の更新プログラムが常に保持されます (最新のセキュリティ パッチを含む)。
 
-HDInsight クラスターの仮想マシン (VM) をときどき再起動して、重要なセキュリティ更新プログラムをインストールする必要があります。
+HDInsight では、OS パッチのインストール、セキュリティ更新プログラム、ノードの再起動など、クラスターでの一般的なタスクの実行がサポートされています。 これらのタスクは、次の 2 つのスクリプトを使用して実行されます。これらは[スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)として実行でき、パラメーターを使用して構成できます。
 
-この記事で説明するスクリプト アクションを使用して、次のように OS 修正プログラム適用スケジュールを変更することができます。
-
-1. すべての更新プログラムをインストールするか、カーネル + セキュリティ更新プログラムまたはカーネル更新プログラムのみをインストールする。
-2. VM を即座に再起動する、または VM の再起動をスケジュールする。
+- `schedule-reboots.sh` - クラスター ノードを即座に再起動する、またはクラスター ノードの再起動をスケジュールします。
+- `install-updates-schedule-reboots.sh` - すべての更新プログラム、カーネル + セキュリティ更新プログラム、またはカーネル更新プログラムのみをインストールします。
 
 > [!NOTE]  
-> この記事で説明されているスクリプト アクションは、2016 年 8 月 1 日より後に作成された Linux ベースの HDInsight クラスターでのみ機能します。 修正プログラムは、VM を再起動した後にのみ有効になります。
 > スクリプト アクションにより将来のすべての更新サイクルで更新プログラムが自動的に適用されることはありません。 新しい更新プログラムを適用する必要があるたびにスクリプトを実行して更新プログラムをインストールし、その後 VM を再起動します。
 
-## <a name="add-information-to-the-script"></a>情報をスクリプトに追加する
-
-スクリプトを使用するには、次の情報が必要です。
-
-- install-updates-schedule-reboots スクリプトの場所: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh 。
-    
-   HDInsight では、この URI を使用してクラスター内のすべての VM でスクリプトが検索され実行されます。 このスクリプトでは、更新プログラムをインストールして VM を再起動するためのオプションが提供されています。
+## <a name="restart-nodes"></a>ノードの再起動
   
-- schedule-reboots スクリプトの場所: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh 。
-    
-   HDInsight では、この URI を使用してクラスター内のすべての VM でスクリプトが検索され実行されます。 このスクリプトにより VM が再起動されます。
-  
-- スクリプトが適用されるクラスター ノードの種類は、headnode、workernode、zookeeper です。 このスクリプトをクラスター内のすべてのノードの種類に適用します。 スクリプトをノードの種類に適用しないと、そのノードの種類の仮想マシンは更新または再起動されません。
+スクリプト [schedule-reboots](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh) では、クラスター内のマシンで実行される再起動の種類を設定します。 スクリプト アクションを送信するときは、3 つのノードの種類 (ヘッド ノード、ワーカー ノード、zookeeper) すべてに適用するように設定してください。 スクリプトをノードの種類に適用しないと、そのノードの種類の仮想マシンは更新または再起動されません。
 
-- install-updates-schedule-reboots スクリプトでは、2 つの数値パラメーターが受け付けられます。
+`schedule-reboots script` は、1 つの数値パラメーターを受け取ります。
 
-    | パラメーター | 定義 |
-    | --- | --- |
-    | カーネル更新プログラムのみをインストールする/すべての更新プログラムをインストールする/カーネル + セキュリティ更新プログラムのみをインストールする|0、1、または 2。 値 0 の場合、カーネル更新プログラムのみインストールされます。 値 1 の場合、すべての更新プログラムがインストールされます。値 2 の場合、カーネル + セキュリティ更新プログラムのみインストールされます。 パラメーターを指定しない場合、既定値は 0 です。 |
-    | 再起動なし/スケジュール再起動を有効にする/即時再起動を有効にする |0、1、または 2。 値 0 の場合、再起動は無効になります。 値 1 の場合、スケジュール再起動が有効になります。値 2 の場合、即時再起動が有効になります。 パラメーターを指定しない場合、既定値は 0 です。 ユーザーは、入力パラメーター 1 を入力パラメーター 2 に変更する必要があります。 |
-   
- - schedule-reboots スクリプトでは、1 つの数値パラメーターが受け付けられます。
+| パラメーター | 指定可能な値 | 定義 |
+| --- | --- | --- |
+| 実行する再起動の種類 | 1 または 2 | 値 1 の場合、スケジュール再起動が有効になります (12 時間から 24 時間以内にスケジュールされます)。 値 2 の場合、即時再起動が有効になります (5 分以内)。 パラメーターを指定しない場合、既定値は 1 です。 |  
 
-    | パラメーター | 定義 |
-    | --- | --- |
-    | スケジュール再起動を有効にする/即時再起動を有効にする |1 または 2。 値 1 の場合、スケジュール再起動が有効になります (12 時間から 24 時間以内にスケジュールされます)。 値 2 の場合、即時再起動が有効になります (5 分以内)。 パラメーターを指定しない場合、既定値は 1 です。 |  
+## <a name="install-updates-and-restart-nodes"></a>更新プログラムのインストールとノードの再起動
+
+スクリプト [install-updates-schedule-reboots.sh](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh) には、さまざまな種類の更新プログラムのインストールと VM の再起動を行うためのオプションが用意されています。
+
+`install-updates-schedule-reboots` スクリプトは、次の表に示すように、2 つの数値パラメーターを受け取ります。
+
+| パラメーター | 指定可能な値 | 定義 |
+| --- | --- | --- |
+| インストールする更新プログラムの種類 | 0、1、または 2 | 値 0 の場合、カーネル更新プログラムのみインストールされます。 値 1 の場合、すべての更新プログラムがインストールされます。値 2 の場合、カーネル + セキュリティ更新プログラムのみインストールされます。 パラメーターを指定しない場合、既定値は 0 です。 |
+| 実行する再起動の種類 | 0、1、または 2 | 値 0 の場合、再起動は無効になります。 値 1 の場合、スケジュール再起動が有効になります。値 2 の場合、即時再起動が有効になります。 パラメーターを指定しない場合、既定値は 0 です。 ユーザーは、入力パラメーター 1 を入力パラメーター 2 に変更する必要があります。 |
 
 > [!NOTE]
 > スクリプトを既存のクラスターに適用した後は、保存済みとしてマークする必要があります。 そうしない場合、スケーリング操作で作成された新しいノードでは、既定の修正プログラム適用スケジュールが使用されます。 クラスター作成プロセスの一部としてスクリプトを適用した場合、スクリプトは自動的に保存されます。
-
 
 ## <a name="next-steps"></a>次の手順
 

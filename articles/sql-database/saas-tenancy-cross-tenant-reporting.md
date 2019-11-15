@@ -1,5 +1,5 @@
 ---
-title: 複数の Azure SQL データベースにわたるレポート クエリの実行 | Microsoft Docs
+title: 複数のデータベースにわたるレポート クエリ
 description: 分散クエリを使用したテナント間レポート。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
-ms.openlocfilehash: fa8dbbbb09fbdc14049e168afe6eb4810ccc8254
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c863946934df9990c14e49ef1a0a82bbc55b27c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570244"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822073"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>分散クエリを使用したテナント間レポート
 

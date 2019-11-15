@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 04848f763fe8246f8e10f563169c04ea37b0ed37
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677312"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668004"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -88,8 +88,10 @@ Application Insights のクエリをインポートするには、Power BI の�
 ### <a name="unauthorized-401-or-403"></a>権限がない (401 または 403)
 これは、更新トークンが更新されていない場合に発生することがあります。 次の手順で、まだアクセス権があることを確認します。
 
-1. Azure Portal にサインインし、リソースにアクセスできることを確認します。
+1. Azure portal にサインインし、リソースにアクセスできることを確認します。
 2. ダッシュボードの資格情報を更新します。
+3. PowerBI Desktop からキャッシュをクリアします。
+
 
    アクセス権があり、資格情報の更新がうまくいかない場合は、サポート チケットを開いてください。
 

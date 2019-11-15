@@ -4,14 +4,14 @@ description: Azure Cosmos DB でデータベース アカウントを管理す�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: f67487f6da5c9be028703d7890e16ffab0c858c6
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 049be390403fe984ed4f8f38a4cdc86e24060e49
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812525"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582633"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
@@ -33,13 +33,13 @@ ms.locfileid: "71812525"
 
 ### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager テンプレート
 
-この Azure Resource Manager テンプレートでは、2 つのリージョンと、整合性レベル、自動フェールオーバー、およびマルチマスターを選択するオプションで構成された、サポート対象の任意の API に対する Azure Cosmos アカウントが作成されます。 このテンプレートをデプロイするには、[Azure Cosmos アカウントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)に関する readme ページで [Deploy to Azure]\(Azure に配置する\) をクリックします。
+この Azure Resource Manager テンプレートでは、2 つのリージョンと、整合性レベル、自動フェールオーバー、およびマルチマスターを選択するオプションで構成された、SQL API に対する Azure Cosmos アカウントが作成されます。 このテンプレートをデプロイするには、[Azure Cosmos アカウントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)に関する readme ページで [Deploy to Azure]\(Azure に配置する\) をクリックします。
 
 ## <a name="addremove-regions-from-your-database-account"></a>データベース アカウントのリージョンの追加/削除
 
 ### <a id="add-remove-regions-via-portal"></a>Azure Portal
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。 
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 1. お使いの Azure Cosmos アカウントに移動して、 **[データをグローバルにレプリケートする]** メニューを開きます。
 
@@ -113,7 +113,7 @@ ms.locfileid: "71812525"
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('name')]",
-            "apiVersion": "2015-04-08",
+            "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
             "tags": {},
             "properties": {
@@ -123,11 +123,13 @@ ms.locfileid: "71812525"
                 [
                     {
                         "locationName": "[parameters('primaryRegion')]",
-                        "failoverPriority": 0
+                        "failoverPriority": 0,
+                        "isZoneRedundant": false
                     },
                     {
                         "locationName": "[parameters('secondaryRegion')]",
-                        "failoverPriority": 1
+                        "failoverPriority": 1,
+                        "isZoneRedundant": false
                     }
                 ],
                 "enableMultipleWriteLocations": true

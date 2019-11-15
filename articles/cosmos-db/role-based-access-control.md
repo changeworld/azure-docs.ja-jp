@@ -4,14 +4,14 @@ description: Azure Cosmos DB が Active Directory 統合 (RBAC) を使用して�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 971d2ec96906a3309963495dd1af5d293a71f265
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e519df8c116244b0c74be6b189d99599d89dee77
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243511"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582821"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB のロールベースのアクセス制御
 
@@ -23,10 +23,10 @@ Azure Cosmos DB でサポートされている組み込みのロールは次の�
 
 |**組み込みのロール**  |**説明**  |
 |---------|---------|
-|[DocumentDB アカウント共同作成者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)   | Azure Cosmos DB アカウントを管理できます。  |
-|[Cosmos DB アカウント閲覧者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)  | Cosmos DB アカウントのデータを読み取ることができます。        |
-|[Cosmos バックアップ オペレーター](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)     |  Azure Cosmos データベースまたはコンテナーの復元要求を送信できます。       |
-|[Cosmos DB オペレーター](../role-based-access-control/built-in-roles.md#cosmos-db-operator)  | Azure Cosmos アカウント、データベース、およびコンテナーをプロビジョニングできますが、データへのアクセスに必要なキーにはアクセスできません。         |
+|[DocumentDB アカウント共同作成者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Azure Cosmos DB アカウントを管理できます。|
+|[Cosmos DB アカウント閲覧者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Cosmos DB アカウントのデータを読み取ることができます。|
+|[Cosmos バックアップ オペレーター](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Azure Cosmos データベースまたはコンテナーの復元要求を送信できます。|
+|[Cosmos DB オペレーター](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Azure Cosmos アカウント、データベース、およびコンテナーをプロビジョニングできますが、データへのアクセスに必要なキーにはアクセスできません。|
 
 > [!IMPORTANT]
 > Azure Cosmos DB の RBAC サポートは、コントロール プレーン操作にのみ適用されます。 データ プレーン操作は、マスター キーまたはリソース トークンを使用してセキュリティで保護されています。 詳細については、「[Azure Cosmos DB のデータへのアクセスをセキュリティで保護する](secure-access-to-data.md)」を参照してください。
@@ -40,6 +40,28 @@ Azure portal の **[アクセス制御 (IAM)]** ウィンドウは、Azure Cosmo
 ## <a name="custom-roles"></a>カスタム ロール
 
 組み込みのロールに加えて、ユーザーは Azure で[カスタム ロール](../role-based-access-control/custom-roles.md)を作成し、それらのロールを Active Directory テナント内のすべてのサブスクリプションにわたるサービス プリンシパルに適用することもできます。 カスタム ロールによって、ユーザーは、カスタムのリソース プロバイダー操作セットを使用して RBAC ロール定義を作成できるようになります。 Azure Cosmos DB のカスタム ロールを構築するために使用できる操作の詳細については、「[Azure Cosmos DB のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)」を参照してください。
+
+## <a name="preventing-changes-from-cosmos-sdk"></a>Cosmos SDK からの変更の防止
+
+Cosmos リソース プロバイダーをロック ダウンして、Cosmos アカウント、データベース、コンテナー、スループットなどのリソースが、アカウント キー (Cosmos SDK 経由で接続するアプリケーションなど) を介して接続している任意のクライアントから変更されないようにすることができます。 設定されている場合、任意のリソースに対する変更は、適切な RBAC ロールと資格情報を持つユーザーからの変更である必要があります。 この機能は、Cosmos リソース プロバイダーの `disableKeyBasedMetadataWriteAccess` プロパティ値で設定されます。 このプロパティ設定を含む Azure Resource Manager テンプレートの例は、次のとおりです。
+
+```json
+{
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('accountName')]",
+      "apiVersion": "2019-08-01",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+        "locations": "[variables('locations')]",
+        "databaseAccountOfferType": "Standard",
+        "disableKeyBasedMetadataWriteAccess": true
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 
