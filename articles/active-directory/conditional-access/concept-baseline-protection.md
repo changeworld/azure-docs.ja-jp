@@ -30,10 +30,10 @@ ms.locfileid: "72430338"
 
 ベースライン ポリシーには、次の 4 つがあります。
 
-* 管理者に MFA を要求する (プレビュー)
-* エンド ユーザーの保護 (プレビュー)
-* レガシ認証をブロックする (プレビュー)
-* サービス管理のために MFA を要求する (プレビュー)
+* Require MFA for admins (プレビュー)
+* End user protection (プレビュー)
+* Block legacy authentication (プレビュー)
+* Require MFA for Service Management (プレビュー)
 
 この 4 つのポリシーはすべて、POP、IMAP、より以前の Office デスクトップ クライアントなどのレガシ認証フローに影響を与えます。
 

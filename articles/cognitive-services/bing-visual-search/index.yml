@@ -5,7 +5,7 @@ metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
   title: Bing Visual Search API のドキュメント - チュートリアル、クイックスタート、API リファレンス
   titleSuffix: Azure Cognitive Services
-  description: Bing Visual Search API を使用して画像に関する分析情報を取得する方法について説明します。
+  description: 画像をアップロードするか画像の URL を指定することで、この API ではその画像に関するさまざまな詳細情報を特定することができます (見た目が似ている画像、ショッピング ソース、Web ページなど)。
   services: cognitive-services
   author: swhite-msft
   manager: nitinme

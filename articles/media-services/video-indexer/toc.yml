@@ -15,6 +15,10 @@
   items:
     - name: Video Indexer API の使用
       href: video-indexer-use-apis.md
+- name: サンプル
+  items:
+    - name: ライブ ストリーム分析
+      href: live-stream-analysis.md
 - name: 概念
   items:
     - name: 概要
