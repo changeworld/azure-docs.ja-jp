@@ -1,21 +1,19 @@
 ---
-title: Mapping Data Flow のソース変換 - Azure Data Factory | Microsoft Docs
-description: Mapping Data Flow のソース変換を設定する方法について説明します。
+title: マッピング データ フローのソース変換 - Azure Data Factory
+description: マッピング データ フローのソース変換を設定する方法について説明します。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5889d96057d4b028e8716e407819d17938f58b3c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029217"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675947"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Mapping Data Flow のソース変換 
-
-
+# <a name="source-transformation-for-mapping-data-flow"></a>マッピング データ フローのソース変換 
 
 ソース変換は、データ フローのデータ ソースを構成します。 データ フローを設計する際、最初の手順では、常にソース変換を構成します。 ソースを追加するには、データ フローのキャンバスにある **[Add Source]\(ソースの追加\)** ボックスをクリックします。
 
@@ -23,15 +21,16 @@ ms.locfileid: "72029217"
 
 各ソース変換が関連付けられる Data Factory データセットは 1 つだけです。 データセットは、書き込みまたは読み取りを行うデータの形状と場所を定義します。 ファイルベースのデータセットを使用している場合は、ソース内でワイルドカードやファイル リストを使用すると、一度に複数のファイルを操作できます。
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>Mapping Data Flow でサポートされているコネクタ
+## <a name="supported-connectors-in-mapping-data-flow"></a>マッピング データ フローでサポートされているコネクタ
 
 Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する "*ステージング*" データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
     
-* Azure Blob Storage
-* Azure Data Lake Storage Gen1
-* Azure Data Lake Storage Gen2
+* Azure Blob Storage (JSON、Avro、テキスト、Parquet)
+* Azure Data Lake Storage Gen1 (JSON、Avro、テキスト、Parquet)
+* Azure Data Lake Storage Gen2 (JSON、Avro、テキスト、Parquet)
 * Azure SQL Data Warehouse
 * Azure SQL Database
+* Azure CosmosDB
 
 Azure Data Factory は、80 を超えるネイティブ コネクタにアクセスできます。 それらの他のソースからのデータをデータ フローに含めるには、コピー アクティビティを使用して、サポートされているステージング領域のいずれかにそのデータを読み込みます。
 
@@ -53,6 +52,8 @@ Azure Data Factory は、80 を超えるネイティブ コネクタにアクセ
 
 **[サンプリング]:** ソースからの行数を制限するには、サンプリングを有効にします。 デバッグの目的でソースのデータをテストまたはサンプリングする場合は、この設定を使用します。
 
+**[Multiline rows]\(複数行\):** 値の途中に改行が含まれるなど、複数の行にわたる文字列値がソース テキスト ファイルに含まれる場合は、複数行を選択します。
+
 ソースが正しく構成されていることを確認するには、デバッグ モードを有効にし、データ プレビューを取り込みます。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
 > [!NOTE]
@@ -62,7 +63,7 @@ Azure Data Factory は、80 を超えるネイティブ コネクタにアクセ
 
 Azure Blob Storage や Azure Data Lake Storage などのファイルベースのデータセットを使用している場合は、 **[Source Options]\(ソース オプション\)** タブを使用して、ソースでファイルを読み取る方法を管理できます。
 
-![[Source Options]\(ソース オプション\)](media/data-flow/sourceOPtions1.png "[Source Options]\(ソース オプション\)")
+![ソース オプション](media/data-flow/sourceOPtions1.png "ソース オプション")
 
 **[Wildcard path]\(ワイルドカード パス\)** : ワイルドカード パターンを使用すると、ADF は、単一のソース変換で一致する各フォルダーとファイルをループ処理するよう指示されます。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンをポイントしたときに表示される + 記号を使って複数のワイルドカード一致パターンを追加します。
 
@@ -87,7 +88,7 @@ Azure Blob Storage や Azure Data Lake Storage などのファイルベースの
 
 パーティションのルート パス設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューを使用してデータの内容を表示すると、ADF によって、各フォルダー レベルで見つかった解決済みのパーティションが追加されることがわかります。
 
-![パーティションのルート パス](media/data-flow/partfile1.png "パーティションのルート パスのプレビュー")
+![パーティションのルート パス](media/data-flow/partfile1.png "パーティション ルート パスのプレビュー")
 
 **[ファイルの一覧]:** これはファイル セットです。 処理する相対パス ファイルの一覧を含むテキスト ファイルを作成します。 このテキスト ファイルをポイントします。
 
@@ -120,7 +121,7 @@ Azure Blob Storage や Azure Data Lake Storage などのファイルベースの
 
 [Mapping Data Flow の変換式言語](data-flow-expression-functions.md)を使用して、ソースの設定すべてを式として指定できます。 動的なコンテンツを追加するには、設定パネルのフィールドの内部をクリックまたはポイントします。 **[動的なコンテンツの追加]** のハイパーリンクをクリックします。 これにより、式ビルダーが起動します。ここでは、式、静的なリテラル値、またはパラメーターを使用して値を動的に設定できます。
 
-![パラメーター](media/data-flow/params6.png "パラメーター")
+![パラメーター](media/data-flow/params6.png "parameters")
 
 ## <a name="sql-source-options"></a>SQL のソース オプション
 
@@ -128,11 +129,11 @@ Azure Blob Storage や Azure Data Lake Storage などのファイルベースの
 
 **[入力]:** テーブルにあるソースを指す (```Select * from <table-name>``` に相当) かカスタム SQL クエリを入力するかを選択します。
 
-**Query**: [入力] フィールドで [クエリ] を選択した場合は、ソースに対する SQL クエリを入力します。 この設定により、データセットで選択したすべてのテーブルがオーバーライドされます。 ここでは **Order By** 句はサポートされていませんが、完全な SELECT FROM ステートメントを設定することができます。 ユーザー定義のテーブル関数を使用することもできます。 **select * from udfGetData()** は、テーブルを返す SQL の UDF です。 このクエリでは、お使いのデータ フローで使用できるソース テーブルが生成されます。
+**Query**: [入力] フィールドで [クエリ] を選択した場合は、ソースに対する SQL クエリを入力します。 この設定により、データセットで選択したすべてのテーブルがオーバーライドされます。 ここでは **Order By** 句はサポートされていませんが、完全な SELECT FROM ステートメントを設定することができます。 ユーザー定義のテーブル関数を使用することもできます。 **select * from udfGetData()** は、テーブルを返す SQL の UDF です。 このクエリでは、お使いのデータ フローで使用できるソース テーブルが生成されます。 テスト対象またはルックアップ対象の行を減らすうえでも、クエリの使用は有効な手段です。 例: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **バッチ サイズ**: 大量データを読み取りにまとめるバッチ サイズを入力します。
 
-**分離レベル**: Mapping Data Flow での SQL ソースの既定値は [コミットされていないものを読み取り] です。 ここで分離レベルを次のいずれかの値に変更できます。
+**分離レベル**: マッピング データ フローでの SQL ソースの既定値は [コミットされていないものを読み取り] です。 ここで分離レベルを次のいずれかの値に変更できます。
 * コミットされたものを読み取り
 * コミットされていないものを読み取り
 * 反復可能読み取り
@@ -145,17 +146,30 @@ Azure Blob Storage や Azure Data Lake Storage などのファイルベースの
 
 データセット内のスキーマと同様に、ソース内のプロジェクションでは、ソース データのデータの列、型、および形式が定義されます。 SQL や Parquet など、ほとんどのデータセットの種類では、ソース内のプロジェクトは、データセットで定義されたスキーマを反映するように固定されています。 ソース ファイルが厳密に型指定されていない場合 (たとえば、Parquet ファイルでなく csv ファイル)、このソース変換では各フィールドのデータ型を定義できます。
 
-![[Projection]\(プロジェクション\) タブでの設定](media/data-flow/source3.png "プロジェクション")
+![プロジェクション タブでの設定](media/data-flow/source3.png "プロジェクション")
 
 テキスト ファイルが定義済みのスキーマを含まない場合は、Data Factory がデータ型をサンプリングして推論するように、 **[データ型の検出]** を選択します。 **[Define default format]\(既定の形式の定義\)** を選択して、既定のデータ形式を自動検出します。 
 
 列のデータ型は、下流の派生列変換で変更できます。 選択変換を使用して、列の名前を変更します。
 
+### <a name="import-schema"></a>スキーマのインポート
+
+Avro や CosmosDB のように、複雑なデータ構造をサポートするデータセットの場合は、データセットにスキーマ定義が存在している必要はありません。 そのようなタイプのソースについては、[プロジェクション] タブの [スキーマのインポート] ボタンをクリックすることができます。
+
+## <a name="cosmosdb-specific-settings"></a>CosmosDB 固有の設定
+
+CosmosDB をソース タイプとして使用する場合、検討すべきオプションがいくつかあります。
+
+* [Include system columns]\(システム列を含める\): このチェック ボックスをオンにすると、CosmosDB からのデータ フローのメタデータに ```id``` や ```_ts``` といったシステム列が含められます。 コレクションを更新するときは、既存の行 ID を把握できるように、これを含めることが重要となります。
+* \[ページ サイズ]:クエリ結果のページあたりのドキュメント数。 既定値は "-1" で、サービスの動的ページが最大 1000 個使用されます。
+* スループット: このデータ フローの各実行について、CosmosDB コレクションの読み取り操作時に適用したい RU 数に対するオプションの値を設定します。 最小値は 400 です。
+* [Preferred regions]\(優先リージョン\): このプロセスの優先読み取りリージョンを選択できます。
+
 ## <a name="optimize-the-source-transformation"></a>ソース変換を最適化する
 
 ソース変換の **[最適化]** タブに、 **[ソース]** というパーティションの種類が表示されることがあります。 このオプションは、ソースが Azure SQL Database の場合にのみ使用できます。 これは、Data Factory が SQL Database ソースに対して大規模なクエリを実行するために、接続を並列化しようとするためです。
 
-![[ソース] パーティション設定](media/data-flow/sourcepart3.png "パーティション分割")
+![ソース パーティション設定](media/data-flow/sourcepart3.png "パーティション分割")
 
 SQL Database ソースのデータをパーティション分割する必要はありませんが、パーティションは大規模なクエリの場合に便利です。 列やクエリに基づいてパーティションを作成できます。
 
@@ -167,7 +181,7 @@ SQL Database ソースのデータをパーティション分割する必要は�
 
 クエリに基づいて接続をパーティション分割することを選択できます。 WHERE 述語の内容を入力します。 たとえば、「year > 1980」と入力します。
 
-Mapping Data Flow 内での最適化の詳細については、[[最適化] タブ](concepts-data-flow-overview.md#optimize)に関するページを参照してください。
+マッピング データ フロー内での最適化の詳細については、[[最適化] タブ](concepts-data-flow-overview.md#optimize)に関する説明を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,15 +4,16 @@ description: Go-To-Market Services - このセクションでは、オファー�
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2a660fe0f7663ac87b82038a3bd3d4c4fbf18544
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962766"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818663"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
@@ -21,7 +22,7 @@ ms.locfileid: "70962766"
 ## <a name="storefront-offer-details"></a>ストアフロント オファーの詳細
 | ストアフロントの設定 | ベスト プラクティス |
 |:--- |:--- |  
-| プラン名 | 強力なタイトルを付ける:<br> <ul> <li> アプリには、顧客に対する中心的な価値を伝える名前を付けるようにします。 </li> <li> 検索エンジンの結果で高い順位を得られるように、アプリのタイトルに検索キーワードを含めます。 </li> </ul> コンサルティング サービスのリストは、決められたタイトルの形式<br>[オファー名] : [期間] [オファーの種類] に従います (例: *Contoso:2 週間の実装*)。 <br><br> ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
+| プラン名 | 強力なタイトルを付ける:<br> <ul> <li> アプリには、顧客に対する中心的な価値を伝える名前を付けるようにします。 </li> <li> 検索エンジンの結果で高い順位を得られるように、アプリのタイトルに検索キーワードを含めます。 </li> </ul> コンサルティング サービスのリストは、決められたタイトルの形式<br>[オファー名\]: [期間] [オファーの種類] に従います \(例: *Contoso:2 週間の実装*)。 <br><br> ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
 | オファーの説明 | オファーの明確な説明を入力する:<br> <ul> <li> 説明の先頭の数文で、オファーの価値提案を明確に説明します。 </li> <li> 先頭の数文は、検索エンジンの結果に表示される可能性があることを留意してください。 </li> <li> 特徴や機能に頼って製品を販売しようとせずに、 提供する価値に焦点を当ててください。 </li> <li> できるだけ業界固有の語彙や利益に基づく表現を使用します。</li> <li> さらに、コンサルティング サービスの掲載では、提供するプロフェッショナル サービスを明確に示す必要があります。 </li></ul> 価値提案の中心の要素には、以下の情報を含めるようにします。<ul><li>製品の説明。</li><li>製品から利益を得られるユーザーの種類。</li><li>製品が対応する顧客のニーズや問題。</li></ul> |
 
 ## <a name="storefront-listing-details"></a>ストアフロントのリストの詳細
@@ -31,6 +32,30 @@ ms.locfileid: "70962766"
 | Categories | オファーに最も合っているカテゴリを選択する:<br> <ul> <li> カテゴリはお客様が関連アプリを検索するときに使用するので、慎重に選択してください。 </li> <li> オファーがカテゴリ固有のニーズにどのように対応しているかをプランの説明に含めます。 </li> </ul> **メモ**:オプションの最大数は、オファーの種類によって異なり、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)に表示されます。 |
 | アプリが連携する製品 (最大 3 個):AppSource アプリのみ | ソリューションで使用する、または拡張される追加の製品とテクノロジを列挙します。 たとえば、Azure IoT Hub、Azure Machine Learning などです。 |
 | 検索キーワード (最大 3 個) | 検索キーワードは、ビジネス ユーザーが探しているオファーを見つけるのに役立つことがあります <ul> <li> Azure Marketplace で </li> <li> AppSource で </li> <li> 検索エンジンを使用 </li> </ul> 掲載がこれらの検索に表示されるためには、次のことが必要です。 <ul> <li> オファーの上位 3 つの検索キーワードを明らかにします。 </li> <li> オファーの概要と説明に検索キーワードを組み込みます </li> <li> ここに検索キーワードを列記します。 </li> </ul> |
+
+### <a name="category"></a>Category
+
+Azure Marketplace と Microsoft AppSource は、さまざまな顧客の固有の要件に対応するネットショップです。 オファーごとに最適なネットショップとカテゴリを選択し、ロール別に顧客をターゲットにします。 
+
+オファーには最大 2 つのカテゴリと 2 つのサブカテゴリを選択できます。 下の一覧にあるカテゴリとサブカテゴリは両方のネットショップで利用できます。  カテゴリはターゲットにした客層、オファーの説明、オファーの価値提案に合わせて選択してください。
+
+| **業界**    | **下位業界**  | 
+| :------------------- | :-------------------|
+| *自動車     | *自動車 |
+| 農業     | *その他 - 区分なし |
+| ディストリビューション    | *卸売 <br> *小包の発送 |
+| 教育     | *高等教育 <br> *初等、中等教育/K-12 <br> *図書館と美術館 |
+| 金融サービス     | *銀行と証券 <br> *保険 |
+| Government    | *防御とインテリジェンス (以前の "国家安全保障と公安") <br> *公安と司法 <br> *民間政府 |
+| 医療 (以前の "衛生")   | *医療保険 <br> *医療サービス <br> *製薬 |
+| 製造と資源 (以前の "製造")   | *化学と農薬 <br> *ディスクリート型製造業 <br> *エネルギー |
+| 小売と消費財 (以前の "小売")  | *消費財 <br> *小売 |
+| *メディアと通信 (以前の "メディアと娯楽")  | *メディアと娯楽 <br> *遠距離通信 |
+| プロフェッショナル サービス  | *法律 <br> *パートナー専門サービス業 |
+| *建築と建設 (以前の "建築と工学")  | *その他 - 区分なし |
+| *接客と旅行  | *ホテルとレジャー <br> *旅行と輸送 <br> *レストランと食品サービス |
+| *その他の公共セクター産業  | *林業と漁業 <br> *非利益 |
+| *不動産  | *その他 - 区分なし |
 
 ## <a name="storefront-marketing-details"></a>ストアフロント マーケティングの詳細
 | ストアフロントの設定 | ベスト プラクティス |

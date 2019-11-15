@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772342"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606449"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>プライベート クラウドのファイアウォールのテーブルとルールの設定
 
@@ -33,6 +33,9 @@ ms.locfileid: "70772342"
 4. テーブルの名前を入力します。
 5. テーブルの既定のルールが一覧表示されます。 **[新しいルールの作成]** をクリックし、追加のルールを作成します。 詳細は次の手順を参照してください。
 6. **[完了]** をクリックし、ファイアウォール テーブルを保存します。
+
+> [!IMPORTANT]
+> 1 つのプライベート クラウドにつき最大 2 つのファイアウォール テーブルを作成できます。
 
 ## <a name="firewall-rules"></a>ファイアウォール規則
 
@@ -61,6 +64,9 @@ ms.locfileid: "70772342"
     ![ファイアウォール テーブルのルールの追加](media/firewall-rule-create.png)
 
 3. **[完了]** をクリックすると、ルールが保存され、ファイアウォール テーブルのルール一覧に追加されます。
+
+> [!IMPORTANT]
+> 各ファイアウォール テーブルには、最大 10 個の受信ルールと 20 個の送信ルールを含めることができます。 これらの制限は、[サポートに連絡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)することによって増やすことができます。
 
 ## <a name="attach-vlanssubnets"></a>VLAN/サブネットの接続
 

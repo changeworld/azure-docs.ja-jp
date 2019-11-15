@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 27c21171c2a53cb739215dcae070b94c8610a490
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880917"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815113"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -33,7 +33,7 @@ ms.locfileid: "68880917"
 
 開始する前に、必ず Visual Studio にサインインしてください。 Azure サブスクリプションに使用するものと同じアカウントでサインインします。 次に、ASP.NET 4.7.1 以降か、ASP.NET Core 2.0 Web プロジェクトを開き、次の手順を行います。
 
-1. **ソリューション エクスプローラー**で、 **[追加]**  >  **[接続済みサービス]** を選択します。
+1. **ソリューション エクスプローラー**で、キー コンテナー サポートを追加するプロジェクトを右クリックし、 **[追加]** 、 >  **[接続済みサービス]** を選択します。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
 1. 使用可能なサービスのメニューから、 **[Secure Secrets With Azure Key Vault]\(Azure Key Vault でシークレットを保護する\)** を選択します。
 
@@ -143,7 +143,7 @@ ms.locfileid: "68880917"
 
 プロジェクト ファイルの .NET リファレンスと NuGet パッケージのリファレンスに影響します。
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -179,7 +179,7 @@ ms.locfileid: "68880917"
 
 プロジェクト ファイル (.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

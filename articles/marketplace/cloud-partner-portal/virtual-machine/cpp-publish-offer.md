@@ -4,15 +4,16 @@ description: 仮想マシンの既存のオファーを Azure Marketplace に発
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 6796c2871cf8a5928beed2ab557cefdfe8ecaae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b07f3f3edab47f8f75835dffd4cc3f89f17ab63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938591"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824402"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>仮想マシンのオファーを発行する
 
@@ -30,7 +31,7 @@ ms.locfileid: "64938591"
 | 体験版の検証 (省略可能) | 2 時間 | 体験版を有効にすることを選択した場合、Microsoft は、体験版の構成、その展開、および選択されたリージョンでのレプリケーションを検証します。 |
 | 認定                  | 3 日 | オファーが Azure 認定チームによって分析されます。 この手順では、ウイルス、マルウェア、安全性のコンプライアンス、およびセキュリティ問題のスキャンを実行します。 問題が見つかった場合、フィードバックが提供されます。 |
 | プロビジョニング                   | 4 日   | VM オファーがマーケットプレースの運用システムにレプリケートされます。               |
-| パッケージ化とリード生成の登録 | 1 時間以内  | オファーの技術資産が顧客の使用のためにパッケージ化され、リード システムが構成されて設定されます。 |
+| パッケージ化とリード生成の登録 | \<1 時間以内  | プランの技術資産が顧客の使用のためにパッケージ化され、リード システムが構成され設定されます。 |
 |  発行元のサインオフ             |  -        | オファーが稼働状態になる前に、最終的な発行元のレビューと確認が行われます。 (オファー情報の手順で) 選択されたサブスクリプション内にオファーをデプロイして、すべての要件を満たしていることを確認できます。  |
 | プロビジョニング                   | 4 日 | マーケットプレースの運用システムとリージョンに、完成した VM オファーがレプリケートされます。 | 
 | ライブ                           | 4 日 | VM オファーが、必要なリージョンにリリース、レプリケートされて、一般公開されます。 |

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7e98fd089ce8ec1285232840a40bb42ac5b81446
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026018"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795438"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -121,7 +121,7 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>既存の検索サービスを削除してしまいました。 どうしたらいいですか。
 
-Azure Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。 
+Azure Cognitive Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。 
 
 ### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>検索サービスの `testkb` インデックスを削除してしまいました。 どうしたらいいですか。 
 
@@ -131,13 +131,13 @@ Azure Search インデックスを削除した場合、この操作は最終的�
 
 エンドポイント キーの更新は、鍵漏えいのおそれがある場合に行ってください。
 
-### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>複数の言語を使用したナレッジ ベースに同じ Azure Search リソースを使用できますか。
+### <a name="can-i-use-the-same-azure-cognitive-search-resource-for-knowledge-bases-using-multiple-languages"></a>複数の言語を使用したナレッジ ベースに同じ Azure Cognitive Search リソースを使用できますか?
 
 複数の言語と複数のナレッジ ベースを使用するには、言語ごとに QnA Maker リソースを作成する必要があります。 これにより、言語ごとに個別の Azure Search サービスが作成されます。 1 つの Azure Search サービスに異なる言語のナレッジ ベースを混在させると、結果の関連性が低下します。
 
-### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>QnA Maker で使用される Azure Search リソースの名前を変更するには、どうすればよいですか。
+### <a name="how-can-i-change-the-name-of-the-azure-cognitive-search-resource-used-by-qna-maker"></a>QnA Maker で使用される Azure Cognitive Search リソースの名前を変更するには、どうすればよいですか?
 
-Azure Search リソースの名前は、QnA Maker リソース名の後にいくつかのランダムな文字が追加されたものです。 そのため、QnA Maker の複数の Search リソースを識別することが難しくなります。 別の Azure Search サービスを作成し (任意の方法で名前を付け)、それを QnA サービスに接続します。 手順は、[Azure Search をアップグレードする](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service)ために必要な手順と同様です。
+Azure Cognitive Search リソースの名前は、QnA Maker リソース名の後にいくつかのランダムな文字が追加されたものです。 そのため、QnA Maker の複数の Search リソースを識別することが難しくなります。 別の検索サービスを作成し (任意の方法で名前を付け)、それを QnA サービスに接続します。 手順は、[Azure Search をアップグレードする](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)ために必要な手順と同様です。
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>QnA Maker から `Runtime core is not initialized,` が返された場合は、どのように解決すればよいですか?
 

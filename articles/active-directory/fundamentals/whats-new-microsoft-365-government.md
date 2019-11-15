@@ -1,5 +1,5 @@
 ---
-title: Microsoft 365 Government における Azure Active Directory の最新情報 - Azure Active Directory | Microsoft Docs
+title: Microsoft 365 Government における Azure AD の最新情報 | Microsoft Docs
 description: Microsoft 365 Government クラウド インスタンスの Azure Active Directory (Azure AD) に対して行われたいくつかの変更は、ユーザーへの影響が考えられます。それらの変更について取り上げます。
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b077c7b5efbad2add971d42ff31938b56f6bc33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259349"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805277"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 Government における Azure Active Directory の最新情報
 
@@ -51,7 +51,7 @@ Microsoft Azure Government、Microsoft 365 Government - GCC High、Microsoft 365
 
 次の表に、すべてのお客様のエンドポイントを示します。
 
-| Name | エンドポイントの詳細 |
+| 名前 | エンドポイントの詳細 |
 |------|------------------|
 | ポータル |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 Government – GCC High: https://portal.office365.us<p>Microsoft 365 Government – DoD: https://portal.apps.mil |
 | Azure Active Directory オーソリティ エンドポイント | https://login.microsoftonline.us |

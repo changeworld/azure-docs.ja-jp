@@ -5,14 +5,15 @@ author: JnHs
 manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 19f06ee2d254e927fde4ca087fdd46f596c7dcbd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b3aefb22f5b58d673d099e6b2b609b89b88c35c7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819907"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825610"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成
 
@@ -31,7 +32,7 @@ Dynamics 365 for Customer Engagement & PowerApps オファーの作成を開始�
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
-- **プラン ID**: 自分のアカウントでの各オファーの一意識別子。 この ID は、マーケットプレース オファーの URL アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。 オファー ID は、小文字の英数字 (ハイフンとアンダースコアは含むが空白は含まない) である必要があります。 これは、50 文字以下にする必要があるほか、 **[作成]** を選択した後に変更することができません。  たとえば、ここに「*test-offer-1*」と入力すると、オファーの URL は `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+- **プラン ID**: 自分のアカウントでの各オファーの一意識別子。 この ID は、マーケットプレース オファーの URL アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。 オファー ID は、小文字の英数字 (ハイフンとアンダースコアは含むが空白は含まない) である必要があります。 この文字数は 50 文字に制限されており、 **[作成]** を選択した後は変更できません。  たとえば、ここに「*test-offer-1*」と入力すると、オファーの URL は `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
 
 - **オファーの別名**:パートナー センター内でオファーを参照するために使用される名前。 この名前はマーケットプレースでは使用されず、顧客に表示されるオファー名やその他の値とは異なります。 **[作成]** の選択後にこの値を変更することはできません。
 
@@ -371,7 +372,7 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 このオファーを公開するのが初めての場合、以下のことが可能です。
 
 - オファーの各セクションの完了状態を確認する。
-    - *[未開始]* - セクションは着手されておらず、完了する必要があることを意味します。
+    - *[未開始]* - このセクションにはまだ情報が入力されておらず、完了する必要があることを意味します。
     - *[未完了]* - 修正が必要なエラーがセクションにあり、追加の情報を入力する必要があることを意味します。 セクションに戻って更新してください。
     - *[完了]* - セクションが完了していることを意味します。必須のデータはすべて入力済みであり、エラーはありません。 オファーを送信するには、オファーのセクションがすべて完了状態でなければなりません。
 - **[認定の注意書き]** セクションで、アプリの理解に役立つ補足事項に加えて、テストの指示を認定チームに提供し、アプリが確実に正しくテストされるようにします。
