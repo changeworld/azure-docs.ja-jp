@@ -1,7 +1,6 @@
 ---
-title: 2 段階認証を使用した Azure MFA サインイン - Azure Active Directory | Microsoft Docs
-description: このページでは、Azure MFA で利用可能な各種サインイン方法を確認できる参照先情報を示します。
-keywords: ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン
+title: 2 要素認証を使用してサインインする - Azure AD
+description: さまざまな 2 要素認証の方法を使用して、ご自分の職場または学校アカウントにサインインする方法について説明します。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -15,14 +14,15 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de080a613c69dd6f48f548c4ba89b2728e8c5e1d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334441"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820425"
 ---
-# <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
+# <a name="sign-in-to-your-work-or-school-account-using-two-factor-verification"></a>2 要素認証を使用してご自分の職場または学校アカウントにサインインする
+
 > [!NOTE]
 > この記事では、一般的なサインイン エクスペリエンスを紹介しています。 サインインに関するヘルプやトラブルシューティングについては、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
 

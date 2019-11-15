@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のバックアップ - 自動、geo 冗長 | Microsoft Docs
+title: 自動の地理冗長バックアップ
 description: SQL Database は数分ごとにローカル データベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージを利用して地理的冗長性を提供します。
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843298"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821944"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -82,7 +82,7 @@ PITR と同じように、LTR バックアップは、geo 冗長であり、[Azu
 詳細については、「[Long-term backup retention](sql-database-long-term-retention.md)」(長期バックアップ リテンション) をご覧ください。
 
 ## <a name="storage-costs"></a>ストレージ コスト
-単一のデータベースの場合は、データベース サイズの 100% に等しい最小バックアップ ストレージ容量が、追加料金なしで提供されます。 エラスティック プールの場合は、プールに割り当てられたデータ ストレージの 100% に等しい最小バックアップ ストレージ容量が、追加料金なしで提供されます。 100% を超えるバックアップ ストレージの使用については、月あたりの GB 数で請求されます。 この追加の消費量は、個々のデータベースのワークロードとサイズによって異なります。
+単一のデータベースとマネージド インスタンスの場合は、データベース サイズの 100% に等しい最小バックアップ ストレージ容量が、追加料金なしで提供されます。 エラスティック プールの場合は、プールに割り当てられたデータ ストレージの 100% に等しい最小バックアップ ストレージ容量が、追加料金なしで提供されます。 100% を超えるバックアップ ストレージの使用については、月あたりの GB 数で請求されます。 この追加の消費量は、個々のデータベースのワークロードとサイズによって異なります。
 
 ストレージの価格について詳しくは、[価格](https://azure.microsoft.com/pricing/details/sql-database/single/)のページをご覧ください。 
 

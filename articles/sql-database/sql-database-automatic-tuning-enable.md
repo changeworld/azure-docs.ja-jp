@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database での自動チューニングの有効化 | Microsoft Docs
+title: 自動チューニングの有効化
 description: Azure SQL Database で自動チューニングを簡単に有効にすることができます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162339"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821909"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のための自動チューニングの有効化
 
@@ -104,9 +104,15 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 自動チューニングがデータベースに対して作用するあらゆる操作は監視されていて、ときにはデータベースに対して適切に作用しない可能性があると判断される場合があります。 そのような状況では、チューニング オプションがシステムによって無効化されます。 その原因はほとんどの場合、クエリ ストアが有効になっていないか、特定のデータベースに対して読み取り専用状態になっていることにあります。
 
+## <a name="permissions"></a>アクセス許可
+
+自動チューニングは Azure の機能であるため、これを使用するには、Azure の組み込み RBAC ロールを使用する必要があります。 SQL 認証を使用するだけでは、Azure portal からその機能を使用することはできません。
+
+自動チューニングを使用するには、ユーザーに付与する必要がある最小限のアクセス許可は、Azure の組み込みロールである [SQL DB 共同作成者](../role-based-access-control/built-in-roles.md#sql-db-contributor)ロールです。 また、SQL Server 共同作成者、共同作成者、所有者など、上位の特権ロールの使用を検討することもできます。
+
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>メール通知の自動チューニングの構成
 
-[メール通知の自動チューニング](sql-database-automatic-tuning-email-notifications.md)に関するガイドを参照してください。
+「[自動チューニングの電子メール通知](sql-database-automatic-tuning-email-notifications.md)」のガイドを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

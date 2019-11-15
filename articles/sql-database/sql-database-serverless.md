@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database サーバーレス (プレビュー) | Microsoft Docs
+title: サーバーレス
 description: この記事では、新しいサーバーレス コンピューティング レベルについて説明し、既存のプロビジョニング済みコンピューティング レベルと比較します
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: fecc394080f54f023529ed2da8c9690c38c1da08
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173397"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818272"
 ---
-# <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
+# <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 
-Azure SQL Database サーバーレス (プレビュー) は、ワークロードの需要に基づいてコンピューティングを自動的にスケーリングし、1 秒あたりのコンピューティング使用量に対して請求を行うコンピューティング レベルです。 またサーバーレス コンピューティング レベルでは、アイドル期間にデータベースを自動的に一時停止します。このときはストレージのみに課金され、再びアクティブになると自動的にデータベースが再開されます。
+Azure SQL Database サーバーレスは、ワークロードの需要に基づいてコンピューティングが自動的にスケーリングされ、1 秒あたりのコンピューティング使用量に対して請求されるコンピューティング レベルです。 またサーバーレス コンピューティング レベルでは、アイドル期間にデータベースを自動的に一時停止します。このときはストレージのみに課金され、再びアクティブになると自動的にデータベースが再開されます。
 
 ## <a name="serverless-compute-tier"></a>サーバーレス コンピューティング レベル
 
@@ -171,11 +171,9 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
    |パラメーター|値の選択肢|既定値|
    |---|---|---|---|
-   |最小仮想コア|構成された最大仮想コアによって異なります。[リソースの制限](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)に関するページを参照してください。|0.5 仮想コア|
+   |最小仮想コア|構成された最大仮想コアによって異なります。[リソースの制限](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)に関するページを参照してください。|0.5 仮想コア|
    |自動一時停止遅延|最小:60 分 (1 時間)<br>最大値:10080 分 (7 日)<br>増分: 約 60 分<br>自動一時停止の無効化: -1|約 60 分|
 
-> [!NOTE]
-> T-SQL を使用して、サーバーレスに既存データベースを移動すること、またはコンピューティング サイズを変更することは、現在はサポートされていませんが、Azure portal または PowerShell を使用して行うことができます。
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>サーバーレス コンピューティング レベルで新しいデータベースを作成する 
 
@@ -200,6 +198,17 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
+
+次の例では、サーバーレス コンピューティング レベルで新しいデータベースを作成します。
+
+```sql
+CREATE DATABASE testdb
+( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
+```
+
+詳細については、「[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)」を参照してください。  
+
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動する
 
 #### <a name="use-powershell"></a>PowerShell の使用
@@ -218,6 +227,17 @@ Set-AzSqlDatabase `
   -MaxVcore 4 `
   -AutoPauseDelayInMinutes 1440
 ```
+
+#### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
+
+次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。 
+
+```sql
+ALTER DATABASE testdb 
+MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
+```
+
+詳細については、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)」を参照してください。
 
 ### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>サーバーレス コンピューティング レベルからプロビジョニングされたコンピューティング レベルにデータベースを移動する
 
@@ -288,7 +308,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>リソース制限
 
-リソースの制限については、[サーバーレス コンピューティング レベル](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)をご覧ください。
+リソースの制限については、[サーバーレス コンピューティング レベル](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)をご覧ください。
 
 ## <a name="billing"></a>課金
 
@@ -324,6 +344,10 @@ Get-AzSqlDatabase `
 
 コンピューティングの単位価格は $0.000073/仮想コア/秒とします。  この場合、この 24 時間で課金対象となるコンピューティングは、コンピューティング ユニット価格と課金対象の仮想コア秒数の積になります: $0.000073/仮想コア/秒 * 50,400 仮想コア秒 = $3.68
 
+### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure ハイブリッド特典と予約容量
+
+Azure ハイブリッド特典 (AHB) と予約容量の割引は、サーバーレス コンピューティング レベルには適用されません。
+
 ## <a name="available-regions"></a>対応リージョン
 
 サーバーレス コンピューティング レベルは、次のリージョンを除く全世界で利用できます。中国東部、中国北部、ドイツ中部、ドイツ北東部、英国北部、英国南部 2、米国中西部の各リージョンと、米国政府中部 (アイオワ) を除くすべてのリージョンで利用できます。
@@ -331,4 +355,4 @@ Get-AzSqlDatabase `
 ## <a name="next-steps"></a>次の手順
 
 - 使用を開始するには、「[クイック スタート: Azure portal を使用して Azure SQL Database で単一データベースを作成する](sql-database-single-database-get-started.md)」をご覧ください。
-- リソースの制限については、[サーバーレス コンピューティング レベルのリソース制限](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)に関する記事をご覧ください。
+- リソースの制限については、[サーバーレス コンピューティング レベルのリソース制限](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)に関する記事をご覧ください。

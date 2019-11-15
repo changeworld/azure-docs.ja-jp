@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e38f118e10c9d0e2347edb7cbaa5d7b68a0e63f2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1c2a2f08c31c427241bbd5e482906118a90ee178
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933410"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614845"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
 
@@ -25,14 +25,14 @@ ms.locfileid: "70933410"
 
 ## <a name="wait-for-events"></a>イベントを待つ
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) メソッドを使用すると、オーケストレーター関数が、外部イベントを非同期的に待ち受けることができます。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
+[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の `WaitForExternalEvent` (.NET) および `waitForExternalEvent` (JavaScript) メソッドを使うと、オーケストレーター関数では外部イベントを非同期に待機してリッスンできるようになります。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
 
 ### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BudgetApproval")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool approved = await context.WaitForExternalEvent<bool>("Approval");
     if (approved)
@@ -46,7 +46,10 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext`の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -70,7 +73,7 @@ module.exports = df.orchestrator(function*(context) {
 ```csharp
 [FunctionName("Select")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var event1 = context.WaitForExternalEvent<float>("Event1");
     var event2 = context.WaitForExternalEvent<bool>("Event2");
@@ -92,7 +95,10 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext`の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -120,7 +126,7 @@ module.exports = df.orchestrator(function*(context) {
 ```csharp
 [FunctionName("NewBuildingPermit")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string applicationId = context.GetInput<string>();
 
@@ -135,7 +141,10 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前のコードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext`の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -154,7 +163,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) は、ある入力を無期限に待ちます。  関数アプリは、待機中に安全にアンロードすることができます。 これは、このオーケストレーション インスタンスのイベントが到着すると、自動的に起動され、すぐにそのイベントを処理します。
+`WaitForExternalEvent` では、入力を無期限に待機します。  関数アプリは、待機中に安全にアンロードすることができます。 これは、このオーケストレーション インスタンスのイベントが到着すると、自動的に起動され、すぐにそのイベントを処理します。
 
 > [!NOTE]
 > 関数アプリで従量課金プランを使用する場合、オーケストレーター関数が `WaitForExternalEvent` (.NET) または `waitForExternalEvent` (JavaScript) からのタスクを待っている間は、待ち時間がどんなに長くなっても課金されません。
@@ -163,7 +172,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>送信イベント
 
-[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスの [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) メソッドは、`WaitForExternalEvent` (.NET) または `waitForExternalEvent` (JavaScript) が待っているイベントを送信します。  `RaiseEventAsync` メソッドでは、*eventName* と *eventData* がパラメーターとして使用されます。 イベント データは、JSON でシリアル化できる必要があります。
+[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client)の `RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) メソッドからは、`WaitForExternalEvent` (.NET) または `waitForExternalEvent` (JavaScript) で待機するイベントが送信されます。  `RaiseEventAsync` メソッドでは、*eventName* と *eventData* がパラメーターとして使用されます。 イベント データは、JSON でシリアル化できる必要があります。
 
 次の例は、キューによってトリガーされる関数で、"承認" イベントをオーケストレーター関数インスタンスに送信します。 オーケストレーション インスタンス ID は、キュー メッセージの本文から取得されます。
 
@@ -173,13 +182,16 @@ module.exports = df.orchestrator(function*(context) {
 [FunctionName("ApprovalQueueProcessor")]
 public static async Task Run(
     [QueueTrigger("approval-queue")] string instanceId,
-    [OrchestrationClient] DurableOrchestrationClient client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     await client.RaiseEventAsync(instanceId, "Approval", true);
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -193,10 +205,7 @@ module.exports = async function(context, instanceId) {
 内部的には、`RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) は、待機オーケストレーター関数によって取得されるメッセージをエンキューします。 指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージがインメモリ キューに追加されます。 オーケストレーション インスタンスが後でその "*イベント名*" のリッスンを開始した場合、キューにイベント メッセージがあるかどうかを確認します。
 
 > [!NOTE]
-> 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、イベント メッセージは破棄されます。 この動作の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-extension/issues/29)に関するトピックをご覧ください。 
-
-> [!WARNING]
-> JavaScript でローカルに開発する場合は、環境変数 `WEBSITE_HOSTNAME` を `localhost:<port>` に設定する必要があります。たとえば、 `DurableOrchestrationClient` のメソッドを使用するには、`localhost:7071` に設定します。 この要件の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-js/issues/28)に関するページをご覧ください。
+> 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、イベント メッセージは破棄されます。
 
 ## <a name="next-steps"></a>次の手順
 

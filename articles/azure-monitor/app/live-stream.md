@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d85688d297eb0df00e71f388b2a3350eabe5f6d5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 69aaa61bb0be9a5f07de85ff4ef81b28a86aefaa
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817204"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575614"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -45,13 +45,9 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 4. フィルターに顧客名などの機密データを使用する場合は、[コントロール チャネルを保護](#secure-the-control-channel)します。
 
-### <a name="nodejs"></a>Node.js
-
-Node.js で Live Metrics を使用するには、バージョン 1.30 以上の SDK に更新する必要があります。 既定で Live Metrics は、Node.js SDK で無効になります。 Live Metrics を有効にするには、SDK を初期化する際に`setSendLiveMetrics(true)`を[構成メソッド](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)に追加します。
-
 ### <a name="no-data-check-your-server-firewall"></a>データが表示されない場合 サーバーのファイアウォールを確認
 
-サーバーのファイアウォールで、[Live Metrics Stream の発信ポート](../../azure-monitor/app/ip-addresses.md#outgoing-ports)が開いているか確認します。 
+サーバーのファイアウォールで、[Live Metrics Stream の発信ポート](../../azure-monitor/app/ip-addresses.md#outgoing-ports)が開いているか確認します。
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Live Metrics Stream が メトリックス エクスプローラーや Analytics と異なる点
 
@@ -68,7 +64,7 @@ Node.js で Live Metrics を使用するには、バージョン 1.30 以上の 
 
 (ASP.NET、ASP.NET Core、Azure Functions (v2) で使用できます。)
 
-ポータルで Application Insights Telemetry に任意のフィルターを適用して、カスタム ライブ KPI を監視できます。 グラフをマウスでポイントしたときに表示されるフィルター コントロールをクリックします。 次のグラフは、URL 属性と期間属性にフィルターを適用して、カスタム要求数 KPI をプロットしています。 [ストリームのプレビュー] セクションでフィルターを検証します。このセクションには、指定した条件といずれかの時点で一致するテレメトリのライブ フィードが表示されます。 
+ポータルで Application Insights Telemetry に任意のフィルターを適用して、カスタム ライブ KPI を監視できます。 グラフをマウスでポイントしたときに表示されるフィルター コントロールをクリックします。 次のグラフは、URL 属性と期間属性にフィルターを適用して、カスタム要求数 KPI をプロットしています。 [ストリームのプレビュー] セクションでフィルターを検証します。このセクションには、指定した条件といずれかの時点で一致するテレメトリのライブ フィードが表示されます。
 
 ![カスタム要求 KPI](./media/live-stream/live-stream-filteredMetric.png)
 
@@ -100,14 +96,6 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 特定のサーバー ロール インスタンスを監視する場合は、サーバーでフィルター処理できます。
 
 ![サンプリングされたライブ エラー](./media/live-stream/live-stream-filter.png)
-
-## <a name="sdk-requirements"></a>SDK の要件
-
-### <a name="net"></a>.NET
-カスタムの Live Metrics Stream は、バージョン 2.4.0-beta2 以降の [Application Insights SDK for web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) で使用できます。 NuGet パッケージ マネージャーで [リリース前のパッケージを含める] を必ず選択してください。
-
-### <a name="nodejs"></a>Node.js
-Live Metrics Stream は、バージョン 1.3.0 以降の [Node.js 用 Application Insights SDK](https://npmjs.com/package/applicationinsights) で使用できます。 コードで SDK を構成するときは、必ず `setSendLiveMetrics(true)` を使用してください。
 
 ## <a name="secure-the-control-channel"></a>コントロール チャネルの保護
 指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 インストルメンテーション キーに加え、シークレット API キーを使用してチャネルをセキュリティで保護できます。
@@ -165,7 +153,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ### <a name="azure-function-apps"></a>Azure Function App
 
-Azure Function App (v2) の場合、API キーを使用してチャネルをセキュリティで保護するには、環境変数を使用します。 
+Azure Function App (v2) の場合、API キーを使用してチャネルをセキュリティで保護するには、環境変数を使用して完了することができます。
 
 Application Insights リソース内から API キーを作成し、Function App の **[アプリケーションの設定]** に移動します。 **[新しい文字列の追加]** を選択し、`APPINSIGHTS_QUICKPULSEAUTHAPIKEY` の名前と、API キーに対応する値を入力します。
 
@@ -193,11 +181,30 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 >フィルター条件に CustomerID などの機密情報を入力する前に、認証済みチャネルを設定することを強くお勧めします。
 >
 
+## <a name="supported-features-table"></a>サポートされる機能の表
+
+| 言語                         | 基本メトリック       | パフォーマンス メトリック | カスタム フィルター処理    | サンプル テレメトリ    | プロセス別の CPU 分割 |
+|----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
+| .NET                             | サポート対象 (V2.7.2 以降) | サポート対象 (V2.7.2 以降) | サポート対象 (V2.7.2 以降) | サポート対象 (V2.7.2 以降) | サポート対象 (V2.7.2 以降)  |
+| .NET Core (ターゲット =.NET Framework)| サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降)  |
+| .NET Core (ターゲット =.NET Core)     | サポート対象 (V2.4.1 以降) | サポート対象*          | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | **サポートされていません**    |
+| Azure Functions v2               | サポートされています           | サポートされています           | サポートされています           | サポートされています           | **サポートされていません**    |
+| Java                             | サポート対象 (V2.0.0 以降) | サポート対象 (V2.0.0 以降) | **サポートされていません**   | **サポートされていません**   | **サポートされていません**    |
+| Node.js                          | サポート対象 (V1.3.0 以降) | サポート対象 (V1.3.0 以降) | **サポートされていません**   | サポート対象 (V1.3.0 以降) | **サポートされていません**    |
+
+基本メトリックには、要求、依存関係、例外率が含まれます。 パフォーマンス メトリック (パフォーマンス カウンター) には、メモリと CPU が含まれます。 テレメトリのサンプルには、失敗した要求と依存関係、例外、イベント、トレースに関する詳細情報のストリームが表示されます。
+
+ \* PerfCounters のサポートは、.NET Framework を対象としない .NET Core のバージョンによって多少異なります。
+
+- PerfCounters メトリックは、Windows の Azure App Service で実行する場合にサポートされます。 (AspNetCore SDK バージョン 2.4.1 以降)
+- PerfCounters は、アプリが任意の Windows マシン (VM またはクラウド サービスまたはオンプレミスなど) (AspNetCore SDK バージョン 2.7.1 以降) で実行されている場合にサポートされますが、.NET Core 2.0 以降を対象とするアプリ用です。
+- PerfCounters は、最新のベータ版 (AspNetCore SDK バージョン 2.8.0-beta1 以降) の任意の場所 (Linux、Windows、Linux のアプリ サービス、コンテナーなど) でアプリが実行されている場合にサポートされますが、 .NET Core 2.0 以降を対象とするアプリ用です。
+
+既定で Live Metrics は、Node.js SDK で無効になります。 Live Metrics を有効にするには、SDK を初期化する際に`setSendLiveMetrics(true)`を[構成メソッド](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)に追加します。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-データが表示されない場合 保護されているネットワークにアプリケーションが存在する場合:Live Metrics Stream では他の Application Insights Telemetry とは異なる IP アドレスを使用します。 [これらの IP アドレス](../../azure-monitor/app/ip-addresses.md)がファイアウォールで開いていることを確認してください。
-
-
+データが表示されない場合 保護されているネットワークにアプリケーションが存在する場合:Live Metrics Stream では、他の Application Insights テレメトリとは異なる IP アドレスを使用します。 [これらの IP アドレス](../../azure-monitor/app/ip-addresses.md)がファイアウォールで開いていることを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 * [Application Insights による使用状況の監視](../../azure-monitor/app/usage-overview.md)

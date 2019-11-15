@@ -1,18 +1,18 @@
 ---
 title: Azure Recovery Services コンテナーとサーバーの管理
-description: Azure Recovery Services コンテナーでジョブとアラートを管理します
+description: この記事では、Recovery Services コンテナーの [概要] ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954759"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747450"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
@@ -23,7 +23,6 @@ ms.locfileid: "68954759"
 この記事の前提条件は、Azure サブスクリプションと Recovery Services コンテナーがあり、少なくとも 1 つのバックアップ項目がコンテナーに対して構成されていることです。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
-
 
 ## <a name="open-a-recovery-services-vault"></a>Recovery Services コンテナーを開く
 
@@ -99,7 +98,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 * アラート:
 * バックアップ項目
 * 保護されるサーバー
-* Severity
+* 重大度
 * Duration
 * 作成時刻
 * Status
@@ -259,7 +258,6 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 * コンテナーに関連付けられているクラウド LRS ストレージの利用状況
 * コンテナーに関連付けられているクラウド GRS ストレージの利用状況
 
-
 ## <a name="troubleshooting-monitoring-issues"></a>監視に関する問題のトラブルシューティング
 
 **問題:** Azure Backup エージェントからのジョブやアラートがポータルに表示されない。
@@ -275,6 +273,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>次の手順
+
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 * [Azure Backup フォーラム](https://go.microsoft.com/fwlink/p/?LinkId=290933)

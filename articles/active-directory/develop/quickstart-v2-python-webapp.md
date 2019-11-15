@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 241935afa023162a35559cd3c46206efa7a7835f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240179"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815751"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 
@@ -74,6 +74,13 @@ ms.locfileid: "72240179"
 >      - キーの有効期間として **[1 年]** を選択します。
 >      - **[追加]** をクリックすると、キーの値が表示されます。
 >      - キーの値をコピーします。 この情報は後で必要になります。
+> 1. **[API のアクセス許可]** セクションを選択します
+>
+>      - **[アクセス許可の追加]** をクリックします。さらに、
+>      - **[Microsoft API]** タブが選択されていることを確認します
+>      - *[よく使用される Microsoft API]* セクションで、 **[Microsoft Graph]** をクリックします
+>      - **[委任されたアクセス許可]** セクションで、適切なアクセス許可がオンになっていることを確認します:**User.ReadBasic.All**。 必要に応じて検索ボックスを使用します。
+>      - **[アクセス許可の追加]** ボタンを選択します
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
@@ -83,9 +90,10 @@ ms.locfileid: "72240179"
 >
 > 1. 応答 URL を `http://localhost:5000/getAToken` として追加する
 > 1. クライアント シークレットを作成します。
+> 1. Microsoft Graph API の委任されたアクセス許可 User.ReadBasic.All を追加します。
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [この変更を行う]()
+> > [これらの変更を行います]()
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこの属性で構成されています
 
@@ -100,8 +108,9 @@ ms.locfileid: "72240179"
 1. **app_config.py** ファイルを開きます。このファイルはルート フォルダーにあり、次のコード スニペットに置き換えることができます。
 
 ```python
-CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 CLIENT_ID = "Enter_the_Application_Id_here"
+CLIENT_SECRET = "Enter_the_Client_Secret_Here"
+AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
@@ -109,6 +118,7 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 >
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 > - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
+> - `Enter_the_Tenant_Name_Here` - 登録したアプリケーションの**ディレクトリ (テナント) ID** 値です。
 
 #### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
 
@@ -123,6 +133,25 @@ CLIENT_ID = "Enter_the_Application_Id_here"
    ```Shell
    python app.py
    ```
+   > [!IMPORTANT]
+   > このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、[これらの手順](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)を参照してください。
+
+## <a name="more-information"></a>詳細情報
+
+### <a name="getting-msal"></a>MSAL の取得
+MSAL は、ユーザーをサインインさせるために使用されたり、Microsoft ID プラットフォームによって保護されている API にアクセスするためのトークンを要求するために使用されたりするライブラリです。
+MSAL Python は、Pip を使用してアプリケーションに追加できます。
+
+```Shell
+pip install msal
+```
+
+### <a name="msal-initialization"></a>MSAL の初期化
+MSAL を使用するファイルの先頭に次のコードを追加すると、MSAL Python への参照を追加できます。
+
+```Python
+import msal
+```
 
 ## <a name="next-steps"></a>次の手順
 

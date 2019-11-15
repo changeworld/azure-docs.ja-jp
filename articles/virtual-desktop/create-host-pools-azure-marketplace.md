@@ -1,5 +1,5 @@
 ---
-title: Azure Marketplace を使用して Windows Virtual Desktop のホスト プールを作成する - Azure
+title: Windows Virtual Desktop のホスト プール Azure Marketplace - Azure
 description: Azure Marketplace を使用して Windows Virtual Desktop のホスト プールを作成する方法。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: f5b40e59a4ed2393e3b9912f8e4caa06ee267428
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757513"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605583"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
 
@@ -40,7 +40,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 新しいホスト プールをプロビジョニングするための Azure Marketplace オファリングを実行する方法は次のとおりです。
 
-1. **[+]** または **[+ リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 2. Marketplace の検索ウィンドウに「**Windows Virtual Desktop**」と入力します。
 3. **[Windows Virtual Desktop - Provision a host pool]\(Windows Virtual Desktop - ホスト プールのプロビジョニング\)** を選択し、 **[作成]** を選択します。
 
@@ -73,7 +73,9 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 **[Virtual machine setting]\(仮想マシンの設定\)** ブレードで必要な操作は次のとおりです。
 
 >[!NOTE]
-> ご使用の VM を Azure Active Directory Domain Services (Azure AD DS) 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)のメンバーでもあることを確認します。
+> ご使用の VM を Azure Active Directory Domain Services (Azure AD DS) 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)のメンバーであることを確認します。
+>
+> アカウントは Azure AD DS マネージド ドメインまたは Azure AD テナントの一部でもある必要があります。Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。 
 
 1. **[イメージ ソース]** で、ソースを選択し、その探し方と格納方法に関する適切な情報を入力します。 マネージド ディスクを使用しない場合には、.vhd ファイルが含まれるストレージ アカウントを選択します。
 2. Active Directory ドメインに VM を参加させるドメイン アカウントのユーザー プリンシパル名とパスワードを入力します。 このユーザー名とパスワードは、仮想マシン上にローカル アカウントとして作成されます。 このローカル アカウントは、後でリセットできます。

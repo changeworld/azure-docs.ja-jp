@@ -4,15 +4,16 @@ description: 共有アクセス署名 URI の使用に関する一般的な問�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: pabutler
-ms.openlocfilehash: 4f2770312624e1ca4c939ade458a451eb03f9d20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 502ba1a65f9b0740a51c7a4da219cc87af494f27
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938373"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813308"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>SAS URL に関する一般的な問題と解決策
 

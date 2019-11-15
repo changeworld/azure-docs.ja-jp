@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator アプリのダウンロードとインストール - Azure Active Directory | Microsoft Docs
+title: Microsoft Authenticator アプリをダウンロードしてインストールする - Azure AD
 description: 2 要素認証用に Microsoft Authenticator アプリをダウンロード、インストール、使用する方法。
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ebe80d44d52ffa348413e51cd5e82e8468537479
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616047"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820218"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリのダウンロードとインストール
 
@@ -52,7 +52,7 @@ Microsoft Authenticator アプリは次のようなさまざまな方法で使�
 - **Apple iOS**。 Apple iOS デバイスでは、App Store に移動して、[Microsoft Authenticator アプリをダウンロードして、インストール](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)します。
 
 >[!Important]
->現在モバイル デバイスに接続していない場合でも、[Microsoft Authenticator のページ](https://www.microsoft.com/account/authenticator)から自分にダウンロード リンクを送信して Microsoft Authenticator アプリを入手できます。
+>現在モバイル デバイスに接続していない場合でも、[Microsoft Authenticator のページ](https://www.microsoft.com/en-us/account/authenticator)から自分にダウンロード リンクを送信して Microsoft Authenticator アプリを入手できます。
 
 ## <a name="next-steps"></a>次の手順
 

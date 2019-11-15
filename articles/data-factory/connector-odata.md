@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して OData ソースからデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して OData ソースからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f3afccd2414ae4acbd31452d989e9540d36d512d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 85da7752575164ba505d788a5d45f5af0908edc9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089995"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680589"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 

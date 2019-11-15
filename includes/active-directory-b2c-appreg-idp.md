@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: 560e29be308277aedf8ac4e438f73d4ac5bc417f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dc75d78f2e73d1aa42f5fc84d39a8b22d6a121bb
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475351"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73642601"
 ---
-アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [プレビュー エクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
@@ -30,7 +30,7 @@ ms.locfileid: "73475351"
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録 (プレビュー)]** を選択し、 **[新規登録]** を選択します。
+1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
 1. アプリケーションの**名前**を入力します。 (例: *testapp1*)。
 1. **[任意の組織のディレクトリまたは任意の ID プロバイダーのアカウント]** を選択します。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、URL テキスト ボックスに「`https://jwt.ms`」と入力します。

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 41663ec04e194bcc4380f46f1e5cc5a6867e53fc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755879"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622531"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
 
@@ -92,7 +92,9 @@ Resource Graph は、Azure CLI、Azure PowerShell、Azure SDK for .NET などを
 
 ## <a name="next-steps"></a>次の手順
 
+- [Azure portal](first-query-portal.md) を使用して最初のクエリを実行します。
 - [Azure CLI](first-query-azurecli.md) を使用して最初のクエリを実行します。
 - [Azure PowerShell](first-query-powershell.md) を使用して最初のクエリを実行します。
+- [クエリ言語](./concepts/query-language.md)に関する詳細情報を入手します。
 - [初歩的なクエリ](./samples/starter.md)から開始します。
 - [高度なクエリ](./samples/advanced.md)について理解を深めます。

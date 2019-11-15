@@ -1,5 +1,5 @@
 ---
-title: 2 要素認証のよくある問題のトラブルシューティング - Azure Active Directory | Microsoft Docs
+title: 2 要素認証のよくある問題のトラブルシューティング - Azure AD
 description: 2 要素認証に関してよくあるいくつかの問題について、考えられる解決策を説明します。
 services: active-directory
 author: eross-msft
@@ -9,16 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616113"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805302"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>2 要素認証のよくある問題のトラブルシューティング
 
@@ -63,6 +63,8 @@ ms.locfileid: "69616113"
 - **デバイス信号とインターネット接続があることを確認します。** 通話とテキスト メッセージがモバイル デバイスに送信されていることを確認します。 友人に頼んで、電話での呼び出しとテキスト メッセージの送信を行ってもらい、両方とも受信することを確認するします。 そうでない場合は、最初にモバイル デバイスの電源が入っていることを確認します。 デバイスの電源がオンになっているのに、通話やテキストを受け取れない場合は、ネットワークに問題がある可能性が高いため、プロバイダーに問い合わせる必要があります。 信号関連の問題が頻繁に発生する場合は、モバイル デバイスに [Microsoft Authenticator アプリ](user-help-auth-app-download-install.md)をインストールして使用することをお勧めします。 Authenticator アプリを使用すると、電波またはインターネット接続を必要とせずに、サインイン用のランダムなセキュリティ コードを生成できます。
 
 - **応答不可をオフにします。** モバイル デバイスの**応答不可**機能が有効になっていないことを確認します。 この機能が有効になっていると、モバイル デバイスで通知を受け取ることができません。 この機能を無効にする方法については、モバイル デバイスのマニュアルを参照してください。
+
+- **電話番号のブロックを解除する** 米国の場合、Microsoft からの音声通話は、+1 (866) 539 4191、+1 (855) 330 8653、+1 (877) 668 6536 から発信されます。
 
 - **バッテリに関連する設定を確認します。** これは少し奇妙に思えますが、バッテリの最適化を設定し、使用頻度の低いアプリがバックグラウンドでアクティブのままにならないようになっている場合、通知システムは影響を受ける可能性が最も高くなります。 この問題を解決するには、認証アプリとメッセージング アプリのバッテリ最適化を無効にしてから、もう一度アカウントにサインインしてみてください。
 

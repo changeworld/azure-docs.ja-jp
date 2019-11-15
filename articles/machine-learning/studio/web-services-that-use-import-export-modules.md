@@ -1,8 +1,8 @@
 ---
-title: Web サービスでデータをインポート/エクスポートする - Azure Machine Learning Studio | Microsoft Docs
+title: Web サービスでデータをインポートまたはエクスポートする
+titleSuffix: ML Studio (classic) Azure
 description: データのインポート モジュールとデータのエクスポート モジュールを使用して、Web サービスとデータを送受信する方法について説明します。
 services: machine-learning
-documentationcenter: ''
 author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
@@ -10,19 +10,16 @@ editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
 ms.subservice: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 28d16bce6dbb5063c085e8c4393777ee9d152768
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a88d3958378a0746a22e99a817ad9ecebf217dc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345143"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684701"
 ---
-# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>データのインポート モジュールとエクスポート モジュールを使用する Azure Machine Learning Studio Web サービスをデプロイする
+# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>データのインポートおよびデータのエクスポート モジュールを使用する Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
 
 予測実験を作成するときには通常、Web サービスの入力と出力を追加します。 実験を展開するときに、コンシューマーはこれらの入力と出力を介して Web サービスとのデータの送受信を行うことができます。 一部のアプリケーションでは、コンシューマーのデータはデータ フィードから利用できるか、または Azure BLOB ストレージなどの外部データ ソースに既に存在しています。 このような場合、Web サービスの入力と出力を使用してデータを読み書きする必要はありません。 代わりに、バッチ実行サービス (BES) を使用して、データのインポート モジュールを使用してデータ ソースからデータを読み取り、データのエクスポート モジュールを使用して、スコア付けの結果を他のデータの場所に書き込むことができます。
 
@@ -78,7 +75,7 @@ Azure SQL テーブルからデータを読み取るには:
 9. **[データ テーブル名] フィールド**で、「dbo.ScoredLabels」と入力します。 テーブルが存在しない場合、テーブルは実験を実行したとき、または Web サービスが呼び出されたときに作成されます。
 10. **[データベース列のコンマ区切りリスト]** フィールドで、「スコア付けラベル」と入力します。
 
-最終的な Web サービスを呼び出すアプリケーションを作成する場合は、実行時に別の入力クエリまたは変換先テーブルを指定します。 これらの入力と出力を構成するために、Web サービス パラメーターの機能を使用して*データのインポート* モジュールの*データソース* プロパティと*データのエクスポート* モード データの変換先プロパティを設定できます。  Web サービス パラメーターの詳細については、Cortana Intelligence と Machine Learning ブログの [Azure Machine Learning Studio Web サービス パラメーターに関するエントリ](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) を参照してください。
+最終的な Web サービスを呼び出すアプリケーションを作成する場合は、実行時に別の入力クエリまたは変換先テーブルを指定します。 これらの入力と出力を構成するために、Web サービス パラメーターの機能を使用して*データのインポート* モジュールの*データソース* プロパティと*データのエクスポート* モード データの変換先プロパティを設定できます。  Web サービス パラメーターの詳細については、Cortana Intelligence と Machine Learning のブログにある [Azure Machine Learning Studio Web サービス パラメーターのエントリ](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/)を参照してください。
 
 クエリのインポートおよび変換先テーブルの Web サービス パラメーターを構成するには:
 

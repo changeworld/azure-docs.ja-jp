@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.openlocfilehash: dd68ac502a92b044e958969cc6a2863b5d197416
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ca07f060aebcea82895f0463cac693c66f0c629
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621664"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827747"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource でソフトウェアを購入する方法
 

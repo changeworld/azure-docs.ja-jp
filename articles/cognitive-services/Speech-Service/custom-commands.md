@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: e41a037e657a8d2b484a3fcb62eb3bc03f53682d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506534"
+ms.locfileid: "73579702"
 ---
 # <a name="custom-commands-preview"></a>カスタム コマンド (プレビュー)
 
 [音声アシスタント](voice-assistants.md)はユーザーの音声を聞き取り、応答としてアクションを実行します (多くの場合は音声で応答します)。 これは、[音声テキスト変換](speech-to-text.md)を使用してユーザーの音声を文字に変換し、そのテキストの自然言語理解に対してアクションを実行します。 このアクションには、多くの場合、[テキスト読み上げ](text-to-speech.md)で生成されたアシスタントからの音声出力が含まれます。 デバイスは、Speech SDK の `DialogServiceConnector` オブジェクトを使用してアシスタントに接続します。
 
-**カスタム コマンド (プレビュー)** は、音声アシスタントを作成するための簡素化されたソリューションです。 これにより、統一された作成エクスペリエンスと自動ホスティング モデルが提供され、[Direct Line Speech](direct-line-speech.md) など他のアシスタント作成オプションと比べて複雑さが低くなっています。 ただし、この簡素化と引き替えに柔軟性が低下します。 そのため、カスタム コマンド (プレビュー) は、タスクの完了やコマンドと制御のシナリオに最適です。
+**カスタム コマンド (プレビュー)** は、音声アシスタントを作成するための簡素化されたソリューションです。 これにより、統一された作成エクスペリエンスと自動ホスティング モデルが提供され、[Direct Line Speech](direct-line-speech.md) など他のアシスタント作成オプションと比べて複雑さが低くなっています。 ただし、この簡素化と引き替えに柔軟性が低下します。 そのため、カスタム コマンド (プレビュー) は、タスクの完了やコマンドと制御のシナリオに最適です。 特に、モノのインターネット (IoT) やヘッドレス デバイスに適しています。
 
 複雑な対話操作や、[仮想アシスタント ソリューションおよびエンタープライズ テンプレート](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)などの他のソリューションとの統合については、Direct Line Speech を使用することをお勧めします。
 

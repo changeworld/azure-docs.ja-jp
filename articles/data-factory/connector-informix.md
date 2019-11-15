@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して IBM Informix ソースからデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して IBM Informix ソースからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、IBM Informix ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: a0b89bb21400de74107e49988395f36a1c897dbd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: b5d6543f1d559f26926e9bbb98f10a67e71b5675
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090185"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680773"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して IBM Informix データ ストアをコピー元またはコピー先としてデータをコピーする
 
@@ -162,7 +162,7 @@ Informix からデータをコピーするために、コピー アクティビ�
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

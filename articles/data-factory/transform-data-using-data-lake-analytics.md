@@ -1,5 +1,5 @@
 ---
-title: U-SQL スクリプトを使用したデータ変換 - Azure | Microsoft Docs
+title: U-SQL スクリプトを使用したデータ変換 - Azure
 description: Azure Data Lake Analytics コンピューティング サービスで、U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53fb6773becff9f76c9658171965fbd148e94bc8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888437"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683876"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-usql-activity.md)
 > * [現在のバージョン](transform-data-using-data-lake-analytics.md)
 
@@ -119,7 +119,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 
 | プロパティ            | 説明                              | 必須 |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | パイプラインのアクティビティの名前。     | はい      |
+| 名前                | パイプラインのアクティビティの名前。     | はい      |
 | description         | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | はい      |
 | linkedServiceName   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |はい       |

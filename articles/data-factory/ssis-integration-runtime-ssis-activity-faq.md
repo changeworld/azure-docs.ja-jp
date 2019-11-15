@@ -1,5 +1,5 @@
 ---
-title: SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング | Microsoft Docs
+title: 'SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング '
 description: この記事では、SSIS 統合ランタイムでの SSIS パッケージ実行に関するトラブルシューティングのガイダンスを提供します
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: ec5a3ab0a2498e7d9bb24bed1bc0a37194e38e9e
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: de90614d9d24b3f57cb170e9a590de859f689331
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936960"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683987"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 

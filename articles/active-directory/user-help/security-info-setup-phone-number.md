@@ -1,5 +1,5 @@
 ---
-title: 電話呼び出しを使用するようにセキュリティ情報 (プレビュー) を設定する - Azure Active Directory | Microsoft Docs
+title: 電話呼び出しにセキュリティ情報 (プレビュー) を設定する - Azure AD
 description: 電話呼び出しを使用して本人確認をするようにセキュリティ情報を設定する方法です。
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a5dc5ec06e60112e69a31d1ce4c69e698576609f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160748"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803796"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>電話呼び出しを使用するようにセキュリティ情報 (プレビュー) を設定する
 

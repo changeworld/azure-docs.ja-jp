@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Teradata Vantage からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 description: Data Factory サービスの Teradata コネクタを使用すると、Teradata Vantage から、Data Factory によってサポートされているデータ ストアに、シンクとしてデータをコピーすることができます。
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: e538c8b00bddc8a2fa35b158c1e76f9033b73a56
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4074c50aa17bf804696060134e37055a18bd0137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089181"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680105"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -71,6 +71,13 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 | username | Teradata に接続するユーザー名を指定します。 Windows 認証の使用時に適用されます。 | いいえ |
 | password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)ことも選択できます。 <br>Windows 認証の使用時、または基本認証で Key Vault のパスワードを参照するときに適用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |はい |
+
+接続文字列には他にも、ケースに応じてさまざまな接続プロパティを設定できます。それらのプロパティを次に示します。
+
+| プロパティ | 説明 | 既定値 |
+|:--- |:--- |:--- |
+| 文字セット | セッションに使用する文字セット。 例: `CharacterSet=UTF16`。<br><br/>この値には、ユーザー定義の文字セットのほか、次のいずれかの定義済みの文字セットを指定できます。 <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS (Windows、DOS 互換、KANJISJIS_0S)<br/>- EUC (Unix 互換、KANJIEC_0U)<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | 既定値は `ASCII` です。 |
+| MaxRespSize |SQL 要求の応答バッファーの最大サイズ。単位はキロバイト (KB) です。 例: `MaxRespSize=‭10485760‬`。<br/><br/>Teradata Database バージョン 16.00 以降では、7361536 が最大値となります。 それより前のバージョンを使用する接続の場合、最大値は 1048576 です。 | 既定値は `65536` です。 |
 
 **基本認証を使用した例**
 
@@ -337,7 +344,7 @@ Teradata からデータをコピーするときには、次のマッピング�
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

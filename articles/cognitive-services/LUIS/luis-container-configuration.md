@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 9760475886ecb0f20d9f0f3981eab8246643da21
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101977"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795022"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
@@ -64,12 +64,9 @@ ms.locfileid: "71101977"
 * Azure portal:**Cognitive Services** の [概要]。`Endpoint` として表示されます。
 * LUIS ポータル: **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページ。エンドポイント URI の一部として表示されます。
 
-次の表に示したように、URL には、忘れずに `luis/v2.0` ルーティングを含めてください。
-
-
-|必須| 名前 | データ型 | 説明 |
-|--|------|-----------|-------------|
-|はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
+| 必須 | 名前 | データ型 | 説明 |
+|----------|------|-----------|-------------|
+| はい      | `Billing` | string | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](luis-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -79,7 +76,7 @@ ms.locfileid: "71101977"
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
+## <a name="http-proxy-credentials-settings"></a>HTTP プロキシ資格情報設定
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -109,8 +106,6 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 * これらの例では、Windows 上のアクセス許可の競合を防ぐために、`C:` ドライブのディレクトリを使用しています。 特定のディレクトリを入力ディレクトリとして使用する必要がある場合は、Docker サービスのアクセス許可の付与が必要なことがあります。 
 * Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 * 別のオペレーティング システムを使用している場合は、正しいコンソール/ターミナル、マウント用のフォルダー構文、ご利用のシステムの行連結文字を使用します。 これらの例では、行連結文字 `^` を使用した Windows コンソールを想定しています。 コンテナーは Linux オペレーティング システムであるため、ターゲット マウントでは Linux スタイルのフォルダー構文を使用します。
-
-次の表に示したように、URL には、忘れずに `luis/v2.0` ルーティングを含めてください。
 
 { _<引数名>_ } はお客様独自の値に置き換えてください。
 

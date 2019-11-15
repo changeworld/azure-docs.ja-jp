@@ -4,21 +4,22 @@ description: Azure Marketplace と AppSource の利用可能な地域
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619974"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822950"
 ---
 # <a name="geographic-availability-and-currency-support"></a>利用可能な地域と通貨サポート
 
 Azure Marketplace と AppSource のオファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
 
-|   国/地域名               |   ISO-2   |   通貨   |
+|   国/地域名               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|
 | アフガニスタン                         | AF        | USD          |
 | アルバニア                             | AL        | USD          |

@@ -1,5 +1,5 @@
 ---
-title: Azure-SSIS Integration Runtime を SQL Database のフェールオーバー用に構成する | Microsoft Docs
+title: Azure-SSIS Integration Runtime を SQL Database のフェールオーバー用に構成する
 description: この記事では、Azure SQL Database geo レプリケーションを使用して SSISDB データベース用に Azure-SSIS Integration Runtime とフェールオーバーを構成する方法について説明します
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f0612a688bb1e0fd79325b9a1f9b43731a210d10
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399237"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681385"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Azure SQL Database geo レプリケーションを使用して Azure-SSIS Integration Runtime とフェールオーバーを構成する
 

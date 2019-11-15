@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services モデルの非同期更新 | Microsoft Docs
-description: REST API を使用して非同期更新のコードを記述する方法を説明します。
+description: Azure Analysis Services REST API を使用し、モデル データの非同期更新をコーディングする方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5fbb3f2cbc0e53ab1bc04d57b583802e26b92a60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147370"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573395"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 

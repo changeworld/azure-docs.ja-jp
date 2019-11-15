@@ -1,5 +1,5 @@
 ---
-title: スキーマが異なるクラウド データベース間のクエリ | Microsoft Docs
+title: 異なるスキーマを使用したクラウド データベース間のクエリ
 description: 列方向のパーティションでデータベース間クエリを設定する方法
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 5657490474a401d9e3074ed6ab250a34ef0a5d8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568532"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823729"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 
@@ -165,7 +165,7 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>T-SQL リモート実行のストアド プロシージャ: sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>T-SQL リモート実行のストアド プロシージャ: sp\_execute_remote
 
 エラスティック クエリには、リモート データベースへの直接アクセスを提供するストアド プロシージャも導入されています。 このストアド プロシージャは [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。 使用できるパラメーターは次のとおりです。 
 

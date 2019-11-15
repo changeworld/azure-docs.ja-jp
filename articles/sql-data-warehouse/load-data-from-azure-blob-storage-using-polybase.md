@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み | Microsoft Docs
-description: このチュートリアルでは、Azure Portal と SQL Server Management Studio を使って、ニューヨークのタクシー データをパブリックな Azure BLOB から Azure SQL Data Warehouse に読み込みます。
+title: チュートリアル:ニューヨークのタクシー データを読み込む
+description: このチュートリアルでは、Azure portal と SQL Server Management Studio を使って、ニューヨークのタクシー データをグローバル Azure BLOB から Azure SQL Data Warehouse に読み込みます。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,17 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e7d1570deff9492dd13e74e25c1981b90565052d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575199"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822900"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
-このチュートリアルでは、PolyBase を使って、ニューヨークのタクシー データをパブリックな Azure BLOB から Azure SQL Data Warehouse に読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
+このチュートリアルでは、PolyBase を使って、ニューヨークのタクシー データをグローバル Azure BLOB から Azure SQL Data Warehouse に読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
 
 > [!div class="checklist"]
 > * Azure Portal でデータ ウェアハウスを作成する
@@ -44,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL データ ウェアハウスを作成する
 
-Azure SQL データ ウェアハウスは、定義された一連の[コンピューティング リソース](memory-and-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
+Azure SQL Data Warehouse は、定義された一連の[コンピューティング リソース]memory-concurrency-limits.md) を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
 
 空の SQL データ ウェアハウスを作成するには、次の手順に従います。 
 
@@ -60,7 +61,7 @@ Azure SQL データ ウェアハウスは、定義された一連の[コンピ�
    | ------- | --------------- | ----------- | 
    | **データベース名** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+   | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 |
    | **[ソースの選択]** | 空のデータベース | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの 1 つの種類であることに注意してください。|
 
     ![データ ウェアハウスを作成する](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
@@ -69,7 +70,7 @@ Azure SQL データ ウェアハウスは、定義された一連の[コンピ�
 
     | Setting | 推奨値 | 説明 | 
     | ------- | --------------- | ----------- |
-    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
+    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 | 
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
     | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
@@ -146,15 +147,15 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-    | Setting      | 推奨値 | 説明 | 
+    | 設定      | 推奨値 | 説明 | 
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
     | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver-20180430.database.windows.net** のような形式で指定する必要があります。 |
-    | Authentication | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+    | 認証 | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
     | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
     | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 
-    ![[サーバーへの接続]](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+    ![[サーバーに接続]](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
 4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
 

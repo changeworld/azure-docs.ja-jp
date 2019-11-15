@@ -4,15 +4,16 @@ description: Azure Marketplace で仮想マシンのオファーを作成する�
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 101f928e296d0b48b4e077676393772829aa76ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868717"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808967"
 ---
 # <a name="virtual-machine-skus-tab"></a>仮想マシンの SKU タブ
 
@@ -85,7 +86,7 @@ ms.locfileid: "67868717"
 * プランの運用開始後は、価格の変更はできなくなります。 ただし、サポートされるリージョンを追加または削除することはできます。 
 * Microsoft は、スケジュールされている SKU の料金に加えて、顧客の標準の Azure VM 使用料金を請求します。
 * すべてのリージョンの価格は、現地通貨で、価格設定時点の通貨レートで設定されます。  <!-- TD: Meaning? - Offer created, published, other? -->
-* 各リージョンの価格を個別に設定するには、価格スプレッドシートをエクスポートして、カスタム価格を適用してからインポートします。 
+* 各リージョンの価格を個別に設定するには、価格設定のスプレッドシートをエクスポートし、カスタム価格設定を適用し、それからインポートします。 
 
 
 ## <a name="next-steps"></a>次の手順

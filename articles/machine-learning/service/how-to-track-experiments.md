@@ -12,19 +12,23 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045205"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584522"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML の実験の実行とメトリックを監視する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 実験を追跡し、実行のメトリックを監視することでモデルの作成プロセスを強化します。 この記事では、Azure Machine Learning におけるトレーニング スクリプトへのログ記録コードの追加、実験の実行の送信、実行の監視、結果の検査を行う方法について説明します。
 
 > [!NOTE]
 > Azure Machine Learning では、トレーニング中に、自動化された機械学習の実行や、トレーニング ジョブを実行する Docker コンテナーなど、他のソースから情報をログに記録することもできます。 これらのログについては記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
+
+> [!TIP]
+> このドキュメントの情報は主に、モデルのトレーニング プロセスを監視したいデータ サイエンティストや開発者を対象としています。 Azure Machine Learning からリソース使用状況やイベント (クォータ、トレーニング実行の完了、モデル デプロイの完了など) を監視することに関心がある管理者の方は、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
 
 ## <a name="available-metrics-to-track"></a>追跡で使用できるメトリック
 
@@ -261,7 +265,7 @@ print(run.get_portal_url())
    ![自動機械学習の場合の Jupyter Notebook ウィジェット](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-パイプラインをさらに詳しく見るには、調べるパイプラインをテーブルでクリックすると、Azure portal のポップアップにグラフがレンダリングされます。
+パイプラインをさらに詳しく見るには、調べるパイプラインをテーブルでクリックすると、Azure Machine Learning Studio のポップアップにグラフがレンダリングされます。
 
 ### <a name="get-log-results-upon-completion"></a>完了時にログの結果を取得する
 
@@ -273,22 +277,19 @@ print(run.get_portal_url())
 ```run.get_metrics()``` を使用して、トレーニング済みモデルのメトリックを表示できます。 上の例でログに記録されたすべてのメトリックを取得して、最適なモデルを決定できます。
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で実験を表示する
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>[Azure Machine Learning Studio](https://ml.azure.com) でワークスペースの実験を表示する
 
-実験の実行が完了したら、記録された実験の実行レコードを参照できます。 履歴には 2 つの方法でアクセスできます。
+実験の実行が完了したら、記録された実験の実行レコードを参照できます。 [Azure Machine Learning Studio](https://ml.azure.com) から履歴にアクセスできます。
 
-* ```print(run.get_portal_url())``` で実行に対する URL を直接取得します
-* 実行の名前を送信することで、実行の詳細を表示します (この場合は ```run```)。 この方法では、実験名、ID、種類、状態、詳細ページ、Azure portal へのリンク、およびドキュメントへのリンクが示されます。
+[実験] タブに移動し、実験を選択します。 実験実行ダッシュボードが表示されます。ここで、実行ごとにログに記録された、追跡対象のメトリックとグラフを確認できます。 この場合は、MSE とアルファ値を記録しました。
 
-実行へのリンクでは、Azure portal 内の実行詳細ページに直接移動します。 ここでは、任意のプロパティ、追跡対象のメトリック、イメージ、および実験に記録されたグラフを見ることができます。 この場合は、MSE とアルファ値を記録しました。
+  ![Azure Machine Learning Studio での実行の詳細](./media/how-to-track-experiments/experiment-dashboard.png)
 
-  ![Azure portal での実行の詳細](./media/how-to-track-experiments/run-details-page.png)
-
-また、実行に対する出力またはログを表示したり、送信した実験のスナップショットをダウンロードして他のユーザーと実験フォルダーを共有したりすることもできます。
+また、特定の実行にドリルダウンしてその出力やログを表示したり、送信した実験のスナップショットをダウンロードして他のユーザーと実験フォルダーを共有したりすることもできます。
 
 ### <a name="viewing-charts-in-run-details"></a>実行の詳細でのグラフの表示
 
-実行中にさまざまな種類のメトリックを記録し、Azure portal でグラフとして表示するために、ロギング APIを使用するさまざまな方法があります。 
+実行中にさまざまな種類のメトリックを記録し、Azure Machine Learning Studio でグラフとして表示するために、ロギング APIを使用するさまざまな方法があります。
 
 |ログに記録される値|コード例| ポータルでの表示|
 |----|----|----|

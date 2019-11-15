@@ -1,5 +1,5 @@
 ---
-title: シングルテナント アプリで Azure SQL Database スキーマを管理する | Microsoft Docs
+title: シングルテナント アプリでのスキーマの管理
 description: Azure SQL Database を使用するシングルテナント アプリで複数のテナントのスキーマを管理します
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
-ms.openlocfilehash: 95d13c997d3871815ebd541e5985eb9fef726a76
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029746"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822009"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>テナントごとのデータベース パターンを使用した Azure SQL Database での SaaS アプリケーション内のスキーマの管理
  

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e3a76abe840a70ba7410855cde1d82ec96c28eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506486"
+ms.locfileid: "73579628"
 ---
 # <a name="audio-content-creation"></a>Audio Content Creation
 
@@ -43,7 +43,7 @@ Audio Content Creation ツールは、[音声合成マークアップ言語 (SSM
 
 Speech リソースを作成して Speech Studio に接続するには、次の手順に従います。
 
-1. 次の手順に従って、[Azure アカウントにサインアップし、Speech リソースを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)します。 価格レベルが **S0** に設定されていることを確認します。 ニューラル音声のいずれかを使用している場合は、必ず[サポートされているリージョン](regions.md#standard-and-neural-voices)でリソースを作成してください。
+1. 次の手順に従って、[Azure アカウントにサインアップ](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)し、[Speech リソースを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)します。 価格レベルが **S0** に設定されていることを確認します。 ニューラル音声のいずれかを使用している場合は、必ず[サポートされているリージョン](regions.md#standard-and-neural-voices)でリソースを作成してください。
 2. [Audio Content Creation](https://aka.ms/audiocontentcreation) にサインインします。
 3. 既存のプロジェクトを選択するか、 **[新規作成]** をクリックします。
 4. 上部のナビゲーションにある **[設定]** オプションを使用すると、いつでもサブスクリプションを変更できます。

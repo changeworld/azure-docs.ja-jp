@@ -1,5 +1,5 @@
 ---
-title: フェールオーバー グループ - Azure SQL Database | Microsoft Docs
+title: フェールオーバー グループ
 description: 自動フェールオーバー グループは SQL Database 機能の 1 つです。これを使用して、SQL Database サーバー上のデータベースのグループや、マネージド インスタンス内のすべてのデータベースのレプリケーションおよび自動/調整されたフェールオーバーを管理することができます。
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/21/2019
-ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 10/23/2019
+ms.openlocfilehash: 88bcee1cbb23bf298c5ad3920a7744d8da6ce3fb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750471"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821967"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -65,7 +65,7 @@ ms.locfileid: "72750471"
   同じ SQL Database サーバー上の複数の単一データベースを、同じフェールオーバー グループに配置することができます。 フェールオーバー グループに単一データベースを追加すると、セカンダリ サーバー上の同じエディションとコンピューティング サイズを使用してセカンダリ データベースが自動的に作成されます。  フェールオーバー グループを作成したときに、そのサーバーを指定しています。 セカンダリ サーバーにセカンダリ データベースが既に存在するデータベースを追加する場合、その geo レプリケーション リンクがグループに継承されます。 フェールオーバー グループの一部でないサーバーにセカンダリ データベースが既に存在するデータベースを追加すると、セカンダリ サーバーに新しいセカンダリが作成されます。
   
   > [!IMPORTANT]
-  > マネージド インスタンスでは、すべてのユーザー データベースがレプリケートされます。 フェールオーバー グループで、レプリケーション対象としてユーザー データベースのサブセットを選択することはできません。
+  > 既存のセカンダリ データベースである場合を除き、セカンダリ サーバーに同じ名前のデータベースがないことを確認してください。 マネージド インスタンスのフェールオーバー グループでは、すべてのユーザー データベースがレプリケートされます。 フェールオーバー グループで、レプリケーション対象としてユーザー データベースのサブセットを選択することはできません。
 
 - **エラスティック プール内のデータベースをフェールオーバー グループに追加する**
 
@@ -89,6 +89,9 @@ ms.locfileid: "72750471"
 - **自動フェールオーバー ポリシー**
 
   既定では、フェールオーバー グループは自動フェールオーバー ポリシーを使用して構成されます。 SQL データベース サービスでは、エラーが検出され、猶予期間が終了した後、フェールオーバーがトリガーされます。 システムでは、影響の規模が原因で、組み込みの [SQL データベース サービスの高可用性インフラストラクチャ](sql-database-high-availability.md)によって機能停止を軽減できないかどうかを確認する必要があります。 アプリケーションからフェールオーバー ワークフローを制御するには、自動フェールオーバーをオフにします。
+  
+  > [!NOTE]
+  > 障害の規模とその軽減にかかる時間の検証には、運用チームによる人間の行為が必要なため、猶予期間を 1 時間未満に設定することはできません。  この制約は、データの同期状態に関係なく、フェールオーバー グループ内のすべてのデータベースに適用されます。 
 
 - **読み取り専用フェールオーバー ポリシー**
 
@@ -150,7 +153,7 @@ ms.locfileid: "72750471"
   1 つまたは複数のフェールオーバー グループを異なるリージョンの 2 つのサーバー (プライマリおよびセカンダリ サーバー) 間に作成できます。 各グループには、プライマリ リージョンに発生した機能停止によりすべてまたは一部のプライマリ データベースが使用できなくなった際にユニットとして復元できる、1 つまたは複数のデータベースを含めることができます。 フェールオーバー グループは、プライマリと同じサービスの目的を共有する geo セカンダリ データベースを作成します。 既にある geo レプリケーションのリレーションシップをこのフェールオーバー グループに追加する場合は、その geo セカンダリが、プライマリと同じサービス レベルおよびコンピューティング サイズで構成されていることを確認してください。
   
   > [!IMPORTANT]
-  > 異なるサブスクリプションにある 2 つのサーバー間でのフェールオーバー グループの作成は、現在、単一データベースとエラスティック プールではサポートされていません。
+  > 異なるサブスクリプションにある 2 つのサーバー間でのフェールオーバー グループの作成は、現在、単一データベースとエラスティック プールではサポートされていません。 フェールオーバー グループを作成した後で、プライマリ サーバーまたはセカンダリ サーバーを別のサブスクリプションに移動した場合、フェールオーバー要求やその他の操作が失敗する可能性があります。
 
 - **OLTP ワークロードに読み取り/書き込みのリスナーを使用する**
 
@@ -326,7 +329,7 @@ ms.locfileid: "72750471"
 
 | コマンドレット | 説明 |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | サーバーからフェールオーバー グループを削除し、そのグループが含まれるすべてのセカンダリ データベースを削除します。 |
 | [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | フェールオーバー グループ構成を取得します。 |
 | [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |フェールオーバー グループの構成を変更します。 |
@@ -342,7 +345,7 @@ ms.locfileid: "72750471"
 
 | コマンドレット | 説明 |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |フェールオーバー グループの構成を変更します。|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |フェールオーバー グループ構成を取得します。|
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|

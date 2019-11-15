@@ -1,5 +1,5 @@
 ---
-title: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行 - Azure | Microsoft Docs
+title: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行 - Azure
 description: この記事では、ストアド プロシージャ アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: b71a954da746ba04aeaa0797c13bf2c81838179d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3bfef0d787d8289055ab80e2ac30408dd7a13fb4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154933"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673757"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する
 この記事では、ストアド プロシージャ アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
@@ -34,7 +34,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ## <a name="data-factory-ui-azure-portal"></a>データ ファクトリ UI (Azure Portal)
 このセクションでは、データ ファクトリ UI を使用して、SSIS パッケージを呼び出すストアド プロシージャ アクティビティを含む Data Factory パイプラインを作成します。
 
-### <a name="create-a-data-factory"></a>Data Factory を作成する。
+### <a name="create-a-data-factory"></a>Data Factory の作成
 最初の手順として、Azure Portal を使用してデータ ファクトリを作成します。 
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
@@ -151,7 +151,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。 
 
-### <a name="create-a-data-factory"></a>Data Factory を作成する。
+### <a name="create-a-data-factory"></a>Data Factory の作成
 Azure-SSIS IR と同じデータ ファクトリを使用することも、別のデータ ファクトリを作成することもできます。 次の手順では、データ ファクトリを作成する方法を説明します。 このデータ ファクトリにストアド プロシージャ アクティビティを含むパイプラインを作成します。 ストアド プロシージャ アクティビティが SSISDB データベース内でストアド プロシージャを実行して、SSIS パッケージを実行します。 
 
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 

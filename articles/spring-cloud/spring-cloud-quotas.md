@@ -4,14 +4,14 @@ description: Azure Spring Cloud のサービス クォータとサービス プ�
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 89934ee0ab0c901a904a1a5ac2fb620185571a23
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038686"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607666"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure Spring Cloud のクォータとサービス プラン
 
@@ -37,4 +37,4 @@ Spring アプリケーションあたりのアプリ インスタンスの合計
 
 ## <a name="next-steps"></a>次の手順
 
-特定の既定の制限とクォータを増やすことができます。 リソースを増やす必要がある場合は、azure-spring-cloud@service.microsoft.com に要求をお送りください。
+特定の既定の制限とクォータを増やすことができます。 リソースを増やす必要がある場合は、[サポート リクエストを作成してください](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。

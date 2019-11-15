@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/12/2019
+ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756043"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580615"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -28,7 +28,7 @@ Azure Machine Learning のアーキテクチャ、概念、ワークフローに
 機械学習モデルのワークフローでは、通常、このシーケンスに従います。
 
 1. **トレーニング**
-    + **Python** またはビジュアル インターフェイスを使用して、機械学習トレーニング スクリプトを開発します。
+    + **Python** またはビジュアル デザイナーを使用して、機械学習トレーニング スクリプトを開発します。
     + **コンピューティング ターゲット** を作成して構成します。
     + 構成したコンピューティング ターゲットに **スクリプトを送信** して、その環境で実行します。 トレーニング中、このスクリプトは、**データストア**の読み取りと書き込みを行うことができます。 そして実行の記録は、**ワークスペース**に**実行**として保存され、**実験**の下でグループ化されます。
 
@@ -45,23 +45,26 @@ Azure Machine Learning のアーキテクチャ、概念、ワークフローに
 Azure Machine Learning 用のこれらのツールを使用します。
 
 +  [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、Python 環境でサービスを操作します。
++ [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します。
 + [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli) を使用して、機械学習アクティビティを自動化します。
 + [Azure Machine Learning VS Code 拡張機能](how-to-vscode-tools.md)を使用して、Visual Studio Code でコードを書き込みます
-+ [Azure Machine Learning 用のビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md) を使用して、コードを記述せずにワークフローの手順を行います。
++ [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) を使用して、コードを記述せずにワークフローの手順を行います。
+
 
 > [!NOTE]
 > この記事では、Azure Machine Learning で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)に関するページを参照してください。
 
 ## <a name="glossary"></a>用語集
 + <a href="#activities">アクティビティ</a>
++ <a href="#compute-instance">ノートブック VM</a>
 + <a href="#compute-targets">コンピューティング先</a>
 + <a href="#datasets-and-datastores">データセットとデータストア</a>
-+ <a href="#deployment">Deployment</a>
++ <a href="#endpoints">Endpoints</a>
 + <a href="#environments">環境</a>
 + [Estimator](#estimators)
 + <a href="#experiments">実験</a>
 + <a href="#github-tracking-and-integration">Git の追跡</a>
-+ <a href="#iot-module-deployments">IoT モジュール</a>
++ <a href="#iot-module-endpoints">IoT モジュール</a>
 + <a href="#logging">Logging</a>
 + <a href="#ml-pipelines">ML パイプライン</a>
 + <a href="#models">モデル</a>
@@ -69,7 +72,7 @@ Azure Machine Learning 用のこれらのツールを使用します。
 + <a href="#run-configurations">実行構成</a>
 + <a href="#snapshots">スナップショット</a>
 + <a href="#training-scripts">トレーニング スクリプト</a>
-+ <a href="#web-service-deployments">Web サービス</a>
++ <a href="#web-service-endpoint">Web サービス</a>
 + <a href="#workspaces">ワークスペース</a>
 
 ### <a name="activities"></a>Activities
@@ -81,9 +84,15 @@ Azure Machine Learning 用のこれらのツールを使用します。
 
 アクティビティでは、ユーザーがこれらの操作の進行状況を簡単に監視できるように、SDK または Web UI 経由で通知を提供できます。
 
+### <a name="compute-instance"></a>ノートブック VM
+
+**Azure Machine Learning ノートブック VM** は、機械学習用にインストールされた複数のツールと環境を含む、フル マネージドのクラウドベースのワークステーションです。 ノートブック VM は、比較的小さいトレーニング ジョブと推論ジョブのコンピューティング ターゲットとして使用できます。 大規模なタスクの場合、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)は、コンピューティング ターゲットの選択肢として適しています。
+
+ノートブック VM についての詳細情報を参照してください。
+
 ### <a name="compute-targets"></a>コンピューティング ターゲット
 
-[コンピューティング先](concept-compute-target.md)では、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする場所であるコンピューティング リソースを指定できます。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。 コンピューティング ターゲットを使用すれば、コードを変更しなくてもコンピューティング環境を簡単に変更できます。
+[コンピューティング先](concept-compute-target.md)では、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする場所であるコンピューティング リソースを指定できます。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。
 
 詳細については、[トレーニングおよびデプロイ用の利用可能なコンピューティング先](concept-compute-target.md)に関するページを参照してください。
 
@@ -97,23 +106,23 @@ Azure Machine Learning 用のこれらのツールを使用します。
 
 **データストア**は、Azure ストレージ アカウントに対するストレージの抽象化です。 データストアでは、バックエンド ストレージとして Azure BLOB コンテナーまたは Azure ファイル共有を使用できます。 各ワークスペースには既定のデータストアがあり、ユーザーは追加のデータストアを登録できます。 データストアのファイルを格納および取得するには、Python SDK API または Azure Machine Learning CLI を使用します。
 
-### <a name="deployment"></a>Deployment
+### <a name="endpoints"></a>エンドポイント
 
-デプロイは、クラウドでホストできる Web サービスまたは統合デバイスのデプロイ用 IoT モジュールへのモデルのインスタンス化です。
+エンドポイントは、クラウドでホストできる Web サービスまたは統合デバイス デプロイ用 IoT モジュールへのモデルのインスタンス化です。
 
-#### <a name="web-service-deployments"></a>Web サービスのデプロイ
+#### <a name="web-service-endpoint"></a>Web サービス エンドポイント
 
-デプロイされた Web サービスでは、Azure Container Instances、Azure Kubernetes Service、または FPGA を使用できます。 モデル、スクリプト、および関連ファイルからサービスを作成します。 これらはイメージにカプセル化されており、Web サービスにランタイム環境を提供します。 イメージには、Web サービスに送信されるスコアリング要求を受け取る、負荷分散された HTTP エンドポイントがあります。
+Web サービスとしてモデルをデプロイする場合、エンドポイントを Azure Container Instances、Azure Kubernetes Service、または FPGA にデプロイできます。 モデル、スクリプト、および関連ファイルからサービスを作成します。 これらは、モデルの実行環境を含むベース コンテナー イメージに配置されます。 イメージには、Web サービスに送信されるスコアリング要求を受け取る、負荷分散された HTTP エンドポイントがあります。
 
-Azure には Application Insights のテレメトリやモデルのテレメトリを収集する機能があり、それを有効にすると、Web サービスのデプロイを監視するのに役立ちます。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーの Application Insights インスタンスとストレージ アカウント インスタンスに格納されます。
+Azure には Application Insights のテレメトリやモデルのテレメトリを収集する機能があり、それを有効にすると、Web サービスを監視するのに役立ちます。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーの Application Insights インスタンスとストレージ アカウント インスタンスに格納されます。
 
 自動スケールを有効にしてある場合は、Azure でデプロイが自動的にスケーリングされます。
 
 Web サービスとしてのモデルのデプロイ例については、[Azure Container Instances での画像分類モデルのデプロイ](tutorial-deploy-models-with-aml.md)に関するページを参照してください。
 
-#### <a name="iot-module-deployments"></a>IoT モジュールのデプロイ
+#### <a name="iot-module-endpoints"></a>IoT モジュール エンドポイント
 
-デプロイされる IoT モジュールは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 エッジ デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
+デプロイされる IoT モジュール エンドポイントは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 エッジ デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
 
 監視を有効にしてある場合、Azure では Azure IoT Edge モジュール内のモデルから利用統計情報を収集します。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーのストレージ アカウント インスタンスに格納されます。
 
@@ -188,7 +197,6 @@ Scikit-learn と Estimator を使用したモデルのトレーニングの例�
 
 モデルの登録例については、[Azure Machine Learning での画像分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するページを参照してください。
 
-
 ### <a name="runs"></a>実行
 
 実行とは、トレーニング スクリプトの 1 回の実行です。 Azure Machine Learning は、すべての実行を記録して、次の情報を保存します。
@@ -223,7 +231,6 @@ Scikit-learn と Estimator を使用したモデルのトレーニングの例�
 ### <a name="workspaces"></a>Workspaces
 
 [ワークスペース](concept-workspace.md)は、Azure Machine Learning の最上位のリソースです。 Azure Machine Learning を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。 他のユーザーとワークスペースを共有できます。 ワークスペースの詳細については、「[Azure Machine Learning ワークスペースとは](concept-workspace.md)」をご覧ください。
-
 
 ### <a name="next-steps"></a>次の手順
 

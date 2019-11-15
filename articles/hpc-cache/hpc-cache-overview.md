@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache プレビューの概要
+title: Azure HPC Cache の概要
 description: ハイパフォーマンス コンピューティングのためのファイル アクセス アクセラレータ ソリューションである Azure HPC Cache について説明します。
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: bfbbcd2d7d1bb44e260bedda54ca38ed6860ea67
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254486"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582139"
 ---
-# <a name="what-is-azure-hpc-cache-preview"></a>Azure HPC Cache とは (プレビュー)
+# <a name="what-is-azure-hpc-cache"></a>Azure HPC Cache とは
 
 ハイパフォーマンス コンピューティング (HPC) タスクには、Azure HPC Cache を使用することでデータへのアクセスを高速化できます。 Azure HPC Cache で Azure 内のファイルをキャッシュすることで、クラウド コンピューティングのスケーラビリティを既存のワークフローでも実現します。 このサービスは、ローカル データセンターのネットワーク接続ストレージ (NAS) 環境などの WAN リンクにデータが格納されているワークフローでも使用できます。
 
@@ -54,13 +54,17 @@ Azure HPC Cache は、次の Azure リージョンで使用できます。
 * 北ヨーロッパ
 * 西ヨーロッパ
 * 東南アジア
+* シドニー
 * 米国西部 2
+* 韓国中部
 
 最新情報については、[Azure HPC Cache の製品ページ](https://azure.microsoft.com/services/hpc-cache)をご覧ください。
 
-## <a name="preview-availability"></a>プレビューのリリース状況
+## <a name="service-availability"></a>サービスの提供状況
 
-サービスの品質を保証するために、Azure HPC Cache パブリック プレビューは制限されています。 アクセスを依頼するには、[こちらのフォーム](https://aka.ms/onboard-hpc-cache)に入力してください。 サブスクリプションがアクセス一覧に追加された後に、テスト キャッシュを作成できます。
+Azure HPC Cache で使用する各サブスクリプションへのアクセスを依頼する必要があります。 この制限は、一般公開の最初の月のサービス品質を保証するのに役立ちます。
+
+アクセスを依頼するには、[こちらのフォーム](https://aka.ms/onboard-hpc-cache)に入力してください。 サブスクリプションがアクセス一覧に追加された後に、キャッシュを作成できます。
 
 ## <a name="next-steps"></a>次の手順
 

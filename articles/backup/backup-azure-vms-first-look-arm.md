@@ -1,18 +1,18 @@
 ---
-title: Azure Backup サービスで VM の設定から Azure VM をバックアップする
-description: Azure Backup サービスを使用して Azure VM をバックアップする方法について説明します
+title: Azure Backup を使用して VM の設定から Azure VM をバックアップする
+description: この記事では、Azure Backup サービスを使用して単一の Azure VM または複数の Azure VM をバックアップする方法について説明します。
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 232c027ef60a031df53f2439586a0ae459ab67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639774"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747240"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM の設定から Azure VM をバックアップする
 
@@ -20,8 +20,6 @@ ms.locfileid: "68639774"
 
 - 1 つの Azure VM:この記事の手順では、VM の設定から直接 Azure VM をバックアップする方法について説明します。
 - 複数の Azure VM:Recovery Services コンテナーを設定して、複数の Azure VM のバックアップを構成することができます。 このシナリオについては、[こちらの記事](backup-azure-arm-vms-prepare.md)の説明に従ってください。
-
-
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -36,7 +34,6 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
 - エージェントがインストールされた後、バックアップを有効にすると、Azure Backup によってエージェントにバックアップ拡張機能がインストールされます。 ユーザーが何もしなくても、拡張機能に更新プログラムと修正プログラムが適用されます。
 
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM の設定からバックアップする
-
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]** をクリックし、[フィルター] に「**Virtual machines**」と入力して、"**Virtual Machines**" をクリックします。
@@ -69,11 +66,9 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
     - 初回バックアップが完了するまで、 **[前回のバックアップの状態]** には **[警告 (初回のバックアップが保留中)]** と表示されます。
     - 次のスケジュールされたバックアップがいつ実行されるかを確認するには、バックアップ ポリシー名をクリックします。
 
-
 > [!NOTE]
 > Azure Backup サービスでは、スナップショットを格納するために別のリソース グループ (VM のリソース グループ以外) が作成されます。名前の形式は **AzureBackupRG_geography_number** です (例: AzureBackupRG_northeurope_1)。 このリソース グループ内のデータは、Azure Virtual Machine Backup ポリシーの "インスタント リカバリ スナップショットの保存" セクションに指定されている日数の期間保持されます。 このリソース グループにロックを適用すると、バックアップが失敗する可能性があります。<br>
 制限ポリシーによってリソース ポイント コレクションの作成がブロックされ、この場合もバックアップが失敗するため、このリソース グループも名前/タグの制限から除外する必要があります。
-
 
 ## <a name="run-a-backup-immediately"></a>バックアップをすぐに実行する
 
@@ -86,9 +81,6 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
     ![バックアップ リテンション期間の期限](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
 3. ポータルの通知を使用すると、バックアップ ジョブがトリガーされたことを知ることができます。 バックアップの進行状況を監視するには、 **[すべてのジョブの表示]** をクリックします。
-
-
-
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Recovery Services コンテナーからバックアップする
 

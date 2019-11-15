@@ -3,21 +3,22 @@ title: 自動 ML 結果の概要
 titleSuffix: Azure Machine Learning
 description: 自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。
 services: machine-learning
-author: nilesha
-ms.author: nilesha
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/22/2019
-ms.openlocfilehash: b0024bc12f29a76da02c9f7e62af7727b9af7249
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.date: 11/04/2019
+ms.openlocfilehash: 7f8789076b00cd2b5a0694cf1f52e5dfe1569aee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350645"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571388"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。 
 
@@ -30,14 +31,14 @@ ms.locfileid: "71350645"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* SDK を使用するか、Azure portal またはワークスペースのランディング ページ (プレビュー) で、自動機械学習の実行の実験を作成します。
+* SDK を使用するか Azure Machine Learning Studio (プレビュー) で、自動機械学習の実行用の実験を作成します。
 
     * SDK を使用し、[分類モデル](how-to-auto-train-remote.md)または[回帰モデル](tutorial-auto-train-models.md)を作成する
-    * [Azure portal またはワークスペースのランディング ページ (プレビュー)](how-to-create-portal-experiments.md) を使用し、適切なデータをアップロードして分類または回帰モデルを作成します。
+    * [Azure Machine Learning Studio](how-to-create-portal-experiments.md) を使用して、適切なデータをアップロードすることで分類または回帰モデルを作成します。
 
 ## <a name="view-the-run"></a>実行を確認する
 
-自動機械学習の実験を実行した後、実行の履歴は機械学習サービスのワークスペースで見つけることができます。 
+自動機械学習の実験を実行した後、機械学習ワークスペースで実行の履歴を確認できます。 
 
 1. ワークスペースに移動します。
 
@@ -49,11 +50,11 @@ ms.locfileid: "71350645"
 
    [![実験リスト](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
-1. 下部の表で、 **[実行数]** を選択します。
+1. 一番下のテーブルで、 **[実行]** を選択します。
 
    [![実験の実行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
-1. 繰り返しの表で、詳しく調べるモデルの **[Iteration Number]\(繰り返し回数\)** を選択します。
+1. [モデル] で、詳しく調べるモデルの **[アルゴリズム名]** を選択します。
 
    [![実験モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
@@ -90,12 +91,12 @@ f1_score_micro|F1 スコアは、適合率と再現率の調和平均です。 M
 f1_score_weighted|F1 スコアは、適合率と再現率の調和平均です。 各クラスの F1 スコアのクラスごとの頻度の加重平均|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
 log_loss|これは、(多項) ロジスティック回帰とその拡張機能 (ニューラル ネットワークなど) で使用される損失関数で、確率的分類法の予測を前提として、true ラベルの負の対数尤度として定義されます。 {0,1} の true ラベル yt と yt = 1 の推定確率 yp の 1 つの例として、log loss は -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp))。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|なし|
 norm_macro_recall|正規化されたマクロ再現率は、ランダムなパフォーマンスでのスコアが 0、最適なパフォーマンスでのスコアが 1 になるように正規化されたマクロ再現率です。 これは、norm_macro_recall := (recall_score_macro - R)/(1 - R) で実現されます。R はランダム予測の recall_score_macro で期待される値 (つまり、二項分類では R=0.5、C クラス分類問題では R=(1/C))。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "macro" |
-precision_score_macro|適合率は、あるクラスとしてラベル付けされ、実際にそのクラスに存在する要素の割合です。 Macro は、各クラスの適合率の算術平均です。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
-precision_score_micro|適合率は、あるクラスとしてラベル付けされ、実際にそのクラスに存在する要素の割合です。 Micro は、真陽性と偽陽性の合計をカウントすることによって、グローバルに計算されます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
-precision_score_weighted|適合率は、あるクラスとしてラベル付けされ、実際にそのクラスに存在する要素の割合です。 重み付けは各クラスの適合率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
-recall_score_macro|再現率は、あるクラスに実際に存在し、正しくラベル付けされている要素の割合です。 Macro は、各クラスの再現率の算術平均です。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-recall_score_micro|再現率は、あるクラスに実際に存在し、正しくラベル付けされている要素の割合です。 Micro は、真陽性、偽陰性、偽陽性の合計をカウントすることによって、グローバルに計算されます|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
-recall_score_weighted|再現率は、あるクラスに実際に存在し、正しくラベル付けされている要素の割合です。 重み付けは各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
+precision_score_macro|適合率は、正しくラベル付けされた要素のうち陽性として予測された要素の割合です。 Macro は、各クラスの適合率の算術平均です。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
+precision_score_micro|適合率は、正しくラベル付けされた要素のうち陽性として予測された要素の割合です。 Micro は、真陽性と偽陽性の合計をカウントすることによって、グローバルに計算されます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
+precision_score_weighted|適合率は、正しくラベル付けされた要素のうち陽性として予測された要素の割合です。 重み付けは各クラスの適合率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
+recall_score_macro|再現率は、特定のクラスのうち、正しくラベル付けされた要素の割合です。 Macro は、各クラスの再現率の算術平均です。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
+recall_score_micro|再現率は、特定のクラスのうち、正しくラベル付けされた要素の割合です。 Micro は、真陽性、偽陰性、偽陽性の合計をカウントすることによって、グローバルに計算されます|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
+recall_score_weighted|再現率は、特定のクラスのうち、正しくラベル付けされた要素の割合です。 重み付けは各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|重み付けされた精度は、それぞれの例に対して指定された重みが、その例の true クラス内の true インスタンスの割合に一致する精度です。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight は、ターゲット内の各要素に対して、そのクラスの割合が等しいベクターです|
 
 ### <a name="confusion-matrix"></a>混同行列
@@ -212,7 +213,7 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
 ![特徴説明能力](./media/how-to-understand-automated-ml/feature-importance.gif)
 
-解釈可能性の機能を有効にする方法については、[Python での自動 ML 実験の構成](how-to-configure-auto-train.md#explain-the-model-interpretability)のセクションを参照してください。  最適なモデルを説明する例については、[最適なモデルの説明](how-to-auto-train-remote.md#explain)に関するページを参照してください。
+解釈可能性機能の有効化の詳細については、自動 ML 実験で解釈可能性を有効にする[方法](how-to-machine-learning-interpretability-automl.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

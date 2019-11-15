@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ab3d2c0e73a5fd52e4659e38cb80c5e18d334caa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d5a32780f8598c0843958b99f02cd18aa33bea2e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466195"
+ms.locfileid: "73582842"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する
 
@@ -69,92 +69,36 @@ ms.locfileid: "73466195"
 1. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started
+    git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     ```
 
 ## <a name="review-the-code"></a>コードの確認
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 それ以外の場合は、「[アプリの実行](#run-the-app)」に進んでください。 
 
-* `AsyncDocumentClient` の初期化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) は、Azure Cosmos データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
-
-    ```java
-    client = new AsyncDocumentClient.Builder()
-             .withServiceEndpoint(YOUR_COSMOS_DB_ENDPOINT)
-             .withMasterKeyOrResourceToken(YOUR_COSMOS_DB_MASTER_KEY)
-             .withConnectionPolicy(ConnectionPolicy.GetDefault())
-             .withConsistencyLevel(ConsistencyLevel.Eventual)
-             .build();
-    ```
-
-* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.database) の作成。
-
-    ```java
-    Database databaseDefinition = new Database();
-    databaseDefinition.setId(databaseName);
+* `CosmosClient` の初期化。 `CosmosClient` は、Azure Cosmos データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
     
-    client.createDatabase(databaseDefinition, null)
-            .toCompletable()
-            .await();
-    ```
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.documentcollection) の作成。
+* CosmosDatabase の作成。
 
-    ```java
-    DocumentCollection collectionDefinition = new DocumentCollection();
-    collectionDefinition.setId(collectionName);
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-    //...
+* CosmosContainer の作成。
 
-    client.createCollection(databaseLink, collectionDefinition, requestOptions)
-            .toCompletable()
-            .await();
-    ```
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.document) メソッドを使用したドキュメントの作成。
+* `createItem` メソッドを使用した項目の作成。
 
-    ```java
-    // Any Java object within your code
-    // can be serialized into JSON and written to Azure Cosmos DB
-    Family andersenFamily = new Family();
-    andersenFamily.setId("Andersen.1");
-    andersenFamily.setLastName("Andersen");
-    // More properties
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
+   
+* `getItem` と `read` メソッドを使用してポイント読み取りを実行します。
 
-    String collectionLink = String.format("/dbs/%s/colls/%s", databaseName, collectionName);
-    client.createDocument(collectionLink, family, null, true)
-            .toCompletable()
-            .await();
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
-    ```
+* `queryItems` メソッドを使用して JSON に対する SQL クエリを実行します。
 
-* [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querydocuments?view=azure-java-stable) メソッドを使用して JSON に対する SQL クエリを実行します。
-
-    ```java
-    FeedOptions queryOptions = new FeedOptions();
-    queryOptions.setPageSize(-1);
-    queryOptions.setEnableCrossPartitionQuery(true);
-    queryOptions.setMaxDegreeOfParallelism(-1);
-
-    String collectionLink = String.format("/dbs/%s/colls/%s",
-            databaseName,
-            collectionName);
-    Iterator<FeedResponse<Document>> it = client.queryDocuments(
-            collectionLink,
-            "SELECT * FROM Family WHERE Family.lastName = 'Andersen'",
-            queryOptions).toBlocking().getIterator();
-
-    System.out.println("Running SQL query...");
-    while (it.hasNext()) {
-        FeedResponse<Document> page = it.next();
-        System.out.println(
-                String.format("\tRead a page of results with %d items",
-                        page.getResults().size()));
-        for (Document doc : page.getResults()) {
-            System.out.println(String.format("\t doc %s", doc));
-        }
-    }
-    ```    
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
 
 ## <a name="run-the-app"></a>アプリの実行
 
@@ -164,7 +108,7 @@ ms.locfileid: "73466195"
 1. Git ターミナル ウィンドウで `cd` を使用して、サンプル コード フォルダーに移動します。
 
     ```bash
-    cd azure-cosmos-db-sql-api-async-java-getting-started/azure-cosmosdb-get-started
+    cd azure-cosmos-java-getting-started
     ```
 
 2. git ターミナル ウィンドウで、次のコマンドを実行して 必要な Java パッケージをインストールします。
@@ -182,18 +126,12 @@ ms.locfileid: "73466195"
 
     ターミナル ウィンドウに、FamilyDB データベースが作成されたという通知が表示されます。 
     
-4. 任意のキーを押してデータベースを作成し、さらにもう一度キーを押してコレクションを作成します。 
-
-    ブラウザーでデータ エクスプローラーに戻り、FamilyDB データベースと FamilyCollection コレクションが格納されていることを確認してください。
-
-5. コンソール ウィンドウに切り替え、任意のキーを押して 1 つ目のドキュメントを作成し、もう一度キーを押して 2 つ目のドキュメントを作成します。 その後再びデータ エクスプローラーに切り替えてそれらを確認します。 
-
-6. キーを押してクエリを実行し、コンソール ウィンドウで出力を確認します。 
+4. `AzureSampleFamilyDB` という名前のデータベースがアプリによって作成されます。
+5. `FamilyContainer` という名前のコンテナーがアプリによって作成されます。
+6. アプリは、オブジェクト ID とパーティション キーの値 (この例では lastName) を使用してポイント読み取りを実行します。 
+7. アプリは項目を照会して、姓が IN 条件 ('Andersen', 'Wakefield', 'Johnson') に該当するすべての家族を取得します。
 
 7. 作成したリソースは、アプリによって削除されません。 ポータルに戻り、[リソースをクリーンアップ](#clean-up-resources)します。  料金が発生しないように、アカウントから削除します。
-
-    ![コンソール ウィンドウに出力を表示する](./media/create-sql-api-java/rxjava-console-output.png)
-
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

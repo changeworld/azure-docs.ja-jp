@@ -1,22 +1,22 @@
 ---
-title: SQL Database のマルチテナント アプリ例のガイダンス - Wingtip SaaS | Microsoft Docs
+title: マルチテナント アプリの例 - Wingtip SaaS
 description: Azure SQL Database を使用する、サンプルのマルチ テナント アプリケーション (Wingtip Tickets SaaS サンプル) をインストールして実行するための手順とガイダンスを示します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570094"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825778"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
 

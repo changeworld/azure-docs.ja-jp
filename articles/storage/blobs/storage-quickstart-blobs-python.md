@@ -1,226 +1,338 @@
 ---
-title: クイック スタート:Python を使用して Azure Blob Storage 内に BLOB を作成する
-description: このクイック スタートでは、ストレージ アカウントとコンテナーをオブジェクト (BLOB) ストレージ内に作成します。 その後、Python 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
+title: クイック スタート:Azure Blob Storage ライブラリ v12 - Python
+description: このクイックスタートでは、Python 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 397464a70164ef06642a991fb8470ddfa2922647
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430155"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809916"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>クイック スタート:Python を使用して Azure Blob Storage 内で BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Blob Storage クライアント ライブラリ v12
 
-この記事では、Python を使用して、Azure Blob Storage 内のコンテナーのブロック BLOB のアップロード、ダウンロード、および一覧表示を行います。 BLOB は、単に大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 Azure Storage の BLOB は、ファイル共有、スキーマレス テーブル、およびメッセージ キューとは異なります。  詳細については、「[Azure Storage の概要](/azure/storage/common/storage-introduction)」を参照してください。
+Python 用 Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
+
+> [!NOTE]
+> 以前の SDK バージョンの使用を開始するには、「[クイックスタート: Python 用 Azure Blob Storage クライアント ライブラリ](storage-quickstart-blobs-python-legacy.md)」を参照してください。
+
+Azure Blob Storage クライアント ライブラリを使用すると、以下のことができます。
+
+* コンテナーを作成する
+* Azure Storage へ BLOB をアップロードする
+* コンテナー内のすべての BLOB を一覧表示する
+* ローカル コンピューターに BLOB をダウンロードする
+* コンテナーを削除する
+
+[API のリファレンスのドキュメント](/python/api/azure-storage-blob) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-blob/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+* Azure Storage アカウント - [ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* [オペレーティング システムには Python](https://www.python.org/downloads/) - 2.7、3.5 以上
 
-次の追加の前提条件がインストールされていることを確認してください。
+## <a name="setting-up"></a>設定
 
-* [Python](https://www.python.org/downloads/)
+このセクションでは、Python 用 Azure Blob Storage クライアント ライブラリ v12 を操作するためのプロジェクトの準備について説明します。
 
-* [Azure Storage SDK for Python](https://github.com/Azure/azure-sdk-for-python)
+### <a name="create-the-project"></a>プロジェクトを作成する
 
-## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
+*blob-quickstart-v12* という名前の Python アプリケーションを作成します。
 
-このクイック スタートの[サンプル アプリケーション](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git)は、基本的な Python アプリケーションです。  
+1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、プロジェクト用に新しいディレクトリを作成します。
 
-次の [git](https://git-scm.com/) コマンドを使用して、アプリケーションを開発環境にダウンロードします。 
+    ```console
+    mkdir blob-quickstart-v12
+    ```
 
-```bash
-git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git 
+1. 新しく作成した *blob-quickstart-v12* ディレクトリに切り替えます。
+
+    ```console
+    cd blob-quickstart-v12
+    ```
+
+1. *blob-quickstart-v12* ディレクトリ内に、*data* という別のディレクトリを作成します。 BLOB データ ファイルは、ここに作成され格納されます。
+
+    ```console
+    mkdir data
+    ```
+
+### <a name="install-the-package"></a>パッケージをインストールする
+
+まだアプリケーション ディレクトリにいる間に、`pip install` コマンドを使用して、Python 用の Azure Blob Storage クライアント ライブラリ パッケージをインストールします。
+
+```console
+pip install azure-storage-blob
 ```
 
-Python プログラムを確認するには、リポジトリのルートにある *example.py* ファイルを開きます。  
+このコマンドでは、Python パッケージ用 Azure Blob Storage クライアント ライブラリとそれに依存しているすべてのライブラリをインストールします。 この場合、これは Python 用の Azure コア ライブラリになります。
 
-[!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
+### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
 
-## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
+プロジェクト ディレクトリで次の操作を行います。
 
-アプリケーションで、ストレージ アカウント名とアカウント キーを指定して `BlockBlobService` オブジェクトを作成します。
+1. コード エディターで新しいテキスト ファイルを開きます
+1. `import` ステートメントを追加します
+1. 極めて基本的な例外処理を含め、プログラムの構造を作成します
 
-1. お使いの IDE のソリューション エクスプローラーから *example.py* ファイルを開きます。
-
-1. `accountname` と `accountkey` の値をストレージ アカウント名とキーに置き換えます。
+    コードは次のとおりです。
 
     ```python
-    block_blob_service = BlockBlobService(
-        account_name='accountname', account_key='accountkey')
+    import os, uuid
+    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+
+    try:
+        print("Azure Blob storage v12 - Python quickstart sample")
+        # Quick start code goes here
+    except Exception as ex:
+        print('Exception:')
+        print(ex)
     ```
 
-1. ファイルを保存して閉じます。
+1. *blob-quickstart-v12* ディレクトリに新しいファイルを *blob-quickstart-v12.py* として保存する
 
-## <a name="run-the-sample"></a>サンプルを実行する
+### <a name="copy-your-credentials-from-the-azure-portal"></a>Azure Portal で資格情報をコピーする
 
-このサンプル プログラムでは、*Documents* フォルダーにテスト ファイルを作成し、BLOB ストレージにファイルをアップロードし、ファイル内の BLOB を一覧表示し、新しい名前でファイルをダウンロードします。
+サンプル アプリケーションから Azure Storage に対して要求を実行するときは、承認されている必要があります。 要求を承認するには、ストレージ アカウントの資格情報を接続文字列としてアプリケーションに追加します。 次の手順に従って、ストレージ アカウントの資格情報を表示します。
 
-1. 依存関係をインストールする:
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 自分のストレージ アカウントを探します。
+3. ストレージ アカウントの概要の **[設定]** セクションで、 **[アクセス キー]** を選択します。 ここでは、アカウント アクセス キーと各キーの完全な接続文字列を表示できます。
+4. **[Key1]** の **[接続文字列]** の値を見つけ、 **[コピー]** ボタンを選択して接続文字列をコピーします。 すぐ後の手順で、接続文字列の値を環境変数に追加します。
 
-    ```console
-    pip install azure-storage-blob
-    ```
+    ![Azure portal から接続文字列をコピーする方法を示すスクリーンショット](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
 
-1. サンプル アプリケーションに移動します。
+### <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
 
-    ```console
-    cd storage-blobs-python-quickstart
-    ```
+接続文字列をコピーした後、アプリケーションを実行しているローカル マシンの新しい環境変数にそれを書き込みます。 環境変数を設定するには、コンソール ウィンドウを開いて、お使いのオペレーティング システムの手順に従います。 `<yourconnectionstring>` は、実際の接続文字列に置き換えてください。
 
-1. サンプルを実行します。
+#### <a name="windows"></a>Windows
 
-    ```console
-    python example.py
-    ```
-
-    次の出力のようなメッセージが表示されます。
-  
-    ```output
-    Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-    Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-    List blobs in the container
-             Blob name: QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-    Downloading blob to     C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
-    ```
-
-1. 続行する前に、*Documents* フォルダーに移動して、2 つのファイルがあることを確認します。
-
-    * *QuickStart_\<universally-unique-identifier\>*
-    * *QuickStart_\<universally-unique-identifier\>_DOWNLOADED*
-
-1. それらを開くと、内容が同じであることがわかります。
-
-    [Azure Storage Explorer](https://storageexplorer.com) などのツールを使用することもできます。 BLOB ストレージ内のファイルを表示するために適しています。 Azure Storage Explorer は、ストレージ アカウント情報にアクセスできる無料のクロスプラットフォーム ツールです。 
-
-1. ファイルを確認したら、任意のキーを押してサンプルを終了し、テスト ファイルを削除します。
-
-## <a name="learn-about-the-sample-code"></a>サンプル コードを確認する
-
-サンプルの機能がわかったら、*example.py* ファイルを開いてコードを確認します。
-
-### <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
-
-このセクションでは、オブジェクトをインスタンス化し、新しいコンテナーを作成した後、BLOB がパブリックになるようにコンテナーに対するアクセス許可を設定します。 コンテナー `quickstartblobs` を呼び出します。 
-
-```python
-# Create the BlockBlockService that the system uses to call the Blob service for the storage account.
-block_blob_service = BlockBlobService(
-    account_name='accountname', account_key='accountkey')
-
-# Create a container called 'quickstartblobs'.
-container_name = 'quickstartblobs'
-block_blob_service.create_container(container_name)
-
-# Set the permission so the blobs are public.
-block_blob_service.set_container_acl(
-    container_name, public_access=PublicAccess.Container)
+```cmd
+setx CONNECT_STR "<yourconnectionstring>"
 ```
 
-最初に、Blob Storage へのアクセスと管理のために使用されるオブジェクトへの参照を作成します。 これらのオブジェクトはお互いを基にして作成され、各オブジェクトは、一覧で次にあるオブジェクトによって使われます。
+Windows で環境変数を追加した後、コマンド ウィンドウの新しいインスタンスを開始する必要があります。
 
-* お使いのストレージ アカウントの Blob service を指す **BlockBlobService** オブジェクトをインスタンス化します。 
+#### <a name="linux"></a>Linux
 
-* アクセスしているコンテナーを表す **CloudBlobContainer** オブジェクトをインスタンス化します。 システムでは、コンピューターでフォルダーを使ってファイルを整理する場合と同じように、BLOB を整理するためにコンテナーが使われます。
+```bash
+export CONNECT_STR="<yourconnectionstring>"
+```
 
-クラウド BLOB コンテナーを作成した後は、関心がある特定の BLOB を指す **CloudBlockBlob** オブジェクトをインスタンス化します。 これにより、必要に応じて BLOB をアップロード、ダウンロード、コピーできるようになります。
+#### <a name="macos"></a>macOS
 
-> [!IMPORTANT]
-> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」 (コンテナー、BLOB、およびメタデータの名前付けと参照) を参照してください。
+```bash
+export CONNECT_STR="<yourconnectionstring>"
+```
 
-### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
+#### <a name="restart-programs"></a>プログラムの再起動
 
-Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 ブロック BLOB の最大サイズは 4.7 TB であり、Excel スプレッドシートから大きなビデオ ファイルまで何にでも使うことができます。 追加 BLOB は、ファイルに書き込んでからも情報を追加し続ける場合のログ記録に使用できます。 ページ BLOB は、主に、サービスとしてのインフラストラクチャ仮想マシン (IaaS VM) をサポートする仮想ハード ディスク (VHD) ファイルに使用されます。 ブロック BLOB は最もよく使用されます。 このクイックスタートでは、ブロック BLOB を使用します。
+環境変数を追加した後、環境変数の読み取りを必要とする実行中のプログラムをすべて再起動します。 たとえば、続行する前に、ご使用の開発環境またはエディターを再起動します。
 
-ファイルを BLOB にアップロードするには、ディレクトリ名をローカル ドライブ上のファイル名と結合してファイルの完全なパスを取得します。 その後、`create_blob_from_path` メソッドを使用して、指定したパスにファイルをアップロードできます。 
+## <a name="object-model"></a>オブジェクト モデル
 
-このサンプル コードでは、システムからアップロードとダウンロードに使用されるローカル ファイルを作成し、システムからアップロードされたファイルを *full_path_to_file* という名前で格納し、BLOB に *local_file_name* と名前を付けます。 この例では、`quickstartblobs` という名前のコンテナーにファイルをアップロードします。
+Azure Blob Storage は、大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。 Blob Storage には、3 種類のリソースがあります。
+
+* ストレージ アカウント
+* ストレージ アカウント内のコンテナー
+* コンテナー内の BLOB
+
+次の図に、これらのリソースの関係を示します。
+
+![Blob Storage のアーキテクチャ図](./media/storage-blob-introduction/blob1.png)
+
+これらのリソースとやり取りするには、以下の Python クラスを使用します。
+
+* [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
+* [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient):`ContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+* [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
+
+## <a name="code-examples"></a>コード例
+
+以下のサンプル コード スニペットは、Python 用 Azure Blob Storage クライアント ライブラリを使用して以下を実行する方法を示します。
+
+* [接続文字列を取得する](#get-the-connection-string)
+* [コンテナーの作成](#create-a-container)
+* [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
+* [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
+* [BLOB をダウンロードする](#download-blobs)
+* [コンテナーの削除](#delete-a-container)
+
+### <a name="get-the-connection-string"></a>接続文字列を取得する
+
+次のコードでは、「[ストレージ接続文字列の構成](#configure-your-storage-connection-string)」セクションで作成した環境変数から、ストレージ アカウントに対する接続文字列を取得します。
+
+このコードを `try` ブロック内に追加します。
 
 ```python
-# Create a file in Documents to test the upload and download.
-local_path = os.path.expanduser("~\Documents")
-local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
-full_path_to_file = os.path.join(local_path, local_file_name)
+# Retrieve the connection string for use with the application. The storage
+# connection string is stored in an environment variable on the machine
+# running the application called CONNECT_STR. If the environment variable is
+# created after the application is launched in a console or with Visual Studio,
+# the shell or application needs to be closed and reloaded to take the
+# environment variable into account.
+connect_str = os.getenv('CONNECT_STR')
+```
 
-# Write text to the file.
-file = open(full_path_to_file, 'w')
+### <a name="create-a-container"></a>コンテナーを作成する
+
+新しいコンテナーの名前を決定します。 次のコードでは、確実に一意になるように、コンテナー名に UUID 値が追加されます。
+
+> [!IMPORTANT]
+> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前付けの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata (コンテナー、BLOB、メタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
+
+[from_connection_string](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#from-connection-string-conn-str--credential-none----kwargs-) メソッドを呼び出して、[BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) クラスのインスタンスを作成します。 次に、[create_container](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#create-container-name--metadata-none--public-access-none----kwargs-) メソッドを呼び出し、実際にストレージ アカウントにコンテナーを作成します。
+
+`try` ブロックの末尾に、次のコードを追加します。
+
+```python
+# Create the BlobServiceClient object which will be used to create a container client
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+
+# Create a unique name for the container
+container_name = "quickstart" + str(uuid.uuid4())
+
+# Create the container
+container_client = blob_service_client.create_container(container_name)
+```
+
+### <a name="upload-blobs-to-a-container"></a>コンテナーに BLOB をアップロードする
+
+次のコード スニペット:
+
+1. ローカル ディレクトリにテキスト ファイルを作成します。
+1. 「[コンテナーを作成する](#create-a-container)」セクションからの [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) の [get_blob_client](/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) メソッドを呼び出すことで、[BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) オブジェクトへの参照を取得します。
+1. [upload_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) メソッドを呼び出して、ローカル テキスト ファイルを BLOB にアップロードします。
+
+`try` ブロックの末尾に、次のコードを追加します。
+
+```python
+# Create a file in local Documents directory to upload and download
+local_path = "./data"
+local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt"
+upload_file_path = os.path.join(local_path, local_file_name)
+
+# Write text to the file
+file = open(upload_file_path, 'w')
 file.write("Hello, World!")
 file.close()
 
-print("Temp file = " + full_path_to_file)
-print("\nUploading to Blob storage as blob" + local_file_name)
+# Create a blob client using the local file name as the name for the blob
+blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
 
-# Upload the created file, use local_file_name for the blob name.
-block_blob_service.create_blob_from_path(
-    container_name, local_file_name, full_path_to_file)
+print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)
+
+# Upload the created file
+with open(upload_file_path, "rb") as data:
+    blob_client.upload_blob(data)
 ```
-
-Blob Storage では複数のアップロード方法を使うことができます。 たとえば、メモリ ストリームがある場合は、`create_blob_from_path` ではなく `create_blob_from_stream` メソッドを使用できます。 
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-次のコードでは、`list_blobs` メソッドの `generator` を作成します。 このコードでは、コンテナー内の BLOB の一覧をループ処理し、名前をコンソールに出力します。
+[list_blobs](/python/api/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) メソッドを呼び出して、コンテナー内の BLOB を一覧表示します。 この場合、コンテナーに BLOB が 1 つだけ追加されているので、一覧表示操作ではその 1 つの BLOB だけが返されます。
+
+`try` ブロックの末尾に、次のコードを追加します。
 
 ```python
-# List the blobs in the container.
-print("\nList blobs in the container")
-generator = block_blob_service.list_blobs(container_name)
-for blob in generator:
-    print("\t Blob name: " + blob.name)
+print("\nListing blobs...")
+
+# List the blobs in the container
+blob_list = container_client.list_blobs()
+for blob in blob_list:
+    print("\t" + blob.name)
 ```
 
-### <a name="download-the-blobs"></a>BLOB のダウンロード
+### <a name="download-blobs"></a>BLOB をダウンロードする
 
+[download_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#download-blob-offset-none--length-none----kwargs-) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 サンプル コードでは、ローカル ファイル システム内で両方のファイルを見ることができるように、ファイル名に "DOWNLOAD" というサフィックスを追加します。
 
-`get_blob_to_path` メソッドを使用して、ローカル ディスクに BLOB をダウンロードします。
-次のコードでは、以前にアップロードした BLOB をダウンロードします。 ローカル ディスク上で両方のファイルを表示できるように、システムによって BLOB 名に *_DOWNLOADED* が付加されます。
+`try` ブロックの末尾に、次のコードを追加します。
 
 ```python
-# Download the blob(s).
-# Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, local_file_name.replace(
-   '.txt', '_DOWNLOADED.txt'))
-print("\nDownloading blob to " + full_path_to_file2)
-block_blob_service.get_blob_to_path(
-    container_name, local_file_name, full_path_to_file2)
+# Download the blob to a local file
+# Add 'DOWNLOAD' before the .txt extension so you can see both files in Documents
+download_file_path = os.path.join(local_path, str.replace(local_file_name ,'.txt', 'DOWNLOAD.txt'))
+print("\nDownloading blob to \n\t" + download_file_path)
+
+with open(download_file_path, "wb") as download_file:
+    download_file.write(blob_client.download_blob().readall())
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
-このクイック スタートでアップロードした BLOB が不要になった場合は、`delete_container` メソッドを使ってコンテナー全体を削除できます。 代わりに個々のファイルを削除するには、`delete_blob` メソッドを使用します。
+### <a name="delete-a-container"></a>コンテナーを削除する
+
+次のコードでは、[delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) メソッドを使用して、コンテナー全体を削除することによって、アプリが作成したリソースがクリーンアップされます。 必要に応じてローカル ファイルを削除することもできます。
+
+アプリでは、BLOB、コンテナー、ローカル ファイルを削除する前に、`input()` を呼び出すことによって、ユーザーの入力が一時停止されます。 リソースが実際に正しく作成されたことを確認してから、削除することをお勧めします。
+
+`try` ブロックの末尾に、次のコードを追加します。
 
 ```python
-# Clean up resources. This includes the container and the temp files.
-block_blob_service.delete_container(container_name)
-os.remove(full_path_to_file)
-os.remove(full_path_to_file2)
+# Clean up
+print("\nPress the Enter key to begin clean up")
+input()
+
+print("Deleting blob container...")
+container_client.delete_container()
+
+print("Deleting the local source and downloaded files...")
+os.remove(upload_file_path)
+os.remove(download_file_path)
+
+print("Done")
 ```
 
-## <a name="resources-for-developing-python-applications-with-blobs"></a>BLOB を使用する Python アプリケーションを開発するためのリソース
+## <a name="run-the-code"></a>コードの実行
 
-BLOB ストレージを使用する Python 開発の詳細については、以下の追加リソースを参照してください。
+このアプリでは、ローカル フォルダーにテスト ファイルを作成し、BLOB ストレージにアップロードします。 次に、コンテナー内の BLOB を一覧表示し、ファイルを新しい名前でダウンロードして、古いファイルと新しいファイルを比較できるようにします。
 
-### <a name="binaries-and-source-code"></a>バイナリとソース コード
+*blob-quickstart-v12.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
 
-- GitHub で Azure Storage 用の [Python クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-python)を確認し、ダウンロードしてインストールします。
+```console
+python blob-quickstart-v12.py
+```
 
-### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
+アプリの出力は、次の例のようになります。
 
-- Python クライアント ライブラリの詳細については、[Python 用 Azure Storage ライブラリ](https://docs.microsoft.com/python/api/overview/azure/storage)に関する記事を参照してください。
-- Python クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob)を確認します。
+```output
+Azure Blob storage v12 - Python quickstart sample
+
+Uploading to Azure Storage as blob:
+        quickstartcf275796-2188-4057-b6fb-038352e35038.txt
+
+Listing blobs...
+        quickstartcf275796-2188-4057-b6fb-038352e35038.txt
+
+Downloading blob to
+        ./data/quickstartcf275796-2188-4057-b6fb-038352e35038DOWNLOAD.txt
+
+Press the Enter key to begin clean up
+
+Deleting blob container...
+Deleting the local source and downloaded files...
+Done
+```
+
+クリーンアップ プロセスを開始する前に、 *[ドキュメント]* フォルダー内の 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。
+
+ファイルを確認した後、**Enter** キーを押してテスト ファイルを削除し、デモを終了します。
 
 ## <a name="next-steps"></a>次の手順
- 
-このクイック スタートでは、Python を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 
 
-Storage Explorer と BLOB の詳細については、「[ストレージ エクスプローラーを使用した Azure BLOB ストレージリソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+このクイックスタートでは、Python を使用して BLOB をアップロード、ダウンロード、一覧表示する方法について説明しました。
+
+BLOB ストレージのサンプル アプリを確認するには、以下に進んでください。
+
+> [!div class="nextstepaction"]
+> [Azure BLOB ストレージ SDK v12 の Python サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+
+* 詳細については、「[Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/README.md)」を参照してください。
+* チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Python 開発者向けの Azure](/azure/python/)」を参照してください。

@@ -1,5 +1,5 @@
 ---
-title: Chainer を使用したディープ ラーニング ニューラル ネットワークのトレーニング
+title: ディープ ラーニング Chainer モデルをトレーニングする
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の Chainer 推定クラスを使用して、PyTorch トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。  このサンプル スクリプトでは、numpy 上で実行される Chainer Python ライブラリを使用して、ディープ ラーニング ニューラル ネットワークを構築するために手書きの数字の画像を分類します。
 services: machine-learning
@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 70d6bd9507670a8846b2a79509b6b6e571f17e37
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: bfe44e552618dfbee13e8c85ef424f52d4b7ae5f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710087"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814989"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning の [Chainer 推定](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)クラスを使用して、[Chainer](https://chainer.org/) トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。 この記事のトレーニング スクリプトの例では、人気の [MNIST データセット](http://yann.lecun.com/exdb/mnist/)を使用し、[numpy](https://www.numpy.org/) を基盤に Chainer Python ライブラリを使用して構築されたディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類します。
 

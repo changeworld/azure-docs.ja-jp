@@ -1,22 +1,22 @@
 ---
-title: 'Azure SQL Database の DTU リソースの制限: 単一データベース | Microsoft Docs'
+title: 単一データベースに対する DTU リソースの制限
 description: このページでは、Azure SQL Database の単一データベースに対するいくつかの一般的な DTU リソースの制限について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 37cda6dec3f98a195e704808244656f3182b4c2a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520989"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811278"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用した単一データベースに対するリソース制限
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して DB2 のデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して DB2 からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、DB2 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: d89b4018da7c50127fc38219c6cb799a89509258
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: dad28da0b481467633bebf664fea2be39a50200b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092124"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681051"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]

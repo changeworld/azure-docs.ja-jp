@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18032250bc5c321d638ad46204738f49f1a0c744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e752d52d0f792d39f417031c26d923fce07ccdf8
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480135"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747984"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
@@ -34,20 +34,30 @@ Azure Migrate サービスのバージョンには、次の 2 つがあります
 **Deployment** | **詳細** 
 --- | --- 
 **アプリ固有の検出** | VMware VM 上で実行されているアプリ、ロール、および機能を検出できます。 現在、この機能は検出のみに限定されています。 評価は現在マシン レベルです。 アプリ、役割、または機能に固有の評価はまだ提供されていません。 
-**オンプレミスの評価** | VMware VM および Hyper-V VM 上で実行されているオンプレミスのワークロードとデータを評価します。 Azure Migrate Server Assessment と Microsoft Data Migration Assistant (DMA) のほか、Cloudamize、Corent Tech、および Turbonomic Server を含むサードパーティ ツールを使用して評価します。
-**Azure へのオンプレミスの移行** | 物理サーバー、VMware VM、Hyper-V VM、物理サーバー、クラウドベースの VM で実行されているワークロードとデータを Azure に移行します。 Azure Migrate Server Assessment と Azure Database Migration Service (DMS) のほか、Carbonite や CorentTech を含むサードパーティ ツールを使用して移行します。
+**オンプレミスの評価** | VMware VM、Hyper-V VM、および物理サーバー上で実行されているオンプレミスのワークロードとデータを評価します。 Azure Migrate Server Assessment と Microsoft Data Migration Assistant (DMA) や、その他のツールと ISV オファリングを使用して評価します。
+**Azure へのオンプレミスの移行** | 物理サーバー、VMware VM、Hyper-V VM、物理サーバー、クラウドベースの VM で実行されているワークロードとデータを Azure に移行します。 Azure Migrate Server Assessment と Azure Database Migration Service (DMS) や、その他のツールと ISV オファリングを使用して移行します。
 
-具体的なツールのサポートは、次のように要約されます。
 
-**ツール** | **評価/移行** | **詳細**
+## <a name="supported-tools"></a>サポートされているツール
+
+次の表に、具体的なツールのサポートをまとめてあります。
+
+**ツール** | **評価** | **移行** 
 --- | --- | ---
-Azure Migrate Server Assessment | 評価 | [Hyper-V](tutorial-prepare-hyper-v.md) と [VMware](tutorial-prepare-vmware.md) のサーバー評価を試みます。
-Cloudamize | 評価 | [詳細情報](https://www.cloudamize.com/platform#tab-0)。
-CorentTech | 評価 | [詳細情報](https://www.corenttech.com/)。
-Turbonomic | 評価 | [詳細情報](https://turbonomic.com/solutions/technologies/azure-cloud/)。
-Azure Migrate Server Migration | 移行 | [Hyper-V](tutorial-migrate-hyper-v.md) と [VMware](tutorial-migrate-vmware.md) のサーバー移行を試みます。
-Carbonite | 移行 | [詳細情報](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure)。
-CorentTech | 移行 | [詳細情報](https://www.corenttech.com/)。
+Azure Migrate Server Assessment | [VMware VM](tutorial-prepare-vmware.md)、[Hyper-V VM](tutorial-prepare-hyper-v.md)、および[物理サーバー](tutorial-prepare-physical.md)を評価します。 |  利用できません (NA)
+Azure Migrate Server Migration | NA | [VMware VM](tutorial-migrate-vmware.md)、[Hyper-V VM](tutorial-migrate-hyper-v.md)、および[物理サーバー](tutorial-migrate-physical-virtual-machines.md)を移行します。
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを移行します。 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを評価します。 | NA
+[Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを評価および移行します。 |  VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを移行します。
+[Device 42](https://go.microsoft.com/fwlink/?linkid=2097158) | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを評価します。| NA
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | オンプレミスの SQL Server データベースを評価します。 | NA
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | SQL Server、Oracle、MySQL、PostgreSQL、MongoDB を移行します。 
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 仮想デスクトップ インフラストラクチャ (VDI) を評価します | NA
+[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | VMWare VM、Hyper-V VM、Xen VM、物理マシン、ワークステーション (VDI を含む)、パブリック クラウド ワークロードを評価します | NA
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | VMWare VM、Hyper-V VM、Xen VM、KVM VM、物理マシン、パブリック クラウド ワークロードを移行します 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを評価します。 | NA
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロード、および SQL Server データベースを評価します。 | NA
+[Webapp Migration Assistant](https://appmigration.microsoft.com/) | Web アプリを評価します | Web アプリを移行します。
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate プロジェクト

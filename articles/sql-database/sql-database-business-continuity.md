@@ -1,5 +1,5 @@
 ---
-title: クラウド ビジネス継続性 - データベース復旧 - SQL Database | Microsoft Docs
+title: クラウド ビジネス継続性 - データベース復旧
 description: Azure SQL Database がどのようにクラウド ビジネス継続性とデータベース復旧をサポートし、ミッション クリティカルなクラウド アプリケーションの実行を維持できるようにするかについて説明します。
 keywords: ビジネス継続性, クラウド ビジネス継続性, データベースの障害復旧, データベース復旧
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 5a6a96f478c4402a830cc522657f56cfd11fa56f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744464"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821821"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 

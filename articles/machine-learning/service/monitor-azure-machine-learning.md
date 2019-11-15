@@ -9,16 +9,24 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: dddc39a0b7b3c43f283750c95d4feaef2cf15b36
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510728"
+ms.locfileid: "73582905"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning の監視
 
 この記事では、Azure Machine Learning によって生成される監視データについて説明します。 また、Azure Monitor を使用してデータを分析し、アラートを定義する方法についても説明します。
+
+> [!TIP]
+> このドキュメントは、Azure Machine Learning service の監視について説明するものであり、記載されている情報は主に管理者を対象としています。 データ サイエンティストまたは開発者の方で、モデルのトレーニング実行に固有の情報を監視したい場合は、次のドキュメントを参照してください。
+>
+> * [トレーニングの実行の開始、監視、およびキャンセル](how-to-manage-runs.md)
+> * [トレーニング実行のメトリックを記録する](how-to-track-experiments.md)
+> * [MLflow を使用して実験を追跡する](how-to-use-mlflow.md)
+> * [TensorBoard を使用して実行を視覚化する](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

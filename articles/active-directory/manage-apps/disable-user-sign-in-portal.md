@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7256791c0b6bfbc72a26f6093cdd3c39410f702f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6a08779d171367d982392ae4e987fb46e019e61f
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807601"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720286"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリのユーザー サインインを無効にする
 
@@ -36,6 +36,25 @@ Azure Active Directory (Azure AD) で、ユーザーがサインインできな�
 1. [***appname***] ウィンドウ (選択したアプリの名前がタイトルに含まれるページ) で、 **[プロパティ]** を選択します。
 1. [***appname*** - **プロパティ**] ウィンドウで、 **[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
 1. **[保存]** をクリックします。
+
+## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Azure AD PowerShell を使用して、一覧にないアプリを無効にする
+
+Enterprise アプリの一覧に表示されていないアプリの AppId が分かっている場合 (たとえば、アプリを削除したか、アプリが Microsoft によって事前承認されているためにサービスプリンシパルがまだ作成されていないため)、アプリのサービス プリンシパルを手動で作成してから、[AzureAD PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)を使用して無効にすることができます。
+
+```PowerShell
+# The AppId of the app to be disabled
+$appId = "{AppId}"
+
+# Check if a service principal already exists for the app
+$servicePrincipal = Get-AzureADServicePrincipal -Filter "appId eq '$appId'"
+if ($servicePrincipal) {
+    # Service principal exists already, disable it
+    Set-AzureADServicePrincipal -ObjectId $servicePrincipal.ObjectId -AccountEnabled $false
+} else {
+    # Service principal does not yet exist, create it and disable it at the same time
+    $servicePrincipal = New-AzureADServicePrincipal -AppId $appId -AccountEnabled $false
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

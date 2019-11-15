@@ -1,6 +1,6 @@
 ---
 title: OPC Twin とは - Azure | Microsoft Docs
-description: OPC Twin の概要
+description: この記事では、OPC Twin の概要について説明します。 OPC Twin は、REST API を通じて、産業用デバイスの検出、登録、リモート制御を実現します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c0d824e23a98aa14081fbd21bd6a9fbec5d583e0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815943"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826221"
 ---
 # <a name="what-is-opc-twin"></a>OPC Twin とは
 
@@ -28,7 +28,7 @@ OPC Twin では、工場のオペレーターが工場のネットワークを�
 ### <a name="simple-control"></a>シンプルな制御
 OPC Twin を使用すれば、工場のオペレーターがイベントに対応し、臨機応変に手動または自動でクラウドからその工場現場の機械を再構成することができます。 OPC Twin には、OPC UA サーバー上のサービスの呼び出し、そのアドレス空間の参照のほか、変数の読み取り/書き込み、メソッドの実行を行うための REST API が用意されています。 たとえばボイラーでは、温度の KPI を使用して生産ラインを制御します。 OPC Publisher を使用して、温度センサーによってデータの変化が公開されます。 温度がしきい値に達すると、工場のオペレーターにアラートが届きます。 生産ラインの温度が OPC Twin を通じて自動的に下げられます。 温度が下がったことが、工場のオペレーターに通知されます。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 OPC Twin を使用すると、認証を簡素化できるほか、シンプルな開発者エクスペリエンスを実現できます。
 
 ### <a name="simple-authentication"></a>シンプルな認証 

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcc704e7027903a1ede14c787a64c35d6b5fd9c0
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373460"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817990"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -32,7 +32,7 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 パスワード ハッシュ同期処理の実際のデータ フローは、ユーザー データの同期と似ています。 ただし、パスワードは、他の属性に対する標準のディレクトリ同期ウィンドウよりも頻繁に同期されます。 パスワード ハッシュ同期プロセスは 2 分間隔で実行されます。 このプロセスの頻度を変更することはできません。 パスワードを同期すると、既存のクラウド パスワードが上書きされます。
 
-パスワード ハッシュ同期機能を初めて有効にすると、スコープ内のすべてのユーザーの初回同期が実行されます。 同期するユーザー パスワードのサブセットを明示的に定義することはできません。
+パスワード ハッシュ同期機能を初めて有効にすると、スコープ内のすべてのユーザーの初回同期が実行されます。 同期するユーザー パスワードのサブセットを明示的に定義することはできません。 ただし、複数のコネクタが存在する場合、[Set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) コマンドレットを使用してパスワード ハッシュ同期を無効にできるコネクタとできないコネクタがあります。
 
 オンプレミス パスワードを変更すると、更新されたパスワードは、多くの場合、ほんの数分で同期されます。
 同期の試行に失敗すると、パスワード ハッシュ同期機能により自動的に再試行が行われます。 パスワード同期の試行中にエラーが発生した場合、イベント ビューアーにエラーが記録されます。
@@ -100,7 +100,7 @@ Azure AD 統合サービスのみを操作し、パスワードの有効期限�
 
 EnforceCloudPasswordPolicyForPasswordSyncedUsers 機能を有効にするには、MSOnline PowerShell モジュールを使用して次のコマンドを実行します。
 
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
 
 有効にすると、Azure AD では、PasswordPolicies 属性から `DisablePasswordExpiration` 値を削除するために、同期済みの各ユーザーに移動することがなくなります。 代わりに、オンプレミス AD 上で次にパスワードを変更するときに、次のパスワードの同期中に、ユーザーごとに値が `None` に設定されます。  
 

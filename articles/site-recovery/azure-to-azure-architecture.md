@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery での Azure から Azure へのレプリケーション アーキテクチャ | Microsoft Docs
-description: この記事では、Azure Site Recovery サービスを使用して、Azure リージョン間に Azure VM のディザスター リカバリーを設定するときに使用される、コンポーネントとアーキテクチャの概要を説明します。
+title: Azure Site Recovery における Azure から Azure へのディザスター リカバリー アーキテクチャ
+description: Azure Site Recovery サービスを使用して、Azure リージョン間に Azure VM のディザスター リカバリーを設定するときに使用されるアーキテクチャの概要。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231457"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621122"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 

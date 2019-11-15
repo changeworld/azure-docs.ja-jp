@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 8cf1e5f9f47ebdc132bdc826af3e54d206095085
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176824"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603404"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -185,6 +185,14 @@ Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各
 
 macOS を実行しているコンピューターが AD に参加していることを確認します。 macOS デバイスを AD に参加させる手順については、この記事の対象外です。
 
+#### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Chromium に基づく Microsoft Edge (すべてのプラットフォーム)
+
+お使いの環境の [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) ポリシー設定または [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を確実に追加します。
+
+#### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Chromium に基づく Microsoft Edge (macOS および他の非 Windows プラットフォーム)
+
+Mac OS および他の Windows 以外のプラットフォームの Chromium に基づく Microsoft Edge の場合、統合認証用の Azure AD URL を許可一覧に追加する方法については、[Chromium に基づく Microsoft Edge のポリシー一覧](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)を参照してください。
+
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
 
 お使いの環境の [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) ポリシー設定または [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を必ず追加してください。
@@ -197,7 +205,7 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 
 #### <a name="known-browser-limitations"></a>ブラウザーの既知の制限事項
 
-シームレス SSO は、Firefox および Microsoft Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。
+シームレス SSO は、Firefox および Microsoft Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。 Chromium に基づく Microsoft Edge の次期バージョンは、仕様により InPrivate モードと Guest モードでは機能しなくなります。
 
 ## <a name="step-4-test-the-feature"></a>手順 4:機能をテストする
 

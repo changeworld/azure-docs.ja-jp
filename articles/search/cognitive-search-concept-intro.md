@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5dc33de19ef71a0714052a6457bef9f32fc159c3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466874"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720160"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure Cognitive Search における AI の概要
 
-AI エンリッチメントは、Azure Cognitive Search のインデックス作成の機能で、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツをエンリッチメントすることによって、インデックスまたはナレッジ ストアから検索しやすくします。 抽出とエンリッチメントは、インデックス作成パイプラインにアタッチされた*コグニティブ スキル*によって実装されています。 サービスに組み込まれたコグニティブ スキルは、次のカテゴリに分類されます。 
+AI エンリッチメントは、Azure Cognitive Search のインデックス作成の機能で、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツをエンリッチすることによって、インデックスまたはナレッジ ストアから検索しやすくします。 抽出とエンリッチメントは、インデックス作成パイプラインにアタッチされた*コグニティブ スキル*によって実装されています。 サービスに組み込まれたコグニティブ スキルは、次のカテゴリに分類されます。 
 
 + **自然言語処理**スキルには、[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[言語検出](cognitive-search-skill-language-detection.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、テキスト操作、および[センチメント検出](cognitive-search-skill-sentiment.md)が含まれます。 これらのスキルによって、構造化されていないテキストが、インデックス内の検索とフィルターが可能なフィールドにマップされた新しい形式を想定できます。
 
@@ -25,7 +25,7 @@ AI エンリッチメントは、Azure Cognitive Search のインデックス作
 
 ![エンリッチメント パイプラインの図](./media/cognitive-search-intro/cogsearch-architecture.png "エンリッチメント パイプラインの概要")
 
-Azure Cognitive Search のコグニティブ スキルは、Cognitive Services APIs の機械学習モデル ([Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) と[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)) に基づいています。 
+Azure Cognitive Search のコグニティブ スキルは、Cognitive Services APIs の事前トレーニング済み機械学習モデル ([Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) と[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)) に基づいています。 
 
 自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Cognitive Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。 アーキテクチャは拡張可能なため、組み込みのスキルでは不十分な場合は、[カスタム スキル](cognitive-search-create-custom-skill-example.md)を作成して追加し、カスタム処理を統合できます。 例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
 
@@ -79,7 +79,7 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
 
 ![エンリッチメント フェーズ](./media/cognitive-search-intro/enrichment-phase-blowup.png "エンリッチメント フェーズ")
 
-スキルセットは、[定義済みの認知スキル](cognitive-search-predefined-skills.md)またはユーザーが定義施設続する[カスタム スキル](cognitive-search-create-custom-skill-example.md)として作成されます。 スキルセットは、単純なものから複雑なものまで設定でき、処理の種類だけでなく、演算の順序も決定します。 スキルセットに加え、インデクサーの一部として定義されたフィールド マッピングによってエンリッチメント パイプラインが指定されます。 これらのコンポーネントの統合方法については、[スキルセットの定義](cognitive-search-defining-skillset.md)に関する記事を参照してください。
+スキルセットには、[組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md)に基づくものと、ユーザーが提供してスキルセットに接続する[カスタム スキル](cognitive-search-create-custom-skill-example.md)に基づくものとがあります。 スキルセットは、単純なものから複雑なものまで設定でき、処理の種類だけでなく、演算の順序も決定します。 スキルセットに加え、インデクサーの一部として定義されたフィールド マッピングによってエンリッチメント パイプラインが指定されます。 これらのコンポーネントの統合方法については、[スキルセットの定義](cognitive-search-defining-skillset.md)に関する記事を参照してください。
 
 内部的には、パイプラインは、エンリッチメントされたドキュメントのコレクションを生成します。 エンリッチメントされたドキュメントのどの部分を、検索インデックス内のインデックスを作成可能なフィールドにマップするかをユーザーが決定できます。 たとえば、キー フレーズ抽出およびエンティティ認識スキルを適用した場合、これらの新しいフィールドはエンリッチメントされたドキュメントの一部になり、インデックス上のフィールドにマッピングできます。 入出力の構造の詳細については、[注釈](cognitive-search-concept-annotations-syntax.md)を参照してください。
 
@@ -107,13 +107,13 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
 |---------|------------|-------|
 | スキルセット | スキルのコレクションを含む最上位の名前付きリソースです。 スキルセットはエンリッチメント パイプラインです。 スキルセットは、インデクサーによるインデックス作成時に呼び出されます。 | 「[スキルセットを定義する](cognitive-search-defining-skillset.md)」を参照してください。 |
 | 認知スキル | 認知スキルは、エンリッチメント パイプラインでのアトミック変換です。 多くの場合、構造を抽出または推論し、ユーザーによる入力データの理解を補佐するコンポーネントです。 ほとんどの場合、テキスト形式で出力され、画像入力からテキストを抽出または生成する自然言語処理または画像処理で処理されます。 スキルからの出力は、インデックス内のフィールドにマッピングするか、または下流のエンリッチメントの入力として使用できます。 スキルは、定義済みか、Microsoft が提供、またはカスタム スキルとしてお客様が作成および展開できます。 | [組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md) |
-| データの抽出 | 一般的に、そのままでは情報を提供しないソースからデータ (エンティティ) を抽出するために使用されるエンティティ認知スキルである AI エンリッチメントに関連する、さまざまな処理について説明します。 | [エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)に関するページを参照してください。| 
+| データの抽出 | 一般的に、そのままでは情報を提供しないソースからデータ (エンティティ) を抽出するために使用されるエンティティ認知スキルである AI エンリッチメントに関連する、さまざまな処理について説明します。 | [エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)と[ドキュメント抽出スキル (プレビュー)](cognitive-search-skill-document-extraction.md) に関するページを参照してください。| 
 | 画像処理 | ランドマークを認識する、あるいは画像からテキストを抽出する能力など、画像からテキストを推測します。 一般的な例としては、スキャンしたドキュメント (JPEG) ファイルから文字を認識する OCR や道路標識を含む写真の番地を認識する能力が含まれます。 | [画像の分析スキル](cognitive-search-skill-image-analysis.md)または [OCR スキル](cognitive-search-skill-ocr.md)に関するページを参照してください。
-| 自然言語処理 | テキスト入力に関する洞察や情報を取得するテキスト処理。 言語の検出、センチメント分析、およびキー フレーズの抽出は自然言語処理に分類されるスキルです。  | [キー フレーズ抽出スキル](cognitive-search-skill-keyphrases.md)、[言語検出スキル](cognitive-search-skill-language-detection.md)、[感情分析スキル](cognitive-search-skill-sentiment.md)に関するページを参照してください。 |
+| 自然言語処理 | テキスト入力に関する洞察や情報を取得するテキスト処理。 言語の検出、センチメント分析、およびキー フレーズの抽出は自然言語処理に分類されるスキルです。  | [キー フレーズ抽出スキル](cognitive-search-skill-keyphrases.md)、[言語検出スキル](cognitive-search-skill-language-detection.md)、[テキスト翻訳スキル (プレビュー)](cognitive-search-skill-text-translation.md)、[感情分析スキル](cognitive-search-skill-sentiment.md)に関するページを参照してください。 |
 | ドキュメントの解読 | インデックス作成時にテキスト以外のソースからテキスト コンテンツを抽出または作成する処理。 光学式文字認識 (OCR) はこの例ですが、インデクサーがアプリケーション ファイルからコンテンツを抽出するため、一般的に、コア インデクサー機能を指します。 ソース ファイルの場所を規定するデータソースと、フィールドをマッピングを規定するインデクサー定義は、いずれも、ドキュメント解読処理で重要な要因です。 | [インデクサーの概要](search-indexer-overview.md)に関するページを参照してください。 |
 | シェーパー | テキスト フラグメントをより大きな構造に統合したり、逆に大きなテキスト フラグメントを下流プロセスで処理できるよう管理可能なサイズに分割します。 | [シェーパー スキル](cognitive-search-skill-shaper.md)、[テキスト マージャー スキル](cognitive-search-skill-textmerger.md)、[テキスト分割スキル](cognitive-search-skill-textsplit.md)に関するページを参照してください。 |
 | エンリッチメントされたドキュメント | 処理中に生成される一時的な内部構造。最終出力は検索インデックスに反映されます。 どのエンリッチメントが実行されるかは、スキルセットによって決まります。 フィールド マッピングにより、どのデータ要素をインデックスに追加するかが決定されます。 オプションで、Storage Explorer、Power BI などのツールや、Azure Blob Storage に接続するその他のツールを使用して、エンリッチメントされたドキュメントを永続化して探索するためのナレッジ ストアを作成できます。 | [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md) に関するページを参照してください。 |
-| Indexer |  検索可能なデータとメタデータを外部データ ソースから抽出し、ドキュメント解読のために、インデックスとデータ ソース間のフィールド対フィールドのマッピングに基づいてインデックスを作成するクローラーです。 AI エンリッチメントのために、インデクサーはスキルセットを呼び出し、インデックス内のターゲット フィールドとエンリッチメント出力を関連付けるフィールド マッピングを含みます。 インデクサーの定義には、パイプライン操作のためのすべての指示と参照が含まれ、ユーザーがインデクサーを実行すると、パイプラインが呼び出されます。 | [インデクサー](search-indexer-overview.md) |
+| Indexer |  検索可能なデータとメタデータを外部データ ソースから抽出し、ドキュメント解読のために、インデックスとデータ ソース間のフィールド対フィールドのマッピングに基づいてインデックスを作成するクローラーです。 AI エンリッチメントのために、インデクサーはスキルセットを呼び出し、インデックス内のターゲット フィールドとエンリッチメント出力を関連付けるフィールド マッピングを含みます。 インデクサーの定義には、パイプライン操作のためのすべての指示と参照が含まれ、ユーザーがインデクサーを実行すると、パイプラインが呼び出されます。 構成を追加することによって、既存の処理を再利用し、変更があったステップとスキルだけを実行することもできます。 | [インデクサー](search-indexer-overview.md)と[増分インデックスの作成 (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) に関するページを参照してください。 |
 | データ ソース  | Azure でサポートされる型の外部データ ソースに接続するために、インデクサーによって使用されるオブジェクト。 | [インデクサーの概要](search-indexer-overview.md)に関するページを参照してください。 |
 | Index | フィールド構造と使用状況を定義するインデックス スキーマから構築された Azure Cognitive Search で永続化された検索インデックスです。 | [基本インデックスの作成](search-what-is-an-index.md)に関するページを参照してください。 | 
 

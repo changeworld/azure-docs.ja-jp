@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11b16f91d600c20b48fbdc5887a4a0a4b538e916
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330650"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603975"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning の [TensorFlow エスティメーター](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) クラスを使用して、大規模な [TensorFlow](https://www.tensorflow.org/overview) トレーニング スクリプトを実行する方法について説明します。 この例では、ディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類するための TensorFlow モデルをトレーニングして登録します。
 
@@ -157,6 +158,9 @@ est = TensorFlow(source_directory=script_folder,
                  compute_target=compute_target,
                  use_gpu=True)
 ```
+
+> [!TIP]
+> TensorFlow の Estimator クラスで新たに **Tensorflow 2.0** がサポートされます。 詳細については、[ブログ記事](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/)を参照してください。
 
 ## <a name="submit-a-run"></a>実行を送信する
 

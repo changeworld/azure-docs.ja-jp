@@ -1,6 +1,6 @@
 ---
 title: CLI からのモデルのトレーニングとデプロイ
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure CLI 用の機械学習拡張機能を使用して、コマンド ラインからモデルをトレーニング、登録、デプロイする方法について説明します。
 ms.author: larryfr
 author: Blackmist
@@ -9,14 +9,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: fb46aaf04535c1b44cdd80810fbb6382dc727a67
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 1854599956755716955a6e691c3266ac54ddafd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350427"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581548"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 このチュートリアルでは、Azure CLI 用の機械学習拡張機能を使用して、モデルのトレーニング、登録、デプロイを行います。
 
@@ -97,12 +98,12 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループは、Azure プラットフォーム上のリソースの基本的なコンテナーです。 Azure Machine Learning service を使用する場合、リソース グループには Azure Machine Learning service ワークスペースが含まれます。 また、ワークスペースによって使用される他の Azure サービスも含まれます。 たとえば、クラウドベースのコンピューティング リソースを使用してモデルをトレーニングすると、そのリソースがリソース グループ内に作成されます。
+リソース グループは、Azure プラットフォーム上のリソースの基本的なコンテナーです。 Azure Machine Learning を使用する場合、リソース グループには Azure Machine Learning ワークスペースが含まれます。 また、ワークスペースによって使用される他の Azure サービスも含まれます。 たとえば、クラウドベースのコンピューティング リソースを使用してモデルをトレーニングすると、そのリソースがリソース グループ内に作成されます。
 
 __新しいリソース グループを作成__するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
 
 > [!TIP]
-> Azure Machine Learning service が使用可能なリージョンを選択する必要があります。 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)」を参照してください。
+> Azure Machine Learning が使用可能なリージョンを選択する必要があります。 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)」を参照してください。
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -182,7 +183,7 @@ az ml folder attach -w <workspace-name> -g <resource-group-name>
 
 ## <a name="create-the-compute-target-for-training"></a>トレーニング用のコンピューティング先の作成
 
-この例では、Azure Machine Learning コンピューティング インスタンスを使用してモデルをトレーニングします。 新しいコンピューティング インスタンスを作成するには、次のコマンドを使用します。
+この例では、Azure Machine Learning ノートブック VM を使用してモデルをトレーニングします。 新しいノートブック VM を作成するには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -217,7 +218,7 @@ az ml run submit-script -e myexperiment -c sklearn -d training-env.yml -t runout
 
 `-c sklearn` パラメーターでは、`.azureml/sklearn.runconfig` ファイルを指定します。 前述のように、このファイルには、トレーニングの実行で使用される環境を構成するために使用される情報が含まれています。 このファイルを調べると、先ほど作成した `cpu` コンピューティング先が参照されていることがわかります。 また、トレーニング時に使用するノードの数 (`"nodeCount": "4"`) が一覧表示され、トレーニング スクリプトを実行するために必要な Python パッケージを一覧にした `"condaDependenciees"` セクションが含まれています。
 
-実行構成ファイルについて詳しくは、[モデル トレーニング用のコンピューティング先の設定と使用](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)に関するページをご覧ください。
+実行構成ファイルについて詳しくは、[モデル トレーニング用のコンピューティング ターゲットの設定と使用](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)に関するページをご覧になるか、こちらの [JSON ファイル](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)を参照して、実行構成の完全なスキーマを確認してください。
 
 `-t` パラメーターでは、この実行への参照を JSON ファイルに格納します。このパラメーターは、次の手順でモデルを登録およびダウンロードするために使用されます。
 
@@ -238,7 +239,7 @@ Cleaning up all outstanding Run operations, waiting 300.0 seconds
 
 `train-sklearn.py` を調べると、トレーニング済みのモデルをファイルに保存するときにアルファ値も使用されていることがわかります。 この例では、複数のモデルがトレーニングされます。 アルファが最大のものが最適です。 上記の出力とコードを見ると、アルファが 0.95 のモデルが `./outputs/ridge_0.95.pkl` として保存されました
 
-モデルは、トレーニングされたコンピューティング先にある `./outputs` ディレクトリに保存されました。 この例では、Azure クラウド内の Azure Machine Learning コンピューティング インスタンスです。 トレーニング プロセスでは、トレーニングが発生したコンピューティング先から Azure Machine Learning ワークスペースに `./outputs` ディレクトリの内容が自動的にアップロードされます。 これは、実験 (この例では `myexperiment`) の一部として保存されます。
+モデルは、トレーニングされたコンピューティング先にある `./outputs` ディレクトリに保存されました。 この例では、Azure クラウド内の Azure Machine Learning ノートブック VM です。 トレーニング プロセスでは、トレーニングが発生したコンピューティング先から Azure Machine Learning ワークスペースに `./outputs` ディレクトリの内容が自動的にアップロードされます。 これは、実験 (この例では `myexperiment`) の一部として保存されます。
 
 ## <a name="register-the-model"></a>モデルを登録する
 
@@ -292,7 +293,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 このコマンドでは、以前に登録したモデルのバージョン 1 を使用して、`myservice` という名前の新しいサービスをデプロイします。
 
-`inferenceConfig.yml` ファイルでは、入力スクリプト (`score.py`) やソフトウェアの依存関係など、推論の実行方法に関する情報が提供されます。 このファイルの構造について詳しくは、「[推論構成スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。 エントリ スクリプトの詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md#prepare-to-deploy)」を参照してください。
+`inferenceConfig.yml` ファイルでは、入力スクリプト (`score.py`) やソフトウェアの依存関係など、推論の実行方法に関する情報が提供されます。 このファイルの構造について詳しくは、「[推論構成スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。 エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#prepare-to-deploy)」を参照してください。
 
 `aciDeploymentConfig.yml` は、サービスをホストするために使用されるデプロイ環境を示します。 デプロイ構成は、デプロイに使用するコンピューティング先に固有です。 この例では、Azure Container インスタンスが使用されます。 詳しくは、「[デプロイ構成スキーマ](reference-azure-machine-learning-cli.md#deployment-configuration-schema)」を参照してください。
 
@@ -386,4 +387,4 @@ az group delete -g <resource-group-name> -y
 > * モデルを Web サービスとして公開する
 > * Web サービスを使用してデータをスコア付けする
 
-CLI の使用について詳しくは、[Azure Machine Learning service 用 CLI 拡張機能の使用](reference-azure-machine-learning-cli.md)に関する記事を参照してください。
+CLI の使用について詳しくは、「[Azure Machine Learning 用の CLI 拡張機能を使用する](reference-azure-machine-learning-cli.md)」を参照してください。

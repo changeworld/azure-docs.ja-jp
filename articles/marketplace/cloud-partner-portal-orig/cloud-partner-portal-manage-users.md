@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 5a3724729f85b7917b1559ce2ac3d859881e0de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b14d40e9b3a2aa1ca71335b60e97f15b3782698f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935132"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823277"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>クラウド パートナー ポータルでのユーザーの管理
 ======================================
@@ -54,7 +55,7 @@ o Cloud パートナー ポータルで提供されるメール ID が、Microso
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]
-> 所有者または共同作成者として追加する、電子メールの対象となる '発行者名' が選択の候補として [発行元] ドロップダウン リストに表示されます。
+> 所有者または共同作成者として追加する、電子メールの対象となる '発行者名' が選択の候補として [発行元] ドロップダウン リストに表示されます。`
 
 ![ロールの割り当て - 発行元を選択する](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927415"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809191"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート
 
-各 IoT ハブには、デバイスごとのリソースをサービス内に作成するために使用できる ID レジストリがあります。 この ID レジストリを使って、デバイス向けエンドポイントへのアクセスを制御することもできます。 この記事では、ID レジストリとの間でデバイス ID を一括でインポートおよびエクスポートする方法について説明します。
+各 IoT ハブには、デバイスごとのリソースをサービス内に作成するために使用できる ID レジストリがあります。 この ID レジストリを使って、デバイス向けエンドポイントへのアクセスを制御することもできます。 この記事では、ID レジストリとの間でデバイス ID を一括でインポートおよびエクスポートする方法について説明します。 実際に動作する C# のサンプルを見て、ハブを別のリージョンで複製するときにこの機能を使用する方法を学習するには、[IoT Hub を複製する方法](iot-hub-how-to-clone.md)に関するページを参照してください。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -421,7 +421,11 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
+この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 ハブ間でデバイスを移動する方法など、こうした操作の多くは、[IoT Hub を複製する方法に関するページの「IoT Hub に登録されているデバイスを管理する」セクション](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub)で使用されています。 
+
+複製に関する記事には、実際に動作するサンプルが含まれています。このページの IoT C# サンプルにあります: [C# の Azure IoT サンプル](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)。プロジェクトは ImportExportDevicesSample です。 サンプルをダウンロードし、試してみることができます。[IoT Hub を複製する方法](iot-hub-how-to-clone.md)に関する記事に手順が記載されています。
+
+Azure IoT Hub の管理の詳細については、次の記事をご覧ください。
 
 * [IoT Hub メトリック](iot-hub-metrics.md)
 * [IoT Hub ログ](iot-hub-monitor-resource-health.md)

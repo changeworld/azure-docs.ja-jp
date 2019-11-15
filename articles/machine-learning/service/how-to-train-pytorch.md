@@ -1,5 +1,5 @@
 ---
-title: PyTorch を使用したディープ ラーニング ニューラル ネットワークのトレーニング
+title: ディープ ラーニング PyTorch モデルをトレーニングする
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の PyTorch 推定クラスを使用して、PyTorch トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。  このサンプル スクリプトは、PyTorch の転移学習チュートリアルに基づいてニワトリと七面鳥の画像を分類し、ディープ ラーニング ニューラル ネットワークを構築します。
 services: machine-learning
@@ -11,14 +11,15 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2c704e36f4353b34733ccc29b785c752b2a5c559
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002568"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822707"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning の [PyTorch 推定](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)クラスを使用して、[PyTorch](https://pytorch.org/) トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。  
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: ff96bddef1b34f5a8bf743ccaaccba2da01534dc
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: b23e844cb550a98328951bc6efae3c5039ff73bf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335090"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607536"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure Managed Applications のビュー定義アーティファクト
 
@@ -26,7 +26,7 @@ ms.locfileid: "68335090"
 
 ## <a name="view-definition-schema"></a>ビュー定義スキーマ
 
-**viewDefinition.json** ファイルにあるのは、最上位レベルの `views` プロパティ 1 つのみです。これはビューの配列です。 各ビューはマネージド アプリケーションのユーザー インターフェイスに、目次の個別のメニュー項目として表示されます。 各ビューには、ビューの種類をセットする `kind` プロパティがあります。 次のいずれかの値を設定する必要があります: [Overview](#overview)、[Metrics](#metrics)、[CustomResources](#custom-resources)。 詳細については、現在の [viewDefinition.json の JSON スキーマ](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)を参照してください。
+**viewDefinition.json** ファイルにあるのは、最上位レベルの `views` プロパティ 1 つのみです。これはビューの配列です。 各ビューはマネージド アプリケーションのユーザー インターフェイスに、目次の個別のメニュー項目として表示されます。 各ビューには、ビューの種類をセットする `kind` プロパティがあります。 次のいずれかの値を設定する必要があります: [Overview](#overview)、[Metrics](#metrics)、[CustomResources](#custom-resources)、[Associations](#associations)。 詳細については、現在の [viewDefinition.json の JSON スキーマ](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)を参照してください。
 
 ビュー定義のサンプルの JSON:
 
@@ -79,10 +79,6 @@ ms.locfileid: "68335090"
                 "createUIDefinition": { },
                 "commands": [
                     {
-                        "displayName": "Custom Test Action",
-                        "path": "testAction"
-                    },
-                    {
                         "displayName": "Custom Context Action",
                         "path": "testCustomResource/testContextAction",
                         "icon": "Stop",
@@ -95,10 +91,18 @@ ms.locfileid: "68335090"
                     {"key": "properties.myProperty2", "displayName": "Property 2", "optional": true}
                 ]
             }
+        },
+        {
+            "kind": "Associations",
+            "properties": {
+                "displayName": "Test association resource type",
+                "version": "1.0.0",
+                "targetResourceType": "Microsoft.Compute/virtualMachines",
+                "createUIDefinition": { }
+            }
         }
     ]
 }
-
 ```
 
 ## <a name="overview"></a>概要
@@ -203,12 +207,9 @@ ms.locfileid: "68335090"
         "displayName": "Test custom resource type",
         "version": "1.0.0",
         "resourceType": "testCustomResource",
+        "icon": "Polychromatic.ResourceList",
         "createUIDefinition": { },
         "commands": [
-            {
-                "displayName": "Custom Test Action",
-                "path": "testAction"
-            },
             {
                 "displayName": "Custom Context Action",
                 "path": "testCustomResource/testContextAction",
@@ -230,6 +231,7 @@ ms.locfileid: "68335090"
 |displayName|はい|ビューの表示タイトル。 タイトルは **viewDefinition.json**内の各 CustomResources ビューに対して**一意**である必要があります。|
 |version|いいえ|ビューのレンダリングに使用されるプラットフォームのバージョン。|
 |resourceType|はい|カスタム リソースの種類。 カスタム プロバイダーの**一意の**カスタム リソースの種類とする必要があります。|
+|icon|いいえ|ビューのアイコン。 例のアイコンの一覧は、[JSON スキーマ](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)で定義されています。|
 |createUIDefinition|いいえ|カスタム リソースの作成コマンド用の UI 定義作成スキーマ。 UI 定義の作成の概要については、[CreateUiDefinition の基本概念](create-uidefinition-overview.md)に関する記事を参照してください。|
 |commands|いいえ|CustomResources ビューの追加のツールバーのボタンの配列。「[commands](#commands)」を参照してください。|
 |columns|いいえ|カスタム リソースの列の配列。 定義されていない場合、`name` 列が既定で表示されます。 この列には `"key"` と `"displayName"` を含める必要があります。 キーについては、ビューに表示するプロパティのキーを指定します。 入れ子になっている場合は、`"key": "name"` や `"key": "properties.property1"` のように、ドットを区切り記号として使用します。 表示名については、ビューに表示するプロパティの表示名を指定します。 `"optional"` プロパティを指定することもできます。 true に設定すると、列がビュー内で既定で非表示となります。|
@@ -257,8 +259,35 @@ ms.locfileid: "68335090"
 |---------|---------|---------|
 |displayName|はい|コマンド ボタンの表示名。|
 |path|はい|カスタム プロバイダーのアクション名。 アクション名は **mainTemplate.json** で定義されている必要があります。|
-|icon|いいえ|コマンド ボタンのアイコン。 サポートされているアイコンの一覧は、[JSON スキーマ](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)で定義されています。|
+|icon|いいえ|コマンド ボタンのアイコン。 例のアイコンの一覧は、[JSON スキーマ](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)で定義されています。|
 |createUIDefinition|いいえ|コマンド用の UI 定義作成スキーマ。 UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。|
+
+## <a name="associations"></a>Associations
+
+`"kind": "Associations"`
+
+この種類のビューは複数定義することができます。 このビューを使用すると、**mainTemplate.json** で定義したカスタム プロバイダーを使用して、既存のリソースをマネージド アプリケーションにリンクすることができます。 カスタム プロバイダーの概要については、「[Azure Custom Providers プレビューの概要](custom-providers-overview.md)」を参照してください。
+
+このビューでは、`targetResourceType` に基づいて既存の Azure リソースを拡張できます。 リソースを選択すると、**パブリック** カスタム プロバイダーに対するオンボード要求が作成され、これによりリソースに副作用を適用できます。 
+
+```json
+{
+    "kind": "Associations",
+    "properties": {
+        "displayName": "Test association resource type",
+        "version": "1.0.0",
+        "targetResourceType": "Microsoft.Compute/virtualMachines",
+        "createUIDefinition": { }
+    }
+}
+```
+
+|プロパティ|必須|説明|
+|---------|---------|---------|
+|displayName|はい|ビューの表示タイトル。 タイトルは **viewDefinition.json** 内の各 Associations ビューに対して**一意**である必要があります。|
+|version|いいえ|ビューのレンダリングに使用されるプラットフォームのバージョン。|
+|targetResourceType|はい|ターゲット リソースの種類。 これは、リソースのオンボードに表示されるリソースの種類です。|
+|createUIDefinition|いいえ|関連付けリソース作成コマンド用の UI 定義スキーマを作成します。 UI 定義の作成の概要については、[CreateUiDefinition の基本概念](create-uidefinition-overview.md)に関する記事を参照してください。|
 
 ## <a name="looking-for-help"></a>ヘルプを探しています
 

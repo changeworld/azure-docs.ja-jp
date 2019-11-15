@@ -1,5 +1,5 @@
 ---
-title: Azure SQL データベース監査の使用 | Microsoft Docs
+title: 監査の使用
 description: Azure SQL データベース監査を使用して、データベースイベントを追跡し、監査ログに書き込みます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: cc12579a4932894b730b04cdc77acc0151168bdb
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 65d092b36ed0e339a77bb423f24079caae38ab84
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010210"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821969"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -49,6 +49,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 > - **Premium Storage** は現在**サポートされていません**。
 > - **VNet 内の Storage** は現在**サポートされていません**。
 > - **ファイアウォールの背後にある Storage** は現在**サポートされていません**。
+> - **Azure Data Lake Storage Gen2 ストレージ アカウント**用の**階層型名前空間**は現在**サポートされていません**。
 
 ## <a id="subheading-8"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
 
@@ -96,7 +97,8 @@ SQL Database 監査を使用して、以下を行うことができます。
 6. ストレージ アカウントへの監査ログの書き込みを構成するには、 **[ストレージ]** を選択し、 **[容量の詳細]** を開きます。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 古いログは削除されます。 次に、 **[OK]** をクリックします
 
    > [!IMPORTANT]
-   > リテンション期間の既定値は 0 (無制限のリテンション期間) です。 この値は、ストレージ アカウントを監査用に構成するときに **[ストレージ設定]** の **[リテンション期間 (日数)]** スライダーを移動して変更できます。
+   > - リテンション期間の既定値は 0 (無制限のリテンション期間) です。 この値は、ストレージ アカウントを監査用に構成するときに **[ストレージ設定]** の **[リテンション期間 (日数)]** スライダーを移動して変更できます。
+   > - リテンション期間を 0 (無制限のリテンション期間) から他の値に変更した場合、リテンション期間は、リテンション期間の値が変更された後に書き込まれたログにのみ適用されることに注意してください (リテンション期間が無制限に設定されている間に書き込まれたログは、リテンション期間が有効になった後も保持されます)。
 
     ![ストレージ アカウント](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 

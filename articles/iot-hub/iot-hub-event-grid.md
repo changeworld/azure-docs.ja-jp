@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648640"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748585"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -204,4 +204,4 @@ IoT Hub イベントを処理するアプリケーションは、以下の推奨
 
 * [IoT Hub のイベントとメッセージのルーティングの違いを比較します](iot-hub-event-grid-routing-comparison.md)
 
-* [IoT テレメトリ イベントを使用して、Azure Maps (および IoT Hub メッセージ ルーティング) を使用して IoT 空間分析を実装する方法について学びます](../azure-maps/tutorial-iot-hub-maps.md#filter-events-using-iot-hub-message-routing)
+* [IoT テレメトリ イベントを使用して、Azure Maps を使用して IoT 空間分析を実装する方法について学びます](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)

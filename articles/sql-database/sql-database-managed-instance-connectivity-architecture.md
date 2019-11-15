@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database マネージド インスタンス用の接続アーキテクチャ | Microsoft Docs
+title: マネージド インスタンスの接続アーキテクチャ
 description: Azure SQL Database マネージド インスタンスの通信および接続アーキテクチャと、コンポーネントによるマネージド インスタンスへのトラフィックの誘導方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7e32cb302322f7a80154a3f2a246d7d4f1743c09
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 0c21271eb19a8fd69cb42e30c6a45bd3af9a5600
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249361"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820488"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
 
@@ -436,4 +436,4 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
   - [Azure ポータル](sql-database-managed-instance-get-started.md)から設定。
   - [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) を使用して。
   - [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)を使用して。
-  - [Azure Resource Manager テンプレート (Jumpbox と SSMS を含む)](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/) を使用して。 
+  - [Azure Resource Manager テンプレート (Jumpbox と SSMS を含む)](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/) を使用して。 

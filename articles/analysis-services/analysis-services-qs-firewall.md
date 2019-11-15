@@ -1,20 +1,20 @@
 ---
-title: クイック スタート - Azure での Analysis Services サーバーのファイアウォールの構成 | Microsoft Docs
-description: Azure で Analysis Services サーバー インスタンスのファイアウォールを構成する方法について説明します。
+title: クイック スタート - Azure Analysis Services サーバーのファイアウォールの構成 | Microsoft Docs
+description: このクイック スタートでは、Azure portal を利用し、Azure Analysis Services サーバーのファイアウォールを構成できます。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c3c8de80f90fe203029b38171502e3d4a9b9dd46
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298532"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572473"
 ---
-# <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート: サーバーのファイアウォールの構成 - ポータル
+# <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート:サーバーのファイアウォールの構成 - ポータル
 
 このクイック スタートでは、Azure Analysis Services サーバーのファイアウォールを構成できます。 ファイアウォールを有効にし、IP アドレス範囲をサーバーにアクセスするコンピューターのみに構成することは、サーバーとデータの保護の重要な部分です。
 

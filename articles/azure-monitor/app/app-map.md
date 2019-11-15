@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678383"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577070"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -180,13 +180,22 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 ### <a name="java"></a>Java
 
+Application Insights Java SDK 2.5.0 以降では、`ApplicationInsights.xml` ファイルに `<RoleName>` を追加することで、クラウド ロール名を指定できます。例:
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
 Application Insights Spring Boot スターターで Spring Boot を使用する場合、必要な変更は application.properties ファイルにアプリケーションのカスタム名を設定することだけです。
 
 `spring.application.name=<name-of-app>`
 
 Spring Boot スターターにより、クラウド ロール名が、ユーザーが spring.application.name プロパティに入力した値に自動的に割り当てられます。
-
-Java の相関関係と、SpringBoot 以外のアプリケーションにクラウド ロール名を構成する方法の詳細については、この相関関係に関する[セクション](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name)を調べてください。
 
 ### <a name="clientbrowser-side-javascript"></a>クライアント/ブラウザー側の JavaScript
 

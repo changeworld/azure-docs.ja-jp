@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database を構成する方法 | Microsoft Docs
+title: 構成と管理
 description: Azure SQL Database を構成して管理する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 98c522f3d2718691e32b4e78180027b69f28289f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5773ea37585bb5c63736aaa4432243dc1d41f7bc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568020"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811174"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL Database を使用する方法
 

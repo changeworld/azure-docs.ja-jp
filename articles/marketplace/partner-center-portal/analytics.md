@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332129"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813183"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでの商用マーケットプレース向け分析
 

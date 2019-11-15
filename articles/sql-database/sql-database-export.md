@@ -1,6 +1,6 @@
 ---
-title: 単一の、またはプールされた Azure SQL データベースを BACPAC ファイルにエクスポートする | Microsoft Docs
-description: Azure Portal を使用して BACPAC ファイルに Azure SQL データベースをエクスポートする
+title: 1 つまたは複数のプールされたデータベースを BACPAC ファイルにエクスポートする
+description: Azure Portal を使って BACPAC ファイルに Azure SQL データベースをエクスポートする
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9b4770f565f256d444ab6a6f06bb369b8417eb18
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b96d2e69b757774afe177341caffe2f3cbf00e2b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568258"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823451"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL データベースを BACPAC ファイルにエクスポートする
 

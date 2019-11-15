@@ -1,25 +1,25 @@
 ---
 title: 音声コンテナーを構成する
 titleSuffix: Azure Cognitive Services
-description: 音声コンテナー
+description: Speech Services では、コンテナーごとに一般的な構成フレームワークが提供されているので、コンテナーのストレージ、ログとテレメトリ、セキュリティの設定を簡単に構成して管理できます。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: f7e2e95b553039b88267f730787fbbac82099948
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4e09a476398134d92b4492c68ed4ebebc468f272
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105180"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796191"
 ---
 # <a name="configure-speech-service-containers"></a>Speech Service コンテナーを構成する
 
-音声コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方を活用するように最適化された 1 つの音声アプリケーション アーキテクチャを構築できます。 Microsoft が現在サポートしている 2 つの音声コンテナーは、**音声テキスト変換**と**テキスト読み上げ**です。 
+Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方を活用するように最適化された 1 つの音声アプリケーション アーキテクチャを構築できます。 現在サポートされている 4 つの音声コンテナーは、**音声テキスト変換**、**カスタム音声テキスト変換**、**テキスト読み上げ**、および**カスタム テキスト読み上げ**です。
 
 **音声**コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "71105180"
 
 |必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/sts/v1.0` |
+|はい| `Billing` | string | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](speech-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -62,9 +62,9 @@ ms.locfileid: "71105180"
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
+## <a name="http-proxy-credentials-settings"></a>HTTP プロキシ資格情報設定
 
-[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+[!INCLUDE [Container shared HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Logging の設定
  
@@ -74,14 +74,37 @@ ms.locfileid: "71105180"
 
 コンテナーとの間でデータを読み書きするには、バインド マウントを使用します。 入力マウントまたは出力マウントは、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドで `--mount` オプションを指定することによって指定できます。
 
-音声コンテナーでは、トレーニングやサービスのデータを格納するために入力マウントまたは出力マウントが使用されることはありません。 
+標準的な音声コンテナーでは、トレーニングやサービスのデータを格納するために入力マウントまたは出力マウントが使用されることはありません。 ただし、カスタム音声コンテナーはボリュームのマウントに依存します。
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](speech-container-howto.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
 |省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|禁止| `Input` | string | 音声コンテナーでは、これは使用されません。|
+|禁止| `Input` | string | 標準的な音声コンテナーでは、これは使用されません。 カスタム音声コンテナーでは、[ボリュームのマウント](#volume-mount-settings)が使用されます。 |
 |省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+
+## <a name="volume-mount-settings"></a>ボリュームのマウントの設定
+
+カスタム音声コンテナーでは、[ボリュームのマウント](https://docs.docker.com/storage/volumes/)を使用して、カスタム モデルが保持されます。 `-v` (または `--volume`) オプションを [docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドに追加することで、ボリュームのマウントを指定できます。
+
+カスタム モデルは、カスタム音声コンテナーの docker run コマンドの一部として新しいモデルが初めて取り込まれるときにダウンロードされます。 カスタム音声コンテナーに対する同じ `ModelId` の連続実行では、ダウンロード済みのモデルが使用されます。 ボリュームのマウントが指定されていない場合、カスタム モデルを永続化することはできません。
+
+ボリュームのマウントの設定は、3 つの色付きの `:` で区切られたフィールドで構成されます。
+
+1. 最初のフィールドは、ホスト コンピューター上のボリュームの名前です (たとえば *C:\input*)。
+2. 2 番目のフィールドは、コンテナー内のディレクトリです (たとえば */usr/local/models*)。
+3. 3 番目のフィールド (省略可能) は、オプションのコンマ区切りの一覧です。詳細については、[ボリュームの使用](https://docs.docker.com/storage/volumes/)に関する記事を参照してください。
+
+### <a name="volume-mount-example"></a>ボリュームのマウントの例
+
+```bash
+-v C:\input:/usr/local/models
+```
+
+このコマンドでは、ホスト コンピューターの *C:\input* ディレクトリが、コンテナーの */usr/local/models* にマウントされます。
+
+> [!IMPORTANT]
+> ボリュームのマウント設定が適用されるのは、**カスタム音声テキスト変換**と**カスタム テキスト読み上げ** コンテナーだけです。 標準の**音声テキスト変換**と**テキスト読み上げ**コンテナーでは、ボリュームのマウントは使用されません。
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -107,21 +130,13 @@ ms.locfileid: "71105180"
 
 次の Docker の例は、音声コンテナーに関するものです。 
 
+# <a name="speech-to-texttabstt"></a>[音声テキスト変換](#tab/stt)
+
 ### <a name="basic-example-for-speech-to-text"></a>音声テキスト変換の基本的な例
 
 ```Docker
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-### <a name="basic-example-for-text-to-speech"></a>テキスト読み上げの基本的な例
-
-```Docker
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -130,24 +145,92 @@ ApiKey={API_KEY}
 ### <a name="logging-example-for-speech-to-text"></a>音声テキスト変換のログ記録の例
 
 ```Docker
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
+containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
+# <a name="custom-speech-to-texttabcstt"></a>[カスタム音声テキスト変換](#tab/cstt)
+
+### <a name="basic-example-for-custom-speech-to-text"></a>カスタム音声テキスト変換の基本的な例
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
+-v {VOLUME_MOUNT}:/usr/local/models \
+containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
+ModelId={MODEL_ID} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+### <a name="logging-example-for-custom-speech-to-text"></a>カスタム音声テキスト変換のログ記録の例
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
+-v {VOLUME_MOUNT}:/usr/local/models \
+containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
+ModelId={MODEL_ID} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
+```
+
+# <a name="text-to-speechtabtss"></a>[テキスト読み上げ](#tab/tss)
+
+### <a name="basic-example-for-text-to-speech"></a>テキスト読み上げの基本的な例
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
+containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
 ### <a name="logging-example-for-text-to-speech"></a>テキスト読み上げのログ記録の例
 
 ```Docker
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
+docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
+
+# <a name="custom-text-to-speechtabctts"></a>[カスタム テキスト読み上げ](#tab/ctts)
+
+### <a name="basic-example-for-custom-text-to-speech"></a>カスタム テキスト読み上げの基本的な例
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
+-v {VOLUME_MOUNT}:/usr/local/models \
+containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech \
+ModelId={MODEL_ID} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+### <a name="logging-example-for-custom-text-to-speech"></a>カスタム テキスト読み上げのログ記録の例
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
+-v {VOLUME_MOUNT}:/usr/local/models \
+containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech \
+ModelId={MODEL_ID} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
+```
+
+***
 
 ## <a name="next-steps"></a>次の手順
 

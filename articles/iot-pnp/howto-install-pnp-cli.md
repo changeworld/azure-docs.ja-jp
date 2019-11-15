@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 41a626ba602ad33f22c3ea4acc39dd4f3438cbd0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935516"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571012"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLI 用 Azure IoT 拡張機能をインストールして使用する
 
@@ -131,21 +131,21 @@ az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} -
 コマンドを呼び出します。
 
 ```cmd/sh
-az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --command-name {CommandName} --command-payload {CommandPayload or FilePath}
+az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="telemetry"></a>テレメトリ
+#### <a name="digital-twin-events"></a>デジタル ツイン イベント
 
-**$Default** イベント ハブ エンドポイントにアクセスする特定のデバイスとインターフェイスからのすべての IoT プラグ アンド プレイ テレメトリを監視します。
+**$Default** イベント ハブ コンシューマー グループにアクセスする特定のデバイスとインターフェイスからのすべての IoT プラグ アンド プレイ デジタル ツイン イベントを監視します。
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-特定のコンシューマー グループにアクセスする特定のデバイスとインターフェイスからのすべての IoT プラグ アンド プレイ テレメトリを監視します。
+特定のコンシューマー グループにアクセスする特定のデバイスとインターフェイスからのすべての IoT プラグ アンド プレイ デジタル ツイン イベントを監視します。
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString} --consumer-group {YourConsumerGroup}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>モデル リポジトリ内のインターフェイスを管理する

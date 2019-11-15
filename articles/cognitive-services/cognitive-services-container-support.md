@@ -8,26 +8,28 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 8/21/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: eac9264a98c6224af56618e439a1cd3f00f7157c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 958acd042acba2a8c6c38ad1e6bac614db509da8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146814"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604440"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 
-Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure で利用できるものと同じリッチな API を使用できます。また、[Docker コンテナー](https://www.docker.com/what-container)に付随するサービスをデプロイおよびホストできる柔軟性があります。 コンテナー サポートは現在、以下を含む Azure Cognitive Services のサブセットにおいて、プレビューで使用できます。
+Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure で利用できるものと同じリッチな API を使用できます。また、[Docker コンテナー](https://www.docker.com/what-container)に付随するサービスをデプロイおよびホストできる柔軟性があります。 コンテナー サポートは現在、以下を含む Azure Cognitive Services のサブセットで使用できます。
 
-* [Anomaly Detector][ad-containers]
-* [Computer Vision][cv-containers]
-* [Face][fa-containers]
-* [Form Recognizer][fr-containers]
-* [Language Understanding (LUIS)][lu-containers]
-* [Speech Service API][sp-containers]
-* [Text Analytics][ta-containers]
+> [!div class="checklist"]
+> * [Anomaly Detector][ad-containers]
+> * [Computer Vision][cv-containers]
+> * [Face][fa-containers]
+> * [Form Recognizer][fr-containers]
+> * [Language Understanding (LUIS)][lu-containers]
+> * [Speech Service API][sp-containers]
+> * [Text Analytics][ta-containers]
+> * [Translator Text][tt-containers]
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
@@ -49,16 +51,18 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 | Service | サポートされている価格レベル | コンテナー | 説明 |
 |---------|----------|----------|-------------|
 |[Anomaly Detector][ad-containers] |F0、S0|**Anomaly-Detector** |Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。<br>[アクセスの要求](https://aka.ms/adcontainer)|
-|[Computer Vision][cv-containers] |F0、S1|**読み取り** |レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。 "読み取り" コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF/TIFF/複数ページのサポートが提供されます。<br/><br/>**重要:** 読み取りコンテナーは現在のところ、英語でのみ機能します。<br>[アクセスの要求](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
-|[Computer Vision][cv-containers] |F0、S1|**Recognize Text** |レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。<br/><br/>**重要:** テキスト認識コンテナーは現在のところ、英語でのみ機能します。<br>[アクセスの要求](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Computer Vision][cv-containers] |F0、S1|**読み取り** |レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。 "読み取り" コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF/TIFF/複数ページのサポートが提供されます。<br/><br/>**重要:** 読み取りコンテナーは現在のところ、英語でのみ機能します。|
 |[Face][fa-containers] |F0、S0|**Face** |Face には、画像中の人の顔を検出し、顔のパーツ (鼻や目など)、性別、年齢のほか、マシンが予測するその他の顔の特徴などの属性を識別します。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認したり、データベースと顏を比較して、似ている顏や同一の顔が既に存在するかどうかを調べたりできます。 また、同じ視覚的特徴を使用して、似た顔をグループに分けて整理することもできます。<br>[アクセスの要求](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Form recognizer][fr-containers] |F0、S0|**Form Recognizer** |Form Understanding では、機械学習の技術を適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。<br>[アクセスの要求](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS][lu-containers] |F0、S0|**LUIS** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|トレーニング済みまたは発行済みの Language Understanding モデル ("LUIS アプリ" と呼ばれます) を Docker コンテナーに読み込みます。ユーザーは、そのコンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリのログを収集し、それらを [LUIS ポータル](https://www.luis.ai)に再度アップロードすることで、アプリの予測精度を高めることができます。|
-|[Speech Service API][sp-containers] |F0、S0|**音声テキスト変換** |連続するリアルタイムの音声をテキストに書き起こします。<br>[アクセスの要求](https://aka.ms/speechcontainerspreview/)|
-|[Speech Service API][sp-containers] |F0、S0|**テキスト読み上げ** |テキストを自然な音声に変換します。<br>[アクセスの要求](https://aka.ms/speechcontainerspreview/)|
+|[Speech Service API][sp-containers-stt] |F0、S0|**音声テキスト変換** |連続するリアルタイムの音声をテキストに書き起こします。|
+|[Speech Service API][sp-containers-cstt] |F0、S0|**カスタム音声テキスト変換** |カスタム モデルを使用して、連続するリアルタイムの音声をテキストに書き起こします。|
+|[Speech Service API][sp-containers-tts] |F0、S0|**テキスト読み上げ** |テキストを自然な音声に変換します。|
+|[Speech Service API][sp-containers-ctts] |F0、S0|**カスタム テキスト読み上げ** |カスタム モデルを使用してテキストを自然な音声に変換します。|
 |[Text Analytics][ta-containers] |F0、S|**キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
 |[Text Analytics][ta-containers]|F0、S|**言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
 |[Text Analytics][ta-containers]|F0、S|**感情分析** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](./text-analytics/language-support.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。 |
+|[Translator Text][tt-containers]| **該当なし** | **Translator Text** | Translator Text はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。<br>[アクセスの要求](https://aka.ms/translatorcontainerform) |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -80,8 +84,9 @@ Azure Cognitive Services コンテナーはお使いの Azure サブスクリプ
 > * [Anomaly Detector](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [Face](Face/face-how-to-install-containers.md)
 > * [Form Recognizer](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
-> * [Recognize Text](Computer-vision/computer-vision-how-to-install-containers.md)
+> * [読み取り](computer-vision/computer-vision-how-to-install-containers.md)
 > * [Speech-to-text と Text-to-speech](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
+> * [Translator Text](translator/how-to-install-containers.md#request-access-to-the-container-registry)
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
@@ -116,6 +121,7 @@ Azure Cognitive Services のコンテナーによって提供される機能を�
 * [Language Understanding (LUIS) コンテナー][lu-containers]
 * [Speech Service API コンテナー][sp-containers]
 * [Text Analytics コンテナー][ta-containers]
+* [Translator Text コンテナー][tt-containers]
 
 <!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 -->
@@ -126,4 +132,9 @@ Azure Cognitive Services のコンテナーによって提供される機能を�
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
+[sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
+[sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
+[sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
+[sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
 [ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
+[tt-containers]: translator/how-to-install-containers.md

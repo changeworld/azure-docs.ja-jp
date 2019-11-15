@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator アプリに Microsoft 以外のアカウントを追加する - Azure Active Directory | Microsoft Docs
+title: Microsoft 以外のアカウントを認証アプリに追加する - Azure AD
 description: 2 要素検証のために Microsoft Authenticator アプリに、Google、Facebook、GitHub などの、Microsoft 以外のアカウントを追加する方法。
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942929"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803676"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Microsoft 以外のアカウントを追加する
 

@@ -1,36 +1,36 @@
 ---
-title: Storage Explorer でナレッジ ストアを表示する
+title: Storage Explorer を使ってナレッジ ストア (プレビュー) を表示する
 titleSuffix: Azure Cognitive Search
-description: Azure portal の Storage Explorer で Azure Cognitive Search のナレッジ ストアを表示して分析します。
+description: Azure portal の Storage Explorer で Azure Cognitive Search のナレッジ ストアを表示して分析します。 ナレッジ ストアは現在、パブリック プレビューの段階です。
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e3ea879a419aa14d3a6693e23f4f120aca8d9d51
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789973"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720054"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Storage Explorer でナレッジ ストアを表示する
 
-> [!Note]
-> ナレッジ ストアはプレビュー段階であるため、運用環境では使用しないでください。 この機能は、[Azure Cognitive Search REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供されています。 現時点で .NET SDK のサポートはありません。
->
-この記事では、Azure portal の Storage Explorer を使用してナレッジ ストアに接続し、探索する方法を説明します。 このチュートリアルで使用されているナレッジ ストア サンプルを作成する方法については、「[Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)」を参照してください。
+> [!IMPORTANT] 
+> ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
+
+この記事では、Azure portal の Storage Explorer を使用してナレッジ ストアに接続し、探索する方法を例を用いて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-+ 「[Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)」の手順に従って、このチュートリアルに使用されているサンプル ナレッジ ストアを作成します。
++ [Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)に関するページか、「[REST を使用して Azure Cognitive Search のナレッジ ストアを作成する](knowledge-store-create-rest.md)」の手順に従って、このチュートリアルで使用するサンプル ナレッジ ストアを作成します。
 
 + ナレッジ ストアの作成に使用した Azure Storage アカウントの名前とそのアクセス キー (Azure portal から入手) も必要になります。
 
 ## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Storage Explorer でのナレッジ ストアの表示、編集、クエリ
 
-1. Azure portal で、ナレッジ ストアの作成に使用したストレージ アカウントを開きます。
+1. Azure portal で、ナレッジ ストアの作成に使用した [Storage アカウントを開きます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。
 
 1. ストレージ アカウントの左側のナビゲーション ウィンドウで、 **[Storage Explorer]** をクリックします。
 
@@ -58,12 +58,8 @@ ms.locfileid: "72789973"
 
 ## <a name="next-steps"></a>次の手順
 
-このナレッジ ストアを Power BI に接続する方法については、次の記事を参照してください。
+このナレッジ ストアを Power BI に接続して詳細な分析を行うか、または REST API と Postman を使用してコーディングを進め、別のナレッジストアを作成します。
 
 > [!div class="nextstepaction"]
-> [Power BI を使用した接続](knowledge-store-connect-power-bi.md)
-
-REST API と Postman を使用してナレッジ ストアを作成する方法については、次の記事を参照してください。  
-
-> [!div class="nextstepaction"]
+> [Power BI を使用して接続する](knowledge-store-connect-power-bi.md)
 > [REST でナレッジ ストアを作成する](knowledge-store-howto.md)

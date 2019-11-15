@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 9462d9c807f8300d65e8e5a3e997ebc858342a97
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3bccae7c0e45f21609a5a67d20811240648570d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514470"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719157"
 ---
 汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 この記事では、このグループ内のサイズのストレージのスループットに加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "72514470"
 
   D シリーズのユース ケースの例には、エンタープライズ級のアプリケーション、リレーショナル データベース、メモリ内キャッシュ、分析があります。
 
-- Da シリーズと Dasv3 シリーズは、マルチスレッド構成で AMD の 2.35Ghz EPYC<sup>TM</sup> 7452V プロセッサを使用する新しいサイズです。最大で 256 GB の L3 キャッシュを備え、8 コアのそれぞれにその L3 キャッシュの 8 GB が専用に割り当てられ、汎用ワークロードを実行するためのカスタマー オプションが増えます。 Da シリーズと Dasv3 シリーズは、D および Dsv3 シリーズと同じメモリおよびディスク構成を備えています。
+- Dav4 シリーズと Dasv4 シリーズは、マルチスレッド構成で AMD の 2.35Ghz EPYC<sup>TM</sup> 7452 プロセッサを使用する新しいサイズです。最大で 256 GB の L3 キャッシュを備え、8 コアのそれぞれにその L3 キャッシュの 8 GB が専用に割り当てられ、汎用ワークロードを実行するためのカスタマー オプションが増えます。 Dav4 シリーズと Dasv4 シリーズは、D および Dsv3 シリーズと同じメモリおよびディスク構成を備えています。
   
 ## <a name="b-series"></a>B シリーズ
 
@@ -80,25 +80,28 @@ Dsv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた
 
 <sup>1</sup> Dsv3 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
 
-## <a name="dasv3-series-preview"></a>Dasv3 シリーズ (プレビュー)
+## <a name="dasv4-series"></a>Dasv4 シリーズ
+
+ACU: 230-260
 
 Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-Dasv3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Dasv3 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。
+Easv4 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成し、Premium SSD を使用できます。 Dasv4 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。
 
-[プレビュー用にサインアップするには、こちらをクリックしてください](http://aka.ms/azureamdpreview)。
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|-----|-----|-----|-----|-----|-----|-----|-----|
+| Standard_D2as_v4|2|8|16|4|4000 / 32 (50)|3200 / 48|2/1,000 |
+| Standard_D4as_v4|4|16|32|8|8000 / 64 (100)|6400 / 96|2/2,000 |
+| Standard_D8as_v4|8|32|64|16|16000 / 128 (200)|12800 / 192|4/4,000 |
+| Standard_D16as_v4|16|64|128|32|32000 / 255 (400)|25600 / 384|8/8,000 |
+| Standard_D32as_v4|32|128|256|32|64000 / 510 (800)|51200 / 768|8/1,6000 |
+| Standard_D48as_v4 <sup>**</sup>|48|192|384|32| | | 
+| Standard_D64as_v4 <sup>**</sup>|64|256|512|32| | | 
+| Standard_D96as_v4 <sup>**</sup>|96|384|768|32| | | 
 
-| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
-|---|---|---|---|
-| Standard_D2as_v3  | 2  | 8   | 16  |
-| Standard_D4as_v3  | 4  | 16  | 32  |
-| Standard_D8as_v3  | 8  | 32  | 64  |
-| Standard_D16as_v3 | 16 | 64  | 128 |
-| Standard_D32as_v3 | 32 | 128 | 256 |
-| Standard_D48as_v3 | 48 | 192 | 384 |
-| Standard_D64as_v3 | 64 | 256 | 512 |
+<sup>**</sup>これらのサイズはプレビュー段階です。  これらのより大きなサイズをお試しになりたい場合は、[https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview) でサインアップしてください。
 
 ## <a name="dv3-series-sup1sup"></a>Dv3 シリーズ <sup>1</sup>
 
@@ -125,25 +128,28 @@ Dv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた�
 
 <sup>1</sup> Dv3 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
 
-## <a name="dav3-series-preview"></a>Dav3 シリーズ (プレビュー)
+## <a name="dav4-series"></a>Dav4 シリーズ
+
+ACU: 230-260
 
 Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-Dav3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成しています。 Dav3 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Dasv3 サイズを使用してください。 Dasv3 サイズの価格および課金の計算方法は、Dav3 シリーズと同じです。
+Dav4 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成できます。 Dav4 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium SSD を使用するには、Dasv4 サイズを使用します。 Dasv4 サイズの価格および課金の計算方法は、Dav4 シリーズと同じです。
 
-[プレビュー用にサインアップするには、こちらをクリックしてください](http://aka.ms/azureamdpreview)。
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|-----|-----|-----|-----|-----|-----|-----|
+| Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000/46/23   | 2/1,000 |
+| Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000/93/46   | 2/2,000 |
+| Standard_D8a_v4 |  8  | 32 | 200 | 16 | 12000/187/93 | 4/4,000 |
+| Standard_D16a_v4|  16 | 64 | 400 |32  | 24000/375/187 |8/8,000 |
+| Standard_D32a_v4|  32 | 128| 800 | 32 | 48000/750/375 |8/1,6000 |
+| Standard_D48a_v4 <sup>**</sup> | 48 | 192| 1200 | 32 | | |
+| Standard_D64a_v4 <sup>**</sup> | 64 | 256 | 1600 | 32 | | |
+| Standard_D96a_v4 <sup>**</sup> | 96 | 384 | 2400 | 32 | | |
 
-| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
-|---|---|---|---|
-| Standard_D2a_v3  | 2  | 8   | 50   |
-| Standard_D4a_v3  | 4  | 16  | 100  |
-| Standard_D8a_v3  | 8  | 32  | 200  |
-| Standard_D16a_v3 | 16 | 64  | 400  |
-| Standard_D32a_v3 | 32 | 128 | 800  |
-| Standard_D48a_v3 | 48 | 192 | 1200 |
-| Standard_D64a_v3 | 64 | 256 | 1600 |
+<sup>**</sup>これらのサイズはプレビュー段階です。  これらのより大きなサイズをお試しになりたい場合は、[https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview) でサインアップしてください。
 
 ## <a name="dsv2-series"></a>DSv2 シリーズ
 

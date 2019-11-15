@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: bfb012116f74e451f9479c8c65057e5c8405bbb4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510576"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747690"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management のセルフホステッド ゲートウェイを Docker にデプロイする
 
@@ -31,6 +31,9 @@ ms.locfileid: "73510576"
 - 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 - Docker 環境を作成します。 [デスクトップ向けの Docker](https://www.docker.com/products/docker-desktop) は、開発および評価の目的に適したオプションです。 Docker のすべてのエディション、その機能、および Docker 自体に関する包括的なドキュメントについては、「[Docker Documentation (Docker ドキュメント)](https://docs.docker.com)」を参照してください。
 - [API Management インスタンスにゲートウェイ リソースをプロビジョニングします](api-management-howto-provision-self-hosted-gateway.md)
+
+> [!NOTE]
+> セルフホステッド ゲートウェイは、Linux ベースの Docker コンテナーとしてパッケージ化されます。
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Docker にセルフホステッド ゲートウェイをデプロイする
 
@@ -63,4 +66,5 @@ CONTAINER ID        IMAGE                                                 COMMAN
 
 ## <a name="next-steps"></a>次の手順
 
-* セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関する記事を参照してください
+* セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関するページを参照してください。
+* [セルフホステッド ゲートウェイのカスタム ドメイン名を構成する](api-management-howto-configure-custom-domain-gateway.md)。

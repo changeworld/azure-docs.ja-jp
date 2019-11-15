@@ -1,5 +1,5 @@
 ---
-title: テナント単位データベース SaaS チュートリアル - Azure SQL Database | Microsoft Docs
+title: テナント単位データベース SaaS チュートリアル
 description: Azure SQL Database を使用してテナント単位データベース パターンおよびその他の SaaS パターンを示す、Wingtip Tickets SaaS マルチ テナント アプリケーションをデプロイして操作します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d5f64f0a9abfa736c1db0e562b6f18ecfc1f6de5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 31f712f80ee2492e4bbaec99bd093d46f9d04e6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023837"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824007"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 

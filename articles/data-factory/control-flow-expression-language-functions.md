@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の式と関数 | Microsoft Docs
+title: Azure Data Factory の式と関数
 description: この記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9fc8dd1e22e16ef5342b405b602f8baaf8ce7edf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 75441a398e654893601cb7375ad3674d2b8aff29
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692854"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679911"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]

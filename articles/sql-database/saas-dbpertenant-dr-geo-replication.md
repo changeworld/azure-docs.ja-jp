@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Database の Geo レプリケーションを使用した SaaS アプリのディザスター リカバリー | Microsoft Docs
+title: geo レプリケーションによる SaaS アプリのディザスター リカバリー
 description: 障害が発生した場合に Azure SQL Database の geo レプリカを使用して、マルチテナント SaaS アプリを復旧する方法について説明します
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: bebbb3d053db37a9716230dfbb14372696dd4936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0668ccf5ceb972dd120e4e3f37be6d879a12d0a7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570534"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811714"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>データベースの geo レプリケーションを使用したマルチテナント SaaS アプリケーションのディザスター リカバリー
 

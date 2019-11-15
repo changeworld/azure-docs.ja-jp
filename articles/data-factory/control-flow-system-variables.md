@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory のシステム変数 | Microsoft Docs
+title: Azure Data Factory のシステム変数
 description: この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: b6c04edb3fc843dfe1b9176dc06bf312473591c3
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0a5237336530d30c3801b13b910171e236e87a23
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376434"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679289"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされているシステム変数
 この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。

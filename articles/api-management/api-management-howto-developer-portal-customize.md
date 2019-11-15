@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472134"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620436"
 ---
 # <a name="access-and-customize-developer-portal"></a>開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -125,7 +125,7 @@ ms.locfileid: "73472134"
 
 ## <a name="visit-the-published-portal"></a>発行されたポータルにアクセスする
 
-ポータルを発行した後は、管理パネルと同じ URL (`https://contoso-api.portal.azure-api.net` など) でアクセスできます。 それを新しいブラウザー タブで開き、外部の訪問者として表示します。
+ポータルを発行した後は、管理パネルと同じ URL (`https://contoso-api.developer.azure-api.net` など) でアクセスできます。 それを外部の訪問者として別のブラウザー セッション (シークレット ブラウズ モードまたはプライベート ブラウズ モード) で表示します。
 
 ## <a name="next-steps"></a>次の手順
 

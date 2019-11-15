@@ -4,16 +4,17 @@ description: 関連付けられている Fulfillment v1 API を使用して Azur
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78162983601e9126bd34cb737e74783df982bacb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99dd6db7003e0358ddde2438f6897cd767932227
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259355"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816578"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS Fulfillment API バージョン 1 (非推奨)
 

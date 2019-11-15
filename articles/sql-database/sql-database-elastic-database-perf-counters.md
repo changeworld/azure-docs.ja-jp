@@ -1,22 +1,22 @@
 ---
-title: パフォーマンス カウンターを作成してシャード マップ マネージャーのパフォーマンスを追跡する
+title: シャード マップ マネージャーを追跡するパフォーマンス カウンター
 description: ShardMapManager クラスとデータ依存ルーティング パフォーマンス カウンター
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seoapril2019
+ms.custom: seoapril2019, seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: ae7666113bd3a4bdb595a8312fdb25007d4ed2c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de481dad9dd39b301a21142c67b1baf2209f76e2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568680"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823897"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>パフォーマンス カウンターを作成してシャード マップ マネージャーのパフォーマンスを追跡する
 

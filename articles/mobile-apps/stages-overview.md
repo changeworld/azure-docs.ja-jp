@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 8ce032a6ad10b22bed5d266bb23fe81846e8a072
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 6349f90eeacaedb03db4d6e91902fea69a8d0dae
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795195"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818016"
 ---
 # <a name="different-stages-in-mobile-application-development"></a>モバイル アプリケーション開発の各段階
 モバイル アプリケーションの開発には複数の段階があり、開発者は Microsoft のサービス、ツール、テクノロジを活用し、ハイクラスのモバイル アプリケーションを簡単に構築できます。
@@ -35,6 +35,6 @@ ms.locfileid: "72795195"
 
 ## <a name="additional-services"></a>その他のサービス
 開発されるアプリケーションの種類や性質にもよりますが、さまざまな Azure サービスを利用できます。
-  - Azure Search では、高速クエリ機能であらゆる種類の内部データを検索できます。
+  - Azure Cognitive Search では、高速クエリ機能であらゆる種類の内部データを検索できます。
   - Azure Cognitive Services では、アプリケーションで人工知能を利用できます。
   - Azure SignalR では、アプリケーションでリアルタイムの通信を可能にします。

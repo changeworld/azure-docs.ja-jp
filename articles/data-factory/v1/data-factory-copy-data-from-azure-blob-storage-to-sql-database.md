@@ -1,5 +1,5 @@
 ---
-title: Blob Storage から SQL Database へのデータのコピー - Azure | Microsoft Docs
+title: Blob Storage から SQL Database にデータをコピーする - Azure
 description: このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。
 services: data-factory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ad114ce3a40e11048d01c6768811089c43cdf1db
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839388"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682808"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル:Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
@@ -112,7 +112,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 
     クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。 Azure SQL サーバーのファイアウォールを構成する手順については、 [こちらの記事](../../sql-database/sql-database-configure-firewall-settings.md) を参照してください。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 これで前提条件を完了しました。 データ ファクトリを作成するには、次のいずれかの方法を使用します。 上部にあるドロップダウン リストのいずれかのオプションまたは次のリンクをクリックして、チュートリアルを実行します。     
 
 * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)

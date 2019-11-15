@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Managed Instance の仮想ネットワークを作成する | Microsoft Docs
+title: マネージド インスタンスの仮想ネットワークを作成する
 description: この記事では、Azure SQL Database Managed Instance のデプロイ先にできる仮想ネットワークの作成方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 2fd4055f1a2ec7b5b29d1a303f1c9ac3260f4cca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958469"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823378"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の仮想ネットワークを作成する
 

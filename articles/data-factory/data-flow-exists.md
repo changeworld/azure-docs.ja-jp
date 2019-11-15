@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory マッピング データ フローでの存在変換 | Microsoft Docs
+title: Azure Data Factory マッピング データ フローの存在変換
 description: Azure Data Factory マッピング データ フローでの存在変換を使用して、既存の行を確認します
 author: kromerm
 ms.author: makromer
@@ -7,24 +7,23 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: bfc2a810d34f03fc0f10c486344c6dccec548305
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515125"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676732"
 ---
-# <a name="mapping-data-flow-exists-transformation"></a>マッピング データ フローの存在変換
+# <a name="exists-transformation-in-mapping-data-flow"></a>マッピング データ フローの存在変換
 
 存在変換は、ご利用のデータが別のソースまたはストリームに存在するかどうかを確認する行のフィルター変換です。 出力ストリームには、左側ストリームに存在するすべての行が含まれます。これらの行には、右側ストリームに存在する行も存在しない行もあります。 存在変換は ```SQL WHERE EXISTS``` および ```SQL WHERE NOT EXISTS``` と同様です。
 
 ## <a name="configuration"></a>構成
 
-**[右側ストリーム]** ドロップダウンで、存在しているかどうかを確認するデータ ストリームを選択します。
-
-**[Exist type]\(存在の種類\)** 設定では存在するデータまたは存在しないデータを探すかどうかを指定します。
-
-存在条件として比較するキー列を選択します。 既定では、データフローは、1 つの列について各ストリームでの同等性を検索します。 計算値を介して比較するには、列のドロップダウン上にマウス ポインターを移動し、 **[計算列]** を選択します。
+1. **[右側ストリーム]** ドロップダウンで、存在しているかどうかを確認するデータ ストリームを選択します。
+1. **[Exist type]\(存在の種類\)** 設定では存在するデータまたは存在しないデータを探すかどうかを指定します。
+1. **カスタム式**を使用するかどうかを選択します。
+1. 存在条件として比較するキー列を選択します。 既定では、データフローは、1 つの列について各ストリームでの同等性を検索します。 計算値で比較するには、列のドロップダウン上にマウス ポインターを移動し、 **[計算列]** を選択します。
 
 ![[存在] 設定](media/data-flow/exists.png "存在 1")
 
@@ -45,11 +44,11 @@ ms.locfileid: "72515125"
 ### <a name="syntax"></a>構文
 
 ```
-<lefttream>, <rightStream>
+<leftStream>, <rightStream>
     exists(
         <conditionalExpression>,
-        negate: true | <false>,
-        broadcast: 'none' | 'left' | 'right' | 'both'
+        negate: { true | false },
+        broadcast: {'none' | 'left' | 'right' | 'both'}
     ) ~> <existsTransformationName>
 ```
 

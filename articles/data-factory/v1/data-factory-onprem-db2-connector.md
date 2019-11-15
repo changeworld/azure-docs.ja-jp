@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した DB2 からのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して DB2 からデータを移動する
 description: Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータを移動する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e473858ed02afce89313c0bfeffd95c785120d40
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 0d066e66e4b9600eb5734ef2f3c6031dbc44f17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839030"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666598"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -320,7 +320,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Date |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
-| Xml |Byte[] |
+| xml |Byte[] |
 | Char |string |
 | VarChar |string |
 | LongVarChar |string |
@@ -346,7 +346,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Date |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
-| Xml |Byte[] |
+| xml |Byte[] |
 | Char |string |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ

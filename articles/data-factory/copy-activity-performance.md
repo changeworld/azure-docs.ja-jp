@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory のコピー アクティビティのパフォーマンスとスケーラビリティに関するガイド | Microsoft Docs
+title: Azure Data Factory のコピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 701eaad8d36b352e946ae8d74204876b41ecb53d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232353"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678262"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 > [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください:"]
@@ -148,7 +148,7 @@ Azure Data Factory には、次のパフォーマンス最適化機能があり�
 アクティビティ実行を監視すると、コピー アクティビティ出力で、各コピーで使用された DIU を確認できます。 詳細については、[コピー アクティビティ監視](copy-activity-overview.md#monitoring)に関するページを参照してください。
 
 > [!NOTE]
-> 4 より大きい DIU の設定は現在、Azure Storage、Azure Data Lake Storage、Amazon S3、Google Cloud Storage、クラウド FTP、クラウド SFTP から他の任意のクラウド データ ストアに複数のファイルをコピーする場合にのみ適用されます。
+> 4 より大きい DIU の設定は現在、Azure Blob、ADLS Gen1、ADLS Gen2、Amazon S3、Google Cloud Storage、クラウド FTP、クラウド SFTP から、またはパーティション オプションが有効になっているクラウド リレーショナル データ ストア ([Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source) など) から、他の任意のクラウド データ ストアに複数のファイルをコピーする場合にのみ適用されます。
 
 **例:**
 

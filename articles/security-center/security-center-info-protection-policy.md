@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする | Microsoft Docs
+title: SQL 情報保護のカスタマイズ - Azure Security Center
 description: Azure Security Center 上で情報保護ポリシーをカスタマイズする方法について説明します。
 services: security-center
 documentationcenter: na
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520797"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664384"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)
  
-Azure Security Center 上で、Azure テナント全体に対する SQL 情報保護ポリシーを定義およびカスタマイズできます。
+Azure Security Center で、Azure テナント全体に対する SQL 情報保護ポリシーを定義したりカスタマイズしたりできます。
 
 Information Protection は、Azure データ リソース内の機密データを検出、分類、ラベル付け、保護するための高度なセキュリティ機能です。 最も機微なデータ (ビジネス、財務、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
 - データのプライバシー基準および規制のコンプライアンス要件を満たす支援
-- さまざまなセキュリティ シナリオ (機密データに対する異常なアクセスの監視 (監査) とアラートなど)
+- セキュリティ シナリオ (機密データに対する異常なアクセスの監視 (監査) とアラートなど)
 - 非常に機密性の高いデータを含むデータ ストアへのアクセスの制御と、セキュリティの強化
  
-[SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) により、Azure SQL Database に対して現在サポートされている SQL データ ストアに対して、このパラダイムが実装されます。 SQL Information Protection では、潜在的な機密データが自動的に検出されて分類され、分類属性を使用して機密データを永続的にタグ付けするためのラベル付けメカニズムが提供されます。データベースの分類状態を示す詳細ダッシュボードも提供されます。 さらに、SQL クエリの結果セットの機密性が計算されるので、機密データを抽出するクエリを明示的に監査し、データを保護できます。 SQL Information Protection について詳しくは、「[Azure SQL Database のデータの検出と分類](../sql-database/sql-database-data-discovery-and-classification.md)」をご覧ください。
+[SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) により、Azure SQL Database に対して現在サポートされている SQL データ ストアに対して、このパラダイムが実装されます。 SQL Information Protection では、潜在的な機密データが自動的に検出されて分類され、分類属性を使用して機密データを永続的にタグ付けするためのラベル付けメカニズムが提供されます。データベースの分類状態を示す詳細ダッシュボードも提供されます。 さらに、SQL クエリの結果セットの機密性が計算されるので、機密データを抽出するクエリを明示的に監査し、データを保護できます。 SQL Information Protection について詳しくは、[Azure SQL Database のデータの検出と分類](../sql-database/sql-database-data-discovery-and-classification.md)に関するページを参照してください。
  
 分類メカニズムは、分類を構成する 2 つの主なコンストラクト (**ラベル**と**情報の種類**) に基づきます。
 - **ラベル** – メインの分類属性であり、列に格納されているデータの機密レベルを定義するために使われます。 
 - **情報の種類** – 列に格納されているデータの種類に対する追加の細分性を提供します。
  
-Information Protection には、既定で使用されるラベルと情報の種類の組み込みセットが付属しています。 これらをカスタマイズするために、Azure Security Center 上で情報保護ポリシーをカスタマイズできます。
+Information Protection には、既定で使用されるラベルと情報の種類の組み込みセットが付属しています。 これらをのラベルと種類をカスタマイズするために、Security Center 上で情報保護ポリシーをカスタマイズできます。
  
 ## <a name="customize-the-information-protection-policy"></a>情報の保護ポリシーをカスタマイズする
 Azure テナントの情報保護ポリシーをカスタマイズするには、[テナントのルート管理グループに対する管理特権](security-center-management-groups.md)が必要です。 

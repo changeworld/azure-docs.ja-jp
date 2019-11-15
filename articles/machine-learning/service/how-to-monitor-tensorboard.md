@@ -9,14 +9,15 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: 0908ca232ee38e2b0d461aa9f597558adc4461ef
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350521"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574294"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、メインとなる Azure Machine Learning SDK に含まれる [`tensorboard` パッケージ](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py)を使用して、TensorBoard で実験の実行とメトリックを表示する方法について説明します。 実験の実行を調査すると、機械学習モデルの調整と再トレーニングをより適切に行うことができます。
 
@@ -27,11 +28,14 @@ Azure Machine Learning の実験で TensorBoard を起動する方法は、実�
 
 + TensorBoard で使用可能なファイルがネイティブで出力されない実験 (Scikit-learn や Azure Machine Learning などの実験) の場合は、[`export_to_tensorboard()` メソッド](#export)を使用して実行履歴を TensorBoard ログとしてエクスポートし、そこから TensorBoard を起動します。 
 
+> [!TIP]
+> このドキュメントの情報は主に、モデルのトレーニング プロセスを監視したいデータ サイエンティストや開発者を対象としています。 Azure Machine Learning からリソース使用状況やイベント (クォータ、トレーニング実行の完了、モデル デプロイの完了など) を監視することに関心がある管理者の方は、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 * TensorBoard を起動して実験の実行履歴を表示するには、あらかじめ実験でログ記録を有効にして、そのメトリックとパフォーマンスを追跡しておく必要があります。  
 
-* この記事のコードは、次のいずれの環境でも実行できます。 
+* このドキュメントのコードは、次のいずれの環境でも実行できます。 
 
     * Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 

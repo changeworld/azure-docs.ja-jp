@@ -8,18 +8,20 @@ manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1579a4dfbab1ec9d9aa6bb3995bd88d948d6d5e2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933969"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615011"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
 
 *Durable Functions* は、サーバーレス環境でステートフル関数を記述できる [Azure Functions](../functions-overview.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 この記事では、Visual Studio 2019 を使用して、"hello world" 持続的関数をローカルで作成してテストする方法を学習します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2019 の Azure の開発ワークロードの一部として使用できます。
 
@@ -53,7 +55,7 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
     | Setting      | 推奨値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **バージョン** | Azure Functions 2.x <br />(.NET Core) | .NET Core をサポートする Azure Functions のバージョン 2.x ランタイムを使用する関数プロジェクトを作成します。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../functions-versions.md)」をご覧ください。   |
+    | **バージョン** | Azure Functions 2.0 <br />(.NET Core) | .NET Core をサポートする Azure Functions のバージョン 2.0 ランタイムを使用する関数プロジェクトを作成します。 Azure Functions 1.0 では、.NET Framework がサポートされています。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../functions-versions.md)」をご覧ください。   |
     | **テンプレート** | Empty | 空の関数アプリを作成します。 |
     | **ストレージ アカウント**  | ストレージ エミュレーター | Durable Functions の状態管理にはストレージ アカウントが必要です。 |
 
@@ -73,12 +75,15 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
     ![Durable Functions Orchestration テンプレートを選択する](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
+> [!NOTE]
+> このテンプレートでは、現在、拡張機能の古い 1.x バージョンを使用して永続的な関数が作成されます。 Durable Functions を新しい 2.x バージョンにアップグレードする方法については、[Durable Functions のバージョン](durable-functions-versions.md)に関するページを参照してください。
+
 新しい永続関数がアプリに追加されます。  新しい .cs ファイルを開いて内容を表示します。 この永続関数は、次のメソッドを使用した単純な関数チェーンの例です。  
 
 | 方法 | FunctionName | 説明 |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | 持続的オーケストレーションを管理します。 このケースでは、オーケストレーションが起動し、一覧が作成され、3 つの関数呼び出しの結果が一覧に追加されます。  3 つの関数呼び出しが完了すると、一覧が返されます。 |
-| **`SayHello`** | `<file-name>_Hello` | 関数から hello が返されます。 これは、調整されるビジネス ロジックを含む関数です。 |
+| **`SayHello`** | `<file-name>_Hello` | 関数から hello が返されます。 これが、オーケストレーションされるビジネス ロジックを含む関数です。 |
 | **`HttpStart`** | `<file-name>_HttpStart` | オーケストレーションのインスタンスを開始し、チェック状態の応答を返す、[HTTP によってトリガーされる関数](../functions-bindings-http-webhook.md)。 |
 
 関数プロジェクトと Durable Functions を作成できたので、この関数をローカル コンピューターでテストすることができます。
@@ -101,7 +106,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 4. `statusQueryGetUri` の URL 値をコピーし、ブラウザーのアドレス バーに貼り付け、要求を実行します。
 
-    この要求によって、オーケストレーション インスタンスの状態が照会されます。 最終的な応答は次のようになります。  これはインスタンスが完了したことを示し、Durable Functions の出力または結果を含みます。
+    この要求によって、オーケストレーション インスタンスの状態が照会されます。 最終的な応答は次のようになります。  この出力はインスタンスが完了したことを示し、永続的な関数の出力または結果を含みます。
 
     ```json
     {
@@ -114,8 +119,8 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2019-11-02T07:07:40Z",
+        "lastUpdatedTime": "2019-11-02T07:07:52Z"
     }
     ```
 

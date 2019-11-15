@@ -1,7 +1,7 @@
 ---
-title: Azure Cognitive Search BLOB インデクサーを使用して CSV BLOB のインデックスを作成する
+title: delimitedText 解析モード (プレビュー) を使用して CSV BLOB にインデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search インデックスを使用して、Azure Blob Storage 内の BLOB CSV をフルテキスト検索用にクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
+description: delimitedText 解析モード (現在パブリック プレビュー段階) を使用して Azure BLOB ストレージから CSV を抽出し、インポートします。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18d0eb704deba80bf83b5cae0a598f47181700f7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793782"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719233"
 ---
-# <a name="how-to-index-csv-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して CSV BLOB のインデックスを作成する方法 
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search で delimitedText 解析モードと BLOB インデクサーを使用して CSV BLOB のインデックスを作成する方法 
 
-> [!Note]
-> delimitedText 解析モードはプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
->
+> [!IMPORTANT] 
+> delimitedText 解析モードは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点では、ポータルと .NET SDK によるサポートはありません。
 
 既定では、[Azure Cognitive Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストを解析し、それぞれが "id"、"datePublished"、"tags" フィールドを含む 2 つのドキュメントに格納するような場合です。 
 

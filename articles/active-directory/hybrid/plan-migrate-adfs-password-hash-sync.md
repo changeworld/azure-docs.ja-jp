@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ba9b06c9a3e6025d7227493713fe9187fba233
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514894"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818906"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 
@@ -161,7 +161,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 Azure AD にデバイスを参加させる場合、デバイスがセキュリティとコンプライアンスに関するアクセス基準を満たすよう、条件付きアクセス規則を作成して適用することができます。 また、ユーザーは個人アカウントではなく、職場や学校のアカウントを使用してデバイスにサインインできます。 ハイブリッド Azure AD 参加済みデバイスを使用する場合、Active Directory ドメイン参加済みデバイスを Azure AD に参加させることができます。 フェデレーション環境は、この機能を使用するように設定されている可能性があります。
 
-ドメインがパスワード ハッシュ同期に変換された後もドメインに参加させたすべてのデバイスでハイブリッド参加が機能し続けるようにするには、Windows 10 クライアントでは、Azure AD Connect デバイス オプションを使用して SCP を設定してから、Active Directory コンピューター アカウントを Azure AD に同期させる必要があります。 
+ドメインがパスワード ハッシュ同期に変換された後もドメインに参加させたすべてのデバイスでハイブリッド参加が機能し続けるようにするには、Windows 10 クライアントでは、Azure AD Connect デバイス オプションを使用して、Active Directory コンピューター アカウントを Azure AD に同期させる必要があります。 
 
 Windows 8 および Windows 7 のコンピューター アカウントの場合、ハイブリッド参加ではコンピューターを Azure AD に登録するためにシームレス SSO が使用されます。 Windows 10 デバイスの場合のように、Windows 8 および Windows 7 のコンピューター アカウントを同期させる必要はありません。 ただし、Windows 8 および Windows 7 のクライアントには、それらがシームレス SSO を使用して自身を登録できるよう、更新された workplacejoin.exe ファイルを (.msi ファイルを通じて) デプロイする必要があります。 [.msi ファイルをダウンロード](https://www.microsoft.com/download/details.aspx?id=53554)します。
 

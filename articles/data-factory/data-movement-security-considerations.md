@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory のセキュリティに関する考慮事項 | Microsoft Docs
+title: Azure Data Factory のセキュリティに関する考慮事項
 description: Azure Data Factory のデータ移動サービスがデータの保護を容易にするために使用する基本的なセキュリティ インフラストラクチャについて説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: ca5a98fb4fd0fd07cd0e2557840a2e0aed6901e5
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15178fd0b5253b34f21030665a5835646c13b75d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285606"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675843"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

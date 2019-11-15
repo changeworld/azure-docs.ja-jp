@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Dynamics CRM または Dynamics 365 (Common Data Service) をコピー元またはコピー先としてデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Dynamics CRM または Dynamics 365 (Common Data Service) をコピー元またはコピー先としてデータをコピーする
 description: Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service) からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 18fdb14430eee97ff2780d963abf3e5ceafe1126
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: c9adcf72eeec82fd4b8f1805fca1f284c0b953b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009395"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680976"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -74,7 +74,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Dynamics** に設定する必要があります。 | はい |
+| type | type プロパティは、**Dynamics**、**DynamicsCrm**、**CommonDataServiceForApps** のいずれかに設定する必要があります。 | はい |
 | deploymentType | Dynamics インスタンスの展開の種類。 Dynamics Online を **"Online"** にする必要があります。 | はい |
 | serviceUri | Dynamics インスタンスのサービス URL (例: `https://adfdynamics.crm.dynamics.com`)。 | はい |
 | authenticationType | Dynamics サーバーに接続する認証の種類。 Dynamics Online を **"Office365"** に指定します。 | はい |
@@ -117,7 +117,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Dynamics** に設定する必要があります。 | はい |
+| type | type プロパティは、**Dynamics**、**DynamicsCrm**、**CommonDataServiceForApps** のいずれかに設定する必要があります。 | はい |
 | deploymentType | Dynamics インスタンスの展開の種類。 IFD 対応オンプレミス Dynamics を **"OnPremisesWithIfd"** にする必要があります。| はい |
 | hostName | オンプレミス Dynamics サーバーのホスト名。 | はい |
 | port | オンプレミス Dynamics サーバーのポート。 | いいえ (既定値は 443) |
@@ -159,17 +159,12 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Dynamics データセット でサポートされるプロパティの一覧を示します。
 
-Dynamics をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **DynamicsEntity** に設定します。 次のプロパティがサポートされています。
+Dynamics との間でのデータ コピーについては、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**DynamicsEntity** に設定する必要があります。 |はい |
+| type | データセットの type プロパティは、**DynamicsEntity**、**DynamicsCrmEntity**、**CommonDataServiceForAppsEntity** のいずれかに設定する必要があります。 |はい |
 | entityName | 取得するエンティティの論理名。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、シンクの場合ははい |
-
-> [!IMPORTANT]
->- Dynamics からデータをコピーするときに、"structure" セクションは省略できますが、Dynamics データセットでは確定的なコピー結果にするために強くお勧めします。 それは、コピーする Dynamics のデータの列名とデータ型を定義します。 詳細については、「[データセット構造](concepts-datasets-linked-services.md#dataset-structure-or-schema)」と「[Dynamics のデータ型のマッピング](#data-type-mapping-for-dynamics)」を参照してください。
->- UI 作成でスキーマをインポートするさい､ADF は Dynamics のクエリ結果の上位の行をサンプリングすることで (値のない列は除外)､スキーマを推論し､構造体構築を初期化します｡ 明示的な構造体定義がない場合は、実行をコピーする同じ動作が適用されます。 Dynamics データセット スキーマ/構造体を調べて、必要に応じて複数の列を追加できます。この変更は､コピーのランライム時に受け入れられます｡
->- Dynamics にデータをコピーする場合、Dynamics データセットの "structure" セクションは省略可能です。 コピー先の列は、ソース データ スキーマによって決定されます。 ソースがヘッダーのない CSV ファイルの場合、入力データセットに列名とデータ型を "structure" で指定します。 それらは、1 つづつ順番に CSV ファイルのフィールドにマップされます。
 
 **例:**
 
@@ -178,24 +173,7 @@ Dynamics をコピー元またはコピー先としてデータをコピーす�
     "name": "DynamicsDataset",
     "properties": {
         "type": "DynamicsEntity",
-        "structure": [
-            {
-                "name": "accountid",
-                "type": "Guid"
-            },
-            {
-                "name": "name",
-                "type": "String"
-            },
-            {
-                "name": "marketingonly",
-                "type": "Boolean"
-            },
-            {
-                "name": "modifiedon",
-                "type": "Datetime"
-            }
-        ],
+        "schema": [],
         "typeProperties": {
             "entityName": "account"
         },
@@ -213,15 +191,19 @@ Dynamics をコピー元またはコピー先としてデータをコピーす�
 
 ### <a name="dynamics-as-a-source-type"></a>ソースの種類としての Dynamics
 
-Dynamics からデータをコピーするは、コピー アクティビティのソースの種類を **DynamicsSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+Dynamics からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **DynamicsSource** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの type プロパティは、**DynamicsSource**、**DynamicsCrmSource**、**CommonDataServiceForAppsSource** のいずれかに設定する必要があります。 | はい |
 | query | FetchXML は、Dynamics (オンラインおよびオンプレミス) で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](https://msdn.microsoft.com/library/gg328332.aspx)」を参照してください。 | いいえ (データセットの "entityName" が指定されている場合) |
 
 >[!NOTE]
 >PK 列は、FetchXML クエリで構成する列のプロジェクションに含まれていない場合でも常にコピーされます。
+
+> [!IMPORTANT]
+>- Dynamics からデータをコピーするとき、Dynamics からシンクへの明示的な列のマッピングを省略できますが、決定論的なコピー結果を確保することを強くお勧めします。
+>- UI 作成でスキーマをインポートする際､ADF は Dynamics のクエリ結果の上位の行をサンプリングすることで (上位の行における値のない列は除外)､スキーマを推論し､ソース列のリストを初期化します。 明示的なマッピングがない場合でも、コピーの実行には同じ動作が適用されます。 マッピングには、自分で確認したうえで列を追加することができます。コピーの実行時には、それが反映されます。
 
 **例:**
 
@@ -277,12 +259,13 @@ Dynamics からデータをコピーするは、コピー アクティビティ�
 
 ### <a name="dynamics-as-a-sink-type"></a>シンクの種類としての Dynamics
 
-Dynamics にデータをコピーするは、コピー アクティビティのシンクの種類を **DynamicsSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
+Dynamics にデータをコピーするために、コピー アクティビティの **sink** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **DynamicsSink** に設定する必要があります。 | はい |
+| type | コピー アクティビティのシンクの type プロパティは **DynamicsSink**、**DynamicsCrmSink**、**CommonDataServiceForAppsSink** のいずれかに設定する必要があります。 | はい |
 | writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **"Upsert"** 。 | はい |
+| alternateKeyName | "Upsert" を実行するには、エンティティに定義されている代替キー名を指定します。 | いいえ |
 | writeBatchSize | 各バッチで Dynamics に書き込まれたデータの行数。 | いいえ (既定値は 10) |
 | ignoreNullValues | 書き込み操作時に入力データ (キー フィールドを除く) からの null 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **True**:upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False**:upsert または更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |
 
@@ -359,7 +342,7 @@ Dynamics からデータをコピーするとき、次の Dynamics のデータ�
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

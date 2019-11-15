@@ -5,14 +5,14 @@ services: private-link
 author: KumudD
 ms.service: private-link
 ms.topic: overview
-ms.date: 09/16/2019
+ms.date: 11/04/2019
 ms.author: kumud
-ms.openlocfilehash: 9e6206e6f7e09ebe03659eb6e515a9b26d3469bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aa176cb5ffc67ebba826cf13a1a66608301af5e5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475940"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601526"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Private Link とは (プレビュー)
 Azure Private Link を使用すると、仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、Azure Cosmos DB、SQL Database など) と Azure でホストされている顧客/パートナー サービスにアクセスできます。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 また、独自の [Private Link サービス](private-link-service-overview.md)を仮想ネットワーク (VNet) 内に作成し、そのサービスを顧客に非公開で配信することもできます。 Azure Private Link を使用した設定と消費のエクスペリエンスは、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。
@@ -40,12 +40,12 @@ Azure Private Link には次のような利点があります。
 
 |シナリオ  |サポートされているサービス   |対応リージョン | Status   |
 |---------|---------|---------|---------|
-|顧客所有サービス用の Private Link|Standard Load Balancer の背後にある Private Link サービス |米国中西部、米国西部、米国中南部、米国東部、米国中北部  |  プレビュー  |
-|Azure PaaS サービス用の Private Link   | Azure Storage        |  米国東部、米国西部、米国中西部       | プレビュー         |
-|  | Azure Data Lake Storage Gen2        |  米国東部、米国西部、米国中西部       | プレビュー         |
-|  |  Azure SQL Database         | 米国中西部、米国西部、米国中南部、米国東部、米国中北部      |   プレビュー      |
-||Azure SQL Data Warehouse| 米国中西部、米国西部、米国中南部、米国東部、米国中北部 |プレビュー|
-||Azure Cosmos DB| 米国中西部、米国西部、米国東部、米国中北部、米国東部 2、米国西部 2 |プレビュー|
+|顧客所有サービス用の Private Link|Standard Load Balancer の背後にある Private Link サービス | すべてのパブリック リージョン  |  プレビュー  |
+|Azure PaaS サービス用の Private Link   | Azure Storage        |  すべてのパブリック リージョン      | プレビュー         |
+|  | Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      | プレビュー         |
+|  |  Azure SQL Database         | すべてのパブリック リージョン      |   プレビュー      |
+||Azure SQL Data Warehouse| すべてのパブリック リージョン |プレビュー|
+||Azure Cosmos DB| 米国中西部、米国西部、米国中北部 |プレビュー|
 
 最新情報については、[Azure 仮想ネットワークの更新情報ページ](https://azure.microsoft.com/updates/?product=virtual-network)をご覧ください。
 

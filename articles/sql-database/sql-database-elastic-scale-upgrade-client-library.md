@@ -1,5 +1,5 @@
 ---
-title: 最新の Elastic Database クライアント ライブラリへのアップグレード | Microsoft Docs
+title: 最新のエラスティック データベース クライアント ライブラリへのアップグレード
 description: Nuget を使用してエラスティック データベース クライアント ライブラリをアップグレードします。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 286fa60fef8de5240fb2ccd0f14ced0c4e38ff73
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: a1ab684f13c56698d4359f2bf74826f3dd696c6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981371"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823507"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード
 

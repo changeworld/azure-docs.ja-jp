@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop で Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する - Azure
+title: FSLogix プロファイル コンテナー NetApp Windows Virtual Desktop - Azure
 description: Windows Virtual Desktop で Azure NetApp Files を使用して FSLogix プロファイル コンテナーを作成する方法。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 4e714b872ae43eb313efe549c77f5610342f430c
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311621"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605777"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 

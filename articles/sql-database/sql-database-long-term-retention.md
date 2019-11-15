@@ -1,5 +1,5 @@
 ---
-title: 最大で 10 年間 Azure SQL Database のバックアップを格納する | Microsoft Docs
+title: 最大 10 年間のバックアップを格納する
 description: Azure SQL Database が、最大で 10 年間、データベースの完全バックアップの格納をサポートする方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: b43097dee6a3b4e8ec762e193dc2faf006ec796c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0cd4c45403d59819bf7ba729ea99de76ccf967ca
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567759"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819911"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 

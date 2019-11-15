@@ -1,6 +1,6 @@
 ---
 title: Visual Studio を使用してロジック アプリを管理する - Azure Logic Apps
-description: Visual Studio Cloud Explorer でロジック アプリとその他の Azure 資産を管理する
+description: Visual Studio と Cloud Explorer を使用してロジック アプリとその他の Azure 資産を管理する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
-ms.date: 05/07/2019
-ms.openlocfilehash: db4143b3bf75d1745245d5baae267a55ce71e95f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.date: 10/29/2019
+ms.openlocfilehash: e10683bcd5612db788d6dd5675425fec4130ffeb
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212602"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796547"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -44,7 +44,7 @@ ms.locfileid: "71212602"
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-  * 必要な Visual Studio バージョン用の Azure Logic Apps Tools:
+  * 必要なバージョンの Visual Studio 拡張機能の最新 Azure Logic Apps ツール:
 
     * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
@@ -112,7 +112,7 @@ Visual Studio では、Azure portal から直接デプロイされているか�
 
 1. デザイナーのツール バーで、 **[ダウンロード]** を選びます。
 
-   ![[ダウンロード] を選ぶ](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
+   ![Azure portal からロジック アプリをダウンロードする](./media/manage-logic-apps-with-visual-studio/download-logic-app-from-portal.png)
 
 1. 場所の指定を求められたら、その場所を参照し、ロジック アプリの定義の Resource Manager テンプレートを JSON (.json) ファイル形式で保存します。
 
@@ -126,24 +126,74 @@ Visual Studio では、Azure portal から直接デプロイされているか�
 
 1. Visual Studio で、お使いのロジック アプリを含む Azure リソース グループ プロジェクトを開きます。
 
-1. ソリューション エクスプローラーで **<ロジック アプリ名>.json** ファイルのショートカット メニューを開き、 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。 (Ctrl + L キー)。
+1. ソリューション エクスプローラーで **<ロジック アプリ名>.json** ファイルのショートカット メニューを開き、 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。 (Ctrl + L)
 
    ![ロジック アプリ デザイナーでロジック アプリの .json ファイルを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
    > [!TIP]
-   > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
+   > このコマンドが Visual Studio 2019 にない場合は、Visual Studio に最新の更新プログラムが適用されており、Azure Logic Apps ツール拡張機能がインストールされていることを確認してください。
 
-1. ロジック アプリ デザイナーにフォーカスがあることを確認するには、デザイナーのタブまたはサーフェスを選択して、[プロパティ] ウィンドウにお使いのロジック アプリの **[統合アカウント]** プロパティが表示されるようにします。
+1. [プロパティ] ウィンドウにお使いのロジック アプリの **[統合アカウント]** プロパティが表示されるよう、デザイナーのタブまたはサーフェスを選択し、ロジック アプリ デザイナーにフォーカスがあることを確認します。
 
-   ![[プロパティ] ウィンドウに [統合アカウント] プロパティが表示される](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties.png)
+   ![[プロパティ] ウィンドウ - [統合アカウント] プロパティ](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-integration-account.png)
 
-1. **[統合アカウント]** ボックスの一覧を開き、次のように、ロジック アプリにリンクする統合アカウントを選択します。
+   > [!TIP]
+   > [プロパティ] ウィンドウがまだ開いていない場合、 **[表示]** メニューから、 **[プロパティ ウィンドウ]** を選択します。 (F4 を押す)
+
+1. **[統合アカウント]** プロパティの一覧を開き、次のように、ロジック アプリにリンクする統合アカウントを選択します。
 
    ![[統合アカウント] プロパティの一覧を開く](./media/manage-logic-apps-with-visual-studio/select-integration-account.png)
 
 1. 完了したら、忘れずにその Visual Studio ソリューションを保存します。
 
 Visual Studio で **[統合アカウント]** プロパティを設定し、そのロジック アプリを Azure Resource Manager テンプレートとして保存すると、そのテンプレートには、選択した統合アカウントのパラメーター宣言も含まれます。 テンプレート パラメーターとロジック アプリの詳細については、[ロジック アプリの自動デプロイの概要](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)に関する記事を参照してください。
+
+<a name="change-location"></a>
+
+## <a name="change-deployment-location"></a>デプロイメントの場所を変更する
+
+Visual Studio で、デプロイの自動化に利用する [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)内に JSON (.json) ファイルとしてロジック アプリが存在する場合、そのロジック アプリには場所の種類と特定の場所が設定されます。 この場所は、Azure リージョンまたは既存の[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md) です。
+
+ロジック アプリの場所の種類や場所を変更するには、ロジック アプリ デザイナーを利用し、ソリューション エクスプローラーからロジック アプリのワークフロー定義 (.json) ファイルを開く必要があります。 Cloud Explorer を使用してこれらのプロパティを変更することはできません。
+
+> [!IMPORTANT]
+> 場所の種類を **[リージョン]** から [**統合サービス環境**](connect-virtual-network-vnet-isolated-environment-overview.md)に変更すると、課金、[上限](logic-apps-limits-and-config.md#integration-account-limits)、[統合アカウント サポート](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)などに使用されるロジック アプリの[価格設定モデル](logic-apps-pricing.md#fixed-pricing)に影響します。 場所に別の種類を選択する前に、ロジック アプリに与える影響を理解しておいてください。
+
+1. Visual Studio で、お使いのロジック アプリを含む Azure リソース グループ プロジェクトを開きます。
+
+1. ソリューション エクスプローラーで `<logic-app-name>.json` ファイルのショートカット メニューを開き、 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。 (Ctrl + L)
+
+   ![ロジック アプリ デザイナーでロジック アプリの .json ファイルを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+   > [!TIP]
+   > このコマンドが Visual Studio 2019 にない場合は、Visual Studio に最新の更新プログラムが適用されており、Azure Logic Apps ツール拡張機能がインストールされていることを確認してください。
+
+1. [プロパティ] ウィンドウにお使いのロジック アプリの **[Choose Location Type]\(場所の種類の選択\)** プロパティと **[場所]** プロパティが表示されるよう、デザイナーのタブまたはサーフェスを選択し、ロジック アプリ デザイナーにフォーカスがあることを確認します。 プロジェクトの場所の種類は **[リージョン]** または **[統合サービス環境]** に設定されています。
+
+   ![[プロパティ ウィンドウ] - [Choose Location Type]\(場所の種類の選択\) プロパティと [場所] プロパティ](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-location.png)
+
+   > [!TIP]
+   > [プロパティ] ウィンドウがまだ開いていない場合、 **[表示]** メニューから、 **[プロパティ ウィンドウ]** を選択します。 (F4 を押す)
+
+1. 場所の種類を変更するには、 **[Choose Location Type]\(場所の種類の選択\)** プロパティを開き、必要な場所の種類を選択します。
+
+   たとえば、場所の種類が **[統合サービス環境]** の場合、 **[リージョン]** を選択できます。
+
+   ![[Choose Location Type]\(場所の種類の選択\) - 場所の種類の変更](./media/manage-logic-apps-with-visual-studio/change-location-type.png)
+
+1. 特定の場所を変更するには、 **[場所]** プロパティの一覧を開きます。 場所の種類に基づき、たとえば次のように必要な場所を選択します。
+
+   * 別の Azure リージョンを選択します。
+
+     !["場所" プロパティの一覧を開き、別の Azure リージョンを選択します](./media/manage-logic-apps-with-visual-studio/change-azure-resource-group-region.png)
+
+   * 別の ISE を選択します。
+
+     !["場所" プロパティの一覧を開き、別の ISE を選択します](./media/manage-logic-apps-with-visual-studio/change-integration-service-environment.png)
+
+1. 完了したら、忘れずにその Visual Studio ソリューションを保存します。
+
+Visual Studio で場所の種類または場所を変更し、そのロジック アプリを Azure Resource Manager テンプレートとして保存すると、そのテンプレートには、その場所の種類と場所のパラメーター宣言も含まれます。 テンプレート パラメーターとロジック アプリの詳細については、[ロジック アプリの自動デプロイの概要](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)に関する記事を参照してください。
 
 <a name="refresh"></a>
 
@@ -157,19 +207,19 @@ Azure Portal で行ったロジック アプリの編集による変更を残し
 
 * Visual Studio の Cloud Explorer で、ロジック アプリのショートカット メニューを開き、 **[最新の情報に更新]** を選びます。
 
-![更新でロジック アプリを最新の情報に更新する](./media/manage-logic-apps-with-visual-studio/refresh-logic-app.png)
+![更新でロジック アプリを最新の情報に更新する](./media/manage-logic-apps-with-visual-studio/refresh-logic-app-with-updates-from-portal.png)
 
 ## <a name="publish-logic-app-updates"></a>ロジック アプリの更新を発行する
 
 Visual Studio から Azure にロジック アプリの更新を展開する準備ができたら、ロジック アプリ デザイナーのツール バーで **[発行]** を選びます。
 
-![更新されたロジック アプリを発行する](./media/manage-logic-apps-with-visual-studio/publish-logic-app.png)
+![更新されたロジック アプリを Azure portal に発行する](./media/manage-logic-apps-with-visual-studio/publish-logic-app-to-azure-portal.png)
 
 ## <a name="manually-run-your-logic-app"></a>ロジック アプリを手動で実行する
 
 Azure に展開されているロジック アプリを、Visual Studio から手動で開始することができます。 ロジック アプリ デザイナーのツール バーの **[トリガーの実行]** を選びます。
 
-![ロジック アプリを手動で実行する](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
+![ロジック アプリのトリガーを手動で実行する](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
 
 ## <a name="review-run-history"></a>実行履歴を確認する
 
@@ -177,37 +227,37 @@ Azure に展開されているロジック アプリを、Visual Studio から�
 
 1. Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[実行履歴を開く]** を選びます。
 
-   ![実行履歴を開く](./media/manage-logic-apps-with-visual-studio/view-run-history.png)
+   ![ロジック アプリの実行履歴を開く](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
 1. 特定の実行の詳細を表示するには、実行をダブルクリックします。 例:
 
-   ![詳細な実行履歴](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
+   ![特定の実行に関する情報を表示する](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
    > プロパティでテーブルを並べ替えるには、そのプロパティの列ヘッダーを選びます。
 
 1. 入力と出力を確認するステップを展開します。例えば次のようにします。
 
-   ![各ステップの入力と出力を表示する](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
+   ![各ステップの入力と出力を表示する](./media/manage-logic-apps-with-visual-studio/view-run-history-inputs-outputs.png)
 
 ## <a name="disable-or-enable-logic-app"></a>ロジック アプリを無効または有効にする
 
 ロジック アプリを削除することなく、次にトリガー条件が満たされたときにトリガーが発動しないようにすることができます。 ロジック アプリを無効にすると、それ以降、Logic Apps エンジンはロジック アプリのワークフロー インスタンスを作成および実行しなくなります。 Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[無効化]** を選びます。
 
-![ロジック アプリを無効にする](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
+![Cloud Explorer でロジック アプリを無効にする](./media/manage-logic-apps-with-visual-studio/disable-logic-app-cloud-explorer.png)
 
 > [!NOTE]
 > ロジック アプリを無効にすると、新しい実行は開始されなくなります。 進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。
 
 ロジック アプリを再度有効にするには、Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[有効化]** を選びます。
 
-![ロジック アプリを有効にする](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
+![Cloud Explorer でロジック アプリを有効にする](./media/manage-logic-apps-with-visual-studio/enable-logic-app-cloud-explorer.png)
 
 ## <a name="delete-your-logic-app"></a>ロジック アプリを削除する
 
 Azure Portal からロジック アプリを削除するには、Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[削除]** を選びます。
 
-![ロジック アプリを削除する](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
+![Azure portal からロジック アプリを削除する](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
 > ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。 

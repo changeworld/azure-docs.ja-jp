@@ -1,30 +1,28 @@
 ---
-title: 'Azure Data Factory: よく寄せられる質問 | Microsoft Docs'
+title: 'Azure Data Factory: よく寄せられる質問 '
 description: Azure Data Factory についてよく寄せられる質問とその回答を紹介します。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387056"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674724"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
 
 ## <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。 
-Data Factory は、データの移動や変換を自動化するフル マネージドのクラウドベースのデータ統合サービスです。 原材料を機械で加工して最終製品を作成する工場と同じように、Azure Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。 
+Data Factory は、データの移動や変換を自動化するフル マネージドのクラウドベースのデータ統合 ETL サービスです。 原材料を機械で加工して最終製品を作成する工場と同じように、Azure Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。 
 
-Azure Data Factory を使用すると、データ駆動型のワークフローを作成して、オンプレミスとクラウドのデータ ストア間でデータを移動できます。 さらに、Azure HDInsight、Azure Data Lake Analytics、SQL Server Integration Services (SSIS) 統合ランタイムなどのコンピューティング サービスを使用して、データを処理および変換できます。 
+Azure Data Factory を使用すると、データ駆動型のワークフローを作成して、オンプレミスとクラウドのデータ ストア間でデータを移動できます。 また、Data Flow を使用してデータを処理したり変換したりすることができます。 ADF は、外部のコンピューティング エンジンもサポートしており、Azure HDInsight、Azure Databricks、SQL Server Integration Services (SSIS) 統合ランタイムなどのコンピューティング サービスを使用して、手動でコーディングされた変換を実行できます。 
 
 Data Factory を使用すると、Azure ベースのクラウド サービスか、SSIS、SQL Server、Oracle などの独自のセルフホステッド コンピューティング環境でデータ処理を実行できます。 必要なアクションを実行するパイプラインを作成した後で、それを毎時、毎日、毎週など、定期的に実行するようにスケジュールを設定できます (時間ウィンドウ スケジューリング)。また、イベントの発生によってパイプラインをトリガーすることもできます。 詳細については、[Azure Data Factory の概要](introduction.md)に関するページをご覧ください。
 
@@ -111,6 +109,9 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 ### <a name="pipelines"></a>パイプライン
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つの作業単位を実行するための複数のアクティビティから成る論理的なグループです。 パイプライン内のアクティビティがまとまって 1 つのタスクを実行します。 たとえば、Azure BLOB からデータを取り込み、HDInsight クラスターで Hive クエリを実行してデータを分割するアクティビティのグループをパイプラインに含めることができます。 パイプラインには、アクティビティをセットとして管理でき、個別に管理せずに済むというメリットがあります。 パイプライン内のアクティビティは、連鎖して順次処理することも、独立して並行処理することもできます。
 
+### <a name="data-flows"></a>データ フロー
+データ フローは、バックエンドの Spark サービスで大規模なデータを変換するオブジェクトです。Data Factory で視覚的に作成します。 プログラミングや Spark 内部についての知識は必要ありません。 グラフ (マッピング) またはスプレッドシート (ラングリング) を使用してデータ変換の意図を設計するだけです。
+
 ### <a name="activities"></a>Activities
 アクティビティは、パイプライン内の処理ステップを表します。 たとえば、コピー アクティビティを使用して、データ ストア間でデータをコピーできます。 同様に、Azure HDInsight クラスターに対して Hive クエリを実行する Hive アクティビティを使用して、データを変換または分析できます。 Data Factory では、データ移動アクティビティ、データ変換アクティビティ、制御アクティビティの 3 種類のアクティビティがサポートされています。
 
@@ -180,32 +181,95 @@ Azure Data Factory の最新情報を入手するには、次のサイトを参�
 
 ## <a name="mapping-data-flows"></a>データ フローのマッピング
 
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>どの Data Factory バージョンを使用してデータ フローを作成すればよいですか?
-Data Factory V2 バージョンを使用してデータ フローを作成してください。
-  
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>私は、以前はデータ フローを使用するプライベート プレビュー ユーザーで、データ フロー用の Data Factory V2 プレビュー バージョンを使用していました。
-このバージョンは廃止されました。 データ フロー用の Data Factory V2 を使用してください。
-  
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>データ フローに関して、プライベート プレビューと機能制限版のパブリック プレビューとでは、何が違いますか?
-Azure Databricks クラスターを自分で用意する必要がなくなりました。 クラスターの作成および削除が Data Factory によって管理されます。 BLOB データセットと Azure Data Lake Storage Gen2 データセットが、区切りテキストおよび Apache Parquet データセットに分割されています。 ただし、Data Lake Storage Gen2 および BLOB ストレージを使用して、それらのファイルを保存することは依然として可能です。 このようなストレージ エンジンには、適切なリンクされたサービスを使用してください。
-
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>自分のプライベート プレビューのファクトリを Data Factory V2 に移行できますか?
-
-はい。 [こちらの手順に従ってください](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)。
-
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>データ フロー ロジックのトラブルシューティングのサポートが必要です。 サポートを受けるには、どのような情報を用意すればよいですか?
 
-Microsoft では、データ フローに関するサポートやトラブルシューティングを行っています。DSL コード プランをご用意ください。 そのためには、次の手順に従います。
+Microsoft では、データ フローに関するサポートやトラブルシューティングを行っています。データ フローのスクリプトをご用意ください。 これは、データ フロー グラフの分離コード スクリプトです。 ADF UI からデータ フローを開き、右上隅にある [スクリプト] ボタンをクリックします。 このスクリプトをコピーして貼り付けるか、テキスト ファイルに保存します。
 
-1. Data Flow デザイナーで、右上隅にある **[コード]** を選択します。 これにより、データ フローの編集可能な JSON コードが表示されます。
-2. コード ビューで、右上隅にある **[プラン]** を選択します。 このトグルが、JSON から、読み取り専用に書式設定された DSL スクリプト プランへと切り替わります。
-3. このスクリプトをコピーして貼り付けるか、テキスト ファイルに保存します。
-
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Data Factory で他の 80 のデータセット型を使用してデータにアクセスする方法はありますか?
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Data Factory で他の 90 個のデータセット型を使用してデータにアクセスする方法はありますか?
 
 現在、マッピング データ フロー機能では、ネイティブのソースおよびシンクとして、Azure SQL Database、Azure SQL Data Warehouse のほか、Azure Blob Storage または Azure Data Lake Storage Gen2 からの区切りテキスト ファイル、および BLOB ストレージまたは Data Lake Storage Gen2 からの Parquet ファイルが許可されています。 
 
 コピー アクティビティを使用して、データを他の任意のコネクタから段階的に送り、Data Flow のアクティビティを実行してステージングの後にデータを変換します。 たとえば、まずパイプラインを BLOB ストレージにコピーし、次に Data Flow のアクティビティでソースのデータセットを使用して、データを変換します。
+
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>データ フローにセルフホステッド統合ランタイムは使用できますか?
+
+セルフホステッド IR は ADF パイプライン コンストラクトであり、コピー アクティビティと共に使用して、オンプレミスまたは VM ベースのデータ ソースおよびシンクに対してデータを取得または移動することができます。 その変換済みデータをオンプレミスのストアに戻すには、最初にコピーを使ってデータをステージングしてから、変換用のデータ フロー、後続のコピーの順に使用します。
+
+## <a name="wrangling-data-flows"></a>ラングリング データ フロー
+
+### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>ラングリング データ フローでサポートされているリージョンを教えてください。
+
+現在、ラングリング データ フローは、次のリージョンで作成されたデータ ファクトリでサポートされています。
+
+* オーストラリア東部
+* カナダ中部
+* インド中部
+* 米国中部
+* East US
+* 米国東部 2
+* 東日本
+* 北ヨーロッパ
+* 東南アジア
+* 米国中南部
+* 英国南部
+* 米国中西部
+* 西ヨーロッパ
+* 米国西部
+* 米国西部 2
+
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>ラングリング データ フローに制限や制約はありますか?
+
+データセット名に使用できるのは英数字のみです。 次のデータ ストアがサポートされています。
+
+* アカウント キー認証を使用した Azure Blob Storage の DelimitedText データセット
+* アカウント キーまたはサービス プリンシパル認証を使用した Azure Data Lake Storage Gen2 の DelimitedText データセット
+* サービス プリンシパル認証を使用した Azure Data Lake Storage Gen1 の DelimitedText データセット
+* SQL 認証を使用した Azure SQL Database と Data Warehouse。 下の「サポートされている SQL の型」を参照してください。 データ ウェアハウスの PolyBase やステージングはサポートされていません。
+
+現時点では、ラングリング データ フローで、リンクされたサービス Key Vault 統合はサポートされていません。
+
+### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>マッピング データ フローとラングリング データ フローの違いを教えてください。
+
+データ フローのマッピングには、コーディングなしでデータを大規模に変換する機能が備わっています。 データ フロー キャンバスで一連の変換を構築することで、データ変換ジョブを設計できます。 任意の数のソースの変換から始め、その後にデータ変換手順を実行します。 シンクを使ってデータ フローを完了し、結果を宛先に書き込みます。 データ フローのマッピングは、シンクとソース内の既知のスキーマと不明なスキーマの両方でのデータのマップや変換に最適です。
+
+ラングリング データ フローを使うと、Spark の実行を通じて Power Query Online マッシュアップ エディターを大規模に使用して、アジャイルなデータ準備と探索を行うことができます。 データ レイクの使用が増加するなか、単にデータセットを探索したり、レイクにデータセットを作成したりしたい場合があります。 既知のターゲットにマッピングするのでなければ、 ラングリング データ フローは、それほど厳格でないモデルベースの分析シナリオで使用されます。
+
+### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Power Platform データフローとラングリング データ フローの違いを教えてください。
+
+Power Platform データフローを使用すると、ユーザーはさまざまなデータソースのデータを Common Data Service や Azure Data Lake にインポートして変換し、PowerApps アプリケーション、Power BI レポート、フロー自動化を構築できます。 Power Platform データフローでは、Power BI や Excel と同様に、確立された Power Query データ準備エクスペリエンスが使用されます。 また、Power Platform データフローを使用すると、組織内での再利用が容易になり、オーケストレーションを自動的に処理できます (たとえば、前のデーターフローが更新されると、別のデータフローに依存しているデータフローを自動的に更新する)。
+
+マネージド データ統合サービスである Azure Data Factory (ADF) を使用すると、データ エンジニアやデータ統合担当者は、複雑なハイブリッド抽出-変換-読み込み (ETL) や抽出-読み込み-変換 (ELT) ワークフローを作成できます。 ラングリング データ フローを ADF で使用すると、ユーザーはコーディング不要でサーバーレスの環境を利用でき、それによりクラウドのデータ準備が簡素化され、あらゆるデータ サイズにスケーリングすることができます。インフラストラクチャの管理は必要ありません。 データの準備と整形を行うために (また、Power Platform データフロー、Excel、Power BI でも)、Power Query データ準備テクノロジが使用されます。 ランダリング データ フローはすべての複雑な処理を管理し、ビッグ データ統合の課題を調整できるように作成されており、ユーザーは Spark の実行を通じてすばやく大規模にデータを準備できます。 ユーザーは、ブラウザーベースのインターフェイスを使用して回復性のあるデータ パイプラインをアクセシビリティの高いビジュアル環境に作成し、ADF によって複雑な Spark の実行を処理できます。 ADF 監視ポータルから、パイプラインのスケジュールを作成して、データ フロー実行を監視できます。 ADF の機能豊富な可用性監視機能とアラートにより、データ可用性に関する SLA を簡単に管理でき、組み込みの継続的インテグレーションとデプロイ機能を活用してフローを管理された環境内に保存し、管理することができます。 また、アラートとビューの実行プランを策定して、データ フローの調整中にロジックが計画どおりに実行されているかどうかを検証できます。
+
+### <a name="supported-sql-types"></a>サポートされている SQL の型
+
+ラングリング データ フローでは、SQL で次のデータ型がサポートされています。 サポートされていないデータ型を使用すると、検証エラーが表示されます。
+
+* short
+* double
+* real
+* float
+* char
+* nchar
+* varchar
+* nvarchar
+* integer
+* int
+* bit
+* ブール値
+* smallint
+* tinyint
+* bigint
+* long
+* text
+* date
+* datetime
+* datetime2
+* smalldatetime
+* timestamp
+* uniqueidentifier
+* xml
+
+その他のデータ型も今後サポートされる予定です。
 
 ## <a name="next-steps"></a>次の手順
 データ ファクトリを作成する手順については、次のチュートリアルをご覧ください。

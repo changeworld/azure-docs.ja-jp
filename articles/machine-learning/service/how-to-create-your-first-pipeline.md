@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755979"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818411"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、[機械学習パイプライン](concept-ml-pipelines.md)を作成、公開、実行、追跡する方法について説明します。  **ML パイプライン**を使用して、さまざまな ML フェーズをつなぎ合わせるワークフローを作成した後、後でアクセスするか、または他のユーザーと共有するためにそのパイプラインを Azure Machine Learning ワークスペースに発行します。  ML パイプラインは、さまざまなコンピューティングを使用し、ステップを再実行する代わりに再利用し、ML ワークフローを他のユーザーと共有する、バッチ スコアリングのシナリオに最適です。 
 
@@ -36,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * すべてのパイプライン リソースを保持するための [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)を作成します。
 
-* [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、または SDK が既にインストールされている [Notebook VM](tutorial-1st-experiment-sdk-setup.md#azure) を使用します。
+* [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning Notebook VM](concept-azure-machine-learning-architecture.md#compute-instance) を使用します。
 
 まず、ワークスペースをアタッチします。
 
@@ -165,7 +166,7 @@ Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境�
 
 * __Databricks コンピューティング名__:このコンピューティング リソースに割り当てる名前。
 * __Databricks ワークスペース名__:Azure Databricks ワークスペースの名前。
-* __Databricks アクセス トークン__:Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](https://docs.azuredatabricks.net/api/latest/authentication.html)に関するドキュメントを参照してください。
+* __Databricks アクセス トークン__:Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)に関するドキュメントを参照してください。
 
 次のコードでは、Azure Machine Learning SDK を使用してコンピューティング先として Azure Databricks をアタッチする方法を示します。
 
@@ -410,21 +411,21 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>発行されたパイプラインの結果を表示する
 
 すべての発行済みパイプラインとその実行の詳細の一覧を表示します。
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
 1. [ワークスペースを表示](how-to-manage-workspace.md#view)して、パイプラインの一覧を検索します。
  ![機械学習パイプラインの一覧](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. 実行結果を表示する特定のパイプラインを選択します。
 
-これらの結果は、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) でも確認できます。
+これらの結果は、Azure Machine Learning Studio (https://ml.azure.com) のワークスペースで利用することもできます。
 
 ### <a name="disable-a-published-pipeline"></a>発行されたパイプラインを無効にする
 
 発行済みパイプラインの一覧にパイプラインが表示されないようにするには、それを無効にします。
 
 ```
-# Get the pipeline by using its ID from the Azure portal
+# Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```

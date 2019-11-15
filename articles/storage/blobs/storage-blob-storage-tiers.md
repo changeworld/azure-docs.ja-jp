@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 5ba2255cfe0d5c4220ec2215ac837649af1ba896
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4593ee875f98e2c9f2f9406f8b9d4146e06a573d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521174"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825446"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -59,7 +59,7 @@ BLOB ストレージと GPv2 アカウントからは、アカウント レベ�
 
 ## <a name="archive-access-tier"></a>アーカイブ アクセス層
 
-アーカイブ アクセス層では、ストレージ コストは最も低くなります。 しかし、ホット層やクール層と比べて、データ取得コストは高くなります。 アーカイブ層のデータの取得には数時間かかることがあります。 アーカイブ層に格納されていた期間が 180 日未満のデータは、早期削除料金の対象になります。
+アーカイブ アクセス層では、ストレージ コストは最も低くなります。 しかし、ホット層やクール層と比べて、データ取得コストは高くなります。 アーカイブ層のデータの取得には数時間かかることがあります。 データは、少なくとも 180 日間、アーカイブ層に保持される必要があります。そうでない場合、早期削除料金の対象になります。
 
 BLOB がアーカイブ ストレージ内にある間、BLOB データはオフラインであり、読み取り、コピー、上書き、または変更を行うことはできません。 アーカイブ ストレージ内の BLOB のスナップショットを作成することはできません。 ただし、BLOB メタデータはオンラインのままで使用でき、BLOB とそのプロパティの一覧を表示することができます。 アーカイブに保存された BLOB に対する有効な操作は、GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier、DeleteBlob のみです。
 

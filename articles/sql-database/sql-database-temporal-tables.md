@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のテンポラル テーブルの概要 | Microsoft Docs
+title: テンポラル テーブルの概要
 description: Azure SQL Database のテンポラル テーブルの使い方について基本的な事柄を説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 39c19661a71a8b466aa6ff25be9e895189dfbfb3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566357"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820721"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL Database のテンポラル テーブルの概要
 

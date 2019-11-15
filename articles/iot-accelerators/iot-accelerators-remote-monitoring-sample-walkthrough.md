@@ -1,6 +1,6 @@
 ---
 title: リモート監視ソリューション アクセラレータの概要 - Azure | Microsoft Docs
-description: リモート監視ソリューション アクセラレータの概要。
+description: この記事では、リモート監視ソリューションのしくみについて理解しやすいように、その主な構成要素のいくつかについて概要を提供します。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: af09ea39f373d518d5600e3fa46adc378fd9236d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442540"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824832"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>リモート監視ソリューション アクセラレータの概要
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: b261594076857b841ba288dfaba8b5b8e9250065
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 64c99c6e7e33be5856e67db0500bf48123cdcf09
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72987927"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614481"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -32,7 +32,7 @@ Service Bus のバインドは [Microsoft.Azure.WebJobs.ServiceBus](https://www.
 
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
-Service Bus のバインドは [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) GitHub リポジトリにあります。
+Service Bus のバインドは [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-functions-servicebus-extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub リポジトリにあります。
 
 > [!NOTE]
 > バージョン 2.x では、`ServiceBusTrigger` インスタンスで構成されたトピックまたはサブスクリプションが作成されることはありません。 バージョン 2.x は、[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) に基づいており、キューの管理を処理することはありません。
@@ -473,12 +473,12 @@ public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
 複数のメッセージを作成する C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(TimerInfo myTimer, ILogger log, ICollector<string> outputSbQueue)
+public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<string> outputSbQueue)
 {
     string message = $"Service Bus queue messages created at: {DateTime.Now}";
     log.LogInformation(message); 
-    outputSbQueue.Add("1 " + message);
-    outputSbQueue.Add("2 " + message);
+    await outputSbQueue.AddAsync("1 " + message);
+    await outputSbQueue.AddAsync("2 " + message);
 }
 ```
 

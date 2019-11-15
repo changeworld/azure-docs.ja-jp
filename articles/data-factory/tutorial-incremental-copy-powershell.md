@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使ってテーブルを増分コピーする | Microsoft Docs
+title: 'Azure Data Factory を使ってテーブルを増分コピーする '
 description: このチュートリアルでは、Azure SQL データベースから Azure BLOB ストレージにデータを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 604b859bc144331550db9b71e6b216e35fd2d88a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bb1ddbddfb2e06f394ac2f57b10e18893879b51b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140606"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683349"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 

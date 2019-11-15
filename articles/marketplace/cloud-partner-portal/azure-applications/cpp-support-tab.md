@@ -4,15 +4,16 @@ description: Azure Marketplace でのオファーに対して Azure アプリケ
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 37c6a36afaad1e10d5075a207b35920531d6ace2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943259"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818178"
 ---
 # <a name="azure-application-support-tab"></a>Azure アプリケーションの [サポート] タブ
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database - 汎用と Business Critical | Microsoft Docs
+title: General Purpose と Business Critical
 description: 記事では、仮想コア ベースの購入モデルにおける General Purpose と Business Critical のサービス レベルについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: a971b428da72028bcabd874e848d53bc2392a0f6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 85b610969f9e5e85d014f89b90cfd862731aaf0c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496122"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821078"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベル
 

@@ -6,40 +6,40 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 11/03/2019
 ms.author: sngun
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 3e328d242bccd9f2ab037131d3fcce585bc6b8da
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432809"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824727"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
 このクイック スタートでは、Azure portal を使用して、Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウント、ドキュメント データベース、コンテナーを作成する方法を説明します。 その後、[SQL API](sql-api-sdk-python.md) 用の Python SDK で構築されたコンソール アプリを構築して実行します。
 
 Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、ワイド カラム、およびグラフ データベースをすばやく作成し、クエリを実行できます。 そのすべての操作に、Azure Cosmos DB が備える分散とスケールは利益をもたらします。
 
-このクイック スタートでは、[Python SDK](https://pypi.org/project/azure-cosmos) のバージョン 3.0 を使用します。
+このクイックスタートでは、[Python SDK](https://pypi.org/project/azure-cosmos/#history) のバージョン 4 を使用します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Python 3.6](https://www.python.org/downloads/) (`python` 実行可能ファイルが `PATH` に設定されていること)
+* [Python 3.6 以降](https://www.python.org/downloads/) (`python` 実行可能ファイルが `PATH` に設定されていること)。
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Visual Studio Code 用の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -90,92 +90,50 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure portal](https://portal.azure.com/) で Azure Cosmos アカウントにアクセスし、左側のナビゲーションにある **[キー]** を選択します。 次の手順では、画面の右側にあるコピー ボタンを使用して、 **[URI]** と **[主キー]** を `CosmosGetStarted.py` ファイルにコピーします。
+1. [Azure portal](https://portal.azure.com/) で Azure Cosmos アカウントにアクセスし、左側のナビゲーションにある **[キー]** を選択します。 次の手順では、画面の右側にあるコピー ボタンを使用して、 **[URI]** と **[主キー]** を `cosmos_get_started.py` ファイルにコピーします。
 
     ![Azure portal でキー設定のアクセス キーと URI を取得する](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
-2. Visual Studio Code で \git-samples\azure-cosmos-db-python-getting-started 内の `CosmosGetStarted.py` ファイルを開きます。
+2. Visual Studio Code で \git-samples\azure-cosmos-db-python-getting-started 内の `cosmos_get_started.py` ファイルを開きます。
 
-3. ポータルから (コピー ボタンを使用して) **URI** 値をコピーし、それを ``CosmosGetStarted.py`` 内の **endpoint** キーの値にします。 
+3. ポータルから (コピー ボタンを使用して) **URI** 値をコピーし、それを ``cosmos_get_started.py`` 内の **endpoint** 変数の値にします。 
 
-    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
+    `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. 次に、ポータルから **PRIMARY KEY** 値をコピーし、それを ``CosmosGetStarted.py`` 内の **config.PRIMARYKEY** の値にします。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+4. 次に、ポータルから **PRIMARY KEY** 値をコピーし、``cosmos_get_started.py`` 内の **key** の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
-    `'PRIMARYKEY': 'FILLME',`
+    `key = 'FILLME'`
 
-5. ``CosmosGetStarted.py`` ファイルを保存します。
+5. ``cosmos_get_started.py`` ファイルを保存します。
 
 ## <a name="review-the-code"></a>コードの確認
 
 この手順は省略可能です。 コードで作成されたデータベース リソースについて確認するか、または省略して「[接続文字列を更新する](#update-your-connection-string)」に進んでください。
 
-以前のバージョンの Python SDK に精通している場合は、"コレクション" や "ドキュメント" という用語をよく目にしたことに注意してください。 Azure Cosmos DB は複数の API モデルをサポートしているため、Python SDK のバージョン 3.0 以上では、コレクション、グラフ、またはテーブルを示すために一般的な用語である "コンテナー" を、またコンテナーのコンテンツを示すために "項目" を使用します。
+次のスニペットはすべて、`cosmos_get_started.py` ファイルからのものです。
 
-次のスニペットはすべて、`CosmosGetStarted.py` ファイルからのものです。
+* CosmosClient が初期化されます。 「[接続文字列を更新する](#update-your-connection-string)」セクションの説明に従って "endpoint" と "key" の値を更新します。 
 
-* CosmosClient が初期化されます。 「[接続文字列を更新する](#update-your-connection-string)」セクションの説明に従って "Endpoint" と "master key" の値を更新します。 
-
-    ```python
-    # Initialize the Cosmos client
-    client = cosmos_client.CosmosClient(url_connection=config['ENDPOINT'], auth={'masterKey': config['MASTERKEY']})
-    ```
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_cosmos_client)]
 
 * 新しいデータベースが作成されます。
 
-    ```python
-    # Create a database
-    db = client.CreateDatabase({ 'id': config['DATABASE'] })
-    ```
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_database_if_not_exists)]
 
-* 新しいコンテナーが作成されます。
+* 新しいコンテナーが、400 RU/秒の[プロビジョニング スループット](request-units.md)で作成されます。 [パーティション キー](partitioning-overview.md#choose-partitionkey)として `lastName` を選択します。こうすることで、このプロパティでフィルター処理を行う効率的なクエリを実行できます。 
 
-    ```python
-    # Create container options
-    options = {
-        'offerThroughput': 400
-    }
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_container_if_not_exists)]
 
-    # Create a container
-    container = client.CreateContainer(db['_self'], container_definition, options)
-    ```
+* いくつかの項目がコンテナーに追加されます。 コンテナーは、さまざまなスキーマを持つことができる項目 (JSON ドキュメント) のコレクションです。 ヘルパー メソッド ```get_[name]_family_item``` は、JSON ドキュメントとして Azure Cosmos DB に格納されているファミリの表現を返します。
 
-* いくつかの項目がコンテナーに追加されます。
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_item)]
 
-    ```python
-    # Create and add some items to the container
-    item1 = client.CreateItem(container['_self'], {
-        'serverId': 'server1',
-        'Web Site': 0,
-        'Cloud Service': 0,
-        'Virtual Machine': 0,
-        'message': 'Hello World from Server 1!'
-        }
-    )
+* ポイント読み取り (キー値の検索) は、`read_item` メソッドを使用して実行されます。 各操作の [RU 料金](request-units.md)が出力されます。
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
 
-    item2 = client.CreateItem(container['_self'], {
-        'serverId': 'server2',
-        'Web Site': 1,
-        'Cloud Service': 0,
-        'Virtual Machine': 0,
-        'message': 'Hello World from Server 2!'
-        }
-    )
-    ```
+* SQL クエリ構文を使用して、クエリが実行されます。 WHERE 句で ```lastName``` のパーティション キー値を使用しているため、Azure Cosmos DB は、このクエリを適切なパーティションに効率的にルーティングし、パフォーマンスを向上させます。
 
-* SQL を使用して、クエリが実行されます
-
-    ```python
-    query = {'query': 'SELECT * FROM server s'}
-
-    options = {}
-    options['enableCrossPartitionQuery'] = True
-    options['maxItemCount'] = 2
-
-    result_iterable = client.QueryItems(container['_self'], query, options)
-    for item in iter(result_iterable):
-        print(item['message'])
-    ```
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
 ## <a name="run-the-app"></a>アプリの実行
 
@@ -196,20 +154,48 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 5. 次のコマンドを実行して、azure-cosmos パッケージをインストールします。 
 
     ```python
-    pip3 install azure-cosmos
+    pip install --pre azure-cosmos
     ```
 
     azure-cosmos をインストールしようとしたときにアクセスが拒否されたことを示すエラーが表示される場合は、[管理者として VS Code を実行する](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights)必要があります。
 
-6. 次のコマンドを実行してサンプルを実行し、新しいドキュメントを作成して Azure Cosmos dB に保存します。
+6. 次のコマンドを実行してサンプルを実行し、新しいドキュメントを作成して Azure Cosmos DB に保存します。
 
     ```python
-    python CosmosGetStarted.py
+    python cosmos_get_started.py
     ```
 
-7. 新しい項目が作成および保存されたことを確認するには、Azure Portal で **[データ エクスプローラー]** を選択し、 **[coll]** 、 **[ドキュメント]** の順に展開して **[server1]** ドキュメントを選択します。 server1 ドキュメントの内容は、統合ターミナル ウィンドウで返される内容と一致します。 
+7. 新しい項目が作成および保存されたことを確認するには、Azure portal で **[データ エクスプローラー]**  >  **[AzureSampleFamilyDatabase]**  >  **[Items]\(項目\)** の順に選択します。 作成された項目を表示します。 例として、Andersen ファミリのサンプル JSON ドキュメントを次に示します。
 
-    ![Azure Portal で新しいドキュメントを表示する](./media/create-sql-api-python/azure-cosmos-db-confirm-documents.png)
+```json
+{
+    "id": "Andersen-1569479288379",
+    "lastName": "Andersen",
+    "district": "WA5",
+    "parents": [
+        {
+            "familyName": null,
+            "firstName": "Thomas"
+        },
+        {
+            "familyName": null,
+            "firstName": "Mary Kay"
+        }
+    ],
+    "children": null,
+    "address": {
+        "state": "WA",
+        "county": "King",
+        "city": "Seattle"
+    },
+    "registered": true,
+    "_rid": "8K5qAIYtZXeBhB4AAAAAAA==",
+    "_self": "dbs/8K5qAA==/colls/8K5qAIYtZXc=/docs/8K5qAIYtZXeBhB4AAAAAAA==/",
+    "_etag": "\"a3004d78-0000-0800-0000-5d8c5a780000\"",
+    "_attachments": "attachments/",
+    "_ts": 1569479288
+}
+```
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

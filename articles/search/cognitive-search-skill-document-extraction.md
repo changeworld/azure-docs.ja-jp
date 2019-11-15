@@ -1,21 +1,24 @@
 ---
-title: ドキュメント抽出の認知検索技術
+title: ドキュメント抽出のコグニティブ検索スキル (プレビュー)
 titleSuffix: Azure Cognitive Search
-description: エンリッチメント パイプライン内のファイルからコンテンツを抽出します。
+description: エンリッチメント パイプライン内のファイルからコンテンツを抽出します。 このスキルは現在、パブリック プレビューの段階です。
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: 8656896fe1a113ab143c43b4d1973e4196c5f087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510088"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720123"
 ---
 # <a name="document-extraction-cognitive-skill"></a>ドキュメント抽出の認知技術
+
+> [!IMPORTANT] 
+> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点では、ポータルと .NET SDK によるサポートはありません。
 
 **ドキュメント抽出**スキルでは、エンリッチメント パイプライン内のファイルからコンテンツが抽出されます。 これにより、通常であれば他のスキルによって生成される可能性のあるファイルでのスキルセット実行の前に発生する、ドキュメント抽出ステップを利用できます。
 
@@ -63,7 +66,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
  - インデクサーの定義で `allowSkillsetToReadFileData` パラメーターを "true" に設定します。  このようにすると、BLOB データ ソースからダウンロードされた元のファイル データを表すオブジェクトであるパス `/document/file_data` が作成されます。 このパラメーターは、BLOB ストレージのデータにのみ適用されます。
 
- - インデクサーの定義で `imageAction` パラメーターを `none` 以外の値に設定します。  このようにすると、画像 `/document/normalized_images` の配列が作成されます。この画像は、個別に渡した場合、このスキルへの入力に必要な規則に従います (つまり `/document/normalized_images/*`)。
+ - インデクサーの定義で `imageAction` パラメーターを `none` 以外の値に設定します。  このようにすると、画像の配列が作成されます。この配列は、個別に渡した場合にこのスキルに対する入力となるために必要な規則に従います (つまり `/document/normalized_images/*`)。
 
  - カスタム スキルで、上記のように EXACTLY と定義された JSON オブジェクトが返されるようにします。  `$type` パラメーターは厳密に `file` に設定する必要があり、`data` パラメーターはファイル コンテンツの Base 64 でエンコードされたバイト配列データである必要があります。
 

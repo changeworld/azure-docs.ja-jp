@@ -1,5 +1,5 @@
 ---
-title: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行 - Azure | Microsoft Docs
+title: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行 - Azure
 description: この記事では、SSIS パッケージの実行アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 965bb0641aac3224ac98820006f308e6b5fb0f71
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255646"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673744"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 この記事では、SSIS パッケージの実行アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 

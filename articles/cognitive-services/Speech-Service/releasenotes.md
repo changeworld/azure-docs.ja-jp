@@ -8,17 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 0e4d0eb19da2485b689b1c5d5192e344153aef0b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b40df5878d08b222d145531bfdad1e30b2fe989d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799970"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647398"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="speech-sdk-180-2019-november-release"></a>Speech SDK 1.8.0: 2019-November リリース
+
+**新機能**
+*   オンプレミス コンテナーとソブリン クラウドでの使用を容易にするために FromHost() API を追加しました。
+*   音声認識の自動ソース言語検出機能を追加しました (Java および C++)。
+*   音声認識でしかるべきソース言語を指定するための SourceLanguageConfig オブジェクトを追加しました (Java および C++)。
+*   NuGet パッケージと Unity パッケージを通じて、Windows (UWP)、Android、iOS で新たに KeywordRecognizer を使用できるようになりました。
+*   非同期バッチで会話の文字起こしを行うための Remote Conversation Java API を追加しました。
+
+**重大な変更**
+*   会話の文字起こし機能は、Microsoft.CognitiveServices.Speech.Transcription 名前空間に移されました。
+*   会話の文字起こし機能の一部のメソッドが、新しい Conversation クラスに移されました。
+*   32 ビット (ARMv7 および x86) iOS のサポートが終了しました。 
+
+**バグの修正**
+*   有効な音声サービスのサブスクリプション キーなしでローカル KeywordRecognizer を使用した場合に発生するクラッシュを修正しました。
+
+**サンプル**
+*   KeywordRecognizer の Xamarin サンプル
+*   KeywordRecognizer の Unity サンプル
+*   自動ソース言語検出の C++ および Java サンプル
+
+
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0: 2019-September リリース
 
 **新機能**
@@ -37,7 +61,6 @@ ms.locfileid: "71799970"
 *   一部の接続プロパティで UUID が一意ではない問題が修正されました
 *   Swift バインドでの NULL 値許容指定子に関するいくつかの警告が修正されました (小さなコード変更が必要な場合があります)
 *   ネットワークに負荷がかかると WebSocket 接続が異常終了する原因となっていたバグが修正されました
-*   iOS: arm7s アーキテクチャのサポートが削除されました
 *   DialogServiceConnector によって使用される印象 ID が重複することがある原因であった Android の問題が修正されました
 *   複数ターン相互作用を通した接続の安定性と、DialogServiceConnector でエラーが発生したときの (Canceled イベント経による) エラーの報告が向上しました
 *   アクティブな StartKeywordRecognitionAsync() の間に ListenOnceAsync() を呼び出すときなど、DialogServiceConnector セッションの開始時にイベントが適切に提供されるようになりました
@@ -86,17 +109,17 @@ ms.locfileid: "71799970"
 **バグの修正**
 
 * 会話の文字起こしで使用する FromSubscription を修正しました。
-* 音声優先仮想アシスタントのキーワード スポッティング機能のバグを修正しました。
+* 音声アシスタントのキーワード スポッティング機能のバグを修正しました。
 
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0:2019 年 5 月リリース
 
 **新機能**
 
-* ウェイク ワード (キーワード スポッティング/KWS) 機能が Windows と Linux で使用できるようになりました。 KWS の機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています。
+* キーワード スポッティング機能 (KWS) が Windows と Linux で利用できるようになりました。 KWS の機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています。
 * フレーズ ヒント機能は、この SDK を介して利用できます。 詳細については、[このページ](how-to-phrase-lists.md)を参照してください。
 * 会話の文字起こし機能は、この SDK を介して利用できます。 [こちら](conversation-transcription-service.md)を参照してください。
-* Direct Line Speech チャネルを使用して、音声優先仮想アシスタントのサポートを追加します。
+* Direct Line Speech チャネルを使用して、音声アシスタントのサポートを追加します。
 
 **サンプル**
 
@@ -163,7 +186,7 @@ ms.locfileid: "71799970"
 **新機能**
 
 * Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから Speech Services にオーディオ データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 この機能は、JavaScript からはまだ使用できません。
-* Speech SDK では、ベータ版で Unity がサポートされるようになりました。 [GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の問題セクションでフィードバックをお送りください。 このリリースでは、Windows x86 と x64 (デスクトップまたはユニバーサル Windows プラットフォーム アプリケーション) および Android (ARM32/64、x86) での Unity がサポートされています。 詳しくは、[Unity のクイック スタート](quickstart-csharp-unity.md)に関する記事をご覧ください。
+* Speech SDK では、ベータ版で Unity がサポートされるようになりました。 [GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の問題セクションでフィードバックをお送りください。 このリリースでは、Windows x86 と x64 (デスクトップまたはユニバーサル Windows プラットフォーム アプリケーション) および Android (ARM32/64、x86) での Unity がサポートされています。 詳しくは、[Unity のクイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)に関する記事をご覧ください。
 * (以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
 
 
@@ -304,7 +327,7 @@ ms.locfileid: "71799970"
 
 **新機能**
 
-* iOS での Objective-C のサポート。 [iOS での Objective-C のクイック スタート](quickstart-objectivec-ios.md)に関するページをご覧ください。
+* iOS での Objective-C のサポート。 [iOS での Objective-C のクイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)に関するページをご覧ください。
 * ブラウザーでの JavaScript のサポート。 [JavaScript のクイック スタート](quickstart-js-browser.md)に関するページをご覧ください。
 
 **重大な変更**
@@ -317,10 +340,10 @@ ms.locfileid: "71799970"
 **新機能**
 
 * Speech SDK で構築された UWP アプリは、Windows アプリ認定キット (WACK) に合格できるようになりました。
-  [UWP のクイック スタート](quickstart-csharp-uwp.md)に関するページをご覧ください。
+  [UWP のクイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp)に関するページをご覧ください。
 * Linux (Ubuntu 16.04 x 64) 上の .NET Standard 2.0 のサポート。
 * 試験段階: Windows (64 ビット) および Linux (Ubuntu 16.04 x 64) での Java 8 サポート。
-  [Java ランタイム環境のクイック スタート](quickstart-java-jre.md)に関するページをご覧ください。
+  [Java ランタイム環境のクイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)に関するページをご覧ください。
 
 **機能の変更点**
 
@@ -342,10 +365,10 @@ ms.locfileid: "71799970"
 
 **新機能**
 
-* Android プラットフォーム (API 23: Android 6.0 Marshmallow 以降) をサポートします。 [Android クイック スタート](quickstart-java-android.md)をチェックアウトします。
-* Windows 上の .NET Standard 2.0 をサポートします。 [.NET Core クイック スタート](quickstart-csharp-dotnetcore-windows.md)をチェックアウトします。
+* Android プラットフォーム (API 23: Android 6.0 Marshmallow 以降) をサポートします。 [Android クイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android)をチェックアウトします。
+* Windows 上の .NET Standard 2.0 をサポートします。 [.NET Core クイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)をチェックアウトします。
 * 試験段階: Windows 上での UWP のサポート (バージョン 1709 以降)。
-  * [UWP のクイック スタート](quickstart-csharp-uwp.md)に関するページをご覧ください。
+  * [UWP のクイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)に関するページをご覧ください。
   * 注:Speech SDK で構築された UWP アプリは、まだ Windows アプリ認定キット (WACK) に合格していません。
 * 自動再接続を使用して、実行時間の長い認識をサポートします。
 

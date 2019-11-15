@@ -1,22 +1,22 @@
 ---
-title: SaaS アプリ:ディザスター リカバリーのための Azure SQL Database の geo 冗長バックアップ | Microsoft Docs
+title: SaaS アプリ:ディザスター リカバリーのための geo 冗長バックアップ
 description: 停止が発生した場合に Azure SQL Database の geo 冗長バックアップを使用して、マルチテナント SaaS アプリを復旧する方法について説明します
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
-ms.openlocfilehash: c8990e5183d09e8f530fdef952a80a09104d3617
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570498"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826472"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
 

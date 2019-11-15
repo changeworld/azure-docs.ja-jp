@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8ce4565a2df3ad5f144508010265c1029a6856d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468851"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643622"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -73,7 +73,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 ### <a name="register-the-identityexperienceframework-application"></a>IdentityExperienceFramework アプリケーションを登録します
 
-アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [プレビュー エクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 

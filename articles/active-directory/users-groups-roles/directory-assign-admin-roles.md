@@ -3,23 +3,23 @@ title: 管理者ロールの説明とアクセス許可 - Azure Active Directory
 description: 管理者ロールは、ユーザーの追加、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 search.appverid: MET150
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 10/18/2019
+ms.topic: reference
+ms.date: 11/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e1e4fe4c06833302ac3ef9794981ee4a47fa454b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592885"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747761"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -75,12 +75,12 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 > [!IMPORTANT]
 > このロールのユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーの資格情報を変更するということは、そのユーザーの ID とアクセス許可を引き受けることができるということを意味します。 例:
-
-* 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、認証管理者に付与されていないAzure AD およびその他の場所への特権アクセス許可がある場合があります。 認証管理者は、このパスからアプリケーション所有者の ID を引き受け、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を引き受けることができる場合があります。
-* 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
-* グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
-* Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
-* 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
+>
+>- 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、認証管理者に付与されていないAzure AD およびその他の場所への特権アクセス許可がある場合があります。 認証管理者は、このパスからアプリケーション所有者の ID を引き受け、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を引き受けることができる場合があります。
+>- 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
+>- グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+>- Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
+>- 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
 ### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps 管理者](#azure-devops-administrator-permissions)
 
@@ -137,9 +137,9 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 ----- | ----------
 [Microsoft 365 コンプライアンス センター](https://protection.office.com) | Microsoft 365 サービス全体での組織のデータの保護および管理<br>コンプライアンス アラートの管理
 [コンプライアンス マネージャー](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
-[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理
+[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理<br><br>このロールには、Office 365 セキュリティ/コンプライアンス センターのロールベースのアクセス制御の[コンプライアンス管理者ロール グループ](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)と同じアクセス許可が付与されています。
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Intune のすべての監査データの表示
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br> データ管理下のすべての組み込みレポートの表示
+[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br>データ管理下のすべての組み込みレポートの表示
 
 ### <a name="compliance-data-administratorcompliance-data-administrator-permissions"></a>[コンプライアンス データ管理者](#compliance-data-administrator-permissions)
 
@@ -149,9 +149,9 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 ----- | ----------
 [Microsoft 365 コンプライアンス センター](https://protection.office.com) | Microsoft 365 サービス全体のコンプライアンス関連ポリシーの監視<br>コンプライアンス アラートの管理
 [コンプライアンス マネージャー](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
-[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理
+[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理<br><br>このロールには、Office 365 セキュリティ/コンプライアンス センターのロールベースのアクセス制御の[コンプライアンス データ管理者ロール グループ](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center)と同じアクセス許可が付与されています。
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Intune のすべての監査データの表示
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br> データ管理下のすべての組み込みレポートの表示
+[Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br>データ管理下のすべての組み込みレポートの表示
 
 ### <a name="conditional-access-administratorconditional-access-administrator-permissions"></a>[条件付きアクセス管理者](#conditional-access-administrator-permissions)
 
@@ -224,17 +224,21 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 > [!NOTE]
 > グローバル閲覧者ロールには現在、制限事項がいくつか与えられています。
 >
->* SharePoint 管理センター - SharePoint 管理センターでは、グローバル閲覧者ロールがサポートされていません。 [Microsoft 365 管理センター](https://admin.microsoft.com/Adminportal/Home#/homepage)の [管理センター] の下の左側のウィンドウに "SharePoint" が表示されません。
->* [OneDrive 管理センター](https://admin.onedrive.com/) - OneDrive 管理センターでは、グローバル閲覧者ロールがサポートされていません。
->* [Azure AD portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - グローバル閲覧者は企業アプリのプロビジョニング モードを閲覧できません。
->* [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
->* [M365 セキュリティ センター](https://security.microsoft.com/homepage) - グローバル閲覧者は機密ラベルと保持ラベルを閲覧できません。 M365 セキュリティ センターの左側のウィンドウに **[機密ラベル]** 、 **[保持ラベル]** 、 **[Label analytics]\(ラベル分析\)** タブがありません。
->* [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ**を閲覧できません。
->* [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) では、グローバル閲覧者ロールがサポートされていません。
->* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) - グローバル閲覧者は、[中央レポート](https://docs.microsoft.com/azure/information-protection/reports-aip)のみでサポートされ、テナントが [統合ラベル付けプラットフォーム](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)にない場合にサポートされます。
+>- SharePoint 管理センター - SharePoint 管理センターでは、グローバル閲覧者ロールがサポートされていません。 [Microsoft 365 管理センター](https://admin.microsoft.com/Adminportal/Home#/homepage)の [管理センター] の下の左側のウィンドウに "SharePoint" が表示されません。
+>- [OneDrive 管理センター](https://admin.onedrive.com/) - OneDrive 管理センターでは、グローバル閲覧者ロールがサポートされていません。
+>- [Azure AD portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - グローバル閲覧者は企業アプリのプロビジョニング モードを閲覧できません。
+>- [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
+>- [M365 セキュリティ センター](https://security.microsoft.com/homepage) - グローバル閲覧者は機密ラベルと保持ラベルを閲覧できません。 M365 セキュリティ センターの左側のウィンドウに **[機密ラベル]** 、 **[保持ラベル]** 、 **[Label analytics]\(ラベル分析\)** タブがありません。
+>- [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ**を閲覧できません。
+>- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) では、グローバル閲覧者ロールがサポートされていません。
+>- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) - グローバル閲覧者は、[中央レポート](https://docs.microsoft.com/azure/information-protection/reports-aip)のみでサポートされ、Azure AD 組織が [統合ラベル付けプラットフォーム](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)にない場合にサポートされます。
 >
 > 以上の機能は現在、開発中です。
 >
+
+### <a name="group-administratorgroup-administrator"></a>[グループ管理者](#group-administrator)
+
+このロールのユーザーは、グループとその設定 (命名ポリシーや有効期限ポリシーなど) を作成/管理できます。 このロールにユーザーを割り当てることにより、Outlook だけでなく、Teams、SharePoint、Yammer などのさまざまなワークロードにわたって、テナント内のすべてのグループを管理する機能がユーザーに付与されるということを理解しておくことが重要です。 また、そのユーザーは、Microsoft 管理センター、Azure portal などのさまざまな管理者ポータル全般のさまざまなグループの設定を管理できるほか、Teams や SharePoint 管理センターなどのワークロード固有の場合についても管理できます。
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[ゲスト招待元](#guest-inviter-permissions)
 
@@ -252,17 +256,16 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 > [!IMPORTANT]
 > このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 例:
-
-* 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびヘルプデスク管理者に付与されていない場所への特権アクセス許可がある場合があります。 ヘルプデスク管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
-* 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
-* グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
-* Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
-* 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
-
-> [!NOTE]
-> ユーザーのサブセットに管理アクセス許可を委任する、およびポリシーを適用するには、[管理単位 (プレビュー)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units) を使用します。
 >
-> このロールは、[Azure portal](https://portal.azure.com/) で以前は "パスワード管理者" と呼ばれていました。 Azure AD PowerShell、Azure AD Graph API、および Microsoft Graph API での名前に一致するように、この名前は "ヘルプデスク管理者" に変更されています。
+>- 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびヘルプデスク管理者に付与されていない場所への特権アクセス許可がある場合があります。 ヘルプデスク管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
+>- 機密情報や個人情報または Azure の重要な構成にアクセスする可能性がある Azure サブスクリプション所有者。
+>- グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+>- Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
+>- 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
+
+ユーザーのサブセットに管理アクセス許可を委任する、およびポリシーを適用するには、[管理単位 (現在、パブリック プレビュー段階にあります)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units) を使用します。
+
+このロールは、[Azure portal](https://portal.azure.com/) で以前は "パスワード管理者" と呼ばれていました。 Azure AD での名前である "ヘルプデスク管理者" は、Azure AD PowerShell、Azure AD Graph API、および Microsoft Graph API での名前に一致するようになりました。
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[Intune 管理者](#intune-service-administrator-permissions)
 
@@ -286,6 +289,10 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 ### <a name="message-center-readermessage-center-reader-permissions"></a>[メッセージ センター閲覧者](#message-center-reader-permissions)
 
 このロールのユーザーは、自分の組織の Exchange、Intune、Microsoft Teams などのサービス構成に対する [Office 365 メッセージ センター](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)の通知や、正常性に関して注意を促す更新情報を監視できます。 メッセージ センター閲覧者は、投稿の毎週のメール ダイジェストを受け取り、Office 365 でメッセージ センターの投稿を共有できます。 Azure AD では、このロールに割り当てられているユーザーはユーザーやグループなどの読み取り専用アクセスのみを持ちます。 このロールには、サポート チケットの表示、作成、管理のためのアクセス権がありません。
+
+### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Office アプリ管理者](#office-apps-administrator-permissions)
+
+このロールのユーザーは、Office 365 アプリのクラウド設定を管理できます。 これには、クラウド ポリシーの管理、セルフサービス ダウンロードの管理、Office アプリ関連レポートを表示する機能が含まれます。 このロールではさらに、サポート チケットの管理とメインの管理センター内でのサービスの正常性の監視を行うこともできます。 このロールに割り当てられたユーザーは、Office アプリの新機能の通知も管理できます。 
 
 ### <a name="partner-tier1-supportpartner-tier1-support-permissions"></a>[パートナー レベル 1 のサポート](#partner-tier1-support-permissions)
 
@@ -432,12 +439,12 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 > [!IMPORTANT]
 > このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 例:
-
-* 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびユーザー管理者に付与されていない場所への特権アクセス許可がある場合があります。 ユーザー管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
-* 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
-* グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
-* Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
-* 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
+>
+>- 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびユーザー管理者に付与されていない場所への特権アクセス許可がある場合があります。 ユーザー管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
+>- 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
+>- グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+>- Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
+>- 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
 ## <a name="role-permissions"></a>ロールのアクセス許可
 
@@ -1060,6 +1067,28 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 | microsoft.office365.webPortal/allEntities/standard/read   | microsoft.office365.webPortal のすべてのリソースの標準プロパティの読み取り。 |
 
+### <a name="group-administrator"></a>グループ管理者
+名前付けや有効期限ポリシーなど、グループやグループの設定のすべての側面を管理できます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.directory/groups/basic/read | Azure Active Directory での Group の標準プロパティの読み取り。  |
+| microsoft.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。 |
+| microsoft.directory/groups/create | Azure Active Directory での groups の作成。 |
+| microsoft.directory/groups/createAsOwner | Azure Active Directory での groups の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
+| microsoft.directory/groups/delete | Azure Active Directory での groups の削除。 |
+| microsoft.directory/groups/hiddenMembers/read | Azure Active Directory での groups.hiddenMembers プロパティの読み取り。 |
+| microsoft.directory/groups/members/update | Azure Active Directory での groups.members プロパティの更新。 |
+| microsoft.directory/groups/owners/update | Azure Active Directory での groups.owners プロパティの更新。 |
+| microsoft.directory/groups/restore | Azure Active Directory での groups の復元。 |
+| microsoft.directory/groups/settings/update | Azure Active Directory での groups.settings プロパティの更新。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
+
 ### <a name="guest-inviter-permissions"></a>ゲスト招待元のアクセス許可
 [メンバーがゲストを招待できる] の設定とは無関係にゲスト ユーザーを招待できます。
 
@@ -1201,6 +1230,25 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
+
+### <a name="office-apps-administrator-permissions"></a>Office アプリ管理者のアクセス許可
+Office アプリのクラウド サービスを管理すること (ポリシーと設定の管理を含む) や、"新機能" のコンテンツをエンドユーザーのデバイスのために選択、選択解除、公開する機能を管理することができます。
+
+> [!NOTE]
+> このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+>
+>
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
+| microsoft.office365.userCommunication/allEntities/allTasks | 新機能のメッセージを表示できるかどうかを読み取って、更新します。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="partner-tier1-support-permissions"></a>パートナー レベル 1 のサポートのアクセス許可
 
@@ -1636,6 +1684,7 @@ CRM サービス管理者 | Dynamics 365 管理者 | 44367163-eba1-44c3-98af-f57
 Exchange サービス管理者 | Exchange 管理者 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID プロバイダー管理者 | 外部 ID プロバイダー管理者 | be2f45a1-457d-42af-a067-6ec1fa63bc45
 グローバル閲覧者 | グローバル閲覧者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
+グループ管理者 | グループ管理者 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 ゲスト招待元 | ゲスト招待元 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 ヘルプデスク管理者 | パスワード管理者 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune サービス管理者 | Intune 管理者 | 3a2c62db-5318-420d-8d74-23affee5d9d5
@@ -1644,6 +1693,7 @@ Kaizala 管理者 | Kaizala 管理者 | 74ef975b-6605-40af-a5d2-b9539d836353
 Lync サービス管理者 | Skype for Business 管理者 | 75941009-915a-4869-abe7-691bff18279e
 メッセージ センターのプライバシー閲覧者 | メッセージ センターのプライバシー閲覧者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 メッセージ センター閲覧者 | メッセージ センター閲覧者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Office アプリ管理者 | Office アプリ管理者 | 2b745bdf-0803-4d80-aa65-822c4493daac
 パートナー レベル 1 のサポート | パートナー レベル 1 のサポート | 4ba39ca4-527c-499a-b93d-d9b492c50246
 パートナー レベル 2 のサポート | パートナー レベル 2 のサポート | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 パスワード管理者 | パスワード管理者 | 966707d0-3269-4727-9be2-8c3a10f19b9d

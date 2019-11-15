@@ -1,5 +1,5 @@
 ---
-title: Keras を使用したディープ ラーニング ニューラル ネットワークのトレーニング
+title: ディープ ラーニング Keras モデルをトレーニングする
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用して、TensorFlow 上で実行される Keras ディープ ニューラル ネットワーク分類モデルをトレーニングして登録する方法について説明します。
 services: machine-learning
@@ -11,14 +11,15 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0143a6075ef7b88cc0b365a544a5e69c92362ff
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c6a6af6d32e0664e66696523f53ac81cd921609e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710115"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814870"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning を使用して Keras 分類モデルをトレーニングして登録する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning を使用して、TensorFlow 上に構築された Keras 分類モデルをトレーニングして登録する方法について説明します。 これは、一般的な [MNIST データセット](http://yann.lecun.com/exdb/mnist/)を使用して、[TensorFlow](https://www.tensorflow.org/overview) 上で実行される [Keras Python ライブラリ](https://keras.io)を使用して構築されたディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類します。
 

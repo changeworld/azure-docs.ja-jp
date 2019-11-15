@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523226"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796279"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -33,7 +33,7 @@ ms.locfileid: "73523226"
 
 ### <a name="integration-with-availability-zones"></a>Availability Zones との統合
 
-マネージド ディスクでは [Availability Zones](../articles/availability-zones/az-overview.md) をサポートします。これは高可用性を備えたサービスであり、アプリケーションをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。
+マネージド ディスクでは [Availability Zones](../articles/availability-zones/az-overview.md) がサポートされています。これは高可用性を備えたサービスであり、アプリケーションをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。
 
 ### <a name="azure-backup-support"></a>Azure Backup のサポート
 
@@ -55,7 +55,7 @@ ms.locfileid: "73523226"
 
 ### <a name="server-side-encryption"></a>サーバー側暗号化
 
-[Azure サーバー側暗号化](../articles/storage/common/storage-service-encryption.md)は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+[Azure サーバー側暗号化](../articles/virtual-machines/windows/disk-encryption.md)は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています。 キーの管理を Azure に任せることができます (プラットフォーム マネージド キー)。自分でキーを管理することもできます (カスタマー マネージド キー)。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -85,7 +85,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 マネージド ディスクのスナップショットは、マネージド ディスクの読み取り専用のクラッシュ整合性の完全なコピーであり、既定で Standard マネージド ディスクとして格納されます。 スナップショットを使用すると、任意の時点のマネージド ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しいマネージド ディスクの作成に使用できます。 
 
-スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、**毎日**の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
+スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、**毎日**の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
 
 マネージド ディスクでスナップショットを作成する方法の詳細については、次のリソースを参照してください。
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 37d895d5631cf8487549fd9a9ebfb9dc37209c60
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ca9b0289fbc8dd01427de38e0e7b30eec266bb12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839611"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818586"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -4778,8 +4778,8 @@ ms.locfileid: "71839611"
 > | Action | Microsoft.Search/searchServices/delete | 検索サービスを削除します。 |
 > | Action | Microsoft.Search/searchServices/deleteQueryKey/delete | クエリ キーを削除します。 |
 > | Action | Microsoft.Search/searchServices/listAdminKeys/action | 管理者キーを読み取ります。 |
-> | Action | Microsoft.Search/searchServices/listQueryKeys/action | 指定された Azure Search サービスのクエリ API キーの一覧を返します。 |
-> | Action | Microsoft.Search/searchServices/listQueryKeys/read | 指定された Azure Search サービスのクエリ API キーの一覧を返します。 |
+> | Action | Microsoft.Search/searchServices/listQueryKeys/action | 指定された Azure Cognitive Search サービスのクエリ API キーの一覧を返します。 |
+> | Action | Microsoft.Search/searchServices/listQueryKeys/read | 指定された Azure Cognitive Search サービスのクエリ API キーの一覧を返します。 |
 > | Action | Microsoft.Search/searchServices/read | 検索サービスを読み取ります。 |
 > | Action | Microsoft.Search/searchServices/regenerateAdminKey/action | 管理者キーを再生成します。 |
 > | Action | Microsoft.Search/searchServices/start/action | 検索サービスを開始します。 |
@@ -5373,7 +5373,7 @@ ms.locfileid: "71839611"
 > | Action | Microsoft.Sql/servers/syncAgents/read | 同期エージェントの一覧を返すか、指定された同期エージェントのプロパティを取得します。 |
 > | Action | Microsoft.Sql/servers/syncAgents/write | 指定されたパラメーターで同期エージェントを作成するか、指定され同期エージェントのプロパティを更新します。 |
 > | Action | Microsoft.Sql/servers/tdeCertificates/action | TDE 証明書を作成/更新します |
-> | Action | Microsoft.Sql/servers/usages/read | サーバーの DTU クォータと、サーバー内のすべてのデータベースによる現在の DTU 消費量を返します。 |
+> | Action | Microsoft.Sql/servers/usages/read | サーバーの DTU クォータと、サーバー内のすべてのデータベースによる現在の DTU 消費量を返します |
 > | Action | Microsoft.Sql/servers/virtualNetworkRules/delete | 既存の仮想ネットワーク ルールを削除します。 |
 > | Action | Microsoft.Sql/servers/virtualNetworkRules/read | 仮想ネットワーク ルールの一覧を返すか、指定された仮想ネットワーク ルールのプロパティを取得します。 |
 > | Action | Microsoft.Sql/servers/virtualNetworkRules/write | 指定されたパラメーターで仮想ネットワーク規則を作成するか、指定された仮想ネットワーク規則のプロパティまたはタグを更新します。 |

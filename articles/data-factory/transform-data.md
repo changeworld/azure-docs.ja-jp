@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用してデータを変換する | Microsoft Docs
+title: 'Azure Data Factory を使用してデータを変換する '
 description: Azure Data Factory で Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: aa344915b8d5b4ff6e874f64d44ce3f665cd7a5a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464330"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683796"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 > [!div class="op_single_selector"]

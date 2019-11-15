@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Oracle をコピー元またはコピー先としてデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Oracle をコピー元またはコピー先としてデータをコピーする
 description: Data Factory を使用して、サポートされるソース データ ストアから Oracle データベースにデータをコピーしたり、Oracle からサポートされるシンク ストアにコピーしたりする方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 318014ec10bda0fa0ead9787067bb30f57707930
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d8cbc7410f2b2bd525148cee9dc5b8ddbb756dff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008585"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680504"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -75,6 +75,12 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 
 >[!TIP]
 >"ORA-01025:UPI パラメーターの値が有効範囲外です" というエラーが発生し、Oracle のバージョンが 8i である場合は、接続文字列に `WireProtocolMode=1` を追加してください。 その後、やり直してください。
+
+接続文字列には他にも、ケースに応じてさまざまな接続プロパティを設定できます。それらのプロパティを次に示します。
+
+| プロパティ | 説明 | 使用できる値 |
+|:--- |:--- |:--- |
+| ArraySize |1 回のネットワーク ラウンド トリップでコネクタがフェッチできるバイト数。 例: `ArraySize=‭10485760‬`。<br/><br/>値を大きくすると、ネットワーク経由でデータをフェッチする回数が減り、スループットが向上します。 値を小さくすると、サーバーがデータを転送する際の待ち時間がわずかにあるため、応答時間が長くなります。 | 1 から 4294967296 (4 GB) の整数。 既定値は `60000` です。 この値が 1 である場合、バイト数は定義されません。ちょうど 1 行分のデータの領域を割り当てることを意味します。 |
 
 Oracle の接続で暗号化を有効にするには、2 つのオプションがあります。
 
@@ -377,7 +383,7 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

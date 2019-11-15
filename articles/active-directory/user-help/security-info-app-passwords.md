@@ -1,5 +1,5 @@
 ---
-title: セキュリティ情報 (プレビュー) からアプリ パスワードを設定する - Azure Active Directory | Microsoft Docs
+title: セキュリティ情報 (プレビュー) でアプリのパスワードを作成する - Azure AD
 description: 組織のブラウザー以外のアプリ、または 2 要素認証をサポートしていないアプリで使用する、自動生成パスワード (アプリ パスワード) を設定します。 このアプリ パスワードは、通常のパスワードとは別のものであり、[セキュリティ情報] ページから設定できます。
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915973"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820320"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>セキュリティ情報 (プレビュー) ページからアプリ パスワードを管理する
+# <a name="create-app-passwords-from-your-security-info-preview-page"></a>ご自分のセキュリティ情報 (プレビュー) ページでアプリのパスワードを作成する
 
 Outlook 2010 などの特定のアプリでは、2 段階認証はサポートされていません。 このサポートの欠如は、組織で 2 段階認証を使用している場合、アプリが動作しないことを意味します。 この問題を回避するために、通常のパスワードとは別に、各非ブラウザー アプリで使用する自動生成パスワードを作成できます。
 

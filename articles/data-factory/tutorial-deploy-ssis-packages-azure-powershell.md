@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用した Azure-SSIS 統合ランタイムのプロビジョニング | Microsoft Docs
+title: PowerShell を使用して Azure-SSIS Integration Runtime をプロビジョニングする
 description: Azure 上で SSIS パッケージをデプロイして実行できるように、PowerShell を使用して Azure-SSIS 統合ランタイムを Azure Data Factory にプロビジョニングする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 7a4ae2198653ea8adab136caef0f812019efd998
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 594cdd848a3712d2164616e38f7b75a01a21b7f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326099"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683589"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>PowerShell を使用して Azure-SSIS 統合ランタイムを Azure Data Factory にプロビジョニングする
 

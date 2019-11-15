@@ -1,5 +1,5 @@
 ---
-title: PowerShell:BYOK TDE の有効化 - Azure SQL Database Managed Instance | Microsoft Docs
+title: 'PowerShell:BYOK TDE の有効化 - Azure SQL Database Managed Instance '
 description: PowerShell を使用して、保存時の暗号化に BYOK Transparent Data Encryption (TDE) を使用するように Azure SQL Managed Instance を構成する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 11/04/2019
-ms.openlocfilehash: 0413216bc666aff504193d6723d46a6ee26be8ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/05/2019
+ms.openlocfilehash: ddffda5229c9c0d33c563e3ae7b4a884f0f92dff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500059"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691393"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Azure Key Vault の独自のキーを使用して Managed Instance で Transparent Data Encryption を管理する
 
-この PowerShell スクリプトの例では、Azure Key Vault のキーを使用し、Azure SQL Managed Instance の Bring Your Own Key (プレビュー) シナリオで Transparent Data Encryption (TDE) が構成されます。 Bring Your Own Key (BYOK) をサポートする TDE の詳細については、[Azure SQL の TDE Bring Your Own Key](../transparent-data-encryption-byok-azure-sql.md) に関する記事をご覧ください。
+この PowerShell スクリプトの例では、Azure Key Vault のキーを使用し、Azure SQL Managed Instance のユーザー管理キーで Transparent Data Encryption (TDE) が構成されます。 よく "TDE の Bring Your Own Key" と呼ばれるシナリオです。 ユーザー管理キーを使用した TDE の詳細については、[Azure SQL の TDE Bring Your Own Key](../transparent-data-encryption-byok-azure-sql.md) に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,9 +30,9 @@ ms.locfileid: "73500059"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell をローカルで使用する場合も、Azure Cloud Shell を使用する場合も、AZ PowerShell 1.1.1 プレビューまたはそれ以降のバージョンのプレビューが必要です。 アップグレードする必要がある場合は、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」を参照するか、または次のサンプル スクリプトを使用して、モジュールをインストールします。
+PowerShell をローカルで使用する場合も、Azure Cloud Shell を使用する場合も、AZ PowerShell 2.3.2 以降のバージョンが必要です。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照するか、または次のサンプル スクリプトを使用して、現在のユーザーを対象にモジュールをインストールします。
 
-`Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
+`Install-Module -Name Az -AllowClobber -Scope CurrentUser`
 
 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 

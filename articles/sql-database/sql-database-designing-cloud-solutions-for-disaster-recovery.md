@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database を使用して世界規模の可用性を備えたサービスを設計する | Microsoft Docs
+title: グローバルで利用できるサービスを設計する
 description: Azure SQL Database を使用した高可用性サービスのアプリケーション設計について説明します。
 keywords: クラウド ディザスター リカバリー, ディザスター リカバリー ソリューション, アプリ データのバックアップ, geo レプリケーション, クラウド ビジネス継続性計画
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: a79fa40568502a73194e467de2227d54931d0100
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568943"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807947"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL Database を使用して世界規模の可用性を備えたサービスを設計する
 

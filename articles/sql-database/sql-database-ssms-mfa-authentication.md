@@ -1,9 +1,10 @@
 ---
-title: Azure SQL Database と Azure SQL Data Warehouse で多要素 AAD 認証を使用する | Microsoft Docs
+title: 多要素 AAD 認証の使用
 description: Azure SQL Database と Azure SQL Data Warehouse では、Active Directory ユニバーサル認証を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/08/2018
-ms.openlocfilehash: c648e038cd063524aa2e69ed6d934519aa0e76e6
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7183193f3639ea809c6e7aa19af7844bd134111e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019169"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820898"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>Azure SQL Database と Azure SQL Data Warehouse で多要素 AAD 認証を使用する (MFA の SSMS サポート)
 Azure SQL Database と Azure SQL Data Warehouse では、*Active Directory ユニバーサル認証*を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。 この記事ではさまざまな認証オプションの違いについて説明し、また、ユニバーサル認証の使用に関連する制限事項について説明します。 
@@ -26,7 +27,7 @@ Azure SQL Database と Azure SQL Data Warehouse では、*Active Directory ユ�
 
 この記事で説明されているすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。  一番新しい接続ダイアログ ボックスは次の画像のようになっているはずです。
  
-  ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "[ユーザー名] ボックスへの入力。")  
+  ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "[ユーザー名] ボックスへの入力を完了します。")  
 
 ## <a name="the-five-authentication-options"></a>5 つの認証オプション  
 

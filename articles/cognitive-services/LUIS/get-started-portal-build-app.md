@@ -1,23 +1,25 @@
 ---
 title: クイック スタート:LUIS ポータルで新しいアプリを作成する
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、LUIS ポータルで新しいアプリを作成します。 アプリ、意図、エンティティの基本パーツを作成します。 インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。 アプリの構築は無料で行うことができます。Azure のサブスクリプションは不要です。
+description: このクイックスタートでは、アプリの基本パーツ、意図、エンティティを作成すると共に、LUIS ポータルからサンプル発話を使ってテストを行います。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307752"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669673"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
+
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 このクイック スタートでは、[LUIS ポータル](https://www.luis.ai)で新しいアプリを構築します。 最初に、アプリ、**意図**、**エンティティ**の基本パーツを作成します。 その後インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。
 
@@ -27,9 +29,9 @@ ms.locfileid: "70307752"
 
 ## <a name="create-an-app"></a>アプリを作成する
 
-1. コンテキスト ツールバーから **[新しいアプリの作成]** を選択します。
+1. コンテキスト ツール バーの **[+ 作成]** を選択します。
 
-   [![LUIS ポータルで新しいアプリを作成する](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![LUIS ポータルで新しいアプリを作成する](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. ポップアップ ウィンドウで、以下の設定を使用してアプリを構成した後、 **[完了]** を選択します。
 
@@ -37,8 +39,8 @@ ms.locfileid: "70307752"
    |--|--|--|
    |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>必須|
    |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>必須|
-   |説明|`App made with LUIS Portal`|アプリの説明<br>省略可能|
-   | | | |
+   |説明 (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
+   |予測リソース (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
 
    ![新しいアプリ設定を入力する](./media/get-started-portal-build-app/create-new-app-settings.png)
 
@@ -58,13 +60,11 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **[Create new intent]\(意図の新規作成\)** を選択します。
+1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **作成** を選択します。
 
-   [![[Create new intent]\(意図の新規作成\) ボタンを選択する](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![[作成] を選択して新しい意図を作成する](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
 1. 意図の名前として `FindForm` を入力し、 **[完了]** を選択します。
-
-   ![意図の名前として「FindForm」を入力する](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
 ## <a name="add-an-example-utterance"></a>発話の例を追加する
 
@@ -110,13 +110,16 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 1. 左側のメニューから **[エンティティ]** を選択します。
 
-1. **[エンティティ]** ページ上で **[新しいエンティティを作成する]** を選択します。
+1. **[エンティティ]** ページの **[作成]** を選択します。
 
-1. 名前として「`Human Resources Form Number`」を入力し、エンティティ型として **[正規表現]** を選択します。また、正規表現として「`hrf-[0-9]{6}`」を入力します。 これは、リテラル文字 `hrf-` と同じで、6 桁に対応します。
+1. 「`Human Resources Form Number`」という名前を入力し、 **[Regex]\(正規表現\)** エンティティ型を選択して、 **[次へ]** を選択します。
 
-   ![正規表現エンティティのエンティティ情報を入力する](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![正規表現エンティティを作成する](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-1. **[完了]** を選択します。
+1. 正規表現 (**RegEx**) 式として「`hrf-[0-9]{6}`」を入力します。 これは、リテラル文字 `hrf-` と同じで、6 桁に対応します。続けて **[作成]** を選択します。
+
+   ![エンティティの正規表現を入力する](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
+
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する
 
@@ -134,11 +137,11 @@ LUIS アプリを作成したら、意図を作成する必要があります。
    |ピザを注文して|
    |海の中のペンギン|
 
-   この人事管理アプリの場合、これらの発話の例は、ドメイン外です。 人事ドメインに動物、食品、または海洋が含まれる場合、**None** 意図には別の発話の例を使用する必要があります。
+   このアプリの場合、これらの発話の例は、ドメイン外です。 ドメインに動物、食品、または海洋が含まれる場合、**None** 意図には別の発話の例を使用する必要があります。
 
 ## <a name="train-the-app"></a>アプリをトレーニングする
 
-右上のナビゲーションで **[トレーニング]** を選択すると、意図およびエンティティ モデルの変更が現在のバージョンのアプリに適用されます。
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>発話の例内の正規表現エンティティを見る
 
@@ -165,8 +168,6 @@ LUIS ポータル内のインタラクティブな **[テスト]** ウィンド�
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 このクイック スタートが完了し、次のクイック スタートに進まない場合は、上部のナビゲーション メニューから **[マイ アプリ]** を選択します。 次に、一覧からアプリの左側にあるチェック ボックスをオンにし、一覧の上にあるコンテキスト ツール バーから **[削除]** を選択します。
-
-[![[マイ アプリ] 一覧からアプリを削除する](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell から IoT Central を管理する | Microsoft Docs
-description: Azure PowerShell から IoT Central を管理します。
+description: この記事では、Azure PowerShell から IoT Central アプリケーションを作成し、管理する方法について説明します。
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 269b8a6c2a90884b060b4fb916b77af919a63a63
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eadc021335488bed1f236d3728acca245be7d71e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942456"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806645"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 

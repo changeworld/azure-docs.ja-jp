@@ -5,41 +5,51 @@ services: azure-portal
 keywords: お気に入り
 author: kfollis
 ms.author: kfollis
-ms.date: 04/03/2019
+ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: ff3549ce77a2b691dcaaa94b6a59e9c011ff6e21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60690708"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579544"
 ---
 # <a name="add-remove-and-sort-favorites"></a>お気に入りの追加、削除、並べ替え
 
 よく使うサービスにすばやくアクセスできるように、 **[お気に入り]** 一覧に項目を追加または削除します。 **[お気に入り]** 一覧には一般的なサービスが既に追加されていますが、カスタマイズすることをお勧めします。 お客様が **[お気に入り]** に加えた変更は、お客様にのみ表示されます。
 
-## <a name="add-or-remove-a-favorite"></a>お気に入りを追加または削除する
+## <a name="add-a-favorite"></a>お気に入りを追加する
 
-**[お気に入り]** の下に一覧表示されている項目は、 **[すべてのサービス]** から選択されます。 各サービスの横にある星アイコン ![黄色の星アイコン](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-star.png) は、項目が一覧に表示されるかどうかを示します。 星アイコンを選択して **[お気に入り]** 一覧からサービスを追加または削除します。
+**[お気に入り]** の下に一覧表示されている項目は、 **[すべてのサービス]** から選択されます。 サービス名の上にカーソルを置くと、サービスに関連する情報やリソースが表示されます。 サービス名の横にある塗りつぶされた星アイコン ![塗りつぶされた星アイコン](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) は、その項目が **[お気に入り]** 一覧に表示されることを示します。 星アイコンを選択して **[お気に入り]** 一覧にサービスを追加します。
 
 ### <a name="add-cost-management--billing-to-favorites"></a>[コストの管理と請求] を [お気に入り] に追加します。
 
-1. サイドバーの上部から **[すべてのサービス]** を選択します。
+1. Azure portal メニューから **[すべてのサービス]** を選択します。
 
-    ![選択したすべてのサービスを示すスクリーンショット](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-all-services.png)
+    ![選択したすべてのサービスを示すスクリーンショット](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-new-all-services.png)
 
-1. 検索フィールドに「コスト」と入力します。 タイトルに "コスト" が含まれているサービス、またはキーワードとして "コスト" が含まれているサービスのみが表示されます。
+1. 検索フィールドに「コスト」と入力します。 タイトルに "コスト" が含まれているサービス、またはキーワードとして "コスト" が含まれているサービスが表示されます。
 
-   ![すべてのサービスの検索を示すスクリーンショット](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-search.png)
+   ![すべてのサービスの検索を示すスクリーンショット](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-find-service.png)
 
-1. 星アイコンを選択します。
+1. サービス名の上にカーソルを置くと、 **[コストの管理と請求]** 情報カードが表示されます。 星アイコンを選択します。
 
    ![選択されている [コスト管理と請求] の横に星が表示されたスクリーンショット](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-add.png)
 
 1. **[コストの管理と請求]** が **[お気に入り]** 一覧の最後の項目として追加されました。
+
+## <a name="remove-an-item-from-favorites"></a>お気に入りから項目を削除する
+
+**[お気に入り]** 一覧から項目を直接削除できるようになりました。
+
+1. ポータル メニューの **[お気に入り]** セクションで、削除するサービスの名前の上にカーソルを置きます。
+
+   ![[お気に入り] でカーソルを置く操作を示すスクリーンショット](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-remove.png)
+
+2. 情報カードで星を選択して、塗りつぶされている状態から塗りつぶされていない状態に変更します。 そのサービスが **[お気に入り]** 一覧から削除されます。
 
 ## <a name="sort-favorites"></a>お気に入りを並べ替える
 

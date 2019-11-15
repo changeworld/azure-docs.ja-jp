@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery - Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーをセットアップしてテストする | Microsoft Docs
+title: Azure PowerShell と Azure Site Recovery を使用した Azure VM のディザスター リカバリー
 description: Azure PowerShell を使用して、Azure Site Recovery による Azure 仮想マシンのディザスター リカバリーを設定する方法を説明します。
 services: site-recovery
 author: sujayt
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: fe74080387f76b858f60c5285a98c9b67f051449
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: aa91725daf36113334849dd15dd01b6ce6ed4389
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671883"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621084"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーを設定する
 

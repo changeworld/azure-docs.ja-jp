@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した Web テーブルからのデータ コピー | Microsoft Docs
+title: Azure Data Factory を使用して Web テーブルからデータをコピーする
 description: Azure Data Factory の Web Table コネクタについて説明します。このコネクタを使用すると、Web テーブルから、Data Factory でシンクとしてサポートされているデータ ストアにデータをコピーすることができます。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 164b61d624efbe1ed6127f1ed974b221f4e4d304
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a13f3c2d2bbebd2cd6fa95bd7aa144722447ac9d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089164"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680042"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブルからデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -92,7 +92,7 @@ Web テーブルからデータをコピーするには、データセットの 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、次のように設定する必要があります:**WebTable** に設定する必要があります | はい |
-| path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
+| path |テーブルを含むリソースの相対 URL。 |No. パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
 | index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |はい |
 
 **例:**
@@ -185,7 +185,7 @@ Excel 2013 を使用している場合、 [Microsoft Power Query for Excel](http
 
 ## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

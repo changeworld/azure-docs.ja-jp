@@ -1,6 +1,6 @@
 ---
-title: セルフサービスによるパスワードのリセットの登録 - Azure Active Directory | Microsoft Docs
-description: Azure AD セルフサービスによるパスワードのリセット用の認証データを登録する
+title: 自分のパスワードをリセットする方法の登録 - Azure AD
+description: Azure AD のパスワード リセットのセルフサービスにご自分の認証データを登録すると、管理者の支援なしで自分のパスワードをリセットできます。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f113c42ff45811f31eb77a92873fb187dd51ea6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 796702b2189dcfb001f72913e4a01c0ae01462ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530886"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820446"
 ---
-# <a name="register-for-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを登録する
+# <a name="register-to-reset-your-own-password"></a>自分のパスワードをリセットする方法の登録
 
 > [!IMPORTANT]
 > こちらをご覧になっているのは、サインインできないことが理由ですか。 その場合、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。

@@ -6,22 +6,22 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 11/04/2019
 ms.author: danlep
-ms.openlocfilehash: c4c09a78f9bad1af1f7a904914ad6ad066ec0e40
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 4fb9eb8a3ef937ce5ed222c7814a8f191e3874f2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718438"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803597"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure コンテナー レジストリからイメージを自動的に消去する
 
 開発ワークフローの一部として Azure コンテナー レジストリを使用すると、レジストリは短時間で不要なイメージやその他の成果物によりすぐにいっぱいになる可能性があります。 特定の期間よりも前のタグをすべて削除することも、指定した名前フィルターに一致したタグをすべて削除することもできます。 複数の成果物をすばやく削除できるように、この記事では、オンデマンドまたは[スケジュールされた](container-registry-tasks-scheduled.md) ACR タスクとして実行できる `acr purge` コマンドを紹介します。 
 
-`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.1`) で配布されています。
+`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.1`) で配布されています。 ACR タスクで、`acr purge` [エイリアス](container-registry-tasks-reference-yaml.md#aliases)を使用してコマンドを実行します。
 
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、この記事の ACR タスクの例を実行できます。 それをローカルで使用する場合は、バージョン 2.0.69 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。 
+Azure Cloud Shell または Azure CLI のローカル インストールを使用して、この記事の ACR タスクの例を実行できます。 これをローカルで使用したい場合は、バージョン 2.0.76 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。 
 
 > [!IMPORTANT]
 > 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
@@ -57,12 +57,14 @@ Azure CLI コマンドを使用して 1 つのイメージ タグまたはマニ
 
 ### <a name="run-in-an-on-demand-task"></a>オンデマンド タスクで実行する
 
-次の例では、[az acr run][az-acr-run] コマンドを使用して、`purge` コマンドをオンデマンドで実行します。 この例では、1 日以上前に変更された *myregistry* 内の `hello-world` リポジトリにあるすべてのイメージ タグとマニフェストを削除します。 コンテナー コマンドは、環境変数を使用して渡されます。 タスクは、ソース コードのコンテキストなしで実行されます。
+次の例では、[az acr run][az-acr-run] コマンドを使用して、`acr purge` コマンドをオンデマンドで実行します。 この例では、1 日以上前に変更された *myregistry* 内の `hello-world` リポジトリにあるすべてのイメージ タグとマニフェストを削除します。 コンテナー コマンドは、環境変数を使用して渡されます。 タスクは、ソース コードのコンテキストなしで実行されます。
+
+この例と後続の例では、`acr purge` コマンド実行が実行されるレジストリは、タスクを実行するレジストリを示す `$Registry` エイリアスを使用して指定されています。
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="acr purge --registry \$Registry \
+  filter 'hello-world:.*' --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -76,8 +78,8 @@ az acr run \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="acr purge --registry \$Registry \
+  --filter 'hello-world:.*' --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -96,8 +98,8 @@ az acr task create --name purgeTask \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="acr purge --registry \$Registry \
+  --filter 'hello-world:.*' --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -118,8 +120,7 @@ az acr run \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge --registry \$Registry \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
@@ -159,8 +160,7 @@ Number of deleted manifests: 4
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge --registry $Registry \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

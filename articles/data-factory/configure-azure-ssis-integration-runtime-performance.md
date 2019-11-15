@@ -1,5 +1,5 @@
 ---
-title: Azure-SSIS 統合ランタイムのパフォーマンスを構成する | Microsoft Docs
+title: Azure-SSIS Integration Runtime のパフォーマンスを構成する
 description: Azure-SSIS 統合ランタイムのプロパティを高パフォーマンス用に構成する方法について説明します。
 services: data-factory
 ms.date: 01/10/2018
@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 42c69653a002446552da998320a43730dfdaadf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 518da092f690108111ca4456eaca66e4f3153c54
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232550"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681433"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 

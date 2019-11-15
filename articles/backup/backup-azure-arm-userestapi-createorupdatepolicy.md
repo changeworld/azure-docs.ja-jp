@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: REST API を使用してバックアップ ポリシーを作成する'
-description: REST API を使用してバックアップ ポリシー (スケジュールと保持期間) を管理します。
+description: この記事では、REST API を使用してバックアップ ポリシー (スケジュールとリテンション期間) を作成および管理する方法について説明します。
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 8b812ea053cb8e9da7cd3ef021ab6b74196d36ca
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954961"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747597"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API を使用して Azure Recovery Services バックアップ ポリシーを作成する
 
-Azure Recovery Services コンテナー用のバックアップ ポリシーを作成する手順の概要については、[ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。 このドキュメントを Azure VM のバックアップに対するポリシーを作成するためのリファレンスとして使用しましょう。
+Azure Recovery Services コンテナー用のバックアップ ポリシーを作成する手順の概要については、[ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)をご覧ください。 このドキュメントを Azure VM のバックアップに対するポリシーを作成するためのリファレンスとして使用しましょう。
 
 ## <a name="backup-policy-essentials"></a>バックアップ ポリシーの基礎
 
@@ -41,7 +41,7 @@ Azure Recovery Services コンテナー用のバックアップ ポリシーを�
 Azure Backup ポリシーを作成または更新するには、次の *PUT* 操作を使用します。
 
 ```http
-PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
 `{policyName}` と `{vaultName}` は URI で指定します。 その他の情報は要求本文で指定します。
@@ -50,12 +50,12 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 たとえば、Azure VM のバックアップに対するポリシーを作成する場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |必須  |Type  |説明  |
+|名前  |必須  |種類  |説明  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
 |tags     |         | Object        |  リソース タグ       |
 
-要求本文での定義の完全な一覧については、[バックアップ ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。
+要求本文での定義の完全な一覧については、[バックアップ ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)をご覧ください。
 
 ### <a name="example-request-body"></a>要求本文の例
 
@@ -160,7 +160,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
+|200 OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
 |202 Accepted     |         |     承認済み    |
 
 ### <a name="example-responses"></a>応答の例
@@ -181,14 +181,14 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 その後は、場所ヘッダーまたは Azure-AsyncOperation ヘッダーを使用して簡単な *GET* コマンドで結果の操作を追跡します。
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
 操作が完了すると、応答本文にポリシーの内容が含まれる 200 (OK) が返されます。

@@ -1,5 +1,5 @@
 ---
-title: Data Factory を使用して Salesforce からデータを移動する | Microsoft Docs
+title: Data Factory を使用して Salesforce からデータを移動する
 description: Azure Data Factory を使用して Salesforce からデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d33172727d4c654614463f69b83f7802cf7fb905
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 71201efeb56ffda2dfbf82ca19b3bacb773c7c3d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839607"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666165"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -286,24 +286,24 @@ RelationalSource でサポートされるプロパティの一覧については
 
 | Salesforce の型 | .NET ベースの型 |
 | --- | --- |
-| オート ナンバー |string |
-| チェックボックス |Boolean |
-| 通貨 |Decimal |
+| オート ナンバー |String |
+| Checkbox |Boolean |
+| Currency |Decimal |
 | Date |DateTime |
 | 日付/時刻 |DateTime |
-| Email |string |
-| Id |string |
-| 参照リレーションシップ |string |
-| 複数選択の候補リスト |string |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
 | Percent |Decimal |
-| 電話 |string |
-| 候補リスト |string |
-| Text |string |
-| テキスト領域 |string |
-| テキスト領域 (ロング) |string |
-| テキスト領域 (リッチ) |string |
-| テキスト (暗号化) |string |
+| Phone |String |
+| Picklist |String |
+| Text |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
 | URL |string |
 
 > [!NOTE]

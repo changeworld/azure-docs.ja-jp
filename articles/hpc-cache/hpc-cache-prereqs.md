@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache (プレビュー) の前提条件
+title: Azure HPC Cache の前提条件
 description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709970"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582147"
 ---
-# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Azure HPC Cache (プレビュー) の前提条件
+# <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
 Azure portal を使用して新しい Azure HPC Cache を作成する前に、ご利用の環境が要件を満たしていることを確認します。
 
@@ -22,7 +22,7 @@ Azure portal を使用して新しい Azure HPC Cache を作成する前に、�
 有料サブスクリプションをお勧めします。
 
 > [!NOTE]
-> プレビューのリリース期間中は、お客様のサブスクリプションを使用してキャッシュ インスタンスを作成するためには、そのサブスクリプションを Azure HPC Cache チームがアクセス リストに追加する必要があります。 この手順によって、それぞれのお客様が確実にそのテスト キャッシュから高品質の応答性を得ることができます。 [こちらのフォーム](https://aka.ms/onboard-hpc-cache)に必要事項を記入してアクセスを要求してください。
+> GA リリースの最初の数か月の間は、お客様のサブスクリプションを使用してキャッシュ インスタンスを作成するためには、そのサブスクリプションを Azure HPC Cache チームがアクセス リストに追加する必要があります。 この手順によって、それぞれのお客様が確実にそのキャッシュから高品質の応答性を得ることができます。 [こちらのフォーム](https://aka.ms/onboard-hpc-cache)に必要事項を記入してアクセスを要求してください。
 
 ## <a name="network-infrastructure"></a>ネットワーク インフラストラクチャ
 
@@ -86,7 +86,7 @@ NFS バックエンド ストレージは、互換性のあるハードウェア
 * アクセス層 (既定): **ホット**
 
 キャッシュと同じ場所にあるストレージ アカウントの使用をお勧めします。
-<!-- need to clarify location - same region or same resource group or same virtual network? -->
+<!-- clarify location - same region or same resource group or same virtual network? -->
 
 また、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与える必要があります。 [ストレージ ターゲットを追加する](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)手順の説明に従って、ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者のアクセス ロールをキャッシュに与えます。 ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
 

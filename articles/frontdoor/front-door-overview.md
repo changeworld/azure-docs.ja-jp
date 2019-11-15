@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 11/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 20cfcea4a8b58c1c01a7c710163b7320ff96d65c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 96dae96e16ce033ce15a8f1e9386e5252562654a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330828"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796219"
 ---
 # <a name="what-is-azure-front-door-service"></a>Azure Front Door Service とは
 Azure Front Door Service では、高可用性のために最大限のパフォーマンスと即時グローバル フェイルオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、および監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
@@ -57,7 +57,7 @@ Front Door を使用してコンテンツを配信するときに独自のドメ
 Front Door はカスタム ドメイン名でも HTTPS をサポートしています。 この機能は、Front Door で管理されるトラフィックの証明書を選択するか、独自のカスタム SSL 証明書をアップロードすることで使用します。
 
 ## <a name="application-layer-security"></a>アプリケーション層のセキュリティ
-Azure Front Door を使用すると、アクセス制御のためのカスタムの Web アプリケーション ファイアウォール (WAF) 規則を作成して、クライアント IP アドレス、国番号、および http パラメーターに基づいて HTTP/HTTPS ワークロードを不正使用から保護することができます。 さらに、Front Door では、悪意のあるボット トラフィックと戦うためにレート制限ルールを作成することもできます。 
+Azure Front Door を使用すると、アクセス制御のためのカスタムの Web アプリケーション ファイアウォール (WAF) 規則を作成して、クライアント IP アドレス、国番号、http パラメーターに基づいて HTTP/HTTPS ワークロードを不正使用から保護することができます。 さらに、Front Door では、悪意のあるボット トラフィックと戦うためにレート制限ルールを作成することもできます。 Web アプリケーション ファイアウォールの詳細については、「[Azure Web アプリケーション ファイアウォールとは](../web-application-firewall/overview.md)」を参照してください。
 
 Front Door プラットフォーム自体は、[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) Basic によって保護されます。 さらに保護するために、Azure DDoS Protection Standard を VNET で有効にし、自動チューニングとリスク軽減によってネットワーク層 (TCP または UDP) 攻撃からリソースを保護することもできます。 Front Door はレイヤー 7 のリバース プロキシであり、既定では Web トラフィックにバックエンドへのパススルーと他のタイプのトラフィックのブロックしか許可しません。
 

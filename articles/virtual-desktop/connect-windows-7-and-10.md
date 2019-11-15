@@ -1,18 +1,18 @@
 ---
-title: Windows 10 または Windows 7 から Windows Virtual Desktop に接続する - Azure
+title: Windows Virtual Desktop に接続する Windows 10 または 7 - Azure
 description: Windows デスクトップ クライアントを使用して Windows Virtual Desktop に接続する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/31/2019
 ms.author: helohr
-ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2552fcbd860a0cc98aa7e2a6c7f92796a8d588ca
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676741"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605784"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントに接続する
 
@@ -25,11 +25,11 @@ Windows デスクトップ クライアントを使用して、Windows 7 また�
 
 ## <a name="install-the-windows-desktop-client"></a>Windows デスクトップ クライアントをインストールする
 
-現在ダウンロードできるクライアントは次のとおりです。
+ご自身の Windows バージョンに合ったクライアントを選択してください。
 
 - [Windows (64 ビット)](https://go.microsoft.com/fwlink/?linkid=2068602)
-
-このリストは、クライアントがより多くのバージョンの Windows で使用できるようになったときに更新されます。
+- [Windows 32 ビット プレビュー](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows ARM64 プレビュー](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 現在のユーザー用にのクライアントをインストールできます。この場合、管理者権限は必要ありません。または、管理者がクライアントをインストールして構成し、デバイス上のすべてのユーザーがアクセスできるようにすることができます。
 

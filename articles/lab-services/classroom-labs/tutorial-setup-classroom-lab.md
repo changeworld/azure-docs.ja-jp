@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: fe40eb27b07304aba48be4a47fb22168cb60434c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332260"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584943"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -90,7 +90,12 @@ ms.locfileid: "72332260"
     
     1. ラボの容量 (ラボ内の VM の数) を変更するには、ツール バーの **[Lab capacity]\(ラボの容量\)** を選択します。
     2. すべての VM を一度に起動するには、ツール バーの **[Start all]\(すべて起動\)** を選択します。 
-    3. 特定の VM を起動するには、 **[Status]\(状態\)** の下向き矢印を選択し、 **[Start]\(起動\)** を選択します。 また、最初の列で VM を選択した後にツール バーの **[Start]\(起動\)** を選択して、1 台の VM を起動することもできます。
+    3. 特定の VM を起動するには、 **[状態]** の下向き矢印を選択し、 **[開始]** を選択します。 また、最初の列で VM を選択した後にツール バーの **[Start]\(起動\)** を選択して、1 台の VM を起動することもできます。
+
+    テンプレートの作成と管理、および学生の仮想マシンの設定と管理について詳しくは、次の記事を参照してください。 
+    
+    - [クラスルーム ラボ テンプレートを作成し、管理する](how-to-create-manage-template.md)
+    - [仮想マシン プールを設定および管理する](how-to-set-virtual-machine-passwords.md)
 
 ## <a name="add-users-to-the-lab"></a>ラボへのユーザーの追加
 
@@ -105,23 +110,27 @@ ms.locfileid: "72332260"
 
     ![ユーザー リスト](../media/how-to-configure-student-usage/users-list-new.png)
 
+    ラボに登録されたユーザーの名前が一覧表示されます。 
+    
 ## <a name="set-a-schedule-for-the-lab"></a>ラボのスケジュールを設定する
 ラボ内の VM が特定の時刻に自動的に起動または停止されるように、ラボ用にスケジュール化されたイベントを作成します。 前に指定したユーザー クォータは、このスケジュールされた時間以外に各ユーザーに割り当てられる追加時間です。 
 
 1. **[スケジュール]** ページに切り替えて、ツール バーの **[Add scheduled event]\(スケジュール化されたイベントの追加\)** を選択します。 
 
     ![[スケジュール] ページの [スケジュールの追加] ボタン](../media/how-to-create-schedules/add-schedule-button.png)
-2. **[Event type]\(イベントの種類\)** で **[Standard]\(標準\)** が選択されていることを確認します。 VM の起動時刻のみを指定するには、 **[Start only]\(開始のみ\)** を選択します。 VM の停止時刻のみを指定するには、 **[Stop only]\(停止のみ\)** を選択します。 
-7. **[Repeat]\(繰り返し\)** セクションで、現在のスケジュールを選択します。 
+2. **[Add scheduled event]\(スケジュール化されたイベントの追加\)** ページで、次の手順を実行します。
+    1. **[Event type]\(イベントの種類\)** で **[Standard]\(標準\)** が選択されていることを確認します。  
+    2. クラスの**開始日**を指定します。 
+    4. VM を起動する**開始時刻**を指定します。
+    5. VM をシャットダウンする**停止時刻**を指定します。 
+    6. 指定した開始および停止時刻の**タイム ゾーン**を指定します。 
+3. 同じ **[Add scheduled event]\(スケジュール化されたイベントの追加\)** ページの **[Repeat]\(繰り返し\)** セクションで、現在のスケジュールを選択します。  
 
     ![[スケジュール] ページの [スケジュールの追加] ボタン](../media/how-to-create-schedules/select-current-schedule.png)
 5. **[Repeat]\(繰り返し\)** ダイアログ ボックスで、次の手順を実行します。
     1. **[Repeat]\(繰り返し\)** フィールドに **[毎週]** が設定されていることを確認します。 
-    3. **開始日**を指定します。
-    4. VM を起動する**開始時刻**を指定します。
-    5. VM をシャットダウンする**停止時刻**を指定します。 
-    6. 指定した開始および停止時刻の**タイム ゾーン**を指定します。 
-    2. スケジュールを有効にする曜日を選択します。 次の例では、月曜日から木曜日までが選択されています。 
+    2. スケジュールを有効にする曜日を選択します。 次の例では、月曜日から金曜日までが選択されています。 
+    3. スケジュールの**終了日**を選択します。
     8. **[保存]** を選択します。 
 
         ![繰り返しのスケジュールを設定する](../media/how-to-create-schedules/set-repeat-schedule.png)
@@ -130,6 +139,11 @@ ms.locfileid: "72332260"
 4. **[Add scheduled event]\(スケジュール化されたイベントの追加\)** ページで、 **[保存]** を選択します。 
 
     ![週単位のスケジュール](../media/how-to-create-schedules/add-schedule-page-weekly.png)
+5. カレンダーで開始日に移動して、スケジュールが設定されていることを確認します。
+    
+    ![カレンダーでスケジュールを設定する](../media/how-to-create-schedules/schedule-calendar.png)
+
+    クラスのスケジュールの作成と管理について詳しくは、[クラスルーム ラボのスケジュールを作成して管理する方法](how-to-create-schedules.md)に関するページを参照してください。
 
 ## <a name="send-invitation-emails-to-students"></a>招待メールを学生に送信する
 
@@ -141,6 +155,8 @@ ms.locfileid: "72332260"
 
     ![登録リンクを電子メールで送信する](../media/tutorial-setup-classroom-lab/send-email.png)
 4. **[ユーザー]** の一覧に**招待**の状態が表示されます。 この状態は、 **[送信中]** に変更された後、 **[Sent on &lt;date&gt;]\(<日付> に送信済み\)** に変更されます。 
+
+    クラスへの学生の追加と学生によるラボの使用の管理について詳しくは、[学生の使用を構成する方法](how-to-configure-student-usage.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、クラスルーム ラボを作成し、ラボを構成しました。 学生が登録リンクを使ってラボの VM にアクセスする方法を学習するには、次のチュートリアルに進んでください。

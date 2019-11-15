@@ -1,6 +1,6 @@
 ---
 title: Azure Backup エージェントのトラブルシューティング
-description: Azure Backup エージェントのインストールと登録のトラブルシューティングを行います
+description: この記事では、Azure Backup エージェントのインストールと登録のトラブルシューティング方法について説明します。
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2ff5d760579c31c4bd11252e09da1cbb94576229
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a59ac45d157f8674374c894a280e51392038524b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954655"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747416"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -50,6 +50,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 | **ウイルス対策ソフトウェアによって登録をブロックされています** | サーバーにウイルス対策ソフトウェアがインストールされている場合は、以下のファイルとフォルダーのウイルス対策スキャンに必要な除外ルールを追加します。 <br/><ul> <li> CBengine.exe <li> CSC.exe<li> スクラッチ フォルダー。 この既定の場所は C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
 ### <a name="additional-recommendations"></a>その他の推奨事項
+
 - C:/Windows/Temp に移動し、拡張子が .tmp のファイルが 60,000 または 65,000 個より多くあるかどうかを確認します。 ある場合は、それらのファイルを削除します。
 - マシンの日付と時刻がローカルのタイム ゾーンに一致していることを確認します。
 - [これらのサイト](backup-configure-vault.md#verify-internet-access)が Internet Explorer の信頼済みサイトに追加されていることを確認します。
@@ -78,7 +79,6 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 | ---     | ---     | ---    |
 | <br /><ul><li>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした。 (ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください。<li>(407) プロキシの認証が必要です。 |プロキシによって接続がブロックされています。 |  <ul><li>Internet Explorer で、 **[ツール]**  >  **[インターネット オプション]**  >  **[セキュリティ]**  >  **[インターネット]** の順に移動します。 次に、 **[レベルのカスタマイズ]** を選択し、 **[ファイルのダウンロード]** セクションまで下にスクロールします。 **[有効化]** を選択します。<p>また、Internet Explorer で信頼済みサイトに [URL と IP アドレス](backup-configure-vault.md#verify-internet-access)を追加する必要がある場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<li> マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL と IP アドレス](backup-configure-vault.md#verify-internet-access)が許可されることを確認します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、これらのファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET Framework のバージョンに対して存在します。 影響を受けるサーバー上のすべてのバージョンの .NET Framework 用の CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
-
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>セキュリティで保護されたバックアップ用に暗号化キーを設定できませんでした
 
 | Error | 考えられる原因 | 推奨アクション |
@@ -97,8 +97,8 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 |---------|---------|---------|
 | <br />エラー 34506。 このコンピューター用に保存されている暗号化のパスフレーズは、正しく構成されていません。    | <li> 十分な領域のないボリュームにスクラッチ フォルダーがあります。 <li> スクラッチ フォルダーが誤って移動されました。 <li> OnlineBackup.KEK ファイルが見つかりません。        | <li>[最新バージョン](https://aka.ms/azurebackup_agent)の MARS エージェントにアップグレードしてください。<li>バックアップ データの合計サイズの 5% ～ 10% の空き領域があるボリュームに、スクラッチ フォルダーまたはキャッシュの場所を移動します。 キャッシュの場所を正しく移動する方法については、「[ファイルとフォルダーのバックアップに関する一般的な質問](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)」の手順を参照してください。<li> OnlineBackup.KEK ファイルが存在することを確認します。 <br>*スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。         |
 
-
 ## <a name="backups-dont-run-according-to-schedule"></a>バックアップがスケジュールに従って実行されません
+
 スケジュールされたバックアップが自動的にトリガーされないが、手動によるバックアップが正しく動作している場合は、以下の操作を試してください。
 
 - Windows Server のバックアップ スケジュールが、Azure のファイルとフォルダーのバックアップ スケジュールと競合していないことを確認します。
@@ -132,39 +132,36 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
      マシン上に既に MSOnlineBackup フォルダーがある場合は、その中にファイルを貼り付けるか、既存のファイルを置き換えます。
 
-
 > [!TIP]
 > 変更を確実に適用するために、上記の手順を実行した後で、サーバーを再起動します。
-
 
 ## <a name="troubleshoot-restore-problems"></a>復元の問題のトラブルシューティング
 
 Azure Backup が、数分たっても回復ボリュームに正常にマウントできないことがあります。 また、処理中にエラー メッセージを受け取ることもあります。 正常に回復を開始するには、次の手順を実行します。
 
-1.  マウント プロセスが数分間実行されている場合は取り消します。
+1. マウント プロセスが数分間実行されている場合は取り消します。
 
-2.  最新バージョンの Backup エージェントがあるかどうかを確認します。 バージョンを確認するには、MARS コンソールの **[アクション]** ウィンドウで、 **[About Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェントについて\)** を選択します。 **バージョン**番号が、[この記事](https://go.microsoft.com/fwlink/?linkid=229525)に記載されているバージョン以上であることを確認します。 このリンクを選択して[最新バージョンをダウンロード](https://go.microsoft.com/fwLink/?LinkID=288905)します。
+2. 最新バージョンの Backup エージェントがあるかどうかを確認します。 バージョンを確認するには、MARS コンソールの **[アクション]** ウィンドウで、 **[About Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェントについて\)** を選択します。 **バージョン**番号が、[この記事](https://go.microsoft.com/fwlink/?linkid=229525)に記載されているバージョン以上であることを確認します。 このリンクを選択して[最新バージョンをダウンロード](https://go.microsoft.com/fwLink/?LinkID=288905)します。
 
-3.  **[デバイス マネージャー]**  >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7 に進みます。
+3. **[デバイス マネージャー]**  >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7 に進みます。
 
-4.  Microsoft iSCSI イニシエーター サービスが見つからない場合は、 **[デバイス マネージャー]**  >  **[記憶域コントローラー]** の下で、 **[不明なデバイス]** という名前でハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
+4. Microsoft iSCSI イニシエーター サービスが見つからない場合は、 **[デバイス マネージャー]**  >  **[記憶域コントローラー]** の下で、 **[不明なデバイス]** という名前でハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
 
-5.  **[不明なデバイス]** を右クリックし、 **[ドライバー ソフトウェアの更新]** を選択します。
+5. **[不明なデバイス]** を右クリックし、 **[ドライバー ソフトウェアの更新]** を選択します。
 
-6.  **[自動的に更新されたドライバ ソフトウェアを検索します]** を選択して、ドライバーを更新します。 この更新により、 **[不明なデバイス]** が **[Microsoft iSCSI イニシエーター]** に変わります。
+6. **[自動的に更新されたドライバ ソフトウェアを検索します]** を選択して、ドライバーを更新します。 この更新により、 **[不明なデバイス]** が **[Microsoft iSCSI イニシエーター]** に変わります。
 
     ![[記憶域コントローラー] が強調表示されている Azure Backup デバイス マネージャーのスクリーンショット](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7.  **[タスク マネージャー]**  >  **[サービス (ローカル)]**  >  **[Microsoft iSCSI イニシエーター サービス]** に移動します。
+7. **[タスク マネージャー]**  >  **[サービス (ローカル)]**  >  **[Microsoft iSCSI イニシエーター サービス]** に移動します。
 
     ![[サービス (ローカル)] が強調表示されている Azure Backup タスク マネージャーのスクリーンショット](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
-8.  Microsoft iSCSI イニシエーター サービスを再開します。 そのためには、サービスを右クリックして、 **[停止]** を選択します。 次に、もう一度右クリックして、 **[開始]** を選択します。
+8. Microsoft iSCSI イニシエーター サービスを再開します。 そのためには、サービスを右クリックして、 **[停止]** を選択します。 次に、もう一度右クリックして、 **[開始]** を選択します。
 
-9.  [インスタント リストア](backup-instant-restore-capability.md)を使用して回復を再試行します。
+9. [インスタント リストア](backup-instant-restore-capability.md)を使用して回復を再試行します。
 
 それでも回復が失敗する場合は、サーバーまたはクライアントを再起動します。 再起動したくない場合、またはサーバーを再起動しても回復が失敗する場合は、[別のマシンから回復](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)してみてください。
-
 
 ## <a name="troubleshoot-cache-problems"></a>キャッシュに関する問題のトラブルシューティング
 
@@ -181,20 +178,25 @@ MARS エージェントの操作を成功させるには、キャッシュ フ�
 - [キャッシュ フォルダーへのアクセスを制限する他のプロセス (ウイルス対策ソフトウェアなど) がないことを確認します](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
 
 ### <a name="increase-shadow-copy-storage"></a>シャドウ コピーの記憶域を増やす
+
 データ ソースを保護するために必要なシャドウ コピーの記憶域が不足している場合、バックアップ操作が失敗することがあります。 この問題を解決するには、次に示すように vssadmin を使用して、保護されたボリューム上のシャドウ コピーのストレージ スペースを増やします。
+
 - 管理者特権でのコマンド プロンプトから、現在のシャドウ記憶域を確認します。<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
 - 次のコマンドを使用してシャドウ記憶域を増やします。<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>キャッシュ フォルダーへのアクセスをブロックしている別のプロセスまたはウイルス対策ソフトウェア
+
 サーバーにウイルス対策ソフトウェアがインストールされている場合は、以下のファイルとフォルダーのウイルス対策スキャンに必要な除外ルールを追加します。  
+
 - スクラッチ フォルダー。 この既定の場所は C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です
 - C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー
 - CBengine.exe
 - CSC.exe
 
 ## <a name="common-issues"></a>一般的な問題
+
 ここでは、MARS エージェントの使用中に発生する一般的なエラーについて説明します。
 
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
@@ -221,7 +223,7 @@ Backup failed due to insufficient storage in volume  where the scratch folder is
 -- | --
 ファイル内の変更を見つけることができない。 これにはさまざまな理由が考えられます。 操作をやり直してください | この問題を解決するには、次の手順を確認し、操作を再試行してください。<br/> - [MARS エージェントが最新であることを確認します](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [バックアップ スクラッチ領域に影響を及ぼすストレージの問題を確認および解決します](#pre-requisites)
 
-
 ## <a name="next-steps"></a>次の手順
-* [Azure Backup エージェントでの Windows Server のバックアップ方法](tutorial-backup-windows-server-to-azure.md)についての詳しい情報を見ます。
-* バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
+
+- [Azure Backup エージェントでの Windows Server のバックアップ方法](tutorial-backup-windows-server-to-azure.md)についての詳しい情報を見ます。
+- バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。

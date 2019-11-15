@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のフェールオーバー グループを構成する
+title: フェールオーバー グループを構成する
 description: Azure portal、Az CLI、および PowerShell を使用して Azure SQL Database の単一データベース、エラスティック プール、およびマネージド インスタンスの自動フェールオーバー グループを構成する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 9206fd264854cd9e5d8e46473dd60b05a3362fdd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71328709"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827151"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 
@@ -484,20 +484,24 @@ Azure portal または PowerShell を使用して、2 つのゲートウェイ�
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 Azure portal を使用して、2 つのゲートウェイ間の接続を作成します。 
 
-1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、手順 4 で作成したプライマリ ゲートウェイを選択します。 
-1. **[設定]** で **[接続]** を選び、 **[追加]** を選択して新しい接続を作成します。 
+1. [Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
+1. 検索ボックスに「`connection`」と入力し、Enter キーを押して検索します。それにより、Microsoft によって発行された**接続**リソースに移動します。
+1. **[作成]** を選択して接続を作成します。 
+1. **[基本]** タブで次の値を選択し、 **[OK]** を選択します。 
+    1. **[接続の種類]** に対して `VNet-to-VNet` を選択します。 
+    1. ドロップダウン リストからサブスクリプションを選択します。 
+    1. ドロップダウンで、マネージド インスタンスのリソース グループを選択します。 
+    1. ドロップダウンからプライマリ マネージド インスタンスの場所を選択します。 
+1. **[設定]** タブで次の値を選択または入力し、 **[OK]** を選択します。
+    1. **[最初の仮想ネットワーク ゲートウェイ]** のプライマリ ネットワーク ゲートウェイを選択します (`Primary-Gateway` など)。  
+    1. **[2 番目の仮想ネットワーク ゲートウェイ]** のセカンダリ ネットワーク ゲートウェイを選択します (`Secondary-Gateway` など)。 
+    1. **[双方向接続の確立]** の横にあるチェック ボックスをオンにします。 
+    1. 既定のプライマリ接続名をそのまま使用するか、名前を任意の値に変更します。 
+    1. 接続の**共有キー (PSK)** を指定します (`mi1m2psk` など)。 
 
-   ![プライマリ ゲートウェイへの接続を追加する](media/sql-database-managed-instance-failover-group-tutorial/add-primary-gateway-connection.png)
+   ![ゲートウェイ接続を作成する](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. 接続の名前を入力し、 **[共有キー]** の値を入力します。 
-1. **[2 番目の仮想ネットワーク ゲートウェイ]** を選択し、セカンダリ マネージド インスタンスのゲートウェイを選択します。 
-
-   ![プライマリからセカンダリへの接続を作成する](media/sql-database-managed-instance-failover-group-tutorial/create-primary-to-secondary-connection.png)
-
-1. **[OK]** を選択して、新しいプライマリ ゲートウェイからセカンダリ ゲートウェイへの接続を追加します。
-1. これらの手順を繰り返し、セカンダリ マネージド インスタンスのゲートウェイから、プライマリ マネージド インスタンスのゲートウェイへの接続を作成します。 
-
-   ![セカンダリからプライマリへの接続を作成する](media/sql-database-managed-instance-failover-group-tutorial/create-secondary-to-primary-connection.png)
+1. **[概要]** タブで双方向接続の設定を確認し、 **[OK]** を選択して接続を作成します。 
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

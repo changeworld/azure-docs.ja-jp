@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化 | Microsoft Docs
+title: Azure Security Center の価格レベル
 description: この記事では、Azure Security Center の価格について説明します。
 services: security-center
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/17/2019
+ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cce57053e265446a6307554509c34c5f802ed07f
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0c3fdc48d9b3bc77b629d4d6f1da081d70658c88
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372588"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664258"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。
@@ -26,11 +26,10 @@ Azure Security Center は、Azure、オンプレミス、他のクラウドで�
 ## <a name="pricing-tiers"></a>価格レベル
 Azure Security Center は 2 つのレベルで提供されます。
 
-- Azure Portal 内の Azure Security Center ダッシュボードに初めてアクセスしたとき、または API を介してプログラムで有効にした場合は、すべての Azure サブスクリプションで **Free** レベルが有効になります。 Free レベルは、セキュリティ ポリシー、継続的なセキュリティ評価、および Azure リソースを保護するための実践的なセキュリティに関する推奨事項を提供します。
+- Azure portal 内の Azure Security Center ダッシュボードに初めてアクセスしたとき、または API を介してプログラムで有効にした場合は、すべての Azure サブスクリプションで **Free** レベルが有効になります。 Free レベルは、セキュリティ ポリシー、継続的なセキュリティ評価、および Azure リソースを保護するための実践的なセキュリティに関する推奨事項を提供します。
 - **Standard** レベルは、Free レベルの機能をプライベートおよびその他のパブリック クラウドで実行されているワークロードまで拡張したもので、統合されたセキュリティの管理と脅威の保護をハイブリッド クラウド ワークロード全体で提供します。 Standard レベルでは、高度な脅威検出機能も追加されます。これは、組み込みの行動分析と機械学習を利用して、各種攻撃やゼロデイ攻撃、アクセスやアプリケーション制御を特定し、ネットワーク攻撃やマルウェアなどによる侵害を減らします。 Standard レベルは無料でお試しいただけます。 Security Center Standard では、VM、仮想マシン スケール セット、App Service、SQL サーバー、ストレージ アカウントなどの Azure リソースがサポートされます。 Azure Security Center Standard をお使いの場合、リソースの種類に基づいてサポートをオプト アウトすることができます。 
 
-
-詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
+VM に対する Free レベルのセキュリティ評価の大半は、Standard レベルのセキュリティ アラートの多くと同様、Microsoft Monitoring Agent (MMA) 機能のインストールが必要となります。 Security Center の [Auto Provision]\(自動プロビジョニング\) を有効にすることで、Azure VM のエージェントを自動的にデプロイすることができます。
 
 ## <a name="try-standard-free-for-30-days"></a>Standard レベルのサービスを 30 日間無料で試用する
 Standard レベルは、最初の 30 日間は無料です。 30 日経過した時点で、サービスの利用を継続することを選択した場合は、使用量に応じて自動的に課金が開始されます。
@@ -45,19 +44,19 @@ Standard レベルを取得するには
 4. **[Standard]** を選択してアップグレードします。
 5. **[Save]** をクリックします。
 
-(画像内の価格はあくまでも例です。)![Security Center の価格](./media/security-center-pricing/get-standard.png)
+(画像内の価格はあくまでも例です) [![セキュリティ センターの価格](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 
 > [!NOTE]
 > Security Center のすべての機能を有効にするには、Standard 価格レベルを適用可能な仮想マシンを含むサブスクリプションに適用する必要があります。 ワークスペースの価格を構成しても、Just-In-Time VM アクセス、適応型アプリケーション制御、および Azure リソースのネットワーク検出は有効になりません。
->
 >
 
 ## <a name="why-upgrade-to-standard"></a>Standard レベルにアップグレードする理由
 Security Center は、次のようなハイブリッド クラウド ワークロード用の強化されたセキュリティと脅威保護を提供します。
 
 - **ハイブリッド セキュリティ** - オンプレミスとクラウドのすべてのワークロードのセキュリティを、統合された 1 つのビューで確認できます。 セキュリティ ポリシーを適用し、ハイブリッド クラウドのワークロードのセキュリティを継続的に評価することで、セキュリティ標準に確実に準拠できます。 ファイアウォールやその他のパートナー ソリューションなどのさまざまなソースから、セキュリティ データを収集、検索、分析します。
-- **高度な脅威検出** - 高度な分析と Microsoft インテリジェント セキュリティ グラフを使用して、巧妙化していくサイバー攻撃に対応します。  組み込みの行動分析と機械学習を活用して、各種攻撃やゼロデイ攻撃を特定します。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。 対話型のツールと状況に応じた脅威インテリジェンスにより、調査を効率化します。
-- **アクセスとアプリケーションの制御** - 特定のワークロードに適応し、機械学習を活用したホワイトリスト登録の推奨事項を適用することで、マルウェアや他の望ましくないアプリケーションをブロックします。 Azure VM の管理ポートへの制御された Just-In-Time アクセスによってネットワーク攻撃対象領域を縮小することで、ブルート フォース攻撃などのネットワーク攻撃にさらされる機会を大幅に減らします。
+- **高度な脅威検出** - 高度な分析と Microsoft インテリジェント セキュリティ グラフを使用して、巧妙化していくサイバー攻撃に対応します。 組み込みの行動分析と機械学習を活用して、各種攻撃やゼロデイ攻撃を特定します。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。 対話型のツールと状況に応じた脅威インテリジェンスにより、調査を効率化します。
+- **アクセスとアプリケーションの制御** - 特定のワークロードに適応し、機械学習を活用したホワイトリスト登録の推奨事項を適用することで、マルウェアや他の望ましくないアプリケーションをブロックします。 Azure VM の管理ポートに対するジャスト イン タイムの制御されたアクセスで、ネットワーク攻撃対象領域を減らします。 ブルート フォースなどのネットワーク攻撃に対する露出が、これによって劇的に減少します。
+- **コンテナーのセキュリティ機能** - コンテナー化された環境で、脆弱性管理とリアルタイム脅威検出が利用できます。 コンテナー レジストリ リソースを有効にする際、すべての機能が有効になるまでには最大 12 時間かかることがあります。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -65,6 +64,5 @@ Security Center は、次のようなハイブリッド クラウド ワーク�
 
 - [高度な脅威検出](security-center-threat-report.md)
 - [Just-In-Time VM アクセスの制御](security-center-just-in-time.md)
-
-<!--Image references-->
-[1]: ./media/security-center-pricing/get-standard.png
+- [コンテナーのセキュリティの概要](container-security.md)
+- [ご利用の通貨とリージョンにおける価格の詳細](https://azure.microsoft.com/pricing/details/security-center/)

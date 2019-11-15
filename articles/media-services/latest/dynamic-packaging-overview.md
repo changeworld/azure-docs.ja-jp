@@ -1,6 +1,7 @@
 ---
-title: Azure Media Services ダイナミック パッケージの概要 | Microsoft Docs
-description: この記事では、Azure Media Services でのダイナミック パッケージの概要について説明します。
+title: Media Services のダイナミック パッケージ
+titleSuffix: Azure Media Services
+description: Azure Media Services でのダイナミック パッケージの概要。
 author: Juliako
 manager: femila
 editor: ''
@@ -13,22 +14,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595528"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574885"
 ---
-# <a name="dynamic-packaging"></a>動的パッケージ
+# <a name="dynamic-packaging-in-media-services"></a>Media Services のダイナミック パッケージ
 
-Microsoft Azure Media Services を使用すると、さまざまなメディア ソース ファイル形式をエンコードし、コンテンツ保護を有効または無効にして、あらゆる主要デバイス (iOS、Android デバイスなど) に向け、各種のストリーミング プロトコルを介してそれらを配信することができます。 これらのクライアントは各種プロトコルを認識します。たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスは、HLS と MPEG DASH をサポートします。 
+Microsoft Azure Media Services は、多くのメディア ソース ファイル形式をエンコードするために使用できます。 これは、コンテンツ保護の有無に関係なく、さまざまなストリーミング プロトコルを介して配信され、すべての主要なデバイス (iOS デバイスや Android デバイスなど) に到達します。 これらのクライアントは、さまざまなプロトコルを認識します。 たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスでは、HLS と MPEG DASH がサポートされます。
 
-Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、次のセクションで説明するいずれかの一般的なストリーミング メディア プロトコルを使用して、ライブおよびオンデマンドのコンテンツをクライアント プレーヤー アプリケーションに直接配信できます。 ダイナミック パッケージは、すべてのストリーミング エンドポイント (Standard または Premium) に標準で付属する機能です。 
+Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 ダイナミック パッケージは、すべてのストリーミング エンドポイント (Standard または Premium) に標準で付属する機能です。
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>ソース ファイルをデリバリー用に準備するには
 
-ダイナミック パッケージを活用するには、中間 (ソース) ファイルを一連の複数ビットレート MP4 (ISO Base Media 14496-12) ファイルに[エンコード](encoding-concept.md)する必要があります。 エンコードされた MP4 ファイルを含む[資産](assets-concept.md)と、Media Services のダイナミック パッケージで必要とされるストリーミング構成ファイルが必要です。 この一連の MP4 ファイルから、ダイナミック パッケージを使用して、次のストリーミング メディア プロトコルを介してビデオを配信することができます。
+ダイナミック パッケージを活用するには、中間 (ソース) ファイルを一連の複数ビットレート MP4 (ISO Base Media 14496-12) ファイルに[エンコード](encoding-concept.md)する必要があります。 エンコードされた MP4 を含む[資産](assets-concept.md)と、Media Services のダイナミック パッケージで必要とされるストリーミング構成ファイルが必要です。 この一連の MP4 ファイルから、ダイナミック パッケージを使用して、次のストリーミング メディア プロトコルを介してビデオを配信することができます。
 
 |Protocol|例|
 |---|---|
@@ -44,16 +45,16 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 > [!TIP]
 > MP4 およびストリーミング構成ファイルを取得する方法の 1 つは、[Media Services を使用してお使いの中間ファイルをエンコードする](#encode-to-adaptive-bitrate-mp4s)ことです。 
 
-エンコードされた資産内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](streaming-locators-concept.md)を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、MPEG DASH、または Smooth Streaming) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
+エンコードされた資産内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](streaming-locators-concept.md)を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、MPEG DASH、またはスムーズ ストリーミング) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
 
-その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。 
+その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
 ## <a name="on-demand-streaming-workflow"></a>オンデマンド ストリーミングのワークフロー
 
-次に、Azure Media Services の標準エンコーダーとダイナミック パッケージを併用した一般的な Media Services でのストリーミング ワークフローを示します。
+次の手順は、Azure Media Services の標準エンコーダーとダイナミック パッケージを併用した一般的な Media Services でのストリーミング ワークフローを示しています。
 
-1. QuickTime (MOV) や MXF ファイルなどの入力ファイルをアップロードします (サポートされる形式の一覧については、[Media Encoder Standard でサポートされる形式](media-encoder-standard-formats.md)に関するページを参照してください)。 これは、中間ファイルやソース ファイルとも呼ばれます。
-1. 中間ファイルを H.264/AAC MP4 アダプティブ ビットレート セットに[エンコード](#encode-to-adaptive-bitrate-mp4s)します。 
+1. QuickTime/MOV や MXF ファイルなどの入力ファイルをアップロードします。 このファイルは、中間ファイルやソース ファイルとも呼ばれます。 サポートされている形式の一覧については、[Media Encoder Standard でサポートされている形式](media-encoder-standard-formats.md)に関するページを参照してください。
+1. 中間ファイルを H.264/AAC MP4 アダプティブ ビットレート セットに[エンコード](#encode-to-adaptive-bitrate-mp4s)します。
 1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 ストリーミング ロケーターを作成して発行します。
 1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、**ストリーミング エンドポイント**が行います。
 
@@ -65,9 +66,9 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 [Media Services を使用してビデオをエンコードする方法](encoding-concept.md)の例については、以下の記事を参照してください。
 
-* [組み込みのプリセットを使用して HTTPS の URL をエンコードする](job-input-from-http-how-to.md)
-* [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)
-* [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](customize-encoder-presets-how-to.md)
+* [組み込みのプリセットを使用して HTTPS の URL をエンコードする](job-input-from-http-how-to.md)。
+* [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)。
+* [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](customize-encoder-presets-how-to.md)。
 
 Media Encoder Standard の[形式とコーデック](media-encoder-standard-formats.md)の一覧を参照してください。
 
@@ -124,10 +125,10 @@ Media Services v3 のライブ ストリームの詳細については、[ライ
 ダイナミック パッケージでは、[Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) オーディオ (古いコーデック) を含むファイルはサポートされていません。
 
 > [!NOTE]
-> [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した Dolby Digital Plus へのエンコードがサポートされます。 
+> [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した Dolby Digital Plus へのエンコードがサポートされます。
 
-## <a name="manifests"></a>マニフェスト 
- 
+## <a name="manifests"></a>マニフェスト
+
 Media Services のダイナミック パッケージでは、HLS、MPEG-DASH、および Smooth Streaming のストリーミング クライアント マニフェストが、URL 内の形式セレクターに基づいて動的に生成されます。  
 
 マニフェスト ファイルには、トラックの種類 (オーディオ、ビデオ、またはテキスト)、トラック名、開始時刻と終了時刻、ビットレート (品質)、トラック言語、プレゼンテーション ウィンドウ (固定時間のスライディング ウィンドウ)、ビデオ コーデック (FourCC) などの、ストリーミング メタデータが含まれます。 また、次に再生可能なビデオ フラグメントとその場所の情報を通知して、次のフラグメントを取得するようにプレイヤーに指示します。 フラグメント (またはセグメント) とは、ビデオ コンテンツの実際の "チャンク" です。
@@ -236,7 +237,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ### <a name="signaling-audio-description-tracks"></a>オーディオ説明トラックのシグナル通知
 
-ナレーション トラックをビデオに追加することで、目が不自由なクライアントがナレーションを聞いて動画の内容を追うことができます。 オーディオ トラックには、マニフェストでオーディオ説明として注釈を付ける必要があります。 そのためには、"accessibility" パラメーターと "role" パラメーターを .ism ファイルに追加します。 オーディオ トラックをオーディオ説明としてシグナル通知するためには、これらのパラメーターを正しく設定する必要があります。 たとえば、特定のオーディオ トラックの .ism ファイルに `<param name="accessibility" value="description" />` と `<param name="role" value="alternate"` を追加します。 
+ナレーション トラックをビデオに追加することで、目が不自由なクライアントがナレーションを聞いてビデオ録画を追うことができます。 オーディオ トラックには、マニフェストでオーディオ説明として注釈を付ける必要があります。 そのためには、"accessibility" パラメーターと "role" パラメーターを .ism ファイルに追加します。 オーディオ トラックをオーディオ説明としてシグナル通知するためには、これらのパラメーターを正しく設定する必要があります。 たとえば、特定のオーディオ トラックの .ism ファイルに `<param name="accessibility" value="description" />` と `<param name="role" value="alternate"` を追加します。 
 
 詳細については、[説明を含んだオーディオ トラックをシグナル通知する方法](signal-descriptive-audio-howto.md)の例を参照してください。
 
@@ -275,7 +276,7 @@ HLS v7 以降 `(format=m3u8-cmaf)` では、オーディオ説明トラックを
 
 ## <a name="need-help"></a>お困りの際は、
 
-[[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
+[[新しいサポート要求]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動することで、サポート チケットを開くことができます。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -283,4 +284,3 @@ HLS v7 以降 `(format=m3u8-cmaf)` では、オーディオ説明トラックを
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
 
 [ビデオのアップロード、エンコード、およびストリーミング](stream-files-tutorial-with-api.md)の方法について学習します。
-

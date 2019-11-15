@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 10/22/2019
+ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: dcbe535bb92f7755980929956093b0f0121ef41b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 20ff7d2cb6c185f574494871a986e1bce63536ba
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476451"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619952"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning 用の CLI 拡張機能を使用する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,6 +92,9 @@ az extension remove -n azure-cli-ml
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
+
+    > [!TIP]
+    > このコマンドでは、Basic エディションのワークスペースが作成されます。 Enterprise ワークスペースを作成するには、`az ml workspace create` コマンドで `--sku enterprise` スイッチを使用します。 Azure Machine Learning のエディションについて詳しくは、「[Azure Machine Learning とは](overview-what-is-azure-ml.md#sku)」を参照してください。
 
     詳しくは、「[az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)」をご覧ください。
 

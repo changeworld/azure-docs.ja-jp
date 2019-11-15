@@ -1,18 +1,18 @@
 ---
 title: Azure VM バックアップについて
-description: Azure VM バックアップについて、また、いくつかのベスト プラクティスについて説明します。
+description: この記事では、Azure Backup サービスを使用して Azure 仮想マシンをバックアップする方法と、ベスト プラクティスに従う方法について説明します。
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e22c4c24e83be0f89b306eed0eb1d80bdd9387e1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018702"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747206"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
@@ -34,10 +34,10 @@ Azure Backup によって Azure VM のバックアップが行われる方法を
     - バックアップは、各 VM ディスクを並列にバックアップすることで最適化されます。
     - バックアップされているディスクごとに、Azure Backup はディスク上のブロックを読み取り、前回のバックアップ以降に変更されたデータ ブロックのみ (差分) を識別して転送します。
     - スナップショット データはコンテナーにすぐにコピーされない場合があります。 ピーク時には、数時間かかる場合があります。 毎日のバックアップ ポリシーでは、VM のバックアップの合計時間は 24 時間未満になります。
- 1. Azure Backup がここで有効化された後に Windows VM に加えられた変更は次のとおりです。
-    -   Microsoft Visual C++ 2013 redistributable (x64) - 12.0.40660 が VM にインストールされています。
-    -   ボリューム シャドウ コピー サービス (VSS) のスタートアップの種類が手動から自動に変更されています。
-    -   IaaSVmProvider Windows サービスが追加されます。
+1. Azure Backup がここで有効化された後に Windows VM に加えられた変更は次のとおりです。
+    - Microsoft Visual C++ 2013 redistributable (x64) - 12.0.40660 が VM にインストールされています。
+    - ボリューム シャドウ コピー サービス (VSS) のスタートアップの種類が手動から自動に変更されています。
+    - IaaSVmProvider Windows サービスが追加されます。
 
 1. データ転送が完了すると、スナップショットが削除され、回復ポイントが作成されます。
 
@@ -140,6 +140,7 @@ OS ディスク | 4095 GB | 17 GB
 この場合の VM の実際のサイズは、17 GB + 30 GB + 0 GB = 47 GB です。 この保護されたインスタンスのサイズ (47 GB) が、毎月の課金の基礎になります。 VM のデータ量が大きくなると、課金に使用される保護されたインスタンスのサイズもそれに応じて変化します。
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
+
 ## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>パブリック プレビュー:ディスク サイズが最大 30 TB のVM のバックアップ
 
 Azure Backup では、サイズが最大 30 TB の大規模で強力な [Azure Managed Disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) のパブリック プレビューがサポートされるようになりました。 このプレビューでは、マネージド仮想マシンの運用レベルのサポートが提供されます。

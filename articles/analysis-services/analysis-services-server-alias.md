@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services サーバー名のエイリアス | Microsoft Docs
-description: サーバー名のエイリアス (別名) の作成方法と使用方法について説明します。
+description: Azure Analysis Services サーバー名エイリアスを作成する方法について説明します。 ユーザーはサーバー名ではなく、短いエイリアス名でサーバーに接続できるようになります。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ea618ecb29451650cbb01e9c95d263f42d406555
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5e7017fad90e32cb8c4b952987fe248e463e4d03
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146338"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572285"
 ---
 # <a name="alias-server-names"></a>サーバー名のエイリアス
 

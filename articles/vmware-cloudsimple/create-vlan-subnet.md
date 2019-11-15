@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 56e0f720221f8de531087e8b8d0476688feb2547
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772361"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601483"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>プライベート クラウドの VLAN/サブネットを作成して管理する
 
@@ -34,6 +34,10 @@ ms.locfileid: "70772361"
 8. **[送信]** をクリックします。
 
     ![VLAN/サブネットの作成](media/create-new-vlan-subnet-details.png)
+
+
+> [!IMPORTANT]
+> プライベート クラウドあたり 30 VLAN のクォータがあります。 これらの制限は、[サポートに連絡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)することによって増やすことができます。
 
 ## <a name="use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere"></a>VLAN 情報を使用し、vSphere で分散ポート グループを設定する
 
