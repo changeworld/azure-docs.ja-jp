@@ -140,6 +140,8 @@
                   href: learn/quick-create-workspace-posh.md
             - name: ワークスペースの削除と復旧
               href: platform/delete-workspace.md
+            - name: ワークスペースの移動
+              href: platform/move-workspace.md
             - name: サービス プロバイダー向けの設計
               href: platform/service-providers.md
             - name: アクセスを管理する

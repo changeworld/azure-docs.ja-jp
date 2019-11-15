@@ -27,6 +27,7 @@ sections:
           - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">アンカーのリレーションシップとウェイファインディング。</a>
           - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">エクスペリエンスのガイドライン。</a>
           - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">ログ記録と診断。</a>
+          - html: <a href="/azure/spatial-anchors/concepts/coarse-reloc">粗い再局在化。</a>
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph

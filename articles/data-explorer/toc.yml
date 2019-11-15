@@ -180,6 +180,8 @@
       items:
         - name: Azure Data Factory
           items:
+            - name: Data Factory との統合
+              href: data-factory-integration.md
             - name: Azure Data Factory テンプレートを使用してデータを一括コピーする
               href: data-factory-template.md
             - name: Azure Data Factory を使用して制御コマンドを実行する

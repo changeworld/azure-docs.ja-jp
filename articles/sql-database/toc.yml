@@ -496,7 +496,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Azure SQL Data Sync の設定
           href: sql-database-get-started-sql-data-sync.md
-        - name: エラスティック プールをフェールオーバー グループに追加する
+        - name: フェールオーバー グループにエラスティック プールを追加する
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: セキュリティを構成する
           href: sql-database-security-tutorial.md

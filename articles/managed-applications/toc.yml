@@ -75,6 +75,8 @@
           href: key-vault-access.md
         - name: マネージド ID を使用したデプロイ
           href: publish-managed-identity.md
+        - name: 通知を使用したデプロイ
+          href: publish-notifications.md
     - name: コンシューマー
       items:
         - name: マネージド アプリケーションの監視

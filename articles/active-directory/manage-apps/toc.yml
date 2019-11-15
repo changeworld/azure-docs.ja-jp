@@ -24,6 +24,8 @@
 - name: 概念
   expanded: true
   items:
+    - name: アプリ管理のベスト プラクティス
+      href: application-management-fundamentals.md
     - name: クラウド アプリとシングル サインオン
       items:
         - name: クラウド アプリの統合の計画

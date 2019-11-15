@@ -145,6 +145,8 @@
       href: how-to-send-additional-data.md
     - name: トラブルシューティング
       href: how-to-troubleshoot-dps.md
+    - name: MQTT プロトコルを使用した DPS との通信
+      href: iot-dps-mqtt-support.md
 - name: リファレンス
   items:
     - name: REST API

@@ -57,6 +57,20 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: C++/WinRT の場合
           href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: デバイス上のセンサーを使用して近くのアンカーを検出する
+      items:
+        - name: 'C#/Unity の場合'
+          href: how-tos/set-up-coarse-reloc-unity.md
+        - name: Objective-C の場合
+          href: how-tos/set-up-coarse-reloc-objc.md
+        - name: Swift の場合
+          href: how-tos/set-up-coarse-reloc-swift.md
+        - name: Java の場合
+          href: how-tos/set-up-coarse-reloc-java.md
+        - name: C++/NDK の場合
+          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+        - name: C++/WinRT の場合
+          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
 - name: サンプル
   items:
     - name: Azure Spatial Anchors のサンプル (GitHub)
@@ -71,6 +85,8 @@
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: ログ記録と診断
       href: concepts/logging-diagnostics.md
+    - name: 粗い再局在化
+      href: concepts/coarse-reloc.md
 - name: 参照
   items:
     - name: Unity 用 SDK
