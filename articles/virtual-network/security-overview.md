@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6046ab98e657cd14a2ac883cd32709c9a1b5da57
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886033"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721483"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -35,7 +35,7 @@ ms.locfileid: "70886033"
 |---------|---------|
 |Name|ネットワーク セキュリティ グループ内で一意の名前。|
 |優先順位 | 100 ～ 4096 の数値。 規則は、優先順位に従って処理され、数値が小さいほど優先順位が高いために、大きい数値の前に小さい数値が処理されます。 トラフィックが規則に一致すると、処理が停止します。 この結果、優先順位低く (数値が大きい)、優先順位が高い規則と同じ属性を持つ規則は処理されません。|
-|ソース/ターゲット| IP アドレス、クラスレス ドメイン間ルーティング (CIDR) ブロック (例: 10.0.0.0/24)、[サービス タグ](#service-tags)、または[アプリケーション セキュリティ グループ](#application-security-groups)。 Azure リソースのアドレスを指定する場合は、そのリソースに割り当てられているプライベート IP アドレスを指定します。 受信トラフィックの場合、ネットワーク セキュリティ グループが処理されるタイミングは、Azure でパブリック IP アドレスがプライベート IP アドレスに変換された後です。送信トラフィックの場合は、Azure でプライベート IP アドレスがパブリック IP アドレスに変換される前になります。 Azure IP アドレスの詳細については、[こちら](virtual-network-ip-addresses-overview-arm.md)を参照してください。 範囲、サービス タグ、またはアプリケーション セキュリティ グループを指定すると、作成するセキュリティ規則の数を減らせます。 規則内で複数の個別 IP アドレスと範囲 (複数のサービス タグまたはアプリケーション グループは指定できません) を指定する機能は、[拡張セキュリティ規則](#augmented-security-rules)と呼ばれています。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数の IP アドレスおよび IP アドレス範囲を指定することはできません。 Azure のデプロイ モデルの詳細については、[こちら](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。|
+|ソース/ターゲット| IP アドレス、クラスレス ドメイン間ルーティング (CIDR) ブロック (例: 10.0.0.0/24)、[サービス タグ](service-tags-overview.md)、または[アプリケーション セキュリティ グループ](#application-security-groups)。 Azure リソースのアドレスを指定する場合は、そのリソースに割り当てられているプライベート IP アドレスを指定します。 受信トラフィックの場合、ネットワーク セキュリティ グループが処理されるタイミングは、Azure でパブリック IP アドレスがプライベート IP アドレスに変換された後です。送信トラフィックの場合は、Azure でプライベート IP アドレスがパブリック IP アドレスに変換される前になります。 Azure IP アドレスの詳細については、[こちら](virtual-network-ip-addresses-overview-arm.md)を参照してください。 範囲、サービス タグ、またはアプリケーション セキュリティ グループを指定すると、作成するセキュリティ規則の数を減らせます。 規則内で複数の個別 IP アドレスと範囲 (複数のサービス タグまたはアプリケーション グループは指定できません) を指定する機能は、[拡張セキュリティ規則](#augmented-security-rules)と呼ばれています。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数の IP アドレスおよび IP アドレス範囲を指定することはできません。 Azure のデプロイ モデルの詳細については、[こちら](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。|
 |Protocol     | TCP、UDP、ICMP、または Any。|
 |Direction| 規則が受信トラフィックまたは送信トラフィックに適用されるかどうか。|
 |ポートの範囲     |個別のポートまたはポートの範囲を指定できます。 たとえば、80 や 10000-10005 などと指定できます。 範囲を指定すると、作成するセキュリティ規則の数を減らすことができます。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数のポートまたはポート範囲を指定することはできません。   |
@@ -48,60 +48,13 @@ ms.locfileid: "70886033"
 
 ## <a name="augmented-security-rules"></a>拡張セキュリティ規則
 
-拡張セキュリティ規則を使用すると仮想ネットワークのセキュリティ定義が簡略化され、大規模で複雑なネットワーク セキュリティ ポリシーを少ない規則で定義できます。 複数のポート、複数の明示的 IP アドレスおよび範囲を組み合わせて、単一のわかりやすいセキュリティ規則を作成することができます。 拡張規則は、規則のソース、ターゲット、ポート フィールドで使います。 セキュリティ規則の定義の保守を簡素化するには、拡張セキュリティ規則と[サービス タグ](#service-tags)または[アプリケーション セキュリティ グループ](#application-security-groups)を組み合わせます。 規則に指定できるアドレス、範囲、およびポートの数には、制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
+拡張セキュリティ規則を使用すると仮想ネットワークのセキュリティ定義が簡略化され、大規模で複雑なネットワーク セキュリティ ポリシーを少ない規則で定義できます。 複数のポート、複数の明示的 IP アドレスおよび範囲を組み合わせて、単一のわかりやすいセキュリティ規則を作成することができます。 拡張規則は、規則のソース、ターゲット、ポート フィールドで使います。 セキュリティ規則の定義の保守を簡素化するには、拡張セキュリティ規則と[サービス タグ](service-tags-overview.md)または[アプリケーション セキュリティ グループ](#application-security-groups)を組み合わせます。 規則に指定できるアドレス、範囲、およびポートの数には、制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
 
 ## <a name="service-tags"></a>サービス タグ
 
-サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。 独自のサービス タグを作成したり、タグに含まれる IP アドレスを指定したりすることはできません。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 
+サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 これは、ネットワーク セキュリティ ルールに関する頻繁な更新の複雑さを最小限に抑えるのに役立ちます。
 
-次のサービス タグを[ネットワーク セキュリティ グループ ルール](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)で使用できます。 末尾にアスタリスクが付いているサービス タグ (たとえば AzureCloud*) は、[Azure ファイアウォール ネットワーク ルール](https://docs.microsoft.com/azure/firewall/service-tags)でも使用できます。 
-
-* **ApiManagement*** (Resource Manager のみ):このタグは、APIM 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
-* **AppService*** (Resource Manager のみ):このタグは、Azure AppService サービスのアドレス プレフィックスを表します。 値として *AppService* を指定した場合、AppService へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AppService へのアクセスのみを許可する場合は、AppService.[リージョン名] の形式でリージョンを指定できます。 WebApps フロントエンドへの送信セキュリティ規則には、このタグをお勧めします。  
-* **AppServiceManagement*** (Resource Manager のみ):このタグは、App Service Environment 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *AppServiceManagement* を指定した場合、AppServiceManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
-* **AzureActiveDirectory*** (Resource Manager のみ):このタグは、AzureActiveDirectory サービスのアドレス プレフィックスを表します。 値として *AzureActiveDirectory* を指定した場合、AzureActiveDirectory へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。
-* **AzureActiveDirectoryDomainServices*** (Resource Manager のみ):このタグは、Azure Active Directory Domain Services 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *AzureActiveDirectoryDomainServices* を指定した場合、AzureActiveDirectoryDomainServices へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。  
-* **AzureBackup*** (Resource Manager のみ):このタグは、AzureBackup サービスのアドレス プレフィックスを表します。 値として *AzureBackup* を指定した場合、AzureBackup へのトラフィックが許可または拒否されます。 このタグは、**Storage** タグと **AzureActiveDirectory** タグに依存します。 送信セキュリティ規則には、このタグをお勧めします。 
-* **AzureCloud*** (Resource Manager のみ):このタグは、すべての[データセンターのパブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)を含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud へのアクセスのみを許可する場合は、AzureCloud.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **AzureConnectors*** (Resource Manager のみ):このタグは、プローブ/バックエンド接続の Logic Apps コネクタのアドレス プレフィックスを表します。 値として *AzureConnectors* を指定した場合、AzureConnectors へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureConnectors へのアクセスのみを許可する場合は、AzureConnectors.[リージョン名] の形式でリージョンを指定できます。 受信セキュリティ規則には、このタグをお勧めします。 
-* **AzureContainerRegistry*** (Resource Manager のみ):このタグは、Azure Container Registry サービスのアドレス プレフィックスを表します。 値として *AzureContainerRegistry* を指定した場合、AzureContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureContainerRegistry へのアクセスのみを許可する場合は、AzureContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **AzureCosmosDB*** (Resource Manager のみ):このタグは、Azure Cosmos Database サービスのアドレス プレフィックスを表します。 値として *AzureCosmosDB* を指定した場合、AzureCosmosDB へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCosmosDB へのアクセスのみを許可する場合は、AzureCosmosDB.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **AzureDataLake*** (Resource Manager のみ):このタグは、Azure Data Lake サービスのアドレス プレフィックスを表します。 値として *AzureDataLake* を指定した場合、AzureDataLake へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **AzureKeyVault*** (Resource Manager のみ):このタグは、Azure KeyVault サービスのアドレス プレフィックスを表します。 値として *AzureKeyVault* を指定した場合、AzureKeyVault へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureKeyVault へのアクセスのみを許可する場合は、AzureKeyVault.[リージョン名] の形式でリージョンを指定できます。 このタグは、**AzureActiveDirectory** タグに依存します。 送信セキュリティ規則には、このタグをお勧めします。  
-* **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**):このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。
-* **AzureMachineLearning*** (Resource Manager のみ):このタグは、AzureMachineLearning サービスのアドレス プレフィックスを表します。 値として *AzureMachineLearning* を指定した場合、AzureMachineLearning へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **AzureMonitor*** (Resource Manager のみ):このタグは、Log Analytics、App Insights、AzMon、およびカスタム メトリック (GiG エンドポイント) のアドレス プレフィックスを表します。 値として *AzureMonitor* を指定した場合、AzureMonitor へのトラフィックが許可または拒否されます。 Log Analytics では、このタグは **Storage** タグに依存します。 送信セキュリティ規則には、このタグをお勧めします。
-* **AzurePlatformDNS** (Resource Manager のみ):このタグは、基本的なインフラストラクチャ サービスである DNS を表します。 値として *AzurePlatformDNS* を指定した場合、DNS に関する既定の [Azure プラットフォームの考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)を無効にできます。 このタグを使用する場合は注意してください。 このタグを使用する前に、テストをお勧めします。 
-* **AzurePlatformIMDS** (Resource Manager のみ):このタグは、基本的なインフラストラクチャ サービスである IMDS を表します。 値として *AzurePlatformIMDS* を指定した場合、IMDS に関する既定の [Azure プラットフォームの考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)を無効にできます。 このタグを使用する場合は注意してください。 このタグを使用する前に、テストをお勧めします。 
-* **AzurePlatformLKM** (Resource Manager のみ):このタグは、Windows のライセンスまたはキー管理サービスを表します。 値として *AzurePlatformLKM* を指定した場合、ライセンスに関する既定の [Azure プラットフォームの考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)を無効にできます。 このタグを使用する場合は注意してください。 このタグを使用する前に、テストをお勧めします。 
-* **AzureTrafficManager*** (Resource Manager のみ):このタグは、Azure Traffic Manager プローブ IP アドレスに対する IP アドレス空間を表します。 Traffic Manager プローブ IP アドレスについて詳しくは、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs) に関するページをご覧ください。 受信セキュリティ規則には、このタグをお勧めします。  
-* **BatchNodeManagement*** (Resource Manager のみ):このタグは、Azure Batch 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *BatchNodeManagement* を指定した場合、Batch サービスからコンピューティング ノードへのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
-* **CognitiveServicesManagement** (Resource Manager のみ):このタグは、Cognitive Services のトラフィックのアドレス プレフィックスを表します。 値として *CognitiveServicesManagement* を指定した場合、CognitiveServicesManagement へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。  
-* **Dynamics365ForMarketingEmail** (Resource Manager のみ):このタグは、Dynamics 365 のマーケティング電子メール サービスのアドレス プレフィックスを表します。 値として *Dynamics365ForMarketingEmail* を指定した場合、Dynamics365ForMarketingEmail へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の Dynamics365ForMarketingEmail へのアクセスのみを許可する場合は、Dynamics365ForMarketingEmail.[リージョン名] の形式でリージョンを指定できます。
-* **EventHub*** (Resource Manager のみ):このタグは、Azure EventHub サービスのアドレス プレフィックスを表します。 値として *EventHub* を指定した場合、EventHub へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の EventHub へのアクセスのみを許可する場合は、EventHub.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **GatewayManager** (Resource Manager のみ):このタグは、VPN/アプリ ゲートウェイ専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。 受信セキュリティ規則には、このタグをお勧めします。 
-* **Internet** (Resource Manager) (クラシックの場合は **INTERNET**):このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
-* **MicrosoftContainerRegistry*** (Resource Manager のみ):このタグは、Microsoft Container Registry サービスのアドレス プレフィックスを表します。 値として *MicrosoftContainerRegistry* を指定した場合、MicrosoftContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の MicrosoftContainerRegistry へのアクセスのみを許可する場合は、MicrosoftContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **ServiceBus*** (Resource Manager のみ):このタグは、Premium サービス レベルを使用して、Azure ServiceBus サービスのアドレス プレフィックスを表します。 値として *ServiceBus* を指定した場合、ServiceBus へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の ServiceBus へのアクセスのみを許可する場合は、ServiceBus.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **ServiceFabric*** (Resource Manager のみ):このタグは、ServiceFabric サービスのアドレス プレフィックスを表します。 値として *ServiceFabric* を指定した場合、ServiceFabric へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
-* **Sql*** (Resource Manager のみ):このタグは、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、Sql.[リージョン名] の形式でリージョンを指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 送信セキュリティ規則には、このタグをお勧めします。 
-* **SqlManagement*** (Resource Manager のみ):このタグは、SQL 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *SqlManagement* を指定した場合、SqlManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
-* **Storage*** (Resource Manager のみ):このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージへのアクセスのみを許可する場合は、Storage.[リージョン名] の形式でリージョンを指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 送信セキュリティ規則には、このタグをお勧めします。 
-* **VirtualNetwork** (Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**):このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、[ピアリング](virtual-network-peering-overview.md)された仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)に接続された仮想ネットワーク、[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations)、[ユーザーが定義したルート](virtual-networks-udr-overview.md)に使用されるアドレス プレフィックスが含まれます。 このタグには既定のルートが含まれる場合があることに注意してください。 
-
-> [!NOTE]
-> Azure サービスのサービス タグは、使用されている特定のクラウドからのアドレス プレフィックスを表します。 
-
-> [!NOTE]
-> Azure Storage や Azure SQL Database などのサービスの[仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)を実装する場合、Azure はサービスの仮想ネットワーク サブネットへの[ルート](virtual-networks-udr-overview.md#optional-default-routes)を追加します。 ルートのアドレス プレフィックスは、対応するサービス タグと同じアドレス プレフィックスまたは CIDR 範囲です。
-
-### <a name="service-tags-in-on-premises"></a>オンプレミスのサービス タグ  
-Azure [パブリック](https://www.microsoft.com/download/details.aspx?id=56519)、[米国政府](https://www.microsoft.com/download/details.aspx?id=57063)、[中国](https://www.microsoft.com/download/details.aspx?id=57062)、[ドイツ](https://www.microsoft.com/download/details.aspx?id=57064) クラウドに対する翌週のパブリケーションでサービス タグのリストとプレフィックスの詳細をダウンロードして、オンプレミスのファイアウォールと統合できます。
-
-[REST](https://aka.ms/discoveryapi_rest)、[Azure PowerShell](https://aka.ms/discoveryapi_powershell)、および [Azure CLI](https://aka.ms/discoveryapi_cli) で **Service Tag Discovery API** (パブリック プレビュー) を使用して、この情報をプログラムで取得することもできます。 
-
-> [!NOTE]
-> Azure [パブリック](https://www.microsoft.com/en-us/download/details.aspx?id=41653)、[中国](https://www.microsoft.com/en-us/download/details.aspx?id=42064)、および[ドイツ](https://www.microsoft.com/en-us/download/details.aspx?id=54770) クラウドに対する翌週のパブリケーション (古いバージョン) は、2020 年 6 月 30 日までに非推奨になります。 上記の説明に従い更新されたパブリケーションの使用を開始してください。 
+詳細については、[Azure サービス タグ](service-tags-overview.md)に関するページをご覧ください。 
 
 ## <a name="default-security-rules"></a>既定セキュリティ規則
 
@@ -147,7 +100,7 @@ Azure [パブリック](https://www.microsoft.com/download/details.aspx?id=56519
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | 拒否 |
 
-"**ソース**" 列と "**ターゲット**" 列の *VirtualNetwork*、*AzureLoadBalancer*、および *Internet* は、IP アドレスではなく[サービス タグ](#service-tags)です。 "プロトコル" 列で "**Any**" は TCP、UDP、ICMP を含みます。 規則を作成するときに、TCP、UDP、ICMP、または Any を指定できます。 "**ソース**" 列と "**ターゲット**" 列の *0.0.0.0/0* は、すべてのアドレスを表します。 Azure portal、Azure CLI、または Powershell などのクライアントでは * または any をこの式に使用できます。
+"**ソース**" 列と "**ターゲット**" 列の *VirtualNetwork*、*AzureLoadBalancer*、および *Internet* は、IP アドレスではなく[サービス タグ](service-tags-overview.md)です。 "プロトコル" 列で "**Any**" は TCP、UDP、ICMP を含みます。 規則を作成するときに、TCP、UDP、ICMP、または Any を指定できます。 "**ソース**" 列と "**ターゲット**" 列の *0.0.0.0/0* は、すべてのアドレスを表します。 Azure portal、Azure CLI、または Powershell などのクライアントでは * または any をこの式に使用できます。
  
 既定の規則は削除できませんが、優先順位の高い規則を作成することでオーバーライドできます。
 
@@ -222,6 +175,13 @@ Azure がネットワーク セキュリティ グループの受信規則と送
 - **VM2**:すべてのトラフィックがネットワーク インターフェイスを介してサブネットに送信されます。*VM2* に接続されているネットワーク インターフェイスに、ネットワーク セキュリティ グループが関連付けられていないためです。 *NSG1* の規則が処理されます。
 - **VM3**:*NSG2* にポート 80 を拒否するセキュリティ規則がある場合、トラフィックは拒否されます。 *NSG2* にポート 80 を許可するセキュリティ規則がある場合、ネットワーク セキュリティ グループが *Subnet2* に関連付けられていないため、ポート 80 はインターネットへの送信を許可されます。
 - **VM4**:ネットワーク セキュリティ グループが、仮想マシンに接続されているネットワーク インターフェイスにも *Subnet3* にも関連付けられていないため、*VM4* からのすべてのネットワーク トラフィックが許可されます。
+
+
+### <a name="intra-subnet-traffic"></a>サブネット内トラフィック
+
+サブネットに関連付けられている NSG のセキュリティ規則は、その内部にある VM 間の接続に影響を与える可能性があることに注意することが重要です。 たとえば、受信トラフィックと送信トラフィックをすべて拒否する規則が *NSG1* に追加された場合、*VM1* と *VM2* は相互に通信できなくなります。 これを可能にするには、明確に別の規則を追加する必要があります。 
+
+
 
 ネットワーク インターフェイスの[有効なセキュリティ規則](virtual-network-network-interface.md#view-effective-security-rules)を表示すると、ネットワーク インターフェイスに適用されている規則の集計を簡単に確認できます。 Azure Network Watcher の [[IP フローの確認]](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 機能を使って、ネットワーク インターフェイスの受信/送信が許可されているかどうかを確認することもできます。 IP フローの確認を使うと、通信が許可または拒否されているかどうかと、どのネットワーク セキュリティ規則でトラフィックが許可/拒否されているかを確認できます。
 

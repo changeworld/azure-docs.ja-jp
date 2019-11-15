@@ -1,18 +1,18 @@
 ---
-title: Azure Analysis Services での認証とユーザーのアクセス許可 | Microsoft Docs
-description: Azure Analysis Services での認証とユーザーのアクセス許可について説明します。
+title: Azure Analysis Services の認証とユーザーのアクセス許可 | Microsoft Docs
+description: この記事では、Azure Analysis Services で、ID 管理とユーザー認証に Azure Active Directory (Azure AD) が使用されるしくみについて説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc66b34492b34a6e0f239d19ee10fbd79b683a14
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294928"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572767"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 
@@ -28,11 +28,11 @@ Azure Analysis Services では、[Azure AD B2B コラボレーション](../acti
 
 3 つのクライアント ライブラリはすべて、Azure AD の対話型フローと非対話型認証方法の両方をサポートします。 2 つの非対話型方法である Active Directory パスワード認証方法と Active Directory 統合認証方法は、AMOMD と MSOLAP を利用しているアプリケーションで使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。
 
-Excel や Power BI Desktop などのクライアント アプリケーションと、SSMS や SSDT などのツールは、最新リリースに更新されたときにライブラリの最新バージョンをインストールします。 Power BI Desktop、SSMS、SSDT は毎月更新されます。 Excel は [Office 365 と共に更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)されます。 Office 365 の更新は頻度が低く、組織によっては遅延チャネルを使用して、更新が最大 3 か月間遅延されるようにしています。
+Excel や Power BI Desktop などのクライアント アプリケーションと、SSMS や Visual Studio 向け Analysis Services プロジェクト拡張機能などのツールは、最新リリースに更新されたときにライブラリの最新バージョンをインストールします。 Power BI Desktop、SSMS、Analysis Services プロジェクト拡張機能は毎月更新されます。 Excel は [Office 365 と共に更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)されます。 Office 365 の更新は頻度が低く、組織によっては遅延チャネルを使用して、更新が最大 3 か月間遅延されるようにしています。
 
 使用するクライアント アプリケーションまたはツールに応じて、認証の種類とサインインの方法が異なる場合があります。 各アプリケーションは、Azure Analysis Services のようなクラウド サービスに接続するためのさまざまな機能をサポートしている場合があります。
 
-Power BI Desktop、SSDT、および SSMS は、Azure Multi-Factor Authentication (MFA) もサポートする対話型の認証方式である Active Directory ユニバーサル認証をサポートします。 Azure MFA は、シンプルなサインイン プロセスを提供しながら、データやアプリケーションへのアクセスを効果的に保護することができます。 Azure MFA は、複数の検証オプション (電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知) による強力な認証を提供します。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。 **ユニバーサル認証を使うことをお勧めします**。
+Power BI Desktop、Visual Studio、SSMS では、Azure Multi-Factor Authentication (MFA) もサポートされている対話型の認証方式である Active Directory ユニバーサル認証がサポートされています。 Azure MFA は、シンプルなサインイン プロセスを提供しながら、データやアプリケーションへのアクセスを効果的に保護することができます。 Azure MFA は、複数の検証オプション (電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知) による強力な認証を提供します。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。 **ユニバーサル認証を使うことをお勧めします**。
 
 ユニバーサル認証が選択されていないか、使用できない (Excel) 場合に、Windows アカウントを使って Azure にサインインするには、[Active Directory フェデレーション サービス (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) が必要です。 フェデレーションでは、Azure AD および Office 365 のユーザーはオンプレミスの資格情報を使って認証されて、Azure リソースにアクセスできます。
 
@@ -46,9 +46,9 @@ Azure Analysis Services サーバーは、Windows 認証、Active Directory パ�
 
 *  Multi-Factor Authentication (MFA) をサポートします。 Azure MFA は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、各種確認オプションでデータとアプリケーションへのアクセスを保護するのに役立ちます。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。
 
-### <a name="sql-server-data-tools-ssdt"></a>SQL Server Data Tools (SSDT)
+### <a name="visual-studio"></a>Visual Studio
 
-SSDT は、MFA サポートがある Active Directory のユニバーサル認証を使って Azure Analysis Services に接続します。 ユーザーは、最初のデプロイ時に Azure にサインインするよう求められます。 ユーザーは、デプロイしているサーバーでサーバー管理者のアクセス許可を持つアカウントを使って Azure にサインインする必要があります。 初めて Azure にサインインするときに、トークンが割り当てられます。 SSDT は、将来の再接続のためにトークンをメモリにキャッシュします。
+Visual Studio は、MFA サポートがある Active Directory のユニバーサル認証を使って Azure Analysis Services に接続します。 ユーザーは、最初のデプロイ時に Azure にサインインするよう求められます。 ユーザーは、デプロイしているサーバーでサーバー管理者のアクセス許可を持つアカウントを使って Azure にサインインする必要があります。 初めて Azure にサインインするときに、トークンが割り当てられます。 将来の再接続のためにトークンはメモリにキャッシュされます。
 
 ### <a name="power-bi-desktop"></a>Power BI Desktop
 
@@ -60,7 +60,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ## <a name="user-permissions"></a>ユーザーのアクセス許可
 
-**サーバー管理者**は、Azure Analysis Services サーバー インスタンスに固有です。 Azure Portal、SSMS、SSDT などのツールを使って接続し、データベースの追加やユーザー ロールの管理などのタスクを実行します。 既定では、サーバーを作成したユーザーは、自動的に Analysis Services サーバー管理者として追加されます。 他の管理者は、Azure Portal または SSMS を使って追加できます。 サーバー管理者には、同じサブスクリプションの Azure AD テナントにアカウントが必要です。 詳しくは、「[サーバー管理者の管理](analysis-services-server-admins.md)」をご覧ください。 
+**サーバー管理者**は、Azure Analysis Services サーバー インスタンスに固有です。 Azure Portal、SSMS、Visual Studio などのツールを使って接続し、データベースの追加やユーザー ロールの管理などのタスクを実行します。 既定では、サーバーを作成したユーザーは、自動的に Analysis Services サーバー管理者として追加されます。 他の管理者は、Azure Portal または SSMS を使って追加できます。 サーバー管理者には、同じサブスクリプションの Azure AD テナントにアカウントが必要です。 詳しくは、「[サーバー管理者の管理](analysis-services-server-admins.md)」をご覧ください。 
 
 **データベース ユーザー**は、Excel や Power BI などのクライアント アプリケーションを使ってモデル データベースに接続します。 ユーザーは、データベース ロールに追加する必要があります。 データベース ロールは、データベースに対して管理者、プロセス、または読み取りアクセス許可を定義します。 管理者のアクセス許可を含むロールのデータベース ユーザーは、サーバー管理者とは異なることを理解することが重要です。 ただし、既定では、サーバー管理者はデータベース管理者でもあります。 詳しくは、「[データベース ロールとユーザーの管理](analysis-services-database-users.md)」をご覧ください。
 
@@ -74,7 +74,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
  表形式モデルに定義されたロールはデータベース ロールです。 つまり、ロールには、Azure AD ユーザーとセキュリティ グループから構成されるメンバーが含まれます。このセキュリティ グループは、メンバーが model データベースに対して実行できるアクションを定義する特定のアクセス許可を持ちます。 データベース ロールは、データベース内に個別のオブジェクトとして作成され、そのロールが作成されたデータベースにのみ適用されます。   
   
- 既定では、新しい表形式モデル プロジェクトを作成するときに、モデル プロジェクトはロールを持ちません。 ロールは、SSDT の [ロール マネージャー] ダイアログ ボックスを使用して定義できます。 モデル プロジェクトのデザイン時にロールが定義された場合、それらはモデル ワークスペース データベースにのみ適用されます。 モデルをデプロイすると、デプロイされたモデルに同じロールが適用されます。 モデルのデプロイ後、サーバーとデータベースの管理者は、SSMS を使ってロールとメンバーを管理できます。 詳しくは、「[データベース ロールとユーザーの管理](analysis-services-database-users.md)」をご覧ください。
+ 既定では、新しい表形式モデル プロジェクトを作成するときに、モデル プロジェクトはロールを持ちません。 ロールは、Visual Studio の [ロール マネージャー] ダイアログ ボックスを使用して定義できます。 モデル プロジェクトのデザイン時にロールが定義された場合、それらはモデル ワークスペース データベースにのみ適用されます。 モデルをデプロイすると、デプロイされたモデルに同じロールが適用されます。 モデルのデプロイ後、サーバーとデータベースの管理者は、SSMS を使ってロールとメンバーを管理できます。 詳しくは、「[データベース ロールとユーザーの管理](analysis-services-database-users.md)」をご覧ください。
   
 ## <a name="next-steps"></a>次の手順
 

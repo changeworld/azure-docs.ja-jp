@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の Azure 関数アクティビティ | Microsoft Docs
+title: Azure Data Factory の Azure 関数アクティビティ
 description: Azure 関数アクティビティを使用して、Data Factory パイプライン内で Azure 関数を実行する方法について説明します
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: a3499637fb5320afe80bf4eefa634173db31f1b6
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931861"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679968"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure 関数アクティビティ
 

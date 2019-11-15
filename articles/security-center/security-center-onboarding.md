@@ -1,5 +1,5 @@
 ---
-title: セキュリティ強化のための Azure Security Center Standard へのオンボード | Microsoft Docs
+title: Standard レベルの強化されたセキュリティ - Azure Security Center
 description: " セキュリティを強化するために、Azure Security Center Standard にオンボードする方法について説明します。 "
 services: security-center
 documentationcenter: na
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: 01cc625767cbf437031f503cf4b0d4dc59b62e08
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: db74415d3c6c5f6636a150d212bc2bc3d790fbec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996305"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686391"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード
-ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
+ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。 Standard は無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
 
 Security Center Standard は次の機能を備えています。
 
 - **ハイブリッド セキュリティ** - オンプレミスとクラウドのすべてのワークロードのセキュリティを、統合された 1 つのビューで確認できます。 セキュリティ ポリシーを適用し、ハイブリッド クラウドのワークロードのセキュリティを継続的に評価することで、セキュリティ標準に確実に準拠できます。 ファイアウォールやその他のパートナー ソリューションなどのさまざまなソースから、セキュリティ データを収集、検索、分析します。
-- **高度な脅威検出** - 高度な分析と Microsoft インテリジェント セキュリティ グラフを使用して、巧妙化していくサイバー攻撃に対応します。  組み込みの行動分析と機械学習を活用して、各種攻撃やゼロデイ攻撃を特定します。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。 対話型のツールと状況に応じた脅威インテリジェンスにより、調査を効率化します。
+- **高度な脅威検出** - 高度な分析と Microsoft インテリジェント セキュリティ グラフを使用して、巧妙化していくサイバー攻撃に対応します。 組み込みの行動分析と機械学習を活用して、各種攻撃やゼロデイ攻撃を特定します。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。 対話型のツールと状況に応じた脅威インテリジェンスにより、調査を効率化します。
 - **アクセスとアプリケーションの制御** - 特定のワークロードに適応し、機械学習を活用したホワイトリスト登録の推奨事項を適用することで、マルウェアや他の望ましくないアプリケーションをブロックします。 Azure VM の管理ポートへの制御された Just-In-Time アクセスによってネットワーク攻撃対象領域を縮小することで、ブルート フォース攻撃などのネットワーク攻撃にさらされる機会を大幅に減らします。
 
-## <a name="detecting-unprotected-resources"></a>保護されていないリソースの検出     
+## <a name="detecting-unprotected-resources"></a>保護されていないリソースの検出
 Security Center では、Security Center Standard に対応していない Azure サブスクリプションまたはワークスペースが自動的に検出されます。 これには、Security Center Free を使用する Azure サブスクリプションと、セキュリティ ソリューションが有効になっていないワークスペースが含まれます。
 
 Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のサポートされるすべてのリソースによって継承されます。 Standard レベルをワークスペースに適用すると、ワークスペースに報告するすべてのリソースに適用されます。
 
 > [!NOTE]
-> ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用すると、ソリューションにスコープを適用し、ワークスペース内のコンピューターのサブセットをターゲットにすることができます。  ソリューションのターゲット設定を使用している場合、Security Center はソリューションがないものとしてワークスペースを表示します。
+> ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用すると、ソリューションにスコープを適用し、ワークスペース内のコンピューターのサブセットをターゲットにすることができます。 ソリューションのターゲット設定を使用している場合、Security Center はソリューションがないものとしてワークスペースを表示します。
 >
 >
 
@@ -54,14 +54,13 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
    > [!NOTE]
    > Security Center の Free レベルの機能は Azure VM と VMSS にのみ適用されます。 Free レベルの機能は、Azure 以外のコンピューターには適用されません。 Standard を選択した場合、ワークスペースに報告するすべての Azure VM、VM スケール セット、および Azure 以外のコンピューターに Standard レベルの機能が適用されます。 Azure リソースと Azure 以外のリソースに高度なセキュリティを提供するために、Standard を適用することをお勧めします。
    >
-   >
 
 ## <a name="onboard-non-azure-computers"></a>Azure 以外のコンピューターのオンボード
 Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 Azure 以外のコンピューターは、 **[使用の開始]** ブレードまたは **[コンピューティング]** ブレードから追加できます。 ここでは両方の方法を紹介します。
 
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>**[使用の開始]** から新しい Azure 以外のコンピューターを追加する
 
-1. **[使用の開始]** に戻ります。   
+1. **[使用の開始]** に戻ります。
 2. **[作業の開始]** タブを選択します。
 
    ![Azure 以外](./media/security-center-onboarding/non-azure.png)
@@ -84,7 +83,7 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
    > [!NOTE]
    > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
 3. **[OMS ワークスペース]** で、ワークスペースの情報を入力します。
-4. **[OMS ワークスペース]** で **[OK]** をクリックします。  [OK] をクリックすると、Windows または Linux エージェントをダウンロードするためのリンクと、エージェントの構成時に使用するワークスペース ID のキーが提供されます。
+4. **[OMS ワークスペース]** で **[OK]** をクリックします。 [OK] をクリックすると、Windows または Linux エージェントをダウンロードするためのリンクと、エージェントの構成時に使用するワークスペース ID のキーが提供されます。
 5. **[セキュリティおよび監査]** で **[OK]** をクリックします。
 
 **既存のワークスペースを選択してコンピューターを追加する**
@@ -104,10 +103,10 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 
    ![コンピューターの追加][7]
 
-   **[直接エージェント]** ブレードには、Windows または Linux エージェントをダウンロードするためのリンクや、エージェントの構成で使用するワークスペース ID とキーが表示されます。   
+   **[直接エージェント]** ブレードには、Windows または Linux エージェントをダウンロードするためのリンクや、エージェントの構成で使用するワークスペース ID とキーが表示されます。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Security Center の高度なセキュリティのメリットを得るために、Azure リソースと Azure 以外のリソースをオンボードする方法について説明しました。  オンボードされたリソースを活用するには、以下を参照してください。
+この記事では、Security Center の高度なセキュリティのメリットを得るために、Azure リソースと Azure 以外のリソースをオンボードする方法について説明しました。 オンボードされたリソースを活用するには、以下を参照してください。
 
 - [データ収集を有効にする](security-center-enable-data-collection.md)
 - [脅威インテリジェンス レポート](security-center-threat-report.md)

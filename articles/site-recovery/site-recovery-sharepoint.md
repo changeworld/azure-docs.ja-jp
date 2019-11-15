@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用した多層 SharePoint アプリのディザスター リカバリー
 description: この記事では、Azure Site Recovery を使用して、多層 SharePoint のディザスター リカバリーを設定する方法を説明します。
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231479"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622408"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
 

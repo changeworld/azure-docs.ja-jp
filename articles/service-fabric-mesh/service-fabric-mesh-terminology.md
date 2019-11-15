@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric Mesh の用語 | Microsoft Docs
-description: Azure Service Fabric Mesh でよく使われる用語について説明します。
+description: この記事では、Azure Service Fabric Mesh 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 2d2661593ba3d9be2755d81803c8e248a2f7d0e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810608"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663020"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh の用語
 

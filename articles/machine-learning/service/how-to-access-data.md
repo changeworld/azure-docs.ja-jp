@@ -9,16 +9,17 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 08/2/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 2b76d8f25cfb8bd1dfda43c8383a538f8cf9769b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436701"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818453"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure ストレージ サービスのデータにアクセスする
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning データストアを使用して Azure ストレージ サービスのデータに簡単にアクセスする方法について説明します。 データストアは、サブスクリプション ID やトークン承認など接続情報を格納する目的で使用されます。 データストアを使用すれば、ストレージにアクセスするために接続情報をスクリプトにハードコーディングする必要がなくなります。 データストアは、これらの [Azure Storage ソリューション](#matrix)から作成できます。 サポートされていないストレージ ソリューションの場合、機械学習実験中のデータ エグレス コストを節約するため、サポートされている Azure Storage ソリューションにデータを移行することをお勧めします。 [データの移動方法に関する詳細情報](#move)。 
 
@@ -35,7 +36,7 @@ ms.locfileid: "72436701"
 
 - [Azure BLOB コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)または [Azure ファイル共有](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)が含まれる Azure ストレージ アカウント。
 
-- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) または[ワークスペースのランディングページ (プレビュー)](https://ml.azure.com/) へのアクセス。
+- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
 
 - Azure Machine Learning ワークスペース。 
     - [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)するか、Python SDK を使用して既存のワークスペースを使用します。
@@ -51,13 +52,13 @@ ms.locfileid: "72436701"
 
 ## <a name="create-and-register-datastores"></a>データストアの作成と登録
 
-Azure ストレージ ソリューションをデータストアとして登録すると、データストアが特定のワークスペースに自動的に作成されます。 Python SDK またはワークスペースのランディングページを使用して、データストアを作成してワークスペースに登録することができます。
+Azure ストレージ ソリューションをデータストアとして登録すると、データストアが特定のワークスペースに自動的に作成されます。 Python SDK または Azure Machine Learning Studio を使用して、データストアを作成し、ワークスペースに登録することができます。
 
 ### <a name="using-the-python-sdk"></a>Python SDK の使用
 
 すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。
 
-Register() メソッドの設定に必要な情報については、[Azure portal](https://ms.portal.azure.com) を参照してください。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キーまたは SAS トークンなどの認証情報については、左側の **[設定]** ウィンドウの **[アカウント キー]** に移動します。 
+register() メソッドの設定に必要な情報については、[Azure Machine Learning studio](https://ml.azure.com) を参照してください。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キーまたは SAS トークンなどの認証情報については、左側の **[設定]** ウィンドウの **[アカウント キー]** に移動します。 
 
 次の例では、Azure BLOB コンテナーまたは Azure ファイル共有のデータストアとしての登録を示しています。
 
@@ -73,6 +74,7 @@ Register() メソッドの設定に必要な情報については、[Azure porta
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
+    ストレージ アカウントが VNET 内にある場合、Azure BLOB データストアの作成のみがサポートされます。 パラメーター `grant_workspace_access` を `True` に設定して、ワークスペースにストレージ アカウントへのアクセス権を付与します。
 
 + **Azure ファイル共有データストア**の場合、[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) を使用します。 
 
@@ -91,16 +93,16 @@ Register() メソッドの設定に必要な情報については、[Azure porta
 
 Azure BLOB コンテナーをお勧めします。 BLOB では Standard ストレージと Premium ストレージの両方を使用できます。 お勧めは Premium ストレージです。より高価になりますが、スループットの速度が上がるため、特に大規模なデータ セットに対するトレーニングでは、トレーニングの実行速度が向上する可能性があります。 ストレージ アカウントのコストの情報については、[Azure の料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)に関するページをご覧ください。
 
-### <a name="using-the-workspace-landing-page"></a>ワークスペース ランディング ページの使用 
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio の使用 
 
-新しいデータストアを作成するには、ワークスペースのランディング ページでいくつかの手順を実行します。
+Azure Machine Learning Studio のいくつかの手順で、新しいデータストアを作成します。
 
-1. [ワークスペース ランディング ページ](https://ml.azure.com/)にサインインします。
+1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
 1. 左側のウィンドウの **[管理]** から、 **[データストア]** を選択します。
 1. **[+ 新しいデータストア]** を選択します。
 1. 新しいデータスト アフォームに入力します。 フォームは、Azure ストレージの種類と選択した認証の種類に基づいて更新されます。
   
-フォームの記入に必要な情報については、[Azure portal](https://ms.portal.azure.com) を参照してください。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キーまたは SAS トークンなどの認証項目については、左側の **[設定]** ウィンドウの **[アカウント キー]** に移動します。
+フォームの記入に必要な情報については、[Azure Machine Learning Studio](https://ml.azure.com) を参照してください。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キー、SAS トークンなどの認証項目については、左側の **[設定]** ペインの **[アカウント キー]** に移動します。
 
 次の例は、Azure blob データストアを作成するフォームがどのように表示されるかを示しています。 
     
@@ -161,7 +163,7 @@ datastore.upload(src_dir='your source directory',
                  show_progress=True)
 ```
 
-`target_path` パラメーターでは、アップロードするファイル共有 (または BLOB コンテナー) 内の場所が指定されます。 既定値は `None` で、その場合はデータがルートにアップロードされます。 `overwrite=True` の場合、`target_path` のすべての既存のデータが上書きされます。
+`target_path` パラメーターでは、アップロードするファイル共有 (または BLOB コンテナー) 内の場所が指定されます。 既定値は `None` で、その場合はデータがルートにアップロードされます。 そうでなく、`overwrite=True` の場合、`target_path` のすべての既存のデータが上書きされます。
 
 または、`upload_files()` メソッドを使用して、データストアに個々のファイルの一覧をアップロードします。
 
@@ -181,7 +183,7 @@ datastore.download(target_path='your target path',
 ## <a name="access-your-data-during-training"></a>トレーニング中にデータにアクセスする
 
 > [!IMPORTANT]
-> トレーニングのデータにアクセスする手段として、今後は [Azure Machine Learning Datasets (プレビュー)](how-to-create-register-datasets.md) の使用が推奨されます。 データセットには、表形式データを pandas や spark DataFrame に読み込む機能のほか、Azure Blob、Azure Files、Azure Data Lake Gen 1、Azure Data Lake Gen 2、Azure SQL、Azure PostgreSQL から任意の形式のファイルをダウンロードしたりマウントしたりする機能が用意されています。 [データセットを使ってトレーニングする方法](how-to-train-with-datasets.md)の詳細をご覧ください。
+> トレーニング中にデータにアクセスする手段として、今後は [Azure Machine Learning データセット](how-to-create-register-datasets.md)の使用が推奨されます。 データセットには、表形式データを pandas や spark DataFrame に読み込む機能のほか、Azure Blob、Azure Files、Azure Data Lake Gen 1、Azure Data Lake Gen 2、Azure SQL、Azure PostgreSQL から任意の形式のファイルをダウンロードしたりマウントしたりする機能が用意されています。 [データセットを使ってトレーニングする方法](how-to-train-with-datasets.md)の詳細をご覧ください。
 
 次の表では、実行中にデータストアの使用方法をコンピューティング先に指示するメソッドの一覧を示します。 
 
@@ -280,10 +282,10 @@ Azure Machine Learning には、スコアリングにモデルを使用する方
 <a name="move"></a>
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>サポートされている Azure Storage ソリューションにデータを移動する
 
-Azure Machine Learning service では、Azure Blob、Azure File、Azure Data Lake Gen 1、Azure Data Lake Gen 2、Azure SQL、Azure PostgreSQL のデータのアクセスがサポートされています。 サポートされていないストレージの場合、機械学習実験中のデータ エグレス コストを節約するため、Azure Data Factory を使用するサポートされている Azure Storage ソリューションにデータを移行することをお勧めします。 Azure Data Factory では、事前構築済みの 80 を超えるコネクタ (Azure データ サービス、オンプレミスのデータ ソース、Amazon S3 と Redshift、Google BigQuery など) の拡大し続けるポートフォリオとの、効率的で回復力のあるデータ転送が、追加コストなしで提供されます。 [Azure Data Factory を使用してデータを移動するステップ バイ ステップ ガイドに従ってください](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool)。
+Azure Machine Learning では、Azure BLOB、Azure File、Azure Data Lake Gen 1、Azure Data Lake Gen 2、Azure SQL、Azure PostgreSQL のデータのアクセスがサポートされています。 サポートされていないストレージの場合、機械学習実験中のデータ エグレス コストを節約するため、Azure Data Factory を使用するサポートされている Azure Storage ソリューションにデータを移行することをお勧めします。 Azure Data Factory では、事前構築済みの 80 を超えるコネクタ (Azure データ サービス、オンプレミスのデータ ソース、Amazon S3 と Redshift、Google BigQuery など) の拡大し続けるポートフォリオとの、効率的で回復力のあるデータ転送が、追加コストなしで提供されます。 [Azure Data Factory を使用してデータを移動するステップ バイ ステップ ガイドに従ってください](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool)。
 
 ## <a name="next-steps"></a>次の手順
 
-* [モデルをトレーニングする](how-to-train-ml-models.md)
+* [モデルをトレーニングします](how-to-train-ml-models.md)。
 
-* [モデルのデプロイ](how-to-deploy-and-where.md)
+* [モデルをデプロイします](how-to-deploy-and-where.md)。

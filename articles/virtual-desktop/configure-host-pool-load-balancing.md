@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop の負荷分散方法を構成する - Azure
+title: Windows Virtual Desktop の負荷分散を構成する - Azure
 description: Windows Virtual Desktop 環境での負荷分散方法を構成する方法。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 61c11e342f3b4f906b453e0962018a8f8c34acd4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676777"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605865"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Virtual Desktop の負荷分散方法を構成する
 

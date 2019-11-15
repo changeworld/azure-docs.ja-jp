@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497446"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716603"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps:Azure Machine Learning でモデルを管理、デプロイ、および監視する
 
@@ -126,7 +126,7 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 Microsoft Power BI は、データ分析への機械学習モデルの使用をサポートします。 詳細については、[Azure Machine Learning の Power BI への統合 (プレビュー)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)に関する記事をご覧ください。
 
 
-## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>運用および ML 関連の問題について ML アプリケーションを監視する
+## <a name="monitor-for-operational--ml-issues"></a>運用上の問題と ML の問題を監視する
 
 監視により、モデルにどのようなデータが送信されているか、および返される予測を理解することができます。
 
@@ -135,7 +135,7 @@ Microsoft Power BI は、データ分析への機械学習モデルの使用を�
 詳細については、[モデル データ収集を有効にする方法](how-to-enable-data-collection.md)に関するページを参照してください。
 
 
-## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>ML ライフサイクルのエンド ツー エンドの監査証跡を取り込む
+## <a name="audit-trail-of-the-ml-lifecycle"></a>ML ライフサイクルの監査証跡
 
 Azure ML では、すべての ML 資産のエンド ツー エンドの監査証跡を追跡できます。 具体的には次の処理が行われます。
 
@@ -144,7 +144,7 @@ Azure ML では、すべての ML 資産のエンド ツー エンドの監査�
 - Azure ML 実行履歴により、モデルをトレーニングするために使用されたコード、データ、コンピューティングのスナップショットが保存されます。
 - Azure ML モデル レジストリにより、モデルに関連するすべてのメタデータ (それをトレーニングした実験、それがデプロイされている場所、そのデプロイが正常かどうかなど) が取り込まれます。
 
-## <a name="automate-the-end-to-end-ml-lifecycle"></a>エンド ツー エンドの ML ライフサイクルを自動化する 
+## <a name="automate-the-ml-lifecycle"></a>ML ライフサイクルを自動化する 
 
 GitHub と Azure Pipelines を使用して、モデルをトレーニングする継続的インテグレーション プロセスを作成できます。 一般的なシナリオでは、データ サイエンティストがプロジェクトの Git リポジトリへの変更をチェックするときに、Azure Pipeline はトレーニングの実行を開始します。 続いて、実行の結果を調べて、トレーニング済みモデルのパフォーマンス特性を確認できます。 Web サービスとしてモデルをデプロイするパイプラインを作成することもできます。
 
@@ -157,8 +157,18 @@ Azure Machine Learning との Azure Pipelines の使用に関する詳細につ�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning を使用して[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。 デプロイの例については、「[チュートリアル: Azure Container Instances に画像分類モデルをデプロイする](tutorial-deploy-models-with-aml.md)」を参照してください。
+次のリソースをじっくり読んで理解を深めましょう。
 
-[Azure Pipelines を使用して ML モデルの継続的な統合とデプロイ](/azure/devops/pipelines/targets/azure-machine-learning)を作成する方法について説明します。 
++ Azure Machine Learning を使用した[モデルのデプロイ方法とデプロイ先](how-to-deploy-and-where.md)
 
-[デプロイされたモデルを Web サービスとして使用する](how-to-consume-web-service.md)クライアント アプリケーションとサービスの作成方法を確認します。
++ [チュートリアル:ACI に画像分類モデルをデプロイする](tutorial-deploy-models-with-aml.md)
+
++ [エンドツーエンドの MLOps サンプル リポジトリ](https://github.com/microsoft/MLOps)
+
++ [Azure Pipelines を使用した ML モデルの CI/CD](/azure/devops/pipelines/targets/azure-machine-learning)
+
++ [デプロイされたモデルを利用する](how-to-consume-web-service.md)クライアントを作成する
+
++ [大規模な機械学習](/architecture/data-guide/big-data/machine-learning-at-scale)
+
++ [Azure AI リファレンス アーキテクチャとベスト プラクティスのリポジトリ](https://github.com/microsoft/AI)

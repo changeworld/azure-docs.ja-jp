@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 54743b191b0334c92c63f374d38870a7dbfd9a38
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273864"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749621"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
 ストレージ アカウントにマネージド ディスクまたはアンマネージド ディスクとして格納されている一般化された仮想マシン (VM) からマネージド イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 マネージド イメージの課金方法については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
 
@@ -56,6 +56,17 @@ Windows VM を一般化するには、次の手順に従います。
 
 6. Sysprep は完了時に VM をシャットダウンします。 VM は再起動しないでください。
 
+> [!TIP]
+> **オプション** [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) を使用してイメージを最適化し、VM の初回起動時間を短縮します。
+>
+> イメージを最適化するには、Windows エクスプローラーで VHD をダブルクリックして VHD をマウントし、`/optimize-image` パラメーターを指定して DISM を実行します。
+>
+> ```cmd
+> DISM /image:D:\ /optimize-image /boot
+> ```
+> ここで D: はマウントされた VHD のパスです。
+>
+> `DISM /optimize-image` の実行は、VHD に行う最後の変更にします。 デプロイの前に VHD に変更を加えた場合は、`DISM /optimize-image` をもう一度実行する必要があります。
 
 ## <a name="create-a-managed-image-in-the-portal"></a>ポータルで管理対象イメージを作成する 
 
@@ -83,7 +94,7 @@ Windows VM を一般化するには、次の手順に従います。
 
 ## <a name="create-an-image-of-a-vm-using-powershell"></a>Powershell を使って VM のイメージを作成する
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 VM からイメージを直接作成すると、OS ディスクやすべてのデータ ディスクなど、VM に関連付けられているすべてのディスクが、イメージに確実に含まれます。 この例では、マネージド ディスクを使用する VM から管理対象イメージを作成する方法を示します。
 

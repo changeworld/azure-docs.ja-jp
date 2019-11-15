@@ -1,6 +1,6 @@
 ---
-title: Contoso Retail データを Azure SQL Data Warehouse に読み込む | Microsoft Docs
-description: PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Data Warehouse に読み込みます。
+title: Contoso Retail データを読み込む
+description: PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Analytics に読み込みます。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,17 @@ ms.subservice: load-data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b96b65b7dd38900fccb8d5d3a9133f37ee93949f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d928f2392f204baae6cfdbe864938ef0dee1d6ca
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "67595519"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692663"
 ---
-# <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Contoso Retail データを Azure SQL Data Warehouse に読み込む
+# <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>Contoso Retail データを SQL Analytics データ ウェアハウスに読み込む
 
-このチュートリアルでは、PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Data Warehouse に読み込む方法を説明します。 
+このチュートリアルでは、PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを SQL Analytics データ ウェアハウスに読み込む方法を説明します。 
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -28,10 +29,10 @@ ms.locfileid: "67595519"
 3. 読み込みの完了後、最適化を実行する。
 
 ## <a name="before-you-begin"></a>開始する前に
-このチュートリアルを実行するには、SQL Data Warehouse を既に持つ Azure アカウントが必要です。 データ ウェアハウスがプロビジョニングされていない場合は、[SQL Data Warehouse の作成とサーバーレベルのファイアウォール規則の設定][Create a SQL Data Warehouse]に関する記事を参照してください。
+このチュートリアルを実行するには、SQL Analytics データ ウェアハウスを既に持つ Azure アカウントが必要です。 データ ウェアハウスがプロビジョニングされていない場合は、[SQL データ ウェアハウスの作成とサーバーレベルのファイアウォール規則の設定][Create a SQL data warehouse]に関する記事を参照してください。
 
 ## <a name="1-configure-the-data-source"></a>1.データ ソースの構成
-PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、SQL Data Warehouse に格納されます。 データは外部に保存されます。
+PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、SQL Analytics データ ウェアハウスに格納されます。 データは外部に保存されます。
 
 ### <a name="11-create-a-credential"></a>1.1. 資格情報を作成する
 **この手順をスキップ** してください。 パブリック データにはだれでもアクセスできるため、セキュリティで保護されたアクセスは必要ありません。
@@ -115,7 +116,7 @@ GO
 ```
 
 ### <a name="32-create-the-external-tables"></a>3.2. 外部テーブルを作成する
-次のスクリプトを実行して、DimProduct と FactOnlineSales 外部テーブルを作成します。 ここでは、列名とデータ型を定義し、それらを Azure Blob Storage ファイルの場所と形式にバインドするだけです。 定義は SQL Data Warehouse に格納されますが、データはまだ Azure Storage BLOB にあります。
+次のスクリプトを実行して、DimProduct と FactOnlineSales 外部テーブルを作成します。 ここでは、列名とデータ型を定義し、それらを Azure Blob Storage ファイルの場所と形式にバインドするだけです。 定義は SQL Analytics データ ウェアハウスに格納されますが、データはまだ Azure Storage Blob にあります。
 
 **LOCATION** パラメーターは、Azure Storage BLOB のルート フォルダーの下にあるフォルダーです。 各テーブルは、別のフォルダーにあります。
 
@@ -264,7 +265,7 @@ ORDER BY
 ```
 
 ## <a name="5-optimize-columnstore-compression"></a>5.列ストア圧縮の最適化
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これが発生する理由はさまざまです。 詳しくは、[列ストア インデックスの管理][manage columnstore indexes]に関するページをご覧ください。
+既定では、SQL Analytics データ ウェアハウスには、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これが発生する理由はさまざまです。 詳しくは、[列ストア インデックスの管理][manage columnstore indexes]に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。 
 
@@ -328,7 +329,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>結果
-パブリック データが Azure SQL Data Warehouse に正常に読み込まれました。 すばらしい結果です。
+パブリック データが SQL Analytics データ ウェアハウスに正常に読み込まれました。 すばらしい結果です。
 
 これで、テーブルのクエリを開始して、データを探索することができます。 ブランドごとの売上合計を調べるには、次のクエリを実行します。
 
@@ -343,14 +344,14 @@ GROUP BY p.[BrandName]
 ## <a name="next-steps"></a>次の手順
 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)例を実行します。
 
-開発に関するその他のヒントについては、「 [SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][SQL Data Warehouse development overview]」をご覧ください。
+開発に関するその他のヒントについては、SQL Data Warehouse の開発の概要に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[Create a SQL Analytics data warehouse]: sql-data-warehouse-get-started-provision.md
+[Load data into SQL Analytics data warehouse]: sql-data-warehouse-overview-load.md
+[SQL Analytics data warehouse development overview]: sql-data-warehouse-overview-develop.md
 [manage columnstore indexes]: sql-data-warehouse-tables-index.md
 [Statistics]: sql-data-warehouse-tables-statistics.md
 [CTAS]: sql-data-warehouse-develop-ctas.md

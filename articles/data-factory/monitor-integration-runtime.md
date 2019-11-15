@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の統合ランタイムを監視する | Microsoft Docs
+title: Azure Data Factory で統合ランタイムを監視する
 description: Azure Data Factory のさまざまな種類の統合ランタイムを監視する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: b84ea0b9859e69eaf45cd9a89b2443cf42949f79
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 874483540b8c92bbb8a6e37101191f5c867b76f1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141082"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684655"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する  
 **統合ランタイム**は、異なるネットワーク環境間のさまざまなデータ統合機能を提供するために Azure Data Factory によって使われるコンピューティング インフラストラクチャです。 3 種類の統合ランタイムが Data Factory によって提供されています。
@@ -175,7 +175,7 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
 | VNetId | Azure-SSIS 統合ランタイムが参加する仮想ネットワークのリソース ID です。 |
 | Subnet | Azure-SSIS 統合ランタイムが参加するサブネット名です。 |
 | id | Azure-SSIS 統合ランタイムのリソース ID です。 |
-| Type | Azure-SSIS 統合ランタイムの種類 (マネージ/セルフホステッド) です。 |
+| 種類 | Azure-SSIS 統合ランタイムの種類 (マネージ/セルフホステッド) です。 |
 | ResourceGroupName | データ ファクトリおよび Azure-SSIS 統合ランタイムが作成された Azure リソース グループの名前です。 |
 | DataFactoryName | Azure データ ファクトリの名前です。 |
 | 名前 | Azure-SSIS 統合ランタイムの名前です。 |

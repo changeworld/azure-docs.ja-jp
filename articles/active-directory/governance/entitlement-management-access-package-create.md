@@ -1,6 +1,6 @@
 ---
-title: Azure AD のエンタイトルメント管理 (プレビュー) で新しいアクセス パッケージを作成する - Azure Active Directory
-description: Azure Active Directory エンタイトルメント管理 (プレビュー) で共有するリソースの新しいアクセス パッケージを作成する方法を説明します。
+title: Azure AD のエンタイトルメント管理で新しいアクセス パッケージを作成する - Azure Active Directory
+description: Azure Active Directory エンタイトルメント管理で共有するリソースの新しいアクセス パッケージを作成する方法を説明します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 71aa999809ba3d3e32d38162dfaba869d9716031
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389362"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602722"
 ---
-# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) で新しいアクセス パッケージを作成する
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
 アクセス パッケージを使用すると、リソースとポリシーを 1 回だけ設定して、アクセス パッケージの存続期間中にアクセスを自動的に管理できます。 この記事では、新しいアクセス パッケージの作成方法について説明します。
 
@@ -68,9 +63,9 @@ ms.locfileid: "72389362"
 
 1. 左側のメニューで **[アクセス パッケージ]** をクリックします。
 
-    ![Azure portal でのエンタイトルメント管理](./media/entitlement-management-shared/elm-access-packages.png)
-
 1. **[New access package]\(新しいアクセス パッケージ\)** をクリックします。
+   
+    ![Azure portal でのエンタイトルメント管理](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>基本
 
@@ -104,7 +99,7 @@ ms.locfileid: "72389362"
 
     既存のカタログにアクセス パッケージを作成する場合は、カタログ内に既にある任意のリソースを、それを所有していなくても選択できます。
 
-    グローバル管理者、ユーザー管理者、またはカタログ所有者の場合は、まだカタログに存在しないが自分が所有するリソースを選択する追加のオプションがあります。 選択されたカタログ内に現在存在しないリソースを選択した場合、それらのリソースも、他のカタログ管理者がアクセス パッケージの構築に使用できるようにカタログに追加されます。 選択されたカタログ内に現在存在するリソースのみを選択する場合、[選択] ウィンドウの上部にある **[...のみが表示されます]** のチェックボックスをオンにします。
+    グローバル管理者、ユーザー管理者、またはカタログ所有者の場合は、まだカタログに存在しないが自分が所有するリソースを選択する追加のオプションがあります。 選択されたカタログ内に現在存在しないリソースを選択した場合、それらのリソースも、他のカタログ管理者がアクセス パッケージの構築に使用できるようにカタログに追加されます。 選択されたカタログ内に現在存在するリソースのみを選択する場合、[選択] ウィンドウの上部にある **[...のみが表示されます]** のチェック ボックスをオンにします。
 
 1. リソースを選択したら、 **[ロール]** 一覧で、リソースに対してユーザーに割り当てるロールを選択します。
 
@@ -118,7 +113,7 @@ ms.locfileid: "72389362"
 
 ![[アクセス パッケージ] - [Requests] タブ](./media/entitlement-management-access-package-create/requests.png)
 
-次のいずれかのセクションにある手順を実行します。
+このアクセス パッケージを要求できるようにするユーザーに応じて、次のいずれかのセクションの手順を行います。
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 

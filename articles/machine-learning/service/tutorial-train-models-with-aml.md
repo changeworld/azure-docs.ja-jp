@@ -8,16 +8,17 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/20/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128940"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581537"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>チュートリアル:Azure Machine Learning で MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 このチュートリアルでは、機械学習モデルのトレーニングをリモートのコンピューティング リソース上で行います。 Python Jupyter Notebook 内の Azure Machine Learning に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
 
@@ -36,19 +37,25 @@ ms.locfileid: "71128940"
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 >[!NOTE]
-> この記事のコードは、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) バージョン 1.0.57 を使用してテストされました。
+> この記事のコードは、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) バージョン 1.0.65 を使用してテストされています。
 
 ## <a name="prerequisites"></a>前提条件
 
 * 「[チュートリアル: 初めての ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)」を完了することで、以下の操作を行います。
     * ワークスペースの作成
-    * クラウド ノートブック サーバーの作成
-    * Jupyter Notebook ダッシュボードの起動
+    * チュートリアル ノートブックをワークスペース内のフォルダーに複製します。
+    * クラウドベースのノートブック VM を作成します。
 
-* Jupyter Notebook のダッシュボードを起動したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを開きます。
+* 複製した **tutorials** フォルダーで、**img-classification-part1-training.ipynb** ノートブックを開きます。 
 
-チュートリアルと付随する **utils.py** ファイルは、独自の[ローカル環境](how-to-configure-environment.md#local)で使用する場合、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。  `matplotlib` と `scikit-learn` が環境にインストールされていることを確認してください。
 
+チュートリアルと付随する **utils.py** ファイルは、独自の[ローカル環境](how-to-configure-environment.md#local)で使用する場合、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` を実行して、このチュートリアルの依存関係をインストールします。
+
+> [!Important]
+> 以降この記事には、ノートブックと同じ内容が記載されています。  
+>
+> コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 
+> ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、上部のツール バーから **[すべて実行]** を選択して、ノートブック全体を実行します。
 
 ## <a name="start"></a>開発環境を設定する
 
@@ -143,51 +150,48 @@ else:
 
 ## <a name="explore-data"></a>データを調査する
 
-モデルをトレーニングする前に、トレーニングに使用するデータを解釈する必要があります。 また、クラウドのトレーニング環境で利用できるように、このデータをクラウドにアップロードする必要もあります。 このセクションでは、次の操作の実行方法を説明します。
+モデルをトレーニングする前に、トレーニングに使用するデータを解釈する必要があります。 このセクションでは、次の方法について説明します。
 
 * MNIST データセットをダウンロードする。
 * いくつかのサンプル イメージを表示する。
-* クラウド内のワークスペースにデータをアップロードする。
 
 ### <a name="download-the-mnist-dataset"></a>MNIST データセットのダウンロード
 
-MNIST データセットをダウンロードし、ファイルを `data` ディレクトリ内にローカルに保存します。 トレーニング用とテスト用両方のイメージとラベルがダウンロードされます。
+Azure Open Datasets を使用して、未加工の MNIST データ ファイルを取得します。 [Azure オープン データセット](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 各データセットには、異なる方法でデータを取得するための対応するクラスがあります (ここでは `MNIST`)。
+
+このコードを使用すると、データが `FileDataset` オブジェクトとして取得されます (これは `Dataset` のサブクラスです)。 `FileDataset` によって、データストアまたはパブリック URL 内の 1 つまたは複数の任意の形式のファイルが参照されます。 クラスには、データ ソースの場所への参照を作成することで、お使いのコンピューティングにファイルをダウンロードまたはマウントする機能が用意されています。 さらに、トレーニング中に簡単に取得できるように、データセットをワークスペースに登録します。
+
+SDK でのデータセットとその使用方法の詳細については、[方法](how-to-create-register-datasets.md)のページを参照してください。
 
 ```python
-import urllib.request
-import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
 
 data_folder = os.path.join(os.getcwd(), 'data')
 os.makedirs(data_folder, exist_ok=True)
 
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-labels.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-labels.gz'))
-```
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
 
-出力は、```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)``` のようになります。
+mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
+                                                 name='mnist_opendataset',
+                                                 description='training and test dataset',
+                                                 create_new_version=True)
+```
 
 ### <a name="display-some-sample-images"></a>複数のサンプル イメージの表示
 
-圧縮されたファイルを `numpy` 配列内に読み込みます。 それから `matplotlib` を使用して、ラベルがあるデータセットから 30 個のランダムなイメージをプロットします。 この手順には、`util.py` ファイルに含まれている `load_data` 関数が必要です。 このファイルは、サンプル フォルダーに含まれています。 このノートブックと同じフォルダーに配置されていることを確認します。 `load_data` 関数では、圧縮ファイルの numpy 配列への解析だけが行われます。
+圧縮されたファイルを `numpy` 配列内に読み込みます。 それから `matplotlib` を使用して、ラベルがあるデータセットから 30 個のランダムなイメージをプロットします。 この手順には、`util.py` ファイルに含まれている `load_data` 関数が必要です。 このファイルは、サンプル フォルダーに含まれています。 このノートブックと同じフォルダーに配置されていることを確認します。 `load_data` 関数は、圧縮ファイルを numpy 配列に解析するだけのものです。
 
 ```python
 # make sure utils.py is in the same directory as this code
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the model converge faster.
-X_train = load_data(os.path.join(
-    data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(
-    data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(os.path.join(data_folder, "train-images-idx3-ubyte.gz"), False) / 255.0
+X_test = load_data(os.path.join(data_folder, "t10k-images-idx3-ubyte.gz"), False) / 255.0
+y_train = load_data(os.path.join(data_folder, "train-labels-idx1-ubyte.gz"), True).reshape(-1)
+y_test = load_data(os.path.join(data_folder, "t10k-labels-idx1-ubyte.gz"), True).reshape(-1)
 
 # now let's show some randomly chosen images from the traininng set.
 count = 0
@@ -209,33 +213,6 @@ plt.show()
 
 これで、これらのイメージの概観が頭に浮かんだり、予測結果を想定したりできるようになりました。
 
-### <a name="create-a-filedataset"></a>FileDataset を作成する
-
-`FileDataset` オブジェクトでは、ご利用のワークスペース データストアまたはパブリック URL 内の 1 つまたは複数のファイルが参照されます。 ファイルは任意の形式にすることができ、クラスには、ファイルのダウンロードまたはご利用のコンピューティングへのファイルのマウントを行うための機能が用意されています。 `FileDataset` を作成することにより、データソースの場所への参照を作成します。 データセットに変換を適用した場合は、それらの変換もデータセットに格納されます。 データは既存の場所に残るので、追加のストレージ コストは発生しません。 詳細については、`Dataset` パッケージの[攻略](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets)ガイドを参照してください。
-
-```python
-from azureml.core.dataset import Dataset
-
-web_paths = [
-            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
-            ]
-dataset = Dataset.File.from_files(path=web_paths)
-```
-
-他のユーザーと共有したり、さまざまな実験で再利用したり、トレーニング スクリプト内で名前で参照したりできるように、データセットをご利用のワークスペースに登録するには、`register()` メソッドを使います。
-
-```python
-dataset = dataset.register(workspace=ws,
-                           name='mnist dataset',
-                           description='training and test dataset',
-                           create_new_version=True)
-```
-
-これで、モデルのトレーニングを開始するために必要なものがすべて揃いました。
-
 ## <a name="train-on-a-remote-cluster"></a>リモート クラスターでのトレーニング
 
 このタスクでは、以前に設定したリモート トレーニング クラスターにジョブを送信します。  ジョブを送信するには、次のようにします。
@@ -249,7 +226,6 @@ dataset = dataset.register(workspace=ws,
 必要なコードをコンピューターからリモート リソースに配信するためのディレクトリを作成します。
 
 ```python
-import os
 script_folder = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
@@ -351,7 +327,7 @@ env.python.conda_dependencies = cd
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': dataset.as_named_input('mnist').as_mount(),
+    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
     '--regularization': 0.5
 }
 

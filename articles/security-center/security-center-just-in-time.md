@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: a6326b2ea9b4c2247df4f93eba904b7527666131
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996378"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576401"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
 
@@ -61,12 +61,12 @@ VM で JIT ポリシーを構成するには、3 つの方法があります。
 - [Azure VM ブレードで JIT アクセスを構成する](#jit-vm)
 - [VM でプログラムから JIT ポリシーを構成する](#jit-program)
 
-## <a name="configure-jit-in-asc"></a>ASC で JIT を構成する
+## <a name="configure-jit-in-security-center"></a>Security Center で JIT を構成する
 
-ASC から JIT ポリシーを構成し、JIT のポリシー使用して VM へのアクセスを要求できます。
+Security Center から JIT ポリシーを構成し、JIT のポリシーを使用して VM へのアクセスを要求できます。
 
 
-### ASC で VM の JIT アクセスを構成する <a name="jit-asc"></a>
+### Security Center で VM の JIT アクセスを構成する <a name="jit-asc"></a>
 
 1. **[Security Center]** ダッシュボードを開きます。
 
@@ -114,9 +114,9 @@ ASC から JIT ポリシーを構成し、JIT のポリシー使用して VM へ
 >VM に対して JIT VM アクセスが有効になっている場合、Azure Security Center では、関連付けられているネットワーク セキュリティ グループと Azure Firewall 内の選択されたポートについて、"すべての受信トラフィックを拒否" という規則が作成されます。 選択したポートに対して他の規則が作成されている場合は、既存の規則が新しい "すべての受信トラフィックを拒否" 規則よりも優先されます。 選択したポートに既存の規則がない場合は、新しい "すべての着信トラフィックを拒否する" 規則がネットワーク セキュリティ グループと Azure Firewall で最優先されます。
 
 
-## <a name="request-jit-access-via-asc"></a>ASC から JIT アクセスを要求する
+## <a name="request-jit-access-via-security-center"></a>Security Center から JIT アクセスを要求する
 
-ASC から VM へのアクセス権を要求するには、以下の手順に従います。
+Security Center から VM へのアクセス権を要求するには、次の手順に従います。
 
 1. **[Just-in-time VM access] (Just-In-Time VM アクセス)** で、 **[構成済み]** タブを選択します。
 
@@ -140,7 +140,7 @@ ASC から VM へのアクセス権を要求するには、以下の手順に従
 > [!NOTE]
 > アクセスを要求しているユーザーがプロキシの背後にいる場合は、**My IP** オプションが機能しない場合があります。 組織のすべての IP アドレス範囲を定義する必要がある場合があります。
 
-## <a name="edit-a-jit-access-policy-via-asc"></a>ASC から JIT アクセス ポリシーを編集する
+## <a name="edit-a-jit-access-policy-via-security-center"></a>Security Center から JIT アクセス ポリシーを編集する
 
 VM の既存の Just-In-Time ポリシーを変更する場合、その VM 用に保護する新しいポートを追加して構成するか、既に保護されているポートに関連するその他の設定を変更します。
 
@@ -151,7 +151,7 @@ VM の既存の Just-In-Time ポリシーを編集するには:
 1. **[JIT VM アクセス構成]** では、既に保護されているポートの既存の設定を編集するか、新しいカスタム ポートを追加できます。 
   ![JIT VM アクセス](./media/security-center-just-in-time/edit-policy.png)
 
-## <a name="audit-jit-access-activity-in-asc"></a>ASC から JIT アクセス アクティビティを監査する
+## <a name="audit-jit-access-activity-in-security-center"></a>Security Center から JIT アクセス アクティビティを監査する
 
 ログ検索を使用して VM アクティビティについての情報が得ることができます。 ログを表示するには、以下の手順に従います。
 
@@ -168,11 +168,11 @@ VM の既存の Just-In-Time ポリシーを編集するには:
 
 
 
-## Azure VM ブレードで JIT アクセスを構成する<a name="jit-vm"></a>
+## Azure VM のページから JIT アクセスを構成する <a name="jit-vm"></a>
 
-作業を容易にするため、Azure の VM ブレード内から直接 JIT を使用して VM に接続できます。
+作業を容易にするため、Security Center の VM のページ内から直接 JIT を使用して VM に接続できます。
 
-### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-blade"></a>Azure VM ブレードで VM への JIT アクセスを構成する
+### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>Azure VM ページで VM への JIT アクセスを構成する
 
 VM への Just-In-Time アクセスのロールアウトを容易にするには、VM 内からの直接的な Just-In-Time アクセスのみを許可するように VM を設定できます。
 

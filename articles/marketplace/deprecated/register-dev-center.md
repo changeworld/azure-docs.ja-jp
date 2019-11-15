@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0dd53689f7528e73845ab47a9791f062e0f2cb0c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a7abb73f229c444f88626ef03c90f62e138023c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962782"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825919"
 ---
 # <a name="register-in-dev-center"></a>デベロッパー センターに登録する  
 個人用アカウントにサインインしていないことを確認するには、新しい Internet Explorer InPrivate または Chrome Incognito のブラウズ セッションを開きます。  
@@ -153,7 +154,7 @@ ms.locfileid: "70962782"
 * **アカウントの作成後にアカウントの種類を "個人" から "会社" アカウントに変更できますか?**
   > いいえ、アカウントが作成された後は、アカウントの種類を更新できません。
 
-* **市区町村を正しく入力してもエラー メッセージ "City is required" (市区町村は必須です) が表示されるのはなぜですか?**
+* **市区町村を正しく入力してもエラー メッセージ "市区町村は必須です" が表示されるのはなぜですか?**
   > 郵便番号も正しく入力されていることをご確認ください。 市区町村と郵便番号が検証されます。
 
 * **プロモーション コードはどうすれば取得できますか?**
@@ -163,7 +164,7 @@ ms.locfileid: "70962782"
   > 次の件名の verify@microsoft.com からの電子メールを探します。"Action needed:Verify your email account with Microsoft" (アクションが必要: Microsoft の電子メール アカウントをご確認ください)。 時間の制約がある認証リンクをクリックして登録を完了します。 *24 時間以内に電子メールが届かない場合は、迷惑メール フォルダーをご確認ください。*
 
 * **デベロッパー センターの検証後の次の手順は何ですか?**
-  > [Your programs]\(プログラム\) (https://developer.microsoft.com/dashboard/Account/Programs) に移動し、デベロッパー センター アカウントにログインします。 Azure が登録されているプログラムとして表示されない場合は、[Recommended programs for you]\(お勧めのプログラム\) の下で Azure を検索し、[Get Started]\(使用を開始する\) を選択します。
+  > "お客様のプログラム" (https://developer.microsoft.com/dashboard/Account/Programs) に移動し、デベロッパー センター アカウントにログインします。 Azure が登録されているプログラムとして表示されない場合は、[Recommended programs for you]\(お勧めのプログラム\) の下で Azure を検索し、[開始] を選択します。
 
 * **Cloud パートナー ポータルの発行元プロファイルに、デベロッパー センターのアカウントをリンクする方法**
   > 発行前の最後の手順は、ご自分のデベロッパー センターのアカウントを Cloud パートナー ポータルの[プロファイル](https://cloudpartner.azure.com/#profile)にリンクすることです。 デベロッパー センターのアカウントが [Cloud パートナー ポータル](https://cloudpartner.azure.com/#alloffers)のアカウントと異なる場合は、Cloud パートナー ポータルでデベロッパー センターのアカウントを新しい[ユーザー](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users)として追加します。 ご自分のデベロッパー センターのアカウントを使用して [Cloud パートナー ポータル](https://cloudpartner.azure.com/#alloffers)にログインします。 Web ブラウザーの右上にあるメニューで、[発行元プロファイル] を選択します。 [Link Dev Center Account]\(デベロッパー センター アカウントをリンクする\) を選択します。
@@ -182,7 +183,7 @@ ms.locfileid: "70962782"
   > デベロッパー センター アカウントに税金と銀行の情報を入力しないと、トランザクション オファーを発行することはできません。  アカウント情報の追加について詳しくは、[銀行口座および税の情報を追加する方法](https://docs.microsoft.com/azure/marketplace/register-dev-center)に関するセクションをご覧ください。
 
 * **デベロッパー センターの Microsoft ログイン アカウントを変更することはできますか?**
-  > いいえ。 デベロッパー センターが作成された後、所有者アカウントは変更できません。 目的の Microsoft アカウントを使用して新しいデベロッパー センター アカウントの作成を最初からやり直す必要があります。
+  > No. デベロッパー センターが作成された後、所有者アカウントは変更できません。 目的の Microsoft アカウントを使用して新しいデベロッパー センター アカウントの作成を最初からやり直す必要があります。
 
 * **デベロッパー センターの登録に関する問題のサポートについてはどこに問い合わせればよいですか?**
   サポートにアクセスするには、「Windows 開発者向けサポート」ページ ([developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)) ページを参照してください。 

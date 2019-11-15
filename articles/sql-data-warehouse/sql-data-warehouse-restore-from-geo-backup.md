@@ -1,5 +1,5 @@
 ---
-title: geo バックアップからの Azure SQL Data Warehouse の復元 | Microsoft Docs
+title: geo バックアップからデータ ウェアハウスを復元する
 description: Azure SQL Data Warehouse を geo 復元する方法を説明します。
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 768646522c2589c302fd7a58031d4ebdb7fcdc12
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 69eb1221686da61868df8b06ed80664ae76d1627
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68425878"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685506"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の geo 復元
 
@@ -79,7 +80,7 @@ Azure SQL Data Warehouse を geo バックアップから復元するには、�
 1. **[+ Create a resource]\(+ リソースの作成\)** をクリックし、SQL Data Warehouse を検索して、 **[作成]** をクリックします。
 
     ![新しい DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. **[基本]** タブで要求された情報を入力し、 **[次へ: 追加設定]** をクリックします。
+1. **[基本]** タブで要求された情報を入力し、 **[次へ: 追加設定]** を選択します。
 
     ![基本](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 1. **[既存のデータを使用します]** パラメーターで、 **[バックアップ]** を選択し、スクロール ダウン オプションから適切なバックアップを選択します。 **[Review + Create]\(レビュー + 作成\)** をクリックします。

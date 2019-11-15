@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dc572d29b4e6d95525959becad0ed8069735e33c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678247"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606044"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -37,7 +37,7 @@ ms.locfileid: "72678247"
 
 変更分析では、[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) が使用され、アプリケーションをホストしている Azure リソースが時間と共にどのように変更されたかを示す履歴の記録が提供されます。 変更分析では、たとえば、IP 構成ルール、マネージド ID、SSL 設定の変更を検出できます。 そのため、Web アプリにタグが追加された場合、変更分析にはその変更が反映されます。 この情報は、`Microsoft.ChangeAnalysis` リソース プロバイダーが Azure サブスクリプションで有効な限り、利用できます。
 
-### <a name="changes-in-web-app-deployment-and-configuration"></a>Web アプリのデプロイと構成の変更
+### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Web アプリのデプロイと構成の変更 (ゲスト内の変更)
 
 変更分析では、4 時間ごとにアプリケーションのデプロイと構成の状態がキャプチャされます。 たとえば、アプリケーション環境変数の変更を検出できます。 このツールで差分が計算され、変更点が提示されます。 Resource Manager の変更とは異なり、ツールでコード デプロイの変更情報をすぐに利用できない場合があります。 変更分析で最新の変更を表示するには、 **[Scan changes now]\(今すぐ変更をスキャン\)** を選択します。
 
@@ -51,10 +51,32 @@ ms.locfileid: "72678247"
 - Azure Storage
 - Azure SQL
 
+## <a name="viewing-changes-for-all-resources-in-azure"></a>Azure のすべてのリソースに対する変更内容を表示する
+Azure Monitor では、変更分析のためのスタンドアロン ブレードがあり、すべての変更内容が分析情報およびアプリケーション依存リソースと一緒に表示されます。
+
+Azure portal の検索バーで変更分析を検索し、ブレードを起動します。
+
+![Azure portal における変更分析の検索のスクリーンショット](./media/change-analysis/search-change-analysis.png)
+
+リソース グループとリソースを選択して、変更内容の表示を開始します。
+
+![Azure portal の変更分析ブレードのスクリーンショット](./media/change-analysis/change-analysis-standalone-blade.png)
+
+分析情報およびアプリケーションをホストする関連した依存リソースを表示することもできます。 この表示は、開発者が問題のトラブルシューティングを行うために、アプリケーションを中心にして設計されています。
+
+現在サポートされているリソースは次のとおりです。
+- Virtual Machines
+- 仮想マシン スケール セット
+- Azure ネットワーク リソース
+- ゲスト内のファイル追跡と環境変数の変更内容に関する Web アプリ
+
+フィードバックについては、ブレードにあるフィードバックの送信用のボタンを使用するか、changeanalysisteam@microsoft.com まで電子メールを送信してください。 
+
+![変更分析ブレードのフィードバック ボタンのスクリーンショット](./media/change-analysis/change-analysis-feedback.png)
 
 ## <a name="change-analysis-for-the-web-apps-feature"></a>Web アプリ機能の変更分析
 
-Azure Monitor では、現在、変更分析はセルフサービスの**問題の診断と解決**エクスペリエンスに組み込まれています。 このエクスペリエンスには、App Service アプリケーションの **[概要]** ページからアクセスします。
+Azure Monitor では、変更分析はセルフサービスの**問題の診断と解決**エクスペリエンスにも組み込まれています。 このエクスペリエンスには、App Service アプリケーションの **[概要]** ページからアクセスします。
 
 ![[概要] ボタンと [問題の診断と解決] ボタンのスクリーンショット](./media/change-analysis/change-analysis.png)
 

@@ -1,7 +1,7 @@
 ---
 title: 例から実験を開始する
-titleSuffix: Azure Machine Learning Studio
-description: Azure AI Gallery と Azure Machine Learning Studio を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
+titleSuffix: ML Studio (classic) Azure
+description: Azure AI Gallery と Azure Machine Learning Studio (クラシック) を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: f88323069ed23f4a038ffa4a030b1c4d4541ec42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa23612070a5b0c1a33c2effb9cd9e533ca5eada
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61460389"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670638"
 ---
-# <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Azure Machine Learning Studio の実験を作成する
+# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Azure Machine Learning Studio (クラシック) の実験を作成する
 
 機械学習実験を一から作成する代わりに、[Azure AI ギャラリー](https://gallery.azure.ai/)にあるサンプル実験をベースとして使う方法について説明します。 サンプルを使って独自の機械学習ソリューションを構築することができます。
 
-ギャラリーには、Microsoft Azure Machine Learning Studio チームによるサンプル実験だけでなく、Machine Learning コミュニティで共有されているサンプルもあります。 また、実験について質問したり、コメントを投稿したりすることができます。
+ギャラリーには、Microsoft Azure Machine Learning Studio (クラシック) チームによるサンプル実験だけでなく、Machine Learning コミュニティで共有されているサンプルもあります。 また、実験について質問したり、コメントを投稿したりすることができます。
 
 ギャラリーの使用方法については、[初心者向けデータ サイエンス](data-science-for-beginners-the-5-questions-data-science-answers.md) シリーズの 3 分間のビデオ「[他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)」をご覧ください。
 
@@ -48,20 +48,15 @@ ms.locfileid: "61460389"
 
     ![実験例](./media/sample-experiments/example-experiment.png)
 
-    > [!NOTE]
-    > Machine Learning Studio で初めて実験を開くときは、Azure サブスクリプションを無料で試すか購入できます。 [Machine Learning Studio の無料試用版と有料サービスの詳細](https://azure.microsoft.com/pricing/details/machine-learning/)
-    >
-    >
-
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>サンプルをテンプレートとして使用して新しい実験を作成する
-ギャラリーのサンプルをテンプレートとして使用して、Machine Learning Studio で新しい実験を作成することもできます。
+ギャラリーのサンプルをテンプレートとして使用して、Machine Learning Studio のクラシック バージョンで新しい実験を作成することもできます。
 
 1. Microsoft アカウントの資格情報で [Studio](https://studio.azureml.net)にサインインし、 **[新規]** をクリックして実験を作成します。
 2. サンプルのコンテンツを参照し、いずれかをクリックします。
 
-サンプル実験をテンプレートとして使用して、Machine Learning Studio ワークスペースに新しい実験が作成されます。
+サンプル実験をテンプレートとして使用して、Machine Learning Studio (クラシック) ワークスペースに新しい実験が作成されます。
 
 ## <a name="next-steps"></a>次の手順
 * [さまざまなソースからデータをインポートする](import-data.md)
 * [Machine Learning 向け R 言語のクイックスタート チュートリアル](r-quickstart.md)
-* [Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)
+* [Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)

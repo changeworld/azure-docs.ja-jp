@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472459"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662591"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -33,19 +33,20 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 * 既定の (最初の) ノード プールは削除できません。
 * HTTP アプリケーションのルーティング アドオンは使用できません。
+* AKS クラスターが複数のノード プールを使用するためには、Standard SKU のロード バランサーを使用する必要があります。Basic SKU のロード バランサーでは、この機能がサポートされません。
+* AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
 * ほとんどの操作と同様に、既存の Resource Manager テンプレートを使用してノード プールを追加したり、削除したりすることはできません。 代わりに、[別の Resource Manager テンプレートを使用](#manage-node-pools-using-a-resource-manager-template)して、AKS クラスター内のノード プールに変更を加えます。
 * ノード プールの名前は、小文字で始める必要があり、英数字のみを含めることができます。 Linux ノード プールの場合、長さは 1 から 12 文字である必要があります。Windows ノード プールの場合、長さは 1 から 6 文字である必要があります。
 * AKS クラスターは、最大で 8 つノード プールを持つことができます。
 * AKS クラスターは、この 8 つのノード プール全体で最大 400 のノードを持つことができます。
 * すべてのノード プールは、同じサブネット内に存在する必要があります。
-* AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
 まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。 次の手順では、*1.13.10* の *--kubernetes-version* を使用してノード プールを更新する方法を示しています。 [Kubernetes のサポートされている任意のバージョン][supported-versions]を指定できます。
 
 > [!NOTE]
-> 複数のノード プールを使用する場合、*Basic* ロード バランサー SKU はサポートされません。 既定では、AKS クラスターは *Standard* ロード バランサー SKU で作成されます。
+> 複数のノード プールを使用する場合、*Basic* ロード バランサー SKU はサポートされません。 既定では、AKS クラスターが、Azure CLI および Azure portal から *Standard* ロード バランサー SKU で作成されます。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -547,20 +548,7 @@ AKS ノードは、通信用に独自のパブリック IP アドレスを必要
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-登録が正常に完了したら、[上記](#manage-node-pools-using-a-resource-manager-template)と同じ手順に従って Azure Resource Manager テンプレートをデプロイし、次のブール値プロパティ "enableNodePublicIP" を agentPoolProfiles に追加します。 指定しない場合は、既定で `false` として設定されるため、これを `true` に設定します。 これは作成時限定のプロパティであり、2019-06-01 の最小 API バージョンが必要です。 これは、Linux と Windows のどちらのノード プールにも適用できます。
-
-```
-"agentPoolProfiles":[  
-    {  
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]",
-      "enableNodePublicIP":true
-    }
-```
+登録が正常に完了したら、[上記](#manage-node-pools-using-a-resource-manager-template)と同じ手順に従って Azure Resource Manager テンプレートをデプロイし、ブール値プロパティ `enableNodePublicIP` を agentPoolProfiles に追加します。 指定しない場合は、既定で `false` として設定されるため、これを `true` に設定します。 これは作成時限定のプロパティであり、2019-06-01 の最小 API バージョンが必要です。 これは、Linux と Windows のどちらのノード プールにも適用できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

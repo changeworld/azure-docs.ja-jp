@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使って Machine Learning モデルを更新する | Microsoft Docs
+title: Azure Data Factory を使用して Machine Learning モデルを更新する
 description: Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a980f269c8b88618ffa3311c05310a88ade379ed
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140474"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683118"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 

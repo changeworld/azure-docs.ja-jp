@@ -1,32 +1,40 @@
 ---
-title: Power BI を使用してナレッジ ストアに接続する
+title: Power BI を使用してナレッジ ストア (プレビュー) に接続する
 titleSuffix: Azure Cognitive Search
-description: 分析と探索を目的に Power BI を使用して Azure Cognitive Search のナレッジ ストアに接続します。
+description: 分析と探索を目的に Power BI を使用して Azure Cognitive Search のナレッジ ストア (プレビュー) に接続します。
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790068"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715495"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Power BI を使用してナレッジ ストアに接続する
 
-> [!Note]
-> ナレッジ ストアはプレビュー段階であるため、運用環境では使用しないでください。 この機能は、[Azure Cognitive Search REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供されています。 現時点で .NET SDK のサポートはありません。
->
-この記事では、Power BI Desktop アプリの Power Query を使用してナレッジ ストアに接続し、探索する方法を説明します。 このチュートリアルで使用されているナレッジ ストア サンプルを作成する方法については、「[Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)」を参照してください。
+> [!IMPORTANT] 
+> ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
-## <a name="prerequisites"></a>前提条件
+この記事では、Power BI Desktop アプリの Power Query を使用してナレッジ ストアに接続し、探索する方法を説明します。 テンプレートを使用してすぐに作業を開始することも、カスタム ダッシュボードを最初から作成することもできます。
 
-+ 「[Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)」の手順に従って、このチュートリアルに使用されているサンプル ナレッジ ストアを作成します。 ナレッジ ストアの作成に使用した Azure Storage アカウントの名前とそのアクセス キー (Azure portal から入手) も必要になります。
++ [Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)に関するページか、「[REST を使用して Azure Cognitive Search のナレッジ ストアを作成する](knowledge-store-create-rest.md)」の手順に従って、このチュートリアルに使用されているサンプル ナレッジ ストアを作成します。 ナレッジ ストアの作成に使用した Azure Storage アカウントの名前とそのアクセス キー (Azure portal から入手) も必要になります。
 
 + [Power BI Desktop をインストール](https://powerbi.microsoft.com/downloads/)します。
+
+## <a name="sample-power-bi-template---azure-portal-only"></a>サンプル Power BI テンプレート - Azure portal のみ
+
+[Azure portal を使用してナレッジ ストアを作成](knowledge-store-create-portal.md)した場合は、[Azure Cognitive Search Power BI テンプレート サンプル](https://github.com/Azure-Samples/cognitive-search-templates)を使用して Power BI の視覚エフェクトを表示し、試すことができます。 このテンプレートは、**データのインポート** ウィザードの手順に従ってダウンロードすることもできます。
+
+以降この記事の中で説明しているセットアップ手順は、サンプル テンプレートによって自動的に実行されます。 ただし、REST API を使用してナレッジ ストアを作成した場合は、テンプレートは省略し、この記事の残りのセクションを参照して、ナレッジ ストアを Power BI に接続します。 まずは、「[Power BI を使用した接続](#connect-with-power-bi)」をお読みください。
+
+サンプル テンプレートには、WordCloud や Network Navigator など、いくつかの視覚エフェクトが含まれています。 テンプレートに含まれる一部の視覚エフェクト (Locations マップ、Entity-Graph Viewer など) では、[Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)に関するページで作成したサンプル ナレッジ ストアのデータが表示されません。 これは、**データのインポート** ウィザードで利用できる AI エンリッチメントの一部しか使用されていないためです。
+
+![サンプル Azure Cognitive Search Power BI テンプレート](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "サンプル Power BI テンプレート")
 
 ## <a name="connect-with-power-bi"></a>Power BI を使用した接続
 

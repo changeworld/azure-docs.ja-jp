@@ -9,15 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/05/2019
-ms.openlocfilehash: 3fe25f0f8297a7b743ed5f522e8a35deb165a039
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.date: 11/04/2019
+ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695612"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796695"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>バッチ スコアリング用の Azure Machine Learning パイプラインを作成して使用する
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 このチュートリアルでは、Azure Machine Learning のパイプラインを使用してバッチ スコアリング ジョブを実行します。 この例では、事前トレーニング済みの [Inception-V3](https://arxiv.org/abs/1512.00567) 畳み込みニューラル ネットワーク TensorFlow モデルを使用して、ラベル付けされていない画像を分類します。 パイプラインを作成して発行したら、REST エンドポイントを構成します。それを使用して、任意のプラットフォームで任意の HTTP ライブラリからパイプラインをトリガーできます。
 
@@ -463,7 +465,7 @@ df.head(10)
 
 ## <a name="publish-and-run-from-a-rest-endpoint"></a>発行して REST エンドポイントから実行する
 
-次のコードを実行してパイプラインをワークスペースに発行します。 Azure portal のワークスペースでは、実行の履歴や時間など、パイプラインのメタデータを確認できます。 ポータルから手動でパイプラインを実行することもできます。
+次のコードを実行してパイプラインをワークスペースに発行します。 Azure Machine Learning Studio のワークスペースでは、実行の履歴や時間など、パイプラインのメタデータを確認できます。 Studio から手動でパイプラインを実行することもできます。
 
 パイプラインを発行すると、任意のプラットフォーム上の任意の HTTP ライブラリから REST エンドポイントを使用してパイプラインを実行できるようになります。
 
@@ -478,7 +480,7 @@ REST エンドポイントからパイプラインを実行するには、OAuth2
 
 サービス プリンシパル認証では、*Azure Active Directory* に "*アプリの登録*" を作成する必要があります。 まず、クライアント シークレットを生成したうえで、ご自分の機械学習ワークスペースへの "*ロール アクセス*" をサービス プリンシパルに付与します。 認証フローは、[`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) クラスを使用して管理します。 
 
-`InteractiveLoginAuthentication` と `ServicePrincipalAuthentication` は、どちらも `AbstractAuthentication` を継承します。 どちらの場合も同じように `get_authentication_header()` 関数を使用してヘッダーをフェッチします。
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) と `ServicePrincipalAuthentication` は、どちらも `AbstractAuthentication` を継承します。 どちらの場合も同じように [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) 関数を使用してヘッダーをフェッチします。
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -487,7 +489,7 @@ interactive_auth = InteractiveLoginAuthentication()
 auth_header = interactive_auth.get_authentication_header()
 ```
 
-REST URL は、発行済みのパイプライン オブジェクトの `endpoint` プロパティから取得します。 Azure portal 内のワークスペースで REST URL を確認することもできます。 
+REST URL は、発行済みのパイプライン オブジェクトの `endpoint` プロパティから取得します。 REST URL は、Azure Machine Learning Studio のワークスペースでも確認できます。 
 
 このエンドポイントに対する HTTP POST 要求を作成します。 要求には、認証ヘッダーを指定します。 実験の名前とバッチ サイズ パラメーターが含まれた JSON ペイロード オブジェクトを追加します。 このチュートリアルで前に述べたように、`param_batch_size` は、ステップの構成で `PipelineParameter` オブジェクトとして定義したため、`batch_scoring.py` スクリプトに渡されます。
 
@@ -522,12 +524,7 @@ Azure Machine Learning の他のチュートリアルを実行する予定の場
 
 ### <a name="stop-the-notebook-vm"></a>ノートブック VM を停止する
 
-クラウド ノートブック サーバーを使用していた場合は、コストを抑えるために、使用していない VM を停止します。
-
-1. ワークスペースで、 **[ノートブック VM]** を選択します。
-1. VM の一覧で、停止したい VM を選択します。
-1. **[停止]** を選択します。
-1. サーバーを再び使用する準備が整ったら、 **[開始]** を選択します。
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>すべてを削除する
 

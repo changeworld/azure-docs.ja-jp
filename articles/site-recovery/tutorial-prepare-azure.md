@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用してオンプレミス マシンのディザスター リカバリーを準備する
+title: Azure Site Recovery を使用してオンプレミスのディザスター リカバリーを準備する
 description: Azure Site Recovery を使用してオンプレミス マシンのディザスター リカバリーのために Azure を準備する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814343"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620591"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>オンプレミス マシンのディザスター リカバリーのために Azure リソースを準備する
+# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>オンプレミスから Azure へのディザスター リカバリーを準備する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの VMware VM、Hyper-V VM、または Windows/Linux 物理サーバーの Azure へのディザスター リカバリーを設定できるように、Azure のリソースとコンポーネントを準備する方法について説明します。
 
@@ -54,16 +54,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
-1. Azure portal で **[+ リソースの作成]** をクリックし、Marketplace で "**Recovery**" を検索します。
-2. **[Backup and Site Recovery]** をクリックし、[Backup and Site Recovery] ページで **[作成]** をクリックします。 
-1. **[Recovery Services コンテナー]**  >  **[名前]** に、コンテナーを識別するフレンドリ名を入力します。 この一連のチュートリアルでは、**ContosoVMVault** を使用します。
-2. **[リソース グループ]** で、既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは **contosoRG** を使用しています。
-3. **[場所]** で、コンテナーを配置するリージョンを選びます。 **[西ヨーロッパ]** を使います。
-4. ダッシュボードから資格情報コンテナーにすばやくアクセスするには、 **[ダッシュボードにピン留めする]**  >  **[作成]** の順に選択します。
+1. Azure portal メニューで **[リソースの作成]** を選択し、Marketplace で "**Recovery**" を検索します。
+2. 検索結果から **[Backup and Site Recovery]\(バックアップおよびサイトの回復\)** を選択し、[Backup and Site Recovery]\(バックアップおよびサイトの回復\) ページで **[作成]** をクリックします。 
+3. **[Recovery Services コンテナーの作成]** ページで、 **[サブスクリプション]** を選択します。 ここでは **Contoso サブスクリプション**を使用します。
+4. **[リソース グループ]** で、既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは **contosoRG** を使用しています。
+5. **[コンテナー名]** に、コンテナーを識別する表示名を入力します。 この一連のチュートリアルでは、**ContosoVMVault** を使用します。
+6. **[リージョン]** で、コンテナーを配置するリージョンを選びます。 **[西ヨーロッパ]** を使います。
+7. **[Review + create]\(レビュー + 作成\)** を選択します。
 
    ![新しい資格情報コンテナーの作成](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   新しい資格情報コンテナーは、 **[ダッシュボード]**  >  **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに表示されます。
+   新しいコンテナーは、 **[ダッシュボード]**  >  **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページの一覧に表示されます。
 
 ## <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
 
@@ -72,16 +73,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
 2. デプロイ モデルとして **[リソース マネージャー]** をそのまま選択します。
 3. **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 このチュートリアルでは **ContosoASRnet** を使います。
-4. ネットワークを作成するリソース グループを指定します。 既存のリソース グループ **contosoRG** を使っています。
-5. **[アドレス範囲]** に、ネットワークの範囲を入力します。 ここでは、サブネットを使用せずに **10.1.0.0/24** を使用しています。
-6. **[サブスクリプション]** で、ネットワークを作成するサブスクリプションを選択します。
+4. **[アドレス空間]** で、仮想ネットワークのアドレス範囲を CIDR 表記で入力します。 ここでは **10.1.0.0/24** を使用します。
+5. **[サブスクリプション]** で、ネットワークを作成するサブスクリプションを選択します。
+6. ネットワークを作成する**リソース グループ**を指定します。 既存のリソース グループ **contosoRG** を使っています。
 7. **[場所]** で、Recovery Services コンテナーが作成されたリージョンと同じリージョンを選択します。 このチュートリアルでは、"**西ヨーロッパ**" を使用します。 ネットワークは、コンテナーと同じリージョンにある必要があります。
-8. 基本的な DDoS 保護の既定のオプションのままにし、ネットワーク上にサービス エンドポイントはありません。
-9. **Create** をクリックしてください。
+8. **[アドレス範囲]** に、ネットワークの範囲を入力します。 ここでは、サブネットを使用せずに **10.1.0.0/24** を使用しています。
+9. 基本的な DDoS 保護の既定のオプションのままにし、ネットワーク上にサービス エンドポイントもファイアウォールも置きません。
+9. **作成** を選択します。
 
    ![仮想ネットワークの作成](media/tutorial-prepare-azure/create-network.png)
 
-仮想ネットワークの作成には数秒かかります。 作成が完了すると、Azure Portal ダッシュボードに表示されます。
+仮想ネットワークの作成には数秒かかります。 作成が完了すると、Azure portal ダッシュボードに表示されます。
 
 
 

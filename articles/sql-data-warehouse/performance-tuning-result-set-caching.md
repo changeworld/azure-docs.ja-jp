@@ -1,6 +1,6 @@
 ---
-title: 結果セットのキャッシュを使用したパフォーマンスのチューニング |Microsoft Docs
-description: 機能の概要
+title: 結果セットのキャッシュを使用したパフォーマンスのチューニング
+description: Azure SQL Data Warehouse の結果セット キャッシュ機能の概要
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: f6323501fc0078677c4c0e2cd0e43a15583df29b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 461320b9c3ed48176fb60fe695704c582edcd552
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513987"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692940"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>結果セットのキャッシュを使用したパフォーマンスのチューニング  
 結果セットのキャッシュが有効にされている場合、Azure SQL Data Warehouse では、繰り返し使用するためにクエリ結果がユーザー データベースに自動的にキャッシュされます。  これにより、以降のクエリ実行で永続キャッシュから直接結果を取得できるため、再計算は必要ありません。   結果セットのキャッシュにより、クエリのパフォーマンスが向上し、コンピューティング リソースの使用量が減少します。  さらに、キャッシュされた結果セットを使用するクエリはコンカレンシー スロットをまったく使用しないため、既存のコンカレンシー制限にはカウントされません。 セキュリティのため、キャッシュされた結果にアクセスできるのは、そのユーザーがキャッシュされた結果を作成したユーザーと同じデータ アクセス許可を持っている場合のみです。  
@@ -34,11 +35,27 @@ ms.locfileid: "72513987"
 結果セットのキャッシュがデータベースに対してオンになると、キャッシュがいっぱいになるまで、すべてのクエリに対して結果がキャッシュされます。ただし、次のクエリは除きます。
 - DateTime.Now() などの非決定論的関数を使用するクエリ
 - ユーザー定義関数を使用したクエリ
+- 行レベルのセキュリティまたは列レベルのセキュリティが有効になっているテーブルを使用したクエリ
 - 64 KB を超える行サイズのデータを返すクエリ
 
-大規模な結果セット (たとえば、100 万行を超えるもの) を含むクエリでは、結果キャッシュが作成される最初の実行時にパフォーマンスが低下する可能性があります。
+> [!IMPORTANT]
+> 結果セットのキャッシュを作成し、そのキャッシュからデータを取得する操作は、データ ウェアハウス インスタンスの制御ノードで行われます。 結果セットのキャッシュを有効にした場合、大きな結果セット (たとえば 100 万行超) を返すクエリを実行すると、制御ノードで CPU 使用率が高くなり、インスタンスでのクエリ応答全体が遅くなる可能性があります。  これらのクエリは、通常、データの探索または ETL 操作中に使用されます。 制御ノードに負荷を与え、パフォーマンスの問題が発生するのを防ぐため、ユーザーは、このようなクエリを実行する前に、データベースの結果セットのキャッシュを無効にする必要があります。  
 
-行レベルのセキュリティは、結果セットのキャッシュではサポートされていません。  
+クエリの結果セットのキャッシュ操作にかかる時間に、次のクエリを実行します。
+
+```sql
+SELECT step_index, operation_type, location_type, status, total_elapsed_time, command 
+FROM sys.dm_pdw_request_steps 
+WHERE request_id  = <'request_id'>; 
+```
+
+結果セットのキャッシュを無効にして実行されたクエリの出力例を次に示します。
+
+![Query-steps-with-rsc-disabled](media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+
+結果セットのキャッシュを有効にして実行されたクエリの出力例を次に示します。
+
+![Query-steps-with-rsc-enabled](media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>キャッシュされた結果が使用される場合
 
@@ -50,7 +67,7 @@ ms.locfileid: "72513987"
 次のコマンドを実行して、クエリが結果キャッシュ ヒットで実行されたのか、結果キャッシュ ミスで実行されたのかを確認します。 キャッシュ ヒットがあった場合、result_cache_hit は 1 を返します。
 
 ```sql
-SELECT request_id, command, result_cache_hit FROM sys.pdw_exec_requests 
+SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

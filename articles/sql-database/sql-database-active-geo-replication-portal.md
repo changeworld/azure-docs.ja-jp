@@ -1,5 +1,5 @@
 ---
-title: Azure portal:SQL Database の geo レプリケーション | Microsoft Docs
+title: 'Azure portal: geo レプリケーション'
 description: Azure portal を使用して Azure SQL Database の単一データベースまたはプールされたデータベースの geo レプリケーションを構成し、フェールオーバーを開始する
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103223"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808123"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 

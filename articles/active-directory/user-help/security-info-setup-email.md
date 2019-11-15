@@ -1,5 +1,5 @@
 ---
-title: メール アドレスを使用するようにセキュリティ情報 (プレビュー) を設定する - Azure Active Directory | Microsoft Docs
+title: メール アドレスを使用するようにセキュリティ情報 (プレビュー) を設定する - Azure AD
 description: メール アドレスを利用して本人確認をするようにセキュリティ情報を設定する方法です。
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8f5590cb528082a73cbdf92850218993a1a6b95
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a025005065174d5a6ca5fca27ee06ebb036b7b1d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161022"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820340"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>メール アドレスを使用するようにセキュリティ情報 (プレビュー) を設定する
 

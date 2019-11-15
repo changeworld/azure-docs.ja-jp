@@ -1,5 +1,5 @@
 ---
-title: Azure portal:クエリ エディターを使用した Azure SQL Database の照会 | Microsoft Docs
+title: Azure portal:クエリ エディターを使用してクエリを実行する
 description: SQL クエリ エディターを使用して、Azure Portal で SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
 keywords: sql database への接続, azure portal, ポータル, クエリ エディター
 services: sql-database
@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/28/2019
-ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/24/2019
+ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569164"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827111"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>クイック スタート:Azure portal の SQL クエリ エディターを使用した接続とデータの照会
 
@@ -31,7 +31,7 @@ SQL クエリ エディターは、お使いの Azure SQL Database または Azu
 
   || 単一データベース |
   |:--- |:--- |
-  | Create| [ポータル](sql-database-single-database-get-started.md) |
+  | 作成| [ポータル](sql-database-single-database-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)|
@@ -46,41 +46,47 @@ SQL クエリ エディターは、お使いの Azure SQL Database または Azu
 
 ## <a name="connect-using-sql-authentication"></a>SQL 認証を使用して接続する
 
-1. 左側のメニューから **[SQL データベース]** を選択して、**mySampleDatabase** を選びます。
+1. Azure portal に移動して、SQL データベースに接続します。 **SQL データベース**を検索して選択します。
 
-2. 左側のメニューで、 **[クエリ エディター (プレビュー)]** を探して選択します。 **[ログイン]** ページが表示されます。
+    ![SQL データベースの一覧に移動: Azure portal](./media/sql-database-connect-query-portal/search-for-sql-databases.png)
+
+2. SQL データベースを選択します。
+
+    ![SQL データベースの選択: Azure portal](./media/sql-database-connect-query-portal/select-a-sql-database.png)
+
+3. **[SQL データベース]** メニューで、 **[クエリ エディター (プレビュー)]** を選択します。
 
     ![クエリ エディターの検索](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. **[認証の種類]** ドロップダウン メニューから **[SQL Server 認証]** を選択して、データベースの作成に使用するサーバー管理者アカウントのユーザー ID とパスワードを入力します。
+4. **[ログイン]** ページで、 **[SQL Server 認証]** ラベルの下に、データベースを作成するために使用するサーバー管理者アカウントの **[ログイン]** ID と **[パスワード]** を入力します。 **[OK]** をクリックします。
 
     ![sign in](./media/sql-database-connect-query-portal/login-menu.png)
 
-4. **[OK]** を選択します。
-
-
 ## <a name="connect-using-azure-active-directory"></a>Azure Active Directory への接続
 
-Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azure portal と SQL データベースにサインインできます。 お使いの SQL Server の AD 管理者を構成するには、次の手順に従います。
+Azure Active Directory (Azure AD) 管理者を構成すると、単一の ID を使用して Azure portal と SQL データベースにサインインできます。 お使いの SQL Server の Azure AD 管理者を構成するには、次の手順に従います。
 
 > [!NOTE]
-> * 電子メール アカウント (たとえば、outlook.com、gmail.com、yahoo.com など) は、AD 管理者としてまだサポートされていません。 Azure AD でネイティブに作成されたユーザーか、Azure AD にフェデレーションされたユーザーのどちらかを必ず選択します。
+> * 電子メール アカウント (たとえば、outlook.com、gmail.com、yahoo.com など) は、Azure AD 管理者としてはまだサポートされていません。 Azure AD でネイティブに作成されたユーザーか、Azure AD にフェデレーションされたユーザーのどちらかを必ず選択します。
 > * Azure AD 管理者のサインインは、2 要素認証が有効になっているアカウントでは機能しません。
 
-1. 左側のメニューから **[すべてのリソース]** を選択してから、お使いの SQL Server を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから、 **[すべてのリソース]** を選択します。
 
-2. お使いの SQL Server の **[設定]** メニューから、 **[Active Directory 管理者]** を選択します。
+2. お使いの SQL Server を選択します。
 
-3. AD 管理者ページのツールバーから、 **[管理者の設定]** を選択し、ユーザーまたはグループを AD 管理者として選択します。
+3. **[SQL Server]** メニューで、 **[設定]** の下の **[Active Directory 管理者]** を選択します。
+
+4. SQL Server の **[Active Directory 管理者]** ページのツールバーから、 **[管理者の設定]** を選択し、ユーザーまたはグループを Azure AD 管理者として選択します。
 
     ![Active Directory を選択する](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-4. AD 管理者ページのツールバーから、 **[保存]** を選択します。
+5. **[管理者の追加]** ページで、[検索] ボックスにユーザーまたはグループを入力して検索し、管理者として選択した後、 **[選択]** ボタンを選択します。
 
-5. **mySampleDatabase** データベースに移動して、左側のメニューから **[クエリ エディター (プレビュー)]** を選択します。 **[ログイン]** ページが表示されます。 AD 管理者である場合は、右側にある **[Active Directory シングル サインオン]** の下に、サインインしたことを示すメッセージが表示されます。
+6. SQL Server の **[Active Directory 管理者]** ページに戻り、ツールバーの **[保存]** を選択します。
 
-6. **[OK]** を選択します。
+7. **[SQL Server]** メニューで、 **[SQL データベース]** を選択し、お使いの SQL データベースを選択します。
 
+8. **[SQL データベース]** メニューで、 **[クエリ エディター (プレビュー)]** を選択します。 **[ログイン]** ページで、 **[Active Directory 認証]** ラベルの下に、サインインしたことを示すメッセージが表示されます (Azure AD 管理者の場合)。次に、 **[ *\<ユーザーまたはグループ ID>* として続行]** ボタンを選択します。
 
 ## <a name="view-data"></a>データの表示
 
@@ -95,7 +101,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
 
 2. ツールバーで、 **[実行]** を選択して、 **[結果]** ウィンドウで出力を確認します。
 
-![クエリ エディターの結果](./media/sql-database-connect-query-portal/query-editor-results.png)
+   ![クエリ エディターの結果](./media/sql-database-connect-query-portal/query-editor-results.png)
 
 ## <a name="insert-data"></a>データを挿入する
 
@@ -103,8 +109,8 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
 
 1. 前のクエリを次のクエリに置き換えます。
 
-   ```sql
-   INSERT INTO [SalesLT].[Product]
+    ```sql
+    INSERT INTO [SalesLT].[Product]
            ( [Name]
            , [ProductNumber]
            , [Color]
@@ -113,7 +119,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
            , [ListPrice]
            , [SellStartDate]
            )
-     VALUES
+    VALUES
            ('myNewProduct'
            ,123456789
            ,'NewColor'

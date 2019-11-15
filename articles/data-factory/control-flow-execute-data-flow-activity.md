@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory でのデータ フロー アクティビティ | Microsoft Docs
+title: Azure Data Factory でのデータ フロー アクティビティ
 description: データ ファクトリ パイプラインの内側からデータ フローを実行する方法。
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030515"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679944"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -79,7 +79,7 @@ Azure SQL Data Warehouse をシンクまたはソースとして使用する場�
 
 データ フローでパラメーター化されたデータセットを使用する場合は、 **[設定]** タブでパラメーター値を設定します。
 
-![データ フローの実行のパラメーター](media/data-flow/params.png "パラメーター")
+![データ フローの実行パラメーター](media/data-flow/params.png "parameters")
 
 ### <a name="parameterized-data-flows"></a>パラメーター化されたデータ フロー
 

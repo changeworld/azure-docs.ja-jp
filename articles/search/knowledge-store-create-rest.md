@@ -1,21 +1,24 @@
 ---
-title: REST を使用してナレッジ ストアを作成する
+title: REST を使用してナレッジ ストア (プレビュー) を作成する
 titleSuffix: Azure Cognitive Search
-description: REST API と Postman を使用して Azure Cognitive Search のナレッジ ストアを作成し、AI エンリッチメント パイプラインのエンリッチメントを永続化します。
-author: lobrien
+description: REST API と Postman を使用して Azure Cognitive Search のナレッジ ストアを作成し、AI エンリッチメント パイプラインのエンリッチメントを永続化します。 現在、この機能はパブリック プレビュー段階にあります。
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b97374b032640afafde775e90f6db735d63c46
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 107dcfa9ea312774e679c301ea934255c7b836c0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790026"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720066"
 ---
 # <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>REST を使用して Azure Cognitive Search のナレッジ ストアを作成する
+
+> [!IMPORTANT] 
+> ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 ナレッジ ストアは、Azure Cognitive Search の機能の 1 つです。AI エンリッチメント パイプラインからの出力を、後から下流で行われる分析などの処理に使用できるよう永続化するものです。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Cognitive Search を使用してそのインデックスを作成し、Azure Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure Storage 内のナレッジ ストアにその結果を保存します。 Azure portal で Power BI や Storage Explorer などのツールを使用して、ナレッジ ストアを調べることができます。
 

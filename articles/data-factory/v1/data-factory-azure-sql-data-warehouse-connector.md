@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse との間でのデータのコピー | Microsoft Docs
+title: Azure SQL Data Warehouse との間でデータをコピーする
 description: Azure Data Factory を使用して Azure SQL Data Warehouse との間でデータをコピーする方法を説明します
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7570cfc8a9804f753a9de140a71436bcc0cebb43
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: d0306d891b327422383120ef322ece407829f7ed
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836652"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683057"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -329,7 +329,7 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 | NChar | NChar |
 | VarChar | VarChar (最大 8000) |
 | NVarChar | NVarChar (最大 4000) |
-| Xml | Varchar (最大 8000) |
+| xml | Varchar (最大 8000) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -349,9 +349,9 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |DateTime |
-| DateTime |DateTime |
-| datetime2 |DateTime |
+| date |Datetime |
+| Datetime |Datetime |
+| datetime2 |Datetime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
@@ -365,7 +365,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
@@ -376,7 +376,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |Xml |
+| xml |xml |
 
 コピー アクティビティ定義で、ソース データセットの列をシンク データセットの列にマップすることもできます。 詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。
 

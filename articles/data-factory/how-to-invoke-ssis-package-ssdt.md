@@ -1,5 +1,5 @@
 ---
-title: SSDT から Azure Data Factory 内で SSIS パッケージを実行する | Microsoft Docs
+title: SSDT から Azure Data Factory 内で SSIS パッケージを実行する
 description: SSDT から Azure 内で SSIS パッケージを実行する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 9ddf427d7d749dff1af45b3f6f83d20a89e1aae0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4c89bdddce7b7318e184994ddf627d853e29fd7e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678415"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673603"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT から Azure 内で SSIS パッケージを実行する
 この記事で説明する SQL Server Data Tools (SSDT) での Azure 対応の SQL Server Integration Services (SSIS) プロジェクトの機能を使用すると、Azure Data Factory (ADF) 内の Azure-SSIS Integration Runtime (IR) でパッケージを実行できます。  この機能を使用して、既存の SSIS パッケージを Azure にリフト アンド シフト/以降する前にテストしたり、Azure 内で実行する新しい SSIS パッケージを開発したりすることができます。

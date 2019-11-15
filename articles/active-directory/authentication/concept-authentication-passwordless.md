@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8c8bfa5fc31ce8500d1ed339ba28afeed21e25a0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430492"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603506"
 ---
 # <a name="passwordless-authentication-options"></a>パスワードレス認証のオプション
 
@@ -28,13 +28,13 @@ ms.locfileid: "72430492"
 
 認証については、組織ごとにさまざまなニーズがあります。 Microsoft では、3 つのパスワードレス認証オプションを提供しています。
 
-- Windows Hello for Business 
-- Microsoft Authenticator アプリ 
+- Windows Hello for Business
+- Microsoft Authenticator アプリ
 - FIDO2 セキュリティ キー
 
 ![認証: セキュリティと利便性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello for Business 
+## <a name="windows-hello-for-business"></a>Windows Hello for Business
 
 Windows Hello for Business は、指定した Windows PC を所有しているインフォメーション ワーカーに最適です。 生体認証と PIN はユーザーの PC に直接関連付けられるため、所有者以外のユーザーからのアクセスは防止されます。 PKI 統合およびシングル サインオン (SSO) の組み込みサポートにより、Windows Hello for Business では、オンプレミスおよびクラウドの会社のリソースにシームレスにアクセスできるシンプルで便利な方法を提供します。
 
@@ -52,7 +52,7 @@ Windows Hello for Business の[計画ガイド](https://docs.microsoft.com/windo
 
 FIDO2 セキュリティ キーは、フォーム ファクターとして提供される可能性のある、フィッシングできない標準ベースのパスワードレス認証方法です。 Fast Identity Online (FIDO) は、パスワードレス認証のオープン標準です。 ユーザーおよび組織が標準を利用し、外部のセキュリティ キーまたはデバイスに組み込まれているプラットフォーム キーを使用して、ユーザー名やパスワードレスでリソースにサインインできるようにします。
 
-パブリック プレビューでは、従業員は外部のセキュリティ キーを使用して、Azure Active Directory 参加済みの Windows 10 コンピューター (バージョン 1809 以降を実行している) にサインインし、クラウド リソースへのシングル サインオンを行うことができます。 サポートされているブラウザーにサインインすることもできます。
+パブリック プレビューでは、従業員はセキュリティ キーを使用して、Azure AD に参加済みの Windows 10 デバイスにサインインし、クラウドおよびオンプレミス リソースへのシングル サインオンを行うことができます。 サポートされているブラウザーにサインインすることもできます。
 
 ![セキュリティ キーを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -76,6 +76,10 @@ FIDO Alliance によって FIDO2 認定されたキーが多数存在する場�
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
+| AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
+
+> [!NOTE]
+> NFC ベースのセキュリティ キーを購入して使用する予定の場合は、サポートされている NFC リーダーが必要になります。
 
 ベンダーとしてこのリストにデバイスを載せたい場合は、[Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) にご連絡ください。
 
@@ -88,7 +92,7 @@ FIDO2 セキュリティ キーは、セキュリティに非常に敏感であ�
 - エンド ユーザーは、アカウント ポータルでこれらのパスワードレスの認証方法を登録して管理することができます
 - エンド ユーザーは、これらのパスワードレスの認証方法でサインインすることができます
    - Microsoft Authenticator アプリ:すべてのブラウザー間で、Windows 10 の Out Of Box (OOBE) セットアップ時に、また、オペレーティング システム上の統合されたモバイル アプリでなど、Azure AD 認証が使用されるシナリオで動作します。
-   - セキュリティ キー:Windows 10 バージョン 1809 以降のロック画面、および Microsoft Edge などのサポートされているブラウザーの Web で動作します。
+   - セキュリティ キー:Windows 10 のロック画面、および Microsoft Edge などのサポートされているブラウザーの Web で動作します。
 
 ## <a name="next-steps"></a>次の手順
 

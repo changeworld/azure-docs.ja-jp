@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bbaec55666b877e1d9343d8b80ea44a189c0c5b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466761"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806124"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search の AI 強化パイプラインに関する一般的なエラーと警告
 
@@ -63,6 +63,8 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 
 | 理由 | 例 | Action |
 | --- | --- | --- |
+| フィールドに大きすぎる用語が含まれています | ドキュメント内の用語が [32 KB の制限](search-limits-quotas-capacity.md#api-request-limits)を超えています | この制限を回避するには、フィールドがフィルター可能、ファセット可能、または並べ替え可能として構成されていないことを確実にします。
+| ドキュメントが大きすぎてインデックスを作成できません | ドキュメントが [API 要求の最大サイズ](search-limits-quotas-capacity.md#api-request-limits)を超えています | [大規模なデータ セットのインデックスを作成する方法](search-howto-large-index.md)
 | 一時的な接続に関する問題 | 一時的なエラーが発生しました。 後でもう一度やり直してください。 | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 | 潜在的な製品バグ | 予期しないエラーが発生しました。 | これはエラーのクラスが不明であり、製品バグがある可能性があることを意味します。 サポートを受けるには、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。 |
 | スキルの実行中にエラーが発生しました | (マージ スキルから) 1 つ以上のオフセット値が無効なため、解析できませんでした。 項目がテキストの末尾に挿入されました | エラー メッセージに記載されている情報を参照して、問題を解決します。 この種のエラーを解決するには、対処が必要です。 |
@@ -114,6 +116,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 | --- | --- | --- |
 | ドキュメント内の用語が [32 KB の制限](search-limits-quotas-capacity.md#api-request-limits)を超えています | フィールドに大きすぎる用語が含まれています | この制限を回避するには、フィールドがフィルター可能、ファセット可能、または並べ替え可能として構成されていないことを確実にします。
 | ドキュメントが [API 要求の最大サイズ](search-limits-quotas-capacity.md#api-request-limits)を超えています | ドキュメントが大きすぎてインデックスを作成できません | [大規模なデータ セットのインデックスを作成する方法](search-howto-large-index.md)
+| ドキュメントでコレクションに含まれているオブジェクトが多すぎます | ドキュメント内のコレクションが、[すべての複合コレクション制限にわたる最大要素数](search-limits-quotas-capacity.md#index-limits)を超えています | ドキュメント内の複合コレクションのサイズを制限より小さくし、記憶域の使用率が高くならないようにすることをお勧めします。
 | サービスにその他の負荷 (クエリやインデックスの作成など) がかかっているため、ターゲット インデックス (再試行後も保持されます) に接続できません。 | インデックスを更新するための接続を確立できませんでした。 Search サービスの負荷が高くなっています。 | [検索サービスをスケールアップする](search-capacity-planning.md)
 | Search サービスは、サービスの更新に対して修正プログラムが適用されているか、トポロジの再構成中です。 | インデックスを更新するための接続を確立できませんでした。 Search サービスは現在ダウンしているか、Search サービスが移行中です。 | [SLA ドキュメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)による 99.9% の可用性を確保するために、少なくとも 3 つのレプリカでサービスを構成します
 | 基になるコンピューティング/ネットワーク リソースでエラーが発生しました (まれ) | インデックスを更新するための接続を確立できませんでした。 不明なエラーが発生しました。 | インデクサーを[スケジュールに従って実行](search-howto-schedule-indexers.md)し、失敗した状態から取得するように構成します。
@@ -224,7 +227,12 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 この動作をオーバーライドして増分の進行状況を有効にし、`assumeOrderByHighWatermarkColumn` 構成プロパティを使用してこの警告を抑制することができます。
 
-[Cosmos DB 増分進行状況とカスタム クエリに関する詳細情報。](https://go.microsoft.com/fwlink/?linkid=2099593)
+詳細については、「[増分の進行状況とカスタム クエリ](search-howto-index-cosmosdb.md#IncrementalProgress)」を参照してください。
+
+### <a name="truncated-extracted-text-to-x-characters"></a>抽出されたテキストが X 文字に切り詰められました
+インデクサーには、1 つのドキュメントから抽出できるテキストの量の制限があります。 この制限は、価格レベルによって異なります。Free レベルの場合は 32,000 文字、Basic レベルの場合は 64,000 文字、Standard レベル、Standard S2 レベル、および Standard S3 レベルの場合は 400 万文字です。 切り詰められたテキストには、インデックスが付けられません。 この警告を回避するには、大量のテキストを含むドキュメントを複数の小さなドキュメントに分割してみてください。 
+
+詳細については、「[インデクサー制限](search-limits-quotas-capacity.md#indexer-limits)」を参照してください。
 
 ### <a name="could-not-map-output-field-x-to-search-index"></a>出力フィールド "X" を検索インデックスにマップできませんでした
 存在しないデータや null のデータを参照する出力フィールド マッピングがあると、ドキュメントごとに警告が発生し、結果は空のインデックス フィールドになります。 この問題を回避するには、出力フィールド マッピングのソース パスに誤りがないことを再確認するか、[条件付きスキル](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)を使用して既定値を設定します。

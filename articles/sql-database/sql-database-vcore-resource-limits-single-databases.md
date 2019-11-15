@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database の仮想コアベースのリソース制限 - 単一データベース | Microsoft Docs
-description: このページでは、Azure SQL Database の単一データベースに対するいくつかの一般的な仮想コアベースのリソース制限について説明します。
+title: 仮想コア リソース制限 - 単一データベース
+description: このページでは、Azure SQL Database の単一データベースに対するいくつかの一般的な仮想コア リソース制限について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,29 +10,115 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/21/2019
-ms.openlocfilehash: 108e31ebff5910c139bcaf83675cc8161c2a96f6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: 11d9115893f8d0632110d86a671a6590ca48e220
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822330"
 ---
-# <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>仮想コアベースの購入モデルを使用した単一データベースに対するリソース制限
+# <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用した単一データベースに対するリソース制限
 
-この記事では、仮想コアベースの購入モデルを使用した、Azure SQL Database の単一データベースに対する詳細なリソース制限について説明します。
+この記事では、仮想コア購入モデルを使用した、Azure SQL Database の単一データベースに対する詳細なリソース制限について説明します。
 
-SQL Database サーバー上の 1 つのデータベースに対する DTU ベースの購入モデルの制限については、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関する記事をご覧ください。
+SQL Database サーバー上の 1 つのデータベースに対する DTU 購入モデルの制限については、「[Azure SQL Database サーバーの SQL Database リソース制限](sql-database-resource-limits-database-server.md)」をご覧ください。
 
-> [!IMPORTANT]
-> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
 [Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ容量を設定できます。
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[単一データベースのスケーリング](sql-database-single-database-scale.md)に関するページを参照してください。
 
-## <a name="general-purpose-service-tier-for-provisioned-compute"></a>プロビジョニングされたコンピューティングの General Purpose サービス レベル
+
+## <a name="general-purpose---serverless-compute---gen5"></a>General Purpose - サーバーレス コンピューティング - Gen5
+
+[サーバーレス コンピューティング レベル](sql-database-serverless.md)は、現在 Gen5 ハードウェアでのみ使用できます。
+
+### <a name="gen5-compute-generation-part-1"></a>Gen5 コンピューティング世代 (パート 1)
+
+|コンピューティング サイズ|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
+|:--- | --: |--: |--: |--: |--: |
+|コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
+|最小最大の仮想コア|0.5 から 1|0.5 から 2|0.5 から 4|0.75 から 6|1.0 から 8|
+|最小最大のメモリ (GB)|2.02 から 3|2.05 から 6|2.10 から 12|2.25 から 18|3.00 から 24|
+|最小の自動一時停止の遅延 (分)|60|60|60|60|60|
+|列ストアをサポート|はい|はい|はい|はい|はい|
+|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|
+|最大データ サイズ (GB)|512|1024|1024|1024|1536|
+|最大ログ サイズ (GB)|154|307|307|307|461|
+|TempDB の最大データ サイズ (GB)|32|64|128|192|256|
+|ストレージの種類|リモート SSD|リモート SSD|リモート SSD|リモート SSD|リモート SSD|
+|IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
+|最大データ IOPS (64 KB)|500|1000|2000|3000|4000|
+|最大ログ速度 (Mbps)|2.5|5.6|10|15|20|
+|最大同時実行ワーカー (要求) 数|75|150|300|450|600|
+|最大同時セッション数|30000|30000|30000|30000|30000|
+|レプリカの数|1|1|1|1|1|
+|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|
+|読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|
+|含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
+
+### <a name="gen5-compute-generation-part-2"></a>Gen5 コンピューティング世代 (パート 2)
+
+|コンピューティング サイズ|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
+|:--- | --: |--: |--: |--: |
+|コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
+|最小最大の仮想コア|1.25 から 10|1.50 から 12|1.75 ～ 14|2.00 から 16|
+|最小最大のメモリ (GB)|3.75 から 30|4.50 から 36|5.25 から 42|6.00 から 48|
+|最小の自動一時停止の遅延 (分)|60|60|60|60|
+|列ストアをサポート|はい|はい|はい|はい|
+|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|
+|最大データ サイズ (GB)|1536|1536|1536|3072|
+|最大ログ サイズ (GB)|461|461|461|922|
+|TempDB の最大データ サイズ (GB)|320|384|448|512|
+|ストレージの種類|リモート SSD|リモート SSD|リモート SSD|リモート SSD|
+|IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
+|最大データ IOPS (64 KB)|5000|6000|7000|8000|
+|最大ログ速度 (Mbps)|20|20|20|20|
+|最大同時実行ワーカー (要求) 数|750|900|1050|1200|
+|最大同時セッション数|30000|30000|30000|30000|
+|レプリカの数|1|1|1|1|
+|マルチ AZ|該当なし|該当なし|該当なし|該当なし|
+|読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|
+|含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
+
+
+## <a name="hyperscale---provisioned-compute---gen5"></a>Hyperscale - プロビジョニング済みコンピューティング - Gen5
+
+### <a name="gen5-compute-generation"></a>Gen5 コンピューティング世代
+
+|パフォーマンス レベル|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
+|仮想コア|2|4|8|16|24|32|40|80|
+|メモリ (GB)|10.2|20.4|40.8|81.6|122.4|163.2|204|408|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute) サイズ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|
+|列ストアをサポート|はい|はい|はい|はい|はい|はい|はい|はい|
+|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|最大データ サイズ (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
+|最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
+|TempDB の最大データ サイズ (GB)|64|128|256|384|384|384|384|384|
+|ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) | [注 1](#notes) |
+|最大データ IOPS (64 KB)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
+|最大同時実行ワーカー (要求) 数|200|400|800|1600|2400|3200|4000|8000|
+|最大同時セッション数|30000|30000|30000|30000|30000|30000|30000|30000|
+|セカンダリ レプリカ|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
+|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|読み取りスケールアウト|はい|はい|はい|はい|はい|はい|はい|はい|
+|バックアップ ストレージのリテンション期間|7 日|7 日|7 日|7 日|7 日|7 日|7 日|7 日|
+|||
+
+#### <a name="notes"></a>メモ
+
+**注 1**: Hyperscale は、個別のコンピューティングとストレージ コンポーネントを含む多層アーキテクチャです。[Hyperscale サービス レベルのアーキテクチャ](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
+
+**注 2**: Hyperscale 多層アーキテクチャには、複数のレベルのキャッシュが存在します。 有効な IOPS はワークロードによって異なります。
+
+**注 3**: コンピューティング レプリカの RBPEX SSD ベースでキャッシュされるデータについては、待機時間は 1 から 2 ミリ秒です。これにより、最も使用されているデータ ページがキャッシュされます。 ページ サーバーから取得したデータは、待機時間が長くなります。
+
+## <a name="general-purpose---provisioned-compute---gen4"></a>General Purpose - プロビジョニング済みコンピューティング - Gen4
 
 > [!IMPORTANT]
 > 新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。
@@ -83,6 +169,8 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
+## <a name="general-purpose---provisioned-compute---gen5"></a>General Purpose - プロビジョニング済みコンピューティング - Gen5
+
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 コンピューティング世代 (パート 1)
 
 |コンピューティング サイズ|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
@@ -129,59 +217,34 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-## <a name="general-purpose-service-tier-for-serverless-compute"></a>サーバーレス コンピューティングの General Purpose サービス レベル
+## <a name="general-purpose---provisioned-compute---fsv2-series"></a>General Purpose - プロビジョニング済みコンピューティング - Fsv2 シリーズ
 
-[サーバーレス コンピューティング レベル](sql-database-serverless.md)はプレビュー段階です。
+### <a name="fsv2-series-compute-generation-preview"></a>Fsv2 シリーズのコンピューティング世代 (プレビュー)
 
-### <a name="gen5-compute-generation-part-1"></a>Gen5 コンピューティング世代 (パート 1)
+|コンピューティング サイズ|GP_Fsv2_72|
+|:--- | --: |
+|コンピューティング世代|Fsv2 シリーズ|
+|仮想コア|72|
+|メモリ (GB)|136|
+|列ストアをサポート|はい|
+|インメモリ OLTP ストレージ (GB)|該当なし|
+|最大データ サイズ (GB)|4096|
+|最大ログ サイズ (GB)|1024|
+|TempDB の最大データ サイズ (GB)|333|
+|ストレージの種類|リモート SSD|
+|IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
+|最大データ IOPS (64 KB)|36000|
+|最大ログ速度 (Mbps)|30|
+|最大同時実行ワーカー (要求) 数|3600|
+|最大同時セッション数|30000|
+|レプリカの数|1|
+|マルチ AZ|該当なし|
+|読み取りスケールアウト|該当なし|
+|含まれるバックアップ ストレージ|1X DB サイズ|
 
-|コンピューティング サイズ|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
-|:--- | --: |--: |--: |--: |--: |
-|コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
-|最小最大の仮想コア|0.5 から 1|0.5 から 2|0.5 から 4|0.75 から 6|1.0 から 8|
-|最小最大のメモリ (GB)|2.02 から 3|2.05 から 6|2.10 から 12|2.25 から 18|3.00 から 24|
-|最小の自動一時停止の遅延 (分)|60|60|60|60|60|
-|列ストアをサポート|はい|はい|はい|はい|はい|
-|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|
-|最大データ サイズ (GB)|512|1024|1024|1024|1536|
-|最大ログ サイズ (GB)|154|307|307|307|461|
-|TempDB の最大データ サイズ (GB)|32|64|128|192|256|
-|ストレージの種類|リモート SSD|リモート SSD|リモート SSD|リモート SSD|リモート SSD|
-|IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
-|最大データ IOPS (64 KB)|500|1000|2000|3000|4000|
-|最大ログ速度 (Mbps)|2.5|5.6|10|15|20|
-|最大同時実行ワーカー (要求) 数|75|150|300|450|600|
-|最大同時セッション数|30000|30000|30000|30000|30000|
-|レプリカの数|1|1|1|1|1|
-|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|
-|読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|
-|含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-### <a name="gen5-compute-generation-part-2"></a>Gen5 コンピューティング世代 (パート 2)
 
-|コンピューティング サイズ|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
-|:--- | --: |--: |--: |--: |
-|コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
-|最小最大の仮想コア|1.25 から 10|1.50 から 12|1.75 ～ 14|2.00 から 16|
-|最小最大のメモリ (GB)|3.75 から 30|4.50 から 36|5.25 から 42|6.00 から 48|
-|最小の自動一時停止の遅延 (分)|60|60|60|60|
-|列ストアをサポート|はい|はい|はい|はい|
-|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|
-|最大データ サイズ (GB)|1536|1536|1536|3072|
-|最大ログ サイズ (GB)|461|461|461|922|
-|TempDB の最大データ サイズ (GB)|320|384|448|512|
-|ストレージの種類|リモート SSD|リモート SSD|リモート SSD|リモート SSD|
-|IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
-|最大データ IOPS (64 KB)|5000|6000|7000|8000|
-|最大ログ速度 (Mbps)|20|20|20|20|
-|最大同時実行ワーカー (要求) 数|750|900|1050|1200|
-|最大同時セッション数|30000|30000|30000|30000|
-|レプリカの数|1|1|1|1|
-|マルチ AZ|該当なし|該当なし|該当なし|該当なし|
-|読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|
-|含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
-
-## <a name="business-critical-service-tier-for-provisioned-compute"></a>プロビジョニングされたコンピューティングの Business Critical サービス レベル
+## <a name="business-critical---provisioned-compute---gen4"></a>Business Critical - プロビジョニング済みコンピューティング - Gen4
 
 > [!IMPORTANT]
 > 新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。
@@ -234,7 +297,9 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |読み取りスケールアウト|はい|はい|はい|はい|はい|はい|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-### <a name="gen5-compute-compute-part-1"></a>Gen5 コンピューティング世代 (パート 1)
+## <a name="business-critical---provisioned-compute---gen5"></a>Business Critical - プロビジョニング済みコンピューティング - Gen5
+
+### <a name="gen5-compute-generation-part-1"></a>Gen5 コンピューティング世代 (パート 1)
 
 |コンピューティング サイズ|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -282,43 +347,41 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |読み取りスケールアウト|はい|はい|はい|はい|はい|はい|はい|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-## <a name="hyperscale-service-tier-for-provisioned-compute"></a>プロビジョニングされたコンピューティングの Hyperscale サービス レベル
 
-### <a name="gen5-compute-generation"></a>Gen5 コンピューティング世代
+## <a name="business-critical---provisioned-compute---m-series"></a>Business Critical - プロビジョニング済みコンピューティング - M シリーズ
 
-|パフォーマンス レベル|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
-|コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
-|仮想コア|2|4|8|16|24|32|40|80|
-|メモリ (GB)|10.2|20.4|40.8|81.6|122.4|163.2|204|408|
-|[RBPEX](sql-database-service-tier-hyperscale.md#compute) サイズ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|
-|列ストアをサポート|はい|はい|はい|はい|はい|はい|はい|はい|
-|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
-|最大データ サイズ (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
-|最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
-|TempDB の最大データ サイズ (GB)|64|128|256|384|384|384|384|384|
-|ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) | [注 1](#notes) |
-|最大データ IOPS (64 KB)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
-|IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
-|最大同時実行ワーカー (要求) 数|200|400|800|1600|2400|3200|4000|8000|
-|最大同時セッション数|30000|30000|30000|30000|30000|30000|30000|30000|
-|セカンダリ レプリカ|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
-|読み取りスケールアウト|はい|はい|はい|はい|はい|はい|はい|はい|
-|バックアップ ストレージのリテンション期間|7 日|7 日|7 日|7 日|7 日|7 日|7 日|7 日|
-|||
+### <a name="m-series-compute-generation-preview"></a>M シリーズのコンピューティング世代 (プレビュー)
 
-#### <a name="notes"></a>メモ
+|コンピューティング サイズ|GP_M_128|
+|:--- | --: |
+|コンピューティング世代|M シリーズ|
+|仮想コア|128|
+|メモリ (GB)|3767|
+|列ストアをサポート|はい|
+|インメモリ OLTP ストレージ (GB)|481|
+|最大データ サイズ (GB)|4096|
+|最大ログ サイズ (GB)|2048|
+|TempDB の最大データ サイズ (GB)|4096|
+|ストレージの種類|ローカル SSD|
+|IO 待機時間 (概算)|1 ～ 2 ミリ秒 (書き込み)<br>1 ～ 2 ミリ秒 (読み取り)|
+|最大データ IOPS (64 KB)|204800|
+|最大ログ速度 (Mbps)|192|
+|最大同時実行ワーカー (要求) 数|12800|
+|最大同時セッション数|30000|
+|レプリカの数|4|
+|マルチ AZ|はい|
+|読み取りスケールアウト|はい|
+|含まれるバックアップ ストレージ|1X DB サイズ|
 
-**注 1**: Hyperscale は、個別のコンピューティングとストレージ コンポーネントを含む多層アーキテクチャです。[Hyperscale サービス レベルのアーキテクチャ](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 
-**注 2**: Hyperscale 多層アーキテクチャには、複数のレベルのキャッシュが存在します。 有効な IOPS はワークロードによって異なります。
 
-**注 3**: コンピューティング レプリカの RBPEX SSD ベースでキャッシュされるデータについては、待機時間は 1 から 2 ミリ秒です。これにより、最も使用されているデータ ページがキャッシュされます。 ページ サーバーから取得したデータは、待機時間が長くなります。
+
+> [!IMPORTANT]
+> 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- 単一データベースに対する DTU リソースの制限については、[DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)に関するページを参照してください
+- 単一データベースに対する DTU リソースの制限については、「[DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)」を参照してください
 - エラスティック プールに対する仮想コア リソースの制限については、「[仮想コアベースの購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)」を参照してください
 - エラスティック プールに対する DTU リソースの制限については、「[DTU ベースの購入モデルを使用したエラスティック プールのリソース制限](sql-database-dtu-resource-limits-elastic-pools.md)」を参照してください
 - マネージド インスタンスに対するリソース制限については、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md)に関するページを参照してください。

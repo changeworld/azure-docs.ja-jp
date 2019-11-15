@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使って予測データ パイプラインを作成する | Microsoft Docs
+title: Azure Data Factory を使って予測データ パイプラインを作成する
 description: Azure Data Factory で Azure Machine Learning バッチ実行アクティビティを使用して、予測パイプラインを作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24568940a0f6e550ae0fe7658b81ba1c3b3d3556
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928082"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683771"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -126,7 +126,7 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
 
 | プロパティ          | 説明                              | 必須 |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | パイプラインのアクティビティの名前。     | はい      |
+| 名前              | パイプラインのアクティビティの名前。     | はい      |
 | description       | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type              | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **AzureMLBatchExecution** です。 | はい      |
 | linkedServiceName | Azure Machine Learning のリンクされたサービスにリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |

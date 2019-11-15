@@ -1,7 +1,7 @@
 ---
-title: ONNX を使用したハイパフォーマンス、クロス プラットフォームの推論
+title: 'ONNX: 高パフォーマンスなクロス プラットフォームの推論'
 titleSuffix: Azure Machine Learning
-description: ONNX と ONNX Runtime によるモデルの能率化について説明します。
+description: Open Neural Network Exchange (ONNX) の使用が機械学習モデルの推論の最適化にどのように寄与するかについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f6e9e6b44e4a8fcc52f6d8ae19af60d64972b3a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: c94d36065b27b0afcaeb214b8a86e5e2a09df14b
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035405"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73648014"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 

@@ -1,24 +1,25 @@
 ---
 title: ワークスペース データのエクスポートまたは削除
 titleSuffix: Azure Machine Learning
-description: Azure portal、CLI、SDK、および認証済み REST API を使用してワークスペースをエクスポートまたは削除する方法について説明します。
+description: Azure Machine Learning Studio、CLI、SDK、および認証済み REST API を使用してワークスペースをエクスポートまたは削除する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: ph-com
-ms.author: pahusban
-ms.date: 05/02/2019
+author: lobrien
+ms.author: laobri
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 34ff3f9704b9c84a7daddcfd14fb9cd3e990f794
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002838"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716518"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning では、認証済み REST API を使用してワークスペース データをエクスポートまたは削除することができます。 この記事では、その方法について説明します。
 
@@ -27,7 +28,7 @@ Azure Machine Learning では、認証済み REST API を使用してワーク�
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>ワークスペース データを制御する
-Azure Machine Learning によって格納された製品内データは、Azure portal、CLI、SDK、および認証済み REST API を使用してエクスポートおよび削除することができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
+Azure Machine Learning によって格納された製品内データは、Azure Machine Learning Studio、CLI、SDK、および認証済み REST API を使用してエクスポートおよび削除することができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
 
 Azure Machine Learning では、個人データは、実行履歴ドキュメント内のユーザー情報と、ユーザーのサービスとの対話のテレメトリ レコードで構成されます。
 
@@ -232,28 +233,26 @@ Azure Machine Learning では、個人データは、実行履歴ドキュメン
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>ビジュアル インターフェイス アセットを削除する
+## <a name="delete-assets-in-the-designer"></a>デザイナーでアセットを削除する
 
-実験で作成したビジュアル インターフェイスで、個々のアセットを削除します。
+実験で作成したデザイナーで、個々のアセットを削除します。
 
-1. 左側で、削除するアセットの種類を選択します。
+1. デザイナーに移動します。
 
     ![アセットを削除する](media/how-to-export-delete-data.md/delete-experiment.png)
 
-1. 一覧で、削除する個々の資産を選択します。
+1. 一覧で、削除する個々のパイプラインのドラフトを選択します。
 
-1. 下部にある **[削除]** を選択します。
+1. **[削除]** を選択します。
 
-## <a name="export-visual-interface-data"></a>ビジュアル インターフェイスをエクスポートする
+### <a name="delete-datasets-in-the-designer"></a>デザイナーでデータセットを削除する
 
-実験で作成したビジュアル インターフェイスで、追加したデータをエクスポートします。
+デザイナーでデータセットを削除するには、Azure portal または Storage Explorer を使用して接続ストレージ アカウントに移動し、そこでデータセットを削除します。 デザイナーでデータセットの登録を解除した場合、ストレージから削除されるのは参照ポイントだけです。 
 
-1. 左側で、 **[データ]** を選択します。
+## <a name="export-data-in-the-designer"></a>デザイナーでデータをエクスポートする
 
-1. 上部にある **[My Datasets]\(マイ データセット\)** または **[サンプル]** を選択してエクスポートするデータを特定します。
+実験で作成したデザイナーで、追加したデータをエクスポートします。
 
-    ![データをダウンロードする](media/how-to-export-delete-data.md/download-data.png)
+1. 左側で、 **[データセット]** を選択します。
 
-1. 一覧で、エクスポートする個々のデータセットを選択します。
-
-1. 下部にある **[ダウンロード]** を選択します。
+    ![データをダウンロードする](media/how-to-export-delete-data.md/unregister-dataset.png)

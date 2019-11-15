@@ -1,26 +1,24 @@
 ---
 title: Azure Key Vault (プレビュー) で保存時の暗号化に顧客が管理するキーを使用する
 titleSuffix: Azure Cognitive Search
-description: Azure Key Vault 内で作成して管理するキーを使用して、Azure Cognitive Search 内でインデックスとシノニム マップによるサーバー側暗号化を補完します。
+description: Azure Key Vault 内で作成して管理するキーを使用して、Azure Cognitive Search 内でインデックスとシノニム マップによるサーバー側暗号化を補完します。 現在、この機能はパブリック プレビュー段階にあります。
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 94c9d94edb9a9ca3f6117bd43ab9cefe1dad52a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794353"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721754"
 ---
 # <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault でユーザーが管理するキーを使用して Azure Cognitive Search のコンテンツを暗号化する
 
-> [!Note]
-> 顧客が管理するキーを使った暗号化はプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 .NET SDK バージョン 8.0-preview を使用することもできます。
->
-> この機能は、無料のサービスには使用できません。 2019-01-01 以降に作成された課金対象の検索サービスを使用する必要があります。 現時点では、ポータルはサポートされていません。
+> [!IMPORTANT] 
+> 保存時の暗号化のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 この機能は、[REST API バージョン 2019-05-06-Preview](search-api-preview.md) と [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md) で提供しています。 現時点でポータルによるサポートはありません。
 
 既定では、Azure Cognitive Search では[サービス管理キー](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)を使用してユーザー コンテンツを保存時に暗号化します。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、その手順について説明します。
 

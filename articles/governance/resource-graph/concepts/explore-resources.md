@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: b92975e3fe73fb1c882bdfc4338fd8e169728e8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387650"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622663"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する
 
@@ -312,6 +312,6 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddr
 
 ## <a name="next-steps"></a>次の手順
 
-- [クエリ言語](query-language.md)の詳細について学習します
-- [初歩的なクエリ](../samples/starter.md)で使用されている言語を参照してください
-- [高度なクエリ](../samples/advanced.md)で高度な使用方法を参照してください
+- [クエリ言語](query-language.md)について詳しく確認します。
+- [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
+- [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。

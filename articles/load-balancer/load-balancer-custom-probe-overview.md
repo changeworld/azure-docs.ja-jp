@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 78e085aae97114e6848b736c40b16c755256d0cd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274118"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571113"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -48,6 +48,9 @@ Azure Load Balancer で負荷分散規則を使用する場合は、Load Balance
 - プローブのプロトコル
 - プローブのポート
 - HTTP(S) プローブの使用時に HTTP GET に対して使用する HTTP パス
+
+> [!NOTE]
+> Azure PowerShell、Azure CLI、テンプレート、または API を使用するとき、プローブ定義は必須ではなく、チェックボックスはオフになります。 プローブ検証テストは、Azure portal を使用するときにのみ行われます。
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>アプリケーションの信号、信号の検出、プラットフォームの対応の概要
 

@@ -4,15 +4,16 @@ description: '[Marketplace] タブを使用し、Azure アプリケーション 
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962872"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827577"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure アプリケーションの [Marketplace] タブ
 
@@ -55,7 +56,7 @@ ms.locfileid: "70962872"
 | **ワイド\***         | ワイドなロゴ:PNG 形式の 255 x 115 ピクセル    |
 | **ヒーロー**           | Hero ロゴ (省略可能):PNG 形式の 815 x 290 ピクセル。 **注:** Hero アイコンはアップロード後に削除できません。 |
 | **スクリーンショット (最大 5 つ)** |        スクリーンショットは製品の詳細ページに表示されます。 アプリ自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 たとえば、アーキテクチャ ダイアグラムやユース ケースの例を表示できます。 スクリーンショットは任意です。SKU あたり 5 枚に制限されています。 スクリーンショットを追加するには:<ul><li>**[+ スクリーンショットを追加]** を選択し、[スクリーンショット] ウィンドウを開きます。</li><li>**[名前]** - 名前/タイトルを入力します (最大長は 100 文字)。</li><li>**[アップロード]** - 画像をアップロードします。 PNG 形式にする必要があります。サイズは 533 x 324 ピクセルです。</li></ul>           |
-| **[ビデオの追加]**      | 省略可能。ビデオは製品の詳細ページに表示されます。 アプリケーション自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 ビデオを追加するには: <ul><li>**[+ ビデオの追加]** を選択し、[ビデオ] ウィンドウを開きます。</li><li>**[名前]** - 名前/タイトルを入力します (最大長は 100 文字)。</li><li>**[リンク]** – ビデオをホストしているサイト (YouTube や Vimeo) の URL を入力します。</li><li>**[サムネイル]** – サムネイルをアップロードします。 PNG 形式にする必要があります。サイズは 533 x 324 ピクセルです。</li></ul>          |
+| **[ビデオの追加]**      | 省略可能。ビデオは製品の詳細ページに表示されます。 アプリケーション自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 ビデオを追加するには: <ul><li>**[+ ビデオの追加]** を選択し、[ビデオ] ウィンドウを開きます。</li><li>**[名前]** - 名前/タイトルを入力します (最大長は 100 文字)。</li><li>**[リンク]** - ビデオをホストしているサイト (YouTube や Vimeo) の URL を入力します。</li><li>**[サムネイル]** - サムネイルをアップロードします。 PNG 形式にする必要があります。サイズは 533 x 324 ピクセルです。</li></ul>          |
 |  |  |
 
 
@@ -114,7 +115,7 @@ Hero ロゴはオプションです。
 ![潜在顧客の管理の送信先を選択する](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->情報アイコンを選択すると、"潜在顧客を保存するシステムを選択してください。" というメッセージが表示されます。 CRM システムに接続する方法については[こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)をご覧ください。
+>情報アイコンを選択すると、"潜在顧客を保存するシステムを選択します。 CRM システムに接続する方法については、[こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)を参照してください " というメッセージが表示されます。
 
 詳細については、[潜在顧客の構成](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)に関するページを参照してください。
 
@@ -125,8 +126,8 @@ Hero ロゴはオプションです。
 
 次の情報を指定します。
 
-- **[プライバシー ポリシー URL]\*** – アプリのプライバシー ポリシーのリンクを入力します。
-- **[利用規約]\*** – アプリの利用規約を入力します。 顧客は、アプリを試す前にこれらの条件を承諾する必要があります。
+- **[プライバシー ポリシー URL]\*** - アプリのプライバシー ポリシーのリンクを入力します。
+- **[利用規約]\*** - アプリの利用規約を入力します。 顧客は、アプリを試す前にこれらの条件を承諾する必要があります。
 
 ![[法的情報] フォーム](./media/azureapp-marketplace-legal.png)
 

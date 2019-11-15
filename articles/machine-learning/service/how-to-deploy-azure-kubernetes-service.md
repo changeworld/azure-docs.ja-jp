@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: dfaa39b33839406ffdf484299cb520aebf011c7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 11/06/2019
+ms.openlocfilehash: 9055223d1e4ed056ad606533219925972b623f86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299688"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682115"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning を使って Azure Kubernetes Service (AKS) 上の Web サービスとしてモデルをデプロイする方法について説明します。 Azure Kubernetes Service は高スケールの運用デプロイに適してします。 次のいずれかの機能が必要な場合は、Azure Kubernetes Service を使用します。
 
@@ -30,8 +31,8 @@ Azure Machine Learning を使って Azure Kubernetes Service (AKS) 上の Web �
 
 Azure Kubernetes Service にデプロイするときは、__ご利用のワークスペースに接続されている__ AKS クラスターにデプロイします。 AKS クラスターをワークスペースに接続するには、次の 2 つの方法があります。
 
-* Azure Machine Learning SDK、Machine Learning CLI、[Azure portal](https://portal.azure.com)、または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) を使用して、AKS クラスターを作成します。 このプロセスにより、クラスターがワークスペースに自動的に接続されます。
-* 既存の AKS クラスターを Azure Machine Learning のワークスペースにアタッチします。 Azure Machine Learning SDK、Machine Learning CLI、または Azure portal を使って、クラスターをアタッチできます。
+* Azure Machine Learning SDK、Machine Learning CLI、または [Azure Machine Learning Studio](https://ml.azure.com) を使って、AKS クラスターを作成します。 このプロセスにより、クラスターがワークスペースに自動的に接続されます。
+* 既存の AKS クラスターを Azure Machine Learning のワークスペースにアタッチします。 Azure Machine Learning SDK、Machine Learning CLI、または Azure Machine Learning Studio を使って、クラスターをアタッチできます。
 
 > [!IMPORTANT]
 > 作成またはアタッチのプロセスは、1 回限りのタスクです。 AKS クラスターがワークスペースに接続されると、デプロイに使用できます。 不要になった AKS クラスターは、デタッチまたは削除できます。 デタッチまたは削除したクラスターには、デプロイできなくなります。
@@ -93,7 +94,7 @@ aks_target.wait_for_completion(show_output = True)
 > [!IMPORTANT]
 > [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) の場合、`agent_count` と `vm_size` のカスタム値を選択し、`cluster_purpose` が `DEV_TEST` ではない場合は、`agent_count` と `vm_size` の積が 12 仮想 CPU 以上である必要があります。 たとえば、`vm_size` に "Standard_D3_v2" (4 仮想 CPU) を使用する場合、`agent_count` は 3 以上にする必要があります。
 >
-> Azure Machine Learning SDK では、AKS クラスターのスケーリングのサポートは提供されません。 クラスター内のノードをスケーリングするには、Azure portal 内でご自分の AKS クラスターの UI を使用します。 クラスターの VM サイズではなく、ノード数のみを変更できます。
+> Azure Machine Learning SDK では、AKS クラスターのスケーリングのサポートは提供されません。 クラスター内のノードをスケーリングするには、Azure Machine Learning Studio 内でご自分の AKS クラスターの UI を使用します。 クラスターの VM サイズではなく、ノード数のみを変更できます。
 
 この例で使われているクラス、メソッド、パラメーターの詳細については、次のリファレンス ドキュメントをご覧ください。
 
@@ -121,12 +122,16 @@ az ml computetarget create aks -n myaks
 >
 > Azure Virtual Network を使用して AKS クラスターをセキュリティで保護する場合は、まず仮想ネットワークを作成する必要があります。 詳細については、[Azure Virtual Network での実験と推論の安全な実行](how-to-enable-virtual-network.md#aksvnet)に関するページを参照してください。
 
+AKS クラスターをワークスペースに接続するときに、`cluster_purpose` パラメーターを設定することにより、クラスターを使用する方法を定義できます。
+
+`cluster_purpose` パラメーターを設定しない場合、または `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` を設定した場合は、クラスターでは最低 12 の仮想 CPU が利用できる必要があります。
+
+`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定した場合、クラスターには 12 の仮想 CPU は必要ありません。 開発/テストには、少なくとも 2 つの仮想 CPU を使用することをお勧めします。 ただし、開発/テスト用に構成されたクラスターは、運用レベルのトラフィックには適しておらず、推論時間が増えることがあります。 開発/テスト クラスターでは、フォールト トレランスも保証されません。
+
 > [!WARNING]
-> AKS クラスターをワークスペースに接続するときに、`cluster_purpose` パラメーターを設定することにより、クラスターを使用する方法を定義できます。
+> ワークスペースから同じ AKS クラスターに対して複数のアタッチメントを同時に作成することは避けてください。 たとえば、2 つの異なる名前を使用して 1 つの AKS クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 >
-> `cluster_purpose` パラメーターを設定しない場合、または `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` を設定した場合は、クラスターでは最低 12 の仮想 CPU が利用できる必要があります。
->
-> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定した場合、クラスターには 12 の仮想 CPU は必要ありません。 開発/テストには、少なくとも 2 つの仮想 CPU を使用することをお勧めします。 ただし、開発/テスト用に構成されたクラスターは、運用レベルのトラフィックには適しておらず、推論時間が増えることがあります。 開発/テスト クラスターでは、フォールト トレランスも保証されません。
+> SSL やその他のクラスター構成設定を変更するためなど、AKS クラスターを再度アタッチしたい場合は、[AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--) を使用して既存のアタッチメントを先に削除しておいてください。
 
 Azure CLI または portal を使用した AKS クラスターの作成の詳細については、次の記事をご覧ください。
 
@@ -226,6 +231,69 @@ VS Code の使用については、「[モデルを展開して管理する](how
 
 > [!IMPORTANT] 
 > VS Code を使ってデプロイするには、事前にワークスペースに AKS クラスターを作成するかアタッチしておく必要があります。
+
+## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>制御されたロールアウト (プレビュー) を使用して AKS にモデルをデプロイする
+エンドポイントを使用して、制御された方法でモデル バージョンの分析とレベル上げを行います。 1 つのエンドポイントの後方に最大 6 つのバージョンをデプロイし、デプロイされた各バージョンに対するスコアリング トラフィックの割合を構成します。 App Insights を有効にすると、エンドポイントおよびデプロイされたバージョンの運用メトリックを表示できます。
+
+### <a name="create-an-endpoint"></a>エンドポイントの作成
+モデルをデプロイする準備ができたら、スコアリング エンドポイントを作成し、最初のバージョンをデプロイします。 次の手順は、SDK を使用してエンドポイントをデプロイおよび作成する方法を示しています。 最初のデプロイは既定のバージョンとして定義されます。これは、すべてのバージョンの未指定のトラフィック パーセンタイルが既定のバージョンに設定されることを意味します。  
+
+```python
+import azureml.core,
+from azureml.core.webservice import AksEndpoint
+from azureml.core.compute import AksCompute
+from azureml.core.compute import ComputeTarget
+# select a created compute
+compute = ComputeTarget(ws, 'myaks')
+namespace_name= endpointnamespace 
+# define the endpoint and version name
+endpoint_name = "mynewendpoint",
+version_name= "versiona",
+# create the deployment config and define the scoring traffic percentile for the first deployment
+endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
+                                                              enable_app_insights = true, 
+                                                              tags = {'sckitlearn':'demo'},
+                                                              decription = testing versions,
+                                                              version_name = version_name,
+                                                              traffic_percentile = 20)
+ # deploy the model and endpoint
+ endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ ```
+
+### <a name="update-and-add-versions-to-an-endpoint"></a>バージョンの更新とエンドポイントへの追加
+
+エンドポイントに別のバージョンを追加し、スコアリング トラフィック パーセンタイルをバージョンに合わせて構成します。 バージョンには、コントロールと処理バージョンの 2 種類があります。 1 つのコントロール バージョンと比較するために、複数の処理バージョンを使用できます。 
+
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# add another model deployment to the same endpoint as above
+version_name_add = "versionb" 
+endpoint.create_version(version_name = version_name_add, 
+                        inference_config=inference_config,
+                        models=[model], 
+                        tags = {'modelVersion':'b'}, 
+                        description = "my second version", 
+                        traffic_percentile = 10)
+```
+
+既存のバージョンを更新するか、エンドポイント内で削除します。 バージョンの既定の種類、コントロールの種類、およびトラフィック パーセンタイルを変更できます。 
+ 
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# update the version's scoring traffic percentage and if it is a default or control type 
+endpoint.update_version(version_name=endpoint.versions["versionb"].name, 
+                        description="my second version update", 
+                        traffic_percentile=40,
+                        is_default=True,
+                        is_control_version_type=True)
+
+# delete a version in an endpoint 
+endpoint.delete_version(version_name="versionb")
+
+```
+
 
 ## <a name="web-service-authentication"></a>Web サービス認証
 

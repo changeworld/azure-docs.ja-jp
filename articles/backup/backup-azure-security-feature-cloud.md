@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f0e4540f3f5ab3fdbb5953cbf100c5fdc2b2542a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129332"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622001"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup を使用したクラウド ワークロードを保護するためのセキュリティ機能
 
@@ -70,6 +70,29 @@ ms.locfileid: "71129332"
 
 詳細については、後述の「[よく寄せられる質問](backup-azure-security-feature-cloud.md#frequently-asked-questions)」を参照してください。
 
+## <a name="disabling-soft-delete"></a>論理的な削除の無効化
+
+既定では、論理的な削除は、新しく作成されたコンテナーで有効になっています。 論理的な削除のセキュリティ機能が無効になっている場合、バックアップ データは偶発的または悪意のある削除から保護されることはありません。 論理的な削除機能を使用しない場合、保護された項目を削除すると、復元する機能はなく、すべてがすぐに削除されます。 "論理的な削除" 状態のバックアップ データは、顧客に対するコストが発生しないため、この機能を無効にすることはお勧めできません。 論理的な削除を無効にすることを検討する必要があるのは、保護された項目を新しいコンテナーに移動することを計画していて、削除と再保護の前に (テスト環境などで) 必要な 14 日間待機できない場合のみです。
+
+### <a name="prerequisites-for-disabling-soft-delete"></a>論理的な削除を無効にするための前提条件
+
+- (保護された項目を含まない) コンテナーの論理的な削除を有効または無効にすることができるのは、Azure portal だけです。 適用対象:
+  - 保護された項目を含まない、新しく作成されたコンテナー
+  - 保護された項目が削除され、期限切れ (14 日の固定保有期間を超えた場合) になった既存のコンテナー
+- コンテナーの論理的な削除機能が無効になっている場合は、再度有効にすることができます。しかし、コンテナーに保護された項目が含まれている場合は、その選択を元に戻して、もう一度無効にすることはできません。
+- 保護された項目または論理的に削除された状態の項目を含むコンテナーに対して、論理的な削除を無効にすることはできません。 この操作を行う必要がある場合は、次の手順を行います。
+  - すべての保護された項目について、削除されたデータの保護を停止します。
+  - 14 日の安全性の保有期間の期限が切れるまで待ちます。
+  - 論理的な削除を無効にします。
+
+論理的な削除を無効にするには、前提条件が満たされていることを確実にしてから、次の手順を行います。
+
+1. Azure portal で、ご利用のコンテナーに移動して、 **[設定] ->  **[プロパティ]**** に移動します。
+2. プロパティ ウィンドウで、 **[セキュリティ設定] **[更新]**  -> ** を選択します。
+3. [セキュリティ設定] ウィンドウの [論理的な削除] で、 **[無効にする]** を選択します。
+
+![論理的な削除の無効化](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
 ## <a name="other-security-features"></a>その他のセキュリティ機能
 
 ### <a name="storage-side-encryption"></a>ストレージ側の暗号化
@@ -78,17 +101,17 @@ Azure Storage では、データはクラウドに永続化されるときに自
 
 Azure 内では、Azure ストレージとコンテナー間を転送中のデータは HTTPS によって保護されます。 このデータは、Azure バックボーン ネットワークにとどまります。
 
-詳細については、「[保存データに対する Azure Storage 暗号化](https://docs.microsoft.com/en-in/azure/storage/common/storage-service-encryption)」を参照してください。
+詳細については、「[保存データに対する Azure Storage 暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」を参照してください。
 
 ### <a name="vm-encryption"></a>VM の暗号化
 
-Azure Backup サービスを使用して、暗号化されたディスクを含む Windows または Linux の Azure 仮想マシン (VM) をバックアップして復元することができます。 手順については、「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)」をご覧ください。
+Azure Backup サービスを使用して、暗号化されたディスクを含む Windows または Linux の Azure 仮想マシン (VM) をバックアップして復元することができます。 手順については、「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)」をご覧ください。
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Azure Backup 回復ポイントの保護
 
 Recovery Services コンテナーによって使用されるストレージ アカウントは分離されており、悪意のある目的でユーザーがアクセスすることはできません。 アクセスが許可されるのは、復元などの Azure Backup 管理操作だけです。 これらの管理操作は、ロールベースのアクセス制御 (RBAC) によって制御されます。
 
-詳細については、「[ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理](https://docs.microsoft.com/en-us/azure/backup/backup-rbac-rs-vault)」を参照してください。
+詳細については、「[ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -101,30 +124,30 @@ Recovery Services コンテナーによって使用されるストレージ ア�
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>削除操作の完了後、データが論理的に削除された状態で保持される日数を構成できますか?
 
 いいえ。削除操作後、追加の保持期間は 14 日間に固定されています。
- 
+
 #### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>この 14 日間の保持期間に対するコストを支払う必要がありますか?
 
 いいえ。この 14 日間の追加の保持期間は、論理的な削除機能の一部として無料で提供されます。
- 
+
 #### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>データが論理的な削除状態であるときに復元操作を実行できますか?
 
 いいえ。復元するには、論理的に削除されたリソースの削除を取り消す必要があります。 削除の取り消し操作により、リソースが**データを保持して保護を停止の状態**に戻り、任意の時点に復元できるようになります。 ガベージ コレクターは、この状態で一時停止のままになります。
- 
+
 #### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>スナップショットは、コンテナー内の回復ポイントと同じライフサイクルに従いますか?
 
 はい。
- 
+
 #### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>論理的に削除されたリソースに対してスケジュールされたバックアップを再びトリガーするにはどうすればよいですか?
 
 削除の取り消し後に再開操作を実行すると、リソースが再度保護されます。 再開操作により、選択した保持期間でスケジュールされたバックアップをトリガーするため、バックアップ ポリシーが関連付けられます。 また、再開操作が完了するとすぐにガベージ コレクターが実行されます。 有効期限を過ぎた回復ポイントから復元を実行する場合は、再開操作をトリガーする前に実行することをお勧めします。
- 
+
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>コンテナー内に論理的に削除された項目がある場合、コンテナーを削除できますか?
 
 Recovery Services コンテナー内に論理的に削除された状態のバックアップ項目がある場合、そのコンテナーを削除することはできません。 論理的に削除された項目は、削除操作の 14 日後に完全に削除されます。 論理的に削除されたすべての項目が消去された場合のみコンテナーを削除できます。  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>削除後の 14 日間の論理的な削除期間より前にデータを削除することはできますか?
 
-いいえ。 論理的に削除された項目を強制的に削除することはできません。これらは、14 日後に自動的に削除されます。 このセキュリティ機能は、偶発的または悪意のある削除からバックアップされたデータを保護するために有効になっています。  VM で他の操作を実行する前に、14 日間待機する必要があります。  論理的に削除された項目については課金されません。  新しいコンテナーで 14 日以内の論理的な削除のマークが付けられた VM を再保護する必要がある場合は、Microsoft サポートにお問い合わせください。
+No. 論理的に削除された項目を強制的に削除することはできません。これらは、14 日後に自動的に削除されます。 このセキュリティ機能は、偶発的または悪意のある削除からバックアップされたデータを保護するために有効になっています。  VM で他の操作を実行する前に、14 日間待機する必要があります。  論理的に削除された項目については課金されません。  新しいコンテナーで 14 日以内の論理的な削除のマークが付けられた VM を再保護する必要がある場合は、Microsoft サポートにお問い合わせください。
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell または CLI で論理的な削除操作を実行できますか?
 
@@ -132,8 +155,8 @@ Recovery Services コンテナー内に論理的に削除された状態のバ�
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>他のクラウド ワークロード (Azure VM での SQL Server や Azure VM での SAP HANA など) では、論理的な削除はサポートされていますか?
 
-いいえ。 現在、論理的な削除は Azure 仮想マシンでのみサポートされています。
+No. 現在、論理的な削除は Azure 仮想マシンでのみサポートされています。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Backup のセキュリティ制御](backup-security-controls.md)を確認する。
+- [Azure Backup のセキュリティ制御](backup-security-controls.md)を確認する。

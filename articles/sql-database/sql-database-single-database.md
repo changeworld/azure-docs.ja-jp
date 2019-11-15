@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database の単一データベースとは | Microsoft Docs
+title: 単一データベースとは
 description: Azure SQL Database の単一データベースについて説明します
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316656"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820936"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 
@@ -29,7 +29,7 @@ ms.locfileid: "71316656"
 
 ## <a name="dynamic-scalability"></a>動的スケーラビリティ
 
-最初のアプリは、サーバーレス (プレビュー) コンピューティング層の小さな単一データベース、またはプロビジョニングされたコンピューティング層の小さなコンピューティング サイズで構築できます。 ソリューションのニーズに合わせて、いつでも[コンピューティング層またはサービス層](sql-database-single-database-scale.md)を手動またはプログラムで変更します。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+最初のアプリは、サーバーレス コンピューティング レベルの小規模な単一データベース上に低コストで、またはプロビジョニングされたコンピューティング層の小さなコンピューティング サイズで構築できます。 ソリューションのニーズに合わせて、いつでも[コンピューティング層またはサービス層](sql-database-single-database-scale.md)を手動またはプログラムで変更します。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
 ## <a name="single-databases-and-elastic-pools"></a>単一データベースとエラスティック プール
 

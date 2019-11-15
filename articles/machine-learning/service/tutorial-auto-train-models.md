@@ -9,15 +9,16 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 08/21/2019
-ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 11/04/2019
+ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003973"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582451"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 このチュートリアルでは、Azure Machine Learning の自動機械学習を使用して、ニューヨーク市のタクシー運賃を予測する回帰モデルを作成します。 このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。
 
@@ -891,14 +892,15 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ### <a name="define-training-settings"></a>トレーニングの設定を定義する
 
-トレーニング用の実験パラメーターとモデルの設定を定義します。 [設定](how-to-configure-auto-train.md)の完全な一覧を表示します。 これらの既定の設定で実験を送信するには約 5 分から 10 分かかりますが、実行時間を短くしたい場合は `iterations` パラメーターを減らしてください。
+トレーニング用の実験パラメーターとモデルの設定を定義します。 [設定](how-to-configure-auto-train.md)の完全な一覧を表示します。 これらの既定の設定で実験を送信するには約 5 分から 20 分かかりますが、実行時間を短くしたい場合は `experiment_timeout_minutes` パラメーターを減らしてください。
 
 |プロパティ| このチュートリアルの値 |説明|
 |----|----|---|
 |**iteration_timeout_minutes**|2|各イテレーションの分単位での時間制限。 合計実行時間を短縮するには、この値を減らします。|
-|**iterations**|20|イテレーションの回数。 各イテレーションでは、新しい機械学習モデルがデータでトレーニングされます。 これは、合計実行時間に影響を与える主要な値です。|
+|**experiment_timeout_minutes**|20|すべてのイテレーションを組み合わせて、実験が終了するまでにかかる分単位での最大時間。|
+|**enable_early_stopping**|True|短期間でスコアが向上していない場合に、早期終了を有効にするフラグ。|
 |**primary_metric**| spearman_correlation | 最適化したいメトリック。 このメトリックに基づいて、最適なモデルが選択されます。|
-|**preprocess**| True | **True** を使用すると、実験の入力データを前処理できます (欠損データの処理、テキストから数値への変換など)。|
+|**featurization**| 自動 | **auto** を使用すると、実験の入力データを前処理できます (欠損データの処理、テキストから数値への変換など)。|
 |**verbosity**| logging.INFO | ログ記録のレベルを制御します。|
 |**n_cross_validations**|5|検証データが指定されていない場合に実行される、クロス検証の分割の数。|
 
@@ -907,9 +909,10 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "iterations": 20,
+    "experiment_timeout_minutes": 20,
+    "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
-    "preprocess": True,
+    "featurization": 'auto',
     "verbosity": logging.INFO,
     "n_cross_validations": 5
 }
@@ -1061,12 +1064,7 @@ Azure Machine Learning の他のチュートリアルを実行する予定の場
 
 ### <a name="stop-the-notebook-vm"></a>ノートブック VM を停止する
 
-クラウド ノートブック サーバーを使用していた場合は、使用していない VM を停止してコストを削減します。
-
-1. ワークスペースで、 **[ノートブック VM]** を選択します。
-1. 一覧から VM を選択します。
-1. **[停止]** を選択します。
-1. サーバーを再び使用する準備が整ったら、 **[開始]** を選択します。
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>すべてを削除する
 

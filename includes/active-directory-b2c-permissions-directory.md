@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: 6cb0ef848bdeab35c971ebd1a0b14eca1dfe3001
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 43bcd1f11eb228bd1454b2ad0f2addb851029f2f
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523218"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799942"
 ---
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
@@ -32,4 +32,4 @@ ms.locfileid: "73523218"
 1. **[(ご自身のテナント名) に管理者の同意を与えます]** を選択します。
 1. テナント管理者のアカウントを選択します。
 1. **[Accept]\(承認\)** を選択します。
-1. **[更新]** を選択し、 **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
+1. **[更新]** を選択し、 **[状態]** に、"... に付与されました" と表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database インスタンス プールの攻略ガイド (プレビュー) | Microsoft Docs
+title: インスタンス プールの攻略ガイド (プレビュー)
 description: この記事では、Azure SQL Database インスタンス プール (プレビュー) を作成および管理する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5862a54c92de7395ce42865ae32d453e926048d8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 13c58ddf5f51e5b63d2dbe425b3ec795e21dabb8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70293785"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810348"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL Database インスタンス プール (プレビュー) の攻略ガイド
 

@@ -1,7 +1,7 @@
 ---
-title: 変更の追跡に基づいてエンリッチされたコンテンツの増分インデックスを設定する
+title: 変更の追跡に基づいてエンリッチされたコンテンツの増分インデックス (プレビュー) を設定する
 titleSuffix: Azure Cognitive Search
-description: 変更の追跡を有効にし、認知スキルセットの制御された処理のためにエンリッチされたコンテンツの状態を保持します。
+description: 変更の追跡を有効にし、認知スキルセットの制御された処理のためにエンリッチされたコンテンツの状態を保持します。 現在、この機能はパブリック プレビュー段階にあります。
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
@@ -9,24 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ac082d6ecb6624dc0d5bc0ab927ff8b91ebdabce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510084"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719946"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Azure Cognitive Search でエンリッチされたドキュメントの増分インデックス作成を設定する方法
+
+> [!IMPORTANT] 
+> 増分インデックス機能は現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で、ポータルまたは .NET SDK はサポートされていません。
 
 この記事では、Azure Cognitive Search エンリッチメント パイプラインを介して移動するエンリッチされたドキュメントに状態とキャッシュを追加して、サポートされている任意のデータ ソースからドキュメントの増分インデックスを作成できるようにする方法を示します。 既定では、スキルセットはステートレスであり、その構成の任意の部分を変更するには、インデクサーを完全に再実行する必要があります。 増分インデックス作成では、インデクサーで、変更されたパイプラインの部分を特定し、変更されていない部分に対して既存のエンリッチメントを再利用し、変更する手順のエンリッチメントを修正できます。 キャッシュされたコンテンツは Azure Storage に配置されます。
 
 インデクサーの設定に慣れていない場合は、[インデクサーの概要](search-indexer-overview.md)から開始し、[スキルセット](cognitive-search-working-with-skillsets.md)に進んで、エンリッチメント パイプラインについて学習してください。 主要な概念の背景の詳細については、[増分インデックス作成](cognitive-search-incremental-indexing-conceptual.md)に関するページを参照してください。
-
-増分インデックスの作成は、[Search REST api-version=2019-05-06-Preview](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) を使用して構成されます。
-
-> [!NOTE]
-> この機能は、ポータルではまだ使用できず、プログラムで使用する必要があります。
->
 
 ## <a name="modify-an-existing-indexer"></a>既存のインデクサーを変更する
 

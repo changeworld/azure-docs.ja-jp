@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:SSMS を使用して Azure SQL Database で最初のリレーショナル データベースを設計する | Microsoft Docs
+title: チュートリアル:SSMS を使用して最初のリレーショナル データベースを設計する
 description: SQL Server Management Studio を使用して、Azure SQL Database の単一データベースで最初のリレーショナル データベースを設計する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 97e603e6daa64bb70edefe06b52a7c45f90787f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640943"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818297"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>チュートリアル:SSMS を使用して Azure SQL Database 内の単一データベースでリレーショナル データベースを設計する
 
@@ -52,7 +52,7 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 
 空の単一データベースを作成するには、次の手順に従います。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
+1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
 2. **[新規]** ページで、[Azure Marketplace] セクションで **[データベース]** を、 **[おすすめ]** セクションで **[SQL Database]** をクリックします。
 
    ![空のデータベースを作成](./media/sql-database-design-first-database/create-empty-database.png)
@@ -97,21 +97,23 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 > [!IMPORTANT]
 > SQL Database サービスの通信は、ポート 1433 上で行われます。 企業ネットワーク内からこのサービスに接続しようとしても、ポート 1433 でのアウトバウンド トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、管理者がポート 1433 を開かない限り、単一データベースに接続することはできません。
 
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、*yourDatabase* をクリックします。 お客様のデータベースの概要ページが開くと、完全修飾**サーバー名** (*yourserver.database.windows.net* など) や追加の構成オプションが表示されます。
+1. デプロイが完了したら、Azure portal メニューから **[SQL データベース]** を選択するか、または任意のページから *[SQL データベース]* を検索して選択します。  
 
-2. この完全修飾サーバー名をコピーします。これは、SQL Server Management Studio からお客様のサーバーとデータベースに接続するために使用します。
+1. **[SQL データベース]** ページで *[yourDatabase]* を選択します。 データベースの概要ページが開き、完全修飾 **[サーバー名]** (`contosodatabaseserver01.database.windows.net` など) が表示され、それ以上の構成のためのオプションが提供されます。
 
    ![サーバー名](./media/sql-database-design-first-database/server-name.png)
 
-3. ツール バーで **[Set server firewall]\(サーバー ファイアウォールの設定\)** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
+1. この完全修飾サーバー名をコピーします。これは、SQL Server Management Studio からお客様のサーバーとデータベースに接続するために使用します。
+
+1. ツール バーで **[Set server firewall]\(サーバー ファイアウォールの設定\)** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
 
    ![サーバーレベルの IP ファイアウォール規則](./media/sql-database-design-first-database/server-firewall-rule.png)
 
-4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスを新しい IP ファイアウォール規則に追加します。 IP ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
+1. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスを新しい IP ファイアウォール規則に追加します。 IP ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. **[Save]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルの IP ファイアウォール規則が作成されます。
+1. **[Save]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルの IP ファイアウォール規則が作成されます。
 
-6. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
+1. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
 これで IP アドレスが IP ファイアウォールを通過できるようになりました。 SQL Server Management Studio やその他の任意のツールを使用して、単一データベースに接続できます。 必ず、お客様が先ほど作成したサーバー管理者アカウントを使用してください。
 

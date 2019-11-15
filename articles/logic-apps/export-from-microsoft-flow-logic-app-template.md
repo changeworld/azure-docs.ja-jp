@@ -1,6 +1,6 @@
 ---
-title: Microsoft Flow から Azure Logic Apps にフローをエクスポートする
-description: Azure Resource Manager テンプレートとしてエクスポートすることによって Microsoft Flow から Azure Logic Apps にフローを移行する
+title: Power Automate からフローを Azure Logic Apps にエクスポートする
+description: Azure Resource Manager テンプレートとしてエクスポートすることによって Power Automate から Azure Logic Apps にフローを移行する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,31 +9,31 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 82c4e55eff36a7da70e0304fc8152491a8030e04
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441011"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583255"
 ---
-# <a name="export-flows-from-microsoft-flow-and-deploy-to-azure-logic-apps"></a>Microsoft Flow からフローをエクスポートして Azure Logic Apps にデプロイする
+# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
 
-フローの機能を拡張するために、そのフローを [Microsoft Flow](https://flow.microsoft.com) から [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行することができます。 フローをロジック アプリの Azure Resource Manager テンプレートとしてエクスポートし、そのロジック アプリ テンプレートを Azure リソース グループにデプロイした後、Logic App Designer でそのロジック アプリを開くことができます。
+フローの機能を拡張するために、そのフローを [Power Automate](https://flow.microsoft.com) から [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行することができます。 フローをロジック アプリの Azure Resource Manager テンプレートとしてエクスポートし、そのロジック アプリ テンプレートを Azure リソース グループにデプロイした後、Logic App Designer でそのロジック アプリを開くことができます。
 
 > [!NOTE]
-> すべての Microsoft Flow コネクタが Azure Logic Apps で使用できるわけではありません。 Azure Logic Apps に[同等のコネクタ](../connectors/apis-list.md)があるフローをインポートできます。 たとえば、Button トリガー、Approval コネクタ、および Notification コネクタは Microsoft Flow に固有です。
+> すべての Power Automate コネクタが Azure Logic Apps で使用できるわけではありません。 Azure Logic Apps に[同等のコネクタ](../connectors/apis-list.md)があるフローをインポートできます。 たとえば、Button トリガー、Approval コネクタ、および Notification コネクタは Power Automate に固有です。
 >
-> Microsoft Flow からエクスポートされた OpenAPI ベースのフローは、現在、ロジック アプリ テンプレートとしてのデプロイではサポートされていません。 
+> Power Automate からエクスポートされた OpenAPI ベースのフローは、現在、ロジック アプリ テンプレートとしてのデプロイではサポートされていません。 
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* Microsoft Flow からエクスポートするフロー
+* Power Automate からエクスポートするフロー
 
 ## <a name="export-a-flow"></a>フローをエクスポートする
 
-1. [Microsoft Flow](https://flow.microsoft.com) にサインインし、 **[マイ フロー]** を選択します。 フローを探して選択します。 ツール バーで、省略記号 ( **...** ) ボタンをクリックします。 **[エクスポート]**  >  **[Logic Apps template (.json)]\(Logic Apps テンプレート (.json)\)** を選択します。
+1. [Power Automate](https://flow.microsoft.com) にサインインし、 **[マイ フロー]** を選択します。 フローを探して選択します。 ツール バーで、省略記号 ( **...** ) ボタンをクリックします。 **[エクスポート]**  >  **[Logic Apps template (.json)]\(Logic Apps テンプレート (.json)\)** を選択します。
 
    ![フローをエクスポートする](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "68441011"
 
    !["Build your own template in the editor" (エディターで独自のテンプレートをビルド) を選択](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. **[テンプレートの編集]** ツール バーで、 **[ファイルの読み込み]** を選択します。 Microsoft Flow からエクスポートした JSON テンプレートを探して選択し、 **[開く]** を選択します。
+1. **[テンプレートの編集]** ツール バーで、 **[ファイルの読み込み]** を選択します。 Power Automate からエクスポートした JSON テンプレートを探して選択し、 **[開く]** を選択します。
 
    !["ファイルの読み込み" を選択](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "68441011"
   
    ![テンプレートの入力パラメーターを指定する](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-   Azure は、指定されたリソース グループに、テンプレートをロジック アプリとしてデプロイします。 Microsoft Flow から移行するすべてのロジック アプリは、無効の状態でデプロイされます。
+   Azure は、指定されたリソース グループに、テンプレートをロジック アプリとしてデプロイします。 Power Automate から移行するすべてのロジック アプリは、無効の状態でデプロイされます。
 
 1. ロジック アプリをアクティブ化する前に、次の手順に従って新しい接続を承認します。
 
@@ -102,7 +102,7 @@ ms.locfileid: "68441011"
 
 ロジック アプリを作成するための[前提条件](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)を使用して Visual Studio をセットアップした場合は、エクスポートしたテンプレートを Visual Studio から Azure Logic Apps にデプロイできます。
 
-1. Visual Studio で、Microsoft Flow からエクスポートしたテンプレート ファイルを開きます。
+1. Visual Studio で、Power Automate からエクスポートしたテンプレート ファイルを開きます。
 
 1. Visual Studio で、[Azure リソース グループ] プロジェクトを作成し、 **[ロジック アプリ]** テンプレートを選択します。手順については、「[クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)」を参照してください。次に例を示します。
 

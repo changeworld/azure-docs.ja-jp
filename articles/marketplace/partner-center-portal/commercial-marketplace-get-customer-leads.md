@@ -4,15 +4,16 @@ description: 商業マーケットプレースで潜在顧客を構成します�
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 31dcc8c1e35b627b231dbe2a62998c8514d05a20
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901543"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812642"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>マーケットプレース オファーからの潜在顧客
 
@@ -104,7 +105,7 @@ ms.locfileid: "69901543"
 
 ### <a name="how-can-i-find-the-test-lead"></a>テスト リードを確認するにはどうすればよいですか?
 
-リードのターゲット内で `“MSFT_TEST”` を検索します。次に示すのは、マイクロソフトのテスト リードのサンプルです。
+リードのターゲット内で `"MSFT_TEST"` を検索します。次に示すのは、マイクロソフトのテスト リードのサンプルです。
 
 ```
 company = MSFT_TEST_636573304831318844

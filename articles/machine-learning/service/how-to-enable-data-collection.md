@@ -6,19 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
-ms.author: marthalc
-author: marthalc
-ms.date: 07/15/2019
+ms.reviewer: laobri
+ms.author: copeters
+author: lostmygithubaccount
+ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330731"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576694"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
 > この SDK は間もなく廃止されます。 この SDK は、モデルにおけるデータのずれを監視する開発者には依然として適していますが、ほとんどの開発者は [Application Insights による簡略化されたデータ監視](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)を使用する必要があります。 
@@ -47,9 +48,12 @@ ms.locfileid: "72330731"
 出力データは、BLOB 内で次のような構文のパスに保存されます。
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+
+>[!Note]
+> `0.1.0a16` より前の SDK バージョンでは、`designation` 引数の名前は `identifier` でした。 コードが以前のバージョンで開発された場合は、それに応じて更新する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -80,8 +84,8 @@ ms.locfileid: "72330731"
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
     *CorrelationId* は省略可能なパラメーターです。モデルに不要な場合、設定する必要はありません。 correlationId を指定すると、他のデータとのマッピングが簡単になります (例:LoanNumber、CustomerId など)
@@ -112,7 +116,7 @@ ms.locfileid: "72330731"
 
 依存関係がインストールされたサービスが**環境ファイル**と**スコア付けファイル**に既に存在する場合は、次の手順でデータ収集を有効にします。
 
-1. [Azure portal](https://portal.azure.com) に移動します。
+1. [[Azure Machine Learning Studio]](https://ml.azure.com) に移動します。
 
 1. ワークスペースを開きます。
 
@@ -120,7 +124,7 @@ ms.locfileid: "72330731"
 
    ![サービスの編集](media/how-to-enable-data-collection/EditService.PNG)
 
-1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオフにします。 
+1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオンにします。 
 
     [![データ収集をオンにする](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
@@ -130,10 +134,10 @@ ms.locfileid: "72330731"
 
 
 ## <a name="disable-data-collection"></a>データ収集を無効にする
-データ収集はいつでも停止できます。 データ収集を無効にするには、Python コードまたは Azure portal を使用します。
+データ収集はいつでも停止できます。 データ収集を無効にするには、Python コードまたは Azure Machine Learning Studio を使用します。
 
-+ オプション 1 - Azure portal で無効にする: 
-  1. [Azure ポータル](https://portal.azure.com)にサインインします。
++ オプション 1 - Azure Machine Learning Studio を無効にする: 
+  1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
   1. ワークスペースを開きます。
 
@@ -147,7 +151,7 @@ ms.locfileid: "72330731"
 
   1. **[更新]** をクリックして変更を適用します。
 
-  これらの設定には、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) でアクセスすることもできます。
+  これらの設定には、[Azure Machine Learning Studio](https://ml.azure.com) のワークスペースでアクセスすることもできます。
 
 + オプション 2 - Python を使用してデータ収集を無効にする:
 
@@ -157,10 +161,10 @@ ms.locfileid: "72330731"
   ```
 
 ## <a name="validate-your-data-and-analyze-it"></a>データを検証して分析する
-好みの任意のツールを選択して、Azure Blob に収集されたデータを分析できます。 
+好みの任意のツールを選択して、Azure Blob に収集されたデータを分析できます。
 
 BLOB のデータにすばやくアクセスするには:
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
 1. ワークスペースを開きます。
 1. **[ストレージ]** をクリックします。
@@ -170,7 +174,7 @@ BLOB のデータにすばやくアクセスするには:
 1. BLOB 内での出力データへのパスは次のような構文です。
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
@@ -190,7 +194,7 @@ BLOB のデータにすばやくアクセスするには:
 
     [![PBI ナビゲーター](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. クエリ エディターで、[名前] 列の下をクリックし、ストレージ アカウント 1. モデル パスをフィルターに追加します。 注: 特定の年または月のファイルだけを検索する場合は、そのフィルター パスだけを展開します。 たとえば、3 月のデータだけを検索する場合は、/modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/identifier>/year>/3 とします
+1. クエリ エディターで、[名前] 列の下をクリックし、ストレージ アカウント 1. モデル パスをフィルターに追加します。 注: 特定の年または月のファイルだけを検索する場合は、そのフィルター パスだけを展開します。 たとえば、3 月のデータだけを検索する場合は、/modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/designation>/year>/3 とします
 
 1. **名前**に基づいて関連するデータをフィルター処理します。 **予測**と**入力**を保存した場合、それぞれにクエリを作成する必要があります。
 

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/06/2019
 ms.author: apimpm
-ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294344"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796027"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 
@@ -40,6 +40,8 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 -   ソース ファイルの URL (使用できる場合) が、相対的なサーバーの URL に適用されます。
 -   セキュリティ定義は無視されます。
 -   API 操作に対するインライン スキーマ定義はサポートされていません。 スキーマ定義は、API スコープで定義され、API 操作の要求または応答のスコープで参照できます。
+-   定義された URL パラメーターは URL テンプレートに含まれている必要があります。
+-   API によって返される MIME 型を説明する **Produces** キーワードはサポートされていません。 
 
 ### <a name="open-api-v2"> </a>OpenAPI バージョン 2
 

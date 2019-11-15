@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のクエリ ストアの動作
+title: クエリ ストアの操作
 description: Azure SQL Database でクエリ ストアがどのように動作するかについて説明します
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b4f999818fe3b3517ee3fb48c22e616ee50f2d88
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa60992c85e69143bfd65cc1a1f420ed85c8fd93
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567145"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802769"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Azure SQL Database のクエリ ストアの動作
 
@@ -31,7 +31,7 @@ Azure のクエリ ストアは、すべてのクエリに関する詳細な履�
 
 このセクションでは、クエリ ストアと、 [SQL Database Advisor やパフォーマンス ダッシュボード](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)などの依存機能の信頼できる動作を保証するように考えられた、最適構成の既定値について説明します。 既定の構成は、データ収集が継続的に実施される (OFF/READ_ONLY 状態の時間が最小限になる) ように最適化されています。
 
-| 構成 | 説明 | 既定値 | Comment (コメント) |
+| 構成 | 説明 | Default | Comment (コメント) |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |クエリ ストアがユーザーのデータベース内で使用するデータ領域の制限を指定します。 |100 |新しいデータベースに適用 |
 | INTERVAL_LENGTH_MINUTES |クエリ プランで収集されたランタイム統計が集計されて保存される間隔を定義します。 すべてのアクティブなクエリ プランには、この構成で定義された期間の行が最大で 1 行含まれます。 |60 |新しいデータベースに適用 |

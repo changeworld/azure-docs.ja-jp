@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 82c4a27ac2491e668c1d99e2a14b870e82ec5665
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 4e11070f4e766f83b0e7ead7757c675de3fef33f
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935420"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614772"
 ---
 # <a name="durable-orchestrations"></a>持続的オーケストレーション
 
@@ -64,7 +64,7 @@ Durable Task Framework のイベント ソーシング動作は、記述した�
 ```csharp
 [FunctionName("E1_HelloSequence")]
 public static async Task<List<string>> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var outputs = new List<string>();
 
@@ -133,7 +133,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 * **PartitionKey**:オーケストレーションのインスタンス ID が含まれます。
 * **EventType**:イベントの種類を表します。 次のいずれかの種類です。
-  * **OrchestrationStarted**:オーケストレーター関数が await から再実行されました。または初回実行中です。 `Timestamp` 列は、[CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API の決定論的な値を設定するときに使用されます。
+  * **OrchestrationStarted**:オーケストレーター関数が await から再実行されました。または初回実行中です。 `Timestamp` 列は、`CurrentUtcDateTime` (.NET) および `currentUtcDateTime` (JavaScript) API の決定論的な値を設定するために使用されます。
   * **ExecutionStarted**:オーケストレーター関数は初めて実行を開始しました。 このイベントには、`Input` 列の関数入力も含まれています。
   * **TaskScheduled**:アクティビティ関数がスケジュールされました。 アクティビティ関数の名前は `Name` 列でキャプチャされます。
   * **TaskCompleted**:アクティビティ関数が完了しました。 関数の結果は `Result` 列に含まれます。
@@ -186,7 +186,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 詳細と例については、[エラー処理](durable-functions-error-handling.md)に関する記事をご覧ください。
 
-### <a name="critical-sections"></a>クリティカル セクション
+### <a name="critical-sections-durable-functions-2x"></a>重要なセクション (Durable Functions 2.x)
 
 オーケストレーションのインスタンスはシングルスレッドであるため、オーケストレーションの "*内部*" の競合状態について考慮する必要はありません。 ただし、オーケストレーションから外部システムとやりとりする場合、競合状態が発生する可能性があります。 外部システムと相互作用するときの競合状態を軽減するため、オーケストレーター関数では .NET の `LockAsync` メソッドを使用して "*クリティカル セクション*" を定義できます。
 
@@ -212,7 +212,7 @@ public static async Task Synchronize(
 > [!NOTE]
 > クリティカル セクションは Durable Functions 2.0 以降で使用できます。 現在、この機能が実装されているのは .NET オーケストレーションだけです。
 
-### <a name="calling-http-endpoints"></a>HTTP エンドポイントの呼び出し
+### <a name="calling-http-endpoints-durable-functions-2x"></a>HTTP エンドポイントの呼び出し (Durable Functions 2.x)
 
 [オーケストレーター関数のコードの制約](durable-functions-code-constraints.md)に関する記事で説明されているように、オーケストレーター関数は I/O を行うことを許可されていません。 この制限に対する一般的な回避策は、I/O を行う必要があるすべてのコードをアクティビティ関数内にラップすることです。 外部システムとのやりとりが頻繁に行われるオーケストレーションでは、アクティビティ関数を使用して、HTTP の呼び出しを行い、その結果をオーケストレーションに返します。
 
@@ -236,10 +236,22 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const url = context.df.getInput();
+    var res = yield context.df.callHttp("GET", url);
+    if (res.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
 詳細と例については、[HTTP 機能](durable-functions-http-features.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> オーケストレーター関数からの HTTP エンドポイントの直接呼び出しは、Durable Functions 2.0 以降で使用できます。 現在、この機能が実装されているのは .NET オーケストレーションだけです。
+> オーケストレーター関数からの HTTP エンドポイントの直接呼び出しは、Durable Functions 2.0 以降で使用できます。
 
 ### <a name="passing-multiple-parameters"></a>複数のパラメーターを渡す
 
@@ -250,7 +262,7 @@ public static async Task CheckSiteAvailable(
 ```csharp
 [FunctionName("GetCourseRecommendations")]
 public static async Task<object> RunOrchestrator(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string major = "ComputerScience";
     int universityYear = context.GetInput<int>();
@@ -262,7 +274,7 @@ public static async Task<object> RunOrchestrator(
 }
 
 [FunctionName("CourseRecommendations")]
-public static async Task<object> Mapper([ActivityTrigger] DurableActivityContext inputs)
+public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContext inputs)
 {
     // parse input for student's major and year in university
     (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();

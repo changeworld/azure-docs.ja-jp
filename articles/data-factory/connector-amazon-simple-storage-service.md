@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Amazon Simple Storage Service (S3) からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Amazon Simple Storage Service (S3) からデータをコピーする
 description: Azure Data Factory を使用して、Amazon Simple Storage Service (S3) のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 author: linda33wj
@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: f8f7c33abda8d31d39051a024b9cc381c9f6b192
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c80e78d648b58956e7b878c73343eba5ba632399
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387945"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681347"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -102,12 +102,9 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-- **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
-- **ORC 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット
-
-**Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータを Amazon S3 からコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Amazon S3 では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+Amazon S3 では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -116,9 +113,6 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 | folderPath | 特定のバケットの下のフォルダーへのパス。 フォルダーをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 | fileName   | 特定のバケット + folderPath の下のファイル名。 ファイルをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 | version | S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 指定しない場合は、最新バージョンがフェッチされます。 |いいえ |
-
-> [!NOTE]
-> 次のセクションで説明する Parquet/テキスト形式の **AmazonS3Object** 型のデータセットは、下位互換性のために引き続きコピー/Lookup/GetMetadata アクティビティでそのままサポートされますが、マッピング データ フローでは機能しません。 今後は、この新しいモデルを使用することをお勧めします。ADF オーサリング UI はこれらの新しい型を生成するように切り替えられています。
 
 **例:**
 
@@ -147,9 +141,10 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 }
 ```
 
-### <a name="other-format-dataset"></a>他の形式のデータセット
+### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
-**ORC 形式**のデータを Amazon S3 からコピーする場合、次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のデータセット モデルは引き続き現状のままサポートされます。 今後は、前述した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -231,12 +226,9 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 
 ### <a name="amazon-s3-as-source"></a>ソースとしての Amazon S3
 
-- コピー元から **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
-- コピー元から **ORC 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース
-
-**Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータを Amazon S3 からコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 Amazon S3 では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+Amazon S3 では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -248,9 +240,6 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 | modifiedDatetimeStart    | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。 | いいえ                                                          |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                                          |
 | maxConcurrentConnections | 同時にストレージ ストアに接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                                          |
-
-> [!NOTE]
-> Parquet/区切りテキスト形式の場合、次のセクションで説明する **FileSystemSource** 型のコピー アクティビティ ソースは、下位互換性のために引き続きそのままサポートされます。 今後は、この新しいモデルを使用することをお勧めします。ADF オーサリング UI はこれらの新しい型を生成するように切り替えられています。
 
 **例:**
 
@@ -293,9 +282,10 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 ]
 ```
 
-#### <a name="other-format-source"></a>他の形式のソース
+#### <a name="legacy-source-model"></a>レガシ ソース モデル
 
-**ORC 形式**のデータを Amazon S3 からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のコピー ソース モデルは引き続き現状のままサポートされます。 今後は、前述した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して、時間でパーティション分割されたファイル名のみに基づく新しいファイルを増分コピーする | Microsoft Docs
+title: Azure Data Factory を使用して、時間でパーティション分割されたファイル名のみに基づく新しいファイルを増分コピーする
 description: Azure データ ファクトリを作成してから、データのコピー ツールを使用して、時間でパーティション分割されたファイル名のみに基づく新しいファイルを増分的に読み込みます。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8081d7112d67e3bb4e72c6f6e88d765a159e047f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 273aaaa2ac51f75edfad6da03d6720f58b7c3c47
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933912"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683445"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>データのコピー ツールを使用することにより、パーティション分割されたファイル名に基づく新しいファイルを増分コピーする
 

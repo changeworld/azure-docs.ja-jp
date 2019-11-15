@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16903d4f9b1bad8a588b1a234ac84bc9c0150c4a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598373"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827839"
 ---
 # <a name="private-offers"></a>プライベート オファー
 
@@ -33,7 +34,7 @@ ms.locfileid: "72598373"
 
 ## <a name="creating-private-offers-using-skus-and-plans"></a>SKU とプランを使用したプライベート オファーの作成
 
-公開元は、新しい SKU またはプランを作成し、それらをプライベートに設定することによって、"*パブリック SKU またはプランを含む新規または既存のオファー*" のプライベート版を簡単に作成できます。  [プライベート SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) とプランはオファーのコンポーネントであり、ターゲット顧客のみが見ることができ、購入することができます。 プライベート SKU またはプランでは、基本イメージを再利用でき、パブリック SKU またはプランに対してすでに発行されているオファーのメタデータも再利用できます。 公開元は、このオプションを使用して、パブリック オファーのプライベート版を複数作成でき、同じ基本イメージとオファーのメタデータを複数のバージョンで公開する必要はありません。 仮想マシンと Azure アプリケーションを提供するオファーのみ、プライベート SKU とパブリック SKU で基本イメージを共有しているときに、オファーの基本イメージを変更すると、その基本イメージを使用しているすべてのパブリック SKU とプライベート SKU に変更が反映されます。
+公開元は、新しい SKU またはプランを作成し、それらをプライベートに設定することによって、"*パブリック SKU またはプランを含む新規または既存のオファー*" のプライベート版を簡単に作成できます。  [プライベート SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) とプランはオファーのコンポーネントであり、ターゲット顧客のみが見ることができ、購入することができます。 プライベート SKU またはプランでは、基本イメージを再利用でき、パブリック SKU またはプランに対してすでに発行されているオファーのメタデータも再利用できます。 公開元は、このオプションを使用して、パブリック オファーのプライベート版を複数作成でき、同じ基本イメージとオファーのメタデータを複数のバージョンで公開する必要はありません。 仮想マシンと Azure アプリケーションを提供するオファーに限り、プライベート SKU とパブリック SKU で基本イメージを共有しているときに、オファーの基本イメージを変更すると、その基本イメージを使用しているすべてのパブリック SKU とプライベート SKU に変更が反映されます。
 
 "*プライベート SKU またはプランのみが含まれている新しいオファー*" の場合、公開元は、他のオファーと同じようにオファーを作成でき、作成後に SKU またはプランをプライベートとしてマークします。 プライベート SKU またはプランのみが含まれているオファーの場合、そのオファーに関連付けられていない顧客は、[Azure Marketplace](https://azuremarketplace.microsoft.com) でも [Azure portal](https://azure.microsoft.com/features/azure-portal/) でも、オファーを検索したりアクセスしたりすることはできません。
 

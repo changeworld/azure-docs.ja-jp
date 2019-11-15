@@ -1,6 +1,6 @@
 ---
-title: Python アプリからキャプチャしたデータを読み取る - Azure Event Hubs |Microsoft Docs
-description: Azure Python SDK を用いて、Event Hubs Capture 機能を示すスクリプト。
+title: クイック スタート:Python アプリからキャプチャしたデータを読み取る - Azure Event Hubs
+description: クイック スタート:Azure Python SDK を用いて、Event Hubs Capture 機能を示すスクリプト。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 10/10/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 354964e1b66b55dcccd9b5674f011f8c5a38a1c5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428965"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717847"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture チュートリアル:Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>クイック スタート:Event Hubs Capture チュートリアル:Python
 
 Capture は Azure Event Hubs の機能です。 Capture を使用すると、任意の Azure Blob Storage アカウントに、イベント ハブ内のストリーミング データを自動的に配布できます。 この機能により、リアルタイムのストリーミング データを容易にバッチ処理することができます。 この記事では、Event Hubs Capture を Python で使用する方法について説明します。 Event Hubs Capture の詳細については、「[Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする][Overview of Event Hubs Capture]」を参照してください。
 

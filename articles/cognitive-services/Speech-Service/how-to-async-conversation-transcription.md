@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
-ms.openlocfilehash: 433ea2778d99de39991565b2529e2f8eab4e13df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a2a00a8c76c7b5c02cde623bf93f536b27cf074
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506494"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621948"
 ---
 # <a name="asynchronous-conversation-transcription-preview"></a>非同期での会話の文字起こし (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "73506494"
 
 ## <a name="asynchronous-vs-real-time--asynchronous"></a>非同期またはリアルタイムと非同期
 
-非同期での文字起こしでは、会話のオーディオをストリーミングしますが、文字起こしをリアルタイムで受け取る必要はありません。 代わりに、オーディオを送信した後、`ConversationTranscriber` の `conversationId` を使って、非同期での文字起こしの状態を照会します。 非同期での文字起こしの準備が完了していると、`RemoteConversationTranscriptionResult` を受け取ります。
+非同期での文字起こしでは、会話のオーディオをストリーミングしますが、文字起こしをリアルタイムで受け取る必要はありません。 代わりに、オーディオを送信した後、`Conversation` の `conversationId` を使って、非同期での文字起こしの状態を照会します。 非同期での文字起こしの準備が完了していると、`RemoteConversationTranscriptionResult` を受け取ります。
 
 リアルタイムと非同期では、リアルタイムで文字起こしを受け取りますが、`conversationId` で照会して文字起こしを取得することもできます (非同期のシナリオと同様)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "73506494"
 
 ## <a name="upload-the-audio"></a>オーディオをアップロードする
 
-非同期での文字起こしを実行する前に、Microsoft Cognitive Speech クライアント SDK (バージョン1.8.0 以降) を使って、会話の文字起こしにオーディオを送信する必要があります。
+非同期での文字起こしを実行する前に、Microsoft Cognitive Speech クライアント SDK (バージョン1.8.0 以降) を使って、会話の文字起こしサービスにオーディオを送信する必要があります。
 
 このコード例では、非同期モード専用に会話の文字起こし機能を作成する方法を示します。 オーディオを文字起こし機能にストリーミングするには、[Speech SDK を使ってリアルタイムで会話の文字起こしを行う方法](how-to-use-conversation-transcription-service.md)に関する記事で作成したオーディオ ストリーミング コードを追加する必要があります。 そのトピックの**制限事項**に関するセクションを参照し、サポートされているプラットフォームと言語 API を確認してください。
 
@@ -39,7 +39,7 @@ ms.locfileid: "73506494"
 // Create the speech config object
 // Substitute real information for "YourSubscriptionKey" and "Region"
 SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "Region");
-speech_config.setProperty("ConversationTranscriptionInRoomAndOnline", "true");
+speechConfig.setProperty("ConversationTranscriptionInRoomAndOnline", "true");
 
 // Set the property for asynchronous transcription
 speechConfig.setServiceProperty("transcriptionMode", "Async", ServicePropertyChannel.UriQueryParameter);
@@ -47,18 +47,56 @@ speechConfig.setServiceProperty("transcriptionMode", "Async", ServicePropertyCha
 // Set the property for real-time plus asynchronous transcription
 //speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 
-// Do rest of the things as explained in how to use Conversation Transcription
-
 // pick a conversation Id that is a GUID.
+String conversationId = UUID.randomUUID().toString();
+
+// Create a Conversation
 Conversation conversation = new Conversation(speechConfig, conversationId);
 
+// Create an audio stream from a wav file or from the default microphone if you want to stream live audio from the supported devices
+// Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
+PullAudioInputStreamCallback wavfilePullStreamCallback = Helper.OpenWavFile("16Khz16Bits8channelsOfRecordedPCMAudio.wav");
+// Create an audio stream format assuming the file used above is 16Khz, 16 bits and 8 channel pcm wav file
+AudioStreamFormat audioStreamFormat = AudioStreamFormat.getWaveFormatPCM((long)16000, (short)16,(short)8);
+// Create an input stream
+AudioInputStream audioStream = AudioInputStream.createPullStream(wavfilePullStreamCallback, audioStreamFormat);
+
 // Create a conversation transcriber
-ConversationTranscriber transcriber = new ConversationTranscriber(AudioConfig.fromDefaultMicrophoneInput());
+ConversationTranscriber transcriber = new ConversationTranscriber(AudioConfig.fromStreamInput(audioStream));
 
 // join a conversation
-transcriber.joinConversationAsync(conversation).get();
+transcriber.joinConversationAsync(conversation);
 
-// stream audio as shown in “Transcribe conversations in real time”
+// Add the event listener for the realtime events
+transcriber.transcribed.addEventListener((o, e) -> {
+    System.out.println("Conversation transcriber Recognized:" + e.toString());
+});
+
+transcriber.canceled.addEventListener((o, e) -> {
+    System.out.println("Conversation transcriber canceled:" + e.toString());
+    try {
+        transcriber.stopTranscribingAsync().get();
+    } catch (InterruptedException ex) {
+        ex.printStackTrace();
+    } catch (ExecutionException ex) {
+        ex.printStackTrace();
+    }
+});
+
+transcriber.sessionStopped.addEventListener((o, e) -> {
+    System.out.println("Conversation transcriber stopped:" + e.toString());
+
+    try {
+        transcriber.stopTranscribingAsync().get();
+    } catch (InterruptedException ex) {
+        ex.printStackTrace();
+    } catch (ExecutionException ex) {
+        ex.printStackTrace();
+    }
+});
+
+// start the transcription.
+Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
@@ -76,41 +114,41 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
 
 このステップでは、非同期での文字起こしの結果を取得しますが、リアルタイムの処理が必要な場合は、他の場所で行っているものとします。 詳細については、[Speech SDK を使ってリアルタイムで会話の文字起こしを行う方法](how-to-use-conversation-transcription-service.md)に関する記事を参照してください。
 
-ここで示すコードで必要な **remoteconversation-client-sdk バージョン 1.0.0** は、Windows、Linux、Android (API レベル 26 以上) での Java (1.8 以降) に対してのみサポートされています。
+ここで示すコードで必要な **remote-conversation バージョン 1.8.0** は、Windows、Linux、Android (API レベル 26 以上のみ) での Java (1.8.0 以降) に対してのみサポートされています。
 
 ### <a name="obtaining-the-client-sdk"></a>クライアント SDK を取得する
 
-次のように pom.xml ファイルを編集することによって、**remoteconversation-client-sdk** を取得できます。
+次のように pom.xml ファイルを編集することによって、**remote-conversation** を取得できます。
 
-- ファイルの最後にある、終了タグ `</project>` の前に、Speech SDK 用の Maven リポジトリへの参照を含む `repositories` 要素を作成します。
+1. ファイルの最後にある、終了タグ `</project>` の前に、Speech SDK 用の Maven リポジトリへの参照を含む `repositories` 要素を作成します。
 
-  ```xml
-  <repositories>
-    <repository>
-      <id>maven-cognitiveservices-speech</id>
-      <name>Microsoft Cognitive Services Speech Maven Repository</name>
-      <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
-    </repository>
-  </repositories>
-  ```
+   ```xml
+   <repositories>
+     <repository>
+       <id>maven-cognitiveservices-speech</id>
+       <name>Microsoft Cognitive Services Speech Maven Repository</name>
+       <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+     </repository>
+   </repositories>
+   ```
 
-- また、依存関係として remoteconversation-client-sdk 1.0.0 を指定して、`dependencies` 要素を追加します。
+2. また、依存関係として remoteconversation-client-sdk 1.8.0 を指定して、`dependencies` 要素を追加します。
 
-  ```xml
-  <dependencies>
-    <dependency>
-      <groupId>com.microsoft.cognitiveservices.speech.remoteconversation</groupId>
-      <artifactId>remoteconversation-client-sdk</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-  </dependencies>
-  ```
+   ```xml
+   <dependencies>
+     <dependency>
+       <groupId>com.microsoft.cognitiveservices.speech.remoteconversation</groupId>
+       <artifactId>remote-conversation</artifactId>
+       <version>1.8.0</version>
+     </dependency>
+   </dependencies>
+   ```
 
-- 変更を保存します
+3. 変更を保存します
 
 ### <a name="sample-transcription-code"></a>サンプルの文字起こしコード
 
-`conversationId` を取得した後、クライアントでリモート操作オブジェクト **RemoteConversationTranscriptionOperation** を作成して、非同期での文字起こしの状態を照会します。 **RemoteConversationTranscriptionOperation** は、[ポーラー](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/Poller.java)から拡張されています。 ポーラーが完了したら、ポーラーをサブスクライブし、オブジェクトを照会することにより、**RemoteConversationTranscriptionResult** を取得します。 このコードでは、結果の内容をシステム出力に単に出力します。
+`conversationId` を取得した後、クライアント アプリケーションでリモート会話の文字起こしクライアント **RemoteConversationTranscriptionClient** を作成して、非同期での文字起こしの状態を照会します。 **RemoteConversationTranscriptionClient** の **getTranscriptionOperation** メソッドを使用して、[PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) オブジェクトを取得します。 PollerFlux オブジェクトには、リモート操作の状態 **RemoteConversationTranscriptionOperation** に関する情報と最終的な結果 **RemoteConversationTranscriptionResult** が格納されます。 操作が完了したら、[SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java) の **getFinalResult** を呼び出して、**RemoteConversationTranscriptionResult** を取得します。 このコードでは、結果の内容をシステム出力に単に出力します。
 
 ```java
 // Create the speech config object
@@ -119,33 +157,43 @@ SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey",
 // Create a remote Conversation Transcription client
 RemoteConversationTranscriptionClient client = new RemoteConversationTranscriptionClient(speechConfig);
 
-// Create a remote Conversation Transcription operation
-RemoteConversationTranscriptionOperation operation = new RemoteConversationTranscriptionOperation(conversationId, client);
+// Get the PollerFlux for the remote operation
+PollerFlux<RemoteConversationTranscriptionOperation, RemoteConversationTranscriptionResult> remoteTranscriptionOperation = client.getTranscriptionOperation(conversationId);
 
-// Operation identifier now be the value of `conversationId`
-System.out.println("Operation Identifier:" + operation.getId());
+// Subscribe to PollerFlux to get the remote operation status
+remoteTranscriptionOperation.subscribe(
+        pollResponse -> {
+            System.out.println("Poll response status : " + pollResponse.getStatus());
+            System.out.println("Poll response status : " + pollResponse.getValue().getServiceStatus());
+        }
+);
 
-// Get the observer (which is a Flux) and subscribe to it for the response
-operation.getObserver()
-                .subscribe(
-                        pollResponse -> {
-                            System.out.println("Poll response status : " + pollResponse.getStatus());
-                            if(pollResponse.getValue().getConversationTranscriptionResults() != null) {
-                                for (int i = 0; i < pollResponse.getValue().getConversationTranscriptionResults().size(); i++) {
-                                    ConversationTranscriptionResult result = pollResponse.getValue().getConversationTranscriptionResults().get(i);
-                                    System.out.println(result.getOffset());
-                                    System.out.println(result.getDuration());
-                                    System.out.println(result.getUserId());
-                                    System.out.println(result.getReason());
-                                    System.out.println(result.getResultId());
-                                    System.out.println(result.getText());
-                                    System.out.println(result.toString());
-                                }
-                            }
-                        }
-                );
-// Block on the operation till it is finished
-operation.block();
+// Obtain the blocking operation using getSyncPoller
+SyncPoller<RemoteConversationTranscriptionOperation, RemoteConversationTranscriptionResult> blockingOperation =  remoteTranscriptionOperation.getSyncPoller();
+
+// Wait for the operation to finish
+blockingOperation.waitForCompletion();
+
+// Get the final result response
+RemoteConversationTranscriptionResult resultResponse = blockingOperation.getFinalResult();
+
+// Print the result
+if(resultResponse != null) {
+    if(resultResponse.getConversationTranscriptionResults() != null) {
+        for (int i = 0; i < resultResponse.getConversationTranscriptionResults().size(); i++) {
+            ConversationTranscriptionResult result = resultResponse.getConversationTranscriptionResults().get(i);
+            System.out.println(result.getProperties().getProperty(PropertyId.SpeechServiceResponse_JsonResult.name()));
+            System.out.println(result.getProperties().getProperty(PropertyId.SpeechServiceResponse_JsonResult));
+            System.out.println(result.getOffset());
+            System.out.println(result.getDuration());
+            System.out.println(result.getUserId());
+            System.out.println(result.getReason());
+            System.out.println(result.getResultId());
+            System.out.println(result.getText());
+            System.out.println(result.toString());
+        }
+    }
+}
 
 System.out.println("Operation finished");
 ```

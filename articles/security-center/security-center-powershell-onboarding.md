@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用した Azure Security Center へのオンボードおよびネットワークの保護 |Microsoft Docs
+title: PowerShell を使用して Azure Security Center にオンボードする
 description: このドキュメントでは、PowerShell コマンドレットを使用して Azure Security Center にオンボードする手順について説明します。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 8e2f7b87efe89166175748cec310f24575b7f102
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b20b3c1e4216fe8065fbc8ac24c7d8097903fc5a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201222"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686372"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell を使用した Azure Security Center へのオンボードの自動化
 
@@ -31,13 +31,13 @@ PowerShell を使用して Azure Security Center にオンボードすると、A
 
 この例では、Security Center を ID: d07c0080-170c-4c24-861d-9c817742786c のサブスクリプションで有効にし、Security Center の Standard 階層を実装して、高レベルの保護を提供する推奨設定を適用します。これにより脅威からの高度な保護と検出機能が提供されます。
 
-1. [ASC の Standard レベルの保護](https://azure.microsoft.com/pricing/details/security-center/)を設定します。 
+1. [Security Center の Standard レベルの保護](https://azure.microsoft.com/pricing/details/security-center/)を設定します。 
  
 2. サブスクリプションに関連付けられている VM 上で Microsoft Monitoring Agent が収集するデータの送信先である、Log Analytics ワークスペースを設定します。この例では、ワークスペース (myWorkspace) で定義された既存のユーザーです。
 
 3. [Microsoft Monitoring Agent をデプロイ](security-center-enable-data-collection.md#auto-provision-mma)する Security Center の自動エージェント プロビジョニングをアクティブ化します。
 
-5. 組織の [CISO を ASC アラートと注目すべきイベントのセキュリティ連絡先として](security-center-provide-security-contact-details.md)設定します。
+5. 組織の [CISO を Security Center のアラートと注目すべきイベントのセキュリティ連絡先として](security-center-provide-security-contact-details.md)設定します。
 
 6. Security Center の[既定のセキュリティ ポリシー](tutorial-security-policy.md)を割り当てます。
 

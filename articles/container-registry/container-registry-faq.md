@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286516"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622705"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -448,6 +448,8 @@ Docker プロキシを前のコマンドの出力とポート 8888 に構成し�
 
 - [実行を一括で取り消すにはどうすればよいですか?](#how-do-i-batch-cancel-runs)
 - [az acr build コマンドに .git フォルダーを含めるにはどうすればよいですか?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
+- [タスクではソース トリガーに対して GitLab をサポートしていますか? ](#does-tasks-support-gitlab-for-source-triggers)
+- [タスクでサポートされる Git リポジトリ管理サービスは何ですか? ](#what-git-repository-management-service-does-tasks-support)
 
 ### <a name="how-do-i-batch-cancel-runs"></a>実行を一括で取り消すにはどうすればよいですか?
 
@@ -462,11 +464,30 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 `az acr build` コマンドにローカルのソース フォルダーを渡した場合、既定では、`.git` フォルダーはアップロードされるパッケージから除外されます。 次の設定を使用して、`.dockerignore` ファイルを作成できます。 これは、コマンドに、アップロードされるパッケージ内の `.git` の下にあるすべてのファイルを復元するよう指示します。 
 
-```
+```sh
 !.git/**
 ```
 
 この設定は、`az acr run` コマンドにも適用されます。
+
+### <a name="does-tasks-support-gitlab-for-source-triggers"></a>タスクではソース トリガーに対して GitLab をサポートしていますか?
+
+現在、ソース トリガーに対して GitLab をサポートしていません。
+
+### <a name="what-git-repository-management-service-does-tasks-support"></a>タスクでサポートされる Git リポジトリ管理サービスは何ですか?
+
+| Git サービス | ソース コンテキスト | 手動ビルド | コミット トリガーを使用した自動ビルド |
+|---|---|---|---|
+| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | はい | はい |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | はい | はい |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | はい | いいえ |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | はい | いいえ |
+
+## <a name="run-error-message-troubleshooting"></a>実行のエラー メッセージのトラブルシューティング
+
+| エラー メッセージ | トラブルシューティング ガイド |
+|---|---|
+|VM 用にアクセスが構成されていないため、サブスクリプションが見つかりませんでした|これは、ACR タスクで `az login --identity` を使用している場合に発生する可能性があります。 これは一時的なエラーであり、マネージド ID のロールの割り当てが反映されていない場合に発生します。 数秒待ってから、操作を再試行してください。|
 
 ## <a name="cicd-integration"></a>CI/CD の統合
 

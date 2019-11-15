@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811912"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820216"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からのアクセスの構成
 
@@ -68,7 +68,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
    ![仮想ネットワークと新しい仮想ネットワークのサブネットを選択する](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-ご使用の Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されていたり、Stream Analytics または Power BI からアクセスされたりする場合は、 **[Accept connections from within global Azure datacenters]\(グローバル Azure データセンター内からの接続を受け入れる\)** をオンにしてアクセスを許可します。
+ご使用の Azure Cosmos DB アカウントを Azure Cognitive Search などのその他の Azure サービスで使用していたり、それが Stream Analytics または Power BI からアクセスされる場合は、 **[Accept connections from within global Azure datacenters]** \(グローバル Azure データセンター内からの接続を受け入れる\) をオンにしてアクセスを許可します。
 
 ポータルから Azure Cosmos DB のメトリックにアクセスできるようにするには、 **[Azure Portal からのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、[IP ファイアウォールの構成](how-to-configure-firewall.md)に関する記事を参照してください。 アクセスを有効にしたら、 **[保存]** を選択して、設定を保存します。
 

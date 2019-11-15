@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bc4ac68cb415a43ac34d36afc2adc30307e6d37c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181539"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795294"
 ---
 | リソース | Basic | 標準 | Premium |
 |---|---|---|---|
@@ -23,9 +23,15 @@ ms.locfileid: "67181539"
 | 1 分あたりの WriteOps<sup>2、4</sup> | 100 | 500 | 2,000 |
 | ダウンロード帯域幅 MBps<sup>2</sup> | 30 | 60 | 100 |
 | アップロード帯域幅 MBps<sup>2</sup> | 10 | 20 | 50 |
-| webhooks | 2 | 10 | 100 |
+| Webhooks | 2 | 10 | 100 |
 | geo レプリケーション | 該当なし | 該当なし | [サポートされています][geo-replication] |
 | コンテンツの信頼 | 該当なし | 該当なし | [サポートされています][content-trust] |
+| 仮想ネットワーク アクセス | 該当なし | 該当なし | [プレビュー][vnet] |
+| リポジトリがスコープ指定されたアクセス許可 | 該当なし | 該当なし | [プレビュー][token]|
+| &bull; トークン | 該当なし | 該当なし | 20,000 |
+| &bull; シェイプ マップ | 該当なし | 該当なし | 20,000 |
+| &bull; スコープ マップごとのリポジトリ | 該当なし | 該当なし | 500 |
+
 
 <sup>1</sup> 指定された容量の上限は、各レベルに "*含まれる*" ストレージの容量です。 これらの制限を超えてイメージを保存する場合は、GiB あたりの追加料金が日単位で課金されます。 詳細については、[Azure Container Registry の価格][pricing]に関するページを参照してください。
 
@@ -41,3 +47,5 @@ ms.locfileid: "67181539"
 <!-- LINKS - Internal -->
 [geo-replication]: ../articles/container-registry/container-registry-geo-replication.md
 [content-trust]: ../articles/container-registry/container-registry-content-trust.md
+[vnet]: ../articles/container-registry/container-registry-vnet.md
+[token]: ../articles/container-registry/container-registry-repository-scoped-permissions.md

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476074"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619778"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -88,9 +88,19 @@ Tensor Flow の自動化された機械学習は現在、Tensor Flow バージ�
 
 ## <a name="datasets-and-data-preparation"></a>データセットとデータの準備
 
+これらは、Azure Machine Learning のデータセットの既知の問題です。
+
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>HTTP または ADLS Gen 2 から Parquet ファイルを読み取ることができない
 
-AzureML DataPrep SDK バージョン 1.1.25 には、HTTP または ADLS Gen 2 から Parquet ファイルを読み込んでデータセットを作成するときにエラーが発生する既知の問題があります。 この問題を解決するには、1.1.26 よりも上のバージョンにアップグレードするか、1.1.24 よりも下のバージョンにダウングレードしてください。
+AzureML DataPrep SDK バージョン 1.1.25 には、HTTP または ADLS Gen 2 から Parquet ファイルを読み込んでデータセットを作成するときにエラーが発生する既知の問題があります。 `Cannot seek once reading started.` のエラーが発生します。 この問題を解決するには、`azureml-dataprep` を 1.1.26 よりも上のバージョンにアップグレードするか、1.1.24 よりも下のバージョンにダウングレードしてください。
+
+```python
+pip install --upgrade azureml-dataprep
+```
+
+### <a name="typeerror-mount-got-an-unexpected-keyword-argument-invocation_id"></a>TypeError: mount() got an unexpected keyword argument 'invocation_id' (TypeError: mount() で予期しないキーワード引数 'invocation_id' が発生しました)
+
+このエラーは、`azureml-core` と `azureml-dataprep` のバージョン間に互換性がない場合に発生します。 このエラーが表示される場合は、`azureml-dataprep` パッケージを新しいバージョン (1.1.29 以上) にアップグレードしてください。
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -146,15 +156,8 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 Azure Databricks クラスター上のデータの読み取り時に `FailToSendFeather` エラーが表示された場合は、次の解決策を参照してください。
 
 * `azureml-sdk[automl]` パッケージを最新バージョンにアップグレードします。
-* `azure-dataprep` バージョン 1.1.8 以降を追加します。
+* `azureml-dataprep` バージョン 1.1.8 以降を追加します。
 * `pyarrow` バージョン 0.11 以降を追加します。
-
-
-## <a name="datasets"></a>データセット
-
-これらは、Azure Machine Learning のデータセットの既知の問題です。
-
-+ **Azure Data Lake Storage Gen2 の parquet ファイルを読み込めない** Azure Data Lake Storage Gen2 データストアからの parquet ファイルの読み込みは、`azureml-dataprep==1.1.25` がインストールされている場合、行えません。 `Cannot seek once reading started.` のエラーが発生します。 このエラーが発生した場合は、`azureml-dataprep<=1.1.24` をインストールするか、`azureml-dataprep>=1.1.26` をインストールしてください。
 
 ## <a name="azure-portal"></a>Azure ポータル
 
@@ -262,3 +265,23 @@ Azure ML では、Tensorflow、PyTorch、Chainer、および SKLearn に対応�
 
 ### <a name="horovod-is-shutdown"></a>horovod がシャットダウンされる
 ほとんどの場合、この例外は、プロセスの 1 つにおいて horovod のシャットダウンを引き起こした基になる例外が発生したことを意味します。 MPI ジョブの各ランクでは、Azure ML 内にある固有の専用ログ ファイルが取得されます。 これらのログは、`70_driver_logs` という名前です。 分散トレーニングの場合、ログを区別しやすいようにログ名の末尾に `_rank` が付与されます。 horovod シャットダウンの原因となった厳密なエラーを見つけるには、すべてのログ ファイルを確認して、driver_log ファイルの末尾にある `Traceback` を探します。 これらのファイルの 1 つから、基になる実際の例外がわかります。 
+
+## <a name="labeling-projects-issues"></a>ラベル付けプロジェクトの問題
+
+ラベル付けプロジェクトに関する既知の問題。
+
+### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>使用できるのは BLOB データストアに作成されたデータセットのみ
+
+これは、現在のリリースの既知の制限です。 
+
+### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される
+
+ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。 
+
+### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>画像の右端まで境界ボックスを描画できない 
+
+ブラウザー ウィンドウのサイズを変更してみてください。 現在、この動作の原因を調査中です。 
+
+### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>画像をレビューする際に、新しくラベル付けされた画像が表示されない
+
+ラベル付けされたすべての画像を読み込むには、 **[First]\(1 番目\)** ボタンを選択します。 **[First]\(1 番目\)** ボタンを選択すると、リストの先頭に戻りますが、ラベル付けされたデータはすべて読み込まれます。

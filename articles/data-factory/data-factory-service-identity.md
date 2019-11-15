@@ -1,5 +1,5 @@
 ---
-title: Data Factory のマネージド ID | Microsoft Docs
+title: Data Factory のマネージド ID
 description: Azure Data Factory のマネージド ID について説明します。
 services: data-factory
 author: linda33wj
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8f65bef669e21af96ffe86319602ca5d1eea2c1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153427"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822730"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 
@@ -26,7 +26,7 @@ ms.locfileid: "66153427"
 
 ## <a name="overview"></a>概要
 
-データ ファクトリの作成時に、ファクトリの作成に加え、マネージド ID を作成できます。 マネージド ID は、Azure Activity Directory に登録されているマネージド アプリケーションであり、この特定のデータ ファクトリを表します。
+データ ファクトリの作成時に、ファクトリの作成に加え、マネージド ID を作成できます。 マネージド ID は、Azure Active Directory に登録されているマネージド アプリケーションであり、この特定のデータ ファクトリを表します。
 
 Data Factory のマネージド ID は次の機能に役立ちます。
 

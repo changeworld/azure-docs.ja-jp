@@ -1,21 +1,24 @@
 ---
-title: テキスト翻訳コグニティブ スキル
+title: テキスト翻訳コグニティブ スキル (プレビュー)
 titleSuffix: Azure Cognitive Search
-description: テキストが評価され、レコードごとに、Azure コグニティブ検索の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。
+description: テキストが評価され、レコードごとに、Azure コグニティブ検索の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。 このスキルは現在、パブリック プレビューの段階です。
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791850"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715399"
 ---
 #   <a name="text-translation-cognitive-skill"></a>テキスト翻訳コグニティブ スキル
+
+> [!IMPORTANT] 
+> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 **テキスト翻訳**スキルでは、テキストが評価され、レコードごとに、指定した対象言語に翻訳されたテキストが返されます。 このスキルでは、Cognitive Services で使用可能な [Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) が使用されます。
 

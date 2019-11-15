@@ -1,18 +1,18 @@
 ---
 title: サービス プリンシパルを使用して Azure Analysis Services タスクを自動化する | Microsoft Docs
-description: Azure Analysis Services タスクを自動化するためのサービス プリンシパルを作成する方法について説明します。
+description: Azure Analysis Services 管理タスクを自動化するためのサービス プリンシパルを作成する方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a590590faa422d47306e697a7c90bb635ea8c6e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146363"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572604"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 

@@ -4,15 +4,16 @@ description: IoT Edge モジュール プランを発行する方法です。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pabutler
-ms.openlocfilehash: c853bd3bad9f02f6824c26fb5d18e9e59d921fe8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2310d7a7cad16009bbb58469190a77eedb0619f8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942049"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813829"
 ---
 # <a name="publish-iot-edge-module-offer"></a>IoT Edge モジュール プランの発行
 

@@ -1,10 +1,10 @@
 ---
 title: Azure でのリモート管理セキュリティの強化 | Microsoft Docs
-description: この記事では、クラウド サービスや仮想マシン、カスタム アプリケーションをはじめとする Microsoft Azure 環境の管理という観点で、リモート管理のセキュリティを強化するための手順を説明します。
+description: この記事では、クラウド サービス、仮想マシン、カスタム アプリケーションなどの Microsoft Azure 環境を管理しながら、リモート管理のセキュリティを強化するための手順を説明します。
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927865"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643798"
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
@@ -118,7 +118,7 @@ Azure では、[多要素認証](/azure/active-directory/authentication/multi-fa
 ## <a name="security-guidelines"></a>セキュリティ ガイドライン
 一般に、クラウドでの用途に合わせて管理者が使うワークステーションのセキュリティを高めることは、オンプレミスのワークステーションに適用される慣例 (必要最小限の機能構成とアクセス許可など) と似ています。 またクラウドの管理に伴ういくつかの作業は、企業向けのリモート管理やアウトオブバンド管理に酷似しています。 その例として、資格情報の使用や監査、リモート アクセスのセキュリティ強化、脅威の検出と対応が挙げられます。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 監査アクセス要求や管理ツールへのアクセスに使用される発信元 IP アドレスは、Azure のログオン制限を使用して規制できます。 管理クライアント (ワークステーションやアプリケーション) を Azure が識別しやすいように、SMAPI (Windows PowerShell のコマンドレットなどのカスタム開発ツールから利用) と Azure Portal の構成で、SSL 証明書のほかに管理証明書がクライアント側にインストールされていることを義務化できます。 加えて管理者アクセスに、多要素認証を義務付けることをお勧めします。
 
 Azure にデプロイされるアプリケーションやサービスには、エンド ユーザーと管理者アクセスの両方に独自の認証メカニズムが採用されている場合もあれば、認証をすべて Azure AD で行う場合もあります。 Active Directory フェデレーション サービス (AD FS) を使って資格情報を連携させるか、ディレクトリ同期を使用するか、ユーザー アカウントをクラウドにのみ保持するかに応じて、リソース間の ID ライフサイクルは、[Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium に付属) を使って管理できます。
@@ -224,7 +224,6 @@ Azure のクラウド サービス、仮想マシン、アプリケーション�
 ## <a name="next-steps"></a>次の手順
 このホワイト ペーパーで触れた具体的な情報のほか、Azure とそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
 
-* [特権アクセスのセキュリティ保護](https://technet.microsoft.com/library/mt631194.aspx) – Azure の管理を目的とした安全な管理ワークステーションの設計と構築について、技術的な側面から説明します
+* [特権アクセスのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – Azure の管理を目的とした安全な管理ワークステーションの設計と構築について、技術的な側面から説明します
 * [Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/cloudservices/azure) – Azure のファブリックと Azure 上で動作するワークロードを保護する Azure プラットフォームの機能について説明します
-* [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/security/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、[secure@microsoft.com](mailto:secure@microsoft.com) 宛に報告してください
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています
+* [Microsoft セキュリティ レスポンス センター](https://www.microsoft.com/msrc) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、[secure@microsoft.com](mailto:secure@microsoft.com) 宛に報告してください

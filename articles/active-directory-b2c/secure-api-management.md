@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 531f6d86d57be550d0a1147e131d93ae6e298406
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474752"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641632"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C) で認証されたクライアント�
 
 Azure API Management において Azure AD B2C を使用して API のセキュリティを保護する場合、APIM で作成する[受信ポリシー](../api-management/api-management-howto-policies.md)には複数の値が必要です。 ご利用の Azure AD B2C テナントで以前に作成したアプリケーションのアプリ ID を記録します。 前提条件で作成したアプリケーションを使用する場合は、"*webbapp1*" のアプリケーション ID を使用します。
 
-現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーション ID を取得できます。 [プレビュー エクスペリエンスの詳細を参照してください](http://aka.ms/b2cappregintro)。
+現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーション ID を取得できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
@@ -51,7 +51,7 @@ Azure API Management において Azure AD B2C を使用して API のセキュ�
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** を選択してから、 **[Owned applications]\(所有しているアプリケーション\)** タブを選択します。
-1. *webapp1* または以前に作成した別のアプリケーションの **[APPLICATION (CLIENT) ID]\(アプリケーション (クライアント) ID\)** 列の値を記録します。
+1. *webapp1* または以前に作成した別のアプリケーションの **[Application (client) ID]\(アプリケーション (クライアント) ID\)** 列の値を記録します。
 
 * * *
 

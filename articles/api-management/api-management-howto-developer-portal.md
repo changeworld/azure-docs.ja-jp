@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472222"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796020"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -117,7 +117,31 @@ No.
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>対話型コンソールを使用すると、CORS エラーが発生します。 どうすればよいですか。
 
-対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定したり (たとえば、配信元 https://contoso.com) 、またはワイルドカード値 `*` を使用したりできます。
+対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定するか、ワイルドカード `*` の値を使用することができます。 例:
+
+```XML
+<cors>
+    <allowed-origins>
+        <origin>*</origin>
+    </allowed-origins>
+    <allowed-methods>
+        <method>GET</method>
+        <method>POST</method>
+        <method>PUT</method>
+        <method>DELETE</method>
+        <method>HEAD</method>
+        <method>OPTIONS</method>
+        <method>PATCH</method>
+        <method>TRACE</method>
+    </allowed-methods>
+    <allowed-headers>
+        <header>*</header>
+    </allowed-headers>
+    <expose-headers>
+        <header>*</header>
+    </expose-headers>
+</cors>
+```
 
 ## <a name="next-steps"></a>次の手順
 

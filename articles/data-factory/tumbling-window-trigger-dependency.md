@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory でのタンブリング ウィンドウ トリガーの依存関係の作成 | Microsoft Docs
+title: Azure Data Factory でのタンブリング ウィンドウ トリガーの依存関係の作成
 description: Azure Data Factory でタンブリング ウィンドウ トリガーの依存関係を作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3780a50429b95c402459866b7e3c87e8a91207d3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "73520602"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683710"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係の作成
 

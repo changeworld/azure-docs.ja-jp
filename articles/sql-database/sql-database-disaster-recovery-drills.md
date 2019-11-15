@@ -1,5 +1,5 @@
 ---
-title: SQL Database の障害復旧訓練 | Microsoft Docs
+title: ディザスター リカバリーの訓練
 description: Azure SQL Database を使用してディザスター リカバリーの演習を実行するためのガイダンスとベスト プラクティスについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 2923ae8b9b25932ae214cfa45780dffb8780dd39
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ca00a03976ae38b7956616b8287220a7bc5998c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568844"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825846"
 ---
 # <a name="performing-disaster-recovery-drill"></a>障害復旧訓練の実行
 

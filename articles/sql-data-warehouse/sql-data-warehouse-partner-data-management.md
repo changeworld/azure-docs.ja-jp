@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse データ管理パートナー | Microsoft Docs
-description: SQL Data Warehouse をサポートするソリューションを提供するサードパーティのデータ管理パートナーの一覧。
+title: データ管理パートナー
+description: Azure SQL Data Warehouse をサポートするソリューションを提供するサードパーティのデータ管理パートナーの一覧。
 services: sql-data-warehouse
 author: mabasile-MSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 98f581eca893fc3f0cf2eae12fdcffbe0440bdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b26d81a125cd64987a9725d88b2f3fcadbdb19ac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873692"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685587"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>SQL Data Warehouse データ管理パートナー
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ管理ツールおよびソリューションを提供している Microsoft パートナー企業について説明しています。
@@ -30,7 +31,7 @@ ms.locfileid: "65873692"
 | ![Sentry One][5] |**SentryOne (DW Sentry)**<br>インテリジェントなデータ移動ダッシュボードやイベント カレンダーを使用して、ワークロードに影響を与えている原因を常時正確に把握できます。 データの読み込み、バックアップ、復元のために実行されているクエリやジョブを可視化できるように設計されているので、Azure リソースが最大限に活用されているかについての心配は不要です。 |[製品ページ][sql_sentry_website]<br>[Azure Marketplace][sql_sentry_marketplace]<br> |
 
 ## <a name="next-steps"></a>次の手順
-その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー][bi_partners]に関するページと[データ統合パートナー][di_partners]に関するページをご覧ください。
+その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー][bi_partners]と[データ統合パートナー][di_partners]に関する記事を参照してください。
 
 <!--Image references-->
 

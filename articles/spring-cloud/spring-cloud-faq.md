@@ -1,20 +1,17 @@
 ---
 title: Azure Spring Cloud についてよく寄せられる質問 | Microsoft Docs
 description: Azure Spring Cloud に関する FAQ を確認します
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.author: jeconnoc
+ms.openlocfilehash: 1fb241ab1335e6b9c9be55acbbe2e21378831b69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592311"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607227"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -66,13 +63,13 @@ OpenJDK と Spring Cloud のランタイムに重要なセキュリティ パッ
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
-Azure Spring Cloud 内で Spring サービス インスタンスの作成が済んでいる場合には、[Azure サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を作成できます。 Azure Spring Cloud にまだオンボードしていない場合には、[Azure のフィードバック](https://feedback.azure.com/) ページにアクセスすると、機能をリクエストしたり、フィードバックを提供したりすることができます。
+Azure Spring Cloud で問題が発生した場合は、[Azure サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を作成してください。 機能に関する要望については、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして、機能を要求するか、フィードバックを提供してください。
 
 ## <a name="development"></a>開発
 
 ### <a name="i-am-a-spring-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-aazure-spring-cloud-application"></a>Spring の開発者ですが、まだ Azure を使ったことがありません。Azure Spring Cloud アプリケーションの開発方法を最も早く学べる方法は何ですか?
 
-[こちらのクイック スタート](spring-cloud-quickstart-launch-app-portal.md)に従うと、Azure Spring Cloud の使い方を最も早く身に付けることができます。
+[こちらのクイックスタート](spring-cloud-quickstart-launch-app-portal.md)に従うと、Azure Spring Cloud の使い方を最も早く身に付けることができます。
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud はどの Java ランタイムをサポートしていますか?
 

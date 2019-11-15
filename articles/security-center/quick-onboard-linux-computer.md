@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center クイックスタート - Linux コンピューターでの Security Center の利用開始 | Microsoft Docs
+title: Linux コンピューターを Azure Security Center にオンボードする | Microsoft Docs
 description: このクイック スタートでは、Linux コンピューターで Security Center の利用を開始する方法を説明します。
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202892"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664497"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイック スタート:Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。 このエージェントは Microsoft Monitoring Agent (MMA) と呼ばれていますが、OMS エージェントとも呼ばれます。

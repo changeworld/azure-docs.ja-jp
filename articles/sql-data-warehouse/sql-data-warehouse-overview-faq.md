@@ -1,39 +1,55 @@
 ---
-title: Azure SQL Data Warehouse のよく寄せられる質問 | Microsoft Docs
-description: この記事では、Azure SQL Data Warehouse に関して顧客と開発者からよく寄せられる質問を示します
+title: Azure Synapse Analytics (旧称 SQL DW) のよく寄せられる質問
+description: この記事では、Azure Synapse Analytics (旧称 SQL DW) に関して顧客と開発者からよく寄せられる質問を示します
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4679a3bb1935e9f3e2bc90c9bc9ef1247b7ecb30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515873"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645604"
 ---
-# <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse のよく寄せられる質問
+# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (旧称 SQL DW) のよく寄せられる質問
 
 ## <a name="general"></a>全般
 
-Q. データ セキュリティに対して SQL DW にはどのような効果がありますか。
+Q. Azure Synapse とは
 
-A. SQL DW は、TDE や監査など、データを保護するための複数のソリューションを提供します。 詳細については、 [セキュリティ]に関するページを参照してください。
+A. Azure Synapse は、データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら、大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
-Q. SQL DW が準拠している法律またはビジネスに関する標準は、どこで確認できますか。
+Q. Azure SQL Data Warehouse はどうなりましたか
 
-A. SOC や ISO などの製品によって提供されるさまざまなコンプライアンスについては、[Microsoft のコンプライアンスに関するページ]をご覧ください。 最初にコンプライアンス タイトルを選び、ページ右側の [Microsoft in-scope cloud services (Microsoft 対象クラウド サービス)] セクションで Azure を展開して、Azure サービスが準拠しているサービスを確認します。
+A. Azure Synapse は、Azure SQL Data Warehouse (SQL DW) の進化版です。 業界をリードする同じデータ ウェアハウスに、まったく新しいレベルのパフォーマンスと機能を搭載しました。 Azure Synapse を使用すると、現在の運用環境で既存のデータ ウェアハウスのワークロードを引き続き実行でき、プレビュー段階にある新機能の利点を自動的に利用できるようになります。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
-Q. PowerBI に接続できますか。
+Q. SQL Analytics とは
 
-A. はい。 PowerBI は SQL DW での直接クエリをサポートしますが、多数のユーザーまたはリアルタイム データを意図したものではありません。 PowerBI を運用環境で使う場合は、Azure Analysis Services または Analysis Service IaaS の上で PowerBI を使うことをお勧めします。 
+A. SQL Analytics は、Azure Synapse で一般提供されているエンタープライズ データ ウェアハウス機能を表します。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
-Q. SQL Data Warehouse の容量制限とは何ですか。
+Q. Azure Synapse の使用を開始する方法
+
+A. [Azure の無料アカウント](https://azure.microsoft.com/free/sql-data-warehouse/)で使用を開始するか、[詳細について営業担当者にお問い合わせください](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)。 
+
+Q. データ セキュリティに対して Azure Synapse にはどのような効果がありますか
+
+A. Azure Synapse は、TDE や監査など、データを保護するための複数のソリューションを提供します。 詳細については、 [セキュリティ]に関するページを参照してください。
+
+Q. Azure Synapse が準拠している法律またはビジネスに関する標準は、どこで確認できますか。
+
+A. SOC や ISO などの製品によって提供されるさまざまなコンプライアンスについては、[Microsoft のコンプライアンスに関するページ]をご覧ください。 まずコンプライアンスのタイトルを選び、ページ右側の [Microsoft in-scope cloud services]\(Microsoft 対象クラウド サービス\) セクションで Azure を展開して、Azure Synapse が準拠しているサービスを確認します。
+
+Q. Power BI は接続できますか
+
+A. はい。 Power BI は Azure Synapse での直接クエリをサポートしますが、多数のユーザーまたはリアルタイム データを意図したものではありません。 Power BI のパフォーマンスをさらに最適化したい場合は、Azure Analysis Services または Analysis Services IaaS 上で Power BI を使用することを検討してください。
+
+Q. SQL Analytics の容量制限はどれくらいですか
 
 A. [容量制限に関するページ]をご覧ください。 
 
@@ -49,7 +65,7 @@ A. 機能の要求がある場合は、[UserVoice] ページでお送りくだ�
 
 Q. 何かを行う方法を知るにはどうすればよいですか。
 
-A. SQL Data Warehouse での開発については、[Stack Overflow]で質問できます。 
+A. Azure Synapse での開発については、[Stack Overflow] に関するページで質問できます。 
 
 Q. サポート チケットはどのように送信すればよいですか。
 
@@ -57,23 +73,23 @@ A. [サポート チケット]は Azure Portal で提出できます。
 
 ## <a name="sql-languagefeature-support"></a>SQL 言語/機能のサポート 
 
-Q. SQL Data Warehouse はどのようなデータ型をサポートしますか。
+Q. サポートされているデータ型は何ですか
 
-A. SQL Data Warehouse の[データ型に関するページ]をご覧ください。
+A. [データの種類]に関する記事を参照してください。
 
 Q. どのようなテーブル機能がサポートされていますか。
 
-A. SQL Data Warehouse は多くの機能をサポートしますが、サポートされない機能もいくつかあります。詳しくは、「[サポートされていないテーブルの機能]」をご覧ください。
+A. 多くの機能がサポートされていますが、サポートされない機能もいくつかあります。詳しくは、「[サポートされていないテーブルの機能]」をご覧ください。
 
 ## <a name="tooling-and-administration"></a>ツールと管理
 
 Q. Visual Studio のデータベース プロジェクトはサポートされますか。
 
-A. 現在、SQL Data Warehouse では Visual Studio のデータベース プロジェクトはサポートされていません。 この機能のサポート要求に投票したい場合は、User Voice の[データベース プロジェクト機能要求に関するページ]をご覧ください。
+A. 現在、Visual Studio ではデータベース プロジェクトはサポートされていません。 この機能のサポート要求に投票したい場合は、User Voice の[データベース プロジェクト機能要求に関するページ]をご覧ください。
 
-Q. SQL Data Warehouse は REST API をサポートしますか。
+Q. REST API は SQL Analytics でサポートされていますか
 
-A. はい。 SQL Database で使うことができるほとんどの REST 機能は、SQL Data Warehouse でも利用できます。 API の情報については、REST のドキュメントまたは [MSDN] をご覧ください。
+A. はい。 SQL Database で使うことができるほとんどの REST 機能は、SQL Analytics でも使用できます。 API の情報については、REST のドキュメントまたは [MSDN] をご覧ください。
 
 
 ## <a name="loading"></a>読み込み
@@ -82,24 +98,24 @@ Q. どのようなクライアント ドライバーをサポートしていま�
 
 A. DW 用のドライバー サポートについては、[接続文字列に関するページ]をご覧ください。
 
-Q:SQL Data Warehouse の PolyBase ではどのようなファイル形式がサポートされていますか。
+Q:PolyBase ではどのようなファイル形式がサポートされていますか
 
 A:Orc、RC、Parquet、およびフラット区切りテキストです。
 
-Q:PolyBase を使うと SQL DW から何に接続できますか。 
+Q:PolyBase を使用して接続できるデータ ソースは何ですか 
 
 A:[Azure Data Lake Store] と [Azure Storage Blobs] です。
 
-Q:Azure Storage Blob または ADLS に接続するとき、計算プッシュダウンは可能ですか。 
+Q:Azure Storage Blob または ADLS に接続するとき、計算プッシュダウンは可能ですか 
 
-A:いいえ、SQL DW PolyBase は記憶域コンポーネントのみを操作します。 
+A:いいえ、PolyBase は記憶域コンポーネントのみを操作します。 
 
 Q:HDI に接続できますか。
 
 A:HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、SQL DW にそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。 
 
 ## <a name="next-steps"></a>次の手順
-SQL Data Warehouse 全体について詳しくは、[概要に関するページ]をご覧ください。
+Azure Synapse の詳細については、「[概要]」ページをご覧ください。
 
 
 <!-- Article references -->
@@ -110,10 +126,10 @@ SQL Data Warehouse 全体について詳しくは、[概要に関するページ
 [セキュリティ]: ./sql-data-warehouse-overview-manage-security.md
 [Microsoft のコンプライアンスに関するページ]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
 [容量制限に関するページ]: ./sql-data-warehouse-service-capacity-limits.md
-[データ型に関するページ]: ./sql-data-warehouse-tables-data-types.md
+[データの種類]: ./sql-data-warehouse-tables-data-types.md
 [サポートされていないテーブルの機能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
 [Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 [データベース プロジェクト機能要求に関するページ]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
-[概要に関するページ]: ./sql-data-warehouse-overview-faq.md
+[概要]: ./sql-data-warehouse-overview-faq.md

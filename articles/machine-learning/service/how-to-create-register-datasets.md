@@ -1,7 +1,7 @@
 ---
-title: azureml-datasets でデータセットを作成してデータにアクセスする
+title: Azure Machine Learning データセットを作成してデータにアクセスする
 titleSuffix: Azure Machine Learning
-description: さまざまなソースからデータセットを作成し、ワークスペースにデータセットを登録する方法に関する説明
+description: 機械学習の実験を実行するために Azure Machine Learning データセットを作成してデータにアクセスする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,79 +10,84 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 10/10/2019
-ms.openlocfilehash: 54f8a1248688a6d62192e4f34cf6b98a94086da8
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/04/2019
+ms.openlocfilehash: 51102962879b43d4ef3ae8662d7c3136bc7441d9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274770"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818441"
 ---
-# <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning でデータセット (プレビュー) を作成してアクセスする
+# <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
-この記事では、Azure Machine Learning データセット (プレビュー) を作成する方法と、ローカルまたはリモートの実験からデータにアクセスする方法について説明します。
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+この記事では、Azure Machine Learning データセットを作成し、ローカルまたはリモートの実験のデータにアクセスする方法について説明します。
 
 Azure Machine Learning データセットを使用すると、次のことを実行できます。
 
-* データセットから参照される**データの 1 つのコピーをストレージに保存する**。
+* データセットから参照されるデータの 1 つのコピーをストレージに保存する。
 
-* 接続文字列やデータ パスを気にすることなく、**モデルのトレーニング中にデータに簡単にアクセスする**。
+* 接続文字列やデータ パスを気にすることなく、モデルのトレーニング中にデータにシームレスにアクセスする。
 
-* 他のユーザーと**データ共有と共同作業を行う**。
+* 他のユーザーとデータを共有し、共同作業を行う。
 
 ## <a name="prerequisites"></a>前提条件
 
 データセットを作成して操作するには、以下が必要です。
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-* [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)
+* [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
 * [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) (これには azureml-datasets パッケージが含まれています)。
 
-> [!Note]
-> 一部の Dataset クラス (プレビュー) は [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
+> [!NOTE]
+> 一部の Dataset クラスは、[azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
 
 ## <a name="dataset-types"></a>データセットの種類
 
-データセットは、ユーザーがトレーニングでそれらを使用する方法に基づいて、2 種類に分類されます。
+データセットは、ユーザーがトレーニングでそれらを使用する方法に基づいて、2 つの種類に分類されます。
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 これにより、データを pandas または spark の DataFrame で具体化することができます。 `TabularDataset` オブジェクトは、csv ファイル、tsv ファイル、parquet ファイル、SQL クエリの結果などから作成できます。完全な一覧については、こちらの[ドキュメント](https://aka.ms/tabulardataset-api-reference)を参照してください。
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 これにより、データを pandas または spark の DataFrame で具体化することができます。 `TabularDataset` オブジェクトは、.csv、.tsv、および parquet ファイルと、SQL クエリ結果から作成できます。 完全な一覧については、「[TabularDatasetFactory クラス](https://aka.ms/tabulardataset-api-reference)」を参照してください。
 
-* [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 これにより、ファイルをダウンロードしたり、コンピューターにマウントしたりできます。 任意の形式のファイルを使用できます。これにより、ディープ ラーニングなどの幅広い機械学習シナリオに対応します。
+* [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) クラスは、データストア内の 1 つまたは複数のファイル、またはパブリック URL を参照します。 このメソッドによって、ファイルを FileDataset オブジェクトとしてコンピューターにダウンロードまたはマウントできます。 任意の形式のファイルを使用できます。これにより、ディープ ラーニングなどの幅広い機械学習シナリオに対応します。
 
-今後の API の変更点の詳細については、[こちら](https://aka.ms/tabular-dataset)を参照してください。
+今後の API の変更点の詳細については、「[Dataset API の変更通知](https://aka.ms/tabular-dataset)」を参照してください。
 
 ## <a name="create-datasets"></a>データセットを作成する
 
-データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るので、追加のストレージ コストは発生しません。 TabularDatasets と FileDatasets の両方を作成するには、Python SDK を使用するか、またはワークスペースのランディング ページ (プレビュー) を使用します。 
+データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るため、追加のストレージ コストは発生しません。 Python SDK またはワークスペースのランディング ページ (プレビュー) を使用して、`TabularDataset` と `FileDataset` の両方のデータ セットを作成できます。
 
 データを Azure Machine Learning からアクセスできるようにするには、[Azure データストア](how-to-access-data.md)またはパブリック Web URL のパスからデータセットを作成する必要があります。
 
-### <a name="using-the-sdk"></a>SDK を使用する
+### <a name="use-the-sdk"></a>SDK を使用する
 
-Python SDK を使用して [Azure データストア](how-to-access-data.md)からデータセットを作成するには
+Python SDK を使用して [Azure データストア](how-to-access-data.md)からデータセットを作成するには、次の手順に従います。
 
-* 登録された Azure データストアへの `contributor` または `owner` アクセス権を持っていることを確認します。
+1. 登録された Azure データストアへの `contributor` または `owner` アクセス権を持っていることを確認します。
 
-* データストア内のパスを参照してデータセットを作成します。
+1. データストア内のパスを参照してデータセットを作成します。
 
-```Python
-from azureml.core.workspace import Workspace
-from azureml.core.datastore import Datastore
-from azureml.core.dataset import Dataset
+    ```Python
+    from azureml.core.workspace import Workspace
+    from azureml.core.datastore import Datastore
+    from azureml.core.dataset import Dataset
+    
+    datastore_name = 'your datastore name'
+    
+    # get existing workspace
+    workspace = Workspace.from_config()
+    
+    # retrieve an existing datastore in the workspace by name
+    datastore = Datastore.get(workspace, datastore_name)
+    ```
 
-datastore_name = 'your datastore name'
+#### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
-# get existing workspace
-workspace = Workspace.from_config()
+TabularDatasets を作成するには、SDK を使用するか、または Azure Machine Learning Studio を使用します。 データの列から、またはデータが格納されているパス パターンからタイム スタンプを指定して、時系列特性を有効にすることができます。 この指定により、時間による簡単かつ効率的なフィルター処理が可能になります。
 
-# retrieve an existing datastore in the workspace by name
-datastore = Datastore.get(workspace, datastore_name)
-```
-#### <a name="create-tabulardatasets"></a>TabularDataset を作成する
-
-csv 形式または tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。
+.csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。
 
 ```Python
 # create a TabularDataset from multiple paths in datastore
@@ -92,10 +97,16 @@ datastore_paths = [
                   (datastore, 'weather/2019/*.csv')
                  ]
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
+```
 
-# create a TabularDataset from a delimited file behind a public web url
+既定では、TabularDataset を作成するときに、列のデータ型は自動的に推論されます。 推論された型が期待どおりでない場合は、次のコードを使用して列の型を指定できます。 [サポートされているデータ型の詳細を参照](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)することもできます。
+
+```Python
+from azureml.data.dataset_factory import DataType
+
+# create a TabularDataset from a delimited file behind a public web url and convert column "Survived" to boolean
 web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
-titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
+titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_types={'Survived': DataType.to_bool()})
 
 # preview the first 3 rows of titanic_ds
 titanic_ds.take(3).to_pandas_dataframe()
@@ -103,11 +114,11 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 | |PassengerId|Survived|Pclass|名前|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|0|3|Braund, Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
-1|2|1|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38.0|1|0|PC 17599|71.2833|C85|C
-2|3|1|3|Heikkinen, Miss. Laina|female|26.0|0|0|STON/O2. 3101282|7.9250||S
+0|1|False|3|Braund, Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
+1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38.0|1|0|PC 17599|71.2833|C85|C
+2|3|True|3|Heikkinen, Miss. Laina|female|26.0|0|0|STON/O2. 3101282|7.9250||S
 
-Azure SQL Database から読み取るには、`TabularDatasetFactory` クラスで [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) メソッドを使用します。
+Azure SQL Database から読み取るには、`TabularDatasetFactory` クラスの [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) メソッドを使用します。
 
 ```Python
 
@@ -118,9 +129,9 @@ sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
 
-TabularDatasets では、タイムスタンプはデータの列から、またはデータが格納されているパス パターンの列から指定できます。これにより、時間による簡単かつ効率的なフィルター処理が可能になります。
+TabularDatasets では、データの列から、またはデータが格納されている任意のパス パターンからタイム スタンプを指定して、時系列特性を有効にすることができます。 この指定により、時間による簡単かつ効率的なフィルター処理が可能になります。
 
-タイムスタンプの列を指定し、時間でのフィルター処理を有効にするには、`TabularDataset` クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) メソッドを使用します。 その他の例と詳細については、[こちら](https://aka.ms/azureml-tsd-notebook)を参照してください。
+タイムスタンプの列を指定し、時間でのフィルター処理を有効にするには、`TabularDataset` クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) メソッドを使用します。 詳細については、「[NOAA 気象データを使用した表形式の時系列関連の API のデモ](https://aka.ms/azureml-tsd-notebook)」を参照してください。
 
 ```Python
 # create a TabularDataset with time series trait
@@ -139,9 +150,9 @@ data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
 data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
 
-#### <a name="create-filedatasets"></a>FileDataset を作成する
+#### <a name="create-a-filedataset"></a>FileDataset を作成する
 
-任意の形式のファイルを読み取り、登録されていない FileDataset を作成するには、`FileDatasetFactory` クラスの [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) メソッドを使います。
+任意の形式のファイルを読み込み、登録されていない FileDataset を作成するには、`FileDatasetFactory` クラスの [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) メソッドを使用します。
 
 ```Python
 # create a FileDataset from multiple paths in datastore
@@ -160,38 +171,83 @@ web_paths = [
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
-### <a name="using-the-workspace-landing-page"></a>ワークスペース ランディング ページの使用
-
-Web エクスペリエンスを使用してデータセットを作成するには、[ワークスペース ランディング ページ](https://ml.azure.com)にサインインします。 ワークスペース ランディング ページでは、TabularDatasets と FileDatasets の両方の作成がサポートされています。
-
-次のアニメーションは、ワークスペース ランディング ページでデータセットを作成する方法を示しています。
-
-まず、左側のウィンドウの **[アセット]** セクションで **[データセット]** を選択します。 次に、 **[+ データセットの作成]** を選択して、ご利用のデータセットのソースを選択します。これは、ローカル ファイル、データストア、パブリック Web URL のいずれからでも選択できます。 **[Dataset Type]\(データセットの種類\)** (*表形式またはファイル) を選択します。 **[設定とプレビュー]** フォームおよび **[スキーマ]** フォームはフファイルの種類に基づいてインテリジェントに設定されます。 **[次へ]** を選択してそれらを確認するか、または作成前にデータセットをさらに構成します。 **[完了]** を選択して、データセットの作成を完了します。
+#### <a name="on-the-web"></a>Web 上 
+次の手順とアニメーションは、Azure Machine Learning Studio (https://ml.azure.com ) でデータセットを作成する方法を示しています。
 
 ![UI を使用してデータセットを作成する](media/how-to-create-register-datasets/create-dataset-ui.gif)
 
+Studio でデータセットを作成するには、次の手順を実行します。
+1. https://ml.azure.com でサインインします。
+1. 左側のウィンドウの **[アセット]** セクションで **[データセット]** を選択します。 
+1. **[データセットの作成]** を選択して、データセットのソースを選択します。 このソースには、ローカル ファイル、データストア、またはパブリック URL を指定できます。
+1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。
+1. **[次へ]** を選択して、 **[Settings and preview]\(設定とプレビュー\)** 、 **[スキーマ]** 、および **[詳細の確認]** フォームを確認します。これらはファイルの種類に基づいてインテリジェントに設定されます。 これらのフォームを使用して、選択内容を確認し、作成前にデータセットをさらに構成します。  
+1. **[作成]** を選択して、データセットの作成を完了します。
+
 ## <a name="register-datasets"></a>データセットを登録する
 
-作成プロセスを完了するには、ワークスペースにデータセットを登録します。
-
-他のユーザーと共有したり、さまざまな実験で再利用できるように、ご使用のワークスペースにデータセットを登録するには、[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) メソッドを使います。
+作成プロセスを完了するには、ワークスペースにデータセットを登録します。 データセットを他のユーザーと共有したり、さまざまな実験で再利用できるように、ご使用のワークスペースに登録するには、[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) メソッドを使用します。
 
 ```Python
-titanic_ds = titanic_ds.register(workspace = workspace,
-                                 name = 'titanic_ds',
-                                 description = 'titanic training data')
+titanic_ds = titanic_ds.register(workspace=workspace,
+                                 name='titanic_ds',
+                                 description='titanic training data')
 ```
 
->[!Note]
-> ワークスペース ランディング ページを介して作成されたデータセットは、自動的にワークスペースに登録されます。
+> [!Note]
+> Azure Machine Learning Studio を介して作成されたデータセットは、自動的にワークスペースに登録されます。
+
+## <a name="create-datasets-with-azure-open-datasets"></a>Azure Open Datasets を使用してデータセットを作成する
+
+[Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 データセットには、機械学習モデルのトレーニングと予測ソリューションのエンリッチメントに役立つ天気、国勢調査、祝日、公共の安全、場所に関するパブリック ドメイン データが含まれます。 Open Datasets は Microsoft Azure 上のクラウドにあり、SDK とワークスペース UI の両方に含まれています。
+
+### <a name="use-the-sdk"></a>SDK を使用する
+
+SDK から Azure Open Datasets を使用してデータセットを作成するには、`pip install azureml-opendatasets` を使用してパッケージがインストールされていることを確認してください。 個々のデータセットは、SDK で独自のクラスによって表され、特定のクラスは `TabularDataset`、`FileDataset`、またはその両方として使用できます。 すべてのクラスの一覧については、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)を参照してください。
+
+ほとんどのクラスは、`TabularDataset` から継承し、そのインスタンスを返します。 これらのクラスの例としては、`PublicHolidays`、`BostonSafety`、`UsPopulationZip` などがあります。 これらの種類のクラスから `TabularDataset` を作成するには、引数を指定せずにコンストラクターを使用します。 Open Datasets から作成されたデータセットを登録すると、データはすぐにはダウンロードされませんが、中央の保存場所から要求したとき (たとえばトレーニング中に) にデータにアクセスできます。 
+
+```python
+from azureml.opendatasets import UsPopulationZip
+
+tabular_dataset = UsPopulationZip()
+tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
+```
+
+特定のクラスは、`TabularDataset` または `FileDataset` として取得できます。こうすることで、ファイルを直接操作したり、ダウンロードしたりできます。 他のクラスは、`get_tabular_dataset()` または `get_file_dataset()` 関数を使用してのみ、データセットを取得できます。 次のコード サンプルは、これらの種類のクラスのいくつかの例を示しています。
+
+```python
+from azureml.opendatasets import MNIST
+
+# MNIST class can return either TabularDataset or FileDataset
+tabular_dataset = MNIST.get_tabular_dataset()
+file_dataset = MNIST.get_file_dataset()
+
+from azureml.opendatasets import Diabetes
+
+# Diabetes class can return ONLY return TabularDataset and must be called from the static function
+diabetes_tabular = Diabetes.get_tabular_dataset()
+```
+
+### <a name="use-the-ui"></a>UI を使用する
+
+また、UI を使用して、Open Datasets のクラスからデータセットを作成することもできます。 ワークスペースで、 **[資産]** の下にある **[データセット]** タブを選択します。 **[データセットの作成]** ドロップダウンをクリックし、 **[From Open Datasets]\(Open Datasets から\)** を選択します。
+
+![UI と Open Dataset](media/how-to-create-register-datasets/open-datasets-1.png)
+
+データセットを、そのタイルを選択して選択します (検索バーを使用してフィルター処理をするオプションがあります)。 **[次へ]** を選択します。
+
+![データセットを選択する](media/how-to-create-register-datasets/open-datasets-2.png)
+
+データセットの登録先の名前を選択し、必要に応じて、使用可能なフィルターを使用してデータをフィルター処理します。 この例では、public holidays データセットについて、期間を 1 年に、国番号を米国のみにしてフィルター処理します。 **作成** を選択します。
+
+![データセット パラメーターを設定してデータセットを作成する](media/how-to-create-register-datasets/open-datasets-3.png)
+
+この時点で、データセットはワークスペース内の **[データセット]** の下で利用できます。 これを、自分で作成した他のデータセットと同じ方法で使用できます。
 
 ## <a name="version-datasets"></a>データセットをバージョン管理する
 
-新しいバージョンを作成すると、新しいデータセットを同じ名前で登録できます。 データセットのバージョンは、データの状態をブックマークする方法なので、実験または将来の複製に対して特定のバージョンのデータセットを適用できます。 バージョン管理を検討する一般的なシナリオは次のとおりです。 
-
-* 再トレーニングのために新しいデータを使用できるとき。
-* 異なるデータ準備または特徴エンジニアリング アプローチを適用するとき。
-
+新しいバージョンを作成すると、新しいデータセットを同じ名前で登録できます。 データセットのバージョンは、実験または将来の複製に対して特定のバージョンのデータセットを適用できるように、データの状態をブックマークする方法です。 [データセットのバージョンの詳細](how-to-version-track-datasets.md)を参照してください。
 ```Python
 # create a TabularDataset from Titanic training data
 web_paths = [
@@ -210,7 +266,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-datasets-in-your-script"></a>スクリプトでデータセットにアクセスする
 
-登録されたデータセットは、ローカル、リモート、コンピューティング クラスター (Azure Machine Learning コンピューティングなど) でアクセスできます。 実験で登録済みデータセットにアクセスするには、次のコードを使用してワークスペースと登録済みデータセットを名前で取得します。 `Dataset` クラスの [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) メソッドからは、既定では、ワークスペースに登録されているデータセットの最新バージョンが返されます。
+登録されたデータセットは、Azure Machine Learning コンピューティングなどのコンピューティング クラスター上で、ローカルまたはリモートでアクセスできます。 実験で登録済みデータセットにアクセスするには、次のコードを使用して、ワークスペースと登録済みデータセットに名前でアクセスします。 既定では、`Dataset` クラスの [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) メソッドからは、ワークスペースに登録されているデータセットの最新バージョンが返されます。
 
 ```Python
 %%writefile $script_folder/train.py
@@ -233,4 +289,4 @@ df = titanic_ds.to_pandas_dataframe()
 
 * [データセットを使ってトレーニングする方法](how-to-train-with-datasets.md)をご覧ください。
 * 自動機械学習を使用し、[TabularDataset でトレーニング](https://aka.ms/automl-dataset)を行います。
-* データセットでのトレーニングの他の例については、[サンプル ノートブック](https://aka.ms/dataset-tutorial)を参照してください。
+* データセットのトレーニングのその他の例については、[サンプル ノートブック](https://aka.ms/dataset-tutorial)を参照してください。

@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center でのマシンとアプリケーションの保護 | Microsoft Docs
+title: Azure Security Center でのマシンとアプリケーションの保護
 description: このドキュメントでは、仮想マシン、コンピューター、Web アプリ、および App Service 環境を保護するのに役立つ、Security Center の推奨事項について説明します。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 803e64c9df1b52a33a1b50714f77b005032bf200
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200775"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686344"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Security Center でのマシンとアプリケーションの保護
 Azure Security Center は、Azure リソース、Azure 以外のサーバー、および仮想マシンのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
@@ -30,7 +30,7 @@ Azure Security Center は、Azure リソース、Azure 以外のサーバー、�
 
 **[推奨事項]** を選択すると、すべての問題の一覧が表示されます。 レコメンデーションの適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 
-計算とアプリ サービスの推奨事項の完全な一覧については、[推奨事項](security-center-virtual-machine-protection.md#compute-and-app-recommendations)に関するページを参照してください。
+計算とアプリ サービスの推奨事項の完全な一覧については、[推奨事項](security-center-virtual-machine-protection.md#compute-and-app-recs)に関するページを参照してください。
 
 続行するには、 **[リソース]** または Security Center のメイン メニューで **[計算とアプリ]** を選択します。
 ![Security Center ダッシュボード](./media/security-center-virtual-machine-recommendations/overview.png)
@@ -42,7 +42,7 @@ Azure Security Center は、Azure リソース、Azure 以外のサーバー、�
 - **[VM およびコンピューター]** : VM およびコンピューターの一覧と、それぞれの現在のセキュリティ状態。
 - **[Cloud Services]\(クラウド サービス\)** : Security Center によって監視されている Web および worker ロールの一覧。
 - **[アプリ サービス]** : アプリ サービス環境の一覧と、それぞれの現在のセキュリティ状態。
-- **[コンテナー (プレビュー)]** : IaaS Linux マシン上でホストされているコンテナーや Docker 構成のセキュリティ評価の一覧。
+- **[コンテナー]** : コンテナーとその構成のセキュリティ評価の一覧。
 - **[コンピューティング リソース (プレビュー)]** : Service Fabric クラスターやイベント ハブなど、コンピューティング リソースの推奨事項の一覧。
 
 続行するには、 **[リソース セキュリティの検疫]** で **[計算とアプリ]** を選択します。
@@ -153,7 +153,7 @@ App Service 情報を表示するには、サブスクリプションで App Ser
 
 2. 推奨事項を選択すると、推奨事項の説明、正常でないリソース、正常なリソース、およびスキャンされていないリソースの一覧が表示されます。
 
-   - **[評価に合格しました]** 列には、合格した評価の一覧が表示されます。  これらの評価の重大度は常に緑色です。
+   - **[評価に合格しました]** 列には、合格した評価の一覧が表示されます。 これらの評価の重大度は常に緑色です。
 
    - 一覧から合格した評価を選択すると、評価の説明、正常でないリソース、正常なリソース、およびスキャンされていないリソースの一覧が表示されます。 正常でないリソース用のタブがありますが、評価に合格しているため、その一覧は常に空です。
 
@@ -178,7 +178,7 @@ Microsoft Monitoring Agent をインストールするには
 既存のスケール セットをすべて設定して Microsoft Monitoring Agent をインストールする場合は、Azure Policy で、 **[修復]** に移動し、既存のポリシーを既存のスケール セットに適用します。
 
 
-## <a name="compute-and-app-recommendations"></a>コンピューティングとアプリの推奨事項
+## コンピューティングとアプリの推奨事項<a name="compute-and-app-recs"></a>
 |リソースの種類|セキュリティ スコア|推奨|説明|
 |----|----|----|----|
 |App Service|20|Web アプリケーションには HTTPS を介してのみアクセスできるようにする|Web アプリケーションへのアクセスを、HTTPS 経由のみに制限します。|
@@ -198,7 +198,7 @@ Microsoft Monitoring Agent をインストールするには
 |コンピューティング リソース (Batch)|5|Batch アカウントで診断ログを有効にする|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
 |コンピューティング リソース (イベント ハブ)|5|イベント ハブで診断ログを有効にする必要がある|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
 |コンピューティング リソース (Logic Apps)|5|Logic Apps で診断ログを有効にする|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
-|コンピューティング リソース (Service Fabric)|15|Service Fabric で ClusterProtectionLevel プロパティを EncryptAndSign に設定する|Service Fabric では、プライマリ クラスターの証明書を使用して、ノード間通信に 3 つのレベルの保護 (None、Sign、EncryptAndSign) が提供されます。  すべてのノード間メッセージが暗号化され、デジタル署名されるように保護レベルを設定します。 |
+|コンピューティング リソース (Service Fabric)|15|Service Fabric で ClusterProtectionLevel プロパティを EncryptAndSign に設定する|Service Fabric では、プライマリ クラスターの証明書を使用して、ノード間通信に 3 つのレベルの保護 (None、Sign、EncryptAndSign) が提供されます。 すべてのノード間メッセージが暗号化され、デジタル署名されるように保護レベルを設定します。 |
 |コンピューティング リソース (Service Bus)|1|Service Bus の名前空間から RootManageSharedAccessKey 以外のすべての承認規則を削除する |Service Bus クライアントでは、名前空間内のすべてのキューおよびトピックへのアクセスを提供する名前空間レベルのアクセス ポリシーを使用してはいけません。 最小限の特権セキュリティ モデルに合わせるために、キューとトピックについてはエンティティ レベルでアクセス ポリシーを作成し、特定のエンティティのみへのアクセスを提供する必要があります。|
 |コンピューティング リソース (イベント ハブ)|1|イベント ハブの名前空間から RootManageSharedAccessKey 以外のすべての承認規則を削除する必要がある|イベント ハブ クライアントでは、名前空間内のすべてのキューおよびトピックへのアクセスを提供する名前空間レベルのアクセス ポリシーを使用してはいけません。 最小限の特権セキュリティ モデルに合わせるために、キューとトピックについてはエンティティ レベルでアクセス ポリシーを作成し、特定のエンティティのみへのアクセスを提供する必要があります。|
 |コンピューティング リソース (イベント ハブ)|5|イベント ハブ エンティティに関する承認規則を定義する必要がある|イベント ハブ エンティティに関する承認規則を監査し、最小限の特権を持つアクセスを付与します。|

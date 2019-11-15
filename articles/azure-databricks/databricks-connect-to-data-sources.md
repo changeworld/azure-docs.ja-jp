@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: c77d1d1a66d3ee92f5ad3f2016d2160831fa3ad9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f40edec088172bf7460d99b611e6be80f818ff9c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299313"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601888"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Azure Databricks からデータ ソースに接続する
 
@@ -26,34 +26,34 @@ ms.locfileid: "72299313"
 
 ## <a name="data-sources-for-azure-databricks"></a>Azure Databricks のデータ ソース
 
-次の一覧は、Azure Databricks で使用できる Azure 内のデータ ソースを示しています。 Azure Databricks で使用できるデータ ソースの完全な一覧については、[Azure Databricks のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)に関する記事を参照してください。
+次の一覧は、Azure Databricks で使用できる Azure 内のデータ ソースを示しています。 Azure Databricks で使用できるデータ ソースの完全な一覧については、[Azure Databricks のデータ ソース](/azure/databricks/data/data-sources/index.html)に関する記事を参照してください。
 
-- [Azure SQL データベース](https://docs.azuredatabricks.net/spark/latest/data-sources/sql-databases.html)
+- [Azure SQL データベース](/azure/databricks/data/data-sources/sql-databases.html)
 
     このリンクでは、JDBC を使用して SQL データベースに接続するための DataFrame API と、JDBC インターフェイス経由の読み取りの並列処理を制御する方法を示します。 このトピックでは、Scala API の詳細な使用例の他に、最後に Python と Spark SQL の簡潔な例を示します。
-- [Azure Data Lake Store](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)
+- [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html)
 
-    このリンクは、Data Lake Store での認証に Azure Active Directory サービス プリンシパルを使用する方法の例を示します。 Azure Databricks から Data Lake Store のデータにアクセスする方法も示します。
+    このリンクでは、Azure Active Directory サービス プリンシパルを使用して Azure Data Lake Storage での認証を行う方法の例が提供されます。 Azure Databricks から Azure Data Lake Storage 内のデータにアクセスする方法も示されます。
 
-- [Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html)
+- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html)
 
     このリンクは、特定のコンテナーのアクセス キーまたは SAS を使用して Azure Databricks から Azure Blob ストレージに直接アクセスする方法の例を示します。 このリンクでは、RDD API を使用して Azure Databricks から Azure Blob Storage にアクセスする方法も示します。
 
-- [Azure Cosmos DB](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
+- [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector.html)
 
     このリンクは、Azure Databricks から [Azure Cosmos DB Spark コネクタ](https://github.com/Azure/azure-cosmosdb-spark)を使用して Azure Cosmos DB のデータにアクセスする方法を示します。
 
-- [Azure Event Hubs](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/eventhubs-connector.html)
+- [Azure Event Hubs](/azure/databricks/data/data-sources/azure/eventhubs-connector.html)
 
     このリンクは、Azure Databricks から [Azure Event Hubs Spark コネクタ](https://github.com/Azure/azure-event-hubs-spark)を使用して Azure Event Hubs のデータにアクセスする方法を示します。
 
-- [Azure SQL Data Warehouse](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/sql-data-warehouse.html)
+- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse.html)
 
     このリンクは、Azure SQL Data Warehouse コネクタを使用して Azure Databricks から接続する方法を示します。
     
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Databricks にデータをインポートできるソースについては、[Azure Databricks のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#)に関するページをご覧ください。
+Azure Databricks にデータをインポートできるソースについては、[Azure Databricks のデータ ソース](/azure/databricks/data/data-sources/index.html#)に関するページをご覧ください。
 
 

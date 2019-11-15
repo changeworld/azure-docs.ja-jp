@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory で制御テーブルを使用してデータベースから一括コピーを行う | Microsoft Docs
+title: Azure Data Factory で制御テーブルを使用してデータベースから一括コピーを行う
 description: Azure Data Factory で、ソース テーブルのパーティションの一覧を格納する外部制御テーブルを使用して、データベースからデータを一括コピーするソリューション テンプレートの使用方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: c4224693642e8c9f76deedc0c8ad8586e122cc23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635390"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684276"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>制御テーブルを使用してデータベースから一括コピーを行う
 

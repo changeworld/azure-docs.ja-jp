@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 84e1dd77c6e873dc2facb5126bbddf795192b60d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257742"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605620"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用して Avro データのクエリを実行する
 
@@ -20,7 +20,7 @@ ms.locfileid: "66257742"
 
 Azure IoT Hub が Azure Blob Storage にメッセージをルーティングするときに、既定で IoT Hub ではメッセージ本文のプロパティとメッセージのプロパティの両方を持つコンテンツが Avro 形式で書き込まれるという問題がありました。 Avro 形式は他のエンドポイントでは使用されません。 Avro はデータとメッセージの保存には最適な形式ですが、データのクエリ用途には使うのは容易ではありません。 比較すると、JSON または CSV 形式はデータのクエリがはるかに簡単です。 IoT Hub では、JSON と AVRO でのデータの Blob Storage への書き込みがサポートされるようになりました。
 
-詳細については、[Azure Blob Storage をルーティング エンドポイントとして使用する](iot-hub-devguide-messages-d2c.md#azure-blob-storage)方法に関するページをご覧ください。
+詳細については、「[Azure Storage をルーティング エンドポイントとして使用する方法](iot-hub-devguide-messages-d2c.md#azure-storage)」に関するページをご覧ください。
 
 非リレーショナル ビッグデータのニーズと形式に対応し、この課題を克服するために、データの変換とスケーリングのいずれにおいても、ビッグデータ パターンの多くを使用することができます。 そのようなパターンの 1 つとして、"クエリごとの支払い" である Azure Data Lake Analytics があり、この記事では、この点について重点的に取り上げています。 クエリは Hadoop やその他のソリューションで簡単に実行できますが、多くの場合、Data Lake Analytics の方がこの "クエリごとの支払い" アプローチに適しています。
 

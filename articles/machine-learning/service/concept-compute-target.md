@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/10/2019
-ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035533"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580608"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
 
@@ -46,16 +46,20 @@ Azure Machine Learning では、異なるコンピューティング リソー�
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning コンピューティング (マネージド)
 
-マネージド コンピューティング リソースは、Azure Machine Learning によって作成され、管理されます。 このコンピューティングは、機械学習ワークロード向けに最適化されています。 2019 年 5 月 30 日の時点では、Azure Machine Learning コンピューティングが唯一のマネージド コンピューティングとなります。 今後、他のマネージド コンピューティング リソースが追加される予定です。
+マネージド コンピューティング リソースは、Azure Machine Learning によって作成され、管理されます。 このコンピューティングは、機械学習ワークロード向けに最適化されています。 Azure Machine Learning コンピューティング クラスター。 今後、他のマネージド コンピューティング リソースが追加される予定です。
 
-Azure Machine Learning コンピューティングをトレーニングやバッチ推論 (プレビュー) に使用できます。  このコンピューティング リソースは、次のものを備えています。
+Azure Machine Learning コンピューティング クラスターは、Azure Machine Learning Studio、Azure portal、SDK、Resource Manager テンプレート、CLI のいずれかで作成できます。
+
+作成されると、これらのコンピューティング リソースは、他の種類のコンピューティング ターゲットとは異なり、自動的にワークスペースの一部になります。
+
+Azure Machine Learning コンピューティング クラスターをトレーニングやバッチ推論 (プレビュー) に使用できます。  このコンピューティング リソースは、次のものを備えています。
 
 * シングルノードまたはマルチノード クラスター
 * 実行を送信するたびに自動スケーリング 
 * 自動でのクラスター管理とジョブ スケジューリング 
 * CPU と GPU の両方のリソースをサポートします
 
-SDK または CLI を使用して、Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で Azure Machine Learning コンピューティング インスタンスを作成できます。 作成されると、他の種類のコンピューティング ターゲットとは異なり、それが自動的にワークスペースの一部になります。
+
 
 ## <a name="unmanaged-compute"></a>アンマネージド コンピューティング
 

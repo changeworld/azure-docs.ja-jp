@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory でサポートされるファイル形式 | Microsoft Docs
+title: Azure Data Factory でサポートされるファイル形式
 description: このトピックでは、Azure Data Factory 内のファイルベースのコネクタでサポートされている圧縮コードやファイル形式について説明します。
 author: linda33wj
 manager: craigg
@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 2c8983b5d6a44834d0c9659877c857fd73805ce6
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d0183e991a3cbc0481aff44b5b0f03eaa9d43103
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812314"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683981"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -474,6 +474,9 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 | CharArray | サポートされていません | 該当なし | 該当なし |
 
 ## <a name="orc-format"></a>ORC 形式
+
+>[!NOTE]
+>Data Factory に新しい ORC 形式のデータセットが導入されました。詳しくは、[ORC 形式](format-orc.md)に関する記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
 
 ORC ファイルを解析するか、ORC 形式でデータを書き込む場合は、`format` `type` プロパティを **OrcFormat** に設定します。 typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。 例:
 

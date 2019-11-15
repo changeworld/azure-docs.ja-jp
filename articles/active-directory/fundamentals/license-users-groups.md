@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 869713967a6a89611ab2ea9ca7b7516f090a5f92
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 9f690d23ac4d8c452d731c2f6fd4ae67dc281639
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034281"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805518"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでのライセンスの割り当てと削除
 
@@ -87,6 +87,8 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 1. **[割り当て]** を選択します。
 
     ユーザーがライセンスされているユーザーの一覧に追加され、含まれる Azure AD サービスにアクセスできます。
+    > [!NOTE]
+    > ライセンスは、ユーザーの **[ライセンス]** ページからユーザーに直接割り当てることもできます。 グループメンバーシップ経由でユーザーにライセンスが割り当てられているとき、同じライセンスをユーザーに直接割り当てる場合、手順 1 の **[製品]** ページからのみ、それを行うことができます。
 
 ### <a name="to-assign-a-license-to-a-group"></a>ライセンスをグループに割り当てるには
 

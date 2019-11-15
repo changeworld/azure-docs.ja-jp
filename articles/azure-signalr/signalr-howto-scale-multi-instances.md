@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: e284a0492774e02cab79db6d9006c1718a7fcfc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809132"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672332"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>複数のインスタンスでの SignalR Service のスケーリング方法
 最新の SignalR Service SDK では、SignalR Service インスタンスの複数のエンドポイントがサポートされています。 この機能を使用して同時接続をスケーリングすることや、リージョンをまたがるメッセージングにこれを使用することができます。
@@ -223,7 +223,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 ![地域をまたがるインフラ](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-クライアントが既定のルーターを使用してアプリ サーバーとの `/negotiate` を試行すると、SDK は使用可能な一連の `primary` エンドポイントから 1 つのエンドポイントを**ランダムに選択**します。 エンドポイントが使用可能な場合、SDK は使用可能なすべての `secondary`エンドポイントから**ランダムに選択**します。 サーバーとサービス エンドポイント間の接続が保持されている場合、エンドポイントは**使用可能**としてマークされます。
+クライアントが既定のルーターを使用してアプリ サーバーとの `/negotiate` を試行すると、SDK は使用可能な一連の `primary` エンドポイントから 1 つのエンドポイントを**ランダムに選択**します。 プライマリ エンドポイントが使用できない場合、SDK は使用可能なすべての `secondary` エンドポイントから**ランダムに選択**します。 サーバーとサービス エンドポイント間の接続が保持されている場合、エンドポイントは**使用可能**としてマークされます。
 
 リージョンをまたがるシナリオでは、*米国東部*でホストされているアプリ サーバーとの `/negotiate` をクライアントが試行すると、既定では、同じリージョンに配置されている `primary` エンドポイントが常に返されます。 *米国東部*のすべてのエンドポイントが使用不可の場合、クライアントは他のリージョンのエンドポイントにリダイレクトされます。 次の「フェールオーバー」セクションでこのシナリオについて詳しく説明します。
 

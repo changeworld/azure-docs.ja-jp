@@ -1,5 +1,5 @@
 ---
-title: Azure 分析用に公開されているデータ セット | Microsoft Docs
+title: Azure で分析用に公開されているデータ セット
 description: Azure の分析サービスとソリューションのプロトタイプ作成とテストに使用できる、公開されているデータ セットについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: a16f6d6b0bf8600270fdf4e00cfa379ee4422fd0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567000"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821277"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>テストとプロトタイプ作成用の公開されているデータ セット
 
@@ -42,7 +42,7 @@ ms.locfileid: "68567000"
 | [ニューヨーク市のタクシーのデータ](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "タクシー移動の記録には、乗車と降車の日時、乗車と降車の場所、移動距離、料金明細、料金の種類、支払いの種類、運転手が報告する乗車人数が入力されたフィールドが含まれています。" | データ セットは月単位の CSV ファイルで提供されます。 |
 | [Microsoft Research データ セット - "調査のためのデータ サイエンス"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | 人間とコンピューター間の対話、オーディオ/ビデオ、データ マイニング/情報の取得、地理空間/場所、自然言語処理、ロボット工学/コンピューター ビジョンを対象とする複数のデータ セットです。 | データ セットはさまざまな形式で提供されており、ダウンロード用に zip 形式に圧縮されています。 |
 | [公開されているゲノム データ](https://www.completegenomics.com/public-data/) | "、全ヒトゲノムの多様なデータ セットは、だれでもゲノム研究を増進できるように自由に入手できます。"提供者である Complete Genomics は民間営利法人です。 | データ セットは、抽出後に UNIX テキスト形式になります。 分析ツールも利用できます。 |
-| [Open Science Data Cloud のデータ](https://www.opensciencedatacloud.org/) | "Open Science Data Cloud は、テラバイトやペタバイト規模の科学データ セットを格納、共有、分析するためのリソースを科学界に提供します。"| データ セットはさまざまな形式で提供されます。 |
+| [Open Science Data Cloud のデータ](https://www.opensciencedatacloud.org/projects/) | "Open Science Data Cloud は、テラバイトやペタバイト規模の科学データ セットを格納、共有、分析するためのリソースを科学界に提供します。"| データ セットはさまざまな形式で提供されます。 |
 | [グローバルな気候データ - WorldClim](https://worldclim.org/) | "WorldClim は、約 1 km² の空間分解能を備えた、グローバルな気候レイヤー (グリッド表示された気候データ) のセットです。 これらのデータはマッピングと空間モデリングに使用できます。" | これらのファイルには地理空間データが含まれます。 詳細については、「[Data format (データ形式)](https://worldclim.org/formats1)」を参照してください。 |
 | [人類社会に関するデータ - The GDELT Project](https://www.gdeltproject.org/data.html) | "The GDELT Project は、これまで作成された中で、最も大規模かつ包括的で高精度な、人類社会のオープンなデータベースです。" | 生データ ファイルは CSV 形式です。 |
 | [Criteo の機械学習用の広告クリック予測データ](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "これまで公式にリリースされた中で最大規模の ML データ セットです。" 詳細については、[Criteo の 1 TB クリック予測データ セット](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/)に関するページを参照してください。 | |

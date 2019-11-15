@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: f833ded4467da1f129b1ea7f858ae8bdd9c2048e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495450"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647452"
 ---
 チャットボットや他のクライアント アプリケーションで LUIS の予測を受け取るには、アプリをエンドポイントに公開する必要があります。 
 
@@ -31,4 +31,4 @@ ms.locfileid: "73495450"
 
     ![LUIS のエンドポイントへの公開](../media/howto-publish/publish-endpoint-success.png)
 
-4. 緑色のステータス バーの **[endpoints]\(エンドポイント\)** リンクを選択して、 **[Keys and endpoints]\(キーとエンドポイント\)** ページに進みます。 エンドポイント URL は下部に一覧表示されます。
+4. 通知の **[Access your endpoint URLs]\(エンドポイントの URL にアクセス\)** リンクを選択して **[Azure リソース]** ページに移動します。 エンドポイントの URL が **[Example Query]\(サンプル クエリ\)** として一覧表示されます。

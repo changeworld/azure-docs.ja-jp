@@ -10,13 +10,13 @@ ms.reviewer: klam; LADocs
 manager: carmonm
 ms.topic: conceptual
 tags: connectors
-ms.date: 10/14/2019
-ms.openlocfilehash: 6c86ef26bbf7bd9dbce8aa77aef2213b14b57f5f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.date: 11/08/2019
+ms.openlocfilehash: a6367e5897e9bd548550b099c0bd2e6186845d6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311978"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826326"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL Server または Azure SQL Database のワークフローを自動化する
 
@@ -44,7 +44,11 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-* SQL Server などのオンプレミス システムにロジック アプリを接続する前に、[オンプレミス データ ゲートウェイをセットアップする](../logic-apps/logic-apps-gateway-install.md)必要があります。 これにより、ロジック アプリの SQL 接続を作成するときに、ゲートウェイを選択できます。
+* ローカル コンピューターにインストールされた[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-install.md)と以下のシナリオのために [Azure portal で作成された Azure データ ゲートウェイ リソース](../logic-apps/logic-apps-gateway-connection.md):
+
+  * ロジック アプリは、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) では実行されません。
+
+  * ロジック アプリは統合サービス環境で*実行されます*が、SQL Server 接続には Windows 認証を使用する必要があります。 ISE バージョンは Windows 認証をサポートしていないため、このシナリオでは、データ ゲートウェイと共に SQL Server コネクタの非 ISE バージョンを使用します。
 
 * SQL データベースにアクセスする必要があるロジック アプリ。 SQL トリガーを使用してロジック アプリを起動するには、[空のロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。
 
@@ -68,7 +72,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 1. **［間隔］** プロパティと **［頻度］** を設定します。これらは、ロジック アプリがテーブルをチェックする頻度を指定します。
 
-   このトリガーでは、選択したテーブルから 1 行のみを返し、それ以外は何もしません。 他のタスクを実行するには、必要なタスクを実行する他のアクションを追加します。 たとえば、この行のデータを表示するには、返された行のフィールドを含むファイルを作成する他のアクションを追加し、電子メール通知を送信します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](/connectors/sql/)を参照してください。
+   このトリガーでは、選択したテーブルから 1 行のみを返し、それ以外は何もしません。 他のタスクを実行するには、必要なタスクを実行する他のアクションを追加します。 たとえば、この行のデータを表示するには、返された行のフィールドを含むファイルを作成する他のアクションを追加し、電子メール通知を送信します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/sql/)を参照してください。
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
@@ -84,7 +88,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. SQL アクションを追加するトリガーまたはアクションで、 **[新しいステップ]** を選択します。
 
-   ![[新しいステップ] を選択](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+   ![ロジック アプリに新しいステップを追加する](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
    既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 表示されるプラス記号 ( **+** ) を選択してから、 **[アクションの追加]** を選択します。
 
@@ -92,13 +96,13 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    この例では、1 つのレコードを取得する **[行の取得]** アクションを使用します。
 
-   ![SQL の [行の取得] アクションを検索して選択](./media/connectors-create-api-sqlazure/select-sql-get-row.png)
+   ![SQL の [行の取得] アクションを検索して選択](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
 
-   このアクションでは、選択したテーブルから 1 行のみが返され、それ以外は何も行われません。 この行のデータを表示するには、返される行のフィールドが含まれるファイルを作成し、そのファイルをクラウド ストレージ アカウントに格納するその他のアクションを追加します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](/connectors/sql/)を参照してください。
+   このアクションでは、選択したテーブルから 1 行のみが返され、それ以外は何も行われません。 この行のデータを表示するには、返される行のフィールドが含まれるファイルを作成し、そのファイルをクラウド ストレージ アカウントに格納するその他のアクションを追加します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/sql/)を参照してください。
 
 1. 接続の作成を求められたら、[SQL 接続を今すぐ作成](#create-connection)します。 接続が存在する場合は、 **[テーブル名]** を選択し、使用するレコードの **[行 ID]** を入力します。
 
-   ![テーブル名と行 ID の入力](./media/connectors-create-api-sqlazure/table-row-id.png)
+   ![テーブル名と行 ID の入力](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
@@ -132,7 +136,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-このコネクタのトリガー、アクション、および制限に関する技術情報については、[コネクタのリファレンス ページ](/connectors/sql/)を参照してください。
+このコネクタのトリガー、アクション、および制限に関する技術情報については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/sql/)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

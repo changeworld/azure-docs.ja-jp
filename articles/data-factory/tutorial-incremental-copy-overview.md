@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用してデータを増分コピーする | Microsoft Docs
+title: 'Azure Data Factory を使ってデータを増分コピーする '
 description: これらのチュートリアルでは、ソース データ ストアからターゲット データ ストアにデータを増分コピーする方法について説明します。 1 つ目は、単一のテーブルからデータをコピーするものです。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 15ff84bf8a194c6172864601e3aefe78f9cc13a3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9cbe9dfea116df30f49b89e2e59886f2f112487c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140578"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683366"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>ソース データ ストアからターゲット データ ストアにデータを増分読み込みする
 
@@ -54,7 +54,7 @@ LastModifiedDate を使用して、新しいファイルと変更されたファ
 - [LastModifiedDate を基準にした新しいファイルのコピー](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>時間でパーティション分割されたフォルダーまたはファイルの名前を使用して新しいファイルを読み込む
-ファイルまたはフォルダーが時間 (ファイル名またはフォルダー名に含まれるタイムスライス情報) でパーティション分割されているときに (例: /yyyy/mm/dd/file.csv)、新しいファイルのみをコピーすることができます。 これは、新しいファイルを増分読み込みする場合に最もパフォーマンスの高いアプローチです。 
+ファイルまたはフォルダーが時間 (ファイル名またはフォルダー名に含まれるタイムスライス情報) でパーティション分割されているときに (例: /yyyy/mm/dd/file.csv)、新しいファイルのみをコピーすることができます。 これは、新しいファイルを増分読み込みする場合に最も効率のよいアプローチです。 
 
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
 - [時間でパーティション分割されたフォルダー名またはファイル名に基づく新しいファイルを Azure Blob Storage から Azure Blob Storage に増分コピーする](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

@@ -1,5 +1,5 @@
 ---
-title: Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする | Microsoft Docs
+title: Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 description: Data Factory を使用して、サポートされるソース データ ストアのデータを Azure Data Lake Store にコピーしたり、Data Lake Store のデータをサポートされるシンク ストアにコピーしたりできます。
 services: data-factory
 author: linda33wj
@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 968e356947e99c3b6c4fe9d5acd2efed264be5b0
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 2aef04c4fe4713b107abe53fe459b7859a9c714e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010108"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681270"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください:"]
@@ -67,22 +67,18 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 
 ### <a name="use-service-principal-authentication"></a>サービス プリンシパル認証を使用する
 
-サービス プリンシパル認証を使用するには、Azure Active Directory にアプリケーション エンティティを登録し、Data Lake Store へのアクセス権を付与します。 詳細な手順については、「[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+サービス プリンシパル認証を使用するには、次の手順に従います。
 
-- アプリケーション ID
-- アプリケーション キー
-- テナント ID
+1. Azure Active Directory にアプリケーション エンティティを登録し、Data Lake Store へのアクセス権を付与します。 詳細な手順については、「[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
->[!IMPORTANT]
-> サービス プリンシパルに Data Lake Store での適切なアクセス許可を付与します。
->- **ソースとして**: フォルダーとサブフォルダーにあるファイルを一覧表示してコピーするためには、 **[データ エクスプローラー]**  >  **[アクセス]** で、少なくとも**読み取り + 実行**アクセス許可を付与します。 1 つのファイルをコピーするのであれば、**読み取り**アクセス許可の付与でかまいません。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
->- **シンクとして**: フォルダー内に子項目を作成するためには、 **[データ エクスプローラー]**  >  **[アクセス]** で、少なくとも**書き込み + 実行**アクセス許可を付与します。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 Azure 統合ランタイムを使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、IAM で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを避けたい場合は、Data Lake Store の場所を使用して明示的に [Azure 統合ランタイムを作成](create-azure-integration-runtime.md#create-azure-ir)してください。 たとえば、Data Lake Store が西ヨーロッパにある場合、場所を "西ヨーロッパ" に設定した Azure 統合ランタイムを作成します。 次の例で示すように、Data Lake Store のリンクされたサービスでそれらを関連付けます。
+    - アプリケーション ID
+    - アプリケーション キー
+    - テナント ID
 
->[!NOTE]
->ルートを起点としてフォルダーを一覧表示するには、サービス プリンシパルのアクセス許可を**ルート レベルで "実行" 権限**が付与されるように設定する必要があります。 これは、以下を使用する場合に該当します。
->- **データ コピー ツール** (コピー パイプラインを作成する)。
->- **Data Factory UI** (接続およびフォルダーのナビゲーションを作成中にテストする)。
->ルート レベルでのアクセス許可の付与に関して問題がある場合は、作成中に、接続のテストをスキップし、アクセス許可が付与された親パスを入力した後、その指定したパスから参照することを選択します。 コピー アクティビティは、コピーされるファイルで、サービス プリンシパルに適切なアクセス許可が与えられている限り機能します。
+2. サービス プリンシパルに適切なアクセス許可を付与します。 Data Lake Storage Gen1 におけるアクセス許可の動作例については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)」を参照してください。
+
+    - **ソースとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) について、少なくとも**実行**アクセス許可を与えると共に、コピーするファイルの**読み取り**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
+    - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに**書き込み**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 Azure 統合ランタイムを使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、IAM で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを避けたい場合は、Data Lake Store の場所を使用して明示的に [Azure 統合ランタイムを作成](create-azure-integration-runtime.md#create-azure-ir)してください。 たとえば、Data Lake Store が西ヨーロッパにある場合、場所を "西ヨーロッパ" に設定した Azure 統合ランタイムを作成します。 次の例で示すように、Data Lake Store のリンクされたサービスでそれらを関連付けます。
 
 次のプロパティがサポートされています。
 
@@ -125,18 +121,11 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 Azure リソースのマネージド ID 認証を使用するには、次のようにします。
 
 1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
-2. サービス プリンシパルの場合と同じように、以下の注意に従って Data Lake Store へのアクセス権をマネージド ID に付与します。
 
->[!IMPORTANT]
-> Data Lake Store でデータ ファクトリ マネージド ID に適切なアクセス許可を付与してください。
->- **ソースとして**: フォルダーとサブフォルダーにあるファイルを一覧表示してコピーするためには、 **[データ エクスプローラー]**  >  **[アクセス]** で、少なくとも**読み取り + 実行**アクセス許可を付与します。 1 つのファイルをコピーするのであれば、**読み取り**アクセス許可の付与でかまいません。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
->- **シンクとして**: フォルダー内に子項目を作成するためには、 **[データ エクスプローラー]**  >  **[アクセス]** で、少なくとも**書き込み + 実行**アクセス許可を付与します。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 Azure 統合ランタイムを使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、IAM で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを避けたい場合は、Data Lake Store の場所を使用して明示的に [Azure 統合ランタイムを作成](create-azure-integration-runtime.md#create-azure-ir)してください。 次の例で示すように、Data Lake Store のリンクされたサービスでそれらを関連付けます。
+2. Data Lake Store へのアクセス権をマネージド ID に付与します。 Data Lake Storage Gen1 におけるアクセス許可の動作例については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)」を参照してください。
 
->[!NOTE]
->ルートを起点としてフォルダーを一覧表示するには、マネージド ID のアクセス許可を**ルート レベルで "実行" 権限**が付与されるように設定する必要があります。 これは、以下を使用する場合に該当します。
->- **データ コピー ツール** (コピー パイプラインを作成する)。
->- **Data Factory UI** (接続およびフォルダーのナビゲーションを作成中にテストする)。
->ルート レベルでのアクセス許可の付与に関して問題がある場合は、作成中に、接続のテストをスキップし、アクセス許可が付与された親パスを入力した後、その指定したパスから参照することを選択します。 コピー アクティビティは、コピーされるファイルで、サービス プリンシパルに適切なアクセス許可が与えられている限り機能します。
+    - **ソースとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) について、少なくとも**実行**アクセス許可を与えると共に、コピーするファイルの**読み取り**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
+    - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに**書き込み**アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 Azure 統合ランタイムを使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、IAM で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを避けたい場合は、Data Lake Store の場所を使用して明示的に [Azure 統合ランタイムを作成](create-azure-integration-runtime.md#create-azure-ir)してください。 次の例で示すように、Data Lake Store のリンクされたサービスでそれらを関連付けます。
 
 Azure Data Factory では、リンクされたサービスの Data Lake Store の一般的な情報以外にプロパティを指定する必要はありません。
 
@@ -164,12 +153,8 @@ Azure Data Factory では、リンクされたサービスの Data Lake Store �
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-- **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
-- **ORC 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット
-
-コピー先またはコピー元との間で **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。
 Azure Data Lake Store Gen1 では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
@@ -177,10 +162,6 @@ Azure Data Lake Store Gen1 では、形式ベースのデータセットの `loc
 | type       | データセットの `location` の type プロパティは、**AzureDataLakeStoreLocation** に設定する必要があります。 | はい      |
 | folderPath | フォルダーのパス。 フォルダーをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 | fileName   | 特定の folderPath の下のファイル名。 ファイルをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
-
-> [!NOTE]
->
-> 次のセクションで説明する Parquet 形式またはテキスト形式の **AzureDataLakeStoreFile** 型データセットは、下位互換性のために引き続きコピー、ルックアップ、GetMetadata アクティビティでそのままサポートされます。 ただし、マッピング データ フロー機能では動作しません。 今後はこの新しいモデルを使用することをお勧めします。 Data Factory オーサリング UI では、これらの新しい型が生成されます。
 
 **例:**
 
@@ -208,9 +189,10 @@ Azure Data Lake Store Gen1 では、形式ベースのデータセットの `loc
 }
 ```
 
-### <a name="other-format-dataset"></a>他の形式のデータセット
+### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
-Azure Data Lake Store Gen1 をコピー先またはコピー元として **ORC 形式**のデータをコピーする場合、次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のデータセット モデルは引き続き現状のままサポートされます。 今後は、前セクションで言及した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -221,7 +203,6 @@ Azure Data Lake Store Gen1 をコピー先またはコピー元として **ORC �
 | modifiedDatetimeEnd | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 大量のファイルでファイル フィルターを実行する場合、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けます。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
 | format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析または生成する場合、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
-
 
 >[!TIP]
 >フォルダーの下のすべてのファイルをコピーするには、**folderPath** のみを指定します。<br>特定の名前が付いた単一のファイルをコピーするには、フォルダー部分で **folderPath**、ファイル名で **fileName** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、フォルダー部分で **folderPath**、ワイルドカード フィルターで **fileName** を指定します。 
@@ -262,12 +243,9 @@ Azure Data Lake Store Gen1 をコピー先またはコピー元として **ORC �
 
 ### <a name="azure-data-lake-store-as-source"></a>ソースとしての Azure Data Lake Store
 
-- コピー元から **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
-- コピー元から **ORC 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース
-
-**Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。  Azure Data Lake Store Gen1 では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+Azure Data Lake Store Gen1 では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -278,9 +256,6 @@ Azure Data Lake Store Gen1 をコピー先またはコピー元として **ORC �
 | modifiedDatetimeStart    | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
 | maxConcurrentConnections | ストレージ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                            |
-
-> [!NOTE]
-> Parquet 形式または区切りテキスト形式の場合、次のセクションで説明する **AzureDataLakeStoreSource** 型のコピー アクティビティ ソースは、下位互換性のために引き続きそのままサポートされます。 今後は、この新しいモデルを使うことをお勧めします。 Data Factory オーサリング UI では、これらの新しい型が生成されます。
 
 **例:**
 
@@ -323,9 +298,10 @@ Azure Data Lake Store Gen1 をコピー先またはコピー元として **ORC �
 ]
 ```
 
-#### <a name="other-format-source"></a>他の形式のソース
+#### <a name="legacy-source-model"></a>レガシ ソース モデル
 
-**ORC 形式**のデータを Azure Data Lake Store Gen1 からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のコピー ソース モデルは引き続き現状のままサポートされます。 今後は、前述した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -367,21 +343,15 @@ Azure Data Lake Store Gen1 をコピー先またはコピー元として **ORC �
 
 ### <a name="azure-data-lake-store-as-sink"></a>シンクとしての Azure Data Lake Store
 
-- コピー先に **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のシンク](#format-based-sink)」セクションを参照してください。
-- コピー先に **ORC/JSON 形式**などの他の形式でコピーするには、「[他の形式のシンク](#other-format-sink)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-sink"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のシンク
-
-コピー先にデータを **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのシンクと、サポートされる設定について参照してください。  Azure Data Lake Store Gen1 では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
+Azure Data Lake Store Gen1 では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` の type プロパティは **AzureDataLakeStoreWriteSetting** に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
 | maxConcurrentConnections | データ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ       |
-
-> [!NOTE]
-> Parquet 形式または区切りテキスト形式の場合、次のセクションで説明する **AzureDataLakeStoreSink** 型のコピー アクティビティ シンクは、下位互換性のために引き続きそのままサポートされます。 今後は、この新しいモデルを使うことをお勧めします。 Data Factory オーサリング UI では、これらの新しい型が生成されます。
 
 **例:**
 
@@ -418,9 +388,10 @@ Azure Data Lake Store Gen1 をコピー先またはコピー元として **ORC �
 ]
 ```
 
-#### <a name="other-format-sink"></a>他の形式のシンク
+#### <a name="legacy-sink-model"></a>レガシ シンク モデル
 
-**ORC 形式**のデータを Azure Data Lake Store Gen1 にコピーする場合、**sink** セクションで次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のコピー シンク モデルは引き続き現状のままサポートされます。 今後は、前述した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

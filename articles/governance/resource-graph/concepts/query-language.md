@@ -3,15 +3,15 @@ title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 6189920cb03a6cf388f0b5d232c6ce97ae4f3f82
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d0ba3195aef246ff49042f61dcec0b4397b5dde6
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389760"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622635"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -30,7 +30,7 @@ Resource Graph には、Resource Manager のリソースの種類とそのプロ
 |Resource Graph テーブル |説明 |
 |---|---|
 |リソース |クエリ内で何も定義されていない場合の既定のテーブル。 Resource Manager のリソースの種類とプロパティのほとんどはここにあります。 |
-|ResourceContainers |サブスクリプション (`Microsoft.Resources/subscriptions`) とリソース グループ (`Microsoft.Resources/subscriptions/resourcegroups`) のリソースの種類とデータが含まれています。 |
+|ResourceContainers |サブスクリプション (プレビュー中 -- `Microsoft.Resources/subscriptions`) とリソース グループ (`Microsoft.Resources/subscriptions/resourcegroups`) のリソースの種類とデータが含まれています。 |
 |AlertsManagementResources |`Microsoft.AlertsManagement` に "_関連する_" リソースが含まれています。 |
 |SecurityResources |`Microsoft.Security` に "_関連する_" リソースが含まれています。 |
 
@@ -51,8 +51,8 @@ Resources
 
 ```kusto
 Resources
-| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | where type == 'microsoft.keyvault/vaults'
+| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | project type, name, SubName
 | limit 1
 ```
@@ -120,6 +120,6 @@ Resource Graph では、すべての KQL [データ型 ](/azure/kusto/query/scal
 
 ## <a name="next-steps"></a>次の手順
 
-- [初歩的なクエリ](../samples/starter.md)で使用されている言語を参照してください
-- [高度なクエリ](../samples/advanced.md)で高度な使用方法を参照してください
-- [その他のリソース](explore-resources.md)
+- [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
+- [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。
+- [リソースを探索する](explore-resources.md)方法について詳しく確認します。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472833"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605085"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -72,9 +72,9 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>複数の可用性ゾーンでの AKS クラスターの作成
 
-[az aks create][az-aks-create] コマンドを使用してクラスターを作成する場合、`--zones` パラメーターで、エージェント ノードをデプロイする先のゾーンを定義します。 また、`--zones` パラメーターを指定してクラスターを作成すると、クラスターの AKS コントロール プレーンのコンポーネントは、最高の可用性構成の複数のゾーンに分散されます。
+[az aks create][az-aks-create] コマンドを使用してクラスターを作成する場合、`--zones` パラメーターで、エージェント ノードをデプロイする先のゾーンを定義します。 また、クラスターの作成時に `--zones` パラメーターを定義すると、クラスターの AKS コントロール プレーンのコンポーネントは、最高の可用性構成の複数のゾーンに分散されます。
 
-AKS クラスターの作成時に既定のエージェント プールのゾーンを定義しない場合、クラスターの AKS コントロール プレーン コンポーネントは可用性ゾーンを使用しません。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して追加のノード プールを追加し、それらの新しいエージェント ノードに対して `--zones` を指定できますが、コントロール プレーン コンポーネントは可用性ゾーンを認識しません。 ノード プールまたは AKS コントロール プレーン コンポーネントがデプロイされた後、それらのゾーン認識は変更できません。
+AKS クラスターの作成時に既定のエージェント プールのゾーンを定義しない場合、クラスターの AKS コントロール プレーン コンポーネントは可用性ゾーンを使用しません。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して追加のノード プールを追加し、それらの新しいノードに対して `--zones` を指定できますが、コントロール プレーン コンポーネントは可用性ゾーンを認識しません。 ノード プールまたは AKS コントロール プレーン コンポーネントがデプロイされた後、それらのゾーン認識は変更できません。
 
 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の AKS クラスターを作成しています。 合計 *3* つのノードが作成されます (ゾーン *1* にエージェント 1 つ、ゾーン *2* にエージェント 1 つ、ゾーン *3* にエージェント 1 つ)。 また、AKS コントロール プレーンのコンポーネントは、クラスターの作成プロセスの一部として定義されるため、最高の可用性構成の複数のゾーンに分散されます。
 

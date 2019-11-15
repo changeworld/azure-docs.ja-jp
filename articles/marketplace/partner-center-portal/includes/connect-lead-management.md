@@ -7,6 +7,7 @@ author: qianw211
 manager: evansma
 editor: ''
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
@@ -14,12 +15,12 @@ ms.workload: identity
 ms.date: 08/16/2019
 ms.author: v-qiwe
 ms.custom: include file
-ms.openlocfilehash: 43b551639fface699b1c0ec95500de8ea2089b26
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 059a2691c8e7905295a65daf262338ece65247d1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900089"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812666"
 ---
 パートナー センターを介してマーケットプレースにオファーを発行する一方で、オファーを顧客関係管理 (CRM) システムに接続する必要があります。これにより、顧客があなたの製品に興味を示した直後、またはそれをデプロイした直後に、顧客の連絡先情報を受け取ることができます。
 

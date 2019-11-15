@@ -1,5 +1,5 @@
 ---
-title: セルフホステッド統合ランタイムを Azure Data Factory で SSIS のプロキシとして構成する | Microsoft Docs
+title: セルフホステッド統合ランタイムを Azure Data Factory で SSIS のプロキシとして構成する
 description: セルフホステッド統合ランタイムを Azure-SSIS IR のプロキシとして構成する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200308"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684304"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する
 この記事では、セルフホステッド統合ランタイム (IR) をプロキシとして構成して、Azure Data Factory (ADF) の Azure SSIS 統合ランタイム (IR) で SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。  この機能を使用すると、[Azure-SSIS IR を仮想ネットワークに参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)させずに、オンプレミスのデータにアクセスすることができます。  これは、企業ネットワークが、Azure SSIS IR を挿入するには複雑すぎる構成/制限の厳しいポリシーを持っている場合に役立ちます。

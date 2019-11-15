@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory の Web アクティビティ | Microsoft Docs
+title: Azure Data Factory の Web アクティビティ
 description: Data Factory によってサポートされている制御フロー アクティビティの 1 つである Web アクティビティを使用して、パイプラインから REST エンドポイントを呼び出す方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 73770e559af8a999c17fff5ea1aa6ee53ac17e83
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5929d4edac53b2be87e168b527034c5a473f154f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141583"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678183"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
@@ -88,7 +88,7 @@ linkedServices | エンドポイントに渡されるリンクされたサービ
 | 非 JSON 型 | サポートされていません | サポートされていません |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 ### <a name="none"></a>なし
 認証が必要ない場合は、"authentication" プロパティを含めないでください。

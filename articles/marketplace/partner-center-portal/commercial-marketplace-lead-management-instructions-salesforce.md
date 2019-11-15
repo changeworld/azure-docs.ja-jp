@@ -4,15 +4,16 @@ description: Azure Marketplace のお客様向けに Salesforce でリード管�
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: d941a7902dd374a931147bdaa8f015c46268ee8a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: bdd3bb50fc69083c73eb01a84bf0fb0db82a8a65
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901339"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812149"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce 用にリード管理を構成する
 

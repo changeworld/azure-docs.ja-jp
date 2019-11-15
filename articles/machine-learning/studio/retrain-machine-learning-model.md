@@ -1,7 +1,7 @@
 ---
-title: Web サービスの再トレーニングとデプロイ
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
+title: Web サービスの再トレーニング
+titleSuffix: ML Studio (classic) Azure
+description: Azure Machine Learning Studio (クラシック) で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e35ab4b3a45edd5a1172bc3a07d7c31abd2135f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245086"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684769"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
-再トレーニングは、機械学習モデルが正確であり、利用できる最も関連性の高いデータに基づいている状態を確保するための 1 つの方法です。 この記事では、Studio で新しい Web サービスとして機械学習モデルを再トレーニングし、デプロイする方法について説明します。 従来の Web サービスを再トレーニングする方法については、[こちらのハウツー記事を参照](retrain-classic-web-service.md)してください。
+再トレーニングは、機械学習モデルが正確であり、利用できる最も関連性の高いデータに基づいている状態を確保するための 1 つの方法です。 この記事では、Studio (クラシック) で新しい Web サービスとして機械学習モデルを再トレーニングし、デプロイする方法について説明します。 従来の Web サービスを再トレーニングする方法については、[こちらのハウツー記事を参照](retrain-classic-web-service.md)してください。
 
-この記事では、予測 Web サービスが既にデプロイされていることを前提としています。 予測 Web サービスをまだ用意していない場合は、[Studio Web サービスをデプロイする方法に関するこちらの記事](publish-a-machine-learning-web-service.md)を参照してください。
+この記事では、予測 Web サービスが既にデプロイされていることを前提としています。 予測 Web サービスをまだ用意していない場合は、[Studio (クラシック) Web サービスをデプロイする方法に関するこちらの記事](deploy-a-machine-learning-web-service.md)を参照してください。
 
 次の手順に従って、機械学習の新しい Web サービスを再トレーニングし、デプロイします。
 

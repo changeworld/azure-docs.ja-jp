@@ -1,32 +1,34 @@
 ---
-title: オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
+title: Azure Site Recovery を使用した Hyper-V VM から Azure へのディザスター リカバリーのサポート
 description: Azure Site Recovery を使用して、Azure への Hyper-V VM のディザスター リカバリーを行う場合にサポートされるコンポーネントと要件の概要について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 784bf15a58e25ba4cba18494adc295343d0c175a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098888"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620834"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、オンプレミス Hyper-V VM の Azure へのディザスター リカバリーを行う場合にサポートされるコンポーネントと設定の概要について説明します。
 
+> [!WARNING]
+> SCVMM 構成をアカウントに使用する ASR のサポートはまもなく非推奨になるため、次に進む前に[非推奨](scvmm-site-recovery-deprecation.md)の詳細をお読みになることをお勧めします。
+
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
 **シナリオ** | **詳細**
 --- | ---
-Hyper-V (Virtual Machine Manager あり) | System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](hyper-v-vmm-disaster-recovery.md)を参照してください。
+Hyper-V (Virtual Machine Manager あり) <br> **このシナリオは廃止過程にあります。** <br>| System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](hyper-v-vmm-disaster-recovery.md)を参照してください。
 Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって管理されていない Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。
-
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
 
@@ -133,7 +135,7 @@ geo 冗長ストレージ | はい | はい
 Premium Storage | はい | はい
 インポート/エクスポート サービス | いいえ | いいえ
 ファイアウォールが有効になっている Azure ストレージ アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
-ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure ストレージ アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
+ストレージ アカウントの変更 | No. レプリケーションを有効にすると、ターゲット Azure ストレージ アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能

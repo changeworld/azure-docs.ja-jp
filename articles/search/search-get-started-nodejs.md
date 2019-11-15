@@ -2,19 +2,19 @@
 title: クイック スタート:REST API を使用して Node.js で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: JavaScript で作成、データの読み込み、クエリを実行する方法を説明する Azure Cognitive Search 用 Node.js サンプル。
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 20a5af5ac7163c182ea01a9a9442d3c99614442d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8b7308b5289ba747dba90716b495ca1ba6afb209
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787443"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719990"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>クイック スタート:REST API を使用して Node.js で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -680,7 +680,7 @@ async queryAsync(searchTerm) {
 
 このサンプルでは、Azure Cognitive Search インデックスの作成とクエリ実行の基礎を説明するうえで十分な、少量のホテル データを使用しています。
 
-検索サービスの構成、URL、基本的な HTTP 要求は、**AzureSearchClient** クラスによってカプセル化されています。 **index.js** ファイルでは、Azure Cognitive Search サービスの構成データ、およびインデックス化のためにアップロードするホテル データを読み込んでいます。また、その `run` 関数でさまざまな操作を指示および実行しています。
+検索サービスの構成、URL、基本的な HTTP 要求は、**AzureSearchClient** クラスによってカプセル化されています。 **index.js** ファイルでは、Azure Cognitive Search サービスの構成データ、およびインデックス作成のためにアップロードするホテル データを読み込んでいます。また、その `run` 関数でさまざまな操作を指示および実行しています。
 
 `run` 関数の全動作は、Azure Cognitive Search インデックスを削除し (存在する場合)、インデックスを作成してデータを追加し、いくつかのクエリを実行することです。  
 

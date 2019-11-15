@@ -1,21 +1,22 @@
 ---
-title: チュートリアル:Azure SQL Data Warehouse で Azure Functions を使用してコンピーティングを管理する| Microsoft Docs
+title: チュートリアル:Azure Functions を使用してコンピューティングを管理する
 description: Azure Functions を使用してデータ ウェアハウスのコンピューティングを管理する方法。
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 04/27/2018
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083863"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693011"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse で Azure Functions を使用してコンピューティング リソースを管理します。
 
@@ -53,7 +54,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
    ![関数の統合を選択](media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. この時点で表示される値は、 *%ScaleDownTime%* と *%ScaleUpTime%* のどちらかです。 これらの値は、[[アプリケーション設定]][Application Settings] に定義された値に基づくスケジュールであることを示します。 差し当たり、この値は無視してかまいません。以降の手順に基づき、必要な時刻に合わせてスケジュールを変更してください。
+3. この時点で表示される値は、 *%ScaleDownTime%* と *%ScaleUpTime%* のどちらかです。 これらの値は、スケジュールが [[アプリケーション設定]][Application Settings] に定義された値に基づいていることを示します。 差し当たり、この値は無視してかまいません。以降の手順に基づき、必要な時刻に合わせてスケジュールを変更してください。
 
 4. SQL Data Warehouse のスケールアップ頻度を表す時刻 (CRON 式) をスケジュール領域に追加します。 
 

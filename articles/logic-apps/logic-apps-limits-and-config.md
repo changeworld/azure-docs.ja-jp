@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: e2b866ddd888261e7d8817c73952d4830a4f8147
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cd7b8c3de46cb88833f27cbebb7d07f944a711e4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464009"
+ms.locfileid: "73580835"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
-この記事では、Azure Logic Apps で自動ワークフローを作成および実行するための制限と構成の詳細について説明します。 Microsoft Flow については、「[Limits and configuration in Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config)」をご覧ください。
+この記事では、Azure Logic Apps で自動ワークフローを作成および実行するための制限と構成の詳細について説明します。 Power Automate については、[Power Automate の制限と構成](https://docs.microsoft.com/flow/limits-and-config)に関するページを参照してください。
 
 <a name="definition-limits"></a>
 
@@ -267,7 +267,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 着信および発信で Azure Logic Apps が使用する IP アドレスは、ご利用のロジック アプリが置かれているリージョンによって異なります。 同じリージョン内の "*すべての*" ロジック アプリは、同じ IP アドレス範囲を使用します。
 
 > [!NOTE]
-> **HTTP** 要求や **HTTP + OpenAPI** 要求など、一部の Microsoft Flow 呼び出しは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Microsoft Flow によって使用される IP アドレスについて詳しくは、[Microsoft Flow での制限事項と構成](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
+> **HTTP** 要求や **HTTP + OpenAPI** 要求など、一部の Power Automate 呼び出しは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Power Automate によって使用される IP アドレスについて詳しくは、[Power Automate での制限事項と構成](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
 
 * ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在する場所に基づいて、Logic Apps サービスで使用される*すべて*の[着信](#inbound) IP アドレス*と*[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**受信**と**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
 

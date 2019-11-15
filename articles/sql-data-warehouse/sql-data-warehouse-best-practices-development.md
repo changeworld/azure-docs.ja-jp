@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse の開発のベスト プラクティス | Microsoft Docs
+title: 開発のベスト プラクティス
 description: Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,32 +10,39 @@ ms.subservice: development
 ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 7e0ae5e6159ae0ab4d098d717f433d2ab63770d4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3a75be7eef69acb499222b39bc4f59962462b493
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "68479733"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685896"
 ---
 # <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の開発のベスト プラクティス
 この記事では、独自のデータ ウェアハウス ソリューションを開発するにあたってのガイダンスとベスト プラクティスについて説明します。 
 
+## <a name="tune-query-performance-with-new-product-enhancements"></a>新しい製品の機能強化でクエリのパフォーマンスを調整する  
+- [具体化されたビューを使用したパフォーマンスのチューニング](https://docs.microsoft.com/azure/sql-data-warehouse/performance-tuning-materialized-views)
+- [順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](https://docs.microsoft.com/azure/sql-data-warehouse/performance-tuning-ordered-cci)
+- [結果セットのキャッシュを使用したパフォーマンスのチューニング](https://docs.microsoft.com/azure/sql-data-warehouse/performance-tuning-result-set-caching)
+
 ## <a name="reduce-cost-with-pause-and-scale"></a>一時停止とスケールでコストを削減する
 一時停止とスケーリングを通じてコストを削減する方法については、[コンピューティングの管理](sql-data-warehouse-manage-compute-overview.md)に関するページを参照してください。 
 
-
 ## <a name="maintain-statistics"></a>統計を管理する
-毎日または各読み込みの後に必ず統計を更新します。  パフォーマンスと統計を作成および更新するコストの間には常にトレードオフの関係が存在します。 すべての統計を管理するのは時間がかかりすぎる場合は、統計を作成する列や頻繁に更新する列を限定することをお勧めします。  たとえば、新しい値が毎日追加される日付列を更新します。 **結合に使用されている列、WHERE 句で使用されている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。**
+列の統計を自動的に検出して作成するように、Azure SQL Data Warehouse を構成できます。  オプティマイザーによって作成されたクエリ プランの有効性は、使用可能な統計によって決まります。  ご使用のデータベースに対して AUTO_CREATE_STATISTICS を有効にし、クエリで使用されている列の統計が確実に最新の状態になるように、統計を毎日または読み込みのたびに更新することをお勧めします。 
+
+すべての統計を更新するのに時間がかかりすぎる場合は、統計を頻繁に更新する必要がある列を限定することをお勧めします。 たとえば、新しい値が毎日追加される日付列を更新します。 **結合に使用されている列、WHERE 句で使用されている列、および GROUP BY に含まれている列に関する統計を更新すると、最も大きなメリットが得られます。**
 
 [テーブル統計の管理][Manage table statistics]、[CREATE STATISTICS][CREATE STATISTICS]、[UPDATE STATISTICS][UPDATE STATISTICS] に関するページもご覧ください。
 
 ## <a name="hash-distribute-large-tables"></a>ハッシュで大規模なテーブルを分散させる
-既定では、テーブルはラウンド ロビン分散です。  そのため、ユーザーはテーブルの分散方法を決定することなくテーブルの作成を簡単に開始できます。  ラウンド ロビン テーブルは一部のワークロードでは十分なパフォーマンスを示しますが、多くの場合、分散列を選択すると、パフォーマンスが大幅に向上します。  列で分散したテーブルのパフォーマンスがラウンド ロビン テーブルをはるかに上回る最も一般的な例としては、2 つの大規模なファクト テーブルが結合されている場合が挙げられます。  たとえば、orders テーブルが order_id で分散されており、transactions テーブルも order_id で分散されている場合に、orders テーブルを transactions テーブルに order_id で結合すると、このクエリはパススルー クエリになり、データの移動処理が行われなくなります。  手順が減るため、クエリは高速になります。  また、データの移動の減少もクエリの高速化に貢献します。  ここでは、大まかにのみ説明します。 分散テーブルを読み込む場合は、受信データを分散キーで並べ替えないでください。読み込みが遅くなります。  分散列を選択するとパフォーマンスがどのように向上するのかや、CREATE TABLES ステートメントの WITH 句で分散テーブルを定義する方法の詳細については、次のリンクを参照してください。
+既定では、テーブルはラウンド ロビン分散です。  この設計により、ユーザーはテーブルの分散方法を決定することなくテーブルの作成を簡単に開始できます。  ラウンド ロビン テーブルは一部のワークロードでは十分なパフォーマンスを示しますが、多くの場合、分散列を選択すると、パフォーマンスが大幅に向上します。  列で分散したテーブルのパフォーマンスがラウンド ロビン テーブルをはるかに上回る最も一般的な例としては、2 つの大規模なファクト テーブルが結合されている場合が挙げられます。  たとえば、orders テーブルが order_id で分散されており、transactions テーブルも order_id で分散されている場合に、orders テーブルを transactions テーブルに order_id で結合すると、このクエリはパススルー クエリになり、データの移動処理が行われなくなります。  手順が減るため、クエリは高速になります。  また、データの移動の減少もクエリの高速化に貢献します。  ここでは、大まかにのみ説明します。 分散テーブルを読み込む場合は、受信データを分散キーで並べ替えないでください。読み込みが遅くなります。  分散列を選択した場合にパフォーマンスが向上するしくみや、CREATE TABLE ステートメントの WITH 句で分散テーブルを定義する方法の詳細については、次のリンクを参照してください。
 
 [テーブルの概要][Table overview]、[テーブル分散][Table distribution]、[テーブル分散の選択][Selecting table distribution]、[CREATE TABLE][CREATE TABLE]、[CREATE TABLE AS SELECT][CREATE TABLE AS SELECT] に関するページもご覧ください。
 
 ## <a name="do-not-over-partition"></a>パーティション分割しすぎないようにする
-データをパーティション分割すると、パーティション切り替えを利用してデータを管理したり、パーティションを除外してスキャンを最適化したりできるため、非常に有用ですが、パーティションが多すぎると、クエリの速度が低下する場合があります。  多くの場合、高い粒度でパーティション分割する戦略は、SQL Server では効果的ですが、SQL Data Warehouse では効果的ではありません。  パーティションが多すぎると、各パーティションの行数が 100 万を下回る場合に、クラスター化列ストア インデックスの効果が減少する可能性もあります。  SQL Data Warehouse では、バックグラウンドでデータを 60 個のデータベースにパーティション分割します。そのため、パーティションが 100 個あるテーブルを作成すると、実質的にはパーティションが 6000 個になることに留意してください。  ワークロードはそれぞれに異なるため、パーティション分割を試して、自分のワークロードに最適な数を判断することをお勧めします。  SQL Server の場合よりも粒度を下げることを検討してください。  たとえば、日単位ではなく、週単位や月単位のパーティションを使用します。
+データをパーティション分割すると、パーティション切り替えを利用してデータを管理したり、パーティションを除外してスキャンを最適化したりできるため、有用ですが、パーティションが多すぎると、クエリの速度が低下する場合があります。  多くの場合、高い粒度でパーティション分割する戦略は、SQL Server では効果的ですが、SQL Data Warehouse では効果的ではありません。  パーティションが多すぎると、各パーティションの行数が 100 万を下回る場合に、クラスター化列ストア インデックスの効果が減少する可能性もあります。  SQL Data Warehouse では、バックグラウンドでデータを 60 個のデータベースにパーティション分割します。そのため、パーティションが 100 個あるテーブルを作成すると、実質的にはパーティションが 6000 個になることに留意してください。  ワークロードはそれぞれに異なるため、パーティション分割を試して、自分のワークロードに最適な数を判断することをお勧めします。  SQL Server の場合よりも粒度を下げることを検討してください。  たとえば、日単位ではなく、週単位や月単位のパーティションを使用します。
 
 [テーブル パーティション][Table partitioning]
 
@@ -59,7 +66,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 [テーブル インデックス][Table indexes]、[列ストア インデックス][Columnstore indexes guide]、[列ストア インデックスの再構築][Rebuilding columnstore indexes]に関するページもご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-この記事で目的のトピックが見つからない場合は、ページの左側にある [Search for docs] を使用して、すべての Azure SQL Data Warehouse ドキュメントで検索を実行してみてください。  [Azure SQL Data Warehouse フォーラム][Azure SQL Data Warehouse MSDN Forum]は、他のユーザーや SQL Data Warehouse 製品グループに質問できる場所です。  Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、 [Azure SQL Data Warehouse Stack Overflow フォーラム][Azure SQL Data Warehouse Stack Overflow Forum]も用意しています。
+この記事で目的のトピックが見つからない場合は、ページの左側にある [Search for docs] を使用して、すべての Azure SQL Data Warehouse ドキュメントを検索してみてください。  [Azure SQL Data Warehouse フォーラム][Azure SQL Data Warehouse MSDN Forum]は、他のユーザーや SQL Data Warehouse 製品グループに質問できる場所です。  Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、 [Azure SQL Data Warehouse Stack Overflow フォーラム][Azure SQL Data Warehouse Stack Overflow Forum]も用意しています。
 
 最後に、 [Azure SQL Data Warehouse のフィードバック][Azure SQL Data Warehouse Feedback] ページを使用して、機能に関するご要望を是非お寄せください。  要望の追加や他の要求への投票は、機能の優先順位を決める際に役立ちます。
 

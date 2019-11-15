@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 10/04/2019
 ms.author: danlep
-ms.openlocfilehash: 16ad37eaa50f0c3825d131338cc4a0abdc369978
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 4cb678e1ffa73731c6c1444f87fec588da7ddfbf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262874"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681824"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>サービス プリンシパルによる Azure Container Registry 認証
 
@@ -65,13 +65,13 @@ Azure CLI の以前のサンプル スクリプトを GitHub 上で検索でき�
 
 ### <a name="use-credentials-with-azure-services"></a>Azure サービスで資格情報を使用する
 
-サービス プリンシパルの資格情報は、Azure コンテナー レジストリに対して認証を行うことができるあらゆる Azure サービスから使用できます。  さまざまなシナリオで、レジストリの管理者の資格情報の代わりにサービス プリンシパルの資格情報を使用します。
+サービス プリンシパルの資格情報は、Azure コンテナー レジストリに対して認証を行うあらゆる Azure サービスから使用できます。  さまざまなシナリオで、レジストリの管理者の資格情報の代わりにサービス プリンシパルの資格情報を使用します。
 
 たとえば、その資格情報を使用して Azure コンテナー レジストリから [Azure Container Instances](container-registry-auth-aci.md) にイメージをプルします。
 
 ### <a name="use-with-docker-login"></a>Docker ログインで使用する
 
-サービス プリンシパルを使用して `docker login` を実行することもできます。 次の例では、サービス プリンシパルのアプリケーション ID が環境変数 `$SP_APP_ID` に、パスワードが変数 `$SP_PASSWD` に渡されます。 Docker 資格情報の管理のベスト プラクティスについては、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
+サービス プリンシパルを使用して `docker login` を実行できます。 次の例では、サービス プリンシパルのアプリケーション ID が環境変数 `$SP_APP_ID` に、パスワードが変数 `$SP_PASSWD` に渡されます。 Docker 資格情報の管理のベスト プラクティスについては、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
 
 ```bash
 # Log in to Docker with service principal credentials
@@ -79,6 +79,26 @@ docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
 ログインすると、Docker によって資格情報がキャッシュされます。
+
+### <a name="use-with-certificate"></a>証明書と共に使用する
+
+サービス プリンシパルに証明書を追加した場合は、証明書ベースの認証を使用して Azure CLI にサインインし、[az acr login][az-acr-login] コマンドを使用してレジストリにアクセスできます。 パスワードの代わりに証明書をシークレットとして使用すると、CLI を使用するときのセキュリティが強化されます。 
+
+[サービス プリンシパルを作成](/cli/azure/create-an-azure-service-principal-azure-cli)するときに、自己署名証明書を作成できます。 または、既存のサービス プリンシパルに 1 つ以上の証明書を追加します。 たとえば、この記事のスクリプトの 1 つを使用して、レジストリからイメージをプルまたはプッシュする権限を持つサービス プリンシパルを作成または更新する場合は、[az ad sp credential reset][az-ad-sp-credential-reset] コマンドを使用して証明書を追加します。
+
+証明書と共にサービス プリンシパルを使用して [Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal) にサインインするには、証明書を PEM 形式にして、秘密キーを含める必要があります。 証明書が必要な形式ではない場合は、`openssl` などのツールを使用して変換します。 [az login][az-login] を実行し、サービス プリンシパルを使用して CLI にサインインする場合は、サービス プリンシパルのアプリケーション ID と Active Directory テナント ID も指定します。 これらの値を環境変数として指定する例を次に示します。
+
+```azurecli
+az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
+```
+
+次に、[az acr login][az-acr-login] を実行し、レジストリによる認証を受けます。
+
+```azurecli
+az acr login --name myregistry
+```
+
+CLI では、`az login` を実行したときに作成されたトークンが使用され、セッションがレジストリによる認証を受けます。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -92,3 +112,5 @@ docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 
 <!-- LINKS - Internal -->
 [az-acr-login]: /cli/azure/acr#az-acr-login
+[az-login]: /cli/azure/reference-index#az-login
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#[az-ad-sp-credential-reset]

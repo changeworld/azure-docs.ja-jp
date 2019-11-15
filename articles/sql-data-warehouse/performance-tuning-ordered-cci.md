@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse の順序指定クラスター化列ストア インデックスを使用したパフォーマンス チューニング | Microsoft Docs
+title: 順序指定クラスター化列ストア インデックスを使用したパフォーマンス チューニング
 description: 順序指定クラスター化列ストア インデックスを使用したクエリ パフォーマンスの向上に関して知っておくべき推奨事項と考慮事項。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595361"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685989"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>順序指定クラスター化列ストア インデックスを使用したパフォーマンス チューニング  
 
@@ -43,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> 順序指定 CCI テーブルで、DML またはデータ読み込みの操作によって作成された新しいデータは自動的に並べ替えられません。  ユーザーは、順序指定 CCI を再構築して、テーブ内のすべてのデータを並べ替えることができます。  Azure SQL Data Warehouse で、列ストア インデックスの再構築はオフライン操作です。  パーティション テーブルの場合、再構築は一度に 1 つのパーティションずつ実行されます。  再構築されるパーティション内のデータは "オフライン" であり、そのパーティションの再構築が完了するまで使用できません。 
+> 順序指定 CCI テーブルで、DML またはデータ読み込み操作によって同一バッチから作成された新しいデータは、そのバッチの範囲内で並べ替えられます。テーブル内の全データを対象としたグローバルな並べ替えは実行されません。  ユーザーは、順序指定 CCI を再構築して、テーブ内のすべてのデータを並べ替えることができます。  Azure SQL Data Warehouse で、列ストア インデックスの再構築はオフライン操作です。  パーティション テーブルの場合、再構築は一度に 1 つのパーティションずつ実行されます。  再構築されるパーティション内のデータは "オフライン" であり、そのパーティションの再構築が完了するまで使用できません。 
 
 ## <a name="query-performance"></a>クエリ パフォーマンス
 
@@ -112,12 +113,12 @@ OPTION (MAXDOP 1);
 - Azure SQL Data Warehouse テーブルに読み込む前に、並べ替えキー順にデータを事前に並べ替える。
 
 
-次に示すのは、上記の推奨事項に従って、重複するセグメントの数が 0 個の順序指定 CCI テーブルの分散の例です。 順序指定 CCI テーブルは、MAXDOP 1 と xlargerc を使用して 20GB のヒープ テーブルから CTAS を介して DWU1000c データベースに作成されます。  CCI は、重複なしで BIGINT 列で順序付けされます。  
+次に示すのは、上記の推奨事項に従って、重複するセグメントの数が 0 個の順序指定 CCI テーブルの分散の例です。 順序指定 CCI テーブルは、MAXDOP 1 と xlargerc を使用して 20 GB のヒープ テーブルから CTAS を介して DWU1000c データベースに作成されます。  CCI は、重複なしで BIGINT 列で順序付けされます。  
 
 ![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>大きなテーブルでの順序指定 CCI の作成
-順序指定 CCI の作成はオフライン操作です。  パーティションがないテーブルの場合、順序指定 CCI の作成プロセスが完了するまで、ユーザーはデータにアクセスできません。   パーティション テーブルの場合、エンジンはパーティションごとに順序指定 CCI パーティションを作成するため、ユーザーは引き続き、順序指定 CCI の作成が処理中でないパーティションのデータにアクセスできます。   このオプションを使用すると、大きなテーブルでの順序指定 CCI の作成時に、ダウンタイムを最小限に抑えることができます。 
+順序指定 CCI の作成はオフライン操作です。  パーティションがないテーブルの場合、順序指定 CCI の作成プロセスが完了するまで、ユーザーはデータにアクセスできません。   パーティション テーブルでは、エンジンによってパーティション単位で順序指定 CCI パーティションが作成されるため、ユーザーは、順序指定 CCI の作成が処理中ではないパーティションのデータにアクセスできます。   このオプションを使用すると、大きなテーブルでの順序指定 CCI の作成時に、ダウンタイムを最小限に抑えることができます。 
 
 1.  ターゲットとなる大きなテーブル (Table_A) にパーティションを作成します。
 2.  テーブルとパーティションのスキーマが Table A と同じ、空の順序指定 CCI テーブル (Table_B) を作成します。

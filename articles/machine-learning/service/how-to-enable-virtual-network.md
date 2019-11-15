@@ -6,18 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
+ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 08/05/2019
-ms.openlocfilehash: 9299959eef24f6890218dc2d2aa733cc227e1a32
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/25/2019
+ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162578"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796763"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Virtual Network (VNet) 内の Azure Machine Learning で実験/トレーニング ジョブと推論/スコアリング ジョブを安全に実行する方法について説明します。
 
@@ -26,6 +27,12 @@ ms.locfileid: "71162578"
 Azure Machine Learning は、コンピューティング リソースに関して他の Azure サービスに依存します。 コンピューティング リソース ([コンピューティング先](concept-compute-target.md)) は、モデルのトレーニングとデプロイに使用されます。 ターゲットは、仮想ネットワーク内に作成することができます。 たとえば、Microsoft Data Science Virtual Machine を使用してモデルをトレーニングしてから、そのモデルを Azure Kubernetes Service (AKS) にデプロイすることができます。 仮想ネットワークの詳細については、[Azure Virtual Network の概要](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)に関するページを参照してください。
 
 また、この記事では "*セキュリティの詳細設定*" について詳しく説明します。この情報は、基本的または試験的なユースケースには必要ありません。 この記事の一部のセクションでは、さまざまなシナリオに応じた構成情報を記載しています。 手順を順番に実行したり、全部を漏れなく完了したりする必要はありません。
+
+> [!TIP]
+> 特に呼び出される場合を除いて、機械学習パイプラインと、スクリプト実行などのパイプライン以外のワークフローの両方で、仮想ネットワーク内のストレージ アカウントやコンピューティング先などのリソースを使用できます。
+
+> [!WARNING]
+> Microsoft は、仮想ネットワーク内のリソースでの Azure Machine Learning デザイナーまたは自動機械学習 (Studio から) の使用をサポートしていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +46,9 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 
 仮想ネットワークでワークスペース用の Azure ストレージ アカウントを使用するには、次のようにします。
 
-1. 仮想ネットワークの背後にコンピューティング インスタンス (Machine Learning コンピューティング インスタンスなど) を作成するか、ワークスペースにコンピューティング インスタンス (HDInsight クラスター、仮想マシン、Azure Kubernetes Service クラスターなど) をアタッチします。 コンピューティング インスタンスは、実験またはモデルのデプロイに使用できます。
+1. 仮想ネットワークの背後にコンピューティング リソース (Machine Learning クラスターなど) を作成するか、ワークスペースにコンピューティング リソース (HDInsight クラスター、仮想マシン、Azure Kubernetes Service クラスターなど) をアタッチします。 コンピューティング リソースは、実験またはモデル デプロイに使用できます。
 
-   詳細については、この記事の「[Machine Learning コンピューティング インスタンスを使用する](#amlcompute)」、「[仮想マシンまたは HDInsight クラスターを使用する](#vmorhdi)」、および「[Azure Kubernetes Service を使用する](#aksvnet)」のセクションを参照してください。
+   詳細については、この記事の「[Machine Learning コンピューティングを使用する](#amlcompute)」、「[仮想マシンまたは HDInsight クラスターを使用する](#vmorhdi)」、および「[Azure Kubernetes Service を使用する](#aksvnet)」の各セクションを参照してください。
 
 1. Azure portal で、ワークスペースにアタッチされているストレージにアクセスします。
 
@@ -53,10 +60,10 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 
 1. __[ファイアウォールと仮想ネットワーク]__ ページで、次のようにします。
     - __[選択されたネットワーク]__ を選択します。
-    - __[仮想ネットワーク]__ で、 __[Add existing virtual network]\(既存の仮想ネットワークを追加\)__ というリンクを選択します。 この操作により、コンピューティング インスタンスが置かれている仮想ネットワークが追加されます (手順 1. 参照)。
+    - __[仮想ネットワーク]__ で、 __[Add existing virtual network]\(既存の仮想ネットワークを追加\)__ というリンクを選択します。 この操作により、コンピューティングが置かれている仮想ネットワークが追加されます (手順 1. 参照)。
 
         > [!IMPORTANT]
-        > ストレージ アカウントは、トレーニングまたは推論に使用されるコンピューティング インスタンスと同じ仮想ネットワーク内に存在する必要があります。
+        > ストレージ アカウントは、トレーニングまたは推論に使用されるクラスターと同じ仮想ネットワーク内に存在する必要があります。
 
     - __[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]__ チェック ボックスをオンにします。
 
@@ -66,12 +73,6 @@ Azure Machine Learning は、コンピューティング リソースに関し�
     > ストレージ アカウントへのアクセスを有効にするには、*開発クライアントの Web ブラウザーから*ストレージ アカウントの __[ファイアウォールと仮想ネットワーク]__ にアクセスします。 次に、 __[クライアント IP アドレスを追加する]__ チェック ボックスを使用して、クライアントの IP アドレスを __[アドレス範囲]__ に追加します。 また、 __[アドレス範囲]__ フィールドを使用して、開発環境の IP アドレスを手動で入力することもできます。 クライアントの IP アドレスが追加されると、SDK を使用してストレージ アカウントにアクセスできるようになります。
 
    [![Azure portal 内の [ファイアウォールと仮想ネットワーク] ウィンドウ](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
-
-1. 実験の__実行中に__、実験コードで、Azure Blob Storage を使用するように実行構成を変更します。
-
-    ```python
-    run_config.source_directory_data_store = "workspaceblobstore"
-    ```
 
 > [!IMPORTANT]
 > Azure Machine Learning 用の "_既定のストレージ アカウント_" と、"_既定以外のストレージ アカウント_" は、どちらも仮想ネットワークに配置できます。
@@ -98,25 +99,25 @@ Azure Machine Learning では、ワークスペースに関連付けられてい
 
 1. __[ファイアウォールと仮想ネットワーク]__ ページで、次のようにします。
     - __[許可するアクセス元]__ の __[選択されたネットワーク]__ を選択します。
-    - __[仮想ネットワーク]__ で __[Add existing virtual network]\(既存の仮想ネットワークを追加\)__ を選択して、実験用のコンピューティング インスタンスが置かれている仮想ネットワークを追加します。
+    - __[仮想ネットワーク]__ で、 __[既存の仮想ネットワークを追加]__ を選択して、実験のコンピューティングが存在する仮想ネットワークを追加します。
     - __[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\)__ で、 __[はい]__ を選択します。
 
    [![[キー コンテナー] ウィンドウの [ファイアウォールと仮想ネットワーク] セクション](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
 <a id="amlcompute"></a>
 
-## <a name="use-a-machine-learning-compute-instance"></a>Machine Learning コンピューティング インスタンスを使用する
+## <a name="use-a-machine-learning-compute"></a>Machine Learning コンピューティングを使用する
 
-仮想ネットワーク内で Azure Machine Learning コンピューティング インスタンスを使用するには、次のネットワーク要件を満たす必要があります。
+仮想ネットワーク内で Azure Machine Learning コンピューティング クラスターを使用するには、次のネットワーク要件を満たす必要があります。
 
 > [!div class="checklist"]
 > * 仮想ネットワークは Azure Machine Learning のワークスペースと同じサブスクリプションとリージョンになければなりません。
-> * コンピューティング クラスターに指定されたサブネットには、クラスターの対象となる VM 数に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、クラスターは部分的に割り当てられます。
+> * コンピューティング クラスターに指定されたサブネットには、対象となる VM 数に対応できる十分な未割り当て IP アドレスが必要です。 サブネットに十分な未割り当て IP アドレスがない場合、コンピューティング クラスターは部分的に割り当てられます。
 > * 仮想ネットワークのサブスクリプションまたはリソース グループに対するセキュリティ ポリシーまたはロックで、仮想ネットワークを管理するためのアクセス許可が制限されているかどうかを確認します。 トラフィックを制限することで仮想ネットワークをセキュリティで保護する予定の場合は、コンピューティング サービス用にいくつかのポートを開いたままにしてください。 詳細については、「[必須ポート](#mlcports)」のセクションをご覧ください。
 > * 複数のコンピューティング クラスターを 1 つの仮想ネットワークに配置する場合は、1 つまたは複数のリソースのクォータの増加を要求する必要がある場合があります。
-> * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング インスタンスと同じ仮想ネットワークに存在する必要があります。
+> * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング クラスターと同じ仮想ネットワークに存在する必要があります。
 
-Azure Machine Learning コンピューティング インスタンスにより、仮想ネットワークが含まれているリソース グループに追加のネットワーク リソースが自動的に割り当てられます。 各コンピューティング クラスターについて、サービスは次のリソースを割り当てます。
+Machine Learning コンピューティング クラスターにより、仮想ネットワークが含まれているリソース グループに追加のネットワーク リソースが自動的に割り当てられます。 各コンピューティング クラスターについて、サービスは次のリソースを割り当てます。
 
 * 1 つのネットワーク セキュリティ グループ
 * 1 つのパブリック IP アドレス
@@ -185,7 +186,7 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
 
 詳細については、「[仮想ネットワーク内に Azure Batch プールを作成する](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)」を参照してください。
 
-### <a name="create-a-machine-learning-compute-cluster-in-a-virtual-network"></a>仮想ネットワーク内に Machine Learning コンピューティング クラスターを作成する
+### <a name="create-a-compute-cluster-in-a-virtual-network"></a>仮想ネットワーク内にコンピューティング クラスターを作成する
 
 Machine Learning コンピューティング クラスターを作成するには、次のようにします。
 
@@ -244,6 +245,7 @@ except ComputeTargetException:
 作成プロセスが完了したら、実験でクラスターを使用してモデルをトレーニングします。 詳細については、[トレーニング用のコンピューティング ターゲットの選択と使用](how-to-set-up-training-targets.md)に関するページをご覧ください。
 
 <a id="vmorhdi"></a>
+
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>仮想マシンまたは HDInsight クラスターを使用する
 

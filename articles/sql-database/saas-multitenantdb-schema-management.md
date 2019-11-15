@@ -1,5 +1,5 @@
 ---
-title: マルチテナント アプリで Azure SQL Database スキーマを管理する | Microsoft Docs
+title: マルチテナント アプリでのスキーマの管理
 description: Azure SQL Database を使用するマルチテナント アプリケーションで複数のテナントのスキーマを管理します
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: db6f471438324e984434704a2cab01d57c800ba5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570262"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822120"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>共有マルチテナント SQL データベースを使用している SaaS アプリケーションでのスキーマの管理
 

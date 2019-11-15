@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 09/14/2019
-ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 11/04/2019
+ms.openlocfilehash: f1b061e92ce0650da4d5b95643eb6e9df917e3b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514939"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671549"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -85,7 +85,7 @@ ML プロジェクトの初期段階では、Azure ワークスペースとリ�
 
 また、ステップの出力を再利用することもできます (選択した場合)。 再利用を可能性として指定し、再計算をトリガーするアップストリームの依存関係がない場合、パイプライン サービスではステップの結果のキャッシュされたバージョンが使用されます。 このような再利用によって、開発時間が大幅に短縮されます。 複雑なデータ準備タスクがある場合は、そのタスクを必要以上に頻繁に再実行している可能性があります。 パイプラインを使用すると、その心配をしないで済みます。必要な場合にはステップが実行され、そうでない場合には実行されません。
 
-この依存関係の分析、オーケストレーション、およびアクティブ化はすべて、[Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)) オブジェクトをインスタンス化して `Experiment` に渡し、`submit()` を呼び出すときに、Azure Machine Learning によって処理されます。 
+この依存関係の分析、オーケストレーション、およびアクティブ化はすべて、[Pipeline](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) オブジェクトをインスタンス化して `Experiment` に渡し、`submit()` を呼び出すときに、Azure Machine Learning によって処理されます。 
 
 ### <a name="coordinating-the-steps-involved"></a>必要なステップの調整
 
@@ -105,13 +105,21 @@ ML プロジェクトの初期段階では、Azure ワークスペースとリ�
 
 ![パイプラインのステップ](media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
-## <a name="how-do-i-build-azure-ml-pipelines-using-the-python-sdk"></a>Python SDK を使用して Azure ML パイプラインを構築する方法
+## <a name="building-pipelines-with-the-python-sdk"></a>Python SDK を使用したパイプラインの構築
 
-[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) では、パイプラインは `azureml.pipeline.core` モジュールで定義されている Python オブジェクトです。 [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)) オブジェクトには、1 つ以上の [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep) オブジェクトの順序付けられたシーケンスが含まれています。 `PipelineStep` クラスは抽象であり、実際のステップは [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)、[PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep)、[DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) などのサブクラスになります。 [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep) クラスでは、パイプライン間で共有できる、再利用可能な一連のステップが保持されます。 `Pipeline` は `Experiment` の一部として実行されます。
+[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) では、パイプラインは `azureml.pipeline.core` モジュールで定義されている Python オブジェクトです。 [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) オブジェクトには、1 つ以上の [PipelineStep](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) オブジェクトの順序付けられたシーケンスが含まれています。 `PipelineStep` クラスは抽象であり、実際のステップは [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py)、[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)、[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) などのサブクラスになります。 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) クラスでは、パイプライン間で共有できる、再利用可能な一連のステップが保持されます。 `Pipeline` は `Experiment` の一部として実行されます。
 
 Azure ML パイプラインは、Azure Machine Learning ワークスペースに関連付けられています。パイプライン ステップは、そのワークスペース内で使用可能なコンピューティング ターゲットに関連付けられています。 詳細については、「[Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace)」または「[Azure Machine Learning でのコンピューティング先とは](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)」を参照してください。
 
 Azure Machine Learning では、コンピューティング ターゲットは ML フェーズが発生する環境です。 ソフトウェア環境には、リモート VM、Azure Machine Learning コンピューティング、Azure Databricks、Azure Batch などがあります。 また、ハードウェア環境は、GPU のサポート、メモリ、ストレージなどによって大きく異なる場合があります。 ステップごとにコンピューティング ターゲットを指定することができます。これにより、コストをきめ細かく制御できます。 プロジェクトの特定のアクション、データ ボリューム、パフォーマンスのニーズに応じて、より強力な (またはそれほど強力ではない) リソースを使用できます。 
+
+## <a name="building-pipelines-with-the-designer"></a>デザイナーを使用したパイプラインの構築
+
+ビジュアル デザイン サーフェスを好む開発者は、Azure Machine Learning デザイナーを使用してパイプラインを作成できます。 このツールにアクセスするには、ワークスペースのホームページで **[デザイナー]** を選択します。  デザイナーでは、デザイン サーフェスにステップをドラッグ アンド ドロップできます。 迅速に開発するために、さまざまな ML タスクで既存のモジュールを使用できます。既存のモジュールは、データ変換からアルゴリズム選択、さらにはトレーニングやデプロイまで、あらゆるものを対象としています。 または、Python スクリプトで定義されている独自のステップを組み合わせて、完全にカスタムのパイプラインを作成することもできます。
+
+パイプラインを視覚的にデザインすると、ステップの入力と出力が視覚的に表示されます。 データ接続をドラッグ アンド ドロップして、パイプラインのデータフローをすばやく理解し、変更することができます。
+ 
+![Azure Machine Learning デザイナーの例](./media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ### <a name="understanding-the-execution-graph"></a>実行グラフについて
 
@@ -159,7 +167,7 @@ pipeline_run.wait_for_completion()
 
 スニペットは、共通の Azure Machine Learning オブジェクト、`Workspace`、`Datastore`、[ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)、および `Experiment` で開始されます。 次に、コードによって `input_data` と `output_data` を保持するオブジェクトが作成されます。 配列 `steps` には、1 つの要素 (データ オブジェクトを使用して `compute_target` 上で実行する `PythonScriptStep`) が保持されます。 次に、このコードによって `Pipeline` オブジェクト自体がインスタンス化され、ワークスペースとステップの配列が渡されます。 `experiment.submit(pipeline)` を呼び出すと、Azure ML パイプラインの実行が開始されます。 `wait_for_completion()` を呼び出すと、パイプラインが終了するまでブロックされます。 
 
-## <a name="best-practices-when-choosing-to-use-azure-ml-pipelines"></a>Azure ML パイプラインの使用を選択する際のベスト プラクティス
+## <a name="best-practices-when-using-pipelines"></a>パイプラインを使用する際のベスト プラクティス
 
 ご覧のように、Azure ML パイプラインの作成は、スクリプトの開始よりも少し複雑です。 パイプラインでは、いくつかの Python オブジェクトを構成して作成する必要があります。 
 

@@ -4,36 +4,59 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 06/10/2019
+ms.date: 11/06/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c3bc596076f3ec4f9d41f0da819ddd386fee63c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: af9305aafc3a77df9d7c4cffa65f6c61c53ad8a4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811046"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715382"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
-[Azure Migrate](migrate-services-overview.md) を使用すると、サーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新機能について概要を説明します。
+[Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新機能について概要を説明します。
 
 
 
-## <a name="azure-migrate-new-version"></a>Azure Migrate の新しいバージョン
-
-Azure Migrate の新しいバージョンが、2019 年 7 月にリリースされました。 
-
-- **現在の (新しい) バージョン**: Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 
-- **前のバージョン**: 前バージョンの Azure Migrate (評価のサポート対象がオンプレミスの VMware VM のみ) を使用しているお客様の場合、今後は最新バージョンを使用してください。 前のバージョンでは、新しい Azure Migrate プロジェクトを作成したり、新しい検出を実行したりできなくなりました。 既存のプロジェクトには引き続きアクセスできます。 それを行うには、Azure portal の [すべてのサービス] で、Azure Migrate を検索します。 Azure Migrate の通知には、古い Azure Migrate プロジェクトにアクセスするためのリンクがあります。
+## <a name="update-november-2019"></a>更新 (2019 年 11 月)
 
 
-## <a name="azure-migrate-features"></a>Azure Migrate の機能
 
-新しいバージョンの Azure Migrate には、いくつかの新機能があります。
+Azure Migrate に次のいくつかの新機能が追加されました。
+
+> [!NOTE]
+> Azure Migrate ポータルでこれらの機能の一部がまだ表示されていない場合は、しばらくお待ちください。 来週あたりに表示されるようになります。
+
+- **物理サーバーの評価**。 既にサポートされている物理サーバーの移行に加えて、オンプレミスの物理サーバーの評価がサポートされるようになりました。
+- **インポートベースの評価**。 CSV ファイルで提供されるメタデータとパフォーマンス データを使用したコンピューターの評価がサポートされるようになりました。
+- **アプリケーションの検出**:Azure Migrate では、Azure Migrate アプライアンスを使用したアプリ、ロール、機能のアプリケーションレベルの検出がサポートされるようになりました。 この機能は現在、VMware VM でのみサポートされており、検出のみに制限されています (評価は現在サポートされていません)。 [詳細情報](how-to-discover-applications.md)
+- **依存関係のエージェントレスの視覚化**:依存関係の視覚化のためにエージェントを明示的にインストールする必要がなくなりました。 エージェントレスとエージェントベースの両方がサポートされるようになりました。
+- **仮想デスクトップ**:ISV ツールを使用して、オンプレミスの仮想デスクトップ インフラストラクチャ (VDI) を評価し、Azure の Windows Virtual Desktop に移行します。
+- **Web アプリ**:Web アプリの評価と移行に使用される Azure App Service Migration Assistant が Azure Migrate に統合されました。
+
+Azure Migrate に新しい評価ツールと移行ツールが追加されました。
+
+- **Rackware**: クラウドへの移行を支援します。
+- **Movere**: 評価を支援します。
+
+Azure Migrate での評価と移行については、ツールと ISV 製品の[詳細](migrate-services-overview.md)を参照してください。
+
+## <a name="release-version-july-2019"></a>リリース版 (2019 年 7 月)
+
+Azure Migrate の現在バージョンは、2019 年 7 月にリリースされました。 
+
+- **現在のバージョン**: Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 
+- **前のバージョン**: 前バージョンの Azure Migrate (評価のサポート対象がオンプレミスの VMware VM のみ) を使用しているお客様の場合、今後は最新バージョンを使用してください。 前のバージョンでは、新しい Azure Migrate プロジェクトを作成したり、新しい検出を実行したりできなくなりました。 既存のプロジェクトには引き続きアクセスできます。 それを行うには、Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。 Azure Migrate の通知には、古い Azure Migrate プロジェクトにアクセスするためのリンクがあります。
 
 
-- **統合された移行プラットフォーム**: Azure Migrate では、Azure への移行過程を一元化、管理、追跡するための、デプロイのフローとポータル エクスペリエンスが向上した、単一のポータルが提供されるようになりました。
+### <a name="azure-migrate-features"></a>Azure Migrate の機能
+
+現在のバージョンの Azure Migrate には、次のいくつかの新機能があります。
+
+
+- **統合された移行プラットフォーム**:Azure Migrate では、Azure への移行過程を一元化、管理、追跡するための、デプロイのフローとポータル エクスペリエンスが向上した、単一のポータルが提供されるようになりました。
 - **評価と移行のツール**: Azure Migrate では、ネイティブ ツールが提供され、他の Azure サービスおよび独立系ソフトウェア ベンダー (ISV) のツールが統合されます。 ISV の統合について、[詳しくはこちらをご覧ください](migrate-services-overview.md#isv-integration)。
 - **Azure Migrate の評価**: Azure Migrate Server Assessment ツールを使用すると、Azure への移行に関して VMware VM と Hyper-V VM を評価できます。 また、他の Azure サービスおよび ISV ツールを使用する移行についても評価できます。
 - **Azure Migrate の移行**: Azure Migrate Server Migration ツールを使用すると、オンプレミスの VMware VM と Hyper-V VM を、Azure だけでなく、物理サーバー、他の仮想化サーバー、プライベート/パブリッククラウド VM にも移行できます。 さらに、ISV ツールを使用して Azure に移行することもできます。

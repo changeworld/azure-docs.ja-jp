@@ -4,15 +4,16 @@ description: Azure Marketplace と Microsoft AppSource の統合ソリューシ�
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 8bffb2c71f5e07499338ea32e0c064392af81684
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706306"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818561"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
@@ -86,7 +87,7 @@ ms.locfileid: "71706306"
 
     * [ビジネスに関する意思決定ワークショップのディスカッション ガイド](https://aka.ms/AA5qicx)
     * [技術に関する意思決定ワークショップのディスカッション ガイド](https://aka.ms/AA5qid1)
-    * [クイック スタート ビデオ: ビジネスおよび技術に関するワークショップ](https://aka.ms/AA5qos9)
+    * [クイックスタート ビデオ:ビジネスおよび技術に関するワークショップ](https://aka.ms/AA5qos9)
 
 1. ビジネスおよび技術に関するワークショップで策定したプロジェクト計画とタイムラインを推進するために、クロスパートナーのプロジェクト マネージャーを特定します。
 

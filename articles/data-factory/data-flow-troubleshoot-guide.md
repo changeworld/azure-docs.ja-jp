@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory データ フローのトラブルシューティング | Microsoft Docs
+title: Azure Data Factory データ フローのトラブルシューティング
 description: Azure Data Factory でのデータ フローに関する問題のトラブルシューティングを行う方法について説明します。
 services: data-factory
 author: kromerm
@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 5cf4773ac781ae51a60ef7d987c3dc324c125d95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387723"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721352"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory データ フローのトラブルシューティング
 
@@ -67,6 +67,23 @@ ms.locfileid: "72387723"
 - **原因**:ソースまたはデータセットで定義されているものと同じ名前を持つテーブル名がターゲット データベースに既に存在する
 
 - **解決方法**:これから作成するテーブルの名前を変更する
+
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>エラー メッセージ:DF-SYS-01: com.microsoft.sqlserver.jdbc.SQLServerException:文字列データまたはバイナリ データが切り捨てられます。 
+
+- **現象**:SQL シンクにデータを書き込む場合、パイプラインの実行時にデータ フローが失敗し、切り捨てエラーが発生する可能性がある
+
+- **原因**:データ フローのフィールドのマップ先となっている SQL データベースの列に、値を格納できるだけの十分な幅がなく、SQL ドライバーがこのエラーをスローした
+
+- **解決方法**:派生列で ```left()``` を使用して文字列型の列のデータの長さを減らすか、["エラー行" のパターン](how-to-data-flow-error-rows.md)を実装する
+
+### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>エラー メッセージ:Spark 2.3 以降では、参照先の列が内部破損レコード列のみの場合に未加工の JSON ファイルや CSV ファイルからのクエリが許可されません。 
+
+- **現象**:JSON ソースからの読み取りが失敗する
+
+- **原因**:JSON ソースで 1 つのドキュメントが入れ子になった多数の行に分かれている場合に、その JSON ソースを対象として読み取りを実行すると、新しいドキュメントがどこから始まっており、前のドキュメントがどこで終わっているかを ADF (Spark 経由) が特定できません。
+
+- **解決方法**:JSON データセットを使用しているソース変換で [JSON 設定] を展開し、[単一のドキュメント] をオンにします。
+
 
 ## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス
 

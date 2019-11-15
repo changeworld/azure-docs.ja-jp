@@ -1,6 +1,6 @@
 ---
-title: コンシューマー グループを含むイベント ハブを作成する - Azure Event Hubs | Microsoft Docs
-description: イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
+title: クイック スタート:コンシューマー グループを含むイベント ハブを作成する - Azure Event Hubs
+description: クイック スタート:イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798
 ms.service: event-hubs
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 07/02/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 29e494b23176f9e936816a371a09e1c4ffeceae0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: b262f5f4122256a55c005002c4323205a5b564f0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538005"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717667"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してイベント ハブを作成する
 

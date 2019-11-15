@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse データ統合パートナー | Microsoft Docs
+title: データ統合パートナー
 description: Azure SQL Data Warehouse をサポートするデータ統合ソリューションを提供するサードパーティのパートナーの一覧。
 services: sql-data-warehouse
 author: mabasile-MSFT
@@ -10,12 +10,13 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 5593d6e392915448845adcac95da869e72a11310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e368894d7036d071285ebc7ba85056676d8d670d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873795"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692647"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL Data Warehouse データ統合パートナー
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事では、Azure SQL Data Warehouse をサポートする公式のデータ統合ソリューションを提供している Microsoft パートナー企業について説明します。
@@ -34,13 +35,14 @@ ms.locfileid: "65873795"
 | ![Segment][10] |**セグメント**<br>Segment は、さまざまなソースに由来する顧客データを有意義に活用できるデータ管理と分析のソリューションです。 より優れた意思決定、製品、およびエクスペリエンスを作り出すために、200 を超えるツールにデータを接続できます。 Segment では、組み込みのデータ コネクターを使用して、複数のデータ ソースを変換してユーザーのウェアハウスに読み込みます。|[製品ページ][segment_website]<br> |
 | ![Skyvia][11] |**Skyvia (データ統合)**<br>Skyvia のデータ統合は、データのインポートを自動化するウィザードを提供します。 このウィザードは、さまざまなソース (CRM、アプリケーション データベース、CSV ファイルなど) 間でのデータ移行を可能にします。 |[製品ページ][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>SnapLogic プラットフォームを利用すると、顧客は Microsoft Azure SQL Data Warehouse に出入りするデータをすばやく転送できます。 数百ものアプリケーション、サービス、および IoT シナリオを 1 つのソリューションに統合する機能を提供しています。|[製品ページ][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
+| ![StreamSets][15] |**StreamSets**<br>StreamSets は、DataOps 用のデータ統合プラットフォームを提供します。 これは、データを Azure SQL Data Warehouse に統合する、設計、デプロイ、運用の完全なライフサイクルを操作できるようにします。 ストリーミング、バッチ、または変更されたデータ キャプチャ データ配信方法を使用して、ウェアハウス間でデータの迅速な取り込みと統合ができるだけでなく、エンドツーエンドのデータ フローの可視性および回復性を提供するスマート データ パイプラインを使用して継続的な操作を確保することもできます。|[製品ページ][streamsets_website]|
 | ![Talend][12] |**Talend Cloud**<br>Talend Cloud は、クラウドまたはオンプレミスにわたって、データの接続、アクセス、および変換を行うためのエンタープライズ データ統合プラットフォームです。 幅広い接続、組み込みのデータ品質、最新のビッグ データとクラウド技術に対するネイティブ サポートを提供する integration Platform-as-a-Service (iPaaS) のオファリングです。 |[製品ページ][talend_website]<br> [Azure Marketplace][talend_marketplace] |
 | ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta では、個人と組織が、分析のためのさまざまなデータを探索して融合させることができます。 Trifacta Wrangler は、大規模なデータと多数のエンド ユーザーをサポートする必要があるデータ ラングリング ワークロードを処理するように設計されています。|[製品ページ][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
 | ![WhereScape][14] |**Wherescape RED**<br> WhereScape RED は、ETL ワークフローを合理化するための自動ツールをチームに提供する IDE です。 IDE は、一般的なデータ ターゲットに対するベスト プラクティス、つまり最適化されたネイティブ コードを提供します。 WhereScape RED を使用して、データ インフラストラクチャの開発、デプロイ、および運用にかかる時間を短縮します。|[製品ページ][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 
 
 ## <a name="next-steps"></a>次の手順
-その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー][bi_partners]に関するページと[データ管理パートナー][dm_partners]に関するページをご覧ください。
+その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー][bi_partners]および[データ管理パートナー][dm_partners]に関するページをご覧ください。
 
 <!--Article links-->
 
@@ -64,6 +66,8 @@ ms.locfileid: "65873795"
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
 [13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
 [14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+
 
 
 <!--Website Links -->
@@ -84,6 +88,7 @@ ms.locfileid: "65873795"
 [talend_website]:https://www.talend.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
+[streamsets_website]:https://streamsets.com/partners/microsoft
 
 <!--Marketplace Links -->
 

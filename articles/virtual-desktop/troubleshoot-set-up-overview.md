@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop トラブルシューティングの概要、フィードバック、サポート - Azure
+title: Windows Virtual Desktop トラブルシューティングの概要 - Azure
 description: Windows Virtual Desktop テナント環境の設定時の問題の解決方法の概要
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: b16d993717529953da1dc31604e6112f53ed7ac9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: aa4254673d426579a5e5f0e90e389db7c6cadff0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679434"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607348"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>トラブルシューティングの概要、フィードバック、サポート
 

@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476937"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818344"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -48,6 +48,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Automation](#automation-limits)
 * [Azure Cache for Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Azure Cognitive Search](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
@@ -60,7 +61,6 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Azure Search](#azure-search-limits)
 * [Azure SignalR Service](#azure-signalr-service-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
@@ -130,7 +130,7 @@ Resource Manager API の読み取りと書き込みの制限については、�
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtual Machines の制限 - Azure リソース マネージャー
-次の制限は、Azure Resource Manager と Azure リソース グループを使用するときに適用されます。 Azure Resource Manager で変更されていない制限は一覧に含まれません。 これらの制限については、前の表を参照してください。
+次の制限は、Azure Resource Manager と Azure リソース グループを使用するときに適用されます。
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
@@ -270,7 +270,7 @@ Azure Database for MySQL の制限については、「[Azure Database for MySQL
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Azure Database for PostgreSQL の制限については、「[Azure Database for PostgreSQL の制限事項](postgresql/concepts-limits.md)」を参照してください。
 
-### <a name="azure-search-limits"></a>Azure Search の制限
+### <a name="azure-cognitive-search-limits"></a>Azure Cognitive Search の制限
 価格レベルによって、容量と検索サービスの制限が決定されます。 レベルは次のとおりです。
 
 * **Free**: 他の Azure サブスクライバーと共有する、評価および小規模の開発プロジェクトのためのマルチ テナント サービスです。
@@ -285,7 +285,7 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-ドキュメント サイズ、1 秒あたりのクエリ数、キー数、要求数、応答数などのより細かなレベルでの制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
+ドキュメント サイズ、1 秒あたりのクエリ数、キー数、要求数、応答数など、より細かなレベルでの制限の詳細については、「[Azure Cognitive Search におけるサービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
 
 ### <a name="media-services-limits"></a>Media Services の制限
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]

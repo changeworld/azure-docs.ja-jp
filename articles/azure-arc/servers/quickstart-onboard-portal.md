@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新
 ms.date: 08/25/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b014f6015b3e13a603cf3893062bd0463eb110ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ae7c8545286baebc83077276e356cd2e41f0dc3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488198"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668675"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---portal"></a>クイック スタート:サーバー向け Azure Arc を使用してマシンを Azure に接続する - ポータル
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="generate-the-agent-install-script-using-the-azure-portal"></a>Azure portal を使用してエージェント インストール スクリプトを生成する
 
-1. [https://aka.ms/hybridmachineportal ][aka_hybridmachineportal] を起動する。
+1. [https://aka.ms/hybridmachineportal](https://aka.ms/hybridmachineportal) を起動する。
 1. **[+ 追加]** をクリックする。
 1. ウィザードに従って完了する。
 1. 最後のページにコピー (またはダウンロード) できるスクリプトが生成される。
@@ -64,6 +64,29 @@ Azure 以外のサーバーでは、次のことを管理する必要があり�
 
 1. [ポータル](https://aka.ms/hybridmachineportal)でマシンを選択し、省略記号 (`...`) をクリックして、 **[削除]** を選択します。
 1. マシンからエージェントをアンインストールします。
+
+   Windows では、[アプリと機能] コントロール パネルを使用してエージェントをアンインストールすることができます。
+  
+  ![アプリと機能](./media/quickstart-onboard/apps-and-features.png)
+
+   アンインストールのスクリプトを作成したい場合は、以下の例を使用できます。**PackageId** を取得し、`msiexec /X` を使用してエージェントをアンインストールするものです。
+
+   レジストリ キー `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` から **PackageId** を見つけます。 その後、`msiexec` を使用してエージェントをアンインストールできます。
+
+   実際にエージェントをアンインストールする例を次に示します。
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   Linux では、次のコマンドを実行してエージェントをアンインストールします。
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>次の手順
 

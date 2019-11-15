@@ -8,21 +8,21 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.date: 11/06/2019
+ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675684"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796308"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
-[Azure Logic Apps からオンプレミスのデータ ソースに接続する](../logic-apps/logic-apps-gateway-connection.md)には、ローカル コンピューターに[オンプレミス データ ゲートウェイ](https://aka.ms/on-premises-data-gateway-installer)をダウンロードしてインストールします。 このゲートウェイは、オンプレミスのデータ ソースとロジック アプリ間でのデータ転送と暗号化を高速で行うブリッジとして機能します。 同じゲートウェイ インストールを、Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他のクラウド サービスで使用できます。 これらのサービスでゲートウェイを使用する方法については、次の記事を参照してください。
+[Azure Logic Apps からオンプレミスのデータ ソースに接続する](../logic-apps/logic-apps-gateway-connection.md)には、ローカル コンピューターに[オンプレミス データ ゲートウェイ](https://aka.ms/on-premises-data-gateway-installer)をダウンロードしてインストールします。 このゲートウェイは、オンプレミスのデータ ソースとロジック アプリ間でのデータ転送と暗号化を高速で行うブリッジとして機能します。 同じゲートウェイ インストールを、Power BI、Power Automate、Power Apps、Azure Analysis Services など、他のクラウド サービスで使用できます。 これらのサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
 * [Microsoft Power BI オンプレミス データ ゲートウェイ](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft PowerApps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Microsoft Flow オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Microsoft Power Apps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Power Automate オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
 
 この記事では、Azure Logic Apps からオンプレミスのデータ ソースにアクセスできるように、オンプレミス データ ゲートウェイをダウンロード、インストール、設定する方法について説明します。 [データ ゲートウェイのしくみ](#gateway-cloud-service)についても、このトピックで後ほど詳しく説明します。 ゲートウェイの詳細については、「[オンプレミス データ ゲートウェイとは](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)」を参照してください。
@@ -33,9 +33,9 @@ ms.locfileid: "72675684"
 
 * Azure アカウントとサブスクリプション。 サブスクリプションを保持する Azure アカウントがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-  * ローカル コンピューター上にゲートウェイをインストールして管理するには、同じ Azure アカウントを使用する必要があります。
+  * お使いの Azure アカウントは、1 つの [Azure Active Directory (Azure AD) テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)に属している必要があります。 ローカル コンピューター上にゲートウェイをインストールして管理するには、同じ Azure アカウントを使用する必要があります。
 
-    ゲートウェイのインストール中に、Azure アカウントを使用してサインインします。これにより、ゲートウェイのインストールが Azure アカウントに関連付けられ、そのアカウントのみに限定されます。 その後、Azure portal 上で同じ Azure アカウントを使用して、ゲートウェイのインストールを登録して要求する Azure ゲートウェイ リソースを作成する必要があります。 Azure Logic Apps では、オンプレミスのトリガーとアクションにおいて、オンプレミスのデータ ソースへの接続にゲートウェイ リソースが使用されます。
+  * ゲートウェイのインストール中に、Azure アカウントを使用してサインインします。これにより、ゲートウェイのインストールが Azure アカウントに関連付けられ、そのアカウントのみに限定されます。 その後、Azure portal で、ゲートウェイのインストールを登録して要求する Azure ゲートウェイ リソースを作成するとき、同じ Azure アカウントと Azure AD テナントを使用する必要があります。 Azure Logic Apps では、オンプレミスのトリガーとアクションにおいて、オンプレミスのデータ ソースへの接続にゲートウェイ リソースが使用されます。
 
     > [!NOTE]
     > 1 つのゲートウェイ インストールと 1 つの Azure ゲートウェイ リソースだけを互いに関連付けることができます。 同じゲートウェイのインストールを複数の Azure アカウントまたは Azure ゲートウェイ リソースに関連付けることはできません。 ただし、1 つの Azure アカウントを、複数のゲートウェイのインストールと Azure ゲートウェイ リソースに関連付けることは可能です。 オンプレミスのトリガーまたはアクションでは、さまざまな Azure サブスクリプションから選んで、関連付けられる 1 つのゲートウェイ リソースを選択できます。
@@ -89,15 +89,15 @@ ms.locfileid: "72675684"
 
 1. インストーラーが開いたら、 **[次へ]** を選択します。
 
-   ![インストーラーの開始](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![ゲートウェイ インストーラーの導入画面](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
 1. 標準モードである **［On-premises data gateway (recommended)\(オンプレミス データ ゲートウェイ (推奨)\)** を選択し、**次へ** を選択します。
 
-   ![ゲートウェイ モードの選択](./media/logic-apps-gateway-install/select-gateway-mode.png)
+   ![データ ゲートウェイの実行モードを選択する](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. 最小要件を確認し、既定のインストール パスをそのまま使用して、使用条件に同意してから、 **[インストール]** を選択します。
 
-   ![要件の確認と使用条件への同意](./media/logic-apps-gateway-install/accept-terms.png)
+   ![要件の確認と使用条件への同意](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
 1. ゲートウェイが正常にインストールされた後、Azure アカウント用のメール アドレスを指定し、 **[サインイン]** を選択します。たとえば、次のようになります。
 
@@ -107,7 +107,7 @@ ms.locfileid: "72675684"
 
 1. **[このコンピューターに新しいゲートウェイを登録します]**  >  **[次へ]** の順に選択します。 この手順では、[ゲートウェイ クラウド サービス](#gateway-cloud-service)を使用して、ゲートウェイのインストールを登録します。
 
-   ![ゲートウェイを登録](./media/logic-apps-gateway-install/register-gateway.png)
+   ![ローカル コンピューターにゲートウェイを登録する](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. ゲートウェイ インストールについて以下の情報を入力します。
 
@@ -115,7 +115,7 @@ ms.locfileid: "72675684"
    * 使用する回復キー。これは 8 文字以上である必要があります
    * 回復キーの確認
 
-   ![ゲートウェイの設定](./media/logic-apps-gateway-install/set-up-gateway.png)
+   ![ゲートウェイ インストールに関する情報を入力する](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
    > 回復キーは、安全な場所に保存して管理してください。 このキーは、ゲートウェイ インストールの場所変更、移行、復旧、または引き継ぎを行う場合に必要になります。
@@ -124,7 +124,7 @@ ms.locfileid: "72675684"
 
 1. ゲートウェイ インストールで使用されるゲートウェイ クラウド サービスと [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) のリージョンを確認します。 既定では、このリージョンは、ご使用の Azure アカウントの Azure AD テナントと同じ場所です。
 
-   ![リージョンのチェック](./media/logic-apps-gateway-install/check-region.png)
+   ![ゲートウェイ サービスとサービス バスのリージョンを確認する](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
 1. 既定のリージョンをそのまま使用するには、 **[構成]** を選択します。 ただし、既定のリージョンが最も近いものでなければ、リージョンを変更できます。
 
@@ -134,15 +134,15 @@ ms.locfileid: "72675684"
 
    1. 現在のリージョンの横にある **[リージョンの変更]** を選択します。
 
-      ![リージョンの変更](./media/logic-apps-gateway-install/change-region.png)
+      ![現在のゲートウェイ リージョンを変更する](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
    1. 次のページで、 **[リージョンの選択]** リストを開いて目的のリージョンを選択し、 **[完了]** を選択します。
 
-      ![別のリージョンの選択](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![ゲートウェイ サービスに別のリージョンを選択する](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. 最後の確認ウィンドウの情報を確認します。 この例では、Logic Apps、Power BI、PowerApps、Microsoft Flow に同じアカウントを使用するため、これらのすべてのサービスでこのゲートウェイを使用できます。 準備ができたら、 **[閉じる]** を選択します。
+1. 最後の確認ウィンドウの情報を確認します。 この例では、Logic Apps、Power BI、Power Apps、Power Automate に同じアカウントを使用するため、これらのすべてのサービスでこのゲートウェイを使用できます。 準備ができたら、 **[閉じる]** を選択します。
 
-   ![完了したゲートウェイ](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![データ ゲートウェイ情報を確認する](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 1. 次に、[ゲートウェイ インストール用の Azure リソースを作成します](../logic-apps/logic-apps-gateway-connection.md)。
 
@@ -185,7 +185,7 @@ ms.locfileid: "72675684"
 
 1. 使用可能なクラスターとゲートウェイから選択し、選択したゲートウェイの回復キーを入力します。例:
 
-   ![ゲートウェイの選択](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![ゲートウェイを選択し、回復キーを指定する](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
 1. リージョンを変更するには、 **[リージョンの変更]** を選択し、新しいリージョンを選択します。
 
@@ -270,9 +270,9 @@ Microsoft クラウド サービスでは、[Azure AD](../active-directory/funda
 
 詳細については、以下のトピックを参照してください。
 
-* [オンプレミス データ ゲートウェイに関する FAQ](/data-integration/gateway/service-gateway-onprem-faq)
-* [オンプレミス データ ゲートウェイのトラブルシューティング](/data-integration/gateway/service-gateway-tshoot)
-* [ゲートウェイのパフォーマンスの監視と最適化](/data-integration/gateway/service-gateway-performance)
+* [オンプレミス データ ゲートウェイに関する FAQ](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [オンプレミス データ ゲートウェイのトラブルシューティング](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [ゲートウェイのパフォーマンスの監視と最適化](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>次の手順
 

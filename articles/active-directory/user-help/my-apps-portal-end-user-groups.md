@@ -1,5 +1,5 @@
 ---
-title: マイ アプリ ポータルからグループ情報を更新する - Azure Active Directory| Microsoft Docs
+title: マイ アプリ ポータルでグループ情報を更新する - Azure AD
 description: 所有するグループの表示、新しいグループの作成、既にメンバーであるグループの表示、まだ所属していないグループへの参加など、グループ関連の情報を表示および更新する方法について説明します。
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11b43d040dec838de350c23614ae42b6756ec6e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: aa251ee361af12ecf3fef3c7cd437fa06c1cea52
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383171"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803922"
 ---
-# <a name="update-your-groups-info-from-the-my-apps-portal"></a>マイ アプリ ポータルからグループ情報を更新する
+# <a name="update-your-groups-info-on-the-my-apps-portal"></a>マイ アプリ ポータルでグループ情報を更新する
 
 Web ベースの**マイ アプリ** ポータルでは、職場または学校アカウントを使用して、社内にあるクラウドベースのアプリを表示して起動したり、一部のプロフィール情報とアカウント情報を更新したり、**グループ**情報を確認したり、アプリとグループの**アクセス レビュー**を実行したりすることができます。 **マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得る必要があります。
 

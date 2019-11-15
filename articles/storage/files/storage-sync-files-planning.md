@@ -4,15 +4,15 @@ description: Azure Files のデプロイを計画するときの考慮事項に�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/7/2019
+ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061747"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826820"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -69,7 +69,7 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 このセクションでは、Windows Server の機能とロール、およびサード パーティ ソリューションとの Azure File Sync エージェント システムの要件と相互運用性について説明します。
 
 ### <a name="evaluation-cmdlet"></a>評価コマンドレット
-Azure File Sync をデプロイする前に、Azure File Sync 評価コマンドレットを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このコマンドレットでは、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 そのチェックでは、以下で説明する機能のほとんどがカバーされていますが、すべてではないことに注意してください。デプロイが円滑に進むように、このセクションの残りの部分をよく読むことをお勧めします。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価コマンドレットを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このコマンドレットでは、サポートされていない文字やサポートされていないオペレーティング システム バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 そのチェックでは、以下で説明する機能のほとんどがカバーされていますが、すべてではないことに注意してください。デプロイが円滑に進むように、このセクションの残りの部分をよく読むことをお勧めします。 
 
 評価コマンドレットをインストールするには、Az PowerShell モジュールをインストールします。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
 
@@ -97,13 +97,16 @@ CSV で結果を表示するには:
 ```
 
 ### <a name="system-requirements"></a>システム要件
-- Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 を実行しているサーバー:
+- 次のいずれかのオペレーティング システム バージョンを実行しているサーバー:
 
     | Version | サポートされている SKU | サポートされているデプロイ オプション |
     |---------|----------------|------------------------------|
     | Windows Server 2019 | Datacenter および Standard | 完全およびコア |
     | Windows Server 2016 | Datacenter および Standard | 完全およびコア |
     | Windows Server 2012 R2 | Datacenter および Standard | 完全およびコア |
+    | Windows Server IoT 2019 for Storage| Datacenter および Standard | 完全およびコア |
+    | Windows Storage Server 2016| Datacenter および Standard | 完全およびコア |
+    | Windows Storage Server 2012 R2| Datacenter および Standard | 完全およびコア |
 
     Windows Server の今後のバージョンは、それらがリリースされたときに追加されます。
 
@@ -155,15 +158,18 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 > 同期が適切に機能するには、フェールオーバー クラスターのすべてのノードに Azure File Sync エージェントをインストールする必要があります。
 
 ### <a name="data-deduplication"></a>データ重複除去
-**エージェント バージョン 5.0.2.0 以降**   
-データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
+**Windows Server 2016 および Windows Server 2019**   
+データ重複除去は、Windows Server 2016 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
 
 クラウドを使った階層化が有効なボリュームでデータ重複除去が有効になっている場合、サーバー エンドポイントの場所にある重複除去最適化ファイルは、クラウドを使った階層化のポリシー設定に基づいて、通常のファイルと同様に階層化されます。 重複除去最適化ファイルが階層化された後、データ重複除去ガベージ コレクション ジョブが自動的に実行され、ボリューム上の他のファイルから参照されなくなった不要なチャンクを削除することによって、ディスク領域が解放されます。
 
 ボリュームの節約はサーバーにのみ適用されることに注意してください。Azure ファイル共有内のデータは重複除去されません。
 
-**Windows Server 2012 R2 またはそれよりも古いエージェント バージョン**  
-クラウドの階層化が有効ではないボリュームでは、Azure File Sync は、そのボリュームでの Windows Server のデータ重複除去の有効化をサポートします。
+> [!Note]  
+> Server 2019 については、データ重複除去とクラウドを使った階層化は、同じボリューム上では現在サポートされていません。これはバグによるもので、そのバグは今後の更新で修正される予定です。
+
+**Windows Server 2012 R2**  
+Azure File Sync については、データ重複除去とクラウドを使った階層化は、同じボリューム上ではサポートされていません。 ボリュームでデータ重複除去が有効になっている場合は、クラウドを使った階層化を無効にする必要があります。 
 
 **メモ**
 - Azure File Sync エージェントをインストールする前にデータ重複除去がインストールされている場合、同じボリューム上でのデータ重複除去およびクラウドを使った階層化をサポートするには再起動が必要です。
@@ -175,7 +181,7 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
     - 注:Azure File Sync によってファイルが階層化されると、重複除去最適化ジョブによってそのファイルはスキップされます。
 - インストールされている Azure File Sync エージェントを使用して Windows Server 2012 R2 を実行しているサーバーが、Windows Server 2016 または Windows Server 2019 にアップグレードされる場合、同じボリューム上でのデータ重複除去およびクラウドを使った階層化がサポートされるには次の手順を行う必要があります。  
     - Windows Server 2012 R2 用の Azure File Sync エージェントをアンインストールして、サーバーを再起動します。
-    - 新しいサーバーの OS バージョン用 (Windows Server 2016 または Windows Server 2019) の Azure File Sync エージェントをダウンロードします。
+    - 新しいサーバーのオペレーティング システム バージョン用 (Windows Server 2016 または Windows Server 2019) の Azure File Sync エージェントをダウンロードします。
     - Azure File Sync エージェントをインストールして、サーバーを再起動します。  
     
     注:サーバー上の Azure File Sync 構成設定は、エージェントがアンインストールされ再インストールされるときに保持されます。
@@ -241,7 +247,7 @@ Azure ファイル同期は、次のソリューションと連携しないこ�
 ## <a name="region-availability"></a>利用可能なリージョン
 Azure File Sync は、次のリージョンでのみ利用できます。
 
-| Region | データ センターの場所 |
+| リージョン | データ センターの場所 |
 |--------|---------------------|
 | オーストラリア東部 | ニュー サウス ウェールズ州 |
 | オーストラリア南東部 | ビクトリア州 |
@@ -271,6 +277,8 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | 米国政府アリゾナ | アリゾナ |
 | 米国政府テキサス | テキサス |
 | 米国政府バージニア州 | バージニア州 |
+| アラブ首長国連邦北部 | ドバイ |
+| アラブ首長国連邦中部* | アブダビ |
 | 西ヨーロッパ | オランダ |
 | 米国中西部 | ワイオミング |
 | 米国西部 | カリフォルニア |

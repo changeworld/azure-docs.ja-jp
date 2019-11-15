@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: f22d8c57b0127e646321a20587d0cd89f5c9ea45
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8fe85685a41e05b5132157453a6dcbc81c2399af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325417"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825764"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -85,9 +85,9 @@ SubscriptionValidationEvent の例を以下に示します。
 }
 ```
 
-HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Accepted は有効な Event Grid サブスクリプション検証の応答として認識されません。
+HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Accepted は有効なイベント グリッド サブスクリプション検証の応答として認識されません。http 要求は 30 秒以内に完了する必要があります。 操作が 30 秒以内に完了しない場合、操作は取り消され、5 秒後に再試行される場合があります。 すべての試行が失敗した場合、検証ハンドシェイク エラーとして扱われます。
 
-または、検証 URL に GET 要求を手動で送信して、サブスクリプションを検証することができます。 イベント サブスクリプションは、検証されるまで保留状態にとどまります。
+または、検証 URL に GET 要求を手動で送信して、サブスクリプションを検証することができます。 イベント サブスクリプションは、検証されるまで保留状態のままです。検証 URL にはポート 553 が使用されます。 ファイアウォール規則によってポート 553 がブロックされている場合、手動ハンドシェイクを正常に行うには、規則を更新する必要があります。
 
 サブスクリプション検証ハンドシェイクの処理の例については、[C# のサンプル](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)に関するページをご覧ください。
 
@@ -204,7 +204,7 @@ Event Grid には、イベント サブスクリプションを管理するた�
 
 [これらのロールはユーザーまたはグループに割り当てる](../role-based-access-control/quickstart-assign-role-user-portal.md)ことができます。
 
-**EventGrid EventSubscription 共同作成者 (プレビュー)** : Event Grid のサブスクリプション操作を管理します
+**EventGrid EventSubscription 共同作成者**: Event Grid のサブスクリプション操作を管理します
 
 ```json
 [
@@ -212,7 +212,7 @@ Event Grid には、イベント サブスクリプションを管理するた�
     "Description": "Lets you manage EventGrid event subscription operations.",
     "IsBuiltIn": true,
     "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor (Preview)",
+    "Name": "EventGrid EventSubscription Contributor",
     "IsServiceRole": false,
     "Permissions": [
       {
@@ -240,7 +240,7 @@ Event Grid には、イベント サブスクリプションを管理するた�
 ]
 ```
 
-**EventGrid EventSubscription 閲覧者 (プレビュー)** : Event Grid のサブスクリプションを読みます
+**EventGrid EventSubscription 閲覧者**: Event Grid のサブスクリプションを読みます
 
 ```json
 [
@@ -248,7 +248,7 @@ Event Grid には、イベント サブスクリプションを管理するた�
     "Description": "Lets you read EventGrid event subscriptions.",
     "IsBuiltIn": true,
     "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader (Preview)",
+    "Name": "EventGrid EventSubscription Reader",
     "IsServiceRole": false,
     "Permissions": [
       {

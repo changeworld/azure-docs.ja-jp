@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: cb5969ccb4ee9780b597326a3811395c3b7d9971
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ced1bc647f93beec73b8101a952944f31e497658
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168473"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693215"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>ポイント対サイト VPN ルーティングについて
 
@@ -114,7 +114,7 @@ Windows、または別のサポート対象 OS を使用しているクライア
 
 Windows、または別のサポートさ対象 OS を使用しているクライアントから、サイト間 VPN を使用して接続されているすべての VNet にアクセスできますが、接続されている VNet へのルートを Windows クライアントに手動で追加する必要があります。
 
-![複数の VNet と S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "複数の VNet と S2S (BGP)")
+![複数の Vnet と S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "複数の VNet と S2S BGP")
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -142,7 +142,7 @@ Windows、または別のサポートさ対象 OS を使用しているクライ
 
 Windows クライアントと Windows 以外のクライアントは VNet1 にのみアクセスできます。
 
-![VNet とブランチ オフィスでのルーティング](./media/vpn-gateway-about-point-to-site-routing/5.jpg "VNet とブランチ オフィスでのルーティング")
+![1 つの VNet とブランチ オフィスを含むルーティング](./media/vpn-gateway-about-point-to-site-routing/5.jpg "1 つの VNet とブランチ オフィスを含むルーティング")
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -195,7 +195,7 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 すべてのクライアントが VNet1 にのみアクセスできます。
 
-![複数 VNet S2S とブランチ オフィス](./media/vpn-gateway-about-point-to-site-routing/7.jpg "複数 VNet S2S とブランチ オフィス")
+![複数の VNet S2S とブランチ オフィス](./media/vpn-gateway-about-point-to-site-routing/7.jpg "複数の VNet S2S とブランチ オフィス")
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -209,7 +209,7 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 ### <a name="routes-added"></a>追加されたルート
 
-* クライアントに追加されたルート: 10.1.0.0/16、192.168.0.0/24
+* Windows クライアントに追加されたルート: 10.1.0.0/16、192.168.0.0/24
 
 * Windows 以外のクライアントに追加されたルート: 10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 
@@ -225,7 +225,7 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 Windows を使用しているクライアントは、サイト間 VPN 接続を使用して接続されている VNet とサイトにアクセスできますが、VNet2、VNet3、Site1 へのルートをクライアントに手動で追加する必要があります。 Windows 以外のクライアントは、手動で介入しなくても、サイト間 VPN 接続を使用して接続されている VNet とサイトにアクセスできます。 アクセスは推移的であり、クライアントは、接続されているすべての VNet とサイト (オンプレミス) のリソースにアクセスできます。
 
-![複数 VNet S2S とブランチ オフィス](./media/vpn-gateway-about-point-to-site-routing/8.jpg "複数 VNet S2S とブランチ オフィス")
+![複数の VNet S2S とブランチ オフィス](./media/vpn-gateway-about-point-to-site-routing/8.jpg "複数の VNet S2S とブランチ オフィス")
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -239,7 +239,7 @@ Windows を使用しているクライアントは、サイト間 VPN 接続を�
 
 ### <a name="routes-added"></a>追加されたルート
 
-* クライアントに追加されたルート: 10.1.0.0/16、192.168.0.0/24
+* Windows クライアントに追加されたルート: 10.1.0.0/16、192.168.0.0/24
 
 * Windows 以外のクライアントに追加されたルート: 10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 

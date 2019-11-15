@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: 5d42b9fc2dfd7cbee230b65f7d9844c9e7332147
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/08/2019
+ms.openlocfilehash: da68cfe504332ed6641c52322f0df0d2efd95997
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680499"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820662"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
@@ -28,7 +28,7 @@ ISE の作成後は、ロジック アプリや統合アカウントを作成す
 
 これで、ロジック アプリは、以下のいずれかの項目を使用して、仮想ネットワーク内のシステム、または仮想ネットワークに接続されているシステムに直接アクセスできるようになりました。
 
-* **ISE** とラベル付けされた、そのシステム (例: SQL Server) のコネクタ
+* そのシステムの **ISE** とラベル付けされたコネクタ
 * **Core** とラベル付けされた組み込みトリガーまたは組み込みアクション (例: HTTP トリガーまたは HTTP アクション)
 * カスタム コネクタ
 
@@ -51,7 +51,7 @@ ISE のロジック アプリはグローバルな Logic Apps サービスとユ
 * Azure Blob Storage、Azure File Storage、Azure Table Storage
 * Azure キュー、Azure Service Bus、Azure Event Hubs、IBM MQ
 * FTP、SFTP-SSH
-* SQL Server、SQL Data Warehouse、Azure Cosmos DB
+* SQL Server、Azure SQL Data Warehouse、Azure Cosmos DB
 * AS2、X12、EDIFACT
 
 ISE と ISE 以外のコネクタには、トリガーとアクションが実行される場所に違いがあります。
@@ -92,6 +92,7 @@ ISE を作成するときは、Developer SKU または Premium SKU を選択で�
 ISE を作成するときに、内部アクセス エンドポイントと外部アクセス エンドポイントのどちらを使用するかを選択できます。 これらのエンドポイントにより、ISE 内のロジック アプリ上で要求または Webhook トリガーが仮想ネットワークの外からの呼び出しを受信できるかどうかが決まります。 これらのエンドポイントは、ロジック アプリの実行履歴の入力と出力へのアクセスにも影響します。
 
 * **内部**:ISE 内のロジック アプリへの呼び出しに加え、"*仮想ネットワーク内から*" のみ実行履歴の入力と出力へのアクセスを許可するプライベート エンドポイント
+
 * **外部**:ISE 内のロジック アプリへの呼び出しに加え、"*仮想ネットワーク外からの*" 実行履歴の入力と出力へのアクセスを許可するパブリック エンドポイント
 
 > [!IMPORTANT]
@@ -103,15 +104,20 @@ ISE を作成するときに、内部アクセス エンドポイントと外部
 
 Azure 仮想ネットワークに接続されているオンプレミス システムの場合は、ロジック アプリからそのシステムに直接アクセスできるように、次の項目のいずれかを使用してそのネットワークに ISE を挿入します。
 
-* そのシステム (例: SQL Server) の ISE バージョンのコネクタ
 * HTTP アクション
+
+* そのシステムの ISE とラベル付けされたコネクタ
+
+  > [!NOTE]
+  > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で SQL Server コネクタで Windows 認証を使用するには、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-install.md)でコネクタの ISE 以外のバージョンを使用します。 ISE とラベル付けされたバージョンでは、Windows 認証はサポートされていません。
+
 * カスタム コネクタ
 
   * オンプレミス データ ゲートウェイを必要とするカスタム コネクタを ISE の外部で作成した場合は、ISE 内のロジック アプリでもそれらのコネクタを使用できます。
   
   * ISE 内で作成されたカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE をホストしている仮想ネットワークに接続されているオンプレミス データ ソースに直接アクセスできます。 そのため、ISE 内のロジック アプリでは、ほとんどの場合、それらのリソースと通信するときにデータ ゲートウェイは不要です。
 
-仮想ネットワークに接続されていない、または ISE バージョンのコネクタがないオンプレミス システムの場合は、ロジック アプリからこれらのシステムに接続する前に、まず[オンプレミスのデータ ゲートウェイを設定する](../logic-apps/logic-apps-gateway-install.md)必要があります。
+仮想ネットワークに接続されていない、または ISE とラベル付けされたコネクタがないオンプレミス システムでは、お使いのロジック アプリからこれらのシステムに接続する前に、まず[オンプレミスのデータ ゲートウェイを設定する](../logic-apps/logic-apps-gateway-install.md)必要があります。
 
 <a name="create-integration-account-environment"></a>
 

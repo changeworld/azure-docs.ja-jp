@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics (旧称 SQL DW) での Data Warehouse ユニット (DWU、cDWU) | Microsoft Docs
+title: Azure Synapse Analytics (旧称 SQL DW) での Data Warehouse ユニット (DWU、cDWU)
 description: 最適な Data Warehouse ユニット (DWU、cDWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,13 +10,13 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-mscustom: sqlfreshmay19
-ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475752"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685326"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 
@@ -215,4 +215,4 @@ DWU の変更の状態を確認するには、次の手順に従います。
 
 ## <a name="next-steps"></a>次の手順
 
-パフォーマンスの管理の詳細については、[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)と、[メモリとコンカレンシーの制限](memory-and-concurrency-limits.md)に関するページを参照してください。
+パフォーマンスの管理の詳細については、[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)と、[メモリとコンカレンシーの制限]memory-concurrency-limits.md)に関するページを参照してください。

@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 499ac3a394339ebb07c36abeaaa761de22927941
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447292"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827774"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド:拡張性があり、パフォーマンスに優れたテーブルを設計する
 
@@ -531,7 +531,7 @@ EGT を使用すると、同じパーティション キーを共有する複数
 * 同じテーブル内の 2 つの異なるパーティション、異なるテーブル、異なるストレージ アカウントに格納されているエンティティ。  
 * Table service に格納されているエンティティと Blob service に格納されている BLOB。  
 * Table service に格納されているエンティティとファイル システム内のファイル。  
-* Table service に格納されているにもかかわらず、Azure Search サービスを使用してインデックスが作成されているエンティティ。  
+* Table service に格納されているにもかかわらず、Azure Cognitive Search サービスを使用してインデックスが作成されているエンティティ。  
 
 #### <a name="solution"></a>解決策
 Azure キューを使用すると、2 つ以上のパーティションまたはストレージ システム間で最終的に一貫性を確保するソリューションを実装できます。

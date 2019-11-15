@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aeffa8b756340851ca4c82ebaed2453d4ac03bc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059187"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819504"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元 
 > [!div class="op_single_selector"]
@@ -126,6 +126,21 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
     ```
 
 4. 上記の変更でクラスター テンプレートを更新したら、その変更を適用して、デプロイ/アップグレードを完了します。 完了すると、"_バックアップと復元サービス_" がクラスターで実行されます。 このサービスの URI は `fabric:/System/BackupRestoreService` です。サービスは、Service Fabric エクスプローラーでシステム サービス セクションの下に置くことができます。 
+
+### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+
+1. 詳細設定モードが有効になっていることを確認します。
+
+    ![詳細設定モードの有効化][2]
+
+2. アプリケーションを選択し、アクションを実行します。 [Enable/Update Application Backup]\(アプリケーションのバックアップを有効化/更新する\) をクリックします。
+
+    ![アプリケーションのバックアップの有効化][3] 
+
+3. 最後に希望のポリシーを選択して、[バックアップの有効化] をクリックします。
+
+    ![ポリシーの選択][4]
+
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Reliable Stateful サービスと Reliable Actors の定期バックアップの有効化
 Reliable Stateful サービスと Reliable Actors の定期バックアップを有効にする手順について説明します。 これらの手順は、以下を前提としています。
@@ -280,6 +295,12 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            : 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+
+Service Fabric Explorer でバックアップを表示するには、パーティションに移動し、[バックアップ] タブを選択します。
+
+![バックアップの列挙][5]
+
 ## <a name="limitation-caveats"></a>制限事項/注意事項
 - Service Fabric PowerShell コマンドレットは、プレビュー モードです。
 - Linux 上の Service Fabric クラスターはサポートされません。
@@ -288,6 +309,9 @@ FailureError            :
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
+[0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
-
+[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
+[3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
+[4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
+[5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png

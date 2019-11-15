@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506530"
+ms.locfileid: "73579663"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>音声アシスタント:よく寄せられる質問
 
@@ -29,7 +29,7 @@ ms.locfileid: "73506530"
 
 **Q:カスタム コマンド (プレビュー) または Direct Line Speech のどちらを使用すればよいですか。違いは何でしょうか。**
 
-**A:** [カスタム コマンド (プレビュー)](custom-commands.md) は、タスク実行シナリオに適しているアシスタントを簡単に作成してホストするための、複雑さを抑えたツール セットです。 [Direct Line Speech](direct-line-speech.md) は、信頼性の高い会話シナリオを可能にする、高度でリッチな機能を提供します。 詳細については、[アシスタント ソリューションの比較](voice-assistants.md#comparing-assistant-solutions)に関する記事を参照してください。
+**A:** [カスタム コマンド (プレビュー)](custom-commands.md) は、タスク実行シナリオに適しているアシスタントを簡単に作成してホストするための、複雑さを抑えたツール セットです。 [Direct Line Speech](direct-line-speech.md) は、信頼性の高い会話シナリオを可能にする、高度でリッチな機能を提供します。 詳細については、[アシスタント ソリューションの比較](voice-assistants.md#choosing-an-assistant-solution)に関する記事を参照してください。
 
 **Q:始めにどうすればよいですか。**
 
@@ -40,6 +40,17 @@ ms.locfileid: "73506530"
 * [ボットを Direct Line Speech チャネルに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>デバッグ
+
+**Q:チャンネル シークレットはどこにありますか。**
+
+**A:** プレビュー バージョンの Direct Line Speech を使用したことがある場合、または関連するドキュメントを読んでいる場合、シークレット キーは、Direct Line Speech チャネルの登録ページで確認できます。 この値は、Speech SDK の v1.7 `DialogServiceConfig` ファクトリ メソッド `FromBotSecret` でも必要となります。
+
+最新バージョンの Direct Line Speech では、デバイスからボットとコンタクトを取るプロセスが簡素化されています。 チャンネル登録ページの上部にあるドロップダウンで、ご利用の Direct Line Speech チャネルの登録を音声リソースに関連付けてください。 関連付けが完了すると、サブスクリプションに関連付けたボットとコンタクトを取るように `DialogServiceConnector` を構成する `BotFrameworkConfig::FromSubscription` ファクトリ メソッドが v1.8 Speech SDK に追加されます。
+
+まだクライアント アプリケーションを v1.7 から v1.8 に移行している段階の場合、`DialogServiceConfig::FromBotSecret` は、そのチャンネル シークレット パラメーターについて、空ではない非 null 値 (以前使用していたシークレットなど) で引き続き動作します。 それよりも新しいチャンネル登録に関連付けられている Speech サブスクリプションをご利用の場合は、単に無視されます。 値は null 以外で、かつ空ではないことが "*必要*" です。デバイス上でこれらの点がチェックされた後で、サービス側の関連付けが有効となります。
+
+
+詳細なガイドについては、チャンネルの登録手順を示した[チュートリアル セクション](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel)を参照してください。
 
 **Q:接続時に 401 エラーが表示され、何も機能しません。音声サブスクリプション キーが有効であることはわかっています。どうなっているのでしょうか?**
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services とは | Microsoft Docs
-description: Azure での Analysis Services の概要を説明します。
+description: 完全に管理されたサービスとしてのプラットフォーム (PaaS) であり、エンタープライズ レベルのデータ モデルをクラウドで提供する Azure Analysis Services について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: eb69028a3b5ea232fbafe8286c3067a22f06d455
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512597"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572814"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -200,9 +200,9 @@ Azure のセキュリティについて詳しくは、[Microsoft セキュリテ
 
 ### <a name="visual-studio"></a>Visual Studio
 
-無料の [SQL Server Data Tools (SSDT) for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) を使用して、モデルを開発してデプロイします。 SSDT には、スピーディに開発を行うための Analysis Services プロジェクト テンプレートが用意されています。 現在、SSDT には、互換性レベル 1400 の表形式モデルに対応した最新の Get Data のデータ ソース クエリとマッシュアップ機能が含まれています。 Power BI Desktop と Excel 2016 の Get Data に慣れていれば、高度にカスタマイズされたデータ ソース クエリの作成が非常に簡単であることは既にわかっています。 
+Visual Studio と Analysis Services プロジェクトでモデルを開発し、展開します。 Analysis Services のプロジェクト拡張機能には、短時間で開発を進めるためのテンプレートやウィザードが用意されています。 Visual Studio のモデル作成環境に最新の Get Data データ ソース クエリとマッシュアップ機能が追加され、1400 以降の表形式モデルに対応できるようになりました。 Power BI Desktop と Excel 2016 の Get Data に慣れていれば、高度にカスタマイズされたデータ ソース クエリの作成が非常に簡単であることは既にわかっています。 
 
-Visual Studio 2017 以降を使用している場合、インストール可能な無料の VSIX パッケージとして Microsoft Analysis Services プロジェクトが提供されます。 [Marketplace からダウンロード](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)できます。
+Microsoft Analysis Services プロジェクトは、インストール可能な無料の VSIX パッケージとして提供されています。 [Marketplace からダウンロード](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)できます。 この拡張機能は、無料の Community 版を含む、Visual Studio 2017 以降のあらゆるバージョンで機能します。
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

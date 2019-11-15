@@ -1,5 +1,5 @@
 ---
-title: Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする | Microsoft Docs
+title: Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
 description: Azure Data Factory を使用して、Azure Data Lake Storage Gen2 との間でデータをコピーする方法について説明します。
 services: data-factory
 author: linda33wj
@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 8f190f6b933c61072df9af954c8db01497e35e82
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: e368597880bbbaee6c7aff7e72d88149840a23d8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010227"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681283"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
 
@@ -38,11 +38,11 @@ Azure Data Lake Storage Gen2 (ADLS Gen2) は、ビッグ データ分析専用�
 - アカウント キー認証、サービス プリンシパル認証、または Azure リソースのマネージド ID 認証を使用してデータをコピーする。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析または生成する。
 
+>[!IMPORTANT]
+>Azure Storage のファイアウォール設定で **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** オプションを有効にした場合で、なおかつ、Azure Integration Runtime を使用して Data Lake Storage Gen2 に接続したい場合、ADLS Gen2 の[マネージド ID 認証](#managed-identity)を使用する必要があります。
+
 >[!TIP]
 >階層型名前空間を有効にした場合、現時点では、BLOB API と Data Lake Storage Gen2 API の間に操作の相互運用性はありません。 "指定されたファイルシステムは存在しません" というメッセージを含む "ErrorCode=FilesystemNotFound" エラーが発生した場合、指定されたシンク ファイル システムが、他の場所で Data Lake Storage Gen2 API ではなく BLOB API によって作成されたものであることが原因です。 この問題を解決するには、BLOB コンテナーの名前として存在しない名前で新しいファイル システムを指定します。 そのファイル システムは、データ コピー中に Data Factory によって自動的に作成されます。
-
->[!NOTE]
->Azure Storage のファイアウォール設定で **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** オプションを有効にした場合、Azure Integration Runtime が Data Lake Storage Gen2 に接続せず、アクセス不可エラーが表示されます。 このエラー メッセージが表示されるのは、Data Factory が信頼された Microsoft サービスとして扱われていないためです。 代わりに、セルフホステッド統合ランタイムを使用して接続してください。
 
 ## <a name="get-started"></a>作業開始
 
@@ -110,16 +110,13 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
     - アプリケーション キー
     - テナント ID
 
-2. サービス プリンシパルに適切なアクセス許可を付与します。 Data Lake Storage Gen2 におけるアクセス許可のしくみの詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」をご覧ください。
+2. サービス プリンシパルに適切なアクセス許可を付与します。 Data Lake Storage Gen2 におけるアクセス許可の動作例については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 
-    - **ソースとして**: Storage Explorer で、ファイルをコピーするための**読み取り**アクセス許可と共に、ソース ファイル システムからの**実行**アクセス許可を少なくとも付与します。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
-    - **シンクとして**: Storage Explorer で、シンク フォルダーに対する**書き込み**アクセス許可と共に、シンク ファイル システムからの**実行**アクセス許可を少なくとも付与します。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+    - **ソースとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも**実行**アクセス許可を与えると共に、コピーするファイルの**読み取り**アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
+    - **シンクとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに対する**書き込み**アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
 
 >[!NOTE]
->アカウント レベルを起点としてフォルダーを一覧表示したり、接続をテストしたりするには、付与されるサービス プリンシパルのアクセス許可を、**IAM で "ストレージ BLOB データ閲覧者" アクセス許可が付与されたストレージ アカウント**に設定する必要があります。 これは、以下を使用する場合に該当します。
->- **データ コピー ツール** (コピー パイプラインを作成する)。
->- **Data Factory UI** (接続およびフォルダーのナビゲーションを作成中にテストする)。 
->アカウント レベルでのアクセス許可の付与について懸念がある場合は、作成中に、接続のテストをスキップし、アクセス許可が付与された親パスを入力した後、その指定したパスから参照することを選択します。 コピー対象のファイルでサービス プリンシパルに適切なアクセス許可が付与されていれば、コピー アクティビティは機能します。
+>Data Factory の UI を使用して作成する場合で、なおかつ IAM でサービス プリンシパルに "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、実行アクセス許可のあるファイル システムまたはパスを指定して続行してください。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -164,16 +161,13 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 
 1. ファクトリと共に生成された**サービス ID アプリケーション ID** の値をコピーして、[Data Factory のマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
 
-2. マネージド ID に適切なアクセス許可を付与します。 Data Lake Storage Gen2 におけるアクセス許可のしくみの詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」をご覧ください。
+2. マネージド ID に適切なアクセス許可を付与します。 Data Lake Storage Gen2 におけるアクセス許可の動作例については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 
-    - **ソースとして**: Storage Explorer で、ファイルをコピーするための**読み取り**アクセス許可と共に、ソース ファイル システムからの**実行**アクセス許可を少なくとも付与します。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
-    - **シンクとして**: Storage Explorer で、シンク フォルダーに対する**書き込み**アクセス許可と共に、シンク ファイル システムからの**実行**アクセス許可を少なくとも付与します。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+    - **ソースとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも**実行**アクセス許可を与えると共に、コピーするファイルの**読み取り**アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
+    - **シンクとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも**実行**アクセス許可を与えると共に、シンク フォルダーに対する**書き込み**アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
 
 >[!NOTE]
->アカウント レベルを起点としてフォルダーを一覧表示したり、接続をテストしたりするには、付与されるマネージド ID のアクセス許可を、**IAM で "ストレージ BLOB データ閲覧者" アクセス許可が付与されたストレージ アカウント**に設定する必要があります。 これは、以下を使用する場合に該当します。
->- **データ コピー ツール** (コピー パイプラインを作成する)。
->- **Data Factory UI** (接続およびフォルダーのナビゲーションを作成中にテストする)。 
->アカウント レベルでのアクセス許可の付与について懸念がある場合は、作成中に、接続のテストをスキップし、アクセス許可が付与された親パスを入力した後、その指定したパスから参照することを選択します。 コピー対象のファイルでサービス プリンシパルに適切なアクセス許可が付与されていれば、コピー アクティビティは機能します。
+>Data Factory の UI を使用して作成する場合で、なおかつ IAM でマネージド ID に "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、実行アクセス許可のあるファイル システムまたはパスを指定して続行してください。
 
 >[!IMPORTANT]
 >PolyBase を使用して Data Lake Storage Gen2 から SQL Data Warehouse にデータを読み込む場合、Data Lake Storage Gen2 にマネージド ID 認証を使用しているときは、[こちらのガイダンス](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1. と 2. に従って、1) SQL Database サーバーを Azure Active Directory (Azure AD) に登録し、2) SQL Database サーバーにストレージ BLOB データ共同作成者ロールを割り当てます。残りの部分は Data Factory によって処理されます。 Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
@@ -208,12 +202,9 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 
 データセットの定義に使用できるセクションとプロパティの一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。
 
-- **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
-- **ORC 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット
-
-コピー先またはコピー元との間で **Parquet 形式、区切りテキスト形式、Avro 形式、またはバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Data Lake Storage Gen2 では、形式ベースのデータセットの `location` 設定で次のプロパティがサポートされています。
+Data Lake Storage Gen2 では、形式ベースのデータセットの `location` 設定で次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -221,9 +212,6 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 | fileSystem | Data Lake Storage Gen2 ファイル システム名。                              | いいえ       |
 | folderPath | 指定されたファイル システムの下のフォルダーのパス。 ワイルドカードを使用してフォルダーをフィルター処理する場合は、この設定をスキップし、アクティビティのソース設定で指定します。 | いいえ       |
 | fileName   | 指定された fileSystem + folderPath の下のファイル名。 ワイルドカードを使用してファイルをフィルター処理する場合は、この設定をスキップし、アクティビティのソース設定で指定します。 | いいえ       |
-
-> [!NOTE]
-> 次のセクションで説明する Parquet 形式またはテキスト形式の **AzureBlobFSFile** 型のデータセットは、下位互換性を確保するために、コピー、ルックアップ、GetMetadata アクティビティで引き続きそのままサポートされます。 ただし、マッピング データ フロー機能では動作しません。 今後はこの新しいモデルを使用することをお勧めします。 Data Factory オーサリング UI では、これらの新しい型が生成されます。
 
 **例:**
 
@@ -252,9 +240,10 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 }
 ```
 
-### <a name="other-format-dataset"></a>他の形式のデータセット
+### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
-Data Lake Storage Gen2 をコピー先またはコピー元として **ORC 形式**のデータをコピーする場合、次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のデータセット モデルは引き続き現状のままサポートされます。 今後は、前セクションで言及した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -305,12 +294,9 @@ Data Lake Storage Gen2 をコピー先またはコピー元として **ORC 形�
 
 ### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>ソースの種類としての Azure Data Lake Storage Gen2
 
-- コピー元から **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
-- コピー元から **ORC 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース
-
-**Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeSettings` 設定で次のプロパティがサポートされています。
+Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeSettings` 設定で次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -321,9 +307,6 @@ Data Lake Storage Gen2 をコピー先またはコピー元として **ORC 形�
 | modifiedDatetimeStart    | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
 | maxConcurrentConnections | ストレージ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                            |
-
-> [!NOTE]
-> Parquet 形式または区切りテキスト形式の場合、次のセクションで説明する **AzureBlobFSSource** 型のコピー アクティビティ ソースは、下位互換性を確保するために引き続きそのままサポートされます。 今後はこの新しいモデルを使用することをお勧めします。 Data Factory オーサリング UI では、これらの新しい型が生成されます。
 
 **例:**
 
@@ -366,9 +349,10 @@ Data Lake Storage Gen2 をコピー先またはコピー元として **ORC 形�
 ]
 ```
 
-#### <a name="other-format-source"></a>他の形式のソース
+#### <a name="legacy-source-model"></a>レガシ ソース モデル
 
-**ORC 形式**のデータを Data Lake Storage Gen2 からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のコピー ソース モデルは引き続き現状のままサポートされます。 今後は、前述した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -410,21 +394,15 @@ Data Lake Storage Gen2 をコピー先またはコピー元として **ORC 形�
 
 ### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>シンクの種類としての Azure Data Lake Storage Gen2
 
-- コピー先に **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のシンク](#format-based-sink)」セクションを参照してください。
-- コピー先に **ORC/JSON 形式**などの他の形式でコピーするには、「[他の形式のシンク](#other-format-sink)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-sink"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のシンク
-
-コピー先にデータを **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのシンクと、サポートされる設定について参照してください。 Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeSettings` 設定で次のプロパティがサポートされます。
+Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeSettings` 設定で次のプロパティがサポートされます。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` の type プロパティは **AzureBlobFSWriteSetting** に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
 | maxConcurrentConnections | データ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ       |
-
-> [!NOTE]
-> Parquet 形式または区切りテキスト形式の場合、次のセクションで説明する **AzureBlobFSSink** 型のコピー アクティビティ シンクは、下位互換性を確保するために引き続きそのままサポートされます。 今後はこの新しいモデルを使用することをお勧めします。 Data Factory オーサリング UI では、これらの新しい型が生成されます。
 
 **例:**
 
@@ -461,9 +439,10 @@ Data Lake Storage Gen2 をコピー先またはコピー元として **ORC 形�
 ]
 ```
 
-#### <a name="other-format-sink"></a>他の形式のシンク
+#### <a name="legacy-sink-model"></a>レガシ シンク モデル
 
-**ORC 形式**のデータを Data Lake Storage Gen2 にコピーする場合、**sink** セクションで次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のコピー シンク モデルは引き続き現状のままサポートされます。 今後は、前述した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

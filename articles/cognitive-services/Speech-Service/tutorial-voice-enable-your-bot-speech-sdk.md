@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: 89bf4a3a6b8ea0cb04f3a1a663cc2365fa4fefc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 839bb24996ab782a386d7d28bcc1c06c686e6cd5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468692"
+ms.locfileid: "73578033"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -28,13 +28,13 @@ Speech Services の機能を使用して、チャット ボットを音声で簡
 この演習の最後に、次のように動作するシステムが設定されています。
 
 1. サンプル クライアント アプリケーションが Direct Line Speech チャネルとエコー ボットに接続するように構成されている
-2. オーディオは、ボタンを押すと既定のマイクから録音される (またはカスタム キーワードがアクティブになっている場合は継続的に記録される)
-3. 必要に応じて、カスタムキーワードの検出が行われ、オーディオ ストリーミングがクラウドに転送される
-4. Speech SDK を使用して、アプリが Direct Line Speech チャネルに接続され、オーディオがストリーミングされる
-5. 必要に応じて、サービス上でより高い精度のキーワード検証が行われる
-6. オーディオが音声認識サービスに渡され、テキストに変換される
-7. 認識されたテキストが Bot Framework アクティビティとしてエコー ボットに渡される 
-8. 応答テキストがテキスト読み上げ (TTS) サービスによってオーディオに変換され、再生のためにクライアント アプリケーションにストリーミングで返される
+1. オーディオは、ボタンを押すと既定のマイクから録音される (またはカスタム キーワードがアクティブになっている場合は継続的に記録される)
+1. 必要に応じて、カスタムキーワードの検出が行われ、オーディオ ストリーミングがクラウドに転送される
+1. Speech SDK を使用して、アプリが Direct Line Speech チャネルに接続され、オーディオがストリーミングされる
+1. 必要に応じて、サービス上でより高い精度のキーワード検証が行われる
+1. オーディオが音声認識サービスに渡され、テキストに変換される
+1. 認識されたテキストが Bot Framework アクティビティとしてエコー ボットに渡される 
+1. 応答テキストがテキスト読み上げ (TTS) サービスによってオーディオに変換され、再生のためにクライアント アプリケーションにストリーミングで返される
 
 ![diagram-tag](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "Speech チャネルのフロー")
 
@@ -66,21 +66,21 @@ Speech Services の機能を使用して、チャット ボットを音声で簡
 このチュートリアルで作成するクライアント アプリでは、いくつかの Azure サービスを使用します。 ボットからの応答のラウンドトリップ時間を短縮するには、これらのサービスが同じ Azure リージョンに配置されていることを確認します。 ここでは、リソース グループを**米国西部**リージョンに作成します。 このリソース グループは、Bot-Framework、Direct Line Speech チャネル、および Speech Services 用に個別のリソースを作成するときに使用されます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のナビゲーションから、 **[リソース グループ]** を選択します。 次に、 **[追加]** をクリックして新しいリソース グループを追加します。
-3. いくつかの情報を指定するよう求められます。
+1. 左側のナビゲーションから、 **[リソース グループ]** を選択します。 次に、 **[追加]** をクリックして新しいリソース グループを追加します。
+1. いくつかの情報を指定するよう求められます。
    * **[サブスクリプション]** を **[無料試用版]** に設定します (既存のサブスクリプションを使用することもできます)。
    * **リソース グループ**の名前を入力します。 **SpeechEchoBotTutorial-ResourceGroup** をお勧めします。
    * **[リージョン]** ドロップダウンから、 **[米国西部]** を選択します。
-4. **[確認と作成]** をクリックします。 "**検証に成功しました**" というバナーが表示されます。
-5. **Create** をクリックしてください。 リソース グループの作成には数分かかる場合があります。
-6. このチュートリアルで後ほど作成するリソースと同様に、このリソース グループをダッシュボードにピン留めして簡単にアクセスできるようにすることをお勧めします。 このリソース グループをピン留めする場合は、ダッシュボードの右上にあるピン アイコンをクリックします。
+1. **[確認と作成]** をクリックします。 "**検証に成功しました**" というバナーが表示されます。
+1. **Create** をクリックしてください。 リソース グループの作成には数分かかる場合があります。
+1. このチュートリアルで後ほど作成するリソースと同様に、このリソース グループをダッシュボードにピン留めして簡単にアクセスできるようにすることをお勧めします。 このリソース グループをピン留めする場合は、ダッシュボードの右上にあるピン アイコンをクリックします。
 
 ### <a name="choosing-an-azure-region"></a>Azure リージョンの選択
 
 このチュートリアルで別のリージョンを使用する場合は、次の要因によって選択肢が制限される可能性があります。
 
-* [サポートされている Azure リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#voice-assistants)を使用してください。
-* Direct Line Speech チャネルでは、標準音声とニューラル音声を持つテキスト読み上げサービスが使用されます。 ニューラル音声は、[特定の Azure リージョンに限定](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)されています。
+* [サポートされている Azure リージョン](regions.md#voice-assistants)を使用してください。
+* Direct Line Speech チャネルでは、標準音声とニューラル音声を持つテキスト読み上げサービスが使用されます。 ニューラル音声は、[特定の Azure リージョンに限定](regions.md#standard-and-neural-voices)されています。
 * 無料試用版のキーは、特定のリージョンに限定される場合があります。
 
 リージョンについて詳しくは、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」をご覧ください。
@@ -145,14 +145,18 @@ Speech リソースを作成するには、以下の手順に従います。
 ### <a name="download-and-run-the-sample"></a>サンプルのダウンロードと実行
 
 1. サンプル リポジトリを複製します。
+
    ```bash
    git clone https://github.com/Microsoft/botbuilder-samples.git
    ```
+
 2. Visual Studio を起動します。
 3. ツール バーの **[ファイル]**  >  **[開く]**  >  **[プロジェクト/ソリューション]** を選択し、Direct Line Speech チャネルで使用するために構成されているエコー ボット のプロジェクト ファイルを開きます。
+
    ```
    experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
    ```
+
 4. プロジェクトが読み込まれたら、`F5` キーを押してプロジェクトを実行します。
 
 ### <a name="test-with-the-bot-framework-emulator"></a>Bot Framework Emulator を使用したテスト
@@ -163,11 +167,12 @@ Speech リソースを作成するには、以下の手順に従います。
 2. Bot Framework Emulator を起動し、ご自身のボットを開きます。
    * **[ファイル]**  ->  **[Open Bot]\(ボットを開く\)** 。
 3. ボットの URL を入力します。 例:
+
    ```
    http://localhost:3978/api/messages
    ```
-4. UI を使用し、型指定されたテキストを使用してボットと通信します。 応答を取得したことを確認します。
 
+4. UI を使用し、型指定されたテキストを使用してボットと通信します。 応答を取得したことを確認します。
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>ボットを Azure App Service にデプロイする
 
@@ -177,26 +182,30 @@ Speech リソースを作成するには、以下の手順に従います。
 > または、[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) と[デプロイ テンプレート](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/DeploymentTemplates)を使用してボットをデプロイすることもできます。
 
 1. Visual Studio から、Direct Line Speech チャネルで使用するように構成されているエコー ボットを開きます。
+
    ```
    experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
    ```
-2. **ソリューション エクスプローラー**で、 **[EchoBot]** ソリューションを右クリックし、 **[発行...]** を選択します。
-3. **[発行先を選択]** というタイトルの新しいウィンドウが開きます。
-3. 左側のナビゲーションから **[App Service]** を選択し、 **[新規作成]** を選択し、 **[発行]** をクリックします。
-5. **[App Service の作成]** ウィンドウが表示されます。
+
+1. **ソリューション エクスプローラー**で、 **[EchoBot]** ソリューションを右クリックし、 **[発行...]** を選択します。
+1. **[発行先を選択]** というタイトルの新しいウィンドウが開きます。
+1. 左側のナビゲーションから **[App Service]** を選択し、 **[新規作成]** を選択し、 **[発行]** をクリックします。
+1. **[App Service の作成]** ウィンドウが表示されます。
    * **[アカウントの追加]** をクリックし、Azure アカウントの資格情報を使用してサインインします。 既にサインインしている場合、ドロップダウン リストからアカウントを選択します。
    * **[アプリ名]** では、グローバルに一意のボット名を入力する必要があります。 この名前は、一意のボット URL を作成するために使用されます。 日付と時刻を含む既定値が設定されます (例:"EchoBot20190805125647")。 このチュートリアルでは、既定の名前を使用できます。
    * **[サブスクリプション]** は **[無料試用版]** に設定します
    * **[リソース グループ]** で、 **[SpeechEchoBotTutorial-ResourceGroup]** を選択します
    * **[ホスティング プラン]** では、 **[SpeechEchoBotTutorial-AppServicePlan]** を選択します
-6. **[作成]**
-7. Visual Studio に、次のような成功メッセージが表示されます。
+1. **[作成]**
+1. Visual Studio に、次のような成功メッセージが表示されます。
+
    ```
    Publish Succeeded.
    Web App was published successfully https://EchoBot20190805125647.azurewebsites.net/
    ```
-8. 既定のブラウザーが開き、次の内容を含むページが表示されます:"Your bot is ready! (ボットの準備ができました)"。
-9. この時点で、Azure portal 上でリソース グループ **SpeechEchoBotTutorial-ResourceGroup** をチェックし、次の 3 つのリソースがあることを確認します。
+
+1. 既定のブラウザーが開き、次の内容を含むページが表示されます:"Your bot is ready! (ボットの準備ができました)"。
+1. この時点で、Azure portal 上でリソース グループ **SpeechEchoBotTutorial-ResourceGroup** をチェックし、次の 3 つのリソースがあることを確認します。
 
 | 名前 | TYPE  | LOCATION |
 |------|-------|----------|
@@ -255,12 +264,12 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 次は、ボットを Direct Line Speech チャネルに登録します。 このチャネルは、エコー ボットと Speech SDK を使用してコンパイルされたクライアント アプリとの間の接続を作成するために使用されます。
 
 1. [Azure portal](https://portal.azure.com) 内で、**SpeechEchoBotTutorial-BotRegistration** リソースを特定して開きます。
-2. 左側のナビゲーションから **[チャネル]** を選択します。
+1. 左側のナビゲーションから **[チャネル]** を選択します。
    * **[その他のチャネル]** を検索し、 **[Direct Line Speech]** を特定してクリックします。
-   * **[Configure Direct line Speech]\(Direct line Speech の構成\)** というページのテキストを確認し、 **[保存]** をクリックします。
-   * 作成の一環として、2 つの**秘密キー**が生成されました。 これらのキーはボットに固有です。 [SpeechSDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/) を使用してクライアント アプリを作成する場合は、これらのキーのいずれかを指定して、クライアント アプリ、Direct Line Speech チャネル、ボット サービスの間の接続を確立します。 このチュートリアルでは、Direct Line Speech クライアント (WPF、C#) を使用します。
-   * **[表示]** をクリックし、いずれかのキーをコピーすると、簡単にアクセスできるようになります。 いつでも Azure portal からキーにアクセスできるので心配しないでください。
-3. 左側のナビゲーションで、 **[設定]** をクリックします。
+   * **[Configure Direct line Speech]\(Direct line Speech の構成\)** というページのテキストを確認し、[Cognitive service account]\(Cognitive Service アカウント\) ドロップダウン メニューを展開します。
+   * 前に作成したスピーチ リソース (例: **SpeechEchoBotTutorial-Speech**) をメニューから選択して、Speech のサブスクリプション キーにボットを関連付けます。
+
+1. 左側のナビゲーションで、 **[設定]** をクリックします。
    * **[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\)** というラベルの付いたボックスをオンにします。 これは、ボットと Direct Line Speech チャネルの間の Web ソケット上に構築された通信プロトコルを有効にするために必要です。
    * **[Save]** をクリックします。
 

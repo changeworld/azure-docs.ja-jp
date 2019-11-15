@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 683ea55bdc9eb878f7bcbe832d5364d50a6b23e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509006"
+ms.locfileid: "73572148"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service で SSL 証明書を追加する
 
@@ -65,6 +65,7 @@ SSL バインドでカスタム ドメインをセキュリティで保護する
 
 無料 App Service マネージド証明書は、App Service でカスタム DNS 名をセキュリティで保護するためのターンキー ソリューションです。 これは、App Service によって管理され、自動的に更新される、完全に機能する SSL 証明書です。 無料の証明書には以下の制限が伴います。
 
+- ワイルドカード証明書はサポートされません。
 - ネイキッド ドメインはサポートされていません。
 - エクスポートはできません。
 
@@ -281,7 +282,7 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 ![App Service に公開証明書をアップロードする](./media/configure-ssl-certificate/upload-public-cert.png)
 
-証明書がアップロードされたら、証明書の拇印をコピーし、「[証明書をアクセス可能にする](configure-ssl-certificate-in-code.md#load-the-certificate)」を参照してください。
+証明書がアップロードされたら、証明書の拇印をコピーし、「[証明書をアクセス可能にする](configure-ssl-certificate-in-code.md#make-the-certificate-accessible)」を参照してください。
 
 ## <a name="manage-app-service-certificates"></a>App Service 証明書を管理する
 

@@ -1,5 +1,5 @@
 ---
-title: Java を使用して Azure SQL Database に照会する
+title: Java を使用してクエリを実行する
 description: Azure SQL データベースに接続して T-SQL ステートメントを使用してデータベースに照会するプログラムを Java を使用して作成する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6d4d9353e29a29b0cd6db7575e49a00a213355d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624077"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827041"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>クイック スタート:Java を使用して Azure SQL データベースに接続し、クエリを実行します。
 
@@ -30,12 +30,12 @@ ms.locfileid: "69624077"
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|
-  | Create| [ ポータル ](sql-database-single-database-get-started.md) | [ ポータル ](sql-database-managed-instance-get-started.md) |
+  | 作成| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | 構成 | [ サーバー レベルの IP ファイアウォール規則 ](sql-database-server-level-firewall-rule.md)| [VM からの接続 ](sql-database-managed-instance-configure-vm.md)|
-  |||[ オンサイトからの接続 ](sql-database-managed-instance-configure-p2s.md)
-  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する ](sql-database-managed-instance-get-started-restore.md)
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
   |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
   
   > [!IMPORTANT]
@@ -43,11 +43,11 @@ ms.locfileid: "69624077"
 
 - ご使用のオペレーティング システムに対応した、以下の Java 関連のソフトウェアをインストール済みであること。
 
-  - **MacOS** では、Homebrew と Java をインストールした後、Maven をインストールします。 [ 手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) を参照してください。
+  - **MacOS** では、Homebrew と Java をインストールした後、Maven をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) を参照してください。
 
-  - **Ubuntu** では、Java と Java Development Kit をインストールした後、Maven をインストールします。 [ 手順 1.2.、手順 1.3.、手順 1.4.](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) を参照してください。
+  - **Ubuntu** では、Java と Java Development Kit をインストールした後、Maven をインストールします。 [手順 1.2.、手順 1.3.、手順 1.4.](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) を参照してください。
 
-  - **Windows** では、Java をインストールした後、Maven をインストールします。 [ 手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) を参照してください。
+  - **Windows** では、Java をインストールした後、Maven をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) を参照してください。
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
@@ -167,8 +167,8 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ 最初の Azure SQL データベースの設計 ](sql-database-design-first-database.md)  
+- [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)  
 
-- [SQL Server 用 Microsoft JDBC ドライバー ](https://github.com/microsoft/mssql-jdbc)  
+- [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)  
 
-- [ 問題の報告/質問 ](https://github.com/microsoft/mssql-jdbc/issues)  
+- [問題の報告/質問](https://github.com/microsoft/mssql-jdbc/issues)  
