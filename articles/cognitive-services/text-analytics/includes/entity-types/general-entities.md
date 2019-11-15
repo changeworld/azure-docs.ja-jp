@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: aahi
-ms.openlocfilehash: e81a1de02c112abd5c52f0f83404a615d738e01c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 693a81cfb15407541311d7ab053bb2ab6a267b29
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506890"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799969"
 ---
 ## <a name="general-entity-types"></a>一般エンティティの種類:
 
@@ -61,6 +61,19 @@ ms.locfileid: "73506890"
 | サブタイプ名 | 説明                                  |
 |----------|----------------------------------------------|
 | 該当なし         | 電話番号 (例、`+1 123-123-123`)。 |
+
+### <a name="email"></a>Email
+
+電子メール アドレス。 
+
+言語:
+
+
+* パブリック プレビュー: `English`
+
+| サブタイプ名 | 説明                                  |
+|----------|----------------------------------------------|
+| 該当なし         | メール アドレス (例: `support@contoso.com`) |
 
 ### <a name="url"></a>URL
 

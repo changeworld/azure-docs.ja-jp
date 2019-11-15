@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して HDFS からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して HDFS からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HDFS ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 4bc6e5570870941f050bc289dddfd85d64843df2
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 49285ac4a15cb52f04f6d629d80449eb515c33fa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092089"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680859"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -113,21 +113,15 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-- **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
-- **ORC 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット
-
-**Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**からデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 HDFS では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+HDFS では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | データセットの `location` の type プロパティは、**HdfsLocation** に設定する必要があります。 | はい      |
 | folderPath | フォルダーのパス。 フォルダーをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 | fileName   | 特定の folderPath の下のファイル名。 ファイルをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
-
-> [!NOTE]
-> 次のセクションで説明する Parquet/テキスト形式の **FileShare** 型のデータセットは、下位互換性のために引き続きコピー/Lookup アクティビティでそのままサポートされます。 今後は、この新しいモデルを使用することをお勧めします。ADF オーサリング UI はこれらの新しい型を生成するように切り替えられています。
 
 **例:**
 
@@ -155,9 +149,10 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 }
 ```
 
-### <a name="other-format-dataset"></a>他の形式のデータセット
+### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
-**ORC 形式**のデータを HDFS からコピーする場合、次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のデータセット モデルは引き続き現状のままサポートされます。 今後は、前セクションで言及した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -208,12 +203,9 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 ### <a name="hdfs-as-source"></a>ソースとしての HDFS
 
-- コピー元から **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
-- コピー元から **ORC 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース
-
-**Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 HDFS では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+HDFS では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -228,9 +220,6 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 | tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 このスクリプト ファイルは Data Factory によって生成され、コピー ジョブ完了後に削除されます。 | はい (DistCp を使用する場合) |
 | distcpOptions | DistCp コマンドに指定する追加オプション。 | いいえ |
 | maxConcurrentConnections | 同時にストレージ ストアに接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                            |
-
-> [!NOTE]
-> Parquet/区切りテキスト形式の場合、次のセクションで説明する **FileSystemSource** 型のコピー アクティビティ ソースは、下位互換性のために引き続きそのままサポートされます。 今後は、この新しいモデルを使用することをお勧めします。ADF オーサリング UI はこれらの新しい型を生成するように切り替えられています。
 
 **例:**
 
@@ -276,9 +265,10 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 ]
 ```
 
-#### <a name="other-format-source"></a>他の形式のソース
+#### <a name="legacy-source-model"></a>レガシ ソース モデル
 
-**ORC 形式**のデータを HDFS からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+>[!NOTE]
+>下位互換性を確保するために、次のコピー ソース モデルは引き続き現状のままサポートされます。 今後は、前述した新しいモデルを使用することをお勧めします。ADF オーサリング UI はこの新しいモデルを生成するように切り替えられています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -484,7 +474,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

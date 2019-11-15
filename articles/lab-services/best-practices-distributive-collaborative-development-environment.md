@@ -33,8 +33,8 @@ ms.locfileid: "67543766"
 ### <a name="custom-virtual-machine-images"></a>カスタムの仮想マシン イメージ
 毎晩、ラボにデプロイされるカスタム イメージの共通のソースを取得できます。 詳細については、[イメージ ファクトリ](image-factory-create.md)に関するページを参照してください。    
 
-### <a name="formulas"></a>数式
-[数式](devtest-lab-manage-formulas.md)はラボ固有であり、分散のメカニズムはありません。 ラボ メンバーは数式の開発をすべて行います。 
+### <a name="formulas"></a>フォーミュラ
+[フォーミュラ](devtest-lab-manage-formulas.md)はラボ固有であり、分散のメカニズムはありません。 ラボ メンバーはフォーミュラの開発をすべて行います。 
 
 ## <a name="code-repository-based-resources"></a>コード リポジトリベースのリソース
 コード リポジトリに基づく機能は、成果物と環境という 2 種類あります。 この記事では、リポジトリを最も効果的に設定する機能と方法、使用できる成果物および環境を組織レベルまたはチーム レベルでカスタマイズする機能を可能にするワークフローについて説明します。  このワークフローは、標準の[ソース コード管理のブランチ作成戦略](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops)に基づいています。 

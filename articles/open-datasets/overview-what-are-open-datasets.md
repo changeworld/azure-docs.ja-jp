@@ -1,22 +1,22 @@
 ---
 title: オープン データセットとは 選別されたパブリック データセット
-titleSuffix: Azure Open Datasets (preview)
-description: Azure オープン データセット (プレビュー) について説明します。これは、機械学習および分析ソリューション内で使用する準備ができた、パブリック ドメインから選別されたデータセットです。 データセットには、天気、国勢調査、祝日、場所など、予測ソリューションのエンリッチメントに役立つパブリック データが含まれます。
+titleSuffix: Azure Open Datasets
+description: 予測ソリューションを強化するために天気、国勢調査、祝日、場所などのパブリック ドメインから選別されたデータセットである Azure Open Datasets について説明します。
 ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.date: 11/04/2019
+ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70213579"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606167"
 ---
-# <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Azure オープン データセット (プレビュー) とその使用方法
+# <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Azure Open Datasets とその使用方法
 
-[Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 オープン データセットは Microsoft Azure 上のクラウド内にあり、Azure Databricks、Machine Learning service、および Machine Learning Studio ですぐに利用できます。 API を介してデータセットにアクセスすることもでき、Power BI や Azure Data Factory などの他の製品内でも使用できます。
+[Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 Open Datasets は Microsoft Azure 上のクラウド内にあり、Azure Machine Learning と統合され、Azure Databricks や Machine Learning Studio (クラシック) ですぐに利用できます。 API を介してデータセットにアクセスすることもでき、Power BI や Azure Data Factory などの他の製品内でも使用できます。
 
 データセットには、機械学習モデルのトレーニングと予測ソリューションのエンリッチメントに役立つ天気、国勢調査、祝日、公共の安全、場所に関するパブリック ドメイン データが含まれます。 Azure オープン データセット上でパブリック データセットを共有することもできます。 
 
@@ -25,7 +25,7 @@ ms.locfileid: "70213579"
 ## <a name="curated-prepared-datasets"></a>選別されて準備されたデータセット
 Azure オープン データセット内の選別されたオープン パブリック データセットは、機械学習ワークフロー内で使用するために最適化されています。 
 
-データ サイエンティストは、多くの場合、高度な分析のためのデータのクリーニングと準備に時間の大半を費やしています。 オープン データセットは、ユーザーの時間を節約するために Azure クラウドにコピーされ、前処理されます。 米国海洋大気庁 (NOAA) への FTP 接続などによってソースから定期的な間隔でデータがプルされ、構造化形式に解析されてから、郵便番号や最寄りの測候所の場所などの特徴によって適宜エンリッチメントされます。
+データ サイエンティストは、多くの場合、高度な分析のためのデータのクリーニングと準備に時間の大半を費やしています。 オープン データセットは、ユーザーの時間を節約するために Azure クラウドにコピーされ、前処理されます。 データは、米国海洋大気庁 (NOAA) への FTP 接続などによってソースから定期的な間隔でプルされます。 その後、構造化形式に解析されてから、郵便番号や最寄りの測候所の場所などの特徴によって適宜エンリッチメントされます。
 
 データセットは、Azure 内のクラウド コンピューティングと共同ホスティングされるので、アクセスと操作が簡単になります。  
 
@@ -47,7 +47,7 @@ Azure オープン データセット内の選別されたオープン パブリ
 ## <a name="access-to-datasets"></a>データセットへのアクセス  
 Azure アカウントでは、コードを使用するか Azure サービス インターフェイスを通じてオープン データセットにアクセスできます。 データは、機械学習ソリューション内で使用するために Azure クラウド コンピューティング リソースと併置されます。  
 
-オープン データセットでは、Azure Machine Learning service と Azure Databricks にデータを接続するために使用できる Azure Notebooks と Azure Databricks ノートブックが提供されます。 データセットには、Python SDK を通じてアクセスすることもできます。 
+Open Datasets は、Azure Machine Learning UI と SDK を通じて利用できます。 Open Datasets では、Azure Machine Learning service と Azure Databricks にデータを接続するために使用できる Azure Notebooks と Azure Databricks ノートブックが提供されます。 データセットには、Python SDK を通じてアクセスすることもできます。 
 
 ただし、オープン データセットにアクセスするために Azure アカウントは必要ありません。Spark の有無に関係なく、任意の Python 環境内からアクセスできます。
 
@@ -57,5 +57,5 @@ Azure アカウントでは、コードを使用するか Azure サービス イ
 
 ## <a name="next-steps"></a>次の手順
 * [サンプル ノートブック](samples.md)
-* [チュートリアル:ニューヨークのタクシー データでの回帰モデリング](tutorial-opendatasets-automl.md)
+* [チュートリアル:ニューヨークのタクシー データでの回帰モデリング](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [オープン データセット用 Python SDK](/python/api/azureml-opendatasets/?view=azure-ml-py)

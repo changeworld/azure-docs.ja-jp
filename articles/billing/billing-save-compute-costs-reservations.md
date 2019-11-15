@@ -5,18 +5,18 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499234"
+ms.locfileid: "73580088"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
-Azure の予約は、仮想マシン、SQL Database のコンピューティング能力、Azure Cosmos DB のスループット、または他の Azure リソースを 1 年分または 3 年分コミットすることで、コストを削減するのに役立ちます。 コミットすることで、使用するリソースの割り引きを受けることができます。 予約すると、コストを大幅に削減でき、仮想マシン、SQL データベースのコンピューティング、Azure Cosmos DB、または他のリソースで、従量課金制の料金を最大 72% 削減できます。 予約は課金割引を提供するもので、リソースの実行時の状態には影響しません。
+Azure の予約は、仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、または他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることで、コストを削減するのに役立ちます。 コミットすることで、使用するリソースの割り引きを受けることができます。 予約すると、コストを大幅に削減でき、従量課金制の料金を最大 72% 削減できます。 予約は課金割引を提供するもので、リソースの実行時の状態には影響しません。
 
 予約の支払いは、前払いとすることも、月払いとすることもできます。 前払いも月払いも予約の総コストは同じであり、月払いを選んだとしても追加料金を支払う必要はありません。 毎月の支払いは、サードパーティ製品ではなく、Azure の予約で利用できます。
 
@@ -24,13 +24,14 @@ Azure の予約は、仮想マシン、SQL Database のコンピューティン�
 
 ## <a name="why-buy-a-reservation"></a>予約を購入する理由
 
-長期にわたって実行される仮想マシン、Azure Cosmos DB、または SQL Database がある場合、予約を購入することで最も費用効果が高いオプションを選択できます。 たとえば予約なしでサービスの 4 つのインスタンスを常時実行した場合、従量課金制の料金が請求されます。 これらのリソースの予約を購入すると、予約割引がすぐに得られます。 リソースには従量課金制の料金が適用されなくなります。
+仮想マシン、BLOB ストレージ データ、Azure Cosmos DB、または SQL Database が大量の容量またはスループットを使用する場合、または長期にわたって実行される場合、予約を購入することで最も費用効果の高いオプションを選択できます。 たとえば予約なしでサービスの 4 つのインスタンスを常時実行した場合、従量課金制の料金が請求されます。 これらのリソースの予約を購入すると、予約割引がすぐに得られます。 リソースには従量課金制の料金が適用されなくなります。
 
 ## <a name="charges-covered-by-reservation"></a>予約の対象となる料金
 
 サービス プラン:
 
 - **予約仮想マシン インスタンス** - 予約の対象は仮想マシンのコンピューティング コストのみです。 その他のソフトウェア、ネットワーク、ストレージの料金は含まれません。
+- **Azure Storage の予約容量** - 予約の対象となるのは、BLOB ストレージまたは Azure Data Lake Gen2 ストレージの標準ストレージ アカウントのストレージ容量です。 帯域幅またはトランザクション レートは予約の対象外です。
 - **Azure Cosmos DB の予約容量** - 予約は、リソース用にプロビジョニングされたスループットが対象になります。 ストレージとネットワーク料金は対象外です。
 - **SQL Database の予約された仮想コア** - 予約にはコンピューティング コストのみが含まれます。 ライセンスの料金は別途請求されます。
 - **SQL Data Warehouse** - 予約には cDWU の使用が含まれます。 SQL Data Warehouse の使用に関連するストレージまたはネットワークの料金は含まれません。
@@ -134,6 +135,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 サービス プラン:
 
 - 予約 VM インスタンス:予約を購入し、 **[インスタンス サイズの柔軟性に対する最適化]** を選択すると、割引範囲は選択する仮想マシンのサイズによって決まります。 予約は同じサイズの系列グループの仮想マシン (VM) のサイズに適用できます。 詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+- Azure Storage の予約容量: Azure Storage の標準アカウントの予約容量を、1 か月あたり 100 TiB または 1 PiB 単位で購入できます。 Azure Storage の予約容量は、任意のアクセス層 (ホット、クール、アーカイブ) および任意のレプリケーション オプション (LRS、GRS、ZRS) のすべてのリージョンで利用できます。
 - SQL Database 予約容量:割引範囲は、選択したパフォーマンス層によって異なります。 詳細については、「[Azure の予約割引の適用方法](billing-understand-reservation-charges.md)」を参照してください。
 - Azure Cosmos DB 予約容量:割引範囲は、プロビジョニングされたスループットによって異なります。 詳細については、「[Azure Cosmos DB の予約割引の適用方法](billing-understand-cosmosdb-reservation-charges.md)」を参照してください。
 

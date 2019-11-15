@@ -3,31 +3,41 @@ title: クイック スタート:ソース コードから Spring Cloud アプ�
 description: ソース コードから Azure Spring Cloud アプリケーションを直接起動する方法について説明します
 author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
-ms.date: 9/27/2019
+ms.topic: quickstart
+ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170531"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721273"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>ソース コードから Spring Cloud アプリケーションを起動する
 
+Azure Spring Cloud では、Spring Cloud ベースのマイクロサービス アプリケーションを Azure で簡単に実行できます。
+
 Azure Spring Cloud を使用すると、Java ソース コードから、またはビルド済みの JAR から直接アプリケーションを起動できます。 この記事では、必要な手順について説明します。
+
+このクイックスタートでは、次の方法について説明します。
+
+> [!div class="checklist"]
+> * サービス インスタンスをプロビジョニングする
+> * インスタンスに構成サーバーを設定する
+> * マイクロサービス アプリケーションをローカルにビルドする
+> * 各マイクロサービスをデプロイする
+> * アプリケーションのパブリック エンドポイントを割り当てる
 
 ## <a name="prerequisites"></a>前提条件
 
 >[!Note]
-> このクイックスタートを開始する前に、ご利用の Azure サブスクリプションで Azure Spring Cloud にアクセスできることを確認してください。  プレビュー サービスとして、サブスクリプションをこちらで許可リストに追加できるように、ご連絡いただくことをお願いしています。  Azure Spring Cloud の機能を試してみたい場合は、[このフォームに記入](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-)してください。
+> Azure Spring Cloud は現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー期間中のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) のページを参照するか、詳細について[サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を提出してください。
 
 開始する前に、ご利用の Azure サブスクリプションで、以下の必要な依存関係があることを確認します。
 
 1. [Git をインストールする](https://git-scm.com/)
 2. [JDK 8 をインストールする](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-3. [Maven 3.0 以降をインストールする](https://maven.apache.org/download.cgi)
+3. [Maven 3.0 以上をインストールする](https://maven.apache.org/download.cgi)
 4. [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
 
@@ -39,7 +49,7 @@ Azure Spring Cloud を使用すると、Java ソース コードから、また�
 次のコマンドを使用して、Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>Azure CLI を使用してサービス インスタンスをプロビジョニングする
