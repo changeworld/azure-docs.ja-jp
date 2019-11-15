@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: process-automation
 author: bobbytreed
 ms.author: robreed
-ms.date: 05/21/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 15036b33e637953de7dc12100468d3dd8570f775
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d7a43ee2ed8719df2c38d00c9a50811c6d5ea70d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376105"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718687"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
-Start/Stop VMs during off-hours ソリューションでは、ユーザー定義のスケジュールで Azure Virtual Machines を起動および停止し、Azure Monitor ログによって分析情報を提供して、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用することで必要に応じて電子メールを送信します。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。 クラシック VM でこのソリューションを使用するには、既定では作成されないクラシック実行アカウントが必要です。 クラシック実行アカウントの作成手順については、「[クラシック実行アカウント](automation-create-standalone-account.md#classic-run-as-accounts)」を参照してください。
+Start/Stop VMs during off-hours ソリューションは、ユーザー定義のスケジュールで Azure 仮想マシンを起動および停止したり、Azure Monitor ログを通して分析情報を提供したり、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用してオプションの電子メールを送信したりします。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。 クラシック VM でこのソリューションを使用するには、既定では作成されないクラシック実行アカウントが必要です。 クラシック実行アカウントの作成手順については、「[クラシック実行アカウント](automation-create-standalone-account.md#classic-run-as-accounts)」を参照してください。
 
 > [!NOTE]
 > Start/Stop VMs during off-hours ソリューションは、このソリューションのデプロイ時にご使用の Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 このソリューションは現在、Azure モジュールの新しいバージョンでは動作しません。 これは、Start/Stop VMs during off-hours ソリューションの実行に使用する Automation アカウントのみに影響します。 「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」で説明しているように、ご使用の他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
@@ -29,13 +29,13 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 - Azure タグを使用して昇順で VM の起動および停止をスケジュールする (クラシック VM ではサポートされません)。
 - CPU 使用率の低さに基づいて VM を自動停止する。
 
-現在のソリューションの制限事項は次のとおりです。
+現在のソリューションでの制限を次に示します。
 
 - このソリューションは任意のリージョンの VM を管理しますが、Azure Automation アカウントと同じサブスクリプションでのみ使用できます。
 - このソリューションは、Azure および AzureGov から、Log Analytics ワークスペース、Azure Automation アカウント、および Alerts をサポートする任意のリージョン対して利用できます。 現在、AzureGov リージョンは電子メール機能をサポートしていません。
 
 > [!NOTE]
-> クラシック VM 用のソリューションを使用している場合、すべての VM はクラウド サービスごとに順番に処理されます。 仮想マシンは、異なる複数のクラウド サービスでまだ並列に処理されています。
+> クラシック VM 用のソリューションを使用している場合、すべての VM はクラウド サービスごとに順番に処理されます。 仮想マシンは、異なる複数のクラウド サービスでまだ並列に処理されています。 クラウド サービスあたりの VM 数が 20 を超える場合は、親 Runbook の **ScheduledStartStop_Parent** で複数のスケジュールを作成し、スケジュールあたり 20 個の VM を指定することをお勧めします。 スケジュールのプロパティで、**VMList** パラメーター内の VM 名をコンマ区切りリストとして指定します。 そうしないと、このソリューションの Automation ジョブが 3 時間を超えて実行された場合、そのジョブは[フェア シェア](automation-runbook-execution.md#fair-share)制限に従って一時的にアンロードまたは停止されます。
 >
 > Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 起動/停止ソリューションでは、クラシック リソースを管理するためのコマンドレットがあるため、実行時にエラーが発生する可能性があります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページをご覧ください。 CSP サブスクリプションを使用する場合、デプロイ後に [**External_EnableClassicVMs**](#variables) 変数を **False** に変更する必要があります。
 
@@ -45,15 +45,15 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 
 このソリューションの Runbook は、[Azure 実行アカウント](automation-create-runas-account.md)で動作します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
 
-Start/Stop VM ソリューションには、別の Automation アカウントを使用することをお勧めします。 この理由は、Azure モジュールのバージョンが頻繁にアップグレードされ、パラメーターが変更される可能性があるからです。 Start/Stop VM ソリューションは同じ周期でアップグレードされないため、使用しているコマンドレットの新しいバージョンで機能しない場合があります。 モジュールの更新は、実稼働用の Automation アカウントにインポートする前に、テスト用の Automation アカウントでテストすることをお勧めします。
+Start/Stop VM ソリューションには個別の Automation アカウントを使用することをお勧めします。 この理由は、Azure モジュールのバージョンが頻繁にアップグレードされ、パラメーターが変更される可能性があるからです。 Start/Stop VM ソリューションは同じ周期でアップグレードされないため、使用しているコマンドレットの新しいバージョンで機能しない場合があります。 また、モジュールの更新は、実稼働用の Automation アカウントでインポートする前にテスト用の Automation アカウントでテストすることもお勧めします。
 
 ### <a name="permissions-needed-to-deploy"></a>デプロイに必要なアクセス許可
 
 ユーザーが Start/Stop VMs during off-hours ソリューション をデプロイするために必要な特定のアクセス許可があります。 これらのアクセス許可は、デプロイ時に、事前に作成された Automation アカウントおよび Log Analytics ワークスペースを使用する場合と、新しいものを作成する場合とで異なります。 サブスクリプションの共同作成者および Azure Active Directory テナントのグローバル管理者の場合、次のアクセス許可を構成する必要はありません。 これらの権限がないか、カスタム ロールを構成する必要がない場合は、以下の必要なアクセス許可をご覧ください。
 
-#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>既存の Automation アカウントと Log Analytics アカウント
+#### <a name="pre-existing-automation-account-and-log-analytics-workspace"></a>既存の Automation アカウントと Log Analytics ワークスペース
 
-Automation アカウントと Log Analytics に対して Start/Stop VMs during off-hours ソリューションをデプロイするには、ソリューションをデプロイするユーザーは**リソース グループ**に対して次のアクセス許可を持っている必要があります。 ロールの詳細については、「[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)」をご覧ください。
+既存の Automation アカウントと Log Analytics ワークスペースに Start/Stop VMs during off-hours ソリューションをデプロイするには、そのソリューションをデプロイするユーザーは**リソース グループ**に次のアクセス許可が必要です。 ロールの詳細については、「[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)」をご覧ください。
 
 | アクセス許可 | Scope (スコープ)|
 | --- | --- |
@@ -78,10 +78,10 @@ Automation アカウントと Log Analytics に対して Start/Stop VMs during o
 
 #### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新しい Automation アカウントと新しい Log Analytics ワークスペース
 
-新しい Automation アカウントと Log Analytics ワークスペースに Start/Stop VMs during off-hours ソリューションをデプロイするには、ソリューションをデプロイするユーザーは前のセクションで定義されているアクセス許可と次のアクセス許可を持っている必要があります。
+新しい Automation アカウントと Log Analytics ワークスペースに Start/Stop VMs during off-hours ソリューションをデプロイするには、そのソリューションをデプロイするユーザーは前のセクションで定義されたアクセス許可だけでなく、次のアクセス許可が必要です。
 
-- サブスクリプションの共同管理者 - これは、クラシック VM を管理する場合に、クラシック実行アカウントの作成にのみ必要です。 [クラシック実行アカウント](automation-create-standalone-account.md#classic-run-as-accounts)は、既定では作成されなくなりました。
-- [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **アプリケーション開発者** ロールに属していること。 実行アカウントの構成の詳細については、[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)に関するページをご覧ください。
+- サブスクリプション上の共同管理者 - これは、クラシック VM を管理しようとしている場合に、クラシック実行アカウントを作成するためにのみ必要です。 [クラシック実行アカウント](automation-create-standalone-account.md#classic-run-as-accounts)は、既定では作成されなくなりました。
+- [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **アプリケーション開発者**ロールのメンバー。 実行アカウントの構成の詳細については、「[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)」を参照してください。
 - サブスクリプションまたは次のアクセス許可の共同作成者。
 
 | アクセス許可 |Scope (スコープ)|
@@ -120,7 +120,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、新しいリソース グループを作成するか、既存のリソース グループを選択できます。
    - **[場所]** を選択します。 現在使用できる場所は、**オーストラリア南東部**、**カナダ中部**、**インド中部**、**米国東部**、**東日本**、**東南アジア**、**英国南部**、**西ヨーロッパ**、および**米国西部 2** のみです。
-   - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Azure Monitor ログは[価格](https://azure.microsoft.com/pricing/details/log-analytics/)を更新し、GB ごとのレベルが唯一のオプションとなっています。
+   - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Azure Monitor ログは[価格](https://azure.microsoft.com/pricing/details/log-analytics/)が更新され、GB あたりのレベルが唯一のオプションです。
 
    > [!NOTE]
    > ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
@@ -271,7 +271,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |External_AutoStop_TimeAggregationOperator | 時間の集計演算子。条件を評価するために選択した時間枠のサイズに適用されます。 指定できる値は、**Average**、**Minimum**、**Maximum**、**Total**、および **Last** です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure が分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
 |External_EnableClassicVMs| クラシック VM をソリューションの対象とするかどうかを指定します。 既定値は True です。 CSP サブスクリプションでは、これを False に設定する必要があります。 クラシック VM には[クラシック実行アカウント](automation-create-standalone-account.md#classic-run-as-accounts)が必要です。|
-|External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。 これは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合、除外対象として設定した VM が意図せず起動または停止されることがあります。|
+|External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。 これは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合は、除外されるように設定された VM が誤って起動または停止される可能性があります。|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |Internal_AutomationAccountName | Automation アカウントの名前を指定します。|
@@ -389,13 +389,13 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 実行時に VM が開始/停止ソリューションに含まれるようにするためのオプションがいくつかあります。
 
-* ソリューションの親 [Runbook](#runbooks) ごとに、**VMList** パラメーターがあります。 自分の状況に合わせて適切な親 Runbook をスケジュールするときに VM 名のコンマ区切りのリストをこのパラメーターに渡すと、これらの VM はソリューションが実行されるときに含められます。
+* ソリューションの親 [Runbook](#runbooks) のそれぞれに **VMList** パラメーターがあります。 状況に合わせて適切な親 Runbook をスケジュールするときに、このパラメーターに VM 名のコンマ区切りリストを渡すことができ、これらの VM はソリューションが実行されるときに含まれます。
 
 * 複数の VM を選択するには、**External_Start_ResourceGroupNames** と **External_Stop_ResourceGroupNames** を開始または停止する VM を含むリソース グループ名で設定します。 サブスクリプションのすべてのリソース グループに対してソリューションを実行するように、この値を `*` に設定することもできます。
 
 ### <a name="exclude-a-vm"></a>VM を除外する
 
-ソリューションから VM を除外するには、VM を **External_ExcludeVMNames** 変数に追加します。 この変数は、開始/停止ソリューションから除外する特定の VM のコンマ区切りのリストです。 このリストは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合、除外対象として設定した VM が意図せず起動または停止されることがあります。
+ソリューションから VM を除外するには、VM を **External_ExcludeVMNames** 変数に追加します。 この変数は、開始/停止ソリューションから除外する特定の VM のコンマ区切りリストです。 このリストは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合は、除外されるように設定された VM が誤って起動または停止される可能性があります。
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>起動および停止スケジュールを変更する
 

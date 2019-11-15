@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8d8f796fa7db9cab5bcac88a293dd1b98707a571
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c3c0574389fc9808af3cd70c928ede82d375076
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025764"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720715"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -78,7 +78,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![月額コスト データを使用した予算の作成を示す例 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-予算金額を構成したら、 **[次へ]** をクリックして予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、20 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。 以下の例では、予算の 90% に達すると、メール アラートが生成されます。
+予算金額を構成したら、 **[次へ]** をクリックして予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、20 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。 以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。
 
 ![アラート条件を示す例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -111,6 +111,8 @@ Cost Management データに対するアクセス許可の割り当てについ�
 次の例は、50%、75%、100% に設定された予算しきい値を示しています。 それぞれ、指定のアクション グループ内の指定されたアクションをトリガーするように構成されています。
 
 ![さまざまなアクション グループとアクションの種類で構成されたアラートの条件を示す例](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
+
+予算とアクション グループの統合は、共通アラート スキーマが無効になっているアクション グループに対してのみ機能します。 スキーマの無効化の詳細については、「[共通アラート スキーマを有効にする方法](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

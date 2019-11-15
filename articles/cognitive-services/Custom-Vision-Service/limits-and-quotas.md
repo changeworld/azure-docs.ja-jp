@@ -1,7 +1,7 @@
 ---
 title: 制限とクォータ - Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Custom Vision Service の制限とクォータについて説明します。
+description: この記事では、Custom Vision Service に対する異なる種類のライセンス キー、および制限とクォータについて説明します。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 878e2b03e21c18ef4ee845251e91642037c6c5ff
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114648"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718352"
 ---
 # <a name="limits-and-quotas"></a>制限とクォータ
 

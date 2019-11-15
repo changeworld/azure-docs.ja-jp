@@ -1,6 +1,6 @@
 ---
 title: OPC Publisher の構成 - Azure | Microsoft Docs
-description: OPC Publisher の構成方法
+description: この記事では、OPC Publisher を構成して OPC UA ノード データの変更を指定する方法、公開する OPC UA イベント、およびテレメトリの形式について説明します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bccab4dde5e17ec30a0b8c5e36dd78bdd1bdff93
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0db00f670dfcc526d3fc34d41ce731df4c6573ec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605718"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824160"
 ---
 # <a name="configure-opc-publisher"></a>OPC Publisher の構成
 

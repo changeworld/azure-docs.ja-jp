@@ -4,15 +4,16 @@ description: Azure Marketplace で Azure アプリケーション オファー�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 64039234a3863332ca19b915fb59a5271625d695
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 261af94e233bdb6189d7819f8f28c7e23b5dd112
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258182"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826134"
 ---
 # <a name="azure-application-prerequisites"></a>Azure アプリケーションの前提条件
 
@@ -47,7 +48,7 @@ ms.locfileid: "66258182"
 * 会社 (またはその子会社) は、Azure Marketplace によってサポートされる販売元の国/地域に所在している必要があります。 これらの国/地域の最新の一覧については、[Microsoft Azure Marketplace 参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)に関する資料をご覧ください。
 * Azure Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。 詳細については、「[Azure Marketplace の課金オプション](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)」を参照してください。
 * 商取引上合理的な方法で、顧客に技術サポートを提供していただきます。 このサポートは、無償、有償、コミュニティ アプローチのいずれでもかまいません。
-* 会社のソフトウェアおよび依存関係にあるすべてのサード パーティ ソフトウェアのライセンス供与を行っていただきます。
+* 貴社のソフトウェアおよび依存関係にあるすべてのサード パーティ ソフトウェアのライセンス供与を行っていただきます。
 * Azure Marketplace および Azure portal にオファーが掲載されるための条件を満たすコンテンツを提供する必要があります。
 * Microsoft Azure Marketplace 参加ポリシーと発行者契約の条項に同意する必要があります。
 * Microsoft Azure Web サイト使用条件、Microsoft のプライバシーに関する声明、Microsoft Azure 認定プログラム契約に従う必要があります。

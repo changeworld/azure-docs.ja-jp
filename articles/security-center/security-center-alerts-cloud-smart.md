@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center でのクラウド スマート アラート関連付け (インシデント) | Microsoft Docs
+title: Azure Security Center のインシデント - スマート アラート関連付け
 description: このトピックでは、Azure Security Center でセキュリティ インシデントを生成するために Fusion でクラウド スマート アラート関連付けがどのように使われるかについて説明します。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 4c2f084fe03271b29a12aa6906f5e36612d50674
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202695"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686491"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure Security Center でのクラウド スマート アラート関連付け (インシデント)
 
@@ -30,7 +30,7 @@ Fusion の分析は、Security Center のインシデントに力を与え、さ
 
 Fusion の分析では、セキュリティ ドメインに関する知識と AI の組み合わせでアラートが分析され、新しい攻撃パターンの発生が発見されます。 
 
-Security Center では、MITRE 攻撃マトリックスを利用してアラートとそれらの認識された意図が関連付けられるので、セキュリティ ドメインに関する知識を整理するのに役立ちます。 さらに、攻撃の各ステップで収集された情報を使うことにより、Security Center では攻撃のステップのように見えても実際にはそうではないアクティビティを除外できます。  
+Security Center では、MITRE 攻撃マトリックスを利用してアラートとそれらの認識された意図が関連付けられるので、セキュリティ ドメインに関する知識を整理するのに役立ちます。 さらに、攻撃の各ステップで収集された情報を使うことにより、Security Center では攻撃のステップのように見えても実際にはそうではないアクティビティを除外できます。
 
 攻撃は異なるテナントにまたがって発生することが多いので、Security Center では、AI アルゴリズムを組み合わせて、各サブスクリプションで報告された攻撃のシーケンスを分析できます。 この手法により、単にインシデントで相互に関連付けるのではなく、よくあるアラート パターンとして、攻撃のシーケンスが識別されます。
 

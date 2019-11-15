@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 認証を構成する - SQL | Microsoft Docs
+title: Azure Active Directory 認証を構成する
 description: Azure Active Directory を構成した後で、Azure AD 認証を使って SQL Database、マネージド インスタンス、および SQL Data Warehouse に接続する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 10/16/2019
-ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/06/2019
+ms.openlocfilehash: 48334d8ce266ddcc92e4d2b27634db3d8c9f1bc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177638"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816793"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
@@ -58,6 +58,9 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 > [!IMPORTANT]
 > 次の手順は、マネージド インスタンスをプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者か、特権ロール管理者だけが実行できます。 次の手順では、ディレクトリ内の異なる権限を持ったユーザーにアクセス許可を付与するプロセスについて説明します。
 
+> [!NOTE]
+> 一般提供より前に作成され、一般提供の後も引き続き運用される、MI の Azure AD 管理者については、既存の動作に対する機能的な変更はありません。 詳細については、「[MI の新しい Azure AD 管理者機能](#new-azure-ad-admin-functionality-for-mi)」セクションをご覧ください。
+
 セキュリティ グループ メンバーシップを通じたユーザーの認証や、新しいユーザーの作成などといったタスクを正常に実行するには、マネージド インスタンスに Azure AD の読み取りアクセス許可が必要です。 そのためには、マネージド インスタンスに Azure AD の読み取りアクセス許可を付与する必要があります。 これには 2 つの方法があります。ポータルから付与する方法と、PowerShell を使用する方法です。 いずれの場合も、次の手順を実行します。
 
 1. Azure Portal の右上隅にあるユーザー アイコンを選択すると、Active Directory 候補の一覧がドロップダウンで表示されます。
@@ -68,7 +71,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
-4. Active Directory 管理者ページの上部でバナーを選択し、現在のユーザーにアクセス許可を付与します。 Azure AD のグローバル/会社の管理者としてログインしていれば、Azure portal からこれを行うことができます。PowerShell スクリプトと下のスクリプトを使用する方法もあります。
+4. Active Directory 管理者ページの上部でバナーを選択し、現在のユーザーにアクセス許可を付与します。 Azure AD のグローバル/会社の管理者としてログインしていれば、Azure portal からこれを行うことができます。PowerShell と以下のスクリプトを使用する方法もあります。
 
     ![アクセス許可の付与 (ポータル)](./media/sql-database-aad-authentication/grant-permissions.png)
 
@@ -146,10 +149,34 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
     管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 [Active Directory 管理者] ボックスに新しい管理者が表示されます。
 
-マネージド インスタンスに Azure AD 管理者をプロビジョニングしたら、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文を利用し、Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) の作成を開始できます。 詳細については、[マネージド インスタンスの概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。
+マネージド インスタンスに Azure AD 管理者をプロビジョニングしたら、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文を利用し、Azure AD サーバー プリンシパル (ログイン) の作成を開始できます。 詳細については、[マネージド インスタンスの概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。
 
 > [!TIP]
 > 後で管理者を削除するには、[Active Directory 管理者] ページの上部にある **[管理者の削除]** を選択し、 **[保存]** を選択します。
+
+### <a name="new-azure-ad-admin-functionality-for-mi"></a>MI の新しい Azure AD 管理者機能
+
+次の表は、MI のパブリック プレビュー Azure AD ログイン管理者の機能と、Azure AD ログインについて一般提供で提供される新機能をまとめたものです。
+
+| パブリック プレビュー期間中の MI の Azure AD ログイン管理者 | MI の Azure AD 管理者の一般提供機能 |
+| --- | ---|
+| SQL Database の Azure AD 管理者と同様の動作になります。これにより Azure AD 認証が有効になりますが、Azure AD 管理者は、MI のマスター DB に Azure AD ログインまたは SQL ログインを作成することはできません。 | Azure AD 管理者には sysadmin アクセス許可があり、MI のマスター DB に AAD ログインと SQL ログインを作成できます。 |
+| sys.server_principals ビューに存在しません | sys.server_principals ビューに存在します |
+| 個々の Azure AD ゲスト ユーザーを MI の Azure AD 管理者として設定できます。 詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)」を参照してください。 | ゲスト ユーザーをメンバーとして含む Azure AD グループを作成して、 MI の Azure AD 管理者としてこのグループを設定する必要があります。 詳細については、「[Azure AD の企業間サポート](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support)」を参照してください。 |
+
+一般提供の前に作成され、一般提供の後も引き続き運用される、MI の既存の Azure AD 管理者のベスト プラクティスとして、同じ Azure AD ユーザーまたはグループに対して Azure portal の [管理者の削除] オプションと [管理者の設定] オプションを使用して Azure AD 管理者をリセットしてください。
+
+### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>MI の Azure AD ログインの一般提供に関する既知の問題
+
+- T-SQL コマンド `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER` を使用して作成された MI のマスター データベースに Azure AD ログインが存在する場合、それを MI の Azure AD 管理者として設定することはできません。 Azure AD ログインを作成するために、Azure portal、PowerShell、または CLI コマンドを使用してそのログインを Azure AD 管理者として設定すると、エラーが発生します。 
+  - そのアカウントを Azure AD 管理者として作成するには、コマンド `DROP LOGIN [myaadaccount]` を使用して、マスター データベースでそのログインを削除する必要があります。
+  - `DROP LOGIN` が成功したら、Azure portal で Azure AD 管理者アカウントを設定します。 
+  - Azure AD 管理者アカウントを設定できない場合は、そのログインのマネージド インスタンスのマスター データベースをチェックインします。 コマンド `SELECT * FROM sys.server_principals` を使用します。
+  - MI の Azure AD 管理者を設定すると、このアカウントのマスター データベースにログインが自動的に作成されます。 Azure AD 管理者を削除すると、マスター データベースからログインが自動的に削除されます。
+   
+- 個々の Azure AD ゲスト ユーザーは、MI の Azure AD 管理者としてサポートされません。 ゲスト ユーザーを Azure AD 管理者として設定するには、 Azure AD グループの一員にする必要があります。現在のところ、Azure portal ブレードでは、別の Azure AD のゲスト ユーザーは淡色表示されず、ユーザーは管理者のセットアップを続行できるようになっています。 ゲスト ユーザーを Azure AD 管理者として保存すると、セットアップは失敗します。 
+  - ゲスト ユーザーを MI の Azure AD 管理者にする場合は、ゲスト ユーザーを Azure AD グループに含めて、このグループを Azure AD 管理者として設定します。
+
 
 ### <a name="powershell-for-sql-managed-instance"></a>SQL マネージド インスタンス用の PowerShell
 
@@ -318,8 +345,8 @@ Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Ware
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する
 
->[!IMPORTANT]
->マネージド インスタンスで Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) がサポートされたので、Azure AD ユーザー、グループ、アプリケーションからログインを作成できます。 Azure AD サーバー プリンシパル (ログイン) では、包含データベース ユーザーとしてデータベース ユーザーを作成することを要求せずにマネージド インスタンスで認証を受ける機能が提供されます。 詳細については、[マネージド インスタンスの概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
+> [!IMPORTANT]
+> マネージド インスタンスで Azure AD サーバー プリンシパル (ログイン) がサポートされるようになったため、Azure AD ユーザー、グループ、アプリケーションからログインを作成できます。 Azure AD サーバー プリンシパル (ログイン) では、包含データベース ユーザーとしてデータベース ユーザーを作成することを要求せずにマネージド インスタンスで認証を受ける機能が提供されます。 詳細については、[マネージド インスタンスの概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
 
 Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成することが必要です。 Azure AD の ID に基づく包含データベース ユーザーは、master データベースにログインを持たないデータベース ユーザーで、そのデータベースに関連付けられている Azure AD ディレクトリの ID にマップされています。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 

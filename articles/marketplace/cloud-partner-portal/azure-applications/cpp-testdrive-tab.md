@@ -4,15 +4,16 @@ description: Azure Marketplace 上の Azure アプリケーション プラン�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 42e533cdcedfb47a46934f77714d61a640a8d7d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3855c600fe35c37ac15783995551a769e00532be
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942865"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826132"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Azure アプリケーションの [体験版] タブ
 
@@ -47,7 +48,7 @@ ms.locfileid: "64942865"
  - 技術的構成
  - 体験版デプロイ サブスクリプションの詳細
 
-次の画面キャプチャは、体験版のすべてのフォームを示しています。 フィールド名に付いているアスタリスク (*) は、それが必須であることを示します。 
+次の画面キャプチャは、体験版のすべてのフォームを示しています。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。 
 
 ![体験版を構成する](./media/managed-app-configure-testdrive.png)
 
@@ -57,7 +58,7 @@ ms.locfileid: "64942865"
 |  ---------------   |  ---------------  |
 | **説明\***  |  お客様の体験版でできることについて説明します。 この説明は、基本的な HTML タグを使用して書式設定できます。 たとえば、&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; のほか、見出しが使用できます。                |
 | **[User Manual]\(ユーザー マニュアル\)\***  |  お客様の顧客が体験版を利用する際に使用できるユーザー マニュアルをアップロードします。 このドキュメントは .pdf ファイルでなければなりません。    |
-| **Test Drive Demo Video (体験版のデモ ビデオ)** |  お客様の体験版のビデオ チュートリアル (省略可能)。 顧客は体験版を利用する前にこのビデオを視聴できます。 YouTube または Vimeo にあるビデオの URL を指定します。 **[+ ビデオの追加]** を選択した場合、次の情報を指定するように求められます。<ul><li>Name</li><li>URL</li><li>サムネイル (PNG 形式、533 x 324 ピクセル)</li></ul>  |
+| **Test Drive Demo Video (体験版のデモ ビデオ)** |  お客様の体験版のビデオ チュートリアル (省略可能)。 顧客は体験版を利用する前にこのビデオを視聴できます。 YouTube または Vimeo にあるビデオの URL を指定します。 **[+ ビデオの追加]** を選択した場合、次の情報を指定するように求められます。<ul><li>名前</li><li>URL</li><li>サムネイル (PNG 形式、533 x 324 ピクセル)</li></ul>  |
 | **[インスタンス]\***      | お客様が必要とするインスタンスの数、リージョン、お客様の顧客が体験版を取得できる速さを構成します。 詳細については、「[体験版の発行方法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive)」を参照してください。           |
 | **[Test Drive Duration (hours)]\(体験版の期間 (時間)\)\*** | 時間数を整数で入力してください。 指定できる範囲は 1 から 999 です。 |
 | **[Test Drive ARM Template]\(体験版 ARM テンプレート\)\***     | お客様のアプリの Azure Resource Manager テンプレートが含まれた圧縮 (.zip) ファイルをアップロードします。 詳細については、「[Azure Resource Manager の体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)」を参照してください。 |

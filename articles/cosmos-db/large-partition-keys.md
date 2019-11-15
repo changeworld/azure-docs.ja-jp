@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436808"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721097"
 ---
 # <a name="create-containers-with-large-partition-key"></a>大きいパーティション キーを持つコンテナーを作成する
 
@@ -72,6 +72,7 @@ database,
 |Java Sync     |   2.4.0      |
 |Java Async   |  2.5.0        |
 | REST API | `x-ms-version` 要求ヘッダーを使用する `2017-05-03` より後のバージョン。|
+| Resource Manager テンプレート | バージョン 2 (`partitionKey` オブジェクト内の `"version":2` プロパティを使用)。 |
 
 現在、Power BI と Azure Logic Apps 内に大きなパーティション キーがあるコンテナーは使用できません。 これらのアプリケーションから、大きなパーティション キーなしでコンテナーを使用できます。
 

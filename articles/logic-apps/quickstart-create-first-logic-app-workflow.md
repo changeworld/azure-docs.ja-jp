@@ -1,6 +1,6 @@
 ---
-title: ワークフローを初めて作成して自動化する - Azure Logic Apps
-description: クイックスタート - システム統合ソリューションと Enterprise Application Integration (EAI) ソリューション向けに Azure Logic Apps を使用して、初めての自動化されたタスクまたはワークフローを作成します
+title: 初めての自動化されたワークフローの作成 - Azure Logic Apps
+description: クイックスタート - システム統合と Enterprise Application Integration (EAI) ソリューション向けに Azure Logic Apps を使用して、初めての自動化されたワークフローを構築します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,21 +10,21 @@ ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/20/2019
-ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 10/20/2019
+ms.openlocfilehash: b6222747e352f446dab33314729f7f697e328909
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679146"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824895"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して自動化されたワークフローを初めて作成する - Azure portal
+# <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal
 
-このクイックスタートでは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して、自動化されたワークフローを初めてビルドする基本的な方法を紹介しています。 この記事では、Web サイトの RSS フィードを定期的にチェックして新しい項目を検出するロジック アプリを作成します。 新しい項目が存在する場合、ロジック アプリから項目ごとにメールが送信されます。 完成したロジック アプリの大まかなワークフローは、次のようになります。
+このクイックスタートでは、空のロジック アプリの作成、トリガーとアクションの追加、ロジック アプリのテストなど、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して、初めてのワークフローを構築する方法を裏付ける基本的な一般概念を紹介します。 このクイックスタートでは、新しい項目のために Web サイトの RSS フィードを定期的にチェックするロジック アプリを構築します。 新しい項目が存在する場合、ロジック アプリから項目ごとにメールが送信されます。 完成したロジック アプリの大まかなワークフローは、次のようになります。
 
 ![ロジック アプリの大まかなワークフローの例](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-このクイックスタートの手順に従うためには、Office 365 Outlook、Outlook.com、Gmail など、Logic Apps に対応しているプロバイダーのメール アカウントが必要です。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](https://docs.microsoft.com/connectors/)してください。 このロジック アプリでは、Office 365 Outlook アカウントを使います。 別のメール アカウントをお使いの場合でも、全体的な手順は同じですが、UI がやや異なる場合があります。
+このシナリオでは、Office 365 Outlook、Outlook.com、Gmail など、Azure Logic Apps によってサポートされているサービスの電子メール アカウントが必要です。 サポートされているその他の電子メール サービスについては、[こちらでコネクタの一覧を確認](https://docs.microsoft.com/connectors/)してください。 この例のロジック アプリでは、Office 365 Outlook を使用します。 別の電子メール サービスを使用する場合、一般的な手順全体は同じですが、ユーザー インターフェイスはやや異なる可能性があります。
 
 また、Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
@@ -34,11 +34,15 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
-1. Azure のメイン メニューで、 **[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** の順に選択します。
+1. Azure ホーム ページから、検索ボックスで **[Logic Apps]** を検索して選択します。
 
-   ![ロジック アプリを作成する - Azure portal](./media/quickstart-create-first-logic-app-workflow/create-new-logic-app.png)
+   !["Logic Apps" を検索して選択する](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-1. **[ロジック アプリの作成]** で、次に示すようにロジック アプリの詳細を入力します。 完了したら、 **[作成]** を選択します。
+1. **[Logic Apps]** ページで **[追加]** を選択します。
+
+   ![新しいロジック アプリを追加する](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+
+1. **[Logic App]** に、以下に示すようにロジック アプリに関する詳細を入力します。 完了したら、 **[作成]** を選択します。
 
    ![新しいロジック アプリの詳細を入力する](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -61,15 +65,15 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![空のロジック アプリのテンプレートを選択する](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
-次に、新しい RSS フィード項目が発行されたときに起動される[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加します。 すべてのロジック アプリは必ずトリガーから起動され、トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。
+次に、新しい RSS フィード項目が発行されたときに起動される[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加します。 すべてのロジック アプリは必ずトリガーから起動され、トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動されるたびに、Azure Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。
 
 <a name="add-rss-trigger"></a>
 
-## <a name="check-rss-feed-with-a-trigger"></a>トリガーを使って RSS フィードをチェックする
+## <a name="add-the-rss-trigger"></a>RSS トリガーを追加する
 
-1. ロジック アプリ デザイナーの検索ボックスの下の **[すべて]** を選択します。
+1. **ロジック アプリ デザイナー**の検索ボックスの下で、 **[すべて]** を選択します。
 
-1. 検索ボックスに「rss」と入力します。 トリガーの一覧から、 **[フィード項目が発行される場合 - RSS]** トリガーを選択します
+1. 検索ボックスに「`rss`」と入力して、RSS コネクタを検索します。 トリガーの一覧から、 **[フィード項目が発行される場合]** トリガーを選択します。
 
    ![[フィード項目が発行される場合] トリガーを選択する](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -86,7 +90,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ロジック アプリのトリガーには、間隔と頻度の組み合わせでそのスケジュールを定義します。 このロジック アプリでは、1 分おきにフィードをチェックします。
 
-1. ここではトリガーの詳細を非表示にするために、トリガーのタイトル バー内をクリックします。
+1. ここでは、トリガーの詳細を非表示にするために、トリガーのタイトル バー内をクリックします。
 
    ![ロジック アプリのシェイプを折りたたんで詳細を非表示にする](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
@@ -94,7 +98,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 ロジック アプリは現在稼働していますが、RSS フィードをチェックすること以外は何もしていません。 そこで、トリガーが起動したときに反応するアクションを追加します。
 
-## <a name="send-email-with-an-action"></a>アクションを使ってメールを送信する
+## <a name="add-the-send-email-action"></a>"電子メールの送信" アクションを追加する
 
 今度は、RSS フィードに新しい項目が発行されたときにメールを送信する[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加します。
 
@@ -104,7 +108,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. **[アクションを選択してください]** と検索ボックスの下の **[すべて]** を選択します。
 
-1. 検索ボックスに、「メールの送信」と入力します。 アクション リストから、目的のメール プロバイダーの "メールの送信" アクションを選択します。
+1. 検索ボックスに「`send an email`」と入力して、このアクションを提供するコネクタを検索します。 アクションの一覧から、使用する電子メール サービスに対応する "電子メールの送信" アクションを選択します。 この例では、 **[電子メールの送信]** アクションがある Office 365 Outlook コネクタを使用します。
 
    ![Office 365 Outlook の "メールの送信" アクションを選択する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -113,15 +117,23 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    * Azure の職場または学校アカウントには、Office 365 Outlook を選択します。
    * 個人用 Microsoft アカウントには、Outlook.com を選択します。
 
-1. 資格情報を求められた場合は、お使いのメール アカウントへの接続が Logic Apps によって作成されるように、そのメール アカウントにサインインします。
+1. 選択した電子メール コネクタによって ID の認証を求められた場合は、その手順を完了して、ロジック アプリと電子メール サービス間の接続を作成します。
+
+   > [!NOTE]
+   > 今回の例では、手動で ID を認証します。 ただし、認証を必要とするコネクタは、それらがサポートしている認証の種類によって異なります。 また、認証の処理方法を設定するオプションも用意されています。 たとえば、デプロイに Azure Resource Manager テンプレートを使用する場合、接続情報など、頻繁または簡単に変更される入力をパラメーター化して、セキュリティで保護することができます。 詳細については、以下のトピックを参照してください。
+   >
+   > * [デプロイ用のテンプレート パラメーター](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
+   > * [OAuth 接続を承認する](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
+   > * [マネージド ID を利用してアクセスを認証する](../logic-apps/create-managed-service-identity.md)
+   > * [ロジック アプリのデプロイ用の接続を認証する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
 1. **[電子メールの送信]** アクションで、メールに設定するデータを指定します。
 
-   1. **[宛先]** ボックスに、受信者の電子メール アドレスを入力します。 テスト目的で自分の電子メール アドレスを使用できます。
+   1. **[宛先]** ボックスに、受信者の電子メール アドレスを入力します。 テスト目的のために、ご自身の電子メール アドレスを使用できます。
 
       **[動的なコンテンツの追加]** リストが表示されますが、ここでは無視してください。 いくつかの編集ボックスは、その内部をクリックすると、このリストが表示され、先行するステップから、ワークフローへの入力として追加できるパラメーターがすべて表示されます。
 
-   1. **[件名]** ボックスに「```New RSS item:```」と入力し、その後ろに空白スペースを追加します。
+   1. **[件名]** ボックスに「`New RSS item: `」と入力し、その後ろに空白スペースを追加します。
 
       ![[件名] プロパティにメールの件名を入力する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
 
@@ -158,7 +170,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 ![新しい RSS フィード項目があるときに送信されるメールの例](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-技術的には、トリガーが RSS フィードをチェックして新しい項目を見つけると、トリガーが起動し、ワークフローのアクションを実行するロジック アプリのワークフローのインスタンスが Logic Apps エンジンによって作成されます。 トリガーで新しい項目が見つからなかった場合、トリガーは起動せず、ワークフローのインスタンス作成は "スキップ" されます。
+技術的には、トリガーによって RSS フィードがチェックされて新しい項目が見つかると、トリガーが起動され、ワークフローのアクションを実行するロジック アプリ ワークフローのインスタンスが Azure Logic Apps エンジンによって作成されます。 トリガーで新しい項目が見つからなかった場合、トリガーは起動せず、ワークフローのインスタンス作成は "スキップ" されます。
 
 お疲れさまでした。初めてのロジック アプリを Azure portal で正しく作成し、実行することができました。
 
@@ -170,16 +182,12 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![リソース グループを見つけて選択し、削除する](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. 確認のためにリソース グループ名を入力し、 **[削除]** を選択します。
+1. 確認ウィンドウが表示されたら、リソース グループ名を入力して、 **[削除]** を選択します。
 
    ![削除を確定するために [削除] を選択する](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 > [!NOTE]
 > ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
-
-## <a name="get-support"></a>サポートを受ける
-
-質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

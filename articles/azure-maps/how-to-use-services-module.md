@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 77659fdf93947cfbaa0daa322dccf4e9cb1a41fa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844720"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827288"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure Maps サービス モジュールの使用
 
@@ -124,7 +124,7 @@ Azure Maps の Web SDK は、*サービス モジュール*を提供します。
 
     詳細については、「[Azure Maps による認証](azure-maps-authentication.md)」を参照してください。
 
-1. 次のコードでは、新しく作成された Azure Search サービス URL クライアントを使用してアドレスをジオコードで表現します。"1 Microsoft Way, Redmond, WA" コードを使用して、`searchAddress`関数をページ本文内のテーブルとして結果を表示します。
+1. 次のコードでは、新しく作成された Azure Maps Search サービス URL クライアントを使用してアドレスをジオコードで表現します。"1 Microsoft Way, Redmond, WA" コードを使用して、`searchAddress`関数をページ本文内のテーブルとして結果を表示します。
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".

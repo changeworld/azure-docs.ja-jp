@@ -11,25 +11,25 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 2d8f0fce3cb8f1cd8fdb596cb4e238a79d6cee4c
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5cbdb6fcf9fcdf12b54ff1db4b577bb975517131
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193491"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73793958"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>QnA Maker のデプロイに使用する容量の選択
 
 QnA Maker サービスは、次の 3 つの Azure リソースに依存しています。
 1.  App Service (ランタイム用)
-2.  Azure Search (QnA の格納用)
+2.  Azure Cognitive Search (QnA の格納および検索用)
 3.  App Insights (省略可能。チャット ログとテレメトリの格納用)
 
 QnA Maker サービスを作成する前に、前述したサービスに関して、どのレベルが現状に適しているかを判断する必要があります。 
 
 通常、次の 3 つのパラメーターを考慮する必要があります。
 
-1. **サービスに必要なスループット**: App Service の適切な[アプリ プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)を、実際のニーズに基づいて選択します。 アプリは[スケールアップ](https://docs.microsoft.com/azure/app-service/manage-scale-up)またはスケールダウンすることができます。 この点は、Azure Search の SKU の選択にも影響します。詳細については、[こちら](https://docs.microsoft.com/azure/search/search-sku-tier)を参照してください。
+1. **サービスに必要なスループット**: App Service の適切な[アプリ プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)を、実際のニーズに基づいて選択します。 アプリは[スケールアップ](https://docs.microsoft.com/azure/app-service/manage-scale-up)またはスケールダウンすることができます。 この点は、Azure Cognitive Search の SKU の選択にも影響します。詳細については、[こちら](https://docs.microsoft.com/azure/search/search-sku-tier)を参照してください。
 
 1. **ナレッジ ベースのサイズと数**: 実際のシナリオに合った適切な [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) を選択してください。 特定のレベルで発行できるナレッジ ベースの数は N-1 件です (N は、そのレベルで許容される最大インデックス)。 レベルごとに許容されるドキュメントの最大サイズと最大数もチェックしてください。
 
@@ -39,7 +39,7 @@ QnA Maker サービスを作成する前に、前述したサービスに関し�
 
 次の表は、いくつかの基本的なガイドラインを示したものです。
 
-|                        | QnA Maker 管理 | App Service | Azure Search | 制限事項                      |
+|                        | QnA Maker 管理 | App Service | Azure Cognitive Search | 制限事項                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | 実験        | 無料の SKU             | Free レベル   | Free レベル    | 発行できる KB は 2 つまで (最大サイズ 50 MB)  |
 | 開発/テスト環境   | Standard SKU         | 共有      | Basic        | 発行できる KB は 14 個まで (最大サイズ 2 GB)    |

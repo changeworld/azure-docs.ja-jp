@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Managed Instance にバックアップを復元する | Microsoft Docs
+title: バックアップをマネージド インスタンスに復元する
 description: SSMS を使用して Azure SQL Database マネージド インスタンスにデータベース バックアップを復元します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 37f7366d6622356017e458fb8f893b0be0851335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514012"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825707"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>クイック スタート:データベースをマネージド インスタンスに復元する
 
@@ -35,12 +35,12 @@ ms.locfileid: "72514012"
 - [マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するクイック スタートのリソースを使用します。
 - コンピューターに最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) がインストールされている必要があります。
 - SSMS を使用してマネージド インスタンスに接続する必要があります。 接続方法については、次のクイック スタートを参照してください。
+  - マネージド インスタンス上の [[パブリック エンドポイントを有効にする]](sql-database-managed-instance-public-endpoint-configure.md) - これは、このチュートリアルでのお勧めの方法です。
   - [Connect to an Azure SQL Database Managed Instance from an Azure VM (Azure VM から Azure SQL Database Managed Instance に接続する)](sql-database-managed-instance-configure-vm.md)
   - [オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
-- `rw` アクセス許可を持つ **SAS 資格情報**で保護された**パブリック IP** 上の Azure Blob Storage アカウント (例: Standard_LRS V2) が必要です。 Azure Blob Storage サービス エンドポイントと[ファイアウォールで保護された Blob Storage のプライベート IP](https://docs.microsoft.com/azure/storage/common/storage-network-security) は、現在サポートされていません。
 
 > [!NOTE]
-> Azure Blob Storage と [Shared Access Signature (SAS) キー](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を使用した SQL Server データベースのバックアップと復元の詳細については、[SQL Server Backup to URL](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) に関するページを参照してください。
+> Azure Blob Storage と [Shared Access Signature (SAS) キー](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を使用した SQL Server データベースのバックアップと復元の詳細については、[SQL Server Backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) に関するページを参照してください。
 
 ## <a name="restore-the-database-from-a-backup-file"></a>バックアップ ファイルからデータベースを復元する
 
@@ -86,7 +86,11 @@ SSMS で、次の手順に従って、Wide World Importers データベースを
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. 復元が完了したら、オブジェクト エクスプローラーで確認します。
+7. 復元が完了したら、オブジェクト エクスプローラー上でデータベースを表示します。 データベースの復元が完了したことを確認するには、[sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ビューを使用できます。
+
+> [!NOTE]
+> データベースの復元操作は非同期であり、再試行可能です。 接続が切断されるか、何らかのタイムアウトが発生した場合に、SQL Server Management Studio に何らかのエラーが生じる可能性があります。 Azure SQL Database では、バックグラウンドでのデータベースの復元を試行し続けます。[sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ビューを使用して、復元の進行状況を追跡できます。
+> 復元プロセスの一部のフェーズでは、システム ビューに実際のデータベース名ではなく、一意の識別子が表示されます。 `RESTORE` ステートメントの動作の違いについては、[こちら](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)で確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: Intelligent Insights のパフォーマンス診断ログ - Azure SQL Database | Microsoft Docs
+title: Intelligent Insights パフォーマンス診断ログ
 description: Intelligent Insights は、Azure SQL Database のパフォーマンスの問題の診断ログを提供します
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262144"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810283"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログの使用
 

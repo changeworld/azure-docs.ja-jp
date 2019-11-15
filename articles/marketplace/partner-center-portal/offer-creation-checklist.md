@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 66c28039f9126ed9e3f56c3ac15b1b3d82279b64
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036367"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824621"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS オファー作成のチェックリスト
 
@@ -78,7 +79,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 
 | **フィールド名**    | **メモ**   |
 | :---------------- | :-----------| 
-| EnableAdfsAuthentication  | 必須。最大 50 文字。 |
+| 名前  | 必須。最大 50 文字。 |
 | まとめ  | 必須。最大 100 文字。 | 
 | 説明  | 必須。最大 3,000 文字。 |
 | Getting Started Instructions (使用開始時の説明)  | 必須。最大 3,000 文字。 |

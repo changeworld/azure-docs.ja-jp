@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: c19aa6e0acc936c5b03afdab99ce0b9230838ce2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71341186"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605850"
 ---
 # <a name="connect-with-the-android-client"></a>Android クライアントに接続する
 
@@ -33,13 +33,13 @@ ms.locfileid: "71341186"
 
 フィードをサブスクライブするには:
 
-1. 接続センターで [+] をタップしてから、[Remote Resource Feed]\(リモート リソース フィード\) をタップします。
+1. 接続センターで **+** をタップしてから、 **[リモート リソース フィード]** をタップします。
 2. **[Feed URL]\(フィード URL\)** フィールドにフィード URL を入力します。 フィード URL には、URL またはメール アドレスのいずれかを指定できます。
    - URL を使用する場合は、管理者によって付与されたものを使用します (通常、<https://rdweb.wvd.microsoft.com>)。
    - 電子メールを使用するには、メール アドレスを入力します。 管理者がそのようにサーバーを構成した場合、このクライアントにより、メール アドレスに関連付けられている URL が検索されます。
 3. **[次へ]** をタップします。
 4. メッセージが表示されたら、資格情報を入力します。
-   - **[ユーザー名]** には、リソースにアクセスする権限を持つユーザー名を指定します。
+   - **[User name]\(ユーザー名\)** 。リソースへのアクセス許可を持つユーザー名を指定します。
    - **[パスワード]** には、ユーザー名に関連付けられているパスワードを指定します。
    - 管理者が追加の要素を指定するように認証を構成した場合、そのように求められることもあります。
 

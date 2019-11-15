@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse のレコメンデーション - 概念 | Microsoft Docs
+title: SQL Data Warehouse のレコメンデーション
 description: SQL Data Warehouse のレコメンデーションとそれらがどのように生成されるかについて説明します
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1a93339b99c6591ee9ed615c032d0eac58a372fe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61421224"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827498"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>SQL Data Warehouse のレコメンデーション
 

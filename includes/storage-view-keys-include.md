@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 0e8f1453687f7424c6b651dc324e66e84dd8d29f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e3b3d944508a4261b78def0b3bee13f7395a8bf0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302521"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749006"
 ---
 Azure portal からストレージ アカウントのアクセス キーまたは接続文字列を表示およびコピーするには:
 
@@ -24,3 +24,5 @@ Azure portal からストレージ アカウントのアクセス キーまた�
 5. あるいは、接続文字列全体をコピーできます。 **[Key1]** の **[接続文字列]** の値を見つけて **[コピー]** ボタンをクリックし、接続文字列をコピーします。
 
     ![Azure portal でアクセス キーを表示する方法を示したスクリーンショット](media/storage-view-keys-include/portal-connection-string.png)
+
+どちらのキーを使用して Azure Storage にアクセスすることもできますが、一般的には、最初のキーを使用し、キーのローテーション時に 2 番目のキーの使用を予約することをお勧めします。

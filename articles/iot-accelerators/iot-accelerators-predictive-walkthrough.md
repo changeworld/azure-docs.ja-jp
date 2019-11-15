@@ -1,6 +1,6 @@
 ---
 title: 予測メンテナンスのソリューション アクセラレータの概要 - Azure | Microsoft Docs
-description: Azure IoT 予測メンテナンスのソリューション アクセラレータの概要。
+description: ビジネス シナリオにおいて障害が発生する可能性があるポイントを予測する Azure IoT 予測メンテナンスのソリューション アクセラレータの概要です。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,16 +8,16 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 3387996dc0e1953eaafee9c4c61eb8faa865b654
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447540"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827409"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>予測メンテナンスのソリューション アクセラレータの概要
 
-予測メンテナンスのソリューション アクセラレータは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。 このソリューション アクセラレータを使用すると、メンテナンスの最適化などのアクティビティを先手を打って実行できます。 このソリューションは、IoT Hub や [Azure Machine Learning][lnk-machine-learning] ワークスペースなど、主要な Azure IoT ソリューション アクセラレータ サービスを組み合わせたものです。 このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測するモデルが含まれています。 このソリューションでは、固有のビジネス要件を満たすソリューションを計画および実装するための開始地点として使用できる、IoT ビジネス シナリオが完全に実装されています。
+予測メンテナンスのソリューション アクセラレータは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。 このソリューション アクセラレータを使用すると、メンテナンスの最適化などのアクティビティを先手を打って実行できます。 このソリューションは、IoT Hub や [Azure Machine Learning][lnk-machine-learning] ワークスペースなどの主要な Azure IoT ソリューション アクセラレータ サービスを組み合わせたものです。 このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測するモデルが含まれています。 このソリューションでは、固有のビジネス要件を満たすソリューションを計画および実装するための開始地点として使用できる、IoT ビジネス シナリオが完全に実装されています。
 
 予測メンテナンスのソリューション アクセラレータの[コードは GitHub で入手できます](https://github.com/Azure/azure-iot-predictive-maintenance)。
 
@@ -39,7 +39,7 @@ Azure Portal で、指定したソリューション名の付いたリソース 
 
 ![アクセラレータ リソース][img-resource-group]
 
-ソリューション アクセラレータをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールが届きます。 この Machine Learning ワークスペースには、[Microsoft Azure IoT Solution Accelerators][lnk-azureiotsolutions] ページから移動することも可能です。 タイルは、ソリューションが**準備完了**の状態の場合にこのページで使用できます。
+ソリューション アクセラレータをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールが届きます。 この Machine Learning ワークスペースには、「[Microsoft Azure IoT ソリューション アクセラレータ][lnk-azureiotsolutions]」ページから移動することも可能です。 タイルは、ソリューションが**準備完了**の状態の場合にこのページで使用できます。
 
 ![Machine Learning モデル][img-machine-learning]
 
@@ -49,7 +49,7 @@ Azure Portal で、指定したソリューション名の付いたリソース 
 
 "*サイクル数*"。 サイクルは、2 から 10 時間の期間で完了したフライトです。 フライト中、テレメトリ データは 30 分ごとにキャプチャされます。
 
-*テレメトリ*。 エンジン属性を記録するセンサーは 4 つあります。 センサーは総称的に、センサー 9、センサー 11、センサー 14、およびセンサー 15 とラベル付けされています。 これらの 4 つのセンサーは、RUL モデルから有用な結果を得るために十分なテレメトリを送信します。 ソリューション アクセラレータで使用されるモデルは、実際のエンジンのセンサー データなど、公開されているデータ セットから作成されています。 元のデータ セットからこのモデルを作成する方法の詳細については、「[Cortana Intelligence Gallery Predictive Maintenance Template (Cortana Intelligence ギャラリーの予測的なメンテナンス テンプレート)][lnk-cortana-analytics]」を参照してください。
+*テレメトリ*。 エンジン属性を記録するセンサーは 4 つあります。 センサーは総称的に、センサー 9、センサー 11、センサー 14、およびセンサー 15 とラベル付けされています。 これらの 4 つのセンサーは、RUL モデルから有用な結果を得るために十分なテレメトリを送信します。 ソリューション アクセラレータで使用されるモデルは、実際のエンジンのセンサー データなど、公開されているデータ セットから作成されています。 元のデータ セットからこのモデルを作成する方法の詳細については、[Cortana Intelligence ギャラリーの予測メンテナンス テンプレート][lnk-cortana-analytics]に関するページを参照してください。
 
 シミュレーション デバイスは、ソリューションの IoT Hub から送信された次のコマンドを処理することができます。
 
@@ -71,7 +71,7 @@ IoT Hub は、デバイスのコマンドの受信確認を渡します。
 **イベント プロセッサ ホスト**は、Azure Web Job で実行されます。 **イベント プロセッサ** は、完了したサイクルの平均センサー値を受け取ります。 それらの値は、エンジンの RUL を計算するトレーニングされたモデルに渡されます。 API により、ソリューションの一部である Machine Learning ワークスペース内のモデルにアクセスできます。
 
 ## <a name="machine-learning"></a>Machine Learning
-Machine Learning コンポーネントは、実際の航空機エンジンから収集されたデータから派生したモデルを使用します。 この Machine Learning ワークスペースには、[azureiotsolutions.com][lnk-azureiotsolutions] ページのソリューションのタイルから移動することも可能です。 このタイルは、ソリューションが**準備完了**の状態の場合に使用できます。
+Machine Learning コンポーネントは、実際の航空機エンジンから収集されたデータから派生したモデルを使用します。 この Machine Learning ワークスペースには、[azureiotsolutions.com][lnk-azureiotsolutions] のページのソリューションのタイルから移動することも可能です。 このタイルは、ソリューションが**準備完了**の状態の場合に使用できます。
 
 Machine Learning モデルは、IoT ソリューション アクセラレータ サービスを通じて収集されたテレメトリの使用方法を示すテンプレートとして利用できます。 Microsoft は、公開されているデータ<sup>\[1\]</sup> を基にして航空機エンジンの[回帰モデル][lnk_regression_model]と、モデルの使用方法に関するステップ バイ ステップ ガイダンスを作成しました。
 
@@ -85,7 +85,7 @@ Azure IoT 予測メンテナンスのソリューション アクセラレータ
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
 * [IoT ソリューション アクセラレータに関してよく寄せられる質問][lnk-faq]
-* [IoT の徹底的なセキュリティ][lnk-security-groundup]
+* [徹底的な IoT セキュリティ][lnk-security-groundup]
 
 [img-architecture]: media/iot-accelerators-predictive-walkthrough/architecture.png
 [img-resource-group]: media/iot-accelerators-predictive-walkthrough/resource-group.png

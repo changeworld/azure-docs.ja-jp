@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Python 用 Face クライアント ライブラリ | Microsoft Docs
-description: Python 用 Face クライアント ライブラリの概要...
+description: この記事は、検出、類似検索、識別、検証などを行うために Python 用 Face クライアント ライブラリの使用を開始するのに役立ちます。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9728ff86de8561c463886847494ecc4c1c007851
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935867"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743200"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>クイック スタート:Python 用 Face クライアント ライブラリ
 

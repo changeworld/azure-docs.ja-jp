@@ -1,5 +1,5 @@
 ---
-title: ディザスター リカバリー ソリューションの設計 - Azure SQL Database | Microsoft Docs
+title: ディザスター リカバリー ソリューションの設計
 description: フェールオーバー パターンを適切に選んで、ディザスター リカバリーを実現するクラウド ソリューションを設計する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: ccdd2443254da065a15911f567577672492ddb4f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4eeaa187142a6d0d97b12f685ebc455f3844606f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568873"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825872"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>SQL Database エラスティック プールを使用したアプリケーションの障害復旧戦略
 

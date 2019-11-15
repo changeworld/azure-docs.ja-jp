@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/10/2019
+ms.date: 11/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293063"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816444"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -57,15 +57,21 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関
 B2B コラボレーション ユーザーは、制限付き管理者のロールが割り当てられない限り、Azure portal にアクセスする必要はありません。 ただし、制限付き管理者のロールを割り当てられている B2B コラボレーション ユーザーは portal にアクセスできます。 また、これらのいずれかの管理者ロールが割り当てられていないゲスト ユーザーがポータルにアクセスすると、ユーザーは、エクスペリエンスの特定の部分にアクセスできます。 ゲスト ユーザー ロールは、ディレクトリのアクセス許可の一部を持ちます。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>ゲスト ユーザーに対して Azure Portal へのアクセスをブロックできますか。
-はい。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
-ゲスト ユーザーの [Azure portal](https://portal.azure.com) へのアクセスをブロックするには、Windows Azure クラシック デプロイ モデル API で条件付きアクセス ポリシーを使用します。
-1. **すべてのユーザー** グループをメンバーだけが含まれるように変更します。
-   ![UserType が [ゲスト] と等しくない [すべてのユーザー] グループを示すスクリーンショット](media/faq/modify-all-users-group.png)
-2. ゲスト ユーザーを含む動的グループを作成します。
-   ![新しい [すべてのゲスト ユーザー] グループを示すスクリーンショット](media/faq/group-with-guest-users.png)
-3. 次のビデオで示されているように、ゲスト ユーザーによるポータルへのアクセスをブロックする条件付きアクセス ポリシーを設定します。
-  
-   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+
+はい。 すべてのゲスト ユーザーと外部ユーザーの Azure portal へのアクセスをブロックする条件付きアクセス ポリシーを作成できます。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
+
+1. [Azure portal](https://portal.azure.com/) にセキュリティ管理者または条件付きアクセス管理者としてサインインします。
+2. Azure Portal で、 **[Azure Active Directory]** を選びます。 
+3. **[管理]** で、 **[セキュリティ]** を選択します。
+4. **[保護]** で、 **[条件付きアクセス]** を選択します。 **[新しいポリシー]** を選択します。
+5. **[新規]** ページの **[名前]** テキスト ボックスに、ポリシーの名前 (たとえば、"Block guests from accessing the portal" など) を入力します。
+6. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
+7. **[含める]** タブで、 **[ユーザーとグループの選択]** を選択し、 **[すべてのゲストおよび外部ユーザー (プレビュー)]** を選択します。
+9. **[完了]** を選択します。
+10. **[新規]** ページの **[割り当て]** セクションで、 **[クラウド アプリまたは操作]** を選択します。
+11. **[クラウド アプリまたは操作]** ページで、 **[アプリを選択]** を選択し、 **[選択]** を選択します。
+12. **[選択]** ページで **[Microsoft Azure Management]** を選択し、 **[選択]** を選択します。
+13. **[クラウド アプリまたは操作]** ページで、 **[完了]** を選択します。
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B コラボレーションは、Multi-Factor Authentication とコンシューマー電子メール アカウントをサポートしていますか。
 はい。 Azure AD B2B コラボレーションでは、Multi-Factor Authentication とコンシューマー電子メール アカウントのどちらもサポートされています。

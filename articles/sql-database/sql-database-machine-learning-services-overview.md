@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Machine Learning Services と R (プレビュー) の概要
+title: Machine Learning Services と R (プレビュー)
 description: この記事では、Azure SQL Database の Machine Learning Services と R およびそのしくみについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 186b986fe1931365ee34efab2e04e58908402cc0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a2af1fdd1ee461e3b3db613ff4a575649da2dfdc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427937"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827432"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services と R (プレビュー)
 

@@ -1,20 +1,21 @@
 ---
-title: クイック スタート:Java 用 Content Moderator クライアント ライブラリ |Microsoft Docs
-description: Java 用 Content Moderator クライアント ライブラリの使用を開始します。
+title: クイック スタート:Java 用 Content Moderator クライアント ライブラリ
+titleSuffix: Azure Cognitive Services
+description: Java 用 Azure Cognitive Services Content Moderator クライアント ライブラリの使用を開始する方法について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d1575818ac35c45af8a7df59c0853389d01031c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698543"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744444"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>クイック スタート:Java 用 Content Moderator クライアント ライブラリ
 
@@ -24,7 +25,7 @@ Java 用 Content Moderator クライアント ライブラリは、次の目的�
 
 * 成人向けまたはきわどいコンテンツの画像、テキスト、または人間の顔をモデレートします。
 
-[リファレンス ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [成果物 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [サンプル](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator&sort=0)
+[リファレンス ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [成果物 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [サンプル](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -125,14 +126,14 @@ mkdir -p src/main/java
 
 ### <a name="get-images"></a>画像を取得する
 
-プロジェクトの **src/main/** フォルダーで、**resources** フォルダーを作成し、そこに移動します。 次に、新しいテキストファイル (*ImageFiles.txt*) を作成します。 このファイルでは、画像の URL を追加して&mdash;行ごとに 1 つの URL を分析します。 次のサンプル コンテンツを使用することができます。
+プロジェクトの **src/main/** フォルダーで、**resources** フォルダーを作成し、そこに移動します。 次に、新しいテキストファイル (*ImageFiles.txt*) を作成します。 このファイルでは、画像の URL を追加して&mdash;行ごとに 1 つの URL を分析します。 次のサンプル イメージを使用できます。
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-### <a name="use-helper-class"></a>ヘルパー クラスを使用する
+### <a name="define-helper-class"></a>ヘルパー クラスを定義する
 
 次に、*ContentModeratorQuickstart.java* ファイルに、**ContentModeratorQuickstart** クラス内に次のクラス定義を追加します。 この内部クラスは、後で画像のモデレート プロセスで使用されます。
 

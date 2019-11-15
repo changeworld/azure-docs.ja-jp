@@ -4,19 +4,19 @@ description: Azure の委任されたリソース管理によって、テナン�
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/18/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 182970cc39d200c37264a93d5e1b70c8839e5ef7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598445"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825817"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
-この記事では、サービス プロバイダーが [Azure portal](https://portal.azure.com) で自分のテナント内から複数の顧客の Azure リソースを管理するために [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)で使用できるシナリオについて説明します。
+サービス プロバイダーは、[Azure portal](https://portal.azure.com) 上で自分のテナント内から複数の顧客の Azure リソースを管理するために、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用できます。 ほとんどのタスクとサービスは、委任された Azure リソースに対して、マネージド テナントをまたいで実行できます。 この記事では、Azure の委任されたリソース管理が有効に機能する可能性がある強化されたシナリオの一部について説明します。
 
 > [!NOTE]
 > Azure の委任されたリソース管理は、独自のテナントを複数所有する企業内で、テナント間の管理を簡略化するためにも使用できます。
@@ -37,9 +37,20 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 
 ![1 つのサービス プロバイダーのテナントを通じて管理される顧客のリソース](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="supported-services-and-scenarios"></a>サポートされるサービスとシナリオ
+## <a name="apis-and-management-tool-support"></a>API と管理ツールのサポート
 
-現在、テナント間の管理エクスペリエンスでは、委任された顧客のリソースを使用した次のシナリオがサポートされています。
+委任されたリソースに対して管理タスクをポータル上で直接実行するか、API および管理ツール (Azure CLI や Azure PowerShell など) を使用して実行することができます。 既存の API はすべて、委任されたリソースを操作するときに使用できます。ただし、テナント間の管理において機能がサポートされており、ユーザーが適切なアクセス許可を持っている必要があります。
+
+また、Microsoft では、Azure の委任されたリソース管理タスクを実行するための API も提供しています。 詳細については、**リファレンス**を参照してください。
+
+## <a name="enhanced-services-and-scenarios"></a>強化されたサービスとシナリオ
+
+ほとんどのタスクとサービスは、委任されたリソースに対して、マネージド テナントをまたいで実行できます。 テナント間の管理を有効にできる重要なシナリオの一部を以下に示します。
+
+[サーバー向け Azure Arc (プレビュー)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+
+- Azure 内の委任されたサブスクリプションまたはリソース グループに [Azure外の Windows Server または Linux コンピューターを接続する](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal)
+- Azure Policy やタグ付けなどの Azure コンストラクトを使用して接続されたコンピューターを管理する
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 
@@ -55,7 +66,7 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- すべてのサブスクリプションのアラートを表示する機能を使用して、委任されたサブスクリプションのアラートを Azure portal で表示するか、REST API を介してプログラムで表示する
+- すべてのサブスクリプションにわたるアラートを表示する機能を使って、委任されたサブスクリプションに対するアラートを表示する
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
 - ログ分析: 複数のテナントにあるリモートの顧客ワークスペースからデータを照会する
 - 顧客のテナント内に、サービス プロバイダー テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
@@ -121,16 +132,9 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 すべてのシナリオで、次に示す現在の制限事項に注意してください。
 
 - Azure Resource Manager で処理される要求は、Azure の委任されたリソース管理を使用して実行できます。 これらの要求の操作 URI は、`https://management.azure.com` で始まります。 ただし、リソースの種類のインスタンス (KeyVault のシークレット アクセスやストレージのデータ アクセスなど) によって処理される要求は、Azure の委任されたリソース管理ではサポートされていません。 これらの要求の操作 URI は、通常、`https://myaccount.blob.core.windows.net` や `https://mykeyvault.vault.azure.net/` など、実際のインスタンスに固有のアドレスで始まります。 また、通常、後者は管理操作ではなくデータ操作です。 
-- ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理でサポートされています。ただし、所有者、ユーザー アクセス管理者、および [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) アクセス許可を持つ組み込みロールは除きます。 また、カスタムロールと[従来のサブスクリプション管理者ロール](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)はサポートされていません。
+- ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)はサポートされていません。
 - 現在、サブスクリプションで Azure Databricks が使用されている場合、Azure の委任されたリソース管理用にそのサブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードすることはできません。 同様に、サブスクリプションがオンボードのために **Microsoft.ManagedServices** リソースプロバイダーに登録されている場合、この時点ではそのサブスクリプション用に Databricks ワークスペースを作成することはできなくなります。
 - リソース ロックがある Azure の委任されたリソース管理のサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
-
-## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>テナント間の管理で API や管理ツールを使用する
-
-上記のサポートされているサービスやシナリオでは、管理タスクをポータルで直接実行するか、API や管理ツール (Azure CLI や Azure PowerShell など) を使用して実行することができます。 既存の API はすべて、(サポートされているサービスについて) 委任されたリソースを操作する際に使用できます。
-
-また、Azure の委任されたリソース管理タスクの実行に固有の API もあります。 詳細については、**リファレンス**を参照してください。
-
 
 ## <a name="next-steps"></a>次の手順
 

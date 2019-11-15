@@ -1,5 +1,5 @@
 ---
-title: CSV ファイルから Azure SQL Database へのデータの読み込み (bcp) | Microsoft Docs
+title: CSV ファイルからデータベースへのデータの読み込み (bcp)
 description: データ サイズが小さい場合は、bcp を使用して Azure SQL Database にデータをインポートできます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: b3dff4e100d3859978667ad0df7d895a24ca8a8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b0df3d588f1d9b0a50c3ea7a583b0704e7e85c39
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567831"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827484"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>CSV から Azure SQL Database へのデータの読み込み (フラット ファイル)
 

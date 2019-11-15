@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 578f7a01c22bd5aafd4e4ac08c9f5ab78e340a34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606516"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669392"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -151,7 +151,7 @@ AzCopy を使用してデータをコピーするには
 Azure Machine Learning に進む準備ができれば、次のいずれかを実行できます。  
 
 1. データを抽出してサンプリングする最終的な SQL クエリを保存し、このクエリをコピーして直接 Azure Machine Learning の[データのインポート][import-data] モジュールに貼り付けます。または、
-2. 構築するモデルに使用する予定のサンプリング データとエンジニア リング データを新しいデータベースのテーブルに保持し、Azure Machine Learning の[データのインポート][import-data] モジュールでこの新しいテーブルを使用します。
+2. モデル作成に使用する予定のサンプリング データとエンジニア リング データを新しいデータベース テーブルに保持し、Azure Machine Learning の[データのインポート][import-data] モジュールでこの新しいテーブルを使用します。
 
 このセクションでは、最終的なクエリを保存してから、データの抽出とサンプリングを実行します。 2 番目の方法は、「 [IPython Notebook でのデータの探索と特徴エンジニアリング](#ipnb) 」セクションで説明しています。
 
@@ -172,7 +172,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>探索: medallion および hack_license ごとの乗車回数の分布
+#### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>探索: medallion および hack_license ごとの乗車回数の分布
     SELECT medallion, hack_license, COUNT(*)
     FROM nyctaxi_fare
     WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
@@ -265,7 +265,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 Azure Machine Learning に進む準備ができたら、次のいずれかを実行します。  
 
 1. データを抽出してサンプリングする最終的な SQL クエリを保存し、そのクエリをコピーして、直接 Azure Machine Learning の[データのインポート][import-data] モジュールに貼り付けます。 この方法は、「 [Azure Machine Learning でのモデルの作成](#mlmodel) 」セクションで説明しています。    
-2. 構築するモデルに使用する予定のサンプリング データとエンジニア リング データを新しいデータベースのテーブルに保持し、新しいテーブルを[データのインポート][import-data] モジュールで使用します。
+2. モデル作成に使用する予定のサンプリング データとエンジニア リング データを新しいデータベース テーブルに保持し、[データのインポート][import-data] モジュールでこの新しいテーブルを使用します。
 
 いくつかのデータの探索、データの視覚化、および特徴エンジニアリングの例を次に示します。 その他の例については、 **Sample IPython Notebooks** フォルダーにあるサンプルの SQL IPython Notebook を参照してください。
 
@@ -282,7 +282,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-#### <a name="report-number-of-rows-and-columns-in-table-nyctaxitrip"></a>テーブル nyctaxi_trip の行数と列数を報告する
+#### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>テーブル nyctaxi_trip の行数と列数を報告する
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('nyctaxi_trip')
@@ -376,7 +376,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 ![プロット #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>SQL でのデータのサブサンプリング
-[Azure Machine Learning Studio](https://studio.azureml.net) でモデル作成用のデータを準備する際、**SQL クエリを直接データのインポート モジュールで使用する**か、エンジニアリングとサンプリングが行われたデータを新しいテーブルで保持するかを決定できます。新しいテーブルは、簡単な **SELECT * FROM <your\_new\_table\_name>** によって[データのインポート][import-data] モジュールで使用することができます。
+[Azure Machine Learning Studio](https://studio.azureml.net) でモデル作成用のデータを準備する際、**SQL クエリをデータのインポート モジュールで直接使用する**か、エンジニアリングとサンプリングが行われたデータを新しいテーブルで保持するかを決定できます。新しいテーブルは、簡単な **SELECT * FROM <your\_new\_table\_name>** によって[データのインポート][import-data] モジュールで使用できます。
 
 このセクションでは、サンプリング データとエンジニアリング データを保持するためにテーブルを新規作成します。 モデルを構築するための直接的な SQL クエリの例は、「 [SQL Server でのデータの探索と特徴エンジニアリング](#dbexplore) 」セクションに記載されています。
 
@@ -572,7 +572,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 この演習では、SQL Server でデータの探索とエンジニアリングを既に実行し、Azure Machine Learning に取り込むサンプルのサイズを決定しました。 決定した 1 つ以上の予測モデルを作成するには、
 
-1. **[データの入力と出力]** セクションにある [[データのインポート]][import-data] モジュール を使用して、Azure Machine Learning にデータを取得します。 詳細については、[データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
+1. **[データの入力と出力]** セクションにある [[データのインポート]][import-data] モジュール を使用して、Azure Machine Learning にデータを取り込みます。 詳細については、[データのインポート][import-data] モジュールのリファレンス ページを参照してください。
    
     ![Azure Machine Learning の [データのインポート]][17]
 2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
@@ -588,12 +588,12 @@ SQL Server データベースから直接データを読み取る、二項分類
 > [!IMPORTANT]
 > 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 > 
-> 不要な列またはターゲット リークを除外するために、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページをご覧ください。
+> 不要な列またはターゲット リークを除外するには、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページを参照してください。
 > 
 > 
 
 ## <a name="mldeploy"></a>Azure Machine Learning にモデルを配置する
-モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure Machine Learning Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/publish-a-machine-learning-web-service.md)」をご覧ください。
+モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure Machine Learning Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」をご覧ください。
 
 新しい Web サービスをデプロイするには以下のことを実行する必要があります。
 

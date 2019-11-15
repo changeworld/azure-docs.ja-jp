@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database の単一データベース/プールされたデータベースへの SQL Server データベースの移行 | Microsoft Docs
+title: 単一データベースまたはプールされたデータベースへの SQL Server データベースの移行
 description: SQL Server データベースを Azure SQL Database の単一データベースまたはエラスティック プールに移行する方法について説明します。
 keywords: データベースの移行, SQL Server データベースの移行, データベース移行ツール, データベースを移行する, SQL データベースを移行する
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: a156d73c7eedcbdf7c703b946a26d46ca9129632
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df1ef21da43bc74809bd9fd71b5dde3906cdb343
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566608"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820975"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 

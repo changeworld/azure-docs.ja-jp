@@ -1,5 +1,5 @@
 ---
-title: PowerShell サンプル - SQL Database と SQL Server オンプレミス間の同期 | Microsoft Docs
+title: PowerShell の例 - SQL Database と SQL Server オンプレミスの間で同期する
 description: Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行うための Azure PowerShell サンプル スクリプト
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 54e459d1dbb4102cbd57f4e42572b4710d9899b2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 74821911994f189ae77d84468d75ccc134ba8db6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569795"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691507"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>PowerShell を使用して SQL Database と SQL Server オンプレミス データベースの間で同期を行う
 

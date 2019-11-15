@@ -1,44 +1,49 @@
 ---
 title: Azure Backup サービスを使用した Azure Files のファイル共有のバックアップ
-description: このチュートリアルでは、Azure ファイル共有をバックアップする方法について説明します。
+description: このチュートリアルでは、Azure portal を使用して、Recovery Services コンテナーを構成し、Azure ファイル共有をバックアップする方法について説明します。
 author: dcurwin
 ms.author: dacurwin
 ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e63ad75effb03cf9dd5eb5c66b142cce629ea290
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8b08f87441f9b4c67f718dfe9f0c894d0730a5f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736232"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747056"
 ---
-# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal での Azure ファイル共有のバックアップ
+# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal 内での Azure ファイル共有のバックアップ
+
 このチュートリアルでは、Azure portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)をバックアップする方法について説明します。
 
 このガイドでは、以下の方法について説明します。
 > [!div class="checklist"]
+>
 > * Recovery Services コンテナーを構成して Azure Files をバックアップできるようにする
 > * オンデマンド バックアップ ジョブを実行して復元ポイントを作成する
 
-
 ## <a name="prerequisites"></a>前提条件
+
 Azure ファイル共有をバックアップする前に、[サポートされているストレージ アカウントの種類](tutorial-backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview)のいずれかにそれが存在することを確認しておいてください。 この確認が完了したら、ファイル共有を保護することができます。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
+
 Azure ファイル共有のバックアップはプレビュー段階です。 汎用 v1 ストレージ アカウントと汎用 v2 ストレージ アカウント、どちらの Azure ファイル共有もサポートされています。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
-- 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
-- Azure Backup を使用して Azure Files を保護するために利用できる CLI はありません。
-- スケジュール バックアップの数は、1 日につき 1 個が上限となります。
-- オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
-- ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
-- Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
-- Azure Backup で保護されているファイル共有は削除しないでください。 現在のソリューションでは、ファイル共有が削除されると Azure Backup によって取得されたスナップショットがすべて削除されます。そのため、すべての復元ポイントが失われます。
+
+* 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
+* Azure Backup を使用して Azure Files を保護するために利用できる CLI はありません。
+* スケジュール バックアップの数は、1 日につき 1 個が上限となります。
+* オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
+* ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
+* Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
+* Azure Backup で保護されているファイル共有は削除しないでください。 現在のソリューションでは、ファイル共有が削除されると Azure Backup によって取得されたスナップショットがすべて削除されます。そのため、すべての復元ポイントが失われます。
 
 [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS)、米国東部 (EUS)、米国東部 2 (EUS2)、北ヨーロッパ (NE)、東南アジア (SEA)、西ヨーロッパ (WE)、米国西部 2 (WUS2) でのみ使用できます。
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure ファイル共有のバックアップの構成
+
 このチュートリアルでは、Azure ファイル共有を既に確立していることを前提としています。 Azure ファイル共有をバックアップするには:
 
 1. 使用しているファイル共有と同じリージョンに Recovery Services コンテナーを作成します。 コンテナーが既にある場合は、そのコンテナーの [概要] ページを開き、 **[バックアップ]** をクリックします。
@@ -70,8 +75,8 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
     バックアップ ポリシーを確立すると、スケジュールされた時刻にファイル共有のスナップショットが作成され、復旧ポイントは選択した期間保持されます。
 
 ## <a name="create-an-on-demand-backup"></a>オンデマンド バックアップの作成
-バックアップ ポリシーを構成したら、次回のスケジュール バックアップまでデータが確実に保護されるように、オンデマンド バックアップを作成することをお勧めします。
 
+バックアップ ポリシーを構成したら、次回のスケジュール バックアップまでデータが確実に保護されるように、オンデマンド バックアップを作成することをお勧めします。
 
 ### <a name="to-create-an-on-demand-backup"></a>オンデマンド バックアップを作成するには
 
@@ -91,12 +96,12 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
    ![復旧ポイントの保持期間を選択する](./media/backup-file-shares/backup-now-menu.png)
 
-
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure portal を使用して以下を行いました。
 
 > [!div class="checklist"]
+>
 > * Recovery Services コンテナーを構成して Azure Files をバックアップできるようにする
 > * オンデマンド バックアップ ジョブを実行して復元ポイントを作成する
 
@@ -104,4 +109,3 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
 > [!div class="nextstepaction"]
 > [Azure ファイル共有のバックアップから復元する](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
- 

@@ -15,16 +15,16 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330020"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641448"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 
-Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。 これは、SaaS アプリの自動化されたユーザー プロビジョニングとして知られています。
+Azure Active Directory (Azure AD) を使用すると、[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) などのクラウド SaaS アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。 これは、SaaS アプリの自動化されたユーザー プロビジョニングとして知られています。
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
@@ -90,11 +90,7 @@ Azure Active Directory ポータルを使用して、選択したアプリケー
 
 1. **[Azure Active Directory ポータル](https://aad.portal.azure.com)** を開きます。
 1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 構成済みのすべてのアプリの一覧が表示されます。
-1. **[+ 新しいアプリケーション]** を選択して、アプリケーションを追加します。 シナリオに応じて、次のいずれかを追加します。
-
-   - **[独自のアプリを追加する]** オプションでは、カスタム開発の SCIM の統合がサポートされます。
-   - **[ギャラリーから追加する]**  >  **[注目のアプリケーション]** セクションに表示されるアプリケーションすべてが、自動プロビジョニングに対応しています。 追加のアプリケーションについては、[ユーザー プロビジョニングのためのアプリケーション チュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。
-
+1. **[+ 新しいアプリケーション]** を選択して、アプリケーションを追加します。 
 1. 詳細を指定し、 **[追加]** を選択します。 新しいアプリがエンタープライズ アプリケーションの一覧に追加され、そのアプリケーションの管理画面が表示されます。
 1. ユーザー アカウントでのアプリのプロビジョニング設定を管理するには、 **[プロビジョニング]** を選択します。
 
@@ -196,7 +192,7 @@ Azure portal でプロビジョニング ログを確認する方法について
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-アプリケーションに対する出力方向のユーザー プロビジョニングを展開するための段階的なデプロイ計画の例については、[ユーザー プロビジョニングのための ID デプロイ ガイド](https://aka.ms/userprovisioningdeploymentplan)をご覧ください。
+アプリケーションに対する出力方向のユーザー プロビジョニングを展開するための段階的なデプロイ計画の例については、[ユーザー プロビジョニングのための ID デプロイ ガイド](https://aka.ms/deploymentplans/userprovisioning)をご覧ください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

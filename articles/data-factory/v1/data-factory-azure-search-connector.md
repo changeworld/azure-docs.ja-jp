@@ -1,6 +1,6 @@
 ---
-title: Data Factory を使用して Search インデックスにデータをプッシュする | Microsoft Docs
-description: Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする方法について説明します。
+title: Data Factory を使用して検索インデックスにデータをプッシュする
+description: Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをプッシュする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 30a5bc9c5f0b7d1443e7ca2a16d9f0e0d1120dd8
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: da867ae62ce4480c5d5854ae3f28ad258421905d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836640"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809171"
 ---
-# <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする
+# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをプッシュする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-azure-search-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-azure-search.md)
 
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Azure Search コネクタ](../connector-azure-search.md)に関するページをご覧ください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Azure Cognitive Search コネクタ](../connector-azure-search.md)に関するページを参照してください。
 
-この記事では、コピー アクティビティを使用して、サポートされているソース データ ストアから Azure Search インデックスにデータをプッシュする方法について説明します。 サポートされているソース データ ストアについては、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表のソースの列を参照してください。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、コピー アクティビティを使用して、サポートされているソース データ ストアから Azure Cognitive Search インデックスにデータをプッシュする方法について説明します。 サポートされているソース データ ストアについては、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表のソースの列を参照してください。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 ## <a name="enabling-connectivity"></a>接続を有効にする
 Data Factory サービスからオンプレミスのデータ ストアに接続できるようにするには、オンプレミスの環境に Data Management Gateway をインストールします。 データ ストアをホストするコンピューターと同じコンピューター、またはデータ ストアとのリソースの競合を避けるために別のコンピューター上にゲートウェイをインストールできます。
@@ -36,7 +36,7 @@ Data Factory サービスからオンプレミスのデータ ストアに接続
 Data Management Gateway では、安全かつ管理された方法でオンプレミスのデータがクラウド サービスに接続されます。 Data Management Gateway の詳細については、 [オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツールや API を使用して、ソース データ ストアから Azure Search インデックスにデータをプッシュするコピー アクティビティを含むパイプラインを作成できます。
+さまざまなツールや API を使用して、ソース データ ストアから検索インデックスにデータをプッシュするコピー アクティビティを含むパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
@@ -48,19 +48,19 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Azure Search インデックスにデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: オンプレミスの SQL Server から Azure Search インデックスにデータをコピーする](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index)」のセクションを参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  検索インデックスにデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON 例: オンプレミスの SQL Server から Azure Cognitive Search インデックスにデータをコピーする](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index)」のセクションを参照してください。
 
-以下のセクションでは、Azure Search インデックスに固有の Data Factory エンティティの定義に使用される JSON プロパティの詳細を説明します。
+以降のセクションでは、検索インデックスに固有の Data Factory エンティティを定義するために使用される JSON プロパティに関する詳細について説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
-次の表は、Azure Search のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+次の表では、Azure Cognitive Search のリンクされたサービスに固有の JSON 要素について説明しています。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
-| url | Azure Search サービスの URL。 | はい |
-| key | Azure Search サービスの管理者キー。 | はい |
+| url | 検索サービスの URL。 | はい |
+| key | 検索サービスの管理者キー。 | はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -69,7 +69,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | type | type プロパティを **AzureSearchIndex** に設定する必要があります。| はい |
-| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | はい |
+| indexName | 検索インデックスの名前。 Data Factory では、インデックスは作成されません。 このインデックスは Azure Cognitive Search に存在する必要があります。 | はい |
 
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
@@ -80,10 +80,10 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。| マージ (既定値)<br/>アップロード| いいえ |
-| WriteBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。 | 1 ～ 1,000。 既定値は 1,000 です。 | いいえ |
+| WriteBatchSize | バッファー サイズが writeBatchSize に達すると、検索インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。 | 1 ～ 1,000。 既定値は 1,000 です。 | いいえ |
 
 ### <a name="writebehavior-property"></a>WriteBehavior プロパティ
-データを書き込むときに AzureSearchSink で upsert されます。 つまり、ドキュメントを書き込むときに Azure Search インデックスにそのドキュメントのキーが既に存在する場合は、Azure Search は競合の例外をスローするのではなく、既存のドキュメントを更新します。
+データを書き込むときに AzureSearchSink で upsert されます。 つまり、ドキュメントを書き込むとき、そのドキュメントのキーが検索インデックスに既に存在する場合、Azure Cognitive Search は競合の例外をスローするのではなく、既存のドキュメントを更新します。
 
 AzureSearchSink で提供される upsert 動作 (AzureSearch SDK の使用による) は、次の 2 とおりあります。
 
@@ -93,12 +93,12 @@ AzureSearchSink で提供される upsert 動作 (AzureSearch SDK の使用に�
 既定の動作は**マージ**です。
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize プロパティ
-Azure Search サービスでは、バッチとしてのドキュメントの書き込みをサポートていします。 バッチには、1 ～ 1,000 のアクションを含めることができます。 1 つのアクションで、1 つのドキュメントのアップロード/マージ操作の実行を処理します。
+Azure Cognitive Search サービスは、バッチとしてのドキュメントの書き込みをサポートしています。 バッチには、1 ～ 1,000 のアクションを含めることができます。 1 つのアクションで、1 つのドキュメントのアップロード/マージ操作の実行を処理します。
 
 ### <a name="data-type-support"></a>データ型のサポート
-次の表は、Azure Search データ型がサポートされているかどうかを示します。
+次の表は、Azure Cognitive Search のデータ型がサポートされているかどうかを示しています。
 
-| Azure Search データ型 | Azure Search のシンクでサポートされている |
+| Azure Cognitive Search のデータ型 | Azure Cognitive Search のシンクでのサポート |
 | ---------------------- | ------------------------------ |
 | string | Y |
 | Int32 | Y |
@@ -109,7 +109,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 | String Array | N |
 | GeographyPoint | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>JSON の使用例:オンプレミスの SQL Server から Azure Search インデックスにデータをコピーする
+## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON の使用例:オンプレミスの SQL Server から Azure Cognitive Search インデックスにデータをコピーする
 
 次のサンプルは以下を示しています。
 
@@ -119,11 +119,11 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 4. [AzureSearchIndex](#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 4. [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) と [AzureSearchIndexSink](#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、オンプレミスの SQL Server データベースから Azure Search インデックスに時系列データを 1 時間おきにコピーします。 このサンプルで使用される JSON プロパティの説明は、サンプルに続くセクションにあります。
+このサンプルは、オンプレミスの SQL Server データベースから検索インデックスに時系列データを 1 時間ごとにコピーします。 このサンプルで使用される JSON プロパティの説明は、サンプルに続くセクションにあります。
 
 最初の手順として、オンプレミスのコンピューターでデータ管理ゲートウェイを設定します。 設定手順は、 [オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事に記載されています。
 
-**Azure Search のリンクされたサービス:**
+**Azure Cognitive Search のリンクされたサービス:**
 
 ```JSON
 {
@@ -184,9 +184,9 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 }
 ```
 
-**Azure Search の出力データセット:**
+**Azure Cognitive Search の出力データセット:**
 
-このサンプルは、データを **products** という名前の Azure Search インデックスにコピーします。 Data Factory では、インデックスは作成されません。 サンプルをテストするには、この名前を持つインデックスを作成します。 入力データセットと同数の列を持つ Azure Search インデックスを作成します。 新しいエントリが、Azure Search インデックスに 1 時間おきに追加されます。
+このサンプルは、**products** という名前の Azure Cognitive Search インデックスにデータをコピーします。 Data Factory では、インデックスは作成されません。 サンプルをテストするには、この名前を持つインデックスを作成します。 入力データセットと同じ列数を持つ検索インデックスを作成します。 新しいエントリが検索インデックスに 1 時間ごとに追加されます。
 
 ```JSON
 {
@@ -205,7 +205,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 }
 ```
 
-**SQL ソースと Azure Search インデックス シンクを使用したパイプラインでのコピー アクティビティ**
+**SQL ソースと Azure Cognitive Search インデックス シンクを使用したパイプラインでのコピー アクティビティ:**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **SqlSource** に設定され、**sink** 型が **AzureSearchIndexSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
@@ -256,7 +256,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 }
 ```
 
-クラウド データ ストアからAzure Search へデータをコピーする場合は、`executionLocation` プロパティが必要です。 たとえば、コピー アクティビティ `typeProperties` で必要となる変更は次の JSON スニペットのようになります。 「[クラウド データ ストア間でのデータのコピー](data-factory-data-movement-activities.md#global)」セクションで、サポートされている値および詳細を確認してください。
+クラウド データ ストアから Azure Cognitive Search にデータをコピーしている場合は、`executionLocation` プロパティが必要です。 たとえば、コピー アクティビティ `typeProperties` で必要となる変更は次の JSON スニペットのようになります。 「[クラウド データ ストア間でのデータのコピー](data-factory-data-movement-activities.md#global)」セクションで、サポートされている値および詳細を確認してください。
 
 ```JSON
 "typeProperties": {
@@ -272,7 +272,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 
 
 ## <a name="copy-from-a-cloud-source"></a>クラウド ソースからコピー
-クラウド データ ストアからAzure Search へデータをコピーする場合は、`executionLocation` プロパティが必要です。 たとえば、コピー アクティビティ `typeProperties` で必要となる変更は次の JSON スニペットのようになります。 「[クラウド データ ストア間でのデータのコピー](data-factory-data-movement-activities.md#global)」セクションで、サポートされている値および詳細を確認してください。
+クラウド データ ストアから Azure Cognitive Search にデータをコピーしている場合は、`executionLocation` プロパティが必要です。 たとえば、コピー アクティビティ `typeProperties` で必要となる変更は次の JSON スニペットのようになります。 「[クラウド データ ストア間でのデータのコピー](data-factory-data-movement-activities.md#global)」セクションで、サポートされている値および詳細を確認してください。
 
 ```JSON
 "typeProperties": {

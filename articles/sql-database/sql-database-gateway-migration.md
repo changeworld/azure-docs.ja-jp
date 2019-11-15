@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のゲートウェイ トラフィックの移行に関するお知らせ | Microsoft Docs
+title: ゲートウェイ トラフィックの移行に関する注意事項
 description: Azure SQL Database ゲートウェイの IP アドレスの移行についてユーザーにお知らせする記事です
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: fe35dc4c22f3852934cde0d6f33084b56266d514
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686803"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807700"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 

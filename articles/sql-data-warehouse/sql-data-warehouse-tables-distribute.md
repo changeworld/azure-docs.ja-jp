@@ -1,5 +1,5 @@
 ---
-title: 分散テーブルの設計ガイダンス - Azure SQL Data Warehouse | Microsoft Docs
+title: 分散テーブルの設計ガイダンス
 description: Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4b322415592a7202387cb6776d2c040cda765b27
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479351"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685468"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での分散テーブルの設計に関するガイダンス
 Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。

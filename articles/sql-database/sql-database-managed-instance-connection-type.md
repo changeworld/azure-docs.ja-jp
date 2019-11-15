@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database マネージド インスタンスの接続の種類 | Microsoft Docs
+title: マネージド インスタンスの接続の種類
 description: マネージド インスタンスの接続の種類について学習します
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 4ebd81f9c04bd739f1c18f636094040882b5ce36
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001750"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819453"
 ---
 # <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL Database マネージド インスタンスの接続の種類
 

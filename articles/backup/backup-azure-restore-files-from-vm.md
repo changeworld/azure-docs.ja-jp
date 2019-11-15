@@ -1,6 +1,6 @@
 ---
-title: 'Azure Backup: Azure VM のバックアップからファイルとフォルダーを回復する'
-description: Azure 仮想マシンの回復ポイントからファイルを回復します
+title: 'Azure Backup: Azure VM バックアップからファイルとフォルダーを回復する'
+description: この記事では、Azure 仮想マシンの復旧ポイントからファイルとフォルダーを回復する方法について説明します。
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210373"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747367"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -74,10 +74,9 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
     - 送信ポート 3260
 
 > [!Note]
-> 
-> * ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 例:ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' (例: ContosoVM_wcus_12345678) で始まります。<br><br>
-> * この URL は "https:\//pod01-rec2.wcus.backup.windowsazure.com" となります。
-
+>
+> - ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 例:ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' (例: ContosoVM_wcus_12345678) で始まります。<br><br>
+> - この URL は "https:\//pod01-rec2.wcus.backup.windowsazure.com" となります。
 
    Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するコンピューターに目的のコンポーネントが存在しない場合は、コンポーネントをインストールするためのアクセス許可をスクリプトから求められます。 同意して、必要なコンポーネントをインストールします。
 
@@ -219,6 +218,35 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 | Python | 2.6.6 以降  |
 | TLS | 1.2 がサポートされている必要があります。  |
 
+## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>大容量ディスクを含む仮想マシンのバックアップからのファイルの回復
+
+このセクションでは、ディスクの数が 16 を超え、かつ各ディスク サイズが 4 TB を超える Azure 仮想マシンのバックアップからファイルの回復を実行する方法について説明します。
+
+ファイルの回復プロセスではバックアップのすべてのディスクがアタッチされるため、多数のディスク (16 を超える) または大容量ディスク (それぞれ 4 TB を超える) が使用されている場合は、次のアクション ポイントが推奨されます。
+
+- ファイルの回復のために個別の復元サーバー (Azure VM D2v3 VM) を保持します。 そのサーバーはファイルの回復にのみ使用でき、必要がないときはシャットダウンできます。 元のコンピューターへの復元は、VM 自体に大きな影響を与えるためお勧めできません。
+- 次に、ファイルの回復操作が成功するかどうかを確認するために、スクリプトを 1 回実行します。
+- ファイルの回復プロセスがハングアップする (ディスクがマウントされないか、またはマウントされてもボリュームが表示されない) 場合は、次の手順を実行します。
+  - 復元サーバーが Windows VM である場合
+    - OS が WS 2012 以上であることを確認します。
+    - 復元サーバーでレジストリ キーが次の推奨のとおりに設定されていることを確認し、サーバーを確実に再起動します。 GUID のそばにある番号は 0001 から 0005 までの範囲にあります。 次の例では、0004 になっています。 レジストリ キーのパスをパラメーターのセクションまで移動します。
+
+    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+
+```registry
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+```
+
+- 復元サーバーが Linux VM である場合
+  - ファイル /etc/iscsi/iscsid.conf で、設定を次のように変更します。
+    - node.conn[0].timeo.noop_out_timeout = 5 から node.conn[0].timeo.noop_out_timeout = 30 に
+- 次を実行したら、ここでスクリプトを再度実行します。 これらの変更により、ファイルの回復が成功する可能性が高くなります。
+- ユーザーがスクリプトをダウンロードするたびに、Azure Backup は、ダウンロード用に復旧ポイントを準備するプロセスを開始します。 大容量ディスクでは、これにかなりの時間がかかります。 要求の連続したバーストが発生すると、ターゲットの準備がダウンロードのスパイラルに陥ります。 そのため、ポータル/Powershell/CLI からスクリプトをダウンロードするには、20 ～ 30 分 (ヒューリスティック) 待ってから実行することをお勧めします。 この時間までに、ターゲットは、スクリプトからの接続に対して準備できると予測されます。
+- ファイルの回復の後、ポータルに戻り、ボリュームをマウントできなかった復旧ポイントのために [ディスクのマウント解除] をクリックするようにしてください。 基本的には、この手順によって既存のプロセス/セッションがすべて消去され、回復の可能性が向上します。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 仮想マシンからのファイルの回復中に問題が発生した場合は、次の表で追加情報を確認してください。
@@ -247,7 +275,7 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>回復ポイントを選択する (スクリプトを生成できるユーザー)
 
-スクリプトは VM データへのアクセスを提供するため、最初に誰がスクリプトを生成できるかを制限することが重要です。 スクリプトを生成するには、Azure portal にログインして、[RBAC で承認](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)される必要があります。
+スクリプトは VM データへのアクセスを提供するため、最初に誰がスクリプトを生成できるかを制限することが重要です。 スクリプトを生成できるようにするには、Azure portal にサインインし、[RBAC で承認](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)される必要があります。
 
 ファイルの回復には、VM の復元とディスクの復元に必要な承認レベルと同じレベルが必要です。 つまり、承認されたユーザーのみが VM データを表示してスクリプトを生成できます。
 

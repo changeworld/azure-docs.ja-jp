@@ -1,7 +1,7 @@
 ---
 title: Docker コンテナーのレシピ
 titleSuffix: Azure Cognitive Services
-description: これらのコンテナーのレシピを使用して、再利用できる Cognitive Services コンテナーを作成します。 コンテナーの起動時に必要にならないように、一部またはすべての構成設定を使用してコンテナーをビルドすることができます。 (設定を使用して) この新しいレイヤーのコンテナーを用意し、それをローカルでテストした後は、コンテナー レジストリにコンテナーを保存できます。 コンテナーが起動するときは、コンテナーに現在保存されていないそれらの設定のみが必要になります。
+description: デプロイと再利用のために、構成設定の一部または全部を使用してコンテナーを構築、テスト、および保存する方法について説明します。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: a8162f96051a73b9f6e6a6fe3ece020e0a94f08f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dbe2e288309b6682041bf3db9fe3d39455359806
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068821"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647276"
 ---
 # <a name="create-containers-for-reuse"></a>再利用するためのコンテナーを作成する
 

@@ -1,26 +1,25 @@
 ---
 title: クイック スタート - Azure portal で Linux VM を作成する | Microsoft Docs
-description: このクイック スタートでは、Azure portal を使用して Linux 仮想マシンを作成する方法について説明します
+description: このクイックスタートでは、Azure portal を使用して Linux 仮想マシンを作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/20/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c05eb59c42700394f755f226405f16a47edc73c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091546"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693326"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Linux 仮想マシンを作成する
 
@@ -50,15 +49,14 @@ Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使�
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
-
-1. **[人気順]** で、 **[Ubuntu Server 18.04 LTS]** を選択します。
-
-1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、 **[リソース グループ]** で **[新規作成]** を選択します。 リソース グループの名前として「*myResourceGroup*」と入力し、 **[OK]** を選択します。 
+1. 検索に「**virtual machines**」と入力します。
+1. **[サービス]** で、 **[仮想マシン]** を選択します。
+1. **[仮想マシン]** ページで、 **[追加]** を選択します。 **[仮想マシンの作成]** ページが開きます。
+1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前 * として「*myResourceGroup*」と入力します。 
 
     ![VM の新しいリソース グループを作成する](./media/quick-create-portal/project-details.png)
 
-1. **[Instance details] (インスタンスの詳細)** で、 **[仮想マシン名]** として「*myVM*」と入力し、 **[リージョン]** として *[米国東部]* を選択します。 他の既定値はそのままにします。
+1. **[インスタンスの詳細]** で、 **[仮想マシン名]** として「*myVM*」と入力し、 **[リージョン]** として *[米国東部]* を選択し、 **[イメージ]** として *[Ubuntu 18.04 LTS]* を選択します。 他の既定値はそのままにします。
 
     ![[Instance details] (インスタンスの詳細) セクション](./media/quick-create-portal/instance-details.png)
 

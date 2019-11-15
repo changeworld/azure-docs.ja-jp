@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 555b4d95358978e84e14e8a2e8b3d1c9cb2efc18
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "70933151"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614600"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions の種類と機能 (Azure Functions)
 
@@ -24,7 +24,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 
 ## <a name="orchestrator-functions"></a>オーケストレーター関数
 
-オーケストレーター関数は、アクションが実行される方法とアクセスの実行順序を記述します。 オーケストレーター関数は、[Durable Functions のアプリケーション パターン](durable-functions-overview.md#application-patterns)に関するページにあるように、コード (C# または JavaScript) でオーケストレーションを表現します。 1 つのオーケストレーションに、[アクティビティ関数](#activity-functions)、[サブオーケストレーション](durable-functions-orchestrations.md#sub-orchestrations)、[外部イベントの待ち受け](durable-functions-orchestrations.md#external-events)、[HTTP](durable-functions-orchestrations.md#calling-http-endpoints)、[タイマー](durable-functions-orchestrations.md#durable-timers)など、さまざまな種類のアクションを設定できます。 Orchestrator 関数は、[エンティティ関数](#entity-functions)とやりとりすることもできます。
+オーケストレーター関数は、アクションが実行される方法とアクセスの実行順序を記述します。 オーケストレーター関数は、[Durable Functions のアプリケーション パターン](durable-functions-overview.md#application-patterns)に関するページにあるように、コード (C# または JavaScript) でオーケストレーションを表現します。 1 つのオーケストレーションに、[アクティビティ関数](#activity-functions)、[サブオーケストレーション](durable-functions-orchestrations.md#sub-orchestrations)、[外部イベントの待ち受け](durable-functions-orchestrations.md#external-events)、[HTTP](durable-functions-http-features.md)、[タイマー](durable-functions-orchestrations.md#durable-timers)など、さまざまな種類のアクションを設定できます。 Orchestrator 関数は、[エンティティ関数](#entity-functions)とやりとりすることもできます。
 
 > [!NOTE]
 > オーケストレーター関数は通常のコードを使用して記述されますが、コードの記述方法については厳密な要件があります。 具体的には、オーケストレーター関数のコードは*決定的*である必要があります。 これらの決定性の要件に従わないと、オーケストレーター関数が正しく動作しない可能性があります。 これらの要件とその対処方法の詳細については、[コードの制約](durable-functions-code-constraints.md)に関するトピックを参照してください。
@@ -40,7 +40,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 > [!NOTE]
 > アクティビティ関数は "*少なくとも 1 回*" の実行を保証するのみであるため、可能な限りアクティビティ関数のロジックを "*べき等*" にすることをお勧めします。
 
-アクティビティ関数を定義するには、[アクティビティ トリガー](durable-functions-bindings.md#activity-trigger)を使用します。 .NET 関数はパラメーターとして [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) を受け取ります。 トリガーを他の JSON シリアル化可能オブジェクトにバインドして、入力を関数に渡すこともできます。 JavaScript では、[`context.bindings` オブジェクト](../functions-reference-node.md#bindings)の `<activity trigger binding name>` プロパティを介して入力にアクセスできます。 アクティビティ関数に渡すことができる値は 1 つだけです。 複数の値を渡すには、タプル、配列、または複合型を使用する必要があります。
+アクティビティ関数を定義するには、[アクティビティ トリガー](durable-functions-bindings.md#activity-trigger)を使用します。 .NET 関数は `DurableActivityContext` をパラメーターとして受け取ります。 トリガーを他の JSON シリアル化可能オブジェクトにバインドして、入力を関数に渡すこともできます。 JavaScript では、[`context.bindings` オブジェクト](../functions-reference-node.md#bindings)の `<activity trigger binding name>` プロパティを介して入力にアクセスできます。 アクティビティ関数に渡すことができる値は 1 つだけです。 複数の値を渡すには、タプル、配列、または複合型を使用する必要があります。
 
 > [!NOTE]
 > アクティビティ関数は、オーケストレーター関数からのみトリガーできます。
@@ -50,7 +50,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 エンティティ関数では、状態の小さな部分の読み取りと更新のための操作を定義します。 これらのステートフル エンティティは、"*持続エンティティ*" と呼ばれることがよくあります。 オーケストレーター関数と同様、エンティティ関数は特殊なトリガー型である "*エンティティ トリガー*" を含む関数です。 これらは、クライアント関数またはオーケストレーター関数から呼び出すこともできます。 オーケストレーター関数とは異なり、エンティティ関数には特定のコードの制約はありません。 また、エンティティ関数では、制御フローを介して状態を表す暗黙的ではなく、明示的に状態が管理されます。
 
 > [!NOTE]
-> エンティティ関数と関連する機能は Durable Functions 2.0 以降でのみ使用できます。 エンティティ関数は現在、パブリック プレビューの段階にあります。
+> エンティティ関数と関連する機能は Durable Functions 2.0 以降でのみ使用できます。
 
 エンティティ関数の詳細については、[持続エンティティ](durable-functions-entities.md)に関する記事を参照してください。
 

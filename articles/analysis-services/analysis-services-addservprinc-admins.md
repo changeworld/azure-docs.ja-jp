@@ -1,18 +1,18 @@
 ---
-title: Azure Analysis Services のサーバー管理者ロールにサービス プリンシパルを追加する | Microsoft Docs
-description: サーバー管理者ロールに自動化サービス プリンシパルを追加する方法について説明します
+title: Azure Analysis Services の管理者ロールにサービス プリンシパルを追加する | Microsoft Docs
+description: Azure Analysis Services のサーバー管理者ロールに自動化サービス プリンシパルを追加する方法について説明します
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573609"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 

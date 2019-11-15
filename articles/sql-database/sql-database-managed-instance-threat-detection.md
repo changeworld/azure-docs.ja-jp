@@ -1,5 +1,5 @@
 ---
-title: Advanced Threat Protection を構成する - Azure SQL Database マネージド インスタンス | Microsoft Docs
+title: Advanced Threat Protection の構成 - マネージド インスタンス
 description: Advanced Threat Protection では、マネージド インスタンスのデータベースに対する潜在的なセキュリティの脅威を示す異常なデータベース アクティビティが検出されます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: eb6d8229e85e54a6a3fc8591dc4688a73773fd8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 69292a934af8b8777f11ab58ed3fe306abf8b408
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816596"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822560"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスで Advanced Threat Protection を構成する
 

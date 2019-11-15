@@ -1,8 +1,6 @@
 ---
 title: Azure Functions デプロイ スロット
 description: Azure Functions でデプロイ スロットを作成して使用する方法を学習します
-services: functions
-documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions, 関数
@@ -10,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70085666"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576314"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 
@@ -27,7 +25,7 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 - スワップ中に関数が実行されている場合は、実行が続行され、それ以降のトリガーがスワップされたアプリ インスタンスにルーティングされます。
 
 > [!NOTE]
-> Linux 従量課金プランでは、スロットは使用できません。
+> スロットは現時点で、Linux 従量課金プランでは使用できません。
 
 ## <a name="why-use-slots"></a>スロットを使用する理由
 
@@ -182,10 +180,10 @@ Azure Functions デプロイ スロットには、次の制限があります。
 | OS/ホスティング プラン           | サポートのレベル     |
 | ------------------------- | -------------------- |
 | Windows Consumption       | 一般公開 |
-| Windows Premium (プレビュー) | プレビュー              |
+| Windows Premium           | 一般公開  |
 | Windows Dedicated         | 一般公開 |
 | Linux Consumption         | サポートされていません          |
-| Linux Premium (プレビュー)   | プレビュー              |
+| Linux Premium             | 一般公開  |
 | Linux Dedicated           | 一般公開 |
 
 ## <a name="next-steps"></a>次の手順

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595332"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579680"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -175,6 +175,18 @@ or
 **Q:単語のリストをアップロードできますか。**
 
 **A**: 単語のリストをアップロードすると、それらの単語はボキャブラリに追加されますが、それらの単語の一般的な使用方法はシステムに伝わりません。 すべての発話または発話の一部 (ユーザーが言いそうな文や語句) を指定すると、言語モデルはその新しい単語とその使用方法を学習します。 カスタム言語モデルは、システムに新しい単語を追加するだけでなく、新しいアプリケーションに対して既知の単語の確度を調整するのに便利です。 すべての発話を指定すると、システムがより学習できるようになります。 
+
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>テナント モデル (Office 365 データを使用した Custom Speech)
+
+**Q:テナント モデルに含まれている情報と、その作成方法を教えてください。**
+
+**A:** テナント モデルは、組織内の誰でも見ることができる[パブリック グループ](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)のメールとドキュメントを使用して構築されます。 
+ 
+**Q:テナント モデルでは、どのような音声エクスペリエンスが向上しますか。**
+
+**A:** テナント モデルを有効にし、作成して発行すると、Speech Service を使用して構築されたエンタープライズ アプリケーションの認識を改善するために使用されます。また、企業へのメンバーシップを示すユーザーの AAD トークンも渡されます。 
+ 
+Speech Service アプリケーションのテナント モデルを作成しても、Office 365 に組み込まれている音声エクスペリエンス (ディクテーションや PowerPoint キャプションなど) は変更されません。
 
 ## <a name="next-steps"></a>次の手順
 

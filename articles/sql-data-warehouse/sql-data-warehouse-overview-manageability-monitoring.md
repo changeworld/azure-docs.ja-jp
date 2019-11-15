@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse の管理容易性と監視 - 概要 | Microsoft Docs
-description: リソース使用率、ログとクエリのアクティビティ、推奨事項、およびデータ保護 (バックアップと復元) の監視と管理容易性の概要。
+title: 管理と監視 - 概要
+description: Azure SQL Data Warehouse における、リソース使用率、ログとクエリのアクティビティ、推奨事項、およびデータ保護 (バックアップと復元) の監視と管理容易性の概要。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9fb06b8ba34566689f769ca9a69328eee37e3c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3bacd77f49f97bd98a5e1bee844bc80c595f5cbe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60747576"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685603"
 ---
 # <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での管理容易性と監視
 

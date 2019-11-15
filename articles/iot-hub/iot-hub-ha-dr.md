@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876896"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748557"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
 
@@ -62,7 +62,7 @@ IoT Hub のフェールオーバー操作が完了すると、デバイスおよ
 > [!CAUTION]
 > - そのIoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、フェールオーバー後に変更されます。 イベント ハブ クライアントまたはイベント プロセッサ ホストのいずれかを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)を使用して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 バックエンド アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[新しいイベント ハブ互換の名前とエンドポイントを取得して](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)アプリケーションを再構成する必要があります。
 >
-> - Blob Storage にルーティングするときは、パーティションを想定せずにすべてのコンテナーを確実に読み取るために、BLOB を確保したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 BLOB のリストを列挙する方法については、[Blob Storage へのルーティング](iot-hub-devguide-messages-d2c.md#azure-blob-storage)に関するページを参照してください。
+> - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用すると BLOB の一覧を、[List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) を使用するとファイルの一覧をそれぞれ列挙できます。 
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft が開始するフェールオーバー
 

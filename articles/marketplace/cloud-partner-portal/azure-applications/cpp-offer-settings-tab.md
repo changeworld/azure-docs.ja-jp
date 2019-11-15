@@ -4,15 +4,16 @@ description: Azure アプリケーション オファー用にオファーの設
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 789b783629b3cc3528eba1883b21051604cf6e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5e00f77ffeec61fb4fee4b4e8eb72b7c7ed1077
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942926"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827535"
 ---
 # <a name="azure-application-offer-settings-tab"></a>Azure アプリケーションの [プランの設定] タブ
 

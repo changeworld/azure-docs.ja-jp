@@ -1,6 +1,7 @@
 ---
 title: リリース ノート - Custom Vision Service
 titleSuffix: Azure Cognitive Services
+description: Custom Vision チームから新しいリリースに関する最新情報を入手します。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564092"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647571"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
 

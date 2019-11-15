@@ -4,15 +4,16 @@ description: Azure Marketplace ソリューションの顧客による使用状�
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c077b93b887482dda5ae127bb3dbaec71b2ea11b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260081"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819883"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -137,7 +138,7 @@ provider "azurerm" {
           client_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           ……
           # new stuff for ISV attribution
-          partner_id = “xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
+          partner_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
 顧客の使用状況の属性によって追跡される Terraform を介してデプロイを取得するパートナーは、以下を行う必要があります。
 
@@ -299,7 +300,7 @@ foreach ($deployment in $deployments){
 
 [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions) でステップ バイ ステップの手順とスクリーンショットを確認してください。
 
-### <a name="whats-next"></a>次の手順
+### <a name="whats-next"></a>参照トピック
 
 お客様のニーズを調べる電話の準備のために、Microsoft パートナー技術コンサルタントから連絡があります。
 

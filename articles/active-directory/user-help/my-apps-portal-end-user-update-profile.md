@@ -1,5 +1,5 @@
 ---
-title: マイ アプリ ポータルからプロファイルおよびアカウント情報を更新する - Azure Active Directory| Microsoft Docs
+title: マイ アプリ ポータルでプロファイルとアカウントを更新する - Azure AD
 description: パスワードの変更、パスワードのリセットの有効化、セキュリティ検証方法の更新、組織の利用規約ステートメントの表示、職場または学校アカウントを使用してサインインしたあらゆる場所からのサインアウトなど、プロファイルと職場または学校のアカウント情報を更新する方法について説明します。
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160755"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820374"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>マイ アプリ ポータルからプロファイルとアカウント情報を更新する
+# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>マイ アプリ ポータルでプロファイルとアカウント情報を更新する
 
 Web ベースの**マイ アプリ** ポータルでは、職場または学校アカウントを使用して、社内にあるクラウドベースのアプリを表示して起動したり、一部のプロフィール情報とアカウント情報を更新したり、**グループ**情報を確認したり、アプリとグループの**アクセス レビュー**を実行したりすることができます。 **マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得る必要があります。
 

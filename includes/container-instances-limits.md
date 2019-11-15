@@ -4,16 +4,16 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
-ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 3608eb6182f7806c0d4df8b96aa69faac68928f1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181540"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73591022"
 ---
 | リソース | 既定の制限 |
 | --- | :--- |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのコンテナー グループ数 | 100<sup>1</sup> |
+| 1 リージョン、1 [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのコンテナー グループ | 100<sup>1</sup> |
 | コンテナー グループあたりのコンテナーの数 | 60 |
 | コンテナー グループあたりのボリュームの数 | 20 |
 | IP あたりのポートの数 | 5 |

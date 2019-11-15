@@ -1,7 +1,7 @@
 ---
 title: カスタム サブドメイン
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services では、Azure portal、Azure Cloud Shell、または Azure CLI を通じて作成された各リソースに対して、カスタム サブドメイン名が使用されます。 特定の Azure リージョンのすべてのお客様に共通だった、リージョン エンドポイントとは異なり、カスタム サブドメイン名はリソースに対して一意です。 認証で Azure Active Directory (Azure AD) などの機能を有効にするには、カスタム サブドメイン名が必要です。
+description: 各 Cognitive Services リソースのカスタム サブドメイン名は、Azure portal、Azure Cloud Shell、または Azure CLI を使用して作成します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 7153735052f96bef65bf3daaccde4eab3e61b0f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473012"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647685"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services のカスタム サブドメイン名
 
@@ -34,7 +34,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>既存のリソースを更新する必要はありますか?
 
-いいえ。 リージョン エンドポイントは、新しいおよび既存の Cognitive Services に対して引き続き機能します。カスタム サブドメイン名は省略可能です。 カスタム サブドメイン名が追加されている場合でも、リージョン エンドポイントはリソースで引き続き機能します。
+No. リージョン エンドポイントは、新しいおよび既存の Cognitive Services に対して引き続き機能します。カスタム サブドメイン名は省略可能です。 カスタム サブドメイン名が追加されている場合でも、リージョン エンドポイントはリソースで引き続き機能します。
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>SDK でリソースのリージョンが要求された場合はどうすればよいですか?
 
@@ -55,7 +55,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 
 ## <a name="can-i-change-a-custom-domain-name"></a>カスタム ドメイン名を変更できますか?
 
-いいえ。 カスタム サブドメイン名は、作成されてリソースに関連付けられた後は、変更することはできません。
+No. カスタム サブドメイン名は、作成されてリソースに関連付けられた後は、変更することはできません。
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>カスタム ドメイン名を再利用できますか?
 

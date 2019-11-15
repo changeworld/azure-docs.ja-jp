@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:.NET 用 Language Understanding (LUIS) 作成クライアント ライブラリ
 titleSuffix: Azure Cognitive Services
-description: .NET 用 Language Understanding (LUIS) クライアント ライブラリの使い方を説明します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。  Language Understanding (LUIS) を使うと、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すことができます。
+description: .NET 用の LUIS クライアント ライブラリを使ってみます。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: d7668f49df1caca6b4261424b0d2c025a640d572
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258776"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672086"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>クイック スタート:.NET 用 Language Understanding (LUIS) 作成クライアント ライブラリ
 

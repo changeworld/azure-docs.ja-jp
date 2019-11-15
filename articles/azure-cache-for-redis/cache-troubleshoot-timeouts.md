@@ -1,5 +1,5 @@
 ---
-title: タイムアウトのトラブルシューティング | Microsoft Docs
+title: Azure Cache for Redis のタイムアウトに関するトラブルシューティング | Microsoft Docs
 description: Azure Cache for Redis での一般的なタイムアウトの問題を解決する方法について説明します
 services: cache
 documentationcenter: ''
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 8cf1ade80de015f1f981ff6610c242a5d0f1a1a7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795239"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826349"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis のタイムアウトのトラブルシューティング
 
 このセクションでは、Azure Cache for Redis に接続するときに発生するタイムアウトの問題のトラブルシューティングについて説明します。
 
-- [Redis サーバーの修正プログラムの適用](#redis-server-patching)
+- [Redis サーバーでの修正プログラムの適用](#redis-server-patching)
 - [StackExchange.Redis のタイムアウトの例外](#stackexchangeredis-timeout-exceptions)
 
 > [!NOTE]
 > このガイドのトラブルシューティング手順のいくつかには、Redis コマンドを実行し、さまざまなパフォーマンス メトリックを監視する手順が含まれています。 詳細および手順については、「 [追加情報](#additional-information) 」セクションの記事を参照してください。
 >
 
-## <a name="redis-server-patching"></a>Redis サーバーの修正プログラムの適用
+## <a name="redis-server-patching"></a>Redis サーバーでの修正プログラムの適用
 
-Azure Cache for Redis では、提供されるマネージド サービス機能の一部として、サーバー ソフトウェアが定期的に更新されます。 この[修正プログラム適用](cache-failover.md)アクティビティは、ほとんどはユーザーに認識されずに行われます。 フェールオーバーの間に、Redis サーバー ノードに修正プログラムが適用されていると、これらのノードに接続されている Redis クライアントは、これらのノード間で接続が切り替えられるため、一時的なタイムアウトが発生する可能性があります。 修正プログラムの適用によりアプリケーションに対して発生する可能性がある副作用、および修正プログラム適用イベントの処理を改善する方法の詳細については、「[フェールオーバーはクライアント アプリケーションにどのような影響を与えますか?](cache-failover.md#how-does-a-failover-impact-my-client-application)」 を参照してください。
+Azure Cache for Redis では、提供されるマネージド サービス機能の一部として、サーバー ソフトウェアが定期的に更新されます。 この[修正プログラム適用](cache-failover.md)アクティビティは、ほとんどはユーザーに認識されずに行われます。 フェールオーバーの間に、Redis サーバー ノードに修正プログラムが適用されていると、これらのノードに接続されている Redis クライアントでは、これらのノード間で接続が切り替えられるため、一時的なタイムアウトが発生する可能性があります。 修正プログラムの適用によりアプリケーションに対して発生する可能性がある副作用、および修正プログラム適用イベントの処理を改善する方法の詳細については、「[フェールオーバーはクライアント アプリケーションにどのような影響を与えますか?](cache-failover.md#how-does-a-failover-affect-my-client-application)」を参照してください。
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange.Redis のタイムアウトの例外
 
@@ -83,11 +83,11 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
 
         synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
 1. 最新バージョンの [StackExchange.Redis NuGet パッケージ](https://www.nuget.org/packages/StackExchange.Redis/)を使用するようにしてください。 タイムアウトの信頼性を高めるため、コードに示されるバグは常に修正されています。したがって、最新バージョンを使用することが重要です。
-1. 要求がサーバーまたはクライアントの帯域幅の制限に制約されている場合は、それらの要求の完了にかかる時間が長くなるため、タイムアウトになることがあります。 タイムアウトがサーバーのネットワーク帯域幅のためであるかどうかを確認するには、「[サーバー側の帯域幅の制限](cache-troubleshoot-server.md#server-side-bandwidth-limitation)」を参照してください。 タイムアウトがクライアントのネットワーク帯域幅のためであるかどうかを確認するには、「[クライアント側の帯域幅の制限](cache-troubleshoot-client.md#client-side-bandwidth-limitation)」を参照してください。
+1. 要求がサーバーまたはクライアントの帯域幅の制限に制約されている場合は、それらの要求の完了にかかる時間が長くなるため、タイムアウトになることがあります。 タイムアウトの原因がサーバー上のネットワーク帯域幅にあるかどうかを確認するには、「[サーバー側の帯域幅の制限](cache-troubleshoot-server.md#server-side-bandwidth-limitation)」を参照してください。 タイムアウトの原因がクライアントのネットワーク帯域幅にあるかどうかを確認するには、「[クライアント側の帯域幅の制限](cache-troubleshoot-client.md#client-side-bandwidth-limitation)」を参照してください。
 1. サーバーまたはクライアントに CPU 制約を適用していますか?
 
    - クライアントの CPU に制約されているかどうかを確認します。 CPU 使用率が高いと、要求が `synctimeout` の間隔内に処理されず、要求がタイムアウトになることがあります。クライアント サイズを大きくするか、負荷を分散すると、この問題を制御するのに役立ちます。
-   - CPU の[キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視することにより、サーバーで CPU 制約が発生しているかどうかを確認します。 Redis に CPU 制約が適用されているときに要求を受信した場合、これらの要求はタイムアウトになることがあります。この状況に対処するために、Premium キャッシュの複数のシャードに負荷を分散させるか、より大きいサイズまたは価格レベルにアップグレードすることができます。 詳細については、「[サーバー側の帯域幅の制限](cache-troubleshoot-server.md#server-side-bandwidth-limitation)」を参照してください。
+   - CPU の[キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視することにより、サーバー上で CPU 制約が発生しているかどうかを確認します。 Redis に CPU 制約が適用されているときに要求を受信した場合、これらの要求はタイムアウトになることがあります。この状況に対処するために、Premium キャッシュの複数のシャードに負荷を分散させるか、より大きいサイズまたは価格レベルにアップグレードすることができます。 詳細については、「[サーバー側の帯域幅の制限](cache-troubleshoot-server.md#server-side-bandwidth-limitation)」を参照してください。
 1. サーバー上での処理に時間がかかるコマンドはありますか? Redis サーバー上での処理に時間がかかる実行時間の長いコマンドがあると、タイムアウトになることがあります。 実行時間の長いコマンドの詳細については、「[実行時間の長いコマンド](cache-troubleshoot-server.md#long-running-commands)」を参照してください。 redis-cli クライアントまたは [Redis コンソール](cache-configure.md#redis-console)を使用して、Azure Cache for Redis インスタンスに接続できます。 次に、[SLOWLOG](https://redis.io/commands/slowlog) コマンドを実行して、予測より遅い要求があるかどうかを確認します。 Redis サーバーと StackExchange.Redis は、少数の大きい要求ではなく、多数の小さい要求用に最適化されています。 データをより小さいチャンクに分割することで、この状態が改善される場合があります。
 
     redis-cli と stunnel を使用したキャッシュの SSL エンドポイントへの接続については、「[Redis のプレビュー リリースの ASP.NET セッション状態プロバイダーの通知](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)」のブログの投稿を参照してください。

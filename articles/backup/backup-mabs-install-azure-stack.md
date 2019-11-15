@@ -1,6 +1,6 @@
 ---
 title: Azure Stack への Azure Backup Server のインストール | Microsoft Docs
-description: Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップします。
+description: この記事では、Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップする方法について説明します。
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639864"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747290"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -25,6 +25,7 @@ ms.locfileid: "68639864"
 >
 
 ## <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
+
 Azure Backup Server は、以下の Azure Stack 仮想マシン ワークロードを保護します。
 
 | 保護されたデータ ソース | 保護と回復 |
@@ -46,20 +47,26 @@ Azure Backup Server は、以下の Azure Stack 仮想マシン ワークロー�
 Azure Stack 環境に Azure Backup Server をインストールする際には、このセクションのレコメンデーションを参考にしてください。 Azure Backup Server インストーラーは、環境内に必要な前提条件があるかどうかをチェックしますが、インストールする前に準備することで時間を節約できます。
 
 ### <a name="determining-size-of-virtual-machine"></a>仮想マシンのサイズを決める
+
 Azure Backup 仮想マシン上で Azure Backup Server を実行するには、サイズ A2 以上を使用します。 仮想マシン サイズを選択する場合、[Azure Stack VM サイズ計算ツール](https://www.microsoft.com/download/details.aspx?id=56832)をダウンロードすることをお勧めします。
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Azure Stack 仮想マシン上の仮想ネットワーク
+
 Azure Stack ワークロードで使用されるすべての仮想マシンは、同じ Azure 仮想ネットワークと Azure サブスクリプションに属している必要があります。
 
 ### <a name="azure-backup-server-vm-performance"></a>Azure Backup Server VM のパフォーマンス
+
 他の仮想マシンと共有する場合、ストレージ アカウントのサイズと IOPS の制限は、Azure Backup Server の VM のパフォーマンスに影響を与えます。 そのため、Azure Backup Server 仮想マシンには別のストレージ アカウントを使用するようにします。 Azure Backup Server 上で実行される Azure Backup エージェントには、次のための一時記憶域が必要です。
+
 - 自身の使用 (キャッシュ場所)、
 - クラウドから復元されたデータ (ローカル ステージング領域)
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Azure Backup の一時ディスク記憶域を構成する
+
 各 Azure Stack 仮想マシンには一時的なディスク記憶域があり、ユーザーはボリューム `D:\` として利用できます。 Azure Backup が必要とするローカルのステージング領域は、`D:\` に内に配置するように構成できます。また、キャッシュ場所は `C:\` に配置できます。 このようにすると、Azure Backup Server 仮想マシンに接続されたデータ ディスクから記憶域を切り離す必要がありません。
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>ローカル ディスクと Azure にバックアップ データを保存する
+
 Azure Backup Server は、運用の復旧のために、仮想マシンに接続された Azure ディスクにバックアップ データを保存します。 ディスクと記憶域スペースが仮想マシンに接続されると、記憶域は Azure Backup Server で管理されます。 バックアップ データ記憶域のサイズは、各 [Azure Stack 仮想マシン](/azure-stack/user/azure-stack-storage-overview)に接続されているディスクの数とサイズによって変わります。 Azure Stack VM の各サイズには、仮想マシンに接続できるディスクの最大数があります。 たとえば、A2 は 4 ディスクです。 A3 は 8 ディスクです。 A4 は 16 ディスクです。 ここでも、ディスクのサイズと数によってバックアップ ストレージ プール全体が決まります。
 
 > [!IMPORTANT]
@@ -69,12 +76,14 @@ Azure Backup Server は、運用の復旧のために、仮想マシンに接続
 バックアップ データを Azure に保存すると、Azure Stack 上のバックアップ インフラストラクチャが減ります。 5 日間を超えるデータの場合は、Azure に保存するようにしてください。
 
 Azure にバックアップ データを保存するには、Recovery Services コンテナーを作成または使用します。 Azure Backup Server ワークロードのバックアップを準備するときに、[Recovery Services コンテナーを構成](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)します。 構成が完了した後は、バックアップ ジョブが実行されるたびに、コンテナーに復旧ポイントが作成されます。 各 Recovery Services コンテナーは、最大 9999 個の復旧ポイントを保持します。 作成された復旧ポイントの数と保持期間に応じて、バックアップ データを長年にわたって保持することができます。 たとえば、毎月の復旧ポイントを作成して 5 年間保持することができます。
- 
+
 ### <a name="scaling-deployment"></a>展開のスケーリング
+
 展開をスケーリングするには、次の選択肢があります。
-  - スケールアップ - Azure Backup Server 仮想マシンのサイズを A シリーズから D シリーズに増やし、[Azure Stack 仮想マシンの手順に従って](/azure-stack/user/azure-stack-manage-vm-disks)ローカル記憶域を増やします。
-  - データをオフロードする - 古いデータを Azure に送信し、Azure Backup Server に接続された記憶域に最新のデータのみを保持します。
-  - スケールアウト - Azure Backup Server をさらに追加してワークロードを保護します。
+
+- スケールアップ - Azure Backup Server 仮想マシンのサイズを A シリーズから D シリーズに増やし、[Azure Stack 仮想マシンの手順に従って](/azure-stack/user/azure-stack-manage-vm-disks)ローカル記憶域を増やします。
+- データをオフロードする - 古いデータを Azure に送信し、Azure Backup Server に接続された記憶域に最新のデータのみを保持します。
+- スケールアウト - Azure Backup Server をさらに追加してワークロードを保護します。
 
 ### <a name="net-framework"></a>.NET Framework
 
@@ -92,6 +101,7 @@ Azure Backup Server を使用したワークロードの保護には、数多く
 
 > [!NOTE]
 > Azure Backup Server は、単一目的の専用の仮想マシンで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
+>
 > - ドメイン コントローラーとして実行されているコンピューター
 > - アプリケーション サーバー ロールがインストールされているコンピューター
 > - Exchange Server が実行されているコンピューター
@@ -331,7 +341,7 @@ Azure への接続と Azure サブスクリプションの状態がわかれば�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>接続の切断からの回復
 
-ファイアウォールまたはプロキシにより Azure へのアクセスが妨げられている場合、ファイアウォール/プロキシのプロファイルのホワイトリストに以下のドメイン アドレスを追加します。
+ファイアウォールまたはプロキシにより Azure へのアクセスが妨げられている場合、ファイアウォール/プロキシのプロファイルの許可リストに以下のドメイン アドレスを追加します。
 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com

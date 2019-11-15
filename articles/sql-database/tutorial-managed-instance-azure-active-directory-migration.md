@@ -1,20 +1,21 @@
 ---
-title: T-SQL DDL 構文を使用してオンプレミスの SQL Server の Windows ユーザーとグループを Azure SQL Database Managed Instance に移行する | Microsoft Docs
+title: T-SQL を使用して SQL ServerWindows ユーザーおよびグループをマネージド インスタンスに移行する
 description: オンプレミスの SQL Server の Windows ユーザーとグループをマネージド インスタンスに移行する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-lt-2019
 ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/22/2019
-ms.openlocfilehash: ca0997010fef40c0927960c04588c031dd85fff8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 10/30/2019
+ms.openlocfilehash: 3ed4e4b1d37a9705378281ca74b53a6b60713d97
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795063"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807167"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>チュートリアル:T-SQL DDL 構文を使用してオンプレミスの SQL Server の Windows ユーザーとグループを Azure SQL Database Managed Instance に移行する
 
@@ -41,6 +42,8 @@ ms.locfileid: "72795063"
 - ユーザー/グループを作成できる Active Directory へのアクセス権。
 - オンプレミス環境の既存の SQL Server。
 - 既存のマネージド インスタンス。 「[クイック スタート:Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)」を参照してください。
+  - Azure AD ログインを作成するには、マネージド インスタンス内の `sysadmin` が使用される必要があります。
+- [マネージド インスタンスに対する Azure AD 管理者を作成します](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。
 - ネットワーク内のマネージド インスタンスに接続できます。 その他の情報については、次の記事を参照してください。 
     - [Azure SQL Database Managed Instance にアプリケーションを接続する](sql-database-managed-instance-connect-app.md)
     - [クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
@@ -212,9 +215,12 @@ go
 
 ## <a name="part-4-migrate-users-to-managed-instance"></a>パート 4:マネージド インスタンスにユーザーを移行する
 
+> [!NOTE]
+> 作成後のマネージド インスタンス機能に対する Azure AD 管理者が変更されました。 詳細については、「[MI の新しい Azure AD 管理者機能](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi)」をご覧ください。
+
 ALTER USER コマンドを実行して、マネージド インスタンスの移行プロセスを完了します。
 
-1. マネージド インスタンスの SQL 管理者アカウントを使用して、マネージド インスタンスにサインインします。 次に、次の構文を使用して、マネージド インスタンスに Azure AD ログインを作成します。
+1. マネージド インスタンス用の Azure AD 管理者アカウントを使用して、マネージド インスタンスにサインインします。 次に、以下の構文を使用して、マネージド インスタンスに Azure AD ログインを作成します。 詳細については、[チュートリアル: Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ](sql-database-managed-instance-aad-security-tutorial.md)」を参照してください。
 
     ```sql
     use master 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 14615d596c1b673a234ccef541fecfbfce9d5f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752148"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622600"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -120,9 +120,9 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 ## <a name="next-steps"></a>次の手順
 
-- [クエリ言語](./concepts/query-language.md)に関するさらなる情報を入手します
-- [その他のリソース](./concepts/explore-resources.md)
-- [Azure CLI ](first-query-azurecli.md)を使用して最初のクエリを実行します
-- [Starter クエリ](./samples/starter.md)のサンプルを参照してください
-- [高度なクエリ](./samples/advanced.md)のサンプルを参照してください
-- [UserVoice ](https://feedback.azure.com/forums/915958-azure-governance)にフィードバックを提供してください
+- [クエリ言語](./concepts/query-language.md)に関する詳細情報を入手します。
+- [リソースを探索する](./concepts/explore-resources.md)方法について詳しく確認します。
+- [Azure CLI](first-query-azurecli.md) を使用して最初のクエリを実行します。
+- [Starter クエリ](./samples/starter.md)のサンプルを参照します。
+- [高度なクエリ](./samples/advanced.md)のサンプルを参照します。
+- [UserVoice ](https://feedback.azure.com/forums/915958-azure-governance)にフィードバックを提供します。

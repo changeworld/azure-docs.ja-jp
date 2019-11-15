@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse の主キー、外部キー、および一意キー | Microsoft Docs
+title: 主キー、外部キー、および一意キー
 description: Azure SQL Data Warehouse でのテーブル制約のサポート
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,16 +10,17 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: b02f219e549f2206f71c08c9d465b2bc05a6d526
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309331"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685480"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の主キー、外部キー、および一意キー
 
-主キー、外部キー、および一意キーを含む、Azure SQL Data Warehouse のテーブル制約について説明します。
+主キー、外部キー、一意キーを含めて、Azure SQL Data Warehouse でのテーブル制約について説明します。
 
 ## <a name="table-constraints"></a>テーブル制約 
 Azure SQL Data Warehouse では、これらのテーブル制約がサポートされます。 

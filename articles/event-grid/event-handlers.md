@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 6093e1017af2fb8c54eaf1c3192f937172567982
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 21a66b7389df64a776cdecb45c41de56d7d258e4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080551"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606359"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid のイベント ハンドラー
 
@@ -72,51 +72,12 @@ Logic Apps を使うと、イベントに応答するためのビジネス プ�
 | [チュートリアル: Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](publish-iot-hub-events-to-logic-apps.md) | ロジック アプリは、IoT ハブにデバイスが追加されるたびに、通知の電子メールを送信します。 |
 | [チュートリアル:Azure Service Bus の Azure Event Grid への統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
 
-## <a name="service-bus-queue-preview"></a>Service Bus キュー (プレビュー)
-
-Event Grid のイベントをエンタープライズ アプリケーションでのバッファー処理またはコマンドおよびコントロール シナリオで使用するために Service Bus キューに直接ルーティングするには、Service Bus をイベント ハンドラーとして使用します。 このプレビューは Service Bus のトピックやセッションでは機能しませんが、すべてのレベルの Service Bus キューで機能します。
-
-ハンドラーとしての Service Bus はパブリック プレビュー段階ですが、これを使用してイベント サブスクリプションを作成する場合は CLI または PowerShell 拡張機能をインストールする必要があることに注意してください。
-
-### <a name="install-extension-for-azure-cli"></a>Azure CLI 用の拡張機能のインストール
-
-Azure CLI の場合は、[Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)が必要です。
-
-[CloudShell](/azure/cloud-shell/quickstart) の場合:
-
-* 拡張機能を以前にインストールしている場合は、`az extension update -n eventgrid` を使って更新します。
-* 拡張機能を以前にインストールしていない場合は、`az extension add -n eventgrid` を使ってインストールします。
-
-ローカル インストールの場合:
-
-1. [Azure CLI のインストール](/cli/azure/install-azure-cli)を実行します。 `az --version` を使って確認し、最新バージョンがあることを確認します。
-1. `az extension remove -n eventgrid` を使って、以前のバージョンの拡張機能をアンインストールします。
-1. `az extension add -n eventgrid` を使って `eventgrid` 拡張機能をインストールします
-
-### <a name="install-module-for-powershell"></a>PowerShell 用のモジュールのインストール
-
-PowerShell の場合は、[AzureRM.EventGrid モジュール](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview)が必要です。
-
-[CloudShell](/azure/cloud-shell/quickstart-powershell) の場合:
-
-* `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` を使ってモジュールをインストールします。
-
-ローカル インストールの場合:
-
-1. 管理者として PowerShell コンソールを開きます。
-1. `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` を使ってモジュールをインストールします。
-
-`-AllowPrerelease`パラメーターが使用可能でない場合は、次のステップを実行します。
-
-1. `Install-Module PowerShellGet -Force` を実行します。
-1. `Update-Module PowerShellGet` を実行します。
-1. PowerShell コンソールを閉じます。
-1. 管理者として PowerShell を再起動します。
-1. モジュール `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` をインストールします。
+## <a name="service-bus-queue"></a>Service Bus キュー 
+エンタープライズ アプリケーションでのバッファー処理または音声コマンドのシナリオで使用するために、Event Grid のイベントを Service Bus キューに直接ルーティングすることができます。
 
 ### <a name="using-cli-to-add-a-service-bus-handler"></a>CLI を使って Service Bus ハンドラーを追加する
 
-Azure CLI の場合、次の例で Event Grid トピックを Service Bus キューにサブスクライブして接続します。
+Azure CLI の場合、次の例でイベント グリッド トピックを Service Bus キューにサブスクライブして接続します。
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.

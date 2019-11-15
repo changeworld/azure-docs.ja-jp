@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 72549a2df3490344987567d1e62c65f76f151097
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693262"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718733"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -213,10 +213,10 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |httpVersion     | 要求の HTTP バージョン。        |
 |receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
 |sentBytes| 送信したパケットのサイズ (バイト単位)。|
-|timeTaken| 要求の処理および応答の送信にかかった時間 (ミリ秒単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
+|timeTaken| 要求が処理され、その応答が送信されるためにかかる時間の長さ (**秒**単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
 |sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
 |sslCipher| SSL 通信に使用されている暗号スイート (SSL が有効な場合)|
-|sslProtocol| 使用されている SSL プロトコル (SSL が有効な場合)|
+|sslProtocol| 使用されている SSL/TLS プロトコル (SSL が有効になっている場合)。|
 |serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
 |serverStatus| バックエンド サーバーの HTTP 状態コード。|
 |serverResponseLatency| バックエンド サーバーからの応答の待機時間。|

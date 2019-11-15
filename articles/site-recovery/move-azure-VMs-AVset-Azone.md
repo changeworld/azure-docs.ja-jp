@@ -1,6 +1,5 @@
 ---
-title: Azure Site Recovery サービスを使用して Azure IaaS VM をゾーン固定 VM として別の Azure リージョンに移動する | Microsoft Docs
-description: Azure Site Recovery を使用して、Azure IaaS VM を別の Azure リージョンにゾーン固定 VM として移動します。
+title: Azure Site Recovery を使用して可用性ゾーンがある Azure リージョンに VM を移動する
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -8,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a9e8ddcca727c4c457e4d92a880fb0cafe5ca6f8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375742"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693188"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM を Availability Zones に移動する
 Azure の Availability Zones は、アプリケーションとデータをデータセンターの障害から保護するのに役立ちます。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones はリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。 Availability Zones により、Azure では仮想マシン (VM) の 99.99% のアップタイムというサービス レベル アグリーメント (SLA) が提供されます。 「[Azure の Availability Zones の概要](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)」で説明されているように、Availability Zones は一部のリージョンでサポートされています。

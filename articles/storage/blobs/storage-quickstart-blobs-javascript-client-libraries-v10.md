@@ -2,19 +2,19 @@
 title: クイック スタート - ブラウザーで JavaScript と HTML を使用して Azure Storage に BLOB を作成する
 description: HTML ページで JavaScript を使用して BLOB をアップロード、一覧表示、および削除する方法について説明します。
 services: storage
-author: KarlErickson
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
-ms.author: karler
+ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172838"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686674"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -168,23 +168,23 @@ VS Code デバッガーをアタッチした状態で *index.html* をブラウ�
 
 ### <a name="add-the-blob-storage-client-library"></a>BLOB ストレージ クライアント ライブラリを追加する
 
-BLOB ストレージ API の呼び出しを有効にするには、まず [Azure Storage SDK for JavaScript - BLOB クライアント ライブラリをダウンロード](https://aka.ms/downloadazurestoragejsblob)し、この ZIP ファイルの中身を展開して、*azure-storage.blob.js* ファイルを *azure-blobs-javascript* フォルダー内に配置します。
+BLOB ストレージ API の呼び出しを有効にするには、まず [Azure Storage SDK for JavaScript - BLOB クライアント ライブラリをダウンロード](https://aka.ms/downloadazurestoragejsblob)し、この ZIP ファイルの中身を展開して、*azure-storage-blob.js* ファイルを *azure-blobs-javascript* フォルダー内に配置します。
 
 次に、以下の HTML を *index.html* 内の `</body>` 終了タグの後に貼り付けて、プレースホルダーのコメントを置き換えます。
 
 ```html
-<script src="azure-storage.blob.js" charset="utf-8"></script>
+<script src="azure-storage-blob.js" charset="utf-8"></script>
 
 <script>
 // You'll add code here in the following sections.
 </script>
 ```
 
-このコードはスクリプト ファイルへの参照を追加するものであり、独自の JavaScript コードの入力場所にもなります。 このクイック スタートでは、スクリプト ファイルを VS Code で開き、内容を確認してブレークポイントを設定できるように、*azure-storage.blob.js* スクリプト ファイルを使用します。 運用環境では、ZIP ファイルに同梱されている、よりコンパクトな *azure-storage.blob.min.js* ファイルを使ってください。
+このコードはスクリプト ファイルへの参照を追加するものであり、独自の JavaScript コードの入力場所にもなります。 このクイック スタートでは、スクリプト ファイルを VS Code で開き、内容を確認してブレークポイントを設定できるように、*azure-storage-blob.js* スクリプト ファイルを使用します。 運用環境では、ZIP ファイルに同梱されている、よりコンパクトな *azure-storage.blob.min.js* ファイルを使ってください。
 
 各 BLOB ストレージ関数の詳細については、[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)を参照してください。 SDK の関数の中には、Node.js とブラウザーのいずれか一方でしか使用できないものがあることに注意してください。
 
-*azure-storage.blob.js* のコードでは、JavaScript コード内で BLOB ストレージ API へのアクセスに使用する、`azblob` というグローバル変数がエクスポートされます。
+*azure-storage-blob.js* のコードでは、JavaScript コード内で BLOB ストレージ API へのアクセスに使用する、`azblob` というグローバル変数がエクスポートされます。
 
 ### <a name="add-the-initial-javascript-code"></a>最初の JavaScript コードを追加する
 

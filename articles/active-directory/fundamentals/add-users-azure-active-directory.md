@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b436fbdb0d70318e6820d3f59f1e198c639e5a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e98b09d8b07c625613e3be149e64ac8f06adc089
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561690"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805562"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
-Azure Active Directory (Azure AD) 組織に対して、新しいユーザーの追加または既存のユーザーの削除を行います。
+Azure Active Directory (Azure AD) 組織に対して、新しいユーザーの追加または既存のユーザーの削除を行います。 ユーザーを追加または削除するには、ユーザー管理者またはグローバル管理者である必要があります。 
 
 ## <a name="add-a-new-user"></a>新しいユーザーの追加
 Azure Active Directory ポータルを使用して、新しいユーザーを作成できます。

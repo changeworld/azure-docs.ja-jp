@@ -4,15 +4,16 @@ description: Azure Marketplace のお客様向けに Marketo でリード管理�
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 9470a593f5db564689a0b26601a201874c215aa2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901371"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812132"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Marketo でリード管理を構成する
 
@@ -55,7 +56,7 @@ ms.locfileid: "69901371"
     **これらの値を把握する別の方法**
 
     - サーバー ID は、Marketo インスタンスの URL ("`serverID.marketo.com`" など) にあります。
-    - [Munchkin アカウント ID] フィールドで [管理者] > [Munchkin] メニューに移動することで、または Marketo REST API ホスト サブドメインの最初の部分 (`https://{Munchkin ID}.mktorest.com`) から、サブスクリプションの Munching ID を取得します。
+    - [Munchkin アカウント ID] フィールドで [管理者] > [Munchkin] メニューに移動するか、Marketo REST API ホスト サブドメインの最初の部分 (`https://{Munchkin ID}.mktorest.com`) から、サブスクリプションの Munching ID を取得します。
     - フォーム ID は、マーケットプレースから リード をルーティングするために手順 7. で作成した [埋め込みコード] フォームの ID です。
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>リードを Marketo に送信するようにオファーを構成する

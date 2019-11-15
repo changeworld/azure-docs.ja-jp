@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529152"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682250"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -31,13 +31,13 @@ HDInsight クラスターをデプロイする前に、必要なパフォーマ�
 
 Azure リージョンによって、クラスターを物理的にプロビジョニングする場所が決まります。 読み取りと書き込みの待機時間を最小限に抑えるには、クラスターをデータの近くに配置する必要があります。
 
-HDInsight は多数の Azure リージョンで利用できます。 最も近いリージョンを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/)」を参照してください。
+HDInsight は多数の Azure リージョンで利用できます。 最も近いリージョンを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight)」を参照してください。
 
 ## <a name="choose-storage-location-and-size"></a>ストレージの場所とサイズの選択
 
 ### <a name="location-of-default-storage"></a>既定のストレージの場所
 
-既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Storage) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Storage Gen1 は一部のリージョンで利用できます。[Data Lake Storage の現在の提供状況](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage)を参照してください。
+既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Storage) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Storage Gen1 は一部のリージョンで利用できます。[Data Lake Storage の現在の提供状況](https://azure.microsoft.com/global-infrastructure/services/?products=storage)を参照してください。
 
 ### <a name="location-of-existing-data"></a>既存のデータの場所
 
@@ -68,13 +68,7 @@ Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#
 
 アプリケーションに最適なクラスター サイズを決定するために、クラスターの容量のベンチマークを実行し、その結果に従ってサイズを増やすことができます。 たとえば、シミュレートされたワークロードや "*カナリア クエリ*" をご利用いただけます。 シミュレートされたワークロードを使用して、さまざまなサイズのクラスターで予想されるワークロードを実行し、必要なパフォーマンスに到達するまでサイズを徐々に増やしていきます。 他の実稼働クエリの間にカナリア クエリを定期的に挿入することで、クラスターに十分なリソースがあるかどうかを示すことができます。
 
-VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワーク待ち時間によって決まります。
-
-* CPU: VM サイズによってコア数が決まります。 コア数が増えるほど、各ノードで実現できる並列計算の度合いが上がります。 また、VM の一部の種類は高速コアを備えています。
-
-* RAM: VM サイズによって、VM で使用可能な RAM の容量も決まります。 処理するデータをディスクから読み取るのではなく、メモリに格納するワークロードの場合、ワーカー ノードにデータを格納できる十分なメモリがあることを確認します。
-
-* ネットワーク: クラスターのほとんどの種類では、クラスターで処理されるデータはローカル ディスク上に存在するのではなく、Data Lake Storage や Azure Storage などの外部ストレージ サービスに存在します。 ノードの VM とストレージ サービス間のネットワーク帯域幅とスループットを考慮します。 通常は、VM のサイズが大きいほど、VM が使用できるネットワーク帯域幅が増加します。 詳細については、[VM サイズの概要](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)に関する記事をご覧ください。
+ワークロードのための適切な VM ファミリを選択する方法の詳細については、[クラスターの適切な VM サイズの選択](hdinsight-selecting-vm-size.md)に関するページを参照してください。
 
 ## <a name="choose-the-cluster-scale"></a>クラスターのスケールの選択
 
@@ -104,10 +98,11 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 1. ページの左下にある **[ヘルプとサポート]** を選択します。
 1. **[新しいサポート リクエスト]** を選択します。
 1. **[新しいサポート要求]** ページの **[基本]** タブで、次のオプションを選択します。
+
    - **問題の種類**: **サービスとサブスクリプションの制限 (クォータ)**
    - **サブスクリプション**: 使用するサブスクリプション
    - **クォータの種類**: **HDInsight**
-    
+
      ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. **[次へ:ソリューション >>]** を選択します。

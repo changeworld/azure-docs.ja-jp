@@ -1,22 +1,22 @@
 ---
-title: Azure Analysis Services への接続に必要なクライアント ライブラリ | Microsoft Docs
+title: Azure Analysis Services クライアント ライブラリ | Microsoft Docs
 description: Azure Analysis Services に接続するクライアント アプリケーションとツールに必要なクライアント ライブラリについて説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512778"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573047"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
-クライアント アプリケーションとツールが Analysis Services サーバーに接続するためには、クライアント ライブラリが必要です。 Power BI Desktop、Excel、SQL Server Management Studio (SSMS)、SQL Server Data Tools (SSDT) などの Microsoft クライアント アプリケーションでは、3 つのクライアント ライブラリがすべてインストールされ、通常のアプリケーションの更新プログラムと共に更新されます。 場合によっては、新しいバージョンのクライアント ライブラリをインストールする必要があります。 カスタム クライアント アプリケーションでも、クライアント ライブラリがインストールされている必要があります。
+クライアント アプリケーションとツールが Analysis Services サーバーに接続するためには、クライアント ライブラリが必要です。 Power BI Desktop、Excel、SQL Server Management Studio (SSMS)、Visual Studio 向けの Analysis Services プロジェクト拡張機能などの Microsoft クライアント アプリケーションは、3 つのすべてのクライアント ライブラリをインストールし、それらを通常のアプリケーションの更新と共に更新します。 場合によっては、新しいバージョンのクライアント ライブラリをインストールする必要があります。 カスタム クライアント アプリケーションでも、クライアント ライブラリがインストールされている必要があります。
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>最新のクライアント ライブラリのダウンロード (Windows インストーラー)  
 
@@ -58,7 +58,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 
 ### <a name="amo"></a>AMO  
 
- AMO は、サーバーの管理とデータの定義に使用されるマネージド クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 たとえば、SQL Server Management Studio (SSMS) は、AMO を使用して Analysis Services に接続します。 AMO を使用した接続は、通常は最小で、`"data source=\<servername>"` で構成されています。 接続の確立後は、API を使用して、データベース コレクションおよび主要なオブジェクトを操作します。 SSDT と SSMS のどちらも、AMO を使用して Analysis Services インスタンスに接続します。  
+ AMO は、サーバーの管理とデータの定義に使用されるマネージド クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 たとえば、SQL Server Management Studio (SSMS) は、AMO を使用して Analysis Services に接続します。 AMO を使用した接続は、通常は最小で、`"data source=\<servername>"` で構成されています。 接続の確立後は、API を使用して、データベース コレクションおよび主要なオブジェクトを操作します。 Visual Studio と SSMS はどちらも、AMO を使用して Analysis Services インスタンスに接続します。  
 
   
 ### <a name="adomd"></a>ADOMD

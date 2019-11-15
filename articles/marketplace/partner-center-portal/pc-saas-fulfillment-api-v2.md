@@ -4,15 +4,16 @@ description: この記事では、関連付けられている Fulfillment v2 API
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 05/23/2019
+ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 75e806e56fa94916f76f9e7fa6572ae07987e017
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595554"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816603"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
@@ -87,7 +88,7 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
 | `offerId`                | 各オファーを表す一意の文字列識別子 (例: "offer1")。  |
 | `planId`                 | 各プラン/SKU を表す一意の文字列識別子 (例: "silver")。 |
 | `operationId`            | 特定の操作の GUID 識別子。  |
-|  `action`                | リソースに対して実行されるアクション (`unsubscribe`、`suspend`、`reinstate`、または `changePlan`、`changeQuantity`、`transfer`)。  |
+|  `action`                | リソースに対して実行されるアクション (`Unsubscribe`、`Suspend`、`Reinstate`、または `ChangePlan`、`ChangeQuantity`、`Transfer`)。 |
 |   |   |
 
 グローバルに一意な識別子 ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) は、通常、自動的に生成される 128 ビット (32 桁の 16 進数) の数値です。 
@@ -212,7 +213,7 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
+          "isFreeTrial": "true", // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -250,7 +251,7 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": true, // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.(optional field – default false)
+          "isFreeTrial": true, // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.(optional field - default false)
           "isTest": false, //indicating whether the current subscription is a test asset
           "sandboxType": "None", // Possible Values: None, Csp (Csp sandbox purchase)
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
@@ -320,7 +321,7 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
-        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
+        "isFreeTrial": "true", // true - customer subscription is currently in free trial, false - customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
@@ -707,7 +708,7 @@ SaaS サブスクリプションを登録解除するための呼び出しを開
 
 #### <a name="get-operation-status"></a>操作状態を取得する
 
-発行元が、指定したトリガーによる非同期操作 (`subscribe`、`unsubscribe`、`changePlan`、`changeQuantity` など) の状態を追跡できるようにします。
+発行元が、指定したトリガーによる非同期操作 (`Subscribe`、`Unsubscribe`、`ChangePlan`、`ChangeQuantity` など) の状態を追跡できるようにします。
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>取得<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -839,7 +840,7 @@ Response body:
   "id": "<this is a GUID operation id, you can call operations API with this to get status>",
   "activityId": "<this is a Guid correlation id>",
   "subscriptionId": "<Guid to uniquely identify this resource>",
-  "publisherId": "<this is the publisher’s name>",
+  "publisherId": "<this is the publisher's name>",
   "offerId": "<this is the offer name>",
   "planId": "<this is the plan id>",
   "quantity": "<the number of seats, will be null if not per-seat saas offer>",
@@ -850,11 +851,11 @@ Response body:
 }
 ```
 次のいずれかのアクションが可能です。 
-- `unsubscribe` (リソースが削除されているとき)
-- `changePlan` (プランの変更操作が完了しているとき)
-- `changeQuantity` (数量の変更操作が完了しているとき)
-- `suspend` (リソースが中断されているとき)
-- `reinstate` (リソースが中断後に再開されているとき)
+- `Unsubscribe` (リソースが削除されているとき)
+- `ChangePlan` (プランの変更操作が完了しているとき)
+- `ChangeQuantity` (数量の変更操作が完了しているとき)
+- `Suspend` (リソースが中断されているとき)
+- `Reinstate` (リソースが中断後に再開されているとき)
 
 状態は、次のいずれかになります。 
 - **NotStarted** <br>

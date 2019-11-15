@@ -7,13 +7,13 @@ ms.service: logic-apps
 ms.topic: include
 ms.author: estfan
 ms.custom: include file
-ms.date: 05/15/2018
-ms.openlocfilehash: aa1001661d8fe03855e1a28b882f674bee3606b2
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.date: 11/08/2019
+ms.openlocfilehash: 0be29f6f541aa58e57eb665ebaf29e35f42865e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312006"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826309"
 ---
 * Azure SQL Database を使用している場合は、「[Azure SQL Database に接続する](#connect-azure-sql-db)」の手順に従ってください。
 
@@ -34,7 +34,7 @@ SQL のトリガーまたはアクションから接続情報を求められた�
    * `User ID=<your-user-name>`
    * `Password=<your-password>`
 
-   ![Azure SQL Database 接続を作成する](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   ![Azure SQL Database への接続を作成する](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
 1. 完了したら **[作成]** を選択します。
 
@@ -44,7 +44,9 @@ SQL のトリガーまたはアクションから接続情報を求められた�
 
 ### <a name="connect-to-sql-server"></a>SQL Server への接続
 
-SQL のトリガーまたはアクションから接続情報を求められた場合は、以下の手順に従います。手順はトリガーとアクションの両方に適用されます。 ただし、開始する前に、既に[オンプレミス データ ゲートウェイが設定されている](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)ことを確認します。 設定されていない場合、接続を作成するとき、ゲートウェイの一覧にゲートウェイが表示されません。
+SQL のトリガーまたはアクションから接続情報を求められた場合は、以下の手順に従います。手順はトリガーとアクションの両方に適用されます。 [オンプレミス データ ゲートウェイ](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-install)をローカル コンピューターにインストールし、[Azure データ ゲートウェイ リソースを作成する](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)ことが必要なシナリオでは、必ず最初にこれらの要件を完了してください。 設定されていない場合、接続を作成するとき、ゲートウェイの一覧にゲートウェイ リソースが表示されません。
+
+また、[統合サービス環境 (ISE)](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview) で SQL Server コネクタとの Windows 認証を使用するには、コネクタの ISE 以外のバージョンとオンプレミス データ ゲートウェイを使用します。 ISE とラベル付けされたバージョンでは、Windows 認証はサポートされていません。
 
 1. **[接続名]** では、接続の名前を作成します。
 
@@ -59,7 +61,7 @@ SQL のトリガーまたはアクションから接続情報を求められた�
    * `User ID=<your-user-name>`
    * `Password=<your-password>`
 
-   ![SQL Server 接続を作成する](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
+   ![SQL Server への接続を作成する](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
 
 1. SQL サーバーで Windows 認証または基本認証を使用する場合、**認証の種類**を選択します。
 

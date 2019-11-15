@@ -4,14 +4,14 @@ description: リソース グループ内に 800 より多くのインスタン�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249133"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795667"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -74,8 +74,18 @@ ms.locfileid: "72249133"
 
 * services
 
+## <a name="microsofteventhub"></a>Microsoft.EventHub
+
+* clusters
+* namespaces
+
+## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
+
+* experimentWorkspaces
+
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
+* configurationProfileAssignments
 * guestConfigurationAssignments
 * software
 * softwareUpdateProfile
@@ -141,9 +151,17 @@ ms.locfileid: "72249133"
 
 * workspaceCollections - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 
+## <a name="microsoftrelay"></a>Microsoft.Relay
+
+* namespaces
+
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * jobcollections
+
+## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
+
+* namespaces
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 

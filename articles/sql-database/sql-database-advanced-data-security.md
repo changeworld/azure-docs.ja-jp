@@ -1,5 +1,5 @@
 ---
-title: Advanced Data Security - Azure SQL Database | Microsoft Docs
+title: Advanced Data Security
 description: 機密データの探索と分類、データベースの脆弱性の管理、Azure SQL データベースへの脅威を示す可能性がある異常なアクティビティの検出などの機能について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: a8b380355d7eee6b79bff01d29160fdd3b42800d
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: a4f4306023b37c3b1cba46acd11ec5c0a489d0d6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285823"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822565"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL Database 向け Advanced Data Security
 
@@ -26,7 +26,7 @@ Advanced Data Security は、高度な SQL セキュリティ機能のための�
 
 Advanced Data Security (ADS) により、データの探索と分類、脆弱性の評価、Advanced Threat Protection などの高度な SQL セキュリティ機能のセットが提供されます。
 
-- [データの検出と分類](sql-database-data-discovery-and-classification.md) (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機密データの検出、分類、ラベル付と保護を行う機能が用意されています。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。
+- [データの検出と分類](sql-database-data-discovery-and-classification.md)では、Azure SQL Database に組み込まれる、データベースの機微なデータの検出、分類、ラベル付け、および保護を行う機能が用意されます。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。
 - [脆弱性評価](sql-vulnerability-assessment.md)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 セキュリティの状態を表示することができ、セキュリティの問題を解決して、データベースのセキュリティを強化するために実行可能な手順が含まれます。
 - [Advanced Threat Protection](sql-database-threat-detection-overview.md) では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンが見つかるとすぐにセキュリティ通知を提供します。 Advanced Threat Protection アラートでは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が提供されます。
 

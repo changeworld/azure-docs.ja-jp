@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: f0410ed7a98e4838e41407868cf26b5254811ae3
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541699"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824818"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して REST エンドポイントを呼び出す
 
@@ -25,7 +25,7 @@ ms.locfileid: "67541699"
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* ターゲットの REST エンドポイントが記述される Swagger ファイルの URL
+* ターゲットの REST エンドポイントが記述されている (OpenAPI ではなく) Swagger ファイルの URL
 
   通常、コネクタが機能するためには、REST エンドポイントがこの条件を満たしている必要があります。
 
@@ -71,7 +71,7 @@ ms.locfileid: "67541699"
 
 1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 
-   HTTP + Swagger に使用できる認証の種類の詳細については、「[HTTP トリガーとアクションを認証する](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)」を参照してください。
+   HTTP + Swagger に使用できる認証の種類の詳細については、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
 
 1. トリガーが起動したときに実行されるアクションを使用して、ロジック アプリのワークフローを引き続き構築します。
 
@@ -111,7 +111,7 @@ ms.locfileid: "67541699"
 
 1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 
-   HTTP + Swagger に使用できる認証の種類の詳細については、「[HTTP トリガーとアクションを認証する](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)」を参照してください。
+   HTTP + Swagger に使用できる認証の種類の詳細については、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
 
 1. 完了したら、忘れずに対象のロジック アプリを保存してください。 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -148,7 +148,7 @@ ms.locfileid: "67541699"
 
 ここでは、以下の情報を返す HTTP + Swagger トリガーまたはアクションからの出力の詳細情報を示します。 HTTP + Swagger 呼び出しにより、次の情報が返されます。
 
-| プロパティ名 | Type | 説明 |
+| プロパティ名 | 種類 | 説明 |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
 | body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
@@ -161,7 +161,7 @@ ms.locfileid: "67541699"
 | 202 | 承認済み |
 | 400 | 正しくない要求 |
 | 401 | 権限がありません |
-| 403 | 許可されていません |
+| 403 | Forbidden |
 | 404 | 見つかりません |
 | 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
 |||

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 04/19/2019
+ms.date: 11/04/2019
 ms.author: nitinme
-ms.openlocfilehash: 5337f2d3df395650c65ae4a12cbdf4f8ba90ca3d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 081951e2e77c7fdd077dc92fe0368423db85f641
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840399"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606951"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -72,11 +72,11 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 |:-----------|:------------------|
 |[Anomaly Detector](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomaly Detector") (プレビュー)|Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。|
-|[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer") (プレビュー)|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。|
+|[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。|
 
 ## <a name="use-free-trials"></a>無料試用版の使用
 
-[無料試用版のサインアップ](https://azure.microsoft.com/try/cognitive-services/ "サインアップのヘルプ")に必要なのは、電子メールといくつかの簡単な手順だけです。 Microsoft アカウントをまだお持ちでない場合は、それが必要です。 要求された各 API の一意のキー ペアを受け取ります。 2 つ目は単なるスペアです。 秘密鍵は誰とも共有しないでください。 試用版には、秒または分あたりのトランザクション数の速度制限と、月間使用量の上限の両方があります。 トランザクションは単なる API 呼び出しです。 有料プランにアップグレードすれば制限を解除できます。
+[無料試用版へのサインアップ](https://azure.microsoft.com/try/cognitive-services/ "サインアップのヘルプ")には、メールといくつかの簡単な手順のみが必要です。 Microsoft アカウントをまだお持ちでない場合は、それが必要です。 要求された各 API の一意のキー ペアを受け取ります。 2 つ目は単なるスペアです。 秘密鍵は誰とも共有しないでください。 試用版には、秒または分あたりのトランザクション数の速度制限と、月間使用量の上限の両方があります。 トランザクションは単なる API 呼び出しです。 有料プランにアップグレードすれば制限を解除できます。
 
 ## <a name="subscription-management"></a>サブスクリプション管理
 
@@ -84,7 +84,7 @@ Microsoft Account にサインインすると、[個人用サブスクリプシ�
 
 ## <a name="upgrade-to-unlock-limits"></a>アップグレードして制限を解除する
 
-すべての API には、使用量とスループットの制限が設けられた無料試用プランが用意されています。  有料プランを使用し、サービスをデプロイするときに Azyre portal 上で適切な価格レベルのオプションを選択することで、これらの制限を引き上げることができます。 [プランと価格](https://azure.microsoft.com/pricing/details/cognitive-services/ "プランと価格")に関するページをご覧ください。 クレジット カードと電話番号で、Azure サブスクリプション アカウントを設定する必要があります。 特殊な要件がある場合や、単に販売員と話したい場合は、料金ページの上部にある「問い合わせ」ボタンをクリックしてください。
+すべての API には、使用量とスループットの制限が設けられた無料試用プランが用意されています。  有料プランを使用し、サービスをデプロイするときに Azyre portal 上で適切な価格レベルのオプションを選択することで、これらの制限を引き上げることができます。 [オファリングと価格の詳細についてはこちらを参照してください](https://azure.microsoft.com/pricing/details/cognitive-services/ "oオファリングと価格")。 クレジット カードと電話番号で、Azure サブスクリプション アカウントを設定する必要があります。 特殊な要件がある場合や、単に販売員と話したい場合は、料金ページの上部にある「問い合わせ」ボタンをクリックしてください。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 

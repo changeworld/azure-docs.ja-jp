@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: abf222b7a6d6e8fd053fa83c066d2b7850f575ab
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756899"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601231"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos コンテナー用のグローバルに分散されたトランザクション ストレージと分析ストレージ
 
@@ -34,10 +34,10 @@ Azure Cosmos コンテナーは、2 つのストレージ エンジン (トラ�
 |ストレージのエンコード  |   行指向 (内部形式を使用)。   |   列指向 (Apache Parquet 形式を使用)。 |
 |ストレージの場所 |   ローカル/クラスター内 SSD によってサポートされるレプリケートされたストレージ。 |  低コストのリモート/クラスター外 SSD によってサポートされるレプリケートされたストレージ。       |
 |持続性  |    99.99999 (7 から 9 秒)     |  99.99999 (7 から 9 秒)       |
-|データにアクセスする API  |   SQL、MongoDB、Cassandra、Gremlin、Tables、Etcd。       | Apache Spark         |
+|データにアクセスする API  |   SQL、MongoDB、Cassandra、Gremlin、Tables、etcd。       | Apache Spark         |
 |リテンション期間 (有効期限 (TTL))   |  ポリシーに基づき、`DefaultTimeToLive` プロパティを使用して Azure Cosmos コンテナー上に構成されます。       |   ポリシーに基づき、`ColumnStoreTimeToLive` プロパティを使用して Azure Cosmos コンテナー上に構成されます。      |
-|GB あたりの料金    |   $0.25/GB      |  $0.02/GB       |
-|ストレージ トランザクションの料金    | プロビジョニングされたスループットは、100 RU/秒あたり $0.008 で 1 時間ごとに課金されます。        |  使用量ベースのスループットは、1 万書き込みトランザクションにつき $0.05、1 万読み取りトランザクションにつき $0.004 で課金されます。       |
+|GB あたりの料金    |   [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
+|ストレージ トランザクションの料金    |  [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)         |   [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 
 ## <a name="benefits-of-transactional-and-analytical-storage"></a>トランザクション ストレージと分析ストレージの利点
 
@@ -66,53 +66,6 @@ Azure Cosmos アカウントが単一のリージョンにスコープ指定さ�
 指定されたリージョンでは、トランザクション ワークロードはコンテナーのトランザクション/行ストレージに対して動作します。 一方、分析ワークロードは、コンテナーの分析/列ストレージに対して動作します。 2 つのストレージ エンジンは独立して動作し、ワークロード間のパフォーマンスは厳密に分離されます。
 
 トランザクション ワークロードでは、プロビジョニングされたスループット (RU) が消費されます。 トランザクション ワークロードとは異なり、分析ワークロードのスループットは実際の消費量に基づきます。 分析ワークロードでは、オンデマンドでリソースが消費されます。
-
-### <a name="on-demand-snapshots-and-time-travel-analytics"></a>オンデマンドのスナップショットとタイムトラベル分析
-
-コンテナーで `CreateSnapshot (name, timestamp)` コマンドを呼び出すことによって、Azure Cosmos コンテナーの分析ストレージに格納されているデータのスナップショットをいつでも取得できます。 スナップショットは、コンテナー上で行われた更新の履歴では "ブックマーク" という名前が付けられます。
-
-![オンデマンドのスナップショットとタイムトラベル分析](./media/globally-distributed-transactional-analytical-storage/ondemand-analytical-data-snapshots.png)
-
-スナップショットの作成時に、名前だけでなく、更新履歴内のコンテナーの状態を定義するタイムスタンプを指定することもできます。 その後、スナップショット データを Spark に読み込み、クエリを実行できます。
-
-現時点では、コンテナーでいつでもオンデマンドでスナップショットを取得できますが、スケジュールまたはカスタム ポリシーに基づいて自動的にスナップショットを取得する機能はまだサポートされていません。
-
-### <a name="configure-and-tier-data-between-transactional-and-analytical-storage-independently"></a>トランザクション ストレージと分析ストレージ間で個別にデータを構成および階層化する
-
-使用するシナリオに応じて、2 つのストレージ エンジンをそれぞれ個別に有効または無効にできます。 各シナリオの構成は次のとおりです。
-
-|シナリオ |トランザクション ストレージの設定  |分析ストレージの設定 |
-|---------|---------|---------|
-|分析ワークロードを排他的に実行する (無限のリテンション期間) |  DefaultTimeToLive = 0       |  ColumnStoreTimeToLive = -1       |
-|トランザクション ワークロードを排他的に実行する (無限のリテンション期間)  |   DefaultTimeToLive = -1      |  ColumnStoreTimeToLive = 0       |
-|トランザクション ワークロードと分析ワークロードの両方を実行する (無限のリテンション期間)   |   DefaultTimeToLive = -1      | ColumnStoreTimeToLive = -1        |
-|トランザクション ワークロードと分析ワークロードの両方を実行する (異なるリテンション期間を使用 (ストレージの階層化とも呼ばれます))  |  DefaultTimeToLive = <Value1>       |     ColumnStoreTimeToLive = <Value2>    |
-
-1. **分析ワークロード専用にコンテナーを構成する (無制限のリテンション期間)**
-
-   Azure Cosmos コンテナーは、分析ワークロード専用に構成できます。 この構成には、トランザクション ストレージの料金を支払う必要がないという利点があります。 分析ワークロード専用のコンテナーを使用することを目標としている場合は、Cosmos コンテナーで `DefaultTimeToLive` を 0 に設定してトランザクション ストレージを無効にし、`ColumnStoreTimeToLive` を -1 に設定して無限のリテンション期間を持つ分析ストレージを有効にできます。
-
-   ![無限のリテンション期間を持つ分析ワークロード](./media/globally-distributed-transactional-analytical-storage/analytical-workload-configuration.png)
-
-1. **トランザクション ワークロード専用にコンテナーを構成する (無限のリテンション期間)**
-
-   Azure Cosmos コンテナーは、トランザクション ワークロード専用に構成できます。 コンテナーで `ColumnStoreTimeToLive` を 0 に設定して分析ストレージを無効にし、`DefaultTimeToLive` を -1 に設定して無限のリテンション期間を持つ分析ストレージを有効にできます。
-
-   ![無期限のリテンション期間を持つトランザクション ワークロード](./media/globally-distributed-transactional-analytical-storage/transactional-workload-configuration.png)
-
-1. **トランザクション ワークロードと分析ワークロード用にコンテナーを構成する (無限のリテンション期間)**
-
-   Azure Cosmos コンテナーは、トランザクション ワークロードと分析ワークロード用に構成できます。その際、両者のパフォーマンスを完全に分離することができます。 `ColumnStoreTimeToLive` を -1 に設定して分析ストレージを有効にし、`DefaultTimeToLive ` を -1 に設定して無限のリテンション期間を持つトランザクション ストレージを有効にできます。
-
-   ![無限のリテンション期間を持つトランザクション ワークロードと分析ワークロード](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-infinite-retention.png)
-
-1. **ストレージの階層化を使用してトランザクション ワークロードと分析ワークロード用のコンテナーを構成する**
-
-   Azure Cosmos コンテナーは、トランザクション ワークロードと分析ワークロード用に構成できます。その際、両者のパフォーマンスを完全に分離し、異なるリテンション期間を持たせることができます。 Azure Cosmos DB では、常に分析ストレージのリテンション期間がトランザクション ストレージのリテンション期間よりも長くなります。
-
-   `DefaultTimeToLive` を <Value 1> に設定して無限のリテンション期間を持つトランザクション ストレージを有効にし、`ColumnStoreTimeToLive` を <Value 2> に設定して分析ストレージを有効にできます。 Azure Cosmos DB では、常に <Value 2> が <Value 1> よりも大きくなります。
-
-   ![ストレージの階層化を使用したトランザクション ワークロードと分析ワークロード](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-specified-retention.png)
 
 ## <a name="next-steps"></a>次の手順
 

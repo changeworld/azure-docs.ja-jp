@@ -1,5 +1,5 @@
 ---
-title: PowerShell サンプル - 復元 - バックアップ - Azure SQL データベース | Microsoft Docs
+title: PowerShell の例 - バックアップを復元する - Azure SQL Database
 description: 単一の Azure SQL データベースを自動バックアップから以前の時点に復元する Azure PowerShell サンプル スクリプト
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 8a34e2607a957f9af3756818bce9b2dd77541e85
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: da4236e138bd75237ca10b85dc1586fecd1cece4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569842"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691557"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>PowerShell を使用して単一の Azure SQL データベースを以前の時点に復元します
 

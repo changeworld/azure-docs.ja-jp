@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory - JSON スクリプトのリファレンス | Microsoft Docs
+title: Azure Data Factory - JSON スクリプトのリファレンス
 description: Data Factory のエンティティ用の JSON スキーマを紹介します。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 520bce39841f1008a0e47af1089db7fdce5ccae8
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b72be7026b0b8077cf5bf9f775d10fd03edd9118
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255323"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815638"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -378,7 +378,7 @@ structure:
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
 | &nbsp; |[Azure SQL Data Warehouse](#azure-sql-data-warehouse) |
-| &nbsp; |[Azure Search](#azure-search) |
+| &nbsp; |[Azure Cognitive Search](#azure-cognitive-search) |
 | &nbsp; |[Azure Table Storage](#azure-table-storage) |
 | **データベース** |[Amazon Redshift](#amazon-redshift) |
 | &nbsp; |[IBM DB2](#ibm-db2) |
@@ -1279,15 +1279,15 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 
 詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
 
-## <a name="azure-search"></a>Azure Search
+## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure Search のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSearch** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
+Azure Cognitive Search のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSearch** に設定し、**typeProperties** セクションで次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| url | Azure Search サービスの URL。 | はい |
-| key | Azure Search サービスの管理者キー。 | はい |
+| url | 検索サービスの URL。 | はい |
+| key | 検索サービスの管理者キー。 | はい |
 
 #### <a name="example"></a>例
 
@@ -1304,15 +1304,15 @@ Azure Search のリンクされたサービスを定義するには、リンク�
 }
 ```
 
-詳細については、[Azure Search コネクタ](data-factory-azure-search-connector.md#linked-service-properties)に関する記事を参照してください。
+詳細については、[Azure Cognitive Search コネクタ](data-factory-azure-search-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>Dataset
-Azure Search データセットを定義するには、データセットの **type** を **AzureSearchIndex** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
+Azure Cognitive Search データセットを定義するには、データセットの **type** を **AzureSearchIndex** に設定し、**typeProperties** セクションで次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | type | type プロパティを **AzureSearchIndex** に設定する必要があります。| はい |
-| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | はい |
+| indexName | 検索インデックスの名前。 Data Factory では、インデックスは作成されません。 このインデックスは Azure Cognitive Search に存在する必要があります。 | はい |
 
 #### <a name="example"></a>例
 
@@ -1333,15 +1333,15 @@ Azure Search データセットを定義するには、データセットの **t
 }
 ```
 
-詳細については、[Azure Search コネクタ](data-factory-azure-search-connector.md#dataset-properties)に関する記事を参照してください。
+詳細については、[Azure Cognitive Search コネクタ](data-factory-azure-search-connector.md#dataset-properties)に関する記事を参照してください。
 
-### <a name="azure-search-index-sink-in-copy-activity"></a>コピー アクティビティの Azure Search インデックス シンク
-Azure Search インデックスにデータをコピーする場合は、コピー アクティビティの **sink type** を **AzureSearchIndexSink** に設定し、**sink** セクションで以下のプロパティを指定します。
+### <a name="azure-cognitive-search-index-sink-in-copy-activity"></a>コピー アクティビティの Azure Cognitive Search インデックス シンク
+検索インデックスにデータをコピーしている場合は、コピー アクティビティの **sink type** を **AzureSearchIndexSink** に設定し、**sink** セクションで次のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 | マージ (既定値)<br/>アップロード| いいえ |
-| WriteBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 | 1 ～ 1,000。 既定値は 1,000 です。 | いいえ |
+| WriteBatchSize | バッファー サイズが writeBatchSize に達すると、検索インデックスにデータをアップロードします。 | 1 ～ 1,000。 既定値は 1,000 です。 | いいえ |
 
 #### <a name="example"></a>例
 
@@ -1386,7 +1386,7 @@ Azure Search インデックスにデータをコピーする場合は、コピ�
 }
 ```
 
-詳細については、[Azure Search コネクタ](data-factory-azure-search-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、[Azure Cognitive Search コネクタ](data-factory-azure-search-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ## <a name="azure-table-storage"></a>Azure Table Storage
 

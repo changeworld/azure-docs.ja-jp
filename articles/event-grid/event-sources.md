@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785814"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603837"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -83,6 +83,18 @@ Capture ファイル イベントに対応するために、Event Hubs のイベ
 | [イベント スキーマ](event-schema-iot-hub.md) | IoT Hub イベントのフィールドを示します。 |
 | [デバイス接続イベントおよびデバイス切断イベントの順序を設定する](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | デバイス接続状態イベントの順序付け方法を示します。 |
 
+## <a name="key-vault-preview"></a>Key Vault (プレビュー)
+
+Key Vault と Event Grid の統合は現在プレビュー段階です。 
+
+シークレットの有効期限が切れる直前、シークレットの有効期限が切れたとき、またはシークレットの新しいバージョンが利用可能になときに通知を受けるには、Key Vault イベントをサブスクライブします。 
+
+|タイトル  |説明  |
+|---------|---------|
+| [Azure Event Grid での Key Vault イベントの監視](../key-vault/event-grid-overview.md) | Key Vault と Event Grid の統合の概要です。 |
+| [チュートリアル:Event Grid を使用した Key Vault イベントの作成と監視](../key-vault/event-grid-tutorial.md) | Key Vault に関する Event Grid の通知を設定する方法について説明します。 |
+| [イベント スキーマ](event-schema-key-vault.md) | Key Vault イベントのフィールドを示します。 |
+
 ## <a name="media-services"></a>Media Services
 
 ジョブ状態のイベントに対応するため、Media Services のイベントをサブスクライブします。
@@ -147,7 +159,7 @@ Azure App Configuration イベントをサブスクライブして、キーと�
 |タイトル | 説明 |
 |---------|---------|
 | [Event Grid を使用して Azure App Configuration イベントに応答する](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure App Configuration と Event Grid の統合の概要。 |
-| [クイックスタート: Azure CLI を使用して Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Azure App Configuration イベントを Webhook に送信する方法を示します。 |
+| [クイック スタート: Azure CLI を使用して Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Azure App Configuration イベントを Webhook に送信する方法を示します。 |
 | [イベント スキーマ](event-schema-app-configuration.md) | Azure App Configuration イベントのフィールドを表示します。 |
 
 ## <a name="azure-signalr"></a>Azure SignalR
@@ -159,7 +171,14 @@ Azure App Configuration イベントをサブスクライブして、キーと�
 | [Azure SignalR Service のイベントを Event Grid に送信する方法](../azure-signalr/signalr-howto-event-grid-integration.md) | Event Grid を通して Azure SignalR Service のイベントをアプリケーションに送信する方法を示します。 |
 | [イベント スキーマ](event-schema-azure-signalr.md) | Azure SignalR Service のイベントのフィールドを示します。 |
 
+## <a name="azure-machine-learning"></a>Azure Machine Learning
 
+モデル登録に応答するには、Azure Machine Learning ワークスペース イベントをサブスクライブします。
+
+| タイトル | 説明 |
+| ----- | ----- |
+| [Azure Machine Learning イベントを使用する](../machine-learning/service/concept-event-grid-integration.md) | Azure Machine Learning と Event Grid の統合の概要です。 |
+| [Azure Machine Learning 用の Azure Event Grid イベント スキーマ](event-schema-machine-learning.md) | Azure Machine Learning イベントのフィールドを示します。 |
 
 ## <a name="next-steps"></a>次の手順
 

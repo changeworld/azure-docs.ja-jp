@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse での Azure Stream Analytics の使用 | Microsoft Docs
+title: Azure Stream Analytics の使用
 description: ソリューション開発のための、Azure SQL Data Warehouse での Azure Stream Analytics の使用に関するヒント。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,20 +10,21 @@ ms.subservice: integration
 ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 94646c41d9894dd00018ff5ca44d76534d35e8c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 63803f3ac477e48d8d1c14a72e2ee9b9d4860047
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873262"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685728"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Stream Analytics の使用
-Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、フル マネージドのサービスです。 基本事項については、「[Stream Analytics とは][Introduction to Azure Stream Analytics]」を参照してください。 その後で、「[Azure Stream Analytics の使用][Get started using Azure Stream Analytics]」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
+Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、フル マネージドのサービスです。 基本事項については、「 [Azure Stream Analytics の概要][Introduction to Azure Stream Analytics]」をお読みください。 その後で、「 [Azure Stream Analytics の使用][Get started using Azure Stream Analytics] 」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
 
 この記事では、Azure SQL Data Warehouse データベースを、Stream Analytics ジョブの出力シンクとして使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-最初に、「[Azure Stream Analytics の使用][Get started using Azure Stream Analytics]」チュートリアルの次の手順を通読します。  
+最初に、「 [Azure Stream Analytics の使用][Get started using Azure Stream Analytics] 」チュートリアルの次の手順を通読します。  
 
 1. Event Hub 入力の作成
 2. イベント ジェネレーター アプリケーションの構成と起動
@@ -63,9 +64,9 @@ SQL Database を選択します。
 データベースへの接続が成功すると、ポータルに通知が表示されます。 [テスト] をクリックすると、データベースへの接続をテストできます。
 
 ## <a name="next-steps"></a>次の手順
-統合の概要については、「[SQL Data Warehouse の設計上の決定と コーディング技法][SQL Data Warehouse integration overview]」を参照してください。
+統合の概要については、「 [SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)][SQL Data Warehouse integration overview]」をご覧ください。
 
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。
+開発に関するその他のヒントについては、「 [SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][SQL Data Warehouse development overview]」をご覧ください。
 
 <!--Image references-->
 

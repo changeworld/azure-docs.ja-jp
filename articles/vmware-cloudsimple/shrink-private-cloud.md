@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972364"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825681"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの縮小
 
@@ -53,6 +53,10 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 8. **[送信]** をクリックしてプライベート クラウドを縮小します。
 
 プライベート クラウドの縮小が開始されます。  タスクの進行状況を監視できます。  vSAN で再同期する必要があるデータによっては、縮小プロセスに数時間かかることがあります。
+
+> [!NOTE]
+> データセンター内の最後または唯一のクラスターを削除してプライベート クラウドを縮小した場合、データセンターは削除されません。  
+
 
 ## <a name="next-steps"></a>次の手順
 

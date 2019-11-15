@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Machine Learning Services (プレビュー) の主な違い
+title: Machine Learning Services (プレビュー) の主な違い
 description: このトピックでは、Azure SQL Database Machine Learning Services と R および SQL Server Machine Learning Services の主な違いについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: ee92b598625b1346cf87c661d1867cc1cb012b60
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1397f5d81ddf63740d733111b965a0517a2b917f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486006"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827464"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>SQL Server の Machine Learning Services と Azure SQL Database の Machine Learning Services (プレビュー) の主な違い
 

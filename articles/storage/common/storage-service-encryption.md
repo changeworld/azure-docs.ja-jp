@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a15d450d033c04c59f6981a887689f1fc08919f1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958848"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795689"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -74,7 +74,7 @@ Microsoft のマネージド キーを利用してストレージ アカウン�
 
 ストレージ アカウント上のカスタマー マネージド キーへのアクセスを取り消すには、[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) および [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) に関する記事をご覧ください。 アクセスを取り消すと、Azure Storage が暗号化キーにアクセスできなくなるため、ストレージ アカウント内の全データへのアクセスが事実上ブロックされます。
 
-[Azure マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)に対しては、カスタマー マネージド キーはサポートされていません。
+カスタマー マネージド キーは、パブリック プレビューとして Azure マネージド ディスクで使用することもできます。カスタマー マネージド キーの動作は、マネージド ディスクと他のストレージでは少し異なります。 詳細については、[この件に関する記事](../../virtual-machines/linux/disk-encryption.md#customer-managed-keys-public-preview)をご覧ください。
 
 Azure Storage でカスタマー マネージド キーを使う方法については、次の記事をご覧ください。
 

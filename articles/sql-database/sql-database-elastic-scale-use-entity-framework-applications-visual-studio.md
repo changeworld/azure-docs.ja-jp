@@ -1,5 +1,5 @@
 ---
-title: Entity Framework での Elastic Database クライアント ライブラリの使用 | Microsoft Docs
+title: Entity Framework による Elastic Database クライアント ライブラリの使用
 description: Elastic Database クライアント ライブラリと Entity Framework をデータベースのコーディングに使用する
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 8ae264f7da84336d5f786d2ff060aa89bbe75837
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568303"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823482"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework による Elastic Database クライアント ライブラリ
 

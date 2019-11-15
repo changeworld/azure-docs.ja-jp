@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: db501c34a4418bc7b08b19105a9b28585288f877
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949539"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823062"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -76,7 +77,7 @@ Azure Marketplace で認定および発行されるためには、IoT Edge モ�
 
 ## <a name="documentation-and-resources"></a>ドキュメントおよびリソース
 
-[IoT Edge モジュール プランの作成](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – クラウド発行ポータルで新しい IoT Edge モジュールを発行するための手順を説明します。
+[IoT Edge モジュール オファーの作成](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) -- クラウド発行ポータルで新しい IoT Edge モジュール オファーを発行するための手順を説明します。
 
 ## <a name="next-steps"></a>次の手順
 

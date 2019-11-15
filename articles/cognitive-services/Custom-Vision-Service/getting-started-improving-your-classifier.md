@@ -1,7 +1,7 @@
 ---
 title: 分類子の改善 - Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: 分類子の品質を改善する方法について説明します。
+description: この記事では、Custom Vision Service の分類子の品質を向上させることができるデータの量、品質および多様性について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561046"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718533"
 ---
 # <a name="how-to-improve-your-classifier"></a>分類子を改善する方法
 

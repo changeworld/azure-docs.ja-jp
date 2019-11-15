@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric Mesh CLI の設定 | Microsoft Docs
-description: Azure Service Fabric Mesh CLI を設定する方法について説明します。
+description: Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 以下に、設定の方法を説明します。
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,17 +9,17 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 46b2a9a0c4d8a1d9e0fa069d512670dffb94fc28
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5c9733a5fc5aec337a326fe39e78c3e5c0b8ca4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173771"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686309"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
-Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 
+Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 以下に、設定の方法を説明します。
 
-使用できる3 種類の CLI を次の表にまとめています。 
+使用できる3 種類の CLI を次の表にまとめています。
 
 | CLI モジュール | ターゲット環境 |  説明 | 
 |---|---|---|

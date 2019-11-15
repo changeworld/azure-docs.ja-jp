@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a917a823d47d6a072cf5a3ee5d636b432913df9a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0b85d6fbe8e66b94bad372ccb29e5489dd81587b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299438"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614779"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -57,7 +57,7 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 ```csharp
 [FunctionName("Chaining")]
 public static async Task<object> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     try
     {
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -88,10 +88,10 @@ module.exports = df.orchestrator(function*(context) {
 
 この例では、`F1`、`F2`、`F3`、および `F4` という値が、関数アプリ内の他の関数の名前です。 通常の命令型のコーディング構造を使用して、制御フローを実装できます。 コードは、上から下に実行されます。 コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。 `try`/`catch`/`finally` ブロックに、エラー処理ロジックを含めることができます。
 
-`context` パラメーターの [DurableOrchestrationContext] \(.NET\) と `context.df` オブジェクト (JavaScript) を使用して、名前によって他の関数を呼び出し、パラメーターを渡し、関数の出力を返すことができます。 コードで `await` (C#) または `yield` (JavaScript) が呼び出されるたびに Durable Functions フレームワークによって、現在の関数インスタンスの進行状況に対するチェックポイントが設定されます。 プロセスまたは VM が実行途中でリサイクルされる場合、関数インスタンスは直前の `await` または `yield` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
+`context` パラメーター [IDurableOrchestrationContext] \(.NET\) および `context.df` オブジェクト (JavaScript) を使用して、名前で他の関数を呼び出し、パラメーターを渡して、関数の出力を受け取ることができます。 コードで `await` (C#) または `yield` (JavaScript) が呼び出されるたびに Durable Functions フレームワークによって、現在の関数インスタンスの進行状況に対するチェックポイントが設定されます。 プロセスまたは VM が実行途中でリサイクルされる場合、関数インスタンスは直前の `await` または `yield` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
 
 > [!NOTE]
-> JavaScript の `context` オブジェクトは、[DurableOrchestrationContext] パラメーターだけではなく、[関数コンテキスト](../functions-reference-node.md#context-object)全体を表しています。
+> JavaScript の `context` オブジェクトは、[IDurableOrchestrationContext] パラメーターだけではなく、[関数コンテキスト](../functions-reference-node.md#context-object)全体を表しています。
 
 ### <a name="fan-in-out"></a>パターン #2: ファンアウト/ファンイン
 
@@ -108,7 +108,7 @@ Durable Functions 拡張機能では、比較的単純なコードでこのパ�
 ```csharp
 [FunctionName("FanOutFanIn")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var parallelTasks = new List<Task<int>>();
 
@@ -128,7 +128,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -204,7 +204,7 @@ Durable Functions 拡張機能には、長時間実行されるオーケスト�
 
 ![監視パターンの図](./media/durable-functions-concepts/monitor.png)
 
-数行のコードで、Durable Functions を使用して任意のエンドポイントを観察する複数のモニターを作成できます。 条件が満たされたときにこれらのモニターによって実行を終了するか、[DurableOrchestrationClient](durable-functions-instance-management.md) によってモニターを終了できます。 特定の条件に基づいてモニターの `wait` 間隔を変更できます (指数関数的バックオフなど)。 
+数行のコードで、Durable Functions を使用して任意のエンドポイントを観察する複数のモニターを作成できます。 条件が満たされたときにこれらのモニターによって実行を終了するか、`IDurableOrchestrationClient` によってモニターを終了できます。 特定の条件に基づいてモニターの `wait` 間隔を変更できます (指数関数的バックオフなど)。 
 
 次のコードでは、基本的なモニターが実装されます。
 
@@ -213,7 +213,7 @@ Durable Functions 拡張機能には、長時間実行されるオーケスト�
 ```csharp
 [FunctionName("MonitorJobStatus")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int jobId = context.GetInput<int>();
     int pollingInterval = GetPollingInterval();
@@ -238,7 +238,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -285,7 +285,7 @@ module.exports = df.orchestrator(function*(context) {
 ```csharp
 [FunctionName("ApprovalWorkflow")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     await context.CallActivityAsync("RequestApproval", null);
     using (var timeoutCts = new CancellationTokenSource())
@@ -307,7 +307,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -331,13 +331,13 @@ module.exports = df.orchestrator(function*(context) {
 
 永続タイマーを作成するために、`context.CreateTimer` (.NET) または `context.df.createTimer` (JavaScript) が呼び出されます。 通知は `context.WaitForExternalEvent` (.NET) または `context.df.waitForExternalEvent` (JavaScript) が受け取ります。 その後、エスカレーションする (タイムアウトが先に発生した場合) か承認を処理する (タイムアウト前に承認を得た場合) かを決定するために、`Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) が呼び出されます。
 
-外部クライアントは、[組み込みの HTTP API](durable-functions-http-api.md#raise-event) を使用するか、別の関数からの [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API を使用して、待機中のオーケストレーター関数にイベント通知を配信できます。
+外部クライアントでは、[組み込みの HTTP API](durable-functions-http-api.md#raise-event) を使用するか、別の関数からの `RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) メソッドを使用して、待機中のオーケストレーター関数にイベント通知を配信できます。
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
 public static async Task Run(
     [HttpTrigger] string instanceId,
-    [OrchestrationClient] DurableOrchestrationClient client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     bool isApproved = true;
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
@@ -358,7 +358,7 @@ module.exports = async function (context) {
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-### <a name="aggregator"></a>パターン #6:アグリゲーター (プレビュー)
+### <a name="aggregator"></a>パターン #6:アグリゲーター
 
 6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な*エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
 
@@ -366,33 +366,50 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 このパターンを通常のステートレス関数で実装しようとする際に注意が必要な点は、同時実行制御が大きな課題となることです。 複数のスレッドが同時に同じデータを変更することに注意する必要があるだけでなく、アグリゲーターが一度に 1 つの VM 上でのみ実行されるようにすることも注意する必要があります。
 
-[Durable Entity 関数](durable-functions-preview.md#entity-functions)を使用すれば、このパターンを 1 つの関数として簡単に実装できます。
+[持続エンティティ](durable-functions-entities.md)を使用すると、このパターンを単一の関数として簡単に実装できます。
 
 ```csharp
 [FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
             int amount = ctx.GetInput<int>();
-            currentValue += amount;
+            ctx.SetState(currentValue + amount);
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
             ctx.Return(currentValue);
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-持続エンティティは、.NET クラスとしてモデル化することもできます。 このモデルは、操作の一覧が固定されていて、サイズが大きくなった場合に役立ちます。 次の例は、.NET クラスおよびメソッドを使用した `Counter` エンティティの同等の実装です。
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+持続エンティティは、.NET のクラスとしてモデル化することもできます。 このモデルは、操作の一覧が固定されていて、サイズが大きくなった場合に役立ちます。 次の例は、.NET クラスおよびメソッドを使用した `Counter` エンティティの同等の実装です。
 
 ```csharp
 public class Counter
@@ -418,7 +435,7 @@ public class Counter
 [FunctionName("EventHubTriggerCSharp")]
 public static async Task Run(
     [EventHubTrigger("device-sensor-events")] EventData eventData,
-    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+    [DurableClient] IDurableOrchestrationClient entityClient)
 {
     var metricType = (string)eventData.Properties["metric"];
     var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
@@ -429,10 +446,21 @@ public static async Task Run(
 }
 ```
 
-動的に生成されたプロキシは、タイプセーフな方法でシグナル通知エンティティにも使用できます。 シグナル通知に加えて、クライアントは、オーケストレーション クライアント バインディングで[タイプ セーフのメソッド](durable-functions-bindings.md#entity-client-usage)を使用して、エンティティ関数の状態をクエリすることもできます。
-
 > [!NOTE]
-> 現在、エンティティ関数は [Durable Functions 2.0 プレビュー](durable-functions-preview.md)の一部として .NET でのみ使用できます。
+> 動的に生成されたプロキシは、.NET においてタイプセーフな方法でシグナル通知エンティティに対して使用することもできます。 シグナル通知に加えて、クライアントは、オーケストレーション クライアント バインディングで[タイプ セーフのメソッド](durable-functions-bindings.md#entity-client-usage)を使用して、エンティティ関数の状態をクエリすることもできます。
+
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
+エンティティ関数は、[Durable Functions 2.0](durable-functions-versions.md) 以降で使用できます。
 
 ## <a name="the-technology"></a>テクノロジ
 

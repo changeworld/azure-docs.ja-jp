@@ -1,20 +1,17 @@
 ---
 title: Azure Spring Cloud アプリケーションを開始、停止、および削除する方法 | Microsoft Docs
 description: Azure Spring Cloud アプリケーションを開始、停止、および削除する方法
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: f7f76644d13c20704d2c3bd908176ac452df2a20
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: conceptual
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 9f537ab425428728137e04713e434d8dc09e065a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038441"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607723"
 ---
 # <a name="how-to-start-stop-and-delete-your-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションを開始、停止、および削除する方法
 
@@ -32,24 +29,30 @@ ms.locfileid: "72038441"
 ## <a name="using-the-azure-cli"></a>Azure CLI の使用
 
 > [!NOTE]
-> オプションのパラメーターを使用して、Azure CLI で既定値を構成できます。 詳細については、[リファレンス ドキュメント](spring-cloud-cli-reference.md)を参照してください。
+> オプションのパラメーターを使用して、Azure CLI で既定値を構成できます。 詳細については、[リファレンス ドキュメント](spring-cloud-cli-reference.md)を参照してください。  
+
+Azure CLI 用の Spring Cloud 拡張機能をインストールします。
+
+```azurecli
+az extension add --name spring-cloud
+```
 
 * アプリケーションを開始するには:
-    ```Azure CLI
+    ```azurecli
     az spring-cloud app start -n <application name> -g <resource group> -s <Azure Spring Cloud name>
     ```
 
 * アプリケーションを停止するには:
-    ```Azure CLI
+    ```azurecli
     az spring-cloud app stop -n <application name> -g <resource group> -s <Azure Spring Cloud name>
     ```
 
 * アプリケーションを再開するには:
-    ```Azure CLI
+    ```azurecli
     az spring-cloud app restart -n <application name> -g <resource group> -s <Azure Spring Cloud name>
     ```
 
 * アプリケーションを削除するには:
-    ```Azure CLI
+    ```azurecli
     az spring-cloud app delete -n <application name> -g <resource group> -s <Azure Spring Cloud name>
     ```

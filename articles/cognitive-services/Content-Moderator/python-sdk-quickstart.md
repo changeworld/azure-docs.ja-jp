@@ -1,20 +1,21 @@
 ---
 title: クイック スタート:Python 用 Content Moderator クライアント ライブラリ |Microsoft Docs
-description: Python 用 Content Moderator クライアント ライブラリの使用を開始します。
+titleSuffix: Azure Cognitive Services
+description: Python 用 Azure Cognitive Services Content Moderator クライアント ライブラリの使用を開始する方法について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755249"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744399"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>クイック スタート:Python 用 Content Moderator クライアント ライブラリ
 
@@ -295,7 +296,7 @@ This text contains the terms "term1" and "term2".
 
 ## <a name="create-a-review"></a>レビューを作成する
 
-Content Moderator Python SDK を使用して、人間のモデレーターがレビューできるように、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にコンテンツをフィードすることができます。 レビュー ツールの詳細については、[概念的なガイド](./review-tool-user-guide/human-in-the-loop.md)に関するページを参照してください。
+Content Moderator Python SDK を使用して、人間のモデレーターがレビューできるように、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にコンテンツをフィードすることができます。 レビュー ツールの詳細については、[レビュー ツールの概念的なガイド](./review-tool-user-guide/human-in-the-loop.md)に関するページを参照してください。
 
 次のコードでは、[ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) クラスを使用してレビューが作成され、その ID が取得されて、レビュー ツールの Web ポータルから人間による入力を受け取った後、その詳細が確認されます。
 
@@ -312,7 +313,7 @@ Content Moderator Python SDK を使用して、人間のモデレーターがレ
 
 ### <a name="get-review-details"></a>レビューの詳細を取得する
 
-次のコードを使用して、指定したレビューの詳細を確認します。 レビューを作成したら、自分でレビュー ツールにアクセスし、コンテンツとやりとりすることができます。 完了したら、このコードをもう一度実行すると、レビュー プロセスの結果が取得されます。
+次のコードを使用して、指定したレビューの詳細を確認します。 レビューを作成したら、自分でレビュー ツールにアクセスし、コンテンツとやりとりすることができます。 これを行う方法の詳細については、[レビューの攻略ガイド](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images)に関する記事を参照してください。 完了したら、このコードをもう一度実行すると、レビュー プロセスの結果が取得されます。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 

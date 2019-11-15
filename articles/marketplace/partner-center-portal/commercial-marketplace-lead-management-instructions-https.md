@@ -4,15 +4,16 @@ description: HTTPS エンドポイントの潜在顧客管理を構成します�
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: evansma
-ms.openlocfilehash: 6a34bdcab5a13af682515bbae96e9a1800ccc37f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 83efb9cfd1ee7464a334ebc4064dbfaa20ab30de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901403"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812289"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS エンドポイントを使用して潜在顧客管理を構成する
 
@@ -24,7 +25,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
 2. サインインし、メニュー バーの **[マイ フロー]** を選択します。
 
-3. **[+Automated – from blank]\(+自動 - 白紙から作成\)** を選択します。
+3. **[+Automated - from blank] (+自動 - 白紙から作成)** を選択します。
 
     ![[マイ フロー] [+Automated – from blank]\(+自動 – 白紙から作成\)](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 

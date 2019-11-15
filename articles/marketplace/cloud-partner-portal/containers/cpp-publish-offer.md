@@ -4,15 +4,16 @@ description: Azure コンテナー オファーを発行する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 9433673e464beb2df74eb4f49851e960d2e7f99c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf422e3d77fa0722fe10a52073cf89ab2a76dcc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942666"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823166"
 ---
 # <a name="publish-container-offer"></a>コンテナー オファーを発行する
 
@@ -31,7 +32,7 @@ ms.locfileid: "64942666"
 |  -------------------           | --------    | ---------------                                                            |
 | 前提条件の検証         | 15 分   | プラン情報とプラン設定が有効化されます。                        |
 | 認定                  | 1 週間 | オファーが Azure 認定チームによって分析されます。 ウイルス、マルウェア、安全性のコンプライアンス、およびセキュリティの問題についてオファーがスキャンされます。 適格性の条件がすべて満たされていることを確認するため、オファーがチェックされます。 詳細については、[前提条件](./cpp-prerequisites.md)と[技術資産の準備](./cpp-create-technical-assets.md)に関するページを参照してください。 問題が見つかった場合はフィードバックが提供されます。 |
-| 梱包 | 1 時間  | プランの技術資産が顧客の使用のためにパッケージ化され、リード システムが構成され設定されます。 |
+| 梱包 | 1 時間  | プランの技術資産が顧客による使用のためにパッケージ化され、リード システムが構成され設定されます。 |
 |  発行元のサインオフ             |  -        | オファーが稼働状態になる前に、最終的な発行元のレビューと確認が行われます。 (プラン情報の手順で) 選択されたサブスクリプション内にプランをデプロイして、すべての要件を満たしていることを確認できます。  プランが次の手順に進めるように、 **[Go Live]\(ライブにする\)** を選択します。 |
 | 梱包                 | 1 時間 | マーケットプレースの実稼働システムとリージョンに、完成したオファーがレプリケートされます。 | 
 | ライブ                           | 4 日 |プランが、必要なリージョンにリリース、レプリケートされて、一般公開されます。 |

@@ -1,5 +1,5 @@
 ---
-title: Azure メンテナンス イベントの計画 - Azure SQL Database | Microsoft Docs
+title: Azure メンテナンス イベントの計画
 description: Azure SQL Database に計画メンテナンス イベントを準備する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ba882176fbe17f7b74c786f421dde8fadd58d9b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567042"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821314"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure SQL Database での Azure メンテナンス イベントの計画
 

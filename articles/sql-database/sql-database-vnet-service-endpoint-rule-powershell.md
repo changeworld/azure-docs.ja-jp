@@ -1,5 +1,5 @@
 ---
-title: Azure SQL の単一およびプールされたデータベース用の VNet エンドポイントおよび規則のための PowerShell | Microsoft Docs
+title: 単一およびプールされたデータベース用の VNet エンドポイントおよび規則のための PowerShell
 description: PowerShell スクリプトを提供して、Azure SQL Database と SQL Data Warehouse.用 の Vertual Service エンドポイントを作成して管理します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 326eec68ed3ca1d42552b89fe4519d24c62cf12a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5c8f46c9066ad4ef0caac0fb19645b6e4b1cf846
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841377"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822396"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL の Virtual Service エンドポイントと VNet 規則を作成する
 

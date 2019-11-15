@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure SQL Data Warehouse でのコンピューティングの一時停止と再開 - PowerShell | Microsoft Docs
+title: 'クイック スタート:コンピューティングの一時停止と再開 - PowerShell '
 description: PowerShell を使用して、Azure SQL Data Warehouse でのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、コンピューティングを再開します。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306087"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686017"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>クイック スタート:Azure PowerShell による Azure SQL Data Warehouse でのコンピューティングの一時停止と再開
 

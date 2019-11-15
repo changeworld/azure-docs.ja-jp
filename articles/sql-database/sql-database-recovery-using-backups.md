@@ -1,5 +1,5 @@
 ---
-title: バックアップから Azure SQL データベースを復元する | Microsoft Docs
+title: バックアップからデータベースを復元する
 description: Azure SQL データベースを最大 35 日前までにロールバックすることができる、ポイントインタイム リストアについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b858776d8309be94a0dd64f994a9e34e589d3c49
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750455"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821207"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>自動データベース バックアップを使用して Azure SQL データベースを復旧する
 

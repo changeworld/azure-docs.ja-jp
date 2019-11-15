@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のマルチモデルの機能 | Microsoft Docs
+title: マルチモデル機能
 description: Azure SQL Database では、同じデータベース内の複数のデータ モデルを使用できます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2e8519fa8d96b7fe016b9da4ba84ce481a57d94e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567130"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802811"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database のマルチモデル機能
 
@@ -29,7 +29,7 @@ Azure SQL Database は、さまざまな汎用アプリケーションに対し�
 - NoSQL モデルに適した情報または構造があるが、別個の NoSQL データベースを使用したくない。
 - データの多くがリレーショナル モデルに適しており、データの一部を NoSQL スタイルでモデル化する必要がある。
 - 優れた Transact-SQL 言語を活用してリレーショナル データと NoSQL データの両方に対してクエリと分析を実行し、SQL 言語を使用できるさまざまなツールやアプリケーションに Transact-SQL 言語を統合したい。
-- [インメモリ テクノロジー](sql-database-in-memory.md)などのデータベース機能を適用して NoSQL データ構造の分析や処理のパフォーマンスを改善し、[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)や[読み取り可能レプリカ](sql-database-read-scale-out.md)を使用して、データのコピーを別の場所に作成し、プライマリ データベースから一部の分析ワークロードをオフロードしたい。
+- [インメモリ テクノロジ](sql-database-in-memory.md)などのデータベース機能を適用して NoSQL データ構造の分析や処理のパフォーマンスを改善し、[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)や[読み取り可能レプリカ](sql-database-read-scale-out.md)を使用して、データのコピーを別の場所に作成し、プライマリ データベースから一部の分析ワークロードをオフロードしたい。
 
 ## <a name="overview"></a>概要
 
@@ -68,7 +68,7 @@ Azure SQL Database では、データベース内の多対多リレーション�
 
 Azure SQL Database では、JavaScript Object Notation [(JSON)](https://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。
 
-JSON は、最新の Web およびモバイル アプリケーションのデータを交換するために使用される一般的なデータ形式です。 また、JSON は、ログ ファイルや [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) のような NoSQL データベースに半構造化データを格納するためにも使用されます。 多くの REST Web サービスは、JSON テキストとして書式設定された結果を返したり、JSON 形式のデータを受け入れたりします。 [Azure Search](https://azure.microsoft.com/services/search/)、[Azure Storage](https://azure.microsoft.com/services/storage/)、および [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) などの多くの Azure サービスには、JSON を返したり、使用したりする REST エンドポイントがあります。
+JSON は、最新の Web およびモバイル アプリケーションのデータを交換するために使用される一般的なデータ形式です。 また、JSON は、ログ ファイルや [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) のような NoSQL データベースに半構造化データを格納するためにも使用されます。 多くの REST Web サービスは、JSON テキストとして書式設定された結果を返したり、JSON 形式のデータを受け入れたりします。 [Azure Cognitive Search](https://azure.microsoft.com/services/search/)、[Azure Storage](https://azure.microsoft.com/services/storage/)、および [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) などの多くの Azure サービスには、JSON を返したり、使用したりする REST エンドポイントがあります。
 
 Azure SQL Database では、JSON データを簡単に操作し、データベースを最新のサービスと統合することができます。 Azure SQL Database には、JSON データを操作するために、次の関数が用意されています。
 

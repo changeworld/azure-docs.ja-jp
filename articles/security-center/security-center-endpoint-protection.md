@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center での Endpoint Protection ソリューションの検出と正常性評価 | Microsoft Docs
+title: Azure Security Center での Endpoint Protection の推奨事項
 description: Endpoint Protection ソリューションを検出し、正常と識別する方法。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: 8de0caa5db4a7e1d97c7d6c055bcb01fed635821
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202264"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748437"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Security Center での Endpoint Protection の評価と推奨事項
 
@@ -35,23 +35,23 @@ Azure Security Center は、Endpoint Protection ソリューションの[サポ�
 
   * 次のプロパティのいずれかが false である場合。
 
-     **AMServiceEnabled**
+    **AMServiceEnabled**
 
-     **AntispywareEnabled**
+    **AntispywareEnabled**
 
-     **RealTimeProtectionEnabled**
+    **RealTimeProtectionEnabled**
 
-     **BehaviorMonitorEnabled**
+    **BehaviorMonitorEnabled**
 
-     **IoavProtectionEnabled**
+    **IoavProtectionEnabled**
 
-     **OnAccessProtectionEnabled**
+    **OnAccessProtectionEnabled**
 
   * 次のプロパティの一方または両方が 7 以上である場合。
 
-     **AntispywareSignatureAge**
+    **AntispywareSignatureAge**
 
-     **AntivirusSignatureAge**
+    **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
@@ -61,30 +61,30 @@ Azure Security Center は、Endpoint Protection ソリューションの[サポ�
 
     * 次のプロパティの少なくとも 1 つが false である。
 
-       **AMServiceEnabled**
+            **AMServiceEnabled**
+
+            **AntispywareEnabled**
     
-       **AntispywareEnabled**
+            **RealTimeProtectionEnabled**
     
-       **RealTimeProtectionEnabled**
+            **BehaviorMonitorEnabled**
     
-       **BehaviorMonitorEnabled**
+            **IoavProtectionEnabled**
     
-       **IoavProtectionEnabled**
-    
-       **OnAccessProtectionEnabled**
+            **OnAccessProtectionEnabled**
           
     * 次のシグネチャの更新のいずれかまたは両方が 7 以上である場合。 
 
-       **AntispywareSignatureAge**
+            **AntispywareSignatureAge**
     
-       **AntivirusSignatureAge**
+            **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 
 * Security Center は、次のいずれかのチェックが満たされていない場合、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。
     * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** が存在する
     * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** が存在する
-    * インストール フォルダーに **dsq_query.cmd** ファイルがある
+    * インストール フォルダーに **dsa_query.cmd** ファイルがある
     * **Component.AM.mode: on - Trend Micro Deep Security Agent detected** で **dsa_query.cmd** 結果が実行されている
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
@@ -163,22 +163,21 @@ Security Center は、次のいずれかのチェックが満たされていな�
 
 Security Center は、次のいずれかのチェックが満たされていない場合、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
 
-- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** から値が返される   
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** から値が返される
 
-- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" から値が返される   
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" から値が返される
 
 - **"/opt/sophos-av/bin/savdstatus --lastupdate"** から lastUpdate (<= 7 日間でなければならない) が返される 
 
 - **"/opt/sophos-av/bin/savdstatus -v"** が **"On-access scanning is running"** に等しい 
 
-- **"/opt/sophos-av/bin/savconfig get LiveProtection"** から有効が返される  
+- **"/opt/sophos-av/bin/savconfig get LiveProtection"** から有効が返される
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 
-Microsoft マルウェア対策拡張機能ログは次から入手できます。  
-**%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(Or PaaSAntimalware)\1.5.5.x(version#)\CommandExecution.log**
+Microsoft Antimalware 拡張機能のログは、 **%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(または PaaSAntimalware)\1.5.5.x(バージョン #)\CommandExecution.log** で入手できます
 
 ### <a name="support"></a>サポート
 

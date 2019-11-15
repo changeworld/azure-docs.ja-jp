@@ -1,5 +1,5 @@
 ---
-title: Azure への VMware レプリケーションのターゲット環境を準備する | Microsoft Docs
+title: Azure Site Recovery で VMware VM レプリケーション ターゲットを準備する
 description: この記事では、Azure への VMware VM レプリケーションの Azure ターゲット環境を準備する方法について説明します。
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
-ms.openlocfilehash: e75d4b1701944e206fcf6ded2dcb6d1e1fbc77cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723810"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693172"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>VMware VM または物理サーバーの Azure へのディザスター リカバリーのためのターゲット環境を準備する
 
@@ -22,7 +22,7 @@ ms.locfileid: "60723810"
 ## <a name="prerequisites"></a>前提条件
 
 この記事は以下を前提としています。
-- Recovery Services コンテナーを[Azure portal](https://portal.azure.com "Azure portal")上で作成し、ソース マシンを保護します。
+- Recovery Services コンテナーを [Azure portal](https://portal.azure.com "Azure ポータル") 上で作成し、ソース マシンを保護します
 - ソースの[VMware の仮想マシン](vmware-azure-set-up-source.md)および[物理サーバー](physical-azure-set-up-source.md)を Azure にレプリケートできるようにオンプレミス環境をセットアップします。
 
 ## <a name="prepare-target"></a>ターゲットを準備する

@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 11/04/2019
+ms.openlocfilehash: b0839cf418cd30f62623e046960c32d41537609a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242086"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614374"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>チュートリアル:Ansible を使用して Azure 内で Azure Kubernetes Service (AKS) クラスターを構成する
 
@@ -54,7 +54,8 @@ ms.locfileid: "72242086"
     ssh_key: "your_ssh_key"
     client_id: "your_client_id"
     client_secret: "your_client_secret"
-  tasks:
+    aks_version: aks_version
+tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
       name: "{{ resource_group }}"
@@ -65,6 +66,7 @@ ms.locfileid: "72242086"
       location: "{{ location }}"
       resource_group: "{{ resource_group }}"
       dns_prefix: "{{ aks_name }}"
+      kubernetes_version: "{{aks_version}}"
       linux_profile:
         admin_username: "{{ username }}"
         ssh_key: "{{ ssh_key }}"
@@ -84,6 +86,7 @@ ms.locfileid: "72242086"
 - `tasks` 内の最初のセクションでは、`eastus` の場所にある `myResourceGroup` という名前のリソース グループが定義されています。
 - `tasks` 内の 2 番目のセクションでは、`myResourceGroup` というリソース グループ内に `myAKSCluster` という名前の AKS クラスターが定義されています。
 - `your_ssh_key` プレースホルダーには、"ssh-rsa" (引用符は除く) で始まる実際の RSA 公開キーを 1 行形式で入力してください。
+- `aks_version` プレースホルダーに対しては、[az aks get-versions](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) コマンドを使用します。
 
 `ansible-playbook` コマンドを使用してプレイブックを実行します。
 

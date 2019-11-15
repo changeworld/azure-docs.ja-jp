@@ -1,5 +1,5 @@
 ---
-title: マネージド インスタンスのパブリック エンドポイントをセキュリティで保護する - Azure SQL Database マネージド インスタンス | Microsoft Docs
+title: マネージド インスタンスでのパブリック エンドポイントのセキュリティ保護
 description: マネージド インスタンスを使用して Azure のパブリック エンドポイントを安全に使用する
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: c7f57a636e95bb137dd4285b8f9ce8343b27d2a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567361"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821735"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>パブリック エンドポイントで安全に Azure SQL Database マネージド インスタンスを使用する
 

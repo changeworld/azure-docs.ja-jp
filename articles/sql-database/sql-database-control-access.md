@@ -1,22 +1,23 @@
 ---
-title: Azure SQL Database と Data Warehouse へのアクセスの許可 | Microsoft Doc
+title: アクセス権の付与
 description: Microsoft Azure SQL Database と SQL Data Warehouse へのアクセスを許可する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sql-data-warehouse
+titleSuffix: Azure SQL Database and SQL Data Warehouse
+ms.custom: sql-data-warehouse, seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 1292dbf43b5246fe3da95ead4d5d9113b4bc84f9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 05a949bbd99a36c41143190d216116f78c433951
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569033"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826608"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL Database と SQL Data Warehouse へのアクセスの制御
 
@@ -33,7 +34,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 
 接続処理の一部として、Azure 仮想マシンからの接続は worker ロールごとに異なる別の IP アドレスとポートにリダイレクトされます。 ポート番号の範囲は、11000 ～ 11999 です。 TCP ポートの詳細については、「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 SQL Database は、2 種類の認証をサポートしています。
 

@@ -1,5 +1,5 @@
 ---
-title: シャード化された Azure SQL データベースをクエリする | Microsoft Docs
+title: シャード化されたデータベースのクエリ実行
 description: エラスティック データベース クライアント ライブラリを使用して複数のシャードを対象にクエリを実行します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 471af9e1bc699ccaa8bc930ab930d6d40bbdc984
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6458b52e707b7e4c11fe8b501f3393e1009a748c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568369"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823536"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Elastic Database ツールを使用したマルチシャード クエリ
 

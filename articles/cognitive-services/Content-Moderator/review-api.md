@@ -1,7 +1,7 @@
 ---
 title: レビュー、ワークフロー、ジョブの概念 - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: レビュー、ワークフロー、ジョブについて説明します
+description: この記事では、レビュー ツールの主要な概念であるレビュー、ワークフロー、ジョブについて説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 0050e2b687b6001514d1ae80c269b1a0499efbea
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757289"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744430"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>コンテンツ モデレーションのレビュー、ワークフロー、ジョブ
 
@@ -75,5 +75,5 @@ Content Moderator は、マシン支援型モデレーションと人間参加�
 ## <a name="next-steps"></a>次の手順
 
 * [Job API コンソール](try-review-api-job.md)を試験運用して、REST API コード サンプルを使用してください。 Visual Studio と C# に精通している場合は、[ジョブの .NET クイック スタート](moderation-jobs-quickstart-dotnet.md)も確認してください。 
-* レビューについては、[Review API コンソール](try-review-api-review.md)に関するページから始めて、REST API コード サンプルを使用してください。 次に、[レビュー の.NET クイック スタート](moderation-reviews-quickstart-dotnet.md)を参照してください。
+* レビューについては、[Review API コンソール](try-review-api-review.md)に関するページから始めて、REST API コード サンプルを使用してください。 次に、[.NET クイックスタート](dotnet-sdk-quickstart.md)のレビューに関するセクションを参照してください。
 * 動画レビューについては、[動画レビューのクイック スタート](video-reviews-quickstart-dotnet.md)を参照し、[動画レビューにトランスクリプトを追加する方法](video-transcript-reviews-quickstart-dotnet.md)に関するページを参照してください。

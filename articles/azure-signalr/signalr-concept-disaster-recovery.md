@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61402134"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747649"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -51,11 +51,11 @@ SignalR Service とアプリ サーバーを各リージョンに作成したら
 
 ### <a name="through-config"></a>config による方法
 
-環境変数/アプリの設定/web.cofig から `Azure:SignalR:ConnectionString` という名前の config エントリを通じて SignalR Service の接続文字列を設定する方法をご存知である必要があります。
+環境変数/アプリの設定/web.cofig から `Azure:SignalR:ConnectionString` という名前の config エントリで SignalR サービスの接続文字列を設定する方法をご存知のはずです。
 複数のエンドポイントがある場合は、複数の config エントリでそれらを設定してください。それぞれ次の形式で設定します。
 
 ```
-Azure:SignalR:Connection:<name>:<role>
+Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
 ここで、`<name>` はエンドポイントの名前であり、`<role>` はそのロール (プライマリまたはセカンダリ) です。
@@ -63,7 +63,7 @@ Azure:SignalR:Connection:<name>:<role>
 
 ### <a name="through-code"></a>コードによる方法
 
-どこか他の場所に接続文字列を保存したい場合は、コードからそれを読み取って、`AddAzureSignalR()` (ASP.NET Core の場合) または `MapAzureSignalR()` (ASP.NET の場合) を呼び出す際にパラメーターとして使用することもできます。
+どこか他の場所に接続文字列を保存したい場合は、コードからそれらを読み取って、`AddAzureSignalR()` (ASP.NET Core の場合) または `MapAzureSignalR()` (ASP.NET の場合) を呼び出す際にパラメーターとして使用することもできます。
 
 以下は、そのサンプル コードです。
 
@@ -87,6 +87,11 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
         new ServiceEndpoint("<connection_string2>", EndpointType.Secondary, "region2"),
     };
 ```
+
+複数のプライマリまたはセカンダリ インスタンスを構成できます。 プライマリ インスタンスまたはセカンダリ インスタンスが複数ある場合、ネゴシエートは次の順序でエンドポイントを返します。
+
+1. 少なくとも 1 つのプライマリ インスタンスがオンラインになっている場合は、ランダムなオンラインのプライマリ インスタンスを返します。
+2. すべてのプライマリ インスタンスがダウンしている場合は、ランダムなオンラインのセカンダリ インスタンスを返します。
 
 ## <a name="failover-sequence-and-best-practice"></a>フェールオーバーのシーケンスとベスト プラクティス
 

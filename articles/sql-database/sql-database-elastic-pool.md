@@ -1,5 +1,5 @@
 ---
-title: エラスティック プールを使用した複数の SQL Database の管理 | Microsoft Docs
+title: エラスティック プールを使用して複数のデータベースを管理する
 description: エラスティック プールを使用して、複数 (数百や数千) の SQL データベースを管理およびスケーリングします。 一定の価格で必要な場所にリソースを配布できます。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1b3ee75d1b24cab8211337cf1cdbd053327e16b8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876401"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823832"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL データベースの管理およびスケーリング
 
@@ -177,7 +177,7 @@ Azure Portal でエラスティック プールを作成できる方法には次
 
 Azure Portal では、エラスティック プールとそのプール内のデータベースの使用率を監視できます。 また、エラスティック プールに対して複数の変更を行い、すべての変更を同時に送信できます。 このような変更としては、データベースの追加または削除、エラスティック プールの設定の変更、データベース設定の変更などがあります。
 
-エラスティック プールの監視を開始するには、ポータルでエラスティック プールを検索して開きます。 最初に、エラスティック プールの状態の概要を示す画面が表示されます。 次のトピックがあります。
+エラスティック プールの監視を開始するには、ポータルでエラスティック プールを検索して開きます。 最初に、エラスティック プールの状態の概要を示す画面が表示されます。 これには次のものが含まれます
 
 - エラスティック プールのリソース使用率を示す監視グラフ
 - エラスティック プールに関する最近のアラートと推奨事項 (使用可能な場合)

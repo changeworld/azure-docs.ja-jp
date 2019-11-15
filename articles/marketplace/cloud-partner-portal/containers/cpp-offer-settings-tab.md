@@ -4,15 +4,16 @@ description: Azure コンテナーのオファーの設定を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: b68ace0eb6f048f94f2945b7246cce7f83a8c42c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8742f4eb6ce8f3e1b7c4b0449c2f19d8a254e5dc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942524"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823178"
 ---
 # <a name="container-offer-settings-tab"></a>コンテナーの [プランの設定] タブ
 

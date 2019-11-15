@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 730ccd7c64ac9ca87fb6da5add130feb3b6ce502
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73b99b9ebcd18e1eb5b670d0809d1f0f6cbf8f9a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201954"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582910"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、いくつかのアクションを実行して、Azure Security Center が提供するメリットを最大化する方法について説明します。 これらのアクションを実行することで、自分の Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションへの可視性を確保できると共に、複数のサブスクリプションに対してセキュリティ ポリシーを集合的に適用することで、組織のセキュリティ体制を広範囲にわたって効果的に管理することができます。
@@ -168,7 +168,7 @@ RBAC ロールがユーザーに割り当てられたら、テナント管理者
 
 
 
-## <a name="adding-subscriptions-to-a-management-groups"></a>管理グループへのサブスクリプションの追加
+## <a name="adding-subscriptions-to-a-management-group"></a>管理グループへのサブスクリプションの追加
 管理者は、自分が作成した管理グループにサブスクリプションを追加できます。 以下の手順は、テナント全体の可視性を確保し、ポリシーやアクセス権をグローバルに管理するための必須の手順ではありません。
 
 1. **[管理グループ]** で、サブスクリプションの追加先となる管理グループを選択します。

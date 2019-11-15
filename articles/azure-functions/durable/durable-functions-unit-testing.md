@@ -5,18 +5,21 @@ author: ggailey777
 manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 11/03/2019
 ms.author: glenga
-ms.openlocfilehash: 0080365853e7a9c74d3ba0e5efb06ce5a3af2a21
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 95c6afcb2f7e864da4b9b43235326a17bed785fa
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967110"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614527"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 
 単体テストは、最新ソフトウェアの開発プラクティスの重要な部分です。 単体テストでは、ビジネス ロジックの動作を確認して、今後、認識していない破壊的変更を組み入れることがないように保護します。 Durable Functions は容易に複雑になってしまうので、単体テストを導入することで、破壊的変更を回避できます。 以降のセクションでは、オーケストレーション クライアント、オーケストレーター、およびアクティビティ関数という 3 つの関数タイプを単体テストする方法について説明します。
+
+> [!NOTE]
+> この記事では、Durable Functions 1.x をターゲットにした Durable Functions アプリの単体テストに関するガイダンスを提供します。 ただし、Durable Functions 2.x で導入された変更については、まだ反映されていません。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,17 +35,17 @@ ms.locfileid: "68967110"
 
 ## <a name="base-classes-for-mocking"></a>モックの作成の基底クラス
 
-モックの作成は、Durable Functions の以下の 3 つの抽象クラスを介してサポートされます。
+モックの作成は、Durable Functions 1.x の以下の 3 つの抽象クラスを介してサポートされます。
 
-* [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)
+* `DurableOrchestrationClientBase`
 
-* [DurableOrchestrationContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContextBase.html)
+* `DurableOrchestrationContextBase`
 
-* [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html)
+* `DurableActivityContextBase`
 
-これらのクラスは、オーケストレーション クライアント、オーケストレーター、アクティビティのメソッドを定義する [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)、[DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)、[DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) の基底クラスです。 単体テストでビジネス ロジックを検証できるように、モックは、基底クラスのメソッドの予期される動作を設定します。 オーケストレーション クライアントとオーケストレーターにおけるビジネス ロジックの単体テストには、以下の 2 段階のワークフローがあります。
+これらのクラスは、オーケストレーション クライアント、オーケストレーター、およびアクティビティ メソッドを定義する `DurableOrchestrationClient`、`DurableOrchestrationContext`、および `DurableActivityContext` の基底クラスです。 単体テストでビジネス ロジックを検証できるように、モックは、基底クラスのメソッドの予期される動作を設定します。 オーケストレーション クライアントとオーケストレーターにおけるビジネス ロジックの単体テストには、以下の 2 段階のワークフローがあります。
 
-1. オーケストレーション クライアントとオーケストレーターの署名を定義するときに、具体的な実装ではなく、基底クラスを使用します。
+1. オーケストレーション クライアントとオーケストレーター関数の署名を定義するときに、具体的な実装ではなく、基底クラスを使用します。
 2. 単体テストでは、基底クラスの動作をモックして、ビジネス ロジックを検証します。
 
 オーケストレーション クライアントのバインディングとオーケストレーター トリガーのバインディングを使用する関数のテストについては、以降の説明で詳細を確認できます。
@@ -53,9 +56,9 @@ ms.locfileid: "68967110"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-単体テスト タスクでは、応答のペイロードで指定された `Retry-After` の値を検証します。 そのため、単体テストでは、予測可能な動作を確認するために、一部の [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) メソッドをモックします。
+単体テスト タスクでは、応答のペイロードで指定された `Retry-After` の値を検証します。 そのため、単体テストでは、予測可能な動作を確認するために、一部の `DurableOrchestrationClientBase` メソッドをモックします。
 
-最初に、基底クラスのモックが必要になります ([DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html))。 モックは、[DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)を実装する新しいクラスすることが可能です。 ただし、[moq](https://github.com/moq/moq4) などのモック作成のフレームワークを使用すると、プロセスが簡単になります。
+まず、基底クラスのモックである `DurableOrchestrationClientBase` が必要です。 モックは、`DurableOrchestrationClientBase` を実装する新しいクラスにすることができます。 ただし、[moq](https://github.com/moq/moq4) などのモック作成のフレームワークを使用すると、プロセスが簡単になります。
 
 ```csharp
     // Mock DurableOrchestrationClientBase
@@ -93,7 +96,6 @@ ms.locfileid: "68967110"
 ```csharp
     // Mock ILogger
     var loggerMock = new Mock<ILogger>();
-
 ```  
 
 ここで、`Run` メソッドが、以下のように単体テストから呼び出されます。
@@ -174,7 +176,7 @@ ms.locfileid: "68967110"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-また、単体テストでは、出力の形式を確認します。 単体テストでは、パラメーターの型を直接使用するか、[DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html) クラスをモックできます。
+また、単体テストでは、出力の形式を確認します。 単体テストでは、パラメーターの型を直接使用するか、`DurableActivityContextBase` クラスをモックできます。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

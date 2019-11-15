@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: c2a8c60502aeb75173371d40475b5d2875417791
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808637"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622499"
 ---
 # <a name="starter-resource-graph-queries"></a>Resource Graph の初歩的なクエリ
 
@@ -534,6 +534,6 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 ## <a name="next-steps"></a>次の手順
 
-- [クエリ言語](../concepts/query-language.md)の詳細について学習します
-- [その他のリソース](../concepts/explore-resources.md)
-- [高度なクエリ](advanced.md)のサンプルを参照してください
+- [クエリ言語](../concepts/query-language.md)の詳細について学習します。
+- [リソースを探索する](../concepts/explore-resources.md)方法について詳しく確認します。
+- [高度なクエリ](advanced.md)のサンプルを参照します。

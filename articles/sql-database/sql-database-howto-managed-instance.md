@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database マネージド インスタンスを構成する方法 | Microsoft Docs
+title: マネージド インスタンスを構成する方法
 description: Azure SQL Database マネージド インスタンスを構成して管理する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: b8c05ab05630e92e64a4885d5e6cdc6f5471dff2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568072"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811198"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database でマネージド インスタンスを作成する方法
 

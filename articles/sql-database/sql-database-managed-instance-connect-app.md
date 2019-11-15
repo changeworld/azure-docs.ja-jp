@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database Managed Instance: アプリケーションの接続 | Microsoft Docs'
+title: マネージド インスタンス接続アプリケーション
 description: この記事では、Azure SQL Database Managed Instance にアプリケーションを接続する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060661"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823393"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにアプリケーションを接続する
 

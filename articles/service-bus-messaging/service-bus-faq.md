@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278335"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748450"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
 
@@ -111,6 +111,13 @@ Service Bus の価格の詳細については、 [Service Bus の価格の詳細
 
 ### <a name="does-service-bus-charge-for-storage"></a>Service Bus ではストレージに対して課金されますか
 いいえ、Service Bus ではストレージに対して課金されません。 ただし、キューまたはトピックごとに保持できる最大データ量を制限するクォータはあります。 次の FAQ を参照してください。
+
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Service Bus Standard 名前空間があります。 リソースグループ ' $system ' に料金がされるのはなぜですか?
+Azure Service Bus は最近、課金コンポーネントをアップグレードしました。 このため、Service Bus Standard 名前空間がある場合は、リソース グループ ' $system ' の下に、リソース'/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system' の明細項目が表示されることがあります。
+
+これらの料金は、Service Bus Standard 名前空間をプロビジョニングした Azure サブスクリプションごとの基本料金を表します。 
+
+これらは新しい料金ではなく、以前の課金モデルにも存在していたことに注意する必要があります。 唯一の変更は、'$system' の下に一覧表示されるようになったことです。 これは、新しい課金システムの制約によって行われています。この制約により、特定のリソースに関連付けられていないサブスクリプション レベルの料金が "$system" リソース ID でグループ化されます。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 

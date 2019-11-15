@@ -1,26 +1,26 @@
 ---
-title: Stream Analytics を使用して Apache Kafka イベントを処理する - Azure Event Hubs | Microsoft Docs
-description: この記事では、Azure Stream Analytics を使用してイベント ハブを介して取り込まれた Kafka イベントを処理する方法について説明します。
+title: チュートリアル:Stream Analytics を使用して Apache Kafka イベントを処理する - Azure Event Hubs
+description: チュートリアル:この記事では、Azure Stream Analytics を使用してイベント ハブを介して取り込まれた Kafka イベントを処理する方法について説明します。
 services: event-hubs
 documentationcenter: ''
 author: spelluru
 manager: ''
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 0c4beede2508104fc9af934d3f9a2bbcce791292
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 7801b3252ab13df1f92e7aa5e0eba071195cb76c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626182"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720619"
 ---
-# <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
+# <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
 この記事では、データを Kafka 対応 Event Hubs にストリームし、Azure Stream Analytics で処理する方法について説明します。 次の手順について説明します。 
 
 1. Kafka 対応 Event Hubs 名前空間を作成する。
@@ -170,7 +170,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 3. `[YourInputAlias]` を前に作成した入力エイリアスに置き換えます。 
 4. ツールバーの **[保存]** を選択します。 
 
-    ![Query](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![クエリ](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行

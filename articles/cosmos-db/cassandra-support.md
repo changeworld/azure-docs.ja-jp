@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 66a972e66c35cdd5b8dedceefbe3dbd008380da9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 12df79696033e69abbf48f053c1a594be9409cda
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327157"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721117"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -96,34 +96,47 @@ Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートさ�
 
 ## <a name="cassandra-api-limits"></a>Cassandra API の制限
 
-Azure Cosmos DB の Cassandra API には、テーブルに格納されるデータのサイズに制限がありません。 パーティション キーの制限を確実に適用しながら、数百テラバイトまたはペタバイトのデータを格納することができます。 同様に、すべてのエンティティまたはまたは行に相当するものに列数の制限はありませんが、エンティティの合計サイズが 2 MB を超えることはできません。パーティション キーごとのデータは、他のすべての API の場合と同じように、10 GB を超えることはできません。
+Azure Cosmos DB の Cassandra API には、テーブルに格納されるデータのサイズに制限がありません。 パーティション キーの制限を確実に適用しながら、数百テラバイトまたはペタバイトのデータを格納することができます。 同様に、すべてのエンティティまたは同等の行に列数の制限はありません。 ただし、エンティティの合計サイズが 2 MB を超えることはできません。 他のすべての API の場合と同様に、パーティション キーあたりのデータが 10 GB を超えることはできません。
 
 ## <a name="tools"></a>ツール 
 
 Azure Cosmos DB の Cassandra API は、管理されたサービス プラットフォームです。 クラスターを管理するために、管理オーバーヘッドや、ガベージ コレクター、Java 仮想マシン (JVM)、nodetool などのユーティリティは必要ありません。 バイナリ CQLv4 互換性を利用する cqlsh などのツールをサポートしています。 
 
-* Azure portal のデータ エクスプローラー、メトリック、ログの診断、PowerShell、および cli は、アカウントを管理するためにサポートされているその他のメカニズムです。
+* Azure portal のデータ エクスプローラー、メトリック、ログの診断、PowerShell、および CLI は、アカウントを管理するためにサポートされているその他のメカニズムです。
 
 ## <a name="cql-shell"></a>CQL シェル  
 
-CQLSH コマンドライン ユーティリティは、Apache Cassandra 3.1.1 付属しており、次の環境変数が有効にするとすぐに機能します。
+CQLSH コマンドライン ユーティリティは、Apache Cassandra 3.1.1 に付属しており、いくつかの環境変数を設定することですぐに機能します。
 
-次のコマンドを実行する前に、[Baltimore ルート証明書を cacerts ストアに追加](https://docs.microsoft.com/java/azure/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store)します。 
+**Windows:**
 
-**Windows:** 
+Windows を使用している場合は、[Linux 用の Windows ファイルシステム](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)を有効にすることをお勧めします。 その後、以下の linux コマンドを実行できます。
 
-```bash
-set SSL_VERSION=TLSv1_2 
-SSL_CERTIFICATE=<path to Baltimore root ca cert>
-set CQLSH_PORT=10350 
-cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl 
-```
 **Unix/Linux/Mac:**
 
 ```bash
-export SSL_VERSION=TLSv1_2 
-export SSL_CERTFILE=<path to Baltimore root ca cert>
-cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl 
+# Install default-jre and default-jdk
+sudo apt install default-jre
+sudo apt-get update
+sudo apt install default-jdk
+
+# Import the Baltimore CyberTrust root certificate:
+curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
+keytool -importcert -alias bc2025ca -file bc2025.crt
+
+# Install the Cassandra libraries in order to get CQLSH:
+echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install cassandra
+
+# Export the SSL variables:
+export SSL_VERSION=TLSv1_2
+export SSL_VALIDATE=false
+
+# Connect to Azure Cosmos DB API for Cassandra:
+cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl
+
 ```
 
 ## <a name="cql-commands"></a>CQL コマンド
@@ -140,7 +153,8 @@ Azure Cosmos DB は、Cassandra API アカウントで以下のデータベー�
 * BATCH - unlogged コマンドのみサポートされています 
 * DELETE
 
-CQLV4 互換の SDK から実行された場合のすべての CRUD 操作で、エラーと消費された要求の単位数に関する追加情報が返されます。 プロビジョニングされたスループットの適切な使用を防ぐために、削除および更新コマンドを取り扱う際にリソース ガバナンスを考慮する必要があります。 
+CQL v4 互換の SDK から実行された場合のすべての CRUD 操作で、エラーと消費された要求の単位数に関する追加情報が返されます。 DELETE および UPDATE コマンドは、プロビジョニングされたスループットを最も効率的に使用できるように、リソース ガバナンスを考慮して処理する必要があります。
+
 * gc_grace_seconds を指定する場合は値を 0 にする必要があることに注意してください。
 
 ```csharp
@@ -151,13 +165,13 @@ foreach (string key in insertResult.Info.IncomingPayload)
         { 
             byte[] valueInBytes = customPayload[key]; 
             double value = Encoding.UTF8.GetString(valueInBytes); 
-            Console.WriteLine($“CustomPayload:  {key}: {value}”); 
+            Console.WriteLine($"CustomPayload:  {key}: {value}"); 
         } 
 ```
 
 ## <a name="consistency-mapping"></a>一貫性のマッピング 
 
-Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping)に詳しく説明されています。
+Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](consistency-levels-across-apis.md#cassandra-mapping)に詳しく説明されています。
 
 ## <a name="permission-and-role-management"></a>アクセス許可とロールの管理
 
@@ -165,7 +179,7 @@ Azure Cosmos DB は、プロビジョニングのためのロールベースの�
 
 ## <a name="keyspace-and-table-options"></a>キースペースとテーブルのオプション
 
-現在、"Create Keyspace" コマンドでのリージョン名、クラス、replication_factor、およびデータセンターのオプションは無視されます。 システムは、基になる Azure Cosmos DB の[グローバル分散](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood)レプリケーション方法を使用して、リージョンを追加します。 複数リージョンにまたがってデータが存在する必要がある場合は、PowerShell、CLI、またはポータルを使用して、アカウント レベルでこれを有効にすることができます。詳細については、[リージョンを追加する方法](how-to-manage-database-account.md#addremove-regions-from-your-database-account)に関する記事を参照してください。 Azure Cosmos DB ではすべての書き込みが持続的であることが保証されるため、Durable_writes を無効にすることはできません。 すべてのリージョンで、Azure Cosmos DB は 4 つのレプリカで構成されるレプリカ セット全体にデータをレプリケートします。このレプリカ セットの[構成](global-dist-under-the-hood.md)は変更できません。
+現在、"Create Keyspace" コマンドでのリージョン名、クラス、replication_factor、およびデータセンターのオプションは無視されます。 システムは、基になる Azure Cosmos DB の[グローバル分散](global-dist-under-the-hood.md)レプリケーション方法を使用して、リージョンを追加します。 複数リージョンにまたがってデータが存在する必要がある場合は、PowerShell、CLI、またはポータルを使用して、アカウント レベルでこれを有効にすることができます。詳細については、[リージョンを追加する方法](how-to-manage-database-account.md#addremove-regions-from-your-database-account)に関する記事を参照してください。 Azure Cosmos DB ではすべての書き込みが持続的であることが保証されるため、Durable_writes を無効にすることはできません。 すべてのリージョンで、Azure Cosmos DB は最大 4 つのレプリカで構成されるレプリカ セット全体にデータをレプリケートします。このレプリカ セットの[構成](global-dist-under-the-hood.md)は変更できません。
  
 ゼロに設定する必要がある gc_grace_seconds を除き、テーブルの作成時にはすべてのオプションが無視されます。
 キースペースとテーブルには、最小値が 400 RU/秒の、"cosmosdb_provisioned_throughput" という名前の追加オプションがあります。 キースペースのスループットによって、複数のテーブル間でスループットを共有することが可能になります。これは、プロビジョニングされたスループットがすべてのテーブルで利用されていないシナリオに役立ちます。 Alter Table コマンドを使用すると、複数のリージョン間でプロビジョニングされたスループットを変更できます。 

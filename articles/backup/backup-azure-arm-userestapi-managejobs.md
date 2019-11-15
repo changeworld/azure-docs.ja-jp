@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: REST API を使用してバックアップ ジョブを管理する'
-description: REST API を使用して Azure Backup のバックアップ ジョブと復元ジョブを管理します
+description: この記事では、REST API を使用して Azure Backup のバックアップ ジョブと復元ジョブを追跡および管理する方法について説明します。
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c0ce79c68b9d9cf11ea20c2d6469f4240fb38a95
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954911"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747542"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API を使用してバックアップ ジョブと復元ジョブを追跡する
 

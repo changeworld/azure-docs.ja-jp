@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用した MySQL からのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して MySQL からデータを移動する
 description: Azure Data Factory を使用して MySQL データベースからデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839019"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666109"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -42,10 +42,10 @@ MySQL データベースが Azure IaaS 仮想マシン (VM) でホストされ�
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で MySQL Database に接続するには、[MySQL Connector/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (バージョン 6.6.5 から 6.10.7 まで) を Data Management Gateway と同じシステムにインストールする必要があります。 この 32 ビット ドライバーは 64 ビット Data Management Gateway と互換性があります。 MySQL バージョン 5.1 以降がサポートされています。
+Data Management Gateway が MySQL Database に接続するには、Data Management Gateway と同じシステムに [MySQL Connector/NET for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (6.6.5 から 6.10.7 までのバージョン) をインストールする必要があります。 この 32 ビット ドライバーは 64 ビット Data Management Gateway と互換性があります。 MySQL バージョン 5.1 以降がサポートされています。
 
 > [!TIP]
-> エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL Connector/Net をより新しいバージョンにアップグレードすることを検討してください。
+> "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" というエラーが発生した場合は、MySQL Connector/NET をより新しいバージョンにアップグレードすることを検討してください。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
@@ -307,8 +307,8 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | BLOB |Byte[] |
 | bool |Boolean |
 | char |string |
-| date |DateTime |
-| Datetime |DateTime |
+| date |Datetime |
+| Datetime |Datetime |
 | decimal |Decimal |
 | double precision |Double |
 | Double |Double |
@@ -333,7 +333,7 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | smallint |Int16 |
 | text |string |
 | time |TimeSpan |
-| timestamp |DateTime |
+| timestamp |Datetime |
 | tinyblob |Byte[] |
 | 符号なしの tinyint |Int16 |
 | tinyint |Int16 |

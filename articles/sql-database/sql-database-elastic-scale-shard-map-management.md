@@ -1,5 +1,5 @@
 ---
-title: Azure SQL データベースをスケールアウトする | Microsoft Docs
+title: データベースのスケールアウト
 description: Elastic Database クライアント ライブラリの ShardMapManager の使用方法
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3e7e2294938179da83fb5ad03db177c1142ad096
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568335"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823557"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>シャード マップ マネージャーでデータベースをスケールアウトする
 
@@ -57,7 +57,7 @@ Elastic Scale では、シャーディング キーとして次の型がサポ�
 | long |long |
 | guid |uuid |
 | byte[]  |byte[] |
-| Datetime | timestamp |
+| datetime | timestamp |
 | TimeSpan | duration|
 | datetimeoffset |offsetdatetime |
 
@@ -69,7 +69,7 @@ Elastic Scale では、シャーディング キーとして次の型がサポ�
 
 **シャード**には、**シャードレット**が含まれます。シャードレットとシャードの間のマッピングは、シャード マップによって管理されます。 **リスト シャード マップ**は、シャードレットを識別する個々のキー値と、シャードとして動作するデータベースとの間の関連付けのことです。  **リスト マッピング**は明示的であり、異なるキー値を同じデータベースにマップすることができます。 たとえば、キー値 1 がデータベース A にマップし、キー値 3 と 6 の両方がデータベース B にマップされます。
 
-| キー | シャードの場所 |
+| Key | シャードの場所 |
 | --- | --- |
 | 1 |データベース A |
 | 3 |データベース B |
@@ -83,7 +83,7 @@ Elastic Scale では、シャーディング キーとして次の型がサポ�
 
 たとえば、 **[0, 100)** には、0 以上 100 未満のすべての整数が含まれます。 複数の範囲が同じデータベースをポイントでき、隣接していない範囲もサポートされます (たとえば、次の例の [100,200) と [400,600) は、いずれもデータベース C をポイントしています)。
 
-| キー | シャードの場所 |
+| Key | シャードの場所 |
 | --- | --- |
 | [1,50) |データベース A |
 | [50,100) |データベース B |

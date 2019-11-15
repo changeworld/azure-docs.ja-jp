@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018978"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614397"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -29,10 +29,9 @@ ms.locfileid: "69018978"
 
 ### <a name="backup-type-unsupported"></a>バックアップの種類がサポートされていません
 
-| Severity | 説明 | 考えられる原因 | 推奨される操作 |
+| 重大度 | 説明 | 考えられる原因 | 推奨される操作 |
 |---|---|---|---|
 | 警告 | このデータベースの現在の設定は、関連するポリシーに存在する特定のバックアップ タイプをサポートしていません。 | <li>マスター データベースに対して実行できるのは、データベース完全バックアップ操作だけです。 差分バックアップやトランザクション ログ バックアップは実行できません。 </li> <li>単純復旧モデルのデータベースでは、トランザクション ログのバックアップはできません。</li> | ポリシー内のバックアップ タイプがすべてサポートされるようにデータベースの設定を変更してください。 または、現在のポリシーを変更して、サポート対象のバックアップ タイプだけを含めてください。 それ以外の場合、スケジュールされたバックアップ中、サポート対象外のバックアップ タイプはスキップされるか、アドホック バックアップのバックアップ ジョブでエラーが発生します。
-
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -83,7 +82,7 @@ ms.locfileid: "69018978"
 |---|---|---|
 | データベースをオフラインにできないため、復元に失敗しました。 | 復元の実行中は、ターゲット データベースをオフラインにする必要があります。 Azure Backup は、このデータをオフラインにできません。 | Azure portal のエラー メニューで追加情報を使用して、根本原因を絞り込んでください。 詳細については [SQL Server のドキュメント](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)を参照してください。 |
 
-###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
+### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
@@ -94,7 +93,6 @@ ms.locfileid: "69018978"
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードである場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 別の復旧時点を選択してください。 [詳細情報](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))。
-
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -130,8 +128,7 @@ ms.locfileid: "69018978"
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 通常、このエラーが発生するのは、ポリシーの変更や自動保護などの大規模な操作が発生した場合です。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決することはできません。実際、Azure Backup サービスでは、対象のすべての項目について内部的に操作が再試行されます。<br> 例: ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。 
-
+コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 このエラーは通常、ポリシーの変更や自動保護などの大規模な操作がある場合に発生します。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決することはできません。実際、Azure Backup サービスでは、対象のすべての項目について内部的に操作が再試行されます。<br> 例: ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。
 
 ## <a name="re-registration-failures"></a>再登録エラー
 
@@ -150,14 +147,14 @@ ms.locfileid: "69018978"
 
 これらの兆候は、次の 1 つ以上の理由によって発生する可能性があります。
 
-* 拡張機能がポータルから削除またはアンインストールされた。 
+* 拡張機能がポータルから削除またはアンインストールされた。
 * VM の **[コントロール パネル]** の **[プログラムのアンインストールと変更]** で拡張機能がアンインストールされた。
 * VM がインプレース ディスク復元を使用して時間内に復元された。
 * VM が長期間シャットダウンされたため、その拡張機能構成の期限が切れた。
 * VM が削除され、削除された VM と同じ名前で同じリソース グループに別の VM が作成された。
 * 可用性グループ ノードのいずれかが、完全なバックアップ構成を受信しなかった。 これは、可用性グループがコンテナーに登録されるか、新しいノードが追加されると発生する場合があります。
 
-前のシナリオにおいて、VM で再登録操作をトリガーすることをお勧めします。 現時点では、このオプションは PowerShell を通じてのみ使用できます。
+前のシナリオにおいて、VM で再登録操作をトリガーすることをお勧めします。 PowerShell でこのタスクを実行する方法については、[こちら](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup)をご覧ください。
 
 ## <a name="size-limit-for-files"></a>ファイルのサイズ制限
 
@@ -188,6 +185,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 復元操作時に、データベース ファイルと、ターゲット復元のパスとのマッピングが含まれる JSON ファイルを配置することで、ターゲット復元ファイルのパスをオーバーライドできます。 `database_name.json` ファイルを作成し、*C:\Program Files\Azure Workload Backup\bin\plugins\SQL* の場所に配置します。
 
 このファイルの内容は、次の形式である必要があります。
+
 ```json
 [
   {
@@ -227,7 +225,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"
   ```
-
 
 このファイルは、復元操作をトリガーする前に配置する必要があります。
 

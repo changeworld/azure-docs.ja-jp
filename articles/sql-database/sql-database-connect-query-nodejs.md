@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Node.js を使用して Azure SQL データベースに照会する
+title: クイック スタート:Node.js を使用してクエリを実行する
 description: Azure SQL データベースに接続して T-SQL ステートメントでデータベースに照会するプログラムを Node.js で作成する方法。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 4d9c3954aea5fe64439190a2a0886fd8300c4cf9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b996b380195b8b339424c8d716c139072a98303f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178046"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827030"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>クイック スタート:Node.js を使用して Azure SQL データベースに照会する
 

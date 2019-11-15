@@ -1,5 +1,5 @@
 ---
-title: BACPAC ファイルをインポートして Azure SQL データベースを作成する | Microsoft Docs
+title: BACPAC ファイルをインポートしてデータベースを作成する
 description: BACPAC ファイルをインポートして新しい Azure SQL Database を作成します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 5e0f3ccafa449cc431166d5b4bd4135a1d1ac97c
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: b6b2366a10f38c1938e5ecc09f77271db04dcbc4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675879"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810502"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>クイック スタート:BACPAC ファイルを Azure SQL Database 内のデータベースにインポートする
 

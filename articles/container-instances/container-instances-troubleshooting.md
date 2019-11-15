@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166469"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601309"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -206,9 +206,9 @@ Azure Container Instances は、コンテナー グループをホストする�
 
 Azure Container Instances では、通常の Docker 構成のようなポート マッピングはまだサポートされていません。 コンテナー グループの IP アドレスにアクセスできるはずの場合にアクセスできない場合は、`ports` プロパティを使用してコンテナー グループで公開しているのと同じポートをリッスンするようにコンテナー イメージを構成してください。
 
-ご自分のコンテナー イメージで構成したポートで Azure Container Instances がリッスンできることを確認したい場合は、ポートを公開する `aci-helloworld` イメージのデプロイをテストします。 さらに、このポートでリッスンするように `aci-helloworld` アプリを実行します。 `aci-helloworld` はオプションの環境変数 `PORT` を受け取り、既定のリッスン ポート 80 を上書きします。 たとえば、ポート 9000 をテストするには:
+ご自分のコンテナー イメージで構成したポートで Azure Container Instances がリッスンできることを確認したい場合は、ポートを公開する `aci-helloworld` イメージのデプロイをテストします。 さらに、このポートでリッスンするように `aci-helloworld` アプリを実行します。 `aci-helloworld` はオプションの環境変数 `PORT` を受け取り、既定のリッスン ポート 80 を上書きします。 たとえば、ポート 9000 をテストするには、コンテナー グループを作成するときに[環境変数](container-instances-environment-variables.md)を設定します。
 
-1. コンテナー グループがポート 9000 を公開するよう設定し、ポート番号を環境変数の値として渡します。
+1. ポート 9000 を公開するようにコンテナー グループを設定し、そのポート番号を環境変数の値として渡します。 この例は、Bash シェル用に書式設定されています。 PowerShell やコマンド プロンプトなどの別のシェルを使用する場合は、それに応じて変数の代入を調整する必要があります。
     ```azurecli
     az container create --resource-group myResourceGroup \
     --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \

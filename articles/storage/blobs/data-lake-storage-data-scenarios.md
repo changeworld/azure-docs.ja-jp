@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d6347d75e0a3883f23fdf76016080c8b7b330163
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300337"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580805"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -27,7 +27,7 @@ ms.locfileid: "72300337"
 
 最初に、ストレージ アカウントとコンテナーを作成します。 次に、データへのアクセス権を付与します。 この記事の最初の数セクションは、これらのタスクを実行するのに役立ちます。 残りのセクションでは、各処理フェーズのオプションとツールに注目します。
 
-Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な一覧については、「[Integrate Azure Data Lake Storage with Azure services](data-lake-store-integrate-with-azure-services.md)」 (Azure Data Lake Storage と Azure サービスを統合する) を参照してください
+Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な一覧については、「[Integrate Azure Data Lake Storage with Azure services](data-lake-storage-integrate-with-azure-services.md)」 (Azure Data Lake Storage と Azure サービスを統合する) を参照してください
 
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2 アカウントを作成する
 
@@ -191,7 +191,7 @@ Data Lake Storage Gen2 に格納されているデータに対してデータ分
 
 * アプリケーション プロトタイプの作成中に IDE 環境で処理するために、ローカル コンピューターにデータをダウンロードする。
 
-![Data Lake Storage Gen2 からデータを出力する](./media/data-lake-storage-data-scenarios/egress-data.png "Data Lake Storage Gen2 からデータを出力する")
+![Data Lake Storage Gen2 からデータを送信する](./media/data-lake-storage-data-scenarios/egress-data.png "Data Lake Storage Gen2 からデータを送信する")
 
 Data Lake Storage Gen2 からのデータのダウンロードに使用できるツールの一覧を次に示します。
 

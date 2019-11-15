@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Managed Instance のビルトイン ファイアウォールを理解する | Microsoft Docs
+title: Managed Instance のビルトイン ファイアウォールを検出する
 description: Azure SQL Database Managed Instance のビルトイン ファイアウォールの保護機能を検証する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: c98b0fd5669140559b4840e157394c2e8c6086ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 555ef56aafa37a1e1d384f945b04f9237adc5f7d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567432"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821814"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>Managed Instance のビルトイン ファイアウォールを検証する
 

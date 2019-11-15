@@ -1,5 +1,5 @@
 ---
-title: 高速データベース復旧 - Azure SQL Database | Microsoft Docs
+title: 高速データベースの復旧
 description: Azure SQL Database には、Azure SQL Database の単一データベースとプールされたデータベース、Azure SQL Data Warehouse のデータベースを対象に、高速で一貫性のあるデータベース復旧、瞬間的なトランザクションのロールバック、積極的なログの切り捨てを提供する新しい機能があります。
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eff81693ff4c34dc00f66e9e5ea22e56d3ff9d77
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569632"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808084"
 ---
 # <a name="accelerated-database-recovery"></a>高速データベース復旧
 
@@ -99,11 +99,11 @@ ADR には次の 4 つの主要コンポーネントがあります。
 
 - **論理復元**
 
-  論理復元は、バージョン ベースの復元を行レベルで実行するための非同期プロセスです。トランザクションのロールバックを瞬時に実行し、バージョン管理されているすべての操作を元に戻すことができます。
+  論理復元は、バージョン ベースの復元を行レベルで実行するための非同期プロセスです。トランザクションのロールバックを瞬時に実行し、バージョン管理されているすべての操作を元に戻すことができます。 論理復元は、次の方法で行われます。
 
-  - 中止されたすべてのトランザクションを追跡できます
-  - すべてのユーザー トランザクションに対し、PVS を使ってロールバックを実行できます
-  - トランザクションの中止後すぐに、すべてのロックを解除できます
+  - 中止されたすべてのトランザクションを追跡し、それらを他のトランザクションから参照できなくします。 
+  - トランザクション ログを物理的にスキャンして変更を一度に 1 つずつ元に戻すのではなく、すべてのユーザー トランザクションに対して PVS を使用してロールバックを実行します。
+  - トランザクションの中止直後にすべてのロックを解除します。 中止はメモリ内の変更をマークするだけなので、プロセスは非常に効率的です。そのため、ロックを長時間保持する必要がありません。
 
 - **sLog**
 

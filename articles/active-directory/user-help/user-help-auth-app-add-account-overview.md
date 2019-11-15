@@ -1,6 +1,6 @@
 ---
-title: Microsoft Authenticator アプリへのアカウント追加に関する概要 - Azure Active Directory | Microsoft Docs
-description: 2 要素認証のために Microsoft Authenticator アプリに自分の仕事用アカウントと個人用アカウントを追加する方法に関する概要。
+title: 認証アプリへのアカウント追加に関する概要 - Azure AD
+description: 2 要素認証のために Microsoft Authenticator アプリに自分の仕事用アカウントと個人用アカウントを追加する方法に関するコンテンツへのリンク。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d16699729e62953cb2369f39ecfe759aab663caf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 16244be7dee9faaa15105f9dc0ac6c074230d243
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382651"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820279"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリへのアカウント追加に関する概要
 
@@ -43,7 +43,7 @@ Microsoft Authenticator アプリは次のような複数の方法で使用で�
 | 職場または学校アカウント | alain@contoso.com のように、職場や学校などの組織から提供されたアカウント。 |
 | 個人用アカウント | Outlook.com、Xbox LIVE、Google、Facebook 用など、個人的に開設した Microsoft および Microsoft 以外のアカウント。 |
 
-## <a name="in-this-section"></a>このセクションの内容
+## <a name="articles-about-how-to-add-different-accounts"></a>異なるアカウントを追加する方法に関する記事
 
 | 記事 |説明 |
 | ------|------------|

@@ -1,6 +1,6 @@
 ---
-title: セキュリティ情報 (プレビュー) のメソッドと情報の変更に関する概要 - Azure Active Directory | Microsoft Docs
-description: 2 要素認証およびセルフサービスのパスワード リセットに対するセキュリティ情報メソッドを追加、更新、および削除する方法についての概要です。
+title: セキュリティ情報の変更に関する概要 (プレビュー) - Azure AD
+description: 2 要素認証およびセルフサービスのパスワード リセットに対するセキュリティ情報メソッドを追加、更新、および削除する方法に関する記事にリンクしています。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bcef64c8bf8c2b52e5cc5d954de933d830ba4c1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b781cd30bc5f63199ef9bff45670fa618e2ca17
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382890"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803816"
 ---
 # <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>セキュリティ情報 (プレビュー) のメソッドと情報の変更に関する概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "68382890"
 
 セキュリティ情報メソッドは、2 要素認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
 
-| Method | 使用対象 |
+| 方法 | 使用対象 |
 | ------ | -------- |
 | Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
 | テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |

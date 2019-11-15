@@ -1,5 +1,5 @@
 ---
-title: セキュリティ キーを使用するようにセキュリティ情報を設定する (プレビュー) - Azure Active Directory | Microsoft Docs
+title: セキュリティ キー用のセキュリティ情報 (プレビュー) を設定する - Azure AD
 description: Fast Identity Online (FIDO2) セキュリティ キーを使用して本人確認をするようにセキュリティ情報を設定する方法です。
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160711"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803790"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>セキュリティ キーを使用するようにセキュリティ情報を設定する (プレビュー)
+# <a name="set-up-security-info-preview-for-a-security-key"></a>セキュリティ キー用のセキュリティ情報 (プレビュー) を設定する
 
 セキュリティ キーは、組織内でパスワードなしのサインイン方法として使用できます。 セキュリティ キーは、職場または学校アカウントにサインインするために一意の PIN と共に使用される物理デバイスです。 セキュリティ キーを使用するには、物理デバイスと自分だけが知る情報が必要となります。このため、ユーザー名とパスワードよりも強力な認証方法と見なされています。
 

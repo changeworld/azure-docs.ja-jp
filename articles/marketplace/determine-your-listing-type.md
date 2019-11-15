@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 49723a80bb198e8151c7e85a90453183068c9d2b
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 967d33cb7a9eb3ec922f9d85cfc2581b85bce537
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962818"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825904"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 オファーに対して選択する公開オプションは、適格性の要件とマーケットプレースの GTM 特典の両方に直接関係しています。 さらに重要なこととして、公開オプションとオファーの種類の選択によって、ユーザーがマーケットプレースのオファーをどのように扱うかが定義されます。
@@ -31,7 +32,7 @@ ms.locfileid: "70962818"
 
 ## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>ソリューションのネットショップ、公開オプション、およびオファーの種類の選択
 
-公開オプションを選択する前に、マーケットプレースのソリューション、アプリ、およびサービスに対するネット ショップの適格性の要件を理解しておくことが重要です。
+公開オプションを選択する前に、マーケットプレースのソリューション、アプリ、およびサービスに対するネットショップの適格性の要件を理解しておくことが重要です。
 
 **Azure Marketplace** のアプリケーションは、Azure 上または Azure 用に構築された、IT または開発者向けの技術的な "構成要素" ソリューションです。 Azure Marketplace コンサルティング サービスは、お客様が Azure の使用を開始または促進するために役立つプロフェッショナル サービスです。
 
@@ -54,7 +55,7 @@ ms.locfileid: "70962818"
 | **リスト** | アプリケーションまたはサービスのシンプルな一覧表示です。これにより、マーケットプレース ユーザーは "**問い合わせ**" という行動喚起を通じてお客様に連絡を取るよう依頼できます。 |
 | **試用版** | マーケットプレースを使用して、ソリューションを見つけやすくし、ソリューションの試用版のプロビジョニングを自動化します。これにより、見込みユーザーは SaaS、IaaS、または Microsoft のアプリを購入前の一定の期間、無料で試用できます。 試用版公開オプションに使用される行動喚起は、**無料試用版**または**体験版**です。 |
 |**BYOL**  |マーケットプレースを使用して、ソリューションを見つけやすくし、ソリューションのプロビジョニングを自動化し、金融取引を個別に完了します。 BYOL オファーの種類は、オンプレミスからクラウドへの移行に最適です。 行動喚起は、**今すぐ入手する**です。
-| **トランザクション** | お客様が**今すぐ入手する**という行動喚起を選択すると、アプリケーションが Azure 上で実行され、お客様の Azure サブスクリプションに直接リソースとしてプロビジョニングできます。 オプションとして、ソフトウェア ライセンスを購入し、お客様が選択した支払い方法と条件で料金を請求できます。また、**無料のソフトウェア試用版**への期間限定のアクセス権を提供できます (Azure Marketplace の場合のみ)。 |
+| **トランザクション** | お客様が**今すぐ入手する**という行動喚起を選択すると、アプリケーションが Azure 上で実行され、お客様の Azure サブスクリプションに直接リソースとしてプロビジョニングできます。 オプションとして、ソフトウェア ライセンスの購入が可能であり、お客様が選択した支払い方法と条件で料金を請求できます。また、**無料のソフトウェア試用版**への期間限定のアクセス権を提供できます (Azure Marketplace の場合のみ)。 |
 
 >[!Note]
 >トランザクション公開オプションを使用する場合は、オファーの種類を選択してオファーを作成する前に、価格、課金、請求、および支払いに関する考慮事項を理解することが重要です。 詳細については、[マーケットプレースでの課金と販売に関する考慮事項](./marketplace-commercial-transaction-capabilities-and-considerations.md)に関する記事を確認してください。

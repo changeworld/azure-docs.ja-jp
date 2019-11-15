@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps からオンプレミスのデータ ソースにアクセスする
-description: オンプレミス データ ゲートウェイを作成することによって、ロジック アプリからオンプレミスのデータ ソースに接続する
+title: オンプレミスのデータ ソースにアクセスする - Azure Logic Apps
+description: Azure オンプレミス データ ゲートウェイ リソースを作成することによって、Azure Logic Apps からオンプレミスのデータ ソースに接続する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 4b333df740fbd4c2243ea3f166593ca0a6f4bbad
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.date: 11/06/2019
+ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675671"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796248"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -28,8 +28,8 @@ ms.locfileid: "72675671"
 他のサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
 * [Microsoft Power BI オンプレミス データ ゲートウェイ](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft Flow オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
-* [Microsoft PowerApps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Power Automate オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Microsoft Power Apps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>
@@ -57,7 +57,7 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
 
 * 既に[ローカル コンピューターにオンプレミス データ ゲートウェイをインストール](../logic-apps/logic-apps-gateway-install.md)している。
 
-* そのデータ ゲートウェイをインストールするときに使用されたのと[同じ Azure アカウントとサブスクリプション](../logic-apps/logic-apps-gateway-install.md#requirements)がある。
+* そのデータ ゲートウェイをインストールするときに使用されたのと[同じ Azure アカウントとサブスクリプション](../logic-apps/logic-apps-gateway-install.md#requirements)を使用している。 この Azure アカウントは、1 つの [Azure Active Directory (Azure AD) テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)に属している必要があります。
 
 * ゲートウェイ インストールがまだ登録されておらず、別の Azure ゲートウェイ リソースによって要求されていない。
 
@@ -77,7 +77,7 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
 
 1. **[オンプレミスのデータ ゲートウェイ]** で、 **[追加]** を選択します。
 
-   ![データ ゲートウェイの追加](./media/logic-apps-gateway-connection/add-gateway.png)
+   ![データ ゲートウェイ用の新しい Azure リソースを追加する](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
 1. **[接続ゲートウェイの作成]** で、ゲートウェイ リソースに関する情報を指定します。 完了したら **[作成]** を選択します。
 
@@ -87,12 +87,12 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
    | **サブスクリプション** | ゲートウェイのインストールに使用された、Azure アカウントの Azure サブスクリプションを選択します。 既定のサブスクリプションは、サインインするために使用した Azure アカウントに基づきます。 |
    | **リソース グループ** | 使用する [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md) |
    | **Location** | [ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md)中にゲートウェイ クラウド サービス用に選択されたのと同じリージョンまたは場所。 それ以外の場合、ゲートウェイのインストールは、 **[インストール名]** の一覧に表示されません。 ロジック アプリの場所は、ゲートウェイ リソースの場所とは異なる場合があります。 |
-   | **インストール名** | これらの条件が満たされた場合にのみ一覧に表示される、ゲートウェイのインストールを選択します。 <p><p>- 作成するゲートウェイ リソースと同じリージョンに存在する <br>- 別の Azure ゲートウェイ リソースとのリンクが解除されている <br>- ゲートウェイ リソースの作成に使用しているのと同じ Azure アカウントにリンクされている <p><p>詳細については、「[よく寄せられる質問](#faq)」セクションを参照してください。 |
+   | **インストール名** | これらの条件が満たされた場合にのみ一覧に表示される、ゲートウェイのインストールを選択します。 <p><p>- ゲートウェイのインストールが、作成するゲートウェイ リソースと同じリージョンを使用する。 <br>- ゲートウェイのインストールが、別の Azure ゲートウェイ リソースにリンクされていない。 <br>- ゲートウェイのインストールが、ゲートウェイ リソースの作成に使用しているものと同じ Azure アカウントにリンクされている。 <br>- Azure アカウントが、1 つの [Azure Active Directory (Azure AD) テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)に属しており、ゲートウェイのインストールに使用されたものと同じアカウントである。 <p><p>詳細については、「[よく寄せられる質問](#faq)」セクションを参照してください。 |
    |||
 
    ゲートウェイ リソースと同じリージョンにあり、同じ Azure アカウントにリンクされているゲートウェイのインストール例を以下に示します。
 
-   ![データ ゲートウェイ リソースを作成するための詳細を指定する](./media/logic-apps-gateway-connection/gateway-details.png)
+   ![データ ゲートウェイ リソースを作成するための詳細を指定する](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -155,7 +155,7 @@ Azure サブスクリプションに関連付けられているすべての API 
 
    例:
 
-   ![ゲートウェイの削除](./media/logic-apps-gateway-connection/gateway-delete.png)
+   ![Azure でゲートウェイ リソースを削除する](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 
 <a name="faq"></a>
 
@@ -164,7 +164,7 @@ Azure サブスクリプションに関連付けられているすべての API 
 **Q**: Azure でゲートウェイ リソースを作成するときにゲートウェイ インストールが表示されないのはなぜですか? <br/>
 **A**: この問題は、次の理由で発生することがあります。
 
-* Azure アカウントは、ローカル コンピューター上のゲートウェイのインストールにリンクされているものと同じアカウントである必要があります。 ゲートウェイのインストールにリンクされているものと同じ ID を使用して、Azure portal にサインインしていることを確認してください。
+* Azure アカウントは、ローカル コンピューター上のゲートウェイのインストールにリンクされているものと同じアカウントである必要があります。 ゲートウェイのインストールにリンクされているものと同じ ID を使用して、Azure portal にサインインしていることを確認してください。 また、Azure アカウントが 1 つの [Azure AD テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)に属しており、ゲートウェイのインストール中に使用されたものと同じ Azure AD テナントまたはディレクトリに設定されていることを確認してください。
 
 * ゲートウェイ リソースとゲートウェイのインストールでは、同じリージョンを使用する必要があります。 しかし、ロジック アプリの場所は、ゲートウェイ リソースの場所とは異なる場合があります。
 

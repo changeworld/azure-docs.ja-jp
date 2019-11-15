@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: pabutler
-ms.openlocfilehash: 0aa7cec4dcdb480555cd0ecb7dee8d00a5a9ec2c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 060856cd43b978cec58ab08e1bb5b524bc2a4285
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870842"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822961"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 
@@ -57,7 +58,7 @@ ms.locfileid: "67870842"
 | 4 | ネットショップの詳細:オファーの概要 | これはアプリの検索ページに表示される (最大 100 文字) | |
 | 5 | ネットショップの詳細:業界 | 業界 (最大 2):アプリに最もよく当てはまり、アプリを適用できる業界を選択します。 | |
 | 6 | オファーの説明 | <br>• 単純な HTML を使用可能 (p、em、ul、li、ol、ヘッダー タグなど)。 最大 3,000 文字。 <br>•  2 ～ 3 段落 <br>•    ソリューション オファリングが一目で簡単に理解できる <br>•    説明は包括的で、対象ユーザー*、ユーザーの種類、それが役立つ理由などを捉えている (価値提案) <br>• オファーの説明が、段落形式の、理解しやすい短文での語り口になっている。 | <br>•   対象業界がおおよそ示されている (適切な場合) <br>• 各段落の見出しが、後続の内容をまとめた 1 つの文または語句になっている適切なスタイルで書式設定されていて、主なメリットを強調する箇条書き記号が含まれる (適切な場合)。 ここでの目的は、見やすい形式で読者が一目でオファーのことを理解し、複数の段落を読まずに済むようにすることです。 <br>• 各段落の間にスペースがあり、車のパンフレットのように読める。 技術的な特徴やコードの専門用語ではなく、簡単な言葉でオファーを説明していて、多くの情報を含むことを意味します。 | 
-| 7 | マーケティングの成果物 | ロゴが正しく表示される | <br>• ロゴに、Azure Portal での大判イメージである "ヒーロー イメージ" が含まれている <br>• ロゴ:小 (48 x 48) と大 (216 x 216) が必須です <br>•   ヒーロー イメージの要件: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish <br>• スクリーンショット (最大 5):CPP には解像度 1280 x 720 の .png イメージが必要です。 |
+| 7 | マーケティングの成果物 | ロゴが正しく表示される | <br>• ロゴに、Azure portal での大判イメージである "ヒーロー イメージ" が含まれている <br>• ロゴ:小 (48 x 48) と大 (216 x 216) が必須です <br>•   ヒーロー イメージの要件: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish <br>• スクリーンショット (最大 5):CPP には解像度 1280 x 720 の .png イメージが必要です。 |
 | 8 | カテゴリと業界 | <br>•   カテゴリが、ソリューション オファリングの機能と一致している <br>• ポップアップ ボックスから少なくとも 1 つの項目を選択する必要がある <br>•   ソリューションが適合しないカテゴリまで広げない <br>•    最適な業界、またはすべての業界が選択されている (最適な業界でない場合) <br>•   ソリューションが適合しないカテゴリまで広げない <br>•    最適な業界、またはすべての業界が選択されている (最適な業界でない場合) | 最大 3 つのカテゴリを選択 (該当する場合) |
 | 9 | 見込み客管理 | 潜在顧客を保存するシステムを選択する。 CRM システムを接続する方法については[ここ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)を参照 |  |
 | 10 | 連絡先:ソリューションのサポートとヘルプ | <br>• Engineering Contact (エンジニアリング連絡先):アプリのエンジニアリング関連の連絡先の名前を入力します。 この連絡先が、Microsoft から技術的な通信を受け取ることになります。<br>• Engineering Contact (エンジニアリング連絡先の電子メール):アプリのエンジニアリング関連の連絡先のメール アドレスを入力します。<br>• Engineering Contact (エンジニアリング連絡先の電話):エンジニアリング関連の電話番号を入力します。 ISO の電話番号表記がサポートされています。詳細については https://en.wikipedia.org/wiki/E.123 を参照してください。<br>• サポートの連絡先名:アプリのサポート連絡先の名前を入力します。 この連絡先が、Microsoft からサポート関連の通信を受け取ることになります。<br>• サポートの連絡先の電子メール:アプリのサポート連絡先のメール アドレスを入力します。 <br>• サポートの連絡先の電話:サポート連絡先の電話番号を入力します。 ISO の電話番号表記がサポートされています。詳細については https://en.wikipedia.org/wiki/E.123 を参照してください。 <br>• サポート URL:サポート ページへの URL を入力します。 | <br>•    示したサポート方法すべて: 電話と電子メールでのサポート。 <br>•    試用版や体験版の期間中は有料サポートを無料で提供 |
@@ -71,7 +72,7 @@ ms.locfileid: "67870842"
 |:--- |:--- |:--- |:--- |
 |1 |プラン設定 | <br>• オファーID:最大 50 文字 <br>• パブリッシャー ID:ドロップダウンから選択します <br>• 名前:最大 50 文字 | 説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。 | 
 | 2 | SKU | パートナーが新しい SKU をクリックする| 説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。  |
-| 3 | Marketplace の成果物 | ロゴが正しく表示される |<br>• ロゴに、Azure Portal での大判イメージである "ヒーロー イメージ" が含まれている <br>• ロゴ:小 (48 x 48) と大 (216 x 216) が必須です <br>• ヒーロー イメージの要件: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• スクリーンショット (最大 5):CPP には解像度 1280 x 720 の .png イメージが必要です。|
+| 3 | Marketplace の成果物 | ロゴが正しく表示される |<br>• ロゴに、Azure portal での大判イメージである "ヒーロー イメージ" が含まれている <br>• ロゴ:小 (48 x 48) と大 (216 x 216) が必須です <br>• ヒーロー イメージの要件: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• スクリーンショット (最大 5):CPP には解像度 1280 x 720 の .png イメージが必要です。|
 | 4 | 見込み客管理 |<br>• 見込み客管理:潜在顧客を保存するシステムを選択する。 <br>•   CRM システムを接続する方法については[ここ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)を参照 | |
 
 ---
@@ -81,7 +82,7 @@ ms.locfileid: "67870842"
 |  | 掲載する要素 | 基本要件 | 最適な要件 |
 |:--- |:--- |:--- |:--- |
 | 1 | オファーのタイトル  |  <br>• サービスの種類と期間を次の形式で明確に示す必要がある:名前 :期間の種類。 (例: "オファー エンゲージメント:1 週間の概念実証")  | <br>• パブリッシャー名は繰り返さない <br>•  説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。 | 
-| 2 | オファーの説明  |<br>• [Microsoft の製品名](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)が適切に使用されるようにする <br>• 価格で区分したオファー:概算では、オファーの上部または下部のいずれかに、変動要因 (クライアントへの移動費、移行されるサーバー数など) を説明する注記を付ける必要があります <br>• オファーの種類ごとに、次のような説明の要件がある。 <ul><br>o 簡単な説明には、簡単な説明で取り上げられるトピックに関する情報の箇条書きが少なくとも 4 ～ 5 つ必要 </ul> <ul><br>o すべてワーク ショップに議題が必要 </ul><ul><br>o ワークショップの期間に応じて、すべての議題を日単位または週単位で分けする必要がある </ul><ul><br>o 評価、POC、トレーニング以外のワーク ショップ、実装のオファーには成果物が必要 </ul><ul><br>o トレーニング ワーク ショップには、成果物は不要だが、取り上げられるトピックを示したより詳細な議題が必要。 | <br>•  どのオファーにも議題と成果物がある <br>•  オファーの最上部セクションに、サービスを提供する企業に関する状況を示した段落が含まれる <br>•  オファーの最上部セクションとして、サービス自体の価値に関する段落が含まれる |
+| 2 | オファーの説明  |<br>• [Microsoft の製品名](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)が適切に使用されるようにする <br>• 価格で区分したオファー:概算では、オファーの上部または下部のいずれかに、変動要因 (クライアントへの移動費、移行されるサーバー数など) を説明する注記を付ける必要があります <br>• オファーの種類ごとに、次のような説明の要件がある。 <ul><br>o 簡単な説明には、簡単な説明で取り上げられるトピックに関する情報の箇条書きが少なくとも 4 ～ 5 つ必要 </ul> <ul><br>o すべてワーク ショップに議題が必要 </ul><ul><br>o ワークショップの期間に応じて、すべての議題を日単位または週単位で分けする必要がある </ul><ul><br>o 評価、POC、トレーニング以外のワーク ショップ、実装のオファーには成果物が必要 </ul><ul><br>o トレーニング ワークショップには、成果物は不要だが、取り上げられるトピックを示したより詳細な議題が必要。 | <br>•  どのオファーにも議題と成果物がある <br>•  オファーの最上部セクションに、サービスを提供する企業に関する状況を示した段落が含まれる <br>•  オファーの最上部セクションとして、サービス自体の価値に関する段落が含まれる |
 | 3 | Markdown 書式設定  | すべてのオファーで、HTML への変換時にオファーが正しくレンダリングされるように Markdown 書式設定を使用する必要がある  |  |
 | 4 | カテゴリと業界 | カテゴリは関係がない |  | 
 | 5 | 一覧の状態 (CTA) | 自動的に [お問い合わせ] と表示される |  | 

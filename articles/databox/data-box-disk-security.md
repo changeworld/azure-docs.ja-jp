@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure Data Box Disk の概要 | Microsoft Docs in data
-description: 大量のデータを Azure に転送できるクラウド ソリューションである Azure Data Box Disk について説明します。
+title: Microsoft Azure Data Box Disk のセキュリティ機能 | Microsoft Docs in data
+description: 大量のデータを Azure に転送できるクラウド ソリューションの Azure Data Box Disk で実装されているセキュリティ機能について説明します
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093458"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606576"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk のセキュリティとデータ保護
 
@@ -73,11 +73,11 @@ Azure Data Box Disk は、同サービスにおける次の主要なインスタ
 
   - 連絡先の名前
   - 電話番号
-  - 電子メール
+  - Email
   - 番地
   - City
   - 郵便番号
-  - 状態
+  - State
   - 国/地方/地域
   - ドライブ ID
   - 運送業者のアカウント番号

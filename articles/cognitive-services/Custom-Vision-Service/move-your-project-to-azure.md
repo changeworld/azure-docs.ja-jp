@@ -1,7 +1,7 @@
 ---
 title: 期間限定試用版プロジェクトを Azure に移行する
 titleSuffix: Azure Cognitive Services
-description: 期間限定試用版プロジェクトを Azure に移行する方法について説明します。
+description: Custom Vision に期間限定試用版プロジェクトはありましたか? この記事では、移行スクリプトを使用して Azure に移動する方法について説明します。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 22c3767dfac1e377890f1e01517d18263e694854
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0a2b48a6c046150f6e685ecda0c0d765342e0194
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560924"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818943"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>期間限定試用版のプロジェクトを Azure に移行する方法
 
@@ -46,7 +46,7 @@ Azure で Custom Vision Service を使用するには、[Azure Portal](https://p
 
 ## <a name="find-your-limited-trial-project-information"></a>期間限定試用版プロジェクト情報を検索する
 
-プロジェクトを移行するには、移行対象のプロジェクトの "_プロジェクト ID_" と "_トレーニング キー_" が必要です。 この情報がわからない場合は、[https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) にアクセスして各プロジェクトの ID とキーを取得します。 
+プロジェクトを移行するには、移行対象のプロジェクトの "_プロジェクト ID_" と "_トレーニング キー_" が必要です。 この情報がわからない場合は、[https://www.customvision.ai/projects](https://www.customvision.ai/projects) にアクセスして各プロジェクトの ID とキーを取得します。 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Python サンプル コードを使用してプロジェクトを Azure にコピーする
 

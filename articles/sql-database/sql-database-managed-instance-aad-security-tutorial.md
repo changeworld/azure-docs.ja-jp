@@ -1,20 +1,20 @@
 ---
-title: Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database マネージド インスタンスのセキュリティ | Microsoft Docs
+title: Azure AD サーバー プリンシパル (ログイン) によるマネージド インスタンスのセキュリティ
 description: Azure SQL Database のマネージド インスタンスをセキュリティで保護し、Azure AD サーバー プリンシパル (ログイン) を使用するための手法と機能について説明します
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: tutorial
-author: VanMSFT
-ms.author: vanto
-ms.reviewer: carlrab
-ms.date: 02/20/2019
-ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+author: GitHubMirek
+ms.author: mireks
+ms.reviewer: vanto
+ms.date: 11/06/2019
+ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231004"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822786"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
 
@@ -36,9 +36,6 @@ ms.locfileid: "70231004"
 > - Azure AD ユーザーでデータベース間クエリを使用する
 > - 脅威の防止、監査、データ マスク、暗号化などのセキュリティ機能について学習する
 
-> [!NOTE]
-> マネージド インスタンスの Azure AD サーバー プリンシパル (ログイン) は、**パブリック プレビュー**段階にあります。
-
 詳細については、[Azure SQL Database マネージド インスタンスの概要](sql-database-managed-instance-index.yml)と[機能](sql-database-managed-instance.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -57,22 +54,21 @@ ms.locfileid: "70231004"
 
 マネージド インスタンスには、プライベート IP アドレスを介してのみアクセスできます。 分離された SQL Server のオンプレミス環境とほぼ同様に、接続を確立するには、アプリケーションまたはユーザーがマネージド インスタンスのネットワーク (VNet) にアクセスする必要があります。 詳細については、[マネージド インスタンスへのアプリケーションの接続](sql-database-managed-instance-connect-app.md)に関する記事を参照してください。
 
-また、マネージド インスタンスのサービス エンドポイントはパブリック接続に対応しており、Azure SQL Database と同じように、サービス エンドポイントを構成することもできます。 詳細については、「[Azure SQL Database マネージド インスタンスのパブリック エンドポイントの構成](sql-database-managed-instance-public-endpoint-configure.md)」を参照してください。
+また、マネージド インスタンス上のサービス エンドポイントはパブリック接続に対応しており、Azure SQL Database と同じように構成することもできます。 詳細については、「[Azure SQL Database マネージド インスタンスのパブリック エンドポイントの構成](sql-database-managed-instance-public-endpoint-configure.md)」を参照してください。
 
 > [!NOTE] 
 > サービス エンドポイントが有効な状態であっても、[SQL Database のファイアウォール規則](sql-database-firewall-configure.md)は適用されません。 マネージド インスタンスには、接続を管理するための[組み込みのファイアウォール](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)が独自に備わっています。
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>SSMS を使用してマネージド インスタンス用に Azure AD サーバー プリンシパル (ログイン) を作成する
 
-最初の Azure AD サーバー プリンシパル (ログイン) は、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` で作成する必要があります。 マネージド インスタンスに接続する例については、次の記事を参照してください。
+最初の Azure AD サーバー プリンシパル (ログイン) は、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` またはプロビジョニング処理中に作成されたマネージド インスタンスの Azure AD 管理者によって作成できます。 詳細については、「[マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングする](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)」を参照してください。 この機能は、[Azure AD サーバー プリンシパルの GA](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi) 以来、変更されています。
+
+マネージド インスタンスに接続する例については、次の記事を参照してください。
 
 - [クイック スタート:マネージド インスタンスに接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)
 - [クイック スタート:オンプレミスからマネージド インスタンスへのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
 
-> [!IMPORTANT]
-> マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-
-1. [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) を使用して、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` を使ってマネージド インスタンスにログインします。
+1. [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) を利用し、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` または MI 用の Azure AD 管理者を使ってマネージド インスタンスにログインします。
 
 2. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -125,7 +121,7 @@ ms.locfileid: "70231004"
 
 `sysadmin` サーバー ロールにログインを追加するには:
 
-1. マネージド インスタンスにもう一度ログインするか、`sysadmin` である SQL プリンシパルとの既存の接続を使用します。
+1. マネージド インスタンスにもう一度ログインするか、Azure AD 管理者または SQL プリンシパルである `sysadmin` による既存の接続を使用します。
 
 1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -218,7 +214,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login-and-give-permissions"></a>Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成してアクセス許可を付与する
 
-個々のデータベースに対する承認は、オンプレミスの SQL Server の場合とほぼ同じようにマネージド インスタンスで動作します。 ユーザーは、既存のログインからデータベースに作成し、そのデータベースに対するアクセス許可を付与するかデータベース ロールに追加することができます。
+個々のデータベースに対する承認は、オンプレミスの SQL Server の場合とほぼ同じようにマネージド インスタンス上で動作します。 ユーザーは、既存のログインからデータベースに作成し、そのデータベースに対するアクセス許可を付与するかデータベース ロールに追加することができます。
 
 **MyMITestDB** という名前のデータベースと、既定のアクセス許可のみを持つログインを作成したので、次の手順では、そのログインからユーザーを作成します。 この時点では、ログインはマネージド インスタンスに接続し、すべてのデータベースを表示できますが、そのデータベースを操作することはできません。 既定のアクセス許可を持つ Azure AD アカウントでサインインし、新しく作成したデータベースを展開しようとすると、次のエラーが表示されます。
 
@@ -425,7 +421,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
     **TestTable2** からテーブル結果が表示されます。
 
-## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins-public-preview"></a>Azure AD サーバー プリンシパル (ログイン) でサポートされているその他のシナリオ (パブリック プレビュー) 
+## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins"></a>Azure AD サーバー プリンシパル (ログイン) においてサポートされているその他のシナリオ
 
 - SQL エージェントの管理とジョブの実行が、Azure AD サーバー プリンシパル (ログイン) に対してサポートされています。
 - データベースのバックアップと復元操作は、Azure AD サーバー プリンシパル (ログイン) が実行できます。

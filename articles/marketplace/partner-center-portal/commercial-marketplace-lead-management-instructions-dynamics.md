@@ -4,15 +4,16 @@ description: Dynamics 365 for Customer Engagement のリード管理を構成し
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 181a3f3a8d3cabb2fdf6caf79cef16201fab0c68
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 37cf613b6e0bd2ec9910dd3e7431c0feaa02431c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177803"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812303"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement のリード管理の構成
 
@@ -128,7 +129,7 @@ Azure Active Directory を使用したくない場合は、*Microsoft 365 管理
     * ユーザー名を指定します
     * パスワードを指定し、[Make this user change their password when they first sign in]\(このユーザーが最初にサインインしたときに自分のパスワードを変更するようにする\) オプションをオフにします。
     * ユーザーのロールとして [ユーザー (管理者のアクセスなし)] を選択します。
-    * 次の画面キャプチャに表示される製品ライセンスとして、"Dynamics 365 Customer Engagement plan" を選択します。 選択したライセンスに対して課金されます。 
+    * 次の画面キャプチャに示されているように、製品ライセンスとして "Dynamics 365 Customer Engagement plan" を選択します。 選択したライセンスに対して課金されます。 
 
 これらの値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*ユーザー名とパスワード*" です。
 
@@ -156,11 +157,11 @@ Azure Active Directory を使用したくない場合は、*Microsoft 365 管理
 
     ![セキュリティ ロール](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. セキュリティ ロールに入った後で、 **[コア レコード]** タブを選択します。"ユーザー エンティティの UI 設定" エンティティを検索し、対応する各円を 1 回をクリックして、そのエンティティのユーザー (黄色い 1/4 円) に対して作成、読み取り、書き込みアクセス許可を有効にします。
+7. セキュリティ ロールに入った後で、 **[コア レコード]** タブを選択します。"ユーザー エンティティの UI 設定" エンティティを検索し、対応する各円を 1 回クリックして、そのエンティティのユーザー (黄色い 1/4 の円) に対して作成、読み取り、書き込みのアクセス許可を有効にします。
 
     ![Microsoft Marketplace Lead Writer - [コア レコード]](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-8. 次に、 **[カスタマイズ]** タブに移動します。"システム ジョブ" エンティティを検索し、対応する各円を 4 回クリックして、そのエンティティの組織 (緑の塗りつぶし) に対して読み取り、書き込み、追加先アクセス許可を有効にします。
+8. 次に、 **[カスタマイズ]** タブに移動します。"システム ジョブ" エンティティを検索し、対応する各円を 4 回クリックして、そのエンティティの組織 (緑の塗りつぶし) に対して読み取り、書き込み、AppnedTo のアクセス許可を有効にします。
 
     ![Microsoft Marketplace Lead Writer - [カスタマイズ]](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff705eabde111b5ebac1e2d714e3ece221c36e90
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413731"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819303"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric でのバックアップの復元
 
@@ -199,7 +199,18 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 TrackRestoreProgress を使用して復元の進行状況を追跡できます。
 
-### <a name="data-restore-for-data-corruptiondata-loss"></a>"_データ破損_/_データ損失_" の場合のデータ復元
+### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+Service Fabric Explorer から復元をトリガーできます。 Service Fabric Explorer の設定で、詳細設定モードが有効になっていることを確認します。
+1. 目的のパーティションを選択し、[アクション] をクリックします。 
+2. [Trigger Partition Restore]\(パーティションの復元のトリガー\) を選択し、Azure の情報を入力します。
+
+    ![パーティションの復元のトリガー][2]
+
+    または、FileShare の場合:
+
+    ![パーティションの復元のトリガー (FileShare)][3]
+
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>"_データ破損_/_データ損失_" の場合のデータ復元
 
 "_データ損失_" または "_データ破損_" の場合、Reliable Stateful サービスと Reliable Actors のパーティション用のバックアップ パーティションは、選択した任意のバックアップに復元できます。
 
@@ -324,3 +335,6 @@ Service Fabric クラスター内の Reliable Stateful サービスおよび Rel
 ## <a name="next-steps"></a>次の手順
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+
+[2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
+[3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

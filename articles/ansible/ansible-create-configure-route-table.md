@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Ansible を使用して Azure ルート テーブルを構成する
-description: Ansible を使用して Azure ルート テーブルを作成、変更、および削除する方法について説明します。
+description: Ansible を使用して Azure ルート テーブルを作成、管理、削除する方法について説明します。 また、ルートを作成および削除する方法についても説明します。
 keywords: ansible, azure, devops, bash, プレイブック, ネットワーク, ルート, ルート テーブル
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 14753af58a179ddf4011cb29c7ed08faab62875c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 0ffc00606eac4cf57cdf19072986373f5602aafa
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241779"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614339"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>チュートリアル:Ansible を使用して Azure ルート テーブルを構成する
 

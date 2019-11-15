@@ -1,5 +1,5 @@
 ---
-title: Gen2 への既存の Azure SQL Data Warehouse の移行 | Microsoft Docs
+title: Gen2 へのデータ ウェアハウスの移行
 description: 既存のデータ ウェアハウスを Gen2 に移行するための手順およびリージョン別の移行スケジュール。
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900316"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693037"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Gen2 へのデータ ウェアハウスのアップグレード
 
@@ -134,7 +135,7 @@ Microsoft では、上記の利用可能表に基づいて、Gen1 インスタ�
 - A:Gen1 で DW600 または DW1200 を実行している場合、それぞれ DW500c または DW1000c を使用することをお勧めします。これは、Gen2 が、Gen1 よりも多くのメモリ、リソース、およびより高いパフォーマンスを提供するためです。
 
 **Q:geo バックアップは無効にできますか?**
-- A:いいえ。 geo バックアップは、リージョンが使用不可になった場合にデータ ウェアハウスの可用性を維持するためのエンタープライズ機能です。 さらに懸案事項がある場合は、[サポート リクエスト](sql-data-warehouse-get-started-create-support-ticket.md)をオープンしてください。
+- A:No. geo バックアップは、リージョンが使用不可になった場合にデータ ウェアハウスの可用性を維持するためのエンタープライズ機能です。 さらに懸案事項がある場合は、[サポート リクエスト](sql-data-warehouse-get-started-create-support-ticket.md)をオープンしてください。
 
 **Q:Gen1 と Gen2 の間に T-SQL 構文の違いはありますか?**
 
@@ -146,7 +147,7 @@ Microsoft では、上記の利用可能表に基づいて、Gen1 インスタ�
 
 **Q:私のリージョンがアップグレードされた後に新しい Gen1 インスタンスを作成できますか?**
 
-- A:いいえ。 リージョンがアップグレードされると、Gen1 の新しいインスタンスの作成は無効になります。
+- A:No. リージョンがアップグレードされると、Gen1 の新しいインスタンスの作成は無効になります。
 
 ## <a name="next-steps"></a>次の手順
 

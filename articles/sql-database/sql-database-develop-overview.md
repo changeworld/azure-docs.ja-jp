@@ -1,5 +1,5 @@
 ---
-title: SQL Database アプリケーションの開発の概要 | Microsoft Docs
+title: アプリケーション開発の概要
 description: SQL Database に接続するアプリケーションで使用できる接続ライブラリとベスト プラクティスについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 02/07/2019
-ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af657d28bc3052ebefe25ea54891b8d3555692c9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568866"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825835"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "68568866"
 
 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS コード](https://code.visualstudio.com/)などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/downloads/)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。 また、Azure portal、PowerShell、REST API も使用でき、生産性向上に役立ちます。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Azure SQL Database へのアクセスは、ログインとファイアウォールで保護されます。 Azure SQL Database では、SQL Server および [Azure Active Directory (AAD) 認証](sql-database-aad-authentication.md)ユーザーとログインの両方がサポートされています。 AAD ログインは、Managed Instance でのみ使用できます。 
 

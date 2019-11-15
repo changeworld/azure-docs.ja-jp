@@ -1,7 +1,7 @@
 ---
 title: コンテナーの構成 - FACE API
 titleSuffix: Azure Cognitive Services
-description: コンテナーの構成設定。
+description: Face コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 必須とオプションの両方の設定があります。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: a07f088f7f5699a2698c0ea8fb0e853b3d287572
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 78fd2aa977062d2f0d6b981140f3db5b263e4651
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101947"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795027"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -53,7 +53,7 @@ ms.locfileid: "71101947"
 
 |必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+|はい| `Billing` | string | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](face-how-to-install-containers.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 <!-- specific to face only -->
 

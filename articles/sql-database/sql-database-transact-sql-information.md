@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database への移行時に T-SQL の相違点を解決する | Microsoft Docs
+title: T-SQL の相違点を解決する-移行
 description: Azure SQL Database では完全にサポートされない Transact-SQL ステートメント
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: fbc4628ff3d3d7d90f7ec2c47c87f7afa3e9cd43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028837"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822491"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する
 

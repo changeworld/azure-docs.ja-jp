@@ -1,5 +1,5 @@
 ---
-title: Azure 間レプリケーションの継続的な問題に関する Azure Site Recovery トラブルシューティング | Microsoft Docs
+title: Azure Site Recovery を使用した Azure VM の実行中のレプリケーションのトラブルシューティング
 description: ディザスター リカバリーのために Azure 仮想マシンをレプリケートするときに発生するエラーや問題に関するトラブルシューティング
 services: site-recovery
 author: asgang
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
 ms.author: asgang
-ms.openlocfilehash: 02f3dff4c9649beeadade942f4b32595f8543c2d
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 7b9da202704b20e5770343f857c044ea19ae696a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742548"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620882"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Azure 間の VM レプリケーションに関する継続的な問題のトラブルシューティング
 

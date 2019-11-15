@@ -1,18 +1,18 @@
 ---
-title: Windows Virtual Desktop の診断機能を使用して問題を特定する - Azure
-description: Windows Virtual Desktop の診断機能とその使用方法について説明します。
+title: Windows Virtual Desktop の診断の問題 - Azure
+description: Windows Virtual Desktop の診断機能を使用して問題を診断する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 0e04b075259ed1d003df4a03686d46b1adf694d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840144"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606857"
 ---
 # <a name="identify-and-diagnose-issues"></a>問題の特定と診断
 

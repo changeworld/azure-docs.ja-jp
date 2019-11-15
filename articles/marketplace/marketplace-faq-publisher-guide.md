@@ -4,15 +4,16 @@ description: Azure Marketplace と Microsoft AppSource についての一般的�
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330238"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822978"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace の FAQ
 
@@ -463,7 +464,7 @@ Free レベルのサブスクリプションのオファリングは永続的に
 
 **エンドツーエンドの購入とプロビジョニングのフローを検証するプロセスはどのようなものですか?**
 
-発行プロセスの間に、オファーのプレビューへのアクセスが提供されます。 アクセスできるのは [プレビュー] タブで指定されているユーザーだけであり、これは他のユーザーには表示されないライブ オファーです。 これを購入して、プロセスをテストすることができます。ただし、オファーの構成に応じて全額料金が請求されます。
+発行プロセスの間に、オファーのプレビューへのアクセスが提供されます。 アクセスできるのは [プレビュー] タブで指定されているユーザーだけであり、これは他のユーザーには表示されないライブ オファーです。 これを購入して、プロセスをテストできます。ただし、オファーの構成に応じて全額料金が請求されます。
 
 購入を非常に低価格で行うため、Microsoft は、テストのコストとして受け入れることのできる価格で設定したプライベート プランを自分自身に発行することを提案します。 ゼロもサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されません。
 

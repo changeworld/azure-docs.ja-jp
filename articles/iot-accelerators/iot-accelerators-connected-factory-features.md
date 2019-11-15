@@ -1,6 +1,6 @@
 ---
 title: コネクテッド ファクトリ ソリューションの機能 - Azure | Microsoft Docs
-description: コネクテッド ファクトリ事前構成済みソリューションの機能の概要。
+description: この記事では、クラウド ダッシュボード、ルール、アラートなどの、コネクテッド ファクトリ事前構成済みソリューションの機能の概要について説明します。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080448"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820107"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>コネクテッド ファクトリ IoT ソリューション アクセラレータとは
 

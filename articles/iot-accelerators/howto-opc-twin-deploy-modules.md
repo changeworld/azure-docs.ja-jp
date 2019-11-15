@@ -1,6 +1,6 @@
 ---
 title: Azure 用 OPC Twin モジュールをゼロからデプロイする方法 |Microsoft Docs
-description: OPC Twin をゼロからデプロイする方法
+description: この記事では、Azure portal の IoT Edge ブレードを使用して、また AZ CLI を使用して、OPC Twin をゼロからデプロイする方法について説明します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: df1dd45d58baf82710b5e362afaf055aad140b98
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 96a4afff3e58bfa1ebf661909f380aa525fea76e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302638"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820146"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 

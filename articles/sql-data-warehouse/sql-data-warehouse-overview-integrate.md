@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse を使用した統合ソリューションの作成 | Microsoft Docs
-description: 'SQL Data Warehouse と統合されたソリューションを持つツールとパートナー。 '
+title: 統合されたソリューションの構築
+description: Azure SQL Data Warehouse と統合されたソリューションを持つツールとパートナー。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 43a714ae175e0d60f20b5e7ad79e1fa90125b0f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6e159e0e254ae8b2515515dfaeb2c514e0f25e0b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873336"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685647"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>他のサービスを SQL Data Warehouse と統合する
 SQL Data Warehouse では、コア機能に加えて Azure 内の他のサービスの多くを統合できます。 次のようなサービスがあります。

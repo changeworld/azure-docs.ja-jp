@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/07/2019
+ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273980"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747668"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>チュートリアル:Azure Databricks ノートブックから仮想ネットワーク内の SQL Server Linux Docker コンテナーのクエリを実行する
 
@@ -42,7 +42,7 @@ ms.locfileid: "72273980"
 
     ![新しい Azure 仮想マシンを追加する](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. **[基本]** タブで [Ubuntu Server 16.04 LTS] を選択します。 VM のサイズを B1ms に変更します。これには 1 つの VCPUS と 2 GB の RAM が含まれます。 Linux SQL Server Docker コンテナーの最小要件では 2 GB です。 管理者のユーザー名とパスワードを選択します。
+2. **[基本]** タブで、Ubuntu Server 18.04 LTS を選択し、VM サイズを B2s に変更します。 管理者のユーザー名とパスワードを選択します。
 
     ![新しい仮想マシンの構成の [基本] タブ](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
@@ -80,8 +80,7 @@ ms.locfileid: "72273980"
 
     |Setting|推奨値|説明|
     |-------|---------------|-----------|
-    |source|IP アドレス|IP アドレスでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
-    |ソース IP アドレス|10.179.0.0/16|仮想ネットワークのアドレス範囲を入力します。|
+    |source|Any|ソースでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |Source port ranges|*|すべてのポートからのトラフィックを許可します。|
     |Destination|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |送信先 IP アドレス|<ご使用の VM のパブリック IP\>|仮想マシンのパブリック IP アドレスを入力します。 これは仮想マシンの **[概要]** ページで見つかります。|

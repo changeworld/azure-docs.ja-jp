@@ -4,15 +4,16 @@ description: Azure マネージド アプリケーションと Azure ソリュ�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: ef4ea2419c64d0376023ea5d291460df48a51c63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943454"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826173"
 ---
 # <a name="azure-application-skus-tab"></a>Azure アプリケーション SKU タブ
 
@@ -108,13 +109,13 @@ ms.locfileid: "64943454"
 このリソースの次のキー プロパティに注意してください。
     - "kind": Marketplace マネージド アプリケーションの場合、値は "Marketplace" にする必要があります。
     - "ManagedResourceGroupId" - applianceMainTemplate.json で定義されているすべてのリソースがデプロイされる、顧客のサブスクリプション内のリソース グループ。
-    - "PublisherPackageId" - パッケージを一意に識別する文字列。 この値は、[パブリッシャー ID].[オファー ID]-preview[SKUID].[パッケージ バージョン] のように連結して作成する必要があります。
+    - "PublisherPackageId" - パッケージを一意に識別する文字列。 この値は、[publisherId].[OfferId]-preview[SKUID].[PackageVersion] のように連結して作成する必要があります。
 
   >[!IMPORTANT] 
   >入れ子になったテンプレートまたはスクリプトがこのアプリケーションのプロビジョニングに必要であれば、このパッケージに含めてください。 MainTemplate.json、applianceMainTemplate.json、applianceCreateUIDefinition.json は、ルート フォルダーに置く必要があります。
 
 - **[テナント ID]\*** - 組織の Azure Active Directory テナント ID。
-- **[Enable JIT Access?]\(JIT アクセスの有効化\)\*** – このオファーを使用し、顧客デプロイの Just-In-Time 管理アクセスを有効にするには、 **[はい]** を選択します。
+- **[Enable JIT Access?]\(JIT アクセスの有効化\)\*** - このオファーを使用し、顧客デプロイの Just-In-Time 管理アクセスを有効にするには、 **[はい]** を選択します。
 
   >[!NOTE] 
   >JIT を有効にした場合、JIT アクセスをサポートするように CreateUiDefinition.json ファイルを更新する必要があります。
