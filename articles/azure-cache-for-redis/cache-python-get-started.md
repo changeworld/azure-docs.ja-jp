@@ -1,28 +1,21 @@
 ---
 title: クイック スタート:Azure Cache for Redis を使用する Python アプリを作成する
 description: このクイック スタートでは、Azure Cache for Redis を使用する Python アプリを作成する方法を学習します。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1ac1767d1ac3f6333d73a1e1c66ff7250942d266
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720379"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122674"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>クイック スタート:Azure Cache for Redis を使用する Python アプリを作成する
 

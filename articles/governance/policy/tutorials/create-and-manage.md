@@ -1,17 +1,14 @@
 ---
 title: コンプライアンスを強制するポリシーの作成と管理
 description: Azure Policy を使用して、標準を強制し、規制遵守および監査の要件を満たし、コストを制御し、セキュリティとパフォーマンスの一貫性を維持し、企業全体の設計原則を適用します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: d01a28e1b4cbd9b2dacef8059d46ea72e789094d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abbe4334767a48cf6444ce5aa7822cc8a79f9f69
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490462"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959541"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>チュートリアル:コンプライアンスを強制するポリシーの作成と管理
 
@@ -408,7 +405,7 @@ az policy definition list
 
 割り当てられているポリシーまたはイニシアティブによって回避されたデプロイは、次の 2 つの場所で表示できます。
 
-- デプロイの対象となるリソース グループでの操作: ページの左側にある **[デプロイ]** を選択し、失敗したデプロイの**デプロイ名**を選択します。 拒否されたリソースが、"_禁止_" ステータスで表示されます。 リソースを拒否したポリシーまたはイニシアティブと割り当てを確認するには、[デプロイの概要] ページの **[失敗しました。詳細については、ここをクリックしてください]** を選択します。
+- デプロイの対象となるリソース グループでの操作: ページの左側にある **[デプロイ]** を選択し、失敗したデプロイの**デプロイ名**を選択します。 拒否されたリソースが、"_禁止_" ステータスで表示されます。 リソースを拒否したポリシーまたはイニシアティブと割り当てを確認するには、[デプロイの概要] ページの **[失敗しました。詳細については、ここをクリックしてください]** をクリックします。
   ページの右側にウィンドウが開き、エラー情報が表示されます。 **[エラーの詳細]** には、関連するポリシー オブジェクトの GUID が表示されます。
 
   ![ポリシーの割り当てによって拒否されたデプロイ](../media/create-and-manage/rg-deployment-denied.png)

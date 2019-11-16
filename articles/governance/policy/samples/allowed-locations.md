@@ -1,17 +1,14 @@
 ---
 title: サンプル - 許可される場所
 description: このサンプル ポリシー定義は、すべてのリソースを承認済みの場所にデプロイすることを要求します。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 5c4a23b355a4d7841c42d03042399635a55bac03
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 7561e57a00f440e50701fa75bd54676ad014e1d5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980635"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74071933"
 ---
 # <a name="sample---allowed-region-locations"></a>サンプル - 許可されるリージョンの場所
 

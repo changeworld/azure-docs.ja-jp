@@ -1,17 +1,14 @@
 ---
 title: Azure portal でのクエリの作成と共有
 description: このチュートリアルでは、Azure portal で Resource Graph クエリを作成し、他のユーザーと共有する方法について説明します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/23/2019
 ms.topic: tutorial
-ms.service: resource-graph
-ms.openlocfilehash: e49cff5a9b9b2c8841b6cc685d4778688c214d26
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 65b96da3bd9064f34d75d5e87f1fcf55336d9893
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622480"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958570"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する
 
