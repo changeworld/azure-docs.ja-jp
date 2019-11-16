@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 2ab79cccaafeb1b48100285a5fd495340b545278
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 478ebde1de5624796ebf1dde5cf89f4e1f9d9104
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615353"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890730"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>IoT Central のデジタル配布センター アプリケーション テンプレートのアーキテクチャ
 
@@ -48,4 +48,4 @@ IoT Central プラットフォームを使うと、継続的データ エクス�
 ## <a name="next-steps"></a>次の手順
 * [デジタル配布センター テンプレート](./tutorial-iot-central-digital-distribution-center-pnp.md)のデプロイ方法を学習します
 * [IoT Central 小売りテンプレート](./overview-iot-central-retail-pnp.md)についてさらに詳しく学習します
-* [IoT Central の概要](../core/overview-iot-central-pnp.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します
+* [IoT Central の概要](../preview/overview-iot-central.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します

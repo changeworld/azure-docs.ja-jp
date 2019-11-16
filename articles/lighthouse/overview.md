@@ -3,16 +3,16 @@ title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
 author: JnHs
 ms.author: jenhayes
-ms.date: 08/22/2019
+ms.date: 11/11/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: ae8194e6d5764769019ac803a52cd54497a618c1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011897"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929583"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 
@@ -39,9 +39,6 @@ Azure Lighthouse には、顧客エンゲージメントと顧客管理を効率
 - **Azure Resource Manager テンプレート**: Azure の委任されたリソース管理への顧客のオンボーディングを含め、管理タスクを容易に行えます。 詳細については、Microsoft の[サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates)および「[Azure の委任されたリソース管理に顧客をオンボードする](how-to/onboard-customer.md)」を参照してください。
 - **Azure Marketplace のマネージド サービス オファー**: プライベート オファーまたはパブリック オファーを通じて貴社のサービスを顧客に提供できます。Azure Resource Manager テンプレートを使用したオンボードに代わる方法として、Azure の委任されたリソース管理に顧客を自動的にオンボードすることができます。 詳細については、「[Azure Marketplace のマネージド サービス オファー](./concepts/managed-services-offers.md)」を参照してください。
 - **Azure マネージド アプリケーション**: 顧客が自身のサブスクリプションに簡単にデプロイして使用できるアプリケーションをパッケージ化して出荷できます。 アプリケーションは、貴社がそのテナントからアクセスできるリソース グループにデプロイされるので、貴社が全体的な Azure Lighthouse エクスペリエンスの一部としてサービスを管理することができます。 詳細については、「[Azure マネージド アプリケーションの概要](https://docs.microsoft.com/azure/managed-applications/overview)」を参照してください。
-
-> [!NOTE]
-> ここで説明した機能は現在、パブリック クラウドで提供されています。 各サービスのリージョン別の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

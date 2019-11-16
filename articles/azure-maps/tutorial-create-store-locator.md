@@ -1,22 +1,22 @@
 ---
-title: Azure Maps を使用してストア ロケーターを作成する | Microsoft Docs
-description: Azure Maps を使用してストア ロケーターを作成します。
+title: チュートリアル:Azure Maps を使用してストア ロケーターを作成する
+description: チュートリアル:Azure Maps を使用してストア ロケーターを作成します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/15/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933065"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107088"
 ---
-# <a name="create-a-store-locator-by-using-azure-maps"></a>Azure Maps を使用してストア ロケーターを作成する
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
 このチュートリアルでは、Azure Maps を使用してシンプルなストア ロケーターを作成する手順を紹介します。 ストア ロケーターは広く一般的に使用されています。 この種のアプリケーションで使われている概念の多くは、他のさまざまな種類のアプリケーションに当てはまります。 コンシューマーに商品を直接販売するほとんどの企業にとって、ストア ロケーターを顧客に提供することは必要不可欠になっています。 このチュートリアルでは、以下の内容を学習します。
     

@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9724e54b03e5de065b8b39cb57c6a9880cf37cc6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9ef939d46a02b8aa6b0b7f481fec9e30edf53fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827200"
+ms.locfileid: "73839203"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
@@ -72,7 +72,7 @@ Get-Module Az.Sql
 
 "*次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。さらに、このスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーも作成されます。* "
 
-エラスティック ジョブには特定の命名要件がないため、[Azure 要件](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に準拠している限り、任意の命名規則を使用できます。
+エラスティック ジョブには特定の命名要件がないため、[Azure 要件](/azure/architecture/best-practices/resource-naming)に準拠している限り、任意の命名規則を使用できます。
 
 ```powershell
 # Sign in to your Azure account

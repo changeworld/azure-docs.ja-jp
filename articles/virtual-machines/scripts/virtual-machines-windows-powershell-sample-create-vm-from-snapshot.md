@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - スナップショットから VM を作成する | Microsoft Docs
+title: Azure PowerShell のサンプル スクリプト - スナップショットから VM を作成します
 description: Azure PowerShell のサンプル スクリプト - スナップショットから VM を作成します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 42152b2f469aa4b642f9ca0f0858377a8b8b7657
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ee332e391e3cbd9c5e76263145e6a8efda34625b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749775"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038988"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>PowerShell でスナップショットから仮想マシンを作成する
 

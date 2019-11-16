@@ -3,23 +3,23 @@ title: Azure CLI のサンプル スクリプト - Azure App Configuration ス�
 description: Azure App Configuration ストアに格納されているキー/値の操作について取り上げます。
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
+ms.date: 11/08/2019
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 9288ea08da6335dd29e7a15a9bc871b76c1ce7e9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d89fa4c067e511e6210e8c1473bf1856297fc1de
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438433"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904075"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure App Configuration ストアに格納されているキー/値を操作する
 
@@ -42,6 +42,9 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 appConfigName=myTestAppConfigStore
 newKey="TestKey"
+refKey="KeyVaultReferenceTestKey"
+uri="[URL to value stored in Key Vault]"
+uri2="[URL to another value stored in Key Vault]"
 
 # Create a new key-value 
 az appconfig kv set --name $appConfigName --key $newKey --value "Value 1"
@@ -50,13 +53,28 @@ az appconfig kv set --name $appConfigName --key $newKey --value "Value 1"
 az appconfig kv list --name $appConfigName
 
 # Update new key's value
-az appconfig kv set --name $appConfigName --value "Value 2"
+az appconfig kv set --name $appConfigName --key $newKey --value "Value 2"
+
+# List current key-values
+az appconfig kv list --name $appConfigName
+
+# Create a new key-value referencing a value stored in Azure Key Vault
+az appconfig kv set --name $appConfigName --key $refKey --content-type "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8" --value "{\"uri\":\"$uri\"}"
+
+# List current key-values
+az appconfig kv list --name $appConfigName
+
+# Update Key Vault reference
+az appconfig kv set --name $appConfigName --key $refKey --value "{\"uri\":\"$uri2\"}"
 
 # List current key-values
 az appconfig kv list --name $appConfigName
 
 # Delete new key
 az appconfig kv delete  --name $appConfigName --key $newKey
+
+# Delete Key Vault reference
+az appconfig kv delete --name $appConfigName --key $refKey
 
 # List current key-values
 az appconfig kv list --name $appConfigName

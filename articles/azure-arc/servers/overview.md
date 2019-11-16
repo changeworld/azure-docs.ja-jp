@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606098"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122843"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>サーバー向け Azure Arc とは
 
@@ -132,7 +132,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 - MMA エージェントが既にインストールされているマシンでは、更新された管理パックによって **Azure Arc** の機能が有効になります。
 - サーバー向け Azure Arc の統合には、[MMA エージェント バージョン 10.20.18011 以上](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version)が必要です。
-- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#log-queries)でログデータを照会するときに返されるデータ スキーマには、ハイブリッド **ResourceId** が `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>` の形式で格納されます。
+- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)でログデータを照会するときに返されるデータ スキーマには、ハイブリッド **ResourceId** が `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>` の形式で格納されます。
 
 詳細については、「[Azure Monitor で Log Analytics の使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)」を参照してください。
 

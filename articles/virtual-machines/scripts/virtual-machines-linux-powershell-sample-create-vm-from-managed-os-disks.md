@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成する | Microsoft Docs
+title: Azure PowerShell のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成します
 description: Azure PowerShell のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: ebced8ab6b642ba58e7c119a07b2df26197145ed
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9c0d30f384ffa2747cd34dcec754938910312bf0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748827"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040162"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>PowerShell で既存の管理 OS ディスクを使用して仮想マシンを作成する
 

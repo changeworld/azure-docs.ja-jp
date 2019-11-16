@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell サンプル スクリプト - マネージド ディスクを同じまたは別のサブスクリプションにコピー (移動) する | Microsoft Docs
+title: Azure PowerShell サンプル スクリプト - マネージド ディスクを同じまたは別のサブスクリプションにコピー (移動) する
 description: Azure PowerShell サンプル スクリプト - マネージド ディスクを同じまたは別のサブスクリプションにコピー (移動) する
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: babf7bf9de46e1657f94d19fe13bb0e328831ce0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bb473a2f543c1621b99904b5a58dc7fc6625f6fc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748891"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021461"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>PowerShell でマネージド ディスクを同じサブスクリプションまたは別のサブスクリプションにコピーする
 

@@ -1,17 +1,14 @@
 ---
 title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、仮想マシン スケール セットの容量、使用されているすべてのタグの一覧、正規表現と一致する仮想マシンなど、高度なクエリを実行します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
-ms.service: resource-graph
-ms.openlocfilehash: 6310e13508c1c789c410f1954a2ac0dbf480a2b8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e09db4630fd1ef8acc06538c7599feddbe991900
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622514"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958704"
 ---
 # <a name="advanced-resource-graph-queries"></a>Resource Graph の高度なクエリ
 

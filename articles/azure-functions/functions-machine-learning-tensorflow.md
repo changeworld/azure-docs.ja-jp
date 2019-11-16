@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 491adb2719dc7c05a2943634e83027376c9327c3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817458"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082740"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>チュートリアル:Python および TensorFlow を使用して Azure Functions で機械学習モデルを適用する
 
@@ -100,7 +100,7 @@ func init --worker-runtime python
 
 - [*local.settings.json*](functions-run-local.md#local-settings-file):ローカル開発に使用されるアプリケーション設定が含まれています
 - [*host.json*](functions-host-json.md):Azure Functions のホストと拡張機能の設定が含まれています
-- [*requirements.txt*](functions-reference-python.md#python-version-and-package-management):このアプリケーションに必要な Python パッケージが含まれています
+- [*requirements.txt*](functions-reference-python.md#package-management):このアプリケーションに必要な Python パッケージが含まれています
 
 ## <a name="create-an-http-function"></a>HTTP 関数を作成する
 

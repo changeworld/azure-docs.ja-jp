@@ -1,17 +1,14 @@
 ---
 title: タグ ガバナンスを管理する
 description: 新しいリソースと既存のリソースに対してタグ ガバナンス モデルを作成して適用するには、Azure Policy の Modify 効果を使用します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: 780dbf02fbdb0a607f29c710da9a6320a8626f7b
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643767"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069656"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>チュートリアル:Azure Policy を使用してタグ ガバナンスを管理する
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Maps を使用した IoT 空間分析の実装 | Microsoft Docs
-description: IoT Hub を Azure Maps サービス API シリーズと統合します。
+title: チュートリアル:Azure Maps を使用した IoT 空間分析の実装
+description: チュートリアル:IoT Hub を Azure Maps サービス API シリーズと統合します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933196"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107045"
 ---
-# <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Azure Maps を使用した IoT 空間分析の実装
+# <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>チュートリアル:Azure Maps を使用した IoT 空間分析の実装
 
 空間と時間に生じる関連イベントを追跡およびキャプチャすることは、一般的な IoT シナリオです。 たとえば、フリート管理、資産の追跡、モビリティ、スマート シティ アプリケーションなどです。 このチュートリアルでは、Event Grid によって提供されるイベント サブスクリプション モデルを使用して、IoT Hub によってキャプチャされた関連イベントに対して Azure Maps API シリーズを使用するためのソリューション パターンについて説明します。
 

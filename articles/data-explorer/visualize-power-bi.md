@@ -3,16 +3,16 @@ title: チュートリアル:Power BI で Azure Data Explorer のデータを視
 description: このチュートリアルでは、Power BI で Azure データ エクスプローラーに接続して、データを視覚化する方法について説明します。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 70a06b75db9ff49222c2de4aa78519b32d863478
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049882"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037356"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>チュートリアル:Power BI で Azure Data Explorer のデータを視覚化する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [StormEvents サンプル データ](ingest-sample-data.md)。 [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (**[無料ダウンロード]** を選択)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) ( **[無料ダウンロード]** を選択)
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>Azure データ エクスプローラーでビジュアルをレンダリングする
 
@@ -47,7 +47,7 @@ Power BI に進む前に、Azure データ エクスプローラーでビジュ�
 
 1. 左側のウィンドウで、StormEvents サンプル データを含むテスト データベースを選択します。
 
-1. 右側のウィンドウに次のクエリを貼り付けて、**[Run]\(実行\)** を選択します。
+1. 右側のウィンドウに次のクエリを貼り付けて、 **[Run]\(実行\)** を選択します。
 
     ```Kusto
     StormEvents
@@ -62,7 +62,7 @@ Power BI に進む前に、Azure データ エクスプローラーでビジュ�
 
     ![イベントの縦棒グラフ](media/visualize-power-bi/events-column-chart.png)
 
-1. 右側のウィンドウに次のクエリを貼り付けて、**[Run]\(実行\)** を選択します。
+1. 右側のウィンドウに次のクエリを貼り付けて、 **[Run]\(実行\)** を選択します。
 
     ```Kusto
     StormEvents
@@ -81,21 +81,21 @@ Power BI に進む前に、Azure データ エクスプローラーでビジュ�
 
 Power BI Desktop で Azure データ エクスプローラーに接続します。
 
-1. Power BI Desktop の **[ホーム]** タブで、**[データの取得]**、**[詳細]** の順に選択します。
+1. Power BI Desktop の **[ホーム]** タブで、 **[データの取得]** 、 **[詳細]** の順に選択します。
 
     ![データを取得する](media/visualize-power-bi/get-data-more.png)
 
-1. *Azure Data Explorer* を検索し、**[Azure Data Explorer (Beta)]\(Azure Data Explorer (ベータ)\)** を選択して、**[接続]** を選択します。
+1. *Azure Data Explorer* を検索し、 **[Azure Data Explorer (Beta)]\(Azure Data Explorer (ベータ)\)** を選択して、 **[接続]** を選択します。
 
     ![データを検索して取得する](media/visualize-power-bi/search-get-data.png)
 
-1. **[コネクタのプレビュー]** ページで、**[続行]** を選択します。
+1. **[コネクタのプレビュー]** ページで、 **[続行]** を選択します。
 
-1. 次の画面で、テスト クラスターとデータベースの名前を入力します。 クラスターは、`https://<ClusterName>.<Region>.kusto.windows.net` の形式にする必要があります。 テーブルの名前には「*StormEvents*」と入力します。 他のオプションはすべて既定値のままにして、**[OK]** を選択します。
+1. 次の画面で、テスト クラスターとデータベースの名前を入力します。 クラスターは、`https://<ClusterName>.<Region>.kusto.windows.net` の形式にする必要があります。 テーブルの名前には「*StormEvents*」と入力します。 他のオプションはすべて既定値のままにして、 **[OK]** を選択します。
 
     ![クラスター、データベース、テーブルのオプション](media/visualize-power-bi/cluster-database-table.png)
 
-1. データ プレビュー画面で、**[編集]** を選択します。
+1. データ プレビュー画面で、 **[編集]** を選択します。
 
     テーブルが Power Query エディターで開き、データをインポートする前に行と列を編集できます。
 
@@ -103,11 +103,11 @@ Power BI Desktop で Azure データ エクスプローラーに接続します�
 
 Azure データ エクスプローラーに接続したので、Power Query エディターでデータを編集します。 **BeginLat** 列が null 値である行を削除し、**StormSummary** JSON 列全体を削除します。 これらは簡単な操作ですが、データをインポートするときに複雑な変換を実行することもできます。
 
-1. **BeginLat** 列の矢印を選択して、**null** のチェック ボックスをオフにし、**[OK]** を選択します。
+1. **BeginLat** 列の矢印を選択して、**null** のチェック ボックスをオフにし、 **[OK]** を選択します。
 
     ![列をフィルター処理する](media/visualize-power-bi/filter-column.png)
 
-1. **[StormSummary]** 列見出しを右クリックし、**[削除]** を選択します。
+1. **[StormSummary]** 列見出しを右クリックし、 **[削除]** を選択します。
 
     ![列を削除する](media/visualize-power-bi/remove-column.png)
 
@@ -115,7 +115,7 @@ Azure データ エクスプローラーに接続したので、Power Query エ�
 
     ![クエリの名前を変更する](media/visualize-power-bi/query-name.png)
 
-1. リボンの **[ホーム]** タブで、**[閉じて適用]** を選択します。
+1. リボンの **[ホーム]** タブで、 **[閉じて適用]** を選択します。
 
     ![閉じて適用する](media/visualize-power-bi/close-apply.png)
 
@@ -125,7 +125,7 @@ Azure データ エクスプローラーに接続したので、Power Query エ�
 
     ![データ ビュー](media/visualize-power-bi/data-view.png)
 
-1. リボンの **[モデリング]** タブで、**[新しい列]** を選択します。
+1. リボンの **[モデリング]** タブで、 **[新しい列]** を選択します。
 
     ![新しい列](media/visualize-power-bi/new-column.png)
 
@@ -187,17 +187,17 @@ Azure データ エクスプローラーに接続したので、Power Query エ�
 
 これまで Power BI で行った作業はすべて、Power BI Desktop を使用したローカルなものです。 次に、レポートを Power BI サービスに発行して、他のユーザーと共有できるようにします。
 
-1. Power BI Desktop のリボンの **[ホーム]** タブで、**[発行]** を選択します。
+1. Power BI Desktop のリボンの **[ホーム]** タブで、 **[発行]** を選択します。
 
     ![[発行] ボタン](media/visualize-power-bi/publish-button.png)
 
 1. まだ Power BI にサインインしていない場合は、サインイン プロセスを実行します。
 
-1. **[マイ ワークスペース]**、**[選択]** の順に選択します。
+1. **[マイ ワークスペース]** 、 **[選択]** の順に選択します。
 
     ![ワークスペースを選択](media/visualize-power-bi/select-workspace.png)
 
-1. 発行が完了したら、**[Power BI で storm-events.pbix を開く]** を選択します。
+1. 発行が完了したら、 **[Power BI で storm-events.pbix を開く]** を選択します。
 
     ![発行は成功しました](media/visualize-power-bi/publishing-succeeded.png)
 
@@ -207,7 +207,7 @@ Azure データ エクスプローラーに接続したので、Power Query エ�
 
     ![[共有] ボタン](media/visualize-power-bi/share-button.png)
 
-1. **[レポートの共有]** 画面で、組織内の同僚を追加し、メモを追加して、**[共有]** を選択します。
+1. **[レポートの共有]** 画面で、組織内の同僚を追加し、メモを追加して、 **[共有]** を選択します。
 
     ![レポートを共有する](media/visualize-power-bi/share-report.png)
 
@@ -219,7 +219,7 @@ Azure データ エクスプローラーに接続したので、Power Query エ�
 
 1. **[マイ ワークスペース]** で **[レポート]** まで下にスクロールし、**storm-events** を探します。
 
-1. **storm-events** の隣の省略記号 **[...]** を選択して、**[削除]** を選択します。
+1. **storm-events** の隣の省略記号 **[...]** を選択して、 **[削除]** を選択します。
 
     ![レポートを削除する](media/visualize-power-bi/remove-report.png)
 

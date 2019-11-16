@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell サンプル スクリプト - スナップショットからマネージド ディスクを作成する | Microsoft Docs
+title: Azure PowerShell サンプル スクリプト - スナップショットからマネージド ディスクを作成する
 description: Azure PowerShell サンプル スクリプト - スナップショットからマネージド ディスクを作成する
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: be763f2df9352cafaedcd5c80a60c48e919d3f1c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93f2e24a2a32af1fb4bfa6560b27ce6c113ad7a1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749946"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040151"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>PowerShell でスナップショットからマネージド ディスクを作成する
 

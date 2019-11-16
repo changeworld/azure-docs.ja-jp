@@ -1,7 +1,7 @@
 ---
 title: Bing Entity Search API への検索要求の送信
 titleSuffix: Azure cognitive Services
-description: Bing Entity Search API に検索要求を送信する方法について説明します
+description: Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 0788b220f2612170fdea974a8bb27e8374a0b3be
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f68429a75ddb141c9e42babde3faa9f93fe949cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879204"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072683"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Bing Entity Search API への検索要求の送信
 

@@ -1,6 +1,6 @@
 ---
 title: チュートリアル 3:信用リスク モデルをデプロイする
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: クラシック バージョンの Azure Machine Learning Studio で、信用リスク評価のための予測分析ソリューションを作成する方法を詳しく紹介しているチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズのパート 3 です。 モデルを Web サービスとしてデプロイする方法を示します。
 keywords: 信用リスク, 予測分析ソリューション, リスク評価, デプロイ, Web サービス
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 4e8e8a114a06029ef9a81d92b60afd575bc9661f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619010"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839487"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>チュートリアル 3:信用リスク モデルをデプロイする - Azure Machine Learning Studio (クラシック)
 

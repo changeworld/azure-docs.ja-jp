@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 71ccdb7ac6666cde1841599cdaf95b67bc54e6a5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a3359955bf50929f083d542e6a0583b356a280
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800023"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903762"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
@@ -116,7 +116,7 @@ HDInsight の Storm には、完全なエンタープライズレベルの継続
 * Search
 * Mobile Engagement
 
-実際のシナリオについては、[企業での Apache Storm の使用事例](https://storm.apache.org/documentation/Powered-By.html)に関するドキュメントを参照してください。
+実際のシナリオについては、[企業での Apache Storm の使用事例](https://storm.apache.org/Powered-By.html)に関するドキュメントを参照してください。
 
 ## <a name="development"></a>開発
 

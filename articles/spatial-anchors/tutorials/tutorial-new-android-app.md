@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 499b08dbdc8e798a884b721bcba51be1f6973df6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6386ef775f897ca56d2660adf72a885672c8dfd2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562396"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092059"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい Android アプリを作成する手順
 
@@ -36,7 +36,7 @@ Android Studio を起動します。 **[Android Studio へようこそ]** ウィ
 
 新しいアプリをテストするには、USB ケーブルを使用して開発用マシンに開発者向けのデバイスを接続します。 **[実行]** -> **[Run 'app']\('アプリ' を実行\)** をクリックします。 **[Select Deployment Target]\(配置ターゲットの選択\)** ウィンドウで、お使いのデバイスを選択し、 **[OK]** をクリックします。 Android Studio によって、接続されているデバイスにアプリがインストールされて起動されます。 "Hello World!" が、 お使いのデバイスで実行されているアプリに表示されます。 **[実行]** -> **[Stop 'app']\('app' を停止\)** をクリックします。
 
-## <a name="integrating-arcore"></a>_ARCore_ との統合
+## <a name="integrating-_arcore_"></a>_ARCore_ との統合
 
 <a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_</a> は、Augmented Reality エクスペリエンスを構築するための Google のプラットフォームであり、お使いのデバイスが移動するときにその位置を追跡し、現実世界の独自の認識を構築できるようにします。
 
@@ -62,12 +62,12 @@ Android Studio を起動します。 **[Android Studio へようこそ]** ウィ
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.8.0'
+    implementation 'com.google.ar:core:1.11.0'
     ...
 }
 ```
 
-## <a name="integrating-sceneform"></a>_Sceneform_ の統合
+## <a name="integrating-_sceneform_"></a>_Sceneform_ の統合
 
 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> により、OpenGL を習得しなくても、Augmented Reality アプリ内でリアルな 3D シーンを簡単にレンダリングできます。
 
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.11.0'
     ...
 }
 ```

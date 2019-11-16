@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: d0bf023be9c34f449c40ff74ba9e68ea5e197e2e
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6450169ae2b2d74006eedc66f35338494257594a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615366"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889080"
 ---
 # <a name="architecture-of-iot-central-smart-inventory-management-application-template"></a>IoT Central のスマート インベントリの管理アプリケーション テンプレートのアーキテクチャ
 
@@ -54,4 +54,4 @@ IoT Central プラットフォームを使うと、継続的データ エクス�
 ## <a name="next-steps"></a>次の手順
 * [スマート インベントリの管理テンプレート](./tutorial-iot-central-smart-inventory-management-pnp.md)のデプロイ方法を学習します
 * [IoT Central 小売りテンプレート](./overview-iot-central-retail-pnp.md)についてさらに詳しく学習します
-* [IoT Central の概要](../core/overview-iot-central-pnp.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します
+* [IoT Central の概要](../preview/overview-iot-central.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します

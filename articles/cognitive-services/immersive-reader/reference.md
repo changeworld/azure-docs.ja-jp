@@ -1,7 +1,7 @@
 ---
 title: Immersive Reader SDK リファレンス
 titleSuffix: Azure Cognitive Services
-description: Immersive Reader SDK のリファレンス
+description: Immersive Reader SDK は、イマーシブ リーダーを Web アプリケーションに統合するための JavaScript ライブラリです。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388108"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903108"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Immersive Reader SDK リファレンス ガイド
 
 Immersive Reader SDK は、イマーシブ リーダーを Web アプリケーションに統合するための JavaScript ライブラリです。
 
-# <a name="functions"></a>Functions
+## <a name="functions"></a>Functions
 
 SDK では、次の関数が公開されています。
 

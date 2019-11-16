@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 9dc26e50e1c0f43e816e422f0fee91a246ea04a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e91a475c7fd7f207c8b38d3da8abe7affd668b2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487608"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013500"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>エンティティと LUIS におけるその目的
 
@@ -91,11 +91,11 @@ ms.locfileid: "73487608"
 
 |エンティティの種類|目的|
 |--|--|
-|[**機械学習**](#composite-entity)|エンティティ型に関係なく、エンティティの親グループ。 機械学習エンティティは、発話内のコンテキストから学習します。 これにより、発話例での配置の変動が顕著になります。 |
-|[**リスト**](#list-entity)|項目の一覧と、**テキスト完全一致**を使用して抽出されたそれらのシノニム。|
-|[**Pattern.any**](#patternany-entity)|エンティティの末尾の特定が困難なエンティティ。 |
-|[**事前構築済み**](#prebuilt-entity)|URL や電子メールなど、特定の種類のデータを抽出するために既にトレーニングされています。 これらの事前構築済みエンティティの一部は、オープンソースの [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) プロジェクトで定義されます。 ご自分の特定のカルチャまたはエンティティが現在サポートされていない場合は、プロジェクトにご協力ください。|
-|[**正規表現**](#regular-expression-entity)|**テキスト完全一致**のために正規表現を使用します。|
+|[**機械学習**](tutorial-machine-learned-entity.md)|エンティティ型に関係なく、エンティティの親グループ。 機械学習エンティティは、発話内のコンテキストから学習します。 これにより、発話例での配置の変動が顕著になります。 |
+|[**リスト**](reference-entity-list.md)|項目の一覧と、**テキスト完全一致**を使用して抽出されたそれらのシノニム。|
+|[**Pattern.any**](reference-entity-pattern-any.md)|エンティティの末尾の特定が困難なエンティティ。 |
+|[**事前構築済み**](luis-reference-prebuilt-entities.md)|URL や電子メールなど、特定の種類のデータを抽出するために既にトレーニングされています。 これらの事前構築済みエンティティの一部は、オープンソースの [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) プロジェクトで定義されます。 ご自分の特定のカルチャまたはエンティティが現在サポートされていない場合は、プロジェクトにご協力ください。|
+|[**正規表現**](reference-entity-regular-expression.md)|**テキスト完全一致**のために正規表現を使用します。|
 
 ### <a name="entity-role-defines-context"></a>エンティティ ロールがコンテキストを定義する
 

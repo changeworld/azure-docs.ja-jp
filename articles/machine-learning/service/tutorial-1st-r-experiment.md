@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: bcd1fff61e1612cc3361548527e5ed13affa3ba5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509276"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092274"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使って R で初めてのモデルをトレーニングしてデプロイする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,7 +167,7 @@ upload_files_to_datastore(ds,
 このチュートリアルと同じディレクトリに、`accidents.R` というトレーニング スクリプトが用意されています。 Azure ML サービスをトレーニングに活用するために行われた**トレーニング スクリプト内**の次の詳細に注意してください。
 
 * このトレーニング スクリプトは、引数 `-d` を受け取り、トレーニング データが含まれるディレクトリを検出します。 後でジョブを定義して送信する際に、次のように、引数にデータストアを指定します。 Azure ML は、トレーニング ジョブ用にストレージ フォルダーをリモート クラスターにマウントします。
-* トレーニング スクリプトは、`log_metric_to_run()` を使用して Azure ML の実行レコードにメトリックとして最終的な精度をログに記録します。 Azure ML SDK には、トレーニングの実行中にさまざまなメトリックをログに記録するためのログ記録 API のセットが用意されています。 これらのメトリックは記録され、実験の実行レコードに保存されます。 メトリックにはいつでもアクセスでき、[Azure Machine Learning studio](http://ml.azure.com) の実行の詳細ページで表示することもできます。 `log_*()` のログ記録方法の完全なセットについては、[リファレンス](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)を参照してください。
+* トレーニング スクリプトは、`log_metric_to_run()` を使用して Azure ML の実行レコードにメトリックとして最終的な精度をログに記録します。 Azure ML SDK には、トレーニングの実行中にさまざまなメトリックをログに記録するためのログ記録 API のセットが用意されています。 これらのメトリックは記録され、実験の実行レコードに保存されます。 メトリックにはいつでもアクセスでき、[Azure Machine Learning studio](https://ml.azure.com) の実行の詳細ページで表示することもできます。 `log_*()` のログ記録方法の完全なセットについては、[リファレンス](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)を参照してください。
 * トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 `./outputs` フォルダーは、Azure ML によって特別に処理されます。 トレーニング中、`./outputs` に書き込まれるファイルは、Azure ML によって実行レコードに自動的にアップロードされ、成果物として永続化されます。 トレーニング済みのモデルを `./outputs` に保存することにより、実行が終了し、リモート トレーニング環境にアクセスできなくなった後でも、モデル ファイルにアクセスして取得することができます。
 
 ### <a name="create-an-estimator"></a>推定を作成する
@@ -269,7 +269,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Web サービスとしてデプロイする
 
-モデルを使用すると、衝突による死亡の危険性を予測できます。 Azure ML を使用して、予測サービスとしてモデルをデプロイします。 このチュートリアルでは、[Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI) に Web サービスをデプロイします。
+モデルを使用すると、衝突による死亡の危険性を予測できます。 Azure ML を使用して、予測サービスとしてモデルをデプロイします。 このチュートリアルでは、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) に Web サービスをデプロイします。
 
 ### <a name="register-the-model"></a>モデルを登録する
 
@@ -353,17 +353,17 @@ aci_service$scoring_uri
 不要になったリソースは削除してください。 引き続き使用する予定のリソースは削除しないでください。 
 
 Web サービスを削除します。
-```{r delete_service, eval=FALSE}
+```R
 delete_webservice(aci_service)
 ```
 
 登録済みのモデルを削除します。
-```{r delete_model, eval=FALSE}
+```R
 delete_model(model)
 ```
 
 コンピューティング クラスターを削除します。
-```{r delete_compute, eval=FALSE}
+```R
 delete_compute(compute)
 ```
 

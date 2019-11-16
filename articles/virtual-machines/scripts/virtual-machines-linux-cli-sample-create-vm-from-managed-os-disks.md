@@ -1,5 +1,5 @@
 ---
-title: Azure CLI のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成する | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成します
 description: Azure CLI のサンプル スクリプト - マネージド ディスクを OS ディスクとして接続することで VM を作成します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 3ec3d152864ab8caf9f0c68966b6d4f8fd9e64dd
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 05263df1327eff49d0c9ec84316447ba563695ca
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695238"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039156"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>CLI で既存の管理 OS ディスクを使用して仮想マシンを作成する
 
@@ -50,7 +50,7 @@ az group delete --name myResourceGroup
 
 このスクリプトは、次のコマンドを使用して、マネージド ディスクのプロパティを取得し、マネージド ディスクを新しい VM に接続して VM を作成します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | ディスク名とリソース グループ名を使用して、マネージド ディスクのプロパティを取得します。 Id プロパティは、マネージド ディスクを新しい VM に接続するために使用されます。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 管理 OS ディスクを使用して VM を作成する |

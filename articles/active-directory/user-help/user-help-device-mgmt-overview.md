@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd89d70bfe7a7f5e72e7fcabe167bafac5777672
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d3b77671aad72a9033ce964dfcfde87abce14e2e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382253"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028891"
 ---
 # <a name="manage-my-devices-overview"></a>デバイスの管理の概要
 
@@ -28,5 +28,5 @@ ms.locfileid: "68382253"
 
 |記事 |説明 |
 |------|------------|
-| [職場のデバイスの参加](user-help-join-device-on-network.md)に関するページでは、職場所有のデバイスを組織のネットワークに参加させる方法について説明します。|
-| [個人のデバイスの登録](user-help-register-device-on-network.md)に関するページでは、個人所有のデバイスを組織のネットワークに登録する方法について説明します。|
+| [職場のデバイスを参加させる](user-help-join-device-on-network.md) | 職場所有のデバイスを組織のネットワークに参加させる方法について説明します。 |
+| [個人のデバイスを登録する](user-help-register-device-on-network.md) | 個人のデバイスを組織のネットワークに登録する方法について説明します。 |

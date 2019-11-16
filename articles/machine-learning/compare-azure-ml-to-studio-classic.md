@@ -8,23 +8,23 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 00a2268442f94822064f86d95b14160d67e1516c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716680"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084760"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Azure Machine Learning と ML Studio (クラシック) の違い
 
 この記事では、Azure Machine Learning と ML Studio (クラシック) の機能とインターフェイスを比較します。 
 
 ## <a name="about-ml-studio-classic"></a>ML Studio (クラシック) について
-[ML Studio (クラシック)](/studio/what-is-ml-studio.md) は、共同作業に対応するドラッグ アンド ドロップ式の視覚的なワークスペースです。コードを記述することなく機械学習ソリューションを構築、テスト、およびデプロイすることができます。 事前に構築および構成された機械学習アルゴリズムとデータ処理モジュールが、専用コンピューティング プラットフォームと共に使用されます。
+[ML Studio (クラシック)](studio/what-is-ml-studio.md) は、共同作業に対応するドラッグ アンド ドロップ式の視覚的なワークスペースです。コードを記述することなく機械学習ソリューションを構築、テスト、およびデプロイすることができます。 事前に構築および構成された機械学習アルゴリズムとデータ処理モジュールが、専用コンピューティング プラットフォームと共に使用されます。
 
 ## <a name="about-azure-machine-learning"></a>Azure Machine Learning について
 
-一方、[Azure Machine Learning](/service/overview-what-is-azure-ml.md) には、デザイナー (プレビュー) と呼ばれる Web インターフェイスと、複数の SDK および CLI が**両方**用意されており、すぐにデータを準備し、機械学習モデルのトレーニングとデプロイを行うことができます。 また、Azure Machine Learning では、スケール、複数のフレームワークのサポート、高度な ML 機能 (自動機械学習、パイプライン サポートなど) を利用できます。
+一方、[Azure Machine Learning](service/overview-what-is-azure-ml.md) には、デザイナー (プレビュー) と呼ばれる Web インターフェイスと、複数の SDK および CLI が**両方**用意されており、すぐにデータを準備し、機械学習モデルのトレーニングとデプロイを行うことができます。 また、Azure Machine Learning では、スケール、複数のフレームワークのサポート、高度な ML 機能 (自動機械学習、パイプライン サポートなど) を利用できます。
 
 Azure Machine Learning デザイナーでは、Studio (クラシック) と同様のドラッグ アンド ドロップ操作を利用できます。 ただし、Studio (クラシック) の専用コンピューティング プラットフォームとは異なり、デザイナーではユーザー独自のコンピューティング リソースが使用されています。また、スケーラブルで、Azure Machine Learning に完全に統合されています。  
 

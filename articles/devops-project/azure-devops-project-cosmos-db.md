@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969656"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888900"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>DevOps Projects を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
 
@@ -169,6 +169,6 @@ App Service に最新の作業をデプロイする CI/CD プロセスを使用�
 > * 変更を Git にコミットし、Azure に自動的にデプロイする
 > * リソースのクリーンアップ
 
-詳細および次の手順については、「[複数ステージの継続的デプロイ (CD) パイプラインを定義する](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)」を参照してください。
+詳細および次の手順については、「[複数ステージの継続的デプロイ (CD) パイプラインを定義する](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)」を参照してください。
 
 

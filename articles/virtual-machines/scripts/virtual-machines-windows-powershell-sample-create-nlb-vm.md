@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - Windows VM NLB の作成 | Microsoft Docs
+title: Azure PowerShell のサンプル スクリプト - Windows VM NLB の作成
 description: Azure PowerShell のサンプル スクリプト - Windows VM NLB の作成
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 92f437a175228ab75287bdbcf6da31b2786bcbd4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f06d88e94c795955f7c9a0f5cdfea4e06c403a05
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748714"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038833"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>高可用性仮想マシン間でトラフィックの負荷を分散する
 

@@ -1,7 +1,7 @@
 ---
 title: コンテンツの翻訳を防止する - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Translator Text API によるコンテンツの翻訳を防止します。
+description: Translator Text API によるコンテンツの翻訳を防止します。 Translator Text API では、翻訳されないようコンテンツにタグを付けることができます。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f9b48b094713f6ee141c5c15d5636ca965ad61b9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f3bf784898f7f51beea890d8d2a8401af1403fbc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595231"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888116"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Translator Text API によるコンテンツの翻訳を防止する方法
 

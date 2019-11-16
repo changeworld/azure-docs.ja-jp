@@ -1,7 +1,7 @@
 ---
 title: Bing Video Search API に検索要求を送信する
 titleSuffix: Azure Cognitive Services
-description: Bing Video Search API に検索クエリを送信する方法について説明します。
+description: この記事では、Bing Video Search API に送信される要求のパラメーターと属性、およびそこから返される JSON 応答オブジェクトについて説明します。
 services: cognitive-services
 author: aahi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: 96f92f0dc1e9e0c6c409fe17680fc57412e2b7d3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 869a14c4787507f89f0a39860972a5076f02f90c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512519"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110586"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Bing Video Search API への検索要求の送信
 

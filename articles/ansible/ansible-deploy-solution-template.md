@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241707"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833164"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>クイック スタート:Azure 用の Ansible ソリューション テンプレートを CentOS にデプロイする
 
@@ -59,7 +59,7 @@ Azure 用の Ansible ソリューション テンプレートは、Azure と連�
        - [VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](/azure/virtual-machines/windows/premium-storage)
        - [Azure 仮想マシンのワークロード用の Standard SSD マネージド ディスク](/azure/virtual-machines/windows/disks-standard-ssd)
    - **[パブリック IP アドレス]** - 仮想マシンの外部から仮想マシンと通信したい場合にこの設定を指定します。 既定値は、`ansible-pip` という名前の新しいパブリック IP アドレスです。 別の IP アドレスを指定するには、矢印を選択して、その IP アドレスの属性 (名前、SKU、割り当てなど) を指定します。 
-   - **[ドメイン名ラベル]** - 仮想マシンの公開ドメイン名を入力します。 名前は一意で、名前付け要件を満たしている必要があります。 仮想マシンの名前の指定について詳しくは、「[Azure リソースの名前付け規則](/azure/architecture/best-practices/naming-conventions)」を参照してください。
+   - **[ドメイン名ラベル]** - 仮想マシンの公開ドメイン名を入力します。 名前は一意で、名前付け要件を満たしている必要があります。 仮想マシンの名前の指定について詳しくは、「[Azure リソースの名前付け規則](/azure/architecture/best-practices/resource-naming)」を参照してください。
    - **[Ansible バージョン]** - バージョン番号または値「`latest`」を指定して、最新バージョンをデプロイします。 **[Ansible バージョン]** の隣にある情報アイコンを選択して、利用可能なバージョンに関する詳しい情報を確認します。
 
      ![Ansible の追加設定を行うための Azure portal タブ](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)

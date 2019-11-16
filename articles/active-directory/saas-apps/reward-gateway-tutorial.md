@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cdc4420758b67dc3a578b9530fb7039ed53ee66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092795"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081958"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>チュートリアル:Azure Active Directory と Reward Gateway の統合
 
@@ -124,7 +124,7 @@ Reward Gateway で Azure AD シングル サインオンを構成するには、
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、Reward Manager Portal で統合のセットアップを開始します。 詳細については、 https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication を参照してください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、Reward Manager Portal で統合のセットアップを開始します。 詳細については、 https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication を参照してください。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -142,7 +142,7 @@ Reward Gateway で Azure AD シングル サインオンを構成するには、
 
 ### <a name="configure-reward-gateway-single-sign-on"></a>Reward Gateway でのシングル サインオンの構成
 
-**Reward Gateway** 側でシングル サインオンを構成するには、Reward Manager Portal で統合のセットアップを開始します。 ダウンロードしたメタデータを使用して署名証明書を取得し、これを構成の際にアップロードします。 詳細については、 https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication を参照してください。
+**Reward Gateway** 側でシングル サインオンを構成するには、Reward Manager Portal で統合のセットアップを開始します。 ダウンロードしたメタデータを使用して署名証明書を取得し、これを構成の際にアップロードします。 詳細については、 https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication を参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

@@ -1,17 +1,14 @@
 ---
 title: REST API を使用してブループリントを作成する
 description: Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: quickstart
-ms.service: blueprints
-ms.openlocfilehash: 16540441aa8bc5d115606e1c5b3bdc2302ae2c20
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 9b711a6359ed9ecb45f25c460ece095af46ad8c3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978490"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960409"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 

@@ -1,17 +1,14 @@
 ---
 title: ブループリントのロックを使用した新しいリソースの保護
 description: このチュートリアルでは、Azure Blueprints のリソース ロックの "読み取り専用" と "削除禁止" のオプションを使用して、新しくデプロイされたリソースを保護する方法を学習します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297016"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960252"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>チュートリアル:Azure Blueprints のリソース ロックを使用して新しいリソースを保護する
 

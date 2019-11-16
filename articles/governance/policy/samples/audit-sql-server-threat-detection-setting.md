@@ -1,17 +1,14 @@
 ---
 title: 'サンプル: サーバー レベルの脅威検出の監査'
 description: このサンプル ポリシー定義は、SQL サーバー セキュリティ アラート ポリシーが指定した状態に設定されていない場合、このポリシーの監査を行います。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 0c5cfe2d30668102a356224b5efd141746ab0866
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 8eeb557426ef2eaca855c30f1bce14ee2b7681f4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254750"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74071228"
 ---
 # <a name="sample---audit-server-level-threat-detection-setting"></a>サンプル: サーバー レベルの脅威検出設定の監査
 

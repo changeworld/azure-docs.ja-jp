@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b94607691b662dcfcf0e166cd5c339b00ed0573d
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6ac464593e14a712cf0f137b5f3522d018d5874d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326678"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884533"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Slack の統合
 
@@ -46,7 +46,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Slack では、**SP** によって開始される SSO がサポートされます
 * Slack では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Slack では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/en-gb/azure/active-directory/saas-apps/slack-provisioning-tutorial)がサポートされます
+* Slack では、[**自動化された**ユーザー プロビジョニング](slack-provisioning-tutorial.md)がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。

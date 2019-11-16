@@ -1,17 +1,14 @@
 ---
 title: サンプル - 診断設定の監査
 description: このサンプル ポリシー定義は、指定されたリソースの種類で診断設定が有効になっていない場合に監査を行います。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: b71876195ffd3993b49794835781e8ccbd1648d3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 5940fcc86221d4089609ac2d0828b0c710de7fbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977462"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076413"
 ---
 # <a name="sample---audit-diagnostic-setting"></a>サンプル - 診断設定の監査
 

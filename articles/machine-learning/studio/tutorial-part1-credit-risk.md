@@ -1,6 +1,6 @@
 ---
 title: チュートリアル 1:信用リスクの予測
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: クラシック バージョンの Azure Machine Learning Studio で、信用リスク評価のための予測分析ソリューションを作成する方法を詳しく紹介しているチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズの第 1 部です。  ワークスペースの作成方法、データのアップロード方法、実験の作成方法について説明しています。
 keywords: 信用リスク, 予測分析ソリューション,リスク評価
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619179"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838867"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio (クラシック)
 
