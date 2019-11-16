@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0f3a486edb0c650a4a14e5e60b4459f758a64d4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 88b4df909e2c56f1a60e0f3c737b05ae4c27ca4a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499935"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123250"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>チュートリアル:Power BI プロバイダー ダッシュボードを構築する
 
@@ -91,7 +91,7 @@ Power BI でのデータセットのストリーミングについて詳しく�
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>ロジック アプリから Power BI にデータをストリーミングする
 次のステップでは、イベント ハブからのデータを解析して、前に作成した Power BI データセットにストリーミングします。
 
-1. これを行う前に、デバイスからイベント ハブに送信される JSON ペイロードを理解しておく必要があります。 そのためには、この[サンプル スキーマ](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp#telemetry)を確認し、自分のスキーマに合わせて変更するか、[Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)を使用してメッセージを調べます。 患者の継続的なモニタリング アプリケーションを使用している場合、メッセージは次のようになります。
+1. これを行う前に、デバイスからイベント ハブに送信される JSON ペイロードを理解しておく必要があります。 そのためには、この[サンプル スキーマ](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data#telemetry)を確認し、自分のスキーマに合わせて変更するか、[Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)を使用してメッセージを調べます。 患者の継続的なモニタリング アプリケーションを使用している場合、メッセージは次のようになります。
 
 **Smart Vitals Patch テレメトリ**
 

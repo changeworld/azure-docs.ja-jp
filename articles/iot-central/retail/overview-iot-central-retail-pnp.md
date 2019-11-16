@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 7da5d7b80dfd07b742af5ff6225f26207747e58c
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 7f82e2a539c968d0dde44cbc2ed411710054c290
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615337"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890701"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した小売ソリューションの構築
 
@@ -150,4 +150,4 @@ IoT Central のストア内分析条件監視アプリケーション テンプ�
 * [コネクテッド ロジスティクス ソリューション テンプレート](./tutorial-iot-central-connected-logistics-pnp.md)のデプロイ方法を学習する。
 * [デジタル流通センター テンプレート](./tutorial-iot-central-digital-distribution-center-pnp.md)のデプロイ方法を学習する。
 * [スマート在庫管理テンプレート](./tutorial-iot-central-smart-inventory-management-pnp.md)のデプロイ方法を学習する。
-* 「[IoT Central の概要](../core/overview-iot-central-pnp.md)」を参照して、IoT Central をさらに詳しく学習する。
+* 「[IoT Central の概要](../preview/overview-iot-central.md)」を参照して、IoT Central をさらに詳しく学習する。

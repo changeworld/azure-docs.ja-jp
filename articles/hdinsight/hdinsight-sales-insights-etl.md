@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d662ad59722658ed888aa732c1f45afdf48f850c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178004"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889206"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>チュートリアル:エンドツーエンドのデータ パイプラインを作成して売上の分析情報を導き出す
 
@@ -124,7 +124,7 @@ az storage blob upload-batch -d rawdata \
 
 ### <a name="create-a-data-factory"></a>Data Factory の作成
 
-Azure Data Factory とは、Azure Pipelines の自動化に役立つツールです。 これは、これらのタスクを実現する唯一の方法ではありませんが、これらのプロセスを自動化するための優れた方法です。 Azure Data Factory の詳細については、[Azure Data Factory のドキュメント](https://azure.microsoft.com/en-us/services/data-factory/)を参照してください。 
+Azure Data Factory とは、Azure Pipelines の自動化に役立つツールです。 これは、これらのタスクを実現する唯一の方法ではありませんが、これらのプロセスを自動化するための優れた方法です。 Azure Data Factory の詳細については、[Azure Data Factory のドキュメント](https://azure.microsoft.com/services/data-factory/)を参照してください。 
 
 このデータ ファクトリには、次の 2 つのアクティビティを含む 1 つのパイプラインがあります。 
 

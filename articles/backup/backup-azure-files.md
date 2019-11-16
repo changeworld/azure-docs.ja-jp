@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747471"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091090"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure ファイル共有のバックアップと復元
 
@@ -201,7 +201,7 @@ Azure ファイル共有の保護を停止するには:
 
 次の手順では、仮想マシンのバックアップ ジョブが停止されていることを前提としています。 バックアップ ジョブが停止されたら、[Backup Items]\(バックアップ項目\) ダッシュボードで [バックアップの再開] オプションと [バックアップ データの削除] オプションが使用できるようになります。 [バックアップ データの削除] をクリックし、ファイル共有の名前を入力して削除を確定します。 必要に応じて、削除の理由またはコメントを入力します。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 Azure ファイル共有の詳細については、以下を参照してください
 

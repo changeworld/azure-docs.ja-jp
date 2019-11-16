@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 184c57c0d9160cedef4be417f16c52c8635a1eb4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 13411e813e96a1548b912c024f75404dd856fee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68385295"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838966"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 
@@ -144,7 +144,7 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 **[+ リリース]**  ->  **[リリースの作成]**  ->  **[作成]** の順に選択して、リリースを手動で作成します。 **[リリース]** タブで、リリースの進行状況を監視できます。
 
-デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開いて、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) にアクセスします。  この例では、アプリケーション バージョンは「1.0.0.20170616.3」となっていることに注意してください。
+デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開き、`http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` に移動します。  この例では、アプリケーション バージョンは「1.0.0.20170616.3」となっていることに注意してください。
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>変更のコミットとプッシュ、リリースのトリガー
 
@@ -164,7 +164,7 @@ Azure Pipelines へ変更をプッシュすると、ビルドが自動的にト�
 
 ビルドの進行状況を確認するには、Visual Studio の**チーム エクスプローラー**で **[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース パイプラインを定義します。
 
-デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開いて、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) にアクセスします。  この例では、アプリケーション バージョンが "1.0.0.20170815.3" である点に注意してください。
+デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開き、`http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` に移動します。  この例では、アプリケーション バージョンが "1.0.0.20170815.3" である点に注意してください。
 
 ![Service Fabric Explorer][sfx1]
 

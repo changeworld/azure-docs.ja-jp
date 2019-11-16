@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b131a6fd5bb39ee5ec672a8ffb75cb22087a38af
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e599ff280481549f68822d96f97b85f2516b1593
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597435"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082748"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow、Logic Apps、Functions、および WebJobs の概要
 
@@ -123,12 +123,12 @@ Microsoft Flow、Logic Apps、および Functions の統合は、今後ますま
 * [Christopher Anderson によるプレゼンテーション「Leveraging Azure Functions & Azure App Service for integration scenarios (統合シナリオで Azure Functions と Azure App Service を使用する)」](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [Charles Lamanna によるプレゼンテーション「Integrations Made Simple (統合をもっとシンプルに)」](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [Logic Apps のライブ Web キャスト](https://aka.ms/logicappslive)
-* [Microsoft Flow のよく寄せられる質問](https://flow.microsoft.com/documentation/frequently-asked-questions/)
+* [Microsoft Flow のよく寄せられる質問](/power-automate/frequently-asked-questions)
 
 ## <a name="next-steps"></a>次の手順
 
 初めてのフロー、ロジック アプリ、関数アプリを実際に作ってみましょう。 以下のいずれかのリンクを選択してください。
 
-* [Get started with Microsoft Flow (Microsoft Flow の概要)](https://flow.microsoft.com/en-us/documentation/getting-started/)
+* [Get started with Microsoft Flow (Microsoft Flow の概要)](/power-automate/getting-started)
 * [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [初めての Azure 関数の作成](functions-create-first-azure-function.md)

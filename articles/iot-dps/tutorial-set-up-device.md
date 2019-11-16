@@ -1,22 +1,22 @@
 ---
-title: Azure IoT Hub Device Provisioning Service 用にデバイスをセットアップする
-description: デバイスの製造プロセス中に、IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスを設定します。
+title: チュートリアル:Azure IoT Hub Device Provisioning Service 用にデバイスをセットアップする
+description: チュートリアル:デバイスの製造プロセス中に、IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスを設定します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65911687"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112760"
 ---
-# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
+# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
 前のチュートリアルでは、デバイスを IoT ハブに自動的にプロビジョニングするために、Azure IoT Hub Device Provisioning Service を設定する方法を説明しました。 このチュートリアルでは、製造プロセス中にデバイスをセットアップし、IoT Hub で自動プロビジョニングされるようにする方法について説明します。 デバイスは、初めて起動してプロビジョニング サービスに接続するときに、[構成証明メカニズム](concepts-device.md#attestation-mechanism)に基づいてプロビジョニングされます。 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -141,7 +141,7 @@ TPM を使用するシミュレートされたデバイスのために構成証�
 > [!NOTE]
 > この手順では、シミュレートされたデバイスの使用を想定して、ワークステーションから SDK サンプル登録アプリケーションを実行します。 ただし、物理デバイスにデプロイするための登録アプリケーションを構築する場合も、同じ概念が適用されます。 
 
-1. Azure Portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、 **[_ID スコープ_]** の値をコピーします。 サービスによって "*ID スコープ*" が生成され、一意性が保証されます。 ID スコープは不変であり、登録 ID を一意に識別するために使用されます。
+1. Azure Portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、**[_ID スコープ_]** の値をコピーします。 サービスによって "*ID スコープ*" が生成され、一意性が保証されます。 ID スコープは不変であり、登録 ID を一意に識別するために使用されます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 

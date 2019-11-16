@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 9d55eca3df8897650f78a6bd85b649349c806e95
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 17d429444b81746a5c5082b8310c5208bc35f3d2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615264"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889036"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>チュートリアル:コネクテッド ロジスティクス アプリケーション テンプレートをデプロイして調べる
 
@@ -109,4 +109,4 @@ ms.locfileid: "73615264"
 ## <a name="next-steps"></a>次の手順
 * [コネクテッド ロジスティクスの概念](./architecture-connected-logistics-pnp.md)についてさらに詳しく学習します
 * 他の [IoT Central 小売りテンプレート](./overview-iot-central-retail-pnp.md)についてさらに詳しく学習します
-* [IoT Central の概要](../core/overview-iot-central-pnp.md)についてさらに詳しく学習します
+* [IoT Central の概要](../preview/overview-iot-central.md)についてさらに詳しく学習します

@@ -1,7 +1,7 @@
 ---
 title: 画像サムネイルのサイズを変更し、トリミングする - Bing Web Search API
 titleSuffix: Azure Cognitive Services
-description: Bing Search API から提供されるサムネイルのサイズを変更し、トリミングする方法について説明します。
+description: Bing Search API からの回答には、Bing によって提供されるサムネイル イメージへの URL が含まれています。これは、サイズ変更とトリミングが可能で、クエリ パラメーターを含めることができます。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: ecc6eb86e7115143fa63b44f9191b1fe8d3703b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 630b86f55a537d109c851cb585cfccc34d229f83
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881794"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110643"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>サムネイル画像のサイズ変更とトリミング
 

@@ -1,17 +1,14 @@
 ---
 title: サンプル - 承認された VM イメージ
 description: このサンプル ポリシー定義は、承認されたカスタム イメージのみが環境にデプロイされることを要求します。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 34a3cf54879dcf6fc25fab50bcbabde28fff653a
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: f8b5911cfa7700ef14dfac610ab4533c57f22e76
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980843"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076473"
 ---
 # <a name="sample---approved-virtual-machine-images"></a>サンプル - 承認された仮想マシン イメージ
 

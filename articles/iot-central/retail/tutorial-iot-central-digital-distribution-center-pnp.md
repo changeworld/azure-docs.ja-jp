@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 1965cc17f3d58932321c3ff14c99a962830d07b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615253"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890670"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>チュートリアル:デジタル配布センター アプリケーション テンプレートを展開して調べる
 
@@ -113,4 +113,4 @@ ms.locfileid: "73615253"
 ## <a name="next-steps"></a>次の手順
 * デジタル配布センター ソリューション アーキテクチャの[デジタル配布センターの概念](./architecture-digital-distribution-center-pnp.md)についてさらに詳しく学習します
 * 他の [IoT Central 小売りテンプレート](./overview-iot-central-retail-pnp.md)についてさらに詳しく学習します
-* [IoT Central の概要](../core/overview-iot-central-pnp.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します
+* [IoT Central の概要](../preview/overview-iot-central.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します

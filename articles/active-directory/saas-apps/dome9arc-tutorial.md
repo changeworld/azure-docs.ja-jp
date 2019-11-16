@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f0669a474c24647e71eae8b5e0e0830b7c0bef
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b46ac34db21576c7e2de2271a468e3e782ff6aa9
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533099"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885349"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Check Point CloudGuard Dome9 Arc の統合
 
@@ -107,7 +107,7 @@ Check Point CloudGuard Dome9 Arc で Azure AD の SSO を構成してテスト�
     | memberof | user.assignedroles |
 
     >[!NOTE]
-    >Azure AD でロールを作成する方法については、[ここ](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/apptio-tutorial)をクリックしてください。
+    >Azure AD でロールを作成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/saas-apps/apptio-tutorial)をクリックしてください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

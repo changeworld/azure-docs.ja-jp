@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 11/14/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 64b4b9a4ad5ceb0b3c33ae022b34daeafda93a62
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491211"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091748"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースをテストする
 
@@ -83,7 +83,7 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 * 一連の質問に対する上位の回答とスコアを判定する
 * 一連の質問に対する予測される回答を検証する
 
-バッチ テストには、バッチ テスト ツールが用意されています。 このツールは、ダウンロード用の [zip ファイル化された実行可能ファイル](https://qnamakerstore.blob.core.windows.net/qnamakerdata/batchtesting/bt.zip)、または [C# ソース コード](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)として入手できます。 
+バッチ テストには、バッチ テスト ツールが用意されています。 このツールは、ダウンロード用の [zip ファイル化された実行可能ファイル](https://aka.ms/qnamakerbatchtestingtool)、または [C# ソース コード](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)として入手できます。 
 
 [このツールに関するリファレンス ドキュメント](../reference-tsv-format-batch-testing.md)には、次のものがあります。
 
