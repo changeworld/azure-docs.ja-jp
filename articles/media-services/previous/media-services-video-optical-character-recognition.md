@@ -14,14 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825610"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084820"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する  
+
 ## <a name="overview"></a>概要
 ビデオ ファイルからテキスト コンテンツを抽出し、編集かつ検索可能なデジタル テキストを生成する必要がある場合は、Azure Media Analytics OCR (光学式文字認識) を使用する必要があります。 この Azure メディア プロセッサは、ビデオ ファイル内のテキスト コンテンツを検出し、テキスト ファイルを生成して使用できるようにします。 OCR を使用すると、メディアのビデオ信号から有意なメタデータを自動的に抽出できます。
 

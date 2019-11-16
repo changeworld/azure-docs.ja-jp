@@ -4,18 +4,21 @@ description: Azure Migrate Server Assessment を使用した物理サーバー�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/11/2019
 ms.author: raynew
-ms.openlocfilehash: ddd659e8cbcb54a36868848d0c6327f294d531b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510220"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907163"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
 この記事では、Azure Migrate で物理サーバーを評価する場合に、Azure Migrate アプライアンスを設定する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。
+
+> [!NOTE]
+> ここで言及されている機能がまだ Azure Migrate ポータルに表示されない場合は、しばらくお待ちください。 来週あたりに表示されるようになります。
 
 Azure Migrate アプライアンスは、次の操作を行うために Azure Migrate Server Assessment によって使用される軽量アプライアンスです。
 

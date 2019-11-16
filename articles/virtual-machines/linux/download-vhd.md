@@ -1,5 +1,5 @@
 ---
-title: Azure から Linux VHD をダウンロードする | Microsoft Docs
+title: Azure から Linux VHD をダウンロードする
 description: Azure CLI と Azure Portal を使用して Linux VHD をダウンロードします。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: ed79df03a42c1558b975cd1c21c79716d50d4616
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083499"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036288"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819094"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928567"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 
@@ -131,7 +131,7 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 [アラートへの対応を自動化](../../azure-monitor/platform/alerts-webhooks.md)できます。 アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
 
 ## <a name="see-also"></a>関連項目
-* [Application Insights を構成するスクリプト](powershell-script-create-resource.md)
+* [Application Insights を構成するスクリプト](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [テンプレートから Application Insights と Web テスト リソースを作成する](powershell.md)
 * [Microsoft Azure Diagnostics の Application Insights への結合を自動化する](powershell-azure-diagnostics.md)
 * [アラートへの対応を自動化する](../../azure-monitor/platform/alerts-webhooks.md)

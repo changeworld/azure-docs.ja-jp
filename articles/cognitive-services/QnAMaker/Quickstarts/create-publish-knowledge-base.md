@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 8ce35156cd772487c4787f2f5fb99feb1225826f
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: bc64196969b23f0aad77ff4d4495e4bb3e569c32
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794205"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888235"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -46,7 +46,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 1. 次の URL でサンプルの Word 文書を追加します。 
 
-    `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`
+    `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
 
 1. [`+ Add URL`] を選択します。
 

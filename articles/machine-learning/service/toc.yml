@@ -103,7 +103,7 @@
             - name: ユーザーとロールを管理する
               href: how-to-assign-roles.md
             - name: 仮想ネットワークの使用
-              displayName: vnet
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: SSL を使用して Web サービスをセキュリティで保護する
               href: how-to-secure-web-service.md

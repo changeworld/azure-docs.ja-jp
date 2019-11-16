@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1c9562f413fa0ed52d61d0b38df358f1a2cd03f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 54d34a120c575fd01f746131d909058951d1facf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498688"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839248"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信のセキュリティ | 軽減策 
 | 製品/サービス | 記事 |
@@ -136,7 +136,7 @@ ms.locfileid: "73498688"
   </system.webServer>
 </configuration>
 ```
-このルールは、ユーザーが HTTP を使用してページを要求したときに HTTP 状態コード 301 (永続的なリダイレクト) を返すことで動作します。 301 は、訪問者が要求した URL と同じ URL へ要求をリダイレクトしますが、要求の HTTP 部分は HTTPS で置き換えられます。 たとえば、HTTP://contoso.com は HTTPS://contoso.com に制限されます。 
+このルールは、ユーザーが HTTP を使用してページを要求したときに HTTP 状態コード 301 (永続的なリダイレクト) を返すことで動作します。 301 は、訪問者が要求した URL と同じ URL へ要求をリダイレクトしますが、要求の HTTP 部分は HTTPS で置き換えられます。 たとえば、`HTTP://contoso.com` は `HTTPS://contoso.com` に制限されます。 
 
 ## <a id="http-hsts"></a>HTTP Strict Transport Security (HSTS) を有効にする
 

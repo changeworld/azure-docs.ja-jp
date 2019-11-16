@@ -4,7 +4,7 @@ description: Azure Active Directory レポートに関するよく寄せられ�
 services: active-directory
 documentationcenter: ''
 author: cawrites
-manager: daveba
+manager: MarkusVi
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cbaf7d4e5a0dee82edf9b6b6bd65b91309e1344d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127018"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007693"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 

@@ -12,13 +12,13 @@ author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/14/2019
-ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826808"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082486"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database の接続に関する問題と一時的なエラーに対応する
 
@@ -30,7 +30,7 @@ ms.locfileid: "73826808"
 
 一時エラーは、一過性の障害とも呼ばれ、基になる原因はすぐ自動的に解決されます。 一時エラーを起こす偶発的原因として、Azure システムが、各種ワークロードの負荷分散を行うために行うハードウェア リソースの瞬間的切り替えがあります。 この再構成イベントのほとんどは 60 秒以内に完了します。 この再構成の進行中、SQL Database への接続の問題が発生する場合があります。 SQL Database に接続するアプリケーションは、これらの一時エラーを想定して構築する必要があります。 これに対処するには、アプリケーション エラーとしてユーザーに表示するのではなく、コードに再試行ロジックを実装します。
 
-クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一時エラーが報告されます。 [SQL Database クライアント アプリケーションの SQL エラー コード](sql-database-develop-error-messages.md)に関するの記事の冒頭付近に一時エラーの一覧があります。この表のエラー番号と **Number** プロパティを比較してください。
+クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一時エラーが報告されます。 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 

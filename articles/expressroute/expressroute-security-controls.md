@@ -1,20 +1,18 @@
 ---
-title: Azure ExpressRoute のセキュリティ コントロール
+title: 'Azure ExpressRoute: セキュリティ コントロール'
 description: Azure ExpressRoute を評価するためのセキュリティ コントロールのチェックリスト
 services: expressroute
 ms.service: expressroute
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ab73ba6dd4b78d3cd0be5f4c7f7a502e5c58e08
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a288b44c07bc2df8529f07264dcee648f3af379a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886318"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079929"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Azure ExpressRoute のセキュリティ コントロール
 
@@ -50,7 +48,7 @@ ms.locfileid: "70886318"
 
 | セキュリティ コントロール | はい/いいえ | メモ |
 |---|---|--|
-| 保存時のサーバー側の暗号化:Microsoft のマネージド キー |  該当なし | ExpressRoute は顧客データを格納しません。 |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー |  該当なし | ExpressRoute は顧客データを格納しません。 |
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | 該当なし |  |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| いいえ | |
@@ -65,4 +63,4 @@ ms.locfileid: "70886318"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について説明します。
+- [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f3006dd3f474dea1add1621f35f902422e244ce1
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 4f3f435110f0cba5ea2370f2900d4e7031904067
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161556"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890326"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーをアタッチまたはデタッチする
 教師/ラボ管理者は、テンプレート VM イメージを他のユーザーが再利用できるよう、Azure [共有イメージ ギャラリー](../../virtual-machines/windows/shared-image-galleries.md)に保存することができます。 最初の手順として、ラボ管理者は、ラボ アカウントに既存の共有イメージ ギャラリーをアタッチします。 共有イメージ ギャラリーがアタッチされたら、ラボ アカウントで作成されたラボは、共有イメージ ギャラリーにイメージを保存できます。 その他の教師は、共有イメージ ギャラリーからこのイメージを選択して、そのクラスのテンプレートを作成できます。 
@@ -26,7 +26,7 @@ ms.locfileid: "71161556"
 この記事では、共有イメージ ギャラリーをラボ アカウントにアタッチしたり、ラボ アカウントからデタッチしたりする方法について説明します。 
 
 > [!NOTE]
-> イメージを共有イメージ ギャラリーに保存すると、Azure Lab Services によって、同じ[地域](https://azure.microsoft.com/global-infrastructure/geographies/)内で使用可能な他のリージョンに、保存したイメージがレプリケートされます。 これにより、同じ地域内の他のリージョンで作成されたラボでイメージを使用できるようになります。 共有イメージ ギャラリーにイメージを保存すると、追加コストが発生します。これには、レプリケートされたすべてのイメージのコストが含まれます。 このコストは、Azure Lab Services の使用コストとは別のものです。 共有イメージ ギャラリーの価格について詳しくは、[共有イメージ ギャラリーの課金]( https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries#billing)に関するページを参照してください。
+> イメージを共有イメージ ギャラリーに保存すると、Azure Lab Services によって、同じ[地域](https://azure.microsoft.com/global-infrastructure/geographies/)内で使用可能な他のリージョンに、保存したイメージがレプリケートされます。 これにより、同じ地域内の他のリージョンで作成されたラボでイメージを使用できるようになります。 共有イメージ ギャラリーにイメージを保存すると、追加コストが発生します。これには、レプリケートされたすべてのイメージのコストが含まれます。 このコストは、Azure Lab Services の使用コストとは別のものです。 共有イメージ ギャラリーの価格について詳しくは、[共有イメージ ギャラリーの課金]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)に関するページを参照してください。
 
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する

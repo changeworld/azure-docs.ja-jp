@@ -8,13 +8,14 @@ ms.topic: article
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: 7ffed52c098495236614ecfee8d29af561777e57
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 33f107bfbd4cc96a1103f0a310125b6c2f7013e8
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310092"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014623"
 ---
+# <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure Storage Explorer を使用して Azure マネージド ディスクを管理する
 [!INCLUDE [disks-upload-vhd-to-managed-disk-storage-explorer](../../../includes/disks-upload-vhd-to-managed-disk-storage-explorer.md)]
 
 [Azure portal を使用して VHD から VM を作成する](create-vm-specialized-portal.md)方法について説明します。

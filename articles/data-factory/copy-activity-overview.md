@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b88983b4941143e5323ee795908cb332bdd79817
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fa2876b88a520480813ebfb8af8219d53c32057a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678412"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075557"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -52,20 +52,7 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 コピー アクティビティを使用して、2 つのファイルベースのデータ ストア間でファイルをそのままコピーすることができます。 この場合、データは、シリアル化や逆シリアル化なしで効率的にコピーされます。
 
-コピー アクティビティでは、次の形式でファイルの読み取りと書き込みを行うこともできます。
-- Text
-- JSON
-- Avro
-- ORC
-- Parquet
-
-コピー アクティビティでは、次のコーデックを使用してファイルを圧縮および圧縮解除できます。 
-- Gzip
-- Deflate
-- Bzip2
-- ZipDeflate
-
-詳細については、[サポートされているファイル形式と圧縮形式](supported-file-formats-and-compression-codecs.md)に関する記事を参照してください。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
 たとえば、次のコピー アクティビティを実行できます。
 

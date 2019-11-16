@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 5b9b92cd39e8d540f784d82d6c7f4a5754c85b62
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8f39556fcffea5f254e5362dbb1b55762f60c9b3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677726"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131942"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -213,7 +213,7 @@ Application Insights SDK for ASP.NET Core では、固定レートとアダプ�
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers の追加
 
-すべてのテレメトリで送信されるグローバル プロパティを定義するときは、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)を使います。
+すべてのテレメトリで送信されるグローバル プロパティを定義するときは、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)を使います。
 
 次のコードで示すように、新しい `TelemetryInitializer` を `DependencyInjection` コンテナーに追加します。 `DependencyInjection` コンテナーに追加した `TelemetryInitializer` は、SDK によって自動的に取得されます。
 
@@ -249,7 +249,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="adding-telemetry-processors"></a>テレメトリ プロセッサを追加する
 
-拡張メソッド `AddApplicationInsightsTelemetryProcessor` を `IServiceCollection` で使用することで、カスタム テレメトリ プロセッサを `TelemetryConfiguration` に追加できます。 テレメトリ プロセッサは、[高度なフィルター処理のシナリオ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor)で使用します。 次の例を使用してください。
+拡張メソッド `AddApplicationInsightsTelemetryProcessor` を `IServiceCollection` で使用することで、カスタム テレメトリ プロセッサを `TelemetryConfiguration` に追加できます。 テレメトリ プロセッサは、[高度なフィルター処理のシナリオ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer)で使用します。 次の例を使用してください。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

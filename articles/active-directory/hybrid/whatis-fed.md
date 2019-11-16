@@ -13,12 +13,12 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52f9832a4307ea9519df448f192eeca70043a6d6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: aeb8886987c09b504262d6ea12863a646d6022cc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035181"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883649"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Azure AD とのフェデレーションとは
 
@@ -35,7 +35,7 @@ ms.locfileid: "70035181"
 
 ## <a name="next-steps"></a>次の手順
 
-- [ハイブリッド ID とは](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/whatis-hybrid-identity)
+- [ハイブリッド ID とは](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 - [Azure AD Connect と Connect Health とは](whatis-azure-ad-connect.md)
 - [パスワード ハッシュ同期とは](whatis-phs.md)
 - [フェデレーションとは](whatis-fed.md)

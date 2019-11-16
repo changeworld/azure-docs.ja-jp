@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a1c3bec4b32a9d3450e307f42958bb19263c3d7a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717161"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837553"
 ---
 # <a name="permutation-feature-importance"></a>順列の特徴量の重要度
 
@@ -24,7 +24,7 @@ ms.locfileid: "73717161"
 
 モジュールから返されるスコアは、順列の後のトレーニング済みモデルのパフォーマンスの*変化*を表しています。 重要な特徴は、通常、シャッフル プロセスの影響を受けやすいため、重要度スコアが高くなります。 
 
-この記事では、順列の特徴量、その理論上の基礎、および機械学習でのその応用について概要を示します。[順列の特徴量の重要度](http://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx)。  
+この記事では、順列の特徴量、その理論上の基礎、および機械学習でのその応用について概要を示します。[順列の特徴量の重要度](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx)。  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>順列の特徴量の重要度の使用方法
 

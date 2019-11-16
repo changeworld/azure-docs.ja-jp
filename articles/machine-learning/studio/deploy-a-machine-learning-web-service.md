@@ -1,6 +1,6 @@
 ---
 title: Web サービスのデプロイ
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: トレーニング実験を予測実験に変換し、そのデプロイを準備してから、Azure Machine Learning Studio (クラシック) Web サービスとしてデプロイする方法。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 846b356d98a68000f48609de1f19ff2f7de3cab9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4324d33a9da66c5f49645e1c8014bd5f57d37bd9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686270"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837741"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
 

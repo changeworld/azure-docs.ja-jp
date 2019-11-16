@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: e1e1c7f30066197c6420956368a09de69e87e466
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bd16cefff66c727ad9de6331a311796cf9521192
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747343"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091045"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用した Azure への SQL Server のバックアップ
 
@@ -156,4 +156,4 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
 ### <a name="next-steps"></a>次の手順
 
-•   [Azure Backup の FAQ](backup-azure-backup-faq.md)
+* [Azure Backup FAQ](backup-azure-backup-faq.md)

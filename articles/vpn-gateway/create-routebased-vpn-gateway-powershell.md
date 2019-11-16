@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3ad391aae72bec392ae75b333fc3bfc1ff3f95f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a1c34ea25c8ef4bdc3e75e18d6f4a603efc67d5
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727331"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953829"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell を使用してルートベースの VPN ゲートウェイを作成します
 
@@ -79,7 +79,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) コマンドレットを使用して仮想ネットワークのサブネット構成を設定します。
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzVirtualNetwork
+$vnet | Set-AzVirtualNetwork
 ```
 
 ## <a name="PublicIP"></a>パブリック IP アドレスの要求

@@ -1,5 +1,5 @@
 ---
-title: クラシックから Azure Resource Manager への IaaS リソースの移行計画 | Microsoft Docs
+title: クラシックから Azure Resource Manager への IaaS リソースの移行計画
 description: クラシックから Azure Resource Manager への IaaS リソースの移行計画
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 3cf262f2c2f14ea66a40facfd5b32139fc648e47
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 8dc1ee85b9d17824898de80562ea5bfb251a2c41
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165325"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035713"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 1c49c6221e9b310a1b14a4e06a296befc7f6da4d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058460"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111728"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM のネットワーク インターフェイスをリセットする方法 
 
@@ -68,7 +68,7 @@ ms.locfileid: "71058460"
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
 3. マシンへの RDP を試します。  成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。
 
@@ -109,7 +109,7 @@ ms.locfileid: "71058460"
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
     
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
 3. マシンへの RDP を試します。 成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。 
 

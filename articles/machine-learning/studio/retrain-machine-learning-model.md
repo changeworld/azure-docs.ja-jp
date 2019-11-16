@@ -1,6 +1,6 @@
 ---
 title: Web サービスの再トレーニング
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (クラシック) で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: e35ab4b3a45edd5a1172bc3a07d7c31abd2135f7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c24eb50688efcf220b26b5a0f352d012876dbab3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684769"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838681"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 

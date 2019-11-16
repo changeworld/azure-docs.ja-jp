@@ -4,15 +4,13 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08/29/2019
-ms.openlocfilehash: 75eebdf1e7628bc9c38305b7f11d4fc69af031b9
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 29cf947d1e9d26460dc34a6417e76b68bb75e9dc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391706"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005474"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances を使用してコストを削減する
-
 Azure 予約 VM インスタンスにコミットすると、コストを削減できます。 予約割引は、予約スコープと属性に一致する実行中の仮想マシン数に対して自動的に適用されます。 割引を取得するために、仮想マシンに予約を割り当てる必要はありません。 予約インスタンスの購入では、VM 使用量のコンピューティング部分のみが対象となります。 Windows VM の場合、使用量メーターは 2 つの異なるメーターに分割されます。 Linux メーターと同じであるコンピューティング メーターと、Windows IP メーターがあります。 購入時に表示される料金は、コンピューティング コストの分のみです。 料金には、Windows ソフトウェアのコストは含まれません。 ソフトウェアのコストの詳細については、「[Azure Reserved VM Instances に含まれないソフトウェアのコスト](../articles/billing/billing-reserved-instance-windows-software-costs.md)」を参照してください。
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>購入する前に適切な VM サイズを決定する

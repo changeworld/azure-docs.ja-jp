@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする | Microsoft Docs
+title: Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 description: Azure の Cloud Foundry にアプリケーションをデプロイします。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: c4088e593ca7d48a3e7a5c1a6699f316b57fff31
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083955"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036827"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 

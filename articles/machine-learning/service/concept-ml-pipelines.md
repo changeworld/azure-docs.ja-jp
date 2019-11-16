@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 11/04/2019
-ms.openlocfilehash: f1b061e92ce0650da4d5b95643eb6e9df917e3b8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/06/2019
+ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671549"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112402"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -85,7 +85,7 @@ ML プロジェクトの初期段階では、Azure ワークスペースとリ�
 
 また、ステップの出力を再利用することもできます (選択した場合)。 再利用を可能性として指定し、再計算をトリガーするアップストリームの依存関係がない場合、パイプライン サービスではステップの結果のキャッシュされたバージョンが使用されます。 このような再利用によって、開発時間が大幅に短縮されます。 複雑なデータ準備タスクがある場合は、そのタスクを必要以上に頻繁に再実行している可能性があります。 パイプラインを使用すると、その心配をしないで済みます。必要な場合にはステップが実行され、そうでない場合には実行されません。
 
-この依存関係の分析、オーケストレーション、およびアクティブ化はすべて、[Pipeline](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) オブジェクトをインスタンス化して `Experiment` に渡し、`submit()` を呼び出すときに、Azure Machine Learning によって処理されます。 
+この依存関係の分析、オーケストレーション、およびアクティブ化はすべて、[Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) オブジェクトをインスタンス化して `Experiment` に渡し、`submit()` を呼び出すときに、Azure Machine Learning によって処理されます。 
 
 ### <a name="coordinating-the-steps-involved"></a>必要なステップの調整
 
@@ -107,7 +107,7 @@ ML プロジェクトの初期段階では、Azure ワークスペースとリ�
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>Python SDK を使用したパイプラインの構築
 
-[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) では、パイプラインは `azureml.pipeline.core` モジュールで定義されている Python オブジェクトです。 [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) オブジェクトには、1 つ以上の [PipelineStep](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) オブジェクトの順序付けられたシーケンスが含まれています。 `PipelineStep` クラスは抽象であり、実際のステップは [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py)、[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)、[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) などのサブクラスになります。 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) クラスでは、パイプライン間で共有できる、再利用可能な一連のステップが保持されます。 `Pipeline` は `Experiment` の一部として実行されます。
+[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) では、パイプラインは `azureml.pipeline.core` モジュールで定義されている Python オブジェクトです。 [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) オブジェクトには、1 つ以上の [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) オブジェクトの順序付けられたシーケンスが含まれています。 `PipelineStep` クラスは抽象であり、実際のステップは [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py)、[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)、[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) などのサブクラスになります。 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) クラスでは、パイプライン間で共有できる、再利用可能な一連のステップが保持されます。 `Pipeline` は `Experiment` の一部として実行されます。
 
 Azure ML パイプラインは、Azure Machine Learning ワークスペースに関連付けられています。パイプライン ステップは、そのワークスペース内で使用可能なコンピューティング ターゲットに関連付けられています。 詳細については、「[Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace)」または「[Azure Machine Learning でのコンピューティング先とは](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)」を参照してください。
 

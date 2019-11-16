@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cijothomas
 ms.author: cithomas
 ms.date: 09/15/2019
-ms.openlocfilehash: ccc7218575638c7ede2c56a99e41dd68cbd475c0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5f812d5fe1b25358a0bf09ebf879569ae29b33f3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899231"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131888"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
@@ -360,7 +360,7 @@ SDK では、上記の説明のとおり、テレメトリが自動的に収集�
 |EnableHeartbeat | ハートビート機能を有効または無効にします。この機能は、"HeartBeatState" という名前のカスタム メトリックを、.NET バージョン、Azure 環境情報 (該当する場合) などのランタイムに関する情報と共に定期的に (既定では 15 分) 送信します。 | true
 |AddAutoCollectedMetricExtractor | AutoCollectedMetrics エクストラクターを有効または無効にします。これは、サンプリングが行われる前に要求/依存関係に関する事前に集計されたメトリックを送信する TelemetryProcessor です。 | true
 
-最新の一覧については、[`ApplicationInsightsServiceOptions` の構成可能な設定](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)を参照してください。
+最新の一覧については、[`ApplicationInsightsServiceOptions` の構成可能な設定](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)を参照してください。
 
 ### <a name="sampling"></a>サンプリング
 
@@ -368,7 +368,7 @@ SDK では、上記の説明のとおり、テレメトリが自動的に収集�
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers の追加
 
-すべてのテレメトリと共に送信されるプロパティを定義する場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)を使用します。
+すべてのテレメトリと共に送信されるプロパティを定義する場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)を使用します。
 
 新しい `TelemetryInitializer` を `DependencyInjection` コンテナーに追加すると、SDK によって、それらが `TelemetryConfiguration` に自動的に追加されます。
 
@@ -406,7 +406,7 @@ SDK では、上記の説明のとおり、テレメトリが自動的に収集�
 
 ### <a name="adding-telemetry-processors"></a>テレメトリ プロセッサを追加する
 
-拡張メソッド `AddApplicationInsightsTelemetryProcessor` を `IServiceCollection` で使用することで、カスタム テレメトリ プロセッサを `TelemetryConfiguration` に追加できます。 [高度なフィルター処理シナリオ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor)でテレメトリ プロセッサを使用して、Application Insights サービスに送信するテレメトリに何を含めて何を除外するかを、より直接的に制御できるようにします。 次の例を使用してください。
+拡張メソッド `AddApplicationInsightsTelemetryProcessor` を `IServiceCollection` で使用することで、カスタム テレメトリ プロセッサを `TelemetryConfiguration` に追加できます。 [高度なフィルター処理シナリオ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer)でテレメトリ プロセッサを使用して、Application Insights サービスに送信するテレメトリに何を含めて何を除外するかを、より直接的に制御できるようにします。 次の例を使用してください。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)

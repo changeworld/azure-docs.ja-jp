@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cdc46ea3a45d04e6e837d0b7ad52ed8bf565cd2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2cbee6bfcca3ddb356abe9dceab2fca07c152b07
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702423"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961810"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
 1. **[アクセス許可の追加]** を選択します。 **[API アクセス許可の要求]** ページが表示されます。
 1. **[API を選択します]** の設定で、 **[所属する組織で使用している API]** を選択します。 API が公開されているディレクトリ内のアプリケーションを含む一覧が表示されます。
 1. 検索ボックスに入力するかスクロールしてプロキシ アプリケーションを探し (「[手順 1: プロキシ アプリケーションを発行する](#step-1-publish-your-proxy-application)」で発行したもの)、プロキシ アプリケーションを選択します。
-1. **[アプリケーションに必要なアクセス許可の種類]** の見出しで、アクセス許可の種類を選択します。 ネイティブ アプリケーションでサインインしたユーザーとしてプロキシ アプリケーションの API にアクセスする必要がある場合は、 **[委任されたアクセス許可]** を選択します。 サインインしたユーザーを使わずにバックグラウンド サービスまたはデーモンとしてネイティブ アプリケーションを実行する場合は、 **[アプリケーションのアクセス許可]** を選択します。
+1. **[アプリケーションに必要なアクセス許可の種類]** の見出しで、アクセス許可の種類を選択します。 ネイティブ アプリケーションでサインインしたユーザーとしてプロキシ アプリケーションの API にアクセスする必要がある場合は、 **[委任されたアクセス許可]** を選択します。
 1. **[アクセス許可を選択する]** の見出しで、必要なアクセス許可を選択して、 **[アクセス許可の追加]** を選択します。 ネイティブ アプリケーションの **[API のアクセス許可]** ページに、追加したプロキシ アプリケーションとアクセス許可 API が表示されるようになります。
 
 ## <a name="step-4-edit-the-active-directory-authentication-library"></a>手順 4:Active Directory 認証ライブラリの編集

@@ -1,5 +1,5 @@
 ---
-title: Azure で動作保証済みの Linux ディストリビューション | Microsoft Docs
+title: Azure で動作保証済みの Linux ディストリビューション
 description: Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、CentOS、Oracle、および SUSE に関する指針も含めて、説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: szark
-ms.openlocfilehash: c9537ec39e58d5703ed3bc1774520a12b25147b0
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 66717222b505b7dd91f7f270cab27ec4ca97038e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615592"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036213"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft はさまざまな Linux コミュニティと連携し、動作保証済みディストリビューション リストを拡充しています。 それまでの間、Marketplace からご利用いただけないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)」のガイドラインに従って、独自の Linux をいつでも使用できます。

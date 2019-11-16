@@ -1,18 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 ブループリント サンプル - コントロール マッピング
 description: Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルの Azure Policy と RBAC へのコントロール マッピング。
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3e72f923ea3d752d829731d1f741bda090ae9fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163047"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037280"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 ブループリント サンプルのコントロール マッピング
 

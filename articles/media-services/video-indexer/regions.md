@@ -1,6 +1,6 @@
 ---
 title: Video Indexer を利用できるリージョン - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: この記事では、Video Indexer を利用できる Azure リージョンについて説明します。
 services: media-services
 author: anikaz
@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 404aaf91c0cb30df0a83353ef7397987ec3f8e80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b67c89e02091d57b4f2dc901005c2dae36deafc2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799427"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838200"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Video Indexer が存在する Azure リージョン
 
 Video Indexer API には、呼び出しがルーティングされる Azure リージョンを設定する必要がある **location** パラメーターがあります。 これは、[Video Indexer が利用できる Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)にする必要があります。
 
-## <a name="locations"></a>Locations
+## <a name="locations"></a>場所
 
 **Azure** パラメーターには、その値として Azure リージョンのコード名を指定する必要があります。 Video Indexer をプレビュー モードで使用する場合は、値として *"trial"* を指定する必要があります。 それ以外の場合は、お使いのアカウントが存在し、呼び出しがルーティングされる Azure リージョンのコード名を取得するために、次の行を [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) で実行できます。
 

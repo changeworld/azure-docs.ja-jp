@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 2ab620ec456610029d699952bb9625abfe4c21dc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 5361a820da0caa336ccc95ae657407889443268c
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307878"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048433"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
 
@@ -130,5 +130,5 @@ node index.js
 
 ## <a name="next-steps"></a>次の手順
 
-Media Services の [Node.js リファレンス](https://aka.ms/ams-v3-nodejs-ref) ドキュメントを調べて、node.js で Media Services API を使用する方法が示されている[サンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)をご覧ください。
+Media Services の [Node.js リファレンス](/javascript/api/overview/azure/mediaservices/management) ドキュメントを調べて、node.js で Media Services API を使用する方法が示されている[サンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)をご覧ください。
 

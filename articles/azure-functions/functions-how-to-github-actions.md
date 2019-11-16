@@ -7,19 +7,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028985"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091376"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
 [GitHub Actions](https://github.com/features/actions) を使用すると、Azure の関数アプリにお使いの関数コードを自動的にビルドしてデプロイするワークフローを定義できます。 
-
-> [!IMPORTANT]  
-> GitHub Actions は現在ベータ版です。 まず、ご自分の GitHub アカウントを使用し、[新規登録し、プレビューに参加](https://github.com/features/actions)する必要があります。
 
 GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)とは、お使いの GitHub リポジトリに定義する自動化されたプロセスです。 このプロセスによって、GitHub 上にお使いの関数アプリ プロジェクトをビルドしてデプロイする方法が GitHub に対して指示されます。 
 
@@ -33,6 +30,9 @@ Azure Functions のワークフロー ファイルには、次の 3 つのセク
 | **ビルド** | <ol><li>環境を設定します。</li><li>関数アプリを構築します。</li></ol> |
 | **デプロイする** | <ol><li>関数アプリをデプロイします。</li></ol>|
 
+> [!NOTE]
+> 認証に発行プロファイルを使用する場合は、サービス プリンシパルを作成する必要はありません。
+
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 [Azure CLI](/cli/azure/) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com) を使用するか、 **[試してみる]** ボタンを選択して実行できます。
@@ -42,9 +42,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 
 この例のリソースのプレースホルダーは、ご自分のサブスクリプション ID、リソース グループ、および関数アプリ名に置き換えます。 これにより、ご自分の関数アプリにアクセスするためのロールの割り当て資格情報が出力されます。 この JSON オブジェクトをコピーします。このオブジェクトは、GitHub に対する認証に使用します。
-
-> [!NOTE]
-> 認証に発行プロファイルを使用する場合は、サービス プリンシパルを作成する必要はありません。
 
 > [!IMPORTANT]
 > 常に最小限のアクセス権を付与することをお勧めします。 これが、前の例の範囲がリソース グループ全体ではなく、特定の関数アプリに限定されている理由です。
@@ -218,7 +215,7 @@ functionapp の発行プロファイルをダウンロードするには、ア�
 
 ## <a name="next-steps"></a>次の手順
 
-.yaml の完全なワークフローを確認するには、[Azure GitHub Actions ワークフローのサンプルのリポジトリ](https://github.com/Azure/actions-workflow-samples) 名前に `functionapp` があるファイルのうち 1 つを参照してください。 これらのサンプルは、ご自分のワークフローの出発点として使用できます。
+.yaml の完全なワークフローを確認するには、[Azure GitHub Actions ワークフローのサンプルのリポジトリ](https://aka.ms/functions-actions-samples) 名前に `functionapp` があるファイルのうち 1 つを参照してください。 これらのサンプルは、ご自分のワークフローの出発点として使用できます。
 
 > [!div class="nextstepaction"]
 > [GitHub Actions について](https://help.github.com/en/articles/about-github-actions)

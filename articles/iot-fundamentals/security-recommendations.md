@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 11/13/2019
 ms.author: dkshir
 ms.custom: security-recommendations
-ms.openlocfilehash: 9c8891eca87444c2be43294f208ad5257ffce889
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0ada9a520a5be56444a1c3e746a68dbcf9275686
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177185"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048455"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure のモノのインターネット (IoT) デプロイのセキュリティに関する推奨事項
 
@@ -25,23 +25,43 @@ ms.locfileid: "73177185"
 - Azure Security Center の推奨事項の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項](../security-center/security-center-recommendations.md)」を参照してください。
 - Azure Security Center については、「[Azure Security Center とは](../security-center/security-center-intro.md)」を参照してください。
 
-## <a name="recommendations"></a>Recommendations
+## <a name="general"></a>全般
 
-| Category | 推奨 | 説明 | ASC によるサポート |
-|-|-|----|--|
-| 全般 | 常に最新の状態に保つ | サポート対象プラットフォーム、プログラミング言語、プロトコル、およびフレームワークの最新バージョンを使用します。 | - |
-| 全般 | 認証キーを安全に保管する | デプロイ後にデバイス ID とその認証キーを物理的に安全に保管します。 これにより、悪意のあるデバイスが登録済みデバイスになりすますことを防げます。 | - |
-| 全般 | 可能な場合はデバイス SDK を使用する | デバイス SDK では、暗号化認証などのさまざまなセキュリティ機能を実装し、堅牢で安全なデバイス アプリケーションの開発を支援します。 詳細については、「[Azure IoT Hub SDK の概要と使用方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)」を参照してください。 | - |
-| ID 管理とアクセス管理 | ハブのアクセス制御を定義する | 機能に基づき、IoT Hub ソリューションで各コンポーネントに付与される[アクセス権の種類を理解して定義](iot-security-deployment.md#securing-the-cloud)します。 許可される権限は、*Registry Read*、*RegistryReadWrite*、*ServiceConnect*、および *DeviceConnect* です。 既定の [IoT ハブの共有アクセス ポリシー](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions)は、各コンポーネントの権限をそのロールで定義するのにも役立ちます。 | - |
-| ID 管理とアクセス管理 | バックエンド サービスのアクセス制御を定義する | IoT Hub ソリューションによって取り込まれたデータは、[Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)、[Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)、[App Service](https://docs.microsoft.com/azure/app-service/)、[Logic Apps](https://docs.microsoft.com/azure/logic-apps/)、および [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) などの他の Azure サービスで使用することができます。 これらのサービスに関する文書化された適切なアクセス権限を必ず理解し、許可してください。 | - |
-| データ保護 | デバイス認証をセキュリティで保護する | [一意の ID キーまたはセキュリティ トークン](iot-security-deployment.md#iot-hub-security-tokens)、あるいは各デバイスの[デバイス上の X.509 証明書](iot-security-deployment.md#x509-certificate-based-device-authentication)を使用して、デバイスと IoT ハブ間のセキュリティで保護された通信を確保します。 適切な方法を使って、[選択されたプロトコル (MQTT、AMQP、または HTTPS) に基づいてセキュリティ トークンを使用](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security)します。 | - |
-| データ保護 | デバイスの通信をセキュリティで保護する | IoT Hub では、バージョン 1.2 および 1.0 がサポートされる、トランスポート層セキュリティ (TLS) 標準を使用して、デバイスへの接続をセキュリティで保護します。 最大のセキュリティを確保するには、[TLS 1.2](https://tools.ietf.org/html/rfc5246) を使用します。 | - |
-| データ保護 | サービスの通信をセキュリティで保護する | IoT Hub では、[Azure Storage](/azure/storage/) または [Event Hubs](/azure/event-hubs) (TLS プロトコルのみを使用) などのバックエンド サービスに接続するためのエンドポイントが提供され、エンドポイントは非暗号化チャネルでは公開されません。 このデータが格納または分析のためにこれらのバックエンド サービスに達したら、必ず、そのサービスに適したセキュリティと暗号化の方法を採用し、バックエンドの機密情報を保護するようにしてください。 | - |
-| ネットワーク | デバイスへのアクセスを保護する | 望ましくないアクセスを回避するために、デバイスのハードウェア ポートを最小限に抑えます。 さらに、デバイスの物理的な改ざんを防止または検出するためのメカニズムを構築します。 詳細については、[IoT セキュリティのベスト プラクティス](iot-security-best-practices.md)に関するページを参照してください。 | - |
-| ネットワーク | セキュリティで保護されたハードウェアを構築する | 暗号化されたストレージ、つまり、トラステッド プラットフォーム モジュール (TPM) などのセキュリティ機能を組み込み、デバイスとインフラストラクチャをより安全に保ちます。 デバイスのオペレーティング システムとドライバーを常に最新バージョンにアップグレードし、スペースに空きがある場合は、ウイルス対策およびマルウェア対策機能をインストールします。 [IoT セキュリティのアーキテクチャ](iot-security-architecture.md)に関するページをお読みになり、これがいくつかのセキュリティ脅威を軽減するのにどのように役立つかを理解してください。 | - |
-| 監視 | デバイスへの未承認アクセスを監視する |  デバイスまたはそのポートのセキュリティ違反または物理的な改ざんを監視するには、デバイスのオペレーティング システムのログ機能を使用します。 | - |
-| 監視 | クラウドから IoT ソリューションを監視する | [Azure Monitor のメトリック](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)を使用して、IoT Hub ソリューションの全体的な正常性を監視します。 | - |
-| 監視 | 診断を設定する | ソリューションのイベントをログに記録してから、パフォーマンスを視覚化するために診断ログを Azure Monitor に送信することで、操作を注意深く観察します。 詳細については、[IoT ハブでの問題の監視と診断](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health)に関するページを参照してください。 | - |
+| 推奨 | 説明 | ASC によるサポート |
+|-|----|--|
+| 常に最新の状態に保つ | サポート対象プラットフォーム、プログラミング言語、プロトコル、およびフレームワークの最新バージョンを使用します。 | - |
+| 認証キーを安全に保管する | デプロイ後にデバイス ID とその認証キーを物理的に安全に保管します。 これにより、悪意のあるデバイスが登録済みデバイスになりすますことを防げます。 | - |
+| 可能な場合はデバイス SDK を使用する | デバイス SDK では、暗号化認証などのさまざまなセキュリティ機能を実装し、堅牢で安全なデバイス アプリケーションの開発を支援します。 詳細については、「[Azure IoT Hub SDK の概要と使用方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)」を参照してください。 | - |
+
+## <a name="identity-and-access-management"></a>ID 管理とアクセス管理 
+
+| 推奨 | 説明 | ASC によるサポート |
+|-|----|--|
+| ハブのアクセス制御を定義する | 機能に基づき、IoT Hub ソリューションで各コンポーネントに付与される[アクセス権の種類を理解して定義](iot-security-deployment.md#securing-the-cloud)します。 許可される権限は、*Registry Read*、*RegistryReadWrite*、*ServiceConnect*、および *DeviceConnect* です。 既定の [IoT ハブの共有アクセス ポリシー](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions)は、各コンポーネントの権限をそのロールで定義するのにも役立ちます。 | - |
+| バックエンド サービスのアクセス制御を定義する | IoT Hub ソリューションによって取り込まれたデータは、[Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)、[Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)、[App Service](https://docs.microsoft.com/azure/app-service/)、[Logic Apps](https://docs.microsoft.com/azure/logic-apps/)、および [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) などの他の Azure サービスで使用することができます。 これらのサービスに関する文書化された適切なアクセス権限を必ず理解し、許可してください。 | - |
+
+## <a name="data-protection"></a>データ保護
+
+| 推奨 | 説明 | ASC によるサポート |
+|-|----|--|
+| デバイス認証をセキュリティで保護する | [一意の ID キーまたはセキュリティ トークン](iot-security-deployment.md#iot-hub-security-tokens)、あるいは各デバイスの[デバイス上の X.509 証明書](iot-security-deployment.md#x509-certificate-based-device-authentication)を使用して、デバイスと IoT ハブ間のセキュリティで保護された通信を確保します。 適切な方法を使って、[選択されたプロトコル (MQTT、AMQP、または HTTPS) に基づいてセキュリティ トークンを使用](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security)します。 | - |
+| デバイスの通信をセキュリティで保護する | IoT Hub では、バージョン 1.2 および 1.0 がサポートされる、トランスポート層セキュリティ (TLS) 標準を使用して、デバイスへの接続をセキュリティで保護します。 最大のセキュリティを確保するには、[TLS 1.2](https://tools.ietf.org/html/rfc5246) を使用します。 | - |
+| サービスの通信をセキュリティで保護する | IoT Hub では、[Azure Storage](/azure/storage/) または [Event Hubs](/azure/event-hubs) (TLS プロトコルのみを使用) などのバックエンド サービスに接続するためのエンドポイントが提供され、エンドポイントは非暗号化チャネルでは公開されません。 このデータが格納または分析のためにこれらのバックエンド サービスに達したら、必ず、そのサービスに適したセキュリティと暗号化の方法を採用し、バックエンドの機密情報を保護するようにしてください。 | - |
+
+## <a name="networking"></a>ネットワーク
+
+| 推奨 | 説明 | ASC によるサポート |
+|-|----|--|
+| デバイスへのアクセスを保護する | 望ましくないアクセスを回避するために、デバイスのハードウェア ポートを最小限に抑えます。 さらに、デバイスの物理的な改ざんを防止または検出するためのメカニズムを構築します。 詳細については、[IoT セキュリティのベスト プラクティス](iot-security-best-practices.md)に関するページを参照してください。 | - |
+| セキュリティで保護されたハードウェアを構築する | 暗号化されたストレージ、つまり、トラステッド プラットフォーム モジュール (TPM) などのセキュリティ機能を組み込み、デバイスとインフラストラクチャをより安全に保ちます。 デバイスのオペレーティング システムとドライバーを常に最新バージョンにアップグレードし、スペースに空きがある場合は、ウイルス対策およびマルウェア対策機能をインストールします。 [IoT セキュリティのアーキテクチャ](iot-security-architecture.md)に関するページをお読みになり、これがいくつかのセキュリティ脅威を軽減するのにどのように役立つかを理解してください。 | - |
+
+## <a name="monitoring"></a>監視
+
+| 推奨 | 説明 | ASC によるサポート |
+|-|----|--|
+| デバイスへの未承認アクセスを監視する |  デバイスまたはそのポートのセキュリティ違反または物理的な改ざんを監視するには、デバイスのオペレーティング システムのログ機能を使用します。 | - |
+| クラウドから IoT ソリューションを監視する | [Azure Monitor のメトリック](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)を使用して、IoT Hub ソリューションの全体的な正常性を監視します。 | - |
+| 診断を設定する | ソリューションのイベントをログに記録してから、パフォーマンスを視覚化するために診断ログを Azure Monitor に送信することで、操作を注意深く観察します。 詳細については、[IoT ハブでの問題の監視と診断](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health)に関するページを参照してください。 | - |
 
 ## <a name="next-steps"></a>次の手順
 

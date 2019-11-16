@@ -3,16 +3,16 @@ title: Power BI で SQL クエリを使用して Azure Data Explorer のデー�
 description: この記事では、Power BI でデータを視覚化するための 3 つのオプションのうち、1 つ (Azure Data Explorer クラスターに対する SQL クエリ) の方法について説明します。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 5378a49ba5a4f3770ec9d9b3f723c063b4ef1a61
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806430"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024082"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Power BI で SQL クエリを使用して Azure Data Explorer のデータを視覚化する
 

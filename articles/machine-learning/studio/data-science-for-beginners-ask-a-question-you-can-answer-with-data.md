@@ -1,6 +1,6 @@
 ---
 title: データで回答できる質問をする
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: a2c5dea20ca55f4b04cf8b1d1693c8614a6440bf
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 26837337b49d79a26404fd6709b036f6907720f8
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621803"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838851"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ

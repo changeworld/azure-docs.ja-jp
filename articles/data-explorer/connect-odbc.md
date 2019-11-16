@@ -3,16 +3,16 @@ title: ODBC を使って Azure Data Explorer に接続する
 description: この記事では、Azure Data Explorer への Open Database Connectivity (ODBC) 接続をセットアップする方法について説明します。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/30/2019
-ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1b2e7a79eb932f5b971dda1d5d51b650789394db
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537584"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034030"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>ODBC を使って Azure Data Explorer に接続する
 

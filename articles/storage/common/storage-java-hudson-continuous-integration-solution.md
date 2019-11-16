@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 10bfc3ce4666ee1653110099a3c8d22a58d80f35
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 75b0ea106be04cd77b18bfed8487edb6a7b7f65b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985295"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839185"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -160,7 +160,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 ## <a name="next-steps"></a>次の手順
 * [Meet Hudson (Hudson について)](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
-* [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
+* [Azure ストレージ クライアント SDK リファレンス](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
 

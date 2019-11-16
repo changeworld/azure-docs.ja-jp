@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/11/2019
+ms.openlocfilehash: f2a33f96f77678e02c5b72c36563781e7d7ac334
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477122"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928278"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 
@@ -42,6 +42,13 @@ ms.locfileid: "73477122"
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 * 既定では、Prometheus のメトリックは収集されません。 [エージェントを構成](container-insights-prometheus-integration.md)してそれらを収集する前に、Prometheus の[ドキュメント](https://prometheus.io/)を確認して、定義できる内容を理解しておくことが重要です。
+
+## <a name="supported-configurations"></a>サポートされている構成
+
+Azure Monitor for containers では、以下が公式にサポートされています。
+
+- 環境:オンプレミスの Kubernetes、Azure 上の AKS エンジン、Azure Stack。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください。
+- Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。 
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
 

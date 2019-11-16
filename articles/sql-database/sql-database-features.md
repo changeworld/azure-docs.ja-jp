@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: bfb44a44967c474da319c574307c7c289b28648e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 294fd39bfa78219df4bb0134aa744dd7515ff0f2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807823"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092143"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能
 
@@ -124,7 +124,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | バックアップ保有期間 | はい。 既定値は 7 日、最大値は 35 日です。 | はい。 既定値は 7 日、最大値は 35 日です。 |
 | [データ移行サービス (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | はい | はい |
 | ファイル システムへのアクセス | No. 代わりとして [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 | No. 代わりとして [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 |
-| [geo リストア](sql-database-recovery-using-backups.md#geo-restore) | はい - ハイパースケール以外のすべてのサービス レベル | はい - [Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa) を使用。 |
+| [geo リストア](sql-database-recovery-using-backups.md#geo-restore) | はい - ハイパースケール以外のすべてのサービス レベル | はい - ハイパースケール以外のすべてのサービス レベル |
 | [Hyperscale アーキテクチャ](sql-database-service-tier-hyperscale.md) | はい | いいえ |
 | [長期的なバックアップ保有期間 - (LTR)](sql-database-long-term-retention.md) | はい、自動的に取られたバックアップを最大 10 年間保持します。 | まだありません。 一時的な回避策として `COPY_ONLY` [手動バックアップ](sql-database-managed-instance-transact-sql-information.md#backup)を使用してください。 |
 | 一時停止/再開 | はい、[サーバー レスモデル](sql-database-serverless.md)で | いいえ | 

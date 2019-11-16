@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2e5a5f2a4de4e01d2e4fa66f819e55839959afd0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929491"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130697"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>クイック スタート:JavaScript 用 Azure Blob Storage クライアント ライブラリ v12
 
@@ -205,7 +205,7 @@ const CONNECT_STR = process.env.CONNECT_STR;
 > [!IMPORTANT]
 > コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前付けの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata (コンテナー、BLOB、メタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
-[fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--newpipelineoptions-) メソッドを呼び出して、[BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) クラスのインスタンスを作成します。 次に、[getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) メソッドを呼び出して、コンテナーへの参照を取得します。 最後に、[create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) を呼び出して、ストレージ アカウントにコンテナーを実際に作成します。
+[fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--storagepipelineoptions-) メソッドを呼び出して、[BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) クラスのインスタンスを作成します。 次に、[getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) メソッドを呼び出して、コンテナーへの参照を取得します。 最後に、[create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) を呼び出して、ストレージ アカウントにコンテナーを実際に作成します。
 
 `main` 関数の末尾に次のコードを追加します。
 

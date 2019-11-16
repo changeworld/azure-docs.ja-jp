@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990241"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886525"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -177,7 +177,7 @@ Source Control Sync Summary:
 
 現時点では、ソース管理のアクセス トークンをポータルから更新する方法はありません。 個人用アクセス トークンの有効期限が切れたか失効した後、次の方法で新しいアクセス トークンを使用してソース管理を更新できます。
 
-* [REST API](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update) を使用する。
+* [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update) を使用する。
 * [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) コマンドレットを使用する。
 
 ## <a name="next-steps"></a>次の手順

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2019
-ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: aa37717c5037294c2b5ec61f7815b007cbf74992
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899435"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884820"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -125,7 +125,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 Application Insights ポータルでは、プロパティ値に基づいてデータをフィルター選択および分割して、異なるバージョンを比較します。
 
-これを行うには、[テレメトリ初期化子を設定](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)します。
+これを行うには、[テレメトリ初期化子を設定](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)します。
 
 **ASP.NET アプリ**
 

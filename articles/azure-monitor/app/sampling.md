@@ -8,12 +8,12 @@ author: cijothomas
 ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c124e6c433f83212c0db815a2fd06cfcfdf86253
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899855"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884708"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -534,7 +534,7 @@ Azure Functions で実行されているアプリに対してサンプリング�
 
 *常に確認したい頻度の低いイベントがあります。サンプリング モジュールを使わずに確認するにはどうすればよいですか。*
 
-* これを実現する最善の方法は、次に示すように、保持したいテレメトリ項目で `SamplingPercentage` を 100 に設定するカスタムの [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) を記述することです。 初期化子はテレメトリ プロセッサ (サンプリングを含む) の前に実行されることが保証されるため、これにより、すべてのサンプリング手法ではサンプリングに関する考慮事項からこの項目が確実に無視されます。
+* これを実現する最善の方法は、次に示すように、保持したいテレメトリ項目で `SamplingPercentage` を 100 に設定するカスタムの [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) を記述することです。 初期化子はテレメトリ プロセッサ (サンプリングを含む) の前に実行されることが保証されるため、これにより、すべてのサンプリング手法ではサンプリングに関する考慮事項からこの項目が確実に無視されます。
 
 ```csharp
      public class MyTelemetryInitializer : ITelemetryInitializer

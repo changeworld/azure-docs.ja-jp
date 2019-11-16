@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333209"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111842"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>geo ゾーン冗長ストレージ (GZRS) (プレビュー) を使用して高可用性 Azure Storage アプリケーションを構築する
 
@@ -31,6 +31,7 @@ GZRS と RA-GZRS は現在、次のリージョンにおいてプレビューで
 
 - 北ヨーロッパ
 - 西ヨーロッパ
+- 英国南部
 - 米国東部
 - 米国東部 2
 - 米国中部

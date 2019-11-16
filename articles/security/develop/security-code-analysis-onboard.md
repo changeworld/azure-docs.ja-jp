@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241771"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839361"
 ---
 # <a name="onboarding-and-installing"></a>オンボードとインストール
 
@@ -51,7 +51,7 @@ Microsoft Security Code Analysis の使用を開始するための前提条件:
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Microsoft Security Code Analysis 拡張機能のインストール
 
-1. 拡張機能を Azure DevOps 組織と共有した後、Azure DevOps 組織のページに移動します。 そのようなページの URL の例は、 http://dev.azure.com/contoso です。
+1. 拡張機能を Azure DevOps 組織と共有した後、Azure DevOps 組織のページに移動します。 そのようなページの URL の例は、`https://dev.azure.com/contoso` です。
 1. 右上隅の自分の名前の横にあるショッピング バッグ アイコンを選択し、 **[拡張機能の管理]** を選択します。
 1. Microsoft Security Code Analysis 拡張機能を選択した後、Azure DevOps UI ウィザードを開いてインストールを始めます。
 1. ドロップダウン リストから、拡張機能をインストールする Azure DevOps 組織を選択します。

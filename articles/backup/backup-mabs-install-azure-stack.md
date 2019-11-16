@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747290"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012939"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -124,7 +124,7 @@ Recovery Services コンテナーのストレージ レプリケーション オ
 
 ## <a name="download-azure-backup-server-installer"></a>Azure Backup Server インストーラーをダウンロードする
 
-Azure Backup Server インストーラーをダウンロードする方法は 2 つあります。 Azure Backup Server インストーラーは、[Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=55269)からダウンロードできます。 Azure Backup Server インストーラーは Recovery Services コンテナーの構成中にダウンロードすることもできます。 次の手順は、Recovery Services コンテナーの構成中に Azure Portal からインストーラーをダウンロードする方法について説明します。
+Azure Backup Server インストーラーをダウンロードする方法は 2 つあります。 Azure Backup Server インストーラーは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=55269)からダウンロードできます。 Azure Backup Server インストーラーは Recovery Services コンテナーの構成中にダウンロードすることもできます。 次の手順は、Recovery Services コンテナーの構成中に Azure Portal からインストーラーをダウンロードする方法について説明します。
 
 1. Azure Stack 仮想マシンから、[Azure Portal 内の Azure サブスクリプションにサインイン](https://portal.azure.com/)します。
 2. 左側のメニューで、 **[すべてのサービス]** を選択します。
@@ -326,7 +326,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
 Azure Backup Server が正常に動作するためには、Azure Backup サービスに接続されている必要があります。 マシンが Azure に接続されているかどうかを確認するには、Azure Backup Server PowerShell コンソールで ```Get-DPMCloudConnection``` コマンドレットを使用します。 コマンドレットの出力が TRUE の場合、マシンは接続されていますが、それ以外の場合は接続されていません。
 
-同時に、Azure のサブスクリプションが正常な状態である必要があります。 サブスクリプションの状態を確認および管理するには、[サブスクリプション ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にログインします。
+同時に、Azure のサブスクリプションが正常な状態である必要があります。 サブスクリプションの状態を確認および管理するには、[サブスクリプション ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
 
 Azure への接続と Azure サブスクリプションの状態がわかれば、以下の表から、提供されるバックアップ/復元機能に対する影響を確認することができます。
 

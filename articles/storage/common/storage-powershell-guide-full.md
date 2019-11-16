@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 40fb44857126c3562e01585c3131afec87f01e42
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430070"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131023"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この演習には、Azure PowerShell モジュール Az バージョン 0.7 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
-この演習では、通常の PowerShell ウィンドウにコマンドを入力するか、または [Windows PowerShell Integrated Scripting Environment (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) を使用してエディターにコマンドを入力してから、それぞれの例で 1 つ以上のコマンドを同時にテストできます。 実行する行を強調表示して [選択項目の実行] をクリックし、それらのコマンドだけを実行できます。
+この演習では、通常の PowerShell ウィンドウにコマンドを入力するか、または [Windows PowerShell Integrated Scripting Environment (ISE)](/powershell/scripting/components/ise/exploring-the-windows-powershell-ise) を使用してエディターにコマンドを入力してから、それぞれの例で 1 つ以上のコマンドを同時にテストできます。 実行する行を強調表示して [選択項目の実行] をクリックし、それらのコマンドだけを実行できます。
 
 ストレージ アカウントの詳細については、「[Microsoft Azure Storage の概要](storage-introduction.md)」および「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。
 
@@ -185,7 +185,7 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 * [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
 * [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
-## <a name="use-storage-analytics"></a>Storage Analytics の使用  
+## <a name="use-storage-analytics"></a>Storage Analytics の使用
 
 [Azure Storage Analytics](storage-analytics.md) は、[Storage Analytics Metrics](/rest/api/storageservices/about-storage-analytics-metrics) と [Storage Analytics Logging](/rest/api/storageservices/about-storage-analytics-logging) で構成されます。
 
@@ -252,4 +252,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [Azure Storage のコントロール プレーンの PowerShell コマンドレット](/powershell/module/az.storage/)
 * [Azure Storage のデータ プレーンの PowerShell コマンドレット](/powershell/module/azure.storage/)
-* [Windows PowerShell リファレンス](/powershell/scripting/developer/windows-powershell)
+* [Windows PowerShell リファレンス](/powershell/scripting/overview)

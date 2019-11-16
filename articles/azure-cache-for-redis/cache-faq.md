@@ -1,25 +1,17 @@
 ---
-title: Azure Cache for Redis に関する FAQ | Microsoft Docs
+title: Azure Cache for Redis に関する FAQ
 description: Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785831"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122780"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748585"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906782"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -25,7 +25,7 @@ ms.locfileid: "73748585"
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Event Grid の統合は、Event Grid イベントグリッドがサポートされている地域にある IoT ハブで利用できます。 デバイス テレメトリ イベントを除くすべてのデバイス イベントが一般提供されています。 デバイス テレメトリ イベントはパブリック プレビュー段階であり、米国東部、米国西部、西ヨーロッパ、[Azure Government](/azure/azure-government/documentation-government-welcome)、[Azure China 21Vianet](/azure/china)、[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) を除くすべてのリージョンで利用できます。 最新のリージョン一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」を参照してください。
+Event Grid の統合は、Event Grid イベントグリッドがサポートされている地域にある IoT ハブで利用できます。 最新のリージョン一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」を参照してください。
 
 ## <a name="event-types"></a>イベントの種類
 

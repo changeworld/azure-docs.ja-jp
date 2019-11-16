@@ -1,5 +1,5 @@
 ---
-title: Azure の FreeBSD の概要 | Microsoft Docs
+title: Azure の FreeBSD の概要
 description: Azure での FreeBSD 仮想マシンの使用について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: c1ac7a0310eda032b45fb57cea95ba38b753ef1d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: d243806d619aa6d7328220eae53804d734737489
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695346"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036122"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure の FreeBSD の概要
 この記事では、Azure での FreeBSD 仮想マシンの実行の概要を説明します。

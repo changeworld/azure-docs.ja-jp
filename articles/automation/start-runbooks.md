@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a42ba0a385b73032e3d4045094bc88613016b849
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8200052e14161d91b7daef6a0acd9c851518d9c2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850341"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886473"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Automation で Runbook を開始する
 
@@ -187,4 +187,4 @@ jsmith
 
 * この記事の Runbook アーキテクチャは、Hybrid Runbook Worker で Azure とオンプレミスのリソースを管理する Runbook の概要を示しています。 自社のデータセンターで Automation Runbook を実行する方法については、 [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)に関する記事をご覧ください。
 * 他の Runbook で特定の関数または一般的な関数に使用されるモジュールの Runbook の作成方法については、 [子 Runbook](automation-child-runbooks.md)に関する記事をご覧ください。
-* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/en-us/powershell/scripting/overview)に関するページを参照してください。
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。

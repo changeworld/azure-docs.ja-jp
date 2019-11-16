@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 76648428e6adcaed579b0e4f1896fdf83e11a8b6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348847"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838702"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -51,7 +51,7 @@ ms.locfileid: "71348847"
 
 Azure portal を使用してテンプレートをエクスポートするには:
 
-1. [Azure Portal](http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. **[すべてのリソース]** を選択してから、ストレージ アカウントを選択します。
 

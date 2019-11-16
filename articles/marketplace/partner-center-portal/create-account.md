@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811929"
+ms.locfileid: "73838753"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>商業マーケットプレース アカウントをパートナー センターに作成する
 
@@ -137,7 +137,7 @@ Microsoft パートナー センター アカウントを使用して[パート�
 
 1. パートナー センターから、 **[設定]**  >  **[開発者向け設定]**  >  **[プログラム]**  >  **[はじめに]** を選択して、職場のメール アドレスを入力します。
 2. 発行者のプロファイル ページで詳細を入力します。
-3. [Microsoft Marketplace 発行元契約](http://go.microsoft.com/fwlink/?LinkID=699560)の使用条件を読み、 **[同意して続行する]** を選択して登録を完了します。
+3. [Microsoft Marketplace 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の使用条件を読み、 **[同意して続行する]** を選択して登録を完了します。
 
     >[!Important]
     >*これらの条項に同意するには、会社の代表として行動することを承認されている必要があります。*

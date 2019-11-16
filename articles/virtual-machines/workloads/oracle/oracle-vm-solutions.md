@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858562"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891457"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
 
@@ -79,7 +79,7 @@ Azure NetApp Files は、クラウド内のデータベースなどの高パフ�
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure での Oracle Database およびソフトウェアのライセンス契約
 Microsoft Azure は、Oracle Database を実行するための承認されたクラウド環境です。 Oracle Core Factor テーブルは、クラウドで Oracle Database をライセンス契約する場合には適用されません。 代わりに、Enterprise Edition のデータベースでハイパースレッディング テクノロジが有効になっている VM を使用するときは、(ポリシー ドキュメントに記載されているように) ハイパースレッディングが有効になっている場合は、1 つの Oracle プロセッサ ライセンスと同等の 2 つの vCPU をカウントします。 ポリシーの詳細については、[こちら](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)をご覧ください。
-一般に、Oracle Database には、より高いメモリと IO が必要です。 このため、これらのワークロードには、[メモリ最適化済み VM](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) を使用することをお勧めします。 ワークロードをさらに最適化するには、高メモリ、ストレージ、I/O 帯域幅を必要とするが、コア数が多いとは限らない Oracle DB のワークロードに[制約付きコア vCPU](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) を使用することをお勧めします。
+一般に、Oracle Database には、より高いメモリと IO が必要です。 このため、これらのワークロードには、[メモリ最適化済み VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) を使用することをお勧めします。 ワークロードをさらに最適化するには、高メモリ、ストレージ、I/O 帯域幅を必要とするが、コア数が多いとは限らない Oracle DB のワークロードに[制約付きコア vCPU](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) を使用することをお勧めします。
 
 Oracle ソフトウェアとワークロードをオンプレミスから Microsoft Azure に移行する場合、Oracle から、「[Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)」 (Azure での Oracle に関する FAQ) に記載されているライセンス モビリティが提供されています
 

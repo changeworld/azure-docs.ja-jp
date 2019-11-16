@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 53d7cb125f59491190aadb07755954ade78356fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813183"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075525"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでの商用マーケットプレース向け分析
 
-Microsoft Partner Center の分析レポートにアクセスして、売上を監視し、パフォーマンスを評価し、マーケットプレースのオファーを最適化する方法について説明します。 パートナーは、パートナー センターでサポートされているデータ視覚化および分析情報グラフを使用してオファーの一覧を監視し、売上を最大化する方法を見つけることができます。 改善された分析ツールにより、パフォーマンスの結果に基づいて行動し、顧客とリセラーとの優れた関係を維持することができます。 
+Microsoft Partner Center の分析レポートにアクセスして、売上を監視し、パフォーマンスを評価し、マーケットプレースのオファーを最適化する方法について説明します。 パートナーは、パートナー センターでサポートされているデータ視覚化および分析情報グラフを使用してオファーの一覧を監視し、売上を最大化する方法を見つけることができます。 改善された分析ツールにより、パフォーマンスの結果に基づいて行動し、顧客とリセラーとの優れた関係を維持することができます。
 
 パートナー センターの分析ツールにアクセスするには、[Commercial Marketplace]\(商用マーケットプレース\) の下にある **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ダッシュボードを開きます。
 
@@ -141,7 +141,7 @@ Microsoft Partner Center の分析レポートにアクセスして、売上を�
 - **Billed through Azure (Azure から請求)** :このライセンスの種類を使用して[マイクロソフト経由でオファーを販売する](./create-new-saas-offer.md#sell-through-microsoft)ことを選択した場合、マイクロソフトが代理で顧客に請求します。 支払いの種類には、クレジット カードによる従量課金制、または企業への請求書発行があります。
 - **Bring your own license (ライセンス持ち込み)** :この種類のマーケットプレース オファーの使用に対してマイクロソフトが顧客に請求することはありません。 マーケットプレースでは **[[Get it now (Free)]\(今すぐ入手 (無料)\)](./create-new-saas-offer.md#get-it-now-free)** と表示されます。
 - **Free**:この種類のマーケットプレース オファーの使用に対してマイクロソフトが顧客に請求することはありません。 マーケットプレースでは **[[Free trial]\(無料評価版\)](./create-new-saas-offer.md##free-trial-listing)** と表示されます。
-- **Microsoft as reseller (マイクロソフトがリセラー)** : **[クラウド ソリューション プロバイダー (CSP) プログラム](./create-new-saas-offer.md#csp-program-opt-in)** の一環として、マイクロソフトのリセラーによって販売されるオファーを表します。
+- **Microsoft as reseller (マイクロソフトがリセラー)** : **[クラウド ソリューション プロバイダー (CSP) プログラム](./create-new-saas-offer.md)** の一環として、マイクロソフトのリセラーによって販売されるオファーを表します。
 
 ![パートナー センターでのライセンスの種類別注文数の分析](./media/analyze-license-type.png)
 

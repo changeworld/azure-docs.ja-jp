@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 2a8a19dfd2cdc7a64a5ea90b96808963b19f73bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498655"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838911"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware の評価と移行のサポート マトリックス
 
@@ -112,7 +112,7 @@ dc.services.visualstudio.com | 内部監視に使用するアプリ ログをア
 *.servicebus.windows.net | アプライアンスと Azure Migrate サービスの間の通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Azure Migrate サービスの URL に接続します。
 *.blob.core.windows.net | ストレージ アカウントにデータをアップロードします。
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Azure Migrate アプライアンスの更新に使用されます。
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Azure Migrate アプライアンスの更新に使用されます。
 
 ## <a name="assessment-port-requirements"></a>評価 - ポートの要件
 
@@ -215,7 +215,7 @@ dc.services.visualstudio.com | 内部監視に使用するアプリ ログをア
 *.servicebus.windows.net | アプライアンスと Azure Migrate サービスの間の通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Azure Migrate サービスの URL に接続します。
 *.blob.core.windows.net | ストレージ アカウントにデータをアップロードします。
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Azure Migrate アプライアンスの更新に使用されます。
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Azure Migrate アプライアンスの更新に使用されます。
 
 
 ## <a name="agentless-migration-port-requirements"></a>エージェントレス移行 - ポートの要件

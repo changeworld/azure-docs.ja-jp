@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302326"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012522"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS ディスクのバックアップとディザスター リカバリー
-
 この記事では、Azure の IaaS 仮想マシン (VM) とディスクのバックアップおよびディザスター リカバリー (DR) を計画する方法について説明します。 このドキュメントでは、マネージド ディスクと非管理対象ディスクの両方について説明しています。
 
 最初に Azure プラットフォームに組み込まれているフォールト トレランス機能について説明します。この機能は、局所的な障害に対する保護となります。 次に、組み込みの機能では完全にはカバーされない障害のシナリオについて説明します。 また、別のバックアップと DR の考慮事項を適用できるワークロード シナリオの例を複数紹介します。 そして、IaaS のディスクの DR に対して考えられる解決策を検討します。

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 743007d3636516a39dd36caf3d44d3edb650c030
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684913"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929525"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning 監視データのリファレンス
 
@@ -128,7 +128,7 @@ ms.locfileid: "73684913"
 
 **Model**
 
-| モデル | 単位 | 説明 |
+| メトリック | 単位 | 説明 |
 | ----- | ----- | ----- |
 | モデルのデプロイが失敗しました | Count | 失敗したモデルのデプロイの数。 |
 | 開始されたモデル デプロイ | Count | 開始されたモデル デプロイの数。 |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603471"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081556"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Windows 10 デバイスへのパスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -88,7 +88,7 @@ ms.locfileid: "73603471"
 
 ### <a name="enable-with-a-provisioning-package"></a>プロビジョニング パッケージを使用して有効にする
 
-Intune で管理されていないデバイスの場合は、プロビジョニング パッケージをインストールして機能を有効にすることができます。 Windows 構成デザイナー アプリは、[Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22) からインストールできます。
+Intune で管理されていないデバイスの場合は、プロビジョニング パッケージをインストールして機能を有効にすることができます。 Windows 構成デザイナー アプリは、[Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22) からインストールできます。
 
 1. Windows 構成デザイナーを起動します。
 1. **[ファイル]**  >  **[新しいプロジェクト]** の順に選択します。
@@ -124,10 +124,10 @@ Intune で管理されていないデバイスの場合は、プロビジョニ�
 
 ## <a name="troubleshooting-and-feedback"></a>トラブルシューティングとフィードバック
 
-この機能のプレビュー中にフィードバックを共有したい場合や問題が発生した場合は、Windows フィードバック ハブ アプリを使用して共有してください。
+この機能のプレビュー中に、フィードバックを共有したい場合、または問題が発生した場合は、Windows フィードバック ハブ アプリを使用して共有してください。
 
 1. **フィードバック ハブ**を起動し、サインインしていることを確認します。
-1. フィードバックは次の分類に従って送信してください。
+1. 次の分類でフィードバックを送信します。
    1. カテゴリ:セキュリティとプライバシー
    1. サブカテゴリ: FIDO
 1. ログをキャプチャするには、次のオプションを使用します: **[Recreate my Problem] (問題を再現する)**

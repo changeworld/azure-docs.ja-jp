@@ -4,15 +4,13 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: a98a941477fc83a104b55ed91f457c5a48f90d59
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 9a7de2b41c8016bdb7849cdef428d6f54a8ccf64
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69029817"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005448"
 ---
-# <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Reserved VM Instances での仮想マシン サイズの柔軟性
-
 インスタンス サイズの柔軟性に向けて最適化された予約仮想マシン インスタンスを使用して、購入した予約を同じインスタンス サイズの柔軟性グループ内の仮想マシン (VM) サイズに適用できます。 たとえば、(Standard_DS5_v2 などの) DSv2 シリーズに記載されている VM サイズの予約を購入した場合、同じインスタンス サイズの柔軟性グループに記載されているその他の 4 つのサイズに予約割引を適用できます。
 
 - Standard_DS1_v2

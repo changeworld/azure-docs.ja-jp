@@ -1,6 +1,6 @@
 ---
 title: デプロイのためにモデルを準備する
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Machine Learning Studio (クラシック) のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: e24393783dac0f918009f3138f31bdda98bbd22e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4b07150ac9f35085763786c505d3d746428a542b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684863"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839674"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d06c9f5db0d709bec5b94ce107c6f6894dc191
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954680"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074176"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -31,7 +31,6 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 - プッシュ インストールが失敗する場合は、DPM エージェントが既に存在するかどうかを確認してください。 その場合は、エージェントをアンインストールしてからインストールをやり直してください。
 - [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられていないことを確認する](https://aka.ms/AA4nyr4)<br>
 - MAB サーバーで SQL エージェント サービスが実行されていて "自動" に設定されていることを確認してください<br>
-
 
 ## <a name="invalid-vault-credentials-provided"></a>無効なコンテナーの資格情報が指定されました
 
@@ -63,7 +62,6 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | --- | --- | --- |
 | バックアップ | VMware VM のオンライン復旧ポイント作成ジョブが失敗します。 DPM での ChangeTracking 情報の取得中に VMware でエラーが発生しました。 ErrorCode - FileFaultFault (ID 33621) |  <ol><li> 影響を受けた仮想マシンの VMWare で CTK をリセットします。</li> <li>独立したディスクが VMware 上にないことを確認します。</li> <li>影響を受けた仮想マシンの保護を停止し、 **[更新]** ボタンで再保護します。 </li><li>影響を受けた仮想マシンに CC を実行します。</li></ol>|
 
-
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>サーバー上の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました
 
 | Operation | エラーの詳細 | 対処法 |
@@ -85,7 +83,6 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした (ID:100050) | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br>1.管理者特権のコマンド プロンプトから、コマンド **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe** を実行します。 Internet Explorer のウィンドウが開きます。 <br/> 2. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。 <br/> 手順 3.プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<br/> 4.マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL](backup-configure-vault.md#verify-internet-access) と [IP アドレス](backup-configure-vault.md#verify-internet-access)が許可されることを確認します。|
 | Azure Backup エージェントインストールに失敗しました | Microsoft Azure Recovery Services のインストールに失敗しました。 Microsoft Azure Recovery Services のインストールによってシステムに対して実行されたすべての変更はロールバックされました。 (ID: 4024) | Azure エージェントを手動でインストールします。
 
-
 ## <a name="configuring-protection-group"></a>保護グループの構成
 
 | Operation | エラーの詳細 | 対処法 |
@@ -105,7 +102,6 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | バックアップ | 新しい Microsoft Azure Backup Server 上の VMware VM を再保護するオプションが、追加可能と表示されません。 | VMware のプロパティが、Microsoft Azure Backup Server の提供終了になった古いインスタンスを参照しています。 この問題を解決するには:<br><ol><li>VCenter (SC-VMM に相当) で、 **[概要]** タブ、 **[カスタム属性]** と移動します。</li>  <li>**DPMServer** 値から、古い Microsoft Azure Backup Server 名を削除します。</li>  <li>新しい Microsoft Azure Backup Server に戻り、PG を変更します。  **[更新]** ボタンを選択すると、保護の追加に使用できるチェック ボックスが VM に表示されます。</li></ol> |
 | バックアップ | ファイル/共有フォルダーへのアクセス中のエラー | TechNet の記事「[DPM サーバーでのウイルス対策ソフトウェアの実行](https://technet.microsoft.com/library/hh757911.aspx)」で提案されているウイルス対策の設定を変更してみてください。|
 
-
 ## <a name="change-passphrase"></a>パスフレーズの変更
 
 | Operation | エラーの詳細 | 対処法 |
@@ -113,18 +109,15 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | パスフレーズの変更 |入力されたセキュリティ PIN が正しくありません。 この操作を完了するには、正しいセキュリティ PIN を指定してください。 |**原因:**<br/> このエラーは、重要な操作 (パスフレーズの変更など) の実行中に、無効または有効期限が切れたセキュリティ PIN を入力したときに発生します。 <br/>**推奨される操作:**<br/> 操作を完了するには、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure Portal にサインインし、Recovery Services コンテナーに移動します。 **[設定]**  >  **[プロパティ]**  >  **[セキュリティ PIN の生成]** と移動します。 この PIN を使用してパスフレーズを変更します。 |
 | パスフレーズの変更 |操作に失敗しました。 ID: 120002 |**原因:**<br/>このエラーは、セキュリティ設定が有効な場合、または、サポートされていないバージョンの使用中にパスフレーズを変更しようとした場合に発生します。<br/>**推奨される操作:**<br/> パスフレーズを変更するには、最初に Backup エージェントを最小バージョン (2.0.9052) に更新する必要があります。 また、Azure Backup Server を最低限の更新プログラム 1 に更新してから、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure Portal にサインインし、Recovery Services コンテナーに移動します。 **[設定]**  >  **[プロパティ]**  >  **[セキュリティ PIN の生成]** と移動します。 この PIN を使用してパスフレーズを変更します。 |
 
-
 ## <a name="configure-email-notifications"></a>電子メール通知の構成
 
 | Operation | エラーの詳細 | 対処法 |
 | --- | --- | --- |
 | Office 365 アカウントを使用した電子メール通知の設定 |エラー ID: 2013| **原因:**<br> Office 365 アカウントを使用しようとしています。 <br>**推奨される操作:**<ol><li> まず、Exchange で DPM サーバーが “受信コネクタで匿名のリレーを許可する” ように設定されていることを確認します。 これを構成する方法の詳細については、TechNet の「[受信コネクタの匿名の中継を許可する](https://technet.microsoft.com/library/bb232021.aspx)」をご覧ください。</li> <li> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、リレーとして IIS を設定することができます。 DPM サーバーが [IIS を使用して SMTP を O365 にリレーする](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx)ように設定します。<br><br> **重要:** ドメイン\ユーザー*ではなく*、必ず user\@domain.com 形式を使用してください。<br><br><li>DPM が、SMTP サーバーとしてローカル サーバー名 (およびポート 587) を使用するようにします。 次に、これを電子メールの送信元となるユーザーの電子メール アドレスに向けます。<li> DPM の SMTP セットアップ ページ上のユーザー名とパスワードは、DPM があるドメイン内のドメイン アカウントのものである必要があります。 </li><br> **注**: SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。<br><br>DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**。 もう一度起動したときに、UI にそれらを追加できます。
 
-
 ## <a name="common-issues"></a>一般的な問題
 
 ここでは、Azure Backup Server の使用中に発生する一般的なエラーについて説明します。
-
 
 ### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
 

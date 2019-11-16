@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686674"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132003"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-このコードでは、[Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) インスタンスは使用せず、containerURL の [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) 関数と [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) 関数を使用しています。 このクイック スタートの内容をシンプルにしておくため、上記コードでは、ストレージ アカウントが作成済みであり有効化されていることを前提としています。 運用環境のコードで、タイムアウト機能を追加するには、Aborter インスタンスを使用してください。
+このコードでは、[Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) インスタンスは使用せず、containerURL の [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) 関数と [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) 関数を使用しています。 このクイック スタートの内容をシンプルにしておくため、上記コードでは、ストレージ アカウントが作成済みであり有効化されていることを前提としています。 運用環境のコードで、タイムアウト機能を追加するには、Aborter インスタンスを使用してください。
 
 ### <a name="list-blobs"></a>BLOB を一覧表示する
 
@@ -290,7 +290,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-このコードでは、すべてのセグメントが確実に取得されるよう、[containerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL?view=azure-node-preview#listblobflatsegment-aborter--undefined---string--icontainerlistblobssegmentoptions-) 関数をループ内で呼び出しています。 各セグメントについて、含まれる BLOB 項目の一覧をループ処理し、**ファイル**一覧を更新しています。
+このコードでは、すべてのセグメントが確実に取得されるよう、[containerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 関数をループ内で呼び出しています。 各セグメントについて、含まれる BLOB 項目の一覧をループ処理し、**ファイル**一覧を更新しています。
 
 ### <a name="upload-blobs"></a>BLOB をアップロードする
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-このコードでは、 **[Select and upload files]\(ファイルを選択してアップロード\)** ボタンを非表示の `file-input` 要素に結び付けています。 こうすることで、ボタンの `click` イベントによりファイル入力の `click` イベントがトリガーされ、ファイル ピッカーが表示されます。 ファイルを選択してダイアログ ボックスを閉じると、`input` イベントが発生して `uploadFiles` 関数が呼び出されます。 この関数では、選択したファイルごとに、ブラウザー専用の [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) 関数を呼び出しています。 各呼び出しでは Promise が返されます。これを一覧に追加してすべてのファイルをまとめて待機状態にすることで、全ファイルを並列でアップロードしています。
+このコードでは、 **[Select and upload files]\(ファイルを選択してアップロード\)** ボタンを非表示の `file-input` 要素に結び付けています。 こうすることで、ボタンの `click` イベントによりファイル入力の `click` イベントがトリガーされ、ファイル ピッカーが表示されます。 ファイルを選択してダイアログ ボックスを閉じると、`input` イベントが発生して `uploadFiles` 関数が呼び出されます。 この関数では、選択したファイルごとに、ブラウザー専用の [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) 関数を呼び出しています。 各呼び出しでは Promise が返されます。これを一覧に追加してすべてのファイルをまとめて待機状態にすることで、全ファイルを並列でアップロードしています。
 
 ### <a name="delete-blobs"></a>BLOB を削除する
 

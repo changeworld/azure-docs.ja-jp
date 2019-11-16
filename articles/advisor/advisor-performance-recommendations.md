@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1fec8a10a6699dc1360494cc7ac66e13f5d37ff0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898196"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885749"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -73,7 +73,7 @@ Advisor では、レプリケートされたテーブルではないが、変換
 ストレージ アカウント デプロイ モデルを Azure Resource Manager (Resource Manager) に移行して、テンプレート デプロイや、追加のセキュリティ オプションをご利用ください。また、GPv2 アカウントにアップグレードして Azure Storage の最新機能を利用することもできます。 Advisor は、クラシック デプロイ モデルを使用しているスタンドアロンのストレージ アカウントをすべて特定して、Resource Manager デプロイ モデルに移行することを推奨します。
 
 > [!NOTE]
-> Azure Monitor のクラシック アラートは 2019 年 8 月に廃止されました。 新しいプラットフォームでアラート機能を保持するには、Resource Manager を使用するようにクラシック ストレージ アカウントをアップグレードすることをお勧めします。 詳しくは、[クラシック アラートの廃止](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)に関するページをご覧ください。
+> Azure Monitor のクラシック アラートは 2019 年 8 月に廃止されました。 新しいプラットフォームでアラート機能を保持するには、Resource Manager を使用するようにクラシック ストレージ アカウントをアップグレードすることをお勧めします。 詳しくは、[クラシック アラートの廃止](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)に関するページをご覧ください。
 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>サブスクリプションの上限に到達しないようにストレージ アカウントを設計する
 

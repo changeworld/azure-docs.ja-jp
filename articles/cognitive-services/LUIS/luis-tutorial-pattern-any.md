@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c118a74e273e153746240465692b1c712bd25f47
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499422"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953616"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>チュートリアル:Pattern.any エンティティを使用して自由形式データを抽出する
 
@@ -138,7 +138,7 @@ Pattern.any エンティティは、さまざまな長さのエンティティ�
 
 ## <a name="using-an-explicit-list"></a>明示的なリストの使用
 
-Pattern.any が含まれているパターンでエンティティが正しく抽出されない場合は、[明示的なリスト](luis-concept-patterns.md#explicit-lists)を使用してこの問題を修正します。
+Pattern.any が含まれているパターンでエンティティが正しく抽出されない場合は、[明示的なリスト](reference-pattern-syntax.md#explicit-lists)を使用してこの問題を修正します。
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

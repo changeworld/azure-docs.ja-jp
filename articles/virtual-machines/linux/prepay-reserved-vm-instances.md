@@ -1,5 +1,5 @@
 ---
-title: 前払いで Azure 仮想マシンのコストを削減する | Microsoft Docs
+title: 前払いで Azure 仮想マシンのコストを削減する
 description: Azure Reserved Virtual Machine Instances を購入してコンピューティング コストを削減する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: c2f56c177d011b673be89235762bea4a24040ddc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dab1517bd683d0e754559c3e0610f515a7d1f15f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082351"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035229"
 ---
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances を使用してコストを削減する
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]
 

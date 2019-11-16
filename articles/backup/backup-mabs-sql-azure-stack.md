@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 397de7d1de9acc657fa0fd0cb93bd6e26e5606e2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747227"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090892"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack での SQL Server のバックアップ
 

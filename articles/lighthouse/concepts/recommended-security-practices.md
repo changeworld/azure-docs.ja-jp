@@ -1,18 +1,14 @@
 ---
 title: 推奨セキュリティ プラクティス
 description: Azure の委任されたリソース管理を使用する場合、セキュリティとアクセスの制御を考慮することが大切です。
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e0f0a9d4cdd56ff1bca9b9faf493d3e0d68e558c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286184"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132473"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 

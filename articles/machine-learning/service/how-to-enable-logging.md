@@ -1,6 +1,5 @@
 ---
 title: Azure Machine Learning でログ記録を有効にする
-titleSuffix: Azure Machine Learning
 description: 既定の Python ロギング パッケージと SDK 固有の機能の両方を使用して、Azure Machine Learning でログ記録を有効にする方法について説明します。
 ms.author: trbye
 author: trevorbye
@@ -10,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91e00b8e1d13f69ae3ba446bcbc09f06f387c439
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489887"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931112"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Azure Machine Learning でログ記録を有効にする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

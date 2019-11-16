@@ -11,12 +11,12 @@ ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e7d1570deff9492dd13e74e25c1981b90565052d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5b33d8fc804d339d3808e5231998fbba41cd4ee9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822900"
+ms.locfileid: "73839857"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL データ ウェアハウスを作成する
 
-Azure SQL Data Warehouse は、定義された一連の[コンピューティング リソース]memory-concurrency-limits.md) を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
+Azure SQL データ ウェアハウスは、定義された一連のコンピューティング リソース (memory-concurrency-limits.md) を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
 
 空の SQL データ ウェアハウスを作成するには、次の手順に従います。 
 
@@ -61,7 +61,7 @@ Azure SQL Data Warehouse は、定義された一連の[コンピューティン
    | ------- | --------------- | ----------- | 
    | **データベース名** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 |
+   | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
    | **[ソースの選択]** | 空のデータベース | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの 1 つの種類であることに注意してください。|
 
     ![データ ウェアハウスを作成する](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
@@ -70,7 +70,7 @@ Azure SQL Data Warehouse は、定義された一連の[コンピューティン
 
     | Setting | 推奨値 | 説明 | 
     | ------- | --------------- | ----------- |
-    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 | 
+    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 | 
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
     | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |

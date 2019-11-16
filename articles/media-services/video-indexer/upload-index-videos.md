@@ -1,6 +1,6 @@
 ---
 title: Video Indexer を使用してビデオをアップロードしてインデックスを付ける
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: このトピックでは、API を使用して Video Indexer でビデオをアップロードし、インデックスを付ける方法を示します。
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372373"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839157"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 

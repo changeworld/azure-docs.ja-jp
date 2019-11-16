@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330843"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013146"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -70,7 +70,7 @@ Office 365 ProPlus と OneDrive を VM にインストールする場合は、�
 
 ### <a name="set-up-user-profile-container-fslogix"></a>ユーザー プロファイル コンテナーを設定する (FSLogix)
 
-FSLogix コンテナーをイメージの一部として含めるには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)を使用して FSLogix コンテナーの機能をテストできます。
+FSLogix コンテナーをイメージの一部として含めるには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)を使用して FSLogix コンテナーの機能をテストできます。
 
 ### <a name="configure-windows-defender"></a>Windows Defender を構成する
 
@@ -101,28 +101,6 @@ Windows 10 PC のスタート画面のレイアウトを指定するには、こ
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
-```
-
-### <a name="configure-session-timeout-policies"></a>セッション タイムアウト ポリシーを構成する
-
-リモート セッション ポリシーは、ホスト プール内のすべての VM が同じセキュリティ グループに属しているため、グループ ポリシー レベルで適用できます。
-
-リモート セッション ポリシーを構成するには:
-
-1. **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[セッションの時間制限]** に移動します。
-2. 右側のパネルで、 **[アクティブでアイドル状態になっているリモート デスクトップ サービス セッションの制限時間を設定する]** ポリシーを選択します。
-3. モーダル ウィンドウが表示されたら、ポリシー オプションを **[未構成]** から **[有効]** に変更してポリシーをアクティブにします。
-4. ポリシー オプションの下にあるドロップダウン メニューで、時間数を **3 時間**に設定します。
-
-次のコマンドを実行して、リモート セッション ポリシーを手動で構成することもできます。
-
-```batch
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>タイム ゾーン リダイレクトを設定する

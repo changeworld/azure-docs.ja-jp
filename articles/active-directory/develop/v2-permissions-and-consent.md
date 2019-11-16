@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb6d96dfdca63f1bacf45ab0af01d18aafcf302
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667871"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927149"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -186,18 +186,18 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 
 ```
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+  GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
   client_id=6731de76-14a6-49ae-97bc-6eba6914391e
   &state=12345
   &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+  &scope=
+  https://graph.microsoft.com/calendars.read 
+  https://graph.microsoft.com/mail.send
 ```
 
 
 | パラメーター     | 条件     | 説明                                                                               |
-|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
+|:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように `common` で総称的に参照できます。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
 | `redirect_uri` | 必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |

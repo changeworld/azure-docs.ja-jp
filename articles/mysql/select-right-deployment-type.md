@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: cab67a9a50d8e9d91897c170ef2cb0884f169c64
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5cdd65d5509d8f46f095d91c509a1fda288517c4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606669"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132438"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure で適切な MySQL サーバー オプションを選択する
 
@@ -38,7 +38,7 @@ Azure では、MySQL サーバーのワークロードをホスト型仮想マ�
 | MySQL の修正プログラムの適用     | 自動  | お客様が管理 |
 | 高可用性 | 高可用性 (HA) モデルは、ノード レベルの中断が発生した場合の組み込みのフェールオーバー メカニズムに基づいています。 このような場合、このサービスは自動的に新しいインスタンスを作成し、このインスタンスにストレージを接続します。 | お客様が高可用性の設計、実装、テスト、保守を行います。 機能には、Always On フェールオーバー クラスタリング、Always On グループ レプリケーション、ログ配布、またはトランザクション レプリケーションが含まれることがあります。|
 | ゾーン冗長性 | 以下は現在サポートされていません | Azure VM は、さまざまな可用性ゾーンで実行するように設定できます。 オンプレミス ソリューションの場合、お客様は独自のセカンダリ データ センターを作成、管理、および保守する必要があります。|
-| ハイブリッド シナリオ | [データイン レプリケーション](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)では、外部の MySQL サーバーから Azure Database for MySQL サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。<br/><br/> [読み取りレプリカ](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)機能を使用すると、Azure Database for MySQL マスター サーバーから、最大 5 台の読み取り専用レプリカ サーバーにデータをレプリケートできます。 レプリカは、同じ Azure リージョン内に存在するか、複数のリージョンにまたがっています。 読み取り専用レプリカは、binlog レプリケーション テクノロジを使用して非同期的に更新されます。| お客様が管理
+| ハイブリッド シナリオ | [データイン レプリケーション](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)では、外部の MySQL サーバーから Azure Database for MySQL サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。<br/><br/> [読み取りレプリカ](https://docs.microsoft.com/azure/mysql/concepts-read-replicas)機能を使用すると、Azure Database for MySQL マスター サーバーから、最大 5 台の読み取り専用レプリカ サーバーにデータをレプリケートできます。 レプリカは、同じ Azure リージョン内に存在するか、複数のリージョンにまたがっています。 読み取り専用レプリカは、binlog レプリケーション テクノロジを使用して非同期的に更新されます。| お客様が管理
 | バックアップと復元 | [サーバーのバックアップ](https://docs.microsoft.com/azure/mysql/concepts-backup#backups)を自動的に作成し、ローカル冗長または geo 冗長のいずれかであるユーザー構成ストレージに保存します。 このサービスでは、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが作成されます。 | お客様が管理 |
 | データベース操作の監視 | お客様は、データベース操作に[アラートを設定](https://docs.microsoft.com/azure/mysql/concepts-monitoring)し、しきい値に達したときに対応できます。 | お客様が管理 |
 | 高度な脅威保護 | [Advanced Threat Protection](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal) を提供します。 この保護により、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。 | お客様は自身でこの保護を構築する必要があります。

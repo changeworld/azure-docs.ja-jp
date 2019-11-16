@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677579"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887538"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -57,7 +57,7 @@ Application Insights を使ってクラウド サービスを監視する最も�
 ### <a name="resources-for-components"></a>コンポーネント用のリソース
 お客様のアプリのコンポーネントごとに別個のリソースを作成することをお勧めします。 つまり、web ロールと worker ロールにそれぞれリソースを作成します。 各コンポーネントを別個に分析できますが、すべてのコンポーネントから主要なグラフをまとめる[ダッシュボード](../../azure-monitor/app/overview-dashboard.md)を作成して、1 つのビューでまとめて比較および監視することもできます。 
 
-別の方法として、複数のロールから同じリソースにテレメトリを送信することもできますが、ソース ロールを識別する[各テレメトリ項目にディメンション プロパティを追加](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)します。 この方法では、例外などのメトリック グラフに通常はさまざまなロールからのカウントの集計が表示されます。しかし、必要な場合にはロール識別子を使用してグラフを分割することができます。 同じディメンションによって検索をフィルターすることもできます。 この代替方法ではすべてを同時に表示するのが若干簡単になりますが、ロール間で混乱を招く可能性もあります。
+別の方法として、複数のロールから同じリソースにテレメトリを送信することもできますが、ソース ロールを識別する[各テレメトリ項目にディメンション プロパティを追加](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)します。 この方法では、例外などのメトリック グラフに通常はさまざまなロールからのカウントの集計が表示されます。しかし、必要な場合にはロール識別子を使用してグラフを分割することができます。 同じディメンションによって検索をフィルターすることもできます。 この代替方法ではすべてを同時に表示するのが若干簡単になりますが、ロール間で混乱を招く可能性もあります。
 
 通常、ブラウザーのテレメトリはサーバー側の Web ロールと同じリソースに含まれています。
 

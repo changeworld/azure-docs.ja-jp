@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 929479f2816ef979edb26ba5aa00cf449c49b70a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852040"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73942167"
 ---
 # <a name="supported-account-types"></a>サポートされているアカウントの種類
 
@@ -41,7 +41,7 @@ Microsoft Azure パブリック クラウドでは、ほとんどの種類のア
   - 職場、学校または個人用の Microsoft アカウントを使用して。
   - 個人用の Microsoft アカウントのみを使用して。
     > [!NOTE]
-    > 現在、Microsoft ID プラットフォームは、**職場、学校または Microsoft 個人アカウント**用にアプリを登録することによってのみ、個人用の Microsoft アカウントをサポートしており、`https://login.onmicrosoftonline.com/consumers` などのアプリケーションを構築するときに Azure AD の権限を指定することによって、アプリケーションのコードでのサインインを制限しています。
+    > 現在、Microsoft ID プラットフォームは、**職場、学校または Microsoft 個人アカウント**用にアプリを登録することによってのみ、個人用の Microsoft アカウントをサポートしており、`https://login.microsoftonline.com/consumers` などのアプリケーションを構築するときに Azure AD の権限を指定することによって、アプリケーションのコードでのサインインを制限しています。
 
 - ビジネスから消費者へのアプリケーションを作成している場合は、Azure AD B2C を使用して、ソーシャル ID でユーザーをサインインさせることもできます。
 

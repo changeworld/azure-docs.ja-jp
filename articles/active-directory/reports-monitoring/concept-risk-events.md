@@ -3,7 +3,7 @@ title: Azure Active Directory リスク検出 | Microsoft Docs
 description: この記事では、リスク検出の詳細な概要を示します。
 services: active-directory
 keywords: azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523ae8e1ba31a4fe2c9683007f717149dfdc3bc6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127319"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014479"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory リスク検出
 

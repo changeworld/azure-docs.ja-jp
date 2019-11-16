@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720249"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837492"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>マネージド ID で Key Vault の認証を提供する
 
@@ -34,7 +34,7 @@ ms.locfileid: "71720249"
    - [Azure PowerShell を使用してキー コンテナーを作成する](quick-create-powershell.md)
    - [Azure portal を使用してキー コンテナーを作成する](quick-create-portal.md)。
 - キー コンテナーへのアクセスを許可する既存の App Service アプリケーション。 [App Service のドキュメント](../app-service/overview.md)の手順に従って簡単に作成できます。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/overview)。 別の方法として、[Azure portal](http://portal.azure.com) を使用することもできます。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/overview)。 別の方法として、[Azure portal](https://portal.azure.com) を使用することもできます。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>システム割り当て ID の追加 
@@ -114,6 +114,6 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 - [Azure Key Vault セキュリティ: ID 管理とアクセス管理](overview-security.md#identity-and-access-management)
 - [アクセス制御ポリシーを使用して Key Vault の認証を提供する](key-vault-group-permissions-for-apps.md)
 - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
-- [キー コンテナーのセキュリティ保護](key-vault-secure-your-key-vault.md)。
+- [キー コンテナーをセキュリティで保護する](key-vault-secure-your-key-vault.md)
 - [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)
 - [Azure Key Vault のベスト プラクティス](key-vault-best-practices.md)を確認する

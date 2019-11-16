@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718373"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927110"
 ---
 # <a name="authentication-basics"></a>認証の基本
 
@@ -74,7 +74,7 @@ Microsoft ID プラットフォームでは、Identity as a Service を提供し
 
 トークンが有効な時間は限られています。 通常、STS では、アプリケーションまたは保護されたリソースにアクセスするためのアクセス トークンと、アクセス トークンの有効期限が近づいたときにアクセス トークンを更新するために使用する更新トークンの 2 つのトークンが提供されます。 
 
-アクセス トークンは、`Authenticate` ヘッダーのベアラー トークンとして Web API に渡されます。 アプリでは、STS に更新トークンを提供できます。アプリへのユーザー アクセスが取り消されていない場合、新しいアクセス トークンと新しい更新トークンが返されます。 ユーザーが退職する場合、この方法を使用して対処します。 ユーザーが承認されなくなると、STS で更新トークンを受け取っても、有効なアクセス トークンは新たに発行されません。
+アクセス トークンは、`Authorization` ヘッダーのベアラー トークンとして Web API に渡されます。 アプリでは、STS に更新トークンを提供できます。アプリへのユーザー アクセスが取り消されていない場合、新しいアクセス トークンと新しい更新トークンが返されます。 ユーザーが退職する場合、この方法を使用して対処します。 ユーザーが承認されなくなると、STS で更新トークンを受け取っても、有効なアクセス トークンは新たに発行されません。
 
 ## <a name="application-model"></a>アプリケーション モデル
 

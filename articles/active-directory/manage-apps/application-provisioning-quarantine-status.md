@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 704e217cd7ddea988b6a9812627aba8c8468fb73
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955415"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882893"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>検疫状態のアプリケーションのプロビジョニング
 
@@ -69,6 +69,6 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 
 - Azure portal を使用して、プロビジョニング ジョブを再起動します。 **[設定]** のアプリケーションの **[プロビジョニング]** ページで、 **[Clear state and restart synchronization]\(状態を消去して同期を再開する\)** を選択し、 **[プロビジョニングの状態]** を **[オン]** に設定します。 この操作により、プロビジョニング サービスが完全に再起動されます (しばらく時間がかかることがあります)。 すべての初回サイクルが再度実行されます。これにより、エスクローがクリアされ、アプリが検疫から削除され、透かしがクリアされます。
 
-- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](https://docs.microsoft.com/en-us/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 再起動する対象は完全に制御できます。 エスクローをクリアするか (検疫状態と判定されるためのエスクロー カウンターを再起動するため)、検疫をオフにするか (検疫からアプリケーションを削除するため)、または透かしをクリアするかを選択できます。 次の要求を使用します。
+- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 再起動する対象は完全に制御できます。 エスクローをクリアするか (検疫状態と判定されるためのエスクロー カウンターを再起動するため)、検疫をオフにするか (検疫からアプリケーションを削除するため)、または透かしをクリアするかを選択できます。 次の要求を使用します。
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

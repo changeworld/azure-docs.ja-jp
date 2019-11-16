@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 1b6b3f4e4be9d056bc53fac2eb2f1f3fcd768085
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510948"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108750"
 ---
 # <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>SQL Database Edge で SQL Database DAC パッケージと Stream Analytics ジョブを使用する
 
@@ -37,7 +37,7 @@ Azure SQL Database Edge では、IoT Edge モジュールの *モジュール �
 |フィールド | 説明 |
 |------|-------------|
 | SQLPackage | SQL Database DAC パッケージを含む *.zip ファイルの Azure Blob Storage URI。
-| ASAJobInfo | ASA Edge ジョブの Azure Blob Storage URI。 ASA Edge ジョブの発行の詳細については、[SQL Database Edge の ASA Edge ジョブの発行]()に関する記事を参照してください。
+| ASAJobInfo | ASA Edge ジョブの Azure Blob Storage URI。 ASA Edge ジョブの発行の詳細については、[SQL Database Edge の ASA Edge ジョブの発行](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)に関する記事を参照してください。
 
 ## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>SQL Database Edge での SQL Database DAC パッケージの使用
 

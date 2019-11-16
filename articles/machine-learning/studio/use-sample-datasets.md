@@ -1,6 +1,6 @@
 ---
 title: サンプル データセットの使用
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Machine Learning Studio (クラシック) に含まれるサンプル モデルで使用されるデータセットについて説明します。 実験には、これらのサンプル データセットを使用できます。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f22d27f7900ce9dda3a8e65451acb9b743a25811
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618903"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839405"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets

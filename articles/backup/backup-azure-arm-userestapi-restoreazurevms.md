@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 364b6ab589cc0fa50953a71d55adeccc79462eed
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eecee01ffc78ec8cc0e60b517e9d5b4f0e6baa25
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747522"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929159"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -28,7 +28,7 @@ Azure Backup を使用した Azure 仮想マシンのバックアップが完了
 バックアップ項目の使用可能な復旧ポイントの一覧は、[復旧ポイント一覧取得 REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list) を使用して取得できます。 関連するすべての値を含む簡単な *GET* 操作です。
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
 `{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)のように構成されています。 `{fabricName}` は "Azure" です。
@@ -128,7 +128,7 @@ X-Powered-By: ASP.NET
 ディスクの復元のトリガーは、*POST* 要求です。 ディスクの復元操作について詳しくは、["復元のトリガー" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger) に関するページをご覧ください。
 
 ```http
-POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
+POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
 `{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)のように構成されています。 `{fabricName}` は "Azure" であり、`{recoveryPointId}` は[上](#example-response)で説明したように復旧ポイントの `{name}` フィールドです。
@@ -183,7 +183,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-client-request-id: a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b; a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b
@@ -193,14 +193,14 @@ x-ms-correlation-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-routing-request-id: SOUTHINDIA:20180604T130003Z:893fe372-8d6c-4c56-b589-45a95eeef95f
 Cache-Control: no-cache
 Date: Mon, 04 Jun 2018 13:00:03 GMT
-Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 その後は、場所ヘッダーまたは Azure-AsyncOperation ヘッダーを使用して簡単な *GET* コマンドで結果の操作を追跡します。
 
 ```http
-GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 ```
 
 操作が完了すると、応答本文に結果の復元ジョブの ID が含まれる 200 (OK) が返されます。
@@ -253,7 +253,7 @@ X-Powered-By: ASP.NET
         "containerName": "IaasVMContainer;iaasvmcontainerv2;testRG;testVM",
         "protectedItemName": "VM;iaasvmcontainerv2;testRG;testVM",
         "recoveryPointId": "348916168024334",
-        "api-version": "2016-12-01",
+        "api-version": "2019-05-13",
       "parameters": {
         "properties": {
           "objectType":  "IaasVMRestoreRequest",

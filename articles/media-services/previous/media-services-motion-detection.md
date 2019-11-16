@@ -14,15 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: c053e4dfc38fc0f055ec91a6622ef7f767c13a86
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "69015332"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083753"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics で動作を検出する
+ 
 ## <a name="overview"></a>概要
+
 **Azure Media Motion Detector** メディア プロセッサ (MP) を使用すると、長くて動きの少ないビデオから注目すべき部分を効率よく識別できます。 モーション検出は、ビデオでモーションが発生したセクションを識別するために、静止カメラ映像で使用できます。 この機能は、イベントが発生したタイムスタンプと境界範囲のメタデータを含む JSON ファイルを生成します。
 
 セキュリティ ビデオ フィードを対象とするこのテクノロジは、関連するイベントと、影や照明の変化などの誤検出に、モーションを分類できません。 これにより、いつまでも続く関係のないイベントに煩わされることなくカメラ フィードからセキュリティ アラートを生成することができ、長い監視ビデオから関心のある瞬間を抽出できます。
@@ -40,7 +42,7 @@ ms.locfileid: "69015332"
 ### <a name="parameters"></a>parameters
 次のパラメーターを使用できます。
 
-| EnableAdfsAuthentication | オプション | 説明 | 既定値 |
+| 名前 | オプション | 説明 | Default |
 | --- | --- | --- | --- |
 | sensitivityLevel |文字列: "low"、"medium"、"high" |モーション報告の感度を設定します。 誤検出の数を調整します。 |"medium" |
 | frameSamplingValue |正の整数 |アルゴリズムの実行頻度を設定します。 1 = すべてのフレーム、2 = 2 フレームごと、以降同様に続きます。 |1 |

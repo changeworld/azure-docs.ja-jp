@@ -1,17 +1,14 @@
 ---
 title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: d0ba3195aef246ff49042f61dcec0b4397b5dde6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: baef46f4ba6f899c2c0a1392f87006223d75a4e1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622635"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959050"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 

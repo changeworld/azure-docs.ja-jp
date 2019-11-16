@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
-ms.date: 08/06/2018
+ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 44f45c53a12c7ac73c3de3f2734f024cb9bc6dd5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899996"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031013"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで実行されている Web アプリをプロファイルする
 
@@ -89,15 +89,15 @@ portal から Application Insights Profiler シンクを設定する方法はま
 
     ![WAD 拡張機能がインストールされているかどうか確認する][wadextension]
 
-1. 使用する VM 用の VM 診断拡張機能を見つけます。 リソース グループ、Microsoft.Compute virtualMachines、仮想マシン名、および拡張機能を展開します。  
+2. 使用する VM 用の VM 診断拡張機能を見つけます。 [https://resources.azure.com](https://resources.azure.com) に移動します。 リソース グループ、Microsoft.Compute virtualMachines、仮想マシン名、および拡張機能を展開します。  
 
     ![Azure Resource Explorer で WAD 構成に移動する][azureresourceexplorer]
 
-1. Application Insights Profiler シンクを WadCfg の下の SinksConfig ノードに追加します。 SinksConfig セクションがまだない場合は、追加する必要がある場合があります。 必ず、適切な Application Insights iKey を設定に指定してください。 右上隅でエクスプローラーのモードを読み取り/書き込みに切り替えて、青色の [編集] ボタンを押す必要があります。
+3. Application Insights Profiler シンクを WadCfg の下の SinksConfig ノードに追加します。 SinksConfig セクションがまだない場合は、追加する必要がある場合があります。 必ず、適切な Application Insights iKey を設定に指定してください。 右上隅でエクスプローラーのモードを読み取り/書き込みに切り替えて、青色の [編集] ボタンを押す必要があります。
 
     ![Application Insights Profiler シンクを追加する][resourceexplorersinksconfig]
 
-1. 構成の編集が完了したら、[PUT] を押します。 PUT が成功すると、画面の真ん中に緑色のチェック マークが表示されます。
+4. 構成の編集が完了したら、[PUT] を押します。 PUT が成功すると、画面の真ん中に緑色のチェック マークが表示されます。
 
     ![PUT 要求を送信して変更を適用する][resourceexplorerput]
 

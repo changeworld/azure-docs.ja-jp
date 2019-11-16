@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3414cc54e5023bdeebb2d5536c1408f981e68f19
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430856"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891395"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Veeam B&R を使用して CloudSimple プライベート クラウド上のワークロード VM をバックアップする
 
@@ -194,7 +194,7 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>長期的なデータ保持のために Azure BLOB ストレージを構成する
 
-1. [Azure Storage の基本](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)に関する Microsoft のビデオで説明されているように、標準タイプの汎用ストレージ アカウント (GPv2) と、BLOB コンテナーを作成します。
+1. [Azure Storage の基本](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)に関する Microsoft のビデオで説明されているように、標準タイプの汎用ストレージ アカウント (GPv2) と、BLOB コンテナーを作成します。
 2. [コンテナーの作成](https://docs.microsoft.com/rest/api/storageservices/create-container)に関するリファレンスで説明されているように、Azure ストレージ コンテナーを作成します。
 2. Linux 用の `azcopy` コマンド ライン ユーティリティを Microsoft からダウンロードします。 CentOS 7.5 の bash シェルでは、次のコマンドを使用できます。
 
@@ -290,7 +290,7 @@ Veeam バックアップおよび復旧サーバーのパブリック IP アド�
 * [VNet を回線に接続する - 異なるサブスクリプション](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [Azure portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)
 * [Azure portal で Windows VM にマネージド データ ディスクを接続する方法](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Azure Storage の基本 - ビデオ](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)
+* [Azure Storage の基本 - ビデオ](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
 * [コンテナーの作成](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [AzCopy on Linux を使ったデータの転送](../storage/common/storage-use-azcopy-linux.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Video Indexer エディターを使用してプロジェクトを作成する
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: このトピックでは、Video Indexer エディターを使用してプロジェクトを作成する方法を示します。
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518152"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839164"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Video Indexer エディターを使用してプロジェクトを作成する
 

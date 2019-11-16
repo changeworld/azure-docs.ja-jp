@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Networks 用の一般的な PowerShell コマンド | Microsoft Docs
+title: Azure Virtual Networks 用の一般的な PowerShell コマンド
 description: 仮想ネットワークと VM に関連するリソースの作成を開始する際に使用される一般的な PowerShell コマンド
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: d7ab705291b8705994aed96f1d270f792e4b2fb0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3abde706ddff297094c7fbb1579b534894b349d2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102542"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032926"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure Virtual Networks 用の一般的な PowerShell コマンド
 

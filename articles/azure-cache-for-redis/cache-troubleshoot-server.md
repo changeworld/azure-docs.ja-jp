@@ -1,25 +1,17 @@
 ---
-title: Redis サーバーのトラブルシューティング | Microsoft Docs
+title: Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング
 description: Azure Cache for Redis の一般的なサーバー側の問題を解決する方法について説明します
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: d3cf12f6c6e475a1c9c154515e78011a273b918a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 22cb4beb3411c617882972e1b91c5f538019fae4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795263"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122562"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング
 
@@ -59,13 +51,13 @@ CPU またはサーバーの負荷などの[メトリックを監視](cache-how-
 
 高いサーバーの負荷を軽減するために実行できるいくつかの変更を次に示します。
 
-- 以下で示す[実行時間の長いコマンド](#long-running-commands)や深刻なメモリ不足によるページ フォールトなどの、CPU スパイクの原因を調査します。
+- 以下に示す[実行時間の長いコマンド](#long-running-commands)や深刻なメモリ不足によるページ フォールトなどの、CPU スパイクの原因を調査します。
 - 潜在的な影響について早期に通知される、CPU または サーバーの負荷などのメトリックに関する[アラートを作成](cache-how-to-monitor.md#alerts)します。
 - CPU 容量の多いより大きいキャッシュ サイズに[スケーリング](cache-how-to-scale.md)します。
 
 ## <a name="long-running-commands"></a>実行時間の長いコマンド
 
-Redis コマンドの中には、他のコマンドより実行コストが高いものがあります。 [Redis コマンドのドキュメント](https://redis.io/commands)は、各コマンドの時間複雑度を示しています。 Redis コマンドの処理はシングルスレッドで行われるため、コマンドの実行時間が長いと、それより後に実行された他のコマンドはすべてブロックされます。 Redis サーバーに対して発行しているコマンドを確認し、パフォーマンスへの影響を理解する必要があります。 たとえば、[KEYS](https://redis.io/commands/keys) コマンドは多くの場合、それが O(N) 操作であることを認識せずに使用されます。 [SCAN](https://redis.io/commands/scan) を使用して KEYS を回避することにより CPU スパイクを削減できます。
+Redis コマンドの中には、他のコマンドより実行コストが高いものがあります。 [Redis コマンドのドキュメント](https://redis.io/commands)は、各コマンドの時間複雑度を示しています。 Redis コマンドの処理はシングルスレッドで行われるため、コマンドの実行時間が長いと、それより後に実行される他のコマンドはすべてブロックされます。 Redis サーバーに対して発行しているコマンドを確認し、パフォーマンスへの影響を理解する必要があります。 たとえば、[KEYS](https://redis.io/commands/keys) コマンドは多くの場合、それが O(N) 操作であることを認識せずに使用されます。 [SCAN](https://redis.io/commands/scan) を使用して KEYS を回避することにより CPU スパイクを削減できます。
 
 [SLOWLOG](https://redis.io/commands/slowlog) コマンドを使用すると、サーバーに対して実行されているコストの高いコマンドを測定できます。
 

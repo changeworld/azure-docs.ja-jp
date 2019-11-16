@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: f0bc66260a0eaa66e71241148591146fa38d4120
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 202267d4fffc7c6f0d99cd2a6ef3bbee82947a81
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821785"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132398"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Database Managed Instance に移行する
 
@@ -41,7 +41,7 @@ TDE で保護されたデータベースと対応する証明書の両方を円�
 この記事の手順を完了するには、次の前提条件を満たす必要があります。
 
 - ファイルとしてエクスポートされた証明書にアクセス可能なオンプレミス サーバーまたは他のコンピューターへの [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) コマンドライン ツールのインストール。 Pvk2Pfx ツールは、スタンドアロンの自己完結型コマンドライン環境、[Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) に含まれています。
-- [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) バージョン 5.0 以上のインストール。
+- [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell) バージョン 5.0 以上のインストール。
 - Azure PowerShell モジュールの[インストールと更新](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - [Az.Sql モジュール](https://www.powershellgallery.com/packages/Az.Sql)。
   PowerShell で次のコマンドを実行して、PowerShell モジュールをインストール/更新します。

@@ -1,6 +1,6 @@
 ---
 title: Video Indexer アカウントの管理
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: この記事では、Azure に接続された Video Indexer アカウントを管理する方法について説明します。
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8221cdcf7afe82ee969f645d7f459c69519711d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799518"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838985"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを管理する
 

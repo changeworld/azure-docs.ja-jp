@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/09/2019
-ms.openlocfilehash: 1182f48d2d05c90cc90b1832f9305001dd2d1211
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/14/2019
+ms.openlocfilehash: 3ab3164db7702566e62b2eedf2a9a03e9f7fb55c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553810"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109132"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>評価のために Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -33,7 +33,7 @@ Azure VM の監視を有効にするには:
 
 1. **[Insights (プレビュー)]** ページで、 **[今すぐ試す]** を選択します。
 
-    ![VM に対して Azure Monitor for VMs を有効にする](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![VM に対して Azure Monitor for VMs を有効にする](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 1. **[Azure Monitor Insights Onboarding]\(Azure Monitor Insights の配布準備\)** ページで、同じサブスクリプションに既存の Log Analytics ワークスペースがある場合は、ドロップダウン リストでそれを選択します。  
 
@@ -62,7 +62,7 @@ Azure 仮想マシン スケール セットの監視を有効にするには:
 
     このリストでは、サブスクリプションで VM がデプロイされている既定のワークスペースと場所が事前に選択されています。 
 
-    ![仮想マシン スケール セットに対して Azure Monitor for VMs を有効にする](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal-01.png)
+    ![仮想マシン スケール セットに対して Azure Monitor for VMs を有効にする](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal.png)
 
     >[!NOTE]
     >仮想マシン スケール セットからの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../learn/quick-create-workspace.md)に関するページを参照してください。 Log Analytics ワークスペースは、[サポートされているリージョン](vminsights-enable-overview.md#log-analytics)のいずれかに属している必要があります。
@@ -78,6 +78,5 @@ VM または仮想マシン スケール セットの監視が有効になった
 
 ## <a name="next-steps"></a>次の手順
 
-* 正常性機能の使用方法については、[Azure Monitor VM の正常性の把握](vminsights-health.md)に関する記事を参照してください。 
 * 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの使用](vminsights-maps.md)に関する記事を参照してください。 
 * VM のパフォーマンスでのボトルネックや全体的な使用率を特定するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事を参照してください。

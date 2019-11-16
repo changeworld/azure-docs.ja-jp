@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b12d1fec9b7852835d3d5b5346d64868d2ee8c46
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087688"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082843"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
@@ -30,7 +30,7 @@ ms.locfileid: "70087688"
 API をエクスポートする前に、OpenAPI 定義 (以前は [Swagger](https://swagger.io/) ファイルと呼ばれていたもの) を使用して API を記述する必要があります 。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。 PowerApps と Microsoft Flow では、任意の OpenAPI 2.0 定義に対応するカスタム コネクタを作成できます。 Azure Functions と Azure App Service には、OpenAPI 定義を作成、ホスト、管理するためのサポートが組み込まれています。 詳細については、[Azure App Service での CORS を使用した RESTful API のホスト](../app-service/app-service-web-tutorial-rest-api.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> OpenAPI 定義を使用せずに、PowerApps と Microsoft Flow の UI でカスタム コネクタをビルドすることもできます。 詳細については、「[PowerApps でのカスタム コネクタの登録と使用](https://powerapps.microsoft.com/tutorials/register-custom-api/)」および「[Microsoft Flow でカスタム コネクタを登録して使用する](https://flow.microsoft.com/documentation/register-custom-api/)」をご覧ください。
+> OpenAPI 定義を使用せずに、PowerApps と Microsoft Flow の UI でカスタム コネクタをビルドすることもできます。 詳細については、「[PowerApps でのカスタム コネクタの登録と使用](https://powerapps.microsoft.com/tutorials/register-custom-api/)」および「[Microsoft Flow でカスタム コネクタを登録して使用する](/power-automate/developer/register-custom-api)」をご覧ください。
 
 API 定義をエクスポートするには、次の手順を実行します。
 
@@ -127,7 +127,7 @@ PowerApps と Microsoft Flow に API 定義をインポートするには、次�
 
 7. ページの上部にある **[コネクタの作成]** をクリックします。
 
-これで、PowerApps と Microsoft Flow のカスタム コネクタに接続できるようになりました。 PowerApps および Microsoft Flow のポータルでコネクタを作成する方法の詳細については、「[PowerApps でのカスタム コネクタの登録と使用](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector)」および「[カスタム コネクタを登録する (Microsoft Flow) ](https://flow.microsoft.com/documentation/register-custom-api/#register-your-custom-connector)」をご覧ください。
+これで、PowerApps と Microsoft Flow のカスタム コネクタに接続できるようになりました。 PowerApps および Microsoft Flow のポータルでコネクタを作成する方法の詳細については、「[PowerApps でのカスタム コネクタの登録と使用](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector)」および「[カスタム コネクタを登録する (Microsoft Flow) ](/power-automate/get-started-flow-dev#create-a-custom-connector)」をご覧ください。
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>認証の種類を指定します
@@ -158,7 +158,7 @@ Azure AD を使用する場合、API 自体に対して、または、カスタ�
 
 - コネクタの登録を構成するには、[Azure AD アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)ための手順に従います。 登録には、API および `https://msmanaged-na.consent.azure-apim.net/redirect` の応答 URL への委任アクセス許可が含まれている必要があります。 
 
-詳細については、[PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) および [Microsoft Flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/) の Azure AD 登録の例をご覧ください。 これらの例では、API として Azure Resource Manager を使用しています。手順に従う場合は、API を置き換えてください。
+詳細については、[PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) および [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication) の Azure AD 登録の例をご覧ください。 これらの例では、API として Azure Resource Manager を使用しています。手順に従う場合は、API を置き換えてください。
 
 次の構成値が必要です。
 - **クライアント ID** - コネクタの Azure AD 登録のクライアント ID

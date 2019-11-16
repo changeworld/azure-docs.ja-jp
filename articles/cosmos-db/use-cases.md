@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: e22b426b2172c169f9343569fffac57f370afbee
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: de2bc551547706fb820813e57996e77bf49148d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219884"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888929"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -101,4 +101,4 @@ Cosmos DB でサポートされる形式である JSON は、軽量なうえに 
 
 * Azure Cosmos DB の使用を開始するには、[クイック スタート](create-sql-api-dotnet.md)をご覧ください。このクイック スタートでは、アカウントを作成して Cosmos DB を実際に使用する方法を説明しています。
 
-* Azure Cosmos DB を使用する顧客の詳細については、「[顧客のケース スタディ](https://azure.microsoft.com/en-us/case-studies/?service=cosmos-db)」ページを参照してください。
+* Azure Cosmos DB を使用する顧客の詳細については、「[顧客のケース スタディ](https://azure.microsoft.com/case-studies/?service=cosmos-db)」ページを参照してください。

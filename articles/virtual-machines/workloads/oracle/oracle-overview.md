@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: d8fed68d9b830df359f8129d55f1b9911f69e8f1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802259"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891461"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
@@ -54,9 +54,9 @@ Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Databas
 
 ## <a name="backup-oracle-workloads"></a>Oracle ワークロードのバックアップ
 
-* [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-overview) を使用して Oracle VM をバックアップします。
+* [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) を使用して Oracle VM をバックアップします。
 
-* Oracle RMAN を使用して Oracle Database をバックアップし、必要に応じて、[Azure Blob Fuse](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux) を使用して、[冗長性の高い Azure Blob Storage アカウント](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)をマウントし、回復性を高めるために RMAN バックアップをそれに書き込みます。
+* Oracle RMAN を使用して Oracle Database をバックアップし、必要に応じて、[Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) を使用して、[冗長性の高い Azure Blob Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-redundancy)をマウントし、回復性を高めるために RMAN バックアップをそれに書き込みます。
 
 ## <a name="integration-of-azure-with-oci-preview"></a>Azure と OCI の統合 (プレビュー)
 

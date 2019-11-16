@@ -1,6 +1,6 @@
 ---
 title: Video Indexer でのブランド モデルのカスタマイズ - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: この記事では、Video Indexer におけるブランド モデルについて説明し、そのカスタマイズ方法の概要を示します。
 services: media-services
 author: anikaz
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 863dbd9a6044ee33ae39ac9693a7d4f74382b9c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca3d825fb2f4184448cc279d9408f47ad4ad004a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799670"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838374"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Video Indexer でのブランド モデルのカスタマイズ
 

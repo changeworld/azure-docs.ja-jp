@@ -1,25 +1,17 @@
 ---
-title: Azure Cache for Redis Premium レベルの概要 | Microsoft Docs
+title: Azure Cache for Redis Premium レベルの概要
 description: Premium レベルの Azure Cache for Redis インスタンス向けの Redis の永続化、Redis クラスタリング、および VNET サポートの作成と管理方法について説明します。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786075"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121669"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Azure Cache for Redis Premium レベルの概要
 Azure Cache for Redis は、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションの作成を可能にする分散マネージド キャッシュです。 

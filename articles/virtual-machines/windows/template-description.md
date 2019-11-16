@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749113"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838886"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -282,7 +282,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 いくつかのプロファイル要素は、仮想マシン リソースを定義する際に使用されます。 必須のものもあれば、省略可能なものもあります。 たとえば、hardwareProfile、osProfile、storageProfile、networkProfile 要素は必須で、diagnosticsProfile 要素は省略可能です。 これらのプロファイルは、次のような設定を定義します。
    
 - [サイズ](sizes.md)
-- [名前](/azure/architecture/best-practices/naming-conventions)と資格情報
+- [名前](/azure/architecture/best-practices/resource-naming)と資格情報
 - ディスクと[オペレーティング システムの設定](cli-ps-findimage.md)
 - [ネットワーク インターフェイス](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - ブート診断

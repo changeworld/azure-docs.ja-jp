@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 64c99c6e7e33be5856e67db0500bf48123cdcf09
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: cf78712515ab91c66161d04dac0df601c5dcb625
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614481"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082780"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -381,26 +381,6 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 > 現在、セッションで有効になっているキューやサブスクリプションで動作する Service Bus トリガーはプレビュー段階です。 これに関連した今後の更新については、[この項目](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458)を追跡してください。 
 
 この記事の前半でこれらのプロパティを使用している[コード例](#trigger---example)を参照してください。
-
-## <a name="trigger---hostjson-properties"></a>トリガー - host.json のプロパティ
-
-[host.json](functions-host-json.md#servicebus) ファイルには、Service Bus トリガーの動作を制御する設定が含まれています。
-
-```json
-{
-    "serviceBus": {
-      "maxConcurrentCalls": 16,
-      "prefetchCount": 100,
-      "maxAutoRenewDuration": "00:05:00"
-    }
-}
-```
-
-|プロパティ  |Default | 説明 |
-|---------|---------|---------|
-|maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、`maxConcurrentCalls` を 1 に設定します。 |
-|prefetchCount|該当なし|基になる MessageReceiver に使用される既定の PrefetchCount。|
-|maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
 
 ## <a name="output"></a>Output
 

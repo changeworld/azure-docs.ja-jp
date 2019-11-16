@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f4e8750497fc1ae9875caeb60de65b5f6cd808
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e993ad17a07ff741ff33073304ed774dcf30203d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896035"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961653"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>ギャラリー以外のアプリケーションに SAML ベースのシングル サインオンを構成する
 

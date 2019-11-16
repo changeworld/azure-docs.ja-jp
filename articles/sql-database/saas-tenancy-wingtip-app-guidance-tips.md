@@ -11,22 +11,22 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825778"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132303"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
 
-この記事には、Azure SQL Database を使う Wingtip Tickets サンプル SaaS アプリケーションを実行する場合の一般的なガイダンスが含まれます。 
+この記事には、Azure SQL Database を使う Wingtip Tickets サンプル SaaS アプリケーションを実行する場合の一般的なガイダンスが含まれます。
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Wingtip Tickets SaaS スクリプトのダウンロードとブロック解除
 
 実行可能なコンテンツ (スクリプト、dll) は、zip ファイルが外部ソースからダウンロードされ、抽出されると、Windows によってブロックされる場合があります。 zip ファイルからスクリプトを抽出するとき、**以下の手順に従って、.zip ファイルをブロック解除してから抽出します**。 これにより、スクリプトの実行が許可されます。
 
-1. Wingtip Tickets SaaS GitHub リポジトリで、探索するデータベース テナント パターンを参照します。 
+1. Wingtip Tickets SaaS GitHub リポジトリで、探索するデータベース テナント パターンを参照します。
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
@@ -42,13 +42,13 @@ ms.locfileid: "73825778"
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Wingtip Tickets PowerShell スクリプトを操作する
 
-サンプルを最大限に活用するには、指定されたスクリプトを詳細に把握する必要があります。 ブレークポイントを使ってスクリプトをステップ実行し、さまざまな SaaS パターンがどのように実装されているかを調べます。 指定されたスクリプトおよびモジュールを簡単にステップ実行してしっかりと理解するには、[PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise) の使用をお勧めします。
+サンプルを最大限に活用するには、指定されたスクリプトを詳細に把握する必要があります。 ブレークポイントを使ってスクリプトをステップ実行し、さまざまな SaaS パターンがどのように実装されているかを調べます。 指定されたスクリプトおよびモジュールを簡単にステップ実行してしっかりと理解するには、[PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise) の使用をお勧めします。
 
 ### <a name="update-the-configuration-file-for-your-deployment"></a>デプロイの構成ファイルを更新する
 
 次の手順に従って、デプロイ時に設定したリソース グループとユーザー値で **UserConfig.psm1** ファイルを編集します。
 
-1. *PowerShell ISE* を開き、...\\Learning Modules\\*UserConfig.psm1* をロードします。 
+1. *PowerShell ISE* を開き、...\\Learning Modules\\*UserConfig.psm1* をロードします。
 2. *ResourceGroupName*と*Name*をデプロイの固有の値で更新します (10 行目および 11 行目のみ)。
 3. 変更を保存します。
 
@@ -76,7 +76,7 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
 アプリケーション サーバーとデータベースに接続して参照するには、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用します。
 
-デプロイでは最初に、SQL Database サーバーが接続するテナントとカタログがあります。 サーバーの名前は、データベース テナント パターンに依存します (詳細については以下を参照してください)。 
+デプロイでは最初に、SQL Database サーバーが接続するテナントとカタログがあります。 サーバーの名前は、データベース テナント パターンに依存します (詳細については以下を参照してください)。
 
    - **スタンドアロン アプリケーション:** テナントごとのサーバー (例: *contosoconcerthall-&lt;ユーザー&gt;* サーバー) および *catalog-sa-&lt;ユーザー&gt;*
    - **テナントごとのデータベース:** *tenants1-dpt-&lt;ユーザー&gt;* および *catalog-dpt-&lt;ユーザー&gt;* サーバー
@@ -86,19 +86,19 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
 
 1. *SSMS* を開き、テナントに接続します。 サーバーの名前は、選択したデータベース テナント パターンに依存します (詳細については以下を参照してください)。
-    - **スタンドアロン アプリケーション:** 個々のテナントのサーバー (例: *contosoconcerthall-&lt;ユーザー&gt;.database.windows.net*) 
+    - **スタンドアロン アプリケーション:** 個々のテナントのサーバー (例: *contosoconcerthall-&lt;ユーザー&gt;.database.windows.net*)
     - **テナントごとのデータベース:** *tenants1-dpt-&lt;ユーザー&gt;.database.windows.net*
-    - **マルチテナント データベース:** *tenants1-mt-&lt;ユーザー&gt;.database.windows.net* 
+    - **マルチテナント データベース:** *tenants1-mt-&lt;ユーザー&gt;.database.windows.net*
 2. **[接続]**  >  **[データベース エンジン...]** をクリックします。
 
    ![カタログ サーバー](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
 3. デモの資格情報は次のとおりです。ログイン = *developer*、パスワード = *P\@ssword1*
 
-    次の図では、"*テナントごとのデータベース*" パターンのログインを示します。 
+    次の図では、"*テナントごとのデータベース*" パターンのログインを示します。
     ![connection](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
-    
-   
+
+
 
 4. 手順 2 と 3 を繰り返して、カタログ サーバーに接続します (選んだデータベース テナント パターンに基づく具体的なサーバー名は以下を参照)
     - **スタンドアロン アプリケーション:** *catalog-sa-&lt;ユーザー&gt;.database.windows.net*

@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 08/09/2019
+ms.date: 11/09/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 2b63120ae3c9f9a6e7689b68af2f80e94514f6d5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 79891f6a4036a21be8edc70044a29cfb9cca4755
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827904"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891053"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商業マーケットプレースのポリシーと利用規約
 

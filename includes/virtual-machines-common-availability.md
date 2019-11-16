@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ffe0d3a85006bbaad53e471a10b10fb1bbea89b1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7ea4762684a41e06687adcca91b13872a0c9f740
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664449"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897524"
 ---
 この記事では、Azure 仮想マシン (VM) の可用性機能の概要について説明します。
 
@@ -82,5 +82,5 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 ![可用性セット](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="next-steps"></a>次の手順
-可用性と冗長性の機能を使って、Azure 環境を構築できるようになりました。 ベスト プラクティスに関する情報については、[Azure の可用性のベスト プラクティス](../articles/best-practices-availability-checklist.md)に関するページをご覧ください。
+可用性と冗長性の機能を使って、Azure 環境を構築できるようになりました。 ベスト プラクティスに関する情報については、[Azure の可用性のベスト プラクティス](/azure/architecture/checklist/resiliency-per-service)に関するページをご覧ください。
 

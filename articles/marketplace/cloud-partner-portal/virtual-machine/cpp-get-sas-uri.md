@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb6f1772c7c6f9abd268a8cb58550b253f095dbf
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824473"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132448"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
 
-発行プロセスでは、ご利用の SKU に関連付けられた仮想ハード ディスク (VHD) ごとに URI (Uniform Resource Identifier) を指定する必要があります。 マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 この記事では、VHD ごとに Shared Access Signature (SAS) URI を生成する方法について説明します。 この URI は、Cloud パートナー ポータルの **[SKU]** タブに入力することになります。 
+発行プロセスでは、ご利用の SKU に関連付けられた仮想ハード ディスク (VHD) ごとに URI (Uniform Resource Identifier) を指定する必要があります。 マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 この記事では、VHD ごとに Shared Access Signature (SAS) URI を生成する方法について説明します。 この URI は、Cloud パートナー ポータルの **[SKU]** タブに入力することになります。
 
 VHD の SAS URI を生成するときは、次の要件を遵守してください。
 
@@ -38,35 +38,35 @@ VHD の SAS URI を生成するときは、次の要件を遵守してくださ�
 
 Azure CLI を使用して SAS URI を生成するには次の手順に従います。
 
-1. [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) をダウンロードしてインストールします。  Windows と macOS のほか、各種 Linux ディストリビューション向けのバージョンが用意されています。 
+1. [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) をダウンロードしてインストールします。  Windows と macOS のほか、各種 Linux ディストリビューション向けのバージョンが用意されています。
 2. PowerShell ファイル (`.ps1` ファイル拡張子) を作成し、次のコードをコピーして、ローカルに保存します。
 
    ``` powershell
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
-    
+
 3. ファイルを編集して次のパラメーター値を指定します。  日付は、UTC 日時形式で指定する必要があります (例: `2016-10-25T00:00:00Z`)。
    - `<account-name>` - 実際の Azure ストレージ アカウント名
    - `<account-key>` - 実際の Azure ストレージ アカウント キー
    - `<vhd-name>` - 実際の VHD 名
-   - `<start-date>` - VHD のアクセス許可の開始日。 現在の日付の 1 日前の日付を指定します。 
-   - `<expiry-date>` - VHD のアクセス許可の有効期限。  現在の日付から 3 週間以上先の日付を指定します。 
- 
+   - `<start-date>` - VHD のアクセス許可の開始日。 現在の日付の 1 日前の日付を指定します。
+   - `<expiry-date>` - VHD のアクセス許可の有効期限。  現在の日付から 3 週間以上先の日付を指定します。
+
    次の例では、(本記事の執筆時点における) 適切なパラメーター値を示します。
 
    ``` powershell
        az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
    ```
- 
+
 4. この PowerShell スクリプトに対する変更を保存します。
 5. 管理特権を使用してこのスクリプトを実行し、コンテナー レベル アクセスに使用する "*SAS 接続文字列*" を生成します。  基本的な方法として、次の 2 つを使用できます。
    - コンソールからスクリプトを実行します。  たとえば、Windows でスクリプトを右クリックし、 **[管理者として実行]** を選択します。
-   - 管理特権を使用して、PowerShell スクリプト エディター ([Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise) など) からスクリプトを実行します。 
-     次の図は、このエディター内で SAS 接続文字列が生成されるようすを示しています。 
+   - 管理特権を使用して、PowerShell スクリプト エディター ([Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise) など) からスクリプトを実行します。
+     次の図は、このエディター内で SAS 接続文字列が生成されるようすを示しています。
 
      ![PowerShell ISE における SAS URI の生成](./media/publishvm_032.png)
 
-6. 結果の SAS 接続文字列をコピーし、テキスト ファイルとして安全な場所に保存します。  この文字列を編集して関連する VHD の場所情報を追加し、最終的な SAS URI を作成します。 
+6. 結果の SAS 接続文字列をコピーし、テキスト ファイルとして安全な場所に保存します。  この文字列を編集して関連する VHD の場所情報を追加し、最終的な SAS URI を作成します。
 7. Azure portal で、新しく生成された URI に関連付けられている VHD を含んだ Blob Storage に移動します。
 8. 次に示すように、 **[Blob service エンドポイント]** の URL 値をコピーします。
 
@@ -91,19 +91,19 @@ Microsoft Azure Storage Explorer で、次の手順を使用して SAS URI を�
 2. エクスプローラーを開き、左側のメニュー バーの **[アカウントの追加]** アイコンをクリックします。  **[Azure Storage へ接続]** ダイアログ ボックスが表示されます。
 3. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、 **[サインイン]** をクリックします。  必要な手順を続行して、Azure アカウントにサインインします。
 4. 左側の **[エクスプローラー]** ウィンドウで、 **[ストレージ アカウント]** に移動して、このノードを展開します。
-5. 対象の VHD を右クリックし、コンテキスト メニューから **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。 
+5. 対象の VHD を右クリックし、コンテキスト メニューから **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
     ![Azure Explorer で SAS 項目を取得する](./media/publishvm_034.png)
 
 6. **[Shared Access Signature]** ダイアログが表示されます。 次のフィールドの値を入力します。
    - **[開始時刻]** - VHD のアクセス許可の開始日。 現在の日付の 1 日前の日付を指定します。
    - **[有効期限]** - VHD のアクセス許可の有効期限。  現在の日付から 3 週間以上先の日付を指定します。
-   - **[アクセス許可]** - `Read` と `List` のアクセス許可を選択します。 
+   - **[アクセス許可]** - `Read` と `List` のアクセス許可を選択します。
 
      ![Azure Explorer の SAS ダイアログ](./media/publishvm_035.png)
 
-7. **[作成]** をクリックして、この VHD に関連付けられた SAS URI を作成します。  ダイアログには、この操作の詳細が表示されます。 
-8. **[URL]** の値をコピーし、テキスト ファイルとして安全な場所に保存します。 
+7. **[作成]** をクリックして、この VHD に関連付けられた SAS URI を作成します。  ダイアログには、この操作の詳細が表示されます。
+8. **[URL]** の値をコピーし、テキスト ファイルとして安全な場所に保存します。
 
     ![Azure Explorer での SAS URI の作成](./media/publishvm_036.png)
 

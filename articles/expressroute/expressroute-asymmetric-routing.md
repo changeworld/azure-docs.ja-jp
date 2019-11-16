@@ -1,20 +1,18 @@
 ---
-title: 非対称ルーティング - Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: 非対称ルーティング'
 description: この記事では、送信先へのリンクが複数あるネットワーク内の非対称ルーティングに関して発生する可能性がある問題について説明します。
-documentationcenter: na
 services: expressroute
 author: osamazia
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
-ms.custom: seodec18
-ms.openlocfilehash: 2b2b678cad50e45660fb763c2a1f9194500edf8d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730202"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072138"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>複数のネットワーク パスを使用した非対称ルーティング
 この記事では、ネットワークの送信元と送信先の間で利用できるパスが複数存在する場合に、ネットワーク トラフィックが行きと戻りで異なるルートを取る場合がある理由について説明します。

@@ -1,5 +1,5 @@
 ---
-title: Azure マネージド ディスク ストレージを Standard から Premium に、または Premium から Standard に変換する | Microsoft Docs
+title: Azure マネージド ディスク ストレージを Standard から Premium に、または Premium から Standard に変換する
 description: Azure CLI を使用し、Azure マネージド ディスク ストレージを Standard から Premium に、または Premium から Standard に変換する方法。
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 59293ac300b6774b55d3909773b110f14bb43119
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abd3c7112a70850d137f77d28e83c60916a96ea3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696091"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036632"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure マネージド ディスク ストレージを Standard から Premium に、または Premium から Standard に変換する
 

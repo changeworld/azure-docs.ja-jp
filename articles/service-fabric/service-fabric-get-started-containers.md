@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4fd6de848756cedf21d7bb1f7f1be31175de6627
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650673"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838248"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -331,15 +331,15 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 ## <a name="deploy-the-container-application"></a>コンテナー アプリケーションをデプロイする
 変更をすべて保存し、アプリケーションをビルドします。 アプリケーションを発行するために、ソリューション エクスプローラーの **[MyFirstContainer]** を右クリックし、 **[発行]** を選択します。
 
-**[クラスター エンドポイント]** に、クラスターの管理エンドポイントを入力します (例: "containercluster.westus2.cloudapp.azure.com:19000")。 [Azure Portal](https://portal.azure.com) にある、お使いのクラスターの [概要] タブで、クライアントの接続エンドポイントを探すことができます。
+**[クラスター エンドポイント]** に、クラスターの管理エンドポイントを入力します たとえば、「 `containercluster.westus2.cloudapp.azure.com:19000` 」のように入力します。 [Azure Portal](https://portal.azure.com) にある、お使いのクラスターの [概要] タブで、クライアントの接続エンドポイントを探すことができます。
 
 **[発行]** をクリックします。
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、 http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![Error][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、 `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![Error][1]
 
 ```Ready``` 状態になったら、アプリケーションの準備は完了しています。![準備完了][2]
 
-ブラウザーを開き、 http://containercluster.westus2.cloudapp.azure.com:8081 に移動します。 "Hello World!" という見出しが ブラウザーに表示されます。
+ブラウザーを開き、 `http://containercluster.westus2.cloudapp.azure.com:8081` に移動します。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ## <a name="clean-up"></a>クリーンアップ
 

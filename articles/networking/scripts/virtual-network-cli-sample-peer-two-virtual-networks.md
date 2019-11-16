@@ -4,10 +4,7 @@ description: Azure CLI スクリプト サンプル - 2 つの仮想ネットワ
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 072d62f925d4f4024aa17d648a56dc6f37de00f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848437"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890239"
 ---
 # <a name="peer-two-virtual-networks"></a>2 つの仮想ネットワークのピアリング
 

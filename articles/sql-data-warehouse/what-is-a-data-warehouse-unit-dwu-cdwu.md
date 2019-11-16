@@ -11,12 +11,12 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685326"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133165"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 
@@ -215,4 +215,4 @@ DWU の変更の状態を確認するには、次の手順に従います。
 
 ## <a name="next-steps"></a>次の手順
 
-パフォーマンスの管理の詳細については、[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)と、[メモリとコンカレンシーの制限]memory-concurrency-limits.md)に関するページを参照してください。
+パフォーマンスの管理の詳細については、[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)と、[メモリとコンカレンシーの制限](memory-concurrency-limits.md)に関するページを参照してください。

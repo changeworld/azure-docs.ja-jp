@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3894904575d545aed0dbfce470247afb145b7590
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605666"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129311"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>仮想ネットワーク内に Azure Databricks をデプロイする
 
@@ -119,7 +119,7 @@ Azure Databricks ワークスペースをデプロイする仮想ネットワー
 
 ## <a name="whitelisting-subnet-traffic"></a>サブネット トラフィックのホワイト リスト登録
 
-[Azure portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) や [Azure Resource Manager テンプレート](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)を使用せずにネットワーク セキュリティ グループを作成する場合は、サブネット上の以下のトラフィックを手動でホワイトリスト登録する必要があります。
+[Azure portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) や [Azure Resource Manager テンプレート](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-advanced)を使用せずにネットワーク セキュリティ グループを作成する場合は、サブネット上の以下のトラフィックを手動でホワイトリスト登録する必要があります。
 
 |Direction|Protocol|source|発信元ポート|変換先|宛先ポート|
 |---------|--------|------|-----------|-----------|----------------|

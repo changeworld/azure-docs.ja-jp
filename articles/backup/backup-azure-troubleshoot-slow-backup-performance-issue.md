@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 16a8eb4eea4e5e1e3bb49049c49d73adb99eef55
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: c56ddf04b98cc2b38e023714fcb0ffc5452236f2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688628"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074909"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
+
 この記事では、ファイルとフォルダーのバックアップに関して、Azure Backup の使用中にパフォーマンスが低下している原因を診断するためのトラブルシューティングの指針を紹介します。 Azure Backup エージェントを使用してファイルをバックアップするとき、予想以上にバックアップ処理に時間がかかる場合があります。 次のいずれかまたは複数の事柄が、この遅延の原因として考えられます。
 
 * [バックアップ対象コンピューターにパフォーマンスのボトルネックが存在する。](#cause1)
@@ -32,6 +33,7 @@ ms.locfileid: "68688628"
 <a id="cause1"></a>
 
 ## <a name="cause-performance-bottlenecks-on-the-computer"></a>原因: コンピューター上のパフォーマンス ボトルネック
+
 バックアップ対象コンピューターにパフォーマンスのボトルネックが存在すると、遅延が生じるおそれがあります。 たとえば、コンピューターのディスク読み取り/書き込み能力や、ネットワーク経由のデータ送信に使用できる帯域幅は、ボトルネックの原因となる可能性があります。
 
 Windows には、これらのボトルネックを検出するための、 [パフォーマンス モニター](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Perfmon) という組み込みのツールが用意されています。
@@ -56,6 +58,7 @@ Windows には、これらのボトルネックを検出するための、 [パ�
 <a id="cause2"></a>
 
 ## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>原因: Azure Backup の妨げになっている別のプロセスまたはウイルス対策ソフトウェア
+
 Windows システム内の他のプロセスが Azure Backup エージェントのプロセスのパフォーマンスに悪影響を及ぼすいくつかのケースが確認されています。 たとえば Azure Backup エージェントと別のプログラムを両方使用してデータをバックアップしている場合や、ウイルス対策ソフトウェアが実行されていてバックアップ対象ファイルがロックされている場合、ファイルに対する複数のロックが競合している可能性があります。 この状況ではバックアップが失敗するか、ジョブに予想以上の時間がかかる可能性があります。
 
 この状況で最も推奨される対策は、他のバックアップ プログラムを無効にして、Azure Backup エージェントのバックアップ時間が変化するかどうかを確認することです。 通常、複数のバックアップ ジョブが同時に実行されないようにすることで、互いに干渉する状況を十分回避できます。
@@ -69,11 +72,13 @@ Windows システム内の他のプロセスが Azure Backup エージェント�
 <a id="cause3"></a>
 
 ## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>原因: Azure 仮想マシン上で実行されている Backup エージェント
+
 Backup エージェントを VM で実行している場合、パフォーマンスは物理マシンで実行した場合よりも低くなります。 これは IOPS の制限によるものと考えられます。  ただし、バックアップ対象のデータ ドライブを Azure Premium Storage に切り替えることによってパフォーマンスを最適化できます。 Microsoft は現在この問題の解決に取り組んでおり、将来のリリースで修正プログラムが公開される予定です。
 
 <a id="cause4"></a>
 
 ## <a name="cause-backing-up-a-large-number-millions-of-files"></a>原因: 大量 (数百万) のファイルのバックアップ
+
 少量のデータを移動するよりも大量のデータを移動する方が時間がかかります。 場合によっては、データのサイズだけでなくファイルやフォルダーの数が、バックアップにかかる時間に関係します。 これは特に、数百万個の小さなファイル (数バイトから数キロバイト) がバックアップされている場合に当てはまります。
 
 この動作が発生するのは、データをバックアップして Azure にそのデータを移行している間に、Azure によるファイルのカタログ化が並行して行われているためです。 まれなシナリオではあるものの、カタログ化の処理には予想以上の時間がかかる場合があります。

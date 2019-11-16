@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679598"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953951"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
 
@@ -34,9 +34,6 @@ Windows Virtual Desktop では、次のオペレーティング システムで 
 * Windows Server 2016 以降
 
 また、アプリ グループを構成するか、または新しいホスト プールを作成すると自動的に作成される ("Desktop Application Group" という名前の) 既定のデスクトップ アプリ グループを使う必要があります。 手順については、「[チュートリアル:Windows Virtual Desktop のアプリ グループを管理する](/azure/virtual-desktop/manage-app-groups)」を参照してください。
-
->[!NOTE]
->Windows Virtual Desktop では、GPU 対応のホスト プールに対しては "Desktop" アプリ グループの種類のみがサポートされています。 "RemoteApp" アプリ グループの種類は、GPU 対応のホスト プールではサポートされていません。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>サポートされているグラフィック ドライバーを仮想マシンにインストールする
 

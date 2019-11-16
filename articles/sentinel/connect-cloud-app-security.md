@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 95e38cee8f6995e09dbbb2194cd5a9d0ebc301c1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498670"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928216"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
 
@@ -30,7 +30,7 @@ ms.locfileid: "73498670"
 ## <a name="prerequisites"></a>前提条件
 
 - グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
-- Cloud Discovery のログを Azure Sentinel にストリーミングするには、[Microsoft Cloud App Security 内で Azure Sentinel を SIEM として有効にします](aka.ms. https://aka.ms/AzureSentinelMCAS)。
+- Cloud Discovery のログを Azure Sentinel にストリーミングするには、[Microsoft Cloud App Security 内で Azure Sentinel を SIEM として有効にします](https://aka.ms/AzureSentinelMCAS)。
 
 > [!IMPORTANT]
 > Cloud Discovery ログの取り込みは、現在パブリック プレビューの段階にあります。

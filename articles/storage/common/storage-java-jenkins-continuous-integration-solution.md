@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: dc62696700a5c34c28f5f8c4f347dbb4c5183cab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986547"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839126"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用
 
@@ -148,7 +148,7 @@ Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https:
 ## <a name="next-steps"></a>次の手順
 * [Meet Jenkins (Jenkins について)](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)
 * [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
-* [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
+* [Azure ストレージ クライアント SDK リファレンス](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
 

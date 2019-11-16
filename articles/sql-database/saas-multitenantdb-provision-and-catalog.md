@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: cae0b2730a9426b183dc330a18a76122ac87cc66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4ea18ee23d845b2d16209b23de14dc3cd70aaa59
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817938"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133151"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL データベースを使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 
@@ -63,11 +63,11 @@ Wingtip アプリケーションは、テナントごとに一意のキーを派
 - データベースのサービス レベルまたはエディション。
 - データベース スキーマのバージョン。
 - テナント名とその SLA (サービス レベル アグリーメント)。
-- アプリケーションの管理、顧客サポート、または DevOps プロセスを有効にする情報。  
+- アプリケーションの管理、顧客サポート、または DevOps プロセスを有効にする情報。
 
-また、カタログを使用して、テナント間レポートの作成、スキーマ管理、分析目的のデータ抽出も可能です。 
+また、カタログを使用して、テナント間レポートの作成、スキーマ管理、分析目的のデータ抽出も可能です。
 
-### <a name="elastic-database-client-library"></a>Elastic Database クライアント ライブラリ 
+### <a name="elastic-database-client-library"></a>Elastic Database クライアント ライブラリ
 
 Wingtip では、カタログは *tenantcatalog* データベース内に実装されます。 *tenantcatalog* は、[Elastic Database クライアント ライブラリ (EDCL)](sql-database-elastic-database-client-library.md) のシャード管理機能を使用して作成されます。 このライブラリにより、アプリケーションはデータベースに格納される "*シャード マップ*" を作成、管理、使用できます。 シャード マップは、テナント キーをシャード、つまりシャード データベースと相互参照します。
 
@@ -108,7 +108,7 @@ SaaS アプリケーションにより、これらの変更は、大容量にな
 - 他のテナントと共有している既存のデータベースにテナントをプロビジョニングする。
 - 独自のデータベースにテナントをプロビジョニングする。
 
-次に、テナント データは初期化され、カタログ シャード マップに登録されます。 サンプル アプリでは、複数のテナントを含むデータベースには、汎用的な名前 (*tenants1* や *tenants2* など) が付けられます。 1 つのテナントを含むデータベースには、テナントの名前が付けられます。 カタログを使用すればデータベースに任意の名前を割り当てることができるため、このサンプルで使用されている名前付け規則は、このパターンの重要事項ではありません。  
+次に、テナント データは初期化され、カタログ シャード マップに登録されます。 サンプル アプリでは、複数のテナントを含むデータベースには、汎用的な名前 (*tenants1* や *tenants2* など) が付けられます。 1 つのテナントを含むデータベースには、テナントの名前が付けられます。 カタログを使用すればデータベースに任意の名前を割り当てることができるため、このサンプルで使用されている名前付け規則は、このパターンの重要事項ではありません。
 
 <a name="goto_1_tutorial"/>
 
@@ -132,7 +132,7 @@ SaaS アプリケーションにより、これらの変更は、大容量にな
 
 - Wingtip スクリプトとソース コードを取得します。
     - Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーションのソース コードは、[WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub リポジトリで入手できます。
-    - Wingtip スクリプトをダウンロードしてブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。 
+    - Wingtip スクリプトをダウンロードしてブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>他のテナントと*共有している*データベースにテナントをプロビジョニングする
 
@@ -144,8 +144,8 @@ SaaS アプリケーションにより、これらの変更は、大容量にな
 
 - **新しいテナント キーの計算**:ハッシュ関数を使用して、テナント名からテナント キーが作成されます。
 - **テナント キーが既に存在するかどうかの確認**:キーがまだ登録されていないことを確認するため、カタログがチェックされます。
-- **既定のテナント データベース内でのテナントの初期化**:新しいテナント情報を追加するため、テナント データベースが更新されます。  
-- **カタログへのテナントの登録**:新しいテナント キーと既存の tenants1 データベースとの間のマッピングがカタログに追加されます。 
+- **既定のテナント データベース内でのテナントの初期化**:新しいテナント情報を追加するため、テナント データベースが更新されます。
+- **カタログへのテナントの登録**:新しいテナント キーと既存の tenants1 データベースとの間のマッピングがカタログに追加されます。
 - **カタログの拡張テーブルへのテナント名の追加**:カタログ内の Tenants テーブルに会場名が追加されます。  この追加は、アプリケーション固有の追加データをサポートするようにカタログ データベースを拡張できる仕組みを示しています。
 - **新しいテナントのイベント ページの表示**:ブラウザーで *Bushwillow Blues* イベント ページが開きます。
 
@@ -172,7 +172,7 @@ Wingtip アプリが共有データベースに新しいテナントのプロビ
 
 5. 呼び出された関数にステップ オーバーしたりステップ インしたりする **F10** キーや **F11** キーなどの**デバッグ**のメニュー オプションを使用して、スクリプトの実行をトレースします。
 
-PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
+PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>*独自の*データベース内にテナントをプロビジョニングする
 
@@ -184,7 +184,7 @@ PowerShell スクリプトのデバッグの詳細については、「[PowerShe
 - **テナント キーが既に存在するかどうかの確認**:キーがまだ登録されていないことを確認するため、カタログがチェックされます。
 - **新しいテナント データベースの作成**:Resource Manager テンプレートを使用して *basetenantdb* データベースをコピーすることで、データベースが作成されます。  新しいデータベースの名前はテナント名に基づきます。
 - **カタログへのデータベースの追加**:新しいテナント データベースが、カタログ内にシャードとして登録されます。
-- **既定のテナント データベース内でのテナントの初期化**:新しいテナント情報を追加するため、テナント データベースが更新されます。  
+- **既定のテナント データベース内でのテナントの初期化**:新しいテナント情報を追加するため、テナント データベースが更新されます。
 - **カタログへのテナントの登録**:新しいテナント キーと *sequoiasoccer* データベースとの間のマッピングがカタログに追加されます。
 - **カタログへのテナント名の追加**:カタログ内のテナント拡張テーブルに会場名が追加されます。
 - **新しいテナントのイベント ページの表示**:ブラウザーで *Sequoia Soccer* イベント ページが開きます。
@@ -217,7 +217,7 @@ PowerShell スクリプトのデバッグの詳細については、「[PowerShe
 
 2. **F5** キーを押して、スクリプトを実行します。
 
-### <a name="verify-the-deployed-set-of-tenants"></a>テナントのデプロイ済みセットを確認する 
+### <a name="verify-the-deployed-set-of-tenants"></a>テナントのデプロイ済みセットを確認する
 
 この段階で、共有データベースにデプロイされたテナントと、独自のデータベースにデプロイされたテナントが混在しています。 Azure Portal を使用して、作成したデータベースを検査できます。 [Azure Portal](https://portal.azure.com) で、SQL サーバーの一覧を表示して **tenants1-mt-\<USER\>** サーバーを開きます。  **SQL データベース**の一覧には、**tenants1** 共有データベースと、独自データベース内のテナントのデータベースが含まれているはずです。
 
@@ -227,7 +227,7 @@ Azure Portal でテナント データベースを表示しても、共有デー
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>Wingtip Tickets イベント ハブ ページの使用
 
-ブラウザーで Events Hub ページを開きます (http:events.wingtip-mt.\<USER\>.trafficmanager.net)  
+ブラウザーで Events Hub ページを開きます (http:events.wingtip-mt.\<USER\>.trafficmanager.net)
 
 #### <a name="using-catalog-database"></a>カタログ データベースの使用
 
@@ -245,7 +245,7 @@ Azure Portal でテナント データベースを表示しても、共有デー
 3. *TenantsExtended* ビューを右クリックして、 **[Select Top 1000 Rows]\(上位 1000 行の選択\)** を選択します。 別のテナントのテナント名とデータベースとの間のマッピングに注意してください。
 
     ![SSMS 内の ExtendedTenants ビュー](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
-      
+
 ## <a name="other-provisioning-patterns"></a>プロビジョニングのその他のパターン
 
 このセクションでは、その他の興味深いプロビジョニング パターンについて説明します。
@@ -264,7 +264,7 @@ Azure Portal でテナント データベースを表示しても、共有デー
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md)
-- [Windows PowerShell ISE でスクリプトをデバッグする方法](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [Windows PowerShell ISE でスクリプトをデバッグする方法](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
 ## <a name="next-steps"></a>次の手順

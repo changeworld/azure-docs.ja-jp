@@ -1,6 +1,6 @@
 ---
 title: Video Indexer API を使用して人物モデルをカスタマイズする - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: この記事では、Video Indexer API を使用して人物モデルをカスタマイズする方法を示します。
 services: media-services
 author: anikaz
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 6c4980536eddd0226fac422ae17ddb717e34630d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44f97e3d9af9daac8d62ae42be76bd73dedbd453
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799464"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838262"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Video Indexer API を使用して人物モデルをカスタマイズする
 
@@ -59,7 +59,7 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 |---|---|---|---|
 |location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
 |accountId|string|はい|アカウントのグローバル一意識別子|
-|name|string|はい|人物モデルの名前|
+|名前|string|はい|人物モデルの名前|
 |accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
@@ -199,7 +199,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 |videoId|string|はい|更新する顔が表示されるビデオの ID。 これは、ビデオがアップロードされ、インデックスが付けられるときに作成されます。|
 |faceId|integer|はい|更新される顔の ID。 faceId はビデオ インデックスから取得できます|
 |accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
-|name|string|はい|顔を更新するときに使用する新しい名前。|
+|名前|string|はい|顔を更新するときに使用する新しい名前。|
 
 名前は人物モデルに対して一意であるため、同じ人物モデルの 2 つの異なる顔に、同じ **name** パラメーター値を指定した場合、Video Indexer ではこれらの顔は同じ人物であると見なされ、ビデオのインデックスを再作成したときに集約されます。 
 

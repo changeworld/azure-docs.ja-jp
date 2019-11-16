@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: cf4274931d83b51afb4a8ada7d1c9040ccce3c14
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606847"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891634"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -78,7 +78,7 @@ S2D クラスターでは、オペレーティング システムが、修正プ
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files と Azure Active Directory ドメイン サービスの統合
 
-FSLogix プロファイル コンテナーのパフォーマンスおよび機能にはクラウドが活用されます。 2019 年 8 月 7 日、Microsoft Azure Files は [Azure Active Directory ドメイン サービス (AD DS) による Azure Files 認証](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview)の一般提供を発表しました。 コストと管理オーバーヘッドの 両方に対処することで、Azure AD DS 認証を使用する Azure Files は、Windows Virtual Desktop サービスでのユーザー プロファイルに対する優れたソリューションになります。
+FSLogix プロファイル コンテナーのパフォーマンスおよび機能にはクラウドが活用されます。 2019 年 8 月 7 日、Microsoft Azure Files は [Azure Active Directory ドメイン サービス (AD DS) による Azure Files 認証](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)の一般提供を発表しました。 コストと管理オーバーヘッドの 両方に対処することで、Azure AD DS 認証を使用する Azure Files は、Windows Virtual Desktop サービスでのユーザー プロファイルに対する優れたソリューションになります。
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows Virtual Desktop のベスト プラクティス
 

@@ -1,5 +1,5 @@
 ---
-title: QoS の要件 - ExpressRoute:Azure | Microsoft Docs
+title: 'Azure ExpressRoute: QoS の要件'
 description: このページでは、QoS を構成および管理するための詳細な要件を示します。 Skype for Business/音声サービスについて説明します。
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: eed6113442b4080341ff08b3983880f3afe66c00
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385130"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080095"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS の要件
 Skype for Business には、特化した QoS 処理を必要とするさまざまなワークロードがあります。 ExpressRoute で音声サービスを使用する場合、以下の要件に従う必要があります。

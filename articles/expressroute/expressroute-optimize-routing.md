@@ -1,5 +1,5 @@
 ---
-title: 'ルーティングを最適化する - ExpressRoute 回線: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: ルーティングを最適化する'
 description: このページでは、Microsoft とユーザー (企業) のネットワークとを接続する ExpressRoute 回線がユーザー側に複数存在する場合のルーティングを最適化する方法について詳しく説明します。
 services: expressroute
 author: charwen
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141869"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080130"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute ルーティングの最適化
 ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数存在します。 その結果、期待したルーティングが行われない、つまりトラフィックが貴社のネットワークから Microsoft に到達するまでの経路と、Microsoft から貴社のネットワークに到達するまでの経路が、想定よりも長くなってしまう可能性があります。 ネットワーク パスが長くなるほど、遅延は大きくなります。 遅延は、アプリケーションのパフォーマンスとユーザー エクスペリエンスに直接影響します。 この記事では、該当する問題について例示すると共に、標準のルーティング技術を使ってルーティングを最適化する方法を説明します。

@@ -216,6 +216,8 @@
         - name: Azure AD の統合での Kubernetes RBAC の使用
           href: azure-ad-rbac.md
           maintainContext: true
+        - name: 証明書のローテーション
+          href: certificate-rotation.md
     - name: 監視およびログ記録
       items:
         - name: コンテナーに対する Azure Monitor

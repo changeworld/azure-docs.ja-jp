@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240303"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129855"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -54,7 +54,7 @@ Linux Hybrid Runbook Worker の最小要件は次のようになります。
 |Python-ctypes | Python 2.x が必要 |
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール)|
 | **オプション パッケージ** | **説明** | **最小バージョン**|
-| PowerShell Core | PowerShell の Runbook を実行するには、PowerShell をインストールする必要があります。インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/setup/installing-powershell-core-on-linux)」をご覧ください。  | 6.0.0 |
+| PowerShell Core | PowerShell の Runbook を実行するには、PowerShell をインストールする必要があります。インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/install/installing-powershell-core-on-linux)」をご覧ください。  | 6.0.0 |
 
 ### <a name="installation"></a>インストール
 
@@ -106,7 +106,7 @@ Linux Hybrid Worker では、次の Runbook の種類が機能します。
 * PowerShell
 
   > [!NOTE]
-  > PowerShell Runbook を使うには、Linux マシンに PowerShell Core がインストールされている必要があります。 インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/setup/installing-powershell-core-on-linux)」をご覧ください。
+  > PowerShell Runbook を使うには、Linux マシンに PowerShell Core がインストールされている必要があります。 インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/install/installing-powershell-core-on-linux)」をご覧ください。
 
 Linux Hybrid Worker では、次の Runbook の種類は機能しません。
 

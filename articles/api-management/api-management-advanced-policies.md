@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 166ff5f8866fca955cbe99c5896eb509f52261f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 225f26ac2133f45fe7eba9e39d64d0cfe9e20766
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219549"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885297"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -917,7 +917,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 * トレースがトリガーされたときに、ポリシーによって [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。 
 * [Application Insights の統合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリが作成されます。 
-* [診断ログ](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。  
+* [診断ログ](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。  
 
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -946,7 +946,7 @@ status code and media type. If no example or schema found, the content is empty.
 | ------- | ------------- | -------- |
 | trace   | ルート要素。 | はい      |
 | message | ログに記録される文字列または式。 | はい |
-| metadata | カスタム プロパティを Application Insights の[トレース](https://docs.microsoft.com/en-us/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリに追加します。 | いいえ |
+| metadata | カスタム プロパティを Application Insights の[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリに追加します。 | いいえ |
 
 ### <a name="attributes"></a>属性
 

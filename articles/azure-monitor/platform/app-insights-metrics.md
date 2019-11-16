@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535037"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887252"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights ログベースのメトリック
 
@@ -225,7 +225,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>失敗した要求 (requests/failed)
 
-*失敗*としてマークされた追跡されたサーバー要求の数。 既定では、Application Insights SDK は HTTP 応答コード 5xx または 4xx を返した各サーバー要求を、失敗した要求として自動的にマークします。 このロジックをカスタマイズするには、[カスタムのテレメトリ初期化子](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)の要求テレメトリ項目の *success* プロパティを変更します。
+*失敗*としてマークされた追跡されたサーバー要求の数。 既定では、Application Insights SDK は HTTP 応答コード 5xx または 4xx を返した各サーバー要求を、失敗した要求として自動的にマークします。 このロジックをカスタマイズするには、[カスタムのテレメトリ初期化子](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)の要求テレメトリ項目の *success* プロパティを変更します。
 
 |Unit of measure|サポートされる集計|事前に集計されたディメンション|メモ|
 |---|---|---|---|

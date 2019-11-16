@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: e519df8c116244b0c74be6b189d99599d89dee77
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7605bbc1824e2e859cc94296834daf4e4e0907b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582821"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072358"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB のロールベースのアクセス制御
 
@@ -23,7 +23,7 @@ Azure Cosmos DB でサポートされている組み込みのロールは次の�
 
 |**組み込みのロール**  |**説明**  |
 |---------|---------|
-|[DocumentDB アカウント共同作成者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Azure Cosmos DB アカウントを管理できます。|
+|[DocumentDB Account Contributor](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Azure Cosmos DB アカウントを管理できます。|
 |[Cosmos DB アカウント閲覧者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Cosmos DB アカウントのデータを読み取ることができます。|
 |[Cosmos バックアップ オペレーター](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Azure Cosmos データベースまたはコンテナーの復元要求を送信できます。|
 |[Cosmos DB オペレーター](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Azure Cosmos アカウント、データベース、およびコンテナーをプロビジョニングできますが、データへのアクセスに必要なキーにはアクセスできません。|

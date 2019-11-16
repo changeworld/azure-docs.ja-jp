@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202977"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885646"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 仮想マシン ホストでのセキュリティ強化 
 
@@ -30,7 +30,7 @@ AKS クラスターは、セキュリティが最適化された OS が実行さ
 
 * AKS では、セキュリティが最適化されたホスト OS が既定で提供されます。 現在、代わりのオペレーティング システムを選択するオプションはありません。 
 
-* Azure では、AKS 仮想マシン ホストに対して更新プログラム (セキュリティ更新プログラムを含む) が毎日適用されます。 これらの修正プログラムには、再起動が必要なものもあれば、そうでないものもあります。 お客様は、必要に応じて、AKS VM ホストの再起動をスケジュールする必要があります。 AKS への修正プログラムの適用を自動化する方法のガイダンスについては、[AKS ノードへの修正プログラムの適用](https://docs.microsoft.com/en-us/azure/aks/node-updates-kured)に関する記事をご覧ください。
+* Azure では、AKS 仮想マシン ホストに対して更新プログラム (セキュリティ更新プログラムを含む) が毎日適用されます。 これらの修正プログラムには、再起動が必要なものもあれば、そうでないものもあります。 お客様は、必要に応じて、AKS VM ホストの再起動をスケジュールする必要があります。 AKS への修正プログラムの適用を自動化する方法のガイダンスについては、[AKS ノードへの修正プログラムの適用](https://docs.microsoft.com/azure/aks/node-updates-kured)に関する記事をご覧ください。
 
 以下では、セキュリティが最適化されたホスト OS を生成するために AKS-Engine で実装されているイメージのセキュリティ強化作業の概要を示します。 作業は、[この GitHub プロジェクト](https://github.com/Azure/aks-engine/projects/7)で実装されました。  
 

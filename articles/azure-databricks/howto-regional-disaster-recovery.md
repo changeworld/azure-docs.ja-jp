@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601756"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129332"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks クラスターに対するリージョンのディザスター リカバリー
 
@@ -286,7 +286,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
 8. **Azure Blob Storage と Azure Data Lake Storage のマウントを移行する**
 
-   Notebook ベースのソリューションを使って、[Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html) と [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) のマウント ポイントをすべて手動で再マウントします。 プライマリ ワークスペースにはストレージ リソースがマウント済みかと思いますので、それをセカンダリ ワークスペースについても行う必要があります。 マウントのための外部 API は存在しません。
+   Notebook ベースのソリューションを使って、[Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage) と [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) のマウント ポイントをすべて手動で再マウントします。 プライマリ ワークスペースにはストレージ リソースがマウント済みかと思いますので、それをセカンダリ ワークスペースについても行う必要があります。 マウントのための外部 API は存在しません。
 
 9. **クラスター初期化スクリプトを移行する**
 

@@ -1,17 +1,14 @@
 ---
 title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の使用時に大きなデータ セットを取得して制御する方法について説明します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44f31a8c9e5b47fdcc62c87f6181a3812697aa4b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: a7258534b867c57f89eeb432b579e87070b4fc1d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622625"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959014"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -171,4 +168,4 @@ response = client.resources(request)
 
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。
-- [リソースを探索する](explore-resources.md)方法の詳細を確認します。
+- [リソースを探索する](explore-resources.md)方法について詳しく確認します。

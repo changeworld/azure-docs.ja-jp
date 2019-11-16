@@ -1,6 +1,6 @@
 ---
 title: モデルが Web サービスになるまでの過程
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (クラシック) モデルが開発中の実験から Web サービスになるまでにたどる過程の概要。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 24a2c31271d123d6378732bd9f85f6341a78d65c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671249"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838012"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (クラシック) モデルが実験から Web サービスになるまでの過程
 Azure Machine Learning Studio (クラシック) によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。

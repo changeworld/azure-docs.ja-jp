@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647145"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049170"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,7 +179,7 @@ Azure Machine Learning Studio を使用してデータセットを作成する�
 
 ### <a name="from-python-sdk"></a>Python SDK
 
-詳細については、[データ ドリフトに関する Python SDK リファレンス ドキュメント](https://aka.ms/datadriftapi)を参照してください。 
+詳細については、[データ ドリフトに関する Python SDK リファレンス ドキュメント](/python/api/azureml-datadrift/azureml.datadrift)を参照してください。 
 
 Python SDK を使用した、データセット モニターの作成例を次に示します
 

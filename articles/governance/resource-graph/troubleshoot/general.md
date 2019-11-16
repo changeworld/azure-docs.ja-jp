@@ -1,17 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: Azure Resource Graph を使用して Azure リソースをクエリする際の問題をトラブルシューティングする方法について説明します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: troubleshooting
-ms.service: resource-graph
-ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e8f42650265b1ca400731365203408eeb22a4e4c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389696"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958521"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Resource Graph 使用時のエラーのトラブルシューティング
 

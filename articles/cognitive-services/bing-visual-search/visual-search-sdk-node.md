@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Bing Visual Search SDK for Node.js を使用して画像に関する分析情報を取得する
 titleSuffix: Azure Cognitive Services
-description: Bing Visual Search SDK を使用して画像をアップロードし、画像に関する分析情報を取得します。
+description: このクイック スタートを使用すると、Node.js SDK を使用して、Bing Visual Search サービスから画像に関する分析情報を取得することができます。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: f0dd0bb82f899146956b5671497d298c7ce076ef
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fd69179c98e999323936daf7e83b165126c20381
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360524"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111593"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>クイック スタート:Bing Visual Search SDK for Node.js を使用して画像に関する分析情報を取得する
 

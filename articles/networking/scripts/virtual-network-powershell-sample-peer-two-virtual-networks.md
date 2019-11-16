@@ -3,24 +3,21 @@ title: Azure PowerShell スクリプト サンプル - 2 つの仮想ネット�
 description: Azure PowerShell スクリプト サンプル - 2 つの仮想ネットワークのピアリング
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 65f578a82cba73a21ef8be559c3b229235a073ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: kumud
+ms.openlocfilehash: 53af283813500fc93d3e5fb9d4b00a9c3034af2d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156872"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890183"
 ---
 # <a name="peer-two-virtual-networks"></a>2 つの仮想ネットワークのピアリング
 

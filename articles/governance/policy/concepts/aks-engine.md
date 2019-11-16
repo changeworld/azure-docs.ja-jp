@@ -1,17 +1,14 @@
 ---
 title: AKS エンジン用 Azure Policy の概要
 description: Azure Policy に Gatekeeper v3 の CustomResourceDefinitions と Open Policy Agent と AKS エンジンを使用してクラスターを管理する方法について説明します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 71f3f26b9ea7f24d674c911e18c785b0798a072c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510068"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072059"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>AKS エンジン用 Azure Policy の概要
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: 81c95dc58e8cfaddf981e3911e88310cea508115
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9ab477ffd7001f0f492f63355baaee26827db845
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499636"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125540"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -102,7 +102,7 @@ C# を使用して、予測エンドポイント GET [API](https://aka.ms/luis-a
 
 1. 次の値を置き換えます。
 
-    * `YOUR-KEY` をご自分のスターター キーに
+    * `YOUR-KEY` (スターター キーを使用)
     * `YOUR-ENDPOINT` をご使用のエンドポイント (`westus2.api.cognitive.microsoft.com` など) に
 
 1. コンソール アプリケーションをビルドします。 
@@ -173,9 +173,9 @@ C# を使用して、予測エンドポイント GET [API](https://aka.ms/luis-a
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイックスタートを完了したら、ファイル システムからファイルを削除します。 
+このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。 
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [発話の追加とトレーニング](../luis-get-started-cs-add-utterance.md)
+> [発話の追加とトレーニング](../get-started-get-model-rest-apis.md)

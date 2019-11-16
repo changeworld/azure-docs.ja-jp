@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2c2994c310369a0a6fe26ccc2c1e2e5de6680349
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515566"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084694"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -39,7 +39,7 @@ ms.locfileid: "72515566"
 
 1. **+ リソースの作成** > **ネットワーク** > **仮想ネットワーク** の順に選択します。
 2. 次の設定の値を入力または選択し、 **[作成]** を選択します。
-   - **Name**:この名前は、仮想ネットワークの作成先として選択する[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内で一意である必要があります。 仮想ネットワークの作成後は、この名前を変更できません。 長く使用する中で、仮想ネットワークを複数作成する可能性があります。 名前付けの推奨事項については、「[名前付け規則](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)」を参照してください。 名前付け規則に従うことで、複数の仮想ネットワークを管理しやすくなります。
+   - **Name**:この名前は、仮想ネットワークの作成先として選択する[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内で一意である必要があります。 仮想ネットワークの作成後は、この名前を変更できません。 長く使用する中で、仮想ネットワークを複数作成する可能性があります。 名前付けの推奨事項については、「[名前付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)」を参照してください。 名前付け規則に従うことで、複数の仮想ネットワークを管理しやすくなります。
    - **[アドレス空間]** : 仮想ネットワークのアドレス空間は、CIDR 表記で指定された、1 つ以上の重複しないアドレス範囲で構成されます。 定義するアドレス範囲は、パブリックとプライベート (RFC 1918 に準拠) のどちらでもかまいません。 パブリックとプライベートのどちらのアドレス範囲を定義する場合でも、そのアドレス範囲に到達できるのは、仮想ネットワーク内から、相互接続された仮想ネットワークから、および仮想ネットワークに接続したオンプレミス ネットワークからだけです。 次のアドレス範囲は追加できません。
      - 224.0.0.0/4 (マルチキャスト)
      - 255.255.255.255/32 (ブロードキャスト)

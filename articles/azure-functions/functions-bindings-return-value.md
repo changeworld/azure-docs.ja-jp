@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1ea7ec0444ba80d3494afba77ad9d7fdabd5f982
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086424"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074396"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure 関数の戻り値の使用
 
@@ -29,15 +29,7 @@ ms.locfileid: "70086424"
 
 C# と C# スクリプトでは、`out` パラメーターや[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用してデータを出力バインディングに送信できます。
 
-言語固有の戻り値の使用例を次に示します。
-
-* [C#](#c-example)
-* [C# スクリプト (.csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-## <a name="c-example"></a>C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 出力バインディングに戻り値を使用する C# コードと非同期の例を次に示します。
 
@@ -63,7 +55,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-## <a name="c-script-example"></a>C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -96,7 +88,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-## <a name="f-example"></a>F# の例
+# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -118,7 +110,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-## <a name="javascript-example"></a>JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -141,7 +133,7 @@ module.exports = function (context, input) {
 }
 ```
 
-## <a name="python-example"></a>Python の例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -163,6 +155,8 @@ def main(input: azure.functions.InputStream) -> str:
         'content': input.read().decode('utf-8')
     })
 ```
+
+---
 
 ## <a name="next-steps"></a>次の手順
 

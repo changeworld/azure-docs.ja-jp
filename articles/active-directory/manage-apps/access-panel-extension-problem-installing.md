@@ -16,12 +16,12 @@ ms.date: 05/04/2018
 ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598a69593046354e83fe35b7b2ecfb0745e8b637
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 580207bb10680e84cfda7d4b1874f2b460602973
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388326"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082176"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 
@@ -63,7 +63,7 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 次のサイトから Chrome と Microsoft Edge 対応の拡張機能を直接ダウンロードすることもできます。
 
 - [Chrome 拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Microsoft Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Microsoft Edge 拡張機能](https://www.microsoft.com/en-us/p/my-apps-secure-sign-in-extension/9pc9sckkzk84)
 - [Firefox 拡張機能](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能の使用

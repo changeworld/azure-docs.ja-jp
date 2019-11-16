@@ -1,25 +1,17 @@
 ---
-title: Azure Cache for Redis の構成方法 | Microsoft Docs
+title: Azure Cache for Redis の構成方法
 description: Azure Cache for Redis の既定の Redis 構成について説明し、Azure Cache for Redis インスタンスの構成方法について説明します
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 6bc4b69122df7d29a611571a750229f47337015c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756794"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122880"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。

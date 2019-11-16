@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 08/27/2019
-ms.openlocfilehash: f171181aa56287561aba3159f5039f70165dc8ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: faf3573178693ec806000eb89ce7a975955d61b9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807508"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084132"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
@@ -203,8 +203,6 @@ PowerShell を使用して、**IgnoreMissingVNetServiceEndpoint** フラグを�
 
 *エラーの解決策:* IP ルールとしてクライアントの IP アドレスを入力します。 それには、Azure Portal の [ファイアウォール] ウィンドウを使います。
 
-SQL Database のエラー メッセージの一覧については、[こちら][sql-database-develop-error-messages-419g]をご覧ください。
-
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portal で仮想ネットワーク規則を作成する
@@ -302,8 +300,6 @@ Azure SQL Database の仮想ネットワーク規則機能は、2017 年 9 月�
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
-
-[sql-database-develop-error-messages-419g]: sql-database-develop-error-messages.md
 
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]: sql-database-vnet-service-endpoint-rule-powershell.md
 

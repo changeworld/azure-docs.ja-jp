@@ -1,5 +1,5 @@
 ---
-title: プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細 | Microsoft Docs
+title: プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 description: この記事では、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について技術的に詳しく説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 523671e19c7262a09f605d9b76f2ebbeaa0e0ae2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bf077758b24da4d4a80f1fed7eab2a0711d201ef
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082848"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035795"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 

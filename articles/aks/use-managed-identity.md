@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: 77655f08350419f0d102c9927b3e09b87edba341
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16a1f3b8f9ef036bcdc9af122243d313186f99f1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592864"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885334"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>プレビュー - Azure Kubernetes Service でマネージド ID を使用する
 
@@ -55,13 +55,13 @@ az extension list
 az feature register --name MSIPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](https://docs.microsoft.com/en-us/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](https://docs.microsoft.com/en-us/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService

@@ -1,25 +1,17 @@
 ---
-title: Cache の ASP.NET セッション状態プロバイダー | Microsoft Docs
+title: Cache ASP.NET セッション状態プロバイダー
 description: Azure Cache for Redis を使用して ASP.NET セッション状態を格納する方法を説明します。
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: yegu
-ms.openlocfilehash: 7333fa51da1cd5bbd9175d56571ec1d17cbbe33f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cfcad48060a3cf33da80c09c3900ce4322b947da
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203925"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122826"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
 

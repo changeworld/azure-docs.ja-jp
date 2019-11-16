@@ -1,7 +1,7 @@
 ---
 title: Bing News Search API に対するクエリの送信
 titleSuffix: Azure Cognitive Services
-description: Bing News Search API に対する検索要求の送信について説明します。
+description: Bing News Search API を使用すると、Web から適切なニュース記事を検索することができます。 この記事では、API に対する検索クエリの送信について詳しく説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: cfa9cd23e19788d847fd9177d70ee2af89c69272
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6be3d95c06862529881be2cbf2e4d74b44908e67
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423833"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111523"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Bing News Search API に対するクエリの送信
 

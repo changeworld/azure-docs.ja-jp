@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 11/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f93996d834ab805f2228543a833c4ce601042dc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692619"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039097"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのコンピューティングの管理
 Azure SQL Data Warehouse でコンピューティング リソースを管理する方法について説明します。 また、データ ウェアハウスを一時停止してコストを削減したり、データ ウェアハウスをパフォーマンス需要に応じてスケーリングしたりする方法についても説明します。 
@@ -34,19 +34,23 @@ SQL Data Warehouse のアーキテクチャではストレージとコンピュ�
 次の表は、データ ウェアハウス ユニットが変化すると、コンピューティング ノードあたりのディストリビューションの数がどのように変化するかを示しています。  DWU6000 は、60 のコンピューティング ノードを提供し、DWU100 よりはるかに高いクエリ パフォーマンスを達成します。 
 
 | データ ウェアハウス ユニット  | \# コンピューティング ノードの数 | \#ノードあたりのディストリビューションの数 |
-| ---- | ------------------ | ---------------------------- |
-| 100  | 1                  | 60                           |
-| 200  | 2                  | 30                           |
-| 300  | 3                  | 20                           |
-| 400  | 4                  | 15                           |
-| 500  | 5                  | 12                           |
-| 600  | 6                  | 10                           |
-| 1000 | 10                 | 6                            |
-| 1200 | 12                 | 5                            |
-| 1500 | 15                 | 4                            |
-| 2000 | 20                 | 3                            |
-| 3000 | 30                 | 2                            |
-| 6000 | 60                 | 1                            |
+| -------- | ---------------- | -------------------------- |
+| DW100c   | 1                | 60                         |
+| DW200c   | 1                | 60                         |
+| DW300c   | 1                | 60                         |
+| DW400c   | 1                | 60                         |
+| DW500c   | 1                | 60                         |
+| DW1000c  | 2                | 30                         |
+| DW1500c  | 3                | 20                         |
+| DW2000c  | 4                | 15                         |
+| DW2500c  | 5                | 12                         |
+| DW3000c  | 6                | 10                         |
+| DW5000c  | 10               | 6                          |
+| DW6000c  | 12               | 5                          |
+| DW7500c  | 15               | 4                          |
+| DW10000c | 20               | 3                          |
+| DW15000c | 30               | 2                          |
+| DW30000c | 60               | 1                          |
 
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>データ ウェアハウス ユニットの適正サイズの確認

@@ -1,17 +1,14 @@
 ---
 title: Azure 管理の概要 - Azure のガバナンス
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
-author: DCtheGeek
-ms.service: governance
-ms.topic: article
 ms.date: 12/06/2018
-ms.author: dacoulte
-ms.openlocfilehash: 2535b64380f67da440698c7577840d5319e6ca4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: overview
+ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978543"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132847"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure の管理サービスの概要
 

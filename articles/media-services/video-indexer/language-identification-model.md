@@ -1,6 +1,6 @@
 ---
 title: Video Indexer を使用して音声言語を自動的に識別する - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: この記事では、Video Indexer の言語識別モデルを使用して動画の音声言語を自動的に識別する方法について説明します。
 services: media-services
 author: juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147186"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838991"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>言語識別モデルを使用して音声言語を自動的に識別する
 

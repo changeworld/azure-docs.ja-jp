@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 1322b8eb14205ff29e109fae82466270f7507781
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc47b18dd51bbaa48d950515cccfe618d9e58426
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094020"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132752"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>1 つの Batch ジョブに多数のタスクを送信する
 
@@ -37,7 +37,7 @@ Batch API を使用すると、複数のタスクを 1 つの*コレクション
 
     * [REST API](/rest/api/batchservice/task/addcollection)
     * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Node.js API](/javascript/api/azure-batch/task?view=azure-node-latest)
+    * [Node.js API](/javascript/api/@azure/batch/task?view=azure-node-latest)
 
   これらの API を使用する場合、タスクの追加が失敗した場合に、コレクションの制限を満たすように複数のタスクに分割し、エラーを処理して再試行するロジックを用意する必要があります。 タスク コレクションが大きすぎて追加できない場合、要求からエラーが生成されるので、より少ないタスクで再試行する必要があります。
 

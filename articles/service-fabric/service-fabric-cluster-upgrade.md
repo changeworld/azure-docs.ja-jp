@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric クラスターのアップグレード | Microsoft Docs
+title: Azure Service Fabric クラスターのアップグレード
 description: Azure Service Fabric クラスターのバージョンまたは構成のアップグレードについて説明します。  この記事では、クラスターの更新モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの実行、およびアップグレードの実行時に期待できる内容について説明します
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 161c720fbcc9370aaf273b241e88a7184f47371b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599782"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013317"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレードと更新
 

@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ab6d213e83c2d7eba95c6c9a6dca5edc1f0f2215
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 4973a5215d93a1ce9d0a80f83264dd8c1fbe0888
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996525"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887217"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
 
@@ -210,7 +210,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## <a name="next-steps"></a>次の手順
 
-* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/en-us/powershell/scripting/overview)に関するページを参照してください。
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md) を参照してください。
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)

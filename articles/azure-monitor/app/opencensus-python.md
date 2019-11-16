@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575562"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132213"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python アプリケーション用に Azure Monitor をセットアップする (プレビュー)
 
@@ -109,7 +109,6 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     tracer = Tracer(
         exporter=AzureExporter(
             connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
-        ),
         sampler=ProbabilitySampler(1.0),
     )
 
@@ -215,7 +214,7 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     # TODO: replace the all-zero GUID with your instrumentation key.
     exporter = metrics_exporter.new_metrics_exporter(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+
     view_manager.register_exporter(exporter)
 
     def prompt():
@@ -297,30 +296,6 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
 4. エクスポーターはログ データを Azure Monitor に送信します。 データは `traces` で確認できます。
 
 5. トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)に関するページを参照してください。
-
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure Portal で監視を開始する
-
-1. Azure portal で Application Insights の **[概要]** ウィンドウを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。 **[ライブ メトリックス ストリーム]** を選択します。
-
-   !["ライブ メトリック ストリーム" が赤い枠線で書き込まれた概要ウィンドウのスクリーンショット](./media/opencensus-python/0005-overview-live-metrics-stream.png)
-
-2. **[概要]** ウィンドウに戻ります。 **[アプリケーション マップ]** を選択し、アプリケーション コンポーネント間の依存関係および呼び出しタイミングの視覚的レイアウトを取得します。
-
-   ![基本的なアプリケーション マップのスクリーンショット](./media/opencensus-python/0007-application-map.png)
-
-   1 つのメソッド呼び出しのみをトレースしていたため、このアプリケーション マップはあまり興味深い内容ではありません。 ただし、アプリケーション マップをスケーリングして、分散性がはるかに高いアプリケーションを視覚化することができます。
-
-   ![アプリケーション マップ](media/opencensus-python/application-map.png)
-
-3. **[パフォーマンスの調査]** を選択して詳細なパフォーマンスを分析し、パフォーマンス低下の根本原因を判断します。
-
-   ![パフォーマンスの詳細のスクリーンショット](./media/opencensus-python/0008-performance.png)
-
-4. トランザクションの詳細のエンドツーエンドのエクスペリエンスを開くには、 **[サンプル]** を選択し、右側のウィンドウに表示されるいずれかのサンプルを選択します。 
-
-   このサンプル アプリには単一のイベントが表示されますが、より複雑なアプリケーションでは、個々のイベントのコール スタックのレベルまでエンドツーエンドのトランザクションを探索できます。
-
-   ![エンドツーエンドのトランザクション インターフェイスのスクリーンショット](./media/opencensus-python/0009-end-to-end-transaction.png)
 
 ## <a name="view-your-data-with-queries"></a>クエリを使用してデータを表示する
 

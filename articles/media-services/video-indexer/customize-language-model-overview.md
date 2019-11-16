@@ -1,6 +1,6 @@
 ---
 title: Video Indexer で言語モデルをカスタマイズする - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: この記事では、Video Indexer における言語モデルの概要を説明し、それをカスタマイズする方法の概要を示します。
 services: media-services
 author: anikaz
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 516ecd8842e7b673201cc640b283c081a02d2b2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799552"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838313"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Video Indexer で言語モデルをカスタマイズする
 

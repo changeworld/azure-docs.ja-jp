@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: ba10a6105972eddc8474841b234d2eeddc994f5d
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9f3f98863f9a7cd0e6328ddc75b1154ee933fe0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948941"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009246"
 ---
-# <a name="security-best-practices"></a>セキュリティのベスト プラクティス
+# <a name="azure-digital-twins-security-best-practices"></a>Azure Digital Twins のセキュリティのベストプラクティス
 
 Azure Digital Twins のセキュリティにより、IoT グラフ内の特定のリソースとアクションへのアクセスを正確に制御できます。 これは、[ロールベースのアクセス制御](./security-role-based-access-control.md)と呼ばれるきめ細かいロールとアクセス許可の管理によって行われます。
 

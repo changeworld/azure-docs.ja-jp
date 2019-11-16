@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: d1ef652747dccdcb0e04ac8032dd47e2ebaa6bf2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019102"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886905"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 
@@ -113,4 +113,4 @@ Python Runbook は、[スクリプト センター ギャラリー](https://gall
 
 * Runbook の使用を開始するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」をご覧ください
 * Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「 [PowerShell ワークフローについて](automation-powershell-workflow.md)
-* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/en-us/powershell/scripting/overview)に関するページを参照してください。
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。

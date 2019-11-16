@@ -1,17 +1,14 @@
 ---
 title: スロットルされた要求に関するガイダンス
 description: Azure Resource Graph への要求のスロットルを回避するための適切なクエリの作成について説明します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 2dea1c160b07ac08075dad3a1ca1f6fc753e3481
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 651a5daa9e7e19a5dc157ba0cfa17da2c8abe3db
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622653"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038328"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph のスロットルされた要求に関するガイダンス
 
@@ -218,11 +215,11 @@ Azure Resource Graph では、単一のクエリ応答で最大 1,000 のエン�
   Azure CLI または Azure PowerShell の使用では、Azure Resource Graph に対するクエリは、自動的に最大 5,000 のエントリをフェッチするように改ページ調整されます。 クエリの結果では、すべての改ページ調整された呼び出しが結合されたエントリの一覧が返されます。 この場合、クエリの結果に含まれるエントリ数によっては、単一の改ページ調整されたクエリで、複数のクエリのクォータが消費される可能性があります。 たとえば、次の例では、クエリの 1 回の実行で、最大 5 のクエリのクォータが消費される可能性があります。
 
   ```azurecli-interactive
-  az graph query -q 'Resources | project id, name, type' -top 5000
+  az graph query -q 'Resources | project id, name, type' --first 5000
   ```
 
   ```azurepowershell-interactive
-  Search-AzGraph -Query 'Resources | project id, name, type' -Top 5000
+  Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
 ## <a name="still-get-throttled"></a>スロットルが解消されない場合
@@ -240,4 +237,4 @@ Azure Resource Graph では、単一のクエリ応答で最大 1,000 のエン�
 
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。
-- [リソースを探索する](explore-resources.md)方法の詳細を確認します。
+- [リソースを探索する](explore-resources.md)方法について詳しく確認します。

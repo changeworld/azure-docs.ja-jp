@@ -1,18 +1,14 @@
 ---
 title: Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー
 description: Azure Active Directory のテナント、ユーザー、およびロールの概念と、それらを Azure Lighthouse のシナリオで使用する方法について説明します。
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 11/05/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: b87ef8534dab2c8f08aa8cdee9d939e2d1a3a0e7
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 73c5cd592f07a23edaad23796e498ea9243c5d26
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73616040"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131345"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
-ms.openlocfilehash: d1dd059f1a6f9ce96b27d4fe1f214978dfc06a8f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816001"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931150"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Azure マネージド ID を使用してラボに環境をデプロイする 
 ラボの所有者は、マネージド ID を使用してラボに環境をデプロイできます。 この機能は、環境にキー コンテナー、共有イメージ ギャラリー、ネットワークなど、環境のリソース グループの外部にある Azure リソースが含まれている場合、またはそれらのリソースを参照している場合に役立ちます。 これにより、その環境のリソース グループに限定されないサンドボックス環境を作成できるようになります。
@@ -67,6 +67,10 @@ ms.locfileid: "71816001"
                 "[userAssignedIdentityResourceId]":{}
             }
         }
+        "properties":{
+            "identityUsageType":"Environment"
+                     }
+          
     }
     ```
  
@@ -83,6 +87,9 @@ ms.locfileid: "71816001"
                 "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuseridentity":{}
             }
         }
+        "properties":{
+            "identityUsageType":"Environment"
+                     }
     }
     ```
  

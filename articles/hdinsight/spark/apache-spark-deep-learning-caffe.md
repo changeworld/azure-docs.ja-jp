@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: e0490913029efc17d12139378369646c286a276c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e5988bf1955502d89cc31bcc30672de983a399ec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145720"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083344"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
@@ -21,7 +21,7 @@ ms.locfileid: "71145720"
 
 深層学習は、医療、輸送、製造など、あらゆる分野に影響を与えています。 企業は、[画像分類](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[音声認識](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体認識、機械翻訳などの困難な問題を解決するための手段としてディープ ラーニングを取り入れるようになっています。
 
-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、[Apache MXNet](https://mxnet.apache.org/)、Theano など、[多くの一般的なフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が存在します。[Caffe](https://caffe.berkeleyvision.org/) は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの 1 つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、[CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) では、Caffe と Apache Spark を結合して、深層学習を既存の Hadoop クラスターで簡単に使用できるようにしています。 深層学習を Spark ETL パイプラインと一緒に使用して、システムの複雑さと完全なソリューション学習の待機時間を短縮できます。
+[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、[Apache MXNet](https://mxnet.apache.org/)、Theano など、[多くの一般的なフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が存在します。[Caffe](https://caffe.berkeleyvision.org/) は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの 1 つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、[CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark) では、Caffe と Apache Spark を結合して、深層学習を既存の Hadoop クラスターで簡単に使用できるようにしています。 深層学習を Spark ETL パイプラインと一緒に使用して、システムの複雑さと完全なソリューション学習の待機時間を短縮できます。
 
 [HDInsight](https://azure.microsoft.com/services/hdinsight/) は、Apache Spark、Apache Hive、Apache Hadoop、Apache HBase、Apache Storm、Apache Kafka、および ML サービス向けに最適化されたオープンソースの分析クラスターを提供するクラウド Apache Hadoop サービスです。 HDInsight は、99.9% の SLA が保証されています。 これらのビッグ データ テクノロジと ISV アプリケーションはそれぞれ、企業向けのセキュリティ機能と監視機能を備えたマネージド クラスターとして簡単にデプロイ可能です。
 

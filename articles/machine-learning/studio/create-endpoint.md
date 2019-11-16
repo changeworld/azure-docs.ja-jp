@@ -1,6 +1,6 @@
 ---
 title: Web サービスのエンドポイントを作成する
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (クラシック) で Web サービスのエンドポイントを作成します。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ca7061171eb68b7473f3bf72423e481f6c5dfee1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 891f680485ec3ee65c0bef102eb7f52cea0611c6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619568"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839644"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>デプロイされた Azure Machine Learning Studio (クラシック) Web サービス用のエンドポイントを作成する
 

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695493"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890176"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
 
@@ -198,7 +198,7 @@ Azure Sheduler では、既定のアクションが実行に失敗した場合�
 <a name="retire-date"></a>
 
 **Q**: Azure Scheduler が廃止になるのはいつですか。 <br>
-**A**: Azure Scheduler は、2019 年 12 月 31 日に完全に廃止される予定です。 この日付より前に行う必要がある重要な手順と詳細なタイムラインについては、「[Scheduler のサービス停止日を 2019 年 12 月 31 日まで延長](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/)」を参照してください。 一般的な更新については、[Azure の更新情報 - スケジューラ](https://azure.microsoft.com/updates/?product=scheduler)を参照してください。
+**A**: Azure Scheduler は、2019 年 12 月 31 日に完全に廃止される予定です。 この日付より前に行う必要がある重要な手順と詳細なタイムラインについては、「[Scheduler のサービス停止日を 2019 年 12 月 31 日まで延長](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/)」を参照してください。 一般的な更新については、[Azure の更新情報 - スケジューラ](https://azure.microsoft.com/updates/?product=scheduler)を参照してください。
 
 **Q**: サービスの廃止後、ジョブ コレクションとジョブはどうなりますか。 <br>
 **A**: Scheduler のすべてのジョブ コレクションとジョブが実行を停止され、システムから削除されます。

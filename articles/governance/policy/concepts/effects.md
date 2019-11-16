@@ -1,17 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c345f96ef5176c4afb3d46aaca2e9903c7911fb1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464049"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959900"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 

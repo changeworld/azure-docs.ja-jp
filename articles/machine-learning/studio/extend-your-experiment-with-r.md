@@ -1,6 +1,6 @@
 ---
 title: R を使用した実験の拡張
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: R スクリプトの実行モジュールを使用して、R 言語によって Azure Machine Learning Studio (クラシック) 機能を拡張する方法。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 1a64303702ffa5ccff9c79e0946d5df45eac9479
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 13d385c69151891030ea0ee8f87ea8b55197a73f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621647"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837604"
 ---
 # <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure Machine Learning Studio (クラシック):R を使用した実験の拡張 
 [R スクリプトの実行][execute-r-script]モジュール使用して、R 言語によって Azure Machine Learning Studio (クラシック) 機能を拡張できます。

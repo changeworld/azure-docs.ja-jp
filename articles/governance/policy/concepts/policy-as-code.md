@@ -1,18 +1,14 @@
 ---
 title: コードとしてのポリシー ワークフローの設計
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e3fcb9996266af7e952538c7c92c665929bb9492
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 935616145ee32bea8c3b514c495690ce4105cb80
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512088"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072068"
 ---
 # <a name="design-policy-as-code-workflows"></a>コードとしてのポリシー ワークフローの設計
 

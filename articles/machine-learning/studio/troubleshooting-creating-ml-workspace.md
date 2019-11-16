@@ -1,6 +1,6 @@
 ---
 title: ワークスペースのトラブルシューティング
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: このガイドでは、クラシック バージョンの Azure Machine Learning Studio ワークスペースの設定に伴い、よく生じることのある問題の解決策を説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 2f305f74a4bbf15fdda9a8801e73bda70fab6deb
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 88f4e1edae84892892d1a8a9e76499d71d551abf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622106"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838034"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>トラブルシューティング ガイド:Azure Machine Learning Studio (クラシック) ワークスペースの作成と接続
 このガイドでは、Azure Machine Learning Studio (クラシック) ワークスペースの設定に伴い、よく生じることのある問題の解決策を説明します。

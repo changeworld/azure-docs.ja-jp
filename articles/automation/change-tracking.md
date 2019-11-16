@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a1395c89b047bb120c7f7e2d2d9bb9b4d2b0c50
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959959"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886802"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -80,7 +80,7 @@ Azure Security Center は、Azure Change Tracking 上に構築されたファイ
 FIM が既に有効になっていて、完全な Change Tracking ソリューションを試したい場合は、次の手順を実行する必要があります。 お使いの設定はこの処理によって削除されません。
 
 > [!NOTE]
-> 完全な Change Tracking ソリューションを有効にすると、追加料金が発生することがあります。詳細については、「[Automation の価格](https://azure.microsoft.com/en-us/pricing/details/automation/)」を参照してください。
+> 完全な Change Tracking ソリューションを有効にすると、追加料金が発生することがあります。詳細については、「[Automation の価格](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
 
 1. ワークスペースに移動し、[インストールされている監視ソリューションの一覧](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)から監視ソリューションを見つけて削除します。
 2. 「[監視ソリューションを削除する](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)」で説明されているように、ソリューション名をクリックして [概要] ページを開き、 [削除] をクリックします。

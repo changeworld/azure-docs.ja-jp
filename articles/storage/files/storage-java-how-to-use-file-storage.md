@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 00130114b793b5f4d4459eee3404fc4adaf6a8b4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699409"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837470"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -227,7 +227,7 @@ if ( file.deleteIfExists() ) {
 * [Java 開発者向けの Azure](/java/azure)/)
 * [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
 * [Azure Storage SDK for Android に関するページ に関するページ](https://github.com/azure/azure-storage-android)
-* [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
+* [Azure ストレージ クライアント SDK リファレンス](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md)

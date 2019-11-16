@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991440"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083208"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -177,10 +177,10 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-|Name|Status|データ センター
+|名前|Status|データ センター
 |---|---|---|
-|Standard|一般公開|All|
-|Premium|一般公開|All|
+|Standard|GA|All|
+|Premium|GA|All|
 
 ### <a name="live-encoding"></a>ライブ エンコード
 
@@ -196,8 +196,8 @@ AMS には、**Media Encoder Standard** と **Media Encoder Premium ワークフ
 
 |メディア プロセッサ名|Status|データ センター
 |---|---|---|
-|メディア エンコーダー スタンダード|一般公開|All|
-|メディア エンコーダー Premium ワークフロー|一般公開|中国を除くすべて|
+|メディア エンコーダー スタンダード|GA|All|
+|メディア エンコーダー Premium ワークフロー|GA|中国を除くすべて|
 
 ### <a name="analytics-media-processors"></a>Analytics メディア プロセッサ
 
@@ -208,11 +208,10 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 |メディア プロセッサ名|Status|データ センター
 |---|---|---|
 |Azure Media Face Detector|プレビュー|All|
-|Azure Media Indexer|一般公開|All|
+|Azure Media Indexer|GA|All|
 |Azure Media Motion Detector|プレビュー|All|
 |Azure Media OCR|プレビュー|All|
 |Azure Media Redactor|プレビュー|All|
-|Azure Media Stabilizer|プレビュー|All|
 |Azure Media Video Thumbnails|プレビュー|All|
 |Azure Media Indexer 2|プレビュー|中国および連邦政府リージョンを除くすべて|
 
@@ -224,11 +223,11 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 |暗号化|Status|データ センター|
 |---|---|---| 
-|Storage|一般公開|All|
-|AES-128 キー|一般公開|All|
-|FairPlay|一般公開|All|
-|PlayReady|一般公開|All|
-|Widevine|一般公開|ドイツ、連邦政府、中国を除くすべて
+|Storage|GA|All|
+|AES-128 キー|GA|All|
+|FairPlay|GA|All|
+|PlayReady|GA|All|
+|Widevine|GA|ドイツ、連邦政府、中国を除くすべて
 
 ### <a name="reserved-units-rus"></a>予約ユニット (RU)
 
@@ -250,9 +249,9 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 |RU の種類の名前|Status|データ センター
 |---|---|---|
-|S1|一般公開|All|
-|S2|一般公開|ブラジル南部とインド西部を除くすべて|
-|S3|一般公開|インド西部を除くすべて|
+|S1|GA|All|
+|S2|GA|ブラジル南部とインド西部を除くすべて|
+|S3|GA|インド西部を除くすべて|
 
 ## <a name="next-steps"></a>次の手順
 

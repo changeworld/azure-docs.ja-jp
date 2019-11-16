@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259170"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887714"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
@@ -24,7 +24,7 @@ ms.locfileid: "71259170"
 
 Azure State Configuration で構成をコンパイルまたはデプロイするときにエラーが発生した場合は、以下の手順が問題を診断するのに役立ちます。
 
-1. **ローカル コンピューターで構成が正常にコンパイルされていることを確認する:** Azure State Configuration は、PowerShell DSC 上に構築されます。 DSC の言語と構文については、[PowerShell DSC のドキュメント](https://docs.microsoft.com/en-us/powershell/scripting/overview)を参照してください。
+1. **ローカル コンピューターで構成が正常にコンパイルされていることを確認する:** Azure State Configuration は、PowerShell DSC 上に構築されます。 DSC の言語と構文については、[PowerShell DSC のドキュメント](https://docs.microsoft.com/powershell/scripting/overview)を参照してください。
 
    お使いのローカル コンピューターでお使いの DSC の構成をコンパイルすると、次のような一般的なエラーを検出して解決できます。
 

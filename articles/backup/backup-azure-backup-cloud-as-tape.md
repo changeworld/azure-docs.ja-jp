@@ -7,14 +7,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.author: dacurwin
-ms.openlocfilehash: 3be3a2e3355793a8d0b4fcaf0e7f62668f78f0c8
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2850fab3a5639673008a7433db48911ced832401
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954877"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091116"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>テープから Azure クラウドに長期ストレージを移動する
+
 Azure Backup と System Center Data Protection Manager のユーザーは以下を実行できます。
 
 * 組織のニーズに最適なスケジュールでのデータのバックアップ。
@@ -24,6 +25,7 @@ Azure Backup と System Center Data Protection Manager のユーザーは以下�
 この記事では、顧客がバックアップと保有ポリシーを有効にする方法について説明します。 その長期間保有のニーズに対処するためにこれまでテープ使用してきた顧客にとっては、この機能を使用するための強力かつ有効な代替方法を活用できるようになりました。 Azure Backup の最新のリリース ( [ここ](https://aka.ms/azurebackup_agent)からアクセスできます) では、この機能が有効になっています。 System Center DPM の顧客は、Azure Backup サービスで DPM を使用する前に、少なくとも DPM 2012 R2 UR5 に更新する必要があります。
 
 ## <a name="what-is-the-backup-schedule"></a>Backup スケジュールとは
+
 Backup スケジュールは、バックアップ操作の頻度を示します。 たとえば、次の画面の設定は、毎日午後 6 時と、午前 0 時にバックアップが実行されることを示しています。
 
 ![毎日のスケジュール](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
@@ -33,6 +35,7 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 ![週単位のスケジュール](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
 
 ## <a name="what-is-the-retention-policy"></a>保有ポリシーとは
+
 保有ポリシーは、バックアップを格納する必要がある期間を指定します。 顧客は、すべてのバックアップ ポイントの「フラット ポリシー」を指定するのでなく、バックアップが作成された時期に基づいて別の保有ポリシーを指定できます。 たとえば、毎日実行されるバックアップ ポイントは、運用上の復旧ポイントとして機能し、90 日間保持されます。 各四半期の最後に実行されるバックアップ ポイントは、監査の目的で長期間保持されます。
 
 ![保有ポリシー](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
@@ -40,6 +43,7 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 このポリシーで指定された「保有ポイント」の合計数は、90 (1 日のポイント) + 40 (10 年間の四半期ごとに 1 つ) = 130 です。
 
 ## <a name="example--putting-both-together"></a>例 - 両方を一緒にまとめる
+
 ![サンプル画面](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **日単位の保持ポリシー**:毎日バックアップが作成され、7 日間保持されます。
@@ -61,11 +65,13 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 >
 
 ## <a name="advanced-configuration"></a>詳細な構成
+
 前の画面の **[変更]** をクリックすることによって、顧客はより柔軟に保持スケジュールを指定することができます。
 
 ![[変更]](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>次の手順
+
 Azure Backup の詳細については、以下をご覧ください。
 
 * [Azure Backup の概要](backup-introduction-to-azure-backup.md)

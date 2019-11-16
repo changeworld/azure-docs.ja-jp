@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918980"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891750"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>サンプル データを利用した Azure Stream Analytics ジョブのテスト
 
-Azure Stream Analytics では、ジョブを開始または停止せずに、クエリをテストできます。 入力シンクから受信したデータ、または Azure portal でローカル ファイルからアップロードしたサンプル データに対するクエリをテストできます。 [Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) と [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run) でローカル サンプル データまたはライブ データからクエリをローカルでテストすることもできます。 
+Azure Stream Analytics では、ジョブを開始または停止せずに、クエリをテストできます。 入力シンクから受信したデータ、または Azure portal でローカル ファイルからアップロードしたサンプル データに対するクエリをテストできます。 [Visual Studio](stream-analytics-live-data-local-testing.md) と [Visual Studio Code](vscode-local-run.md) でローカル サンプル データまたはライブ データからクエリをローカルでテストすることもできます。 
 
 ## <a name="sample-incoming-data-from-input"></a>入力からの受信データのサンプル
 

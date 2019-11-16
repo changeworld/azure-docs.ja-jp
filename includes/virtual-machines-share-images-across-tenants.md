@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286307"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903704"
 ---
-共有イメージ ギャラリーでは、RBAC を使用してイメージを共有できます。 RBAC を使用すると、テナント内でイメージを共有できます。また、テナントの外部にいる個人と共有することもできます。 ただし、Azure テナントの外部で大規模にイメージを共有する場合は、共有を容易にするためにアプリ登録を作成することをお勧めします。  アプリ登録を使用すると、次のようにより複雑な共有シナリオが可能になります。 
+ただし、Azure テナントの外部で大規模にイメージを共有する場合は、共有を容易にするためにアプリ登録を作成することをお勧めします。  アプリ登録を使用すると、次のようにより複雑な共有シナリオが可能になります。 
 
 * ある会社が別の会社を買収し、Azure インフラストラクチャは別々のテナントに分散しているときの共有イメージの管理。 
 * Azure パートナーは、お客様の代理で Azure インフラストラクチャを管理します。 イメージのカスタマイズはパートナーのテナント内で行われますが、インフラストラクチャのデプロイはお客様のテナント内で行われます。 

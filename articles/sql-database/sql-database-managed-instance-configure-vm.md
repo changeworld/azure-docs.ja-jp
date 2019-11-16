@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: a455607b1459ebc9e37b1df70b454feea76d1f2f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7273c7b1dbf5eb6c855b95a8661f38bd4bd14af7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822772"
+ms.locfileid: "73839040"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>クイック スタート: Azure SQL Database Managed Instance に接続するように Azure VM を構成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "73822772"
 
    | Setting| 推奨値 | Description |
    | ---------------- | ----------------- | ----------- |
-   | **Name** | 有効な名前|有効な名前については、[名前付け規則と制限事項](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。|
+   | **Name** | 有効な名前|有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
    | **アドレス範囲 (CIDR ブロック)** | 有効な範囲 | このクイック スタートでは既定値で問題ありません。|
    | **ネットワーク セキュリティ グループ** | なし | このクイック スタートでは既定値で問題ありません。|
    | **ルート テーブル** | なし | このクイック スタートでは既定値で問題ありません。|
@@ -78,8 +78,8 @@ SQL マネージド インスタンスはプライベート仮想ネットワー
    | **サブスクリプション** | 有効なサブスクリプション | 新しいリソースを作成するアクセス許可があるサブスクリプションでなければなりません。 |
    | **リソース グループ** |「[マネージド インスタンスを作成する](sql-database-managed-instance-get-started.md)」クイック スタートで指定したリソース グループ。|VNet が存在するリソース グループでなければなりません。|
    | **Location** | リソース グループの場所 | この値は、選択したリソース グループに基づいて設定されます。 |
-   | **仮想マシン名**  | 有効な名前 | 有効な名前については、[名前付け規則と制限事項](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。|
-   |**管理ユーザー名**|有効なユーザー名|有効な名前については、[名前付け規則と制限事項](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。<br>[VM に接続](#connect-to-virtual-machine)するときは常に、このユーザー名を使用します。|
+   | **仮想マシン名**  | 有効な名前 | 有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
+   |**管理ユーザー名**|有効なユーザー名|有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。<br>[VM に接続](#connect-to-virtual-machine)するときは常に、このユーザー名を使用します。|
    |**パスワード**|有効なパスワード|パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。<br>[VM に接続](#connect-to-virtual-machine)するときは常に、このパスワードを使用します。|
    | **仮想マシン サイズ** | 任意の有効なサイズ | このクイック スタートでは、このテンプレートの既定値 **Standard_B2s** で十分です。 |
    | **Location**|[resourceGroup().location]| この値は変更しないでください。 |

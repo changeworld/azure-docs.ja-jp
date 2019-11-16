@@ -1,5 +1,5 @@
 ---
-title: Azure での Linux VM の時刻同期 | Microsoft Docs
+title: Azure での Linux VM の時刻同期
 description: Linux 仮想マシンの時刻同期。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e5d68a31db3797f9919d044eed284d0d09052390
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100783"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034663"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 

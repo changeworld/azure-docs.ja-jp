@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f64f45aca6948665c088279002d3d8054ef8d80
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747619"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929163"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -69,14 +69,14 @@ x-ms-correlation-request-id: 43cf550d-e463-421c-8922-37e4766db27d
 x-ms-routing-request-id: SOUTHINDIA:20180521T105701Z:43cf550d-e463-421c-8922-37e4766db27d
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 10:57:00 GMT
-Location: https://management.azure.com/subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 簡単な *GET* コマンドで "Location" ヘッダーを使用して結果の操作を追跡します
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2019-05-13
 ```
 
 すべての Azure VM が検出されると、GET コマンドは 204 (No Content) 応答を返します。 コンテナーはこれで、サブスクリプション内のすべての VM を検出できるようになりました。
@@ -168,12 +168,12 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM の保護の有効化
 
-適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 下の例では "DefaultPolicy" が選択されています。
+適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 下の例では "DefaultPolicy" が選択されています。
 
 保護を有効にすることは、"保護された項目" を作成する非同期の *PUT* 操作です。
 
 ```http
-https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
+https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
 `{containerName}` と `{protectedItemName}` は、上のように作成されます。 `{fabricName}` は "Azure" です。 この例では、これを次のように変えます。
@@ -244,7 +244,7 @@ X-Powered-By: ASP.NET
 その後は、簡単な *GET* コマンドで場所のヘッダーまたは Azure-AsyncOperation ヘッダーを使用した結果の操作を追跡します。
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 ```
 
 操作が完了すると、応答本文に保護された項目のコンテンツが含まれる 200 (OK) が返されます。
@@ -293,7 +293,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 `{containerName}` と `{protectedItemName}` は、[上](#responses-1)のように作成されます。 `{fabricName}` は "Azure" です。 この例では、これを次のように変えます。
 
 ```http
-POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2019-05-13
+POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
 ```
 
 ### <a name="create-the-request-body"></a>要求本文を作成する
@@ -347,7 +347,7 @@ x-ms-correlation-request-id: 7885ca75-c7c6-43fb-a38c-c0cc437d8810
 x-ms-routing-request-id: SOUTHINDIA:20180521T083541Z:7885ca75-c7c6-43fb-a38c-c0cc437d8810
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 08:35:41 GMT
-Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationResults/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationResults/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 

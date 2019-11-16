@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute Direct の構成 - Azure | Microsoft Docs
+title: 'Azure ExpressRoute: ExpressRoute Direct を構成する'
 description: このページは、ExpressRoute Direct の構成に役立ちます。
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 9dcefb2d47b6862466b64b3568e1a530a2fdb8cb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ba7bddb2f11732f7de5f1dfa68b66be1204722cc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161585"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083484"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 

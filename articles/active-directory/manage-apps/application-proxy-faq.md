@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 9743f25d89bed4e54b3deed815d1cf29030caff6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955407"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832211"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -95,7 +95,7 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 コネクタサーバーと Web アプリケーション サービス アカウントが同じドメインにある場合は、[Active Directory ユーザーとコンピューター] を使用して、各コネクタ コンピューター アカウントで委任設定を構成し、ターゲット SPN に委任することができます。
 
 コネクタ サーバーと Web アプリケーション サービス アカウントが異なるドメインにある場合は、リソース ベースの委任が使用されます。 委任されたアクセス許可は、ターゲット Web サーバーと Web アプリケーション サービス アカウントで構成されます。 この制約付き委任方法は、比較的新しいものです。 この方法は、リソース (Web サービス) 所有者が、委任できるコンピューターとサービス アカウントを制御できるようにすることで、ドメイン間の委任に対応した Windows Server 2012 で導入されました。 この構成に使用できる UI はないため、PowerShell を使用する必要があります。
-詳細については、「[アプリケーション プロキシを使った Kerberos の制約付き委任](http://aka.ms/kcdpaper)」に関するホワイトペーパーを参照してください。
+詳細については、「[アプリケーション プロキシを使った Kerberos の制約付き委任](https://aka.ms/kcdpaper)」に関するホワイトペーパーを参照してください。
 
 ## <a name="pass-through-authentication"></a>パススルー認証
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: f2c6676284e8ed58f1626ab824aa7a7c9c456a31
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: bc61e39a02d16827521758ca8248488e46c109b5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494454"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838095"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -322,11 +322,11 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ロジック アプリのリソース定義に固有の属性は次のとおりです。
 
-| Attribute | 必須 | Type | 説明 |
+| Attribute | 必須 | 種類 | 説明 |
 |-----------|----------|------|-------------|
 | `state` | はい | string | デプロイ時のロジック アプリの状態。`Enabled` はロジック アプリがアクティブな状態であることを意味し、`Disabled` はロジック アプリが非アクティブな状態であることを意味します。 たとえば、ロジック アプリをアクティブにする準備ができておらず、ドラフト バージョンをデプロイする必要がある場合は、`Disabled` オプションを使用できます。 |
 | `integrationAccount` | いいえ | Object | 企業間 (B2B) のシナリオで成果物を格納する統合アカウントをロジック アプリで使用している場合、このオブジェクトには、統合アカウントの ID を指定する `id` 属性が含まれます。 |
-| `definition` | はい | Object | ロジック アプリの基になるワークフロー定義。コード ビューに表示されるのと同じオブジェクトであり、[ワークフロー定義言語のスキーマ参照](../logic-apps/logic-apps-workflow-definition-language.md)に関するトピックで詳しく説明されています。 このワークフロー定義では、`parameters` オブジェクトによって、ロジック アプリの実行時に使用される値のパラメーターが宣言されます。 詳しくは、「[ワークフロー定義とパラメーター](#workflow-definition-parameters)」をご覧ください。 <p><p>ロジック アプリのワークフロー定義内の属性を表示するには、Azure portal または Visual Studio で "デザイン ビュー" から "コード ビュー" に切り替えるか、[Azure Resource Explorer](http://resources.azure.com) などのツールを使用します。 |
+| `definition` | はい | Object | ロジック アプリの基になるワークフロー定義。コード ビューに表示されるのと同じオブジェクトであり、[ワークフロー定義言語のスキーマ参照](../logic-apps/logic-apps-workflow-definition-language.md)に関するトピックで詳しく説明されています。 このワークフロー定義では、`parameters` オブジェクトによって、ロジック アプリの実行時に使用される値のパラメーターが宣言されます。 詳しくは、「[ワークフロー定義とパラメーター](#workflow-definition-parameters)」をご覧ください。 <p><p>ロジック アプリのワークフロー定義内の属性を表示するには、Azure portal または Visual Studio で "デザイン ビュー" から "コード ビュー" に切り替えるか、[Azure Resource Explorer](https://resources.azure.com) などのツールを使用します。 |
 | `parameters` | いいえ | Object | ロジック アプリの実行時に使用される[ワークフロー定義のパラメーター値](#workflow-definition-parameters)。 これらの値のパラメーター定義は、[ワークフロー定義の parameters オブジェクト](#workflow-definition-parameters)内に表示されます。 また、ロジック アプリで[マネージド コネクタ](../connectors/apis-list.md)を使用して他のサービスやシステムにアクセスしている場合、このオブジェクトには、実行時に使用する接続値を設定する `$connections` オブジェクトが含まれます。 |
 | `accessControl` | いいえ | Object | 要求トリガーまたは実行履歴の入出力に対する IP アクセスの制限など、ロジック アプリのセキュリティ属性を指定します。 詳細については、[ロジック アプリへのアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md)に関するページをご覧ください。 |
 ||||

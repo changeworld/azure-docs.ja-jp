@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8e8e4524034f0a296045691309b065f8547bdaa0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797236"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931213"
 ---
 # <a name="references"></a>参照
 
@@ -85,7 +85,7 @@ API サービスの URL は、データハブの URL である https://\<yourdat
 
 次の要求例では、デバイスの一覧を取得します。
 
-```
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -93,7 +93,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-T
 
 次の要求例ではデバイスを作成します (これには、入力 json と要求本文が含まれています)。
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -108,7 +108,6 @@ REST **GET** 呼び出しでは、要求 URI に 1 つ以上のクエリ パラ�
 
 Azure FarmBeats データ ハブ API は、標準の HTTP エラーを返します。 最も一般的なエラー コードは次のとおりです。
 
-
  |エラー コード             | 説明 |
  |---                    | --- |
  |200                    | Success |
@@ -121,29 +120,29 @@ Azure FarmBeats データ ハブ API は、標準の HTTP エラーを返しま�
 
 Azure FarmBeats データ ハブ API では、標準の HTTP エラーに加えて、次の形式の内部エラーも返されます。
 
-```
-{
-  "message": "<More information on the error>",
-  "status": "<error code>”,
-  "code": "<InternalErrorCode>",
-  "moreInfo": "<Details of the error>"
-}
+```json
+    {
+      "message": "<More information on the error>",
+      "status": "<error code>”,
+      "code": "<InternalErrorCode>",
+      "moreInfo": "<Details of the error>"
+    }
 ```
 
 例:ファームを作成するときに、入力ペイロードで必須フィールド "Name" が指定されませんでした。 結果のエラーメッセージは次のようになります。
 
-```
-{
-  "message": "Model validation failed",
-  "status": 400,
-  "code": "ModelValidationFailed",
-  "moreInfo": "[\"The Name field is required.\"]"
-}
-```
+ ```json    
+    {
+      "message": "Model validation failed",
+      "status": 400,
+      "code": "ModelValidationFailed",
+      "moreInfo": "[\"The Name field is required.\"]"
+    }
+  ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Azure Active Directory にユーザーまたはアプリ登録を追加する
 
- Azure FarmBeats API は、Azure Active Directory のユーザーまたはアプリ登録からアクセスできます。 Azure Active Directory でアプリ登録を作成するには、次の手順を実行します。  
+Azure FarmBeats API は、Azure Active Directory のユーザーまたはアプリ登録からアクセスできます。 Azure Active Directory でアプリ登録を作成するには、次の手順を実行します。  
 
 1. [Azure portal](https://portal.azure.com) から、 **[Azure Active Directory] > [アプリの登録]** > **[新規登録]** に移動します。 または、既存のアカウントを使用することができます。
 2. 新しいアカウントの場合は、次の手順を実行します。

@@ -7,12 +7,12 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 09/20/2018
-ms.openlocfilehash: 1d378571a02f30c223338eef5c7d142ed02ff4c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555557"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834738"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure Diagnostics の 1.3 以降の構成スキーマ
 > [!NOTE]
@@ -411,7 +411,7 @@ Azure Diagnostics の詳細については、[Azure Diagnostics 拡張機能](di
 診断構成ファイルの最上位要素。  
 
 **属性**  xmlns - 診断構成ファイルの XML 名前空間は次のとおりです。  
-http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
+`http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
 |子要素|説明|  

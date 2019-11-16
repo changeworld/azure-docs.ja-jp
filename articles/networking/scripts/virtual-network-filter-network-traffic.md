@@ -3,24 +3,20 @@ title: Azure CLI スクリプト サンプル - VM ネットワーク トラフ�
 description: Azure CLI スクリプト サンプル - VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: timlt
-ms.openlocfilehash: 5f33490a360089a301b28479b7707d4b62c7dd83
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: kumud
+ms.openlocfilehash: e91e59e8e8acbf76ed35cff6b2f654103bb763b5
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875473"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888570"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理
 

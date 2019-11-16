@@ -3,24 +3,21 @@ title: Azure PowerShell スクリプト サンプル - VM ネットワーク ト
 description: Azure PowerShell スクリプト サンプル - VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理。
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 168d374a070160eff158d6464d6e214880f486f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: kumud
+ms.openlocfilehash: 46b368220a320679e93024f592d980f2b756c3a2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156883"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890211"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理
 

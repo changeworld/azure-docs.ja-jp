@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 19a7d6052091f8889a88c61793186b7bf7d9d869
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60304265"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901327"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>成果物を VM に追加する
 VM を作成するとき、既存の成果物をその VM に追加できます。 これらの成果物は、[パブリックの DevTest Labs の Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)または独自の Git リポジトリにあります。 この記事では、Azure portal および Azure PowerShell を使用して成果物を追加する方法について説明します。 
@@ -90,7 +90,7 @@ param
 Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
  
 # Get the lab resource group name
-$resourceGroupName = (Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
+$resourceGroupName = (Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
 if ($resourceGroupName -eq $null) { throw "Unable to find lab $DevTestLabName in subscription $SubscriptionId." }
 
 # Get the internal repo name

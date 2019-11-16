@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9563def1a7b510c403cf299a66066def0b03b59a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796780"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888598"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする  
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 - [Azure Portal を使用して Azure Media Services アカウントを作成](media-services-portal-create-account.md)します。
 - [AAD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
-- また、詳細については、「[Azure AD 認証を使用して REST で Media Services API にアクセスする](https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-rest-connect-with-aad)」の記事を確認してください。
+- また、詳細については、「[Azure AD 認証を使用して REST で Media Services API にアクセスする](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad)」の記事を確認してください。
 - 「[Configure Postman for Media Services REST API calls](media-rest-apis-with-postman.md)」 (Media Services REST API 呼び出しの Postman の構成) に説明されているように、**Postman** を構成してください。
 
 ## <a name="considerations"></a>考慮事項

@@ -8,12 +8,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: a46dbb95aaceb388d9a96eb066c6dda06c89b0a7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37f284f9a3dfe06e4d306b8d56a63d4b18d6cc2e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098299"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012099"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
 
@@ -97,17 +97,17 @@ Azure ExpressRoute がパブリック ピアリングで構成されている場
 
 Azure Backup Server は、次のクラスタ化されたアプリケーション内のデータを保護できます。
 
--   ファイル サーバー
+- ファイル サーバー
 
--   SQL Server
+- SQL Server
 
--   Hyper-V - スケールアウトされた MABS 保護エージェントを使用して Hyper-V クラスターを保護する場合、保護された Hyper-V ワークロードに二次的な保護を追加することはできません。
+- Hyper-V - スケールアウトされた MABS 保護エージェントを使用して Hyper-V クラスターを保護する場合、保護された Hyper-V ワークロードに二次的な保護を追加することはできません。
 
-    Windows Server 2008 R2 上で Hyper-V を実行する場合は、KB [975354](https://support.microsoft.com/en-us/kb/975354) で説明されている更新プログラムをインストールするようにしてください。
-    クラスター構成内の Windows Server 2008 R2 上で Hyper-V を実行する場合は、SP2 および KB [971394](https://support.microsoft.com/en-us/kb/971394) をインストールするようにしてください。
+    Windows Server 2008 R2 上で Hyper-V を実行する場合は、KB [975354](https://support.microsoft.com/kb/975354) で説明されている更新プログラムをインストールするようにしてください。
+    クラスター構成内の Windows Server 2008 R2 上で Hyper-V を実行する場合は、SP2 および KB [971394](https://support.microsoft.com/kb/971394) をインストールするようにしてください。
 
--   Exchange Server - Azure Backup Server は、サポートされている Exchange Server バージョンの非共有ディスク クラスター (クラスター連続レプリケーション) を保護することができるほか、ローカル連続レプリケーションのために構成された Exchange Server も保護できます。
+- Exchange Server - Azure Backup Server は、サポートされている Exchange Server バージョンの非共有ディスク クラスター (クラスター連続レプリケーション) を保護することができるほか、ローカル連続レプリケーションのために構成された Exchange Server も保護できます。
 
--   SQL Server - Azure Backup Server は、クラスター共有ボリューム (CSV) 上にホストされた SQL Server データベースのバックアップをサポートしていません。
+- SQL Server - Azure Backup Server は、クラスター共有ボリューム (CSV) 上にホストされた SQL Server データベースのバックアップをサポートしていません。
 
 Azure Backup Server は、MABS サーバーと同じドメイン内、および子または信頼できるドメイン内に配置されたクラスター ワークロードを保護できます。 信頼されていないドメインまたはワークグループ内のデータ ソースを保護する場合は、単一サーバーに対しては NTLM または証明書認証、クラスターに対しては証明書認証のみを使用します。

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0a28292ac95dca7b46d9f82c32b9881c18d74b87
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582905"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123533"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning の監視
 
@@ -38,7 +38,7 @@ Azure Monitor に関連したコストを把握するには、[使用量と推�
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Azure Machine Learning の監視データ
 
-Azure Machine Learning は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)に関する記事を参照してください。 Azure Machine Learning によって作成されるログおよびメトリックの詳細なリファレンスについては、「[Azure Machine Learning 監視データのリファレンス](monitor-resource-reference.md)」を参照してください。
+Azure Machine Learning は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)に関する記事を参照してください。 Azure Machine Learning によって作成されるログおよびメトリックの詳細なリファレンスについては、「[Azure Machine Learning 監視データのリファレンス](monitor-resource-reference.md)」を参照してください。
 
 ## <a name="analyzing-metric-data"></a>メトリック データの分析
 

@@ -1,25 +1,17 @@
 ---
 title: Premium Azure Cache for Redis のデータ永続化の構成方法
 description: Premium レベルの Azure Cache for Redis インスタンス用にデータの永続化を構成して管理する方法について説明します
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: yegu
-ms.openlocfilehash: de0b2e3ef7b0268540ef4896ade132a297ee88ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543517"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122744"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis のデータ永続化の構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Azure Cache for Redis インスタンスで永続化を構成する方法について説明します。

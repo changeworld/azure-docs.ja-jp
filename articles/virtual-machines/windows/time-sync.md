@@ -1,5 +1,5 @@
 ---
-title: Azure での Windows VM の時刻同期 | Microsoft Docs
+title: Azure での Windows VM の時刻同期
 description: Windows 仮想マシンの時刻同期。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 04b2eb70a9e304fb50f4f6cb94daf0a0dda86d63
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58824b13cfac264c051de6bea45d2dab3aae8fae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100258"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068122"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure での Windows VM の時刻同期
 

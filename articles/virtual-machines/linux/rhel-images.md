@@ -1,5 +1,5 @@
 ---
-title: Azure の Red Hat Enterprise Linux イメージ | Microsoft Docs
+title: Azure の Red Hat Enterprise Linux イメージ
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: eaabe9da20c22dd3e4d924887adcbc7081857e91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764300"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035108"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577070"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887766"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -234,7 +234,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 コンテナー化された環境でアプリが実行されている場合は、個々のサーバーを知るだけでは特定の問題を見つけられない可能性があり、クラウド ロール インスタンスの値をオーバーライドした方がよいシナリオです。
 
-クラウド ロール名プロパティをテレメトリ初期化子でオーバーライドする方法の詳細については、[ITelemetryInitializer プロパティの追加](api-filtering-sampling.md#add-properties-itelemetryinitializer)に関するページを参照してください。
+クラウド ロール名プロパティをテレメトリ初期化子でオーバーライドする方法の詳細については、[ITelemetryInitializer プロパティの追加](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)に関するページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

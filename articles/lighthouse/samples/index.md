@@ -1,18 +1,14 @@
 ---
 title: Azure Lighthouse のサンプルとテンプレート
 description: これらのサンプルと Azure Resource Manager テンプレートでは、Azure の委任されたリソース管理に顧客をオンボードする方法を示し、Azure Lighthouse のシナリオをサポートしています。
-author: JnHs
-manager: carmonm
-ms.service: lighthouse
 ms.topic: sample
 ms.date: 10/17/2019
-ms.author: jenhayes
-ms.openlocfilehash: 6d47534026b6fe815f9756a74ba3438dc67a8e02
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 20c1fc62c83202f97ed9cff68fd285280d94a321
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553685"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132153"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse サンプル
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec87146c721222702073eae067a259aa9848d0f7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573772"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048985"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -279,7 +279,7 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 
 ![図 4: 回帰のラベル付け](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) 図 4: 回帰のラベル付け
 
-回帰では、障害点を参照してラベル付けを行います。 故障前に資産が稼働していた期間がわからなければ、計算は不可能です。 したがって、二項分類とは対照的に、故障のデータがない資産はモデリングに使用できません。 この問題には、[生存率分析](https://en.wikipedia.org/wiki/Survival_analysis)と呼ばれる別の統計手法で対処します。 ただし、時間とともに頻繁に変化するデータを扱う PdM ユース ケースに対してこの手法を応用すると、潜在的な複雑さが発生する可能性があります。 生存率分析について詳しくは、[この資料](https://www.cscu.cornell.edu/news/statnews/stnews78.pdf)をご覧ください。
+回帰では、障害点を参照してラベル付けを行います。 故障前に資産が稼働していた期間がわからなければ、計算は不可能です。 したがって、二項分類とは対照的に、故障のデータがない資産はモデリングに使用できません。 この問題には、[生存率分析](https://en.wikipedia.org/wiki/Survival_analysis)と呼ばれる別の統計手法で対処します。 ただし、時間とともに頻繁に変化するデータを扱う PdM ユース ケースに対してこの手法を応用すると、潜在的な複雑さが発生する可能性があります。 生存率分析について詳しくは、[この資料](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf)をご覧ください。
 
 ### <a name="multi-class-classification-for-predictive-maintenance"></a>予測メンテナンスの多クラス分類
 多クラス分類の手法は、PdM ソリューションにおいて 2 つのシナリオで使用されます。

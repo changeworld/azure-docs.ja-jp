@@ -1,5 +1,5 @@
 ---
-title: Azure Instance Metadata Service | Microsoft Docs
+title: Azure Instance Metadata Service
 description: Linux VM のコンピューティング、ネットワーク、および今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8e45bfc605aa48f01a9392184755cb9f412fc615
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d18822cf7d4827016a55fa1b1a1408a003e933ab
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082989"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035973"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -343,7 +343,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 Data | Description | 導入されたバージョン
 -----|-------------|-----------------------
-attested | 「[構成証明済みデータ](#attested-data)」をご覧ください | 2018 年 10 月 1 日
+attested | 「[構成証明済みデータ](#attested-data)」をご覧ください | 2018-10-01
 identity | Azure リソースのマネージド ID。 「[アクセス トークンの取得](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください | 2018-02-01
 instance | 「[インスタンス API](#instance-api)」を参照してください | 2017-04-02
 scheduledevents | [スケジュールされたイベント](scheduled-events.md)に関する記事を参照してください。 | 2017-08-01
@@ -356,7 +356,7 @@ scheduledevents | [スケジュールされたイベント](scheduled-events.md)
 
 Data | Description | 導入されたバージョン
 -----|-------------|-----------------------
-azEnvironment | VM が実行されている Azure 環境 | 2018 年 10 月 1 日
+azEnvironment | VM が実行されている Azure 環境 | 2018-10-01
 customData | 「[カスタム データ](#custom-data)」を参照してください | 2019-02-01
 location | VM を実行中の Azure リージョン | 2017-04-02
 name | VM の名前 | 2017-04-02
@@ -366,7 +366,7 @@ placementGroupId | お使いの仮想マシン スケール セットの[配置�
 プラン | Azure Marketplace イメージの場合、[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には VM の名前、製品、発行元が含まれています | 2018-04-02
 platformUpdateDomain |  VM を実行中の[更新ドメイン](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM を実行中の[障害ドメイン](manage-availability.md) | 2017-04-02
-provider | VM のプロバイダー | 2018 年 10 月 1 日
+provider | VM のプロバイダー | 2018-10-01
 publicKeys | VM とパスに割り当てられた[公開キーのコレクション](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM イメージの発行元 | 2017-04-02
 resourceGroupName | お使いの仮想マシンの[リソース グループ](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01

@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949264"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889705"
 ---
 # <a name="routing-events-and-messages"></a>ルーティング イベントおよびメッセージ
 
@@ -31,7 +31,9 @@ Azure Digital Twins には、IoT イベントを他の Azure サービスやビ�
 
 [![Azure Digital Twins のイベントのルーティング](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
-Event Hubs へのルーティングでは、テレメトリ メッセージの送信順序が保持されます。 そのため、メッセージは最初の受信時と同じ順序でエンドポイントに到達します。 Event Grid と Service Bus では、エンドポイントがその発生順にイベントを取得することは保証されません。 ただし、イベント スキーマにはタイムスタンプが含まれており、これを使用してイベントがエンドポイントに到着した後に順序を特定できます。
+Event Hubs へのルーティングでは、テレメトリ メッセージの送信順序が保持されます。 そのため、メッセージは最初の受信時と同じ順序でエンドポイントに到達します。 
+
+Event Grid と Service Bus では、エンドポイントがその発生順にイベントを取得することは保証されません。 ただし、イベント スキーマにはタイムスタンプが含まれており、これを使用してイベントがエンドポイントに到着した後に順序を特定できます。
 
 ## <a name="route-implementation"></a>ルートの実装
 

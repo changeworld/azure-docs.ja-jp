@@ -1,5 +1,5 @@
 ---
-title: Windows 用の Azure Monitor 仮想マシン拡張機能 | Microsoft Docs
+title: Windows 用の Azure Monitor 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して、Windows 仮想マシンに Log Analytics エージェントをデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: akjosh
-ms.openlocfilehash: fe8bafcb63c1a27b905bdc339c07d30c9f0a5982
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c9fd62e57d131fb21e657c53914f9cd5349107ec
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168913"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073678"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Windows 用の Azure Monitor 仮想マシン拡張機能
 

@@ -1,6 +1,6 @@
 ---
 title: トレーニング データをインポートする
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にデータをインポートする方法。 サポートされているデータ型とデータ形式に関する説明
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 453efc1129ad9ef2a8b68a571c98e3f5620a671f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b59d965d991124f2bf8d0abc10c4afbe7a95292a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684788"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837569"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする
 
