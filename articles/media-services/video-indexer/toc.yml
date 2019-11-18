@@ -15,10 +15,6 @@
   items:
     - name: Video Indexer API の使用
       href: video-indexer-use-apis.md
-- name: サンプル
-  items:
-    - name: ライブ ストリーム分析
-      href: live-stream-analysis.md
 - name: 概念
   items:
     - name: 概要
@@ -29,6 +25,8 @@
       href: manage-multiple-tenants.md
     - name: 言語識別モデル
       href: language-identification-model.md
+    - name: ライブ ストリーム分析
+      href: live-stream-analysis.md
     - name: コンテンツ モデルのカスタマイズ
       items:
         - name: 概要
