@@ -3,19 +3,19 @@ title: Azure IoT Central のドキュメント
 summary: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 Azure IoT Central を使用すると、IoT ソリューションの初期セットアップを容易に行えるほか、一般的な IoT プロジェクトにおける管理の負担、運用コスト、オーバーヘッドを抑えることができます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
 metadata:
   title: Azure IoT Central のドキュメント
-  description: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 Azure IoT Central を使用すると、IoT ソリューションの初期セットアップを容易に行えるほか、一般的な IoT プロジェクトにおける管理の負担、運用コスト、オーバーヘッドを抑えることができます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
+  description: Azure IoT Central アプリケーションは、IoT ソリューションの作成を簡単にします。 Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
   services: iot-central
   ms.service: iot-central
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 78c6bd6a652a889e0fc212235d487b87f5869b1a
-  ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+  ms.openlocfilehash: 73e139b4ce6f3085107a59d39452fa79ee1dafd0
+  ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/13/2019
-  ms.locfileid: "74048966"
+  ms.lasthandoff: 11/15/2019
+  ms.locfileid: "74123389"
 landingContent:
 - title: Azure IoT Central について
   linkLists:
