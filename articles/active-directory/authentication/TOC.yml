@@ -100,7 +100,7 @@
             - name: NPS 拡張機能の詳細な構成
               href: howto-mfa-nps-extension-advanced.md
             - name: Azure VPN と Azure MFA
-              href: ../../vpn-gateway/vpn-gateway-radiuis-mfa-nsp.md
+              href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: リモート デスクトップ ゲートウェイ
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
