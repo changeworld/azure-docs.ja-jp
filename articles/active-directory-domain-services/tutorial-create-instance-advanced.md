@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2ed488f5f4380c44772d63d208e2c7a68934aca8
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7bafcb1508cdb01c4fe27a9d02db63c4f00efd74
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757648"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172571"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>チュートリアル:詳細構成オプションを使用して Azure Active Directory Domain Services インスタンスを作成、構成する
 
@@ -88,7 +88,11 @@ DNS 名には、次の制限も適用されます。
 Azure portal の *[基本]* ウィンドウのフィールドに必要事項を入力して Azure AD DS インスタンスを作成します。
 
 1. 前述のポイントを考慮しながらマネージド ドメインの **DNS ドメイン名**を入力します。
-1. マネージド ドメインを作成する Azure の**場所**を選択します。
+1. マネージド ドメインを作成する Azure の**場所**を選択します。 Availability Zones がサポートされているリージョンを選択すると、Azure AD DS リソースが、冗長性強化のために複数のゾーンに分散されます。
+
+    Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。
+
+    Azure AD DS を複数のゾーンに分散するために、ご自身で構成するものは何もありません。 Azure プラットフォームでは、ゾーンへのリソース分散が自動的に処理されます。 詳細情報および利用可能なリージョンについては、「[Azure の Availability Zones の概要][availability-zones]」を参照してください。
 
     ![Azure AD Domain Services インスタンスの基本的な設定を構成する](./media/tutorial-create-instance-advanced/basics-window.png)
 
@@ -167,7 +171,7 @@ Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーと�
 
     ![Domain Services の状態 (プロビジョニングの正常完了後)](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
 
-プロビジョニング プロセスの間に、Azure AD DS は、お使いのディレクトリに *Domain Controller Services* と *AzureActiveDirectoryDomainControllerServices* というエンタープライズ アプリケーションを作成します。 これらのエンタープライズ アプリケーションは、マネージド ドメインのサービスを提供するために使用されます。 どのような場合にも、これらのアプリケーションが削除されないことが不可欠です。
+マネージド ドメインは、Azure AD テナントに関連付けられています。 プロビジョニング プロセスの間に、*Domain Controller Services* と *AzureActiveDirectoryDomainControllerServices* という 2 つのエンタープライズ アプリケーションが、Azure AD DS によって Azure AD テナントに作成されます。 これらのエンタープライズ アプリケーションは、マネージド ドメインのサービスを提供するために使用されます。 これらのアプリケーションは削除しないでください。
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Azure 仮想ネットワークの DNS 設定を更新する
 
@@ -238,6 +242,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

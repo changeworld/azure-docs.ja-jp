@@ -137,8 +137,6 @@
       href: functions-networking-options.md
     - name: IP アドレス
       href: ip-addresses.md
-    - name: Kubernetes での Functions
-      href: functions-kubernetes-keda.md
 - name: ハウツー ガイド
   items:
     - name: 開発
@@ -228,6 +226,9 @@
           href: deployment-zip-push.md
         - name: パッケージから実行
           href: run-functions-from-deployment-package.md
+        - name: Kubernetes での Functions
+          href: functions-kubernetes-keda.md
+          displayName: keda
         - name: リソースのデプロイの自動化
           href: functions-infrastructure-as-code.md
         - name: オンプレミスの関数

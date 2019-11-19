@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274106"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821385"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>AzCopy を使用して Amazon S3 バケットからデータをコピーする
 
@@ -52,6 +52,9 @@ AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/res
 
 > [!IMPORTANT]
 > 現在、この機能はプレビュー段階にあります。 コピー操作後に S3 バケットからデータを削除する場合は、データを削除する前に、データがストレージ アカウントに適切にコピーされたことを確認します。
+
+> [!TIP]
+> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ### <a name="copy-an-object"></a>オブジェクトをコピーする
 
