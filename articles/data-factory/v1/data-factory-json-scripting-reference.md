@@ -3326,8 +3326,8 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 
 | シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath |
 | --- | --- | --- |
-| Data Management Gateway コンピューター上のローカル フォルダー: <br/><br/>次に例を示します。D:\\\* または D:\folder\subfolder\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |\\\\またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
-| リモート共有フォルダー: <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
+| Data Management Gateway コンピューター上のローカル フォルダー: <br/><br/>次に例を示します。D:\\\* または D:\folder\subfolder\\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |\\\\またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
+| リモート共有フォルダー: <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>例:プレーンテキストでのユーザー名とパスワードの使用

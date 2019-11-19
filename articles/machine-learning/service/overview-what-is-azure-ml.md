@@ -99,7 +99,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 Azure Machine Learning の基本的な使い方については、「[次の手順](#next-steps)」を参照してください。
 
-## <a name="sku">Basic Edition と Enterprise Edition</a>
+## <a name="sku"></a>Basic Edition と Enterprise Edition
 
 Azure Machine Learning には、機械学習のニーズに合わせて調整された 2 つのエディションがあります。
 + Basic (一般公開)

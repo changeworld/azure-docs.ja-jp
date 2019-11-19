@@ -685,7 +685,7 @@ ms.locfileid: "73748364"
 - **原因**:HDInsight のクラスターまたはサービスに問題があります。
 
 
-- **推奨事項**:このエラーは、実行中のジョブのステータスを取得しようとして ADF が HDInsight クラスターから応答を取得しないときに発生します。 クラスター自体の問題で発生するか、HDInsight サービスが停止した可能性があります。 https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide で HDInsight のトラブルシューティング ドキュメントを参照するか、サポートにお問い合わせください。
+- **推奨事項**:このエラーは、実行中のジョブのステータスを取得しようとして ADF が HDInsight クラスターから応答を取得しないときに発生します。 クラスター自体の問題で発生するか、HDInsight サービスが停止した可能性があります。 [https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide](https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide ) で HDInsight のトラブルシューティング ドキュメントを参照するか、サポートにお問い合わせください。
                 
 
 
