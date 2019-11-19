@@ -1,5 +1,5 @@
 ---
-title: エンリッチメント パイプライン内の画像からテキストを処理して抽出する
+title: 画像からテキストを抽出する
 titleSuffix: Azure Cognitive Search
 description: Azure コグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出します。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787737"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113843"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
 

@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828386"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083185"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>フォロワー データベースを使用して Azure Data Explorer にデータベースをアタッチする
 
@@ -242,7 +242,7 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="manage-principals"></a>プリンシパルの管理
 
-データベースをアタッチするときは、**既定のプリンシパル変更の種類**を指定します。 既定では、[承認されたプリンシパル](/azure/kusto/management/access-control/index.md#authorization)のリーダー データベース コレクションが保持されます。
+データベースをアタッチするときは、**既定のプリンシパル変更の種類**を指定します。 既定では、[承認されたプリンシパル](/azure/kusto/management/access-control/index#authorization)のリーダー データベース コレクションが保持されます。
 
 |**種類** |**説明**  |
 |---------|---------|
@@ -250,7 +250,7 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 |**Replace**   |    元のデータベースから継承されるプリンシパルはありません。 アタッチされたデータベース用に新しいプリンシパルを作成する必要があります。 プリンシパルが継承されないようにするには、少なくとも 1 つのプリンシパルを追加する必要があります。     |
 |**なし**   |   アタッチされたデータベース プリンシパルには、元のデータベースのプリンシパルのみが含まれます。追加のプリンシパルはありません。      |
 
-管理コマンドを使用して承認されたプリンシパルを構成する方法について詳しくは、「[フォロワー クラスターを管理するための管理コマンド](/azure/kusto/management/cluster-follower.md)」をご覧ください。
+管理コマンドを使用して承認されたプリンシパルを構成する方法について詳しくは、「[フォロワー クラスターを管理するための管理コマンド](/azure/kusto/management/cluster-follower)」をご覧ください。
 
 ### <a name="manage-permissions"></a>アクセス許可の管理
 
@@ -258,7 +258,7 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="configure-caching-policy"></a>キャッシュ ポリシーの構成
 
-フォロワー データベースの管理者は、ホスティング クラスター上でアタッチされたデータベースまたはその任意のテーブルの[キャッシュ ポリシー](/azure/kusto/management/cache-policy) を変更できます。 既定では、リーダー データベースのデータベース コレクションとテーブル レベルのキャッシュ ポリシーが保持されます。 たとえば、リーダー データベースでは月次レポートを実行するために 30 日間のキャッシュ ポリシーを設定し、フォロワー データベースでは、トラブルシューティング用に最新のデータのみのクエリを実行するため、3 日間のキャッシュ ポリシーを設定することができます。 管理コマンドを使用してフォロワー データベースまたはテーブルのキャッシュ ポリシーを構成する方法について詳しくは、「[フォロワー クラスターを管理するための管理コマンド](/azure/kusto/management/cluster-follower.md)」をご覧ください。
+フォロワー データベースの管理者は、ホスティング クラスター上でアタッチされたデータベースまたはその任意のテーブルの[キャッシュ ポリシー](/azure/kusto/management/cache-policy) を変更できます。 既定では、リーダー データベースのデータベース コレクションとテーブル レベルのキャッシュ ポリシーが保持されます。 たとえば、リーダー データベースでは月次レポートを実行するために 30 日間のキャッシュ ポリシーを設定し、フォロワー データベースでは、トラブルシューティング用に最新のデータのみのクエリを実行するため、3 日間のキャッシュ ポリシーを設定することができます。 管理コマンドを使用してフォロワー データベースまたはテーブルのキャッシュ ポリシーを構成する方法について詳しくは、「[フォロワー クラスターを管理するための管理コマンド](/azure/kusto/management/cluster-follower)」をご覧ください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -270,4 +270,4 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ## <a name="next-steps"></a>次の手順
 
-* フォロワー クラスター構成の詳細については、「[フォロワー クラスターを管理するための管理コマンド](/azure/kusto/management/cluster-follower.md)」をご覧ください。
+* フォロワー クラスター構成の詳細については、「[フォロワー クラスターを管理するための管理コマンド](/azure/kusto/management/cluster-follower)」をご覧ください。

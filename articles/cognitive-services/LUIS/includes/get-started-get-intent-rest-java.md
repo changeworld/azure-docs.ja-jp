@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: afa2dc950efe4c03b41afbd6090d9bf29ac5a798
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cac3ee99598f8bcb29bd15c60063159b51f71923
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499701"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125536"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -183,4 +183,4 @@ Java を使用して、予測エンドポイント GET [API](https://aka.ms/luis
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Java を使った発話の追加とトレーニング](../luis-get-started-java-add-utterance.md)
+> [Java を使った発話の追加とトレーニング](../get-started-get-model-rest-apis.md)

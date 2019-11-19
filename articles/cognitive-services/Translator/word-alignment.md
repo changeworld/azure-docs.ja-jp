@@ -1,7 +1,7 @@
 ---
 title: 単語アラインメント - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Translator Text API から単語アラインメント情報を受信します。
+description: アラインメント情報を受信するには、Translate メソッドを使用し、省略可能な includeAlignment パラメーターを含めます。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5818d3f4d2ebed7cbcd46aadf538640914d3b7d4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: dd4ff1e39c062910f4627973c801dc3c51f345e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594781"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837228"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>単語アラインメント情報を受信する方法
 

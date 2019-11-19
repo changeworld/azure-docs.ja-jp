@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 03783424544588a4bc147b232d41b103fb2e5b3e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827560"
+ms.locfileid: "73838077"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -208,7 +208,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 たとえば、ほとんどのリソース名は数字で始めることができませんが、一意文字列関数は数字で始まる文字列を返す可能性があります。 そのため、一意の文字列出力をそのまま使用すると、デプロイは失敗します。 
 
-リソースの名前付け規則と制限に関する追加情報については、[こちらの記事](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions)を参照してください。
+リソースの名前付け規則と制限に関する追加情報については、[こちらの記事](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)を参照してください。
 
 ### <a name="deployment-location"></a>デプロイの場所
 

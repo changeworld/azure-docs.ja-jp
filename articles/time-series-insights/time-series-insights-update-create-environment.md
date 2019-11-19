@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Time Series Insights プレビューの環境を設定する | Microsoft Docs
-description: Azure Time Series Insights プレビューで環境を設定する方法について説明します。
+title: チュートリアル:Azure Time Series Insights プレビューの環境を設定する
+description: チュートリアル:Azure Time Series Insights プレビューで環境を設定する方法について説明します。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 11/06/2019
+ms.date: 11/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25571dbd87e4d01645a3a7a991588a3a943b3e4d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 49960ae91688b97a9d38a65e1b17fd277508b996
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719461"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114573"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 

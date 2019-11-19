@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ac73b549546c353dce4c40005b7742577e03d26c
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6812f99d8433ef318eca37eb2615d43f4749e944
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176993"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886185"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service アプリを構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "72176993"
 この記事では、Azure Active Directory (Azure AD) を認証プロバイダーとして使用するように Azure App Service を構成する方法を示します。
 
 > [!NOTE]
-> 現時点では、Azure App Service と Azure Functions は Azure AD v1.0 でのみサポートされています。 Microsoft Authentication Libraries (MSAL) が含まれる [Microsoft ID プラットフォーム v2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-overview) ではサポートされていません。
+> 現時点では、Azure App Service と Azure Functions は Azure AD v1.0 でのみサポートされています。 Microsoft Authentication Libraries (MSAL) が含まれる [Microsoft ID プラットフォーム v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) ではサポートされていません。
 
 アプリと認証を設定するときは、次のベスト プラクティスに従ってください。
 
@@ -39,7 +39,7 @@ ms.locfileid: "72176993"
 ## <a name="express"> </a>簡単設定を構成する
 
 1. [Azure portal] で App Service アプリに移動します。
-1. 左側のウィンドウで **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
+1. 左側のウィンドウで **[設定]**  > 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
 1. **[Azure Active Directory]** を選択し、 **[管理モード]** の **[簡易]** を選択します。
 1. **[OK]** を選択して、Azure Active Directory に App Service アプリを登録します。 新しいアプリ登録が作成されます。
 
