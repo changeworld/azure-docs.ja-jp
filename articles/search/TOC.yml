@@ -223,8 +223,6 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: インデクサーの監視
           href: search-howto-monitor-indexers.md
-        - name: 一般的な問題のトラブルシューティング
-          href: search-indexer-troubleshooting.md
     - name: AI によるエンリッチ
       items:
         - name: Cognitive Services リソースをアタッチする
@@ -249,7 +247,7 @@
               href: cognitive-search-create-custom-skill-example.md
             - name: 例 - コンテナー
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
-        - name: トラブルシューティングのヒント
+        - name: 設計のヒント
           href: cognitive-search-concept-troubleshooting.md
         - name: ドキュメント リンク
           href: cognitive-search-resources-documentation.md
@@ -261,8 +259,6 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI を使用した接続
               href: knowledge-store-connect-power-bi.md
-        - name: エンリッチメントに関する問題のトラブルシューティング
-          href: cognitive-search-common-errors-warnings.md
     - name: ドキュメントにクエリを実行する
       items:
         - name: クエリの種類と構成
@@ -307,6 +303,12 @@
           href: search-manage-powershell.md
         - name: Monitor アクティビティとログ記録
           href: search-monitor-usage.md
+    - name: トラブルシューティング
+      items:
+        - name: インデクサーの問題
+          href: search-indexer-troubleshooting.md
+        - name: インデクサーのエラーと警告
+          href: cognitive-search-common-errors-warnings.md
 - name: リファレンス
   items:
     - name: Azure CLI

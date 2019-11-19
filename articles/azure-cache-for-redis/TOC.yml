@@ -7,17 +7,17 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: ASP.NET アプリを作成する
+    - name: ASP.NET アプリ
       href: cache-web-app-howto.md
-    - name: .NET アプリを作成する
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: .NET Core アプリを作成する
+    - name: .NET Core アプリ
       href: cache-dotnet-core-quickstart.md
-    - name: Node.js アプリを作成する
-      href: cache-nodejs-get-started.md
-    - name: Java アプリを作成する
+    - name: .NET アプリ
+      href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Java アプリ
       href: cache-java-get-started.md
-    - name: Python アプリを作成する
+    - name: Node.js アプリ
+      href: cache-nodejs-get-started.md
+    - name: Python アプリ
       href: cache-python-get-started.md
 - name: チュートリアル
   items:
@@ -33,10 +33,10 @@
       href: cli-samples.md
 - name: 概念
   items:
-    - name: ベスト プラクティス
-      href: cache-best-practices.md
     - name: フェールオーバーと修正プログラムの適用
       href: cache-failover.md
+    - name: ベスト プラクティス
+      href: cache-best-practices.md
     - name: キャッシュに関するアーキテクチャのベスト プラクティス
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: ハウツー ガイド
@@ -45,12 +45,14 @@
       items:
         - name: キャッシュ レベルを選択する
           href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+        - name: クラスタリングによってキャッシュを分散する
+          href: cache-how-to-premium-clustering.md
         - name: Redis データ永続化でキャッシュを保持する
           href: cache-how-to-premium-persistence.md
         - name: 仮想ネットワークでキャッシュをセキュリティ保護する
           href: cache-how-to-premium-vnet.md
-        - name: クラスタリングによってキャッシュを分散する
-          href: cache-how-to-premium-clustering.md
+        - name: geo レプリケーションの設定
+          href: cache-how-to-geo-replication.md
         - name: Managed Cache Service から移行する
           href: cache-migrate-to-redis.md
     - name: 自動化
@@ -79,8 +81,6 @@
       items:
         - name: Azure Portal での構成
           href: cache-configure.md
-        - name: geo レプリケーションの構成
-          href: cache-how-to-geo-replication.md
         - name: データをインポート/エクスポートする
           href: cache-how-to-import-export-data.md
         - name: 再起動

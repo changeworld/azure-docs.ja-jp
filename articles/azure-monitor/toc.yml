@@ -806,10 +806,10 @@
                   href: insights/container-insights-hybrid-setup.md
                 - name: リージョンのマッピング
                   href: insights/container-insights-region-mapping.md
-            - name: 分析
+            - name: パフォーマンスの監視
               href: insights/container-insights-analyze.md
-            - name: 監視を無効にする
-              href: insights/container-insights-optout.md
+            - name: 正常性の監視
+              href: insights/container-insights-health.md
             - name: ライブ データを表示する
               items:
                 - name: ライブ データ (プレビュー) の概要
@@ -832,6 +832,10 @@
               href: insights/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: insights/container-insights-update-metrics.md
+            - name: 正常性の監視の構成
+              href: insights/container-insights-health-monitors-config.md
+            - name: 監視を無効にする
+              href: insights/container-insights-optout.md
             - name: トラブルシューティング
               href: insights/container-insights-troubleshoot.md
         - name: Docker および Windows コンテナーの監視
@@ -1167,7 +1171,7 @@
               href: platform/autoscale-overview.md
             - name: チュートリアル
               href: platform/autoscale-get-started.md
-            - name: 設定
+            - name: 構成設定
               href: platform/autoscale-understanding-settings.md
             - name: ベスト プラクティス
               href: platform/autoscale-best-practices.md
@@ -1183,6 +1187,10 @@
               href: platform/autoscale-virtual-machine-scale-sets.md
             - name: Webhook と電子メール通知の使用
               href: platform/autoscale-webhook-email.md
+            - name: トラブルシューティング
+              href: platform/autoscale-troubleshoot.md
+            - name: リソース ログ スキーマ
+              href: platform/autoscale-resource-log-schema.md
         - name: PowerShell
           items:
             - name: PowerShell による管理

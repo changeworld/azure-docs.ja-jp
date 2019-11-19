@@ -241,7 +241,9 @@
                   href: migrate-android-adal-msal.md
                 - name: MSAL.iOS と MacOS への移行
                   href: migrate-objc-adal-msal.md
-                - name: MSAL Java への移行
+                - name: MSAL Python への移行
+                  href: migrate-python-adal-msal.md
+                - name: MSAL for Java への移行
                   href: migrate-adal-msal-java.md
                 - name: ブローカーを使用して Xamarin アプリを ADAL.NET から MSAL.NET に移行する
                   href: msal-net-migration-ios-broker.md
@@ -452,7 +454,11 @@
                   href: request-custom-claims.md
                 - name: リダイレクト URI の構成
                   href: redirect-uris-ios.md
-            - name: MSAL Java
+            - name: MSAL for Python
+              items:
+                - name: トークン キャッシュのシリアル化
+                  href: msal-python-token-cache-serialization.md
+            - name: MSAL for Java
               items:
                 - name: トークン キャッシュのシリアル化
                   href: msal-java-token-cache-serialization.md

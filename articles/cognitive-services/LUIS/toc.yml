@@ -171,6 +171,11 @@
           displayName: 'roles, import'
         - name: 事前構築済みのモデルの使用
           href: howto-add-prebuilt-models.md
+        - name: 発話内のエンティティにラベルを付ける
+          href: label-entity-example-utterance.md
+        - name: 記述子の追加
+          displayName: 'synonym, interchange, phrase list, descriptor'
+          href: luis-how-to-add-features.md
         - name: REST API を使用
           items:
             - name: Node.js を使ってプログラムによりアプリをビルドする
@@ -188,9 +193,6 @@
         - name: ダッシュボードの利用
           displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
           href: luis-how-to-use-dashboard.md
-        - name: フレーズ リストの追加
-          displayName: 'synonym, interchange'
-          href: luis-how-to-add-features.md
         - name: エンドポイントの発言の確認
           displayName: active learning
           href: luis-how-to-review-endpoint-utterances.md

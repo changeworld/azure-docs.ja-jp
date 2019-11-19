@@ -361,8 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: 管理
           items:
-            - name: 顧客が所有するサイト間の DR の廃止
-              href: site-to-site-deprecation.md
+            - name: Site Recovery のデータ暗号化の廃止
+              href: encryption-feature-deprecation.md
             - name: Site Recovery で構成されている Windows サーバーをアップグレードする
               href: upgrade-2012R2-to-2016.md
             - name: サーバーの削除と保護の無効化
