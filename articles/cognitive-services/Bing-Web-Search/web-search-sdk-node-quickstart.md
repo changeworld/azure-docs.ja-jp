@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 96848e30c13d226978a6be1a1786e9ed2b4ab7c2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79f0630c65aa438ac5d831b03842cc74b609cd3b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892865"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132745"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>クイック スタート:Node.js 用の Bing Web Search SDK を使用する
 
@@ -111,4 +111,4 @@ webSearchApiClient.web.search('seahawks').then((result) => {
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Node SDK リファレンス](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch/)
+* [Azure Node SDK リファレンス](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)

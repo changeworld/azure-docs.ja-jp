@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e39f83b2ed715afbfff69770c151cfc4d527105d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808424"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132260"
 ---
 # <a name="windows-remote-management-over-https"></a>HTTPS 経由での Windows リモート管理
 
-このセクションでは、PowerShell を使用してリモートで管理およびデプロイできるように、Azure でホストされる Windows ベースの VM を構成する方法について説明します。  PowerShell のリモート操作を有効にするには、ターゲット VM が Windows リモート管理 (WinRM) HTTPS エンドポイントを公開する必要があります。  PowerShell のリモート操作について詳しくは、「[Running Remote Commands](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6)」(リモート コマンドの実行) をご覧ください。  WinRM について詳しくは、「[Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal)」(Windows リモート管理) をご覧ください。
+このセクションでは、PowerShell を使用してリモートで管理およびデプロイできるように、Azure でホストされる Windows ベースの VM を構成する方法について説明します。  PowerShell のリモート操作を有効にするには、ターゲット VM が Windows リモート管理 (WinRM) HTTPS エンドポイントを公開する必要があります。  PowerShell のリモート操作について詳しくは、「[Running Remote Commands](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands)」(リモート コマンドの実行) をご覧ください。  WinRM について詳しくは、「[Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal)」(Windows リモート管理) をご覧ください。
 
-Azure の "クラシック" アプローチ (Azure Service Manager Portal または非推奨の [Azure Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))) のいずれかを使用して VM を作成した場合は、WinRM エンドポイントが自動的に構成されます。  一方、次の "最新の" Azure アプローチのいずれかを使用して VM を作成した場合は、VM は HTTPS 経由の WinRM 用に構成 "*されません*"。  
+Azure の "クラシック" アプローチ (Azure Service Manager Portal または非推奨の [Azure Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))) のいずれかを使用して VM を作成した場合は、WinRM エンドポイントが自動的に構成されます。  一方、次の "最新の" Azure アプローチのいずれかを使用して VM を作成した場合は、VM は HTTPS 経由の WinRM 用に構成 "*されません*"。
 
 - [Azure portal](https://portal.azure.com/) を使用。通常は「[Azure と互換性のある VHD の作成](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)」セクションで説明されているように承認済みのベースから
 - [Azure Resource Manager テンプレートを使用](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
@@ -34,9 +34,9 @@ Azure の "クラシック" アプローチ (Azure Service Manager Portal また
 
 Windows ベースの VM 用の WinRM エンドポイントは、開発の 2 つの異なるステージの間に構成できます。
 
-- 作成の間 - 既存の VHD に VM をデプロイするとき。  これは、新しいオファーに対して推奨されるアプローチです。  このアプローチでは、提供された Azure Resource Manager テンプレートを使用し、カスタマイズした PowerShell スクリプトを実行して、Azure 証明書を作成する必要があります。 
-- デプロイの後 - Azure でホストされている既存の VM で。  既に Azure に VM ソリューションをデプロイしてあり、それに対して Windows リモート管理を有効にする必要がある場合は、このアプローチを使用します。  このアプローチでは、Azure portal で手動による変更を行い、ターゲット VM でスクリプトを実行する必要があります。 
+- 作成の間 - 既存の VHD に VM をデプロイするとき。  これは、新しいオファーに対して推奨されるアプローチです。  このアプローチでは、提供された Azure Resource Manager テンプレートを使用し、カスタマイズした PowerShell スクリプトを実行して、Azure 証明書を作成する必要があります。
+- デプロイの後 - Azure でホストされている既存の VM で。  既に Azure に VM ソリューションをデプロイしてあり、それに対して Windows リモート管理を有効にする必要がある場合は、このアプローチを使用します。  このアプローチでは、Azure portal で手動による変更を行い、ターゲット VM でスクリプトを実行する必要があります。
 
 
 ## <a name="next-steps"></a>次の手順
-新しい VM を作成する場合は、[VHD からの VM のデプロイ](./cpp-deploy-vm-vhd.md)の間に WinRM を有効にすることができます。  それ以外の場合は、既存の VM で WinRM を有効にできます  
+新しい VM を作成する場合は、[VHD からの VM のデプロイ](./cpp-deploy-vm-vhd.md)の間に WinRM を有効にすることができます。  それ以外の場合は、既存の VM で WinRM を有効にできます

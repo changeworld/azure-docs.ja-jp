@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3c451d1bd77fa1cec85a9d42b5d4d3d819b2d19a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: e61949dc739230382fab4cfaad53a6cb449de79a
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210353"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091615"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
@@ -37,6 +37,7 @@ Recovery Services コンテナーが Azure の Azure Resource Manager モデル�
 - **IaaS VM のインスタント リストア**:Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。 IaaS VM のインスタント リストアは、Windows VM と Linux VM の両方で利用できます。 [詳細情報](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>ポータルでの Recovery Services コンテナーの管理
+
 Backup サービスは他の Azure に統合されるため、Recovery Services コンテナーは Azure portal で簡単に作成および管理できます。 この統合は、"*ターゲット サービスのコンテキストで*" Recovery Services コンテナーを作成または管理できることを意味します。 たとえば、VM の復旧ポイントを表示するには、VM を選択し、[操作] メニューで **[バックアップ]** をクリックします。
 
 ![Recovery Services コンテナーの VM の詳細](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
@@ -55,25 +56,28 @@ VM にバックアップが構成されていない場合、バックアップ�
 > Recovery Services コンテナーを削除した場合、24 時間以内に同じ名前の Recovery Services コンテナーを作成することはできません。 別のリソース名を使用するか、別のリソース グループを選択するか、24 時間後にもう一度再試行してください。
 
 ### <a name="back-up-data"></a>データのバックアップ
+
 - [Azure VM のバックアップ](backup-azure-vms-first-look-arm.md)
 - [Windows Server または Windows ワークステーションのバックアップ](backup-try-azure-backup-in-10-mins.md)
 - [Azure への DPM ワークロードのバックアップ](backup-azure-dpm-introduction.md)
 - [Azure Backup Server を使用してワークロードをバックアップするための準備](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>復旧ポイントの管理
+
 - [Azure VM バックアップの管理](backup-azure-manage-vms.md)
 - [ファイルとフォルダーの管理](backup-azure-manage-windows-server.md)
 
 ### <a name="restore-data-from-the-vault"></a>コンテナーからのデータの復元
+
 - [Azure VM からの個々のファイルの回復](backup-azure-restore-files-from-vm.md)
 - [Azure VM の復元](backup-azure-arm-restore-vms.md)
 
 ### <a name="secure-the-vault"></a>コンテナーのセキュリティ保護
+
 - [Recovery Services コンテナー内のクラウド バックアップ データのセキュリティ保護](backup-azure-security-feature.md)
 
-
-
 ## <a name="next-steps"></a>次の手順
+
 次の記事を参照してください。</br>
 [IaaS VM のバックアップ](backup-azure-arm-vms-prepare.md)</br>
 [Azure Backup Server のバックアップ](backup-azure-microsoft-azure-backup.md)</br>

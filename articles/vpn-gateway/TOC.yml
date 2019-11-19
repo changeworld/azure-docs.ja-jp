@@ -133,11 +133,13 @@
             - name: VPN クライアント構成ファイルの作成とインストール
               href: point-to-site-vpn-client-configuration-radius.md
             - name: P2S VPN RADIUS 認証と NPS サーバーの統合
-              href: vpn-gateway-radiuis-mfa-nsp.md
+              href: vpn-gateway-radius-mfa-nsp.md
         - name: Azure AD 認証
           items:
             - name: テナントの構成
               href: openvpn-azure-ad-tenant.md
+            - name: Multi-Factor Authentication (MFA) の構成
+              href: openvpn-azure-ad-mfa.md
             - name: VPN クライアントの構成
               href: openvpn-azure-ad-client.md
         - name: OpenVPN

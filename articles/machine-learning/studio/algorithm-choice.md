@@ -1,6 +1,6 @@
 ---
 title: アルゴリズムの選択方法
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning Studio (クラシック) のアルゴリズムを選択する方法。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: e8d296f8752e06e6e47c349be9c900b9d0489ec5
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c69b4c15397dc13f36a707f932c2464a4ff94ca7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619760"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838466"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) のアルゴリズムの選択方法
 

@@ -672,6 +672,8 @@
               href: mongodb-readpreference.md
             - name: 有効期限 - MongoDB
               href: mongodb-time-to-live.md
+            - name: ストリームを変更する
+              href: mongodb-change-streams.md
             - name: データのインデックス作成を管理する
               href: mongodb-indexing.md
             - name: Spring Data の格納と管理

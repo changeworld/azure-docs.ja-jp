@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Bing Visual Search SDK、Python
 titleSuffix: Azure Cognitive Services
-description: Visual Search SDK の Python コンソール アプリケーションの設定。
+description: このクイック スタートを使用すると、Python SDK を使用して、Bing Visual Search サービスから画像に関する分析情報を取得することができます。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: eb0befe3b6f131559a86c121251a4b6194abc49c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4d5679e75f0feb4fd502abc92fc7c1de16b53bc8
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204013"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111571"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>クイック スタート:Bing Visual Search SDK for Python を使用して画像に関する分析情報を取得する
 

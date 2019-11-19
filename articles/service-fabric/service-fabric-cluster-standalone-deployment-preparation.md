@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: dad37af030c456f9ba2cd814fa92a7811dce6aa1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 8b9f659098e563a3dc0692530ad798a5c763551f
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130323"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133405"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備
 
@@ -67,7 +67,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 * すべてのマシンのセキュリティで保護された 1 つ以上のネットワークへの接続
 * Windows Server OS がインストールされている (有効なバージョン: 2012 R2、2016、1709、1803)。 Service Fabric バージョン 6.4.654.9590 以降では、Server 2019 と 1809 もサポートされています。
 * [.NET Framework 4.5.1 以降](https://www.microsoft.com/download/details.aspx?id=40773) (フル インストール)
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
+* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * [RemoteRegistry サービス](https://technet.microsoft.com/library/cc754820)がすべてのマシンで実行されている必要があります。
 * Service Fabric のインストール ドライブは、NTFS ファイル システムでなければなりません
 
@@ -99,7 +99,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 1. クラスターを作成するユーザーには、クラスター構成ファイルにノードとして記載されているすべてのマシンに対する管理者レベルのセキュリティ特権が必要です。
 2. クラスターの作成元になるマシン、および各クラスター ノード マシンでは次の操作を行う必要があります。
    * Service Fabric SDK をアンインストールします。
-   * Service Fabric ランタイムをアンインストールにします。 
+   * Service Fabric ランタイムをアンインストールにします。
    * Windows Firewall サービス (mpssvc) を有効にします。
    * リモート レジストリ サービス (リモート レジストリ) を有効にします。
    * ファイル共有 (SMB) を有効化にします。
@@ -137,7 +137,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 | FileStoreService.exe |
 
 ## <a name="validate-environment-using-testconfiguration-script"></a>TestConfiguration スクリプトを使用して環境を検証する
-スタンドアロンのパッケージには、TestConfiguration.ps1 スクリプトが含まれています。 このスクリプトは、上記の条件の一部を検証を検証するベスト プラクティス アナライザーとして用いるものであり、サニティ チェックとして使用して指定の環境にクラスターをデプロイできるかどうかを検証する必要があります。 問題が発生した場合は、「[環境のセットアップ](service-fabric-cluster-standalone-deployment-preparation.md)」のリストを参照してトラブルシューティングを行ってください。 
+スタンドアロンのパッケージには、TestConfiguration.ps1 スクリプトが含まれています。 このスクリプトは、上記の条件の一部を検証を検証するベスト プラクティス アナライザーとして用いるものであり、サニティ チェックとして使用して指定の環境にクラスターをデプロイできるかどうかを検証する必要があります。 問題が発生した場合は、「[環境のセットアップ](service-fabric-cluster-standalone-deployment-preparation.md)」のリストを参照してトラブルシューティングを行ってください。
 
 このスクリプトは、クラスター構成ファイルにノードとして列挙されているすべてのマシンに管理者アクセスできれば、どのマシンでも実行できます。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。
 
@@ -160,12 +160,12 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-現在、この構成テスト モジュールではセキュリティ構成は検証されないため、別個に検証を行う必要があります。  
+現在、この構成テスト モジュールではセキュリティ構成は検証されないため、別個に検証を行う必要があります。
 
 > [!NOTE]
-> このモジュールの信頼性を高めるために絶えず改善を行っていますので、不備や、現時点では TestConfiguration により検出されないと思われるケースがある場合には、[サポート チャネル](https://docs.microsoft.com/azure/service-fabric/service-fabric-support) からお知らせください。   
-> 
-> 
+> このモジュールの信頼性を高めるために絶えず改善を行っていますので、不備や、現時点では TestConfiguration により検出されないと思われるケースがある場合には、[サポート チャネル](https://docs.microsoft.com/azure/service-fabric/service-fabric-support) からお知らせください。
+>
+>
 
 ## <a name="next-steps"></a>次の手順
 * [Windows Server で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)

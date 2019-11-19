@@ -1,7 +1,7 @@
 ---
 title: Bing Autosuggest とは
 titleSuffix: Azure Cognitive Services
-description: Bing Autosuggest API の使用方法を説明します。
+description: Bing Autosuggest API は、検索ボックス内の部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 13606fa5a58106575648a39e5074507f5d3bf471
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405370"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072873"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Autosuggest とは
 

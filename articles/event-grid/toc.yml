@@ -27,6 +27,8 @@
           href: custom-event-quickstart-powershell.md
         - name: ポータル
           href: custom-event-quickstart-portal.md
+    - name: イベント ハンドラーとしての Azure Functions
+      href: custom-event-to-function.md
     - name: イベント ハンドラーとしてのキュー ストレージ
       href: custom-event-to-queue-storage.md
     - name: イベント ハンドラーとしての Event Hubs
@@ -111,6 +113,8 @@
       href: post-to-custom-topic.md
     - name: HTTP エンドポイントでのイベントの受信
       href: receive-events.md
+    - name: Webhook を AAD で保護する
+      href: secure-webhook-delivery.md
     - name: 配信不能と再試行
       href: manage-event-delivery.md
     - name: イベントのフィルター処理

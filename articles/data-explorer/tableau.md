@@ -3,16 +3,16 @@ title: Azure Data Explorer への Open Database Connectivity (ODBC) 接続を使
 description: この記事では、Azure Data Explorer 接続への Open Database Connectivity (ODBC) 接続を使用して、Tableau でデータを視覚化する方法について説明します。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a0948ae35a5c23768df117979db819861ac64529
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 4dd8fbd761a3442536919e17bae5465adf6b945f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66498571"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023860"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Azure Data Explorer からのデータを Tableau で視覚化する
 

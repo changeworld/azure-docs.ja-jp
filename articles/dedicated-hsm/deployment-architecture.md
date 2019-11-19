@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 93755ded8f9db27cf8e78079f32e90cccfac2831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: ff86c25de006495e3536f2ff907e1cf40a216f8e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883835"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927861"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM のデプロイ アーキテクチャ
 
@@ -32,6 +32,7 @@ HSM は、Microsoft のデータ センター全体に分散され、高可用�
 * East US
 * 米国東部 2
 * 米国西部
+* 米国西部 2
 * 米国中南部
 * 東南アジア
 * 東アジア

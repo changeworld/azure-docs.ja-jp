@@ -1,5 +1,5 @@
 ---
-title: Azure で OKD をデプロイする | Microsoft Docs
+title: Azure で OKD をデプロイする
 description: Azure で OKD をデプロイします。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390529"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035399"
 ---
 # <a name="deploy-okd-in-azure"></a>Azure で OKD をデプロイする
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-ms.date: 02/07/2019
-ms.openlocfilehash: af657d28bc3052ebefe25ea54891b8d3555692c9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825835"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082450"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 
@@ -48,7 +48,7 @@ Azure SQL Database へのアクセスは、ログインとファイアウォー�
 
 ## <a name="resiliency"></a>回復性
 
-Azure SQL Database はクラウド サービスであり、基になるインフラストラクチャで、またはクラウド エンティティ間の通信で発生する一時エラーが想定される場合があります。 Azure SQL Database は推移的なインフラストラクチャ エラーに対する回復性がありますが、これらのエラーが接続に影響する場合があります。 SQL Database への接続中に一時エラーが発生した場合は、コードで[呼び出しを再試行する](sql-database-connectivity-issues.md)必要があります。 再試行ロジックでは、複数のクライアントが同時に再試行することで SQL Database に過大な負荷がかかるのを防ぐために、バックオフ ロジックを使用することをお勧めします。 再試行ロジックは、[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)によって異なります。
+Azure SQL Database はクラウド サービスであり、基になるインフラストラクチャで、またはクラウド エンティティ間の通信で発生する一時エラーが想定される場合があります。 Azure SQL Database は推移的なインフラストラクチャ エラーに対する回復性がありますが、これらのエラーが接続に影響する場合があります。 SQL Database への接続中に一時エラーが発生した場合は、コードで[呼び出しを再試行する](sql-database-connectivity-issues.md)必要があります。 再試行ロジックでは、複数のクライアントが同時に再試行することで SQL Database に過大な負荷がかかるのを防ぐために、バックオフ ロジックを使用することをお勧めします。 再試行ロジックは、[SQL Database クライアント プログラムのエラー メッセージ](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)によって異なります。
 
 Azure SQL データベースの計画メンテナンス イベントに備える方法の詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
 

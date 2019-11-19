@@ -62,6 +62,8 @@
               href: ./ag/tutorial-restrict-web-traffic-powershell.md
             - name: Azure CLI
               href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: WAF ポリシーを移行する
+          href: ./ag/migrate-policy.md
         - name: WAF ルールをカスタマイズする
           items:
             - name: Azure ポータル

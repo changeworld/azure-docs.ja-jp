@@ -21,7 +21,7 @@
           href: end-to-end-csharp.md
         - name: Python
           href: end-to-end-python.md
-    - name: コードを使用せずにデータを取り込む
+    - name: 監視データの取り込みとクエリ
       href: ingest-data-no-code.md
     - name: Power BI でのデータの視覚化
       href: visualize-power-bi.md

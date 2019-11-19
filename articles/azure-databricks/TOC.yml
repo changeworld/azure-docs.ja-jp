@@ -573,10 +573,10 @@
             - name: データの読み込み
               href: /azure/databricks/spark/latest/spark-sql/language-manual/load-data
               maintainContext: true
-            - name: MERGE INTO (Delta Lake on Azure Databricks)
+            - name: MERGE INTO (Delta Lake on Azure Databricks
               href: /azure/databricks/spark/latest/spark-sql/language-manual/merge-into
               maintainContext: true
-            - name: OPTIMIZE (Delta Lake on Azure Databricks)
+            - name: OPTIMIZE (Delta Lake on Azure Databricks
               href: /azure/databricks/spark/latest/spark-sql/language-manual/optimize
               maintainContext: true
             - name: REFRESH TABLE
@@ -714,9 +714,9 @@
             - name: 高度な MLlib の例
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: 自動 ML
+        - name: AutoML
           items:
-            - name: 自動 ML の概要
+            - name: AutoML の概要
               href: /azure/databricks/applications/machine-learning/automl/index
               maintainContext: true
             - name: Hyperopt
@@ -1609,6 +1609,12 @@
               items:
                 - name: サポートされているランタイム リリース
                   href: /azure/databricks/release-notes/runtime/supported
+                  maintainContext: true
+                - name: Databricks Runtime 6.2
+                  href: /azure/databricks/release-notes/runtime/6.2
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 ML
+                  href: /azure/databricks/release-notes/runtime/6.2ml
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

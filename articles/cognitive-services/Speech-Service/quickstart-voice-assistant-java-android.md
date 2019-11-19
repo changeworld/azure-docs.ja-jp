@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1de9283e1ad609a1f81d7e8a6d8171cc8052e3ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506213"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111799"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Speech SDK を使用して Android 上で Java を使用して音声アシスタントを作成する
 
@@ -30,9 +30,9 @@ ms.locfileid: "73506213"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
-* [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)で構成された、以前に作成済みのボット
-* [Android Studio](https://developer.android.com/studio/) v3.3 以降
+- Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
+- [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)で構成された、以前に作成済みのボット
+- [Android Studio](https://developer.android.com/studio/) v3.3 以降
 
     > [!NOTE]
     > [音声アシスタントをサポートしているリージョンの一覧](regions.md#voice-assistants)を参照し、ご使用のリソースがそれらのリージョンのいずれかにデプロイされていることを確認します。
@@ -96,9 +96,9 @@ ms.locfileid: "73506213"
 
 この XML は、ボットと対話するシンプルな UI を定義します。
 
-* `button` 要素は、クリックされると対話を開始し、`onBotButtonClicked` メソッドを呼び出します。
-* `recoText` 要素は、ユーザーがボットに話したときの音声テキスト変換の結果を表示します。
-* `activityText` 要素は、ボットからの最新の Bot Framework アクティビティについての JSON ペイロードを表示します。
+- `button` 要素は、クリックされると対話を開始し、`onBotButtonClicked` メソッドを呼び出します。
+- `recoText` 要素は、ユーザーがボットに話したときの音声テキスト変換の結果を表示します。
+- `activityText` 要素は、ボットからの最新の Bot Framework アクティビティについての JSON ペイロードを表示します。
 
 この時点で、UI のテキストおよびグラフィカル表現は次のようになります。
 

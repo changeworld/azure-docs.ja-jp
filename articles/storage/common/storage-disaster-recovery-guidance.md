@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595197"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889782"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
 
@@ -47,8 +47,8 @@ Azure Storage の他の冗長性オプションとしては、1 つのリージ�
 
 最初から高可用性対応にアプリケーションを設計することが重要です。 アプリケーションの設計およびディザスター リカバリーの計画に関するガイダンスについては、次の Azure リソースを参照してください。
 
-* [回復性に優れた Azure 用アプリケーションの設計](https://docs.microsoft.com/azure/architecture/resiliency/):Azure で高可用性アプリケーションを設計するための主要な概念の概要です。
-* [可用性のチェックリスト](https://docs.microsoft.com/azure/architecture/checklist/availability):アプリケーションで高可用性向け設計のベスト プラクティスが実装されていることを確認するためのチェックリストです。
+* [回復性に優れた Azure 用アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service):Azure で高可用性アプリケーションを設計するための主要な概念の概要です。
+* [可用性のチェックリスト](/azure/architecture/checklist/resiliency-per-service):アプリケーションで高可用性向け設計のベスト プラクティスが実装されていることを確認するためのチェックリストです。
 * [RA-GRS を使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md):RA-GRS を利用するアプリケーションを構築するための設計ガイダンスです。
 * [チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する](../blobs/storage-create-geo-redundant-storage.md):障害および復旧がシミュレートされたらエンドポイント間で自動的に切り替わる高可用性アプリケーションを構築する方法を示すチュートリアルです。 
 

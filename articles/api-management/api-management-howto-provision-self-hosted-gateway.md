@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ee9594e7aa3b55f7eb6fc7ba41783708555bd15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510572"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075283"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Azure API Management でセルフホステッド ゲートウェイをプロビジョニングする
 
 Azure API Management インスタンスでのゲートウェイ リソースのプロビジョニングは、セルフホステッド ゲートウェイをデプロイするための前提条件です。 この記事では、API Management でゲートウェイ リソースをプロビジョニングする手順について説明します。
 
 > [!NOTE]
-> セルフホステッド ゲートウェイ機能はプレビュー段階です。 プレビュー期間中は、セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみ追加料金なしでご利用いただけます。 Developer レベルは、1 つのセルフホステッド ゲートウェイのデプロイに限定されます。
+> セルフホステッド ゲートウェイ機能はプレビュー段階です。 プレビュー期間中、セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみ追加料金なしで利用できます。 Developer レベルは、1 つのセルフホステッド ゲートウェイのデプロイに制限されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,6 +39,7 @@ Azure API Management インスタンスでのゲートウェイ リソースの�
 3. ゲートウェイの **[名前]** と **[リージョン]** を入力します。
 > [!TIP]
 > **[リージョン]** には、このゲートウェイ リソースに関連付けられるゲートウェイ ノードの目的の場所を指定します。 これは、Azure リソースに関連付けられた同様のプロパティと意味的には同じですが、任意の文字列値を割り当てることができます。
+
 4. 必要に応じて、ゲートウェイ リソースの **[説明]** を入力します。
 5. 必要に応じて、 **[API]** の下にある **[+]** を選択して、1 つ以上の API をこのゲートウェイ リソースに関連付けます。
 > [!TIP]
@@ -46,6 +47,7 @@ Azure API Management インスタンスでのゲートウェイ リソースの�
 
 > [!IMPORTANT]
 > 既定では、既存の API はいずれも新しいゲートウェイ リソースに関連付けられません。 そのため、新しいゲートウェイを使用してそれらを呼び出そうとすると、`404 Resource Not Found` 応答が返されます。
+
 6. **[追加]** をクリックします。
 
 これで、API Management インスタンスにゲートウェイ リソースがプロビジョニングされました。 ゲートウェイのデプロイに進むことができます。

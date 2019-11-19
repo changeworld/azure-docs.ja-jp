@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523305"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005584"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
-
 この記事では、Azure Premium Storage を使用する高パフォーマンスのアプリケーションを構築するためのガイドラインを示します。 このドキュメントで説明する手順は、アプリケーションで使用されているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使用できます。 ガイドラインを示すために、このドキュメント全体を通じて、Premium Storage で実行されている SQL Server を例として使用しています。
 
 この記事では、ストレージ層のパフォーマンスのシナリオに対処していますが、アプリケーション層を最適化する必要があります。 たとえば、Azure Premium Storage で SharePoint ファームをホストしている場合は、この記事の SQL Server の例を使用してデータベース サーバーを最適化できます。 さらに、最大限のパフォーマンスを得るために、SharePoint ファームの Web サーバーとアプリケーション サーバーを最適化します。

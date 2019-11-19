@@ -1,17 +1,14 @@
 ---
 title: Azure Kubernetes Service に対する Azure Policy について学習する
 description: Azure Policy が Rego および Open Policy Agent を使用して、Azure Kubernetes Service 上でクラスターを管理する方法について説明します。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480909"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959794"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes Service に対する Azure Policy の理解
 
@@ -158,7 +155,7 @@ AKS クラスターにアドオンをインストールする前に、プレビ�
 > [!NOTE]
 > _クラスター管理者_は _azure-policy_ 名前空間に対する権限を持つ場合がありますが、名前空間を変更することは推奨されず、サポートもされません。 手動で行ったすべての変更は、更新サイクル中に失われます。
 
-アドオンは 5 分ごとにクラスターのフル スキャンを呼び出します。 アドオンは、フル スキャンの詳細情報と、クラスターに試行された変更についての Gatekeeper によるすべてのリアルタイム評価を収集した後、すべての Azure Policy 割り当てと同様に、[[ポリシー準拠状況の詳細]](../how-to/get-compliance-data.md) に含めるために結果を Azure Policy に報告します。 アクティブなポリシー割り当ての結果のみが監査サイクル中に返されます。
+アドオンは 5 分ごとにクラスターのフル スキャンを呼び出します。 アドオンを使うと、フル スキャンの詳細情報と、クラスターに試行された変更についての Gatekeeper によるすべてのリアルタイム評価が収集された後、すべての Azure Policy 割り当てと同様に、[[ポリシー準拠状況の詳細]](../how-to/get-compliance-data.md) に含めるために、結果が Azure Policy に報告されます。 アクティブなポリシー割り当ての結果のみが監査サイクル中に返されます。
 
 ## <a name="policy-language"></a>ポリシーの言語
 
@@ -233,7 +230,7 @@ AKS クラスターから Azure Policy アドオンを削除するには、Azure
 
 ## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure Policy アドオンによって収集された診断データ
 
-Kubernetes の Azure Policy アドオンでは、制限されたクラスター診断データを収集します。 この診断データは、ソフトウェアとパフォーマンスに関連する重要な技術データです。 次のように使用されます。
+Kubernetes の Azure Policy アドオンを使うと、制限されたクラスター診断データが収集されます。 この診断データは、ソフトウェアとパフォーマンスに関連する重要な技術データです。 次のように使用されます。
 
 - Azure Policy アドオンを最新の状態に維持する
 - Azure Policy アドオンをセキュリティで保護し、信頼性が高く、パフォーマンスに優れた状態に維持する
@@ -243,14 +240,14 @@ Kubernetes の Azure Policy アドオンでは、制限されたクラスター�
 
 - Azure Policy アドオン エージェントのバージョン
 - クラスターの種類
-- クラスター リージョン
-- クラスター リソース グループ
-- クラスター リソース ID
-- クラスター サブスクリプション ID
-- クラスター OS (例: Linux)
-- クラスターの都市 (例: シアトル)
-- クラスターの州または省 (例: ワシントン)
-- クラスターの国または地域 (例: 米国)
+- クラスターのリージョン
+- クラスターのリソース グループ
+- クラスターのリソース ID
+- クラスターのサブスクリプション ID
+- クラスターの OS (例:Linux)
+- クラスターの市区町村 (例:シアトル)
+- クラスターの州または都道府県 (例:ワシントン)
+- クラスターの国または地域 (例:米国)
 - ポリシー評価でのエージェントのインストール中に Azure Policy アドオンによって発生した例外/エラー
 - Azure Policy アドオンによってインストールされていない Gatekeeper ポリシーの数
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 747fe891bf4d6bd042e689107cd87680795eb82b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3ac4db3a2d98e761183360c268d23efcc313cf09
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959329"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048496"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private Zones のシナリオ
 
@@ -31,7 +31,7 @@ Azure DNS Private Zones は、仮想ネットワーク内での名前解決と�
 
 次の図は、このシナリオの 2 つの仮想ネットワーク (A と B) のみがある単純なバージョンを示しています。A が登録仮想ネットワークとして指定され、B が解決仮想ネットワークとして指定されます。 その意図は、両方の仮想ネットワークで共通のゾーン contoso.com を共有することです。 ゾーンを作成し、解決仮想ネットワークと登録仮想ネットワークをゾーンにリンクすると、Azure によって仮想ネットワーク A から VM (VNETA-VM1 と VNETA-VM2) の DNS レコードが自動的に登録されます。解決仮想ネットワーク B 内の VM の DNS レコードをゾーンに手動で追加することもできます。この設定では、正引きと逆引きの DNS クエリで次の動作が観察されます。
 * 解決仮想ネットワーク B 内の VNETB VM1 から VNETA-VM1.contoso.com に対する DNS クエリは、VNETA-VM1 のプライベート IP を含む DNS 応答を受信します。
-* 解決仮想ネットワーク B 内の VNETB-VM2 からの 10.1.0.1 に対する逆引き DNS (PTR) クエリは、FQDN VNETB-VM1.contoso.com を含む DNS 応答を受信します。 その理由は、逆引き DNS クエリのスコープが、同じ仮想ネットワークであるためです。 
+* 解決仮想ネットワーク B 内の VNETB-VM2 からの 10.1.0.1 に対する逆引き DNS (PTR) クエリは、FQDN VNETB-VM1.contoso.com を含む DNS 応答を受信します。  
 * 解決仮想ネットワーク B 内の VNETB-VM3 からの 10.0.0.1 に対する逆引き DNS (PTR) クエリは、NXDOMAIN を受信します。 その理由は、逆引き DNS クエリのスコープが、同じ仮想ネットワークに限定されているためです。 
 
 

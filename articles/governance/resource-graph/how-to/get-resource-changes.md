@@ -1,18 +1,14 @@
 ---
 title: リソースの変更の取得
 description: いつリソースが変更されたかを知り、変更されたプロパティの一覧を取得する方法を理解します。
-services: resource-graph
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 25d900276518e51e80021d1fdb1ac80945eb2d5c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622573"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958759"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -292,4 +288,4 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。
-- [リソースを探索する](../concepts/explore-resources.md)方法の詳細を確認します。
+- [リソースを探索する](../concepts/explore-resources.md)方法について詳しく確認します。

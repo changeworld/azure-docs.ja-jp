@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: robinsh
-ms.openlocfilehash: 8d071d4cd6ae3f9a52433104075e396d70d5bc57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828426"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083281"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT ハブを別のリージョンに複製する方法
 
@@ -391,7 +391,7 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
 
 複製を作成して実行したので、元のハブから複製にすべてのデバイスをコピーする必要があります。 
 
-これを行うには複数の方法があります。 デバイスを始めて作成した際に[デバイス プロビジョニング サービス (DPS)](/azure/iot-dps/about-iot-dps.md) 使用したかどうかによって異なります。 使用した場合、デバイスのコピーは簡単です。 使用していない場合、非常に複雑になる可能性があります。 
+これを行うには複数の方法があります。 デバイスを始めて作成した際に[デバイス プロビジョニング サービス (DPS)](/azure/iot-dps/about-iot-dps) 使用したかどうかによって異なります。 使用した場合、デバイスのコピーは簡単です。 使用していない場合、非常に複雑になる可能性があります。 
 
 デバイスを DPS をしてプロビジョニングしなかった場合は、次のセクションをスキップし、[Import/Export を使用してデバイスを新しいハブに移動](#using-import-export-to-move-the-devices-to-the-new-hub)することから始めます。
 

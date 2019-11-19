@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ea1d4020aa9be23b4839690ae0b386d35bce8a23
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: f9b22e6b806f76189134ec63c83d48f48bf95587
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66498545"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889761"
 ---
 # <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics のディザスター リカバリーのガイダンス
 
@@ -23,7 +23,7 @@ Azure Data Lake Analytics は、ビッグ データを簡略化するオンデ�
 
 Azure Data Lake Analytics を使用する場合、独自のディザスター リカバリー プランを準備することが重要です。 この記事は、ディザスター リカバリー プランを構築する際に役に立ちます。 独自のプランを作成する際に役立つリソースは他にもあります。
 - [Azure アプリケーションの障害とディザスター リカバリー](/azure/architecture/reliability/disaster-recovery)
-- [Azure の回復性技術ガイダンス](/azure/architecture/reliability)
+- [Azure の回復性技術ガイダンス](/azure/architecture/checklist/resiliency-per-service)
 
 ## <a name="best-practices-and-scenario-guidance"></a>ベスト プラクティスとシナリオのガイダンス
 

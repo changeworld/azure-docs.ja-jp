@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 0bb32486ea3fcfd37337b18b02f4f432effa8f75
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678342"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887532"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
@@ -174,7 +174,7 @@ Application Insights をインストールしているとき、またはログ �
 2018 年 2 月 5 日、クライアント IP アドレスのログ記録を削除したことを発表しました。 これは geo ロケーションには影響しません。
 
 > [!NOTE]
-> IP アドレスの最初の 3 オクテットが必要な場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)を使用して、カスタム属性を追加できます。
+> IP アドレスの最初の 3 オクテットが必要な場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)を使用して、カスタム属性を追加できます。
 > これは、2018 年 2 月 5 日より前に収集されたデータには影響しません。
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>ユーザー テレメトリの地理データに誤りがある

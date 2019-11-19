@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用してサブスクリプション内のすべての VM に関する詳細情報を収集する | Microsoft Docs
+title: PowerShell を使用してサブスクリプション内のすべての VM に関する詳細情報を収集する
 description: PowerShell を使用してサブスクリプション内のすべての VM に関する詳細情報を収集する
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: dc5dc187bf23c9391108b24df9836645756fd62c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d3931d2affd77ce53b6ace9cc043e0272eaaf954
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165292"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040070"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell を使用してサブスクリプション内のすべての VM に関する詳細情報を収集する
 

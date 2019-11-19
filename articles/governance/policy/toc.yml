@@ -331,6 +331,14 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: ポリシーの定義
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Azure SDK for Python
+      items:
+        - name: ポリシー
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+        - name: ポリシー クライアント
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+        - name: ポリシーの分析情報
+          href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
         - name: events

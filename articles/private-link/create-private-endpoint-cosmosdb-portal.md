@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sngun
-ms.openlocfilehash: 80a0a3440a7fb5d056d1d76fb9d82931721b6e16
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32595e561736b5f22f109d0caff1f3990300d2bc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510708"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007329"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する
 
@@ -99,7 +99,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 ## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Azure Cosmos アカウントのプライベート エンドポイントを作成する
 
-リンク先の記事の「[Azure portal を使用して Private Link を作成する](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-link-using-the-azure-portal)」セクションの説明に従って、Azure Cosmos アカウントの Private Link を作成します。
+リンク先の記事の「[Azure portal を使用して Private Link を作成する](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal)」セクションの説明に従って、Azure Cosmos アカウントの Private Link を作成します。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 

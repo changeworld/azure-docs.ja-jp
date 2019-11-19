@@ -1,5 +1,5 @@
 ---
-title: Linux 用 Azure Monitor Dependency 仮想マシン拡張機能 | Microsoft Docs
+title: Linux 用 Azure Monitor Dependency 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して Linux 仮想マシンに Azure Monitor Dependency Agent をデプロイします。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 416b0c89105f97514efdfcc859a630d78f7ba7f5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46b0ddeeb70e263723b657ef3150dc5548fcc742
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084829"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073869"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux 用 Azure Monitor Dependency 仮想マシン拡張機能
 

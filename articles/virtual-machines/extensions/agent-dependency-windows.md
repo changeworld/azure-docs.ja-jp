@@ -1,5 +1,5 @@
 ---
-title: Windows 用 Azure Monitor Dependency 仮想マシン拡張機能 | Microsoft Docs
+title: Windows 用 Azure Monitor Dependency 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して Windows 仮想マシンに Azure Monitor Dependency Agent をデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: b2a86ffab0286559cfcce89252c889c530f00871
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 858aba2a45a6b8cf133e6f94bac45e721535ab25
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750106"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073265"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Windows 用 Azure Monitor Dependency 仮想マシン拡張機能
 

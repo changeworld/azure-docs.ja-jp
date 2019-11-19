@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824247"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111872"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) にデプロイされたモデルのデータの誤差 (プレビュー) を検出する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Azure Machine Learning では、AKS にデプロイされたモデルへの入�
 + データの誤差についてのアラートを電子メールで送信します。
 
 > [!Note]
-> このサービスは "プレビュー" であり、構成オプションに制限があります。 詳細情報および更新情報については、[API ドキュメント](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)および[リリース ノート](azure-machine-learning-release-notes.md)を参照してください。 
+> このサービスは "プレビュー" であり、構成オプションに制限があります。 詳細情報および更新情報については、[API ドキュメント](https://docs.microsoft.com/python/api/azureml-datadrift/)および[リリース ノート](azure-machine-learning-release-notes.md)を参照してください。 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Azure Machine Learning でデータの誤差が監視される仕組み
 
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>DataDriftDetector 実行の送信
 
-`DataDriftDetector` オブジェクトが構成されたら、モデルに対して特定の日付に[データの誤差の実行](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-)を送信できます。 実行の一部として、`drift_threshold` パラメーターを設定することにより DataDriftDetector アラートを有効にします。 [datadrift_coefficient](#metrics) が指定された `drift_threshold` を超えた場合は、電子メールが送信されます。
+`DataDriftDetector` オブジェクトが構成されたら、モデルに対して特定の日付に[データの誤差の実行](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-)を送信できます。 実行の一部として、`drift_threshold` パラメーターを設定することにより DataDriftDetector アラートを有効にします。 [datadrift_coefficient](#visualize-drift-metrics) が指定された `drift_threshold` を超えた場合は、電子メールが送信されます。
 
 ```python
 # adhoc run today
