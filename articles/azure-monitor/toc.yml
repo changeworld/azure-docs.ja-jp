@@ -798,12 +798,14 @@
               items:
                 - name: 監視の有効化の概要
                   href: insights/container-insights-onboard.md
-                - name: 新しいクラスターでの有効化
+                - name: 新しい AKS クラスターでの有効化
                   href: insights/container-insights-enable-new-cluster.md
-                - name: 既存のクラスターでの有効化
+                - name: 既存の AKS クラスターでの有効化
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: ハイブリッド クラスターでの有効化
                   href: insights/container-insights-hybrid-setup.md
+                - name: Azure Red Hat OpenShift での有効化
+                  href: insights/container-insights-azure-redhat-setup.md
                 - name: リージョンのマッピング
                   href: insights/container-insights-region-mapping.md
             - name: パフォーマンスの監視

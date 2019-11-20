@@ -225,9 +225,9 @@
           items:
             - name: HDInsight 4.0 の新機能
               href: ./hdinsight-version-release.md
-            - name: HDInsight 4.0 の完全なリリース ノート
+            - name: リリース ノート
               href: ./hdinsight-release-notes.md
-            - name: HDInsight 3.6 の完全なリリース ノート
+            - name: Azure HDInsight のリリース ノート (アーカイブ)
               href: ./hdinsight-release-notes-archive.md
         - name: よく寄せられる質問 (FAQ)
           href: ./hdinsight-faq.md
@@ -837,6 +837,8 @@
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: NSG と UDR に必要な IP アドレス
           href: ./hdinsight-management-ip-addresses.md
+        - name: Azure Firewall のサービス タグ
+          href: ./hdinsight-service-tags.md
     - name: 方法
       items:
         - name: ESP クラスターの作成およびオンプレミスとの同期
