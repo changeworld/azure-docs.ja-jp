@@ -183,6 +183,8 @@
           href: storage-sync-files-troubleshoot.md
         - name: Azure Files の削除に関するトラブルシューティング
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
+        - name: 削除されたストレージ アカウントを復旧します
+          href: storage-how-to-recover-deleted-account.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
