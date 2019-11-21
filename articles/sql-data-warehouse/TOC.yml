@@ -47,6 +47,10 @@
           href: quickstart-scale-compute-tsql.md
     - name: ワークロード管理
       items:
+        - name: ワークロード分類子の作成
+          items:
+            - name: T-SQL
+              href: quickstart-create-a-workload-classifier-tsql.md
         - name: ワークロードの分離の作成
           items:
             - name: T-SQL
