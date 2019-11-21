@@ -468,6 +468,8 @@
   items:
     - name: サポート
       href: support.md
+    - name: リージョン
+      href: regions.md
     - name: 料金と制限
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: コンプライアンス

@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Resource Graph の概要
+    - name: Azure Resource Graph とは
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
 - name: クイック スタート
