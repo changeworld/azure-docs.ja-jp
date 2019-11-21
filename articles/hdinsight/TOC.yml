@@ -355,7 +355,7 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: cell magic を使用して Jupyter で外部のパッケージを使用する
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: スクリプト アクションを使用して Jupyter で外部のパッケージを使用する
+                - name: スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
                   href: ./spark/apache-spark-python-package-installation.md
                 - name: Apache Zeppelin Notebook を使用する
                   href: ./spark/apache-spark-zeppelin-notebook.md

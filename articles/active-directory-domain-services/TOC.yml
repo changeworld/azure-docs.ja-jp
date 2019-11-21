@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: 高度なマネージド ドメインの作成
       href: tutorial-create-instance-advanced.md
+    - name: フォレストの信頼の作成 (プレビュー)
+      href: tutorial-create-forest-trust.md
 - name: サンプル
   items:
     - name: Azure PowerShell を使用したマネージド ドメインの作成
@@ -33,6 +35,12 @@
       href: administration-concepts.md
     - name: 一般的なデプロイ シナリオ
       href: scenarios.md
+    - name: フォレストと信頼
+      items:
+        - name: リソース フォレスト
+          href: concepts-resource-forest.md
+        - name: フォレストの信頼
+          href: concepts-forest-trust.md
     - name: Azure AD DS の同期のしくみ
       href: synchronization.md
     - name: パスワード ハッシュ同期のしくみ

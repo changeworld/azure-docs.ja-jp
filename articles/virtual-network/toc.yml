@@ -69,6 +69,8 @@
       href: ddos-protection-overview.md
     - name: サブネットの拡張
       href: subnet-extension.md
+    - name: サブネットの委任
+      href: subnet-delegation-overview.md
     - name: バックエンド接続の相互運用性
       items:
         - name: 前書きとテスト セットアップ

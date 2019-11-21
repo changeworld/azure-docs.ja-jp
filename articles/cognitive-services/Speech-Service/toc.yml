@@ -427,6 +427,33 @@
           href: 'https://aka.ms/csspeech/pythonref'
         - name: Speech SDK リリース ノート
           href: releasenotes.md
+- name: デバイス
+  exanded: false
+  items:
+    - name: 概要
+      items:
+        - name: Speech Devices SDK について
+          href: speech-devices-sdk.md
+        - name: Speech Devices SDK を取得する
+          href: get-speech-devices-sdk.md
+    - name: ハードウェア
+      items:
+        - name: マイク配列の推奨事項
+          href: speech-devices-sdk-microphone.md
+        - name: Roobo v1 キット
+          href: speech-devices-sdk-roobo-v1.md
+    - name: クイック スタート
+      items:
+        - name: Windows
+          href: speech-devices-sdk-windows-quickstart.md
+        - name: Linux
+          href: speech-devices-sdk-linux-quickstart.md
+        - name: Android
+          href: speech-devices-sdk-android-quickstart.md
+    - name: リソース
+      items:
+        - name: Speech Devices SDK のトラブルシューティング
+          href: speech-devices-sdk-troubleshooting.md
 - name: 移行
   exanded: false
   items:
