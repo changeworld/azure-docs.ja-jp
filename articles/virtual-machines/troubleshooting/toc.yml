@@ -114,6 +114,8 @@
           href: serial-console-grub-single-user-mode.md
         - name: シリアル コンソール NMI/SysRq
           href: serial-console-nmi-sysrq.md
+        - name: シリアル コンソールの grub プロアクティブ構成
+          href: serial-console-grub-proactive-configuration.md
     - name: Windows 用シリアル コンソール
       href: serial-console-windows.md
       items:
@@ -125,8 +127,6 @@
       href: serial-console-power-options.md
     - name: シリアル コンソールに関する一般的なエラー
       href: serial-console-errors.md
-    - name: シリアル コンソールの grub プロアクティブ構成
-      href: serial-console-grub-proactive-configuration.md
 - name: ストレージ リソースの削除時のエラー
   href: storage-resource-deletion-errors.md
 - name: クラシック ストレージ リソースの削除時のエラー
