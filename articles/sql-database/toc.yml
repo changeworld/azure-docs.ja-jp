@@ -278,6 +278,8 @@
                   href: sql-database-xevent-code-ring-buffer.md
         - name: Hyperscale パフォーマンス診断
           href: sql-database-hyperscale-performance-diagnostics.md
+        - name: 高密度エラスティック プールでのリソース管理
+          href: sql-database-elastic-pool-resource-management.md
     - name: スケーラビリティ
       items:
         - name: スケーラビリティのドキュメント

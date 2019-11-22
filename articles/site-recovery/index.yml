@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Site Recovery のドキュメント
-summary: Azure Site Recovery を使用すると、オンプレミスのマシンとワークロードを Azure に、Azure VM をセカンダリ Azure リージョンにディザスター リカバリーできます。 Azure へのレプリケーションを準備することで、障害発生時のフェールオーバーを調整し、Azure でワークロードやアプリに継続してアクセスできます。 プライマリの場所が再び使用可能になると、必要に応じてフェールバックできます。
+summary: オンプレミスのワークロードと Azure VM のディザスター リカバリーに Azure Site Recovery を使用します。
 metadata:
   title: Azure Site Recovery のドキュメント
-  description: Azure Site Recovery を使用すると、オンプレミスのマシンとワークロードを Azure に、Azure VM をセカンダリ Azure リージョンにディザスター リカバリーできます。 Azure へのレプリケーションを準備することで、障害発生時のフェールオーバーを調整し、Azure でワークロードやアプリに継続してアクセスできます。 プライマリの場所が再び使用可能になると、必要に応じてフェールバックできます。
+  description: Azure にオンプレミスのワークロードと Azure VM のディザスター リカバリーを設定します。
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: ccbc4c92a6d0db9d5baf8a226ba79405a2b824ff
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001100"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74186596"
 landingContent:
 - title: Site Recovery について
   linkLists:

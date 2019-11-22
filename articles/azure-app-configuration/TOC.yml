@@ -17,8 +17,8 @@
           href: quickstart-dotnet-core-app.md
         - name: .NET Framework
           href: quickstart-dotnet-app.md
-        - name: .NET Core における Azure 関数
-          href: quickstart-azure-function-csharp.md
+        - name: .NET Core における Azure Functions
+          href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
     - name: 機能の管理
@@ -37,6 +37,8 @@
       href: enable-dynamic-configuration-dotnet-core.md
     - name: .NET Framework で動的な構成を有効にする
       href: enable-dynamic-configuration-dotnet.md
+    - name: Azure Functions で動的な構成を有効にする
+      href: enable-dynamic-configuration-azure-functions-csharp.md
     - name: .NET Core アプリ内で機能フラグを使用する
       href: use-feature-flags-dotnet-core.md
     - name: Spring Boot アプリ内で機能フラグを使用する
@@ -67,7 +69,7 @@
           href: concept-disaster-recovery.md
 - name: ハウツー ガイド
   items:
-    - name: Azure マネージド サービス ID と統合する
+    - name: Azure マネージド ID と統合する
       href: howto-integrate-azure-managed-service-identity.md
     - name: 構成データのインポートまたはエクスポート
       href: howto-import-export-data.md

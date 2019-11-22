@@ -974,21 +974,19 @@
       items:
         - name: バックアップからデータを復元する
           href: how-to-backup-and-restore.md
-    - name: ログの記録
+    - name: 監視
       items:
-        - name: 診断ログの記録
-          href: logging.md
+        - name: Cosmos DB を監視する
+          href: monitor-cosmos-db.md
+        - name: Azure Monitor for Cosmos (プレビュー)
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+        - name: Cosmos DB アカウントからメトリックを表示する
+          href: use-metrics.md
         - name: Logic Apps を使用したアプリケーション ログ記録
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: メトリックを使用した監視
-      items:
-        - name: Cosmos DB アカウントからメトリックを表示する
-          href: use-metrics.md
-        - name: Azure Monitor からメトリックを表示する
-          href: cosmos-db-azure-monitor-metrics.md
-        - name: SLA の監視
-          href: monitor-accounts.md
+        - name: 監視データのリファレンス
+          href: monitor-cosmos-db-reference.md
     - name: ローカルでの開発
       items:
         - name: エミュレーターの使用
