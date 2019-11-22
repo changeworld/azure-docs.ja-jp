@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning との Git 統合
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning をローカル Git リポジトリと統合する方法について説明します。
+description: Azure Machine Learning をローカル Git リポジトリと統合する方法について説明します。 Git リポジトリであるローカル ディレクトリからトレーニング実行を送信した場合、リポジトリ、ブランチ、および現在のコミットに関する情報が、実行の一部として追跡されます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: db96663ef3d901546e1b32362a9eb9c9ae09dd21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c8b2407b18f0d7115ce51fc28b956e7fd764c71e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377376"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756011"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -26,15 +26,15 @@ Azure Machine Learning は、ローカル git リポジトリにある情報を�
 
 Python SDK または Machine Learning CLI からトレーニング実行を送信すると、モデルのトレーニングに必要なファイルがワークスペースにアップロードされます。 ご利用の開発環境で `git` コマンドが使用可能な場合、アップロード プロセスでは、ファイルが git リポジトリに格納されているかどうかを確認するためにそのコマンドが使用されます。 その場合、git リポジトリからの情報もトレーニング実行の一部としてアップロードされます。 この情報は、トレーニング実行の次のプロパティに格納されます。
 
-| プロパティ | 説明 |
-| ----- | ----- |
-| `azureml.git.repository_uri` | リポジトリの複製元の URI。 |
-| `mlflow.source.git.repoURL` | リポジトリの複製元の URI。 |
-| `azureml.git.branch` | 実行が送信されたときのアクティブなブランチ。 |
-| `mlflow.source.git.branch` | 実行が送信されたときのアクティブなブランチ。 |
-| `azureml.git.commit` | 実行するために送信されたコードのコミット ハッシュ。 |
-| `mlflow.source.git.commit` | 実行するために送信されたコードのコミット ハッシュ。 |
-| `azureml.git.dirty` | コミットがダーティの場合は `True`、それ以外の場合は `false` です。 |
+| プロパティ | 値の取得に使用される Git コマンド | 説明 |
+| ----- | ----- | ----- |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | リポジトリの複製元の URI。 |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | リポジトリの複製元の URI。 |
+| `azureml.git.branch` | `git symbolic-ref --short HEAD` | 実行が送信されたときのアクティブなブランチ。 |
+| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | 実行が送信されたときのアクティブなブランチ。 |
+| `azureml.git.commit` | `git rev-parse HEAD` | 実行するために送信されたコードのコミット ハッシュ。 |
+| `mlflow.source.git.commit` | `git rev-parse HEAD` | 実行するために送信されたコードのコミット ハッシュ。 |
+| `azureml.git.dirty` | `git status --porcelain .` | 分岐/コミットがダーティである場合は `True`、そうでない場合は `false`。 |
 
 この情報は、エスティメーター、機械学習パイプライン、またはスクリプト実行を使用する実行のために送信されます。
 
@@ -50,6 +50,8 @@ Git 情報は、トレーニング実行のプロパティに格納されます�
 1. __[実験]__ を選択し、ご自身のいずれかの実験を選択します。
 1. __[RUN NUMBER]\(実行番号\)__ 列からいずれかの実行を選択します。
 1. __[ログ]__ を選択し、 __[ログ]__ エントリと __[azureml]__ エントリを展開します。 __###\_azure__ で始まるリンクを選択します。
+
+    ![ポータルでの ###_azure エントリ](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
 次の JSON のようなテキストを含む情報が記録されています。
 
@@ -90,5 +92,4 @@ az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup
 
 ## <a name="next-steps"></a>次の手順
 
-* Visual Studio Code で Azure Machine Learning をトレーニングする方法のチュートリアルについては、[Azure Machine Learning を使用したモデルのトレーニングに関するチュートリアル](tutorial-train-models-with-aml.md)を参照してください。
-* コードをローカルで編集、実行、およびデバッグする方法のチュートリアルについては、[Python hello-world チュートリアル](https://code.visualstudio.com/docs/Python/Python-tutorial)を参照してください。
+* [モデル トレーニング用のコンピューティング先を設定して使用する](how-to-set-up-training-targets.md)

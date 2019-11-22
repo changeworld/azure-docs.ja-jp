@@ -1,18 +1,18 @@
 ---
-title: Azure Event Grid サブスクリプションの配信不能と再試行に関する方針
+title: 配信不能と再試行に関する方針 - Azure Event Grid
 description: Event Grid のイベント配信オプションをカスタマイズする方法について説明します。 配信不能メッセージの送信先を設定し、配信の再試行時間を指定します。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/06/2019
+ms.date: 10/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933374"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794032"
 ---
 # <a name="dead-letter-and-retry-policies"></a>配信不能と再試行に関する方針
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: ef46c1a631a79dd1c50b2bf7d263538298de233f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333436"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598217"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure Network Watcher に関してよく寄せられる質問 (FAQ)
 [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) サービスは、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツール スイートを提供します。 この記事では、そのサービスに関する一般的な質問への回答を示します。
@@ -54,16 +54,26 @@ Network Watcher のコンポーネントと各コンポーネントの価格に�
 ### <a name="which-regions-is-network-watcher-available-in"></a>Network Watcher を利用できるリージョン
 [Azure サービスの利用可能性のページ](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)で、最新のリージョン別の利用可能性を確認できます。
 
+### <a name="what-are-resource-limits-on-network-watcher"></a>Network Watcher でのリソース制限とは何ですか?
+すべての制限については、[サービス制限の](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits)に関するページを参照してください。  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>リージョンごとに Network Watcher の 1 つのインスタンスしか許可されないのはなぜですか?
+機能が動作するためには、Network Watcher は 1 つのサブスクリプションに対して一度だけ有効にされる必要があります。これはサービスの上限ではありません。
+
 ## <a name="nsg-flow-logs"></a>NSG フロー ログ
 
 ### <a name="what-does-nsg-flow-logs-do"></a>NSG フロー ログの機能
 Azure ネットワーク リソースは、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) を使用して結合および管理できます。 NSG フロー ログを使用すると、NSG を介してすべてのトラフィックに関する 5 組のフロー情報をログに記録できます。 未処理のフロー ログは Azure ストレージ アカウントに書き込まれ、必要に応じてさらに処理、分析、クエリ実行、またはエクスポートできます。
 
-### <a name="are-there-caveats-for-using-nsg-flow-logs"></a>NSG フロー ログの使用に関する注意事項
+### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>NSG フロー ログの使用について、何か注意することはありますか?
 NSG フロー ログを使用するための前提条件はありません。 ただし、2 つの制限があります。
 - **サービス エンドポイントが VNET に存在してはなりません。** NSG フロー ログは、VM 上のエージェントからストレージ アカウントに出力されます。 ただし、現在のところ、ログをストレージ アカウントに直接出力することだけが可能であり、VNET に追加したサービス エンドポイントを使用することはできません。
 
-この問題を解決するには、次の 2 つの方法があります。
+- **ストレージ アカウントにファイアウォールを設定してはいけません。** 内部的な制限により、NSG フロー ログがストレージ アカウントで機能するためには、パブリック インターネット経由でストレージ アカウントにアクセスできる必要があります。 それでもトラフィックは Azure を通じて内部でルーティングされ、追加のエグレス料金は発生しません。
+
+これらの問題を回避する方法については、次の 2 つの質問を参照してください。 これらの両方の制限は、2020 年 1 月までに対処される予定です。
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>サービス エンドポイントによって NSG フローログを使用する方法
 
 *オプション 1:VNET エンドポイントを使用せずに Azure ストレージ アカウントに出力するように NSG フロー ログを再構成する*
 
@@ -88,8 +98,7 @@ NSG フロー ログを使用するための前提条件はありません。 �
 
 Microsoft.Storage サービス エンドポイントが必要な場合は、NSG フロー ログを無効にする必要があります。
 
-
-- **ストレージ アカウントにはファイアウォールを使用できません**。内部的な制限により、NSG フロー ログがストレージ アカウントで機能するためには、パブリック インターネット経由でストレージ アカウントにアクセスできる必要があります。 それでもトラフィックは Azure を通じて内部でルーティングされ、追加のエグレス料金は発生しません。
+### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>ストレージ アカウント上でファイアウォールを無効にする方法
 
 この問題は、"すべてのネットワーク" がストレージ アカウントにアクセスできるようにすることで解決します。
 
@@ -97,8 +106,6 @@ Microsoft.Storage サービス エンドポイントが必要な場合は、NSG 
 * ポータルのグローバル検索でストレージ アカウントの名前を入力して、ストレージ アカウントに移動します
 * **[設定]** セクションで、 **[ファイアウォールと仮想ネットワーク]** を選択します
 * **[すべてのネットワーク]** を選択して保存します。 既に選択されている場合、変更は必要ありません。  
-
-これらの両方の制限は、2020 年 1 月までに対処される予定です。
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>フロー ログのバージョン 1 と 2 の違い
 フロー ログ バージョン 2 では、"*フロー状態*" という概念が導入されており、転送するバイトとパケットに関する情報が保存されます。 詳細については、[こちら](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)を参照してください。

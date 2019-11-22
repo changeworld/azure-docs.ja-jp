@@ -1,17 +1,17 @@
 ---
-title: Azure Virtual Machines を新しいサブスクリプションまたはリソース グループに移動する | Microsoft Docs
+title: 新しいサブスクリプションまたはリソース グループへ Azure VM を移動する
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tomfitz
-ms.openlocfilehash: 443d6f2bcbb61d9106b079a4e63c48bb433d19c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: faeba1c0d7342a4c00f19d4cee8d67b8dbde8e6a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286738"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528425"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 

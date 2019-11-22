@@ -1,23 +1,18 @@
 ---
 title: Azure の Office 365 管理ソリューション | Microsoft Docs
 description: この記事では、Azure での Office 365 ソリューションの構成と使用について詳しく説明します。  Azure Monitor で作成された Office 365 レコードの詳細な説明が含まれています。
-services: operations-management-suite
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/13/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.date: 08/13/2019
+ms.openlocfilehash: 84af0484ed9fb792bef6bbbe9c53395b569acb3c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061620"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793864"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -74,7 +69,10 @@ Office 365 サブスクリプションから:
 
 - ユーザー名:管理者アカウントの電子メール アドレス。
 - テナント ID: Office 365 サブスクリプションの一意の ID。
-- クライアント ID: Office 365 クライアントを表す 16 文字の文字列。
+
+Azure Active Directory での Office 365 アプリケーションの作成と構成中には、次の情報が収集されます。
+
+- アプリケーション (クライアント) ID:Office 365 クライアントを表す 16 文字の文字列。
 - クライアント シークレット: 認証に必要な暗号化された文字列。
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Azure Active Directory に Office 365 アプリケーションを作成する
@@ -92,6 +90,9 @@ Office 365 サブスクリプションから:
 1. **[登録]** をクリックし、アプリケーションの情報を検証します。
 
     ![登録済みのアプリ](media/solution-office-365/registered-app.png)
+
+1. 前に収集した情報の残りの部分と共に、アプリケーション (クライアント) ID を保存します。
+
 
 ### <a name="configure-application-for-office-365"></a>Office 365 のアプリケーションを構成する
 
@@ -122,7 +123,7 @@ Office 365 サブスクリプションから:
     ![構成する](media/solution-office-365/secret.png)
  
 1. 新しいキーの **[説明]** と **[期間]** に入力します。
-1. **[追加]** をクリックし、生成された**値**をコピーします。
+1. **[追加]** をクリックして、クライアント シークレットとして生成された **[値]** を、前に収集した情報の残りの部分と共に保存します。
 
     ![構成する](media/solution-office-365/keys.png)
 
@@ -193,7 +194,12 @@ Office 365 サブスクリプションから:
     
     ![管理者の同意](media/solution-office-365/admin-consent.png)
 
+> [!NOTE]
+> 存在しないページにリダイレクトされる可能性があります。 それは成功と見なしてください。
+
 ### <a name="subscribe-to-log-analytics-workspace"></a>Log Analytics ワークスペースへの送信
+
+最後の手順では、Log Analytics ワークスペースにアプリケーションを送信します。 これは PowerShell スクリプトでも行うことができます。
 
 最後の手順では、Log Analytics ワークスペースにアプリケーションを送信します。 これは PowerShell スクリプトでも行うことができます。
 
@@ -241,18 +247,20 @@ Office 365 サブスクリプションから:
                     $authority = "https://login.windows.net/$adTenant";
                     $ARMResource ="https://management.azure.com/";break} 
                     }
-    
+
     Function RESTAPI-Auth { 
-    
-    $global:SubscriptionID = $Subscription.SubscriptionId
+    $global:SubscriptionID = $Subscription.Subscription.Id
     # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource;
+    $resourceAppIdURIARM=$ARMResource
     # Authenticate and Acquire Token 
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
+    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
+    $global:authResultARM.Wait()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
+
     $authHeader
     }
     
@@ -276,7 +284,7 @@ Office 365 サブスクリプションから:
     
     Function Connection-API
     {
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     
@@ -320,7 +328,7 @@ Office 365 サブスクリプションから:
     Function Office-Subscribe-Call{
     try{
     #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
     
@@ -542,7 +550,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 | プロパティ | Description |
 |:--- |:--- |
-| Type | *OfficeActivity* |
+| 種類 | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
 | OfficeWorkload | レコードが参照する Office 365 サービス。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Operation | ユーザーまたは管理者アクティビティの名前。  |
@@ -741,7 +749,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
-| Query | 説明 |
+| クエリ | 説明 |
 | --- | --- |
 |Office 365 サブスクリプションでのすべての操作のカウント |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint サイトの使用率|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|

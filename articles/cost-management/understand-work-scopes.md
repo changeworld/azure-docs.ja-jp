@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374479"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597093"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -132,6 +132,7 @@ Microsoft 顧客契約の課金アカウントには、次のスコープがあ�
 
 EA の課金スコープとは異なり、顧客契約の課金アカウントは 1 つのディレクトリにバインドされ "_ます_"。複数の Azure AD ディレクトリにまたがるサブスクリプションを持つことはできません。
 
+顧客契約の課金範囲は、パートナーには適用されません。 パートナーの役割とアクセス許可については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」のドキュメントに示されています。
 
 顧客契約の課金スコープでは、次のロールがサポートされます。
 
@@ -159,7 +160,21 @@ AWS 統合が完了した後、「[AWS のコストと使用状況レポート�
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>クラウド ソリューション プロバイダー (CSP) のスコープ
 
-クラウド ソリューション プロバイダー (CSP) パートナーは、現在 Cost Management ではサポートされていません。 代わりに、[パートナー センター](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)を使用できます。
+次のスコープは、Microsoft Customer Agreement 上で、顧客による CSP 向けにサポートされています。
+
+- **課金アカウント** - 複数の Microsoft 製品およびサービスの顧客契約を表します。 顧客契約の課金アカウントの機能は、EA 加入契約と同じではありません。 EA 加入契約は、課金プロファイルとより密接に関連しています。
+
+    リソースの種類: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+
+- **課金プロファイル** - 請求書に含まれるサブスクリプションを定義します。 課金プロファイルは、請求書が生成されるスコープなので、機能的に EA 加入契約に相当します。 同様に、使用量ベースではない購入 (Marketplace や予約など) は、このスコープでのみ表示されます。
+
+    リソースの種類: `Microsoft.Billing/billingAccounts/billingProfiles`
+
+- **顧客** - パートナーによって Microsoft 顧客契約にオンボードされる特定の顧客に関連付けられたサブスクリプションのグループを表します。
+
+*グローバル管理者*および*管理エージェント*のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
+
+Azure Cost Management は、顧客が Microsoft 顧客契約を保持している場合には、CSP パートナーの顧客をサポートします。 Microsoft 顧客契約をまだ結んでいない CSP サポート顧客ついては、[パートナー センター](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)に関するページを参照してください。
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Cost Management でスコープを切り替える
 

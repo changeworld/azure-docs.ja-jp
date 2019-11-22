@@ -1,37 +1,35 @@
 ---
-title: 検索インデックスのクエリ拡張のシノニム - Azure Search
-description: Azure Search インデックスの検索クエリの範囲を拡張するシノニム マップを作成します。 一覧で指定した同等の語句を含むように範囲が拡大されます。
-author: brjohnstmsft
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+title: 検索インデックス上でのクエリ拡張のシノニム
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search インデックス上での検索クエリの範囲を拡張するシノニム マップを作成します。 一覧で指定した同等の語句を含むように範囲が拡大されます。
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331175"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794222"
 ---
-# <a name="synonyms-in-azure-search"></a>Azure Search のシノニム
+# <a name="synonyms-in-azure-cognitive-search"></a>Azure Cognitive Search でのシノニム
 
 検索エンジンのシノニムは、ユーザーが実際に用語を提供する必要がなく、クエリのスコープを暗黙的に拡張する同等の用語を関連付けます。 たとえば、用語 "dog" と、"canine" と "puppy" のシノニムの関連付けを指定すると、"dog"、"canine"、または "puppy" を含むすべてのドキュメントがクエリのスコープ内に収まります。
 
-Azure Search では、シノニムの拡張は、クエリ時に行われます。 既存の処理を停止させることなく、シノニム マップをサービスに追加できます。 インデックスを再構築する必要なく、**synonymMaps** プロパティをフィールド定義に追加できます。
+Azure Cognitive Search では、シノニムの拡張は、クエリ時に行われます。 既存の処理を停止させることなく、シノニム マップをサービスに追加できます。 インデックスを再構築する必要なく、**synonymMaps** プロパティをフィールド定義に追加できます。
 
 ## <a name="create-synonyms"></a>シノニムを作成する
 
-シノニムの作成はポータルでサポートされませんが、REST API または .NET SDK を使用できます。 REST を使い始めるときは、[Postman](search-get-started-postman.md)と、[シノニム マップの作成](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) API を使用する公式化された要求を使用することをお勧めします。 C# 開発者は、[C# を使用した Azure Search でのシノニムの追加に関するページ](search-synonyms-tutorial-sdk.md)から始めることができます。
+シノニムの作成はポータルでサポートされませんが、REST API または .NET SDK を使用できます。 REST を使い始めるときは、[Postman](search-get-started-postman.md)と、[シノニム マップの作成](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) API を使用する公式化された要求を使用することをお勧めします。 C# 開発者は、[C# を使用した Azure Cognitive Search へのシノニムの追加](search-synonyms-tutorial-sdk.md)に関するページから始めることができます。
 
 サービス側の暗号化の保存で[顧客管理のキー](search-security-manage-encryption-keys.md)を使用している場合は、その保護をシノニム マップのコンテンツに適用することもできます。
 
 ## <a name="use-synonyms"></a>同義語を使用する
 
-Azure Search のシノニムのサポートは、シノニム マップに基づき、これを定義して、サービスにアップロードします。 これらのマップは独立したリソース (インデックスやデータ ソースなど) を構成し、検索サービスで、任意のインデックスの任意の検索可能フィールドで使用できます。
+Azure Cognitive Search でのシノニムのサポートは、定義してサービスにアップロードされるシノニム マップに基づいています。 これらのマップは独立したリソース (インデックスやデータ ソースなど) を構成し、検索サービスで、任意のインデックスの任意の検索可能フィールドで使用できます。
 
 シノニム マップとインデックスは独立して保持されます。 シノニム マップを定義して、サービスにアップロードしたら、フィールド定義に **synonymMaps** という新しいプロパティを追加することによって、フィールドでシノニム機能を有効にできます。 シノニム マップの作成、更新、および削除は、常にドキュメント全体の操作になります。つまり、シノニム マップの一部を段階的に作成、更新、または削除することはできません。 1 つのエントリの更新でも、再読み込みが必要になります。
 

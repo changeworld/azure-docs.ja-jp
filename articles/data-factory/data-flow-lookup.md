@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387870"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596552"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory のマッピング データ フローの参照変換
 
@@ -29,6 +29,20 @@ ms.locfileid: "72387870"
 
 参照変換の後に後続の変換を使用して一致する各行の結果を検査します。これには式の関数`isMatch()`を使用して、参照により行と一致したかどうかに基づいて、ロジック内で選択を行えるようにします。
 
+![参照パターン](media/data-flow/lookup111.png "参照パターン")
+
+参照変換を使用した後、```isMatch()``` 関数上で分割を行う条件分割変換を追加できます。 上記の例では、一致する行が上のストリームを進み、一致しない行は ```NoMatch``` ストリームを進みます。
+
+## <a name="first-or-last-value"></a>最初または最後の値
+
+参照から複数の一致が見つかった場合は、最初または最後の一致どちらかを選択して、一致する複数の行を減らすことができます。 参照後に、集計変換を使用してこれを行うことができます。
+
+この場合、```PickFirst``` という集計変換を使用して、参照の一致から最初の値を選択します。
+
+![参照の集計](media/data-flow/lookup333.png "参照の集計")
+
+![最初の参照](media/data-flow/lookup444.png "最初の参照")
+
 ## <a name="optimizations"></a>最適化
 
 Data Factory では、データ フローがスケールアウト Spark 環境で実行されます。 データセットがワーカー ノードのメモリ領域に収まる場合、参照のパフォーマンスを最適化することができます。
@@ -45,4 +59,5 @@ Data Factory では、データ フローがスケールアウト Spark 環境�
 
 ## <a name="next-steps"></a>次の手順
 
-[結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換は、ADF マッピング データ フローで同様のタスクを実行します。 引き続き、これらの変換について見ていきましょう。
+* [結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換は、ADF マッピング データ フローで同様のタスクを実行します。 引き続き、これらの変換について見ていきましょう。
+* ```isMatch()``` と共に[条件分割](data-flow-conditional-split.md)を使用して、一致する値と一致しない値に行を分割します

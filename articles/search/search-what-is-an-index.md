@@ -1,26 +1,25 @@
 ---
-title: インデックスの定義と概念を作成する - Azure Search
-description: 構成要素や物理的構造など、Azure Search でのインデックスの用語と概念の概要を説明します。
-author: HeidiSteen
+title: インデックスの定義と概念を作成する
+titleSuffix: Azure Cognitive Search
+description: 構成要素や物理的構造など、Azure Cognitive Search でのインデックスの用語と概念について示します。
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647364"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794207"
 ---
-# <a name="create-a-basic-index-in-azure-search"></a>Azure Search で基本的なインデックスを作成する
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Azure Cognitive Search で基本インデックスを作成する
 
-Azure Search における*インデックス*とは、Azure Search サービスでのフィルターされたおよびフル テキストの検索に使用される*ドキュメント*などの構成要素の永続的なストアです。 概念的に、ドキュメントはインデックス内で検索可能なデータの 1 つの単位です。 たとえば、eコマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
+Azure Cognitive Search における*インデックス*とは、Azure Cognitive Search サービスでのフィルターされたフル テキストの検索に使用される、*ドキュメント*などの構成要素の永続ストアです。 概念的に、ドキュメントはインデックス内で検索可能なデータの 1 つの単位です。 たとえば、eコマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
 
-インデックスを追加またはアップロードすると、ユーザーが提供したスキーマを基に Azure Search によって物理構造が作成されます。 たとえば、インデックス内のフィールドが検索可能としてマークされていると、そのフィールドの転置インデックスが作成されます。 後で、ドキュメントを追加またはアップロードするとき、または検索クエリを Azure Search に送信するときは、検索サービス内の特定のインデックスに対して要求を送信していることになります。 フィールドにドキュメントの値を読み込むことを、"*インデックス付け*" またはデータ インジェストと呼びます。
+インデックスを追加またはアップロードすると、ユーザーが提供したスキーマを基に Azure Cognitive Search によって物理構造が作成されます。 たとえば、インデックス内のフィールドが検索可能としてマークされていると、そのフィールドの転置インデックスが作成されます。 後で、ドキュメントを追加またはアップロードするとき、または検索クエリを Azure Cognitive Search に送信するときは、検索サービス内の特定のインデックスに対して要求を送信していることになります。 フィールドにドキュメントの値を読み込むことを、"*インデックス付け*" またはデータ インジェストと呼びます。
 
 インデックスの作成は、ポータル、[REST API](search-create-index-rest-api.md)、または [.NET SDK](search-create-index-dotnet.md) で行うことができます。
 
@@ -32,7 +31,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 
 2. **データのインポート**を使用できない場合でも、[ポータルで初期インデックスを作成](search-create-index-portal.md)し、フィールドとデータ型を追加し、 **[インデックスの追加]** ページのコントロールを使用して属性を割り当てることができます。 ポータルでは、さまざまなデータ型に対してどの属性が使用できるかが表示されます。 インデックスの作成が初めての場合、これが役立ちます。
 
-   ![データ型ごとに属性が表示されるインデックス追加ページ](media/search-create-index-portal/field-attributes.png "データ型ごとに属性が表示されるインデックス追加ページ")
+   ![データ型別に属性を示すインデックス ページを追加する](media/search-create-index-portal/field-attributes.png "データ型別に属性を示すインデックス ページを追加する")
   
    **[作成]** をクリックすると、このインデックスをサポートしているすべての物理構造が検索サービスに作成されます。
 
@@ -40,7 +39,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 
    ここからはコード ベースのアプローチに切り替えます。 既に作成されているインデックスは編集できないため、ポータルはイテレーションにあまり適していません。 ただし、残りのタスクには Postman や REST を使用できます。
 
-4. [インデックスにデータを読み込みます](search-what-is-data-import.md)。 Azure Search は JSON ドキュメントを受け入れます。 プログラムによってデータを読み込むために、Postman を使用し、要求ペイロードに JSON ドキュメントを含めることができます。 データを JSON で表現することが簡単でない場合、この手順に最も多くの労力がかかります。
+4. [インデックスにデータを読み込みます](search-what-is-data-import.md)。 Azure Cognitive Search によって JSON ドキュメントが受け入れられます。 プログラムによってデータを読み込むために、Postman を使用し、要求ペイロードに JSON ドキュメントを含めることができます。 データを JSON で表現することが簡単でない場合、この手順に最も多くの労力がかかります。
 
 5. インデックスをクエリし、結果を確認し、期待した結果が得られるようになるまでインデックス スキーマをさらに反復処理します。 インデックスのクエリには [**Search エクスプローラー**](search-explorer.md)または Postman を使用できます。
 
@@ -52,7 +51,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 
 ## <a name="components-of-an-index"></a>インデックスのコンポーネント
 
-スキーマ的には、Azure Search のインデックスは次の要素で構成されます。 
+概略としては、Azure Cognitive Search のインデックスは次の要素で構成されます。 
 
 "[*フィールド コレクション*](#fields-collection)" は通常、インデックスの最大の部分であり、各フィールドには、名前、型、および使用方法を決定する許容される動作を示す属性が設定されます。 他の要素としては、[suggester](#suggesters)、[スコアリング プロファイル](#scoring-profiles)、カスタマイズをサポートする構成要素を含む[アナライザー](#analyzers)、[CORS](#cors)、および[暗号化キー](#encryption-key) オプションがあります。
 
@@ -146,7 +145,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 スキーマを定義する際に、インデックスの各フィールドの名前、型、属性を指定する必要があります。 フィールドの型によって、そのフィールドに格納されているデータが分類されます。 属性は個々のフィールドに設定されてフィールドの使用方法を指定します。 次の表に、指定できる型と属性をまとめます。
 
 ### <a name="data-types"></a>データの種類
-| Type | 説明 |
+| 種類 | 説明 |
 | --- | --- |
 | *Edm.String* |フルテキスト検索 (単語区切り、ステミングなど) のために必要に応じてトークン化できるテキスト。 |
 | *Collection(Edm.String)* |フルテキスト検索のために必要に応じてトークン化することのできる一連の文字列。 コレクション内の項目の数に理論上の上限はありませんが、ペイロードのサイズに対する 16 MB の上限がコレクションに適用されます。 |
@@ -157,7 +156,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 | *Edm.DateTimeOffset* |OData V4 形式で表された日時の値です (例: `yyyy-MM-ddTHH:mm:ss.fffZ` または `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`)。 |
 | *Edm.GeographyPoint* |地球上の地理的な場所を表すポイントです。 |
 
-Azure Search のサポートされるデータ型の詳細については、[このページ](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)を参照してください。
+Azure Cognitive Search の[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)について、こちらで詳細情報を確認してください。
 
 ### <a name="index-attributes"></a>インデックスの属性
 
@@ -183,14 +182,14 @@ Azure Search のサポートされるデータ型の詳細については、[こ
 
 インデックスは[組み込みの real estateサンプル](search-get-started-portal.md) データ ソースに基づいており、このデータ ソースはポータルでインデックスを作成したりクエリを実行したりできます。 インデックスのスキーマは表示されませんが、インデックス名に基づいて属性を推測できます。 たとえば、*realestate-searchable* インデックスでは **searchable** 属性が選択されていて他には何もなく、*realestate-retrievable* インデックスでは **retrievable** 属性が選択されていて他には何もなく、以下同様です。
 
-![属性選択に基づいたインデックスのサイズ](./media/search-what-is-an-index/realestate-index-size.png "属性選択に基づいたインデックスのサイズ")
+![属性の選択に基づいたインデックス サイズ](./media/search-what-is-an-index/realestate-index-size.png "属性の選択に基づいたインデックス サイズ")
 
-これらのインデックスのバリエーションは人為的なものですが、属性がストレージに与える影響の広範な比較のために参照できます。 設定 **retrievable** はインデックスのサイズを増加させますか? いいえ。 **Suggester** にフィールドを追加するとインデックスのサイズが増加しますか? はい。
+これらのインデックスのバリエーションは人為的なものですが、属性がストレージに与える影響の広範な比較のために参照できます。 設定 **retrievable** はインデックスのサイズを増加させますか? No. **Suggester** にフィールドを追加するとインデックスのサイズが増加しますか? はい。
 
 フィルターと並べ替えをサポートするインデックスは、フルテキスト検索しかサポートしないインデックスに比べて大きくなります。 フィルターと並べ替えは完全一致をクエリするので、ドキュメントがそのまま格納されることがその理由です。 これに対し、フルテキスト検索とあいまい検索をサポートする検索可能フィールドでは転置インデックスを使用します。転置インデックスはトークン化された語句によって事前設定され、使用するディスク容量はドキュメント全体よりも少なくなります。
 
 > [!Note]
-> ストレージ アーキテクチャは Azure Search の実装の詳細と考えられており、予告なく変更されることがあります。 現在の動作が将来も変わらないという保証はありません。
+> ストレージ アーキテクチャは Azure Cognitive Search の実装の詳細と考えられており、予告なく変更されることがあります。 現在の動作が将来も変わらないという保証はありません。
 
 ## <a name="suggesters"></a>サジェスター
 suggester は、検索においてオートコンプリートまたは先行入力クエリをサポートするために使用されるインデックス内のフィールドが定義されている、スキーマのセクションです。 通常、ユーザーが検索クエリを入力している間に部分的な検索文字列が [Suggestions (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) に送信されて、API は検索候補の語句のセットを返します。 
@@ -205,7 +204,7 @@ suggester は、検索においてオートコンプリートまたは先行入�
 
 ## <a name="analyzers"></a>アナライザー
 
-アナライザー要素では、フィールドに対して使用される言語アナライザーの名前が設定されます。 利用可能なアナライザーの範囲の詳細については、[Azure Search インデックスへのアナライザーの追加](search-analyzers.md)に関する記事を参照してください。 アナライザーは検索可能フィールドでのみ使用できます。 フィールドに割り当てられたアナライザーは、インデックスを再構築しない限り変更できません。
+アナライザー要素では、フィールドに対して使用される言語アナライザーの名前が設定されます。 利用可能なアナライザーの範囲の詳細については、[Azure Cognitive Search インデックスへのアナライザーの追加](search-analyzers.md)に関する記事を参照してください。 アナライザーは検索可能フィールドでのみ使用できます。 フィールドに割り当てられたアナライザーは、インデックスを再構築しない限り変更できません。
 
 ## <a name="cors"></a>CORS
 
@@ -221,7 +220,7 @@ CORS に対しては以下のオプションを設定できます。
 
 ## <a name="encryption-key"></a>暗号化キー
 
-既定では、Azure Search のすべてのインデックスは、Microsoft のマネージド キーを使用して暗号化されますが、Key Vault 内で**顧客管理のキー**を使用してインデックスを暗号化するように構成することもできます。 詳細については、[Azure Search での暗号化キーの管理に関するページ](search-security-manage-encryption-keys.md)を参照してください。
+既定では、Azure Cognitive Search のすべてのインデックスは、Microsoft のマネージド キーを使用して暗号化されますが、Key Vault 内で**顧客管理のキー**を使用してインデックスを暗号化するように構成することもできます。 詳細については、[Azure Cognitive Search での暗号化キーの管理](search-security-manage-encryption-keys.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

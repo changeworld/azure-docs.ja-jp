@@ -1,5 +1,5 @@
 ---
-title: Media Services エンティティのフィルター処理、順序付け、ページング - Azure | Microsoft Docs
+title: Media Services エンティティのフィルター処理、順序付け、およびページング - Azure | Microsoft Docs
 description: この記事では、Azure Media Services エンティティのフィルター処理、順序付け、ページングについて説明します。
 services: media-services
 documentationcenter: ''
@@ -12,20 +12,20 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ed509ac8fea43a9c011bbbf76c1dc433cd78d43c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298952"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693309"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、ページング
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、およびページング
 
 このトピックでは、Azure Media Services v3 エンティティを一覧表示するときに使用できる OData クエリ オプションと改ページ位置の自動調整のサポートについて説明します。
 
 ## <a name="considerations"></a>考慮事項
 
-* Datetime 型のエンティティのプロパティは、常に UTC 形式です。
+* `Datetime` 型のエンティティのプロパティは、常に UTC 形式です。
 * クエリ文字列内の空白文字は、要求を送信する前に URL エンコードする必要があります。
 
 ## <a name="comparison-operators"></a>比較演算子
@@ -34,21 +34,21 @@ ms.locfileid: "72298952"
 
 等価演算子:
 
-- `eq`:フィールドが定数値**と等しい**かどうかをテストします
-- `ne`:フィールドが定数値**と等しくない**かどうかをテストします
+- `eq`:フィールドが定数値 "*と等しい*" かどうかをテストします。
+- `ne`:フィールドが定数値 "*と等しくない*" かどうかをテストします。
 
 範囲演算子:
 
-- `gt`:フィールドが定数値**より大きい**かどうかをテストします
-- `lt`:フィールドが定数値**より小さい**かどうかをテストします
-- `ge`:フィールドが定数値**以上である**かどうかをテストします
-- `le`:フィールドが定数値**以下である**かどうかをテストします
+- `gt`:フィールドが定数値 "*より大きい*" かどうかをテストします。
+- `lt`:フィールドが定数値 "*より小さい*" かどうかをテストします。
+- `ge`:フィールドが定数 "*以上である*" かどうかをテストします。 value
+- `le`:フィールドが定数値 "*以下である*" かどうかをテストします。
 
 ## <a name="filter"></a>filter
 
-**$filter** - フィルターを使用して OData フィルター パラメーターを指定して、関心のあるオブジェクトのみを検索します。
+`$filter` を使用して OData フィルター パラメーターを指定し、関心のあるオブジェクトのみを検索します。
 
-次の REST の例では、アセットの alternateId に対してフィルター処理を実行します。
+次の REST の例では、アセットの `alternateId` 値に対してフィルター処理を行います。
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
@@ -63,28 +63,28 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Order by (並べ替え)
 
-**$orderby**  - これを使用して、返されたオブジェクトを指定したパラメーターで並べ替えます。 例:    
+`$orderby` を使用して、指定したパラメーターによって返されたオブジェクトを並べ替えます。 例:    
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-結果を昇順または降順で並べ替えるには、フィールド名に `asc` または `desc` をスペースで区切って追加します。 たとえば、「 `$orderby properties/created desc` 」のように入力します。
+結果を昇順または降順で並べ替えるには、フィールド名に `asc` または `desc` をスペースで区切って追加します。 (例: `$orderby properties/created desc`)。
 
 ## <a name="skip-token"></a>スキップ トークン
 
-**$skiptoken** - クエリ応答に多数の項目が含まれている場合、サービスは結果の次のページを取得するためのスキップ トークン (`@odata.nextLink`) 値を返します。 この方法を利用して、結果セット全体のページングを実行できます。
+クエリ応答に多数の項目が含まれている場合、サービスでは結果の次のページを取得するために使用する `$skiptoken` (`@odata.nextLink`) 値を返します。 それを利用して、結果セット全体をページングします。
 
-Media Services v3 では、ページ サイズを構成することはできません。 ページ サイズは、エンティティの種類によって異なります。詳細については、以下の個々のセクションをお読みください。
+Media Services v3 では、ページ サイズを構成することはできません。 ページ サイズは、エンティティの種類によって異なります。 詳細については、以降の各セクションを参照してください。
 
 コレクションのページング中にエンティティが作成または削除された場合、(コレクションの中で、ダウンロードされていない部分に対する変更の場合) その変更は返される結果に反映されます。 
 
 > [!TIP]
-> 常に `nextLink` を使用してコレクションを列挙する必要があります。特定のページ サイズに依存しないでください。
+> 常に `nextLink` を使用してコレクションを列挙し、特定のページ サイズに依存しないことが必要になります。
 >
-> `nextLink` は、エンティティのページが複数存在する場合にのみ表示されます。
+> `nextLink` 値は、エンティティのページが複数存在する場合にのみ表示されます。
 
-たとえば、$skiptoken が使用されている次の例について考えてみましょう。 必ず、*amstestaccount* を自分のアカウント名に置き換え、*api-version* の値を最新バージョンに設定してください。
+`$skiptoken` が使用されている次の例について考えてみましょう。 必ず、*amstestaccount* を自分のアカウント名に置き換え、*api-version* の値を最新バージョンに設定してください。
 
 次のようにアセットの一覧を要求すると、
 
@@ -136,7 +136,7 @@ while (currentPage.NextPageLink != null)
 
 ## <a name="using-logical-operators-to-combine-query-options"></a>論理演算子を使用したクエリ オプションの結合
 
-Media Services v3 では、'or' および 'and' 論理演算子がサポートされています。 
+Media Services v3 では、**OR** および **AND** 論理演算子がサポートされています。 
 
 次の REST の例では、ジョブの状態を確認します。
 
@@ -153,7 +153,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 ## <a name="filtering-and-ordering-options-of-entities"></a>エンティティのフィルター処理および順序付けオプション
 
-次の表は、フィルター処理および順序付けオプションをさまざまなエンティティに適用する方法を示しています。
+次の表は、フィルター処理および順序付けオプションをさまざまなエンティティに適用できる方法を示しています。
 
 |エンティティ名|プロパティ名|filter|順序|
 |---|---|---|---|

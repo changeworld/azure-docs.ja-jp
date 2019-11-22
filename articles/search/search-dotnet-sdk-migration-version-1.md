@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK バージョン 1.1 へのアップグレード - Azure Search
+title: Azure Search .NET SDK バージョン 1.1 へのアップグレード
+titleSuffix: Azure Cognitive Search
 description: 以前の API バージョンから Azure Search .NET SDK バージョン 1.1 にコードを移行します。 新機能と必要なコード変更について説明します。
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 8227e1b372af1eee43db59da2cfad165d67be9ae
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 159aaa8424c3d7a711b587464b80696929f02186
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183273"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792376"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK バージョン 1.1 へのアップグレード
+# <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK バージョン 1.1 へのアップグレード
 
 バージョン 1.0.2-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 1.1 を使用するようにアプリケーションをアップグレードできます。
 

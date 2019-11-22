@@ -1,24 +1,24 @@
 ---
-title: 検索サービスのリソースの使用状況とクエリのメトリックを監視する - Azure Search
-description: ログ記録を有効にし、Azure Search サービスからクエリ アクティビティのメトリック、リソースの使用状況、およびその他のシステム データを取得します。
-author: HeidiSteen
+title: リソースの使用状況とクエリ メトリックを監視する
+titleSuffix: Azure Cognitive Search
+description: ログ記録を有効にし、クエリ アクティビティのメトリック、リソースの使用状況、およびその他のシステム データを Azure Cognitive Search サービスから取得します。
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/16/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331211"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793482"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Azure Cognitive Search 上でリソース消費とクエリ アクティビティを監視する
 
-Azure Search サービスの [概要] ページでは、リソースの使用状況、クエリのメトリック、およびさらに多くのインデックス、インデクサー、データ ソースを作成するのに使用できるクォータについてのシステム データを見ることができます。 また、ポータルを使用して、ログ分析または永続的なデータ コレクションに使用される別のリソースを構成することもできます。 
+Azure Cognitive Search サービスの [概要] ページでは、リソースの使用状況、クエリのメトリック、およびさらに多くのインデックス、インデクサー、データ ソースを作成するのに使用できるクォータ量についてのシステム データを表示できます。 また、ポータルを使用して、ログ分析または永続的なデータ コレクションに使用される別のリソースを構成することもできます。 
 
 ログを設定することは、自己診断と操作履歴の保持に役立ちます。 内部的には、ログがバックエンドに存在しているのは、ユーザーがサポート チケットを提出した場合に調査と分析が行われるのに十分な短い時間です。 ログ情報を制御してそれにアクセスする場合は、この記事で説明されているソリューションのいずれかを設定する必要があります。
 
@@ -30,8 +30,8 @@ Azure Search サービスの [概要] ページでは、リソースの使用状
 
 **[利用状況]** タブには、現在の[制限](search-limits-quotas-capacity.md)を基準にしたリソースの可用性が表示されます。 次の図は、オブジェクトが種類ごとに 3 つ、ストレージが 50 MB に制限されている Free サービスを示したものです。 Basic または Standard サービスでは上限がこれより高く、パーティションの数を増やすと最大ストレージがそれに比例して増加します。
 
-![有効な制限の基準とした利用状況](./media/search-monitor-usage/usage-tab.png
- "有効な制限の基準とした利用状況")
+![有効な制限を基準とした使用状況の状態](./media/search-monitor-usage/usage-tab.png
+ "有効な制限を基準とした使用状況の状態")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>1 秒あたりのクエリ数 (QPS) およびその他のメトリック
 
@@ -40,7 +40,7 @@ Azure Search サービスの [概要] ページでは、リソースの使用状
 
 これらの値は概数であり、システムによる要求の処理の余裕についての概要を提供することが意図されています。 実際の QPS は、ポータルで報告された値より高い、または低い可能性があります。
 
-![1 秒あたりのクエリ数アクティビティ](./media/search-monitor-usage/monitoring-tab.png "1 秒あたりのクエリ数アクティビティ")
+![1 秒あたりのクエリ数のアクティビティ](./media/search-monitor-usage/monitoring-tab.png "1 秒あたりのクエリ数のアクティビティ")
 
 ## <a name="activity-logs"></a>アクティビティ ログ
 
@@ -52,7 +52,7 @@ Azure Search サービスの [概要] ページでは、リソースの使用状
 
 ## <a name="add-on-monitoring-solutions"></a>アドオンの監視ソリューション
 
-Azure Search では管理対象のオブジェクトの外部にデータは格納されません。つまり、ログ データは外部に保存する必要があります。 ログ データを保存したい場合は、次のリソースのいずれかを構成できます。 
+Azure Cognitive Search では、管理しているオブジェクトの外にあるデータは保存されません。つまり、ログ データは外部に保存する必要があります。 ログ データを保存したい場合は、次のリソースのいずれかを構成できます。 
 
 次の表は、ログの格納、および Application Insights によるサービス操作とクエリ ワークロードの詳細監視の追加に関して、オプションを比較したものです。
 
@@ -64,17 +64,17 @@ Azure Search では管理対象のオブジェクトの外部にデータは格�
 
 Azure Monitor ログと Blob Storage は、どちらも無料のサービスとして利用でき、Azure サブスクリプションの有効期間にわたって無料で試すことができます。 Application Insights は、アプリケーション データのサイズが一定の制限以下である限りは無料でサインアップして使用できます (詳しくは[価格のページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください)。
 
-次のセクションでは、Azure Blob Storage を有効にして使用し、Azure Search の操作によって作成されるログ データを収集してそれにアクセスする手順を説明します。
+次のセクションでは、Azure Blob Storage を有効にして使用し、Azure Cognitive Search の操作によって作成されたログ データを収集してアクセスする手順を説明します。
 
 ## <a name="enable-logging"></a>ログの有効化
 
-インデックス作成とクエリのワークロードのログ記録は、既定では無効であり、ログ記録インフラストラクチャと長期外部ストレージ両方のアドオン ソリューションに依存します。 それだけでは、Azure Search で保持されるデータは作成および管理すされるオブジェクトだけなので、ログを別の場所に保存する必要があります。
+インデックス作成とクエリのワークロードのログ記録は、既定では無効であり、ログ記録インフラストラクチャと長期外部ストレージ両方のアドオン ソリューションに依存します。 それだけでは、Azure Cognitive Search で保持されるデータは作成および管理されるオブジェクトだけなので、ログを別の場所に保存する必要があります。
 
 このセクションでは、Blob Storage を使用して、ログに記録されたイベントとメトリック データを格納する方法を説明します。
 
-1. まだない場合は、[ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 この演習で使用したすべてのリソースを後で削除する場合にクリーンアップが簡単なように、Azure Search と同じリソース グループにそれを配置することができます。
+1. まだない場合は、[ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 この演習で使用したすべてのリソースを削除する場合に、後でクリーンアップが簡単なように、Azure Cognitive Search と同じリソース グループにそれを配置することができます。
 
-   ストレージ アカウントは、Azure Search と同じリージョンに存在する必要があります。
+   ストレージ アカウントは、Azure Cognitive Search と同じリージョンに存在する必要があります。
 
 2. 検索サービスの [概要] ページを開きます。 左側のナビゲーション ウィンドウで **[監視]** まで下にスクロールし、 **[監視を有効にする]** をクリックします。
 
@@ -158,14 +158,14 @@ ThrottledSearchQueriesPercentage の場合は、最小値、最大値、平均�
 
 1. Azure portal でストレージ アカウントを開きます。 
 
-2. 左側のナビゲーション ウィンドウで、 **[BLOB]** をクリックします。 **insights-logs-operationlogs** と **insights-metrics-pt1m** が表示されるはずです。 これらのコンテナーは、ログ データが Blob Storage にエクスポートされるときに、Azure Search によって作成されます。
+2. 左側のナビゲーション ウィンドウで、 **[BLOB]** をクリックします。 **insights-logs-operationlogs** と **insights-metrics-pt1m** が表示されるはずです。 これらのコンテナーは、ログ データが Blob Storage にエクスポートされるときに、Azure Cognitive Search によって作成されます。
 
 3. .json ファイルが表示されるまで、フォルダー階層を下に移動します。  コンテキスト メニューを使用して、ファイルをダウンロードします。
 
 ファイルのダウンロードが済んだら、JSON エディターで開いて内容を表示します。
 
 ## <a name="use-system-apis"></a>システム API を使用する
-Azure Search REST API または .NET SDK を使用することにより、プログラムでサービス メトリック、インデックスとインデクサーの情報、ドキュメント数にアクセスできます。
+Azure Cognitive Search REST API および .NET SDK の両方を使用することにより、プログラムからサービス メトリック、インデックスとインデクサーの情報、ドキュメント数にアクセスできます。
 
 * [サービスの統計情報の取得](/rest/api/searchservice/get-service-statistics)
 * [インデックス統計の取得](/rest/api/searchservice/get-index-statistics)

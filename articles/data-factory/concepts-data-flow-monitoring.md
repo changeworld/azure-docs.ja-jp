@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387988"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597109"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 
@@ -24,7 +24,7 @@ ms.locfileid: "72387988"
 
 ![データ フローの監視](media/data-flow/mon001.png "データ フローの監視")
 
-実行時間や状態など、このレベルの統計も表示されます。 アクティビティ レベルの実行 ID は、パイプライン レベルの実行 ID とは異なります。 以前のレベルの実行 ID は、パイプラインの実行 ID です。 眼鏡をクリックすると、データ フローの実行に関する詳細が表示されます。
+実行時間や状態など、このレベルでの統計も表示されます。 アクティビティ レベルの実行 ID は、パイプライン レベルの実行 ID とは異なります。 以前のレベルの実行 ID は、パイプラインの実行 ID です。 眼鏡をクリックすると、データ フローの実行に関する詳細が表示されます。
 
 ![データ フローの監視](media/data-flow/mon002.png "データ フローの監視")
 
@@ -47,6 +47,11 @@ ms.locfileid: "72387988"
   * 計算:列は、条件付き処理、またはデータ フローの式内で使用しますが、シンク内には置かないでください。
   * 派生:列は、フロー内で生成した新しい列です (ソース内には存在していなかったものです)。
   * マップ:列は、ソースから発生しており、シンク フィールドにマッピングされています。
+  * データ フローの状態:実行の現在の状態
+  * クラスターの起動時間:データ フロー実行のための JIT Spark コンピューティング環境を取得する時間
+  * 変換の数:フロー内で実行されている変換ステップの数
+  
+![データ フローの監視](media/data-flow/monitornew.png "データ フローの監視 新規")  
   
 ## <a name="monitor-icons"></a>監視アイコン
 
