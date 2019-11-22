@@ -49,6 +49,8 @@
           href: routing-coverage.md
         - name: モビリティの対象範囲
           href: mobility-coverage.md
+        - name: 天気の対象範囲
+          href: weather-coverage.md
     - name: ローカライズ サポート
       href: supported-languages.md
     - name: サポートされているマップ スタイル
@@ -57,6 +59,8 @@
       href: zoom-levels-and-tile-grid.md
     - name: Mobility Service のデータ構造
       href: mobility-service-data-structure.md
+    - name: 天気サービスの概念
+      href: weather-services-concepts.md
 - name: ハウツー ガイド
   items:
     - name: Maps のアカウントを管理する
@@ -185,6 +189,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: Render Service
           href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: Render Service V2
+          href: 'https://docs.microsoft.com/rest/api/maps/renderv2'
         - name: Route Service
           href: 'https://docs.microsoft.com/rest/api/maps/route'
         - name: 検索サービス
@@ -195,6 +201,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/timezone'
         - name: Traffic Service
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: 天気サービス
+          href: 'https://docs.microsoft.com/rest/api/maps/weather'
         - name: Maps アカウント管理
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

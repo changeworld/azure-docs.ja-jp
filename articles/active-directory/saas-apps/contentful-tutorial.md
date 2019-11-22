@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ffad0656169c49268eac6aa4a107f3445cba614
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599725"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Contentful の統合
 
@@ -48,18 +48,18 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Contentful では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+> このアプリケーションの識別子は固定文字列値です。 1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-contentful-from-the-gallery"></a>ギャラリーからの Contentful の追加
 
 Azure AD への Contentful の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Contentful を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Contentful**」と入力します。
-1. 結果ウィンドウで **[Contentful]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. 結果から **[Contentful]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>Contentful の Azure AD シングル サインオンの構成とテスト
 
@@ -86,22 +86,22 @@ Contentful で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    **[応答 URL]** ボックスに、`https://be.contentful.com/sso/<organization_id>/consume` のパターンを使用して URL を入力します
+    - **[応答 URL]** テキスト ボックスに、Contentful の SSO 設定ページの ACS (Assertion Consumer Service) URL をコピーします。 次のようになります: `https://be.contentful.com/sso/<organization_id>/consume`
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://be.contentful.com/sso/<organization_id>/login` という形式で URL を入力します。
+    - **[サインオン URL]** テキスト ボックスに、同じ ACS (Assertion Consumer Service) URL をコピーします。 次のようになります: `https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Contentful クライアント サポート チーム](mailto:support@contentful.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 ACS (Assertion Consumer Service) URL を Contentful の SSO 設定ページからコピーして、これらの値を実際の応答 URL とサインオン URL で更新します。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificateraw.png)
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-1. **[Contentful のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Contentful の設定]** セクションで、ログイン URL をコピーして Contentful SSO を構成します。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![構成 URL のコピー](media/contentful-tutorial/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -125,17 +125,26 @@ Contentful で Azure AD SSO を構成してテストするには、次の構成�
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスの [ユーザー] の一覧から **[B.Simon]** を選択し、ページの下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーションにロール値が必要な場合は、 **[ロールの選択]** ダイアログ ボックスでユーザーに適したロールを一覧から選択し、ページの下部にある **[選択]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログ ボックスで、 **[割り当て]** ボタンをクリックします。
 
 ## <a name="configure-contentful-sso"></a>Contentful SSO の構成
 
-**Contentful** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [Contentful サポート チーム](mailto:support@contentful.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Contentful** 側でシングル サインオンを構成するには、次の手順に従います。
+
+1. [Contentful](https://app.contentful.com) で、 **[組織の設定]** にある SSO の設定ページに移動します。
+1. **[SSO の設定]** をクリックします。
+1. Azure AD の **[Contentful の設定]** セクションからログイン URL をコピーして貼り付けます。
+1. Azure AD からダウンロードした Base64 証明書ファイルから証明書をコピーして貼り付けます。
+1. SP によって開始されるログインの SSO 名を設定します。
+1. **[Enable SSO]\(SSO を有効にする\)** をクリックします。
+
+うまくいかない場合は、[Contentful サポート チーム](mailto:support@contentful.com)にご連絡ください。
 
 ### <a name="create-contentful-test-user"></a>Contentful テスト ユーザーの作成
 
@@ -151,7 +160,7 @@ Contentful で Azure AD SSO を構成してテストするには、次の構成�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

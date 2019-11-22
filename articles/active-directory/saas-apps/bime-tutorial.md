@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bdcf0729-c880-4c95-b739-0f6345b17dd8
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a34c688b7d8e12dac1d76b3e03fb1b50583c6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f792798e724387b6917c23d1bde0c2c68fa8a270
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106257"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル:Azure Active Directory と Bime の統合
 
@@ -136,11 +137,11 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
 2. ツールバーで、 **[管理者]** 、 **[アカウント]** の順にクリックします。
   
-    ![管理](./media/bime-tutorial/ic775558.png "Admin")
+    ![管理者](./media/bime-tutorial/ic775558.png "[Admin]")
 
 3. アカウント構成ページで、次の手順に従います。
   
-    ![シングル サインオンの構成](./media/bime-tutorial/ic775559.png "Configure Single Sign-On")
+    ![[シングル サインオンの構成]](./media/bime-tutorial/ic775559.png "Configure single sign-on")
 
     a. **[SAML 認証を有効にする]** を選択します。
 
@@ -211,15 +212,15 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 2. ツールバーで、 **[管理者]** 、 **[ユーザー]** の順にクリックします。
 
-    ![管理](./media/bime-tutorial/ic775561.png "Admin")
+    ![管理者](./media/bime-tutorial/ic775561.png "[Admin]")
 
 3. **[ユーザー リスト]** で、 **[新しいユーザーの追加]** ("+") をクリックします。
 
-    ![ユーザー](./media/bime-tutorial/ic775562.png "Users")
+    ![ユーザー](./media/bime-tutorial/ic775562.png "ユーザー")
 
 4. **[ユーザーの詳細]** ダイアログ ページで、次の手順を実行します。
 
-    ![ユーザーの詳細](./media/bime-tutorial/ic775563.png "User Details")
+    ![ユーザーの詳細](./media/bime-tutorial/ic775563.png "[ユーザーの詳細]")
 
     a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 

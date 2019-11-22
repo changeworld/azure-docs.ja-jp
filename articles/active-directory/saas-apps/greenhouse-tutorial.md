@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 78ec1766-4f79-4f16-9a66-d5584c4b6151
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 274477deb37006ba5fee6a92438e1763a4f36294
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd5a52ea47d7166c6f197b233d1a10ff063ff7c5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101598"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル:Azure Active Directory と Greenhouse の統合
 
@@ -193,15 +194,15 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
 
 2. 上部のメニューで、 **[構成]** 、 **[ユーザー]** の順にクリックします。
    
-    ![ユーザー](./media/greenhouse-tutorial/ic790791.png "Users")
+    ![ユーザー](./media/greenhouse-tutorial/ic790791.png "ユーザー")
 
 3. **[新しいユーザー]** をクリックします。
    
-    ![New User](./media/greenhouse-tutorial/ic790792.png "New User")
+    ![[New User]\(新しいユーザー\)](./media/greenhouse-tutorial/ic790792.png "[新しいユーザー]")
 
 4. **[新しいユーザーの追加]** セクションで、次の手順を実行します。
    
-    ![Add New User](./media/greenhouse-tutorial/ic790793.png "Add New User")
+    ![新しいユーザーの追加](./media/greenhouse-tutorial/ic790793.png "[新しいユーザーの追加]")
 
     a. **[ユーザー電子メールの入力]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
 

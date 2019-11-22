@@ -4,14 +4,35 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 1007533df077c58d9e4d57f9e86b035730ea917f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ec8fb6efab126dcf5556a9abfdf58d1fd69d4212
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904035"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882301"
 ---
-## <a name="set-up-your-device-in-unity"></a>Unity でデバイスをセットアップする
+## <a name="androidtabandroid"></a>[Android](#tab/Android)
+
+Java Android サンプルでは、デバイス間での共有がサポートされています。
+Android Studio の samples フォルダーから `SharedActivity.java` ファイルを開きます。 `SharedActivity.java` ファイルの `SharingAnchorsServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="iostabios"></a>[iOS](#tab/iOS)
+
+Objective-C iOS サンプルでは、デバイス間での共有がサポートされています。
+samples フォルダー内の `SharedDemoViewController.m` ファイルを開きます。 `SharedActivity.java` ファイルの `SharingAnchorsServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="xamarintabxamarin"></a>[Xamarin](#tab/Xamarin)
+
+Xamarin Android および iOS の両方のサンプルで、デバイス間での共有がサポートされています。
+samples フォルダー内の `AccountDetails.cs` ファイルを開きます。 `SharedActivity.java` ファイルの `AnchorSharingServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="unitytabunity"></a>[Unity](#tab/Unity)
 
 [!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
@@ -45,10 +66,7 @@ Android デバイスにサインインし、USB ケーブルを使用してコ�
 
 **[Export Project]\(プロジェクトのエクスポート\)** がオフであることを確認します。 **[Build And Run]\(ビルドして実行\)** を選択します。 `.apk` ファイルを保存するように求められます。 任意の名前を選択できます。
 
-アプリが起動したら、 **[Choose A Demo]\(A デモの選択\)** ダイアログで、左右の矢印を使用して **[LocalShare]** オプションを選択し、 **[Go!]\(実行\)** をクリックします。 アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。
-
-最初のシナリオでは、後で同じデバイスまたは別のデバイス上で探知できるアンカーを作成できます。
-2 つ目のシナリオでは、アプリを同じデバイスまたは別のデバイス上で既に実行している場合、前もって共有されているアンカーを探知できます。 シナリオを選択すると、実行する操作がアプリによって案内されます。 たとえば、環境情報を収集するためにデバイスをあちこちに移動させることを求められます。 その後、環境内にアンカーを配置し、それが保存されるまで待機したりします。
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ### <a name="deploy-to-an-ios-device"></a>iOS デバイスにデプロイする
 
@@ -58,9 +76,6 @@ Android デバイスにサインインし、USB ケーブルを使用してコ�
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-アプリが起動したら、 **[Choose A Demo]\(A デモの選択\)** ダイアログで、左右の矢印を使用して **[LocalShare]** オプションを選択し、 **[Go!]\(実行\)** をクリックします。 アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。
-
-最初のシナリオでは、後で同じデバイスまたは別のデバイス上で探知できるアンカーを作成できます。
-2 つ目のシナリオでは、アプリを同じデバイスまたは別のデバイス上で既に実行している場合、前もって共有されているアンカーを探知できます。 シナリオを選択すると、実行する操作がアプリによって案内されます。 たとえば、環境情報を収集するためにデバイスをあちこちに移動させることを求められます。 その後、環境内にアンカーを配置し、それが保存されるまで待機したりします。
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 Xcode で、 **[Stop]\(停止\)** を選択してアプリを停止します。

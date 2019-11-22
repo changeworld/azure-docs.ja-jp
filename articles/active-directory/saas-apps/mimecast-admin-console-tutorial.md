@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bbbd73d1856ba5d3dc19873c56fce622b272939
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9edadd6462052f82f92c05c1678f845ece856cfb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097336"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル:Azure Active Directory と Mimecast Admin Console の統合
 
@@ -135,19 +136,19 @@ Mimecast Admin Console で Azure AD シングル サインオンを構成する�
 
 2. **[サービス]\>[アプリケーション]** に移動します。
 
-    ![Services](./media/mimecast-admin-console-tutorial/ic794998.png "Services")
+    ![サービス](./media/mimecast-admin-console-tutorial/ic794998.png "サービス")
 
 3. **[認証プロファイル]** をクリックします。
 
-    ![Authentication Profiles](./media/mimecast-admin-console-tutorial/ic794999.png "Authentication Profiles")
+    ![認証プロファイル](./media/mimecast-admin-console-tutorial/ic794999.png "[認証プロファイル]")
     
 4. **[新しい認証プロファイル]** をクリックします。
 
-    ![New Authentication Profiles](./media/mimecast-admin-console-tutorial/ic795000.png "New Authentication Profiles")
+    ![新しい認証プロファイル](./media/mimecast-admin-console-tutorial/ic795000.png "新しい認証プロファイル")
 
 5. **[認証プロバイダー]** セクションで、次の手順に従います。
 
-    ![Authentication Profile](./media/mimecast-admin-console-tutorial/ic795015.png "Authentication Profile")
+    ![認証プロファイル](./media/mimecast-admin-console-tutorial/ic795015.png "認証プロバイダー")
     
     a. **[説明]** テキストボックスに、構成の名前を入力します。
     
@@ -233,19 +234,19 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
 
 2. **[ディレクトリ]\>[内部]** に移動します。
    
-    ![Directories](./media/mimecast-admin-console-tutorial/ic795003.png "Directories")
+    ![Directories](./media/mimecast-admin-console-tutorial/ic795003.png "ディレクトリ")
 
 3. **[新規ドメインの登録]** をクリックします。
    
-    ![Register New Domain](./media/mimecast-admin-console-tutorial/ic795004.png "Register New Domain")
+    ![新規ドメインの登録](./media/mimecast-admin-console-tutorial/ic795004.png "[新規ドメインの登録]")
 
 4. 新しいドメインを作成したら、 **[新規アドレス]** をクリックします。
    
-    ![New Address](./media/mimecast-admin-console-tutorial/ic795005.png "New Address")
+    ![新規アドレス](./media/mimecast-admin-console-tutorial/ic795005.png "[新規アドレス]")
 
 5. 新しいアドレスのダイアログで、次の手順に従います。
    
-    ![保存](./media/mimecast-admin-console-tutorial/ic795006.png "保存")
+    ![[[Save]]](./media/mimecast-admin-console-tutorial/ic795006.png "保存")
    
     a. 該当するテキストボックスに、プロビジョニングする有効な Azure AD アカウントの **[メール アドレス]** 、 **[グローバル名]** 、 **[パスワード]** 、 **[パスワードの確認]** 属性を入力します。
 

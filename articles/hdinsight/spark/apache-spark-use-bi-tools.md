@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル:Azure HDInsight での Power BI を使用した Apache Spark データの分析 '
+title: チュートリアル:Power BI を使用して Azure HDInsight の Apache Spark データを分析する
 description: チュートリアル - Microsoft Power BI を使用して、HDInsight クラスターに格納されている Apache Spark データを視覚化する
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: fe7560f68690233d7a333724274a259d693123d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: c2d6a5acba304d7421b000cab2ee5cee5b85e5ce
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035694"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241360"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル:HDInsight での Power BI を使用した Apache Spark データの分析
 
@@ -104,11 +104,11 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
 
     2. **[BuildingID]** フィールドを**軸**にドラッグし、 **[ActualTemp]** と **[TargetTemp]** の各フィールドを**値**にドラッグします。
 
-        ![値列を追加する](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "値列を追加する")
+        ![値の列を追加](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "値の列を追加")
 
         図は次のようになります。
 
-        ![領域グラフの合計](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "領域グラフの合計")
+        ![面グラフの合計](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "面グラフの合計")
 
         既定では、**ActualTemp** および **TargetTemp** の合計が表示されます。 [視覚化] ウィンドウ内の **ActualTemp** と **TragetTemp** の横にある下矢印を選択すると、 **[合計]** が選択されていることを確認できます。
 
@@ -118,7 +118,7 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
 
         次のスクリーンショットのようにデータが視覚化されます。 グラフの上にカーソルを移動すると、関連データを含むツール ヒントが表示されます。
 
-        ![領域グラフ](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "領域グラフ")
+        ![面グラフ](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "面グラフ")
 
 9. **[ファイル]**  >  **[保存]** に移動し、ファイルの名前 `BuildingTemperature` を入力して **[保存]** を選択します。
 
@@ -130,11 +130,11 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 1. **[ホーム]** タブで **[発行]** をクリックします。
 
-    ![Power BI Desktop から発行](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Power BI Desktop から発行")
+    ![Power BI Desktop から発行する](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Power BI Desktop から発行する")
 
 1. データセットを発行してレポートするワークスペースを選択して、 **[選択]** をクリックします。 次の図では、既定値の **[マイ ワークスペース]** が選択されています。
 
-    ![データセットを発行してレポートするワークスペースを選択する](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "データセットを発行してレポートするワークスペースを選択する") 
+    ![データセットを発行してレポートするワークスペースの選択](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "データセットを発行してレポートするワークスペースの選択") 
 
 1. 発行に成功したら、 **[Open 'BuildingTemperature.pbix' in Power BI]\('BuildingTemperature.pbix' を Power BI で開く\)** をクリックします。
 
@@ -142,11 +142,11 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 1. Power BI サービスで、 **[資格情報を入力する]** をクリックします。
 
-    ![Power BI サービスで資格情報を入力する](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Power BI サービスで資格情報を入力する")
+    ![Power BI サービスで資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Power BI サービスで資格情報を入力")
 
 1. **[資格情報を編集]** をクリックします。
 
-    ![Power BI サービスで資格情報を編集する](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Power BI サービスで資格情報を編集する")
+    ![Power BI サービスで資格情報を編集](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Power BI サービスで資格情報を編集")
 
 1. HDInsight のログイン アカウント情報を入力し、 **[サインイン]** をクリックします。 既定のアカウント名は *admin* です。
 
@@ -154,7 +154,7 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 1. 左ウィンドウ枠で **[ワークスペース]**  >  **[マイ ワークスペース]**  >  **[レポート]** の順に移動して、 **[BuildingTemperature]** をクリックします。
 
-    ![左ウィンドウ枠の [レポート] に表示されるレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "左ウィンドウ枠の [レポート] に表示されるレポート")
+    ![左側のペインのレポートの下に一覧表示されたレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "左側のペインのレポートの下に一覧表示されたレポート")
 
     左ウィンドウ枠の **[データセット]** にも **[BuildingTemperature]** が表示されます。
 
@@ -166,7 +166,7 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 1. [新しいダッシュボード] を選択して、名前 `Building temperature` を入力し、 **[ピン留め]** をクリックします。
 
-    ![新しいダッシュボードにピン留めする](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "新しいダッシュボードにピン留めする")
+    ![新しいダッシュボードにピン留め](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "新しいダッシュボードにピン留め")
 
 1. レポートで、 **[ダッシュボードへ移動]** をクリックします。
 

@@ -112,14 +112,6 @@
               items:
                 - name: SQL Database 監査の概要
                   href: sql-database-auditing.md
-        - name: ネットワークのセキュリティ
-          items:
-            - name: 仮想ネットワーク エンドポイント
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: 仮想ネットワーク エンドポイント - PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: Private Link
-              href: sql-database-private-endpoint-overview.md
         - name: セキュリティ管理
           items:
             - name: Advanced Data Security
@@ -136,14 +128,22 @@
               href: sql-database-feature-restrictions.md
         - name: 単一データベース セキュリティ
           items:
+            - name: ネットワーク アクセス制御
+              href: sql-database-networkaccess-overview.md
+            - name: IP ベースのファイアウォール
+              href: sql-database-firewall-configure.md
+            - name: vNet ファイアウォール規則
+              items:
+                - name: vNet エンドポイント
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: vNet エンドポイント - PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Private Link
+              href: sql-database-private-endpoint-overview.md
             - name: 監査ログの形式
               href: sql-database-audit-log-format.md
             - name: 条件付きアクセス
               href: sql-database-conditional-access.md
-            - name: サーバーレベルの IP ファイアウォール規則
-              items:
-                - name: 作成と管理
-                  href: sql-database-firewall-configure.md
         - name: Managed Instance のセキュリティ
           items:
             - name: パブリック エンドポイントのセキュリティ保護
@@ -526,7 +526,7 @@
               href: sql-database-elastic-pool-manage.md
         - name: データベース サーバーのリソース
           items:
-            - name: データベース サーバーのリソース制限
+            - name: データベース リソースの制限
               href: sql-database-resource-limits-database-server.md
             - name: 接続のアーキテクチャ
               href: sql-database-connectivity-architecture.md

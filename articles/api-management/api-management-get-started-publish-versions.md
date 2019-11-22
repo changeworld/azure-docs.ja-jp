@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1be70d3eb74d3a8f0eddb1e5c22e4234987276b3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073686"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176822"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>API の複数のバージョンを発行する 
 
@@ -94,11 +94,10 @@ Azure API Management では、呼び出し元が API の必要なバージョン
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>開発者ポータルを参照してバージョンを確認する
 
 1. 上部のメニューから **[開発者ポータル]** を選択します。
-2. **[API]** を選択します。 **[Demo Conference API]** に **[オリジナル]** と **[v1]** の各バージョンが示されていることがわかります。
-3. **[v1]** を選択します。
-4. 一覧で最初の操作の **[要求 URL]** を確認します。 API の URL パスに "**v1**" が含まれています。
-
-    ![API コンテキスト メニュー - バージョンの追加](media/api-management-getstarted-publish-versions/developer_portal.png)
+2. **[API]** を選択し、 **[Demo Conference API]\(デモ会議 API\)** をクリックします。
+3. API 名の横に複数のバージョンのドロップダウンが表示されます。
+4. **[v1]** を選択します。
+5. 一覧で最初の操作の **[要求 URL]** を確認します。 API の URL パスに "**v1**" が含まれています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f0db4fb0-7eec-48c2-9c7a-beab1ab49bc2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714e67bc7cf9e9c928eb4fd0764619041c9c1424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092589"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>チュートリアル:Azure Active Directory と Samanage の統合
 
@@ -132,15 +133,15 @@ Samanage で Azure AD シングル サインオンを構成するには、次の
 
 2. **[Dashboard]** をクリックして、左のナビゲーション ウィンドウで **[Setup]** を選択します。
    
-    ![Dashboard](./media/samanage-tutorial/tutorial_samanage_001.png "Dashboard")
+    ![ダッシュボード](./media/samanage-tutorial/tutorial_samanage_001.png "ダッシュボード")
 
 3. **[シングル サインオン]** をクリックします。
    
-    ![シングル サインオン](./media/samanage-tutorial/tutorial_samanage_002.png "Single Sign-On")
+    ![シングル サインオン](./media/samanage-tutorial/tutorial_samanage_002.png "[Single Sign-On]")
 
 4. **[Login using SAML (SAML でログイン)]** セクションで、次の手順を実行します。
    
-    ![SAML でログイン](./media/samanage-tutorial/tutorial_samanage_003.png "Login using SAML")
+    ![[Login using SAML]\(SAML でログイン\)](./media/samanage-tutorial/tutorial_samanage_003.png "[Login using SAML (SAML でログイン)]")
  
     a. **[Enable Single Sign-On with SAML (SAML でのシングル サインオンを有効にする)]** をクリックします。  
  
@@ -220,19 +221,19 @@ Samanage の場合、プロビジョニングは手動で行います。
 
 2. **[Dashboard (ダッシュボード)]** をクリックし、左のナビゲーション ウィンドウで **[Setup (セットアップ)]** を選択します。
    
-    ![Setup](./media/samanage-tutorial/tutorial_samanage_001.png "Setup")
+    ![セットアップ](./media/samanage-tutorial/tutorial_samanage_001.png "セットアップ")
 
 3. **[ユーザー]** タブをクリックします。
    
-    ![ユーザー](./media/samanage-tutorial/tutorial_samanage_006.png "Users")
+    ![ユーザー](./media/samanage-tutorial/tutorial_samanage_006.png "ユーザー")
 
 4. **[新しいユーザー]** をクリックします。
    
-    ![New User](./media/samanage-tutorial/tutorial_samanage_007.png "New User")
+    ![[New User]\(新しいユーザー\)](./media/samanage-tutorial/tutorial_samanage_007.png "[新しいユーザー]")
 
 5. プロビジョニングする Azure Active Directory アカウントの **[Name]\(名前\)** と **[Email Address]\(電子メール アドレス\)** を入力し、 **[Create user]\(ユーザーの作成\)** をクリックします。
    
-    ![Create User](./media/samanage-tutorial/tutorial_samanage_008.png "Create User")
+    ![ユーザーの作成](./media/samanage-tutorial/tutorial_samanage_008.png "[Create User]")
    
    >[!NOTE]
    >Azure Active Directory アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。 Samanage から提供されている他の Samanage ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。

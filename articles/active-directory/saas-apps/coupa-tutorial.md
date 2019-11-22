@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 47f27746-9057-4b9c-991e-3abf77710f73
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b4db749d1191179b3f4f1d9bb13d77925697f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 031a88bb8a8832fbe7acb124436cce6aaeb02e21
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104545"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル:Azure Active Directory と Coupa の統合
 
@@ -146,11 +147,11 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
 
 2. **[Setup]\>[Security Control]** の順に移動します。
 
-    ![Security Controls](./media/coupa-tutorial/ic791900.png "Security Controls")
+    ![セキュリティ制御](./media/coupa-tutorial/ic791900.png "[シングル サインオンの設定]")
 
 3. **[Coupa 資格情報を使用してログイン]** セクションで、次の手順を実行します。
 
-    ![Coupa SP metadata](./media/coupa-tutorial/ic791901.png "Coupa SP metadata")
+    ![Coupa SP メタデータ](./media/coupa-tutorial/ic791901.png "Coupa SP メタデータ")
 
     a. **[SAML を使用してログイン]** を選択します。
 
@@ -221,15 +222,15 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 
 2. 上部のメニューで、 **[設定]** 、 **[ユーザー]** の順にクリックします。
 
-    ![ユーザー](./media/coupa-tutorial/ic791908.png "Users")
+    ![ユーザー](./media/coupa-tutorial/ic791908.png "ユーザー")
 
 3. **Create** をクリックしてください。
 
-    ![Create Users](./media/coupa-tutorial/ic791909.png "Create Users")
+    ![ユーザーの作成](./media/coupa-tutorial/ic791909.png "ユーザーの作成")
 
 4. **[ユーザーを作成]** セクションで、次の手順を実行します。
 
-    ![ユーザーの詳細](./media/coupa-tutorial/ic791910.png "User Details")
+    ![ユーザーの詳細](./media/coupa-tutorial/ic791910.png "[ユーザーの詳細]")
 
     a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの属性として、**ログイン**、**名**、**姓**、**シングル サインオン ID**、**電子メール**を入力します。
 

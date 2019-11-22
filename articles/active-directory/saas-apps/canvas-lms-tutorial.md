@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d96d1addf1028c2651ed837f3dab66f12d5d5fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab998b6d9aec663123f0bd2428e4c6f1767f1846
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105859"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>チュートリアル:Azure Active Directory と Canvas の統合
 
@@ -136,15 +137,15 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
 2. **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
 
-    ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+    ![キャンバス](./media/canvas-lms-tutorial/ic775990.png "キャンバス")
 
 3. 左側のナビゲーション ウィンドウで **[認証]** を選択し、 **[新しい SAML 構成を追加]** をクリックします。
 
-    ![Authentication](./media/canvas-lms-tutorial/ic775991.png "Authentication")
+    ![認証](./media/canvas-lms-tutorial/ic775991.png "認証")
 
 4. [現在の統合] ページで、次の手順を実行します。
 
-    ![Current Integration](./media/canvas-lms-tutorial/ic775992.png "Current Integration")
+    ![現在の統合](./media/canvas-lms-tutorial/ic775992.png "現在の統合")
 
     a. **[IdP Entity ID]\(IdP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
@@ -223,19 +224,19 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
 2. **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
 
-   ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+   ![キャンバス](./media/canvas-lms-tutorial/ic775990.png "キャンバス")
 
 3. **[ユーザー]** をクリックします。
 
-   ![ユーザー](./media/canvas-lms-tutorial/ic775995.png "Users")
+   ![ユーザー](./media/canvas-lms-tutorial/ic775995.png "ユーザー")
 
 4. **[新しいユーザーの追加]** をクリックします。
 
-   ![ユーザー](./media/canvas-lms-tutorial/ic775996.png "Users")
+   ![ユーザー](./media/canvas-lms-tutorial/ic775996.png "ユーザー")
 
 5. [新しいユーザーの追加] ダイアログ ページで、次の手順を実行します。
 
-   ![ユーザーの追加](./media/canvas-lms-tutorial/ic775997.png "Add User")
+   ![ユーザーの追加](./media/canvas-lms-tutorial/ic775997.png "ユーザーの追加")
 
    a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 

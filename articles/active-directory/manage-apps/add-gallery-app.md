@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477284"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062566"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Azure AD 組織にギャラリー アプリを追加する
 
@@ -34,27 +34,30 @@ Azure Active Directory (Azure AD) には、Enterprise Single Sign-on に対応�
 
 1. **[Azure Active Directory]** ウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。
 
-    ![エンタープライズ アプリケーションを開く](media/add-application-portal/open-enterprise-apps.png)
+    ![エンタープライズ アプリケーションを開く](media/add-gallery-app/open-enterprise-apps.png)
 
-1. **[新しいアプリケーション]** を選択します。
 
-    ![新規アプリケーション](media/add-application-portal/new-application.png)
+3. テナントにギャラリー アプリを追加するには、 **[新しいアプリケーション]** を選択します。
 
-1. **[ギャラリーから追加する]** の下の検索ボックスに、追加するアプリケーションの名前を入力します。 
+    ![[新しいアプリケーション] を選択してテナントにギャラリー アプリケーションを追加](media/add-gallery-app/new-application.png)
 
-    ![名前またはカテゴリによる検索](media/add-application-portal/categories.png)
+ 4. 新しいギャラリー プレビュー エクスペリエンスに切り替えます。 **[アプリケーションの追加]** ページの上部にあるバナーで、 **[Click here to try out the new and improved app gallery]\(改善された新しいアプリ ギャラリーを試すには、こちらをクリックしてください\)** というリンクを選択します。
 
-1. 結果からアプリケーションを選択します。
+5. **[Azure AD ギャラリーの参照]** ペインが開き、クラウド プラットフォーム、オンプレミス アプリケーション、および注目のアプリケーションのタイルが表示されます。 なお、 **[注目のアプリケーション]** セクションに一覧表示されているアプリケーションには、フェデレーション シングル サインオン (SSO) とプロビジョニングをサポートしているかどうかを示すアイコンがあります。
 
-1. (オプション) アプリケーション固有のフォームで、組織のニーズに合わせてアプリケーションの名前を編集できます。
+    ![名前またはカテゴリーでアプリを検索する](media/add-gallery-app/browse-gallery.png)
 
-1. **[追加]** を選択します。 アプリケーションの **[概要]** ページが開かれます。
+6. 追加するアプリケーションをギャラリーで参照するか、検索ボックスに名前を入力してアプリケーションを検索します。 次に、結果からアプリケーションを選択します。 (必要な場合) フォームで、組織のニーズに合わせてアプリケーションの名前を編集できます。
+
+    ![ギャラリーからアプリケーションを追加する方法を示します](media/add-gallery-app/create-application.png)
+
+7. **作成** を選択します。 [作業の開始] ページが表示され、組織のアプリケーションを構成するためのオプションが表示されます。
 
 ## <a name="configure-user-sign-in-properties"></a>ユーザーのサインイン プロパティを構成する
 
 1. **[プロパティ]** を選択して、編集用のプロパティ ウィンドウを開きます。
 
-    ![プロパティの編集ウィンドウ](media/add-application-portal/edit-properties.png)
+    ![プロパティの編集ウィンドウ](media/add-gallery-app/edit-properties.png)
 
 1. 以下のオプションを設定して、アプリケーションに割り当てられているユーザーまたは割り当てられていないユーザーがアプリケーションにサインインする方法と、ユーザーがアクセス パネルでアプリケーションを表示できるかどうかを決定します。
 
@@ -94,13 +97,13 @@ Azure Active Directory (Azure AD) には、Enterprise Single Sign-on に対応�
 
 1. カスタム ロゴを使用するには、215 x 215 ピクセルのロゴを作成し、それを PNG 形式で保存します。 その後、ロゴを参照し、アップロードします。
 
-    ![ロゴを変更する](media/add-application-portal/change-logo.png)
+    ![ロゴを変更する](media/add-gallery-app/change-logo.png)
 
 1. 完了したら、 **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD 組織にアプリケーションを追加したので、使用する[シングル サインオン方法を選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)し、以下の該当する記事を参照します。
+Azure AD 組織にアプリケーションを追加したので、使用する[シングル サインオン方法を選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)し、次の該当する記事を参照します。
 
 - [SAML ベースのシングル サインオンの構成](configure-single-sign-on-non-gallery-applications.md)
 - [パスワード シングル サインオンの構成](configure-password-single-sign-on-non-gallery-applications.md)

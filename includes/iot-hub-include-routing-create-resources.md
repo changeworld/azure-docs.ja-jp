@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181794"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808862"
 ---
 ## <a name="create-base-resources"></a>基本のリソースの作成
 
-メッセージ ルーティングを構成するには、IoT ハブ、ストレージ アカウント、および Service Bus キューを事前に作成する必要があります。 これらのリソースは、このチュートリアルのパート 1 の 4 つの記事 (Azure CLI、Azure PowerShell、Azure portal、または Azure Resource Manager テンプレート) のいずれかを使用して作成できます。
+メッセージ ルーティングを構成するには、IoT ハブ、ストレージ アカウント、および Service Bus キューを事前に作成する必要があります。 これらのリソースは、このチュートリアルのパート 1 にある 4 つの記事 (Azure portal、Azure Resource Manager テンプレート、Azure CLI、または Azure PowerShell) のいずれかを使用して作成できます。
 
 すべてのリソースに同じリソース グループと場所を使います。 最後に、リソース グループを削除することによって、すべてのリソースを一度に削除できます。
 
-以降のセクションで、実行する手順について説明します。
+次に、以下のセクションで実行する手順の概要を示します。 
 
 1. [リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)を作成します。
 

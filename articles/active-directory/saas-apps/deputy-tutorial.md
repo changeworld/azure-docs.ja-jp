@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8b61bc01e729472c140253f8f936b6ec0dd1b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0b52a56f51e4dcf5f27eddcd68ff17973df21c0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104246"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>チュートリアル:Azure Active Directory と Deputy の統合
 
@@ -254,7 +255,7 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
 
 2. ナビゲーション ウィンドウの上部にある **[ユーザー]** をクリックします。
    
-    ![ユーザー](./media/deputy-tutorial/tutorial_deputy_001.png "People")
+    ![ユーザー](./media/deputy-tutorial/tutorial_deputy_001.png "ユーザー")
 
 3. **[ユーザーの追加]** ボタンをクリックし、 **[Add a single person (1 人のユーザーの追加)]** をクリックします。
    
@@ -262,7 +263,7 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
 
 4. 次の手順を実行し、 **[Save & Invite (保存および招待)]** をクリックします。
    
-    ![New User](./media/deputy-tutorial/tutorial_deputy_003.png "New User")
+    ![[New User]\(新しいユーザー\)](./media/deputy-tutorial/tutorial_deputy_003.png "[新しいユーザー]")
 
     a. **[名前]** テキストボックスに、ユーザーの名を入力します (この例では **BrittaSimon**)。
    

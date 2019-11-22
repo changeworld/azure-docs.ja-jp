@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 6aa771e9-31c6-48d1-8dde-024bebc06943
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6bd02bcd52808af43c2254304c56fee76903c73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a144bec0a610a5a47e8a9bf3ff6a5de05b239ed
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090955"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>チュートリアル:Azure Active Directory と Humanity の統合
 
@@ -132,14 +133,14 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
 
 2. 上部のメニューで **[Admin]** をクリックします。
 
-    ![管理](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![管理者](./media/shiftplanning-tutorial/iC786619.png "[Admin]")
 3. **[Integration]** の **[Single Sign-On]** をクリックします。
 
-    ![シングル サインオン](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
+    ![シングル サインオン](./media/shiftplanning-tutorial/iC786620.png "[Single Sign-On]")
 
 4. **[Single Sign-On Options]** セクションで、次の手順に従います。
 
-    ![シングル サインオン](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
+    ![シングル サインオン](./media/shiftplanning-tutorial/iC786905.png "[Single Sign-On]")
 
     a. **[SAML Enabled]** を選択します。
 
@@ -214,19 +215,19 @@ Azure AD ユーザーが Humanity にログインできるようにするには�
 
 2. **[Admin]** をクリックします。
 
-    ![管理](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![管理者](./media/shiftplanning-tutorial/iC786619.png "[Admin]")
 
 3. **[Staff]** をクリックします。
 
-    ![Staff](./media/shiftplanning-tutorial/ic786623.png "Staff")
+    ![スタッフ](./media/shiftplanning-tutorial/ic786623.png "[Staff]")
 
 4. **[Actions]\(アクション\)** の **[Add Employee]\(従業員の追加\)** をクリックします。
 
-    ![Add Employees](./media/shiftplanning-tutorial/iC786624.png "Add Employees")
+    ![[Add Employee]\(従業員の追加\)](./media/shiftplanning-tutorial/iC786624.png "[Add Employees]")
 
 5. **[Add Employees]** セクションで、次の手順に従います。
 
-    ![Save Employees](./media/shiftplanning-tutorial/iC786625.png "Save Employees")
+    ![[Save Employees]\(従業員の保存\)](./media/shiftplanning-tutorial/iC786625.png "[Save Employees]")
 
     a. プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール アドレス**を、対応するボックスに入力します。
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e14fc310-bac4-4f09-99ef-87e5c77288b6
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9904ba14e8d5a518807eda371ba655963b33bd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71d2fe97a4af07f48038ffd88de648247b56bb80
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091009"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>チュートリアル:Azure Active Directory と Citrix ShareFile の統合
 
@@ -151,7 +152,7 @@ Citrix ShareFile で Azure AD シングル サインオンを構成するには�
 
 3. 左側のナビゲーション ウィンドウで、 **[Configure Single Sign-On]** を選択します。
    
-    ![Account Administration](./media/sharefile-tutorial/ic773627.png "Account Administration")
+    ![アカウント管理](./media/sharefile-tutorial/ic773627.png "[アカウント管理]")
 
 4. **[Single Sign-On/ SAML 2.0 Configuration]** ダイアログ ページの **[基本設定]** で、次の手順を実行します。
    
@@ -230,11 +231,11 @@ Azure AD ユーザーが Citrix ShareFile にログインできるようにす�
 
 2. **[ユーザーの管理]\>[Manage Users Home (ユーザーの管理: ホーム)]\>[+ Create Employee (従業員の作成)]** の順にクリックします。
    
-    ![Create Employee](./media/sharefile-tutorial/IC781050.png "Create Employee")
+    ![従業員の作成](./media/sharefile-tutorial/IC781050.png "従業員の作成")
 
 3. **[Basic Information]** セクションで、次の手順を実行します。
    
-    ![Basic Information](./media/sharefile-tutorial/IC799951.png "Basic Information")
+    ![基本情報](./media/sharefile-tutorial/IC799951.png "基本情報")
    
     a. **[メール アドレス]** テキストボックスに、Britta Simon のメール アドレスとして「**brittasimon\@contoso.com**」と入力します。
    

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f78c58c5-6e98-458b-8991-78624a245665
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 62e800a5ac1e1e001e5d4ef328a80c554d007182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7f5e003a058cd94e6e4a4440c512217c387fda3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102349"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>チュートリアル:Azure Active Directory と FM:Systems の統合
 
@@ -183,15 +184,15 @@ FM:Systems で Azure AD シングル サインオンを構成するには、次�
 
 2. **[システム管理] \> [セキュリティの管理] \> [ユーザー] \> [ユーザー一覧]** の順にクリックします。
    
-    ![System Administration](./media/fm-systems-tutorial/ic795905.png "System Administration")
+    ![システム管理](./media/fm-systems-tutorial/ic795905.png "システム管理")
 
 3. **[新しいユーザーの作成]** をクリックします。
    
-    ![Create New User](./media/fm-systems-tutorial/ic795906.png "Create New User")
+    ![新しいユーザーの作成](./media/fm-systems-tutorial/ic795906.png "[新しいユーザーの作成]")
 
 4. **[Create User]** セクションで、次の手順に従います。
    
-    ![Create User](./media/fm-systems-tutorial/ic795907.png "Create User")
+    ![ユーザーの作成](./media/fm-systems-tutorial/ic795907.png "[Create User]")
    
     a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**ユーザー名**、**パスワード**、**確認パスワード**、**電子メール**、**従業員 ID** を入力します。
    

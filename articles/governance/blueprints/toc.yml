@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Blueprint の概要
+    - name: Azure Blueprint とは
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
 - name: クイック スタート

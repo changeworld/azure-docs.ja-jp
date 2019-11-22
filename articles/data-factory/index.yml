@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Data Factory のドキュメント
-summary: Azure Data Factory は Azure のクラウド ETL サービスであり、スケールアウト サーバーレス データ統合およびデータ変換を実現します。  直感的な作成が可能なコード不要の UI を備えているほか、単一のウィンドウで監視と管理を行えます。 さらに ADF では、既存の SSIS パッケージを Azure にリフトアンドシフトして、完全な互換性を維持しながらそれらを実行できます。 SSIS Integration Runtime がフル マネージド サービスを提供するため、インフラストラクチャの管理について心配する必要はありません。
+summary: Azure Data Factory は Azure のクラウド ETL サービスであり、スケールアウト サーバーレス データ統合およびデータ変換を実現します。  直感的な作成が可能なコード不要の UI を備えているほか、単一のペインで監視と管理を行えます。 さらに ADF では、既存の SSIS パッケージを Azure にリフトアンドシフトして、完全な互換性を維持しながらそれらを実行できます。 SSIS Integration Runtime がフル マネージド サービスを提供するため、インフラストラクチャの管理について心配する必要はありません。
 metadata:
   title: Azure Data Factory のドキュメント
   description: クラウド データ統合サービスである Data Factory を使用して、データの保管、移行、および処理のサービスを自動化データ パイプラインにまとめる方法について説明します。 チュートリアルなどのドキュメントでは、データ パイプラインの設定と管理の方法や分析用のデータの移動と変換の方法を紹介します。
@@ -12,12 +12,12 @@ metadata:
   ms.author: maghan
   ms.date: 10/02/2019
   monikerRange: ''
-  ms.openlocfilehash: 570a549bc132b1126d904d52af3066e152687e72
-  ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+  ms.openlocfilehash: fc85ae8cc6dcb2d5d04a6cbd7f79eb03470a58fb
+  ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/17/2019
-  ms.locfileid: "72554861"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74321747"
 landingContent:
 - title: Azure Data Factory について
   linkLists:

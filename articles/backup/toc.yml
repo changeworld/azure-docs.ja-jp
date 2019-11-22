@@ -168,6 +168,12 @@
               href: backup-azure-vms-encryption.md
             - name: 暗号化された VM の Key Vault のキーとシークレットを復元する
               href: backup-azure-restore-key-secret.md
+    - name: Recovery Services コンテナーの診断イベント
+      items:
+        - name: Recovery Services コンテナーの診断設定を使用する
+          href: backup-azure-diagnostic-events.md
+        - name: リソース固有の診断イベントの Log Analytics データ モデル
+          href: backup-azure-log-analytics-new-data-model.md
     - name: Azure Backup のレポートを構成する
       items:
         - name: Azure Backup のレポートを構成する

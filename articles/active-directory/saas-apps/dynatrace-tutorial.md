@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db69cfbf86cf9f33b84273b9e4da6696897467d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377304"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Dynatrace の統合
 
@@ -48,7 +48,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Dynatrace では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+> このアプリケーションの識別子は固定文字列値です。 1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-dynatrace-from-the-gallery"></a>ギャラリーからの Dynatrace の追加
 
@@ -68,10 +68,10 @@ Azure AD への Dynatrace の統合を構成するには、ギャラリーから
 Dynatrace に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Dynatrace SSO の構成](#configure-dynatrace-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Dynatrace のテスト ユーザーの作成](#create-dynatrace-test-user)** - Dynatrace で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    * **[Dynatrace のテスト ユーザーの作成](#create-dynatrace-test-user)** - Dynatrace で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -84,15 +84,25 @@ Dynatrace に対する Azure AD SSO を構成してテストするには、次�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成するには、 **[追加の URL を設定します]** をクリックし、次の手順を実行します。
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://sso.dynatrace.com/`」と入力します。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を見つけます。 **[ダウンロード]** を選択して証明書をダウンロードし、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
+
+1. **[SAML 署名証明書]** セクションで **[編集]** ボタンを選択して、 **[SAML 署名証明書]** ダイアログ ボックスを開きます。 次の手順を完了します。
+
+    ![SAML 署名証明書の編集](common/edit-certificate.png)
+
+    a. **[署名オプション]** の設定はあらかじめ入力されています。 組織ごとの設定を確認してください。
+
+    b. **[Save]** をクリックします。
+
+    ![Communifire の署名オプション](./media/dynatrace-tutorial/tutorial-dynatrace-signing-option.png)
 
 1. **[Dynatrace のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
@@ -120,23 +130,23 @@ Dynatrace に対する Azure AD SSO を構成してテストするには、次�
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーションにロール値が必要な場合は、 **[ロールの選択]** ダイアログ ボックスでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログ ボックスで、 **[割り当て]** ボタンをクリックします。
 
 ## <a name="configure-dynatrace-sso"></a>Dynatrace の SSO の構成
 
-**Dynatrace** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Dynatrace サポート チーム](https://www.dynatrace.com/services-support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Dynatrace** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** ファイルと Azure portal からコピーした適切な URL を [Dynatrace サポート チーム](https://www.dynatrace.com/services-support/)に送信する必要があります。 この設定が構成され、SAML SSO 接続が両側で正しく行われます。
 
 ### <a name="create-dynatrace-test-user"></a>Dynatrace のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Dynatrace に作成します。 Dynatrace では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Dynatrace にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+このセクションでは、B. Simon というユーザーを Dynatrace に作成します。 Dynatrace では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Dynatrace にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -146,9 +156,8 @@ Dynatrace に対する Azure AD SSO を構成してテストするには、次�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Dynatrace を試す](https://aad.portal.azure.com/)
-

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/15/2019
+ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597261"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052194"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -223,7 +223,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. リソース グループを開きます。 この名前は、パイプラインの YAML ファイルで指定したものです。  作成した 1 つのストレージ アカウントが表示されます。  ストレージ アカウント名は、**store** で始まります。
 1. ストレージ アカウント名を選択して開きます。
-1. **[プロパティ]** を選択します。 **[SKU]** が **Standard_LRS** になっている点に注意してください。
+1. **[プロパティ]** を選択します。 **[レプリケーション]** が **[ローカル冗長ストレージ (LRS)]** になっていることに注意してください。
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines ポータル確認](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
@@ -250,7 +250,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
     リモート リポジトリの master ブランチが更新されたので、パイプラインが再度実行されます。
 
-変更内容を確認するには、ストレージ アカウントの SKU を確認します。  「[デプロイを検証する](#verify-the-deployment)」を参照してください。
+変更内容を確認するには、ストレージ アカウントのレプリケーション プロパティを確認できます。  「[デプロイを検証する](#verify-the-deployment)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

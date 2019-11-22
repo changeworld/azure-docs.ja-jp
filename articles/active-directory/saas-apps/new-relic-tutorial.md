@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3186b9a8-f4d8-45e2-ad82-6275f95e7aa6
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 664824772d9c04e5d02d7a38cda58ad4ede8baaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd75cc392bb30d15b665190eef8fbea39d692ee3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096265"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル:Azure Active Directory と New Relic の統合
 
@@ -128,11 +129,11 @@ New Relic で Azure AD シングル サインオンを構成するには、次�
 
 2. 上部のメニューで **[アカウント設定]** をクリックします。
    
-    ![Account Settings](./media/new-relic-tutorial/ic797036.png "Account Settings")
+    ![アカウント設定](./media/new-relic-tutorial/ic797036.png "[Account Settings]")
 
 3. **[セキュリティと認証]** タブをクリックし、 **[シングル サインオン]** タブをクリックします。
    
-    ![シングル サインオン](./media/new-relic-tutorial/ic797037.png "Single Sign-On")
+    ![シングル サインオン](./media/new-relic-tutorial/ic797037.png "[Single Sign-On]")
 
 4. SAML ダイアログ ページで、次の手順に従います。
    
@@ -207,15 +208,15 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 
 2. 上部のメニューで **[アカウント設定]** をクリックします。
    
-    ![Account Settings](./media/new-relic-tutorial/ic797040.png "Account Settings")
+    ![アカウント設定](./media/new-relic-tutorial/ic797040.png "[Account Settings]")
 
 3. **[アカウント]** ペインの左側にある **[概要]** をクリックし、次に **[ユーザーの追加]** をクリックします。
    
-    ![Account Settings](./media/new-relic-tutorial/ic797041.png "Account Settings")
+    ![アカウント設定](./media/new-relic-tutorial/ic797041.png "[Account Settings]")
 
 4. **[アクティブ ユーザー]** ダイアログで、次の手順に従います。
    
-    ![アクティブ ユーザー](./media/new-relic-tutorial/ic797042.png "アクティブ ユーザー")
+    ![アクティブ ユーザー](./media/new-relic-tutorial/ic797042.png "[アクティブ ユーザー]")
    
     a. **[電子メール]** テキストボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
 

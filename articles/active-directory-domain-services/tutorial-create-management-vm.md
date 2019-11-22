@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e7c3ccb553010b84a30ccdad875ea0362112d830
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69618792"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172347"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * 必要であれば、前のチュートリアルで [Windows Server VM を作成し、マネージド ドメインに参加][create-join-windows-vm]させます。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 このチュートリアルでは、Azure portal を使用して管理 VM の作成と構成を行います。 最初に、[Azure portal](https://portal.azure.com) にサインインしてください。
 
@@ -101,7 +101,7 @@ Azure AD DS のマネージド ドメインは、Active Directory 管理セン�
 
 ドメイン参加済み VM に Active Directory 管理ツールをインストールするには、次の手順を実行します。
 
-1. VM にサインインすると、既定で**サーバー マネージャー**が表示されるはずです。 そうならない場合は、 **[スタート]** メニューの **[サーバー マネージャー]** を選択します。
+1. VM にサインインしたときに**サーバー マネージャー**が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
 1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
 1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
@@ -131,13 +131,15 @@ Azure AD DS のマネージド ドメインは、Active Directory 管理セン�
 
 1. Azure AD DS のマネージド ドメインに属しているユーザーとグループを表示するには、 **[AADDC Users]** コンテナーを選択します。 このコンテナーには、Azure AD テナントのユーザー アカウントとグループが表示されています。
 
-    次の出力例では、*contosoadmin* という名前のユーザー アカウントと *AAD DC Administrators* のグループがこのコンテナーに表示されています。
+    次の出力例では、*Contoso Admin* という名前のユーザー アカウントと *AAD DC Administrators* のグループがこのコンテナーに表示されています。
 
     ![Active Directory 管理センターで Azure AD DS ドメイン ユーザーの一覧を表示する](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
 1. Azure AD DS のマネージド ドメインに参加しているコンピューターを表示するには、 **[AADDC Computers]** コンテナーを選択します。 現在の仮想マシンのエントリ (例: *myVM*) が表示されます。 Azure AD DS のマネージド ドメインに参加しているすべてのコンピューターのコンピューター アカウントが、この *AADDC Computers* コンテナーに格納されます。
 
-Active Directory 管理センターの一般的な操作 (ユーザー アカウント パスワードのリセット、グループ メンバーシップの管理など) が利用できます。 Azure AD DS のマネージド ドメインにおける一般的な操作については、管理ツールの一部としてインストールされる "*Windows PowerShell 用 Active Directory モジュール*" を使用して管理することもできます。
+Active Directory 管理センターの一般的な操作 (ユーザー アカウント パスワードのリセット、グループ メンバーシップの管理など) が利用できます。 これらの操作は、Azure AD DS マネージド ドメインに直接作成されたユーザーとグループに対してのみ機能します。 ID 情報は、Azure AD "*から*" Azure AD DS へのみ同期されます。 Azure AD DS から Azure AD への書き戻しはありません。 Azure AD から同期されたユーザーのパスワードまたは管理対象グループ メンバーシップを変更し、それらの変更を同期して戻すことはできません。
+
+Azure AD DS のマネージド ドメインにおける一般的な操作については、管理ツールの一部としてインストールされる "*Windows PowerShell 用 Active Directory モジュール*" を使用して管理することもできます。
 
 ## <a name="next-steps"></a>次の手順
 

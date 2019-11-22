@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 6/7/2017
-ms.openlocfilehash: 5728a9ab70c5b7db10a123d6964b498e70f96588
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/23/2019
+ms.openlocfilehash: 3da18bf50c82a32a9cec70555ac0d051e7660184
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162206"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882131"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)で Azure CLI を使用します。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -33,7 +33,7 @@ Java Web アプリを Azure にデプロイするには、[Jenkins パイプラ�
 ## <a name="create-and-configure-jenkins-instance"></a>Jenkins インスタンスの作成と構成
 Jenkins マスターを持っていない場合は、[ソリューション テンプレート](install-jenkins-solution-template.md)から始めます。ここには、必要な [Azure Credentials](https://plugins.jenkins.io/azure-credentials) プラグインが既定で含まれています。 
 
-Azure 資格情報のプラグインでは、Jenkins に Microsoft Azure サービス プリンシパルの資格情報を格納できます。 バージョン 1.2 では、Jenkins パイプラインで Azure 資格情報を取得できるようにサポートを強化しました。 
+Azure Credentials プラグインでは、Jenkins に Microsoft Azure サービス プリンシパルの資格情報を格納できます。 バージョン 1.2 では、Jenkins パイプラインで Azure 資格情報を取得できるようにサポートを強化しました。 
 
 バージョン 1.2 以降を使用していることを確認します。
 * Jenkins ダッシュボード内で、 **[Manage Jenkins]\(Jenkins の管理\) -> [プラグイン マネージャー] ->** の順にクリックして **[Azure 資格情報]** を検索します。 

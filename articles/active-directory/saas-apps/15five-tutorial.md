@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2fb301c2-7d7a-4046-8ee1-7dc9e7684806
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219af24aceea9291e34a9854d230b5dc6bd85fdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0753a061b698adb3c79ccde6856799c8928cd9f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107573"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>チュートリアル:Azure Active Directory と 15Five の統合
 
@@ -191,15 +192,15 @@ Azure AD ユーザーが 15Five にログインできるようにするには、
 
 2. **[会社の管理]** に移動します。
 
-    ![会社の管理](./media/15five-tutorial/ic784675.png "Manage Company")
+    ![会社の管理](./media/15five-tutorial/ic784675.png "会社の管理")
 
 3. **[ユーザー] \> [ユーザーを追加]** の順にクリックします。
 
-    ![ユーザー](./media/15five-tutorial/ic784676.png "People")
+    ![ユーザー](./media/15five-tutorial/ic784676.png "ユーザー")
 
 4. **[新しいユーザーの追加]** セクションで、次の手順に従います。
 
-    ![新しいユーザーの追加](./media/15five-tutorial/ic784677.png "Add New Person")
+    ![新しいユーザーの追加](./media/15five-tutorial/ic784677.png "新しいユーザーの追加")
 
     a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**、**姓**、**役職**、**電子メール アドレス**を入力します。
 

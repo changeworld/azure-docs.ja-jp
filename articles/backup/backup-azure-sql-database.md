@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437824"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162205"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -45,20 +45,10 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 **サポート** | **詳細**
 --- | ---
 **サポートされているデプロイ** | SQL Marketplace の Azure VM と、Marketplace 以外の (SQL Server が手動でインストールされる) VM がサポートされています。
-**サポートされている地域** | オーストラリア南東部 (ASE)、オーストラリア東部 (AE)、オーストラリア中部 (AC)、オーストラリア中部 2 (AC) <br> ブラジル南部 (BRS)<br> カナダ中部 (CNC)、カナダ東部 (CE)<br> 東南アジア (SEA)、東アジア (EA) <br> 米国東部 (EUS)、米国東部 2 (EUS2)、米国中西部 (WCUS)、米国西部 (WUS)、米国西部 2 (WUS 2)、米国中北部 (NCUS)、米国中部 (CUS)、米国中南部 (SCUS) <br> インド中部 (INC)、インド南部 (INS)、インド西部 <br> 東日本 (JPE)、西日本 (JPW) <br> 韓国中部 (KRC)、韓国南部 (KRS) <br> 北ヨーロッパ (NE)、西ヨーロッパ <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov アリゾナ、US Gov バージニア、US Gov テキサス、US DoD 中部、US DoD 東部 <br> ドイツ北部、ドイツ中西部 <br> スイス北部、スイス西部
-**サポートされているオペレーティング システム** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012<br/><br/> Linux は現在サポートされていません。
-**サポートされる SQL Server のバージョン** | SQL Server 2017 (詳細は[こちら](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017))、SQL Server 2016 および SP (詳細は[こちら](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack))、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
-**サポートされている .NET バージョン** | VM 内にインストールされている .NET Framework 4.5.2 以降
-
-### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>SQL Server 2008 および SQL Server 2008 R2 のサポート
-
-Azure Backup による [EOS SQL Sever](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) (SQL Server 2008 および SQL Server 2008 R2) のサポートが最近発表されました。 このソリューションは、現在、EOS SQL Server 用のプレビュー版であり、次の構成をサポートしています。
-
-1. Windows 2008 R2 SP1 で実行されている SQL Server 2008 および SQL Server 2008 R2
-2. .NET Framework 4.5.2 以降を VM にインストールする必要がある
-3. FCI とミラー化されたデータベースのバックアップはサポートされない
-
-この機能の一般提供が開始されるまで、ユーザーはこの機能について課金されません。 その他の[機能の考慮事項と制限事項](#feature-consideration-and-limitations)もすべてこれらのバージョンに適用されます。 SQL Servers 2008 および 2008 R2 上で保護を構成する前に、[前提条件](backup-sql-server-database-azure-vms.md#prerequisites)を参照してください。
+**サポートされている地域** | オーストラリア南東部 (ASE)、オーストラリア東部 (AE)、オーストラリア中部 (AC)、オーストラリア中部 2 (AC) <br> ブラジル南部 (BRS)<br> カナダ中部 (CNC)、カナダ東部 (CE)<br> 東南アジア (SEA)、東アジア (EA) <br> 米国東部 (EUS)、米国東部 2 (EUS2)、米国中西部 (WCUS)、米国西部 (WUS)、米国西部 2 (WUS 2)、米国中北部 (NCUS)、米国中部 (CUS)、米国中南部 (SCUS) <br> インド中部 (INC)、インド南部 (INS)、インド西部 <br> 東日本 (JPE)、西日本 (JPW) <br> 韓国中部 (KRC)、韓国南部 (KRS) <br> 北ヨーロッパ (NE)、西ヨーロッパ <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov アリゾナ、US Gov バージニア、US Gov テキサス、US DoD 中部、US DoD 東部 <br> ドイツ北部、ドイツ中西部 <br> スイス北部、スイス西部 <br> フランス中部 <br> 中国東部、中国東部 2、中国北部、中国北部 2
+**サポートされているオペレーティング システム** | Windows Server 2019、Windows Server 2016、Windows Server 2012、Windows Server 2008 R2 SP1 <br/><br/> Linux は現在サポートされていません。
+**サポートされる SQL Server のバージョン** | SQL Server 2019、SQL Server 2017 (詳細は[「製品のライフサイクルの検索」ページ](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)を参照)、SQL Server 2016 および SP (詳細は[「製品のライフサイクルの検索」ページ](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)を参照)、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。
+**サポートされている .NET バージョン** | VM にインストールされている .NET Framework 4.5.2 以降
 
 ## <a name="feature-consideration-and-limitations"></a>機能の考慮事項と制限事項
 

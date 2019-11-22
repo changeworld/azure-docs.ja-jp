@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58fcd21c7e6e3f2336d3e809584451dc38f6276b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fda8e928b530001faeae34c364dfed91d7620f0a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105732"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>チュートリアル:Azure Active Directory と Central Desktop の統合
 
@@ -140,11 +141,11 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
 
 2. **[設定]** に移動します。 **[Advanced]\(詳細\)** を選び、 **[Single Sign On]\(シングル サインオン\)** を選びます。
 
-    ![Setup - Advanced](./media/central-desktop-tutorial/ic769563.png "Setup - Advanced")
+    ![設定 - 詳細設定](./media/central-desktop-tutorial/ic769563.png "設定 - 詳細設定")
 
 3. **[Single Sign On Settings]\(シングル サインオンの設定\)** ページで、次の手順を実行します。
 
-    ![シングル サインオンの設定](./media/central-desktop-tutorial/ic769564.png "シングル サインオンの設定")
+    ![シングル サインオンの設定](./media/central-desktop-tutorial/ic769564.png "[Single Sign On Settings]")
 
     a. **[Enable SAML v2 Single Sign On]** チェック ボックスをオンにします。
 
@@ -156,7 +157,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
 
 4. **[Message Signature Verification Method]\(メッセージ署名検証方法\)** セクションで、次の手順を実行します。
 
-    ![メッセージ署名検証方法](./media/central-desktop-tutorial/ic769565.png "メッセージ署名検証方法")
+    ![[Message Signature Verification Method]\(メッセージ署名検証方法\)](./media/central-desktop-tutorial/ic769565.png "[Message Signature Verification Method]")
     
     a. **[Certificate]** を選択します。
 
@@ -232,7 +233,7 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 
 2. **[People]\(ユーザー\)** を選択し、 **[Add Internal Members]\(内部メンバーの追加\)** を選択します。
 
-    ![ユーザー](./media/central-desktop-tutorial/ic781051.png "People")
+    ![ユーザー](./media/central-desktop-tutorial/ic781051.png "ユーザー")
 
 3. **[Email Address of New Members]\(新しいメンバーの電子メール アドレス\)** ボックスにプロビジョニングする Azure AD アカウントを入力し、 **[Next]\(次へ\)** を選びます。
 

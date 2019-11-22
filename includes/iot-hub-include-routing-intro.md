@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d0accd01926743d64fa4911dfe56806537170c2d
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 863989f8e2cb90fe5ec0921ea6e080b61fc1b4ae
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271554"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808832"
 ---
 [メッセージ ルーティング](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)を使うと、IoT デバイスから組み込みイベント ハブ互換エンドポイントまたはカスタム エンドポイント (BLOB ストレージ、Service Bus キュー、Service Bus トピック、Event Hubs など) に、利用統計情報を送信できます。 カスタム メッセージ ルーティングを構成するには、特定の条件と一致するルートをカスタマイズするための[ルーティング クエリ](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md)を作成できます。 設定が済むと、受信データは IoT Hub によってエンドポイントに自動的にルーティングされるようになります。 メッセージが定義されているルーティング クエリのいずれとも一致しない場合、メッセージは既定のエンドポイントにルーティングされます。
 
 この 2 部構成のチュートリアルでは、IoT Hub を使用してこれらのカスタム ルーティング クエリを設定および使用する方法を学習します。 IoT デバイスから、BLOB ストレージや Service Bus キューなどの複数のエンドポイントのいずれかにメッセージをルーティングします。 Service Bus キューへのメッセージは、ロジック アプリによって取得されて、メールで送信されます。 カスタム メッセージ ルーティングが定義されていないメッセージは、既定のエンドポイントに送信された後、Azure Stream Analytics によって取得され、Power BI の視覚化に表示されます。
 
-このチュートリアルのパート 1 とパート 2 を完了するために、以下のタスクを実行しました。
+このチュートリアルのパート 1 とパート 2 を完了するには、以下のタスクを実行します。
 
 **パート I: リソースを作成してメッセージ ルーティングを設定する**
 > [!div class="checklist"]
-> * リソースを作成する (IoT ハブ、ストレージ アカウント、Service Bus キュー、シミュレートされたデバイス)。 この操作は、ポータル、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使用して実行できます。
+> * リソースを作成する (IoT ハブ、ストレージ アカウント、Service Bus キュー、シミュレートされたデバイス)。 この操作は、Azure portal、Azure Resource Manager テンプレート、Azure CLI、または Azure PowerShell を使用して実行できます。
 > * ストレージ アカウントと Service Bus キューに対するエンドポイントとメッセージ ルートを IoT Hub で構成する。
 
 **パート II: メッセージをハブに送信して、ルーティングされた結果を表示する**
@@ -44,7 +44,7 @@ ms.locfileid: "66271554"
 * このチュートリアルのパート 2:
   - このチュートリアルのパート 1 を完了し、リソースが引き続き利用可能である必要があります。
   - [Visual Studio](https://www.visualstudio.com/) のインストール。
-  - 既定のエンドポイントの Stream Analytics を分析するための Power BI アカウント。 ([Power BI を無料で試す](https://app.powerbi.com/signupredirect?pbi_source=web))
-  - 通知メールを送信するための Office 365 アカウント。
+  - 既定のエンドポイントの Stream Analytics を分析するために Power BI アカウントにアクセスできる。 ([Power BI を無料で試す](https://app.powerbi.com/signupredirect?pbi_source=web))
+  - 通知メールを送信するための Office 365 アカウントを持っている。
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

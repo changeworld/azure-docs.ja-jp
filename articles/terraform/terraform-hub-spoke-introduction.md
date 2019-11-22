@@ -1,22 +1,19 @@
 ---
-title: Azure で Terraform を使用してハブ スポーク ハイブリッド ネットワーク トポロジを作成する
+title: チュートリアル - Terraform を使用して Azure でハブ スポーク ハイブリッド ネットワーク トポロジを作成する
 description: Azure で Terraform を使用して、ハイブリッド ネットワーク参照アーキテクチャ全体を作成する方法を示すチュートリアル
-services: terraform
-ms.service: azure
-keywords: Terraform, ハブとスポーク, ネットワーク, ハイブリッド ネットワーク, DevOps, 仮想マシン, Azure, VNet ピアリング, ネットワーク仮想アプライアンス
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 5c2a61dd9da6d233a4b1410042f2125a1c300758
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173442"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969410"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>チュートリアル:Azure で Terraform を使用してハブ スポーク ハイブリッド ネットワーク トポロジを作成する
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>チュートリアル:Terraform を使用して Azure でハブ スポーク ハイブリッド ネットワーク トポロジを作成する
 
 このチュートリアル シリーズでは、Azure で Terraform を使用して、[ハブ スポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を実装する方法を示します。 
 

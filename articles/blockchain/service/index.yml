@@ -2,7 +2,7 @@
 title: Azure Blockchain Service のドキュメント
 summary: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントでは、Azure Blockchain Service を使用して Azure でブロックチェーン アプリケーションを作成、開発、管理する方法を紹介します。
 metadata:
-  title: Azure Blockchain Service のドキュメント - チュートリアル、API リファレンス
+  title: Azure Blockchain Service のドキュメント
   description: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントでは、Azure Blockchain Service を使用して Azure でブロックチェーン アプリケーションを作成、開発、管理する方法を紹介します。
   services: azure-blockchain
   ms.service: azure-blockchain
@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 11/04/2019
-  ms.openlocfilehash: 9e4def49e2d0e1fc91259bbdf744ec7e40a34547
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 5af8999a32682df18d1e4f1be192c2d4be628860
+  ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73577337"
+  ms.lasthandoff: 11/21/2019
+  ms.locfileid: "74285070"
 landingContent:
 - title: Azure Blockchain Service について
   linkLists:

@@ -1,22 +1,20 @@
 ---
-title: Azure Kubenetes Service と共に Jenkins 用の Azure Dev Spaces プラグインを使用する
+title: Azure Kubernetes Service での Jenkins 用の Azure Dev Spaces プラグインの使用
 description: 継続的インテグレーション パイプラインで Azure Dev Spaces プラグインを使用する方法について説明します。
 author: tomarchermsft
 ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/31/2019
-ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/23/2019
+ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161490"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881880"
 ---
-<!-- GMinchAQ, 06/18/19 -->
-
-# <a name="tutorial-using-the-azure-dev-spaces-plugin-for-jenkins-with-azure-kubenetes-service"></a>チュートリアル:Azure Kubenetes Service と共に Jenkins 用の Azure Dev Spaces プラグインを使用する 
+# <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>チュートリアル:Azure Kubernetes Service での Jenkins 用の Azure Dev Spaces プラグインの使用 
 
 Azure Dev Spaces では、Azure Kubernetes Service (AKS) で実行されるマイクロサービス アプリケーションをテストして反復的に開発でき、依存関係を複製したりモックしたりする必要がありません。 Jenkins 用の Azure Dev Spaces プラグインは、継続的インテグレーションとデリバリー (CI/CD) のパイプラインで開発空間を使用するのに役立ちます。
 

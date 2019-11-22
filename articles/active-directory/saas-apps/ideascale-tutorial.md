@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a312e0ca70ef3a37b43f1ffb68a974a8aedaf982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9307bbe58afc45468f222f5b510585d528de532a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100796"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158040"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル:Azure Active Directory と IdeaScale の統合
 
@@ -137,19 +138,19 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
 2. **[コミュニティの設定]** に移動します。
 
-    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
+    ![[コミュニティの設定]](./media/ideascale-tutorial/ic790847.png "[コミュニティの設定]")
 
 3. **[セキュリティ] \> [シングル サインオン設定]** の順にクリックします。
 
-    ![Single Signon Settings](./media/ideascale-tutorial/ic790848.png "Single Signon Settings")
+    ![[シングル サインオンの設定]](./media/ideascale-tutorial/ic790848.png "[シングル サインオンの設定]")
 
 4. **[シングル サインオンのタイプ]** で **[SAML 2.0]** を選択します。
 
-    ![Single Signon Type](./media/ideascale-tutorial/ic790849.png "Single Signon Type")
+    ![[シングル サインオンのタイプ]](./media/ideascale-tutorial/ic790849.png "シングル サインオンのタイプ")
 
 5. **[シングル サインオンの設定]** ダイアログで、次の手順を実行します。
 
-    ![Single Signon Settings](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
+    ![[シングル サインオンの設定]](./media/ideascale-tutorial/ic790850.png "[シングル サインオンの設定]")
 
     a. **[SAML IdP Entity ID]\(SAML IdP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
@@ -220,17 +221,17 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
 
 2. **[コミュニティの設定]** に移動します。
 
-    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
+    ![[コミュニティの設定]](./media/ideascale-tutorial/ic790847.png "[コミュニティの設定]")
 
 3. **[基本設定] \> [メンバ管理]** の順にクリックします。
 
 4. **[Add Member]** をクリックします。
 
-    ![Member Management](./media/ideascale-tutorial/ic790852.png "Member Management")
+    ![[メンバー管理]](./media/ideascale-tutorial/ic790852.png "メンバ管理")
 
 5. [新しいメンバーの追加] セクションで、次の手順を実行します。
 
-    ![Add New Member](./media/ideascale-tutorial/ic790853.png "Add New Member")
+    ![[新しいメンバーの追加]](./media/ideascale-tutorial/ic790853.png "新しいメンバーの追加")
 
     a. **[電子メール アドレス]** ボックスに、プロビジョニングする有効な Azure AD アカウントのメール アドレスを入力します。
 

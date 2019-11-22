@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Stream Analytics ジョブを使用して Azure Functions を実行する | Microsoft Docs
+title: Azure Stream Analytics ジョブで Azure Functions を実行する
 description: このチュートリアルでは、Stream Analytics ジョブへの出力シンクとして Azure Functions を構成する方法を説明します。
 services: stream-analytics
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.date: 06/05/2019
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 5aa2616bfbfd4b31d3e5e5aeee71da8fd511faed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1ea454f82232fdae17544efc2f0bdfd4601c497e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066708"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934212"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -153,7 +153,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    |Function| Function App にある関数の名前です (run.csx 関数の名前)。|
    |最大バッチ サイズ|関数に送信される、各出力バッチの最大サイズをバイト単位で設定します。 既定では、この値は 262,144 バイト (256 KB) に設定されます。|
    |最大バッチ カウント|関数に送信される各バッチ内の最大イベント数を指定します。 既定値は 100 です。 このプロパティは省略可能です。|
-   |キー|別のサブスクリプションから関数を使用できるようにします。 関数にアクセスするキー値を指定します。 このプロパティは省略可能です。|
+   |Key|別のサブスクリプションから関数を使用できるようにします。 関数にアクセスするキー値を指定します。 このプロパティは省略可能です。|
 
 3. 出力エイリアスの名前を指定します。 このチュートリアルでは **saop1** という名前ですが、任意の名前を使用できます。 その他の詳細を入力します。
 

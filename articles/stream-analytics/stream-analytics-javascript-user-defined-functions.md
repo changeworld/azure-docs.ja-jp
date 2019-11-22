@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Stream Analytics の JavaScript ユーザー定義関数 | Microsoft Docs '
+title: Azure Stream Analytics の JavaScript ユーザー定義関数
 description: このチュートリアルでは、JavaScript ユーザー定義関数を使用して高度なクエリ機構を実行します
 services: stream-analytics
 author: rodrigoamicrosoft
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329376"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990237"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数
  
@@ -71,6 +71,9 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 6.  **[保存]** を選択します。 作成した関数が関数一覧に表示されます。
 7.  新しい **hex2Int** 関数を選択し、関数の定義を確認します。 すべての関数で、関数のエイリアスにプレフィックス **UDF** が追加されています。 Stream Analytics クエリでは、関数を呼び出す際に*プレフィックスを含める*必要があります。 この場合は、**UDF.hex2Int** を呼び出します。
 
+## <a name="testing-javascript-udfs"></a>JavaScript UDF をテストする 
+JavaScript UDF ロジックは、任意のブラウザーでテストおよびデバッグできます。 これらのユーザー定義関数のロジックのデバッグとテストは、現在、Stream Analytics ポータルではサポートされていません。 関数が想定どおりに動作したら、前述のように Stream Analytics ジョブに追加してから、クエリから直接呼び出すことができます。
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>クエリでの JavaScript ユーザー定義関数の呼び出し
 
 1. クエリ エディターで、 **[ジョブ トポロジ]** 見出しの下にある **[クエリ]** を選択します。
@@ -125,7 +128,6 @@ JavaScript 言語は大文字と小文字を区別し、JavaScript コード内�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 JavaScript ランタイム エラーは致命的とみなされ、アクティビティ ログに表示されます。 Azure Portal からログを取得するには、ジョブに移動し、 **[アクティビティ ログ]** を選択します。
-
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>その他の JavaScript ユーザー定義関数のパターン
 

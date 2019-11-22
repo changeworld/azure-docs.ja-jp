@@ -177,15 +177,35 @@
           displayName: DevOps
     - name: テンプレートをエクスポートする
       href: export-template-portal.md
-    - name: Move
+    - name: 移動 - リージョン
       items:
-        - name: リソースの移動
+        - name: リージョン間で移動する
+          href: resource-group-move-region.md
+        - name: サポートされているサービス
+          href: region-move-support.md
+        - name: サービス
+          items:
+            - name: Azure VM
+              href: ../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: 仮想ネットワーク
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: ネットワーク セキュリティ グループ (NSG)
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: パブリック IP アドレス
+              href: ../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: 移動 - リソース グループ/サブスクリプション
+      items:
+        - name: リソース グループやサブスクリプションで移動
           href: resource-group-move-resources.md
-        - name: リソースのサポート
+        - name: サポートされているサービス
           href: move-support-resources.md
         - name: 移動のトラブルシューティング
           href: troubleshoot-move.md
-        - name: サービスの移動ガイダンス
+        - name: サービス
           items:
             - name: App Service
               href: ./move-limitations/app-service-move-limitations.md
