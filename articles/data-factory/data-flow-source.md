@@ -185,4 +185,4 @@ SQL Database ソースのデータをパーティション分割する必要は�
 
 ## <a name="next-steps"></a>次の手順
 
-[派生列変換](data-flow-derived-column.md)と[選択変換](data-flow-select.md)の作成を開始します。
+[Derived Column]\(派生列変換\)(data-flow-derived-column.md)と[Select]\(選択変換)(data-flow-select.md)の作成を開始します。
