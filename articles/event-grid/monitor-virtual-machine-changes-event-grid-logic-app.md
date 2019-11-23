@@ -163,7 +163,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
    ![解決された条件のトークン](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 ## <a name="send-email-notifications"></a>メール通知を送信する
 
