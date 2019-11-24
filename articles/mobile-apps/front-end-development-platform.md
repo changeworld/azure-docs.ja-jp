@@ -22,14 +22,14 @@ ms.locfileid: "72795087"
 ネイティブ アプリケーションを構築するには、プラットフォーム固有のプログラミング言語、SDK、開発環境、および OS ベンダーが提供するその他のツールが必要になります。
 
 ### <a name="ios"></a>iOS
-Apple によって作成され開発される。いわゆる iPhone や iPad であり、iOS 上に構築されたアプリは Apple デバイス上で実行されます。
+Apple によって作成され開発される。iOS 上に構築されたアプリは Apple デバイス、すなわち iPhone や iPad 上で実行されます。
 
 - **プログラミング言語** - Objective-C、Swift
 - **IDE** - Xcode
 - **SDK** - iOS SDK
 
 ### <a name="android"></a>Android
-Google および世界で最も普及している OS によって設計されている。Android 上に構築されたアプリケーションは、さまざまなスマートフォンやタブレット上で実行できます。
+Google によって設計された、世界で最も普及している OS。Android 上に構築されたアプリケーションは、さまざまなスマートフォンやタブレット上で実行できます。
 
 - **プログラミング言語** - Java、Kotlin 
 - **IDE** - Android Studio および Android 開発者ツール 
