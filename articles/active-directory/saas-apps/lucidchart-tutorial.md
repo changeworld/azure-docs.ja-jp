@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1068d364-11f3-43b5-bd6d-26f00ecd5baa
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e12b5984eb2fe4e54ffec7d6b4a2a6da202c70e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dc91d51d49ac1a317b88835e4d2e51773216020
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097801"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>チュートリアル:Azure Active Directory と Lucidchart の統合
 
@@ -128,29 +129,29 @@ Lucidchart で Azure AD シングル サインオンを構成するには、次�
 
 2. 上部のメニューで **[チーム]** をクリックします。
 
-    ![Team](./media/lucidchart-tutorial/ic791190.png "Team")
+    ![チーム](./media/lucidchart-tutorial/ic791190.png "チーム")
 
 3. **[アプリケーション] \> [SAML の管理]** をクリックします。
 
-    ![Manage SAML](./media/lucidchart-tutorial/ic791191.png "Manage SAML")
+    ![SAML の管理](./media/lucidchart-tutorial/ic791191.png "SAML の管理")
 
 4. **[SAML Authentication Settings]** ダイアログ ページで、次の手順に従います。
 
     a. **[SAML 認証を有効にする]** を選んで、 **[オプション]** をクリックします。
 
-    ![SAML Authentication Settings](./media/lucidchart-tutorial/ic791192.png "SAML Authentication Settings")
+    ![[SAML Authentication Settings]](./media/lucidchart-tutorial/ic791192.png "SAML 認証設定")
 
     b. **[ドメイン]** ボックスで、使用するドメインを入力して、 **[証明書の変更]** をクリックします。
 
-    ![Change Certificate](./media/lucidchart-tutorial/ic791193.png "Change Certificate")
+    ![[証明書の変更]](./media/lucidchart-tutorial/ic791193.png "証明書の変更")
 
     c. ダウンロードしたメタデータ ファイルを開いて内容をコピーし、 **[Upload Metadata (メタデータのアップロード)]** ボックスに貼り付けます。
 
-    ![Upload Metadata](./media/lucidchart-tutorial/ic791194.png "Upload Metadata")
+    ![[Upload Metadata (メタデータのアップロード)]](./media/lucidchart-tutorial/ic791194.png "メタデータのアップロード")
 
     d. **[Automatically Add new users to the team]\(新しいユーザーを自動的にチームに追加する\)** を選んで、 **[Save changes]\(変更を保存\)** をクリックします。
 
-    ![変更を保存](./media/lucidchart-tutorial/ic791195.png "Save Changes")
+    ![Save Changes](./media/lucidchart-tutorial/ic791195.png "[変更を保存]")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

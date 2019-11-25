@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure portal を使用した HDInsight 内の Apache Hadoop と Apache Hive
+title: クイック スタート:Apache Hadoop、Apache Hive および Azure HDInsight ポータル
 description: このクイックスタートでは、Azure portal を使用して HDInsight Hadoop クラスターを作成します
 keywords: Hadoop の概要, Hadoop Linux, Hadoop クイックスタート, Hive の概要, Hive クイックスタート
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 09/25/2019
-ms.openlocfilehash: 5d87cc7fdcd9c8065c2a9886b970b406df0d8fc8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: cab46c4fe2ff0bd1f86c6d98a3b37efb3547a3ce
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677909"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044587"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Hadoop クラスターを作成する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal から、 **[リソースの作成]**  >  **[Analytics]**  >  **[HDInsight]** に移動します。
 
-    ![リソース HDInsight クラスターを作成する](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "リソース HDInsight クラスターを作成する")
+    ![リソース HDInsight クラスターの作成](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "リソース HDInsight クラスターの作成")
 
 1. **[基本]** で次の値を入力または選択します。
 
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |プライマリ ストレージ アカウント|ドロップダウン リストを使用して既存のストレージ アカウントを選択するか、または **[新規作成]** を選択します。 新しいアカウントの作成時には、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます|
     |コンテナー|自動入力されている値を使用します。|
 
-    ![HDInsight Linux の使用。クラスター ストレージの値の指定](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage-blank.png "HDInsight クラスターを作成するためのストレージの値の指定")
+    ![HDInsight Linux の使用。クラスターのストレージの値の指定](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage-blank.png "HDInsight クラスターを作成するためのストレージの値の指定")
 
     **[確認および作成]** タブを選択します。
 
@@ -94,7 +94,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. 次のスクリーンショットのように **[ハイブ ビュー]** を開きます。
 
-    ![Ambari から Hive ビューを選択](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive ビューアー メニュー")
+    ![Ambari からの Hive ビューの選択](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive Viewer メニュー")
 
 4. **[QUERY]\(クエリ\)** タブで、次の HiveQL ステートメントをワークシートに貼り付けます。
 
@@ -118,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 7. クエリの結果を保存することもできます。 右側のメニュー ボタンを選択し、結果を CSV ファイルとしてダウンロードするか、クラスターに関連付けられているストレージ アカウントに保存するかを指定します。
 
-    ![Apache Hive クエリの結果を保存](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Apache Hive クエリの結果を保存")
+    ![Apache Hive クエリの結果の保存](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Apache Hive クエリの結果の保存")
 
 Hive ジョブが完了したら、[結果を Azure SQL データベースまたは SQL Server データベースにエクスポート](apache-hadoop-use-sqoop-mac-linux.md)できます。[Excel を利用して結果を視覚化](apache-hadoop-connect-excel-power-query.md)することもできます。 HDInsight で Hive を使用する方法の詳細については、[HDInsight で Apache Hadoop と共に Apache Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)方法に関するページを参照してください。
 
@@ -133,7 +133,7 @@ Hive ジョブが完了したら、[結果を Azure SQL データベースまた
 
 1. ブラウザーの Azure Portal を開いているタブに戻ります。 [クラスターの概要] ページが表示されているはずです。 クラスターのみを削除し、既定のストレージ アカウントを保持する場合は、 **[削除]** を選択します。
 
-    ![Azure HDInsight におけるクラスターの削除](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Azure HDInsight クラスターの削除")
+    ![Azure HDInsight でのクラスターの削除](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Azure HDInsight クラスターの削除")
 
 2. クラスターと既定のストレージ アカウントを削除する場合は、(上のスクリーンショットで強調表示されている) リソース グループ名を選択して、リソース グループのページを開きます。
 

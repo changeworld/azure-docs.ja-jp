@@ -1,22 +1,19 @@
 ---
-title: Azure で Terraform を使用してハブ仮想ネットワーク アプライアンスを作成する
+title: チュートリアル - Terraform を使用して Azure でハブ仮想ネットワーク アプライアンスを作成する
 description: 他のすべてのネットワーク間の共通の接続ポイントとして機能するハブ VNet を作成するチュートリアル
-services: terraform
-ms.service: azure
-keywords: terraform, ハブとスポーク, ネットワーク, ハイブリッド ネットワーク, devops, 仮想マシン, Azure, VNet ピアリング, ハブとスポーク, ハブ
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 1fae21e9a60f533533607e74609853ef68348daf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 5696ee20f6f306d45c5d7ba04552b9206f2a5429
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173417"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969370"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>チュートリアル:Azure で Terraform を使用してハブ仮想ネットワーク アプライアンスを作成する
+# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>チュートリアル:Terraform を使用して Azure でハブ仮想ネットワーク アプライアンスを作成する
 
 **VPN デバイス**は、オンプレミス ネットワークとの外部接続を実現するデバイスです。 VPN デバイスには、ハードウェア デバイスとソフトウェア ソリューションとがあります。 ソフトウェア ソリューションとしては、たとえば Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) があります。 VPN アプライアンスの詳細については、[サイト間 VPN Gateway 接続の VPN デバイス](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)に関するページを参照してください。
 
@@ -77,37 +74,37 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
 
     resource "azurerm_resource_group" "hub-nva-rg" {
       name     = "${local.prefix-hub-nva}-rg"
-      location = "${local.hub-nva-location}"
+      location = local.hub-nva-location
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_network_interface" "hub-nva-nic" {
       name                 = "${local.prefix-hub-nva}-nic"
-      location             = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-nva-rg.name}"
+      location             = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name  = azurerm_resource_group.hub-nva-rg.name
       enable_ip_forwarding = true
 
       ip_configuration {
-        name                          = "${local.prefix-hub-nva}"
-        subnet_id                     = "${azurerm_subnet.hub-dmz.id}"
+        name                          = local.prefix-hub-nva
+        subnet_id                     = azurerm_subnet.hub-dmz.id
         private_ip_address_allocation = "Static"
         private_ip_address            = "10.0.0.36"
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_virtual_machine" "hub-nva-vm" {
       name                  = "${local.prefix-hub-nva}-vm"
-      location              = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name   = "${azurerm_resource_group.hub-nva-rg.name}"
-      network_interface_ids = ["${azurerm_network_interface.hub-nva-nic.id}"]
-      vm_size               = "${var.vmsize}"
+      location              = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name   = azurerm_resource_group.hub-nva-rg.name
+      network_interface_ids = [azurerm_network_interface.hub-nva-nic.id]
+      vm_size               = var.vmsize
 
       storage_image_reference {
         publisher = "Canonical"
@@ -125,8 +122,8 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
 
       os_profile {
         computer_name  = "${local.prefix-hub-nva}-vm"
-        admin_username = "${var.username}"
-        admin_password = "${var.password}"
+        admin_username = var.username
+        admin_password = var.password
       }
 
       os_profile_linux_config {
@@ -134,15 +131,15 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_virtual_machine_extension" "enable-routes" {
       name                 = "enable-iptables-routes"
-      location             = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-nva-rg.name}"
-      virtual_machine_name = "${azurerm_virtual_machine.hub-nva-vm.name}"
+      location             = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name  = azurerm_resource_group.hub-nva-rg.name
+      virtual_machine_name = azurerm_virtual_machine.hub-nva-vm.name
       publisher            = "Microsoft.Azure.Extensions"
       type                 = "CustomScript"
       type_handler_version = "2.0"
@@ -157,14 +154,14 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
     SETTINGS
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_route_table" "hub-gateway-rt" {
       name                          = "hub-gateway-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -188,20 +185,20 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "hub-gateway-rt-hub-vnet-gateway-subnet" {
-      subnet_id      = "${azurerm_subnet.hub-gateway-subnet.id}"
-      route_table_id = "${azurerm_route_table.hub-gateway-rt.id}"
+      subnet_id      = azurerm_subnet.hub-gateway-subnet.id
+      route_table_id = azurerm_route_table.hub-gateway-rt.id
       depends_on = ["azurerm_subnet.hub-gateway-subnet"]
     }
 
     resource "azurerm_route_table" "spoke1-rt" {
       name                          = "spoke1-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -218,26 +215,26 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "spoke1-rt-spoke1-vnet-mgmt" {
-      subnet_id      = "${azurerm_subnet.spoke1-mgmt.id}"
-      route_table_id = "${azurerm_route_table.spoke1-rt.id}"
+      subnet_id      = azurerm_subnet.spoke1-mgmt.id
+      route_table_id = azurerm_route_table.spoke1-rt.id
       depends_on = ["azurerm_subnet.spoke1-mgmt"]
     }
 
     resource "azurerm_subnet_route_table_association" "spoke1-rt-spoke1-vnet-workload" {
-      subnet_id      = "${azurerm_subnet.spoke1-workload.id}"
-      route_table_id = "${azurerm_route_table.spoke1-rt.id}"
+      subnet_id      = azurerm_subnet.spoke1-workload.id
+      route_table_id = azurerm_route_table.spoke1-rt.id
       depends_on = ["azurerm_subnet.spoke1-workload"]
     }
 
     resource "azurerm_route_table" "spoke2-rt" {
       name                          = "spoke2-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -254,19 +251,19 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "spoke2-rt-spoke2-vnet-mgmt" {
-      subnet_id      = "${azurerm_subnet.spoke2-mgmt.id}"
-      route_table_id = "${azurerm_route_table.spoke2-rt.id}"
+      subnet_id      = azurerm_subnet.spoke2-mgmt.id
+      route_table_id = azurerm_route_table.spoke2-rt.id
       depends_on = ["azurerm_subnet.spoke2-mgmt"]
     }
 
     resource "azurerm_subnet_route_table_association" "spoke2-rt-spoke2-vnet-workload" {
-      subnet_id      = "${azurerm_subnet.spoke2-workload.id}"
-      route_table_id = "${azurerm_route_table.spoke2-rt.id}"
+      subnet_id      = azurerm_subnet.spoke2-workload.id
+      route_table_id = azurerm_route_table.spoke2-rt.id
       depends_on = ["azurerm_subnet.spoke2-workload"]
     }
 

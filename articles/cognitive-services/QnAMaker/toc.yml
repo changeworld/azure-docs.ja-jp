@@ -12,12 +12,8 @@
       href: quickstarts/create-publish-knowledge-base.md
     - name: メタデータによる質問の追加
       href: quickstarts/add-question-metadata-portal.md
-    - name: 回答の取得
-      items:
-        - name: Postman の使用
-          href: Quickstarts/get-answer-from-kb-using-postman.md
-        - name: cURL の使用
-          href: Quickstarts/get-answer-from-kb-using-cURL.md
+    - name: Postman または cURL を使用して回答を取得する
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: REST API の使用
       items:
         - name: 新しいナレッジ ベースの作成

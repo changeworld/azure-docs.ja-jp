@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfafa1157619e151f97fcf9c8a410a0644354b80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 259635613855e4d7687cf569c94bbd3dd04027fe
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097393"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合
 
@@ -158,11 +159,11 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
 
 2. **[サービス] \> [アプリケーション]** に移動します。
    
-    ![アプリケーション](./media/mimecast-personal-portal-tutorial/ic794998.png "Applications")
+    ![アプリケーション](./media/mimecast-personal-portal-tutorial/ic794998.png "[アプリケーション]")
 
 3. **[認証プロファイル]** をクリックします。
    
-    ![Authentication Profiles](./media/mimecast-personal-portal-tutorial/ic794999.png "Authentication Profiles")
+    ![認証プロファイル](./media/mimecast-personal-portal-tutorial/ic794999.png "[認証プロファイル]")
 
 4. **[新しい認証プロファイル]** をクリックします。
    
@@ -170,7 +171,7 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
 
 5. **[認証プロバイダー]** セクションで、次の手順に従います。
    
-    ![Authentication Profile](./media/mimecast-personal-portal-tutorial/ic795001.png "Authentication Profile")
+    ![認証プロファイル](./media/mimecast-personal-portal-tutorial/ic795001.png "認証プロバイダー")
    
     a. **[説明]** テキストボックスに、構成の名前を入力します。
    
@@ -253,19 +254,19 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
 
 2. **[ディレクトリ]\>[内部]** に移動します。
    
-    ![Directories](./media/mimecast-personal-portal-tutorial/ic795003.png "Directories")
+    ![Directories](./media/mimecast-personal-portal-tutorial/ic795003.png "ディレクトリ")
 
 3. **[新規ドメインの登録]** をクリックします。
    
-    ![Register New Domain](./media/mimecast-personal-portal-tutorial/ic795004.png "Register New Domain")
+    ![新規ドメインの登録](./media/mimecast-personal-portal-tutorial/ic795004.png "[新規ドメインの登録]")
 
 4. 新しいドメインを作成したら、 **[新規アドレス]** をクリックします。
    
-    ![New Address](./media/mimecast-personal-portal-tutorial/ic795005.png "New Address")
+    ![新規アドレス](./media/mimecast-personal-portal-tutorial/ic795005.png "[新規アドレス]")
 
 5. 新規アドレス ダイアログで、プロビジョニングする有効な Azure AD アカウントを次の手順で設定します。
    
-    ![保存](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
+    ![[[Save]]](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
    
     a. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーの**メール アドレス** (**BrittaSimon\@contoso.com** など) を入力します。
     

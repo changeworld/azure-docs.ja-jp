@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db56cd7551ef8179aeff575fdd1f2578cbee74ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4afd7697272775b8d5558d9c091eeea0d2b9adf
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106707"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158026"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル:Azure Active Directory と ArcGIS Online の統合
 
@@ -128,19 +129,19 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
 2. **[EDIT SETTINGS] \(設定の編集)** をクリックします。
 
-    ![Edit Settings (設定の編集)](./media/arcgis-tutorial/ic784742.png "Edit Settings")
+    ![設定の編集](./media/arcgis-tutorial/ic784742.png "[Edit Settings]")
 
 3. **[セキュリティ]** をクリックします。
 
-    ![Security (セキュリティ)](./media/arcgis-tutorial/ic784743.png "Security")
+    ![セキュリティ](./media/arcgis-tutorial/ic784743.png "セキュリティ")
 
 4. **[Enterprise Logins] [エンタープライズ ログイン]** で、 **[SET IDENTITY PROVIDER] \(ID プロバイダーの設定)** をクリックします。
 
-    ![Enterprise Logins (エンタープライズ ログイン)](./media/arcgis-tutorial/ic784744.png "Enterprise Logins")
+    ![エンタープライズ ログイン](./media/arcgis-tutorial/ic784744.png "Enterprise Logins")
 
 5. **[Set Identity Provider]** 構成ページで、次の手順に従います。
 
-    ![Set Identity Provider (ID プロバイダーの設定)](./media/arcgis-tutorial/ic784745.png "Set Identity Provider")
+    ![ID プロバイダーの設定](./media/arcgis-tutorial/ic784745.png "[Set Identity Provider]")
 
     a. **[名前]** テキスト ボックスに組織の名前を入力します。
 
@@ -212,15 +213,15 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
 
 2. **[INVITE MEMBERS] \(メンバーの招待)** をクリックします。
    
-    ![Invite Members (メンバーの招待)](./media/arcgis-tutorial/ic784747.png "Invite Members")
+    ![メンバーの招待](./media/arcgis-tutorial/ic784747.png "[Invite Members]")
 
 3. **[Add members automatically without sending an email] \(電子メールを送信せずにメンバーを自動的に追加する)** を選択し、 **[NEXT] \(次へ)** をクリックします。
    
-    ![メンバーの自動追加](./media/arcgis-tutorial/ic784748.png "Add Members Automatically")
+    ![メンバーを自動的に追加する](./media/arcgis-tutorial/ic784748.png "Add Members Automatically")
 
 4. **[Members]** ダイアログ ページで、次の手順に従います。
    
-     ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "Add and review")
+     ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "[Add And Review]")
     
      a. プロビジョニングする有効な AAD アカウントの **[電子メール]** 、 **[名]** 、および **[姓]** を入力します。
   

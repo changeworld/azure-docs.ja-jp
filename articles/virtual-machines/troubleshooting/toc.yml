@@ -173,11 +173,14 @@
           href: troubleshoot-recovery-disks-linux.md
         - name: Azure ポータル
           href: troubleshoot-recovery-disks-portal-linux.md
-- name: ブート エラー
-  href: boot-error-troubleshoot.md
+- name: ブート エラー (Linux)
+  href: boot-error-troubleshoot-linux.md
   items:
     - name: Grub の復旧
       href: troubleshoot-vm-boot-error.md
+- name: ブート エラー (Windows)
+  href: boot-error-troubleshoot.md
+  items:
     - name: ブート診断
       href: boot-diagnostics.md
     - name: BitLocker のエラー

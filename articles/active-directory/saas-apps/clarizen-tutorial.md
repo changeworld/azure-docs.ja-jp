@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88f42a849d5c483feb9325072fd65769839672e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b34e6087f3a6e7f3cc0f46c53d4fe903838d210
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105375"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル:Azure Active Directory と Clarizen の統合
 
@@ -132,15 +133,15 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
 1. 自分のユーザー名をクリックし、 **[Settings (設定)]** をクリックします。
 
-    ![ユーザー名の下にある [Settings (設定)] のクリック](./media/clarizen-tutorial/tutorial_clarizen_001.png "設定")
+    ![ユーザー名の下にある [設定] のクリック](./media/clarizen-tutorial/tutorial_clarizen_001.png "設定")
 
 1. **[Global Settings (グローバル設定)]** タブをクリックします。次に、 **[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
 
-    ![[Global Settings (グローバル設定)] タブ](./media/clarizen-tutorial/tutorial_clarizen_002.png "グローバル設定")
+    ![[グローバル設定] タブ](./media/clarizen-tutorial/tutorial_clarizen_002.png "グローバル設定")
 
 1. **[Federated Authentication (フェデレーション認証)]** ダイアログ ボックスで、次の手順を実行します。
 
-    ![[Federated Authentication (フェデレーション認証)] ダイアログ ボックス](./media/clarizen-tutorial/tutorial_clarizen_003.png "フェデレーション認証")
+    ![[フェデレーション認証] ダイアログ ボックス](./media/clarizen-tutorial/tutorial_clarizen_003.png "[フェデレーション認証]")
 
     a. **[Enable Federated Authentication (フェデレーション認証を有効にする)]** をオンにします。
 
@@ -217,15 +218,15 @@ Clarizen への Azure AD ユーザーのサインインを有効にするには�
 
 2. **[ユーザー]** をクリックします。
 
-    ![[People (ユーザー)] のクリック](./media/clarizen-tutorial/create_aaduser_001.png "ユーザー")
+    ![[ユーザー] のクリック](./media/clarizen-tutorial/create_aaduser_001.png "ユーザー")
 
 3. **[ユーザーの招待]** をクリックします。
 
-    ![[Invite User (ユーザーの招待)] ボタン](./media/clarizen-tutorial/create_aaduser_002.png "ユーザーの招待")
+    ![[ユーザーの招待] ボタン](./media/clarizen-tutorial/create_aaduser_002.png "ユーザーの招待")
 
 1. **[Invite People (ユーザーの招待)]** ダイアログ ボックスで、次の手順を実行します。
 
-    ![[Invite People (ユーザーの招待)] ダイアログ ボックス](./media/clarizen-tutorial/create_aaduser_003.png "ユーザーの招待")
+    ![[ユーザーの招待] ダイアログ ボックス](./media/clarizen-tutorial/create_aaduser_003.png "[ユーザーの招待]")
 
     a. **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 

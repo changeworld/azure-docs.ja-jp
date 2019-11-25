@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ed903e71a019d0bdb1b62503913bd696e9d8a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add43f081ca6059651725cd6f817d4cce127b74b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102039"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73155759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル:Azure Active Directory と FreshDesk の統合
 
@@ -169,7 +170,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
 2. **[設定]** アイコンを選択し、 **[セキュリティ]** セクションで次の手順を実行します。
 
-    ![Single Sign On](./media/freshdesk-tutorial/IC776770.png "Single Sign On")
+    ![シングル サインオン](./media/freshdesk-tutorial/IC776770.png "シングル サインオン")
   
     a. **[シングル サインオン (SSO)]** で **[オン]** を選択します。
 
@@ -245,19 +246,19 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 2. 上部のメニューで **[Admin]** をクリックします。
 
-    ![管理](./media/freshdesk-tutorial/IC776772.png "Admin")
+    ![管理者](./media/freshdesk-tutorial/IC776772.png "[Admin]")
 
 3. **[全般設定]** タブで **[エージェント]** をクリックします。
   
-    ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
+    ![エージェント](./media/freshdesk-tutorial/IC776773.png "エージェント")
 
 4. **[新しいエージェント]** をクリックします。
 
-    ![New Agent](./media/freshdesk-tutorial/IC776774.png "New Agent")
+    ![新しいエージェント](./media/freshdesk-tutorial/IC776774.png "[新しいエージェント]")
 
 5. [エージェント情報] ダイアログで、次の手順を実行します。
 
-    ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
+    ![エージェント情報](./media/freshdesk-tutorial/IC776775.png "エージェント情報")
 
     a. **[電子メール]** ボックスに、プロビジョニングする Azure AD アカウントの Azure AD 電子メール アドレスを入力します。
 

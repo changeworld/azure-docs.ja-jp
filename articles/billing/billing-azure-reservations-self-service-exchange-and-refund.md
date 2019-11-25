@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9e3c999de1804684e77a6224330b2d7077046964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69543008"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052168"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -44,7 +44,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 ### <a name="enterprise-agreement-customers"></a>エンタープライズ契約のお客様
 
-元の購入が年額コミットメントを使用して購入されていた場合は、年額コミットメントに交換の金額が加算されて払い戻されます。 元の購入以来の超過分の請求書は、年額コミットメントが使用されるように、再度開かれて再計算されます。 予約を購入するのに使用された年額コミットメントの期間がアクティブでなくなっている場合は、現在のエンタープライズ契約年額コミットメント期間にクレジットを追加できます。
+元の購入が年額コミットメントを使用して購入されていた場合は、年額コミットメントに交換の金額が加算されて払い戻されます。 元の購入以来の超過分の請求書は、年額コミットメントが使用されるように、再度開かれて再計算されます。 予約を購入するのに使用された年額コミットメントの期間がアクティブでなくなっている場合は、現在のエンタープライズ契約年額コミットメント期間にクレジットを追加できます。 クレジットは、返金日付から 90 日間有効です。 未使用のクレジットは、90 日後に有効期限が切れます。
 
 元の購入が超過であった場合、Microsoft はクレジット メモを発行します。
 

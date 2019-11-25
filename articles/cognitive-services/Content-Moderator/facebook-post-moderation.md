@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bd2ed09294ad122b7e8af045f01d3c6f63fcc510
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564943"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936006"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | -------------------- |-------------|
     | cm:TeamId   | Content Moderator のチーム ID  | 
     | cm:SubscriptionKey | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
-    | cm:Region | Content Moderator のリージョン名 (スペースなし)。 |
+    | cm:Region | Content Moderator のリージョン名 (スペースなし)。 これは、Azure リソースの **[概要]** タブの **[場所]** ボックスで確認できます。|
     | cm:ImageWorkflow | 画像に対して実行するワークフローの名前 |
     | cm:TextWorkflow | テキストに対して実行するワークフローの名前 |
     | cm:CallbackEndpoint | このガイドで後で作成する CMListener 関数アプリの URL |
@@ -144,7 +144,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         2. [Postman 環境](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. 以下の環境変数を更新します。
     
-        | キー | 値   | 
+        | Key | 値   | 
         | -------------------- |-------------|
         | appId   | Facebook アプリ識別子をここに挿入します  | 
         | appSecret | Facebook アプリのシークレットをここに挿入します | 

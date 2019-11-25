@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcf9c8ea62610b6e4eb4ad642107df81ae712054
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 3125f5b9075a69289bd6a44d62c3d06d5e6d910d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950398"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル:Azure Active Directory と TOPdesk - Secure の統合
 
@@ -134,19 +135,19 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
 2. **[TOPdesk]** メニューで **[Settings]** をクリックします。
 
-    ![設定](./media/topdesk-secure-tutorial/ic790598.png "Settings")
+    ![設定](./media/topdesk-secure-tutorial/ic790598.png "設定")
 
 3. **[Login Settings]** をクリックします。
 
-    ![Login Settings](./media/topdesk-secure-tutorial/ic790599.png "Login Settings")
+    ![ログイン設定](./media/topdesk-secure-tutorial/ic790599.png "[Login Settings]")
 
 4. **[Login Settings]** メニューを展開し、 **[General]** をクリックします。
 
-    ![General](./media/topdesk-secure-tutorial/ic790600.png "General")
+    ![全般](./media/topdesk-secure-tutorial/ic790600.png "[General]")
 
 5. **[SAML login]** 構成セクションの **[Secure]** セクションで、次の手順に従います。
 
-    ![Technical Settings](./media/topdesk-secure-tutorial/ic790855.png "Technical Settings")
+    ![技術設定](./media/topdesk-secure-tutorial/ic790855.png "技術設定")
 
     a. **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
 
@@ -158,7 +159,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
 6. 証明書ファイルを作成するには、次の手順を実行します。
 
-    ![Certificate](./media/topdesk-secure-tutorial/ic790606.png "Certificate")
+    ![証明書](./media/topdesk-secure-tutorial/ic790606.png "証明書")
 
     a. Azure Portal からダウンロードしたメタデータ ファイルを開きます。
 
@@ -170,11 +171,11 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
 7. **[Public]** セクションで、 **[Add]** をクリックします。
 
-    ![Add](./media/topdesk-secure-tutorial/ic790607.png "Add")
+    ![追加](./media/topdesk-secure-tutorial/ic790607.png "Add")
 
 8. **[SAML configuration assistant]** ダイアログ ページで、次の手順を実行します。
 
-    ![SAML Configuration Assistant](./media/topdesk-secure-tutorial/ic790608.png "SAML Configuration Assistant")
+    ![SAML 構成アシスタント](./media/topdesk-secure-tutorial/ic790608.png "[SAML configuration assistant]")
 
     a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、 **[Federation Metadata]** で **[Browse]** をクリックします。
 
@@ -252,11 +253,11 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 2. 上部のメニューで、 **[TOPdesk]\>[New]\>[Support Files]\>[Operator]** の順にクリックします。
 
-    ![Operator](./media/topdesk-secure-tutorial/ic790610.png "Operator")
+    ![演算子](./media/topdesk-secure-tutorial/ic790610.png "Operator")
 
 3. **[New Operator]** ダイアログで、次の手順を実行します。
 
-    ![New Operator](./media/topdesk-secure-tutorial/ic790611.png "New Operator")
+    ![New Operator](./media/topdesk-secure-tutorial/ic790611.png "[New Operator]")
 
     a. **[General]** タブをクリックします。
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c2599a2ddd09cbaf869bf4d9e21a8032855cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8fc58b9cdec1a68dd12b7f70f7521a024f358ce
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086164"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル:Azure Active Directory と Zoho の統合
 
@@ -130,15 +131,15 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
 2. **コントロール パネル**に移動します。
    
-    ![コントロール パネル](./media/zoho-mail-tutorial/ic789607.png "Control Panel")
+    ![コントロール パネル](./media/zoho-mail-tutorial/ic789607.png "コントロール パネル")
 
 3. **[SAML 認証]** タブをクリックします。
    
-    ![SAML Authentication](./media/zoho-mail-tutorial/ic789608.png "SAML Authentication")
+    ![SAML 認証](./media/zoho-mail-tutorial/ic789608.png "SAML 認証")
 
 4. **[SAML 認証の詳細]** セクションで、次の手順に従います。
    
-    ![SAML 認証の詳細](./media/zoho-mail-tutorial/ic789609.png "SAML Authentication Details")
+    ![SAML 認証の詳細](./media/zoho-mail-tutorial/ic789609.png "[SAML 認証の詳細]")
    
     a. **[Login URL]\(ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
    
@@ -218,11 +219,11 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
 1. **[ユーザーの詳細] \> [ユーザーの追加]** の順に移動します。
    
-    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789611.png "Add User")
+    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789611.png "ユーザーの追加")
 
 1. **[ユーザーの追加]** ダイアログで、次の手順を実行します。
    
-    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789612.png "Add User")
+    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789612.png "ユーザーの追加")
    
     a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
 

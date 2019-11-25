@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f826b5d2-9c64-47df-bbbf-0adf9eb0fa71
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bc3de858102c02d49a7cefeef15de7e1c82220e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfa7934472b512e2c884ab3f9a06728a8fb18b12
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106468"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>チュートリアル:Azure Active Directory と BambooHR の統合
 
@@ -132,7 +133,7 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
 
 2. ホーム ページで、次の操作を行います。
    
-    ![BambooHR シングル サインオン ページ](./media/bamboo-hr-tutorial/ic796691.png "シングル サインオン")   
+    ![BambooHR のシングル サインオン ページ](./media/bamboo-hr-tutorial/ic796691.png "[Single Sign-On]")   
 
     a. **[アプリ]** を選択します。
    
@@ -142,7 +143,7 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
 
 3. **[SAML シングル サインオン]** ウィンドウで、次の手順を実行します。
    
-    ![[SAML シングル サインオン] ウィンドウ](./media/bamboo-hr-tutorial/IC796692.png "[SAML シングル サインオン]")
+    ![SAML のシングル サインオン ページ](./media/bamboo-hr-tutorial/IC796692.png "SAML シングル サインオン")
    
     a. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、手順 6. で Azure portal からコピーした**ログイン URL** を貼り付けます。
       
@@ -209,7 +210,7 @@ Azure AD ユーザーで BambooHR にサインインできるようにするに�
 
 2. 上部のツールバーで **[Settings]\(設定\)** を選択します。
    
-    ![[Settings]\(設定\) ボタン](./media/bamboo-hr-tutorial/IC796694.png "[Settings]\(設定\)")
+    ![[設定] ボタン](./media/bamboo-hr-tutorial/IC796694.png "Setting")
 
 3. **[概要]** を選択します。
 

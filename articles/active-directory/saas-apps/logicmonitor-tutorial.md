@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 496156c3-0e22-4492-b36f-2c29c055e087
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 468d55b2b96979658bc8f3e226da36dc4af1c174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 463a8981689614d96100e03965117c9344aa5d50
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097947"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>チュートリアル:Azure Active Directory と LogicMonitor の統合
 
@@ -132,15 +133,15 @@ LogicMonitor で Azure AD シングル サインオンを構成するには、�
 
 2. 上部のメニューで **[Settings]** をクリックします。
 
-    ![設定](./media/logicmonitor-tutorial/ic790052.png "Settings")
+    ![設定](./media/logicmonitor-tutorial/ic790052.png "設定")
 
 3. 左側にあるナビゲーション バーで、 **[シングル サインオン]**
 
-    ![シングル サインオン](./media/logicmonitor-tutorial/ic790053.png "Single Sign-On")
+    ![シングル サインオン](./media/logicmonitor-tutorial/ic790053.png "[Single Sign-On]")
 
 4. **[シングル サインオンの設定]** セクションで、次の手順に従います。
 
-    ![Single Sign-On Settings](./media/logicmonitor-tutorial/ic790054.png "Single Sign-On Settings")
+    ![シングル サインオンの設定](./media/logicmonitor-tutorial/ic790054.png "[シングル サインオンの設定]")
 
     a. **[シングル サインオンを有効にする]** を選択します。
 
@@ -211,13 +212,13 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 
 2. 上部のメニューで、 **[設定]** 、 **[Roles and Users (ロールとユーザー)]** の順にクリックします。
 
-    ![Roles and Users](./media/logicmonitor-tutorial/ic790056.png "Roles and Users")
+    ![ロールとユーザー](./media/logicmonitor-tutorial/ic790056.png "[Roles and Users (ロールとユーザー)]")
 
 3. **[追加]** をクリックします。
 
 4. **[アカウントの追加]** セクションで、次の手順に従います。
 
-    ![Add an account](./media/logicmonitor-tutorial/ic790057.png "Add an account")
+    ![アカウントを追加する](./media/logicmonitor-tutorial/ic790057.png "[アカウントの追加]")
 
     a. 関連するテキスト ボックスにプロビジョニングする Azure Active Directory ユーザーの**ユーザー名**、**メール**、**パスワード**、**パスワードの再入力**の値を入力します。
 

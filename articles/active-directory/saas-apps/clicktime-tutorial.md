@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b14b060cc37f94e51ceb902f8b4158120d4d02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105292"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157409"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル:Azure Active Directory と ClickTime の統合
 
@@ -136,7 +137,7 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
 
 1. **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
    
-    ![Security Settings](./media/clicktime-tutorial/tic777280.png "Security Settings")
+    ![Security Settings](./media/clicktime-tutorial/tic777280.png "[Security Settings]")
    
     a.  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
    
@@ -211,15 +212,15 @@ ClickTime の場合、プロビジョニングは手動で行います。
 
 1. 上部のツールバーで、 **[Company]** をクリックし、 **[People]** をクリックします。
    
-    ![ユーザー](./media/clicktime-tutorial/tic777282.png "People")
+    ![ユーザー](./media/clicktime-tutorial/tic777282.png "ユーザー")
 
 1. **[Add Person]** をクリックします。
    
-    ![Add Person](./media/clicktime-tutorial/tic777283.png "Add Person")
+    ![Add Person](./media/clicktime-tutorial/tic777283.png "[Add Person]")
 
 1. [New Person] セクションで、次の手順を実行します。
    
-    ![ユーザー](./media/clicktime-tutorial/tic777284.png "People")
+    ![ユーザー](./media/clicktime-tutorial/tic777284.png "ユーザー")
    
     a.  **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。 
   

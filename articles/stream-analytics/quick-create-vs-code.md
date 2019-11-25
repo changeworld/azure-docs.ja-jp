@@ -1,5 +1,5 @@
 ---
-title: Visual Studio Code で Azure Stream Analytics クラウド ジョブを作成する (プレビュー)
+title: Visual Studio Code で Azure Stream Analytics クラウド ジョブを作成する
 description: このクイックスタートでは、Visual Studio Code を使い Stream Analytics ジョブの作成、入力、出力の構成、およびクエリの定義から始める方法について説明します。
 ms.service: stream-analytics
 author: mamccrea
@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 3301be3a067982cb90e663fe3782319eb0b90ba0
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 35e2711bbb3cd6dc0662146a566014dd65d879bc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673126"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935084"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>クイック スタート:Visual Studio Code で Azure Stream Analytics クラウド ジョブを作成する (プレビュー)
 

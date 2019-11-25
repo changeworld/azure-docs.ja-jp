@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d7d2ad6adefb83c3c313063a9e630458ccebc5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 07c1d6e3c622a76a1e625962ad5f08d414ad8cef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851767"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175045"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
 
@@ -30,7 +30,7 @@ ms.locfileid: "68851767"
 - ユーザーは、必要な組織の資産へのアクセス権を取得します。 
 - IT スタッフは、組織を保護するために必要な制御を取得します。
 
-デバイス ID 管理は、[デバイス ベースの条件付きアクセス](../conditional-access/require-managed-devices.md)の基盤です。 デバイス ベースの条件付きアクセス ポリシーにより、マネージド デバイスのみが、ご使用の環境内のリソースにアクセスできるようにします。
+デバイス ID 管理は、[デバイス ベースの条件付きアクセス](../conditional-access/require-managed-devices.md)の基盤です。 デバイス ベースの条件付きアクセス ポリシーにより、環境内のリソースへのアクセスを確実にマネージド デバイスでのみ可能にすることができます。
 
 ## <a name="getting-devices-in-azure-ad"></a>Azure AD でのデバイスの取得
 
@@ -94,4 +94,4 @@ Azure AD のデバイス ID 管理では、以下が可能です。
 - [Azure AD 参加済みデバイス](concept-azure-ad-join.md)について学習する
 - [ハイブリッド Azure AD 参加済みデバイス](concept-azure-ad-join-hybrid.md)について学習する
 - Azure portal でデバイス ID を管理する方法の概要については、[Azure portal によるデバイス ID の管理](device-management-azure-portal.md)に関するページを参照してください。
-- デバイスベースの条件付きアクセスの詳細については、[Azure Active Directory デバイスベースの条件付きアクセス ポリシーの構成](../conditional-access/require-managed-devices.md)に関するページを参照してください。
+- デバイス ベースの条件付きアクセスの詳細については、[Azure Active Directory デバイス ベースの条件付きアクセス ポリシーの構成](../conditional-access/require-managed-devices.md)に関するページを参照してください。

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor でのハイブリッド Windows コンピューターからのデータの収集 | Microsoft Docs
+title: Azure Monitor を使用してハイブリッド Windows コンピューターからデータを収集する
 description: このクイックスタートでは、Azure の外部で実行中の Windows コンピューター用に Log Analytics エージェントをデプロイし、Azure Monitor ログを使用してデータを収集できるようにする方法について説明します。
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677279"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199028"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Monitor を使用してハイブリッド環境の Windows コンピューターからデータを収集する
 

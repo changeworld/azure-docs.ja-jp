@@ -1,5 +1,6 @@
 ---
-title: Microsoft 認証ライブラリでリダイレクト URI を使用する | Microsoft ID プラットフォーム
+title: Microsoft 認証ライブラリでのリダイレクト URI の使用
+titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library for ObjectiveC (MSAL for iOS および macOS) と Azure AD Authentication Library for ObjectiveC (ADAL.ObjC) の違いと、それらの間の移行方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: jak
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a84ea0acc165b236e2dbe17e62a84269a16eedb9
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b78906a03eb9dc96fb58dea4ceabff953f2a3e4f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269290"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803784"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>iOS 用と macOS 用の Microsoft 認証ライブラリでのリダイレクト URI の使用
 
@@ -140,4 +141,4 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 ## <a name="next-steps"></a>次の手順
 
-[認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)について学習します
+[認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)の詳細を確認します
