@@ -127,7 +127,7 @@
               href: map-add-custom-html.md
             - name: 交通情報を表示する
               href: map-show-traffic.md
-            - name: マウス イベントと連動させる
+            - name: イベントへの反応
               href: map-events.md
             - name: アプリをアクセス可能にする
               href: map-accessibility.md

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: f4bab6ab837b746c6a569cc6de95a95023bf83f4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: fec39a9e788debcd9c3ac707a0431e268d87ed35
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987005"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146185"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu 仮想マシン上で Azure IoT Edge を実行する
 
@@ -33,10 +33,10 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
     *   VM を初めて試す場合は、パスワードを使用し、パブリック受信ポート メニューで SSH を有効にするのが最も簡単です。 
     *   リソース消費の激しいワークロードがある場合は、CPU やメモリを追加して、仮想マシンのサイズをアップグレードしてください。
 4.  仮想マシンがデプロイされたら、IoT Hub に接続するように構成します。
-    1.  IoT Hub で作成された IoT Edge デバイスから、デバイス接続文字列をコピーします (このプロセスに詳しくない場合は、[Azure portal から新しい Azure IoT Edge デバイスを登録する](how-to-register-device-portal.md)方法のハウツー ガイドをご覧ください)
+    1.  IoT Hub で作成された IoT Edge デバイスから、デバイス接続文字列をコピーします (このプロセスに詳しくない場合は、「[Azure portal で接続文字列を取得する](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal)」をご覧ください)。
     1.  Azure portal から新しく作成された仮想マシン リソースを選択し、 **[実行コマンド]** オプションを開きます
     1.  **[RunShellScript]** オプションを選択します
-    1.  コマンド ウィンドウから、デバイス接続文字列を使用して下記のスクリプトを実行します。`/etc/iotedge/configedge.sh “{device_connection_string}”`
+    1.  コマンド ウィンドウから、デバイス接続文字列を使用して下記のスクリプトを実行します。`/etc/iotedge/configedge.sh "{device_connection_string}"`
     1.  **[実行]** を選択します
     1.  しばらく待つと、接続文字列が正常に設定されたことを示すメッセージが画面に表示されます。
 
@@ -85,7 +85,7 @@ Azure portal から、"Azure IoT Edge" を検索し、"**Ubuntu Server 16.04 LTS
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
-1. デバイス接続文字列を設定します (このプロセスに詳しくない場合は、[Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](how-to-register-device-cli.md)方法のハウツー ガイドをご覧ください)。
+1. デバイス接続文字列を設定します (このプロセスに詳しくない場合は、「[Azure CLI を使用して接続文字列を取得する](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli)」の手順に従ってください)。
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"

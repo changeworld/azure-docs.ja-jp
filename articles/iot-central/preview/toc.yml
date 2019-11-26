@@ -71,6 +71,8 @@
           href: howto-version-device-template.md
         - name: デバイスを管理する
           href: howto-manage-devices.md
+        - name: ルールを構成する
+          href: howto-configure-rules.md
         - name: デバイス データを分析する
           href: howto-create-analytics.md
         - name: ダッシュボードへのタイルの追加

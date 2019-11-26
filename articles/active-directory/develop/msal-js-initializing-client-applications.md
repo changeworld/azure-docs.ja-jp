@@ -1,5 +1,6 @@
 ---
-title: クライアント アプリケーションの初期化 (JavaScript 用 Microsoft Authentication Library) | Azure
+title: クライアント アプリケーションの初期化 (JavaScript 用 Microsoft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を使用することによるクライアント アプリケーションの初期化について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d36def4faa98f4b8e42c93cf3e222c2ec7ca89a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 25f2776b9b5683a345c55af4bc0020fef8109edd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073839"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150667"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js を使用してクライアント アプリケーションを初期化する
 この記事では、ユーザー エージェント アプリケーションのインスタンスを使用して JavaScript 用 Microsoft Authentication Library (MSAL.js) を初期化する方法について説明します。 ユーザー エージェント アプリケーションは、Web ブラウザーなどのユーザー エージェントでクライアント コードが実行されるパブリック クライアント アプリケーションの一種です。 これらのクライアントでは、シークレットは格納されません。ブラウザーのコンテキストが公開されアクセス可能であるからです。 クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
@@ -45,7 +46,7 @@ ms.locfileid: "70073839"
 // Configuration object constructed
 const config = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”
+        clientId: "abcd-ef12-gh34-ikkl-ashdjhlhsdg"
     }
 }
 
@@ -90,6 +91,7 @@ export type SystemOptions = {
     logger?: Logger;
     loadFrameTimeout?: number;
     tokenRenewalOffsetSeconds?: number;
+    navigateFrameWait?: number;
 };
 
 // Developer App Environment Support
@@ -138,6 +140,8 @@ export type Configuration = {
 - **loadFrameTimeout**: 省略可能。  Azure AD からのトークン更新応答をタイムアウトと見なすまでの非アクティビティ状態のミリ秒数。既定値は 6 秒です
 
 - **tokenRenewalOffsetSeconds**: 省略可能。 有効期限の前にトークンを更新するために必要なオフセットのウィンドウを設定するミリ秒数。 既定値は 300 ミリ秒です。
+
+- **navigateFrameWait**:省略可能。 非表示の iframe が移動先に移動するまでの待機時間を設定するミリ秒数。 既定値は 500 ミリ秒です。
 
 以下は、MSAL Angular ラッパー ライブラリから渡される場合にのみ適用可能です。
 - **unprotectedResources**: 省略可能。  保護されていないリソースである URI の配列です。 MSAL では、これらの URI を含む送信要求にトークンは添付されません。 既定値は `null` です。

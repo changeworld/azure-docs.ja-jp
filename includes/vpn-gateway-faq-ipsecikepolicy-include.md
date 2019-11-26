@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799957"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075397"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>カスタム IPsec/IKE ポリシーはすべての Azure VPN Gateway SKU でサポートされていますか。
-カスタム IPsec/IKE ポリシーは、Azure の **VpnGw1、VpnGw2、VpnGw3、Standard** および **HighPerformance** VPN ゲートウェイでサポートされています。 **Basic** SKU はサポート**されていません**。
+カスタム IPsec/IKE ポリシーは、Basic SKU を除くすべての Azure SKU でサポートされています。
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>1 つの接続に対してポリシーはいくつ指定できますか。
 ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ***だけです。
@@ -27,22 +27,22 @@ ms.locfileid: "73799957"
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>カスタム ポリシーでサポートされるアルゴリズムとキーの強度を教えてください。
 以下の表は、サポートされている暗号アルゴリズムと、ユーザーが構成できるキーの強度を一覧にしたものです。 各フィールドについて、オプションを 1 つ選択する必要があります。
 
-| **IPsec/IKEv1、IKEv2**  | **オプション**                                                                   |
-| ---                     | ---                                                                           |
-| IKEv1、IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES                                             |
-| IKEv1、IKEv2 整合性  | SHA384、SHA256、SHA1、MD5                                                     |
-| DH グループ                | DHGroup24、ECP384、ECP256、DHGroup14 (DHGroup2048)、DHGroup2、DHGroup1、なし  |
-| IPsec 暗号化        | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし      |
-| IPsec 整合性         | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                            |
-| PFS グループ               | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、なし                              |
-| QM SA の有効期間          | 秒 (整数: **最小 300**/既定値 27,000 秒)<br>キロバイト数 (整数: **最小 1024**/既定値 102,400,000 キロバイト) |
-| トラフィック セレクター        | UsePolicyBasedTrafficSelectors ($True/$False - 既定値 $False)                 |
-|                         |                                                                               |
+| **IPsec/IKEv2**  | **オプション**                                                                   |
+| ---              | ---                                                                           |
+| IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES                                             |
+| IKEv2 整合性  | SHA384、SHA256、SHA1、MD5                                                     |
+| DH グループ         | DHGroup24、ECP384、ECP256、DHGroup14 (DHGroup2048)、DHGroup2、DHGroup1、なし |
+| IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし      |
+| IPsec 整合性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                            |
+| PFS グループ        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、なし                              |
+| QM SA の有効期間   | 秒 (整数: **最小 300**/既定値 27,000 秒)<br>キロバイト数 (整数: **最小 1024**/既定値 102,400,000 キロバイト)           |
+| トラフィック セレクター | UsePolicyBasedTrafficSelectors ($True/$False - 既定値 $False)                 |
+|                  |                                                                               |
 
 > [!IMPORTANT]
 > 1. DHGroup2048 および PFS2048 は、IKE および IPsec PFS の Diffie-Hellman グループ **14** と同じです。 完全なマッピングについては、[Diffie-Hellman グループ](#DH)に関するセクションを参照してください。
 > 2. GCMAES アルゴリズムでは、IPSec 暗号化と整合性の両方に同じ GCMAES アルゴリズムとキーの長さを指定する必要があります。
-> 3. Azure VPN ゲートウェイでは、IKEv1 および IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます。
+> 3. Azure VPN ゲートウェイでは、IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます
 > 4. QM SA の有効期間は省略可能なパラメーターです。 指定されていない場合は、既定値の 27,000 秒 (7.5 時間) および 102,400,000 キロバイト (102 GB) が使用されます。
 > 5. UsePolicyBasedTrafficSelector は接続に関する省略可能なパラメーターです。 "UsePolicyBasedTrafficSelectors" については、次の FAQ 項目を参照してください。
 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/10/2019
-ms.openlocfilehash: 7363f1ec11974dab3e0c0149c18ac4f0bf1c86ee
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/29/2019
+ms.openlocfilehash: 69ed49c0e1b90b4086a40bd15f5d276c6cfe137f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555194"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162223"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) からログを照会する方法
 VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics ワークスペースにこれらを転送します。  このデータは、Azure Monitor で[クエリ](../../azure-monitor/log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
@@ -25,7 +25,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 - コンピューター:*ResourceId* または *ResourceName_s* を使用して、Log Analytics ワークスペース内のコンピューターを一意に識別します。
 - プロセス:*ResourceId* を使用して、Log Analytics ワークスペース内のプロセスを一意に識別します。 *ResourceName_s* は、プロセスが実行中のマシンのコンテキスト内で一意です (MachineResourceName_s) 
 
-指定の時間範囲にある指定のプロセスとコンピューターについては、複数のレコードが存在できるため、クエリは、同じコンピューターまたはプロセスに対して複数のレコードを返すことがあります。 最新のレコードのみが返されるようにするには、"| dedup ResourceId" をクエリに追加します。
+指定の時間範囲にある指定のプロセスとコンピューターについては、複数のレコードが存在できるため、クエリは、同じコンピューターまたはプロセスに対して複数のレコードを返すことがあります。 最新のレコードのみが返されるようにするには、`| summarize arg_max(TimeGenerated, *) by ResourceId` をクエリに追加します。
 
 ### <a name="connections-and-ports"></a>接続とポート
 接続メトリック機能により、Azure Monitor ログに 2 つの新しいテーブル (VMConnection と VMBoundPort) が導入されました。 これらのテーブルは、マシンへの接続 (受信と送信) と、それらに対する開いているまたはアクティブなサーバー ポートに関する情報を提供します。 接続メトリックは、時間枠の間に特定のメトリックを取得する手段を提供する API を介して公開されています。 リスニング ソケットで*受諾*することで得られる TCP 接続は受信ですが、所定の IP とポートに*接続*することで作成される接続は送信です。 接続の方向は Direction プロパティで表され、**受信**または**送信**のいずれかに設定できます。 
@@ -198,82 +198,82 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 
 ### <a name="list-all-known-machines"></a>既知のコンピューターを一覧表示
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="when-was-the-vm-last-rebooted"></a>VM が最後にいつ再起動したか
 ```kusto
-let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc
 ```
 
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>イメージ、場所、および SKU 別の Azure VM の概要
 ```kusto
-ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s
 ```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>すべてのマネージド コンピューターの物理メモリ容量を一覧表示。
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
 ```
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>コンピューター名、DNS、IP、および OS を一覧表示。
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 ```
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>"sql" でコマンドラインのすべてのプロセスを検索
 ```kusto
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>リソース名でコンピューター (最新のレコード) を検索
 ```kusto
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>IP アドレスでマシン (最新のレコード) を検索
 ```kusto
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>指定のマシンにある既知のプロセスすべてを一覧表示
 ```kusto
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="list-all-computers-running-sql-server"></a>SQL Server を実行しているすべてのコンピューターを一覧表示
 ```kusto
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
 ```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>データセンター内にあるすべての製品バージョンの curl を一覧表示
 ```kusto
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
 ```
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS を実行しているすべてのコンピューターのコンピューター グループを作成
 ```kusto
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 ```
 
 ### <a name="bytes-sent-and-received-trends"></a>送受信したバイトのトレンド
 ```kusto
-VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart
 ```
 
 ### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>どの Azure VM が最大バイト数を送信しているか
 ```kusto
-VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc
 ```
 
 ### <a name="link-status-trends"></a>リンクの状態のトレンド
 ```kusto
-VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart
 ```
 
 ### <a name="connection-failures-trend"></a>接続エラーのトレンド
 ```kusto
-VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart
 ```
 
 ### <a name="bound-ports"></a>バインドされているポート
@@ -357,4 +357,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>次の手順
 * Azure Monitor でログ クエリを初めて作成する場合は、Azure portal で [Log Analytics の使用方法](../../azure-monitor/log-query/get-started-portal.md)に関するページを参照してログ クエリを作成してください。
+
 * [検索クエリの記述方法](../../azure-monitor/log-query/search-queries.md)を参照してください。
