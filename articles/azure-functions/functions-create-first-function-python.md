@@ -3,42 +3,44 @@ title: Azure で HTTP によってトリガーされる Python 関数を作成�
 description: Azure Functions Core Tools と Azure CLI を使用して、Azure で初めての Python 関数を作成する方法について説明します。
 author: ggailey777
 ms.author: glenga
-ms.date: 09/11/2019
+ms.date: 11/07/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: 791348088d909785b36934c3b9a2ae00fc0acbb7
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 61465177c98a31a739946097ca615382175df3d4
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622045"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082767"
 ---
-# <a name="create-an-http-triggered-python-function-in-azure"></a>Azure で HTTP によってトリガーされる Python 関数を作成する
+# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>クイック スタート:Azure で HTTP によってトリガーされる Python 関数を作成する
 
-この記事では、コマンドライン ツールを使用し、Azure Functions で実行される Python プロジェクトを作成する方法を紹介します。 また、HTTP 要求によってトリガーされる関数も作成します。 最後に、プロジェクトを公開し、Azure で[サーバーレス関数](functions-scale.md#consumption-plan)として実行します。
+この記事では、コマンドライン ツールを使用し、Azure Functions で実行される Python プロジェクトを作成する方法を紹介します。 また、HTTP 要求によってトリガーされる関数も作成します。 ローカルで実行した後、プロジェクトを公開して Azure で[サーバーレス関数](functions-scale.md#consumption-plan)として実行します。 
 
 この記事は、Azure Functions 向けの 2 つの Python クイックスタートのうちの 1 つ目です。 このクイックスタートを終えたら、ご自身の関数に [Azure Storage キュー出力バインディングを追加](functions-add-output-binding-storage-queue-python.md)します。
+
+また、この記事の [Visual Studio Code ベースのバージョン](/azure/python/tutorial-vs-code-serverless-python-01)も存在します。
 
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下が必要になります。
 
-+ [Python 3.6.8](https://www.python.org/downloads/) をインストールします。 このバージョンの Python は、Functions で検証されています。 3.7 以降のバージョンはまだサポートされていません。
++ [Python 3.7.4](https://www.python.org/downloads/) をインストールします。 このバージョンの Python は、Functions で検証されています。 Python 3.8 以降のバージョンはまだサポートされていません。
 
-+ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.7.1575 以降をインストールします。
++ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.7.1846 またはより新しいバージョンをインストールします。
 
-+ [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.x 以降のバージョンをインストールします。
++ [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.0.76 またはより新しいバージョンをインストールします。
 
 + 有効な Azure サブスクリプションを持っている。
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment-optional"></a>仮想環境を作成してアクティブにする (任意)
+## <a name="create-and-activate-a-virtual-environment"></a>仮想環境を作成してアクティブにする
 
-Python 関数をローカルで開発するには、Python 3.6.x 環境を使用する必要があります。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
+Python 関数をローカルで開発するには、Python 3.7 環境を使用する必要があります。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
 
 > [!NOTE]
 > お使いの Linux ディストリビューションに Python をインストールする際、venv がインストールされなかった場合は、次のコマンドを使用してインストールできます。
@@ -63,43 +65,26 @@ py -m venv .venv
 
 ## <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
-関数プロジェクトは、Azure での関数アプリに相当します。 同じローカル構成とホスティング構成を共有する複数の関数を使用できます。
+関数プロジェクトには、すべてが同じローカルおよびホスティング構成を共有する複数の関数を含めることができます。
 
-1. 仮想環境で、次のコマンドを実行します。
+仮想環境で、次のコマンドを実行します。
 
-    ```console
-    func init MyFunctionProj
-    ```
+```console
+func init MyFunctionProj --python
+cd MyFunctionProj
+```
 
-1. worker ランタイムとして、**python** を選択します。
-
-    コマンドによって、_MyFunctionProj_ フォルダーが作成されます。 次の 3 つのファイルが含まれています。
-
-    * *local.settings.json*: ローカルで実行するとき、アプリ設定と接続文字列を格納するために使用されます。 このファイルは Azure に公開されません。
-    * *requirements.txt*: Azure に発行するときにシステムによってインストールされるパッケージの一覧が含まれています。
-    * *host.json*: 関数アプリ内にあるすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。
-
-1. 新しい *MyFunctionProj* フォルダーに移動します。
-
-    ```console
-    cd MyFunctionProj
-    ```
+`func init` コマンドは、_MyFunctionProj_ フォルダーを作成します。 このフォルダー内の Python プロジェクトにはまだ関数が含まれていません。 それらを次に追加します。
 
 ## <a name="create-a-function"></a>関数を作成する
 
-新しいプロジェクトに関数を追加します。
+プロジェクトに関数を追加するには、次のコマンドを実行します。
 
-1. プロジェクトに関数を追加するには、次のコマンドを実行します。
+```console
+func new --name HttpTrigger --template "HTTP trigger"
+```
 
-    ```console
-    func new
-    ```
-
-1. 下矢印を使用して、 **[HTTP トリガー]** テンプレートを選択します。
-
-1. 関数名の入力を求められたら、「*HttpTrigger*」と入力し、Enter キーを押します。
-
-これらのコマンドでは、_HttpTrigger_ という名前のサブフォルダーが作成されます。 次のファイルが含まれます。
+このコマンドは、次のファイルを含む _HttpTrigger_ という名前のサブフォルダーを作成します。
 
 * *function.json*: 関数、トリガー、その他のバインディングを定義する構成ファイル。 このファイル内で、`scriptFile` の値が、関数を含むファイルを指していること、また、`bindings` 配列には呼び出しトリガーとバインディングが定義されていることがわかります。
 
@@ -109,57 +94,32 @@ py -m venv .venv
 
     *function.json* に `$return` として定義されているリターン オブジェクトは、[azure.functions.HttpResponse クラス](/python/api/azure-functions/azure.functions.httpresponse)のインスタンスです。 詳細については、「[Azure Functions の HTTP トリガーとバインド](functions-bindings-http-webhook.md)」を参照してください。
 
+これで、ローカル コンピューター上で新しい関数を実行できます。
+
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
-関数は、Azure Functions ランタイムを使用してローカルで実行されます。
+このコマンドは、Azure Functions ランタイム (func.exe) を使用して関数アプリを起動します。
 
-1. 次のコマンドでは、関数アプリが起動されます。
+```console
+func host start
+```
 
-    ```console
-    func host start
-    ```
+出力に書き込まれた次の情報が表示されます。
 
-    Azure Functions ホストが起動されると、次のような出力が表示されます。 ここでは、読みやすくするために切り詰められています。
+```output
+Http Functions:
 
-    ```output
-    
-                      %%%%%%
-                     %%%%%%
-                @   %%%%%%    @
-              @@   %%%%%%      @@
-           @@@    %%%%%%%%%%%    @@@
-         @@      %%%%%%%%%%        @@
-           @@         %%%%       @@
-             @@      %%%       @@
-               @@    %%      @@
-                    %%
-                    %
-    
-    ...
-    
-    Content root path: C:\functions\MyFunctionProj
-    Now listening on: http://0.0.0.0:7071
-    Application started. Press Ctrl+C to shut down.
-    
-    ...
-    
-    Http Functions:
-    
-            HttpTrigger: http://localhost:7071/api/HttpTrigger
-    
-    [8/27/2018 10:38:27 PM] Host started (29486ms)
-    [8/27/2018 10:38:27 PM] Job host started
-    ```
+        HttpTrigger: http://localhost:7071/api/HttpTrigger    
+```
 
-1. ランタイム出力から `HttpTrigger` 関数の URL をコピーして、それをブラウザーのアドレス バーに貼り付けます。
+この出力から `HttpTrigger` 関数の URL をコピーし、それをブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 次のスクリーンショットに、ローカル関数からブラウザーに返された GET 要求に対する応答を示します。
 
-1. この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 次のスクリーンショットに、ローカル関数からブラウザーに返された GET 要求に対する応答を示します。
+![ブラウザー上でローカルに検証する](./media/functions-create-first-function-python/function-test-local-browser.png)
 
-    ![ブラウザー上でローカルに検証する](./media/functions-create-first-function-python/function-test-local-browser.png)
+Ctrl + C キーを使用して、関数アプリの実行をシャットダウンします。
 
-1. Ctrl + C キーを選択して、関数アプリをシャットダウンします。
-
-ローカルで関数を実行したので、これで、Azure で関数アプリとその他の必要なリソースを作成できます。
+これで関数をローカルで実行したので、関数コードを Azure にデプロイできます。  
+アプリをデプロイするには、いくつかの Azure リソースを作成しておく必要があります。
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 
@@ -167,7 +127,7 @@ py -m venv .venv
 
 ## <a name="create-a-function-app-in-azure"></a>Azure で関数アプリを作成する
 
-関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。
+関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。 
 
 次のコマンドを実行します。 `<APP_NAME>` を一意の関数アプリ名に置き換えます。 `<STORAGE_NAME>` をストレージ アカウント名に置き換えます。 `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 この名前は、Azure のすべてのアプリで一意である必要があります。
 
@@ -176,11 +136,11 @@ py -m venv .venv
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --os-type Linux \
---consumption-plan-location westeurope  --runtime python \
+--consumption-plan-location westeurope  --runtime python --runtime-version 3.7 \
 --name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
 
-また、上記のコマンドでは、同じリソース グループ内に関連付けられている Azure Application Insights インスタンスがプロビジョニングされます。 このインスタンスを使用して関数アプリを監視し、ログを表示できます。
+前のコマンドは、Python 3.7.4 を実行する関数アプリを作成します。 また、関連付けられた Azure Application Insights インスタンスも同じリソース グループ内にプロビジョニングされます。 このインスタンスを使用して関数アプリを監視し、ログを表示できます。 
 
 これで、Azure でローカル関数プロジェクトを関数アプリに公開できます。
 
@@ -192,7 +152,7 @@ Azure 上で関数アプリを作成した後、[func azure functionapp publish]
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-`--build remote` オプションは、デプロイ パッケージ内のファイルから Python プロジェクトを Azure にリモートでビルドします。 
+`--build remote` オプションは、デプロイ パッケージ内のファイルから Python プロジェクトを Azure にリモートでビルドします。この方法をお勧めします。 
 
 次のメッセージとほぼ同じ出力が表示されます。 ここでは、読みやすくするために切り詰められています。
 

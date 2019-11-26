@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 3bc1bfcf58d622151f0af9c6da693c5533bcf966
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9751435636519100ea13fd850508c99faeb87a92
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721613"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133285"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 
@@ -31,7 +31,7 @@ Azure Spring Cloud では、Spring Boot ベースのマイクロサービス ア
 ## <a name="prerequisites"></a>前提条件
 
 >[!Note]
-> Azure Spring Cloud は現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー期間中のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) のページを確認するか、詳細について[サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を提出してください。
+> Azure Spring Cloud は現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー期間中のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) のページを参照するか、詳細について[サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を提出してください。
 
 >[!TIP]
 > Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。  最新バージョンの Git、JDK、Maven、Azure CLI など、一般的な Azure ツールがプレインストールされています。 Azure サブスクリプションにログインしている場合は、shell.azure.com から [Azure Cloud Shell](https://shell.azure.com) を起動します。  Azure Cloud Shell の詳細については、[ドキュメントを参照](../cloud-shell/overview.md)してください
@@ -146,7 +146,16 @@ az spring-cloud app update -n gateway --is-public true
 az spring-cloud app show --name gateway | grep url
 ```
 
-PiggyMetrics アプリケーションが実行されていることを確認するには、前のコマンドによって提供された URL に移動します。
+前のコマンドによって提供された URL に移動し、PiggyMetrics アプリケーションを実行します。
+    ![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
+
+また、Azure portal に移動して URL を検索することもできます。 
+1. サービスに移動します
+1. **[アプリ]** を選択します
+1. **[gateway]** を選択します
+
+    ![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+1. **gateway の概要** ページで、URL を見つけます![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 ## <a name="next-steps"></a>次の手順
 

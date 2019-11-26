@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855419"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159862"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight と Azure Data Lake Storage Gen2 の Storm に対するパフォーマンス チューニング ガイダンス
 
@@ -110,7 +110,7 @@ Data Lake Storage Gen2 によって提供される帯域幅の制限に達した
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にしてください。
 
-1. **[Ambari]**  >  **[Storm]**  >  **[構成]**  >  **[Advanced storm-worker-log4j (storm-worker-log4j の詳細)]** の順に移動し、 **&lt;root level="info"&gt;** を **&lt;root level="debug"&gt;** に変更します。 すべてのノードとサービスを再起動して構成を有効にします。
+1. **Ambari** > **Storm** > **構成** > **Advanced storm-worker-log4j\(storm-worker-log4j の詳細\)** の順に移動し、 **&lt;root level="info"&gt;** を **&lt;root level="debug"&gt;** に変更します。 すべてのノードとサービスを再起動して構成を有効にします。
 2. ワーカー ノード (/var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log の直下) の Storm トポロジ ログで、Data Lake Storage Gen2 調整の例外を監視します。
 
 ## <a name="next-steps"></a>次の手順

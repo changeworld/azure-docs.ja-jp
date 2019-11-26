@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Digital Twins 空間からのイベントをキャプチャする | Microsoft Docs
+title: チュートリアル:Azure Digital Twins 空間からのイベントをキャプチャする
 description: このチュートリアルの手順を使用して、Azure Digital Twins を Logic Apps に統合して空間から通知を受け取る方法について説明します。
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: 26976956722d77e2dfb8c17734c207b2667c0126
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/12/2019
+ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949172"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129099"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
 
@@ -38,7 +38,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 - Digital Twins のインスタンスが実行中であること。
 - [Digital Twins C# のサンプル](https://github.com/Azure-Samples/digital-twins-samples-csharp)がダウンロードされ、作業マシン上に展開されていること。
 - サンプルを実行する開発マシンに [.NET Core SDK バージョン 2.1.403 以上](https://www.microsoft.com/net/download)がインストールされていること。 適切なバージョンがインストールされていることを確認するには、`dotnet --version` を実行します。
-- 通知メールを送信するための Office 365 アカウント。
+- 通知メールを送信するための [Office 365](https://products.office.com/home) アカウント。
 
 > [!TIP]
 > 新しいインスタンスをプロビジョニングする場合は、一意の Digital Twins インスタンス名を使用します。
@@ -63,7 +63,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. リソース グループから Event Grid トピックに移動します。 **[概要]** を選択し、 **[トピック エンドポイント]** の値を一時ファイルにコピーします。 この URL は次のセクションで必要になります。 
 
-1. **[アクセス キー]** を選択し、**YOUR_KEY_1** と **YOUR_KEY_2** を一時ファイルにコピーします。 これらの値は、次のセクションでエンドポイントを作成するために必要になります。
+1. **[アクセス キー]** を選択し、**キー 1** と**キー 2** を一時ファイルにコピーします。 これらの値は、次のセクションでエンドポイントを作成するために必要になります。
 
     [![Event Grid キー](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
@@ -85,9 +85,9 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. プレースホルダー `<Primary connection string for your Event Grid>` を **YOUR_KEY_1** の値に置き換えます。
+1. プレースホルダー `<Primary connection string for your Event Grid>` を **[キー 1]** の値に置き換えます。
 
-1. プレースホルダー `<Secondary connection string for your Event Grid>` を **YOUR_KEY_2** の値に置き換えます。
+1. プレースホルダー `<Secondary connection string for your Event Grid>` を **[キー 2]** の値に置き換えます。
 
 1. **path** のプレースホルダーを Event Grid トピックのパスに置き換えます。 このパスは、 **[トピック エンドポイント]** URL から **https://** と末尾のリソース パスを削除することで取得できます。 これは *yourEventGridName.yourLocation.eventgrid.azure.net* のような形式になります。
 
@@ -178,7 +178,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    a. **[アクションの追加]** を選択し、 **[Office 365 Outlook]** を選択します。
 
-   b. **[アクション]** の一覧で、 **[メールの送信]** を選択します。 **[サインイン]** をクリックし、自分のメール アカウントの資格情報を使用します。 メッセージが表示されたら、 **[アクセスを許可]** を選択します。
+   b. **[アクション]** の一覧で、 **[メールの送信 (V2)]** を選択します。 **[サインイン]** をクリックし、自分のメール アカウントの資格情報を使用します。 メッセージが表示されたら、 **[アクセスを許可]** を選択します。
 
    c. **[To]\(送信先\)** ボックスに、通知を受け取るためのメール ID を入力します。 **[件名]** にテキスト「**空間における空気の質の悪化に関する Digital Twins 通知**」を入力し、 **[JSON の解析]** の **[動的なコンテンツ]** の一覧で **[TopologyObjectId]** を選択します。
 

@@ -4,15 +4,15 @@ description: Azure の Analysis Services サーバーでデータベース ロ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 426b69173994fc94a52ef0fcccb0dbc6315de14a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301152"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146998"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -25,14 +25,14 @@ model データベース レベルでは、すべてのユーザーがロール�
 *  **Process (プロセス)** - ユーザーは、データベースに接続し、データベースでのプロセス操作を実行し、model データベースのデータを分析できます。
 *  **Read (読み取り)** - ユーザーは、クライアント アプリケーションを使用して model データベースに接続し、このデータを分析できます。
 
-表形式のモデル プロジェクトを作成する場合、SQL Server Data Tools (SSDT) のロール マネージャーを使用してロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
+表形式のモデル プロジェクトを作成する場合、Analysis Services プロジェクトを使って Visual Studio 内でロール マネージャーを使用して、ロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
 
 **セキュリティ グループ**は、`MailEnabled` プロパティが `True` に設定された[メール対応](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)である必要があります。 メール アドレスでグループを指定する場合は、`obj:groupid@tenantid` を使用します。
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>SSDT でロールおよびユーザーを追加または管理する方法  
+## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio でロールおよびユーザーを追加または管理する方法  
   
-1.  SSDT > **Tabular Model Explorer** で **Roles** を右クリックします｡  
+1.  **Tabular Model Explorer** で **[Roles]\(ロール\)** を右クリックします｡  
   
 2.  **[ロール マネージャー]** で、 **[新規]** をクリックします。  
   

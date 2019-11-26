@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 999f947170528c1ae89a1cf44f714e96af7bddbf
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9c06953f84339da2a27155b721b050d9d33e2363
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136911"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>チュートリアル:Azure Active Directory と Clever の統合
 
@@ -154,14 +155,14 @@ Clever で Azure AD シングル サインオンを構成するには、次の�
 
 1. ツールバーで、 **[インスタント ログイン]** をクリックします。
 
-    ![Instant Login](./media/clever-tutorial/ic798984.png "Instant Login")
+    ![インスタント ログイン](./media/clever-tutorial/ic798984.png "[インスタント ログイン]")
 
     > [!NOTE]
     > シングル サインオンをテストする前に、[Clever Client サポート チーム](https://clever.com/about/contact/)に連絡して、バック エンドで Office 365 SSO を有効にする必要があります。
 
 1. **[インスタント ログイン]** ページで、次の手順を実行します。
     
-      ![Instant Login](./media/clever-tutorial/ic798985.png "Instant Login")
+      ![インスタント ログイン](./media/clever-tutorial/ic798985.png "[インスタント ログイン]")
     
       a. **ログイン URL**を入力します。
     

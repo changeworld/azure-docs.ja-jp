@@ -836,8 +836,10 @@
               href: insights/container-insights-update-metrics.md
             - name: 正常性の監視の構成
               href: insights/container-insights-health-monitors-config.md
-            - name: 監視を無効にする
+            - name: AKS の監視の無効化
               href: insights/container-insights-optout.md
+            - name: Red Hat OpenShift の監視の無効化
+              href: insights/container-insights-optout-openshift.md
             - name: トラブルシューティング
               href: insights/container-insights-troubleshoot.md
         - name: Docker および Windows コンテナーの監視

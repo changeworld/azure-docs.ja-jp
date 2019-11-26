@@ -1,22 +1,19 @@
 ---
-title: Azure で Terraform を使用してハブ とスポークのネットワークを検証する
+title: チュートリアル - Terraform を使用して Azure でハブとスポーク ネットワークを検証する
 description: 相互に接続されているすべての仮想ネットワークでハブとスポークのネットワーク トポロジを検証するチュートリアル。
-services: terraform
-ms.service: azure
-keywords: terraform, ハブとスポーク, ネットワーク, ハイブリッド ネットワーク, devops, 仮想マシン, Azure, VNet ピアリング,
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169724"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969339"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>チュートリアル:Azure で Terraform を使用してハブ とスポークのネットワークを検証する
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>チュートリアル:Terraform を使用して Azure でハブとスポーク ネットワークを検証する
 
 この記事では、このシリーズの前の記事で作成した terraform ファイルを実行します。 その結果は、デモ仮想ネットワーク間の接続の検証です。
 

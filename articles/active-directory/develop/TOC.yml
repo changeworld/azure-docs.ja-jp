@@ -289,6 +289,10 @@
               items:
                 - name: MSAL.NET での ADFS のサポート
                   href: msal-net-adfs-support.md
+                - name: MSAL for Python での ADFS のサポート
+                  href: msal-python-adfs-support.md
+                - name: MSAL for Java での ADFS のサポート
+                  href: msal-java-adfs-support.md
             - name: Azure AD B2C との統合
               items:
                 - name: Android

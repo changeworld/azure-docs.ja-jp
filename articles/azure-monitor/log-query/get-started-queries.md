@@ -1,34 +1,23 @@
 ---
 title: Azure Monitor でログ クエリの使用を開始する | Microsoft Docs
 description: この記事では、Azure Monitor でログ クエリの記述を開始するためのチュートリアルを提供します。
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: tutorial
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/24/2019
+ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076755"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933040"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 
-
-> [!NOTE]
-> このチュートリアルを完了する前に、「[Azure Monitor Log Analytics の使用を開始する](get-started-portal.md)」を終えておく必要があります。
-
 > [!NOTE]
 > 少なくとも 1 つの仮想マシンからデータを収集する場合は、独自の環境でこの演習を行うことができます。 それ以外の場合は、サンプル データが多数含まれている Microsoft の[デモ環境](https://portal.loganalytics.io/demo)を使用してください。
-
 
 このチュートリアルでは、Azure Monitor でログ クエリを記述する方法について説明します。 以下の方法について説明します。
 
@@ -42,6 +31,10 @@ ms.locfileid: "71076755"
 
 Azure portal での Log Analytics の使用に関するチュートリアルについては、[Azure Monitor Log Analytics の使用開始](get-started-portal.md)に関するページを参照してください。<br>
 Azure Monitor でのログ クエリの詳細については、[Azure Monitor でのログ クエリの概要](log-query-overview.md)に関するページを参照してください。
+
+このチュートリアルのビデオバージョンで学ぶには、以下を参照してください。
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>新しいクエリの記述
 クエリは、テーブル名または *search* コマンドから始めることができます。 まずテーブル名から始めます。これは、テーブル名でクエリの明確な範囲が定義され、クエリのパフォーマンスと結果の関連性の両方が向上するためです。

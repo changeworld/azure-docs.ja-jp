@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227494"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル:Azure Active Directory と AnswerHub の統合
 
@@ -144,7 +145,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
 4. **[IDP Config]\(IDP 構成\)** タブで、以下の手順を実行します。
 
-    ![[User & Groups]\(ユーザーとグループ\) タブ](./media/answerhub-tutorial/ic785172.png "SAML セットアップ")  
+    ![[User and Groups] (ユーザーとグループ) タブ](./media/answerhub-tutorial/ic785172.png "[SAML 設定]")  
   
     a. **[IDP Login URL]\(IDP ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
   
@@ -156,7 +157,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
 5. **[Keys and Certificates]\(キーと証明書\)** セクションで、以下の手順を実行します。
 
-    ![[Keys and Certificates]\(キーと証明書\) セクション](./media/answerhub-tutorial/ic785173.png "キーと証明書")  
+    ![[Keys and Certificates] (キーと証明書)](./media/answerhub-tutorial/ic785173.png "Keys and Certificates")  
 
     a. Azure portal からダウンロードした Base64 でエンコードされた証明書をメモ帳で開き、その内容をコピーしてから、 **[IDP Public Key (x509 Format)]\(IDP 公開キー (x509 形式)\)** ボックスに貼り付けます。
   
@@ -235,7 +236,7 @@ Azure AD ユーザーが AnswerHub にサインインできるようにするに
 
 4. 左側のウィンドウの **[Manage Users]\(ユーザーの管理\)** セクションで、 **[Create or import users]\(ユーザーの作成またはインポート\)** を選択し、 **[Users & Groups]\(ユーザーとグループ\)** を選択します。
 
-   ![[User & Groups]\(ユーザーとグループ\) タブ](./media/answerhub-tutorial/ic785175.png "ユーザーとグループ")
+   ![[User and Groups] (ユーザーとグループ) タブ](./media/answerhub-tutorial/ic785175.png "Users & Groups")
 
 5. 追加したい有効な Azure AD アカウントの**メール アドレス**、**ユーザー名**、**パスワード**を適切なボックスに入力してから、 **[Save]\(保存\)** を選択します。
 

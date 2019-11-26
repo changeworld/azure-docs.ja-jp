@@ -1,20 +1,20 @@
 ---
-title: シミュレートされた X.509 デバイスを C を使用して Azure IoT Hub にプロビジョニングする方法について説明するクイック スタート | Microsoft Docs
+title: クイック スタート:シミュレートされた X.509 デバイスを、C を使用して Azure IoT Hub にプロビジョニングする方法について説明するクイック スタート
 description: このクイック スタートでは、個別登録を使用します。 このクイック スタートでは、Azure IoT Hub Device Provisioning Service 対応の C デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングします。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ae5a1708b56db45bec38a4482b5dfd936bdedd4a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: dbbdfb9ead31d11c760e6cbb0280ed1c4e5f3b24
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901238"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904760"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>クイック スタート: シミュレートされた X.509 デバイスを Azure IoT C SDK を使用してプロビジョニングする
 
@@ -35,7 +35,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="prerequisites"></a>前提条件
 
-* ['C++ によるデスクトップ開発'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
+* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 
@@ -141,7 +141,7 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
 
 
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

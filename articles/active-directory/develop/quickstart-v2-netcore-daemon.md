@@ -1,5 +1,6 @@
 ---
-title: Microsoft ID プラットフォーム .NET Core デーモン | Azure
+title: トークンを取得し、コンソール アプリの ID を使用して Microsoft Graph API を呼び出す | Azure
+titleSuffix: Microsoft identity platform
 description: .NET Core プロセスでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API をアプリ自体の ID を使用して呼び出す方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a130878baa10be426072dfe79284a1d602dfb6ff
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: a2617013b90cc9709a27ff8ab8c5046ebdcc9951
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211864"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149436"
 ---
-# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
+# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリの ID を使用して Microsoft Graph API を呼び出す
 
 このチュートリアルでは、アプリ自体の ID を使用してアクセス トークンを取得した後、Microsoft Graph API を呼び出して、ディレクトリ内の[ユーザーの一覧](https://docs.microsoft.com/graph/api/user-list)を表示する .NET Core アプリケーションを記述する方法について説明します。 このシナリオは、オペレーターがいない無人のジョブや、ユーザーの ID ではなくアプリケーション ID を使用して実行する必要がある Windows サービスがある状況で役立ちます。
 
@@ -76,9 +77,9 @@ ms.locfileid: "70211864"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-netcore-daemon/green-check.png) アプリケーションはこれらの属性で構成されています。
 
-#### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトのダウンロード
+#### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトをダウンロードする
 
-[Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+[Visual Studio プロジェクトをダウンロードする](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
 

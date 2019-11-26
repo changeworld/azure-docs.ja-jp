@@ -8,20 +8,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 9c6c28ef296f3b1346fd82641d8c557a500273d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 6bb0f3ea1b4e3bf17ed3bf26b838da8f2a694673
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376690"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898542"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft Partner Agreement の課金アカウントの概要
 
 Azure を使用するためにサインアップすると、課金アカウントが作成されます。 課金アカウントを使用して、請求書および支払いを管理し、コストを追跡します。 複数の請求先アカウントにアクセスできます。 たとえば、個人的なプロジェクトのために Azure にサインアップしたとします。 組織の Enterprise Agreement、Microsoft 顧客契約、または Microsoft Partner Agreement 経由で Azure にアクセスすることもできます。 これらのシナリオごとに、個別の請求先アカウントが提供されます。
 
-この記事は、Microsoft Partner Agreement の課金アカウントに適用されます。 これらのアカウントは、新しいコマース エクスペリエンスで顧客の課金を管理するために、クラウド ソリューション プロバイダー (CSP) 向けに作成されています。 新しいエクスペリエンスは、少なくとも 1 人の顧客が Microsoft 顧客契約 (MCA) に同意し、Azure プランを持っているパートナーのみが利用できます。 [Microsoft Partner Agreement にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-partner-agreement)。
+この記事は、Microsoft Partner Agreement の課金アカウントに適用されます。 これらのアカウントは、新しいコマース エクスペリエンスで顧客の課金を管理するために、クラウド ソリューション プロバイダー (CSP) 向けに作成されています。 新しいエクスペリエンスは、少なくとも 1 人の顧客が Microsoft 顧客契約に同意し、Azure プランを持っているパートナーのみが利用できます。 [Microsoft Partner Agreement にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-partner-agreement)。 [Azure プラン](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)は、Microsoft 顧客契約に基づいて従量課金制の価格で Azure サービスを提供します。
 
 ## <a name="your-billing-account"></a>課金アカウント
 
@@ -35,7 +35,7 @@ Microsoft Partner Agreement の課金アカウントには、ビジネスで使�
 
 ## <a name="billing-profiles"></a>課金プロファイル
 
-課金プロファイルを使用すると、通貨ごとに請求書を管理できます。 月の初めに、アカウントの各課金プロファイルの月次請求書が生成されます。 請求書には、前月からのすべての Azure サブスクリプションとその他の購入に対する、課金プロファイルの通貨での料金が含まれています。 
+課金プロファイルを使用すると、通貨ごとに請求書を管理できます。 月の初めに、アカウントの各課金プロファイルの月次請求書が生成されます。 請求書には、前月からのすべての Azure サブスクリプションとその他の購入に対する、課金プロファイルの通貨での料金が含まれています。
 
 Azure portal で、請求書を表示し、使用状況ファイルや価格シートなどの関連ドキュメントをダウンロードすることができます。 詳細については、[Microsoft Partner Agreement の請求書のダウンロード](billing-download-azure-invoice.md)に関するページを参照してください。
 
@@ -45,11 +45,11 @@ Azure portal で、請求書を表示し、使用状況ファイルや価格シ�
 
 ## <a name="customers"></a>顧客
 
-Microsoft 顧客契約に同意し、Azure プランを持っている顧客を、Azure portal で表示および管理できます。 料金とトランザクションを表示したり、これらの顧客の Azure サブスクリプションを作成および管理したりすることができます。 
+Microsoft 顧客契約に同意し、Azure プランを持っている顧客を、Azure portal で表示および管理できます。 料金とトランザクションを表示したり、これらの顧客の Azure サブスクリプションを作成および管理したりすることができます。
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>コストを表示できるポリシーを有効にする
 
-顧客の組織のユーザーが Azure 使用量の従量課金制のコストを表示および分析できるかどうかを制御するポリシーを適用します。 既定では、このポリシーは無効になっており、ユーザーはコストを表示できません。 有効にすると、サブスクリプションに対する適切な [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) アクセス権を持つユーザーは、サブスクリプションのコストを表示および分析できます。 
+顧客の組織のユーザーが Azure 使用量の従量課金制のコストを表示および分析できるかどうかを制御するポリシーを適用します。 既定では、このポリシーは無効になっており、ユーザーはコストを表示できません。 有効にすると、サブスクリプションに対する適切な [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) アクセス権を持つユーザーは、サブスクリプションのコストを表示および分析できます。
 
 ポリシーを有効にするには:
 
@@ -60,7 +60,7 @@ Microsoft 顧客契約に同意し、Azure プランを持っている顧客を�
    ![Azure portal の検索を表示するスクリーンショット](./media/mpa-overview/search-cmb.png)
 
 1. 左側で **[顧客]** を選択し、一覧から顧客を選択します。
-   
+
    ![顧客の選択を示すスクリーンショット](./media/mpa-overview/mpa-customers.png)
 
 1. 左側で **[ポリシー]** を選択します。

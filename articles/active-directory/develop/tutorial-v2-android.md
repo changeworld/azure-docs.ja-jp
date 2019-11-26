@@ -11,23 +11,34 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a26a7fc27fa13d86eb3b82fd4be70e5b371581f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677960"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242206"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>チュートリアル:Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す
+
+> [!NOTE]
+> このチュートリアルは、まだ MSAL for Android バージョン 1.0 ライブラリを使用するように更新されていません。 このチュートリアルで構成されているように、以前のバージョンを使用します。
 
 このチュートリアルでは、Android アプリを Microsoft ID プラットフォームと統合する方法を学習します。 お使いのアプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。  
 
-このガイドを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。
+> [!div class="checklist"]
+> * Microsoft ID プラットフォームに Android アプリを統合する
+> * ユーザーのサインイン
+> * アクセス トークンを取得して Microsoft Graph API を呼び出す
+> * Microsoft Graph API を呼び出す。  
+
+このチュートリアルを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。
+
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="how-this-tutorial-works"></a>このチュートリアルのしくみ
 
@@ -53,7 +64,7 @@ ms.locfileid: "71677960"
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
-このチュートリアルでは新しいプロジェクトを作成します。 代わりに完了したチュートリアルをダウンロードする場合は、[コードをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)してください。
+このチュートリアルでは新しいプロジェクトを作成します。 代わりに完了したチュートリアルをダウンロードする場合は、[コードをダウンロード](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)してください。
 
 1. Android Studio を開き、 **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
 2. **[Basic Activity]\(基本アクティビティ\)** を選択し、 **[Next]\(次へ\)** を選択します。
@@ -177,7 +188,7 @@ ms.locfileid: "71677960"
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:0.3+'
     ```
 
 ### <a name="use-msal"></a>MSAL の使用
@@ -535,6 +546,10 @@ private void updateGraphUI(JSONObject graphResponse) {
 ### <a name="consent"></a>同意
 
 ユーザーは、アプリに初めてサインインするときに、Microsoft Identity から、要求されたアクセス許可に同意するよう求められます。  ほとんどのユーザーは同意できますが、一部の Azure AD テナントではユーザーによる同意が無効になっており、全ユーザーに代わって管理者が同意を行う必要があります。 このシナリオをサポートするには、Azure portal でアプリのスコープを登録します。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+必要がなくなったら、「[アプリケーションの登録](#register-your-application)」の手順で作成したアプリ オブジェクトを削除します。
 
 ## <a name="get-help"></a>問い合わせ
 

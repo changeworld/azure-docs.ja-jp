@@ -1,6 +1,6 @@
 ---
-title: Visual Studio Code を使用してワークフローを自動化する - Azure Logic Apps
-description: Visual Studio Code (VS Code) を使用して、ロジック アプリの基になる JSON 定義を作成または管理します
+title: Visual Studio Code を使用してタスクを自動化する - Azure Logic Apps
+description: Visual Studio Code (VS Code) を使用して、ロジック アプリの基になる JSON 定義を作成または編集します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,15 +11,15 @@ ms.manager: carmonm
 ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/05/2018
-ms.openlocfilehash: a1387ca4d94410bafb1b1024345b5e307e215e6f
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 10/25/2019
+ms.openlocfilehash: 96551d3c7f0d37bc7ed8696666b130fa83dae41b
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679164"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063649"
 ---
-# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリのワークフロー定義を作成および管理する
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリ ワークフローの定義を作成、管理する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、ロジック アプリを作成し、管理できます。ロジック アプリを使用すると、組織や企業間でアプリ、データ、システム、サービスを統合するためのタスク、ワークフロー、プロセスを自動化できます。 このクイックスタートでは、コードベースのエクスペリエンスを通じて、ロジック アプリの JavaScript Object Notation (JSON) を使用する、基になるワークフロー定義を作成および編集する方法を示します。 Azure に既にデプロイされている既存のロジック アプリを使用することもできます。
 
@@ -27,11 +27,11 @@ ms.locfileid: "72679164"
 
 この記事では、基本的な概念に重点を置いた[クイックスタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)と同じロジック アプリを作成できます。 Visual Studio Code では、ロジック アプリは次の例のようになります。
 
-![ロジック アプリのワークフロー定義の例](./media/create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
+![ロジック アプリのワークフロー定義の例](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
 
-作業を開始するには、以下が必要です。
+開始する前に、以下を用意してください。
 
-* Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * JSON で記述されている[ロジック アプリのワークフロー定義](../logic-apps/logic-apps-workflow-definition-language.md)とその構造についての基礎知識
 
@@ -47,11 +47,11 @@ ms.locfileid: "72679164"
 
     この拡張機能は、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) からダウンロードしてインストールすることも、Visual Studio Code 内から直接インストールすることもできます。 インストール後、Visual Studio Code を再度読み込む必要があります。
 
-    !["Azure Logic Apps 用 Visual Studio Code 拡張機能" を見つける](./media/create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
+    !["Azure Logic Apps 用 Visual Studio Code 拡張機能" を見つける](./media/quickstart-create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
 
     拡張機能が正しくインストールされたことを確認するには、Visual Studio Code ツール バーにある Azure アイコンを選択します。
 
-    ![拡張機能が正しくインストールされていることを確認する](./media/create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
+    ![拡張機能が正しくインストールされていることを確認する](./media/quickstart-create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
 
     詳細については、「[Extension Marketplace (拡張機能 Marketplace)](https://code.visualstudio.com/docs/editor/extension-gallery)」をご覧ください。 この拡張機能のオープン ソース バージョンに協力するには、[GitHub の Visual Studio Code 用 Azure Logic Apps 拡張機能](https://github.com/Microsoft/vscode-azurelogicapps)に関するページを参照してください。
 
@@ -61,76 +61,81 @@ ms.locfileid: "72679164"
 
 1. Visual Studio Code を開きます。 Visual Studio Code ツール バーで、Azure アイコンを選択します。
 
-   ![Visual Studio Code ツール バーで、Azure アイコンを選択する](./media/create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
+   ![Visual Studio Code ツール バーで、Azure アイコンを選択する](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
-1. Azure ウィンドウで、 **[Logic Apps]** の **[Sign in to Azure]\(Azure にサインインする\)** を選択します。
+1. Azure ウィンドウで、 **[Logic Apps]** の **[Sign in to Azure]\(Azure にサインインする\)** を選択します。 Microsoft サインイン ページが表示されたら、Azure アカウントでサインインします。
 
-   ![[Sign in to Azure]\(Azure にサインインする\) を選択する](./media/create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
+   ![[Sign in to Azure]\(Azure にサインインする\) を選択する](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
 
-   提供された認証コードを使用してサインインするよう求められます。
+   1. サインインに通常よりも長い時間がかかる場合、Visual Studio Code はデバイス コードを提供して、Microsoft 認証 Web サイトでサインインするよう求めます。 代わりにコードでサインインするには、 **[Use Device Code] (デバイス コードを使用)** を選択します。
 
-1. 認証コードをコピーし、 **[Copy & Open]\(コピーして開く\)** を選択すると、新しいブラウザー ウィンドウが開きます。
+      ![代わりにデバイス コードを使用する](./media/quickstart-create-logic-apps-visual-studio-code/use-device-code-prompt.png)
 
-   ![Azure のサインインに使用する認証コードをコピーする](./media/create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
+   1. コードをコピーするには、 **[Copy & Open] (コピーして開く)** を選択します。
 
-1. 認証コードを入力します。 メッセージが表示されたら、 **[Continue]\(続行\)** を選択します。
+      ![Azure サインイン用にコードをコピーする](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
 
-   ![Azure のサインインに使用する認証コードを入力する](./media/create-logic-apps-visual-studio-code/authentication-code-azure-sign-in.png)
+   1. 新しいブラウザー ウィンドウを開いて認証 Web サイトに進むには、 **[リンクを開く]** を選択します。
+
+      ![ブラウザーを開いて認証 Web サイトにアクセスすることを確認する](./media/quickstart-create-logic-apps-visual-studio-code/confirm-open-link.png)
+
+   1. **[アカウントにサインインする]** ページで認証コードを入力し、 **[次へ]** を選択します。
+
+      ![Azure のサインインに使用する認証コードを入力する](./media/quickstart-create-logic-apps-visual-studio-code/authentication-code-azure-sign-in.png)
 
 1. Azure アカウントを選択します。 サインインしたら、ブラウザーを閉じて Visual Studio Code に戻ることができます。
 
-   Azure ウィンドウの [Logic Apps] ウィンドウと [統合アカウント] ウィンドウに、アカウントの Azure サブスクリプションが表示されます。
+   Azure ウィンドウの **[ロジック アプリ]** と **[統合アカウント]** セクションに、アカウントに関連付けられた Azure サブスクリプションが表示されます。 ただし、想定しているサブスクリプションが表示されない場合、またはセクションにサブスクリプションが多すぎる場合は、次の手順を実行します。
 
-   ![Azure サブスクリプションを選択します。](./media/create-logic-apps-visual-studio-code/select-azure-subscription.png)
+   1. ポインターを **[ロジック アプリ]** ラベルの上に移動します。 ツールバーが表示されたら、 **[サブスクリプションの選択]** (フィルター アイコン) を選択します。
 
-   必要なサブスクリプションが表示されていない場合は、 **[Logic Apps]** ラベルの横の **[サブスクリプションの選択]** (フィルター アイコン) をクリックします。 目的のサブスクリプションを探して選択します。
+      ![Azure サブスクリプションを検索またはフィルターする](./media/quickstart-create-logic-apps-visual-studio-code/find-or-filter-subscriptions.png)
 
-1. Azure サブスクリプション内の既存のロジック アプリまたは統合アカウントを表示するには、サブスクリプションを展開します。
+   1. 表示された一覧から、表示したいサブスクリプションを選択します。
 
-   ![ロジック アプリと統合アカウントを表示する](./media/create-logic-apps-visual-studio-code/view-existing-logic-apps-azure.png)
+1. **[ロジック アプリ]** で目的のサブスクリプションを選択します。 サブスクリプション ノードが展開され、そのサブスクリプションに存在するすべてのロジック アプリが表示されます。
+
+   ![Azure サブスクリプションを選択します。](./media/quickstart-create-logic-apps-visual-studio-code/select-azure-subscription.png)
+
+   > [!TIP]
+   > **[統合アカウント]** でサブスクリプションを選択すると、そのサブスクリプションに存在する統合アカウントが表示されます。
 
 <a name="create-logic-app"></a>
 
-## <a name="create-logic-app"></a>ロジック アプリを作成する
+## <a name="create-new-logic-app"></a>新しいロジック アプリを作成する
 
-1. Visual Studio Code 内から Azure サブスクリプションにサインインしていない場合は、この記事の手順に従って[今すぐサインイン](#sign-in-azure)します。
+1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#sign-in-azure)します。
 
-1. サブスクリプションのコンテキスト メニューで、 **[作成]** を選択します。
+1. Visual Studio Code の **[ロジック アプリ]** でサブスクリプションのショートカット メニューを開き、 **[ロジック アプリの作成]** を選択します。
 
-   ![サブスクリプション メニューから [作成] を選択する](./media/create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
+   ![サブスクリプション メニューから [ロジック アプリの作成] を選択する](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 
-1. サブスクリプション内の Azure リソース グループを示す一覧で、既存のリソース グループを選択するか、 **[Create a new resource group]\(新しいリソース グループの作成\)** を選択します。
+   一覧が表示され、サブスクリプション内の Azure リソース グループが表示されます。
 
-   この例では、新しいリソース グループを作成します。
+1. リソース グループのリストから、 **[新しいリソース グループの作成]** または既存のリソース グループを選択します。 この例では、新しいリソース グループを作成します。
 
-   ![新しい Azure リソース グループを作成する](./media/create-logic-apps-visual-studio-code/select-or-create-azure-resource-group.png)
+   ![新しい Azure リソース グループを作成する](./media/quickstart-create-logic-apps-visual-studio-code/select-or-create-azure-resource-group.png)
 
 1. Azure リソース グループの名前を指定し、Enter キーを押します。
 
-   ![Azure リソース グループの名前を指定する](./media/create-logic-apps-visual-studio-code/enter-name-resource-group.png)
+   ![Azure リソース グループの名前を指定する](./media/quickstart-create-logic-apps-visual-studio-code/enter-name-resource-group.png)
 
-1. ロジック アプリのメタデータを保存するデータ センターの場所を選択します。
+1. ロジック アプリのメタデータを保存する Azure リージョンを選択します。
 
-   ![ロジック アプリのメタデータの保存先となる Azure の場所を選択する](./media/create-logic-apps-visual-studio-code/select-azure-location-new-resources.png)
+   ![ロジック アプリのメタデータの保存先となる Azure の場所を選択する](./media/quickstart-create-logic-apps-visual-studio-code/select-azure-location-new-resources.png)
 
 1. ロジック アプリの名前を指定し、Enter キーを押します。
 
-   ![ロジック アプリの名前を指定する](./media/create-logic-apps-visual-studio-code/enter-name-logic-app.png)
+   ![ロジック アプリの名前を指定する](./media/quickstart-create-logic-apps-visual-studio-code/enter-name-logic-app.png)
 
-   Azure ウィンドウの Azure サブスクリプションの下に新しいロジック アプリが表示されます。 これで、ロジック アプリのワークフロー定義の作成を開始できます。
+   Azure ウィンドウの Azure サブスクリプションの下に新しい空のロジック アプリが表示されます。 また Visual Studio Code では、ロジック アプリのスケルトン ワークフロー定義を含む JSON (.logicapp.json) ファイルも開きます。 これで、この JSON ファイルにロジック アプリのワークフロー定義を手動で作成することができます。 ワークフロー定義の構造と構文に関するテクニカル リファレンスについては、「[Azure Logic Apps のワークフロー定義言語スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)」を参照してください。
 
-1. ロジック アプリのショートカット メニューで、 **[Open in Editor]\(エディターで開く\)** を選択します。
+   ![空のロジック アプリのワークフロー定義 JSON ファイル](./media/quickstart-create-logic-apps-visual-studio-code/empty-logic-app-workflow-definition.png)
 
-   ![コード ビュー エディターでロジック アプリを開く](./media/create-logic-apps-visual-studio-code/open-new-logic-app-visual-studio-code.png)
+   たとえば、次に示すのは、RSS トリガーと Office 365 Outlook アクションから始まるサンプル ロジック アプリ ワークフロー定義です。 通常、JSON 要素は各セクション内でアルファベット順に表示されます。 ただし、このサンプルでは、ロジック アプリのステップがデザイナーに表示される順序でこれらの要素を大まかに示しています。
 
-   ロジック アプリのワークフローの作成を開始できるように、Visual Studio Code にロジック アプリ ワークフロー定義テンプレート (.logicapp.json ファイル) が開きます。
-
-   ![ロジック アプリの新しいワークフロー定義](./media/create-logic-apps-visual-studio-code/blank-logic-app-workflow-definition.png)
-
-1. ロジック アプリ ワークフロー定義テンプレート ファイルで、ロジック アプリのワークフロー定義の作成を開始します。
-テクニカル リファレンスについては、[Azure Logic Apps のワークフロー定義言語スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)に関する記事をご覧ください。
-
-   ロジックの定義の例を次に示します。 通常、JSON 要素は各セクション内でアルファベット順に表示されます。 ただし、このサンプルでは、ロジック アプリのステップがデザイナーに表示される順序でこれらの要素を大まかに示しています。
+   > [!IMPORTANT]
+   > このサンプル ロジック アプリの定義を再利用する場合は、@fabrikam.com などの Office 365 組織アカウントが必要です。 架空の電子メール アドレスを実際の電子メール アドレスに置き換えてください。 Outlook.com や Gmail など、別の電子メール コネクタを使用するには、`Send_an_email_action` アクションを、[Azure Logic Apps がサポートしている電子メール コネクタ](../connectors/apis-list.md)から入手できる同様のアクションに置き換えます。
 
    ```json
    {
@@ -165,22 +170,22 @@ ms.locfileid: "72679164"
          }
       },
       "actions": {
-         "Send_an_email": {
+         "Send_an_email_(V2)": {
             "runAfter": {},
             "type": "ApiConnection",
             "inputs": {
                "body": {
-                  "Body": "Title: @{triggerBody()?['title']}\n\nDate published: @{triggerBody()?['publishDate']}\n\nLink: @{triggerBody()?['primaryLink']}",
-                  "Subject": "New RSS item: @{triggerBody()?['title']}",
-                  "To": "Sophie.Owen@contoso.com"
+                  "Body": "<p>Title: @{triggerBody()?['title']}<br>\n<br>\nDate published: @{triggerBody()?['updatedOn']}<br>\n<br>\nLink: @{triggerBody()?['primaryLink']}</p>",
+                  "Subject": "RSS item: @{triggerBody()?['title']}",
+                  "To": "sophia-owen@fabrikam.com"
                },
                "host": {
                   "connection": {
-                     "name": "@parameters('$connections')['outlook']['connectionId']"
+                     "name": "@parameters('$connections')['office365']['connectionId']"
                   }
                },
                "method": "post",
-               "path": "/Mail"
+               "path": "/v2/Mail"
             }
          }
       },
@@ -188,41 +193,119 @@ ms.locfileid: "72679164"
    }
    ```
 
-1. 完了したら、ロジック アプリ定義ファイルを保存します。 Azure サブスクリプションへのロジック アプリ定義のアップロードを確認するメッセージが表示されたら、 **[アップロード]** を選択します。
+1. 完了したら、ロジック アプリのワークフロー定義を保存します。 ([ファイル] メニュー > [保存]、または Ctrl + S キーを押す)
 
-   ![新しいロジック アプリを Azure サブスクリプションにアップロードする](./media/create-logic-apps-visual-studio-code/upload-new-logic-app.png)
+1. ロジック アプリを Azure サブスクリプションにアップロードするように求めるメッセージが表示されたら、[**アップロード]** を選択します。
 
-   ロジック アプリが Azure に発行されたら、アプリが稼働していることを Azure portal で確認できます。
+   この手順では、ロジックアプリを [Azure portal](https://portal.azure.com)に発行します。これにより、ロジックが有効になり、Azure で実行されます。
 
-   ![Azure portal の発行済みのロジック アプリ](./media/create-logic-apps-visual-studio-code/published-logic-app-in-azure.png)
+   ![新しいロジック アプリを Azure サブスクリプションにアップロードする](./media/quickstart-create-logic-apps-visual-studio-code/upload-new-logic-app.png)
+
+## <a name="view-logic-app-in-designer"></a>デザイナーでロジック アプリを表示する
+
+Visual Studio Code では、読み取り専用のデザイン ビューでロジック アプリを開くことができます。 デザイナーでロジック アプリを編集することはできませんが、デザイナー ビューを使用すると、ロジック アプリのワークフローを視覚的に確認できます。
+
+Azure ウィンドウの **[ロジック アプリ]** で、ロジック アプリのショートカット メニューを開き、 **[Open in Designer] (デザイナーで開く)** を選択します。
+
+読み取り専用のデザイナーが別のウィンドウで開き、ロジック アプリのワークフローが表示されます。次に例を示します。
+
+![読み取り専用のデザイナーでロジック アプリを表示する](./media/quickstart-create-logic-apps-visual-studio-code/logic-app-designer-view.png)
+
+## <a name="view-in-azure-portal"></a>Azure portal に表示
+
+Azure portal でロジック アプリを確認するには、次の手順を実行します。
+
+1. ロジック アプリに関連付けられているのと同じ Azure アカウントとサブスクリプションを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+
+1. Azure portal の検索ボックスに、ロジック アプリの名前を入力します。 結果の一覧からロジック アプリを選択します。
+
+   ![Azure portal での新しいロジック アプリ](./media/quickstart-create-logic-apps-visual-studio-code/published-logic-app-in-azure.png)
+
+<a name="disable-enable-logic-app"></a>
+
+## <a name="disable-or-enable-logic-app"></a>ロジック アプリを無効または有効にする
+
+Visual Studio Code では、発行されたロジック アプリを編集して変更を保存すると、既にデプロイされているアプリを*上書き*します。 運用環境でのロジック アプリの中断を回避し、中断を最小限に抑えるには、ロジック アプリを最初に非アクティブ化します。 ロジック アプリが引き続き動作することを確認した後で、ロジック アプリを再度アクティブにすることができます。
+
+1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#sign-in-azure)します。
+
+1. サブスクリプション内のすべてのロジック アプリを表示できるように、Azure ウィンドウの **[ロジック アプリ]** で、Azure サブスクリプションを展開します。
+
+   1. ロジック アプリを無効にするには、ロジック アプリのメニューを開き、 **[Disable] (無効化)** を選択します。
+
+      ![ロジック アプリを無効にする](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
+
+   1. ロジック アプリを再アクティブ化する準備ができたら、ロジック アプリのメニューを開き、 **[Enable] (有効化)** を選択します。
+
+      ![ロジック アプリを有効にする](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
 
 <a name="edit-logic-app"></a>
 
-## <a name="edit-logic-app"></a>ロジック アプリを編集する
+## <a name="edit-deployed-logic-app"></a>デプロイされたロジック アプリの編集
 
-Azure に発行したロジック アプリの作業を行うには、そのロジック アプリの定義を Visual Studio Code を使用して開きます。
+Visual Studio Code では、既に Azure にデプロイされているロジック アプリのワークフロー定義を開いて編集することができます。
 
-1. Visual Studio Code 内から Azure サブスクリプションにサインインしていない場合は、この記事の手順に従って[今すぐサインイン](#sign-in-azure)します。
+> [!IMPORTANT] 
+> 実稼働環境でアクティブに実行されているロジック アプリを編集する前に、[まずロジック アプリを無効化する](#disable-enable-logic-app)ことで、ロジック アプリが破損するリスクを回避し、中断を最小限に抑えることができます。
+
+1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#sign-in-azure)します。
 
 1. Azure ウィンドウの **[Logic Apps]** で、Azure サブスクリプションを展開し、目的のロジック アプリを選択します。
 
-1. ロジック アプリのメニューで、 **[Open in Editor]\(エディターで開く\)** を選択します。 または、ロジック アプリ名の横の編集アイコンを選択します。
+1. ロジック アプリのメニューを開き、 **[エディターで開く]** を選択します。 または、ロジック アプリ名の横の編集アイコンを選択します。
 
-   ![既存のロジック アプリのエディターを開く](./media/create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
+   ![既存のロジック アプリのエディターを開く](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
-   ロジック アプリのワークフロー定義の .logicapp.json ファイルが開きます。
+   Visual Studio Code はローカルの一時フォルダーにある .logicapp.json ファイルを開き、ロジック アプリのワークフロー定義を表示します。
 
-   ![開かれたロジック アプリのワークフロー定義](./media/create-logic-apps-visual-studio-code/edit-logic-app-workflow-definition-file.png)
+   ![発行されたロジック アプリのワークフロー定義を表示する](./media/quickstart-create-logic-apps-visual-studio-code/edit-published-logic-app-workflow-definition.png)
 
-1. ロジック アプリの定義を変更します。
+1. ロジック アプリのワークフロー定義を変更します。
 
-1. 完了したら、変更を保存します。
+1. 完了したら、変更を保存します。 ([ファイル] メニュー > [保存]、または Ctrl + S キーを押す)
 
-1. Azure サブスクリプション内のロジック アプリ定義を更新するよう求められたら、 **[アップロード]** を選択します。
+1. 変更内容をアップロードして Azure portal の既存のロジック アプリ*上書き*するように求められたら、 **[アップロード]** を選択します。
 
-   ![ロジック アプリ定義に対する編集をアップロードする](./media/create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
+   この手順では、[Azure portal](https://portal.azure.com) のロジック アプリのアップデートを発行します。
+
+   ![Azure のロジック アプリ定義に対する編集をアップロードする](./media/quickstart-create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
+
+## <a name="view-or-promote-other-versions"></a>他のバージョンを表示または昇格する
+
+Visual Studio Code では、以前のバージョンのロジック アプリを開いて確認することができます。 また、以前のバージョンを現在のバージョンに昇格させることもできます。
+
+> [!IMPORTANT] 
+> 実稼働環境でアクティブに実行されているロジック アプリを変更する前に、[まずロジック アプリを無効化する](#disable-enable-logic-app)ことで、ロジック アプリが破損するリスクを回避し、中断を最小限に抑えることができます。
+
+1. サブスクリプション内のすべてのロジック アプリを表示できるように、Azure ウィンドウの **[ロジック アプリ]** で、Azure サブスクリプションを展開します。
+
+1. サブスクリプションの下で、ロジック アプリを展開し、 **[バージョン]** を展開します。
+
+   **[バージョン]** 一覧に、ロジック アプリの以前のバージョン (存在する場合) が表示されます。
+
+   ![ロジック アプリの以前のバージョン](./media/quickstart-create-logic-apps-visual-studio-code/view-previous-versions.png)
+
+1. 以前のバージョンを表示するには、次のいずれかの手順を選択します。
+
+   * JSON 定義を表示するには、 **[バージョン]** で、その定義のバージョン番号を選択します。 または、そのバージョンのショートカット メニューを開き、 **[エディターで開く]** を選択します。
+
+     ローカル コンピューターで新しいファイルが開き、そのバージョンの JSON 定義が表示されます。
+
+   * 読み取り専用のデザイナー ビューでバージョンを表示するには、そのバージョンのショートカット メニューを開き、 **[デザイナーで開く]** を選択します。
+
+1. 以前のバージョンを現在のバージョンに昇格させるには、次の手順に従います。
+
+   1. **[バージョン]** で、以前のバージョンのショートカット メニューを開き、 **[昇格]** を選択します。
+
+      ![以前のバージョンの昇格](./media/quickstart-create-logic-apps-visual-studio-code/promote-earlier-version.png)
+
+   1. Visual Studio Code で確認を求めるメッセージが表示されたら、 **[はい]** を選択して続行します。
+
+      ![以前のバージョンの昇格の確認](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
+
+      Visual Studio Code は選択したバージョンを現在のバージョンに昇格させ、昇格したバージョンに新しい番号を割り当てます。 以前のバージョンは、昇格されたバージョンの下に表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> * [Visual Studio でロジック アプリを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+> [Visual Studio でロジック アプリを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)

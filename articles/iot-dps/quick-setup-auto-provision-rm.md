@@ -1,22 +1,22 @@
 ---
-title: Azure Resource Manager テンプレートを使用した Device Provisioning の設定 | Microsoft Docs
+title: クイック スタート:Azure Resource Manager テンプレートを使用した Device Provisioning の設定
 description: Azure クイック スタート - テンプレートを使用して Azure IoT Hub Device Provisioning Service を設定する
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126479"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903389"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
 
 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使うと、デバイスのプロビジョニングで必要になる Azure のクラウド リソースをプログラミングを使って設定することができます。 ここで紹介する手順では、Azure Resource Manager テンプレートを使用して IoT ハブおよび新しい IoT Hub Device Provisioning Service を作成し、その 2 つのサービスをリンクする方法を示します。 このクイック スタートでは、リソース グループの作成とテンプレートのデプロイに必要なプログラミング手順を実行するために [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) を使用していますが、[Azure ポータル](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) のほか、.NET、Ruby などのプログラミング言語を使用してこれらの手順を実行し、テンプレートをデプロイすることも簡単です。 
 
@@ -39,7 +39,7 @@ Azure アカウントにサインインしてサブスクリプションを選�
 
     指示に従って、コードを使用して認証し、Web ブラウザーで Azure アカウントにサインインします。
 
-2. 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべてのAzure アカウントへのアクセスが許可されます。 以下の、利用できる [Azure アカウントを一覧表示するコマンド][lnk-az-account-command] を使用します。
+2. 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべてのAzure アカウントへのアクセスが許可されます。 以下の、利用できる [Azure アカウントを一覧表示するコマンド][lnk-az-account-command]を使用します。
     
     ```azurecli
     az account list 
@@ -321,7 +321,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 引き続き作業を行わない場合には、Azure CLI を使用して、IoT Hub やプロビジョニング サービスなどの[個々のリソースを削除][lnk-az-resource-command]することも、リソース グループとそのすべてのリソースを削除をすることもできます。
+このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 引き続き作業を行わない場合には、Azure CLI を使用して、IoT Hub やプロビジョニング サービスなどの[個々のリソースを削除][lnk-az-resource-command]することも、リソース グループとそのすべてのリソースを削除することもできます。
 
 プロビジョニング サービスを削除するには、次のコマンドを実行します。
 

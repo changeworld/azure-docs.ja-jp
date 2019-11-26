@@ -7,12 +7,12 @@ ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da3fb604bfb65f67e50d56a4520620cabc292b93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329730"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082815"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python 関数に Azure Storage キュー バインドを追加する
 
@@ -91,7 +91,7 @@ curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow54
 
 ## <a name="next-steps"></a>次の手順
 
-HTTP によってトリガーされる関数を、ストレージ キューにデータを書き込むように更新しました。 Python を使用して Azure Functions を開発する方法の詳細については、「[Azure Functions の Python 開発者向けガイド](functions-reference-python.md)」と、[Azure Functions のトリガーとバインド](functions-triggers-bindings.md)に関するページを参照してください。 Python での完全な関数プロジェクトの例については、[Python 関数のサンプル](/samples/browse/?products=azure-functions&languages=python)を参照してください。 
+HTTP によってトリガーされる関数を、ストレージ キューにデータを書き込むように更新しました。 Python を使用して Azure Functions を開発する方法の詳細については、「[Azure Functions の Python 開発者向けガイド](functions-reference-python.md)」と、[Azure Functions のトリガーとバインド](functions-triggers-bindings.md)に関するページを参照してください。 Python での完全な関数プロジェクトの例については、[Python 関数のサンプル](/samples/browse/?products=azure-functions&languages=python)を参照してください。 価格の詳細については、[Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページおよび「[従量課金プランのコストの見積もり](functions-consumption-costs.md)」の記事を参照してください。
 
 次に、関数アプリに対して Application Insights の監視を有効にする必要があります。
 

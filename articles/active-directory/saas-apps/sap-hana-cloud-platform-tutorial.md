@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13ab9752391519f38e843b9d625164e655348d28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091795"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル:Azure Active Directory と SAP Cloud Platform の統合
 
@@ -156,11 +157,11 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
 2. **[Trust (信頼)]** タブをクリックします。
    
-    ![Trust](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Trust")
+    ![信頼](./media/sap-hana-cloud-platform-tutorial/ic790800.png "[Trust (信頼)]")
 
 3. 信頼管理セクションの **[Local Service Provider]\(ローカル サービス プロバイダー\)** で、次の手順に従います。
 
-    ![Trust Management](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Trust Management")
+    ![信頼管理](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信頼管理")
    
     a. **[編集]** をクリックします。
 
@@ -178,7 +179,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
 4. **[Local Service Provider]\(ローカル サービス プロバイダー\)** の設定を保存したら、次を実行して応答 URL を取得します。
    
-    ![Get Metadata](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Get Metadata")
+    ![メタデータの取得](./media/sap-hana-cloud-platform-tutorial/ic793930.png "[Get Metadata (メタデータの取得)]")
 
     a. **[Get Metadata]\(メタデータの取得\)** をクリックして、SAP Cloud Platform メタデータ ファイルをダウンロードします。
 
@@ -188,7 +189,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
 5. **[信頼できる ID プロバイダー]** タブをクリックし、 **[Add Trusted Identity Provider (信頼できる ID プロバイダーの追加)]** をクリックします。
    
-    ![Trust Management](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Trust Management")
+    ![信頼管理](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信頼管理")
    
     >[!NOTE]
     >信頼できる ID プロバイダーの一覧を管理するには、ローカル サービス プロバイダーのセクションでカスタム構成タイプを選んでおく必要があります。 既定の構成タイプでは、SAP ID サービスに対する編集不可能で暗黙的な信頼があります。 [なし] では、いずれの信頼設定もありません。
@@ -197,7 +198,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
 6. **[全般]** タブをクリックし、 **[参照]** をクリックして、ダウンロードしたメタデータ ファイルをアップロードします。
     
-    ![Trust Management](./media/sap-hana-cloud-platform-tutorial/ic793932.png "Trust Management")
+    ![信頼管理](./media/sap-hana-cloud-platform-tutorial/ic793932.png "信頼管理")
     
     >[!NOTE]
     >メタデータ ファイルをアップロードすると、 **[シングル サインオン URL]** 、 **[Single Logout URL]\(シングル ログアウト URL\)** 、 **[署名証明書]** の値が自動的に設定されます。
@@ -207,7 +208,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
 8. **[属性]** タブで、次の手順に従います。
     
-    ![属性](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Attributes") 
+    ![属性](./media/sap-hana-cloud-platform-tutorial/ic790804.png "属性") 
 
     a. **[Add Assertion-Based Attribute (アサーション ベースの属性の追加)]** をクリックして、次のアサーション ベースの属性を追加します。
        
@@ -296,7 +297,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 
 2. 次の手順を実行します。
    
-    ![Authorizations](./media/sap-hana-cloud-platform-tutorial/ic790805.png "Authorizations")
+    ![承認](./media/sap-hana-cloud-platform-tutorial/ic790805.png "[Authorizations]")
    
     a. **[Authorization]** をクリックします。
 

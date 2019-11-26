@@ -1,5 +1,6 @@
 ---
-title: Azure AD v2.0 JavaScript シングル ページ アプリケーション (SPA) のガイド付きセットアップ | Microsoft Docs
+title: Azure AD v2.0 JavaScript シングル ページ アプリケーション (SPA) のガイド付きセットアップ
+titleSuffix: Microsoft identity platform
 description: JavaScript SPA アプリケーションで、Azure Active Directory v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61790954393923bbf330ad3a534d1d33d1a44bbc
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: fc03e6f1610fe6cef9ce72c981f6f800da8a9951
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983475"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802535"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
@@ -263,7 +264,7 @@ ms.locfileid: "70983475"
 
 ユーザーが初めて **[Sign In]** ボタンを選択すると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドによって、"*Microsoft ID プラットフォーム エンドポイント*" のポップアップ ウィンドウが開き、ユーザーの資格情報が要求されて検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされます。 トークンが受信されて `msal.js` によって処理されると、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン*と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 何らかの目的のためにこのトークンが提供する任意のデータを使用する予定がある場合、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、このトークンがバックグラウンド サーバーで確実に検証される必要があります。
 
-このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される*アクセス トークン*を取得します。 ID トークンを検証するサンプルが必要な場合は、[こちら](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 sample")にある GitHub のサンプル アプリケーションを確認してください。 このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
+このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される*アクセス トークン*を取得します。 ID トークンを検証するサンプルが必要な場合は、GitHub で[この](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 サンプル")サンプル アプリケーションを参照してください。 このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
 
 #### <a name="getting-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 

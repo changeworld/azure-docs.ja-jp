@@ -1,19 +1,19 @@
 ---
-title: Site Recovery を使用して Azure にオンプレミス Hyper-V VM (VMM なし) のディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用して Hyper-V のディザスター リカバリーを設定する
 description: Site Recovery を使用して Azure にオンプレミス Hyper-V VM (VMM なし) のディザスター リカバリーを設定する方法について学習します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 44f72df28191d02a6d320671e0173eb1306e0c78
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845701"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029950"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -31,6 +31,8 @@ ms.locfileid: "68845701"
 
 > [!NOTE]
 > チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、「[Site Recovery のドキュメント](https://docs.microsoft.com/azure/site-recovery)」の**ハウツー ガイド** セクションにある記事を確認してください。
+
+
 
 ## <a name="before-you-begin"></a>開始する前に
 

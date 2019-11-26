@@ -1,19 +1,20 @@
 ---
-title: クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure Portal | Microsoft Docs
+title: クイック スタート:ポータルを使用して Web トラフィックを転送する
+titleSuffix: Azure Application Gateway
 description: Azure Portal を使用して、Web トラフィックをバックエンド プール内の仮想マシンに転送する Azure Application Gateway を作成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 565620f477382ff81f854336dbee7bdb1ad06f01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f5a20f80ea8eafa73cbef394dcfdde75087326b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469718"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074578"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal
 
@@ -65,7 +66,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 1. **[フロントエンド]** タブで、 **[フロントエンド IP アドレスの種類]** が **[パブリック]** に設定されていることを確認します。 <br>ユース ケースに従って、フロントエンド IP を [パブリック] または [プライベート] に設定できます。 この例では、パブリック フロントエンド IP を選択します。
    > [!NOTE]
-   > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成は、この v2 SKU では現在有効になっていません。
+   > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成のみが、この v2 SKU で現在有効になっていません。 パブリックおよびプライベートの両方のフロントエンド IP 構成を使用できます。
 
 2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
 

@@ -1,18 +1,19 @@
 ---
-title: クイック スタート - Azure PowerShell を使用して Azure DNS ゾーンとレコードを作成する
+title: クイック スタート:Azure DNS ゾーンとレコードを作成する - Azure PowerShell
+titleSuffix: Azure DNS
 description: Azure DNS で、DNS ゾーンとレコードを作成する方法について説明します。 これは、Azure PowerShell を使用して最初の DNS ゾーンとレコードを作成して管理するための詳細なクイック スタートです。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: ccf60a333dcc83e27702d572f922ef6aec741c14
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: 0d3852824702bbc88925981c3c665b1b3fda7404
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730305"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072186"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure DNS ゾーンとレコードを作成する
 

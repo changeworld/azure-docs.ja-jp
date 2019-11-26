@@ -1,6 +1,6 @@
 ---
-title: Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
-description: Azure Data Factory を使用して、Azure Data Lake Storage Gen2 との間でデータをコピーする方法について説明します。
+title: Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
+description: Azure Data Factory を使用して、Azure Data Lake Storage Gen2 との間でデータをコピーしたり、Azure Data Lake Storage Gen2 でデータを変換したりする方法について説明します。
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -8,20 +8,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e368597880bbbaee6c7aff7e72d88149840a23d8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fb21dbbe087f4dd1c210af1afbba19ba9df1242a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681283"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076788"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
+# <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
 Azure Data Lake Storage Gen2 (ADLS Gen2) は、ビッグ データ分析専用の機能セットであり、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれています。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
-この記事では、Azure Data Lake Storage Gen2 をコピー先またはコピー元としてデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Data Lake Storage Gen2 との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 でデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -33,9 +33,9 @@ Azure Data Lake Storage Gen2 (ADLS Gen2) は、ビッグ データ分析専用�
 - [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
 - [アクティビティを削除する](delete-activity.md)
 
-具体的には、このコネクタを使用して次のことができます。
+コピー アクティビティの場合、このコネクタを使用して次のことができます。
 
-- アカウント キー認証、サービス プリンシパル認証、または Azure リソースのマネージド ID 認証を使用してデータをコピーする。
+- アカウント キー認証、サービス プリンシパル認証、または Azure リソースのマネージド ID 認証を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析または生成する。
 
 >[!IMPORTANT]

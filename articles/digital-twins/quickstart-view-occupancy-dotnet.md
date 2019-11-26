@@ -1,5 +1,5 @@
 ---
-title: 空き部屋を探す - Azure Digital Twins | Microsoft Docs
+title: クイック スタート:空き部屋を探す - Azure Digital Twins
 description: このクイック スタートでは、2 つの .NET Core サンプル アプリケーションを実行して、Azure Digital Twins の空間にシミュレートされたモーションと二酸化炭素のテレメトリを送信します。 目標は、クラウドで計算処理した後に、管理 API から空気の良い空き部屋を探すことです。
 ms.author: alinast
 author: alinamstanciu
@@ -9,13 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 10/03/2019
-ms.openlocfilehash: 3c9a806b936b9f167d1700c95b1e769926abb17b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.date: 11/12/2019
+ms.openlocfilehash: 44ef646328f5f55d16dfa2d6906b78866292ebd9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958904"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123200"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>クイック スタート: Azure Digital Twins を使用して空き部屋を探す
 
@@ -59,6 +59,8 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
     - **Tenant**: Azure AD テナントのディレクトリ ID を入力します。これも、前のセクションでメモしたものです。
     - **BaseUrl**: Digital Twins インスタンスの、`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/` という形式の Management API URL。 この URL 内のプレースホルダーを、前のセクションにあるインスタンスの値に置き換えます。
 
+    更新したファイルを保存します。
+
 ## <a name="provision-graph"></a>グラフのプロビジョニング
 
 この手順では、Digital Twins 空間グラフを次のようにプロビジョニングします。
@@ -81,23 +83,25 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 
 1. プロビジョニングの手順には数分かかることがあります。 また、Digital Twins インスタンス内の IoT ハブもプロビジョニングされます。 IoT ハブで Status=`Running` と表示されるまで、ループ処理が行われます。
 
-    [![サンプルをプロビジョニングする](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png#lightbox)
+    [![サンプルをプロビジョニングする - Status=Running](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
 1. 実行の最後に、デバイス シミュレーター サンプルで使用するデバイスの `ConnectionString` をコピーします。 下の図で示されている文字列のみをコピーします。
 
-    [![接続文字列をコピーする](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [![接続文字列をコピーする](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
 
     >[!TIP]
     > [Azure Digital Twins グラフ ビューアー](https://github.com/Azure/azure-digital-twins-graph-viewer)を使って、空間グラフを表示および変更できます。
 
+コンソール ウィンドウを開いたままにして、後で使用できるようにします。
+
 ## <a name="send-sensor-data"></a>センサー データの送信
 
-次の手順に従って、センサー シミュレーター アプリケーションをビルドして実行します。
+次の手順に従って、センサー シミュレーター デバイス アプリケーションをビルドして実行します。
 
-1. 新しいコマンド プロンプトを開きます。 ダウンロードしたプロジェクト (digital-twins-samples-csharp-master フォルダー内) に移動します。
+1. 新しいコマンド プロンプトを開きます。 `digital-twins-samples-csharp-master` フォルダーにダウンロードしたプロジェクトにアクセスします。
 1. `cd device-connectivity` を実行します。
 1. `dotnet restore` を実行します。
-1. [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) を編集し、前記の `ConnectionString` で **DeviceConnectionString** を更新します。
+1. [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) を編集し、前記の `ConnectionString` で **DeviceConnectionString** を更新します。 更新したファイルを保存します。
 1. `dotnet run` を実行して、センサー データの送信を開始します。 次の図で示されているように、Digital Twins に送信されていることがわかります。
 
      [![デバイスの接続性](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
@@ -111,25 +115,25 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 
 このセンサー サンプルでは、2 つのセンサーのランダムなデータ値をシミュレートしています。 これらは、モーションと二酸化炭素です。 空気の良い空き部屋は、室内にだれも存在しないとサンプルで定義されています。 また、二酸化炭素濃度が 1,000 ppm 未満であるとも定義されています。 この条件が満たされない場合、その空間は利用できないか、空気の質が悪いことになります。
 
-1. 前のプロビジョニング手順の実行に使用したコマンド プロンプトを開きます。
+1. 上記のプロビジョニング手順の実行に使用したコマンド プロンプトを開きます。
 1. `dotnet run GetAvailableAndFreshSpaces` を実行します。
 1. このコマンド プロンプトとセンサー データ コマンド プロンプトを並べて確認します。
 
-    一方のコマンド プロンプトでは、シミュレートされたモーションと二酸化炭素のデータを 5 秒ごとに Digital Twins に送信します。 もう一方のコマンドではグラフをリアルタイムで読み取り、シミュレートされたランダムなデータに基づいて空気の良い空き部屋を探します。 最後に送信されたセンサー データに基づいて、ほぼリアルタイムで次のどちらかの状況が表示されます。
-   - 空気の良い空き部屋。
-   - 空いていないか、空気の質が悪い部屋。
+    センサー データ コマンド プロンプトでは、シミュレートされたモーションと二酸化炭素のデータを 5 秒ごとに Digital Twins に送信します。 もう一方のコマンド プロンプトではグラフをリアルタイムで読み取り、シミュレートされたランダムなデータに基づいて空気の良い空き部屋を探します。 最後に送信されたセンサー データに基づいて、ほぼリアルタイムで次のどちらかの状況が表示されます。
+   - `Room is available and air is fresh`
+   - `Room is not available or air quality is poor`
 
      [![空気の良い空き空間の取得](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
 
-このクイック スタートで何が起こったのかと、どの API が呼び出されたのかを理解するには、digital-twins-samples-csharp にあるコード ワークスペース プロジェクトを [Visual Studio Code](https://code.visualstudio.com/Download) で開いてください。 次のコマンドを使用します。
+このクイック スタートで何が起こったのかと、どの API が呼び出されたのかを理解するには、`digital-twins-samples-csharp` にあるコード ワークスペース プロジェクトを [Visual Studio Code](https://code.visualstudio.com/Download) で開いてください。 次のコマンドを使用します。
 
-```plaintext
+```cmd
 <path>\occupancy-quickstart\src>code ..\..\digital-twins-samples.code-workspace
 ```
 
 チュートリアルでは、コードの詳細について説明します。 構成データを変更する方法と呼び出される API について解説しています。 Management API シリーズの詳細については、Digital Twins Swagger ページを参照してください。
 
-```plaintext
+```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
@@ -153,11 +157,11 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[すべてのリソース]** を選択します。 次に、Digital Twins リソースを選択します。 **[すべてのリソース]** ウィンドウの上部にある **[削除]** を選択します。
 
     > [!TIP]
-    > ご自分の Digital Twins インスタンスの削除で問題が発生していた場合は、サービス更新が修正と共にロールアウトされています。 ご自分のインスタンスの削除を再試行してください。
+    > ご自分の Digital Twins インスタンスの削除で以前問題が発生していた場合は、サービス更新が修正と共にロールアウトされています。 ご自分のインスタンスの削除を再試行してください。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、簡単なシナリオを使用して、作業環境の良い部屋を探す方法について説明しました。 このシナリオの詳細な分析については、次のチュートリアルを参照してください。
+このクイックスタートでは、簡単なシナリオとサンプル アプリケーションを使用して、労働条件の良い空き部屋を探すために Digital Twins をどのように使用するかを示しました。 このシナリオの詳細な分析については、次のチュートリアルを参照してください。
 
 >[!div class="nextstepaction"]
 >[チュートリアル: Azure Digital Twins をデプロイし、空間グラフを構成する](tutorial-facilities-setup.md)

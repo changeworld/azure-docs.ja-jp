@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 44121b959d13a92ca1f4cca0e5a0c00341d1ac18
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: ef5c9e8d548e8acbcbdbe83f6e7c9965c798ad44
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073740"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931254"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>クイック スタート:Python で Form Recognizer REST API を使用してレシートのデータを抽出する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 レシートの分析を開始するには、下の Python スクリプトを使用して **Analyze Receipt** API を呼び出します。 スクリプトを実行する前に、次の変更を行います。
 
-1. `<Endpoint>` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `<Endpoint>` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `<your receipt URL>` を、レシートの画像の URL アドレスに置き換えます。
 1. `<subscription key>` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 

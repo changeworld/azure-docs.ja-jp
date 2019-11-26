@@ -13,21 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 10/25/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c239b88a67e1be19e3a95130839ab6fd4598fe77
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380760"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150050"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>クイック スタート:Azure Active Directory を使用したサインインおよびサインアウトを行う AngularJS シングルページ アプリを構築する
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
+
+> [!IMPORTANT]
+> [Microsoft ID プラットフォーム](v2-overview.md)は、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。
+> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、 *[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)* を使用できます。
+> このクイック スタートは、古い Azure AD v1.0 のエンドポイントを対象としています。 新しいプロジェクトには、v2.0 エンドポイントを使用することをお勧めします。 詳細については、[こちらの JavaScript SPA のチュートリアル](tutorial-v2-javascript-spa.md)と、*Microsoft ID プラットフォーム エンドポイント*を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。
 
 Azure Active Directory (Azure AD) を使用すると、サインイン、サインアウト、セキュリティで保護された OAuth API の呼び出しをシングルページ アプリに簡単に追加できます。 アプリでは、Windows Server Active Directory アカウントを使用してユーザー認証を処理することも、Office 365 API や Azure API など、Azure AD で保護がサポートされた任意の Web API を使用することもできます。
 
@@ -45,9 +50,6 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 1. アプリを Azure AD に登録する。
 2. ADAL をインストールし、シングルページ アプリを構成する。
 3. ADAL を使用して、シングルページ アプリ内のページの保護をサポートする。
-
-> [!NOTE]
-> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、 *[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)* を使用できます。 詳細については、[こちらの JavaScript SPA のチュートリアル](tutorial-v2-javascript-spa.md)と、*Microsoft ID プラットフォーム エンドポイント*を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。 
 
 ## <a name="prerequisites"></a>前提条件
 

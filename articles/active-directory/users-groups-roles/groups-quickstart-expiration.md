@@ -1,25 +1,25 @@
 ---
-title: Office 365 グループの有効期限ポリシーのクイック スタート - Azure Active Directory | Microsoft Docs
+title: グループの有効期限ポリシーのクイックスタート - Azure AD | Microsoft Docs
 description: Office 365 グループの有効期限 - Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 05/06/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cedadc115496fcf00df986b4ad4b9c5aab5139
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606193"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026896"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>クイック スタート:Azure Active Directory における Office 365 グループの有効期限を設定する
 
@@ -27,9 +27,13 @@ ms.locfileid: "65606193"
 
 有効期限ポリシーは次のように単純なものです。
 
-* 有効期限が迫っているグループを更新するよう、そのグループの所有者に通知します。
-* 更新されないグループはすべて削除されます。
-* 削除された Office 365 グループは、30 日以内であれば、グループの所有者または Azure AD 管理者が復元できます。
+- ユーザー アクティビティがあるグループは、有効期限が近づくと自動的に更新されます。
+- 有効期限が迫っているグループを更新するよう、そのグループの所有者に通知します。
+- 更新されないグループはすべて削除されます。
+- 削除された Office 365 グループは、30 日以内であれば、グループの所有者または Azure AD 管理者が復元できます。
+
+> [!NOTE]
+> グループは Azure AD インテリジェンスを使用して、最近使用されたかどうかに基づいて自動的に更新されるようになりました。 この更新の決定は、Outlook、SharePoint、Teams、Yammer などの Office 365 サービスにまたがるグループのユーザー アクティビティに基づいています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 

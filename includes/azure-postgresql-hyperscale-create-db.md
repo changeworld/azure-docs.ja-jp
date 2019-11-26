@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71279889"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73996968"
 ---
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -26,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 2. **[新規]** ページで **[データベース]** を選択し、 **[データベース]** ページで **[Azure Database for PostgreSQL]** を選択します。
-3. デプロイ オプションについては、 **[Hyperscale (Citus) サーバー グループ - プレビュー]** の下にある **[作成]** ボタンをクリックします。
+3. デプロイ オプションについては、 **[Hyperscale (Citus) server group] (Hyperscale (Citus) サーバー グループ)** の下にある **[作成]** ボタンをクリックします。
 4. 新しいサーバーの詳細フォームには次の情報を入力してください。
    - リソース グループ: このフィールドのテキスト ボックスの下の **[新規作成]** リンクをクリックします。 **myresourcegroup** などの名前を入力します。
    - サーバー グループ名: 新しいサーバー グループの一意の名前を入力します。これはサーバー サブドメインにも使用されます。

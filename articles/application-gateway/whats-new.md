@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 5ae7aa2dfbab5ff62f9ce56bc3a790294e369529
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b2e7b9f28c84b769fe64be82f91418cc2a7d634f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686818"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044371"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway の新着情報
 
@@ -27,6 +27,7 @@ Azure Application Gateway は、継続的に更新されます。 常に最新�
 
 |機能  |説明  |追加日  |
 |---------|---------|---------|
+|プローブの機能強化 |Application Gateway v2 SKU でのカスタム プローブの機能強化により、[プローブの構成](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku)が簡素化されて[オンデマンド バックエンドの正常性テスト](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe)が容易になりました。さらに、バックエンドの正常性の問題のトラブルシューティングに役立てるため、[多くの診断情報](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages)が追加されています。  |2019 年 10 月 |
 |その他のメトリック |ご利用のアプリケーション ゲートウェイ v2 SKU を監視するのに役立つ次の新しいメトリックを追加しました。[タイミング関連のメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics)、バックエンド応答の状態、受信バイト数、送信バイト数、クライアント TLS プロトコル、現在のコンピューティング ユニット。 「[Application Gateway V2 SKU でサポートされるメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku)」を参照してください。 |2019 年 8 月 |
 |WAF カスタム規則 |Application Gateway WAF_v2 では、カスタム ルールの作成がサポートされるようになりました。 [Application Gateway のカスタム ルール](custom-waf-rules-overview.md)に関する記事を参照してください。 |2019 年 6 月 |
 |自動スケーリング、ゾーン冗長性、静的 VIP のサポートの一般公開 |自動スケーリング、ゾーン冗長性、パフォーマンスの向上、静的 VIP、Key Vault、ヘッダーの書き換えをサポートする v2 SKU の一般公開。 [Application Gateway の自動スケーリングのドキュメント](application-gateway-autoscaling-zone-redundant.md)を参照してください。 |2019 年 4 月 |

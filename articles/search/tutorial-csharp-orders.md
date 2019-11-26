@@ -1,19 +1,19 @@
 ---
 title: 結果の並べ替えに関する C# チュートリアル
 titleSuffix: Azure Cognitive Search
-description: このチュートリアルでは、「検索結果のページング - Azure Cognitive Search」プロジェクトに検索結果の並べ替えを追加します。 プライマリ プロパティで結果を並べ替える方法、および、プライマリ プロパティが同じである結果をセカンダリ プロパティで並べ替える方法を学びます。 最後に、スコアリング プロファイルに基づいて結果を並べ替える方法を学びます。
+description: このチュートリアルでは、検索結果を並び替える方法について説明します。 これは、プライマリ プロパティ、セカンダリ プロパティで並び替える前のホテル プロジェクトに基づいて作成されており、引き上げ基準を追加するためのスコアリング プロファイルが含まれています。
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794048"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112671"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# のチュートリアル: 結果の並べ替え - Azure Cognitive Search
 

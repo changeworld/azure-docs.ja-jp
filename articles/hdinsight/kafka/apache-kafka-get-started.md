@@ -1,5 +1,5 @@
 ---
-title: Azure portal を使用して HDInsight に Apache Kafka を設定する - クイック スタート
+title: クイック スタート:Azure portal を使用して HDInsight に Apache Kafka を設定する
 description: このクイックス タートでは、Azure portal を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 06/12/2019
-ms.openlocfilehash: f11cbdab59548906f751116a2ca7b9c545b25d91
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.date: 10/01/2019
+ms.openlocfilehash: e253d168fadd5aff46e70ba00a4021415c0ea6f7
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677884"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242041"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -72,7 +72,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     |プライマリ ストレージ アカウント|ドロップダウン リストを使用して既存のストレージ アカウントを選択するか、または **[新規作成]** を選択します。 新しいアカウントの作成時には、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます|
     |コンテナー|自動入力されている値を使用します。|
 
-    ![HDInsight Linux の使用。クラスター ストレージの値の指定](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "HDInsight クラスターを作成するためのストレージの値の指定")
+    ![HDInsight Linux の使用。クラスターのストレージの値の指定](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "HDInsight クラスターを作成するためのストレージの値の指定")
 
     **[セキュリティとネットワーク]** タブを選択します。
 
@@ -111,24 +111,24 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 3. メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
 
     接続されると、次のテキストのような情報が表示されます。
-    
+
     ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
-    
+
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
-    
+
       Get cloud support with Ubuntu Advantage Cloud Guest:
         https://www.ubuntu.com/business/services/cloud
-    
+
     83 packages can be updated.
     37 updates are security updates.
 
 
     Welcome to Apache Kafka on HDInsight.
-    
+
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
     ```
 
@@ -144,29 +144,31 @@ Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" �
     sudo apt -y install jq
     ```
 
-2. 環境変数を設定します。 `PASSWORD` と `CLUSTERNAME` をそれぞれクラスター ログイン パスワードとクラスター名に置き換えた後、コマンドを入力します。
+1. パスワード変数を設定します。 `PASSWORD` をクラスターのログイン パスワードに置き換えてから、次のコマンドを入力します。
 
     ```bash
     export password='PASSWORD'
-    export clusterNameA='CLUSTERNAME'
     ```
 
-3. 大文字と小文字が正しく区別されたクラスター名を抽出します。 クラスターの作成方法によっては、クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。 このコマンドでは、実際の大文字と小文字の使い分けが取得され、変数に格納された後、正しい大文字と小文字の名前と、前に指定した名前が表示されます。 次のコマンドを入力します。
+1. 大文字と小文字が正しく区別されたクラスター名を抽出します。 クラスターの作成方法によっては、クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。 このコマンドは、実際の大文字小文字の区別を取得し、変数に格納します。 次のコマンドを入力します。
 
     ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
-    echo $clusterName, $clusterNameA
+    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+    > [!Note]  
+    > クラスターの外部からこのプロセスを実行している場合は、クラスター名を格納するための別の手順があります。 Azure portal からクラスター名を小文字で取得します。 その後、次のコマンドの `<clustername>` をクラスター名に置き換えて、`export clusterName='<clustername>'` を実行します。
 
-4. Zookeeper ホスト情報で環境変数を設定するには、次のコマンドを使用します。 このコマンドはすべての Zookeeper ホストを取得してから、最初の 2 つのエントリのみを返します。 これは、1 つのホストに到達できない場合に、いくらかの冗長性が必要なためです。
+
+1. Zookeeper ホスト情報で環境変数を設定するには、次のコマンドを使用します。 このコマンドはすべての Zookeeper ホストを取得してから、最初の 2 つのエントリのみを返します。 これは、1 つのホストに到達できない場合に、いくらかの冗長性が必要なためです。
 
     ```bash
-    export KAFKAZKHOSTS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
     ```
 
-    このコマンドは、クラスター ヘッド ノード上の Ambari サービスを直接クエリします。 `https://$CLUSTERNAME.azurehdinsight.net:80/` のパブリック アドレスを使用して Ambari にアクセスすることもできます。 一部のネットワーク構成は、パブリック アドレスへのアクセスを阻止します。 たとえば、ネットワーク セキュリティ グループ (NSG) を使用して、仮想ネットワークで HDInsight へのアクセスを制限します。
+    > [!Note]  
+    > このコマンドでは、Ambari アクセスが必要です。 クラスターが NSG の背後にある場合は、Ambari にアクセスできるコンピューターからこのコマンドを実行します。 
 
-5. 環境変数が正しく設定されていることを確認するには、次のコマンドを使用します。
+1. 環境変数が正しく設定されていることを確認するには、次のコマンドを使用します。
 
     ```bash
     echo $KAFKAZKHOSTS
@@ -176,15 +178,18 @@ Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" �
 
     `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
 
-6. Apache Kafka ブローカー ホスト情報で環境変数を設定するには、次のコマンドを使用します。
+1. Apache Kafka ブローカー ホスト情報で環境変数を設定するには、次のコマンドを使用します。
 
     ```bash
-    export KAFKABROKERS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-7. 環境変数が正しく設定されていることを確認するには、次のコマンドを使用します。
+    > [!Note]  
+    > このコマンドでは、Ambari アクセスが必要です。 クラスターが NSG の背後にある場合は、Ambari にアクセスできるコンピューターからこのコマンドを実行します。 
 
-    ```bash   
+1. 環境変数が正しく設定されていることを確認するには、次のコマンドを使用します。
+
+    ```bash
     echo $KAFKABROKERS
     ```
 

@@ -337,7 +337,7 @@
     - name: シナリオ
       items:
         - name: コール センター
-          href: get-started.md
+          href: call-center-transcription.md
           displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
     - name: ハウツー ガイド
       items:

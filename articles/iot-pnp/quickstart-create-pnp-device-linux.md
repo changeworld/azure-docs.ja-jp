@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 203725ba109922a8704c0e31a6e61dc6eadf6bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 087f1d76aaab4b05425262e0c1fb87b168c99b95
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585928"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931217"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ プレビュー デバイスを作成する (Linux)
 
@@ -57,11 +57,11 @@ Microsoft の職場または学校アカウントを使用するか、Microsoft 
 
 ## <a name="prepare-an-iot-hub"></a>IoT ハブを準備する
 
-このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+また、このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 IoT ハブがない場合は、以下に作成する手順があります。
 
 Azure CLI をローカルで使用している場合、`az` のバージョンは **2.0.75** 以降である必要があります。Azure Cloud Shell には最新バージョンが使用されています。 マシンにインストールされているバージョンを確認するには、`az --version` コマンドを使用します。
 
-Azure CLI 用の Microsoft Azure IoT 拡張機能を追加します。
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -69,11 +69,11 @@ az extension add --name azure-cli-iot-ext
 
 このクイックスタートの手順を行うには、バージョン **0.8.5** 以降の拡張機能が必要です。 インストールされているバージョンを確認するには `az extension list` コマンドを、必要に応じて更新するには `az extension update` コマンドを使用します。
 
-IoT ハブがない場合は、次のコマンドを使用して作成します。`{YourIoTHubName}` は任意の一意の名前に置き換えます。 これらのコマンドをローカルで実行している場合は、まず `az login` を使用して Azure サブスクリプションにサインインします。 Azure Cloud Shell で次のコマンドを実行している場合は、自動的にサインインされます。
+IoT ハブがない場合は、次のコマンドを使用して作成します。`<YourIoTHubName>` は任意の一意の名前に置き換えます。 これらのコマンドをローカルで実行している場合は、まず `az login` を使用して Azure サブスクリプションにサインインします。 Azure Cloud Shell で次のコマンドを実行している場合は、自動的にサインインされます。
 
   ```azurecli-interactive
   az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name {YourIoTHubName} \
+  az iot hub create --name <YourIoTHubName> \
     --resource-group pnpquickstarts_rg --sku S1
   ```
 
@@ -82,23 +82,23 @@ IoT ハブがない場合は、次のコマンドを使用して作成します�
 > [!IMPORTANT]
 > パブリック プレビュー中、IoT プラグ アンド プレイ機能は、**米国中部**、**北ヨーロッパ**、および**東日本**の各リージョンで作成された IoT ハブでのみご利用いただけます。
 
-次のコマンドを実行して、IoT ハブで `mypnpdevice` というデバイスのデバイス ID を作成します。 `{YourIoTHubName}` のプレースホルダーは IoT ハブの名前に置き換えます。
+次のコマンドを実行して、ご利用の IoT ハブにデバイス ID を作成します。 **YourIoTHubName** および **YourDevice** プレースホルダーを実際の名前に置き換えます。
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name {YourIoTHubName} --device-id mypnpdevice
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
 ```
 
-次のコマンドを実行して、登録したばかりのデバイス用の "_デバイス接続文字列_" を取得します。 この接続文字列は、このクイックスタートの後の手順で必要になります。
+次のコマンドを実行して、登録したばかりのデバイス用の "_デバイス接続文字列_" を取得します。
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id mypnpdevice --output table
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
 ## <a name="author-your-model"></a>モデルを作成する
 
 このクイックスタートでは、既存のサンプル デバイス機能モデルおよび関連するインターフェイスを使用します。
 
-1. ホーム ディレクトリに `pnp_app` ディレクトリを作成します。 デバイス モデル ファイルとデバイス コード スタブには、このフォルダーを使用します。
+1. ローカル ドライブに `pnp_app` ディレクトリを作成します。 デバイス モデル ファイルとデバイス コード スタブには、このフォルダーを使用します。
 
     ```bash
     cd ~
@@ -121,16 +121,16 @@ az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --
 
 ## <a name="generate-the-c-code-stub"></a>C コード スタブを生成する
 
-DCM とそれに関連するインターフェイスの用意ができたので、モデルを実装するデバイス コードを生成できます。 VS Code で C コード スタブを生成するには:
+DCM とそれに関連するインターフェイスの用意ができたので、モデルを実装するデバイス コードを生成できます。 VS Code 上で C コード スタブを生成するには:
 
 1. VS Code で `pnp_app` フォルダーを開き、**Ctrl + Shift + P** キーを押してコマンド パレットを開きます。「**IoT プラグ アンド プレイ**」と入力し、 **[Generate Device Code Stub]\(デバイス コード スタブを生成する\)** を選択します。
 
     > [!NOTE]
-    > IoT プラグ アンド プレイ コード ジェネレーター ユーティリティを初めて使用するときは、ダウンロードに数秒かかります。
+    > IoT プラグ アンド プレイ コード ジェネレーター ユーティリティを初めて使用するときは、自動によるダウンロードとインストールに数秒かかります。
 
 1. デバイス コード スタブの生成に使用する **SampleDevice.capabilitymodel.json** ファイルを選択します。
 
-1. プロジェクト名として「**sample_device**」と入力します。これは、デバイス アプリケーションの名前になります。
+1. プロジェクト名「**sample_device**」を入力します。 これは、デバイス アプリケーションの名前になります。
 
 1. 使用する言語として、 **[ANSI C]** を選択します。
 
@@ -138,9 +138,9 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. プロジェクト テンプレートとして **[CMake Project on Linux]\(Linux 上の CMake テンプレート\)** を選択します。
 
-1. SDK を含める方法として **[Via Source Code]\(ソース コード経由\)** を選択します。
+1. デバイス SDK を含める方法として **[Via Source Code]\(ソース コード経由\)** を選択します。
 
-1. VS Code で新しいウィンドウが開き、生成されたデバイス コード スタブ ファイルが表示されます。
+1. DCM ファイルと同じ場所に **sample_device** という名前の新しいフォルダーが作成され、生成されたデバイス コード スタブ ファイルがそこに格納されます。 VS Code によって、これらを表示する新しいウィンドウが開かれます。
     ![デバイス コード](media/quickstart-create-pnp-device-linux/device-code.png)
 
 ## <a name="build-and-run-the-code"></a>コードのビルドと実行
@@ -173,7 +173,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
     ```sh
     cd ~/pnp_app/sample_device/cmake
-    ./sample_device "{IoT Hub device connection string}"
+    ./sample_device "<device connection string>"
     ```
 
 1. そのデバイス アプリケーションによって IoT Hub へのデータの送信が開始されます。
@@ -207,13 +207,13 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 次のコマンドを使用して、サンプル デバイスから送信されているテレメトリを表示します。 出力にテレメトリが表示されるまで、状況に応じて 1、2 分待つ必要があります。
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name {your IoT hub} --device-id mypnpdevice
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
 ```
 
 デバイスから送信されたすべてのプロパティを表示するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az iot dt list-properties --device-id mypnpdevice --hub-name {Your IoT hub name} --source private --repo-login "{Your company model repository connection string}"
+az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<Your company model repository connection string>"
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -223,4 +223,4 @@ az iot dt list-properties --device-id mypnpdevice --hub-name {Your IoT hub name}
 DCM と独自のモデルの作成方法の詳細については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Visual Studio Code を使用してデバイス機能モデルを作成しテストする](tutorial-pnp-visual-studio-code.md)
+> [チュートリアル:Visual Studio Code を使用してデバイス機能モデルを作成し、テストする](tutorial-pnp-visual-studio-code.md)

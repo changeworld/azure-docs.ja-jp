@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607478"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120003"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -73,12 +73,10 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 インフラストラクチャが Windows Virtual Desktop をサポートするうえで必要なものは次のとおりです。
 
 * [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* Azure Active Directory と同期している Windows Server Active Directory。 これは、次のいずれかを使うことにより可能になります。
-  * Azure AD Connect
-  * Azure AD Domain Services
-     >[!NOTE]
-     >Azure AD Domain Services を使用する場合、ユーザーは Azure Active Directory をソースとする必要があります。 Windows Server AD をソースとするユーザーによる Azure AD Domain Services の使用は、現時点ではサポートされていません。
-* Azure サブスクリプション (Windows Server Active Directory を含むか、Windows Server Active Directory に接続している仮想ネットワークが含まれるもの)
+* Azure Active Directory と同期している Windows Server Active Directory。 これは、次のいずれかを使用して構成できます。
+  * Azure AD Connect (ハイブリッド組織向け)
+  * Azure AD Domain Services (ハイブリッドまたはクラウド組織向け)
+* Windows Server Active Directory を含むか、またはこのディレクトリに接続されている仮想ネットワークが含まれる Azure サブスクリプション
   
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
@@ -100,7 +98,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の 
 >[!NOTE]
 >Windows Virtual Desktop を確実にデプロイするためには、これらの URL を開放することが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、Windows Virtual Desktop のサイトとリソースにのみ対応しており、他のサービス (Azure AD など) の URL は含まれません。
 
-Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 デスクトップとアプリは任意の Azure リージョンの仮想マシン (VM) 上にデプロイできるのに対して、管理ソリューションと VM 関連のデータはどちらも、米国 (米国東部 2 リージョン) でホストされます。 このため、米国を宛先とするデータ転送が発生することがあります。
+Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 デスクトップとアプリは任意の Azure リージョン内の仮想マシン (VM) にデプロイでき、これらの VM の管理ソリューションとデータは米国に配置されます。 このため、米国を宛先とするデータ転送が発生することがあります。
 
 最適なパフォーマンスを実現するために、お使いのネットワークが次の要件を満たしていることを確認してください。
 
@@ -117,14 +115,16 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 
 ## <a name="supported-virtual-machine-os-images"></a>サポートされている仮想マシン OS イメージ
 
-Windows Virtual Desktop は、次の OS イメージをサポートします。
+Windows Virtual Desktop は、次の x64 オペレーティング システム イメージをサポートします。
 
-* Windows 10 (Enterprise マルチセッション)
-* Windows 10 Enterprise
+* Windows 10 Enterprise マルチセッション、バージョン 1809 以降
+* Windows 10 Enterprise、バージョン 1809 以降
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
+
+Windows Virtual Desktop は、x86 (32 ビット) オペレーティング システム イメージをサポートしていません。
 
 利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用して Azure IoT Hub のメッセージ ルーティングを構成する | Microsoft Docs
-description: Azure PowerShell を使用して Azure IoT Hub のメッセージ ルーティングを構成する
+title: Azure PowerShell を使用して Azure IoT Hub のメッセージ ルーティングを構成する
+description: Azure PowerShell を使用して Azure IoT Hub のメッセージ ルーティングを構成します。 メッセージ内のプロパティに応じて、ストレージ アカウントまたは Service Bus キューのどちらかにルーティングします。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 2c0e66bfe5ec332d25b93305cb2ac8d172ca130d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535136"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084439"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure PowerShell を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -34,13 +34,13 @@ ms.locfileid: "69535136"
 
 ### <a name="use-powershell-to-create-your-base-resources"></a>PowerShell を使用してベース リソースを作成する
 
+以下のスクリプトをコピーして Cloud Shell に貼り付け、Enter キーを押してください。 スクリプトが 1 行ずつ実行されます。 この最初のセクションのスクリプトでは、ストレージ アカウント、IoT ハブ、Service Bus 名前空間、Service Bus キューなど、このチュートリアルのベース リソースが作成されます。 チュートリアルを読み進めながら、各ブロックのスクリプトをコピーし、Cloud Shell に貼り付けて実行してください。
+
 IoT ハブ名やストレージ アカウント名など、いくつかのリソース名はグローバルに一意であることが必要です。 それを簡単にするために、それらのリソース名には、*randomValue* という英数字のランダム値が追加されます。 randomValue はスクリプトの冒頭で 1 度生成され、スクリプト全体で必要に応じてリソース名に追加されます。 これをランダムにしたくない場合は、空の文字列または特定の値に設定できます。 
 
 > [!IMPORTANT]
 > 最初のスクリプトで設定された変数はルーティング スクリプトによっても使用されるため、すべてのスクリプトは、同じ Cloud Shell セッションで実行してください。 新しいセッションを開いてルーティングの設定用のスクリプトを実行した場合、いくつかの変数に値が格納されません。 
 >
-
-以下のスクリプトをコピーして Cloud Shell に貼り付け、Enter キーを押してください。 スクリプトが 1 行ずつ実行されます。 この最初のセクションのスクリプトでは、ストレージ アカウント、IoT ハブ、Service Bus 名前空間、Service Bus キューなど、このチュートリアルのベース リソースが作成されます。 チュートリアルを読み進めながら、各ブロックのスクリプトをコピーし、Cloud Shell に貼り付けて実行してください。
 
 ```azurepowershell-interactive
 # This command retrieves the subscription id of the current Azure account.
@@ -140,7 +140,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-次の変数が設定されます。
+これらは、Cloud Shell セッション内で設定する必要のある、スクリプトによって使用される変数です。
 
 **resourceGroup**: このフィールドは 2 回出現します。どちらもご自分のリソース グループに設定してください。
 
@@ -162,7 +162,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 **condition**: このフィールドは、このエンドポイントに送信されるメッセージのフィルター処理に使用されるクエリです。 ストレージにルーティングされるメッセージのクエリ条件は `level="storage"` です。
 
-**enabled**: このフィールドの既定値は `true` で、メッセージ ルートが作成後に有効になることを示しています。
+**enabled**: このフィールドの既定値は `true` です。これは、メッセージ ルートを作成した後、そのルートを有効にする必要があることを示します。
 
 このスクリプトをコピーして、Cloud Shell ウィンドウに貼り付けます。
 
@@ -232,7 +232,7 @@ $sbqkey = Get-AzServiceBusKey `
     -Name "sbauthrule"
 ```
 
-次に、Service Bus キューのルーティング エンドポイントとメッセージ ルートを設定します。 次の変数が設定されます。
+次に、Service Bus キューのルーティング エンドポイントとメッセージ ルートを設定します。 これらは、Cloud Shell セッション内で設定する必要のある、スクリプトによって使用される変数です。
 
 **endpointName**: このフィールドは、エンドポイントを特定する名前です。 
 

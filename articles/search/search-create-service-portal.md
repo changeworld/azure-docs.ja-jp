@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
+title: クイック スタート:ポータルで Search サービスを作成する
 titleSuffix: Azure Cognitive Search
 description: Azure portal で Azure Cognitive Search リソースをプロビジョニングします。 リソース グループ、リージョン、および SKU または価格レベルを選択します。
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 75a7cce55627a981d0d0b0f23a119fac6de920ef
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792432"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112123"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
 Azure Cognitive Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロンのリソースです。 Azure Cognitive Search は他の Azure サービスと簡単に統合できますが、スタンドアロン コンポーネントとして使用することも、ネットワーク サーバー上のアプリまたは他のクラウド プラットフォーム上で実行されているソフトウェアと統合することもできます。
 
-この記事では、[Azure portal](https://portal.azure.com/) 内で Azure Cognitive Search リソースを作成する方法を説明します。
+この記事では、[Azure portal](https://portal.azure.com/) 内でリソースを作成する方法を説明します。
 
 [![アニメーション GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -37,24 +37,26 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 2. 左上隅のプラス記号 ([+ リソースの作成]) をクリックします。
 3. 検索バーを使用して "Azure Cognitive Search" を検索するか、 **[Web]**  >  **[Azure Cognitive Search]** を選択してリソースに移動します。
 
-![Azure Cognitive Search リソースに移動する](./media/search-create-service-portal/find-search3.png "Azure Cognitive Search へのナビゲーション パス")
+![ポータルでリソースを作成する](./media/search-create-service-portal/find-search3.png "ポータルでリソースを作成する")
 
-## <a name="select-a-subscription"></a>サブスクリプションの選択
+## <a name="choose-a-subscription"></a>サブスクリプションを選択します。
 
-サブスクリプションが複数ある場合には、データまたはファイル ストレージ サービスがあるものを 1 つ選択します。 Azure Cognitive Search では、"[*インデクサー*](search-indexer-overview.md)" 経由でインデックスが作成されている場合に、Azure テーブルおよび Blob Storage、SQL Database、Azure Cosmos DB の自動検出が可能ですが、これは同じサブスクリプション内のサービスのみで有効です。
+最初の手順として、サブスクリプション ID とリソース グループを設定します。 サブスクリプションが複数ある場合には、データまたはファイル ストレージ サービスがあるものを 1 つ選択します。 Azure Cognitive Search では、"[*インデクサー*](search-indexer-overview.md)" 経由でインデックスが作成されている場合に、Azure テーブルおよび Blob Storage、SQL Database、Azure Cosmos DB の自動検出が可能ですが、これは同じサブスクリプション内のサービスのみで有効です。
 
 ## <a name="set-a-resource-group"></a>リソース グループを設定する
 
-リソース グループは、コスト管理を含め、リソースをまとめて管理するために必要であり、また利便性を発揮します。 リソース グループは、1 つのサービスの場合もあれば、一緒に使用される複数のサービスから成る場合もあります。 たとえば、Azure Cognitive Search を使用して Azure Cosmos DB データベースのインデックスを作成する場合、両方のサービスを同じリソース グループに追加して管理することができます。 
+リソース グループは、コストを含めてリソースをまとめて管理するために必要であり、また利便性を発揮します。 リソース グループは、1 つのサービスの場合もあれば、一緒に使用される複数のサービスから成る場合もあります。 たとえば、Azure Cognitive Search を使用して Azure Cosmos DB データベースのインデックスを作成する場合、両方のサービスを同じリソース グループに追加して管理することができます。 
 
 リソースを単一グループに結合していない場合、または関連のないソリューションで使用されるリソースが既存のリソース グループに格納されている場合は、Azure Cognitive Search リソース用の新しいリソース グループを作成します。 
 
-サービスを使用する際に、現在のコストと予想されるコストをまとめて追跡 (スクリーンショットを参照) できるほか、下へスクロールして個々のリソースの料金を確認することができます。
+![新しいリソース グループを作成する](./media/search-create-service-portal/new-resource-group.png "新しいリソース グループを作成する")
+
+時間が経つにつれて、現在のコストと予想されるコストをまとめて追跡 (スクリーンショットを参照) できるほか、下へスクロールして個々のリソースの料金を確認することができるようになります。 次のスクリーンショットは、複数のリソースを 1 つのグループにまとめるときに最終的に期待できるコスト情報の種類を示しています。
 
 ![リソース グループ レベルでコストを管理する](./media/search-create-service-portal/resource-group-cost-management.png "リソース グループ レベルでコストを管理する")
 
 > [!TIP]
-> リソース グループを削除すると、その中のサービスも削除されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。
+> グループを削除するとその中のサービスも削除されるため、リソース グループによってクリーンアップが簡略化されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。
 
 ## <a name="name-the-service"></a>サービスに名前を付ける
 
@@ -77,7 +79,7 @@ Azure サービスの 1 つである Azure Cognitive Search は、世界中の�
 
 複数のサービスに対して同じ場所を選ぶことで帯域幅の料金を最小限に抑えるか、回避することができます。 たとえば、別の Azure サービス (Azure Storage、Azure Cosmos DB、Azure SQL Database) によって提供されたデータにインデックスを付ける場合、同じリージョン内に Azure Cognitive Search サービスを作成することで、帯域幅の料金を避けることができます。つまり、サービスが同じリージョン内にある場合、アウトバウンド データに料金はかかりません。
 
-さらに、コグニティブ検索 AI エンリッチメントを使用している場合は、Cognitive Services リソースと同じリージョンにサービスを作成します。 *Azure Cognitive Search と Cognitive Services を同じリージョンに配置することは、AI エンリッチメントの要件です*。
+さらに、AI エンリッチメントを使用している場合は、Cognitive Services と同じリージョンにサービスを作成します。 *Azure Cognitive Search と Cognitive Services を同じリージョンに配置することは、AI エンリッチメントの要件です*。
 
 > [!Note]
 > インド中部は、現在、新しいサービスには使用できません。 既にインド中部で使用できるサービスについては、制限なしでスケールアップでき、サービスはそのリージョンで完全にサポートされます。 このリージョンに関する制限は一時的なものであり、新しいサービスのみに限定されます。 制限が適用されなったら、この注記を削除する予定です。
@@ -104,9 +106,9 @@ Azure サービスの 1 つである Azure Cognitive Search は、世界中の�
 
 ポータルを使用していない場合、新しいサービスにプログラムからアクセスするには、URL エンドポイントと認証 API キーを指定する必要があります。
 
-1. サービス概要ページの右側から、URL エンドポイントを探してコピーします。
+1. **[概要]** ページの右側から、URL エンドポイントを探してコピーします。
 
-2. 左側のナビゲーション ウィンドウから **[キー]** を選択し、いずれかの管理者キー (どちらも働きは同じです) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。
+2. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
 
    ![URL エンドポイントを含むサービスの概要ページ](./media/search-create-service-portal/get-url-key.png "URL エンドポイントとその他のサービスの詳細")
 
@@ -151,7 +153,7 @@ Azure サービスの 1 つである Azure Cognitive Search は、世界中の�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Cognitive Search サービスのプロビジョニングが完了した後、ポータル内で最初のインデックスの作成に進むことができます。
+サービスのプロビジョニングが完了した後、ポータル内で最初のインデックスの作成に進むことができます。
 
 > [!div class="nextstepaction"]
 > [クイック スタート:ポータルで Azure Cognitive Search インデックスを作成する](search-get-started-portal.md)

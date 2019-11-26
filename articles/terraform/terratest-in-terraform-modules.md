@@ -1,22 +1,19 @@
 ---
-title: Terratest を使用して Azure で Terraform モジュールをテストする
+title: チュートリアル - Terratest を使用して Azure で Terraform モジュールをテストする
 description: Terratest を使用して Terraform モジュールをテストする方法を学習します。
-services: terraform
-ms.service: azure
-keywords: Terraform, DevOps, ストレージ アカウント, Azure, Terratest, 単体テスト, 統合テスト
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 637bb01bff625989e392d5d711ebd5cdef5c0e09
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169636"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969213"
 ---
-# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terratest を使用して Azure で Terraform モジュールをテストする
+# <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>チュートリアル:Terratest を使用して Azure で Terraform モジュールをテストする
 
 > [!NOTE]
 > この記事のサンプル コードは、バージョン 0.12 (以降) では動作しません。
@@ -40,7 +37,7 @@ Terraform モジュールを作成するときは、品質保証を実装する�
 
 - **Go プログラミング言語**: Terraform テスト ケースは [Go](https://golang.org/dl/) で記述します。
 - **dep**: [dep](https://github.com/golang/dep#installation) は、Go 向けの依存関係管理ツールです。
-- **Azure CLI**:[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、Azure リソースを管理するために使用できるコマンドライン ツールです。 (Terraform では、サービス プリンシパル経由または [Azure CLI を介した](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html) Azure への認証がサポートされます。)
+- **Azure CLI**:[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) は、Azure リソースを管理するために使用できるコマンドライン ツールです。 (Terraform では、サービス プリンシパル経由または [Azure CLI を介した](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html) Azure への認証がサポートされます。)
 - **mage**: Terratest ケースの実行を簡単にする方法を示すため、[mage 実行可能ファイル](https://github.com/magefile/mage/releases)を使用します。 
 
 ## <a name="create-a-static-webpage-module"></a>静的 Web ページ モジュールを作成する
@@ -91,7 +88,7 @@ variable "html_path" {
 
 ```hcl
 output "homepage_url" {
-  value = "${azurerm_storage_blob.homepage.url}"
+  value = azurerm_storage_blob.homepage.url
 }
 ```
 
@@ -106,30 +103,30 @@ output "homepage_url" {
 ```hcl
 resource "azurerm_resource_group" "main" {
   name     = "${var.website_name}-staging-rg"
-  location = "${var.location}"
+  location = var.location
 }
 
 resource "azurerm_storage_account" "main" {
   name                     = "${lower(replace(var.website_name, "/[[:^alnum:]]/", ""))}data001"
-  resource_group_name      = "${azurerm_resource_group.main.name}"
-  location                 = "${azurerm_resource_group.main.location}"
+  resource_group_name      = azurerm_resource_group.main.name
+  location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
 resource "azurerm_storage_container" "main" {
   name                  = "wwwroot"
-  resource_group_name   = "${azurerm_resource_group.main.name}"
-  storage_account_name  = "${azurerm_storage_account.main.name}"
+  resource_group_name   = azurerm_resource_group.main.name
+  storage_account_name  = azurerm_storage_account.main.name
   container_access_type = "blob"
 }
 
 resource "azurerm_storage_blob" "homepage" {
   name                   = "index.html"
-  resource_group_name    = "${azurerm_resource_group.main.name}"
-  storage_account_name   = "${azurerm_storage_account.main.name}"
-  storage_container_name = "${azurerm_storage_container.main.name}"
-  source                 = "${var.html_path}"
+  resource_group_name    = azurerm_resource_group.main.name
+  storage_account_name   = azurerm_storage_account.main.name
+  storage_container_name = azurerm_storage_container.main.name
+  source                 = var.html_path
   type                   = "block"
   content_type           = "text/html"
 }
@@ -173,7 +170,7 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
   html_path    = "empty.html"
 }
 ```
@@ -226,7 +223,7 @@ func TestUT_StorageAccountName(t *testing.T) {
         // Terraform init and plan only
         tfPlanOutput := "terraform.tfplan"
         terraform.Init(t, tfOptions)
-        terraform.RunTerraformCommand(t, tfOptions, terraform.FormatArgs(tfOptions.Vars, "plan", "-out="+tfPlanOutput)...)
+        terraform.RunTerraformCommand(t, tfOptions, terraform.FormatArgs(tfOptions, "plan", "-out="+tfPlanOutput)...)
 
         // Read and parse the plan output
         f, err := os.Open(path.Join(tfOptions.TerraformDir, tfPlanOutput))
@@ -317,11 +314,11 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
 }
 
 output "homepage" {
-  value = "${module.staticwebpage.homepage_url}"
+  value = module.staticwebpage.homepage_url
 }
 ```
 
@@ -395,8 +392,7 @@ GoPath/src/staticwebpage/test$ go test
 統合テストは単体テストよりはるかに時間がかかります (1 つの統合ケースに 2 分に対し、5 つの単体ケースに 1 分)。 ただし、シナリオで単体テストまたは統合テストを使用するかどうかは、開発者が決定します。 Microsoft では通常、複雑なロジックには Terraform HCL 関数を使用する単体テストを使用するのが好まれます。 ユーザーのエンド ツー エンドの観点には、通常、統合テストを使用します。
 
 ## <a name="use-mage-to-simplify-running-terratest-cases"></a>mage を使用して Terratest ケースの実行を簡略化する 
-
-Azure Cloud Shell でテスト ケースを実行するのは、簡単な作業はありません。 異なるディレクトリに移動し、異なるコマンドを実行する必要があります。 Cloud Shell を使用しなくて済むように、プロジェクトにビルド システムが導入されています。 このセクションでは、Go のビルド システムである mage をジョブに対して使用します。
+Azure Cloud Shell でテスト ケースを実行するには、さまざまなディレクトリで異なるコマンドを実行する必要があります。 このプロセスをより効率的にするために、プロジェクトにビルド システムを導入します。 このセクションでは、Go のビルド システムである mage をジョブに対して使用します。
 
 mage で必要になるのは、プロジェクトのルート ディレクトリ内の `magefile.go` のみです (下の例では `(+)` とマークされています)。
 
@@ -522,5 +518,5 @@ mage では、Go パッケージ システムを使用して、ステップを�
 
 ## <a name="next-steps"></a>次の手順
 
-* Terratest について詳しくは、[Terratest の GitHub ページ](https://github.com/gruntwork-io/terratest)をご覧ください。
-* mage について詳しくは、[mage の GitHub ページ](https://github.com/magefile/mage)と [mage の Web サイト](https://magefile.org/)をご覧ください。
+> [!div class="nextstepaction"] 
+> [Terratest GitHub ページ](https://github.com/gruntwork-io/terratest)。

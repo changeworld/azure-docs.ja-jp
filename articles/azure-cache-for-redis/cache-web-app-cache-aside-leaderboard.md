@@ -1,26 +1,18 @@
 ---
-title: キャッシュ アサイド パターンを使用する Web アプリを Azure Cache for Redis で作成するためのチュートリアル | Microsoft Docs
+title: キャッシュ アサイド パターンを使用する Web アプリを Azure Cache for Redis で作成するためのチュートリアル
 description: キャッシュ アサイド パターンを使用する Web アプリを Azure Cache for Redis で作成する方法について説明します
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 8ca24e8556ee53e9d12eaea8fd9eddb07ebed490
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826389"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121516"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル:ASP.NET でキャッシュ アサイド スコアボードを作成する
 
@@ -671,7 +663,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
    | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関するページを参照してください。 |
+   | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
    | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
    | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
    | **場所** | *米国東部* | キャッシュと App Service を作成したのと同じリージョンを選択します。 |

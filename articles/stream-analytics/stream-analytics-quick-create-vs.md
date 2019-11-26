@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: eb3b25387df33f8d366a088f9fa63e0dc96290bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 834447d15336fcd6d56f2979113aaef7e22ecb8f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173253"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934305"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する
 
@@ -42,7 +42,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
    |---------|---------|---------|
    |Subscription  | \<該当するサブスクリプション\> |  使用する Azure サブスクリプションを選択します。 |
    |Resource group   |   asaquickstart-resourcegroup  |   **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。 |
-   |Region  |  \<ユーザーに最も近いリージョンを選択\> | お客様の IoT ハブをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。 |
+   |リージョン  |  \<ユーザーに最も近いリージョンを選択\> | お客様の IoT ハブをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。 |
    |IoT Hub 名  | MyASAIoTHub  |   お客様の IoT ハブの名前を選択します。   |
 
    ![IoT Hub の作成](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
@@ -113,7 +113,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
    |入力のエイリアス  |  入力   |  ジョブの入力を識別する名前を入力します。   |
    |ソースの種類   |  データ ストリーム |  適切な入力ソース ([データ ストリーム] または [参照データ]) を選択します。   |
    |source  |  IoT Hub |  適切な入力ソースを選択します。   |
-   |Resource  | 現在のアカウントからデータ ソースを選択します | 手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
+   |リソース  | 現在のアカウントからデータ ソースを選択します | 手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
    |Subscription  |  \<該当するサブスクリプション\>   | 作成した IoT ハブがある Azure サブスクリプションを選択します。   |
    |IoT Hub  |  MyASAIoTHub   |  対象の IoT ハブの名前を選択または入力します。 IoT ハブが同じサブスクリプション内に作成されている場合、IoT ハブ名は自動的に検出されます。   |
    
@@ -131,7 +131,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
    |---------|---------|---------|
    |出力のエイリアス  |  Output   |  ジョブの出力を識別する名前を入力します。   |
    |シンク   |  Blob Storage |  適切なシンクを選択します。    |
-   |Resource  |  データ ソース設定を手動で提供します |  手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
+   |リソース  |  データ ソース設定を手動で提供します |  手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
    |Subscription  |  \<該当するサブスクリプション\>   | 作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。   |
    |ストレージ アカウント  |  asaquickstartstorage   |  ストレージ アカウントの名前を選択するか、入力します。 ストレージ アカウントが同じサブスクリプション内に作成されている場合、ストレージ アカウント名は自動的に検出されます。   |
    |コンテナー  |  container1   |  ストレージ アカウントで作成した既存のコンテナーを選択します。   |

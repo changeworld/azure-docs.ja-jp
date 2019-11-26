@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b118a509f72af2146abf854b881fa34d8de302a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564924"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936045"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator を使用して eコマース製品画像をモデレートする
 
@@ -65,7 +65,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-`___Key` フィールドは、お客様のサブスクリプション キーの値で更新する必要があります (後で `CustomVisionKey` を取得します)。また、`___Uri` フィールドは、適切なリージョン識別子を含むように変更することが必要な場合があります。 `ReviewUri` フィールドの `YOURTEAMID` 部分には、お客様が先ほど作成したレビュー チームの ID を入力してください。 `CustomVisionUri` フィールドの最後の部分は後で入力します。
+`___Key` フィールドは、お客様のサブスクリプション キーの値で更新する必要があります。また、`___Uri` フィールドは、適切なエンドポイント URL に変更する必要があります (後で Custom Vision キーとエンドポイントを取得します)。 これらの値は、各 Azure リソースの **[クイックスタート]** タブで確認できます。 `ReviewUri` フィールドの `YOURTEAMID` 部分には、お客様が先ほど作成したレビュー チームの ID を入力してください。 `CustomVisionUri` フィールドの最後の部分は後で入力します。
+
+[!INCLUDE [subdomains note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="primary-method-calls"></a>主要なメソッドの呼び出し
 

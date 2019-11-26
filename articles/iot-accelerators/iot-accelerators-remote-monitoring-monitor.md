@@ -1,5 +1,5 @@
 ---
-title: Azure ソリューションから IoT デバイスを監視するチュートリアル - Azure | Microsoft Docs
+title: リモート監視ソリューションでのデバイスの監視 - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して IoT デバイスを監視する方法を学習します。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d6d850fa8f896809318be77529e10abddaf6ea9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173823"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890865"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル:IoT デバイスの監視
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![トラックのみがマップに表示される](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
-フィルターを作成、編集、および削除するには、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
+フィルターを作成、編集、および削除するには、 **[Manage device groups]\(デバイス グループの管理\)** をクリックします。
 
 ## <a name="view-real-time-telemetry"></a>テレメトリをリアルタイムで表示する
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![トラックのテレメトリの種類](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-トラックの温度テレメトリを表示するには、**[温度]** をクリックします。 truck-02 の温度が 1 時間でどのように変化したかを見ることができます。
+トラックの温度テレメトリを表示するには、 **[温度]** をクリックします。 truck-02 の温度が 1 時間でどのように変化したかを見ることができます。
 
 [![トラックの温度テレメトリのプロット](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
@@ -79,7 +79,7 @@ truck-02 の詳細を表示するには、マップをパンおよび拡大縮�
 
 ## <a name="view-the-system-kpis"></a>システムの KPI を表示する
 
-ソリューション アクセラレータによって計算されたシステム KPI は、**[ダッシュボード]** ページの **[分析]** パネルに表示されます。
+ソリューション アクセラレータによって計算されたシステム KPI は、 **[ダッシュボード]** ページの **[分析]** パネルに表示されます。
 
 [![ダッシュボードの KPI](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
 

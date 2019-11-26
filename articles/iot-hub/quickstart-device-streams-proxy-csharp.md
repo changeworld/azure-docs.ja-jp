@@ -1,5 +1,5 @@
 ---
-title: SSH および RDP 用の Azure IoT Hub デバイス ストリームの C# クイックスタート (プレビュー) | Microsoft Docs
+title: SSH および RDP 用の Azure IoT Hub デバイス ストリームの C# クイックスタート
 description: このクイックスタートでは、IoT Hub デバイス ストリームを介した SSH および RDP シナリオを有効にする 2 つのサンプル C# アプリケーションを実行します。
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d84a20a554308e1705c304a18062a4a1d762a72b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d131e0112070dcc60e601b2859e8c9df8d40764a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901444"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084342"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 

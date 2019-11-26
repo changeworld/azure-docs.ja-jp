@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: b99b45427cf793eec4f6257190823c102b838cfa
-  ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+  ms.openlocfilehash: cbd3a4dbaa80119d72cd54efa7dd2dc751b91b40
+  ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/10/2019
-  ms.locfileid: "73903345"
+  ms.lasthandoff: 11/23/2019
+  ms.locfileid: "74422821"
 highlightedContent:
   items:
   - title: Azure IoT とは?
@@ -40,7 +40,7 @@ conceptualContent:
   title: IoT ソリューションの構築を開始する
   summary: Azure IoT では、クラウドやエッジの IoT プラットフォームだけでなく、フル マネージド IoT ソリューションも提供します。
   items:
-  - title: Azure IoT Hub を使用して独自の IoT ソリューションを構築する
+  - title: 独自の IoT クラウド ソリューションを構築する
     links:
     - url: ../iot-hub/about-iot-hub.md
       itemType: overview
@@ -54,7 +54,7 @@ conceptualContent:
     footerLink:
       url: ../iot-hub/index.yml
       text: 関連項目
-  - title: Azure IoT Central を使用してフル マネージド IoT ソリューションをデプロイする
+  - title: フルマネージド IoT ソリューションをデプロイする
     links:
     - url: ../iot-central/core/overview-iot-central.md
       itemType: overview
@@ -68,7 +68,7 @@ conceptualContent:
     footerLink:
       url: ../iot-central/core/index.yml
       text: 関連項目
-  - title: Azure IoT ソリューション アクセラレータを使用して構築済みの IoT ソリューションをカスタマイズする
+  - title: 事前に構築された IoT ソリューションをカスタマイズする
     links:
     - url: ../iot-accelerators/about-iot-accelerators.md
       itemType: overview
@@ -82,7 +82,7 @@ conceptualContent:
     footerLink:
       url: ../iot-accelerators/index.md
       text: 関連項目
-  - title: Azure IoT Edge を使用してクラウド インテリジェンスをデバイス上で実行する
+  - title: エッジ デバイスでクラウド インテリジェンスを実行する
     links:
     - url: ../iot-edge/about-iot-edge.md
       itemType: overview
@@ -96,7 +96,7 @@ conceptualContent:
     footerLink:
       url: ../iot-edge/index.yml
       text: 関連項目
-  - title: Azure Digital Twins を使用して接続されたスマート インフラストラクチャを作成する
+  - title: 接続されたスマートなインフラストラクチャを作成する
     links:
     - url: ../digital-twins/about-digital-twins.md
       itemType: overview
@@ -110,7 +110,7 @@ conceptualContent:
     footerLink:
       url: ../digital-twins/index.yml
       text: 関連項目
-  - title: Azure IoT Hub Device Provisioning Service を使用して大規模かつ安全にデバイスをプロビジョニングする
+  - title: デバイスを安全かつ大規模にプロビジョニングする
     links:
     - url: ../iot-dps/about-iot-dps.md
       itemType: overview
@@ -124,7 +124,7 @@ conceptualContent:
     footerLink:
       url: ../iot-dps/index.yml
       text: 関連項目
-  - title: Azure Time Series Insights を使用してデバイスのデータを調査および分析する
+  - title: デバイス データの探索と分析
     links:
     - url: ../time-series-insights/time-series-insights-update-overview.md
       itemType: overview
@@ -138,7 +138,7 @@ conceptualContent:
     footerLink:
       url: ../time-series-insights/index.yml
       text: 関連項目
-  - title: Azure Maps を使用して企業におけるモビリティを駆動させる
+  - title: 企業におけるモビリティを駆動させる
     links:
     - url: ../azure-maps/about-azure-maps.md
       itemType: overview

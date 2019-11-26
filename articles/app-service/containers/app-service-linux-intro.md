@@ -4,8 +4,8 @@ description: Azure App Service on Linux について説明します。
 keywords: Azure App Service, Linux, OSS
 services: app-service
 documentationcenter: ''
-author: msangapu
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
@@ -15,29 +15,20 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 7c00946ed9de88df43a4435c23ebef27b5c64e5c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071321"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819689"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
-[Azure App Service](../overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、フル マネージドのコンピューティング プラットフォームです。 顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 「[言語](#languages)」セクションに、現在サポートされているアプリケーション スタックの一覧を示します。
+[Azure App Service](../overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、フル マネージドのコンピューティング プラットフォームです。 顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。
 
 ## <a name="languages"></a>Languages
 
-App Service on Linux では、開発者の生産性を向上させるために、多数の組み込みイメージがサポートされています。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、[独自の Docker イメージを作成](tutorial-custom-docker-image.md)して Web App for Containers にデプロイする方法があります。
-
-| 言語 | サポートされているバージョン |
-|---|---|
-| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、8.12、9.4、10.1、10.10、10.14 |
-| Java * | Tomcat 8.5、9.0、Java SE、WildFly 14 (いずれも JRE 8 を実行) |
-| PHP | 5.6、7.0、7.2、7.3 |
-| Python | 2.7、3.6、3.7 |
-| .NET Core | 1.0、1.1、2.0、2.1、2.2 |
-| Ruby | 2.3、2.4、2.5、2.6 |
+App Service on Linux では、開発者の生産性を向上させるために、多数の組み込みイメージがサポートされています。 以下の言語が含まれます。Node.js、Java (JRE 8 と JRE 11)、PHP、Python、.NET Core、および Ruby。 [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行して、最新の言語とサポートされているバージョンを表示します。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、[独自の Docker イメージを作成](tutorial-custom-docker-image.md)して Web App for Containers にデプロイする方法があります。
 
 ## <a name="deployments"></a>デプロイメント
 
@@ -62,7 +53,7 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 * [App Service プラン](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json)のレベルを変更することで、Web アプリのスケールアップとスケールダウンを実行できます。
 
-## <a name="locations"></a>Locations
+## <a name="locations"></a>場所
 
 [Azure ステータス ダッシュボード](https://azure.microsoft.com/status)を確認します。
 

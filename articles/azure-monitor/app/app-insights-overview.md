@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 58c63c229510b476ea19a9650c8eed0fc2d72ac2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 089b37761c11c02e34c35eb378c64862bc4fbc98
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677828"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064135"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は [Azure Monitor](../overview.md) の機能であり、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -106,6 +106,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [.NET コンソール アプリケーション](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.JS](../../azure-monitor/app/nodejs.md)
+  * [Python (プレビュー)](../../azure-monitor/app/opencensus-python.md)
   * [その他のプラットフォーム](../../azure-monitor/app/platforms.md)
 * ページ ビュー、AJAX、その他のクライアント側テレメトリ用に **[Web ページをインストルメント化](../../azure-monitor/app/javascript.md)** します。
 * Visual Studio App Center と統合することで、 **[モバイル アプリの使用状況を分析](../../azure-monitor/learn/mobile-center-quickstart.md)** します。
@@ -124,6 +125,8 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
+* [Python (プレビュー)](../../azure-monitor/app/opencensus-python.md)
+
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 * 質問および問題点:

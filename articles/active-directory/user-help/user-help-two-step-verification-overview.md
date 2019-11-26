@@ -1,5 +1,5 @@
 ---
-title: 2 要素認証と職場または学校アカウントの概要 - Azure Active Directory | Microsoft Docs
+title: セキュリティ確認と職場または学校アカウント - Azure AD
 description: 職場または学校アカウントで 2 要素認証を使用するようにセキュリティ確認方法を設定する方法について説明します。
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e8cda4b04a4555ed7747bb9444c2a5ec2e266573
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615998"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028466"
 ---
-# <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウントの概要
+# <a name="two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウント
 
 組織によってお客様のアカウントに対して追加のセキュリティ確認が加えられたという内容のメールを IT 部門のだれかまたは上司から受け取りました。 これはどういう意味でしょうか。 これは、組織が、あなたがサインインするときに本人であることを確認する追加の手順を採用していることを意味します。 2 要素認証とも呼ばれるこの追加の確認は、ユーザー名、パスワード、携帯端末または携帯電話の組み合わせによって行われます。
 

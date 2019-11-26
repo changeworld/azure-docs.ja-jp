@@ -1,5 +1,6 @@
 ---
-title: 認証要求内でカスタムの状態を渡す (JavaScript 用 Microsoft Authentication Library) | Azure
+title: 認証要求内でカスタムの状態を渡す (JavaScript 用 Microsoft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: JavaScript (MSAL.js) 用 Microsoft 認証ライブラリを使用して認証要求内でカスタムの状態パラメーターの値を渡す方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 527c1937da8634f7448c82ca8c0331fb5cfb85e3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532752"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150610"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL.js を使用して認証要求内でカスタムの状態を渡す
 OAuth 2.0 で定義されているように、"*状態*" パラメーターは認証要求に含まれ、クロスサイト リクエスト フォージェリ攻撃を防ぐためにもトークン応答で返されます。 既定では、JavaScript (MSAL.js) 用 Microsoft Authentication Library により、ランダムに生成された一意の "*状態*" パラメーター値が認証要求で渡されます。
@@ -51,7 +52,7 @@ export type AuthenticationParameters = {
 ```javascript
 let loginRequest = {
     scopes: ["user.read", "user.write"],
-    state: “page_url”
+    state: "page_url"
 }
 
 myMSALObj.loginPopup(loginRequest);

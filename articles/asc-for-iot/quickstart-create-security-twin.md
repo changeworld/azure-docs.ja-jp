@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center for IoT のセキュリティ モジュール ツインを作成する | Microsoft Docs
-description: Azure Security Center for IoT と併用するための Azure Security Center for IoT モジュール ツインを作成する方法について説明します。
+title: クイック スタート:Azure Security Center for IoT のセキュリティ モジュール ツインを作成する
+description: このクイックスタートでは、Azure Security Center for IoT で使用する Azure Security Center for IoT モジュール ツインを作成する方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597081"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904161"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 

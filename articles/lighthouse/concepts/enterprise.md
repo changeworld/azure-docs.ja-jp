@@ -1,22 +1,18 @@
 ---
 title: エンタープライズ シナリオにおける Azure Lighthouse
 description: Azure Lighthouse の機能を使用すると、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化できます。
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: fbd87cc801824729025feb7aefa411ac38048949
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266679"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132508"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
-Azure Lighthouse の最も一般的なシナリオは、顧客の Azure Active Directory (Azure AD) テナントのリソースを管理するサービス プロバイダーです。 ただし、Azure Lighthouse の機能を使用して、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化することもできます。
+[Azure Lighthouse](../overview.md) の最も一般的なシナリオは、顧客の Azure Active Directory (Azure AD) テナントのリソースを管理するサービス プロバイダーです。 ただし、Azure Lighthouse の機能を使用して、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化することもできます。
 
 ## <a name="single-vs-multiple-tenants"></a>シングル テナントと複数テナント
 

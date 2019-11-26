@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1ff70a8a794cbc4c201512a0cf578eb0a890a5e4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647117"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904414"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -99,8 +99,8 @@ run = exp.submit(source_directory=script_folder,
 サービスの概要については、「[Azure Machine Learning とは](overview-what-is-azure-ml.md)」を参照してください。
 
 任意の方法で最初の実験を作成します。
-  + [Python ノートブックを使用して、ML モデルをトレーニングおよびデプロイする](tutorial-1st-experiment-sdk-setup.md)
-  + [R Markdown を使用して、ML モデルをトレーニングおよびデプロイする]( tutorial-1st-r-experiment.md) 
-  + [自動化された機械学習を使用して、ML モデルをトレーニングおよびデプロイする](ui-tutorial-automobile-price-train-score.md) 
-  + [デザイナーのドラッグ アンド ドロップ機能を使用して、トレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md) 
-  + [Machine Learning CLI を使用して、モデルをトレーニングおよびデプロイする](tutorial-train-deploy-model-cli.md)
+  + [Python ノートブックを使用する](tutorial-1st-experiment-sdk-setup.md)
+  + [R Markdown を使用する]( tutorial-1st-r-experiment.md) 
+  + [自動機械学習を使用する](ui-tutorial-automobile-price-train-score.md) 
+  + [デザイナーのドラッグ アンド ドロップ機能を使用する](tutorial-first-experiment-automated-ml.md) 
+  + [CLI に対する ML 拡張機能を使用する](tutorial-train-deploy-model-cli.md)

@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Azure で Linux 仮想マシンに Ansible をインストールする | Microsoft Docs
+title: クイック スタート - Azure で Linux 仮想マシンに Ansible をインストールする
 description: このクイックスタートでは、Ubuntu、CentOS、SLES で Azure リソースを管理するため、Ansible をインストールして構成する方法を説明します
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, プレイブック, Bash
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d3302d999dd70a83be18ce610b9c3d44992c865c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a1ea5814ffd201456a2751b37b77f3062cac789a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671833"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037070"
 ---
 # <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>クイック スタート:Azure で Linux 仮想マシンに Ansible をインストールする
 

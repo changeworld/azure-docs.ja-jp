@@ -1,19 +1,20 @@
 ---
-title: クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure CLI | Microsoft Docs
+title: クイック スタート:CLI を使用して Web トラフィックを転送する
+titleSuffix: Azure Application Gateway
 description: Azure CLI を使用して、Web トラフィックをバックエンド プール内の仮想マシンに転送する Azure Application Gateway を作成する方法を学習します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: de1f30d949509ab48999d0080ccc4df74321ce01
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314905"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075194"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI
 

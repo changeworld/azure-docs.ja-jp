@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 808564f291328450b17db8eb7ea299c194c66400
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e53f3adbf7f9909d3590a0bc34dadc49d498291d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103531"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>チュートリアル:Azure Active Directory と Egnyte の統合
 
@@ -130,19 +131,19 @@ Egnyte で Azure AD シングル サインオンを構成するには、次の�
 
 2. **[設定]** をクリックします。
    
-    ![設定](./media/egnyte-tutorial/ic787819.png "Settings")
+    ![設定](./media/egnyte-tutorial/ic787819.png "設定")
 
 3. メニューで **[設定]** をクリックします。
 
-    ![設定](./media/egnyte-tutorial/ic787820.png "Settings")
+    ![設定](./media/egnyte-tutorial/ic787820.png "設定")
 
 4. **[構成]** タブをクリックし、 **[セキュリティ]** をクリックします。
 
-    ![Security (セキュリティ)](./media/egnyte-tutorial/ic787821.png "Security")
+    ![セキュリティ](./media/egnyte-tutorial/ic787821.png "セキュリティ")
 
 5. **[シングル サインオン認証]** セクションで、次の手順を実行します。
 
-    ![Single Sign On Authentication](./media/egnyte-tutorial/ic787822.png "Single Sign On Authentication")   
+    ![シングル サインオン認証](./media/egnyte-tutorial/ic787822.png "シングル サインオン認証")   
     
     a. **[シングル サインオン認証]** として **[SAML 2.0]** を選択します。
    
@@ -223,11 +224,11 @@ Azure AD ユーザーが Egnyte にログインできるようにするには、
 
 3. **[新しいユーザーの追加]** をクリックし、追加するユーザーの種類を選択します。
    
-    ![ユーザー](./media/egnyte-tutorial/ic787824.png "Users")
+    ![ユーザー](./media/egnyte-tutorial/ic787824.png "ユーザー")
 
 4. **[New Power User]\(新規のパワー ユーザー\)** セクションで、次の手順を実行します。
     
-    ![New Standard User](./media/egnyte-tutorial/ic787825.png "New Standard User")   
+    ![新しい標準ユーザー](./media/egnyte-tutorial/ic787825.png "[新しい標準ユーザー]")   
 
     a. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス (**Brittasimon\@contoso.com** など) を入力します。
 

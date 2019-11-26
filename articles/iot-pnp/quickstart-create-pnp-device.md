@@ -1,5 +1,5 @@
 ---
-title: IoT プラグ アンド プレイ プレビュー デバイスを作成する | Microsoft Docs
+title: IoT プラグ アンド プレイ プレビュー デバイスを作成する (Windows) | Microsoft Docs
 description: デバイス機能モデルを使用してデバイス コードを作成します。 次に、デバイス コードを実行して、デバイスがご利用の IoT Hub に接続されることを確認します。
 author: miagdp
 ms.author: miag
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 019dbe8b977932c6a806f7efca8c0724597718d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4ee9bf218765ea4c3966e7f0a8b20a8108de7655
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818069"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931908"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ プレビュー デバイスを作成する (Windows)
 
@@ -23,7 +23,7 @@ ms.locfileid: "73818069"
 
 このクイックスタートを完了するには、ご利用のローカル コンピューター上に次のソフトウェアをインストールする必要があります。
 
-* **C++ ビルド ツール**と **NuGet パッケージ マネージャー コンポーネント**のワークロードを利用して、[Visual Studio 用のツールをビルドする](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)。 または、同じワークロードがインストールされている [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019、2017、2015 が既にある。
+* **C++ ビルド ツール**と **NuGet パッケージ マネージャー コンポーネント**のワークロードを利用して、[Visual Studio 用のビルド ツール](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)。 または、同じワークロードを利用する [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019、2017、2015 が既にインストールされている。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 * [Visual Studio Code](https://code.visualstudio.com/)。
@@ -48,42 +48,34 @@ Microsoft の職場または学校アカウントを使用するか、Microsoft 
 
 ## <a name="prepare-an-iot-hub"></a>IoT ハブを準備する
 
-また、このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+また、このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 IoT ハブがない場合は、[こちらの手順に従って作成します](../iot-hub/iot-hub-create-using-cli.md)。
 
-> [!NOTE]
+> [!IMPORTANT]
 > パブリック プレビュー中、IoT プラグ アンド プレイ機能は、**米国中部**、**北ヨーロッパ**、および**東日本**の各リージョンで作成された IoT ハブでのみご利用いただけます。
 
-Azure CLI 用の Microsoft Azure IoT 拡張機能を追加します。
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
 
-次のコマンドを実行して、ご利用の IoT ハブに新しいデバイス ID を作成します。 **YourIoTHubName** および **YourDevice** プレースホルダーを実際の名前に置き換えます。 IoT Hub をお持ちではない場合は、[次の手順に従って作成します](../iot-hub/iot-hub-create-using-cli.md)。
+次のコマンドを実行して、ご利用の IoT ハブに新しいデバイス ID を作成します。 **YourIoTHubName** および **YourDevice** プレースホルダーを実際の名前に置き換えます。
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name [YourIoTHubName] --device-id [YourDevice]
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
 ```
 
-次のコマンドを実行して、登録したばかりのデバイス用の_デバイス接続文字列_を取得します。
+次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name [YourIoTHubName] --device-id [YourDevice] --output table
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
-次のコマンドを実行して、ご利用の IoT ハブに対する _IoT ハブ接続文字列_を取得します。
+次のコマンドを実行して、ご利用のハブに対する _IoT ハブ接続文字列_を取得します。
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
+az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 ```
-
-次のようなデバイス接続文字列をメモしておきます。
-
-```json
-HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}
-```
-
-この値は、このクイックスタートの後の方で使用します。
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
@@ -116,9 +108,9 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 
 このクイックスタートでは、既存のサンプル デバイス機能モデルおよび関連するインターフェイスを使用します。
 
-1. ローカル ドライブに `pnp_app` ディレクトリを作成します。
+1. ローカル ドライブに `pnp_app` ディレクトリを作成します。 デバイス モデル ファイルとデバイス コード スタブには、このフォルダーを使用します。
 
-1. [デバイス機能モデル](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json)と[インターフェイスのサンプル](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)をダウンロードし、ファイルを `pnp_app` フォルダーに保存します。
+1. [デバイス機能モデルとインターフェイスのサンプル ファイル](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json)と[インターフェイスのサンプル](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)をダウンロードし、ファイルを `pnp_app` フォルダーに保存します。
 
     > [!TIP]
     > GitHub からファイルをダウンロードするには、該当するファイルに移動して **[Raw]** を右クリックし、次に **[名前を付けてリンク先を保存]** を選択します。
@@ -133,14 +125,14 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 
 DCM とそれに関連するインターフェイスの用意ができたので、モデルを実装するデバイス コードを生成できます。 VS Code 上で C コード スタブを生成するには:
 
-1. DCM ファイルが開いているフォルダーで、**Ctrl + Shift + P** キーを押してコマンド パレットを開き、「**IoT プラグ アンド プレイ**」と入力して、 **[Generate Device Code Stub]\(デバイス コード スタブを生成する\)** を選択します。
+1. VS Code で `pnp_app` フォルダーを開き、**Ctrl + Shift + P** キーを押してコマンド パレットを開きます。「**IoT プラグ アンド プレイ**」と入力し、 **[Generate Device Code Stub]\(デバイス コード スタブを生成する\)** を選択します。
 
     > [!NOTE]
     > IoT プラグ アンド プレイ コード生成 CLI を初めて使用するときは、自動によるダウンロードとインストールに数秒かかります。
 
-1. デバイス コード スタブの生成に使用する DCM ファイルを選択します。
+1. デバイス コード スタブの生成に使用する **SampleDevice.capabilitymodel.json** ファイルを選択します。
 
-1. プロジェクト名として「**sample_device**」と入力します。これは、デバイス アプリケーションの名前になります。
+1. プロジェクト名「**sample_device**」を入力します。 これは、デバイス アプリケーションの名前になります。
 
 1. 使用する言語として、 **[ANSI C]** を選択します。
 
@@ -153,9 +145,9 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 1. DCM ファイルと同じ場所に **sample_device** という名前の新しいフォルダーが作成され、生成されたデバイス コード スタブ ファイルがそこに格納されます。 VS Code によって、これらを表示する新しいウィンドウが開かれます。
     ![デバイス コード](media/quickstart-create-pnp-device/device-code.png)
 
-## <a name="build-the-code"></a>コードのビルド
+## <a name="build-and-run-the-code"></a>コードのビルドと実行
 
-生成されたデバイス コード スタブを、デバイス SDK と共にビルドします。 ビルドしたアプリケーションでは、IoT ハブに接続するデバイスのシミュレーションが行われます。 アプリケーションによりテレメトリとプロパティが送信され、コマンドが受け取られます。
+デバイス SDK のソース コードを使用して、生成されたデバイス コード スタブをビルドします。 ビルドしたアプリケーションでは、IoT ハブに接続するデバイスのシミュレーションが行われます。 アプリケーションによりテレメトリとプロパティが送信され、コマンドが受け取られます。
 
 1. `sample_device` フォルダーに `cmake` サブディレクトリを作成して、そのフォルダーに移動します。
 
@@ -167,7 +159,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 1. 次のコマンドを実行して、生成されたコード スタブをビルドします (プレースホルダーを Vcpkg リポジトリのディレクトリに置き換えます)。
 
     ```cmd\sh
-    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
 
     cmake --build .
     ```
@@ -187,7 +179,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 1. ビルドが正常に完了したら、IoT ハブ デバイス接続文字列をパラメーターとして渡し、アプリケーションを実行します。
 
     ```cmd\sh
-    .\Debug\sample_device.exe "[IoT Hub device connection string]"
+    .\Debug\sample_device.exe "<device connection string>"
     ```
 
 1. そのデバイス アプリケーションによって IoT Hub へのデータの送信が開始されます。
@@ -200,7 +192,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 **Azure IoT Explorer** を使用してデバイス コードを検証するには、モデル リポジトリにファイルを発行する必要があります。
 
-1. VS Code 上で DCM ファイルが開いているフォルダーで、**Ctrl + Shift + P** キーを使用してコマンド パレットを開き、「**IoT プラグ アンド プレイ: モデル リポジトリにファイルを送信する**」と入力して選択します。
+1. VS Code で `pnp_app` フォルダーを開き、**Ctrl + Shift + P** キーを使用してコマンド パレットを開きます。「**IoT プラグ アンド プレイ: モデル リポジトリにファイルを送信する**」と入力して選択します。
 
 1. `SampleDevice.capabilitymodel.json` と `EnvironmentalSensor.interface.json` ファイルを選択します。
 
@@ -216,9 +208,9 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 ### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Azure IoT Explorer を使用してコードを検証する
 
-1. Azure IoT Explorer を開くと、 **[アプリの構成]** ページが表示されます。
+1. Azure IoT エクスプローラーを開きます。 **[アプリの構成]** ページが表示されます。
 
-1. ご利用の IoT Hub 接続文字列を入力し、 **[接続]** をクリックします。
+1. ご利用の _IoT Hub 接続文字列_を入力し、 **[接続]** を選択します。
 
 1. 接続すると、デバイスの概要ページが表示されます。
 
@@ -236,19 +228,19 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. プロパティの**名前**を展開し、新しい名前で更新して、 **[書き込み可能なプロパティの更新]** を選択します。
 
-1. 新しい名前が **[報告されるプロパティ]** 列に表示されるのを確認するには、ページの上部にある **[更新]** ボタンをクリックします。
+1. 新しい名前が **[報告されるプロパティ]** 列に表示されるのを確認するには、ページの上部にある **[更新]** ボタンを選択します。
 
-1. **[コマンド]** ページを選択して、デバイスでサポートされているコマンドをすべて表示します。
+1. **[コマンド]** ページを選択して、デバイスでサポートされているすべてのコマンドを表示します。
 
 1. **点滅**コマンドを展開し、新しい点滅時間間隔を設定します。 **[コマンドの送信]** を選択して、デバイス上でコマンドを呼び出します。
 
-1. シミュレートするデバイスにアクセスして、コマンドが想定どおりに実行されたことを確認します。
+1. シミュレートするデバイス コマンド プロンプトにアクセスして、出力された確認メッセージを読み、コマンドが想定どおりに実行されたことを確認します。
 
 ## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、DCM を使用して IoT プラグ アンド プレイ デバイスを作成する方法について学習しました。
 
-IoT プラグ アンド プレイの詳細については、次のチュートリアルに進んでください。
+DCM と独自のモデルの作成方法の詳細については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Visual Studio Code を使用してデバイス機能モデルを作成しテストする](tutorial-pnp-visual-studio-code.md)
+> [チュートリアル:Visual Studio Code を使用してデバイス機能モデルを作成し、テストする](tutorial-pnp-visual-studio-code.md)

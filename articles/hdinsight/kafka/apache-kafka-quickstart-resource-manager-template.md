@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager を使用して HDInsight に Apache Kafka を設定する - クイック スタート
+title: クイック スタート:Azure Resource Manager を使用した Apache Kafka - HDInsight
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: deae58c30e37aa4df1dd8ca9b1b64cc79e9509ae
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: d908d210ff0448069a9abc76209c72d9b2a7595c
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123175"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242026"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 

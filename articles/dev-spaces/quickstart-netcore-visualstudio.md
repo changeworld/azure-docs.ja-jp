@@ -5,19 +5,19 @@ author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.author: zarhoads
-ms.date: 03/22/2019
+ms.date: 11/13/2019
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 41dea16f7938d391f8cdf03e1a731e8082f74b26
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5a7ab993c58730594a0c4e10572939d3dccbdf02
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695489"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091813"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で Visual Studio と .NET Core でデバッグと反復処理を行う
 
@@ -52,7 +52,7 @@ Azure Dev Spaces では、次のものを使用してデバッグと反復処理
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
 
-Azure portal でご自分の AKS クラスターに移動して、 *[Dev Spaces]* をクリックします。 *[Dev Spaces を有効にする]* を *[はい]* に変更して *[保存]* をクリックします。
+Azure portal でご自分の AKS クラスターに移動して、 *[Dev Spaces]* をクリックします。 *[Dev Spaces の使用]* を *[はい]* に変更して *[保存]* をクリックします。
 
 ![Azure portal での Dev Spaces の有効化](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
@@ -60,11 +60,11 @@ Azure portal でご自分の AKS クラスターに移動して、 *[Dev Spaces]
 
 1. Visual Studio を開きます。
 1. 新しいプロジェクトを作成する。
-1. *[ASP.NET Core Web アプリケーション]* を選択し、プロジェクトに *webfrontend* という名前を付けます。
-1. Click *OK*.
+1. *[ASP.NET Core Web アプリケーション]* を選択し、 *[次へ]* をクリックします。
+1. プロジェクト *webfrontend* に名前を付けて、 *[作成]* をクリックします。
 1. 要求されたら、 *[Web アプリケーション (モデル ビュー コントローラー)]* をテンプレートに選択します。
-1. 上部にある *[.NET Core]* と *[ASP.NET Core 2.0]* を選択します。
-1. Click *OK*.
+1. 上部にある *[.NET Core]* と *[ASP.NET Core 2.1]* を選択します。
+1. *Create* をクリックしてください。
 
 ## <a name="connect-your-project-to-your-dev-space"></a>プロジェクトを開発空間に接続する
 
@@ -93,12 +93,12 @@ Built container image in 39s
 Waiting for container...
 36s
 
-Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 'http' is available at http://default.webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-上記の例では、パブリック URL は http://webfrontend.1234567890abcdef1234.eus.azds.io/ です。 ご自分のサービスのパブリック URL に移動し、開発空間で稼働しているサービスを操作します。
+上記の例では、パブリック URL は http://default.webfrontend.1234567890abcdef1234.eus.azds.io/ です。 ご自分のサービスのパブリック URL に移動し、開発空間で稼働しているサービスを操作します。
 
 このプロセスにより、サービスへのパブリック アクセスが無効になった可能性があります。 パブリック アクセスを有効にするには、[*values.yaml* 内のイングレス値][ingress-update]を更新することができます。
 

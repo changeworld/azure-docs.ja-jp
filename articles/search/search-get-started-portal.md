@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719978"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889937"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -68,9 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. 次のページに進みます。
 
-   ![コグニティブ検索用の次のページ ボタン](media/search-get-started-portal/next-button-add-cog-search.png)
-
-### <a name="step-2---skip-cognitive-skills"></a>手順 2 - コグニティブ スキルをスキップする
+### <a name="step-2---skip-the-enrich-content-page"></a>手順 2 - [コンテンツのエンリッチ] ページをスキップする
 
 ウィザードでは、インデックス作成に Cognitive Services AI アルゴリズムを組み込むための [AI エンリッチメント スキル パイプライン](cognitive-search-concept-intro.md)の作成がサポートされます。 
 
@@ -104,7 +102,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. 次のページに進みます。
 
-   ![次のページでインデクサーを作成](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>手順 4 - インデクサーを構成する
 
@@ -127,6 +124,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="view-the-index"></a>インデックスの表示
 
 メイン サービス ページには、Azure Cognitive Search サービスで作成されたリソースへのリンクがあります。  作成したインデックスを表示するには、リンクの一覧の **[インデックス]** をクリックします。 
+
+ポータル ページが更新されるまで待ちます。 数分後に、ドキュメント数とストレージ サイズのインデックスが表示されます。
 
    ![サービスのダッシュボードのインデックスの一覧](media/search-get-started-portal/indexes-list.png)
 
@@ -154,7 +153,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[Search エクスプローラー] コマンド](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. **[インデックス]** ドロップダウンで *hotels-sample* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2019-05-06) を使います。
+2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2019-05-06) を使います。
 
    ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex.png)
 

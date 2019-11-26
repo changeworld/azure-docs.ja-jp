@@ -1,37 +1,42 @@
 ---
-title: Azure Sentinel のオンボード | Microsoft Docs
-description: Azure Sentinel でデータを収集する方法をご確認ください。
+title: クイック スタート:Azure Sentinel でオンボードする
+description: このクイックスタート ドキュメントに従って、Azure Sentinel でデータを収集する方法について説明します。
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: quickstart
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316811"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133087"
 ---
-# <a name="on-board-azure-sentinel"></a>Azure Sentinel をオンボードする
+# <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
-
-
-このクイック スタートでは、Azure Sentinel をオンボードする方法を説明します。 
+このクイックスタートでは、Azure Sentinel をオンボードする方法について説明します。 
 
 Azure Sentinel をオンボードするには、まず Azure Sentinel を有効にしてから、データ ソースを接続する必要があります。 Azure Sentinel には、Microsoft Threat Protection ソリューションや Microsoft 365 ソース (Office 365、Azure AD、Azure ATP、Microsoft Cloud App Security) など、すぐに使用できるリアルタイム統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。  
 
 データ ソースを接続した後、優れた設計のブックのギャラリーから選択し、データに基づいて分析情報を表示できます。 これらのブックは、ニーズに合わせて簡単にカスタマイズできます。
 
+>[!NOTE] 
+> [Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)は、関連付けられた Azure Monitor Log Analytics ワークスペースに取り込まれたデータ量に基づいています。 次のデータ コネクタの一部は取り込みに対して課金されませんが、Log Analytics ワークスペースに格納されている取り込まれたデータを使用して何らかの種類のアラートを生成した場合は、[Azure Monitor Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/)に従って課金される関連付けられた料金が発生します。 
+  > - Azure アクティビティ (Azure 操作のアクティビティ ログ)
+  > - Azure Active Directory Identity Protection (AAD P2 ライセンスを使用するテナント用)
+  > - Azure Information Protection
+  > - Azure Advanced Threat Protection (アラート)
+  > - Azure Security Center (アラート)
+  > - Microsoft Cloud App Security (アラートのみ)
+  > - Microsoft Defender Advanced Threat Protection (監視エージェントのアラート)
+  > - Office 365 (Exchange および Sharepoint ログ)
+>
+> Azure AD/Office365 の監査ログは無料ではなく、Premium レベルとして提供されるため、このデータの取り込みは GB 単位で課金されます。 
+  
 
 ## <a name="global-prerequisites"></a>グローバルな前提条件
 

@@ -1,5 +1,6 @@
 ---
-title: Azure AD v2.0 の ASP.NET Web サーバーの概要 | Microsoft Docs
+title: Azure AD v2.0 の ASP.NET Web サーバーの概要
+titleSuffix: Microsoft identity platform
 description: 従来の Web ブラウザーベースのアプリケーションと OpenID Connect 標準を使用して、ASP.NET ソリューション上で Microsoft のサインインを実装します
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: b66d2a9a958afd536dcffeca211a3fc56cf09ef8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113645"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803710"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -269,7 +270,7 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>詳細情報
-> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "ブランド化ガイドライン")を参照してください。
+> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Bブランド化ガイドライン)をご覧ください。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>ユーザー要求を表示するコントローラーを追加する
@@ -410,7 +411,7 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 >  > - アプリケーション開発者が、**管理者の同意**を必要とするその他の任意のアクセス許可を追加している。
 >  > - または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。
 >
-> 詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)」を参照してください。
+> 詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)」を参照してください。
 <!--end-collapse-->
 
 #### <a name="view-application-results"></a>アプリケーションの結果を表示する

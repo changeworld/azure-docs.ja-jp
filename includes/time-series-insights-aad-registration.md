@@ -8,25 +8,17 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 09/24/2019
-ms.openlocfilehash: 7e67b9e1c611d14b78db53f8662fb4e1f493a8df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.date: 11/14/2019
+ms.openlocfilehash: fa6921f8c4309f17cbd63e242a5416e7e81bb6c3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990200"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133475"
 ---
-> [!IMPORTANT]
-> * 従来の **[Azure Active Director]**  >  **[アプリの登録 (レガシー)]** ブレードは、2019 年 5 月に新しい **[Azure Active Directory]**  >  **[アプリの登録]** ブレードに差し替えられています。
-> * レガシー ブレードで作成された、またはそのブレードに表示されていたアプリの登録は、自動的に新しいブレードに表示されます。
-> * 新しい Azure アプリの登録エクスペリエンスの総合的な情報については、[Azure アプリ登録トレーニング ガイド](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide)と [Azure Active Directory クイックスタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)をご覧ください。
-
 1. [Azure portal](https://ms.portal.azure.com/) で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** を選択します。
 
    [![Azure Active Directory での新しいアプリケーションの登録](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-   > [!TIP]
-   > 新しい Azure Active Directory アプリ登録パネルでは、 **[所有しているアプリケーション]** を選択することで、表示されるアプリをフィルター処理できます。
 
     アプリを登録すると、ここにそのアプリが表示されます。
 
@@ -47,7 +39,7 @@ ms.locfileid: "72990200"
         * ローカル開発環境でホストされているアプリでは、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。 **[既定のクライアントの種類]** が [はい] に設定されていることを確認します。
         * Azure App Service でホストされているシングル ページ アプリでは、 **[Web]** を選択します。
 
-    1. **[ID トークン]** をオンにすることで、暗黙的な許可フローを有効にします。
+    1. **[アクセス トークン]** または **[ID トークン]** をオンにすることによって、暗黙的な許可のフローを有効にします。
 
    [![新しいクライアント シークレットを生成する](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 

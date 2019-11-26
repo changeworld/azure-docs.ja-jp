@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f57d36f6f24aab44d13ea07d8706bf40b7dcf552
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2ec6e1d00d331a7bb8dd7182dd4b0c91dd3d25a7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72937341"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049091"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>Azure IoT Central と Azure IoT のオプションを比較する
 
 Microsoft Azure IoT Central と Azure IoT には、IoT ソリューションを構築するためのさまざまな選択肢が用意されています。 これらの選択肢によってさまざまな顧客要件に対応します。
 
-* [Azure IoT Central](overview-iot-central.md) は、モデルベースのアプローチを使用するサービスとしてのソフトウェア (SaaS) ソリューションです。これを使用すると、クラウド ソリューション開発に関する専門知識がなくても、エンタープライズ グレードの IoT ソリューションを構築できます。
+* [Azure IoT Central](overview-iot-central.md) は、モデルベースのアプローチを使用する IoT アプリケーション プラットフォームであり、クラウド ソリューション開発に関する専門知識がなくても、エンタープライズ グレードの IoT ソリューションを構築できます。
 
 * [Azure IoT ソリューション アクセラレータ](https://docs.microsoft.com/azure/iot-accelerators/)は、Azure の提供するサービスとしてのプラットフォーム (PaaS) 上に構築された、エンタープライズ グレードの[ソリューション アクセラレータ](../../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)のコレクションであり、これを使用するとカスタム IoT ソリューションの開発を加速できます。
 
@@ -42,7 +42,7 @@ IoT ソリューションを計画するうえで、Azure IoT 製品の選択は
 |     | Azure IoT Central | Azure IoT ソリューション アクセラレータ |
 | --- | ----------- | --------- |
 | 主な用途                      | サービスの細かなカスタマイズを必要としないシンプルな IoT ソリューションの市場投入時間を短縮します。                                                    | 最大限の柔軟性が求められるカスタム IoT ソリューションの開発を加速します。                                                                                                                             |
-| 基になる PaaS サービスへのアクセス | SaaS。 フル マネージドのソリューションであるため、基になるサービスは公開されません。                                                                                            | 基になる Azure サービスにアクセスして管理します。または、必要に応じてサービスを置き換えます。                                                                                                                    |
+| 基になる PaaS サービスへのアクセス | フル マネージドのソリューションであるため、基になるサービスは公開されません。                                                                                            | 基になる Azure サービスにアクセスして管理します。または、必要に応じてサービスを置き換えます。                                                                                                                    |
 | 柔軟性                        | 中。 組み込みのブラウザー ベースのユーザー エクスペリエンスを使用して、ソリューション モデルやさまざまな UI 要素をカスタマイズできます。 各種コンポーネントが公開されないため、インフラストラクチャをカスタマイズすることはできません。 | 高。 マイクロサービスのコードはオープン ソースであるため、必要に応じて、どのようにも変更できます。 また、デプロイ インフラストラクチャをカスタマイズすることもできます。                                               |
 | 難易度                        | 低。 ソリューションをカスタマイズするには、モデリングのスキルが必要です。 コーディングのスキルは必要ありません。                                                                          | 中/高。 ソリューション バックエンドをカスタマイズするには、Java または .NET のスキルが必要です。 視覚化をカスタマイズするには、JavaScript のスキルが必要です。                                                                       |
 | 使用開始のエクスペリエンス             | アプリケーション テンプレートとデバイス テンプレートには、既製のモデルが用意されています。 数分でデプロイできます。                                                                                                  | 構成済みソリューションによって一般的な IoT シナリオが実装されます。 数分でデプロイできます。                                                                                                                            |

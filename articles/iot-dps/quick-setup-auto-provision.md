@@ -1,22 +1,22 @@
 ---
-title: Azure Portal における Device Provisioning の設定 | Microsoft Docs
+title: クイック スタート:Azure Portal における Device Provisioning の設定
 description: Azure クイックスタート - Azure Portal で Azure IoT Hub Device Provisioning Service を設定する
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/12/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0b16c6da0066ac4e919c1bef031d3206a359aae6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 504e027095d839efcbfb535c0e1ecc8c6cfbad26
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818121"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903445"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Azure Portal で IoT Hub Device Provisioning Service を設定する
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>クイック スタート:Azure Portal で IoT Hub Device Provisioning Service を設定する
 
 以下の手順では、デバイスのプロビジョニングに使用する Azure クラウド リソースをポータルから設定する方法について説明しています。 この記事では、IoT ハブの作成と新しい IoT Hub Device Provisioning Service の作成、さらにその 2 つのサービスのリンク操作を行うための手順について説明します。 
 
@@ -30,11 +30,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service の新しいインスタンスを作成する
 
-1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
+1. Azure portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
 
-2. *[Marketplace を検索]* で **Device Provisioning Service** を探します。 **[IoT Hub デバイス プロビジョニング サービス]** を選択し、**[作成]** ボタンをクリックします。 
+2. *[Marketplace を検索]* で **Device Provisioning Service** を探します。 **[IoT Hub デバイス プロビジョニング サービス]** を選択し、 **[作成]** ボタンをクリックします。 
 
-3. 新しい Device Provisioning サービス インスタンスの次の情報を入力し、**[作成]** をクリックします。
+3. 新しい Device Provisioning サービス インスタンスの次の情報を入力し、 **[作成]** をクリックします。
 
     * **[名前]:** 新しい Device Provisioning サービス インスタンスの一意の名前を指定します。 入力した名前が使用可能な場合は、緑色のチェック マークが表示されます。
     * **[サブスクリプション]:** この Device Provisioning サービス インスタンスを作成するために使用するサブスクリプションを選択します。
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
       ![ポータル ブレードで Device Provisioning サービス インスタンに関する基本的な情報を入力](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
-4. 通知ボタンをクリックしてリソース インスタンスの作成を監視します。 サービスが正常にデプロイされたら、**[ダッシュボードにピン留めする]**、**[リソースに移動]** の順にクリックします。
+4. 通知ボタンをクリックしてリソース インスタンスの作成を監視します。 サービスが正常にデプロイされたら、 **[ダッシュボードにピン留めする]** 、 **[リソースに移動]** の順にクリックします。
 
     ![デプロイの監視通知](./media/quick-setup-auto-provision/pin-to-dashboard.png)
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. Device Provisioning Service の概要ブレードで **[Linked IoT hubs]\(リンクされた IoT ハブ\)** を選択します。 一番上の **[+ 追加]** ボタンをクリックします。 
 
-3. **[IoT Hub へのリンクを追加します]** ページで、次の情報を入力して、新しい Device Provisioning サービス インスタンスを IoT ハブにリンクします。 次に、**[保存]** をクリックします。 
+3. **[IoT Hub へのリンクを追加します]** ページで、次の情報を入力して、新しい Device Provisioning サービス インスタンスを IoT ハブにリンクします。 次に、 **[保存]** をクリックします。 
 
     * **[サブスクリプション]:** 新しい Device Provisioning サービス インスタンスにリンクする IoT ハブが含まれるサブスクリプションを選択します。
     * **[IoT Hub]:** 新しい Device Provisioning サービス インスタンスにリンクする IoT ハブを選択します。
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
       ![ポータル ブレードでハブ名を Device Provisioning サービス インスタンスにリンク](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
-3. 選択したハブが **[Linked IoT hubs]\(リンクされた IoT ハブ\)** ブレードに表示されます。 **リンクされた IoT ハブ**を表示するには、**[更新]** のクリックが必要な場合があります。
+3. 選択したハブが **[Linked IoT hubs]\(リンクされた IoT ハブ\)** ブレードに表示されます。 **リンクされた IoT ハブ**を表示するには、 **[更新]** のクリックが必要な場合があります。
 
 
 

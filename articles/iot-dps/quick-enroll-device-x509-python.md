@@ -1,21 +1,21 @@
 ---
-title: このクイック スタートは、Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法を示します | Microsoft Docs
+title: クイック スタート:Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法
 description: このクイック スタートでは、グループ登録を使用します。 このクイック スタートでは、Python を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: d9ed0cb82f8ad1c19f95299b3dd651fc099368b8
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 23ae0bd9e66cbb592db0ec9adea5e4332a9aa19b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500772"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904722"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>クイック スタート: Python を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -141,7 +141,7 @@ Java Service のサンプルを調べる予定の場合は、このクイック�
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
 1. マシンの _X509 証明書ジェネレーター_ のウィンドウを閉じます。
-1. Azure Portal で [デバイス プロビジョニング サービス] に移動し、**[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。このクイックスタートを使用して登録した X.509 デバイスの *GROUP NAME* を選択し、ブレードの上部にある **[削除]** ボタンをクリックします。  
+1. Azure Portal で [デバイス プロビジョニング サービス] に移動し、 **[登録を管理します]** をクリックし、 **[登録グループ]** タブを選択します。このクイックスタートを使用して登録した X.509 デバイスの *GROUP NAME* を選択し、ブレードの上部にある **[削除]** ボタンをクリックします。  
 
 
 ## <a name="next-steps"></a>次の手順

@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Policy の概要
+    - name: Azure Policy とは
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
 - name: クイック スタート

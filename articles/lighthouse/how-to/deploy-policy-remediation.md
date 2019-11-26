@@ -1,22 +1,18 @@
 ---
 title: 修復できるポリシーをデプロイする
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
 ms.date: 10/11/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 3bc85d202b9ba230130716aad34ce233037a3346
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 662daeb305856fb36bfb84f98e80bedf48b22756
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301958"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132475"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 
-Azure Lighthouse では、サービス プロバイダーが委任されたサブスクリプション内にポリシー定義を作成したり、その編集をしたりすることができます。 ただし、[修復タスク](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)を使用しているポリシー (つまり、効果が [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) または [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) のポリシー) をデプロイする場合には、顧客のテナントに[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を作成する必要があります。 このマネージド ID は、ポリシー内にテンプレートをデプロイする際に Azure Policy が使用するものです。 このシナリオを実現するにあたっては、顧客を Azure の委任されたリソース管理にオンボードする場合とポリシーそのものをデプロイする場合のどちらにも必要な手順があります。
+[Azure Lighthouse](../overview.md) では、サービス プロバイダーが委任されたサブスクリプション内にポリシー定義を作成したり、その編集をしたりすることができます。 ただし、[修復タスク](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)を使用しているポリシー (つまり、効果が [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) または [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) のポリシー) をデプロイする場合には、顧客のテナントに[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を作成する必要があります。 このマネージド ID は、ポリシー内にテンプレートをデプロイする際に Azure Policy が使用するものです。 このシナリオを実現するにあたっては、顧客を Azure の委任されたリソース管理にオンボードする場合とポリシーそのものをデプロイする場合のどちらにも必要な手順があります。
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>顧客のテナント内でマネージド ID にロールを割り当てることができるユーザーを作成する
 

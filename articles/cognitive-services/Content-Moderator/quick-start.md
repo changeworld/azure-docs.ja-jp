@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb4fc076d01c1108278cea0cebba958b4ea94660
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757364"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044048"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
 
@@ -68,6 +68,6 @@ Content Moderator レビュー ツールを使用する方法についてさら�
 ## <a name="next-steps"></a>次の手順
 
 アプリで Moderation API 自体を使用する方法を学習します。
-- 画像のモデレートを実装します。 [API コンソール](try-image-api.md)または [C# クイックスタート](image-moderation-quickstart-dotnet.md)を使用して、画像をスキャンして、タグ、信頼度スコア、および他の抽出された情報を使用することによって、成人向けや猥褻な可能性のあるコンテンツを検出します。
-- テキストのモデレートを実装します。 [API コンソール](try-text-api.md)または [C# クイック スタート](text-moderation-quickstart-dotnet.md)を使用して、潜在的な不適切な表現、マシン支援の不要なテキスト分類 (プレビュー)、個人データに関してテキスト コンテンツをスキャンします。
+- 画像のモデレートを実装します。 [API コンソール](try-image-api.md)を使用するか、または [.NET SDK クイックスタート](dotnet-sdk-quickstart.md)に従って、画像をスキャンして、タグ、信頼度スコア、および他の抽出された情報を使用することによって、成人向けまたはわいせつな可能性のあるコンテンツを検出します。
+- テキストのモデレートを実装します。 [API コンソール](try-text-api.md)または [.NET SDK クイック スタート](dotnet-sdk-quickstart.md)を使用して、潜在的な不適切な表現、マシン支援の不要なテキスト分類 (プレビュー)、個人データに関してテキスト コンテンツをスキャンします。
 - ビデオのモデレートを実装します。 [C# 用のビデオのモデレートに関するハウツー ガイド](video-moderation-api.md)に関するページ従ってビデオをスキャンし、成人向けやきわどいコンテンツの可能性があるものを検出します。 

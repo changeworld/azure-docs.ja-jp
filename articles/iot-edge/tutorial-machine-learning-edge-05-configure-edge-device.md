@@ -1,19 +1,19 @@
 ---
-title: IoT Edge デバイスの構成 - Azure IoT Edge での Machine Learning | Microsoft Docs
-description: Linux を実行している Azure 仮想マシンを、透過的なゲートウェイとして機能する Azure IoT Edge デバイスとして構成します。
+title: チュートリアル:IoT Edge デバイスを構成する - Azure IoT Edge での Machine Learning
+description: チュートリアル:Linux を実行している Azure 仮想マシンを、透過的なゲートウェイとして機能する Azure IoT Edge デバイスとして構成します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6d8f67cf94e143cd67a525fa2cc675650fb59e65
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 714f0c335e2871fa1afe2f99d08870f0e39c488e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494021"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113972"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 

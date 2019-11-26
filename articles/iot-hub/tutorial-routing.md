@@ -1,5 +1,5 @@
 ---
-title: Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する | Microsoft Docs
+title: Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 5019951ca9628bc3beb849bdb2b148b575bc8618
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535130"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084380"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI と Azure portal を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -26,11 +26,13 @@ ms.locfileid: "69535130"
 
 このチュートリアルでは、Azure CLI を使用してベース リソースを作成してから、[Azure portal](https://portal.azure.com) を使用してメッセージ ルーティングを構成する方法およびテスト用の仮想デバイスを設定する方法を説明します。
 
-IoT ハブ名やストレージ アカウント名など、いくつかのリソース名はグローバルに一意であることが必要です。 それを簡単にするために、それらのリソース名には、*randomValue* という英数字のランダム値が追加されます。 randomValue はスクリプトの冒頭で 1 度生成され、スクリプト全体で必要に応じてリソース名に追加されます。 これをランダムにしたくない場合は、空の文字列または特定の値に設定できます。
-
 以下のスクリプトをコピーして Cloud Shell に貼り付け、Enter キーを押してください。 スクリプトが 1 行ずつ実行されます。 これで、ストレージ アカウント、IoT ハブ、Service Bus 名前空間、Service Bus キューなど、このチュートリアルのベース リソースが作成されます。
 
-デバッグに関する注意: このスクリプトは、読みやすくするために継続記号 (バックスラッシュ `\`) を使用しています。 スクリプトの実行で問題が生じた場合は、バックスラッシュの後ろにスペースがないことを確認してください。
+IoT ハブ名やストレージ アカウント名など、いくつかのリソース名はグローバルに一意であることが必要です。 それを簡単にするために、それらのリソース名には、*randomValue* という英数字のランダム値が追加されます。 randomValue はスクリプトの冒頭で 1 度生成され、スクリプト全体で必要に応じてリソース名に追加されます。 これをランダムにしたくない場合は、空の文字列または特定の値に設定できます。
+
+> [!TIP]
+> デバッグのヒント: このスクリプトでは、読みやすくするために継続記号 (バックスラッシュ `\`) を使用しています。 スクリプトの実行で問題が生じた場合は、Cloud Shell セッションで `bash` が実行されていること、およびバックスラッシュの後ろにスペースがないことを確認してください。
+>
 
 ```azurecli-interactive
 # This retrieves the subscription id of the account 

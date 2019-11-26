@@ -1,12 +1,12 @@
 ---
-title: ユーザー、グループ、ライセンス、およびロールの概要 - Azure Active Directory | Microsoft Docs
+title: ユーザー、グループ、ライセンス、およびロールの概要 - Azure AD | Microsoft Docs
 description: Azure Active Directory における割り当てライセンス、管理者ロール、グループ メンバーシップとユーザーとの関係
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 01/28/2019
+ms.date: 11/08/2019
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083886"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027737"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大規模組織のユーザー、グループ、ライセンス、ロール
 

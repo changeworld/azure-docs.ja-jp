@@ -1,21 +1,21 @@
 ---
-title: オンプレミス マシンのディザスター リカバリーのために Azure リソースを準備する
+title: Azure Site Recovery を使用して Hyper-V のディザスター リカバリーのために Azure を準備する
 description: Azure Site Recovery を使用してオンプレミスの Hyper-V VM のディザスター リカバリーのために Azure を準備する方法について説明します。
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6064c32e14ffba7edd51c2dae7787067d14e33c9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814330"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084174"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>オンプレミス マシンのディザスター リカバリーのために Azure リソースを準備する
+# <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Hyper-V のディザスター リカバリーのために Azure リソースを準備する
 
  [Azure Site Recovery](site-recovery-overview.md) は、計画された停止や計画外の停止の際にビジネス アプリを実行し続けることで、ビジネス継続性とディザスター リカバリー (BCDR) を支援します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
 

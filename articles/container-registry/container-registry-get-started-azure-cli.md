@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - Azure でのプライベート Docker レジストリの作成 - Azure CLI
+title: クイックスタート - レジストリの作成 - Azure CLI - Azure Container Registry
 description: Azure CLI を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 6c511c56ab8df14cc6ea81363772ae0fd6d61272
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 562f8d41e1f91e408263809bdfc78905317912a1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309528"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931592"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用したプライベート コンテナー レジストリの作成
 

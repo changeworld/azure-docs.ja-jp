@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - アプリケーションの高可用性を実現する Traffic Manager プロファイルを Azure CLI を使用して作成する
+title: 'クイックスタート: アプリケーションの HA のためのプロファイルを作成する - Azure CLI - Azure Traffic Manager'
 description: このクイック スタート記事では、高可用性 Web アプリケーションを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: allensu
-ms.openlocfilehash: dc7e555eb95cf88ecf57a6df4999672bb721b8cf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 8b8880e10f9b920a2ec077d4cc4c2239e6ea7438
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618792"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034221"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Web アプリケーションの高可用性を実現する Traffic Manager プロファイルを作成する
 

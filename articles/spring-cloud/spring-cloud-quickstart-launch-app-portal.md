@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: bc8b834e0dd128457910c46cc1a62382bbc28ee1
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39a249fb75249505189e2af4872c3a3f61ebe2af
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721569"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133224"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Spring Cloud アプリケーションを起動する
 
@@ -56,14 +56,16 @@ az extension add --name spring-cloud
 
 1. Web ブラウザーで、[Azure portal の Azure Spring Cloud へのこのリンク](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)を開きます。
 
-1. **[Azure Spring Cloud]** を選択して概要ページに移動します。 **[作成]** ボタンを選択して、作業を開始します。
-
-1. 以下のガイドラインを考慮して、フォームに入力します。
+1. Azure Spring Cloud の **[作成]** ページで、フォームに入力します。  次のガイドラインを考慮してください。
     - サービス名:自分のサービス インスタンスの名前を指定します。  名前の長さは 4 文字から 32 文字で、小文字、数字、およびハイフンのみを使用できます。  サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
     - サブスクリプション:このリソースに対する課金用のサブスクリプションを選択します。  そのサブスクリプションが Microsoft 側で Azure Spring Cloud の許可リストに追加されていることを確認してください。
     - リソース グループ: 新しいリソース用に新しいリソース グループを作成することをお勧めします。
     - 場所:自分のサービス インスタンスの場所を選択します。 現在サポートされている場所は、米国東部、米国西部 2、西ヨーロッパ、東南アジアなどです。
-    
+
+1. **[確認と作成]** をクリックします。
+
+1. 仕様を確認し、 **[作成]** をクリックします。
+
 サービスのデプロイには約 5 分かかります。  デプロイされると、サービス インスタンスの **[概要]** ページが表示されます。
 
 ## <a name="set-up-your-configuration-server"></a>構成サーバーを設定する
@@ -72,7 +74,7 @@ az extension add --name spring-cloud
 
 1. **[既定のリポジトリ]** セクションで **[URI]** を "https\://github.com/Azure-Samples/piggymetrics" に設定し、 **[ラベル]** を "構成" に設定して、 **[適用]** を選択し、変更を保存します。
 
-    ![ASC ポータルのスクリーンショット](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+    ![ASC ポータルのスクリーンショット](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>マイクロサービス アプリケーションのビルドとデプロイ
 

@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: Speech Service のドキュメント
 description: Speech Service を使ってみましょう。
-ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580331"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406184"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -271,7 +271,7 @@ ms.locfileid: "73580331"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>音声、意図、エンティティを認識する</h3>
-                                                    <p>Speech SDK と LUIS を使用して、音声、意図、エンティティを認識します。</p>
+                                                    <p>Speech SDK と Language Understanding (LUIS) を使用して、音声、意図、エンティティを認識します。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +289,7 @@ ms.locfileid: "73580331"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>LUIS のドキュメント</h3>
+                                                    <h3>Language Understanding (LUIS) のドキュメント</h3>
                                                     <p>Language Understanding Service (LUIS) と自然言語処理 (NLP) について詳しく説明します。</p>
                                                 </div>
                                             </div>
@@ -308,7 +308,7 @@ ms.locfileid: "73580331"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>LUIS ポータル</h3>
+                                                    <h3>Language Understanding (LUIS) ポータル</h3>
                                                     <p>アプリ、ボット、IoT デバイスに自然言語を組み込みます。</p>
                                                 </div>
                                             </div>
